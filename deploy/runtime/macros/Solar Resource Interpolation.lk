@@ -148,11 +148,11 @@ function parse_header(arr){
 	inc = 0;
 	for (i=0; i<#arr; i++){
 		val = arr[i];
-		if (stricmp(arr[i], "Year") == 0) cols[0] = i;
-		else if (stricmp(arr[i], "Month") == 0) cols[1] = i;
+		if (stricmp(arr[i], "Year") == 0 || stricmp(arr[i], "Yr") == 0) cols[0] = i;
+		else if (stricmp(arr[i], "Month") == 0 || stricmp(arr[i], "Mo") == 0) cols[1] = i;
 		else if (stricmp(arr[i], "Day") == 0) cols[2] = i;
-		else if (stricmp(arr[i], "Hour") == 0) cols[3] = i;
-		else if (stricmp(arr[i], 'Minute') == 0) cols[4] = i;
+		else if (stricmp(arr[i], "Hour") == 0 || stricmp(arr[i], "Hr") == 0) cols[3] = i;
+		else if (stricmp(arr[i], 'Minute') == 0 || stricmp(arr[i], "Min") == 0) cols[4] = i;
 		else if (stricmp(arr[i], "Wdir") == 0 || stricmp(arr[i], "wind direction") == 0) cols[5] = i;
 		else{
 			if (strlen(arr[i]) > 0) {
@@ -162,6 +162,27 @@ function parse_header(arr){
 		}
 	}
 	return cols;
+}
+
+// finds a search term as a single name or a list of names in an array
+function find_col(arr, value){
+	// single search term
+	if (isalnum(value)){
+		for (i=0; i<#arr; i++){
+			if ((stricmp(arr[i],value)==0)) return i;
+		}
+		return -1;
+	}
+	// array of search terms
+	else{
+		if (!#arr) return -1;
+		for (i=0; i<#arr; i++){
+			for (j=0; j<#value; j++){
+				if ((stricmp(arr[i],value[j])==0)) return i;
+			}
+		}
+		return -1;
+	}
 }
 
 // var1, what kind of data: 0 if instantaneous, 1 if averaged data
@@ -175,9 +196,9 @@ function identify_case(input_data, lat, long, tz){
 	while(line < #input_data && ok == false){
 		if (line==0){
 			arr = input_data[line];
-			long = find_col(arr, "Longitude");
-			lat = find_col(arr, "Latitude");
-			tz = find_col(arr, "Time Zone");
+			long = find_col(arr, ["longitude", "long", "lon", "lng"]);
+			lat = find_col(arr, ["latitude", "lat"]);
+			tz = find_col(arr, ["time zone", "tz", "timezone"]);
 			if (long == -1){
 				outln("Error reading longitude.");
 				exit;
@@ -231,14 +252,6 @@ function identify_case(input_data, lat, long, tz){
 		line++;
 	}
 	return case;
-}
-
-function find_col(arr, value){
-	for (i=0; i<#arr; i++){
-		col = arr[i];
-		if ((stricmp(col,value)==0)) return i;
-	}
-	return -1;
 }
 
 // ts: # of timesteps to add between existing points
@@ -351,6 +364,7 @@ function shift_forward(input, ts, case){
 			}
 			minute = t0[cols[4]] - dt;
 			if (minute < 0) minute+=60;
+			if (minute >= 60) minute-=60;
 			output[3+(ts-1-i)][cols[4]] = minute;
 		}
 		output[3+(ts-1-i)][cols[5]] = extrapolate([t1[cols[5]], t0[cols[5]]], 'wind');
@@ -496,11 +510,15 @@ function check_sunup(output, lat, long, tz){
 	sunset = -1;
 	sun_over_horizon(year, month, day, lat, long, tz, sunrise, sunset);
 	
-	ghi_c = max(find_col(output[2], "GHI"), find_col(output[2], "global"));
-	dni_c = max(find_col(output[2], "DNI"), find_col(output[2], "beam"));
-	dhi_c = max(find_col(output[2], "DHI"), find_col(output[2], "diffuse"));
+	ghi_s = ["ghi", "gh", "global", "global horizontal", "global horizontal irradiance"];
+	dni_s = ["dni", "dn", "beam", "direct normal", "direct normal irradiance"];
+	dhi_s = ["dhi", "df", "diffuse", "diffuse horizontal", "diffuse horizontal irradiance"];
+	ghi_c = find_col(output[2], ghi_s);
+	dni_c = find_col(output[2], dni_s);
+	dhi_c = find_col(output[2], dhi_s);
 	if ((ghi_c == -1 && dni_c == -1) || (dni_c == -1 && dhi_c == -1) || (ghi_c == -1 && dni_c == -1)){
 		outln("Weather file error: Did not find two types of irradiance data.");
+		exit;
 	}
 	
 	ts = 60/(output[4][cols[4]] - output[3][cols[4]]);
@@ -572,6 +590,7 @@ function check_sunup(output, lat, long, tz){
 	return output;
 }
 
+// interpolates the weather data as a specific case
 function solar_resource_interpolate(input_data, intervals_per_hour, case){
 	ts_to_add = 0;
 	shift_by_ts = intervals_per_hour/2;
@@ -579,26 +598,30 @@ function solar_resource_interpolate(input_data, intervals_per_hour, case){
 		outln('Data measurement regime not identified, exiting.');
 		exit;
 	}
-	else if (case[1] == 0 || case[1] == 1){
+	// original data is hourly
+	if (case[1] == 0 || case[1] == 1){
 		ts_to_add = intervals_per_hour - 1;
 	}
+	// original data is half-hourly
 	else{
 		ts_to_add = intervals_per_hour/2 - 1;
 	}
 	
 	output = intrp_data(input_data, ts_to_add);
-	// instantaneous data, measured at top of hour
+	// instantaneous data, measured at bottom of hour needs to be shifted forward
+	// since data currently starts with the 30 min point 
 	if (case == [0, 1]){
 		output = shift_forward(output, shift_by_ts, case);
 	}
-	// average data, measured hourly
+	// average data, measured hourly, shifted forward in assuming the average value
+	// occurs in the middle of the hour, at the 30 min point
 	else if (case == [1, 1]){
 		output = shift_forward(output, shift_by_ts, case);
 	}
-	
 	return output;
 }
 
+// checks file for valid input and prints interpolated weather file
 function interpolate_file(input_file, intervals_per_hour){
 	input_path = path_only(input_file);
 	input_name = split(file_only(input_file),'.')[0];
@@ -611,26 +634,26 @@ function interpolate_file(input_file, intervals_per_hour){
 	}
 	if (intd == true){
 		org_name = left(input_name, strlen(input_name)-16) + ".csv";
-		org_file = file_exists(input_path + "/" + org_name);
+		org_found = file_exists(input_path + "/" + org_name);
 		// try to find in solar resource file in downloaded folder or in solar_resource folder
 		dir = cwd();
 		dir = left(dir, strlen(dir)-3);
-		if (org_file == 0){
+		if (org_found == 0){
 			org_file = dir + "solar_resource/" + org_name;
-			org_file = file_exists(org_file);
+			org_found = file_exists(org_file);
 		}
-		if (org_file == 0){
-			org_name = left(input_name, strlen(input_name)-15) + ".csv";
-			org_file = file_exists(input_path + "/" + org_name);
+		if (org_found == 0){
+			org_file = input_path + "/" + left(input_name, strlen(input_name)-15) + ".csv";
+			org_found = file_exists(org_file);
 		}
-		if (org_file == 0){
+		if (org_found == 0){
 			org_file = dir + "solar_resource/" + org_name;
-			org_file = file_exists(org_file);
+			org_found = file_exists(org_file);
 		}
 		// found original file
-		if (org_file == 1){
-			use = yesno( input_name + " is already interpolated. Found " + org_name +". Use as original? Click no to find original.");
-			if (use) input_file = input_path + "/" + org_name;
+		if (org_found == 1){
+			use = yesno( input_name + " is already interpolated. Found " + org_file +". Use as original? Click no to find original.");
+			if (use) input_file = org_file;
 			else{
 				input_file = choose_file( homedir(), 'Choose solar resource file', '*.csv', false, false);
 				if (strlen(input_file) < 1){
@@ -652,20 +675,19 @@ function interpolate_file(input_file, intervals_per_hour){
 		}
 		input_name = split(file_only(input_file),'.')[0];
 	}
-	
 	input_data = csvread(input_file);
 	
 	//check file type
 	ask_convert = false;
 	ext = ext_only(input_file);
 	if (ext != "csv") ask_convert = true;
-	if (#input_data[1] > 26) ask_convert = true;
-	
+	if (#input_data[2] >= 68) ask_convert = true;
 	if (ask_convert){
 		msgbox('Weather file must be in SAM format. Please use Solar Resource File Converter Macro.');
+		exit;
 	}
 	
-	//interpolate
+	//interpolate, print and return path
 	outln('Interpolating ' + input_name + ' ...');
 	lat = -1;
 	long = -1;
@@ -680,6 +702,7 @@ function interpolate_file(input_file, intervals_per_hour){
 	return output_path;
 }
 
+// controls user inputs and options, sets file as chosen weather file
 function main(){
 	// get input_file from pop-up window
 	if (typeof(macro) == 'unknown' || to_string(macro.file_loc)=='User input'){
@@ -720,4 +743,5 @@ function main(){
 	msgbox("Successfully set " + output_path + " as solar resource file. Refresh library to show in solar resource library.");
 }
 
+// turn off macro execution for import into test
 main();
