@@ -4,9 +4,9 @@ The SAM Open Source Project repository contains the source code, tools, and inst
 
 The desktop version of SAM for Windows, Mac, or Linux builds from the following open source projects:
 
-* [SSC](https://github.com/nrel/ssc) is a set of "compute modules" that simulate different kinds of power systems and financial structures. It can be run directly using the [SAM Sofware Develoment Kit](https://sam.nrel.gov/sdk).
+* [SSC](https://github.com/nrel/ssc) is a set of "compute modules" that simulate different kinds of power systems and financial structures (you could think of it as the home for most of the actual algorithms in SAM). It can be run directly using the [SAM Sofware Develoment Kit](https://sam.nrel.gov/sdk).
 
-* [LK](https://github.com/nrel/lk) is a scripting language that is integrated into SAM and allows users to add functionality to the program.
+* [LK](https://github.com/nrel/lk) is a scripting language that is integrated into SAM and allows users to add functionality to the program. It is also the language used to control some of the functionality in the user interface.
 
 * [wxWidgets](https://www.wxwidgets.org/) is a cross-platform graphical user interface platform used for SAM's user interface, and for the development tools included with SSC (SDKtool) and LK (LKscript). The current version of SAM uses wxWidgets 3.1.0.
 
@@ -16,7 +16,7 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 # Quick Steps for Building SAM
 
-These are the general quick steps you need to follow to set up your computer for developing SAM. For more detailed instructions specific to Windows, Mac, and Linux see https://github.com/NREL/SAM-private/wiki.
+These are the general quick steps you need to follow to set up your computer for developing SAM. For more detailed instructions specific to Windows, Mac, and Linux see https://github.com/NREL/SAM/wiki.
 
 The build instructions are based on the following integrated development environments:
 
