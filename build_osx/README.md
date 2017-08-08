@@ -1,6 +1,6 @@
 # Mac Build Files
 
-See the [wiki](https://github.com/sam/wiki) for Mac build instructions using these files.
+See the [wiki](https://github.com/NREL/SAM/wiki/Mac-Build-Instructions) for Mac build instructions using these files.
 
 - ```copy_runtime.py```: Python script used by the makefile to copy files that the compiled program uses. Runtime files include weather files, user interface configuration files, data library files, etc.
 
