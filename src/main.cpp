@@ -111,6 +111,14 @@
 
 // application globals
 static SamApp::ver releases[] = {
+//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
+//the top version should always be the current working version
+		{ 2017, 7, 28 }, // Beta release for Nick - expires 9/30/17
+	{ 2017, 1, 17 }, // public 'ones and sevens' release !
+	{ 2016, 3, 14 }, // public pi-day release!
+	{ 2015, 6, 30 }, // public release
+	{ 2015, 1, 30 }, // public release
+	{ 2014, 11, 24 }, // public release
 	{    0,  0,  0 } };
 
 static wxArrayString g_appArgs;
@@ -200,7 +208,7 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 END_EVENT_TABLE()
 
 MainWindow::MainWindow()
-	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" (Open Source) "), 
+	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" ") + SamApp::VersionStr(), 
 		wxDefaultPosition, wxScaleSize( 1100, 700 ) )
 {
 #ifdef __WXMSW__
@@ -615,7 +623,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		if (Case *cc = GetCurrentCase())
 		{
 			//CaseVarGrid(cases);
-			VariableGridFrame *var_frame = new VariableGridFrame(this, &m_project, cc);
+			new VariableGridFrame(this, &m_project, cc);
 		}
 		break;
 	case ID_SAVE_CASE_DEFAULTS:
@@ -1861,6 +1869,24 @@ extern void RegisterReportObjectTypes();
 	// so that script windows are specialized to SAM, not the base generic one
 	SamScriptWindow::SetFactory( new SamScriptWindowFactory );
 	
+	bool first_load = true;
+	wxString fl_key = wxString::Format("first_load_%d", VersionMajor()*10000+VersionMinor()*100+VersionMicro() );
+	Settings().Read(fl_key, &first_load, true);
+		
+	if ( first_load )
+	{
+		// register the first load
+		Settings().Write(fl_key, false);
+
+		// enable web update app 
+		wxConfig cfg("SamUpdate3", "NREL");
+		cfg.Write("allow_web_updates", true);
+				
+		// after installing a new version, always show the reminders again until the user turns them off
+		Settings().Write( "show_reminder", true );
+	}
+	else
+	{
 		// restore window position
 		bool b_maximize = false;
 		int f_x,f_y,f_width,f_height;
@@ -1885,6 +1911,7 @@ extern void RegisterReportObjectTypes();
 			else // place default here...
 				g_mainWindow->Maximize();
 		}
+	}
 
 	if ( argc > 1 )
 		g_mainWindow->LoadProject( argv[1] );
@@ -2506,7 +2533,7 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 	{
 		if ( errors )
 		{
-			for( size_t i=0;i<parse.error_count();i++ )
+			for( int i=0;i<parse.error_count();i++ )
 				errors->Add( parse.error(i) );
 			errors->Add( "parsing did not reach end of input" );
 		}
