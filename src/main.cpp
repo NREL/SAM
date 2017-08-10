@@ -1229,7 +1229,7 @@ void MainWindow::OnClose( wxCloseEvent &evt )
 
 void MainWindow::UpdateFrameTitle()
 {
-	wxString title = wxT("SAM") + wxString(" (Open Source) ");
+	wxString title = wxT("SAM") + wxString(" (Open Source) ") + SamApp::VersionStr();
 	if ( !m_projectFileName.IsEmpty() )	title += ": " + m_projectFileName;
 	SetTitle( title );
 }
@@ -1286,7 +1286,7 @@ public:
 		dc.DrawText( "System Advisor Model", wxScalePoint( wxPoint(35, 65), scaleX, scaleY ) );
 		
 		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 18 ) );
-		dc.DrawText( "(Open Source)", wxScalePoint(wxPoint(35, 135),scaleX,scaleY));
+		dc.DrawText( "(Open Source)" + SamApp::VersionStr(), wxScalePoint(wxPoint(35, 135),scaleX,scaleY));
 		dc.DrawText( m_message, wxScalePoint( wxPoint(35, 275), scaleX, scaleY) );
 
 	}
