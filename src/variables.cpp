@@ -2,7 +2,7 @@
 *  Copyright 2017 Alliance for Sustainable Energy, LLC
 *
 *  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (ìAllianceî) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
+*  (‚ÄúAlliance‚Äù) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
 *  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
 *  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
 *  copies to the public, perform publicly and display publicly, and to permit others to do so.
@@ -26,8 +26,8 @@
 *  4. Redistribution of this software, without modification, must refer to the software by the same
 *  designation. Redistribution of a modified version of this software (i) may not refer to the modified
 *  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as ìSystem Advisor Modelî or ìSAMî. Except
-*  to comply with the foregoing, the terms ìSystem Advisor Modelî, ìSAMî, or any confusingly similar
+*  the underlying software originally provided by Alliance as ‚ÄúSystem Advisor Model‚Äù or ‚ÄúSAM‚Äù. Except
+*  to comply with the foregoing, the terms ‚ÄúSystem Advisor Model‚Äù, ‚ÄúSAM‚Äù, or any confusingly similar
 *  designation may not be used to refer to any modified version of this software or any modified
 *  version of the underlying software originally provided by Alliance without the prior written consent
 *  of Alliance.
@@ -278,9 +278,9 @@ bool VarTable::Read( wxInputStream &_I )
 	
 	wxDataInputStream in(_I);
 	wxUint8 code = in.Read8();
-	wxUint8 ver = in.Read8();
+	in.Read8(); //ver
 
-	bool ok = true;
+  bool ok = true;
 	size_t n = in.Read32();
 	for ( size_t i=0;i<n;i++ )
 	{
@@ -508,7 +508,7 @@ bool VarValue::Read( wxInputStream &_I )
 	wxDataInputStream in( _I );
 
 	wxUint8 code = in.Read8();
-	wxUint8 ver = in.Read8();
+	in.Read8(); // ver
 
 	m_type = in.Read8();
 
@@ -797,7 +797,7 @@ bool VarValue::Write( lk::vardata_t &val )
 			if ( n > 0 )
 			{
 				val.vec()->reserve( (size_t) n  );
-				for (int i=0;i<n;i++)
+				for (size_t i=0;i<n;i++)
 					val.vec_append( (double)p[i] );
 			}
 		}
@@ -807,12 +807,12 @@ bool VarValue::Write( lk::vardata_t &val )
 			::matrix_t<float> &mat = Matrix();
 			val.empty_vector();
 			val.vec()->reserve( mat.nrows() );
-			for (int i=0;i<mat.nrows();i++)
+			for (size_t i=0;i<mat.nrows();i++)
 			{
 				val.vec()->push_back( lk::vardata_t() );
 				val.vec()->at(i).empty_vector();
 				val.vec()->at(i).vec()->reserve( mat.ncols() );
-				for (int j=0;j<mat.ncols();j++)
+				for (size_t j=0;j<mat.ncols();j++)
 					val.vec()->at(i).vec_append( mat.at(i,j) );
 			}
 		}
@@ -870,7 +870,6 @@ wxString bintohexstr( char *data, int len )
 
 void hexstrtobin( const wxString &str, char *data, int len )
 {
-	int slen = str.Len();
 	int idx = 0;
 	wxString::const_iterator it = str.begin();
 	while ( it != str.end() )
@@ -952,12 +951,12 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 		return true;
 		}
 	case VV_BINARY:
-		value.m_type == VV_BINARY;
+		value.m_type = VV_BINARY;
 		value.m_bin.Clear();
 		if ( str.Len() > 0 )
 		{
 			int nbytes = str.Len()/2;
-			if ( nbytes*2 != str.Len() ) return false;
+			if ( nbytes*2 != (int)str.Len() ) return false;
 			char *data = (char*)value.m_bin.GetWriteBuf( nbytes );
 			hexstrtobin( str, data, nbytes );
 			value.m_bin.UngetWriteBuf( nbytes );

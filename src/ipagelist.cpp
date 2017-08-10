@@ -143,7 +143,7 @@ int InputPageList::Find(const wxString &item)
 
 wxString InputPageList::GetItem(int idx)
 {
-	if (idx >= 0 && idx < m_items.size())
+	if (idx >= 0 && idx < (int)m_items.size())
 		return m_items[idx].name;
 	else
 		return wxEmptyString;
@@ -156,7 +156,7 @@ wxString InputPageList::GetValue()
 
 void InputPageList::Remove(int idx)
 {
-	if (idx >= 0 && idx < m_items.size())
+	if (idx >= 0 && idx < (int)m_items.size())
 	{
 		m_items.erase( m_items.begin() + idx );
 		Invalidate();
@@ -176,7 +176,7 @@ int InputPageList::Count()
 
 int InputPageList::FindItem(const wxString &name)
 {
-	for (int i=0;i<m_items.size();i++)
+	for (size_t i=0;i<m_items.size();i++)
 		if (m_items[i].name == name)
 			return i;
 	return -1;
@@ -185,7 +185,7 @@ int InputPageList::FindItem(const wxString &name)
 wxArrayString InputPageList::GetItems()
 {
 	wxArrayString list;
-	for (int i=0;i<m_items.size();i++)
+	for (size_t i=0;i<m_items.size();i++)
 		list.Add( m_items[i].name );
 
 	return list;
@@ -204,7 +204,7 @@ int InputPageList::GetSelection()
 
 wxString InputPageList::GetStringSelection()
 {
-	if ( m_selectedIdx >= 0 && m_selectedIdx < m_items.size() )
+	if ( m_selectedIdx >= 0 && m_selectedIdx < (int)m_items.size() )
 		return m_items[m_selectedIdx].name;
 	else
 		return wxEmptyString;
@@ -226,7 +226,7 @@ void InputPageList::Invalidate()
 
 	int height = (int)(1.6*dc.GetCharHeight());	
 	int y = 0;
-	for (int i=0;i<m_items.size();i++)
+	for (size_t i=0;i<m_items.size();i++)
 	{
 		m_items[i].geom.x = 0;
 		m_items[i].geom.y = y;
@@ -241,7 +241,7 @@ void InputPageList::Invalidate()
 	Refresh();
 }
 
-void InputPageList::OnResize(wxSizeEvent &evt)
+void InputPageList::OnResize(wxSizeEvent &)
 {
 	Invalidate();
 }
@@ -249,7 +249,7 @@ void InputPageList::OnResize(wxSizeEvent &evt)
 #define TXTXOFF 10
 
 
-void InputPageList::OnPaint(wxPaintEvent &evt)
+void InputPageList::OnPaint(wxPaintEvent &)
 {
 	wxAutoBufferedPaintDC dc(this);
 	DoPrepareDC( dc );
@@ -267,7 +267,7 @@ void InputPageList::OnPaint(wxPaintEvent &evt)
 	dc.SetTextForeground( *wxBLACK );
 	dc.SetFont( MYFONT );
 
-	for (int i=0;i<m_items.size();i++)	
+	for (int i=0;i<(int)m_items.size();i++)	
 	{
 		wxRect r = m_items[i].geom;
 
@@ -276,7 +276,7 @@ void InputPageList::OnPaint(wxPaintEvent &evt)
 		if(i==m_selectedIdx) c=SelectColour;
 		
 		dc.SetPen( wxPen(c) );
-		dc.SetBrush( wxBrush(c, wxSOLID) );
+		dc.SetBrush( wxBrush(c, wxBRUSHSTYLE_SOLID) );
 		dc.DrawRectangle( r.x, r.y, r.width, r.height);
 
 		//wxFont font(MYFONT);
@@ -292,7 +292,7 @@ void InputPageList::OnPaint(wxPaintEvent &evt)
 		if (g_notesBitmap.IsOk() && m_caseWin 
 			 && m_caseWin->HasPageNote( m_items[i].resource ) )
 		{
-			int tx_w = dc.GetTextExtent( m_items[i].name ).GetWidth();
+//			int tx_w = dc.GetTextExtent( m_items[i].name ).GetWidth();
 			dc.DrawBitmap(g_notesBitmap, 
 				r.x + r.width - g_notesBitmap.GetWidth() - ((int)TXTXOFF*scale),
 				r.y + r.height/2 - g_notesBitmap.GetHeight()/2);
@@ -314,7 +314,7 @@ void InputPageList::OnLeftDown(wxMouseEvent &evt)
 
 	SetFocus();
 
-	for (int i=0;i<m_items.size();i++)
+	for (size_t i=0;i<m_items.size();i++)
 	{
 		if (evt.GetY()+vsy > m_items[i].geom.y 
 			&& evt.GetY()+vsy < m_items[i].geom.y+m_items[i].geom.height )
@@ -340,7 +340,7 @@ void InputPageList::OnMouseMove(wxMouseEvent &evt)
 	vsx *= SCRL_RATE;
 	vsy *= SCRL_RATE;
 
-	for (int i=0;i<m_items.size();i++)
+	for (int i=0;i<(int)m_items.size();i++)
 	{
 		if (evt.GetY()+vsy > m_items[i].geom.y 
 			&& evt.GetY()+vsy < m_items[i].geom.y+m_items[i].geom.height
@@ -354,7 +354,7 @@ void InputPageList::OnMouseMove(wxMouseEvent &evt)
 	}
 }
 
-void InputPageList::OnLeave(wxMouseEvent &evt)
+void InputPageList::OnLeave(wxMouseEvent &)
 {
 	m_hoverIdx = -1;
 	Refresh();

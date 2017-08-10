@@ -347,7 +347,7 @@ bool Library::ApplyEntry( int entry, int varindex, VarTable &tab, wxArrayString 
 {
 	m_errors.Clear();
 
-	if ( varindex < 0 || varindex >= m_startRow-2 )
+	if ( varindex < 0 || varindex >= (int)m_startRow-2 )
 	{
 		m_errors.Add( wxString::Format("invalid varindex of %d", varindex ) );
 		return false;
@@ -365,7 +365,7 @@ bool Library::ApplyEntry( int entry, int varindex, VarTable &tab, wxArrayString 
 		Field &f = m_fields[i];
 
 		wxString var;
-		if ( varindex < f.Variables.size() )
+		if ( varindex < (int)f.Variables.size() )
 			var = f.Variables[varindex];
 
 		if ( var.IsEmpty() ) continue; // skip this variable if no name was found
@@ -462,7 +462,7 @@ bool LibraryCtrl::SetEntrySelection( const wxString &entry )
 
 			for( size_t i=0;i<m_view.size();i++ )
 			{
-				if ( m_view[i].index == entry_idx )
+				if ( (int)m_view[i].index == entry_idx )
 				{
 					to_sel = i;
 					break;
@@ -494,14 +494,14 @@ bool LibraryCtrl::SetEntrySelection( const wxString &entry )
 wxString LibraryCtrl::GetEntrySelection()
 {
 	long sel = m_list->GetFirstSelected();
-	if ( sel >= 0 && sel < m_view.size() ) return m_view[ sel ].name;
+	if ( sel >= 0 && sel < (long)m_view.size() ) return m_view[ sel ].name;
 	return wxEmptyString;
 }
 
 wxString LibraryCtrl::GetCellValue( long item, long col )
 {
 	if ( Library *lib = Library::Find( m_library ) )
-		if ( item < m_view.size() && col < m_fieldMap.size() )
+		if ( item < (long)m_view.size() && col < (long)m_fieldMap.size() )
 			return lib->GetEntryValue( m_view[item].index, m_fieldMap[col] );
 
 	return wxT("<inval>");
@@ -603,7 +603,7 @@ void LibraryCtrl::UpdateList()
 		
 		size_t target_field_idx = 0;
 		int t_sel = m_target->GetSelection();
-		if ( t_sel >= 0 && t_sel < m_fieldMap.size() )
+		if ( t_sel >= 0 && t_sel < (int)m_fieldMap.size() )
 			target_field_idx = m_fieldMap[t_sel];
 
 		for (size_t i=0;i<num_entries;i++)
@@ -859,13 +859,13 @@ bool ScanSolarResourceData( const wxString &db_file, bool show_busy )
 
 				csv(row,0) = ff.GetName();
 
-				if ( str = ssc_data_get_string( pdata, "city" ) )
+				if ( (str = ssc_data_get_string( pdata, "city" ) ) != 0)
 					csv(row,1) = wxString(str);
 
-				if ( str = ssc_data_get_string( pdata, "state" ) )
+				if ( (str = ssc_data_get_string( pdata, "state" ) ) != 0)
 					csv(row,2) = wxString(str);
 
-				if ( str = ssc_data_get_string( pdata, "country" ) )
+				if ( (str = ssc_data_get_string( pdata, "country" ) ) != 0)
 					csv(row,3) = wxString(str);
 			
 				if ( ssc_data_get_number( pdata, "lat", &val ) )
@@ -880,10 +880,10 @@ bool ScanSolarResourceData( const wxString &db_file, bool show_busy )
 				if ( ssc_data_get_number( pdata, "elev", &val ) )
 					csv(row,7) = wxString::Format("%g", val);
 
-				if ( str = ssc_data_get_string( pdata, "location" ) )
+				if ( (str = ssc_data_get_string( pdata, "location" ) ) != 0)
 					csv(row,8) = wxString(str);
 			
-				if ( str = ssc_data_get_string( pdata, "source" ) )
+				if ( (str = ssc_data_get_string( pdata, "source" ) ) != 0)
 					csv(row,9) = wxString(str);
 					
 				csv(row,10) = ff.GetFullPath();
@@ -999,13 +999,13 @@ bool ScanWindResourceData( const wxString &db_file, bool show_busy )
 
 			csv(row, 0) = ff.GetName();
 
-			if (str = ssc_data_get_string(pdata, "city"))
+			if ((str = ssc_data_get_string(pdata, "city")) != 0)
 				csv(row, 1) = wxString(str);
 
-			if (str = ssc_data_get_string(pdata, "state"))
+			if ((str = ssc_data_get_string(pdata, "state")) != 0)
 				csv(row, 2) = wxString(str);
 
-			if (str = ssc_data_get_string(pdata, "country"))
+			if ((str = ssc_data_get_string(pdata, "country")) != 0)
 				csv(row, 3) = wxString(str);
 
 			if (ssc_data_get_number(pdata, "lat", &val))
@@ -1014,7 +1014,7 @@ bool ScanWindResourceData( const wxString &db_file, bool show_busy )
 			if (ssc_data_get_number(pdata, "lon", &val))
 				csv(row, 5) = wxString::Format("%g", val);
 
-			if (str = ssc_data_get_string(pdata, "location_id"))
+			if ((str = ssc_data_get_string(pdata, "location_id")) != 0)
 				csv(row, 6) = wxString(str);
 
 			if (ssc_data_get_number(pdata, "elev", &val))
@@ -1023,7 +1023,7 @@ bool ScanWindResourceData( const wxString &db_file, bool show_busy )
 			if (ssc_data_get_number(pdata, "year", &val))
 				csv(row, 8) = wxString::Format("%g", val);
 
-			if (str = ssc_data_get_string(pdata, "description"))
+			if ((str = ssc_data_get_string(pdata, "description")) != 0)
 				csv(row, 9) = wxString(str);
 
 			csv(row, 10) = ff.GetFullPath();

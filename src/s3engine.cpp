@@ -973,7 +973,7 @@ void scene::basic_axes_with_ground( int axes_len )
 	poly(-2);
 
 	// change axes to polygons for bsp sorting
-	double axes_thick = 0.01;
+//	double axes_thick = 0.01;
 	// x-axis
 	colors( rgba( 200, 0, 0 ), rgba(200, 0, 0 ) );
 //	box(0, 0, -axes_thick, -axes_thick, 0, axes_len, axes_thick, axes_thick);
@@ -1108,7 +1108,6 @@ bool is_backface( const s3d::polygon3d &p )
 
 void scene::build( transform &tr )
 {
-	size_t i;
 
 #ifdef USE_BSP
 	
@@ -1284,7 +1283,7 @@ double scene::shade( std::vector<shade_result> &results,
 		
 		int id = m_rendered[i]->id;
 		int index = -1;
-		for( int j=0;j<results.size();j++ )
+		for( size_t j=0;j<results.size();j++ )
 			if ( results[j].id == id )
 				index = j;
 
@@ -1822,7 +1821,7 @@ void sun_unit( double sazm, double szen, double sun[3] )
 #if !defined(_INC_CRTDBG) || !defined(_CRTDBG_MAP_ALLOC)
 //    #error Debug CRT functions have not been included!
 #endif
-*/
+
 
 static void debug_out(char* prefix, point3d point)
 {
@@ -1837,7 +1836,7 @@ static void debug_out(char* prefix, BSPTreeNode* node)
 	debug_out("\tCenter", node->m_center);
 	debug_out("\tNormal", node->m_normal);
 }
-
+*/
 #endif
 
 #define BSP_Tolerance 0.0001
@@ -1903,8 +1902,8 @@ BSPTreeNode *BSP::ChooseDividingNode(std::vector<BSPTreeNode> &NodeSet, double m
 	BSPTreeNode *dividingNode = NULL;
 	if (IsConvexSet(NodeSet))
 		return dividingNode;
-	double minR = minRelation;
-	double minRS = minRelationScale;
+//	double minR = minRelation;
+//	double minRS = minRelationScale;
 	int leastSplit = INT_MAX;
 	double bestRelation = 0, relation =0 ;
 	int its = 0;
