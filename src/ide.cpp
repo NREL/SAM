@@ -1551,11 +1551,11 @@ void UIEditorPanel::VarInfoToForm( const wxString &name )
 		m_varUnits->ChangeValue( vv->Units );
 		m_varGroup->ChangeValue( vv->Group );
 		m_varIndexLabels->ChangeValue( wxJoin( vv->IndexLabels, ',' ) );
-		m_varFlagHideLabels->SetValue( (vv->Flags & VF_HIDE_LABELS ) > 0 );
-		m_varFlagParametric->SetValue( (vv->Flags & VF_PARAMETRIC ) > 0);
-		m_varFlagIndicator->SetValue( (vv->Flags & VF_INDICATOR ) > 0);
-		m_varFlagCalculated->SetValue( (vv->Flags & VF_CALCULATED ) > 0);
-		m_varFlagLibrary->SetValue( (vv->Flags & VF_LIBRARY ) > 0 );
+		m_varFlagHideLabels->SetValue(( vv->Flags & VF_HIDE_LABELS ) > 0);
+		m_varFlagParametric->SetValue(( vv->Flags & VF_PARAMETRIC ) > 0);
+		m_varFlagIndicator->SetValue(( vv->Flags & VF_INDICATOR ) > 0);
+		m_varFlagCalculated->SetValue(( vv->Flags & VF_CALCULATED ) > 0);
+		m_varFlagLibrary->SetValue(( vv->Flags & VF_LIBRARY ) > 0 );
 		
 		m_varDefaultValue->SetValue(vv->DefaultValue.AsString(';') );
 	}

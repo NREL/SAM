@@ -148,7 +148,7 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 
 	SimulationDialog tpd( "Scanning...", nthread );
 		
-	for (int i=0;i<list.Count();i++)
+	for (int i=0;i<(int)list.Count();i++)
 	{
 		tpd.Update( 0, (float)i/ (float)list.size() * 100.0f, wxString::Format("%d of %d", (int)(i+1), (int)list.size()  ) );
 		wxYield();	

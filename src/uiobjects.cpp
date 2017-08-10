@@ -361,27 +361,27 @@ public:
 		AFSearchListBox *list = new AFSearchListBox( parent, wxID_ANY );
 		list->Append( Property("Items").GetStringList() );
 		int sel = Property("Selection").GetInteger();
-		if ( sel >= 0 && sel < items.size() ) list->SetSelection( sel );
+		if ( sel >= 0 && sel < (int)items.size() ) list->SetSelection( sel );
 		return AssignNative( list );
 	}
 	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
 	{
 		if ( AFSearchListBox *list = GetNative<AFSearchListBox>() )
 		{
-			if ( id == "Selection" && p->GetInteger() >= 0 && p->GetInteger() < list->Count() )
+			if ( id == "Selection" && p->GetInteger() >= 0 && p->GetInteger() < (int)list->Count() )
 				list->SetSelection( p->GetInteger() );
 			else if ( id == "Items" )
 			{
 				int sel = list->GetSelection();
 				list->Clear();
 				list->Append( p->GetStringList() );
-				if( sel >= 0 && sel < list->Count() ) list->SetSelection( sel );
+				if( sel >= 0 && sel < (int)list->Count() ) list->SetSelection( sel );
 			}
 			else if ( id == "Prompt" )
 				list->SetPromptText( p->GetString() );
 		}
 	}
-	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
+	virtual void Draw( wxWindow *, wxDC &dc, const wxRect &geom )
 	{
 		dc.SetBrush( *wxWHITE_BRUSH );
 		dc.SetPen( wxPen( wxColour(135,135,135) ) );
@@ -400,7 +400,7 @@ public:
 		dc.SetPen( *wxTRANSPARENT_PEN );
 		for (size_t i=0;i<items.size() && y < geom.y+geom.height;i++)
 		{
-			if ( i==sel ) dc.DrawRectangle( geom.x+1, y-1, geom.width-2, dc.GetCharHeight()+2 );
+			if ( (int)i==sel ) dc.DrawRectangle( geom.x+1, y-1, geom.width-2, dc.GetCharHeight()+2 );
 
 			dc.DrawText( items[i], geom.x+3, y );
 			y += dc.GetCharHeight() + 2;
@@ -587,7 +587,7 @@ public:
 		vm->SetColLabels( Property("ColLabels").GetString() );
 		return AssignNative( vm );
 	}
-	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
+	virtual void Draw( wxWindow *, wxDC &dc, const wxRect &geom )
 	{
 		dc.SetBrush( wxBrush( "Forest Green" ) );
 		dc.DrawRectangle( geom.x, geom.y+geom.height/2, 25, geom.height/2 );
@@ -659,7 +659,7 @@ public:
 		ll->SetLibrary( Property("Library").GetString(), Property("Fields").GetString() );
 		return AssignNative( ll );
 	}
-	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
+	virtual void OnPropertyChanged( const wxString &id, wxUIProperty * )
 	{
 		if ( LibraryCtrl *ll = GetNative<LibraryCtrl>() )
 			if ( id == "Library" || id == "Fields" )

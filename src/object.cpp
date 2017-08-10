@@ -205,7 +205,7 @@ bool ObjectCollection::Read( wxInputStream &input )
 	wxDataInputStream in( input );
 
 	wxUint16 code = in.Read16();
-	wxUint16 ver = in.Read16();
+	in.Read16();
 
 	size_t count = in.Read32();
 	for ( size_t i=0;i<count;i++ )
@@ -271,6 +271,7 @@ bool StringHash::Read( wxInputStream &input )
 {
 	wxDataInputStream in(input);
 	wxUint8 code = in.Read8();
+	in.Read8(); // ver
 	size_t n = in.Read32();
 	for (size_t i=0;i<n;i++)
 	{
