@@ -113,7 +113,7 @@
 static SamApp::ver releases[] = {
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
-		{ 2017, 7, 28 }, // Beta release for Nick - expires 9/30/17
+		{ 2017, 8, 11 }, // Latest Beta release
 	{ 2017, 1, 17 }, // public 'ones and sevens' release !
 	{ 2016, 3, 14 }, // public pi-day release!
 	{ 2015, 6, 30 }, // public release
