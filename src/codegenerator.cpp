@@ -637,6 +637,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 
 	wxArrayString code_languages;
 	// ids or just index values from here
+	code_languages.Add("JSON for inputs");
 	code_languages.Add("LK for SDKtool");
 	code_languages.Add("C");
 	code_languages.Add("MATLAB");
@@ -714,65 +715,70 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 
 	CodeGen_Base *cg;
 	wxString err_msg = "";
-	if (lang == 0) // lk
+	if (lang == 0) // JSON
+	{
+		fn += ".json";
+		cg = new CodeGen_json(c, fn);
+	}
+	else if (lang == 1) // lk
 	{
 		fn += ".lk";
 		cg = new CodeGen_lk(c, fn);
 	}
-	else if (lang == 1) // c
+	else if (lang == 2) // c
 	{
 		fn += ".c";
 		cg = new CodeGen_c(c, fn);
 	}
-	else if (lang == 2) // matlab
+	else if (lang == 3) // matlab
 	{
 		fn += ".m";
 		cg = new CodeGen_matlab(c, fn);
 	}
-	else if (lang == 3) // python2
+	else if (lang == 4) // python2
 	{
 		fn += ".py";
 		cg = new CodeGen_python2(c, fn);
 	}
-	else if (lang == 4) // python3
+	else if (lang == 5) // python3
 	{
 		fn += ".py";
 		cg = new CodeGen_python3(c, fn);
 	}
-	else if (lang == 5) // java
+	else if (lang == 6) // java
 	{
 		fn += ".java";
 		cg = new CodeGen_java(c, fn);
 	}
-	else if (lang == 6) // php
+	else if (lang == 7) // php
 	{
 		fn += ".php";
 		cg = new CodeGen_php5(c, fn);
 	}
-	else if (lang == 7) // php
+	else if (lang == 8) // php
 	{
 		fn += ".php";
 		cg = new CodeGen_php7(c, fn);
 	}
-    else if (lang == 8) // Android Studio Android
+    else if (lang == 9) // Android Studio Android
     {
         fn += ".cpp"; // ndk jni file
         cg = new CodeGen_android(c, fn);
     }
 #ifdef __WXMSW__
-	else if (lang == 9) // c#
+	else if (lang == 10) // c#
 	{
 		fn += ".cs";
 		cg = new CodeGen_csharp(c, fn);
 	}
-	else if (lang == 10) // vba
+	else if (lang == 11) // vba
 	{
 		fn += ".bas";
 		cg = new CodeGen_vba(c, fn);
 	}
 #endif
 #ifdef __WXMAC__
-    else if (lang == 9) // Swift iOS
+    else if (lang == 10) // Swift iOS
     {
         fn += ".swift";
         cg = new CodeGen_ios(c, fn);
@@ -7505,4 +7511,117 @@ bool CodeGen_android::Footer()
 	fprintf(m_fp, "}\n");
 	return true;
 }
+
+
+
+
+
+
+
+
+// JSON
+CodeGen_json::CodeGen_json(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
+{
+}
+
+
+bool CodeGen_json::Output(ssc_data_t )
+{
+	return true;
+}
+
+bool CodeGen_json::Input(ssc_data_t p_data, const char *name, const wxString &, const int &)
+{
+	ssc_number_t value;
+	ssc_number_t *p;
+	int len, nr, nc;
+	wxString str_value;
+	double dbl_value;
+	int type = ::ssc_data_query(p_data, name);
+	switch (type)
+	{
+	case SSC_STRING:
+		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
+		str_value.Replace("\\", "/");
+		fprintf(m_fp, "{ \"%s\" : \"%s\" }\n", name, (const char*)str_value.c_str());
+		break;
+	case SSC_NUMBER:
+		::ssc_data_get_number(p_data, name, &value);
+		dbl_value = (double)value;
+		if (dbl_value > 1e38) dbl_value = 1e38;
+		fprintf(m_fp, "{ \"%s\" : %.17g }\n", name, dbl_value);
+		break;
+	case SSC_ARRAY:
+		p = ::ssc_data_get_array(p_data, name, &len);
+		{
+			fprintf(m_fp, "{ \"%s\" : [", name);
+			for (int i = 0; i < (len-1); i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				fprintf(m_fp, " %.17g,", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(m_fp, " %.17g ] }\n", dbl_value);
+		}
+		break;
+	case SSC_MATRIX:
+		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
+		len = nr*nc;
+		{
+			fprintf(m_fp, "{ %s : {", name);
+			for (int k = 0; k < (len - 1); k++)
+			{
+				dbl_value = (double)p[k];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				if ((k > 0) && (k%nc == 0))
+					fprintf(m_fp, " { %.17gf,", dbl_value);
+				else if (k%nc == (nc - 1))
+					fprintf(m_fp, " %.17gf },", dbl_value);
+				else 
+					fprintf(m_fp, " %.17gf, ", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(m_fp, " %.17gf } }\n", dbl_value);
+		}
+		// TODO tables in future
+	}
+	return true;
+}
+
+
+bool CodeGen_json::RunSSCModule(wxString &)
+{
+	return true;
+}
+
+
+bool CodeGen_json::Header()
+{
+	return true;
+}
+
+bool CodeGen_json::CreateSSCModule(wxString &)
+{
+	return true;
+}
+
+bool CodeGen_json::FreeSSCModule()
+{
+	return true;
+}
+
+bool CodeGen_json::SupportingFiles()
+{
+
+	return true;
+}
+
+bool CodeGen_json::Footer()
+{
+	return true;
+}
+
 
