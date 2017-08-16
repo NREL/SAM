@@ -7543,18 +7543,18 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char *name, const wxString &, 
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "{ \"%s\" : \"%s\" }\n", name, (const char*)str_value.c_str());
+		fprintf(m_fp, "	\"%s\" : \"%s\",\n", name, (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "{ \"%s\" : %.17g }\n", name, dbl_value);
+		fprintf(m_fp, "	\"%s\" : %.17g,\n", name, dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
 		{
-			fprintf(m_fp, "{ \"%s\" : [", name);
+			fprintf(m_fp, "	\"%s\" : [", name);
 			for (int i = 0; i < (len-1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -7563,28 +7563,28 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char *name, const wxString &, 
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g ] }\n", dbl_value);
+			fprintf(m_fp, " %.17g ],\n", dbl_value);
 		}
 		break;
 	case SSC_MATRIX:
 		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
 		len = nr*nc;
 		{
-			fprintf(m_fp, "{ %s : {", name);
+			fprintf(m_fp, "	\"%s\" : [ [", name);
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
 				if ((k > 0) && (k%nc == 0))
-					fprintf(m_fp, " { %.17gf,", dbl_value);
+					fprintf(m_fp, " [ %.17g,", dbl_value);
 				else if (k%nc == (nc - 1))
-					fprintf(m_fp, " %.17gf },", dbl_value);
+					fprintf(m_fp, " %.17g ],", dbl_value);
 				else 
-					fprintf(m_fp, " %.17gf, ", dbl_value);
+					fprintf(m_fp, " %.17g, ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17gf } }\n", dbl_value);
+			fprintf(m_fp, " %.17g ] ],\n", dbl_value);
 		}
 		// TODO tables in future
 	}
@@ -7600,6 +7600,7 @@ bool CodeGen_json::RunSSCModule(wxString &)
 
 bool CodeGen_json::Header()
 {
+	fprintf(m_fp, "{\n");
 	return true;
 }
 
@@ -7621,6 +7622,8 @@ bool CodeGen_json::SupportingFiles()
 
 bool CodeGen_json::Footer()
 {
+	fprintf(m_fp, "	\"last value\" : \"here\"\n");
+	fprintf(m_fp, "}\n");
 	return true;
 }
 
