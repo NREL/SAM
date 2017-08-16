@@ -275,11 +275,11 @@ function biopower_metrics()
 // Technology Metrics
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); 
 	if ((financing()!='LCOE Calculator') && (financing() != 'None'))
-		metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );
+		metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
 };
 metrics{ 'PVWatts' } = define() {	pvwatts_metrics(); 
 	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party"))
-		metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );};
+		metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );};
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
 metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };
 metrics{ 'Physical Trough IPH' } = define() { physical_trough_iph_metrics(); };
