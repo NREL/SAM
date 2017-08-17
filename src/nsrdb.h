@@ -104,11 +104,11 @@ private:
 	wxString m_weatherFile;
 	wxString m_weatherFolder;
 	wxString m_addFolder;
-	//	wxComboBox *m_cboFilter;
+	wxComboBox *m_cboFilter;
 	wxComboBox *m_cboWeatherFile;
 	wxCheckListBox *m_chlResources;
 //	wxButton *m_btnChkAll, *m_btnChkFiltered, *m_btnChkNone, *m_btnResources, *m_btnFolder, *m_btnDownload;
-	wxButton *m_btnChkAll, *m_btnChkNone, *m_btnResources, *m_btnFolder;
+	wxButton *m_btnChkAll, *m_btnChkFiltered, *m_btnChkNone, *m_btnResources, *m_btnFolder, *m_btnChkPsm30, *m_btnChkPsm60, *m_btnDownload; // cpg added chkfiltered
 	wxTextCtrl *m_txtFolder;
 	wxTextCtrl *m_txtAddress;
 	wxCheckBox *m_chkFolder;
