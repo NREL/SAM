@@ -302,6 +302,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+private:
+	int m_num_cm;
+	int m_num_outputs;
 };
 
 

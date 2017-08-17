@@ -7522,11 +7522,20 @@ bool CodeGen_android::Footer()
 // JSON
 CodeGen_json::CodeGen_json(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
 {
+	m_num_cm = 0;
+	m_num_outputs = 0;
 }
 
 
 bool CodeGen_json::Output(ssc_data_t )
 {
+	wxString str_value;
+	for (size_t ii = 0; ii < m_data.size(); ii++)
+	{
+		const char *name = (const char*)m_data[ii].var.c_str();
+		fprintf(m_fp, "	\"output_%d\" : \"%s\",\n", m_num_outputs, name);
+		m_num_outputs++;
+	}
 	return true;
 }
 
@@ -7604,8 +7613,10 @@ bool CodeGen_json::Header()
 	return true;
 }
 
-bool CodeGen_json::CreateSSCModule(wxString &)
+bool CodeGen_json::CreateSSCModule(wxString &name)
 {
+	fprintf(m_fp, "	\"compute_module_%d\" : \"%s\",\n", m_num_cm, (const char *)name.c_str());
+	m_num_cm++;
 	return true;
 }
 
@@ -7622,7 +7633,8 @@ bool CodeGen_json::SupportingFiles()
 
 bool CodeGen_json::Footer()
 {
-	fprintf(m_fp, "	\"last value\" : \"here\"\n");
+	fprintf(m_fp, "	\"number_compute_modules\" : %d,\n", m_num_cm);
+	fprintf(m_fp, "	\"number_outputs\" : %d\n", m_num_outputs);
 	fprintf(m_fp, "}\n");
 	return true;
 }
