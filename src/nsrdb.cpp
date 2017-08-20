@@ -108,7 +108,7 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 //	m_dirpicker = new wxDirPickerCtrl(this, ID_dirPicker, dnpath, "...", wxDefaultPosition, wxSize(500, 30), wxDIRP_DIR_MUST_EXIST);
 //	m_btnDownload = new wxButton(this, ID_btnDownload, "Download");
 
-	m_cboFilter = new wxComboBox(this, ID_cboFilter, ""); // populate with returned resources type and interval
+//	m_cboFilter = new wxComboBox(this, ID_cboFilter, ""); // populate with returned resources type and interval
 	m_cboWeatherFile = new wxComboBox(this, ID_cboWeatherFile, ""); // populate with selected resources
 	m_chlResources = new wxCheckListBox(this, ID_chlResources, wxDefaultPosition, wxSize(800,200)); // populate with returned resources
 
@@ -133,8 +133,8 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	szWeatherFile->Add(m_cboWeatherFile, 5, wxALL | wxEXPAND, 2);
 
 	wxBoxSizer *szFilter = new wxBoxSizer(wxHORIZONTAL);
-	szFilter->Add(new wxStaticText(this, wxID_ANY, "Filter list by:"), 0, wxALL , 2);
-	szFilter->Add(m_cboFilter, 5, wxALL | wxEXPAND, 2);
+	szFilter->Add(new wxStaticText(this, wxID_ANY, "Search:"), 0, wxALL , 2);
+//	szFilter->Add(m_cboFilter, 5, wxALL | wxEXPAND, 2);
 
 
 	wxBoxSizer *szChkBtn = new wxBoxSizer(wxHORIZONTAL);
