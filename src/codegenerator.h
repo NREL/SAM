@@ -304,7 +304,7 @@ public:
 	bool Footer();
 private:
 	int m_num_cm;
-	int m_num_outputs;
+	int m_num_metrics;
 };
 
 
