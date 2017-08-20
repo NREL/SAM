@@ -104,7 +104,7 @@ private:
 	wxString m_weatherFile;
 	wxString m_weatherFolder;
 	wxString m_addFolder;
-	wxComboBox *m_cboFilter;
+//	wxComboBox *m_cboFilter;
 	wxComboBox *m_cboWeatherFile;
 	wxCheckListBox *m_chlResources;
 //	wxButton *m_btnChkAll, *m_btnChkFiltered, *m_btnChkNone, *m_btnResources, *m_btnFolder, *m_btnDownload;
