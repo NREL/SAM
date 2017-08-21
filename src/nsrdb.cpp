@@ -56,6 +56,7 @@
 #include <wx/progdlg.h>
 #include <wx/checkbox.h>
 #include <wx/tokenzr.h>
+#include <wx/srchctrl.h>
 //#include <wx/filepicker.h>
 
 #include <wex/easycurl.h>
@@ -68,17 +69,20 @@
 
 enum {
 	ID_txtAddress, ID_txtFolder, ID_cboFilter, ID_cboWeatherFile, ID_chlResources,
-	ID_btnChkAll, ID_btnChkFiltered, ID_btnChkPsm30, ID_btnChkPsm60, ID_btnChkNone, ID_btnResources, ID_btnFolder, ID_btnDownload, ID_dirPicker
+	ID_btnChkAll, ID_btnSelectFiltered, ID_btnUnselectFiltered, ID_btnChkPsm30, ID_btnChkPsm60, ID_btnChkNone, ID_btnResources, ID_btnFolder, ID_search
 };
 
 BEGIN_EVENT_TABLE( NSRDBDialog, wxDialog )
 	EVT_BUTTON(ID_btnChkAll, NSRDBDialog::OnEvt)
-	EVT_BUTTON(ID_btnChkFiltered, NSRDBDialog::OnEvt)
+	EVT_BUTTON(ID_btnSelectFiltered, NSRDBDialog::OnEvt)
+	EVT_BUTTON(ID_btnUnselectFiltered, NSRDBDialog::OnEvt)
 	EVT_BUTTON(ID_btnChkPsm30, NSRDBDialog::OnEvt)
 	EVT_BUTTON(ID_btnChkPsm60, NSRDBDialog::OnEvt)
 	EVT_BUTTON(ID_btnChkNone, NSRDBDialog::OnEvt)
 	EVT_BUTTON(ID_btnResources, NSRDBDialog::OnEvt)
 	EVT_BUTTON(ID_btnFolder, NSRDBDialog::OnEvt)
+	EVT_TEXT(ID_search, NSRDBDialog::OnEvt)
+
 //	EVT_BUTTON(ID_btnDownload, NSRDBDialog::OnEvt)
 	EVT_BUTTON(wxID_OK, NSRDBDialog::OnEvt)
 	EVT_CHECKLISTBOX(ID_chlResources, NSRDBDialog::OnEvt)
@@ -100,11 +104,14 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 
 	m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));
 	m_btnChkAll = new wxButton(this, ID_btnChkAll, "Select all");
-	m_btnChkFiltered = new wxButton(this, ID_btnChkFiltered, "Select filtered"); //cpg
+//	m_btnChkFiltered = new wxButton(this, ID_btnChkFiltered, "Select filtered"); //cpg
 	m_btnChkPsm30 = new wxButton(this, ID_btnChkPsm30, "Select PSM 30-minute"); //cpg
 	m_btnChkPsm60 = new wxButton(this, ID_btnChkPsm60, "Select PSM hourly"); //cpg
-	m_btnChkNone = new wxButton(this, ID_btnChkNone, "Clear all");
+	m_btnChkNone = new wxButton(this, ID_btnChkNone, "Unselect all");
+	m_btnUnselectFiltered = new wxButton(this, ID_btnUnselectFiltered, "Unselect filtered");
+	m_btnSelectFiltered = new wxButton(this, ID_btnSelectFiltered, "Select filtered");
 	m_btnResources = new wxButton(this, ID_btnResources, "Search");
+	m_search = new wxSearchCtrl(this, ID_search, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER | wxTE_PROCESS_TAB);
 //	m_dirpicker = new wxDirPickerCtrl(this, ID_dirPicker, dnpath, "...", wxDefaultPosition, wxSize(500, 30), wxDIRP_DIR_MUST_EXIST);
 //	m_btnDownload = new wxButton(this, ID_btnDownload, "Download");
 
@@ -132,16 +139,19 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	szWeatherFile->Add(new wxStaticText(this, wxID_ANY, "4. Choose file for simulation (optional):"), 0, wxALL , 2);
 	szWeatherFile->Add(m_cboWeatherFile, 5, wxALL | wxEXPAND, 2);
 
-	wxBoxSizer *szFilter = new wxBoxSizer(wxHORIZONTAL);
-	szFilter->Add(new wxStaticText(this, wxID_ANY, "Search:"), 0, wxALL , 2);
+//	wxBoxSizer *szFilter = new wxBoxSizer(wxHORIZONTAL);
+//	szFilter->Add(new wxStaticText(this, wxID_ANY, "Search:"), 0, wxALL , 2);
 //	szFilter->Add(m_cboFilter, 5, wxALL | wxEXPAND, 2);
 
 
 	wxBoxSizer *szChkBtn = new wxBoxSizer(wxHORIZONTAL);
+	szChkBtn->Add(m_search, 0, wxALIGN_CENTER_VERTICAL | wxALL, 2);
+	szChkBtn->Add(m_btnSelectFiltered, 0, wxALL, 2);
+	szChkBtn->Add(m_btnUnselectFiltered, 0, wxALL, 2);
 	szChkBtn->Add(m_btnChkPsm60, 0, wxALL, 2); //cpg was commented out see line above
 	szChkBtn->Add(m_btnChkPsm30, 0, wxALL, 2); //cpg was commented out see line above
-	szChkBtn->Add(szFilter, 0, wxALL | wxEXPAND, 2);
-	szChkBtn->Add(m_btnChkFiltered, 0, wxALL, 2);
+//	szChkBtn->Add(szFilter, 0, wxALL | wxEXPAND, 2);
+//	szChkBtn->Add(m_btnChkFiltered, 0, wxALL, 2);
 	szChkBtn->Add(m_btnChkAll, 0, wxALL, 2);
 	szChkBtn->Add(m_btnChkNone, 0, wxALL, 2);
 
@@ -182,6 +192,41 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 			break;
 		case ID_btnResources:
 			GetResources();
+			break;
+			/*
+		case ID_btnSelectFiltered:
+			{
+				for (size_t i = 0; i < m_chlResources->GetCount(); i++)
+				{
+					if (m_chlResources->GetItem(i)->)
+						m_chlResources->Check(i, true);
+					else
+						m_chlResources->Check(i, false);
+				}
+			}
+			break;
+			*/
+		case ID_btnChkPsm30:
+			{
+				for (size_t i = 0; i < m_chlResources->GetCount(); i++)
+				{
+					if (m_chlResources->GetString(i).Lower().Contains("_30_"))
+						m_chlResources->Check(i, true);
+					else
+						m_chlResources->Check(i, false);
+				}
+			}
+			break;
+		case ID_btnChkPsm60:
+			{
+				for (size_t i = 0; i < m_chlResources->GetCount(); i++)
+				{
+					if (m_chlResources->GetString(i).Lower().Contains("_60_"))
+						m_chlResources->Check(i, true);
+					else
+						m_chlResources->Check(i, false);
+				}
+			}
 			break;
 		case ID_btnChkAll:
 			{
@@ -225,8 +270,11 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 		case wxID_OK:
 			{
 				wxEasyCurl curl;
-				wxArrayInt arychecked;
-				unsigned int num = m_chlResources->GetCheckedItems(arychecked);
+				//wxArrayInt arychecked;
+				//unsigned int num = m_chlResources->GetCheckedItems(arychecked);
+				int num = 0;
+				for (size_t i = 0; i < m_links.size(); i++)
+					if (m_links[i].is_selected) num++;
 				if (num > 0)
 				{
 					bool stopped = false;
@@ -238,44 +286,49 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 					pdlg.Show();
 
 					//for (int i = 0; i < m_chlResources->GetCount(); i++)
-					for (size_t i = 0; i < arychecked.Count() && !stopped; i++)
+//					for (size_t i = 0; i < arychecked.Count() && !stopped; i++)
+					for (size_t i = 0; i < m_links.size() && !stopped; i++)
 					{
 						//					if (m_chlResources->IsChecked(i))
 						//					{
-						int ndx = arychecked[i];
-						wxString url = m_links[ndx].URL;
-						wxString curstr = m_chlResources->GetString(ndx);
-						//Download the weather file
-						pdlg.Update(i+1, "Downloading " + curstr + " from NSRDB...");
-						//						bool ok = curl.Get(url, "Downloading " + curstr + " from NSRDB...", SamApp::Window());
-						bool ok = curl.Get(url);
-						if (!ok)
+						//int ndx = arychecked[i];
+						if (m_links[i].is_selected)
 						{
-							wxMessageBox("Failed to download " + curstr + " from web service.");
-							stopped = true;
-						}
-						else
-						{
-							if (!wxDirExists(m_txtFolder->GetValue()))
-								//							if (!wxDirExists(m_dirpicker->GetTextCtrlValue()))
+							wxString url = m_links[i].URL;
+							wxString curstr = m_links[i].display;
+							//wxString curstr = m_chlResources->GetString(ndx);
+							//Download the weather file
+							pdlg.Update(i+1, "Downloading " + curstr + " from NSRDB...");
+							//						bool ok = curl.Get(url, "Downloading " + curstr + " from NSRDB...", SamApp::Window());
+							bool ok = curl.Get(url);
+							if (!ok)
 							{
-								wxMessageBox("Please select a valid folder for downloads.");
+								wxMessageBox("Failed to download " + curstr + " from web service.");
 								stopped = true;
 							}
 							else
 							{
-								wxString fn = curstr + ".csv";
-								fn = m_txtFolder->GetValue() + "/" + fn;
-								if (!curl.WriteDataToFile(fn))
+								if (!wxDirExists(m_txtFolder->GetValue()))
+									//							if (!wxDirExists(m_dirpicker->GetTextCtrlValue()))
 								{
-									wxMessageBox("Failed to write " + fn);
+									wxMessageBox("Please select a valid folder for downloads.");
 									stopped = true;
 								}
+								else
+								{
+									wxString fn = curstr + ".csv";
+									fn = m_txtFolder->GetValue() + "/" + fn;
+									if (!curl.WriteDataToFile(fn))
+									{
+										wxMessageBox("Failed to write " + fn);
+										stopped = true;
+									}
+								}
 							}
+							if (pdlg.WasCancelled())
+								stopped = true;
+							//					}
 						}
-						if (pdlg.WasCancelled())
-							stopped = true;
-						//					}
 					}
 					if (!stopped)
 					{
