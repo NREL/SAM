@@ -58,6 +58,7 @@ class wxCheckListBox;
 class wxButton;
 class wxTextCtrl;
 class wxCheckbox;
+class wxSearchCtrl;
 //class wxDirPickerCtrl;
 //class wxFileDirPickerEvent;
 
@@ -86,10 +87,14 @@ public:
 		wxString interval;
 		wxString location;
 		wxString display;
+		bool is_selected;
+		bool is_visible;
 		LinkInfo(wxString &_n, wxString &_dn, wxString &_t, wxString &_y, wxString &_u, wxString &_i, wxString &_l)
 			: name(_n), displayName(_dn), type(_t), year(_y), URL(_u), interval(_i), location(_l)
 		{
 			display = location + "_" + name + "_" + type + "_" + interval + "_" + year;
+			is_visible = true;
+			is_selected = false;
 		}
 	};
 
@@ -104,14 +109,13 @@ private:
 	wxString m_weatherFile;
 	wxString m_weatherFolder;
 	wxString m_addFolder;
-//	wxComboBox *m_cboFilter;
 	wxComboBox *m_cboWeatherFile;
 	wxCheckListBox *m_chlResources;
-//	wxButton *m_btnChkAll, *m_btnChkFiltered, *m_btnChkNone, *m_btnResources, *m_btnFolder, *m_btnDownload;
-	wxButton *m_btnChkAll, *m_btnChkFiltered, *m_btnChkNone, *m_btnResources, *m_btnFolder, *m_btnChkPsm30, *m_btnChkPsm60, *m_btnDownload; // cpg added chkfiltered
+	wxButton *m_btnChkAll, *m_btnChkNone,*m_btnUnselectFiltered, *m_btnSelectFiltered, *m_btnResources, *m_btnFolder, *m_btnChkPsm30, *m_btnChkPsm60, *m_btnDownload; 
 	wxTextCtrl *m_txtFolder;
 	wxTextCtrl *m_txtAddress;
 	wxCheckBox *m_chkFolder;
+	wxSearchCtrl *m_search;
 //	wxDirPickerCtrl *m_dirpicker;
 
 	DECLARE_EVENT_TABLE()
