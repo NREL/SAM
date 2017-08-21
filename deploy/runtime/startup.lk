@@ -316,9 +316,12 @@ function setup_single_owner_pages(degradation)
                {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]], 
            { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
 //  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
-    addpage( [[ {'name'='Financial TOD Factors', 'caption'='TOD Factors by Schedule'}],
+/*    addpage( [[ {'name'='Financial TOD Factors', 'caption'='TOD Factors by Schedule'}],
 			[ {'name'='Financial TOD Factors Timestep', 'caption'='TOD Factors by Time Step' }],],
-           {  'sidebar'='Time of Delivery Factors','help'='tod_factors', 'exclusive_var'='ppa_multiplier_model' } );
+           {  'sidebar'='Time of Delivery Factors','help'='tod_factors', 'exclusive_var'='ppa_multiplier_model' } );*/
+    addpage( [[ 'Financial TOD Factors Test' ]],
+           {  'sidebar'='Time of Delivery Factors','help'='tod_factors' } );
+           
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );					
   addpage( [['Financial Depreciation Detailed' ]], 
