@@ -643,6 +643,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline('cost_equity_closing',0,-1,0);
 	cfline('cost_debt_closing',0,-1,0);
 	cfline('cost_debt_upfront',0,-1,0);
+	cfline('sponsor_aftertax_development', 0,-1,0);//"Development Fee");
 	cfline('cost_other_financing',0,-1,0);
 	cfline('construction_financing_cost',0,-1,0);
 	cfline( 'ibi_total', 0);
