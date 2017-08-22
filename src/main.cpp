@@ -208,7 +208,7 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 END_EVENT_TABLE()
 
 MainWindow::MainWindow()
-	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" (Open Source)") + SamApp::VersionStr(), 
+	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" (Open Source) ") + SamApp::VersionStr(), 
 		wxDefaultPosition, wxScaleSize( 1100, 700 ) )
 {
 #ifdef __WXMSW__
@@ -1286,7 +1286,7 @@ public:
 		dc.DrawText( "System Advisor Model", wxScalePoint( wxPoint(35, 65), scaleX, scaleY ) );
 		
 		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 18 ) );
-		dc.DrawText( "(Open Source)" + SamApp::VersionStr(), wxScalePoint(wxPoint(35, 135),scaleX,scaleY));
+		dc.DrawText( "(Open Source) " + SamApp::VersionStr(), wxScalePoint(wxPoint(35, 135),scaleX,scaleY));
 		dc.DrawText( m_message, wxScalePoint( wxPoint(35, 275), scaleX, scaleY) );
 
 	}
