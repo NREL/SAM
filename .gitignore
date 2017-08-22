@@ -326,3 +326,9 @@ deploy/linux_64/GtkTheme/gtk-2\.0/
 build_linux/sam\.bin
 
 deploy/linux_64/
+
+build_linux/install0
+
+build_linux/sam\.deploy\.tar\.gz
+
+build_linux/sam\.deploy/linux_64/sam\.bin
