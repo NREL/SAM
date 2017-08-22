@@ -311,3 +311,15 @@ resource/splash*
 
 
 
+
+build_linux/sam\.deploy/libraries/
+
+build_linux/sam\.deploy/linux_64/GtkTheme/gtk-2\.0/
+
+build_linux/sam\.deploy/runtime/
+
+build_linux/sam\.deploy/solar_resource/
+
+build_linux/sam\.deploy/wind_resource/
+
+deploy/linux_64/GtkTheme/gtk-2\.0/
