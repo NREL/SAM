@@ -295,7 +295,6 @@ __pycache__/
 *.lib
 *.dll
 *.d
-*.bin
 *.mod
 *.run
 
@@ -323,3 +322,7 @@ build_linux/sam\.deploy/solar_resource/
 build_linux/sam\.deploy/wind_resource/
 
 deploy/linux_64/GtkTheme/gtk-2\.0/
+
+build_linux/sam\.bin
+
+deploy/linux_64/
