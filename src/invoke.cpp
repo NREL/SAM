@@ -1924,7 +1924,7 @@ void fcall_group_write(lk::invoke_t &cxt)
 			}
 		}
 	}
-	cxt.result().assign(csv.WriteFile(filename.Lower()) ? 1.0 : 0.0);
+	cxt.result().assign(csv.WriteFile(filename) ? 1.0 : 0.0);
 }
 
 
@@ -1940,7 +1940,7 @@ void fcall_group_read(lk::invoke_t &cxt)
 
 	wxCSVData csv;
 	int row = 0;
-	bool ret_val = csv.ReadFile(filename.Lower());
+	bool ret_val = csv.ReadFile(filename);
 	if (ret_val)
 	{
 		wxArrayString errors;
