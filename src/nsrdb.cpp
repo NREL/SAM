@@ -193,67 +193,88 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 		case ID_btnResources:
 			GetResources();
 			break;
-			/*
-		case ID_btnSelectFiltered:
+		case ID_search:
 			{
-				for (size_t i = 0; i < m_chlResources->GetCount(); i++)
+				for (size_t i = 0; i < m_links.size(); i++)
 				{
-					if (m_chlResources->GetItem(i)->)
-						m_chlResources->Check(i, true);
+					if (m_links[i].display.Lower().Contains(m_search->GetValue().Lower()))
+						m_links[i].is_visible = true;
 					else
-						m_chlResources->Check(i, false);
+						m_links[i].is_visible = false;
 				}
+				RefreshList();
 			}
 			break;
-			*/
+		case ID_btnSelectFiltered:
+			{
+				for (size_t i = 0; i < m_links.size(); i++)
+				{
+					if (m_links[i].is_visible)
+						m_links[i].is_selected = true;
+//					else
+//						m_links[i].is_selected = false;
+				}
+				RefreshList();
+			}
+			break;
+		case ID_btnUnselectFiltered:
+			{
+				for (size_t i = 0; i < m_links.size(); i++)
+				{
+					if (m_links[i].is_visible)
+						m_links[i].is_selected = false;
+//					else
+//						m_links[i].is_selected = true;
+				}
+				RefreshList();
+			}
+			break;
 		case ID_btnChkPsm30:
 			{
-				for (size_t i = 0; i < m_chlResources->GetCount(); i++)
+				for (size_t i = 0; i < m_links.size(); i++)
 				{
-					if (m_chlResources->GetString(i).Lower().Contains("_30_"))
-						m_chlResources->Check(i, true);
+					if ((m_links[i].name.Lower() == "psm") && (m_links[i].interval.Lower() == "30"))
+						m_links[i].is_selected = true;
 					else
-						m_chlResources->Check(i, false);
+						m_links[i].is_selected = false;
 				}
+				RefreshList();
 			}
 			break;
 		case ID_btnChkPsm60:
 			{
-				for (size_t i = 0; i < m_chlResources->GetCount(); i++)
+				for (size_t i = 0; i < m_links.size(); i++)
 				{
-					if (m_chlResources->GetString(i).Lower().Contains("_60_"))
-						m_chlResources->Check(i, true);
+					if ((m_links[i].name.Lower() == "psm") && (m_links[i].interval.Lower() == "60"))
+						m_links[i].is_selected = true;
 					else
-						m_chlResources->Check(i, false);
+						m_links[i].is_selected = false;
 				}
+				RefreshList();
 			}
 			break;
 		case ID_btnChkAll:
 			{
-				for (size_t i = 0; i < m_chlResources->GetCount(); i++)
-					m_chlResources->Check(i, true);
+				for (size_t i = 0; i < m_links.size(); i++)
+					m_links[i].is_selected = true;
+				RefreshList();
 			}
 			break;
 		case ID_btnChkNone:
 			{
-				for (size_t i = 0; i < m_chlResources->GetCount(); i++)
-					m_chlResources->Check(i,false);
+				for (size_t i = 0; i < m_links.size(); i++)
+					m_links[i].is_selected = false;
+				RefreshList();
 			}
 			break;
 		case ID_chlResources:
 			{
-				wxArrayInt arychecked;
-				unsigned int num = m_chlResources->GetCheckedItems(arychecked);
-				if (num > 0)
+				for (size_t i = 0; i < m_links.size(); i++)
 				{
-					m_cboWeatherFile->Clear();
-					m_cboWeatherFile->Freeze();
-					for (size_t i = 0; i < arychecked.Count(); i++)
-					{
-						m_cboWeatherFile->Insert(m_links[arychecked[i]].display, i);
-					}
-					m_cboWeatherFile->Thaw();
+					if (m_links[i].display == m_chlResources->GetString(e.GetInt()))
+						m_links[i].is_selected = true;
 				}
+				RefreshList();
 			}
 			break;
 		case ID_btnFolder:
@@ -270,81 +291,70 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 		case wxID_OK:
 			{
 				wxEasyCurl curl;
-				//wxArrayInt arychecked;
-				//unsigned int num = m_chlResources->GetCheckedItems(arychecked);
-				int num = 0;
+				wxArrayInt arychecked;
 				for (size_t i = 0; i < m_links.size(); i++)
-					if (m_links[i].is_selected) num++;
-				if (num > 0)
+				{
+					if (m_links[i].is_selected) 
+					{
+						arychecked.push_back((int)i);
+					}
+				}
+				if (arychecked.Count() > 0)
 				{
 					bool stopped = false;
-					wxProgressDialog pdlg("Downloading NSRDB Data", "", num, this,
+					wxProgressDialog pdlg("Downloading NSRDB Data", "", (int)arychecked.Count(), this,
 						wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
 #ifdef __WXMSW__
 					pdlg.SetIcon(wxICON(appicon));
 #endif
 					pdlg.Show();
 
-					//for (int i = 0; i < m_chlResources->GetCount(); i++)
-//					for (size_t i = 0; i < arychecked.Count() && !stopped; i++)
-					for (size_t i = 0; i < m_links.size() && !stopped; i++)
+					for (size_t i = 0; i < arychecked.Count() && !stopped; i++)
 					{
-						//					if (m_chlResources->IsChecked(i))
-						//					{
-						//int ndx = arychecked[i];
-						if (m_links[i].is_selected)
+						int ndx = arychecked[i];
+						wxString url = m_links[ndx].URL;
+						wxString curstr = m_links[ndx].display;
+						//Download the weather file
+						pdlg.Update(i+1, "Downloading " + curstr + " from NSRDB...");
+						//						bool ok = curl.Get(url, "Downloading " + curstr + " from NSRDB...", SamApp::Window());
+						bool ok = curl.Get(url);
+						if (!ok)
 						{
-							wxString url = m_links[i].URL;
-							wxString curstr = m_links[i].display;
-							//wxString curstr = m_chlResources->GetString(ndx);
-							//Download the weather file
-							pdlg.Update(i+1, "Downloading " + curstr + " from NSRDB...");
-							//						bool ok = curl.Get(url, "Downloading " + curstr + " from NSRDB...", SamApp::Window());
-							bool ok = curl.Get(url);
-							if (!ok)
+							wxMessageBox("Failed to download " + curstr + " from web service.");
+							stopped = true;
+						}
+						else
+						{
+							if (!wxDirExists(m_txtFolder->GetValue()))
+								//							if (!wxDirExists(m_dirpicker->GetTextCtrlValue()))
 							{
-								wxMessageBox("Failed to download " + curstr + " from web service.");
+								wxMessageBox("Please select a valid folder for downloads.");
 								stopped = true;
 							}
 							else
 							{
-								if (!wxDirExists(m_txtFolder->GetValue()))
-									//							if (!wxDirExists(m_dirpicker->GetTextCtrlValue()))
+								wxString fn = curstr + ".csv";
+								fn = m_txtFolder->GetValue() + "/" + fn;
+								if (!curl.WriteDataToFile(fn))
 								{
-									wxMessageBox("Please select a valid folder for downloads.");
+									wxMessageBox("Failed to write " + fn);
 									stopped = true;
 								}
-								else
-								{
-									wxString fn = curstr + ".csv";
-									fn = m_txtFolder->GetValue() + "/" + fn;
-									if (!curl.WriteDataToFile(fn))
-									{
-										wxMessageBox("Failed to write " + fn);
-										stopped = true;
-									}
-								}
 							}
-							if (pdlg.WasCancelled())
-								stopped = true;
-							//					}
 						}
+						if (pdlg.WasCancelled())
+							stopped = true;
 					}
 					if (!stopped)
 					{
 						m_weatherFolder = m_txtFolder->GetValue();
 						m_weatherFile = "";
-// cpg						m_addFolder = "no";
-// cpg						if (m_chkFolder->IsChecked())
-// cpg						{ // update solar resource library
-							wxString buf;
-							wxArrayString paths;
-							if (SamApp::Settings().Read("solar_data_paths", &buf))
-								paths = wxStringTokenize(buf, ";");
-							paths.Add(m_weatherFolder);
-							SamApp::Settings().Write("solar_data_paths", wxJoin(paths, ';'));
-// cpg							m_addFolder = "yes";
-// cpg						}
+						wxString buf;
+						wxArrayString paths;
+						if (SamApp::Settings().Read("solar_data_paths", &buf))
+							paths = wxStringTokenize(buf, ";");
+						paths.Add(m_weatherFolder);
+						SamApp::Settings().Write("solar_data_paths", wxJoin(paths, ';'));
 						if (m_cboWeatherFile->GetStringSelection().Len() > 0)
 						{
 							wxString fn = m_cboWeatherFile->GetStringSelection() + ".csv";
@@ -359,6 +369,30 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 	}
 }
 
+void NSRDBDialog::RefreshList()
+{
+	// refresh resource list and combo box for selected weather file
+	m_chlResources->Freeze();
+	m_cboWeatherFile->Freeze();
+	m_chlResources->Clear();
+	m_cboWeatherFile->Clear();
+	for (size_t i = 0; i < m_links.size(); i++)
+	{
+		if (m_links[i].is_visible)
+		{
+			int ndx = m_chlResources->Append(m_links[i].display);
+			if (m_links[i].is_selected)
+			{
+				m_cboWeatherFile->Append(m_links[i].display);
+				m_chlResources->Check(ndx, true);
+			}
+			else
+				m_chlResources->Check(ndx, false);
+		}
+	}
+	m_cboWeatherFile->Thaw();
+	m_chlResources->Thaw();
+}
 
 void NSRDBDialog::GetResources()
 {
@@ -458,12 +492,5 @@ void NSRDBDialog::GetResources()
 			m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, locname));
 		}
 	}
-
-	m_chlResources->Freeze();
-	for (size_t i = 0; i < m_links.size(); i++)
-	{
-		m_chlResources->Insert(m_links[i].display, i);
-	}
-	m_chlResources->Thaw();
-
+	RefreshList();
 }
