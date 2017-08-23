@@ -79,13 +79,13 @@ public:
 
 	struct LinkInfo
 	{
-		wxString name;
+		wxString name; // dataset - e.g. psm
 		wxString displayName;
-		wxString type;
+		wxString type;  // e.g. satellite
 		wxString year; // number or "tmy"
 		wxString URL;
-		wxString interval;
-		wxString location;
+		wxString interval; // 30 or 60 
+		wxString location; // lat and lon
 		wxString display;
 		bool is_selected;
 		bool is_visible;
@@ -104,6 +104,7 @@ private:
 //	void OnDir(wxFileDirPickerEvent &);
 
 	void GetResources();
+	void RefreshList();
 
 	std::vector<LinkInfo> m_links;
 	wxString m_weatherFile;
