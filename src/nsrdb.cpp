@@ -272,7 +272,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				for (size_t i = 0; i < m_links.size(); i++)
 				{
 					if (m_links[i].display == m_chlResources->GetString(e.GetInt()))
-						m_links[i].is_selected = true;
+						m_links[i].is_selected = m_chlResources->IsChecked(e.GetInt());
 				}
 				RefreshList();
 			}
