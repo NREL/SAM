@@ -16,19 +16,23 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 # Quick Steps for Building SAM
 
-These are the general quick steps you need to follow to set up your computer for developing SAM. For more detailed instructions specific to [Windows](https://github.com/NREL/SAM/wiki/Windows-Build-Instructions), [Mac](https://github.com/NREL/SAM/wiki/Mac-Build-Instructions), and [Linux](https://github.com/NREL/SAM/wiki/Linux-Build-Instructions) see the [wiki](https://github.com/NREL/SAM/wiki).
+These are the general quick steps you need to follow to set up your computer for developing SAM. For more detailed instructions see the [wiki](https://github.com/NREL/SAM/wiki), with specific instructions for:
+
+* [Windows](https://github.com/NREL/SAM/wiki/Windows-Build-Instructions)
+* [Mac](https://github.com/NREL/SAM/wiki/Mac-Build-Instructions)
+* [Linux](https://github.com/NREL/SAM/wiki/Linux-Build-Instructions)
 
 1. Set up your development tools:
 
 * Windows: Visual Studio 2013 Professional or Express edition. Download from list of older versions at https://www.visualstudio.com/vs/older-downloads (requires Microsoft ID and password).
 * Mac: Apple Command Line Tools, available at https://developer.apple.com/download/more/ (requires Apple ID and password).
-* Linux
+* Linux: g++ compiler available at http://www.cprogramming.com/g++.html or as part of the Linux distribution.
 
 2. Download the wxWidgets 3.1.0 source code for your operating system from https://www.wxwidgets.org/downloads/.
 
 3. Build wxWidgets.
 
-5. Create the WXMSW3 environment variable on your computer (Windows) ore create a dynamic link (Mac and Linux) to point to the wxWidgets installation folder.
+5. In Windows, create the WXMSW3 environment variable on your computer to point to the wxWidgets installation folder, or in MacOS and Linux, create the dynamic link `/usr/<USERNAME>/local/bin/wx-config-3` to point to `/path/to/wxWidgets/bin/wx-config`.
 
 6. As you did for wxWidgets, for each of the following projects, clone (download) the repository, build the project, and then (Windows only) create an environment variable pointing to the project folder. Build the projects in the following order, and assign the environment variable for each project before you build the next one:
 
