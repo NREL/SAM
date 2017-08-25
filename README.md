@@ -18,15 +18,15 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 These are the general quick steps you need to follow to set up your computer for developing SAM. For more detailed instructions see the [wiki](https://github.com/NREL/SAM/wiki), with specific instructions for:
 
-* [Windows](https://github.com/NREL/SAM/wiki/Windows-Build-Instructions)
-* [Mac](https://github.com/NREL/SAM/wiki/Mac-Build-Instructions)
-* [Linux](https://github.com/NREL/SAM/wiki/Linux-Build-Instructions)
+  * [Windows](https://github.com/NREL/SAM/wiki/Windows-Build-Instructions)
+  * [Mac](https://github.com/NREL/SAM/wiki/Mac-Build-Instructions)
+  * [Linux](https://github.com/NREL/SAM/wiki/Linux-Build-Instructions)
 
 1. Set up your development tools:
 
-* Windows: Visual Studio 2013 Professional or Express edition. Download from list of older versions at https://www.visualstudio.com/vs/older-downloads (requires Microsoft ID and password).
-* Mac: Apple Command Line Tools, available at https://developer.apple.com/download/more/ (requires Apple ID and password).
-* Linux: g++ compiler available at http://www.cprogramming.com/g++.html or as part of the Linux distribution.
+  * Windows: Visual Studio 2013 Professional or Express edition. Download from list of older versions at https://www.visualstudio.com/vs/older-downloads (requires Microsoft ID and password).
+  * Mac: Apple Command Line Tools, available at https://developer.apple.com/download/more/ (requires Apple ID and password).
+  * Linux: g++ compiler available at http://www.cprogramming.com/g++.html or as part of the Linux distribution.
 
 2. Download the wxWidgets 3.1.0 source code for your operating system from https://www.wxwidgets.org/downloads/.
 
