@@ -349,12 +349,20 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 					{
 						m_weatherFolder = m_txtFolder->GetValue();
 						m_weatherFile = "";
-						wxString buf;
-						wxArrayString paths;
-						if (SamApp::Settings().Read("solar_data_paths", &buf))
-							paths = wxStringTokenize(buf, ";");
-						paths.Add(m_weatherFolder);
-						SamApp::Settings().Write("solar_data_paths", wxJoin(paths, ';'));
+						wxString dnload_path;
+						SamApp::Settings().Read("solar_download_path", &dnload_path);
+						if (dnload_path != m_weatherFolder)
+						{
+							wxArrayString paths;
+							wxString buf;
+							if (SamApp::Settings().Read("solar_data_paths", &buf))
+								paths = wxStringTokenize(buf, ";");
+							if (paths.Index(m_weatherFolder) == wxNOT_FOUND)
+							{
+								paths.Add(m_weatherFolder);
+								SamApp::Settings().Write("solar_data_paths", wxJoin(paths, ';'));
+							}
+						}
 						if (m_cboWeatherFile->GetStringSelection().Len() > 0)
 						{
 							wxString fn = m_cboWeatherFile->GetStringSelection() + ".csv";
@@ -439,6 +447,7 @@ void NSRDBDialog::GetResources()
 	//Create URL for weather file download
 	wxString url;
 	url = SamApp::WebApi("nsrdb_list_all");
+	url.Replace("yourapikey", "<SAMAPIKEY>");
 	url.Replace("<LAT>", wxString::Format("%lg", lat), 1);
 	url.Replace("<LON>", wxString::Format("%lg", lon), 1);
 
@@ -488,8 +497,12 @@ void NSRDBDialog::GetResources()
 			URL.Replace("yourapikey", "<SAMAPIKEY>");
 			URL.Replace("youremail", "<USEREMAIL>");
 			wxString interval = links_list[i_links]["interval"].AsString();
-//			wxLogStatus("link info: %s, %s, %s, %s, %d, %s", x.displayName.c_str(), x.name.c_str(), x.type.c_str(), x.year.c_str(), x.interval, x.URL.c_str());
-			m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, locname));
+			// ERROR in API 8/25/17 name=mts2-tmy returns incorrect link with names=tmy instead of names=tmy3 per https://developer.nrel.gov/docs/solar/nsrdb/mts2_data_download/
+			if (name.Lower() == "mts2-tmy") URL.Replace("names=tmy&", "names=tmy3&");
+//			wxLogStatus("link info: %s, %s, %s, %s, %d, %s", displayName.c_str(), name.c_str(), type.c_str(), year.c_str(), interval, URL.c_str());
+			// SAM does not recognize spectral datasets at this time
+			if (name.Lower() != "spectral-tmy") 
+				m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, locname));
 		}
 	}
 	RefreshList();
