@@ -96,6 +96,49 @@ public:
 			is_visible = true;
 			is_selected = false;
 		}
+		// for sorting
+		bool operator < (const LinkInfo& li)
+		{
+			// Sort per name (psm, mts3, mts2, mts1, suny) and year (tmy, yyyy) and interval 60, 30
+			if (name == li.name)
+			{
+				if (year == li.year)
+					return ( atoi(interval.c_str()) > atoi(li.interval.c_str()));
+				else if (year.Contains("tmy"))
+					return true;
+				else if (li.year.Contains("tmy"))
+					return false;
+				else
+					return ( atoi(year.c_str()) > atoi(li.year.c_str()));
+			}
+			else if (name.Lower() == "psm")
+				return true;
+			else if (li.name.Lower() == "psm")
+				return false;
+			else if (name.Lower() == "mts3")
+				return true;
+			else if (li.name.Lower() == "mts3")
+				return false;
+			// not sure why mts2-tmy and mts2 are two separate types.
+			else if (name.Lower() == "mts2-tmy")
+				return true;
+			else if (li.name.Lower() == "mts2-tmy")
+				return false;
+			else if (name.Lower() == "mts2")
+				return true;
+			else if (li.name.Lower() == "mts2")
+				return false;
+			else if (name.Lower() == "mts1")
+				return true;
+			else if (li.name.Lower() == "mts1")
+				return false;
+			else if (name.Lower() == "suny")
+				return true;
+			else if (li.name.Lower() == "suny")
+				return false;
+			else
+				return true;
+		}
 	};
 
 
@@ -105,6 +148,7 @@ private:
 
 	void GetResources();
 	void RefreshList();
+//	bool LinkSortOrder(const LinkInfo &li1, const LinkInfo &li2);
 
 	std::vector<LinkInfo> m_links;
 	wxString m_weatherFile;

@@ -47,6 +47,8 @@
 *  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************************************/
 
+#include<algorithm>
+
 #include <wx/checklst.h>
 #include <wx/combobox.h>
 #include <wx/textctrl.h>
@@ -191,7 +193,11 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 			SamApp::ShowHelp("download_weather_file");
 			break;
 		case ID_btnResources:
-			GetResources();
+			{
+				GetResources();
+				std::sort(m_links.begin(),m_links.end());
+				RefreshList();
+			}
 			break;
 		case ID_search:
 			{
@@ -211,8 +217,6 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				{
 					if (m_links[i].is_visible)
 						m_links[i].is_selected = true;
-//					else
-//						m_links[i].is_selected = false;
 				}
 				RefreshList();
 			}
@@ -223,8 +227,6 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				{
 					if (m_links[i].is_visible)
 						m_links[i].is_selected = false;
-//					else
-//						m_links[i].is_selected = true;
 				}
 				RefreshList();
 			}
@@ -402,6 +404,46 @@ void NSRDBDialog::RefreshList()
 	m_chlResources->Thaw();
 }
 
+/*
+bool NSRDBDialog::LinkSortOrder(const LinkInfo &li1, const LinkInfo &li2)
+{
+	// Sort per name (psm, mts3, mts2, mts1, suny) and year (tmy, yyyy) and interval 60, 30
+	if (li1.name == li2.name)
+	{
+		if (li1.year == li2.year)
+			return ( atoi(li2.interval.c_str()) < atoi(li2.interval.c_str()));
+		else if (li1.year.Left(3).Lower() == "tmy")
+			return true;
+		else if (li2.year.Left(3).Lower() == "tmy")
+			return false;
+		else
+			return ( atoi(li2.year.c_str()) < atoi(li2.year.c_str()));
+	}
+	else if (li1.name.Lower() == "psm")
+		return true;
+	else if (li2.name.Lower() == "psm")
+		return false;
+	else if (li1.name.Lower() == "mts3")
+		return true;
+	else if (li2.name.Lower() == "mts3")
+		return false;
+	else if (li1.name.Lower() == "mts2")
+		return true;
+	else if (li2.name.Lower() == "mts2")
+		return false;
+	else if (li1.name.Lower() == "mts1")
+		return true;
+	else if (li2.name.Lower() == "mts1")
+		return false;
+	else if (li1.name.Lower() == "suny")
+		return true;
+	else if (li2.name.Lower() == "suny")
+		return false;
+	else
+		return true;
+}
+*/
+
 void NSRDBDialog::GetResources()
 {
 	// hit api with address and return available resources
@@ -505,5 +547,4 @@ void NSRDBDialog::GetResources()
 				m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, locname));
 		}
 	}
-	RefreshList();
 }
