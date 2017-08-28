@@ -97,7 +97,7 @@ public:
 			is_selected = false;
 		}
 		// for sorting
-		bool operator < (const LinkInfo& li)
+		bool operator < (const LinkInfo &li) const
 		{
 			// Sort per name (psm, mts3, mts2, mts1, suny) and year (tmy, yyyy) and interval 60, 30
 			if (name == li.name)
