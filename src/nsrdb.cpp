@@ -196,6 +196,8 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 			{
 				GetResources();
 				std::sort(m_links.begin(),m_links.end());
+				// select first item (should be tmy)
+				if (m_links.size() > 0) m_links[0].is_selected = true;
 				RefreshList();
 			}
 			break;
@@ -289,7 +291,6 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				}
 			}
 			break;
-//		case ID_btnDownload:
 		case wxID_OK:
 			{
 				wxEasyCurl curl;
@@ -304,74 +305,74 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				if (arychecked.Count() > 0)
 				{
 					bool stopped = false;
-					wxProgressDialog pdlg("Downloading NSRDB Data", "", (int)arychecked.Count(), this,
-						wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
-#ifdef __WXMSW__
-					pdlg.SetIcon(wxICON(appicon));
-#endif
-					pdlg.Show();
-
-					for (size_t i = 0; i < arychecked.Count() && !stopped; i++)
+					// check for valid download folder 
+					wxString default_dnload_path;
+					SamApp::Settings().Read("solar_download_path", &default_dnload_path);
+					m_weatherFolder = m_txtFolder->GetValue();
+					if (!wxDirExists(m_weatherFolder))
 					{
-						int ndx = arychecked[i];
-						wxString url = m_links[ndx].URL;
-						wxString curstr = m_links[ndx].display;
-						//Download the weather file
-						pdlg.Update(i+1, "Downloading " + curstr + " from NSRDB...");
-						//						bool ok = curl.Get(url, "Downloading " + curstr + " from NSRDB...", SamApp::Window());
-						bool ok = curl.Get(url);
-						if (!ok)
+						wxMessageBox("Please select a valid folder for downloads.");
+						// reset to download folder
+						m_txtFolder->SetValue(default_dnload_path);
+						stopped = true;
+					}
+					if (!stopped)
+					{
+						wxProgressDialog pdlg("Downloading NSRDB Data", "", (int)arychecked.Count(), this,
+							wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+	#ifdef __WXMSW__
+						pdlg.SetIcon(wxICON(appicon));
+	#endif
+						pdlg.Show();
+						for (size_t i = 0; i < arychecked.Count() && !stopped; i++)
 						{
-							wxMessageBox("Failed to download " + curstr + " from web service.");
-							stopped = true;
-						}
-						else
-						{
-							if (!wxDirExists(m_txtFolder->GetValue()))
-								//							if (!wxDirExists(m_dirpicker->GetTextCtrlValue()))
+							int ndx = arychecked[i];
+							wxString url = m_links[ndx].URL;
+							wxString curstr = m_links[ndx].display;
+							//Download the weather file
+							pdlg.Update(i+1, "Downloading " + curstr + " from NSRDB...");
+							bool ok = curl.Get(url);
+							if (!ok)
 							{
-								wxMessageBox("Please select a valid folder for downloads.");
+								wxMessageBox("Failed to download " + curstr + " from web service.");
 								stopped = true;
 							}
 							else
 							{
 								wxString fn = curstr + ".csv";
-								fn = m_txtFolder->GetValue() + "/" + fn;
+								fn = m_weatherFolder + "/" + fn;
 								if (!curl.WriteDataToFile(fn))
 								{
 									wxMessageBox("Failed to write " + fn);
 									stopped = true;
 								}
 							}
+							if (pdlg.WasCancelled())
+								stopped = true;
 						}
-						if (pdlg.WasCancelled())
-							stopped = true;
-					}
-					if (!stopped)
-					{
-						m_weatherFolder = m_txtFolder->GetValue();
-						m_weatherFile = "";
-						wxString dnload_path;
-						SamApp::Settings().Read("solar_download_path", &dnload_path);
-						if (dnload_path != m_weatherFolder)
+						if (!stopped)
 						{
-							wxArrayString paths;
-							wxString buf;
-							if (SamApp::Settings().Read("solar_data_paths", &buf))
-								paths = wxStringTokenize(buf, ";");
-							if (paths.Index(m_weatherFolder) == wxNOT_FOUND)
+							m_weatherFile = "";
+							if (default_dnload_path != m_weatherFolder)
 							{
-								paths.Add(m_weatherFolder);
-								SamApp::Settings().Write("solar_data_paths", wxJoin(paths, ';'));
+								wxArrayString paths;
+								wxString buf;
+								if (SamApp::Settings().Read("solar_data_paths", &buf))
+									paths = wxStringTokenize(buf, ";");
+								if (paths.Index(m_weatherFolder) == wxNOT_FOUND)
+								{
+									paths.Add(m_weatherFolder);
+									SamApp::Settings().Write("solar_data_paths", wxJoin(paths, ';'));
+								}
 							}
+							if (m_cboWeatherFile->GetStringSelection().Len() > 0)
+							{
+								wxString fn = m_cboWeatherFile->GetStringSelection() + ".csv";
+								fn = m_weatherFolder + "/" + fn;
+								m_weatherFile = fn;
+							}
+							EndModal(wxID_OK);
 						}
-						if (m_cboWeatherFile->GetStringSelection().Len() > 0)
-						{
-							wxString fn = m_cboWeatherFile->GetStringSelection() + ".csv";
-							fn = m_txtFolder->GetValue() + "/" + fn;
-							m_weatherFile = fn;
-						}
-						EndModal(wxID_OK);
 					}
 				}
 			}
