@@ -646,13 +646,13 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("Java");
 	code_languages.Add("PHP 5");
 	code_languages.Add("PHP 7");
-    code_languages.Add("(Experimental) Android Studio (Android)");
+    code_languages.Add("Android Studio (Android)");
 #ifdef __WXMSW__
 	code_languages.Add("C#");
 	code_languages.Add("VBA");
 #endif
 #ifdef __WXMAC__
-    code_languages.Add("(Experimental) XCode Swift (iOS)");
+    code_languages.Add("XCode Swift (iOS)");
 #endif
 
 	// initialize properties
