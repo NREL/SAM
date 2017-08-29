@@ -332,3 +332,9 @@ build_linux/install0
 build_linux/sam\.deploy\.tar\.gz
 
 build_linux/sam\.deploy/linux_64/sam\.bin
+
+build_osx/SAM
+
+build_osx/SAM\.app/Contents/Frameworks/
+
+build_osx/SAM\.app/Contents/
