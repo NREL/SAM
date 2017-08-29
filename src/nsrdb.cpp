@@ -540,8 +540,6 @@ void NSRDBDialog::GetResources()
 			URL.Replace("yourapikey", "<SAMAPIKEY>");
 			URL.Replace("youremail", "<USEREMAIL>");
 			wxString interval = links_list[i_links]["interval"].AsString();
-			// ERROR in API 8/25/17 name=mts2-tmy returns incorrect link with names=tmy instead of names=tmy3 per https://developer.nrel.gov/docs/solar/nsrdb/mts2_data_download/
-			if (name.Lower() == "mts2-tmy") URL.Replace("names=tmy&", "names=tmy3&");
 //			wxLogStatus("link info: %s, %s, %s, %s, %d, %s", displayName.c_str(), name.c_str(), type.c_str(), year.c_str(), interval, URL.c_str());
 			// SAM does not recognize spectral datasets at this time
 			if (name.Lower() != "spectral-tmy") 
