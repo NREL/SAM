@@ -50,20 +50,17 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
-version_upgrade{'2017.4.11'} = define() {
+version_upgrade{'2017.8.28'} = define() {
 	const cfg = config();
-	fin_ppa = 'Single Owner' || 'Leveraged Partnership Flip' || 'All Equity Partnership Flip' || 'Sale Leaseback';
 	
-	if (cfg.tech == 'Wind Power')
-		if (value('wind_resource_model_choice') == 0)
-			message('This version significantly updates how wind turbine power curves are corrected for air density when using a wind resource file. This will increase your annual energy estimate compared to previous versions.', 'warning');	
-	
-	if ( cfg.fin && fin_ppa == true )
+	// Battery
+	if (varinfo('en_batt'))
 	{
-		message('The Apply Values from Library checkbox on the Time of Delivery Factors is now a button to resolve an issue with saving and loading TOD factor inputs to and from CSV files.');
-	} 		
-				
+		if (value('en_batt') == true)
+			message("Changes were made in battery auto-sizing and dispatch, potentially resulting in different battery sizes and operation.  Please check your battery to ensure it matches your desired configuration", 'warning');
+	}
 };
+
 
 // PUBLIC VERSION
 version_upgrade{'2017.5.11'} = define() {
@@ -81,6 +78,19 @@ version_upgrade{'2017.5.11'} = define() {
 	}
 };
 
+version_upgrade{'2017.4.11'} = define() {
+	const cfg = config();
+	fin_ppa = 'Single Owner' || 'Leveraged Partnership Flip' || 'All Equity Partnership Flip' || 'Sale Leaseback';
+	
+	if (cfg.tech == 'Wind Power')
+		if (value('wind_resource_model_choice') == 0)
+			message('This version significantly updates how wind turbine power curves are corrected for air density when using a wind resource file. This will increase your annual energy estimate compared to previous versions.', 'warning');	
+	
+	if ( cfg.fin && fin_ppa == true )
+	{
+		message('The Apply Values from Library checkbox on the Time of Delivery Factors is now a button to resolve an issue with saving and loading TOD factor inputs to and from CSV files.');
+	} 		
+};
 
 
 version_upgrade{'2017.1.17'} = define() {
