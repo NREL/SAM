@@ -109,8 +109,8 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 //	m_btnChkFiltered = new wxButton(this, ID_btnChkFiltered, "Select filtered"); //cpg
 	m_btnChkPsm30 = new wxButton(this, ID_btnChkPsm30, "Select PSM 30-minute"); //cpg
 	m_btnChkPsm60 = new wxButton(this, ID_btnChkPsm60, "Select PSM hourly"); //cpg
-	m_btnChkNone = new wxButton(this, ID_btnChkNone, "Unselect all");
-	m_btnUnselectFiltered = new wxButton(this, ID_btnUnselectFiltered, "Unselect filtered");
+	m_btnChkNone = new wxButton(this, ID_btnChkNone, "Clear all");
+	m_btnUnselectFiltered = new wxButton(this, ID_btnUnselectFiltered, "Clear filtered");
 	m_btnSelectFiltered = new wxButton(this, ID_btnSelectFiltered, "Select filtered");
 	m_btnResources = new wxButton(this, ID_btnResources, "Search");
 	m_search = new wxSearchCtrl(this, ID_search, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER | wxTE_PROCESS_TAB);
