@@ -158,7 +158,7 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	szChkBtn->Add(m_btnChkNone, 0, wxALL, 2);
 
 	wxBoxSizer *szgrid = new wxBoxSizer(wxVERTICAL);
-	szgrid->Add(new wxStaticText(this, wxID_ANY, "2. Choose files to download:"), 0, wxALL, 2);
+	szgrid->Add(new wxStaticText(this, wxID_ANY, "2. Choose files to download or click OK to download default PSM hourly TMY file:"), 0, wxALL, 2);
 	szgrid->Add(m_chlResources, 10, wxALL | wxEXPAND, 1);
 	szgrid->Add(szChkBtn, 0, wxALL, 1);
 
