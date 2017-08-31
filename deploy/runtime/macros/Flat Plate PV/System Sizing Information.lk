@@ -104,6 +104,11 @@ for (j=0; j<4; j++) //loop through subarrays
 		//if(get('module_model') == 0)													// Simple efficiency module model
 		// 	bvoc = ????
 
+		if(get('module_model') == 0)
+		{
+			incorrect_model_module = 1;
+		}
+		
 		if(get('module_model') == 1)													// CEC performance model with module database
 		{
 			
@@ -113,7 +118,7 @@ for (j=0; j<4; j++) //loop through subarrays
 			voc	= get('cec_v_oc_ref');
 			vmp = get('cec_v_mp_ref');
 			pmp = get('cec_p_mp_ref');
-	
+			incorrect_model_module = 0;
 		}
 
 		if(get('module_model') == 2)													// CEC performance model with user entered specifications
@@ -122,6 +127,7 @@ for (j=0; j<4; j++) //loop through subarrays
 			voc = get('6par_voc');
 			bvoc = get('6par_bvoc');
 			vmp = get('6par_vmp');	
+			incorrect_model_module = 1;
 		}
 
 		if(get('module_model') == 3)													// Sandia PV array performance model with module database												
@@ -134,6 +140,7 @@ for (j=0; j<4; j++) //loop through subarrays
 			bvoc = get('snl_bvoco');
 			vmp = get('snl_ref_vmp');
 			pmp = get('snl_ref_pmp');
+			incorrect_model_module = 0;
 		}
 
 		if(get('module_model') == 4)													// IEC 61853 Single diode model
@@ -142,6 +149,7 @@ for (j=0; j<4; j++) //loop through subarrays
 			voc = get('sd11par_Voc0');
 			bvoc = get('sd11par_betaVoc');
 			vmp = get('sd11par_Vmp0');
+			incorrect_model_module = 1;
 		}
 
 // ========================================================== INVERTER DATA ==========================================================================	
@@ -151,6 +159,7 @@ for (j=0; j<4; j++) //loop through subarrays
 			max_dc_voltage 	= get('inv_snl_vdcmax');
 			min_dc_voltage 	= get('inv_snl_mppt_low');
 			max_dc_power 	= get('inv_snl_pdco');
+			incorrect_model_inverter = 0;
 		}
 
 		if(get('inverter_model') == 1)													// Inverter Datasheet
@@ -158,19 +167,39 @@ for (j=0; j<4; j++) //loop through subarrays
 			max_dc_voltage 	= get('inv_ds_vdcmax');
 			min_dc_voltage 	= get('inv_ds_mppt_low');
 			max_dc_power	= get('inv_ds_pdco');
+			incorrect_model_inverter = 0;
+
 		}
 	
 		if(get('inverter_model') == 2)													// Inverter Part Load Curve
 		{
 			max_dc_voltage = get('inv_pd_vdcmax');
 			min_dc_voltage = get('inv_pd_mppt_low');
+			max_dc_power   = get('inv_pd_pdco');
+			incorrect_model_inverter = 0;
 		}
+		
+		if(get('inverter_model') == 3)													// Inverter CEC coefficient generator
+		{
+			max_dc_voltage	= get('inv_cec_cg_vdcmax');
+			min_dc_voltage	= get('inv_cec_cg_mppt_low');
+			max_dc_power	= get('inv_cec_cg_pdco');
+			incorrect_model_inverter = 0;
+		}
+if (incorrect_model_module == 1 || incorrect_model_inverter == 1)
+{
+	msgbox("Incorrect module model selected for this macro. The macro only works with CEC/Sandia module database.");
+	exit;
+}
+
+
 
 max_dc_voltage_calculated = get('user_modules_per_string') * (voc + bvoc * (t_dry_min - 25));
 min_dc_voltage_calculated = get('user_modules_per_string') * (voc + bvoc * (t_dry_max - 25));
 max_series_modules = max_dc_voltage / (voc + bvoc * (t_dry_min - 25));
 inv_snl_vdcmax = get('inv_snl_vdcmax');
 count_of_modules = 0;
+
 
 // Create HTML Output Window******************************************************************************************************************************************************
 red = ' bgcolor=#ff0000>';
@@ -253,7 +282,7 @@ if (clipped_hours > macro.clipping_time)
 					}
 				}
 				
-				if(count_of_modules > 10)
+				if(count_of_modules > 20)
 				{
 					str += "<i><u>Due to large number of suggestions, the list has been reduced to one module per manufacturer</u></i> <br>";
 					for(j = 0; j < count_of_modules - 1; j++)
@@ -268,7 +297,7 @@ if (clipped_hours > macro.clipping_time)
 					
 				}
 				
-				if (count_of_modules > 0 && count_of_modules <=10)
+				if (count_of_modules > 0 && count_of_modules <=20)
 				{
 					for(j = 0; j < count_of_modules; j++)
 					{
