@@ -111,12 +111,40 @@
 
 // application globals
 static SamApp::ver releases[] = {
+//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
-		{ 2017, 8, 28 }, // Latest Beta release
+		{ 2017, 8, 28 }, // Beta release candidate - expires 12/30/17
+		{ 2017, 8, 18 }, // Beta release - expires 12/30/17
+        { 2017, 8, 11 }, // Beta release - expires 12/30/17
+		{ 2017, 7, 28 }, // Beta release - expires 12/30/17
+		{ 2017, 5, 15 }, // Beta release - expires 7/31/17
+		{ 2017, 5, 11 }, // Beta release - no expiration
+		{ 2017, 4, 11 }, // Beta release
+		{ 2017, 2, 28 }, // Beta release
+		{ 2017, 2, 14 }, // Beta release
 	{ 2017, 1, 17 }, // public 'ones and sevens' release !
+		{ 2016, 12, 29 }, // Beta release - expires 2/28/17 
+		{ 2016, 10, 25 }, // Beta release
+		{ 2016, 7, 21 }, // Beta release - expires 12/31/16
+		{ 2016, 5, 4 }, //dc adjustment factor added, internal release
 	{ 2016, 3, 14 }, // public pi-day release!
+		{ 2016, 3, 2 }, // Beta release - expires 4/15/16
+		{ 2016, 2, 29 }, // internal release
+		{ 2016, 2, 26 }, // utility rate changes
+		{ 2016, 2, 22 }, // self-shading update
+		{ 2016, 2, 19 }, // PV variable changes 
+		{ 2016, 2, 16 }, // new versioning scheme
+		{ 2016, 1, 21 }, // internal release
+		{ 2015, 11, 16 }, // utility rate variable changes
+		{ 2015, 10, 29 }, // battery model variable changes
+		{ 2015, 10, 16 }, // internal release
+		{ 2015, 9, 30 }, // internal release
+		{ 2015, 9, 9 }, // CSP and net metering changes
+		{ 2015, 8, 17 }, // CSP variable changes
 	{ 2015, 6, 30 }, // public release
+		{ 2015, 5, 27 }, // CSP variable changes
+		{ 2015, 4, 10 }, // CSP variable changes
 	{ 2015, 1, 30 }, // public release
 	{ 2014, 11, 24 }, // public release
 	{    0,  0,  0 } };
