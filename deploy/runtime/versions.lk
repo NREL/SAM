@@ -59,12 +59,22 @@ version_upgrade{'2017.8.28'} = define() {
 		if (value('en_batt') == true)
 			message("Changes were made in battery auto-sizing and dispatch, potentially resulting in different battery sizes and operation.  Please check your battery to ensure it matches your desired configuration", 'warning');
 	}
+	
+	if( cfg.tech == "Physical Trough IPH")
+	{
+		message("Version Notes:\nThis version includes an option for direct thermal energy storage."
+		" The default solar multiple has increased from 1 to 2.5"
+		" and the default for the new input hours of thermal storage is 6.\n"
+		"This version includes an input for the wind speed at which the trough is stowed."
+		" The default wind stow speed is 25 m/s");
+		value( 'tshours', 0, "This file was built in a previous version of SAM that did not allow for TES in the trough IPH configuration" );
+		value( 'wind_stow_speed', 100, "This file was built in a previous version of SAM that did not include a wind stow speed input,"
+		" so the input is increased to a value that a normal weather file will not reach" );
+	}
 };
 
 
-// PUBLIC VERSION
 version_upgrade{'2017.5.11'} = define() {
-	message('Upgraded project to version 2017.5.11');
 	const cfg = config();
 			
 	//updated the naming of flux_max
