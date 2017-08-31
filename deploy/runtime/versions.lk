@@ -68,7 +68,8 @@ version_upgrade{'2017.8.28'} = define() {
 		"This version includes an input for the wind speed at which the trough is stowed."
 		" The default wind stow speed is 25 m/s");
 		value( 'tshours', 0, "This file was built in a previous version of SAM that did not allow for TES in the trough IPH configuration" );
-		value( 'wind_stow_speed', 0, "This file was built in a previous version of SAM that did not include a wind stow speed input" );
+		value( 'wind_stow_speed', 100, "This file was built in a previous version of SAM that did not include a wind stow speed input,"
+		" so the input is increased to a value that a normal weather file will not reach" );
 	}
 };
 
