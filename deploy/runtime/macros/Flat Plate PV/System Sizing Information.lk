@@ -186,25 +186,27 @@ for (j=0; j<4; j++) //loop through subarrays
 			max_dc_power	= get('inv_cec_cg_pdco');
 			incorrect_model_inverter = 0;
 		}
-if (incorrect_model_module == 0 && incorrect_model_inverter == 0)
+if (incorrect_model_module == 1 || incorrect_model_inverter == 1)
 {
-	max_dc_voltage_calculated = get('user_modules_per_string') * (voc + bvoc * (t_dry_min - 25));
-	min_dc_voltage_calculated = get('user_modules_per_string') * (voc + bvoc * (t_dry_max - 25));
-	max_series_modules = max_dc_voltage / (voc + bvoc * (t_dry_min - 25));
-	inv_snl_vdcmax = get('inv_snl_vdcmax');
-	count_of_modules = 0;
+	msgbox("Incorrect module model selected for this macro. The macro only works with CEC/Sandia module database.");
+	exit;
 }
+
+
+
+max_dc_voltage_calculated = get('user_modules_per_string') * (voc + bvoc * (t_dry_min - 25));
+min_dc_voltage_calculated = get('user_modules_per_string') * (voc + bvoc * (t_dry_max - 25));
+max_series_modules = max_dc_voltage / (voc + bvoc * (t_dry_min - 25));
+inv_snl_vdcmax = get('inv_snl_vdcmax');
+count_of_modules = 0;
+
 
 // Create HTML Output Window******************************************************************************************************************************************************
 red = ' bgcolor=#ff0000>';
 orange = ' bgcolor=#ff9933>';
 normal = '>';
 str = '<html><body><h4>String Sizing Information</h4><p>Sizing information reported for case: ' + active_case() + '</p>';
-if (incorrect_model_module == 1 || incorrect_model_inverter == 1)
-{
-	msgbox("Incorrect module model selected. The macro only works with CEC/Sandia module database.");
-	exit;
-}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
