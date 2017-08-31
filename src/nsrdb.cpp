@@ -298,7 +298,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 					}
 					// check for existing library entries
 					wxString solar_resource_db = SamApp::GetUserLocalDataDir() + "/SolarResourceData.csv";
-					Library *l = Library::Find(solar_resource_db);
+					Library *l = Library::Find(wxFileName(solar_resource_db).GetName());
 					if ( !wxFileExists( solar_resource_db ) ) 
 					{
 						ScanSolarResourceData( solar_resource_db );
@@ -309,13 +309,16 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 						wxMessageBox("Library " + solar_resource_db + " not found.");
 						stopped = true;
 					}
-					for (size_t i = 0; i < arychecked.Count(); i++)
+					if (!stopped)
 					{
-						if (l->FindEntry(m_links[arychecked[i]].display) > -1)
+						for (size_t i = 0; i < arychecked.Count(); i++)
 						{
-							wxMessageBox("Weather file " + m_links[arychecked[i]].display + " already in library\nPlease make a different selection.");
-							stopped = true;
-							break;
+							if (l->FindEntry(m_links[arychecked[i]].display) > -1)
+							{
+								wxMessageBox("Weather file " + m_links[arychecked[i]].display + " already in library\nPlease make a different selection.");
+								stopped = true;
+								break;
+							}
 						}
 					}
 					if (!stopped)
