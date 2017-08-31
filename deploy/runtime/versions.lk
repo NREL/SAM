@@ -62,10 +62,13 @@ version_upgrade{'2017.8.28'} = define() {
 	
 	if( cfg.tech == "Physical Trough IPH")
 	{
-		message("This version includes an option for direct thermal energy storage."
+		message("Version Notes:\nThis version includes an option for direct thermal energy storage."
 		" The default solar multiple has increased from 1 to 2.5"
-		" and the default for the new input hours of thermal storage is 6.");
+		" and the default for the new input hours of thermal storage is 6.\n"
+		"This version includes an input for the wind speed at which the trough is stowed."
+		" The default wind stow speed is 25 m/s");
 		value( 'tshours', 0, "This file was built in a previous version of SAM that did not allow for TES in the trough IPH configuration" );
+		value( 'wind_stow_speed', 0, "This file was built in a previous version of SAM that did not include a wind stow speed input" );
 	}
 };
 
