@@ -2,7 +2,7 @@
 *  Copyright 2017 Alliance for Sustainable Energy, LLC
 *
 *  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (�Alliance�) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
+*  ("Alliance") under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
 *  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
 *  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
 *  copies to the public, perform publicly and display publicly, and to permit others to do so.
@@ -26,8 +26,8 @@
 *  4. Redistribution of this software, without modification, must refer to the software by the same
 *  designation. Redistribution of a modified version of this software (i) may not refer to the modified
 *  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as �System Advisor Model� or �SAM�. Except
-*  to comply with the foregoing, the terms �System Advisor Model�, �SAM�, or any confusingly similar
+*  the underlying software originally provided by Alliance as "System Advisor Model" or "SAM". Except
+*  to comply with the foregoing, the terms "System Advisor Model", "SAM", or any confusingly similar
 *  designation may not be used to refer to any modified version of this software or any modified
 *  version of the underlying software originally provided by Alliance without the prior written consent
 *  of Alliance.
@@ -111,12 +111,40 @@
 
 // application globals
 static SamApp::ver releases[] = {
+//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
-		{ 2017, 8, 28 }, // Latest Beta release
+		{ 2017, 8, 28 }, // Beta release candidate - expires 12/30/17
+		{ 2017, 8, 18 }, // Beta release - expires 12/30/17
+        { 2017, 8, 11 }, // Beta release - expires 12/30/17
+		{ 2017, 7, 28 }, // Beta release - expires 12/30/17
+		{ 2017, 5, 15 }, // Beta release - expires 7/31/17
+		{ 2017, 5, 11 }, // Beta release - no expiration
+		{ 2017, 4, 11 }, // Beta release
+		{ 2017, 2, 28 }, // Beta release
+		{ 2017, 2, 14 }, // Beta release
 	{ 2017, 1, 17 }, // public 'ones and sevens' release !
+		{ 2016, 12, 29 }, // Beta release - expires 2/28/17 
+		{ 2016, 10, 25 }, // Beta release
+		{ 2016, 7, 21 }, // Beta release - expires 12/31/16
+		{ 2016, 5, 4 }, //dc adjustment factor added, internal release
 	{ 2016, 3, 14 }, // public pi-day release!
+		{ 2016, 3, 2 }, // Beta release - expires 4/15/16
+		{ 2016, 2, 29 }, // internal release
+		{ 2016, 2, 26 }, // utility rate changes
+		{ 2016, 2, 22 }, // self-shading update
+		{ 2016, 2, 19 }, // PV variable changes 
+		{ 2016, 2, 16 }, // new versioning scheme
+		{ 2016, 1, 21 }, // internal release
+		{ 2015, 11, 16 }, // utility rate variable changes
+		{ 2015, 10, 29 }, // battery model variable changes
+		{ 2015, 10, 16 }, // internal release
+		{ 2015, 9, 30 }, // internal release
+		{ 2015, 9, 9 }, // CSP and net metering changes
+		{ 2015, 8, 17 }, // CSP variable changes
 	{ 2015, 6, 30 }, // public release
+		{ 2015, 5, 27 }, // CSP variable changes
+		{ 2015, 4, 10 }, // CSP variable changes
 	{ 2015, 1, 30 }, // public release
 	{ 2014, 11, 24 }, // public release
 	{    0,  0,  0 } };
@@ -1263,14 +1291,15 @@ public:
 		 
 		
 		// dc.SetBackground( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) ); // metro blue
-		// dc.SetBackground( wxBrush( wxColour(219, 192, 4) ) ); // bright yellow/orange
-		// dc.SetBackground( wxBrush( wxColour(2, 152, 152) ) ); // bright teal <- obviously not the best color ever.
+		// dc.SetBackground( wxBrush( wxColour(219, 192, 4) ) ); // bright yellowish orange
+		// dc.SetBackground( wxBrush( wxColour(2, 152, 152) ) ); // bright teal
 		// dc.SetBackground( wxBrush( wxColour(120, 67, 163) ) ); // violet
 		// dc.SetBackground( wxBrush( wxColour(191, 38, 96) ) ); // reddish pink
-		dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green	
+		// dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green	
 		// dc.SetBackground( wxBrush( wxColour(130,186,0) ) ); // pale lime green		
-		//dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink, making development more fun for everyone!
-		//dc.SetBackground(wxBrush(wxColour(23, 26, 33))); // nick's gray/black "blackish/gunbarrel gray"
+		// dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink, making development more fun for everyone!
+		// dc.SetBackground(wxBrush(wxColour(23, 26, 33))); // dark gray
+		dc.SetBackground(wxBrush(wxColour(23, 26, 33)));
 
 		dc.Clear();
 

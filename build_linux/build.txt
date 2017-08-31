@@ -4,7 +4,7 @@ tar xvzf wxWidgets-3.1.0.tar
 cd wxWidgets-3.1.0
 # edit wxconfigure.linux64 script below to use your home directory rather than
 # 'adobos'
-cat ~/Public/Projects/SAM/wxconfigure.linux64 | bash
+cat ~/Public/Projects/SAM/wxconfigure_3.1.0.linux64 | bash
 make -j6
 make install
 make package
