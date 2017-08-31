@@ -59,6 +59,14 @@ version_upgrade{'2017.8.28'} = define() {
 		if (value('en_batt') == true)
 			message("Changes were made in battery auto-sizing and dispatch, potentially resulting in different battery sizes and operation.  Please check your battery to ensure it matches your desired configuration", 'warning');
 	}
+	
+	if( cfg.tech == "Physical Trough IPH")
+	{
+		message("This version includes an option for direct thermal energy storage."
+		" The default solar multiple has increased from 1 to 2.5"
+		" and the default for the new input hours of thermal storage is 6.");
+		value( 'tshours', 0, "This file was built in a previous version of SAM that did not allow for TES in the trough IPH configuration" );
+	}
 };
 
 
