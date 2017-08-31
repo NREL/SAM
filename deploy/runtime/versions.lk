@@ -62,9 +62,7 @@ version_upgrade{'2017.8.28'} = define() {
 };
 
 
-// PUBLIC VERSION
 version_upgrade{'2017.5.11'} = define() {
-	message('Upgraded project to version 2017.5.11');
 	const cfg = config();
 			
 	//updated the naming of flux_max
