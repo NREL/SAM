@@ -118,7 +118,7 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	m_chlResources = new wxCheckListBox(this, ID_chlResources, wxDefaultPosition, wxSize(800,200)); // populate with returned resources
 
 
-	wxString msg = "Use this window to choose weather files to download from the NSDRDB to a folder on your computer.\nType an address or latitude and longtitude, for example, type \"15031 denver west parkway golden co\" or \"40.1,-109.3\", and click Search to list all files available in the database for that location.\nWhen the list appears, choose the file or files you want to download. For the most up-to-date data, choose PSM files.\nThe email address you used to register SAM will be sent to the NREL NSRDB. If you do not want share your email address with the NSRDB, click Cancel now.";
+	wxString msg = "Use this window to choose weather files to download from the NSRDB to a folder on your computer and add it to your solar resource library.\nType an address or latitude and longtitude, for example, \"15031 denver west parkway golden co\" or \"40.1,-109.3\", and click Search to list all files available in the database for that location.\nWhen the list appears, choose the file or files you want to download. For the most up-to-date data, choose PSM files.\n\nThe email address you used to register SAM will be sent to the NREL NSRDB. If you do not want share your email address with the NSRDB, click Cancel now.";
 
 	wxBoxSizer *szAddress = new wxBoxSizer(wxHORIZONTAL);
 	szAddress->Add(new wxStaticText(this, wxID_ANY, "1. Find location:"), 0, wxALL , 2);
