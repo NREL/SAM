@@ -498,7 +498,7 @@ void NSRDBDialog::GetResources()
 	wxJSONValue root;
 	if (reader.Parse(json_data, &root) != 0)
 	{
-		wxMessageBox("Could not process returned JSON for " + locname);
+		wxMessageBox("Could not process returned JSON for " + loc);
 		return;
 	}
 
@@ -518,15 +518,28 @@ void NSRDBDialog::GetResources()
 
 			wxString year = links_list[i_links]["year"].AsString();
 			wxString URL = links_list[i_links]["link"].AsString();
+			wxString interval = links_list[i_links]["interval"].AsString();
 			URL.Replace("yourapikey", "<SAMAPIKEY>");
 			URL.Replace("youremail", "<USEREMAIL>");
-			wxString interval = links_list[i_links]["interval"].AsString();
+			// URL - min attributes for each type 
+			wxString attributes = "";
+			if (name.Trim() == "psm")
+				attributes = "&attributes=dhi,dni,dew_point,surface_air_temperature_nwp,surface_pressure_background,surface_relative_humidity_nwp,wind_speed_10m_nwp";
+			else if (name.Trim() == "mts2")
+				attributes = "&attributes=dhi,dni,dew_point,temp_dryb,atm_pres,rel_hum,wind_spd";
+			else if (name.Trim() == "mts1")
+				attributes = "&attributes=dhi,dni,dew_point,temp_dryb,atm_pres,rel_hum,wind_spd";
+			else if (name.Trim() == "suny-international")
+				attributes = "&attributes=dhi,dni,dew_point,surface_temperature,surface_pressure,relative_humidity,snow_depth,wspd";
+			else
+				attributes = "";
+			if (attributes.Len() > 0) URL += attributes;
 #ifdef __DEBUG__
-			wxLogStatus("link info: %s, %s, %s, %s, %d, %s", displayName.c_str(), name.c_str(), type.c_str(), year.c_str(), interval, URL.c_str());
+			wxLogStatus("link info: %s, %s, %s, %s, %s, %s", displayName.c_str(), name.c_str(), type.c_str(), year.c_str(), interval.c_str(), URL.c_str());
 #endif
 			// SAM does not recognize spectral datasets at this time
 			if (name.Lower() != "spectral-tmy") 
-				m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, locname));
+				m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, loc));
 		}
 	}
 }
