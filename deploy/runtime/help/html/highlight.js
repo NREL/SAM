@@ -1,11 +1,11 @@
 // ----------------------------------------------------------------------------
-// Zoom Search Engine 7.0 (10/Apr/2014)
+// Zoom Search Engine 6.0 (15/Jul/2008)
 // Highlight & auto-scroll script (DOM version)
 //
 // email: zoom@wrensoft.com
 // www: http://www.wrensoft.com
 //
-// Copyright (C) Wrensoft 2014
+// Copyright (C) Wrensoft 2008
 // ----------------------------------------------------------------------------
 // Use this script to allow your search matches to highlight and scroll to
 // the matched word on the actual web page where it was found.
@@ -212,8 +212,6 @@ function ZHighlightText(terms, text)
 {  	
     text=text.replace(/&amp;/ig, '&');
     text=text.replace(/&nbsp;/ig, '');
-    text=text.replace(/</ig, '&lt;');
-    text=text.replace(/>/ig, '&gt;');
 
     for (var i=0; i<terms.length; i++) // take each term in turn
     {
@@ -237,7 +235,7 @@ function ZHighlightText(terms, text)
             do 
             {
                 l=text.length;
-                text=text.replace(re, '$1<span style="background:#FFFF40;" class="highlight" id="highlight" name="highlight">$2</span id="highlight">$3');
+                text=text.replace(re, '$1<span style="background:#BBD3FF;" class="highlight" id="highlight" name="highlight">$2</span id="highlight">$3');
                 count++;
             }
             //while(re.lastIndex>0 && count<100); lastIndex not set properly under netscape
@@ -278,8 +276,8 @@ function ZHighlightReplace(q, node)
 	var newtext = ZHighlightText(q, node_value);
 	if (newtext != node_value)
 	{
-		var repl = document.createElement('span');  
-		repl.innerHTML = newtext;  
+		var repl = document.createElement('span');
+		repl.innerHTML = newtext;
 		node.parentNode.replaceChild(repl, node);
 	}
 }
