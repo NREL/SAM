@@ -523,7 +523,7 @@ void NSRDBDialog::GetResources()
 			URL.Replace("youremail", "<USEREMAIL>");
 			// URL - min attributes for each type 
 			wxString attributes = "";
-			if (name.Trim() == "psm")
+			if (name.Trim() == "psm" && year.Trim() != "tmy")
 				attributes = "&attributes=dhi,dni,dew_point,surface_air_temperature_nwp,surface_pressure_background,surface_relative_humidity_nwp,wind_speed_10m_nwp";
 			else if (name.Trim() == "mts2")
 				attributes = "&attributes=dhi,dni,dew_point,temp_dryb,atm_pres,rel_hum,wind_spd";
