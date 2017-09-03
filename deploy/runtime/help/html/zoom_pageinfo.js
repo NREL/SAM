@@ -295,7 +295,7 @@ pagedata = [ ["./3dshad-3d-scene.htm","3D scene view","3D scene view The 3D scen
 ["./3dshad-underlay.htm","Use an image underlay","Use an image underlay You can add an optional image underlay to the bird&#39;s eye view to help you position objects more accurately. You can either a...",""],
 ["./3dshad-zoom-pan.htm","Zoom and pan the scene","Zoom and pan the scene Use your mouse and keyboard to position the scene in the window. Note: The size of the green rectangle representing the gro...",""],
 ["./3d_shade_calculator.htm","3D Shade Calculator","3D Shade Calculator The SAM 3D Shade Calculator uses a sun position algorithm and a three-dimensional drawing of a photovoltaic array and nearby s...",""],
-["./battery_model.htm","Battery Storage","Battery Storage The battery storage model allows you to analyze the performance of lead-acid, lithium-ion, and vanadium redox flow batteries. The ...",""],
+["./battery_model.htm","Battery Storage","Battery Storage The battery storage model allows you to analyze the performance of the following types of batteries: Lead-acid Lithium-ion Vanadiu...",""],
 ["./biopower.htm","Biomass Combustion","Biomass Combustion The biopower model is a performance- and cost-modeling tool for assessing the biomass power resource of a location. SAM can mod...",""],
 ["./biopower_emissions.htm","Biopower Life-Cycle Impacts","Emissions The Life-Cycle Impacts page allows you to specify inputs for a set of life-cycle greenhouse gas emissions calculations for the biomass s...",""],
 ["./biopower_feedstock.htm","Biopower Feedstock","Feedstock The Feedstock page inputs define the biomass resource of the location you specify on the Location and Ambient Conditions page, and the p...",""],
