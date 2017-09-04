@@ -3,7 +3,7 @@ hr { color: #000000}
 body, table, tr, th /* Normal */
 {
  font-size: 10pt;
- font-family: Verdana,Geneva,Arial,sans-serif;
+ font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
  font-style: normal;
  font-weight: normal;
  color: #000000;
@@ -21,17 +21,18 @@ span.f_CHEquationVariable /* CH Equation Variable */
 }
 span.f_CHFileName /* CH File Name */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
  font-style: italic;
 }
 span.f_CHInterfaceElement /* CH Interface Element */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
  font-weight: bold;
 }
 span.f_CHNote /* CH Note */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
+ text-decoration: underline;
+}
+span.f_CHUIElement /* CH UI Element */
+{
  font-weight: bold;
 }
 span.f_CHVariableSubscript /* CH Variable Subscript */
@@ -42,7 +43,6 @@ span.f_CHVariableSubscript /* CH Variable Subscript */
 }
 span.f_Character /* Character */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
 }
 span.f_CodeExample /* Code Example */
 {
@@ -61,9 +61,11 @@ span.f_Construction /* Construction */
 span.f_Definition /* Definition */
 {
 }
+span.f_Description /* Description */
+{
+}
 span.f_Emphasis /* Emphasis */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
  font-style: italic;
 }
 span.f_Equation /* Equation */
@@ -75,10 +77,13 @@ span.f_EquationExcel /* Equation Excel */
 }
 span.f_Heading1 /* Heading1 */
 {
- font-size: 24pt;
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
- color: #ffffff;
- background-color: #0072c6;
+ font-size: 18pt;
+ color: #0072c6;
+}
+span.f_Heading2 /* Heading2 */
+{
+ font-size: 14pt;
+ color: #0072c6;
 }
 span.f_Heading2_atoc_ /* Heading2_atoc_ */
 {
@@ -101,6 +106,11 @@ span.f_Heading4 /* Heading4 */
 }
 span.f_ImageCaption /* Image Caption */
 {
+ font-weight: bold;
+}
+span.f_Item /* Item */
+{
+ font-weight: bold;
 }
 span.f_List /* List */
 {
@@ -113,6 +123,7 @@ span.f_ListNoNumber /* List No Number */
 }
 span.f_NewStyle /* New Style */
 {
+ font-family: Verdana,Geneva,Arial,sans-serif;
  color: #ffffff;
  background-color: #ff0000;
 }
@@ -131,10 +142,18 @@ span.f_ProcedureStepLast /* Procedure Step Last */
 span.f_ProcedureStepNoNumber /* Procedure Step No Number */
 {
 }
+span.f_Step /* Step */
+{
+}
+span.f_StepLast /* Step Last */
+{
+}
+span.f_StepNoNumber /* Step No Number */
+{
+}
 span.f_Superscript /* Superscript */
 {
  font-size: 8pt;
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
  vertical-align: super;
 }
 span.f_Table /* Table */
@@ -142,33 +161,26 @@ span.f_Table /* Table */
 }
 span.f_TableEquationNumber /* Table Equation Number */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
 }
 span.f_TableHeadColumn /* Table Head Column */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
  font-weight: bold;
 }
 span.f_TableHeadRow /* Table Head Row */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
  font-weight: bold;
 }
 span.f_TableText /* Table Text */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
 }
 span.f_TableTextCenter /* Table Text Center */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
 }
 span.f_TableTextLeft /* Table Text Left */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
 }
 span.f_TableTextRight /* Table Text Right */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
 }
 span.f_Term /* Term */
 {
@@ -191,10 +203,12 @@ span.f_Title /* Title */
 }
 span.f_TitleFigure /* Title Figure */
 {
+ font-family: Verdana,Geneva,Arial,sans-serif;
  font-weight: bold;
 }
 span.f_TitleProcedure /* Title Procedure */
 {
+ font-family: Verdana,Geneva,Arial,sans-serif;
  font-weight: bold;
 }
 span.f_TitleTable /* Title Table */
@@ -249,10 +263,6 @@ p, p.p_Normal, div.p_Normal /* Normal */
 {
  font-size: 10pt;
 }
-.p_CHNote /* CH Note */
-{
- font-size: 10pt;
-}
 .p_CHVariableSubscript /* CH Variable Subscript */
 {
  font-size: 8pt;
@@ -282,6 +292,11 @@ p, p.p_Normal, div.p_Normal /* Normal */
  font-size: 10pt;
  margin: 0px 0px 6px 24px;
 }
+.p_Description /* Description */
+{
+ font-size: 10pt;
+ margin: 3px 0px 6px 24px;
+}
 .p_Emphasis /* Emphasis */
 {
  font-size: 10pt;
@@ -302,13 +317,25 @@ p, p.p_Normal, div.p_Normal /* Normal */
 {
  font-size: 100%;
  font-weight: normal;
- text-align: center;
+ text-align: left;
  text-indent: 0px;
- page-break-inside: avoid;
- page-break-after: avoid;
- background: #0072c6;
  padding: 0px 0px 0px 0px;
  margin: 0px 0px 0px 0px;
+}
+.p_Heading2 /* Heading2 */
+{
+ font-size: 100%;
+ font-weight: normal;
+ text-align: left;
+ text-indent: 0px;
+ border-color: #0072c6;
+ border-style: solid;
+ border-width: thin;
+ border-top: none;
+ border-right: none;
+ border-left: none;
+ padding: 0px 0px 0px 0px;
+ margin: 12px 0px 6px 0px;
 }
 .p_Heading2_atoc_ /* Heading2_atoc_ */
 {
@@ -353,7 +380,11 @@ p, p.p_Normal, div.p_Normal /* Normal */
 {
  font-size: 10pt;
  text-align: center;
- margin: 2px 0px 6px 0px;
+ margin: 6px 0px 6px 0px;
+}
+.p_Item /* Item */
+{
+ font-size: 10pt;
 }
 .p_List /* List */
 {
@@ -365,13 +396,13 @@ p, p.p_Normal, div.p_Normal /* Normal */
 {
  font-size: 10pt;
  text-indent: -24px;
- page-break-inside: avoid;
  margin: 0px 0px 6px 48px;
 }
 .p_ListNoNumber /* List No Number */
 {
  font-size: 10pt;
- margin: 0px 0px 3px 24px;
+ text-indent: -24px;
+ margin: 0px 0px 3px 72px;
 }
 .p_NewStyle /* New Style */
 {
@@ -409,6 +440,23 @@ p, p.p_Normal, div.p_Normal /* Normal */
 {
  font-size: 10pt;
  margin: 0px 0px 3px 48px;
+}
+.p_Step /* Step */
+{
+ font-size: 10pt;
+ text-indent: -24px;
+ margin: 3px 24px 3px 48px;
+}
+.p_StepLast /* Step Last */
+{
+ font-size: 10pt;
+ text-indent: -24px;
+ margin: 3px 24px 6px 48px;
+}
+.p_StepNoNumber /* Step No Number */
+{
+ font-size: 10pt;
+ margin: 3px 0px 3px 48px;
 }
 .p_Superscript /* Superscript */
 {

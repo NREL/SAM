@@ -10,54 +10,28 @@
    <!-- This block defines the styles of the TOC headings, change them as needed -->
    <style type="text/css">
        body { background:#0072C6; }
+
        .navbar   { font-size: 120%; }
+       
+       .heading1 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 12pt; color: #FFFFFF; text-decoration: none; border-top: thin solid #ffffff;}
+       .heading2 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 9pt; color: #FFFFFF; text-decoration: none; margin-left: 2px}
+       .heading3 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 8pt; color: #FFFFFF; text-decoration: none; margin-left: 4px }
+       .heading4 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 8pt; color: #FFFFFF; text-decoration: none; }
+       .heading5 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 8pt; color: #FFFFFF; text-decoration: none; }
+       .heading6 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 8pt; color: #FFFFFF; text-decoration: none; }
 
-       .heading1 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 12pt; color: #FFFFFF; text-decoration: none; border-top-style: solid; border-top-width:1px; border-top-color:#FFFFFF}
-       .heading2 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 10pt; color: #FFFFFF; text-decoration: none; }
-       .heading3 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 10pt; color: #FFFFFF; text-decoration: none; }
-       .heading4 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 10pt; color: #FFFFFF; text-decoration: none; }
-       .heading5 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 10pt; color: #FFFFFF; text-decoration: none; }
-       .heading6 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 10pt; color: #FFFFFF; text-decoration: none; }
-
-       .hilight1 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 10pt; color: #0072C6; background: #FFFFFF; text-decoration: none; }
-       .hilight2 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 10pt; color: #0072C6; background: #FFFFFF; text-decoration: none; }
-       .hilight3 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 10pt; color: #0072C6; background: #FFFFFF; text-decoration: none; }
-       .hilight4 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 10pt; color: #0072C6; background: #FFFFFF; text-decoration: none; }
-       .hilight5 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 10pt; color: #0072C6; background: #FFFFFF; text-decoration: none; }
-       .hilight6 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 10pt; color: #0072C6; background: #FFFFFF; text-decoration: none; }
-
+       .hilight1 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 12pt; color: #0072C6; background: #FFFFFF; text-decoration: none; }
+       .hilight2 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 9pt; color: #0072C6; background: #FFFFFF; text-decoration: none; margin-left: 2px }
+       .hilight3 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 8pt; color: #0072C6; background: #FFFFFF; text-decoration: none; margin-left: 4px }
+       .hilight4 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 8pt; color: #0072C6; background: #FFFFFF; text-decoration: none; }
+       .hilight5 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 8pt; color: #0072C6; background: #FFFFFF; text-decoration: none; }
+       .hilight6 { font-family: Segoe UI,Helvetica; font-weight: normal; font-size: 8pt; color: #0072C6; background: #FFFFFF; text-decoration: none; }
+ 
        /* TOC LIST CSS */
        #toc    { padding: 0; margin: 0 }
        #toc li { margin-top: 2px }
        #toc ul { padding-left: 0; padding-right: 0; margin-left: 0; margin-right: 0 }
        /* TOC LIST CSS */
-   
-      /* Tabs from w3schools.com: http://www.w3schools.com/howto/howto_js_tabs.asp */
-      /* Style the list */
-      ul.tab {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #0072C6;
-        color: #ffffff;
-      }
-      /* Float the list items side by side */
-      ul.tab li {float: left;}
-      /* Style the links inside the list items */
-      ul.tab li a {
-        display: inline-block;
-        color: #ffffff;
-        text-align: center;
-        padding: 8px 6px;
-        text-decoration: none;
-        font-size: 14px;
-      }
-      /* Change background color of links on hover */
-      ul.tab li a:hover {background-color: #005899;}
-      /* Create an active/current tablink class */
-      ul.tab li a:focus, .active {background-color: #005899;}
-
    </style>
    <script type="text/javascript" src="jquery.js"></script>
    <script type="text/javascript" src="helpman_settings.js"></script>
@@ -85,20 +59,11 @@
    </script>
 </head>
 <body>
+<!--NEED THIS FOR PHP WEB VERSION, HIDE FOR SAM BROWSER VERSION THAT HAS CONTENTS AND SEARCH BUTTONS--><p class="navbar" style="font:segoe ui;color:#FFFFFF;background:#0072C6;"><b>Contents</b>
 
-<div class="navbar" style="background:#0072C6;color:#FFFFFF;text-decoration:none; ">
-<ul class="tab">
-    <li><a href="hmcontent.htm">Contents</a></li>
-    <li><a href="hmftsearch.htm">Search</a></li>
-</ul>
-</div>
-
-<!--
-<p class="navbar" style="background:#0072C6;color:#FFFFFF;text-decoration:none; "><div sytle="float:left;background:#005899;margin:0 2px 0 2px 0">Contents</div>
-
- | <a href="hmftsearch.htm" style="Font-family:Segoe UI; text-decoration:none; color:#FFFFFF">Search</a>
-</p>-->
-<!--<hr/>-->
+ | <a href="hmftsearch.htm" style="font:segoe ui;color:#FFFFFF;background:#0072C6;text-decoration:none;">Search</a>
+</p>
+<br />
 
   <!-- Place holder for the TOC - this variable is REQUIRED! -->
   <ul id="toc" style="list-style-type:none;display:block;padding-left:0">
@@ -244,17 +209,15 @@
 </li>
 <li class="heading2" id="i6.6" data-bg="toc.png;toc.png" style="background:url(toc.png) no-repeat;cursor:pointer;padding-left:5px" onclick="return clicked(this,event)"><a class="heading2" id="a6.6" href="pvhcpv_high-x_concentrating_pv_hcpv.htm" target="hmcontent"><span class="heading2" id="s6.6" ondblclick="return dblclicked(this)">Concentrating Photovoltaic</span></a>
 <ul id="ul6.6" style="list-style-type:none">
-<li class="heading3" id="i6.6.1" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading3" id="a6.6.1" href="hcpv_location_and_resource.htm" target="hmcontent"><span class="heading3" id="s6.6.1">Location and Resource</span></a>
+<li class="heading3" id="i6.6.1" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading3" id="a6.6.1" href="hcpv_module.htm" target="hmcontent"><span class="heading3" id="s6.6.1">Module</span></a>
 </li>
-<li class="heading3" id="i6.6.2" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading3" id="a6.6.2" href="hcpv_module.htm" target="hmcontent"><span class="heading3" id="s6.6.2">Module</span></a>
+<li class="heading3" id="i6.6.2" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading3" id="a6.6.2" href="hcpv_inverter.htm" target="hmcontent"><span class="heading3" id="s6.6.2">Inverter</span></a>
 </li>
-<li class="heading3" id="i6.6.3" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading3" id="a6.6.3" href="hcpv_inverter.htm" target="hmcontent"><span class="heading3" id="s6.6.3">Inverter</span></a>
+<li class="heading3" id="i6.6.3" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading3" id="a6.6.3" href="hcpv_array.htm" target="hmcontent"><span class="heading3" id="s6.6.3">Array</span></a>
 </li>
-<li class="heading3" id="i6.6.4" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading3" id="a6.6.4" href="hcpv_array.htm" target="hmcontent"><span class="heading3" id="s6.6.4">Array</span></a>
+<li class="heading3" id="i6.6.4" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading3" id="a6.6.4" href="hcpv_system_costs.htm" target="hmcontent"><span class="heading3" id="s6.6.4">System Costs</span></a>
 </li>
-<li class="heading3" id="i6.6.5" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading3" id="a6.6.5" href="hcpv_system_costs.htm" target="hmcontent"><span class="heading3" id="s6.6.5">System Costs</span></a>
-</li>
-<li class="heading3" id="i6.6.6" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading3" id="a6.6.6" href="pm_high-x_concentrating_pv.htm" target="hmcontent"><span class="heading3" id="s6.6.6">Results</span></a>
+<li class="heading3" id="i6.6.5" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading3" id="a6.6.5" href="pm_high-x_concentrating_pv.htm" target="hmcontent"><span class="heading3" id="s6.6.5">Results</span></a>
 </li>
 </ul>
 </li>
@@ -497,6 +460,8 @@
 <li class="heading2" id="i18.4" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading2" id="a18.4" href="iph_trough-collectors.htm" target="hmcontent"><span class="heading2" id="s18.4">Collectors (SCAs)</span></a>
 </li>
 <li class="heading2" id="i18.5" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading2" id="a18.5" href="iph_trough-receivers.htm" target="hmcontent"><span class="heading2" id="s18.5">Receivers (HCEs)</span></a>
+</li>
+<li class="heading2" id="i18.6" style="background:url(toc.png) no-repeat;padding-left:5px" onclick="return clicked(this,event)"><a class="heading2" id="a18.6" href="iph_trough-tes.htm" target="hmcontent"><span class="heading2" id="s18.6">Thermal Storage</span></a>
 </li>
 </ul>
 </li>
