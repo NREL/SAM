@@ -59,8 +59,6 @@ class wxButton;
 class wxTextCtrl;
 class wxCheckbox;
 class wxSearchCtrl;
-//class wxDirPickerCtrl;
-//class wxFileDirPickerEvent;
 
 class NSRDBDialog : public wxDialog
 {
@@ -87,10 +85,11 @@ public:
 		wxString interval; // 30 or 60 
 		wxString location; // lat and lon
 		wxString display;
+		wxString attributes; // limit coumn and file size to SAM specific per NSRDB
 		bool is_selected;
 		bool is_visible;
-		LinkInfo(wxString &_n, wxString &_dn, wxString &_t, wxString &_y, wxString &_u, wxString &_i, wxString &_l)
-			: name(_n), displayName(_dn), type(_t), year(_y), URL(_u), interval(_i), location(_l)
+		LinkInfo(wxString &_n, wxString &_dn, wxString &_t, wxString &_y, wxString &_u, wxString &_i, wxString &_l, wxString &_a)
+			: name(_n), displayName(_dn), type(_t), year(_y), URL(_u), interval(_i), location(_l), attributes(_a)
 		{
 			display = location + "_" + name + "_" + type + "_" + interval + "_" + year;
 			is_visible = true;
@@ -144,11 +143,9 @@ public:
 
 private:
 	void OnEvt(wxCommandEvent &);
-//	void OnDir(wxFileDirPickerEvent &);
 
 	void GetResources();
 	void RefreshList();
-//	bool LinkSortOrder(const LinkInfo &li1, const LinkInfo &li2);
 
 	std::vector<LinkInfo> m_links;
 	wxString m_weatherFile;
@@ -161,7 +158,6 @@ private:
 	wxTextCtrl *m_txtAddress;
 	wxCheckBox *m_chkFolder;
 	wxSearchCtrl *m_search;
-//	wxDirPickerCtrl *m_dirpicker;
 
 	DECLARE_EVENT_TABLE()
 };
