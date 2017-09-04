@@ -59,7 +59,6 @@
 #include <wx/checkbox.h>
 #include <wx/tokenzr.h>
 #include <wx/srchctrl.h>
-//#include <wx/filepicker.h>
 
 #include <wex/easycurl.h>
 #include <wex/jsonval.h>
@@ -84,11 +83,8 @@ BEGIN_EVENT_TABLE( NSRDBDialog, wxDialog )
 	EVT_BUTTON(ID_btnResources, NSRDBDialog::OnEvt)
 	EVT_BUTTON(ID_btnFolder, NSRDBDialog::OnEvt)
 	EVT_TEXT(ID_search, NSRDBDialog::OnEvt)
-
-//	EVT_BUTTON(ID_btnDownload, NSRDBDialog::OnEvt)
 	EVT_BUTTON(wxID_OK, NSRDBDialog::OnEvt)
 	EVT_CHECKLISTBOX(ID_chlResources, NSRDBDialog::OnEvt)
-//	EVT_DIRPICKER_CHANGED(ID_dirPicker, NSRDBDialog::OnDir)
 	EVT_BUTTON(wxID_HELP, NSRDBDialog::OnEvt)
 END_EVENT_TABLE()
 
@@ -106,7 +102,6 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 
 	m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));
 	m_btnChkAll = new wxButton(this, ID_btnChkAll, "Select all");
-//	m_btnChkFiltered = new wxButton(this, ID_btnChkFiltered, "Select filtered"); //cpg
 	m_btnChkPsm30 = new wxButton(this, ID_btnChkPsm30, "Select PSM 30-minute"); //cpg
 	m_btnChkPsm60 = new wxButton(this, ID_btnChkPsm60, "Select PSM hourly"); //cpg
 	m_btnChkNone = new wxButton(this, ID_btnChkNone, "Clear all");
@@ -164,8 +159,6 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 
 void NSRDBDialog::OnEvt( wxCommandEvent &e )
 {
-//extern void helpcontext( const wxString & ); // defined in sammdi.h
-
 	switch( e.GetId() )
 	{
 		case wxID_HELP:
@@ -333,13 +326,20 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 						{
 							int ndx = arychecked[i];
 							wxString url = m_links[ndx].URL;
+							// SAM specific attributes to minimize files size 
+							wxString attr = m_links[ndx].attributes;
 							wxString curstr = m_links[ndx].display;
 							//Download the weather file
 							pdlg.Update(i+1, "Downloading " + curstr + " from NSRDB...");
 #ifdef __DEBUG__
 			wxLogStatus("downloading (%d of %d): %s", (int)(i+1), (int)arychecked.Count(), (const char*)url.c_str());
 #endif
-							bool ok = curl.Get(url);
+							bool ok = curl.Get(url+attr);
+							// try without attributes
+							if (ok && (curl.GetDataAsString().Length() < 1000)) 
+							{
+								ok = curl.Get(url);
+							}
 							if (!ok)
 							{
 								wxMessageBox("Failed to download " + curstr + " from web service.");
@@ -405,6 +405,7 @@ void NSRDBDialog::RefreshList()
 	// refresh resource list and combo box for selected weather file
 	m_chlResources->Freeze();
 	m_cboWeatherFile->Freeze();
+	int chl_ndx = m_chlResources->GetTopItem();
 	m_chlResources->Clear();
 	m_cboWeatherFile->Clear();
 	for (size_t i = 0; i < m_links.size(); i++)
@@ -423,6 +424,7 @@ void NSRDBDialog::RefreshList()
 	}
 	m_cboWeatherFile->Thaw();
 	m_chlResources->Thaw();
+	if (chl_ndx > -1 && chl_ndx < (int)m_chlResources->GetCount()) m_chlResources->SetFirstItem(chl_ndx);
 }
 
 void NSRDBDialog::GetResources()
@@ -502,6 +504,17 @@ void NSRDBDialog::GetResources()
 		return;
 	}
 
+	// valid filename from loc (user entered value)
+	// replace spaces for SDK user friendly name
+	loc.Replace("\\", "_"); 
+	loc.Replace("/", "_"); 
+	loc.Replace(" ", "_");
+	loc.Replace(",", "_");
+	loc.Replace("(", "_"); 
+	loc.Replace(")", "_");
+
+
+
 	m_chlResources->Clear();
 	m_cboWeatherFile->Clear();
 	m_links.clear();
@@ -523,23 +536,22 @@ void NSRDBDialog::GetResources()
 			URL.Replace("youremail", "<USEREMAIL>");
 			// URL - min attributes for each type 
 			wxString attributes = "";
-			if (name.Trim() == "psm" && year.Trim() != "tmy")
+			if ((name.Trim() == "psm") && (year.Trim() != "tmy"))
 				attributes = "&attributes=dhi,dni,dew_point,surface_air_temperature_nwp,surface_pressure_background,surface_relative_humidity_nwp,wind_speed_10m_nwp";
-			else if (name.Trim() == "mts2")
+			else if ((name.Trim() == "mts2") || (name.Trim() == "mts2-tmy"))
 				attributes = "&attributes=dhi,dni,dew_point,temp_dryb,atm_pres,rel_hum,wind_spd";
-			else if (name.Trim() == "mts1")
+			else if (name.Trim() == "mts1") // untested
 				attributes = "&attributes=dhi,dni,dew_point,temp_dryb,atm_pres,rel_hum,wind_spd";
-			else if (name.Trim() == "suny-international")
+			else if (name.Trim() == "suny-international" && (year.Trim() != "tmy"))
 				attributes = "&attributes=dhi,dni,dew_point,surface_temperature,surface_pressure,relative_humidity,snow_depth,wspd";
 			else
 				attributes = "";
-			if (attributes.Len() > 0) URL += attributes;
 #ifdef __DEBUG__
 			wxLogStatus("link info: %s, %s, %s, %s, %s, %s", displayName.c_str(), name.c_str(), type.c_str(), year.c_str(), interval.c_str(), URL.c_str());
 #endif
 			// SAM does not recognize spectral datasets at this time
 			if (name.Lower() != "spectral-tmy") 
-				m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, loc));
+				m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, loc, attributes));
 		}
 	}
 }
