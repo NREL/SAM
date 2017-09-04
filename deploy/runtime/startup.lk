@@ -478,7 +478,7 @@ function setup_cst_physical_trough_pages()
 	 {'name'='Physical Trough Receiver Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receivers (HCEs)', 'help'='iph_trough-receivers' } );
-	 addpage( [[ 'Phys Trough Direct Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
+	 addpage( [[ 'Phys Trough Direct Storage' ]], { 'sidebar'='Thermal Storage', 'help'='iph_trough-tes' } );
 }
 
 
