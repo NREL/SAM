@@ -12,21 +12,15 @@
 <script type="text/javascript">
 <!--
     var defaulttopic="introduction.htm";
-    var query = window.location.search.substring(1), hash = window.location.hash, xssTest = /&#39;|&#x27;|&#34;|&#x22;|&quot;|&#61;|&#x3D;|%27|%22|%3d|:|&#58;|&#x3a;|=|%3a|3a;|58;|\/|'|"/i, cntxRX = /contextid=\d*/, cntxMatch = cntxRX.exec(query), cntxSrc = "";
+    var query = window.location.search.substring(1).replace(/:|&#58;|&#x3a;|\//g,"");
     if (query != "") {
-      if (typeof(hmGetContextId) != "undefined") {
-        if (cntxMatch != null) {
-		  cntxSrc = hmGetContextId(cntxMatch[0]);
-        };
-        if (cntxSrc != "") {
-          defaulttopic = cntxSrc;
-        } else {
-            if (!xssTest.test(query) && !xssTest.test(hash))
-               defaulttopic = query + hash;
-        }
-      }
+       defaulttopic = query + window.location.hash;
+       if (typeof(hmGetContextId) != "undefined") {
+         var tmpCntx = hmGetContextId(query);
+         if (tmpCntx != "") defaulttopic = tmpCntx;
+       }
     }
-document.write('<frameset cols="25%,*" frameborder="0" framespacing="1">');
+document.write('<frameset cols="240,*" frameborder="0" framespacing="1">');
 if (document.getElementById) {
   document.write('<frame name="hmnavigation" src="hmcontent.htm" title="Navigation frame">'); }
 else {
@@ -37,7 +31,7 @@ document.write('</frameset>');
 </script>
 </head>
 <noscript>
-  <frameset cols="25%,*" frameborder="0" framespacing="1">
+  <frameset cols="240,*" frameborder="0" framespacing="1">
     <frame name="hmnavigation" src="hmcontent.htm" title="Navigation frame">
     <frame name="hmcontent" src="introduction.htm" title="Content frame">
     <noframes>
