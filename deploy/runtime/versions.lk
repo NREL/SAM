@@ -62,14 +62,19 @@ version_upgrade{'2017.8.28'} = define() {
 	
 	if( cfg.tech == "Physical Trough IPH")
 	{
-		message("Version Notes:\nThis version includes an option for direct thermal energy storage."
-		" The default solar multiple has increased from 1 to 2.5"
-		" and the default for the new input hours of thermal storage is 6.\n"
-		"This version includes an input for the wind speed at which the trough is stowed."
-		" The default wind stow speed is 25 m/s");
-		value( 'tshours', 0, "This file was built in a previous version of SAM that did not allow for TES in the trough IPH configuration" );
-		value( 'wind_stow_speed', 100, "This file was built in a previous version of SAM that did not include a wind stow speed input,"
-		" so the input is increased to a value that a normal weather file will not reach" );
+		message("Version Notes:\nThis version of SAM adds direct thermal energy storage (TES) to the Physical Trough IPH model. "
+		"The default values for the following inputs have changed or are new in this version:<ul><li>We have changed default solar "
+		"multiple from 1 to 2.5 to account for the addition of TES.</li>"
+		"<li>The new hours of storage input has a default value of 6 hours</li>\n"
+		"<li>The new wind stow speed input has a default value of 25 m/s</li></ul>"
+		"You will see these default values when you create a new Physical Trough IPH case in this version of SAM. "
+		"The values in your file may differ from the default values.");
+		value( 'tshours', 0, "This file was created in a version of SAM that does not include TES for the Physical Trough "
+		"IPH model. We have set the storage capacity to zero so your results in this version are consistent with the "
+		"older version. You can add storage to your system by changing the storage capacity on the Thermal Storage input page." );
+		value( 'wind_stow_speed', 100, "This file was created with a version of SAM that does not have a wind stow speed "
+		"variable. We have set its value to 100 m/s so that the stow speed is never achieved to ensure the results in this version "
+		"are consistent with the older version. You can change the value on the Solar Field input page" );
 	}
 };
 
