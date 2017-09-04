@@ -7,8 +7,6 @@
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="description" content="The Power Block page allows you to specify the parameters of a power block that converts thermal energy from the geothermal resource to electric energy using a conventional..." />
-   <meta name="picture" content="" />
    <link type="text/css" href="default.css" rel="stylesheet" />
    <style type="text/css">
      body { margin: 0px; background: #FFFFFF; }
@@ -28,10 +26,10 @@
 <body>
 
 
-<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF">
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
-    <td style="text-align:left; color:#0072C6; font-family:segoe ui">
-      <h1 class="p_Heading1" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Heading1">Power Block</span></h1>
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Power Block</span></h1>
 
     </td>
   </tr>
@@ -61,12 +59,12 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The fraction of the steam mass flow rate in the power cycle that is extracted and replaced by fresh water. This fraction is multiplied by the steam mass flow rate in the power cycle for each hour of plant operation to determine the total required quantity of power cycle makeup water. The blowdown fraction accounts for water use related directly to replacement of the steam working fluid. The default value of 0.013 for the wet-cooled case represents makeup due to blowdown quench and steam cycle makeup during operation and startup. A value of 0.016 is appropriate for dry-cooled systems to account for additional wet-surface air cooling for critical Rankine cycle components.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Cooling System</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Condenser type</span></p>
-<p style="margin: 0px 0px 6px 24px;">Choose either an air-cooled condenser (dry cooling), evaporative cooling (wet cooling), or hybrid cooling system.</p>
-<p style="margin: 0px 0px 6px 24px;">In hybrid cooling a wet-cooling system and dry-cooling share the heat rejection load. Although there are many possible theoretical configurations of hybrid cooling systems, SAM only allows a parallel cooling option. </p>
+<p style="margin: 0px 0px 6px 24px;"><span style="font-family: Verdana,Geneva,Arial,sans-serif;">Choose either an air-cooled condenser (dry cooling), evaporative cooling (wet cooling), or hybrid cooling system.</span></p>
+<p style="margin: 0px 0px 6px 24px;"><span style="font-family: Verdana,Geneva,Arial,sans-serif;">In hybrid cooling a wet-cooling system and dry-cooling share the heat rejection load. Although there are many possible theoretical configurations of hybrid cooling systems, SAM only allows a parallel cooling option. </span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Hybrid Dispatch</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For hybrid cooling, the hybrid dispatch table specifies how much of the cooling load should be handled by the wet-cooling system for each of 6 periods in the year. The periods are specified in the matrices. Each value in the table is a fraction of the design cooling load. For example, if you want 60% of heat rejection load to go to wet cooling in Period 1, type 0.6 for Period 1, and then user your mouse to select the hours and months in the schedule that Period 1 applies, and type the number 1. See <a href="tod_factors.htm" class="topiclink">Time of Delivery Factors</a> for step-by-step instructions for using assigning periods to a schedule matrix. </span></p>
-<p style="margin: 0px 0px 6px 24px;">Directing part of the heat rejection load to the wet cooling system reduces the total condenser temperature and improves performance, but increases the water requirement. SAM sizes the wet-cooling system to match the maximum fraction that you specify in the hybrid dispatch table, and sizes the air-cooling system to meet the full cooling load.</p>
-<p class="p_Note"><span class="f_CHNote">Note.</span> The hybrid dispatch option only works with the hourly power block model. The option does not work with the monthly or GETEM power block model.</p>
+<p style="margin: 0px 0px 6px 24px;"><span style="font-family: Verdana,Geneva,Arial,sans-serif;">Directing part of the heat rejection load to the wet cooling system reduces the total condenser temperature and improves performance, but increases the water requirement. SAM sizes the wet-cooling system to match the maximum fraction that you specify in the hybrid dispatch table, and sizes the air-cooling system to meet the full cooling load.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span style="font-family: Verdana,Geneva,Arial,sans-serif;"> The hybrid dispatch option only works with the hourly power block model. The option does not work with the monthly or GETEM power block model.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ambient temperature at design (ºC)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The ambient temperature at which the power cycle operates at its design-point-rated cycle conversion efficiency. For the air-cooled condenser option, use a dry bulb ambient temperature value. For the evaporative condenser, use the wet bulb temperature.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ref. Condenser Water dT (ºC)</span></p>
