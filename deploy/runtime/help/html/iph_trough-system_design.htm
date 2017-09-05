@@ -46,13 +46,13 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The direct normal irradiance (DNI) available at the design point.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Increasing this value indicates that fewer heliostats are needed to achieve the reference condition power, while decreasing this value has the opposite effect. The design-point DNI value should represent the DNI at which your plant should achieve the specified thermal rating, including thermal and piping losses </span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For design-point calculations involving solar irradiance, SAM uses the design-point DNI value with the sun position at noon on the summer solstice (June 21 north of the equator, and December 21 south of the equator).</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Target Solar multiple</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Target solar multiple</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The design ratio of the target receiver thermal power and heat sink power. This value can be used to oversize the receiver design output relative to the heat sink.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Target receiver thermal power, MWt</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The thermal power required at the receiver outlet to meet the design thermal load.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Receiver Thermal Power (MWt) = Solar Multiple × Heat Sink Power (MWt)</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Loop inlet HTF temperature (ºC)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The temperature of HTF at the loop inlet under design conditions. The actual temperature during operation may differ from this value. SAM sets the power cycle's design outlet temperature equal to this value.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The temperature of HTF at the loop inlet under design conditions. The actual temperature during operation may differ from this value.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Loop outlet HTF temperature (ºC)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The temperature of the HTF at the outlet of the loop under design conditions. During operation, the actual value may differ from this set point. This value represents the target temperature for control of the HTF flow through the solar field and will be maintained when possible.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Heat Sink</span></h4>
@@ -63,6 +63,9 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The electricity consumption per unit of mass flow rate associated with pumping the HTF through the heat sink.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Choose Number of Loops</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">This macro allows the user to specify the number of loops in the simulation. The macro then calculates the corresponding heat sink power and gives the user the option to set it as the new input.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Thermal Storage</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Hours of storage at design point, hours</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nominal thermal storage capacity expressed in hours at full load: The number of hours that the storage system can supply energy at the design point.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Availability and Curtailment</span></h4>
 <p class="p_Text"><span class="f_Text">Use curtailment and availability losses to represent reductions in the system's output or complete system outages for maintenance, forced outages due to grid constraints, or other situations that prevent the system from operating as designed.</span></p>
 <p class="p_Text"><span class="f_Text">To edit the curtailment and availability losses, click </span><span class="f_CHInterfaceElement">Edit losses</span><span class="f_Text">.</span></p>
