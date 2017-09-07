@@ -73,4 +73,4 @@ For example, if you made changes to how the weather file processor works with so
 
 # License
 
-SAM is licensed uder a mixed MIT/GPL V3 [license](LICENSE.md).
+SAM's open source code is copyrighted by the Alliance for Sustainable Energy and licensed under a [mixed MIT and GPLv3 license](LICENSE.md). It allows for-profit and not-for-profit organizations to develop and redistribute software based on SAM under terms of an MIT license and requires that research entities including national laboratories, colleges and universities, and non-profit organizations make the source code of any redistribution publicly available under terms of a GPLv3 license. .
