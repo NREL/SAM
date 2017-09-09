@@ -12,6 +12,8 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 * [WEX](https://github.com/nrel/wex) is a set of exensions to wxWidgets for custom user-interface elements used by SAM, and by LKscript and DView, which are integrated into SAM.
 
+* [Google Test](https://github.com/google/googletest) is a C++ test framework that enables comprehensive unit-testing of software.  Contributions to the project will eventually be required to have associated unit tests written in this framework.
+
 * **SAM** provides the user interface to assign values to inputs of the SSC compute modules, run the modules in the correct order, and display simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimenional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
 
 # Quick Steps for Building SAM
@@ -43,7 +45,8 @@ These are the general quick steps you need to follow to set up your computer for
 <tr><td>LK</td><td>https://github.com/NREL/lk</td><td>LKDIR</td></tr>
 <tr><td>WEX</td><td>https://github.com/NREL/wex</td><td>WEXDIR</td></tr>
 <tr><td>SSC</td><td>https://github.com/NREL/ssc</td><td>SSCDIR</td></tr>
-<tr><td>SAM</td><td>https://github.com/NREL/SAM-private</td><td>SAMNTDIR</td></tr>
+<tr><td>SAM</td><td>https://github.com/NREL/SAM</td><td>SAMNTDIR</td></tr>
+ <tr><td>GOOGLE TEST</td><td>https://github.com/google/googletest</td><td>GTEST</td></tr>
 </table>
 
 # Contributing
