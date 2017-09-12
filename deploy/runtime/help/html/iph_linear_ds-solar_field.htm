@@ -7,8 +7,6 @@
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="description" content="System Design Point Parameters These values are from the System Design page are for reference. Solar Field Design Point Solar Field Parameters Number of modules in boiler secti" />
-   <meta name="picture" content="" />
    <link type="text/css" href="default.css" rel="stylesheet" />
    <style type="text/css">
      body { margin: 0px; background: #FFFFFF; }
@@ -28,10 +26,10 @@
 <body>
 
 
-<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF">
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
-    <td style="text-align:left; color:#0072C6; font-family:segoe ui">
-      <h1 class="p_Heading1" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Heading1">Solar Field</span></h1>
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Solar Field</span></h1>
 
     </td>
   </tr>
@@ -55,7 +53,7 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Collector azimuth angle (degrees)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The azimuth angle of all collectors in the field, where zero degrees is pointing toward the equator, equivalent to a north-south axis. West is 90 degrees, and east is -90 degrees. SAM assumes that the collectors are oriented 90 degrees east of the azimuth angle in the morning and track the daily movement of the sun from east to west.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The collector azimuth angle variable is not active with the </span><span class="f_CHInterfaceElement">Solar position table option</span><span class="f_VariableDescription"> on the <a href="iph_linear_ds-collector_receiver.htm" class="topiclink">Collector and Receiver page</a>. The variable is only active with either the two incidence angle options for specifying the solar field.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design point ambient temperature, </span><span style="font-weight: bold;">°C</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design point ambient temperature, </span><span style="font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">°C</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The reference ambient temperature for the solar field, used as a basis for calculating thermal losses from the receivers and piping. Note that this value is not used as a reference for receiver thermal losses if the evacuated tube receiver option is selected on the Collector and Receiver page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Tracking Power &nbsp;(W/m2)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The electric power in Watts per area of collector aperture required by the tracking mechanism of each collector in the field during hours of operation.</span></p>
@@ -90,7 +88,7 @@
 <p class="p_EquationExcel"><span class="f_EquationExcel">Solar Field Area (acres) = Actual Aperture (m²) × Row Spacing (m) / Maximum SCA Width (m) × 0.0002471 (acres/m²)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The maximum SCA width is the aperture width of SCA with the widest aperture in the field, as specified in the loop configuration and on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors (SCA)</a> page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Non-solar field land area multiplier</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Land area required for the system excluding the solar field land area, expressed as a fraction of the solar field aperture area. A value of one would result in a total land area equal to the total aperture area. The default value is 1.4.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Land area required for the system excluding the solar field land area, expressed as a fraction of the solar field aperture area. A value of one would result in a total land area equal to the total aperture area.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total land area, acres</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Land area required for the entire system including the solar field land area</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Total Land Area (acres) = Solar Field Area (acres) × (1 + Non-Solar Field Land Area Multiplier)</span></p>

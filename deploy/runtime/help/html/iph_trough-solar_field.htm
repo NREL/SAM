@@ -7,8 +7,6 @@
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="description" content="System Design Point Parameters These values are from the System Design page are for reference. Solar Field Design Point The design point variables show values at the Irradiation" />
-   <meta name="picture" content="" />
    <link type="text/css" href="default.css" rel="stylesheet" />
    <style type="text/css">
      body { margin: 0px; background: #FFFFFF; }
@@ -28,10 +26,10 @@
 <body>
 
 
-<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF">
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
-    <td style="text-align:left; color:#0072C6; font-family:segoe ui">
-      <h1 class="p_Heading1" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Heading1">Solar Field</span></h1>
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Solar Field</span></h1>
 
     </td>
   </tr>
@@ -80,6 +78,8 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The electrical-to-mechanical energy conversion efficiency of the field heat transfer fluid pump. This value accounts for all mechanical, thermodynamic, and electrical efficiency losses.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Piping thermal loss coefficient (W/m</span><span class="f_VariableName" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableName">-K)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The thermal loss coefficient that is used to calculate thermal losses from piping between receivers, crossover piping, header piping, and runner piping. The coefficient specifies the number of thermal watts lost from the system as a function of the piping surface area, and the temperature difference between the fluid in the piping and the ambient air (dry bulb temperature). The length of crossover piping depends on the row spacing variable above, and the piping distance between assemblies on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Wind stow speed, m/s</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">When the wind speed in the weather file exceeds this value, the collectors in field defocus and the field thermal power incident on the field goes to zero to model the effect of collectors moving to a safe position to avoid wind damage. When the wind speed falls below the wind stow speed, the field power returns to normal.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Tracking power (W/sca)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The amount of electrical power consumed by a single collector tracking mechanism. SAM only calculates tracking losses during hours when collectors are actively tracking the sun. The total field tracking power is calculated by multiplying this value by the number of loops in the field and number of assemblies per loop.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total tracking power</span></p>
@@ -271,7 +271,7 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Freeze protection temp (ºC)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum temperature that the heat transfer fluid is allowed to reach in the field. The temperature at which freeze protection equipment is activated.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM assumes that electric heat trace equipment maintains the fluid at the freeze protection temperature during hours that freeze protection is operating.</span><span class="f_VariableName">Design loop inlet temp (ºC)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The temperature of HTF at the loop inlet under design conditions. The actual temperature during operation may differ from this value. SAM sets the power cycle's design outlet temperature equal to this value.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The temperature of HTF at the loop inlet under design conditions. The actual temperature during operation may differ from this value.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Min single loop flow rate (kg/s)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum allowable flow rate through a single loop in the field.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">During time steps that produce a solar field flow rate that falls below the minimum value, the HTF temperature leaving the solar field will be reduced in temperature according to the heat added and minimum mass flow rate.</span></p>
@@ -314,14 +314,14 @@
 <p class="p_EquationExcel"><span class="f_EquationExcel">Solar Field Area (acres) = Actual Aperture (m²) × Row Spacing (m) / Maximum SCA Width (m) × 0.0002471 (acres/m²)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The maximum SCA width is the aperture width of SCA with the widest aperture in the field, as specified in the loop configuration and on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors (SCA)</a> page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Non-solar field land area multiplier</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Land area required for the system excluding the solar field land area, expressed as a fraction of the solar field aperture area. A value of one would result in a total land area equal to the total aperture area. The default value is 1.4.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Land area required for the system excluding the solar field land area, expressed as a fraction of the solar field aperture area. A value of one would result in a total land area equal to the total aperture area.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total land area, acres</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Land area required for the entire system including the solar field land area</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Total Land Area (acres) = Solar Field Area (acres) × (1 + Non-Solar Field Land Area Multiplier)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The land area appears on the System Costs page, where you can specify land costs in dollars per acre.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Single Loop Configuration</span></h3>
 <p class="p_Text"><span class="f_Text">The loop configuration and collector defocusing for the process heat trough model is the same as for the CSP physical trough model. For details about loop configuration. For details, see:</span></p>
-<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_List"><a href="troughphysical_solar_field.htm#physical_sfloopconfiguration" class="topiclink">Specifying the Loop Configuration</a></span></p><p style="text-align: left; text-indent: 0px; page-break-inside: avoid; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_ListLast"><a href="troughphysical_solar_field.htm#physical_sfcollectordefocusing" class="topiclink">Defining Collector Defocusing</a></span></p><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of SCA/HCE assemblies per loop</span></p>
+<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List"><a href="troughphysical_solar_field.htm#physical_sfloopconfiguration" class="topiclink">Specifying the Loop Configuration</a></span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast"><a href="troughphysical_solar_field.htm#physical_sfcollectordefocusing" class="topiclink">Defining Collector Defocusing</a></span></p><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of SCA/HCE assemblies per loop</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The number of individual solar collector assemblies (SCAs) in a single loop of the field. Computationally, this corresponds to the number of simulation nodes in the loop. </span><span class="f_TableTextLeft">See <a href="troughphysical_solar_field.htm#physical_sfloopconfiguration" class="topiclink">Specifying the Loop Configuration</a> for details.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Edit SCAs</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit SCAs</span><span class="f_VariableDescription"> to assign an SCA type number (1-4) to each of the collectors in the loop. Use your mouse to select collectors, and type a number on your keyboard to assign a type number to the selected collectors. SAM indicates the SCA type by coloring the rectangle representing the collector in the diagram, and displaying the type number after the word &quot;SCA.&quot; </span></p>
