@@ -105,8 +105,10 @@ function extrapolate(values, option){
 	slope = values[1] - values[0];
 	result = values[1] + slope;
 	if (option == 'wind'){
-		if (result > 360) result -= 360;
-		if (result < 0) result += 360;
+		if (result != 999){
+			if (result > 360) result -= 360;
+			if (result < 0) result += 360;
+		}
 	}
 	return result;
 }
@@ -635,6 +637,7 @@ function interpolate_file(input_file, intervals_per_hour){
 	if (intd == true){
 		org_name = left(input_name, strlen(input_name)-16) + ".csv";
 		org_found = file_exists(input_path + "/" + org_name);
+		if (org_found == 1) org_file = input_path + "/" + org_name;
 		// try to find in solar resource file in downloaded folder or in solar_resource folder
 		dir = cwd();
 		dir = left(dir, strlen(dir)-3);
