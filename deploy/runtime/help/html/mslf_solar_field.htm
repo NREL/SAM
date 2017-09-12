@@ -7,8 +7,6 @@
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="description" content="Solar Field Parameters Option 1 and Option 2 For Option 1 (solar multiple mode), SAM calculates the total required aperture and number of loops based on the value you enter for..." />
-   <meta name="picture" content="" />
    <link type="text/css" href="default.css" rel="stylesheet" />
    <style type="text/css">
      body { margin: 0px; background: #FFFFFF; }
@@ -28,10 +26,10 @@
 <body>
 
 
-<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF">
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
-    <td style="text-align:left; color:#0072C6; font-family:segoe ui">
-      <h1 class="p_Heading1" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Heading1">Solar Field</span></h1>
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Solar Field</span></h1>
 
     </td>
   </tr>
@@ -49,7 +47,7 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The total solar energy collection area of the solar field in square meters. Note that this is less than the total mirror surface area.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Irradiation at design, W/m²</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The design point direct normal radiation value, used in solar multiple mode to calculate the aperture area required to drive the power cycle at its design capacity. Also used to calculate the design mass flow rate of the heat transfer fluid for header pipe sizing. See Sizing the Solar Field for details.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design point ambient temperature, </span><span style="font-weight: bold;">°C</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design point ambient temperature, </span><span style="font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">°C</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The reference ambient temperature for the solar field, used as a basis for calculating thermal losses from the receivers and piping. Note that this value is not used as a reference for receiver thermal losses if the evacuated tube receiver option is selected on the Collector and Receiver page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design point wind velocity, m/s</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The wind velocity at which receiver heat loss performance is evaluated for the design point (if applicable). This value is used to calculate receiver thermal loss at design when the Polynomial heat loss model is used on the Collector and Receiver page under the Receiver Geometry and Heat Loss group.</span></p>
@@ -87,7 +85,7 @@
 <p class="p_EquationExcel"><span class="f_EquationExcel">Solar Field Area (acres) = Actual Aperture (m²) × Row Spacing (m) / Maximum SCA Width (m) × 0.0002471 (acres/m²)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The maximum SCA width is the aperture width of SCA with the widest aperture in the field, as specified in the loop configuration and on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors (SCA)</a> page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Non-solar field land area multiplier</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Land area required for the system excluding the solar field land area, expressed as a fraction of the solar field aperture area. A value of one would result in a total land area equal to the total aperture area. The default value is 1.4.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Land area required for the system excluding the solar field land area, expressed as a fraction of the solar field aperture area. A value of one would result in a total land area equal to the total aperture area.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total land area, acres</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Land area required for the entire system including the solar field land area</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Total Land Area (acres) = Solar Field Area (acres) × (1 + Non-Solar Field Land Area Multiplier)</span></p>

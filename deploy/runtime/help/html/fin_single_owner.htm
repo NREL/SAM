@@ -7,8 +7,6 @@
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="description" content="This topic describes the inputs on the Financial Parameters page for the Single Owner financial model. For a general description of the model, see Financial Models." />
-   <meta name="picture" content="" />
    <link type="text/css" href="default.css" rel="stylesheet" />
    <style type="text/css">
      body { margin: 0px; background: #FFFFFF; }
@@ -28,10 +26,10 @@
 <body>
 
 
-<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF">
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
-    <td style="text-align:left; color:#0072C6; font-family:segoe ui">
-      <h1 class="p_Heading1" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Heading1">Single Owner</span></h1>
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Single Owner</span></h1>
 
     </td>
   </tr>
@@ -45,7 +43,7 @@
 <p class="p_Text"><span class="f_Text">The Solution Mode inputs are where you determine how SAM calculates the PPA price, IRR, and other results that appear in the Metrics table on the <a href="summary.htm" class="topiclink">Summary</a> page.</span></p>
 <p class="p_Text"><span class="f_Text">The PPA price is the bid price in a power purchase agreement (PPA), and is the price that the project receives for each unit of electricity that the system generates. The internal rate of return (IRR) is a measure of the project's profitability, and is defined as the nominal discount rate that corresponds to a net present value of zero.</span></p>
 <p class="p_Text"><span class="f_Text">The solution mode determines whether SAM calculates a PPA price based on an IRR target that you specify, or an IRR based on a PPA price that you specify:</span></p>
-<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_CHInterfaceElement">Specify IRR Target</span><span class="f_List"> allows you to specify the IRR as an input, and SAM uses a search algorithm to find the PPA price required to meet the target IRR.</span></p><p style="text-align: left; text-indent: 0px; page-break-inside: avoid; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_CHInterfaceElement">Specify PPA Price</span><span class="f_ListLast"> allows you to specify the <a href="mtf_ppa_price.htm" class="topiclink">PPA price</a> as an input, and SAM calculates the resulting <a href="mtf_irr.htm" class="topiclink">IRR</a>.</span></p><h4 class="p_Heading4"><span class="f_Heading4">Solution Mode 1: Specify IRR Target</span></h4>
+<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Specify IRR Target</span><span class="f_List"> allows you to specify the IRR as an input, and SAM uses a search algorithm to find the PPA price required to meet the target IRR.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Specify PPA Price</span><span class="f_ListLast"> allows you to specify the <a href="mtf_ppa_price.htm" class="topiclink">PPA price</a> as an input, and SAM calculates the resulting <a href="mtf_irr.htm" class="topiclink">IRR</a>.</span></p><h4 class="p_Heading4"><span class="f_Heading4">Solution Mode 1: Specify IRR Target</span></h4>
 <p class="p_Text"><span class="f_Text">The Specify IRR Target option allows you to specify an IRR target value and the year that you would like the IRR to be achieved. SAM finds the <a href="mtf_ppa_price.htm" class="topiclink">PPA price</a> required to meet the target given your assumptions including financial parameters, <a href="incentives.htm" class="topiclink">incentives</a> and <a href="depreciation.htm" class="topiclink">depreciation</a>, and the project's <a href="system_costs.htm" class="topiclink">system costs</a>.</span></p>
 <p class="p_Text"><span class="f_Text">SAM uses an iterative algorithm to search for the PPA price that meets the IRR target in the year you specify. If it cannot find a solution, it finds the PPA price that results in an IRR and year as close as possible to the target values.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">IRR target</span></p>
@@ -54,7 +52,7 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The year in which you want the target IRR to be achieved. For the partnership flip options, this is the flip year when project returns switch from the tax investor (pre-flip) to the developer (post-flip).</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Solution Mode 2: Specify PPA Price</span></h4>
 <p class="p_Text"><span class="f_Text">The Specify PPA Price option allows you to specify the PPA price. SAM calculates the resulting <a href="mtf_irr.htm" class="topiclink">IRR</a>:</span></p>
-<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_List">For the Single Owner model, SAM calculates the project IRR.</span></p><p style="text-align: left; text-indent: 0px; page-break-inside: avoid; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_ListLast">For All Equity and Leveraged Partnership Flip, and Sale Leaseback models that involve two parties, SAM calculates two IRR values: One from the tax investor perspective, and one from the developer perspective. For the partnership flip options, SAM also calculates the flip year when project returns switch from the tax investor to the developer.</span></p><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">PPA Price</span></p>
+<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">For the Single Owner model, SAM calculates the project IRR.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">For All Equity and Leveraged Partnership Flip, and Sale Leaseback models that involve two parties, SAM calculates two IRR values: One from the tax investor perspective, and one from the developer perspective. For the partnership flip options, SAM also calculates the flip year when project returns switch from the tax investor to the developer.</span></p><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">PPA Price</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The power price in dollars per kWh. This is the price that would be negotiated as part of a power purchase agreement. </span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Regardless of the solution mode you choose, the PPA price is associated with the annual PPA price escalation rate if it increases from year to year, and the set of multipliers defined on the <a href="tod_factors.htm" class="topiclink">Time of Delivery Factors</a> page. Be sure to use the &quot;Uniform Dispatch&quot; option for projects that do not involve time-of-delivery adjustments to the PPA price.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">IRR target year</span></p>
@@ -150,9 +148,9 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The debt percent option allows you to specify the size of debt as a fraction of the installed cost.</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table style="border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:264px; padding:4px;"><p class="p_EquationExcel"><span class="f_EquationExcel">size of debt = debt percent / 100 × (</span></p>
+<td style="vertical-align:top; width:264px; padding:0px;"><p class="p_EquationExcel"><span class="f_EquationExcel">size of debt = debt percent / 100 × (</span></p>
 </td>
-<td style="vertical-align:top; padding:4px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-style: italic;">total installed cost </span><br />
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-style: italic;">total installed cost </span><br />
 <span class="f_TableTextLeft" style="font-style: italic;">+ total construction financing cost</span><br />
 <span class="f_TableTextLeft" style="font-style: italic;">- total IBI amount</span><br />
 <span class="f_TableTextLeft" style="font-style: italic;">- total CBI amount )</span></p>
@@ -164,12 +162,12 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM displays the weighted average cost of capital (WACC) for reference (see below).</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM reports the size of <a href="mtf_debt_and_equity.htm#debt" class="topiclink">debt</a> and minimum debt service coverage ratio in the Metrics table on the <a href="summary.htm" class="topiclink">Summary</a> page after you run simulations.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For the debt percent option, you can choose the amortization schedule:</span></p>
-<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Equal payments (standard amortization)</span><span class="f_VariableDescription">  </span><br />
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Equal payments (standard amortization)</span><span class="f_VariableDescription"> &nbsp;</span><br />
 <span class="f_VariableDescription">The size of annual debt payments remains constant over the debt payment period, the annual interest payment decreases each year with the unpaid balance, and the annual principal payment increases.</span></p>
-<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Fixed principal declining interest</span><span class="f_VariableDescription">  </span><br />
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Fixed principal declining interest</span><span class="f_VariableDescription"> &nbsp;</span><br />
 <span class="f_VariableDescription">The size of annual principal payments remains constant over the debt payment period, and the size of annual interest payments decreases with the unpaid balance so that the total annual payment decreases over the payment period.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For the debt percent option, you can also specify moratorium on debt principal payments:</span></p>
-<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Moratorium</span><span class="f_VariableDescription">  </span><br />
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Moratorium</span><span class="f_VariableDescription"> &nbsp;</span><br />
 <span class="f_VariableDescription">The number of years starting at the beginning of the debt payment period (Year 1 of the project cash flow) before debt principal payments begin. For example, for a moratorium of 5 years and a 20-year debt period, principal payments would begin in Year 6 and end in Year 20.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">DSCR (Debt Service Coverage Ratio)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The DSCR option allows you to specify the size of debt using the DSCR. The DSCR is the ratio of annual cash available for debt service (CAFDS) to the sum of the annual principal and interest payment. For a given year, the total annual debt payment (principal and interest) is:</span></p>
