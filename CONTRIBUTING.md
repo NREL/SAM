@@ -4,9 +4,9 @@ You can contribute to SAM by letting us know about problems or suggesting new fe
 
 ## Let us know about a problem or suggest a new feature
 
-If you find a problem with SAM, or would like to request a new feature, let us know by [submitting an issue](https://github.com/NREL/SAM/issues).
+If you find a problem with SAM, or would like to request a new feature, let us know by [submitting an issue](https://github.com/NREL/SAM/issues/new).
 
-If you have a question about using SAM, you can ask us on the [SAM support forum](sam.nrel.gov/support).
+If you have a question about using SAM, you can ask us on the [SAM support forum](https://sam.nrel.gov/support).
 
 ## Contribute code to the SAM project
 
