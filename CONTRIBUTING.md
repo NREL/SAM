@@ -32,7 +32,7 @@ Here are the steps we would like you to follow when you contribute code to SAM:
 
 ### Resources for Learning GitHub
 
-If you are new to GitHub, you can find helpful articles to help you learn how it works on the web. Some examples include:
+If you are new to GitHub, you can find helpful articles to help you learn how it works on the web. Some examples are:
 
 * [Using the Fork-and-Branch Git Workflow](https://blog.scottlowe.org/2015/01/27/using-fork-branch-git-workflow/) from Scott's Weblog is a good introduction.
 
@@ -56,4 +56,4 @@ For now, you can help to ensure that your code works with the rest of SAM by:
 
 3. Runing simulations in the compiled program with several configurations.
 
-For example, if you made changes to how the weather file processor works with solar resource data, you might want to run simulations with the different photovoltaic, concentrating solar power, and solar hot water heating model to make sure those models all work with your new code.
+For example, if you made changes to how the weather file processor works with solar resource data, you might want to run simulations with the photovoltaic, concentrating solar power, and solar hot water heating models to make sure those models all work with your new code.
