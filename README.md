@@ -14,7 +14,7 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 * [Google Test](https://github.com/google/googletest) is a C++ test framework that enables comprehensive unit-testing of software.  Contributions to the project will eventually be required to have associated unit tests written in this framework.
 
-* **SAM** provides the user interface to assign values to inputs of the SSC compute modules, run the modules in the correct order, and display simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimenional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
+* This repository, **SAM**, provides the user interface to assign values to inputs of the SSC compute modules, run the modules in the correct order, and display simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimenional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
 
 # Quick Steps for Building SAM
 
@@ -46,33 +46,14 @@ These are the general quick steps you need to follow to set up your computer for
 <tr><td>WEX</td><td>https://github.com/NREL/wex</td><td>WEXDIR</td></tr>
 <tr><td>SSC</td><td>https://github.com/NREL/ssc</td><td>SSCDIR</td></tr>
 <tr><td>SAM</td><td>https://github.com/NREL/SAM</td><td>SAMNTDIR</td></tr>
- <tr><td>GOOGLE TEST</td><td>https://github.com/google/googletest</td><td>GTEST</td></tr>
+<tr><td>Google Test</td><td>https://github.com/google/googletest</td><td>GTEST</td></tr>
 </table>
 
 # Contributing
 
 If you would like to report an issue with SAM or make a feature request, please let us know by adding a new issue on the [issues page](https://github.com/NREL/SAM/issues).
 
-If you would like to submit code to fix an issue or add a feature, you can use GitHub to do so. The overall steps are:
-
-1. Install GitHub on your computer.
-2. Create a fork on GitHub.com using the link above.
-3. Clone your fork to create a local copy on your computer.
-4. Create a branch for your changes.
-5. Make your changes to the code.
-6. Build SAM and test it to make sure your code works as expected (see below).
-7. Commit and push the changes to your fork.
-8. Create a pull request that we will review and merge into the repository if approved.
-
-We have not yet set up a test framework for the open-source project. We eventually hope to create a framework that will automatically test your commits to ensure that your contribution does not cause any problems with the software. For now, you can help to ensure that your code works with the rest of SAM by:
-
-1. Compile SAM with your contribution for Windows, Mac, and Linux.
-
-3. Fix any compiler warning messages.
-
-3. Run simulations in the compiled program with several configurations.
-
-For example, if you made changes to how the weather file processor works with solar resource data, you might want to run simulations with the different photovoltaic, concentrating solar power, and solar hot water heating model to make sure those models all work with your new code.
+If you would like to submit code to fix an issue or add a feature, you can use GitHub to do so. Please see [Contributing](CONTRIBUTING.md) for instructions.
 
 # License
 
