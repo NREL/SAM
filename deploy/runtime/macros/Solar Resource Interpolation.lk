@@ -163,6 +163,10 @@ function parse_header(arr){
 			}
 		}
 	}
+	if (cols[0] == -1 || cols[1] == -1 || cols[2] == -1 || cols[3] == -1){
+		msgbox("File missing Year, Month, Day or Hour columns.");
+		exit;
+	}
 	return cols;
 }
 
@@ -292,13 +296,17 @@ function intrp_data(input_data, ts){
 			if (prev==[0]) prev = arr;
 			else{
 				for (i=0; i<#cols; i++){
-					if (i<4) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'noslope');
-					else if (i==4) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'minute');
-					else if (i==5) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'wind');
-					else result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, '');
-					for (j=0; j<#result; j++){
-						output[line+inc+j][cols[i]] = result[j];
-					}
+					
+						if (i<4) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'noslope');
+						else if (i==4) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'minute');
+						else if (i==5){
+							if (cols[i] != -1) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'wind');
+							else continue;
+						}
+						else result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, '');
+						for (j=0; j<#result; j++){
+							output[line+inc+j][cols[i]] = result[j];
+						}
 				}
 				inc = inc + (ts);
 				prev = arr;
@@ -326,8 +334,13 @@ function intrp_data(input_data, ts){
 			}
 		}
 		else if (i==5){
-			ext[cols[i]] = extrapolate([pprev[cols[i]], prev[cols[i]]],'wind');
-			int = linear_interpolate([prev[cols[i]],ext[cols[i]]], ts, 'wind');
+			if (cols[5] != -1){
+				ext[cols[i]] = extrapolate([pprev[cols[i]], prev[cols[i]]],'wind');
+				int = linear_interpolate([prev[cols[i]],ext[cols[i]]], ts, 'wind');
+			}
+			else{
+				continue;
+			}
 		}
 		else{
 			ext[cols[i]] = extrapolate([pprev[cols[i]], prev[cols[i]]],'');
@@ -369,7 +382,7 @@ function shift_forward(input, ts, case){
 			if (minute >= 60) minute-=60;
 			output[3+(ts-1-i)][cols[4]] = minute;
 		}
-		output[3+(ts-1-i)][cols[5]] = extrapolate([t1[cols[5]], t0[cols[5]]], 'wind');
+		if (cols[5] != -1) output[3+(ts-1-i)][cols[5]] = extrapolate([t1[cols[5]], t0[cols[5]]], 'wind');
 		for (j=6; j<#cols; j++){
 			output[3+(ts-1-i)][cols[j]] = extrapolate([t1[cols[j]], t0[cols[j]]], '');
 		}
@@ -382,7 +395,8 @@ function shift_forward(input, ts, case){
 			for (j=0; j<5; j++){
 				output[i][cols[j]] = input[i][cols[j]];
 			}
-			for (j=5; j<#cols; j++){
+			if (cols[5] != -1) output[i][cols[5]] = input[i-ts][cols[5]];
+			for (j=6; j<#cols; j++){
 				output[i][cols[j]] = input[i-ts][cols[j]];
 			}
 		}
@@ -390,7 +404,7 @@ function shift_forward(input, ts, case){
 	else{
 		for (i=3+ts; i<#input; i++){
 			for (j=0; j<#cols; j++){
-				output[i][cols[j]] = input[i-ts][cols[j]];
+				if (cols[j] != -1) output[i][cols[j]] = input[i-ts][cols[j]];
 			}
 		}
 	}
@@ -518,10 +532,7 @@ function check_sunup(output, lat, long, tz){
 	ghi_c = find_col(output[2], ghi_s);
 	dni_c = find_col(output[2], dni_s);
 	dhi_c = find_col(output[2], dhi_s);
-	if ((ghi_c == -1 && dni_c == -1) || (dni_c == -1 && dhi_c == -1) || (ghi_c == -1 && dni_c == -1)){
-		outln("Weather file error: Did not find two types of irradiance data.");
-		exit;
-	}
+
 	
 	ts = 60/(output[4][cols[4]] - output[3][cols[4]]);
 	n_days = (#output-3)/(24*ts);
@@ -730,7 +741,10 @@ function main(){
 	if (to_string(macro.timesteps) == 'Same as Load'){
 		load = get('load_user_data');
 		intervals_per_hour = #load/8760;
-		if (intervals_per_hour == 1) msgbox("Electric Load time interval must be subhourly");
+		if (intervals_per_hour == 1){
+			msgbox("Electric Load time interval must be subhourly");
+			exit;
+		}
 	}
 	else{
 		ts = to_real(macro.timesteps);
