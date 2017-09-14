@@ -12,7 +12,7 @@ Options:<br><ul>
 and Resource page. Or, solar resource file is requested from user. </ul>
 <br><br>
 Input:<br><ul>
-<li>SAM CSV format
+<li>SAM CSV format with 4 required columns: Year, Month, Day and Hour.
 <li>Irradiance Measurement: Averaged hourly data or instantaneous data measured at hour or
 half-hour intervals.
 <li>For previously interpolated files, macro will look for original in SAM's downloaded weather
