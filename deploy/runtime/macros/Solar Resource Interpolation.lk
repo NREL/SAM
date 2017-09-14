@@ -1,8 +1,8 @@
 /*@
 
-<p>SAM CSV formatted solar resource file is interpolated from hourly data 
+<p>SAM CSV formatted solar resource file is linearly interpolated from hourly data 
 to sub-hourly data.
-
+<br><br>
 If the file is TMY2, TMY3, EPW, or SolarAnywhere format, it can be converted 
 using the Solar Resource File Converter macro.
 <br><br>
