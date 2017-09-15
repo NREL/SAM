@@ -738,10 +738,20 @@ function main(){
 		input_file = get('solar_resource_file');
 	}
 	// input_file comes from location and resource page
-	if (to_string(macro.timesteps) == 'Same as Load'){
+	if (to_string(macro.timesteps) == 'Same as Load'){	
 		load = get('load_user_data');
+		if (load == null) //this would happen for the no financials model
+		{
+			msgbox("Case does not have an electric load. Please select a different interval length.");
+			exit;
+		}
+		if (get('load_model') !=1) //only the input time series load data option has subhourly load data
+		{
+			msgbox("Only the Input Time Series Load Data option has subhourly load data. Please select a different electric load model or a different interval length.");
+			exit;
+		}
 		intervals_per_hour = #load/8760;
-		if (intervals_per_hour == 1){
+		if (intervals_per_hour == 1 || get('en_belpe')){
 			msgbox("Electric Load time interval must be subhourly");
 			exit;
 		}
