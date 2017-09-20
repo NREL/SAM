@@ -12,6 +12,10 @@ If you have a question about using SAM, you can ask us on the [SAM support forum
 
 If you are ready to contribute code to SAM, there are a couple of things you should know first:
 
+* First off, please read SAM's Contribution Policy.  In particular, you'll need to send us an email (to nicholas.diorio@nrel.gov) that states:
+
+_I agree to contribute to SAM. I agree to the following terms and conditions for my contributions: First, I agree that I am licensing my contributions under the terms of the current SAM license. Second, I agree that, in order to conform to any future open source software license(s) under which SAM may be provided, the terms of my license may be modified without any notice to me and without my consent. Third, I represent and warrant that I am authorized to make the contributions and grant the license. If my employer has rights to intellectual property that includes my contributions, I represent and warrant that I have received permission to make contributions and grant the required license on behalf of my employer._
+
 * SAM consists of [several code repositories](https://github.com/NREL/SAM/wiki/Software-Dependencies), so you will need to determine where to make your contribution. For example, if you are making a change to the way SAM's detailed photovoltaic model makes a calculation, you would work with the [SSC](https://github.com/NREL/SSC) repository. If you are adding a new feature that changes both calculations and the user interface, like adding a new photovoltaic module model, then you would work with both the SSC repository and the SAM repository. If you need help figuring out where your contribution should go, please [let us know](mailto://sam.support@nrel.gov).
 
 * We use GitHub to manage the open source project, so you will need to learn how to use it to fork, clone, branch, check out, pull, add, commit, and push your work. 
