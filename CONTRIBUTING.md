@@ -58,6 +58,6 @@ For now, you can help to ensure that your code works with the rest of SAM by:
 
 3. Fixing any compiler warning messages.
 
-3. Runing simulations in the compiled program with several configurations.
+3. Running simulations in the compiled program with several configurations.
 
 For example, if you made changes to how the weather file processor works with solar resource data, you might want to run simulations with the photovoltaic, concentrating solar power, and solar hot water heating models to make sure those models all work with your new code.
