@@ -1343,8 +1343,8 @@ public:
 		m_data = ssc_data_create();
 	}
 	
-	lkSSCdataObj(ssc_data_t ssc_data) {
-		m_data = ssc_data;
+	lkSSCdataObj(ssc_data_t p_data) {
+		m_data = p_data;
 	}
 
 	virtual ~lkSSCdataObj() {
@@ -1384,7 +1384,7 @@ void fcall_ssc_create( lk::invoke_t &cxt )
 
 void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 {
-	LK_DOC("ssc_module_create_from_case", "Create a new SSC data container object populated from input compute module", "(string:compute_module_name):ssc-obj-ref");
+	LK_DOC("ssc_module_create_from_case", "Create a new SSC data container object populated from the input compute module values defined in the current case", "(string:compute_module_name):ssc-obj-ref");
 	
 	// Get the existing simulation object from the base
 	Case *c = SamApp::Window()->GetCurrentCase();
@@ -1465,10 +1465,8 @@ void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 	// Run the ssc compute module and dump results into the cxt
 	cxt.result().assign(cxt.env()->insert_object(new lkSSCdataObj(p_data)));
 	ssc_module_free(p_mod);
-	
-	// need to figure out how to actually create copy, otherwise this frees underlying data needed
-	// ssc_data_free(p_data);
-	
+
+	// ssc_data_free is called later, as creating the new lkSSCdataObj doesn't actually create a deep copy of p_data
 }
 
 void fcall_ssc_free( lk::invoke_t &cxt )
