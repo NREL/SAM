@@ -1463,7 +1463,6 @@ void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 	}
 
 	// Run the ssc compute module and dump results into the cxt
-	ssc_module_exec(p_mod, p_data);
 	cxt.result().assign(cxt.env()->insert_object(new lkSSCdataObj(p_data)));
 	ssc_module_free(p_mod);
 	
