@@ -1393,7 +1393,7 @@ void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 	// Create the ssc_data and compute module 
 	wxString cm = cxt.arg(0).as_string();
 	ssc_data_t p_data = ssc_data_create();
-	ssc_module_t p_mod = ssc_module_create(cm);
+	ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
 	if (!p_mod)
 	{
 		cxt.error("could not create ssc module: " + cm);
