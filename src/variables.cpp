@@ -218,7 +218,9 @@ void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 			it->second->Write( _O );
 
 			if ( it->second->Type() == VV_BINARY )
+			  {
 				wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)it->first.c_str(), (int)it->second->Binary().GetDataLen() );
+			  }
 		}
 	}
 	else
@@ -289,7 +291,9 @@ bool VarTable::Read( wxInputStream &_I )
 		ok = ok && value->Read( _I );
 
 		if( value->Type() == VV_BINARY )
+		  {
 			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen() );
+		  }
 		
 		if ( find(name) == end() ) (*this)[name] = value;
 		else delete value;

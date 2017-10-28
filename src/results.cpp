@@ -912,7 +912,9 @@ void ResultsViewer::Setup( Simulation *sim )
 
 		ResultsCallbackContext cc( this, "Cashflow callback: " + cfg->Financing );
 		if ( !cc.Invoke( cfcb, SamApp::GlobalCallbacks().GetEnv() ) )
+		  {
 			wxLogStatus( "error running cashflow script." );
+		  }
 		
 		int nyears = 0;
 		if ( VarValue *vv = m_sim->GetValue( cfg->Settings[ "analysis_period_var" ] ) )
@@ -1342,7 +1344,9 @@ void ResultsViewer::CreateAutoGraphs()
 	if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology + "|" + cfg->Financing))
 	{
 		if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+		  {
 			wxLogStatus("error running create autographs script.");
+		  }
 	}
 
 	if ( m_autographs.size() == 0 )
@@ -1350,13 +1354,17 @@ void ResultsViewer::CreateAutoGraphs()
 		if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology))
 		{
 			if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+			  {
 				wxLogStatus("error running create autographs script.");
+			  }
 		}
 
 		if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Financing))
 		{
 			if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+			  {
 				wxLogStatus("error running create autographs script.");
+			  }
 		}
 	}
 
@@ -1408,7 +1416,9 @@ void ResultsViewer::ExportEqnExcel()
 	{
 		CaseCallbackContext cc( m_sim->GetCase(), "Cashflow to Excel callback: " + cfg->Financing);
 		if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+		  {
 			wxLogStatus("error running cashflow to excel script.");
+		  }
 	}
 }
 

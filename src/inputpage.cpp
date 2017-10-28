@@ -286,7 +286,9 @@ void ActiveInputPage::Initialize()
 	{
 		UICallbackContext cbcxt( this, m_formData->GetName() + "->on_load" );
 		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
+		  {
 			wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
+		  }
 	}
 }
 
@@ -411,7 +413,9 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	{
 		UICallbackContext cbcxt( this, obj->GetName() + "->on_change" );
 		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
+		  {
 			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
+		  }
 	}
 }
 
