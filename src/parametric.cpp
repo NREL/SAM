@@ -1065,7 +1065,7 @@ void ParametricViewer::UpdateGrid()
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 // m_par contains list of inputs and outputs
-ParametricGridData::ParametricGridData(Case *cc) :m_case(cc), m_par(cc->Parametric())
+ParametricGridData::ParametricGridData(Case *cc) :m_par(cc->Parametric()), m_case(cc)
 {
 	m_color_for_inputs = wxColour("LIGHT BLUE");
 	m_color_for_valid_outputs = wxColour(145,210,142);
