@@ -140,8 +140,8 @@ END_EVENT_TABLE()
 
 LocationSetup::LocationSetup( wxWindow *parent, ShadeTool *st )
 	: wxPanel( parent ), 
-	  m_curl( this, ID_CURL ),
-	  m_shadeTool( st )
+  	  m_shadeTool( st ),
+	  m_curl( this, ID_CURL )
 {
 	SetBackgroundColour( *wxWHITE );
 	
