@@ -616,7 +616,7 @@ ResultsViewer::~ResultsViewer()
 }
 
 TimeSeriesData::TimeSeriesData( float *p, size_t len, double ts_hour, double ts_offset, const wxString &label, const wxString &units )
-	: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_startOffsetHours(ts_offset), m_label(label), m_units(units)
+  	: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_label(label), m_units(units), m_startOffsetHours(ts_offset)
 {
 	/* nothing to do */
 }
