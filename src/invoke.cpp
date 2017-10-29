@@ -149,9 +149,9 @@ static void fcall_dview(lk::invoke_t &cxt)
 }
 
 struct wfvec {
-	char *name;
-	char *label;
-	char *units;
+	char const *name;
+	char const *label;
+	char const *units;
 };
 
 static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
