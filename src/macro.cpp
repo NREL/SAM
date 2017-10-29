@@ -161,7 +161,7 @@ bool MacroEngine::Run( const wxString &script, lk::vardata_t *args )
 	// parse macro code
 	lk::input_string p( script );
 	lk::parser parse( p );	
-	std::auto_ptr<lk::node_t> tree( parse.script() );
+	std::unique_ptr<lk::node_t> tree( parse.script() );
 			
 	int i=0;
 	while ( i < parse.error_count() )
