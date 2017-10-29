@@ -565,7 +565,7 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 			continue;
 		}
 
-		if ( VarValue *vv = tab.Get( name ) )
+		if ( tab.Get( name ) )
 		{
 			tab.Delete( name );
 
