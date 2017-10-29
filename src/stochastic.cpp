@@ -635,7 +635,6 @@ Y                              ! output label (for option 1 in label)
 		if (parts.Count() != 4)
 			continue;
 
-		bool assigned = false;
 		for (size_t i=0;i<m_inputs.size();i++)
 		{
 			if (m_inputs[i].name.Lower() == parts[0].Lower())
@@ -644,7 +643,6 @@ Y                              ! output label (for option 1 in label)
 				m_inputs[i].R2inc = atof( parts[2].c_str() );
 				m_inputs[i].SRC = atof( parts[3].c_str() );
 				m_inputs[i].calculated = true;
-				assigned = true;
 			}
 		}
 	}
