@@ -62,7 +62,7 @@
 #include "casewin.h"
 #include "stochastic.h"
 
-char *lhs_dist_names[LHS_NUMDISTS] = {
+char const *lhs_dist_names[LHS_NUMDISTS] = {
 	"Uniform,Min,Max",
 	"Normal,Mean (mu),Std. Dev. (sigma)",
 	"Lognormal,Mean,ErrorF",
