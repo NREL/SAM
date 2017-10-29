@@ -1609,7 +1609,7 @@ void sun_pos(int year,int month,int day,int hour,double minute,double lat,double
 	int jday,delta,leap;                           /* Local variables */
 	double zulu,jd,time,mnlong,mnanom,
 			eclong,oblqec,num,den,ra,dec,gmst,lmst,ha,elv,azm,refrac,
-			E,ws,sunrise,sunset,Eo,tst;
+			E,Eo;
 	double arg,zen;
 
 	jday = julian(year,month,day);       /* Get julian day of year */
@@ -1721,22 +1721,10 @@ void sun_pos(int year,int month,int day,int hour,double minute,double lat,double
 		E = E - 24.0;
 
 	arg = -tan(lat)*tan(dec);
-	if( arg >= 1.0 )
-		ws = 0.0;                         /* No sunrise, continuous nights */
-	else if( arg <= -1.0 )
-		ws = M_PI;                          /* No sunset, continuous days */
-	else
-		ws = acos(arg);                   /* Sunrise hour angle in radians */
-
-					/* Sunrise and sunset in local standard time */
-	sunrise = 12.0 - (ws/DTOR)/15.0 - (lng/15.0 - tz) - E;
-	sunset  = 12.0 + (ws/DTOR)/15.0 - (lng/15.0 - tz) - E;
 
 	Eo = 1.00014 - 0.01671*cos(mnanom) - 0.00014*cos(2.0*mnanom);  /* Earth-sun distance (AU) */
 	Eo = 1.0/(Eo*Eo);                    /* Eccentricity correction factor */
 
-	tst = hour + minute/60.0 + (lng/15.0 - tz) + E;  /* True solar time (hr) */
-	
 	zen = 0.5*M_PI - elv;
 
 	/*
