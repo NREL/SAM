@@ -13,9 +13,9 @@ SSCLIB = ssc.so
 
 CC = gcc
 CXX = g++
-LDFLAGS = -std=c++0x $(SSCLIB) $(LKLIB) $(WEXLIB) `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm -lstdc++ -lcurl
-CXXFLAGS=-std=c++0x $(CFLAGS)
 CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags` -Wall -Wno-unknown-pragmas
+LDFLAGS = -std=c++11 $(SSCLIB) $(LKLIB) $(WEXLIB) `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm -lstdc++ -lcurl
+CXXFLAGS=-std=c++11 $(CFLAGS)
 
 
 OBJECTS = ide.o \
