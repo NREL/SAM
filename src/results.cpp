@@ -476,13 +476,11 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 	settings.GetProperty(wxT("tabIndex")).ToLong(&i);
 	SetSelection(i);
 
-	int energy_index = -1, irrad_index = -1;
+	int energy_index = -1;
 	for( size_t i=0;i<m_tsDataSets.size();i++ )
 	{
 		if ( m_tsDataSets[i]->GetMetaData() == "hourly_energy" )
 			energy_index = i;
-		if ( m_tsDataSets[i]->GetMetaData() == "gh" )
-			irrad_index = i;
 	}
 
 	//***TimeSeries Properties***
