@@ -430,8 +430,6 @@ void SamReportWindow::OnPageSel( wxListEvent & )
 
 void SamReportWindow::OnPageRClick( wxListEvent &evt )
 {
-	int idx = evt.GetSelection();
-	idx = 0;
 }
 
 bool SamReportWindow::Save()
