@@ -259,8 +259,9 @@ void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 			out.WriteString( names[i] );
 			list[i]->Write( _O );
 			if ( list[i]->Type() == VV_BINARY )
+			  {
 				wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)list[i]->Binary().GetDataLen() );
-
+			  }
 		}
 	}
 
