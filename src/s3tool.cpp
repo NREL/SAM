@@ -651,7 +651,9 @@ void ObjectEditor::ValueToPropGrid( pgpinfo &p )
 		m_propGrid->SetPropertyValue( p.name,  wxVariant( vp.GetString() ) );
 		break;
 	case VProperty::COLOUR:
-		m_propGrid->SetPropertyValue( p.name,  wxVariant( vp.GetColour() ) );
+		wxVariant variant;
+		variant << vp.GetColour();
+		m_propGrid->SetPropertyValue( p.name,  variant);
 		break;
 	}
 }
