@@ -1580,7 +1580,7 @@ void MetricsTable::OnPaint(wxPaintEvent &)
 	GetClientSize(&cwidth, &cheight);
 	
 	dc.SetPen( wxPen( wxColour(50,50,50), 1) );
-	dc.SetBrush( wxBrush( wxColour(50,50,50), wxSOLID ) ); 
+	dc.SetBrush( wxBrush( wxColour(50,50,50), wxBRUSHSTYLE_SOLID ) ); 
 	dc.DrawRectangle(0,0,cwidth,cheight);
 
 	dc.SetFont( GetFont() );
@@ -1612,7 +1612,7 @@ void MetricsTable::OnPaint(wxPaintEvent &)
 	int wy = MT_BORDER+m_rowHeight;
 
 	dc.SetPen( wxPen( *wxWHITE, 1) );
-	dc.SetBrush( wxBrush( *wxWHITE, wxSOLID ) );
+	dc.SetBrush( wxBrush( *wxWHITE, wxBRUSHSTYLE_SOLID ) );
 
 	wxRect tabR( MT_BORDER, wy,cwidth-MT_BORDER-MT_BORDER,cheight-wy-MT_BORDER );
 
