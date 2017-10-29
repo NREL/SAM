@@ -74,7 +74,7 @@ enum {
 LHS_NUMDISTS
 };
 
-extern char *lhs_dist_names[LHS_NUMDISTS];
+extern const char *lhs_dist_names[LHS_NUMDISTS];
 
 class LHS
 {
