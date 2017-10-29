@@ -2828,7 +2828,7 @@ void Parametric_QS::UpdateCaseParametricData()
 		wxArrayString outputs;
 		for (size_t i = 0; i < par.Setup.size(); i++)
 		{
-			if (VarValue *vv = m_case->Values().Get(par.Setup[i].Name))
+			if (m_case->Values().Get(par.Setup[i].Name))
 				continue;
 			outputs.Add(par.Setup[i].Name);
 		}
