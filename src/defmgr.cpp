@@ -434,11 +434,11 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 void DefaultsManager::OnLoad( wxCommandEvent & )
 {
 	ClearLog();
-	size_t i=0;
-	for (i=0;i<(int)m_configList->GetCount();i++)
+	size_t i = 0;
+	for (i = 0;i < m_configList->GetCount(); i++)
 		if (m_configList->IsChecked(i)) break;
 
-	if ( i == (int)m_configList->GetCount() ) return;
+	if ( i == m_configList->GetCount() ) return;
 
 	wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 	VarTable tab;
