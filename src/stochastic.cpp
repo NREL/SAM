@@ -1295,7 +1295,7 @@ void StochasticPanel::UpdateWeatherFileSums()
 		ssc_data_set_string(pdata, "file_name", (const char*)wf.c_str());
 		ssc_data_set_number(pdata, "header_only", 0);
 
-		if (const char *err = ssc_module_exec_simple_nothread("wfreader", pdata))
+		if (ssc_module_exec_simple_nothread("wfreader", pdata))
 		{
 			wxMessageBox("Error scanning '" + wf + "'");
 			continue;
