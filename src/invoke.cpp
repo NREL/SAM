@@ -49,6 +49,17 @@
 
 #include <algorithm>
 #include <memory>
+
+// threading
+#include <thread>
+#include <future>
+#include <chrono>
+
+#include <lk/parse.h>
+#include <lk/codegen.h>
+
+
+
 #include <wx/log.h>
 #include <wx/tokenzr.h>
 #include <wx/filename.h>
@@ -2781,6 +2792,319 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 	}
 }
 
+
+// threading ported over from lk to use lhs
+
+// async thread function
+lk_string sam_async_thread( lk::invoke_t &cxt, lk::bytecode &lkbc, lk_string lk_result, lk_string input_name, lk::vardata_t input_value)
+{
+	lk_string ret_str = "";
+
+	lk_string parse_time, env_time, bc_time, vminit_time, vmrun_time, rt_time;
+
+//
+	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+
+//	lk::env_t myenv(cxt.env()->parent());
+	lk::env_t myenv(cxt.env());
+	/*
+	myenv.register_funcs(lk::stdlib_basic());
+	myenv.register_funcs(lk::stdlib_sysio());
+	myenv.register_funcs(lk::stdlib_math());
+	myenv.register_funcs(lk::stdlib_string());
+	*/
+//	if (input_value != NULL)
+/*	{
+		lk::vardata_t vd(input_value);
+		myenv.assign(input_name, &vd);
+	}
+*/	
+//
+	auto end = std::chrono::system_clock::now();
+	auto diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	env_time = " Env time: " + std::to_string(diff) + "ms ";
+
+
+	lk::vm myvm;
+	lk::bytecode bc(lkbc); // can explicitly copy if in doubt
+//
+
+
+//
+	start = std::chrono::system_clock::now();
+
+	// Get string value of "ASSIGN|VALUE|HERE" set in _async and then update to input value
+	size_t ndx_c = bc.constants.size() + 1;
+	for (size_t i = 0; i < bc.constants.size(); i++)
+	{
+		if (bc.constants[i].type() == lk::vardata_t::STRING)
+		{
+			if (bc.constants[i].as_string() == "ASSIGN|VALUE|HERE")
+			{
+				ndx_c = i;
+				break;
+			}
+		}
+	}
+		
+	if (ndx_c > bc.constants.size())
+	{
+		ret_str = "async_thread: No value found to change.";
+		return ret_str;
+	}
+	else
+		bc.constants[ndx_c] = input_value;
+
+
+
+
+		myvm.load(&bc);
+		myvm.initialize(&myenv);
+//		myvm.initialize(cxt.env()->parent());
+
+		/* assigned to frame but not to identifier
+		size_t nfrms;
+		lk::vm::frame **frames = myvm.get_frames(&nfrms);
+		if (nfrms > 0)
+		{
+			lk::vardata_t vd(input_value);
+			lk::vm::frame &F = *frames[0];
+			F.env.assign(input_name, &vd);
+		}
+		*/
+
+		
+		//
+	end = std::chrono::system_clock::now();
+	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	vminit_time = " vm init time: " + std::to_string(diff) + "ms ";
+	start = std::chrono::system_clock::now();
+
+		bool ok1 = myvm.run();
+//
+	end = std::chrono::system_clock::now();
+	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	vmrun_time = " vm run time: " + std::to_string(diff) + "ms ";
+
+		if (ok1)
+		{
+
+//
+	start = std::chrono::system_clock::now();
+
+/*			lk::vardata_t *vd = myenv.lookup(lk_result, true);
+			if (vd)
+			{
+				ret_str += (vd->as_string());
+			}
+			else
+			{
+*/				size_t nfrm;
+				lk::vardata_t *v;
+				lk::vm::frame **frames = myvm.get_frames(&nfrm);
+				bool found = false;
+				for (size_t i = 0; i < nfrm; i++)
+				{
+					lk::vm::frame &F = *frames[nfrm - i - 1];
+					if ((v = F.env.lookup(lk_result, true)) != NULL)
+					{
+						ret_str += (v->as_string());
+						found=true;
+						break;
+					}
+				}
+				if (!found)
+					ret_str += (lk_result + " lookup error");
+			}
+//		}
+		else
+			ret_str += ("error running vm: " + myvm.error());
+
+		end = std::chrono::system_clock::now();
+		diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+		rt_time = " result lookup time: " + std::to_string(diff) + "ms ";
+	ret_str += "\n" + parse_time + env_time + bc_time + vminit_time + vmrun_time + rt_time + "\n";
+
+	return ret_str;
+}
+
+
+
+static void fcall_sam_async( lk::invoke_t &cxt )
+{
+	LK_DOC("sam_async", "For running function in a thread using std::async.", "(string: file containg lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
+	// wrapper around std::async to run functions with argument
+	// will use std::promise, std::future in combination with std::package or std::async
+	//lk_string func_name = cxt.arg(0).as_string();
+
+// checking for bottlenecks
+	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+	lk_string file_time, parse_time, bc_time, add_input_time, loop_time;
+	cxt.result().empty_vector();
+
+
+	lk_string fn = cxt.arg(0).as_string();
+	FILE *fp = fopen(fn.c_str(), "r");
+	if (!fp)
+			cxt.result().vec_append("No valid input file specified\n");
+	else
+	{
+		lk_string file_contents;
+		char buf[1024];
+		while (fgets(buf, 1023, fp) != 0)
+			file_contents += buf;
+		fclose(fp);
+
+
+//
+	auto end = std::chrono::system_clock::now();
+	auto diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	file_time = " File time: " + std::to_string(diff) + "ms ";
+
+
+
+
+// additional input time
+	start = std::chrono::system_clock::now();
+
+
+// add input value
+	// required input - changes in each thread 
+	lk_string input_name = cxt.arg(1).as_string();
+	lk_string value = "\"ASSIGN|VALUE|HERE\";\n";
+	file_contents = input_name + "=" + value + file_contents;
+
+	// optional global additional input - e.g. hash for pvrpm same for all threads
+	if (cxt.arg_count() > 5)
+	{
+		lk_string add_input_name = cxt.arg(4).as_string();
+		value = "\"ADDITIONALASSIGN|VALUE|HERE\";\n";
+		lk::vardata_t add_input_value = cxt.arg(5);					
+		file_contents = add_input_name + "=" + value + file_contents;
+	}
+
+
+// file contents parsed to node_t
+// checking for bottlenecks
+//	start = std::chrono::system_clock::now();
+
+	lk::input_string p(file_contents);
+	lk::parser parse(p);
+	std::auto_ptr<lk::node_t> tree(parse.script());
+	int i = 0;
+	while (i < parse.error_count())
+		cxt.result().vec_append(lk_string(parse.error(i++)) + "\n");
+
+	if (parse.token() != lk::lexer::END)
+		cxt.result().vec_append("parsing did not reach end of input\n");
+
+	if (cxt.result().vec()->size() > 0) return;
+
+//
+	end = std::chrono::system_clock::now();
+	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	parse_time = " Parse time: " + std::to_string(diff) + "ms ";
+
+
+// bytecode time
+	start = std::chrono::system_clock::now();
+
+	lk::bytecode bc;
+	lk::codegen cg;
+	if (cg.generate(tree.get()))
+		cg.get(bc);
+	else
+		cxt.result().vec_append("bytecode not generated.\n");
+
+//
+	end = std::chrono::system_clock::now();
+	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	bc_time = " bytecode time: " + std::to_string(diff) + "ms ";
+
+
+	start = std::chrono::system_clock::now();
+
+// additional common inputs; e.g., meta hash for pvrpm
+
+	if (cxt.arg_count() > 5)
+	{
+		// replace bc.constants with updated lk:vardata_t input value
+		value = "ADDITIONALASSIGN|VALUE|HERE";
+		size_t ndx_c = bc.constants.size() + 1;
+		for (size_t i = 0; i < bc.constants.size(); i++)
+		{
+			if (bc.constants[i].type() == lk::vardata_t::STRING)
+			{
+				if (bc.constants[i].as_string() == value)
+				{
+					ndx_c = i;
+					break;
+				}
+			}
+		}
+		
+		if (ndx_c > bc.constants.size())
+		{
+			cxt.result().vec_append("_async: No additional input value found to change.\n");
+		}
+		else
+		{
+			lk::vardata_t add_input_value = cxt.arg(5);					
+			bc.constants[ndx_c] = add_input_value;
+		}
+	}
+
+
+
+
+	end = std::chrono::system_clock::now();
+	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	add_input_time = " bytecode additional input time: " + std::to_string(diff) + "ms ";
+
+	if (cxt.result().vec()->size() > 0) return;
+
+
+//
+	start = std::chrono::system_clock::now();
+
+		lk_string lk_result = "lk_result";
+		if (cxt.arg_count() > 3)
+			lk_result = cxt.arg(3).as_string(); 
+
+//
+
+		// testing with vector and then will move to table or other files as inputs.
+		if (cxt.arg(2).deref().type() == lk::vardata_t::VECTOR) 
+		{
+			int num_threads = cxt.arg(2).length();
+
+			// std::async implementation - speed up of about 5.2 for 8 threads or more
+			std::vector< std::future<lk_string> > results;
+			for (int i = 0; i< num_threads; i++)
+			{
+				lk::vardata_t input_value =cxt.arg(2).vec()->at(i);
+				// output
+				results.push_back( std::async(std::launch::async, sam_async_thread, cxt, bc, lk_result, input_name, input_value));
+			}
+	// Will block till data is available in future<std::string> object.
+			for (int i=0; i<num_threads; i++)
+			{
+				cxt.result().vec_append( results[i].get());
+			}
+
+		}
+//
+	end = std::chrono::system_clock::now();
+	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	loop_time = " loop time: " + std::to_string(diff) + "ms \n";
+	cxt.result().vec_append( file_time + loop_time);
+
+	}
+}
+
+
+
+
 class lkLHSobject : public lk::objref_t, public LHS
 {
 public:
@@ -3054,6 +3378,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_step_run,
 		fcall_step_error,
 		fcall_step_result,
+		fcall_sam_async,
 		0 };
 	return (lk::fcall_t*)vec;
 }
