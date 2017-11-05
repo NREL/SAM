@@ -3103,6 +3103,306 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 }
 
 
+// LHS thread safe implementation for threading pvrpm samples
+void fcall_lhs_threaded(lk::invoke_t &cxt)
+{
+	LK_DOC("lhs_threaded", "Run a Latin Hypercube Sampling and return samples", "(string:distribution, array:distribution_parameters, int:num_samples, [int: seed_value, int:thread_number]): array:samples");
+	lk_string err_msg = "";
+	wxString workdir(wxFileName::GetTempDir());
+	// inputs 
+	lk_string dist_name = cxt.arg(0).as_string();
+	int idist = -1;
+	for (int i = 0; i<LHS_NUMDISTS; i++)
+	{
+		wxArrayString distinfo(wxStringTokenize(lhs_dist_names[i], ","));
+		if (distinfo.size() > 0 && dist_name.CmpNoCase(distinfo[0]) == 0)
+			idist = i;
+	}
+	if (idist < 0)
+	{
+		cxt.error("invalid LHS distribution name: " + dist_name);
+		return;
+	}
+	int num_parms = 0;
+	std::vector<double> params;
+	if (cxt.arg(1).deref().type() == lk::vardata_t::VECTOR)
+	{
+		num_parms = cxt.arg(1).length();
+		for (int i = 0; i < num_parms; i++)
+			params.push_back(cxt.arg(1).vec()->at(i).as_number());
+	}
+	else
+	{
+		cxt.error("Sandia LHS executable no distribution parameters specified.");
+		return;
+	}
+	int num_samples = cxt.arg(2).as_integer();
+	int seed_val = 0; 
+	if (cxt.arg_count() > 3)
+		seed_val = cxt.arg(3).as_integer();
+	int thread_num = 0; // not threaded
+	if (cxt.arg_count() > 4)
+		thread_num = cxt.arg(4).as_integer();
+	// make separate folder for thread
+	workdir += wxString::Format("/lhs_%d", thread_num);
+	if (!wxFileName::DirExists(workdir))
+	{
+		if (!wxFileName::Mkdir(workdir))
+		{
+			cxt.error("Unable to create folder for Sandia LHS executable : " + workdir);
+			return;
+		}
+	}
+	wxString lhsexe(SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY));
+
+	if (!wxFileExists(lhsexe))
+	{
+		cxt.error("Sandia LHS executable does not exist: " + lhsexe);
+		return;
+	}
+
+	// write lhsinputs.lhi file
+	wxString inputfile = workdir + "/SAMLHS.LHI";
+	FILE *fp = fopen(inputfile.c_str(), "w");
+	if (!fp)
+	{
+		cxt.error("Could not write to LHS input file " + inputfile);
+		return;
+	}
+	int sv = wxGetLocalTime();
+	if (seed_val > 0)
+		sv = seed_val;
+
+	fprintf(fp, "LHSTITL SAM LHS RUN\n");
+	fprintf(fp, "LHSOBS %d\n", num_samples);
+	fprintf(fp, "LHSSEED %d\n", sv);
+	fprintf(fp, "LHSRPTS CORR DATA\n");
+	fprintf(fp, "LHSSCOL\n");
+	fprintf(fp, "LHSOUT samlhs.lsp\n");
+	fprintf(fp, "LHSPOST samlhs.msp\n");
+	fprintf(fp, "LHSMSG samlhs.lmo\n");
+	fprintf(fp, "DATASET:\n");
+//	for (size_t i = 0; i<m_dist.size(); i++)
+	{
+		int ncdfpairs;
+		int nminparams = wxStringTokenize(lhs_dist_names[idist], ",").Count() - 1;
+		if ((int)params.size() < nminparams)
+		{
+			cxt.error(wxString::Format("Dist '%s' requires minimum %d params, only %d specified.",
+				(const char*)dist_name.c_str(), nminparams, (int)params.size()));
+			fclose(fp);
+			return;
+		}
+
+		switch (idist)
+		{
+		case LHS_UNIFORM:
+			fprintf(fp, "%s UNIFORM %lg %lg\n", (const char*)dist_name.c_str(),
+				params[0],
+				params[1]);
+			break;
+		case LHS_NORMAL:
+			fprintf(fp, "%s NORMAL %lg %lg\n", (const char*)dist_name.c_str(),
+				params[0],
+				params[1]);
+			break;
+		case LHS_LOGNORMAL:
+			fprintf(fp, "%s LOGNORMAL %lg %lg\n", (const char*)dist_name.c_str(),
+				params[0],
+				params[1]);
+			break;
+		case LHS_LOGNORMAL_N:
+			fprintf(fp, "%s LOGNORMAL-N %lg %lg\n", (const char*)dist_name.c_str(),
+				params[0],
+				params[1]);
+			break;
+		case LHS_TRIANGULAR:
+			fprintf(fp, "%s %lg TRIANGULAR %lg %lg %lg\n", (const char*)dist_name.c_str(), params[1],
+				params[0],
+				params[1],
+				params[2]);
+			break;
+		case LHS_GAMMA:
+			fprintf(fp, "%s GAMMA %lg %lg\n", (const char*)dist_name.c_str(),
+				params[0],
+				params[1]);
+			break;
+		case LHS_POISSON:
+			fprintf(fp, "%s POISSON %lg\n", (const char*)dist_name.c_str(),
+				params[0]);
+			break;
+		case LHS_BINOMIAL:
+			fprintf(fp, "%s BINOMIAL %lg %lg\n", (const char*)dist_name.c_str(),
+				params[0],
+				params[1]);
+			break;
+		case LHS_EXPONENTIAL:
+			fprintf(fp, "%s EXPONENTIAL %lg\n", (const char*)dist_name.c_str(),
+				params[0]);
+			break;
+		case LHS_WEIBULL:
+			fprintf(fp, "%s WEIBULL %lg %lg\n", (const char*)dist_name.c_str(),
+				params[0],
+				params[1]);
+			break;
+		case LHS_USERCDF:
+			ncdfpairs = (int)params[0];
+			fprintf(fp, "%s DISCRETE CUMULATIVE %d #\n", (const char*)dist_name.c_str(), ncdfpairs);
+			// update for uniform discrete distributions initially
+			if (ncdfpairs <= 0)
+			{
+				cxt.error(wxString::Format("user defined CDF error: too few [value,cdf] pairs in list: %d pairs should exist.", ncdfpairs));
+				fclose(fp);
+				return;
+			}
+			/*
+			for (int j = 0; j<ncdfpairs; j++)
+			{
+			double cdf = (j + 1);
+			cdf /= (double)ncdfpairs;
+			if (cdf > 1.0) cdf = 1.0;
+			fprintf(fp, "  %d %lg", j, cdf);
+			if (j == ncdfpairs - 1) fprintf(fp, "\n");
+			else fprintf(fp, " #\n");
+			}
+			*/
+
+			for (int j = 0; j<ncdfpairs; j++)
+			{
+				if (2 + 2 * j >= (int)params.size())
+				{
+					cxt.error(wxString::Format("user defined CDF error: too few [value,cdf] pairs in list: %d pairs should exist.", ncdfpairs));
+					fclose(fp);
+					return;
+				}
+
+				fprintf(fp, "  %lg %lg", params[1 + 2 * j], params[2 + 2 * j]);
+				if (j == ncdfpairs - 1) fprintf(fp, "\n");
+				else fprintf(fp, " #\n");
+			}
+
+			break;
+		}
+	}
+/*
+	for (size_t i = 0; i<m_corr.size(); i++)
+	{
+		if (Find(m_corr[i].name1) >= 0 && Find(m_corr[i].name2) >= 0)
+			fprintf(fp, "CORRELATE %s %s %lg\n", (const char*)m_corr[i].name1.c_str(), (const char*)m_corr[i].name2.c_str(), m_corr[i].corr);
+	}
+*/
+	fclose(fp);
+
+	// now run using the callback provided or 'system' function
+
+	// delete any output or error that may exist
+	if (wxFileExists(workdir + "/SAMLHS.LSP"))
+		wxRemoveFile(workdir + "/SAMLHS.LSP");
+
+	if (wxFileExists(workdir + "/LHS.ERR"))
+		wxRemoveFile(workdir + "/LHS.ERR");
+
+	// run the executable synchronously
+	wxString curdir = wxGetCwd();
+	wxSetWorkingDirectory(workdir);
+	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI");
+//	bool exe_ok = (0 == wxExecute(execstr, wxEXEC_SYNC | wxEXEC_HIDE_CONSOLE));
+	bool exe_ok = (0 == std::system(execstr));
+	wxSetWorkingDirectory(curdir);
+	exe_ok = true;
+
+	if (wxFileExists(workdir + "/LHS.ERR"))
+	{
+		err_msg = "LHS error.  There could be a problem with the input setup.";
+		FILE *ferr = fopen(wxString(workdir + "/LHS.ERR").c_str(), "r");
+		if (ferr)
+		{
+			char buf[256];
+			err_msg += "\n\n";
+			wxString line;
+			while (!feof(ferr))
+			{
+				fgets(buf, 255, ferr);
+				err_msg += wxString(buf) + "\n";
+			}
+			fclose(ferr);
+		}
+		cxt.error(err_msg);
+		return;
+	}
+
+	if (!exe_ok)
+	{
+		cxt.error("Failed to run LHS executable");
+		return;
+	}
+
+	// read the lsp output file
+	wxString outputfile = workdir + "/SAMLHS.LSP";
+	fp = fopen(outputfile.c_str(), "r");
+	if (!fp)
+	{
+		cxt.error("Could not read output file " + outputfile);
+		return;
+	}
+
+	// output vector
+	cxt.result().empty_vector();
+
+	int nline = 0;
+	char cbuf[1024];
+	int n_runs = 0;
+	bool found_data = false;
+	while (!feof(fp))
+	{
+		fgets(cbuf, 1023, fp);
+		wxString buf(cbuf);
+		nline++;
+
+		if (buf.Trim() == "@SAMPLEDATA")
+		{
+			found_data = true;
+			continue;
+		}
+
+		if (found_data)
+		{
+			if (n_runs == num_samples)
+				break;
+
+			n_runs++;
+			int n = atoi(buf.c_str());
+			if (n != n_runs)
+			{
+				cxt.error(wxString::Format("output file formatting error (run count %d!=%d) at line %d: ", n, n_runs, nline) + buf);
+				fclose(fp);
+				return;
+			}
+
+			fgets(cbuf, 1023, fp);
+			wxString buf(cbuf);
+			nline++;
+			n = atoi(buf.c_str());
+			if (n != 1)
+			{
+				cxt.error("output file formatting error (ndist count) at line " + wxString::Format("%d", nline));
+				fclose(fp);
+				return;
+			}
+
+//			for (size_t i = 0; i<m_dist.size(); i++)
+//			{
+				fgets(cbuf, 1023, fp);
+				wxString val(cbuf);
+				nline++;
+				cxt.result().vec_append(wxAtof(val));
+//			}
+
+		}
+	}
+	fclose(fp);
+
+}
 
 
 class lkLHSobject : public lk::objref_t, public LHS
@@ -3364,6 +3664,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_xl_get,
 		fcall_xl_autosizecols,
 #endif
+		fcall_lhs_threaded,
 		fcall_lhs_create,
 		fcall_lhs_free,
 		fcall_lhs_reset,
