@@ -62,6 +62,8 @@
 #include "casewin.h"
 #include "stochastic.h"
 
+
+
 char *lhs_dist_names[LHS_NUMDISTS] = {
 	"Uniform,Min,Max",
 	"Normal,Mean (mu),Std. Dev. (sigma)",
@@ -75,6 +77,8 @@ char *lhs_dist_names[LHS_NUMDISTS] = {
 	"Weibull,Alpha or k (shape parameter),Beta or lambda (scale parameter)",
 	"UserCDF,N"
 };
+
+
 
 LHS::LHS()
 {
@@ -95,12 +99,6 @@ void LHS::SeedVal(int sv)
 {
 	m_seedval =sv;
 }
-
-#ifdef __WXMSW__
-#define LHSBINARY "lhs.exe"
-#else
-#define LHSBINARY "lhs.bin"
-#endif
 
 bool LHS::Exec()
 {
