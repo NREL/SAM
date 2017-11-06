@@ -2446,6 +2446,9 @@ static void copy_matts(lk::vardata_t &val, matrix_t<float> &mts)
 }
 
 
+
+
+
 void fcall_editscene3d(lk::invoke_t &cxt)
 {
 	LK_DOC("editscene3d", "Loads the 3D scene editor for a given 3D scene variable name.", "(string:variable, number:lat, number:lon, number:tz, string:location, number:minute_step,[bool:use_groups]):table");
@@ -2796,7 +2799,7 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 // threading ported over from lk to use lhs
 
 // async thread function
-lk_string sam_async_thread( lk::invoke_t &cxt, lk::bytecode &lkbc, lk_string lk_result, lk_string input_name, lk::vardata_t input_value)
+lk_string sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string lk_result, lk_string input_name, lk::vardata_t input_value)
 {
 	lk_string ret_str = "";
 
@@ -2892,14 +2895,14 @@ lk_string sam_async_thread( lk::invoke_t &cxt, lk::bytecode &lkbc, lk_string lk_
 //
 	start = std::chrono::system_clock::now();
 
-/*			lk::vardata_t *vd = myenv.lookup(lk_result, true);
+			lk::vardata_t *vd = myenv.lookup(lk_result, true);
 			if (vd)
 			{
 				ret_str += (vd->as_string());
 			}
 			else
 			{
-*/				size_t nfrm;
+				size_t nfrm;
 				lk::vardata_t *v;
 				lk::vm::frame **frames = myvm.get_frames(&nfrm);
 				bool found = false;
@@ -2916,7 +2919,7 @@ lk_string sam_async_thread( lk::invoke_t &cxt, lk::bytecode &lkbc, lk_string lk_
 				if (!found)
 					ret_str += (lk_result + " lookup error");
 			}
-//		}
+		}
 		else
 			ret_str += ("error running vm: " + myvm.error());
 
@@ -3103,12 +3106,37 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 }
 
 
+// windows system call to hide output
+int windows_system(wxString cmd)
+{
+	PROCESS_INFORMATION p_info;
+	STARTUPINFO s_info;
+	LPWSTR cmdline, programpath;
+
+	memset(&s_info, 0, sizeof(s_info));
+	memset(&p_info, 0, sizeof(p_info));
+	s_info.cb = sizeof(s_info);
+
+	cmdline = (LPWSTR)_tcsdup(cmd.wc_str());
+	programpath = (LPWSTR)_tcsdup(cmd.wc_str());
+
+	if (CreateProcess(programpath, cmdline, NULL, NULL, 0, 0, NULL, NULL, &s_info, &p_info))
+	{
+		WaitForSingleObject(p_info.hProcess, INFINITE);
+		CloseHandle(p_info.hProcess);
+		CloseHandle(p_info.hThread);
+		return 0;
+	}
+	return 1;
+}
+
+
 // LHS thread safe implementation for threading pvrpm samples
 void fcall_lhs_threaded(lk::invoke_t &cxt)
 {
 	LK_DOC("lhs_threaded", "Run a Latin Hypercube Sampling and return samples", "(string:distribution, array:distribution_parameters, int:num_samples, [int: seed_value, int:thread_number]): array:samples");
 	lk_string err_msg = "";
-	wxString workdir(wxFileName::GetTempDir());
+	wxString tempdir(wxFileName::GetTempDir());
 	// inputs 
 	lk_string dist_name = cxt.arg(0).as_string();
 	int idist = -1;
@@ -3144,15 +3172,35 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	if (cxt.arg_count() > 4)
 		thread_num = cxt.arg(4).as_integer();
 	// make separate folder for thread
-	workdir += wxString::Format("/lhs_%d", thread_num);
-	if (!wxFileName::DirExists(workdir))
+
+	tempdir += wxString::Format("/lhs_%d", thread_num);
+	if (!wxFileName::DirExists(tempdir))
 	{
-		if (!wxFileName::Mkdir(workdir))
+		if (!wxFileName::Mkdir(tempdir))
 		{
-			cxt.error("Unable to create folder for Sandia LHS executable : " + workdir);
+			cxt.error("Unable to create folder for Sandia LHS executable : " + tempdir);
 			return;
 		}
 	}
+	int itemp = 0;
+	wxString workdir = tempdir + wxString::Format("/lhs_%d", itemp);
+	while (wxFileName::DirExists(workdir) && itemp < 10000)
+	{
+		workdir = tempdir + wxString::Format("/lhs_%d", itemp);
+		itemp++;
+	}
+	if (itemp >= 10000)
+	{
+		cxt.error("Unable to create folder for Sandia LHS executable : " + workdir);
+		return;
+	}
+	if (!wxFileName::Mkdir(workdir))
+	{
+		cxt.error("Unable to create folder for Sandia LHS executable : " + workdir);
+		return;
+	}
+
+
 	wxString lhsexe(SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY));
 
 	if (!wxFileExists(lhsexe))
@@ -3306,8 +3354,41 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	wxString curdir = wxGetCwd();
 	wxSetWorkingDirectory(workdir);
 	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI");
+//	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI  >nul  2>&1");
+
+/*
+#ifdef __WXMSW__
+//	execstr += " >nul  2>&1";
+#else // untested
+	execstr += " > /dev/null";
+#endif
+*/
+
 //	bool exe_ok = (0 == wxExecute(execstr, wxEXEC_SYNC | wxEXEC_HIDE_CONSOLE));
+
+#ifdef __WXMSW__
+//	bool exe_ok = (0 == std::system((const char *)execstr.c_str()));
 	bool exe_ok = (0 == std::system(execstr));
+#else // untested
+	bool exe_ok = (0 == std::system(execstr));
+#endif
+/*
+	STARTUPINFO si = { 0 };
+	PROCESS_INFORMATION pi;
+	si.cb = sizeof(si);
+	if (!CreateProcess(execstr, TEXT(""), NULL, NULL, FALSE,
+		0, 0, 0, &si, &pi)) {
+//		si.cb = sizeof(si);
+//		if (!CreateProcess(execstr, LPWSTR(execstr.wc_str()), NULL, NULL, FALSE,
+//			0, 0, 0, &si, &pi)) {
+		cxt.error(wxString::Format("Failed to create process for ", execstr));
+	}
+	CloseHandle(pi.hThread);
+	CloseHandle(pi.hProcess);
+*/
+
+
+
 	wxSetWorkingDirectory(curdir);
 	exe_ok = true;
 
@@ -3401,7 +3482,7 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 		}
 	}
 	fclose(fp);
-
+//	wxFileName::Rmdir(workdir);
 }
 
 
