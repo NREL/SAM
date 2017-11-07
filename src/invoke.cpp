@@ -97,6 +97,9 @@
 #include "codegencallback.h"
 #include "nsrdb.h"
 
+std::mutex global_mu;
+
+
 void fcall_samver( lk::invoke_t &cxt )
 {
 	LK_DOC( "samver", "Returns current SAM version as a string.", "(none):string" );
@@ -3209,6 +3212,10 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 		return;
 	}
 
+	// mutext locking here
+	global_mu.lock();
+
+
 	// write lhsinputs.lhi file
 	wxString inputfile = workdir + "/SAMLHS.LHI";
 	FILE *fp = fopen(inputfile.c_str(), "w");
@@ -3364,11 +3371,12 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 #endif
 */
 
-//	bool exe_ok = (0 == wxExecute(execstr, wxEXEC_SYNC | wxEXEC_HIDE_CONSOLE));
+//	bool exe_ok = (0 == wxExecute(execstr, wxEXEC_SYNC | wxEXEC_HIDE_CONSOLE)); not threadable
 
 #ifdef __WXMSW__
 //	bool exe_ok = (0 == std::system((const char *)execstr.c_str()));
 	bool exe_ok = (0 == std::system(execstr));
+//	bool exe_ok = (0 == windows_system(execstr)); // hangs - does not run.
 #else // untested
 	bool exe_ok = (0 == std::system(execstr));
 #endif
@@ -3482,7 +3490,8 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 		}
 	}
 	fclose(fp);
-//	wxFileName::Rmdir(workdir);
+//	wxFileName::Rmdir(workdir, wxPATH_RMDIR_RECURSIVE);
+	global_mu.unlock();
 }
 
 
