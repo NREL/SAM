@@ -2813,6 +2813,9 @@ lk_string sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string lk_re
 
 //	lk::env_t myenv(cxt.env()->parent());
 	lk::env_t myenv(cxt.env());
+	myenv.clear_objs();
+	myenv.clear_vars();
+	//	lk::env_t myenv;
 	/*
 	myenv.register_funcs(lk::stdlib_basic());
 	myenv.register_funcs(lk::stdlib_sysio());
@@ -2919,7 +2922,13 @@ lk_string sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string lk_re
 						break;
 					}
 				}
-				if (!found)
+				if (!found) // look in byte code constants collection
+				{
+					size_t ndx_i = std::find(myvm.get_bytecode()->identifiers.begin(), myvm.get_bytecode()->identifiers.end(), lk_result) - myvm.get_bytecode()->identifiers.begin();
+					if (ndx_i < myvm.get_bytecode()->identifiers.size())
+						ret_str += wxString::Format("in bytecode at identifier index %d", (int)ndx_i);
+				}
+				else
 					ret_str += (lk_result + " lookup error");
 			}
 		}
