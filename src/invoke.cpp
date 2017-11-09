@@ -2802,33 +2802,20 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 // threading ported over from lk to use lhs
 
 // async thread function
-lk_string sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string lk_result, lk_string input_name, lk::vardata_t input_value)
+lk::vardata_t sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string lk_result, lk_string input_name, lk::vardata_t input_value)
 {
-	lk_string ret_str = "";
+	lk::vardata_t ret_hash;
+	ret_hash.empty_hash();
 
-	lk_string parse_time, env_time, bc_time, vminit_time, vmrun_time, rt_time;
+	lk_string err_str, parse_time, env_time, bc_time, vminit_time, vmrun_time, rt_time;
 
 //
 	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
 
-//	lk::env_t myenv(cxt.env()->parent());
 	lk::env_t myenv(cxt.env());
 	myenv.clear_objs();
 	myenv.clear_vars();
-	//	lk::env_t myenv;
-	/*
-	myenv.register_funcs(lk::stdlib_basic());
-	myenv.register_funcs(lk::stdlib_sysio());
-	myenv.register_funcs(lk::stdlib_math());
-	myenv.register_funcs(lk::stdlib_string());
-	*/
-//	if (input_value != NULL)
-/*	{
-		lk::vardata_t vd(input_value);
-		myenv.assign(input_name, &vd);
-	}
-*/	
-//
+
 	auto end = std::chrono::system_clock::now();
 	auto diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
 	env_time = " Env time: " + std::to_string(diff) + "ms ";
@@ -2836,9 +2823,6 @@ lk_string sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string lk_re
 
 	lk::vm myvm;
 	lk::bytecode bc(lkbc); // can explicitly copy if in doubt
-//
-
-
 //
 	start = std::chrono::system_clock::now();
 
@@ -2858,32 +2842,16 @@ lk_string sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string lk_re
 		
 	if (ndx_c > bc.constants.size())
 	{
-		ret_str = "async_thread: No value found to change.";
-		return ret_str;
+		err_str = "async_thread: No value found to change.";
+		ret_hash.hash_item("error", err_str);
+		return ret_hash;
 	}
 	else
 		bc.constants[ndx_c] = input_value;
 
-
-
-
 		myvm.load(&bc);
 		myvm.initialize(&myenv);
-//		myvm.initialize(cxt.env()->parent());
-
-		/* assigned to frame but not to identifier
-		size_t nfrms;
-		lk::vm::frame **frames = myvm.get_frames(&nfrms);
-		if (nfrms > 0)
-		{
-			lk::vardata_t vd(input_value);
-			lk::vm::frame &F = *frames[0];
-			F.env.assign(input_name, &vd);
-		}
-		*/
-
-		
-		//
+//
 	end = std::chrono::system_clock::now();
 	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
 	vminit_time = " vm init time: " + std::to_string(diff) + "ms ";
@@ -2900,47 +2868,53 @@ lk_string sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string lk_re
 
 //
 	start = std::chrono::system_clock::now();
+			
+			wxArrayString list = wxSplit(lk_result, ',');
+			for (size_t i_res = 0; i_res < list.size(); i_res++)
+			{
 
-			lk::vardata_t *vd = myenv.lookup(lk_result, true);
-			if (vd)
-			{
-				ret_str += (vd->as_string());
-			}
-			else
-			{
-				size_t nfrm;
-				lk::vardata_t *v;
-				lk::vm::frame **frames = myvm.get_frames(&nfrm);
-				bool found = false;
-				for (size_t i = 0; i < nfrm; i++)
+				lk::vardata_t *vd = myenv.lookup(list[i_res], true);
+				if (vd)
 				{
-					lk::vm::frame &F = *frames[nfrm - i - 1];
-					if ((v = F.env.lookup(lk_result, true)) != NULL)
-					{
-						ret_str += (v->as_string());
-						found=true;
-						break;
-					}
-				}
-				if (!found) // look in byte code constants collection
-				{
-					size_t ndx_i = std::find(myvm.get_bytecode()->identifiers.begin(), myvm.get_bytecode()->identifiers.end(), lk_result) - myvm.get_bytecode()->identifiers.begin();
-					if (ndx_i < myvm.get_bytecode()->identifiers.size())
-						ret_str += wxString::Format("in bytecode at identifier index %d", (int)ndx_i);
+					ret_hash.hash_item(list[i_res], *vd);
 				}
 				else
-					ret_str += (lk_result + " lookup error");
-			}
+				{
+					size_t nfrm;
+					lk::vardata_t *v;
+					lk::vm::frame **frames = myvm.get_frames(&nfrm);
+					bool found = false;
+					for (size_t i_frm = 0; (i_frm < nfrm) && !found; i_frm++)
+					{
+						lk::vm::frame &F = *frames[nfrm - i_frm - 1];
+						if ((v = F.env.lookup(list[i_res], true)) != NULL)
+						{
+							ret_hash.hash_item(list[i_res], *v);
+							found = true;
+						}
+					}
+					if (!found) // look in byte code constants collection
+					{
+						size_t ndx_i = std::find(myvm.get_bytecode()->identifiers.begin(), myvm.get_bytecode()->identifiers.end(), list[i_res]) - myvm.get_bytecode()->identifiers.begin();
+						if (ndx_i < myvm.get_bytecode()->identifiers.size())
+							err_str += list[i_res] + wxString::Format(" in bytecode at identifier index %d\n", (int)ndx_i);
+						else
+							err_str += list[i_res] + " lookup error\n";
+					}
+				}
+			} // for i_res
 		}
 		else
-			ret_str += ("error running vm: " + myvm.error());
-
+		{
+			err_str += ("error running vm: " + myvm.error());
+		}
 		end = std::chrono::system_clock::now();
 		diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
 		rt_time = " result lookup time: " + std::to_string(diff) + "ms ";
-	ret_str += "\n" + parse_time + env_time + bc_time + vminit_time + vmrun_time + rt_time + "\n";
+		ret_hash.hash_item("thread time : ", parse_time + env_time + bc_time + vminit_time + vmrun_time + rt_time);
 
-	return ret_str;
+	ret_hash.hash_item("error", err_str);
+	return ret_hash;
 }
 
 
@@ -2954,34 +2928,31 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 
 // checking for bottlenecks
 	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
-	lk_string file_time, parse_time, bc_time, add_input_time, loop_time;
-	cxt.result().empty_vector();
-
+	lk_string err_str="", file_time, parse_time, bc_time, add_input_time, loop_time;
+	cxt.result().empty_hash();
 
 	lk_string fn = cxt.arg(0).as_string();
 	FILE *fp = fopen(fn.c_str(), "r");
 	if (!fp)
-			cxt.result().vec_append("No valid input file specified\n");
-	else
 	{
-		lk_string file_contents;
-		char buf[1024];
-		while (fgets(buf, 1023, fp) != 0)
-			file_contents += buf;
-		fclose(fp);
+		err_str += "No valid input file " + fn + "specified\n";
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
 
+	lk_string file_contents;
+	char buf[1024];
+	while (fgets(buf, 1023, fp) != 0)
+		file_contents += buf;
+	fclose(fp);
 
 //
 	auto end = std::chrono::system_clock::now();
 	auto diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
 	file_time = " File time: " + std::to_string(diff) + "ms ";
 
-
-
-
 // additional input time
 	start = std::chrono::system_clock::now();
-
 
 // add input value
 	// required input - changes in each thread 
@@ -3008,13 +2979,16 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 	std::auto_ptr<lk::node_t> tree(parse.script());
 	int i = 0;
 	while (i < parse.error_count())
-		cxt.result().vec_append(lk_string(parse.error(i++)) + "\n");
+		err_str += lk_string(parse.error(i++)) + "\n";
 
 	if (parse.token() != lk::lexer::END)
-		cxt.result().vec_append("parsing did not reach end of input\n");
+		err_str += "parsing did not reach end of input\n";
 
-	if (cxt.result().vec()->size() > 0) return;
-
+	if (err_str.Len() > 0)
+	{
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
 //
 	end = std::chrono::system_clock::now();
 	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
@@ -3029,8 +3003,11 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 	if (cg.generate(tree.get()))
 		cg.get(bc);
 	else
-		cxt.result().vec_append("bytecode not generated.\n");
-
+	{
+		err_str += "bytecode not generated.\n";
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
 //
 	end = std::chrono::system_clock::now();
 	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
@@ -3057,10 +3034,9 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 				}
 			}
 		}
-		
 		if (ndx_c > bc.constants.size())
 		{
-			cxt.result().vec_append("_async: No additional input value found to change.\n");
+			err_str += "_async: No additional input value found to change.\n";
 		}
 		else
 		{
@@ -3069,6 +3045,11 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 		}
 	}
 
+	if (err_str.Len() > 0)
+	{
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
 
 
 
@@ -3076,45 +3057,40 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
 	add_input_time = " bytecode additional input time: " + std::to_string(diff) + "ms ";
 
-	if (cxt.result().vec()->size() > 0) return;
-
-
 //
 	start = std::chrono::system_clock::now();
 
-		lk_string lk_result = "lk_result";
-		if (cxt.arg_count() > 3)
-			lk_result = cxt.arg(3).as_string(); 
+	lk_string lk_result = "lk_result";
+	if (cxt.arg_count() > 3)
+		lk_result = cxt.arg(3).as_string(); 
 
-//
+	// testing with vector and then will move to table or other files as inputs.
+	if (cxt.arg(2).deref().type() == lk::vardata_t::VECTOR) 
+	{
+		int num_threads = cxt.arg(2).length();
 
-		// testing with vector and then will move to table or other files as inputs.
-		if (cxt.arg(2).deref().type() == lk::vardata_t::VECTOR) 
+		// std::async implementation - speed up of about 5.2 for 8 threads or more
+		std::vector< std::future<lk::vardata_t> > results;
+		for (int i = 0; i< num_threads; i++)
 		{
-			int num_threads = cxt.arg(2).length();
-
-			// std::async implementation - speed up of about 5.2 for 8 threads or more
-			std::vector< std::future<lk_string> > results;
-			for (int i = 0; i< num_threads; i++)
-			{
-				lk::vardata_t input_value =cxt.arg(2).vec()->at(i);
-				// output
-				results.push_back( std::async(std::launch::async, sam_async_thread, cxt, bc, lk_result, input_name, input_value));
-			}
-	// Will block till data is available in future<std::string> object.
-			for (int i=0; i<num_threads; i++)
-			{
-				cxt.result().vec_append( results[i].get());
-			}
-
+			lk::vardata_t input_value =cxt.arg(2).vec()->at(i);
+			// output
+			results.push_back( std::async(std::launch::async, sam_async_thread, cxt, bc, lk_result, input_name, input_value));
 		}
+// Will block till data is available in future<std::string> object.
+		for (int i=0; i<num_threads; i++)
+		{
+			lk_string result_name = wxString::Format("result %d", i);
+			cxt.result().hash_item(result_name, results[i].get());
+		}
+
+	}
 //
 	end = std::chrono::system_clock::now();
 	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
 	loop_time = " loop time: " + std::to_string(diff) + "ms \n";
-	cxt.result().vec_append( file_time + loop_time);
-
-	}
+	cxt.result().hash_item("async_time", file_time + loop_time);
+	cxt.result().hash_item("error", err_str);
 }
 
 
@@ -3369,8 +3345,9 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	// run the executable synchronously
 	wxString curdir = wxGetCwd();
 	wxSetWorkingDirectory(workdir);
-	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI");
-//	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI  >nul  2>&1");
+	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI"); // shows window
+//	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI  >nul  2>&1"); // shows window
+//	wxString execstr = wxString("cmd /c \"" + lhsexe + "\" SAMLHS.LHI  >nul  2>&1"); // shows window
 
 /*
 #ifdef __WXMSW__
@@ -3380,7 +3357,7 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 #endif
 */
 
-//	bool exe_ok = (0 == wxExecute(execstr, wxEXEC_SYNC | wxEXEC_HIDE_CONSOLE)); not threadable
+//	bool exe_ok = (0 == wxExecute(execstr, wxEXEC_SYNC | wxEXEC_HIDE_CONSOLE)); //not threadable
 
 #ifdef __WXMSW__
 //	bool exe_ok = (0 == std::system((const char *)execstr.c_str()));
@@ -3389,11 +3366,11 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 #else // untested
 	bool exe_ok = (0 == std::system(execstr));
 #endif
-/*
+/* fails
 	STARTUPINFO si = { 0 };
 	PROCESS_INFORMATION pi;
 	si.cb = sizeof(si);
-	if (!CreateProcess(execstr, TEXT(""), NULL, NULL, FALSE,
+	if (!CreateProcess(execstr, execstr, NULL, NULL, FALSE,
 		0, 0, 0, &si, &pi)) {
 //		si.cb = sizeof(si);
 //		if (!CreateProcess(execstr, LPWSTR(execstr.wc_str()), NULL, NULL, FALSE,
