@@ -3095,7 +3095,7 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 
 
 // windows system call to hide output
-int windows_system(wxString cmd)
+int windows_system(wxString args)
 {
 	PROCESS_INFORMATION p_info;
 	STARTUPINFO s_info;
@@ -3103,20 +3103,69 @@ int windows_system(wxString cmd)
 
 	memset(&s_info, 0, sizeof(s_info));
 	memset(&p_info, 0, sizeof(p_info));
+	s_info.dwFlags = STARTF_USESHOWWINDOW;
+	s_info.wShowWindow = SW_HIDE;
 	s_info.cb = sizeof(s_info);
+	cmdline = (LPWSTR)_tcsdup(args.wc_str());
 
-	cmdline = (LPWSTR)_tcsdup(cmd.wc_str());
-	programpath = (LPWSTR)_tcsdup(cmd.wc_str());
+	int ret = CreateProcess(NULL, cmdline, NULL, NULL, TRUE, 0, NULL, NULL, &s_info, &p_info);
 
-	if (CreateProcess(programpath, cmdline, NULL, NULL, 0, 0, NULL, NULL, &s_info, &p_info))
+	if (ret != 0)
 	{
 		WaitForSingleObject(p_info.hProcess, INFINITE);
 		CloseHandle(p_info.hProcess);
 		CloseHandle(p_info.hThread);
 		return 0;
 	}
-	return 1;
+	else
+		return GetLastError();
 }
+
+
+
+int system_hidden(const char *cmdArgs)
+{
+	PROCESS_INFORMATION pinfo;
+	LPSTARTUPINFOA sinfo;
+
+	/*
+	* Allocate and hide console window
+	*/
+	AllocConsole();
+	ShowWindow(GetConsoleWindow(), 0);
+
+	memset(&sinfo, 0, sizeof(sinfo));
+	//sinfo.cb = sizeof(sinfo);
+	CreateProcessA(NULL, (char *)cmdArgs,
+		NULL, NULL, false,
+		0,
+		NULL, NULL, sinfo, &pinfo);
+	DWORD ret;
+	while (1)
+	{
+		HANDLE array[1];
+		array[0] = pinfo.hProcess;
+		ret = MsgWaitForMultipleObjects(1, array, false, INFINITE,
+			QS_ALLPOSTMESSAGE);
+		if ((ret == WAIT_FAILED) || (ret == WAIT_OBJECT_0))
+			break;
+		/*
+		* Don't block message loop
+		*/
+		MSG msg;
+		while (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+	}
+
+	DWORD pret;
+	GetExitCodeProcess(pinfo.hProcess, &pret);
+	//    FreeConsole ();
+	return pret;
+}
+
 
 
 // LHS thread safe implementation for threading pvrpm samples
@@ -3361,30 +3410,28 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 
 #ifdef __WXMSW__
 //	bool exe_ok = (0 == std::system((const char *)execstr.c_str()));
-	bool exe_ok = (0 == std::system(execstr));
-//	bool exe_ok = (0 == windows_system(execstr)); // hangs - does not run.
+//	bool exe_ok = (0 == std::system(execstr));
+//	bool exe_ok = (0 == system_hidden(execstr.c_str())); // crash
+//	wxString args = workdir + "/SAMLHS.LHI";
+//	bool exe_ok = (0 != windows_system(lhsexe, args)); // hangs - does not run.
+	bool exe_ok = (0 == windows_system(execstr)); 
 #else // untested
 	bool exe_ok = (0 == std::system(execstr));
 #endif
-/* fails
+	/*
+	// fails
 	STARTUPINFO si = { 0 };
 	PROCESS_INFORMATION pi;
 	si.cb = sizeof(si);
-	if (!CreateProcess(execstr, execstr, NULL, NULL, FALSE,
-		0, 0, 0, &si, &pi)) {
-//		si.cb = sizeof(si);
-//		if (!CreateProcess(execstr, LPWSTR(execstr.wc_str()), NULL, NULL, FALSE,
-//			0, 0, 0, &si, &pi)) {
-		cxt.error(wxString::Format("Failed to create process for ", execstr));
-	}
+	bool exe_ok = CreateProcess(execstr, TEXT(""), NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, NULL, &si, &pi); 
 	CloseHandle(pi.hThread);
 	CloseHandle(pi.hProcess);
-*/
+	*/
 
 
 
 	wxSetWorkingDirectory(curdir);
-	exe_ok = true;
+//	exe_ok = true;
 
 	if (wxFileExists(workdir + "/LHS.ERR"))
 	{
