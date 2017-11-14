@@ -3099,7 +3099,7 @@ int windows_system(wxString args)
 {
 	PROCESS_INFORMATION p_info;
 	STARTUPINFO s_info;
-	LPWSTR cmdline, programpath;
+	LPWSTR cmdline;
 
 	memset(&s_info, 0, sizeof(s_info));
 	memset(&p_info, 0, sizeof(p_info));
@@ -3208,8 +3208,11 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	int thread_num = 0; // not threaded
 	if (cxt.arg_count() > 4)
 		thread_num = cxt.arg(4).as_integer();
-	// make separate folder for thread
+	
 
+	wxString workdir = tempdir;
+	/*
+	// make separate folder for thread
 	tempdir += wxString::Format("/lhs_%d", thread_num);
 	if (!wxFileName::DirExists(tempdir))
 	{
@@ -3236,7 +3239,7 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 		cxt.error("Unable to create folder for Sandia LHS executable : " + workdir);
 		return;
 	}
-
+	*/
 
 	wxString lhsexe(SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY));
 
@@ -3249,6 +3252,9 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	// mutext locking here
 	global_mu.lock();
 
+	// delete any output or error that may exist
+	if (wxFileExists(workdir + "/SAMLHS.LHI"))
+		wxRemoveFile(workdir + "/SAMLHS.LHI");
 
 	// write lhsinputs.lhi file
 	wxString inputfile = workdir + "/SAMLHS.LHI";
@@ -3523,7 +3529,6 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 		}
 	}
 	fclose(fp);
-//	wxFileName::Rmdir(workdir, wxPATH_RMDIR_RECURSIVE);
 	global_mu.unlock();
 }
 
