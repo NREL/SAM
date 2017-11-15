@@ -3122,58 +3122,12 @@ int windows_system(wxString args)
 }
 
 
-
-int system_hidden(const char *cmdArgs)
-{
-	PROCESS_INFORMATION pinfo;
-	LPSTARTUPINFOA sinfo;
-
-	/*
-	* Allocate and hide console window
-	*/
-	AllocConsole();
-	ShowWindow(GetConsoleWindow(), 0);
-
-	memset(&sinfo, 0, sizeof(sinfo));
-	//sinfo.cb = sizeof(sinfo);
-	CreateProcessA(NULL, (char *)cmdArgs,
-		NULL, NULL, false,
-		0,
-		NULL, NULL, sinfo, &pinfo);
-	DWORD ret;
-	while (1)
-	{
-		HANDLE array[1];
-		array[0] = pinfo.hProcess;
-		ret = MsgWaitForMultipleObjects(1, array, false, INFINITE,
-			QS_ALLPOSTMESSAGE);
-		if ((ret == WAIT_FAILED) || (ret == WAIT_OBJECT_0))
-			break;
-		/*
-		* Don't block message loop
-		*/
-		MSG msg;
-		while (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
-		{
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-		}
-	}
-
-	DWORD pret;
-	GetExitCodeProcess(pinfo.hProcess, &pret);
-	//    FreeConsole ();
-	return pret;
-}
-
-
-
 // LHS thread safe implementation for threading pvrpm samples
 void fcall_lhs_threaded(lk::invoke_t &cxt)
 {
 	LK_DOC("lhs_threaded", "Run a Latin Hypercube Sampling and return samples", "(string:distribution, array:distribution_parameters, int:num_samples, [int: seed_value, int:thread_number]): array:samples");
 	lk_string err_msg = "";
-	wxString tempdir(wxFileName::GetTempDir());
+	wxString workdir(wxFileName::GetTempDir());
 	// inputs 
 	lk_string dist_name = cxt.arg(0).as_string();
 	int idist = -1;
@@ -3209,38 +3163,6 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	if (cxt.arg_count() > 4)
 		thread_num = cxt.arg(4).as_integer();
 	
-
-	wxString workdir = tempdir;
-	/*
-	// make separate folder for thread
-	tempdir += wxString::Format("/lhs_%d", thread_num);
-	if (!wxFileName::DirExists(tempdir))
-	{
-		if (!wxFileName::Mkdir(tempdir))
-		{
-			cxt.error("Unable to create folder for Sandia LHS executable : " + tempdir);
-			return;
-		}
-	}
-	int itemp = 0;
-	wxString workdir = tempdir + wxString::Format("/lhs_%d", itemp);
-	while (wxFileName::DirExists(workdir) && itemp < 10000)
-	{
-		workdir = tempdir + wxString::Format("/lhs_%d", itemp);
-		itemp++;
-	}
-	if (itemp >= 10000)
-	{
-		cxt.error("Unable to create folder for Sandia LHS executable : " + workdir);
-		return;
-	}
-	if (!wxFileName::Mkdir(workdir))
-	{
-		cxt.error("Unable to create folder for Sandia LHS executable : " + workdir);
-		return;
-	}
-	*/
-
 	wxString lhsexe(SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY));
 
 	if (!wxFileExists(lhsexe))
@@ -3277,107 +3199,105 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	fprintf(fp, "LHSPOST samlhs.msp\n");
 	fprintf(fp, "LHSMSG samlhs.lmo\n");
 	fprintf(fp, "DATASET:\n");
-//	for (size_t i = 0; i<m_dist.size(); i++)
+
+	int ncdfpairs;
+	int nminparams = wxStringTokenize(lhs_dist_names[idist], ",").Count() - 1;
+	if ((int)params.size() < nminparams)
 	{
-		int ncdfpairs;
-		int nminparams = wxStringTokenize(lhs_dist_names[idist], ",").Count() - 1;
-		if ((int)params.size() < nminparams)
+		cxt.error(wxString::Format("Dist '%s' requires minimum %d params, only %d specified.",
+			(const char*)dist_name.c_str(), nminparams, (int)params.size()));
+		fclose(fp);
+		return;
+	}
+
+	switch (idist)
+	{
+	case LHS_UNIFORM:
+		fprintf(fp, "%s UNIFORM %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_NORMAL:
+		fprintf(fp, "%s NORMAL %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_LOGNORMAL:
+		fprintf(fp, "%s LOGNORMAL %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_LOGNORMAL_N:
+		fprintf(fp, "%s LOGNORMAL-N %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_TRIANGULAR:
+		fprintf(fp, "%s %lg TRIANGULAR %lg %lg %lg\n", (const char*)dist_name.c_str(), params[1],
+			params[0],
+			params[1],
+			params[2]);
+		break;
+	case LHS_GAMMA:
+		fprintf(fp, "%s GAMMA %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_POISSON:
+		fprintf(fp, "%s POISSON %lg\n", (const char*)dist_name.c_str(),
+			params[0]);
+		break;
+	case LHS_BINOMIAL:
+		fprintf(fp, "%s BINOMIAL %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_EXPONENTIAL:
+		fprintf(fp, "%s EXPONENTIAL %lg\n", (const char*)dist_name.c_str(),
+			params[0]);
+		break;
+	case LHS_WEIBULL:
+		fprintf(fp, "%s WEIBULL %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_USERCDF:
+		ncdfpairs = (int)params[0];
+		fprintf(fp, "%s DISCRETE CUMULATIVE %d #\n", (const char*)dist_name.c_str(), ncdfpairs);
+		// update for uniform discrete distributions initially
+		if (ncdfpairs <= 0)
 		{
-			cxt.error(wxString::Format("Dist '%s' requires minimum %d params, only %d specified.",
-				(const char*)dist_name.c_str(), nminparams, (int)params.size()));
+			cxt.error(wxString::Format("user defined CDF error: too few [value,cdf] pairs in list: %d pairs should exist.", ncdfpairs));
 			fclose(fp);
 			return;
 		}
-
-		switch (idist)
+		/*
+		for (int j = 0; j<ncdfpairs; j++)
 		{
-		case LHS_UNIFORM:
-			fprintf(fp, "%s UNIFORM %lg %lg\n", (const char*)dist_name.c_str(),
-				params[0],
-				params[1]);
-			break;
-		case LHS_NORMAL:
-			fprintf(fp, "%s NORMAL %lg %lg\n", (const char*)dist_name.c_str(),
-				params[0],
-				params[1]);
-			break;
-		case LHS_LOGNORMAL:
-			fprintf(fp, "%s LOGNORMAL %lg %lg\n", (const char*)dist_name.c_str(),
-				params[0],
-				params[1]);
-			break;
-		case LHS_LOGNORMAL_N:
-			fprintf(fp, "%s LOGNORMAL-N %lg %lg\n", (const char*)dist_name.c_str(),
-				params[0],
-				params[1]);
-			break;
-		case LHS_TRIANGULAR:
-			fprintf(fp, "%s %lg TRIANGULAR %lg %lg %lg\n", (const char*)dist_name.c_str(), params[1],
-				params[0],
-				params[1],
-				params[2]);
-			break;
-		case LHS_GAMMA:
-			fprintf(fp, "%s GAMMA %lg %lg\n", (const char*)dist_name.c_str(),
-				params[0],
-				params[1]);
-			break;
-		case LHS_POISSON:
-			fprintf(fp, "%s POISSON %lg\n", (const char*)dist_name.c_str(),
-				params[0]);
-			break;
-		case LHS_BINOMIAL:
-			fprintf(fp, "%s BINOMIAL %lg %lg\n", (const char*)dist_name.c_str(),
-				params[0],
-				params[1]);
-			break;
-		case LHS_EXPONENTIAL:
-			fprintf(fp, "%s EXPONENTIAL %lg\n", (const char*)dist_name.c_str(),
-				params[0]);
-			break;
-		case LHS_WEIBULL:
-			fprintf(fp, "%s WEIBULL %lg %lg\n", (const char*)dist_name.c_str(),
-				params[0],
-				params[1]);
-			break;
-		case LHS_USERCDF:
-			ncdfpairs = (int)params[0];
-			fprintf(fp, "%s DISCRETE CUMULATIVE %d #\n", (const char*)dist_name.c_str(), ncdfpairs);
-			// update for uniform discrete distributions initially
-			if (ncdfpairs <= 0)
+		double cdf = (j + 1);
+		cdf /= (double)ncdfpairs;
+		if (cdf > 1.0) cdf = 1.0;
+		fprintf(fp, "  %d %lg", j, cdf);
+		if (j == ncdfpairs - 1) fprintf(fp, "\n");
+		else fprintf(fp, " #\n");
+		}
+		*/
+
+		for (int j = 0; j<ncdfpairs; j++)
+		{
+			if (2 + 2 * j >= (int)params.size())
 			{
 				cxt.error(wxString::Format("user defined CDF error: too few [value,cdf] pairs in list: %d pairs should exist.", ncdfpairs));
 				fclose(fp);
 				return;
 			}
-			/*
-			for (int j = 0; j<ncdfpairs; j++)
-			{
-			double cdf = (j + 1);
-			cdf /= (double)ncdfpairs;
-			if (cdf > 1.0) cdf = 1.0;
-			fprintf(fp, "  %d %lg", j, cdf);
+
+			fprintf(fp, "  %lg %lg", params[1 + 2 * j], params[2 + 2 * j]);
 			if (j == ncdfpairs - 1) fprintf(fp, "\n");
 			else fprintf(fp, " #\n");
-			}
-			*/
-
-			for (int j = 0; j<ncdfpairs; j++)
-			{
-				if (2 + 2 * j >= (int)params.size())
-				{
-					cxt.error(wxString::Format("user defined CDF error: too few [value,cdf] pairs in list: %d pairs should exist.", ncdfpairs));
-					fclose(fp);
-					return;
-				}
-
-				fprintf(fp, "  %lg %lg", params[1 + 2 * j], params[2 + 2 * j]);
-				if (j == ncdfpairs - 1) fprintf(fp, "\n");
-				else fprintf(fp, " #\n");
-			}
-
-			break;
 		}
+
+		break;
 	}
 /*
 	for (size_t i = 0; i<m_corr.size(); i++)
@@ -3387,8 +3307,6 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	}
 */
 	fclose(fp);
-
-	// now run using the callback provided or 'system' function
 
 	// delete any output or error that may exist
 	if (wxFileExists(workdir + "/SAMLHS.LSP"))
@@ -3400,44 +3318,16 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	// run the executable synchronously
 	wxString curdir = wxGetCwd();
 	wxSetWorkingDirectory(workdir);
+
+#ifdef __WXMSW__
 	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI"); // shows window
-//	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI  >nul  2>&1"); // shows window
-//	wxString execstr = wxString("cmd /c \"" + lhsexe + "\" SAMLHS.LHI  >nul  2>&1"); // shows window
-
-/*
-#ifdef __WXMSW__
-//	execstr += " >nul  2>&1";
+	bool exe_ok = (0 == windows_system(execstr));
 #else // untested
-	execstr += " > /dev/null";
-#endif
-*/
-
-//	bool exe_ok = (0 == wxExecute(execstr, wxEXEC_SYNC | wxEXEC_HIDE_CONSOLE)); //not threadable
-
-#ifdef __WXMSW__
-//	bool exe_ok = (0 == std::system((const char *)execstr.c_str()));
-//	bool exe_ok = (0 == std::system(execstr));
-//	bool exe_ok = (0 == system_hidden(execstr.c_str())); // crash
-//	wxString args = workdir + "/SAMLHS.LHI";
-//	bool exe_ok = (0 != windows_system(lhsexe, args)); // hangs - does not run.
-	bool exe_ok = (0 == windows_system(execstr)); 
-#else // untested
+	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI  >nul  2>&1"); // shows window
 	bool exe_ok = (0 == std::system(execstr));
 #endif
-	/*
-	// fails
-	STARTUPINFO si = { 0 };
-	PROCESS_INFORMATION pi;
-	si.cb = sizeof(si);
-	bool exe_ok = CreateProcess(execstr, TEXT(""), NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, NULL, &si, &pi); 
-	CloseHandle(pi.hThread);
-	CloseHandle(pi.hProcess);
-	*/
-
-
 
 	wxSetWorkingDirectory(curdir);
-//	exe_ok = true;
 
 	if (wxFileExists(workdir + "/LHS.ERR"))
 	{
@@ -3518,13 +3408,10 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 				return;
 			}
 
-//			for (size_t i = 0; i<m_dist.size(); i++)
-//			{
-				fgets(cbuf, 1023, fp);
-				wxString val(cbuf);
-				nline++;
-				cxt.result().vec_append(wxAtof(val));
-//			}
+			fgets(cbuf, 1023, fp);
+			wxString val(cbuf);
+			nline++;
+			cxt.result().vec_append(wxAtof(val));
 
 		}
 	}
