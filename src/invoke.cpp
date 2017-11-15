@@ -99,7 +99,6 @@
 
 std::mutex global_mu;
 
-
 void fcall_samver( lk::invoke_t &cxt )
 {
 	LK_DOC( "samver", "Returns current SAM version as a string.", "(none):string" );
@@ -3121,59 +3120,9 @@ int windows_system(wxString args)
 		return GetLastError();
 }
 
-
-// LHS thread safe implementation for threading pvrpm samples
-void fcall_lhs_threaded(lk::invoke_t &cxt)
+void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_samples, int &idist, wxString &dist_name, wxString &lhsexe, wxString &err_msg, std::vector<double> &params)
 {
-	LK_DOC("lhs_threaded", "Run a Latin Hypercube Sampling and return samples", "(string:distribution, array:distribution_parameters, int:num_samples, [int: seed_value, int:thread_number]): array:samples");
-	lk_string err_msg = "";
-	wxString workdir(wxFileName::GetTempDir());
-	// inputs 
-	lk_string dist_name = cxt.arg(0).as_string();
-	int idist = -1;
-	for (int i = 0; i<LHS_NUMDISTS; i++)
-	{
-		wxArrayString distinfo(wxStringTokenize(lhs_dist_names[i], ","));
-		if (distinfo.size() > 0 && dist_name.CmpNoCase(distinfo[0]) == 0)
-			idist = i;
-	}
-	if (idist < 0)
-	{
-		cxt.error("invalid LHS distribution name: " + dist_name);
-		return;
-	}
-	int num_parms = 0;
-	std::vector<double> params;
-	if (cxt.arg(1).deref().type() == lk::vardata_t::VECTOR)
-	{
-		num_parms = cxt.arg(1).length();
-		for (int i = 0; i < num_parms; i++)
-			params.push_back(cxt.arg(1).vec()->at(i).as_number());
-	}
-	else
-	{
-		cxt.error("Sandia LHS executable no distribution parameters specified.");
-		return;
-	}
-	int num_samples = cxt.arg(2).as_integer();
-	int seed_val = 0; 
-	if (cxt.arg_count() > 3)
-		seed_val = cxt.arg(3).as_integer();
-	int thread_num = 0; // not threaded
-	if (cxt.arg_count() > 4)
-		thread_num = cxt.arg(4).as_integer();
-	
-	wxString lhsexe(SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY));
-
-	if (!wxFileExists(lhsexe))
-	{
-		cxt.error("Sandia LHS executable does not exist: " + lhsexe);
-		return;
-	}
-
-	// mutext locking here
-	global_mu.lock();
-
+	std::lock_guard<std::mutex> mtx_lock(global_mu);
 	// delete any output or error that may exist
 	if (wxFileExists(workdir + "/SAMLHS.LHI"))
 		wxRemoveFile(workdir + "/SAMLHS.LHI");
@@ -3186,9 +3135,6 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 		cxt.error("Could not write to LHS input file " + inputfile);
 		return;
 	}
-	int sv = wxGetLocalTime();
-	if (seed_val > 0)
-		sv = seed_val;
 
 	fprintf(fp, "LHSTITL SAM LHS RUN\n");
 	fprintf(fp, "LHSOBS %d\n", num_samples);
@@ -3299,13 +3245,13 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 
 		break;
 	}
-/*
+	/*
 	for (size_t i = 0; i<m_corr.size(); i++)
 	{
-		if (Find(m_corr[i].name1) >= 0 && Find(m_corr[i].name2) >= 0)
-			fprintf(fp, "CORRELATE %s %s %lg\n", (const char*)m_corr[i].name1.c_str(), (const char*)m_corr[i].name2.c_str(), m_corr[i].corr);
+	if (Find(m_corr[i].name1) >= 0 && Find(m_corr[i].name2) >= 0)
+	fprintf(fp, "CORRELATE %s %s %lg\n", (const char*)m_corr[i].name1.c_str(), (const char*)m_corr[i].name2.c_str(), m_corr[i].corr);
 	}
-*/
+	*/
 	fclose(fp);
 
 	// delete any output or error that may exist
@@ -3412,11 +3358,61 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 			wxString val(cbuf);
 			nline++;
 			cxt.result().vec_append(wxAtof(val));
-
 		}
 	}
 	fclose(fp);
-	global_mu.unlock();
+}
+
+
+// LHS thread safe implementation for threading pvrpm samples
+void fcall_lhs_threaded(lk::invoke_t &cxt)
+{
+	LK_DOC("lhs_threaded", "Run a Latin Hypercube Sampling and return samples", "(string:distribution, array:distribution_parameters, int:num_samples, [int: seed_value]): array:samples");
+	lk_string err_msg = "";
+	wxString workdir(wxFileName::GetTempDir());
+	// inputs 
+	lk_string dist_name = cxt.arg(0).as_string();
+	int idist = -1;
+	for (int i = 0; i<LHS_NUMDISTS; i++)
+	{
+		wxArrayString distinfo(wxStringTokenize(lhs_dist_names[i], ","));
+		if (distinfo.size() > 0 && dist_name.CmpNoCase(distinfo[0]) == 0)
+			idist = i;
+	}
+	if (idist < 0)
+	{
+		cxt.error("invalid LHS distribution name: " + dist_name);
+		return;
+	}
+	int num_parms = 0;
+	std::vector<double> params;
+	if (cxt.arg(1).deref().type() == lk::vardata_t::VECTOR)
+	{
+		num_parms = cxt.arg(1).length();
+		for (int i = 0; i < num_parms; i++)
+			params.push_back(cxt.arg(1).vec()->at(i).as_number());
+	}
+	else
+	{
+		cxt.error("Sandia LHS executable no distribution parameters specified.");
+		return;
+	}
+	int num_samples = cxt.arg(2).as_integer();
+	int seed_val = 0; 
+	if (cxt.arg_count() > 3)
+		seed_val = cxt.arg(3).as_integer();
+
+	int sv = wxGetLocalTime();
+	if (seed_val > 0)
+		sv = seed_val;
+	
+	wxString lhsexe(SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY));
+	if (!wxFileExists(lhsexe))
+	{
+		cxt.error("Sandia LHS executable does not exist: " + lhsexe);
+		return;
+	}
+	lhs_threaded(cxt, workdir, sv, num_samples, idist, dist_name, lhsexe, err_msg, params);
 }
 
 
