@@ -6,7 +6,7 @@ en_pvsamv3 = 0;
 
 // define all the configurations
 if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
-addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
+addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'Single Owner PPA Buy Rate','None'] );
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
@@ -58,10 +58,12 @@ configopt( 'Single Owner',                { 'long_name'='PPA single owner (utili
 configopt( 'Leveraged Partnership Flip',  { 'long_name'='PPA partnership flip with debt (utility)',         'short_name'='Flip (debt)',      'description'='Developer/investor partnership flip PPA structure with debt' } );
 configopt( 'All Equity Partnership Flip', { 'long_name'='PPA partnership flip without debt (utility)',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
 configopt( 'Sale Leaseback',              { 'long_name'='PPA sale leaseback (utility)',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
+configopt( 'Single Owner PPA Buy Rate',   { 'long_name'='PPA single owner with buy rate (utility)',         'short_name'='Single owner buy rate',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
 configopt( 'None',                        { 'long_name'='No financial model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
 enum { LOAD_SIMPLE, LOAD_BELPE, NO_LOAD };
 enum { LIFETIME_NONE, LIFETIME_PV, LIFETIME_SYSTEM };
+
 
 function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the building load calculator (for now just PV, CSP, Biopower, and Generic Solar- MUST HAVE SOLAR RESOURCE DATA), 2 for techs without ANY load pages (SWH), and 0 for technologies that don't
 {
@@ -102,9 +104,9 @@ function setup_battery_pages_front_of_meter()
 			   'Battery Voltage',
 			   'Battery Current and Capacity',
 			   'Battery Configuration',
-			   'Battery Dispatch Front of Meter',
 			   'Battery Dispatch Common',
-			   'Battery Dispatch Manual', 
+			   'Battery Dispatch Front of Meter', 
+			   'Battery Dispatch Manual',
 			   'Battery Lifetime',
 			   'Battery Replacements',
 			   'Battery Thermal'] ],
@@ -661,6 +663,15 @@ setup_flat_plate_pv_pages();
 setup_battery_pages_front_of_meter();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages( LIFETIME_PV );
+
+setconfig( 'Flat Plate PV', 'Single Owner PPA Buy Rate' );	
+setmodules( ['pvsamv1', 'utilityrate5', 'singleowner']);
+setup_flat_plate_pv_pages();
+setup_battery_pages_front_of_meter();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+setup_single_owner_pages( LIFETIME_PV );
+setup_utility_rate();
+
 
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );
@@ -1317,7 +1328,7 @@ function setup_MSPT_pages()
 	addpage( [[ 'MSPT System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
 	addpage( [[ 'Tower SolarPilot Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
 	addpage( [[ 'MSPT Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
-	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]], 
+	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ], ['sCO2 Power Cycle']], 
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
 	addpage( [[ 'Molten Salt Tower Storage' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
