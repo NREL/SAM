@@ -3,10 +3,6 @@ SAMVERDASH=$(subst .,-,$(SAMVER))
 SRCDIR = ../src
 VPATH = $(SRCDIR)
 
-WEXDIR = ../../wex
-LKDIR = ../../lk
-SSCDIR = ../../ssc
-
 WEXLIB = $(WEXDIR)/wexuxwx3.a
 LKLIB = $(LKDIR)/lkuxwx3.a
 SSCLIB = ssc.so
