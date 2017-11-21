@@ -24,6 +24,7 @@ to Btu or other energy units.</p>
 <li>Created on 11/11/2011 by Paul Gilman based on algorithm suggested by Jay Burch.</li>
 <li>Updated on 8/9/2013 by Nick DiOrio to work with new SWH model.</li>
 <li>Converted from SamUL to LK for new SAM version on 10/28/2014 by Paul Gilman.</li>
+<li>Remove conversion of results from W to kW now that they are reported in kW. PG 11/14/2017</li>
 <ul>
 
 @*/
@@ -52,14 +53,19 @@ Q_saved = get('Q_deliv'); //Thermal energy delivered by solar collector
 Q_aux_only = get('Q_auxonly'); //Thermal energy from auxiliary tank
 P_pump = get('P_pump'); //Pump losses
 
+outln(sum(Q_saved));
+outln(sum(Q_aux_only));
+outln(sum(P_pump));
+
+
 time_steps = #Q_saved;
 
-//Energy from gas calculations (converted from W to kW)
+//Energy from gas calculations
 for ( i = 0; i < time_steps; i++ )
 {
-  Q_gas_saved[i] = Q_saved[i] / Eta_burn / 1000;
-  Q_gas_no_solar[i] = Q_aux_only[i] / EF_gas_tank / 1000;
-  Q_gas_with_solar[i] = ( Q_gas_no_solar[i] - Q_gas_saved[i] + P_pump[i] ) / 1000;
+  Q_gas_saved[i] = Q_saved[i] / Eta_burn;
+  Q_gas_no_solar[i] = Q_aux_only[i] / EF_gas_tank;
+  Q_gas_with_solar[i] = ( Q_gas_no_solar[i] - Q_gas_saved[i] + P_pump[i] );
 }
 
 //Calculate hourly solar fraction
