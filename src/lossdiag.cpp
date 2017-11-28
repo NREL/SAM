@@ -264,7 +264,7 @@ void LossDiagramObject::Configure( bool from_case, bool scale )
 
 
 LossDiagCallbackContext::LossDiagCallbackContext( Case *c, Simulation *sim, LossDiagramObject *ld, const wxString &desc )
-	: CaseCallbackContext( c, desc ), m_sim( sim ), m_lossDiag( ld ) { }
+	: CaseCallbackContext( c, desc ), m_lossDiag( ld ), m_sim (sim) { }
 
 LossDiagramObject &LossDiagCallbackContext::GetDiagram() { return *m_lossDiag; }
 Simulation &LossDiagCallbackContext::GetSimulation() { return *m_sim; }

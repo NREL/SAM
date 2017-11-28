@@ -668,7 +668,9 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 				{
 					UICallbackContext cbcxt( ipage, obj->GetName() + "->on_change" );
 					if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
+					  {
 						wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
+					  }
 				}
 			}
 

@@ -1495,7 +1495,7 @@ void UIEditorPanel::OnFormSelectObject( wxUIFormEvent &evt )
 	if ( wxUIObject *obj = evt.GetUIObject() )
 	{
 		wxString name = obj->GetName();
-		if ( VarInfo *vv = m_ipd.Variables().Lookup( name ) )
+		if (m_ipd.Variables().Lookup( name ) )
 		{
 			FormToVarInfo( ); // save the current var
 			m_varList->SetStringSelection( name );
