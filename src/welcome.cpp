@@ -175,7 +175,7 @@ void WelcomeScreen::RunWelcomeScript( const wxString &script )
 
 	lk::input_string data( script );
 	lk::parser parse( data );
-	std::auto_ptr<lk::node_t> root( parse.script() );
+	std::unique_ptr<lk::node_t> root( parse.script() );
 
 	if ( parse.error_count() != 0
 		|| parse.token() != lk::lexer::END)

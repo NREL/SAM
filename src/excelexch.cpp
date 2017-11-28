@@ -552,6 +552,8 @@ bool ExcelExchange::ShowExcelExchangeDialog( ExcelExchange &exch, CaseWindow *cw
 #define ALPHA_MAX 'z'
 #define LASTCHAR(x) tolower(x[x.Len()-1])
 
+#ifdef  __WXMSW__
+
 static wxString ConvertToBase26(unsigned int val)
 {
 	wxString result;
@@ -587,9 +589,6 @@ static wxArrayString EnumerateAlphaIndex(const wxString &_start, const wxString 
 	}
 	return values;
 }
-
-
-#ifdef __WXMSW__
 
 bool ExcelExchange::ParseAndCaptureRange( const wxString &range, wxString &val, wxExcelAutomation &xl )
 {
