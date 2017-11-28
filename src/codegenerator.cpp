@@ -259,10 +259,10 @@ bool CodeGen_Base::PlatformFiles()
 {
 	// copy appropriate dll
 #if defined(__WXMSW__) && defined (__64BIT__)
-	wxString f1 = SamApp::GetAppPath() + "/sscx64.dll";
+	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
 	wxString f2 = m_folder + "/ssc.dll";
 #elif defined(__WXMSW__) && defined(__32BIT__)
-	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
+	wxString f1 = SamApp::GetAppPath() + "/sscx32.dll";
 	wxString f2 = m_folder + "/ssc.dll";
 #elif defined(__WXOSX__)
 	wxString f1 = SamApp::GetAppPath() + "/../Frameworks/ssc.dylib";
