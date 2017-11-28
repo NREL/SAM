@@ -60,8 +60,7 @@ OBJECTS = ide.o \
 TARGET = sam.bin
 
 
-$(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCDIR)/build_linux/$(SSCLIB)
-	cp $(SSCDIR)/build_linux/$(SSCLIB) .
+$(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	$(CXX) -g -o $@ $(OBJECTS) $(LDFLAGS)
 	mkdir -p ../deploy/linux_64
 	cp $(TARGET) ../deploy/linux_64
@@ -70,6 +69,9 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCDIR)/build_linux/$(SSCLIB)
 	cp ../Sandia/linux/stepwise.bin ../deploy/runtime/bin
 	rm -rf ../deploy/linux_64/GtkTheme
 	cp -R ./GtkTheme ../deploy/linux_64
+
+$(SSCLIB): $(SSCDIR)/build_linux/$(SSCLIB)
+	cp $< $@
 
 PKGFILE = sam-linux-$(SAMVERDASH).run
 
@@ -120,7 +122,7 @@ DEPENDS = $(OBJECTS:.o=.d)
 	@rm -f $*.d.tmp
 
 clean:
-	rm -rf $(OBJECTS) $(TARGET) *.d
+	rm -rf $(OBJECTS) $(SSCLIB) $(TARGET) *.d
 	rm -rf ./sam.deploy sam.deploy.tar.gz
 	rm -rf ../deploy/linux_64/GtkTheme
 	rm install0
