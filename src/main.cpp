@@ -2029,7 +2029,9 @@ void SamApp::Restart()
 		{
 			wxLogStatus( "loading .ui: " + wxFileName(file).GetName() );
 			if (!SamApp::InputPages().LoadFile( SamApp::GetRuntimePath() + "/ui/" + file ))
+			  {
 				wxLogStatus( " --> error loading .ui for " + wxFileName(file).GetName() );
+			  }
 			
 			has_more = dir.GetNext( &file );
 		}
@@ -2069,17 +2071,25 @@ void SamApp::Restart()
 
 
 	g_globalCallbacks.ClearAll();
-	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/metrics.lk" )) 
+	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/metrics.lk" ))
+	  {
 		wxLogStatus( "error loading metrics.lk" );
+	  }
 
 	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/cashflow.lk" ))
+	  {
 		wxLogStatus( "error loading cashflow.lk" );
+	  }
 
 	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/autographs.lk" ))
+	  {
 		wxLogStatus( "error loading autographs.lk" );
+	  }
 
 	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/lossdiag.lk" ))
+	  {
 		wxLogStatus( "error loading lossdiag.lk" );
+	  }
 
 	wxString solar_resource_db = SamApp::GetUserLocalDataDir() + "/SolarResourceData.csv";
 	if ( !wxFileExists( solar_resource_db ) ) ScanSolarResourceData( solar_resource_db );

@@ -3019,7 +3019,7 @@ bool CodeGen_python::Footer()
 
 
 // Python 2
-CodeGen_python2::CodeGen_python2(Case *cc, const wxString &folder) : CodeGen_python(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_python2::CodeGen_python2(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_python(cc, folder)
 {
 }
 
@@ -3196,7 +3196,7 @@ bool CodeGen_python2::Input(ssc_data_t p_data, const char *name, const wxString 
 
 
 
-CodeGen_python3::CodeGen_python3(Case *cc, const wxString &folder) : CodeGen_python(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_python3::CodeGen_python3(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_python(cc, folder)
 {
 }
 
@@ -4970,7 +4970,7 @@ bool CodeGen_php::Footer()
 	return true;
 }
 
-CodeGen_php5::CodeGen_php5(Case *cc, const wxString &folder) : CodeGen_php(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_php5::CodeGen_php5(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_php(cc, folder)
 {
 }
 
@@ -5568,7 +5568,7 @@ bool CodeGen_php5::SupportingFiles()
 #endif
 }
 
-CodeGen_php7::CodeGen_php7(Case *cc, const wxString &folder) : CodeGen_php(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_php7::CodeGen_php7(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_php(cc, folder)
 {
 }
 
