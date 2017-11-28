@@ -379,7 +379,9 @@ bool Case::Read( wxInputStream &_i )
 	wxString fin = in.ReadString();
 
 	if ( !SetConfiguration( tech, fin ) )
+	  {
 		wxLogStatus( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin );
+	  }
 
 	// read in the variable table
 	m_oldVals.clear();
@@ -391,26 +393,46 @@ bool Case::Read( wxInputStream &_i )
 		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
 			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size() );
 		
-		if ( di.not_found.size() > 0 ) wxLogStatus("\not found: " + wxJoin(di.not_found, ',') );
-		if ( di.wrong_type.size() > 0 ) wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ',') );
+		if ( di.not_found.size() > 0 )
+		  {
+		    wxLogStatus("\not found: " + wxJoin(di.not_found, ',') );
+		  }
+		if ( di.wrong_type.size() > 0 )
+		  {
+		    wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ',') );
+		  }
 	}
 	
 	if ( ver <= 1 )
 	{
 		m_baseCase.Clear();
 		VarTable dum;
-		if ( !dum.Read( _i ) ) wxLogStatus("error reading dummy var table in Case::Read");
+		if ( !dum.Read( _i ) )
+		  {
+		    wxLogStatus("error reading dummy var table in Case::Read");
+		  }
 	}
 	else
-		if ( !m_baseCase.Read( _i ) ) wxLogStatus("error reading m_baseCase in Case::Read");
+		if ( !m_baseCase.Read( _i ) )
+		  {
+		    wxLogStatus("error reading m_baseCase in Case::Read");
+		  }
 
-	if ( !m_properties.Read( _i ) ) wxLogStatus("error reading m_properties in Case::Read");
-	if ( !m_notes.Read( _i ) ) wxLogStatus("error reading m_notes in Case::Read");
+	if ( !m_properties.Read( _i ) )
+	  {
+	    wxLogStatus("error reading m_properties in Case::Read");
+	  }
+	if ( !m_notes.Read( _i ) )
+	  {
+	    wxLogStatus("error reading m_notes in Case::Read");
+	  }
 
 	if ( ver >= 3 )
 	{
 		if (!m_excelExch.Read( _i ))
+		  {
 			wxLogStatus("error reading excel exchange data in Case::Read");
+		  }
 	}
 
 	if ( ver >= 4 )
@@ -420,21 +442,33 @@ bool Case::Read( wxInputStream &_i )
 		for( size_t i=0;i<n;i++) 
 		{
 			Graph g;
-			if ( !g.Read( _i ) ) wxLogStatus("error reading Graph %d of %d in Case::Read", (int)i, (int)n);
+			if ( !g.Read( _i ) )
+			  {
+			    wxLogStatus("error reading Graph %d of %d in Case::Read", (int)i, (int)n);
+			  }
 			m_graphs.push_back( g );
 		}
 
-		if ( !m_perspective.Read( _i ) ) wxLogStatus("error reading perspective of results viewer in Case::Read");
+		if ( !m_perspective.Read( _i ) )
+		  {
+		    wxLogStatus("error reading perspective of results viewer in Case::Read");
+		  }
 	}
 
 	if ( ver >= 5 )
 	{
-		if ( !m_parametric.Read( _i ) ) wxLogStatus("error reading parametric simulation information in Case::Read");
+		if ( !m_parametric.Read( _i ) )
+		  {
+		    wxLogStatus("error reading parametric simulation information in Case::Read");
+		  }
 	}
 
 	if ( ver >= 6 )
 	{
-		if ( !m_stochastic.Read( _i ) ) wxLogStatus("error reading stochastic simulation information in Case::Read");
+		if ( !m_stochastic.Read( _i ) )
+		  {
+		    wxLogStatus("error reading stochastic simulation information in Case::Read");
+		  }
 	}
 
 	return (in.Read8() == code);
