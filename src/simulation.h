@@ -102,6 +102,9 @@ class Simulation
 {
 public:
 	Simulation( Case *cc, const wxString &name );
+	virtual ~Simulation() {
+	  // provide a virtual destructor for safety
+	}
 	
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );

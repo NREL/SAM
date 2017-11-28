@@ -1065,7 +1065,7 @@ void ParametricViewer::UpdateGrid()
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 // m_par contains list of inputs and outputs
-ParametricGridData::ParametricGridData(Case *cc) :m_case(cc), m_par(cc->Parametric())
+ParametricGridData::ParametricGridData(Case *cc) :m_par(cc->Parametric()), m_case(cc)
 {
 	m_color_for_inputs = wxColour("LIGHT BLUE");
 	m_color_for_valid_outputs = wxColour(145,210,142);
@@ -1912,8 +1912,7 @@ bool ParametricGridData::RunSimulations_multi()
 	if ( nthread > (int)sims.size() ) nthread = sims.size();
 	tpd.NewStage("Calculating...", nthread);
 
-	size_t nok = 0;
-	nok = Simulation::DispatchThreads(tpd, sims, nthread);
+	Simulation::DispatchThreads(tpd, sims, nthread);
 
 //	int time_sim = sw.Time();
 	sw.Start();
@@ -2828,7 +2827,7 @@ void Parametric_QS::UpdateCaseParametricData()
 		wxArrayString outputs;
 		for (size_t i = 0; i < par.Setup.size(); i++)
 		{
-			if (VarValue *vv = m_case->Values().Get(par.Setup[i].Name))
+			if (m_case->Values().Get(par.Setup[i].Name))
 				continue;
 			outputs.Add(par.Setup[i].Name);
 		}
