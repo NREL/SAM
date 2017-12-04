@@ -122,7 +122,7 @@ DEPENDS = $(OBJECTS:.o=.d)
 	@rm -f $*.d.tmp
 
 clean:
-	rm -rf $(OBJECTS) $(SSCLIB) $(TARGET) *.d
-	rm -rf ./sam.deploy sam.deploy.tar.gz
-	rm -rf ../deploy/linux_64/GtkTheme
-	rm install0
+	-rm -rf $(OBJECTS) $(SSCLIB) $(TARGET) *.d
+	-rm -rf ./sam.deploy sam.deploy.tar.gz
+	-rm -rf ../deploy/linux_64/GtkTheme
+	-rm install0
