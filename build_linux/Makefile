@@ -8,7 +8,7 @@ LKLIB = $(LKDIR)/lkuxwx3.a
 SSCLIB = ssc.so
 
 # Check environment variables are set
-ifeq ($(WEXLIB),)
+ifeq ($(WEXDIR),)
   $(error WEXLIB is not set)
 endif
 ifeq ($(LKDIR),)
