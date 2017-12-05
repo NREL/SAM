@@ -10,7 +10,7 @@ LKLIB = $(LKDIR)/lkosxwx3.a
 SSCLIB = $(SSCDIR)/build_osx/ssc.dylib
 
 # Check environment variables are set
-ifeq ($(WEXLIB),)
+ifeq ($(WEXDIR),)
   $(error WEXLIB is not set)
 endif
 ifeq ($(LKDIR),)
