@@ -476,13 +476,11 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 	settings.GetProperty(wxT("tabIndex")).ToLong(&i);
 	SetSelection(i);
 
-	int energy_index = -1, irrad_index = -1;
+	int energy_index = -1;
 	for( size_t i=0;i<m_tsDataSets.size();i++ )
 	{
 		if ( m_tsDataSets[i]->GetMetaData() == "hourly_energy" )
 			energy_index = i;
-		if ( m_tsDataSets[i]->GetMetaData() == "gh" )
-			irrad_index = i;
 	}
 
 	//***TimeSeries Properties***
@@ -616,7 +614,7 @@ ResultsViewer::~ResultsViewer()
 }
 
 TimeSeriesData::TimeSeriesData( float *p, size_t len, double ts_hour, double ts_offset, const wxString &label, const wxString &units )
-	: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_startOffsetHours(ts_offset), m_label(label), m_units(units)
+  	: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_label(label), m_units(units), m_startOffsetHours(ts_offset)
 {
 	/* nothing to do */
 }
@@ -912,7 +910,9 @@ void ResultsViewer::Setup( Simulation *sim )
 
 		ResultsCallbackContext cc( this, "Cashflow callback: " + cfg->Financing );
 		if ( !cc.Invoke( cfcb, SamApp::GlobalCallbacks().GetEnv() ) )
+		  {
 			wxLogStatus( "error running cashflow script." );
+		  }
 		
 		int nyears = 0;
 		if ( VarValue *vv = m_sim->GetValue( cfg->Settings[ "analysis_period_var" ] ) )
@@ -1342,7 +1342,9 @@ void ResultsViewer::CreateAutoGraphs()
 	if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology + "|" + cfg->Financing))
 	{
 		if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+		  {
 			wxLogStatus("error running create autographs script.");
+		  }
 	}
 
 	if ( m_autographs.size() == 0 )
@@ -1350,13 +1352,17 @@ void ResultsViewer::CreateAutoGraphs()
 		if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology))
 		{
 			if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+			  {
 				wxLogStatus("error running create autographs script.");
+			  }
 		}
 
 		if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Financing))
 		{
 			if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+			  {
 				wxLogStatus("error running create autographs script.");
+			  }
 		}
 	}
 
@@ -1408,7 +1414,9 @@ void ResultsViewer::ExportEqnExcel()
 	{
 		CaseCallbackContext cc( m_sim->GetCase(), "Cashflow to Excel callback: " + cfg->Financing);
 		if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+		  {
 			wxLogStatus("error running cashflow to excel script.");
+		  }
 	}
 }
 
@@ -1572,7 +1580,7 @@ void MetricsTable::OnPaint(wxPaintEvent &)
 	GetClientSize(&cwidth, &cheight);
 	
 	dc.SetPen( wxPen( wxColour(50,50,50), 1) );
-	dc.SetBrush( wxBrush( wxColour(50,50,50), wxSOLID ) ); 
+	dc.SetBrush( wxBrush( wxColour(50,50,50), wxBRUSHSTYLE_SOLID ) ); 
 	dc.DrawRectangle(0,0,cwidth,cheight);
 
 	dc.SetFont( GetFont() );
@@ -1604,7 +1612,7 @@ void MetricsTable::OnPaint(wxPaintEvent &)
 	int wy = MT_BORDER+m_rowHeight;
 
 	dc.SetPen( wxPen( *wxWHITE, 1) );
-	dc.SetBrush( wxBrush( *wxWHITE, wxSOLID ) );
+	dc.SetBrush( wxBrush( *wxWHITE, wxBRUSHSTYLE_SOLID ) );
 
 	wxRect tabR( MT_BORDER, wy,cwidth-MT_BORDER-MT_BORDER,cheight-wy-MT_BORDER );
 
