@@ -161,7 +161,7 @@ bool MacroEngine::Run( const wxString &script, lk::vardata_t *args )
 	// parse macro code
 	lk::input_string p( script );
 	lk::parser parse( p );	
-	std::auto_ptr<lk::node_t> tree( parse.script() );
+	smart_ptr<lk::node_t>::ptr tree( parse.script() );
 			
 	int i=0;
 	while ( i < parse.error_count() )
@@ -438,7 +438,7 @@ class VarListSelector : public wxPanel
 
 public:
 	VarListSelector( wxWindow *parent, bool only_num=false, bool en_meta=false, const wxString &prompt=wxEmptyString )
-		: wxPanel( parent ), m_onlyNumbers( only_num ), m_enableMeta(en_meta), m_prompt(prompt)
+	  : wxPanel( parent ), m_enableMeta(en_meta), m_prompt(prompt), m_onlyNumbers( only_num )
 	{
 		SetMinClientSize( wxScaleSize( 200, 130 ) );
 		wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
