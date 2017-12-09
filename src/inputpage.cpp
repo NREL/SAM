@@ -127,7 +127,7 @@ END_EVENT_TABLE()
 ActiveInputPage::ActiveInputPage( wxWindow *parent, wxUIFormData *form, CaseWindow *cw,
 	int id, const wxPoint &pos, const wxSize &size )
 	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL|wxCLIP_CHILDREN ),
-	 m_cwin(cw), m_case(cw->GetCase()), m_formData( form )
+  	m_formData( form ), m_cwin(cw), m_case(cw->GetCase())
 {
 	m_scaleX = m_scaleY = 1.0;
 	UpdateScale( NULL );
@@ -286,7 +286,9 @@ void ActiveInputPage::Initialize()
 	{
 		UICallbackContext cbcxt( this, m_formData->GetName() + "->on_load" );
 		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
+		  {
 			wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
+		  }
 	}
 }
 
@@ -411,7 +413,9 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	{
 		UICallbackContext cbcxt( this, obj->GetName() + "->on_change" );
 		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
+		  {
 			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
+		  }
 	}
 }
 

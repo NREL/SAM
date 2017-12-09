@@ -1087,7 +1087,6 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	int i, imageCount = 0;
 	bool readdata = false;
 	bool readok = true;
-	bool headingok = true;
 	int month=0; // 
 	double beam[290];
 	for (i=0;i<290;i++) beam[i]=0.0;
@@ -1143,7 +1142,6 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	if (readdata == false || imageCount == 0)
 	{
 		readok = false;
-		headingok = false;
 	}
 
 	if (readok)
