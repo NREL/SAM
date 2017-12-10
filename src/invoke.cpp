@@ -3068,53 +3068,15 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 	if (cxt.arg(2).deref().type() == lk::vardata_t::VECTOR)
 	{
 		int num_runs = cxt.arg(2).length();
-		int nthread = wxThread::GetCPUCount();
 
-
-		// test update dialog
-//		SimulationDialog tpd("Preparing inputs", nthread);
-		// update dialog
-		int interval_ms = 200;
-		int total_ms = 1000;
-		int current_ms = 0;
-
-
-//		tpd.NewStage("Calculating...", nthread);
 		// std::async implementation - speed up of about 5.2 for 8 threads or more
 		std::vector< std::future<lk::vardata_t> > results;
 		for (int i = 0; i < num_runs; i++)
 		{
 			lk::vardata_t input_value = cxt.arg(2).vec()->at(i);
-//			tpd.Update(0, float(i) / float(num_runs));
-			// output
 			results.push_back(std::async(std::launch::async, sam_async_thread, cxt, bc, lk_result, input_name, input_value));
 		}
 
-		/*
-		std::vector<bool> fin;
-		for (int j = 0; j < num_runs; j++)
-			fin.push_back(false);
-		bool done = false;
-		while (!done)
-		{
-			for (int j = 0; j < nthread; j++)
-			{
-				if (j<results.size())
-				{
-				bool done = results[j].wait_for(std::chrono::seconds(interval_ms)) == std::future_status::ready;
-				if (!done)
-				{
-					float t = 100.0 * (float)interval_ms / (float)total_ms;
-					tpd.Update(j, t);
-					current_ms += interval_ms;
-					if (current_ms > total_ms) current_ms = 0; // start over
-				}
-				else
-					tpd.Update(j, 100.0);
-				Sleep(200);
-			}
-		}
-		*/
 // Will block till data is available in future<std::string> object.
 		for (int i=0; i<num_runs; i++)
 		{
@@ -3122,7 +3084,6 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 			cxt.result().hash_item(result_name, results[i].get());
 		}
 
-//		tpd.Finalize();
 	}
 //
 //	end = std::chrono::system_clock::now();
@@ -3130,6 +3091,195 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 //	loop_time = " loop time: " + std::to_string(diff) + "ms \n";
 
 //	cxt.result().hash_item("async_time", file_time + loop_time);
+	cxt.result().hash_item("error", err_str);
+}
+
+
+
+static void fcall_sam_packaged_task(lk::invoke_t &cxt)
+{
+	LK_DOC("sam_packaged_task", "For running function in a thread using std::async.", "(string: file containg lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
+	// wrapper around std::async to run functions with argument
+	// will use std::promise, std::future in combination with std::package or std::async
+	//lk_string func_name = cxt.arg(0).as_string();
+
+	// checking for bottlenecks
+	//	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+	lk_string err_str = "";// , file_time, parse_time, bc_time, add_input_time, loop_time;
+	cxt.result().empty_hash();
+
+	lk_string fn = cxt.arg(0).as_string();
+	FILE *fp = fopen(fn.c_str(), "r");
+	if (!fp)
+	{
+		err_str += "No valid input file " + fn + "specified\n";
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+
+	lk_string file_contents;
+	char buf[1024];
+	while (fgets(buf, 1023, fp) != 0)
+		file_contents += buf;
+	fclose(fp);
+
+	//
+	//	auto end = std::chrono::system_clock::now();
+	//	auto diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	//	file_time = " File time: " + std::to_string(diff) + "ms ";
+
+	// additional input time
+	//	start = std::chrono::system_clock::now();
+
+	// add input value
+	// required input - changes in each thread 
+	lk_string input_name = cxt.arg(1).as_string();
+	lk_string value = "\"ASSIGN|VALUE|HERE\";\n";
+	file_contents = input_name + "=" + value + file_contents;
+
+	// optional global additional input - e.g. hash for pvrpm same for all threads
+	if (cxt.arg_count() > 5)
+	{
+		lk_string add_input_name = cxt.arg(4).as_string();
+		value = "\"ADDITIONALASSIGN|VALUE|HERE\";\n";
+		lk::vardata_t add_input_value = cxt.arg(5);
+		file_contents = add_input_name + "=" + value + file_contents;
+	}
+
+
+	// file contents parsed to node_t
+	// checking for bottlenecks
+	//	start = std::chrono::system_clock::now();
+
+	lk::input_string p(file_contents);
+	lk::parser parse(p);
+	std::auto_ptr<lk::node_t> tree(parse.script());
+	int i = 0;
+	while (i < parse.error_count())
+		err_str += lk_string(parse.error(i++)) + "\n";
+
+	if (parse.token() != lk::lexer::END)
+		err_str += "parsing did not reach end of input\n";
+
+	if (err_str.Len() > 0)
+	{
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+	//
+	//	end = std::chrono::system_clock::now();
+	//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	//	parse_time = " Parse time: " + std::to_string(diff) + "ms ";
+
+
+	// bytecode time
+	//	start = std::chrono::system_clock::now();
+
+	lk::bytecode bc;
+	lk::codegen cg;
+	if (cg.generate(tree.get()))
+		cg.get(bc);
+	else
+	{
+		err_str += "bytecode not generated.\n";
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+	//
+	//	end = std::chrono::system_clock::now();
+	//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	//	bc_time = " bytecode time: " + std::to_string(diff) + "ms ";
+
+
+	//	start = std::chrono::system_clock::now();
+
+	// additional common inputs; e.g., meta hash for pvrpm
+
+	if (cxt.arg_count() > 5)
+	{
+		// replace bc.constants with updated lk:vardata_t input value
+		value = "ADDITIONALASSIGN|VALUE|HERE";
+		size_t ndx_c = bc.constants.size() + 1;
+		for (size_t i = 0; i < bc.constants.size(); i++)
+		{
+			if (bc.constants[i].type() == lk::vardata_t::STRING)
+			{
+				if (bc.constants[i].as_string() == value)
+				{
+					ndx_c = i;
+					break;
+				}
+			}
+		}
+		if (ndx_c > bc.constants.size())
+		{
+			err_str += "_async: No additional input value found to change.\n";
+		}
+		else
+		{
+			lk::vardata_t add_input_value = cxt.arg(5);
+			bc.constants[ndx_c] = add_input_value;
+		}
+	}
+
+	if (err_str.Len() > 0)
+	{
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+
+
+
+	//	end = std::chrono::system_clock::now();
+	//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	//	add_input_time = " bytecode additional input time: " + std::to_string(diff) + "ms ";
+
+	//
+	//	start = std::chrono::system_clock::now();
+
+	lk_string lk_result = "lk_result";
+	if (cxt.arg_count() > 3)
+		lk_result = cxt.arg(3).as_string();
+
+
+	// testing with vector and then will move to table or other files as inputs.
+	if (cxt.arg(2).deref().type() == lk::vardata_t::VECTOR)
+	{
+		int num_runs = cxt.arg(2).length();
+
+		// std::async implementation - speed up of about 5.2 for 8 threads or more
+		std::vector< std::packaged_task<lk::vardata_t(lk::invoke_t, lk::bytecode, lk_string, lk_string, lk::vardata_t) > > tasks;
+		std::vector< std::future<lk::vardata_t> > results;
+		std::vector<std::thread> threads;
+		for (int i = 0; i < num_runs; i++)
+		{
+			lk::vardata_t input_value = cxt.arg(2).vec()->at(i);
+			tasks.push_back(std::packaged_task<lk::vardata_t(lk::invoke_t, lk::bytecode, lk_string, lk_string, lk::vardata_t)>(&sam_async_thread));
+			results.push_back(tasks[i].get_future());
+			threads.push_back(std::thread(std::move(tasks[i]), cxt, bc, lk_result, input_name, input_value));
+		}
+
+
+		//, cxt, bc, lk_result, input_name, input_value
+		for (int i = 0; i < num_runs; i++)
+		{
+			threads[i].join();
+		}
+
+		// Will block till data is available in future<std::string> object.
+		for (int i = 0; i<num_runs; i++)
+		{
+			lk_string result_name = wxString::Format("result %d", i);
+			cxt.result().hash_item(result_name, results[i].get());
+		}
+
+	}
+	//
+	//	end = std::chrono::system_clock::now();
+	//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	//	loop_time = " loop time: " + std::to_string(diff) + "ms \n";
+
+	//	cxt.result().hash_item("async_time", file_time + loop_time);
 	cxt.result().hash_item("error", err_str);
 }
 
@@ -3732,6 +3882,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_step_error,
 		fcall_step_result,
 		fcall_sam_async,
+		fcall_sam_packaged_task,
 		0 };
 	return (lk::fcall_t*)vec;
 }
