@@ -2926,8 +2926,8 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 	//lk_string func_name = cxt.arg(0).as_string();
 
 // checking for bottlenecks
-	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
-	lk_string err_str="", file_time, parse_time, bc_time, add_input_time, loop_time;
+//	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+	lk_string err_str = "";// , file_time, parse_time, bc_time, add_input_time, loop_time;
 	cxt.result().empty_hash();
 
 	lk_string fn = cxt.arg(0).as_string();
@@ -2946,12 +2946,12 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 	fclose(fp);
 
 //
-	auto end = std::chrono::system_clock::now();
-	auto diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
-	file_time = " File time: " + std::to_string(diff) + "ms ";
+//	auto end = std::chrono::system_clock::now();
+//	auto diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+//	file_time = " File time: " + std::to_string(diff) + "ms ";
 
 // additional input time
-	start = std::chrono::system_clock::now();
+//	start = std::chrono::system_clock::now();
 
 // add input value
 	// required input - changes in each thread 
@@ -2989,13 +2989,13 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 		return;
 	}
 //
-	end = std::chrono::system_clock::now();
-	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
-	parse_time = " Parse time: " + std::to_string(diff) + "ms ";
+//	end = std::chrono::system_clock::now();
+//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+//	parse_time = " Parse time: " + std::to_string(diff) + "ms ";
 
 
 // bytecode time
-	start = std::chrono::system_clock::now();
+//	start = std::chrono::system_clock::now();
 
 	lk::bytecode bc;
 	lk::codegen cg;
@@ -3008,12 +3008,12 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 		return;
 	}
 //
-	end = std::chrono::system_clock::now();
-	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
-	bc_time = " bytecode time: " + std::to_string(diff) + "ms ";
+//	end = std::chrono::system_clock::now();
+//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+//	bc_time = " bytecode time: " + std::to_string(diff) + "ms ";
 
 
-	start = std::chrono::system_clock::now();
+//	start = std::chrono::system_clock::now();
 
 // additional common inputs; e.g., meta hash for pvrpm
 
@@ -3052,43 +3052,84 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 
 
 
-	end = std::chrono::system_clock::now();
-	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
-	add_input_time = " bytecode additional input time: " + std::to_string(diff) + "ms ";
+//	end = std::chrono::system_clock::now();
+//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+//	add_input_time = " bytecode additional input time: " + std::to_string(diff) + "ms ";
 
 //
-	start = std::chrono::system_clock::now();
+//	start = std::chrono::system_clock::now();
 
 	lk_string lk_result = "lk_result";
 	if (cxt.arg_count() > 3)
 		lk_result = cxt.arg(3).as_string(); 
 
-	// testing with vector and then will move to table or other files as inputs.
-	if (cxt.arg(2).deref().type() == lk::vardata_t::VECTOR) 
-	{
-		int num_threads = cxt.arg(2).length();
 
+	// testing with vector and then will move to table or other files as inputs.
+	if (cxt.arg(2).deref().type() == lk::vardata_t::VECTOR)
+	{
+		int num_runs = cxt.arg(2).length();
+		int nthread = wxThread::GetCPUCount();
+
+
+		// test update dialog
+//		SimulationDialog tpd("Preparing inputs", nthread);
+		// update dialog
+		int interval_ms = 200;
+		int total_ms = 1000;
+		int current_ms = 0;
+
+
+//		tpd.NewStage("Calculating...", nthread);
 		// std::async implementation - speed up of about 5.2 for 8 threads or more
 		std::vector< std::future<lk::vardata_t> > results;
-		for (int i = 0; i< num_threads; i++)
+		for (int i = 0; i < num_runs; i++)
 		{
-			lk::vardata_t input_value =cxt.arg(2).vec()->at(i);
+			lk::vardata_t input_value = cxt.arg(2).vec()->at(i);
+//			tpd.Update(0, float(i) / float(num_runs));
 			// output
-			results.push_back( std::async(std::launch::async, sam_async_thread, cxt, bc, lk_result, input_name, input_value));
+			results.push_back(std::async(std::launch::async, sam_async_thread, cxt, bc, lk_result, input_name, input_value));
 		}
+
+		/*
+		std::vector<bool> fin;
+		for (int j = 0; j < num_runs; j++)
+			fin.push_back(false);
+		bool done = false;
+		while (!done)
+		{
+			for (int j = 0; j < nthread; j++)
+			{
+				if (j<results.size())
+				{
+				bool done = results[j].wait_for(std::chrono::seconds(interval_ms)) == std::future_status::ready;
+				if (!done)
+				{
+					float t = 100.0 * (float)interval_ms / (float)total_ms;
+					tpd.Update(j, t);
+					current_ms += interval_ms;
+					if (current_ms > total_ms) current_ms = 0; // start over
+				}
+				else
+					tpd.Update(j, 100.0);
+				Sleep(200);
+			}
+		}
+		*/
 // Will block till data is available in future<std::string> object.
-		for (int i=0; i<num_threads; i++)
+		for (int i=0; i<num_runs; i++)
 		{
 			lk_string result_name = wxString::Format("result %d", i);
 			cxt.result().hash_item(result_name, results[i].get());
 		}
 
+//		tpd.Finalize();
 	}
 //
-	end = std::chrono::system_clock::now();
-	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
-	loop_time = " loop time: " + std::to_string(diff) + "ms \n";
-	cxt.result().hash_item("async_time", file_time + loop_time);
+//	end = std::chrono::system_clock::now();
+//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+//	loop_time = " loop time: " + std::to_string(diff) + "ms \n";
+
+//	cxt.result().hash_item("async_time", file_time + loop_time);
 	cxt.result().hash_item("error", err_str);
 }
 
