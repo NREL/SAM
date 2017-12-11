@@ -3246,6 +3246,9 @@ static void fcall_sam_packaged_task(lk::invoke_t &cxt)
 	if (cxt.arg(2).deref().type() == lk::vardata_t::VECTOR)
 	{
 		int num_runs = cxt.arg(2).length();
+//		int nthread = wxThread::GetCPUCount();
+
+//		SimulationDialog tpd("Preparing simulations...", nthread);
 
 		// std::async implementation - speed up of about 5.2 for 8 threads or more
 		std::vector< std::packaged_task<lk::vardata_t(lk::invoke_t, lk::bytecode, lk_string, lk_string, lk::vardata_t) > > tasks;
@@ -3258,9 +3261,25 @@ static void fcall_sam_packaged_task(lk::invoke_t &cxt)
 			results.push_back(tasks[i].get_future());
 			threads.push_back(std::thread(std::move(tasks[i]), cxt, bc, lk_result, input_name, input_value));
 		}
+/* Artificial progress and especially when locked as in lhs_threaded
+		if (nthread >(int)num_runs) nthread = num_runs;
+		tpd.NewStage("Calculating...", nthread);
+		int ms_interval = 1000;
+		bool done = false;
+		int i_progress = 0;
+		while (!done)
+		{
+			done = true;
+			for (int i = 0; i < num_runs; i++)
+				done = done && (results[i].wait_for(std::chrono::milliseconds(ms_interval)) == std::future_status::ready);
+			i_progress++;
+			if (i_progress > num_runs) i_progress = 1;
+			for (int i = 0; i < nthread; i++)
+				tpd.Update(i, 100.0 * (float)i_progress / (float)num_runs);
+		}
+*/
 
-
-		//, cxt, bc, lk_result, input_name, input_value
+		//clean up threaded
 		for (int i = 0; i < num_runs; i++)
 		{
 			threads[i].join();
@@ -3273,6 +3292,7 @@ static void fcall_sam_packaged_task(lk::invoke_t &cxt)
 			cxt.result().hash_item(result_name, results[i].get());
 		}
 
+//		tpd.Finalize();
 	}
 	//
 	//	end = std::chrono::system_clock::now();
@@ -3313,6 +3333,7 @@ int windows_system(wxString args)
 
 void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_samples, int &idist, wxString &dist_name, wxString &lhsexe, wxString &err_msg, std::vector<double> &params)
 {
+	// lock guar for duration of this function.
 	std::lock_guard<std::mutex> mtx_lock(global_mu);
 	// delete any output or error that may exist
 	if (wxFileExists(workdir + "/SAMLHS.LHI"))
@@ -3603,6 +3624,8 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 		cxt.error("Sandia LHS executable does not exist: " + lhsexe);
 		return;
 	}
+
+
 	lhs_threaded(cxt, workdir, sv, num_samples, idist, dist_name, lhsexe, err_msg, params);
 }
 
