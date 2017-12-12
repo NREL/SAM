@@ -3483,7 +3483,7 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 	bool exe_ok = (0 == windows_system(execstr));
 #else // untested
 	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI  >nul  2>&1"); // shows window
-	bool exe_ok = (0 == std::system(execstr));
+	bool exe_ok = (0 == std::system((const char*) execstr.c_str()));
 #endif
 
 	wxSetWorkingDirectory(curdir);
