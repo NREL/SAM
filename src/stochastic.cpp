@@ -76,6 +76,8 @@ char const *lhs_dist_names[LHS_NUMDISTS] = {
 	"UserCDF,N"
 };
 
+
+
 LHS::LHS()
 {
 	m_npoints = 500;
@@ -95,12 +97,6 @@ void LHS::SeedVal(int sv)
 {
 	m_seedval =sv;
 }
-
-#ifdef __WXMSW__
-#define LHSBINARY "lhs.exe"
-#else
-#define LHSBINARY "lhs.bin"
-#endif
 
 bool LHS::Exec()
 {
