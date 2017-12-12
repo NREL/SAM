@@ -49,6 +49,17 @@
 
 #include <algorithm>
 #include <memory>
+
+// threading
+#include <thread>
+#include <future>
+#include <chrono>
+
+#include <lk/parse.h>
+#include <lk/codegen.h>
+
+
+
 #include <wx/log.h>
 #include <wx/tokenzr.h>
 #include <wx/filename.h>
@@ -85,6 +96,8 @@
 #include "stochastic.h"
 #include "codegencallback.h"
 #include "nsrdb.h"
+
+std::mutex global_mu;
 
 void fcall_samver( lk::invoke_t &cxt )
 {
@@ -2435,6 +2448,9 @@ static void copy_matts(lk::vardata_t &val, matrix_t<float> &mts)
 }
 
 
+
+
+
 void fcall_editscene3d(lk::invoke_t &cxt)
 {
 	LK_DOC("editscene3d", "Loads the 3D scene editor for a given 3D scene variable name.", "(string:variable, number:lat, number:lon, number:tz, string:location, number:minute_step,[bool:use_groups]):table");
@@ -2781,6 +2797,839 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 	}
 }
 
+
+// threading ported over from lk to use lhs
+
+// async thread function
+lk::vardata_t sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string lk_result, lk_string input_name, lk::vardata_t input_value)
+{
+	lk::vardata_t ret_hash;
+	ret_hash.empty_hash();
+
+	lk_string err_str, parse_time, env_time, bc_time, vminit_time, vmrun_time, rt_time;
+
+//
+	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+
+	lk::env_t myenv(cxt.env());
+	myenv.clear_objs();
+	myenv.clear_vars();
+
+	auto end = std::chrono::system_clock::now();
+	auto diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	env_time = " Env time: " + std::to_string(diff) + "ms ";
+
+
+	lk::vm myvm;
+	lk::bytecode bc(lkbc); // can explicitly copy if in doubt
+//
+	start = std::chrono::system_clock::now();
+
+	// Get string value of "ASSIGN|VALUE|HERE" set in _async and then update to input value
+	size_t ndx_c = bc.constants.size() + 1;
+	for (size_t i = 0; i < bc.constants.size(); i++)
+	{
+		if (bc.constants[i].type() == lk::vardata_t::STRING)
+		{
+			if (bc.constants[i].as_string() == "ASSIGN|VALUE|HERE")
+			{
+				ndx_c = i;
+				break;
+			}
+		}
+	}
+		
+	if (ndx_c > bc.constants.size())
+	{
+		err_str = "async_thread: No value found to change.";
+		ret_hash.hash_item("error", err_str);
+		return ret_hash;
+	}
+	else
+		bc.constants[ndx_c] = input_value;
+
+		myvm.load(&bc);
+		myvm.initialize(&myenv);
+//
+	end = std::chrono::system_clock::now();
+	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	vminit_time = " vm init time: " + std::to_string(diff) + "ms ";
+	start = std::chrono::system_clock::now();
+
+		bool ok1 = myvm.run();
+//
+	end = std::chrono::system_clock::now();
+	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	vmrun_time = " vm run time: " + std::to_string(diff) + "ms ";
+
+		if (ok1)
+		{
+
+//
+	start = std::chrono::system_clock::now();
+			
+			wxArrayString list = wxSplit(lk_result, ',');
+			for (size_t i_res = 0; i_res < list.size(); i_res++)
+			{
+
+				lk::vardata_t *vd = myenv.lookup(list[i_res], true);
+				if (vd)
+				{
+					ret_hash.hash_item(list[i_res], *vd);
+				}
+				else
+				{
+					size_t nfrm;
+					lk::vardata_t *v;
+					lk::vm::frame **frames = myvm.get_frames(&nfrm);
+					bool found = false;
+					for (size_t i_frm = 0; (i_frm < nfrm) && !found; i_frm++)
+					{
+						lk::vm::frame &F = *frames[nfrm - i_frm - 1];
+						if ((v = F.env.lookup(list[i_res], true)) != NULL)
+						{
+							ret_hash.hash_item(list[i_res], *v);
+							found = true;
+						}
+					}
+					if (!found) // look in byte code constants collection
+					{
+						size_t ndx_i = std::find(myvm.get_bytecode()->identifiers.begin(), myvm.get_bytecode()->identifiers.end(), list[i_res]) - myvm.get_bytecode()->identifiers.begin();
+						if (ndx_i < myvm.get_bytecode()->identifiers.size())
+							err_str += list[i_res] + wxString::Format(" in bytecode at identifier index %d\n", (int)ndx_i);
+						else
+							err_str += list[i_res] + " lookup error\n";
+					}
+				}
+			} // for i_res
+		}
+		else
+		{
+			err_str += ("error running vm: " + myvm.error());
+		}
+		end = std::chrono::system_clock::now();
+		diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+		rt_time = " result lookup time: " + std::to_string(diff) + "ms ";
+		ret_hash.hash_item("thread time : ", parse_time + env_time + bc_time + vminit_time + vmrun_time + rt_time);
+
+	ret_hash.hash_item("error", err_str);
+	return ret_hash;
+}
+
+
+
+static void fcall_sam_async( lk::invoke_t &cxt )
+{
+	LK_DOC("sam_async", "For running function in a thread using std::async.", "(string: file containg lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
+	// wrapper around std::async to run functions with argument
+	// will use std::promise, std::future in combination with std::package or std::async
+	//lk_string func_name = cxt.arg(0).as_string();
+
+// checking for bottlenecks
+//	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+	lk_string err_str = "";// , file_time, parse_time, bc_time, add_input_time, loop_time;
+	cxt.result().empty_hash();
+
+	lk_string fn = cxt.arg(0).as_string();
+	FILE *fp = fopen(fn.c_str(), "r");
+	if (!fp)
+	{
+		err_str += "No valid input file " + fn + "specified\n";
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+
+	lk_string file_contents;
+	char buf[1024];
+	while (fgets(buf, 1023, fp) != 0)
+		file_contents += buf;
+	fclose(fp);
+
+//
+//	auto end = std::chrono::system_clock::now();
+//	auto diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+//	file_time = " File time: " + std::to_string(diff) + "ms ";
+
+// additional input time
+//	start = std::chrono::system_clock::now();
+
+// add input value
+	// required input - changes in each thread 
+	lk_string input_name = cxt.arg(1).as_string();
+	lk_string value = "\"ASSIGN|VALUE|HERE\";\n";
+	file_contents = input_name + "=" + value + file_contents;
+
+	// optional global additional input - e.g. hash for pvrpm same for all threads
+	if (cxt.arg_count() > 5)
+	{
+		lk_string add_input_name = cxt.arg(4).as_string();
+		value = "\"ADDITIONALASSIGN|VALUE|HERE\";\n";
+		lk::vardata_t add_input_value = cxt.arg(5);					
+		file_contents = add_input_name + "=" + value + file_contents;
+	}
+
+
+// file contents parsed to node_t
+// checking for bottlenecks
+//	start = std::chrono::system_clock::now();
+
+	lk::input_string p(file_contents);
+	lk::parser parse(p);
+	std::auto_ptr<lk::node_t> tree(parse.script());
+	int i = 0;
+	while (i < parse.error_count())
+		err_str += lk_string(parse.error(i++)) + "\n";
+
+	if (parse.token() != lk::lexer::END)
+		err_str += "parsing did not reach end of input\n";
+
+	if (err_str.Len() > 0)
+	{
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+//
+//	end = std::chrono::system_clock::now();
+//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+//	parse_time = " Parse time: " + std::to_string(diff) + "ms ";
+
+
+// bytecode time
+//	start = std::chrono::system_clock::now();
+
+	lk::bytecode bc;
+	lk::codegen cg;
+	if (cg.generate(tree.get()))
+		cg.get(bc);
+	else
+	{
+		err_str += "bytecode not generated.\n";
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+//
+//	end = std::chrono::system_clock::now();
+//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+//	bc_time = " bytecode time: " + std::to_string(diff) + "ms ";
+
+
+//	start = std::chrono::system_clock::now();
+
+// additional common inputs; e.g., meta hash for pvrpm
+
+	if (cxt.arg_count() > 5)
+	{
+		// replace bc.constants with updated lk:vardata_t input value
+		value = "ADDITIONALASSIGN|VALUE|HERE";
+		size_t ndx_c = bc.constants.size() + 1;
+		for (size_t i = 0; i < bc.constants.size(); i++)
+		{
+			if (bc.constants[i].type() == lk::vardata_t::STRING)
+			{
+				if (bc.constants[i].as_string() == value)
+				{
+					ndx_c = i;
+					break;
+				}
+			}
+		}
+		if (ndx_c > bc.constants.size())
+		{
+			err_str += "_async: No additional input value found to change.\n";
+		}
+		else
+		{
+			lk::vardata_t add_input_value = cxt.arg(5);					
+			bc.constants[ndx_c] = add_input_value;
+		}
+	}
+
+	if (err_str.Len() > 0)
+	{
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+
+
+
+//	end = std::chrono::system_clock::now();
+//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+//	add_input_time = " bytecode additional input time: " + std::to_string(diff) + "ms ";
+
+//
+//	start = std::chrono::system_clock::now();
+
+	lk_string lk_result = "lk_result";
+	if (cxt.arg_count() > 3)
+		lk_result = cxt.arg(3).as_string(); 
+
+
+	// testing with vector and then will move to table or other files as inputs.
+	if (cxt.arg(2).deref().type() == lk::vardata_t::VECTOR)
+	{
+		int num_runs = cxt.arg(2).length();
+
+		// std::async implementation - speed up of about 5.2 for 8 threads or more
+		std::vector< std::future<lk::vardata_t> > results;
+		for (int i = 0; i < num_runs; i++)
+		{
+			lk::vardata_t input_value = cxt.arg(2).vec()->at(i);
+			results.push_back(std::async(std::launch::async, sam_async_thread, cxt, bc, lk_result, input_name, input_value));
+		}
+
+// Will block till data is available in future<std::string> object.
+		for (int i=0; i<num_runs; i++)
+		{
+			lk_string result_name = wxString::Format("result %d", i);
+			cxt.result().hash_item(result_name, results[i].get());
+		}
+
+	}
+//
+//	end = std::chrono::system_clock::now();
+//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+//	loop_time = " loop time: " + std::to_string(diff) + "ms \n";
+
+//	cxt.result().hash_item("async_time", file_time + loop_time);
+	cxt.result().hash_item("error", err_str);
+}
+
+
+
+static void fcall_sam_packaged_task(lk::invoke_t &cxt)
+{
+	LK_DOC("sam_packaged_task", "For running function in a thread using std::async.", "(string: file containg lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
+	// wrapper around std::async to run functions with argument
+	// will use std::promise, std::future in combination with std::package or std::async
+	//lk_string func_name = cxt.arg(0).as_string();
+
+	// checking for bottlenecks
+	//	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+	lk_string err_str = "";// , file_time, parse_time, bc_time, add_input_time, loop_time;
+	cxt.result().empty_hash();
+
+	lk_string fn = cxt.arg(0).as_string();
+	FILE *fp = fopen(fn.c_str(), "r");
+	if (!fp)
+	{
+		err_str += "No valid input file " + fn + "specified\n";
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+
+	lk_string file_contents;
+	char buf[1024];
+	while (fgets(buf, 1023, fp) != 0)
+		file_contents += buf;
+	fclose(fp);
+
+	//
+	//	auto end = std::chrono::system_clock::now();
+	//	auto diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	//	file_time = " File time: " + std::to_string(diff) + "ms ";
+
+	// additional input time
+	//	start = std::chrono::system_clock::now();
+
+	// add input value
+	// required input - changes in each thread 
+	lk_string input_name = cxt.arg(1).as_string();
+	lk_string value = "\"ASSIGN|VALUE|HERE\";\n";
+	file_contents = input_name + "=" + value + file_contents;
+
+	// optional global additional input - e.g. hash for pvrpm same for all threads
+	if (cxt.arg_count() > 5)
+	{
+		lk_string add_input_name = cxt.arg(4).as_string();
+		value = "\"ADDITIONALASSIGN|VALUE|HERE\";\n";
+		lk::vardata_t add_input_value = cxt.arg(5);
+		file_contents = add_input_name + "=" + value + file_contents;
+	}
+
+
+	// file contents parsed to node_t
+	// checking for bottlenecks
+	//	start = std::chrono::system_clock::now();
+
+	lk::input_string p(file_contents);
+	lk::parser parse(p);
+	std::auto_ptr<lk::node_t> tree(parse.script());
+	int i = 0;
+	while (i < parse.error_count())
+		err_str += lk_string(parse.error(i++)) + "\n";
+
+	if (parse.token() != lk::lexer::END)
+		err_str += "parsing did not reach end of input\n";
+
+	if (err_str.Len() > 0)
+	{
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+	//
+	//	end = std::chrono::system_clock::now();
+	//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	//	parse_time = " Parse time: " + std::to_string(diff) + "ms ";
+
+
+	// bytecode time
+	//	start = std::chrono::system_clock::now();
+
+	lk::bytecode bc;
+	lk::codegen cg;
+	if (cg.generate(tree.get()))
+		cg.get(bc);
+	else
+	{
+		err_str += "bytecode not generated.\n";
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+	//
+	//	end = std::chrono::system_clock::now();
+	//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	//	bc_time = " bytecode time: " + std::to_string(diff) + "ms ";
+
+
+	//	start = std::chrono::system_clock::now();
+
+	// additional common inputs; e.g., meta hash for pvrpm
+
+	if (cxt.arg_count() > 5)
+	{
+		// replace bc.constants with updated lk:vardata_t input value
+		value = "ADDITIONALASSIGN|VALUE|HERE";
+		size_t ndx_c = bc.constants.size() + 1;
+		for (size_t i = 0; i < bc.constants.size(); i++)
+		{
+			if (bc.constants[i].type() == lk::vardata_t::STRING)
+			{
+				if (bc.constants[i].as_string() == value)
+				{
+					ndx_c = i;
+					break;
+				}
+			}
+		}
+		if (ndx_c > bc.constants.size())
+		{
+			err_str += "_async: No additional input value found to change.\n";
+		}
+		else
+		{
+			lk::vardata_t add_input_value = cxt.arg(5);
+			bc.constants[ndx_c] = add_input_value;
+		}
+	}
+
+	if (err_str.Len() > 0)
+	{
+		cxt.result().hash_item("error", err_str);
+		return;
+	}
+
+
+
+	//	end = std::chrono::system_clock::now();
+	//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	//	add_input_time = " bytecode additional input time: " + std::to_string(diff) + "ms ";
+
+	//
+	//	start = std::chrono::system_clock::now();
+
+	lk_string lk_result = "lk_result";
+	if (cxt.arg_count() > 3)
+		lk_result = cxt.arg(3).as_string();
+
+
+	// testing with vector and then will move to table or other files as inputs.
+	if (cxt.arg(2).deref().type() == lk::vardata_t::VECTOR)
+	{
+		int num_runs = cxt.arg(2).length();
+//		int nthread = wxThread::GetCPUCount();
+
+//		SimulationDialog tpd("Preparing simulations...", nthread);
+
+		// std::async implementation - speed up of about 5.2 for 8 threads or more
+		std::vector< std::packaged_task<lk::vardata_t(lk::invoke_t, lk::bytecode, lk_string, lk_string, lk::vardata_t) > > tasks;
+		std::vector< std::future<lk::vardata_t> > results;
+		std::vector<std::thread> threads;
+		for (int i = 0; i < num_runs; i++)
+		{
+			lk::vardata_t input_value = cxt.arg(2).vec()->at(i);
+			tasks.push_back(std::packaged_task<lk::vardata_t(lk::invoke_t, lk::bytecode, lk_string, lk_string, lk::vardata_t)>(&sam_async_thread));
+			results.push_back(tasks[i].get_future());
+			threads.push_back(std::thread(std::move(tasks[i]), cxt, bc, lk_result, input_name, input_value));
+		}
+/* Artificial progress and especially when locked as in lhs_threaded
+		if (nthread >(int)num_runs) nthread = num_runs;
+		tpd.NewStage("Calculating...", nthread);
+		int ms_interval = 1000;
+		bool done = false;
+		int i_progress = 0;
+		while (!done)
+		{
+			done = true;
+			for (int i = 0; i < num_runs; i++)
+				done = done && (results[i].wait_for(std::chrono::milliseconds(ms_interval)) == std::future_status::ready);
+			i_progress++;
+			if (i_progress > num_runs) i_progress = 1;
+			for (int i = 0; i < nthread; i++)
+				tpd.Update(i, 100.0 * (float)i_progress / (float)num_runs);
+		}
+*/
+
+		//clean up threaded
+		for (int i = 0; i < num_runs; i++)
+		{
+			threads[i].join();
+		}
+
+		// Will block till data is available in future<std::string> object.
+		for (int i = 0; i<num_runs; i++)
+		{
+			lk_string result_name = wxString::Format("result %d", i);
+			cxt.result().hash_item(result_name, results[i].get());
+		}
+
+//		tpd.Finalize();
+	}
+	//
+	//	end = std::chrono::system_clock::now();
+	//	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
+	//	loop_time = " loop time: " + std::to_string(diff) + "ms \n";
+
+	//	cxt.result().hash_item("async_time", file_time + loop_time);
+	cxt.result().hash_item("error", err_str);
+}
+
+
+// windows system call to hide output
+int windows_system(wxString args)
+{
+	PROCESS_INFORMATION p_info;
+	STARTUPINFO s_info;
+	LPWSTR cmdline;
+
+	memset(&s_info, 0, sizeof(s_info));
+	memset(&p_info, 0, sizeof(p_info));
+	s_info.dwFlags = STARTF_USESHOWWINDOW;
+	s_info.wShowWindow = SW_HIDE;
+	s_info.cb = sizeof(s_info);
+	cmdline = (LPWSTR)_tcsdup(args.wc_str());
+
+	int ret = CreateProcess(NULL, cmdline, NULL, NULL, TRUE, 0, NULL, NULL, &s_info, &p_info);
+
+	if (ret != 0)
+	{
+		WaitForSingleObject(p_info.hProcess, INFINITE);
+		CloseHandle(p_info.hProcess);
+		CloseHandle(p_info.hThread);
+		return 0;
+	}
+	else
+		return GetLastError();
+}
+
+void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_samples, int &idist, wxString &dist_name, wxString &lhsexe, wxString &err_msg, std::vector<double> &params)
+{
+	// lock guar for duration of this function.
+	std::lock_guard<std::mutex> mtx_lock(global_mu);
+	// delete any output or error that may exist
+	if (wxFileExists(workdir + "/SAMLHS.LHI"))
+		wxRemoveFile(workdir + "/SAMLHS.LHI");
+
+	// write lhsinputs.lhi file
+	wxString inputfile = workdir + "/SAMLHS.LHI";
+	FILE *fp = fopen(inputfile.c_str(), "w");
+	if (!fp)
+	{
+		cxt.error("Could not write to LHS input file " + inputfile);
+		return;
+	}
+
+	fprintf(fp, "LHSTITL SAM LHS RUN\n");
+	fprintf(fp, "LHSOBS %d\n", num_samples);
+	fprintf(fp, "LHSSEED %d\n", sv);
+	fprintf(fp, "LHSRPTS CORR DATA\n");
+	fprintf(fp, "LHSSCOL\n");
+	fprintf(fp, "LHSOUT samlhs.lsp\n");
+	fprintf(fp, "LHSPOST samlhs.msp\n");
+	fprintf(fp, "LHSMSG samlhs.lmo\n");
+	fprintf(fp, "DATASET:\n");
+
+	int ncdfpairs;
+	int nminparams = wxStringTokenize(lhs_dist_names[idist], ",").Count() - 1;
+	if ((int)params.size() < nminparams)
+	{
+		cxt.error(wxString::Format("Dist '%s' requires minimum %d params, only %d specified.",
+			(const char*)dist_name.c_str(), nminparams, (int)params.size()));
+		fclose(fp);
+		return;
+	}
+
+	switch (idist)
+	{
+	case LHS_UNIFORM:
+		fprintf(fp, "%s UNIFORM %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_NORMAL:
+		fprintf(fp, "%s NORMAL %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_LOGNORMAL:
+		fprintf(fp, "%s LOGNORMAL %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_LOGNORMAL_N:
+		fprintf(fp, "%s LOGNORMAL-N %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_TRIANGULAR:
+		fprintf(fp, "%s %lg TRIANGULAR %lg %lg %lg\n", (const char*)dist_name.c_str(), params[1],
+			params[0],
+			params[1],
+			params[2]);
+		break;
+	case LHS_GAMMA:
+		fprintf(fp, "%s GAMMA %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_POISSON:
+		fprintf(fp, "%s POISSON %lg\n", (const char*)dist_name.c_str(),
+			params[0]);
+		break;
+	case LHS_BINOMIAL:
+		fprintf(fp, "%s BINOMIAL %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_EXPONENTIAL:
+		fprintf(fp, "%s EXPONENTIAL %lg\n", (const char*)dist_name.c_str(),
+			params[0]);
+		break;
+	case LHS_WEIBULL:
+		fprintf(fp, "%s WEIBULL %lg %lg\n", (const char*)dist_name.c_str(),
+			params[0],
+			params[1]);
+		break;
+	case LHS_USERCDF:
+		ncdfpairs = (int)params[0];
+		fprintf(fp, "%s DISCRETE CUMULATIVE %d #\n", (const char*)dist_name.c_str(), ncdfpairs);
+		// update for uniform discrete distributions initially
+		if (ncdfpairs <= 0)
+		{
+			cxt.error(wxString::Format("user defined CDF error: too few [value,cdf] pairs in list: %d pairs should exist.", ncdfpairs));
+			fclose(fp);
+			return;
+		}
+		/*
+		for (int j = 0; j<ncdfpairs; j++)
+		{
+		double cdf = (j + 1);
+		cdf /= (double)ncdfpairs;
+		if (cdf > 1.0) cdf = 1.0;
+		fprintf(fp, "  %d %lg", j, cdf);
+		if (j == ncdfpairs - 1) fprintf(fp, "\n");
+		else fprintf(fp, " #\n");
+		}
+		*/
+
+		for (int j = 0; j<ncdfpairs; j++)
+		{
+			if (2 + 2 * j >= (int)params.size())
+			{
+				cxt.error(wxString::Format("user defined CDF error: too few [value,cdf] pairs in list: %d pairs should exist.", ncdfpairs));
+				fclose(fp);
+				return;
+			}
+
+			fprintf(fp, "  %lg %lg", params[1 + 2 * j], params[2 + 2 * j]);
+			if (j == ncdfpairs - 1) fprintf(fp, "\n");
+			else fprintf(fp, " #\n");
+		}
+
+		break;
+	}
+	/*
+	for (size_t i = 0; i<m_corr.size(); i++)
+	{
+	if (Find(m_corr[i].name1) >= 0 && Find(m_corr[i].name2) >= 0)
+	fprintf(fp, "CORRELATE %s %s %lg\n", (const char*)m_corr[i].name1.c_str(), (const char*)m_corr[i].name2.c_str(), m_corr[i].corr);
+	}
+	*/
+	fclose(fp);
+
+	// delete any output or error that may exist
+	if (wxFileExists(workdir + "/SAMLHS.LSP"))
+		wxRemoveFile(workdir + "/SAMLHS.LSP");
+
+	if (wxFileExists(workdir + "/LHS.ERR"))
+		wxRemoveFile(workdir + "/LHS.ERR");
+
+	// run the executable synchronously
+	wxString curdir = wxGetCwd();
+	wxSetWorkingDirectory(workdir);
+
+#ifdef __WXMSW__
+	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI"); // shows window
+	bool exe_ok = (0 == windows_system(execstr));
+#else // untested
+	wxString execstr = wxString('"' + lhsexe + "\" SAMLHS.LHI  >nul  2>&1"); // shows window
+	bool exe_ok = (0 == std::system(execstr));
+#endif
+
+	wxSetWorkingDirectory(curdir);
+
+	if (wxFileExists(workdir + "/LHS.ERR"))
+	{
+		err_msg = "LHS error.  There could be a problem with the input setup.";
+		FILE *ferr = fopen(wxString(workdir + "/LHS.ERR").c_str(), "r");
+		if (ferr)
+		{
+			char buf[256];
+			err_msg += "\n\n";
+			wxString line;
+			while (!feof(ferr))
+			{
+				fgets(buf, 255, ferr);
+				err_msg += wxString(buf) + "\n";
+			}
+			fclose(ferr);
+		}
+		cxt.error(err_msg);
+		return;
+	}
+
+	if (!exe_ok)
+	{
+		cxt.error("Failed to run LHS executable");
+		return;
+	}
+
+	// read the lsp output file
+	wxString outputfile = workdir + "/SAMLHS.LSP";
+	fp = fopen(outputfile.c_str(), "r");
+	if (!fp)
+	{
+		cxt.error("Could not read output file " + outputfile);
+		return;
+	}
+
+	// output vector
+	cxt.result().empty_vector();
+
+	int nline = 0;
+	char cbuf[1024];
+	int n_runs = 0;
+	bool found_data = false;
+	while (!feof(fp))
+	{
+		fgets(cbuf, 1023, fp);
+		wxString buf(cbuf);
+		nline++;
+
+		if (buf.Trim() == "@SAMPLEDATA")
+		{
+			found_data = true;
+			continue;
+		}
+
+		if (found_data)
+		{
+			if (n_runs == num_samples)
+				break;
+
+			n_runs++;
+			int n = atoi(buf.c_str());
+			if (n != n_runs)
+			{
+				cxt.error(wxString::Format("output file formatting error (run count %d!=%d) at line %d: ", n, n_runs, nline) + buf);
+				fclose(fp);
+				return;
+			}
+
+			fgets(cbuf, 1023, fp);
+			wxString buf(cbuf);
+			nline++;
+			n = atoi(buf.c_str());
+			if (n != 1)
+			{
+				cxt.error("output file formatting error (ndist count) at line " + wxString::Format("%d", nline));
+				fclose(fp);
+				return;
+			}
+
+			fgets(cbuf, 1023, fp);
+			wxString val(cbuf);
+			nline++;
+			cxt.result().vec_append(wxAtof(val));
+		}
+	}
+	fclose(fp);
+}
+
+
+// LHS thread safe implementation for threading pvrpm samples
+void fcall_lhs_threaded(lk::invoke_t &cxt)
+{
+	LK_DOC("lhs_threaded", "Run a Latin Hypercube Sampling and return samples", "(string:distribution, array:distribution_parameters, int:num_samples, [int: seed_value]): array:samples");
+	lk_string err_msg = "";
+	wxString workdir(wxFileName::GetTempDir());
+	// inputs 
+	lk_string dist_name = cxt.arg(0).as_string();
+	int idist = -1;
+	for (int i = 0; i<LHS_NUMDISTS; i++)
+	{
+		wxArrayString distinfo(wxStringTokenize(lhs_dist_names[i], ","));
+		if (distinfo.size() > 0 && dist_name.CmpNoCase(distinfo[0]) == 0)
+			idist = i;
+	}
+	if (idist < 0)
+	{
+		cxt.error("invalid LHS distribution name: " + dist_name);
+		return;
+	}
+	int num_parms = 0;
+	std::vector<double> params;
+	if (cxt.arg(1).deref().type() == lk::vardata_t::VECTOR)
+	{
+		num_parms = cxt.arg(1).length();
+		for (int i = 0; i < num_parms; i++)
+			params.push_back(cxt.arg(1).vec()->at(i).as_number());
+	}
+	else
+	{
+		cxt.error("Sandia LHS executable no distribution parameters specified.");
+		return;
+	}
+	int num_samples = cxt.arg(2).as_integer();
+	int seed_val = 0; 
+	if (cxt.arg_count() > 3)
+		seed_val = cxt.arg(3).as_integer();
+
+	int sv = wxGetLocalTime();
+	if (seed_val > 0)
+		sv = seed_val;
+	
+	wxString lhsexe(SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY));
+	if (!wxFileExists(lhsexe))
+	{
+		cxt.error("Sandia LHS executable does not exist: " + lhsexe);
+		return;
+	}
+
+
+	lhs_threaded(cxt, workdir, sv, num_samples, idist, dist_name, lhsexe, err_msg, params);
+}
+
+
 class lkLHSobject : public lk::objref_t, public LHS
 {
 public:
@@ -3040,6 +3889,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_xl_get,
 		fcall_xl_autosizecols,
 #endif
+		fcall_lhs_threaded,
 		fcall_lhs_create,
 		fcall_lhs_free,
 		fcall_lhs_reset,
@@ -3054,6 +3904,8 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_step_run,
 		fcall_step_error,
 		fcall_step_result,
+		fcall_sam_async,
+		fcall_sam_packaged_task,
 		0 };
 	return (lk::fcall_t*)vec;
 }
