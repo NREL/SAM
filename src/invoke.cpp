@@ -3303,7 +3303,7 @@ static void fcall_sam_packaged_task(lk::invoke_t &cxt)
 	cxt.result().hash_item("error", err_str);
 }
 
-
+#ifdef __WXMSW__
 // windows system call to hide output
 int windows_system(wxString args)
 {
@@ -3330,6 +3330,7 @@ int windows_system(wxString args)
 	else
 		return GetLastError();
 }
+#endif
 
 void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_samples, int &idist, wxString &dist_name, wxString &lhsexe, wxString &err_msg, std::vector<double> &params)
 {
