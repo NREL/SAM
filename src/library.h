@@ -163,7 +163,6 @@ protected:
 	
 private:
 	wxString m_library;
-	bool m_inclEntryName;
 
 	std::vector<bool> m_sortDir;
 
