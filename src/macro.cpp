@@ -101,7 +101,6 @@ public:
 class my_vm : public lk::vm
 {
 	MacroEngine *m_me;
-	size_t m_counter;
 public:
 	my_vm( MacroEngine *me ) : m_me(me) { }
 	virtual bool on_run( const lk::srcpos_t & )
