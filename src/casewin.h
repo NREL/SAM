@@ -193,10 +193,6 @@ class SelectVariableDialog : public wxDialog
 private:	
 	wxExtTextCtrl *txtSearch;
 	wxExtTreeCtrl *tree;
-	wxButton *btnOk;
-	wxButton *btnCancel;
-	wxButton *btnUncheckAll;
-	wxButton *btnExpandAll;
 
 public:
 	SelectVariableDialog( wxWindow *parent, const wxString &title );
