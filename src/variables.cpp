@@ -407,10 +407,12 @@ bool VarValue::ValueEqual( VarValue &rhs )
 			if (equal)
 				for (size_t r = 0; r < m_val.nrows(); r++)
 					for (size_t c = 0; c < m_val.ncols(); c++)
+					  {
 						if (equal)
 							equal = equal && (m_val(r, c) == rhs.m_val(r, c));
 						else
 							break;
+					  }
 			break;
 		case VV_TABLE: // not working correctly 
 			equal = (m_tab.size() == rhs.m_tab.size());

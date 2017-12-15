@@ -136,8 +136,8 @@ private:
 	void OnTextFind( wxCommandEvent & );
 
 	wxString m_formName;
-	ExFormData m_exForm;
 	InputPageData m_ipd;
+	ExFormData m_exForm;
 	
 
 	VarDatabase m_varCopyBuffer;
