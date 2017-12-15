@@ -1795,7 +1795,7 @@ void VRoofObject::GetXZPoints(double xd[4], double zd[4])
 		xd[2] = xp[1]; zd[2] = z +height;
 		xd[3] = xr[2]; zd[3] = z;
 	}
-	else if (sin(rot*DTOR) >=0.0 && cos(rot*DTOR <0. ) )
+	else if (sin(rot*DTOR) >=0.0 && cos(rot*DTOR) < 0. )
 	{
 		xd[0] = xr[3]; zd[0] = z;
 		xd[1] = xp[0]; zd[1] = z + height;
