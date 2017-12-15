@@ -1023,7 +1023,6 @@ public:
 
 		if (!d_arr) return true;
 
-		if (pos < 0) pos = 0;
 		if (pos > d_arr->size()) pos = d_arr->size();
 
 		for (int i=0;i<(int)nrows;i++)
@@ -1210,7 +1209,6 @@ public:
 
 		if (!d_mat) return true;
 
-		if (pos < 0) pos = 0;
 		if (pos > d_mat->nrows()) pos = d_mat->nrows();
 
 		size_t new_rows = d_mat->nrows() + nrows;
@@ -1292,7 +1290,6 @@ public:
 
 		if (!d_mat) return true;
 
-		if (pos < 0) pos = 0;
 		if (pos > d_mat->ncols()) pos = d_mat->ncols();
 
 		size_t new_cols = d_mat->ncols() + ncols;

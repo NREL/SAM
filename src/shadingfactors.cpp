@@ -1827,7 +1827,6 @@ bool wxShadingFactorsTable::InsertRows(size_t pos, size_t nrows)
 
 	if (!d_mat) return true;
 
-	if (pos < 0) pos = 0;
 	if (pos > d_mat->nrows()) pos = d_mat->nrows();
 
 	size_t new_rows = d_mat->nrows() + nrows;
@@ -1909,7 +1908,6 @@ bool wxShadingFactorsTable::InsertCols(size_t pos, size_t ncols)
 
 	if (!d_mat) return true;
 
-	if (pos < 0) pos = 0;
 	if (pos > d_mat->ncols()) pos = d_mat->ncols();
 
 	size_t new_cols = d_mat->ncols() + ncols;
