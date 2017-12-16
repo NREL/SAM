@@ -1091,7 +1091,6 @@ ParametricGridData::~ParametricGridData()
 
 void ParametricGridData::Init()
 { // assumes m_par has been read in and is sorted properly..
-	if (m_par.Setup.size()<0) return;
 	m_col_hdrs.Clear();
 	m_input_names.Clear();
 	m_output_names.Clear();
