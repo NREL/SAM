@@ -7,9 +7,20 @@ WEXLIB = $(WEXDIR)/wexuxwx3.a
 LKLIB = $(LKDIR)/lkuxwx3.a
 SSCLIB = ssc.so
 
+# Check environment variables are set
+ifeq ($(WEXDIR),)
+  $(error WEXLIB is not set)
+endif
+ifeq ($(LKDIR),)
+  $(error LKDIR is not set)
+endif
+ifeq ($(SSCDIR),)
+  $(error SSCDIR is not set)
+endif
+
 CC = gcc
 CXX = g++
-CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags` -Wall -Wno-unknown-pragmas
+CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags` -Wall -Wno-unknown-pragmas -Werror
 LDFLAGS = -std=c++11 $(SSCLIB) $(LKLIB) $(WEXLIB) `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm -lstdc++ -lcurl
 CXXFLAGS=-std=c++11 $(CFLAGS)
 
