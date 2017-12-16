@@ -2975,7 +2975,7 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 
 	lk::input_string p(file_contents);
 	lk::parser parse(p);
-	std::auto_ptr<lk::node_t> tree(parse.script());
+	smart_ptr<lk::node_t>::ptr tree(parse.script());
 	int i = 0;
 	while (i < parse.error_count())
 		err_str += lk_string(parse.error(i++)) + "\n";
@@ -3153,7 +3153,7 @@ static void fcall_sam_packaged_task(lk::invoke_t &cxt)
 
 	lk::input_string p(file_contents);
 	lk::parser parse(p);
-	std::auto_ptr<lk::node_t> tree(parse.script());
+	smart_ptr<lk::node_t>::ptr tree(parse.script());
 	int i = 0;
 	while (i < parse.error_count())
 		err_str += lk_string(parse.error(i++)) + "\n";
