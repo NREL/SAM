@@ -654,11 +654,11 @@ setup_thirdparty_pages( LOAD_BELPE, LIFETIME_PV ); //includes building load calc
 
 
 setconfig( 'Flat Plate PV', 'Host Developer' );
-setmodules( ['belpe', 'pvsamv1', 'utilityrate5', 'singleowner','thirdpartyownership']);
+setmodules( ['belpe', 'pvsamv1', 'utilityrate5', 'singleowner', 'thirdpartyownership']);
 setup_flat_plate_pv_pages();
 setup_battery_pages_behind_the_meter();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_host_developer_pages( LOAD_BELPE, LIFETIME_PV ); //includes building load calculator by default in this function
+setup_host_developer_pages( LOAD_SIMPLE, LIFETIME_PV ); //includes building load calculator by default in this function
 
 
 setconfig( 'Flat Plate PV', 'Commercial' );
