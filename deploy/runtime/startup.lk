@@ -7,7 +7,7 @@ en_pvsamv3 = 0;
 // define all the configurations
 if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'Host Developer',  'None'] );
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'Host Developer', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
 addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -331,7 +331,7 @@ function setup_single_owner_pages(degradation)
 
 
 
-function setup_host_developer_pages(degradation, mode)
+function setup_host_developer_pages(mode, degradation)
 {
   setting( { 'analysis_period_var'='cf_length' } );
   if (degradation == LIFETIME_SYSTEM )
@@ -654,7 +654,7 @@ setup_thirdparty_pages( LOAD_BELPE, LIFETIME_PV ); //includes building load calc
 
 
 setconfig( 'Flat Plate PV', 'Host Developer' );
-setmodules( ['belpe', 'pvsamv1', 'utilityrate5', 'singleowner', 'thirdpartyownership']);
+setmodules( ['pvsamv1', 'utilityrate5', 'host_developer']);
 setup_flat_plate_pv_pages();
 setup_battery_pages_behind_the_meter();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
@@ -800,6 +800,11 @@ setup_pvwatts_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for commercial
 
+setconfig( 'PVWatts', 'Host Developer' );	
+setmodules( ['pvwattsv5', 'battwatts', 'utilityrate5', 'host_developer']);
+setup_pvwatts_battery_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+setup_host_developer_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for commercial
 
 setconfig( 'PVWatts', 'Commercial PPA' );	
 setmodules( ['pvwattsv5', 'ippppa']);
