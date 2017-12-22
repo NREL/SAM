@@ -9,6 +9,17 @@ WEXLIB = $(WEXDIR)/wexosxwx3.a
 LKLIB = $(LKDIR)/lkosxwx3.a
 SSCLIB = $(SSCDIR)/build_osx/ssc.dylib
 
+# Check environment variables are set
+ifeq ($(WEXDIR),)
+  $(error WEXLIB is not set)
+endif
+ifeq ($(LKDIR),)
+  $(error LKDIR is not set)
+endif
+ifeq ($(SSCDIR),)
+  $(error SSCDIR is not set)
+endif
+
 CC = gcc -mmacosx-version-min=10.9
 CXX = g++ -mmacosx-version-min=10.9
 CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags`  -DWX_PRECOMP -O2 -arch x86_64  -fno-common -DWX_PRECOMP -O2 -arch x86_64  -fno-common
@@ -82,7 +93,7 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	cp $(SSCLIB) $(TARGET).app/Contents/Frameworks/ssc.dylib
 	install_name_tool -id @executable_path/../Frameworks/ssc.dylib $(TARGET).app/Contents/Frameworks/ssc.dylib
 	install_name_tool -change ssc.dylib @executable_path/../Frameworks/ssc.dylib $(TARGET).app/Contents/MacOS/$(TARGET)
-	
+
 bin: $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	$(CXX) -g -o $(TARGET) $^ $(LDFLAGS)
 	SetFile -a t $(TARGET) 

@@ -218,7 +218,9 @@ void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 			it->second->Write( _O );
 
 			if ( it->second->Type() == VV_BINARY )
+			  {
 				wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)it->first.c_str(), (int)it->second->Binary().GetDataLen() );
+			  }
 		}
 	}
 	else
@@ -257,8 +259,9 @@ void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 			out.WriteString( names[i] );
 			list[i]->Write( _O );
 			if ( list[i]->Type() == VV_BINARY )
+			  {
 				wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)list[i]->Binary().GetDataLen() );
-
+			  }
 		}
 	}
 
@@ -289,7 +292,9 @@ bool VarTable::Read( wxInputStream &_I )
 		ok = ok && value->Read( _I );
 
 		if( value->Type() == VV_BINARY )
+		  {
 			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen() );
+		  }
 		
 		if ( find(name) == end() ) (*this)[name] = value;
 		else delete value;
@@ -402,10 +407,12 @@ bool VarValue::ValueEqual( VarValue &rhs )
 			if (equal)
 				for (size_t r = 0; r < m_val.nrows(); r++)
 					for (size_t c = 0; c < m_val.ncols(); c++)
+					  {
 						if (equal)
 							equal = equal && (m_val(r, c) == rhs.m_val(r, c));
 						else
 							break;
+					  }
 			break;
 		case VV_TABLE: // not working correctly 
 			equal = (m_tab.size() == rhs.m_tab.size());

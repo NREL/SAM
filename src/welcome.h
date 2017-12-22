@@ -42,8 +42,6 @@ private:
 	wxMetroButton *m_createCase;
 	wxMetroButton *m_openExisting;
 	wxMetroButton *m_openScript, *m_newScript, *m_btnAbout, *m_btnHelp, *m_btnGetStarted, *m_btnQuit;
-	wxMetroButton *m_onlineForum;
-	wxMetroButton *m_helpSystem;
 	wxMetroListBox *m_recent;
 		
 	wxTimer m_downloadTimer;
