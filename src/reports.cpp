@@ -430,8 +430,6 @@ void SamReportWindow::OnPageSel( wxListEvent & )
 
 void SamReportWindow::OnPageRClick( wxListEvent &evt )
 {
-	int idx = evt.GetSelection();
-	idx = 0;
 }
 
 bool SamReportWindow::Save()
@@ -930,11 +928,9 @@ wxString SamReportEscapeString( const wxString &input, Case *c, VarValue *meta )
 			&& (input[pos+1] == wxChar('{')
 			   || input[pos+1] == wxChar('|')) )
 		{
-			bool eqn_mode = false;
 			wxChar end_char = wxChar('}');
 			if ( input[pos+1] == wxChar('|') )
 			{
-				eqn_mode = true;
 				end_char = wxChar('|');
 			}
 
@@ -1702,28 +1698,28 @@ static void fcall_graph( lk::invoke_t &cxt )
 	{
 		lk::vardata_t &v = cxt.arg(2);
 		lk::vardata_t *vv = 0;
-		if ( vv=v.lookup("xlabel") )
+		if ((vv=v.lookup("xlabel")))
 			xlabel = vv->as_string();
 
-		if ( vv=v.lookup("ylabel") )
+		if ((vv=v.lookup("ylabel")))
 			ylabel = vv->as_string();
 
-		if ( vv=v.lookup("title") )
+		if ((vv=v.lookup("title")))
 			title = vv->as_string();
 
-		if ( vv=v.lookup("show_values") )
+		if ((vv=v.lookup("show_values")))
 			show_values = vv->as_boolean();
 
-		if ( vv=v.lookup("width") )
+		if ((vv=v.lookup("width")))
 			width = vv->as_number();
 
-		if ( vv=v.lookup("height") )
+		if ((vv=v.lookup("height")))
 			height = vv->as_number();
 
-		if ( vv=v.lookup("decimals") )
+		if ((vv=v.lookup("decimals")))
 			decimals = vv->deref().as_integer();
 
-		if ( vv=v.lookup("color") )
+		if ((vv=v.lookup("color")))
 		{
 			lk::vardata_t &vv2 = vv->deref();
 			if (vv2.type() == lk::vardata_t::VECTOR 
@@ -1820,7 +1816,7 @@ static void fcall_style( lk::invoke_t &cxt )
 	lk::vardata_t &tab = cxt.arg(0);
 	lk::vardata_t *v = 0;
 
-	if ( v=tab.lookup("face") )
+	if ( (v=tab.lookup("face")) )
 	{
 		lk_string fs = v->as_string();
 		fs.Lower();
@@ -1830,20 +1826,20 @@ static void fcall_style( lk::invoke_t &cxt )
 		else throw lk::error_t("invalid font face specification.  allowed are 'fixed', 'serif', 'sanserif'");
 	}
 
-	if ( v=tab.lookup("size") )
+	if ((v=tab.lookup("size")))
 	{
 		size = v->as_integer();
 		if (size < 1) size = 1;
 		if (size > 300) size = 300;
 	}
 
-	if ( v=tab.lookup("bold") )
+	if ((v=tab.lookup("bold")))
 		bold = v->as_boolean();
 
-	if ( v=tab.lookup("italic") )
+	if ((v=tab.lookup("italic")))
 		ital = v->as_boolean();
 
-	if ( v=tab.lookup("align") )
+	if ((v=tab.lookup("align")))
 	{
 		lk_string al = v->as_string();
 		al.Lower();
@@ -1853,7 +1849,7 @@ static void fcall_style( lk::invoke_t &cxt )
 		else throw lk::error_t("invalid alignment specification.  allowed are 'left', 'center', 'right'");
 	}
 	
-	if ( v=tab.lookup("color") )
+	if ((v=tab.lookup("color")))
 	{
 		lk::vardata_t &vv2 = v->deref();
 		if (vv2.type() == lk::vardata_t::VECTOR 
@@ -1868,14 +1864,14 @@ static void fcall_style( lk::invoke_t &cxt )
 			colour.Set( vv2.as_string() );
 	}
 
-	if (v=tab.lookup("line_width"))
+	if ((v=tab.lookup("line_width")))
 	{
 		line_width = (float)v->as_number();
 		if (line_width < 0.01f) line_width = 0.01f;
 		if (line_width > 10) line_width = 10.0f;
 	}
 
-	if (v=tab.lookup("line_style"))
+	if ((v=tab.lookup("line_style")))
 	{
 		lk_string ssty = v->as_string();
 		ssty.Lower();
@@ -1887,14 +1883,14 @@ static void fcall_style( lk::invoke_t &cxt )
 	so->Style( face, size, colour, bold, ital, align, line_width, line_style );
 
 
-	if ( v=tab.lookup("header_size") )
+	if ((v=tab.lookup("header_size")))
 	{
 		hdrSize = v->as_integer();
 		if (hdrSize < 1) hdrSize = 1;
 		if (hdrSize > 300) hdrSize = 300;
 	}
 
-	if ( v=tab.lookup("header_face") )
+	if ((v=tab.lookup("header_face")))
 	{	
 		lk_string fs = v->as_string();
 		fs.Lower();
@@ -1904,7 +1900,7 @@ static void fcall_style( lk::invoke_t &cxt )
 		else throw lk::error_t("invalid font face specification.  allowed are 'fixed', 'serif', 'sanserif'");
 	}
 
-	if ( v=tab.lookup("header_align") )
+	if ((v=tab.lookup("header_align")))
 	{
 		lk_string al = v->as_string();
 		al.Lower();
@@ -1914,11 +1910,11 @@ static void fcall_style( lk::invoke_t &cxt )
 		else throw lk::error_t("invalid alignment specification.  allowed are 'left', 'center', 'right'");
 	}
 
-	if ( v=tab.lookup("header_bold") )
+	if ((v=tab.lookup("header_bold")))
 		hdrBold = v->as_boolean();
 
 	
-	if ( v=tab.lookup("header_color") )
+	if ((v=tab.lookup("header_color")))
 	{
 		lk::vardata_t &vv2 = v->deref();
 		if ( vv2.type() == lk::vardata_t::VECTOR 
@@ -1933,7 +1929,7 @@ static void fcall_style( lk::invoke_t &cxt )
 			hdrColour.Set( vv2.as_string() );
 	}
 
-	if ( v=tab.lookup("cell_align") )
+	if ((v=tab.lookup("cell_align")))
 	{
 		lk_string al = v->as_string();
 		al.Lower();
@@ -1944,13 +1940,13 @@ static void fcall_style( lk::invoke_t &cxt )
 
 	}
 
-	if ( v=tab.lookup("grid_lines") )
+	if ((v=tab.lookup("grid_lines")))
 		gridLines = v->as_boolean();
 
-	if ( v=tab.lookup("header_line") )
+	if ((v=tab.lookup("header_line")))
 		hdrLine = v->as_boolean();
 
-	if ( v=tab.lookup("col_sizes") )
+	if ((v=tab.lookup("col_sizes")))
 	{
 		lk::vardata_t &vv2 = v->deref();
 		if (vv2.type() == lk::vardata_t::VECTOR)
@@ -1961,7 +1957,7 @@ static void fcall_style( lk::invoke_t &cxt )
 		}
 	}
 
-	if ( v=tab.lookup("row_sizes") )
+	if ((v=tab.lookup("row_sizes")))
 	{
 		lk::vardata_t &vv2 = v->deref();
 		if (vv2.type() == lk::vardata_t::VECTOR)
@@ -1972,7 +1968,7 @@ static void fcall_style( lk::invoke_t &cxt )
 		}
 	}
 
-	if (v=tab.lookup("table_border"))
+	if ((v=tab.lookup("table_border")))
 		tabBorder = v->as_boolean();
 
 	so->TableStyle( hdrSize, hdrFace, hdrAlign, hdrBold,
@@ -2684,7 +2680,7 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 	for (size_t i=0;i<values.size();i++)
 	{		
 		wxString label;
-		if ( i < (int)xlabels.size() ) label = xlabels[i];
+		if ( i < xlabels.size() ) label = xlabels[i];
 		float tw = 0.05f;
 		m_curDevice->Measure( label, &tw, 0 );
 		if (tw > max_xtick_width) max_xtick_width = tw;

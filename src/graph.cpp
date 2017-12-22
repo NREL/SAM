@@ -416,8 +416,14 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 
 		if (ymin == ymax) {
 			// no variation in y values, so pick some reasonable graph bounds
-			ymax = (ymax == 0) ? 1 : ymax += ymax*0.05;
-			ymin = (ymin == 0) ? -1 : ymin -= ymin*0.05;
+		  if (ymax == 0)
+		    ymax = 1;
+		  else
+		    ymax += (ymax * 0.05);
+		  if (ymin == 0)
+		    ymin = -1;
+		  else
+		    ymin -= (ymin * 0.05);
 		}
 
 		SetYAxis1( new wxPLLinearAxis( ymin, ymax, m_g.YLabel ) );
@@ -635,8 +641,14 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 
 		if (ymin == ymax) {
 			// no variation in y values, so pick some reasonable graph bounds
-			ymax = (ymax == 0) ? 1 : ymax += ymax*0.05;
-			ymin = (ymin == 0) ? -1 : ymin -= ymin*0.05;
+		  if (ymax == 0)
+		    ymax = 1;
+		  else
+		    ymax = (ymax * 0.05);
+		  if (ymin == 0)
+		    ymin = -1;
+		  else
+		    ymin -= (ymin * 0.05);
 		}
 
 		SetYAxis1(new wxPLLinearAxis(ymin, ymax, m_g.YLabel));
