@@ -1087,7 +1087,6 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	int i, imageCount = 0;
 	bool readdata = false;
 	bool readok = true;
-	bool headingok = true;
 	int month=0; // 
 	double beam[290];
 	for (i=0;i<290;i++) beam[i]=0.0;
@@ -1143,7 +1142,6 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	if (readdata == false || imageCount == 0)
 	{
 		readok = false;
-		headingok = false;
 	}
 
 	if (readok)
@@ -1829,7 +1827,6 @@ bool wxShadingFactorsTable::InsertRows(size_t pos, size_t nrows)
 
 	if (!d_mat) return true;
 
-	if (pos < 0) pos = 0;
 	if (pos > d_mat->nrows()) pos = d_mat->nrows();
 
 	size_t new_rows = d_mat->nrows() + nrows;
@@ -1911,7 +1908,6 @@ bool wxShadingFactorsTable::InsertCols(size_t pos, size_t ncols)
 
 	if (!d_mat) return true;
 
-	if (pos < 0) pos = 0;
 	if (pos > d_mat->ncols()) pos = d_mat->ncols();
 
 	size_t new_cols = d_mat->ncols() + ncols;

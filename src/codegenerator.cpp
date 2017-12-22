@@ -184,8 +184,11 @@ CodeGen_Base::~CodeGen_Base()
 bool CodeGen_Base::PlatformFiles()
 {
 	// copy appropriate dll
-#if defined(__WXMSW__)
+#if defined(__WXMSW__) && defined (__64BIT__)
 	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
+	wxString f2 = m_folder + "/ssc.dll";
+#elif defined(__WXMSW__) && defined(__32BIT__)
+	wxString f1 = SamApp::GetAppPath() + "/sscx32.dll";
 	wxString f2 = m_folder + "/ssc.dll";
 #elif defined(__WXOSX__)
 	wxString f1 = SamApp::GetAppPath() + "/../Frameworks/ssc.dylib";
@@ -2736,14 +2739,15 @@ bool CodeGen_matlab::Footer()
 }
 
 
-
-
 // Python 2.7.8 and 3.4.2 code generation class
-
-CodeGen_python::CodeGen_python(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
+#pragma warning(push)
+#pragma warning(disable : 4589)
+CodeGen_python::CodeGen_python(Case * cc, const wxString & folder) : CodeGen_Base(cc, folder)
 {
+	// Doesn't require initializer for CodeGen_Base
+	// virtual base classes are only initialized by the most-derived type (python2, python3)
 }
-
+#pragma warning(pop)
 bool CodeGen_python::FreeSSCModule()
 {
 	fprintf(m_fp, "	ssc.module_free(module)\n");
@@ -2942,7 +2946,7 @@ bool CodeGen_python::Footer()
 
 
 // Python 2
-CodeGen_python2::CodeGen_python2(Case *cc, const wxString &folder) : CodeGen_python(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_python2::CodeGen_python2(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_python(cc, folder)
 {
 }
 
@@ -3119,7 +3123,7 @@ bool CodeGen_python2::Input(ssc_data_t p_data, const char *name, const wxString 
 
 
 
-CodeGen_python3::CodeGen_python3(Case *cc, const wxString &folder) : CodeGen_python(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_python3::CodeGen_python3(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_python(cc, folder)
 {
 }
 
@@ -4657,11 +4661,14 @@ bool CodeGen_java::Footer()
 
 
 // PHP code generation class
-
-CodeGen_php::CodeGen_php(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
+#pragma warning(push)
+#pragma warning(disable : 4589)
+CodeGen_php::CodeGen_php(Case * cc, const wxString & folder) : CodeGen_Base(cc, folder)
 {
+	// Doesn't require initializer for CodeGen_Base
+	// virtual base classes are only initialized by the most-derived type (php5, php7)
 }
-
+#pragma warning(pop)
 
 bool CodeGen_php::Output(ssc_data_t p_data)
 {
@@ -4893,7 +4900,7 @@ bool CodeGen_php::Footer()
 	return true;
 }
 
-CodeGen_php5::CodeGen_php5(Case *cc, const wxString &folder) : CodeGen_php(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_php5::CodeGen_php5(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_php(cc, folder)
 {
 }
 
@@ -5491,7 +5498,7 @@ bool CodeGen_php5::SupportingFiles()
 #endif
 }
 
-CodeGen_php7::CodeGen_php7(Case *cc, const wxString &folder) : CodeGen_php(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_php7::CodeGen_php7(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_php(cc, folder)
 {
 }
 
