@@ -6,6 +6,7 @@ en_pvsamv3 = 0;
 
 // define all the configurations
 if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
+//addconfig( 'Battery', ['None']);
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'Single Owner PPA Buy Rate','None'] );
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -565,6 +566,12 @@ setup_csp_empirical_trough_pages();
 addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 
+
+setconfig('Battery', 'None');
+setup_battery_pages_behind_the_meter();
+	addpage( [[ 'Lifetime System']],
+           {  'sidebar'='Lifetime','help'='lifetime' } );
+setmodules(['battery']);
 
 
 // Flat Plate PV ////////////////////////////////////////////////////////////////
