@@ -2250,6 +2250,179 @@ cashflow_to_excel{ 'Single Owner' } = define()
 //	xl_free( xl ); // closes workbook
 };
 
+
+
+cashflow_to_excel{ 'Host Developer' } = define() 
+{
+
+	source = runtimedir() + 'spreadsheets/host_developer.xlsx';
+    fn = case_name() + '.xlsx';
+	destination = cwd();
+	destination = choose_file(destination,"Save workbook","Excel Workbook (*.xlsx)|*.xlsx",true, false, fn);
+	destination = copy_file( source, destination, true);
+	if (!file_exists(destination)) return;
+	cwd(path_only(destination));
+	
+	xl = xl_create( destination );
+
+	N = value('analysis_period');
+	if ( N>40 ) msgbox("The Excel workbook only shows cash flow values for a 40-year analysis period or less. Your analysis is for " + N + " years.");
+	
+	//send DSCR or debt fraction depending on debt sizing mode
+	if ( value('debt_option') == 0 ) // debt fraction input mode (constant payments)
+	{
+		xl_set( xl, value('debt_percent'), "DebtPercent");
+		xl_set( xl, "Calculated", "DebtServiceCoverageRatio");
+		xl_set( xl, output('size_of_debt'), "MortgageSizeOfDebt");
+		send_excel(  xl, 'loan_moratorium');
+	}
+	else // dscr input mode (sculpted debt payments, constant DSCR)
+	{
+		xl_set( xl, value('dscr'), "DebtServiceCoverageRatio");
+		xl_set( xl, "Calculated", "DebtPercent");
+		xl_set( xl, "N/A", "MortgageSizeOfDebt");
+		xl_set( xl, "0", "loan_moratorium" ); //ensure that loan moratorium is zero so Excel cash flow formulas work correctly
+	}
+	
+	//send debt service reserve cash flow items because of iteration with debt fraction input option
+	xl_set( xl, output('cf_reserve_debtservice'), 'cf_reserve_debtservice');
+	xl_set( xl, output('cf_funding_debtservice'), 'cf_funding_debtservice');
+	xl_set( xl, output('cf_disbursement_debtservice'), 'cf_disbursement_debtservice');
+	
+	//send payment option flag
+	if ( value('payment_option') == 0 ) // equal payments
+		xl_set( xl, "Equal payments", "DebtPayment");
+	else // fixed principal	
+		xl_set( xl, "Fixed principal", "DebtPayment");
+		
+	//export annual values to minimize rounding discrepancies between SAM and workbook
+	xl_set( xl, output('cf_energy_net'), "AnnualEnergy");
+	xl_set( xl, output('cf_ppa_price'), "AnnualPPAPrice");
+	xl_set( xl, output('cf_energy_value'), "AnnualPPARevenue");
+		
+	//determine whether to send ppa price and irr inputs or outputs depending on solution mode
+	send_excel( xl, 'ppa_escalation'); 	
+	if ( value('ppa_soln_mode') == 0 ) //IRR is input
+	{
+		xl_set( xl, value('flip_target_percent'), "IRRTarget");
+		xl_set( xl, value('flip_target_year'), "IRRTargetYear");
+		xl_set( xl, "Calculated", "PPAPriceInput" ); 
+	}
+	else //PPA price is input
+	{
+		xl_set( xl, "Calculated", "IRRTarget");
+		xl_set( xl, "Calculated", "IRRTargetYear");
+		xl_set( xl, value('ppa_price_input'), "PPAPriceInput" ); 
+	}
+		
+	//show construction financing cost calculation in spreadsheet
+	//(ssc only uses total cost as input, so these are UI inputs from input form)
+	send_excel( xl, 'const_per_percent1');
+	send_excel( xl, 'const_per_percent2');
+	send_excel( xl, 'const_per_percent3');
+	send_excel( xl, 'const_per_percent4');
+	send_excel( xl, 'const_per_percent5');
+	send_excel( xl, 'const_per_upfront_rate1');
+	send_excel( xl, 'const_per_upfront_rate2');
+	send_excel( xl, 'const_per_upfront_rate3');
+	send_excel( xl, 'const_per_upfront_rate4');
+	send_excel( xl, 'const_per_upfront_rate5');
+	send_excel( xl, 'const_per_months1');
+	send_excel( xl, 'const_per_months2');
+	send_excel( xl, 'const_per_months3');
+	send_excel( xl, 'const_per_months4');
+	send_excel( xl, 'const_per_months5');
+	send_excel( xl, 'const_per_interest_rate1');
+	send_excel( xl, 'const_per_interest_rate2');
+	send_excel( xl, 'const_per_interest_rate3');
+	send_excel( xl, 'const_per_interest_rate4');
+	send_excel( xl, 'const_per_interest_rate5');		
+
+	send_excel_incentives(xl);
+	send_excel_yesno( xl, 'pbi_fed_for_ds');
+	send_excel_yesno( xl, 'pbi_sta_for_ds');
+	send_excel_yesno( xl, 'pbi_oth_for_ds');
+	send_excel_yesno( xl, 'pbi_uti_for_ds');
+
+	send_excel_om(xl);
+	send_excel_fuel(xl);
+	
+	send_excel(       xl, 'analysis_period');
+	send_excel(       xl, 'construction_financing_cost');
+	send_excel(       xl, 'cost_debt_closing');
+	send_excel(       xl, 'cost_debt_fee');
+	xl_set( xl, output('cost_debt_upfront'), 'CostDebtUpfront' );
+	send_excel(       xl, 'cost_other_financing');
+	send_excel(       xl, 'depr_alloc_macrs_15_percent');
+	send_excel(       xl, 'depr_alloc_macrs_5_percent');
+	send_excel(       xl, 'depr_alloc_sl_15_percent');
+	send_excel(       xl, 'depr_alloc_sl_20_percent');
+	send_excel(       xl, 'depr_alloc_sl_39_percent');
+	send_excel(       xl, 'depr_alloc_sl_5_percent');
+	send_excel(       xl, 'depr_bonus_fed');
+	send_excel_yesno( xl, 'depr_bonus_fed_macrs_15');
+	send_excel_yesno( xl, 'depr_bonus_fed_macrs_5');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_15');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_20');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_39');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_5');
+	send_excel(       xl, 'depr_bonus_sta');
+	send_excel_yesno( xl, 'depr_bonus_sta_macrs_15');
+	send_excel_yesno( xl, 'depr_bonus_sta_macrs_5');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_15');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_20');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_39');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_5');
+	send_excel_yesno( xl, 'depr_itc_fed_macrs_15');
+	send_excel_yesno( xl, 'depr_itc_fed_macrs_5');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_15');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_20');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_39');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_5');
+	send_excel_yesno( xl, 'depr_itc_sta_macrs_15');
+	send_excel_yesno( xl, 'depr_itc_sta_macrs_5');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_15');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_20');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_39');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_5');
+	
+//	send_excel(       xl, 'dscr'); //input
+	send_excel(       xl, 'dscr_reserve_months');
+	send_excel(       xl, 'months_working_reserve');
+	send_excel(       xl, 'months_receivables_reserve');
+	send_excel_depr(  xl, 'equip_reserve_depr_fed');
+	send_excel_depr(  xl, 'equip_reserve_depr_sta');
+	send_excel(       xl, 'equip1_reserve_cost');
+	send_excel(       xl, 'equip1_reserve_freq');
+	send_excel(       xl, 'equip2_reserve_cost');
+	send_excel(       xl, 'equip2_reserve_freq');
+	send_excel(       xl, 'equip3_reserve_cost');
+	send_excel(       xl, 'equip3_reserve_freq');
+
+	send_excel_taxes(xl);
+	
+	send_excel(       xl, 'inflation_rate');
+	send_excel(       xl, 'insurance_rate');
+	send_excel(       xl, 'prop_tax_assessed_decline');
+	send_excel(       xl, 'prop_tax_cost_assessed_percent');
+	send_excel(       xl, 'property_tax_rate');
+	send_excel(       xl, 'real_discount_rate');
+	send_excel(       xl, 'reserves_interest');
+	send_excel(       xl, 'sales_tax_rate');
+	send_excel(       xl, 'salvage_percentage');
+
+	send_excel(       xl, 'system_capacity');
+	send_excel(       xl, 'term_int_rate');
+	send_excel(       xl, 'term_tenor');
+	//loan_moratorium sent above in debt_option if statement
+	send_excel(       xl, 'total_installed_cost');
+	
+//	xl_free( xl ); // closes workbook
+};
+
+
+
+
 cashflow_to_excel{ 'Leveraged Partnership Flip' } = define()
 {
 	msgbox("Send Cash Flow to Excel with Equations for the Leveraged Partnership Flip financial model is not available in this version of SAM.\n\nSee the Financial Model Documentation page on the SAM website (sam.nrel.gov/financial) for spreadsheet versions of all of SAM's financial models.");
