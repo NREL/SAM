@@ -340,7 +340,7 @@ function setup_host_developer_pages(mode, degradation)
            {  'sidebar'='Lifetime','help'='lifetime' } );
   }
   addpage( [[ 'Financial Solution Mode Single Owner',
-              'Financial Analysis Parameters',
+              'Financial Analysis Host Developer Parameters',
 		      'Financial Tax and Insurance Rates',
 		      'Financial Salvage Value',
 		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
