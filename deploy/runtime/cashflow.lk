@@ -432,6 +432,15 @@ cashflow{ 'Host Developer' } = define()
 	cfline( 'cf_energy_net', 0); // no decimal places with thousands separator
 
 	cfline( '' ); // spacer with no shading
+	cfline( "Host line items", -1); // header with shading
+	cfline( 'cf_agreement_cost' , 0); // generic formatting to show all significant digits
+	cfline( 'cf_after_tax_net_equity_cost_flow', 0);
+	cfline( 'cf_after_tax_cash_flow', 0);
+	cfline( 'cf_payback_with_expenses', 0);
+	cfline( 'cf_cumulative_payback_with_expenses', 0);
+
+	cfline( '' ); // spacer with no shading
+	cfline( "Developer line items", -1); // header with shading
 	cfline( "REVENUES", -1); // header with shading
 	cfline( 'cf_ppa_price' , -2 ); // generic formatting to show all significant digits
 	cfline( 'cf_energy_value', 0);
