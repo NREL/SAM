@@ -433,8 +433,11 @@ cashflow{ 'Host Developer' } = define()
 
 	cfline( '' ); // spacer with no shading
 	cfline( "Host line items", -1); // header with shading
-	cfline( 'cf_agreement_cost' , 0); // generic formatting to show all significant digits
-	cfline( 'cf_after_tax_net_equity_cost_flow', 0);
+	cfline( 'elec_cost_without_system', 0);
+	cfline( 'elec_cost_with_system', 0);
+	cfline( 'annual_energy_value', 0);
+	cfline( 'cf_nte' , -2); // generic formatting to show all significant digits
+	cfline( 'cf_agreement_cost' , 0); 
 	cfline( 'cf_after_tax_cash_flow', 0);
 	cfline( 'cf_payback_with_expenses', 0);
 	cfline( 'cf_cumulative_payback_with_expenses', 0);
@@ -2323,6 +2326,17 @@ cashflow_to_excel{ 'Host Developer' } = define()
 		xl_set( xl, "Calculated", "IRRTargetYear");
 		xl_set( xl, value('ppa_price_input'), "PPAPriceInput" ); 
 	}
+
+
+// HOST values
+	xl_set( xl, output('elec_cost_with_system'), "elec_cost_with_system");
+	xl_set( xl, output('elec_cost_without_system'), "elec_cost_without_system");
+	xl_set( xl, output('cf_energy_value'), "AnnualPPARevenue");
+	send_excel( xl, 'host_real_discount_rate');
+
+
+
+
 		
 	//show construction financing cost calculation in spreadsheet
 	//(ssc only uses total cost as input, so these are UI inputs from input form)
