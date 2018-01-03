@@ -1,0 +1,110 @@
+/*@
+
+This macro allows you to plot the host NTE and the developer PPA as a function of system size.<br><br>
+
+<br/><br>
+<b>Instructions:</b><br>
+<ol>
+  <li>Click 'Run macro' above to initate macro</li>
+  <li>Select a start system size (kW)</li>
+  <li>Select a system size step (kW)</li>
+  <li>Select the number of steps</li>
+</ol> 
+<br><br>
+
+@*/
+
+//////////////////////////////////////////////////////////////
+// Simulate Developer PPA and Host NTE vs system size
+//sys_size = [1000, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000];
+//@ name=start_size;type=number;label=Start system size (kW):;value=1000
+//@ name=step_size;type=number;label=Step system size (kW):;value=2000
+//@ name=number_steps;type=number;label=Number of steps:;value=10
+
+
+// display warning if the macro is run outside of a case
+if ( typeof(macro) == 'unknown' ) {
+	msgbox('This macro must be run from within a case.');
+	exit;
+}
+
+if (configuration()[1] != 'Host Developer') {
+	msgbox('This macro must be run from within a Host Developer financial model.');
+	exit;
+}
+
+// get original values to reset
+if (configuration()[0]=='PVWatts') {
+	org_sys_size = get("system_capacity");
+}	
+else {
+	org_mode = get("size_auto_or_manual");
+	org_sys_size = get("desired_size");
+}
+
+
+
+
+// number of simulations
+num_runs = macro.number_steps + 1;
+// set system size for plotting
+sys_size = alloc(num_runs);
+// capture developer nominal levelized ppa
+developer_ppa = alloc(num_runs);
+// capture host nominal levelized NTE
+host_nte = alloc(num_runs);
+
+// run all systems sizes and capture results
+for (i=0;i<num_runs;i++)
+{
+	sys_size[i] = macro.start_size + i * macro.step_size;
+	if (configuration()[0]=='PVWatts') {
+		set("system_capacity", sys_size[i]);
+	}	
+	else {
+		set("size_auto_or_manual", 0);
+		set("desired_size", sys_size[i]);
+	}
+	// Run simulation
+	simulate("", false);
+	// capture outputs to plot
+	developer_ppa[i] = get("lppa_nom");
+	host_nte[i] = get("lnte_nom");
+}
+
+// report outputs and create plot
+
+min_value = floor(min(min(developer_ppa), min(host_nte)))-1;
+max_value = ceil(max(max(developer_ppa), max(host_nte)))+1;
+
+
+labels = ['Host Nominal LNTE (\u00A2/kWh)', 'Developer Nominal LPPA (\u00A2/kWh)'];
+newplot();
+plot(sys_size,host_nte, {'yap'='left', 'series' = labels[0]});
+plot(sys_size,developer_ppa, {'yap'='right', 'color'='green', 'series' = labels[1]});
+axis( 'y1', { 'label'=labels[0], 'min'=min_value, 'max' = max_value } );
+axis( 'y2', { 'label'=labels[1], 'min'=min_value, 'max' = max_value } );
+axis( 'x1', {'label'='System Size (kWdc)'} );
+developer_irr = get("flip_actual_irr");
+plotopt( { 'title'='Nominal levelized Host NTE and Developer PPA vs system size',  'legendpos'='northeast' } );
+
+
+// reset original values
+if (configuration()[0]=='PVWatts') {
+	set("system_capacity", org_sys_size);
+}	
+else {
+	set("size_auto_or_manual",org_mode);
+	set("desired_size",org_sys_size);
+}
+
+/*
+// save an image of the plot:
+f_path=choose_dir(homedir(),'Save Plot');
+f_name = f_path + '/plot.png';
+outln(f_name);
+ok = plotout( f_name , 'png'); //defaults to png if file type not given
+
+if ( ok == false) msgbox('Could not save the plot to ' + f_name);
+else msgbox('Saved plot to ' + f_name);
+*/
