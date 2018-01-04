@@ -19,6 +19,14 @@ function third_party_graphs()
 
 }
 
+function host_developer_graphs()
+{
+	agraph( 'cf_nte,cf_ppa_price', 'Host NTE and Developer PPA', 'Year', '$' );
+	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', -1, true, false,'bottom' );
+	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
+	agraph( 'cf_agreement_cost,cf_energy_value', 'Host Annual Agreement Cost and Electricity Savings', 'Year', '$' );
+}
+
 function ppa_financial_graphs()
 {
 	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', -1, true, false,'bottom' );
@@ -111,6 +119,7 @@ autographs{ 'Geothermal Power' } = define()
 autographs{ 'Residential' } = define() { rescom_financial_graphs(); };
 autographs{ 'Commercial' } = define() { rescom_financial_graphs(); };
 autographs{ 'Third Party' } = define() { third_party_graphs(); };
+autographs{ 'Host Developer' } = define() { host_developer_graphs(); };
 //autographs{ 'Commercial PPA' } = define() { simple_financial_graphs(); };
 //autographs{ 'Independent Power Producer' } = define() { simple_financial_graphs(); };
 autographs{ 'Single Owner' } = define() { ppa_financial_graphs(); };
