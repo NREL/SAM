@@ -18,6 +18,20 @@ function third_party_metrics()
 	metric( 'npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
+function host_developer_metrics()
+{
+	metric( 'ppa', {'label'='Developer PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA price (nominal)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+	metric( 'lppa_real', {'label'='Levelized PPA price (real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+	metric( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real', {'label'='Levelized COE (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'project_return_aftertax_npv', {'label'='Developer net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'npv', {'label'='Host net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'year1_nte', {'label'='Host NTE (year 1)', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' } );
+	metric( 'lnte_real', {'label'='Levelized NTE (real)', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' } );
+	metric( 'lnte_nom', {'label'='Levelized NTE (nominal)', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' } );
+}
+
 function lcoefcr_metrics()
 {
 	metric( 'lcoe_fcr', {'label'='Levelized COE (real)', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' , 'scale'='100'} );
@@ -308,6 +322,7 @@ metrics{ 'Residential' } = define() { rescom_metrics(); };
 metrics{ 'Commercial' } = define() { rescom_metrics(); };
 metrics{ 'Commercial PPA' } = define() { ipp_metrics(); };
 metrics{ 'Third Party' } = define() { third_party_metrics(); };
+metrics{ 'Host Developer' } = define() { host_developer_metrics(); };
 metrics{ 'LCOE Calculator' } = define() { lcoefcr_metrics(); };
 metrics{ 'LCOH Calculator' } = define() { iph_lcoefcr_metrics(); };
 metrics{ 'Independent Power Producer' } = define() { ipp_metrics(); };
