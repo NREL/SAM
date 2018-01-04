@@ -422,6 +422,278 @@ cashflow{ 'Single Owner' } = define()
 
 };
 
+
+
+
+cashflow{ 'Host Developer' } = define() 
+{
+
+	cfline( "PRODUCTION (AC KWH)", -1);
+	cfline( 'cf_energy_net', 0); // no decimal places with thousands separator
+
+	cfline( '' ); // spacer with no shading
+	cfline( "Host line items", -1); // header with shading
+	cfline( 'elec_cost_without_system', 0);
+	cfline( 'elec_cost_with_system', 0);
+	cfline( 'annual_energy_value', 0);
+	cfline( 'cf_nte' , -2); // generic formatting to show all significant digits
+	cfline( 'cf_agreement_cost' , 0); 
+	cfline( 'cf_after_tax_cash_flow', 0);
+	cfline( 'cf_payback_with_expenses', 0);
+	cfline( 'cf_cumulative_payback_with_expenses', 0);
+
+	cfline( '' ); // spacer with no shading
+	cfline( "Developer line items", -1); // header with shading
+	cfline( "REVENUES", -1); // header with shading
+	cfline( 'cf_ppa_price' , -2 ); // generic formatting to show all significant digits
+	cfline( 'cf_energy_value', 0);
+	cfline("plus PBI if available for debt service:", -1, 0); // label with no shading
+	if (value('pbi_fed_for_ds')==1)cfline('cf_pbi_total_fed',0);
+	if (value('pbi_sta_for_ds')==1)cfline('cf_pbi_total_sta',0);
+	if (value('pbi_uti_for_ds')==1)cfline( 'cf_pbi_total_uti',0);
+	if (value('pbi_oth_for_ds')==1)cfline('cf_pbi_total_oth',0);
+	cfline( 'cf_net_salvage_value', 0);
+	cfline( 'cf_total_revenue', 0);
+
+	cfline( '' );
+	cfline( 'cf_property_tax_assessed_value', 0);
+
+	cfline( '' );
+	cfline( "OPERATING EXPENSES", -1 );
+	cf_om_expenses();
+	cfline( 'cf_property_tax_expense', 0);
+	cfline( 'cf_insurance_expense', 0);
+	cfline( 'cf_operating_expenses', 0);
+	
+	cfline( '' );
+	cfline( 'cf_ebitda', 0);
+
+	cfline( '' );
+	cfline( "CASH FLOWS FROM OPERATING ACTIVITIES", -1 );
+	cfline( 'cf_ebitda', 0);
+	cfline( 'cf_reserve_interest', 0);
+	cfline("plus PBI if not available for debt service:", -1, 0);
+	if (value('pbi_fed_for_ds')==0)cfline('cf_pbi_total_fed',0);
+	if (value('pbi_sta_for_ds')==0)cfline('cf_pbi_total_sta',0);
+	if (value('pbi_uti_for_ds')==0)cfline('cf_pbi_total_uti',0);
+	if (value('pbi_oth_for_ds')==0)cfline('cf_pbi_total_oth',0);
+	cfline("minus:", -1, 0);
+	cfline('cf_debt_payment_interest', 0);
+	cfline("equals:", -1, 0);
+	cfline('cf_project_operating_activities', 0);
+	cfline( '' );
+
+	cfline( "CASH FLOWS FROM INVESTING ACTIVITIES", -1);
+	cfline('cost_prefinancing',0,-1,0);
+	cfline('cost_debt_closing',0,-1,0);
+	cfline('cost_debt_upfront',0,-1,0);
+	cfline('cost_other_financing',0,-1,0);
+	cfline('construction_financing_cost',0,-1,0);
+	cfline( 'ibi_total', 0);
+	cfline( 'cbi_total', 0);
+	cfline("equals:", -1, 0);
+	cfline('purchase_of_property', 0);
+	cfline("plus:", -1, 0);
+	cfline('cf_project_dsra', 0);
+	cfline('cf_project_wcra', 0);
+	cfline('cf_project_receivablesra', 0);
+	cfline('cf_project_me1ra', 0);
+	cfline('cf_project_me2ra', 0);
+	cfline('cf_project_me3ra', 0);
+	cfline('cf_project_me1cs', 0);
+	cfline('cf_project_me2cs', 0);
+	cfline('cf_project_me3cs', 0);
+	cfline("equals:", -1, 0);	
+	cfline('cf_project_investing_activities', 0);
+	
+	cfline( '' );
+	cfline("CASH FLOWS FROM FINANCING ACTIVITIES", -1);
+	cfline( 'ibi_total', 0);
+	cfline( 'cbi_total', 0);
+	cfline( 'size_of_debt', 0);
+	cfline( 'issuance_of_equity',0);
+	cfline('cf_debt_payment_principal', 0);
+	cfline("equals:", -1, 0);	
+	cfline('cf_project_financing_activities', 0);
+	
+//	cfline( '' );
+//	cfline('cf_pretax_cashflow', 0);
+
+	cfline( '' );
+	cfline( "PRE-TAX PROJECT RETURNS", -1);
+	cfline( 'issuance_of_equity',0,-1,0);
+	cfline('cf_project_operating_activities', 0);
+	cfline('cf_project_investing_activities', 0);	
+	cfline('cf_project_financing_activities', 0);
+	cfline("equals:", -1, 0);
+	cfline('cf_project_return_pretax', 0);
+//	cfline( '' );
+//	cfline('cf_project_return_pretax_irr', 2);
+//	cfline('cf_project_return_pretax_npv', 0);
+
+	cfline( '' );
+	cfline("AFTER-TAX PROJECT RETURNS", -1);
+	cfline('cf_project_return_pretax', 0);
+	cfline('itc_total_fed', 0, 1, 1 ); // offset column to year 1
+	cfline('cf_ptc_fed', 0);
+	cfline('cf_fedtax', 0);
+	cfline('itc_total_sta', 0);
+	cfline('cf_ptc_sta', 0);
+	cfline('cf_statax', 0);
+	cfline('cf_project_return_aftertax', 0);
+
+	cfline( '' );
+	cfline("RETURN ON EQUITY", -1);
+	cfline('cf_return_on_equity_input', 2,100);
+	cfline('cf_return_on_equity_dollars', 0);
+	cfline('cf_return_on_equity', 2);
+
+	cfline( '' );
+	cfline("AFTER-TAX IRR AND NPV", -1);
+	cfline('cf_project_return_aftertax_irr', 2);
+	cfline('cf_project_return_aftertax_npv', 0);
+	cfline( '' );
+	cfline("AFTER-TAX EVELIZED COE AND PPA PRICE", -1);
+	cfline('cf_annual_costs', 0);
+	cfline('cf_energy_value', 0);
+	cfline('cf_energy_net', 0); 
+	cfline( '' );
+	cfline('npv_annual_costs',0 );
+	cfline('npv_energy_nom', 0);
+	cfline('lcoe_nom',2);
+	cfline( '' );
+	cfline('npv_ppa_revenue', 0);
+	cfline('npv_energy_nom', 0);
+	cfline('lppa_nom',2);
+
+	cfline( '' );
+	cfline("STATE INCOME TAXES", -1);
+	cfline('cf_ebitda', 0);
+	cfline('cf_reserve_interest', 0);
+	cfline('ibi_statax_total', 0, 1, 1);
+	cfline('cbi_statax_total', 0, 1, 1);
+	cfline('cf_pbi_statax_total', 0);
+	cfline("minus:", -1, 0);
+	cfline('cf_debt_payment_interest', 0);
+	cfline('cf_stadepr_total', 0);
+	cfline("equals:", -1, 0);
+	cfline('cf_statax_income_with_incentives', 0);
+	cfline( '' );
+	cfline('cf_state_tax_frac');
+	cfline('cf_statax', 0);
+
+	cfline( '' );
+	cfline("FEDERAL INCOME TAXES", -1);
+	cfline('cf_ebitda', 0);
+	cfline('cf_reserve_interest', 0);
+	cfline('cf_statax', 0);
+	cfline('itc_total_sta', 0);
+	cfline('cf_ptc_sta', 0);
+	cfline('ibi_fedtax_total', 0, 1, 1);
+	cfline('cbi_fedtax_total', 0, 1, 1);
+	cfline('cf_pbi_fedtax_total', 0);
+	cfline("minus:", -1, 0);
+	cfline('cf_debt_payment_interest', 0);
+	cfline('cf_feddepr_total', 0);
+	cfline("equals:", -1, 0);
+	cfline('cf_fedtax_income_with_incentives', 0);
+	cfline( '' );
+	cfline('cf_federal_tax_frac');
+	cfline('cf_fedtax', 0);
+
+	cfline( '' );
+	cfline( "INCENTIVES", -1);
+	cf_cash_incentives();
+	cfline( 'cf_ptc_fed,cf_ptc_sta' );
+	cfline( '' );
+	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
+	cfline( '' );
+
+	cfline( "DEBT REPAYMENT", -1);
+	cfline('cf_debt_payment_total', 0);
+	cfline('cf_debt_payment_interest', 0);
+	cfline('cf_debt_payment_principal', 0);
+	cfline('cf_debt_balance', 0);
+	
+	if ( value('debt_option') == 0 ) {
+	  cfline( '' );
+	  cfline( "DSCR (DEBT FRACTION)", -1);
+	  cfline('cf_ebitda', 0);
+	  cfline("minus:", -1, 0);
+	  cfline('cf_funding_equip1', 0);
+	  cfline('cf_funding_equip2', 0);
+	  cfline('cf_funding_equip3', 0);
+	  cfline('cf_funding_receivables',0);
+	  cfline("equals:", -1, 0);
+  	  cfline('cf_cash_for_ds', 0);
+      cfline('cf_debt_payment_total', 0);
+      cfline('cf_pretax_dscr', 2);
+	}
+
+    if ( value('debt_option') == 1 ) {
+	  cfline( '' );
+	  cfline( "DEBT SIZING (SCULPTED DEBT PAYMENTS)", -1);
+	  cfline('cf_ebitda', 0);
+	  cfline("minus:", -1, 0);
+	  cfline('cf_funding_equip1', 0);
+	  cfline('cf_funding_equip2', 0);
+	  cfline('cf_funding_equip3', 0);
+	  cfline('cf_funding_receivables',0);
+	  cfline("equals:", -1, 0);
+	  cfline('cf_cash_for_ds', 0);
+	  cfline('cf_pv_interest_factor', 2);
+	  cfline('cf_pv_cash_for_ds', 0);
+      cfline('cf_pretax_dscr', 2);
+	  cfline('cf_debt_size', 0);
+    }
+    
+	cfline( '' );
+	cfline("RESERVES", -1);
+	cfline( '' );
+	cfline('cf_funding_debtservice', 0);
+	cfline('cf_disbursement_debtservice', 0);
+	cfline('cf_reserve_debtservice', 0);
+	cfline( '' );
+	cfline('cf_funding_om', 0);
+	cfline('cf_disbursement_om', 0);
+	cfline('cf_reserve_om', 0);
+	cfline( '' );
+	cfline('cf_funding_receivables', 0);
+	cfline('cf_disbursement_receivables', 0);
+	cfline('cf_reserve_receivables', 0);
+	cfline( '' );
+	cfline('cf_funding_equip1', 0);
+	cfline('cf_disbursement_equip1', 0);
+	cfline('cf_reserve_equip1', 0);
+	cfline( '' );
+	cfline('cf_funding_equip2', 0);
+	cfline('cf_disbursement_equip2', 0);
+	cfline('cf_reserve_equip2', 0);
+	cfline( '' );
+	cfline('cf_funding_equip3', 0);
+	cfline('cf_disbursement_equip3', 0);
+	cfline('cf_reserve_equip3', 0);
+	cfline( '' );
+	cfline( '' );
+	cfline('cf_reserve_total', 0);
+	cfline('reserves_interest');
+	cfline( 'cf_reserve_interest', 0);
+
+
+	state_federal_depreciation_tables();
+
+};
+
+
+
+
+
+
+
+
+
+
+
 /*
 cashflow{ 'All Equity Partnership Flip' } = define()
 {
@@ -1989,6 +2261,190 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	
 //	xl_free( xl ); // closes workbook
 };
+
+
+
+cashflow_to_excel{ 'Host Developer' } = define() 
+{
+
+	source = runtimedir() + 'spreadsheets/host_developer.xlsx';
+    fn = case_name() + '.xlsx';
+	destination = cwd();
+	destination = choose_file(destination,"Save workbook","Excel Workbook (*.xlsx)|*.xlsx",true, false, fn);
+	destination = copy_file( source, destination, true);
+	if (!file_exists(destination)) return;
+	cwd(path_only(destination));
+	
+	xl = xl_create( destination );
+
+	N = value('analysis_period');
+	if ( N>40 ) msgbox("The Excel workbook only shows cash flow values for a 40-year analysis period or less. Your analysis is for " + N + " years.");
+	
+	//send DSCR or debt fraction depending on debt sizing mode
+	if ( value('debt_option') == 0 ) // debt fraction input mode (constant payments)
+	{
+		xl_set( xl, value('debt_percent'), "DebtPercent");
+		xl_set( xl, "Calculated", "DebtServiceCoverageRatio");
+		xl_set( xl, output('size_of_debt'), "MortgageSizeOfDebt");
+		send_excel(  xl, 'loan_moratorium');
+	}
+	else // dscr input mode (sculpted debt payments, constant DSCR)
+	{
+		xl_set( xl, value('dscr'), "DebtServiceCoverageRatio");
+		xl_set( xl, "Calculated", "DebtPercent");
+		xl_set( xl, "N/A", "MortgageSizeOfDebt");
+		xl_set( xl, "0", "loan_moratorium" ); //ensure that loan moratorium is zero so Excel cash flow formulas work correctly
+	}
+	
+	//send debt service reserve cash flow items because of iteration with debt fraction input option
+	xl_set( xl, output('cf_reserve_debtservice'), 'cf_reserve_debtservice');
+	xl_set( xl, output('cf_funding_debtservice'), 'cf_funding_debtservice');
+	xl_set( xl, output('cf_disbursement_debtservice'), 'cf_disbursement_debtservice');
+	
+	//send payment option flag
+	if ( value('payment_option') == 0 ) // equal payments
+		xl_set( xl, "Equal payments", "DebtPayment");
+	else // fixed principal	
+		xl_set( xl, "Fixed principal", "DebtPayment");
+		
+	//export annual values to minimize rounding discrepancies between SAM and workbook
+	xl_set( xl, output('cf_energy_net'), "AnnualEnergy");
+	xl_set( xl, output('cf_ppa_price'), "AnnualPPAPrice");
+	xl_set( xl, output('cf_energy_value'), "AnnualPPARevenue");
+		
+	//determine whether to send ppa price and irr inputs or outputs depending on solution mode
+	send_excel( xl, 'ppa_escalation'); 	
+	if ( value('ppa_soln_mode') == 0 ) //IRR is input
+	{
+		xl_set( xl, value('flip_target_percent'), "IRRTarget");
+		xl_set( xl, value('flip_target_year'), "IRRTargetYear");
+		xl_set( xl, "Calculated", "PPAPriceInput" ); 
+	}
+	else //PPA price is input
+	{
+		xl_set( xl, "Calculated", "IRRTarget");
+		xl_set( xl, "Calculated", "IRRTargetYear");
+		xl_set( xl, value('ppa_price_input'), "PPAPriceInput" ); 
+	}
+
+
+// HOST values
+	xl_set( xl, output('elec_cost_with_system'), "elec_cost_with_system");
+	xl_set( xl, output('elec_cost_without_system'), "elec_cost_without_system");
+	xl_set( xl, output('cf_energy_value'), "AnnualPPARevenue");
+	send_excel( xl, 'host_real_discount_rate');
+
+
+
+
+		
+	//show construction financing cost calculation in spreadsheet
+	//(ssc only uses total cost as input, so these are UI inputs from input form)
+	send_excel( xl, 'const_per_percent1');
+	send_excel( xl, 'const_per_percent2');
+	send_excel( xl, 'const_per_percent3');
+	send_excel( xl, 'const_per_percent4');
+	send_excel( xl, 'const_per_percent5');
+	send_excel( xl, 'const_per_upfront_rate1');
+	send_excel( xl, 'const_per_upfront_rate2');
+	send_excel( xl, 'const_per_upfront_rate3');
+	send_excel( xl, 'const_per_upfront_rate4');
+	send_excel( xl, 'const_per_upfront_rate5');
+	send_excel( xl, 'const_per_months1');
+	send_excel( xl, 'const_per_months2');
+	send_excel( xl, 'const_per_months3');
+	send_excel( xl, 'const_per_months4');
+	send_excel( xl, 'const_per_months5');
+	send_excel( xl, 'const_per_interest_rate1');
+	send_excel( xl, 'const_per_interest_rate2');
+	send_excel( xl, 'const_per_interest_rate3');
+	send_excel( xl, 'const_per_interest_rate4');
+	send_excel( xl, 'const_per_interest_rate5');		
+
+	send_excel_incentives(xl);
+	send_excel_yesno( xl, 'pbi_fed_for_ds');
+	send_excel_yesno( xl, 'pbi_sta_for_ds');
+	send_excel_yesno( xl, 'pbi_oth_for_ds');
+	send_excel_yesno( xl, 'pbi_uti_for_ds');
+
+	send_excel_om(xl);
+	send_excel_fuel(xl);
+	
+	send_excel(       xl, 'analysis_period');
+	send_excel(       xl, 'construction_financing_cost');
+	send_excel(       xl, 'cost_debt_closing');
+	send_excel(       xl, 'cost_debt_fee');
+	xl_set( xl, output('cost_debt_upfront'), 'CostDebtUpfront' );
+	send_excel(       xl, 'cost_other_financing');
+	send_excel(       xl, 'depr_alloc_macrs_15_percent');
+	send_excel(       xl, 'depr_alloc_macrs_5_percent');
+	send_excel(       xl, 'depr_alloc_sl_15_percent');
+	send_excel(       xl, 'depr_alloc_sl_20_percent');
+	send_excel(       xl, 'depr_alloc_sl_39_percent');
+	send_excel(       xl, 'depr_alloc_sl_5_percent');
+	send_excel(       xl, 'depr_bonus_fed');
+	send_excel_yesno( xl, 'depr_bonus_fed_macrs_15');
+	send_excel_yesno( xl, 'depr_bonus_fed_macrs_5');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_15');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_20');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_39');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_5');
+	send_excel(       xl, 'depr_bonus_sta');
+	send_excel_yesno( xl, 'depr_bonus_sta_macrs_15');
+	send_excel_yesno( xl, 'depr_bonus_sta_macrs_5');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_15');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_20');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_39');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_5');
+	send_excel_yesno( xl, 'depr_itc_fed_macrs_15');
+	send_excel_yesno( xl, 'depr_itc_fed_macrs_5');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_15');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_20');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_39');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_5');
+	send_excel_yesno( xl, 'depr_itc_sta_macrs_15');
+	send_excel_yesno( xl, 'depr_itc_sta_macrs_5');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_15');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_20');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_39');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_5');
+	
+//	send_excel(       xl, 'dscr'); //input
+	send_excel(       xl, 'dscr_reserve_months');
+	send_excel(       xl, 'months_working_reserve');
+	send_excel(       xl, 'months_receivables_reserve');
+	send_excel_depr(  xl, 'equip_reserve_depr_fed');
+	send_excel_depr(  xl, 'equip_reserve_depr_sta');
+	send_excel(       xl, 'equip1_reserve_cost');
+	send_excel(       xl, 'equip1_reserve_freq');
+	send_excel(       xl, 'equip2_reserve_cost');
+	send_excel(       xl, 'equip2_reserve_freq');
+	send_excel(       xl, 'equip3_reserve_cost');
+	send_excel(       xl, 'equip3_reserve_freq');
+
+	send_excel_taxes(xl);
+	
+	send_excel(       xl, 'inflation_rate');
+	send_excel(       xl, 'insurance_rate');
+	send_excel(       xl, 'prop_tax_assessed_decline');
+	send_excel(       xl, 'prop_tax_cost_assessed_percent');
+	send_excel(       xl, 'property_tax_rate');
+	send_excel(       xl, 'real_discount_rate');
+	send_excel(       xl, 'reserves_interest');
+	send_excel(       xl, 'sales_tax_rate');
+	send_excel(       xl, 'salvage_percentage');
+
+	send_excel(       xl, 'system_capacity');
+	send_excel(       xl, 'term_int_rate');
+	send_excel(       xl, 'term_tenor');
+	//loan_moratorium sent above in debt_option if statement
+	send_excel(       xl, 'total_installed_cost');
+	
+//	xl_free( xl ); // closes workbook
+};
+
+
+
 
 cashflow_to_excel{ 'Leveraged Partnership Flip' } = define()
 {
