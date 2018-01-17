@@ -291,7 +291,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline('cf_project_return_aftertax_irr', 2);
 	cfline('cf_project_return_aftertax_npv', 0);
 	cfline( '' );
-	cfline("AFTER-TAX EVELIZED COE AND PPA PRICE", -1);
+	cfline("AFTER-TAX LEVELIZED COE AND PPA PRICE", -1);
 	cfline('cf_annual_costs', 0);
 	cfline('cf_energy_value', 0);
 	cfline('cf_energy_net', 0); 
@@ -432,7 +432,7 @@ cashflow{ 'Host Developer' } = define()
 	cfline( 'cf_energy_net', 0); // no decimal places with thousands separator
 
 	cfline( '' ); // spacer with no shading
-	cfline( "Host line items", -1); // header with shading
+	cfline( "HOST COSTS AND SAVINGS", -1); // header with shading
 	cfline( 'elec_cost_without_system', 0);
 	cfline( 'elec_cost_with_system', 0);
 	cfline( 'annual_energy_value', 0);
@@ -443,8 +443,7 @@ cashflow{ 'Host Developer' } = define()
 	cfline( 'cf_cumulative_payback_with_expenses', 0);
 
 	cfline( '' ); // spacer with no shading
-	cfline( "Developer line items", -1); // header with shading
-	cfline( "REVENUES", -1); // header with shading
+	cfline( "DEVELOPER REVENUES", -1); // header with shading
 	cfline( 'cf_ppa_price' , -2 ); // generic formatting to show all significant digits
 	cfline( 'cf_energy_value', 0);
 	cfline("plus PBI if available for debt service:", -1, 0); // label with no shading
@@ -459,7 +458,7 @@ cashflow{ 'Host Developer' } = define()
 	cfline( 'cf_property_tax_assessed_value', 0);
 
 	cfline( '' );
-	cfline( "OPERATING EXPENSES", -1 );
+	cfline( "DEVELOPER OPERATING EXPENSES", -1 );
 	cf_om_expenses();
 	cfline( 'cf_property_tax_expense', 0);
 	cfline( 'cf_insurance_expense', 0);
@@ -469,7 +468,7 @@ cashflow{ 'Host Developer' } = define()
 	cfline( 'cf_ebitda', 0);
 
 	cfline( '' );
-	cfline( "CASH FLOWS FROM OPERATING ACTIVITIES", -1 );
+	cfline( "DEVELOPER CASH FLOWS FROM OPERATING ACTIVITIES", -1 );
 	cfline( 'cf_ebitda', 0);
 	cfline( 'cf_reserve_interest', 0);
 	cfline("plus PBI if not available for debt service:", -1, 0);
@@ -483,7 +482,7 @@ cashflow{ 'Host Developer' } = define()
 	cfline('cf_project_operating_activities', 0);
 	cfline( '' );
 
-	cfline( "CASH FLOWS FROM INVESTING ACTIVITIES", -1);
+	cfline( "DEVELOPER CASH FLOWS FROM INVESTING ACTIVITIES", -1);
 	cfline('cost_prefinancing',0,-1,0);
 	cfline('cost_debt_closing',0,-1,0);
 	cfline('cost_debt_upfront',0,-1,0);
@@ -507,7 +506,7 @@ cashflow{ 'Host Developer' } = define()
 	cfline('cf_project_investing_activities', 0);
 	
 	cfline( '' );
-	cfline("CASH FLOWS FROM FINANCING ACTIVITIES", -1);
+	cfline("DEVELOPER CASH FLOWS FROM FINANCING ACTIVITIES", -1);
 	cfline( 'ibi_total', 0);
 	cfline( 'cbi_total', 0);
 	cfline( 'size_of_debt', 0);
@@ -520,7 +519,7 @@ cashflow{ 'Host Developer' } = define()
 //	cfline('cf_pretax_cashflow', 0);
 
 	cfline( '' );
-	cfline( "PRE-TAX PROJECT RETURNS", -1);
+	cfline( "DEVELOPER PRE-TAX PROJECT RETURNS", -1);
 	cfline( 'issuance_of_equity',0,-1,0);
 	cfline('cf_project_operating_activities', 0);
 	cfline('cf_project_investing_activities', 0);	
@@ -532,7 +531,7 @@ cashflow{ 'Host Developer' } = define()
 //	cfline('cf_project_return_pretax_npv', 0);
 
 	cfline( '' );
-	cfline("AFTER-TAX PROJECT RETURNS", -1);
+	cfline("DEVELOPER AFTER-TAX PROJECT RETURNS", -1);
 	cfline('cf_project_return_pretax', 0);
 	cfline('itc_total_fed', 0, 1, 1 ); // offset column to year 1
 	cfline('cf_ptc_fed', 0);
@@ -543,17 +542,17 @@ cashflow{ 'Host Developer' } = define()
 	cfline('cf_project_return_aftertax', 0);
 
 	cfline( '' );
-	cfline("RETURN ON EQUITY", -1);
+	cfline("DEVELOPER RETURN ON EQUITY", -1);
 	cfline('cf_return_on_equity_input', 2,100);
 	cfline('cf_return_on_equity_dollars', 0);
 	cfline('cf_return_on_equity', 2);
 
 	cfline( '' );
-	cfline("AFTER-TAX IRR AND NPV", -1);
+	cfline("DEVELOPER AFTER-TAX IRR AND NPV", -1);
 	cfline('cf_project_return_aftertax_irr', 2);
 	cfline('cf_project_return_aftertax_npv', 0);
 	cfline( '' );
-	cfline("AFTER-TAX EVELIZED COE AND PPA PRICE", -1);
+	cfline("DEVELOPER AFTER-TAX LEVELIZED COE AND PPA PRICE", -1);
 	cfline('cf_annual_costs', 0);
 	cfline('cf_energy_value', 0);
 	cfline('cf_energy_net', 0); 
@@ -567,7 +566,7 @@ cashflow{ 'Host Developer' } = define()
 	cfline('lppa_nom',2);
 
 	cfline( '' );
-	cfline("STATE INCOME TAXES", -1);
+	cfline("DEVELOPER STATE INCOME TAXES", -1);
 	cfline('cf_ebitda', 0);
 	cfline('cf_reserve_interest', 0);
 	cfline('ibi_statax_total', 0, 1, 1);
@@ -583,7 +582,7 @@ cashflow{ 'Host Developer' } = define()
 	cfline('cf_statax', 0);
 
 	cfline( '' );
-	cfline("FEDERAL INCOME TAXES", -1);
+	cfline("DEVELOPER FEDERAL INCOME TAXES", -1);
 	cfline('cf_ebitda', 0);
 	cfline('cf_reserve_interest', 0);
 	cfline('cf_statax', 0);
@@ -602,14 +601,14 @@ cashflow{ 'Host Developer' } = define()
 	cfline('cf_fedtax', 0);
 
 	cfline( '' );
-	cfline( "INCENTIVES", -1);
+	cfline( "DEVELOPER INCENTIVES", -1);
 	cf_cash_incentives();
 	cfline( 'cf_ptc_fed,cf_ptc_sta' );
 	cfline( '' );
 	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
 	cfline( '' );
 
-	cfline( "DEBT REPAYMENT", -1);
+	cfline( "DEVELOPER DEBT REPAYMENT", -1);
 	cfline('cf_debt_payment_total', 0);
 	cfline('cf_debt_payment_interest', 0);
 	cfline('cf_debt_payment_principal', 0);
@@ -617,7 +616,7 @@ cashflow{ 'Host Developer' } = define()
 	
 	if ( value('debt_option') == 0 ) {
 	  cfline( '' );
-	  cfline( "DSCR (DEBT FRACTION)", -1);
+	  cfline( "DEVELOPER DSCR (DEBT FRACTION)", -1);
 	  cfline('cf_ebitda', 0);
 	  cfline("minus:", -1, 0);
 	  cfline('cf_funding_equip1', 0);
@@ -632,7 +631,7 @@ cashflow{ 'Host Developer' } = define()
 
     if ( value('debt_option') == 1 ) {
 	  cfline( '' );
-	  cfline( "DEBT SIZING (SCULPTED DEBT PAYMENTS)", -1);
+	  cfline( "DEVELOPER DEBT SIZING (SCULPTED DEBT PAYMENTS)", -1);
 	  cfline('cf_ebitda', 0);
 	  cfline("minus:", -1, 0);
 	  cfline('cf_funding_equip1', 0);
@@ -648,7 +647,7 @@ cashflow{ 'Host Developer' } = define()
     }
     
 	cfline( '' );
-	cfline("RESERVES", -1);
+	cfline("DEVELOPER RESERVES", -1);
 	cfline( '' );
 	cfline('cf_funding_debtservice', 0);
 	cfline('cf_disbursement_debtservice', 0);
