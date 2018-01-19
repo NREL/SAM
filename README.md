@@ -28,7 +28,7 @@ These are the general quick steps you need to follow to set up your computer for
 
 1. Set up your development tools:
 
-    * Windows: Visual Studio 2013 Professional or Express edition. Download from list of older versions at https://www.visualstudio.com/vs/older-downloads (requires Microsoft ID and password).
+    * Windows: Visual Studio 2017 Community or other editions available at https://www.visualstudio.com/.
     * Mac: Apple Command Line Tools, available at https://developer.apple.com/download/more/ (requires Apple ID and password).
     * Linux: g++ compiler available at http://www.cprogramming.com/g++.html or as part of the Linux distribution.
 
