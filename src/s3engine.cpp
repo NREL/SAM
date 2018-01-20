@@ -61,6 +61,7 @@
 #define DTOR 0.0174532925199433
 #endif
 
+
 namespace s3d {
 
 point3d::point3d() { x = y = z = _x = _y = _z = 0.0f; }
@@ -245,7 +246,7 @@ void transform::get_offset( double *xoff, double *yoff, double *zoff )
 #define acosd( x ) (acos(x)/DTOR)
 
 
-void transform::get_xy( double *x, double *y )
+void transform::get_xy( double *xx, double *yy )
 {	
 	double azimuth, altitude;
 
@@ -253,27 +254,27 @@ void transform::get_xy( double *x, double *y )
 
 	if ( azimuth >= 0 && azimuth <= 90 )
 	{
-		*x = cosd(altitude)*sind(azimuth);
-		*y = cosd(altitude)*cosd(azimuth);
+		*xx = cosd(altitude)*sind(azimuth);
+		*yy = cosd(altitude)*cosd(azimuth);
 	}
 	else if ( azimuth > 90 && azimuth <= 180 )
 	{
-		*x = cosd(altitude)*sind(180-azimuth);
-		*y = -cosd(altitude)*cosd(180-azimuth);
+		*xx = cosd(altitude)*sind(180-azimuth);
+		*yy = -cosd(altitude)*cosd(180-azimuth);
 	}
 	else if ( azimuth > 180 && azimuth <= 270 )
 	{
-		*x = -cosd(altitude)*sind(azimuth-180);
-		*y = -cosd(altitude)*cosd(azimuth-180);
+		*xx = -cosd(altitude)*sind(azimuth-180);
+		*yy = -cosd(altitude)*cosd(azimuth-180);
 	}
 	else
 	{
-		*x = -cosd(altitude)*sind(360-azimuth);
-		*y = cosd(altitude)*cosd(360-azimuth);
+		*xx = -cosd(altitude)*sind(360-azimuth);
+		*yy = cosd(altitude)*cosd(360-azimuth);
 	}
 }
 
-void transform::get_xyz( double *x, double *y, double *z )
+void transform::get_xyz( double *xx, double *yy, double *zz )
 {	
 	double azimuth, altitude;
 
@@ -281,25 +282,25 @@ void transform::get_xyz( double *x, double *y, double *z )
 
 	if ( azimuth >= 0 && azimuth <= 90 )
 	{
-		*x = cosd(altitude)*sind(azimuth);
-		*y = cosd(altitude)*cosd(azimuth);
+		*xx = cosd(altitude)*sind(azimuth);
+		*yy = cosd(altitude)*cosd(azimuth);
 	}
 	else if ( azimuth > 90 && azimuth <= 180 )
 	{
-		*x = cosd(altitude)*sind(180-azimuth);
-		*y = -cosd(altitude)*cosd(180-azimuth);
+		*xx = cosd(altitude)*sind(180-azimuth);
+		*yy = -cosd(altitude)*cosd(180-azimuth);
 	}
 	else if ( azimuth > 180 && azimuth <= 270 )
 	{
-		*x = -cosd(altitude)*sind(azimuth-180);
-		*y = -cosd(altitude)*cosd(azimuth-180);
+		*xx = -cosd(altitude)*sind(azimuth-180);
+		*yy = -cosd(altitude)*cosd(azimuth-180);
 	}
 	else
 	{
-		*x = -cosd(altitude)*sind(360-azimuth);
-		*y = cosd(altitude)*cosd(360-azimuth);
+		*xx = -cosd(altitude)*sind(360-azimuth);
+		*yy = cosd(altitude)*cosd(360-azimuth);
 	}
-	*z = sind(altitude);
+	*zz = sind(altitude);
 
 }
 
@@ -502,15 +503,15 @@ void transform::compute()
 //	Y = scale*Y;
 }
 
-void transform::matprod4(double z[4][4], double u[4][4], double v[4][4])
+void transform::matprod4(double zz[4][4], double u[4][4], double v[4][4])
 {
 	int i, j, k;
 	for (i=0; i<4; i++) 
 		for (j=0; j<4; j++)
 		{
-			z[i][j]=0.0f;
+			zz[i][j]=0.0f;
 			for (k=0; k<4; k++) 
-				z[i][j]+=u[i][k]*v[k][j];
+				zz[i][j]+=u[i][k]*v[k][j];
 		}
 }
 
@@ -981,9 +982,9 @@ BSPNode::~BSPNode()
 
 bool BSPNode::Intersects( BSPNode *Plane )
 {
-	std::vector<point3d> points;
+	std::vector<point3d> ppoints;
 
-	return ( _SplitPoly( Plane, points, false ) != 0 );
+	return ( _SplitPoly( Plane, ppoints, false ) != 0 );
 //	return ( _SplitPoly( Plane, points ) != 0 );
 }
 
@@ -1588,7 +1589,7 @@ void scene::basic_axes_with_ground( int axes_len )
 	poly(-2);
 
 	// change axes to polygons for bsp sorting
-	double axes_thick = 0.01;
+//	double axes_thick = 0.01;
 	// x-axis
 	colors( rgba( 200, 0, 0 ), rgba(200, 0, 0 ) );
 //	box(0, 0, -axes_thick, -axes_thick, 0, axes_len, axes_thick, axes_thick);
@@ -1729,7 +1730,7 @@ void scene::build( transform &tr )
 	
 	std::vector<polygon3d*> background, foreground;
 	
-	for (size_t i=0;i<m_polygons.size();i++)
+	for ( i=0;i<m_polygons.size();i++)
 	{
 		if ( m_polygons[i]->as_line || m_polygons[i]->id < 0 )
 			background.push_back(m_polygons[i]);
@@ -1764,14 +1765,14 @@ void scene::build( transform &tr )
 		m_bsp.Traverse( cam, m_sortedCulled );
 	
 		// transform all points
-		for ( size_t i=0;i<m_sortedCulled.size();i++ )
+		for (  i=0;i<m_sortedCulled.size();i++ )
 			for ( size_t j=0;j<m_sortedCulled[i]->points.size();j++ )
 				tr( m_sortedCulled[i]->points[j] );
 	}
 	
 
 	// transform background points
-	for ( size_t i=0;i<background.size();i++ )
+	for (  i=0;i<background.size();i++ )
 		for ( size_t j=0;j<background[i]->points.size();j++ )
 			tr( background[i]->points[j] );
 		
@@ -1830,7 +1831,7 @@ void scene::build( transform &tr )
 
 	
 	// transform all labels
-	for ( size_t i=0;i<m_labels.size();i++ )
+	for (  i=0;i<m_labels.size();i++ )
 		tr( m_labels[i]->pos );
 
 	// save the view normal
@@ -1899,7 +1900,7 @@ double scene::shade( std::vector<shade_result> &results,
 		
 		int id = m_rendered[i]->id;
 		int index = -1;
-		for( int j=0;j<results.size();j++ )
+		for( int j=0;j<(int)results.size();j++ )
 			if ( results[j].id == id )
 				index = j;
 
