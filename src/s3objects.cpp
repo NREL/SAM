@@ -392,17 +392,17 @@ bool VObject::Read( wxInputStream &_i )
 			wxString grp = Property(name).GetString();
 			int ndx = wxNOT_FOUND;
 			wxString num_string = "0123456789";
-			wxString n;
+			wxString nn;
 			for (size_t j = 0; j < grp.Len(); j++)
 			{
 				ndx = num_string.Find(grp.Mid(j, 1));
 				if (ndx != wxNOT_FOUND)
-					n += grp.Mid(j, 1);
+					nn += grp.Mid(j, 1);
 			}
 			// default subarray is 1 with range 1 to 4 (zero index)
 			// default string is 1 with range 1 to 8 (zero index)
 			// no string entries before version 2
-			int nsub = wxAtoi(n);
+			int nsub = wxAtoi(nn);
 			if (nsub < 1) nsub = 1;
 			if (nsub > 4) nsub = 1;
 
