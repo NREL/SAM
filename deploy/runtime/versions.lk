@@ -50,6 +50,15 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+
+version_upgrade{'2018.x.x'} = define() {
+	const cfg = config();
+	
+	if (cfg.tech == "Wind Power")
+		if (value('wind_farm_wake_model') == 2)
+			message('This version fixes a bug in the calculation of the length of the near wake region, resulting in changes to output values.', 'warning');	
+};
+
 version_upgrade{'2017.8.28'} = define() {
 	const cfg = config();
 	
