@@ -72,7 +72,7 @@ host_nte = alloc(num_runs);
 
 // run all systems sizes and capture results
 outln('Running simulations...\n');
-outln('Capacity (DC kW)\tPPA Price (\u00A2/kWh)\tHost Indifference Point (\u00A2/kWh)\tDeveloper IRR (%)');
+outln('Capacity (DC kW)\tPPA Price (\u00A2/kWh)\tHost Indifference Point (\u00A2/kWh)\tDeveloper IRR (%)\tDeveloper NPV');
 for (i=0;i<num_runs;i++)
 {
 	sys_size[i] = macro.start_size + i * macro.step_size;
@@ -88,9 +88,11 @@ for (i=0;i<num_runs;i++)
 	simulate('', false);
 	// capture outputs to plot
 	developer_ppa[i] = get('lppa_nom');
+	developer_npv[i] =get('project_return_aftertax_npv');
 	host_nte[i] = get('lnte_nom');
 	developer_irr[i] = get('flip_actual_irr');
-	outln(actual_size[i] + '\t\t' + developer_ppa[i] + '\t\t' + host_nte[i] + '\t\t\t\t' + developer_irr[i] );
+	
+	outln(sprintf('%,',round(actual_size[i])) + '\t\t' + developer_ppa[i] + '\t\t' + host_nte[i] + '\t\t\t\t' + developer_irr[i] +'\t\t' + sprintf('%,',round(developer_npv[i])) );
 }
 
 outln('\nDone.');
