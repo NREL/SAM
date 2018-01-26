@@ -58,6 +58,7 @@ using std::unordered_map;
 #pragma warning(disable: 4290)  // ignore warning: 'C++ exception specification ignored except to indicate a function is not __declspec(nothrow)'
 
 
+
 namespace s3d {
 
 class point3d
@@ -89,15 +90,15 @@ class text3d
 {
 public:
 	text3d();
-	text3d( double x, double y, double z, const std::string &text );
-	text3d( double x, double y, double z, const std::string &text, 
-		rgba col, int size, const std::string &face );
+	text3d( double x, double y, double z, const std::string &_text );
+	text3d( double x, double y, double z, const std::string &_text, 
+		rgba _color, int _size, const std::string &_face );
 
 	point3d pos;
 	std::string text;
 	rgba color;
-	std::string face;
 	int size;
+	std::string face;
 
 };
 
@@ -105,17 +106,17 @@ class polygon3d
 {
 public:
 	polygon3d( int _id = 0);
-	polygon3d( int _id, int _type, rgba _fill, rgba _border, int thick, bool line );
-	polygon3d( int _id, int _type, rgba _fill, rgba _border, int thick, bool line, const std::vector<point3d> &pts, bool ncul=false );
+	polygon3d( int _id, int _type, rgba _fill, rgba _border, int _thick, bool _line );
+	polygon3d( int _id, int _type, rgba _fill, rgba _border, int _thick, bool _line, const std::vector<point3d> &_points, bool _ncul=false );
 	polygon3d( const polygon3d &rhs );
 		
-	std::vector<point3d> points;
 	int id;
 	int type;
 	rgba fill;
 	rgba border;
 	int thick;
 	bool as_line;
+	std::vector<point3d> points;
 	bool no_cull;
 };
 
