@@ -2228,6 +2228,7 @@ void SamReportScriptObject::Render( wxPageOutputDevice &dv )
 		env.register_funcs( lk::stdlib_string() );
 		env.register_funcs( lk::stdlib_math() );
 		env.register_funcs( lk::stdlib_wxui() );
+		env.register_funcs(wxLKPlotFunctions()); // plot function from wex
 
 		wxStopWatch sw;
 		lk::eval e( tree, &env );
