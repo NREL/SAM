@@ -34,8 +34,8 @@ you chose for the system.
 
 @*/
 //sys_size = [1000, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000];
-//@ name=start_size;type=number;label=Minimum DC capacity (kW):;value=5000
-//@ name=step_size;type=number;label=Increment (kW):;value=500
+//@ name=start_size;type=number;label=Minimum DC capacity (kW):;value=1000
+//@ name=step_size;type=number;label=Increment (kW):;value=2000
 //@ name=number_steps;type=number;label=Number of sizes:;value=10
 
 
@@ -67,33 +67,67 @@ sys_size = alloc(num_runs);
 actual_size = alloc(num_runs);
 // capture developer nominal levelized ppa
 developer_ppa = alloc(num_runs);
+// capture developer net present value
+developer_npv = alloc(num_runs);
 // capture host nominal levelized NTE
 host_nte = alloc(num_runs);
+// capture host net present value
+host_npv = alloc(num_runs);
+
+// output formatting
+as_len=strlen(sprintf('%,',round(macro.start_size + num_runs*macro.step_size  + 3)));
+ppa_len=5;
+nte_len=5;
+irr_len=5;
+npv_len=10;
 
 // run all systems sizes and capture results
 outln('Running simulations...\n');
-outln('Capacity (DC kW)\tPPA Price (\u00A2/kWh)\tHost Indifference Point (\u00A2/kWh)\tDeveloper IRR (%)\tDeveloper NPV');
+outln('Capacity (DC kW)\tPPA Price (\u00A2/kWh)\tHost Indifference Point (\u00A2/kWh)\tHost NPV ($)\t\tDeveloper IRR (%)\tDeveloper NPV ($)');
 for (i=0;i<num_runs;i++)
 {
 	sys_size[i] = macro.start_size + i * macro.step_size;
-	actual_size[i] = sys_size[i];
+	actual_size[i] = sprintf('%,',round(sys_size[i]));
 	if (configuration()[0]=='PVWatts') 
 		set('system_capacity', sys_size[i]);
 	else {
 		set('size_auto_or_manual', 0);
 		set('desired_size', sys_size[i]);
-		actual_size[i] = get('system_capacity');
+		actual_size[i] = sprintf('%,',round(get('system_capacity')));
 	}
+	while (strlen(actual_size[i]) < as_len) 
+		actual_size[i] = "  " + actual_size[i];
+
 	// Run simulation
 	simulate('', false);
 	// capture outputs to plot
-	developer_ppa[i] = get('lppa_nom');
-	developer_npv[i] =get('project_return_aftertax_npv');
-	host_nte[i] = get('lnte_nom');
-	developer_irr[i] = get('flip_actual_irr');
-	
-	outln(sprintf('%,',round(actual_size[i])) + '\t\t' + developer_ppa[i] + '\t\t' + host_nte[i] + '\t\t\t\t' + developer_irr[i] +'\t\t' + sprintf('%,',round(developer_npv[i])) );
+	developer_ppa[i] = sprintf('%.2f',get('lppa_nom'));
+	while (strlen(developer_ppa[i]) < ppa_len) 
+		developer_ppa[i] = "  " + developer_ppa[i];
+
+	host_nte[i] = sprintf('%.2f',get('lnte_nom'));
+	while (strlen(host_nte[i]) < nte_len) 
+		host_nte[i] = "  " + host_nte[i];
+
+	developer_npv[i] =sprintf('%,',round(get('project_return_aftertax_npv')));
+	while (strlen(developer_npv[i]) < npv_len) 
+		developer_npv[i] = "  " + developer_npv[i];
+
+	host_npv[i] = sprintf('%,',round(get('npv')));
+	while (strlen(host_npv[i]) < npv_len) 
+		host_npv[i] = "  " + host_npv[i];
+
+	developer_irr[i] = sprintf('%.2f',get('flip_actual_irr'));
+	while (strlen(developer_irr[i]) < ppa_len) 
+		developer_irr[i] = "  " + developer_irr[i];
+
+
+
+
+//	outln(sprintf('%,',round(actual_size[i])) + '\t\t' + sprintf('%.2f',developer_ppa[i]) + '\t\t' + sprintf('%.2f',host_nte[i]) + '\t\t\t\t' + sprintf('%,',round(host_npv[i])) + '\t\t' + sprintf('%.2f',developer_irr[i]) +'\t\t' + sprintf('%,',round(developer_npv[i])) );
+	outln(actual_size[i] + '\t\t' + developer_ppa[i] + '\t\t' + host_nte[i] + '\t\t\t\t' + host_npv[i] + '\t\t' + developer_irr[i] +'\t\t' + developer_npv[i] );
 }
+
 
 outln('\nDone.');
 
