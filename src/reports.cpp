@@ -1651,7 +1651,7 @@ static void fcall_table( lk::invoke_t &cxt )
 static void fcall_graph( lk::invoke_t &cxt )
 {
 	LK_DOC("graph", 
-		"Render a bar graph from the given values. Options include xlabel, ylabel, title, show_values, width, height, decimals, color.", 
+		"Render a bar graph from the given values. Options include xlabel, ylabel, title, show_values, width, height, decimals, color, show_yaxis_ticks.", 
 		"(array:values [, array:labels, table:options]):none");
 	SamReportScriptObject *so = (SamReportScriptObject*)cxt.user_data();
 	if (!so) return;
@@ -1660,6 +1660,7 @@ static void fcall_graph( lk::invoke_t &cxt )
 	wxArrayString labels;
 	wxString xlabel, ylabel, title;
 	bool show_values = false;
+	bool show_yaxis_ticks = false;
 	float width = 4.0f;
 	float height = 3.0f;
 	int decimals = 2;
@@ -1707,8 +1708,11 @@ static void fcall_graph( lk::invoke_t &cxt )
 		if ((vv=v.lookup("title")))
 			title = vv->as_string();
 
-		if ((vv=v.lookup("show_values")))
+		if ((vv = v.lookup("show_values")))
 			show_values = vv->as_boolean();
+
+		if ((vv = v.lookup("show_yaxis_ticks")))
+			show_yaxis_ticks = vv->as_boolean();
 
 		if ((vv=v.lookup("width")))
 			width = vv->as_number();
@@ -1738,7 +1742,7 @@ static void fcall_graph( lk::invoke_t &cxt )
 	so->RenderBarGraph( values, labels, 
 		xlabel, ylabel, title, 
 		show_values, width, height, 
-		decimals, color );
+		decimals, color, show_yaxis_ticks );
 }
 
 static void fcall_move_to( lk::invoke_t &cxt )
@@ -2068,7 +2072,8 @@ public:
 		m_editor = new wxLKScriptCtrl(this, IDT_SCRIPT, wxDefaultPosition, wxDefaultSize, 
 			wxLK_STDLIB_BASIC|wxLK_STDLIB_SYSIO|wxLK_STDLIB_STRING|wxLK_STDLIB_MATH|wxLK_STDLIB_WXUI);
 		
-		m_editor->RegisterLibrary( report_script_funcs );
+		m_editor->RegisterLibrary(report_script_funcs);
+		m_editor->RegisterLibrary(wxLKPlotFunctions());
 
 		m_toolSizer = new wxBoxSizer( wxHORIZONTAL );
 		m_toolSizer->Add( new wxButton( this, IDT_INSERTVAR, "Variables", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxRIGHT|wxALIGN_CENTER, 4 );
@@ -2575,7 +2580,7 @@ struct fRect
 
 void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, const wxArrayString &xlabels, const wxString &xlabel,
 	const wxString &ylabel, const wxString &title, bool show_values, float xsize, float ysize, int decimals,
-	const wxColour &color )
+	const wxColour &color, bool show_yaxis_ticks )
 {
 	if (!m_curDevice) return;
 
@@ -2607,8 +2612,11 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 	double physmax = gr_height*72;
 
 	std::vector<wxPLAxis::TickData> ticks;
-	yaxis.GetAxisTicks( 0, physmax, ticks );
-	
+	if (show_yaxis_ticks)
+		yaxis.GetAxisTicks( -1, physmax, ticks );
+	else
+		yaxis.GetAxisTicks(0, physmax, ticks);
+
 	// save the current style data
 	int saveFace, saveSize, saveAlign;
 	wxColour saveColour;
