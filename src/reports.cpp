@@ -1658,7 +1658,7 @@ static void fcall_graph( lk::invoke_t &cxt )
 
 	std::vector<double> values;
 	wxArrayString labels;
-	wxString xlabel, ylabel, title;
+	wxString xlabel, ylabel, title, ticks_format = wxEmptyString;
 	bool show_values = false;
 	bool show_yaxis_ticks = false;
 	float width = 4.0f;
@@ -1714,6 +1714,9 @@ static void fcall_graph( lk::invoke_t &cxt )
 		if ((vv = v.lookup("show_yaxis_ticks")))
 			show_yaxis_ticks = vv->as_boolean();
 
+		if ((vv = v.lookup("ticks_format")))
+			ticks_format = vv->as_string();
+
 		if ((vv=v.lookup("width")))
 			width = vv->as_number();
 
@@ -1742,7 +1745,7 @@ static void fcall_graph( lk::invoke_t &cxt )
 	so->RenderBarGraph( values, labels, 
 		xlabel, ylabel, title, 
 		show_values, width, height, 
-		decimals, color, show_yaxis_ticks );
+		decimals, color, show_yaxis_ticks, ticks_format );
 }
 
 static void fcall_move_to( lk::invoke_t &cxt )
@@ -2233,7 +2236,6 @@ void SamReportScriptObject::Render( wxPageOutputDevice &dv )
 		env.register_funcs( lk::stdlib_string() );
 		env.register_funcs( lk::stdlib_math() );
 		env.register_funcs( lk::stdlib_wxui() );
-		env.register_funcs(wxLKPlotFunctions()); // plot function from wex
 
 		wxStopWatch sw;
 		lk::eval e( tree, &env );
@@ -2580,7 +2582,7 @@ struct fRect
 
 void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, const wxArrayString &xlabels, const wxString &xlabel,
 	const wxString &ylabel, const wxString &title, bool show_values, float xsize, float ysize, int decimals,
-	const wxColour &color, bool show_yaxis_ticks )
+	const wxColour &color, bool show_yaxis_ticks, const wxString &ticks_format )
 {
 	if (!m_curDevice) return;
 
@@ -2668,12 +2670,14 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 			continue;
 
 		wxString label;
-		if (decimals <= 0 && fabs(ticks[i].world)>999)
+		if (ticks_format != wxEmptyString)
+			label = lk::format(ticks_format, ticks[i].world);
+		else if (decimals <= 0 && fabs(ticks[i].world)>999)
 			label = wxNumericFormat( ticks[i].world, wxNUMERIC_REAL, wxNUMERIC_GENERIC, true, wxEmptyString, wxEmptyString );
 		else if (decimals < 6)
 			label = wxNumericFormat( ticks[i].world, wxNUMERIC_REAL, decimals, true, wxEmptyString, wxEmptyString );		
 		else
-			label = wxString::Format("%lg", ticks[i].world );
+			label = wxString::Format("%lg", ticks[i].world);
 
 		float tw = 0.05f;
 		m_curDevice->Measure(label, &tw, 0);
@@ -2776,7 +2780,7 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 		{
 			float y = TO_DEVICE(ticks[i].world);
 			LINEOUT( 0, y, 0.1f, y );
-			TEXTOUT( -ytick_widths[i]-0.025f, y-ytick_height/2, wxString::Format("%lg", ticks[i].world), 0 );
+			TEXTOUT( -ytick_widths[i]-0.025f, y-ytick_height/2, ytick_labels[i], 0 );
 		}
 	}
 
