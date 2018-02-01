@@ -2671,7 +2671,7 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 
 		wxString label;
 		if (ticks_format != wxEmptyString)
-			label = lk::format(ticks_format, ticks[i].world);
+			label = lk::format((const char *)ticks_format.c_str(), ticks[i].world);
 		else if (decimals <= 0 && fabs(ticks[i].world)>999)
 			label = wxNumericFormat( ticks[i].world, wxNUMERIC_REAL, wxNUMERIC_GENERIC, true, wxEmptyString, wxEmptyString );
 		else if (decimals < 6)
