@@ -43,6 +43,8 @@ power_file = choose_file('C:/Users/jfreeman/Documents/Projects/4 MHK', 'Choose a
 power = csvread(power_file, {skip=3, numeric=true, table=false});
 //outln(power);
 
+//need to add a check that the resource and power matrices are 1:1 as far as periods and amplitudes
+
 //multiply the resource and power together //need to add checking that the power and resource matrix column and row headers match, add some type of lookup? change formatting?
 weighted_avg_energy = 0;
 for (i=1; i<20; i++) //start at the first column, because column 0 contains row labels //need to not hardcode this number in!
