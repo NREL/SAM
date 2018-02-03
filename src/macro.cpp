@@ -57,6 +57,7 @@
 #include <wx/file.h>
 #include <wx/tokenzr.h>
 #include <wx/wfstream.h>
+#include <wx/arrstr.h>
 
 #include <wex/metro.h>
 #include <wex/utils.h>
@@ -752,6 +753,24 @@ void MacroPanel::CreateUI( const wxString &buf )
 		{
 			win = new SVOutputCtrl( m_macroUI );
 			expand_win = true;
+		}
+		else if (type == "filename")
+		{
+			wxArrayString as = wxSplit(value,'|');
+			wxString filter = wxEmptyString, fil_front=wxEmptyString, fil_back=wxEmptyString;
+
+			if (as.Count() > 0)
+			{
+				filter = "Files (";
+				for (size_t i = 0; i < as.Count(); i++)
+				{
+					fil_front += "*." + as[i].Lower() + ",";
+					fil_back += "*." + as[i].Lower() + ",";
+				}
+				filter += fil_front + ")|" + fil_back;
+			}
+			win = new wxFileDialog(m_macroUI, label, "", "", filter, wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+
 		}
 
 		if ( win != 0 )
