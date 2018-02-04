@@ -11,6 +11,10 @@ LCOE using NREL's Annual Technology Baseline methodology.
 <i> Click 'Run macro' above to run the macro.
 
 @*/
+//@ name=res_file;type=filename;label=Resource file:;value=C:/Users/jfreeman/Documents/Projects/4 MHK/USA CA Eureka Humboldt Bay (NDBC).csv|csv
+//@ name=pwr_file;type=filename;label=Power file:;value=C:/Users/jfreeman/Documents/Projects/4 MHK/Wave Power Matrix Example.csv|csv
+//@ name=xl_file;type=filename;label=CBS file:;value=C:/Users/jfreeman/Documents/Projects/4 MHK/generalized.cbs_.draft_mhk_aug.1.2014.xlsx|xlsx,xls
+
 
 //check that the Generic System and LCOE model are used, and that there is an active case
 case = active_case();
@@ -32,13 +36,15 @@ if (config[1] != 'LCOE Calculator')
 }
 
 //read in the resource file
-resource_file = choose_file('C:/Users/jfreeman/Documents/Projects/4 MHK', 'Choose a Resource File', 'CSV Files (*.csv)|*.csv', 0, 0, 'USA CA Eureka Humboldt Bay (NDBC).csv');
+resource_file = macro.res_file;
+//resource_file = choose_file('C:/Users/jfreeman/Documents/Projects/4 MHK', 'Choose a Resource File', 'CSV Files (*.csv)|*.csv', 0, 0, 'USA CA Eureka Humboldt Bay (NDBC).csv');
 //resource_file = "C:\\Users/jfreeman/Documents/Projects/4 MHK/USA CA Eureka Humboldt Bay (NDBC).csv";
 resource = csvread(resource_file, {skip=3, numeric=true, table=false});
 //outln(resource);
 
 //read in the power file
-power_file = choose_file('C:/Users/jfreeman/Documents/Projects/4 MHK', 'Choose a Power Matrix File', 'CSV Files (*.csv)|*.csv', 0, 0, 'Wave Power Matrix Example.csv');
+//power_file = choose_file('C:/Users/jfreeman/Documents/Projects/4 MHK', 'Choose a Power Matrix File', 'CSV Files (*.csv)|*.csv', 0, 0, 'Wave Power Matrix Example.csv');
+power_file = macro.pwr_file;
 //power_file = "C:\\Users/jfreeman/Documents/Projects/4 MHK/Wave Power Matrix Example.csv";
 power = csvread(power_file, {skip=3, numeric=true, table=false});
 //outln(power);
@@ -66,8 +72,9 @@ set('derate', 0); //double check this assumption
 set('heat_rate', 0); //set heat rate to zero
 
 //get the CapEx cost from the CBS spreadsheet
-xl_path = choose_file('C:/Users/jfreeman/Documents/Projects/4 MHK', 'Choose the Cost Breakdown Structure (CBS) File', 
-	'Excel Files (*.xlsx)|*.xlsx', 0, 0, 'generalized.cbs_.draft_mhk_aug.1.2014.xlsx');
+xl_path = macro.xl_file;
+//xl_path = choose_file('C:/Users/jfreeman/Documents/Projects/4 MHK', 'Choose the Cost Breakdown Structure (CBS) File', 
+//	'Excel Files (*.xlsx)|*.xlsx', 0, 0, 'generalized.cbs_.draft_mhk_aug.1.2014.xlsx');
 //xl_path = 'C:\\Users/jfreeman/Documents/Projects/4 MHK/generalized.cbs_.draft_mhk_aug.1.2014.xlsx';
 xl = xl_create(xl_path, false);
 capex = to_real(xl_get(xl, 'CapEx')); //need to ensure that CBS includes CapEx as a named cell
