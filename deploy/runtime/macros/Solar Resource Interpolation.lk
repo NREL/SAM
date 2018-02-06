@@ -751,7 +751,7 @@ function main(){
 			exit;
 		}
 		intervals_per_hour = #load/8760;
-		if (intervals_per_hour == 1 || get('en_belpe')){
+		if (intervals_per_hour == 1 ){
 			msgbox("Electric Load time interval must be subhourly");
 			exit;
 		}
