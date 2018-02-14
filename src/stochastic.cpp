@@ -62,7 +62,7 @@
 #include "casewin.h"
 #include "stochastic.h"
 
-char *lhs_dist_names[LHS_NUMDISTS] = {
+char const *lhs_dist_names[LHS_NUMDISTS] = {
 	"Uniform,Min,Max",
 	"Normal,Mean (mu),Std. Dev. (sigma)",
 	"Lognormal,Mean,ErrorF",
@@ -75,6 +75,8 @@ char *lhs_dist_names[LHS_NUMDISTS] = {
 	"Weibull,Alpha or k (shape parameter),Beta or lambda (scale parameter)",
 	"UserCDF,N"
 };
+
+
 
 LHS::LHS()
 {
@@ -95,12 +97,6 @@ void LHS::SeedVal(int sv)
 {
 	m_seedval =sv;
 }
-
-#ifdef __WXMSW__
-#define LHSBINARY "lhs.exe"
-#else
-#define LHSBINARY "lhs.bin"
-#endif
 
 bool LHS::Exec()
 {
@@ -635,7 +631,6 @@ Y                              ! output label (for option 1 in label)
 		if (parts.Count() != 4)
 			continue;
 
-		bool assigned = false;
 		for (size_t i=0;i<m_inputs.size();i++)
 		{
 			if (m_inputs[i].name.Lower() == parts[0].Lower())
@@ -644,7 +639,6 @@ Y                              ! output label (for option 1 in label)
 				m_inputs[i].R2inc = atof( parts[2].c_str() );
 				m_inputs[i].SRC = atof( parts[3].c_str() );
 				m_inputs[i].calculated = true;
-				assigned = true;
 			}
 		}
 	}
@@ -1297,7 +1291,7 @@ void StochasticPanel::UpdateWeatherFileSums()
 		ssc_data_set_string(pdata, "file_name", (const char*)wf.c_str());
 		ssc_data_set_number(pdata, "header_only", 0);
 
-		if (const char *err = ssc_module_exec_simple_nothread("wfreader", pdata))
+		if (ssc_module_exec_simple_nothread("wfreader", pdata))
 		{
 			wxMessageBox("Error scanning '" + wf + "'");
 			continue;
