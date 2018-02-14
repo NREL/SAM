@@ -1727,30 +1727,25 @@ function send_excel_rescom(xl)
 function send_excel_taxes(xl)
 {
 
-	tax = value('federal_tax_rate');
 	t=alloc( value('analysis_period') );
-	if ( #tax == 1 ) {
-		send_excel( xl, 'federal_tax_rate');
+
+	tax = value('federal_tax_rate');
+	if ( #tax == 1 ) 
+	{
 		for (i=0;i<#t;i++) t[i]=tax[0];
 		xl_set( xl, t, 'AnnualTaxFederal');
 	}	
 	else
-	{
-		xl_set( xl, "n/a", 'federal_tax_rate');
 		xl_set( xl, tax, 'AnnualTaxFederal');
-	}		
 
 	tax = value('state_tax_rate');
-	if ( #tax == 1 ) {
-		send_excel( xl, 'state_tax_rate');
+	if ( #tax == 1 ) 
+	{
 		for (i=0;i<#t;i++) t[i]=tax[0];
 		xl_set( xl, t, 'AnnualTaxState');
 	}	
 	else
-	{
-		xl_set( xl, "n/a", 'state_tax_rate');
 		xl_set( xl, tax, 'AnnualTaxState');
-	}		
 
 }
 
