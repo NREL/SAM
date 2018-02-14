@@ -59,6 +59,14 @@
 #include <wx/string.h>
 #include <wx/arrstr.h>
 
+
+#ifdef __WXMSW__
+#define LHSBINARY "lhs.exe"
+#else
+#define LHSBINARY "lhs.bin"
+#endif
+
+
 enum {
 	LHS_UNIFORM,
 	LHS_NORMAL,
@@ -74,7 +82,8 @@ enum {
 LHS_NUMDISTS
 };
 
-extern char *lhs_dist_names[LHS_NUMDISTS];
+extern const char *lhs_dist_names[LHS_NUMDISTS];
+
 
 class LHS
 {
