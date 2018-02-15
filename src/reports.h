@@ -304,8 +304,7 @@ public:
 	void RenderTable( const matrix_t<wxString> &tab );
 	void RenderBarGraph( const std::vector<double> &values, const wxArrayString & xlabels, const wxString &xlabel,
 		const wxString &ylabel, const wxString &title, bool show_values, float xsize, float ysize,
-		int decimals,
-		const wxColour &color );
+		int decimals, const wxColour &color, bool show_yaxis_ticks = false, const wxString &ticks_format = wxEmptyString);
 private:
 	float m_curXPos, m_curYPos, m_curLineHeight;
 	wxPageOutputDevice *m_curDevice;
