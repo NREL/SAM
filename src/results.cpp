@@ -212,6 +212,8 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 					gbn = "Electricity Rate Data by Tier and Period"; // monthly tier x period
 				else if (grp == "UR_AM")
 					gbn = "Electricity Rate Data by Year"; // annual monthly
+				else if (grp == "UR_DMP")
+					gbn = "Electricity Demand Data by Period"; // monthly period
 			}
 
 			group_by_name[list[j]] = gbn;
