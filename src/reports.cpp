@@ -1655,7 +1655,7 @@ static void fcall_table( lk::invoke_t &cxt )
 static void fcall_graph( lk::invoke_t &cxt )
 {
 	LK_DOC("graph", 
-		"Render a bar graph from the given values. Options include xlabel, ylabel, title, show_values, width, height, decimals, color.", 
+		"Render a bar graph from the given values. Options include xlabel, ylabel, title, show_values, width, height, decimals, color, show_yaxis_ticks.", 
 		"(array:values [, array:labels, table:options]):none");
 	SamReportScriptObject *so = (SamReportScriptObject*)cxt.user_data();
 	if (!so) return;
@@ -1664,6 +1664,7 @@ static void fcall_graph( lk::invoke_t &cxt )
 	wxArrayString labels;
 	wxString xlabel, ylabel, title, ticks_format = wxEmptyString;
 	bool show_values = false;
+	bool show_yaxis_ticks = false;
 	float width = 4.0f;
 	float height = 3.0f;
 	int decimals = 2;
@@ -2078,7 +2079,8 @@ public:
 		m_editor = new wxLKScriptCtrl(this, IDT_SCRIPT, wxDefaultPosition, wxDefaultSize, 
 			wxLK_STDLIB_BASIC|wxLK_STDLIB_SYSIO|wxLK_STDLIB_STRING|wxLK_STDLIB_MATH|wxLK_STDLIB_WXUI);
 		
-		m_editor->RegisterLibrary( report_script_funcs );
+		m_editor->RegisterLibrary(report_script_funcs);
+		m_editor->RegisterLibrary(wxLKPlotFunctions());
 
 		m_toolSizer = new wxBoxSizer( wxHORIZONTAL );
 		m_toolSizer->Add( new wxButton( this, IDT_INSERTVAR, "Variables", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxRIGHT|wxALIGN_CENTER, 4 );
@@ -2616,8 +2618,11 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 	double physmax = gr_height*72;
 
 	std::vector<wxPLAxis::TickData> ticks;
-	yaxis.GetAxisTicks( 0, physmax, ticks );
-	
+	if (show_yaxis_ticks)
+		yaxis.GetAxisTicks( -1, physmax, ticks );
+	else
+		yaxis.GetAxisTicks(0, physmax, ticks);
+
 	// save the current style data
 	int saveFace, saveSize, saveAlign;
 	wxColour saveColour;
@@ -2670,7 +2675,7 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 
 		wxString label;
 		if (ticks_format != wxEmptyString)
-			label = lk::format(ticks_format, ticks[i].world);
+			label = lk::format((const char *)ticks_format.c_str(), ticks[i].world);
 		else if (decimals <= 0 && fabs(ticks[i].world)>999)
 			label = wxNumericFormat( ticks[i].world, wxNUMERIC_REAL, wxNUMERIC_GENERIC, true, wxEmptyString, wxEmptyString );
 		else if (decimals < 6)
@@ -2692,7 +2697,7 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 	for (size_t i=0;i<values.size();i++)
 	{		
 		wxString label;
-		if ( i < (int)xlabels.size() ) label = xlabels[i];
+		if ( i < xlabels.size() ) label = xlabels[i];
 		float tw = 0.05f;
 		m_curDevice->Measure( label, &tw, 0 );
 		if (tw > max_xtick_width) max_xtick_width = tw;
