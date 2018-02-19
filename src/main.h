@@ -51,6 +51,7 @@
 #define __sammain_h
 
 #include <exception>
+#include <memory>
 
 #include <wx/app.h>
 #include <wx/frame.h>
@@ -61,6 +62,17 @@
 #include "inputpage.h"
 #include "project.h"
 
+
+/* Macros for C++11 support */
+template <typename T>
+struct smart_ptr
+{
+#if __cplusplus <= 201103L
+	typedef std::unique_ptr<T> ptr;
+#else
+	typedef std::auto_ptr<T> ptr;
+#endif
+};
 
 // SAM API key to use with developer.nrel.gov services
 extern const char *sam_api_key;
