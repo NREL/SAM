@@ -993,8 +993,9 @@ setup_thirdparty_pages( LOAD_SIMPLE, LIFETIME_SYSTEM );
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Commercial' );	
-setmodules( ['generic_system',  'utilityrate5', 'cashloan']);
+setmodules( ['generic_system', 'battery', 'utilityrate5', 'cashloan']);
 setup_generic_system_pages();
+setup_battery_pages_behind_the_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_commercial_pages(0, LIFETIME_SYSTEM); //does not include building load calculator
 
