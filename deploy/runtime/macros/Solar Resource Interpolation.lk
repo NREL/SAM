@@ -23,7 +23,7 @@ Output:<br><ul>
 <li>Saved in "SAM Downloaded Weather Files" folder
 <li>For averaged data, measured irradiance values are shifted to middle of interval,
 but meteorological data, which were "observed at or near the designated time", were not shifted.
-<a href = "http://www.nrel.gov/docs/fy07osti/41364.pdf"> NSRD 1991-2005 Update: User's Manual</a>
+<a href = "http://www.nrel.gov/docs/fy07osti/41364.pdf"> NSRDB 1991-2005 Update: User's Manual</a>
 <li>Wind direction interpolated periodically
 <li>Irradiance is not interpolated across sunrise and sunset boundaries</ul>
 
@@ -751,7 +751,7 @@ function main(){
 			exit;
 		}
 		intervals_per_hour = #load/8760;
-		if (intervals_per_hour == 1 || get('en_belpe')){
+		if (intervals_per_hour == 1 ){
 			msgbox("Electric Load time interval must be subhourly");
 			exit;
 		}

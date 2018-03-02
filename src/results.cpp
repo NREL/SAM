@@ -212,6 +212,8 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 					gbn = "Electricity Rate Data by Tier and Period"; // monthly tier x period
 				else if (grp == "UR_AM")
 					gbn = "Electricity Rate Data by Year"; // annual monthly
+				else if (grp == "UR_DMP")
+					gbn = "Electricity Demand Data by Period"; // monthly period
 			}
 
 			group_by_name[list[j]] = gbn;
@@ -2006,6 +2008,35 @@ public:
 							write_label = false;
 							MatrixColLabels = MakeMDOTHTFlabels();
 						}
+						else if (!value.Cmp("UR_MONTH_TOU_DEMAND"))
+						{
+							write_label = false;
+							MatrixColLabels = MakeURPeriodNums(true);
+							removetr = true;
+
+							/*
+							// fails to create monthly arrays - memory allocation issue
+							for (int icol = 0; icol < nc; icol++)
+							{
+								Table.push_back(new ColData());
+								ColData &cc = *Table[Table.size() - 1];
+								cc.N = 12; // nr
+								write_label = false;
+								cc.Label = vars[i] + wxString::Format("%d",icol);
+								cc.Values = ss
+								for (int irow = 0; irow < nr; irow ++)
+									cc.Values[irow] = Matrix.at(irow, icol);
+
+								wxString units = results->GetUnits(vars[i]);
+								if (!units.IsEmpty())
+								{
+									if (!IsSingleValues) cc.Label += "\n(" + units + ")";
+									else cc.Label += " (" + units + ")";
+								}
+							}
+//							Matrix.clear();
+*/
+						}
 					}
 
 					if (ui_hint.find("ROW_LABEL") != ui_hint.end())
@@ -2159,9 +2190,10 @@ void TabularBrowser::ResultsTable::RemoveTopRow()
 			return;
 	size_t nr = Matrix.nrows() - 1;
 	size_t nc = Matrix.ncols();
+	bool remove_top_label = (MatrixRowLabels.size() > nr);
 	for (int ir = 0; ir < (int)nr; ir++)
 	{
-		MatrixRowLabels[ir] = MatrixRowLabels[ir + 1];
+		if (remove_top_label) MatrixRowLabels[ir] = MatrixRowLabels[ir + 1];
 		for (int ic = 0; ic < (int)nc; ic++)
 			Matrix.at(ir, ic) = Matrix.at(ir + 1, ic);
 	}
@@ -2174,9 +2206,10 @@ void TabularBrowser::ResultsTable::RemoveLeftCol()
 			return;
 	size_t nr = Matrix.nrows();
 	size_t nc = Matrix.ncols() - 1;
+	bool remove_left_label = (MatrixColLabels.size() > nc);
 	for (int ic = 0; ic < (int)nc; ic++)
 	{
-		MatrixColLabels[ic] = MatrixColLabels[ic + 1];
+		if( remove_left_label) MatrixColLabels[ic] = MatrixColLabels[ic + 1];
 		for (int ir = 0; ir < (int)nr; ir++)
 			Matrix.at(ir, ic) = Matrix.at(ir, ic + 1);
 	}

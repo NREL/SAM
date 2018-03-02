@@ -154,8 +154,8 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 
 	if ( m_list.size() == 0 )
 	{
-		dv.Text( x, y+th, "No loss diagram items specified." );
-		dv.Text( x, y+th+th, wxString("Current case: ") + ( GetCase() ? GetCaseName() : wxString("none") ) );
+		dv.Text( x, y+th, "This performance model does not specify any loss diagram items." );
+		dv.Text( x, y+th+th, wxString("Current case name is ") + ( GetCase() ? GetCaseName() : wxString("none") ) );
 		return;
 	}
 
