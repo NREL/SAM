@@ -58,6 +58,7 @@ using std::unordered_map;
 #pragma warning(disable: 4290)  // ignore warning: 'C++ exception specification ignored except to indicate a function is not __declspec(nothrow)'
 
 
+
 namespace s3d {
 
 class point3d
@@ -89,15 +90,15 @@ class text3d
 {
 public:
 	text3d();
-	text3d( double x, double y, double z, const std::string &text );
-	text3d( double x, double y, double z, const std::string &text, 
-		rgba col, int size, const std::string &face );
+	text3d( double x, double y, double z, const std::string &_text );
+	text3d( double x, double y, double z, const std::string &_text, 
+		rgba _color, int _size, const std::string &_face );
 
 	point3d pos;
 	std::string text;
 	rgba color;
-	std::string face;
 	int size;
+	std::string face;
 
 };
 
@@ -105,17 +106,17 @@ class polygon3d
 {
 public:
 	polygon3d( int _id = 0);
-	polygon3d( int _id, int _type, rgba _fill, rgba _border, int thick, bool line );
-	polygon3d( int _id, int _type, rgba _fill, rgba _border, int thick, bool line, const std::vector<point3d> &pts, bool ncul=false );
+	polygon3d( int _id, int _type, rgba _fill, rgba _border, int _thick, bool _line );
+	polygon3d( int _id, int _type, rgba _fill, rgba _border, int _thick, bool _line, const std::vector<point3d> &_points, bool _ncul=false );
 	polygon3d( const polygon3d &rhs );
 		
-	std::vector<point3d> points;
 	int id;
 	int type;
 	rgba fill;
 	rgba border;
 	int thick;
 	bool as_line;
+	std::vector<point3d> points;
 	bool no_cull;
 };
 
@@ -186,126 +187,80 @@ protected:
 	
 };
 
-
-
-
-
-
-// Derived from http://archive.gamedev.net/archive/reference/programming/features/bsptree/bsp.pdf 
-
-enum BSP_classification_t { BSP_UNKNOWN, BSP_COINCIDING, BSP_SPANNING, BSP_BEHIND, BSP_INFRONT };
-
-
-class BSPTreeNode : public polygon3d
+class BSPNode : public polygon3d
 {
 #ifdef _DEBUG
 public:
 #endif
-	BSPTreeNode *Tree;
-	BSPTreeNode *RightChild;
-	BSPTreeNode *LeftChild;
-	
-
-	std::vector<polygon3d> PolygonSet;
 
 	size_t Index;
-
-	point3d m_center;
-	point3d m_minPoint;
-	point3d m_maxPoint;
-	point3d m_normal;
-	double m_distance;
+	BSPNode *FrontNode, *BackNode;
+	
+	point3d Center;
+	point3d Normal;
+	double D;
 
 	bool m_rendered;
-	bool m_isDivider;
 
-	void _ComputeCenterMinMax(void);
-	void _ComputeCenter(void);
-	void _ComputeNormal(void);
-	void _ComputeDistance( void );
+
+	unsigned long _SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool savepoints=true );
+	void _ComputeCenter( void );
+	void _ComputeNormal( void );
+	void _ComputeD( void );
 
 public:
-	BSPTreeNode(){};
-	BSPTreeNode(const polygon3d &rhs);
-//	~BSPTreeNode();
+	BSPNode( const polygon3d &rhs );
+	~BSPNode();
 
-	BSPTreeNode *GetLeft(void)			{ return LeftChild; }
-	BSPTreeNode *GetRight(void)			{ return RightChild; }
+	bool GetRendered() { return m_rendered;}
+		
+	point3d GetCenter( void )				{ return Center; }
+	point3d GetNormal( void )				{ return Normal; }
 
-	void SetLeft(BSPTreeNode *Node)		{ LeftChild = Node; }
-	void SetRight(BSPTreeNode *Node)		{ RightChild = Node; }
+	bool Intersects( BSPNode *Plane );
+	BSPNode *Split( BSPNode *Plane );
 
-	bool GetRendered() { return m_rendered; }
-	void SetIsDivider(bool _isDivider) { m_isDivider = _isDivider; }
-	bool GetIsDivider() { return m_isDivider; }
+	BSPNode *GetFront( void )			{ return FrontNode; }
+	BSPNode *GetBack( void )			{ return BackNode; }
 
-	point3d GetMaxPoint(void)				{ return m_maxPoint;}
-	point3d GetCenter(void)				{ return m_center; }
-	point3d GetNormal(void)				{ return m_normal; }
-	double GetDistance(void)				{ return m_distance; }
-
-//	bool Intersects( BSPNode *Plane );
-//	BSPNode *Split( BSPNode *Plane );
-
+	void SetFront( BSPNode *Node )		{ FrontNode = Node; }
+	void SetBack( BSPNode *Node)		{ BackNode = Node; }
 
 	void Traverse( const point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys );
 
 	double GetMinZ();
 };
 
-class BSP
+
+
+class BSPTree
 {
 private:
-	BSPTreeNode RootNode;
-	std::vector<BSPTreeNode*> m_nodes;
-	std::vector<BSPTreeNode*> m_listnodes; // for deletion
-
-	/*
 	unordered_map<int, float> m_id_minz;
 	std::vector<BSPNode*> m_nodes;
 	std::vector<BSPNode*> m_listnodes; // for deletion
 	BSPNode *m_root;
 
-	BSPNode *_FindRoot(std::vector<BSPNode*>& List);
-	BSPNode *_BuildBSPTree(std::vector<BSPNode*>& List);
-	*/
+	BSPNode *_FindRoot( std::vector<BSPNode*>& List );
+	BSPNode *_BuildBSPTree( std::vector<BSPNode*>& List );
+
 public:
-	BSP(){};
-	BSP(std::vector<s3d::polygon3d*>& polys, double x_viewport, double y_viewport, double z_viewport);
-	~BSP();
+	BSPTree() {};
+	BSPTree( std::vector<s3d::polygon3d*>& polys, double x_viewport, double y_viewport, double z_viewport);
+	~BSPTree();
 
+	void Traverse( point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys );
 
-	BSP_classification_t ClassifyPoint(BSPTreeNode &node, point3d &point);
-	bool NodeInfront(BSPTreeNode &node1, BSPTreeNode &node2);
-	bool IsConvexSet(std::vector<BSPTreeNode> &NodeSet);
-	BSP_classification_t CalculateSide(BSPTreeNode &node1, BSPTreeNode &node2);
-	BSPTreeNode *ChooseDividingNode(std::vector<BSPTreeNode> &NodeSet, double minRelation=0.8, double minRelationScale=2, int maxIts=1000);
-
-
-	void Traverse(point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys);
-
-
-
-
-
-	//size_t NNodes() { return m_nodes.size(); }
+	size_t NNodes() { return m_nodes.size(); }
 	void Reset();
-	void ReadPolyList(const std::vector<s3d::polygon3d*>& polys);
+	void ReadPolyList(const std::vector<s3d::polygon3d*>& polys );
 
-	void ReadPolyList(std::ifstream& Input);
-	void ReadTree(std::ifstream& Input);
-	void WriteTree(std::ofstream& Output);
+	void ReadPolyList( std::ifstream& Input );
+	void ReadTree( std::ifstream& Input );
+	void WriteTree( std::ofstream& Output );
 
-	void BuildTree(void);
+	void BuildTree( void );
 };
-
-
-
-// end of BSP classes and supporting functions
-
-
-
-
 
 static const unsigned int RIGHT = 0x0001;
 static const unsigned int TOP = 0x0002;
@@ -345,7 +300,7 @@ private:
 	std::vector<polygon3d*> m_polygons;
 	std::vector<text3d*> m_labels;
 	
-	BSP m_bsp;
+	BSPTree m_bsp;
 	double m_viewNormal[3];
 	std::vector<polygon3d*> m_sortedCulled, m_rendered;
 
@@ -357,10 +312,7 @@ private:
 	void cull_backfaces( );
 	void sort_polys();
 public:
-
 	bool m_bspValid;
-
-
 	scene();
 	scene( const scene & rhs );
 	~scene();

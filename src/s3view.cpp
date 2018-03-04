@@ -1267,11 +1267,11 @@ void View3D::OnLeftDown( wxMouseEvent &evt )
 			if ( m_nextSelectionIndex >= selectable.size() )
 				m_nextSelectionIndex = 0;
 
-			VObject *sel_obj = 0;
+			VObject *sel_objj = 0;
 			if ( m_nextSelectionIndex < selectable.size() )
-				sel_obj = selectable[m_nextSelectionIndex];
+				sel_objj = selectable[m_nextSelectionIndex];
 
-			Select( sel_obj );
+			Select( sel_objj );
 
 			m_nextSelectionIndex++; // increment to cycle through possible selectable objects
 		}
