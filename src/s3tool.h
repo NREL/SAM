@@ -356,9 +356,6 @@ private:
 	wxTextCtrl *m_txtAzi;
 	wxTextCtrl *m_txtAlt;
 	wxTextCtrl *m_txtScale;
-	wxTextCtrl *m_txtViewX;
-	wxTextCtrl *m_txtViewY;
-	wxTextCtrl *m_txtViewZ;
 	void OnDebugCommand( wxCommandEvent & );
 
 	DECLARE_EVENT_TABLE();
