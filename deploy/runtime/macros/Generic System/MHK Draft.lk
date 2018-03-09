@@ -1,5 +1,5 @@
-//MHK Script draft
-//Jan 2018
+//Marine Hydrokinetic (MHK) Model Macro
+//Mar 2018
 
 /*@
 
@@ -8,12 +8,12 @@ as the power plant generation profile. It also reads in cost data from an MHK Co
 LCOE using NREL's Annual Technology Baseline methodology.
 <br><br>
 
-<i> Click 'Run macro' above to run the macro.
+<i> Select the location of your resource file, power file, and Cost Breakdown Structure file on the right, then click 'Run macro' above to run the macro.
 
 @*/
 //@ name=res_file;type=filename;label=Resource file:;value=C:/Users/jfreeman/Documents/Projects/4 MHK/USA CA Eureka Humboldt Bay (NDBC).csv|csv
 //@ name=pwr_file;type=filename;label=Power file:;value=C:/Users/jfreeman/Documents/Projects/4 MHK/Wave Power Matrix Example.csv|csv
-//@ name=xl_file;type=filename;label=CBS file:;value=C:/Users/jfreeman/Documents/Projects/4 MHK/generalized.cbs_.draft_mhk_aug.1.2014.xlsx|xlsx,xls
+//@ name=xl_file;type=filename;label=CBS file:;value=C:/Users/jfreeman/Documents/Projects/4 MHK/CBS SAM Template 2018Jan30.xlsx|xlsx,xls
 
 
 //check that the Generic System and LCOE model are used, and that there is an active case
@@ -36,64 +36,76 @@ if (config[1] != 'LCOE Calculator')
 }
 
 //read in the resource file
-resource_file = macro.res_file;
 //resource_file = choose_file('C:/Users/jfreeman/Documents/Projects/4 MHK', 'Choose a Resource File', 'CSV Files (*.csv)|*.csv', 0, 0, 'USA CA Eureka Humboldt Bay (NDBC).csv');
-//resource_file = "C:\\Users/jfreeman/Documents/Projects/4 MHK/USA CA Eureka Humboldt Bay (NDBC).csv";
+resource_file = macro.res_file;
 resource = csvread(resource_file, {skip=3, numeric=true, table=false});
-//outln(resource);
 
 //read in the power file
 //power_file = choose_file('C:/Users/jfreeman/Documents/Projects/4 MHK', 'Choose a Power Matrix File', 'CSV Files (*.csv)|*.csv', 0, 0, 'Wave Power Matrix Example.csv');
 power_file = macro.pwr_file;
-//power_file = "C:\\Users/jfreeman/Documents/Projects/4 MHK/Wave Power Matrix Example.csv";
 power = csvread(power_file, {skip=3, numeric=true, table=false});
-//outln(power);
 
-//need to add a check that the resource and power matrices are 1:1 as far as periods and amplitudes
+//need to add a check that the resource and power matrices are 1:1 as far as periods and amplitudes, add some type of lookup capability?
 
-//multiply the resource and power together //need to add checking that the power and resource matrix column and row headers match, add some type of lookup? change formatting?
-weighted_avg_energy = 0;
+//multiply the resource and power together
+weighted_avg_power = 0;
+rated_power = 0; //set the rated power as the maximum number in the power matrix
 for (i=1; i<20; i++) //start at the first column, because column 0 contains row labels //need to not hardcode this number in!
 	for (j=1; j<22; j++) //need to not hardcode this number
-		weighted_avg_energy += resource[i][j] / 100 * power[i][j]; //convert resource from 4.5% to 0.045, multiply by power in kW
+	{
+		weighted_avg_power += resource[i][j] / 100 * power[i][j]; //convert resource from 4.5% to 0.045, multiply by power in kW
+		if (power[i][j] > rated_power) rated_power = power[i][j]; //rated power is in kW, as is the power matrix
+	}
 //the weighted avg energy is going to be assigned evenly to every timestep, so there is no need to multiply by the number of hours in a year (8760)
-outln(weighted_avg_energy);
+outln('Weighted average power over the year = ' + weighted_avg_power);
 
 //assign the annual energy to the generic case
 set('spec_mode', 1); //select hourly energy profile
-set('system_capacity', 280); //need to use use maximum from power matrix
-hourly_energy = alloc(8760);
+set('system_capacity', rated_power);
+hourly_power = alloc(8760);
 for(i=0; i<8760; i++)
-	hourly_energy[i] = weighted_avg_energy; //in units of kWh, which we already are
-set('energy_output_array', hourly_energy); // need to check units on this
-
-//set('user_capacity_factor', 100); //fake it by using all of the annual energy
-set('derate', 0); //double check this assumption
+	hourly_power[i] = weighted_avg_power; //units of kW
+set('energy_output_array', hourly_power); 
+set('derate', 0); //set system losses to zero
 set('heat_rate', 0); //set heat rate to zero
 
-//get the CapEx cost from the CBS spreadsheet
+//open the Excel Cost Breakdown Structure spreadsheet
+//xl_path = choose_file('C:/Users/jfreeman/Documents/Projects/4 MHK', 'Choose the Cost Breakdown Structure (CBS) File', 'Excel Files (*.xlsx)|*.xlsx', 0, 0, 'generalized.cbs_.draft_mhk_aug.1.2014.xlsx');
 xl_path = macro.xl_file;
-//xl_path = choose_file('C:/Users/jfreeman/Documents/Projects/4 MHK', 'Choose the Cost Breakdown Structure (CBS) File', 
-//	'Excel Files (*.xlsx)|*.xlsx', 0, 0, 'generalized.cbs_.draft_mhk_aug.1.2014.xlsx');
-//xl_path = 'C:\\Users/jfreeman/Documents/Projects/4 MHK/generalized.cbs_.draft_mhk_aug.1.2014.xlsx';
 xl = xl_create(xl_path, false);
-capex = to_real(xl_get(xl, 'CapEx')); //need to ensure that CBS includes CapEx as a named cell
-outln(capex);
+
+//CapEx consists of cells "MEC", "BOS", and "Financial" in the CBS spreadsheet
+mec = to_real(xl_get(xl, 'MEC'));
+bos = to_real(xl_get(xl, 'BOS'));
+financial = to_real(xl_get(xl, 'Financial'));
+capex = mec + bos + financial;
+outln('Total CapEx = ' + capex);
 set('ui_capital_cost_capacity', capex);
 
-//get the OpEx cost from the CBS spreadsheet
-opex = to_real(xl_get(xl, 'OpEx')); //need to ensure that CBS includes OpEx as a named cell
-outln(opex);
+//OpEx consists of "Operations" and "Maintenance"  in the CBS spreadsheet
+operations = to_real(xl_get(xl, 'Operations'));
+maintenance = to_real(xl_get(xl, 'Maintenance'));
+opex = operations + maintenance;
+outln('Total OpEx = ' + opex);
 set('ui_operating_cost_capacity', opex);
-xl_close(xl); //close the Excel file now that we're done with it
+
+//close the Excel Cost Breakdown Structure spreadsheet now that we're done with it
+xl_close(xl);
 xl_free(xl);
 
-//need to determine if there are any financial parameters that should be automatically set
+//need to determine if there are any other financial parameters that should be automatically set
 
-//run the simulation
+//run the simulation and show the results page
 simulate('', true);
 show_page('results');
 
+//Ask user if they would like to generate a PDF report from these results
+if (yesno('Would you like to generate a PDF report with these results?'))
+{
+	reportfile = choose_file(homedir(), 'Output report file', 'PDF files (*.pdf)|*.pdf');
+	ok = pdfreport(reportfile, {'template' = runtimedir() + 'macros/Generic System/mhk.samreport'}); //need to add report template
+	browse(reportfile); //open the report
+}
 
 
 
