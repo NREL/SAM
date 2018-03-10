@@ -3466,13 +3466,15 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 	}
 	*/
 	fclose(fp);
-
+/*
 	// delete any output or error that may exist
-//	if (wxFileExists(workdir + "/SAMLHS.LSP"))
-//		wxRemoveFile(workdir + "/SAMLHS.LSP");
-//	if (wxFileExists(workdir + "/LHS.ERR"))
-//		wxRemoveFile(workdir + "/LHS.ERR");
-	// TESTING all generated vectors
+	if (wxFileExists(workdir + "/SAMLHS.LSP"))
+		wxRemoveFile(workdir + "/SAMLHS.LSP");
+	if (wxFileExists(workdir + "/LHS.ERR"))
+		wxRemoveFile(workdir + "/LHS.ERR");
+*/
+/*
+// TESTING all generated vectors
 	wxString tmp_fn = workdir + "/SAMLHS.LSP";
 	int tmp_ext = 0;
 	while (wxFileExists(tmp_fn))
@@ -3490,7 +3492,7 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 		tmp_ext++;
 	}
 	wxCopyFile(workdir + "/LHS.ERR", tmp_fn);
-
+*/
 
 
 	// run the executable synchronously
@@ -3593,6 +3595,12 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 		}
 	}
 	fclose(fp);
+	// delete any output or error that may exist
+	if (wxFileExists(workdir + "/SAMLHS.LSP"))
+		wxRemoveFile(workdir + "/SAMLHS.LSP");
+	if (wxFileExists(workdir + "/LHS.ERR"))
+		wxRemoveFile(workdir + "/LHS.ERR");
+
 }
 
 
