@@ -3466,34 +3466,6 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 	}
 	*/
 	fclose(fp);
-/*
-	// delete any output or error that may exist
-	if (wxFileExists(workdir + "/SAMLHS.LSP"))
-		wxRemoveFile(workdir + "/SAMLHS.LSP");
-	if (wxFileExists(workdir + "/LHS.ERR"))
-		wxRemoveFile(workdir + "/LHS.ERR");
-*/
-/*
-// TESTING all generated vectors
-	wxString tmp_fn = workdir + "/SAMLHS.LSP";
-	int tmp_ext = 0;
-	while (wxFileExists(tmp_fn))
-	{
-		tmp_fn = workdir + "/SAMLHS" + wxString::Format("_%d", tmp_ext) + ".LSP";
-		tmp_ext++;
-	}
-	wxCopyFile(workdir + "/SAMLHS.LSP", tmp_fn);
-
-	tmp_fn = workdir + "/LHS.ERR";
-	tmp_ext = 0;
-	while (wxFileExists(tmp_fn))
-	{
-		tmp_fn = workdir + "/LHS" + wxString::Format("_%d", tmp_ext) + ".ERR";
-		tmp_ext++;
-	}
-	wxCopyFile(workdir + "/LHS.ERR", tmp_fn);
-*/
-
 
 	// run the executable synchronously
 	wxString curdir = wxGetCwd();
@@ -3595,11 +3567,13 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 		}
 	}
 	fclose(fp);
+	
 	// delete any output or error that may exist
 	if (wxFileExists(workdir + "/SAMLHS.LSP"))
 		wxRemoveFile(workdir + "/SAMLHS.LSP");
 	if (wxFileExists(workdir + "/LHS.ERR"))
 		wxRemoveFile(workdir + "/LHS.ERR");
+
 
 }
 
@@ -3642,9 +3616,9 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	if (cxt.arg_count() > 3)
 		seed_val = cxt.arg(3).as_integer();
 
-	int sv = wxGetLocalTime();
-	if (seed_val > 0)
-		sv = seed_val;
+	int sv = seed_val;
+	if (seed_val <= 0) // for threaded, no random number guarenteed unless passed as seed.
+		sv = wxGetLocalTime();
 	
 	wxString lhsexe(SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY));
 	if (!wxFileExists(lhsexe))
