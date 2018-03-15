@@ -637,24 +637,25 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 
 	wxArrayString code_languages;
 	// ids or just index values from here
-	code_languages.Add("JSON for inputs");
-	code_languages.Add("LK for SDKtool");
-	code_languages.Add("C");
-	code_languages.Add("MATLAB");
-	code_languages.Add("Python 2");
-	code_languages.Add("Python 3");
-	code_languages.Add("Java");
-	code_languages.Add("PHP 5");
-	code_languages.Add("PHP 7");
-    code_languages.Add("Android Studio (Android)");
+	code_languages.Add("JSON for inputs");				// 0
+	code_languages.Add("LK for SDKtool");				// 1
+	code_languages.Add("C");							// 2
+	code_languages.Add("MATLAB");						// 3
+	code_languages.Add("Python 2");						// 4
+	code_languages.Add("Python 3");						// 5
+	code_languages.Add("Java");							// 6
+	code_languages.Add("Android Studio (Android)");		// 7 
 #ifdef __WXMSW__
-	code_languages.Add("C#");
-	code_languages.Add("VBA");
+	code_languages.Add("C#");							// 8
+	code_languages.Add("VBA");							// 9
 #endif
 #ifdef __WXMAC__
-    code_languages.Add("XCode Swift (iOS)");
+    code_languages.Add("XCode Swift (iOS)");			// 8
 #endif
-
+#ifdef __WXGTK__
+	code_languages.Add("PHP 5");						// 8
+	code_languages.Add("PHP 7");						// 9
+#endif
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
@@ -750,39 +751,41 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		fn += ".java";
 		cg = new CodeGen_java(c, fn);
 	}
-	else if (lang == 7) // php
-	{
-		fn += ".php";
-		cg = new CodeGen_php5(c, fn);
-	}
-	else if (lang == 8) // php
-	{
-		fn += ".php";
-		cg = new CodeGen_php7(c, fn);
-	}
-    else if (lang == 9) // Android Studio Android
+    else if (lang == 7) // Android Studio Android
     {
         fn += ".cpp"; // ndk jni file
         cg = new CodeGen_android(c, fn);
     }
 #ifdef __WXMSW__
-	else if (lang == 10) // c#
+	else if (lang == 8) // c#
 	{
 		fn += ".cs";
 		cg = new CodeGen_csharp(c, fn);
 	}
-	else if (lang == 11) // vba
+	else if (lang == 9) // vba
 	{
 		fn += ".bas";
 		cg = new CodeGen_vba(c, fn);
 	}
 #endif
 #ifdef __WXMAC__
-    else if (lang == 10) // Swift iOS
+    else if (lang == 8) // Swift iOS
     {
         fn += ".swift";
         cg = new CodeGen_ios(c, fn);
     }
+#endif
+#ifdef __WXGTK__
+	else if (lang == 8) // php
+	{
+		fn += ".php";
+		cg = new CodeGen_php5(c, fn);
+	}
+	else if (lang == 9) // php
+	{
+		fn += ".php";
+		cg = new CodeGen_php7(c, fn);
+	}
 #endif
 	else
 		return false;
@@ -795,7 +798,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		else
 		{
 			// Android post processing
-			if (lang == 9)
+			if (lang == 7)
 			{
 		        wxString fn2 = foldername + "/native-lib.cpp"; // ndk cpp file for project with c++ support
 				if (wxCopyFile(fn,fn2))	wxRemoveFile(fn);
@@ -5550,6 +5553,9 @@ bool CodeGen_php5::SupportingFiles()
 	fprintf(f, "# PHP and Zend installation using php package, e.g. sudo yum install php\n");
 	fprintf(f, "# Header files from php-devel package, e.g. sudo yum --enablerepo=remi,remi-php54 install php-devel\n");
 	fprintf(f, "# Set PHPDIR to your php installation which can be found using the command php -i\n");
+	fprintf(f, "# To build and run:\n");
+	fprintf(f, "# make\n");
+	fprintf(f, "# make run\n");
 	fprintf(f, "PHPDIR=/usr/include/php\n");
     fprintf(f, "\n");
     fprintf(f, "sscphp.so: sscphp.c\n");
@@ -6167,6 +6173,9 @@ bool CodeGen_php7::SupportingFiles()
 	fprintf(f, "# PHP and Zend installation using php package, e.g. sudo yum install php\n");
 	fprintf(f, "# Header files from php-devel package, e.g. sudo yum install php-devel\n");
 	fprintf(f, "# Set PHPDIR to your php installation which can be found using the command php -i\n");
+	fprintf(f, "# To build and run:\n");
+	fprintf(f, "# make\n");
+	fprintf(f, "# make run\n");
 	fprintf(f, "PHPDIR=/usr/include/php\n");
 	fprintf(f, "\n");
 	fprintf(f, "sscphp.so: sscphp.c\n");
