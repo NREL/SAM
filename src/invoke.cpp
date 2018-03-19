@@ -182,7 +182,7 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 	ssc_data_set_string(pdata, "file_name", (const char*)file.c_str());
 	ssc_data_set_number(pdata, "header_only", 0);
 
-	if ( ssc_module_exec_simple_nothread( "wfreader", pdata ) )
+	if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
 	{
 		wxLogStatus("error scanning '" + file + "'");
 		cxt.result().assign(0.0);
@@ -2446,9 +2446,6 @@ static void copy_matts(lk::vardata_t &val, matrix_t<float> &mts)
 		}
 	}
 }
-
-
-
 
 
 void fcall_editscene3d(lk::invoke_t &cxt)
