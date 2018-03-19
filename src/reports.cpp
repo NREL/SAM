@@ -430,6 +430,8 @@ void SamReportWindow::OnPageSel( wxListEvent & )
 
 void SamReportWindow::OnPageRClick( wxListEvent &evt )
 {
+	int idx = evt.GetSelection();
+	idx = 0;
 }
 
 bool SamReportWindow::Save()
@@ -928,9 +930,11 @@ wxString SamReportEscapeString( const wxString &input, Case *c, VarValue *meta )
 			&& (input[pos+1] == wxChar('{')
 			   || input[pos+1] == wxChar('|')) )
 		{
+			bool eqn_mode = false;
 			wxChar end_char = wxChar('}');
 			if ( input[pos+1] == wxChar('|') )
 			{
+				eqn_mode = true;
 				end_char = wxChar('|');
 			}
 
