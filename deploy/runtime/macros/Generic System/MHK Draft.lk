@@ -13,7 +13,7 @@ LCOE using NREL's Annual Technology Baseline methodology.
 @*/
 //@ name=res_file;type=filename;label=Resource file:;value=C:/Users/jfreeman/Documents/Projects/4 MHK/USA CA Eureka Humboldt Bay (NDBC).csv|csv
 //@ name=pwr_file;type=filename;label=Power file:;value=C:/Users/jfreeman/Documents/Projects/4 MHK/Wave Power Matrix Example.csv|csv
-//@ name=xl_file;type=filename;label=CBS file:;value=C:/Users/jfreeman/Documents/Projects/4 MHK/CBS SAM Template 2018Jan30.xlsx|xlsx,xls
+//@ name=xl_file;type=filename;label=CBS file:;value=C:/Users/jfreeman/Documents/Projects/4 MHK/CBS SAM Template 2018Mar15.xlsx|xlsx,xls
 
 
 //check that the Generic System and LCOE model are used, and that there is an active case
@@ -74,37 +74,116 @@ set('heat_rate', 0); //set heat rate to zero
 xl_path = macro.xl_file;
 xl = xl_create(xl_path, false);
 
-//CapEx consists of cells "MEC", "BOS", and "Financial" in the CBS spreadsheet
-mec = to_real(xl_get(xl, 'MEC'));
-bos = to_real(xl_get(xl, 'BOS'));
-financial = to_real(xl_get(xl, 'Financial'));
-capex = mec + bos + financial;
-outln('Total CapEx = ' + capex);
-set('ui_capital_cost_capacity', capex);
+//costs are in $, not $/kW, select appropriate input in UI
+set('ui_cost_input_option', 0);
 
-//OpEx consists of "Operations" and "Maintenance"  in the CBS spreadsheet
-operations = to_real(xl_get(xl, 'Operations'));
-maintenance = to_real(xl_get(xl, 'Maintenance'));
-opex = operations + maintenance;
+//Get CAPEX costs from CBS spreadsheet
+capex = to_real(xl_get(xl, 'CAPEX'));
+outln('Total CapEx = ' + capex);
+set('ui_capital_cost_fixed', capex); //need to determine which ui_capital_cost_capacity
+
+//Get OpEx costs from CBS spreadsheet
+opex = to_real(xl_get(xl, 'OPEX'));
 outln('Total OpEx = ' + opex);
-set('ui_operating_cost_capacity', opex);
+set('ui_operating_cost_fixed', opex); //need to determine which ui_operating_cost_capacity
+
+//get other costs for the pie chart from the CBS while we have it open
+structure = to_real(xl_get(xl, 'Structure'));
+pcc = to_real(xl_get(xl, 'PCC'));
+development = to_real(xl_get(xl, 'Development'));
+engmanag = to_real(xl_get(xl, 'EngManag'));
+elecinfrast = to_real(xl_get(xl, 'ElecInfrast'));
+commissioning = to_real(xl_get(xl, 'Commissioning'));
+access = to_real(xl_get(xl, 'Access'));
+install = to_real(xl_get(xl, 'Install'));
+otherinfras = to_real(xl_get(xl, 'OtherInfras'));
+foundation = to_real(xl_get(xl, 'Foundation'));
+financial = to_real(xl_get(xl, 'Financial'));
 
 //close the Excel Cost Breakdown Structure spreadsheet now that we're done with it
 xl_close(xl);
 xl_free(xl);
 
 //need to determine if there are any other financial parameters that should be automatically set
+set('ui_fixed_charge_rate', 0.108);
+set('ui_fcr_input_option', 0);
 
 //run the simulation and show the results page
 simulate('', true);
 show_page('results');
 
+//create pie chart for the report- need to update these to real values
+aep = get('first_year_output');
+lcoe = get('lcoe_fcr');
+fcr = get('fixed_charge_rate');
+
+/*
+//function to determine the % contribution to LCOE of a given capital cost
+function lcoe_fraction(cost)
+{
+	return round((fcr * cost / aep) / lcoe * 100);
+}
+
+sectors = [ 
+[ lcoe_fraction(structure), 'Structure' ],
+[ lcoe_fraction(pcc), 'Power Conversion Chain' ],
+[ lcoe_fraction(development), 'Development' ],
+[ lcoe_fraction(engmanag), 'Engineering Management' ],
+[ lcoe_fraction(elecinfrast), 'Elec. Infrastructure' ],
+[ lcoe_fraction(commissioning), 'Commissioning' ],
+[ lcoe_fraction(access), 'Site Access' ],
+[ lcoe_fraction(install), 'Assembly/Installation' ],
+[ lcoe_fraction(otherinfras), 'Other Infrastructure' ],
+[ lcoe_fraction(foundation), 'Foundation/Mooring' ],
+[ lcoe_fraction(financial), 'Financial Costs' ],
+[ round(opex / aep/ lcoe * 100), 'OpEx' ] ]; //OpEx is treated differently since it happens every year
+
+//need to reorder components so they're more visible on the plot
+
+newplot();
+sector(sectors);
+plotopt({title = 'Contribution to LCOE of Selected Costs', showaxes=false, border=0});
+
+
+function lcoe_cont(cost)
+{
+	return round((fcr * cost / aep));
+}
+
+newplot();
+plot( [ 1 ], [lcoe_cont(structure)], {type='bar', color= [ 80, 98, 40 ], thick=20, series='Structure'});
+plot( [ 1 ], [lcoe_cont(pcc)], {type='bar', color=[ 137, 169, 70 ], thick=20, series='Power Conversion Chain', stackon = 'Structure'});
+plot( [ 1 ], [lcoe_cont(development)], {type='bar', color=[ 199, 216, 163 ], thick=20, series='Development', stackon = 'Power Conversion Chain'});
+plot( [ 1 ], [lcoe_cont(engmanag)], {type='bar', color=[ 130, 201, 253 ], thick=20, series='Engineering Management', stackon = 'Development'});
+plot( [ 1 ], [lcoe_cont(elecinfrast)], {type='bar', color=[ 110, 165, 226 ], thick=20, series='Elec. Infrastructure', stackon = 'Engineering Management'});
+plot( [ 1 ], [lcoe_cont(commissioning)], {type='bar', color=[ 85, 111, 208 ], thick=20, series='Commissioning', stackon = 'Elec. Infrastructure'});
+plot( [ 1 ], [lcoe_cont(access)], {type='bar', color=[ 38, 115, 207 ], thick=20, series='Site Access', stackon = 'Commissioning'});
+plot( [ 1 ], [lcoe_cont(install)], {type='bar', color=[ 27, 68, 113 ], thick=20, series='Assembly/Installation', stackon = 'Site Access'});
+plot( [ 1 ], [lcoe_cont(otherinfras)], {type='bar', color=[ 14, 42, 77 ], thick=20, series='Other Infrastructure', stackon = 'Assembly/Installation'});
+plot( [ 1 ], [lcoe_cont(foundation)], {type='bar', color=[112, 48, 160 ], thick=20, series='Foundation/Mooring', stackon = 'Other Infrastructure'});
+plot( [ 1 ], [lcoe_cont(financial)], {type='bar', color=[  71, 36, 105 ], thick=20, series='Financial Costs', stackon = 'Foundation/Mooring'});
+plot( [ 1 ], [round(opex / aep)], {type='bar', color=[  71, 36, 160 ], thick=20, series='OpEx', stackon = 'Foundation/Mooring'}); //OpEx is treated differently since it happens every year
+axis('x1', { type='label', labels=[[1,'LCOE']], 'min'=0, 'max'=2 });
+axis('y1', { 'min' = 0, 'max' = lcoe * 1.1});
+*/
+
+
 //Ask user if they would like to generate a PDF report from these results
 if (yesno('Would you like to generate a PDF report with these results?'))
 {
+
+	
+	//write the plot to the report //need to update with actual plot
+	plotLocation = 'C://users/jfreeman/desktop/charttest.png';//tempfile('png'); //specify a temporary location to save the plot
+	//plotout(plotLocation); //write the plot to that location
+	data = {'plotCosts' = 1, 'plotLocation' = plotLocation}; //add the plot to the data being passed to the report
+
 	reportfile = choose_file(homedir(), 'Output report file', 'PDF files (*.pdf)|*.pdf');
-	ok = pdfreport(reportfile, {'template' = runtimedir() + 'macros/Generic System/mhk.samreport'}); //need to add report template
+	ok = pdfreport(reportfile, {template = runtimedir() + 'macros/Generic System/mhk.samreport', metadata = data}); //need to finish report template
 	browse(reportfile); //open the report
+	
+	// Delete temporary tornado plot
+	//remove_file( plotLocation );
 }
 
 
