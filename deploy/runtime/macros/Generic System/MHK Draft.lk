@@ -110,14 +110,14 @@ set('ui_fcr_input_option', 0);
 
 //run the simulation and show the results page
 simulate('', true);
-show_page('results');
+//show_page('results'); //need to uncomment this
 
 //create pie chart for the report- need to update these to real values
 aep = get('first_year_output');
 lcoe = get('lcoe_fcr');
 fcr = get('fixed_charge_rate');
 
-
+/*
 //function to determine the % contribution to LCOE of a given capital cost
 function lcoe_fraction(cost)
 {
@@ -165,24 +165,29 @@ plot( [ 1 ], [lcoe_cont(financial)], {type='bar', color=[  71, 36, 105 ], thick=
 plot( [ 1 ], [round(opex / aep)], {type='bar', color=[  71, 36, 160 ], thick=20, series='OpEx', stackon = 'Foundation/Mooring'}); //OpEx is treated differently since it happens every year
 axis('x1', { type='label', labels=[[1,'LCOE']], 'min'=0, 'max'=2 });
 axis('y1', { 'min' = 0, 'max' = lcoe * 1.1});
-
+*/
 
 
 //Ask user if they would like to generate a PDF report from these results
 if (yesno('Would you like to generate a PDF report with these results?'))
 {
+	//pass information to the report from the CBS spreadsheet
 	data.device_rating = rated_power;
 	data.device_avg_power = weighted_avg_power;
-	data.num_devices = 1;
+	data.num_devices = 1; //need to read this in from the spreadsheet
 	
 	//write the plot to the report //need to update with actual plot
 	piechartfile = 'C://users/jfreeman/desktop/charttest.png';//tempfile('png'); //specify a temporary location to save the plot
 	//plotout(plotLocation); //write the plot to that location
-	data = {'plotCosts' = 1, 'piechartfile' = piechartfile}; //add the plot to the data being passed to the report
+	data.pieplot = 1;
+	data.piechartfile = piechartfile; //add the plot to the data being passed to the report
 
-	reportfile = choose_file(homedir(), 'Output report file', 'PDF files (*.pdf)|*.pdf');
-	ok = pdfreport(reportfile, {template = runtimedir() + 'macros/Generic System/mhkwindwizard.samreport', metadata = data}); //need to finish report template
-	browse(reportfile); //open the report
+	reportfile = choose_file(homedir(), 'Output report file', 'PDF files (*.pdf)|*.pdf'); 
+	if (reportfile == '') exit; //if statement covers the case where someone hits cancel
+	templatefile = runtimedir() + 'macros/Generic System/mhkwindwizard.samreport';
+	ok = pdfreport(reportfile, {template = templatefile, metadata = data}); //need to finish report template
+	if (ok)	browse(reportfile); //open the report
+	else (msgbox('Report generation failed.'));
 	
 	// Delete temporary tornado plot
 	//remove_file( plotLocation );
