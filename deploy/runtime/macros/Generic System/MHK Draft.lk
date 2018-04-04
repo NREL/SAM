@@ -55,16 +55,7 @@ for (i=1; i<20; i++) //start at the first column, because column 0 contains row 
 		if (power[i][j] > rated_power) rated_power = power[i][j]; //rated power is in kW, as is the power matrix
 	}
 //the weighted avg energy is going to be assigned evenly to every timestep, so there is no need to multiply by the number of hours in a year (8760)
-outln('Weighted average power over the year = ' + weighted_avg_power);
-
-//assign the annual energy to the generic case
-set('spec_mode', 1); //select hourly energy profile
-hourly_power = alloc(8760);
-for(i=0; i<8760; i++)
-	hourly_power[i] = weighted_avg_power; //units of kW
-set('energy_output_array', hourly_power); 
-set('derate', 0); //set system losses to zero
-set('heat_rate', 0); //set heat rate to zero
+outln('Weighted average power over the year for a single device= ' + weighted_avg_power);
 
 //open the Excel Cost Breakdown Structure spreadsheet
 xl_path = macro.xl_file;
@@ -75,6 +66,15 @@ num_devices = to_real(xl_get(xl, 'NDevices'));
 system_capacity = num_devices * rated_power;
 projectname = xl_get(xl, 'ProjectName');
 set('system_capacity', system_capacity);
+
+//assign the annual energy to the generic case
+set('spec_mode', 1); //select hourly energy profile
+hourly_power = alloc(8760);
+for(i=0; i<8760; i++)
+	hourly_power[i] = weighted_avg_power * num_devices; //units of kW
+set('energy_output_array', hourly_power); 
+set('derate', 0); //set system losses to zero
+set('heat_rate', 0); //set heat rate to zero
 
 //costs are in $, not $/kW, select appropriate input in UI
 set('ui_cost_input_option', 0);
