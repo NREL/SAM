@@ -930,11 +930,11 @@ wxString SamReportEscapeString( const wxString &input, Case *c, VarValue *meta )
 			&& (input[pos+1] == wxChar('{')
 			   || input[pos+1] == wxChar('|')) )
 		{
-			bool eqn_mode = false;
+//			bool eqn_mode = false;
 			wxChar end_char = wxChar('}');
 			if ( input[pos+1] == wxChar('|') )
 			{
-				eqn_mode = true;
+//				eqn_mode = true;
 				end_char = wxChar('|');
 			}
 
