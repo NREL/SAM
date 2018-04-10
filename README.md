@@ -8,7 +8,7 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 * [LK](https://github.com/nrel/lk) is a scripting language that is integrated into SAM and allows users to add functionality to the program.
 
-* [wxWidgets](https://www.wxwidgets.org/) is a cross-platform graphical user interface platform used for SAM's user interface, and for the development tools included with SSC (SDKtool) and LK (LKscript). The current version of SAM uses wxWidgets 3.1.0.
+* [wxWidgets](https://www.wxwidgets.org/) is a cross-platform graphical user interface platform used for SAM's user interface, and for the development tools included with SSC (SDKtool) and LK (LKscript). The current version of SAM uses wxWidgets 3.1.1.
 
 * [WEX](https://github.com/nrel/wex) is a set of extensions to wxWidgets for custom user-interface elements used by SAM, and by LKscript and DView, which are integrated into SAM.
 
@@ -32,7 +32,7 @@ These are the general quick steps you need to follow to set up your computer for
     * Mac: Apple Command Line Tools, available at https://developer.apple.com/download/more/ (requires Apple ID and password).
     * Linux: g++ compiler available at http://www.cprogramming.com/g++.html or as part of the Linux distribution.
 
-2. Download the wxWidgets 3.1.0 source code for your operating system from https://www.wxwidgets.org/downloads/.
+2. Download the wxWidgets 3.1.1 source code for your operating system from https://www.wxwidgets.org/downloads/.
 
 3. Build wxWidgets.
 
