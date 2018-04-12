@@ -1208,6 +1208,17 @@ static void fcall_xl_get( lk::invoke_t &cxt )
 		cxt.error( "invalid xl-obj-ref" );
 }
 
+static void fcall_xl_read(lk::invoke_t &cxt)
+{
+	if (lkXLObject *xl = dynamic_cast<lkXLObject*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+	{
+		int r = -1;
+		int c = -1;
+		//xl->Excel().getUsedCellRange(r, c);
+		// use parse&cap
+	}
+}
+
 #endif
 
 
@@ -3893,6 +3904,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_xl_close,
 		fcall_xl_wkbook,
 		fcall_xl_sheet,
+		fcall_xl_read,
 		fcall_xl_set,
 		fcall_xl_get,
 		fcall_xl_autosizecols,
