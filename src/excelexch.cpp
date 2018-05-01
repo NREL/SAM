@@ -576,7 +576,7 @@ static unsigned int ConvertFromBase26(const wxString &val)
 	return result;
 }
 
-static wxArrayString EnumerateAlphaIndex(const wxString &_start, const wxString &_end)
+wxArrayString ExcelExchange::EnumerateAlphaIndex(const wxString &_start, const wxString &_end)
 {
 	unsigned int istart = ConvertFromBase26(_start);
 	unsigned int iend = ConvertFromBase26(_end);
