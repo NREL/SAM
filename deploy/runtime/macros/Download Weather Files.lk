@@ -9,7 +9,7 @@ Input:<br><ul>
 and rows containing the desired location data
 <li>Output folder
 <li>Location mode: Select whether data is specified as latitude and longitude or address.
-<li>Desired weather data resolution.  Select 30-minute or hourly data
+<li>Desired weather data interval.  Select 30-minute or 60-minute
 <br></ul>
 
 Output:<br><ul>
@@ -21,12 +21,12 @@ Output:<br><ul>
 @*/
 
 //@ name=location_file;type=filename;label=Location file:;value=;
-//@ name=location_output;type=filename;label=Output folder:;value=;
+//@ name=location_output;type=folder;label=Output folder:;value=;
 //@ name=Location_mode;type=combo;label=Location mode:;value=Latitude and Longitude,Address;sel=0;
-//@ name=data_resolution;type=combo;label=Desired resolution:;value=30-minute,Hourly;sel=1;
+//@ name=interval;type=combo;label=Desired interval (minutes):;value=30,60;sel=1;
 
 
-function get_nsrdb( lat, lon, location_output, data_resolution)
+function get_nsrdb( lat, lon, location_output, interval)
 {
 	valid = to_real(lat) >= -90 && to_real(lat) <= 90 && to_real(lon) >= -180 && to_real(lon) <= 180;
 	if ( !valid )
@@ -36,6 +36,9 @@ function get_nsrdb( lat, lon, location_output, data_resolution)
 	url = replace(url, '<LON>', lon );
 	url = replace(url, '<LAT>', lat );
 	url = replace(url, '<DATASET>', dataset );
+	url = replace(url, '<INTERVAL>', interval);
+	
+	outln(url);
 	name = to_string(lat) + '_' + to_string(lon) + '.csv';
 	wf = location_output + '/' + name ;
 	if ( !file_exists(wf) )
@@ -64,9 +67,13 @@ function text_to_table( file_in )
 function main()
 {
 
-	location_file = "C:\\Projects\\SAM\\deploy\\runtime\\macros\\Example Weather.csv"; // to_string(macro.location_file)
-	location_output = "C:\\Projects\\SAM\\deploy\\runtime\\macros\\"; // to_string(macro.location_output)
+	location_file = to_string(macro.location_file); 
+	location_output = to_string(macro.location_output);
+	interval = to_string(macro.interval);
 
+	
+	outln('Reading: ' + location_file);
+	outln('Writing to: ' + location_output);
 	locations = text_to_table(location_file);
 
 	//For each lat lon in lookup file
@@ -74,7 +81,7 @@ function main()
 	{
 		// Download weather file
 		outln('Getting weather file ' + j);
-		wfname = get_nsrdb( locations.lat[j], locations.lon[j], location_output, 0 );
+		wfname = get_nsrdb( locations.lat[j], locations.lon[j], location_output, interval );
 	}
 	outln('Finished');
 }
