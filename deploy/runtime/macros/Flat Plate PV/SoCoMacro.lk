@@ -1,0 +1,184 @@
+
+//avoidedCostFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Avoided_Cost.xlsx';
+//avoidedCostXL = xl_create(avoidedCostFile);
+//i = xl_get(avoidedCostXL, "UsedRange",1);
+
+// macro settings
+timeToCPT = true;
+
+// plant specs
+nPlants = 2;
+manufacturerEfficiency = [96,96];
+maxACOutputPower = [1000000,1000000];
+azimuth = [180,180];
+DCtoACRatio = [1.3,1.3];
+desiredArraySize = [1.3e3,1.3e3];
+tilt = [0,30];
+trackingMode = ['1 Axis', 'fixed'];
+
+// plant costs
+capitalCost = [120000,125000];
+OMCostPerKWYear = [10,11];
+OMVariableCost = [0, 0];
+transDistCost = [20000, 20000];
+ppaFixed = [40, 45];
+ppaEscStart = [25, 30];
+ppaEscalator = [0.02, 0.02];
+ppaAnnual = [[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32, 32.5, 33, 33.5, 34, 34.5, 35, 35.5, 36, 36.5, 37], 
+	[28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32, 32.5, 33, 33.5, 34, 34.5, 35, 35.5, 36, 36.5, 37, 37.5, 38, 38.5, 39, 39.5, 40]];
+
+// general inputs
+hurdleRate = 0.075;
+startYear = 1;
+projectLife = 25;
+transmissionLoss = 0.012;
+
+// get data from .csv
+// first element of each row is index, values start at 2nd column
+
+function getFromFile(file){
+	if (!file_exists(file)) {
+		outln('File error: ' + file + ' does not exist.');
+		close;
+	}
+	data = csvread(file, {'skip'=1, 'numeric'=1});
+	for (i = 0; i<#data; i++) {
+		for (j = 0; j<#data[i]; j++){
+			data[i][j] = to_real(data[i][j]);
+		}
+	}
+	return data;
+}
+
+avoidedCost = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/Avoided_Cost.csv');
+capPriceFcast = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/Cap_Price_Fcast.csv');
+capWorthFactor = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/Cap_Worth_Factor.csv');
+RCBAnnual = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/RCB_Annual.csv');
+gen = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/Solar_Profile.csv');
+//gen = get('gen');
+
+// shift solar profile to central standard time
+tz = -9;
+hoursForward = -(tz + 6);
+for (r=0; r< nPlants; r++) {
+	if (hoursForward > 0 ) {
+		tmp = [];
+		for (h= 0; h< hoursForward; h++){
+			tmp[h] = gen[#gen-hoursForward+h][r+1];
+		}
+		for (h=#gen-1; h>hoursForward-1; h--){
+			gen[h][r+1] = gen[h-hoursForward][r+1];
+		}
+		for (h=0; h<hoursForward; h++){
+			gen[h][r+1] = tmp[h];
+		}
+	}
+	else {
+		tmp = [];
+		for (h=0; h<-hoursForward; h++){
+			tmp[h] = gen[h][r+1];
+		}
+		for (h=0; h<#gen+hoursForward; h++){
+			gen[h][r+1] = gen[h-hoursForward][r+1];
+		}
+		for (h=0; h<-hoursForward; h++){
+			gen[#gen+hoursForward+h][r+1] = tmp[h];
+		}
+	}
+}
+
+// per-year calcuations for each plant
+function colSum(data, col, rowStart, rowEnd){
+	sumTotal = 0;
+	for (n = rowStart; n < rowEnd; n++) {	
+		sumTotal += data[n][col];
+	}
+	return sumTotal;
+}
+
+for (r = 0; r < nPlants; r++) {
+	for (yr = 0; yr < projectLife; yr++){
+		energy[r][yr] = colSum(gen, r+1, 8760*yr, 8760*(yr+1)-1)/1000*(1-transmissionLoss);
+		discountedEnergy[r][yr] = energy[r][yr]/pow(1+hurdleRate,yr);
+		energyVal[r][yr] = 0 ;
+		capEqu[r][yr] = 0;
+		for (hr = 0; hr < 8760; hr++){
+			// leap year does not seem to be factored in?
+			energyVal[r][yr] += gen[yr*8760+hr][r+1]*(1-transmissionLoss)*avoidedCost[hr][yr+1]/1000;
+			capEqu[r][yr] += gen[yr*8760+hr][r+1]*(1-transmissionLoss)*capWorthFactor[hr][1]/1000;
+		}
+		capValperKW[r][yr] = capEqu[r][yr]*(capPriceFcast[yr][1]/100.);
+		capVal[r][yr] = capValperKW[r][yr]*desiredArraySize[r]/DCtoACRatio[r];
+		outln(capValperKW);
+		outln(capVal);
+		RCBAdj[r][yr] = 0;
+		if (trackingMode[r] == 'fixed' || trackingMode[r] == 'Fixed'){
+			RCBAdj[r][yr] = energy[r][yr]*RCBAnnual[yr][1];
+		}
+		else if (trackingMode[r] == '1 Axis' || trackingMode[r] == '1 axis' || trackingMode[r] == 'tracking'){
+			RCBAdj[r][yr] = energy[r][yr]*RCBAnnual[yr][2];
+		}
+		else {
+			outln(trackingMode[r] + ' tracking mode not recognized. Exiting.');
+			close;
+		}
+		totalVal[r][yr] = energyVal[r][yr]+capVal[r][yr]+RCBAdj[r][yr];
+		discountedVal[r][yr] = totalVal[r][yr]/pow(1+hurdleRate, yr);
+		OMCost[r][yr] = OMCostPerKWYear[r]*maxACOutputPower[r]/1000+OMVariableCost[r]*energy[r][yr];
+		discOM[r][yr] = OMCost[r][yr]/pow(1+hurdleRate,yr);
+		ppaFixedCost[r][yr] = energy[r][yr]*ppaFixed[r];
+		ppaFixedCostDisc[r][yr] = ppaFixedCost[r][yr]/pow(1+hurdleRate,yr);
+		ppaEscCost[r][yr] = energy[r][yr]*ppaEscStart[r]*pow(1+ppaEscalator[r],yr);
+		ppaEscCostDisc[r][yr] = ppaEscCost[r][yr]/pow(1+hurdleRate,yr);
+		ppaAnnCost[r][yr] = energy[r][yr]*ppaAnnual[r][yr];
+		ppaAnnCostDisc[r][yr] = ppaAnnCost[r][yr]/pow(1+hurdleRate,yr);
+	}
+	PVB[r] = sum(discountedVal[r]);
+	LCOE[r] = PVB[r]/sum(discountedEnergy[r]);
+	selfBuildNPV[r] = PVB[r] - capitalCost[r] - transDistCost[r] - sum(OMCost[r]);
+	ppaNPVFixed[r] = PVB[r] - sum(ppaFixedCostDisc[r]);
+	ppaNPVEsc[r] = PVB[r] - sum(ppaEscCostDisc[r]);
+	ppaNPVAnn[r] = PVB[r] - sum(ppaAnnCostDisc[r]);
+	
+}
+
+// format output CSV
+csvOut[0][0] = 'Run';
+csvOut[0][1] = 1;
+headers = ['Year', 'Energy(MWh)', 'Discounted Energy (MWh)', 'Energy Value ($)', 'Capacity Equivalent',
+	'Capacity Value ($/kW)', 'Capacity Value ($)', 'RCB Adj ($)', 'Total Value', 'Discounted Value',
+	'O&M Cost', 'Disc. O&M Cost', 'PPA Cost (Fixed)', 'Disc. PPA Cost (Fixed)', 'PPA Cost (Esc)',
+	'Disc. PPA Cost (Esc)', 'PPA Cost Ann', 'Disc. PPA Cost (Ann)'];
+for (i = 0; i < #headers; i++){
+	csvOut[1][i] = headers[i];
+}
+r=0;
+for (yr = 0; yr < projectLife; yr++){
+	csvOut[yr+2][0] = yr;
+	csvOut[yr+2][1] = energy[r][yr];
+	csvOut[yr+2][2] = discountedEnergy[r][yr];
+	csvOut[yr+2][3] = energyVal[r][yr];
+	csvOut[yr+2][4] = capEqu[r][yr];
+	csvOut[yr+2][5] = capValperKW[r][yr];
+	csvOut[yr+2][6] = capVal[r][yr];
+	csvOut[yr+2][7] = RCBAdj[r][yr];
+	csvOut[yr+2][8] = totalVal[r][yr];
+	csvOut[yr+2][9] = discountedVal[r][yr];
+	csvOut[yr+2][10] = OMCost[r][yr];
+	csvOut[yr+2][11] = discOM[r][yr];
+	csvOut[yr+2][12] = ppaFixedCost[r][yr];
+	csvOut[yr+2][13] = ppaFixedCostDisc[r][yr];
+	csvOut[yr+2][14] = ppaEscCost[r][yr];
+	csvOut[yr+2][15] = ppaEscCostDisc[r][yr];
+	csvOut[yr+2][16] = ppaAnnCost[r][yr];
+	csvOut[yr+2][17] = ppaAnnCostDisc[r][yr];	
+}
+csvwrite('C:/Users/dguittet/Documents/Southern Company Scripting/gen.csv', gen);
+csvwrite('C:/Users/dguittet/Documents/Southern Company Scripting/output.csv', csvOut);
+
+outln(LCOE);
+outln(PVB);
+outln(selfBuildNPV);
+outln(ppaNPVFixed);
+outln(ppaNPVEsc);
+outln(ppaNPVAnn);
