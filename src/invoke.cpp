@@ -3998,7 +3998,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_xl_close,
 		fcall_xl_wkbook,
 		fcall_xl_sheet,
-//		fcall_xl_read,
+		fcall_xl_read,
 		fcall_xl_set,
 		fcall_xl_get,
 		fcall_xl_autosizecols,
