@@ -1208,110 +1208,110 @@ static void fcall_xl_get( lk::invoke_t &cxt )
 		cxt.error( "invalid xl-obj-ref" );
 }
 
-static void fcall_xl_read(lk::invoke_t &cxt)
-{
-	LK_DOC("xl_read", "Gets all used cells from Excel file", "( xl-obj-ref:xl");
-
-	lk::vardata_t &out = cxt.result();
-	out.empty_hash();
-
-	size_t nskip = 0;
-	bool tonum = false;
-	bool astable = false;
-	if (cxt.arg_count() > 1 && cxt.arg(1).deref().type() == lk::vardata_t::HASH)
-	{
-		lk::vardata_t &opts = cxt.arg(1).deref();
-
-		if (lk::vardata_t *item = opts.lookup("skip"))
-			nskip = item->as_unsigned();
-
-		if (lk::vardata_t *item = opts.lookup("numeric"))
-			tonum = item->as_boolean();
-
-		if (lk::vardata_t *item = opts.lookup("table"))
-			astable = item->as_boolean();
-	}
-
-	if (lkXLObject *xl = dynamic_cast<lkXLObject*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
-	{
-		int rowCount, columnCount;
-		xl->Excel().getUsedCellRange(rowCount, columnCount);
-		if (nskip >= rowCount - 1) nskip = 0;
-		if (!astable) {
-			out.empty_vector();
-			out.vec()->resize(rowCount - nskip);
-		}
-
-		// encode column count as letters
-		wxString startColumnName, endColumnName;
-		startColumnName = 'A';
-		int q = 0;
-		int m = 0;
-		m = (int)columnCount % 26;
-		q = (int)(columnCount / 26);
-		if (q > 0) {
-			char c = 'A' + q -1;
-			endColumnName = c;
-		}
-		char c = 'A' + m - 1;
-		endColumnName += c ;
-
-		wxArrayString colnames = ExcelExchange::EnumerateAlphaIndex(startColumnName, endColumnName);
-		wxArrayString colHeaders;
-		for (int r = 0; r < rowCount; r++) {
-			wxString rowName = wxString::Format(wxT("%i"), (r+1));
-			bool ok = true;
-			wxArrayString values;
-			for (int i = 0; i<(int)colnames.Count(); i++)
-			{
-				wxString cur_range = colnames[i] + rowName;
-				wxString data;
-				ok = xl->Excel().GetRangeValue(cur_range, data);
-				if (ok)	values.Add(data);
-				else {
-					wxString err = wxString::Format(wxT("Could not read value at %s"), cur_range);
-					cxt.error(err);
-				}
-			}
-
-			if (astable)
-			{
-				// read column headers from first nonskipped row or add values to column
-				if (r == nskip) {
-					colHeaders = values;
-					for (size_t c = 0; c < columnCount; c++)
-					{
-						wxString name = values[c];
-						if (name.IsEmpty()) continue;
-
-						lk::vardata_t &it = out.hash_item(name);
-						it.empty_vector();
-						it.resize(rowCount - 1 - nskip);
-					}
-				}
-				else {
-					for (size_t c = 0; c < columnCount; c++) {
-						lk::vardata_t &it = out.hash_item(colHeaders[c]);
-						if (tonum) it.index(r - 1 - nskip)->assign(wxAtof(values[c]));
-						else it.index(r - 1 - nskip)->assign(values[c]);
-					}
-				}
-			}
-			else {
-				lk::vardata_t *row = out.index(r);
-				row->empty_vector();
-				row->vec()->resize(columnCount);
-				for (size_t c = 0; c < columnCount; c++)
-				{
-					if (tonum) row->index(c)->assign(wxAtof(values[c]));
-					else row->index(c)->assign(values[c]);
-				}
-			}
-		}
-	}
-	else
-		cxt.error("invalid xl-obj-ref");
-}
+//static void fcall_xl_read(lk::invoke_t &cxt)
+//{
+//	LK_DOC("xl_read", "Gets all used cells from Excel file", "( xl-obj-ref:xl");
+//
+//	lk::vardata_t &out = cxt.result();
+//	out.empty_hash();
+//
+//	size_t nskip = 0;
+//	bool tonum = false;
+//	bool astable = false;
+//	if (cxt.arg_count() > 1 && cxt.arg(1).deref().type() == lk::vardata_t::HASH)
+//	{
+//		lk::vardata_t &opts = cxt.arg(1).deref();
+//
+//		if (lk::vardata_t *item = opts.lookup("skip"))
+//			nskip = item->as_unsigned();
+//
+//		if (lk::vardata_t *item = opts.lookup("numeric"))
+//			tonum = item->as_boolean();
+//
+//		if (lk::vardata_t *item = opts.lookup("table"))
+//			astable = item->as_boolean();
+//	}
+//
+//	if (lkXLObject *xl = dynamic_cast<lkXLObject*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+//	{
+//		int rowCount, columnCount;
+//		xl->Excel().getUsedCellRange(rowCount, columnCount);
+//		if (nskip >= rowCount - 1) nskip = 0;
+//		if (!astable) {
+//			out.empty_vector();
+//			out.vec()->resize(rowCount - nskip);
+//		}
+//
+//		 encode column count as letters
+//		wxString startColumnName, endColumnName;
+//		startColumnName = 'A';
+//		int q = 0;
+//		int m = 0;
+//		m = (int)columnCount % 26;
+//		q = (int)(columnCount / 26);
+//		if (q > 0) {
+//			char c = 'A' + q -1;
+//			endColumnName = c;
+//		}
+//		char c = 'A' + m - 1;
+//		endColumnName += c ;
+//
+//		wxArrayString colnames = ExcelExchange::EnumerateAlphaIndex(startColumnName, endColumnName);
+//		wxArrayString colHeaders;
+//		for (int r = 0; r < rowCount; r++) {
+//			wxString rowName = wxString::Format(wxT("%i"), (r+1));
+//			bool ok = true;
+//			wxArrayString values;
+//			for (int i = 0; i<(int)colnames.Count(); i++)
+//			{
+//				wxString cur_range = colnames[i] + rowName;
+//				wxString data;
+//				ok = xl->Excel().GetRangeValue(cur_range, data);
+//				if (ok)	values.Add(data);
+//				else {
+//					wxString err = wxString::Format(wxT("Could not read value at %s"), cur_range);
+//					cxt.error(err);
+//				}
+//			}
+//
+//			if (astable)
+//			{
+//				 read column headers from first nonskipped row or add values to column
+//				if (r == nskip) {
+//					colHeaders = values;
+//					for (size_t c = 0; c < columnCount; c++)
+//					{
+//						wxString name = values[c];
+//						if (name.IsEmpty()) continue;
+//
+//						lk::vardata_t &it = out.hash_item(name);
+//						it.empty_vector();
+//						it.resize(rowCount - 1 - nskip);
+//					}
+//				}
+//				else {
+//					for (size_t c = 0; c < columnCount; c++) {
+//						lk::vardata_t &it = out.hash_item(colHeaders[c]);
+//						if (tonum) it.index(r - 1 - nskip)->assign(wxAtof(values[c]));
+//						else it.index(r - 1 - nskip)->assign(values[c]);
+//					}
+//				}
+//			}
+//			else {
+//				lk::vardata_t *row = out.index(r);
+//				row->empty_vector();
+//				row->vec()->resize(columnCount);
+//				for (size_t c = 0; c < columnCount; c++)
+//				{
+//					if (tonum) row->index(c)->assign(wxAtof(values[c]));
+//					else row->index(c)->assign(values[c]);
+//				}
+//			}
+//		}
+//	}
+//	else
+//		cxt.error("invalid xl-obj-ref");
+//}
 
 #endif
 
