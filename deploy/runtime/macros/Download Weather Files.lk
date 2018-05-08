@@ -70,19 +70,42 @@ function main()
 	location_file = to_string(macro.location_file); 
 	location_output = to_string(macro.location_output);
 	interval = to_string(macro.interval);
-
+	location_mode = to_string(macro.location_mode);
 	
 	outln('Reading: ' + location_file);
 	outln('Writing to: ' + location_output);
 	locations = text_to_table(location_file);
+	
+	n_records = 0;
+	if (!strcmp(location_mode, 'Address')){
+		n_records = #locations.address;
+	} else {
+		n_records = #locations.lat;
+	}
 
 	//For each lat lon in lookup file
-	for ( j=0; j<#locations.lat; j++ )
+	for ( j=0; j<n_records; j++ )
 	{
+		lat = 0; 
+		lon = 0;
+		
+		// Geocode
+		if (!strcmp(location_mode, 'Address')){
+			latlon = geocode(locations.address[j]);
+			lat = latlon.lat;
+			lon = latlon.lon;
+		}
+		else {
+			lat = locations.lat[j];
+			lon = locations.lon[j];
+		}
+
+	
 		// Download weather file
-		outln('Getting weather file ' + j);
-		wfname = get_nsrdb( locations.lat[j], locations.lon[j], location_output, interval );
+		outln('Getting weather file ' + j + " for " + to_string(lat) + ", " + to_string(lon));
+		wfname = get_nsrdb( lat, lon, location_output, interval );
 	}
+	
 	outln('Finished');
 }
 
