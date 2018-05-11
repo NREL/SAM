@@ -1,3 +1,8 @@
+/*@
+Soco
+@*/
+//@ name=avoidedCost;type=filename;label=Avoided Cost .csv;value=|csv;
+
 
 //avoidedCostFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Avoided_Cost.xlsx';
 //avoidedCostXL = xl_create(avoidedCostFile);
