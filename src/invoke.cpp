@@ -1234,54 +1234,32 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 
 	if (lkXLObject *xl = dynamic_cast<lkXLObject*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
 	{
+		//wxString val;
+		wxArrayString vals;
 		int rowCount, columnCount;
-		xl->Excel().getUsedCellRange(rowCount, columnCount);
+		xl->Excel().getUsedCellRange(rowCount, columnCount, vals);
+
+		//cxt.result().assign(val);
+
+
+
 		if (nskip >= rowCount - 1) nskip = 0;
 		if (!astable) {
 			out.empty_vector();
 			out.vec()->resize(rowCount - nskip);
 		}
 
-		// encode column count as letters
-		wxString startColumnName, endColumnName;
-		startColumnName = 'A';
-		int q = 0;
-		int m = 0;
-		m = (int)columnCount % 26;
-		q = (int)(columnCount / 26);
-		if (q > 0) {
-			char c = 'A' + q -1;
-			endColumnName = c;
-		}
-		char c = 'A' + m - 1;
-		endColumnName += c ;
-
-		wxArrayString colnames = ExcelExchange::EnumerateAlphaIndex(startColumnName, endColumnName);
-		wxArrayString colHeaders;
-		for (int r = 0; r < rowCount; r++) {
-			wxString rowName = wxString::Format(wxT("%i"), (r+1));
-			bool ok = true;
-			wxArrayString values;
-			for (int i = 0; i<(int)colnames.Count(); i++)
-			{
-				wxString cur_range = colnames[i] + rowName;
-				wxString data;
-				ok = xl->Excel().GetRangeValue(cur_range, data);
-				if (ok)	values.Add(data);
-				else {
-					wxString err = wxString::Format(wxT("Could not read value at %s"), cur_range);
-					cxt.error(err);
-				}
-			}
+		for (int r = nskip; r < rowCount; r++) {
 
 			if (astable)
 			{
-				// read column headers from first nonskipped row or add values to column
+				wxArrayString colHeaders;
+				 //read column headers from first nonskipped row or add values to column
 				if (r == nskip) {
-					colHeaders = values;
 					for (size_t c = 0; c < columnCount; c++)
 					{
-						wxString name = values[c];
+						wxString name = vals[c*rowCount+nskip];
+						colHeaders.push_back(name);
 						if (name.IsEmpty()) continue;
 
 						lk::vardata_t &it = out.hash_item(name);
@@ -1292,8 +1270,8 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 				else {
 					for (size_t c = 0; c < columnCount; c++) {
 						lk::vardata_t &it = out.hash_item(colHeaders[c]);
-						if (tonum) it.index(r - 1 - nskip)->assign(wxAtof(values[c]));
-						else it.index(r - 1 - nskip)->assign(values[c]);
+						if (tonum) it.index(r - 1 - nskip)->assign(wxAtof(vals[c*rowCount+r]));
+						else it.index(r - 1 - nskip)->assign(vals[c*rowCount + r]);
 					}
 				}
 			}
@@ -1303,8 +1281,8 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 				row->vec()->resize(columnCount);
 				for (size_t c = 0; c < columnCount; c++)
 				{
-					if (tonum) row->index(c)->assign(wxAtof(values[c]));
-					else row->index(c)->assign(values[c]);
+					if (tonum) row->index(c)->assign(wxAtof(vals[c*rowCount + r]));
+					else row->index(c)->assign(vals[c*rowCount + r]);
 				}
 			}
 		}
