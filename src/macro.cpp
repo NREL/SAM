@@ -47,34 +47,7 @@
 *  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************************************/
 
-#include <memory>
-
-#include <wx/panel.h>
-#include <wx/sizer.h>
-#include <wx/textctrl.h>
-#include <wx/html/htmlwin.h>
-#include <wx/dir.h>
-#include <wx/file.h>
-#include <wx/filefn.h>
-#include <wx/tokenzr.h>
-#include <wx/wfstream.h>
-#include <wx/arrstr.h>
-
-#include <wex/metro.h>
-#include <wex/utils.h>
-#include <wex/lkscript.h>
-
-#include <lk/parse.h>
-#include <lk/eval.h>
-#include <lk/stdlib.h>
-#include <lk/codegen.h>
-#include <lk/vm.h>
-
-#include "script.h"
-#include "main.h"
 #include "macro.h"
-#include "casewin.h"
-
 
 class macro_vm : public lk::vm
 {
@@ -673,71 +646,94 @@ END_EVENT_TABLE()
 
 enum { ID_SELECT_FILENAME = wxID_HIGHEST + 449 };
 
-class FileNameInputCtrl : public wxPanel
+
+FileNameInputCtrl::FileNameInputCtrl(wxWindow *parent, const wxString &_label, const wxString &_filename, const wxString &_filter)
+				: wxPanel(parent, wxID_ANY), m_fileName(_filename), m_filter(_filter), m_label(_label)
 {
-	wxTextCtrl *m_text;
-	wxString m_fileName, m_filter, m_label, m_dir;
-public:
-	FileNameInputCtrl(wxWindow *parent, const wxString &_label, const wxString &_filename, const wxString &_filter = "csv,txt")
-		: wxPanel(parent, wxID_ANY), m_fileName(_filename), m_filter(_filter), m_label(_label)
+
+	if (m_fileName == wxEmptyString)
 	{
-
-		if (m_fileName == wxEmptyString)
-		{
-			m_text = new wxTextCtrl(this, wxID_ANY, "<none selected>", wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
-			m_dir = "";
-		}
-		else
-		{
-			m_text = new wxTextCtrl(this, wxID_ANY, m_fileName, wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
-			m_dir = wxPathOnly(m_fileName);
-		}
-		m_text->SetForegroundColour(*wxBLUE);
-
-		wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
-		sizer->Add(m_text, 1, wxALL | wxALIGN_CENTER_VERTICAL, 2);
-		sizer->Add(new wxButton(this, ID_SELECT_FILENAME, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
-		SetSizer(sizer);
-
-		wxArrayString as = wxSplit(m_filter, ',');
-		wxString filter = wxEmptyString, fil_front = wxEmptyString, fil_back = wxEmptyString;
-		if (as.Count() > 0)
-		{
-			filter = "Files (";
-			for (size_t i = 0; i < as.Count(); i++)
-			{
-				fil_front += "*." + as[i].Lower();
-				if (i < (as.Count() -1)) fil_front += ",";
-				fil_back += "*." + as[i].Lower();
-				if (i < (as.Count() - 1)) fil_back += ";";
-			}
-			filter += fil_front + ")|" + fil_back;
-		}
-		if (filter != wxEmptyString) m_filter = filter;
-
+		m_text = new wxTextCtrl(this, wxID_ANY, "<none selected>", wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
+		m_dir = "";
 	}
-
-	wxString GetFileName() {
-		return m_fileName;
-	}
-
-	void OnSelect(wxCommandEvent &)
+	else
 	{
-		wxFileDialog dlg(this, m_label, m_dir, m_fileName, m_filter, wxFD_OPEN | wxFD_FILE_MUST_EXIST);
-		if (dlg.ShowModal() == wxID_OK)
-		{
-			m_fileName = dlg.GetPath();
-			m_dir = wxPathOnly(m_fileName);
-			m_text->ChangeValue(m_fileName);
-		}
+		m_text = new wxTextCtrl(this, wxID_ANY, m_fileName, wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
+		m_dir = wxPathOnly(m_fileName);
 	}
+	m_text->SetForegroundColour(*wxBLUE);
 
-	DECLARE_EVENT_TABLE();
-};
+	wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
+	sizer->Add(m_text, 1, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+	sizer->Add(new wxButton(this, ID_SELECT_FILENAME, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+	SetSizer(sizer);
 
+	wxArrayString as = wxSplit(m_filter, ',');
+	wxString filter = wxEmptyString, fil_front = wxEmptyString, fil_back = wxEmptyString;
+	if (as.Count() > 0)
+	{
+		filter = "Files (";
+		for (size_t i = 0; i < as.Count(); i++)
+		{
+			fil_front += "*." + as[i].Lower();
+			if (i < (as.Count() -1)) fil_front += ",";
+			fil_back += "*." + as[i].Lower();
+			if (i < (as.Count() - 1)) fil_back += ";";
+		}
+		filter += fil_front + ")|" + fil_back;
+	}
+	if (filter != wxEmptyString) m_filter = filter;
+
+}
+
+void FileNameInputCtrl::OnSelect(wxCommandEvent &)
+{
+	wxFileDialog dlg(this, m_label, m_dir, m_fileName, m_filter, wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		m_fileName = dlg.GetPath();
+		m_dir = wxPathOnly(m_fileName);
+		m_text->ChangeValue(m_fileName);
+	}
+}
 
 BEGIN_EVENT_TABLE(FileNameInputCtrl, wxPanel)
 EVT_BUTTON(ID_SELECT_FILENAME, FileNameInputCtrl::OnSelect)
+END_EVENT_TABLE()
+
+FolderNameInputCtrl::FolderNameInputCtrl(wxWindow *parent, const wxString &_label, const wxString &folderName)
+	: wxPanel(parent, wxID_ANY), m_dir(folderName), m_label(_label)
+{
+	if (m_dir == wxEmptyString)
+	{
+		m_text = new wxTextCtrl(this, wxID_ANY, "<none selected>", wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
+		m_dir = "";
+	}
+	else
+	{
+		m_text = new wxTextCtrl(this, wxID_ANY, m_dir, wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
+		m_dir = wxPathOnly(m_dir);
+	}
+	m_text->SetForegroundColour(*wxBLUE);
+
+	wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
+	sizer->Add(m_text, 1, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+	sizer->Add(new wxButton(this, ID_SELECT_FILENAME, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+	SetSizer(sizer);
+}
+
+void FolderNameInputCtrl::OnSelect(wxCommandEvent &)
+{
+	wxDirDialog dlg(this, m_label, m_dir);
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		m_dir = dlg.GetPath();
+		m_text->ChangeValue(m_dir);
+	}
+}
+
+BEGIN_EVENT_TABLE(FolderNameInputCtrl, wxPanel)
+EVT_BUTTON(ID_SELECT_FILENAME, FolderNameInputCtrl::OnSelect)
 END_EVENT_TABLE()
 
 
@@ -841,6 +837,20 @@ void MacroPanel::CreateUI( const wxString &buf )
 				win = new FileNameInputCtrl(m_macroUI,label,value);
 			expand_win = true;
 		}
+		else if (type == "folder")
+		{
+			if (value.Find("|") != wxNOT_FOUND)
+			{
+				wxArrayString as = wxSplit(value, '|');
+				if (as.Count() > 1)
+					win = new FolderNameInputCtrl(m_macroUI, label, as[0]);
+				else
+					win = new FolderNameInputCtrl(m_macroUI, label, value);
+			}
+			else
+				win = new FolderNameInputCtrl(m_macroUI, label, value);
+			expand_win = true;
+		}
 
 		if ( win != 0 )
 		{
@@ -922,6 +932,8 @@ void MacroPanel::GetUIArgs( lk::vardata_t &table )
 		}
 		else if (FileNameInputCtrl *fni = dynamic_cast<FileNameInputCtrl*>(x.window))
 			item.assign(fni->GetFileName());
+		else if (FolderNameInputCtrl *fni = dynamic_cast<FolderNameInputCtrl*>(x.window))
+			item.assign(fni->GetFolderName());
 	}
 }
 
