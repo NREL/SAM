@@ -81,6 +81,7 @@
 #include "casewin.h"
 #include "results.h"
 #include "invoke.h"
+#include "simulation.h"
 
 CodeGenCallbackContext::CodeGenCallbackContext(CodeGen_Base *c, const wxString &desc)
 	: CaseCallbackContext(c->GetCase(), desc), m_cgb(c)
@@ -98,81 +99,6 @@ void CodeGenCallbackContext::SetupLibraries(lk::env_t *env)
 	env->register_funcs(invoke_codegencallback_funcs(), this);
 }
 
-
-
-static bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname)
-{
-	switch (vv->Type())
-	{
-	case VV_NUMBER:
-		ssc_data_set_number(pdata, sscname.c_str(), (ssc_number_t)vv->Value());
-		break;
-	case VV_ARRAY:
-	{
-		size_t n;
-		float *p = vv->Array(&n);
-		if (sizeof(ssc_number_t) == sizeof(float))
-			ssc_data_set_array(pdata, sscname.c_str(), p, n);
-		else
-		{
-			ssc_number_t *pp = new ssc_number_t[n];
-			for (size_t i = 0; i<n; i++)
-				pp[i] = p[i];
-
-			ssc_data_set_array(pdata, sscname.c_str(), pp, n);
-
-			delete[] pp;
-		}
-	}
-	break;
-	case VV_MATRIX:
-	{
-		matrix_t<float> &fl = vv->Matrix();
-		if (sizeof(ssc_number_t) == sizeof(float))
-		{
-			ssc_data_set_matrix(pdata, sscname.c_str(), fl.data(), fl.nrows(), fl.ncols());
-		}
-		else
-		{
-			ssc_number_t *pp = new ssc_number_t[fl.nrows() * fl.ncols()];
-			size_t n = 0;
-			for (size_t r = 0; r < fl.nrows(); r++)
-				for (size_t c = 0; c<fl.ncols(); c++)
-					pp[n++] = (ssc_number_t)fl(r, c);
-
-			ssc_data_set_matrix(pdata, sscname.c_str(), pp, fl.nrows(), fl.ncols());
-			delete[] pp;
-		}
-	}
-	break;
-	case VV_STRING:
-		ssc_data_set_string(pdata, sscname.c_str(), vv->String().c_str());
-		break;
-	case VV_TABLE:
-	{
-		ssc_data_t tab = ssc_data_create();
-		VarTable &vt = vv->Table();
-		for (VarTable::iterator it = vt.begin();
-			it != vt.end();
-			++it)
-		{
-			VarValueToSSC(it->second, tab, it->first);
-		}
-
-		ssc_data_set_table(pdata, sscname.c_str(), tab);
-
-		ssc_data_free(tab); // ssc_data_set_table above makes a deep copy, so free this here
-	}
-	break;
-
-
-	case VV_INVALID:
-	default:
-		return false;
-	}
-
-	return true;
-}
 
 
 
