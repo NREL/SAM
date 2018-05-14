@@ -1,0 +1,112 @@
+/*@
+
+<p>Location data from a CSV file is read in, TMY data is downloaded from the NSRDB and placed into a user-specified folder
+<br><br>
+Locations can be specified as latitudes and longitudes or as addresses. 
+<br><br>
+Input:<br><ul>
+<li>CSV file with the relevent column headers (depending on Location mode): lat, lon, address.
+and rows containing the desired location data
+<li>Output folder
+<li>Location mode: Select whether data is specified as latitude and longitude or address.
+<li>Desired weather data interval.  Select 30-minute or 60-minute
+<br></ul>
+
+Output:<br><ul>
+<li>CSV files saved to the user specified folder
+
+<br><br>
+<i> Click "Run macro" above to download the weather files after setting up your inputs </i>
+
+@*/
+
+//@ name=location_file;type=filename;label=Location file:;value=;
+//@ name=location_output;type=folder;label=Output folder:;value=;
+//@ name=Location_mode;type=combo;label=Location mode:;value=Latitude and Longitude,Address;sel=0;
+//@ name=interval;type=combo;label=Desired interval (minutes):;value=30,60;sel=1;
+
+
+function get_nsrdb( lat, lon, location_output, interval)
+{
+	valid = to_real(lat) >= -90 && to_real(lat) <= 90 && to_real(lon) >= -180 && to_real(lon) <= 180;
+	if ( !valid )
+		return 'Lat/lon not valid';
+	dataset = 'tmy';
+	url = webapi( 'nsrdb_download' );
+	url = replace(url, '<LON>', lon );
+	url = replace(url, '<LAT>', lat );
+	url = replace(url, '<DATASET>', dataset );
+	url = replace(url, '<INTERVAL>', interval);
+	
+	outln(url);
+	name = to_string(lat) + '_' + to_string(lon) + '.csv';
+	wf = location_output + '/' + name ;
+	if ( !file_exists(wf) )
+		if ( !curl( url, { 'file'=wf }) )
+			return 'NSRDB download error';
+	return name;
+}	
+
+function text_to_table( file_in )
+{
+	f_text = read_text_file( file_in );
+	f_lines = split(f_text,'\n');
+	keys = split(f_lines[0],',');
+	for (i=1;i<#f_lines;i++)
+	{
+		arr = split(f_lines[i],',');
+		ii=i-1;
+		for (k=0;k<#keys;k++)
+		{
+			T{keys[k]}[ii] = arr[k];
+		}
+	}
+	return T;
+}
+
+function main()
+{
+
+	location_file = to_string(macro.location_file); 
+	location_output = to_string(macro.location_output);
+	interval = to_string(macro.interval);
+	location_mode = to_string(macro.location_mode);
+	
+	outln('Reading: ' + location_file);
+	outln('Writing to: ' + location_output);
+	locations = text_to_table(location_file);
+	
+	n_records = 0;
+	if (!strcmp(location_mode, 'Address')){
+		n_records = #locations.address;
+	} else {
+		n_records = #locations.lat;
+	}
+
+	//For each lat lon in lookup file
+	for ( j=0; j<n_records; j++ )
+	{
+		lat = 0; 
+		lon = 0;
+		
+		// Geocode
+		if (!strcmp(location_mode, 'Address')){
+			latlon = geocode(locations.address[j]);
+			lat = latlon.lat;
+			lon = latlon.lon;
+		}
+		else {
+			lat = locations.lat[j];
+			lon = locations.lon[j];
+		}
+
+	
+		// Download weather file
+		outln('Getting weather file ' + j + " for " + to_string(lat) + ", " + to_string(lon));
+		wfname = get_nsrdb( lat, lon, location_output, interval );
+	}
+	
+	outln('Finished');
+}
+
+main();
