@@ -1,7 +1,19 @@
 /*@
 Soco
 @*/
-//@ name=avoidedCost;type=filename;label=Avoided Cost .csv;value=|csv;
+//@ name=plantCostInput;type=filename;label=Import Plant Cost;value=|csv,xlsx;
+//@ name=avoidedCostInput;type=filename;label=Import Avoided Cost;value=|csv,xlsx;
+//@ name=capWorthInput;type=filename;label=Import Capacity Worth Factor;value=|csv,xlsx;
+//@ name=capPriceInput;type=filename;label=Import Capacity Price Forecast;value=|csv,xlsx;
+//@ name=rcbAnnualInput;type=filename;label=Import RCB Annual Values;value=|csv,xlsx;
+//@ name=startYearInput;type=number;label=Energy Budget Start Year;value=1;
+//@ name=projectLifeInput;type=number;label=Project Life (yrs);
+//@ name=lifetimeInput;type=combo;label=Run Full Lifetime;value=Yes,No;sel=0
+//@ name=hurdleRateInput;type=number;label=Hurdle Rate (%);
+//@ name=transmissionInput;type=number;label=Transmission Loss Correction Factor(%);
+//@ name=daylightSavingsInput;type=combo;label=Apply Daylight Savings;value=Yes,No;sel=0
+//@ name=timezoneInput;type=number;label=Time Zone of Energy Budge;value=-6;
+
 
 
 //avoidedCostFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Avoided_Cost.xlsx';
@@ -60,10 +72,11 @@ capPriceFcast = getFromFile('C:/Users/dguittet/Documents/Southern Company Script
 capWorthFactor = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/Cap_Worth_Factor.csv');
 RCBAnnual = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/RCB_Annual.csv');
 gen = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/Solar_Profile.csv');
+// test gen to make sure project life = gen/8760
 //gen = get('gen');
 
-// shift solar profile to central standard time
-tz = -9;
+// *****shift solar profile to central standard time***** //
+tz = -5;
 hoursForward = -(tz + 6);
 for (r=0; r< nPlants; r++) {
 	if (hoursForward > 0 ) {
@@ -92,7 +105,19 @@ for (r=0; r< nPlants; r++) {
 	}
 }
 
-// per-year calcuations for each plant
+// *****apply daylight savings to solar profile***** //
+hourStartDST =  1657;	// estimated date of second Sunday of March: 11
+hourEndDST = 7345;		// estimated date of first Sunday of Nov: 3
+
+for (r=0; r<nPlants; r++){
+	for (y=0; y<projectLife; y++){
+		for (h=hourEndDST+10*y; h>hourStartDST+10*y; h--){
+			gen[h][r+1] = gen[h-1][r+1];
+		}
+	}
+}
+
+// *****per-year calcuations for each plant***** //
 function colSum(data, col, rowStart, rowEnd){
 	sumTotal = 0;
 	for (n = rowStart; n < rowEnd; n++) {	
@@ -180,6 +205,9 @@ for (yr = 0; yr < projectLife; yr++){
 }
 csvwrite('C:/Users/dguittet/Documents/Southern Company Scripting/gen.csv', gen);
 csvwrite('C:/Users/dguittet/Documents/Southern Company Scripting/output.csv', csvOut);
+
+// *****Create HTML Output Window***** //
+
 
 outln(LCOE);
 outln(PVB);
