@@ -6,14 +6,15 @@ en_pvsamv3 = 0;
 
 // define all the configurations
 if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
-addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Host Developer','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator',  'None'] );
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
+//addconfig( 'Battery', ['None']);
+addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'Single Owner PPA Buy Rate','None'] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
 addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Geothermal Power', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
-addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
@@ -47,24 +48,23 @@ if ( en_iscc ) { configopt( 'ISCC',       { 'long_name'='CSP integrated solar co
 configopt( 'Physical Trough IPH',         { 'long_name'='Process heat parabolic trough',          'short_name'='IPH Trough',      'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'DSGL IPH',                    { 'long_name'='Process heat linear direct steam','short_name'='IPH Linear (steam)', 'description'='Industrial process heat linear collector system' } );
 
+
 configopt( 'LCOE Calculator',             { 'long_name'='LCOE calculator (FCR method)',           'short_name'='LCOE Calculator',  'description'='Calculate LCOE using fixed charge rate method' } );
 configopt( 'Residential',                 { 'long_name'='Residential (distributed)',           	  'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
+configopt( 'Third Party',                 { 'long_name'='Third party ownership',           	      'short_name'='Third Party',      'description'='Renewable energy system owned by a third party displacing electric load' } );
 configopt( 'Commercial',                  { 'long_name'='Commercial (distributed)',        		  'short_name'='Commercial',       'description'='Renewable energy system displaces commercial building electric load' } );
-configopt( 'Third Party',                 { 'long_name'='Third party ownership - host',           'short_name'='TPO Host',      'description'='Third party ownership from host perspective for PPA or lease agreement' } );
-configopt( 'Host Developer',              { 'long_name'='Third party ownership - host/developer', 'short_name'='TPO Host/Developer',  'description'='Third party ownershop from host and developer perspective for PPA' } );
+configopt( 'Commercial PPA',              { 'long_name'='PPA single owner debt fraction',         'short_name'='SO debt fraction', 'description'='Single owner PPA with debt fraction and analysis period IRR, and financial constraints and optimization' } );
+configopt( 'Independent Power Producer',  { 'long_name'='PPA single owner financial constraints', 'short_name'='SO constraints',   'description'='Single owner PPA with debt fraction and analysis period IRR, and financial optimization' } );
 configopt( 'Single Owner',                { 'long_name'='PPA single owner (utility)',                       'short_name'='Single owner',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
 configopt( 'Leveraged Partnership Flip',  { 'long_name'='PPA partnership flip with debt (utility)',         'short_name'='Flip (debt)',      'description'='Developer/investor partnership flip PPA structure with debt' } );
 configopt( 'All Equity Partnership Flip', { 'long_name'='PPA partnership flip without debt (utility)',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
 configopt( 'Sale Leaseback',              { 'long_name'='PPA sale leaseback (utility)',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
+configopt( 'Single Owner PPA Buy Rate',   { 'long_name'='PPA single owner with buy rate (utility)',         'short_name'='Single owner buy rate',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
 configopt( 'None',                        { 'long_name'='No financial model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
-
-// these are old deprecated financial models
-configopt( 'Commercial PPA',              { 'long_name'='PPA single owner debt fraction',         'short_name'='SO debt fraction', 'description'='Single owner PPA with debt fraction and analysis period IRR, and financial constraints and optimization' } );
-configopt( 'Independent Power Producer',  { 'long_name'='PPA single owner financial constraints', 'short_name'='SO constraints',   'description'='Single owner PPA with debt fraction and analysis period IRR, and financial optimization' } );
-
 
 enum { LOAD_SIMPLE, LOAD_BELPE, NO_LOAD };
 enum { LIFETIME_NONE, LIFETIME_PV, LIFETIME_SYSTEM };
+
 
 function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the building load calculator (for now just PV, CSP, Biopower, and Generic Solar- MUST HAVE SOLAR RESOURCE DATA), 2 for techs without ANY load pages (SWH), and 0 for technologies that don't
 {
@@ -85,7 +85,6 @@ function setup_battery_pages_behind_the_meter()
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
 			  [{'name'='Battery Model', 'caption'='Enable Battery'},
 			   'Battery Bank Sizing',
-			   'Battery Voltage',
 			   'Battery Current and Capacity',
 			   'Battery Configuration',
 			   'Battery Dispatch Behind the Meter',
@@ -93,6 +92,8 @@ function setup_battery_pages_behind_the_meter()
 			   'Battery Dispatch Manual', 
 			   'Battery Lifetime',
 			   'Battery Replacements',
+			   'Battery Voltage',
+			   'Battery Ancillary Losses',
 			   'Battery Thermal',
 			    ]],
 			  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
@@ -102,13 +103,15 @@ function setup_battery_pages_front_of_meter()
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
 			  [{'name'='Battery Model', 'caption'='Enable Battery'},
 			   'Battery Bank Sizing',
-			   'Battery Voltage',
 			   'Battery Current and Capacity',
 			   'Battery Configuration',
 			   'Battery Dispatch Common',
-			   'Battery Dispatch Manual', 
+			   'Battery Dispatch Front of Meter', 
+			   'Battery Dispatch Manual',
 			   'Battery Lifetime',
 			   'Battery Replacements',
+			   'Battery Voltage',
+			   'Battery Ancillary Losses',
 			   'Battery Thermal'] ],
 			  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 }
@@ -327,35 +330,6 @@ function setup_single_owner_pages(degradation)
            { 'sidebar'='Incentives', 'help'='incentives' } );					
   addpage( [['Financial Depreciation Detailed' ]], 
            { 'sidebar'='Depreciation', 'help'='depreciation' });
-}
-
-function setup_host_developer_pages(mode, degradation)
-{
-  setting( { 'analysis_period_var'='cf_length' } );
-  if (degradation == LIFETIME_SYSTEM )
-  {	
-	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
-  }
-  addpage( [[ 'Financial Solution Mode Single Owner',
-              'Financial Analysis Host Developer Parameters',
-		      'Financial Tax and Insurance Rates',
-		      'Financial Salvage Value',
-		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
-              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
-              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
-              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
-               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]], 
-           { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
-  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
-           
-  addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
-           { 'sidebar'='Incentives', 'help'='incentives' } );					
-  addpage( [['Financial Depreciation Detailed' ]], 
-           { 'sidebar'='Depreciation', 'help'='depreciation' });
-
-  setup_utility_rate();
-  setup_elec_load_page( mode );
 }
 
 function setup_leveraged_partnership_flip_pages(degradation)
@@ -595,6 +569,12 @@ addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='Sy
 setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 
 
+setconfig('Battery', 'None');
+setup_battery_pages_behind_the_meter();
+	addpage( [[ 'Lifetime System']],
+           {  'sidebar'='Lifetime','help'='lifetime' } );
+setmodules(['battery']);
+
 
 // Flat Plate PV ////////////////////////////////////////////////////////////////
 setconfig( 'Flat Plate PV', 'LCOE Calculator' );
@@ -644,15 +624,6 @@ setup_flat_plate_pv_pages();
 setup_battery_pages_behind_the_meter();
 setup_thirdparty_pages( LOAD_BELPE, LIFETIME_PV ); //includes building load calculator by default in this function
 
-
-setconfig( 'Flat Plate PV', 'Host Developer' );
-setmodules( ['pvsamv1', 'utilityrate5', 'host_developer']);
-setup_flat_plate_pv_pages();
-setup_battery_pages_behind_the_meter();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_host_developer_pages( LOAD_SIMPLE, LIFETIME_PV ); //includes building load calculator by default in this function
-
-
 setconfig( 'Flat Plate PV', 'Commercial' );
 setmodules( ['pvsamv1', 'utilityrate5', 'cashloan']);
 setup_flat_plate_pv_pages();
@@ -701,6 +672,15 @@ setup_flat_plate_pv_pages();
 setup_battery_pages_front_of_meter();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages( LIFETIME_PV );
+
+setconfig( 'Flat Plate PV', 'Single Owner PPA Buy Rate' );	
+setmodules( ['pvsamv1', 'utilityrate5', 'singleowner']);
+setup_flat_plate_pv_pages();
+setup_battery_pages_front_of_meter();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+setup_single_owner_pages( LIFETIME_PV );
+setup_utility_rate();
+
 
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );
@@ -792,11 +772,6 @@ setup_pvwatts_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for commercial
 
-setconfig( 'PVWatts', 'Host Developer' );	
-setmodules( ['pvwattsv5', 'battwatts', 'utilityrate5', 'host_developer']);
-setup_pvwatts_battery_pages();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_host_developer_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for commercial
 
 setconfig( 'PVWatts', 'Commercial PPA' );	
 setmodules( ['pvwattsv5', 'ippppa']);
@@ -1007,28 +982,32 @@ function setup_generic_system_pages()
 }
 
 setconfig( 'Generic System', 'Residential' );	
-setmodules( ['generic_system',  'utilityrate5', 'cashloan']);
+setmodules( ['generic_system', 'battery', 'utilityrate5', 'cashloan']);
 setup_generic_system_pages();
+setup_battery_pages_behind_the_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_residential_pages( LOAD_SIMPLE, LIFETIME_SYSTEM ); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Third Party' );
-setmodules( ['generic_system', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['generic_system', 'battery', 'utilityrate5', 'thirdpartyownership']);
 setup_generic_system_pages();
+setup_battery_pages_behind_the_meter();
 setup_thirdparty_pages( LOAD_SIMPLE, LIFETIME_SYSTEM );
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Commercial' );	
-setmodules( ['generic_system',  'utilityrate5', 'cashloan']);
+setmodules( ['generic_system', 'battery', 'utilityrate5', 'cashloan']);
 setup_generic_system_pages();
+setup_battery_pages_behind_the_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_commercial_pages(0, LIFETIME_SYSTEM); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Commercial PPA' );	
-setmodules( ['generic_system',  'ippppa']);
+setmodules( ['generic_system', 'ippppa']);
 setup_generic_system_pages();
+setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_commercial_ppa_pages(LIFETIME_SYSTEM);
 
@@ -1036,20 +1015,23 @@ setup_commercial_ppa_pages(LIFETIME_SYSTEM);
 setconfig( 'Generic System', 'Independent Power Producer' );
 setmodules( ['generic_system', 'ippppa']);
 setup_generic_system_pages();
+setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_independent_power_producer_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Leveraged Partnership Flip' );
-setmodules( ['generic_system', 'levpartflip']);
+setmodules( ['generic_system', 'battery', 'levpartflip']);
 setup_generic_system_pages();
+setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_leveraged_partnership_flip_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'All Equity Partnership Flip' );
-setmodules( ['generic_system', 'equpartflip']);
+setmodules( ['generic_system', 'battery', 'equpartflip']);
 setup_generic_system_pages();
+setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 
@@ -1057,13 +1039,15 @@ setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 setconfig( 'Generic System', 'Sale Leaseback' );
 setmodules( ['generic_system', 'saleleaseback']);
 setup_generic_system_pages();
+setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_sale_leaseback_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Single Owner' );
-setmodules( ['generic_system', 'singleowner']);
+setmodules( ['generic_system', 'battery', 'singleowner']);
 setup_generic_system_pages();
+setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
 
