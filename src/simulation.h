@@ -65,6 +65,8 @@
 class Case;
 class ConfigInfo;
 
+bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname);
+
 class ISimulationHandler
 {
 private:
@@ -221,4 +223,5 @@ private:
 	wxThreadProgressDialog *m_tpd;
 	wxFrame *m_transp;
 };
+
 #endif
