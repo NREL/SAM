@@ -27,7 +27,7 @@
 #include "case.h"
 
 
-static bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
+bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
 {
 	switch( vv->Type() )
 	{
@@ -100,7 +100,6 @@ static bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscna
 
 	return true;
 }
-
 
 Simulation::Simulation( Case *cc, const wxString &name )
 	: m_case( cc ), m_name( name )
