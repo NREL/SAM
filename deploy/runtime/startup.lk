@@ -596,7 +596,7 @@ setup_lcoefcr_pages();
 
 setconfig( 'Flat Plate PV', 'None' );
 //no financials is a special case of PV with no lifetime inputs, so do not use setup_flat_plate_pv_pages()
-addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
+addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'}, {'name'='PV Bifacial', 'collapsible'=true, 'collapsible_var'='pv.bifacial.is_shown'}]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [ ['Simple Efficiency Module Model'],
     	   ['CEC Performance Model with Module Database'],
 		   ['CEC Performance Model with User Entered Specifications'], 
