@@ -1210,12 +1210,18 @@ static void fcall_xl_get( lk::invoke_t &cxt )
 
 static void fcall_xl_read(lk::invoke_t &cxt)
 {
-	LK_DOC("xl_read", "Gets all used cells from Excel file", "( xl-obj-ref:xl");
+	LK_DOC("xl_read", "Read an excel file into a 2D array (default) or a table. Options: "
+		"'skip' (header lines to skip), "
+		"'numeric' (t/f to return numbers), "
+		"'order' (r/c, row-major order default), "
+		"'table' (t/f to return a table assuming 1 header line with names)",
+		"(string:file[, table:options]):array or table");
 
 	lk::vardata_t &out = cxt.result();
 	out.empty_hash();
 
 	size_t nskip = 0;
+	bool rowMajor = true;
 	bool tonum = false;
 	bool astable = false;
 	if (cxt.arg_count() > 1 && cxt.arg(1).deref().type() == lk::vardata_t::HASH)
@@ -1230,65 +1236,104 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 
 		if (lk::vardata_t *item = opts.lookup("table"))
 			astable = item->as_boolean();
+
+		if (lk::vardata_t *item = opts.lookup("order"))
+			rowMajor = (item->as_string() == "c") ? false : true;
 	}
 
 	if (lkXLObject *xl = dynamic_cast<lkXLObject*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
 	{
-		//wxString val;
 		wxArrayString vals;
 		int rowCount, columnCount;
-		xl->Excel().getUsedCellRange(rowCount, columnCount, vals);
-
-		//cxt.result().assign(val);
-
-
-
+		xl->Excel().getUsedCellRange(rowCount, columnCount, vals); 
+		
 		if (nskip >= rowCount - 1) nskip = 0;
-		if (!astable) {
-			out.empty_vector();
-			out.vec()->resize(rowCount - nskip);
-		}
-
-		for (int r = nskip; r < rowCount; r++) {
-
-			if (astable)
-			{
+		if (astable)
+		{
+			if (rowMajor) {
 				wxArrayString colHeaders;
-				 //read column headers from first nonskipped row or add values to column
-				if (r == nskip) {
-					for (size_t c = 0; c < columnCount; c++)
-					{
-						wxString name = vals[c*rowCount+nskip];
-						colHeaders.push_back(name);
-						if (name.IsEmpty()) continue;
+				//read column headers from first nonskipped row
+				for (size_t c = 0; c < columnCount; c++) {
+					wxString name = vals[c*rowCount + nskip];
+					colHeaders.push_back(name);
+					if (name.IsEmpty()) continue;
 
-						lk::vardata_t &it = out.hash_item(name);
-						it.empty_vector();
-						it.resize(rowCount - 1 - nskip);
-					}
+					lk::vardata_t &it = out.hash_item(name);
+					it.empty_vector();
+					it.resize(rowCount - 1 - nskip);
 				}
-				else {
-					for (size_t c = 0; c < columnCount; c++) {
-						lk::vardata_t &it = out.hash_item(colHeaders[c]);
-						if (tonum) it.index(r - 1 - nskip)->assign(wxAtof(vals[c*rowCount+r]));
-						else it.index(r - 1 - nskip)->assign(vals[c*rowCount + r]);
+				for (size_t c = 0; c < columnCount; c++) {
+					lk::vardata_t* it = out.lookup(colHeaders[c]);
+					for (size_t r = 1 + nskip; r < rowCount; r++) {
+						if (tonum) it->index(r - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
+						else it->index(r - 1 - nskip)->assign(vals[c*rowCount + r]);
 					}
 				}
 			}
 			else {
-				lk::vardata_t *row = out.index(r);
-				row->empty_vector();
-				row->vec()->resize(columnCount);
-				for (size_t c = 0; c < columnCount; c++)
-				{
-					if (tonum) row->index(c)->assign(wxAtof(vals[c*rowCount + r]));
-					else row->index(c)->assign(vals[c*rowCount + r]);
+				wxArrayString rowHeaders;
+				//read row headers from first nonskipped column
+				for (size_t r = 0; r < rowCount; r++) {
+					wxString name = vals[nskip*rowCount + r];
+					rowHeaders.push_back(name);
+					if (name.IsEmpty()) continue;
+
+					lk::vardata_t &it = out.hash_item(name);
+					it.empty_vector();
+					it.resize(columnCount - 1 - nskip);
+				}
+
+				for (size_t r = 0; r < rowCount; r++) {
+					lk::vardata_t* it = out.lookup(rowHeaders[r]);
+					for (size_t c = 1 + nskip; c < columnCount; c++) {
+						if (tonum) it->index(c - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
+						else it->index(c - 1 - nskip)->assign(vals[c*rowCount + r]);
+					}
+				}
+			}
+		}
+		else {
+			if (rowMajor == true) {
+				out.empty_vector();
+				out.vec()->resize(rowCount - nskip);
+				for (size_t r = nskip; r < rowCount; r++) {
+					lk::vardata_t *row = out.index(r-nskip);
+					row->empty_vector();
+					row->vec()->resize(columnCount);
+					for (size_t c = 0; c < columnCount; c++)
+					{
+						if (tonum) {
+							row->index(c)->assign(wxAtof(vals[c*rowCount + r]));
+						}
+						else {
+							row->index(c)->assign(vals[c*rowCount + r]);
+						}
+					}
+				}
+			}
+			else {
+				out.empty_vector();
+				out.vec()->resize(columnCount - nskip);
+				for (size_t c = nskip; c < columnCount; c++) {
+					lk::vardata_t *col = out.index(c-nskip);
+					col->empty_vector();
+					col->vec()->resize(rowCount);
+					for (size_t r = 0; r < rowCount; r++)
+					{
+						if (tonum) {
+							col->index(r)->assign(wxAtof(vals[c*rowCount + r]));
+						}
+						else {
+							col->index(r)->assign(vals[c*rowCount + r]);
+						}
+					}
 				}
 			}
 		}
 	}
 	else
 		cxt.error("invalid xl-obj-ref");
+
 }
 
 #endif
