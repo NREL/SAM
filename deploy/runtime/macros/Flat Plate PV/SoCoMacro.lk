@@ -139,8 +139,6 @@ for (r = 0; r < nPlants; r++) {
 		}
 		capValperKW[r][yr] = capEqu[r][yr]*(capPriceFcast[yr][1]/100.);
 		capVal[r][yr] = capValperKW[r][yr]*desiredArraySize[r]/DCtoACRatio[r];
-		outln(capValperKW);
-		outln(capVal);
 		RCBAdj[r][yr] = 0;
 		if (trackingMode[r] == 'fixed' || trackingMode[r] == 'Fixed'){
 			RCBAdj[r][yr] = energy[r][yr]*RCBAnnual[yr][1];
@@ -208,10 +206,30 @@ csvwrite('C:/Users/dguittet/Documents/Southern Company Scripting/output.csv', cs
 
 // *****Create HTML Output Window***** //
 
+str = '<html><body><h4>System Comparison</h4><table><tr><td>Plant</td>';
+str += '<td>LCOE ($/MWh)<\td><td>PVB ($)<\td><td>Self Build NPV*<\td><td>PPA NPV (Fixed)**<\td>';
+str += '<td>PPA NPV (Esc.)**<\td><td>PPA NPV (Ann.)**<\td><\tr>';
 
-outln(LCOE);
-outln(PVB);
-outln(selfBuildNPV);
-outln(ppaNPVFixed);
-outln(ppaNPVEsc);
-outln(ppaNPVAnn);
+for (r=0; r<nPlants; r++){
+	str += '<tr><td>';
+	str += r+1;
+	str += '</td><td>';
+	str += LCOE[r];
+	str += '</td><td>';
+	str += PVB[r];
+	str += '</td><td>';
+	str += selfBuildNPV[r];
+	str += '</td><td>';
+	str += ppaNPVFixed[r];
+	str += '</td><td>';
+	str += ppaNPVEsc[r];
+	str += '</td><td>';
+	str += ppaNPVAnn[r];
+	str += '</td></tr>';
+}
+
+str += '</tr></table>';
+str += '<p>*levelized sum of cap costs plus T&D cost vs disc. value)<br>';
+str += '**including T&D cost<br></p></body></html>';
+
+html_dialog(str, 'Plant Comparison', [1000,800]);
