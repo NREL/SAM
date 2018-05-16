@@ -12,16 +12,39 @@ Soco
 //@ name=hurdleRateInput;type=number;label=Hurdle Rate (%);
 //@ name=transmissionInput;type=number;label=Transmission Loss Correction Factor(%);
 //@ name=daylightSavingsInput;type=combo;label=Apply Daylight Savings;value=Yes,No;sel=0
-//@ name=timezoneInput;type=number;label=Time Zone of Energy Budge;value=-6;
+//@ name=timezoneInput;type=number;label=Time Zone of Energy Budget;value=-6;
 
+// general inputs
+hurdleRate = 0.075;
+startYear = 1;
+projectLife = 25;
+transmissionLoss = 0.012;
+tz = -5;
+useLifetime = true;
+applyDaylightSavings = true;
 
+plantCostFile = '';
+avoidedCostFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Avoided_Cost.csv';
+capPriceFcastFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Cap_Price_Fcast.csv';
+capWorthFactorFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Cap_Worth_Factor.csv';
+RCBAnnualFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/RCB_Annual.csv';
+genFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Solar_Profile.csv';
 
-//avoidedCostFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Avoided_Cost.xlsx';
-//avoidedCostXL = xl_create(avoidedCostFile);
-//i = xl_get(avoidedCostXL, "UsedRange",1);
-
-// macro settings
-timeToCPT = true;
+// *****Get input variables from interface***** //
+if (typeof(macro) != 'unknown') {
+	plantCostFile = macro.plantCostInput;
+	avoidedCostFile = macro.avoidedCostInput;
+	capWorthFactorFile = macro.capWorthInput;
+	capPriceFcastFile = macro.capPriceInput;
+	RCBAnnualFile = macro.rcbAnnualInput;
+	startYear = macro.startYearInput;
+	projectLife = macro.projectLifeInput;
+	useLifetime = macro.lifetimeInput;
+	hurdleRateInput = macro.hurdleRateInput;
+	transmissionLoss = macro.transmissionInput;
+	applyDaylightSavings = macro.daylightSayingsInput;
+	tz = macro.timezoneInput;
+}
 
 // plant specs
 nPlants = 2;
@@ -44,11 +67,7 @@ ppaEscalator = [0.02, 0.02];
 ppaAnnual = [[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32, 32.5, 33, 33.5, 34, 34.5, 35, 35.5, 36, 36.5, 37], 
 	[28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32, 32.5, 33, 33.5, 34, 34.5, 35, 35.5, 36, 36.5, 37, 37.5, 38, 38.5, 39, 39.5, 40]];
 
-// general inputs
-hurdleRate = 0.075;
-startYear = 1;
-projectLife = 25;
-transmissionLoss = 0.012;
+
 
 // get data from .csv
 // first element of each row is index, values start at 2nd column
@@ -58,26 +77,31 @@ function getFromFile(file){
 		outln('File error: ' + file + ' does not exist.');
 		close;
 	}
-	data = csvread(file, {'skip'=1, 'numeric'=1});
-	for (i = 0; i<#data; i++) {
-		for (j = 0; j<#data[i]; j++){
-			data[i][j] = to_real(data[i][j]);
-		}
+	if (ext_only(file) == 'csv'){
+		data = csvread(file, {'skip'=1, 'numeric'=1});
+		return data;
 	}
-	return data;
+	else if (ext_only(file) == 'xlsx'){
+		data = xl_read(file, {'skip'=1, 'numeric'=1});
+		return data;
+	}
 }
 
-avoidedCost = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/Avoided_Cost.csv');
-capPriceFcast = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/Cap_Price_Fcast.csv');
-capWorthFactor = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/Cap_Worth_Factor.csv');
-RCBAnnual = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/RCB_Annual.csv');
-gen = getFromFile('C:/Users/dguittet/Documents/Southern Company Scripting/Solar_Profile.csv');
+avoidedCost = getFromFile(avoidedCostFile);
+capPriceFcast = getFromFile(capPriceFcastFile);
+capWorthFactor = getFromFile(capWorthFactorFile);
+RCBAnnual = getFromFile(RCBAnnualFile);
+gen = getFromFile(genFile);
+
 // test gen to make sure project life = gen/8760
-//gen = get('gen');
+if (active_case()){
+	genCase = get('gen');
+	//if (genCase) gen = genCase;
+	// need to get gen for each run
+}
 
 // *****shift solar profile to central standard time***** //
-tz = -5;
-hoursForward = -(tz + 6);
+hoursForward = (tz + 6);
 for (r=0; r< nPlants; r++) {
 	if (hoursForward > 0 ) {
 		tmp = [];
@@ -106,16 +130,20 @@ for (r=0; r< nPlants; r++) {
 }
 
 // *****apply daylight savings to solar profile***** //
-hourStartDST =  1657;	// estimated date of second Sunday of March: 11
-hourEndDST = 7345;		// estimated date of first Sunday of Nov: 3
+if (applyDaylightSavings){
+	hourStartDST =  1657;	// estimated date of second Sunday of March: 11
+	hourEndDST = 7345;		// estimated date of first Sunday of Nov: 3
 
-for (r=0; r<nPlants; r++){
-	for (y=0; y<projectLife; y++){
-		for (h=hourEndDST+10*y; h>hourStartDST+10*y; h--){
-			gen[h][r+1] = gen[h-1][r+1];
+	for (r=0; r<nPlants; r++){
+		for (y=0; y<projectLife; y++){
+			for (h=hourStartDST+8760*y; h<hourEndDST+8760*y; h++){
+				gen[h][r+1] = gen[h+1][r+1];
+			}
 		}
 	}
 }
+
+for (i=0; i<8760; i++) outln(gen[i+8760]);
 
 // *****per-year calcuations for each plant***** //
 function colSum(data, col, rowStart, rowEnd){
