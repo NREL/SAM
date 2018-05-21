@@ -142,6 +142,7 @@ public:
 	void DeleteSetup(wxString &var_name);
 	void UpdateNumberRows(int rows);
 	bool RunSimulations_single();
+	bool ImportData(wxArrayString& vals);
 	bool Generate_lk();
 	bool RunSimulations_multi();
 	void ClearResults(int row);
@@ -231,9 +232,10 @@ private:
 
 	void ShowAllData();
 
+	void ImportData(wxArrayString& vals, int& row, int& col);
 	void CopyToClipboard();
-	void getFromCSV(const wxString& input_name);
-	void getFromExcel(const wxString& input_name);
+	wxArrayString getFromCSV(const wxString& input_name, int& rows, int& cols);
+	wxArrayString getFromExcel(const wxString& input_name, int& rows, int& cols);
 	void SaveToCSV();
 	void SendToExcel();
 	void GetTextData(wxString &dat, char sep);
