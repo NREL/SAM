@@ -1,5 +1,5 @@
 /*@
-Soco
+
 @*/
 //@ name=plantCostInput;type=filename;label=Import Plant Cost;value=|csv,xlsx;
 //@ name=avoidedCostInput;type=filename;label=Import Avoided Cost;value=|csv,xlsx;
