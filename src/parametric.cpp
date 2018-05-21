@@ -463,16 +463,18 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 	{
 	case ID_IMPORT:
 	{
-		wxFileDialog openFileDialog(this, ("Open parametric table file"), "", "", "csv and excel files (*.csv; *.xlsx)|*.xyz; *.xlsx", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+		wxFileDialog openFileDialog(this, ("Open parametric table file"), "", "", "csv and excel files (*.csv; *.xlsx)|*.csv; *.xlsx", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 		if (openFileDialog.ShowModal() == wxID_CANCEL) return;
 		wxArrayString filePath = wxSplit(openFileDialog.GetPath(), '.');
+		wxArrayString vals;
+		int row, col;
 		if (filePath[filePath.GetCount()-1].IsSameAs("xlsx", false)) {
-			getFromExcel(openFileDialog.GetPath());
+			vals = getFromExcel(openFileDialog.GetPath(), row, col);
 		}
 		else {
-			getFromCSV(openFileDialog.GetPath());
+			vals = getFromCSV(openFileDialog.GetPath(), row, col);
 		}
-		// recalculate all
+		ImportData(vals, row, col);
 		m_grid->SetTable(m_grid_data);
 		UpdateGrid();
 		break;
@@ -638,42 +640,13 @@ void ParametricViewer::GetTextData(wxString &dat, char sep)
 	}
 }
 
-
-void ParametricViewer::CopyToClipboard()
-{
-	wxBusyInfo busy("Processing data table... please wait");
-	wxString dat;
-	GetTextData(dat, '\t');
-
-	// strip commas per request from Paul 5/23/12 meeting
-	dat.Replace(",", "");
-
-	if (wxTheClipboard->Open())
-	{
-		wxTheClipboard->SetData(new wxTextDataObject(dat));
-		wxTheClipboard->Close();
-	}
-}
-
-void ParametricViewer::getFromCSV(const wxString& input_name) {
-
-}
-
-void ParametricViewer::getFromExcel(const wxString& input_name) {
-	wxArrayString vals;
-	wxExcelAutomation xl;
-	xl.StartExcel();
-	xl.OpenFile(input_name);
-	int row, col;
-	xl.getUsedCellRange(row, col, vals);
-	xl.CloseAllNoSave();
-
+void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	wxArrayString inputNames, outputNames;
 	// check if var is input or output variable
 	wxArrayString names, labels, units, groups;
 	Simulation::ListAllOutputs(m_case->GetConfiguration(),
 		&names, &labels, &units, &groups);
-	for (size_t c = 0; c < col; c++) {
+	for (int c = 0; c < col; c++) {
 		wxArrayString splitUnit = wxSplit(vals[c*row], '(');
 		wxArrayString splitGroup = wxSplit(splitUnit[0], '/');
 		wxString name = splitGroup.Count() > 1 ? splitGroup[1] : splitGroup[0];
@@ -685,12 +658,12 @@ void ParametricViewer::getFromExcel(const wxString& input_name) {
 		{
 			wxString label = it->second->Label;
 			if (name.IsSameAs(label, false)) {
-				if ((it->second->Flags & VF_PARAMETRIC) && !(it->second->Flags & VF_INDICATOR) && !(it->second->Flags & VF_CALCULATED)){
+				if ((it->second->Flags & VF_PARAMETRIC) && !(it->second->Flags & VF_INDICATOR) && !(it->second->Flags & VF_CALCULATED)) {
 					found = true;
 					name = it->first;
 					std::vector<VarValue> vvv;
 					ParametricData::Var pv;
-					for (size_t r = 1; r < row; r++) {
+					for (int r = 1; r < row; r++) {
 						if (vals[c*col + r].size() > 0) {
 							double valNum = 0.0;
 							if (vals[c*col + r].ToDouble(&valNum)) {
@@ -734,6 +707,48 @@ void ParametricViewer::getFromExcel(const wxString& input_name) {
 	m_output_names = outputNames;
 	m_grid_data->UpdateInputs(inputNames);
 	m_grid_data->UpdateOutputs(outputNames);
+}
+
+void ParametricViewer::CopyToClipboard()
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat;
+	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+	dat.Replace(",", "");
+
+	if (wxTheClipboard->Open())
+	{
+		wxTheClipboard->SetData(new wxTextDataObject(dat));
+		wxTheClipboard->Close();
+	}
+}
+
+wxArrayString ParametricViewer::getFromCSV(const wxString& input_name, int& row, int& col) {
+	wxArrayString vals;
+	wxCSVData csv;
+	csv.SetSeparator(',');
+	csv.ReadFile(input_name);
+	row = csv.NumRows();
+	col = csv.NumCols();
+	for (int c = 0; c < col; c++) {
+		for (int r = 0; r < row; r++) {
+			vals.push_back(csv(r, c));
+		}
+	}
+	csv.Clear();
+	return vals;
+}
+
+wxArrayString ParametricViewer::getFromExcel(const wxString& input_name, int& row, int& col) {
+	wxArrayString vals;
+	wxExcelAutomation xl;
+	xl.StartExcel();
+	xl.OpenFile(input_name);
+	xl.getUsedCellRange(row, col, vals);
+	xl.CloseAllNoSave();
+	return vals;
 }
 
 void ParametricViewer::SaveToCSV()
@@ -1367,7 +1382,6 @@ wxString ParametricGridData::GetColLabelValue(int col)
 
 bool ParametricGridData::IsValid(const ParametricData::Var& pv) {
 	VarValue* vv = m_par.GetCase()->BaseCase().GetInput(pv.Name);
-	//VarValue* vv = &m_par.GetCase().
 	if (vv == nullptr) {
 		return false;
 	}
@@ -2128,7 +2142,6 @@ bool ParametricGridData::RunSimulations_single()
 	}
 	return true;
 }
-
 
 
 bool ParametricGridData::Generate_lk()
