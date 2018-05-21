@@ -125,6 +125,7 @@ public:
 
 	bool IsInput(int col);
 	bool IsInput(wxString &var_name);
+	bool IsValid(const ParametricData::Var& pv);
 	VarInfo* GetVarInfo(int row, int col);
 	void SetVarInfo(int row, int col, VarInfo *vi);
 	VarValue* GetVarValue(int row, int col);
@@ -231,6 +232,8 @@ private:
 	void ShowAllData();
 
 	void CopyToClipboard();
+	void getFromCSV(const wxString& input_name);
+	void getFromExcel(const wxString& input_name);
 	void SaveToCSV();
 	void SendToExcel();
 	void GetTextData(wxString &dat, char sep);
