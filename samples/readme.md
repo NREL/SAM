@@ -16,7 +16,7 @@ These LK scripts run from the script editor in SAM.
 
 2. Start SAM and open or create a .sam file.
 
-3. On the <strong>File</strong> menu, click <strong>Open script</script> and open the .lk file.
+3. On the <strong>File</strong> menu, click <strong>Open script</strong> and open the .lk file.
 
 4. Click <strong>Run</strong> at the top of the script editor.
 
