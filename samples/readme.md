@@ -26,9 +26,13 @@ These are files created with SAM's 3D Shade Calculator to show how to use shade 
 
 ### To open a sample shade scene file:
 
-1. Start SAM and open or create a .sam file with a Detailed Photovoltaic, PVWatts, or Solar Water Heating case.
+1. Download the .s3d file from the 3D Shade Scene Files folder.
 
-2. Click <strong>Open 3d shade calculator</strong> on the Shading and Snow page (Detailed Photovoltaic model), System Design page (PVWatts model), or Solar Water Heating page (Solar Water Heating model).
+2. Start SAM and open or create a .sam file with a Detailed Photovoltaic, PVWatts, or Solar Water Heating case.
+
+3. Click <strong>Open 3d shade calculator</strong> on the Shading and Snow page (Detailed Photovoltaic model), System Design page (PVWatts model), or Solar Water Heating page (Solar Water Heating model).
+
+4. In the Edit 3D Shading Scene window, click <strong>Import</strong> and navigate to the .s3d file you downloaded in Step 1.
 
 To use the files in a SAM simulation, you will need to add active surfaces to represent a photovoltaic array or solar water heating collector and ensure that the dimensions, orientation and other properties of the active surface matches the parameters in SAM.
 
