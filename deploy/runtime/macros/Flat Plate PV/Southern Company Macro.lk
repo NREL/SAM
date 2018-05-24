@@ -1,70 +1,126 @@
 /*@
 
 @*/
-//@ name=plantCostInput;type=filename;label=Import Plant Cost;value=|csv,xlsx;
-//@ name=avoidedCostInput;type=filename;label=Import Avoided Cost;value=|csv,xlsx;
-//@ name=capWorthInput;type=filename;label=Import Capacity Worth Factor;value=|csv,xlsx;
-//@ name=capPriceInput;type=filename;label=Import Capacity Price Forecast;value=|csv,xlsx;
-//@ name=rcbAnnualInput;type=filename;label=Import RCB Annual Values;value=|csv,xlsx;
-//@ name=startYearInput;type=number;label=Energy Budget Start Year;value=1;
+//@ name=plantCostInput;type=filename;label=Import Plant Cost;value=|xlsx;
+//@ name=avoidedCostInput;type=filename;label=Import Avoided Cost;value=|xlsx;
+//@ name=capWorthInput;type=filename;label=Import Capacity Worth Factor;value=|xlsx;
+//@ name=capPriceInput;type=filename;label=Import Capacity Price Forecast;value=|xlsx;
+//@ name=rcbAnnualInput;type=filename;label=Import RCB Annual Values;value=|xlsx;
+//@ name=startYearInput;type=number;label=Energy Budget Start Year;value=2018;
 //@ name=projectLifeInput;type=number;label=Project Life (yrs);
 //@ name=lifetimeInput;type=combo;label=Run Full Lifetime;value=Yes,No;sel=0
 //@ name=hurdleRateInput;type=number;label=Hurdle Rate (%);
 //@ name=transmissionInput;type=number;label=Transmission Loss Correction Factor(%);
 //@ name=daylightSavingsInput;type=combo;label=Apply Daylight Savings;value=Yes,No;sel=0
-//@ name=timezoneInput;type=combo;label=Time Zone of Energy Budget;value=-6,Same as weatherfile;sel=0
+//@ name=timezoneInput;type=combo;label=Time Zone of Energy Budget;value=Same as weather,HST (UTC-10),AKST (UTC-9),PST (UTC-8),MST (UTC-7),CST (UTC-6),EST (UTC-5);sel=5
 
 // general inputs
-hurdleRate = 0.075;
-startYear = 5;
-projectLife = 25;
-transmissionLoss = 0.012;
-tz = -5;
-useLifetime = true;
-adjustTimeZone = true;
-applyDaylightSavings = true;
+//hurdleRate = 0.075;
+//startYear = 5;
+//projectLife = 25;
+//transmissionLoss = 0.012;
+//tz = -5;
+//useLifetime = true;
+//adjustTimeZone = true;
+//applyDaylightSavings = true;
 
-plantCostFile = '';
-avoidedCostFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Avoided_Cost.csv';
-capPriceFcastFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Cap_Price_Fcast.csv';
-capWorthFactorFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Cap_Worth_Factor.csv';
-RCBAnnualFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/RCB_Annual.csv';
-genFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Solar_Profile.csv';
+//plantCostFile = '';
+//avoidedCostFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Avoided_Cost.csv';
+//capPriceFcastFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Cap_Price_Fcast.csv';
+//capWorthFactorFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/Cap_Worth_Factor.csv';
+//RCBAnnualFile = 'C:/Users/dguittet/Documents/Southern Company Scripting/RCB_Annual.csv';
 
-// *****Get input variables from interface***** //
-if (typeof(macro) != 'unknown') {
-	plantCostFile = macro.plantCostInput;
-	avoidedCostFile = macro.avoidedCostInput;
-	capWorthFactorFile = macro.capWorthInput;
-	capPriceFcastFile = macro.capPriceInput;
-	RCBAnnualFile = macro.rcbAnnualInput;
-	startYear = macro.startYearInput;
-	projectLife = macro.projectLifeInput;
-	useLifetime = macro.lifetimeInput;
-	hurdleRateInput = macro.hurdleRateInput;
-	transmissionLoss = macro.transmissionInput;
-	applyDaylightSavings = macro.daylightSayingsInput;
-	if (macro.timezoneInput != '-6') adjustTimeZone = false;
-	if (active_case()){
-		wfFile = get('solar_resource_file');
-		wfData = ssc_create();
-		ssc_var(wfData, 'file_name', wfFile);
-		ssc_var(wfData, 'header_only', 1);
-		result = ssc_exec(wfData, 'wfreader');
-		if (result == 0){
-			tz = ssc_var(wfData, 'tz');
-			outln(tz);
-		}
-		else{
-			outln('Error in reading selected weather resource file.');
-			exit;
-		}
+// get array from Excel file by row- or column-major order
+function getFromFile(file, order, skip){
+	if (!file_exists(file)) {
+		if (#file > 0) outln('Input file error: ' + file + ' does not exist.');
+		else outln('Input file missing.');
+		exit;
+	}
+	if (ext_only(file) == 'xlsx'){
+		XL = xl_create(file);
+		data = xl_read(XL, {'skip'=skip, 'numeric'=1, 'order'=order});
+		xl_free(XL);
+		xl_close(XL);
+		return data;
 	}
 }
 
-if (startYear + projectLife > 51) {
+// *****Get input variables from interface***** //
+if (typeof(macro) == 'unknown') {
+	outln("error: macro must be run from a case");
+	exit;
+}
+
+if (get("inverter_model") != 1){
+	outln("Inverter model set to 'Inverter Datasheet'");
+	set("inverter_model", 1);
+}
+if (get("inv_ds_eff_type") != 1){
+	outln("Inverter efficiency type set to 'Manufacturer efficiency'");
+	set("inv_ds_eff_type", 1);
+}
+
+set("system_use_lifetime_output",0);
+set("analysis_period",25);
+set("pv_lifetime_simulation",0);
+outln(get("pv_lifetime_simulation"));
+errorString = "";
+simSuccess = simulate(errorString);
+outln(errorString);
+outln(get("gen"));
+gen = parametric_get("gen");
+outln(gen);
+exit;
+// process files
+plantCostFile = macro.plantCostInput;
+avoidedCostFile = macro.avoidedCostInput;
+capWorthFactorFile = macro.capWorthInput;
+capPriceFcastFile = macro.capPriceInput;
+RCBAnnualFile = macro.rcbAnnualInput;
+
+avoidedCost = getFromFile(avoidedCostFile, 'c', 0);
+plantCost = getFromFile(plantCostFile, 'r', 1);
+capPriceFcast = getFromFile(capPriceFcastFile, 'r', 1);
+capWorthFactor = getFromFile(capWorthFactorFile, 'c', 1);
+RCBAnnual = getFromFile(RCBAnnualFile, 'r', 1);
+
+startYear = macro.startYearInput;
+projectLife = macro.projectLifeInput;
+
+maxYear = max(RCBAnnual[#RCBAnnual-1][0], capPriceFcast[#capPriceFcast-1][0], avoidedCost[#avoidedCost-1][0]);
+if (startYear + projectLife > maxYear + 1) {
 	outln("Starting year plus project lifetime length exceeds available budget data.");
 	exit;
+}
+
+useLifetime = (macro.lifetimeInput == "Yes") ? true: false;
+hurdleRateInput = macro.hurdleRateInput;
+transmissionLoss = macro.transmissionInput;
+applyDaylightSavings = (macro.daylightSavingsInput == "Yes") ? true: false;
+
+adjustTimeZone = true;
+if (macro.timezoneInput == "Same as weather") adjustTimeZone = false;
+if (useLifetime){
+	//parametric_set("system_use_lifetime_output",1);
+	//parametric_set("analysis_period", projectLife);
+	x = 0;
+}
+
+errorString = "";
+
+
+simSuccess = simulate(errorString);
+if (simSuccess == 0 ){
+	outln(errorString);
+	exit;
+} 
+
+gen = parametric_get("gen");
+tz = parametric_get("tz");
+
+if (#tz != #plantCost){
+	outln("Number of rows in parametric table, " + #tz + ", not equal to number of runs in PlantCost, " + #plantCost);
 }
 
 // plant specs
@@ -90,30 +146,7 @@ ppaAnnual = [[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5, 30, 30.5, 31, 31
 
 
 
-// get data from .csv
-// first element of each row is index, values start at 2nd column
 
-function getFromFile(file){
-	if (!file_exists(file)) {
-		if (#file > 0) outln('Input file error: ' + file + ' does not exist.');
-		else outln('Input file missing.');
-		exit;
-	}
-	if (ext_only(file) == 'csv'){
-		data = csvread(file, {'skip'=1, 'numeric'=1});
-		return data;
-	}
-	else if (ext_only(file) == 'xlsx'){
-		data = xl_read(file, {'skip'=1, 'numeric'=1});
-		return data;
-	}
-}
-
-avoidedCost = getFromFile(avoidedCostFile);
-capPriceFcast = getFromFile(capPriceFcastFile);
-capWorthFactor = getFromFile(capWorthFactorFile);
-RCBAnnual = getFromFile(RCBAnnualFile);
-gen = getFromFile(genFile);
 
 // test gen to make sure project life = gen/8760
 if (active_case()){

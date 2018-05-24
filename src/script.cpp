@@ -276,7 +276,10 @@ public:
 	static void Cancel() { sg_scriptSimCancel = true; }
 };
 
-
+static void fcall_parametric_run(lk::invoke_t &cxt) 
+{
+	LK_DOC("parametric_run", "Run the parametrics for the currently active case, returns 0 if no errors.  Errors and warnings are optinally returned in the first parameter.", "( [string:messages] ):boolean");
+}
 
 static void fcall_simulate( lk::invoke_t &cxt )
 {

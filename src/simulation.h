@@ -123,6 +123,7 @@ public:
 	void SetName( const wxString &s ) { m_name = s; }
 	wxString GetName() { return m_name; }
 	VarValue *GetInput( const wxString &name );
+	void SetInput(const wxString & name, lk::vardata_t val);
 
 	// generate code
 	bool Generate_lk(FILE *fp);

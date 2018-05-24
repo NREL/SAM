@@ -4085,6 +4085,88 @@ void fcall_step_result( lk::invoke_t &cxt )
 		cxt.error("invalid step-obj-ref");
 }
 
+void fcall_parametric_set(lk::invoke_t &cxt)
+{
+	LK_DOC("parametric_set", "Sets input variable for i-th parametric simulation within the current case", "(string: output variable, number:index, variant:value):none");
+
+	Case *c = SamApp::Window()->GetCurrentCase();
+	if (!c) {
+		cxt.error("no case found");
+		return;
+	}
+
+	int i = cxt.arg(1).as_integer();
+	Simulation* sim = c->Parametric().Runs[i];
+	
+
+}
+
+void fcall_parametric_get(lk::invoke_t &cxt)
+{
+	LK_DOC("parametric_get", "Returns array of output variable from parametric simulation within the current case, or the output from a single run", "(string: output variable, {number:index}):variant");
+	
+	Case *c = SamApp::Window()->GetCurrentCase();
+	if (!c) {
+		cxt.error("no case found");
+		return;
+	}
+
+	std::vector<Simulation*> sims = c->Parametric().Runs;
+	lk::vardata_t &out = cxt.result();
+	out.empty_vector();
+	out.vec()->resize(sims.size());
+	wxString vName = cxt.arg(0).as_string();
+	VarValue* vv = sims[0]->GetValue(vName);
+	if (!vv) return;
+	if (vv->Type() == VV_STRING) {
+		for (size_t i = 0; i < sims.size(); i++) {
+			wxString val = sims[i]->GetValue(cxt.arg(0).as_string())->String();
+			out.index(i)->assign(val);
+		}
+	}
+	else if (vv->Type() == VV_NUMBER) {
+		for (size_t i = 0; i < sims.size(); i++) {
+			float val = sims[i]->GetValue(cxt.arg(0).as_string())->Value();
+			out.index(i)->assign(val);
+		}
+	}
+	else if (vv->Type() == VV_ARRAY) {
+		size_t n = 0;
+		for (size_t i = 0; i < sims.size(); i++) {
+			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Array(&n);
+			lk::vardata_t *row = out.index(i);
+			row->empty_vector();
+			row->vec()->resize(n);
+			for (size_t j = 0; j < n; j++)
+				row->index(j)->assign(val[j]);
+		}
+	}
+	else if (vv->Type() == VV_MATRIX) {
+		size_t r = 0;
+		size_t c = 0;
+		for (size_t i = 0; i < sims.size(); i++) {
+			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Matrix(&r, &c);
+			lk::vardata_t *rows = out.index(i);
+			rows->empty_vector();
+			rows->vec()->resize(r);
+			for (size_t n = 0; n < r; n++) {
+				lk::vardata_t *col = rows->index(n);
+				col->empty_vector();
+				col->vec()->resize(c);
+				for (size_t m = 0; m < c; m++) {
+					col->index(m)->assign(val[ n*c+m ]);				
+				}
+			}
+		}
+	}
+	else {
+		cxt.error("variable type is not string, number, array or matrix.");
+	}
+	
+
+	
+
+}
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -4123,6 +4205,8 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_lhs_run,
 		fcall_lhs_error,
 		fcall_lhs_vector,
+		fcall_parametric_set,
+		fcall_parametric_get,
 		fcall_step_create,
 		fcall_step_free,
 		fcall_step_vector,

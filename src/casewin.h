@@ -86,6 +86,7 @@ public:
 	virtual ~CaseWindow();
 
 	Case *GetCase() { return m_case; }
+	ParametricViewer* GetParametricViewer() { return m_parametrics; }
 
 	void UpdateConfiguration();
 
