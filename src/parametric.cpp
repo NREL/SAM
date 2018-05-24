@@ -664,14 +664,14 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					std::vector<VarValue> vvv;
 					ParametricData::Var pv;
 					for (int r = 1; r < row; r++) {
-						if (vals[c*col + r].size() > 0) {
+						if (vals[c*row + r].size() > 0) {
 							double valNum = 0.0;
-							if (vals[c*col + r].ToDouble(&valNum)) {
+							if (vals[c*row + r].ToDouble(&valNum)) {
 								VarValue vv((float)valNum);
 								vvv.push_back(vv);
 							}
 							else {
-								VarValue vv(vals[c*col + r]);
+								VarValue vv(vals[c*row + r]);
 								vvv.push_back(vv);
 							}
 						}
@@ -707,6 +707,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	m_output_names = outputNames;
 	m_grid_data->UpdateInputs(inputNames);
 	m_grid_data->UpdateOutputs(outputNames);
+	m_grid_data->UpdateNumberRows(row-1);
 }
 
 void ParametricViewer::CopyToClipboard()
@@ -1041,7 +1042,7 @@ void ParametricViewer::RunSimulations()
 	// check that inputs and outputs are selected
 	if ((m_input_names.Count() <= 0) || (m_output_names.Count() <= 0))
 	{
-		wxMessageBox("You must set up parametric inputs and outputs before runing parametric simulations.", "Incomplete parametric setup");
+		wxMessageBox("You must set up parametric inputs and outputs before running parametric simulations.", "Incomplete parametric setup");
 		return;
 	}
 
