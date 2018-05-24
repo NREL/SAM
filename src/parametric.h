@@ -142,7 +142,6 @@ public:
 	void DeleteSetup(wxString &var_name);
 	void UpdateNumberRows(int rows);
 	bool RunSimulations_single();
-	bool ImportData(wxArrayString& vals);
 	bool Generate_lk();
 	bool RunSimulations_multi();
 	void ClearResults(int row);
