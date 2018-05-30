@@ -4085,6 +4085,20 @@ void fcall_step_result( lk::invoke_t &cxt )
 		cxt.error("invalid step-obj-ref");
 }
 
+static void fcall_parametric_run(lk::invoke_t &cxt)
+{
+	LK_DOC("parametric_run", "Run the parametrics for the currently active case, returns 0 if no errors.  Errors and warnings are optinally returned in the first parameter.", "( [string:messages] ):boolean");
+
+	CaseWindow *cw = SamApp::Window()->GetCurrentCaseWindow();
+	if (!cw) {
+		cxt.error("no case found");
+		cxt.result().assign(1.0);
+		return;
+	}
+	cw->GetParametricViewer()->RunSimulationsFromMacro();
+	cxt.result().assign(0.0);
+}
+
 void fcall_parametric_set(lk::invoke_t &cxt)
 {
 	LK_DOC("parametric_set", "Sets input variable for i-th parametric simulation within the current case", "(string: output variable, number:index, variant:value):none");
@@ -4162,10 +4176,6 @@ void fcall_parametric_get(lk::invoke_t &cxt)
 	else {
 		cxt.error("variable type is not string, number, array or matrix.");
 	}
-	
-
-	
-
 }
 lk::fcall_t* invoke_general_funcs()
 {
@@ -4207,6 +4217,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_lhs_vector,
 		fcall_parametric_set,
 		fcall_parametric_get,
+		fcall_parametric_run,
 		fcall_step_create,
 		fcall_step_free,
 		fcall_step_vector,
