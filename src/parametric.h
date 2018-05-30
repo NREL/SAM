@@ -207,6 +207,8 @@ public:
 	void SetGraphs(std::vector<Graph> &gl);
 	void GetGraphs(std::vector<Graph> &gl);
 
+	wxString RunSimulationsFromMacro();
+
 private:
 	void OnCommand(wxCommandEvent &evt);
 	void OnGridColLabelRightClick(wxGridEvent &evt);

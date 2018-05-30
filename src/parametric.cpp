@@ -456,6 +456,20 @@ void ParametricViewer::SetCurrent(GraphCtrl *gc)
 
 }
 
+wxString ParametricViewer::RunSimulationsFromMacro()
+{
+	if ((m_input_names.Count() <= 0) || (m_output_names.Count() <= 0))
+	{
+		return("You must set up parametric inputs and outputs before running parametric simulations.", "Incomplete parametric setup");
+	}
+
+	RemoveAllPlots();
+	m_grid_data->RunSimulations_multi();
+	AddAllPlots();
+	UpdateGrid();
+
+	return wxString();
+}
 
 void ParametricViewer::OnCommand(wxCommandEvent &evt)
 {
