@@ -303,6 +303,7 @@ set_env_*
 webup/*
 deploy/runtime/patches/*
 deploy/runtime/macros/Flat Plate PV/Southern Company Macro.lk
+deploy/runtime/macros/Flat Plate PV/SoCoMacro.lk
 deploy/webapis.conf
 src/registration*
 resource/nrel*
