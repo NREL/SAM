@@ -760,8 +760,12 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 		if (!found) {
 			for (size_t i = 0; i<labels.size(); i++)
 			{
-				wxString l = labels[i];
 				if (name.IsSameAs(labels[i], false)) {
+					found = true;
+					outputNames.push_back(names[i]);
+					break;
+				}
+				else if (name.IsSameAs(names[i], false)) {
 					found = true;
 					outputNames.push_back(names[i]);
 					break;
@@ -769,7 +773,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 			}
 		}
 		if (!found) {
-			wxMessageBox("Error: could not identify parametric input " + vals[c*row]);
+			wxMessageBox("Error: could not identify parametric variable " + vals[c*row]);
 			continue;
 		}
 	}
