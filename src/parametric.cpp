@@ -680,13 +680,69 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					for (int r = 1; r < row; r++) {
 						if (vals[c*row + r].size() > 0) {
 							double valNum = 0.0;
+							// check if number or string
 							if (vals[c*row + r].ToDouble(&valNum)) {
 								VarValue vv((float)valNum);
 								vvv.push_back(vv);
 							}
 							else {
-								VarValue vv(vals[c*row + r]);
-								vvv.push_back(vv);
+								// check if string is encoding a matrix
+								wxArrayString rows = wxSplit(vals[c*row + r], '[');
+								if (rows.Count() > 1) {
+									bool nums = true;
+									size_t nr = rows.Count() - 1;
+									size_t nc = -1;
+									float* vals = nullptr;
+									for (size_t i = 0; i < nr; i++) {
+										if (rows[i+1].Find(']') != -1 && nums) {
+											wxArrayString entries = wxSplit(rows[i+1].SubString(0,rows[i+1].Len()-2), ';');
+											if (i == 0) {
+												nc = entries.Count();
+												vals = new float[nr * nc];
+											}
+											for (size_t j = 0; j < nc; j++) {
+												if (entries[j].ToDouble(&valNum)) {
+													vals[i*nc + j] = valNum;
+												}
+												else {
+													nums = false;
+													break;
+												}
+											}
+										}
+										else {
+											break;
+										}
+									}
+									if (nums && (nc > 0)) {
+										VarValue vv(vals, nr, nc);
+										vvv.push_back(vv);
+									}
+								}
+								else {
+									// check if string is encoding an array
+									wxArrayString entries = wxSplit(vals[c*row + r], ';');
+									bool nums = true;
+									std::vector<float> arr;
+									for (size_t i = 0; i < entries.Count(); i++) {
+										if (entries[i].ToDouble(&valNum)) {
+											arr.push_back(valNum);
+										}
+										else {
+											nums = false;
+											break;
+										}
+									}
+									if (nums) {
+										VarValue vv(arr);
+										vvv.push_back(vv);
+									}
+									// string
+									else {
+										VarValue vv(vals[c*row + r]);
+										vvv.push_back(vv);
+									}
+								}
 							}
 						}
 					}
