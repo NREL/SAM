@@ -754,9 +754,12 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					if (!m_grid_data->IsValid(pv)) {
 						wxString typeS = m_case->BaseCase().GetInput(pv.Name)->TypeAsString();
 						wxString typeS2 = pv.Values[0].TypeAsString();
-						wxString errorStr = "Warning: Value type of " + vals[c*row] + " is {" + typeS2 + "}, should be {" + typeS + "}.";
-						// some variables may be {number} or {array}
-						if (typeS != "array" && typeS2 != "number") wxMessageBox(errorStr);
+						wxString errorStr = "Import Error: Value type of " + vals[c*row] + " is {" + typeS2 + "}, should be {" + typeS + "}.";
+						// some variables listed as {array} but can be single-value number
+						if (typeS != "array" && typeS2 != "number") {
+							errorStr += "\nTip: Insert ';' after a number to convert it to a single-entry array.";
+						}
+						wxMessageBox(errorStr);
 					}
 					m_grid_data->AddSetup(pv);
 					inputNames.push_back(name);
