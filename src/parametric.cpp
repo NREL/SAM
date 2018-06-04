@@ -655,6 +655,7 @@ void ParametricViewer::GetTextData(wxString &dat, char sep)
 }
 
 void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
+	m_grid_data->UpdateInputs(wxArrayString());
 	wxArrayString inputNames, outputNames;
 	// check if var is input or output variable
 	wxArrayString names, labels, units, groups;
@@ -722,9 +723,10 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 								else {
 									// check if string is encoding an array
 									wxArrayString entries = wxSplit(vals[c*row + r], ';');
-									bool nums = true;
+									bool nums = false;
 									std::vector<float> arr;
-									for (size_t i = 0; i < entries.Count(); i++) {
+									for (size_t i = 0; i < entries.Count()-1; i++) {
+										if (i == 0) nums = true;
 										if (entries[i].ToDouble(&valNum)) {
 											arr.push_back(valNum);
 										}
