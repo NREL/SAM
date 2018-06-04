@@ -756,7 +756,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 						wxString typeS2 = pv.Values[0].TypeAsString();
 						wxString errorStr = "Import Error: Value type of " + vals[c*row] + " is {" + typeS2 + "}, should be {" + typeS + "}.";
 						// some variables listed as {array} but can be single-value number
-						if (typeS != "array" && typeS2 != "number") {
+						if (typeS == "array" && typeS2 == "number") {
 							errorStr += "\nTip: Insert ';' after a number to convert it to a single-entry array.";
 						}
 						wxMessageBox(errorStr);
