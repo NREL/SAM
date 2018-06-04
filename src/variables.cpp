@@ -552,6 +552,17 @@ bool VarValue::Read( wxInputStream &_I )
 }
 	
 int VarValue::Type() const { return m_type; }
+wxString VarValue::TypeAsString() const {
+	switch (m_type) {
+	case VV_INVALID: return wxString("invalid");
+	case VV_NUMBER: return wxString("number");
+	case VV_ARRAY: return wxString("array");
+	case VV_MATRIX: return wxString("matrix");
+	case VV_STRING: return wxString("string");
+	case VV_BINARY: return wxString("binary");
+	case VV_TABLE: return wxString("table");
+	}
+}
 void VarValue::ChangeType(int type) { m_type = type; }
 void VarValue::SetType( int ty ) { m_type = ty; }
 void VarValue::Set( int val ) { m_type = VV_NUMBER; m_val = (float)val; }

@@ -477,6 +477,8 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 	{
 	case ID_IMPORT:
 	{
+		wxArrayString empty;
+		m_grid_data->UpdateInputs(empty);
 		wxFileDialog openFileDialog(this, ("Open parametric table file"), "", "", "csv and excel files (*.csv; *.xlsx)|*.csv; *.xlsx", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 		if (openFileDialog.ShowModal() == wxID_CANCEL) return;
 		wxArrayString filePath = wxSplit(openFileDialog.GetPath(), '.');
@@ -655,7 +657,6 @@ void ParametricViewer::GetTextData(wxString &dat, char sep)
 }
 
 void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
-	m_grid_data->UpdateInputs(wxArrayString());
 	wxArrayString inputNames, outputNames;
 	// check if var is input or output variable
 	wxArrayString names, labels, units, groups;
@@ -692,18 +693,18 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 								if (rows.Count() > 1) {
 									bool nums = true;
 									size_t nr = rows.Count() - 1;
-									size_t nc = -1;
-									float* vals = nullptr;
+									size_t nc = 0;
+									float* valArr = nullptr;
 									for (size_t i = 0; i < nr; i++) {
 										if (rows[i+1].Find(']') != -1 && nums) {
 											wxArrayString entries = wxSplit(rows[i+1].SubString(0,rows[i+1].Len()-2), ';');
 											if (i == 0) {
 												nc = entries.Count();
-												vals = new float[nr * nc];
+												valArr = new float[nr * nc];
 											}
 											for (size_t j = 0; j < nc; j++) {
 												if (entries[j].ToDouble(&valNum)) {
-													vals[i*nc + j] = valNum;
+													valArr[i*nc + j] = valNum;
 												}
 												else {
 													nums = false;
@@ -716,7 +717,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 										}
 									}
 									if (nums && (nc > 0)) {
-										VarValue vv(vals, nr, nc);
+										VarValue vv(valArr, nr, nc);
 										vvv.push_back(vv);
 									}
 								}
@@ -751,7 +752,11 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					pv.Values = vvv;
 					pv.Name = name;
 					if (!m_grid_data->IsValid(pv)) {
-						wxMessageBox("Error: incorrect value type for " + vals[c*row]);
+						wxString typeS = m_case->BaseCase().GetInput(pv.Name)->TypeAsString();
+						wxString typeS2 = pv.Values[0].TypeAsString();
+						wxString errorStr = "Warning: Value type of " + vals[c*row] + " is {" + typeS2 + "}, should be {" + typeS + "}.";
+						// some variables may be {number} or {array}
+						if (typeS != "array" && typeS2 != "number") wxMessageBox(errorStr);
 					}
 					m_grid_data->AddSetup(pv);
 					inputNames.push_back(name);
@@ -783,6 +788,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	m_output_names = outputNames;
 	m_grid_data->UpdateInputs(inputNames);
 	m_grid_data->UpdateOutputs(outputNames);
+	m_num_runs_ctrl->SetValue(row - 1);
 	m_grid_data->UpdateNumberRows(row-1);
 }
 
