@@ -5,8 +5,16 @@
 Locations can be specified as latitudes and longitudes or as addresses. 
 <br><br>
 Input:<br><ul>
-<li>CSV file with the relevent column headers (depending on Location mode): lat, lon, address.
-and rows containing the desired location data
+<li>CSV file with the relevent column headers (depending on Location mode): lat, lon, address, dataset.
+and rows containing the desired location data. <br/>
+As an example, here is the header line and a subsequent rows of data <br/>
+	<br/>
+	lat, lon, address, dataset <br/>
+	39.7444, -105.152, 15013 Denver W Pkwy Golden CO, tmy <br/>
+	38.8977, -77.0365, 2013 <br/>
+	<br/>
+The NSRDB typically supports years of 1998 - 2016 for the dataset (in addition to tmy). <br/>
+If the year input falls out of those ranges, a warning will be issued <br/>
 <li>Output folder
 <li>Location mode: Select whether data is specified as latitude and longitude or address.
 <li>Desired weather data interval.  Select 30-minute or 60-minute
@@ -26,24 +34,27 @@ Output:<br><ul>
 //@ name=interval;type=combo;label=Desired interval (minutes):;value=30,60;sel=1;
 
 
-function get_nsrdb( lat, lon, location_output, interval)
+function get_nsrdb( lat, lon, dataset, location_output, interval)
 {
 	valid = to_real(lat) >= -90 && to_real(lat) <= 90 && to_real(lon) >= -180 && to_real(lon) <= 180;
 	if ( !valid )
 		return 'Lat/lon not valid';
-	dataset = 'tmy';
 	url = webapi( 'nsrdb_download' );
 	url = replace(url, '<LON>', lon );
 	url = replace(url, '<LAT>', lat );
 	url = replace(url, '<DATASET>', dataset );
 	url = replace(url, '<INTERVAL>', interval);
 	
-	outln(url);
-	name = to_string(lat) + '_' + to_string(lon) + '.csv';
+	//outln(url);
+	name = to_string(lat) + '_' + to_string(lon) + '_' + to_string(dataset) + '.csv';
 	wf = location_output + '/' + name ;
-	if ( !file_exists(wf) )
+	if ( !file_exists(wf) ){
 		if ( !curl( url, { 'file'=wf }) )
 			return 'NSRDB download error';
+	}
+	else {
+		outln('File already downloaded, skipping');
+	}
 	return name;
 }	
 
@@ -83,7 +94,7 @@ function main()
 		n_records = #locations.lat;
 	}
 
-	//For each lat lon in lookup file
+	//For each site in lookup file
 	for ( j=0; j<n_records; j++ )
 	{
 		lat = 0; 
@@ -99,13 +110,31 @@ function main()
 			lat = locations.lat[j];
 			lon = locations.lon[j];
 		}
-
-	
+		dataset = locations.dataset[j];
+		
+		// status message
+		outln('');
+		outln('Getting weather file ' + j + " for " + to_string(lat) + ", " + to_string(lon) + ", " + to_string(dataset));
+		
+		if (to_string(dataset) != 'tmy')
+		{
+			year = to_int(dataset);
+			if (year < 1998)
+			{
+				outln('Year selected was ' + to_string(year) + ' but NSRDB only goes back to 1998, setting year to 1998');
+				year = 1998;
+			} 
+			elseif (year > 2016) {
+				outln('Year selected was ' + to_string(year) + 'but NSRDB only goes to 2016, setting year to 2016');
+				year = 2016;
+			}
+			dataset = year;
+		}
+		
 		// Download weather file
-		outln('Getting weather file ' + j + " for " + to_string(lat) + ", " + to_string(lon));
-		wfname = get_nsrdb( lat, lon, location_output, interval );
+		wfname = get_nsrdb( lat, lon, to_string(dataset), location_output, interval );
 	}
-	
+	outln('');
 	outln('Finished');
 }
 
