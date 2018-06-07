@@ -7,11 +7,12 @@ Locations can be specified as latitudes and longitudes or as addresses.
 Input:<br><ul>
 <li>CSV file with the relevent column headers (depending on Location mode): lat, lon, address, dataset.
 and rows containing the desired location data. <br/>
-As an example, here is the header line and a subsequent rows of data <br/>
+As an example, here is the header line and subsequent rows of data.  <br/>
+Note, both address and lat,lon are provided for reference, but only one set is required  <br/>
 	<br/>
 	lat, lon, address, dataset <br/>
 	39.7444, -105.152, 15013 Denver W Pkwy Golden CO, tmy <br/>
-	38.8977, -77.0365, 2013 <br/>
+	38.8977, -77.0365, 1600 Pennsylvania Ave NW Washington DC, 2013 <br/>
 	<br/>
 The NSRDB typically supports years of 1998 - 2016 for the dataset (in addition to tmy). <br/>
 If the year input falls out of those ranges, a warning will be issued <br/>
