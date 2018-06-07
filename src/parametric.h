@@ -233,6 +233,10 @@ private:
 
 	void ShowAllData();
 
+	bool ImportAsNumber(wxString& vals, VarValue& vv);
+	bool ImportAsArray(wxString& vals, VarValue& vv);
+	bool ImportAsMatrix(wxString& vals, VarValue& vv);
+	bool ImportAsTable(wxString& vals, VarValue& vv);
 	void ImportData(wxArrayString& vals, int& row, int& col);
 	void CopyToClipboard();
 	wxArrayString getFromCSV(const wxString& input_name, int& rows, int& cols);

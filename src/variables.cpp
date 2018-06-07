@@ -1004,7 +1004,7 @@ wxString VarValue::AsString( wxChar arrsep, wxChar tabsep )
 		for( size_t i=0;i<m_val.length();i++ )
 		{
 			buf += wxString::Format("%g", (float)m_val[i]  );
-			if ( i < m_val.length()-1 ) buf += arrsep;
+			buf += arrsep;
 		}
 		return buf;
 	}

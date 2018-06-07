@@ -656,6 +656,98 @@ void ParametricViewer::GetTextData(wxString &dat, char sep)
 	}
 }
 
+bool ParametricViewer::ImportAsNumber(wxString& vals, VarValue& vv) {
+	double valNum = 0.0;
+	if (vals.ToDouble(&valNum)) {
+		vv.Set(valNum);		
+		return true;
+	}
+	return false;
+}
+
+bool ParametricViewer::ImportAsArray(wxString& vals, VarValue& vv) {
+	wxArrayString entries = wxSplit(vals, ';');
+	if (entries.Count() < 2) return false;
+	double valNum = 0.0;
+	std::vector<float> arr;
+	for (size_t i = 0; i < entries.Count() - 1; i++) {
+		if (entries[i].ToDouble(&valNum)) {
+			arr.push_back(valNum);
+		}
+		else {
+			return false;
+		}
+	}
+	vv.Set(arr);
+	return true;
+}
+
+bool ParametricViewer::ImportAsMatrix(wxString& vals, VarValue& vv) {
+	wxArrayString rows = wxSplit(vals, '[');
+	if (rows.Count() < 2) return false;
+	double valNum = 0.0;
+	size_t nr = rows.Count() - 1;
+	size_t nc = 0;
+	float* valArr = nullptr;
+	for (size_t i = 0; i < nr; i++) {
+		if (rows[i + 1].Find(']') != -1) {
+			wxArrayString entries = wxSplit(rows[i + 1].SubString(0, rows[i + 1].Len() - 2), ';');
+			if (i == 0) {
+				nc = entries.Count();
+				valArr = new float[nr * nc];
+			}
+			for (size_t j = 0; j < nc; j++) {
+				if (entries[j].ToDouble(&valNum)) {
+					valArr[i*nc + j] = valNum;
+				}
+				else {
+					return false;
+				}
+			}
+		}
+		else {
+			return false;
+		}
+	}
+	if (nc > 0) {
+		vv.Set(valArr, nr, nc);
+		delete valArr;
+		return true;
+	}
+	return false;
+}
+
+bool ParametricViewer::ImportAsTable(wxString& vals, VarValue& vv) {
+	wxArrayString entries = wxSplit(vals, '|');
+	if (entries.Count() < 2) return false;
+	VarTable vt;
+	for (int v = 0; v < entries.Count(); v++) {
+		wxArrayString var = wxSplit(entries[v], ':');
+		if (var.Count() < 2) return false;
+		wxArrayString typeVal = wxSplit(var[1], '=');
+		int type = wxAtoi(typeVal[0]);
+		VarValue vv;
+		if (type == 1) {
+			if (!ImportAsNumber(typeVal[1], vv)) return false;
+		}
+		else if (type == 2) {
+			if (!ImportAsArray(typeVal[1], vv)) return false;
+		}
+		else if (type == 3) {
+			if (!ImportAsMatrix(typeVal[1], vv)) return false;
+		}
+		else if (type == 4) {
+			vv.Set(typeVal[1]);
+		}
+		else {
+			return false;
+		}
+		vt.Set(var[0], vv);
+	}
+	vv.Set(vt);
+	return true;
+}
+
 void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	wxArrayString inputNames, outputNames;
 	// check if var is input or output variable
@@ -680,74 +772,27 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					std::vector<VarValue> vvv;
 					ParametricData::Var pv;
 					for (int r = 1; r < row; r++) {
-						if (vals[c*row + r].size() > 0) {
-							double valNum = 0.0;
-							// check if number or string
-							if (vals[c*row + r].ToDouble(&valNum)) {
-								VarValue vv((float)valNum);
-								vvv.push_back(vv);
-							}
-							else {
-								// check if string is encoding a matrix
-								wxArrayString rows = wxSplit(vals[c*row + r], '[');
-								if (rows.Count() > 1) {
-									bool nums = true;
-									size_t nr = rows.Count() - 1;
-									size_t nc = 0;
-									float* valArr = nullptr;
-									for (size_t i = 0; i < nr; i++) {
-										if (rows[i+1].Find(']') != -1 && nums) {
-											wxArrayString entries = wxSplit(rows[i+1].SubString(0,rows[i+1].Len()-2), ';');
-											if (i == 0) {
-												nc = entries.Count();
-												valArr = new float[nr * nc];
-											}
-											for (size_t j = 0; j < nc; j++) {
-												if (entries[j].ToDouble(&valNum)) {
-													valArr[i*nc + j] = valNum;
-												}
-												else {
-													nums = false;
-													break;
-												}
-											}
-										}
-										else {
-											break;
-										}
-									}
-									if (nums && (nc > 0)) {
-										VarValue vv(valArr, nr, nc);
-										vvv.push_back(vv);
-									}
-								}
-								else {
-									// check if string is encoding an array
-									wxArrayString entries = wxSplit(vals[c*row + r], ';');
-									bool nums = false;
-									std::vector<float> arr;
-									for (size_t i = 0; i < entries.Count()-1; i++) {
-										if (i == 0) nums = true;
-										if (entries[i].ToDouble(&valNum)) {
-											arr.push_back(valNum);
-										}
-										else {
-											nums = false;
-											break;
-										}
-									}
-									if (nums) {
-										VarValue vv(arr);
-										vvv.push_back(vv);
-									}
-									// string
-									else {
-										VarValue vv(vals[c*row + r]);
-										vvv.push_back(vv);
-									}
-								}
-							}
+						if (vals[c*row + r].size() < 1) return;
+						double valNum = 0.0;
+						VarValue vv;
+						if (ImportAsNumber(vals[c*row + r], vv)) {
+							vvv.push_back(vv);
+							break;
 						}
+						if (ImportAsArray(vals[c*row + r], vv)) {
+							vvv.push_back(vv);
+							break;
+						}
+						if (ImportAsMatrix(vals[c*row + r], vv)) {
+							vvv.push_back(vv);
+							break;
+						}
+						if (ImportAsTable(vals[c*row + r], vv)) {
+							vvv.push_back(vv);
+							break;
+						}
+						vv.Set(vals[c*row + r]);
+						vvv.push_back(vv);
 					}
 					pv.Values = vvv;
 					pv.Name = name;
@@ -2104,7 +2149,7 @@ bool ParametricGridData::RunSimulations_multi()
 				ExcelExchange::RunExcelExchange(ex, m_case->Values(), m_par.Runs[i]);
 
 			if (!m_par.Runs[i]->Prepare())
-				wxMessageBox(wxString::Format("internal error preparing simulation %d for parametric", (int)(i + 1)));
+				wxMessageBox(wxString::Format("internal error preparing simulation %d for parametric: %s", (int)(i + 1), m_par.Runs[i]->GetErrors()[0]));
 
 			tpd.Update(0, (float)i / (float)total_runs * 100.0f, wxString::Format("%d of %d", (int)(i + 1), (int)total_runs));
 		}
