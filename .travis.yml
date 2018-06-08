@@ -12,8 +12,8 @@ before_script:
   - export GTEST=/home/travis/build/$user/googletest/googletest
   - export LKDIR=/home/travis/build/$user/lk
   - export WEXDIR=/home/travis/build/$user/wex
-  - export SSCDIR=/home/travis/build/$user/sscmst
-  - export SAMNTDIR=/home/travis/build/$user/SAMmst
+  - export SSCDIR=/home/travis/build/$user/ssc
+  - export SAMNTDIR=/home/travis/build/$user/SAM
   - git clone https://github.com/google/googletest /home/travis/build/$user/googletest
   - git clone https://github.com/$user/lk $LKDIR
   - git clone https://github.com/$user/wex $WEXDIR
