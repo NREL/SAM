@@ -777,19 +777,19 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 						VarValue vv;
 						if (ImportAsNumber(vals[c*row + r], vv)) {
 							vvv.push_back(vv);
-							break;
+							continue;
 						}
 						if (ImportAsArray(vals[c*row + r], vv)) {
 							vvv.push_back(vv);
-							break;
+							continue;
 						}
 						if (ImportAsMatrix(vals[c*row + r], vv)) {
 							vvv.push_back(vv);
-							break;
+							continue;
 						}
 						if (ImportAsTable(vals[c*row + r], vv)) {
 							vvv.push_back(vv);
-							break;
+							continue;
 						}
 						vv.Set(vals[c*row + r]);
 						vvv.push_back(vv);

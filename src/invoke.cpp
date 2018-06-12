@@ -4124,33 +4124,60 @@ void fcall_parametric_get(lk::invoke_t &cxt)
 		cxt.error("no case found");
 		return;
 	}
+	int singleVal = -1;
+	if (cxt.arg_count() > 1) {
+		singleVal = cxt.arg(1).as_integer();
+	}
 
-	std::vector<Simulation*> sims = c->Parametric().Runs;
 	lk::vardata_t &out = cxt.result();
-	out.empty_vector();
-	out.vec()->resize(sims.size());
+	std::vector<Simulation*> sims = c->Parametric().Runs;
+	size_t start = 0, end = sims.size();
+	if (singleVal == -1) {
+		out.empty_vector();
+		out.vec()->resize(sims.size());
+	}
+	else {
+		start = singleVal;
+		end = singleVal + 1;
+	}
 	wxString vName = cxt.arg(0).as_string();
 	VarValue* vv = sims[0]->GetValue(vName);
 	if (!vv) return;
 	if (vv->Type() == VV_STRING) {
-		for (size_t i = 0; i < sims.size(); i++) {
+		for (size_t i = start; i < end; i++) {
 			wxString val = sims[i]->GetValue(cxt.arg(0).as_string())->String();
+			if (singleVal > -1) {
+				out.assign(val);
+				return;
+			}
 			out.index(i)->assign(val);
 		}
 	}
 	else if (vv->Type() == VV_NUMBER) {
-		for (size_t i = 0; i < sims.size(); i++) {
+		for (size_t i = start; i < end; i++) {
 			float val = sims[i]->GetValue(cxt.arg(0).as_string())->Value();
+			if (singleVal > -1) {
+				out.assign(val);
+				return;
+			}
 			out.index(i)->assign(val);
 		}
 	}
 	else if (vv->Type() == VV_ARRAY) {
 		size_t n = 0;
-		for (size_t i = 0; i < sims.size(); i++) {
+		for (size_t i = start; i < end; i++) {
 			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Array(&n);
-			lk::vardata_t *row = out.index(i);
-			row->empty_vector();
-			row->vec()->resize(n);
+			lk::vardata_t* row = nullptr;
+			if (singleVal > -1) {
+				out.empty_vector();
+				out.vec()->resize(n);
+				row = &out;
+			}
+			else {
+				row = out.index(i);
+				row->empty_vector();
+				row->vec()->resize(n);
+			}
 			for (size_t j = 0; j < n; j++)
 				row->index(j)->assign(val[j]);
 		}
@@ -4158,11 +4185,19 @@ void fcall_parametric_get(lk::invoke_t &cxt)
 	else if (vv->Type() == VV_MATRIX) {
 		size_t r = 0;
 		size_t c = 0;
-		for (size_t i = 0; i < sims.size(); i++) {
+		for (size_t i = start; i < end; i++) {
 			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Matrix(&r, &c);
-			lk::vardata_t *rows = out.index(i);
-			rows->empty_vector();
-			rows->vec()->resize(r);
+			lk::vardata_t* rows = nullptr;
+			if (singleVal > -1) {
+				out.empty_vector();
+				out.vec()->resize(r);
+				rows = &out;
+			}
+			else {
+				rows = out.index(i);
+				rows->empty_vector();
+				rows->vec()->resize(r);
+			}
 			for (size_t n = 0; n < r; n++) {
 				lk::vardata_t *col = rows->index(n);
 				col->empty_vector();
