@@ -223,7 +223,7 @@ static std::vector<wxColour> s_colours;
 	return s_colours;
 }
 
-void GraphCtrl::Display( Simulation *sim, Graph &gi )
+int GraphCtrl::Display( Simulation *sim, Graph &gi )
 {
 static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
 										"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -238,7 +238,7 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 	if ( !m_s )
 	{
 		Refresh();
-		return;
+		return 1;
 	}
 	
 	// setup visual properties of graph
@@ -296,7 +296,7 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 	{
 		SetTitle( "All variables must have the same number of data values." );
 		Refresh();
-		return;
+		return -1;
 	}
 
 	std::vector< std::vector<wxRealPoint> > plotdata( yvars.size() );
@@ -431,9 +431,10 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 
 	Invalidate();
 	Refresh();
+	return 0;
 }
 
-void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
+int GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 {
 	static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
 		"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -464,7 +465,7 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 	if ((sims.size() <= 0) || (m_g.Y.Count() > 1))
 	{
 		Refresh();
-		return;
+		return 1;
 	}
 	m_s = sims[0];
 
@@ -523,7 +524,7 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 	{
 		SetTitle("All variables must have the same number of data values.");
 		Refresh();
-		return;
+		return -1;
 	}
 
 	std::vector< std::vector<wxRealPoint> > plotdata(yvars.size());
@@ -657,6 +658,7 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 
 	Invalidate();
 	Refresh();
+	return 0;
 }
 
 
@@ -1011,16 +1013,24 @@ void GraphViewer::Setup( Simulation *sim )
 
 	m_props->SetupVariables( m_sim );
 
+	std::vector<GraphCtrl*> remove_list;
+
 	for( std::vector<GraphCtrl*>::iterator it = m_graphs.begin();
 		it != m_graphs.end();
 		++it )
 	{
 		Graph g = (*it)->GetGraph();
-		(*it)->Display( m_sim, g );
+		if ((*it)->Display( m_sim, g ) < 0) remove_list.push_back(*it);
 	}
 
 	if ( m_current != 0 )
 		m_props->Set( m_current->GetGraph() );
+
+	while (remove_list.size() > 0)
+	{
+		DeleteGraph(remove_list.back());
+		remove_list.pop_back();
+	}
 }
 
 
