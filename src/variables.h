@@ -136,6 +136,7 @@ public:
 	bool Read( wxInputStream & );
 	
 	int Type() const;
+	wxString TypeAsString() const;
 	void ChangeType(int type);
 	void SetType( int t );
 	void Set( int val );
