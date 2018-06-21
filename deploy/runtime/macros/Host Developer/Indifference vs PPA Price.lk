@@ -51,12 +51,12 @@ if (configuration()[1] != 'Host Developer') {
 }
 
 // get original values to reset
-if (configuration()[0]=='PVWatts') {
-	org_sys_size = get('system_capacity');
-}	
-else {
+if (configuration()[0]=='Flat Plate PV') {
 	org_mode = get('size_auto_or_manual');
 	org_sys_size = get('desired_size');
+}	
+else {
+	org_sys_size = get('system_capacity');
 }
 
 // number of simulations
@@ -82,18 +82,19 @@ irr_len=5;
 npv_len=10;
 
 // run all systems sizes and capture results
-outln('Running simulations...\n');
+outln('Running simulations...\n');outln('configuration...\n' + configuration());
 outln('Capacity (DC kW)\tPPA Price (\u00A2/kWh)\tHost Indifference Point (\u00A2/kWh)\tHost NPV ($)\t\tDeveloper IRR (%)\tDeveloper NPV ($)');
 for (i=0;i<num_runs;i++)
 {
 	sys_size[i] = macro.start_size + i * macro.step_size;
 	actual_size[i] = sprintf('%,',round(sys_size[i]));
-	if (configuration()[0]=='PVWatts') 
-		set('system_capacity', sys_size[i]);
-	else {
+	if (configuration()[0]=='Flat Plate PV') {
 		set('size_auto_or_manual', 0);
 		set('desired_size', sys_size[i]);
 		actual_size[i] = sprintf('%,',round(get('system_capacity')));
+		}
+	else {
+		set('system_capacity', sys_size[i]);
 	}
 	while (strlen(actual_size[i]) < as_len) 
 		actual_size[i] = "  " + actual_size[i];
@@ -151,12 +152,12 @@ axis( 'x1', {'label'=xlabel} );
 plotopt( { 'title'='Host Indifference Point and PPA Price vs System Size',  'legendpos'='northeast' } );
 
 // reset original values
-if (configuration()[0]=='PVWatts') {
-	set('system_capacity', org_sys_size);
-}	
-else {
+if (configuration()[0]=='Flat Plate PV') {
 	set('size_auto_or_manual',org_mode);
 	set('desired_size',org_sys_size);
+}	
+else {
+	set('system_capacity', org_sys_size);
 }
 
 /*
