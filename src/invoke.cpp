@@ -4099,22 +4099,6 @@ static void fcall_parametric_run(lk::invoke_t &cxt)
 	cxt.result().assign(0.0);
 }
 
-void fcall_parametric_set(lk::invoke_t &cxt)
-{
-	LK_DOC("parametric_set", "Sets input variable for i-th parametric simulation within the current case", "(string: output variable, number:index, variant:value):none");
-
-	Case *c = SamApp::Window()->GetCurrentCase();
-	if (!c) {
-		cxt.error("no case found");
-		return;
-	}
-
-	int i = cxt.arg(1).as_integer();
-	Simulation* sim = c->Parametric().Runs[i];
-	
-
-}
-
 void fcall_parametric_get(lk::invoke_t &cxt)
 {
 	LK_DOC("parametric_get", "Returns array of output variable from parametric simulation within the current case, or the output from a single run", "(string: output variable, {number:index}):variant");
@@ -4250,7 +4234,6 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_lhs_run,
 		fcall_lhs_error,
 		fcall_lhs_vector,
-		fcall_parametric_set,
 		fcall_parametric_get,
 		fcall_parametric_run,
 		fcall_step_create,
