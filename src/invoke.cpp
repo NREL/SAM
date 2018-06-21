@@ -185,6 +185,7 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 	if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
 	{
 		wxLogStatus("error scanning '" + file + "'");
+		cxt.error(err);
 		cxt.result().assign(0.0);
 		return;
 	}
