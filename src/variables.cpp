@@ -562,7 +562,9 @@ wxString VarValue::TypeAsString() const {
 	case VV_BINARY: return wxString("binary");
 	case VV_TABLE: return wxString("table");
 	}
+	return wxString();
 }
+
 void VarValue::ChangeType(int type) { m_type = type; }
 void VarValue::SetType( int ty ) { m_type = ty; }
 void VarValue::Set( int val ) { m_type = VV_NUMBER; m_val = (float)val; }

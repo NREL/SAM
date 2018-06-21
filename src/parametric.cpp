@@ -880,6 +880,8 @@ wxArrayString ParametricViewer::getFromExcel(const wxString& input_name, int& ro
 	xl.getUsedCellRange(row, col, vals);
 	xl.CloseAllNoSave();
 	return vals;
+#else
+	return wxArrayString();
 #endif // __WXMSW__
 }
 
