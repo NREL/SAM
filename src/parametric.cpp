@@ -460,7 +460,7 @@ wxString ParametricViewer::RunSimulationsFromMacro()
 {
 	if ((m_input_names.Count() <= 0) || (m_output_names.Count() <= 0))
 	{
-		return("You must set up parametric inputs and outputs before running parametric simulations.", "Incomplete parametric setup");
+		return("You must set up parametric inputs and outputs before running parametric simulations. Incomplete parametric setup.");
 	}
 
 	RemoveAllPlots();
@@ -721,7 +721,7 @@ bool ParametricViewer::ImportAsTable(wxString& vals, VarValue& vv) {
 	wxArrayString entries = wxSplit(vals, '|');
 	if (entries.Count() < 2) return false;
 	VarTable vt;
-	for (int v = 0; v < entries.Count(); v++) {
+	for (size_t v = 0; v < entries.Count(); v++) {
 		wxArrayString var = wxSplit(entries[v], ':');
 		if (var.Count() < 2) return false;
 		wxArrayString typeVal = wxSplit(var[1], '=');
@@ -773,7 +773,6 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					ParametricData::Var pv;
 					for (int r = 1; r < row; r++) {
 						if (vals[c*row + r].size() < 1) return;
-						double valNum = 0.0;
 						VarValue vv;
 						if (ImportAsNumber(vals[c*row + r], vv)) {
 							vvv.push_back(vv);
@@ -873,6 +872,7 @@ wxArrayString ParametricViewer::getFromCSV(const wxString& input_name, int& row,
 }
 
 wxArrayString ParametricViewer::getFromExcel(const wxString& input_name, int& row, int& col) {
+#ifdef __WXMSW__
 	wxArrayString vals;
 	wxExcelAutomation xl;
 	xl.StartExcel();
@@ -880,6 +880,9 @@ wxArrayString ParametricViewer::getFromExcel(const wxString& input_name, int& ro
 	xl.getUsedCellRange(row, col, vals);
 	xl.CloseAllNoSave();
 	return vals;
+#else
+	return wxArrayString();
+#endif // __WXMSW__
 }
 
 void ParametricViewer::SaveToCSV()
