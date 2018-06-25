@@ -185,6 +185,7 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 	if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
 	{
 		wxLogStatus("error scanning '" + file + "'");
+		cxt.error(err);
 		cxt.result().assign(0.0);
 		return;
 	}
@@ -1208,6 +1209,133 @@ static void fcall_xl_get( lk::invoke_t &cxt )
 		cxt.error( "invalid xl-obj-ref" );
 }
 
+static void fcall_xl_read(lk::invoke_t &cxt)
+{
+	LK_DOC("xl_read", "Read an excel file into a 2D array (default) or a table. Options: "
+		"'skip' (header lines to skip), "
+		"'numeric' (t/f to return numbers), "
+		"'order' (r/c, row-major order default), "
+		"'table' (t/f to return a table assuming 1 header line with names)",
+		"(string:file[, table:options]):array or table");
+
+	lk::vardata_t &out = cxt.result();
+	out.empty_hash();
+
+	size_t nskip = 0;
+	bool rowMajor = true;
+	bool tonum = false;
+	bool astable = false;
+	if (cxt.arg_count() > 1 && cxt.arg(1).deref().type() == lk::vardata_t::HASH)
+	{
+		lk::vardata_t &opts = cxt.arg(1).deref();
+
+		if (lk::vardata_t *item = opts.lookup("skip"))
+			nskip = item->as_unsigned();
+
+		if (lk::vardata_t *item = opts.lookup("numeric"))
+			tonum = item->as_boolean();
+
+		if (lk::vardata_t *item = opts.lookup("table"))
+			astable = item->as_boolean();
+
+		if (lk::vardata_t *item = opts.lookup("order"))
+			rowMajor = (item->as_string() == "c") ? false : true;
+	}
+
+	if (lkXLObject *xl = dynamic_cast<lkXLObject*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+	{
+		wxArrayString vals;
+		int rowCount, columnCount;
+		xl->Excel().getUsedCellRange(rowCount, columnCount, vals); 
+		
+		if (nskip >= rowCount - 1) nskip = 0;
+		if (astable)
+		{
+			if (rowMajor) {
+				wxArrayString colHeaders;
+				//read column headers from first nonskipped row
+				for (size_t c = 0; c < columnCount; c++) {
+					wxString name = vals[c*rowCount + nskip];
+					colHeaders.push_back(name);
+					if (name.IsEmpty()) continue;
+
+					lk::vardata_t &it = out.hash_item(name);
+					it.empty_vector();
+					it.resize(rowCount - 1 - nskip);
+				}
+				for (size_t c = 0; c < columnCount; c++) {
+					lk::vardata_t* it = out.lookup(colHeaders[c]);
+					for (size_t r = 1 + nskip; r < rowCount; r++) {
+						if (tonum) it->index(r - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
+						else it->index(r - 1 - nskip)->assign(vals[c*rowCount + r]);
+					}
+				}
+			}
+			else {
+				wxArrayString rowHeaders;
+				//read row headers from first nonskipped column
+				for (size_t r = 0; r < rowCount; r++) {
+					wxString name = vals[nskip*rowCount + r];
+					rowHeaders.push_back(name);
+					if (name.IsEmpty()) continue;
+
+					lk::vardata_t &it = out.hash_item(name);
+					it.empty_vector();
+					it.resize(columnCount - 1 - nskip);
+				}
+
+				for (size_t r = 0; r < rowCount; r++) {
+					lk::vardata_t* it = out.lookup(rowHeaders[r]);
+					for (size_t c = 1 + nskip; c < columnCount; c++) {
+						if (tonum) it->index(c - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
+						else it->index(c - 1 - nskip)->assign(vals[c*rowCount + r]);
+					}
+				}
+			}
+		}
+		else {
+			if (rowMajor == true) {
+				out.empty_vector();
+				out.vec()->resize(rowCount - nskip);
+				for (size_t r = nskip; r < rowCount; r++) {
+					lk::vardata_t *row = out.index(r-nskip);
+					row->empty_vector();
+					row->vec()->resize(columnCount);
+					for (size_t c = 0; c < columnCount; c++)
+					{
+						if (tonum) {
+							row->index(c)->assign(wxAtof(vals[c*rowCount + r]));
+						}
+						else {
+							row->index(c)->assign(vals[c*rowCount + r]);
+						}
+					}
+				}
+			}
+			else {
+				out.empty_vector();
+				out.vec()->resize(columnCount - nskip);
+				for (size_t c = nskip; c < columnCount; c++) {
+					lk::vardata_t *col = out.index(c-nskip);
+					col->empty_vector();
+					col->vec()->resize(rowCount);
+					for (size_t r = 0; r < rowCount; r++)
+					{
+						if (tonum) {
+							col->index(r)->assign(wxAtof(vals[c*rowCount + r]));
+						}
+						else {
+							col->index(r)->assign(vals[c*rowCount + r]);
+						}
+					}
+				}
+			}
+		}
+	}
+	else
+		cxt.error("invalid xl-obj-ref");
+
+}
 #endif
 
 
@@ -3958,6 +4086,117 @@ void fcall_step_result( lk::invoke_t &cxt )
 		cxt.error("invalid step-obj-ref");
 }
 
+static void fcall_parametric_run(lk::invoke_t &cxt)
+{
+	LK_DOC("parametric_run", "Run the parametrics for the currently active case, returns 0 if no errors.  Errors and warnings are optinally returned in the first parameter.", "( [string:messages] ):boolean");
+
+	CaseWindow *cw = SamApp::Window()->GetCurrentCaseWindow();
+	if (!cw) {
+		cxt.error("no case found");
+		cxt.result().assign(1.0);
+		return;
+	}
+	cw->GetParametricViewer()->RunSimulationsFromMacro();
+	cxt.result().assign(0.0);
+}
+
+void fcall_parametric_get(lk::invoke_t &cxt)
+{
+	LK_DOC("parametric_get", "Returns array of output variable from parametric simulation within the current case, or the output from a single run", "(string: output variable, {number:index}):variant");
+	
+	Case *c = SamApp::Window()->GetCurrentCase();
+	if (!c) {
+		cxt.error("no case found");
+		return;
+	}
+	int singleVal = -1;
+	if (cxt.arg_count() > 1) {
+		singleVal = cxt.arg(1).as_integer();
+	}
+
+	lk::vardata_t &out = cxt.result();
+	std::vector<Simulation*> sims = c->Parametric().Runs;
+	size_t start = 0, end = sims.size();
+	if (singleVal == -1) {
+		out.empty_vector();
+		out.vec()->resize(sims.size());
+	}
+	else {
+		start = singleVal;
+		end = singleVal + 1;
+	}
+	wxString vName = cxt.arg(0).as_string();
+	VarValue* vv = sims[0]->GetValue(vName);
+	if (!vv) return;
+	if (vv->Type() == VV_STRING) {
+		for (size_t i = start; i < end; i++) {
+			wxString val = sims[i]->GetValue(cxt.arg(0).as_string())->String();
+			if (singleVal > -1) {
+				out.assign(val);
+				return;
+			}
+			out.index(i)->assign(val);
+		}
+	}
+	else if (vv->Type() == VV_NUMBER) {
+		for (size_t i = start; i < end; i++) {
+			float val = sims[i]->GetValue(cxt.arg(0).as_string())->Value();
+			if (singleVal > -1) {
+				out.assign(val);
+				return;
+			}
+			out.index(i)->assign(val);
+		}
+	}
+	else if (vv->Type() == VV_ARRAY) {
+		size_t n = 0;
+		for (size_t i = start; i < end; i++) {
+			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Array(&n);
+			lk::vardata_t* row = nullptr;
+			if (singleVal > -1) {
+				out.empty_vector();
+				out.vec()->resize(n);
+				row = &out;
+			}
+			else {
+				row = out.index(i);
+				row->empty_vector();
+				row->vec()->resize(n);
+			}
+			for (size_t j = 0; j < n; j++)
+				row->index(j)->assign(val[j]);
+		}
+	}
+	else if (vv->Type() == VV_MATRIX) {
+		size_t r = 0;
+		size_t c = 0;
+		for (size_t i = start; i < end; i++) {
+			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Matrix(&r, &c);
+			lk::vardata_t* rows = nullptr;
+			if (singleVal > -1) {
+				out.empty_vector();
+				out.vec()->resize(r);
+				rows = &out;
+			}
+			else {
+				rows = out.index(i);
+				rows->empty_vector();
+				rows->vec()->resize(r);
+			}
+			for (size_t n = 0; n < r; n++) {
+				lk::vardata_t *col = rows->index(n);
+				col->empty_vector();
+				col->vec()->resize(c);
+				for (size_t m = 0; m < c; m++) {
+					col->index(m)->assign(val[ n*c+m ]);				
+				}
+			}
+		}
+	}
+	else {
+		cxt.error("variable type is not string, number, array or matrix.");
+	}
+}
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -3982,6 +4221,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_xl_close,
 		fcall_xl_wkbook,
 		fcall_xl_sheet,
+		fcall_xl_read,
 		fcall_xl_set,
 		fcall_xl_get,
 		fcall_xl_autosizecols,
@@ -3995,6 +4235,8 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_lhs_run,
 		fcall_lhs_error,
 		fcall_lhs_vector,
+		fcall_parametric_get,
+		fcall_parametric_run,
 		fcall_step_create,
 		fcall_step_free,
 		fcall_step_vector,
