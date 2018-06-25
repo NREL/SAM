@@ -250,7 +250,7 @@ enum { ID_SELECT_INPUTS = wxID_HIGHEST+494, ID_SELECT_OUTPUTS, ID_NUMRUNS,
 	ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, 
 	ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, 
 	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, 
-	ID_SHOW_ALL_INPUTS, ID_QUICK_SETUP, ID_EXPORT_MENU, ID_GEN_LK };
+	ID_SHOW_ALL_INPUTS, ID_QUICK_SETUP, ID_IMPORT, ID_EXPORT_MENU, ID_GEN_LK };
 
 
 
@@ -261,7 +261,7 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
 //	EVT_BUTTON(ID_GEN_LK, ParametricViewer::OnCommand)
 	EVT_BUTTON(ID_QUICK_SETUP, ParametricViewer::OnCommand)
-	
+	EVT_BUTTON(ID_IMPORT, ParametricViewer::OnCommand)
 	EVT_BUTTON(ID_EXPORT_MENU, ParametricViewer::OnCommand)
 	
 	EVT_BUTTON(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
@@ -323,6 +323,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 
 	//tool_sizer->Add(m_run_multithreaded, 0, wxALIGN_CENTER_VERTICAL, 1);
 	tool_sizer->AddStretchSpacer();
+	tool_sizer->Add(new wxMetroButton(top_panel, ID_IMPORT, "Import", wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL | wxEXPAND, 0);
 	tool_sizer->Add(new wxMetroButton(top_panel, ID_EXPORT_MENU, "Export", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW), 0, wxALL | wxEXPAND, 0);
 
 
@@ -455,11 +456,45 @@ void ParametricViewer::SetCurrent(GraphCtrl *gc)
 
 }
 
+wxString ParametricViewer::RunSimulationsFromMacro()
+{
+	if ((m_input_names.Count() <= 0) || (m_output_names.Count() <= 0))
+	{
+		return("You must set up parametric inputs and outputs before running parametric simulations. Incomplete parametric setup.");
+	}
+
+	RemoveAllPlots();
+	m_grid_data->RunSimulations_multi();
+	AddAllPlots();
+	UpdateGrid();
+
+	return wxString();
+}
 
 void ParametricViewer::OnCommand(wxCommandEvent &evt)
 {
 	switch (evt.GetId())
 	{
+	case ID_IMPORT:
+	{
+		wxArrayString empty;
+		m_grid_data->UpdateInputs(empty);
+		wxFileDialog openFileDialog(this, ("Open parametric table file"), "", "", "csv and excel files (*.csv; *.xlsx)|*.csv; *.xlsx", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+		if (openFileDialog.ShowModal() == wxID_CANCEL) return;
+		wxArrayString filePath = wxSplit(openFileDialog.GetPath(), '.');
+		wxArrayString vals;
+		int row, col;
+		if (filePath[filePath.GetCount()-1].IsSameAs("xlsx", false)) {
+			vals = getFromExcel(openFileDialog.GetPath(), row, col);
+		}
+		else {
+			vals = getFromCSV(openFileDialog.GetPath(), row, col);
+		}
+		ImportData(vals, row, col);
+		m_grid->SetTable(m_grid_data);
+		UpdateGrid();
+		break;
+	}
 	case ID_EXPORT_MENU:
 		{
 			wxMetroPopupMenu menu;
@@ -621,6 +656,188 @@ void ParametricViewer::GetTextData(wxString &dat, char sep)
 	}
 }
 
+bool ParametricViewer::ImportAsNumber(wxString& vals, VarValue& vv) {
+	double valNum = 0.0;
+	if (vals.ToDouble(&valNum)) {
+		vv.Set(valNum);		
+		return true;
+	}
+	return false;
+}
+
+bool ParametricViewer::ImportAsArray(wxString& vals, VarValue& vv) {
+	wxArrayString entries = wxSplit(vals, ';');
+	if (entries.Count() < 2) return false;
+	double valNum = 0.0;
+	std::vector<float> arr;
+	for (size_t i = 0; i < entries.Count() - 1; i++) {
+		if (entries[i].ToDouble(&valNum)) {
+			arr.push_back(valNum);
+		}
+		else {
+			return false;
+		}
+	}
+	vv.Set(arr);
+	return true;
+}
+
+bool ParametricViewer::ImportAsMatrix(wxString& vals, VarValue& vv) {
+	wxArrayString rows = wxSplit(vals, '[');
+	if (rows.Count() < 2) return false;
+	double valNum = 0.0;
+	size_t nr = rows.Count() - 1;
+	size_t nc = 0;
+	float* valArr = nullptr;
+	for (size_t i = 0; i < nr; i++) {
+		if (rows[i + 1].Find(']') != -1) {
+			wxArrayString entries = wxSplit(rows[i + 1].SubString(0, rows[i + 1].Len() - 2), ';');
+			if (i == 0) {
+				nc = entries.Count();
+				valArr = new float[nr * nc];
+			}
+			for (size_t j = 0; j < nc; j++) {
+				if (entries[j].ToDouble(&valNum)) {
+					valArr[i*nc + j] = valNum;
+				}
+				else {
+					return false;
+				}
+			}
+		}
+		else {
+			return false;
+		}
+	}
+	if (nc > 0) {
+		vv.Set(valArr, nr, nc);
+		delete valArr;
+		return true;
+	}
+	return false;
+}
+
+bool ParametricViewer::ImportAsTable(wxString& vals, VarValue& vv) {
+	wxArrayString entries = wxSplit(vals, '|');
+	if (entries.Count() < 2) return false;
+	VarTable vt;
+	for (size_t v = 0; v < entries.Count(); v++) {
+		wxArrayString var = wxSplit(entries[v], ':');
+		if (var.Count() < 2) return false;
+		wxArrayString typeVal = wxSplit(var[1], '=');
+		int type = wxAtoi(typeVal[0]);
+		VarValue vv;
+		if (type == 1) {
+			if (!ImportAsNumber(typeVal[1], vv)) return false;
+		}
+		else if (type == 2) {
+			if (!ImportAsArray(typeVal[1], vv)) return false;
+		}
+		else if (type == 3) {
+			if (!ImportAsMatrix(typeVal[1], vv)) return false;
+		}
+		else if (type == 4) {
+			vv.Set(typeVal[1]);
+		}
+		else {
+			return false;
+		}
+		vt.Set(var[0], vv);
+	}
+	vv.Set(vt);
+	return true;
+}
+
+void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
+	wxArrayString inputNames, outputNames;
+	// check if var is input or output variable
+	wxArrayString names, labels, units, groups;
+	Simulation::ListAllOutputs(m_case->GetConfiguration(),
+		&names, &labels, &units, &groups);
+	for (int c = 0; c < col; c++) {
+		wxArrayString splitUnit = wxSplit(vals[c*row], '(');
+		wxArrayString splitGroup = wxSplit(splitUnit[0], '/');
+		wxString name = splitGroup.Count() > 1 ? splitGroup[1] : splitGroup[0];
+		if (name[name.size() - 1] == ' ') name = name.SubString(0, name.size() - 2);
+
+		VarInfoLookup &vil = m_case->GetConfiguration()->Variables;
+		bool found = false;
+		for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
+		{
+			wxString label = it->second->Label;
+			if (name.IsSameAs(label, false)) {
+				if ((it->second->Flags & VF_PARAMETRIC) && !(it->second->Flags & VF_INDICATOR) && !(it->second->Flags & VF_CALCULATED)) {
+					found = true;
+					name = it->first;
+					std::vector<VarValue> vvv;
+					ParametricData::Var pv;
+					for (int r = 1; r < row; r++) {
+						if (vals[c*row + r].size() < 1) return;
+						VarValue vv;
+						if (ImportAsNumber(vals[c*row + r], vv)) {
+							vvv.push_back(vv);
+							continue;
+						}
+						if (ImportAsArray(vals[c*row + r], vv)) {
+							vvv.push_back(vv);
+							continue;
+						}
+						if (ImportAsMatrix(vals[c*row + r], vv)) {
+							vvv.push_back(vv);
+							continue;
+						}
+						if (ImportAsTable(vals[c*row + r], vv)) {
+							vvv.push_back(vv);
+							continue;
+						}
+						vv.Set(vals[c*row + r]);
+						vvv.push_back(vv);
+					}
+					pv.Values = vvv;
+					pv.Name = name;
+					if (!m_grid_data->IsValid(pv)) {
+						wxString typeS = m_case->BaseCase().GetInput(pv.Name)->TypeAsString();
+						wxString typeS2 = pv.Values[0].TypeAsString();
+						wxString errorStr = "Import Error: Value type of " + vals[c*row] + " is {" + typeS2 + "}, should be {" + typeS + "}.";
+						// some variables listed as {array} but can be single-value number
+						if (typeS == "array" && typeS2 == "number") {
+							errorStr += "\nTip: Insert ';' after a number to convert it to a single-entry array.";
+						}
+						wxMessageBox(errorStr);
+					}
+					m_grid_data->AddSetup(pv);
+					inputNames.push_back(name);
+					break;
+				}
+			}
+		}
+		if (!found) {
+			for (size_t i = 0; i<labels.size(); i++)
+			{
+				if (name.IsSameAs(labels[i], false)) {
+					found = true;
+					outputNames.push_back(names[i]);
+					break;
+				}
+				else if (name.IsSameAs(names[i], false)) {
+					found = true;
+					outputNames.push_back(names[i]);
+					break;
+				}
+			}
+		}
+		if (!found) {
+			wxMessageBox("Error: could not identify parametric variable " + vals[c*row]);
+			continue;
+		}
+	}
+	m_input_names = inputNames;
+	m_output_names = outputNames;
+	m_grid_data->UpdateInputs(inputNames);
+	m_grid_data->UpdateOutputs(outputNames);
+	m_num_runs_ctrl->SetValue(row - 1);
+	m_grid_data->UpdateNumberRows(row-1);
+}
 
 void ParametricViewer::CopyToClipboard()
 {
@@ -636,6 +853,36 @@ void ParametricViewer::CopyToClipboard()
 		wxTheClipboard->SetData(new wxTextDataObject(dat));
 		wxTheClipboard->Close();
 	}
+}
+
+wxArrayString ParametricViewer::getFromCSV(const wxString& input_name, int& row, int& col) {
+	wxArrayString vals;
+	wxCSVData csv;
+	csv.SetSeparator(',');
+	csv.ReadFile(input_name);
+	row = csv.NumRows();
+	col = csv.NumCols();
+	for (int c = 0; c < col; c++) {
+		for (int r = 0; r < row; r++) {
+			vals.push_back(csv(r, c));
+		}
+	}
+	csv.Clear();
+	return vals;
+}
+
+wxArrayString ParametricViewer::getFromExcel(const wxString& input_name, int& row, int& col) {
+#ifdef __WXMSW__
+	wxArrayString vals;
+	wxExcelAutomation xl;
+	xl.StartExcel();
+	xl.OpenFile(input_name);
+	xl.getUsedCellRange(row, col, vals);
+	xl.CloseAllNoSave();
+	return vals;
+#else
+	return wxArrayString();
+#endif // __WXMSW__
 }
 
 void ParametricViewer::SaveToCSV()
@@ -928,7 +1175,7 @@ void ParametricViewer::RunSimulations()
 	// check that inputs and outputs are selected
 	if ((m_input_names.Count() <= 0) || (m_output_names.Count() <= 0))
 	{
-		wxMessageBox("You must set up parametric inputs and outputs before runing parametric simulations.", "Incomplete parametric setup");
+		wxMessageBox("You must set up parametric inputs and outputs before running parametric simulations.", "Incomplete parametric setup");
 		return;
 	}
 
@@ -1267,6 +1514,16 @@ wxString ParametricGridData::GetColLabelValue(int col)
 	return col_label;
 }
 
+bool ParametricGridData::IsValid(const ParametricData::Var& pv) {
+	VarValue* vv = m_par.GetCase()->BaseCase().GetInput(pv.Name);
+	if (vv == nullptr) {
+		return false;
+	}
+	for (size_t i = 0; i < pv.Values.size(); i++) {
+		if (vv->Type() != pv.Values[i].Type()) return false;
+	}
+	return true;
+}
 
 VarInfo* ParametricGridData::GetVarInfo(int , int col)
 {
@@ -1895,7 +2152,7 @@ bool ParametricGridData::RunSimulations_multi()
 				ExcelExchange::RunExcelExchange(ex, m_case->Values(), m_par.Runs[i]);
 
 			if (!m_par.Runs[i]->Prepare())
-				wxMessageBox(wxString::Format("internal error preparing simulation %d for parametric", (int)(i + 1)));
+				wxMessageBox(wxString::Format("internal error preparing simulation %d for parametric: %s", (int)(i + 1), m_par.Runs[i]->GetErrors()[0]));
 
 			tpd.Update(0, (float)i / (float)total_runs * 100.0f, wxString::Format("%d of %d", (int)(i + 1), (int)total_runs));
 		}
@@ -2019,7 +2276,6 @@ bool ParametricGridData::RunSimulations_single()
 	}
 	return true;
 }
-
 
 
 bool ParametricGridData::Generate_lk()

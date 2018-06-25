@@ -246,6 +246,20 @@ VarValue *Simulation::GetInput( const wxString &name )
 	return m_case->Values().Get( name );
 }
 
+void Simulation::SetInput(const wxString & name, lk::vardata_t val) {
+	//if (VarValue *vv = m_inputs.Get(name)) {
+	//	if (vv->Type == VV_NUMBER && val.type == 3) {
+
+	//	}
+	//	else if (vv->Type == VV_STRING && val.type == 4) {
+
+	//	}
+	//	else if (vv->Type == VV_ARRAY && val.type == 5) {
+
+	//	}
+	//}
+}
+
 bool Simulation::Ok()
 {
 	return m_errors.size() == 0;
