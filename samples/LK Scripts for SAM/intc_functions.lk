@@ -1,0 +1,140 @@
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+// SAM LK functions for reading interconnect definition and assembly          //
+// configuration files                                                        //
+//																			  //
+//																			  //
+//   NOTE: The interconnect assemblies need to be in ascending order in the file
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
+
+
+import_and_set_interconnects = define(csv_IntcDef, csv_IntcAssy)
+{
+	n_defskip = 3;  // number of header lines in definition file to skip
+	defname_col = 0; defk_col = 2; defd_col = 3; defl_col = 4; deftype_col = 5;
+	n_assyskip = 3;  // number of header lines in assembly file to skip
+	assyname_col = 0; assyn_col = 2; assyintcs_col = 3;
+
+	NA_val = -1;
+
+	if ( !file_exists(csv_IntcDef) ) {
+		msgbox("Could not locate \"" + filename_IntcDef +
+			   "\" in the project file directory." +
+			   "\n\n" +
+			   "Before running this script, be sure to " +
+			   "save the SAM file (.sam) and the " +
+			   "following interconnect definition and " +
+			   "assembly files in the same directory:" +
+			   "\n\n" +
+			   "\"" + filename_IntcDef + "\"\n" +
+			   "\"" + filename_IntcAssy + "\"");
+		exit;
+	}
+	if ( !file_exists(csv_IntcAssy) ) {
+		msgbox("Could not locate \"" + filename_IntcAssy +
+			   "\" in the project file directory." +
+			   "\n\n" +
+			   "Before running this script, be sure to " +
+			   "save the SAM file (.sam) and the " +
+			   "following interconnect definition and " +
+			   "assembly files in the same directory:" +
+			   "\n\n" +
+			   "\"" + filename_IntcDef + "\"\n" +
+			   "\"" + filename_IntcAssy + "\"");
+		exit;
+	}
+
+	// Read interconnect definition and assembly files into arrays
+	arr_IntcDef = csvread( csv_IntcDef, { 'skip'=n_defskip, 'numeric'=false } );
+	arr_IntcAssy = csvread( csv_IntcAssy, { 'skip'=n_assyskip, 'numeric'=false } );
+
+	// Create lookup table to return row index when given interconnect name
+	for ( row=0; row<#arr_IntcDef; row++ )
+	{
+		intc_index_name{arr_IntcDef[row][defname_col]} = row;
+	}
+
+	// Find the maximum number of interconnects in any assembly
+	max_intcs = 0;
+	for ( i_assy=0; i_assy<#arr_IntcAssy; i_assy++ )
+		max_intcs = max(max_intcs, arr_IntcAssy[i_assy][assyn_col]);
+
+	// Create matrices of K, D, L, and ff values; row=assembly number, col=component
+	for ( i_assy=0; i_assy<#arr_IntcAssy; i_assy++ )  // for each assembly file row
+	{
+		// Create array of interconnects from each assembly and verify number of vals
+		intcs = split(arr_IntcAssy[i_assy][assyintcs_col], '-');
+		if ( #intcs != to_int(arr_IntcAssy[i_assy][assyn_col]) ) {
+			msgbox("The number of " +
+				   "interconnect assemblies (intc_n_intcs) " +
+				   "does not match the number of assemblies " +
+				   "specified in \"" +
+				   filename_IntcAssy + "\" for assembly " +
+				   arr_IntcAssy[i_assy][assyname_col] + " .");
+			exit;
+		}
+		
+		// Add interconnect values to matrices
+		for ( i_intc=0; i_intc<max_intcs; i_intc++ )
+		{
+			if ( i_intc < to_int(arr_IntcAssy[i_assy][assyn_col]) ) {
+				K_intc[i_assy][i_intc] =
+					to_real(arr_IntcDef[intc_index_name{intcs[i_intc]}][defk_col]);
+				D_intc[i_assy][i_intc] =
+					to_real(arr_IntcDef[intc_index_name{intcs[i_intc]}][defd_col]);
+				L_intc[i_assy][i_intc] =
+					to_real(arr_IntcDef[intc_index_name{intcs[i_intc]}][defl_col]);
+				Type_intc[i_assy][i_intc] =
+					to_real(arr_IntcDef[intc_index_name{intcs[i_intc]}][deftype_col]);
+			} else {
+				K_intc[i_assy][i_intc] = NA_val;
+				D_intc[i_assy][i_intc] = NA_val;
+				L_intc[i_assy][i_intc] = NA_val;
+				Type_intc[i_assy][i_intc] = NA_val;
+			}
+		}
+	}
+	
+	// set SSC values
+	set( 'K_intc', K_intc );
+	set( 'D_intc', D_intc );
+	set( 'L_intc', L_intc );
+	set( 'Type_intc', Type_intc );
+	
+	outln("Finished importing and setting interconnect parameters.");
+};  // import_and_set_interconnects()
+
+
+write_output_files = define(csv_Runners, csv_Headers, csv_Loop)
+{
+	// Output CSV file for runners
+	rnr_diams = get('pipe_runner_diams');
+	for ( i=0; i<#rnr_diams; i++ ) { index[i] = i; }
+	rnr.index = index;
+	rnr.Diameter_m = get('pipe_runner_diams');
+	rnr.Length_m = get('pipe_runner_lengths');
+	rnr.Expansions = get('pipe_runner_expansions');
+	rnr.MassFlow_kg_s = get('pipe_runner_mdot_dsn');
+	rnr.Velocity_m_s = get('pipe_runner_vel_dsn');
+	ok = csvwrite( csv_Runners, rnr,
+		{ 'cols'=['index', 'Diameter_m', 'Length_m', 'Expansions',
+			'MassFlow_kg_s', 'Velocity_m_s'] } );
+
+	// Output CSV file for headers
+	hdr_diams = get('pipe_header_diams');
+	for ( i=0; i<#hdr_diams; i++ ) { index[i] = i; }
+	hdr.index = index;
+	hdr.Diameter_m = get('pipe_header_diams');
+	hdr.Length_m = get('pipe_header_lengths');
+	hdr.Expansions = get('pipe_header_expansions');
+	hdr.MassFlow_kg_s = get('pipe_header_mdot_dsn');
+	hdr.Velocity_m_s = get('pipe_header_vel_dsn');
+	ok = csvwrite( csv_Headers, hdr,
+		{ 'cols'=['index', 'Diameter_m', 'Length_m', 'Expansions',
+			'MassFlow_kg_s', 'Velocity_m_s'] } );
+
+	// Output CSV file for loop
+
+
+};  // write_output_files()
