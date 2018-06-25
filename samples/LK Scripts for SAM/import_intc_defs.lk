@@ -1,0 +1,46 @@
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+// SAM LK script for reading interconnect definition and assembly             //
+// configuration files and running a sample physical trough model             //
+//                                                                            //
+// Instructions:                                                              //
+// 1. Open a SAM file (.sam) with a physical trough [default] case            //
+// 2. Put the following interconnect and interconnect assembly files in the   //
+//    directory specified by the 'dir' variable below.                        //
+//    a. Physical_Trough_Interconnects.csv                                    //
+//    b. Physical_Trough_Interconnect_Assemblies.csv                          //
+// 3. Ensure the intc_functions.lk file is in the location specified at the   //
+//    import statement below 												  //
+// 4. In SAM, go to File->Open Script and open this script                    //
+// 5. In the script window, select 'Run'.                                     //
+// 6. After the script is finished, the results will be updated in the SAM UI //
+//    and the following output files will be in the directory specified by    //
+//    the 'dir' variable below:                                               //
+//      a. Runners.csv                                                        //
+//      b. Headers.csv                                                        //
+//      c. Loop.csv                                                           //
+//																			  //
+//																			  //
+//   NOTE: The interconnect assemblies need to be in ascending order in the file
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
+
+import "C:/Users/mboyd/Documents/SAM/sam_dev/sam/samples/"
+		"LK Scripts for SAM/intc_functions.lk";
+dir = homedir() + "\\Documents\\SolarDynamics";
+intc_def_file = 'Physical_Trough_Interconnects.csv';
+assy_def_file = 'Physical_Trough_Interconnect_Assemblies.csv';
+runner_output_file = 'Runners.csv';
+header_output_file =  'Headers.csv';
+loop_output_file = 'Loop.csv';
+
+import_and_set_interconnects(dir + '\\' + intc_def_file,
+							 dir + '\\' + assy_def_file);
+
+errors='';
+simulate(errors,1);  // simulate and update UI with results
+
+
+write_output_files(dir + '\\' + runner_output_file,
+				   dir + '\\' + header_output_file,
+				   dir + '\\' + loop_output_file);
