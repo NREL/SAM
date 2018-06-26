@@ -1,6 +1,6 @@
 /*@
 
-<p>Location data from a CSV file is read in, TMY data is downloaded from the NSRDB and placed into a user-specified folder
+<p>Location data from a CSV file is read in, TMY or a specified year's data is downloaded from the NSRDB and placed into a user-specified folder
 <br><br>
 Locations can be specified as latitudes and longitudes or as addresses. 
 <br><br>
@@ -117,7 +117,7 @@ function main()
 		outln('');
 		outln('Getting weather file ' + j + " for " + to_string(lat) + ", " + to_string(lon) + ", " + to_string(dataset));
 		
-		if (to_string(dataset) != 'tmy')
+		if (stricmp(to_string(dataset), 'tmy') != 0)
 		{
 			year = to_int(dataset);
 			if (year < 1998)
