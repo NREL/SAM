@@ -772,8 +772,12 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					std::vector<VarValue> vvv;
 					ParametricData::Var pv;
 					for (int r = 1; r < row; r++) {
-						if (vals[c*row + r].size() < 1) return;
 						VarValue vv;
+						if (vals[c*row + r].Len() == 0) {
+							vv = it->second->DefaultValue;
+							vvv.push_back(vv);
+							continue;
+						}
 						if (ImportAsNumber(vals[c*row + r], vv)) {
 							vvv.push_back(vv);
 							continue;
