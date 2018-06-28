@@ -208,6 +208,7 @@ public:
 	void GetGraphs(std::vector<Graph> &gl);
 
 	wxString RunSimulationsFromMacro();
+	bool ExportFromMacro(wxString path, bool asExcel = true);
 
 private:
 	void OnCommand(wxCommandEvent &evt);
