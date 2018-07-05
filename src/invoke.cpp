@@ -2023,8 +2023,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 	//Create a folder to put the weather file in
 	wxString wfdir;
-	SamApp::Settings().Read("weather_file_dir", &wfdir);
-	if (wfdir.IsEmpty()) wfdir = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
+	wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
 	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
 
 	//Create the filename
@@ -2039,7 +2038,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		wxMessageBox("Failed to download the closest WIND toolkit weather file from NREL for your location. The NREL service might be down- please try again later.");
 		return;
 	}
-
+	
 	//Return the downloaded filename
 	cxt.result().assign(filename);
 }
