@@ -39,8 +39,9 @@ import_and_set_interconnects(input_dir + '\\' + intc_cpnt_file,
 							 input_dir + '\\' + intc_def_file);
 
 errors='';
+outln("Running simulation...");
 simulate(errors,1);  // simulate and update UI with results
-
+outln("Finished simulation");
 
 write_output_files(output_dir + '\\' + runner_output_file,
 				   output_dir + '\\' + header_output_file,
