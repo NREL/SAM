@@ -1265,9 +1265,12 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 				}
 				for (size_t c = 0; c < columnCount; c++) {
 					lk::vardata_t* it = out.lookup(colHeaders[c]);
+					if (it == NULL) continue;
 					for (size_t r = 1 + nskip; r < rowCount; r++) {
-						if (tonum) it->index(r - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
-						else it->index(r - 1 - nskip)->assign(vals[c*rowCount + r]);
+						if (vals[c*rowCount + r] != wxEmptyString) {
+							if (tonum) it->index(r - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
+							else it->index(r - 1 - nskip)->assign(vals[c*rowCount + r]);
+						}
 					}
 				}
 			}
@@ -1286,9 +1289,12 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 
 				for (size_t r = 0; r < rowCount; r++) {
 					lk::vardata_t* it = out.lookup(rowHeaders[r]);
+					if (it == NULL) continue;
 					for (size_t c = 1 + nskip; c < columnCount; c++) {
-						if (tonum) it->index(c - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
-						else it->index(c - 1 - nskip)->assign(vals[c*rowCount + r]);
+						if (vals[c*rowCount + r] != wxEmptyString) {
+							if (tonum) it->index(c - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
+							else it->index(c - 1 - nskip)->assign(vals[c*rowCount + r]);
+						}
 					}
 				}
 			}
@@ -1303,6 +1309,7 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 					row->vec()->resize(columnCount);
 					for (size_t c = 0; c < columnCount; c++)
 					{
+						if (vals[c*rowCount + r] == wxEmptyString) continue;
 						if (tonum) {
 							row->index(c)->assign(wxAtof(vals[c*rowCount + r]));
 						}
@@ -1321,6 +1328,7 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 					col->vec()->resize(rowCount);
 					for (size_t r = 0; r < rowCount; r++)
 					{
+						if (vals[c*rowCount + r] == wxEmptyString) continue;
 						if (tonum) {
 							col->index(r)->assign(wxAtof(vals[c*rowCount + r]));
 						}
@@ -2015,8 +2023,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 	//Create a folder to put the weather file in
 	wxString wfdir;
-	SamApp::Settings().Read("weather_file_dir", &wfdir);
-	if (wfdir.IsEmpty()) wfdir = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
+	wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
 	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
 
 	//Create the filename
@@ -2031,7 +2038,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		wxMessageBox("Failed to download the closest WIND toolkit weather file from NREL for your location. The NREL service might be down- please try again later.");
 		return;
 	}
-
+	
 	//Return the downloaded filename
 	cxt.result().assign(filename);
 }
@@ -4197,6 +4204,26 @@ void fcall_parametric_get(lk::invoke_t &cxt)
 		cxt.error("variable type is not string, number, array or matrix.");
 	}
 }
+
+static void fcall_parametric_export(lk::invoke_t &cxt)
+{
+	LK_DOC("parametric_export", "Export the parametric table to a csv (default) or Excel file. Returns 1 upon success.", "( string:file, [boolean:excel] ):boolean");
+
+	CaseWindow *cw = SamApp::Window()->GetCurrentCaseWindow();
+	if (!cw) {
+		cxt.error("no case found");
+		cxt.result().assign(0.0);
+		return;
+	}
+	wxString file = cxt.arg(0).as_string();
+	bool ext;
+	if (cxt.arg_count() > 1) {
+		ext = cxt.arg(1).as_boolean();
+	}
+	if (cw->GetParametricViewer()->ExportFromMacro(file, ext)) cxt.result().assign(1.0);
+	else cxt.result().assign(0.0);
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -4237,6 +4264,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_lhs_vector,
 		fcall_parametric_get,
 		fcall_parametric_run,
+		fcall_parametric_export,
 		fcall_step_create,
 		fcall_step_free,
 		fcall_step_vector,
