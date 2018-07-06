@@ -86,7 +86,7 @@ import_and_set_interconnects = define(csv_IntcCpnt, csv_IntcDef)
 	set( 'L_cpnt', L_cpnt );
 	set( 'Type_cpnt', Type_cpnt );
 	
-	outln("Finished importing and setting interconnect component parameters.");
+	outln("Finished importing and setting interconnect component parameters");
 };  // import_and_set_interconnects()
 
 
@@ -131,4 +131,5 @@ write_output_files = define(csv_Runners, csv_Headers, csv_Loop)
 	ok = csvwrite( csv_Loop, loop,
 		{ 'cols'=['index', 'Temp_C', 'P_gauge_bar'] } );
 
+	outln("Finished writing output files");
 };  // write_output_files()
