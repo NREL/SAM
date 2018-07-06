@@ -86,7 +86,7 @@ import_and_set_interconnects = define(csv_IntcCpnt, csv_IntcDef)
 	set( 'L_cpnt', L_cpnt );
 	set( 'Type_cpnt', Type_cpnt );
 	
-	outln("Finished importing and setting interconnect component parameters.");
+	outln("Finished importing and setting interconnect component parameters");
 };  // import_and_set_interconnects()
 
 
@@ -94,31 +94,42 @@ write_output_files = define(csv_Runners, csv_Headers, csv_Loop)
 {
 	// Output CSV file for runners
 	rnr_diams = get('pipe_runner_diams');
-	for ( i=0; i<#rnr_diams; i++ ) { index[i] = i; }
-	rnr.index = index;
+	for ( i=0; i<#rnr_diams; i++ ) { rnr_index[i] = i; }
+	rnr.index = rnr_index;
 	rnr.Diameter_m = get('pipe_runner_diams');
 	rnr.Length_m = get('pipe_runner_lengths');
 	rnr.Expansions = get('pipe_runner_expansions');
 	rnr.MassFlow_kg_s = get('pipe_runner_mdot_dsn');
 	rnr.Velocity_m_s = get('pipe_runner_vel_dsn');
+	rnr.Temp_C = get('pipe_runner_T_dsn');
+	rnr.P_gauge_bar = get('pipe_runner_P_dsn');
 	ok = csvwrite( csv_Runners, rnr,
 		{ 'cols'=['index', 'Diameter_m', 'Length_m', 'Expansions',
-			'MassFlow_kg_s', 'Velocity_m_s'] } );
+			'MassFlow_kg_s', 'Velocity_m_s', 'Temp_C', 'P_gauge_bar'] } );
 
 	// Output CSV file for headers
 	hdr_diams = get('pipe_header_diams');
-	for ( i=0; i<#hdr_diams; i++ ) { index[i] = i; }
-	hdr.index = index;
+	for ( i=0; i<#hdr_diams; i++ ) { hdr_index[i] = i; }
+	hdr.index = hdr_index;
 	hdr.Diameter_m = get('pipe_header_diams');
 	hdr.Length_m = get('pipe_header_lengths');
 	hdr.Expansions = get('pipe_header_expansions');
 	hdr.MassFlow_kg_s = get('pipe_header_mdot_dsn');
 	hdr.Velocity_m_s = get('pipe_header_vel_dsn');
+	hdr.Temp_C = get('pipe_header_T_dsn');
+	hdr.P_gauge_bar = get('pipe_header_P_dsn');
 	ok = csvwrite( csv_Headers, hdr,
 		{ 'cols'=['index', 'Diameter_m', 'Length_m', 'Expansions',
-			'MassFlow_kg_s', 'Velocity_m_s'] } );
+			'MassFlow_kg_s', 'Velocity_m_s', 'Temp_C', 'P_gauge_bar'] } );
 
 	// Output CSV file for loop
+	loop_temps = get('pipe_loop_T_dsn');
+	for ( i=0; i<#loop_temps; i++ ) { loop_index[i] = i; }
+	loop.index = loop_index;
+	loop.Temp_C = get('pipe_loop_T_dsn');
+	loop.P_gauge_bar = get('pipe_loop_P_dsn');
+	ok = csvwrite( csv_Loop, loop,
+		{ 'cols'=['index', 'Temp_C', 'P_gauge_bar'] } );
 
-
+	outln("Finished writing output files");
 };  // write_output_files()
