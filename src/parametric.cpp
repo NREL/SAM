@@ -471,6 +471,55 @@ wxString ParametricViewer::RunSimulationsFromMacro()
 	return wxString();
 }
 
+bool ParametricViewer::ExportFromMacro(wxString path, bool asExcel) {
+	if (asExcel) {
+		wxString dat;
+		GetTextData(dat, '\t');
+
+		// strip commas per request from Paul 5/23/12 meeting
+		dat.Replace(",", "");
+
+#ifdef __WXMSW__
+		wxExcelAutomation xl;
+		if (!xl.StartExcel())
+		{
+			wxMessageBox("Could not start Excel.");
+			return false;
+		}
+		
+		if (!xl.NewWorkbook())
+		{
+			wxMessageBox("Could not create a new Excel worksheet.");
+			return false;
+		}
+		if (wxTheClipboard->Open())
+		{
+			wxTheClipboard->SetData(new wxTextDataObject(dat));
+			wxTheClipboard->Close();
+			xl.PasteClipboard();
+			if (xl.SaveClose(path)) return true;
+			return false;
+		}
+#endif
+		return false;
+
+
+	}
+	else {
+		FILE *fp = fopen(path.c_str(), "w");
+		if (!fp)
+		{
+			return false;
+		}
+
+		wxString dat;
+		GetTextData(dat, ',');
+		fputs(dat.c_str(), fp);
+		fclose(fp);
+	}
+	return true;
+}
+
 void ParametricViewer::OnCommand(wxCommandEvent &evt)
 {
 	switch (evt.GetId())
@@ -772,8 +821,12 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					std::vector<VarValue> vvv;
 					ParametricData::Var pv;
 					for (int r = 1; r < row; r++) {
-						if (vals[c*row + r].size() < 1) return;
 						VarValue vv;
+						if (vals[c*row + r].Len() == 0) {
+							vv = it->second->DefaultValue;
+							vvv.push_back(vv);
+							continue;
+						}
 						if (ImportAsNumber(vals[c*row + r], vv)) {
 							vvv.push_back(vv);
 							continue;
