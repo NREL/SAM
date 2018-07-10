@@ -578,6 +578,22 @@ static void fcall_add_loss_term( lk::invoke_t &cxt )
 	}
 }
 
+static void fcall_add_gain_term(lk::invoke_t &cxt)
+{
+	LK_DOC("add_gain_term", "Adds a gain to the loss diagram.", "(string:variable name, string:text):none");
+	if (LossDiagCallbackContext *ldcc = static_cast<LossDiagCallbackContext*>(cxt.user_data()))
+	{
+		Simulation &sim = ldcc->GetSimulation();
+		LossDiagramObject &ld = ldcc->GetDiagram();
+
+		if (VarValue *vv = sim.GetValue(cxt.arg(0).as_string()))
+		{
+			if (vv->Type() == VV_NUMBER)
+				ld.AddLossTerm(-vv->Value(), cxt.arg(1).as_string());
+		}
+	}
+}
+
 static void fcall_agraph( lk::invoke_t &cxt )
 {
 	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bootom, right, floating)]):none" );
@@ -4353,6 +4369,7 @@ lk::fcall_t* invoke_lossdiag_funcs()
 	static const lk::fcall_t vec[] = {
 		fcall_new_baseline,
 		fcall_add_loss_term,
+		fcall_add_gain_term,
 		0 };
 	return (lk::fcall_t*)vec;
 }
