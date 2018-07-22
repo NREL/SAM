@@ -244,6 +244,40 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+
+#define EVT_DATASTRINGBUTTON(id, func)  EVT_BUTTON(id, func)
+
+class AFDataStringButton : public wxButton
+{
+public:
+	AFDataStringButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
+
+	void Set(const wxArrayString &data);
+	void Get(wxArrayString &data);
+	wxArrayString Get() const { return mData; }
+
+	void SetDataLabel(const wxString &s);
+	wxString GetDataLabel();
+
+	void SetDescription(const wxString &s) { m_description = s; }
+	wxString GetDescription() { return m_description; }
+
+	void SetMode(int mode);
+	int GetMode();
+
+	void OnPressed(wxCommandEvent &evt);
+private:
+	wxString mDataLabel;
+	int mMode;
+	wxArrayString mData;
+	wxString m_description;
+
+	DECLARE_EVENT_TABLE();
+};
+
+
+
+
 class wxExtGridCtrl;
  
 /*
