@@ -138,7 +138,10 @@ function setup_flat_plate_pv_pages()
 				['IEC61853 Single Diode Model'] ], 				
 			{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model' } );
 			
-	addpage( [ ['Inverter CEC Database'], ['Inverter Datasheet'], ['Inverter Part Load Curve'], ['Inverter CEC Coefficient Generator'] ], 
+	addpage( [ ['Inverter CEC Database', {'name'='Inverter Temp Derate CEC DB', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
+			 ['Inverter Datasheet', {'name'='Inverter Temp Derate DS', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
+			 ['Inverter Part Load Curve', {'name'='Inverter Temp Derate PLC', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
+			 ['Inverter CEC Coefficient Generator', {'name'='Inverter Temp Derate CEC CG', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}] ], 
 			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 	addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Snow', 'help'='pv_shading' } );
@@ -613,8 +616,11 @@ addpage( [ ['Simple Efficiency Module Model'],
 		   ['Sandia PV Array Performance Model with Module Database'],
 		   ['IEC61853 Single Diode Model'] ], 				
 		{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model' } );
-addpage( [ ['Inverter CEC Database'], ['Inverter Datasheet'], ['Inverter Part Load Curve'], ['Inverter CEC Coefficient Generator'] ], 
-		{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
+addpage( [ ['Inverter CEC Database', {'name'='Inverter Temp Derate CEC DB', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
+			 ['Inverter Datasheet', {'name'='Inverter Temp Derate DS', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
+			 ['Inverter Part Load Curve', {'name'='Inverter Temp Derate PLC', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
+			 ['Inverter CEC Coefficient Generator', {'name'='Inverter Temp Derate CEC CG', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}] ], 
+			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
 addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Snow', 'help'='pv_shading' } );
 addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
@@ -630,8 +636,11 @@ addpage( [ ['Simple Efficiency Module Model'],
 		   ['Sandia PV Array Performance Model with Module Database'],
 		   ['IEC61853 Single Diode Model'] ], 				
 		{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model' } );
-addpage( [ ['Inverter CEC Database'], ['Inverter Datasheet'], ['Inverter Part Load Curve'], ['Inverter CEC Coefficient Generator'] ], 
-		{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
+addpage( [ ['Inverter CEC Database', {'name'='Inverter Temp Derate CEC DB', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
+			 ['Inverter Datasheet', {'name'='Inverter Temp Derate DS', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
+			 ['Inverter Part Load Curve', {'name'='Inverter Temp Derate PLC', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
+			 ['Inverter CEC Coefficient Generator', {'name'='Inverter Temp Derate CEC CG', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}] ], 
+			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
 addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Snow', 'help'='pv_shading' } );
 addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
