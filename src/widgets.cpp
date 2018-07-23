@@ -1072,25 +1072,25 @@ public:
 
 class AFStringArrayTable : public wxGridTableBase
 {
-	wxArrayString d_arr;
+	wxArrayString *d_arr;
 	int mode;
 	wxString label;
 
 public:
-	AFStringArrayTable(const wxArrayString &da, const wxString &_label)
+	AFStringArrayTable(wxArrayString *da, const wxString &_label)
 	{
 		label = _label;
 		d_arr = da;
 	}
 
-	void SetArray(const wxArrayString &da)
+	void SetArray( wxArrayString *da)
 	{
 		d_arr = da;
 	}
 
 	virtual int GetNumberRows()
 	{
-		return (int)d_arr.Count();
+		return (int)d_arr->Count();
 	}
 
 	virtual int GetNumberCols()
@@ -1105,16 +1105,16 @@ public:
 
 	virtual wxString GetValue(int row, int)
 	{
-		if (row >= 0 && row < (int)d_arr.Count())
-			return  d_arr[row];
+		if (row >= 0 && row < (int)d_arr->Count())
+			return  d_arr->Item(row);
 		else
 			return "";
 	}
 
 	virtual void SetValue(int row, int, const wxString& value)
 	{
-		if (row >= 0 && row <  d_arr.Count())
-			d_arr[row] = value;
+		if (row >= 0 && row <  d_arr->Count())
+			d_arr->Item(row)= value;
 	}
 
 	virtual wxString GetRowLabelValue(int row)
@@ -1147,7 +1147,7 @@ public:
 		if (nrows > 0)
 		{
 			for (size_t i = 0; i<nrows; i++)
-				d_arr.Add("");
+				d_arr->Add("");
 
 
 			if (GetView())
@@ -1166,11 +1166,11 @@ public:
 	virtual bool InsertRows(size_t pos, size_t nrows)
 	{
 
-		if (pos > d_arr.Count()) pos = d_arr.Count();
+		if (pos > d_arr->Count()) pos = d_arr->Count();
 
 		for (int i = 0; i<(int)nrows; i++)
 		{
-			d_arr.Insert("", 0);
+			d_arr->Insert("", 0);
 		}
 
 		if (GetView())
@@ -1189,11 +1189,11 @@ public:
 	virtual bool DeleteRows(size_t pos, size_t nrows)
 	{
 
-		if (nrows > d_arr.Count() - pos)
-			nrows = d_arr.Count() - pos;
+		if (nrows > d_arr->Count() - pos)
+			nrows = d_arr->Count() - pos;
 
 		//applog("2 Delete Rows[ %d %d ] RowCount %d\n", pos, nrows, Stage->ElementList.size());
-		d_arr.RemoveAt( pos,  nrows);
+		d_arr->RemoveAt( pos,  nrows);
 
 		if (GetView())
 		{
@@ -1837,12 +1837,12 @@ void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
 
 enum { IDSD_GRID = wxID_HIGHEST + 945, IDSD_CHANGENUMROWS, IDSD_COPY, IDSD_PASTE, IDSD_IMPORT, IDSD_EXPORT };
 
-class AFDataStringDialog : public wxDialog
+class AFStringArrayDialog : public wxDialog
 {
 private:
 	wxString mLabel;
 	int mMode;
-	wxArrayString mData;
+	wxArrayString *mData;
 	wxExtGridCtrl *Grid;
 	AFStringArrayTable *GridTable;
 	wxStaticText *ModeLabel;
@@ -1850,7 +1850,7 @@ private:
 	wxButton *ButtonChangeRows;
 
 public:
-	AFDataStringDialog(wxWindow *parent, const wxString &title, const wxString &desc, const wxString &collabel)
+	AFStringArrayDialog(wxWindow *parent, const wxString &title, const wxString &desc, const wxString &collabel)
 		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(430, 510),
 			wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 	{
@@ -1904,7 +1904,7 @@ public:
 	}
 
 
-	void SetData(const wxArrayString &data)
+	void SetData( wxArrayString *data)
 	{
 		mData = data;
 
@@ -1920,17 +1920,17 @@ public:
 		Grid->Refresh();
 	}
 
-	void GetData(wxArrayString &data)
+	void GetData(wxArrayString *data)
 	{
 		data = mData;
 	}
 
-	void SetDataLabel(const wxString &s)
+	void SetStringLabel(const wxString &s)
 	{
 		mLabel = s;
 	}
 
-	wxString GetDataLabel()
+	wxString GetStringLabel()
 	{
 		return mLabel;
 	}
@@ -1975,11 +1975,11 @@ public:
 			fgets(buf, 127, fp); // skip header line
 
 			bool error = false;
-			for (int i = 0; i<(int)mData.size(); i++)
+			for (int i = 0; i< mData->Count(); i++)
 			{
 				if (fgets(buf, 127, fp) == NULL)
 				{
-					wxMessageBox(wxString::Format("Data file does not contain %d data value lines, only %d found.\n\nNote that the first line in the file is considered a header label and is ignored.", mData.size(), i));
+					wxMessageBox(wxString::Format("Data file does not contain %d data value lines, only %d found.\n\nNote that the first line in the file is considered a header label and is ignored.", mData->Count(), i));
 					error = true;
 					break;
 				}
@@ -1987,7 +1987,7 @@ public:
 				arr.push_back(buf);
 			}
 
-			if (!error) SetData(arr);
+			if (!error) SetData(&arr);
 
 			fclose(fp);
 		}
@@ -2003,8 +2003,8 @@ public:
 				return;
 			}
 
-			fprintf(fp, "Exported Data (%d)\n", (int)mData.size());
-			for (size_t i = 0; i<mData.size(); i++)
+			fprintf(fp, "Exported Data (%d)\n", (int)mData->Count());
+			for (size_t i = 0; i<mData->Count(); i++)
 				fprintf(fp, "%g\n", mData[i]);
 			fclose(fp);
 		}
@@ -2013,61 +2013,51 @@ public:
 	DECLARE_EVENT_TABLE();
 };
 
-BEGIN_EVENT_TABLE(AFDataStringDialog, wxDialog)
-EVT_BUTTON(IDSD_COPY, AFDataStringDialog::OnCommand)
-EVT_BUTTON(IDSD_PASTE, AFDataStringDialog::OnCommand)
-EVT_BUTTON(IDSD_IMPORT, AFDataStringDialog::OnCommand)
-EVT_BUTTON(IDSD_EXPORT, AFDataStringDialog::OnCommand)
-EVT_BUTTON(IDSD_CHANGENUMROWS, AFDataStringDialog::OnCommand)
+BEGIN_EVENT_TABLE(AFStringArrayDialog, wxDialog)
+EVT_BUTTON(IDSD_COPY, AFStringArrayDialog::OnCommand)
+EVT_BUTTON(IDSD_PASTE, AFStringArrayDialog::OnCommand)
+EVT_BUTTON(IDSD_IMPORT, AFStringArrayDialog::OnCommand)
+EVT_BUTTON(IDSD_EXPORT, AFStringArrayDialog::OnCommand)
+EVT_BUTTON(IDSD_CHANGENUMROWS, AFStringArrayDialog::OnCommand)
 END_EVENT_TABLE()
 
-BEGIN_EVENT_TABLE(AFDataStringButton, wxButton)
-EVT_BUTTON(wxID_ANY, AFDataStringButton::OnPressed)
+BEGIN_EVENT_TABLE(AFStringArrayButton, wxButton)
+EVT_BUTTON(wxID_ANY, AFStringArrayButton::OnPressed)
 END_EVENT_TABLE()
 
-AFDataStringButton::AFDataStringButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
+AFStringArrayButton::AFStringArrayButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
 	: wxButton(parent, id, "Edit data...", pos, size)
 {
 }
 
-void AFDataStringButton::Get(wxArrayString &data)
+void AFStringArrayButton::Get(wxString &data)
 {
-	data = mData;
+	data = wxJoin(mData, '|');
 }
-void AFDataStringButton::Set(const wxArrayString &data)
+void AFStringArrayButton::Set(const wxString &data)
 {
-
-	mData = data;
+	mData = wxSplit(data, '|');
 }
-void AFDataStringButton::SetDataLabel(const wxString &s)
+void AFStringArrayButton::SetStringLabel(const wxString &s)
 {
-	mDataLabel = s;
+	mStringLabel = s;
 }
-wxString AFDataStringButton::GetDataLabel()
+wxString AFStringArrayButton::GetStringLabel()
 {
-	return mDataLabel;
-}
-
-void AFDataStringButton::SetMode(int mode)
-{
-	mMode = mode;
+	return mStringLabel;
 }
 
-int AFDataStringButton::GetMode()
-{
-	return mMode;
-}
 
-void AFDataStringButton::OnPressed(wxCommandEvent &evt)
+void AFStringArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	AFDataStringDialog dlg(this, "Edit Data", m_description, mDataLabel);
+	AFStringArrayDialog dlg(this, "Edit Data", m_description, mStringLabel);
 
-	dlg.SetDataLabel(mDataLabel);
-	dlg.SetData(mData);
+	dlg.SetStringLabel(mStringLabel);
+	dlg.SetData(&mData);
 
 	if (dlg.ShowModal() == wxID_OK)
 	{
-		dlg.GetData(mData);
+		dlg.GetData(&mData);
 		evt.Skip(); // allow event to propagate indicating underlying value changed
 	}
 }

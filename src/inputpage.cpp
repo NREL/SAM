@@ -520,15 +520,15 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if ( dir == VAR_TO_OBJ ) mf->Set( val.Array() );
 		else val.Set( mf->Get() );
 	}
-	else if ( AFDataArrayButton *da = obj->GetNative<AFDataArrayButton>() )
+	else if (AFDataArrayButton *da = obj->GetNative<AFDataArrayButton>())
 	{
-		if ( dir == VAR_TO_OBJ ) da->Set( val.Array() );
-		else val.Set( da->Get() );
+		if (dir == VAR_TO_OBJ) da->Set(val.Array());
+		else val.Set(da->Get());
 	}
-	else if (AFDataMatrixCtrl *dm = obj->GetNative<AFDataMatrixCtrl>())
+	else if (AFStringArrayButton *sa = obj->GetNative<AFStringArrayButton>())
 	{
-		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
-		else val.Set(dm->GetData());
+		if (dir == VAR_TO_OBJ) sa->Set(val.String());
+		else val.Set(sa->Get());
 	}
 	else if (AFDataMatrixCtrl *dm = obj->GetNative<AFDataMatrixCtrl>())
 	{

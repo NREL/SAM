@@ -247,28 +247,25 @@ private:
 
 #define EVT_DATASTRINGBUTTON(id, func)  EVT_BUTTON(id, func)
 
-class AFDataStringButton : public wxButton
+class AFStringArrayButton : public wxButton
 {
 public:
-	AFDataStringButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
+	AFStringArrayButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
 
-	void Set(const wxArrayString &data);
-	void Get(wxArrayString &data);
-	wxArrayString Get() const { return mData; }
+	void Set(const wxString &data);
+	void Get(wxString &data);
+	wxString Get() const { return wxJoin(mData,'|'); }
 
-	void SetDataLabel(const wxString &s);
-	wxString GetDataLabel();
+	void SetStringLabel(const wxString &s);
+	wxString GetStringLabel();
 
 	void SetDescription(const wxString &s) { m_description = s; }
 	wxString GetDescription() { return m_description; }
 
-	void SetMode(int mode);
-	int GetMode();
 
 	void OnPressed(wxCommandEvent &evt);
 private:
-	wxString mDataLabel;
-	int mMode;
+	wxString mStringLabel;
 	wxArrayString mData;
 	wxString m_description;
 
