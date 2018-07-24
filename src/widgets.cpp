@@ -1920,9 +1920,9 @@ public:
 		Grid->Refresh();
 	}
 
-	void GetData(wxArrayString *data)
+	wxArrayString *GetData()
 	{
-		data = mData;
+		return mData;
 	}
 
 	void SetStringLabel(const wxString &s)
@@ -1957,7 +1957,7 @@ public:
 		else if (evt.GetId() == IDSD_COPY)
 			Grid->Copy(true);
 		else if (evt.GetId() == IDSD_PASTE)
-			Grid->Paste(wxExtGridCtrl::PASTE_ALL);
+			Grid->Paste(wxExtGridCtrl::PASTE_ALL_RESIZE_ROWS);
 		else if (evt.GetId() == IDSD_IMPORT)
 		{
 			wxFileDialog dlg(this, "Select data file to import");
@@ -1968,28 +1968,13 @@ public:
 				wxMessageBox("Could not open file for reading:\n\n" + dlg.GetPath());
 				return;
 			}
-
-			wxArrayString arr;
-
+			wxArrayString *arr = GetData();
+			arr->Clear();
 			char buf[128];
-			fgets(buf, 127, fp); // skip header line
-
-			bool error = false;
-			for (int i = 0; i< mData->Count(); i++)
-			{
-				if (fgets(buf, 127, fp) == NULL)
-				{
-					wxMessageBox(wxString::Format("Data file does not contain %d data value lines, only %d found.\n\nNote that the first line in the file is considered a header label and is ignored.", mData->Count(), i));
-					error = true;
-					break;
-				}
-
-				arr.push_back(buf);
-			}
-
-			if (!error) SetData(&arr);
-
+			while (fgets(buf, 127, fp) != NULL)
+				arr->push_back(buf);
 			fclose(fp);
+			SetData(arr);
 		}
 		else if (evt.GetId() == IDSD_EXPORT)
 		{
@@ -2003,9 +1988,8 @@ public:
 				return;
 			}
 
-			fprintf(fp, "Exported Data (%d)\n", (int)mData->Count());
 			for (size_t i = 0; i<mData->Count(); i++)
-				fprintf(fp, "%g\n", mData[i]);
+				fprintf(fp, "%s", (const char *)mData->Item(i).c_str());
 			fclose(fp);
 		}
 	}
@@ -2057,7 +2041,7 @@ void AFStringArrayButton::OnPressed(wxCommandEvent &evt)
 
 	if (dlg.ShowModal() == wxID_OK)
 	{
-		dlg.GetData(&mData);
+		mData = *dlg.GetData();
 		evt.Skip(); // allow event to propagate indicating underlying value changed
 	}
 }
