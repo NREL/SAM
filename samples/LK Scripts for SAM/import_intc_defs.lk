@@ -19,6 +19,7 @@
 //      a. Runners.csv                                                        //
 //      b. Headers.csv                                                        //
 //      c. Loop.csv                                                           //
+//      d. SGS.csv                                                            //
 //																			  //
 //																			  //
 //   NOTE: The interconnects need to be in ascending order in the file        //
@@ -34,6 +35,7 @@ intc_def_file = 'physical_trough_interconnect_definitions.csv';
 runner_output_file = 'Runners.csv';
 header_output_file =  'Headers.csv';
 loop_output_file = 'Loop.csv';
+sgs_output_file = 'SGS.csv';
 
 import_and_set_interconnects(input_dir + '\\' + intc_cpnt_file,
 							 input_dir + '\\' + intc_def_file);
@@ -45,4 +47,5 @@ outln("Finished simulation");
 
 write_output_files(output_dir + '\\' + runner_output_file,
 				   output_dir + '\\' + header_output_file,
-				   output_dir + '\\' + loop_output_file);
+				   output_dir + '\\' + loop_output_file,
+				   output_dir + '\\' + sgs_output_file);
