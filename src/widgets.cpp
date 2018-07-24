@@ -1972,7 +1972,10 @@ public:
 			arr->Clear();
 			char buf[128];
 			while (fgets(buf, 127, fp) != NULL)
+			{
+				buf[strcspn(buf, "\r\n")] = 0;
 				arr->push_back(buf);
+			}
 			fclose(fp);
 			SetData(arr);
 		}
@@ -1989,7 +1992,7 @@ public:
 			}
 
 			for (size_t i = 0; i<mData->Count(); i++)
-				fprintf(fp, "%s", (const char *)mData->Item(i).c_str());
+				fprintf(fp, "%s\n", (const char *)mData->Item(i).c_str());
 			fclose(fp);
 		}
 	}
