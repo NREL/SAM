@@ -12,8 +12,8 @@ before_script:
   - export GTEST=/home/travis/build/$user/googletest/googletest
   - export LKDIR=/home/travis/build/$user/lk
   - export WEXDIR=/home/travis/build/$user/wex
-  - export SSCDIR=/home/travis/build/$user/ssc
-  - export SAMNTDIR=/home/travis/build/$user/SAM
+  - export SSCDIR=/home/travis/build/$user/sscmst
+  - export SAMNTDIR=/home/travis/build/$user/SAMmst
   - git clone https://github.com/google/googletest /home/travis/build/$user/googletest
   - git clone https://github.com/$user/lk $LKDIR
   - git clone https://github.com/$user/wex $WEXDIR
@@ -34,6 +34,6 @@ branches:
   only:
   - master
   - develop
-  - Host_Developer
-  - weather_forecast
-  - bifacial
+#  - Host_Developer
+#  - weather_forecast
+#  - 2017.9.5.r3
