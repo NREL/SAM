@@ -5,6 +5,8 @@ loss_diagram{'Flat Plate PV'} = define() {
 	new_baseline( 'annual_poa_nom', 'Nominal POA (kWh)' );
 	add_loss_term( 'annual_poa_shading_loss_percent', 'Shading' );
 	add_loss_term( 'annual_poa_soiling_loss_percent', 'Soiling' );
+	add_gain_term( 'annual_poa_rear_gain_percent', 'Bifacial' );
+
 	
 	new_baseline( 'annual_dc_nominal', 'Nominal DC energy (kWh)' );
 	add_loss_term( 'annual_dc_snow_loss_percent', 'Snow' );

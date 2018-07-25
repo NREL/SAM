@@ -40,23 +40,50 @@ function get_nsrdb( lat, lon, dataset, location_output, interval)
 	valid = to_real(lat) >= -90 && to_real(lat) <= 90 && to_real(lon) >= -180 && to_real(lon) <= 180;
 	if ( !valid )
 		return 'Lat/lon not valid';
+		
 	url = webapi( 'nsrdb_download' );
 	url = replace(url, '<LON>', lon );
 	url = replace(url, '<LAT>', lat );
 	url = replace(url, '<DATASET>', dataset );
 	url = replace(url, '<INTERVAL>', interval);
 	
-	//outln(url);
+	// Download file (try a few times in case server is busy)
+	attempt = 0;
+	
 	name = to_string(lat) + '_' + to_string(lon) + '_' + to_string(dataset) + '.csv';
 	wf = location_output + '/' + name ;
-	if ( !file_exists(wf) ){
-		if ( !curl( url, { 'file'=wf }) )
-			return 'NSRDB download error';
+	
+	while (!file_exists(wf) && attempt < 3)
+	{
+		if ( !file_exists(wf) ){
+			if ( !curl( url, { 'file'=wf }) )
+				outln('NSRDB download error');
+		}
+		else {
+			outln('File already downloaded, skipping');
+		}
+		
+		// run wfcheck module to see if there are any data problems with the file
+		ssc = ssc_create();
+		ssc_var( ssc, 'input_file', wf );
+		result = ssc_exec( ssc, 'wfcheck', {'show_dialog'=false} );
+		ssc_free( ssc );
+		
+		if ( typeof(result) == 'string' )
+		{
+			obj = json_file(wf );	
+			outln('Error in downloaded weather file data for ' 
+				+ name + ':\n' 
+				+ ( (typeof(obj)=='table' && obj ?@ 'errors') ? obj.errors[0] : result ) );
+			remove_file( wf );
+		}
+		
+		attempt++;
 	}
-	else {
-		outln('File already downloaded, skipping');
+	// Report error message if tried to download and failed
+	if (attempt == 3 && !file_exists(wf)){
+		outln(name + ' did not download successfully!');
 	}
-	return name;
 }	
 
 function text_to_table( file_in )
@@ -86,6 +113,7 @@ function main()
 	
 	outln('Reading: ' + location_file);
 	outln('Writing to: ' + location_output);
+	outln('');
 	locations = text_to_table(location_file);
 	
 	n_records = 0;
@@ -114,7 +142,6 @@ function main()
 		dataset = locations.dataset[j];
 		
 		// status message
-		outln('');
 		outln('Getting weather file ' + j + " for " + to_string(lat) + ", " + to_string(lon) + ", " + to_string(dataset));
 		
 		if (stricmp(to_string(dataset), 'tmy') != 0)
@@ -133,10 +160,10 @@ function main()
 		}
 		
 		// Download weather file
-		wfname = get_nsrdb( lat, lon, to_string(dataset), location_output, interval );
+		get_nsrdb( lat, lon, to_string(dataset), location_output, interval );
+		millisleep(1000);
 	}
 	outln('');
-	outln('Finished');
 }
 
 main();
