@@ -32,20 +32,31 @@ input_dir = env("SAMNTDIR") + '\\samples\\LK Scripts for SAM';
 output_dir = homedir() + "\\Documents\\SolarDynamics";
 intc_cpnt_file = 'physical_trough_interconnect_components.csv';
 intc_def_file = 'physical_trough_interconnect_definitions.csv';
-runner_output_file = 'Runners.csv';
-header_output_file =  'Headers.csv';
-loop_output_file = 'Loop.csv';
-sgs_output_file = 'SGS.csv';
+runner_file = 'Runners.csv';
+header_file =  'Headers.csv';
+loop_file = 'Loop.csv';
+sgs_file = 'SGS.csv';
+custom_pipe_sizes = true;
+
+errors='';
 
 import_and_set_interconnects(input_dir + '\\' + intc_cpnt_file,
 							 input_dir + '\\' + intc_def_file);
+
+if (custom_pipe_sizes) {
+	set( 'custom_sgs_pipe_sizes', 1);
+	set( 'custom_sf_pipe_sizes', 1);
+	import_pipe_sizes(output_dir + '\\' + runner_file,
+					  output_dir + '\\' + header_file,
+					  output_dir + '\\' + sgs_file);
+}
 
 errors='';
 outln("Running simulation...");
 simulate(errors,1);  // simulate and update UI with results
 outln("Finished simulation");
 
-write_output_files(output_dir + '\\' + runner_output_file,
-				   output_dir + '\\' + header_output_file,
-				   output_dir + '\\' + loop_output_file,
-				   output_dir + '\\' + sgs_output_file);
+write_output_files(output_dir + '\\' + runner_file,
+				   output_dir + '\\' + header_file,
+				   output_dir + '\\' + loop_file,
+				   output_dir + '\\' + sgs_file);
