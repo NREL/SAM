@@ -139,7 +139,7 @@ write_output_files = define(csv_Runners, csv_Headers, csv_Loop, csv_SGS)
 	sgs.index = sgs_index;
 	sgs.Diameter_m = get('pipe_sgs_diams');
 	sgs.WallThk_m = get('pipe_sgs_wallthk');
-	sgs.Length_m = get('L_tes_col_gen');
+	sgs.Length_m = get('sgs_lengths');
 	sgs.MassFlow_kg_s = get('pipe_sgs_mdot_dsn');
 	sgs.Velocity_m_s = get('pipe_sgs_vel_dsn');
 	ok = csvwrite( csv_SGS, sgs,
@@ -148,3 +148,57 @@ write_output_files = define(csv_Runners, csv_Headers, csv_Loop, csv_SGS)
 
 	outln("Finished writing output files");
 };  // write_output_files()
+
+
+import_pipe_sizes = define(csv_Runners, csv_Headers, csv_SGS)
+{
+	// Input CSV file for runners
+	if ( !file_exists(csv_Runners) ) {
+		msgbox("Could not locate \"" + file_only(csv_Runners) + "\" " +
+			   "in the directory: " + path_only(csv_Runners)) + " . " +
+			   "Default values being used instead.";
+	}
+	else {
+		tbl_runner = csvread( csv_Runners, {'numeric'=true, 'table'=true});
+		rnr_diams = tbl_runner{"Diameter_m"};
+		rnr_wallthks = tbl_runner{"WallThk_m"};
+		rnr_lengths = tbl_runner{"Length_m"};
+		set( 'sf_rnr_diams', rnr_diams);
+		set( 'sf_rnr_wallthicks', rnr_wallthks);
+		set( 'sf_rnr_lengths', rnr_lengths);
+	}
+	
+	// Input CSV file for headers
+	if ( !file_exists(csv_Headers) ) {
+		msgbox("Could not locate \"" + file_only(csv_Headers) + "\" " +
+			   "in the directory: " + path_only(csv_Headers)) + " . " +
+			   "Default values being used instead.";
+	}
+	else {
+		tbl_header = csvread( csv_Headers, {'numeric'=true, 'table'=true});
+		hdr_diams = tbl_header{"Diameter_m"};
+		hdr_wallthks = tbl_header{"WallThk_m"};
+		hdr_lengths = tbl_header{"Length_m"};
+		set( 'sf_hdr_diams', hdr_diams);
+		set( 'sf_hdr_wallthicks', hdr_wallthks);
+		set( 'sf_hdr_lengths', hdr_lengths);
+	}
+	
+	// Input CSV file for SGS
+	if ( !file_exists(csv_SGS) ) {
+		msgbox("Could not locate \"" + file_only(csv_SGS) + "\" " +
+			   "in the directory: " + path_only(csv_SGS)) + " . " +
+			   "Default values being used instead.";
+	}
+	else {
+		tbl_sgs = csvread( csv_SGS, {'numeric'=true, 'table'=true});
+		sgs_diams = tbl_sgs{"Diameter_m"};
+		sgs_wallthks = tbl_sgs{"WallThk_m"};
+		//sgs_lengths = tbl_sgs{"Length_m"};  // parameter array used instead
+		set( 'sgs_diams', sgs_diams);
+		set( 'sgs_wallthicks', sgs_wallthks);
+		//set( 'sgs_lengths', sgs_lengths);
+	}
+	
+	outln("Finished importing pipe sizes");
+};  // import_pipe_sizes()
