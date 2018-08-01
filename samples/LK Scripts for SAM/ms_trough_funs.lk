@@ -1,10 +1,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 //                                                                            //
-// SAM LK functions for reading interconnect component and definition         //
-// configuration files                                                        //
+// SAM LK functions to support configuring molten trough salt models          //
 //																			  //
 //																			  //
-//   NOTE: The interconnects need to be in ascending order in the file        //
+//   NOTE: The interconnects need to be in ascending order in their file      //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -88,6 +87,40 @@ import_and_set_interconnects = define(csv_IntcCpnt, csv_IntcDef)
 	
 	outln("Finished importing and setting interconnect component parameters");
 };  // import_and_set_interconnects()
+
+
+file_locked = define(file_path)
+{
+	if (file_exists(file_path)) {
+		cmd = '@echo off & ' + 
+			'2>nul (' +
+				'>>"' + file_path + '" echo off' +
+			') && (EXIT /B 0) || (EXIT /B 1)';
+		exit_code = system(cmd);
+		return exit_code;
+	}
+	else {
+		return 0;  // return 0 (false) if file doesn't exist
+	}
+};  // file_locked()
+
+
+check_for_open_files = define(files)
+{
+	nOpen = 0;
+	message = "Close the following files before proceeding:\n";
+	
+	for ( i=0; i<#files; i++ ) {
+		if ( file_locked(files[i]) ) {
+			nOpen++;
+			message += file_only(files[i]) + "\n";
+		}
+	}
+	if (nOpen > 0) {
+		msgbox(message);
+		exit;
+	}
+};
 
 
 write_output_files = define(csv_Runners, csv_Headers, csv_Loop, csv_SGS)
