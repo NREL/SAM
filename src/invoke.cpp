@@ -418,10 +418,19 @@ static void fcall_addpage( lk::invoke_t &cxt )
 
 		}
 	}
-
-
 	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs );
 }
+
+
+static void fcall_getsettings(lk::invoke_t &cxt)
+{
+	LK_DOC("get_settings", "Gets a setting field for the current project", "(string:name):string:value");
+
+		wxString buf="";
+		SamApp::Settings().Read("solar_data_paths", &buf);
+		cxt.result().assign(buf);
+}
+
 
 static void fcall_setting( lk::invoke_t &cxt )
 {
@@ -4273,6 +4282,9 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_step_result,
 		fcall_sam_async,
 		fcall_sam_packaged_task,
+		fcall_showsettings,
+		fcall_setting,
+		fcall_getsettings,
 		0 };
 	return (lk::fcall_t*)vec;
 }
