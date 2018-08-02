@@ -70,7 +70,7 @@ autographs{ 'Flat Plate PV' } = define()
 
 	//Loss percentage graph per 9/18/14 meeting
 	//add columns depending on what models are enabled
-	columns = 'annual_poa_shading_loss_percent,annual_poa_soiling_loss_percent,';
+	columns = 'annual_poa_shading_loss_percent,annual_poa_soiling_loss_percent,annual_poa_cover_loss_percent,';
 	if (value('en_snow_model') == true)
 		columns += 'annual_dc_snow_loss_percent,';
 	columns += 'annual_dc_module_loss_percent,annual_dc_mppt_clip_loss_percent,annual_dc_mismatch_loss_percent,annual_dc_diodes_loss_percent,annual_dc_wiring_loss_percent,annual_dc_tracking_loss_percent,annual_dc_nameplate_loss_percent,annual_dc_optimizer_loss_percent,annual_dc_perf_adj_loss_percent,';
