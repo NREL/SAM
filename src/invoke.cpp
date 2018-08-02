@@ -426,9 +426,16 @@ static void fcall_getsettings(lk::invoke_t &cxt)
 {
 	LK_DOC("get_settings", "Gets a setting field for the current project", "(string:name):string:value");
 
+	wxString str = cxt.arg(0).as_string();
+	wxString buf = "";
+	SamApp::Settings().Read(str, &buf);
+	cxt.result().assign(buf);
+
+	/*
 		wxString buf="";
 		SamApp::Settings().Read("solar_data_paths", &buf);
 		cxt.result().assign(buf);
+    */
 }
 
 
