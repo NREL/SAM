@@ -337,9 +337,29 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 
 		if ( VarInfo *vv = vdb.Lookup( objs[i]->GetName() ) )
 		{	// fix this
-			if ( !(vv->Flags & VF_HIDE_LABELS) && objs[i]->IsVisible() )
+			int sw, sh;
+			if (!objs[i]->IsVisible())
 			{
-				int sw, sh;
+				rct = ScaleRect(objs[i]->GetGeometry());
+				wxString blk = "";
+				if (vv->Label.Len() > 0)
+				{
+					blk = "";
+					blk.Pad(vv->Label.Len());
+					dc.GetTextExtent(vv->Label, &sw, &sh);
+					dc.DrawText(blk, rct.x - sw - 3, rct.y + rct.height / 2 - sh / 2);
+				}
+
+				if (vv->Units.Len() > 0)
+				{
+					blk = "";
+					blk.Pad(vv->Units.Len());
+					dc.GetTextExtent(vv->Units, &sw, &sh);
+					dc.DrawText(blk, rct.x + rct.width + 2, rct.y + rct.height / 2 - sh / 2);
+				}
+			}
+			else if ( !(vv->Flags & VF_HIDE_LABELS) && objs[i]->IsVisible() )
+			{
 				dc.SetFont(*wxNORMAL_FONT);
 				wxColour colour( *wxBLACK );
 				dc.SetTextForeground( colour );
