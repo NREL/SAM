@@ -74,6 +74,18 @@ aep_nrows = 0;
 aep_row_spacing = 0;
 aep_total_modules = 0;
 
+//Placeholders for storing layout configuration at max NPV:
+npv_nmodx = 0;
+npv_nrows = 0;
+npv_row_spacing = 0;
+npv_total_modules = 0;
+
+//Placeholders for storing layout configuration at max Energy Yield:
+yield_nmodx = 0;
+yield_nrows = 0;
+yield_row_spacing = 0;
+yield_total_modules = 0;
+
 
 
 ///////////////////////////////////**** ARRAY PLACEMENT ****///////////////////////////////////
@@ -82,8 +94,30 @@ outln("\n\tOptimizing Array Layout for given ranges of GCR and Tilt over area of
 
 //function for calculating system size 
 system_sizer = define(gcr) {
+		
+		module_model = get('module_model');
+		module_power = 0;
+		
+		if (module_model == 0){
+			module_power = get('spe_power');
+		}
+		else if (module_model == 1){
+            module_power = get('cec_p_mp_ref');
+		}
+		else if (module_model == 2){
+			module_power = get('6par_pmp');
+		}
+		else if (module_model == 3){
+			module_power = get('snl_ref_pmp');
+		}
+		else if (module_model == 4){
+			module_power = get('sd11par_Pmp0');
+		}
+
+		
+		module_area = get('module_area');
 		set('subarray1_gcr', gcr);
-		set('desired_size', gcr*(area/get('cec_area'))*(get('cec_p_mp_ref')/1000));
+		set('desired_size', gcr*(area/module_area)*(module_power/1000));
 		system_size = get('desired_size');
 		return system_size;
 	};
@@ -95,45 +129,47 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {
 }
 
 //Variable to keep a tab of rows in the loop
-
-module_length = get('module_length');		//Length of 1 module
-bottom_length = module_length;				//Initial length of bottom row of modules 
-set('subarray1_nmodx', 1);
-p = 0;
-n = 1;
-i = 0;
-n = 1;
-
-//Fitting modules along length of field:
-for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {						//For loop to iterate over the entire range of (user input) GCRs, to make sure module placement along length and width
-	set('desired_size', system_size[i]);											//of the field is in sync with the respective GCRs. So, for instance, even though the field length could accomodate a longer  		
-																					//row of modules, number of modules in each row and alongside row is restricted.
-	
-	while (	get('ui_subarray1_row_spacing')*get('ui_subarray1_nrows') > width) {	//Restrict SAM to keep all rows in the system within the width of the field
-		while ((bottom_length <= effective_length) && ((effective_length - bottom_length) > module_length) ) {			//While length of row is less than the length of the field && while there is space for one more module in the same row
-			n = n + 1;															//n represents the number of modules along bottom of row
-			set('subarray1_nmodx',n);
-			bottom_length = get('subarray1_nmodx')*module_length;
-			if( get('subarray1_nmodx')*get('subarray1_nmody')*get('ui_subarray1_nrows') > get('total_modules')) {	//This IF condition ensures total # of modules is in sync with GCR
-				break;
-			}
-		}
-		if(((effective_length - bottom_length) < module_length) && get('ui_subarray1_row_spacing')*get('ui_subarray1_nrows') > width) {
-			bottom_modules[p]  = get('subarray1_nmodx');
-			side_modules[p] = get('subarray1_nmody');
-			p = p +1;
-			break;
-		}
-	}
-	i = i+1;
-	if ((get('ui_subarray1_row_spacing')*get('ui_subarray1_nrows') < width))  {
-		bottom_modules[p]  = get('subarray1_nmodx');
-		side_modules[p] = get('subarray1_nmody');
-		p = p +1;
-	}
+if (get('subarray1_mod_orient') == 1) {			//if module orientation is landscape, then length of panel is used in calculation length of row
+	module_length = get('module_length');		//Length of 1 module
+	bottom_length = module_length;				//Initial length of bottom row of modules 
+	set('subarray1_nmodx', 1);
+}
+elseif (get('subarray1_mod_orient') == 0) { 	//If module orientation is portrait, then width of panel is used in calculation length of row		
+	module_length = get('module_width');		//Length of 1 module
+	bottom_length = module_length;				//Initial length of bottom row of modules 
+	set('subarray1_nmodx', 1);
 }
 
 
+p = 0;
+n = 0;
+i = 0;
+
+//Fitting modules along length of field:
+for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {						//For loop to iterate over the entire range of (user input) GCRs, to make sure module placement along length and width of the field is in sync with the respective GCRs. So, for instance, even though the field length could accomodate a longer row of modules, number of modules in each row and alongside row is restricted.	
+	
+	
+	set('desired_size', system_size[i]);	
+	set('subarray1_gcr', gcr);
+	n = to_int((effective_length/module_length) );
+	set('subarray1_nmodx',n);
+		
+	while(get('ui_subarray1_nrows') <1){						//Reduce the number of panels along the bottom of the row if the GCR limit is exceeded
+		n = n - 1;
+		set('subarray1_nmodx', n);
+	}
+	
+	if(get('ui_subarray1_nrows') < 1 || n == 0) {
+		outln("\tError: You are trying to place too many panels along side of each row. Consider reducing the number of panels along side each row.");
+		exit;
+	}
+		
+	bottom_modules[p] = n;
+	set('subarray1_nmodx', bottom_modules[p]);
+	
+	p = p + 1;
+	i = i + 1;
+}
 
 
 ///////////////////////////////////**** S I M U L A T I O N ****///////////////////////////////////
@@ -150,8 +186,7 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 		set('desired_size', system_size[i]);
 		set('subarray1_gcr', gcr);
 		set('subarray1_nmodx', bottom_modules[i]);
-		set('subarray1_nmody',side_modules[0]);
-	}
+		}
 	else continue;
 	
 	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {	//Loop for iterating over a range of tilt angles
@@ -176,13 +211,17 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 			aep_total_modules = get('total_modules');
 		}
 				
-		//Storing the appropriate results (when calculating maximum NPV) in the respective placeholders
+		//Storing the appropriate results when calculating maximum NPV in the respective placeholders
 		if (max_npv < npv[i][j]) {
 			max_npv = npv[i][j];
 			gcr_npv = gcr; 
 			tilt_npv = tilt;
 			system_size_npv = system_size[i];
 			aep_npv = annual_energy[i][j];
+			npv_nmodx = get('subarray1_nmodx');
+			npv_nrows = get('ui_subarray1_nrows');
+			npv_row_spacing = get('ui_subarray1_row_spacing');
+			npv_total_modules = get('total_modules');
 		}
 				
 				
@@ -193,6 +232,10 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 			tilt_yield = tilt;
 			system_size_yield = system_size[i];
 			aep_yield = annual_energy[i][j];
+			yield_nmodx = get('subarray1_nmodx');
+			yield_nrows = get('ui_subarray1_nrows');
+			yield_row_spacing = get('ui_subarray1_row_spacing');
+			yield_total_modules = get('total_modules');
 		}
 	}
 	i = i + 1;		
@@ -214,9 +257,10 @@ outln("\tSystem Size That Produces Max Annual Energy Production: "+ max_system_s
 outln("\tNPV at max energy: $ "+ energy_npv + "kWh");
 outln("\n\tArray Layout Configuration at max AEP is: ");
 outln("\tNumber of modules along bottom: " + aep_nmodx +" modules"); 
-outln("\tNumber of modules along side of each row (note: this was set by the user in the active case): " + nmody + " modules");
+outln("\tNumber of modules along side of each row (note: this was set by the user in the active case): " + nmody + " module(s)");
 outln("\tNumber of rows: " + aep_nrows + " rows"); 
-outln("\tTotal number of modules: " + aep_total_modules + " modules");
+outln("\tRow spacing estimate: " + aep_row_spacing + " m");
+outln("\tTotal number of modules: " + aep_total_modules + " modules\n");
 
 
 //Max NPV Results:
@@ -226,6 +270,12 @@ outln("\tNPV optmized GCR : ", gcr_npv);
 outln("\tNPV optimized Tilt (in Degrees): ", tilt_npv);
 outln("\tNPV optimized System Size : "+ system_size_npv + " kW");
 outln("\tNPV optimized AEP : "+ aep_npv + " kWh"); 
+outln("\n\tArray Layout Configuration at max NPV is: ");
+outln("\tNumber of modules along bottom: " + npv_nmodx +" modules"); 
+outln("\tNumber of modules along side of each row (note: this was set by the user in the active case): " + nmody + " module(s)");
+outln("\tNumber of rows: " + npv_nrows + " rows"); 
+outln("\tRow spacing estimate: " + npv_row_spacing + " m");
+outln("\tTotal number of modules: " + npv_total_modules + " modules\n");
 
 
 //Max Energy Yield Results:
@@ -235,6 +285,12 @@ outln("\tMax Energy Yield Optmized GCR: ", gcr_yield);
 outln("\tOptimal Tilt That Returns Max Energy Yield (In Degrees): ", tilt_yield);
 outln("\tMax energy yield optimized system size: ", system_size_yield + " kW");
 outln("\tAEP at Max Energy Yield: "+ aep_yield + " kWh\n" ); 
+outln("\n\tArray Layout Configuration at max Energy Yield is: ");
+outln("\tNumber of modules along bottom: " + yield_nmodx +" modules"); 
+outln("\tNumber of modules along side of each row (note: this was set by the user in the active case): " + nmody + " module(s)");
+outln("\tNumber of rows: " + yield_nrows + " rows"); 
+outln("\tRow spacing estimate: " + yield_row_spacing + " m");
+outln("\tTotal number of modules: " + yield_total_modules + " modules\n");
 
 
 
@@ -279,7 +335,8 @@ for ( l = 0; l <= (#annual_energy - 1) ; l = l + 1) {
 }
 
 
-
+outln(annual_energy);
+outln(system_size);
 ///////////////////////////////////**** END OF SCRIPT****///////////////////////////////////
 
 
