@@ -335,8 +335,7 @@ for ( l = 0; l <= (#annual_energy - 1) ; l = l + 1) {
 }
 
 
-outln(annual_energy);
-outln(system_size);
+
 ///////////////////////////////////**** END OF SCRIPT****///////////////////////////////////
 
 
