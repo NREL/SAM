@@ -144,7 +144,7 @@ function setup_flat_plate_pv_pages()
 			 ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], 
 			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 	addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
-	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Snow', 'help'='pv_shading' } );
+	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
     addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
@@ -622,7 +622,7 @@ addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'],
 		 ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], 
 		 { 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
-addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Snow', 'help'='pv_shading' } );
+addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
 addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
 setmodules( ['pvsamv1', 'lcoefcr'] );
 setup_lcoefcr_pages();
@@ -642,7 +642,7 @@ addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'],
 		 ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], 
 		 { 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
-addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Snow', 'help'='pv_shading' } );
+addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
 addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
 setmodules( ['pvsamv1'] );
 
