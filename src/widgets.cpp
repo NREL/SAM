@@ -1113,7 +1113,7 @@ public:
 
 	virtual void SetValue(int row, int, const wxString& value)
 	{
-		if (row >= 0 && row <  d_arr->Count())
+		if (row >= 0 && row <  (int)d_arr->Count())
 			d_arr->Item(row)= value;
 	}
 
