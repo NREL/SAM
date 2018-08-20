@@ -47,7 +47,7 @@
 *  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************************************/
 
-#include <chrono>
+//#include <chrono>
 
 #include <wx/splitter.h>
 #include <wx/notebook.h>
@@ -1205,7 +1205,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 
 	case ID_FORM_SAVE_ALL:
 	{
-		std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+//		std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
 		size_t forms_saved = 0;
 		wxDir dir(SamApp::GetRuntimePath() + "/ui");
 		if (dir.IsOpened())
@@ -1227,16 +1227,16 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		}
 		dir.Close();
 
-		auto end = std::chrono::system_clock::now();
-		auto diff = std::chrono::duration_cast <std::chrono::milliseconds> (end - start).count();
-		wxString ui_time(std::to_string(diff) + "ms ");
-		wxLogStatus(wxString::Format(" %d text ui forms saved as binary in %s", (int)forms_saved, (const char*)ui_time.c_str()));
+//		auto end = std::chrono::system_clock::now();
+//		auto diff = std::chrono::duration_cast <std::chrono::milliseconds> (end - start).count();
+//		wxString ui_time(std::to_string(diff) + "ms ");
+//		wxLogStatus(wxString::Format(" %d text ui forms saved as binary in %s", (int)forms_saved, (const char*)ui_time.c_str()));
 	}
 	break;
 
 	case ID_FORM_LOAD_ALL:
 	{
-		std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+//		std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
 		size_t forms_loaded = 0;
 		wxDir dir(SamApp::GetRuntimePath() + "/ui");
 		if (dir.IsOpened())
@@ -1258,10 +1258,10 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		}
 		dir.Close();
 
-		auto end = std::chrono::system_clock::now();
-		auto diff = std::chrono::duration_cast <std::chrono::milliseconds> (end - start).count();
-		wxString ui_time(std::to_string(diff) + "ms ");
-		wxLogStatus(wxString::Format(" %d forms loaded as binary in %s", (int)forms_loaded, (const char*)ui_time.c_str()));
+//		auto end = std::chrono::system_clock::now();
+//		auto diff = std::chrono::duration_cast <std::chrono::milliseconds> (end - start).count();
+//		wxString ui_time(std::to_string(diff) + "ms ");
+//		wxLogStatus(wxString::Format(" %d forms loaded as binary in %s", (int)forms_loaded, (const char*)ui_time.c_str()));
 	}
 	break;
 
@@ -1296,7 +1296,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 
 	case ID_FORM_SAVE_ALL_TEXT:
 	{
-		std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+//		std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
 		size_t forms_saved = 0;
 		wxDir dir(SamApp::GetRuntimePath() + "/ui");
 		if (dir.IsOpened())
@@ -1327,16 +1327,16 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		}
 		dir.Close();
 
-		auto end = std::chrono::system_clock::now();
-		auto diff = std::chrono::duration_cast <std::chrono::milliseconds> (end - start).count();
-		wxString ui_time(std::to_string(diff) + "ms ");
-		wxLogStatus(wxString::Format(" %d binary ui forms saved as text in %s" , (int) forms_saved, (const char*)ui_time.c_str()));
+//		auto end = std::chrono::system_clock::now();
+//		auto diff = std::chrono::duration_cast <std::chrono::milliseconds> (end - start).count();
+//		wxString ui_time(std::to_string(diff) + "ms ");
+//		wxLogStatus(wxString::Format(" %d binary ui forms saved as text in %s" , (int) forms_saved, (const char*)ui_time.c_str()));
 	}
 	break;
 
 	case ID_FORM_LOAD_ALL_TEXT:
 	{
-		std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+//		std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
 		size_t forms_loaded = 0;
 		wxDir dir(SamApp::GetRuntimePath() + "/ui");
 		if (dir.IsOpened())
@@ -1358,10 +1358,10 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		}
 		dir.Close();
 
-		auto end = std::chrono::system_clock::now();
-		auto diff = std::chrono::duration_cast <std::chrono::milliseconds> (end - start).count();
-		wxString ui_time(std::to_string(diff) + "ms ");
-		wxLogStatus(wxString::Format(" %d forms loaded as text in %s", (int)forms_loaded, (const char*)ui_time.c_str()));
+//		auto end = std::chrono::system_clock::now();
+//		auto diff = std::chrono::duration_cast <std::chrono::milliseconds> (end - start).count();
+//		wxString ui_time(std::to_string(diff) + "ms ");
+//		wxLogStatus(wxString::Format(" %d forms loaded as text in %s", (int)forms_loaded, (const char*)ui_time.c_str()));
 	}
 	break;
 
