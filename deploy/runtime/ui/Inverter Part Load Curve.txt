@@ -1,0 +1,1855 @@
+Inverter Part Load Curve
+789
+734
+26
+GroupBox
+
+1
+7
+Name
+5
+GroupBox1
+X
+3
+12
+Y
+3
+138
+Width
+3
+764
+Height
+3
+95
+Caption
+5
+Operating Ranges
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+GroupBox2
+X
+3
+12
+Y
+3
+645
+Width
+3
+764
+Height
+3
+66
+Caption
+5
+Save / Load Data
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+GroupBox2
+X
+3
+12
+Y
+3
+645
+Width
+3
+764
+Height
+3
+66
+Caption
+5
+Save / Load Data
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+GroupBox3
+X
+3
+12
+Y
+3
+288
+Width
+3
+764
+Height
+3
+314
+Caption
+5
+Part Load Efficiency
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+GroupBox4
+X
+3
+12
+Y
+3
+237
+Width
+3
+764
+Height
+3
+47
+Caption
+5
+Losses
+Bold
+2
+1
+Label
+
+1
+12
+Name
+5
+Label1
+X
+3
+390
+Y
+3
+36
+Width
+3
+350
+Height
+3
+86
+Caption
+5
+SAM calculates the CEC and European weighted efficiency values based on the part-load data you provide and a set of weighting factors. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+12
+Name
+5
+Label3
+X
+3
+330
+Y
+3
+57
+Width
+3
+23
+Height
+3
+21
+Caption
+5
+%
+TextColour
+4
+0
+0
+255
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+Label31
+X
+3
+330
+Y
+3
+81
+Width
+3
+23
+Height
+3
+21
+Caption
+5
+%
+TextColour
+4
+0
+0
+255
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Button
+
+1
+7
+Name
+5
+btnLoadInvPDData
+X
+3
+189
+Y
+3
+672
+Width
+3
+153
+Height
+3
+24
+Caption
+5
+Load data from file...
+TabOrder
+3
+4294967295
+Button
+
+1
+7
+Name
+5
+btnSaveInvPDData
+X
+3
+27
+Y
+3
+672
+Width
+3
+153
+Height
+3
+24
+Caption
+5
+Save data to file...
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+inv_pd_ac_voltage
+X
+3
+228
+Y
+3
+156
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+ 
+Suffix
+5
+ 
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+8
+DataMatrix
+
+1
+22
+Name
+5
+inv_pd_data
+X
+3
+21
+Y
+3
+309
+Width
+3
+326
+Height
+3
+283
+PasteAppendRows
+2
+1
+PasteAppendCols
+2
+0
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+ 
+ShadeR0C0
+2
+0
+ShadeC0
+2
+0
+ShowCols
+2
+0
+ShowColLabels
+2
+1
+ColLabels
+5
+% Output Power, Efficiency (%)
+NumRowsLabel
+5
+Rows:
+NumColsLabel
+5
+Cols:
+Layout
+3
+1
+ChoiceColumn
+3
+4294967295
+Choices
+5
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+TextEntry
+
+1
+10
+Name
+5
+inv_pd_data_filename
+X
+3
+375
+Y
+3
+672
+Width
+3
+386
+Height
+3
+24
+Text
+5
+ 
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+inv_pd_eff_cec
+X
+3
+228
+Y
+3
+57
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+ 
+Suffix
+5
+ 
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
+Numeric
+
+1
+16
+Name
+5
+inv_pd_eff_euro
+X
+3
+228
+Y
+3
+81
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+ 
+Suffix
+5
+ 
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
+RadioChoice
+
+1
+10
+Name
+5
+inv_pd_eff_type
+X
+3
+69
+Y
+3
+57
+Width
+3
+155
+Height
+3
+44
+Selection
+3
+4294967295
+Items
+6
+2
+CEC efficiency
+European efficiency
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+0
+Numeric
+
+1
+16
+Name
+5
+inv_pd_idcmax
+X
+3
+228
+Y
+3
+204
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+ 
+Suffix
+5
+ 
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+9
+Numeric
+
+1
+16
+Name
+5
+inv_pd_mppt_hi
+X
+3
+555
+Y
+3
+204
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+ 
+Suffix
+5
+ 
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+16
+Numeric
+
+1
+16
+Name
+5
+inv_pd_mppt_low
+X
+3
+555
+Y
+3
+156
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+ 
+Suffix
+5
+ 
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+14
+Numeric
+
+1
+16
+Name
+5
+inv_pd_paco
+X
+3
+228
+Y
+3
+33
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+ 
+Suffix
+5
+ 
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4
+Numeric
+
+1
+16
+Name
+5
+inv_pd_pdco
+X
+3
+228
+Y
+3
+105
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+ 
+Suffix
+5
+ 
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+5
+Numeric
+
+1
+16
+Name
+5
+inv_pd_pnt
+X
+3
+228
+Y
+3
+255
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+ 
+Suffix
+5
+ 
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
+Numeric
+
+1
+16
+Name
+5
+inv_pd_vdcmax
+X
+3
+228
+Y
+3
+180
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+ 
+Suffix
+5
+ 
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+8
+Numeric
+
+1
+16
+Name
+5
+inv_pd_vdco
+X
+3
+555
+Y
+3
+180
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+ 
+Suffix
+5
+ 
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+15
+Label
+
+1
+12
+Name
+5
+object 7
+X
+3
+12
+Y
+3
+606
+Width
+3
+759
+Height
+3
+42
+Caption
+5
+Note: If you are modeling a system with microinverters or DC power optimizers, see the "Losses" page to adjust the system losses accordingly.
+TextColour
+4
+255
+128
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Plot
+
+1
+5
+Name
+5
+pv.inv.pd.eff_curve
+X
+3
+357
+Y
+3
+309
+Width
+3
+411
+Height
+3
+282
+
+17
+inv_pd_ac_voltage
+3
+1
+Nominal AC voltage
+Vac
+PV Inverter (Part Load Curve)
+0
+2
+1
+1
+1
+1
+240.000000
+Numeric
+inv_pd_data
+3
+3
+Inverter Part Load Curve Data
+ 
+PV Inverter (Part Load Curve)
+0
+1
+1
+3
+251
+2
+0.000000 0.000000 
+0.404000 0.000000 
+0.808000 34.419998 
+1.212000 55.200001 
+1.616000 65.589996 
+2.020000 71.820000 
+2.424000 75.970001 
+2.828000 78.940002 
+3.232000 81.169998 
+3.636000 82.900002 
+4.040000 84.279999 
+4.444000 85.419998 
+4.848000 86.360001 
+5.252000 87.160004 
+5.656000 87.839996 
+6.060000 88.440002 
+6.464000 88.949997 
+6.868000 89.410004 
+7.272000 89.820000 
+7.676000 90.180000 
+8.080000 90.510002 
+8.484000 90.809998 
+8.888000 91.080002 
+9.292000 91.320000 
+9.696000 91.550003 
+10.100000 91.750000 
+10.504000 91.949997 
+10.908000 92.120003 
+11.312000 92.290001 
+11.716000 92.440002 
+12.120000 92.580002 
+12.524000 92.720001 
+12.928000 92.839996 
+13.332000 92.959999 
+13.736000 93.070000 
+14.140000 93.169998 
+14.544000 93.269997 
+14.948000 93.370003 
+15.352000 93.449997 
+15.756000 93.540001 
+16.160000 93.620003 
+16.563999 93.690002 
+16.968000 93.760002 
+17.372000 93.830002 
+17.775999 93.900002 
+18.180000 93.959999 
+18.584000 94.019997 
+18.988001 94.080002 
+19.392000 94.129997 
+19.796000 94.180000 
+20.200001 94.230003 
+20.604000 94.279999 
+21.007999 94.330002 
+21.412001 94.370003 
+21.816000 94.419998 
+22.219999 94.459999 
+22.624001 94.500000 
+23.028000 94.540001 
+23.431999 94.570000 
+23.836000 94.610001 
+24.240000 94.639999 
+24.643999 94.680000 
+25.048000 94.709999 
+25.452000 94.739998 
+25.856001 94.769997 
+26.260000 94.800003 
+26.664000 94.830002 
+27.068001 94.860001 
+27.472000 94.889999 
+27.875999 94.910004 
+28.280001 94.940002 
+28.684000 94.959999 
+29.087999 94.980003 
+29.492001 95.010002 
+29.896000 95.029999 
+30.299999 95.050003 
+30.704000 95.070000 
+31.108000 95.089996 
+31.511999 95.110001 
+31.916000 95.129997 
+32.320000 95.150002 
+32.723999 95.169998 
+33.127998 95.190002 
+33.532001 95.209999 
+33.936001 95.230003 
+34.340000 95.239998 
+34.743999 95.260002 
+35.147999 95.279999 
+35.551998 95.290001 
+35.956001 95.309998 
+36.360001 95.320000 
+36.764000 95.339996 
+37.167999 95.349998 
+37.571999 95.360001 
+37.976002 95.379997 
+38.380001 95.389999 
+38.784000 95.400002 
+39.188000 95.419998 
+39.591999 95.430000 
+39.995998 95.440002 
+40.400002 95.449997 
+40.804001 95.470001 
+41.208000 95.480003 
+41.612000 95.489998 
+42.015999 95.500000 
+42.419998 95.510002 
+42.824001 95.519997 
+43.228001 95.529999 
+43.632000 95.540001 
+44.035999 95.550003 
+44.439999 95.559998 
+44.844002 95.570000 
+45.248001 95.580002 
+45.652000 95.589996 
+46.056000 95.599998 
+46.459999 95.610001 
+46.863998 95.620003 
+47.268002 95.629997 
+47.672001 95.639999 
+48.076000 95.639999 
+48.480000 95.650002 
+48.883999 95.660004 
+49.287998 95.669998 
+49.692001 95.680000 
+50.096001 95.680000 
+50.500000 95.690002 
+50.903999 95.699997 
+51.307999 95.709999 
+51.712002 95.709999 
+52.116001 95.720001 
+52.520000 95.730003 
+52.924000 95.730003 
+53.327999 95.739998 
+53.731998 95.750000 
+54.136002 95.750000 
+54.540001 95.760002 
+54.944000 95.769997 
+55.348000 95.769997 
+55.751999 95.779999 
+56.155998 95.779999 
+56.560001 95.790001 
+56.964001 95.800003 
+57.368000 95.800003 
+57.771999 95.809998 
+58.175999 95.809998 
+58.580002 95.820000 
+58.984001 95.820000 
+59.388000 95.830002 
+59.792000 95.830002 
+60.195999 95.839996 
+60.599998 95.839996 
+61.004002 95.849998 
+61.408001 95.849998 
+61.812000 95.860001 
+62.216000 95.860001 
+62.619999 95.870003 
+63.023998 95.870003 
+63.428001 95.879997 
+63.832001 95.879997 
+64.236000 95.889999 
+64.639999 95.889999 
+65.043999 95.889999 
+65.447998 95.900002 
+65.851997 95.900002 
+66.255997 95.910004 
+66.660004 95.910004 
+67.064003 95.910004 
+67.468002 95.919998 
+67.872002 95.919998 
+68.276001 95.930000 
+68.680000 95.930000 
+69.084000 95.930000 
+69.487999 95.940002 
+69.891998 95.940002 
+70.295998 95.940002 
+70.699997 95.949997 
+71.103996 95.949997 
+71.508003 95.959999 
+71.912003 95.959999 
+72.316002 95.959999 
+72.720001 95.970001 
+73.124001 95.970001 
+73.528000 95.970001 
+73.931999 95.980003 
+74.335999 95.980003 
+74.739998 95.980003 
+75.143997 95.980003 
+75.547997 95.989998 
+75.952003 95.989998 
+76.356003 95.989998 
+76.760002 96.000000 
+77.164001 96.000000 
+77.568001 96.000000 
+77.972000 96.010002 
+78.375999 96.010002 
+78.779999 96.010002 
+79.183998 96.010002 
+79.587997 96.019997 
+79.991997 96.019997 
+80.396004 96.019997 
+80.800003 96.019997 
+81.204002 96.029999 
+81.608002 96.029999 
+82.012001 96.029999 
+82.416000 96.029999 
+82.820000 96.040001 
+83.223999 96.040001 
+83.627998 96.040001 
+84.031998 96.040001 
+84.435997 96.050003 
+84.839996 96.050003 
+85.244003 96.050003 
+85.648003 96.050003 
+86.052002 96.059998 
+86.456001 96.059998 
+86.860001 96.059998 
+87.264000 96.059998 
+87.667999 96.059998 
+88.071999 96.070000 
+88.475998 96.070000 
+88.879997 96.070000 
+89.283997 96.070000 
+89.688004 96.070000 
+90.092003 96.080002 
+90.496002 96.080002 
+90.900002 96.080002 
+91.304001 96.080002 
+91.708000 96.080002 
+92.112000 96.089996 
+92.515999 96.089996 
+92.919998 96.089996 
+93.323997 96.089996 
+93.727997 96.089996 
+94.132004 96.089996 
+94.536003 96.099998 
+94.940002 96.099998 
+95.344002 96.099998 
+95.748001 96.099998 
+96.152000 96.099998 
+96.556000 96.099998 
+96.959999 96.110001 
+97.363998 96.110001 
+97.767998 96.110001 
+98.171997 96.110001 
+98.575996 96.110001 
+98.980003 96.110001 
+99.384003 96.120003 
+99.788002 96.120003 
+100.192001 96.120003 
+100.596001 96.120003 
+101.000000 96.120003 
+
+DataMatrix
+inv_pd_data_filename
+3
+4
+ 
+ 
+ 
+0
+0
+1
+4
+0
+TextEntry
+inv_pd_eff
+3
+1
+Effiiciency
+%
+PV Inverter (Part Load Curve)
+0
+8
+1
+1
+1
+1
+95.000000
+Default
+inv_pd_eff_cec
+3
+1
+CEC Weighted Efficiency
+%
+PV Inverter (Part Load Curve)
+0
+9
+1
+1
+1
+1
+95.000000
+Numeric
+inv_pd_eff_euro
+3
+1
+European Weighted Efficiency
+%
+PV Inverter (Part Load Curve)
+0
+9
+1
+1
+1
+1
+95.000000
+Numeric
+inv_pd_eff_type
+3
+1
+Weighted efficiency type (0=CEC efficiency,1=European efficiency)
+ 
+PV Inverter (Part Load Curve)
+34
+CEC efficiency|European efficiency
+3
+1
+1
+1
+1
+0.000000
+RadioChoice
+inv_pd_efficiency
+3
+2
+ 
+ 
+PV Inverter (Part Load Curve)
+0
+8
+1
+2
+1
+1
+0.000000
+Default
+inv_pd_idcmax
+3
+1
+Maximum DC current
+Adc
+PV Inverter (Part Load Curve)
+0
+2
+1
+1
+1
+1
+18.000000
+Numeric
+inv_pd_mppt_hi
+3
+1
+Maximum MPPT DC voltage
+Vdc
+PV Inverter (Part Load Curve)
+0
+2
+1
+1
+1
+1
+480.000000
+Numeric
+inv_pd_mppt_low
+3
+1
+Minimum MPPT DC voltage
+Vdc
+PV Inverter (Part Load Curve)
+0
+2
+1
+1
+1
+1
+250.000000
+Numeric
+inv_pd_paco
+3
+1
+Maximum AC output power
+Wac
+PV Inverter (Part Load Curve)
+0
+2
+1
+1
+1
+1
+4000.000000
+Numeric
+inv_pd_partload
+3
+2
+ 
+ 
+PV Inverter (Part Load Curve)
+0
+8
+1
+2
+1
+1
+0.000000
+Default
+inv_pd_pdco
+3
+1
+Maximum DC input power
+Wdc
+PV Inverter (Part Load Curve)
+0
+8
+1
+1
+1
+1
+0.000000
+Numeric
+inv_pd_pnt
+3
+1
+Power consumption at night
+Wac
+PV Inverter (Part Load Curve)
+0
+2
+1
+1
+1
+1
+0.000000
+Numeric
+inv_pd_vdcmax
+3
+1
+Maximum DC voltage
+Vdc
+PV Inverter (Part Load Curve)
+0
+2
+1
+1
+1
+1
+600.000000
+Numeric
+inv_pd_vdco
+3
+1
+Nominal DC voltage
+Vdc
+PV Inverter (Part Load Curve)
+0
+2
+1
+1
+1
+1
+310.000000
+Numeric
+
+517
+equations{ 'inv_pd_eff' } = define() {
+	return ?${inv_pd_eff_type}[
+		${inv_pd_eff_cec},
+		${inv_pd_eff_euro}]; 
+};
+
+equations{ 'inv_pd_pdco' } = define() {
+	return ${inv_pd_paco}/(${inv_pd_eff}/100.0); 
+};
+
+equations{ '$MIMO$ - part load curve array' } = define() {
+	data = ${inv_pd_data};	
+	np=#data;
+	output_power = alloc(np);
+	eff_plot = alloc(np);
+	
+	for (i=0;i<np;i++)
+	{
+		output_power[i] = data[i][0];
+		eff_plot[i] = data[i][1];
+	}	
+	
+	${inv_pd_partload} = output_power;	
+	${inv_pd_efficiency} = eff_plot;
+};
+3775
+function pd_inverter_replot_efficiency()
+{
+	data = value('inv_pd_data');
+	row=#data; col=#data[0];
+	np = row;
+	output_power = alloc(np);
+	eff_plot = alloc(np);
+	
+	for (i=0;i<np;i++)
+	{
+		output_power[i] = data[i][0];
+		eff_plot[i] = data[i][1];
+	}	
+	
+	ymin = min(eff_plot) - 10;
+	if (ymin < 0)
+	{
+		ymin = 0;
+	}
+	
+	setplot("pv.inv.pd.eff_curve");
+	clearplot("pv.inv.pd.eff_curve");
+	plotopt({"popup"=true,"backcolor"=[255,255,255],"legend"=false});
+	plot(output_power,eff_plot,{"thick"=2, "scale"=true,"color"=[100,100,200]});
+	axis('x1', {'label'='% of Rated Output Power', 'min'=0, 'max'=100});
+	axis('y1', {'label'='Efficiency (%)', 'min'=ymin, 'max'= 100});
+}
+
+function pd_inverter_interpolate( x )
+{
+	data = value('inv_pd_data');
+	row=#data; col=#data[0];
+	
+	n = row;
+	Partload = alloc(n);
+	Efficiency = alloc(n);
+
+	for (i=0;i<n;i++)
+	{
+		Partload[i] = data[i][0];
+		Efficiency[i] = data[i][1];
+	}
+
+	nu = n;
+	nl = 0;
+
+	// Numerical Recipes in C p.117
+	while ( (nu-nl) > 1 )
+	{
+		ndx = floor((nu + nl) / 2); 
+		if ( x >= Partload[ndx] )
+		{
+			nl = ndx;
+		}
+		else 
+		{
+			nu = ndx;
+		}
+	}
+	if ( x == Partload[0] )
+	{
+		ndx = 0;
+	}
+	else if ( x == Partload[n-1] )
+	{
+		ndx = n-1;
+	}
+	else
+	{
+		ndx = nl;
+	}
+
+	// check in range
+	if (ndx >= (n-1))
+	{
+		ndx = n-2;
+	}
+	if ( ndx < 0 ) 
+	{
+		ndx =0;
+	}
+
+	// x between Partload[ndx] and Partload[ndx-1]
+	if ( ( x > Partload[ndx] ) && ( n > 1 ))
+	{
+		eff = Efficiency[ndx] + ((Efficiency[ndx+1] - Efficiency[ndx]) / 
+									(Partload[ndx+1] - Partload[ndx] )) * (x - Partload[ndx]);
+	}
+	else
+	{
+		eff = Efficiency[ndx];
+	}
+	
+	return eff;
+}
+
+function pd_inverter_calculate_weighted_efficiencies()
+{
+	cec_F1 = 0.00;
+	cec_F2 = 0.04;
+	cec_F3 = 0.05;
+	cec_F4 = 0.12;
+	cec_F5 = 0.21;
+	cec_F6 = 0.53;
+	cec_F7 = 0.05;
+	eff_cec = cec_F1 * pd_inverter_interpolate(5) 
+			+ cec_F2 * pd_inverter_interpolate(10) 
+			+ cec_F3 * pd_inverter_interpolate(20) 
+			+ cec_F4 * pd_inverter_interpolate(30) 
+			+ cec_F5 * pd_inverter_interpolate(50) 
+			+ cec_F6 * pd_inverter_interpolate(75) 
+			+ cec_F7 * pd_inverter_interpolate(100); 
+	value('inv_pd_eff_cec', eff_cec);
+
+	euro_F1 = 0.03;
+	euro_F2 = 0.06;
+	euro_F3 = 0.13;
+	euro_F4 = 0.10;
+	euro_F5 = 0.48;
+	euro_F6 = 0.00;
+	euro_F7 = 0.20;
+	eff_euro = euro_F1 * pd_inverter_interpolate(5) 
+			+ euro_F2 * pd_inverter_interpolate(10) 
+			+ euro_F3 * pd_inverter_interpolate(20) 
+			+ euro_F4 * pd_inverter_interpolate(30) 
+			+ euro_F5 * pd_inverter_interpolate(50) 
+			+ euro_F6 * pd_inverter_interpolate(75) 
+			+ euro_F7 * pd_inverter_interpolate(100); 
+	value('inv_pd_eff_euro', eff_euro);
+
+}
+
+on_load{"Inverter Part Load Curve"}=define(){
+	pd_inverter_replot_efficiency();
+	pd_inverter_calculate_weighted_efficiencies();
+};	
+
+on_change{'inv_pd_data'} = define() { 
+	pd_inverter_replot_efficiency(); 
+	pd_inverter_calculate_weighted_efficiencies();
+};
+
+
+on_change{'btnSaveInvPDData'} = define() {
+	logmsg('btnSaveInvPDData');
+	file = choose_file( '', 'Save Inverter Partload Curve Data As', 
+		'Data Files (*.csv)|*.csv', true);
+		
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+		if (group_write('PV Inverter (Part Load Curve)',file))
+		{	
+			value( 'inv_pd_data_filename', file );
+			msgbox("Data saved! \n");
+		}
+		else
+		{
+			value( 'inv_pd_data_filename', "" );
+			msgbox("Data save failed! \n");
+		}
+	}
+};
+
+on_change{'btnLoadInvPDData'} = define() {
+	logmsg('running btnLoadInvPDData');
+	file = choose_file( '', 'Open Inverter Part Load Curve File', 
+		'Data Files (*.csv)|*.csv');
+		
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+		if (group_read('PV Inverter (Part Load Curve)',file))
+		{	
+			value( 'inv_pd_data_filename', file );
+			msgbox("Data loaded! \n");
+		}
+		else
+		{
+			value( 'inv_pd_data_filename', "" );
+			msgbox("Data load failed! \n");
+		}
+	}
+};
+
