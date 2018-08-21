@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox11
 X
 3
@@ -23,6 +24,7 @@ Height
 107
 Caption
 5
+32
 PV Array Performance Degradation
 Bold
 2
@@ -33,6 +35,7 @@ DataArray
 9
 Name
 5
+18
 ac_lifetime_losses
 X
 3
@@ -51,10 +54,10 @@ Mode
 2
 Label
 5
- 
+0
 Description
 5
- 
+0
 TabOrder
 3
 4294967295
@@ -64,6 +67,7 @@ GroupBox
 7
 Name
 5
+17
 batt_lifetime_box
 X
 3
@@ -79,6 +83,7 @@ Height
 75
 Caption
 5
+25
 Battery lifetime analysis
 Bold
 2
@@ -89,6 +94,7 @@ Label
 12
 Name
 5
+21
 batt_lifetime_message
 X
 3
@@ -104,6 +110,7 @@ Height
 45
 Caption
 5
+163
 In this mode, multiyear degradation of the battery is modeled.  Select the preferred degradation, replacement criteria and  replacement costs on the "Battery" page
 TextColour
 4
@@ -132,6 +139,7 @@ SchedNumeric
 11
 Name
 5
+14
 dc_degradation
 X
 3
@@ -147,6 +155,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -159,6 +168,7 @@ FixedLength
 4294967295
 Description
 5
+88
 Type a degradation rate (%) for each year. Each year's rate applies to the Year 1 value.
 TabOrder
 3
@@ -169,6 +179,7 @@ DataArray
 9
 Name
 5
+18
 dc_lifetime_losses
 X
 3
@@ -187,10 +198,10 @@ Mode
 2
 Label
 5
- 
+0
 Description
 5
- 
+0
 TabOrder
 3
 4294967295
@@ -200,6 +211,7 @@ CheckBox
 8
 Name
 5
+21
 en_ac_lifetime_losses
 X
 3
@@ -215,6 +227,7 @@ Height
 24
 Caption
 5
+31
 Enable lifetime daily AC losses
 State
 2
@@ -228,6 +241,7 @@ CheckBox
 8
 Name
 5
+21
 en_dc_lifetime_losses
 X
 3
@@ -243,6 +257,7 @@ Height
 24
 Caption
 5
+31
 Enable lifetime daily DC losses
 State
 2
@@ -256,6 +271,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -271,6 +287,7 @@ Height
 111
 Caption
 5
+21
 Lifetime Daily Losses
 Bold
 2
@@ -281,6 +298,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -296,6 +314,7 @@ Height
 90
 Caption
 5
+164
 In Value mode, the degradation rate is compounded annually starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details.
 TextColour
 4
@@ -324,6 +343,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -339,6 +359,7 @@ Height
 90
 Caption
 5
+164
 In Value mode, the degradation rate is compounded annually starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details.
 TextColour
 4
@@ -367,6 +388,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -382,6 +404,7 @@ Height
 90
 Caption
 5
+164
 In Value mode, the degradation rate is compounded annually starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details.
 TextColour
 4

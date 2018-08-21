@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+4
 FRUL
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -66,6 +67,7 @@ Numeric
 16
 Name
 5
+4
 FRta
 X
 3
@@ -93,10 +95,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -124,6 +126,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -139,6 +142,7 @@ Height
 251
 Caption
 5
+6
 System
 Bold
 2
@@ -149,6 +153,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -164,6 +169,7 @@ Height
 125
 Caption
 5
+29
 Solar Tank and Heat Exchanger
 Bold
 2
@@ -174,6 +180,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -189,6 +196,7 @@ Height
 128
 Caption
 5
+18
 Piping and Pumping
 Bold
 2
@@ -199,6 +207,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -214,6 +223,7 @@ Height
 443
 Caption
 5
+9
 Collector
 Bold
 2
@@ -224,6 +234,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox5
 X
 3
@@ -239,6 +250,7 @@ Height
 92
 Caption
 5
+14
 Hot Water Draw
 Bold
 2
@@ -249,6 +261,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox8
 X
 3
@@ -264,6 +277,7 @@ Height
 88
 Caption
 5
+8
 Advanced
 Bold
 2
@@ -274,6 +288,7 @@ Numeric
 16
 Name
 5
+6
 T_room
 X
 3
@@ -301,10 +316,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -331,6 +346,7 @@ Numeric
 1
 16
 Name
+5
 5
 T_set
 X
@@ -359,10 +375,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -390,6 +406,7 @@ Numeric
 16
 Name
 5
+10
 T_tank_max
 X
 3
@@ -417,10 +434,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -448,6 +465,7 @@ Numeric
 16
 Name
 5
+6
 U_tank
 X
 3
@@ -475,10 +493,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -506,6 +524,7 @@ Numeric
 16
 Name
 5
+6
 V_tank
 X
 3
@@ -533,10 +552,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -564,6 +583,7 @@ LossAdjustment
 6
 Name
 5
+6
 adjust
 X
 3
@@ -586,6 +606,7 @@ Numeric
 16
 Name
 5
+6
 albedo
 X
 3
@@ -613,10 +634,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -644,6 +665,7 @@ Numeric
 16
 Name
 5
+11
 annual_draw
 X
 3
@@ -671,10 +693,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -702,6 +724,7 @@ Numeric
 16
 Name
 5
+9
 area_coll
 X
 3
@@ -729,10 +752,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -760,6 +783,7 @@ Numeric
 16
 Name
 5
+7
 azimuth
 X
 3
@@ -787,10 +811,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -818,6 +842,7 @@ RadioChoice
 10
 Name
 5
+9
 coll_mode
 X
 3
@@ -854,6 +879,7 @@ DataArray
 9
 Name
 5
+12
 custom_mains
 X
 3
@@ -872,10 +898,10 @@ Mode
 0
 Label
 5
- 
+0
 Description
 5
- 
+0
 TabOrder
 3
 39
@@ -885,6 +911,7 @@ DataArray
 9
 Name
 5
+10
 custom_set
 X
 3
@@ -903,10 +930,10 @@ Mode
 1
 Label
 5
- 
+0
 Description
 5
- 
+0
 TabOrder
 3
 41
@@ -916,6 +943,7 @@ Numeric
 16
 Name
 5
+10
 daily_draw
 X
 3
@@ -943,10 +971,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -974,6 +1002,7 @@ DataArray
 9
 Name
 5
+4
 draw
 X
 3
@@ -992,10 +1021,10 @@ Mode
 0
 Label
 5
- 
+0
 Description
 5
- 
+0
 TabOrder
 3
 1
@@ -1005,6 +1034,7 @@ Button
 7
 Name
 5
+13
 edit_3d_scene
 X
 3
@@ -1020,6 +1050,7 @@ Height
 24
 Caption
 5
+27
 Open 3D shade calculator...
 TabOrder
 3
@@ -1029,6 +1060,7 @@ Choice
 1
 8
 Name
+5
 5
 fluid
 X
@@ -1058,6 +1090,7 @@ Numeric
 16
 Name
 5
+6
 hx_eff
 X
 3
@@ -1085,10 +1118,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1116,6 +1149,7 @@ Numeric
 16
 Name
 5
+3
 iam
 X
 3
@@ -1143,10 +1177,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1174,6 +1208,7 @@ Choice
 8
 Name
 5
+10
 irrad_mode
 X
 3
@@ -1204,6 +1239,7 @@ Numeric
 16
 Name
 5
+4
 mdot
 X
 3
@@ -1231,10 +1267,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1261,6 +1297,7 @@ Numeric
 1
 16
 Name
+5
 5
 ncoll
 X
@@ -1289,10 +1326,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1320,6 +1357,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -1344,6 +1382,7 @@ Colour
 255
 Caption
 5
+7
 Shading
 Bold
 2
@@ -1354,6 +1393,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -1378,6 +1418,7 @@ Colour
 255
 Caption
 5
+7
 Shading
 Bold
 2
@@ -1388,6 +1429,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1403,6 +1445,7 @@ Height
 165
 Caption
 5
+22
 User-defined collector
 Bold
 2
@@ -1413,6 +1456,7 @@ Numeric
 16
 Name
 5
+9
 pipe_diam
 X
 3
@@ -1440,10 +1484,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1471,6 +1515,7 @@ Numeric
 16
 Name
 5
+10
 pipe_insul
 X
 3
@@ -1498,10 +1543,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1529,6 +1574,7 @@ Numeric
 16
 Name
 5
+6
 pipe_k
 X
 3
@@ -1556,10 +1602,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1587,6 +1633,7 @@ Numeric
 16
 Name
 5
+11
 pipe_length
 X
 3
@@ -1614,10 +1661,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1645,6 +1692,7 @@ Numeric
 16
 Name
 5
+8
 pump_eff
 X
 3
@@ -1672,10 +1720,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1703,6 +1751,7 @@ Numeric
 16
 Name
 5
+10
 pump_power
 X
 3
@@ -1730,10 +1779,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1761,6 +1810,7 @@ ShadingFactors
 8
 Name
 5
+7
 shading
 X
 3
@@ -1779,7 +1829,7 @@ ShowDBOptions
 0
 Description
 5
- 
+0
 TabOrder
 3
 15
@@ -1789,6 +1839,7 @@ Choice
 8
 Name
 5
+9
 sky_model
 X
 3
@@ -1820,6 +1871,7 @@ Library
 7
 Name
 5
+9
 srcc_item
 X
 3
@@ -1835,9 +1887,11 @@ Height
 243
 Library
 5
+15
 SRCC Collectors
 Fields
 5
+66
 Name,SRCC Number,Type,Area,IAM,FRta,FRUL,Test Fluid,Test flow Rate
 Numeric
 
@@ -1845,6 +1899,7 @@ Numeric
 16
 Name
 5
+15
 system_capacity
 X
 3
@@ -1872,10 +1927,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1903,6 +1958,7 @@ Numeric
 16
 Name
 5
+14
 tank_h2d_ratio
 X
 3
@@ -1930,10 +1986,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1961,6 +2017,7 @@ Numeric
 16
 Name
 5
+9
 test_flow
 X
 3
@@ -1988,10 +2045,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2019,6 +2076,7 @@ Numeric
 16
 Name
 5
+10
 test_fluid
 X
 3
@@ -2046,10 +2104,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2077,6 +2135,7 @@ Numeric
 16
 Name
 5
+4
 tilt
 X
 3
@@ -2104,10 +2163,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2135,6 +2194,7 @@ Numeric
 16
 Name
 5
+10
 total_area
 X
 3
@@ -2162,10 +2222,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2193,6 +2253,7 @@ CheckBox
 8
 Name
 5
+16
 use_custom_mains
 X
 3
@@ -2208,7 +2269,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2221,6 +2282,7 @@ CheckBox
 8
 Name
 5
+14
 use_custom_set
 X
 3
@@ -2236,7 +2298,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2249,6 +2311,7 @@ CheckBox
 8
 Name
 5
+16
 use_draw_scaling
 X
 3
@@ -2264,7 +2327,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2277,6 +2340,7 @@ Numeric
 16
 Name
 5
+9
 user_FRUL
 X
 3
@@ -2304,10 +2368,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2335,6 +2399,7 @@ Numeric
 16
 Name
 5
+9
 user_FRta
 X
 3
@@ -2362,10 +2427,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2393,6 +2458,7 @@ Numeric
 16
 Name
 5
+14
 user_area_coll
 X
 3
@@ -2420,10 +2486,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2451,6 +2517,7 @@ Numeric
 16
 Name
 5
+8
 user_iam
 X
 3
@@ -2478,10 +2545,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2509,6 +2576,7 @@ Numeric
 16
 Name
 5
+14
 user_test_flow
 X
 3
@@ -2536,10 +2604,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2567,6 +2635,7 @@ Choice
 8
 Name
 5
+15
 user_test_fluid
 X
 3

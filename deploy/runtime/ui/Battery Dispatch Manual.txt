@@ -8,6 +8,7 @@ Label
 12
 Name
 5
+31
 AllowChargeFromExcessSolarLabel
 X
 3
@@ -23,6 +24,7 @@ Height
 42
 Caption
 5
+14
 Charge from PV
 TextColour
 4
@@ -51,6 +53,7 @@ Label
 12
 Name
 5
+21
 AllowDischargingLabel
 X
 3
@@ -66,6 +69,7 @@ Height
 21
 Caption
 5
+9
 Discharge
 TextColour
 4
@@ -94,6 +98,7 @@ Label
 12
 Name
 5
+15
 Battery_weekday
 X
 3
@@ -109,6 +114,7 @@ Height
 21
 Caption
 5
+8
 Weekday 
 TextColour
 4
@@ -137,6 +143,7 @@ Label
 12
 Name
 5
+15
 Battery_weekend
 X
 3
@@ -152,6 +159,7 @@ Height
 21
 Caption
 5
+7
 Weekend
 TextColour
 4
@@ -180,6 +188,7 @@ Label
 12
 Name
 5
+18
 ForceChargingLabel
 X
 3
@@ -195,6 +204,7 @@ Height
 21
 Caption
 5
+16
 Charge from grid
 TextColour
 4
@@ -223,6 +233,7 @@ Label
 12
 Name
 5
+29
 Percent of rated to discharge
 X
 3
@@ -238,6 +249,7 @@ Height
 21
 Caption
 5
+10
 % capacity
 TextColour
 4
@@ -266,6 +278,7 @@ Label
 12
 Name
 5
+29
 Percent of rated to discharge
 X
 3
@@ -281,6 +294,7 @@ Height
 21
 Caption
 5
+10
 % capacity
 TextColour
 4
@@ -309,6 +323,7 @@ Label
 12
 Name
 5
+7
 Period1
 X
 3
@@ -324,6 +339,7 @@ Height
 24
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -352,6 +368,7 @@ Label
 12
 Name
 5
+7
 Period2
 X
 3
@@ -367,6 +384,7 @@ Height
 24
 Caption
 5
+9
 Period 2:
 TextColour
 4
@@ -395,6 +413,7 @@ Label
 12
 Name
 5
+7
 Period3
 X
 3
@@ -410,6 +429,7 @@ Height
 24
 Caption
 5
+9
 Period 3:
 TextColour
 4
@@ -438,6 +458,7 @@ Label
 12
 Name
 5
+7
 Period4
 X
 3
@@ -453,6 +474,7 @@ Height
 24
 Caption
 5
+9
 Period 4:
 TextColour
 4
@@ -481,6 +503,7 @@ Label
 12
 Name
 5
+7
 Period5
 X
 3
@@ -496,6 +519,7 @@ Height
 24
 Caption
 5
+9
 Period 5:
 TextColour
 4
@@ -524,6 +548,7 @@ Label
 12
 Name
 5
+7
 Period6
 X
 3
@@ -539,6 +564,7 @@ Height
 24
 Caption
 5
+9
 Period 6:
 TextColour
 4
@@ -567,6 +593,7 @@ Numeric
 16
 Name
 5
+24
 batt_discharge_percent_1
 X
 3
@@ -594,10 +621,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -625,6 +652,7 @@ Numeric
 16
 Name
 5
+24
 batt_discharge_percent_2
 X
 3
@@ -652,10 +680,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -683,6 +711,7 @@ Numeric
 16
 Name
 5
+24
 batt_discharge_percent_3
 X
 3
@@ -710,10 +739,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -741,6 +770,7 @@ Numeric
 16
 Name
 5
+24
 batt_discharge_percent_4
 X
 3
@@ -768,10 +798,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -799,6 +829,7 @@ Numeric
 16
 Name
 5
+24
 batt_discharge_percent_5
 X
 3
@@ -826,10 +857,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -857,6 +888,7 @@ Numeric
 16
 Name
 5
+24
 batt_discharge_percent_6
 X
 3
@@ -884,10 +916,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -915,6 +947,7 @@ Numeric
 16
 Name
 5
+25
 batt_gridcharge_percent_1
 X
 3
@@ -942,10 +975,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -973,6 +1006,7 @@ Numeric
 16
 Name
 5
+25
 batt_gridcharge_percent_2
 X
 3
@@ -1000,10 +1034,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1031,6 +1065,7 @@ Numeric
 16
 Name
 5
+25
 batt_gridcharge_percent_3
 X
 3
@@ -1058,10 +1093,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1089,6 +1124,7 @@ Numeric
 16
 Name
 5
+25
 batt_gridcharge_percent_4
 X
 3
@@ -1116,10 +1152,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1147,6 +1183,7 @@ Numeric
 16
 Name
 5
+25
 batt_gridcharge_percent_5
 X
 3
@@ -1174,10 +1211,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1205,6 +1242,7 @@ Numeric
 16
 Name
 5
+25
 batt_gridcharge_percent_6
 X
 3
@@ -1232,10 +1270,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1263,6 +1301,7 @@ Label
 12
 Name
 5
+26
 batt_manual_dispatch_label
 X
 3
@@ -1278,6 +1317,7 @@ Height
 48
 Caption
 5
+161
 To activate the manual dispatch model, choose  Manual Dispatch under "Choose Dispatch Model" above. These inputs are inactive for the automated dispatch options.
 TextColour
 4
@@ -1306,6 +1346,7 @@ Label
 12
 Name
 5
+30
 batt_manual_dispatch_label_fom
 X
 3
@@ -1321,6 +1362,7 @@ Height
 48
 Caption
 5
+130
 Grid charging is disallowed in the front-of-meter charging models, since the model assumes power can only be exported to the grid.
 TextColour
 4
@@ -1349,6 +1391,7 @@ DiurnalPeriod
 9
 Name
 5
+21
 dispatch_manual_sched
 X
 3
@@ -1367,7 +1410,7 @@ TabOrder
 4294967295
 Schedule
 5
- 
+0
 Max
 3
 9
@@ -1380,6 +1423,7 @@ DiurnalPeriod
 9
 Name
 5
+29
 dispatch_manual_sched_weekend
 X
 3
@@ -1398,7 +1442,7 @@ TabOrder
 4294967295
 Schedule
 5
- 
+0
 Max
 3
 9
@@ -1411,6 +1455,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1426,6 +1471,7 @@ Height
 546
 Caption
 5
+21
 Manual Dispatch Model
 Bold
 2
@@ -1436,6 +1482,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1450,6 +1497,7 @@ Height
 3
 21
 Caption
+5
 5
 Allow
 TextColour
@@ -1479,6 +1527,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1493,6 +1542,7 @@ Height
 3
 21
 Caption
+5
 5
 Allow
 TextColour
@@ -1522,6 +1572,7 @@ CheckBox
 8
 Name
 5
+20
 pv.storage.p1.charge
 X
 3
@@ -1537,7 +1588,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 1
@@ -1550,6 +1601,7 @@ CheckBox
 8
 Name
 5
+23
 pv.storage.p1.discharge
 X
 3
@@ -1565,7 +1617,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1578,6 +1630,7 @@ CheckBox
 8
 Name
 5
+24
 pv.storage.p1.gridcharge
 X
 3
@@ -1593,7 +1646,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1606,6 +1659,7 @@ CheckBox
 8
 Name
 5
+20
 pv.storage.p2.charge
 X
 3
@@ -1621,7 +1675,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 1
@@ -1634,6 +1688,7 @@ CheckBox
 8
 Name
 5
+23
 pv.storage.p2.discharge
 X
 3
@@ -1649,7 +1704,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1662,6 +1717,7 @@ CheckBox
 8
 Name
 5
+24
 pv.storage.p2.gridcharge
 X
 3
@@ -1677,7 +1733,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 1
@@ -1690,6 +1746,7 @@ CheckBox
 8
 Name
 5
+20
 pv.storage.p3.charge
 X
 3
@@ -1705,7 +1762,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 1
@@ -1718,6 +1775,7 @@ CheckBox
 8
 Name
 5
+23
 pv.storage.p3.discharge
 X
 3
@@ -1733,7 +1791,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 1
@@ -1746,6 +1804,7 @@ CheckBox
 8
 Name
 5
+24
 pv.storage.p3.gridcharge
 X
 3
@@ -1761,7 +1820,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1774,6 +1833,7 @@ CheckBox
 8
 Name
 5
+20
 pv.storage.p4.charge
 X
 3
@@ -1789,7 +1849,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1802,6 +1862,7 @@ CheckBox
 8
 Name
 5
+23
 pv.storage.p4.discharge
 X
 3
@@ -1817,7 +1878,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1830,6 +1891,7 @@ CheckBox
 8
 Name
 5
+24
 pv.storage.p4.gridcharge
 X
 3
@@ -1845,7 +1907,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1858,6 +1920,7 @@ CheckBox
 8
 Name
 5
+20
 pv.storage.p5.charge
 X
 3
@@ -1873,7 +1936,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1886,6 +1949,7 @@ CheckBox
 8
 Name
 5
+23
 pv.storage.p5.discharge
 X
 3
@@ -1901,7 +1965,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1914,6 +1978,7 @@ CheckBox
 8
 Name
 5
+24
 pv.storage.p5.gridcharge
 X
 3
@@ -1929,7 +1994,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1942,6 +2007,7 @@ CheckBox
 8
 Name
 5
+20
 pv.storage.p6.charge
 X
 3
@@ -1957,7 +2023,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1970,6 +2036,7 @@ CheckBox
 8
 Name
 5
+23
 pv.storage.p6.discharge
 X
 3
@@ -1985,7 +2052,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1998,6 +2065,7 @@ CheckBox
 8
 Name
 5
+24
 pv.storage.p6.gridcharge
 X
 3
@@ -2013,7 +2081,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0

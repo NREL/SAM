@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 248
 Caption
 5
+20
 Direct Capital Costs
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 299
 Caption
 5
+22
 Indirect Capital Costs
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 89
 Caption
 5
+21
 Total Installed Costs
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox31
 X
 3
@@ -98,6 +105,7 @@ Height
 116
 Caption
 5
+10
 Land Costs
 Bold
 2
@@ -108,6 +116,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -123,6 +132,7 @@ Height
 21
 Caption
 5
+16
 % of Direct Cost
 TextColour
 4
@@ -151,6 +161,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -166,6 +177,7 @@ Height
 21
 Caption
 5
+14
 of Direct Cost
 TextColour
 4
@@ -194,6 +206,7 @@ Label
 12
 Name
 5
+7
 Label12
 X
 3
@@ -209,6 +222,7 @@ Height
 21
 Caption
 5
+16
 % of Direct Cost
 TextColour
 4
@@ -237,6 +251,7 @@ Label
 12
 Name
 5
+8
 Label121
 X
 3
@@ -252,6 +267,7 @@ Height
 21
 Caption
 5
+11
 Cost $/acre
 TextColour
 4
@@ -280,6 +296,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -295,6 +312,7 @@ Height
 21
 Caption
 5
+10
 Cost $/Wdc
 TextColour
 4
@@ -323,6 +341,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -338,6 +357,7 @@ Height
 21
 Caption
 5
+10
 Cost $/Wdc
 TextColour
 4
@@ -366,6 +386,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -381,6 +402,7 @@ Height
 21
 Caption
 5
+10
 Fixed Cost
 TextColour
 4
@@ -409,6 +431,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -424,6 +447,7 @@ Height
 21
 Caption
 5
+10
 Fixed Cost
 TextColour
 4
@@ -452,6 +476,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -467,6 +492,7 @@ Height
 21
 Caption
 5
+5
 Total
 TextColour
 4
@@ -495,6 +521,7 @@ Label
 12
 Name
 5
+7
 Label41
 X
 3
@@ -510,6 +537,7 @@ Height
 21
 Caption
 5
+5
 Total
 TextColour
 4
@@ -538,6 +566,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -553,6 +582,7 @@ Height
 21
 Caption
 5
+10
 applies to
 TextColour
 4
@@ -581,6 +611,7 @@ Label
 12
 Name
 5
+6
 Label6
 X
 3
@@ -596,6 +627,7 @@ Height
 21
 Caption
 5
+5
 $/Wdc
 TextColour
 4
@@ -624,6 +656,7 @@ Label
 12
 Name
 5
+7
 Label61
 X
 3
@@ -639,6 +672,7 @@ Height
 21
 Caption
 5
+5
 $/Wdc
 TextColour
 4
@@ -667,6 +701,7 @@ Label
 12
 Name
 5
+8
 Label611
 X
 3
@@ -682,6 +717,7 @@ Height
 21
 Caption
 5
+4
 $/m2
 TextColour
 4
@@ -710,6 +746,7 @@ Label
 12
 Name
 5
+9
 Label6111
 X
 3
@@ -725,6 +762,7 @@ Height
 21
 Caption
 5
+4
 $/m2
 TextColour
 4
@@ -753,6 +791,7 @@ Label
 12
 Name
 5
+10
 Label61111
 X
 3
@@ -768,6 +807,7 @@ Height
 21
 Caption
 5
+4
 $/m2
 TextColour
 4
@@ -796,6 +836,7 @@ Label
 12
 Name
 5
+9
 Label6112
 X
 3
@@ -811,6 +852,7 @@ Height
 21
 Caption
 5
+4
 $/m2
 TextColour
 4
@@ -839,6 +881,7 @@ Label
 12
 Name
 5
+8
 Label612
 X
 3
@@ -854,6 +897,7 @@ Height
 21
 Caption
 5
+5
 $/Wdc
 TextColour
 4
@@ -882,6 +926,7 @@ Label
 12
 Name
 5
+7
 Label62
 X
 3
@@ -897,6 +942,7 @@ Height
 21
 Caption
 5
+5
 $/Wdc
 TextColour
 4
@@ -925,6 +971,7 @@ Label
 12
 Name
 5
+6
 Label7
 X
 3
@@ -940,6 +987,7 @@ Height
 21
 Caption
 5
+1
 $
 TextColour
 4
@@ -968,6 +1016,7 @@ Label
 12
 Name
 5
+7
 Label71
 X
 3
@@ -983,6 +1032,7 @@ Height
 21
 Caption
 5
+1
 $
 TextColour
 4
@@ -1011,6 +1061,7 @@ Label
 12
 Name
 5
+8
 Label711
 X
 3
@@ -1026,6 +1077,7 @@ Height
 21
 Caption
 5
+1
 $
 TextColour
 4
@@ -1054,6 +1106,7 @@ Label
 12
 Name
 5
+7
 Label72
 X
 3
@@ -1069,6 +1122,7 @@ Height
 21
 Caption
 5
+1
 $
 TextColour
 4
@@ -1097,6 +1151,7 @@ Label
 12
 Name
 5
+6
 Label8
 X
 3
@@ -1112,6 +1167,7 @@ Height
 21
 Caption
 5
+17
 Balance of system
 TextColour
 4
@@ -1140,6 +1196,7 @@ Label
 12
 Name
 5
+7
 Label81
 X
 3
@@ -1155,6 +1212,7 @@ Height
 21
 Caption
 5
+18
 Installation labor
 TextColour
 4
@@ -1183,6 +1241,7 @@ Label
 12
 Name
 5
+8
 Label811
 X
 3
@@ -1198,6 +1257,7 @@ Height
 21
 Caption
 5
+29
 Installer margin and overhead
 TextColour
 4
@@ -1226,6 +1286,7 @@ Label
 12
 Name
 5
+7
 Label82
 X
 3
@@ -1241,6 +1302,7 @@ Height
 21
 Caption
 5
+18
 Tracking equipment
 TextColour
 4
@@ -1269,6 +1331,7 @@ Label
 12
 Name
 5
+6
 Label9
 X
 3
@@ -1284,6 +1347,7 @@ Height
 21
 Caption
 5
+33
 Permitting, Environmental Studies
 TextColour
 4
@@ -1312,6 +1376,7 @@ Label
 12
 Name
 5
+7
 Label91
 X
 3
@@ -1327,6 +1392,7 @@ Height
 21
 Caption
 5
+11
 Engineering
 TextColour
 4
@@ -1355,6 +1421,7 @@ Label
 12
 Name
 5
+8
 Label911
 X
 3
@@ -1370,6 +1437,7 @@ Height
 21
 Caption
 5
+4
 Land
 TextColour
 4
@@ -1398,6 +1466,7 @@ Label
 12
 Name
 5
+9
 Label9111
 X
 3
@@ -1413,6 +1482,7 @@ Height
 21
 Caption
 5
+16
 Land preparation
 TextColour
 4
@@ -1441,6 +1511,7 @@ Label
 12
 Name
 5
+7
 Label92
 X
 3
@@ -1456,6 +1527,7 @@ Height
 21
 Caption
 5
+20
 Grid interconnection
 TextColour
 4
@@ -1484,6 +1556,7 @@ Numeric
 16
 Name
 5
+29
 hcpv.cost.bos_equip.totalcost
 X
 3
@@ -1511,10 +1584,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1542,6 +1616,7 @@ Numeric
 16
 Name
 5
+25
 hcpv.cost.bos_equip_fixed
 X
 3
@@ -1569,10 +1644,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1600,6 +1675,7 @@ Numeric
 16
 Name
 5
+27
 hcpv.cost.bos_equip_perarea
 X
 3
@@ -1627,10 +1703,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1658,6 +1734,7 @@ Numeric
 16
 Name
 5
+27
 hcpv.cost.bos_equip_perwatt
 X
 3
@@ -1685,10 +1762,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1716,6 +1793,7 @@ Numeric
 16
 Name
 5
+21
 hcpv.cost.contingency
 X
 3
@@ -1743,10 +1821,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1774,6 +1853,7 @@ Numeric
 16
 Name
 5
+29
 hcpv.cost.contingency_percent
 X
 3
@@ -1801,9 +1881,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1832,6 +1913,7 @@ Numeric
 16
 Name
 5
+20
 hcpv.cost.engr.fixed
 X
 3
@@ -1859,10 +1941,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1890,6 +1973,7 @@ Numeric
 16
 Name
 5
+23
 hcpv.cost.engr.per_watt
 X
 3
@@ -1917,10 +2001,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1948,6 +2032,7 @@ Numeric
 16
 Name
 5
+22
 hcpv.cost.engr.percent
 X
 3
@@ -1975,9 +2060,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2006,6 +2092,7 @@ Numeric
 16
 Name
 5
+20
 hcpv.cost.engr.total
 X
 3
@@ -2033,10 +2120,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2064,6 +2152,7 @@ Numeric
 16
 Name
 5
+20
 hcpv.cost.grid.fixed
 X
 3
@@ -2091,10 +2180,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2122,6 +2212,7 @@ Numeric
 16
 Name
 5
+23
 hcpv.cost.grid.per_watt
 X
 3
@@ -2149,10 +2240,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2180,6 +2271,7 @@ Numeric
 16
 Name
 5
+22
 hcpv.cost.grid.percent
 X
 3
@@ -2207,9 +2299,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2238,6 +2331,7 @@ Numeric
 16
 Name
 5
+20
 hcpv.cost.grid.total
 X
 3
@@ -2265,10 +2359,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2296,6 +2391,7 @@ Numeric
 16
 Name
 5
+33
 hcpv.cost.install_labor.totalcost
 X
 3
@@ -2323,10 +2419,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2354,6 +2451,7 @@ Numeric
 16
 Name
 5
+29
 hcpv.cost.install_labor_fixed
 X
 3
@@ -2381,10 +2479,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2412,6 +2510,7 @@ Numeric
 16
 Name
 5
+31
 hcpv.cost.install_labor_perarea
 X
 3
@@ -2439,10 +2538,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2470,6 +2569,7 @@ Numeric
 16
 Name
 5
+31
 hcpv.cost.install_labor_perwatt
 X
 3
@@ -2497,10 +2597,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2528,6 +2628,7 @@ Numeric
 16
 Name
 5
+34
 hcpv.cost.install_margin.totalcost
 X
 3
@@ -2555,10 +2656,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2586,6 +2688,7 @@ Numeric
 16
 Name
 5
+30
 hcpv.cost.install_margin_fixed
 X
 3
@@ -2613,10 +2716,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2644,6 +2747,7 @@ Numeric
 16
 Name
 5
+32
 hcpv.cost.install_margin_perarea
 X
 3
@@ -2671,10 +2775,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2702,6 +2806,7 @@ Numeric
 16
 Name
 5
+32
 hcpv.cost.install_margin_perwatt
 X
 3
@@ -2729,10 +2834,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2760,6 +2865,7 @@ Numeric
 16
 Name
 5
+32
 hcpv.cost.installed_per_capacity
 X
 3
@@ -2787,10 +2893,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2818,6 +2925,7 @@ Choice
 8
 Name
 5
+28
 hcpv.cost.inverter.costunits
 X
 3
@@ -2848,6 +2956,7 @@ Numeric
 16
 Name
 5
+28
 hcpv.cost.inverter.num_units
 X
 3
@@ -2875,10 +2984,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2906,6 +3015,7 @@ Numeric
 16
 Name
 5
+24
 hcpv.cost.inverter.power
 X
 3
@@ -2933,10 +3043,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2964,6 +3074,7 @@ Numeric
 16
 Name
 5
+28
 hcpv.cost.inverter.totalcost
 X
 3
@@ -2991,10 +3102,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3022,6 +3134,7 @@ Numeric
 16
 Name
 5
+29
 hcpv.cost.inverterarray.power
 X
 3
@@ -3049,10 +3162,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3080,6 +3193,7 @@ Numeric
 16
 Name
 5
+20
 hcpv.cost.land.fixed
 X
 3
@@ -3107,10 +3221,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3138,6 +3253,7 @@ Numeric
 16
 Name
 5
+23
 hcpv.cost.land.per_acre
 X
 3
@@ -3165,10 +3281,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3196,6 +3312,7 @@ Numeric
 16
 Name
 5
+23
 hcpv.cost.land.per_watt
 X
 3
@@ -3223,10 +3340,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3254,6 +3371,7 @@ Numeric
 16
 Name
 5
+22
 hcpv.cost.land.percent
 X
 3
@@ -3281,9 +3399,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3312,6 +3431,7 @@ Numeric
 16
 Name
 5
+20
 hcpv.cost.land.total
 X
 3
@@ -3339,10 +3459,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3370,6 +3491,7 @@ Numeric
 16
 Name
 5
+25
 hcpv.cost.land_area.value
 X
 3
@@ -3397,10 +3519,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3428,6 +3550,7 @@ Numeric
 16
 Name
 5
+24
 hcpv.cost.landprep.fixed
 X
 3
@@ -3455,10 +3578,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3486,6 +3610,7 @@ Numeric
 16
 Name
 5
+27
 hcpv.cost.landprep.per_acre
 X
 3
@@ -3513,10 +3638,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3544,6 +3669,7 @@ Numeric
 16
 Name
 5
+27
 hcpv.cost.landprep.per_watt
 X
 3
@@ -3571,10 +3697,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3602,6 +3728,7 @@ Numeric
 16
 Name
 5
+26
 hcpv.cost.landprep.percent
 X
 3
@@ -3629,9 +3756,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3660,6 +3788,7 @@ Numeric
 16
 Name
 5
+24
 hcpv.cost.landprep.total
 X
 3
@@ -3687,10 +3816,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3718,6 +3848,7 @@ Choice
 8
 Name
 5
+26
 hcpv.cost.module.costunits
 X
 3
@@ -3748,6 +3879,7 @@ Numeric
 16
 Name
 5
+26
 hcpv.cost.module.num_units
 X
 3
@@ -3775,10 +3907,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3806,6 +3938,7 @@ Numeric
 16
 Name
 5
+22
 hcpv.cost.module.power
 X
 3
@@ -3833,10 +3966,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3864,6 +3997,7 @@ Numeric
 16
 Name
 5
+26
 hcpv.cost.module.totalcost
 X
 3
@@ -3891,10 +4025,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3922,6 +4057,7 @@ Numeric
 16
 Name
 5
+27
 hcpv.cost.modulearray.power
 X
 3
@@ -3949,10 +4085,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3980,6 +4116,7 @@ Numeric
 16
 Name
 5
+22
 hcpv.cost.per_inverter
 X
 3
@@ -4007,10 +4144,11 @@ Decimals
 3
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4038,6 +4176,7 @@ Numeric
 16
 Name
 5
+20
 hcpv.cost.per_module
 X
 3
@@ -4065,10 +4204,11 @@ Decimals
 3
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4096,6 +4236,7 @@ Numeric
 16
 Name
 5
+26
 hcpv.cost.permitting.fixed
 X
 3
@@ -4123,10 +4264,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4154,6 +4296,7 @@ Numeric
 16
 Name
 5
+29
 hcpv.cost.permitting.per_watt
 X
 3
@@ -4181,10 +4324,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4212,6 +4355,7 @@ Numeric
 16
 Name
 5
+28
 hcpv.cost.permitting.percent
 X
 3
@@ -4239,9 +4383,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -4270,6 +4415,7 @@ Numeric
 16
 Name
 5
+26
 hcpv.cost.permitting.total
 X
 3
@@ -4297,10 +4443,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4328,6 +4475,7 @@ Numeric
 16
 Name
 5
+27
 hcpv.cost.sales_tax.percent
 X
 3
@@ -4355,9 +4503,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -4386,6 +4535,7 @@ Numeric
 16
 Name
 5
+25
 hcpv.cost.sales_tax.total
 X
 3
@@ -4413,10 +4563,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4444,6 +4595,7 @@ Numeric
 16
 Name
 5
+25
 hcpv.cost.sales_tax.value
 X
 3
@@ -4471,9 +4623,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -4502,6 +4655,7 @@ Numeric
 16
 Name
 5
+27
 hcpv.cost.tracker.totalcost
 X
 3
@@ -4529,10 +4683,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4560,6 +4715,7 @@ Numeric
 16
 Name
 5
+23
 hcpv.cost.tracker_fixed
 X
 3
@@ -4587,10 +4743,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4618,6 +4774,7 @@ Numeric
 16
 Name
 5
+25
 hcpv.cost.tracker_perarea
 X
 3
@@ -4645,10 +4802,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4676,6 +4833,7 @@ Numeric
 16
 Name
 5
+25
 hcpv.cost.tracker_perwatt
 X
 3
@@ -4703,10 +4861,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4734,6 +4892,7 @@ Label
 12
 Name
 5
+16
 lblFinancingCost
 X
 3
@@ -4749,6 +4908,7 @@ Height
 51
 Caption
 5
+80
 Total Installed Cost excludes any financing costs from the Financing input page.
 TextColour
 4
@@ -4777,6 +4937,7 @@ Numeric
 16
 Name
 5
+17
 total_direct_cost
 X
 3
@@ -4804,10 +4965,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4835,6 +4997,7 @@ Numeric
 16
 Name
 5
+19
 total_indirect_cost
 X
 3
@@ -4862,10 +5025,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4893,6 +5057,7 @@ Numeric
 16
 Name
 5
+20
 total_installed_cost
 X
 3
@@ -4920,10 +5085,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

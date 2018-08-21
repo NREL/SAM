@@ -8,6 +8,7 @@ Label
 12
 Name
 5
+7
 Label10
 X
 3
@@ -23,6 +24,7 @@ Height
 21
 Caption
 5
+9
 Period 3:
 TextColour
 4
@@ -51,6 +53,7 @@ Label
 12
 Name
 5
+8
 Label101
 X
 3
@@ -66,6 +69,7 @@ Height
 21
 Caption
 5
+9
 Period 7:
 TextColour
 4
@@ -94,6 +98,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -109,6 +114,7 @@ Height
 21
 Caption
 5
+9
 Period 4:
 TextColour
 4
@@ -137,6 +143,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -152,6 +159,7 @@ Height
 21
 Caption
 5
+9
 Period 8:
 TextColour
 4
@@ -180,6 +188,7 @@ Label
 12
 Name
 5
+7
 Label12
 X
 3
@@ -195,6 +204,7 @@ Height
 21
 Caption
 5
+9
 Period 5:
 TextColour
 4
@@ -223,6 +233,7 @@ Label
 12
 Name
 5
+8
 Label121
 X
 3
@@ -238,6 +249,7 @@ Height
 21
 Caption
 5
+9
 Period 9:
 TextColour
 4
@@ -266,6 +278,7 @@ Label
 12
 Name
 5
+7
 Label13
 X
 3
@@ -281,6 +294,7 @@ Height
 21
 Caption
 5
+9
 Period 6:
 TextColour
 4
@@ -309,6 +323,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -324,6 +339,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -352,6 +368,7 @@ Label
 12
 Name
 5
+7
 Label51
 X
 3
@@ -367,6 +384,7 @@ Height
 21
 Caption
 5
+11
 TOD factors
 TextColour
 4
@@ -395,6 +413,7 @@ Label
 12
 Name
 5
+6
 Label9
 X
 3
@@ -410,6 +429,7 @@ Height
 21
 Caption
 5
+9
 Period 2:
 TextColour
 4
@@ -438,6 +458,7 @@ Button
 7
 Name
 5
+24
 apply_tod_library_values
 X
 3
@@ -453,6 +474,7 @@ Height
 24
 Caption
 5
+25
 Apply values from library
 TabOrder
 3
@@ -463,6 +485,7 @@ Button
 7
 Name
 5
+19
 btnLoadDispatchData
 X
 3
@@ -478,6 +501,7 @@ Height
 24
 Caption
 5
+22
 Load data from file...
 TabOrder
 3
@@ -488,6 +512,7 @@ Button
 7
 Name
 5
+19
 btnSaveDispatchData
 X
 3
@@ -503,6 +528,7 @@ Height
 24
 Caption
 5
+20
 Save data to file...
 TabOrder
 3
@@ -513,6 +539,7 @@ TextEntry
 10
 Name
 5
+22
 dispatch_data_filename
 X
 3
@@ -528,7 +555,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 0
@@ -553,6 +580,7 @@ Numeric
 16
 Name
 5
+16
 dispatch_factor1
 X
 3
@@ -580,10 +608,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -611,6 +639,7 @@ Numeric
 16
 Name
 5
+16
 dispatch_factor2
 X
 3
@@ -638,10 +667,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -669,6 +698,7 @@ Numeric
 16
 Name
 5
+16
 dispatch_factor3
 X
 3
@@ -696,10 +726,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -727,6 +757,7 @@ Numeric
 16
 Name
 5
+16
 dispatch_factor4
 X
 3
@@ -754,10 +785,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -785,6 +816,7 @@ Numeric
 16
 Name
 5
+16
 dispatch_factor5
 X
 3
@@ -812,10 +844,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -843,6 +875,7 @@ Numeric
 16
 Name
 5
+16
 dispatch_factor6
 X
 3
@@ -870,10 +903,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -901,6 +934,7 @@ Numeric
 16
 Name
 5
+16
 dispatch_factor7
 X
 3
@@ -928,10 +962,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -959,6 +993,7 @@ Numeric
 16
 Name
 5
+16
 dispatch_factor8
 X
 3
@@ -986,10 +1021,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1017,6 +1052,7 @@ Numeric
 16
 Name
 5
+16
 dispatch_factor9
 X
 3
@@ -1044,10 +1080,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1075,6 +1111,7 @@ DataArray
 9
 Name
 5
+19
 dispatch_factors_ts
 X
 3
@@ -1093,10 +1130,10 @@ Mode
 1
 Label
 5
- 
+0
 Description
 5
- 
+0
 TabOrder
 3
 4294967295
@@ -1106,6 +1143,7 @@ DiurnalPeriod
 9
 Name
 5
+22
 dispatch_sched_weekday
 X
 3
@@ -1124,7 +1162,7 @@ TabOrder
 4294967295
 Schedule
 5
- 
+0
 Max
 3
 9
@@ -1137,6 +1175,7 @@ DiurnalPeriod
 9
 Name
 5
+22
 dispatch_sched_weekend
 X
 3
@@ -1155,7 +1194,7 @@ TabOrder
 4294967295
 Schedule
 5
- 
+0
 Max
 3
 9
@@ -1168,6 +1207,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -1192,6 +1232,7 @@ Colour
 255
 Caption
 5
+31
 Save and Load TOD Schedule Data
 Bold
 2
@@ -1202,6 +1243,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1217,6 +1259,7 @@ Height
 966
 Caption
 5
+30
 Time-of-delivery (TOD) Factors
 Bold
 2
@@ -1227,6 +1270,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1242,6 +1286,7 @@ Height
 84
 Caption
 5
+294
 The TOD data in the library is from documents prepared by California electric utility companies. For projects outside of California, enter your own TOD data. Be sure that your assumptions are consistent with the requirements described in the appropriate solicitation documents for your project.
 TextColour
 4
@@ -1270,6 +1315,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1285,6 +1331,7 @@ Height
 84
 Caption
 5
+294
 The TOD data in the library is from documents prepared by California electric utility companies. For projects outside of California, enter your own TOD data. Be sure that your assumptions are consistent with the requirements described in the appropriate solicitation documents for your project.
 TextColour
 4
@@ -1313,6 +1360,7 @@ RadioChoice
 10
 Name
 5
+20
 ppa_multiplier_model
 X
 3
@@ -1349,6 +1397,7 @@ Library
 7
 Name
 5
+11
 tod_library
 X
 3
@@ -1364,9 +1413,11 @@ Height
 141
 Library
 5
+25
 TOD Schedules and Factors
 Fields
 5
+101
 Name,Weekday Schedule,Weekend Schedule,TODF 1,TODF 2,TODF 3,TODF 4,TODF 5,TODF 6,TODF 7,TODF 8,TODF 9
 
 26

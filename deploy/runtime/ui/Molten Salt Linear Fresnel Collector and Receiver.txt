@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+10
 A_aperture
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -65,6 +66,7 @@ Numeric
 1
 16
 Name
+5
 5
 ColAz
 X
@@ -93,10 +95,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -124,6 +126,7 @@ Numeric
 16
 Name
 5
+10
 DP_nominal
 X
 3
@@ -151,10 +154,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -182,6 +185,7 @@ Numeric
 16
 Name
 5
+16
 DP_pressure_loss
 X
 3
@@ -209,10 +213,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -240,6 +244,7 @@ Numeric
 16
 Name
 5
+11
 Dirt_mirror
 X
 3
@@ -267,10 +272,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -297,6 +302,7 @@ Numeric
 1
 16
 Name
+5
 5
 Error
 X
@@ -325,10 +331,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -356,6 +362,7 @@ Numeric
 16
 Name
 5
+11
 GeomEffects
 X
 3
@@ -383,10 +390,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -414,6 +421,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -429,6 +437,7 @@ Height
 623
 Caption
 5
+42
 Collector Geometry and Optical Performance
 Bold
 2
@@ -439,6 +448,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -454,6 +464,7 @@ Height
 740
 Caption
 5
+31
 Receiver Geometry and Heat Loss
 Bold
 2
@@ -464,6 +475,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -479,6 +491,7 @@ Height
 146
 Caption
 5
+25
 Aggregate Weighted Losses
 Bold
 2
@@ -489,6 +502,7 @@ Divider
 9
 Name
 5
+6
 HLine1
 X
 3
@@ -513,6 +527,7 @@ Colour
 255
 Caption
 5
+37
 Incidence Angle Modifier Coefficients
 Bold
 2
@@ -523,6 +538,7 @@ Divider
 9
 Name
 5
+7
 HLine11
 X
 3
@@ -547,6 +563,7 @@ Colour
 255
 Caption
 5
+46
 Solar Position/Collector Incidence Angle Table
 Bold
 2
@@ -557,6 +574,7 @@ Divider
 9
 Name
 5
+7
 HLine12
 X
 3
@@ -581,6 +599,7 @@ Colour
 255
 Caption
 5
+30
 Polynomial fit heat loss model
 Bold
 2
@@ -591,6 +610,7 @@ Divider
 9
 Name
 5
+8
 HLine121
 X
 3
@@ -615,6 +635,7 @@ Colour
 255
 Caption
 5
+30
 Evacuated tube heat loss model
 Bold
 2
@@ -625,6 +646,7 @@ Numeric
 16
 Name
 5
+11
 L_crossover
 X
 3
@@ -652,10 +674,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -682,6 +704,7 @@ Numeric
 1
 16
 Name
+5
 5
 L_mod
 X
@@ -710,10 +733,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -741,6 +764,7 @@ Numeric
 16
 Name
 5
+13
 L_mod_spacing
 X
 3
@@ -768,10 +792,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -799,6 +823,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -814,6 +839,7 @@ Height
 21
 Caption
 5
+32
 Optical characterization method:
 TextColour
 4
@@ -842,6 +868,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -857,6 +884,7 @@ Height
 21
 Caption
 5
+35
 Transverse incidence angle modifier
 TextColour
 4
@@ -885,6 +913,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -900,6 +929,7 @@ Height
 21
 Caption
 5
+26
 HTF temperature adjustment
 TextColour
 4
@@ -928,6 +958,7 @@ Label
 12
 Name
 5
+8
 Label211
 X
 3
@@ -943,6 +974,7 @@ Height
 21
 Caption
 5
+18
 Absorber emittance
 TextColour
 4
@@ -971,6 +1003,7 @@ Label
 12
 Name
 5
+9
 Label2111
 X
 3
@@ -986,6 +1019,7 @@ Height
 21
 Caption
 5
+20
 Envelope absorptance
 TextColour
 4
@@ -1014,6 +1048,7 @@ Label
 12
 Name
 5
+10
 Label21111
 X
 3
@@ -1029,6 +1064,7 @@ Height
 21
 Caption
 5
+25
 Glass envelope emissivity
 TextColour
 4
@@ -1057,6 +1093,7 @@ Label
 12
 Name
 5
+11
 Label211111
 X
 3
@@ -1072,6 +1109,7 @@ Height
 21
 Caption
 5
+22
 Envelope transmittance
 TextColour
 4
@@ -1100,6 +1138,7 @@ Label
 12
 Name
 5
+8
 Label212
 X
 3
@@ -1115,6 +1154,7 @@ Height
 21
 Caption
 5
+20
 Absorber absorptance
 TextColour
 4
@@ -1143,6 +1183,7 @@ Label
 12
 Name
 5
+7
 Label22
 X
 3
@@ -1158,6 +1199,7 @@ Height
 21
 Caption
 5
+26
 Variant weighting fraction
 TextColour
 4
@@ -1186,6 +1228,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -1201,6 +1244,7 @@ Height
 21
 Caption
 5
+37
 Longitudinal incidence angle modifier
 TextColour
 4
@@ -1229,6 +1273,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -1244,6 +1289,7 @@ Height
 21
 Caption
 5
+24
 Wind velocity adjustment
 TextColour
 4
@@ -1272,6 +1318,7 @@ Label
 12
 Name
 5
+8
 Label311
 X
 3
@@ -1287,6 +1334,7 @@ Height
 21
 Caption
 5
+31
 Receiver bellows shadowing loss
 TextColour
 4
@@ -1315,6 +1363,7 @@ Label
 12
 Name
 5
+9
 Label3111
 X
 3
@@ -1330,6 +1379,7 @@ Height
 21
 Caption
 5
+34
 Receiver heat loss at design (W/m)
 TextColour
 4
@@ -1358,6 +1408,7 @@ Label
 12
 Name
 5
+8
 Label312
 X
 3
@@ -1373,6 +1424,7 @@ Height
 21
 Caption
 5
+16
 Annulus gas type
 TextColour
 4
@@ -1401,6 +1453,7 @@ Label
 12
 Name
 5
+8
 Label313
 X
 3
@@ -1416,6 +1469,7 @@ Height
 21
 Caption
 5
+34
 Part-load pressure loss adjustment
 TextColour
 4
@@ -1444,6 +1498,7 @@ Label
 12
 Name
 5
+7
 Label32
 X
 3
@@ -1459,6 +1514,7 @@ Height
 21
 Caption
 5
+34
 Dirt on the receiver envelope loss
 TextColour
 4
@@ -1487,6 +1543,7 @@ Label
 12
 Name
 5
+7
 Label33
 X
 3
@@ -1502,6 +1559,7 @@ Height
 21
 Caption
 5
+27
 Annulus gas pressure (torr)
 TextColour
 4
@@ -1530,6 +1588,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -1544,6 +1603,7 @@ Height
 3
 18
 Caption
+5
 5
 Const
 TextColour
@@ -1573,6 +1633,7 @@ Label
 12
 Name
 5
+7
 Label41
 X
 3
@@ -1588,6 +1649,7 @@ Height
 18
 Caption
 5
+2
 C1
 TextColour
 4
@@ -1616,6 +1678,7 @@ Label
 12
 Name
 5
+8
 Label411
 X
 3
@@ -1631,6 +1694,7 @@ Height
 18
 Caption
 5
+2
 C3
 TextColour
 4
@@ -1659,6 +1723,7 @@ Label
 12
 Name
 5
+9
 Label4111
 X
 3
@@ -1674,6 +1739,7 @@ Height
 18
 Caption
 5
+12
 C3 (W/m-K^3)
 TextColour
 4
@@ -1702,6 +1768,7 @@ Label
 12
 Name
 5
+10
 Label41111
 X
 3
@@ -1717,6 +1784,7 @@ Height
 18
 Caption
 5
+16
 C3 (W/m-(m/s)^3)
 TextColour
 4
@@ -1745,6 +1813,7 @@ Label
 12
 Name
 5
+11
 Label411111
 X
 3
@@ -1760,6 +1829,7 @@ Height
 18
 Caption
 5
+16
 C4 (W/m-(m/s)^4)
 TextColour
 4
@@ -1788,6 +1858,7 @@ Label
 12
 Name
 5
+11
 Label411112
 X
 3
@@ -1803,6 +1874,7 @@ Height
 18
 Caption
 5
+3
 C3 
 TextColour
 4
@@ -1831,6 +1903,7 @@ Label
 12
 Name
 5
+10
 Label41112
 X
 3
@@ -1846,6 +1919,7 @@ Height
 21
 Caption
 5
+12
 Variation 4*
 TextColour
 4
@@ -1874,6 +1948,7 @@ Label
 12
 Name
 5
+10
 Label41113
 X
 3
@@ -1889,6 +1964,7 @@ Height
 18
 Caption
 5
+12
 C4 (W/m-K^4)
 TextColour
 4
@@ -1917,6 +1993,7 @@ Label
 12
 Name
 5
+9
 Label4112
 X
 3
@@ -1932,6 +2009,7 @@ Height
 21
 Caption
 5
+11
 Variation 3
 TextColour
 4
@@ -1960,6 +2038,7 @@ Label
 12
 Name
 5
+8
 Label412
 X
 3
@@ -1975,6 +2054,7 @@ Height
 18
 Caption
 5
+10
 C1 (W/m-K)
 TextColour
 4
@@ -2003,6 +2083,7 @@ Label
 12
 Name
 5
+9
 Label4121
 X
 3
@@ -2018,6 +2099,7 @@ Height
 18
 Caption
 5
+14
 C1 (W/m-(m/s))
 TextColour
 4
@@ -2046,6 +2128,7 @@ Label
 12
 Name
 5
+10
 Label41211
 X
 3
@@ -2061,6 +2144,7 @@ Height
 18
 Caption
 5
+2
 C1
 TextColour
 4
@@ -2089,6 +2173,7 @@ Label
 12
 Name
 5
+8
 Label413
 X
 3
@@ -2104,6 +2189,7 @@ Height
 21
 Caption
 5
+11
 Variation 2
 TextColour
 4
@@ -2132,6 +2218,7 @@ Label
 12
 Name
 5
+7
 Label42
 X
 3
@@ -2147,6 +2234,7 @@ Height
 18
 Caption
 5
+2
 C2
 TextColour
 4
@@ -2175,6 +2263,7 @@ Label
 12
 Name
 5
+8
 Label421
 X
 3
@@ -2190,6 +2279,7 @@ Height
 18
 Caption
 5
+2
 C4
 TextColour
 4
@@ -2218,6 +2308,7 @@ Label
 12
 Name
 5
+8
 Label422
 X
 3
@@ -2233,6 +2324,7 @@ Height
 18
 Caption
 5
+12
 C2 (W/m-K^2)
 TextColour
 4
@@ -2261,6 +2353,7 @@ Label
 12
 Name
 5
+9
 Label4221
 X
 3
@@ -2276,6 +2369,7 @@ Height
 18
 Caption
 5
+16
 C2 (W/m-(m/s)^2)
 TextColour
 4
@@ -2304,6 +2398,7 @@ Label
 12
 Name
 5
+10
 Label42211
 X
 3
@@ -2319,6 +2414,7 @@ Height
 18
 Caption
 5
+2
 C2
 TextColour
 4
@@ -2347,6 +2443,7 @@ Label
 12
 Name
 5
+7
 Label43
 X
 3
@@ -2362,6 +2459,7 @@ Height
 18
 Caption
 5
+8
 C0 (W/m)
 TextColour
 4
@@ -2390,6 +2488,7 @@ Label
 12
 Name
 5
+8
 Label431
 X
 3
@@ -2405,6 +2504,7 @@ Height
 18
 Caption
 5
+8
 C0 (W/m)
 TextColour
 4
@@ -2433,6 +2533,7 @@ Label
 12
 Name
 5
+9
 Label4311
 X
 3
@@ -2448,6 +2549,7 @@ Height
 18
 Caption
 5
+2
 C0
 TextColour
 4
@@ -2476,6 +2578,7 @@ Label
 12
 Name
 5
+7
 Label44
 X
 3
@@ -2491,6 +2594,7 @@ Height
 21
 Caption
 5
+11
 Variation 1
 TextColour
 4
@@ -2519,6 +2623,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -2534,6 +2639,7 @@ Height
 18
 Caption
 5
+112
 Specifying solar position table: Rows indicate solar zenith angles (deg), columns are solar azimuth angles (deg)
 TextColour
 4
@@ -2562,6 +2668,7 @@ Label
 12
 Name
 5
+7
 Label51
 X
 3
@@ -2577,6 +2684,7 @@ Height
 39
 Caption
 5
+146
 Specifying collector incidence angle table: Rows indicate longitudinal incidence angles (deg), columns indicate transversal incidence angles (deg)
 TextColour
 4
@@ -2605,6 +2713,7 @@ DataMatrix
 22
 Name
 5
+12
 OpticalTable
 X
 3
@@ -2632,7 +2741,7 @@ ShowRowLabels
 0
 RowLabels
 5
- 
+0
 ShadeR0C0
 2
 1
@@ -2647,11 +2756,13 @@ ShowColLabels
 0
 ColLabels
 5
- 
+0
 NumRowsLabel
+5
 5
 Rows:
 NumColsLabel
+5
 5
 Cols:
 Layout
@@ -2662,6 +2773,7 @@ ChoiceColumn
 4294967295
 Choices
 5
+15
 Choice1,Choice2
 HideColumn
 3
@@ -2675,6 +2787,7 @@ Numeric
 16
 Name
 5
+13
 TrackingError
 X
 3
@@ -2702,10 +2815,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2733,6 +2846,7 @@ Choice
 8
 Name
 5
+28
 csp.mslf.sf.AbsorberMaterial
 X
 3
@@ -2765,6 +2879,7 @@ Choice
 8
 Name
 5
+23
 csp.mslf.sf.AnnulusGas1
 X
 3
@@ -2796,6 +2911,7 @@ Choice
 8
 Name
 5
+23
 csp.mslf.sf.AnnulusGas2
 X
 3
@@ -2827,6 +2943,7 @@ Choice
 8
 Name
 5
+23
 csp.mslf.sf.AnnulusGas3
 X
 3
@@ -2858,6 +2975,7 @@ Choice
 8
 Name
 5
+23
 csp.mslf.sf.AnnulusGas4
 X
 3
@@ -2889,6 +3007,7 @@ Numeric
 16
 Name
 5
+21
 csp.mslf.sf.DP_coefs0
 X
 3
@@ -2916,10 +3035,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2947,6 +3066,7 @@ Numeric
 16
 Name
 5
+21
 csp.mslf.sf.DP_coefs1
 X
 3
@@ -2974,10 +3094,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3005,6 +3125,7 @@ Numeric
 16
 Name
 5
+21
 csp.mslf.sf.DP_coefs2
 X
 3
@@ -3032,10 +3153,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3063,6 +3184,7 @@ Numeric
 16
 Name
 5
+21
 csp.mslf.sf.DP_coefs3
 X
 3
@@ -3090,10 +3212,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3121,6 +3243,7 @@ Numeric
 16
 Name
 5
+20
 csp.mslf.sf.D_abs_in
 X
 3
@@ -3148,10 +3271,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3179,6 +3302,7 @@ Numeric
 16
 Name
 5
+21
 csp.mslf.sf.D_abs_out
 X
 3
@@ -3206,10 +3330,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3237,6 +3361,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.D_glass_in
 X
 3
@@ -3264,10 +3389,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3295,6 +3420,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.sf.D_glass_out
 X
 3
@@ -3322,10 +3448,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3353,6 +3479,7 @@ Numeric
 16
 Name
 5
+18
 csp.mslf.sf.D_plug
 X
 3
@@ -3380,10 +3507,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3411,6 +3538,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.Design_loss1
 X
 3
@@ -3438,10 +3566,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3469,6 +3597,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.Design_loss2
 X
 3
@@ -3496,10 +3625,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3527,6 +3656,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.Design_loss3
 X
 3
@@ -3554,10 +3684,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3585,6 +3715,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.Design_loss4
 X
 3
@@ -3612,10 +3743,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3643,6 +3774,7 @@ Choice
 8
 Name
 5
+21
 csp.mslf.sf.Flow_type
 X
 3
@@ -3673,6 +3805,7 @@ CheckBox
 8
 Name
 5
+28
 csp.mslf.sf.GlazingIntactIn1
 X
 3
@@ -3688,6 +3821,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -3701,6 +3835,7 @@ CheckBox
 8
 Name
 5
+28
 csp.mslf.sf.GlazingIntactIn2
 X
 3
@@ -3716,6 +3851,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -3729,6 +3865,7 @@ CheckBox
 8
 Name
 5
+28
 csp.mslf.sf.GlazingIntactIn3
 X
 3
@@ -3744,6 +3881,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -3757,6 +3895,7 @@ CheckBox
 8
 Name
 5
+28
 csp.mslf.sf.GlazingIntactIn4
 X
 3
@@ -3772,6 +3911,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -3785,6 +3925,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.sf.HCE_FieldFrac1
 X
 3
@@ -3812,10 +3953,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3843,6 +3984,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.sf.HCE_FieldFrac2
 X
 3
@@ -3870,10 +4012,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3901,6 +4043,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.sf.HCE_FieldFrac3
 X
 3
@@ -3928,10 +4071,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3959,6 +4102,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.sf.HCE_FieldFrac4
 X
 3
@@ -3986,10 +4130,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4017,6 +4161,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.sf.HL_T_coefs0
 X
 3
@@ -4044,10 +4189,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4075,6 +4220,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.sf.HL_T_coefs1
 X
 3
@@ -4102,10 +4248,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4133,6 +4279,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.sf.HL_T_coefs2
 X
 3
@@ -4160,10 +4307,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4191,6 +4338,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.sf.HL_T_coefs3
 X
 3
@@ -4218,10 +4366,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4249,6 +4397,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.sf.HL_T_coefs4
 X
 3
@@ -4276,10 +4425,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4307,6 +4456,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.sf.HL_w_coefs0
 X
 3
@@ -4334,10 +4484,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4365,6 +4515,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.sf.HL_w_coefs1
 X
 3
@@ -4392,10 +4543,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4423,6 +4574,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.sf.HL_w_coefs2
 X
 3
@@ -4450,10 +4602,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4481,6 +4633,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.sf.HL_w_coefs3
 X
 3
@@ -4508,10 +4661,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4539,6 +4692,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.sf.HL_w_coefs4
 X
 3
@@ -4566,10 +4720,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4597,6 +4751,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.IAM_L_coefs0
 X
 3
@@ -4624,10 +4779,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4655,6 +4810,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.IAM_L_coefs1
 X
 3
@@ -4682,10 +4838,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4713,6 +4869,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.IAM_L_coefs2
 X
 3
@@ -4740,10 +4897,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4771,6 +4928,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.IAM_L_coefs3
 X
 3
@@ -4798,10 +4956,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4829,6 +4987,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.IAM_L_coefs4
 X
 3
@@ -4856,10 +5015,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4887,6 +5046,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.IAM_T_coefs0
 X
 3
@@ -4914,10 +5074,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4945,6 +5105,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.IAM_T_coefs1
 X
 3
@@ -4972,10 +5133,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5003,6 +5164,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.IAM_T_coefs2
 X
 3
@@ -5030,10 +5192,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5061,6 +5223,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.IAM_T_coefs3
 X
 3
@@ -5088,10 +5251,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5119,6 +5282,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.sf.IAM_T_coefs4
 X
 3
@@ -5146,10 +5310,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5177,6 +5341,7 @@ Numeric
 16
 Name
 5
+16
 csp.mslf.sf.P_a1
 X
 3
@@ -5204,10 +5369,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5235,6 +5400,7 @@ Numeric
 16
 Name
 5
+16
 csp.mslf.sf.P_a2
 X
 3
@@ -5262,10 +5428,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5293,6 +5459,7 @@ Numeric
 16
 Name
 5
+16
 csp.mslf.sf.P_a3
 X
 3
@@ -5320,10 +5487,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5351,6 +5518,7 @@ Numeric
 16
 Name
 5
+16
 csp.mslf.sf.P_a4
 X
 3
@@ -5378,10 +5546,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5409,6 +5577,7 @@ Numeric
 16
 Name
 5
+17
 csp.mslf.sf.Rough
 X
 3
@@ -5436,10 +5605,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5467,6 +5636,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.Shadowing1
 X
 3
@@ -5494,10 +5664,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5525,6 +5695,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.Shadowing2
 X
 3
@@ -5552,10 +5723,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5583,6 +5754,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.Shadowing3
 X
 3
@@ -5610,10 +5782,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5641,6 +5813,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.Shadowing4
 X
 3
@@ -5668,10 +5841,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5699,6 +5872,7 @@ Numeric
 16
 Name
 5
+25
 csp.mslf.sf.Tau_envelope1
 X
 3
@@ -5726,10 +5900,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5757,6 +5931,7 @@ Numeric
 16
 Name
 5
+25
 csp.mslf.sf.Tau_envelope2
 X
 3
@@ -5784,10 +5959,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5815,6 +5990,7 @@ Numeric
 16
 Name
 5
+25
 csp.mslf.sf.Tau_envelope3
 X
 3
@@ -5842,10 +6018,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5873,6 +6049,7 @@ Numeric
 16
 Name
 5
+25
 csp.mslf.sf.Tau_envelope4
 X
 3
@@ -5900,10 +6077,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5931,6 +6108,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.alpha_abs1
 X
 3
@@ -5958,10 +6136,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5989,6 +6167,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.alpha_abs2
 X
 3
@@ -6016,10 +6195,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6047,6 +6226,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.alpha_abs3
 X
 3
@@ -6074,10 +6254,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6105,6 +6285,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.alpha_abs4
 X
 3
@@ -6132,10 +6313,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6163,6 +6344,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.alpha_env1
 X
 3
@@ -6190,10 +6372,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6221,6 +6403,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.alpha_env2
 X
 3
@@ -6248,10 +6431,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6279,6 +6462,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.alpha_env3
 X
 3
@@ -6306,10 +6490,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6337,6 +6521,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.alpha_env4
 X
 3
@@ -6364,10 +6549,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6395,6 +6580,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.avg_dt_des
 X
 3
@@ -6422,10 +6608,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6453,6 +6639,7 @@ Numeric
 16
 Name
 5
+21
 csp.mslf.sf.dirt_env1
 X
 3
@@ -6480,10 +6667,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6511,6 +6698,7 @@ Numeric
 16
 Name
 5
+21
 csp.mslf.sf.dirt_env2
 X
 3
@@ -6538,10 +6726,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6569,6 +6757,7 @@ Numeric
 16
 Name
 5
+21
 csp.mslf.sf.dirt_env3
 X
 3
@@ -6596,10 +6785,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6627,6 +6816,7 @@ Numeric
 16
 Name
 5
+21
 csp.mslf.sf.dirt_env4
 X
 3
@@ -6654,10 +6844,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6685,6 +6875,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.sf.epsilon_glass1
 X
 3
@@ -6712,10 +6903,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6743,6 +6934,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.sf.epsilon_glass2
 X
 3
@@ -6770,10 +6962,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6801,6 +6993,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.sf.epsilon_glass3
 X
 3
@@ -6828,10 +7021,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6859,6 +7052,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.sf.epsilon_glass4
 X
 3
@@ -6886,10 +7080,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6917,6 +7111,7 @@ RadioChoice
 10
 Name
 5
+21
 csp.mslf.sf.opt_model
 X
 3
@@ -6954,6 +7149,7 @@ Choice
 8
 Name
 5
+21
 csp.mslf.sf.rec_model
 X
 3
@@ -6984,6 +7180,7 @@ ValueMatrix
 9
 Name
 5
+13
 epsilon_abs_1
 X
 3
@@ -7005,6 +7202,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3
@@ -7015,6 +7213,7 @@ ValueMatrix
 9
 Name
 5
+13
 epsilon_abs_2
 X
 3
@@ -7036,6 +7235,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3
@@ -7046,6 +7246,7 @@ ValueMatrix
 9
 Name
 5
+13
 epsilon_abs_3
 X
 3
@@ -7067,6 +7268,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3
@@ -7077,6 +7279,7 @@ ValueMatrix
 9
 Name
 5
+13
 epsilon_abs_4
 X
 3
@@ -7098,6 +7301,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3
@@ -7108,6 +7312,7 @@ Numeric
 16
 Name
 5
+9
 hl_derate
 X
 3
@@ -7135,10 +7340,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -7166,6 +7371,7 @@ Numeric
 16
 Name
 5
+6
 hl_des
 X
 3
@@ -7193,10 +7399,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -7224,6 +7430,7 @@ Numeric
 16
 Name
 5
+10
 opt_derate
 X
 3
@@ -7251,10 +7458,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -7282,6 +7489,7 @@ Numeric
 16
 Name
 5
+10
 opt_normal
 X
 3
@@ -7309,10 +7517,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -7340,6 +7548,7 @@ Numeric
 16
 Name
 5
+12
 reflectivity
 X
 3
@@ -7367,10 +7576,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

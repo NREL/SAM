@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 80
 Caption
 5
+27
 Cost of Acquiring Financing
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -48,6 +51,7 @@ Height
 63
 Caption
 5
+207
 SAM includes the financing cost (and the working capital reserve) in the project's financing cost, which is part of the project's total equity capital reported in the project cash flow. See Help for details.
 TextColour
 4
@@ -76,6 +80,7 @@ Numeric
 16
 Name
 5
+20
 cost_other_financing
 X
 3
@@ -103,10 +108,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

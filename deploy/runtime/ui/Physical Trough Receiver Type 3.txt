@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 131
 Caption
 5
+17
 Receiver Geometry
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 488
 Caption
 5
+25
 Parameters and Variations
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 77
 Caption
 5
+21
 Total Weighted Losses
 Bold
 2
@@ -83,6 +89,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -98,6 +105,7 @@ Height
 21
 Caption
 5
+27
 Variant weighting fraction*
 TextColour
 4
@@ -126,6 +134,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -141,6 +150,7 @@ Height
 21
 Caption
 5
+20
 Absorber absorptance
 TextColour
 4
@@ -169,6 +179,7 @@ Label
 12
 Name
 5
+8
 Label211
 X
 3
@@ -184,6 +195,7 @@ Height
 21
 Caption
 5
+18
 Absorber emittance
 TextColour
 4
@@ -212,6 +224,7 @@ Label
 12
 Name
 5
+9
 Label2111
 X
 3
@@ -227,6 +240,7 @@ Height
 21
 Caption
 5
+20
 Envelope absorptance
 TextColour
 4
@@ -255,6 +269,7 @@ Label
 12
 Name
 5
+10
 Label21111
 X
 3
@@ -270,6 +285,7 @@ Height
 21
 Caption
 5
+18
 Envelope emittance
 TextColour
 4
@@ -298,6 +314,7 @@ Label
 12
 Name
 5
+11
 Label211111
 X
 3
@@ -313,6 +330,7 @@ Height
 21
 Caption
 5
+22
 Envelope transmittance
 TextColour
 4
@@ -341,6 +359,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -356,6 +375,7 @@ Height
 21
 Caption
 5
+23
 Annulus pressure (torr)
 TextColour
 4
@@ -384,6 +404,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -399,6 +420,7 @@ Height
 21
 Caption
 5
+16
 Annulus gas type
 TextColour
 4
@@ -427,6 +449,7 @@ Label
 12
 Name
 5
+8
 Label311
 X
 3
@@ -442,6 +465,7 @@ Height
 21
 Caption
 5
+17
 Bellows shadowing
 TextColour
 4
@@ -470,6 +494,7 @@ Label
 12
 Name
 5
+9
 Label3111
 X
 3
@@ -485,6 +510,7 @@ Height
 21
 Caption
 5
+30
 Estimated avg. heat loss (W/m)
 TextColour
 4
@@ -513,6 +539,7 @@ Label
 12
 Name
 5
+7
 Label32
 X
 3
@@ -528,6 +555,7 @@ Height
 21
 Caption
 5
+16
 Dirt on receiver
 TextColour
 4
@@ -556,6 +584,7 @@ Label
 12
 Name
 5
+8
 Label321
 X
 3
@@ -571,6 +600,7 @@ Height
 21
 Caption
 5
+14
 Optical derate
 TextColour
 4
@@ -599,6 +629,7 @@ Label
 12
 Name
 5
+9
 Label3211
 X
 3
@@ -614,6 +645,7 @@ Height
 21
 Caption
 5
+19
 Heat loss at design
 TextColour
 4
@@ -642,6 +674,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -657,6 +690,7 @@ Height
 21
 Caption
 5
+11
 Variation 1
 TextColour
 4
@@ -685,6 +719,7 @@ Label
 12
 Name
 5
+7
 Label41
 X
 3
@@ -700,6 +735,7 @@ Height
 21
 Caption
 5
+11
 Variation 2
 TextColour
 4
@@ -728,6 +764,7 @@ Label
 12
 Name
 5
+8
 Label411
 X
 3
@@ -743,6 +780,7 @@ Height
 21
 Caption
 5
+11
 Variation 3
 TextColour
 4
@@ -771,6 +809,7 @@ Label
 12
 Name
 5
+9
 Label4111
 X
 3
@@ -786,6 +825,7 @@ Height
 21
 Caption
 5
+12
 Variation 4*
 TextColour
 4
@@ -814,6 +854,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -829,6 +870,7 @@ Height
 21
 Caption
 5
+20
 Absorber Parameters:
 TextColour
 4
@@ -857,6 +899,7 @@ Label
 12
 Name
 5
+7
 Label51
 X
 3
@@ -872,6 +915,7 @@ Height
 21
 Caption
 5
+20
 Envelope Parameters:
 TextColour
 4
@@ -900,6 +944,7 @@ Label
 12
 Name
 5
+8
 Label511
 X
 3
@@ -915,6 +960,7 @@ Height
 21
 Caption
 5
+15
 Gas Parameters:
 TextColour
 4
@@ -943,6 +989,7 @@ Label
 12
 Name
 5
+9
 Label5111
 X
 3
@@ -958,6 +1005,7 @@ Height
 21
 Caption
 5
+16
 Optical Effects:
 TextColour
 4
@@ -986,6 +1034,7 @@ Label
 12
 Name
 5
+10
 Label51111
 X
 3
@@ -1001,6 +1050,7 @@ Height
 21
 Caption
 5
+20
 Heat Loss at Design:
 TextColour
 4
@@ -1029,6 +1079,7 @@ Label
 12
 Name
 5
+6
 Label6
 X
 3
@@ -1044,6 +1095,7 @@ Height
 21
 Caption
 5
+3
 W/m
 TextColour
 4
@@ -1072,6 +1124,7 @@ Label
 12
 Name
 5
+6
 Label7
 X
 3
@@ -1087,6 +1140,7 @@ Height
 21
 Caption
 5
+84
 * The variant weighting fractions and Varation 4 inputs are not part of the library.
 TextColour
 4
@@ -1115,6 +1169,7 @@ Button
 7
 Name
 5
+24
 apply_receiver_library_3
 X
 3
@@ -1130,6 +1185,7 @@ Height
 21
 Caption
 5
+25
 Apply Values from Library
 TabOrder
 3
@@ -1140,6 +1196,7 @@ Choice
 8
 Name
 5
+31
 csp_dtr_hce_absorber_material_3
 X
 3
@@ -1172,6 +1229,7 @@ Numeric
 16
 Name
 5
+30
 csp_dtr_hce_design_heat_loss_3
 X
 3
@@ -1199,10 +1257,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1230,6 +1288,7 @@ Numeric
 16
 Name
 5
+33
 csp_dtr_hce_diam_absorber_inner_3
 X
 3
@@ -1257,10 +1316,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1288,6 +1347,7 @@ Numeric
 16
 Name
 5
+33
 csp_dtr_hce_diam_absorber_outer_3
 X
 3
@@ -1315,10 +1375,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1346,6 +1406,7 @@ Numeric
 16
 Name
 5
+32
 csp_dtr_hce_diam_absorber_plug_3
 X
 3
@@ -1373,10 +1434,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1404,6 +1465,7 @@ Numeric
 16
 Name
 5
+33
 csp_dtr_hce_diam_envelope_inner_3
 X
 3
@@ -1431,10 +1493,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1462,6 +1524,7 @@ Numeric
 16
 Name
 5
+33
 csp_dtr_hce_diam_envelope_outer_3
 X
 3
@@ -1489,10 +1552,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1520,6 +1583,7 @@ Choice
 8
 Name
 5
+23
 csp_dtr_hce_flow_type_3
 X
 3
@@ -1550,6 +1614,7 @@ Numeric
 16
 Name
 5
+29
 csp_dtr_hce_inner_roughness_3
 X
 3
@@ -1577,10 +1642,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1608,6 +1673,7 @@ TextEntry
 10
 Name
 5
+25
 csp_dtr_hce_notify_text_3
 X
 3
@@ -1623,7 +1689,7 @@ Height
 21
 Text
 5
- 
+0
 Editable
 2
 0
@@ -1648,6 +1714,7 @@ Numeric
 16
 Name
 5
+25
 csp_dtr_hce_optical_eff_3
 X
 3
@@ -1675,10 +1742,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1706,6 +1773,7 @@ Numeric
 16
 Name
 5
+26
 csp_dtr_hce_var1_abs_abs_3
 X
 3
@@ -1733,10 +1801,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1764,6 +1832,7 @@ Numeric
 16
 Name
 5
+35
 csp_dtr_hce_var1_annulus_pressure_3
 X
 3
@@ -1791,10 +1860,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1822,6 +1891,7 @@ Numeric
 16
 Name
 5
+36
 csp_dtr_hce_var1_bellows_shadowing_3
 X
 3
@@ -1849,10 +1919,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1880,6 +1950,7 @@ CheckBox
 8
 Name
 5
+31
 csp_dtr_hce_var1_broken_glass_3
 X
 3
@@ -1895,6 +1966,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -1908,6 +1980,7 @@ Numeric
 16
 Name
 5
+26
 csp_dtr_hce_var1_env_abs_3
 X
 3
@@ -1935,10 +2008,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1966,6 +2039,7 @@ Numeric
 16
 Name
 5
+27
 csp_dtr_hce_var1_env_emis_3
 X
 3
@@ -1993,10 +2067,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2024,6 +2098,7 @@ Numeric
 16
 Name
 5
+28
 csp_dtr_hce_var1_env_trans_3
 X
 3
@@ -2051,10 +2126,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2082,6 +2157,7 @@ Numeric
 16
 Name
 5
+33
 csp_dtr_hce_var1_field_fraction_3
 X
 3
@@ -2109,10 +2185,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2140,6 +2216,7 @@ Choice
 8
 Name
 5
+27
 csp_dtr_hce_var1_gas_type_3
 X
 3
@@ -2171,6 +2248,7 @@ Numeric
 16
 Name
 5
+27
 csp_dtr_hce_var1_hce_dirt_3
 X
 3
@@ -2198,10 +2276,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2229,6 +2307,7 @@ Numeric
 16
 Name
 5
+34
 csp_dtr_hce_var1_rated_heat_loss_3
 X
 3
@@ -2256,10 +2335,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2287,6 +2366,7 @@ Numeric
 16
 Name
 5
+26
 csp_dtr_hce_var2_abs_abs_3
 X
 3
@@ -2314,10 +2394,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2345,6 +2425,7 @@ Numeric
 16
 Name
 5
+35
 csp_dtr_hce_var2_annulus_pressure_3
 X
 3
@@ -2372,10 +2453,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2403,6 +2484,7 @@ Numeric
 16
 Name
 5
+36
 csp_dtr_hce_var2_bellows_shadowing_3
 X
 3
@@ -2430,10 +2512,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2461,6 +2543,7 @@ CheckBox
 8
 Name
 5
+31
 csp_dtr_hce_var2_broken_glass_3
 X
 3
@@ -2476,6 +2559,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -2489,6 +2573,7 @@ Numeric
 16
 Name
 5
+26
 csp_dtr_hce_var2_env_abs_3
 X
 3
@@ -2516,10 +2601,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2547,6 +2632,7 @@ Numeric
 16
 Name
 5
+27
 csp_dtr_hce_var2_env_emis_3
 X
 3
@@ -2574,10 +2660,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2605,6 +2691,7 @@ Numeric
 16
 Name
 5
+28
 csp_dtr_hce_var2_env_trans_3
 X
 3
@@ -2632,10 +2719,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2663,6 +2750,7 @@ Numeric
 16
 Name
 5
+33
 csp_dtr_hce_var2_field_fraction_3
 X
 3
@@ -2690,10 +2778,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2721,6 +2809,7 @@ Choice
 8
 Name
 5
+27
 csp_dtr_hce_var2_gas_type_3
 X
 3
@@ -2752,6 +2841,7 @@ Numeric
 16
 Name
 5
+27
 csp_dtr_hce_var2_hce_dirt_3
 X
 3
@@ -2779,10 +2869,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2810,6 +2900,7 @@ Numeric
 16
 Name
 5
+34
 csp_dtr_hce_var2_rated_heat_loss_3
 X
 3
@@ -2837,10 +2928,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2868,6 +2959,7 @@ Numeric
 16
 Name
 5
+26
 csp_dtr_hce_var3_abs_abs_3
 X
 3
@@ -2895,10 +2987,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2926,6 +3018,7 @@ Numeric
 16
 Name
 5
+35
 csp_dtr_hce_var3_annulus_pressure_3
 X
 3
@@ -2953,10 +3046,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2984,6 +3077,7 @@ Numeric
 16
 Name
 5
+36
 csp_dtr_hce_var3_bellows_shadowing_3
 X
 3
@@ -3011,10 +3105,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3042,6 +3136,7 @@ CheckBox
 8
 Name
 5
+31
 csp_dtr_hce_var3_broken_glass_3
 X
 3
@@ -3057,6 +3152,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -3070,6 +3166,7 @@ Numeric
 16
 Name
 5
+26
 csp_dtr_hce_var3_env_abs_3
 X
 3
@@ -3097,10 +3194,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3128,6 +3225,7 @@ Numeric
 16
 Name
 5
+27
 csp_dtr_hce_var3_env_emis_3
 X
 3
@@ -3155,10 +3253,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3186,6 +3284,7 @@ Numeric
 16
 Name
 5
+28
 csp_dtr_hce_var3_env_trans_3
 X
 3
@@ -3213,10 +3312,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3244,6 +3343,7 @@ Numeric
 16
 Name
 5
+33
 csp_dtr_hce_var3_field_fraction_3
 X
 3
@@ -3271,10 +3371,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3302,6 +3402,7 @@ Choice
 8
 Name
 5
+27
 csp_dtr_hce_var3_gas_type_3
 X
 3
@@ -3333,6 +3434,7 @@ Numeric
 16
 Name
 5
+27
 csp_dtr_hce_var3_hce_dirt_3
 X
 3
@@ -3360,10 +3462,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3391,6 +3493,7 @@ Numeric
 16
 Name
 5
+34
 csp_dtr_hce_var3_rated_heat_loss_3
 X
 3
@@ -3418,10 +3521,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3449,6 +3552,7 @@ Numeric
 16
 Name
 5
+26
 csp_dtr_hce_var4_abs_abs_3
 X
 3
@@ -3476,10 +3580,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3507,6 +3611,7 @@ Numeric
 16
 Name
 5
+35
 csp_dtr_hce_var4_annulus_pressure_3
 X
 3
@@ -3534,10 +3639,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3565,6 +3670,7 @@ Numeric
 16
 Name
 5
+36
 csp_dtr_hce_var4_bellows_shadowing_3
 X
 3
@@ -3592,10 +3698,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3623,6 +3729,7 @@ CheckBox
 8
 Name
 5
+31
 csp_dtr_hce_var4_broken_glass_3
 X
 3
@@ -3638,6 +3745,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -3651,6 +3759,7 @@ Numeric
 16
 Name
 5
+26
 csp_dtr_hce_var4_env_abs_3
 X
 3
@@ -3678,10 +3787,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3709,6 +3818,7 @@ Numeric
 16
 Name
 5
+27
 csp_dtr_hce_var4_env_emis_3
 X
 3
@@ -3736,10 +3846,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3767,6 +3877,7 @@ Numeric
 16
 Name
 5
+28
 csp_dtr_hce_var4_env_trans_3
 X
 3
@@ -3794,10 +3905,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3825,6 +3936,7 @@ Numeric
 16
 Name
 5
+33
 csp_dtr_hce_var4_field_fraction_3
 X
 3
@@ -3852,10 +3964,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3883,6 +3995,7 @@ Choice
 8
 Name
 5
+27
 csp_dtr_hce_var4_gas_type_3
 X
 3
@@ -3914,6 +4027,7 @@ Numeric
 16
 Name
 5
+27
 csp_dtr_hce_var4_hce_dirt_3
 X
 3
@@ -3941,10 +4055,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3972,6 +4086,7 @@ Numeric
 16
 Name
 5
+34
 csp_dtr_hce_var4_rated_heat_loss_3
 X
 3
@@ -3999,10 +4114,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4030,6 +4145,7 @@ ValueMatrix
 9
 Name
 5
+12
 epsilon_3_31
 X
 3
@@ -4051,6 +4167,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3
@@ -4061,6 +4178,7 @@ ValueMatrix
 9
 Name
 5
+12
 epsilon_3_32
 X
 3
@@ -4082,6 +4200,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3
@@ -4092,6 +4211,7 @@ ValueMatrix
 9
 Name
 5
+12
 epsilon_3_33
 X
 3
@@ -4113,6 +4233,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3
@@ -4123,6 +4244,7 @@ ValueMatrix
 9
 Name
 5
+12
 epsilon_3_34
 X
 3
@@ -4144,6 +4266,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3

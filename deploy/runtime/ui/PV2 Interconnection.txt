@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+7
 ac_loss
 X
 3
@@ -35,10 +36,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -66,6 +67,7 @@ LossAdjustment
 6
 Name
 5
+6
 adjust
 X
 3
@@ -88,6 +90,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -115,10 +118,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -146,6 +149,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -161,6 +165,7 @@ Height
 69
 Caption
 5
+9
 AC wiring
 Bold
 2
@@ -171,6 +176,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -186,6 +192,7 @@ Height
 69
 Caption
 5
+9
 AC wiring
 Bold
 2
@@ -196,6 +203,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -211,6 +219,7 @@ Height
 69
 Caption
 5
+9
 AC wiring
 Bold
 2
@@ -221,6 +230,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -236,6 +246,7 @@ Height
 24
 Caption
 5
+1
 %
 TextColour
 4
@@ -264,6 +275,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -279,6 +291,7 @@ Height
 24
 Caption
 5
+1
 %
 TextColour
 4
@@ -307,6 +320,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -322,6 +336,7 @@ Height
 24
 Caption
 5
+1
 %
 TextColour
 4
@@ -350,6 +365,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -365,6 +381,7 @@ Height
 24
 Caption
 5
+1
 %
 TextColour
 4
@@ -393,6 +410,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -408,6 +426,7 @@ Height
 24
 Caption
 5
+1
 %
 TextColour
 4
@@ -436,6 +455,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -451,6 +471,7 @@ Height
 24
 Caption
 5
+1
 %
 TextColour
 4
@@ -479,6 +500,7 @@ Numeric
 16
 Name
 5
+16
 transformer_loss
 X
 3
@@ -506,10 +528,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

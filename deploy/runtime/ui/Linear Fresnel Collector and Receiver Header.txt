@@ -8,6 +8,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -23,6 +24,7 @@ Height
 24
 Caption
 5
+25
 Linear Fresnel Geometries
 TextColour
 4

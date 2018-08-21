@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 170
 Caption
 5
+17
 System Parameters
 Bold
 2
@@ -33,6 +35,7 @@ Numeric
 16
 Name
 5
+12
 ac_nameplate
 X
 3
@@ -60,10 +63,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -91,6 +94,7 @@ LossAdjustment
 6
 Name
 5
+6
 adjust
 X
 3
@@ -113,6 +117,7 @@ Choice
 8
 Name
 5
+10
 array_type
 X
 3
@@ -146,6 +151,7 @@ Numeric
 16
 Name
 5
+7
 azimuth
 X
 3
@@ -173,10 +179,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -204,6 +210,7 @@ Numeric
 16
 Name
 5
+11
 dc_ac_ratio
 X
 3
@@ -231,10 +238,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -262,6 +269,7 @@ Button
 7
 Name
 5
+13
 edit_3d_scene
 X
 3
@@ -277,6 +285,7 @@ Height
 24
 Caption
 5
+27
 Open 3D shade calculator...
 TabOrder
 3
@@ -287,6 +296,7 @@ CheckBox
 8
 Name
 5
+19
 en_user_spec_losses
 X
 3
@@ -302,7 +312,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -315,6 +325,7 @@ Numeric
 16
 Name
 5
+3
 gcr
 X
 3
@@ -342,10 +353,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -373,6 +384,7 @@ Numeric
 16
 Name
 5
+7
 inv_eff
 X
 3
@@ -400,10 +412,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -431,6 +443,7 @@ Numeric
 16
 Name
 5
+8
 loss_age
 X
 3
@@ -458,10 +471,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -489,6 +502,7 @@ Numeric
 16
 Name
 5
+10
 loss_avail
 X
 3
@@ -516,10 +530,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -547,6 +561,7 @@ Numeric
 16
 Name
 5
+9
 loss_conn
 X
 3
@@ -574,10 +589,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -605,6 +620,7 @@ Numeric
 16
 Name
 5
+8
 loss_lid
 X
 3
@@ -632,10 +648,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -663,6 +679,7 @@ Numeric
 16
 Name
 5
+13
 loss_mismatch
 X
 3
@@ -690,10 +707,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -721,6 +738,7 @@ Numeric
 16
 Name
 5
+14
 loss_nameplate
 X
 3
@@ -748,10 +766,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -779,6 +797,7 @@ Numeric
 16
 Name
 5
+12
 loss_shading
 X
 3
@@ -806,10 +825,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -837,6 +856,7 @@ Numeric
 16
 Name
 5
+9
 loss_snow
 X
 3
@@ -864,10 +884,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -895,6 +915,7 @@ Numeric
 16
 Name
 5
+12
 loss_soiling
 X
 3
@@ -922,10 +943,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -953,6 +974,7 @@ Numeric
 16
 Name
 5
+11
 loss_wiring
 X
 3
@@ -980,10 +1002,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1011,6 +1033,7 @@ Numeric
 16
 Name
 5
+6
 losses
 X
 3
@@ -1038,10 +1061,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1069,6 +1092,7 @@ Numeric
 16
 Name
 5
+11
 losses_user
 X
 3
@@ -1096,10 +1120,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1127,6 +1151,7 @@ Choice
 8
 Name
 5
+11
 module_type
 X
 3
@@ -1158,6 +1183,7 @@ Image
 7
 Name
 5
+9
 object 12
 X
 3
@@ -1173,7 +1199,7 @@ Height
 102
 Image
 7
-C:\Projects\GitHub\NREL\ui_as_text\SAM\deploy\runtime\/ui/PVWatts_object 12.png
+C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/PVWatts_object 12.png
 Centered
 2
 1
@@ -1183,6 +1209,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -1207,6 +1234,7 @@ Colour
 255
 Caption
 5
+28
 Curtailment and Availability
 Bold
 2
@@ -1217,6 +1245,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -1241,6 +1270,7 @@ Colour
 255
 Caption
 5
+28
 Curtailment and Availability
 Bold
 2
@@ -1251,6 +1281,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1266,6 +1297,7 @@ Height
 423
 Caption
 5
+6
 Losses
 Bold
 2
@@ -1276,6 +1308,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1291,6 +1324,7 @@ Height
 423
 Caption
 5
+6
 Losses
 Bold
 2
@@ -1301,6 +1335,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1316,6 +1351,7 @@ Height
 84
 Caption
 5
+105
 Curtailment and availability losses reduce the system output to represent system outages or other events.
 TextColour
 4
@@ -1344,6 +1380,7 @@ ShadingFactors
 8
 Name
 5
+7
 shading
 X
 3
@@ -1362,7 +1399,7 @@ ShowDBOptions
 0
 Description
 5
- 
+0
 TabOrder
 3
 23
@@ -1372,6 +1409,7 @@ Numeric
 16
 Name
 5
+15
 system_capacity
 X
 3
@@ -1399,10 +1437,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1430,6 +1468,7 @@ Numeric
 16
 Name
 5
+4
 tilt
 X
 3
@@ -1457,10 +1496,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

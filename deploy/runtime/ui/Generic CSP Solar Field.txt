@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 413
 Caption
 5
+35
 Solar Field Optical Efficiency Data
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 194
 Caption
 5
+23
 Design Point Parameters
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 287
 Caption
 5
+18
 Efficiency Derates
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -98,6 +105,7 @@ Height
 209
 Caption
 5
+26
 Generalized Thermal Losses
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox5
 X
 3
@@ -123,6 +132,7 @@ Height
 92
 Caption
 5
+9
 Land Area
 Bold
 2
@@ -133,6 +143,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -148,6 +159,7 @@ Height
 84
 Caption
 5
+328
 Notes: Optical performance is defined in a table of efficiencies at various azimuth/zenith angles.  The first row in the table specifies the azimuth angles, and the first column specifies the zenith angle.  The first cell (0,0) is unused.  Angles are specified in degrees, and the corresponding efficiencies in fraction (0...1).
 TextColour
 4
@@ -176,6 +188,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -191,6 +204,7 @@ Height
 21
 Caption
 5
+35
 Irradiation thermal loss adjustment
 TextColour
 4
@@ -219,6 +233,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -234,6 +249,7 @@ Height
 21
 Caption
 5
+37
 Ambient temp. thermal loss adjustment
 TextColour
 4
@@ -262,6 +278,7 @@ Label
 12
 Name
 5
+8
 Label211
 X
 3
@@ -277,6 +294,7 @@ Height
 21
 Caption
 5
+34
 Wind speed thermal loss adjustment
 TextColour
 4
@@ -305,6 +323,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -320,6 +339,7 @@ Height
 21
 Caption
 5
+2
 F0
 TextColour
 4
@@ -348,6 +368,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -363,6 +384,7 @@ Height
 21
 Caption
 5
+2
 F1
 TextColour
 4
@@ -391,6 +413,7 @@ Label
 12
 Name
 5
+8
 Label311
 X
 3
@@ -406,6 +429,7 @@ Height
 21
 Caption
 5
+2
 F2
 TextColour
 4
@@ -434,6 +458,7 @@ Label
 12
 Name
 5
+9
 Label3111
 X
 3
@@ -449,6 +474,7 @@ Height
 21
 Caption
 5
+2
 F3
 TextColour
 4
@@ -477,6 +503,7 @@ DataMatrix
 22
 Name
 5
+12
 OpticalTable
 X
 3
@@ -504,7 +531,7 @@ ShowRowLabels
 0
 RowLabels
 5
- 
+0
 ShadeR0C0
 2
 1
@@ -519,11 +546,13 @@ ShowColLabels
 0
 ColLabels
 5
- 
+0
 NumRowsLabel
+5
 5
 Rows:
 NumColsLabel
+5
 5
 Cols:
 Layout
@@ -534,6 +563,7 @@ ChoiceColumn
 4294967295
 Choices
 5
+15
 Choice1,Choice2
 HideColumn
 3
@@ -547,6 +577,7 @@ Numeric
 16
 Name
 5
+7
 T_sfdes
 X
 3
@@ -574,10 +605,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -605,6 +636,7 @@ Numeric
 16
 Name
 5
+23
 csp.gss.sf.ambt_loss_f0
 X
 3
@@ -632,10 +664,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -663,6 +695,7 @@ Numeric
 16
 Name
 5
+23
 csp.gss.sf.ambt_loss_f1
 X
 3
@@ -690,10 +723,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -721,6 +754,7 @@ Numeric
 16
 Name
 5
+23
 csp.gss.sf.ambt_loss_f2
 X
 3
@@ -748,10 +782,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -779,6 +813,7 @@ Numeric
 16
 Name
 5
+23
 csp.gss.sf.ambt_loss_f3
 X
 3
@@ -806,10 +841,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -837,6 +872,7 @@ Numeric
 16
 Name
 5
+30
 csp.gss.sf.design_thermal_loss
 X
 3
@@ -864,10 +900,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -895,6 +931,7 @@ Numeric
 16
 Name
 5
+21
 csp.gss.sf.field_area
 X
 3
@@ -922,10 +959,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -953,6 +990,7 @@ Numeric
 16
 Name
 5
+22
 csp.gss.sf.irr_loss_f0
 X
 3
@@ -980,10 +1018,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1011,6 +1049,7 @@ Numeric
 16
 Name
 5
+22
 csp.gss.sf.irr_loss_f1
 X
 3
@@ -1038,10 +1077,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1069,6 +1108,7 @@ Numeric
 16
 Name
 5
+22
 csp.gss.sf.irr_loss_f2
 X
 3
@@ -1096,10 +1136,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1127,6 +1167,7 @@ Numeric
 16
 Name
 5
+22
 csp.gss.sf.irr_loss_f3
 X
 3
@@ -1154,10 +1195,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1185,6 +1226,7 @@ Numeric
 16
 Name
 5
+23
 csp.gss.sf.peak_opt_eff
 X
 3
@@ -1212,10 +1254,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1243,6 +1285,7 @@ Choice
 8
 Name
 5
+19
 csp.gss.sf.rad_type
 X
 3
@@ -1274,6 +1317,7 @@ Numeric
 16
 Name
 5
+24
 csp.gss.sf.total_opt_eff
 X
 3
@@ -1301,10 +1345,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1332,6 +1376,7 @@ Numeric
 16
 Name
 5
+23
 csp.gss.sf.wspd_loss_f0
 X
 3
@@ -1359,10 +1404,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1390,6 +1435,7 @@ Numeric
 16
 Name
 5
+23
 csp.gss.sf.wspd_loss_f1
 X
 3
@@ -1417,10 +1463,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1448,6 +1494,7 @@ Numeric
 16
 Name
 5
+23
 csp.gss.sf.wspd_loss_f2
 X
 3
@@ -1475,10 +1522,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1506,6 +1553,7 @@ Numeric
 16
 Name
 5
+23
 csp.gss.sf.wspd_loss_f3
 X
 3
@@ -1533,10 +1581,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1564,6 +1612,7 @@ Numeric
 16
 Name
 5
+28
 csp.gss.solf.fixed_land_area
 X
 3
@@ -1591,10 +1640,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1622,6 +1671,7 @@ Numeric
 16
 Name
 5
+33
 csp.gss.solf.land_overhead_factor
 X
 3
@@ -1649,10 +1699,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1680,6 +1730,7 @@ Numeric
 16
 Name
 5
+28
 csp.gss.solf.total_land_area
 X
 3
@@ -1707,10 +1758,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1738,6 +1789,7 @@ Numeric
 16
 Name
 5
+11
 eta_opt_gen
 X
 3
@@ -1765,10 +1817,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1796,6 +1848,7 @@ Numeric
 16
 Name
 5
+12
 eta_opt_soil
 X
 3
@@ -1823,10 +1876,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1854,6 +1907,7 @@ Numeric
 16
 Name
 5
+14
 f_dni_loss_des
 X
 3
@@ -1881,10 +1935,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1912,6 +1966,7 @@ Numeric
 16
 Name
 5
+14
 f_loss_tot_des
 X
 3
@@ -1939,10 +1994,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1970,6 +2025,7 @@ Numeric
 16
 Name
 5
+10
 f_sfhl_ref
 X
 3
@@ -1997,10 +2053,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2028,6 +2084,7 @@ Numeric
 16
 Name
 5
+16
 f_t_amb_loss_des
 X
 3
@@ -2055,10 +2112,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2086,6 +2143,7 @@ Numeric
 16
 Name
 5
+17
 f_v_wind_loss_des
 X
 3
@@ -2113,10 +2171,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2144,6 +2202,7 @@ CheckBox
 8
 Name
 5
+10
 interp_arr
 X
 3
@@ -2159,6 +2218,7 @@ Height
 21
 Caption
 5
+17
 Interpolate table
 State
 2
@@ -2172,6 +2232,7 @@ Numeric
 16
 Name
 5
+7
 irr_des
 X
 3
@@ -2199,10 +2260,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2230,6 +2291,7 @@ CheckBox
 8
 Name
 5
+15
 istableunsorted
 X
 3
@@ -2245,6 +2307,7 @@ Height
 24
 Caption
 5
+24
 Unsorted data table mode
 State
 2
@@ -2258,6 +2321,7 @@ Label
 12
 Name
 5
+14
 loss_des_label
 X
 3
@@ -2273,6 +2337,7 @@ Height
 21
 Caption
 5
+6
 Design
 TextColour
 4
@@ -2301,6 +2366,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -2325,7 +2391,7 @@ Colour
 255
 Caption
 5
- 
+0
 Bold
 2
 1
@@ -2335,6 +2401,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -2350,6 +2417,7 @@ Height
 150
 Caption
 5
+40
 Solar Field Availability and Curtailment
 Bold
 2
@@ -2360,6 +2428,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2375,6 +2444,7 @@ Height
 62
 Caption
 5
+123
 Curtailment and availability losses reduce the solar field output to represent component outages, soiling, or other events.
 TextColour
 4
@@ -2403,6 +2473,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2418,6 +2489,7 @@ Height
 62
 Caption
 5
+123
 Curtailment and availability losses reduce the solar field output to represent component outages, soiling, or other events.
 TextColour
 4
@@ -2446,6 +2518,7 @@ Numeric
 16
 Name
 5
+7
 qsf_des
 X
 3
@@ -2473,10 +2546,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2504,6 +2577,7 @@ LossAdjustment
 6
 Name
 5
+9
 sf_adjust
 X
 3
@@ -2526,6 +2600,7 @@ Numeric
 16
 Name
 5
+6
 solarm
 X
 3
@@ -2553,10 +2628,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2584,6 +2659,7 @@ Numeric
 16
 Name
 5
+9
 theta_dep
 X
 3
@@ -2611,10 +2687,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2642,6 +2718,7 @@ Numeric
 16
 Name
 5
+10
 theta_stow
 X
 3
@@ -2669,10 +2746,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

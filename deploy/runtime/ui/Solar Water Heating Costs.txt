@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 191
 Caption
 5
+22
 Indirect Capital Costs
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox21
 X
 3
@@ -48,6 +51,7 @@ Height
 197
 Caption
 5
+20
 Direct Capital Costs
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 89
 Caption
 5
+21
 Total Installed Costs
 Bold
 2
@@ -83,6 +89,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -98,6 +105,7 @@ Height
 21
 Caption
 5
+16
 % of Direct Cost
 TextColour
 4
@@ -126,6 +134,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -141,6 +150,7 @@ Height
 21
 Caption
 5
+14
 of direct cost
 TextColour
 4
@@ -169,6 +179,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -184,6 +195,7 @@ Height
 21
 Caption
 5
+14
 Non-fixed Cost
 TextColour
 4
@@ -212,6 +224,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -227,6 +240,7 @@ Height
 21
 Caption
 5
+10
 Fixed Cost
 TextColour
 4
@@ -255,6 +269,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -269,6 +284,7 @@ Height
 3
 21
 Caption
+5
 5
 Total
 TextColour
@@ -298,6 +314,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -313,6 +330,7 @@ Height
 21
 Caption
 5
+10
 applies to
 TextColour
 4
@@ -341,6 +359,7 @@ Numeric
 16
 Name
 5
+3
 bos
 X
 3
@@ -368,10 +387,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -399,6 +419,7 @@ Numeric
 16
 Name
 5
+9
 collector
 X
 3
@@ -426,10 +447,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -457,6 +479,7 @@ Choice
 8
 Name
 5
+20
 collector_cost_units
 X
 3
@@ -488,6 +511,7 @@ Numeric
 16
 Name
 5
+11
 contingency
 X
 3
@@ -515,10 +539,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -546,6 +571,7 @@ Numeric
 16
 Name
 5
+19
 contingency_percent
 X
 3
@@ -573,9 +599,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -604,6 +631,7 @@ Numeric
 16
 Name
 5
+9
 epc_fixed
 X
 3
@@ -631,10 +659,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -662,6 +691,7 @@ Numeric
 16
 Name
 5
+12
 epc_nonfixed
 X
 3
@@ -689,10 +719,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -720,6 +751,7 @@ Numeric
 16
 Name
 5
+11
 epc_percent
 X
 3
@@ -747,9 +779,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -778,6 +811,7 @@ Numeric
 16
 Name
 5
+9
 epc_total
 X
 3
@@ -805,10 +839,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -836,6 +871,7 @@ Numeric
 16
 Name
 5
+12
 installation
 X
 3
@@ -863,10 +899,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -894,6 +931,7 @@ Numeric
 16
 Name
 5
+22
 installed_per_capacity
 X
 3
@@ -921,10 +959,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -952,6 +991,7 @@ Label
 12
 Name
 5
+16
 lblFinancingCost
 X
 3
@@ -967,6 +1007,7 @@ Height
 66
 Caption
 5
+74
 Total Installed Cost excludes financing costs (if any, see Financing Page)
 TextColour
 4
@@ -995,6 +1036,7 @@ Numeric
 16
 Name
 5
+14
 num_collectors
 X
 3
@@ -1022,10 +1064,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1053,6 +1095,7 @@ Numeric
 16
 Name
 5
+13
 per_collector
 X
 3
@@ -1080,10 +1123,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1111,6 +1154,7 @@ Numeric
 16
 Name
 5
+11
 per_storage
 X
 3
@@ -1138,10 +1182,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1169,6 +1213,7 @@ Numeric
 16
 Name
 5
+9
 plm_fixed
 X
 3
@@ -1196,10 +1241,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1227,6 +1273,7 @@ Numeric
 16
 Name
 5
+12
 plm_nonfixed
 X
 3
@@ -1254,10 +1301,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1285,6 +1333,7 @@ Numeric
 16
 Name
 5
+11
 plm_percent
 X
 3
@@ -1312,9 +1361,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1343,6 +1393,7 @@ Numeric
 16
 Name
 5
+9
 plm_total
 X
 3
@@ -1370,10 +1421,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1401,6 +1453,7 @@ Numeric
 16
 Name
 5
+17
 sales_tax_percent
 X
 3
@@ -1428,9 +1481,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1459,6 +1513,7 @@ Numeric
 16
 Name
 5
+15
 sales_tax_total
 X
 3
@@ -1486,10 +1541,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1517,6 +1573,7 @@ Numeric
 16
 Name
 5
+15
 sales_tax_value
 X
 3
@@ -1544,9 +1601,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1575,6 +1633,7 @@ Numeric
 16
 Name
 5
+7
 storage
 X
 3
@@ -1602,10 +1661,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1633,6 +1693,7 @@ Choice
 8
 Name
 5
+18
 storage_cost_units
 X
 3
@@ -1663,6 +1724,7 @@ Numeric
 16
 Name
 5
+12
 total_direct
 X
 3
@@ -1690,10 +1752,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1721,6 +1784,7 @@ Numeric
 16
 Name
 5
+14
 total_indirect
 X
 3
@@ -1748,10 +1812,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1779,6 +1844,7 @@ Numeric
 16
 Name
 5
+20
 total_installed_cost
 X
 3
@@ -1806,10 +1872,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

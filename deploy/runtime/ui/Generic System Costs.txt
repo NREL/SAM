@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox11
 X
 3
@@ -23,6 +24,7 @@ Height
 149
 Caption
 5
+20
 Direct Capital Costs
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+11
 GroupBox211
 X
 3
@@ -48,6 +51,7 @@ Height
 191
 Caption
 5
+22
 Indirect Capital Costs
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+11
 GroupBox311
 X
 3
@@ -73,6 +78,7 @@ Height
 89
 Caption
 5
+21
 Total Installed Costs
 Bold
 2
@@ -83,6 +89,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -98,6 +105,7 @@ Height
 21
 Caption
 5
+1
 $
 TextColour
 4
@@ -126,6 +134,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -141,6 +150,7 @@ Height
 21
 Caption
 5
+1
 $
 TextColour
 4
@@ -169,6 +179,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -184,6 +195,7 @@ Height
 21
 Caption
 5
+1
 $
 TextColour
 4
@@ -212,6 +224,7 @@ Numeric
 16
 Name
 5
+17
 fixed_plant_input
 X
 3
@@ -239,10 +252,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -270,6 +283,7 @@ Numeric
 16
 Name
 5
+27
 genericsys.cost.contingency
 X
 3
@@ -297,10 +311,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -328,6 +343,7 @@ Numeric
 16
 Name
 5
+35
 genericsys.cost.contingency_percent
 X
 3
@@ -355,10 +371,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -386,6 +402,7 @@ Numeric
 16
 Name
 5
+25
 genericsys.cost.epc.fixed
 X
 3
@@ -413,10 +430,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -444,6 +462,7 @@ Numeric
 16
 Name
 5
+28
 genericsys.cost.epc.nonfixed
 X
 3
@@ -471,10 +490,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -502,6 +521,7 @@ Numeric
 16
 Name
 5
+27
 genericsys.cost.epc.percent
 X
 3
@@ -529,9 +549,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -560,6 +581,7 @@ Numeric
 16
 Name
 5
+25
 genericsys.cost.epc.total
 X
 3
@@ -587,10 +609,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -618,6 +641,7 @@ Numeric
 16
 Name
 5
+38
 genericsys.cost.installed_per_capacity
 X
 3
@@ -645,9 +669,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
+2
 /W
 ThousandsSep
 2
@@ -676,6 +702,7 @@ Numeric
 16
 Name
 5
+24
 genericsys.cost.per_watt
 X
 3
@@ -703,10 +730,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -734,6 +761,7 @@ Numeric
 16
 Name
 5
+21
 genericsys.cost.plant
 X
 3
@@ -761,10 +789,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -792,6 +821,7 @@ Numeric
 16
 Name
 5
+28
 genericsys.cost.plant_scaled
 X
 3
@@ -819,10 +849,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -850,6 +881,7 @@ Numeric
 16
 Name
 5
+25
 genericsys.cost.plm.fixed
 X
 3
@@ -877,10 +909,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -908,6 +941,7 @@ Numeric
 16
 Name
 5
+28
 genericsys.cost.plm.nonfixed
 X
 3
@@ -935,10 +969,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -966,6 +1000,7 @@ Numeric
 16
 Name
 5
+27
 genericsys.cost.plm.percent
 X
 3
@@ -993,9 +1028,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1024,6 +1060,7 @@ Numeric
 16
 Name
 5
+25
 genericsys.cost.plm.total
 X
 3
@@ -1051,10 +1088,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1082,6 +1120,7 @@ Numeric
 16
 Name
 5
+33
 genericsys.cost.sales_tax.percent
 X
 3
@@ -1109,10 +1148,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1140,6 +1179,7 @@ Numeric
 16
 Name
 5
+31
 genericsys.cost.sales_tax.total
 X
 3
@@ -1167,10 +1207,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1198,6 +1239,7 @@ Numeric
 16
 Name
 5
+31
 genericsys.cost.sales_tax.value
 X
 3
@@ -1225,10 +1267,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1256,6 +1298,7 @@ Label
 12
 Name
 5
+16
 lblFinancingCost
 X
 3
@@ -1271,6 +1314,7 @@ Height
 45
 Caption
 5
+85
 Total Installed Cost excludes financing costs (if any, see Financial Parameters Page)
 TextColour
 4
@@ -1299,6 +1343,7 @@ Numeric
 16
 Name
 5
+18
 nameplate_capacity
 X
 3
@@ -1326,10 +1371,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1357,6 +1402,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -1381,6 +1427,7 @@ Colour
 255
 Caption
 5
+9
 Sales Tax
 Bold
 2
@@ -1391,6 +1438,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -1415,6 +1463,7 @@ Colour
 255
 Caption
 5
+9
 Sales Tax
 Bold
 2
@@ -1425,6 +1474,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -1449,6 +1499,7 @@ Colour
 255
 Caption
 5
+9
 Sales Tax
 Bold
 2
@@ -1459,6 +1510,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1474,6 +1526,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1502,6 +1555,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1517,6 +1571,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1545,6 +1600,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1560,6 +1616,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1588,6 +1645,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1603,6 +1661,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1631,6 +1690,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1646,6 +1706,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1674,6 +1735,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1689,6 +1751,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1717,6 +1780,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1732,6 +1796,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1760,6 +1825,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1775,6 +1841,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1803,6 +1870,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1818,6 +1886,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1846,6 +1915,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1861,6 +1931,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1889,6 +1960,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1904,6 +1976,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1932,6 +2005,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1947,6 +2021,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -1975,6 +2050,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1990,6 +2066,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -2018,6 +2095,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2033,6 +2111,7 @@ Height
 21
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -2061,6 +2140,7 @@ Numeric
 16
 Name
 5
+17
 total_direct_cost
 X
 3
@@ -2088,10 +2168,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2119,6 +2200,7 @@ Numeric
 16
 Name
 5
+19
 total_indirect_cost
 X
 3
@@ -2146,10 +2228,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2177,6 +2260,7 @@ Numeric
 16
 Name
 5
+20
 total_installed_cost
 X
 3
@@ -2204,10 +2288,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

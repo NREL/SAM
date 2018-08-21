@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 554
 Caption
 5
+18
 Electric Load Data
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -48,6 +51,7 @@ Height
 21
 Caption
 5
+3
 Jan
 TextColour
 4
@@ -76,6 +80,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -91,6 +96,7 @@ Height
 21
 Caption
 5
+3
 Feb
 TextColour
 4
@@ -119,6 +125,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -134,6 +141,7 @@ Height
 21
 Caption
 5
+3
 Mar
 TextColour
 4
@@ -162,6 +170,7 @@ Label
 12
 Name
 5
+9
 Label1111
 X
 3
@@ -177,6 +186,7 @@ Height
 21
 Caption
 5
+3
 Apr
 TextColour
 4
@@ -205,6 +215,7 @@ Label
 12
 Name
 5
+10
 Label11111
 X
 3
@@ -220,6 +231,7 @@ Height
 21
 Caption
 5
+3
 May
 TextColour
 4
@@ -248,6 +260,7 @@ Label
 12
 Name
 5
+11
 Label111111
 X
 3
@@ -263,6 +276,7 @@ Height
 21
 Caption
 5
+3
 Jun
 TextColour
 4
@@ -291,6 +305,7 @@ Label
 12
 Name
 5
+12
 Label1111111
 X
 3
@@ -306,6 +321,7 @@ Height
 21
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -334,6 +350,7 @@ Label
 12
 Name
 5
+13
 Label11111111
 X
 3
@@ -349,6 +366,7 @@ Height
 21
 Caption
 5
+3
 Aug
 TextColour
 4
@@ -377,6 +395,7 @@ Label
 12
 Name
 5
+14
 Label111111111
 X
 3
@@ -392,6 +411,7 @@ Height
 21
 Caption
 5
+3
 Sep
 TextColour
 4
@@ -420,6 +440,7 @@ Label
 12
 Name
 5
+15
 Label1111111111
 X
 3
@@ -435,6 +456,7 @@ Height
 21
 Caption
 5
+3
 Oct
 TextColour
 4
@@ -463,6 +485,7 @@ Label
 12
 Name
 5
+16
 Label11111111111
 X
 3
@@ -478,6 +501,7 @@ Height
 21
 Caption
 5
+3
 Nov
 TextColour
 4
@@ -506,6 +530,7 @@ Label
 12
 Name
 5
+17
 Label111111111111
 X
 3
@@ -521,6 +546,7 @@ Height
 21
 Caption
 5
+6
 Annual
 TextColour
 4
@@ -549,6 +575,7 @@ Label
 12
 Name
 5
+17
 Label111111111111
 X
 3
@@ -564,6 +591,7 @@ Height
 21
 Caption
 5
+6
 Annual
 TextColour
 4
@@ -592,6 +620,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -607,6 +636,7 @@ Height
 21
 Caption
 5
+12
 Energy (kWh)
 TextColour
 4
@@ -635,6 +665,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -650,6 +681,7 @@ Height
 21
 Caption
 5
+9
 Peak (kW)
 TextColour
 4
@@ -678,6 +710,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -693,6 +726,7 @@ Height
 154
 Caption
 5
+187
 In Value mode, the growth rate applies to the previous year's annual kWh load starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 kWh value. See Help for details.
 TextColour
 4
@@ -721,6 +755,7 @@ Numeric
 16
 Name
 5
+11
 annual_peak
 X
 3
@@ -748,10 +783,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -779,6 +814,7 @@ Numeric
 16
 Name
 5
+8
 energy_1
 X
 3
@@ -806,10 +842,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -837,6 +873,7 @@ Numeric
 16
 Name
 5
+9
 energy_10
 X
 3
@@ -864,10 +901,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -895,6 +932,7 @@ Numeric
 16
 Name
 5
+9
 energy_11
 X
 3
@@ -922,10 +960,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -953,6 +991,7 @@ Numeric
 16
 Name
 5
+9
 energy_12
 X
 3
@@ -980,10 +1019,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1011,6 +1050,7 @@ Numeric
 16
 Name
 5
+8
 energy_2
 X
 3
@@ -1038,10 +1078,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1069,6 +1109,7 @@ Numeric
 16
 Name
 5
+8
 energy_3
 X
 3
@@ -1096,10 +1137,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1127,6 +1168,7 @@ Numeric
 16
 Name
 5
+8
 energy_4
 X
 3
@@ -1154,10 +1196,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1185,6 +1227,7 @@ Numeric
 16
 Name
 5
+8
 energy_5
 X
 3
@@ -1212,10 +1255,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1243,6 +1286,7 @@ Numeric
 16
 Name
 5
+8
 energy_6
 X
 3
@@ -1270,10 +1314,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1301,6 +1345,7 @@ Numeric
 16
 Name
 5
+8
 energy_7
 X
 3
@@ -1328,10 +1373,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1359,6 +1404,7 @@ Numeric
 16
 Name
 5
+8
 energy_8
 X
 3
@@ -1386,10 +1432,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1417,6 +1463,7 @@ Numeric
 16
 Name
 5
+8
 energy_9
 X
 3
@@ -1444,10 +1491,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1475,6 +1522,7 @@ SchedNumeric
 11
 Name
 5
+18
 escal_input_hourly
 X
 3
@@ -1490,6 +1538,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -1502,6 +1551,7 @@ FixedLength
 4294967295
 Description
 5
+110
 Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
 TabOrder
 3
@@ -1512,6 +1562,7 @@ Numeric
 16
 Name
 5
+17
 load_annual_total
 X
 3
@@ -1539,10 +1590,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1570,6 +1621,7 @@ DataArray
 9
 Name
 5
+14
 load_user_data
 X
 3
@@ -1588,9 +1640,11 @@ Mode
 1
 Label
 5
+15
 Load power (kW)
 Description
 5
+164
 The electric load is specified as the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour, in kWh.
 TabOrder
 3
@@ -1601,6 +1655,7 @@ CheckBox
 8
 Name
 5
+25
 normalize_to_utility_bill
 X
 3
@@ -1616,6 +1671,7 @@ Height
 24
 Caption
 5
+60
 Normalize supplied load profile to monthly utility bill data
 State
 2
@@ -1629,6 +1685,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -1653,6 +1710,7 @@ Colour
 255
 Caption
 5
+20
 Monthly Load Summary
 Bold
 2
@@ -1663,6 +1721,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -1687,6 +1746,7 @@ Colour
 255
 Caption
 5
+20
 Monthly Load Summary
 Bold
 2
@@ -1697,6 +1757,7 @@ Numeric
 16
 Name
 5
+6
 peak_1
 X
 3
@@ -1724,10 +1785,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1755,6 +1816,7 @@ Numeric
 16
 Name
 5
+7
 peak_10
 X
 3
@@ -1782,10 +1844,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1813,6 +1875,7 @@ Numeric
 16
 Name
 5
+7
 peak_11
 X
 3
@@ -1840,10 +1903,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1871,6 +1934,7 @@ Numeric
 16
 Name
 5
+7
 peak_12
 X
 3
@@ -1898,10 +1962,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1929,6 +1993,7 @@ Numeric
 16
 Name
 5
+6
 peak_2
 X
 3
@@ -1956,10 +2021,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1987,6 +2052,7 @@ Numeric
 16
 Name
 5
+6
 peak_3
 X
 3
@@ -2014,10 +2080,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2045,6 +2111,7 @@ Numeric
 16
 Name
 5
+6
 peak_4
 X
 3
@@ -2072,10 +2139,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2103,6 +2170,7 @@ Numeric
 16
 Name
 5
+6
 peak_5
 X
 3
@@ -2130,10 +2198,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2161,6 +2229,7 @@ Numeric
 16
 Name
 5
+6
 peak_6
 X
 3
@@ -2188,10 +2257,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2219,6 +2288,7 @@ Numeric
 16
 Name
 5
+6
 peak_7
 X
 3
@@ -2246,10 +2316,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2277,6 +2347,7 @@ Numeric
 16
 Name
 5
+6
 peak_8
 X
 3
@@ -2304,10 +2375,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2335,6 +2406,7 @@ Numeric
 16
 Name
 5
+6
 peak_9
 X
 3
@@ -2362,10 +2434,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2393,6 +2465,7 @@ Numeric
 16
 Name
 5
+12
 scale_factor
 X
 3
@@ -2420,10 +2493,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2451,6 +2524,7 @@ MonthlyFactor
 7
 Name
 5
+17
 utility_bill_data
 X
 3
@@ -2466,6 +2540,7 @@ Height
 24
 Description
 5
+26
 Monthly energy usage (kWh)
 TabOrder
 3
@@ -2476,6 +2551,7 @@ Button
 7
 Name
 5
+19
 visualize_load_data
 X
 3
@@ -2491,6 +2567,7 @@ Height
 24
 Caption
 5
+17
 View load data...
 TabOrder
 3

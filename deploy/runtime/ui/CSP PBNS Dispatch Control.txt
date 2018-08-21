@@ -8,7 +8,7 @@ Label
 12
 Name
 5
- 
+0
 X
 3
 36
@@ -23,6 +23,7 @@ Height
 63
 Caption
 5
+104
 Use the weekday and schedule matrices to specify the month and hour of day for each of the nine periods.
 TextColour
 4
@@ -51,7 +52,7 @@ Label
 12
 Name
 5
- 
+0
 X
 3
 36
@@ -66,6 +67,7 @@ Height
 63
 Caption
 5
+104
 Use the weekday and schedule matrices to specify the month and hour of day for each of the nine periods.
 TextColour
 4
@@ -94,6 +96,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -109,6 +112,7 @@ Height
 644
 Caption
 5
+16
 Dispatch Control
 Bold
 2
@@ -119,6 +123,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -134,6 +139,7 @@ Height
 305
 Caption
 5
+16
 Weekday Schedule
 Bold
 2
@@ -144,6 +150,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -159,6 +166,7 @@ Height
 305
 Caption
 5
+16
 Weekend Schedule
 Bold
 2
@@ -169,6 +177,7 @@ Label
 12
 Name
 5
+7
 Label10
 X
 3
@@ -184,6 +193,7 @@ Height
 21
 Caption
 5
+9
 Period 3:
 TextColour
 4
@@ -212,6 +222,7 @@ Label
 12
 Name
 5
+8
 Label101
 X
 3
@@ -227,6 +238,7 @@ Height
 21
 Caption
 5
+9
 Period 7:
 TextColour
 4
@@ -255,6 +267,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -270,6 +283,7 @@ Height
 21
 Caption
 5
+9
 Period 4:
 TextColour
 4
@@ -298,6 +312,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -313,6 +328,7 @@ Height
 21
 Caption
 5
+9
 Period 8:
 TextColour
 4
@@ -341,6 +357,7 @@ Label
 12
 Name
 5
+7
 Label12
 X
 3
@@ -356,6 +373,7 @@ Height
 21
 Caption
 5
+9
 Period 5:
 TextColour
 4
@@ -384,6 +402,7 @@ Label
 12
 Name
 5
+8
 Label121
 X
 3
@@ -399,6 +418,7 @@ Height
 21
 Caption
 5
+9
 Period 9:
 TextColour
 4
@@ -427,6 +447,7 @@ Label
 12
 Name
 5
+7
 Label13
 X
 3
@@ -442,6 +463,7 @@ Height
 21
 Caption
 5
+9
 Period 6:
 TextColour
 4
@@ -470,6 +492,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -485,6 +508,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -513,6 +537,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -528,6 +553,7 @@ Height
 21
 Caption
 5
+8
 fraction
 TextColour
 4
@@ -556,6 +582,7 @@ Label
 12
 Name
 5
+6
 Label8
 X
 3
@@ -571,6 +598,7 @@ Height
 21
 Caption
 5
+11
 Fossil fill
 TextColour
 4
@@ -599,6 +627,7 @@ Label
 12
 Name
 5
+9
 Label8111
 X
 3
@@ -614,6 +643,7 @@ Height
 21
 Caption
 5
+6
 Hybrid
 TextColour
 4
@@ -642,6 +672,7 @@ Label
 12
 Name
 5
+8
 Label812
 X
 3
@@ -657,6 +688,7 @@ Height
 21
 Caption
 5
+7
 Cooling
 TextColour
 4
@@ -685,6 +717,7 @@ Label
 12
 Name
 5
+6
 Label9
 X
 3
@@ -700,6 +733,7 @@ Height
 21
 Caption
 5
+9
 Period 2:
 TextColour
 4
@@ -728,6 +762,7 @@ Button
 7
 Name
 5
+13
 copy_schedule
 X
 3
@@ -743,6 +778,7 @@ Height
 27
 Caption
 5
+35
 Copy schedule from TOD Factors page
 TabOrder
 3
@@ -753,6 +789,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.fossil1
 X
 3
@@ -780,10 +817,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -811,6 +848,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.fossil2
 X
 3
@@ -838,10 +876,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -869,6 +907,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.fossil3
 X
 3
@@ -896,10 +935,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -927,6 +966,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.fossil4
 X
 3
@@ -954,10 +994,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -985,6 +1025,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.fossil5
 X
 3
@@ -1012,10 +1053,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1043,6 +1084,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.fossil6
 X
 3
@@ -1070,10 +1112,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1101,6 +1143,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.fossil7
 X
 3
@@ -1128,10 +1171,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1159,6 +1202,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.fossil8
 X
 3
@@ -1186,10 +1230,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1217,6 +1261,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.fossil9
 X
 3
@@ -1244,10 +1289,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1275,6 +1320,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.hc_ctl1
 X
 3
@@ -1302,10 +1348,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1333,6 +1379,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.hc_ctl2
 X
 3
@@ -1360,10 +1407,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1391,6 +1438,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.hc_ctl3
 X
 3
@@ -1418,10 +1466,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1449,6 +1497,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.hc_ctl4
 X
 3
@@ -1476,10 +1525,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1507,6 +1556,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.hc_ctl5
 X
 3
@@ -1534,10 +1584,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1565,6 +1615,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.hc_ctl6
 X
 3
@@ -1592,10 +1643,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1623,6 +1674,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.hc_ctl7
 X
 3
@@ -1650,10 +1702,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1681,6 +1733,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.hc_ctl8
 X
 3
@@ -1708,10 +1761,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1739,6 +1792,7 @@ Numeric
 16
 Name
 5
+16
 csp.pbns.hc_ctl9
 X
 3
@@ -1766,10 +1820,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1797,6 +1851,7 @@ DiurnalPeriod
 9
 Name
 5
+16
 weekday_schedule
 X
 3
@@ -1815,7 +1870,7 @@ TabOrder
 4294967295
 Schedule
 5
- 
+0
 Max
 3
 9
@@ -1828,6 +1883,7 @@ DiurnalPeriod
 9
 Name
 5
+16
 weekend_schedule
 X
 3
@@ -1846,7 +1902,7 @@ TabOrder
 4294967295
 Schedule
 5
- 
+0
 Max
 3
 9

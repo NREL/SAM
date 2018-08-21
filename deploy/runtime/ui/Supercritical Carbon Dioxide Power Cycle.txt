@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+9
 P_in_calc
 X
 3
@@ -35,10 +36,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -66,6 +67,7 @@ Numeric
 16
 Name
 5
+10
 P_out_calc
 X
 3
@@ -93,10 +95,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -124,6 +126,7 @@ Numeric
 16
 Name
 5
+15
 SCO2_COPY_P_ref
 X
 3
@@ -151,10 +154,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -182,6 +185,7 @@ Numeric
 16
 Name
 5
+23
 SCO2_COPY_T_htf_hot_des
 X
 3
@@ -209,10 +213,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -240,6 +244,7 @@ Numeric
 16
 Name
 5
+20
 SCO2_COPY_design_eff
 X
 3
@@ -267,10 +272,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -298,6 +303,7 @@ Numeric
 16
 Name
 5
+13
 UA_total_calc
 X
 3
@@ -325,10 +331,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -356,6 +362,7 @@ Numeric
 16
 Name
 5
+11
 _sco2_P_ref
 X
 3
@@ -383,10 +390,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -414,6 +421,7 @@ Numeric
 16
 Name
 5
+15
 _sco2_T_amb_des
 X
 3
@@ -441,10 +449,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -472,6 +480,7 @@ Numeric
 16
 Name
 5
+16
 _sco2_T_approach
 X
 3
@@ -499,10 +508,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -530,6 +539,7 @@ Numeric
 16
 Name
 5
+19
 _sco2_T_htf_hot_des
 X
 3
@@ -557,10 +567,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -588,6 +598,7 @@ Numeric
 16
 Name
 5
+16
 _sco2_deltaT_PHX
 X
 3
@@ -615,10 +626,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -646,6 +657,7 @@ Numeric
 16
 Name
 5
+16
 _sco2_design_eff
 X
 3
@@ -673,10 +685,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -704,6 +716,7 @@ Numeric
 16
 Name
 5
+11
 _sco2_eta_c
 X
 3
@@ -731,10 +744,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -762,6 +775,7 @@ Numeric
 16
 Name
 5
+11
 _sco2_eta_t
 X
 3
@@ -789,10 +803,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -820,6 +834,7 @@ Numeric
 16
 Name
 5
+19
 _sco2_recup_eff_max
 X
 3
@@ -847,10 +862,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -878,6 +893,7 @@ Button
 7
 Name
 5
+21
 btn_sco2_des_and_udpc
 X
 3
@@ -893,6 +909,7 @@ Height
 24
 Caption
 5
+49
 Calculate design point and off-design performance
 TabOrder
 3
@@ -903,6 +920,7 @@ Button
 7
 Name
 5
+21
 btn_sco2_design_point
 X
 3
@@ -918,6 +936,7 @@ Height
 24
 Caption
 5
+53
 Calculate design point without off-design performance
 TabOrder
 3
@@ -928,6 +947,7 @@ Numeric
 16
 Name
 5
+10
 deltaT_PHX
 X
 3
@@ -955,10 +975,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -985,6 +1005,7 @@ Numeric
 1
 16
 Name
+5
 5
 eta_c
 X
@@ -1013,10 +1034,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1043,6 +1064,7 @@ Numeric
 1
 16
 Name
+5
 5
 eta_t
 X
@@ -1071,10 +1093,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1102,6 +1124,7 @@ Numeric
 16
 Name
 5
+18
 fan_power_perc_net
 X
 3
@@ -1129,10 +1152,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1160,6 +1183,7 @@ CheckBox
 8
 Name
 5
+18
 is_sco2_preprocess
 X
 3
@@ -1175,6 +1199,7 @@ Height
 24
 Caption
 5
+52
 Use calculated off-design performance for simulation
 State
 2
@@ -1188,6 +1213,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1203,6 +1229,7 @@ Height
 456
 Caption
 5
+16
 sCO2 Power Cycle
 Bold
 2
@@ -1213,6 +1240,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1228,6 +1256,7 @@ Height
 24
 Caption
 5
+26
 Value Used for Calculation
 TextColour
 4
@@ -1256,6 +1285,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1271,6 +1301,7 @@ Height
 24
 Caption
 5
+26
 Value Used for Calculation
 TextColour
 4
@@ -1299,6 +1330,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1314,6 +1346,7 @@ Height
 24
 Caption
 5
+26
 Value Used for Calculation
 TextColour
 4
@@ -1342,6 +1375,7 @@ Numeric
 16
 Name
 5
+16
 recomp_frac_calc
 X
 3
@@ -1369,10 +1403,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1400,6 +1434,7 @@ Numeric
 16
 Name
 5
+13
 recup_eff_max
 X
 3
@@ -1427,10 +1462,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1458,6 +1493,7 @@ Numeric
 16
 Name
 5
+14
 sco2_T_amb_des
 X
 3
@@ -1485,10 +1521,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1516,6 +1552,7 @@ Numeric
 16
 Name
 5
+15
 sco2_T_approach
 X
 3
@@ -1543,10 +1580,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1574,6 +1611,7 @@ Label
 12
 Name
 5
+11
 sco2_cb_msg
 X
 3
@@ -1589,7 +1627,7 @@ Height
 90
 Caption
 5
- 
+0
 TextColour
 4
 0
@@ -1617,6 +1655,7 @@ Numeric
 16
 Name
 5
+22
 sco2ud_T_htf_cold_calc
 X
 3
@@ -1644,10 +1683,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

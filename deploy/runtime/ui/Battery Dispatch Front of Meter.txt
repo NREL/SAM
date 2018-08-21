@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 AutoDCBox
 X
 3
@@ -23,6 +24,7 @@ Height
 220
 Caption
 5
+31
 Automated DC-connection options
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+20
 BatteryChargeOptions
 X
 3
@@ -48,6 +51,7 @@ Height
 51
 Caption
 5
+74
 For all non-manual dispatch options, select how the battery can be charged
 TextColour
 4
@@ -76,6 +80,7 @@ GroupBox
 7
 Name
 5
+16
 InputDispatchBox
 X
 3
@@ -91,6 +96,7 @@ Height
 109
 Caption
 5
+22
 Input Battery Dispatch
 Bold
 2
@@ -101,6 +107,7 @@ GroupBox
 7
 Name
 5
+18
 StorageDispatchBox
 X
 3
@@ -116,6 +123,7 @@ Height
 355
 Caption
 5
+27
 Storage Dispatch Controller
 Bold
 2
@@ -126,6 +134,7 @@ Divider
 9
 Name
 5
+25
 batt_charge_options_label
 X
 3
@@ -150,6 +159,7 @@ Colour
 255
 Caption
 5
+22
 Battery charge options
 Bold
 2
@@ -160,6 +170,7 @@ DataArray
 9
 Name
 5
+20
 batt_custom_dispatch
 X
 3
@@ -178,9 +189,11 @@ Mode
 1
 Label
 5
+29
 Battery custom dispatch input
 Description
 5
+156
 Custom battery dispatch allows a user to get the dispatch from another tool and input into SAM directly.  Power < 0 for charging, Power > 0 for discharging.
 TabOrder
 3
@@ -191,6 +204,7 @@ Numeric
 16
 Name
 5
+15
 batt_cycle_cost
 X
 3
@@ -218,10 +232,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -249,6 +263,7 @@ Choice
 8
 Name
 5
+22
 batt_cycle_cost_choice
 X
 3
@@ -279,6 +294,7 @@ Label
 12
 Name
 5
+27
 batt_cycle_cost_description
 X
 3
@@ -294,6 +310,7 @@ Height
 42
 Caption
 5
+139
 When using the automated dispatch control, the model will cycle the battery only if the benefit is greater than the damage to the battery. 
 TextColour
 4
@@ -322,6 +339,7 @@ Divider
 9
 Name
 5
+22
 batt_cycle_costs_label
 X
 3
@@ -346,6 +364,7 @@ Colour
 255
 Caption
 5
+19
 Battery cycle costs
 Bold
 2
@@ -356,6 +375,7 @@ CheckBox
 8
 Name
 5
+29
 batt_dispatch_auto_can_charge
 X
 3
@@ -371,6 +391,7 @@ Height
 24
 Caption
 5
+30
 Battery can charge from system
 State
 2
@@ -384,6 +405,7 @@ CheckBox
 8
 Name
 5
+33
 batt_dispatch_auto_can_clipcharge
 X
 3
@@ -399,6 +421,7 @@ Height
 24
 Caption
 5
+44
 Battery can charge from clipped system power
 State
 2
@@ -412,6 +435,7 @@ CheckBox
 8
 Name
 5
+33
 batt_dispatch_auto_can_gridcharge
 X
 3
@@ -427,6 +451,7 @@ Height
 24
 Caption
 5
+28
 Battery can charge from grid
 State
 2
@@ -440,6 +465,7 @@ RadioChoice
 10
 Name
 5
+20
 batt_dispatch_choice
 X
 3
@@ -479,6 +505,7 @@ Label
 12
 Name
 5
+19
 batt_dispatch_label
 X
 3
@@ -494,6 +521,7 @@ Height
 33
 Caption
 5
+75
 Input a custom battery power dispatch (<0 for charging, >0 for discharging)
 TextColour
 4
@@ -522,6 +550,7 @@ Divider
 9
 Name
 5
+21
 batt_dispatch_options
 X
 3
@@ -546,6 +575,7 @@ Colour
 255
 Caption
 5
+16
 Dispatch options
 Bold
 2
@@ -556,6 +586,7 @@ Numeric
 16
 Name
 5
+36
 batt_dispatch_update_frequency_hours
 X
 3
@@ -583,10 +614,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -614,6 +645,7 @@ Numeric
 16
 Name
 5
+21
 batt_look_ahead_hours
 X
 3
@@ -641,10 +673,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -672,6 +704,7 @@ Button
 7
 Name
 5
+33
 batt_select_weather_file_forecast
 X
 3
@@ -687,6 +720,7 @@ Height
 24
 Caption
 5
+9
 Browse...
 TabOrder
 3
@@ -697,6 +731,7 @@ TextEntry
 10
 Name
 5
+32
 batt_user_specified_weather_file
 X
 3
@@ -712,7 +747,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1
@@ -737,6 +772,7 @@ Divider
 9
 Name
 5
+18
 batt_weather_label
 X
 3
@@ -761,6 +797,7 @@ Colour
 255
 Caption
 5
+28
 Choose Weather forecast file
 Bold
 2
@@ -771,6 +808,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -795,6 +833,7 @@ Colour
 255
 Caption
 5
+21
 Choose Dispatch Model
 Bold
 2
@@ -805,6 +844,7 @@ Button
 7
 Name
 5
+19
 select_weather_file
 X
 3
@@ -820,6 +860,7 @@ Height
 24
 Caption
 5
+9
 Browse...
 TabOrder
 3
@@ -830,6 +871,7 @@ Button
 7
 Name
 5
+19
 select_weather_file
 X
 3
@@ -845,6 +887,7 @@ Height
 24
 Caption
 5
+9
 Browse...
 TabOrder
 3
@@ -855,6 +898,7 @@ Button
 7
 Name
 5
+19
 select_weather_file
 X
 3
@@ -870,6 +914,7 @@ Height
 24
 Caption
 5
+9
 Browse...
 TabOrder
 3

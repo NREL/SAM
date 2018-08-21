@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 671
 Caption
 5
+12
 Wind Turbine
 Bold
 2
@@ -33,6 +35,7 @@ Choice
 8
 Name
 5
+25
 wind.turbine.blade_design
 X
 3
@@ -63,6 +66,7 @@ Choice
 8
 Name
 5
+24
 wind.turbine.drive_train
 X
 3
@@ -95,6 +99,7 @@ Numeric
 16
 Name
 5
+22
 wind.turbine.elevation
 X
 3
@@ -122,9 +127,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
+2
  m
 ThousandsSep
 2
@@ -153,6 +159,7 @@ Numeric
 16
 Name
 5
+26
 wind.turbine.max_tip_speed
 X
 3
@@ -180,9 +187,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+4
  m/s
 ThousandsSep
 2
@@ -211,6 +219,7 @@ Numeric
 16
 Name
 5
+29
 wind.turbine.max_tspeed_ratio
 X
 3
@@ -238,10 +247,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -269,6 +278,7 @@ RadioChoice
 10
 Name
 5
+33
 wind.turbine.radio_list_or_design
 X
 3
@@ -305,6 +315,7 @@ Choice
 8
 Name
 5
+25
 wind.turbine.tower_design
 X
 3
@@ -335,6 +346,7 @@ Numeric
 16
 Name
 5
+19
 wind_resource_shear
 X
 3
@@ -362,10 +374,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -393,6 +405,7 @@ Numeric
 16
 Name
 5
+20
 wind_turbine_cut_out
 X
 3
@@ -420,9 +433,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+4
  m/s
 ThousandsSep
 2
@@ -451,6 +465,7 @@ Numeric
 16
 Name
 5
+18
 wind_turbine_cutin
 X
 3
@@ -478,9 +493,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+4
  m/s
 ThousandsSep
 2
@@ -509,6 +525,7 @@ Numeric
 16
 Name
 5
+19
 wind_turbine_hub_ht
 X
 3
@@ -536,9 +553,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  m
 ThousandsSep
 2
@@ -567,6 +585,7 @@ Label
 12
 Name
 5
+23
 wind_turbine_hub_ht_msg
 X
 3
@@ -582,6 +601,7 @@ Height
 60
 Caption
 5
+14
 Error messages
 TextColour
 4
@@ -610,6 +630,7 @@ Numeric
 16
 Name
 5
+22
 wind_turbine_kw_rating
 X
 3
@@ -637,9 +658,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+3
  kW
 ThousandsSep
 2
@@ -668,6 +690,7 @@ Numeric
 16
 Name
 5
+28
 wind_turbine_kw_rating_input
 X
 3
@@ -695,9 +718,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+3
  kW
 ThousandsSep
 2
@@ -726,6 +750,7 @@ Numeric
 16
 Name
 5
+19
 wind_turbine_max_cp
 X
 3
@@ -753,10 +778,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -784,6 +809,7 @@ Plot
 5
 Name
 5
+29
 wind_turbine_power_curve_plot
 X
 3
@@ -803,6 +829,7 @@ Numeric
 16
 Name
 5
+27
 wind_turbine_rotor_diameter
 X
 3
@@ -830,9 +857,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  m
 ThousandsSep
 2
@@ -861,6 +889,7 @@ Numeric
 16
 Name
 5
+33
 wind_turbine_rotor_diameter_input
 X
 3
@@ -888,9 +917,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  m
 ThousandsSep
 2
@@ -919,6 +949,7 @@ Library
 7
 Name
 5
+22
 wind_turbine_selection
 X
 3
@@ -934,9 +965,11 @@ Height
 201
 Library
 5
+13
 Wind Turbines
 Fields
 5
+14
 Name,KW Rating
 
 33

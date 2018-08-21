@@ -8,6 +8,7 @@ Library
 7
 Name
 5
+17
 collector_library
 X
 3
@@ -23,9 +24,11 @@ Height
 147
 Library
 5
+26
 Physical Trough Collectors
 Fields
 5
+309
 Name,Reflective aperture area,Aperture width  total structure,Length of collector assembly,Number of modules per assembly,Average surface to focus path length,Piping distance between assemblies,IAM F0,IAM F1,IAM F2,IAM F3,Tracking error,Geometry effects,Mirror reflectance,Dirt on mirror,General optical error
 TextEntry
 
@@ -33,6 +36,7 @@ TextEntry
 10
 Name
 5
+19
 collectors_in_field
 X
 3
@@ -48,7 +52,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 0
@@ -73,6 +77,7 @@ Label
 12
 Name
 5
+12
 header_label
 X
 3
@@ -88,6 +93,7 @@ Height
 24
 Caption
 5
+16
 Collector Type 1
 TextColour
 4
@@ -116,6 +122,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -131,6 +138,7 @@ Height
 213
 Caption
 5
+17
 Collector Library
 Bold
 2

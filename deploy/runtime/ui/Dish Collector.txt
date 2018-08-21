@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+6
 A_proj
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -66,6 +67,7 @@ Numeric
 16
 Name
 5
+7
 A_total
 X
 3
@@ -93,10 +95,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -124,6 +126,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -139,6 +142,7 @@ Height
 101
 Caption
 5
+17
 Mirror Parameters
 Bold
 2
@@ -149,6 +153,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -164,6 +169,7 @@ Height
 53
 Caption
 5
+11
 Performance
 Bold
 2
@@ -174,6 +180,7 @@ Numeric
 16
 Name
 5
+8
 I_cut_in
 X
 3
@@ -201,10 +208,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -232,6 +239,7 @@ Numeric
 16
 Name
 5
+3
 rho
 X
 3
@@ -259,10 +267,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

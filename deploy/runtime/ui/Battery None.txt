@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+19
 Battery Bank Enable
 X
 3
@@ -23,6 +24,7 @@ Height
 153
 Caption
 5
+22
 Battery Energy Storage
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+19
 Battery explanation
 X
 3
@@ -48,6 +51,7 @@ Height
 84
 Caption
 5
+418
 The battery model provides comprehensive modeling of lead-acid and lithium ion batteries for integration with PV systems, including monitoring of battery capacity, terminal voltage variation with current and charge state, thermal effects, and lifetime degradation.  A manual dispatch controller provides the ability to dispatch the battery to meet specific energy and power needs based on time-of-day and time-of-year.
 TextColour
 4
@@ -76,6 +80,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -91,6 +96,7 @@ Height
 30
 Caption
 5
+105
 By default, the battery model is not enabled.  To enable, select "Enable Battery" in the above drop down.
 TextColour
 4

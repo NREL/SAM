@@ -8,6 +8,7 @@ CheckBox
 8
 Name
 5
+7
 en_batt
 X
 3
@@ -23,6 +24,7 @@ Height
 24
 Caption
 5
+49
 Enable PV-integrated battery energy storage model
 State
 2

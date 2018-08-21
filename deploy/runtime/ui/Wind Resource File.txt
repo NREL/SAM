@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 465
 Caption
 5
+50
 Choose a representative typical wind resource file
 Bold
 2
@@ -33,6 +35,7 @@ Button
 7
 Name
 5
+14
 btnScanLibrary
 X
 3
@@ -48,6 +51,7 @@ Height
 24
 Caption
 5
+15
 Refresh Library
 TabOrder
 3
@@ -58,6 +62,7 @@ Button
 7
 Name
 5
+21
 btnWindLocationLookup
 X
 3
@@ -73,6 +78,7 @@ Height
 24
 Caption
 5
+11
 Download...
 TabOrder
 3
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -98,6 +105,7 @@ Height
 111
 Caption
 5
+97
 Download a wind resource file from the online NREL WIND Toolkit (continental U.S. locations only)
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -123,6 +132,7 @@ Height
 111
 Caption
 5
+97
 Download a wind resource file from the online NREL WIND Toolkit (continental U.S. locations only)
 Bold
 2
@@ -133,6 +143,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -148,6 +159,7 @@ Height
 39
 Caption
 5
+127
 Check the box and click Browse to choose a an .srw file stored on your computer without adding it to the wind resource library.
 TextColour
 4
@@ -176,6 +188,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -191,6 +204,7 @@ Height
 39
 Caption
 5
+127
 Check the box and click Browse to choose a an .srw file stored on your computer without adding it to the wind resource library.
 TextColour
 4
@@ -219,6 +233,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -234,6 +249,7 @@ Height
 39
 Caption
 5
+127
 Check the box and click Browse to choose a an .srw file stored on your computer without adding it to the wind resource library.
 TextColour
 4
@@ -262,6 +278,7 @@ Button
 7
 Name
 5
+14
 select_wf_wind
 X
 3
@@ -277,6 +294,7 @@ Height
 24
 Caption
 5
+9
 Browse...
 TabOrder
 3
@@ -287,6 +305,7 @@ CheckBox
 8
 Name
 5
+20
 use_specific_wf_wind
 X
 3
@@ -302,7 +321,7 @@ Height
 27
 Caption
 5
- 
+0
 State
 2
 0
@@ -315,6 +334,7 @@ TextEntry
 10
 Name
 5
+22
 user_specified_wf_wind
 X
 3
@@ -330,7 +350,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1
@@ -355,6 +375,7 @@ TextEntry
 10
 Name
 5
+18
 wind_resource.city
 X
 3
@@ -370,7 +391,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1
@@ -395,6 +416,7 @@ TextEntry
 10
 Name
 5
+21
 wind_resource.country
 X
 3
@@ -410,7 +432,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1
@@ -435,6 +457,7 @@ TextEntry
 10
 Name
 5
+25
 wind_resource.description
 X
 3
@@ -450,6 +473,7 @@ Height
 24
 Text
 5
+71
 NREL AWS TruePower Data: representative of northwestern AR - flat lands
 Editable
 2
@@ -475,6 +499,7 @@ Numeric
 16
 Name
 5
+18
 wind_resource.elev
 X
 3
@@ -502,9 +527,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
+2
  m
 ThousandsSep
 2
@@ -533,6 +559,7 @@ TextEntry
 10
 Name
 5
+18
 wind_resource.file
 X
 3
@@ -548,7 +575,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1
@@ -573,6 +600,7 @@ Numeric
 16
 Name
 5
+17
 wind_resource.lat
 X
 3
@@ -600,9 +628,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+3
  °N
 ThousandsSep
 2
@@ -631,6 +660,7 @@ Library
 7
 Name
 5
+22
 wind_resource.location
 X
 3
@@ -646,9 +676,11 @@ Height
 276
 Library
 5
+16
 WindResourceData
 Fields
 5
+17
 Description,State
 Numeric
 
@@ -656,6 +688,7 @@ Numeric
 16
 Name
 5
+17
 wind_resource.lon
 X
 3
@@ -683,9 +716,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+3
  °E
 ThousandsSep
 2
@@ -714,6 +748,7 @@ TextEntry
 10
 Name
 5
+19
 wind_resource.state
 X
 3
@@ -729,7 +764,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1

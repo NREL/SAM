@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox11
 X
 3
@@ -23,6 +24,7 @@ Height
 107
 Caption
 5
+30
 System Performance Degradation
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+33
 batt_lifetime_single_year_message
 X
 3
@@ -48,6 +51,7 @@ Height
 63
 Caption
 5
+264
 In this mode, one year of degradation of the battery is modeled, which may not accurately represent battery performance in subsequent years. To consider multiyear degradation, including battery replacement costs, please select "PV simulation over analysis period".
 TextColour
 4
@@ -76,6 +80,7 @@ GroupBox
 7
 Name
 5
+24
 batt_no_lifetime_caption
 X
 3
@@ -91,6 +96,7 @@ Height
 83
 Caption
 5
+28
 Battery single year analysis
 Bold
 2
@@ -101,6 +107,7 @@ SchedNumeric
 11
 Name
 5
+11
 degradation
 X
 3
@@ -116,6 +123,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -128,6 +136,7 @@ FixedLength
 4294967295
 Description
 5
+88
 Type a degradation rate (%) for each year. Each year's rate applies to the Year 1 value.
 TabOrder
 3
@@ -138,6 +147,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -153,6 +163,7 @@ Height
 93
 Caption
 5
+211
 In Value mode, the degradation rate applies to the system's total annual kWh output for the previous year starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details.
 TextColour
 4
@@ -181,6 +192,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -196,6 +208,7 @@ Height
 93
 Caption
 5
+211
 In Value mode, the degradation rate applies to the system's total annual kWh output for the previous year starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details.
 TextColour
 4

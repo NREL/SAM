@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+6
 P_boil
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -66,6 +67,7 @@ Numeric
 16
 Name
 5
+10
 P_cond_min
 X
 3
@@ -93,10 +95,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -124,6 +126,7 @@ Numeric
 16
 Name
 5
+12
 P_cond_ratio
 X
 3
@@ -151,10 +154,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -182,6 +185,7 @@ Numeric
 16
 Name
 5
+9
 T_ITD_des
 X
 3
@@ -209,10 +213,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -240,6 +244,7 @@ Numeric
 16
 Name
 5
+9
 T_amb_des
 X
 3
@@ -267,10 +272,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -298,6 +303,7 @@ Numeric
 16
 Name
 5
+10
 T_approach
 X
 3
@@ -325,10 +331,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -356,6 +362,7 @@ Choice
 8
 Name
 5
+20
 combo_condenser_type
 X
 3
@@ -387,6 +394,7 @@ GroupBox
 7
 Name
 5
+26
 cycle_technology_group_box
 X
 3
@@ -402,6 +410,7 @@ Height
 353
 Caption
 5
+24
 Rankine Cycle Parameters
 Bold
 2
@@ -412,6 +421,7 @@ Numeric
 16
 Name
 5
+9
 dT_cw_ref
 X
 3
@@ -439,10 +449,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -470,6 +480,7 @@ Numeric
 16
 Name
 5
+11
 hybrid_tou1
 X
 3
@@ -497,10 +508,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -528,6 +539,7 @@ Numeric
 16
 Name
 5
+11
 hybrid_tou2
 X
 3
@@ -555,10 +567,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -586,6 +598,7 @@ Numeric
 16
 Name
 5
+11
 hybrid_tou3
 X
 3
@@ -613,10 +626,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -644,6 +657,7 @@ Numeric
 16
 Name
 5
+11
 hybrid_tou4
 X
 3
@@ -671,10 +685,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -702,6 +716,7 @@ Numeric
 16
 Name
 5
+11
 hybrid_tou5
 X
 3
@@ -729,10 +744,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -760,6 +775,7 @@ Numeric
 16
 Name
 5
+11
 hybrid_tou6
 X
 3
@@ -787,10 +803,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -818,6 +834,7 @@ Numeric
 16
 Name
 5
+11
 hybrid_tou7
 X
 3
@@ -845,10 +862,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -876,6 +893,7 @@ Numeric
 16
 Name
 5
+11
 hybrid_tou8
 X
 3
@@ -903,10 +921,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -934,6 +952,7 @@ Numeric
 16
 Name
 5
+11
 hybrid_tou9
 X
 3
@@ -961,10 +980,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -992,6 +1011,7 @@ Label
 12
 Name
 5
+20
 label_hybrid_cooling
 X
 3
@@ -1007,6 +1027,7 @@ Height
 51
 Caption
 5
+101
 Hybrid dispatch control parameters refer to the dispatch periods defined on the thermal storage page.
 TextColour
 4
@@ -1035,6 +1056,7 @@ Numeric
 16
 Name
 5
+8
 n_pl_inc
 X
 3
@@ -1062,10 +1084,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1093,6 +1115,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1108,6 +1131,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -1136,6 +1160,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1151,6 +1176,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -1179,6 +1205,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1194,6 +1221,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -1222,6 +1250,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1237,6 +1266,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -1265,6 +1295,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1280,6 +1311,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -1308,6 +1340,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1323,6 +1356,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -1351,6 +1385,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1366,6 +1401,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -1394,6 +1430,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1409,6 +1446,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -1437,6 +1475,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1452,6 +1491,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -1480,6 +1520,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1495,6 +1536,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -1523,6 +1565,7 @@ Numeric
 16
 Name
 5
+10
 pb_bd_frac
 X
 3
@@ -1550,10 +1593,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1581,6 +1624,7 @@ Choice
 8
 Name
 5
+13
 pressure_mode
 X
 3

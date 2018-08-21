@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 95
 Caption
 5
+16
 Operating Ranges
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 66
 Caption
 5
+16
 Save / Load Data
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -73,6 +78,7 @@ Height
 66
 Caption
 5
+16
 Save / Load Data
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -98,6 +105,7 @@ Height
 314
 Caption
 5
+20
 Part Load Efficiency
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -123,6 +132,7 @@ Height
 47
 Caption
 5
+6
 Losses
 Bold
 2
@@ -133,6 +143,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -148,6 +159,7 @@ Height
 86
 Caption
 5
+156
 SAM calculates the CEC and European weighted efficiency values based on the part-load data you provide and a set of weighting factors. See Help for details.
 TextColour
 4
@@ -176,6 +188,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -191,6 +204,7 @@ Height
 21
 Caption
 5
+1
 %
 TextColour
 4
@@ -219,6 +233,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -234,6 +249,7 @@ Height
 21
 Caption
 5
+1
 %
 TextColour
 4
@@ -262,6 +278,7 @@ Button
 7
 Name
 5
+16
 btnLoadInvPDData
 X
 3
@@ -277,6 +294,7 @@ Height
 24
 Caption
 5
+22
 Load data from file...
 TabOrder
 3
@@ -287,6 +305,7 @@ Button
 7
 Name
 5
+16
 btnSaveInvPDData
 X
 3
@@ -302,6 +321,7 @@ Height
 24
 Caption
 5
+20
 Save data to file...
 TabOrder
 3
@@ -312,6 +332,7 @@ Numeric
 16
 Name
 5
+17
 inv_pd_ac_voltage
 X
 3
@@ -339,10 +360,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -370,6 +391,7 @@ DataMatrix
 22
 Name
 5
+11
 inv_pd_data
 X
 3
@@ -397,7 +419,7 @@ ShowRowLabels
 0
 RowLabels
 5
- 
+0
 ShadeR0C0
 2
 0
@@ -412,11 +434,14 @@ ShowColLabels
 1
 ColLabels
 5
+30
 % Output Power, Efficiency (%)
 NumRowsLabel
 5
+5
 Rows:
 NumColsLabel
+5
 5
 Cols:
 Layout
@@ -427,6 +452,7 @@ ChoiceColumn
 4294967295
 Choices
 5
+15
 Choice1,Choice2
 HideColumn
 3
@@ -440,6 +466,7 @@ TextEntry
 10
 Name
 5
+20
 inv_pd_data_filename
 X
 3
@@ -455,7 +482,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 0
@@ -480,6 +507,7 @@ Numeric
 16
 Name
 5
+14
 inv_pd_eff_cec
 X
 3
@@ -507,10 +535,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -538,6 +566,7 @@ Numeric
 16
 Name
 5
+15
 inv_pd_eff_euro
 X
 3
@@ -565,10 +594,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -596,6 +625,7 @@ RadioChoice
 10
 Name
 5
+15
 inv_pd_eff_type
 X
 3
@@ -632,6 +662,7 @@ Numeric
 16
 Name
 5
+13
 inv_pd_idcmax
 X
 3
@@ -659,10 +690,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -690,6 +721,7 @@ Numeric
 16
 Name
 5
+14
 inv_pd_mppt_hi
 X
 3
@@ -717,10 +749,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -748,6 +780,7 @@ Numeric
 16
 Name
 5
+15
 inv_pd_mppt_low
 X
 3
@@ -775,10 +808,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -806,6 +839,7 @@ Numeric
 16
 Name
 5
+11
 inv_pd_paco
 X
 3
@@ -833,10 +867,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -864,6 +898,7 @@ Numeric
 16
 Name
 5
+11
 inv_pd_pdco
 X
 3
@@ -891,10 +926,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -922,6 +957,7 @@ Numeric
 16
 Name
 5
+10
 inv_pd_pnt
 X
 3
@@ -949,10 +985,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -980,6 +1016,7 @@ Numeric
 16
 Name
 5
+13
 inv_pd_vdcmax
 X
 3
@@ -1007,10 +1044,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1038,6 +1075,7 @@ Numeric
 16
 Name
 5
+11
 inv_pd_vdco
 X
 3
@@ -1065,10 +1103,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1096,6 +1134,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1111,6 +1150,7 @@ Height
 42
 Caption
 5
+141
 Note: If you are modeling a system with microinverters or DC power optimizers, see the "Losses" page to adjust the system losses accordingly.
 TextColour
 4
@@ -1139,6 +1179,7 @@ Plot
 5
 Name
 5
+19
 pv.inv.pd.eff_curve
 X
 3

@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+21
 Current and Capacity 
 X
 3
@@ -23,6 +24,7 @@ Height
 379
 Caption
 5
+21
 Current and Capacity 
 Bold
 2
@@ -33,6 +35,7 @@ Numeric
 16
 Name
 5
+22
 batt_C_rate_max_charge
 X
 3
@@ -60,10 +63,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -91,6 +94,7 @@ Numeric
 16
 Name
 5
+25
 batt_C_rate_max_discharge
 X
 3
@@ -118,10 +122,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -149,6 +153,7 @@ Numeric
 16
 Name
 5
+10
 batt_Qfull
 X
 3
@@ -176,10 +181,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -207,6 +212,7 @@ Numeric
 16
 Name
 5
+28
 batt_cell_current_charge_max
 X
 3
@@ -234,10 +240,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -265,6 +271,7 @@ Numeric
 16
 Name
 5
+31
 batt_cell_current_discharge_max
 X
 3
@@ -292,10 +299,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -323,6 +330,7 @@ Numeric
 16
 Name
 5
+26
 batt_cell_power_charge_max
 X
 3
@@ -350,10 +358,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -381,6 +389,7 @@ Numeric
 16
 Name
 5
+29
 batt_cell_power_discharge_max
 X
 3
@@ -408,10 +417,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -439,6 +448,7 @@ Numeric
 16
 Name
 5
+27
 batt_computed_bank_capacity
 X
 3
@@ -466,10 +476,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -497,6 +507,7 @@ Label
 12
 Name
 5
+32
 batt_computed_cells_series_label
 X
 3
@@ -512,6 +523,7 @@ Height
 24
 Caption
 5
+15
 Cells in series
 TextColour
 4
@@ -540,6 +552,7 @@ Label
 12
 Name
 5
+28
 batt_computed_parallel_label
 X
 3
@@ -555,6 +568,7 @@ Height
 24
 Caption
 5
+19
 Strings in parallel
 TextColour
 4
@@ -583,6 +597,7 @@ Numeric
 16
 Name
 5
+20
 batt_computed_series
 X
 3
@@ -610,10 +625,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -641,6 +656,7 @@ Numeric
 16
 Name
 5
+27
 batt_computed_stacks_series
 X
 3
@@ -668,10 +684,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -699,6 +715,7 @@ Numeric
 16
 Name
 5
+21
 batt_computed_strings
 X
 3
@@ -726,10 +743,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -757,6 +774,7 @@ Numeric
 16
 Name
 5
+21
 batt_computed_voltage
 X
 3
@@ -784,10 +802,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -815,6 +833,7 @@ Numeric
 16
 Name
 5
+23
 batt_current_charge_max
 X
 3
@@ -842,10 +861,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -873,6 +892,7 @@ RadioChoice
 10
 Name
 5
+19
 batt_current_choice
 X
 3
@@ -910,6 +930,7 @@ Numeric
 16
 Name
 5
+26
 batt_current_discharge_max
 X
 3
@@ -937,10 +958,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -968,6 +989,7 @@ Numeric
 16
 Name
 5
+14
 batt_num_cells
 X
 3
@@ -995,10 +1017,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1026,6 +1048,7 @@ Numeric
 16
 Name
 5
+21
 batt_power_charge_max
 X
 3
@@ -1053,10 +1076,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1084,6 +1107,7 @@ Numeric
 16
 Name
 5
+24
 batt_power_discharge_max
 X
 3
@@ -1111,10 +1135,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1142,6 +1166,7 @@ Label
 12
 Name
 5
+17
 batt_size_warning
 X
 3
@@ -1157,7 +1182,7 @@ Height
 24
 Caption
 5
- 
+0
 TextColour
 4
 255
@@ -1185,6 +1210,7 @@ Numeric
 16
 Name
 5
+18
 batt_time_capacity
 X
 3
@@ -1212,10 +1238,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1243,6 +1269,7 @@ Label
 12
 Name
 5
+25
 computed_properties_label
 X
 3
@@ -1258,6 +1285,7 @@ Height
 234
 Caption
 5
+470
 The computed properties are the battery bank properties SAM uses for simulations. The nominal bank voltage is the product of the cell nominal voltage and number of cells in series. The nominal voltage is the product of the cell capacity, bank voltage, and number of strings in parallel.  The C-rate is a measure of how much of the battery capacity can be charged or discharged per hour.  The max power is computed from the max C-rate of discharge.  See help for details.
 TextColour
 4
@@ -1286,6 +1314,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -1310,6 +1339,7 @@ Colour
 255
 Caption
 5
+19
 Computed Properties
 Bold
 2

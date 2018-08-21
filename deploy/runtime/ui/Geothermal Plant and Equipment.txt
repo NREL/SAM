@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 209
 Caption
 5
+19
 Plant Configuration
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 101
 Caption
 5
+28
 Availability and Curtailment
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 113
 Caption
 5
+19
 Temperature Decline
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -98,6 +105,7 @@ Height
 113
 Caption
 5
+16
 Flash Technology
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox5
 X
 3
@@ -123,6 +132,7 @@ Height
 200
 Caption
 5
+18
 Pumping Parameters
 Bold
 2
@@ -133,6 +143,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -148,6 +159,7 @@ Height
 21
 Caption
 5
+2
 kW
 TextColour
 4
@@ -176,6 +188,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -191,6 +204,7 @@ Height
 21
 Caption
 5
+21
 Conversion Plant Type
 TextColour
 4
@@ -219,6 +233,7 @@ LossAdjustment
 6
 Name
 5
+6
 adjust
 X
 3
@@ -241,6 +256,7 @@ Numeric
 16
 Name
 5
+16
 ambient_pressure
 X
 3
@@ -268,10 +284,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -299,6 +315,7 @@ RadioChoice
 10
 Name
 5
+13
 analysis_type
 X
 3
@@ -335,6 +352,7 @@ Numeric
 16
 Name
 5
+11
 casing_size
 X
 3
@@ -362,10 +380,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -393,6 +411,7 @@ Choice
 8
 Name
 5
+18
 conversion_subtype
 X
 3
@@ -425,6 +444,7 @@ RadioChoice
 10
 Name
 5
+15
 conversion_type
 X
 3
@@ -461,6 +481,7 @@ RadioChoice
 10
 Name
 5
+12
 decline_type
 X
 3
@@ -497,6 +518,7 @@ Numeric
 16
 Name
 5
+20
 delta_pressure_equip
 X
 3
@@ -524,10 +546,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -555,6 +577,7 @@ Numeric
 16
 Name
 5
+11
 design_temp
 X
 3
@@ -582,10 +605,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -613,6 +636,7 @@ Numeric
 16
 Name
 5
+20
 excess_pressure_pump
 X
 3
@@ -640,10 +664,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -671,6 +695,7 @@ CheckBox
 8
 Name
 5
+35
 geotherm.egs_design_temp_autoselect
 X
 3
@@ -686,6 +711,7 @@ Height
 21
 Caption
 5
+34
 Automatically set to resource temp
 State
 2
@@ -699,6 +725,7 @@ Numeric
 16
 Name
 5
+30
 geotherm.egs_design_temp_input
 X
 3
@@ -726,10 +753,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -757,6 +784,7 @@ TextEntry
 10
 Name
 5
+16
 geotherm.errors1
 X
 3
@@ -772,7 +800,7 @@ Height
 21
 Text
 5
- 
+0
 Editable
 2
 0
@@ -797,6 +825,7 @@ Numeric
 16
 Name
 5
+19
 geotherm.net_output
 X
 3
@@ -824,10 +853,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -855,6 +884,7 @@ Numeric
 16
 Name
 5
+30
 geotherm.plant_efficiency_used
 X
 3
@@ -882,10 +912,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -913,6 +943,7 @@ Numeric
 16
 Name
 5
+12
 gross_output
 X
 3
@@ -940,10 +971,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -971,6 +1002,7 @@ Numeric
 16
 Name
 5
+13
 inj_well_diam
 X
 3
@@ -998,10 +1030,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1029,6 +1061,7 @@ Numeric
 16
 Name
 5
+9
 nameplate
 X
 3
@@ -1056,10 +1089,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1087,6 +1120,7 @@ Numeric
 16
 Name
 5
+9
 num_wells
 X
 3
@@ -1114,10 +1148,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1145,6 +1179,7 @@ Numeric
 16
 Name
 5
+15
 num_wells_getem
 X
 3
@@ -1172,10 +1207,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1203,6 +1238,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1218,6 +1254,7 @@ Height
 63
 Caption
 5
+105
 Curtailment and availability losses reduce the system output to represent system outages or other events.
 TextColour
 4
@@ -1246,6 +1283,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1261,6 +1299,7 @@ Height
 63
 Caption
 5
+105
 Curtailment and availability losses reduce the system output to represent system outages or other events.
 TextColour
 4
@@ -1289,6 +1328,7 @@ Numeric
 16
 Name
 5
+22
 plant_efficiency_input
 X
 3
@@ -1316,10 +1356,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1347,6 +1387,7 @@ Numeric
 16
 Name
 5
+10
 pump_depth
 X
 3
@@ -1374,10 +1415,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1405,6 +1446,7 @@ Numeric
 16
 Name
 5
+15
 pump_efficiency
 X
 3
@@ -1432,10 +1474,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1463,6 +1505,7 @@ Numeric
 16
 Name
 5
+12
 pump_size_hp
 X
 3
@@ -1490,10 +1533,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1521,6 +1564,7 @@ Numeric
 16
 Name
 5
+9
 pump_work
 X
 3
@@ -1548,10 +1592,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1579,6 +1623,7 @@ Numeric
 16
 Name
 5
+26
 specified_pump_work_amount
 X
 3
@@ -1606,10 +1651,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1637,6 +1682,7 @@ CheckBox
 8
 Name
 5
+17
 specify_pump_work
 X
 3
@@ -1652,6 +1698,7 @@ Height
 21
 Caption
 5
+17
 Specify Pump Work
 State
 2
@@ -1665,6 +1712,7 @@ Numeric
 16
 Name
 5
+16
 temp_decline_max
 X
 3
@@ -1692,10 +1740,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1723,6 +1771,7 @@ Numeric
 16
 Name
 5
+17
 temp_decline_rate
 X
 3
@@ -1750,10 +1799,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1781,6 +1830,7 @@ Numeric
 16
 Name
 5
+13
 well_diameter
 X
 3
@@ -1808,10 +1858,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1839,6 +1889,7 @@ Numeric
 16
 Name
 5
+14
 well_flow_rate
 X
 3
@@ -1866,10 +1917,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1897,6 +1948,7 @@ Numeric
 16
 Name
 5
+13
 wet_bulb_temp
 X
 3
@@ -1924,10 +1976,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

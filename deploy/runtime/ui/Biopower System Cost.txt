@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 242
 Caption
 5
+20
 Direct Capital Costs
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox21
 X
 3
@@ -48,6 +51,7 @@ Height
 182
 Caption
 5
+22
 Indirect Capital Costs
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox31
 X
 3
@@ -73,6 +78,7 @@ Height
 77
 Caption
 5
+21
 Total Installed Costs
 Bold
 2
@@ -83,6 +89,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -98,6 +105,7 @@ Height
 21
 Caption
 5
+16
 % of Direct Cost
 TextColour
 4
@@ -126,6 +134,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -141,6 +150,7 @@ Height
 21
 Caption
 5
+14
 of direct cost
 TextColour
 4
@@ -169,6 +179,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -184,6 +195,7 @@ Height
 21
 Caption
 5
+18
 Non-fixed Cost ($)
 TextColour
 4
@@ -212,6 +224,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -227,6 +240,7 @@ Height
 21
 Caption
 5
+14
 Fixed Cost ($)
 TextColour
 4
@@ -255,6 +269,7 @@ Label
 12
 Name
 5
+7
 Label41
 X
 3
@@ -270,6 +285,7 @@ Height
 21
 Caption
 5
+9
 Total ($)
 TextColour
 4
@@ -298,6 +314,7 @@ Label
 12
 Name
 5
+7
 Label51
 X
 3
@@ -313,6 +330,7 @@ Height
 21
 Caption
 5
+10
 applies to
 TextColour
 4
@@ -341,6 +359,7 @@ Numeric
 16
 Name
 5
+18
 biopwr.cost.boiler
 X
 3
@@ -368,10 +387,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -399,6 +418,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.cost.boiler.cost_per_kw
 X
 3
@@ -426,10 +446,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -457,6 +477,7 @@ Numeric
 16
 Name
 5
+27
 biopwr.cost.boiler_capacity
 X
 3
@@ -484,10 +505,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -515,6 +536,7 @@ Numeric
 16
 Name
 5
+15
 biopwr.cost.bop
 X
 3
@@ -542,10 +564,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -573,6 +595,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.cost.bop_capacity
 X
 3
@@ -600,10 +623,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -631,6 +654,7 @@ Numeric
 16
 Name
 5
+22
 biopwr.cost.bop_per_kw
 X
 3
@@ -658,10 +682,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -689,6 +713,7 @@ Numeric
 16
 Name
 5
+23
 biopwr.cost.contingency
 X
 3
@@ -716,10 +741,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -747,6 +772,7 @@ Numeric
 16
 Name
 5
+31
 biopwr.cost.contingency_percent
 X
 3
@@ -774,10 +800,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -805,6 +831,7 @@ Numeric
 16
 Name
 5
+17
 biopwr.cost.dryer
 X
 3
@@ -832,10 +859,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -863,6 +890,7 @@ Numeric
 16
 Name
 5
+26
 biopwr.cost.dryer_capacity
 X
 3
@@ -890,10 +918,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -921,6 +949,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.cost.dryer_per_kw
 X
 3
@@ -948,10 +977,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -979,6 +1008,7 @@ Numeric
 16
 Name
 5
+21
 biopwr.cost.epc.fixed
 X
 3
@@ -1006,10 +1036,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1037,6 +1067,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.cost.epc.nonfixed
 X
 3
@@ -1064,10 +1095,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1095,6 +1126,7 @@ Numeric
 16
 Name
 5
+23
 biopwr.cost.epc.percent
 X
 3
@@ -1122,10 +1154,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1153,6 +1185,7 @@ Numeric
 16
 Name
 5
+21
 biopwr.cost.epc.total
 X
 3
@@ -1180,10 +1213,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1211,6 +1244,7 @@ Numeric
 16
 Name
 5
+21
 biopwr.cost.equipment
 X
 3
@@ -1238,10 +1272,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1269,6 +1303,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.cost.equipment.cost_per_kw
 X
 3
@@ -1296,10 +1331,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1327,6 +1362,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.cost.equipment_capacity
 X
 3
@@ -1354,10 +1390,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1385,6 +1421,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.cost.installed_per_capacity
 X
 3
@@ -1412,10 +1449,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1443,6 +1480,7 @@ Numeric
 16
 Name
 5
+21
 biopwr.cost.plm.fixed
 X
 3
@@ -1470,10 +1508,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1501,6 +1539,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.cost.plm.nonfixed
 X
 3
@@ -1528,10 +1567,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1559,6 +1598,7 @@ Numeric
 16
 Name
 5
+23
 biopwr.cost.plm.percent
 X
 3
@@ -1586,10 +1626,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1617,6 +1657,7 @@ Numeric
 16
 Name
 5
+21
 biopwr.cost.plm.total
 X
 3
@@ -1644,10 +1685,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1675,6 +1716,7 @@ Numeric
 16
 Name
 5
+16
 biopwr.cost.prep
 X
 3
@@ -1702,10 +1744,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1733,6 +1775,7 @@ Numeric
 16
 Name
 5
+25
 biopwr.cost.prep_capacity
 X
 3
@@ -1760,10 +1803,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1791,6 +1834,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.cost.prep_per_cap
 X
 3
@@ -1818,10 +1862,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1849,6 +1893,7 @@ Numeric
 16
 Name
 5
+29
 biopwr.cost.sales_tax.percent
 X
 3
@@ -1876,9 +1921,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1907,6 +1953,7 @@ Numeric
 16
 Name
 5
+27
 biopwr.cost.sales_tax.total
 X
 3
@@ -1934,10 +1981,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1965,6 +2012,7 @@ Numeric
 16
 Name
 5
+27
 biopwr.cost.sales_tax.value
 X
 3
@@ -1992,9 +2040,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2023,6 +2072,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.cost.total_direct
 X
 3
@@ -2050,10 +2100,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2081,6 +2131,7 @@ Numeric
 16
 Name
 5
+26
 biopwr.cost.total_indirect
 X
 3
@@ -2108,10 +2159,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2139,6 +2190,7 @@ Numeric
 16
 Name
 5
+19
 biopwr.cost.turbine
 X
 3
@@ -2166,10 +2218,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2197,6 +2249,7 @@ Numeric
 16
 Name
 5
+28
 biopwr.cost.turbine_capacity
 X
 3
@@ -2224,10 +2277,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2255,6 +2308,7 @@ Numeric
 16
 Name
 5
+26
 biopwr.cost.turbine_per_kw
 X
 3
@@ -2282,10 +2336,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2313,6 +2367,7 @@ Label
 12
 Name
 5
+16
 lblFinancingCost
 X
 3
@@ -2328,6 +2383,7 @@ Height
 36
 Caption
 5
+80
 Total Installed Cost excludes any financing costs from the Financing input page.
 TextColour
 4
@@ -2356,6 +2412,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2371,6 +2428,7 @@ Height
 21
 Caption
 5
+34
 Project, Land, Miscellaneous (PLM)
 TextColour
 4
@@ -2399,6 +2457,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2414,6 +2473,7 @@ Height
 21
 Caption
 5
+34
 Project, Land, Miscellaneous (PLM)
 TextColour
 4
@@ -2442,6 +2502,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2457,6 +2518,7 @@ Height
 21
 Caption
 5
+34
 Project, Land, Miscellaneous (PLM)
 TextColour
 4
@@ -2485,6 +2547,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2500,6 +2563,7 @@ Height
 21
 Caption
 5
+34
 Project, Land, Miscellaneous (PLM)
 TextColour
 4
@@ -2528,6 +2592,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2543,6 +2608,7 @@ Height
 21
 Caption
 5
+34
 Project, Land, Miscellaneous (PLM)
 TextColour
 4
@@ -2571,6 +2637,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2586,6 +2653,7 @@ Height
 21
 Caption
 5
+34
 Project, Land, Miscellaneous (PLM)
 TextColour
 4
@@ -2614,6 +2682,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2629,6 +2698,7 @@ Height
 21
 Caption
 5
+34
 Project, Land, Miscellaneous (PLM)
 TextColour
 4
@@ -2657,6 +2727,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2672,6 +2743,7 @@ Height
 21
 Caption
 5
+34
 Project, Land, Miscellaneous (PLM)
 TextColour
 4
@@ -2700,6 +2772,7 @@ Numeric
 16
 Name
 5
+20
 total_installed_cost
 X
 3
@@ -2727,10 +2800,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

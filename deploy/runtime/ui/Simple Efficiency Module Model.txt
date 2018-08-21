@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+13
 BifacialSpecs
 X
 3
@@ -23,6 +24,7 @@ Height
 140
 Caption
 5
+23
 Bifacial Specifications
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -48,6 +51,7 @@ Height
 323
 Caption
 5
+15
 Characteristics
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -73,6 +78,7 @@ Height
 341
 Caption
 5
+17
 Module Efficiency
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -98,6 +105,7 @@ Height
 341
 Caption
 5
+17
 Module Efficiency
 Bold
 2
@@ -108,6 +116,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -123,6 +132,7 @@ Height
 21
 Caption
 5
+17
 Irradiance (W/m²)
 TextColour
 4
@@ -151,6 +161,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -166,6 +177,7 @@ Height
 21
 Caption
 5
+14
 Efficiency (%)
 TextColour
 4
@@ -194,6 +206,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -209,6 +222,7 @@ Height
 39
 Caption
 5
+130
 1. Maximum power depends on the reference radiation and efficiency values specified below at a reference cell temperature of 25°C.
 TextColour
 4
@@ -237,6 +251,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -252,6 +267,7 @@ Height
 42
 Caption
 5
+96
 2. The reference irradiance and efficiency value determines the maximum power value shown above.
 TextColour
 4
@@ -280,6 +296,7 @@ Label
 12
 Name
 5
+8
 Label311
 X
 3
@@ -295,6 +312,7 @@ Height
 66
 Caption
 5
+167
 3. Irradiance values are total plane-of-array irradiance, equal to the sum of the direct normal (beam) and diffuse (scaled by the utilization factor above) components.
 TextColour
 4
@@ -323,6 +341,7 @@ Label
 12
 Name
 5
+7
 Label32
 X
 3
@@ -338,6 +357,7 @@ Height
 27
 Caption
 5
+49
 1. Irradiance levels must increase monotonically.
 TextColour
 4
@@ -366,6 +386,7 @@ Label
 12
 Name
 5
+7
 Label33
 X
 3
@@ -381,6 +402,7 @@ Height
 39
 Caption
 5
+136
 2. The Module Structure - Mounting options are used for temperature correction calculations. See Help for information about the options.
 TextColour
 4
@@ -409,6 +431,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -424,6 +447,7 @@ Height
 21
 Caption
 5
+19
 Reference Condition
 TextColour
 4
@@ -452,6 +476,7 @@ Button
 7
 Name
 5
+14
 btnLoadSPEData
 X
 3
@@ -467,6 +492,7 @@ Height
 24
 Caption
 5
+22
 Load data from file...
 TabOrder
 3
@@ -477,6 +503,7 @@ Button
 7
 Name
 5
+14
 btnSaveSPEData
 X
 3
@@ -492,6 +519,7 @@ Height
 24
 Caption
 5
+20
 Save data to file...
 TabOrder
 3
@@ -502,6 +530,7 @@ Hyperlink
 8
 Name
 5
+9
 object 14
 X
 3
@@ -517,9 +546,11 @@ Height
 21
 Caption
 5
+55
 Performance Model Documentation page on the SAM website
 URL
 5
+32
 https://sam.nrel.gov/performance
 TabOrder
 3
@@ -530,6 +561,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -545,6 +577,7 @@ Height
 117
 Caption
 5
+10
 References
 Bold
 2
@@ -555,6 +588,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -570,6 +604,7 @@ Height
 63
 Caption
 5
+195
 For information about the simple efficiency module model inputs, see Help. For details about the model implementation, see Gilman (2015) on the SAM website's Performance Model Documentation page:
 TextColour
 4
@@ -598,6 +633,7 @@ Numeric
 16
 Name
 5
+5
 spe_a
 X
 3
@@ -625,10 +661,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -656,6 +692,7 @@ Numeric
 16
 Name
 5
+8
 spe_area
 X
 3
@@ -683,10 +720,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -713,6 +750,7 @@ Numeric
 1
 16
 Name
+5
 5
 spe_b
 X
@@ -741,10 +779,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -772,6 +810,7 @@ Numeric
 16
 Name
 5
+36
 spe_bifacial_ground_clearance_height
 X
 3
@@ -799,10 +838,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -830,6 +869,7 @@ Numeric
 16
 Name
 5
+32
 spe_bifacial_transmission_factor
 X
 3
@@ -857,10 +897,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -888,6 +928,7 @@ Numeric
 16
 Name
 5
+15
 spe_bifaciality
 X
 3
@@ -915,10 +956,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -946,6 +987,7 @@ Numeric
 16
 Name
 5
+6
 spe_dT
 X
 3
@@ -973,10 +1015,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1004,6 +1046,7 @@ TextEntry
 10
 Name
 5
+17
 spe_data_filename
 X
 3
@@ -1019,7 +1062,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 0
@@ -1044,6 +1087,7 @@ Numeric
 16
 Name
 5
+8
 spe_eff0
 X
 3
@@ -1071,10 +1115,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1102,6 +1146,7 @@ Numeric
 16
 Name
 5
+8
 spe_eff1
 X
 3
@@ -1129,10 +1174,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1160,6 +1205,7 @@ Numeric
 16
 Name
 5
+8
 spe_eff2
 X
 3
@@ -1187,10 +1233,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1218,6 +1264,7 @@ Numeric
 16
 Name
 5
+8
 spe_eff3
 X
 3
@@ -1245,10 +1292,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1276,6 +1323,7 @@ Numeric
 16
 Name
 5
+8
 spe_eff4
 X
 3
@@ -1303,10 +1351,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1334,6 +1382,7 @@ Numeric
 16
 Name
 5
+6
 spe_fd
 X
 3
@@ -1361,10 +1410,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1392,6 +1441,7 @@ CheckBox
 8
 Name
 5
+15
 spe_is_bifacial
 X
 3
@@ -1407,6 +1457,7 @@ Height
 24
 Caption
 5
+20
 Modules are bifacial
 State
 2
@@ -1420,6 +1471,7 @@ Choice
 8
 Name
 5
+20
 spe_module_structure
 X
 3
@@ -1454,6 +1506,7 @@ Numeric
 16
 Name
 5
+9
 spe_power
 X
 3
@@ -1481,10 +1534,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1512,6 +1565,7 @@ Numeric
 16
 Name
 5
+8
 spe_rad0
 X
 3
@@ -1539,10 +1593,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1570,6 +1624,7 @@ Numeric
 16
 Name
 5
+8
 spe_rad1
 X
 3
@@ -1597,10 +1652,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1628,6 +1683,7 @@ Numeric
 16
 Name
 5
+8
 spe_rad2
 X
 3
@@ -1655,10 +1711,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1686,6 +1742,7 @@ Numeric
 16
 Name
 5
+8
 spe_rad3
 X
 3
@@ -1713,10 +1770,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1744,6 +1801,7 @@ Numeric
 16
 Name
 5
+8
 spe_rad4
 X
 3
@@ -1771,10 +1829,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1802,6 +1860,7 @@ RadioChoice
 10
 Name
 5
+13
 spe_reference
 X
 3
@@ -1841,6 +1900,7 @@ Numeric
 16
 Name
 5
+14
 spe_temp_coeff
 X
 3
@@ -1868,10 +1928,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1899,6 +1959,7 @@ Numeric
 16
 Name
 5
+7
 spe_vmp
 X
 3
@@ -1926,10 +1987,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1957,6 +2018,7 @@ Numeric
 16
 Name
 5
+7
 spe_voc
 X
 3
@@ -1984,10 +2046,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

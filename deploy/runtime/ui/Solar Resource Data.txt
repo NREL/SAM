@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 267
 Caption
 5
+22
 Solar Resource Library
 Bold
 2
@@ -33,6 +35,7 @@ Hyperlink
 8
 Name
 5
+10
 Hyperlink2
 X
 3
@@ -48,9 +51,11 @@ Height
 21
 Caption
 5
+123
 Go to SAM website Weather Page for information about NSRDB and PVGIS, and for links to other sources of solar resource data
 URL
 5
+33
 https://sam.nrel.gov/weather-data
 TabOrder
 3
@@ -61,6 +66,7 @@ Numeric
 16
 Name
 5
+11
 annual_beam
 X
 3
@@ -88,10 +94,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -119,6 +125,7 @@ Numeric
 16
 Name
 5
+14
 annual_diffuse
 X
 3
@@ -146,10 +153,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -177,6 +184,7 @@ Numeric
 16
 Name
 5
+13
 annual_global
 X
 3
@@ -204,10 +212,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -235,6 +243,7 @@ Numeric
 16
 Name
 5
+11
 annual_snow
 X
 3
@@ -262,10 +271,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -293,6 +302,7 @@ Numeric
 16
 Name
 5
+11
 annual_tdry
 X
 3
@@ -320,10 +330,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -351,6 +361,7 @@ Numeric
 16
 Name
 5
+11
 annual_wspd
 X
 3
@@ -378,10 +389,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -409,6 +420,7 @@ Button
 7
 Name
 5
+12
 btn_download
 X
 3
@@ -424,6 +436,7 @@ Height
 24
 Caption
 5
+30
 Download and add to library...
 TabOrder
 3
@@ -434,6 +447,7 @@ TextEntry
 10
 Name
 5
+4
 city
 X
 3
@@ -449,6 +463,7 @@ Height
 24
 Text
 5
+9
 Your City
 Editable
 2
@@ -474,6 +489,7 @@ TextEntry
 10
 Name
 5
+7
 country
 X
 3
@@ -489,6 +505,7 @@ Height
 24
 Text
 5
+3
 usa
 Editable
 2
@@ -514,6 +531,7 @@ Button
 7
 Name
 5
+15
 dview_for_solar
 X
 3
@@ -529,6 +547,7 @@ Height
 24
 Caption
 5
+12
 View data...
 TabOrder
 3
@@ -539,6 +558,7 @@ Numeric
 16
 Name
 5
+4
 elev
 X
 3
@@ -566,9 +586,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  m
 ThousandsSep
 2
@@ -597,6 +618,7 @@ TextEntry
 10
 Name
 5
+11
 in_location
 X
 3
@@ -612,7 +634,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1
@@ -637,6 +659,7 @@ StringArray
 8
 Name
 5
+16
 in_location_list
 X
 3
@@ -652,9 +675,11 @@ Height
 24
 Label
 5
+13
 Location List
 Description
 5
+51
 Type or import a list of addresses or lat,lon pairs
 TabOrder
 3
@@ -665,6 +690,7 @@ RadioChoice
 10
 Name
 5
+19
 in_location_options
 X
 3
@@ -701,6 +727,7 @@ Choice
 8
 Name
 5
+16
 in_nsrdb_options
 X
 3
@@ -733,6 +760,7 @@ Numeric
 16
 Name
 5
+3
 lat
 X
 3
@@ -760,9 +788,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+3
  °N
 ThousandsSep
 2
@@ -791,6 +820,7 @@ Label
 12
 Name
 5
+7
 lbl_csp
 X
 3
@@ -806,6 +836,7 @@ Height
 24
 Caption
 5
+92
 SAM's CSP models use a different time convention than NREL NSRDB data. See Help for details.
 TextColour
 4
@@ -834,6 +865,7 @@ MultilineText
 10
 Name
 5
+19
 library_folder_list
 X
 3
@@ -849,6 +881,7 @@ Height
 54
 Text
 5
+38
 List of Solar Resource library folders
 Editable
 2
@@ -874,6 +907,7 @@ Numeric
 16
 Name
 5
+3
 lon
 X
 3
@@ -901,9 +935,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+3
  °E
 ThousandsSep
 2
@@ -932,6 +967,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -956,6 +992,7 @@ Colour
 255
 Caption
 5
+50
 Annual Averages Calculated from Weather File  Data
 Bold
 2
@@ -966,6 +1003,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -990,6 +1028,7 @@ Colour
 255
 Caption
 5
+50
 Annual Averages Calculated from Weather File  Data
 Bold
 2
@@ -1000,6 +1039,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1015,6 +1055,7 @@ Height
 141
 Caption
 5
+22
 Download Weather Files
 Bold
 2
@@ -1025,6 +1066,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1040,6 +1082,7 @@ Height
 141
 Caption
 5
+22
 Download Weather Files
 Bold
 2
@@ -1050,6 +1093,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1065,6 +1109,7 @@ Height
 36
 Caption
 5
+198
 SAM scans the following folders on your computer for valid weather files and adds them to your Solar Resource library. To use weather files stored on your computer, add folders containing the files.
 TextColour
 4
@@ -1093,6 +1138,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1108,6 +1154,7 @@ Height
 36
 Caption
 5
+198
 SAM scans the following folders on your computer for valid weather files and adds them to your Solar Resource library. To use weather files stored on your computer, add folders containing the files.
 TextColour
 4
@@ -1136,6 +1183,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1151,6 +1199,7 @@ Height
 36
 Caption
 5
+198
 SAM scans the following folders on your computer for valid weather files and adds them to your Solar Resource library. To use weather files stored on your computer, add folders containing the files.
 TextColour
 4
@@ -1179,6 +1228,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1194,6 +1244,7 @@ Height
 36
 Caption
 5
+198
 SAM scans the following folders on your computer for valid weather files and adds them to your Solar Resource library. To use weather files stored on your computer, add folders containing the files.
 TextColour
 4
@@ -1222,6 +1273,7 @@ Button
 7
 Name
 5
+15
 refresh_library
 X
 3
@@ -1237,6 +1289,7 @@ Height
 24
 Caption
 5
+15
 Refresh library
 TabOrder
 3
@@ -1247,6 +1300,7 @@ TextEntry
 10
 Name
 5
+20
 solar_data_file_name
 X
 3
@@ -1262,7 +1316,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 0
@@ -1287,6 +1341,7 @@ Button
 7
 Name
 5
+19
 solar_data_settings
 X
 3
@@ -1302,6 +1357,7 @@ Height
 24
 Caption
 5
+34
 Add/remove weather file folders...
 TabOrder
 3
@@ -1312,6 +1368,7 @@ TextEntry
 10
 Name
 5
+17
 solar_data_source
 X
 3
@@ -1327,6 +1384,7 @@ Height
 24
 Text
 5
+3
 src
 Editable
 2
@@ -1352,6 +1410,7 @@ Library
 7
 Name
 5
+14
 solar_resource
 X
 3
@@ -1367,15 +1426,18 @@ Height
 126
 Library
 5
+17
 SolarResourceData
 Fields
 5
+69
 Name,Latitude,Longitude,Time zone,Elevation,Station ID,Source,Version
 TextEntry
 
 1
 10
 Name
+5
 5
 state
 X
@@ -1392,6 +1454,7 @@ Height
 24
 Text
 5
+2
 AX
 Editable
 2
@@ -1417,6 +1480,7 @@ TextEntry
 10
 Name
 5
+10
 station_id
 X
 3
@@ -1432,6 +1496,7 @@ Height
 24
 Text
 5
+4
 wban
 Editable
 2
@@ -1457,6 +1522,7 @@ Numeric
 16
 Name
 5
+2
 tz
 X
 3
@@ -1484,10 +1550,11 @@ Decimals
 3
 Prefix
 5
+4
 GMT 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

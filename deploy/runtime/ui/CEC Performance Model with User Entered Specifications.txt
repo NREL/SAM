@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+17
 6par_aisc_display
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -66,6 +67,7 @@ Choice
 8
 Name
 5
+15
 6par_aisc_units
 X
 3
@@ -96,6 +98,7 @@ Numeric
 16
 Name
 5
+9
 6par_area
 X
 3
@@ -123,10 +126,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -154,6 +157,7 @@ Numeric
 16
 Name
 5
+37
 6par_bifacial_ground_clearance_height
 X
 3
@@ -181,10 +185,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -212,6 +216,7 @@ Numeric
 16
 Name
 5
+33
 6par_bifacial_transmission_factor
 X
 3
@@ -239,10 +244,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -270,6 +275,7 @@ Numeric
 16
 Name
 5
+16
 6par_bifaciality
 X
 3
@@ -297,10 +303,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -328,6 +334,7 @@ Numeric
 16
 Name
 5
+17
 6par_bvoc_display
 X
 3
@@ -355,10 +362,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -386,6 +393,7 @@ Choice
 8
 Name
 5
+15
 6par_bvoc_units
 X
 3
@@ -416,6 +424,7 @@ Choice
 8
 Name
 5
+13
 6par_celltech
 X
 3
@@ -450,6 +459,7 @@ TextEntry
 10
 Name
 5
+18
 6par_data_filename
 X
 3
@@ -465,7 +475,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 0
@@ -490,6 +500,7 @@ Numeric
 16
 Name
 5
+9
 6par_gpmp
 X
 3
@@ -517,10 +528,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -548,6 +559,7 @@ Numeric
 16
 Name
 5
+8
 6par_imp
 X
 3
@@ -575,10 +587,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -606,6 +618,7 @@ CheckBox
 8
 Name
 5
+16
 6par_is_bifacial
 X
 3
@@ -621,6 +634,7 @@ Height
 24
 Caption
 5
+20
 Modules are bifacial
 State
 2
@@ -634,6 +648,7 @@ Numeric
 16
 Name
 5
+8
 6par_isc
 X
 3
@@ -661,10 +676,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -692,6 +707,7 @@ TextEntry
 10
 Name
 5
+16
 6par_module_name
 X
 3
@@ -707,6 +723,7 @@ Height
 21
 Text
 5
+30
 Generic polycrystalline module
 Editable
 2
@@ -732,6 +749,7 @@ Choice
 8
 Name
 5
+13
 6par_mounting
 X
 3
@@ -760,6 +778,7 @@ Numeric
 16
 Name
 5
+10
 6par_mpeff
 X
 3
@@ -787,10 +806,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -818,6 +837,7 @@ Numeric
 16
 Name
 5
+9
 6par_nser
 X
 3
@@ -845,10 +865,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -876,6 +896,7 @@ Numeric
 16
 Name
 5
+8
 6par_pmp
 X
 3
@@ -903,10 +924,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -934,6 +955,7 @@ Choice
 8
 Name
 5
+13
 6par_standoff
 X
 3
@@ -962,6 +984,7 @@ Numeric
 16
 Name
 5
+10
 6par_tnoct
 X
 3
@@ -989,10 +1012,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1020,6 +1043,7 @@ Numeric
 16
 Name
 5
+8
 6par_vmp
 X
 3
@@ -1047,10 +1071,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1078,6 +1102,7 @@ Numeric
 16
 Name
 5
+8
 6par_voc
 X
 3
@@ -1105,10 +1130,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1136,6 +1161,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -1151,6 +1177,7 @@ Height
 233
 Caption
 5
+19
 General Information
 Bold
 2
@@ -1161,6 +1188,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -1176,6 +1204,7 @@ Height
 218
 Caption
 5
+25
 Electrical Specifications
 Bold
 2
@@ -1186,6 +1215,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -1201,6 +1231,7 @@ Height
 218
 Caption
 5
+25
 Electrical Specifications
 Bold
 2
@@ -1211,6 +1242,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -1226,6 +1258,7 @@ Height
 77
 Caption
 5
+22
 Mounting Configuration
 Bold
 2
@@ -1236,6 +1269,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -1251,6 +1285,7 @@ Height
 80
 Caption
 5
+42
 Nominal Maximum Power Point Ratings at STC
 Bold
 2
@@ -1261,6 +1296,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox5
 X
 3
@@ -1276,6 +1312,7 @@ Height
 419
 Caption
 5
+34
 Current-Voltage (I-V) Curve at STC
 Bold
 2
@@ -1286,6 +1323,7 @@ Button
 7
 Name
 5
+14
 btnCalcIVCurve
 X
 3
@@ -1301,6 +1339,7 @@ Height
 21
 Caption
 5
+18
 Calculate and plot
 TabOrder
 3
@@ -1311,6 +1350,7 @@ Button
 7
 Name
 5
+15
 btnLoad6parData
 X
 3
@@ -1326,6 +1366,7 @@ Height
 24
 Caption
 5
+22
 Load data from file...
 TabOrder
 3
@@ -1336,6 +1377,7 @@ Button
 7
 Name
 5
+15
 btnSave6parData
 X
 3
@@ -1351,6 +1393,7 @@ Height
 24
 Caption
 5
+20
 Save data to file...
 TabOrder
 3
@@ -1361,6 +1404,7 @@ Divider
 9
 Name
 5
+15
 dividerBifacial
 X
 3
@@ -1385,6 +1429,7 @@ Colour
 255
 Caption
 5
+23
 Bifacial Specifications
 Bold
 2
@@ -1394,6 +1439,7 @@ GroupBox
 1
 7
 Name
+5
 5
 group
 X
@@ -1410,6 +1456,7 @@ Height
 87
 Caption
 5
+10
 References
 Bold
 2
@@ -1420,6 +1467,7 @@ Plot
 5
 Name
 5
+6
 ivplot
 X
 3
@@ -1439,6 +1487,7 @@ Hyperlink
 8
 Name
 5
+9
 object 14
 X
 3
@@ -1454,9 +1503,11 @@ Height
 21
 Caption
 5
+51
 Performance Model Documentation page on SAM website
 URL
 5
+32
 https://sam.nrel.gov/performance
 TabOrder
 3
@@ -1467,6 +1518,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1482,6 +1534,7 @@ Height
 42
 Caption
 5
+181
 For information about the CEC module model inputs, see Help. For details about the model implementation, see Gilman (2015) on the SAM website's Performance Model Documentation page:
 TextColour
 4

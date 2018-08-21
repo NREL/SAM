@@ -8,6 +8,7 @@ Label
 12
 Name
 5
+8
 Label211
 X
 3
@@ -23,6 +24,7 @@ Height
 60
 Caption
 5
+411
 When subarrays have different orientations, modules in each subarray are exposed to different levels of solar radiation and wind speed, which results in different subarray cell temperatures and maximum power point voltages (Vmp). The voltage mismatch causes electrical losses and an inverter input voltage less than Vmp. By default, SAM estimates the inverter input voltage by averaging the subarray Vmp values.
 TextColour
 4
@@ -51,6 +53,7 @@ Label
 12
 Name
 5
+9
 Label2111
 X
 3
@@ -66,6 +69,7 @@ Height
 57
 Caption
 5
+301
 If you are using the CEC or IEC 61853 module model, SAM can more accurately estimate the inverter input voltage. This option requires longer simulation times to calculate mismatch losses. This more accurate method generally results in lower system output than the default method. See Help for details.
 TextColour
 4
@@ -94,6 +98,7 @@ CheckBox
 8
 Name
 5
+25
 enable_mismatch_vmax_calc
 X
 3
@@ -109,6 +114,7 @@ Height
 42
 Caption
 5
+120
 Calculate maximum power voltage for array and associated losses due to subarray mismatch (CEC and IEC 61853 models only)
 State
 2
@@ -122,6 +128,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -137,6 +144,7 @@ Height
 189
 Caption
 5
+37
 Subarray Voltage Mismatch Calculation
 Bold
 2

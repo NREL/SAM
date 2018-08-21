@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 485
 Caption
 5
+12
 Depreciation
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -48,6 +51,7 @@ Height
 21
 Caption
 5
+10
 5-yr MACRS
 TextColour
 4
@@ -76,6 +80,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -91,6 +96,7 @@ Height
 21
 Caption
 5
+11
 15-yr MACRS
 TextColour
 4
@@ -119,6 +125,7 @@ Label
 12
 Name
 5
+8
 Label112
 X
 3
@@ -134,6 +141,7 @@ Height
 21
 Caption
 5
+18
 5-yr Straight Line
 TextColour
 4
@@ -162,6 +170,7 @@ Label
 12
 Name
 5
+9
 Label1121
 X
 3
@@ -177,6 +186,7 @@ Height
 21
 Caption
 5
+19
 15-yr Straight Line
 TextColour
 4
@@ -205,6 +215,7 @@ Label
 12
 Name
 5
+10
 Label11211
 X
 3
@@ -220,6 +231,7 @@ Height
 21
 Caption
 5
+19
 20-yr Straight Line
 TextColour
 4
@@ -248,6 +260,7 @@ Label
 12
 Name
 5
+11
 Label112111
 X
 3
@@ -263,6 +276,7 @@ Height
 21
 Caption
 5
+19
 39-yr Straight Line
 TextColour
 4
@@ -291,6 +305,7 @@ Label
 12
 Name
 5
+8
 Label113
 X
 3
@@ -306,6 +321,7 @@ Height
 21
 Caption
 5
+22
 Non-depreciable assets
 TextColour
 4
@@ -334,6 +350,7 @@ Label
 12
 Name
 5
+9
 Label1131
 X
 3
@@ -349,6 +366,7 @@ Height
 21
 Caption
 5
+7
 Custom 
 TextColour
 4
@@ -377,6 +395,7 @@ Label
 12
 Name
 5
+9
 Label1132
 X
 3
@@ -392,6 +411,7 @@ Height
 21
 Caption
 5
+6
 Bonus:
 TextColour
 4
@@ -420,6 +440,7 @@ Label
 12
 Name
 5
+12
 Label1211111
 X
 3
@@ -435,6 +456,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -463,6 +485,7 @@ Label
 12
 Name
 5
+13
 Label12111111
 X
 3
@@ -478,6 +501,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -506,6 +530,7 @@ Label
 12
 Name
 5
+11
 Label121121
 X
 3
@@ -521,6 +546,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -549,6 +575,7 @@ Label
 12
 Name
 5
+12
 Label1211211
 X
 3
@@ -564,6 +591,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -592,6 +620,7 @@ Label
 12
 Name
 5
+12
 Label1211212
 X
 3
@@ -607,6 +636,7 @@ Height
 21
 Caption
 5
+18
 Bonus Depreciation
 TextColour
 4
@@ -635,6 +665,7 @@ Label
 12
 Name
 5
+13
 Label12112121
 X
 3
@@ -650,6 +681,7 @@ Height
 21
 Caption
 5
+17
 ITC Qualification
 TextColour
 4
@@ -678,6 +710,7 @@ Label
 12
 Name
 5
+12
 Label1211213
 X
 3
@@ -693,6 +726,7 @@ Height
 21
 Caption
 5
+7
 Classes
 TextColour
 4
@@ -721,6 +755,7 @@ Label
 12
 Name
 5
+13
 Label12112131
 X
 3
@@ -736,6 +771,7 @@ Height
 21
 Caption
 5
+11
 Allocations
 TextColour
 4
@@ -764,6 +800,7 @@ Label
 12
 Name
 5
+10
 LabelDepr1
 X
 3
@@ -779,6 +816,7 @@ Height
 39
 Caption
 5
+156
 The allocation for each depreciation class is a percentage of the total capital cost. Allocations apply to both state depreciation and federal depreciation.
 TextColour
 4
@@ -807,6 +845,7 @@ Label
 12
 Name
 5
+10
 LabelDepr3
 X
 3
@@ -822,6 +861,7 @@ Height
 39
 Caption
 5
+170
 Check the box for each asset class that qualifies for federal or state bonus depreciation, and enter the bonus amount as a percentage of the total qualifying allocations.
 TextColour
 4
@@ -850,6 +890,7 @@ Label
 12
 Name
 5
+10
 LabelDepr4
 X
 3
@@ -865,6 +906,7 @@ Height
 42
 Caption
 5
+215
 Total capital cost includes the total installed cost from the System Costs page and other financial costs and fees from the Financial Parameters page. SAM displays the value in the Metrics table on the Results page.
 TextColour
 4
@@ -893,6 +935,7 @@ Label
 12
 Name
 5
+11
 LabelDepr41
 X
 3
@@ -908,6 +951,7 @@ Height
 39
 Caption
 5
+146
 Check the box for each asset class that qualifies for the investment tax credit (ITC). This determines the basis used to calculate the ITC amount.
 TextColour
 4
@@ -936,6 +980,7 @@ Numeric
 16
 Name
 5
+25
 depr_alloc_custom_percent
 X
 3
@@ -963,9 +1008,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -994,6 +1040,7 @@ Numeric
 16
 Name
 5
+27
 depr_alloc_macrs_15_percent
 X
 3
@@ -1021,9 +1068,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1052,6 +1100,7 @@ Numeric
 16
 Name
 5
+26
 depr_alloc_macrs_5_percent
 X
 3
@@ -1079,9 +1128,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1110,6 +1160,7 @@ Numeric
 16
 Name
 5
+15
 depr_alloc_none
 X
 3
@@ -1137,9 +1188,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1168,6 +1220,7 @@ Numeric
 16
 Name
 5
+24
 depr_alloc_sl_15_percent
 X
 3
@@ -1195,9 +1248,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1226,6 +1280,7 @@ Numeric
 16
 Name
 5
+24
 depr_alloc_sl_20_percent
 X
 3
@@ -1253,9 +1308,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1284,6 +1340,7 @@ Numeric
 16
 Name
 5
+24
 depr_alloc_sl_39_percent
 X
 3
@@ -1311,9 +1368,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1342,6 +1400,7 @@ Numeric
 16
 Name
 5
+23
 depr_alloc_sl_5_percent
 X
 3
@@ -1369,9 +1428,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1400,6 +1460,7 @@ Numeric
 16
 Name
 5
+14
 depr_bonus_fed
 X
 3
@@ -1427,9 +1488,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1458,6 +1520,7 @@ CheckBox
 8
 Name
 5
+21
 depr_bonus_fed_custom
 X
 3
@@ -1473,7 +1536,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1486,6 +1549,7 @@ CheckBox
 8
 Name
 5
+23
 depr_bonus_fed_macrs_15
 X
 3
@@ -1501,7 +1565,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1514,6 +1578,7 @@ CheckBox
 8
 Name
 5
+22
 depr_bonus_fed_macrs_5
 X
 3
@@ -1529,7 +1594,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1542,6 +1607,7 @@ CheckBox
 8
 Name
 5
+20
 depr_bonus_fed_sl_15
 X
 3
@@ -1557,7 +1623,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1570,6 +1636,7 @@ CheckBox
 8
 Name
 5
+20
 depr_bonus_fed_sl_20
 X
 3
@@ -1585,7 +1652,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1598,6 +1665,7 @@ CheckBox
 8
 Name
 5
+20
 depr_bonus_fed_sl_39
 X
 3
@@ -1613,7 +1681,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1626,6 +1694,7 @@ CheckBox
 8
 Name
 5
+19
 depr_bonus_fed_sl_5
 X
 3
@@ -1641,7 +1710,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1654,6 +1723,7 @@ Numeric
 16
 Name
 5
+14
 depr_bonus_sta
 X
 3
@@ -1681,9 +1751,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1712,6 +1783,7 @@ CheckBox
 8
 Name
 5
+21
 depr_bonus_sta_custom
 X
 3
@@ -1727,7 +1799,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1740,6 +1812,7 @@ CheckBox
 8
 Name
 5
+23
 depr_bonus_sta_macrs_15
 X
 3
@@ -1755,7 +1828,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1768,6 +1841,7 @@ CheckBox
 8
 Name
 5
+22
 depr_bonus_sta_macrs_5
 X
 3
@@ -1783,7 +1857,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1796,6 +1870,7 @@ CheckBox
 8
 Name
 5
+20
 depr_bonus_sta_sl_15
 X
 3
@@ -1811,7 +1886,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1824,6 +1899,7 @@ CheckBox
 8
 Name
 5
+20
 depr_bonus_sta_sl_20
 X
 3
@@ -1839,7 +1915,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1852,6 +1928,7 @@ CheckBox
 8
 Name
 5
+20
 depr_bonus_sta_sl_39
 X
 3
@@ -1867,7 +1944,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1880,6 +1957,7 @@ CheckBox
 8
 Name
 5
+19
 depr_bonus_sta_sl_5
 X
 3
@@ -1895,7 +1973,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1908,6 +1986,7 @@ SchedNumeric
 11
 Name
 5
+20
 depr_custom_schedule
 X
 3
@@ -1923,6 +2002,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -1935,7 +2015,7 @@ FixedLength
 4294967295
 Description
 5
- 
+0
 TabOrder
 3
 8
@@ -1945,6 +2025,7 @@ CheckBox
 8
 Name
 5
+19
 depr_itc_fed_custom
 X
 3
@@ -1960,7 +2041,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -1973,6 +2054,7 @@ CheckBox
 8
 Name
 5
+21
 depr_itc_fed_macrs_15
 X
 3
@@ -1988,7 +2070,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2001,6 +2083,7 @@ CheckBox
 8
 Name
 5
+20
 depr_itc_fed_macrs_5
 X
 3
@@ -2016,7 +2099,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2029,6 +2112,7 @@ CheckBox
 8
 Name
 5
+18
 depr_itc_fed_sl_15
 X
 3
@@ -2044,7 +2128,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2057,6 +2141,7 @@ CheckBox
 8
 Name
 5
+18
 depr_itc_fed_sl_20
 X
 3
@@ -2072,7 +2157,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2085,6 +2170,7 @@ CheckBox
 8
 Name
 5
+18
 depr_itc_fed_sl_39
 X
 3
@@ -2100,7 +2186,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2113,6 +2199,7 @@ CheckBox
 8
 Name
 5
+17
 depr_itc_fed_sl_5
 X
 3
@@ -2128,7 +2215,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2141,6 +2228,7 @@ CheckBox
 8
 Name
 5
+19
 depr_itc_sta_custom
 X
 3
@@ -2156,7 +2244,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2169,6 +2257,7 @@ CheckBox
 8
 Name
 5
+21
 depr_itc_sta_macrs_15
 X
 3
@@ -2184,7 +2273,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2197,6 +2286,7 @@ CheckBox
 8
 Name
 5
+20
 depr_itc_sta_macrs_5
 X
 3
@@ -2212,7 +2302,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2225,6 +2315,7 @@ CheckBox
 8
 Name
 5
+18
 depr_itc_sta_sl_15
 X
 3
@@ -2240,7 +2331,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2253,6 +2344,7 @@ CheckBox
 8
 Name
 5
+18
 depr_itc_sta_sl_20
 X
 3
@@ -2268,7 +2360,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2281,6 +2373,7 @@ CheckBox
 8
 Name
 5
+18
 depr_itc_sta_sl_39
 X
 3
@@ -2296,7 +2389,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0
@@ -2309,6 +2402,7 @@ CheckBox
 8
 Name
 5
+17
 depr_itc_sta_sl_5
 X
 3
@@ -2324,7 +2418,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 0

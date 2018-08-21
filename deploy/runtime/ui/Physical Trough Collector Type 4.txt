@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 107
 Caption
 5
+18
 Collector Geometry
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 101
 Caption
 5
+18
 Optical Parameters
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -73,6 +78,7 @@ Height
 80
 Caption
 5
+20
 Optical Calculations
 Bold
 2
@@ -83,6 +89,7 @@ DataArray
 9
 Name
 5
+6
 IAMs_4
 X
 3
@@ -101,10 +108,10 @@ Mode
 2
 Label
 5
- 
+0
 Description
 5
- 
+0
 TabOrder
 3
 4294967295
@@ -114,6 +121,7 @@ Button
 7
 Name
 5
+25
 apply_collector_library_4
 X
 3
@@ -129,6 +137,7 @@ Height
 21
 Caption
 5
+25
 Apply Values from Library
 TabOrder
 3
@@ -139,6 +148,7 @@ Numeric
 16
 Name
 5
+23
 csp_dtr_sca_ap_length_4
 X
 3
@@ -166,10 +176,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -197,6 +207,7 @@ Numeric
 16
 Name
 5
+22
 csp_dtr_sca_aperture_4
 X
 3
@@ -224,10 +235,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -255,6 +266,7 @@ Numeric
 16
 Name
 5
+27
 csp_dtr_sca_ave_focal_len_4
 X
 3
@@ -282,10 +294,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -313,6 +325,7 @@ Numeric
 16
 Name
 5
+27
 csp_dtr_sca_calc_end_loss_4
 X
 3
@@ -340,10 +353,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -371,6 +384,7 @@ Numeric
 16
 Name
 5
+22
 csp_dtr_sca_calc_iam_4
 X
 3
@@ -398,10 +412,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -429,6 +443,7 @@ Numeric
 16
 Name
 5
+26
 csp_dtr_sca_calc_sca_eff_4
 X
 3
@@ -456,10 +471,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -487,6 +502,7 @@ Numeric
 16
 Name
 5
+32
 csp_dtr_sca_clean_reflectivity_4
 X
 3
@@ -514,10 +530,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -545,6 +561,7 @@ Numeric
 16
 Name
 5
+27
 csp_dtr_sca_general_error_4
 X
 3
@@ -572,10 +589,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -603,6 +620,7 @@ Numeric
 16
 Name
 5
+30
 csp_dtr_sca_geometry_effects_4
 X
 3
@@ -630,10 +648,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -661,6 +679,7 @@ Numeric
 16
 Name
 5
+20
 csp_dtr_sca_length_4
 X
 3
@@ -688,10 +707,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -719,6 +738,7 @@ Numeric
 16
 Name
 5
+25
 csp_dtr_sca_mirror_dirt_4
 X
 3
@@ -746,10 +766,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -777,6 +797,7 @@ Numeric
 16
 Name
 5
+26
 csp_dtr_sca_ncol_per_sca_4
 X
 3
@@ -804,10 +825,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -835,6 +856,7 @@ TextEntry
 10
 Name
 5
+25
 csp_dtr_sca_notify_text_4
 X
 3
@@ -850,7 +872,7 @@ Height
 21
 Text
 5
- 
+0
 Editable
 2
 0
@@ -875,6 +897,7 @@ Numeric
 16
 Name
 5
+25
 csp_dtr_sca_piping_dist_4
 X
 3
@@ -902,10 +925,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -933,6 +956,7 @@ Numeric
 16
 Name
 5
+28
 csp_dtr_sca_tracking_error_4
 X
 3
@@ -960,10 +984,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -991,6 +1015,7 @@ Numeric
 16
 Name
 5
+23
 csp_dtr_sca_w_profile_4
 X
 3
@@ -1018,10 +1043,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

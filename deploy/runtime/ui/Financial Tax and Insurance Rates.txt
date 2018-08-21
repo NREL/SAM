@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 152
 Caption
 5
+31
 Project Tax and Insurance Rates
 Bold
 2
@@ -33,6 +35,7 @@ SchedNumeric
 11
 Name
 5
+16
 federal_tax_rate
 X
 3
@@ -48,6 +51,7 @@ Height
 24
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -60,7 +64,7 @@ FixedLength
 4294967295
 Description
 5
- 
+0
 TabOrder
 3
 4294967295
@@ -70,6 +74,7 @@ Numeric
 16
 Name
 5
+14
 insurance_rate
 X
 3
@@ -97,10 +102,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -128,6 +133,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -152,6 +158,7 @@ Colour
 255
 Caption
 5
+12
 Property Tax
 Bold
 2
@@ -162,6 +169,7 @@ Numeric
 16
 Name
 5
+25
 prop_tax_assessed_decline
 X
 3
@@ -189,10 +197,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -220,6 +228,7 @@ Numeric
 16
 Name
 5
+30
 prop_tax_cost_assessed_percent
 X
 3
@@ -247,10 +256,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -278,6 +287,7 @@ Numeric
 16
 Name
 5
+23
 property_assessed_value
 X
 3
@@ -305,10 +315,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -336,6 +347,7 @@ Numeric
 16
 Name
 5
+17
 property_tax_rate
 X
 3
@@ -363,10 +375,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -394,6 +406,7 @@ Numeric
 16
 Name
 5
+14
 sales_tax_rate
 X
 3
@@ -421,10 +434,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -452,6 +465,7 @@ SchedNumeric
 11
 Name
 5
+14
 state_tax_rate
 X
 3
@@ -467,6 +481,7 @@ Height
 24
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -479,7 +494,7 @@ FixedLength
 4294967295
 Description
 5
- 
+0
 TabOrder
 3
 4294967295

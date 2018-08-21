@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 146
 Caption
 5
+22
 Dedicated Energy Crops
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 146
 Caption
 5
+22
 Dedicated Energy Crops
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox21
 X
 3
@@ -73,6 +78,7 @@ Height
 173
 Caption
 5
+27
 Supplemental Coal Feedstock
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -98,6 +105,7 @@ Height
 851
 Caption
 5
+26
 Biomass Feedstock Resource
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -123,6 +132,7 @@ Height
 242
 Caption
 5
+20
 Traditional Residues
 Bold
 2
@@ -133,6 +143,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox6
 X
 3
@@ -148,6 +159,7 @@ Height
 230
 Caption
 5
+11
 Feedstock 1
 Bold
 2
@@ -158,6 +170,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox7
 X
 3
@@ -173,6 +186,7 @@ Height
 230
 Caption
 5
+11
 Feedstock 2
 Bold
 2
@@ -183,6 +197,7 @@ Divider
 9
 Name
 5
+6
 HLine1
 X
 3
@@ -207,7 +222,7 @@ Colour
 255
 Caption
 5
- 
+0
 Bold
 2
 1
@@ -217,6 +232,7 @@ Hyperlink
 8
 Name
 5
+10
 Hyperlink1
 X
 3
@@ -232,9 +248,11 @@ Height
 21
 Caption
 5
+32
 BIOBIB - A Database for biofuels
 URL
 5
+34
 http://www.vt.tuwien.ac.at/biobib/
 TabOrder
 3
@@ -245,6 +263,7 @@ Hyperlink
 8
 Name
 5
+10
 Hyperlink2
 X
 3
@@ -260,9 +279,11 @@ Height
 21
 Caption
 5
+46
 PHYLLIS - The composition of biomass and waste
 URL
 5
+37
 http://www.ecn.nl/phyllis/single.html
 TabOrder
 3
@@ -273,6 +294,7 @@ Hyperlink
 8
 Name
 5
+10
 Hyperlink3
 X
 3
@@ -288,9 +310,11 @@ Height
 21
 Caption
 5
+23
 U.S. Billion Ton Update
 URL
 5
+59
 http://www1.eere.energy.gov/biomass/billion_ton_update.html
 TabOrder
 3
@@ -300,6 +324,7 @@ Label
 1
 12
 Name
+5
 5
 Label
 X
@@ -316,6 +341,7 @@ Height
 21
 Caption
 5
+60
 Elemental compositions and heating values are available at: 
 TextColour
 4
@@ -344,6 +370,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -359,6 +386,7 @@ Height
 21
 Caption
 5
+26
 Wt frac of total feedstock
 TextColour
 4
@@ -387,6 +415,7 @@ Label
 12
 Name
 5
+7
 Label10
 X
 3
@@ -402,6 +431,7 @@ Height
 21
 Caption
 5
+24
 2004-2008 5-year average
 TextColour
 4
@@ -430,6 +460,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -445,6 +476,7 @@ Height
 21
 Caption
 5
+10
 Btu/dry lb
 TextColour
 4
@@ -473,6 +505,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -488,6 +521,7 @@ Height
 21
 Caption
 5
+10
 Btu/dry lb
 TextColour
 4
@@ -516,6 +550,7 @@ Label
 12
 Name
 5
+8
 Label211
 X
 3
@@ -531,6 +566,7 @@ Height
 21
 Caption
 5
+10
 Btu/dry lb
 TextColour
 4
@@ -559,6 +595,7 @@ Label
 12
 Name
 5
+9
 Label2111
 X
 3
@@ -574,6 +611,7 @@ Height
 21
 Caption
 5
+10
 Btu/dry lb
 TextColour
 4
@@ -602,6 +640,7 @@ Label
 12
 Name
 5
+8
 Label212
 X
 3
@@ -617,6 +656,7 @@ Height
 21
 Caption
 5
+10
 Btu/dry lb
 TextColour
 4
@@ -645,6 +685,7 @@ Label
 12
 Name
 5
+9
 Label2121
 X
 3
@@ -660,6 +701,7 @@ Height
 21
 Caption
 5
+10
 Btu/dry lb
 TextColour
 4
@@ -688,6 +730,7 @@ Label
 12
 Name
 5
+9
 Label2122
 X
 3
@@ -703,6 +746,7 @@ Height
 21
 Caption
 5
+10
 Btu/dry lb
 TextColour
 4
@@ -731,6 +775,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -746,6 +791,7 @@ Height
 21
 Caption
 5
+24
 Average LHV (Btu/dry lb)
 TextColour
 4
@@ -774,6 +820,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -789,6 +836,7 @@ Height
 21
 Caption
 5
+22
 Resource Obtainability
 TextColour
 4
@@ -817,6 +865,7 @@ Label
 12
 Name
 5
+8
 Label411
 X
 3
@@ -832,6 +881,7 @@ Height
 21
 Caption
 5
+18
 Resource Available
 TextColour
 4
@@ -860,6 +910,7 @@ Label
 12
 Name
 5
+9
 Label4111
 X
 3
@@ -875,6 +926,7 @@ Height
 21
 Caption
 5
+18
 Resource Available
 TextColour
 4
@@ -903,6 +955,7 @@ Label
 12
 Name
 5
+10
 Label41111
 X
 3
@@ -918,6 +971,7 @@ Height
 21
 Caption
 5
+26
 Higher Heating Value (HHV)
 TextColour
 4
@@ -946,6 +1000,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -961,6 +1016,7 @@ Height
 21
 Caption
 5
+24
 Average HHV (Btu/dry lb)
 TextColour
 4
@@ -989,6 +1045,7 @@ Label
 12
 Name
 5
+6
 Label6
 X
 3
@@ -1004,6 +1061,7 @@ Height
 21
 Caption
 5
+7
 Biomass
 TextColour
 4
@@ -1032,6 +1090,7 @@ Label
 12
 Name
 5
+7
 Label61
 X
 3
@@ -1047,6 +1106,7 @@ Height
 21
 Caption
 5
+16
 Moisture (wet %)
 TextColour
 4
@@ -1075,6 +1135,7 @@ Label
 12
 Name
 5
+7
 Label62
 X
 3
@@ -1090,6 +1151,7 @@ Height
 18
 Caption
 5
+16
 Moisture (wet %)
 TextColour
 4
@@ -1118,6 +1180,7 @@ Label
 12
 Name
 5
+6
 Label7
 X
 3
@@ -1133,6 +1196,7 @@ Height
 21
 Caption
 5
+4
 Coal
 TextColour
 4
@@ -1161,6 +1225,7 @@ Label
 12
 Name
 5
+6
 Label8
 X
 3
@@ -1176,6 +1241,7 @@ Height
 21
 Caption
 5
+7
 Overall
 TextColour
 4
@@ -1204,6 +1270,7 @@ Label
 12
 Name
 5
+7
 Label91
 X
 3
@@ -1219,6 +1286,7 @@ Height
 36
 Caption
 5
+172
 Uses methodology of the Billion Ton Update Study to predict future energy crop availability (for years 2012 - 2030). Note that the project still begins in the present year.
 TextColour
 4
@@ -1247,6 +1315,7 @@ CheckBox
 8
 Name
 5
+31
 biopwr.feedstock.additional_opt
 X
 3
@@ -1262,6 +1331,7 @@ Height
 21
 Caption
 5
+29
 Specify additional feedstocks
 State
 2
@@ -1275,6 +1345,7 @@ Numeric
 16
 Name
 5
+37
 biopwr.feedstock.bagasse_moisture_wet
 X
 3
@@ -1302,9 +1373,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1333,6 +1405,7 @@ Numeric
 16
 Name
 5
+35
 biopwr.feedstock.bagasse_obtainable
 X
 3
@@ -1360,9 +1433,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1391,6 +1465,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstock.bagasse_resource
 X
 3
@@ -1418,10 +1493,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1449,6 +1524,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstock.barley_moisture_wet
 X
 3
@@ -1476,9 +1552,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1507,6 +1584,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstock.barley_obtainable
 X
 3
@@ -1534,9 +1612,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1565,6 +1644,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstock.barley_resource
 X
 3
@@ -1592,10 +1672,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1623,6 +1703,7 @@ Numeric
 16
 Name
 5
+29
 biopwr.feedstock.biomass_frac
 X
 3
@@ -1650,10 +1731,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1681,6 +1762,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.feedstock.bit_hhv
 X
 3
@@ -1708,10 +1790,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1739,6 +1821,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstock.bit_moisture_wet
 X
 3
@@ -1766,9 +1849,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1797,6 +1881,7 @@ Numeric
 16
 Name
 5
+29
 biopwr.feedstock.bit_resource
 X
 3
@@ -1824,10 +1909,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1855,6 +1940,7 @@ Numeric
 16
 Name
 5
+26
 biopwr.feedstock.coal_frac
 X
 3
@@ -1882,10 +1968,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1913,6 +1999,7 @@ CheckBox
 8
 Name
 5
+25
 biopwr.feedstock.coal_opt
 X
 3
@@ -1928,6 +2015,7 @@ Height
 21
 Caption
 5
+46
 Use a coal feedstock to augment plant capacity
 State
 2
@@ -1941,6 +2029,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstock.collection_radius
 X
 3
@@ -1968,10 +2057,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1999,6 +2088,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstock.collection_year
 X
 3
@@ -2026,10 +2116,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2057,6 +2147,7 @@ Numeric
 16
 Name
 5
+29
 biopwr.feedstock.feedstock1_c
 X
 3
@@ -2084,9 +2175,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2115,6 +2207,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstock.feedstock1_calc_hhv
 X
 3
@@ -2142,10 +2235,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2173,6 +2266,7 @@ Numeric
 16
 Name
 5
+29
 biopwr.feedstock.feedstock1_h
 X
 3
@@ -2200,9 +2294,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2231,6 +2326,7 @@ Numeric
 16
 Name
 5
+40
 biopwr.feedstock.feedstock1_moisture_wet
 X
 3
@@ -2258,9 +2354,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2289,6 +2386,7 @@ Numeric
 16
 Name
 5
+29
 biopwr.feedstock.feedstock1_n
 X
 3
@@ -2316,9 +2414,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2347,6 +2446,7 @@ RadioChoice
 10
 Name
 5
+31
 biopwr.feedstock.feedstock1_opt
 X
 3
@@ -2383,6 +2483,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstock.feedstock1_resource
 X
 3
@@ -2410,10 +2511,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2441,6 +2542,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstock.feedstock1_user_hhv
 X
 3
@@ -2468,10 +2570,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2499,6 +2601,7 @@ Numeric
 16
 Name
 5
+29
 biopwr.feedstock.feedstock2_c
 X
 3
@@ -2526,9 +2629,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2557,6 +2661,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstock.feedstock2_calc_hhv
 X
 3
@@ -2584,10 +2689,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2615,6 +2720,7 @@ Numeric
 16
 Name
 5
+29
 biopwr.feedstock.feedstock2_h
 X
 3
@@ -2642,9 +2748,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2673,6 +2780,7 @@ Numeric
 16
 Name
 5
+40
 biopwr.feedstock.feedstock2_moisture_wet
 X
 3
@@ -2700,9 +2808,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2731,6 +2840,7 @@ Numeric
 16
 Name
 5
+29
 biopwr.feedstock.feedstock2_n
 X
 3
@@ -2758,9 +2868,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2789,6 +2900,7 @@ RadioChoice
 10
 Name
 5
+31
 biopwr.feedstock.feedstock2_opt
 X
 3
@@ -2825,6 +2937,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstock.feedstock2_resource
 X
 3
@@ -2852,10 +2965,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2883,6 +2996,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstock.feedstock2_user_hhv
 X
 3
@@ -2910,10 +3024,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2941,6 +3055,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstock.forest_moisture_wet
 X
 3
@@ -2968,9 +3083,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2999,6 +3115,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstock.forest_obtainable
 X
 3
@@ -3026,9 +3143,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3057,6 +3175,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstock.forest_resource
 X
 3
@@ -3084,10 +3203,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3115,6 +3234,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstock.herb_moisture_wet
 X
 3
@@ -3142,9 +3262,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3173,6 +3294,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstock.herb_obtainable
 X
 3
@@ -3200,9 +3322,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3231,6 +3354,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.feedstock.herb_resource
 X
 3
@@ -3258,10 +3382,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3289,6 +3413,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.feedstock.lig_hhv
 X
 3
@@ -3316,10 +3441,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3347,6 +3472,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstock.lig_moisture_wet
 X
 3
@@ -3374,9 +3500,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3405,6 +3532,7 @@ Numeric
 16
 Name
 5
+29
 biopwr.feedstock.lig_resource
 X
 3
@@ -3432,10 +3560,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3463,6 +3591,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstock.mill_moisture_wet
 X
 3
@@ -3490,9 +3619,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3521,6 +3651,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstock.mill_obtainable
 X
 3
@@ -3548,9 +3679,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3579,6 +3711,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.feedstock.mill_resource
 X
 3
@@ -3606,10 +3739,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3637,6 +3770,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstock.rice_moisture_wet
 X
 3
@@ -3664,9 +3798,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3695,6 +3830,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstock.rice_obtainable
 X
 3
@@ -3722,9 +3858,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3753,6 +3890,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.feedstock.rice_resource
 X
 3
@@ -3780,10 +3918,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3811,6 +3949,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstock.stover_moisture_wet
 X
 3
@@ -3838,9 +3977,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3869,6 +4009,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstock.stover_obtainable
 X
 3
@@ -3896,9 +4037,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3927,6 +4069,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstock.stover_resource
 X
 3
@@ -3954,10 +4097,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3985,6 +4128,7 @@ Numeric
 16
 Name
 5
+27
 biopwr.feedstock.subbit_hhv
 X
 3
@@ -4012,10 +4156,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4043,6 +4187,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstock.subbit_moisture_wet
 X
 3
@@ -4070,9 +4215,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -4101,6 +4247,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstock.subbit_resource
 X
 3
@@ -4128,10 +4275,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4159,6 +4306,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.feedstock.total_biomass
 X
 3
@@ -4186,10 +4334,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4217,6 +4365,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstock.total_biomass_hhv
 X
 3
@@ -4244,10 +4393,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4275,6 +4424,7 @@ Numeric
 16
 Name
 5
+38
 biopwr.feedstock.total_biomass_hhv_avg
 X
 3
@@ -4302,10 +4452,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4333,6 +4483,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstock.total_biomass_lhv
 X
 3
@@ -4360,10 +4511,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4391,6 +4542,7 @@ Numeric
 16
 Name
 5
+27
 biopwr.feedstock.total_coal
 X
 3
@@ -4418,10 +4570,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4449,6 +4601,7 @@ Numeric
 16
 Name
 5
+31
 biopwr.feedstock.total_coal_hhv
 X
 3
@@ -4476,10 +4629,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4507,6 +4660,7 @@ Numeric
 16
 Name
 5
+35
 biopwr.feedstock.total_coal_hhv_avg
 X
 3
@@ -4534,10 +4688,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4565,6 +4719,7 @@ Numeric
 16
 Name
 5
+31
 biopwr.feedstock.total_coal_lhv
 X
 3
@@ -4592,10 +4747,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4623,6 +4778,7 @@ Numeric
 16
 Name
 5
+26
 biopwr.feedstock.total_hhv
 X
 3
@@ -4650,10 +4806,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4681,6 +4837,7 @@ Numeric
 16
 Name
 5
+26
 biopwr.feedstock.total_lhv
 X
 3
@@ -4708,10 +4865,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4739,6 +4896,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstock.total_nameplate
 X
 3
@@ -4766,10 +4924,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4797,6 +4955,7 @@ Numeric
 16
 Name
 5
+35
 biopwr.feedstock.urban_moisture_wet
 X
 3
@@ -4824,9 +4983,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -4855,6 +5015,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstock.urban_obtainable
 X
 3
@@ -4882,9 +5043,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -4913,6 +5075,7 @@ Numeric
 16
 Name
 5
+31
 biopwr.feedstock.urban_resource
 X
 3
@@ -4940,10 +5103,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4971,6 +5134,7 @@ Numeric
 16
 Name
 5
+35
 biopwr.feedstock.wheat_moisture_wet
 X
 3
@@ -4998,9 +5162,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -5029,6 +5194,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstock.wheat_obtainable
 X
 3
@@ -5056,9 +5222,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -5087,6 +5254,7 @@ Numeric
 16
 Name
 5
+31
 biopwr.feedstock.wheat_resource
 X
 3
@@ -5114,10 +5282,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5145,6 +5313,7 @@ Numeric
 16
 Name
 5
+35
 biopwr.feedstock.woody_moisture_wet
 X
 3
@@ -5172,9 +5341,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -5203,6 +5373,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstock.woody_obtainable
 X
 3
@@ -5230,9 +5401,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -5261,6 +5433,7 @@ Numeric
 16
 Name
 5
+31
 biopwr.feedstock.woody_resource
 X
 3
@@ -5288,10 +5461,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5319,6 +5492,7 @@ Button
 7
 Name
 5
+19
 btnQueryEnergyCrops
 X
 3
@@ -5334,6 +5508,7 @@ Height
 24
 Caption
 5
+46
 Download energy crop data for this location...
 TabOrder
 3
@@ -5344,6 +5519,7 @@ Button
 7
 Name
 5
+16
 btnQueryResource
 X
 3
@@ -5359,6 +5535,7 @@ Height
 24
 Caption
 5
+54
 Download traditional residue data for this location...
 TabOrder
 3

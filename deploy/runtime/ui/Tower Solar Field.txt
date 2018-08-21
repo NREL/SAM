@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 434
 Caption
 5
+15
 Heliostat Field
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -48,6 +51,7 @@ Height
 434
 Caption
 5
+15
 Heliostat Field
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox1a
 X
 3
@@ -73,6 +78,7 @@ Height
 141
 Caption
 5
+23
 Atmospheric Attenuation
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -98,6 +105,7 @@ Height
 140
 Caption
 5
+30
 Solar Field Layout Constraints
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox51
 X
 3
@@ -123,6 +132,7 @@ Height
 204
 Caption
 5
+9
 Land Area
 Bold
 2
@@ -133,6 +143,7 @@ Button
 7
 Name
 5
+12
 btn_optimize
 X
 3
@@ -148,6 +159,7 @@ Height
 25
 Caption
 5
+29
 Optimize solar field geometry
 TabOrder
 3
@@ -158,6 +170,7 @@ Button
 7
 Name
 5
+14
 btn_solarpilot
 X
 3
@@ -173,6 +186,7 @@ Height
 25
 Caption
 5
+25
 Generate heliostat layout
 TabOrder
 3
@@ -183,6 +197,7 @@ Numeric
 16
 Name
 5
+7
 c_atm_0
 X
 3
@@ -210,10 +225,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -241,6 +256,7 @@ Numeric
 16
 Name
 5
+7
 c_atm_1
 X
 3
@@ -268,10 +284,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -299,6 +315,7 @@ Numeric
 16
 Name
 5
+7
 c_atm_2
 X
 3
@@ -326,10 +343,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -357,6 +374,7 @@ Numeric
 16
 Name
 5
+7
 c_atm_3
 X
 3
@@ -384,10 +402,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -415,6 +433,7 @@ Numeric
 16
 Name
 5
+10
 c_atm_info
 X
 3
@@ -442,10 +461,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -473,6 +492,7 @@ Choice
 8
 Name
 5
+9
 cant_type
 X
 3
@@ -501,6 +521,7 @@ Numeric
 16
 Name
 5
+25
 csp.pt.sf.fixed_land_area
 X
 3
@@ -528,10 +549,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -559,6 +580,7 @@ Numeric
 16
 Name
 5
+24
 csp.pt.sf.heliostat_area
 X
 3
@@ -586,10 +608,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -617,6 +639,7 @@ Numeric
 16
 Name
 5
+30
 csp.pt.sf.land_overhead_factor
 X
 3
@@ -644,10 +667,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -675,6 +698,7 @@ Numeric
 16
 Name
 5
+25
 csp.pt.sf.total_land_area
 X
 3
@@ -702,10 +726,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -733,6 +757,7 @@ Numeric
 16
 Name
 5
+22
 csp.pt.sf.tower_height
 X
 3
@@ -760,10 +785,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -791,6 +816,7 @@ Numeric
 16
 Name
 5
+11
 dens_mirror
 X
 3
@@ -818,10 +844,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -849,6 +875,7 @@ Numeric
 16
 Name
 5
+12
 dni_des_calc
 X
 3
@@ -876,10 +903,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -907,6 +934,7 @@ Numeric
 16
 Name
 5
+11
 error_equiv
 X
 3
@@ -934,10 +962,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -965,6 +993,7 @@ Choice
 8
 Name
 5
+10
 focus_type
 X
 3
@@ -993,6 +1022,7 @@ Numeric
 16
 Name
 5
+15
 hel_stow_deploy
 X
 3
@@ -1020,10 +1050,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1051,6 +1081,7 @@ Numeric
 16
 Name
 5
+21
 helio_active_fraction
 X
 3
@@ -1078,10 +1109,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1109,6 +1140,7 @@ Numeric
 16
 Name
 5
+14
 helio_area_tot
 X
 3
@@ -1136,10 +1168,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1167,6 +1199,7 @@ Numeric
 16
 Name
 5
+12
 helio_height
 X
 3
@@ -1194,10 +1227,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1225,6 +1258,7 @@ GroupBox
 7
 Name
 5
+9
 helio_ops
 X
 3
@@ -1240,6 +1274,7 @@ Height
 138
 Caption
 5
+19
 Heliostat Operation
 Bold
 2
@@ -1250,6 +1285,7 @@ Numeric
 16
 Name
 5
+24
 helio_optical_error_mrad
 X
 3
@@ -1277,10 +1313,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1308,6 +1344,7 @@ DataMatrix
 22
 Name
 5
+15
 helio_positions
 X
 3
@@ -1335,7 +1372,7 @@ ShowRowLabels
 0
 RowLabels
 5
- 
+0
 ShadeR0C0
 2
 0
@@ -1350,11 +1387,14 @@ ShowColLabels
 1
 ColLabels
 5
+34
 X Position, Y Position, Z Position
 NumRowsLabel
 5
+11
 Heliostats:
 NumColsLabel
+5
 5
 Cols:
 Layout
@@ -1365,6 +1405,7 @@ ChoiceColumn
 4294967295
 Choices
 5
+15
 Choice1,Choice2
 HideColumn
 3
@@ -1378,6 +1419,7 @@ Numeric
 16
 Name
 5
+17
 helio_reflectance
 X
 3
@@ -1405,10 +1447,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1436,6 +1478,7 @@ Numeric
 16
 Name
 5
+11
 helio_width
 X
 3
@@ -1463,10 +1506,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1494,6 +1537,7 @@ Numeric
 16
 Name
 5
+14
 land_area_base
 X
 3
@@ -1521,10 +1565,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1552,6 +1596,7 @@ Numeric
 16
 Name
 5
+8
 land_max
 X
 3
@@ -1579,10 +1624,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1610,6 +1655,7 @@ Numeric
 16
 Name
 5
+13
 land_max_calc
 X
 3
@@ -1637,10 +1683,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1668,6 +1714,7 @@ Numeric
 16
 Name
 5
+8
 land_min
 X
 3
@@ -1695,10 +1742,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1726,6 +1773,7 @@ Numeric
 16
 Name
 5
+13
 land_min_calc
 X
 3
@@ -1753,10 +1801,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1784,6 +1832,7 @@ Numeric
 16
 Name
 5
+9
 n_facet_x
 X
 3
@@ -1811,10 +1860,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1842,6 +1891,7 @@ Numeric
 16
 Name
 5
+9
 n_facet_y
 X
 3
@@ -1869,10 +1919,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1900,6 +1950,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1915,6 +1966,7 @@ Height
 102
 Caption
 5
+28
 Heliostat field availability
 Bold
 2
@@ -1925,6 +1977,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1940,6 +1993,7 @@ Height
 102
 Caption
 5
+28
 Heliostat field availability
 Bold
 2
@@ -1950,6 +2004,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1965,6 +2020,7 @@ Height
 63
 Caption
 5
+152
 Solar field geometry optimization calculates the number of heliostats above, and tower height, receiver height and diameter on Tower and Receiver page. 
 TextColour
 4
@@ -1993,6 +2049,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2008,6 +2065,7 @@ Height
 63
 Caption
 5
+152
 Solar field geometry optimization calculates the number of heliostats above, and tower height, receiver height and diameter on Tower and Receiver page. 
 TextColour
 4
@@ -2036,6 +2094,7 @@ GroupBox
 7
 Name
 5
+7
 opt_box
 X
 3
@@ -2051,6 +2110,7 @@ Height
 111
 Caption
 5
+21
 Optimization Settings
 Bold
 2
@@ -2061,6 +2121,7 @@ Numeric
 16
 Name
 5
+12
 opt_conv_tol
 X
 3
@@ -2088,10 +2149,10 @@ Decimals
 5
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2119,6 +2180,7 @@ Numeric
 16
 Name
 5
+13
 opt_init_step
 X
 3
@@ -2146,10 +2208,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2177,6 +2239,7 @@ Numeric
 16
 Name
 5
+12
 opt_max_iter
 X
 3
@@ -2204,10 +2267,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2235,6 +2298,7 @@ CheckBox
 8
 Name
 5
+15
 override_layout
 X
 3
@@ -2250,6 +2314,7 @@ Height
 24
 Caption
 5
+27
 Always layout automatically
 State
 2
@@ -2263,6 +2328,7 @@ CheckBox
 8
 Name
 5
+12
 override_opt
 X
 3
@@ -2278,6 +2344,7 @@ Height
 24
 Caption
 5
+15
 Always optimize
 State
 2
@@ -2291,6 +2358,7 @@ Numeric
 16
 Name
 5
+7
 p_start
 X
 3
@@ -2318,10 +2386,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2349,6 +2417,7 @@ Numeric
 16
 Name
 5
+7
 p_track
 X
 3
@@ -2376,10 +2445,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2407,6 +2476,7 @@ LossAdjustment
 6
 Name
 5
+9
 sf_adjust
 X
 3
@@ -2429,6 +2499,7 @@ Plot
 5
 Name
 5
+6
 sfplot
 X
 3
@@ -2448,6 +2519,7 @@ Numeric
 16
 Name
 5
+10
 v_wind_max
 X
 3
@@ -2475,10 +2547,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2506,6 +2578,7 @@ Numeric
 16
 Name
 5
+17
 washing_frequency
 X
 3
@@ -2533,10 +2606,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2564,6 +2637,7 @@ Numeric
 16
 Name
 5
+20
 water_usage_per_wash
 X
 3
@@ -2591,10 +2665,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

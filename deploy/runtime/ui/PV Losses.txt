@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 335
 Caption
 5
+9
 DC Losses
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -48,6 +51,7 @@ Height
 335
 Caption
 5
+9
 DC Losses
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox6
 X
 3
@@ -73,6 +78,7 @@ Height
 123
 Caption
 5
+18
 Transformer Losses
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox6
 X
 3
@@ -98,6 +105,7 @@ Height
 123
 Caption
 5
+18
 Transformer Losses
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox7
 X
 3
@@ -123,6 +132,7 @@ Height
 80
 Caption
 5
+19
 Transmission Losses
 Bold
 2
@@ -133,6 +143,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -148,6 +159,7 @@ Height
 21
 Caption
 5
+27
 Average annual soiling loss
 TextColour
 4
@@ -176,6 +188,7 @@ Label
 12
 Name
 5
+7
 Label12
 X
 3
@@ -191,6 +204,7 @@ Height
 21
 Caption
 5
+26
 Diodes and connections (%)
 TextColour
 4
@@ -219,6 +233,7 @@ Label
 12
 Name
 5
+8
 Label121
 X
 3
@@ -234,6 +249,7 @@ Height
 21
 Caption
 5
+19
 Module mismatch (%)
 TextColour
 4
@@ -262,6 +278,7 @@ Label
 12
 Name
 5
+11
 Label121111
 X
 3
@@ -277,6 +294,7 @@ Height
 21
 Caption
 5
+20
 Monthly soiling loss
 TextColour
 4
@@ -305,6 +323,7 @@ Label
 12
 Name
 5
+9
 Label1213
 X
 3
@@ -320,6 +339,7 @@ Height
 21
 Caption
 5
+18
 Tracking error (%)
 TextColour
 4
@@ -348,6 +368,7 @@ Label
 12
 Name
 5
+8
 Label123
 X
 3
@@ -363,6 +384,7 @@ Height
 21
 Caption
 5
+27
 DC power optimizer loss (%)
 TextColour
 4
@@ -391,6 +413,7 @@ Label
 12
 Name
 5
+8
 Label123
 X
 3
@@ -406,6 +429,7 @@ Height
 21
 Caption
 5
+27
 DC power optimizer loss (%)
 TextColour
 4
@@ -434,6 +458,7 @@ Label
 12
 Name
 5
+9
 Label1231
 X
 3
@@ -449,6 +474,7 @@ Height
 21
 Caption
 5
+23
 Total DC power loss (%)
 TextColour
 4
@@ -477,6 +503,7 @@ Label
 12
 Name
 5
+7
 Label14
 X
 3
@@ -492,6 +519,7 @@ Height
 21
 Caption
 5
+13
 DC wiring (%)
 TextColour
 4
@@ -520,6 +548,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -535,6 +564,7 @@ Height
 21
 Caption
 5
+10
 Subarray 2
 TextColour
 4
@@ -563,6 +593,7 @@ Label
 12
 Name
 5
+7
 Label41
 X
 3
@@ -578,6 +609,7 @@ Height
 21
 Caption
 5
+10
 Subarray 3
 TextColour
 4
@@ -606,6 +638,7 @@ Label
 12
 Name
 5
+8
 Label411
 X
 3
@@ -621,6 +654,7 @@ Height
 21
 Caption
 5
+10
 Subarray 4
 TextColour
 4
@@ -649,6 +683,7 @@ Label
 12
 Name
 5
+9
 Label4111
 X
 3
@@ -664,6 +699,7 @@ Height
 21
 Caption
 5
+10
 Subarray 1
 TextColour
 4
@@ -692,6 +728,7 @@ Divider
 9
 Name
 5
+15
 ac_loss_divider
 X
 3
@@ -716,6 +753,7 @@ Colour
 255
 Caption
 5
+9
 AC Losses
 Bold
 2
@@ -726,6 +764,7 @@ Numeric
 16
 Name
 5
+13
 acwiring_loss
 X
 3
@@ -753,10 +792,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -784,6 +823,7 @@ LossAdjustment
 6
 Name
 5
+6
 adjust
 X
 3
@@ -806,6 +846,7 @@ Button
 7
 Name
 5
+10
 btn_dc_opt
 X
 3
@@ -821,6 +862,7 @@ Height
 24
 Caption
 5
+13
 DC optimizers
 TabOrder
 3
@@ -831,6 +873,7 @@ Button
 7
 Name
 5
+17
 btn_microinverter
 X
 3
@@ -846,6 +889,7 @@ Height
 24
 Caption
 5
+14
 Microinverters
 TabOrder
 3
@@ -856,6 +900,7 @@ Button
 7
 Name
 5
+14
 btn_string_inv
 X
 3
@@ -871,6 +916,7 @@ Height
 24
 Caption
 5
+17
 Central inverters
 TabOrder
 3
@@ -881,6 +927,7 @@ LossAdjustment
 6
 Name
 5
+9
 dc_adjust
 X
 3
@@ -903,6 +950,7 @@ Divider
 9
 Name
 5
+15
 dc_loss_divider
 X
 3
@@ -927,6 +975,7 @@ Colour
 255
 Caption
 5
+9
 DC Losses
 Bold
 2
@@ -937,6 +986,7 @@ Numeric
 16
 Name
 5
+16
 dcoptimizer_loss
 X
 3
@@ -964,10 +1014,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -995,6 +1045,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -1019,6 +1070,7 @@ Colour
 255
 Caption
 5
+17
 Default DC Losses
 Bold
 2
@@ -1029,6 +1081,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1044,6 +1097,7 @@ Height
 150
 Caption
 5
+17
 Irradiance Losses
 Bold
 2
@@ -1054,6 +1108,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1069,6 +1124,7 @@ Height
 24
 Caption
 5
+129
 AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
 TextColour
 4
@@ -1097,6 +1153,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1112,6 +1169,7 @@ Height
 24
 Caption
 5
+129
 AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
 TextColour
 4
@@ -1140,6 +1198,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1155,6 +1214,7 @@ Height
 24
 Caption
 5
+129
 AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
 TextColour
 4
@@ -1183,6 +1243,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1198,6 +1259,7 @@ Height
 24
 Caption
 5
+129
 AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
 TextColour
 4
@@ -1226,6 +1288,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1241,6 +1304,7 @@ Height
 24
 Caption
 5
+129
 AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
 TextColour
 4
@@ -1269,6 +1333,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1284,6 +1349,7 @@ Height
 24
 Caption
 5
+129
 AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
 TextColour
 4
@@ -1312,6 +1378,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1327,6 +1394,7 @@ Height
 24
 Caption
 5
+129
 AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
 TextColour
 4
@@ -1355,6 +1423,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1370,6 +1439,7 @@ Height
 24
 Caption
 5
+129
 AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
 TextColour
 4
@@ -1398,6 +1468,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1413,6 +1484,7 @@ Height
 24
 Caption
 5
+129
 AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
 TextColour
 4
@@ -1441,6 +1513,7 @@ Label
 12
 Name
 5
+8
 object 8
 X
 3
@@ -1456,6 +1529,7 @@ Height
 24
 Caption
 5
+63
 Transmission losses apply to the system generated power output.
 TextColour
 4
@@ -1484,6 +1558,7 @@ Numeric
 16
 Name
 5
+16
 subarray1_dcloss
 X
 3
@@ -1511,10 +1586,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1542,6 +1617,7 @@ Numeric
 16
 Name
 5
+23
 subarray1_dcwiring_loss
 X
 3
@@ -1569,10 +1645,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1600,6 +1676,7 @@ Numeric
 16
 Name
 5
+24
 subarray1_diodeconn_loss
 X
 3
@@ -1627,10 +1704,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1658,6 +1735,7 @@ Numeric
 16
 Name
 5
+23
 subarray1_mismatch_loss
 X
 3
@@ -1685,10 +1763,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1716,6 +1794,7 @@ Numeric
 16
 Name
 5
+24
 subarray1_nameplate_loss
 X
 3
@@ -1743,10 +1822,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1774,6 +1853,7 @@ MonthlyFactor
 7
 Name
 5
+17
 subarray1_soiling
 X
 3
@@ -1789,6 +1869,7 @@ Height
 24
 Description
 5
+34
 Soiling losses for sub-array 1 (%)
 TabOrder
 3
@@ -1799,6 +1880,7 @@ Numeric
 16
 Name
 5
+32
 subarray1_soiling_annual_average
 X
 3
@@ -1826,10 +1908,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1857,6 +1939,7 @@ Numeric
 16
 Name
 5
+23
 subarray1_tracking_loss
 X
 3
@@ -1884,10 +1967,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1915,6 +1998,7 @@ Numeric
 16
 Name
 5
+16
 subarray2_dcloss
 X
 3
@@ -1942,10 +2026,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1973,6 +2057,7 @@ Numeric
 16
 Name
 5
+23
 subarray2_dcwiring_loss
 X
 3
@@ -2000,10 +2085,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2031,6 +2116,7 @@ Numeric
 16
 Name
 5
+24
 subarray2_diodeconn_loss
 X
 3
@@ -2058,10 +2144,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2089,6 +2175,7 @@ Numeric
 16
 Name
 5
+23
 subarray2_mismatch_loss
 X
 3
@@ -2116,10 +2203,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2147,6 +2234,7 @@ Numeric
 16
 Name
 5
+24
 subarray2_nameplate_loss
 X
 3
@@ -2174,10 +2262,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2205,6 +2293,7 @@ MonthlyFactor
 7
 Name
 5
+17
 subarray2_soiling
 X
 3
@@ -2220,6 +2309,7 @@ Height
 24
 Description
 5
+34
 Soiling losses for sub-array 2 (%)
 TabOrder
 3
@@ -2230,6 +2320,7 @@ Numeric
 16
 Name
 5
+32
 subarray2_soiling_annual_average
 X
 3
@@ -2257,10 +2348,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2288,6 +2379,7 @@ Numeric
 16
 Name
 5
+23
 subarray2_tracking_loss
 X
 3
@@ -2315,10 +2407,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2346,6 +2438,7 @@ Numeric
 16
 Name
 5
+16
 subarray3_dcloss
 X
 3
@@ -2373,10 +2466,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2404,6 +2497,7 @@ Numeric
 16
 Name
 5
+23
 subarray3_dcwiring_loss
 X
 3
@@ -2431,10 +2525,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2462,6 +2556,7 @@ Numeric
 16
 Name
 5
+24
 subarray3_diodeconn_loss
 X
 3
@@ -2489,10 +2584,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2520,6 +2615,7 @@ Numeric
 16
 Name
 5
+23
 subarray3_mismatch_loss
 X
 3
@@ -2547,10 +2643,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2578,6 +2674,7 @@ Numeric
 16
 Name
 5
+24
 subarray3_nameplate_loss
 X
 3
@@ -2605,10 +2702,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2636,6 +2733,7 @@ MonthlyFactor
 7
 Name
 5
+17
 subarray3_soiling
 X
 3
@@ -2651,6 +2749,7 @@ Height
 24
 Description
 5
+34
 Soiling losses for sub-array 3 (%)
 TabOrder
 3
@@ -2661,6 +2760,7 @@ Numeric
 16
 Name
 5
+32
 subarray3_soiling_annual_average
 X
 3
@@ -2688,10 +2788,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2719,6 +2819,7 @@ Numeric
 16
 Name
 5
+23
 subarray3_tracking_loss
 X
 3
@@ -2746,10 +2847,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2777,6 +2878,7 @@ Numeric
 16
 Name
 5
+16
 subarray4_dcloss
 X
 3
@@ -2804,10 +2906,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2835,6 +2937,7 @@ Numeric
 16
 Name
 5
+23
 subarray4_dcwiring_loss
 X
 3
@@ -2862,10 +2965,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2893,6 +2996,7 @@ Numeric
 16
 Name
 5
+24
 subarray4_diodeconn_loss
 X
 3
@@ -2920,10 +3024,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2951,6 +3055,7 @@ Numeric
 16
 Name
 5
+23
 subarray4_mismatch_loss
 X
 3
@@ -2978,10 +3083,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3009,6 +3114,7 @@ Numeric
 16
 Name
 5
+24
 subarray4_nameplate_loss
 X
 3
@@ -3036,10 +3142,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3067,6 +3173,7 @@ MonthlyFactor
 7
 Name
 5
+17
 subarray4_soiling
 X
 3
@@ -3082,6 +3189,7 @@ Height
 24
 Description
 5
+34
 Soiling losses for sub-array 4 (%)
 TabOrder
 3
@@ -3092,6 +3200,7 @@ Numeric
 16
 Name
 5
+32
 subarray4_soiling_annual_average
 X
 3
@@ -3119,10 +3228,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3150,6 +3259,7 @@ Numeric
 16
 Name
 5
+23
 subarray4_tracking_loss
 X
 3
@@ -3177,10 +3287,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3208,6 +3318,7 @@ Numeric
 16
 Name
 5
+21
 transformer_load_loss
 X
 3
@@ -3235,10 +3346,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3266,6 +3377,7 @@ Numeric
 16
 Name
 5
+24
 transformer_no_load_loss
 X
 3
@@ -3293,10 +3405,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3324,6 +3436,7 @@ Numeric
 16
 Name
 5
+17
 transmission_loss
 X
 3
@@ -3351,10 +3464,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

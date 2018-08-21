@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 107
 Caption
 5
+25
 Resource Characterization
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -48,6 +51,7 @@ Height
 101
 Caption
 5
+17
 Calculated Design
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox6
 X
 3
@@ -73,6 +78,7 @@ Height
 233
 Caption
 5
+20
 Reservoir Parameters
 Bold
 2
@@ -83,6 +89,7 @@ Numeric
 16
 Name
 5
+14
 fracture_angle
 X
 3
@@ -110,10 +117,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -141,6 +148,7 @@ Numeric
 16
 Name
 5
+18
 fracture_aperature
 X
 3
@@ -168,10 +176,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -199,6 +207,7 @@ Numeric
 16
 Name
 5
+14
 fracture_width
 X
 3
@@ -226,10 +235,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -257,6 +266,7 @@ Numeric
 16
 Name
 5
+27
 geotherm.avg_reservoir_temp
 X
 3
@@ -284,10 +294,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -315,6 +325,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.avg_reservoir_tempF
 X
 3
@@ -342,10 +353,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -373,6 +384,7 @@ Numeric
 16
 Name
 5
+29
 geotherm.bottom_hole_pressure
 X
 3
@@ -400,10 +412,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -431,6 +443,7 @@ Numeric
 16
 Name
 5
+32
 geotherm.bottom_hole_pressureBar
 X
 3
@@ -458,10 +471,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -489,6 +502,7 @@ Numeric
 16
 Name
 5
+33
 geotherm.delta_pressure_reservoir
 X
 3
@@ -516,10 +530,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -547,6 +561,7 @@ Numeric
 16
 Name
 5
+36
 geotherm.delta_pressure_reservoirBar
 X
 3
@@ -574,10 +589,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -605,6 +620,7 @@ TextEntry
 10
 Name
 5
+16
 geotherm.errors2
 X
 3
@@ -620,7 +636,7 @@ Height
 21
 Text
 5
- 
+0
 Editable
 2
 0
@@ -645,6 +661,7 @@ Numeric
 16
 Name
 5
+22
 inj_prod_well_distance
 X
 3
@@ -672,10 +689,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -703,6 +720,7 @@ Numeric
 16
 Name
 5
+13
 num_fractures
 X
 3
@@ -730,10 +748,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -761,6 +779,7 @@ Hyperlink
 8
 Name
 5
+9
 object 14
 X
 3
@@ -776,9 +795,11 @@ Height
 24
 Caption
 5
+42
 View the NREL Geothermal Prospector online
 URL
 5
+34
 http://maps.nrel.gov/gt_prospector
 TabOrder
 3
@@ -789,6 +810,7 @@ Numeric
 16
 Name
 5
+16
 reservoir_height
 X
 3
@@ -816,10 +838,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -847,6 +869,7 @@ Numeric
 16
 Name
 5
+22
 reservoir_permeability
 X
 3
@@ -874,10 +897,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -905,6 +928,7 @@ Numeric
 16
 Name
 5
+25
 reservoir_pressure_change
 X
 3
@@ -932,10 +956,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -963,6 +987,7 @@ RadioChoice
 10
 Name
 5
+30
 reservoir_pressure_change_type
 X
 3
@@ -1000,6 +1025,7 @@ Numeric
 16
 Name
 5
+15
 reservoir_width
 X
 3
@@ -1027,10 +1053,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1058,6 +1084,7 @@ Numeric
 16
 Name
 5
+14
 resource_depth
 X
 3
@@ -1085,10 +1112,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1116,6 +1143,7 @@ Numeric
 16
 Name
 5
+18
 resource_potential
 X
 3
@@ -1143,10 +1171,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1174,6 +1202,7 @@ Numeric
 16
 Name
 5
+13
 resource_temp
 X
 3
@@ -1201,10 +1230,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1232,6 +1261,7 @@ RadioChoice
 10
 Name
 5
+13
 resource_type
 X
 3
@@ -1268,6 +1298,7 @@ Numeric
 16
 Name
 5
+21
 subsurface_water_loss
 X
 3
@@ -1295,10 +1326,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+23
 Battery Chemistry Group
 X
 3
@@ -23,6 +24,7 @@ Height
 60
 Caption
 5
+9
 Chemistry
 Bold
 2
@@ -33,6 +35,7 @@ Choice
 8
 Name
 5
+9
 batt_type
 X
 3

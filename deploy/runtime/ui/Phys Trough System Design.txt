@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+8
 I_bn_des
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -66,6 +67,7 @@ Numeric
 16
 Name
 5
+28
 SD_COPY_field_thermal_output
 X
 3
@@ -93,10 +95,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -124,6 +126,7 @@ Numeric
 16
 Name
 5
+14
 SD_COPY_nLoops
 X
 3
@@ -151,10 +154,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -182,6 +185,7 @@ Numeric
 16
 Name
 5
+18
 SD_COPY_solar_mult
 X
 3
@@ -209,10 +213,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -240,6 +244,7 @@ Numeric
 16
 Name
 5
+22
 SD_COPY_total_aperture
 X
 3
@@ -267,10 +272,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -298,6 +303,7 @@ Numeric
 16
 Name
 5
+13
 T_loop_in_des
 X
 3
@@ -325,10 +331,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -356,6 +362,7 @@ Numeric
 16
 Name
 5
+10
 T_loop_out
 X
 3
@@ -383,10 +390,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -414,6 +421,7 @@ LossAdjustment
 6
 Name
 5
+6
 adjust
 X
 3
@@ -436,6 +444,7 @@ Button
 7
 Name
 5
+20
 btn_calc_q_heat_sink
 X
 3
@@ -451,6 +460,7 @@ Height
 24
 Caption
 5
+22
 Choose Number of Loops
 TabOrder
 3
@@ -461,6 +471,7 @@ Divider
 9
 Name
 5
+6
 label3
 X
 3
@@ -485,6 +496,7 @@ Colour
 255
 Caption
 5
+35
 System Availability and Curtailment
 Bold
 2
@@ -495,6 +507,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -519,6 +532,7 @@ Colour
 255
 Caption
 5
+15
 Thermal Storage
 Bold
 2
@@ -529,6 +543,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -553,6 +568,7 @@ Colour
 255
 Caption
 5
+15
 Thermal Storage
 Bold
 2
@@ -563,6 +579,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -587,6 +604,7 @@ Colour
 255
 Caption
 5
+15
 Thermal Storage
 Bold
 2
@@ -597,6 +615,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -612,6 +631,7 @@ Height
 78
 Caption
 5
+14
 System Summary
 Bold
 2
@@ -622,6 +642,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -637,6 +658,7 @@ Height
 78
 Caption
 5
+14
 System Summary
 Bold
 2
@@ -647,6 +669,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -662,6 +685,7 @@ Height
 84
 Caption
 5
+105
 Curtailment and availability losses reduce the system output to represent system outages or other events.
 TextColour
 4
@@ -690,6 +714,7 @@ Numeric
 16
 Name
 5
+12
 pb_pump_coef
 X
 3
@@ -717,10 +742,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -748,6 +773,7 @@ Numeric
 16
 Name
 5
+11
 q_pb_design
 X
 3
@@ -775,10 +801,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -806,6 +832,7 @@ Numeric
 16
 Name
 5
+23
 specified_q_dot_rec_des
 X
 3
@@ -833,10 +860,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -864,6 +891,7 @@ Numeric
 16
 Name
 5
+24
 specified_solar_multiple
 X
 3
@@ -891,10 +919,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -922,6 +950,7 @@ Numeric
 16
 Name
 5
+7
 tshours
 X
 3
@@ -949,10 +978,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -980,6 +1009,7 @@ Label
 12
 Name
 5
+6
 ui_msg
 X
 3
@@ -995,7 +1025,7 @@ Height
 176
 Caption
 5
- 
+0
 TextColour
 4
 255

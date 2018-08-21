@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 317
 Caption
 5
+20
 Parasitic Parameters
 Bold
 2
@@ -33,6 +35,7 @@ Numeric
 16
 Name
 5
+10
 P_controls
 X
 3
@@ -60,10 +63,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -91,6 +94,7 @@ Numeric
 16
 Name
 5
+13
 T_cool_speed2
 X
 3
@@ -118,10 +122,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -149,6 +153,7 @@ Numeric
 16
 Name
 5
+13
 T_cool_speed3
 X
 3
@@ -176,10 +181,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -207,6 +212,7 @@ Numeric
 16
 Name
 5
+8
 b_cooler
 X
 3
@@ -234,10 +240,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -265,6 +271,7 @@ Numeric
 16
 Name
 5
+10
 b_radiator
 X
 3
@@ -292,10 +299,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -323,6 +330,7 @@ Choice
 8
 Name
 5
+16
 csp.ds.coolfluid
 X
 3
@@ -356,6 +364,7 @@ Numeric
 16
 Name
 5
+19
 epsilon_cooler_test
 X
 3
@@ -383,10 +392,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -414,6 +423,7 @@ Numeric
 16
 Name
 5
+21
 epsilon_radiator_test
 X
 3
@@ -441,10 +451,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -472,6 +482,7 @@ Numeric
 16
 Name
 5
+10
 fan_speed1
 X
 3
@@ -499,10 +510,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -530,6 +541,7 @@ Numeric
 16
 Name
 5
+10
 fan_speed2
 X
 3
@@ -557,10 +569,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -588,6 +600,7 @@ Numeric
 16
 Name
 5
+10
 fan_speed3
 X
 3
@@ -615,10 +628,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -646,6 +659,7 @@ Numeric
 16
 Name
 5
+10
 pump_speed
 X
 3
@@ -673,10 +687,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

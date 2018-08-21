@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+10
 A_absorber
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -66,6 +67,7 @@ Numeric
 16
 Name
 5
+6
 A_wall
 X
 3
@@ -93,10 +95,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -124,6 +126,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -139,6 +142,7 @@ Height
 53
 Caption
 5
+8
 Aperture
 Bold
 2
@@ -149,6 +153,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -164,6 +169,7 @@ Height
 77
 Caption
 5
+8
 Absorber
 Bold
 2
@@ -174,6 +180,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -189,6 +196,7 @@ Height
 80
 Caption
 5
+10
 Insulation
 Bold
 2
@@ -199,6 +207,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -214,6 +223,7 @@ Height
 152
 Caption
 5
+6
 Cavity
 Bold
 2
@@ -223,6 +233,7 @@ Numeric
 1
 16
 Name
+5
 5
 L_cav
 X
@@ -251,10 +262,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -282,6 +293,7 @@ Numeric
 16
 Name
 5
+12
 L_insulation
 X
 3
@@ -309,10 +321,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -339,6 +351,7 @@ Numeric
 1
 16
 Name
+5
 5
 P_cav
 X
@@ -367,10 +380,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -398,6 +411,7 @@ Numeric
 16
 Name
 5
+14
 alpha_absorber
 X
 3
@@ -425,10 +439,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -456,6 +470,7 @@ Numeric
 16
 Name
 5
+10
 alpha_wall
 X
 3
@@ -483,10 +498,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -514,6 +529,7 @@ Numeric
 16
 Name
 5
+4
 d_ap
 X
 3
@@ -541,10 +557,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -571,6 +587,7 @@ Numeric
 1
 16
 Name
+5
 5
 d_cav
 X
@@ -599,10 +616,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -630,6 +647,7 @@ Numeric
 16
 Name
 5
+12
 k_insulation
 X
 3
@@ -657,10 +675,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -23,6 +24,7 @@ Height
 56
 Caption
 5
+17
 Return on Equity 
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -48,6 +51,7 @@ Height
 30
 Caption
 5
+69
 Cash flow output in $/kWh based on issuance of equity and production.
 TextColour
 4
@@ -76,6 +80,7 @@ SchedNumeric
 11
 Name
 5
+9
 roe_input
 X
 3
@@ -91,6 +96,7 @@ Height
 24
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -103,7 +109,7 @@ FixedLength
 4294967295
 Description
 5
- 
+0
 TabOrder
 3
 4294967295

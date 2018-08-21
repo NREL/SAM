@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 164
 Caption
 5
+22
  Equity Flip Structure
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -48,6 +51,7 @@ Height
 21
 Caption
 5
+8
 Pre-flip
 TextColour
 4
@@ -76,6 +80,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -91,6 +96,7 @@ Height
 21
 Caption
 5
+9
 Post-flip
 TextColour
 4
@@ -119,6 +125,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -134,6 +141,7 @@ Height
 21
 Caption
 5
+9
 Post-flip
 TextColour
 4
@@ -162,6 +170,7 @@ Label
 12
 Name
 5
+7
 Label12
 X
 3
@@ -177,6 +186,7 @@ Height
 21
 Caption
 5
+8
 Pre-flip
 TextColour
 4
@@ -205,6 +215,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -220,6 +231,7 @@ Height
 21
 Caption
 5
+12
 Tax Investor
 TextColour
 4
@@ -248,6 +260,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -263,6 +276,7 @@ Height
 21
 Caption
 5
+9
 Developer
 TextColour
 4
@@ -291,6 +305,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -306,6 +321,7 @@ Height
 132
 Caption
 5
+301
 Specify the tax investor's share in equity investment, cash benefits, and tax benefits before and after the flip year. The flip year is the year that the project achieves its target IRR. SAM calculates and displays the Developer's share based on the Tax Investor values you type. See Help for details.
 TextColour
 4
@@ -334,6 +350,7 @@ Numeric
 16
 Name
 5
+24
 developer_equity_percent
 X
 3
@@ -361,9 +378,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+1
 %
 ThousandsSep
 2
@@ -392,6 +410,7 @@ Numeric
 16
 Name
 5
+31
 developer_postflip_cash_percent
 X
 3
@@ -419,9 +438,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+1
 %
 ThousandsSep
 2
@@ -450,6 +470,7 @@ Numeric
 16
 Name
 5
+30
 developer_postflip_tax_percent
 X
 3
@@ -477,9 +498,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+1
 %
 ThousandsSep
 2
@@ -508,6 +530,7 @@ Numeric
 16
 Name
 5
+30
 developer_preflip_cash_percent
 X
 3
@@ -535,9 +558,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+1
 %
 ThousandsSep
 2
@@ -566,6 +590,7 @@ Numeric
 16
 Name
 5
+29
 developer_preflip_tax_percent
 X
 3
@@ -593,9 +618,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+1
 %
 ThousandsSep
 2
@@ -624,6 +650,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -639,6 +666,7 @@ Height
 24
 Caption
 5
+15
 Share of equity
 TextColour
 4
@@ -667,6 +695,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -682,6 +711,7 @@ Height
 24
 Caption
 5
+15
 Share of equity
 TextColour
 4
@@ -710,6 +740,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -725,6 +756,7 @@ Height
 24
 Caption
 5
+15
 Share of equity
 TextColour
 4
@@ -753,6 +785,7 @@ Numeric
 16
 Name
 5
+27
 tax_investor_equity_percent
 X
 3
@@ -780,9 +813,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+1
 %
 ThousandsSep
 2
@@ -811,6 +845,7 @@ Numeric
 16
 Name
 5
+34
 tax_investor_postflip_cash_percent
 X
 3
@@ -838,9 +873,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+1
 %
 ThousandsSep
 2
@@ -869,6 +905,7 @@ Numeric
 16
 Name
 5
+33
 tax_investor_postflip_tax_percent
 X
 3
@@ -896,9 +933,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+1
 %
 ThousandsSep
 2
@@ -927,6 +965,7 @@ Numeric
 16
 Name
 5
+33
 tax_investor_preflip_cash_percent
 X
 3
@@ -954,9 +993,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+1
 %
 ThousandsSep
 2
@@ -985,6 +1025,7 @@ Numeric
 16
 Name
 5
+32
 tax_investor_preflip_tax_percent
 X
 3
@@ -1012,9 +1053,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+1
 %
 ThousandsSep
 2

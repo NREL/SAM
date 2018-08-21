@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 176
 Caption
 5
+19
 Array Configuration
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox11
 X
 3
@@ -48,6 +51,7 @@ Height
 245
 Caption
 5
+7
 Tracker
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+11
 GroupBox111
 X
 3
@@ -73,6 +78,7 @@ Height
 176
 Caption
 5
+19
 Soiling and Derates
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+12
 GroupBox1111
 X
 3
@@ -98,6 +105,7 @@ Height
 56
 Caption
 5
+7
 Stowing
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -123,6 +132,7 @@ Height
 302
 Caption
 5
+14
 Shading Derate
 Bold
 2
@@ -133,6 +143,7 @@ GroupBox
 7
 Name
 5
+9
 Groupgoxx
 X
 3
@@ -148,6 +159,7 @@ Height
 80
 Caption
 5
+9
 Land Area
 Bold
 2
@@ -158,6 +170,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -173,6 +186,7 @@ Height
 21
 Caption
 5
+36
 Tracker elevation angle limits (deg)
 TextColour
 4
@@ -201,6 +215,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -216,6 +231,7 @@ Height
 21
 Caption
 5
+34
 Tracker azimuth angle limits (deg)
 TextColour
 4
@@ -244,6 +260,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -259,6 +276,7 @@ Height
 15
 Caption
 5
+9
 min (deg)
 TextColour
 4
@@ -287,6 +305,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -302,6 +321,7 @@ Height
 15
 Caption
 5
+9
 max (deg)
 TextColour
 4
@@ -330,6 +350,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -345,6 +366,7 @@ Height
 87
 Caption
 5
+312
 SAM assumes that no diffuse is captured by the HCPV module, and so the system output beyond when a tracker limit is reached is zero. Also, in the southern hemisphere, the tracker azimuth limit angles are interpreted to include the 0 (360) degree arc of the circle.  Example, min=300 max=60 for a 120 degree range
 TextColour
 4
@@ -373,6 +395,7 @@ LossAdjustment
 6
 Name
 5
+6
 adjust
 X
 3
@@ -395,6 +418,7 @@ Numeric
 16
 Name
 5
+20
 array_ac_wiring_loss
 X
 3
@@ -422,10 +446,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -453,6 +477,7 @@ Numeric
 16
 Name
 5
+22
 array_dc_mismatch_loss
 X
 3
@@ -480,10 +505,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -511,6 +536,7 @@ Numeric
 16
 Name
 5
+20
 array_dc_wiring_loss
 X
 3
@@ -538,10 +564,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -569,6 +595,7 @@ Numeric
 16
 Name
 5
+21
 array_diode_conn_loss
 X
 3
@@ -596,10 +623,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -627,6 +654,7 @@ CheckBox
 8
 Name
 5
+21
 array_enable_azalt_sf
 X
 3
@@ -642,6 +670,7 @@ Height
 21
 Caption
 5
+41
 Enable azimuth x altitude shading factors
 State
 2
@@ -655,6 +684,7 @@ Numeric
 16
 Name
 5
+25
 array_modules_per_tracker
 X
 3
@@ -682,10 +712,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -713,6 +743,7 @@ MonthlyFactor
 7
 Name
 5
+21
 array_monthly_soiling
 X
 3
@@ -728,6 +759,7 @@ Height
 21
 Description
 5
+36
 Monthly soiling derate factor (0..1)
 TabOrder
 3
@@ -738,6 +770,7 @@ Numeric
 16
 Name
 5
+19
 array_num_inverters
 X
 3
@@ -765,10 +798,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -796,6 +829,7 @@ Numeric
 16
 Name
 5
+18
 array_num_trackers
 X
 3
@@ -823,10 +857,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -854,6 +888,7 @@ Numeric
 16
 Name
 5
+17
 array_rlim_az_max
 X
 3
@@ -881,10 +916,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -912,6 +947,7 @@ Numeric
 16
 Name
 5
+17
 array_rlim_az_min
 X
 3
@@ -939,10 +975,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -970,6 +1006,7 @@ Numeric
 16
 Name
 5
+17
 array_rlim_el_max
 X
 3
@@ -997,10 +1034,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1028,6 +1065,7 @@ Numeric
 16
 Name
 5
+17
 array_rlim_el_min
 X
 3
@@ -1055,10 +1093,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1086,6 +1124,7 @@ Numeric
 16
 Name
 5
+28
 array_tracker_power_fraction
 X
 3
@@ -1113,10 +1152,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1144,6 +1183,7 @@ Numeric
 16
 Name
 5
+20
 array_tracking_error
 X
 3
@@ -1171,10 +1211,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1202,6 +1242,7 @@ Numeric
 16
 Name
 5
+21
 array_wind_stow_speed
 X
 3
@@ -1229,10 +1270,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1260,6 +1301,7 @@ DataMatrix
 22
 Name
 5
+7
 azaltsf
 X
 3
@@ -1287,7 +1329,7 @@ ShowRowLabels
 0
 RowLabels
 5
- 
+0
 ShadeR0C0
 2
 1
@@ -1302,11 +1344,13 @@ ShowColLabels
 0
 ColLabels
 5
- 
+0
 NumRowsLabel
+5
 5
 Rows:
 NumColsLabel
+5
 5
 Cols:
 Layout
@@ -1317,6 +1361,7 @@ ChoiceColumn
 4294967295
 Choices
 5
+15
 Choice1,Choice2
 HideColumn
 3
@@ -1330,6 +1375,7 @@ Numeric
 16
 Name
 5
+22
 hcpv.array.ac_capacity
 X
 3
@@ -1357,10 +1403,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1388,6 +1434,7 @@ Numeric
 16
 Name
 5
+20
 hcpv.array.nameplate
 X
 3
@@ -1415,10 +1462,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1446,6 +1493,7 @@ Numeric
 16
 Name
 5
+26
 hcpv.array.overall_est_eff
 X
 3
@@ -1473,10 +1521,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1504,6 +1552,7 @@ Numeric
 16
 Name
 5
+25
 hcpv.array.packing_factor
 X
 3
@@ -1531,10 +1580,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1562,6 +1611,7 @@ Numeric
 16
 Name
 5
+35
 hcpv.array.single_tracker_nameplate
 X
 3
@@ -1589,10 +1639,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1620,6 +1670,7 @@ Numeric
 16
 Name
 5
+26
 hcpv.array.total_land_area
 X
 3
@@ -1647,10 +1698,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1678,6 +1729,7 @@ Numeric
 16
 Name
 5
+24
 hcpv.array.tracker_power
 X
 3
@@ -1705,10 +1757,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1736,6 +1788,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -1760,6 +1813,7 @@ Colour
 255
 Caption
 5
+28
 Availability and Curtailment
 Bold
 2
@@ -1770,6 +1824,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1785,6 +1840,7 @@ Height
 63
 Caption
 5
+105
 Curtailment and availability losses reduce the system output to represent system outages or other events.
 TextColour
 4

@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 455
 Caption
 5
+22
 Solar field parameters
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 326
 Caption
 5
+19
 Heat Transfer Fluid
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 134
 Caption
 5
+19
 Plant Heat Capacity
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -98,6 +105,7 @@ Height
 296
 Caption
 5
+12
 Design Point
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox5
 X
 3
@@ -123,6 +132,7 @@ Height
 107
 Caption
 5
+9
 Land Area
 Bold
 2
@@ -133,6 +143,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox6
 X
 3
@@ -148,6 +159,7 @@ Height
 80
 Caption
 5
+14
 Mirror Washing
 Bold
 2
@@ -158,6 +170,7 @@ Numeric
 16
 Name
 5
+9
 HDR_rough
 X
 3
@@ -185,10 +198,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -216,6 +229,7 @@ MaterialProperties
 6
 Name
 5
+8
 HTF_data
 X
 3
@@ -238,6 +252,7 @@ Numeric
 16
 Name
 5
+8
 I_bn_des
 X
 3
@@ -265,10 +280,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -296,6 +311,7 @@ Numeric
 16
 Name
 5
+12
 T_amb_sf_des
 X
 3
@@ -323,10 +339,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -354,6 +370,7 @@ Numeric
 16
 Name
 5
+11
 T_field_ini
 X
 3
@@ -381,10 +398,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -412,6 +429,7 @@ Numeric
 16
 Name
 5
+4
 T_fp
 X
 3
@@ -439,10 +457,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -470,6 +488,7 @@ Numeric
 16
 Name
 5
+13
 T_loop_in_des
 X
 3
@@ -497,10 +516,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -528,6 +547,7 @@ Numeric
 16
 Name
 5
+10
 T_loop_out
 X
 3
@@ -555,10 +575,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -586,6 +606,7 @@ Numeric
 16
 Name
 5
+9
 V_hdr_max
 X
 3
@@ -613,10 +634,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -644,6 +665,7 @@ Numeric
 16
 Name
 5
+9
 V_hdr_min
 X
 3
@@ -671,10 +693,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -702,6 +724,7 @@ Numeric
 16
 Name
 5
+10
 V_wind_des
 X
 3
@@ -729,10 +752,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -760,6 +783,7 @@ Numeric
 16
 Name
 5
+7
 a_field
 X
 3
@@ -787,10 +811,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -818,6 +842,7 @@ Numeric
 16
 Name
 5
+6
 a_loop
 X
 3
@@ -845,10 +870,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -876,6 +901,7 @@ Numeric
 16
 Name
 5
+8
 a_sf_act
 X
 3
@@ -903,10 +929,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -934,6 +960,7 @@ Choice
 8
 Name
 5
+23
 csp.mslf.sf.FieldConfig
 X
 3
@@ -962,6 +989,7 @@ Choice
 8
 Name
 5
+17
 csp.mslf.sf.Fluid
 X
 3
@@ -1000,6 +1028,7 @@ Numeric
 16
 Name
 5
+32
 csp.mslf.sf.field_thermal_output
 X
 3
@@ -1027,10 +1056,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1058,6 +1087,7 @@ Choice
 8
 Name
 5
+20
 csp.mslf.sf.fthrctrl
 X
 3
@@ -1086,6 +1116,7 @@ Numeric
 16
 Name
 5
+22
 csp.mslf.sf.sm1_nLoops
 X
 3
@@ -1113,10 +1144,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1144,6 +1175,7 @@ RadioChoice
 10
 Name
 5
+22
 csp.mslf.sf.sm_or_area
 X
 3
@@ -1180,6 +1212,7 @@ Numeric
 16
 Name
 5
+8
 eta_pump
 X
 3
@@ -1207,10 +1240,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1238,6 +1271,7 @@ Numeric
 16
 Name
 5
+10
 field_area
 X
 3
@@ -1265,10 +1299,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1296,6 +1330,7 @@ Numeric
 16
 Name
 5
+20
 field_thermal_output
 X
 3
@@ -1323,10 +1358,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1354,6 +1389,7 @@ CheckBox
 8
 Name
 5
+6
 fthrok
 X
 3
@@ -1369,7 +1405,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -1382,6 +1418,7 @@ Numeric
 16
 Name
 5
+16
 htf_max_opt_temp
 X
 3
@@ -1409,10 +1446,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1440,6 +1477,7 @@ Numeric
 16
 Name
 5
+16
 htf_min_opt_temp
 X
 3
@@ -1467,10 +1505,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1498,6 +1536,7 @@ Numeric
 16
 Name
 5
+9
 land_mult
 X
 3
@@ -1525,10 +1564,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1556,6 +1595,7 @@ Numeric
 16
 Name
 5
+8
 loop_eff
 X
 3
@@ -1583,10 +1623,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1614,6 +1654,7 @@ Numeric
 16
 Name
 5
+12
 loop_opt_eff
 X
 3
@@ -1641,10 +1682,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1672,6 +1713,7 @@ Numeric
 16
 Name
 5
+14
 loop_therm_eff
 X
 3
@@ -1699,10 +1741,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1730,6 +1772,7 @@ Numeric
 16
 Name
 5
+12
 m_dot_htfmax
 X
 3
@@ -1757,10 +1800,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1788,6 +1831,7 @@ Numeric
 16
 Name
 5
+12
 m_dot_htfmin
 X
 3
@@ -1815,10 +1859,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1846,6 +1890,7 @@ Numeric
 16
 Name
 5
+11
 mc_bal_cold
 X
 3
@@ -1873,10 +1918,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1904,6 +1949,7 @@ Numeric
 16
 Name
 5
+10
 mc_bal_hot
 X
 3
@@ -1931,10 +1977,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1962,6 +2008,7 @@ Numeric
 16
 Name
 5
+10
 mc_bal_sca
 X
 3
@@ -1989,10 +2036,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2020,6 +2067,7 @@ Numeric
 16
 Name
 5
+6
 nLoops
 X
 3
@@ -2047,10 +2095,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2078,6 +2126,7 @@ Numeric
 16
 Name
 5
+4
 nMod
 X
 3
@@ -2105,10 +2154,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2136,6 +2185,7 @@ Numeric
 16
 Name
 5
+11
 rec_htf_vol
 X
 3
@@ -2163,10 +2213,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2194,6 +2244,7 @@ Numeric
 16
 Name
 5
+11
 sf_q_design
 X
 3
@@ -2221,10 +2272,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2252,6 +2303,7 @@ Numeric
 16
 Name
 5
+12
 sm1_aperture
 X
 3
@@ -2279,10 +2331,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2310,6 +2362,7 @@ Numeric
 16
 Name
 5
+10
 solar_mult
 X
 3
@@ -2337,10 +2390,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2368,6 +2421,7 @@ Numeric
 16
 Name
 5
+15
 solar_mult_spec
 X
 3
@@ -2395,10 +2449,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2426,6 +2480,7 @@ Numeric
 16
 Name
 5
+9
 theta_dep
 X
 3
@@ -2453,10 +2508,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2484,6 +2539,7 @@ Numeric
 16
 Name
 5
+10
 theta_stow
 X
 3
@@ -2511,10 +2567,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2542,6 +2598,7 @@ Numeric
 16
 Name
 5
+15
 total_land_area
 X
 3
@@ -2569,10 +2626,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2600,6 +2657,7 @@ Numeric
 16
 Name
 5
+15
 washes_per_year
 X
 3
@@ -2627,10 +2685,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2658,6 +2716,7 @@ Numeric
 16
 Name
 5
+14
 water_per_wash
 X
 3
@@ -2685,10 +2744,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

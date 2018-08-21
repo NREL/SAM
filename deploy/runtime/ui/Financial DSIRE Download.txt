@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -23,6 +24,7 @@ Height
 71
 Caption
 5
+25
 DSIRE Incentives Database
 Bold
 2
@@ -33,6 +35,7 @@ Hyperlink
 8
 Name
 5
+11
 Hyperlink11
 X
 3
@@ -48,9 +51,11 @@ Height
 21
 Caption
 5
+16
 Go to website...
 URL
 5
+24
 http://www.dsireusa.org/
 TabOrder
 3
@@ -61,6 +66,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -76,6 +82,7 @@ Height
 45
 Caption
 5
+150
 The online Database of State Incentives for Renewables and Efficiency (DSIRE) contains detailed information for specific incentives in U.S. locations.
 TextColour
 4

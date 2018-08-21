@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 104
 Caption
 5
+27
 Cost of Acquiring Financing
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -48,6 +51,7 @@ Height
 98
 Caption
 5
+224
 SAM includes the financing cost and working capital reserve in the project financing cost, which is part of the project total equity capital in the cash flow. The developer is liable for tax on the development fee in Year 1.
 TextColour
 4
@@ -76,6 +80,7 @@ Numeric
 16
 Name
 5
+20
 cost_dev_fee_percent
 X
 3
@@ -103,10 +108,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -134,6 +139,7 @@ Numeric
 16
 Name
 5
+26
 cost_dev_fee_tax_liability
 X
 3
@@ -161,10 +167,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -192,6 +199,7 @@ Numeric
 16
 Name
 5
+18
 cost_dev_fee_value
 X
 3
@@ -219,10 +227,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -250,6 +259,7 @@ Numeric
 16
 Name
 5
+19
 cost_equity_closing
 X
 3
@@ -277,10 +287,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -308,6 +319,7 @@ Numeric
 16
 Name
 5
+20
 cost_other_financing
 X
 3
@@ -335,10 +347,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

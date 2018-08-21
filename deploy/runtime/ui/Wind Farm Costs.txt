@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+14
 bos_cost_fixed
 X
 3
@@ -35,10 +36,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -66,6 +68,7 @@ Numeric
 16
 Name
 5
+15
 bos_cost_per_kw
 X
 3
@@ -93,9 +96,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
+3
 /kW
 ThousandsSep
 2
@@ -124,6 +129,7 @@ Numeric
 16
 Name
 5
+20
 bos_cost_per_turbine
 X
 3
@@ -151,9 +157,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
+8
 /turbine
 ThousandsSep
 2
@@ -182,6 +190,7 @@ Numeric
 16
 Name
 5
+14
 bos_cost_total
 X
 3
@@ -209,10 +218,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -240,6 +250,7 @@ Button
 7
 Name
 5
+16
 btn_est_bos_cost
 X
 3
@@ -255,6 +266,7 @@ Height
 24
 Caption
 5
+36
 Estimate balance of system costs now
 TabOrder
 3
@@ -265,6 +277,7 @@ Button
 7
 Name
 5
+20
 btn_est_turbine_cost
 X
 3
@@ -280,6 +293,7 @@ Height
 24
 Caption
 5
+26
 Estimate turbine costs now
 TabOrder
 3
@@ -290,6 +304,7 @@ RadioChoice
 10
 Name
 5
+12
 install_type
 X
 3
@@ -326,6 +341,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -350,6 +366,7 @@ Colour
 255
 Caption
 5
+10
 Total Cost
 Bold
 2
@@ -360,6 +377,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -384,6 +402,7 @@ Colour
 255
 Caption
 5
+10
 Total Cost
 Bold
 2
@@ -394,6 +413,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -409,6 +429,7 @@ Height
 270
 Caption
 5
+13
 Capital Costs
 Bold
 2
@@ -419,6 +440,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -434,6 +456,7 @@ Height
 270
 Caption
 5
+13
 Capital Costs
 Bold
 2
@@ -444,6 +467,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -459,6 +483,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -487,6 +512,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -502,6 +528,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -530,6 +557,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -545,6 +573,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -573,6 +602,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -588,6 +618,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -616,6 +647,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -631,6 +663,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -659,6 +692,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -674,6 +708,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -702,6 +737,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -717,6 +753,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -745,6 +782,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -760,6 +798,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -788,6 +827,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -803,6 +843,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -831,6 +872,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -846,6 +888,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -874,6 +917,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -889,6 +933,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -917,6 +962,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -932,6 +978,7 @@ Height
 96
 Caption
 5
+371
 Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
 TextColour
 4
@@ -960,6 +1007,7 @@ Numeric
 16
 Name
 5
+18
 reference_capacity
 X
 3
@@ -987,10 +1035,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1018,6 +1066,7 @@ Numeric
 16
 Name
 5
+25
 reference_number_turbines
 X
 3
@@ -1045,10 +1094,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1076,6 +1125,7 @@ TextEntry
 10
 Name
 5
+23
 reference_resource_file
 X
 3
@@ -1091,7 +1141,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1
@@ -1116,6 +1166,7 @@ Numeric
 16
 Name
 5
+27
 reference_sales_tax_percent
 X
 3
@@ -1143,10 +1194,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1174,6 +1225,7 @@ Numeric
 16
 Name
 5
+15
 sales_tax_basis
 X
 3
@@ -1201,10 +1253,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1232,6 +1284,7 @@ Numeric
 16
 Name
 5
+15
 sales_tax_total
 X
 3
@@ -1259,10 +1312,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1290,6 +1344,7 @@ Numeric
 16
 Name
 5
+20
 total_installed_cost
 X
 3
@@ -1317,10 +1372,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1348,6 +1404,7 @@ Numeric
 16
 Name
 5
+27
 total_installed_cost_per_kw
 X
 3
@@ -1375,9 +1432,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
+3
 /kW
 ThousandsSep
 2
@@ -1406,6 +1465,7 @@ Numeric
 16
 Name
 5
+18
 turbine_cost_fixed
 X
 3
@@ -1433,10 +1493,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1464,6 +1525,7 @@ Numeric
 16
 Name
 5
+19
 turbine_cost_per_kw
 X
 3
@@ -1491,9 +1553,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
+3
 /kW
 ThousandsSep
 2
@@ -1522,6 +1586,7 @@ Numeric
 16
 Name
 5
+24
 turbine_cost_per_turbine
 X
 3
@@ -1549,9 +1614,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
+8
 /turbine
 ThousandsSep
 2
@@ -1580,6 +1647,7 @@ Numeric
 16
 Name
 5
+18
 turbine_cost_total
 X
 3
@@ -1607,10 +1675,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

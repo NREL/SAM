@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 191
 Caption
 5
+27
 Investment Tax Credit (ITC)
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 191
 Caption
 5
+27
 Production Tax Credit (PTC)
 Bold
 2
@@ -58,6 +62,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -73,6 +78,7 @@ Height
 21
 Caption
 5
+14
 Amount ($/kWh)
 TextColour
 4
@@ -101,6 +107,7 @@ Label
 12
 Name
 5
+7
 Label13
 X
 3
@@ -116,6 +123,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -144,6 +152,7 @@ Label
 12
 Name
 5
+8
 Label131
 X
 3
@@ -159,6 +168,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -187,6 +197,7 @@ Label
 12
 Name
 5
+9
 Label1311
 X
 3
@@ -202,6 +213,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -230,6 +242,7 @@ Label
 12
 Name
 5
+10
 Label13111
 X
 3
@@ -245,6 +258,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -273,6 +287,7 @@ Label
 12
 Name
 5
+8
 Label132
 X
 3
@@ -288,6 +303,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -316,6 +332,7 @@ Label
 12
 Name
 5
+9
 Label1321
 X
 3
@@ -331,6 +348,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -359,6 +377,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -374,6 +393,7 @@ Height
 21
 Caption
 5
+12
 Term (years)
 TextColour
 4
@@ -402,6 +422,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -417,6 +438,7 @@ Height
 21
 Caption
 5
+17
 Escalation (%/yr)
 TextColour
 4
@@ -445,6 +467,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -460,6 +483,7 @@ Height
 21
 Caption
 5
+10
 Amount ($)
 TextColour
 4
@@ -488,6 +512,7 @@ Label
 12
 Name
 5
+6
 Label6
 X
 3
@@ -503,6 +528,7 @@ Height
 21
 Caption
 5
+14
 Percentage (%)
 TextColour
 4
@@ -531,6 +557,7 @@ Label
 12
 Name
 5
+6
 Label7
 X
 3
@@ -546,6 +573,7 @@ Height
 21
 Caption
 5
+11
 Maximum ($)
 TextColour
 4
@@ -574,6 +602,7 @@ Numeric
 16
 Name
 5
+14
 itc_fed_amount
 X
 3
@@ -601,10 +630,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -632,6 +661,7 @@ CheckBox
 8
 Name
 5
+26
 itc_fed_amount_deprbas_fed
 X
 3
@@ -647,7 +677,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -660,6 +690,7 @@ CheckBox
 8
 Name
 5
+26
 itc_fed_amount_deprbas_sta
 X
 3
@@ -675,7 +706,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -688,6 +719,7 @@ Numeric
 16
 Name
 5
+15
 itc_fed_percent
 X
 3
@@ -715,10 +747,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -746,6 +778,7 @@ CheckBox
 8
 Name
 5
+27
 itc_fed_percent_deprbas_fed
 X
 3
@@ -761,7 +794,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -774,6 +807,7 @@ CheckBox
 8
 Name
 5
+27
 itc_fed_percent_deprbas_sta
 X
 3
@@ -789,7 +823,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -802,6 +836,7 @@ Numeric
 16
 Name
 5
+24
 itc_fed_percent_maxvalue
 X
 3
@@ -829,10 +864,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -860,6 +895,7 @@ Numeric
 16
 Name
 5
+14
 itc_sta_amount
 X
 3
@@ -887,10 +923,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -918,6 +954,7 @@ CheckBox
 8
 Name
 5
+26
 itc_sta_amount_deprbas_fed
 X
 3
@@ -933,7 +970,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -946,6 +983,7 @@ CheckBox
 8
 Name
 5
+26
 itc_sta_amount_deprbas_sta
 X
 3
@@ -961,7 +999,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -974,6 +1012,7 @@ Numeric
 16
 Name
 5
+15
 itc_sta_percent
 X
 3
@@ -1001,10 +1040,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1032,6 +1071,7 @@ CheckBox
 8
 Name
 5
+27
 itc_sta_percent_deprbas_fed
 X
 3
@@ -1047,7 +1087,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -1060,6 +1100,7 @@ CheckBox
 8
 Name
 5
+27
 itc_sta_percent_deprbas_sta
 X
 3
@@ -1075,7 +1116,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -1088,6 +1129,7 @@ Numeric
 16
 Name
 5
+24
 itc_sta_percent_maxvalue
 X
 3
@@ -1115,10 +1157,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1146,6 +1188,7 @@ Label
 12
 Name
 5
+10
 lblFederal
 X
 3
@@ -1161,6 +1204,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -1189,6 +1233,7 @@ Label
 12
 Name
 5
+19
 lblReducesDeprBasis
 X
 3
@@ -1204,6 +1249,7 @@ Height
 21
 Caption
 5
+26
 Reduces Depreciation Basis
 TextColour
 4
@@ -1232,6 +1278,7 @@ Label
 12
 Name
 5
+8
 lblState
 X
 3
@@ -1246,6 +1293,7 @@ Height
 3
 21
 Caption
+5
 5
 State
 TextColour
@@ -1275,6 +1323,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1290,6 +1339,7 @@ Height
 63
 Caption
 5
+120
 Inflation does not apply to the PTC amount. In Schedule mode, use nominal (current) dollar values. See Help for details.
 TextColour
 4
@@ -1318,6 +1368,7 @@ SchedNumeric
 11
 Name
 5
+14
 ptc_fed_amount
 X
 3
@@ -1333,6 +1384,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -1345,6 +1397,7 @@ FixedLength
 4294967295
 Description
 5
+129
 Type a Federal PTC amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
@@ -1355,6 +1408,7 @@ Numeric
 16
 Name
 5
+13
 ptc_fed_escal
 X
 3
@@ -1382,10 +1436,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1413,6 +1467,7 @@ Numeric
 16
 Name
 5
+12
 ptc_fed_term
 X
 3
@@ -1440,10 +1495,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1471,6 +1526,7 @@ SchedNumeric
 11
 Name
 5
+14
 ptc_sta_amount
 X
 3
@@ -1486,6 +1542,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -1498,6 +1555,7 @@ FixedLength
 4294967295
 Description
 5
+127
 Type a State PTC amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
@@ -1508,6 +1566,7 @@ Numeric
 16
 Name
 5
+13
 ptc_sta_escal
 X
 3
@@ -1535,10 +1594,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1566,6 +1625,7 @@ Numeric
 16
 Name
 5
+12
 ptc_sta_term
 X
 3
@@ -1593,10 +1653,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

@@ -8,6 +8,7 @@ Label
 12
 Name
 5
+16
 batt_SOC_warning
 X
 3
@@ -23,6 +24,7 @@ Height
 21
 Caption
 5
+104
 Battery efficiency at extreme low SOC or high SOC may decrease due to non-linearity of the voltage curve
 TextColour
 4
@@ -51,6 +53,7 @@ Label
 12
 Name
 5
+17
 batt_chem_message
 X
 3
@@ -66,6 +69,7 @@ Height
 138
 Caption
 5
+94
 For vandium redox, only enter the voltage at 50% SOC as the nominal voltage, and resistence.  
 TextColour
 4
@@ -94,6 +98,7 @@ Numeric
 16
 Name
 5
+16
 batt_initial_SOC
 X
 3
@@ -121,10 +126,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -152,6 +157,7 @@ Numeric
 16
 Name
 5
+16
 batt_maximum_SOC
 X
 3
@@ -179,10 +185,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -210,6 +216,7 @@ Numeric
 16
 Name
 5
+16
 batt_minimum_SOC
 X
 3
@@ -237,10 +244,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -268,6 +275,7 @@ Numeric
 16
 Name
 5
+21
 batt_minimum_modetime
 X
 3
@@ -295,10 +303,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -326,6 +334,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -341,6 +350,7 @@ Height
 117
 Caption
 5
+24
 Charge Limits & Priority
 Bold
 2

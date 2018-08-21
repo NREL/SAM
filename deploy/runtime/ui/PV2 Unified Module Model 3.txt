@@ -8,6 +8,7 @@ Choice
 8
 Name
 5
+15
 6par_aisc_units
 X
 3
@@ -38,6 +39,7 @@ Choice
 8
 Name
 5
+15
 6par_bvoc_units
 X
 3
@@ -68,6 +70,7 @@ Numeric
 16
 Name
 5
+2
 Eg
 X
 3
@@ -95,10 +98,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -126,6 +129,7 @@ Numeric
 16
 Name
 5
+2
 IL
 X
 3
@@ -153,10 +157,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -184,6 +188,7 @@ Numeric
 16
 Name
 5
+3
 Imp
 X
 3
@@ -211,10 +216,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -242,6 +247,7 @@ Numeric
 16
 Name
 5
+2
 Is
 X
 3
@@ -269,10 +275,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -300,6 +306,7 @@ Numeric
 16
 Name
 5
+3
 Is2
 X
 3
@@ -327,10 +334,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -358,6 +365,7 @@ Numeric
 16
 Name
 5
+3
 Isc
 X
 3
@@ -385,10 +393,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -416,6 +424,7 @@ Numeric
 16
 Name
 5
+3
 Isc
 X
 3
@@ -443,10 +452,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -474,6 +483,7 @@ Numeric
 16
 Name
 5
+3
 Isc
 X
 3
@@ -501,10 +511,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -532,6 +542,7 @@ Numeric
 16
 Name
 5
+3
 Isc
 X
 3
@@ -559,10 +570,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -590,6 +601,7 @@ TextEntry
 10
 Name
 5
+11
 Module name
 X
 3
@@ -605,6 +617,7 @@ Height
 24
 Text
 5
+32
 Super PVWatts 995 Watt #20170117
 Editable
 2
@@ -630,6 +643,7 @@ Numeric
 16
 Name
 5
+3
 Rsh
 X
 3
@@ -657,10 +671,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -688,6 +702,7 @@ Numeric
 16
 Name
 5
+3
 Vmp
 X
 3
@@ -715,10 +730,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -746,6 +761,7 @@ Numeric
 16
 Name
 5
+3
 Voc
 X
 3
@@ -773,10 +789,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -804,6 +820,7 @@ Numeric
 16
 Name
 5
+3
 Voc
 X
 3
@@ -831,10 +848,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -862,6 +879,7 @@ Numeric
 16
 Name
 5
+1
 a
 X
 3
@@ -889,10 +907,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -920,6 +938,7 @@ Numeric
 16
 Name
 5
+4
 area
 X
 3
@@ -947,10 +966,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -978,6 +997,7 @@ Numeric
 16
 Name
 5
+4
 area
 X
 3
@@ -1005,10 +1025,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1036,6 +1056,7 @@ Numeric
 16
 Name
 5
+4
 area
 X
 3
@@ -1063,10 +1084,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1094,6 +1115,7 @@ Numeric
 16
 Name
 5
+13
 dif_ut_factor
 X
 3
@@ -1121,10 +1143,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1152,6 +1174,7 @@ Numeric
 16
 Name
 5
+6
 height
 X
 3
@@ -1179,10 +1202,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1210,6 +1233,7 @@ Label
 12
 Name
 5
+8
 label_C0
 X
 3
@@ -1225,6 +1249,7 @@ Height
 21
 Caption
 5
+2
 C0
 TextColour
 4
@@ -1253,6 +1278,7 @@ Label
 12
 Name
 5
+8
 label_C1
 X
 3
@@ -1268,6 +1294,7 @@ Height
 21
 Caption
 5
+2
 C1
 TextColour
 4
@@ -1296,6 +1323,7 @@ DataMatrix
 22
 Name
 5
+28
 mod1_simple_efficiency_table
 X
 3
@@ -1323,7 +1351,7 @@ ShowRowLabels
 0
 RowLabels
 5
- 
+0
 ShadeR0C0
 2
 0
@@ -1338,13 +1366,15 @@ ShowColLabels
 1
 ColLabels
 5
+32
 Irradiance (W/m²),Efficiency (%)
 NumRowsLabel
+5
 5
 Rows:
 NumColsLabel
 5
- 
+0
 Layout
 3
 1
@@ -1353,6 +1383,7 @@ ChoiceColumn
 4294967295
 Choices
 5
+15
 Choice1,Choice2
 HideColumn
 3
@@ -1366,6 +1397,7 @@ Button
 7
 Name
 5
+9
 mod_coeff
 X
 3
@@ -1381,6 +1413,7 @@ Height
 24
 Caption
 5
+20
 Edit coefficients...
 TabOrder
 3
@@ -1391,6 +1424,7 @@ GroupBox
 7
 Name
 5
+9
 mod_group
 X
 3
@@ -1406,6 +1440,7 @@ Height
 174
 Caption
 5
+12
 Module cover
 Bold
 2
@@ -1416,6 +1451,7 @@ GroupBox
 7
 Name
 5
+22
 module_model_group_box
 X
 3
@@ -1431,6 +1467,7 @@ Height
 477
 Caption
 5
+17
 Performance model
 Bold
 2
@@ -1441,6 +1478,7 @@ Numeric
 16
 Name
 5
+6
 ncells
 X
 3
@@ -1468,10 +1506,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1499,6 +1537,7 @@ Button
 7
 Name
 5
+8
 object 1
 X
 3
@@ -1514,6 +1553,7 @@ Height
 24
 Caption
 5
+11
 Database...
 TabOrder
 3
@@ -1524,6 +1564,7 @@ Plot
 5
 Name
 5
+9
 object 22
 X
 3
@@ -1543,6 +1584,7 @@ Plot
 5
 Name
 5
+9
 object 22
 X
 3
@@ -1562,6 +1604,7 @@ Plot
 5
 Name
 5
+9
 object 22
 X
 3
@@ -1581,6 +1624,7 @@ Choice
 8
 Name
 5
+8
 object 3
 X
 3
@@ -1612,6 +1656,7 @@ Choice
 8
 Name
 5
+8
 object 3
 X
 3
@@ -1643,6 +1688,7 @@ Choice
 8
 Name
 5
+8
 object 3
 X
 3
@@ -1674,6 +1720,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1689,6 +1736,7 @@ Height
 354
 Caption
 5
+45
 Module specifications at reference conditions
 Bold
 2
@@ -1699,6 +1747,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1714,6 +1763,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -1742,6 +1792,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1757,6 +1808,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -1785,6 +1837,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1800,6 +1853,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -1828,6 +1882,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1843,6 +1898,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -1871,6 +1927,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1886,6 +1943,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -1914,6 +1972,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1929,6 +1988,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -1957,6 +2017,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1972,6 +2033,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2000,6 +2062,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2015,6 +2078,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2043,6 +2107,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2058,6 +2123,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2086,6 +2152,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2101,6 +2168,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2129,6 +2197,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2144,6 +2213,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2172,6 +2242,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2187,6 +2258,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2215,6 +2287,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2230,6 +2303,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2258,6 +2332,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2273,6 +2348,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2301,6 +2377,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2316,6 +2393,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2344,6 +2422,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2359,6 +2438,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2387,6 +2467,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2402,6 +2483,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2430,6 +2512,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2445,6 +2528,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2473,6 +2557,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2488,6 +2573,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2516,6 +2602,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2531,6 +2618,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2559,6 +2647,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2574,6 +2663,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2602,6 +2692,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2617,6 +2708,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2645,6 +2737,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2660,6 +2753,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2688,6 +2782,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2703,6 +2798,7 @@ Height
 24
 Caption
 5
+19
 Diffuse utilization
 TextColour
 4
@@ -2731,6 +2827,7 @@ RadioChoice
 10
 Name
 5
+8
 object 8
 X
 3
@@ -2767,6 +2864,7 @@ Button
 7
 Name
 5
+4
 sd13
 X
 3
@@ -2782,6 +2880,7 @@ Height
 24
 Caption
 5
+36
 Calculate using 5 parameter model...
 TabOrder
 3
@@ -2792,6 +2891,7 @@ Button
 7
 Name
 5
+4
 sd14
 X
 3
@@ -2807,6 +2907,7 @@ Height
 24
 Caption
 5
+42
 Calibrate to IEC-61853 module test data...
 TabOrder
 3
@@ -2817,6 +2918,7 @@ Numeric
 16
 Name
 5
+4
 sd16
 X
 3
@@ -2844,10 +2946,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2875,6 +2977,7 @@ Numeric
 16
 Name
 5
+4
 sd17
 X
 3
@@ -2902,10 +3005,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2933,6 +3036,7 @@ Numeric
 16
 Name
 5
+4
 sd18
 X
 3
@@ -2960,10 +3064,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2991,6 +3095,7 @@ Numeric
 16
 Name
 5
+4
 sd19
 X
 3
@@ -3018,10 +3123,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3049,6 +3154,7 @@ Button
 7
 Name
 5
+11
 spect_coeff
 X
 3
@@ -3064,6 +3170,7 @@ Height
 24
 Caption
 5
+20
 Edit coefficients...
 TabOrder
 3
@@ -3074,6 +3181,7 @@ GroupBox
 7
 Name
 5
+11
 spect_group
 X
 3
@@ -3089,6 +3197,7 @@ Height
 174
 Caption
 5
+17
 Spectral Response
 Bold
 2
@@ -3098,6 +3207,7 @@ Numeric
 1
 16
 Name
+5
 5
 width
 X
@@ -3126,10 +3236,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+19
 Battery Bank Sizing
 X
 3
@@ -23,6 +24,7 @@ Height
 243
 Caption
 5
+19
 Battery Bank Sizing
 Bold
 2
@@ -33,6 +35,7 @@ Numeric
 16
 Name
 5
+28
 batt_C_rate_max_charge_input
 X
 3
@@ -60,10 +63,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -91,6 +94,7 @@ Numeric
 16
 Name
 5
+31
 batt_C_rate_max_discharge_input
 X
 3
@@ -118,10 +122,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -149,6 +153,7 @@ Numeric
 16
 Name
 5
+23
 batt_bank_ncells_serial
 X
 3
@@ -176,10 +181,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -207,6 +212,7 @@ Numeric
 16
 Name
 5
+24
 batt_bank_nseries_stacks
 X
 3
@@ -234,10 +240,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -265,6 +271,7 @@ Numeric
 16
 Name
 5
+18
 batt_bank_nstrings
 X
 3
@@ -292,10 +299,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -323,6 +330,7 @@ Numeric
 16
 Name
 5
+15
 batt_bank_power
 X
 3
@@ -350,10 +358,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -381,6 +389,7 @@ Choice
 8
 Name
 5
+21
 batt_bank_power_dc_ac
 X
 3
@@ -411,6 +420,7 @@ Numeric
 16
 Name
 5
+14
 batt_bank_size
 X
 3
@@ -438,10 +448,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -469,6 +479,7 @@ Choice
 8
 Name
 5
+20
 batt_bank_size_dc_ac
 X
 3
@@ -499,6 +510,7 @@ Numeric
 16
 Name
 5
+22
 batt_bank_size_specify
 X
 3
@@ -526,10 +538,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -557,6 +569,7 @@ Label
 12
 Name
 5
+19
 batt_parallel_label
 X
 3
@@ -572,6 +585,7 @@ Height
 24
 Caption
 5
+29
 Number of strings in parallel
 TextColour
 4
@@ -600,6 +614,7 @@ Label
 12
 Name
 5
+17
 batt_series_label
 X
 3
@@ -615,6 +630,7 @@ Height
 24
 Caption
 5
+25
 Number of cells in series
 TextColour
 4
@@ -643,6 +659,7 @@ RadioChoice
 10
 Name
 5
+16
 batt_size_choice
 X
 3
@@ -679,6 +696,7 @@ Label
 12
 Name
 5
+15
 batt_size_label
 X
 3
@@ -694,6 +712,7 @@ Height
 108
 Caption
 5
+217
 Bank capacity and power fields are values measured before conversion and parasitic losses.  If specified in AC, the DC/AC conversion efficiency will be used to scale the battery size.  See help for sizing information.
 TextColour
 4
