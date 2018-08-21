@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 125
 Caption
 5
+13
 System Sizing
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 479
 Caption
 5
+12
 DC Subarrays
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -73,6 +78,7 @@ Height
 253
 Caption
 5
+37
 Configuration at Reference Conditions
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox7
 X
 3
@@ -98,6 +105,7 @@ Height
 89
 Caption
 5
+30
 Estimate of Overall Land Usage
 Bold
 2
@@ -108,6 +116,7 @@ Divider
 9
 Name
 5
+6
 HLine1
 X
 3
@@ -132,6 +141,7 @@ Colour
 255
 Caption
 5
+20
 String Configuration
 Bold
 2
@@ -142,6 +152,7 @@ Divider
 9
 Name
 5
+7
 HLine12
 X
 3
@@ -166,6 +177,7 @@ Colour
 255
 Caption
 5
+22
 Tracking & Orientation
 Bold
 2
@@ -176,6 +188,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -191,6 +204,7 @@ Height
 21
 Caption
 5
+39
 Sizing messages (see Help for details):
 TextColour
 4
@@ -219,6 +233,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -234,6 +249,7 @@ Height
 21
 Caption
 5
+29
 Strings allocated to subarray
 TextColour
 4
@@ -262,6 +278,7 @@ Label
 12
 Name
 5
+8
 Label122
 X
 3
@@ -277,6 +294,7 @@ Height
 21
 Caption
 5
+12
 Backtracking
 TextColour
 4
@@ -305,6 +323,7 @@ Label
 12
 Name
 5
+8
 Label122
 X
 3
@@ -320,6 +339,7 @@ Height
 21
 Caption
 5
+12
 Backtracking
 TextColour
 4
@@ -348,6 +368,7 @@ Label
 12
 Name
 5
+8
 Label122
 X
 3
@@ -363,6 +384,7 @@ Height
 21
 Caption
 5
+12
 Backtracking
 TextColour
 4
@@ -391,6 +413,7 @@ Label
 12
 Name
 5
+7
 Label13
 X
 3
@@ -406,6 +429,7 @@ Height
 21
 Caption
 5
+10
 Tilt (deg)
 TextColour
 4
@@ -434,6 +458,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -449,6 +474,7 @@ Height
 66
 Caption
 5
+89
 Voltage and capacity ratings are at module reference conditions shown on the Module page.
 TextColour
 4
@@ -477,6 +503,7 @@ Label
 12
 Name
 5
+8
 Label213
 X
 3
@@ -492,6 +519,7 @@ Height
 60
 Caption
 5
+285
 To model a system with one array, specify properties for Subarray 1 and disable Subarrays 2, 3, and 4.  To model a sytem with up to four subarrays connected in parallel to a single bank of inverters, for each subarray, check Enable and specify a number of strings and other properties.
 TextColour
 4
@@ -520,6 +548,7 @@ Label
 12
 Name
 5
+8
 Label214
 X
 3
@@ -535,6 +564,7 @@ Height
 66
 Caption
 5
+169
 SAM uses the total land area only when you specify a $/acre cost on the System Costs page: Total land area = total module area ÷ GCR × 0.0002471 (1 m² = 0.0002471 acre).
 TextColour
 4
@@ -563,6 +593,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -578,6 +609,7 @@ Height
 21
 Caption
 5
+9
 Inverters
 TextColour
 4
@@ -606,6 +638,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -621,6 +654,7 @@ Height
 21
 Caption
 5
+7
 Modules
 TextColour
 4
@@ -649,6 +683,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -664,6 +699,7 @@ Height
 21
 Caption
 5
+10
 Subarray 2
 TextColour
 4
@@ -692,6 +728,7 @@ Label
 12
 Name
 5
+7
 Label41
 X
 3
@@ -707,6 +744,7 @@ Height
 21
 Caption
 5
+10
 Subarray 3
 TextColour
 4
@@ -735,6 +773,7 @@ Label
 12
 Name
 5
+8
 Label411
 X
 3
@@ -750,6 +789,7 @@ Height
 21
 Caption
 5
+10
 Subarray 4
 TextColour
 4
@@ -778,6 +818,7 @@ Label
 12
 Name
 5
+9
 Label4111
 X
 3
@@ -793,6 +834,7 @@ Height
 21
 Caption
 5
+10
 Subarray 1
 TextColour
 4
@@ -821,6 +863,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -836,6 +879,7 @@ Height
 21
 Caption
 5
+16
 (always enabled)
 TextColour
 4
@@ -864,6 +908,7 @@ Image
 7
 Name
 5
+8
 Picture1
 X
 3
@@ -879,7 +924,7 @@ Height
 102
 Image
 7
-C:\Projects\GitHub\NREL\ui_as_text\SAM\deploy\runtime\/ui/PV System Design_Picture1.png
+C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/PV System Design_Picture1.png
 Centered
 2
 1
@@ -889,6 +934,7 @@ Numeric
 16
 Name
 5
+14
 batt_max_power
 X
 3
@@ -916,10 +962,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -947,6 +993,7 @@ Numeric
 16
 Name
 5
+10
 dcac_ratio
 X
 3
@@ -974,10 +1021,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1005,6 +1052,7 @@ Numeric
 16
 Name
 5
+12
 desired_size
 X
 3
@@ -1032,10 +1080,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1063,6 +1111,7 @@ Label
 12
 Name
 5
+8
 gcr_info
 X
 3
@@ -1078,6 +1127,7 @@ Height
 45
 Caption
 5
+258
 Ground coverage ratio is used (1) to determine when a one-axis tracking system will backtrack, (2) in self-shading calculations for fixed tilt or one-axis tracking systems on the Shading page, and (3) in the total land area calculation. See Help for details.
 TextColour
 4
@@ -1106,6 +1156,7 @@ Label
 12
 Name
 5
+9
 gcr_label
 X
 3
@@ -1121,6 +1172,7 @@ Height
 21
 Caption
 5
+27
 Ground coverage ratio (GCR)
 TextColour
 4
@@ -1149,6 +1201,7 @@ Numeric
 16
 Name
 5
+14
 inverter_count
 X
 3
@@ -1176,10 +1229,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1207,6 +1260,7 @@ MultilineText
 10
 Name
 5
+14
 layout_warning
 X
 3
@@ -1222,7 +1276,7 @@ Height
 99
 Text
 5
- 
+0
 Editable
 2
 0
@@ -1247,6 +1301,7 @@ Numeric
 16
 Name
 5
+18
 modules_per_string
 X
 3
@@ -1274,10 +1329,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1305,6 +1360,7 @@ Numeric
 16
 Name
 5
+16
 mppt_hi_inverter
 X
 3
@@ -1332,10 +1388,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1363,6 +1419,7 @@ Numeric
 16
 Name
 5
+17
 mppt_low_inverter
 X
 3
@@ -1390,10 +1447,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1421,6 +1478,7 @@ Numeric
 16
 Name
 5
+17
 num_strings_total
 X
 3
@@ -1448,10 +1506,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1479,6 +1537,7 @@ Label
 12
 Name
 5
+34
 pv_system_inverter_voltage_warning
 X
 3
@@ -1494,6 +1553,7 @@ Height
 39
 Caption
 5
+16
 Inverter Warning
 TextColour
 4
@@ -1522,6 +1582,7 @@ RadioChoice
 10
 Name
 5
+19
 size_auto_or_manual
 X
 3
@@ -1558,6 +1619,7 @@ Numeric
 16
 Name
 5
+19
 strings_in_parallel
 X
 3
@@ -1585,10 +1647,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1616,6 +1678,7 @@ Numeric
 16
 Name
 5
+17
 subarray1_azimuth
 X
 3
@@ -1643,10 +1706,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1674,6 +1737,7 @@ CheckBox
 8
 Name
 5
+19
 subarray1_backtrack
 X
 3
@@ -1689,6 +1753,7 @@ Height
 21
 Caption
 5
+6
 Enable
 State
 2
@@ -1702,6 +1767,7 @@ Numeric
 16
 Name
 5
+13
 subarray1_gcr
 X
 3
@@ -1729,10 +1795,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1760,6 +1826,7 @@ MonthlyFactor
 7
 Name
 5
+22
 subarray1_monthly_tilt
 X
 3
@@ -1775,7 +1842,7 @@ Height
 24
 Description
 5
- 
+0
 TabOrder
 3
 4294967295
@@ -1785,6 +1852,7 @@ Numeric
 16
 Name
 5
+18
 subarray1_nstrings
 X
 3
@@ -1812,10 +1880,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1843,6 +1911,7 @@ Numeric
 16
 Name
 5
+16
 subarray1_rotlim
 X
 3
@@ -1870,10 +1939,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1901,6 +1970,7 @@ Numeric
 16
 Name
 5
+14
 subarray1_tilt
 X
 3
@@ -1928,10 +1998,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1959,6 +2029,7 @@ CheckBox
 8
 Name
 5
+21
 subarray1_tilt_eq_lat
 X
 3
@@ -1974,6 +2045,7 @@ Height
 21
 Caption
 5
+13
 Tilt=latitude
 State
 2
@@ -1987,6 +2059,7 @@ RadioChoice
 10
 Name
 5
+20
 subarray1_track_mode
 X
 3
@@ -2026,6 +2099,7 @@ Numeric
 16
 Name
 5
+17
 subarray2_azimuth
 X
 3
@@ -2053,10 +2127,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2084,6 +2158,7 @@ CheckBox
 8
 Name
 5
+19
 subarray2_backtrack
 X
 3
@@ -2099,6 +2174,7 @@ Height
 21
 Caption
 5
+6
 Enable
 State
 2
@@ -2112,6 +2188,7 @@ CheckBox
 8
 Name
 5
+16
 subarray2_enable
 X
 3
@@ -2127,6 +2204,7 @@ Height
 21
 Caption
 5
+6
 Enable
 State
 2
@@ -2140,6 +2218,7 @@ Numeric
 16
 Name
 5
+13
 subarray2_gcr
 X
 3
@@ -2167,10 +2246,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2198,6 +2277,7 @@ MonthlyFactor
 7
 Name
 5
+22
 subarray2_monthly_tilt
 X
 3
@@ -2213,7 +2293,7 @@ Height
 24
 Description
 5
- 
+0
 TabOrder
 3
 4294967295
@@ -2223,6 +2303,7 @@ Numeric
 16
 Name
 5
+18
 subarray2_nstrings
 X
 3
@@ -2250,10 +2331,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2281,6 +2362,7 @@ Numeric
 16
 Name
 5
+16
 subarray2_rotlim
 X
 3
@@ -2308,10 +2390,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2339,6 +2421,7 @@ Numeric
 16
 Name
 5
+14
 subarray2_tilt
 X
 3
@@ -2366,10 +2449,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2397,6 +2480,7 @@ CheckBox
 8
 Name
 5
+21
 subarray2_tilt_eq_lat
 X
 3
@@ -2412,6 +2496,7 @@ Height
 21
 Caption
 5
+13
 Tilt=latitude
 State
 2
@@ -2425,6 +2510,7 @@ RadioChoice
 10
 Name
 5
+20
 subarray2_track_mode
 X
 3
@@ -2464,6 +2550,7 @@ Numeric
 16
 Name
 5
+17
 subarray3_azimuth
 X
 3
@@ -2491,10 +2578,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2522,6 +2609,7 @@ CheckBox
 8
 Name
 5
+19
 subarray3_backtrack
 X
 3
@@ -2537,6 +2625,7 @@ Height
 21
 Caption
 5
+6
 Enable
 State
 2
@@ -2550,6 +2639,7 @@ CheckBox
 8
 Name
 5
+16
 subarray3_enable
 X
 3
@@ -2565,6 +2655,7 @@ Height
 21
 Caption
 5
+6
 Enable
 State
 2
@@ -2578,6 +2669,7 @@ Numeric
 16
 Name
 5
+13
 subarray3_gcr
 X
 3
@@ -2605,10 +2697,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2636,6 +2728,7 @@ MonthlyFactor
 7
 Name
 5
+22
 subarray3_monthly_tilt
 X
 3
@@ -2651,7 +2744,7 @@ Height
 24
 Description
 5
- 
+0
 TabOrder
 3
 4294967295
@@ -2661,6 +2754,7 @@ Numeric
 16
 Name
 5
+18
 subarray3_nstrings
 X
 3
@@ -2688,10 +2782,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2719,6 +2813,7 @@ Numeric
 16
 Name
 5
+16
 subarray3_rotlim
 X
 3
@@ -2746,10 +2841,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2777,6 +2872,7 @@ Numeric
 16
 Name
 5
+14
 subarray3_tilt
 X
 3
@@ -2804,10 +2900,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2835,6 +2931,7 @@ CheckBox
 8
 Name
 5
+21
 subarray3_tilt_eq_lat
 X
 3
@@ -2850,6 +2947,7 @@ Height
 21
 Caption
 5
+13
 Tilt=latitude
 State
 2
@@ -2863,6 +2961,7 @@ RadioChoice
 10
 Name
 5
+20
 subarray3_track_mode
 X
 3
@@ -2902,6 +3001,7 @@ Numeric
 16
 Name
 5
+17
 subarray4_azimuth
 X
 3
@@ -2929,10 +3029,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2960,6 +3060,7 @@ CheckBox
 8
 Name
 5
+19
 subarray4_backtrack
 X
 3
@@ -2975,6 +3076,7 @@ Height
 21
 Caption
 5
+6
 Enable
 State
 2
@@ -2988,6 +3090,7 @@ CheckBox
 8
 Name
 5
+16
 subarray4_enable
 X
 3
@@ -3003,6 +3106,7 @@ Height
 21
 Caption
 5
+6
 Enable
 State
 2
@@ -3016,6 +3120,7 @@ Numeric
 16
 Name
 5
+13
 subarray4_gcr
 X
 3
@@ -3043,10 +3148,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3074,6 +3179,7 @@ MonthlyFactor
 7
 Name
 5
+22
 subarray4_monthly_tilt
 X
 3
@@ -3089,7 +3195,7 @@ Height
 24
 Description
 5
- 
+0
 TabOrder
 3
 4294967295
@@ -3099,6 +3205,7 @@ Numeric
 16
 Name
 5
+18
 subarray4_nstrings
 X
 3
@@ -3126,10 +3233,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3157,6 +3264,7 @@ Numeric
 16
 Name
 5
+16
 subarray4_rotlim
 X
 3
@@ -3184,10 +3292,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3215,6 +3323,7 @@ Numeric
 16
 Name
 5
+14
 subarray4_tilt
 X
 3
@@ -3242,10 +3351,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3273,6 +3382,7 @@ CheckBox
 8
 Name
 5
+21
 subarray4_tilt_eq_lat
 X
 3
@@ -3288,6 +3398,7 @@ Height
 21
 Caption
 5
+13
 Tilt=latitude
 State
 2
@@ -3301,6 +3412,7 @@ RadioChoice
 10
 Name
 5
+20
 subarray4_track_mode
 X
 3
@@ -3340,6 +3452,7 @@ Numeric
 16
 Name
 5
+15
 system_capacity
 X
 3
@@ -3367,10 +3480,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3398,6 +3511,7 @@ Numeric
 16
 Name
 5
+10
 total_area
 X
 3
@@ -3425,10 +3539,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3456,6 +3570,7 @@ Numeric
 16
 Name
 5
+10
 total_area
 X
 3
@@ -3483,10 +3598,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3514,6 +3629,7 @@ Numeric
 16
 Name
 5
+26
 total_dc_inverter_capacity
 X
 3
@@ -3541,10 +3657,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3572,6 +3688,7 @@ Numeric
 16
 Name
 5
+23
 total_inverter_capacity
 X
 3
@@ -3599,10 +3716,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3630,6 +3747,7 @@ Numeric
 16
 Name
 5
+15
 total_land_area
 X
 3
@@ -3657,10 +3775,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3688,6 +3806,7 @@ Numeric
 16
 Name
 5
+13
 total_modules
 X
 3
@@ -3715,10 +3834,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3746,6 +3865,7 @@ Numeric
 16
 Name
 5
+19
 user_inverter_count
 X
 3
@@ -3773,10 +3893,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3804,6 +3924,7 @@ Numeric
 16
 Name
 5
+23
 user_modules_per_string
 X
 3
@@ -3831,10 +3952,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3862,6 +3983,7 @@ Numeric
 16
 Name
 5
+24
 user_strings_in_parallel
 X
 3
@@ -3889,10 +4011,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3920,6 +4042,7 @@ Numeric
 16
 Name
 5
+15
 vdcmax_inverter
 X
 3
@@ -3947,10 +4070,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3978,6 +4101,7 @@ Numeric
 16
 Name
 5
+10
 vmp_string
 X
 3
@@ -4005,10 +4129,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4036,6 +4160,7 @@ Numeric
 16
 Name
 5
+10
 voc_string
 X
 3
@@ -4063,10 +4188,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

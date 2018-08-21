@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+25
 General Design Parameters
 X
 3
@@ -23,6 +24,7 @@ Height
 161
 Caption
 5
+25
 General Design Parameters
 Bold
 2
@@ -33,6 +35,7 @@ Numeric
 16
 Name
 5
+13
 PB_COPY_P_ref
 X
 3
@@ -60,10 +63,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -91,6 +94,7 @@ Numeric
 16
 Name
 5
+22
 PB_COPY_T_htf_cold_des
 X
 3
@@ -118,10 +122,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -149,6 +153,7 @@ Numeric
 16
 Name
 5
+21
 PB_COPY_T_htf_hot_des
 X
 3
@@ -176,10 +181,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -207,6 +212,7 @@ Numeric
 16
 Name
 5
+18
 PB_COPY_design_eff
 X
 3
@@ -234,10 +240,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -265,6 +271,7 @@ Numeric
 16
 Name
 5
+35
 PB_COPY_gross_net_conversion_factor
 X
 3
@@ -292,10 +299,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -323,6 +330,7 @@ Numeric
 16
 Name
 5
+17
 PB_COPY_nameplate
 X
 3
@@ -350,10 +358,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -381,6 +389,7 @@ Numeric
 16
 Name
 5
+19
 PB_COPY_q_pb_design
 X
 3
@@ -408,10 +417,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -439,6 +448,7 @@ Numeric
 16
 Name
 5
+22
 PB_m_dot_htf_cycle_des
 X
 3
@@ -466,10 +476,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -497,6 +507,7 @@ Numeric
 16
 Name
 5
+17
 cycle_cutoff_frac
 X
 3
@@ -524,10 +535,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -555,6 +566,7 @@ Numeric
 16
 Name
 5
+14
 cycle_max_frac
 X
 3
@@ -582,10 +594,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -613,6 +625,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -628,6 +641,7 @@ Height
 123
 Caption
 5
+24
 System Design Parameters
 Bold
 2
@@ -638,6 +652,7 @@ Numeric
 16
 Name
 5
+12
 pb_pump_coef
 X
 3
@@ -665,10 +680,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -696,6 +711,7 @@ Numeric
 16
 Name
 5
+10
 q_sby_frac
 X
 3
@@ -723,10 +739,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -754,6 +770,7 @@ Numeric
 16
 Name
 5
+12
 startup_frac
 X
 3
@@ -781,10 +798,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -812,6 +829,7 @@ Numeric
 16
 Name
 5
+12
 startup_time
 X
 3
@@ -839,10 +857,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

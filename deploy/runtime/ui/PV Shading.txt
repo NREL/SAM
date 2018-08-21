@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 205
 Caption
 5
+16
 External Shading
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 450
 Caption
 5
+68
 Array Dimensions for Self Shading, Snow Losses, and Bifacial Modules
 Bold
 2
@@ -58,6 +62,7 @@ Label
 12
 Name
 5
+11
 Label121112
 X
 3
@@ -73,6 +78,7 @@ Height
 21
 Caption
 5
+18
 Module orientation
 TextColour
 4
@@ -101,6 +107,7 @@ Label
 12
 Name
 5
+11
 Label121112
 X
 3
@@ -116,6 +123,7 @@ Height
 21
 Caption
 5
+18
 Module orientation
 TextColour
 4
@@ -144,6 +152,7 @@ Label
 12
 Name
 5
+11
 Label121113
 X
 3
@@ -159,6 +168,7 @@ Height
 21
 Caption
 5
+35
 Number of modules along side of row
 TextColour
 4
@@ -187,6 +197,7 @@ Label
 12
 Name
 5
+11
 Label121113
 X
 3
@@ -202,6 +213,7 @@ Height
 21
 Caption
 5
+35
 Number of modules along side of row
 TextColour
 4
@@ -230,6 +242,7 @@ Label
 12
 Name
 5
+11
 Label121113
 X
 3
@@ -245,6 +258,7 @@ Height
 21
 Caption
 5
+35
 Number of modules along side of row
 TextColour
 4
@@ -273,6 +287,7 @@ Label
 12
 Name
 5
+11
 Label121113
 X
 3
@@ -288,6 +303,7 @@ Height
 21
 Caption
 5
+35
 Number of modules along side of row
 TextColour
 4
@@ -316,6 +332,7 @@ Label
 12
 Name
 5
+11
 Label121113
 X
 3
@@ -331,6 +348,7 @@ Height
 21
 Caption
 5
+35
 Number of modules along side of row
 TextColour
 4
@@ -359,6 +377,7 @@ Label
 12
 Name
 5
+11
 Label121113
 X
 3
@@ -374,6 +393,7 @@ Height
 21
 Caption
 5
+35
 Number of modules along side of row
 TextColour
 4
@@ -402,6 +422,7 @@ Label
 12
 Name
 5
+11
 Label121113
 X
 3
@@ -417,6 +438,7 @@ Height
 21
 Caption
 5
+35
 Number of modules along side of row
 TextColour
 4
@@ -445,6 +467,7 @@ Label
 12
 Name
 5
+11
 Label121113
 X
 3
@@ -460,6 +483,7 @@ Height
 21
 Caption
 5
+35
 Number of modules along side of row
 TextColour
 4
@@ -488,6 +512,7 @@ Button
 7
 Name
 5
+13
 edit_3d_scene
 X
 3
@@ -503,6 +528,7 @@ Height
 24
 Caption
 5
+27
 Open 3D shade calculator...
 TabOrder
 3
@@ -513,6 +539,7 @@ CheckBox
 8
 Name
 5
+13
 en_snow_model
 X
 3
@@ -528,6 +555,7 @@ Height
 24
 Caption
 5
+34
 Estimate losses from snow coverage
 State
 2
@@ -541,6 +569,7 @@ Label
 12
 Name
 5
+13
 lbl_subarray1
 X
 3
@@ -556,6 +585,7 @@ Height
 21
 Caption
 5
+10
 Subarray 1
 TextColour
 4
@@ -584,6 +614,7 @@ Label
 12
 Name
 5
+13
 lbl_subarray2
 X
 3
@@ -599,6 +630,7 @@ Height
 21
 Caption
 5
+10
 Subarray 2
 TextColour
 4
@@ -627,6 +659,7 @@ Label
 12
 Name
 5
+13
 lbl_subarray3
 X
 3
@@ -642,6 +675,7 @@ Height
 21
 Caption
 5
+10
 Subarray 3
 TextColour
 4
@@ -670,6 +704,7 @@ Label
 12
 Name
 5
+13
 lbl_subarray4
 X
 3
@@ -685,6 +720,7 @@ Height
 21
 Caption
 5
+10
 Subarray 4
 TextColour
 4
@@ -713,6 +749,7 @@ Numeric
 16
 Name
 5
+11
 module_area
 X
 3
@@ -740,10 +777,10 @@ Decimals
 4
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -771,6 +808,7 @@ Numeric
 16
 Name
 5
+19
 module_aspect_ratio
 X
 3
@@ -798,10 +836,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -829,6 +867,7 @@ Numeric
 16
 Name
 5
+13
 module_length
 X
 3
@@ -856,10 +895,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -887,6 +926,7 @@ Numeric
 16
 Name
 5
+12
 module_width
 X
 3
@@ -914,10 +954,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -945,6 +985,7 @@ Label
 12
 Name
 5
+9
 object 10
 X
 3
@@ -960,6 +1001,7 @@ Height
 45
 Caption
 5
+178
 Snow losses are caused by snow covering the array. When your weather file includes snow depth data, SAM can estimate losses due to snow.  Losses are calculated for each subarray.
 TextColour
 4
@@ -988,6 +1030,7 @@ Image
 7
 Name
 5
+9
 object 12
 X
 3
@@ -1003,7 +1046,7 @@ Height
 108
 Image
 7
-C:\Projects\GitHub\NREL\ui_as_text\SAM\deploy\runtime\/ui/PV Shading_object 12.png
+C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/PV Shading_object 12.png
 Centered
 2
 1
@@ -1013,6 +1056,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -1037,6 +1081,7 @@ Colour
 255
 Caption
 5
+19
 3D Shade Calculator
 Bold
 2
@@ -1047,6 +1092,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -1071,6 +1117,7 @@ Colour
 255
 Caption
 5
+19
 3D Shade Calculator
 Bold
 2
@@ -1081,6 +1128,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1096,6 +1144,7 @@ Height
 96
 Caption
 5
+11
 Snow Losses
 Bold
 2
@@ -1106,6 +1155,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1121,6 +1171,7 @@ Height
 96
 Caption
 5
+11
 Snow Losses
 Bold
 2
@@ -1131,6 +1182,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1146,6 +1198,7 @@ Height
 24
 Caption
 5
+80
 Self shading is shading of modules in the array by modules in a neighboring row.
 TextColour
 4
@@ -1174,6 +1227,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1189,6 +1243,7 @@ Height
 24
 Caption
 5
+80
 Self shading is shading of modules in the array by modules in a neighboring row.
 TextColour
 4
@@ -1217,6 +1272,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1232,6 +1288,7 @@ Height
 24
 Caption
 5
+80
 Self shading is shading of modules in the array by modules in a neighboring row.
 TextColour
 4
@@ -1260,6 +1317,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1275,6 +1333,7 @@ Height
 24
 Caption
 5
+80
 Self shading is shading of modules in the array by modules in a neighboring row.
 TextColour
 4
@@ -1303,6 +1362,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1318,6 +1378,7 @@ Height
 24
 Caption
 5
+80
 Self shading is shading of modules in the array by modules in a neighboring row.
 TextColour
 4
@@ -1346,6 +1407,7 @@ Image
 7
 Name
 5
+20
 self_shading_diagram
 X
 3
@@ -1361,7 +1423,7 @@ Height
 112
 Image
 7
-C:\Projects\GitHub\NREL\ui_as_text\SAM\deploy\runtime\/ui/PV Shading_self_shading_diagram.png
+C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/PV Shading_self_shading_diagram.png
 Centered
 2
 1
@@ -1371,6 +1433,7 @@ Numeric
 16
 Name
 5
+17
 subarray1_gcr_ref
 X
 3
@@ -1398,10 +1461,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1429,6 +1492,7 @@ Choice
 8
 Name
 5
+20
 subarray1_mod_orient
 X
 3
@@ -1457,6 +1521,7 @@ Numeric
 16
 Name
 5
+15
 subarray1_nmodx
 X
 3
@@ -1484,10 +1549,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1515,6 +1580,7 @@ Numeric
 16
 Name
 5
+15
 subarray1_nmody
 X
 3
@@ -1542,10 +1608,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1573,6 +1639,7 @@ Numeric
 16
 Name
 5
+22
 subarray1_ref_nmodules
 X
 3
@@ -1600,10 +1667,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1631,6 +1698,7 @@ Choice
 8
 Name
 5
+20
 subarray1_shade_mode
 X
 3
@@ -1659,6 +1727,7 @@ ShadingFactors
 8
 Name
 5
+17
 subarray1_shading
 X
 3
@@ -1677,6 +1746,7 @@ ShowDBOptions
 1
 Description
 5
+10
 Subarray 1
 TabOrder
 3
@@ -1687,6 +1757,7 @@ Numeric
 16
 Name
 5
+17
 subarray2_gcr_ref
 X
 3
@@ -1714,10 +1785,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1745,6 +1816,7 @@ Choice
 8
 Name
 5
+20
 subarray2_mod_orient
 X
 3
@@ -1773,6 +1845,7 @@ Numeric
 16
 Name
 5
+15
 subarray2_nmodx
 X
 3
@@ -1800,10 +1873,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1831,6 +1904,7 @@ Numeric
 16
 Name
 5
+15
 subarray2_nmody
 X
 3
@@ -1858,10 +1932,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1889,6 +1963,7 @@ Numeric
 16
 Name
 5
+22
 subarray2_ref_nmodules
 X
 3
@@ -1916,10 +1991,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1947,6 +2022,7 @@ Choice
 8
 Name
 5
+20
 subarray2_shade_mode
 X
 3
@@ -1975,6 +2051,7 @@ ShadingFactors
 8
 Name
 5
+17
 subarray2_shading
 X
 3
@@ -1993,6 +2070,7 @@ ShowDBOptions
 1
 Description
 5
+10
 Subarray 2
 TabOrder
 3
@@ -2003,6 +2081,7 @@ Numeric
 16
 Name
 5
+17
 subarray3_gcr_ref
 X
 3
@@ -2030,10 +2109,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2061,6 +2140,7 @@ Choice
 8
 Name
 5
+20
 subarray3_mod_orient
 X
 3
@@ -2089,6 +2169,7 @@ Numeric
 16
 Name
 5
+15
 subarray3_nmodx
 X
 3
@@ -2116,10 +2197,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2147,6 +2228,7 @@ Numeric
 16
 Name
 5
+15
 subarray3_nmody
 X
 3
@@ -2174,10 +2256,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2205,6 +2287,7 @@ Numeric
 16
 Name
 5
+22
 subarray3_ref_nmodules
 X
 3
@@ -2232,10 +2315,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2263,6 +2346,7 @@ Choice
 8
 Name
 5
+20
 subarray3_shade_mode
 X
 3
@@ -2291,6 +2375,7 @@ ShadingFactors
 8
 Name
 5
+17
 subarray3_shading
 X
 3
@@ -2309,6 +2394,7 @@ ShowDBOptions
 1
 Description
 5
+10
 Subarray 3
 TabOrder
 3
@@ -2319,6 +2405,7 @@ Numeric
 16
 Name
 5
+17
 subarray4_gcr_ref
 X
 3
@@ -2346,10 +2433,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2377,6 +2464,7 @@ Choice
 8
 Name
 5
+20
 subarray4_mod_orient
 X
 3
@@ -2405,6 +2493,7 @@ Numeric
 16
 Name
 5
+15
 subarray4_nmodx
 X
 3
@@ -2432,10 +2521,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2463,6 +2552,7 @@ Numeric
 16
 Name
 5
+15
 subarray4_nmody
 X
 3
@@ -2490,10 +2580,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2521,6 +2611,7 @@ Numeric
 16
 Name
 5
+22
 subarray4_ref_nmodules
 X
 3
@@ -2548,10 +2639,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2579,6 +2670,7 @@ Choice
 8
 Name
 5
+20
 subarray4_shade_mode
 X
 3
@@ -2607,6 +2699,7 @@ ShadingFactors
 8
 Name
 5
+17
 subarray4_shading
 X
 3
@@ -2625,6 +2718,7 @@ ShowDBOptions
 1
 Description
 5
+10
 Subarray 4
 TabOrder
 3
@@ -2635,6 +2729,7 @@ Divider
 9
 Name
 5
+21
 ui_calculated_divider
 X
 3
@@ -2659,6 +2754,7 @@ Colour
 255
 Caption
 5
+24
 Calculated System Layout
 Bold
 2
@@ -2669,6 +2765,7 @@ Label
 12
 Name
 5
+15
 ui_msg_selfshad
 X
 3
@@ -2684,7 +2781,7 @@ Height
 30
 Caption
 5
- 
+0
 TextColour
 4
 255
@@ -2712,6 +2809,7 @@ Label
 12
 Name
 5
+11
 ui_msg_snow
 X
 3
@@ -2727,7 +2825,7 @@ Height
 24
 Caption
 5
- 
+0
 TextColour
 4
 255
@@ -2755,6 +2853,7 @@ Numeric
 16
 Name
 5
+24
 ui_subarray1_length_side
 X
 3
@@ -2782,10 +2881,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2813,6 +2912,7 @@ Numeric
 16
 Name
 5
+18
 ui_subarray1_nrows
 X
 3
@@ -2840,10 +2940,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2871,6 +2971,7 @@ Numeric
 16
 Name
 5
+24
 ui_subarray1_row_spacing
 X
 3
@@ -2898,10 +2999,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2929,6 +3030,7 @@ Numeric
 16
 Name
 5
+24
 ui_subarray2_length_side
 X
 3
@@ -2956,10 +3058,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2987,6 +3089,7 @@ Numeric
 16
 Name
 5
+18
 ui_subarray2_nrows
 X
 3
@@ -3014,10 +3117,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3045,6 +3148,7 @@ Numeric
 16
 Name
 5
+24
 ui_subarray2_row_spacing
 X
 3
@@ -3072,10 +3176,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3103,6 +3207,7 @@ Numeric
 16
 Name
 5
+24
 ui_subarray3_length_side
 X
 3
@@ -3130,10 +3235,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3161,6 +3266,7 @@ Numeric
 16
 Name
 5
+18
 ui_subarray3_nrows
 X
 3
@@ -3188,10 +3294,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3219,6 +3325,7 @@ Numeric
 16
 Name
 5
+24
 ui_subarray3_row_spacing
 X
 3
@@ -3246,10 +3353,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3277,6 +3384,7 @@ Numeric
 16
 Name
 5
+24
 ui_subarray4_length_side
 X
 3
@@ -3304,10 +3412,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3335,6 +3443,7 @@ Numeric
 16
 Name
 5
+18
 ui_subarray4_nrows
 X
 3
@@ -3362,10 +3471,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3393,6 +3502,7 @@ Numeric
 16
 Name
 5
+24
 ui_subarray4_row_spacing
 X
 3
@@ -3420,10 +3530,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

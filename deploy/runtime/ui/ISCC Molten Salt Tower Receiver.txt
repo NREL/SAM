@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+5
 D_rec
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -66,6 +67,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -81,6 +83,7 @@ Height
 155
 Caption
 5
+17
 External Receiver
 Bold
 2
@@ -91,6 +94,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -106,6 +110,7 @@ Height
 146
 Caption
 5
+33
 Receiver Heat Transfer Properties
 Bold
 2
@@ -116,6 +121,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -131,6 +137,7 @@ Height
 317
 Caption
 5
+18
 Materials and Flow
 Bold
 2
@@ -141,6 +148,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -156,6 +164,7 @@ Height
 194
 Caption
 5
+16
 Design Operation
 Bold
 2
@@ -166,6 +175,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox5
 X
 3
@@ -181,6 +191,7 @@ Height
 164
 Caption
 5
+30
 Tower Height and Piping Losses
 Bold
 2
@@ -190,6 +201,7 @@ Numeric
 1
 16
 Name
+5
 5
 H_rec
 X
@@ -218,10 +230,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -249,6 +261,7 @@ Numeric
 16
 Name
 5
+8
 N_panels
 X
 3
@@ -276,10 +289,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -307,6 +320,7 @@ Label
 12
 Name
 5
+19
 Optimization_Notice
 X
 3
@@ -322,6 +336,7 @@ Height
 63
 Caption
 5
+131
 Receiver Height and Receiver Diameter can be optimized using the 'Optimize solar field geometry' button on the Heliostat Field page
 TextColour
 4
@@ -350,6 +365,7 @@ Numeric
 16
 Name
 5
+9
 Q_rec_des
 X
 3
@@ -377,10 +393,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -408,6 +424,7 @@ GroupBox
 7
 Name
 5
+29
 Solar Field Design Parameters
 X
 3
@@ -423,6 +440,7 @@ Height
 66
 Caption
 5
+29
 Solar Field Design Parameters
 Bold
 2
@@ -433,6 +451,7 @@ Numeric
 16
 Name
 5
+3
 THT
 X
 3
@@ -460,10 +479,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -491,6 +510,7 @@ Choice
 8
 Name
 5
+23
 csp.pt.rec.flow_pattern
 X
 3
@@ -527,6 +547,7 @@ Choice
 8
 Name
 5
+19
 csp.pt.rec.htf_type
 X
 3
@@ -558,6 +579,7 @@ Choice
 8
 Name
 5
+24
 csp.pt.rec.material_type
 X
 3
@@ -587,6 +609,7 @@ Numeric
 16
 Name
 5
+26
 csp.pt.rec.max_flow_to_rec
 X
 3
@@ -614,10 +637,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -645,6 +668,7 @@ Numeric
 16
 Name
 5
+24
 csp.pt.rec.max_oper_frac
 X
 3
@@ -672,10 +696,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -703,6 +727,7 @@ Numeric
 16
 Name
 5
+10
 d_tube_out
 X
 3
@@ -730,10 +755,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -761,6 +786,7 @@ Numeric
 16
 Name
 5
+14
 delta_flux_hrs
 X
 3
@@ -788,10 +814,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -819,6 +845,7 @@ Numeric
 16
 Name
 5
+7
 dni_des
 X
 3
@@ -846,10 +873,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -877,6 +904,7 @@ Numeric
 16
 Name
 5
+7
 epsilon
 X
 3
@@ -904,10 +932,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -935,6 +963,7 @@ Numeric
 16
 Name
 5
+8
 eta_pump
 X
 3
@@ -962,10 +991,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -993,6 +1022,7 @@ Numeric
 16
 Name
 5
+9
 f_rec_min
 X
 3
@@ -1020,10 +1050,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1051,6 +1081,7 @@ MaterialProperties
 6
 Name
 5
+14
 field_fl_props
 X
 3
@@ -1073,6 +1104,7 @@ Numeric
 16
 Name
 5
+13
 flux_max_mspt
 X
 3
@@ -1100,10 +1132,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1131,6 +1163,7 @@ GroupBox
 7
 Name
 5
+11
 groupbox123
 X
 3
@@ -1146,6 +1179,7 @@ Height
 138
 Caption
 5
+33
 Receiver Flux Modeling Parameters
 Bold
 2
@@ -1156,6 +1190,7 @@ Numeric
 16
 Name
 5
+8
 hl_ffact
 X
 3
@@ -1183,10 +1218,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1214,6 +1249,7 @@ Numeric
 16
 Name
 5
+11
 n_flux_days
 X
 3
@@ -1241,10 +1277,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1272,6 +1308,7 @@ Numeric
 16
 Name
 5
+8
 n_flux_x
 X
 3
@@ -1299,10 +1336,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1330,6 +1367,7 @@ Image
 7
 Name
 5
+7
 pctFlow
 X
 3
@@ -1345,7 +1383,7 @@ Height
 163
 Image
 7
-C:\Projects\GitHub\NREL\ui_as_text\SAM\deploy\runtime\/ui/ISCC Molten Salt Tower Receiver_pctFlow.png
+C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/ISCC Molten Salt Tower Receiver_pctFlow.png
 Centered
 2
 1
@@ -1355,6 +1393,7 @@ Numeric
 16
 Name
 5
+13
 piping_length
 X
 3
@@ -1382,10 +1421,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1413,6 +1452,7 @@ Numeric
 16
 Name
 5
+19
 piping_length_const
 X
 3
@@ -1440,10 +1480,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1471,6 +1511,7 @@ Numeric
 16
 Name
 5
+18
 piping_length_mult
 X
 3
@@ -1498,10 +1539,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1529,6 +1570,7 @@ Numeric
 16
 Name
 5
+11
 piping_loss
 X
 3
@@ -1556,10 +1598,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1587,6 +1629,7 @@ Numeric
 16
 Name
 5
+15
 piping_loss_tot
 X
 3
@@ -1614,10 +1657,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1645,6 +1688,7 @@ Numeric
 16
 Name
 5
+15
 rec_absorptance
 X
 3
@@ -1672,10 +1716,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1703,6 +1747,7 @@ Numeric
 16
 Name
 5
+12
 rec_hl_perm2
 X
 3
@@ -1730,10 +1775,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1761,6 +1806,7 @@ Numeric
 16
 Name
 5
+12
 rec_qf_delay
 X
 3
@@ -1788,10 +1834,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1819,6 +1865,7 @@ Numeric
 16
 Name
 5
+12
 rec_su_delay
 X
 3
@@ -1846,10 +1893,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1877,6 +1924,7 @@ Numeric
 16
 Name
 5
+6
 solarm
 X
 3
@@ -1904,10 +1952,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1935,6 +1983,7 @@ Numeric
 16
 Name
 5
+7
 th_tube
 X
 3
@@ -1962,10 +2011,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

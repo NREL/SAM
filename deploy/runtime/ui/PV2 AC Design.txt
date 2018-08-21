@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -66,6 +67,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -93,10 +95,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -124,6 +126,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -151,10 +154,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -182,6 +185,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -209,10 +213,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -240,6 +244,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -267,10 +272,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -298,6 +303,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -325,10 +331,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -356,6 +362,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -383,10 +390,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -414,6 +421,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -441,10 +449,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -472,6 +480,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -499,10 +508,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -530,6 +539,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -557,10 +567,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -588,6 +598,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -615,10 +626,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -646,6 +657,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -670,6 +682,7 @@ Colour
 255
 Caption
 5
+37
 Configuration at reference conditions
 Bold
 2
@@ -680,6 +693,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -695,6 +709,7 @@ Height
 195
 Caption
 5
+13
 System design
 Bold
 2
@@ -705,6 +720,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -720,6 +736,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -748,6 +765,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -763,6 +781,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -791,6 +810,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -806,6 +826,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -834,6 +855,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -849,6 +871,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -877,6 +900,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -892,6 +916,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -920,6 +945,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -935,6 +961,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -963,6 +990,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -978,6 +1006,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -1006,6 +1035,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1021,6 +1051,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -1049,6 +1080,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1064,6 +1096,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -1092,6 +1125,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1107,6 +1141,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -1135,6 +1170,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1150,6 +1186,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -1178,6 +1215,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1193,6 +1231,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -1221,6 +1260,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1236,6 +1276,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -1264,6 +1305,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1279,6 +1321,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -1307,6 +1350,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1322,6 +1366,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -1350,6 +1395,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1365,6 +1411,7 @@ Height
 24
 Caption
 5
+19
 Number of inverters
 TextColour
 4
@@ -1393,6 +1440,7 @@ RadioChoice
 10
 Name
 5
+8
 object 8
 X
 3

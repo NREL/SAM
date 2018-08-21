@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 386
 Caption
 5
+14
 Storage System
 Bold
 2
@@ -32,6 +34,7 @@ Numeric
 1
 16
 Name
+5
 5
 Q_tes
 X
@@ -60,10 +63,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -91,6 +94,7 @@ Numeric
 16
 Name
 5
+23
 TES_COPY_T_htf_cold_des
 X
 3
@@ -118,10 +122,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -149,6 +153,7 @@ Numeric
 16
 Name
 5
+22
 TES_COPY_T_htf_hot_des
 X
 3
@@ -176,10 +181,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -207,6 +212,7 @@ Numeric
 16
 Name
 5
+20
 TES_COPY_q_pb_design
 X
 3
@@ -234,10 +240,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -265,6 +271,7 @@ Numeric
 16
 Name
 5
+16
 TES_COPY_tshours
 X
 3
@@ -292,10 +299,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -323,6 +330,7 @@ Numeric
 16
 Name
 5
+14
 cold_tank_Thtr
 X
 3
@@ -350,10 +358,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -381,6 +389,7 @@ Numeric
 16
 Name
 5
+18
 cold_tank_max_heat
 X
 3
@@ -408,10 +417,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -439,6 +448,7 @@ Numeric
 16
 Name
 5
+21
 csp.pt.tes.heater_eff
 X
 3
@@ -466,10 +476,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -497,6 +507,7 @@ Numeric
 16
 Name
 5
+22
 csp.pt.tes.htf_density
 X
 3
@@ -524,10 +535,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -555,6 +566,7 @@ Numeric
 16
 Name
 5
+31
 csp.pt.tes.init_hot_htf_percent
 X
 3
@@ -582,10 +594,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -613,6 +625,7 @@ Choice
 8
 Name
 5
+23
 csp.pt.tes.storage_type
 X
 3
@@ -642,6 +655,7 @@ Numeric
 16
 Name
 5
+24
 csp.pt.tes.tank_diameter
 X
 3
@@ -669,10 +683,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -700,6 +714,7 @@ Numeric
 16
 Name
 5
+23
 csp.pt.tes.tc_fill_dens
 X
 3
@@ -727,10 +742,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -758,6 +773,7 @@ Numeric
 16
 Name
 5
+22
 csp.pt.tes.tc_fill_sph
 X
 3
@@ -785,10 +801,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -816,6 +832,7 @@ Choice
 8
 Name
 5
+23
 csp.pt.tes.tc_fill_type
 X
 3
@@ -844,6 +861,7 @@ Numeric
 16
 Name
 5
+6
 h_tank
 X
 3
@@ -871,10 +889,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -902,6 +920,7 @@ Numeric
 16
 Name
 5
+10
 h_tank_min
 X
 3
@@ -929,10 +948,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -960,6 +979,7 @@ Numeric
 16
 Name
 5
+13
 hot_tank_Thtr
 X
 3
@@ -987,10 +1007,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1018,6 +1038,7 @@ Numeric
 16
 Name
 5
+17
 hot_tank_max_heat
 X
 3
@@ -1045,10 +1066,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1075,6 +1096,7 @@ Numeric
 1
 16
 Name
+5
 5
 nodes
 X
@@ -1103,10 +1125,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1134,6 +1156,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1149,6 +1172,7 @@ Height
 87
 Caption
 5
+24
 System Design Parameters
 Bold
 2
@@ -1159,6 +1183,7 @@ Numeric
 16
 Name
 5
+13
 q_dot_tes_est
 X
 3
@@ -1186,10 +1211,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1217,6 +1242,7 @@ Numeric
 16
 Name
 5
+12
 t_ch_out_max
 X
 3
@@ -1244,10 +1270,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1275,6 +1301,7 @@ Numeric
 16
 Name
 5
+13
 t_dis_out_min
 X
 3
@@ -1302,10 +1329,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1333,6 +1360,7 @@ Numeric
 16
 Name
 5
+10
 tank_pairs
 X
 3
@@ -1360,10 +1388,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1391,6 +1419,7 @@ Numeric
 16
 Name
 5
+7
 tc_void
 X
 3
@@ -1418,10 +1447,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1449,6 +1478,7 @@ Numeric
 16
 Name
 5
+13
 tes_avail_vol
 X
 3
@@ -1476,10 +1506,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1507,6 +1537,7 @@ Numeric
 16
 Name
 5
+6
 u_tank
 X
 3
@@ -1534,10 +1565,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1565,6 +1596,7 @@ Numeric
 16
 Name
 5
+8
 vol_tank
 X
 3
@@ -1592,10 +1624,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

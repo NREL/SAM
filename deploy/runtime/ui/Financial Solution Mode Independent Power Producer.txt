@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 329
 Caption
 5
+13
 Solution Mode
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -48,6 +51,7 @@ Height
 209
 Caption
 5
+17
 Specify PPA Price
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -73,6 +78,7 @@ Height
 209
 Caption
 5
+18
 Specify IRR Target
 Bold
 2
@@ -83,6 +89,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -98,6 +105,7 @@ Height
 21
 Caption
 5
+86
 Choose Specify IRR Target when you know the IRR and want SAM to calculate a PPA price.
 TextColour
 4
@@ -126,6 +134,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -141,6 +150,7 @@ Height
 21
 Caption
 5
+22
 Financial Optimization
 TextColour
 4
@@ -169,6 +179,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -184,6 +195,7 @@ Height
 27
 Caption
 5
+93
 Choose Specify PPA Price when you know the PPA (bid) price and want SAM to calculate the IRR.
 TextColour
 4
@@ -212,6 +224,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -227,6 +240,7 @@ Height
 42
 Caption
 5
+182
 You can specify an optional annual power price escalation rate and, for analyses involving time-of-delivery pricing, optional hourly payment allocation factors. See Help for details.
 TextColour
 4
@@ -255,6 +269,7 @@ SchedNumeric
 11
 Name
 5
+9
 bid_price
 X
 3
@@ -270,6 +285,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -282,7 +298,7 @@ FixedLength
 4294967295
 Description
 5
- 
+0
 TabOrder
 3
 4294967295
@@ -292,6 +308,7 @@ Numeric
 16
 Name
 5
+13
 bid_price_esc
 X
 3
@@ -319,10 +336,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -350,6 +367,7 @@ CheckBox
 8
 Name
 5
+17
 min_dscr_required
 X
 3
@@ -365,6 +383,7 @@ Height
 21
 Caption
 5
+34
 Constraint: Require a minimum DSCR
 State
 2
@@ -378,6 +397,7 @@ Numeric
 16
 Name
 5
+15
 min_dscr_target
 X
 3
@@ -405,10 +425,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -436,6 +456,7 @@ Numeric
 16
 Name
 5
+14
 min_irr_target
 X
 3
@@ -463,10 +484,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -494,6 +515,7 @@ CheckBox
 8
 Name
 5
+31
 optimize_lcoe_wrt_debt_fraction
 X
 3
@@ -509,6 +531,7 @@ Height
 21
 Caption
 5
+48
 Allow SAM to pick debt fraction to minimize LCOE
 State
 2
@@ -522,6 +545,7 @@ CheckBox
 8
 Name
 5
+32
 optimize_lcoe_wrt_ppa_escalation
 X
 3
@@ -537,6 +561,7 @@ Height
 21
 Caption
 5
+54
 Allow SAM to pick PPA escalation rate to minimize LCOE
 State
 2
@@ -550,6 +575,7 @@ CheckBox
 8
 Name
 5
+26
 positive_cashflow_required
 X
 3
@@ -565,6 +591,7 @@ Height
 21
 Caption
 5
+39
 Constraint: Require a positive cashflow
 State
 2
@@ -578,6 +605,7 @@ Numeric
 16
 Name
 5
+14
 ppa_escalation
 X
 3
@@ -605,10 +633,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -636,6 +664,7 @@ RadioChoice
 10
 Name
 5
+9
 soln_mode
 X
 3

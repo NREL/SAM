@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 313
 Caption
 5
+11
 Description
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -48,6 +51,7 @@ Height
 132
 Caption
 5
+13
 Applicability
 Bold
 2
@@ -58,6 +62,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -73,6 +78,7 @@ Height
 57
 Caption
 5
+334
 The description and applicability information is for your reference. SAM does not use it in calculations. The information is from the U.S. Utility Rate Database, but may not correspond to the actual energy charge and demand charge data from the database. The description fields are editable, so you can change them to suit your needs.
 TextColour
 4
@@ -101,6 +107,7 @@ Numeric
 16
 Name
 5
+17
 ur_demand_history
 X
 3
@@ -128,10 +135,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -159,6 +166,7 @@ Numeric
 16
 Name
 5
+13
 ur_demand_max
 X
 3
@@ -186,10 +194,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -217,6 +225,7 @@ Numeric
 16
 Name
 5
+13
 ur_demand_min
 X
 3
@@ -244,10 +253,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -275,6 +284,7 @@ MultilineText
 10
 Name
 5
+14
 ur_description
 X
 3
@@ -290,7 +300,7 @@ Height
 138
 Text
 5
- 
+0
 Editable
 2
 1
@@ -315,6 +325,7 @@ TextEntry
 10
 Name
 5
+11
 ur_end_date
 X
 3
@@ -330,7 +341,7 @@ Height
 21
 Text
 5
- 
+0
 Editable
 2
 1
@@ -355,6 +366,7 @@ Numeric
 16
 Name
 5
+17
 ur_energy_history
 X
 3
@@ -382,10 +394,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -413,6 +425,7 @@ Numeric
 16
 Name
 5
+13
 ur_energy_max
 X
 3
@@ -440,10 +453,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -471,6 +484,7 @@ Numeric
 16
 Name
 5
+13
 ur_energy_min
 X
 3
@@ -498,10 +512,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -529,6 +543,7 @@ TextEntry
 10
 Name
 5
+7
 ur_name
 X
 3
@@ -544,7 +559,7 @@ Height
 21
 Text
 5
- 
+0
 Editable
 2
 1
@@ -569,6 +584,7 @@ TextEntry
 10
 Name
 5
+15
 ur_phase_wiring
 X
 3
@@ -584,7 +600,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1
@@ -609,6 +625,7 @@ TextEntry
 10
 Name
 5
+16
 ur_schedule_name
 X
 3
@@ -624,7 +641,7 @@ Height
 21
 Text
 5
- 
+0
 Editable
 2
 1
@@ -649,6 +666,7 @@ TextEntry
 10
 Name
 5
+9
 ur_source
 X
 3
@@ -664,7 +682,7 @@ Height
 21
 Text
 5
- 
+0
 Editable
 2
 1
@@ -689,6 +707,7 @@ TextEntry
 10
 Name
 5
+13
 ur_start_date
 X
 3
@@ -704,7 +723,7 @@ Height
 21
 Text
 5
- 
+0
 Editable
 2
 1
@@ -729,6 +748,7 @@ TextEntry
 10
 Name
 5
+6
 ur_uri
 X
 3
@@ -744,7 +764,7 @@ Height
 21
 Text
 5
- 
+0
 Editable
 2
 1
@@ -769,6 +789,7 @@ TextEntry
 10
 Name
 5
+19
 ur_voltage_category
 X
 3
@@ -784,7 +805,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1
@@ -809,6 +830,7 @@ Numeric
 16
 Name
 5
+14
 ur_voltage_max
 X
 3
@@ -836,10 +858,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -867,6 +889,7 @@ Numeric
 16
 Name
 5
+14
 ur_voltage_min
 X
 3
@@ -894,10 +917,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

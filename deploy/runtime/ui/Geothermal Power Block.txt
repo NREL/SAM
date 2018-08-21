@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 143
 Caption
 5
+24
 Power Block Design Point
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 314
 Caption
 5
+32
 Hybrid Cooling Dispatch Schedule
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 59
 Caption
 5
+17
 Power Block Model
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -98,6 +105,7 @@ Height
 281
 Caption
 5
+14
 Cooling System
 Bold
 2
@@ -108,6 +116,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -123,6 +132,7 @@ Height
 21
 Caption
 5
+15
 Hybrid Dispatch
 TextColour
 4
@@ -151,6 +161,7 @@ Label
 12
 Name
 5
+7
 Label10
 X
 3
@@ -166,6 +177,7 @@ Height
 21
 Caption
 5
+9
 Period 3:
 TextColour
 4
@@ -194,6 +206,7 @@ Label
 12
 Name
 5
+8
 Label101
 X
 3
@@ -209,6 +222,7 @@ Height
 21
 Caption
 5
+9
 Period 7:
 TextColour
 4
@@ -237,6 +251,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -252,6 +267,7 @@ Height
 21
 Caption
 5
+9
 Period 4:
 TextColour
 4
@@ -280,6 +296,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -295,6 +312,7 @@ Height
 21
 Caption
 5
+9
 Period 8:
 TextColour
 4
@@ -323,6 +341,7 @@ Label
 12
 Name
 5
+8
 Label121
 X
 3
@@ -338,6 +357,7 @@ Height
 21
 Caption
 5
+9
 Period 9:
 TextColour
 4
@@ -366,6 +386,7 @@ Label
 12
 Name
 5
+8
 Label122
 X
 3
@@ -381,6 +402,7 @@ Height
 21
 Caption
 5
+9
 Period 5:
 TextColour
 4
@@ -409,6 +431,7 @@ Label
 12
 Name
 5
+7
 Label13
 X
 3
@@ -424,6 +447,7 @@ Height
 21
 Caption
 5
+9
 Period 6:
 TextColour
 4
@@ -452,6 +476,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -467,6 +492,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -495,6 +521,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -510,6 +537,7 @@ Height
 66
 Caption
 5
+158
 Hybrid dispatch control parameters refer to the dispatch periods defined below. These parameters are only available for hourly models using hybrid condensers.
 TextColour
 4
@@ -538,6 +566,7 @@ Label
 12
 Name
 5
+6
 Label9
 X
 3
@@ -553,6 +582,7 @@ Height
 21
 Caption
 5
+9
 Period 2:
 TextColour
 4
@@ -581,6 +611,7 @@ Numeric
 16
 Name
 5
+6
 P_boil
 X
 3
@@ -608,10 +639,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -639,6 +670,7 @@ Numeric
 16
 Name
 5
+10
 P_cond_min
 X
 3
@@ -666,10 +698,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -697,6 +729,7 @@ Numeric
 16
 Name
 5
+12
 P_cond_ratio
 X
 3
@@ -724,10 +757,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -755,6 +788,7 @@ Numeric
 16
 Name
 5
+9
 T_ITD_des
 X
 3
@@ -782,10 +816,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -813,6 +847,7 @@ Numeric
 16
 Name
 5
+9
 T_amb_des
 X
 3
@@ -840,10 +875,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -871,6 +906,7 @@ Numeric
 16
 Name
 5
+10
 T_approach
 X
 3
@@ -898,10 +934,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -929,6 +965,7 @@ Numeric
 16
 Name
 5
+14
 T_htf_cold_ref
 X
 3
@@ -956,10 +993,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -987,6 +1024,7 @@ Numeric
 16
 Name
 5
+13
 T_htf_hot_ref
 X
 3
@@ -1014,10 +1052,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1045,6 +1083,7 @@ Numeric
 16
 Name
 5
+9
 dT_cw_ref
 X
 3
@@ -1072,10 +1111,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1103,6 +1142,7 @@ Numeric
 16
 Name
 5
+7
 eta_ref
 X
 3
@@ -1130,10 +1170,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1161,6 +1201,7 @@ Choice
 8
 Name
 5
+33
 geopowerblock.pwrb.condenser_type
 X
 3
@@ -1192,6 +1233,7 @@ Numeric
 16
 Name
 5
+7
 hc_ctl1
 X
 3
@@ -1219,10 +1261,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1250,6 +1292,7 @@ Numeric
 16
 Name
 5
+7
 hc_ctl2
 X
 3
@@ -1277,10 +1320,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1308,6 +1351,7 @@ Numeric
 16
 Name
 5
+7
 hc_ctl3
 X
 3
@@ -1335,10 +1379,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1366,6 +1410,7 @@ Numeric
 16
 Name
 5
+7
 hc_ctl4
 X
 3
@@ -1393,10 +1438,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1424,6 +1469,7 @@ Numeric
 16
 Name
 5
+7
 hc_ctl5
 X
 3
@@ -1451,10 +1497,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1482,6 +1528,7 @@ Numeric
 16
 Name
 5
+7
 hc_ctl6
 X
 3
@@ -1509,10 +1556,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1540,6 +1587,7 @@ Numeric
 16
 Name
 5
+7
 hc_ctl7
 X
 3
@@ -1567,10 +1615,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1598,6 +1646,7 @@ Numeric
 16
 Name
 5
+7
 hc_ctl8
 X
 3
@@ -1625,10 +1674,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1656,6 +1705,7 @@ Numeric
 16
 Name
 5
+7
 hc_ctl9
 X
 3
@@ -1683,10 +1733,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1714,6 +1764,7 @@ Numeric
 16
 Name
 5
+10
 hr_pl_nlev
 X
 3
@@ -1741,10 +1792,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1772,6 +1823,7 @@ DiurnalPeriod
 9
 Name
 5
+24
 hybrid_dispatch_schedule
 X
 3
@@ -1790,7 +1842,7 @@ TabOrder
 4294967295
 Schedule
 5
- 
+0
 Max
 3
 9
@@ -1803,6 +1855,7 @@ Choice
 8
 Name
 5
+12
 model_choice
 X
 3
@@ -1834,6 +1887,7 @@ Numeric
 16
 Name
 5
+10
 pb_bd_frac
 X
 3
@@ -1861,10 +1915,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

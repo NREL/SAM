@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+21
 Battery Configuration
 X
 3
@@ -23,6 +24,7 @@ Height
 140
 Caption
 5
+16
 Power Converters
 Bold
 2
@@ -33,6 +35,7 @@ Numeric
 16
 Name
 5
+21
 batt_ac_dc_efficiency
 X
 3
@@ -60,10 +63,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -91,6 +94,7 @@ RadioChoice
 10
 Name
 5
+13
 batt_ac_or_dc
 X
 3
@@ -127,6 +131,7 @@ Numeric
 16
 Name
 5
+21
 batt_dc_ac_efficiency
 X
 3
@@ -154,10 +159,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -185,6 +190,7 @@ Numeric
 16
 Name
 5
+21
 batt_dc_dc_efficiency
 X
 3
@@ -212,10 +218,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -243,6 +249,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -258,6 +265,7 @@ Height
 24
 Caption
 5
+105
 Choose whether the battery is connected on the DC side of the PV array, or post inversion on the AC side.
 TextColour
 4

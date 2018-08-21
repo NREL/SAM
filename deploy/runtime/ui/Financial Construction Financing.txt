@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 285
 Caption
 5
+24
 Construction Period Debt
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -48,6 +51,7 @@ Height
 23
 Caption
 5
+18
 Construction loans
 TextColour
 4
@@ -76,6 +80,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -91,6 +96,7 @@ Height
 63
 Caption
 5
+26
 Percent of installed costs
 TextColour
 4
@@ -119,6 +125,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -134,6 +141,7 @@ Height
 63
 Caption
 5
+25
 Months prior to operation
 TextColour
 4
@@ -162,6 +170,7 @@ Label
 12
 Name
 5
+9
 Label1111
 X
 3
@@ -177,6 +186,7 @@ Height
 60
 Caption
 5
+24
 Annual interest rate (%)
 TextColour
 4
@@ -205,6 +215,7 @@ Label
 12
 Name
 5
+10
 Label11111
 X
 3
@@ -220,6 +231,7 @@ Height
 21
 Caption
 5
+13
 Principal ($)
 TextColour
 4
@@ -248,6 +260,7 @@ Label
 12
 Name
 5
+11
 Label111111
 X
 3
@@ -263,6 +276,7 @@ Height
 21
 Caption
 5
+12
 Interest ($)
 TextColour
 4
@@ -291,6 +305,7 @@ Label
 12
 Name
 5
+12
 Label1111111
 X
 3
@@ -306,6 +321,7 @@ Height
 60
 Caption
 5
+37
 Total construction financing cost ($)
 TextColour
 4
@@ -334,6 +350,7 @@ Label
 12
 Name
 5
+10
 Label11112
 X
 3
@@ -349,6 +366,7 @@ Height
 66
 Caption
 5
+29
 Up-front fee (% of principal)
 TextColour
 4
@@ -377,6 +395,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -392,6 +411,7 @@ Height
 46
 Caption
 5
+238
 Specify the terms of up to five optional short-term construction loans. SAM calculates the total financing cost and adds it to the project's investment cost. The sum of percentages in the Percent of Installed Costs column must equal 100%.
 TextColour
 4
@@ -420,6 +440,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -435,6 +456,7 @@ Height
 21
 Caption
 5
+7
 Totals:
 TextColour
 4
@@ -463,6 +485,7 @@ Numeric
 16
 Name
 5
+19
 const_per_interest1
 X
 3
@@ -490,10 +513,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -521,6 +544,7 @@ Numeric
 16
 Name
 5
+19
 const_per_interest2
 X
 3
@@ -548,10 +572,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -579,6 +603,7 @@ Numeric
 16
 Name
 5
+19
 const_per_interest3
 X
 3
@@ -606,10 +631,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -637,6 +662,7 @@ Numeric
 16
 Name
 5
+19
 const_per_interest4
 X
 3
@@ -664,10 +690,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -695,6 +721,7 @@ Numeric
 16
 Name
 5
+19
 const_per_interest5
 X
 3
@@ -722,10 +749,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -753,6 +780,7 @@ Numeric
 16
 Name
 5
+24
 const_per_interest_rate1
 X
 3
@@ -780,10 +808,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -811,6 +839,7 @@ Numeric
 16
 Name
 5
+24
 const_per_interest_rate2
 X
 3
@@ -838,10 +867,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -869,6 +898,7 @@ Numeric
 16
 Name
 5
+24
 const_per_interest_rate3
 X
 3
@@ -896,10 +926,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -927,6 +957,7 @@ Numeric
 16
 Name
 5
+24
 const_per_interest_rate4
 X
 3
@@ -954,10 +985,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -985,6 +1016,7 @@ Numeric
 16
 Name
 5
+24
 const_per_interest_rate5
 X
 3
@@ -1012,10 +1044,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1043,6 +1075,7 @@ Numeric
 16
 Name
 5
+24
 const_per_interest_total
 X
 3
@@ -1070,10 +1103,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1101,6 +1134,7 @@ Numeric
 16
 Name
 5
+17
 const_per_months1
 X
 3
@@ -1128,10 +1162,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1159,6 +1193,7 @@ Numeric
 16
 Name
 5
+17
 const_per_months2
 X
 3
@@ -1186,10 +1221,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1217,6 +1252,7 @@ Numeric
 16
 Name
 5
+17
 const_per_months3
 X
 3
@@ -1244,10 +1280,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1275,6 +1311,7 @@ Numeric
 16
 Name
 5
+17
 const_per_months4
 X
 3
@@ -1302,10 +1339,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1333,6 +1370,7 @@ Numeric
 16
 Name
 5
+17
 const_per_months5
 X
 3
@@ -1360,10 +1398,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1391,6 +1429,7 @@ TextEntry
 10
 Name
 5
+15
 const_per_name1
 X
 3
@@ -1406,6 +1445,7 @@ Height
 21
 Text
 5
+6
 Loan 1
 Editable
 2
@@ -1431,6 +1471,7 @@ TextEntry
 10
 Name
 5
+15
 const_per_name2
 X
 3
@@ -1446,6 +1487,7 @@ Height
 21
 Text
 5
+6
 Loan 2
 Editable
 2
@@ -1471,6 +1513,7 @@ TextEntry
 10
 Name
 5
+15
 const_per_name3
 X
 3
@@ -1486,6 +1529,7 @@ Height
 21
 Text
 5
+6
 Loan 3
 Editable
 2
@@ -1511,6 +1555,7 @@ TextEntry
 10
 Name
 5
+15
 const_per_name4
 X
 3
@@ -1526,6 +1571,7 @@ Height
 21
 Text
 5
+6
 Loan 4
 Editable
 2
@@ -1551,6 +1597,7 @@ TextEntry
 10
 Name
 5
+15
 const_per_name5
 X
 3
@@ -1566,6 +1613,7 @@ Height
 21
 Text
 5
+6
 Loan 5
 Editable
 2
@@ -1591,6 +1639,7 @@ Numeric
 16
 Name
 5
+18
 const_per_percent1
 X
 3
@@ -1618,10 +1667,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1649,6 +1698,7 @@ Numeric
 16
 Name
 5
+18
 const_per_percent2
 X
 3
@@ -1676,10 +1726,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1707,6 +1757,7 @@ Numeric
 16
 Name
 5
+18
 const_per_percent3
 X
 3
@@ -1734,10 +1785,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1765,6 +1816,7 @@ Numeric
 16
 Name
 5
+18
 const_per_percent4
 X
 3
@@ -1792,10 +1844,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1823,6 +1875,7 @@ Numeric
 16
 Name
 5
+18
 const_per_percent5
 X
 3
@@ -1850,10 +1903,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1881,6 +1934,7 @@ Numeric
 16
 Name
 5
+23
 const_per_percent_total
 X
 3
@@ -1908,10 +1962,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1939,6 +1993,7 @@ Numeric
 16
 Name
 5
+20
 const_per_principal1
 X
 3
@@ -1966,10 +2021,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1997,6 +2052,7 @@ Numeric
 16
 Name
 5
+20
 const_per_principal2
 X
 3
@@ -2024,10 +2080,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2055,6 +2111,7 @@ Numeric
 16
 Name
 5
+20
 const_per_principal3
 X
 3
@@ -2082,10 +2139,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2113,6 +2170,7 @@ Numeric
 16
 Name
 5
+20
 const_per_principal4
 X
 3
@@ -2140,10 +2198,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2171,6 +2229,7 @@ Numeric
 16
 Name
 5
+20
 const_per_principal5
 X
 3
@@ -2198,10 +2257,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2229,6 +2288,7 @@ Numeric
 16
 Name
 5
+25
 const_per_principal_total
 X
 3
@@ -2256,10 +2316,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2287,6 +2347,7 @@ Numeric
 16
 Name
 5
+16
 const_per_total1
 X
 3
@@ -2314,10 +2375,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2345,6 +2406,7 @@ Numeric
 16
 Name
 5
+16
 const_per_total2
 X
 3
@@ -2372,10 +2434,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2403,6 +2465,7 @@ Numeric
 16
 Name
 5
+16
 const_per_total3
 X
 3
@@ -2430,10 +2493,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2461,6 +2524,7 @@ Numeric
 16
 Name
 5
+16
 const_per_total4
 X
 3
@@ -2488,10 +2552,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2519,6 +2583,7 @@ Numeric
 16
 Name
 5
+16
 const_per_total5
 X
 3
@@ -2546,10 +2611,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2577,6 +2642,7 @@ Numeric
 16
 Name
 5
+23
 const_per_upfront_rate1
 X
 3
@@ -2604,10 +2670,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2635,6 +2701,7 @@ Numeric
 16
 Name
 5
+23
 const_per_upfront_rate2
 X
 3
@@ -2662,10 +2729,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2693,6 +2760,7 @@ Numeric
 16
 Name
 5
+23
 const_per_upfront_rate3
 X
 3
@@ -2720,10 +2788,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2751,6 +2819,7 @@ Numeric
 16
 Name
 5
+23
 const_per_upfront_rate4
 X
 3
@@ -2778,10 +2847,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2809,6 +2878,7 @@ Numeric
 16
 Name
 5
+23
 const_per_upfront_rate5
 X
 3
@@ -2836,10 +2906,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2867,6 +2937,7 @@ Numeric
 16
 Name
 5
+27
 construction_financing_cost
 X
 3
@@ -2894,10 +2965,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

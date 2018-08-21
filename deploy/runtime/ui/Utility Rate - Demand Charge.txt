@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox31
 X
 3
@@ -23,6 +24,7 @@ Height
 695
 Caption
 5
+24
 Rates for Demand Charges
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -48,6 +51,7 @@ Height
 638
 Caption
 5
+47
 Demand Rates by Time-of-use Period and/or Tiers
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox6
 X
 3
@@ -73,6 +78,7 @@ Height
 638
 Caption
 5
+41
 Demand Rates by Month with Optional Tiers
 Bold
 2
@@ -83,6 +89,7 @@ Label
 12
 Name
 5
+8
 Label612
 X
 3
@@ -98,6 +105,7 @@ Height
 21
 Caption
 5
+7
 Weekend
 TextColour
 4
@@ -126,6 +134,7 @@ Label
 12
 Name
 5
+7
 Label62
 X
 3
@@ -141,6 +150,7 @@ Height
 21
 Caption
 5
+7
 Weekday
 TextColour
 4
@@ -169,6 +179,7 @@ CheckBox
 8
 Name
 5
+12
 ur_dc_enable
 X
 3
@@ -184,6 +195,7 @@ Height
 21
 Caption
 5
+21
 Enable demand charges
 State
 2
@@ -197,6 +209,7 @@ DataMatrix
 22
 Name
 5
+14
 ur_dc_flat_mat
 X
 3
@@ -224,7 +237,7 @@ ShowRowLabels
 0
 RowLabels
 5
- 
+0
 ShadeR0C0
 2
 0
@@ -239,11 +252,14 @@ ShowColLabels
 1
 ColLabels
 5
+34
 Month,Tier,Peak (kW),Charge ($/kW)
 NumRowsLabel
 5
+15
 Number entries:
 NumColsLabel
+5
 5
 Cols:
 Layout
@@ -254,6 +270,7 @@ ChoiceColumn
 0
 Choices
 5
+47
 Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
 HideColumn
 3
@@ -267,6 +284,7 @@ DiurnalPeriod
 9
 Name
 5
+19
 ur_dc_sched_weekday
 X
 3
@@ -285,7 +303,7 @@ TabOrder
 4294967295
 Schedule
 5
- 
+0
 Max
 3
 12
@@ -298,6 +316,7 @@ DiurnalPeriod
 9
 Name
 5
+19
 ur_dc_sched_weekend
 X
 3
@@ -316,7 +335,7 @@ TabOrder
 4294967295
 Schedule
 5
- 
+0
 Max
 3
 12
@@ -329,6 +348,7 @@ DataMatrix
 22
 Name
 5
+13
 ur_dc_tou_mat
 X
 3
@@ -356,7 +376,7 @@ ShowRowLabels
 0
 RowLabels
 5
- 
+0
 ShadeR0C0
 2
 0
@@ -371,13 +391,15 @@ ShowColLabels
 1
 ColLabels
 5
+35
 Period,Tier,Peak (kW),Charge ($/kW)
 NumRowsLabel
 5
+18
 Number of entries:
 NumColsLabel
 5
- 
+0
 Layout
 3
 1
@@ -386,6 +408,7 @@ ChoiceColumn
 4294967295
 Choices
 5
+15
 Choice1,Choice2
 HideColumn
 3

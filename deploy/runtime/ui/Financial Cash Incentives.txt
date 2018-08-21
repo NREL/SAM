@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 284
 Caption
 5
+32
 Investment Based Incentive (IBI)
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 161
 Caption
 5
+30
 Capacity Based Incentive (CBI)
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 197
 Caption
 5
+32
 Production Based Incentive (PBI)
 Bold
 2
@@ -83,6 +89,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -98,6 +105,7 @@ Height
 21
 Caption
 5
+12
 Amount ($/W)
 TextColour
 4
@@ -126,6 +134,7 @@ Label
 12
 Name
 5
+7
 Label10
 X
 3
@@ -141,6 +150,7 @@ Height
 21
 Caption
 5
+17
 Taxable Incentive
 TextColour
 4
@@ -169,6 +179,7 @@ Label
 12
 Name
 5
+8
 Label101
 X
 3
@@ -184,6 +195,7 @@ Height
 21
 Caption
 5
+17
 Taxable Incentive
 TextColour
 4
@@ -212,6 +224,7 @@ Label
 12
 Name
 5
+8
 Label102
 X
 3
@@ -227,6 +240,7 @@ Height
 21
 Caption
 5
+17
 Taxable Incentive
 TextColour
 4
@@ -255,6 +269,7 @@ Label
 12
 Name
 5
+7
 Label12
 X
 3
@@ -270,6 +285,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -298,6 +314,7 @@ Label
 12
 Name
 5
+8
 Label121
 X
 3
@@ -313,6 +330,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -341,6 +359,7 @@ Label
 12
 Name
 5
+9
 Label1211
 X
 3
@@ -356,6 +375,7 @@ Height
 21
 Caption
 5
+7
 Utility
 TextColour
 4
@@ -384,6 +404,7 @@ Label
 12
 Name
 5
+10
 Label12111
 X
 3
@@ -399,6 +420,7 @@ Height
 21
 Caption
 5
+5
 Other
 TextColour
 4
@@ -427,6 +449,7 @@ Label
 12
 Name
 5
+11
 Label121111
 X
 3
@@ -442,6 +465,7 @@ Height
 21
 Caption
 5
+5
 Other
 TextColour
 4
@@ -470,6 +494,7 @@ Label
 12
 Name
 5
+12
 Label1211111
 X
 3
@@ -485,6 +510,7 @@ Height
 21
 Caption
 5
+5
 Other
 TextColour
 4
@@ -513,6 +539,7 @@ Label
 12
 Name
 5
+13
 Label12111111
 X
 3
@@ -528,6 +555,7 @@ Height
 21
 Caption
 5
+5
 Other
 TextColour
 4
@@ -556,6 +584,7 @@ Label
 12
 Name
 5
+10
 Label12112
 X
 3
@@ -571,6 +600,7 @@ Height
 21
 Caption
 5
+7
 Utility
 TextColour
 4
@@ -599,6 +629,7 @@ Label
 12
 Name
 5
+11
 Label121121
 X
 3
@@ -614,6 +645,7 @@ Height
 21
 Caption
 5
+7
 Utility
 TextColour
 4
@@ -642,6 +674,7 @@ Label
 12
 Name
 5
+12
 Label1211211
 X
 3
@@ -657,6 +690,7 @@ Height
 21
 Caption
 5
+7
 Utility
 TextColour
 4
@@ -685,6 +719,7 @@ Label
 12
 Name
 5
+9
 Label1212
 X
 3
@@ -700,6 +735,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -728,6 +764,7 @@ Label
 12
 Name
 5
+10
 Label12121
 X
 3
@@ -743,6 +780,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -771,6 +809,7 @@ Label
 12
 Name
 5
+11
 Label121211
 X
 3
@@ -786,6 +825,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -814,6 +854,7 @@ Label
 12
 Name
 5
+8
 Label122
 X
 3
@@ -829,6 +870,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -857,6 +899,7 @@ Label
 12
 Name
 5
+9
 Label1221
 X
 3
@@ -872,6 +915,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -900,6 +944,7 @@ Label
 12
 Name
 5
+10
 Label12211
 X
 3
@@ -915,6 +960,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -943,6 +989,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -958,6 +1005,7 @@ Height
 21
 Caption
 5
+11
 Maximum ($)
 TextColour
 4
@@ -986,6 +1034,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -1001,6 +1050,7 @@ Height
 21
 Caption
 5
+10
 Amount ($)
 TextColour
 4
@@ -1029,6 +1079,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -1044,6 +1095,7 @@ Height
 21
 Caption
 5
+14
 Percentage (%)
 TextColour
 4
@@ -1072,6 +1124,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -1087,6 +1140,7 @@ Height
 21
 Caption
 5
+11
 Maximum ($)
 TextColour
 4
@@ -1115,6 +1169,7 @@ Label
 12
 Name
 5
+6
 Label6
 X
 3
@@ -1130,6 +1185,7 @@ Height
 21
 Caption
 5
+14
 Amount ($/kWh)
 TextColour
 4
@@ -1158,6 +1214,7 @@ Label
 12
 Name
 5
+6
 Label7
 X
 3
@@ -1173,6 +1230,7 @@ Height
 21
 Caption
 5
+12
 Term (years)
 TextColour
 4
@@ -1201,6 +1259,7 @@ Label
 12
 Name
 5
+6
 Label8
 X
 3
@@ -1216,6 +1275,7 @@ Height
 21
 Caption
 5
+17
 Escalation (%/yr)
 TextColour
 4
@@ -1244,6 +1304,7 @@ Label
 12
 Name
 5
+6
 Label9
 X
 3
@@ -1259,6 +1320,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -1287,6 +1349,7 @@ Label
 12
 Name
 5
+7
 Label91
 X
 3
@@ -1302,6 +1365,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -1330,6 +1394,7 @@ Label
 12
 Name
 5
+8
 Label911
 X
 3
@@ -1345,6 +1410,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -1373,6 +1439,7 @@ Label
 12
 Name
 5
+8
 Label912
 X
 3
@@ -1388,6 +1455,7 @@ Height
 21
 Caption
 5
+5
 State
 TextColour
 4
@@ -1416,6 +1484,7 @@ Label
 12
 Name
 5
+7
 Label92
 X
 3
@@ -1431,6 +1500,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -1459,6 +1529,7 @@ Label
 12
 Name
 5
+7
 Label93
 X
 3
@@ -1474,6 +1545,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -1502,6 +1574,7 @@ Numeric
 16
 Name
 5
+14
 cbi_fed_amount
 X
 3
@@ -1529,10 +1602,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1560,6 +1633,7 @@ CheckBox
 8
 Name
 5
+19
 cbi_fed_deprbas_fed
 X
 3
@@ -1575,7 +1649,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -1588,6 +1662,7 @@ CheckBox
 8
 Name
 5
+19
 cbi_fed_deprbas_sta
 X
 3
@@ -1603,7 +1678,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -1616,6 +1691,7 @@ Numeric
 16
 Name
 5
+16
 cbi_fed_maxvalue
 X
 3
@@ -1643,10 +1719,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1674,6 +1750,7 @@ CheckBox
 8
 Name
 5
+15
 cbi_fed_tax_fed
 X
 3
@@ -1689,7 +1766,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -1702,6 +1779,7 @@ CheckBox
 8
 Name
 5
+15
 cbi_fed_tax_sta
 X
 3
@@ -1717,7 +1795,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -1730,6 +1808,7 @@ Numeric
 16
 Name
 5
+14
 cbi_oth_amount
 X
 3
@@ -1757,10 +1836,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1788,6 +1867,7 @@ CheckBox
 8
 Name
 5
+19
 cbi_oth_deprbas_fed
 X
 3
@@ -1803,7 +1883,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -1816,6 +1896,7 @@ CheckBox
 8
 Name
 5
+19
 cbi_oth_deprbas_sta
 X
 3
@@ -1831,7 +1912,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -1844,6 +1925,7 @@ Numeric
 16
 Name
 5
+16
 cbi_oth_maxvalue
 X
 3
@@ -1871,10 +1953,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1902,6 +1984,7 @@ CheckBox
 8
 Name
 5
+15
 cbi_oth_tax_fed
 X
 3
@@ -1917,7 +2000,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -1930,6 +2013,7 @@ CheckBox
 8
 Name
 5
+15
 cbi_oth_tax_sta
 X
 3
@@ -1945,7 +2029,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -1958,6 +2042,7 @@ Numeric
 16
 Name
 5
+14
 cbi_sta_amount
 X
 3
@@ -1985,10 +2070,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2016,6 +2101,7 @@ CheckBox
 8
 Name
 5
+19
 cbi_sta_deprbas_fed
 X
 3
@@ -2031,7 +2117,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2044,6 +2130,7 @@ CheckBox
 8
 Name
 5
+19
 cbi_sta_deprbas_sta
 X
 3
@@ -2059,7 +2146,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2072,6 +2159,7 @@ Numeric
 16
 Name
 5
+16
 cbi_sta_maxvalue
 X
 3
@@ -2099,10 +2187,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2130,6 +2218,7 @@ CheckBox
 8
 Name
 5
+15
 cbi_sta_tax_fed
 X
 3
@@ -2145,7 +2234,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2158,6 +2247,7 @@ CheckBox
 8
 Name
 5
+15
 cbi_sta_tax_sta
 X
 3
@@ -2173,7 +2263,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2186,6 +2276,7 @@ Numeric
 16
 Name
 5
+14
 cbi_uti_amount
 X
 3
@@ -2213,10 +2304,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2244,6 +2335,7 @@ CheckBox
 8
 Name
 5
+19
 cbi_uti_deprbas_fed
 X
 3
@@ -2259,7 +2351,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2272,6 +2364,7 @@ CheckBox
 8
 Name
 5
+19
 cbi_uti_deprbas_sta
 X
 3
@@ -2287,7 +2380,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2300,6 +2393,7 @@ Numeric
 16
 Name
 5
+16
 cbi_uti_maxvalue
 X
 3
@@ -2327,10 +2421,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2358,6 +2452,7 @@ CheckBox
 8
 Name
 5
+15
 cbi_uti_tax_fed
 X
 3
@@ -2373,7 +2468,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2386,6 +2481,7 @@ CheckBox
 8
 Name
 5
+15
 cbi_uti_tax_sta
 X
 3
@@ -2401,7 +2497,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2414,6 +2510,7 @@ Numeric
 16
 Name
 5
+14
 ibi_fed_amount
 X
 3
@@ -2441,10 +2538,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2472,6 +2569,7 @@ CheckBox
 8
 Name
 5
+26
 ibi_fed_amount_deprbas_fed
 X
 3
@@ -2487,7 +2585,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2500,6 +2598,7 @@ CheckBox
 8
 Name
 5
+26
 ibi_fed_amount_deprbas_sta
 X
 3
@@ -2515,7 +2614,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2528,6 +2627,7 @@ CheckBox
 8
 Name
 5
+22
 ibi_fed_amount_tax_fed
 X
 3
@@ -2543,7 +2643,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2556,6 +2656,7 @@ CheckBox
 8
 Name
 5
+22
 ibi_fed_amount_tax_sta
 X
 3
@@ -2571,7 +2672,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2584,6 +2685,7 @@ Numeric
 16
 Name
 5
+15
 ibi_fed_percent
 X
 3
@@ -2611,10 +2713,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2642,6 +2744,7 @@ CheckBox
 8
 Name
 5
+27
 ibi_fed_percent_deprbas_fed
 X
 3
@@ -2657,7 +2760,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2670,6 +2773,7 @@ CheckBox
 8
 Name
 5
+27
 ibi_fed_percent_deprbas_sta
 X
 3
@@ -2685,7 +2789,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2698,6 +2802,7 @@ Numeric
 16
 Name
 5
+24
 ibi_fed_percent_maxvalue
 X
 3
@@ -2725,10 +2830,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2756,6 +2861,7 @@ CheckBox
 8
 Name
 5
+23
 ibi_fed_percent_tax_fed
 X
 3
@@ -2771,7 +2877,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2784,6 +2890,7 @@ CheckBox
 8
 Name
 5
+23
 ibi_fed_percent_tax_sta
 X
 3
@@ -2799,7 +2906,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2812,6 +2919,7 @@ Numeric
 16
 Name
 5
+14
 ibi_oth_amount
 X
 3
@@ -2839,10 +2947,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2870,6 +2978,7 @@ CheckBox
 8
 Name
 5
+26
 ibi_oth_amount_deprbas_fed
 X
 3
@@ -2885,7 +2994,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2898,6 +3007,7 @@ CheckBox
 8
 Name
 5
+26
 ibi_oth_amount_deprbas_sta
 X
 3
@@ -2913,7 +3023,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2926,6 +3036,7 @@ CheckBox
 8
 Name
 5
+22
 ibi_oth_amount_tax_fed
 X
 3
@@ -2941,7 +3052,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2954,6 +3065,7 @@ CheckBox
 8
 Name
 5
+22
 ibi_oth_amount_tax_sta
 X
 3
@@ -2969,7 +3081,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -2982,6 +3094,7 @@ Numeric
 16
 Name
 5
+15
 ibi_oth_percent
 X
 3
@@ -3009,10 +3122,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3040,6 +3153,7 @@ CheckBox
 8
 Name
 5
+27
 ibi_oth_percent_deprbas_fed
 X
 3
@@ -3055,7 +3169,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3068,6 +3182,7 @@ CheckBox
 8
 Name
 5
+27
 ibi_oth_percent_deprbas_sta
 X
 3
@@ -3083,7 +3198,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3096,6 +3211,7 @@ Numeric
 16
 Name
 5
+24
 ibi_oth_percent_maxvalue
 X
 3
@@ -3123,10 +3239,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3154,6 +3270,7 @@ CheckBox
 8
 Name
 5
+23
 ibi_oth_percent_tax_fed
 X
 3
@@ -3169,7 +3286,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3182,6 +3299,7 @@ CheckBox
 8
 Name
 5
+23
 ibi_oth_percent_tax_sta
 X
 3
@@ -3197,7 +3315,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3210,6 +3328,7 @@ Numeric
 16
 Name
 5
+14
 ibi_sta_amount
 X
 3
@@ -3237,10 +3356,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3268,6 +3387,7 @@ CheckBox
 8
 Name
 5
+26
 ibi_sta_amount_deprbas_fed
 X
 3
@@ -3283,7 +3403,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3296,6 +3416,7 @@ CheckBox
 8
 Name
 5
+26
 ibi_sta_amount_deprbas_sta
 X
 3
@@ -3311,7 +3432,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3324,6 +3445,7 @@ CheckBox
 8
 Name
 5
+22
 ibi_sta_amount_tax_fed
 X
 3
@@ -3339,7 +3461,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3352,6 +3474,7 @@ CheckBox
 8
 Name
 5
+22
 ibi_sta_amount_tax_sta
 X
 3
@@ -3367,7 +3490,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3380,6 +3503,7 @@ Numeric
 16
 Name
 5
+15
 ibi_sta_percent
 X
 3
@@ -3407,10 +3531,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3438,6 +3562,7 @@ CheckBox
 8
 Name
 5
+27
 ibi_sta_percent_deprbas_fed
 X
 3
@@ -3453,7 +3578,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3466,6 +3591,7 @@ CheckBox
 8
 Name
 5
+27
 ibi_sta_percent_deprbas_sta
 X
 3
@@ -3481,7 +3607,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3494,6 +3620,7 @@ Numeric
 16
 Name
 5
+24
 ibi_sta_percent_maxvalue
 X
 3
@@ -3521,10 +3648,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3552,6 +3679,7 @@ CheckBox
 8
 Name
 5
+23
 ibi_sta_percent_tax_fed
 X
 3
@@ -3567,7 +3695,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3580,6 +3708,7 @@ CheckBox
 8
 Name
 5
+23
 ibi_sta_percent_tax_sta
 X
 3
@@ -3595,7 +3724,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3608,6 +3737,7 @@ Numeric
 16
 Name
 5
+14
 ibi_uti_amount
 X
 3
@@ -3635,10 +3765,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3666,6 +3796,7 @@ CheckBox
 8
 Name
 5
+26
 ibi_uti_amount_deprbas_fed
 X
 3
@@ -3681,7 +3812,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3694,6 +3825,7 @@ CheckBox
 8
 Name
 5
+26
 ibi_uti_amount_deprbas_sta
 X
 3
@@ -3709,7 +3841,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3722,6 +3854,7 @@ CheckBox
 8
 Name
 5
+22
 ibi_uti_amount_tax_fed
 X
 3
@@ -3737,7 +3870,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3750,6 +3883,7 @@ CheckBox
 8
 Name
 5
+22
 ibi_uti_amount_tax_sta
 X
 3
@@ -3765,7 +3899,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3778,6 +3912,7 @@ Numeric
 16
 Name
 5
+15
 ibi_uti_percent
 X
 3
@@ -3805,10 +3940,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3836,6 +3971,7 @@ CheckBox
 8
 Name
 5
+27
 ibi_uti_percent_deprbas_fed
 X
 3
@@ -3851,7 +3987,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3864,6 +4000,7 @@ CheckBox
 8
 Name
 5
+27
 ibi_uti_percent_deprbas_sta
 X
 3
@@ -3879,7 +4016,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3892,6 +4029,7 @@ Numeric
 16
 Name
 5
+24
 ibi_uti_percent_maxvalue
 X
 3
@@ -3919,10 +4057,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3950,6 +4088,7 @@ CheckBox
 8
 Name
 5
+23
 ibi_uti_percent_tax_fed
 X
 3
@@ -3965,7 +4104,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -3978,6 +4117,7 @@ CheckBox
 8
 Name
 5
+23
 ibi_uti_percent_tax_sta
 X
 3
@@ -3993,7 +4133,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -4006,6 +4146,7 @@ Label
 12
 Name
 5
+13
 lblCBIRedDepr
 X
 3
@@ -4021,6 +4162,7 @@ Height
 21
 Caption
 5
+34
 Reduces Depreciation and ITC Bases
 TextColour
 4
@@ -4049,6 +4191,7 @@ Label
 12
 Name
 5
+16
 lblCBIRedDeprFed
 X
 3
@@ -4064,6 +4207,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -4092,6 +4236,7 @@ Label
 12
 Name
 5
+18
 lblCBIRedDeprState
 X
 3
@@ -4106,6 +4251,7 @@ Height
 3
 21
 Caption
+5
 5
 State
 TextColour
@@ -4135,6 +4281,7 @@ Label
 12
 Name
 5
+13
 lblIBIRedDepr
 X
 3
@@ -4150,6 +4297,7 @@ Height
 21
 Caption
 5
+34
 Reduces Depreciation and ITC Bases
 TextColour
 4
@@ -4178,6 +4326,7 @@ Label
 12
 Name
 5
+16
 lblIBIRedDeprFed
 X
 3
@@ -4193,6 +4342,7 @@ Height
 21
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -4221,6 +4371,7 @@ Label
 12
 Name
 5
+18
 lblIBIRedDeprState
 X
 3
@@ -4235,6 +4386,7 @@ Height
 3
 21
 Caption
+5
 5
 State
 TextColour
@@ -4264,6 +4416,7 @@ Label
 12
 Name
 5
+15
 lblPBIAvailDebt
 X
 3
@@ -4279,6 +4432,7 @@ Height
 21
 Caption
 5
+30
 PBI available for debt service
 TextColour
 4
@@ -4307,6 +4461,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -4322,6 +4477,7 @@ Height
 24
 Caption
 5
+120
 Inflation does not apply to the PBI amount. In Schedule mode, use nominal (current) dollar values. See Help for details.
 TextColour
 4
@@ -4350,6 +4506,7 @@ SchedNumeric
 11
 Name
 5
+14
 pbi_fed_amount
 X
 3
@@ -4365,6 +4522,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -4377,6 +4535,7 @@ FixedLength
 4294967295
 Description
 5
+117
 Type a Federal PBI amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount.
 TabOrder
 3
@@ -4387,6 +4546,7 @@ Numeric
 16
 Name
 5
+13
 pbi_fed_escal
 X
 3
@@ -4414,10 +4574,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4445,6 +4605,7 @@ CheckBox
 8
 Name
 5
+14
 pbi_fed_for_ds
 X
 3
@@ -4460,7 +4621,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -4473,6 +4634,7 @@ CheckBox
 8
 Name
 5
+15
 pbi_fed_tax_fed
 X
 3
@@ -4488,7 +4650,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -4501,6 +4663,7 @@ CheckBox
 8
 Name
 5
+15
 pbi_fed_tax_sta
 X
 3
@@ -4516,7 +4679,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -4529,6 +4692,7 @@ Numeric
 16
 Name
 5
+12
 pbi_fed_term
 X
 3
@@ -4556,10 +4720,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4587,6 +4751,7 @@ SchedNumeric
 11
 Name
 5
+14
 pbi_oth_amount
 X
 3
@@ -4602,6 +4767,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -4614,6 +4780,7 @@ FixedLength
 4294967295
 Description
 5
+116
 Type an Other PBI amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount.
 TabOrder
 3
@@ -4624,6 +4791,7 @@ Numeric
 16
 Name
 5
+13
 pbi_oth_escal
 X
 3
@@ -4651,10 +4819,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4682,6 +4850,7 @@ CheckBox
 8
 Name
 5
+14
 pbi_oth_for_ds
 X
 3
@@ -4697,7 +4866,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -4710,6 +4879,7 @@ CheckBox
 8
 Name
 5
+15
 pbi_oth_tax_fed
 X
 3
@@ -4725,7 +4895,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -4738,6 +4908,7 @@ CheckBox
 8
 Name
 5
+15
 pbi_oth_tax_sta
 X
 3
@@ -4753,7 +4924,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -4766,6 +4937,7 @@ Numeric
 16
 Name
 5
+12
 pbi_oth_term
 X
 3
@@ -4793,10 +4965,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4824,6 +4996,7 @@ SchedNumeric
 11
 Name
 5
+14
 pbi_sta_amount
 X
 3
@@ -4839,6 +5012,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -4851,6 +5025,7 @@ FixedLength
 4294967295
 Description
 5
+115
 Type a State PBI amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount.
 TabOrder
 3
@@ -4861,6 +5036,7 @@ Numeric
 16
 Name
 5
+13
 pbi_sta_escal
 X
 3
@@ -4888,10 +5064,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4919,6 +5095,7 @@ CheckBox
 8
 Name
 5
+14
 pbi_sta_for_ds
 X
 3
@@ -4934,7 +5111,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -4947,6 +5124,7 @@ CheckBox
 8
 Name
 5
+15
 pbi_sta_tax_fed
 X
 3
@@ -4962,7 +5140,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -4975,6 +5153,7 @@ CheckBox
 8
 Name
 5
+15
 pbi_sta_tax_sta
 X
 3
@@ -4990,7 +5169,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -5003,6 +5182,7 @@ Numeric
 16
 Name
 5
+12
 pbi_sta_term
 X
 3
@@ -5030,10 +5210,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5061,6 +5241,7 @@ SchedNumeric
 11
 Name
 5
+14
 pbi_uti_amount
 X
 3
@@ -5076,6 +5257,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -5088,6 +5270,7 @@ FixedLength
 4294967295
 Description
 5
+117
 Type a Utility PBI amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount.
 TabOrder
 3
@@ -5098,6 +5281,7 @@ Numeric
 16
 Name
 5
+13
 pbi_uti_escal
 X
 3
@@ -5125,10 +5309,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5156,6 +5340,7 @@ CheckBox
 8
 Name
 5
+14
 pbi_uti_for_ds
 X
 3
@@ -5171,7 +5356,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -5184,6 +5369,7 @@ CheckBox
 8
 Name
 5
+15
 pbi_uti_tax_fed
 X
 3
@@ -5199,7 +5385,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -5212,6 +5398,7 @@ CheckBox
 8
 Name
 5
+15
 pbi_uti_tax_sta
 X
 3
@@ -5227,7 +5414,7 @@ Height
 21
 Caption
 5
- 
+0
 State
 2
 1
@@ -5240,6 +5427,7 @@ Numeric
 16
 Name
 5
+12
 pbi_uti_term
 X
 3
@@ -5267,10 +5455,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

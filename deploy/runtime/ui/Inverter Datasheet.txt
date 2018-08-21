@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 119
 Caption
 5
+13
 Power Ratings
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 66
 Caption
 5
+16
 Save / Load Data
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 95
 Caption
 5
+16
 Operating Ranges
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -98,6 +105,7 @@ Height
 125
 Caption
 5
+6
 Losses
 Bold
 2
@@ -108,6 +116,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -123,6 +132,7 @@ Height
 21
 Caption
 5
+15
 Suggested value
 TextColour
 4
@@ -151,6 +161,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -166,6 +177,7 @@ Height
 104
 Caption
 5
+192
 You can specify either a weighted or nominal efficiency. The weighted efficiency can be either CEC or European. The manufacturer efficiency can be either peak or nominal. See Help for details.
 TextColour
 4
@@ -194,6 +206,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -209,6 +222,7 @@ Height
 110
 Caption
 5
+128
 If the datasheet does not specify loss values, you can use the suggested values to approximate the losses. See Help for details.
 TextColour
 4
@@ -237,6 +251,7 @@ Label
 12
 Name
 5
+8
 Label211
 X
 3
@@ -252,6 +267,7 @@ Height
 21
 Caption
 5
+1
 %
 TextColour
 4
@@ -280,6 +296,7 @@ Label
 12
 Name
 5
+9
 Label2111
 X
 3
@@ -295,6 +312,7 @@ Height
 21
 Caption
 5
+1
 %
 TextColour
 4
@@ -323,6 +341,7 @@ Button
 7
 Name
 5
+16
 btnLoadInvDSData
 X
 3
@@ -338,6 +357,7 @@ Height
 24
 Caption
 5
+22
 Load data from file...
 TabOrder
 3
@@ -348,6 +368,7 @@ Button
 7
 Name
 5
+16
 btnSaveInvDSData
 X
 3
@@ -363,6 +384,7 @@ Height
 24
 Caption
 5
+20
 Save data to file...
 TabOrder
 3
@@ -373,6 +395,7 @@ Numeric
 16
 Name
 5
+17
 inv_ds_ac_voltage
 X
 3
@@ -400,10 +423,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -431,6 +454,7 @@ TextEntry
 10
 Name
 5
+20
 inv_ds_data_filename
 X
 3
@@ -446,7 +470,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 0
@@ -471,6 +495,7 @@ Numeric
 16
 Name
 5
+22
 inv_ds_eff_peak_or_nom
 X
 3
@@ -498,10 +523,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -529,6 +554,7 @@ RadioChoice
 10
 Name
 5
+15
 inv_ds_eff_type
 X
 3
@@ -565,6 +591,7 @@ Numeric
 16
 Name
 5
+19
 inv_ds_eff_weighted
 X
 3
@@ -592,10 +619,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -623,6 +650,7 @@ Numeric
 16
 Name
 5
+13
 inv_ds_idcmax
 X
 3
@@ -650,10 +678,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -681,6 +709,7 @@ Numeric
 16
 Name
 5
+14
 inv_ds_mppt_hi
 X
 3
@@ -708,10 +737,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -739,6 +768,7 @@ Numeric
 16
 Name
 5
+15
 inv_ds_mppt_low
 X
 3
@@ -766,10 +796,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -797,6 +827,7 @@ Numeric
 16
 Name
 5
+11
 inv_ds_paco
 X
 3
@@ -824,10 +855,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -855,6 +886,7 @@ Numeric
 16
 Name
 5
+11
 inv_ds_pdco
 X
 3
@@ -882,10 +914,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -913,6 +945,7 @@ Numeric
 16
 Name
 5
+10
 inv_ds_pnt
 X
 3
@@ -940,10 +973,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -971,6 +1004,7 @@ Numeric
 16
 Name
 5
+20
 inv_ds_pnt_suggested
 X
 3
@@ -998,10 +1032,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1029,6 +1063,7 @@ Numeric
 16
 Name
 5
+10
 inv_ds_pso
 X
 3
@@ -1056,10 +1091,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1087,6 +1122,7 @@ Numeric
 16
 Name
 5
+20
 inv_ds_pso_suggested
 X
 3
@@ -1114,10 +1150,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1145,6 +1181,7 @@ Numeric
 16
 Name
 5
+13
 inv_ds_vdcmax
 X
 3
@@ -1172,10 +1209,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1203,6 +1240,7 @@ Numeric
 16
 Name
 5
+11
 inv_ds_vdco
 X
 3
@@ -1230,10 +1268,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1261,6 +1299,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1276,6 +1315,7 @@ Height
 45
 Caption
 5
+141
 Note: If you are modeling a system with microinverters or DC power optimizers, see the "Losses" page to adjust the system losses accordingly.
 TextColour
 4

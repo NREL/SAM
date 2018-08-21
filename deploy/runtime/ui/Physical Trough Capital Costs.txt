@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 302
 Caption
 5
+20
 Direct Capital Costs
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox21
 X
 3
@@ -48,6 +51,7 @@ Height
 191
 Caption
 5
+22
 Indirect Capital Costs
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox31
 X
 3
@@ -73,6 +78,7 @@ Height
 80
 Caption
 5
+21
 Total Installed Costs
 Bold
 2
@@ -83,6 +89,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -98,6 +105,7 @@ Height
 21
 Caption
 5
+16
 % of direct cost
 TextColour
 4
@@ -126,6 +134,7 @@ Label
 12
 Name
 5
+8
 Label112
 X
 3
@@ -141,6 +150,7 @@ Height
 21
 Caption
 5
+18
 EPC and owner cost
 TextColour
 4
@@ -169,6 +179,7 @@ Label
 12
 Name
 5
+9
 Label1121
 X
 3
@@ -184,6 +195,7 @@ Height
 21
 Caption
 5
+15
 Total land cost
 TextColour
 4
@@ -212,6 +224,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -226,6 +239,7 @@ Height
 3
 21
 Caption
+5
 5
 $/Wac
 TextColour
@@ -255,6 +269,7 @@ Label
 12
 Name
 5
+8
 Label211
 X
 3
@@ -270,6 +285,7 @@ Height
 21
 Caption
 5
+6
 $/acre
 TextColour
 4
@@ -298,6 +314,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -313,6 +330,7 @@ Height
 21
 Caption
 5
+1
 $
 TextColour
 4
@@ -341,6 +359,7 @@ Label
 12
 Name
 5
+7
 Label51
 X
 3
@@ -356,6 +375,7 @@ Height
 21
 Caption
 5
+15
 Sales tax basis
 TextColour
 4
@@ -384,6 +404,7 @@ Numeric
 16
 Name
 5
+16
 csp.dtr.cost.bop
 X
 3
@@ -411,10 +432,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -442,6 +464,7 @@ Numeric
 16
 Name
 5
+20
 csp.dtr.cost.bop_mwe
 X
 3
@@ -469,10 +492,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -500,6 +523,7 @@ Numeric
 16
 Name
 5
+24
 csp.dtr.cost.bop_per_kwe
 X
 3
@@ -527,9 +551,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+6
  $/kWe
 ThousandsSep
 2
@@ -558,6 +583,7 @@ Numeric
 16
 Name
 5
+24
 csp.dtr.cost.contingency
 X
 3
@@ -585,10 +611,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -616,6 +643,7 @@ Numeric
 16
 Name
 5
+32
 csp.dtr.cost.contingency_percent
 X
 3
@@ -643,10 +671,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -674,6 +702,7 @@ Numeric
 16
 Name
 5
+22
 csp.dtr.cost.epc.fixed
 X
 3
@@ -701,10 +730,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -732,6 +762,7 @@ Numeric
 16
 Name
 5
+25
 csp.dtr.cost.epc.per_acre
 X
 3
@@ -759,10 +790,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -790,6 +822,7 @@ Numeric
 16
 Name
 5
+25
 csp.dtr.cost.epc.per_watt
 X
 3
@@ -817,10 +850,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -848,6 +882,7 @@ Numeric
 16
 Name
 5
+24
 csp.dtr.cost.epc.percent
 X
 3
@@ -875,9 +910,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -906,6 +942,7 @@ Numeric
 16
 Name
 5
+22
 csp.dtr.cost.epc.total
 X
 3
@@ -933,10 +970,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -964,6 +1002,7 @@ Numeric
 16
 Name
 5
+26
 csp.dtr.cost.fossil_backup
 X
 3
@@ -991,10 +1030,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1022,6 +1062,7 @@ Numeric
 16
 Name
 5
+39
 csp.dtr.cost.fossil_backup.cost_per_kwe
 X
 3
@@ -1049,9 +1090,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+6
  $/kWe
 ThousandsSep
 2
@@ -1080,6 +1122,7 @@ Numeric
 16
 Name
 5
+30
 csp.dtr.cost.fossil_backup.mwe
 X
 3
@@ -1107,10 +1150,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1138,6 +1181,7 @@ Numeric
 16
 Name
 5
+23
 csp.dtr.cost.htf_system
 X
 3
@@ -1165,10 +1209,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1196,6 +1241,7 @@ Numeric
 16
 Name
 5
+28
 csp.dtr.cost.htf_system.area
 X
 3
@@ -1223,10 +1269,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1254,6 +1300,7 @@ Numeric
 16
 Name
 5
+35
 csp.dtr.cost.htf_system.cost_per_m2
 X
 3
@@ -1281,8 +1328,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/m2
 ThousandsSep
@@ -1312,6 +1360,7 @@ Numeric
 16
 Name
 5
+35
 csp.dtr.cost.installed_per_capacity
 X
 3
@@ -1339,9 +1388,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
+3
 /kW
 ThousandsSep
 2
@@ -1370,6 +1421,7 @@ Numeric
 16
 Name
 5
+22
 csp.dtr.cost.nameplate
 X
 3
@@ -1397,10 +1449,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1428,6 +1480,7 @@ Numeric
 16
 Name
 5
+22
 csp.dtr.cost.plm.fixed
 X
 3
@@ -1455,10 +1508,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1486,6 +1540,7 @@ Numeric
 16
 Name
 5
+25
 csp.dtr.cost.plm.per_acre
 X
 3
@@ -1513,10 +1568,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1544,6 +1600,7 @@ Numeric
 16
 Name
 5
+25
 csp.dtr.cost.plm.per_watt
 X
 3
@@ -1571,10 +1628,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1602,6 +1660,7 @@ Numeric
 16
 Name
 5
+24
 csp.dtr.cost.plm.percent
 X
 3
@@ -1629,9 +1688,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1660,6 +1720,7 @@ Numeric
 16
 Name
 5
+22
 csp.dtr.cost.plm.total
 X
 3
@@ -1687,10 +1748,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1718,6 +1780,7 @@ Numeric
 16
 Name
 5
+24
 csp.dtr.cost.power_plant
 X
 3
@@ -1745,10 +1808,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1776,6 +1840,7 @@ Numeric
 16
 Name
 5
+37
 csp.dtr.cost.power_plant.cost_per_kwe
 X
 3
@@ -1803,9 +1868,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+6
  $/kWe
 ThousandsSep
 2
@@ -1834,6 +1900,7 @@ Numeric
 16
 Name
 5
+28
 csp.dtr.cost.power_plant.mwe
 X
 3
@@ -1861,10 +1928,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1892,6 +1959,7 @@ Numeric
 16
 Name
 5
+30
 csp.dtr.cost.sales_tax.percent
 X
 3
@@ -1919,10 +1987,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1950,6 +2018,7 @@ Numeric
 16
 Name
 5
+28
 csp.dtr.cost.sales_tax.total
 X
 3
@@ -1977,10 +2046,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2008,6 +2078,7 @@ Numeric
 16
 Name
 5
+28
 csp.dtr.cost.sales_tax.value
 X
 3
@@ -2035,10 +2106,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2066,6 +2137,7 @@ Numeric
 16
 Name
 5
+30
 csp.dtr.cost.site_improvements
 X
 3
@@ -2093,10 +2165,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2124,6 +2197,7 @@ Numeric
 16
 Name
 5
+35
 csp.dtr.cost.site_improvements.area
 X
 3
@@ -2151,10 +2225,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2182,6 +2256,7 @@ Numeric
 16
 Name
 5
+42
 csp.dtr.cost.site_improvements.cost_per_m2
 X
 3
@@ -2209,8 +2284,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/m2
 ThousandsSep
@@ -2240,6 +2316,7 @@ Numeric
 16
 Name
 5
+24
 csp.dtr.cost.solar_field
 X
 3
@@ -2267,10 +2344,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2298,6 +2376,7 @@ Numeric
 16
 Name
 5
+29
 csp.dtr.cost.solar_field.area
 X
 3
@@ -2325,10 +2404,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2356,6 +2435,7 @@ Numeric
 16
 Name
 5
+36
 csp.dtr.cost.solar_field.cost_per_m2
 X
 3
@@ -2383,8 +2463,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/m2
 ThousandsSep
@@ -2414,6 +2495,7 @@ Numeric
 16
 Name
 5
+20
 csp.dtr.cost.storage
 X
 3
@@ -2441,10 +2523,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2472,6 +2555,7 @@ Numeric
 16
 Name
 5
+34
 csp.dtr.cost.storage.cost_per_kwht
 X
 3
@@ -2499,9 +2583,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+7
  $/kWht
 ThousandsSep
 2
@@ -2530,6 +2615,7 @@ Numeric
 16
 Name
 5
+25
 csp.dtr.cost.storage.mwht
 X
 3
@@ -2557,10 +2643,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2588,6 +2674,7 @@ Numeric
 16
 Name
 5
+28
 csp.dtr.cost.total_land_area
 X
 3
@@ -2615,10 +2702,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2646,6 +2733,7 @@ Numeric
 16
 Name
 5
+15
 direct_subtotal
 X
 3
@@ -2673,10 +2761,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2704,6 +2793,7 @@ Label
 12
 Name
 5
+16
 lblFinancingCost
 X
 3
@@ -2719,6 +2809,7 @@ Height
 51
 Caption
 5
+85
 Total installed cost excludes any financing costs from the Financial Parameters page.
 TextColour
 4
@@ -2747,6 +2838,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -2771,6 +2863,7 @@ Colour
 255
 Caption
 5
+11
 Contingency
 Bold
 2
@@ -2781,6 +2874,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -2805,6 +2899,7 @@ Colour
 255
 Caption
 5
+11
 Contingency
 Bold
 2
@@ -2815,6 +2910,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -2839,6 +2935,7 @@ Colour
 255
 Caption
 5
+11
 Contingency
 Bold
 2
@@ -2849,6 +2946,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -2873,6 +2971,7 @@ Colour
 255
 Caption
 5
+11
 Contingency
 Bold
 2
@@ -2883,6 +2982,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -2907,6 +3007,7 @@ Colour
 255
 Caption
 5
+11
 Contingency
 Bold
 2
@@ -2917,6 +3018,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2932,6 +3034,7 @@ Height
 24
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -2960,6 +3063,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2975,6 +3079,7 @@ Height
 24
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -3003,6 +3108,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -3018,6 +3124,7 @@ Height
 24
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -3046,6 +3153,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -3061,6 +3169,7 @@ Height
 24
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -3089,6 +3198,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -3104,6 +3214,7 @@ Height
 24
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -3132,6 +3243,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -3147,6 +3259,7 @@ Height
 24
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -3175,6 +3288,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -3190,6 +3304,7 @@ Height
 24
 Caption
 5
+17
 Total direct cost
 TextColour
 4
@@ -3218,6 +3333,7 @@ Numeric
 16
 Name
 5
+17
 total_direct_cost
 X
 3
@@ -3245,10 +3361,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3276,6 +3393,7 @@ Numeric
 16
 Name
 5
+19
 total_indirect_cost
 X
 3
@@ -3303,10 +3421,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3334,6 +3453,7 @@ Numeric
 16
 Name
 5
+20
 total_installed_cost
 X
 3
@@ -3361,10 +3481,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

@@ -8,6 +8,7 @@ Choice
 8
 Name
 5
+6
 anchor
 X
 3
@@ -38,6 +39,7 @@ Button
 7
 Name
 5
+14
 btn_obos_apply
 X
 3
@@ -53,6 +55,7 @@ Height
 24
 Caption
 5
+18
 Apply BOS Estimate
 TabOrder
 3
@@ -63,6 +66,7 @@ Numeric
 16
 Name
 5
+9
 buryDepth
 X
 3
@@ -90,10 +94,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -121,6 +125,7 @@ CheckBox
 8
 Name
 5
+14
 cableOptimizer
 X
 3
@@ -136,6 +141,7 @@ Height
 24
 Caption
 5
+3
 Use
 State
 2
@@ -149,6 +155,7 @@ TableData
 8
 Name
 5
+22
 detailed_obos_assembly
 X
 3
@@ -164,6 +171,7 @@ Height
 24
 Description
 5
+15
 Table of values
 Fields
 6
@@ -177,6 +185,7 @@ TableData
 8
 Name
 5
+25
 detailed_obos_development
 X
 3
@@ -192,6 +201,7 @@ Height
 24
 Description
 5
+15
 Table of values
 Fields
 6
@@ -205,6 +215,7 @@ TableData
 8
 Name
 5
+24
 detailed_obos_electrical
 X
 3
@@ -220,6 +231,7 @@ Height
 24
 Description
 5
+15
 Table of values
 Fields
 6
@@ -233,6 +245,7 @@ TableData
 8
 Name
 5
+21
 detailed_obos_general
 X
 3
@@ -248,6 +261,7 @@ Height
 24
 Description
 5
+15
 Table of values
 Fields
 6
@@ -261,6 +275,7 @@ TableData
 8
 Name
 5
+18
 detailed_obos_port
 X
 3
@@ -276,6 +291,7 @@ Height
 24
 Description
 5
+15
 Table of values
 Fields
 6
@@ -289,6 +305,7 @@ TableData
 8
 Name
 5
+26
 detailed_obos_substructure
 X
 3
@@ -304,6 +321,7 @@ Height
 24
 Description
 5
+15
 Table of values
 Fields
 6
@@ -317,6 +335,7 @@ Numeric
 16
 Name
 5
+8
 distAtoS
 X
 3
@@ -344,10 +363,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -375,6 +394,7 @@ Numeric
 16
 Name
 5
+12
 distInterCon
 X
 3
@@ -402,10 +422,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -433,6 +453,7 @@ Numeric
 16
 Name
 5
+8
 distPort
 X
 3
@@ -460,10 +481,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -491,6 +512,7 @@ Numeric
 16
 Name
 5
+8
 distPtoA
 X
 3
@@ -518,10 +540,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -549,6 +571,7 @@ Numeric
 16
 Name
 5
+9
 distShore
 X
 3
@@ -576,10 +599,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -607,6 +630,7 @@ Numeric
 16
 Name
 5
+8
 elecCont
 X
 3
@@ -634,10 +658,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -665,6 +689,7 @@ Choice
 8
 Name
 5
+15
 installStrategy
 X
 3
@@ -695,6 +720,7 @@ Numeric
 16
 Name
 5
+12
 interConVolt
 X
 3
@@ -722,10 +748,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -753,6 +779,7 @@ Numeric
 16
 Name
 5
+9
 moorLines
 X
 3
@@ -780,10 +807,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -811,6 +838,7 @@ Numeric
 16
 Name
 5
+22
 number_install_seasons
 X
 3
@@ -838,10 +866,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -869,6 +897,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -884,6 +913,7 @@ Height
 129
 Caption
 5
+45
 Offshore Balance of System Cost Model Results
 Bold
 2
@@ -894,6 +924,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -909,6 +940,7 @@ Height
 129
 Caption
 5
+45
 Offshore Balance of System Cost Model Results
 Bold
 2
@@ -919,6 +951,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -934,6 +967,7 @@ Height
 48
 Caption
 5
+94
 Click to apply the cost estimate to the appropriate inputs in the Capital Costs section above.
 TextColour
 4
@@ -962,6 +996,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -977,6 +1012,7 @@ Height
 48
 Caption
 5
+94
 Click to apply the cost estimate to the appropriate inputs in the Capital Costs section above.
 TextColour
 4
@@ -1005,6 +1041,7 @@ GroupBox
 7
 Name
 5
+14
 obos_group_box
 X
 3
@@ -1020,6 +1057,7 @@ Height
 306
 Caption
 5
+44
 Offshore Balance of System Cost Model Inputs
 Bold
 2
@@ -1030,6 +1068,7 @@ MultilineText
 10
 Name
 5
+12
 obos_warning
 X
 3
@@ -1045,7 +1084,7 @@ Height
 57
 Text
 5
- 
+0
 Editable
 2
 1
@@ -1070,6 +1109,7 @@ Numeric
 16
 Name
 5
+8
 scrapVal
 X
 3
@@ -1097,10 +1137,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1128,6 +1168,7 @@ Numeric
 16
 Name
 5
+13
 substructCont
 X
 3
@@ -1155,10 +1196,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1186,6 +1227,7 @@ Choice
 8
 Name
 5
+12
 substructure
 X
 3
@@ -1218,6 +1260,7 @@ Numeric
 16
 Name
 5
+15
 total_obos_cost
 X
 3
@@ -1245,10 +1288,11 @@ Decimals
 2
 Prefix
 5
+1
 $
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1276,6 +1320,7 @@ Numeric
 16
 Name
 5
+22
 total_obos_cost_per_kw
 X
 3
@@ -1303,10 +1348,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1334,6 +1379,7 @@ Choice
 8
 Name
 5
+18
 towerInstallMethod
 X
 3
@@ -1364,6 +1410,7 @@ Numeric
 16
 Name
 5
+8
 turbCont
 X
 3
@@ -1391,10 +1438,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1422,6 +1469,7 @@ Choice
 8
 Name
 5
+17
 turbInstallMethod
 X
 3
@@ -1453,6 +1501,7 @@ Numeric
 16
 Name
 5
+6
 waterD
 X
 3
@@ -1480,10 +1529,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

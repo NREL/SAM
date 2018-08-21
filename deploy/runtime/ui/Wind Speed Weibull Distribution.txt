@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 104
 Caption
 5
+46
 Define the Wind Resource using Characteristics
 Bold
 2
@@ -33,6 +35,7 @@ Numeric
 16
 Name
 5
+16
 weibull_k_factor
 X
 3
@@ -60,10 +63,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -91,6 +94,7 @@ Numeric
 16
 Name
 5
+24
 weibull_reference_height
 X
 3
@@ -118,10 +122,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -149,6 +153,7 @@ Numeric
 16
 Name
 5
+18
 weibull_wind_speed
 X
 3
@@ -176,10 +181,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -207,6 +212,7 @@ Plot
 5
 Name
 5
+25
 wind_characteristics_plot
 X
 3

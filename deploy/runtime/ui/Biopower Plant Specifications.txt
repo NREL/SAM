@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 170
 Caption
 5
+33
 Estimated Efficiency Losses (HHV)
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 281
 Caption
 5
+19
 Steam Rankine Cycle
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox21
 X
 3
@@ -73,6 +78,7 @@ Height
 95
 Caption
 5
+26
 Biomass Feedstock Handling
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -98,6 +105,7 @@ Height
 77
 Caption
 5
+10
 Parasitics
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox31
 X
 3
@@ -123,6 +132,7 @@ Height
 395
 Caption
 5
+17
 Combustion System
 Bold
 2
@@ -133,6 +143,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -148,6 +159,7 @@ Height
 332
 Caption
 5
+17
 Boiler Parameters
 Bold
 2
@@ -158,6 +170,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox5
 X
 3
@@ -173,6 +186,7 @@ Height
 383
 Caption
 5
+25
 Time of Dispatch Schedule
 Bold
 2
@@ -183,6 +197,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -198,6 +213,7 @@ Height
 21
 Caption
 5
+31
 Part load efficiency adjustment
 TextColour
 4
@@ -226,6 +242,7 @@ Label
 12
 Name
 5
+7
 Label10
 X
 3
@@ -241,6 +258,7 @@ Height
 21
 Caption
 5
+9
 Period 3:
 TextColour
 4
@@ -269,6 +287,7 @@ Label
 12
 Name
 5
+8
 Label101
 X
 3
@@ -284,6 +303,7 @@ Height
 21
 Caption
 5
+9
 Period 7:
 TextColour
 4
@@ -312,6 +332,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -327,6 +348,7 @@ Height
 21
 Caption
 5
+33
 Temperature efficiency adjustment
 TextColour
 4
@@ -355,6 +377,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -370,6 +393,7 @@ Height
 21
 Caption
 5
+9
 Period 4:
 TextColour
 4
@@ -398,6 +422,7 @@ Label
 12
 Name
 5
+9
 Label1111
 X
 3
@@ -413,6 +438,7 @@ Height
 21
 Caption
 5
+9
 Period 8:
 TextColour
 4
@@ -441,6 +467,7 @@ Label
 12
 Name
 5
+7
 Label12
 X
 3
@@ -456,6 +483,7 @@ Height
 21
 Caption
 5
+9
 Period 5:
 TextColour
 4
@@ -484,6 +512,7 @@ Label
 12
 Name
 5
+8
 Label121
 X
 3
@@ -499,6 +528,7 @@ Height
 21
 Caption
 5
+9
 Period 9:
 TextColour
 4
@@ -527,6 +557,7 @@ Label
 12
 Name
 5
+7
 Label13
 X
 3
@@ -542,6 +573,7 @@ Height
 21
 Caption
 5
+9
 Period 6:
 TextColour
 4
@@ -570,6 +602,7 @@ Label
 12
 Name
 5
+7
 Label15
 X
 3
@@ -585,6 +618,7 @@ Height
 42
 Caption
 5
+90
 To increase or decrease nameplate capacity, adjust the amount of biomass fed to the plant.
 TextColour
 4
@@ -613,6 +647,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -628,6 +663,7 @@ Height
 21
 Caption
 5
+2
 F0
 TextColour
 4
@@ -656,6 +692,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -671,6 +708,7 @@ Height
 21
 Caption
 5
+2
 F1
 TextColour
 4
@@ -699,6 +737,7 @@ Label
 12
 Name
 5
+8
 Label211
 X
 3
@@ -714,6 +753,7 @@ Height
 21
 Caption
 5
+2
 F2
 TextColour
 4
@@ -742,6 +782,7 @@ Label
 12
 Name
 5
+9
 Label2111
 X
 3
@@ -757,6 +798,7 @@ Height
 21
 Caption
 5
+2
 F3
 TextColour
 4
@@ -785,6 +827,7 @@ Label
 12
 Name
 5
+10
 Label21111
 X
 3
@@ -800,6 +843,7 @@ Height
 21
 Caption
 5
+2
 F4
 TextColour
 4
@@ -828,6 +872,7 @@ Label
 12
 Name
 5
+7
 Label22
 X
 3
@@ -843,6 +888,7 @@ Height
 21
 Caption
 5
+9
 Period 1:
 TextColour
 4
@@ -871,6 +917,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -886,6 +933,7 @@ Height
 33
 Caption
 5
+30
 Fractional gen. (of nameplate)
 TextColour
 4
@@ -914,6 +962,7 @@ Label
 12
 Name
 5
+6
 Label9
 X
 3
@@ -929,6 +978,7 @@ Height
 21
 Caption
 5
+9
 Period 2:
 TextColour
 4
@@ -957,6 +1007,7 @@ LossAdjustment
 6
 Name
 5
+6
 adjust
 X
 3
@@ -979,6 +1030,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.plant.boiler.cap_per_boiler
 X
 3
@@ -1006,10 +1058,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1037,6 +1089,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.plant.boiler.efficiency
 X
 3
@@ -1064,9 +1117,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1095,6 +1149,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.plant.boiler.excess_air
 X
 3
@@ -1122,9 +1177,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1153,6 +1209,7 @@ Numeric
 16
 Name
 5
+29
 biopwr.plant.boiler.flue_temp
 X
 3
@@ -1180,10 +1237,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1211,6 +1268,7 @@ Numeric
 16
 Name
 5
+23
 biopwr.plant.boiler.num
 X
 3
@@ -1238,10 +1296,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1269,6 +1327,7 @@ Numeric
 16
 Name
 5
+31
 biopwr.plant.boiler.over_design
 X
 3
@@ -1296,9 +1355,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1327,6 +1387,7 @@ Choice
 8
 Name
 5
+31
 biopwr.plant.boiler.steam_grade
 X
 3
@@ -1361,6 +1422,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.plant.boiler.steam_produced
 X
 3
@@ -1388,10 +1450,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1419,6 +1481,7 @@ Choice
 8
 Name
 5
+27
 biopwr.plant.combustor_type
 X
 3
@@ -1450,6 +1513,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.plant.cycle_design_temp
 X
 3
@@ -1477,10 +1541,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1508,6 +1572,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.disp1.power
 X
 3
@@ -1535,10 +1600,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1566,6 +1631,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.disp2.power
 X
 3
@@ -1593,10 +1659,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1624,6 +1690,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.disp3.power
 X
 3
@@ -1651,10 +1718,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1682,6 +1749,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.disp4.power
 X
 3
@@ -1709,10 +1777,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1740,6 +1808,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.disp5.power
 X
 3
@@ -1767,10 +1836,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1798,6 +1867,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.disp6.power
 X
 3
@@ -1825,10 +1895,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1856,6 +1926,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.disp7.power
 X
 3
@@ -1883,10 +1954,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1914,6 +1985,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.disp8.power
 X
 3
@@ -1941,10 +2013,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1972,6 +2044,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.disp9.power
 X
 3
@@ -1999,10 +2072,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2030,6 +2103,7 @@ RadioChoice
 10
 Name
 5
+26
 biopwr.plant.drying_method
 X
 3
@@ -2067,6 +2141,7 @@ Numeric
 16
 Name
 5
+28
 biopwr.plant.drying_spec_wet
 X
 3
@@ -2094,9 +2169,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+6
  wet %
 ThousandsSep
 2
@@ -2125,6 +2201,7 @@ Numeric
 16
 Name
 5
+26
 biopwr.plant.eff.flue_loss
 X
 3
@@ -2152,9 +2229,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2183,6 +2261,7 @@ Numeric
 16
 Name
 5
+26
 biopwr.plant.eff.fuel_loss
 X
 3
@@ -2210,9 +2289,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2241,6 +2321,7 @@ Numeric
 16
 Name
 5
+23
 biopwr.plant.eff.latent
 X
 3
@@ -2268,9 +2349,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2299,6 +2381,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.plant.eff.moisture_loss
 X
 3
@@ -2326,9 +2409,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2357,6 +2441,7 @@ Numeric
 16
 Name
 5
+25
 biopwr.plant.eff.rad_loss
 X
 3
@@ -2384,9 +2469,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2415,6 +2501,7 @@ Numeric
 16
 Name
 5
+28
 biopwr.plant.max_over_design
 X
 3
@@ -2442,10 +2529,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2473,6 +2560,7 @@ Numeric
 16
 Name
 5
+21
 biopwr.plant.min_load
 X
 3
@@ -2500,10 +2588,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2531,6 +2619,7 @@ Numeric
 16
 Name
 5
+22
 biopwr.plant.nameplate
 X
 3
@@ -2558,10 +2647,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2589,6 +2678,7 @@ Numeric
 16
 Name
 5
+16
 biopwr.plant.par
 X
 3
@@ -2616,10 +2706,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2647,6 +2737,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.par_percent
 X
 3
@@ -2674,10 +2765,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2705,6 +2796,7 @@ Numeric
 16
 Name
 5
+22
 biopwr.plant.pl_eff_f0
 X
 3
@@ -2732,10 +2824,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2763,6 +2855,7 @@ Numeric
 16
 Name
 5
+22
 biopwr.plant.pl_eff_f1
 X
 3
@@ -2790,10 +2883,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2821,6 +2914,7 @@ Numeric
 16
 Name
 5
+22
 biopwr.plant.pl_eff_f2
 X
 3
@@ -2848,10 +2942,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2879,6 +2973,7 @@ Numeric
 16
 Name
 5
+22
 biopwr.plant.pl_eff_f3
 X
 3
@@ -2906,10 +3001,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2937,6 +3032,7 @@ Numeric
 16
 Name
 5
+22
 biopwr.plant.pl_eff_f4
 X
 3
@@ -2964,10 +3060,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2995,6 +3091,7 @@ RadioChoice
 10
 Name
 5
+21
 biopwr.plant.ramp_opt
 X
 3
@@ -3032,6 +3129,7 @@ Numeric
 16
 Name
 5
+22
 biopwr.plant.ramp_opt1
 X
 3
@@ -3059,9 +3157,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+8
  kW/hr %
 ThousandsSep
 2
@@ -3090,6 +3189,7 @@ Numeric
 16
 Name
 5
+22
 biopwr.plant.ramp_opt2
 X
 3
@@ -3117,9 +3217,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+7
  %/hr %
 ThousandsSep
 2
@@ -3148,6 +3249,7 @@ Numeric
 16
 Name
 5
+22
 biopwr.plant.rated_eff
 X
 3
@@ -3175,10 +3277,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3206,6 +3308,7 @@ Choice
 8
 Name
 5
+27
 biopwr.plant.temp_corr_mode
 X
 3
@@ -3236,6 +3339,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.temp_eff_f0
 X
 3
@@ -3263,10 +3367,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3294,6 +3398,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.temp_eff_f1
 X
 3
@@ -3321,10 +3426,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3352,6 +3457,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.temp_eff_f2
 X
 3
@@ -3379,10 +3485,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3410,6 +3516,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.temp_eff_f3
 X
 3
@@ -3437,10 +3544,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3468,6 +3575,7 @@ Numeric
 16
 Name
 5
+24
 biopwr.plant.temp_eff_f4
 X
 3
@@ -3495,10 +3603,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3526,6 +3634,7 @@ DiurnalPeriod
 9
 Name
 5
+21
 biopwr.plant.tou_grid
 X
 3
@@ -3544,7 +3653,7 @@ TabOrder
 4294967295
 Schedule
 5
- 
+0
 Max
 3
 9
@@ -3557,6 +3666,7 @@ CheckBox
 8
 Name
 5
+23
 biopwr.plant.tou_option
 X
 3
@@ -3572,6 +3682,7 @@ Height
 21
 Caption
 5
+32
 Enable time of dispatch schedule
 State
 2
@@ -3585,6 +3696,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -3609,6 +3721,7 @@ Colour
 255
 Caption
 5
+28
 Availability and Curtailment
 Bold
 2
@@ -3619,6 +3732,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -3634,6 +3748,7 @@ Height
 66
 Caption
 5
+105
 Curtailment and availability losses reduce the system output to represent system outages or other events.
 TextColour
 4

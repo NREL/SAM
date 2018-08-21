@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 122
 Caption
 5
+23
 Losses and Wake Effects
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 122
 Caption
 5
+23
 Losses and Wake Effects
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -73,6 +78,7 @@ Height
 497
 Caption
 5
+14
 Turbine Layout
 Bold
 2
@@ -83,6 +89,7 @@ LossAdjustment
 6
 Name
 5
+6
 adjust
 X
 3
@@ -105,6 +112,7 @@ Button
 7
 Name
 5
+26
 btnOpenTurbineLocationFile
 X
 3
@@ -120,6 +128,7 @@ Height
 24
 Caption
 5
+29
 Import turbine layout file...
 TabOrder
 3
@@ -130,6 +139,7 @@ Numeric
 16
 Name
 5
+17
 desired_farm_size
 X
 3
@@ -157,10 +167,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -188,6 +198,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -212,6 +223,7 @@ Colour
 255
 Caption
 5
+28
 Availability and Curtailment
 Bold
 2
@@ -222,6 +234,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -237,6 +250,7 @@ Height
 78
 Caption
 5
+105
 Curtailment and availability losses reduce the system output to represent system outages or other events.
 TextColour
 4
@@ -265,6 +279,7 @@ Label
 12
 Name
 5
+14
 sizing_warning
 X
 3
@@ -280,6 +295,7 @@ Height
 72
 Caption
 5
+94
 It is not possible to reach the desired farm size exactly with the currently selected turbine.
 TextColour
 4
@@ -308,6 +324,7 @@ Label
 12
 Name
 5
+13
 specify_label
 X
 3
@@ -323,6 +340,7 @@ Height
 60
 Caption
 5
+77
 Please specify the number of turbines using the Turbine Layout options below.
 TextColour
 4
@@ -351,6 +369,7 @@ Numeric
 16
 Name
 5
+15
 system_capacity
 X
 3
@@ -378,9 +397,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+1
  
 ThousandsSep
 2
@@ -409,6 +429,7 @@ Numeric
 16
 Name
 5
+24
 wind_farm_losses_percent
 X
 3
@@ -436,10 +457,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -467,6 +488,7 @@ Numeric
 16
 Name
 5
+22
 wind_farm_num_turbines
 X
 3
@@ -494,10 +516,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -525,6 +547,7 @@ RadioChoice
 10
 Name
 5
+21
 wind_farm_sizing_mode
 X
 3
@@ -562,6 +585,7 @@ Choice
 8
 Name
 5
+20
 wind_farm_wake_model
 X
 3
@@ -593,6 +617,7 @@ Numeric
 16
 Name
 5
+30
 wind_resource_turbulence_coeff
 X
 3
@@ -620,10 +645,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -651,6 +676,7 @@ Image
 7
 Name
 5
+26
 windfarm.farm.compass_rose
 X
 3
@@ -666,7 +692,7 @@ Height
 55
 Image
 7
-C:\Projects\GitHub\NREL\ui_as_text\SAM\deploy\runtime\/ui/Wind Farm Specifications_windfarm.farm.compass_rose.png
+C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/Wind Farm Specifications_windfarm.farm.compass_rose.png
 Centered
 2
 1
@@ -676,6 +702,7 @@ Numeric
 16
 Name
 5
+26
 windfarm.farm.layout_angle
 X
 3
@@ -703,10 +730,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -734,6 +761,7 @@ Slider
 9
 Name
 5
+27
 windfarm.farm.layout_slider
 X
 3
@@ -765,6 +793,7 @@ Numeric
 16
 Name
 5
+28
 windfarm.farm.number_of_rows
 X
 3
@@ -792,10 +821,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -823,6 +852,7 @@ Numeric
 16
 Name
 5
+20
 windfarm.farm.offset
 X
 3
@@ -850,10 +880,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -881,6 +911,7 @@ Choice
 8
 Name
 5
+25
 windfarm.farm.offset_type
 X
 3
@@ -911,6 +942,7 @@ Numeric
 16
 Name
 5
+25
 windfarm.farm.row_spacing
 X
 3
@@ -938,10 +970,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -969,6 +1001,7 @@ Choice
 8
 Name
 5
+19
 windfarm.farm.shape
 X
 3
@@ -999,6 +1032,7 @@ Numeric
 16
 Name
 5
+29
 windfarm.farm.turbine_spacing
 X
 3
@@ -1026,10 +1060,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1057,6 +1091,7 @@ Numeric
 16
 Name
 5
+30
 windfarm.farm.turbines_per_row
 X
 3
@@ -1084,10 +1119,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1115,6 +1150,7 @@ RadioChoice
 10
 Name
 5
+32
 windfarm.layout.file_or_controls
 X
 3
@@ -1151,6 +1187,7 @@ Label
 12
 Name
 5
+23
 windfarm.layout_message
 X
 3
@@ -1166,6 +1203,7 @@ Height
 57
 Caption
 5
+14
 Error messages
 TextColour
 4
@@ -1194,6 +1232,7 @@ Plot
 5
 Name
 5
+13
 windfarm_plot
 X
 3

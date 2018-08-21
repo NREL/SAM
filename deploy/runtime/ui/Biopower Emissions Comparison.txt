@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 530
 Caption
 5
+33
 Life-Cycle Impacts Specifications
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 113
 Caption
 5
+16
 Inside farmgate 
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 197
 Caption
 5
+34
 From farmgate to biopower facility
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -98,6 +105,7 @@ Height
 104
 Caption
 5
+21
 Preprocessing Options
 Bold
 2
@@ -108,6 +116,7 @@ Label
 12
 Name
 5
+7
 Label15
 X
 3
@@ -123,6 +132,7 @@ Height
 24
 Caption
 5
+126
 Note: This section specifies calculations for life-cycle impacts. The inputs below do not affect the performance of the plant.
 TextColour
 4
@@ -151,6 +161,7 @@ Label
 12
 Name
 5
+8
 Label151
 X
 3
@@ -166,6 +177,7 @@ Height
 24
 Caption
 5
+129
 Note: These specifications help compute the total life-cycle impact of the biopower plant. They do not affect plant performance. 
 TextColour
 4
@@ -194,6 +206,7 @@ CheckBox
 8
 Name
 5
+29
 biopwr.emissions.avoided_cred
 X
 3
@@ -209,6 +222,7 @@ Height
 27
 Caption
 5
+66
 Assume biomass was not grown dedicated to power (waste or residue)
 State
 2
@@ -222,6 +236,7 @@ RadioChoice
 10
 Name
 5
+32
 biopwr.emissions.collection_fuel
 X
 3
@@ -258,6 +273,7 @@ Numeric
 16
 Name
 5
+31
 biopwr.emissions.grid_intensity
 X
 3
@@ -285,10 +301,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -316,6 +332,7 @@ Choice
 8
 Name
 5
+28
 biopwr.emissions.grid_region
 X
 3
@@ -358,6 +375,7 @@ CheckBox
 8
 Name
 5
+28
 biopwr.emissions.pre_chipopt
 X
 3
@@ -373,6 +391,7 @@ Height
 21
 Caption
 5
+50
 Pre-processing includes light grinding or chipping
 State
 2
@@ -386,6 +405,7 @@ CheckBox
 8
 Name
 5
+29
 biopwr.emissions.pre_grindopt
 X
 3
@@ -401,6 +421,7 @@ Height
 21
 Caption
 5
+38
 Pre-processing includes heavy grinding
 State
 2
@@ -414,6 +435,7 @@ CheckBox
 8
 Name
 5
+30
 biopwr.emissions.pre_pelletopt
 X
 3
@@ -429,6 +451,7 @@ Height
 21
 Caption
 5
+37
 Pre-processing includes pelletization
 State
 2
@@ -442,6 +465,7 @@ RadioChoice
 10
 Name
 5
+31
 biopwr.emissions.transport_fuel
 X
 3
@@ -478,6 +502,7 @@ RadioChoice
 10
 Name
 5
+31
 biopwr.emissions.transport_legs
 X
 3
@@ -514,6 +539,7 @@ CheckBox
 8
 Name
 5
+31
 biopwr.emissions.transport_long
 X
 3
@@ -529,6 +555,7 @@ Height
 21
 Caption
 5
+36
 Enable long-distance transport after
 State
 2
@@ -542,6 +569,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.emissions.transport_longmiles
 X
 3
@@ -569,10 +597,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -600,6 +628,7 @@ Choice
 8
 Name
 5
+34
 biopwr.emissions.transport_longopt
 X
 3
@@ -630,6 +659,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.emissions.transport_predist
 X
 3
@@ -657,10 +687,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

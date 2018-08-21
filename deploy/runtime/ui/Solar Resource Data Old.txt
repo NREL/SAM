@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 504
 Caption
 5
+22
 Solar Resource Library
 Bold
 2
@@ -33,6 +35,7 @@ Hyperlink
 8
 Name
 5
+10
 Hyperlink2
 X
 3
@@ -48,9 +51,11 @@ Height
 21
 Caption
 5
+26
 International Data Sources
 URL
 5
+33
 https://sam.nrel.gov/weather-data
 TabOrder
 3
@@ -61,6 +66,7 @@ Numeric
 16
 Name
 5
+11
 annual_beam
 X
 3
@@ -88,10 +94,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -119,6 +125,7 @@ Numeric
 16
 Name
 5
+14
 annual_diffuse
 X
 3
@@ -146,10 +153,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -177,6 +184,7 @@ Numeric
 16
 Name
 5
+13
 annual_global
 X
 3
@@ -204,10 +212,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -235,6 +243,7 @@ Numeric
 16
 Name
 5
+11
 annual_snow
 X
 3
@@ -262,10 +271,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -293,6 +302,7 @@ Numeric
 16
 Name
 5
+11
 annual_tdry
 X
 3
@@ -320,10 +330,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -351,6 +361,7 @@ Numeric
 16
 Name
 5
+11
 annual_wspd
 X
 3
@@ -378,10 +389,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -409,6 +420,7 @@ TextEntry
 10
 Name
 5
+4
 city
 X
 3
@@ -424,6 +436,7 @@ Height
 24
 Text
 5
+9
 Your City
 Editable
 2
@@ -449,6 +462,7 @@ TextEntry
 10
 Name
 5
+7
 country
 X
 3
@@ -464,6 +478,7 @@ Height
 24
 Text
 5
+3
 usa
 Editable
 2
@@ -489,6 +504,7 @@ Button
 7
 Name
 5
+21
 download_weather_file
 X
 3
@@ -504,6 +520,7 @@ Height
 24
 Caption
 5
+35
 Download a TMY file for Americas...
 TabOrder
 3
@@ -514,6 +531,7 @@ Button
 7
 Name
 5
+15
 dview_for_solar
 X
 3
@@ -529,6 +547,7 @@ Height
 24
 Caption
 5
+25
 View weather file data...
 TabOrder
 3
@@ -539,6 +558,7 @@ Numeric
 16
 Name
 5
+4
 elev
 X
 3
@@ -566,9 +586,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  m
 ThousandsSep
 2
@@ -597,6 +618,7 @@ Numeric
 16
 Name
 5
+3
 lat
 X
 3
@@ -624,9 +646,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+3
  °N
 ThousandsSep
 2
@@ -655,6 +678,7 @@ Label
 12
 Name
 5
+7
 lbl_csp
 X
 3
@@ -670,6 +694,7 @@ Height
 36
 Caption
 5
+108
 SAM's CSP models use a different time convention for weather data than the NREL NSRDB. See Help for details.
 TextColour
 4
@@ -698,6 +723,7 @@ Numeric
 16
 Name
 5
+3
 lon
 X
 3
@@ -725,9 +751,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+3
  °E
 ThousandsSep
 2
@@ -756,6 +783,7 @@ Button
 7
 Name
 5
+9
 nsrdb_all
 X
 3
@@ -771,6 +799,7 @@ Height
 24
 Caption
 5
+43
 TMY or Single-year for Americas and Asia...
 TabOrder
 3
@@ -781,6 +810,7 @@ Hyperlink
 8
 Name
 5
+9
 object 14
 X
 3
@@ -796,9 +826,11 @@ Height
 24
 Caption
 5
+20
 Map on NSRDB website
 URL
 5
+169
 https://maps.nrel.gov/nsrdb-viewer/#/?aL=j0s5CD%255Bv%255D%3Dt%26e8KZAu%255Bv%255D%3Dt%26e8KZAu%255Bd%255D%3D1&bL=groad&cE=0&lR=0&mC=32.84267363195431%2C-35.5078125&zL=2
 TabOrder
 3
@@ -809,6 +841,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -833,6 +866,7 @@ Colour
 255
 Caption
 5
+16
 Files in Library
 Bold
 2
@@ -843,6 +877,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -867,6 +902,7 @@ Colour
 255
 Caption
 5
+16
 Files in Library
 Bold
 2
@@ -877,6 +913,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -901,6 +938,7 @@ Colour
 255
 Caption
 5
+16
 Files in Library
 Bold
 2
@@ -911,6 +949,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -926,6 +965,7 @@ Height
 138
 Caption
 5
+46
 NREL National Solar Radiation Database (NSRDB)
 Bold
 2
@@ -936,6 +976,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -951,6 +992,7 @@ Height
 138
 Caption
 5
+46
 NREL National Solar Radiation Database (NSRDB)
 Bold
 2
@@ -961,6 +1003,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -976,6 +1019,7 @@ Height
 42
 Caption
 5
+248
 Download the latest weather files from the NSRDB to add to your solar resource library: Download a typical-year (TMY) file for most long-term cash flow analyses, or choose files to download for single-year or P50/P90 analyses. See Help for details.
 TextColour
 4
@@ -1004,6 +1048,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1019,6 +1064,7 @@ Height
 42
 Caption
 5
+248
 Download the latest weather files from the NSRDB to add to your solar resource library: Download a typical-year (TMY) file for most long-term cash flow analyses, or choose files to download for single-year or P50/P90 analyses. See Help for details.
 TextColour
 4
@@ -1047,6 +1093,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1062,6 +1109,7 @@ Height
 42
 Caption
 5
+248
 Download the latest weather files from the NSRDB to add to your solar resource library: Download a typical-year (TMY) file for most long-term cash flow analyses, or choose files to download for single-year or P50/P90 analyses. See Help for details.
 TextColour
 4
@@ -1090,6 +1138,7 @@ Button
 7
 Name
 5
+22
 open_containing_folder
 X
 3
@@ -1105,6 +1154,7 @@ Height
 24
 Caption
 5
+30
 Open default library folder...
 TabOrder
 3
@@ -1115,6 +1165,7 @@ Button
 7
 Name
 5
+15
 refresh_library
 X
 3
@@ -1130,6 +1181,7 @@ Height
 24
 Caption
 5
+15
 Refresh library
 TabOrder
 3
@@ -1140,6 +1192,7 @@ Button
 7
 Name
 5
+19
 select_weather_file
 X
 3
@@ -1155,6 +1208,7 @@ Height
 24
 Caption
 5
+9
 Browse...
 TabOrder
 3
@@ -1165,6 +1219,7 @@ TextEntry
 10
 Name
 5
+20
 solar_data_file_name
 X
 3
@@ -1180,7 +1235,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 0
@@ -1205,6 +1260,7 @@ Button
 7
 Name
 5
+19
 solar_data_settings
 X
 3
@@ -1220,6 +1276,7 @@ Height
 24
 Caption
 5
+18
 Folder settings...
 TabOrder
 3
@@ -1230,6 +1287,7 @@ TextEntry
 10
 Name
 5
+17
 solar_data_source
 X
 3
@@ -1245,6 +1303,7 @@ Height
 24
 Text
 5
+3
 src
 Editable
 2
@@ -1270,6 +1329,7 @@ Library
 7
 Name
 5
+14
 solar_resource
 X
 3
@@ -1285,15 +1345,18 @@ Height
 159
 Library
 5
+17
 SolarResourceData
 Fields
 5
+61
 Name,Station ID,Latitude,Longitude,Time zone,Elevation,Source
 TextEntry
 
 1
 10
 Name
+5
 5
 state
 X
@@ -1310,6 +1373,7 @@ Height
 24
 Text
 5
+2
 AX
 Editable
 2
@@ -1335,6 +1399,7 @@ TextEntry
 10
 Name
 5
+10
 station_id
 X
 3
@@ -1350,6 +1415,7 @@ Height
 24
 Text
 5
+4
 wban
 Editable
 2
@@ -1375,6 +1441,7 @@ Numeric
 16
 Name
 5
+2
 tz
 X
 3
@@ -1402,10 +1469,11 @@ Decimals
 3
 Prefix
 5
+4
 GMT 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1433,6 +1501,7 @@ CheckBox
 8
 Name
 5
+25
 use_specific_weather_file
 X
 3
@@ -1448,7 +1517,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0
@@ -1461,6 +1530,7 @@ TextEntry
 10
 Name
 5
+27
 user_specified_weather_file
 X
 3
@@ -1476,7 +1546,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1

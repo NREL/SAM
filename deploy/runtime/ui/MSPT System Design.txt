@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+5
 P_ref
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -66,6 +67,7 @@ Numeric
 16
 Name
 5
+9
 Q_rec_des
 X
 3
@@ -93,10 +95,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -124,6 +126,7 @@ Numeric
 16
 Name
 5
+14
 T_htf_cold_des
 X
 3
@@ -151,10 +154,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -182,6 +185,7 @@ Numeric
 16
 Name
 5
+13
 T_htf_hot_des
 X
 3
@@ -209,10 +213,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -240,6 +244,7 @@ Numeric
 16
 Name
 5
+10
 design_eff
 X
 3
@@ -267,10 +272,10 @@ Decimals
 4
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -298,6 +303,7 @@ Numeric
 16
 Name
 5
+7
 dni_des
 X
 3
@@ -325,10 +331,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -356,6 +362,7 @@ Numeric
 16
 Name
 5
+27
 gross_net_conversion_factor
 X
 3
@@ -383,10 +390,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -414,6 +421,7 @@ Numeric
 16
 Name
 5
+9
 nameplate
 X
 3
@@ -441,10 +449,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -472,6 +480,7 @@ Image
 7
 Name
 5
+9
 object 12
 X
 3
@@ -487,7 +496,7 @@ Height
 556
 Image
 7
-C:\Projects\GitHub\NREL\ui_as_text\SAM\deploy\runtime\/ui/MSPT System Design_object 12.png
+C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/MSPT System Design_object 12.png
 Centered
 2
 1
@@ -497,6 +506,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -521,6 +531,7 @@ Colour
 255
 Caption
 5
+15
 Thermal Storage
 Bold
 2
@@ -531,6 +542,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -555,6 +567,7 @@ Colour
 255
 Caption
 5
+15
 Thermal Storage
 Bold
 2
@@ -565,6 +578,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -589,6 +603,7 @@ Colour
 255
 Caption
 5
+15
 Thermal Storage
 Bold
 2
@@ -599,6 +614,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -623,6 +639,7 @@ Colour
 255
 Caption
 5
+15
 Thermal Storage
 Bold
 2
@@ -633,6 +650,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -648,6 +666,7 @@ Height
 354
 Caption
 5
+23
 Design Point Parameters
 Bold
 2
@@ -658,6 +677,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -673,6 +693,7 @@ Height
 63
 Caption
 5
+294
 The design point parameters determine the nominal ratings of each part of the power tower system. After specifying the design point parameters here, you can specify details of each component of the system on the Heliostat Field, Tower and Receiver, Thermal Storage, and Power Cycle input pages.
 TextColour
 4
@@ -701,6 +722,7 @@ GroupBox
 7
 Name
 5
+14
 picture_border
 X
 3
@@ -716,7 +738,7 @@ Height
 555
 Caption
 5
- 
+0
 Bold
 2
 1
@@ -726,6 +748,7 @@ Numeric
 16
 Name
 5
+11
 q_pb_design
 X
 3
@@ -753,10 +776,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -784,6 +807,7 @@ Numeric
 16
 Name
 5
+9
 sf_excess
 X
 3
@@ -811,10 +835,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -842,6 +866,7 @@ Numeric
 16
 Name
 5
+6
 solarm
 X
 3
@@ -869,10 +894,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -900,6 +925,7 @@ Numeric
 16
 Name
 5
+7
 tshours
 X
 3
@@ -927,10 +953,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -958,6 +984,7 @@ Numeric
 16
 Name
 5
+10
 tshours_sf
 X
 3
@@ -985,10 +1012,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1016,6 +1043,7 @@ Label
 12
 Name
 5
+6
 ui_msg
 X
 3
@@ -1031,7 +1059,7 @@ Height
 87
 Caption
 5
- 
+0
 TextColour
 4
 255

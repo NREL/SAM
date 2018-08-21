@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 623
 Caption
 5
+44
 Superheater Geometry and Optical Performance
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 602
 Caption
 5
+31
 Receiver Geometry and Heat Loss
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 146
 Caption
 5
+25
 Aggregate Weighted Losses
 Bold
 2
@@ -83,6 +89,7 @@ Divider
 9
 Name
 5
+6
 HLine1
 X
 3
@@ -107,6 +114,7 @@ Colour
 255
 Caption
 5
+37
 Incidence Angle Modifier Coefficients
 Bold
 2
@@ -117,6 +125,7 @@ Divider
 9
 Name
 5
+7
 HLine11
 X
 3
@@ -141,6 +150,7 @@ Colour
 255
 Caption
 5
+46
 Solar Position/Collector Incidence Angle Table
 Bold
 2
@@ -151,6 +161,7 @@ Divider
 9
 Name
 5
+7
 HLine12
 X
 3
@@ -175,6 +186,7 @@ Colour
 255
 Caption
 5
+30
 Polynomial fit heat loss model
 Bold
 2
@@ -185,6 +197,7 @@ Divider
 9
 Name
 5
+8
 HLine121
 X
 3
@@ -209,6 +222,7 @@ Colour
 255
 Caption
 5
+30
 Evacuated tube heat loss model
 Bold
 2
@@ -219,6 +233,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -234,6 +249,7 @@ Height
 21
 Caption
 5
+32
 Optical characterization method:
 TextColour
 4
@@ -262,6 +278,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -277,6 +294,7 @@ Height
 21
 Caption
 5
+35
 Transverse incidence angle modifier
 TextColour
 4
@@ -305,6 +323,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -320,6 +339,7 @@ Height
 21
 Caption
 5
+28
 Steam temperature adjustment
 TextColour
 4
@@ -348,6 +368,7 @@ Label
 12
 Name
 5
+8
 Label211
 X
 3
@@ -363,6 +384,7 @@ Height
 21
 Caption
 5
+18
 Absorber emittance
 TextColour
 4
@@ -391,6 +413,7 @@ Label
 12
 Name
 5
+9
 Label2111
 X
 3
@@ -406,6 +429,7 @@ Height
 21
 Caption
 5
+20
 Envelope absorptance
 TextColour
 4
@@ -434,6 +458,7 @@ Label
 12
 Name
 5
+10
 Label21111
 X
 3
@@ -449,6 +474,7 @@ Height
 21
 Caption
 5
+18
 Envelope emittance
 TextColour
 4
@@ -477,6 +503,7 @@ Label
 12
 Name
 5
+11
 Label211111
 X
 3
@@ -492,6 +519,7 @@ Height
 21
 Caption
 5
+22
 Envelope transmittance
 TextColour
 4
@@ -520,6 +548,7 @@ Label
 12
 Name
 5
+8
 Label212
 X
 3
@@ -535,6 +564,7 @@ Height
 21
 Caption
 5
+20
 Absorber absorptance
 TextColour
 4
@@ -563,6 +593,7 @@ Label
 12
 Name
 5
+7
 Label22
 X
 3
@@ -578,6 +609,7 @@ Height
 21
 Caption
 5
+26
 Variant weighting fraction
 TextColour
 4
@@ -606,6 +638,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -621,6 +654,7 @@ Height
 21
 Caption
 5
+37
 Longitudinal incidence angle modifier
 TextColour
 4
@@ -649,6 +683,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -664,6 +699,7 @@ Height
 21
 Caption
 5
+24
 Wind velocity adjustment
 TextColour
 4
@@ -692,6 +728,7 @@ Label
 12
 Name
 5
+8
 Label311
 X
 3
@@ -707,6 +744,7 @@ Height
 21
 Caption
 5
+17
 Bellows shadowing
 TextColour
 4
@@ -735,6 +773,7 @@ Label
 12
 Name
 5
+9
 Label3111
 X
 3
@@ -750,6 +789,7 @@ Height
 21
 Caption
 5
+30
 Estimated avg. heat loss (W/m)
 TextColour
 4
@@ -778,6 +818,7 @@ Label
 12
 Name
 5
+8
 Label312
 X
 3
@@ -793,6 +834,7 @@ Height
 21
 Caption
 5
+16
 Annulus gas type
 TextColour
 4
@@ -821,6 +863,7 @@ Label
 12
 Name
 5
+7
 Label32
 X
 3
@@ -836,6 +879,7 @@ Height
 21
 Caption
 5
+16
 Dirt on receiver
 TextColour
 4
@@ -864,6 +908,7 @@ Label
 12
 Name
 5
+7
 Label33
 X
 3
@@ -879,6 +924,7 @@ Height
 21
 Caption
 5
+23
 Annulus pressure (torr)
 TextColour
 4
@@ -907,6 +953,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -921,6 +968,7 @@ Height
 3
 18
 Caption
+5
 5
 Const
 TextColour
@@ -950,6 +998,7 @@ Label
 12
 Name
 5
+7
 Label41
 X
 3
@@ -965,6 +1014,7 @@ Height
 18
 Caption
 5
+2
 C1
 TextColour
 4
@@ -993,6 +1043,7 @@ Label
 12
 Name
 5
+8
 Label411
 X
 3
@@ -1008,6 +1059,7 @@ Height
 18
 Caption
 5
+2
 C3
 TextColour
 4
@@ -1036,6 +1088,7 @@ Label
 12
 Name
 5
+9
 Label4111
 X
 3
@@ -1051,6 +1104,7 @@ Height
 18
 Caption
 5
+12
 C3 (W/m-K^3)
 TextColour
 4
@@ -1079,6 +1133,7 @@ Label
 12
 Name
 5
+10
 Label41111
 X
 3
@@ -1094,6 +1149,7 @@ Height
 18
 Caption
 5
+14
 C3 (1/(m/s)^3)
 TextColour
 4
@@ -1122,6 +1178,7 @@ Label
 12
 Name
 5
+11
 Label411111
 X
 3
@@ -1137,6 +1194,7 @@ Height
 18
 Caption
 5
+14
 C4 (1/(m/s)^4)
 TextColour
 4
@@ -1165,6 +1223,7 @@ Label
 12
 Name
 5
+10
 Label41112
 X
 3
@@ -1180,6 +1239,7 @@ Height
 21
 Caption
 5
+12
 Variation 4*
 TextColour
 4
@@ -1208,6 +1268,7 @@ Label
 12
 Name
 5
+10
 Label41113
 X
 3
@@ -1223,6 +1284,7 @@ Height
 18
 Caption
 5
+12
 C4 (W/m-K^4)
 TextColour
 4
@@ -1251,6 +1313,7 @@ Label
 12
 Name
 5
+9
 Label4112
 X
 3
@@ -1266,6 +1329,7 @@ Height
 21
 Caption
 5
+11
 Variation 3
 TextColour
 4
@@ -1294,6 +1358,7 @@ Label
 12
 Name
 5
+8
 Label412
 X
 3
@@ -1309,6 +1374,7 @@ Height
 18
 Caption
 5
+10
 C1 (W/m-K)
 TextColour
 4
@@ -1337,6 +1403,7 @@ Label
 12
 Name
 5
+9
 Label4121
 X
 3
@@ -1352,6 +1419,7 @@ Height
 18
 Caption
 5
+12
 C1 (1/(m/s))
 TextColour
 4
@@ -1380,6 +1448,7 @@ Label
 12
 Name
 5
+8
 Label413
 X
 3
@@ -1395,6 +1464,7 @@ Height
 21
 Caption
 5
+11
 Variation 2
 TextColour
 4
@@ -1423,6 +1493,7 @@ Label
 12
 Name
 5
+7
 Label42
 X
 3
@@ -1438,6 +1509,7 @@ Height
 18
 Caption
 5
+2
 C2
 TextColour
 4
@@ -1466,6 +1538,7 @@ Label
 12
 Name
 5
+8
 Label421
 X
 3
@@ -1481,6 +1554,7 @@ Height
 18
 Caption
 5
+2
 C4
 TextColour
 4
@@ -1509,6 +1583,7 @@ Label
 12
 Name
 5
+8
 Label422
 X
 3
@@ -1524,6 +1599,7 @@ Height
 18
 Caption
 5
+12
 C2 (W/m-K^2)
 TextColour
 4
@@ -1552,6 +1628,7 @@ Label
 12
 Name
 5
+9
 Label4221
 X
 3
@@ -1567,6 +1644,7 @@ Height
 18
 Caption
 5
+14
 C2 (1/(m/s)^2)
 TextColour
 4
@@ -1595,6 +1673,7 @@ Label
 12
 Name
 5
+7
 Label43
 X
 3
@@ -1610,6 +1689,7 @@ Height
 18
 Caption
 5
+8
 C0 (W/m)
 TextColour
 4
@@ -1638,6 +1718,7 @@ Label
 12
 Name
 5
+8
 Label431
 X
 3
@@ -1653,6 +1734,7 @@ Height
 18
 Caption
 5
+2
 C0
 TextColour
 4
@@ -1681,6 +1763,7 @@ Label
 12
 Name
 5
+7
 Label44
 X
 3
@@ -1696,6 +1779,7 @@ Height
 21
 Caption
 5
+11
 Variation 1
 TextColour
 4
@@ -1724,6 +1808,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -1739,6 +1824,7 @@ Height
 18
 Caption
 5
+112
 Specifying solar position table: Rows indicate solar zenith angles (deg), columns are solar azimuth angles (deg)
 TextColour
 4
@@ -1767,6 +1853,7 @@ Label
 12
 Name
 5
+7
 Label51
 X
 3
@@ -1782,6 +1869,7 @@ Height
 42
 Caption
 5
+146
 Specifying collector incidence angle table: Rows indicate longitudinal incidence angles (deg), columns indicate transversal incidence angles (deg)
 TextColour
 4
@@ -1810,6 +1898,7 @@ Choice
 8
 Name
 5
+30
 csp.lf.geom2.absorber_material
 X
 3
@@ -1842,6 +1931,7 @@ Numeric
 16
 Name
 5
+37
 csp.lf.geom2.avg_field_temp_dt_design
 X
 3
@@ -1869,10 +1959,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1900,6 +1990,7 @@ Numeric
 16
 Name
 5
+24
 csp.lf.geom2.coll_length
 X
 3
@@ -1927,10 +2018,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1958,6 +2049,7 @@ Numeric
 16
 Name
 5
+35
 csp.lf.geom2.coll_opt_loss_norm_inc
 X
 3
@@ -1985,10 +2077,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2016,6 +2108,7 @@ Numeric
 16
 Name
 5
+32
 csp.lf.geom2.diam_absorber_inner
 X
 3
@@ -2043,10 +2136,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2074,6 +2167,7 @@ Numeric
 16
 Name
 5
+32
 csp.lf.geom2.diam_absorber_outer
 X
 3
@@ -2101,10 +2195,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2132,6 +2226,7 @@ Numeric
 16
 Name
 5
+31
 csp.lf.geom2.diam_absorber_plug
 X
 3
@@ -2159,10 +2254,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2190,6 +2285,7 @@ Numeric
 16
 Name
 5
+32
 csp.lf.geom2.diam_envelope_inner
 X
 3
@@ -2217,10 +2313,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2248,6 +2344,7 @@ Numeric
 16
 Name
 5
+32
 csp.lf.geom2.diam_envelope_outer
 X
 3
@@ -2275,10 +2372,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2306,6 +2403,7 @@ Choice
 8
 Name
 5
+22
 csp.lf.geom2.flow_type
 X
 3
@@ -2336,6 +2434,7 @@ Numeric
 16
 Name
 5
+26
 csp.lf.geom2.general_error
 X
 3
@@ -2363,10 +2462,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2394,6 +2493,7 @@ Numeric
 16
 Name
 5
+23
 csp.lf.geom2.geom_error
 X
 3
@@ -2421,10 +2521,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2452,6 +2552,7 @@ Numeric
 16
 Name
 5
+32
 csp.lf.geom2.heat_loss_at_design
 X
 3
@@ -2479,10 +2580,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2510,6 +2611,7 @@ Choice
 8
 Name
 5
+20
 csp.lf.geom2.hl_mode
 X
 3
@@ -2540,6 +2642,7 @@ Numeric
 16
 Name
 5
+21
 csp.lf.geom2.hlpolyt0
 X
 3
@@ -2567,10 +2670,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2598,6 +2701,7 @@ Numeric
 16
 Name
 5
+21
 csp.lf.geom2.hlpolyt1
 X
 3
@@ -2625,10 +2729,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2656,6 +2760,7 @@ Numeric
 16
 Name
 5
+21
 csp.lf.geom2.hlpolyt2
 X
 3
@@ -2683,10 +2788,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2714,6 +2819,7 @@ Numeric
 16
 Name
 5
+21
 csp.lf.geom2.hlpolyt3
 X
 3
@@ -2741,10 +2847,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2772,6 +2878,7 @@ Numeric
 16
 Name
 5
+21
 csp.lf.geom2.hlpolyt4
 X
 3
@@ -2799,10 +2906,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2830,6 +2937,7 @@ Numeric
 16
 Name
 5
+21
 csp.lf.geom2.hlpolyw0
 X
 3
@@ -2857,10 +2965,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2888,6 +2996,7 @@ Numeric
 16
 Name
 5
+21
 csp.lf.geom2.hlpolyw1
 X
 3
@@ -2915,10 +3024,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2946,6 +3055,7 @@ Numeric
 16
 Name
 5
+21
 csp.lf.geom2.hlpolyw2
 X
 3
@@ -2973,10 +3083,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3004,6 +3114,7 @@ Numeric
 16
 Name
 5
+21
 csp.lf.geom2.hlpolyw3
 X
 3
@@ -3031,10 +3142,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3062,6 +3173,7 @@ Numeric
 16
 Name
 5
+21
 csp.lf.geom2.hlpolyw4
 X
 3
@@ -3089,10 +3201,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3120,6 +3232,7 @@ Numeric
 16
 Name
 5
+18
 csp.lf.geom2.iaml0
 X
 3
@@ -3147,10 +3260,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3178,6 +3291,7 @@ Numeric
 16
 Name
 5
+18
 csp.lf.geom2.iaml1
 X
 3
@@ -3205,10 +3319,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3236,6 +3350,7 @@ Numeric
 16
 Name
 5
+18
 csp.lf.geom2.iaml2
 X
 3
@@ -3263,10 +3378,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3294,6 +3409,7 @@ Numeric
 16
 Name
 5
+18
 csp.lf.geom2.iaml3
 X
 3
@@ -3321,10 +3437,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3352,6 +3468,7 @@ Numeric
 16
 Name
 5
+18
 csp.lf.geom2.iaml4
 X
 3
@@ -3379,10 +3496,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3410,6 +3527,7 @@ Numeric
 16
 Name
 5
+18
 csp.lf.geom2.iamt0
 X
 3
@@ -3437,10 +3555,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3468,6 +3586,7 @@ Numeric
 16
 Name
 5
+18
 csp.lf.geom2.iamt1
 X
 3
@@ -3495,10 +3614,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3526,6 +3645,7 @@ Numeric
 16
 Name
 5
+18
 csp.lf.geom2.iamt2
 X
 3
@@ -3553,10 +3673,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3584,6 +3704,7 @@ Numeric
 16
 Name
 5
+18
 csp.lf.geom2.iamt3
 X
 3
@@ -3611,10 +3732,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3642,6 +3763,7 @@ Numeric
 16
 Name
 5
+18
 csp.lf.geom2.iamt4
 X
 3
@@ -3669,10 +3791,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3700,6 +3822,7 @@ Numeric
 16
 Name
 5
+28
 csp.lf.geom2.inner_roughness
 X
 3
@@ -3727,10 +3850,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3758,6 +3881,7 @@ Numeric
 16
 Name
 5
+24
 csp.lf.geom2.mirror_refl
 X
 3
@@ -3785,10 +3909,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3816,6 +3940,7 @@ RadioChoice
 10
 Name
 5
+21
 csp.lf.geom2.opt_mode
 X
 3
@@ -3853,6 +3978,7 @@ Numeric
 16
 Name
 5
+31
 csp.lf.geom2.rec_optical_derate
 X
 3
@@ -3880,10 +4006,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3911,6 +4037,7 @@ Numeric
 16
 Name
 5
+31
 csp.lf.geom2.rec_thermal_derate
 X
 3
@@ -3938,10 +4065,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3969,6 +4096,7 @@ Numeric
 16
 Name
 5
+27
 csp.lf.geom2.refl_aper_area
 X
 3
@@ -3996,10 +4124,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4027,6 +4155,7 @@ Numeric
 16
 Name
 5
+20
 csp.lf.geom2.soiling
 X
 3
@@ -4054,10 +4183,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4085,6 +4214,7 @@ DataMatrix
 22
 Name
 5
+33
 csp.lf.geom2.solpos_collinc_table
 X
 3
@@ -4112,7 +4242,7 @@ ShowRowLabels
 0
 RowLabels
 5
- 
+0
 ShadeR0C0
 2
 1
@@ -4127,11 +4257,13 @@ ShowColLabels
 0
 ColLabels
 5
- 
+0
 NumRowsLabel
+5
 5
 Rows:
 NumColsLabel
+5
 5
 Cols:
 Layout
@@ -4142,6 +4274,7 @@ ChoiceColumn
 4294967295
 Choices
 5
+15
 Choice1,Choice2
 HideColumn
 3
@@ -4155,6 +4288,7 @@ Numeric
 16
 Name
 5
+24
 csp.lf.geom2.track_error
 X
 3
@@ -4182,10 +4316,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4213,6 +4347,7 @@ Numeric
 16
 Name
 5
+25
 csp.lf.geom2.var1.abs_abs
 X
 3
@@ -4240,10 +4375,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4271,6 +4406,7 @@ ValueMatrix
 9
 Name
 5
+26
 csp.lf.geom2.var1.abs_emis
 X
 3
@@ -4292,6 +4428,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3
@@ -4302,6 +4439,7 @@ Numeric
 16
 Name
 5
+34
 csp.lf.geom2.var1.annulus_pressure
 X
 3
@@ -4329,10 +4467,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4360,6 +4498,7 @@ Numeric
 16
 Name
 5
+35
 csp.lf.geom2.var1.bellows_shadowing
 X
 3
@@ -4387,10 +4526,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4418,6 +4557,7 @@ CheckBox
 8
 Name
 5
+30
 csp.lf.geom2.var1.broken_glass
 X
 3
@@ -4433,6 +4573,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -4446,6 +4587,7 @@ Numeric
 16
 Name
 5
+25
 csp.lf.geom2.var1.env_abs
 X
 3
@@ -4473,10 +4615,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4504,6 +4646,7 @@ Numeric
 16
 Name
 5
+26
 csp.lf.geom2.var1.env_emis
 X
 3
@@ -4531,10 +4674,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4562,6 +4705,7 @@ Numeric
 16
 Name
 5
+27
 csp.lf.geom2.var1.env_trans
 X
 3
@@ -4589,10 +4733,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4620,6 +4764,7 @@ Numeric
 16
 Name
 5
+32
 csp.lf.geom2.var1.field_fraction
 X
 3
@@ -4647,10 +4792,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4678,6 +4823,7 @@ Choice
 8
 Name
 5
+26
 csp.lf.geom2.var1.gas_type
 X
 3
@@ -4709,6 +4855,7 @@ Numeric
 16
 Name
 5
+26
 csp.lf.geom2.var1.hce_dirt
 X
 3
@@ -4736,10 +4883,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4767,6 +4914,7 @@ Numeric
 16
 Name
 5
+33
 csp.lf.geom2.var1.rated_heat_loss
 X
 3
@@ -4794,10 +4942,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4825,6 +4973,7 @@ Numeric
 16
 Name
 5
+25
 csp.lf.geom2.var2.abs_abs
 X
 3
@@ -4852,10 +5001,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4883,6 +5032,7 @@ ValueMatrix
 9
 Name
 5
+26
 csp.lf.geom2.var2.abs_emis
 X
 3
@@ -4904,6 +5054,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3
@@ -4914,6 +5065,7 @@ Numeric
 16
 Name
 5
+34
 csp.lf.geom2.var2.annulus_pressure
 X
 3
@@ -4941,10 +5093,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4972,6 +5124,7 @@ Numeric
 16
 Name
 5
+35
 csp.lf.geom2.var2.bellows_shadowing
 X
 3
@@ -4999,10 +5152,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5030,6 +5183,7 @@ CheckBox
 8
 Name
 5
+30
 csp.lf.geom2.var2.broken_glass
 X
 3
@@ -5045,6 +5199,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -5058,6 +5213,7 @@ Numeric
 16
 Name
 5
+25
 csp.lf.geom2.var2.env_abs
 X
 3
@@ -5085,10 +5241,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5116,6 +5272,7 @@ Numeric
 16
 Name
 5
+26
 csp.lf.geom2.var2.env_emis
 X
 3
@@ -5143,10 +5300,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5174,6 +5331,7 @@ Numeric
 16
 Name
 5
+27
 csp.lf.geom2.var2.env_trans
 X
 3
@@ -5201,10 +5359,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5232,6 +5390,7 @@ Numeric
 16
 Name
 5
+32
 csp.lf.geom2.var2.field_fraction
 X
 3
@@ -5259,10 +5418,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5290,6 +5449,7 @@ Choice
 8
 Name
 5
+26
 csp.lf.geom2.var2.gas_type
 X
 3
@@ -5321,6 +5481,7 @@ Numeric
 16
 Name
 5
+26
 csp.lf.geom2.var2.hce_dirt
 X
 3
@@ -5348,10 +5509,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5379,6 +5540,7 @@ Numeric
 16
 Name
 5
+33
 csp.lf.geom2.var2.rated_heat_loss
 X
 3
@@ -5406,10 +5568,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5437,6 +5599,7 @@ Numeric
 16
 Name
 5
+25
 csp.lf.geom2.var3.abs_abs
 X
 3
@@ -5464,10 +5627,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5495,6 +5658,7 @@ ValueMatrix
 9
 Name
 5
+26
 csp.lf.geom2.var3.abs_emis
 X
 3
@@ -5516,6 +5680,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3
@@ -5526,6 +5691,7 @@ Numeric
 16
 Name
 5
+34
 csp.lf.geom2.var3.annulus_pressure
 X
 3
@@ -5553,10 +5719,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5584,6 +5750,7 @@ Numeric
 16
 Name
 5
+35
 csp.lf.geom2.var3.bellows_shadowing
 X
 3
@@ -5611,10 +5778,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5642,6 +5809,7 @@ CheckBox
 8
 Name
 5
+30
 csp.lf.geom2.var3.broken_glass
 X
 3
@@ -5657,6 +5825,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -5670,6 +5839,7 @@ Numeric
 16
 Name
 5
+25
 csp.lf.geom2.var3.env_abs
 X
 3
@@ -5697,10 +5867,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5728,6 +5898,7 @@ Numeric
 16
 Name
 5
+26
 csp.lf.geom2.var3.env_emis
 X
 3
@@ -5755,10 +5926,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5786,6 +5957,7 @@ Numeric
 16
 Name
 5
+27
 csp.lf.geom2.var3.env_trans
 X
 3
@@ -5813,10 +5985,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5844,6 +6016,7 @@ Numeric
 16
 Name
 5
+32
 csp.lf.geom2.var3.field_fraction
 X
 3
@@ -5871,10 +6044,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5902,6 +6075,7 @@ Choice
 8
 Name
 5
+26
 csp.lf.geom2.var3.gas_type
 X
 3
@@ -5933,6 +6107,7 @@ Numeric
 16
 Name
 5
+26
 csp.lf.geom2.var3.hce_dirt
 X
 3
@@ -5960,10 +6135,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5991,6 +6166,7 @@ Numeric
 16
 Name
 5
+33
 csp.lf.geom2.var3.rated_heat_loss
 X
 3
@@ -6018,10 +6194,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6049,6 +6225,7 @@ Numeric
 16
 Name
 5
+25
 csp.lf.geom2.var4.abs_abs
 X
 3
@@ -6076,10 +6253,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6107,6 +6284,7 @@ ValueMatrix
 9
 Name
 5
+26
 csp.lf.geom2.var4.abs_emis
 X
 3
@@ -6128,6 +6306,7 @@ NumCols
 2
 ColLabels
 5
+19
 Temp (°C),Emittance
 TabOrder
 3
@@ -6138,6 +6317,7 @@ Numeric
 16
 Name
 5
+34
 csp.lf.geom2.var4.annulus_pressure
 X
 3
@@ -6165,10 +6345,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6196,6 +6376,7 @@ Numeric
 16
 Name
 5
+35
 csp.lf.geom2.var4.bellows_shadowing
 X
 3
@@ -6223,10 +6404,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6254,6 +6435,7 @@ CheckBox
 8
 Name
 5
+30
 csp.lf.geom2.var4.broken_glass
 X
 3
@@ -6269,6 +6451,7 @@ Height
 21
 Caption
 5
+12
 Broken Glass
 State
 2
@@ -6282,6 +6465,7 @@ Numeric
 16
 Name
 5
+25
 csp.lf.geom2.var4.env_abs
 X
 3
@@ -6309,10 +6493,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6340,6 +6524,7 @@ Numeric
 16
 Name
 5
+26
 csp.lf.geom2.var4.env_emis
 X
 3
@@ -6367,10 +6552,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6398,6 +6583,7 @@ Numeric
 16
 Name
 5
+27
 csp.lf.geom2.var4.env_trans
 X
 3
@@ -6425,10 +6611,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6456,6 +6642,7 @@ Numeric
 16
 Name
 5
+32
 csp.lf.geom2.var4.field_fraction
 X
 3
@@ -6483,10 +6670,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6514,6 +6701,7 @@ Choice
 8
 Name
 5
+26
 csp.lf.geom2.var4.gas_type
 X
 3
@@ -6545,6 +6733,7 @@ Numeric
 16
 Name
 5
+26
 csp.lf.geom2.var4.hce_dirt
 X
 3
@@ -6572,10 +6761,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -6603,6 +6792,7 @@ Numeric
 16
 Name
 5
+33
 csp.lf.geom2.var4.rated_heat_loss
 X
 3
@@ -6630,10 +6820,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

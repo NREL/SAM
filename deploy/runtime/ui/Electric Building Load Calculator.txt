@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -23,6 +24,7 @@ Height
 113
 Caption
 5
+17
 Annual Adjustment
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+13
 GroupBoxBELPE
 X
 3
@@ -48,6 +51,7 @@ Height
 470
 Caption
 5
+38
 Building Energy Load Profile Estimator
 Bold
 2
@@ -58,6 +62,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -73,6 +78,7 @@ Height
 91
 Caption
 5
+187
 In Value mode, the growth rate applies to the previous year's annual kWh load starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 kWh value. See Help for details.
 TextColour
 4
@@ -101,6 +107,7 @@ SchedNumeric
 11
 Name
 5
+12
 Occ_Schedule
 X
 3
@@ -116,6 +123,7 @@ Height
 24
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -128,6 +136,7 @@ FixedLength
 24
 Description
 5
+41
 Type a fraction for each hour of the day.
 TabOrder
 3
@@ -138,6 +147,7 @@ Numeric
 16
 Name
 5
+9
 Occupants
 X
 3
@@ -165,10 +175,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -196,6 +206,7 @@ CheckBox
 8
 Name
 5
+9
 Retrofits
 X
 3
@@ -211,7 +222,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 1
@@ -224,6 +235,7 @@ Numeric
 16
 Name
 5
+7
 Stories
 X
 3
@@ -251,10 +263,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -281,6 +293,7 @@ Numeric
 1
 16
 Name
+5
 5
 TCool
 X
@@ -309,10 +322,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -340,6 +353,7 @@ Numeric
 16
 Name
 5
+7
 TCoolSB
 X
 3
@@ -367,10 +381,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -397,6 +411,7 @@ Numeric
 1
 16
 Name
+5
 5
 THeat
 X
@@ -425,10 +440,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -456,6 +471,7 @@ Numeric
 16
 Name
 5
+7
 THeatSB
 X
 3
@@ -483,10 +499,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -514,6 +530,7 @@ SchedNumeric
 11
 Name
 5
+7
 T_Sched
 X
 3
@@ -529,6 +546,7 @@ Height
 24
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -541,6 +559,7 @@ FixedLength
 24
 Description
 5
+55
 Type a one (on) or zero (off) for each hour of the day.
 TabOrder
 3
@@ -551,6 +570,7 @@ Numeric
 16
 Name
 5
+7
 YrBuilt
 X
 3
@@ -578,10 +598,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -609,6 +629,7 @@ Button
 7
 Name
 5
+11
 btnViewLoad
 X
 3
@@ -624,6 +645,7 @@ Height
 24
 Caption
 5
+17
 View load data...
 TabOrder
 3
@@ -634,6 +656,7 @@ Divider
 9
 Name
 5
+21
 divider_building_char
 X
 3
@@ -658,6 +681,7 @@ Colour
 255
 Caption
 5
+24
 Building Characteristics
 Bold
 2
@@ -668,6 +692,7 @@ Divider
 9
 Name
 5
+23
 divider_elec_appliances
 X
 3
@@ -692,6 +717,7 @@ Colour
 255
 Caption
 5
+19
 Electric Appliances
 Bold
 2
@@ -702,6 +728,7 @@ Divider
 9
 Name
 5
+20
 divider_monthly_load
 X
 3
@@ -726,6 +753,7 @@ Colour
 255
 Caption
 5
+17
 Monthly Load Data
 Bold
 2
@@ -736,6 +764,7 @@ Divider
 9
 Name
 5
+22
 divider_temp_setpoints
 X
 3
@@ -760,6 +789,7 @@ Colour
 255
 Caption
 5
+20
 Temperature Settings
 Bold
 2
@@ -770,6 +800,7 @@ CheckBox
 8
 Name
 5
+7
 en_cool
 X
 3
@@ -785,6 +816,7 @@ Height
 24
 Caption
 5
+14
 Cooling system
 State
 2
@@ -798,6 +830,7 @@ CheckBox
 8
 Name
 5
+7
 en_dish
 X
 3
@@ -813,6 +846,7 @@ Height
 24
 Caption
 5
+10
 Dishwasher
 State
 2
@@ -826,6 +860,7 @@ CheckBox
 8
 Name
 5
+6
 en_dry
 X
 3
@@ -841,6 +876,7 @@ Height
 24
 Caption
 5
+5
 Dryer
 State
 2
@@ -854,6 +890,7 @@ CheckBox
 8
 Name
 5
+9
 en_fridge
 X
 3
@@ -869,6 +906,7 @@ Height
 24
 Caption
 5
+12
 Refrigerator
 State
 2
@@ -882,6 +920,7 @@ CheckBox
 8
 Name
 5
+7
 en_heat
 X
 3
@@ -897,6 +936,7 @@ Height
 24
 Caption
 5
+14
 Heating system
 State
 2
@@ -910,6 +950,7 @@ CheckBox
 8
 Name
 5
+7
 en_mels
 X
 3
@@ -925,6 +966,7 @@ Height
 24
 Caption
 5
+20
 Misc. electric loads
 State
 2
@@ -938,6 +980,7 @@ CheckBox
 8
 Name
 5
+8
 en_range
 X
 3
@@ -953,6 +996,7 @@ Height
 24
 Caption
 5
+13
 Range (stove)
 State
 2
@@ -966,6 +1010,7 @@ CheckBox
 8
 Name
 5
+7
 en_wash
 X
 3
@@ -981,6 +1026,7 @@ Height
 24
 Caption
 5
+15
 Washing machine
 State
 2
@@ -994,6 +1040,7 @@ SchedNumeric
 11
 Name
 5
+17
 escal_input_belpe
 X
 3
@@ -1009,6 +1056,7 @@ Height
 21
 Label
 5
+5
 Value
 UseSchedule
 2
@@ -1021,6 +1069,7 @@ FixedLength
 4294967295
 Description
 5
+110
 Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
 TabOrder
 3
@@ -1031,6 +1080,7 @@ Numeric
 16
 Name
 5
+10
 floor_area
 X
 3
@@ -1058,10 +1108,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1089,6 +1139,7 @@ Numeric
 16
 Name
 5
+6
 load_1
 X
 3
@@ -1116,10 +1167,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1147,6 +1198,7 @@ Numeric
 16
 Name
 5
+7
 load_10
 X
 3
@@ -1174,10 +1226,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1205,6 +1257,7 @@ Numeric
 16
 Name
 5
+7
 load_11
 X
 3
@@ -1232,10 +1285,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1263,6 +1316,7 @@ Numeric
 16
 Name
 5
+7
 load_12
 X
 3
@@ -1290,10 +1344,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1321,6 +1375,7 @@ Numeric
 16
 Name
 5
+6
 load_2
 X
 3
@@ -1348,10 +1403,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1379,6 +1434,7 @@ Numeric
 16
 Name
 5
+6
 load_3
 X
 3
@@ -1406,10 +1462,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1437,6 +1493,7 @@ Numeric
 16
 Name
 5
+6
 load_4
 X
 3
@@ -1464,10 +1521,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1495,6 +1552,7 @@ Numeric
 16
 Name
 5
+6
 load_5
 X
 3
@@ -1522,10 +1580,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1553,6 +1611,7 @@ Numeric
 16
 Name
 5
+6
 load_6
 X
 3
@@ -1580,10 +1639,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1611,6 +1670,7 @@ Numeric
 16
 Name
 5
+6
 load_7
 X
 3
@@ -1638,10 +1698,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1669,6 +1729,7 @@ Numeric
 16
 Name
 5
+6
 load_8
 X
 3
@@ -1696,10 +1757,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1727,6 +1788,7 @@ Numeric
 16
 Name
 5
+6
 load_9
 X
 3
@@ -1754,10 +1816,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1785,6 +1847,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1800,6 +1863,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -1828,6 +1892,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1843,6 +1908,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -1871,6 +1937,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1886,6 +1953,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -1914,6 +1982,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1929,6 +1998,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -1957,6 +2027,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1972,6 +2043,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2000,6 +2072,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2015,6 +2088,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2043,6 +2117,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2058,6 +2133,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2086,6 +2162,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2101,6 +2178,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2129,6 +2207,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2144,6 +2223,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2172,6 +2252,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2187,6 +2268,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2215,6 +2297,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2230,6 +2313,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2258,6 +2342,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2273,6 +2358,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2301,6 +2387,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2316,6 +2403,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2344,6 +2432,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2359,6 +2448,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2387,6 +2477,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2402,6 +2493,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2430,6 +2522,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2445,6 +2538,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2473,6 +2567,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2488,6 +2583,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2516,6 +2612,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2531,6 +2628,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2559,6 +2657,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2574,6 +2673,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2602,6 +2702,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2617,6 +2718,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2645,6 +2747,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2660,6 +2763,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2688,6 +2792,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2703,6 +2808,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2731,6 +2837,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2746,6 +2853,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4
@@ -2774,6 +2882,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -2789,6 +2898,7 @@ Height
 24
 Caption
 5
+3
 Jul
 TextColour
 4

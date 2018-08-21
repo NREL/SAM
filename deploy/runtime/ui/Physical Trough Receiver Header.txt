@@ -8,6 +8,7 @@ Label
 12
 Name
 5
+9
 lblHeader
 X
 3
@@ -23,6 +24,7 @@ Height
 24
 Caption
 5
+15
 Receiver Type 1
 TextColour
 4
@@ -51,6 +53,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -66,6 +69,7 @@ Height
 213
 Caption
 5
+16
 Receiver Library
 Bold
 2
@@ -76,6 +80,7 @@ Library
 7
 Name
 5
+16
 receiver_library
 X
 3
@@ -91,9 +96,11 @@ Height
 144
 Library
 5
+25
 Physical Trough Receivers
 Fields
 5
+1190
 Name,Absorber tube inner diameter,Absorber tube outer diameter,Glass envelope inner diameter,Glass envelope outer diameter,Absorber flow plug diameter,Inner surface roughness,Absorber flow pattern (0=tube 1=annular),Absorber material type (0=304L 1=216L 2=321H 3=B42 Copper),Var 1 Absorber absorptance,Var 1 Absorber emittance,Var 1 Envelope absorptance,Var 1 Envelope emittance,Var 1 Envelope transmittance,Var 1 Is broken glass,Var 1 Annuslus gas type (0=air 1=argon 2=hydrogen),Var 1 Annulus pressure,Var 1 Estimated avg heat loss,Var 1 Bellows shadowing,Var 1 Dirt on receiver,Var 2 Absorber absorptance,Var 2 Absorber emittance,Var 2 Envelope absorptance,Var 2 Envelope emittance,Var 2 Envelope transmittance,Var 2 Is broken glass,Var 2 Annulus gas type (0=air 1=argon 2=hydrogen),Var 2 Annulus pressure,Var 2 Estimated avg heat loss,Var 2 Bellows shadowing,Var 2 Dirt on receiver,Var 3 Absorber absorptance,Var 3 Absorber emittance,Var 3 Envelope absorptance,Var 3 Envelope emittance,Var 3 Envelope transmittance,Var 3 Is broken glass,Var 3 Annulus gas type (0=air 1=argon 2=hydrogen),Var 3 Annulus pressure,Var 3 Estimated avg heat loss,Var 3 Bellows shadowing,Var 3 Dirt on receiver
 TextEntry
 
@@ -101,6 +108,7 @@ TextEntry
 10
 Name
 5
+18
 receivers_in_field
 X
 3
@@ -116,7 +124,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 1

@@ -8,6 +8,7 @@ TextEntry
 10
 Name
 5
+11
 Module name
 X
 3
@@ -23,6 +24,7 @@ Height
 24
 Text
 5
+29
 SMA MegaSuperPro 100000000 MW
 Editable
 2
@@ -48,6 +50,7 @@ Label
 12
 Name
 5
+3
 Vac
 X
 3
@@ -63,6 +66,7 @@ Height
 24
 Caption
 5
+3
 Vac
 TextColour
 4
@@ -91,6 +95,7 @@ Button
 7
 Name
 5
+8
 object 1
 X
 3
@@ -106,6 +111,7 @@ Height
 24
 Caption
 5
+11
 Database...
 TabOrder
 3
@@ -116,6 +122,7 @@ Button
 7
 Name
 5
+8
 object 1
 X
 3
@@ -131,6 +138,7 @@ Height
 24
 Caption
 5
+11
 Database...
 TabOrder
 3
@@ -141,6 +149,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -168,10 +177,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -199,6 +208,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -226,10 +236,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -257,6 +267,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -284,10 +295,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -315,6 +326,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -342,10 +354,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -373,6 +385,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -400,10 +413,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -431,6 +444,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -458,10 +472,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -489,6 +503,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -516,10 +531,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -547,6 +562,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -574,10 +590,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -605,6 +621,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -632,10 +649,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -663,6 +680,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -690,10 +708,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -721,6 +739,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -748,10 +767,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -779,6 +798,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -806,10 +826,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -837,6 +857,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -864,10 +885,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -895,6 +916,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -922,10 +944,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -953,6 +975,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -980,10 +1003,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1011,6 +1034,7 @@ Plot
 5
 Name
 5
+9
 object 22
 X
 3
@@ -1030,6 +1054,7 @@ DataMatrix
 22
 Name
 5
+9
 object 25
 X
 3
@@ -1057,7 +1082,7 @@ ShowRowLabels
 0
 RowLabels
 5
- 
+0
 ShadeR0C0
 2
 0
@@ -1072,11 +1097,14 @@ ShowColLabels
 1
 ColLabels
 5
+15
 Load,Efficiency
 NumRowsLabel
 5
+5
 Rows:
 NumColsLabel
+5
 5
 Cols:
 Layout
@@ -1087,6 +1115,7 @@ ChoiceColumn
 4294967295
 Choices
 5
+15
 Choice1,Choice2
 HideColumn
 3
@@ -1100,6 +1129,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1115,6 +1145,7 @@ Height
 213
 Caption
 5
+23
 Inverter Specifications
 Bold
 2
@@ -1125,6 +1156,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1140,6 +1172,7 @@ Height
 213
 Caption
 5
+23
 Inverter Specifications
 Bold
 2
@@ -1150,6 +1183,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1165,6 +1199,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1193,6 +1228,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1208,6 +1244,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1236,6 +1273,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1251,6 +1289,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1279,6 +1318,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1294,6 +1334,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1322,6 +1363,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1337,6 +1379,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1365,6 +1408,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1380,6 +1424,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1408,6 +1453,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1423,6 +1469,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1451,6 +1498,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1466,6 +1514,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1494,6 +1543,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1509,6 +1559,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1537,6 +1588,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1552,6 +1604,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1580,6 +1633,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1595,6 +1649,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1623,6 +1678,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1638,6 +1694,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1666,6 +1723,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1681,6 +1739,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1709,6 +1768,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1724,6 +1784,7 @@ Height
 24
 Caption
 5
+9
 MPPT high
 TextColour
 4
@@ -1752,6 +1813,7 @@ RadioChoice
 10
 Name
 5
+8
 object 8
 X
 3

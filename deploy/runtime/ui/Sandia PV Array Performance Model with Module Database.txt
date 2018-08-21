@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 182
 Caption
 5
+10
 References
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox6
 X
 3
@@ -48,6 +51,7 @@ Height
 164
 Caption
 5
+24
 Physical Characteristics
 Bold
 2
@@ -58,6 +62,7 @@ Hyperlink
 8
 Name
 5
+11
 Hyperlink11
 X
 3
@@ -73,9 +78,11 @@ Height
 24
 Caption
 5
+51
 Performance Model Documentation page on SAM website
 URL
 5
+32
 https://sam.nrel.gov/performance
 TabOrder
 3
@@ -86,6 +93,7 @@ Hyperlink
 8
 Name
 5
+11
 Hyperlink11
 X
 3
@@ -101,9 +109,11 @@ Height
 24
 Caption
 5
+51
 Performance Model Documentation page on SAM website
 URL
 5
+32
 https://sam.nrel.gov/performance
 TabOrder
 3
@@ -114,6 +124,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -129,6 +140,7 @@ Height
 21
 Caption
 5
+24
 Temperature Coefficients
 TextColour
 4
@@ -157,6 +169,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -172,6 +185,7 @@ Height
 87
 Caption
 5
+197
 For more information about the Sandia module  model inputs, see Help. For a detailed description of the model, see Gilman (2015) and King (2004) on the SAM website's Performance Documentation page:
 TextColour
 4
@@ -200,6 +214,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -215,6 +230,7 @@ Height
 87
 Caption
 5
+197
 For more information about the Sandia module  model inputs, see Help. For a detailed description of the model, see Gilman (2015) and King (2004) on the SAM website's Performance Documentation page:
 TextColour
 4
@@ -243,6 +259,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -258,6 +275,7 @@ Height
 21
 Caption
 5
+21
 Reference conditions:
 TextColour
 4
@@ -286,6 +304,7 @@ Label
 12
 Name
 5
+7
 Label32
 X
 3
@@ -301,6 +320,7 @@ Height
 69
 Caption
 5
+183
 The Module Structure and Mounting options are used for temperature correction calculations. Choose "Use Database Values" for most analyses. See Help for information about the options.
 TextColour
 4
@@ -329,6 +349,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -344,6 +365,7 @@ Height
 21
 Caption
 5
+15
 User-specified:
 TextColour
 4
@@ -372,6 +394,7 @@ Label
 12
 Name
 5
+6
 Label6
 X
 3
@@ -387,6 +410,7 @@ Height
 21
 Caption
 5
+13
 From library:
 TextColour
 4
@@ -415,6 +439,7 @@ GroupBox
 7
 Name
 5
+22
 Module Characteristics
 X
 3
@@ -430,6 +455,7 @@ Height
 353
 Caption
 5
+46
 Module Characteristics at Reference Conditions
 Bold
 2
@@ -440,6 +466,7 @@ Numeric
 16
 Name
 5
+8
 snl_area
 X
 3
@@ -467,10 +494,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -498,6 +525,7 @@ Numeric
 16
 Name
 5
+14
 snl_imp_temp_1
 X
 3
@@ -525,10 +553,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -556,6 +584,7 @@ TextEntry
 10
 Name
 5
+12
 snl_material
 X
 3
@@ -571,6 +600,7 @@ Height
 21
 Text
 5
+8
 material
 Editable
 2
@@ -596,6 +626,7 @@ Library
 7
 Name
 5
+15
 snl_module_name
 X
 3
@@ -611,9 +642,11 @@ Height
 315
 Library
 5
+14
 Sandia Modules
 Fields
 5
+53
 Name,Impo,Vmpo,Area,#Series,Isco,Voco,a,b,dT,Material
 Choice
 
@@ -621,6 +654,7 @@ Choice
 8
 Name
 5
+20
 snl_module_structure
 X
 3
@@ -656,6 +690,7 @@ Numeric
 16
 Name
 5
+11
 snl_n_cells
 X
 3
@@ -683,10 +718,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -714,6 +749,7 @@ Numeric
 16
 Name
 5
+18
 snl_parallel_cells
 X
 3
@@ -741,10 +777,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -772,6 +808,7 @@ Numeric
 16
 Name
 5
+9
 snl_ref_a
 X
 3
@@ -799,10 +836,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -830,6 +867,7 @@ Numeric
 16
 Name
 5
+9
 snl_ref_b
 X
 3
@@ -857,10 +895,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -888,6 +926,7 @@ TextEntry
 10
 Name
 5
+18
 snl_ref_conditions
 X
 3
@@ -903,6 +942,7 @@ Height
 21
 Text
 5
+63
 Total Irradiance = 1000 W/m², Air mass = 1.5, Cell temp = 25 °C
 Editable
 2
@@ -928,6 +968,7 @@ Numeric
 16
 Name
 5
+10
 snl_ref_dT
 X
 3
@@ -955,10 +996,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -986,6 +1027,7 @@ Numeric
 16
 Name
 5
+11
 snl_ref_eff
 X
 3
@@ -1013,10 +1055,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1044,6 +1086,7 @@ Numeric
 16
 Name
 5
+11
 snl_ref_imp
 X
 3
@@ -1071,10 +1114,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1102,6 +1145,7 @@ Numeric
 16
 Name
 5
+18
 snl_ref_imp_temp_0
 X
 3
@@ -1129,10 +1173,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1160,6 +1204,7 @@ Numeric
 16
 Name
 5
+11
 snl_ref_isc
 X
 3
@@ -1187,10 +1232,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1218,6 +1263,7 @@ Numeric
 16
 Name
 5
+18
 snl_ref_isc_temp_0
 X
 3
@@ -1245,10 +1291,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1276,6 +1322,7 @@ Numeric
 16
 Name
 5
+18
 snl_ref_isc_temp_1
 X
 3
@@ -1303,10 +1350,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1334,6 +1381,7 @@ Numeric
 16
 Name
 5
+11
 snl_ref_pmp
 X
 3
@@ -1361,10 +1409,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1392,6 +1440,7 @@ Numeric
 16
 Name
 5
+18
 snl_ref_pmp_temp_0
 X
 3
@@ -1419,10 +1468,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1450,6 +1499,7 @@ Numeric
 16
 Name
 5
+18
 snl_ref_pmp_temp_1
 X
 3
@@ -1477,10 +1527,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1508,6 +1558,7 @@ Numeric
 16
 Name
 5
+11
 snl_ref_vmp
 X
 3
@@ -1535,10 +1586,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1566,6 +1617,7 @@ Numeric
 16
 Name
 5
+18
 snl_ref_vmp_temp_0
 X
 3
@@ -1593,10 +1645,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1624,6 +1676,7 @@ Numeric
 16
 Name
 5
+18
 snl_ref_vmp_temp_1
 X
 3
@@ -1651,10 +1704,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1682,6 +1735,7 @@ Numeric
 16
 Name
 5
+11
 snl_ref_voc
 X
 3
@@ -1709,10 +1763,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1740,6 +1794,7 @@ Numeric
 16
 Name
 5
+18
 snl_ref_voc_temp_0
 X
 3
@@ -1767,10 +1822,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1798,6 +1853,7 @@ TextEntry
 10
 Name
 5
+16
 snl_sandia_notes
 X
 3
@@ -1812,6 +1868,7 @@ Height
 3
 21
 Text
+5
 5
 notes
 Editable
@@ -1838,6 +1895,7 @@ TextEntry
 10
 Name
 5
+18
 snl_sandia_vintage
 X
 3
@@ -1853,6 +1911,7 @@ Height
 21
 Text
 5
+7
 vintage
 Editable
 2
@@ -1878,6 +1937,7 @@ Numeric
 16
 Name
 5
+16
 snl_series_cells
 X
 3
@@ -1905,10 +1965,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1936,6 +1996,7 @@ Numeric
 16
 Name
 5
+15
 snl_specified_a
 X
 3
@@ -1963,10 +2024,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1994,6 +2055,7 @@ Numeric
 16
 Name
 5
+15
 snl_specified_b
 X
 3
@@ -2021,10 +2083,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2052,6 +2114,7 @@ Numeric
 16
 Name
 5
+16
 snl_specified_dT
 X
 3
@@ -2079,10 +2142,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2110,6 +2173,7 @@ Numeric
 16
 Name
 5
+14
 snl_voc_temp_1
 X
 3
@@ -2137,10 +2201,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

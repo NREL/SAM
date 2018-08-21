@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox7
 X
 3
@@ -23,6 +24,7 @@ Height
 80
 Caption
 5
+10
 Land Usage
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+8
 Label214
 X
 3
@@ -48,6 +51,7 @@ Height
 60
 Caption
 5
+169
 SAM uses the total land area only when you specify a $/acre cost on the System Costs page: Total land area = total module area ÷ GCR × 0.0002471 (1 m² = 0.0002471 acre).
 TextColour
 4
@@ -76,6 +80,7 @@ CheckBox
 8
 Name
 5
+13
 en_3d_shading
 X
 3
@@ -91,6 +96,7 @@ Height
 24
 Caption
 5
+53
 Use 3D scene to estimate shade loss for fixed systems
 State
 2
@@ -104,6 +110,7 @@ CheckBox
 8
 Name
 5
+13
 en_snow_model
 X
 3
@@ -119,6 +126,7 @@ Height
 24
 Caption
 5
+63
 Estimate losses due to snow coverage (applies to all subarrays)
 State
 2
@@ -132,6 +140,7 @@ Choice
 8
 Name
 5
+13
 loss_model_3d
 X
 3
@@ -162,6 +171,7 @@ Label
 12
 Name
 5
+25
 loss_model_3d_description
 X
 3
@@ -177,6 +187,7 @@ Height
 66
 Caption
 5
+157
 The losses calculated by the model will be automatically applied when the model is simulated in addition to other shading losses specified for each DC array.
 TextColour
 4
@@ -205,6 +216,7 @@ Label
 12
 Name
 5
+9
 object 10
 X
 3
@@ -220,6 +232,7 @@ Height
 39
 Caption
 5
+136
 Snow losses are caused by snow covering the array. When your weather file includes snow depth data, SAM can estimate losses due to snow.
 TextColour
 4
@@ -248,6 +261,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -272,6 +286,7 @@ Colour
 255
 Caption
 5
+12
 Obstructions
 Bold
 2
@@ -282,6 +297,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -297,6 +313,7 @@ Height
 81
 Caption
 5
+11
 Snow Losses
 Bold
 2
@@ -307,6 +324,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -322,6 +340,7 @@ Height
 81
 Caption
 5
+11
 Snow Losses
 Bold
 2
@@ -332,6 +351,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -347,6 +367,7 @@ Height
 42
 Caption
 5
+77
 Soiling losses apply to the total solar irradiance incident on the PV modules
 TextColour
 4
@@ -375,6 +396,7 @@ Scene3D
 5
 Name
 5
+14
 shade_scene_3d
 X
 3
@@ -394,6 +416,7 @@ MonthlyFactor
 7
 Name
 5
+7
 soiling
 X
 3
@@ -409,6 +432,7 @@ Height
 27
 Description
 5
+34
 Soiling losses for sub-array 1 (%)
 TabOrder
 3
@@ -419,6 +443,7 @@ Numeric
 16
 Name
 5
+22
 soiling_annual_average
 X
 3
@@ -446,10 +471,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -477,6 +502,7 @@ Numeric
 16
 Name
 5
+10
 total_area
 X
 3
@@ -504,10 +530,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -535,6 +561,7 @@ Numeric
 16
 Name
 5
+15
 total_land_area
 X
 3
@@ -562,10 +589,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -593,6 +620,7 @@ Label
 12
 Name
 5
+11
 ui_msg_snow
 X
 3
@@ -608,7 +636,7 @@ Height
 24
 Caption
 5
- 
+0
 TextColour
 4
 255

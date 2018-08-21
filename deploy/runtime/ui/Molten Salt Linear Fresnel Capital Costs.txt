@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 254
 Caption
 5
+20
 Direct Capital Costs
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox21
 X
 3
@@ -48,6 +51,7 @@ Height
 209
 Caption
 5
+22
 Indirect Capital Costs
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox31
 X
 3
@@ -73,6 +78,7 @@ Height
 89
 Caption
 5
+21
 Total Installed Costs
 Bold
 2
@@ -83,6 +89,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -98,6 +105,7 @@ Height
 21
 Caption
 5
+16
 % of direct cost
 TextColour
 4
@@ -126,6 +134,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -141,6 +150,7 @@ Height
 21
 Caption
 5
+14
 of Direct Cost
 TextColour
 4
@@ -169,6 +179,7 @@ Label
 12
 Name
 5
+8
 Label112
 X
 3
@@ -184,6 +195,7 @@ Height
 21
 Caption
 5
+18
 EPC and owner cost
 TextColour
 4
@@ -212,6 +224,7 @@ Label
 12
 Name
 5
+9
 Label1121
 X
 3
@@ -227,6 +240,7 @@ Height
 21
 Caption
 5
+15
 Total land cost
 TextColour
 4
@@ -255,6 +269,7 @@ Label
 12
 Name
 5
+7
 Label21
 X
 3
@@ -270,6 +285,7 @@ Height
 21
 Caption
 5
+12
 Cost per Wac
 TextColour
 4
@@ -298,6 +314,7 @@ Label
 12
 Name
 5
+8
 Label211
 X
 3
@@ -313,6 +330,7 @@ Height
 21
 Caption
 5
+13
 Cost per acre
 TextColour
 4
@@ -341,6 +359,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -356,6 +375,7 @@ Height
 21
 Caption
 5
+10
 Fixed cost
 TextColour
 4
@@ -384,6 +404,7 @@ Label
 12
 Name
 5
+7
 Label41
 X
 3
@@ -398,6 +419,7 @@ Height
 3
 21
 Caption
+5
 5
 Total
 TextColour
@@ -427,6 +449,7 @@ Label
 12
 Name
 5
+7
 Label51
 X
 3
@@ -442,6 +465,7 @@ Height
 21
 Caption
 5
+10
 applies to
 TextColour
 4
@@ -470,6 +494,7 @@ Numeric
 16
 Name
 5
+17
 csp.mslf.cost.bop
 X
 3
@@ -497,10 +522,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -528,6 +554,7 @@ Numeric
 16
 Name
 5
+21
 csp.mslf.cost.bop_mwe
 X
 3
@@ -555,10 +582,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -586,6 +613,7 @@ Numeric
 16
 Name
 5
+25
 csp.mslf.cost.bop_per_kwe
 X
 3
@@ -613,9 +641,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+6
  $/kWe
 ThousandsSep
 2
@@ -644,6 +673,7 @@ Numeric
 16
 Name
 5
+25
 csp.mslf.cost.contingency
 X
 3
@@ -671,10 +701,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -702,6 +733,7 @@ Numeric
 16
 Name
 5
+33
 csp.mslf.cost.contingency_percent
 X
 3
@@ -729,9 +761,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -760,6 +793,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.cost.epc.fixed
 X
 3
@@ -787,10 +821,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -818,6 +853,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.cost.epc.per_acre
 X
 3
@@ -845,10 +881,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -876,6 +913,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.cost.epc.per_watt
 X
 3
@@ -903,10 +941,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -934,6 +973,7 @@ Numeric
 16
 Name
 5
+25
 csp.mslf.cost.epc.percent
 X
 3
@@ -961,9 +1001,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -992,6 +1033,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.cost.epc.total
 X
 3
@@ -1019,10 +1061,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1050,6 +1093,7 @@ Numeric
 16
 Name
 5
+27
 csp.mslf.cost.fossil_backup
 X
 3
@@ -1077,10 +1121,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1108,6 +1153,7 @@ Numeric
 16
 Name
 5
+40
 csp.mslf.cost.fossil_backup.cost_per_kwe
 X
 3
@@ -1135,9 +1181,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+6
  $/kWe
 ThousandsSep
 2
@@ -1166,6 +1213,7 @@ Numeric
 16
 Name
 5
+31
 csp.mslf.cost.fossil_backup.mwe
 X
 3
@@ -1193,10 +1241,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1224,6 +1272,7 @@ Numeric
 16
 Name
 5
+24
 csp.mslf.cost.htf_system
 X
 3
@@ -1251,10 +1300,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1282,6 +1332,7 @@ Numeric
 16
 Name
 5
+29
 csp.mslf.cost.htf_system.area
 X
 3
@@ -1309,10 +1360,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1340,6 +1391,7 @@ Numeric
 16
 Name
 5
+36
 csp.mslf.cost.htf_system.cost_per_m2
 X
 3
@@ -1367,8 +1419,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/m2
 ThousandsSep
@@ -1398,6 +1451,7 @@ Numeric
 16
 Name
 5
+36
 csp.mslf.cost.installed_per_capacity
 X
 3
@@ -1425,10 +1479,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1456,6 +1511,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.cost.nameplate
 X
 3
@@ -1483,10 +1539,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1514,6 +1570,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.cost.plm.fixed
 X
 3
@@ -1541,10 +1598,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1572,6 +1630,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.cost.plm.per_acre
 X
 3
@@ -1599,10 +1658,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1630,6 +1690,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.cost.plm.per_watt
 X
 3
@@ -1657,10 +1718,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1688,6 +1750,7 @@ Numeric
 16
 Name
 5
+25
 csp.mslf.cost.plm.percent
 X
 3
@@ -1715,9 +1778,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1746,6 +1810,7 @@ Numeric
 16
 Name
 5
+23
 csp.mslf.cost.plm.total
 X
 3
@@ -1773,10 +1838,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1804,6 +1870,7 @@ Numeric
 16
 Name
 5
+25
 csp.mslf.cost.power_plant
 X
 3
@@ -1831,10 +1898,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1862,6 +1930,7 @@ Numeric
 16
 Name
 5
+38
 csp.mslf.cost.power_plant.cost_per_kwe
 X
 3
@@ -1889,9 +1958,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+6
  $/kWe
 ThousandsSep
 2
@@ -1920,6 +1990,7 @@ Numeric
 16
 Name
 5
+29
 csp.mslf.cost.power_plant.mwe
 X
 3
@@ -1947,10 +2018,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1978,6 +2049,7 @@ Numeric
 16
 Name
 5
+31
 csp.mslf.cost.sales_tax.percent
 X
 3
@@ -2005,9 +2077,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2036,6 +2109,7 @@ Numeric
 16
 Name
 5
+29
 csp.mslf.cost.sales_tax.total
 X
 3
@@ -2063,10 +2137,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2094,6 +2169,7 @@ Numeric
 16
 Name
 5
+29
 csp.mslf.cost.sales_tax.value
 X
 3
@@ -2121,9 +2197,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2152,6 +2229,7 @@ Numeric
 16
 Name
 5
+31
 csp.mslf.cost.site_improvements
 X
 3
@@ -2179,10 +2257,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2210,6 +2289,7 @@ Numeric
 16
 Name
 5
+36
 csp.mslf.cost.site_improvements.area
 X
 3
@@ -2237,10 +2317,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2268,6 +2348,7 @@ Numeric
 16
 Name
 5
+43
 csp.mslf.cost.site_improvements.cost_per_m2
 X
 3
@@ -2295,8 +2376,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/m2
 ThousandsSep
@@ -2326,6 +2408,7 @@ Numeric
 16
 Name
 5
+25
 csp.mslf.cost.solar_field
 X
 3
@@ -2353,10 +2436,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2384,6 +2468,7 @@ Numeric
 16
 Name
 5
+30
 csp.mslf.cost.solar_field.area
 X
 3
@@ -2411,10 +2496,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2442,6 +2527,7 @@ Numeric
 16
 Name
 5
+37
 csp.mslf.cost.solar_field.cost_per_m2
 X
 3
@@ -2469,8 +2555,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/m2
 ThousandsSep
@@ -2500,6 +2587,7 @@ Numeric
 16
 Name
 5
+26
 csp.mslf.cost.total_direct
 X
 3
@@ -2527,10 +2615,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2558,6 +2647,7 @@ Numeric
 16
 Name
 5
+28
 csp.mslf.cost.total_indirect
 X
 3
@@ -2585,10 +2675,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2616,6 +2707,7 @@ Numeric
 16
 Name
 5
+29
 csp.mslf.cost.total_installed
 X
 3
@@ -2643,10 +2735,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2674,6 +2767,7 @@ Numeric
 16
 Name
 5
+29
 csp.mslf.cost.total_land_area
 X
 3
@@ -2701,10 +2795,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2732,6 +2826,7 @@ Numeric
 16
 Name
 5
+16
 csp.mslf.cost.ts
 X
 3
@@ -2759,10 +2854,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2790,6 +2886,7 @@ Numeric
 16
 Name
 5
+21
 csp.mslf.cost.ts_mwht
 X
 3
@@ -2817,10 +2914,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2848,6 +2945,7 @@ Numeric
 16
 Name
 5
+25
 csp.mslf.cost.ts_per_kwht
 X
 3
@@ -2875,9 +2973,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+7
  $/kWht
 ThousandsSep
 2
@@ -2906,6 +3005,7 @@ Label
 12
 Name
 5
+16
 lblFinancingCost
 X
 3
@@ -2921,6 +3021,7 @@ Height
 63
 Caption
 5
+91
 Total installed cost excludes any financing costs from the Financial Parameters input page.
 TextColour
 4

@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -23,6 +24,7 @@ Height
 66
 Caption
 5
+16
 Save / Load Data
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -48,6 +51,7 @@ Height
 332
 Caption
 5
+46
 Results - Efficiency Curve and Characteristics
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -73,6 +78,7 @@ Height
 332
 Caption
 5
+46
 Results - Efficiency Curve and Characteristics
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -98,6 +105,7 @@ Height
 332
 Caption
 5
+46
 Results - Efficiency Curve and Characteristics
 Bold
 2
@@ -108,6 +116,7 @@ Button
 7
 Name
 5
+19
 btnCalcCoefficients
 X
 3
@@ -123,6 +132,7 @@ Height
 24
 Caption
 5
+22
 Calculate Coefficients
 TabOrder
 3
@@ -133,6 +143,7 @@ Button
 7
 Name
 5
+17
 btnLoadCECInvData
 X
 3
@@ -148,6 +159,7 @@ Height
 24
 Caption
 5
+22
 Load data from file...
 TabOrder
 3
@@ -158,6 +170,7 @@ Button
 7
 Name
 5
+17
 btnSaveCECInvData
 X
 3
@@ -173,6 +186,7 @@ Height
 24
 Caption
 5
+20
 Save data to file...
 TabOrder
 3
@@ -183,6 +197,7 @@ Numeric
 16
 Name
 5
+13
 inv_cec_cg_c0
 X
 3
@@ -210,10 +225,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -241,6 +256,7 @@ Numeric
 16
 Name
 5
+13
 inv_cec_cg_c1
 X
 3
@@ -268,10 +284,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -299,6 +315,7 @@ Numeric
 16
 Name
 5
+13
 inv_cec_cg_c2
 X
 3
@@ -326,10 +343,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -357,6 +374,7 @@ Numeric
 16
 Name
 5
+13
 inv_cec_cg_c3
 X
 3
@@ -384,10 +402,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -415,6 +433,7 @@ Numeric
 16
 Name
 5
+18
 inv_cec_cg_eff_cec
 X
 3
@@ -442,10 +461,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -473,6 +492,7 @@ Plot
 5
 Name
 5
+20
 inv_cec_cg_eff_curve
 X
 3
@@ -492,6 +512,7 @@ Numeric
 16
 Name
 5
+19
 inv_cec_cg_eff_euro
 X
 3
@@ -519,10 +540,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -550,6 +571,7 @@ TextEntry
 10
 Name
 5
+19
 inv_cec_cg_filename
 X
 3
@@ -565,7 +587,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 0
@@ -590,6 +612,7 @@ Numeric
 16
 Name
 5
+17
 inv_cec_cg_idcmax
 X
 3
@@ -617,10 +640,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -648,6 +671,7 @@ Numeric
 16
 Name
 5
+18
 inv_cec_cg_mppt_hi
 X
 3
@@ -675,10 +699,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -706,6 +730,7 @@ Numeric
 16
 Name
 5
+19
 inv_cec_cg_mppt_low
 X
 3
@@ -733,10 +758,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -764,6 +789,7 @@ Choice
 8
 Name
 5
+22
 inv_cec_cg_num_samples
 X
 3
@@ -802,6 +828,7 @@ Numeric
 16
 Name
 5
+15
 inv_cec_cg_paco
 X
 3
@@ -829,10 +856,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -860,6 +887,7 @@ Numeric
 16
 Name
 5
+15
 inv_cec_cg_pdco
 X
 3
@@ -887,10 +915,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -918,6 +946,7 @@ Numeric
 16
 Name
 5
+14
 inv_cec_cg_pnt
 X
 3
@@ -945,10 +974,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -976,6 +1005,7 @@ Numeric
 16
 Name
 5
+15
 inv_cec_cg_psco
 X
 3
@@ -1003,10 +1033,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1034,6 +1064,7 @@ Choice
 8
 Name
 5
+29
 inv_cec_cg_sample_power_units
 X
 3
@@ -1064,6 +1095,7 @@ DataMatrix
 22
 Name
 5
+23
 inv_cec_cg_test_samples
 X
 3
@@ -1091,6 +1123,7 @@ ShowRowLabels
 1
 RowLabels
 5
+164
 Vmin 10%,Vmin 20%,Vmin 30%,Vmin 50%,Vmin 75%,Vmin 100%,Vnom 10%,Vnom 20%,Vnom 30%,Vnom 50%,Vnom 75%,Vnom 100%,Vmax 10%,Vmax 20%,Vmax 30%,Vmax 50%,Vmax 75%,Vmax 100%
 ShadeR0C0
 2
@@ -1106,11 +1139,14 @@ ShowColLabels
 1
 ColLabels
 5
+319
 Power out,Voltage in,Efficiency,Power out,Voltage in,Efficiency,Power out,Voltage in,Efficiency,Power out,Voltage in,Efficiency,Power out,Voltage in,Efficiency,Power out,Voltage in,Efficiency,Power out,Voltage in,Efficiency,Power out,Voltage in,Efficiency,Power out,Voltage in,Efficiency,Power out,Voltage in,Efficiency
 NumRowsLabel
 5
+5
 Rows:
 NumColsLabel
+5
 5
 Cols:
 Layout
@@ -1121,6 +1157,7 @@ ChoiceColumn
 4294967295
 Choices
 5
+15
 Choice1,Choice2
 HideColumn
 3
@@ -1134,6 +1171,7 @@ Numeric
 16
 Name
 5
+17
 inv_cec_cg_vdcmax
 X
 3
@@ -1161,10 +1199,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1192,6 +1230,7 @@ Numeric
 16
 Name
 5
+15
 inv_cec_cg_vdco
 X
 3
@@ -1219,10 +1258,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

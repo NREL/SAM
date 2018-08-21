@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 155
 Caption
 5
+21
 Recapitalization Cost
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox11
 X
 3
@@ -48,6 +51,7 @@ Height
 155
 Caption
 5
+21
 Total Installed Costs
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -73,6 +78,7 @@ Height
 176
 Caption
 5
+24
 Number of Wells to Drill
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+11
 GroupBox211
 X
 3
@@ -98,6 +105,7 @@ Height
 194
 Caption
 5
+22
 Indirect Capital Costs
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -123,6 +132,7 @@ Height
 314
 Caption
 5
+29
 Drilling and Associated Costs
 Bold
 2
@@ -133,6 +143,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -148,6 +159,7 @@ Height
 89
 Caption
 5
+18
 Plant Capital Cost
 Bold
 2
@@ -158,6 +170,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox5
 X
 3
@@ -173,6 +186,7 @@ Height
 149
 Caption
 5
+16
 Pump Cost Inputs
 Bold
 2
@@ -183,6 +197,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -198,6 +213,7 @@ Height
 141
 Caption
 5
+230
 The number of production wells required is determined on the Geothermal Plant page.  Here you can decide if any of the confirmation wells can be used for production wells, and how many injection wells will be used in the analysis.
 TextColour
 4
@@ -226,6 +242,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -241,6 +258,7 @@ Height
 21
 Caption
 5
+40
 (based on the cost of a production well)
 TextColour
 4
@@ -269,6 +287,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -284,6 +303,7 @@ Height
 21
 Caption
 5
+16
 % of Direct Cost
 TextColour
 4
@@ -312,6 +332,7 @@ Label
 12
 Name
 5
+9
 Label1111
 X
 3
@@ -327,6 +348,7 @@ Height
 21
 Caption
 5
+14
 of Direct Cost
 TextColour
 4
@@ -355,6 +377,7 @@ Label
 12
 Name
 5
+9
 Label1112
 X
 3
@@ -370,6 +393,7 @@ Height
 21
 Caption
 5
+10
 # of wells
 TextColour
 4
@@ -398,6 +422,7 @@ Label
 12
 Name
 5
+10
 Label11121
 X
 3
@@ -413,6 +438,7 @@ Height
 21
 Caption
 5
+12
 Confirmation
 TextColour
 4
@@ -441,6 +467,7 @@ Label
 12
 Name
 5
+11
 Label111211
 X
 3
@@ -456,6 +483,7 @@ Height
 21
 Caption
 5
+9
 Injection
 TextColour
 4
@@ -484,6 +512,7 @@ Label
 12
 Name
 5
+11
 Label111212
 X
 3
@@ -499,6 +528,7 @@ Height
 21
 Caption
 5
+16
 Stimulation Cost
 TextColour
 4
@@ -527,6 +557,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -542,6 +573,7 @@ Height
 81
 Caption
 5
+242
 Calculated recapitalization cost includes drilling costs, pump costs, and surface equipment.  When the reservoir temperature drops below an allowable minimum, new wells must be drilled and costs acocunted for in the out years of the analysis.
 TextColour
 4
@@ -570,6 +602,7 @@ Label
 12
 Name
 5
+8
 Label211
 X
 3
@@ -585,6 +618,7 @@ Height
 21
 Caption
 5
+14
 Non-fixed Cost
 TextColour
 4
@@ -613,6 +647,7 @@ Label
 12
 Name
 5
+9
 Label2111
 X
 3
@@ -628,6 +663,7 @@ Height
 21
 Caption
 5
+13
 Drilling cost
 TextColour
 4
@@ -656,6 +692,7 @@ Label
 12
 Name
 5
+10
 Label21111
 X
 3
@@ -671,6 +708,7 @@ Height
 21
 Caption
 5
+11
 Exploration
 TextColour
 4
@@ -699,6 +737,7 @@ Label
 12
 Name
 5
+11
 Label211111
 X
 3
@@ -714,6 +753,7 @@ Height
 21
 Caption
 5
+10
 Production
 TextColour
 4
@@ -742,6 +782,7 @@ Label
 12
 Name
 5
+11
 Label211112
 X
 3
@@ -757,6 +798,7 @@ Height
 21
 Caption
 5
+31
 Surface Equipment, Installation
 TextColour
 4
@@ -785,6 +827,7 @@ Label
 12
 Name
 5
+8
 Label311
 X
 3
@@ -800,6 +843,7 @@ Height
 21
 Caption
 5
+10
 Fixed Cost
 TextColour
 4
@@ -828,6 +872,7 @@ Label
 12
 Name
 5
+9
 Label3111
 X
 3
@@ -843,6 +888,7 @@ Height
 21
 Caption
 5
+17
 Non-drilling cost
 TextColour
 4
@@ -871,6 +917,7 @@ Label
 12
 Name
 5
+10
 Label31111
 X
 3
@@ -886,6 +933,7 @@ Height
 21
 Caption
 5
+15
 Cost multiplier
 TextColour
 4
@@ -914,6 +962,7 @@ Label
 12
 Name
 5
+11
 Label311111
 X
 3
@@ -929,6 +978,7 @@ Height
 21
 Caption
 5
+10
 Cost curve
 TextColour
 4
@@ -957,6 +1007,7 @@ Label
 12
 Name
 5
+8
 Label411
 X
 3
@@ -972,6 +1023,7 @@ Height
 21
 Caption
 5
+5
 Total
 TextColour
 4
@@ -1000,6 +1052,7 @@ Label
 12
 Name
 5
+9
 Label4111
 X
 3
@@ -1015,6 +1068,7 @@ Height
 21
 Caption
 5
+5
 Total
 TextColour
 4
@@ -1043,6 +1097,7 @@ Label
 12
 Name
 5
+10
 Label41111
 X
 3
@@ -1058,6 +1113,7 @@ Height
 21
 Caption
 5
+13
 Cost per well
 TextColour
 4
@@ -1086,6 +1142,7 @@ Label
 12
 Name
 5
+8
 Label511
 X
 3
@@ -1101,6 +1158,7 @@ Height
 21
 Caption
 5
+10
 applies to
 TextColour
 4
@@ -1129,6 +1187,7 @@ Numeric
 16
 Name
 5
+27
 geotherm.cost.capital_total
 X
 3
@@ -1156,10 +1215,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1187,6 +1247,7 @@ Numeric
 16
 Name
 5
+24
 geotherm.cost.conf_drill
 X
 3
@@ -1214,10 +1275,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1245,6 +1307,7 @@ Numeric
 16
 Name
 5
+29
 geotherm.cost.conf_multiplier
 X
 3
@@ -1272,10 +1335,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1303,6 +1366,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.conf_non_drill
 X
 3
@@ -1330,10 +1394,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1361,6 +1426,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.conf_num_wells
 X
 3
@@ -1388,10 +1454,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1419,6 +1485,7 @@ Numeric
 16
 Name
 5
+27
 geotherm.cost.conf_per_well
 X
 3
@@ -1446,10 +1513,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1477,6 +1545,7 @@ Numeric
 16
 Name
 5
+24
 geotherm.cost.conf_total
 X
 3
@@ -1504,10 +1573,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1535,6 +1605,7 @@ Numeric
 16
 Name
 5
+31
 geotherm.cost.confirm_wells_num
 X
 3
@@ -1562,10 +1633,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1593,6 +1664,7 @@ Numeric
 16
 Name
 5
+35
 geotherm.cost.confirm_wells_percent
 X
 3
@@ -1620,9 +1692,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1651,6 +1724,7 @@ Numeric
 16
 Name
 5
+25
 geotherm.cost.contingency
 X
 3
@@ -1678,10 +1752,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1709,6 +1784,7 @@ Numeric
 16
 Name
 5
+33
 geotherm.cost.contingency_percent
 X
 3
@@ -1736,9 +1812,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -1767,6 +1844,7 @@ Numeric
 16
 Name
 5
+29
 geotherm.cost.drilling.amount
 X
 3
@@ -1794,10 +1872,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1825,6 +1904,7 @@ Numeric
 16
 Name
 5
+39
 geotherm.cost.drilling.amount_specified
 X
 3
@@ -1852,10 +1932,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1883,6 +1964,7 @@ CheckBox
 8
 Name
 5
+27
 geotherm.cost.drilling.calc
 X
 3
@@ -1898,6 +1980,7 @@ Height
 21
 Caption
 5
+9
 Calculate
 State
 2
@@ -1911,6 +1994,7 @@ Numeric
 16
 Name
 5
+23
 geotherm.cost.epc.fixed
 X
 3
@@ -1938,10 +2022,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1969,6 +2054,7 @@ Numeric
 16
 Name
 5
+26
 geotherm.cost.epc.nonfixed
 X
 3
@@ -1996,10 +2082,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2027,6 +2114,7 @@ Numeric
 16
 Name
 5
+25
 geotherm.cost.epc.percent
 X
 3
@@ -2054,9 +2142,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -2085,6 +2174,7 @@ Numeric
 16
 Name
 5
+23
 geotherm.cost.epc.total
 X
 3
@@ -2112,10 +2202,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2143,6 +2234,7 @@ Numeric
 16
 Name
 5
+24
 geotherm.cost.expl_drill
 X
 3
@@ -2170,10 +2262,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2201,6 +2294,7 @@ Numeric
 16
 Name
 5
+29
 geotherm.cost.expl_multiplier
 X
 3
@@ -2228,10 +2322,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2259,6 +2353,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.expl_non_drill
 X
 3
@@ -2286,10 +2381,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2317,6 +2413,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.expl_num_wells
 X
 3
@@ -2344,10 +2441,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2375,6 +2472,7 @@ Numeric
 16
 Name
 5
+27
 geotherm.cost.expl_per_well
 X
 3
@@ -2402,10 +2500,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2433,6 +2532,7 @@ Numeric
 16
 Name
 5
+24
 geotherm.cost.expl_total
 X
 3
@@ -2460,10 +2560,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2491,6 +2592,7 @@ Numeric
 16
 Name
 5
+39
 geotherm.cost.indirect.amount_specified
 X
 3
@@ -2518,10 +2620,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2549,6 +2652,7 @@ CheckBox
 8
 Name
 5
+27
 geotherm.cost.indirect.calc
 X
 3
@@ -2564,6 +2668,7 @@ Height
 21
 Caption
 5
+9
 Calculate
 State
 2
@@ -2577,6 +2682,7 @@ Choice
 8
 Name
 5
+28
 geotherm.cost.inj_cost_curve
 X
 3
@@ -2608,6 +2714,7 @@ Numeric
 16
 Name
 5
+23
 geotherm.cost.inj_drill
 X
 3
@@ -2635,10 +2742,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2666,6 +2774,7 @@ Numeric
 16
 Name
 5
+27
 geotherm.cost.inj_num_wells
 X
 3
@@ -2693,10 +2802,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2724,6 +2833,7 @@ Numeric
 16
 Name
 5
+26
 geotherm.cost.inj_per_well
 X
 3
@@ -2751,10 +2861,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2782,6 +2893,7 @@ Numeric
 16
 Name
 5
+33
 geotherm.cost.inj_prod_well_ratio
 X
 3
@@ -2809,10 +2921,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2840,6 +2952,7 @@ Numeric
 16
 Name
 5
+31
 geotherm.cost.inj_wells_drilled
 X
 3
@@ -2867,10 +2980,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2898,6 +3011,7 @@ Numeric
 16
 Name
 5
+36
 geotherm.cost.installed_per_capacity
 X
 3
@@ -2925,10 +3039,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2956,6 +3071,7 @@ Numeric
 16
 Name
 5
+23
 geotherm.cost.num_pumps
 X
 3
@@ -2983,10 +3099,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3014,6 +3130,7 @@ CheckBox
 8
 Name
 5
+33
 geotherm.cost.plant_auto_estimate
 X
 3
@@ -3029,6 +3146,7 @@ Height
 21
 Caption
 5
+44
 Automatically estimate the plant cost per kW
 State
 2
@@ -3042,6 +3160,7 @@ Numeric
 16
 Name
 5
+26
 geotherm.cost.plant_per_kW
 X
 3
@@ -3069,10 +3188,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3100,6 +3220,7 @@ Numeric
 16
 Name
 5
+24
 geotherm.cost.plant_size
 X
 3
@@ -3127,10 +3248,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3158,6 +3279,7 @@ Numeric
 16
 Name
 5
+25
 geotherm.cost.plant_total
 X
 3
@@ -3185,10 +3307,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3216,6 +3339,7 @@ Numeric
 16
 Name
 5
+32
 geotherm.cost.plant_total.amount
 X
 3
@@ -3243,10 +3367,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3274,6 +3399,7 @@ Numeric
 16
 Name
 5
+42
 geotherm.cost.plant_total.amount_specified
 X
 3
@@ -3301,10 +3427,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3332,6 +3459,7 @@ CheckBox
 8
 Name
 5
+30
 geotherm.cost.plant_total.calc
 X
 3
@@ -3347,6 +3475,7 @@ Height
 21
 Caption
 5
+9
 Calculate
 State
 2
@@ -3360,6 +3489,7 @@ Numeric
 16
 Name
 5
+23
 geotherm.cost.plm.fixed
 X
 3
@@ -3387,10 +3517,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3418,6 +3549,7 @@ Numeric
 16
 Name
 5
+26
 geotherm.cost.plm.nonfixed
 X
 3
@@ -3445,10 +3577,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3476,6 +3609,7 @@ Numeric
 16
 Name
 5
+25
 geotherm.cost.plm.percent
 X
 3
@@ -3503,9 +3637,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -3534,6 +3669,7 @@ Numeric
 16
 Name
 5
+23
 geotherm.cost.plm.total
 X
 3
@@ -3561,10 +3697,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3592,6 +3729,7 @@ Choice
 8
 Name
 5
+29
 geotherm.cost.prod_cost_curve
 X
 3
@@ -3623,6 +3761,7 @@ Numeric
 16
 Name
 5
+24
 geotherm.cost.prod_drill
 X
 3
@@ -3650,10 +3789,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3681,6 +3821,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.prod_inj_drill
 X
 3
@@ -3708,10 +3849,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3739,6 +3881,7 @@ Numeric
 16
 Name
 5
+32
 geotherm.cost.prod_inj_non_drill
 X
 3
@@ -3766,10 +3909,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3797,6 +3941,7 @@ Numeric
 16
 Name
 5
+32
 geotherm.cost.prod_inj_num_wells
 X
 3
@@ -3824,10 +3969,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3855,6 +4000,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.prod_inj_total
 X
 3
@@ -3882,10 +4028,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -3913,6 +4060,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.prod_num_wells
 X
 3
@@ -3940,10 +4088,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -3971,6 +4119,7 @@ Numeric
 16
 Name
 5
+27
 geotherm.cost.prod_per_well
 X
 3
@@ -3998,10 +4147,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4029,6 +4179,7 @@ Numeric
 16
 Name
 5
+22
 geotherm.cost.prod_req
 X
 3
@@ -4056,10 +4207,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4087,6 +4238,7 @@ Numeric
 16
 Name
 5
+32
 geotherm.cost.prod_wells_drilled
 X
 3
@@ -4114,10 +4266,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -4145,6 +4297,7 @@ Numeric
 16
 Name
 5
+24
 geotherm.cost.pump_depth
 X
 3
@@ -4172,10 +4325,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4203,6 +4356,7 @@ Numeric
 16
 Name
 5
+31
 geotherm.cost.pump_installation
 X
 3
@@ -4230,10 +4384,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4261,6 +4416,7 @@ Numeric
 16
 Name
 5
+27
 geotherm.cost.pump_per_foot
 X
 3
@@ -4288,10 +4444,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4319,6 +4476,7 @@ Numeric
 16
 Name
 5
+25
 geotherm.cost.pump_per_hp
 X
 3
@@ -4346,10 +4504,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4377,6 +4536,7 @@ Numeric
 16
 Name
 5
+27
 geotherm.cost.pump_per_pump
 X
 3
@@ -4404,10 +4564,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4435,6 +4596,7 @@ Numeric
 16
 Name
 5
+23
 geotherm.cost.pump_size
 X
 3
@@ -4462,10 +4624,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4493,6 +4655,7 @@ Numeric
 16
 Name
 5
+33
 geotherm.cost.pump_total_per_pump
 X
 3
@@ -4520,10 +4683,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4551,6 +4715,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.pumping.amount
 X
 3
@@ -4578,10 +4743,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4609,6 +4775,7 @@ Numeric
 16
 Name
 5
+38
 geotherm.cost.pumping.amount_specified
 X
 3
@@ -4636,10 +4803,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4667,6 +4835,7 @@ CheckBox
 8
 Name
 5
+26
 geotherm.cost.pumping.calc
 X
 3
@@ -4682,6 +4851,7 @@ Height
 21
 Caption
 5
+9
 Calculate
 State
 2
@@ -4695,6 +4865,7 @@ Numeric
 16
 Name
 5
+25
 geotherm.cost.pumps_total
 X
 3
@@ -4722,10 +4893,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4753,6 +4925,7 @@ Numeric
 16
 Name
 5
+19
 geotherm.cost.recap
 X
 3
@@ -4780,10 +4953,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4811,6 +4985,7 @@ Numeric
 16
 Name
 5
+29
 geotherm.cost.recap_specified
 X
 3
@@ -4838,10 +5013,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -4869,6 +5045,7 @@ CheckBox
 8
 Name
 5
+28
 geotherm.cost.recap_use_calc
 X
 3
@@ -4884,6 +5061,7 @@ Height
 21
 Caption
 5
+9
 Calculate
 State
 2
@@ -4897,6 +5075,7 @@ Numeric
 16
 Name
 5
+31
 geotherm.cost.sales_tax.percent
 X
 3
@@ -4924,9 +5103,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -4955,6 +5135,7 @@ Numeric
 16
 Name
 5
+29
 geotherm.cost.sales_tax.total
 X
 3
@@ -4982,10 +5163,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -5013,6 +5195,7 @@ Numeric
 16
 Name
 5
+29
 geotherm.cost.sales_tax.value
 X
 3
@@ -5040,9 +5223,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -5071,6 +5255,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.stim_non_drill
 X
 3
@@ -5098,10 +5283,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -5129,6 +5315,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.stim_num_wells
 X
 3
@@ -5156,10 +5343,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5187,6 +5374,7 @@ Numeric
 16
 Name
 5
+27
 geotherm.cost.stim_per_well
 X
 3
@@ -5214,10 +5402,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -5245,6 +5434,7 @@ Numeric
 16
 Name
 5
+24
 geotherm.cost.stim_total
 X
 3
@@ -5272,10 +5462,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -5303,6 +5494,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.surf_non_drill
 X
 3
@@ -5330,10 +5522,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -5361,6 +5554,7 @@ Numeric
 16
 Name
 5
+28
 geotherm.cost.surf_num_wells
 X
 3
@@ -5388,10 +5582,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -5419,6 +5613,7 @@ Numeric
 16
 Name
 5
+27
 geotherm.cost.surf_per_well
 X
 3
@@ -5446,10 +5641,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -5477,6 +5673,7 @@ Numeric
 16
 Name
 5
+24
 geotherm.cost.surf_total
 X
 3
@@ -5504,10 +5701,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -5535,6 +5733,7 @@ Numeric
 16
 Name
 5
+17
 total_direct_cost
 X
 3
@@ -5562,10 +5761,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -5593,6 +5793,7 @@ Numeric
 16
 Name
 5
+19
 total_indirect_cost
 X
 3
@@ -5620,10 +5821,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -5651,6 +5853,7 @@ Numeric
 16
 Name
 5
+20
 total_installed_cost
 X
 3
@@ -5678,10 +5881,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

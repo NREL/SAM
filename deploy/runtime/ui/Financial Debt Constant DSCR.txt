@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 197
 Caption
 5
+17
 Project Term Debt
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -48,6 +51,7 @@ Height
 66
 Caption
 5
+202
 The DSCR determines the size of debt. SAM calculates the debt percent assuming a constant DSCR, and reports debt and equity amounts on the Results page. For a project with no debt, set the DSCR to zero.
 TextColour
 4
@@ -76,6 +80,7 @@ Numeric
 16
 Name
 5
+17
 cost_debt_closing
 X
 3
@@ -103,10 +108,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -134,6 +139,7 @@ Numeric
 16
 Name
 5
+13
 cost_debt_fee
 X
 3
@@ -161,10 +167,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -192,6 +198,7 @@ Numeric
 16
 Name
 5
+4
 dscr
 X
 3
@@ -219,10 +226,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -250,6 +257,7 @@ Numeric
 16
 Name
 5
+13
 term_int_rate
 X
 3
@@ -277,10 +285,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -308,6 +316,7 @@ Numeric
 16
 Name
 5
+10
 term_tenor
 X
 3
@@ -335,10 +344,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

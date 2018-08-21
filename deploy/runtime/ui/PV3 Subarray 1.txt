@@ -8,6 +8,7 @@ Choice
 8
 Name
 5
+8
 inverter
 X
 3
@@ -38,6 +39,7 @@ Numeric
 16
 Name
 5
+14
 inverter_count
 X
 3
@@ -65,10 +67,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -96,6 +98,7 @@ Choice
 8
 Name
 5
+6
 module
 X
 3
@@ -126,6 +129,7 @@ Choice
 8
 Name
 5
+6
 module
 X
 3
@@ -156,6 +160,7 @@ Numeric
 16
 Name
 5
+18
 modules_per_string
 X
 3
@@ -183,10 +188,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -214,6 +219,7 @@ Numeric
 16
 Name
 5
+18
 modules_per_string
 X
 3
@@ -241,10 +247,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -272,6 +278,7 @@ Numeric
 16
 Name
 5
+16
 mppt_hi_inverter
 X
 3
@@ -299,10 +306,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -330,6 +337,7 @@ Numeric
 16
 Name
 5
+17
 mppt_low_inverter
 X
 3
@@ -357,10 +365,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -388,6 +396,7 @@ Choice
 8
 Name
 5
+8
 num_mppt
 X
 3
@@ -421,6 +430,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -448,10 +458,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -479,6 +489,7 @@ Numeric
 16
 Name
 5
+9
 object 11
 X
 3
@@ -506,10 +517,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -537,6 +548,7 @@ CheckBox
 8
 Name
 5
+8
 object 2
 X
 3
@@ -552,6 +564,7 @@ Height
 24
 Caption
 5
+12
 Backtracking
 State
 2
@@ -565,6 +578,7 @@ CheckBox
 8
 Name
 5
+8
 object 2
 X
 3
@@ -580,6 +594,7 @@ Height
 24
 Caption
 5
+12
 Backtracking
 State
 2
@@ -593,6 +608,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -617,6 +633,7 @@ Colour
 255
 Caption
 5
+22
 Subsection Orientation
 Bold
 2
@@ -627,6 +644,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -651,6 +669,7 @@ Colour
 255
 Caption
 5
+22
 Subsection Orientation
 Bold
 2
@@ -661,6 +680,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -685,6 +705,7 @@ Colour
 255
 Caption
 5
+22
 Subsection Orientation
 Bold
 2
@@ -695,6 +716,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -710,6 +732,7 @@ Height
 111
 Caption
 5
+29
 Total System Size (Reference)
 Bold
 2
@@ -720,6 +743,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -735,6 +759,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -763,6 +788,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -778,6 +804,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -806,6 +833,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -821,6 +849,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -849,6 +878,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -864,6 +894,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -892,6 +923,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -907,6 +939,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -935,6 +968,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -950,6 +984,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -978,6 +1013,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -993,6 +1029,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -1021,6 +1058,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1036,6 +1074,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -1064,6 +1103,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1079,6 +1119,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -1107,6 +1148,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1122,6 +1164,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -1150,6 +1193,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1165,6 +1209,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -1193,6 +1238,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1208,6 +1254,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -1236,6 +1283,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1251,6 +1299,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -1279,6 +1328,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1294,6 +1344,7 @@ Height
 42
 Caption
 5
+132
 String Voc and String Vmp should be between the inverter min and max MPPT voltages, and must not exceed the inverter max DC voltage.
 TextColour
 4
@@ -1322,6 +1373,7 @@ Numeric
 16
 Name
 5
+20
 section1_ac_capacity
 X
 3
@@ -1349,10 +1401,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1380,6 +1432,7 @@ Numeric
 16
 Name
 5
+20
 section1_dc_capacity
 X
 3
@@ -1407,10 +1460,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1438,6 +1491,7 @@ Numeric
 16
 Name
 5
+19
 section1_dcac_ratio
 X
 3
@@ -1465,10 +1519,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1496,6 +1550,7 @@ Numeric
 16
 Name
 5
+19
 strings_in_parallel
 X
 3
@@ -1523,10 +1578,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1554,6 +1609,7 @@ Numeric
 16
 Name
 5
+19
 strings_in_parallel
 X
 3
@@ -1581,10 +1637,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1612,6 +1668,7 @@ Numeric
 16
 Name
 5
+17
 subarray1_azimuth
 X
 3
@@ -1639,10 +1696,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1670,6 +1727,7 @@ Numeric
 16
 Name
 5
+17
 subarray1_azimuth
 X
 3
@@ -1697,10 +1755,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1728,6 +1786,7 @@ Numeric
 16
 Name
 5
+16
 subarray1_rotlim
 X
 3
@@ -1755,10 +1814,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1786,6 +1845,7 @@ Numeric
 16
 Name
 5
+16
 subarray1_rotlim
 X
 3
@@ -1813,10 +1873,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1844,6 +1904,7 @@ Numeric
 16
 Name
 5
+14
 subarray1_tilt
 X
 3
@@ -1871,10 +1932,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1902,6 +1963,7 @@ Numeric
 16
 Name
 5
+14
 subarray1_tilt
 X
 3
@@ -1929,10 +1991,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1960,6 +2022,7 @@ Choice
 8
 Name
 5
+19
 subarray_track_mode
 X
 3
@@ -1993,6 +2056,7 @@ Choice
 8
 Name
 5
+19
 subarray_track_mode
 X
 3
@@ -2026,6 +2090,7 @@ Numeric
 16
 Name
 5
+18
 system_AC_capacity
 X
 3
@@ -2053,10 +2118,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2084,6 +2149,7 @@ Numeric
 16
 Name
 5
+18
 system_DC_AC_ratio
 X
 3
@@ -2111,10 +2177,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2142,6 +2208,7 @@ Numeric
 16
 Name
 5
+18
 system_DC_capacity
 X
 3
@@ -2169,10 +2236,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2200,6 +2267,7 @@ Numeric
 16
 Name
 5
+14
 system_num_inv
 X
 3
@@ -2227,10 +2295,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2258,6 +2326,7 @@ Numeric
 16
 Name
 5
+14
 system_num_mod
 X
 3
@@ -2285,10 +2354,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2316,6 +2385,7 @@ Numeric
 16
 Name
 5
+13
 total_modules
 X
 3
@@ -2343,10 +2413,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2374,6 +2444,7 @@ Numeric
 16
 Name
 5
+13
 total_modules
 X
 3
@@ -2401,10 +2472,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2432,6 +2503,7 @@ Numeric
 16
 Name
 5
+15
 vdcmax_inverter
 X
 3
@@ -2459,10 +2531,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2490,6 +2562,7 @@ Numeric
 16
 Name
 5
+10
 vmp_string
 X
 3
@@ -2517,10 +2590,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2548,6 +2621,7 @@ Numeric
 16
 Name
 5
+10
 voc_string
 X
 3
@@ -2575,10 +2649,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

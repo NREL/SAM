@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -23,6 +24,7 @@ Height
 332
 Caption
 5
+36
 Efficiency Curve and Characteristics
 Bold
 2
@@ -33,6 +35,7 @@ Numeric
 16
 Name
 5
+18
 inv_snl_ac_voltage
 X
 3
@@ -60,10 +63,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -91,6 +94,7 @@ Numeric
 16
 Name
 5
+10
 inv_snl_c0
 X
 3
@@ -118,10 +122,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -149,6 +153,7 @@ Numeric
 16
 Name
 5
+10
 inv_snl_c1
 X
 3
@@ -176,10 +181,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -207,6 +212,7 @@ Numeric
 16
 Name
 5
+10
 inv_snl_c2
 X
 3
@@ -234,10 +240,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -265,6 +271,7 @@ Numeric
 16
 Name
 5
+10
 inv_snl_c3
 X
 3
@@ -292,10 +299,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -323,6 +330,7 @@ Numeric
 16
 Name
 5
+15
 inv_snl_eff_cec
 X
 3
@@ -350,10 +358,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -381,6 +389,7 @@ Numeric
 16
 Name
 5
+16
 inv_snl_eff_euro
 X
 3
@@ -408,10 +417,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -439,6 +448,7 @@ Numeric
 16
 Name
 5
+14
 inv_snl_idcmax
 X
 3
@@ -466,10 +476,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -497,6 +507,7 @@ Library
 7
 Name
 5
+21
 inv_snl_inverter_name
 X
 3
@@ -512,9 +523,11 @@ Height
 168
 Library
 5
+13
 CEC Inverters
 Fields
 5
+76
 Name,Paco,Pdco,Pso,Pnt,Vac,Vdcmax,Vdco,Mppt_high,Mppt_low,C0,C1,C2,C3,Idcmax
 Numeric
 
@@ -522,6 +535,7 @@ Numeric
 16
 Name
 5
+15
 inv_snl_mppt_hi
 X
 3
@@ -549,10 +563,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -580,6 +594,7 @@ Numeric
 16
 Name
 5
+16
 inv_snl_mppt_low
 X
 3
@@ -607,10 +622,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -638,6 +653,7 @@ Numeric
 16
 Name
 5
+12
 inv_snl_paco
 X
 3
@@ -665,10 +681,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -696,6 +712,7 @@ Numeric
 16
 Name
 5
+12
 inv_snl_pdco
 X
 3
@@ -723,10 +740,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -754,6 +771,7 @@ Numeric
 16
 Name
 5
+11
 inv_snl_pnt
 X
 3
@@ -781,10 +799,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -812,6 +830,7 @@ Numeric
 16
 Name
 5
+11
 inv_snl_pso
 X
 3
@@ -839,10 +858,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -870,6 +889,7 @@ Numeric
 16
 Name
 5
+14
 inv_snl_vdcmax
 X
 3
@@ -897,10 +917,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -928,6 +948,7 @@ Numeric
 16
 Name
 5
+12
 inv_snl_vdco
 X
 3
@@ -955,10 +976,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -986,6 +1007,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1001,6 +1023,7 @@ Height
 24
 Caption
 5
+141
 Note: If you are modeling a system with microinverters or DC power optimizers, see the "Losses" page to adjust the system losses accordingly.
 TextColour
 4
@@ -1029,6 +1052,7 @@ Plot
 5
 Name
 5
+23
 pv.inv.sandia.eff_curve
 X
 3
@@ -1048,6 +1072,7 @@ Label
 12
 Name
 5
+34
 pv.inv.sandia.vdcmax_warning_label
 X
 3
@@ -1063,7 +1088,7 @@ Height
 154
 Caption
 5
- 
+0
 TextColour
 4
 0

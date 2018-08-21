@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 242
 Caption
 5
+10
 Parasitics
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -48,6 +51,7 @@ Height
 21
 Caption
 5
+6
 Factor
 TextColour
 4
@@ -76,6 +80,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -91,6 +96,7 @@ Height
 21
 Caption
 5
+7
 Coeff 0
 TextColour
 4
@@ -119,6 +125,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -134,6 +141,7 @@ Height
 21
 Caption
 5
+7
 Coeff 1
 TextColour
 4
@@ -162,6 +170,7 @@ Label
 12
 Name
 5
+9
 Label1111
 X
 3
@@ -177,6 +186,7 @@ Height
 21
 Caption
 5
+7
 Coeff 2
 TextColour
 4
@@ -205,6 +215,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -220,6 +231,7 @@ Height
 21
 Caption
 5
+19
 Design Point Totals
 TextColour
 4
@@ -248,6 +260,7 @@ Numeric
 16
 Name
 5
+12
 Pipe_hl_coef
 X
 3
@@ -275,10 +288,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -306,6 +319,7 @@ Numeric
 16
 Name
 5
+15
 SCA_drives_elec
 X
 3
@@ -333,10 +347,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -364,6 +378,7 @@ Numeric
 16
 Name
 5
+18
 csp.dtr.par.aux_c0
 X
 3
@@ -391,10 +406,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -422,6 +437,7 @@ Numeric
 16
 Name
 5
+18
 csp.dtr.par.aux_c1
 X
 3
@@ -449,10 +465,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -480,6 +496,7 @@ Numeric
 16
 Name
 5
+18
 csp.dtr.par.aux_c2
 X
 3
@@ -507,10 +524,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -538,6 +555,7 @@ Numeric
 16
 Name
 5
+18
 csp.dtr.par.aux_pf
 X
 3
@@ -565,10 +583,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -596,6 +614,7 @@ Numeric
 16
 Name
 5
+19
 csp.dtr.par.aux_val
 X
 3
@@ -623,10 +642,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -654,6 +673,7 @@ Numeric
 16
 Name
 5
+18
 csp.dtr.par.bop_c0
 X
 3
@@ -681,10 +701,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -712,6 +732,7 @@ Numeric
 16
 Name
 5
+18
 csp.dtr.par.bop_c1
 X
 3
@@ -739,10 +760,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -770,6 +791,7 @@ Numeric
 16
 Name
 5
+18
 csp.dtr.par.bop_c2
 X
 3
@@ -797,10 +819,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -828,6 +850,7 @@ Numeric
 16
 Name
 5
+18
 csp.dtr.par.bop_pf
 X
 3
@@ -855,10 +878,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -886,6 +909,7 @@ Numeric
 16
 Name
 5
+19
 csp.dtr.par.bop_val
 X
 3
@@ -913,10 +937,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -944,6 +968,7 @@ Numeric
 16
 Name
 5
+20
 csp.dtr.par.calc.aux
 X
 3
@@ -971,10 +996,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1002,6 +1027,7 @@ Numeric
 16
 Name
 5
+20
 csp.dtr.par.calc.bop
 X
 3
@@ -1029,10 +1055,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1060,6 +1086,7 @@ Numeric
 16
 Name
 5
+27
 csp.dtr.par.calc.frac_gross
 X
 3
@@ -1087,10 +1114,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1118,6 +1145,7 @@ Numeric
 16
 Name
 5
+25
 csp.dtr.par.calc.tracking
 X
 3
@@ -1145,10 +1173,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1176,6 +1204,7 @@ Numeric
 16
 Name
 5
+12
 pb_fixed_par
 X
 3
@@ -1203,10 +1232,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1234,6 +1263,7 @@ Numeric
 16
 Name
 5
+12
 pb_pump_coef
 X
 3
@@ -1261,10 +1291,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1292,6 +1322,7 @@ Numeric
 16
 Name
 5
+13
 tes_pump_coef
 X
 3
@@ -1319,10 +1350,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

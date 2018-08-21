@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -23,6 +24,7 @@ Height
 50
 Caption
 5
+13
 Salvage Value
 Bold
 2
@@ -33,6 +35,7 @@ Numeric
 16
 Name
 5
+18
 salvage_percentage
 X
 3
@@ -60,10 +63,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -91,6 +94,7 @@ Numeric
 16
 Name
 5
+13
 salvage_value
 X
 3
@@ -118,10 +122,11 @@ Decimals
 0
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

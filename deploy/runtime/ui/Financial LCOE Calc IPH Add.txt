@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+16
 electricity_rate
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -66,6 +67,7 @@ MultilineText
 10
 Name
 5
+9
 object 10
 X
 3
@@ -81,6 +83,7 @@ Height
 108
 Text
 5
+569
 This model calculates the levelized cost of the net heat delivered from the solar field to the heat sink. The solar field model consumes electricity to pump the HTF and move the collectors. The model applies the electricity rate specified here to calculate the annual electricity cost. This cost is then added to the specified fixed annual operating cost in the finanical model. The Levelized Cost of Energy Calculator structure below is taken unchanged from the other SAM models, but the user should note that here it estimates levelized cost of thermal energy (LCOH).
 Editable
 2
@@ -106,6 +109,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -121,6 +125,7 @@ Height
 154
 Caption
 5
+22
 Levelized Cost Of Heat
 Bold
 2

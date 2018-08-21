@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 503
 Caption
 5
+12
 Plant Design
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 269
 Caption
 5
+28
 Availability and Curtailment
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox5
 X
 3
@@ -73,6 +78,7 @@ Height
 230
 Caption
 5
+9
 Operation
 Bold
 2
@@ -83,6 +89,7 @@ Divider
 9
 Name
 5
+6
 HLine1
 X
 3
@@ -107,6 +114,7 @@ Colour
 255
 Caption
 5
+18
 Plant Cooling Mode
 Bold
 2
@@ -117,6 +125,7 @@ Numeric
 16
 Name
 5
+7
 LHV_eff
 X
 3
@@ -144,10 +153,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -175,6 +184,7 @@ Numeric
 16
 Name
 5
+10
 P_boil_des
 X
 3
@@ -202,10 +212,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -233,6 +243,7 @@ Numeric
 16
 Name
 5
+10
 P_cond_min
 X
 3
@@ -260,10 +271,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -291,6 +302,7 @@ Numeric
 16
 Name
 5
+12
 P_cond_ratio
 X
 3
@@ -318,10 +330,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -349,6 +361,7 @@ Numeric
 16
 Name
 5
+8
 P_rh_ref
 X
 3
@@ -376,10 +389,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -407,6 +420,7 @@ Numeric
 16
 Name
 5
+9
 T_ITD_des
 X
 3
@@ -434,10 +448,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -465,6 +479,7 @@ Numeric
 16
 Name
 5
+9
 T_amb_des
 X
 3
@@ -492,10 +507,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -523,6 +538,7 @@ Numeric
 16
 Name
 5
+10
 T_approach
 X
 3
@@ -550,10 +566,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -581,6 +597,7 @@ LossAdjustment
 6
 Name
 5
+6
 adjust
 X
 3
@@ -603,6 +620,7 @@ Choice
 8
 Name
 5
+23
 csp.pbns.condenser_type
 X
 3
@@ -634,6 +652,7 @@ Choice
 8
 Name
 5
+23
 csp.pbns.fossil_mode_lf
 X
 3
@@ -662,6 +681,7 @@ Choice
 8
 Name
 5
+23
 csp.pbns.fossil_mode_st
 X
 3
@@ -690,6 +710,7 @@ Numeric
 16
 Name
 5
+30
 csp.pbns.gross_net_conv_factor
 X
 3
@@ -717,10 +738,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -748,6 +769,7 @@ Numeric
 16
 Name
 5
+17
 cycle_cutoff_frac
 X
 3
@@ -775,10 +797,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -806,6 +828,7 @@ Numeric
 16
 Name
 5
+18
 cycle_max_fraction
 X
 3
@@ -833,10 +856,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -864,6 +887,7 @@ Numeric
 16
 Name
 5
+9
 dT_cw_ref
 X
 3
@@ -891,10 +915,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -922,6 +946,7 @@ Numeric
 16
 Name
 5
+10
 demand_var
 X
 3
@@ -949,10 +974,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -980,6 +1005,7 @@ Numeric
 16
 Name
 5
+7
 eta_ref
 X
 3
@@ -1007,10 +1033,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1038,6 +1064,7 @@ Numeric
 16
 Name
 5
+8
 n_pl_inc
 X
 3
@@ -1065,10 +1092,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1096,6 +1123,7 @@ Numeric
 16
 Name
 5
+9
 nameplate
 X
 3
@@ -1123,10 +1151,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1154,6 +1182,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1169,6 +1198,7 @@ Height
 69
 Caption
 5
+136
 Curtailment and availability factors are annual or hourly factors that modify system output to represent system outages or other events.
 TextColour
 4
@@ -1197,6 +1227,7 @@ Numeric
 16
 Name
 5
+10
 pb_bd_frac
 X
 3
@@ -1224,10 +1255,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1255,6 +1286,7 @@ Numeric
 16
 Name
 5
+8
 q_pb_des
 X
 3
@@ -1282,10 +1314,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1313,6 +1345,7 @@ Numeric
 16
 Name
 5
+10
 q_sby_frac
 X
 3
@@ -1340,10 +1373,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1371,6 +1404,7 @@ Numeric
 16
 Name
 5
+11
 rh_frac_ref
 X
 3
@@ -1398,10 +1432,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1429,6 +1463,7 @@ Numeric
 16
 Name
 5
+12
 startup_frac
 X
 3
@@ -1456,10 +1491,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1487,6 +1522,7 @@ Numeric
 16
 Name
 5
+12
 startup_time
 X
 3
@@ -1514,10 +1550,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1544,6 +1580,7 @@ Numeric
 1
 16
 Name
+5
 5
 t_sby
 X
@@ -1572,10 +1609,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

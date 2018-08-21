@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 73
 Caption
 5
+26
 Developer Capital Recovery
 Bold
 2
@@ -33,6 +35,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -48,6 +51,7 @@ Height
 40
 Caption
 5
+106
 The "Pre-flip Share of Project Cash" sharing ratio is applied after the Developer capital recovery period.
 TextColour
 4
@@ -76,6 +80,7 @@ RadioChoice
 10
 Name
 5
+25
 sponsor_cap_recovery_mode
 X
 3
@@ -112,6 +117,7 @@ Numeric
 16
 Name
 5
+25
 sponsor_cap_recovery_year
 X
 3
@@ -139,10 +145,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

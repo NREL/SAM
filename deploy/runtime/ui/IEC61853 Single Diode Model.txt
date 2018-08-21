@@ -8,6 +8,7 @@ Button
 7
 Name
 5
+21
 btn_calc_iec65153_par
 X
 3
@@ -23,6 +24,7 @@ Height
 24
 Caption
 5
+20
 Calculate parameters
 TabOrder
 3
@@ -33,6 +35,7 @@ Button
 7
 Name
 5
+15
 btn_update_plot
 X
 3
@@ -48,6 +51,7 @@ Height
 24
 Caption
 5
+11
 Update plot
 TabOrder
 3
@@ -58,6 +62,7 @@ Plot
 5
 Name
 5
+13
 iec61853_plot
 X
 3
@@ -77,6 +82,7 @@ DataMatrix
 22
 Name
 5
+18
 iec61853_test_data
 X
 3
@@ -104,7 +110,7 @@ ShowRowLabels
 0
 RowLabels
 5
- 
+0
 ShadeR0C0
 2
 0
@@ -119,11 +125,14 @@ ShowColLabels
 1
 ColLabels
 5
+43
 Irr(W/m2),Tc(C),Pmp(W),Vmp(V),Voc(V),Isc(A)
 NumRowsLabel
 5
+5
 Rows:
 NumColsLabel
+5
 5
 Cols:
 Layout
@@ -134,6 +143,7 @@ ChoiceColumn
 4294967295
 Choices
 5
+15
 Choice1,Choice2
 HideColumn
 3
@@ -147,6 +157,7 @@ Hyperlink
 8
 Name
 5
+9
 object 14
 X
 3
@@ -162,9 +173,11 @@ Height
 21
 Caption
 5
+51
 Performance Model Documentation page on SAM website
 URL
 5
+32
 https://sam.nrel.gov/performance
 TabOrder
 3
@@ -175,6 +188,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -199,6 +213,7 @@ Colour
 255
 Caption
 5
+47
 Additional information for parameter estimation
 Bold
 2
@@ -209,6 +224,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -224,6 +240,7 @@ Height
 102
 Caption
 5
+10
 References
 Bold
 2
@@ -234,6 +251,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -249,6 +267,7 @@ Height
 102
 Caption
 5
+10
 References
 Bold
 2
@@ -259,6 +278,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -274,6 +294,7 @@ Height
 102
 Caption
 5
+10
 References
 Bold
 2
@@ -284,6 +305,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -299,6 +321,7 @@ Height
 102
 Caption
 5
+10
 References
 Bold
 2
@@ -309,6 +332,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -324,6 +348,7 @@ Height
 102
 Caption
 5
+10
 References
 Bold
 2
@@ -334,6 +359,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -349,6 +375,7 @@ Height
 102
 Caption
 5
+10
 References
 Bold
 2
@@ -359,6 +386,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -374,6 +402,7 @@ Height
 42
 Caption
 5
+200
 For more information about the IEC 61853 module model inputs, see Help. For a detailed description of the model, see Gilman (2015) and Dobos (2014) on the SAM website's Performance Documentation page:
 TextColour
 4
@@ -402,6 +431,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -417,6 +447,7 @@ Height
 42
 Caption
 5
+200
 For more information about the IEC 61853 module model inputs, see Help. For a detailed description of the model, see Gilman (2015) and Dobos (2014) on the SAM website's Performance Documentation page:
 TextColour
 4
@@ -445,6 +476,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -460,6 +492,7 @@ Height
 42
 Caption
 5
+200
 For more information about the IEC 61853 module model inputs, see Help. For a detailed description of the model, see Gilman (2015) and Dobos (2014) on the SAM website's Performance Documentation page:
 TextColour
 4
@@ -488,6 +521,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -503,6 +537,7 @@ Height
 42
 Caption
 5
+200
 For more information about the IEC 61853 module model inputs, see Help. For a detailed description of the model, see Gilman (2015) and Dobos (2014) on the SAM website's Performance Documentation page:
 TextColour
 4
@@ -531,6 +566,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -546,6 +582,7 @@ Height
 42
 Caption
 5
+200
 For more information about the IEC 61853 module model inputs, see Help. For a detailed description of the model, see Gilman (2015) and Dobos (2014) on the SAM website's Performance Documentation page:
 TextColour
 4
@@ -574,6 +611,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_AMa0
 X
 3
@@ -601,10 +639,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -632,6 +670,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_AMa1
 X
 3
@@ -659,10 +698,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -690,6 +729,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_AMa2
 X
 3
@@ -717,10 +757,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -748,6 +788,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_AMa3
 X
 3
@@ -775,10 +816,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -806,6 +847,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_AMa4
 X
 3
@@ -833,10 +875,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -864,6 +906,7 @@ Numeric
 16
 Name
 5
+13
 sd11par_Egref
 X
 3
@@ -891,10 +934,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -922,6 +965,7 @@ Numeric
 16
 Name
 5
+10
 sd11par_Il
 X
 3
@@ -949,10 +993,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -980,6 +1024,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_Imp0
 X
 3
@@ -1007,10 +1052,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1038,6 +1083,7 @@ Numeric
 16
 Name
 5
+10
 sd11par_Io
 X
 3
@@ -1065,10 +1111,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1096,6 +1142,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_Isc0
 X
 3
@@ -1123,10 +1170,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1154,6 +1201,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_Pmp0
 X
 3
@@ -1181,10 +1229,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1212,6 +1260,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_Vmp0
 X
 3
@@ -1239,10 +1288,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1270,6 +1319,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_Voc0
 X
 3
@@ -1297,10 +1347,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1328,6 +1378,7 @@ Numeric
 16
 Name
 5
+16
 sd11par_alphaIsc
 X
 3
@@ -1355,10 +1406,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1386,6 +1437,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_area
 X
 3
@@ -1413,10 +1465,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1444,6 +1496,7 @@ Numeric
 16
 Name
 5
+15
 sd11par_betaVoc
 X
 3
@@ -1471,10 +1524,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1502,6 +1555,7 @@ Numeric
 16
 Name
 5
+10
 sd11par_c1
 X
 3
@@ -1529,10 +1583,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1560,6 +1614,7 @@ Numeric
 16
 Name
 5
+10
 sd11par_c2
 X
 3
@@ -1587,10 +1642,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1618,6 +1673,7 @@ Numeric
 16
 Name
 5
+10
 sd11par_c3
 X
 3
@@ -1645,10 +1701,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1676,6 +1732,7 @@ Numeric
 16
 Name
 5
+10
 sd11par_d1
 X
 3
@@ -1703,10 +1760,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1734,6 +1791,7 @@ Numeric
 16
 Name
 5
+10
 sd11par_d2
 X
 3
@@ -1761,10 +1819,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1792,6 +1850,7 @@ Numeric
 16
 Name
 5
+10
 sd11par_d3
 X
 3
@@ -1819,10 +1878,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1850,6 +1909,7 @@ Numeric
 16
 Name
 5
+11
 sd11par_eff
 X
 3
@@ -1877,10 +1937,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1908,6 +1968,7 @@ Numeric
 16
 Name
 5
+16
 sd11par_gammaPmp
 X
 3
@@ -1935,10 +1996,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1966,6 +2027,7 @@ Choice
 8
 Name
 5
+13
 sd11par_glass
 X
 3
@@ -1994,6 +2056,7 @@ Choice
 8
 Name
 5
+16
 sd11par_mounting
 X
 3
@@ -2022,6 +2085,7 @@ Numeric
 16
 Name
 5
+9
 sd11par_n
 X
 3
@@ -2049,10 +2113,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2080,6 +2144,7 @@ Numeric
 16
 Name
 5
+12
 sd11par_nser
 X
 3
@@ -2107,10 +2172,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2138,6 +2203,7 @@ Choice
 8
 Name
 5
+16
 sd11par_standoff
 X
 3
@@ -2166,6 +2232,7 @@ Numeric
 16
 Name
 5
+13
 sd11par_tnoct
 X
 3
@@ -2193,10 +2260,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2224,6 +2291,7 @@ Choice
 8
 Name
 5
+12
 sd11par_type
 X
 3

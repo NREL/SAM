@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 310
 Caption
 5
+16
 Reserve Accounts
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 164
 Caption
 5
+44
 Major Equipment Replacement Reserve Accounts
 Bold
 2
@@ -58,6 +62,7 @@ Label
 12
 Name
 5
+8
 Label111
 X
 3
@@ -73,6 +78,7 @@ Height
 21
 Caption
 5
+18
 Year 1 dollars ($)
 TextColour
 4
@@ -101,6 +107,7 @@ Label
 12
 Name
 5
+9
 Label1111
 X
 3
@@ -116,6 +123,7 @@ Height
 42
 Caption
 5
+30
 Replacement  frequency (years)
 TextColour
 4
@@ -144,6 +152,7 @@ Label
 12
 Name
 5
+8
 Label112
 X
 3
@@ -159,6 +168,7 @@ Height
 54
 Caption
 5
+68
 Depreciation treatment (applies to all major equipment expenditures)
 TextColour
 4
@@ -187,6 +197,7 @@ Label
 12
 Name
 5
+7
 Label12
 X
 3
@@ -202,6 +213,7 @@ Height
 96
 Caption
 5
+112
 Interest on Reserves applies to all reserve accounts, including debt, working capital, and replacement reserves.
 TextColour
 4
@@ -230,6 +242,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -245,6 +258,7 @@ Height
 30
 Caption
 5
+22
 Replacement cost ($/W)
 TextColour
 4
@@ -273,6 +287,7 @@ Label
 12
 Name
 5
+9
 Label9112
 X
 3
@@ -287,6 +302,7 @@ Height
 3
 24
 Caption
+5
 5
 State
 TextColour
@@ -316,6 +332,7 @@ Label
 12
 Name
 5
+8
 Label922
 X
 3
@@ -331,6 +348,7 @@ Height
 24
 Caption
 5
+7
 Federal
 TextColour
 4
@@ -359,6 +377,7 @@ Numeric
 16
 Name
 5
+19
 dscr_reserve_months
 X
 3
@@ -386,10 +405,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -417,6 +436,7 @@ Numeric
 16
 Name
 5
+19
 equip1_reserve_cost
 X
 3
@@ -444,10 +464,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -475,6 +495,7 @@ Numeric
 16
 Name
 5
+19
 equip1_reserve_freq
 X
 3
@@ -502,10 +523,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -533,6 +554,7 @@ Numeric
 16
 Name
 5
+19
 equip2_reserve_cost
 X
 3
@@ -560,10 +582,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -591,6 +613,7 @@ Numeric
 16
 Name
 5
+19
 equip2_reserve_freq
 X
 3
@@ -618,10 +641,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -649,6 +672,7 @@ Numeric
 16
 Name
 5
+19
 equip3_reserve_cost
 X
 3
@@ -676,10 +700,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -707,6 +731,7 @@ Numeric
 16
 Name
 5
+19
 equip3_reserve_freq
 X
 3
@@ -734,10 +759,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -765,6 +790,7 @@ Choice
 8
 Name
 5
+22
 equip_reserve_depr_fed
 X
 3
@@ -800,6 +826,7 @@ Choice
 8
 Name
 5
+22
 equip_reserve_depr_sta
 X
 3
@@ -835,6 +862,7 @@ Numeric
 16
 Name
 5
+10
 mera_cost1
 X
 3
@@ -862,10 +890,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -893,6 +921,7 @@ Numeric
 16
 Name
 5
+10
 mera_cost2
 X
 3
@@ -920,10 +949,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -951,6 +980,7 @@ Numeric
 16
 Name
 5
+10
 mera_cost3
 X
 3
@@ -978,10 +1008,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1009,6 +1039,7 @@ TextEntry
 10
 Name
 5
+10
 mera_name1
 X
 3
@@ -1024,6 +1055,7 @@ Height
 21
 Text
 5
+21
 Replacement reserve 1
 Editable
 2
@@ -1049,6 +1081,7 @@ TextEntry
 10
 Name
 5
+10
 mera_name2
 X
 3
@@ -1064,6 +1097,7 @@ Height
 21
 Text
 5
+21
 Replacement reserve 2
 Editable
 2
@@ -1089,6 +1123,7 @@ TextEntry
 10
 Name
 5
+10
 mera_name3
 X
 3
@@ -1104,6 +1139,7 @@ Height
 21
 Text
 5
+21
 Replacement reserve 3
 Editable
 2
@@ -1129,6 +1165,7 @@ Numeric
 16
 Name
 5
+26
 months_receivables_reserve
 X
 3
@@ -1156,10 +1193,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1187,6 +1224,7 @@ Numeric
 16
 Name
 5
+22
 months_working_reserve
 X
 3
@@ -1214,10 +1252,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1245,6 +1283,7 @@ Numeric
 16
 Name
 5
+17
 reserves_interest
 X
 3
@@ -1272,10 +1311,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

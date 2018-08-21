@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+7
 E2TPLF0
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -66,6 +67,7 @@ Numeric
 16
 Name
 5
+7
 E2TPLF1
 X
 3
@@ -93,10 +95,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -124,6 +126,7 @@ Numeric
 16
 Name
 5
+7
 E2TPLF2
 X
 3
@@ -151,10 +154,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -182,6 +185,7 @@ Numeric
 16
 Name
 5
+7
 E2TPLF3
 X
 3
@@ -209,10 +213,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -240,6 +244,7 @@ Numeric
 16
 Name
 5
+7
 E2TPLF4
 X
 3
@@ -267,10 +272,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -298,6 +303,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -313,6 +319,7 @@ Height
 140
 Caption
 5
+21
 Plant Characteristics
 Bold
 2
@@ -323,6 +330,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -338,6 +346,7 @@ Height
 332
 Caption
 5
+22
 Power Cycle Properties
 Bold
 2
@@ -348,6 +357,7 @@ Numeric
 16
 Name
 5
+10
 LHVBoilEff
 X
 3
@@ -375,10 +385,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -406,6 +416,7 @@ Label
 12
 Name
 5
+7
 Label10
 X
 3
@@ -421,6 +432,7 @@ Height
 21
 Caption
 5
+2
 F3
 TextColour
 4
@@ -449,6 +461,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -464,6 +477,7 @@ Height
 21
 Caption
 5
+2
 F4
 TextColour
 4
@@ -492,6 +506,7 @@ Label
 12
 Name
 5
+7
 Label12
 X
 3
@@ -507,6 +522,7 @@ Height
 45
 Caption
 5
+88
 Parasitic losses typically reduce net output to approximately 90 % of design gross power
 TextColour
 4
@@ -535,6 +551,7 @@ Label
 12
 Name
 5
+6
 Label2
 X
 3
@@ -550,6 +567,7 @@ Height
 21
 Caption
 5
+26
 * Fraction of Design Point
 TextColour
 4
@@ -578,6 +596,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -593,6 +612,7 @@ Height
 21
 Caption
 5
+29
 Cycle Part-load Therm to Elec
 TextColour
 4
@@ -621,6 +641,7 @@ Label
 12
 Name
 5
+6
 Label4
 X
 3
@@ -636,6 +657,7 @@ Height
 21
 Caption
 5
+29
 Cycle Part-load Elec to Therm
 TextColour
 4
@@ -664,6 +686,7 @@ Label
 12
 Name
 5
+6
 Label5
 X
 3
@@ -679,6 +702,7 @@ Height
 21
 Caption
 5
+24
 Cooling Tower Correction
 TextColour
 4
@@ -707,6 +731,7 @@ Label
 12
 Name
 5
+6
 Label6
 X
 3
@@ -722,6 +747,7 @@ Height
 21
 Caption
 5
+21
 Temp. Correction Mode
 TextColour
 4
@@ -750,6 +776,7 @@ Label
 12
 Name
 5
+6
 Label7
 X
 3
@@ -765,6 +792,7 @@ Height
 21
 Caption
 5
+2
 F0
 TextColour
 4
@@ -793,6 +821,7 @@ Label
 12
 Name
 5
+6
 Label8
 X
 3
@@ -808,6 +837,7 @@ Height
 21
 Caption
 5
+2
 F1
 TextColour
 4
@@ -836,6 +866,7 @@ Label
 12
 Name
 5
+6
 Label9
 X
 3
@@ -851,6 +882,7 @@ Height
 21
 Caption
 5
+2
 F2
 TextColour
 4
@@ -879,6 +911,7 @@ Numeric
 16
 Name
 5
+8
 MaxGrOut
 X
 3
@@ -906,10 +939,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -937,6 +970,7 @@ Numeric
 16
 Name
 5
+8
 MinGrOut
 X
 3
@@ -964,10 +998,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -995,6 +1029,7 @@ Numeric
 16
 Name
 5
+7
 T2EPLF0
 X
 3
@@ -1022,10 +1057,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1053,6 +1088,7 @@ Numeric
 16
 Name
 5
+7
 T2EPLF1
 X
 3
@@ -1080,10 +1116,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1111,6 +1147,7 @@ Numeric
 16
 Name
 5
+7
 T2EPLF2
 X
 3
@@ -1138,10 +1175,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1169,6 +1206,7 @@ Numeric
 16
 Name
 5
+7
 T2EPLF3
 X
 3
@@ -1196,10 +1234,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1227,6 +1265,7 @@ Numeric
 16
 Name
 5
+7
 T2EPLF4
 X
 3
@@ -1254,10 +1293,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1285,6 +1324,7 @@ Numeric
 16
 Name
 5
+9
 TempCorr0
 X
 3
@@ -1312,10 +1352,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1343,6 +1383,7 @@ Numeric
 16
 Name
 5
+9
 TempCorr1
 X
 3
@@ -1370,10 +1411,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1401,6 +1442,7 @@ Numeric
 16
 Name
 5
+9
 TempCorr2
 X
 3
@@ -1428,10 +1470,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1459,6 +1501,7 @@ Numeric
 16
 Name
 5
+9
 TempCorr3
 X
 3
@@ -1486,10 +1529,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1517,6 +1560,7 @@ Numeric
 16
 Name
 5
+9
 TempCorr4
 X
 3
@@ -1544,10 +1588,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1575,6 +1619,7 @@ Choice
 8
 Name
 5
+9
 TempCorrF
 X
 3
@@ -1605,6 +1650,7 @@ Numeric
 16
 Name
 5
+6
 TurSUE
 X
 3
@@ -1632,10 +1678,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1663,6 +1709,7 @@ Numeric
 16
 Name
 5
+8
 TurbEffG
 X
 3
@@ -1690,10 +1737,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1721,6 +1768,7 @@ Numeric
 16
 Name
 5
+8
 TurbOutG
 X
 3
@@ -1748,10 +1796,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1779,6 +1827,7 @@ LossAdjustment
 6
 Name
 5
+6
 adjust
 X
 3
@@ -1801,6 +1850,7 @@ Divider
 9
 Name
 5
+9
 object 22
 X
 3
@@ -1825,6 +1875,7 @@ Colour
 255
 Caption
 5
+28
 Availability and Curtailment
 Bold
 2
@@ -1835,6 +1886,7 @@ GroupBox
 7
 Name
 5
+8
 object 4
 X
 3
@@ -1850,6 +1902,7 @@ Height
 180
 Caption
 5
+19
 Power Cycle Library
 Bold
 2
@@ -1860,6 +1913,7 @@ Label
 12
 Name
 5
+8
 object 7
 X
 3
@@ -1875,6 +1929,7 @@ Height
 48
 Caption
 5
+105
 Curtailment and availability losses reduce the system output to represent system outages or other events.
 TextColour
 4
@@ -1903,6 +1958,7 @@ Library
 7
 Name
 5
+10
 pb_library
 X
 3
@@ -1918,9 +1974,11 @@ Height
 147
 Library
 5
+29
 Empirical Trough Power Cycles
 Fields
 5
+164
 Description,Type,Efficiency,Max Output,Min Output,Startup Energy,TEF0,TEF1,TEF2,TEF3,TEF4,TFF0,TFF1,TFF2,TFF3,TFF4,CTC F0,CTC F1,CTC F2,CTC F3,CTC F4,Temp.Corr Mode
 Numeric
 
@@ -1928,6 +1986,7 @@ Numeric
 16
 Name
 5
+30
 ui_gross_net_conversion_factor
 X
 3
@@ -1955,10 +2014,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1986,6 +2045,7 @@ Numeric
 16
 Name
 5
+18
 ui_max_therm_input
 X
 3
@@ -2013,10 +2073,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2044,6 +2104,7 @@ Numeric
 16
 Name
 5
+18
 ui_min_therm_input
 X
 3
@@ -2071,10 +2132,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2102,6 +2163,7 @@ Numeric
 16
 Name
 5
+15
 ui_net_capacity
 X
 3
@@ -2129,10 +2191,10 @@ Decimals
 1
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -2160,6 +2222,7 @@ TextEntry
 10
 Name
 5
+17
 ui_pb_description
 X
 3
@@ -2175,7 +2238,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 0
@@ -2200,6 +2263,7 @@ TextEntry
 10
 Name
 5
+10
 ui_pb_type
 X
 3
@@ -2215,7 +2279,7 @@ Height
 24
 Text
 5
- 
+0
 Editable
 2
 0
@@ -2240,6 +2304,7 @@ Numeric
 16
 Name
 5
+11
 ui_q_design
 X
 3
@@ -2267,10 +2332,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2298,6 +2363,7 @@ CheckBox
 8
 Name
 5
+21
 use_pb_library_values
 X
 3
@@ -2313,7 +2379,7 @@ Height
 24
 Caption
 5
- 
+0
 State
 2
 0

@@ -8,6 +8,7 @@ Numeric
 16
 Name
 5
+8
 DepAngle
 X
 3
@@ -35,10 +36,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -66,6 +67,7 @@ Numeric
 16
 Name
 5
+12
 Distance_SCA
 X
 3
@@ -93,10 +95,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -124,6 +126,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -139,6 +142,7 @@ Height
 212
 Caption
 5
+12
 Field Layout
 Bold
 2
@@ -149,6 +153,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -164,6 +169,7 @@ Height
 380
 Caption
 5
+19
 Heat Transfer Fluid
 Bold
 2
@@ -174,6 +180,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -189,6 +196,7 @@ Height
 425
 Caption
 5
+29
 Solar Multiple (Design Point)
 Bold
 2
@@ -199,6 +207,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -214,6 +223,7 @@ Height
 77
 Caption
 5
+17
 Calculated Values
 Bold
 2
@@ -224,6 +234,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox5
 X
 3
@@ -239,6 +250,7 @@ Height
 101
 Caption
 5
+35
 Solar Multiple Reference Conditions
 Bold
 2
@@ -249,6 +261,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox51
 X
 3
@@ -264,6 +277,7 @@ Height
 98
 Caption
 5
+9
 Land Area
 Bold
 2
@@ -274,6 +288,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox6
 X
 3
@@ -289,6 +304,7 @@ Height
 80
 Caption
 5
+26
 Reference Condition (SM=1)
 Bold
 2
@@ -299,6 +315,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox7
 X
 3
@@ -314,6 +331,7 @@ Height
 125
 Caption
 5
+23
 Values From Other Pages
 Bold
 2
@@ -324,6 +342,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox8
 X
 3
@@ -339,6 +358,7 @@ Height
 119
 Caption
 5
+11
 Orientation
 Bold
 2
@@ -349,6 +369,7 @@ Numeric
 16
 Name
 5
+10
 HtfGalArea
 X
 3
@@ -376,10 +397,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -407,6 +428,7 @@ Label
 12
 Name
 5
+6
 Label3
 X
 3
@@ -422,6 +444,7 @@ Height
 21
 Caption
 5
+37
 Azimuth: equator=0, west=90, east=-90
 TextColour
 4
@@ -450,6 +473,7 @@ Label
 12
 Name
 5
+7
 Label31
 X
 3
@@ -465,6 +489,7 @@ Height
 21
 Caption
 5
+31
 Tilt: horizontal=0, vertical=90
 TextColour
 4
@@ -493,6 +518,7 @@ Numeric
 16
 Name
 5
+10
 MinHtfTemp
 X
 3
@@ -520,10 +546,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -551,6 +577,7 @@ Numeric
 16
 Name
 5
+7
 NumScas
 X
 3
@@ -578,10 +605,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -609,6 +636,7 @@ Numeric
 16
 Name
 5
+12
 Row_Distance
 X
 3
@@ -636,10 +664,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -667,6 +695,7 @@ Numeric
 16
 Name
 5
+10
 SFTempInit
 X
 3
@@ -694,10 +723,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -725,6 +754,7 @@ Numeric
 16
 Name
 5
+9
 SfInTempD
 X
 3
@@ -752,10 +782,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -783,6 +813,7 @@ Numeric
 16
 Name
 5
+10
 SfOutTempD
 X
 3
@@ -810,10 +841,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -841,6 +872,7 @@ Numeric
 16
 Name
 5
+9
 SfPipeHl1
 X
 3
@@ -868,10 +900,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -899,6 +931,7 @@ Numeric
 16
 Name
 5
+9
 SfPipeHl2
 X
 3
@@ -926,10 +959,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -957,6 +990,7 @@ Numeric
 16
 Name
 5
+9
 SfPipeHl3
 X
 3
@@ -984,10 +1018,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1015,6 +1049,7 @@ Numeric
 16
 Name
 5
+11
 SfPipeHl300
 X
 3
@@ -1042,10 +1077,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1073,6 +1108,7 @@ Numeric
 16
 Name
 5
+16
 Solar_Field_Area
 X
 3
@@ -1100,10 +1136,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1131,6 +1167,7 @@ Numeric
 16
 Name
 5
+16
 Solar_Field_Mult
 X
 3
@@ -1158,10 +1195,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1189,6 +1226,7 @@ Numeric
 16
 Name
 5
+10
 Stow_Angle
 X
 3
@@ -1216,10 +1254,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1247,6 +1285,7 @@ Numeric
 16
 Name
 5
+7
 azimuth
 X
 3
@@ -1274,10 +1313,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1305,6 +1344,7 @@ Numeric
 16
 Name
 5
+4
 tilt
 X
 3
@@ -1332,10 +1372,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1363,6 +1403,7 @@ Numeric
 16
 Name
 5
+24
 ui_aperture_area_per_SCA
 X
 3
@@ -1390,10 +1431,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1421,6 +1462,7 @@ MaterialProperties
 6
 Name
 5
+13
 ui_custom_htf
 X
 3
@@ -1443,6 +1485,7 @@ Numeric
 16
 Name
 5
+25
 ui_design_exact_area_sm_1
 X
 3
@@ -1470,10 +1513,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1501,6 +1544,7 @@ Numeric
 16
 Name
 5
+29
 ui_design_exact_num_scas_sm_1
 X
 3
@@ -1528,10 +1572,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1559,6 +1603,7 @@ Numeric
 16
 Name
 5
+31
 ui_field_htf_max_operating_temp
 X
 3
@@ -1586,10 +1631,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1617,6 +1662,7 @@ Numeric
 16
 Name
 5
+31
 ui_field_htf_min_operating_temp
 X
 3
@@ -1644,10 +1690,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1675,6 +1721,7 @@ Choice
 8
 Name
 5
+17
 ui_field_htf_type
 X
 3
@@ -1713,6 +1760,7 @@ RadioChoice
 10
 Name
 5
+22
 ui_field_layout_option
 X
 3
@@ -1749,6 +1797,7 @@ Numeric
 16
 Name
 5
+18
 ui_fixed_land_area
 X
 3
@@ -1776,10 +1825,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1
@@ -1807,6 +1856,7 @@ Numeric
 16
 Name
 5
+34
 ui_hce_weighted_optical_efficiency
 X
 3
@@ -1834,10 +1884,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1865,6 +1915,7 @@ Numeric
 16
 Name
 5
+30
 ui_hce_weighted_thermal_losses
 X
 3
@@ -1892,10 +1943,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1923,6 +1974,7 @@ Numeric
 16
 Name
 5
+18
 ui_land_multiplier
 X
 3
@@ -1950,10 +2002,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1981,6 +2033,7 @@ Numeric
 16
 Name
 5
+14
 ui_pb_q_design
 X
 3
@@ -2008,10 +2061,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2039,6 +2092,7 @@ Numeric
 16
 Name
 5
+19
 ui_piping_heat_loss
 X
 3
@@ -2066,10 +2120,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2097,6 +2151,7 @@ Numeric
 16
 Name
 5
+32
 ui_reference_ambient_temperature
 X
 3
@@ -2124,10 +2179,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2155,6 +2210,7 @@ Numeric
 16
 Name
 5
+37
 ui_reference_direct_normal_irradiance
 X
 3
@@ -2182,10 +2238,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2213,6 +2269,7 @@ Numeric
 16
 Name
 5
+23
 ui_reference_wind_speed
 X
 3
@@ -2240,10 +2297,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2271,6 +2328,7 @@ Numeric
 16
 Name
 5
+19
 ui_solar_field_area
 X
 3
@@ -2298,10 +2356,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2329,6 +2387,7 @@ Numeric
 16
 Name
 5
+17
 ui_solar_multiple
 X
 3
@@ -2356,10 +2415,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2387,6 +2446,7 @@ Numeric
 16
 Name
 5
+18
 ui_total_land_area
 X
 3
@@ -2414,10 +2474,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 1

@@ -8,6 +8,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox1
 X
 3
@@ -23,6 +24,7 @@ Height
 233
 Caption
 5
+20
 Traditional Residues
 Bold
 2
@@ -33,6 +35,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox2
 X
 3
@@ -48,6 +51,7 @@ Height
 695
 Caption
 5
+17
 Annual Fuel Costs
 Bold
 2
@@ -58,6 +62,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox3
 X
 3
@@ -73,6 +78,7 @@ Height
 431
 Caption
 5
+25
 Annual Biomass Fuel Costs
 Bold
 2
@@ -83,6 +89,7 @@ GroupBox
 7
 Name
 5
+10
 GroupBox32
 X
 3
@@ -98,6 +105,7 @@ Height
 116
 Caption
 5
+22
 Annual Coal Fuel Costs
 Bold
 2
@@ -108,6 +116,7 @@ GroupBox
 7
 Name
 5
+9
 GroupBox4
 X
 3
@@ -123,6 +132,7 @@ Height
 74
 Caption
 5
+22
 Dedicated Energy Crops
 Bold
 2
@@ -133,6 +143,7 @@ Label
 12
 Name
 5
+6
 Label1
 X
 3
@@ -148,6 +159,7 @@ Height
 21
 Caption
 5
+15
 Feedstock Price
 TextColour
 4
@@ -176,6 +188,7 @@ Label
 12
 Name
 5
+7
 Label11
 X
 3
@@ -191,6 +204,7 @@ Height
 21
 Caption
 5
+15
 Feedstock Price
 TextColour
 4
@@ -219,6 +233,7 @@ Label
 12
 Name
 5
+7
 Label15
 X
 3
@@ -234,6 +249,7 @@ Height
 48
 Caption
 5
+29
 "Green" ton includes moisture
 TextColour
 4
@@ -262,6 +278,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstockcost.bagasse_price
 X
 3
@@ -289,8 +306,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -320,6 +338,7 @@ Numeric
 16
 Name
 5
+37
 biopwr.feedstockcost.bagasse_resource
 X
 3
@@ -347,10 +366,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -378,6 +397,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstockcost.barley_price
 X
 3
@@ -405,8 +425,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -436,6 +457,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstockcost.barley_resource
 X
 3
@@ -463,10 +485,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -494,6 +516,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstockcost.biomass_cost
 X
 3
@@ -521,9 +544,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+8
  $/MMBtu
 ThousandsSep
 2
@@ -552,6 +576,7 @@ Numeric
 16
 Name
 5
+38
 biopwr.feedstockcost.biomass_fuel_cost
 X
 3
@@ -579,9 +604,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+10
  $/dry ton
 ThousandsSep
 2
@@ -610,6 +636,7 @@ Numeric
 16
 Name
 5
+42
 biopwr.feedstockcost.biomass_fuel_cost_esc
 X
 3
@@ -637,9 +664,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -668,6 +696,7 @@ Numeric
 16
 Name
 5
+38
 biopwr.feedstockcost.biomass_fuel_used
 X
 3
@@ -695,10 +724,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -726,6 +755,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.feedstockcost.bit_price
 X
 3
@@ -753,8 +783,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -784,6 +815,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstockcost.bit_resource
 X
 3
@@ -811,10 +843,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -842,6 +874,7 @@ Numeric
 16
 Name
 5
+35
 biopwr.feedstockcost.coal_fuel_cost
 X
 3
@@ -869,9 +902,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+10
  $/dry ton
 ThousandsSep
 2
@@ -900,6 +934,7 @@ Numeric
 16
 Name
 5
+39
 biopwr.feedstockcost.coal_fuel_cost_esc
 X
 3
@@ -927,9 +962,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
+2
  %
 ThousandsSep
 2
@@ -958,6 +994,7 @@ Numeric
 16
 Name
 5
+35
 biopwr.feedstockcost.coal_fuel_used
 X
 3
@@ -985,10 +1022,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1016,6 +1053,7 @@ Numeric
 16
 Name
 5
+35
 biopwr.feedstockcost.coal_per_mmbtu
 X
 3
@@ -1043,9 +1081,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+8
  $/MMBtu
 ThousandsSep
 2
@@ -1074,6 +1113,7 @@ Numeric
 16
 Name
 5
+37
 biopwr.feedstockcost.feedstock1_price
 X
 3
@@ -1101,8 +1141,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -1132,6 +1173,7 @@ Numeric
 16
 Name
 5
+40
 biopwr.feedstockcost.feedstock1_resource
 X
 3
@@ -1159,10 +1201,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1190,6 +1232,7 @@ Numeric
 16
 Name
 5
+37
 biopwr.feedstockcost.feedstock2_price
 X
 3
@@ -1217,8 +1260,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -1248,6 +1292,7 @@ Numeric
 16
 Name
 5
+40
 biopwr.feedstockcost.feedstock2_resource
 X
 3
@@ -1275,10 +1320,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1306,6 +1351,7 @@ Numeric
 16
 Name
 5
+40
 biopwr.feedstockcost.fixed_delivery_cost
 X
 3
@@ -1333,10 +1379,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1364,6 +1411,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstockcost.forest_price
 X
 3
@@ -1391,8 +1439,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -1422,6 +1471,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstockcost.forest_resource
 X
 3
@@ -1449,10 +1499,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1480,6 +1530,7 @@ Numeric
 16
 Name
 5
+39
 biopwr.feedstockcost.green_biomass_cost
 X
 3
@@ -1507,9 +1558,10 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
 5
+12
  $/green ton
 ThousandsSep
 2
@@ -1538,6 +1590,7 @@ Numeric
 16
 Name
 5
+31
 biopwr.feedstockcost.herb_price
 X
 3
@@ -1565,8 +1618,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -1596,6 +1650,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstockcost.herb_resource
 X
 3
@@ -1623,10 +1678,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1654,6 +1709,7 @@ Numeric
 16
 Name
 5
+30
 biopwr.feedstockcost.lig_price
 X
 3
@@ -1681,8 +1737,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -1712,6 +1769,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstockcost.lig_resource
 X
 3
@@ -1739,10 +1797,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1770,6 +1828,7 @@ Numeric
 16
 Name
 5
+31
 biopwr.feedstockcost.mill_price
 X
 3
@@ -1797,8 +1856,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -1828,6 +1888,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstockcost.mill_resource
 X
 3
@@ -1855,10 +1916,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -1886,6 +1947,7 @@ Numeric
 16
 Name
 5
+31
 biopwr.feedstockcost.rice_price
 X
 3
@@ -1913,8 +1975,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -1944,6 +2007,7 @@ Numeric
 16
 Name
 5
+34
 biopwr.feedstockcost.rice_resource
 X
 3
@@ -1971,10 +2035,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2002,6 +2066,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstockcost.stover_price
 X
 3
@@ -2029,8 +2094,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -2060,6 +2126,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstockcost.stover_resource
 X
 3
@@ -2087,10 +2154,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2118,6 +2185,7 @@ Numeric
 16
 Name
 5
+33
 biopwr.feedstockcost.subbit_price
 X
 3
@@ -2145,8 +2213,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -2176,6 +2245,7 @@ Numeric
 16
 Name
 5
+36
 biopwr.feedstockcost.subbit_resource
 X
 3
@@ -2203,10 +2273,10 @@ Decimals
 3
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2234,6 +2304,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstockcost.urban_price
 X
 3
@@ -2261,8 +2332,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -2292,6 +2364,7 @@ Numeric
 16
 Name
 5
+35
 biopwr.feedstockcost.urban_resource
 X
 3
@@ -2319,10 +2392,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2350,6 +2423,7 @@ Numeric
 16
 Name
 5
+38
 biopwr.feedstockcost.var_delivery_cost
 X
 3
@@ -2377,10 +2451,11 @@ Decimals
 2
 Prefix
 5
+2
 $ 
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2408,6 +2483,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstockcost.wheat_price
 X
 3
@@ -2435,8 +2511,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -2466,6 +2543,7 @@ Numeric
 16
 Name
 5
+35
 biopwr.feedstockcost.wheat_resource
 X
 3
@@ -2493,10 +2571,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0
@@ -2524,6 +2602,7 @@ Numeric
 16
 Name
 5
+32
 biopwr.feedstockcost.woody_price
 X
 3
@@ -2551,8 +2630,9 @@ Decimals
 2
 Prefix
 5
- 
+0
 Suffix
+5
 5
  $/dt
 ThousandsSep
@@ -2582,6 +2662,7 @@ Numeric
 16
 Name
 5
+35
 biopwr.feedstockcost.woody_resource
 X
 3
@@ -2609,10 +2690,10 @@ Decimals
 0
 Prefix
 5
- 
+0
 Suffix
 5
- 
+0
 ThousandsSep
 2
 0

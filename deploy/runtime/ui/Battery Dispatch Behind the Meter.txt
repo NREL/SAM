@@ -8,6 +8,7 @@ Label
 12
 Name
 5
+20
 BatteryChargeOptions
 X
 3
@@ -23,6 +24,7 @@ Height
 36
 Caption
 5
+74
 For all non-manual dispatch options, select how the battery can be charged
 TextColour
 4
@@ -51,6 +53,7 @@ GroupBox
 7
 Name
 5
+21
 DispatchTimingControl
 X
 3
@@ -66,6 +69,7 @@ Height
 274
 Caption
 5
+27
 Storage Dispatch Controller
 Bold
 2
@@ -76,6 +80,7 @@ GroupBox
 7
 Name
 5
+18
 GridPowerTargetBox
 X
 3
@@ -91,6 +96,7 @@ Height
 106
 Caption
 5
+23
 Input grid power target
 Bold
 2
@@ -101,6 +107,7 @@ GroupBox
 7
 Name
 5
+16
 InputDispatchBox
 X
 3
@@ -116,6 +123,7 @@ Height
 106
 Caption
 5
+22
 Input battery dispatch
 Bold
 2
@@ -126,6 +134,7 @@ DataArray
 9
 Name
 5
+20
 batt_custom_dispatch
 X
 3
@@ -144,9 +153,11 @@ Mode
 1
 Label
 5
+29
 Battery custom dispatch input
 Description
 5
+156
 Custom battery dispatch allows a user to get the dispatch from another tool and input into SAM directly.  Power < 0 for charging, Power > 0 for discharging.
 TabOrder
 3
@@ -157,6 +168,7 @@ CheckBox
 8
 Name
 5
+29
 batt_dispatch_auto_can_charge
 X
 3
@@ -172,6 +184,7 @@ Height
 24
 Caption
 5
+30
 Battery can charge from system
 State
 2
@@ -185,6 +198,7 @@ CheckBox
 8
 Name
 5
+33
 batt_dispatch_auto_can_gridcharge
 X
 3
@@ -200,6 +214,7 @@ Height
 24
 Caption
 5
+28
 Battery can charge from grid
 State
 2
@@ -213,6 +228,7 @@ RadioChoice
 10
 Name
 5
+20
 batt_dispatch_choice
 X
 3
@@ -252,6 +268,7 @@ Label
 12
 Name
 5
+19
 batt_dispatch_label
 X
 3
@@ -267,6 +284,7 @@ Height
 81
 Caption
 5
+161
 Input a custom battery power dispatch (<0 for charging, >0 for discharging).  SAM will follow the dispatch within the operational limits of the system specified.
 TextColour
 4
@@ -295,6 +313,7 @@ Divider
 9
 Name
 5
+17
 batt_grid_options
 X
 3
@@ -319,6 +338,7 @@ Colour
 255
 Caption
 5
+12
 Grid options
 Bold
 2
@@ -329,6 +349,7 @@ Choice
 8
 Name
 5
+18
 batt_target_choice
 X
 3
@@ -359,6 +380,7 @@ Label
 12
 Name
 5
+17
 batt_target_label
 X
 3
@@ -374,6 +396,7 @@ Height
 81
 Caption
 5
+178
 Input the maximum grid power desired.  SAM will charge the battery if the electric load is less than the target, and discharge the battery if the load is greater than the target.
 TextColour
 4
@@ -402,6 +425,7 @@ DataArray
 9
 Name
 5
+17
 batt_target_power
 X
 3
@@ -420,9 +444,11 @@ Mode
 1
 Label
 5
+17
 Grid target power
 Description
 5
+130
 The grid target power is the maximum desired power drawn from the grid over each timestep after contributions from PV and battery.
 TabOrder
 3
@@ -433,6 +459,7 @@ MonthlyFactor
 7
 Name
 5
+25
 batt_target_power_monthly
 X
 3
@@ -448,6 +475,7 @@ Height
 24
 Description
 5
+17
 Single or monthly
 TabOrder
 3
@@ -458,6 +486,7 @@ Divider
 9
 Name
 5
+9
 object 21
 X
 3
@@ -482,6 +511,7 @@ Colour
 255
 Caption
 5
+21
 Choose Dispatch Model
 Bold
 2
