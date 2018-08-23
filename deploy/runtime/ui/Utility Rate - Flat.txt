@@ -916,11 +916,27 @@ Electricity Rates - General
 DataArray
 
 0
-4166
+4612
 on_load{"Utility Rate - Flat"} = define(){
+	check_configuration();
 	ur_flat_sell_rates(); // refresh when switching pages
 };	
-	
+
+function check_configuration()
+{
+	tech = technology();
+	finance = financing();
+
+	// Under the single owner configuration, only one metering option is valid
+	if (tech == 'Flat Plate PV' && finance == 'Single Owner'){
+		if (value('ur_metering_option') != 4){
+			logmsg('Got here');
+			value('ur_metering_option', 4);
+			logmsg(value('ur_metering_option'));
+			refresh('ur_metering_option');
+		}
+	}
+}	
 
 function ur_flat_sell_rates()
 {	
@@ -951,6 +967,7 @@ on_change{'ur_en_ts_sell_rate'} = define()
 
 on_change{'ur_metering_option'} = define()
 {
+	check_configuration();
 	ur_flat_sell_rates();
 };
 
