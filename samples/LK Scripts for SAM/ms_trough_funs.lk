@@ -175,9 +175,11 @@ write_output_files = define(csv_Runners, csv_Headers, csv_Loop, csv_SGS)
 	sgs.Length_m = get('sgs_lengths');
 	sgs.MassFlow_kg_s = get('pipe_sgs_mdot_dsn');
 	sgs.Velocity_m_s = get('pipe_sgs_vel_dsn');
+	sgs.Temp_C = get('pipe_sgs_T_dsn');
+	sgs.P_gauge_bar = get('pipe_sgs_P_dsn');
 	ok = csvwrite( csv_SGS, sgs,
 		{ 'cols'=['index', 'Diameter_m', 'WallThk_m', 'Length_m',
-			'MassFlow_kg_s', 'Velocity_m_s'] } );
+			'MassFlow_kg_s', 'Velocity_m_s', 'Temp_C', 'P_gauge_bar'] } );
 
 	outln("Finished writing output files");
 };  // write_output_files()

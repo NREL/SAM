@@ -56,7 +56,7 @@ if (molten_salt_trough) {
 	set( 'tanks_in_parallel', 0 );
 	set( 'has_hot_tank_bypass', 1 );
 	set( 'T_tank_hot_inlet_min', 400 );
-	set( 'sgs_lengths', [0, 90, 100, 120, 0, 0, 0, 0, 80, 120, 80] );
+	set( 'sgs_lengths', [30, 90, 100, 120, 30, 30, 90, 80, 80, 120, 80] );
 }
 
 if (custom_tes_losses) {
