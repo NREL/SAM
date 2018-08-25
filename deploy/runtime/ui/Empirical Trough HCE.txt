@@ -34,23 +34,24 @@ GroupBox
 7
 Name
 5
-0
+2
+14
 X
 3
 3
 Y
 3
-324
+6
 Width
 3
 870
 Height
 3
-642
+309
 Caption
 5
-51
-Heat Collection Element (HCE) / Receiver Properties
+48
+Heat Collection Element (HCE) / Receiver Library
 Bold
 2
 1
@@ -3702,14 +3703,14 @@ Label
 12
 Name
 5
-8
-Label261
+10
+Label26138
 X
 3
 12
 Y
 3
-417
+393
 Width
 3
 218
@@ -3718,8 +3719,8 @@ Height
 21
 Caption
 5
-22
-Condition from Library
+17
+Name from Library
 TextColour
 4
 0

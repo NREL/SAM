@@ -2874,17 +2874,17 @@ Divider
 9
 Name
 5
-9
-object 22
+11
+object 2230
 X
 3
-12
+642
 Y
 3
-225
+189
 Width
 3
-765
+136
 Height
 3
 16
@@ -2899,8 +2899,7 @@ Colour
 255
 Caption
 5
-11
-Contingency
+0
 Bold
 2
 1
@@ -2910,17 +2909,17 @@ Divider
 9
 Name
 5
-9
-object 22
+11
+object 2234
 X
 3
-12
+642
 Y
 3
-225
+456
 Width
 3
-765
+136
 Height
 3
 16
@@ -2935,8 +2934,7 @@ Colour
 255
 Caption
 5
-11
-Contingency
+0
 Bold
 2
 1
@@ -2946,17 +2944,17 @@ Divider
 9
 Name
 5
-9
-object 22
+11
+object 2237
 X
 3
 12
 Y
 3
-225
+420
 Width
 3
-765
+603
 Height
 3
 16
@@ -2971,8 +2969,8 @@ Colour
 255
 Caption
 5
-11
-Contingency
+9
+Sales Tax
 Bold
 2
 1
@@ -2982,17 +2980,17 @@ Divider
 9
 Name
 5
-9
-object 22
+11
+object 2265
 X
 3
-12
+642
 Y
 3
-225
+261
 Width
 3
-765
+136
 Height
 3
 16
@@ -3007,8 +3005,7 @@ Colour
 255
 Caption
 5
-11
-Contingency
+0
 Bold
 2
 1
@@ -3063,14 +3060,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 733
 X
 3
 429
 Y
 3
-273
+471
 Width
 3
 210
@@ -3079,8 +3076,8 @@ Height
 24
 Caption
 5
-17
-Total direct cost
+19
+Total indirect cost
 TextColour
 4
 0
@@ -3108,24 +3105,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 740
 X
 3
-429
+621
 Y
 3
-273
+384
 Width
 3
-210
+15
 Height
 3
 24
 Caption
 5
-17
-Total direct cost
+1
+=
 TextColour
 4
 0
@@ -3134,7 +3131,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -3143,7 +3140,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -3153,24 +3150,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 742
 X
 3
-429
+498
 Y
 3
-273
+384
 Width
 3
-210
+15
 Height
 3
 24
 Caption
 5
-17
-Total direct cost
+1
++
 TextColour
 4
 0
@@ -3179,7 +3176,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -3188,7 +3185,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -3198,24 +3195,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 744
 X
 3
-429
+375
 Y
 3
-273
+384
 Width
 3
-210
+15
 Height
 3
 24
 Caption
 5
-17
-Total direct cost
+1
++
 TextColour
 4
 0
@@ -3224,7 +3221,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -3233,7 +3230,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -3243,24 +3240,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 746
 X
 3
-429
+252
 Y
 3
-273
+384
 Width
 3
-210
+15
 Height
 3
 24
 Caption
 5
-17
-Total direct cost
+1
++
 TextColour
 4
 0
@@ -3269,7 +3266,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -3278,7 +3275,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -3288,24 +3285,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 750
 X
 3
-429
+426
 Y
 3
-273
+522
 Width
 3
-210
+213
 Height
 3
 24
 Caption
 5
-17
-Total direct cost
+19
+Total intalled cost
 TextColour
 4
 0

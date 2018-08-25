@@ -1442,7 +1442,7 @@ Height
 163
 Image
 7
-C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/MSPT Receiver_pctFlow.png
+MSPT Receiver_pctFlow.png
 Centered
 2
 1

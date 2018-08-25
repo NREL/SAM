@@ -1283,24 +1283,24 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 74
 X
 3
-27
+444
 Y
 3
-240
+351
 Width
 3
-423
+36
 Height
 3
-63
+24
 Caption
 5
-105
-Curtailment and availability losses reduce the system output to represent system outages or other events.
+4
+%/yr
 TextColour
 4
 0
@@ -1315,13 +1315,13 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
 0
 AlignTop
 2
-1
+0
 Numeric
 
 1

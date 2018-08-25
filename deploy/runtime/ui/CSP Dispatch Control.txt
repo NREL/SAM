@@ -52,13 +52,14 @@ Label
 12
 Name
 5
-0
+1
+1
 X
 3
 15
 Y
 3
-294
+345
 Width
 3
 332
@@ -67,8 +68,8 @@ Height
 45
 Caption
 5
-63
-Storage dispatch fractions apply to the maximum energy storage.
+83
+Turbine output and fossil fill fractions apply to the design turbine thermal input.
 TextColour
 4
 0
@@ -96,23 +97,24 @@ Label
 12
 Name
 5
-0
+1
+2
 X
 3
 15
 Y
 3
-294
+390
 Width
 3
 332
 Height
 3
-45
+63
 Caption
 5
-63
-Storage dispatch fractions apply to the maximum energy storage.
+104
+Use the weekday and schedule matrices to specify the month and hour of day for each of the nine periods.
 TextColour
 4
 0

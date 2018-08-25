@@ -1651,24 +1651,24 @@ GroupBox
 7
 Name
 5
-8
-object 4
+10
+object 418
 X
 3
 6
 Y
 3
-240
+144
 Width
 3
 830
 Height
 3
-186
+93
 Caption
 5
-21
-Dispatch Optimization
+28
+Availability and Curtailment
 Bold
 2
 1

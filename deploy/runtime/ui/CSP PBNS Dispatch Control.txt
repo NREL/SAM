@@ -52,23 +52,24 @@ Label
 12
 Name
 5
-0
+1
+1
 X
 3
 36
 Y
 3
-372
+330
 Width
 3
 332
 Height
 3
-63
+42
 Caption
 5
-104
-Use the weekday and schedule matrices to specify the month and hour of day for each of the nine periods.
+64
+Fossil fill fractions apply to the design turbine thermal input.
 TextColour
 4
 0

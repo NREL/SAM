@@ -1501,7 +1501,7 @@ Height
 163
 Image
 7
-C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/Molten Salt Tower Receiver_pctFlow.png
+Molten Salt Tower Receiver_pctFlow.png
 Centered
 2
 1

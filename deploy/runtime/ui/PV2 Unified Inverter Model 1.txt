@@ -116,47 +116,165 @@ Database...
 TabOrder
 3
 4294967295
+Numeric
+
+1
+16
+Name
+5
+9
+object 11
+X
+3
+348
+Y
+3
+123
+Width
+3
+90
+Height
+3
+24
+Value
+1
+300.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Button
 
 1
 7
 Name
 5
-8
-object 1
+10
+object 110
 X
 3
-426
+315
 Y
 3
-30
+252
 Width
 3
-90
+183
 Height
 3
 24
 Caption
 5
+26
+Load from CEC test data...
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+10
+object 111
+X
+3
+348
+Y
+3
+150
+Width
+3
+90
+Height
+3
+24
+Value
+1
+500.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
 11
-Database...
-TabOrder
-3
-4294967295
-Numeric
-
-1
-16
-Name
-5
-9
-object 11
+object 1113
 X
 3
-348
+132
 Y
 3
-123
+150
 Width
 3
 90
@@ -165,7 +283,7 @@ Height
 24
 Value
 1
-300.000000
+55.000000
 Mode
 3
 1
@@ -208,14 +326,14 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1114
 X
 3
-348
+408
 Y
 3
-123
+285
 Width
 3
 90
@@ -224,7 +342,7 @@ Height
 24
 Value
 1
-300.000000
+1.200000
 Mode
 3
 1
@@ -267,14 +385,14 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1115
 X
 3
-348
+408
 Y
 3
-123
+420
 Width
 3
 90
@@ -283,7 +401,7 @@ Height
 24
 Value
 1
-300.000000
+1500.000000
 Mode
 3
 1
@@ -326,14 +444,14 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1116
 X
 3
-348
+408
 Y
 3
-123
+366
 Width
 3
 90
@@ -342,7 +460,7 @@ Height
 24
 Value
 1
-300.000000
+0.000000
 Mode
 3
 1
@@ -385,14 +503,14 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1117
 X
 3
-348
+408
 Y
 3
-123
+393
 Width
 3
 90
@@ -401,7 +519,7 @@ Height
 24
 Value
 1
-300.000000
+10.000000
 Mode
 3
 1
@@ -444,14 +562,14 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1126
 X
 3
 348
 Y
 3
-123
+69
 Width
 3
 90
@@ -460,7 +578,7 @@ Height
 24
 Value
 1
-300.000000
+0.004000
 Mode
 3
 1
@@ -503,14 +621,14 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1131
 X
 3
-348
+408
 Y
 3
-123
+339
 Width
 3
 90
@@ -519,7 +637,7 @@ Height
 24
 Value
 1
-300.000000
+0.000000
 Mode
 3
 1
@@ -562,14 +680,14 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1132
 X
 3
-348
+408
 Y
 3
-123
+312
 Width
 3
 90
@@ -578,7 +696,7 @@ Height
 24
 Value
 1
-300.000000
+7.050000
 Mode
 3
 1
@@ -621,14 +739,14 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1133
 X
 3
 348
 Y
 3
-123
+96
 Width
 3
 90
@@ -637,7 +755,7 @@ Height
 24
 Value
 1
-300.000000
+-0.110000
 Mode
 3
 1
@@ -680,14 +798,14 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1134
 X
 3
-348
+132
 Y
 3
-123
+177
 Width
 3
 90
@@ -696,7 +814,7 @@ Height
 24
 Value
 1
-300.000000
+7.000000
 Mode
 3
 1
@@ -739,11 +857,11 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1135
 X
 3
-348
+132
 Y
 3
 123
@@ -755,7 +873,7 @@ Height
 24
 Value
 1
-300.000000
+5.000000
 Mode
 3
 1
@@ -798,14 +916,14 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1136
 X
 3
-348
+132
 Y
 3
-123
+96
 Width
 3
 90
@@ -814,7 +932,7 @@ Height
 24
 Value
 1
-300.000000
+50.000000
 Mode
 3
 1
@@ -857,14 +975,14 @@ Numeric
 16
 Name
 5
-9
-object 11
+11
+object 1137
 X
 3
-348
+132
 Y
 3
-123
+69
 Width
 3
 90
@@ -873,125 +991,7 @@ Height
 24
 Value
 1
-300.000000
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-16
-Name
-5
-9
-object 11
-X
-3
-348
-Y
-3
-123
-Width
-3
-90
-Height
-3
-24
-Value
-1
-300.000000
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-16
-Name
-5
-9
-object 11
-X
-3
-348
-Y
-3
-123
-Width
-3
-90
-Height
-3
-24
-Value
-1
-300.000000
+250.000000
 Mode
 3
 1
@@ -1156,24 +1156,24 @@ GroupBox
 7
 Name
 5
-8
-object 4
+9
+object 48
 X
 3
 12
 Y
 3
-9
+228
 Width
 3
 516
 Height
 3
-213
+261
 Caption
 5
-23
-Inverter Specifications
+16
+Efficiency Model
 Bold
 2
 1
@@ -1228,14 +1228,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 712
 X
 3
-255
+315
 Y
 3
-150
+420
 Width
 3
 90
@@ -1244,8 +1244,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+11
+SPE (manuf)
 TextColour
 4
 0
@@ -1273,14 +1273,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 718
 X
 3
-255
+315
 Y
 3
-150
+393
 Width
 3
 90
@@ -1289,8 +1289,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+14
+SPE (weighted)
 TextColour
 4
 0
@@ -1318,14 +1318,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 719
 X
 3
-255
+315
 Y
 3
-150
+366
 Width
 3
 90
@@ -1334,8 +1334,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+2
+C3
 TextColour
 4
 0
@@ -1363,14 +1363,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 720
 X
 3
-255
+315
 Y
 3
-150
+339
 Width
 3
 90
@@ -1379,8 +1379,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+2
+C2
 TextColour
 4
 0
@@ -1408,14 +1408,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 721
 X
 3
-255
+315
 Y
 3
-150
+312
 Width
 3
 90
@@ -1424,8 +1424,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+2
+C1
 TextColour
 4
 0
@@ -1453,14 +1453,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 722
 X
 3
-255
+315
 Y
 3
-150
+285
 Width
 3
 90
@@ -1469,8 +1469,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+2
+C0
 TextColour
 4
 0
@@ -1498,14 +1498,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 723
 X
 3
 255
 Y
 3
-150
+96
 Width
 3
 90
@@ -1514,8 +1514,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+6
+Vdcmax
 TextColour
 4
 0
@@ -1543,14 +1543,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 724
 X
 3
 255
 Y
 3
-150
+69
 Width
 3
 90
@@ -1559,8 +1559,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+6
+Vdcmin
 TextColour
 4
 0
@@ -1588,11 +1588,11 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 727
 X
 3
-255
+39
 Y
 3
 150
@@ -1604,8 +1604,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+6
+Pntare
 TextColour
 4
 0
@@ -1633,14 +1633,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 728
 X
 3
-255
+39
 Y
 3
-150
+123
 Width
 3
 90
@@ -1649,8 +1649,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+3
+Pso
 TextColour
 4
 0
@@ -1678,14 +1678,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 729
 X
 3
-255
+39
 Y
 3
-150
+96
 Width
 3
 90
@@ -1694,8 +1694,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+4
+Pdc0
 TextColour
 4
 0
@@ -1723,14 +1723,14 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 73
 X
 3
 255
 Y
 3
-150
+123
 Width
 3
 90
@@ -1739,8 +1739,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+8
+MPPT low
 TextColour
 4
 0
@@ -1768,14 +1768,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 730
 X
 3
-255
+39
 Y
 3
-150
+69
 Width
 3
 90
@@ -1784,8 +1784,8 @@ Height
 24
 Caption
 5
-9
-MPPT high
+4
+Pac0
 TextColour
 4
 0

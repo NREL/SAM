@@ -35,24 +35,24 @@ GroupBox
 7
 Name
 5
-9
-GroupBox1
+11
+GroupBox148
 X
 3
 6
 Y
 3
-156
+789
 Width
 3
 842
 Height
 3
-335
+124
 Caption
 5
-9
-DC Losses
+28
+Curtailment and Availability
 Bold
 2
 1
@@ -89,24 +89,24 @@ GroupBox
 7
 Name
 5
-9
-GroupBox6
+11
+GroupBox649
 X
 3
 6
 Y
 3
-579
+495
 Width
 3
 842
 Height
 3
-123
+80
 Caption
 5
-18
-Transformer Losses
+9
+AC Losses
 Bold
 2
 1
@@ -413,14 +413,14 @@ Label
 12
 Name
 5
-8
-Label123
+9
+Label1231
 X
 3
 30
 Y
 3
-324
+348
 Width
 3
 218
@@ -429,8 +429,8 @@ Height
 21
 Caption
 5
-27
-DC power optimizer loss (%)
+23
+Total DC power loss (%)
 TextColour
 4
 0
@@ -458,14 +458,14 @@ Label
 12
 Name
 5
-9
-Label1231
+10
+Label12339
 X
 3
 30
 Y
 3
-348
+300
 Width
 3
 218
@@ -474,8 +474,8 @@ Height
 21
 Caption
 5
-23
-Total DC power loss (%)
+13
+Nameplate (%)
 TextColour
 4
 0
@@ -1153,24 +1153,114 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 710
 X
 3
-21
+252
 Y
 3
-516
+372
 Width
 3
-807
+465
 Height
 3
 24
 Caption
 5
-129
-AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
+72
+Total DC power loss = 100% * [  1 - the product of ( 1 - loss/100%  )  ]
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+4294967294
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+10
+object 718
+X
+3
+384
+Y
+3
+324
+Width
+3
+420
+Height
+3
+21
+Caption
+5
+67
+All four subarrays are subject to the same DC power optimizer loss.
+TextColour
+4
+112
+112
+112
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+9
+object 73
+X
+3
+21
+Y
+3
+174
+Width
+3
+813
+Height
+3
+24
+Caption
+5
+128
+DC losses apply to the electrical output of each subarray and account for losses not calculated by the module performance model.
 TextColour
 4
 0
@@ -1198,24 +1288,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 752
 X
 3
-21
+30
 Y
 3
-516
+600
 Width
 3
-807
+813
 Height
 3
-24
+64
 Caption
 5
-129
-AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
+262
+The transformer loss model is intended for distribution or substation transformers in large PV systems. Losses apply to the electrical output of the inverter and assume a power factor of 1. The transformer capacity is equal to the total inverter AC power rating.
 TextColour
 4
 0
@@ -1243,24 +1333,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 757
 X
 3
-21
+12
 Y
 3
-516
+807
 Width
 3
-807
+288
 Height
 3
-24
+105
 Caption
 5
-129
-AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
+199
+Curtailment and availability losses reduce the system output to represent system outages or other events. Curtailment and availability losses may be applied either on the DC or AC side of the system.
 TextColour
 4
 0
@@ -1288,24 +1378,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 764
 X
 3
 21
 Y
 3
-516
+21
 Width
 3
-807
+735
 Height
 3
-24
+42
 Caption
 5
-129
-AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
+158
+Soiling losses apply to the total solar irradiance incident on each subarray. SAM applies these losses in addition to any losses on the Shading and Snow page.
 TextColour
 4
 0
@@ -1333,24 +1423,24 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 77
 X
 3
-21
+165
 Y
 3
-516
+453
 Width
 3
-807
+132
 Height
 3
 24
 Caption
 5
-129
-AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
+25
+Apply default losses for:
 TextColour
 4
 0
@@ -1365,127 +1455,37 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
 0
 AlignTop
 2
-1
+0
 Label
 
 1
 12
 Name
 5
-8
-object 7
+9
+object 78
 X
 3
-21
+30
 Y
 3
-516
+423
 Width
 3
-807
+771
 Height
 3
 24
 Caption
 5
-129
-AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-12
-Name
-5
-8
-object 7
-X
-3
-21
-Y
-3
-516
-Width
-3
-807
-Height
-3
-24
-Caption
-5
-129
-AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-12
-Name
-5
-8
-object 7
-X
-3
-21
-Y
-3
-516
-Width
-3
-807
-Height
-3
-24
-Caption
-5
-129
-AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model.
+80
+Apply default losses to replace DC losses for all subarrays with default values.
 TextColour
 4
 0

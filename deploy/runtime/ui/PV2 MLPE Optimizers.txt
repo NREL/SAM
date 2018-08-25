@@ -67,14 +67,14 @@ Numeric
 16
 Name
 5
-3
-Imp
+4
+Imp1
 X
 3
 117
 Y
 3
-33
+60
 Width
 3
 90
@@ -126,14 +126,14 @@ Numeric
 16
 Name
 5
-3
-Imp
+5
+Imp10
 X
 3
 117
 Y
 3
-33
+114
 Width
 3
 90
@@ -410,14 +410,14 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 77
 X
 3
 24
 Y
 3
-60
+114
 Width
 3
 90
@@ -426,8 +426,8 @@ Height
 24
 Caption
 5
-14
-DC bus voltage
+9
+MPPT high
 TextColour
 4
 0
@@ -455,14 +455,14 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 78
 X
 3
 24
 Y
 3
-60
+87
 Width
 3
 90
@@ -471,8 +471,8 @@ Height
 24
 Caption
 5
-14
-DC bus voltage
+8
+MPPT low
 TextColour
 4
 0
@@ -500,14 +500,14 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 79
 X
 3
 24
 Y
 3
-60
+33
 Width
 3
 90
@@ -516,8 +516,8 @@ Height
 24
 Caption
 5
-14
-DC bus voltage
+9
+Max power
 TextColour
 4
 0

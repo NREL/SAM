@@ -743,24 +743,24 @@ GroupBox
 7
 Name
 5
-8
-object 4
+9
+object 41
 X
 3
 6
 Y
 3
-231
+6
 Width
 3
-870
+867
 Height
 3
-234
+219
 Caption
 5
-41
-Solar Collector Assembly (SCA) Properties
+38
+Solar Collector Assembly (SCA) Library
 Bold
 2
 1

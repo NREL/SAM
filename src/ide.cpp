@@ -1879,14 +1879,14 @@ bool UIEditorPanel::Load_text(const wxString &name)
 	m_ipd.Clear();
 
 	bool ok = true;
-	wxString ui_path = SamApp::GetRuntimePath() + "/ui/" + name;
-	wxString file = ui_path + ".txt";
+	wxString ui_path = SamApp::GetRuntimePath() + "/ui/" ;
+	wxString file = ui_path + name + ".txt";
 
 	if (wxFileExists(file))
 	{
 		wxFFileInputStream ff(file, "r");
 		bool bff = ff.IsOk();
-		bool bread = m_ipd.Read_text(ff);
+		bool bread = m_ipd.Read_text(ff, ui_path);
 		if (bff && bread)
 		//	if (ff.IsOk() && m_ipd.Read_text(ff))
 		{

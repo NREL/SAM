@@ -339,11 +339,11 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2113
 X
 3
-444
+12
 Y
 3
 36
@@ -364,8 +364,8 @@ Colour
 255
 Caption
 5
-9
-Heat Sink
+11
+Solar Field
 Bold
 2
 1

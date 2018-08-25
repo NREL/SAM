@@ -107,24 +107,24 @@ Label
 12
 Name
 5
-6
-Label2
+8
+Label211
 X
 3
-552
+222
 Y
 3
-105
+24
 Width
 3
-302
+452
 Height
 3
-63
+21
 Caption
 5
-116
-The weighted average cost of capital (WACC) is displayed for reference. SAM does not use the value for calculations.
+55
+Standard loan interest payments are not tax deductible.
 TextColour
 4
 0
@@ -139,13 +139,13 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
 0
 AlignTop
 2
-1
+0
 Label
 
 1

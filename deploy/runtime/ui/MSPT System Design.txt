@@ -496,7 +496,7 @@ Height
 556
 Image
 7
-C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/MSPT System Design_object 12.png
+MSPT System Design_object 12.png
 Centered
 2
 1
@@ -542,14 +542,14 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2119
 X
 3
 12
 Y
 3
-288
+216
 Width
 3
 405
@@ -567,8 +567,8 @@ Colour
 255
 Caption
 5
-15
-Thermal Storage
+18
+Tower and Receiver
 Bold
 2
 1
@@ -578,14 +578,14 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2120
 X
 3
-12
+444
 Y
 3
-288
+96
 Width
 3
 405
@@ -603,8 +603,8 @@ Colour
 255
 Caption
 5
-15
-Thermal Storage
+11
+Power Cycle
 Bold
 2
 1
@@ -614,14 +614,14 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2121
 X
 3
 12
 Y
 3
-288
+96
 Width
 3
 405
@@ -640,7 +640,7 @@ Colour
 Caption
 5
 15
-Thermal Storage
+Heliostat Field
 Bold
 2
 1

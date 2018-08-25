@@ -1801,7 +1801,7 @@ Height
 100
 Image
 7
-C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/Direct Steam Tower Receiver_pct.png
+Direct Steam Tower Receiver_pct.png
 Centered
 2
 1

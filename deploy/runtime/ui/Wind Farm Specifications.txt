@@ -35,24 +35,24 @@ GroupBox
 7
 Name
 5
-9
-GroupBox2
+11
+GroupBox222
 X
 3
 6
 Y
 3
-117
+3
 Width
 3
 788
 Height
 3
-122
+110
 Caption
 5
-23
-Losses and Wake Effects
+13
+System Sizing
 Bold
 2
 1
@@ -692,7 +692,7 @@ Height
 55
 Image
 7
-C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/Wind Farm Specifications_windfarm.farm.compass_rose.png
+Wind Farm Specifications_windfarm.farm.compass_rose.png
 Centered
 2
 1

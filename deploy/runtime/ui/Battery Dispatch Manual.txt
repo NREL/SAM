@@ -278,11 +278,11 @@ Label
 12
 Name
 5
-29
-Percent of rated to discharge
+31
+Percent of rated to discharge37
 X
 3
-390
+237
 Y
 3
 57
@@ -1527,11 +1527,11 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 738
 X
 3
-342
+189
 Y
 3
 57

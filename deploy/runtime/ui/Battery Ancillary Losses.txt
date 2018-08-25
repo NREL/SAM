@@ -268,24 +268,24 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 77
 X
 3
-24
+627
 Y
 3
-30
+150
 Width
 3
-945
+336
 Height
 3
-63
+42
 Caption
 5
-303
-Specify additional hourly losses not captured by power conversion losses.  Such losses might include pumps, heaters, or other equipment required by the battery system.  For AC-connected batteries, the losses are applied on the AC side.  For DC-connected batteries, the losses are applied on the DC side.
+83
+Operation losses will be applied whenenver the battery is at that operational mode.
 TextColour
 4
 0

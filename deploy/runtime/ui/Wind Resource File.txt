@@ -116,24 +116,24 @@ GroupBox
 7
 Name
 5
-8
-object 4
+10
+object 418
 X
 3
 6
 Y
 3
-480
+594
 Width
 3
 744
 Height
 3
-111
+96
 Caption
 5
-97
-Download a wind resource file from the online NREL WIND Toolkit (continental U.S. locations only)
+48
+Use a wind resource file stored on your computer
 Bold
 2
 1
@@ -188,24 +188,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 719
 X
 3
-18
+216
 Y
 3
-648
+501
 Width
 3
-588
+507
 Height
 3
-39
+81
 Caption
 5
-127
-Check the box and click Browse to choose a an .srw file stored on your computer without adding it to the wind resource library.
+278
+Click Download and enter location information for your project site. SAM downloads wind resource data as an .srw file from the NREL WIND Toolkit and stores it in the Downloaded Weather Files folder on your computer shown under "Use a weather file stored on your computer" below.
 TextColour
 4
 0
@@ -233,24 +233,24 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 73
 X
 3
-18
+15
 Y
 3
-648
+30
 Width
 3
-588
+804
 Height
 3
-39
+24
 Caption
 5
-127
-Check the box and click Browse to choose a an .srw file stored on your computer without adding it to the wind resource library.
+128
+Click a name in the list to choose a file from the library. Type a few letters of the name in the search box to filter the list.
 TextColour
 4
 0

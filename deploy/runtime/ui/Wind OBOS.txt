@@ -924,24 +924,24 @@ GroupBox
 7
 Name
 5
-8
-object 4
+10
+object 410
 X
 3
 6
 Y
 3
-468
+354
 Width
 3
 816
 Height
 3
-129
+108
 Caption
 5
-45
-Offshore Balance of System Cost Model Results
+53
+Detailed Offshore Balance of System Cost Model Inputs
 Bold
 2
 1
@@ -996,24 +996,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 711
 X
 3
-480
+6
 Y
 3
-546
+12
 Width
 3
-327
+816
 Height
 3
-48
+24
 Caption
 5
-94
-Click to apply the cost estimate to the appropriate inputs in the Capital Costs section above.
+119
+NOTE: This Offshore Balance of System Cost Model is valid ONLY for offshore installations. Please see Help for details.
 TextColour
 4
 255
@@ -1022,19 +1022,19 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
-4294967295
+0
 WordWrap
 2
-1
+0
 AlignRight
 2
 0
 AlignTop
 2
-1
+0
 GroupBox
 
 1

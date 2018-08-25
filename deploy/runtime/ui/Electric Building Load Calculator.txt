@@ -1892,24 +1892,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 710
 X
 3
-468
+414
 Y
 3
-264
+345
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0
@@ -1937,24 +1937,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 711
 X
 3
-468
+414
 Y
 3
-264
+318
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0
@@ -1982,24 +1982,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 712
 X
 3
-468
+414
 Y
 3
-264
+291
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0
@@ -2027,24 +2027,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 713
 X
 3
-468
+414
 Y
 3
 264
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0
@@ -2072,11 +2072,11 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 714
 X
 3
-468
+318
 Y
 3
 264
@@ -2089,7 +2089,7 @@ Height
 Caption
 5
 3
-Jul
+Jan
 TextColour
 4
 0
@@ -2117,14 +2117,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 715
 X
 3
-468
+318
 Y
 3
-264
+291
 Width
 3
 27
@@ -2134,7 +2134,7 @@ Height
 Caption
 5
 3
-Jul
+Feb
 TextColour
 4
 0
@@ -2162,14 +2162,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 716
 X
 3
-468
+318
 Y
 3
-264
+318
 Width
 3
 27
@@ -2179,7 +2179,7 @@ Height
 Caption
 5
 3
-Jul
+Mar
 TextColour
 4
 0
@@ -2207,14 +2207,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 751
 X
 3
-468
+318
 Y
 3
-264
+399
 Width
 3
 27
@@ -2224,7 +2224,7 @@ Height
 Caption
 5
 3
-Jul
+Jun
 TextColour
 4
 0
@@ -2252,14 +2252,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 752
 X
 3
-468
+318
 Y
 3
-264
+372
 Width
 3
 27
@@ -2269,7 +2269,7 @@ Height
 Caption
 5
 3
-Jul
+May
 TextColour
 4
 0
@@ -2297,14 +2297,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 753
 X
 3
-468
+318
 Y
 3
-264
+345
 Width
 3
 27
@@ -2314,7 +2314,7 @@ Height
 Caption
 5
 3
-Jul
+Apr
 TextColour
 4
 0
@@ -2342,14 +2342,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 754
 X
 3
 468
 Y
 3
-264
+399
 Width
 3
 27
@@ -2359,7 +2359,7 @@ Height
 Caption
 5
 3
-Jul
+Dec
 TextColour
 4
 0
@@ -2387,14 +2387,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 755
 X
 3
 468
 Y
 3
-264
+372
 Width
 3
 27
@@ -2404,7 +2404,7 @@ Height
 Caption
 5
 3
-Jul
+Nov
 TextColour
 4
 0
@@ -2432,14 +2432,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 756
 X
 3
 468
 Y
 3
-264
+345
 Width
 3
 27
@@ -2449,7 +2449,7 @@ Height
 Caption
 5
 3
-Jul
+Oct
 TextColour
 4
 0
@@ -2477,14 +2477,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 757
 X
 3
 468
 Y
 3
-264
+318
 Width
 3
 27
@@ -2494,7 +2494,7 @@ Height
 Caption
 5
 3
-Jul
+Sep
 TextColour
 4
 0
@@ -2522,14 +2522,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 758
 X
 3
 468
 Y
 3
-264
+291
 Width
 3
 27
@@ -2539,7 +2539,7 @@ Height
 Caption
 5
 3
-Jul
+Aug
 TextColour
 4
 0
@@ -2567,24 +2567,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 759
 X
 3
-468
+564
 Y
 3
-264
+399
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0
@@ -2612,24 +2612,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 760
 X
 3
-468
+564
 Y
 3
-264
+372
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0
@@ -2657,24 +2657,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 761
 X
 3
-468
+564
 Y
 3
-264
+345
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0
@@ -2702,24 +2702,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 762
 X
 3
-468
+564
 Y
 3
-264
+318
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0
@@ -2747,24 +2747,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 763
 X
 3
-468
+564
 Y
 3
-264
+291
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0
@@ -2792,24 +2792,24 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 77
 X
 3
-468
+564
 Y
 3
 264
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0
@@ -2837,24 +2837,24 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 78
 X
 3
-468
+414
 Y
 3
-264
+399
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0
@@ -2882,24 +2882,24 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 79
 X
 3
-468
+414
 Y
 3
-264
+372
 Width
 3
-27
+30
 Height
 3
 24
 Caption
 5
 3
-Jul
+kWh
 TextColour
 4
 0

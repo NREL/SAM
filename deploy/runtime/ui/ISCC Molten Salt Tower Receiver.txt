@@ -1383,7 +1383,7 @@ Height
 163
 Image
 7
-C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/ISCC Molten Salt Tower Receiver_pctFlow.png
+ISCC Molten Salt Tower Receiver_pctFlow.png
 Centered
 2
 1

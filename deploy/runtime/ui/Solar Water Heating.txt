@@ -1393,17 +1393,17 @@ Divider
 9
 Name
 5
-9
-object 22
+10
+object 223
 X
 3
-30
+546
 Y
 3
 264
 Width
 3
-480
+315
 Height
 3
 19
@@ -1418,8 +1418,8 @@ Colour
 255
 Caption
 5
-7
-Shading
+27
+Curtailment and Availabilty
 Bold
 2
 1

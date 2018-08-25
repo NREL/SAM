@@ -464,7 +464,7 @@ Height
 123
 Image
 7
-C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/Battery Thermal_battery_thermal_image.png
+Battery Thermal_battery_thermal_image.png
 Centered
 2
 1
@@ -650,24 +650,24 @@ Label
 12
 Name
 5
-19
-thermal_model_label
+20
+thermal_model_label5
 X
 3
-36
+18
 Y
 3
-372
+186
 Width
 3
-906
+306
 Height
 3
-45
+90
 Caption
 5
-219
-This section does not model power used for thermal conditioning. If the battery requires operation of heating or cooling equipment, the associated electricity use can be entered in the ‘Additional System Losses’ section
+145
+Model assumes battery with specific heat Cp sits in room of fixed temperature.  Heat transfer to room proportional to heat transfer coefficient h
 TextColour
 4
 0
