@@ -575,14 +575,14 @@ Label
 12
 Name
 5
-17
-Label111111111111
+19
+Label11111111111138
 X
 3
 93
 Y
 3
-516
+483
 Width
 3
 68
@@ -591,8 +591,8 @@ Height
 21
 Caption
 5
-6
-Annual
+3
+Dec
 TextColour
 4
 0
@@ -1721,20 +1721,20 @@ Divider
 9
 Name
 5
-9
-object 22
+10
+object 229
 X
 3
-36
+441
 Y
 3
-162
+171
 Width
 3
-369
+351
 Height
 3
-25
+16
 Orientation
 3
 0
@@ -1746,8 +1746,8 @@ Colour
 255
 Caption
 5
-20
-Monthly Load Summary
+17
+Annual Adjustment
 Bold
 2
 1

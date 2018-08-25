@@ -2473,24 +2473,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 754
 X
 3
-462
+24
 Y
 3
-564
+135
 Width
 3
-351
+276
 Height
 3
-62
+63
 Caption
 5
-123
-Curtailment and availability losses reduce the solar field output to represent component outages, soiling, or other events.
+105
+Curtailment and availability losses reduce the system output to represent system outages or other events.
 TextColour
 4
 0

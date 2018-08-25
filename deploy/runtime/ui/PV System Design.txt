@@ -323,14 +323,14 @@ Label
 12
 Name
 5
-8
-Label122
+10
+Label12283
 X
 3
 66
 Y
 3
-801
+777
 Width
 3
 218
@@ -339,8 +339,8 @@ Height
 21
 Caption
 5
-12
-Backtracking
+28
+Tracker rotation limit (deg)
 TextColour
 4
 0
@@ -368,14 +368,14 @@ Label
 12
 Name
 5
-8
-Label122
+10
+Label12284
 X
 3
 66
 Y
 3
-801
+729
 Width
 3
 218
@@ -384,8 +384,8 @@ Height
 21
 Caption
 5
-12
-Backtracking
+13
+Azimuth (deg)
 TextColour
 4
 0
@@ -924,7 +924,7 @@ Height
 102
 Image
 7
-C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/PV System Design_Picture1.png
+PV System Design_Picture1.png
 Centered
 2
 1
@@ -3570,23 +3570,23 @@ Numeric
 16
 Name
 5
-10
-total_area
+12
+total_area72
 X
 3
-141
+150
 Y
 3
-897
+273
 Width
 3
-99
+82
 Height
 3
 21
 Value
 1
-0.000000
+9999.000000
 Mode
 3
 1
@@ -3622,7 +3622,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+11
 Numeric
 
 1

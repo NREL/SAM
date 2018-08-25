@@ -62,24 +62,24 @@ GroupBox
 7
 Name
 5
-9
-GroupBox2
+11
+GroupBox227
 X
 3
 9
 Y
 3
-114
+213
 Width
 3
 632
 Height
 3
-98
+263
 Caption
 5
-28
-Availability and Curtailment
+10
+Conversion
 Bold
 2
 1
@@ -251,14 +251,14 @@ Label
 12
 Name
 5
-8
-Label111
+10
+Label11118
 X
 3
 33
 Y
 3
-654
+630
 Width
 3
 251
@@ -267,8 +267,8 @@ Height
 21
 Caption
 5
-14
-DNI adjustment
+22
+Temperature adjustment
 TextColour
 4
 0

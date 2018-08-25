@@ -788,14 +788,14 @@ Divider
 9
 Name
 5
-9
-object 22
+11
+object 2211
 X
 3
 12
 Y
 3
-561
+267
 Width
 3
 837
@@ -813,8 +813,8 @@ Colour
 255
 Caption
 5
-16
-Reference Values
+21
+Financial Assumptions
 Bold
 2
 1
@@ -824,14 +824,14 @@ Divider
 9
 Name
 5
-9
-object 22
+11
+object 2219
 X
 3
-12
+18
 Y
 3
-561
+117
 Width
 3
 837
@@ -849,8 +849,8 @@ Colour
 255
 Caption
 5
-16
-Reference Values
+27
+Capital and Operating Costs
 Bold
 2
 1
@@ -932,24 +932,69 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 727
 X
 3
 15
 Y
 3
-27
+216
 Width
 3
-831
+195
 Height
 3
-63
+24
 Caption
 5
-375
-The fixed-charge rate method of calculating the levelized cost of energy simplifies time-dependent calculations and is appropriate for market-level analysis such as for the NREL Annual Technology Baseline, or for very preliminary project analysis. The cash flow method of SAM's other financial models is more suitable for more detailed project analysis. See Help for details.
+29
+Fixed operating cost (annual)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+9
+object 73
+X
+3
+30
+Y
+3
+666
+Width
+3
+321
+Height
+3
+24
+Caption
+5
+47
+LCOE = ( FCR ⋅ CC + FOC ) / Annual Energy + VOC
 TextColour
 4
 0
@@ -967,7 +1012,7 @@ WordWrap
 1
 AlignRight
 2
-0
+1
 AlignTop
 2
 1
@@ -977,69 +1022,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 735
 X
 3
-15
+33
 Y
 3
-27
+189
 Width
 3
-831
+177
 Height
 3
-63
+24
 Caption
 5
-375
-The fixed-charge rate method of calculating the levelized cost of energy simplifies time-dependent calculations and is appropriate for market-level analysis such as for the NREL Annual Technology Baseline, or for very preliminary project analysis. The cash flow method of SAM's other financial models is more suitable for more detailed project analysis. See Help for details.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
 12
-Name
-5
-8
-object 7
-X
-3
-15
-Y
-3
-27
-Width
-3
-831
-Height
-3
-63
-Caption
-5
-375
-The fixed-charge rate method of calculating the levelized cost of energy simplifies time-dependent calculations and is appropriate for market-level analysis such as for the NREL Annual Technology Baseline, or for very preliminary project analysis. The cash flow method of SAM's other financial models is more suitable for more detailed project analysis. See Help for details.
+Capital cost
 TextColour
 4
 0
@@ -1054,13 +1054,13 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Numeric
 
 1

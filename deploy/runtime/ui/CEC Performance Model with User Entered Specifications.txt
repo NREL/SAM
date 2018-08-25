@@ -1215,24 +1215,24 @@ GroupBox
 7
 Name
 5
-9
-GroupBox2
+11
+GroupBox213
 X
 3
-6
+9
 Y
 3
-249
+633
 Width
 3
-533
+941
 Height
 3
-218
+66
 Caption
 5
-25
-Electrical Specifications
+16
+Save / Load Data
 Bold
 2
 1

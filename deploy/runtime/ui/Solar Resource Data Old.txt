@@ -877,17 +877,17 @@ Divider
 9
 Name
 5
-9
-object 22
+11
+object 2212
 X
 3
 18
 Y
 3
-465
+351
 Width
 3
-849
+645
 Height
 3
 16
@@ -902,8 +902,8 @@ Colour
 255
 Caption
 5
-16
-Files in Library
+50
+Annual Averages Calculated from Weather File  Data
 Bold
 2
 1
@@ -913,17 +913,17 @@ Divider
 9
 Name
 5
-9
-object 22
+11
+object 2213
 X
 3
 18
 Y
 3
-465
+240
 Width
 3
-849
+645
 Height
 3
 16
@@ -938,8 +938,8 @@ Colour
 255
 Caption
 5
-16
-Files in Library
+29
+Header Data from Weather File
 Bold
 2
 1
@@ -976,24 +976,24 @@ GroupBox
 7
 Name
 5
-8
-object 4
+10
+object 417
 X
 3
 9
 Y
 3
-12
+657
 Width
 3
 870
 Height
 3
-138
+105
 Caption
 5
-46
-NREL National Solar Radiation Database (NSRDB)
+40
+Choose a Weather File from Your Computer
 Bold
 2
 1
@@ -1048,24 +1048,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 715
 X
 3
-15
+24
 Y
 3
-33
+708
 Width
 3
-857
+846
 Height
 3
-42
+45
 Caption
 5
-248
-Download the latest weather files from the NSRDB to add to your solar resource library: Download a typical-year (TMY) file for most long-term cash flow analyses, or choose files to download for single-year or P50/P90 analyses. See Help for details.
+199
+Check the box and click Browse to choose a weather file stored on your computer without adding it to the solar resource library. Supported solar weather file formats are SAM CSV, TMY2, TMY3, and EPW.
 TextColour
 4
 0
@@ -1093,24 +1093,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 726
 X
 3
 15
 Y
 3
-33
+168
 Width
 3
-857
+846
 Height
 3
 42
 Caption
 5
-248
-Download the latest weather files from the NSRDB to add to your solar resource library: Download a typical-year (TMY) file for most long-term cash flow analyses, or choose files to download for single-year or P50/P90 analyses. See Help for details.
+242
+Use the buttons above to download the latest NSRDB files and add them to your solar resource library. Click Folder Settings to add your own weather files to the library. The default library contains legacy weather files. See Help for details.
 TextColour
 4
 0

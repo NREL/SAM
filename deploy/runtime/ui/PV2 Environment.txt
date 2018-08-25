@@ -324,24 +324,24 @@ GroupBox
 7
 Name
 5
-8
-object 4
+10
+object 411
 X
 3
 12
 Y
 3
-102
+15
 Width
 3
-846
+845
 Height
 3
 81
 Caption
 5
-11
-Snow Losses
+7
+Soiling
 Bold
 2
 1

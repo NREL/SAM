@@ -2457,24 +2457,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 713
 X
 3
 18
 Y
 3
-321
+354
 Width
 3
-228
+195
 Height
 3
 21
 Caption
 5
-34
-Project, Land, Miscellaneous (PLM)
+17
+Sales tax rate of
 TextColour
 4
 0
@@ -2502,14 +2502,14 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 72
 X
 3
 18
 Y
 3
-321
+297
 Width
 3
 228
@@ -2519,7 +2519,7 @@ Height
 Caption
 5
 34
-Project, Land, Miscellaneous (PLM)
+Engineer, Procure, Construct (EPC)
 TextColour
 4
 0
@@ -2547,24 +2547,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 720
 X
 3
-18
+30
 Y
 3
-321
+186
 Width
 3
-228
+330
 Height
 3
-21
+24
 Caption
 5
-34
-Project, Land, Miscellaneous (PLM)
+38
+Contingency as percent of direct costs
 TextColour
 4
 0
@@ -2592,24 +2592,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 727
 X
 3
-18
+414
 Y
 3
-321
+15
 Width
 3
-228
+180
 Height
 3
 21
 Caption
 5
-34
-Project, Land, Miscellaneous (PLM)
+24
+Cost per capacity ($/kW)
 TextColour
 4
 0
@@ -2637,24 +2637,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 728
 X
 3
-18
+675
 Y
 3
-321
+15
 Width
 3
-228
+90
 Height
 3
 21
 Caption
 5
-34
-Project, Land, Miscellaneous (PLM)
+9
+Total ($)
 TextColour
 4
 0
@@ -2682,24 +2682,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 733
 X
 3
-18
+429
 Y
 3
-321
+399
 Width
 3
-228
+195
 Height
 3
 21
 Caption
 5
-34
-Project, Land, Miscellaneous (PLM)
+20
+Total indirect costs
 TextColour
 4
 0
@@ -2727,24 +2727,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 734
 X
 3
-18
+429
 Y
 3
-321
+213
 Width
 3
-228
+195
 Height
 3
 21
 Caption
 5
-34
-Project, Land, Miscellaneous (PLM)
+18
+Total direct costs
 TextColour
 4
 0

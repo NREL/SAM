@@ -62,24 +62,24 @@ GroupBox
 7
 Name
 5
-9
-GroupBox2
+11
+GroupBox222
 X
 3
 12
 Y
 3
-645
+15
 Width
 3
 764
 Height
 3
-66
+119
 Caption
 5
-16
-Save / Load Data
+13
+Power Ratings
 Bold
 2
 1

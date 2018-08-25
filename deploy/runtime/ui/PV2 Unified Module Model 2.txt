@@ -424,14 +424,14 @@ Numeric
 16
 Name
 5
-3
-Isc
+5
+Isc36
 X
 3
 168
 Y
 3
-312
+213
 Width
 3
 90
@@ -483,14 +483,14 @@ Numeric
 16
 Name
 5
-3
-Isc
+5
+Isc37
 X
 3
 168
 Y
 3
-312
+186
 Width
 3
 90
@@ -542,14 +542,14 @@ Numeric
 16
 Name
 5
-3
-Isc
+5
+Isc70
 X
 3
 168
 Y
 3
-312
+285
 Width
 3
 90
@@ -820,14 +820,14 @@ Numeric
 16
 Name
 5
-3
-Voc
+5
+Voc45
 X
 3
 168
 Y
 3
-258
+159
 Width
 3
 90
@@ -997,14 +997,14 @@ Numeric
 16
 Name
 5
-4
-area
+6
+area29
 X
 3
-384
+168
 Y
 3
-105
+78
 Width
 3
 90
@@ -1056,14 +1056,14 @@ Numeric
 16
 Name
 5
-4
-area
+6
+area30
 X
 3
 384
 Y
 3
-105
+78
 Width
 3
 90
@@ -1584,40 +1584,40 @@ Plot
 5
 Name
 5
-9
-object 22
+10
+object 225
 X
 3
-387
+717
 Y
 3
-390
+210
 Width
 3
-598
+268
 Height
 3
-447
+150
 Plot
 
 1
 5
 Name
 5
-9
-object 22
+10
+object 228
 X
 3
-387
+717
 Y
 3
-390
+30
 Width
 3
-598
+268
 Height
 3
-447
+150
 Choice
 
 1
@@ -1656,14 +1656,14 @@ Choice
 8
 Name
 5
-8
-object 3
+10
+object 313
 X
 3
 534
 Y
 3
-219
+39
 Width
 3
 177
@@ -1673,9 +1673,9 @@ Height
 Items
 6
 3
-Standard
-Calculated with Pwp
-Polynomial
+Standard glass
+Anti-reflective
+Empirical model
 Selection
 3
 0
@@ -1688,29 +1688,30 @@ Choice
 8
 Name
 5
-8
-object 3
+10
+object 331
 X
 3
-534
+384
 Y
 3
-219
+186
 Width
 3
-177
+90
 Height
 3
 24
 Items
 6
-3
-Standard
-Calculated with Pwp
-Polynomial
+4
+c-Si
+mc-Si
+CdTe
+a-Si
 Selection
 3
-0
+4294967295
 TabOrder
 3
 4294967295
@@ -1792,24 +1793,69 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 715
 X
 3
-534
+687
 Y
 3
 93
 Width
 3
-111
+24
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+1
+%
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+10
+object 716
+X
+3
+36
+Y
+3
+480
+Width
+3
+90
+Height
+3
+24
+Caption
+5
+1
+a
 TextColour
 4
 0
@@ -1837,24 +1883,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 718
 X
 3
-534
+36
 Y
 3
-93
+507
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+2
+IL
 TextColour
 4
 0
@@ -1882,24 +1928,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 720
 X
 3
-534
+75
 Y
 3
-93
+312
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+10
+Tempco Pmp
 TextColour
 4
 0
@@ -1927,24 +1973,69 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 721
 X
 3
-534
+261
 Y
 3
-93
+312
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+1
+%
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+10
+object 722
+X
+3
+75
+Y
+3
+258
+Width
+3
+90
+Height
+3
+24
+Caption
+5
+10
+Tempco Voc
 TextColour
 4
 0
@@ -1972,24 +2063,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 726
 X
 3
-534
+75
 Y
 3
-93
+285
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+10
+Tempco Isc
 TextColour
 4
 0
@@ -2017,24 +2108,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 732
 X
 3
-534
+291
 Y
 3
-93
+186
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+4
+Type
 TextColour
 4
 0
@@ -2062,24 +2153,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 733
 X
 3
-534
+291
 Y
 3
-93
+213
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+15
+Number of cells
 TextColour
 4
 0
@@ -2107,24 +2198,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 735
 X
 3
-534
+75
 Y
 3
-93
+213
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+13
+Bypass diodes
 TextColour
 4
 0
@@ -2152,24 +2243,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 738
 X
 3
-534
+291
 Y
 3
-93
+105
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+10
+Efficiency
 TextColour
 4
 0
@@ -2197,24 +2288,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 739
 X
 3
-534
+291
 Y
 3
-93
+159
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+6
+Height
 TextColour
 4
 0
@@ -2242,24 +2333,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 741
 X
 3
-534
+291
 Y
 3
-93
+132
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+5
+Width
 TextColour
 4
 0
@@ -2287,24 +2378,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 743
 X
 3
-534
+291
 Y
 3
-93
+78
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+4
+Area
 TextColour
 4
 0
@@ -2332,24 +2423,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 747
 X
 3
-534
+75
 Y
 3
-93
+159
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+3
+Voc
 TextColour
 4
 0
@@ -2377,24 +2468,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 748
 X
 3
-534
+75
 Y
 3
-93
+186
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+3
+Isc
 TextColour
 4
 0
@@ -2422,24 +2513,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 749
 X
 3
-534
+75
 Y
 3
-93
+132
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+3
+Imp
 TextColour
 4
 0
@@ -2467,24 +2558,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 750
 X
 3
-534
+75
 Y
 3
-93
+105
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+3
+Vmp
 TextColour
 4
 0
@@ -2512,24 +2603,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 751
 X
 3
-534
+75
 Y
 3
-93
+78
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+3
+Pmp
 TextColour
 4
 0
@@ -2557,24 +2648,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 754
 X
 3
-534
+36
 Y
 3
-93
+615
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+3
+Rsh
 TextColour
 4
 0
@@ -2602,24 +2693,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 755
 X
 3
-534
+36
 Y
 3
-93
+588
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+2
+Rs
 TextColour
 4
 0
@@ -2647,24 +2738,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 758
 X
 3
-534
+36
 Y
 3
-93
+534
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
+2
+Is
 TextColour
 4
 0
@@ -2692,114 +2783,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 759
 X
 3
-534
+36
 Y
 3
-93
+561
 Width
 3
-111
+90
 Height
 3
 24
 Caption
 5
-19
-Diffuse utilization
-TextColour
-4
-0
-0
-0
-255
-Bold
 2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-12
-Name
-5
-8
-object 7
-X
-3
-534
-Y
-3
-93
-Width
-3
-111
-Height
-3
-24
-Caption
-5
-19
-Diffuse utilization
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-12
-Name
-5
-8
-object 7
-X
-3
-534
-Y
-3
-93
-Width
-3
-111
-Height
-3
-24
-Caption
-5
-19
-Diffuse utilization
+Eg
 TextColour
 4
 0

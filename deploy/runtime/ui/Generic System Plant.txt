@@ -62,20 +62,20 @@ GroupBox
 7
 Name
 5
-9
-GroupBox2
+11
+GroupBox218
 X
 3
 6
 Y
 3
-393
+780
 Width
 3
-780
+593
 Height
 3
-132
+110
 Caption
 5
 28
@@ -578,14 +578,14 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2114
 X
 3
 48
 Y
 3
-321
+228
 Width
 3
 600
@@ -603,8 +603,8 @@ Colour
 255
 Caption
 5
-35
-Heat Rate for Fuel Cost Calculation
+44
+Calculated Values Based on Input Assumptions
 Bold
 2
 1
@@ -614,14 +614,14 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2116
 X
 3
 48
 Y
 3
-321
+189
 Width
 3
 600
@@ -639,8 +639,8 @@ Colour
 255
 Caption
 5
-35
-Heat Rate for Fuel Cost Calculation
+18
+Power Plant Losses
 Bold
 2
 1

@@ -410,14 +410,14 @@ Divider
 9
 Name
 5
-9
-object 21
+10
+object 215
 X
 3
 441
 Y
 3
-126
+48
 Width
 3
 327
@@ -435,8 +435,8 @@ Colour
 255
 Caption
 5
-18
-Host Discount Rate
+33
+Project (Developer) Discount Rate
 Bold
 2
 1

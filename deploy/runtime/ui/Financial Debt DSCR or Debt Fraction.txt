@@ -501,24 +501,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 716
 X
 3
-345
+219
 Y
 3
-156
+27
 Width
 3
-509
+126
 Height
 3
-92
+24
 Caption
 5
-308
-Be sure to verify that all debt-related costs are appropriate for your analysis: Debt closing costs, up-front fee, and debt service reserve account. Note that debt interest payments are tax deductible, so a project with more debt may have higher net after-tax annual cash flows than a project with less debt.
+20
+% of total cap. cost
 TextColour
 4
 0
@@ -533,37 +533,37 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
 0
 AlignTop
 2
-1
+0
 Label
 
 1
 12
 Name
 5
-8
-object 7
+9
+object 72
 X
 3
-345
+306
 Y
 3
-156
+135
 Width
 3
-509
+545
 Height
 3
-92
+22
 Caption
 5
-308
-Be sure to verify that all debt-related costs are appropriate for your analysis: Debt closing costs, up-front fee, and debt service reserve account. Note that debt interest payments are tax deductible, so a project with more debt may have higher net after-tax annual cash flows than a project with less debt.
+80
+For a project with no debt, set the either the debt percent or the DSCR to zero.
 TextColour
 4
 0

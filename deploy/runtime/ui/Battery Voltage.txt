@@ -588,20 +588,20 @@ Divider
 9
 Name
 5
-20
-batt_modeled_voltage
+22
+batt_modeled_voltage19
 X
 3
-345
+27
 Y
 3
-171
+174
 Width
 3
-294
+288
 Height
 3
-22
+16
 Orientation
 3
 0
@@ -614,7 +614,7 @@ Colour
 Caption
 5
 13
-Voltage table
+Voltage model
 Bold
 2
 1
@@ -714,43 +714,42 @@ Horizontal
 TabOrder
 3
 4294967295
-RadioChoice
+Divider
 
 1
-10
+9
 Name
 5
-19
-batt_voltage_choice
+21
+batt_voltage_choice18
 X
 3
-69
+30
 Y
 3
-141
+120
 Width
 3
-570
+618
 Height
 3
-27
-Selection
+16
+Orientation
 3
 0
-Items
-6
-2
-Use voltage model
-Use input voltage table
-ShowCaptions
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+27
+Voltage curve specification
+Bold
 2
 1
-Horizontal
-2
-1
-TabOrder
-3
-4294967295
 Label
 
 1
@@ -922,24 +921,24 @@ Label
 12
 Name
 5
-20
-batt_voltage_message
+22
+batt_voltage_message14
 X
 3
-21
+360
 Y
 3
 195
 Width
 3
-297
+498
 Height
 3
-63
+108
 Caption
 5
-96
-There is no voltage model in SAM for iron-flow batteries.  Other chemistries have models for use
+268
+ For iron flow batteries, enter a table of voltage vs. depth-of-discharge which will be linearly interpolated between in the simulation.  You can also choose this option for other battery chemistries.  The interpolated voltage is updated to include internal resistance
 TextColour
 4
 0

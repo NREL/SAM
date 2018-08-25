@@ -2400,17 +2400,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2151
 X
 3
 24
 Y
 3
-486
+27
 Width
 3
-753
+600
 Height
 3
 16
@@ -2425,8 +2425,8 @@ Colour
 255
 Caption
 5
-11
-Contingency
+15
+Heliostat Field
 Bold
 2
 1
@@ -2436,17 +2436,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2152
 X
 3
 24
 Y
 3
-486
+354
 Width
 3
-753
+600
 Height
 3
 16
@@ -2462,7 +2462,7 @@ Colour
 Caption
 5
 11
-Contingency
+Power Cycle
 Bold
 2
 1
@@ -2472,17 +2472,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2153
 X
 3
 24
 Y
 3
-486
+306
 Width
 3
-753
+600
 Height
 3
 16
@@ -2497,8 +2497,8 @@ Colour
 255
 Caption
 5
-11
-Contingency
+22
+Thermal Energy Storage
 Bold
 2
 1
@@ -2508,17 +2508,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2154
 X
 3
 24
 Y
 3
-486
+219
 Width
 3
-753
+600
 Height
 3
 16
@@ -2533,8 +2533,8 @@ Colour
 255
 Caption
 5
-11
-Contingency
+8
+Receiver
 Bold
 2
 1
@@ -2544,17 +2544,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2155
 X
 3
 24
 Y
 3
-486
+123
 Width
 3
-753
+600
 Height
 3
 16
@@ -2569,8 +2569,8 @@ Colour
 255
 Caption
 5
-11
-Contingency
+5
+Tower
 Bold
 2
 1
@@ -2580,17 +2580,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2159
 X
 3
-24
+642
 Y
 3
-486
+447
 Width
 3
-753
+138
 Height
 3
 16
@@ -2605,8 +2605,7 @@ Colour
 255
 Caption
 5
-11
-Contingency
+0
 Bold
 2
 1
@@ -2616,17 +2615,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2163
 X
 3
-24
+642
 Y
 3
-486
+525
 Width
 3
-753
+138
 Height
 3
 16
@@ -2641,8 +2640,7 @@ Colour
 255
 Caption
 5
-11
-Contingency
+0
 Bold
 2
 1
@@ -2652,17 +2650,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2164
 X
 3
-24
+303
 Y
 3
-486
+66
 Width
 3
-753
+287
 Height
 3
 16
@@ -2677,8 +2675,7 @@ Colour
 255
 Caption
 5
-11
-Contingency
+0
 Bold
 2
 1
@@ -2688,17 +2685,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2167
 X
 3
 24
 Y
 3
-486
+693
 Width
 3
-753
+591
 Height
 3
 16
@@ -2713,8 +2710,8 @@ Colour
 255
 Caption
 5
-11
-Contingency
+9
+Sales Tax
 Bold
 2
 1
@@ -2724,17 +2721,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2173
 X
 3
-24
+645
 Y
 3
-486
+729
 Width
 3
-753
+138
 Height
 3
 16
@@ -2749,8 +2746,7 @@ Colour
 255
 Caption
 5
-11
-Contingency
+0
 Bold
 2
 1
@@ -2805,14 +2801,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 758
 X
 3
 480
 Y
 3
-801
+744
 Width
 3
 159
@@ -2821,8 +2817,8 @@ Height
 21
 Caption
 5
-20
-Total installed cost
+19
+Total indirect cost
 TextColour
 4
 0
@@ -2850,14 +2846,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 761
 X
 3
 480
 Y
 3
-801
+540
 Width
 3
 159
@@ -2866,8 +2862,8 @@ Height
 21
 Caption
 5
-20
-Total installed cost
+17
+Total direct cost
 TextColour
 4
 0
@@ -2895,14 +2891,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 762
 X
 3
 480
 Y
 3
-801
+462
 Width
 3
 159
@@ -2911,8 +2907,8 @@ Height
 21
 Caption
 5
-20
-Total installed cost
+8
+Subtotal
 TextColour
 4
 0
@@ -2921,7 +2917,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0

@@ -1315,24 +1315,24 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 72
 X
 3
-201
+12
 Y
 3
-279
+72
 Width
 3
-537
+730
 Height
 3
-84
+63
 Caption
 5
-294
-The TOD data in the library is from documents prepared by California electric utility companies. For projects outside of California, enter your own TOD data. Be sure that your assumptions are consistent with the requirements described in the appropriate solicitation documents for your project.
+282
+TOD factors are multipliers that apply to the PPA price. Choose "TOD factors by shedule" to define factors using the TOD periods with weekday and weekend hour-by-month matrices. Choose "TOD factors by time step" to assign a factor to each simulation time step. See Help for details.
 TextColour
 4
 0

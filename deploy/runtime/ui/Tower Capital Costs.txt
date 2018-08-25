@@ -2931,17 +2931,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2151
 X
 3
 24
 Y
 3
-27
+486
 Width
 3
-600
+753
 Height
 3
 16
@@ -2956,8 +2956,8 @@ Colour
 255
 Caption
 5
-15
-Heliostat Field
+11
+Contingency
 Bold
 2
 1
@@ -2967,14 +2967,14 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2152
 X
 3
 24
 Y
 3
-27
+354
 Width
 3
 600
@@ -2992,8 +2992,8 @@ Colour
 255
 Caption
 5
-15
-Heliostat Field
+11
+Power Cycle
 Bold
 2
 1
@@ -3003,14 +3003,14 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2153
 X
 3
 24
 Y
 3
-27
+306
 Width
 3
 600
@@ -3028,8 +3028,8 @@ Colour
 255
 Caption
 5
-15
-Heliostat Field
+22
+Thermal Energy Storage
 Bold
 2
 1
@@ -3039,14 +3039,14 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2154
 X
 3
 24
 Y
 3
-27
+219
 Width
 3
 600
@@ -3064,8 +3064,8 @@ Colour
 255
 Caption
 5
-15
-Heliostat Field
+8
+Receiver
 Bold
 2
 1
@@ -3075,14 +3075,14 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2155
 X
 3
 24
 Y
 3
-27
+123
 Width
 3
 600
@@ -3100,8 +3100,8 @@ Colour
 255
 Caption
 5
-15
-Heliostat Field
+5
+Tower
 Bold
 2
 1
@@ -3111,17 +3111,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2159
 X
 3
-24
+642
 Y
 3
-27
+447
 Width
 3
-600
+138
 Height
 3
 16
@@ -3136,8 +3136,7 @@ Colour
 255
 Caption
 5
-15
-Heliostat Field
+0
 Bold
 2
 1
@@ -3147,17 +3146,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2163
 X
 3
-24
+642
 Y
 3
-27
+525
 Width
 3
-600
+138
 Height
 3
 16
@@ -3172,8 +3171,7 @@ Colour
 255
 Caption
 5
-15
-Heliostat Field
+0
 Bold
 2
 1
@@ -3183,17 +3181,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2164
 X
 3
-24
+303
 Y
 3
-27
+66
 Width
 3
-600
+287
 Height
 3
 16
@@ -3208,8 +3206,7 @@ Colour
 255
 Caption
 5
-15
-Heliostat Field
+0
 Bold
 2
 1
@@ -3219,17 +3216,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2167
 X
 3
 24
 Y
 3
-27
+693
 Width
 3
-600
+591
 Height
 3
 16
@@ -3244,8 +3241,8 @@ Colour
 255
 Caption
 5
-15
-Heliostat Field
+9
+Sales Tax
 Bold
 2
 1
@@ -3255,17 +3252,17 @@ Divider
 9
 Name
 5
-9
-object 21
+11
+object 2173
 X
 3
-24
+645
 Y
 3
-27
+729
 Width
 3
-600
+138
 Height
 3
 16
@@ -3280,8 +3277,7 @@ Colour
 255
 Caption
 5
-15
-Heliostat Field
+0
 Bold
 2
 1
@@ -3336,14 +3332,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 758
 X
 3
 480
 Y
 3
-801
+744
 Width
 3
 159
@@ -3352,8 +3348,8 @@ Height
 21
 Caption
 5
-20
-Total installed cost
+19
+Total indirect cost
 TextColour
 4
 0
@@ -3381,14 +3377,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 761
 X
 3
 480
 Y
 3
-801
+540
 Width
 3
 159
@@ -3397,8 +3393,8 @@ Height
 21
 Caption
 5
-20
-Total installed cost
+17
+Total direct cost
 TextColour
 4
 0
@@ -3426,14 +3422,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 762
 X
 3
 480
 Y
 3
-801
+462
 Width
 3
 159
@@ -3442,8 +3438,8 @@ Height
 21
 Caption
 5
-20
-Total installed cost
+8
+Subtotal
 TextColour
 4
 0
@@ -3452,7 +3448,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0

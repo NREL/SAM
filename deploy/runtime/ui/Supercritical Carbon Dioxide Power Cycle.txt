@@ -1285,24 +1285,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 711
 X
 3
-330
+675
 Y
 3
 189
 Width
 3
-181
+169
 Height
 3
 24
 Caption
 5
-26
-Value Used for Calculation
+21
+Cycle Design Solution
 TextColour
 4
 0
@@ -1330,24 +1330,24 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 712
 X
 3
-330
+177
 Y
 3
 189
 Width
 3
-181
+136
 Height
 3
 24
 Caption
 5
-26
-Value Used for Calculation
+11
+Input Value
 TextColour
 4
 0

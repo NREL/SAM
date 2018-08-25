@@ -128,7 +128,7 @@ Height
 108
 Image
 7
-C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/PV3 Subarray 1 Spacing_object 12.png
+PV3 Subarray 1 Spacing_object 12.png
 Centered
 2
 1
@@ -199,7 +199,7 @@ Height
 106
 Image
 7
-C:\Projects\GitHub\NREL\develop\SAM\deploy\runtime\/ui/PV3 Subarray 1 Spacing_self_shading_diagram.png
+PV3 Subarray 1 Spacing_self_shading_diagram.png
 Centered
 2
 1

@@ -192,24 +192,24 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 75
 X
 3
-414
+21
 Y
 3
-15
+66
 Width
 3
-369
+387
 Height
 3
-93
+24
 Caption
 5
-211
-In Value mode, the degradation rate applies to the system's total annual kWh output for the previous year starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details.
+47
+Applies to the system's total annual AC output.
 TextColour
 4
 0

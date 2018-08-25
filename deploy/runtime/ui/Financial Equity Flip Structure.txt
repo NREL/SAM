@@ -695,14 +695,14 @@ Label
 12
 Name
 5
-8
-object 7
+10
+object 712
 X
 3
 18
 Y
 3
-51
+135
 Width
 3
 147
@@ -711,8 +711,8 @@ Height
 24
 Caption
 5
-15
-Share of equity
+21
+Share of tax benefits
 TextColour
 4
 0
@@ -740,14 +740,14 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 77
 X
 3
 18
 Y
 3
-51
+108
 Width
 3
 147
@@ -756,8 +756,8 @@ Height
 24
 Caption
 5
-15
-Share of equity
+21
+Share of project cash
 TextColour
 4
 0

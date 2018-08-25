@@ -2090,24 +2090,24 @@ GroupBox
 7
 Name
 5
-8
-object 4
+10
+object 423
 X
 3
-9
+6
 Y
 3
-792
+558
 Width
 3
-1023
+861
 Height
 3
-195
+228
 Caption
 5
-34
-Balance of System Detailed Results
+33
+Balance of System Advanced Inputs
 Bold
 2
 1
@@ -2117,24 +2117,24 @@ GroupBox
 7
 Name
 5
-8
-object 4
+10
+object 425
 X
 3
-9
+6
 Y
 3
-792
+42
 Width
 3
-1023
+861
 Height
 3
-195
+225
 Caption
 5
-34
-Balance of System Detailed Results
+30
+Balance of System Model Inputs
 Bold
 2
 1
@@ -2144,24 +2144,24 @@ GroupBox
 7
 Name
 5
-8
-object 4
+10
+object 440
 X
 3
-9
+6
 Y
 3
-792
+273
 Width
 3
-1023
+861
 Height
 3
-195
+279
 Caption
 5
 34
-Balance of System Detailed Results
+Balance of System Estimated Inputs
 Bold
 2
 1
@@ -2171,51 +2171,141 @@ GroupBox
 7
 Name
 5
-8
-object 4
+10
+object 463
 X
 3
+2973
+Y
+3
+4294967236
+Width
+3
+795
+Height
+3
+246
+Caption
+5
+33
+Balance of System Advanced Inputs
+Bold
+2
+1
+Label
+
+1
+12
+Name
+5
+8
+object 7
+X
+3
+702
+Y
+3
+660
+Width
+3
+156
+Height
+3
+72
+Caption
+5
+54
+Sales tax is taken from the Financial Parameters page.
+TextColour
+4
+255
+128
+0
+255
+Bold
+2
+0
+FontSize
+3
+4294967295
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+12
+Name
+5
 9
+object 71
+X
+3
+6
 Y
 3
-792
+12
 Width
 3
-1023
+888
 Height
 3
-195
+24
 Caption
 5
-34
-Balance of System Detailed Results
+123
+NOTE: This Land-based Balance of System Cost Model is valid ONLY for land-based installations. Please see Help for details.
+TextColour
+4
+255
+128
+64
+255
 Bold
 2
 1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Label
 
 1
 12
 Name
 5
-8
-object 7
+9
+object 73
 X
 3
-702
+567
 Y
 3
-660
+219
 Width
 3
-156
+291
 Height
 3
-72
+42
 Caption
 5
-54
-Sales tax is taken from the Financial Parameters page.
+94
+Click to apply the cost estimate to the appropriate inputs in the Capital Costs section above.
 TextColour
 4
 255
@@ -2243,29 +2333,29 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 76
 X
 3
-702
+21
 Y
 3
-660
+291
 Width
 3
-156
+834
 Height
 3
-72
+42
 Caption
 5
-54
-Sales tax is taken from the Financial Parameters page.
+261
+The balance of system model computes reasonable values for the following inputs based on your project characteristics. You may override the estimated values using the "Inputs" column below and selecting "Use Estimated Value" in the corresponding drop-down menu.
 TextColour
 4
 255
 128
-0
+64
 255
 Bold
 2
@@ -2288,28 +2378,28 @@ Label
 12
 Name
 5
-8
-object 7
+9
+object 77
 X
 3
-702
+675
 Y
 3
-660
+333
 Width
 3
-156
+120
 Height
 3
-72
+24
 Caption
 5
-54
-Sales tax is taken from the Financial Parameters page.
+14
+Input to Model
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -2317,44 +2407,44 @@ Bold
 0
 FontSize
 3
-4294967295
+0
 WordWrap
 2
-1
+0
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Label
 
 1
 12
 Name
 5
-8
-object 7
+9
+object 78
 X
 3
-702
+378
 Y
 3
-660
+333
 Width
 3
-156
+108
 Height
 3
-72
+24
 Caption
 5
-54
-Sales tax is taken from the Financial Parameters page.
+15
+Model Estimates
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -2362,44 +2452,44 @@ Bold
 0
 FontSize
 3
-4294967295
+0
 WordWrap
 2
-1
+0
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Label
 
 1
 12
 Name
 5
-8
-object 7
+9
+object 79
 X
 3
-702
+243
 Y
 3
-660
+333
 Width
 3
-156
+90
 Height
 3
-72
+24
 Caption
 5
-54
-Sales tax is taken from the Financial Parameters page.
+11
+User Inputs
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -2407,106 +2497,16 @@ Bold
 0
 FontSize
 3
-4294967295
+0
 WordWrap
 2
-1
+0
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
-Label
-
-1
-12
-Name
-5
-8
-object 7
-X
-3
-702
-Y
-3
-660
-Width
-3
-156
-Height
-3
-72
-Caption
-5
-54
-Sales tax is taken from the Financial Parameters page.
-TextColour
-4
-255
-128
 0
-255
-Bold
-2
-0
-FontSize
-3
-4294967295
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-12
-Name
-5
-8
-object 7
-X
-3
-702
-Y
-3
-660
-Width
-3
-156
-Height
-3
-72
-Caption
-5
-54
-Sales tax is taken from the Financial Parameters page.
-TextColour
-4
-255
-128
-0
-255
-Bold
-2
-0
-FontSize
-3
-4294967295
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Numeric
 
 1

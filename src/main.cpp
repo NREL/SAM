@@ -1533,11 +1533,11 @@ void InputPageData::Write_text(wxOutputStream &os, wxString &ui_path)
 	}
 }
 
-bool InputPageData::Read_text(wxInputStream &is)
+bool InputPageData::Read_text(wxInputStream &is, wxString &ui_path)
 {
 	wxTextInputStream in(is, "\n", wxConvAuto(wxFONTENCODING_UTF8));
 	bool ok = true;
-	ok = ok && m_form.Read_text(is);
+	ok = ok && m_form.Read_text(is, ui_path);
 	ok = ok && m_vars.Read_text(is);
 	m_eqnScript.Clear();
 	size_t n = in.Read32();
@@ -1622,13 +1622,13 @@ bool InputPageDatabase::LoadFileText(const wxString &file)
 	wxString name(ff.GetName());
 
 	InputPageData *pd = new InputPageData;
-
+	wxString ui_path = SamApp::GetRuntimePath() + "/ui/";
 	bool ok = true;
 //	wxFFileInputStream is(file);
 //	if (!is.IsOk() || !pd->Read_text(is))
 	wxFFileInputStream is(file, "r");
 	bool bff = is.IsOk();
-	bool bread = pd->Read_text(is);
+	bool bread = pd->Read_text(is, ui_path);
 	if (!bff && !bread)
 		ok = false;
 
