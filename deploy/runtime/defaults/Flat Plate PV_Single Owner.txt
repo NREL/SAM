@@ -1,5 +1,5 @@
 1
-993
+997
 6par_aisc
 1
 1
@@ -5384,6 +5384,12 @@ subarray1_nstrings
 1
 1
 5373.000000
+subarray1_rear_irradiance_loss
+1
+1
+1
+1
+0.000000
 subarray1_ref_nmodules
 1
 1
