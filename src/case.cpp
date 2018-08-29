@@ -503,14 +503,17 @@ bool Case::SaveDefaults( bool quiet )
 }
 
 bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di, VarTable *oldvals )
+		LoadStatus *di, VarTable *oldvals, bool binary )
 {
 	VarTable vt;
-#ifdef UI_BINARY
-	if (!vt.Read(in))
-#else
-	if (!vt.Read_text(in))
-#endif
+// All project files are assumed to be stored as binary
+	bool read_ok = true;
+	if (!binary) // text call from LoadDefaults
+		read_ok = vt.Read_text(in);
+	else
+		read_ok = vt.Read(in);
+
+	if (!read_ok)
 	{
 		wxString e("Error reading inputs from external source");
 		if ( di ) di->error = e;
@@ -560,12 +563,15 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 bool Case::LoadDefaults( wxString *pmsg )
 {
 	if (!m_config) return false;
+	bool binary = true;
 #ifdef UI_BINARY
 	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
 		+ m_config->Technology + "_" + m_config->Financing;
+	binary = true;
 #else
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";
+	binary = false;
 #endif
 	LoadStatus di;
 	wxString message;
@@ -579,7 +585,7 @@ bool Case::LoadDefaults( wxString *pmsg )
 			return false;
 		}
 	
-		ok = LoadValuesFromExternalSource( in, &di );
+		ok = LoadValuesFromExternalSource( in, &di, (VarTable *)0, binary );
 		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
 				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
 				"Would you like to update the defaults with the current values right now?\n"
