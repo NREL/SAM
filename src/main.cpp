@@ -1933,9 +1933,9 @@ bool SamApp::OnInit()
 	SetAppName( "" );
 	SetVendorName( "" );
 	
-//#ifdef _DEBUG
+#ifdef _DEBUG
 	SamLogWindow::Setup();
-//#endif
+#endif
 	
 	wxLogStatus( "startup version %d.%d.%d with SSC version %d, %s", 
 		releases[0].major,
