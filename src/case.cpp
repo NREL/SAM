@@ -503,7 +503,7 @@ bool Case::SaveDefaults( bool quiet )
 }
 
 bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di, VarTable *oldvals, bool binary )
+		LoadStatus *di, VarTable *oldvals, bool recalculate, bool binary)
 {
 	VarTable vt;
 // All project files are assumed to be stored as binary
@@ -548,8 +548,9 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 			ok = false;
 		}
 	}
-		
-	if ( RecalculateAll() < 0 )
+	
+
+	if ( recalculate && (RecalculateAll() < 0 ))
 	{
 		wxString e("Error recalculating equations after loading values from external source");	
 		if ( di ) di->error = e;
@@ -585,7 +586,7 @@ bool Case::LoadDefaults( wxString *pmsg )
 			return false;
 		}
 	
-		ok = LoadValuesFromExternalSource( in, &di, (VarTable *)0, binary );
+		ok = LoadValuesFromExternalSource( in, &di, (VarTable *)0, true, binary );
 		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
 				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
 				"Would you like to update the defaults with the current values right now?\n"
