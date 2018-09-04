@@ -136,7 +136,7 @@ public:
 	};
 
 	bool LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di = 0, VarTable *invalids = 0, bool binary = true );
+		LoadStatus *di = 0, VarTable *invalids = 0, bool recalculate = true, bool binary = true );
 
 	bool LoadDefaults( wxString *error_msg = 0 );
 	bool SaveDefaults( bool quiet = false );
