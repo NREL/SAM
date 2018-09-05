@@ -478,9 +478,13 @@ bool Case::Read( wxInputStream &_i )
 bool Case::SaveDefaults( bool quiet )
 {
 	if (!m_config) return false;
+#ifdef UI_BINARY
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
-	
+#else
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".txt";
+#endif
 	if ( !quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n" 
 		+ m_config->Technology + " / " + m_config->Financing, 
 		"Save Defaults", wxYES_NO) )
@@ -489,16 +493,27 @@ bool Case::SaveDefaults( bool quiet )
 	wxFFileOutputStream out(file);
 	if (!out.IsOk()) return false;
 
+#ifdef UI_BINARY
 	m_vals.Write(out);
+#else
+	m_vals.Write_text(out);
+#endif
 	wxLogStatus("Case: defaults saved for " + file);
 	return true;
 }
 
 bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di, VarTable *oldvals )
+		LoadStatus *di, VarTable *oldvals, bool recalculate, bool binary)
 {
 	VarTable vt;
-	if (!vt.Read(in))
+// All project files are assumed to be stored as binary
+	bool read_ok = true;
+	if (!binary) // text call from LoadDefaults
+		read_ok = vt.Read_text(in);
+	else
+		read_ok = vt.Read(in);
+
+	if (!read_ok)
 	{
 		wxString e("Error reading inputs from external source");
 		if ( di ) di->error = e;
@@ -533,8 +548,9 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 			ok = false;
 		}
 	}
-		
-	if ( RecalculateAll() < 0 )
+	
+
+	if ( recalculate && (RecalculateAll() < 0 ))
 	{
 		wxString e("Error recalculating equations after loading values from external source");	
 		if ( di ) di->error = e;
@@ -548,10 +564,16 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 bool Case::LoadDefaults( wxString *pmsg )
 {
 	if (!m_config) return false;
-
+	bool binary = true;
+#ifdef UI_BINARY
 	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
 		+ m_config->Technology + "_" + m_config->Financing;
-	
+	binary = true;
+#else
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".txt";
+	binary = false;
+#endif
 	LoadStatus di;
 	wxString message;
 	bool ok = false;
@@ -564,7 +586,7 @@ bool Case::LoadDefaults( wxString *pmsg )
 			return false;
 		}
 	
-		ok = LoadValuesFromExternalSource( in, &di );
+		ok = LoadValuesFromExternalSource( in, &di, (VarTable *)0, true, binary );
 		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
 				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
 				"Would you like to update the defaults with the current values right now?\n"
@@ -601,7 +623,11 @@ bool Case::LoadDefaults( wxString *pmsg )
 			wxFFileOutputStream out( file );
 			if( out.IsOk() )
 			{
+#ifdef UI_BINARY
 				m_vals.Write( out );
+#else
+				m_vals.Write_text(out);
+#endif
 				wxMessageBox("Saved defaults for configuration.");
 			}
 			else
@@ -638,14 +664,24 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 	// load the default values for the current
 	// configuration from the external data file
+#ifdef UI_BINARY
 	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
 		+ m_config->Technology + "_" + m_config->Financing;
+#else
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".txt";
+#endif
+
 	VarTable vt_defaults;
 	if ( wxFileExists(file))
 	{
 		wxFFileInputStream in(file);
 		if ( in.IsOk() )
+#ifdef UI_BINARY
 			vt_defaults.Read( in );
+#else
+			vt_defaults.Read_text(in);
+#endif
 	}
 
 	if ( vt_defaults.size() == 0 )

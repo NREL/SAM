@@ -337,9 +337,29 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 
 		if ( VarInfo *vv = vdb.Lookup( objs[i]->GetName() ) )
 		{	// fix this
-			if ( !(vv->Flags & VF_HIDE_LABELS) && objs[i]->IsVisible() )
+			int sw, sh;
+			if (!objs[i]->IsVisible())
 			{
-				int sw, sh;
+				rct = ScaleRect(objs[i]->GetGeometry());
+				wxString blk = "";
+				if (vv->Label.Len() > 0)
+				{
+					blk = "";
+					blk.Pad(vv->Label.Len());
+					dc.GetTextExtent(vv->Label, &sw, &sh);
+					dc.DrawText(blk, rct.x - sw - 3, rct.y + rct.height / 2 - sh / 2);
+				}
+
+				if (vv->Units.Len() > 0)
+				{
+					blk = "";
+					blk.Pad(vv->Units.Len());
+					dc.GetTextExtent(vv->Units, &sw, &sh);
+					dc.DrawText(blk, rct.x + rct.width + 2, rct.y + rct.height / 2 - sh / 2);
+				}
+			}
+			else if ( !(vv->Flags & VF_HIDE_LABELS) && objs[i]->IsVisible() )
+			{
 				dc.SetFont(*wxNORMAL_FONT);
 				wxColour colour( *wxBLACK );
 				dc.SetTextForeground( colour );
@@ -520,15 +540,15 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if ( dir == VAR_TO_OBJ ) mf->Set( val.Array() );
 		else val.Set( mf->Get() );
 	}
-	else if ( AFDataArrayButton *da = obj->GetNative<AFDataArrayButton>() )
+	else if (AFDataArrayButton *da = obj->GetNative<AFDataArrayButton>())
 	{
-		if ( dir == VAR_TO_OBJ ) da->Set( val.Array() );
-		else val.Set( da->Get() );
+		if (dir == VAR_TO_OBJ) da->Set(val.Array());
+		else val.Set(da->Get());
 	}
-	else if (AFDataMatrixCtrl *dm = obj->GetNative<AFDataMatrixCtrl>())
+	else if (AFStringArrayButton *sa = obj->GetNative<AFStringArrayButton>())
 	{
-		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
-		else val.Set(dm->GetData());
+		if (dir == VAR_TO_OBJ) sa->Set(val.String());
+		else val.Set(sa->Get());
 	}
 	else if (AFDataMatrixCtrl *dm = obj->GetNative<AFDataMatrixCtrl>())
 	{

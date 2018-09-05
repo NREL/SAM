@@ -418,10 +418,36 @@ static void fcall_addpage( lk::invoke_t &cxt )
 
 		}
 	}
-
-
 	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs );
 }
+
+
+static void fcall_getsettings(lk::invoke_t &cxt)
+{
+	LK_DOC("get_settings", "Gets a setting field for the current project", "(string:name):string:value");
+
+	wxString str = cxt.arg(0).as_string();
+	wxString buf = "";
+	SamApp::Settings().Read(str, &buf);
+	cxt.result().assign(buf);
+
+	/*
+		wxString buf="";
+		SamApp::Settings().Read("solar_data_paths", &buf);
+		cxt.result().assign(buf);
+    */
+}
+
+static void fcall_setsettings(lk::invoke_t &cxt)
+{
+	LK_DOC("set_settings", "Sets a setting field for the current project", "(string:name, string:value):none");
+
+	wxString str = cxt.arg(0).as_string();
+	wxString buf = cxt.arg(1).as_string();
+	SamApp::Settings().Write(str, buf);
+
+}
+
 
 static void fcall_setting( lk::invoke_t &cxt )
 {
@@ -4289,6 +4315,11 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_step_result,
 		fcall_sam_async,
 		fcall_sam_packaged_task,
+		fcall_showsettings,
+		fcall_setting,
+		fcall_getsettings,
+		fcall_setsettings,
+		fcall_rescanlibrary,
 		0 };
 	return (lk::fcall_t*)vec;
 }
@@ -4402,7 +4433,6 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_urdb_list_rates,
 		fcall_editscene3d,
 		fcall_showsettings,
-		fcall_rescanlibrary,
 		0 };
 	return (lk::fcall_t*)vec;
 }

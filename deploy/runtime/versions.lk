@@ -51,8 +51,39 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
-version_upgrade{'2018.x.x'} = define() {
+version_upgrade{'2018.8.29'} = define() {
 	const cfg = config();
+
+	// solar resource
+	solar_resource_techs = "Flat Plate PV,PVWatts,High-X Concentrating PV,Biopower,Geothermal Power,Solar Water Heating,Physical Trough,Empirical Trough,MSPT,DSPT,MSLF,DSLF,Dish Stirling,Generic CSP System,Physical Trough IPH,DSGL IPH";
+	if ( strpos( solar_resource_techs , cfg.tech ) > -1 )
+	{
+		message("We updated the Solar Resource input page to download weather files from the latest version of the National Solar Radiation Database (NSRDB) "
+		"and to facilatate working with TMY, single-year, and multiple weather files.<br>As part of this update, we removed the old default weather file library because "
+		"it contained out-of-date legacy data.<br>You should use the tools on the Solar Resource input page to download the weather files you need and build your own "
+		"weather file library. See Help for more details.");
+//		if ( value('use_specific_weather_file') == 1 )
+		{
+			user_wf = value('user_specified_weather_file');
+			msgbox('weather file ' + user_wf);
+			add_folder = yesno("Important!\nThe SAM project you are opening uses the following weather file that is not in your solar resource library:\n\n " + user_wf + "\n\n"
+			"Do you want to add the following folder to SAM's weather file folders list?\n\n" + path_only(user_wf) );
+			if ( add_folder )
+			{
+				x = get_settings('solar_data_paths');
+				msgbox( x + ', ' + typeof(x) );
+				if ( strlen( x ) > 0 ) 
+					x += ';';
+				x += path_only( user_wf );
+				set_settings('solar_data_paths', x ); // not sure how to update solar_data_paths setting
+				rescanlibrary('solar');// need to refresh library here
+				libkey = file_only( user_wf );
+				libkey = mid(libkey,0,#libkey-4);		
+				value( 'solar_resource', libkey );
+			}	
+		}
+	}
+
 	
 	if (cfg.tech == "Wind Power")
 		if (value('wind_farm_wake_model') == 2)
@@ -85,7 +116,9 @@ version_upgrade{'2017.8.28'} = define() {
 		"variable. We have set its value to 100 m/s so that the stow speed is never achieved to ensure the results in this version "
 		"are consistent with the older version. You can change the value on the Solar Field input page" );
 	}
+	
 };
+
 
 
 version_upgrade{'2017.5.11'} = define() {
