@@ -1376,7 +1376,7 @@ TabOrder
 3
 4
 
-21
+28
 Pipe_hl_coef
 3
 1
@@ -1405,6 +1405,20 @@ Physical Trough Parasitics
 1
 125.000000
 Numeric
+V_tes_des
+3
+1
+Design-point velocity to size the TES pipe diameters
+m/s
+Physical Trough Parasitics
+0
+2
+1
+1
+1
+1
+1.850000
+Default
 aux_array
 3
 2
@@ -1629,6 +1643,49 @@ Physical Trough Parasitics
 1
 0.000000
 Numeric
+custom_sgs_pipe_sizes
+3
+1
+Use custom SGS pipe diams, wallthks, and lengths
+-
+Physical Trough Parasitics
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+custom_tes_p_loss
+3
+1
+TES pipe losses are based on custom lengths and coeffs
+-
+Physical Trough Parasitics
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+k_tes_loss_coeffs
+3
+2
+Minor loss coeffs for the coll, gen, and bypass loops
+-
+Physical Trough Parasitics
+0
+2
+1
+2
+1
+11
+0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 
+
+Default
 pb_fixed_par
 3
 1
@@ -1657,6 +1714,49 @@ Physical Trough Parasitics
 1
 0.550000
 Numeric
+sgs_diams
+3
+2
+Custom SGS diameters
+m
+Physical Trough Parasitics
+0
+2
+1
+2
+1
+1
+-1.000000
+Default
+sgs_lengths
+3
+2
+Custom SGS lengths
+m
+Physical Trough Parasitics
+0
+2
+1
+2
+1
+11
+0.000000 90.000000 100.000000 120.000000 0.000000 0.000000 0.000000 0.000000 80.000000 120.000000 80.000000 
+
+Default
+sgs_wallthicks
+3
+2
+Custom SGS wall thicknesses
+m
+Physical Trough Parasitics
+0
+2
+1
+2
+1
+1
+-1.000000
+Default
 tes_pump_coef
 3
 1
