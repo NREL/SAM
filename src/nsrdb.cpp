@@ -471,7 +471,7 @@ void NSRDBDialog::GetResources()
 
 	//Create URL for weather file download
 	wxString url;
-	url = SamApp::WebApi("nsrdb_list_all");
+	url = SamApp::WebApi("nsrdb_query");
 	url.Replace("yourapikey", "<SAMAPIKEY>");
 	url.Replace("<LAT>", wxString::Format("%lg", lat), 1);
 	url.Replace("<LON>", wxString::Format("%lg", lon), 1);

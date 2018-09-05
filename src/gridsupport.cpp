@@ -379,6 +379,15 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		da->OnPressed(evt);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
+	else if (type == "StringArray")
+	{
+		obj->CreateNative(grid);
+		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+		AFStringArrayButton *da = obj->GetNative<AFStringArrayButton>();
+		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
+		da->OnPressed(evt);
+		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
+	}
 	else if (type == "DataMatrix")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
