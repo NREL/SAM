@@ -62,7 +62,7 @@ version_upgrade{'2018.8.29'} = define() {
 		"and to facilatate working with TMY, single-year, and multiple weather files.<br>As part of this update, we removed the old default weather file library because "
 		"it contained out-of-date legacy data.<br>You should use the tools on the Solar Resource input page to download the weather files you need and build your own "
 		"weather file library. See Help for more details.");
-//		if ( value('use_specific_weather_file') == 1 )
+		if ( value('use_specific_weather_file') == 1 )
 		{
 			user_wf = value('user_specified_weather_file');
 			msgbox('weather file ' + user_wf);
@@ -81,6 +81,56 @@ version_upgrade{'2018.8.29'} = define() {
 				libkey = mid(libkey,0,#libkey-4);		
 				value( 'solar_resource', libkey );
 			}	
+		}
+		else
+		{
+
+			// get latitude and longitude from old file solar resource ui inputs
+			lat = value( 'lat' );
+			lon = value( 'lon' );
+			
+			// url for nsrdb download (based on callback script for solar resource form
+			url = 'https://developer.nrel.gov/api/solar/nsrdb_psm3_download';
+			url += '?api_key=<SAMAPIKEY>';
+			url += '&full_name=sam_user';
+			url += '&email=<USEREMAIL>';
+			url += '&affiliation=unknown'; 
+			url += '&mailing_list=false';
+			url += '&reason=SAM';
+			url += '&interval=60';
+			//url += '&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed'; //SEE NSRDB.CPP 
+			url += '&utc=false';
+			url += '&leap_day=false';
+			url += '&names=tmy';
+			url += '&wkt=POINT(' + lon + '%20' + lat + ')';
+			
+			// name for downloaded weather file
+			name = value( 'solar_resource' );
+			name = replace( name , ' (TMY2)' , '' );
+			name = replace( name , ' (TMY3)' , '' );
+			name = replace( name , ' (INTL)' , '' );
+			name = replace( name , ', ' , ',' );
+			name = replace( name , ',' , '_' );
+			name = replace( name , '  ' , ' ' );
+			name = replace( name , ' ' , '_' );
+			fname = wfdownloaddir() + '/' + name + '_' + lat + '_' + lon + '_psmv3_60_tmy' + '.csv';
+			
+			// download weather file from NSRDB
+			msgbox( fname );
+			ok = curl( url , { 'file'= fname } ); // curl() should automatically replace <SAMAPI> and <USEREMAIL > with values from private.h
+			msgbox( ok );
+			// refresh solar resource library and update value
+			if ( ok )
+			{
+				rescanlibrary('solar');
+				lib_name = replace( file_only( fname ), '.csv' , '' );
+				value( 'solar_resource' , lib_name );
+			}
+			else
+			{
+				msgbox( 'Failed to download weather file.' );
+			}	
+
 		}
 	}
 
