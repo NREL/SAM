@@ -116,9 +116,10 @@ version_upgrade{'2018.8.29'} = define() {
 			fname = wfdownloaddir() + '/' + name + '_' + lat + '_' + lon + '_psmv3_60_tmy' + '.csv';
 			
 			// download weather file from NSRDB
-			msgbox( fname );
+			message( '<b>URL:</b> ' + url );
+			message( '<b>File name:</b> ' + fname );
 			ok = curl( url , { 'file'= fname } ); // curl() should automatically replace <SAMAPI> and <USEREMAIL > with values from private.h
-			msgbox( ok );
+			message( '<b>CURL OK?</b> ' + ok );
 			// refresh solar resource library and update value
 			if ( ok )
 			{
@@ -128,7 +129,7 @@ version_upgrade{'2018.8.29'} = define() {
 			}
 			else
 			{
-				msgbox( 'Failed to download weather file.' );
+				message( 'Failed to download weather file.' );
 			}	
 
 		}
