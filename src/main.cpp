@@ -436,7 +436,7 @@ void MainWindow::ImportCases()
 		VersionUpgrade upgd;
 
 		{ // scope to show busy info dialog
-			wxBusyInfo info( "Upgrading project file to current SAM version..." );		
+//			wxBusyInfo info( "Upgrading project file to current SAM version..." );		
 			if ( !upgd.Run( prj ) )
 				wxMessageBox("Error upgrading older project file:\n\n", file );
 		}
@@ -982,7 +982,7 @@ bool MainWindow::LoadProject( const wxString &file )
 			(const char*)wxFileNameFromPath(file).c_str(), major, minor, micro),
 			"Notice", wxICON_INFORMATION, this);
 		
-		wxBusyInfo info( "Upgrading project file to current SAM version..." );
+//		wxBusyInfo info( "Upgrading project file to current SAM version..." );
 		
 		VersionUpgrade upgd;
 		upgd.Run( pf );		
