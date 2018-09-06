@@ -175,21 +175,31 @@ void CaseEvaluator::SetupEnvironment( lk::env_t &env )
 int CaseEvaluator::CalculateAll()
 {
 	int nlibchanges = 0;
-	for ( VarInfoLookup::iterator it = m_case->Variables().begin();
-		it != m_case->Variables().end();
-		++it )
+
+	/* Check for project file upgrade
+	If flie version < SAM version then skip recalculate all in Case LoadValuesFroExternal Source*/
+	size_t sam_ver = SamApp::Version();
+	size_t file_ver = SamApp::Project().GetVersionInfo();
+	bool update_lib = (sam_ver == file_ver);
+
+	if (update_lib)
 	{
-		if ( it->second->Flags & VF_LIBRARY
-			&& it->second->Type == VV_STRING )
+		for (VarInfoLookup::iterator it = m_case->Variables().begin();
+			it != m_case->Variables().end();
+			++it)
 		{
-			wxArrayString changed;
-			if ( !UpdateLibrary( it->first, changed ) )
-				return -1;
-			else
-				nlibchanges += changed.size();
+			if (it->second->Flags & VF_LIBRARY
+				&& it->second->Type == VV_STRING)
+			{
+				wxArrayString changed;
+				if (!UpdateLibrary(it->first, changed))
+					return -1;
+				else
+					nlibchanges += changed.size();
+			}
 		}
 	}
-	
+
 	int nevals = EqnEvaluator::CalculateAll();
 	if ( nevals >= 0 ) nevals += nlibchanges;
 
@@ -503,7 +513,7 @@ bool Case::SaveDefaults( bool quiet )
 }
 
 bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di, VarTable *oldvals, bool recalculate, bool binary)
+		LoadStatus *di, VarTable *oldvals, bool binary)
 {
 	VarTable vt;
 // All project files are assumed to be stored as binary
@@ -550,7 +560,7 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 	}
 	
 
-	if ( recalculate && (RecalculateAll() < 0 ))
+	if (RecalculateAll() < 0 )
 	{
 		wxString e("Error recalculating equations after loading values from external source");	
 		if ( di ) di->error = e;
@@ -586,7 +596,7 @@ bool Case::LoadDefaults( wxString *pmsg )
 			return false;
 		}
 	
-		ok = LoadValuesFromExternalSource( in, &di, (VarTable *)0, true, binary );
+		ok = LoadValuesFromExternalSource( in, &di, (VarTable *)0, binary );
 		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
 				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
 				"Would you like to update the defaults with the current values right now?\n"
