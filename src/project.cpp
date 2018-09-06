@@ -301,9 +301,10 @@ bool ProjectFile::Read( wxInputStream &input )
 	m_verMinor = (int)in.Read16();
 	m_verMicro = (int)in.Read16();
 
-	/* Check for project file upgrade 
-	If flie version < SAM version then skip recalculate all in Case LoadValuesFroExternal Source*/
-
+	// set then reset if fails
+	SamApp::Project().m_verMajor = m_verMajor;
+	SamApp::Project().m_verMinor = m_verMinor;
+	SamApp::Project().m_verMicro = m_verMicro;
 
 
 	if ( ver > 2 )
