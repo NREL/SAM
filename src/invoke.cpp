@@ -3061,7 +3061,7 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		reloaded = Library::Load( wind_resource_db );
 	}
 
-	if ( reloaded != 0 )
+	if ( &cc != NULL && reloaded != 0 )
 	{
 		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
 		for( size_t i=0;i<objs.size();i++ )

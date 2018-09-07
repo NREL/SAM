@@ -90,19 +90,19 @@ version_upgrade{'2018.8.29'} = define() {
 			lon = value( 'lon' );
 			
 			// url for nsrdb download (based on callback script for solar resource form
-			url = 'https://developer.nrel.gov/api/solar/nsrdb_psm3_download';
+			url = 'https://developer.nrel.gov/api/solar/nsrdb_psm3_download.csv';
 			url += '?api_key=<SAMAPIKEY>';
-			url += '&full_name=sam_user';
-			url += '&email=<USEREMAIL>';
-			url += '&affiliation=unknown'; 
-			url += '&mailing_list=false';
-			url += '&reason=SAM';
-			url += '&interval=60';
+			url += '&&full_name=sam_user';
+			url += '&&email=<USEREMAIL>';
+			url += '&&affiliation=unknown'; 
+			url += '&&mailing_list=false';
+			url += '&&reason=SAM';
+			url += '&&interval=60';
 			//url += '&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed'; //SEE NSRDB.CPP 
-			url += '&utc=false';
-			url += '&leap_day=false';
-			url += '&names=tmy';
-			url += '&wkt=POINT(' + lon + '%20' + lat + ')';
+			url += '&&utc=false';
+			url += '&&leap_day=false';
+			url += '&&names=tmy';
+			url += '&&wkt=POINT(' + lon + '%20' + lat + ')';
 			
 			// name for downloaded weather file
 			name = value( 'solar_resource' );
