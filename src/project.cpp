@@ -59,6 +59,7 @@
 #include <wx/html/htmlwin.h>
 
 #include <wex/metro.h>
+#include <wex/lkscript.h>
 
 #include <lk/stdlib.h>
 
@@ -529,7 +530,7 @@ VersionUpgrade::VersionUpgrade()
 	m_env.register_funcs( lk::stdlib_wxui() );
 	m_env.register_funcs( invoke_general_funcs() );
 	m_env.register_funcs( invoke_ssc_funcs() );
-
+	m_env.register_funcs( wxLKMiscFunctions() );
 	m_env.register_funcs( invoke_functions(), this );
 }
 
