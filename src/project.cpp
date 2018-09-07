@@ -531,6 +531,7 @@ VersionUpgrade::VersionUpgrade()
 	m_env.register_funcs( invoke_general_funcs() );
 	m_env.register_funcs( invoke_ssc_funcs() );
 	m_env.register_funcs( wxLKMiscFunctions() );
+	m_env.register_funcs( wxLKFileFunctions() );
 	m_env.register_funcs( invoke_functions(), this );
 }
 
