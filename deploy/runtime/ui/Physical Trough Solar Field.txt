@@ -1,7 +1,7 @@
 Physical Trough Solar Field
 864
 1241
-57
+61
 GroupBox
 
 1
@@ -516,6 +516,96 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+12
+Name
+5
+21
+Label_cold_hdr_sizing
+X
+3
+654
+Y
+3
+255
+Width
+3
+73
+Height
+3
+24
+Caption
+5
+12
+Cold Headers
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+20
+Label_hot_hdr_sizing
+X
+3
+750
+Y
+3
+255
+Width
+3
+73
+Height
+3
+24
+Caption
+5
+11
+Hot Headers
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -647,7 +737,7 @@ X
 654
 Y
 3
-135
+108
 Width
 3
 100
@@ -706,7 +796,7 @@ X
 654
 Y
 3
-159
+132
 Width
 3
 100
@@ -758,17 +848,76 @@ Numeric
 16
 Name
 5
-9
-V_hdr_max
+14
+V_hdr_cold_max
 X
 3
 654
 Y
 3
-303
+300
 Width
 3
-100
+65
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+25
+Numeric
+
+1
+16
+Name
+5
+14
+V_hdr_cold_min
+X
+3
+654
+Y
+3
+276
+Width
+3
+65
 Height
 3
 21
@@ -817,17 +966,17 @@ Numeric
 16
 Name
 5
-9
-V_hdr_min
+13
+V_hdr_hot_max
 X
 3
-654
+750
 Y
 3
-279
+300
 Width
 3
-100
+65
 Height
 3
 21
@@ -869,7 +1018,66 @@ BackColour
 255
 TabOrder
 3
-22
+26
+Numeric
+
+1
+16
+Name
+5
+13
+V_hdr_hot_min
+X
+3
+750
+Y
+3
+276
+Width
+3
+65
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+24
 Numeric
 
 1
@@ -928,7 +1136,7 @@ BackColour
 255
 TabOrder
 3
-35
+37
 Choice
 
 1
@@ -1011,7 +1219,7 @@ Y
 30
 Width
 3
-160
+124
 Height
 3
 21
@@ -1103,13 +1311,13 @@ Name
 field_fl_props
 X
 3
-654
+786
 Y
 3
-54
+27
 Width
 3
-98
+59
 Height
 3
 27
@@ -1129,7 +1337,7 @@ X
 654
 Y
 3
-111
+84
 Width
 3
 100
@@ -1188,7 +1396,7 @@ X
 654
 Y
 3
-87
+60
 Width
 3
 100
@@ -1292,7 +1500,7 @@ BackColour
 255
 TabOrder
 3
-33
+35
 Numeric
 
 1
@@ -1351,7 +1559,7 @@ BackColour
 255
 TabOrder
 3
-44
+46
 CheckBox
 
 1
@@ -1439,7 +1647,7 @@ BackColour
 255
 TabOrder
 3
-26
+28
 Numeric
 
 1
@@ -1453,7 +1661,7 @@ X
 654
 Y
 3
-207
+180
 Width
 3
 100
@@ -1512,7 +1720,7 @@ X
 654
 Y
 3
-183
+156
 Width
 3
 100
@@ -1571,7 +1779,7 @@ X
 654
 Y
 3
-255
+228
 Width
 3
 100
@@ -1675,7 +1883,7 @@ BackColour
 255
 TabOrder
 3
-42
+44
 Numeric
 
 1
@@ -1734,7 +1942,7 @@ BackColour
 255
 TabOrder
 3
-41
+43
 Numeric
 
 1
@@ -1793,7 +2001,7 @@ BackColour
 255
 TabOrder
 3
-43
+45
 Numeric
 
 1
@@ -1807,7 +2015,7 @@ X
 654
 Y
 3
-231
+204
 Width
 3
 100
@@ -1911,7 +2119,7 @@ BackColour
 255
 TabOrder
 3
-30
+32
 Numeric
 
 1
@@ -1970,7 +2178,7 @@ BackColour
 255
 TabOrder
 3
-45
+47
 RadioChoice
 
 1
@@ -2066,7 +2274,7 @@ BackColour
 255
 TabOrder
 3
-29
+31
 Numeric
 
 1
@@ -2125,7 +2333,7 @@ BackColour
 255
 TabOrder
 3
-25
+27
 Numeric
 
 1
@@ -2184,7 +2392,7 @@ BackColour
 255
 TabOrder
 3
-32
+34
 Numeric
 
 1
@@ -2479,7 +2687,7 @@ BackColour
 255
 TabOrder
 3
-34
+36
 Numeric
 
 1
@@ -2538,7 +2746,7 @@ BackColour
 255
 TabOrder
 3
-31
+33
 Numeric
 
 1
@@ -2597,7 +2805,7 @@ BackColour
 255
 TabOrder
 3
-46
+48
 Numeric
 
 1
@@ -2656,7 +2864,7 @@ BackColour
 255
 TabOrder
 3
-27
+29
 Numeric
 
 1
@@ -2715,7 +2923,7 @@ BackColour
 255
 TabOrder
 3
-28
+30
 TroughLoop
 
 1
@@ -2794,7 +3002,7 @@ BackColour
 255
 TabOrder
 3
-40
+42
 Numeric
 
 1
@@ -2853,9 +3061,9 @@ BackColour
 255
 TabOrder
 3
-39
+41
 
-61
+85
 DISCARD_UNUSED_latitude
 3
 1
@@ -2866,6 +3074,20 @@ Physical Trough Solar Field
 8
 1
 1
+1
+1
+0.000000
+Default
+D_cpnt
+3
+3
+Interconnect component diameters
+m
+Physical Trough Solar Field
+0
+2
+1
+3
 1
 1
 0.000000
@@ -2925,6 +3147,132 @@ Physical Trough Solar Field
 1
 1
 950.000000
+Numeric
+K_cpnt
+3
+3
+Interconnect component minor loss coefficients
+-
+Physical Trough Solar Field
+0
+2
+1
+3
+1
+1
+0.000000
+Default
+L_cpnt
+3
+3
+Interconnect component lengths
+m
+Physical Trough Solar Field
+0
+2
+1
+3
+1
+1
+0.000000
+Default
+L_rnr_pb
+3
+1
+Length of runner pipe in pb
+m
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+25.000000
+Numeric
+L_rnr_per_xpan
+3
+1
+Threshold length of straight runner pipe without an expansion loop
+m
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+70.000000
+Numeric
+L_xpan_hdr
+3
+1
+Combined perpendicular lengths of each header expansion loop
+m
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+20.000000
+Numeric
+L_xpan_rnr
+3
+1
+Combined perpendicular lengths of each runner expansion loop
+m
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+20.000000
+Numeric
+Min_rnr_xpans
+3
+1
+Minimum number of expansion loops per single-diameter runner section
+-
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+1.000000
+Numeric
+N_hdr_per_xpan
+3
+1
+Number of collector loops per expansion loop
+-
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+2.000000
+Numeric
+N_max_hdr_diams
+3
+1
+Max header diameters
+-
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+10.000000
 Numeric
 Row_Distance
 3
@@ -2996,7 +3344,21 @@ Physical Trough Solar Field
 1
 391.000000
 Numeric
-V_hdr_max
+Type_cpnt
+3
+3
+Interconnect component type
+-
+Physical Trough Solar Field
+0
+2
+1
+3
+1
+1
+0.000000
+Default
+V_hdr_cold_max
 3
 1
 Header design max flow velocity
@@ -3010,10 +3372,38 @@ Physical Trough Solar Field
 1
 3.000000
 Numeric
-V_hdr_min
+V_hdr_cold_min
 3
 1
 Header design min flow velocity
+m/s
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+2.000000
+Numeric
+V_hdr_hot_max
+3
+1
+ 
+m/s
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+3.000000
+Numeric
+V_hdr_hot_min
+3
+1
+ 
 m/s
 Physical Trough Solar Field
 0
@@ -3080,6 +3470,20 @@ Physical Trough Solar Field
 1
 0.000000
 Numeric
+calc_design_pipe_vals
+3
+1
+Calculate temps and pressures at design conditions for runners and headers
+-
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+1.000000
+Default
 combo_FieldConfig
 3
 1
@@ -3139,6 +3543,20 @@ Loop receiver heat loss
 1
 1.000000
 Default
+custom_sf_pipe_sizes
+3
+1
+Use custom solar field pipe diams, wallthks, and lengths
+-
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
 eta_pump
 3
 1
@@ -3156,7 +3574,7 @@ Numeric
 field_fl_props
 3
 3
-User-defined HTF fluid
+ 
  
  
 0
@@ -3462,6 +3880,48 @@ Physical Trough Solar Field
 1
 1.400000
 Numeric
+northsouth_field_sep
+3
+1
+North/south separation between subfields. 0 = SCAs are touching
+m
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+20.000000
+Numeric
+object 11
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0.000000
+Numeric
+offset_xpan_hdr
+3
+1
+Location of first header expansion loop. 1 = after first collector loop
+-
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+1.000000
+Numeric
 radio_sm_or_area
 3
 1
@@ -3490,6 +3950,90 @@ Physical Trough Solar Field
 1
 0.000000
 Numeric
+sf_hdr_diams
+3
+2
+Custom header diameters
+m
+Physical Trough Solar Field
+0
+2
+1
+2
+1
+1
+-1.000000
+Default
+sf_hdr_lengths
+3
+2
+Custom header lengths
+m
+Physical Trough Solar Field
+0
+2
+1
+2
+1
+1
+-1.000000
+Default
+sf_hdr_wallthicks
+3
+2
+Custom header wall thicknesses
+m
+Physical Trough Solar Field
+0
+2
+1
+2
+1
+1
+-1.000000
+Default
+sf_rnr_diams
+3
+2
+Custom runner diameters
+m
+Physical Trough Solar Field
+0
+2
+1
+2
+1
+1
+-1.000000
+Default
+sf_rnr_lengths
+3
+2
+Custom runner lengths
+m
+Physical Trough Solar Field
+0
+2
+1
+2
+1
+1
+-1.000000
+Default
+sf_rnr_wallthicks
+3
+2
+Custom runner wall thicknesses
+m
+Physical Trough Solar Field
+0
+2
+1
+2
+1
+1
+-1.000000
+Default
 sf_type
 3
 1
@@ -3716,7 +4260,7 @@ Physical Trough Solar Field
 0.275000
 Numeric
 
-6755
+6756
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -3972,6 +4516,7 @@ equations{ 'SCADefocusArray' } = define() {
 
 	return p1;
 };
+
 
 3594
 on_load{'Physical Trough Solar Field'} = define() {
