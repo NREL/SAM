@@ -1976,7 +1976,7 @@ equations{'file_name'} = define() {
 equations{'library_folder_list'} = define() {
 	return ${library_paths};
 };	
-13352
+13321
 
 on_load{'Solar Resource Data'} = define() {
 	on_change{'use_specific_weather_file'}();
@@ -2354,7 +2354,6 @@ nsrdb_get = define( )
 			//base_url += '&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed'; //SEE NSRDB.CPP 
 			base_url += '&utc=false';
 			base_url += '&leap_day=false';
-			base_url += '&interval=60';
 
 			if ( #type > 1 && n==0)
 			{
