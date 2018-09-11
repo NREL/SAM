@@ -2437,8 +2437,8 @@ Library
 CEC Modules
 Fields
 5
-76
-Name,I_mp_ref,V_mp_ref,A_c,N_s,I_sc_ref,V_oc_ref,gamma_r,Technology,BIPV,PTC
+168
+Name,Date,Technology,Bifacial,STC,PTC,A_c,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_r,BIPV,Version,T_NOCT
 Plot
 
 1
