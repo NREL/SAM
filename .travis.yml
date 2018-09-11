@@ -32,8 +32,8 @@ install:
 
 branches:
   only:
-#  - master
+  - master
   - develop
-#  - Host_Developer
-#  - weather_forecast
-#  - 2017.9.5.r3
+  - Host_Developer
+  - weather_forecast
+  - bifacial
