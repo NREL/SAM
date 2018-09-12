@@ -226,10 +226,10 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+      <Command>robocopy "$(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin" "$(SAMNTDIR)\deploy\$(Platform)" /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.dll $(SAMNTDIR)\deploy\$(Platform)
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.pdb $(SAMNTDIR)\deploy\$(Platform)\
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.dll" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -274,10 +274,10 @@ copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.pdb $(SAMNTDIR)
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+      <Command>robocopy "$(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin" "$(SAMNTDIR)\deploy\$(Platform)" /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.dll $(SAMNTDIR)\deploy\$(Platform)
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.pdb $(SAMNTDIR)\deploy\$(Platform)\
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.dll" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -322,10 +322,10 @@ copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.pdb $(SAMNTDIR)\de
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+      <Command>robocopy "$(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin" "$(SAMNTDIR)\deploy\$(Platform)" /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.dll $(SAMNTDIR)\deploy\$(Platform)
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.pdb $(SAMNTDIR)\deploy\$(Platform)\
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.dll" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
     <PreBuildEvent>
@@ -374,10 +374,10 @@ copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.pdb $(SAMNTDIR)\
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+      <Command>robocopy "$(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin" "$(SAMNTDIR)\deploy\$(Platform)" /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\ssc.dll" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\ssc.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
     <PreBuildEvent>
