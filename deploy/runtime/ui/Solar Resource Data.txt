@@ -1202,7 +1202,7 @@ GroupBox
 Name
 5
 10
-object 421
+object 423
 X
 3
 9
@@ -1976,7 +1976,7 @@ equations{'file_name'} = define() {
 equations{'library_folder_list'} = define() {
 	return ${library_paths};
 };	
-13321
+13357
 
 on_load{'Solar Resource Data'} = define() {
 	on_change{'use_specific_weather_file'}();
@@ -2244,7 +2244,7 @@ nsrdb_get = define( )
 	download_ok = true;
 	folder = wfdownloaddir();
 	
-	log_file = folder + '/sam_nsrdb_download_log.md';
+	log_file = folder + '/sam_nsrdb_download_log.txt';
 	if ( file_exists( log_file ) )
 		flog = open( log_file , 'a' );
 	else
@@ -2354,6 +2354,7 @@ nsrdb_get = define( )
 			//base_url += '&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed'; //SEE NSRDB.CPP 
 			base_url += '&utc=false';
 			base_url += '&leap_day=false';
+			base_url += '&interval=60';
 
 			if ( #type > 1 && n==0)
 			{
@@ -2424,8 +2425,8 @@ nsrdb_get = define( )
 	else
 		msg = 'Download finished with errors.';
 		
-	show_log = yesno( msg + '\nOpen log file?' );
+	/*show_log = yesno( msg + '\nOpen log file?' );
 	if ( show_log )
-		browse( log_file );
+		browse( log_file );*/
 	browse( path_only( log_file ) );
 };
