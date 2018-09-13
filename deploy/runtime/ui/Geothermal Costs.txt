@@ -3167,7 +3167,7 @@ X
 372
 Y
 3
-543
+546
 Width
 3
 100
@@ -3224,7 +3224,7 @@ Name
 geotherm.cost.plant_size
 X
 3
-162
+165
 Y
 3
 543
@@ -3286,7 +3286,7 @@ X
 687
 Y
 3
-543
+546
 Width
 3
 100
@@ -6440,7 +6440,7 @@ Geothermal Costs
 1
 1
 1
-0.000000
+1.000000
 CheckBox
 geotherm.cost.plant_auto_estimate_last_setting
 3
@@ -6463,7 +6463,7 @@ Cost
 $/kW
 Geothermal Costs
 0
-0
+10
 1
 1
 1
@@ -7384,7 +7384,7 @@ equations{ 'system_use_lifetime_output' } = define() {
 equations{ 'system_recapitalization_cost' } = define() {
 	return ${geotherm.cost.recap}; };
 
-2605
+2651
 function reset_geothermal_plant_cost()
 {
 	// This should never get called for flash plants - the checkbox that calls this code is disabled for flash plants
@@ -7409,7 +7409,6 @@ function update_cost_input_control()
 	enable("geotherm.cost.plant_per_kW", value("geotherm.cost.plant_auto_estimate") == 0 );
 }
 
-
 on_change{"geotherm.cost.plant_auto_estimate"} = define()
 {
 	//update_cost_input_control();
@@ -7421,18 +7420,21 @@ on_change{"geotherm.cost.plant_auto_estimate"} = define()
 			logmsg('Geothermal model failed to run');
 		}
 		else {
-			//second_law_eff = ssc_var(geothermal, "eff_secondlaw");
-			second_law_eff = 0.373;
-			cost = ssc_create('geothermal_cost');
 			
-			msgbox("nameplate: " + value("nameplate"));
+			//design_temp = 175;
+			//gross_output = 35088;
+			cost = ssc_create('geothermal_costs');
+			second_law_eff = ssc_var(geothermal, "eff_secondlaw");
 			
-			ssc_var(cost, "nameplate", value("nameplate"));
-			ssc_var(cost, "design_temp", value("design_temp"));
+			
+			ssc_var(cost, "gross_output", value('geotherm.cost.plant_size'));
+			ssc_var(cost, "design_temp",value("design_temp"));
 			ssc_var(cost, "eff_secondlaw", second_law_eff);
 			
 			ssc_exec(cost, 'geothermal_costs');
-			plant_per_kW = ssc_var(cost, "plant_equip_cost");
+			plant_per_kW = ssc_var(cost, "corrected_equip_cost");
+			ssc_free(cost);
+			msgbox(second_law_eff);
 			value("geotherm.cost.plant_per_kW", plant_per_kW);
 			
 			enable("geotherm.cost.plant_per_kW", false);
