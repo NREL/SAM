@@ -51,8 +51,135 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
-version_upgrade{'2018.x.x'} = define() {
+version_upgrade{'2018.8.29'} = define() {
 	const cfg = config();
+
+	// solar resource
+	solar_resource_techs = "Flat Plate PV,PVWatts,High-X Concentrating PV,Biopower,Geothermal Power,Solar Water Heating,Physical Trough,Empirical Trough,MSPT,DSPT,MSLF,DSLF,Dish Stirling,Generic CSP System,Physical Trough IPH,DSGL IPH";
+	if ( strpos( solar_resource_techs , cfg.tech ) > -1 )
+	{
+		message("The new Solar Resource input page makes it easy to download weather files from "
+		"the latest version of the National Solar Radiation Database (NSRDB) as TMY, single-year, "
+		"or multiple files for P50/P90 simulations. As part of these improvements we removed "
+		"the old default weather file library because it contained out-of-date data. "
+		"<br><br>Use the tools on the Solar Resource input page to download the weather "
+		"and build a library with just the files you need for your work. See Help for more details.");
+		
+		// check that current weather file is not already in library
+
+		library = csvread( userlocaldatadir() + '/SolarResourceData.csv', { 'table' = true } );
+		wf_in_lib = ( library{'Name'} ?@ value( 'solar_resource' ) ) > -1;
+		
+		if ( value('use_specific_weather_file') == 1 )
+		{
+			user_wf = value('user_specified_weather_file');
+			add_folder = yesno( 'Add folder to SAM weather file folders?\n' 
+			                   + 'The weather file ' +  file_only(user_wf) + ' is not in the solar resource library. '
+							   + 'We have removed the \"Choose a Weather File from Your Computer\" option from the Solar Resource page ' 
+							   + 'to make it easier to keep track of your SAM weather files. To use a weather file, you must add its '
+							   + 'folder to the list of SAM library folders.\n\n'
+			                   + 'Click Yes to add ' + path_only(user_wf) + ' to the list of SAM library folders '
+			                   + 'and set ' + file_only(user_wf) + ' as the weather file.\n\nClick No to add the folder or choose '
+			                   + 'a different file later.' );
+			if ( add_folder )
+			{
+				x = get_settings('solar_data_paths');
+				if ( strlen( x ) > 0 ) 
+					x += ';';
+				x += path_only( user_wf );
+				set_settings('solar_data_paths', x ); // not sure how to update solar_data_paths setting
+				rescanlibrary('solar');// need to refresh library here
+				libkey = file_only( user_wf );
+				libkey = mid(libkey,0,#libkey-4);		
+				value( 'solar_resource', libkey );
+			}	
+			else
+			{
+				msgbox( 'Setting weather file to Phoenix, Arizona.\nUse the tools on the Solar Resource page to download '
+					    + 'or choose a different file.');
+				value( 'solar_resource', 'phoenix_az_33.448377_-112.074037_psmv3_60_tmy' );	    
+			}
+		}
+		elseif ( wf_in_lib )
+		{
+			message( 'The weather file ' + value('solar_resource') + ' is in your solar resource library.' );
+		}
+		else
+		{
+		
+			download_ok = false;
+			user_ok = false;
+
+			// get latitude and longitude from old file solar resource ui inputs
+			lat = value( 'lat' );
+			lon = value( 'lon' );
+			
+			// url for nsrdb download (based on callback script for solar resource form
+			url = 'https://developer.nrel.gov/api/solar/nsrdb_psm3_download.csv';
+			url += '?api_key=<SAMAPIKEY>';
+			url += '&&full_name=sam_user';
+			url += '&&email=<USEREMAIL>';
+			url += '&&affiliation=unknown'; 
+			url += '&&mailing_list=false';
+			url += '&&reason=SAM';
+			url += '&&interval=60';
+			//url += '&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed'; //SEE NSRDB.CPP 
+			url += '&&utc=false';
+			url += '&&leap_day=false';
+			url += '&&names=tmy';
+			url += '&&wkt=POINT(' + lon + '%20' + lat + ')';
+			
+			// name for downloaded weather file
+			name = value( 'solar_resource' );
+			name = replace( name , ' (TMY2)' , '' );
+			name = replace( name , ' (TMY3)' , '' );
+			name = replace( name , ' (INTL)' , '' );
+			name = replace( name , ', ' , ',' );
+			name = replace( name , ',' , '_' );
+			name = replace( name , '  ' , ' ' );
+			name = replace( name , ' ' , '_' );
+			fname = wfdownloaddir() + '/' + name + '_' + lat + '_' + lon + '_psmv3_60_tmy' + '.csv';
+			
+			// download weather file from NSRDB
+			user_ok = yesno( 'Download new weather file?\nThe weather file ' 
+			                + value('solar_resource') 
+			                + ' is not in your solar resource library. '
+			                + 'Click Yes to download a replacement file from the NSRDB now. '
+			                + 'Click No to download or choose a different file later.' );
+			if ( user_ok ) 
+			{
+				ok = curl( url , { 'file'= fname } ); // curl() should automatically replace <SAMAPI> and <USEREMAIL > with values from private.h
+				// rudimentary check that downloaded weather file is valid
+				if ( ok )
+					if ( csvread( fname ) != null) // NSRDB returns a JSON file instead of CSV if lat/lon not in database
+						download_ok = true;
+			}
+			else
+			{
+				msgbox( 'Setting weather file to Phoenix, Arizona.\nUse the tools on the Solar Resource page to download '
+					    + 'or choose a different file.');
+				value( 'solar_resource', 'phoenix_az_33.448377_-112.074037_psmv3_60_tmy' );	    
+			}
+			
+			// refresh solar resource library and update value
+			if ( download_ok )
+			{
+				rescanlibrary('solar');
+				lib_name = replace( file_only( fname ), '.csv' , '' );
+				value( 'solar_resource' , lib_name );
+				message( 'New weather file downloaded for Latitude = ' + lat + ' , Longitude = ' + lon +
+				         ' and added to solar resource library:\n' + file_only(fname) );
+
+			}
+			else
+			{
+				msgbox('Failed to download new weather file!\nA weather file for your location may not be available from the NSRDB, or the NSRDB service may be down. Use the tools on the Solar Resource page to download or choose a weather file.');
+				message('Failed to download new weather file for Latidude = ' + lat + ' , Longitude = ' + lon + '. A weather file for that location may not be available from the NSRDB, or the NSRDB service may be down. Use the tools on the Solar Resource page to download or choose a weather file.');
+			}
+
+		}
+	}
+
 	
 	if (cfg.tech == "Wind Power")
 		if (value('wind_farm_wake_model') == 2)
@@ -85,7 +212,9 @@ version_upgrade{'2017.8.28'} = define() {
 		"variable. We have set its value to 100 m/s so that the stow speed is never achieved to ensure the results in this version "
 		"are consistent with the older version. You can change the value on the Solar Field input page" );
 	}
+	
 };
+
 
 
 version_upgrade{'2017.5.11'} = define() {

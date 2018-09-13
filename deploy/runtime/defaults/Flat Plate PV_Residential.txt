@@ -3164,15 +3164,13 @@ lbl_csp
 library_folder_list
 1
 4
-77
+76
 C:\Projects\SAM\Documentation\P50P90\2018.5.21_Trough_IPH_Paul\weather_files
-
 library_paths
 1
 4
-77
+76
 C:\Projects\SAM\Documentation\P50P90\2018.5.21_Trough_IPH_Paul\weather_files
-
 load
 1
 2
@@ -3346,8 +3344,8 @@ module_model
 module_name
 1
 4
-24
-SunPower SPR-X21-335-BLK
+20
+SunPower SPR-X21-335
 module_num_units
 1
 1

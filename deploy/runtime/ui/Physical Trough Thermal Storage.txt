@@ -1449,7 +1449,7 @@ TabOrder
 3
 2
 
-36
+39
 T_tank_cold_ini
 3
 1
@@ -1464,6 +1464,20 @@ Physical Trough Thermal Storage
 1
 300.000000
 Numeric
+T_tank_hot_inlet_min
+3
+1
+Minimum hot tank htf inlet temperature
+C
+Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+400.000000
+Default
 V_tank_hot_ini
 3
 1
@@ -1731,6 +1745,20 @@ Physical Trough Thermal Storage
 1
 1.000000
 Numeric
+has_hot_tank_bypass
+3
+1
+Bypass valve connects field outlet to cold tank
+-
+Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+0.000000
+Default
 hot_tank_Thtr
 3
 1
@@ -1871,6 +1899,20 @@ Physical Trough Thermal Storage
 1
 1.000000
 Numeric
+tanks_in_parallel
+3
+1
+Tanks are in parallel, not in series, with solar field
+-
+Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+1.000000
+Default
 tc_fill
 3
 1
