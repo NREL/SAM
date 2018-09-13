@@ -1,5 +1,5 @@
 1
-164
+165
 CT
 1
 1
@@ -270,6 +270,12 @@ design_temp
 1
 1
 200.000000
+eff_secondlaw
+1
+1
+1
+1
+0.000000
 elev
 1
 1
@@ -291,8 +297,8 @@ excess_pressure_pump
 file_name
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+92
+C:\Users\PBHASKAR\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 fixed_charge_rate
 1
 1
@@ -773,8 +779,8 @@ rock_thermal_conductivity
 solar_data_file_name
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+92
+C:\Users\PBHASKAR\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 solar_data_source
 1
 4
@@ -788,8 +794,8 @@ blythe_ca_33.617773_-114.588261_psmv3_60_tmy
 solar_resource_file
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+92
+C:\Users\PBHASKAR\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 specified_pump_work_amount
 1
 1

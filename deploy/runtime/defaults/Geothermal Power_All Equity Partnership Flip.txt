@@ -1,5 +1,5 @@
 1
-517
+518
 CT
 1
 1
@@ -1029,6 +1029,12 @@ dscr_reserve_months
 1
 1
 6.000000
+eff_secondlaw
+1
+1
+1
+1
+0.000000
 elev
 1
 1
@@ -1104,8 +1110,8 @@ federal_tax_rate
 file_name
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+92
+C:\Users\PBHASKAR\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -2927,8 +2933,8 @@ show_construction_period
 solar_data_file_name
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+92
+C:\Users\PBHASKAR\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 solar_data_source
 1
 4
@@ -2942,8 +2948,8 @@ blythe_ca_33.617773_-114.588261_psmv3_60_tmy
 solar_resource_file
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+92
+C:\Users\PBHASKAR\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 solution_mode_message
 1
 4
