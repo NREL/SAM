@@ -1410,8 +1410,8 @@ module_model
 module_name
 1
 4
-24
-SunPower SPR-X21-335-BLK
+20
+SunPower SPR-X21-335
 module_width
 1
 1

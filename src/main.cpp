@@ -116,7 +116,10 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
-	{ 2018, 8, 20 }, // Beta for testing - internal with no expiration.
+	{ 2018, 9, 13 }, // Beta for Webinar - expires 9/13/2019.
+		{ 2018, 9, 10 }, // Beta for Webinar - expires 9/10/2019.
+		{ 2018, 8, 29 }, // Beta for Bifacial - expires 8/29/2019.
+		{ 2018, 8, 20 }, // Beta for testing - internal with no expiration.
 		{ 2018, 8, 13 }, // Beta for Bifacial - expires 8/13/2019
 		{ 2018, 7, 17 }, // Beta for Bifacial - expires 7/17/2019
 		{ 2018, 7, 11 }, // Beta for Bifacial - expires 7/11/2019
@@ -435,7 +438,7 @@ void MainWindow::ImportCases()
 		VersionUpgrade upgd;
 
 		{ // scope to show busy info dialog
-			wxBusyInfo info( "Upgrading project file to current SAM version..." );		
+//			wxBusyInfo info( "Upgrading project file to current SAM version..." );		
 			if ( !upgd.Run( prj ) )
 				wxMessageBox("Error upgrading older project file:\n\n", file );
 		}
@@ -981,7 +984,7 @@ bool MainWindow::LoadProject( const wxString &file )
 			(const char*)wxFileNameFromPath(file).c_str(), major, minor, micro),
 			"Notice", wxICON_INFORMATION, this);
 		
-		wxBusyInfo info( "Upgrading project file to current SAM version..." );
+//		wxBusyInfo info( "Upgrading project file to current SAM version..." );
 		
 		VersionUpgrade upgd;
 		upgd.Run( pf );		
@@ -1933,9 +1936,9 @@ bool SamApp::OnInit()
 	SetAppName( "" );
 	SetVendorName( "" );
 	
-//#ifdef _DEBUG
+#ifdef _DEBUG
 	SamLogWindow::Setup();
-//#endif
+#endif
 	
 	wxLogStatus( "startup version %d.%d.%d with SSC version %d, %s", 
 		releases[0].major,

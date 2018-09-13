@@ -59,6 +59,7 @@
 #include <wx/html/htmlwin.h>
 
 #include <wex/metro.h>
+#include <wex/lkscript.h>
 
 #include <lk/stdlib.h>
 
@@ -301,6 +302,12 @@ bool ProjectFile::Read( wxInputStream &input )
 	m_verMinor = (int)in.Read16();
 	m_verMicro = (int)in.Read16();
 
+	// set then reset if fails
+	SamApp::Project().m_verMajor = m_verMajor;
+	SamApp::Project().m_verMinor = m_verMinor;
+	SamApp::Project().m_verMicro = m_verMicro;
+
+
 	if ( ver > 2 )
 		m_verPatch = (int)in.Read16();
 
@@ -523,7 +530,8 @@ VersionUpgrade::VersionUpgrade()
 	m_env.register_funcs( lk::stdlib_wxui() );
 	m_env.register_funcs( invoke_general_funcs() );
 	m_env.register_funcs( invoke_ssc_funcs() );
-
+	m_env.register_funcs( wxLKMiscFunctions() );
+	m_env.register_funcs( wxLKFileFunctions() );
 	m_env.register_funcs( invoke_functions(), this );
 }
 

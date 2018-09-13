@@ -750,9 +750,9 @@ bool ShowWindResourceDataSettings()
 
 bool ScanSolarResourceData( const wxString &db_file, bool show_busy )
 {
-	wxBusyInfo *busy = 0;
-	if ( show_busy )
-		busy = new wxBusyInfo("Updating solar resource library...");
+//	wxBusyInfo *busy = 0;
+//	if ( show_busy )
+//		busy = new wxBusyInfo("Updating solar resource library...");
 
 	wxArrayString paths;
 	paths.Add( SamApp::GetRuntimePath() + "../solar_resource/" );
@@ -897,7 +897,7 @@ bool ScanSolarResourceData( const wxString &db_file, bool show_busy )
 		}
 	}
 
-	if ( busy ) delete busy;
+//	if ( busy ) delete busy;
 
 	size_t nerr = errors.size();
 	if ( nerr > 0 )
