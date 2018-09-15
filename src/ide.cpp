@@ -675,6 +675,7 @@ enum {
 	ID_FORM_SAVE_ALL,
 	ID_FORM_LOAD_ALL,
 	ID_FORM_DELETE,
+	ID_FORM_DELETE_TEXT,
 	ID_FORM_SAVE_TEXT,
 	ID_FORM_LOAD_TEXT,
 	ID_FORM_SAVE_ALL_TEXT,
@@ -737,6 +738,7 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON(ID_FORM_SAVE_ALL, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_LOAD_ALL, UIEditorPanel::OnCommand)
 
+	EVT_BUTTON(ID_FORM_DELETE_TEXT, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_SAVE_TEXT, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_LOAD_TEXT, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_SAVE_ALL_TEXT, UIEditorPanel::OnCommand)
@@ -800,14 +802,16 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_tools->Add( new wxButton( this, ID_TEXT_FIND, "Search", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_LIST_REFRESH, "Refresh list", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_ADD, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL, "Save all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL, "Load all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_TEXT, "Load text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_TEXT, "Save all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_TEXT, "Load all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE_TEXT, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL, "Save all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL, "Load all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_TEXT, "Load text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_TEXT, "Save all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_TEXT, "Load all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 	sz_form_tools->AddStretchSpacer();
 	sz_form_tools->Add( new wxButton( this, ID_VAR_REMAP, "Remap", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
@@ -973,7 +977,11 @@ void UIEditorPanel::LoadFormList( const wxString &sel )
 	if ( dir.IsOpened() )
 	{
 		wxString file;
+#ifdef UI_BINARY
 		bool has_more = dir.GetFirst( &file, "*.ui", wxDIR_FILES  );
+#else
+		bool has_more = dir.GetFirst(&file, "*.txt", wxDIR_FILES);
+#endif
 		while( has_more )
 		{
 			wxFileName fn( file );
@@ -1136,10 +1144,18 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		if ( !m_formName.IsEmpty() )
 		{
 			SyncFormUIToDataBeforeWriting();
+#ifdef UI_BINARY
 			Write( m_formName );
+#else
+			Write_text(m_formName);
+#endif
 		}
 
+#ifdef UI_BINARY
 		if (!Load( m_formList->GetStringSelection() ))
+#else
+		if (!Load_text(m_formList->GetStringSelection()))
+#endif
 			wxMessageBox("error loading form: " + m_formList->GetStringSelection(), "notice", wxOK, this );
 		break;
 	case ID_FORM_LIST_REFRESH:
@@ -1266,6 +1282,27 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 	break;
 
 
+	case ID_FORM_DELETE_TEXT:
+	{
+		wxString form = m_formList->GetStringSelection();
+		if (wxYES == wxMessageBox("really delete .txt for: " + form + " ?  cannot undo!", "query", wxYES_NO, this))
+		{
+			wxString ff = SamApp::GetRuntimePath() + "/ui/" + form + ".txt";
+			if (wxFileExists(ff)) wxRemoveFile(ff);
+
+			m_formName.Clear();
+			m_exForm.DeleteAll();
+			m_ipd.Clear();
+			m_uiFormEditor->SetFormData(&m_exForm);
+			m_uiFormEditor->Refresh();
+			m_callbackScript->Clear();
+			m_equationScript->Clear();
+			LoadFormList();
+			LoadVarList();
+			VarInfoToForm(wxEmptyString);
+		}
+	}
+	break;
 
 
 	case ID_FORM_SAVE_TEXT:
@@ -1961,7 +1998,7 @@ IDEWindow::IDEWindow( wxWindow *parent )
 	m_lossDiagramPanel = new ScriptPanel( m_notebook, "lossdiag.lk" );
 	m_lossDiagramPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
 	m_lossDiagramPanel->AddLibrary( invoke_lossdiag_funcs(), "Loss diagrams" );
-	m_notebook->AddPage( m_lossDiagramPanel, "Loss digrams" );
+	m_notebook->AddPage( m_lossDiagramPanel, "Loss diagrams" );
 
 	m_reportEditorPanel = new SamReportWindow( m_notebook );
 	m_notebook->AddPage( m_reportEditorPanel, "Reports" );
