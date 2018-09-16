@@ -439,8 +439,9 @@ void DefaultsManager::OnListRightClick( wxMouseEvent & )
 	menu.Append(ID_CHECK_ALL, "Check all");
 	menu.Append(ID_UNCHECK_ALL, "Uncheck all");
 	menu.AppendSeparator();
-	menu.Append(ID_SAVE_BINARY, "Save checked as binary");
-	menu.Append(ID_SAVE_TEXT, "Save checked as text");
+//	menu.Append(ID_SAVE_BINARY, "Save checked as binary");
+//	menu.Append(ID_SAVE_TEXT, "Save checked as text");
+	menu.Append(ID_SAVE_TEXT, "Save checked");
 	PopupMenu( &menu );
 }
 
