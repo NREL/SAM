@@ -1288,8 +1288,8 @@ Height
 24
 Caption
 5
-108
-The product of number of modules along side and bottom should be equal to the number of modules in subarray.
+127
+The product of number of modules along side and bottom and number of rows should be equal to the number of modules in subarray.
 TextColour
 4
 0
