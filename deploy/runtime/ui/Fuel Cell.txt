@@ -1,0 +1,36 @@
+Fuel Cell
+979
+400
+1
+GroupBox
+
+1
+7
+Name
+5
+11
+fuelCellBox
+X
+3
+9
+Y
+3
+9
+Width
+3
+950
+Height
+3
+379
+Caption
+5
+9
+Fuel Cell
+Bold
+2
+1
+
+0
+
+0
+0
