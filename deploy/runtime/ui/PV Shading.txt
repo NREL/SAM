@@ -108,7 +108,7 @@ Label
 Name
 5
 13
-Label12111246
+Label12111245
 X
 3
 48
@@ -198,7 +198,7 @@ Label
 Name
 5
 13
-Label12111327
+Label12111326
 X
 3
 12
@@ -243,7 +243,7 @@ Label
 Name
 5
 13
-Label12111328
+Label12111327
 X
 3
 12
@@ -288,7 +288,7 @@ Label
 Name
 5
 13
-Label12111329
+Label12111328
 X
 3
 12
@@ -1093,7 +1093,7 @@ Divider
 Name
 5
 11
-object 2156
+object 2155
 X
 3
 312
@@ -1156,7 +1156,7 @@ GroupBox
 Name
 5
 10
-object 414
+object 413
 X
 3
 6
@@ -1184,51 +1184,6 @@ Name
 5
 8
 object 7
-X
-3
-12
-Y
-3
-330
-Width
-3
-816
-Height
-3
-24
-Caption
-5
-127
-The product of number of modules along side and bottom and number of rows should be equal to the number of modules in subarray.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-12
-Name
-5
-10
-object 731
 X
 3
 18
@@ -1273,7 +1228,7 @@ Label
 Name
 5
 10
-object 754
+object 753
 X
 3
 15
@@ -1290,6 +1245,51 @@ Caption
 5
 82
 Automatically generate shade data from a drawing of the array and shading objects.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+12
+Name
+5
+10
+object 756
+X
+3
+12
+Y
+3
+330
+Width
+3
+816
+Height
+3
+24
+Caption
+5
+108
+The product of number of modules along side and bottom should be equal to the number of modules in subarray.
 TextColour
 4
 0
