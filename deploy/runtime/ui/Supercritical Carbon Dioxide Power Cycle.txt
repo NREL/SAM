@@ -2327,7 +2327,7 @@ equations{ 'SCO2_COPY_design_eff' } = define(){
 equations{ 'SCO2_COPY_T_htf_hot_des' } = define(){
 	return ${T_htf_hot_des}; };
 
-14674
+14769
 on_load{"Supercritical Carbon Dioxide Power Cycle"} = define() {
 	
 	if( ${is_sco2_msg_disabled} == 0.0 )
@@ -2684,6 +2684,7 @@ function sco2_design_point(is_gen_udpc) {
 	ssc_var(obj, "eta_thermal_des", ${design_eff});		//[-] Power cycle thermal efficiency
 	ssc_var(obj, "eta_isen_mc", ${eta_c});				//[-] Main compressor isentropic efficiency
 	ssc_var(obj, "eta_isen_rc", ${eta_c});				//[-] Re-compressor isentropic efficiency
+	ssc_var(obj, "eta_isen_pc", ${eta_c});              //[-] Precompressor isentropic efficiency
 	ssc_var(obj, "eta_isen_t", ${eta_t});				//[-] Turbine isentropic efficiency
 	ssc_var(obj, "LT_recup_eff_max", ${recup_eff_max});	//[-] Max effectiveness in LT recuperator
 	ssc_var(obj, "HT_recup_eff_max", ${recup_eff_max});	//[-] Max effectiveness in HT recuperator
