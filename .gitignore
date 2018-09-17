@@ -338,5 +338,3 @@ build_osx/SAM
 build_osx/SAM\.app/Contents/Frameworks/
 
 build_osx/SAM\.app/Contents/
-
-build_vs2017/SAMnt_vs2017\.vcxproj
