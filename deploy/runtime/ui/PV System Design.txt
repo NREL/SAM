@@ -197,51 +197,6 @@ Label
 12
 Name
 5
-7
-Label11
-X
-3
-66
-Y
-3
-393
-Width
-3
-218
-Height
-3
-21
-Caption
-5
-32
-Inverter MPPT input for subarray
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-12
-Name
-5
 9
 Label1123
 X
@@ -1335,6 +1290,51 @@ BackColour
 TabOrder
 3
 21
+Label
+
+1
+12
+Name
+5
+14
+lbl_multi_mppt
+X
+3
+66
+Y
+3
+393
+Width
+3
+218
+Height
+3
+21
+Caption
+5
+32
+Inverter MPPT input for subarray
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Numeric
 
 1
@@ -4984,7 +4984,7 @@ TabOrder
 3
 17
 
-77
+78
 array_area
 3
 1
@@ -5027,6 +5027,20 @@ PV System Design
 1
 1.100000
 Numeric
+inv_num_mppt
+3
+1
+Number of inverter MPPT inputs
+ 
+PV System Design
+0
+8
+1
+1
+1
+1
+1.000000
+Default
 inverter_count
 3
 1
@@ -6077,7 +6091,7 @@ PV System Design
 0.000000
 Numeric
 
-7644
+7914
 equations{ 'total_modules' } = define() {
 	a = ${subarray1_modules_per_string} * ${subarray1_nstrings}
 		+ (${subarray2_modules_per_string} * ${subarray2_nstrings}) * ${subarray2_enable}
@@ -6110,7 +6124,21 @@ equations{ 'total_area' } = define() {
 
 equations{ 'total_module_area' } = define() {
 	return ${total_area};
-	};
+};
+
+equations{ 'dcac_ratio' } = define() {
+	return ${system_capacity} /${total_inverter_capacity} ;
+};
+
+equations{ 'inv_num_mppt' } = define() {
+	return ?${inverter_model}
+	[
+		${inv_snl_num_mppt},
+		${inv_ds_num_mppt}, 
+		${inv_pd_num_mppt}, 
+		${inv_cec_num_mppt}
+	] ;
+};
 
 equations{ 'subarray1_string_voc' } = define() {
 	return ?${module_model}
@@ -6361,82 +6389,89 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-3172
-on_load{'PV System Design'} = define()
-{
-	//on_change{'size_auto_or_manual'}();	
-	on_change{'subarray1_tilt_eq_lat'}();
-	on_change{'subarray1_track_mode'}();
-	
-	// enable/disable subarrays
-	on_change{'subarray2_enable'}();
-	on_change{'subarray3_enable'}();
-	on_change{'subarray4_enable'}();
-
-};
-
-function sysdesign_enable_subarray_items( isub, en )
+3758
+//shows or hides all subarray inputs, to be used when subarrays are enabled or disabled
+function sysdesign_show_hide_subarray_inputs( isub, en)
 {
 	prefix = "subarray" + to_string(isub) + "_";
-	vars = [
+	all_subarray_variables = [		
 		"azimuth",
-		"nstrings",
-		"rotlim",
-		"tilt",
-		"tilt_eq_lat",
-		"track_mode",
+		"backtrack",
 		"gcr",
 		"modules_per_string",
-		"mppt_input",
-		"nmodules", 
+		"monthly_tilt", 
+		"mppt_input", 
+		"nmodules",
+		"nstrings",
+		"rotlim",
 		"string_vmp",
-		"string_voc" ];
+		"string_voc",
+		"tilt",
+		"tilt_eq_lat",
+		"track_mode" ];
+		
+	//hide all subarray related inputs if the subarray is disabled
+	if (!en)
+	{
+		for (i=0;i<#all_subarray_variables;i++)
+			show( prefix + all_subarray_variables[i], 0 );
+	}
 	
-	for (i=0;i<#vars;i++)
-		enable( prefix + vars[i], en );
+	//if subarray is enabled, then need to show all inputs, then fix tracking inputs
+	else
+	{
+		//show all inputs
+		for (i=0;i<#all_subarray_variables;i++)
+			show( prefix + all_subarray_variables[i], 1 );
+
+		//MPPT inputs only show up if multi-MPPT inverter specified
+		multi_mppt = ( ${inv_num_mppt} > 1 );
+		show( prefix + "mppt_input", multi_mppt);
+		
+		//Tracking inputs
+		tracking = value(prefix + "track_mode");
+		//seasonal tilt vs normal tilts
+		seasonal = (tracking == 4);
+		show(prefix + "monthly_tilt", seasonal);
+		show(prefix + "tilt_eq_lat", !seasonal);
+		show(prefix + "tilt", !seasonal);
+		//tilt=lat checkbox: subarray must be enabled and tracking mode must be fixed, 1-axis, or A-axis	
+		enable(prefix + "tilt_eq_lat", (tracking == 0 || tracking == 1 || tracking == 3));	
+		//tilt: subarray must be enabled, tracking mode must be fixed, 1-axis, or A-axis, and tilt=lat must not be checked
+		tel = value(prefix+"tilt_eq_lat");
+		enable(prefix + "tilt", (tel==0) && (tracking == 0 || tracking == 1 || tracking == 3));
+		//azimuth: subarray must be enabled, tracking mode must be fixed, 1-axis, or seasonal
+		enable( prefix+"azimuth", (tracking == 1 || tracking == 0 || tracking == 4) );	
+		//tracker rotation limit and backtracking: subarray must be enabled, tracking mode must be 1-axis
+		enable( prefix+"rotlim", (tracking == 1) );
+		enable( prefix+"backtrack", (tracking==1) );	
+	}
+	
+	refresh();
 }
 
-function sysdesign_enable_tracking_type( isub )
+on_load{'PV System Design'} = define()
 {
-	prefix = "subarray" + to_string(isub) + "_";
-	sub_enabled = 1;
-	if (isub > 1)
-		sub_enabled = value(prefix + "enable");
-	tracking = value(prefix + "track_mode");
-	
-	//tilt inputs: show/hide single value or seasonal
-	seasonal = (tracking == 4);
-	show(prefix + "monthly_tilt", seasonal);
-	show(prefix + "tilt_eq_lat", !seasonal);
-	show(prefix + "tilt", !seasonal);
-	
-	//tilt=lat checkbox: subarray must be enabled and tracking mode must be fixed, 1-axis, or A-axis	
-	enable(prefix + "tilt_eq_lat", sub_enabled && (tracking == 0 || tracking == 1 || tracking == 3));
-	
-	//tilt: subarray must be enabled, tracking mode must be fixed, 1-axis, or A-axis, and tilt=lat must not be checked
-	tel = value(prefix+"tilt_eq_lat");
-	enable(prefix + "tilt", sub_enabled && (tel==0) && (tracking == 0 || tracking == 1 || tracking == 3));
+	// show/hide/enable/disable inputs for all subarrays
+	sysdesign_show_hide_subarray_inputs(1, 1);
+	sysdesign_show_hide_subarray_inputs(2, value('subarray2_enable'));
+	sysdesign_show_hide_subarray_inputs(3, value('subarray3_enable'));
+	sysdesign_show_hide_subarray_inputs(4, value('subarray4_enable'));
+	// show/hide label for multiple MPPT inputs
+	multi_mppt = ( ${inv_num_mppt} > 1 );
+	show('lbl_multi_mppt', multi_mppt);
+};
 
-	//azimuth: subarray must be enabled, trackind mode must be fixed, 1-axis, or seasonal
-	enable( prefix+"azimuth", (tracking == 1 || tracking == 0 || tracking == 4) && sub_enabled );
-	
-	//gcr is always enabled if subarray is, in function sysdesign_enable_subarray_items()
-	//tracker rotation limit and backtracking: subarray must be enabled, tracking mode must be 1-axis
-	enable( prefix+"rotlim", (tracking == 1) && sub_enabled );
-	enable( prefix+"backtrack", (tracking==1) && sub_enabled);
+on_change{'subarray2_enable'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
+on_change{'subarray3_enable'} = define() { sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') ); };
+on_change{'subarray4_enable'} = define() { sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') ); };
 
-}
+on_change{'subarray1_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 1, 1 ); };
+on_change{'subarray2_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
+on_change{'subarray3_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') ); };
+on_change{'subarray4_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable')); };
 
-on_change{'subarray2_enable'} = define() { sysdesign_enable_subarray_items( 2, value('subarray2_enable') );  sysdesign_enable_tracking_type( 2 ); };
-on_change{'subarray3_enable'} = define() { sysdesign_enable_subarray_items( 3, value('subarray3_enable') );  sysdesign_enable_tracking_type( 3 ); };
-on_change{'subarray4_enable'} = define() { sysdesign_enable_subarray_items( 4, value('subarray4_enable') );  sysdesign_enable_tracking_type( 4 ); };
-
-on_change{'subarray1_tilt_eq_lat'} = define() { sysdesign_enable_tracking_type( 1 ); };
-on_change{'subarray2_tilt_eq_lat'} = define() { sysdesign_enable_tracking_type( 2 ); };
-on_change{'subarray3_tilt_eq_lat'} = define() { sysdesign_enable_tracking_type( 3 ); };
-on_change{'subarray4_tilt_eq_lat'} = define() { sysdesign_enable_tracking_type( 4 ); };
-
-on_change{'subarray1_track_mode'} = define() {  sysdesign_enable_tracking_type( 1 );  };
-on_change{'subarray2_track_mode'} = define() {  sysdesign_enable_tracking_type( 2 );  };
-on_change{'subarray3_track_mode'} = define() {  sysdesign_enable_tracking_type( 3 );  };
-on_change{'subarray4_track_mode'} = define() {  sysdesign_enable_tracking_type( 4 );  };
+on_change{'subarray1_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 1, 1 );  };
+on_change{'subarray2_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') );  };
+on_change{'subarray3_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') );  };
+on_change{'subarray4_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );  };
