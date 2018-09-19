@@ -1,5 +1,5 @@
 1
-470
+475
 6par_aisc
 1
 1
@@ -668,6 +668,12 @@ inv_cec_cg_mppt_low
 1
 1
 250.000000
+inv_cec_cg_num_mppt
+1
+1
+1
+1
+1.000000
 inv_cec_cg_num_samples
 1
 1
@@ -792,6 +798,12 @@ inv_ds_mppt_low
 1
 1
 250.000000
+inv_ds_num_mppt
+1
+1
+1
+1
+1.000000
 inv_ds_paco
 1
 1
@@ -840,6 +852,12 @@ inv_ds_vdco
 1
 1
 310.000000
+inv_num_mppt
+1
+1
+1
+1
+1.000000
 inv_pd_ac_voltage
 1
 1
@@ -1156,6 +1174,12 @@ inv_pd_mppt_low
 1
 1
 250.000000
+inv_pd_num_mppt
+1
+1
+1
+1
+1.000000
 inv_pd_paco
 1
 1
@@ -1258,6 +1282,12 @@ inv_snl_mppt_low
 1
 1
 250.000000
+inv_snl_num_mppt
+1
+1
+1
+1
+1.000000
 inv_snl_paco
 1
 1
@@ -1349,8 +1379,9 @@ lat
 layout_warning
 1
 4
-28
-Actual DC/AC ratio is 1.23. 
+135
+Subarray 1 string voltage exceeds the inverter maximum rated voltage at reference conditions. Consider using fewer modules per string.
+
 lbl_csp
 1
 4
