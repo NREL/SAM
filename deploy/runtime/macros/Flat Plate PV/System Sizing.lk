@@ -3,7 +3,7 @@
 <p><strong>Instructions:</strong></p>
 <ol>
 <li>The <b>Annual DC degradation</b> parameter at right is for the DC/AC Ratio assumptions table (Table 3) in the report. Enter a value to represent the worst-case for an estimate of end-of-life DC/AC ratio.</li>
-<li>The minimum, maximum, and adjusted temperatures are for the worst case Voc calculations. The macro displays a table showing Voc at these temperatures along with the minimum and maximum operating Voc values calculated by SAM.
+<li>The minimum, maximum, and adjustment temperatures are for the worst case Voc calculations as described in the Bill Brooks article <a href="https://solarprofessional.com/articles/design-installation/array-voltage-considerations">Array Voltage Considerations</a>, Solar Pro Magazine Issue 3.6 Oct/Nov 2010. The macro displays a table showing Voc at these temperatures along with the minimum and maximum operating Voc values calculated by SAM.
 <li>The maximum DC/AC ratio affects the list of recommended modules. The macro will only list modules that result in a DC/AC ration less than or equal to the value you specify.
 <li>By default, the macro displays a report in a SAM window. If you want to export the report, choose Yes for <b>Show results in default browser?</b> to save the report as an HTML file and open it in your default browser. You can then use the browser's tools to export it to PDF or another format.
 </ol>
@@ -16,9 +16,9 @@
 @*/
 
 //@ name=dc_degradation;type=number;label=Annual DC degradation (%);value=0.5
-//@ name=t_min;type=number;label=T_min (C);value=-3
-//@ name=t_max;type=number;label=T_max (C);value=46
-//@ name=t_adj;type=number;label=T_adj (C);value=30
+//@ name=t_min;type=number;label=Minimum temperature (C);value=-3
+//@ name=t_max;type=number;label=Maximum temperature (C);value=46
+//@ name=t_adj;type=number;label=Adjustment temperature (C);value=30
 //@ name=dcac_max;type=number;label=Maximum DC/AC ratio;value=1.3
 //@ name=show_in_browser;type=combo;label=Show results in default browser?;value=Yes,No;sel=1
 
