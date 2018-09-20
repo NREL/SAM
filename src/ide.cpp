@@ -1077,7 +1077,15 @@ void UIEditorPanel::OnTextFind( wxCommandEvent & )
 	text.MakeLower();
 
 	wxArrayString files;
-	wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/ui", &files, "*.ui" );
+	wxString ui_path = SamApp::GetRuntimePath() + "/ui/";
+
+#ifdef UI_BINARY
+	wxDir::GetAllFiles(ui_path, &files, "*.ui");
+#else
+
+	wxDir::GetAllFiles(ui_path, &files, "*.txt");
+#endif
+
 	InputPageData ipd;
 
 	gau->SetRange( files.size() );
@@ -1086,7 +1094,11 @@ void UIEditorPanel::OnTextFind( wxCommandEvent & )
 		gau->SetValue( ii );
 		ipd.Clear();
 		wxFFileInputStream is( files[ii] );
+#ifdef UI_BINARY
 		if ( !is.IsOk() || !ipd.Read( is ) )
+#else
+		if (!is.IsOk() || !ipd.Read_text(is, ui_path))
+#endif
 			tc->AppendText( "Error reading " + files[ii] );
 		
 		wxFileName ff(files[ii]);
