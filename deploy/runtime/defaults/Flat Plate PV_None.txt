@@ -225,7 +225,7 @@ annual_snow
 1
 1
 1
-inf
+nan
 annual_tdry
 1
 1
@@ -243,7 +243,7 @@ array_area
 1
 1
 1
-32.620003
+22.834000
 batt_max_power
 1
 1
@@ -517,7 +517,7 @@ dcac_ratio
 1
 1
 1
-1.200000
+1.234966
 dcoptimizer_loss
 1
 1
@@ -1379,9 +1379,8 @@ lat
 layout_warning
 1
 4
-135
-Subarray 1 string voltage exceeds the inverter maximum rated voltage at reference conditions. Consider using fewer modules per string.
-
+26
+No system sizing messages.
 lbl_csp
 1
 4
@@ -1389,13 +1388,11 @@ lbl_csp
 library_folder_list
 1
 4
-2
-""
+0
 library_paths
 1
 4
-2
-""
+0
 lon
 1
 1
@@ -2327,7 +2324,7 @@ subarray1_modules_per_string
 1
 1
 1
-10.000000
+7.000000
 subarray1_monthly_tilt
 1
 2
@@ -2340,7 +2337,7 @@ subarray1_mppt_input
 1
 1
 1
-1.000000
+0.000000
 subarray1_nameplate_loss
 1
 1
@@ -2352,7 +2349,7 @@ subarray1_nmodules
 1
 1
 1
-20.000000
+14.000000
 subarray1_nmodx
 1
 1
@@ -2382,7 +2379,7 @@ subarray1_ref_nmodules
 1
 1
 1
-20.000000
+14.000000
 subarray1_rotlim
 1
 1
@@ -2418,13 +2415,13 @@ subarray1_string_vmp
 1
 1
 1
-573.000000
+401.100006
 subarray1_string_voc
 1
 1
 1
 1
-679.000000
+475.300018
 subarray1_tilt
 1
 1
@@ -2527,7 +2524,7 @@ subarray2_mppt_input
 1
 1
 1
-1.000000
+0.000000
 subarray2_nameplate_loss
 1
 1
@@ -2714,7 +2711,7 @@ subarray3_mppt_input
 1
 1
 1
-1.000000
+0.000000
 subarray3_nameplate_loss
 1
 1
@@ -2901,7 +2898,7 @@ subarray4_mppt_input
 1
 1
 1
-1.000000
+0.000000
 subarray4_nameplate_loss
 1
 1
@@ -3015,13 +3012,13 @@ system_capacity
 1
 1
 1
-6.704100
+4.692870
 total_area
 1
 1
 1
 1
-32.620003
+22.834000
 total_dc_inverter_capacity
 1
 1
@@ -3039,19 +3036,19 @@ total_land_area
 1
 1
 1
-0.026868
+0.018808
 total_module_area
 1
 1
 1
 1
-32.620003
+22.834000
 total_modules
 1
 1
 1
 1
-20.000000
+14.000000
 transformer_load_loss
 1
 1
@@ -3093,7 +3090,7 @@ ui_subarray1_nrows
 1
 1
 1
-1.428571
+1.000000
 ui_subarray1_row_spacing
 1
 1

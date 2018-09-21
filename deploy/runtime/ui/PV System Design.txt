@@ -1,6 +1,6 @@
 PV System Design
-840
-1009
+839
+1008
 102
 GroupBox
 
@@ -48,7 +48,7 @@ Width
 824
 Height
 3
-758
+749
 Caption
 5
 12
@@ -69,7 +69,7 @@ X
 9
 Y
 3
-915
+903
 Width
 3
 824
@@ -96,7 +96,7 @@ X
 12
 Y
 3
-423
+753
 Width
 3
 802
@@ -165,10 +165,10 @@ Name
 HLine12
 X
 3
-21
+12
 Y
 3
-576
+420
 Width
 3
 802
@@ -426,10 +426,10 @@ Name
 Label122
 X
 3
-69
+66
 Y
 3
-834
+681
 Width
 3
 218
@@ -471,10 +471,10 @@ Name
 Label12283
 X
 3
-69
+66
 Y
 3
-810
+657
 Width
 3
 218
@@ -516,10 +516,10 @@ Name
 Label12284
 X
 3
-69
+66
 Y
 3
-762
+609
 Width
 3
 218
@@ -561,10 +561,10 @@ Name
 Label13
 X
 3
-69
+66
 Y
 3
-738
+585
 Width
 3
 218
@@ -606,16 +606,16 @@ Name
 Label2
 X
 3
-204
+51
 Y
 3
-549
+849
 Width
 3
-446
+264
 Height
 3
-22
+34
 Caption
 5
 89
@@ -699,7 +699,7 @@ X
 291
 Y
 3
-936
+924
 Width
 3
 533
@@ -969,7 +969,7 @@ X
 33
 Y
 3
-606
+453
 Width
 3
 190
@@ -992,10 +992,10 @@ Name
 batt_max_power
 X
 3
-204
+666
 Y
 3
-519
+105
 Width
 3
 82
@@ -1113,7 +1113,7 @@ X
 21
 Y
 3
-858
+708
 Width
 3
 795
@@ -1155,10 +1155,10 @@ Name
 gcr_label
 X
 3
-87
+84
 Y
 3
-786
+633
 Width
 3
 200
@@ -1262,13 +1262,13 @@ X
 327
 Y
 3
-444
+774
 Width
 3
 478
 Height
 3
-99
+108
 Text
 5
 0
@@ -1348,7 +1348,7 @@ X
 204
 Y
 3
-495
+825
 Width
 3
 82
@@ -1407,7 +1407,7 @@ X
 204
 Y
 3
-471
+801
 Width
 3
 82
@@ -1538,9 +1538,9 @@ Caption
 Please specify the DC system size using "DC Subarrays" below.
 TextColour
 4
-128
-128
-128
+0
+0
+0
 255
 Bold
 2
@@ -1567,10 +1567,10 @@ Name
 subarray1_azimuth
 X
 3
-291
+288
 Y
 3
-762
+609
 Width
 3
 100
@@ -1626,10 +1626,10 @@ Name
 subarray1_backtrack
 X
 3
-291
+288
 Y
 3
-834
+681
 Width
 3
 101
@@ -1656,10 +1656,10 @@ Name
 subarray1_gcr
 X
 3
-291
+288
 Y
 3
-786
+633
 Width
 3
 100
@@ -1774,10 +1774,10 @@ Name
 subarray1_monthly_tilt
 X
 3
-291
+288
 Y
 3
-735
+582
 Width
 3
 87
@@ -1790,10 +1790,10 @@ Description
 TabOrder
 3
 4294967295
-Numeric
+Choice
 
 1
-16
+8
 Name
 5
 20
@@ -1810,45 +1810,19 @@ Width
 Height
 3
 21
-Value
-1
-0.000000
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
+Items
+6
 4
-0
-0
-0
-255
-BackColour
+1
+2
+3
 4
-255
-255
-255
-255
+Selection
+3
+0
 TabOrder
 3
-23
+4294967295
 Numeric
 
 1
@@ -1977,10 +1951,10 @@ Name
 subarray1_rotlim
 X
 3
-291
+288
 Y
 3
-810
+657
 Width
 3
 100
@@ -2154,10 +2128,10 @@ Name
 subarray1_tilt
 X
 3
-291
+288
 Y
 3
-738
+585
 Width
 3
 100
@@ -2213,10 +2187,10 @@ Name
 subarray1_tilt_eq_lat
 X
 3
-291
+288
 Y
 3
-714
+561
 Width
 3
 119
@@ -2243,10 +2217,10 @@ Name
 subarray1_track_mode
 X
 3
-291
+288
 Y
 3
-597
+444
 Width
 3
 113
@@ -2283,10 +2257,10 @@ Name
 subarray2_azimuth
 X
 3
-426
+420
 Y
 3
-762
+609
 Width
 3
 100
@@ -2342,10 +2316,10 @@ Name
 subarray2_backtrack
 X
 3
-426
+420
 Y
 3
-834
+681
 Width
 3
 101
@@ -2402,10 +2376,10 @@ Name
 subarray2_gcr
 X
 3
-426
+420
 Y
 3
-786
+633
 Width
 3
 100
@@ -2520,10 +2494,10 @@ Name
 subarray2_monthly_tilt
 X
 3
-426
+420
 Y
 3
-735
+582
 Width
 3
 87
@@ -2536,10 +2510,10 @@ Description
 TabOrder
 3
 4294967295
-Numeric
+Choice
 
 1
-16
+8
 Name
 5
 20
@@ -2556,45 +2530,19 @@ Width
 Height
 3
 21
-Value
-1
-0.000000
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
+Items
+6
 4
-0
-0
-0
-255
-BackColour
+1
+2
+3
 4
-255
-255
-255
-255
+Selection
+3
+0
 TabOrder
 3
-30
+4294967295
 Numeric
 
 1
@@ -2723,10 +2671,10 @@ Name
 subarray2_rotlim
 X
 3
-426
+420
 Y
 3
-810
+657
 Width
 3
 100
@@ -2900,10 +2848,10 @@ Name
 subarray2_tilt
 X
 3
-426
+420
 Y
 3
-738
+585
 Width
 3
 100
@@ -2959,10 +2907,10 @@ Name
 subarray2_tilt_eq_lat
 X
 3
-426
+420
 Y
 3
-714
+561
 Width
 3
 113
@@ -2989,10 +2937,10 @@ Name
 subarray2_track_mode
 X
 3
-426
+420
 Y
 3
-597
+444
 Width
 3
 113
@@ -3029,10 +2977,10 @@ Name
 subarray3_azimuth
 X
 3
-561
+555
 Y
 3
-762
+609
 Width
 3
 100
@@ -3088,10 +3036,10 @@ Name
 subarray3_backtrack
 X
 3
-561
+555
 Y
 3
-834
+681
 Width
 3
 98
@@ -3148,10 +3096,10 @@ Name
 subarray3_gcr
 X
 3
-561
+555
 Y
 3
-786
+633
 Width
 3
 100
@@ -3266,10 +3214,10 @@ Name
 subarray3_monthly_tilt
 X
 3
-561
+555
 Y
 3
-735
+582
 Width
 3
 87
@@ -3282,10 +3230,10 @@ Description
 TabOrder
 3
 4294967295
-Numeric
+Choice
 
 1
-16
+8
 Name
 5
 20
@@ -3302,45 +3250,19 @@ Width
 Height
 3
 21
-Value
-1
-0.000000
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
+Items
+6
 4
-0
-0
-0
-255
-BackColour
+1
+2
+3
 4
-255
-255
-255
-255
+Selection
+3
+0
 TabOrder
 3
-37
+4294967295
 Numeric
 
 1
@@ -3469,10 +3391,10 @@ Name
 subarray3_rotlim
 X
 3
-561
+555
 Y
 3
-810
+657
 Width
 3
 100
@@ -3646,10 +3568,10 @@ Name
 subarray3_tilt
 X
 3
-561
+555
 Y
 3
-738
+585
 Width
 3
 100
@@ -3705,10 +3627,10 @@ Name
 subarray3_tilt_eq_lat
 X
 3
-561
+555
 Y
 3
-714
+561
 Width
 3
 116
@@ -3735,10 +3657,10 @@ Name
 subarray3_track_mode
 X
 3
-561
+555
 Y
 3
-597
+444
 Width
 3
 113
@@ -3775,10 +3697,10 @@ Name
 subarray4_azimuth
 X
 3
-696
+690
 Y
 3
-762
+609
 Width
 3
 100
@@ -3834,10 +3756,10 @@ Name
 subarray4_backtrack
 X
 3
-696
+690
 Y
 3
-834
+681
 Width
 3
 101
@@ -3894,10 +3816,10 @@ Name
 subarray4_gcr
 X
 3
-696
+690
 Y
 3
-786
+633
 Width
 3
 100
@@ -4012,10 +3934,10 @@ Name
 subarray4_monthly_tilt
 X
 3
-696
+690
 Y
 3
-735
+582
 Width
 3
 87
@@ -4028,10 +3950,10 @@ Description
 TabOrder
 3
 4294967295
-Numeric
+Choice
 
 1
-16
+8
 Name
 5
 20
@@ -4048,45 +3970,19 @@ Width
 Height
 3
 21
-Value
-1
-0.000000
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
+Items
+6
 4
-0
-0
-0
-255
-BackColour
+1
+2
+3
 4
-255
-255
-255
-255
+Selection
+3
+0
 TabOrder
 3
-44
+4294967295
 Numeric
 
 1
@@ -4215,10 +4111,10 @@ Name
 subarray4_rotlim
 X
 3
-696
+690
 Y
 3
-810
+657
 Width
 3
 100
@@ -4392,10 +4288,10 @@ Name
 subarray4_tilt
 X
 3
-696
+690
 Y
 3
-738
+585
 Width
 3
 100
@@ -4451,10 +4347,10 @@ Name
 subarray4_tilt_eq_lat
 X
 3
-696
+690
 Y
 3
-714
+561
 Width
 3
 113
@@ -4481,10 +4377,10 @@ Name
 subarray4_track_mode
 X
 3
-696
+690
 Y
 3
-597
+444
 Width
 3
 113
@@ -4760,7 +4656,7 @@ X
 135
 Y
 3
-966
+954
 Width
 3
 100
@@ -4819,7 +4715,7 @@ X
 135
 Y
 3
-939
+927
 Width
 3
 99
@@ -4937,7 +4833,7 @@ X
 204
 Y
 3
-447
+777
 Width
 3
 82
@@ -5217,14 +5113,15 @@ subarray1_mppt_input
 Subarray 1 inverter MPPT input
  
 PV System Design
-0
+7
+1|2|3|4
 1
 1
 1
 1
 1
-1.000000
-Numeric
+0.000000
+Choice
 subarray1_nmodules
 3
 1
@@ -5433,14 +5330,15 @@ subarray2_mppt_input
 Subarray 2 inverter MPPT input
  
 PV System Design
-0
+7
+1|2|3|4
 1
 1
 1
 1
 1
-1.000000
-Numeric
+0.000000
+Choice
 subarray2_nmodules
 3
 1
@@ -5645,14 +5543,15 @@ subarray3_mppt_input
 Subarray 3 inverter MPPT input
  
 PV System Design
-0
+7
+1|2|3|4
 1
 1
 1
 1
 1
-1.000000
-Numeric
+0.000000
+Choice
 subarray3_nmodules
 3
 1
@@ -5857,14 +5756,15 @@ subarray4_mppt_input
 Subarray 4 inverter MPPT input
  
 PV System Design
-0
+7
+1|2|3|4
 1
 1
 1
 1
 1
-1.000000
-Numeric
+0.000000
+Choice
 subarray4_nmodules
 3
 1
@@ -6091,7 +5991,7 @@ PV System Design
 0.000000
 Numeric
 
-7914
+7976
 equations{ 'total_modules' } = define() {
 	a = ${subarray1_modules_per_string} * ${subarray1_nstrings}
 		+ (${subarray2_modules_per_string} * ${subarray2_nstrings}) * ${subarray2_enable}
@@ -6354,6 +6254,8 @@ equations{ 'layout_warning'} = define(){
 		}
 	}
 
+	if (message == '')
+		message = 'No system sizing messages.';
 	return message; 
 };
 
@@ -6389,7 +6291,7 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-3758
+3953
 //shows or hides all subarray inputs, to be used when subarrays are enabled or disabled
 function sysdesign_show_hide_subarray_inputs( isub, en)
 {
@@ -6458,8 +6360,15 @@ on_load{'PV System Design'} = define()
 	sysdesign_show_hide_subarray_inputs(3, value('subarray3_enable'));
 	sysdesign_show_hide_subarray_inputs(4, value('subarray4_enable'));
 	// show/hide label for multiple MPPT inputs
-	multi_mppt = ( ${inv_num_mppt} > 1 );
+	multi_mppt = ( value('inv_num_mppt') > 1 );
 	show('lbl_multi_mppt', multi_mppt);
+	// show/hide battery max power input
+	battery = false;
+	f = financing();
+	if (f != "LCOE Calculator" && f != "None")
+		if (${en_batt})
+			battery = true;
+	show('batt_max_power', battery);
 };
 
 on_change{'subarray2_enable'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
