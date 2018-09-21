@@ -1790,10 +1790,10 @@ Description
 TabOrder
 3
 4294967295
-Choice
+Numeric
 
 1
-8
+16
 Name
 5
 20
@@ -1810,16 +1810,42 @@ Width
 Height
 3
 21
-Items
-6
-4
+Value
 1
-2
-3
-4
-Selection
+0.000000
+Mode
 3
 0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
 TabOrder
 3
 4294967295
@@ -2510,10 +2536,10 @@ Description
 TabOrder
 3
 4294967295
-Choice
+Numeric
 
 1
-8
+16
 Name
 5
 20
@@ -2530,16 +2556,42 @@ Width
 Height
 3
 21
-Items
-6
-4
+Value
 1
-2
-3
-4
-Selection
+0.000000
+Mode
 3
 0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
 TabOrder
 3
 4294967295
@@ -3230,10 +3282,10 @@ Description
 TabOrder
 3
 4294967295
-Choice
+Numeric
 
 1
-8
+16
 Name
 5
 20
@@ -3250,16 +3302,42 @@ Width
 Height
 3
 21
-Items
-6
-4
+Value
 1
-2
-3
-4
-Selection
+0.000000
+Mode
 3
 0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
 TabOrder
 3
 4294967295
@@ -3950,10 +4028,10 @@ Description
 TabOrder
 3
 4294967295
-Choice
+Numeric
 
 1
-8
+16
 Name
 5
 20
@@ -3970,16 +4048,42 @@ Width
 Height
 3
 21
-Items
-6
-4
+Value
 1
-2
-3
-4
-Selection
+0.000000
+Mode
 3
 0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
 TabOrder
 3
 4294967295
@@ -5113,15 +5217,14 @@ subarray1_mppt_input
 Subarray 1 inverter MPPT input
  
 PV System Design
-7
-1|2|3|4
+0
 1
 1
 1
 1
 1
-0.000000
-Choice
+1.000000
+Numeric
 subarray1_nmodules
 3
 1
@@ -5330,15 +5433,14 @@ subarray2_mppt_input
 Subarray 2 inverter MPPT input
  
 PV System Design
-7
-1|2|3|4
+0
 1
 1
 1
 1
 1
-0.000000
-Choice
+1.000000
+Numeric
 subarray2_nmodules
 3
 1
@@ -5543,15 +5645,14 @@ subarray3_mppt_input
 Subarray 3 inverter MPPT input
  
 PV System Design
-7
-1|2|3|4
+0
 1
 1
 1
 1
 1
-0.000000
-Choice
+1.000000
+Numeric
 subarray3_nmodules
 3
 1
@@ -5756,15 +5857,14 @@ subarray4_mppt_input
 Subarray 4 inverter MPPT input
  
 PV System Design
-7
-1|2|3|4
+0
 1
 1
 1
 1
 1
-0.000000
-Choice
+1.000000
+Numeric
 subarray4_nmodules
 3
 1
@@ -6291,7 +6391,23 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-3953
+4747
+//show warning about MPPT input number
+function mppt_warning()
+{
+	x = false;
+	for (i = 1; i <=4; i++)
+	{
+		en = true;
+		if ( i != 1)
+			en = value('subarray' + to_string(i) + '_enable');
+		var = 'subarray' + to_string(i) + '_mppt_input';
+		if (en && value(var) > value('inv_num_mppt'))
+			x = true;
+	}
+	if (x) msgbox('One or more specified subarray MPPT inputs exceed the number of inputs specified on the Inverter page.');
+}
+
 //shows or hides all subarray inputs, to be used when subarrays are enabled or disabled
 function sysdesign_show_hide_subarray_inputs( isub, en)
 {
@@ -6327,7 +6443,7 @@ function sysdesign_show_hide_subarray_inputs( isub, en)
 			show( prefix + all_subarray_variables[i], 1 );
 
 		//MPPT inputs only show up if multi-MPPT inverter specified
-		multi_mppt = ( ${inv_num_mppt} > 1 );
+		multi_mppt = ( value('inv_num_mppt') > 1 );
 		show( prefix + "mppt_input", multi_mppt);
 		
 		//Tracking inputs
@@ -6369,6 +6485,8 @@ on_load{'PV System Design'} = define()
 		if (${en_batt})
 			battery = true;
 	show('batt_max_power', battery);
+	// warning for MPPT input > number of inverter inputs
+	if (multi_mppt)	mppt_warning();
 };
 
 on_change{'subarray2_enable'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
@@ -6384,3 +6502,8 @@ on_change{'subarray1_track_mode'} = define() {  sysdesign_show_hide_subarray_inp
 on_change{'subarray2_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') );  };
 on_change{'subarray3_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') );  };
 on_change{'subarray4_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );  };
+
+on_change{'subarray1_mppt_input'} = define() {  mppt_warning();  };
+on_change{'subarray2_mppt_input'} = define() {  mppt_warning();  };
+on_change{'subarray3_mppt_input'} = define() {  mppt_warning();  };
+on_change{'subarray4_mppt_input'} = define() {  mppt_warning();  };
