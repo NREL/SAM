@@ -4869,7 +4869,7 @@ subarray1_mppt_input
 1
 1
 1
-0.000000
+1.000000
 subarray1_nameplate_loss
 1
 1
@@ -5043,7 +5043,7 @@ subarray2_modules_per_string
 1
 1
 1
-0.000000
+7.000000
 subarray2_monthly_tilt
 1
 2
@@ -5056,7 +5056,7 @@ subarray2_mppt_input
 1
 1
 1
-0.000000
+1.000000
 subarray2_nameplate_loss
 1
 1
@@ -5230,7 +5230,7 @@ subarray3_modules_per_string
 1
 1
 1
-0.000000
+7.000000
 subarray3_monthly_tilt
 1
 2
@@ -5243,7 +5243,7 @@ subarray3_mppt_input
 1
 1
 1
-0.000000
+1.000000
 subarray3_nameplate_loss
 1
 1
@@ -5417,7 +5417,7 @@ subarray4_modules_per_string
 1
 1
 1
-0.000000
+7.000000
 subarray4_monthly_tilt
 1
 2
@@ -5430,7 +5430,7 @@ subarray4_mppt_input
 1
 1
 1
-0.000000
+1.000000
 subarray4_nameplate_loss
 1
 1
