@@ -1457,8 +1457,8 @@ Height
 24
 Caption
 5
-20
-Modules are bifacial
+18
+Module is bifacial
 State
 2
 0
@@ -2132,7 +2132,7 @@ Default
 spe_bifacial_transmission_factor
 3
 1
-Transmission Fraction
+Transmission fraction
 [0-1]
 PV Module (Simple Efficiency)
 0
@@ -2181,8 +2181,7 @@ spe_data_filename
 0
 1
 4
-9
-<invalid>
+0
 TextEntry
 spe_eff0
 3
