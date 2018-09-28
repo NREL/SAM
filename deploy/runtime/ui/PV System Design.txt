@@ -6391,7 +6391,7 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-4747
+4885
 //show warning about MPPT input number
 function mppt_warning()
 {
@@ -6444,6 +6444,8 @@ function sysdesign_show_hide_subarray_inputs( isub, en)
 
 		//MPPT inputs only show up if multi-MPPT inverter specified
 		multi_mppt = ( value('inv_num_mppt') > 1 );
+		if (!multi_mppt) //set mppt input back to 1 if not multi-mppt so that simulation will run correctly
+			value(prefix + 'mppt_input', 1);
 		show( prefix + "mppt_input", multi_mppt);
 		
 		//Tracking inputs
