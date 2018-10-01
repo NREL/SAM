@@ -417,6 +417,47 @@ public:
 
 
 
+class wxUIStringArrayObject : public wxUIObject
+{
+public:
+	wxUIStringArrayObject() {
+		AddProperty("Label", new wxUIProperty(wxString("")));
+		AddProperty("Description", new wxUIProperty(wxString("")));
+		AddProperty("TabOrder", new wxUIProperty((int)-1));
+	}
+	virtual wxString GetTypeName() { return "StringArray"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIStringArrayObject; o->Copy(this); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative(wxWindow *parent) {
+		AFStringArrayButton *da = new AFStringArrayButton(parent, wxID_ANY);
+		da->SetDescription(Property("Description").GetString());
+		da->SetStringLabel(Property("Label").GetString());
+		return AssignNative(da);
+	}
+	virtual void Draw(wxWindow *win, wxDC &dc, const wxRect &geom)
+	{
+		wxRendererNative::Get().DrawPushButton(win, dc, geom);
+		dc.SetFont(*wxNORMAL_FONT);
+		dc.SetTextForeground(*wxBLACK);
+		wxString label("String array...");
+		int x, y;
+		dc.GetTextExtent(label, &x, &y);
+		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
+	}
+	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
+	{
+		if (AFStringArrayButton *da = GetNative<AFStringArrayButton>())
+		{
+			if (id == "Label") da->SetStringLabel(p->GetString());
+			if (id == "Description") da->SetDescription(p->GetString());
+		}
+	}
+
+};
+
+
+
 class wxUIDataArrayObject : public wxUIObject 
 {
 public:
@@ -732,7 +773,8 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUIDividerObject );
 	wxUIObjectTypeProvider::Register( new wxUIPlotObject );
 	wxUIObjectTypeProvider::Register( new wxUISearchListBoxObject );
-	wxUIObjectTypeProvider::Register( new wxUIDataArrayObject );
+	wxUIObjectTypeProvider::Register(new wxUIDataArrayObject);
+	wxUIObjectTypeProvider::Register(new wxUIStringArrayObject);
 	wxUIObjectTypeProvider::Register(new wxUIDataMatrixObject);
 	wxUIObjectTypeProvider::Register(new wxUIShadingFactorsObject);
 	wxUIObjectTypeProvider::Register( new wxUIValueMatrixObject );

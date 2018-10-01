@@ -7,7 +7,7 @@ en_pvsamv3 = 0;
 // define all the configurations
 if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
 
-addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'Single Owner PPA Buy Rate','None'] );
+addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
@@ -138,13 +138,13 @@ function setup_flat_plate_pv_pages()
 				['IEC61853 Single Diode Model'] ], 				
 			{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model' } );
 			
-	addpage( [ ['Inverter CEC Database', {'name'='Inverter Temp Derate CEC DB', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
-			 ['Inverter Datasheet', {'name'='Inverter Temp Derate DS', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
-			 ['Inverter Part Load Curve', {'name'='Inverter Temp Derate PLC', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
-			 ['Inverter CEC Coefficient Generator', {'name'='Inverter Temp Derate CEC CG', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}] ], 
+	addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], 
+			 ['Inverter Datasheet', 'Inverter Temp Derate DS'], 
+			 ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], 
+			 ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], 
 			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 	addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
-	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Snow', 'help'='pv_shading' } );
+	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
     addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
@@ -249,6 +249,17 @@ function setup_utility_rate()
 			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=true } ]],
 		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates' } );
 }
+
+function setup_utility_rate_optional()
+{
+	addpage( [[{'name'='Utility Rate - Enable','caption'='No Electricity Rate'}],
+			  [{'name'='Utility Rate - Flat', 'caption'='Enable Electricity Rate'},
+			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true }, 
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=true } ]],
+		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates', 'exclusive_var'='en_electricity_rates' } );
+}
+
 
 function setup_commercial_ppa_pages(degradation)
 {
@@ -616,13 +627,13 @@ addpage( [ ['Simple Efficiency Module Model'],
 		   ['Sandia PV Array Performance Model with Module Database'],
 		   ['IEC61853 Single Diode Model'] ], 				
 		{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model' } );
-addpage( [ ['Inverter CEC Database', {'name'='Inverter Temp Derate CEC DB', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
-			 ['Inverter Datasheet', {'name'='Inverter Temp Derate DS', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
-			 ['Inverter Part Load Curve', {'name'='Inverter Temp Derate PLC', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
-			 ['Inverter CEC Coefficient Generator', {'name'='Inverter Temp Derate CEC CG', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}] ], 
-			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
+addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], 
+		 ['Inverter Datasheet', 'Inverter Temp Derate DS'], 
+		 ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], 
+		 ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], 
+		 { 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
-addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Snow', 'help'='pv_shading' } );
+addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
 addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
 setmodules( ['pvsamv1', 'lcoefcr'] );
 setup_lcoefcr_pages();
@@ -636,13 +647,13 @@ addpage( [ ['Simple Efficiency Module Model'],
 		   ['Sandia PV Array Performance Model with Module Database'],
 		   ['IEC61853 Single Diode Model'] ], 				
 		{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model' } );
-addpage( [ ['Inverter CEC Database', {'name'='Inverter Temp Derate CEC DB', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
-			 ['Inverter Datasheet', {'name'='Inverter Temp Derate DS', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
-			 ['Inverter Part Load Curve', {'name'='Inverter Temp Derate PLC', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}], 
-			 ['Inverter CEC Coefficient Generator', {'name'='Inverter Temp Derate CEC CG', 'caption' = 'Temperature Derating', 'collapsible'=true, 'collapsible_var'='inv.tempderate.is_shown'}] ], 
-			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
+addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], 
+		 ['Inverter Datasheet', 'Inverter Temp Derate DS'], 
+		 ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], 
+		 ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], 
+		 { 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
-addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Snow', 'help'='pv_shading' } );
+addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
 addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
 setmodules( ['pvsamv1'] );
 
@@ -712,20 +723,12 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', '
 setup_sale_leaseback_pages( LIFETIME_PV );
 
 setconfig( 'Flat Plate PV', 'Single Owner' );	
-setmodules( ['pvsamv1', 'singleowner']);
-setup_flat_plate_pv_pages();
-setup_battery_pages_front_of_meter();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_single_owner_pages( LIFETIME_PV );
-
-setconfig( 'Flat Plate PV', 'Single Owner PPA Buy Rate' );	
 setmodules( ['pvsamv1', 'utilityrate5', 'singleowner']);
 setup_flat_plate_pv_pages();
 setup_battery_pages_front_of_meter();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages( LIFETIME_PV );
-setup_utility_rate();
-
+setup_utility_rate_optional();
 
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );

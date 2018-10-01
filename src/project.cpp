@@ -59,6 +59,7 @@
 #include <wx/html/htmlwin.h>
 
 #include <wex/metro.h>
+#include <wex/lkscript.h>
 
 #include <lk/stdlib.h>
 
@@ -301,6 +302,12 @@ bool ProjectFile::Read( wxInputStream &input )
 	m_verMinor = (int)in.Read16();
 	m_verMicro = (int)in.Read16();
 
+	// set then reset if fails
+	SamApp::Project().m_verMajor = m_verMajor;
+	SamApp::Project().m_verMinor = m_verMinor;
+	SamApp::Project().m_verMicro = m_verMicro;
+
+
 	if ( ver > 2 )
 		m_verPatch = (int)in.Read16();
 
@@ -523,7 +530,8 @@ VersionUpgrade::VersionUpgrade()
 	m_env.register_funcs( lk::stdlib_wxui() );
 	m_env.register_funcs( invoke_general_funcs() );
 	m_env.register_funcs( invoke_ssc_funcs() );
-
+	m_env.register_funcs( wxLKMiscFunctions() );
+	m_env.register_funcs( wxLKFileFunctions() );
 	m_env.register_funcs( invoke_functions(), this );
 }
 
@@ -641,12 +649,12 @@ std::vector<VersionUpgrade::log> &VersionUpgrade::GetLog( const wxString &name )
 
 wxString VersionUpgrade::CreateHtmlReport( const wxString &file )
 {
-	wxString html( "<html><body>\n<h3>Project Version Upgrade Report</h3>\n"
-		"<p><font color=#7a7a7a>File:" + file 
-		+ "<br>You are opening the file with SAM Version " + SamApp::VersionStr(true) 
-		+ ", SSC " + wxString::Format("%d", ssc_version()) + "<br>\n"
-		+ "This file was last saved in SAM Version " + wxString::Format("%d.%d.%d", m_pfMajor, m_pfMinor, m_pfMicro ) + "<br>\n"
-		+ "The table(s) below list input variables that have changed between those SAM versions.<br>\n"
+	wxString html( "<html><body>\n<h3>Version Upgrade Report</h3>\n"
+		"<p><font color=#7a7a7a>" + file 
+		+ "<br><br>You are opening this file with SAM Version " + SamApp::VersionStr(true) 
+		+ ", SSC " + wxString::Format("%d", ssc_version()) + ".<br>\n"
+		+ "The file was last saved in SAM Version " + wxString::Format("%d.%d.%d", m_pfMajor, m_pfMinor, m_pfMicro ) + ".<br>\n"
+		+ "The table(s) below list input variables that have changed between versions.<br>\n"
 		+ "</font></p><br>\n" );
 
 	if ( m_generalLog.size() > 0 )
@@ -703,7 +711,7 @@ class UpgradeReportDialog : public wxDialog
 	wxString m_htmlSrc;
 public:
 	UpgradeReportDialog( const wxString &src ) 
-		: wxDialog( SamApp::Window(), wxID_ANY, "Project File Upgrade Report", 
+		: wxDialog( SamApp::Window(), wxID_ANY, "Version Upgrade Report", 
 		wxDefaultPosition, wxScaleSize(800,700), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER ),
 		m_htmlSrc( src )
 	{
