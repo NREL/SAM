@@ -7384,7 +7384,7 @@ equations{ 'system_use_lifetime_output' } = define() {
 equations{ 'system_recapitalization_cost' } = define() {
 	return ${geotherm.cost.recap}; };
 
-5428
+5635
 function reset_geothermal_plant_cost()
 {
 	// This should never get called for flash plants - the checkbox that calls this code is disabled for flash plants
@@ -7422,7 +7422,7 @@ on_change{"geotherm.cost.plant_auto_estimate"} = define()
 		}
 		else {
 				cost = ssc_create('geothermal_cost');
-				lcoe = ssc_create('y');
+				
 				conversion_type = value("conversion_type");
 				gross_output = value("geotherm.cost.plant_size");
 				design_temp = ssc_var(geothermal, "design_temp");
@@ -7432,7 +7432,11 @@ on_change{"geotherm.cost.plant_auto_estimate"} = define()
 				ssc_var(cost,'eff_secondlaw', second_law_eff);
 				ssc_var(cost, "conversion_type", conversion_type);
 				
-		
+				logmsg('conversion_type: ' + to_string(conversion_type));
+				logmsg('gross_output: ' + to_string(gross_output));
+				logmsg('design_temp: ' + to_string(design_temp));
+				logmsg('second_law_eff: ' + to_string(second_law_eff));
+
 				//Flash
 				if (value("conversion_type") == 1)
 				{
@@ -7492,7 +7496,7 @@ on_change{"geotherm.cost.plant_auto_estimate"} = define()
 				ssc_exec(cost, 'geothermal_costs');	
 				plant_per_kW = ssc_var(cost, "baseline_cost");	
 				value("geotherm.cost.plant_per_kW", plant_per_kW);
-				
+			
 				enable("geotherm.cost.plant_per_kW", false);
 				
 			}
