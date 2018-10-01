@@ -634,8 +634,8 @@ Height
 24
 Caption
 5
-20
-Modules are bifacial
+18
+Module is bifacial
 State
 2
 0
@@ -1633,7 +1633,7 @@ Numeric
 6par_bifacial_transmission_factor
 3
 1
-Transmission Fraction
+Transmission fraction
 0-1
 PV Module (CEC User Specified)
 0

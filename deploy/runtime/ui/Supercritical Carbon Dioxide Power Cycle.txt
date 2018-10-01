@@ -1,7 +1,7 @@
 Supercritical Carbon Dioxide Power Cycle
 911
 470
-32
+33
 Numeric
 
 1
@@ -941,6 +941,37 @@ Calculate design point without off-design performance
 TabOrder
 3
 2
+Choice
+
+1
+8
+Name
+5
+20
+dd_sco2_cycle_config
+X
+3
+198
+Y
+3
+162
+Width
+3
+164
+Height
+3
+24
+Items
+6
+2
+Recompression
+Partial Cooling
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1615,7 +1646,7 @@ Name
 sco2_cb_msg
 X
 3
-33
+30
 Y
 3
 93
@@ -1624,7 +1655,7 @@ Width
 856
 Height
 3
-90
+69
 Caption
 5
 0
@@ -1709,7 +1740,7 @@ TabOrder
 3
 4294967295
 
-43
+45
 P_high_limit
 3
 1
@@ -1948,6 +1979,20 @@ sCO2 Power Cycle
 1
 0.000000
 Default
+dd_sco2_cycle_config
+3
+1
+Cycle Configuration
+ 
+ 
+0
+0
+1
+1
+1
+1
+0.000000
+Default
 deltaT_PHX
 3
 1
@@ -2166,6 +2211,20 @@ sCO2 Power Cycle
 1
 15.000000
 Default
+sco2_cycle_config
+3
+1
+ 
+ 
+sCO2 Power Cycle
+0
+8
+1
+1
+1
+1
+1.000000
+Default
 sco2ud_T_amb_high
 3
 1
@@ -2316,7 +2375,7 @@ sCO2 Power Cycle
 0.000000
  
 
-275
+414
 // Set copy of variables from MSPT System Design page
 equations{ 'SCO2_COPY_P_ref' } = define(){
 	return ${P_ref}; };
@@ -2326,8 +2385,16 @@ equations{ 'SCO2_COPY_design_eff' } = define(){
 	
 equations{ 'SCO2_COPY_T_htf_hot_des' } = define(){
 	return ${T_htf_hot_des}; };
+	
+equations{ 'sco2_cycle_config' } = define() {
+	return ?${dd_sco2_cycle_config}
+	[
+		1,	// Recompression
+		2	// Partial Cooling
+   	];
+};
 
-14674
+14923
 on_load{"Supercritical Carbon Dioxide Power Cycle"} = define() {
 	
 	if( ${is_sco2_msg_disabled} == 0.0 )
@@ -2680,10 +2747,12 @@ function sco2_design_point(is_gen_udpc) {
 	ssc_var(obj, "dT_mc_approach", ${sco2_T_approach});	//[C] Temperature difference between main compressor CO2 inlet and ambient air
 	ssc_var(obj, "site_elevation", ${elev});			//[m] Site elevation (used to calculate air density in air cooler design model)
 	ssc_var(obj, "W_dot_net_des", ${P_ref});			//[MWe] Design cycle power output (no cooling parasitics)
+	ssc_var(obj, "cycle_config", ${sco2_cycle_config});					//[-]
 	ssc_var(obj, "design_method", 1);					//[-] 1 = Specify efficiency, 2 = Specify total recup UA
 	ssc_var(obj, "eta_thermal_des", ${design_eff});		//[-] Power cycle thermal efficiency
 	ssc_var(obj, "eta_isen_mc", ${eta_c});				//[-] Main compressor isentropic efficiency
 	ssc_var(obj, "eta_isen_rc", ${eta_c});				//[-] Re-compressor isentropic efficiency
+	ssc_var(obj, "eta_isen_pc", ${eta_c});              //[-] Precompressor isentropic efficiency
 	ssc_var(obj, "eta_isen_t", ${eta_t});				//[-] Turbine isentropic efficiency
 	ssc_var(obj, "LT_recup_eff_max", ${recup_eff_max});	//[-] Max effectiveness in LT recuperator
 	ssc_var(obj, "HT_recup_eff_max", ${recup_eff_max});	//[-] Max effectiveness in HT recuperator
@@ -2747,7 +2816,14 @@ function sco2_design_point(is_gen_udpc) {
 	
 	UA_total = ssc_var(obj, "UA_recup_total");
 	recomp_frac = ssc_var(obj, "recomp_frac");
-	P_comp_in = ssc_var(obj, "P_comp_in");
+	if(${sco2_cycle_config}==1)
+	{
+		P_comp_in = ssc_var(obj, "P_comp_in");
+	}
+	else
+	{
+		P_comp_in = ssc_var(obj, "pc_P_in_des");
+	}
 	P_comp_out = ssc_var(obj, "P_comp_out");
 	T_htf_cold = ssc_var(obj, "T_htf_cold_des");
 	

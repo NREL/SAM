@@ -1,5 +1,5 @@
 1
-487
+489
 6par_aisc
 1
 1
@@ -1437,10 +1437,20 @@ layout_warning
 4
 28
 Actual DC/AC ratio is 1.23. 
+lbl_bifacial
+1
+4
+0
 lbl_csp
 1
 4
 0
+lib_is_bifacial
+1
+1
+1
+1
+0.000000
 library_folder_list
 1
 4
