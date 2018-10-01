@@ -1,5 +1,5 @@
 1
-517
+518
 CT
 1
 1
@@ -1009,12 +1009,6 @@ dscr_reserve_months
 1
 1
 6.000000
-eff_secondlaw
-1
-1
-1
-1
-0.000000
 elev
 1
 1
@@ -1122,6 +1116,12 @@ fracture_width
 1
 1
 175.000000
+gen
+1
+2
+1
+1
+0.000000
 geopowerblock.pwrb.condenser_type
 1
 1

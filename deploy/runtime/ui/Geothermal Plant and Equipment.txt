@@ -2032,7 +2032,7 @@ TabOrder
 3
 10
 
-38
+39
 adjust
 3
 5
@@ -2174,6 +2174,20 @@ Geothermal Plant and Equipment
 1
 50.759998
 Numeric
+gen
+3
+2
+System Generation Calculated
+kW
+Geothermal Plant and Equipment
+0
+1
+1
+2
+1
+1
+0.000000
+Default
 geotherm.conversion_type_name
 3
 4
@@ -2678,7 +2692,7 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-1316
+1917
 function update_controls()
 {
 	// enable/disable all the appropriate controls on the page according to
@@ -2709,12 +2723,36 @@ function enable_optimize()
 function optimize_efficiency()
 {
 	logmsg('test');
+	optimal_lcoe = 999999;
+	optimal_i = null;
 	// Loop to modify efficiency and calculate LCOE
+	geothermal = ssc_module_create_from_case('geothermal');	
+	
+	for(i = 0; i <= 100 ; i += 10){
+		value('plant_efficiency_input', i);
+		ssc_exec(geothermal, 'geothermal');
+		
+		gen = ssc_var(geothermal, 'gen');
+		value('gen', gen);
+		single_owner = ssc_module_create_from_case('singleowner');
+		
+		ssc_var(single_owner, 'gen', gen ); 
+		ssc_exec(single_owner, 'singleowner');
+		lcoe_real = ssc_var(single_owner, "lcoe_real");
+		if( lcoe_real < optimal_lcoe) 
+		{
+			optimal_lcoe = lcoe_real; 
+			optimal_i = i;
+		}
+	}
+	value('plant_efficiency_input', optimal_i);
 
 }
+
+
 on_load{"Geothermal Plant and Equipment"}=define() {
 	update_controls();
-	optimize_efficiency();
+	enable_optimize();
 };	
 
 on_change{"conversion_type"} = define() {
