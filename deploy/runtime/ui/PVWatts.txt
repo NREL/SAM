@@ -1890,10 +1890,12 @@ equations{ 'losses' } = define() {
 					*(1-0.01*${loss_age})
 					*(1-0.01*${loss_avail}) );
 };
-1397
+1456
 function pvwatts_ui_update() {
 	arr = ${array_type};
 	enable( 'gcr', (arr==2||arr==3) );
+	enable( 'tilt', (arr!=4));
+	enable( 'azimuth', (arr!=4));
 	
 	enul = ${en_user_spec_losses};
 	enable( 'losses_user',  enul);	

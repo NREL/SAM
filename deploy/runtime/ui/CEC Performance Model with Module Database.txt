@@ -1,7 +1,7 @@
 CEC Performance Model with Module Database
 1019
 1084
-53
+54
 GroupBox
 
 1
@@ -123,7 +123,7 @@ X
 9
 Y
 3
-234
+237
 Width
 3
 1000
@@ -221,7 +221,7 @@ URL
 https://sam.nrel.gov/performance
 TabOrder
 3
-37
+4294967295
 Label
 
 1
@@ -379,12 +379,12 @@ Height
 24
 Caption
 5
-69
-Refer to Help for more information about CEC cell temperature models.
+64
+See Help for more information about CEC cell temperature models.
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -460,7 +460,7 @@ BackColour
 255
 TabOrder
 3
-14
+4294967295
 Numeric
 
 1
@@ -519,7 +519,7 @@ BackColour
 255
 TabOrder
 3
-12
+4294967294
 Numeric
 
 1
@@ -578,7 +578,7 @@ BackColour
 255
 TabOrder
 3
-34
+4294967295
 Numeric
 
 1
@@ -637,7 +637,7 @@ BackColour
 255
 TabOrder
 3
-15
+4294967294
 Numeric
 
 1
@@ -696,7 +696,7 @@ BackColour
 255
 TabOrder
 3
-29
+4294967295
 Numeric
 
 1
@@ -755,7 +755,7 @@ BackColour
 255
 TabOrder
 3
-25
+13
 Numeric
 
 1
@@ -814,7 +814,7 @@ BackColour
 255
 TabOrder
 3
-24
+12
 Numeric
 
 1
@@ -873,7 +873,7 @@ BackColour
 255
 TabOrder
 3
-26
+14
 Numeric
 
 1
@@ -932,7 +932,7 @@ BackColour
 255
 TabOrder
 3
-13
+4294967294
 Numeric
 
 1
@@ -943,10 +943,10 @@ Name
 cec_bifacial_ground_clearance_height
 X
 3
-840
+552
 Y
 3
-492
+546
 Width
 3
 90
@@ -991,7 +991,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -1050,7 +1050,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -1064,7 +1064,7 @@ X
 552
 Y
 3
-516
+519
 Width
 3
 90
@@ -1109,7 +1109,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -1168,7 +1168,7 @@ BackColour
 255
 TabOrder
 3
-4
+4294967295
 Numeric
 
 1
@@ -1227,7 +1227,7 @@ BackColour
 255
 TabOrder
 3
-10
+4294967294
 Numeric
 
 1
@@ -1286,7 +1286,7 @@ BackColour
 255
 TabOrder
 3
-27
+15
 Choice
 
 1
@@ -1317,7 +1317,7 @@ Selection
 4294967295
 TabOrder
 3
-20
+9
 Choice
 
 1
@@ -1346,7 +1346,7 @@ Selection
 4294967295
 TabOrder
 3
-18
+7
 Numeric
 
 1
@@ -1405,7 +1405,7 @@ BackColour
 255
 TabOrder
 3
-32
+4294967295
 Numeric
 
 1
@@ -1464,7 +1464,7 @@ BackColour
 255
 TabOrder
 3
-7
+4294967294
 Numeric
 
 1
@@ -1523,7 +1523,7 @@ BackColour
 255
 TabOrder
 3
-35
+4294967295
 Numeric
 
 1
@@ -1582,7 +1582,7 @@ BackColour
 255
 TabOrder
 3
-9
+4294967294
 CheckBox
 
 1
@@ -1605,14 +1605,14 @@ Height
 24
 Caption
 5
-20
-Modules are bifacial
+18
+Module is bifacial
 State
 2
 0
 TabOrder
 3
-4294967295
+1
 TextEntry
 
 1
@@ -1653,7 +1653,7 @@ BackColour
 255
 TabOrder
 3
-28
+4294967295
 Numeric
 
 1
@@ -1712,7 +1712,7 @@ BackColour
 255
 TabOrder
 3
-23
+4294967295
 Numeric
 
 1
@@ -1771,7 +1771,7 @@ BackColour
 255
 TabOrder
 3
-22
+11
 Choice
 
 1
@@ -1804,7 +1804,7 @@ Selection
 4294967295
 TabOrder
 3
-19
+8
 Choice
 
 1
@@ -1836,7 +1836,7 @@ Selection
 4294967295
 TabOrder
 3
-21
+10
 Numeric
 
 1
@@ -1895,7 +1895,7 @@ BackColour
 255
 TabOrder
 3
-30
+4294967295
 Numeric
 
 1
@@ -1954,7 +1954,7 @@ BackColour
 255
 TabOrder
 3
-5
+4294967295
 Numeric
 
 1
@@ -2013,7 +2013,7 @@ BackColour
 255
 TabOrder
 3
-33
+4294967295
 Numeric
 
 1
@@ -2072,7 +2072,7 @@ BackColour
 255
 TabOrder
 3
-36
+4294967295
 Choice
 
 1
@@ -2101,7 +2101,7 @@ Selection
 4294967295
 TabOrder
 3
-17
+6
 Numeric
 
 1
@@ -2160,7 +2160,7 @@ BackColour
 255
 TabOrder
 3
-31
+4294967295
 RadioChoice
 
 1
@@ -2197,7 +2197,7 @@ Horizontal
 0
 TabOrder
 3
-16
+5
 Numeric
 
 1
@@ -2256,7 +2256,7 @@ BackColour
 255
 TabOrder
 3
-6
+4294967294
 Numeric
 
 1
@@ -2315,7 +2315,7 @@ BackColour
 255
 TabOrder
 3
-8
+4294967294
 Divider
 
 1
@@ -2410,7 +2410,52 @@ BackColour
 255
 TabOrder
 3
-11
+4294967294
+Label
+
+1
+12
+Name
+5
+12
+lbl_bifacial
+X
+3
+681
+Y
+3
+471
+Width
+3
+285
+Height
+3
+87
+Caption
+5
+165
+The CEC module library indicates this module is bifacial. Check "Module is bifacial" to enable the bifacial model and enter the specifications. See Help for details.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Library
 
 1
@@ -2437,8 +2482,8 @@ Library
 CEC Modules
 Fields
 5
-168
-Name,Date,Technology,Bifacial,STC,PTC,A_c,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_r,BIPV,Version,T_NOCT
+181
+Name,Technology,Bifacial,STC,PTC,A_c,Length,Width,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,T_NOCT,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_r,BIPV,Version,Date
 Plot
 
 1
@@ -2500,9 +2545,9 @@ BackColour
 255
 TabOrder
 3
-2
+5
 
-40
+42
 alpha_sc_calc
 3
 1
@@ -2524,7 +2569,7 @@ beta_oc_calc
 %/°C
 PV Module (CEC Database)
 0
-8
+9
 1
 1
 1
@@ -2660,7 +2705,7 @@ Numeric
 cec_bifacial_transmission_factor
 3
 1
-Transmission Fraction
+Transmission fraction
 0-1
 PV Module (CEC Database)
 0
@@ -2818,7 +2863,7 @@ cec_is_bifacial
 1
 Use Bifacial Modules
  
-PV Module (CEC User Specified)
+PV Module (CEC Database)
 0
 1
 1
@@ -3040,6 +3085,32 @@ PV Module (CEC Database)
 1
 0.000000
 Numeric
+lbl_bifacial
+3
+4
+Label indicating bifacial module from library 
+ 
+PV Module (CEC Database)
+0
+9
+1
+4
+0
+Default
+lib_is_bifacial
+3
+1
+Bifacial designation from CEC module library
+ 
+PV Module (CEC Database)
+0
+8
+1
+1
+1
+1
+0.000000
+Default
 module_name
 3
 4
@@ -3089,7 +3160,7 @@ equations{ 'beta_oc_calc' } = define() {
 
 equations{ 'gamma_r_calc' } = define() {
 	return ${cec_gamma_r} * ${cec_p_mp_ref} / 100.0; };
-2624
+2760
 function cec_module_update_ui()
 {
 	state = value('cec_temp_corr_mode');
@@ -3111,6 +3182,9 @@ function cec_module_update_ui()
 	enable('cec_bifaciality', value('cec_is_bifacial'));
 	enable('cec_bifacial_transmission_factor', value('cec_is_bifacial'));
 	enable('cec_bifacial_ground_clearance_height', value('cec_is_bifacial'));
+	
+	show('lbl_bifacial', value('lib_is_bifacial') && !value('cec_is_bifacial'));
+	refresh();
 
 }
 
@@ -3166,8 +3240,13 @@ on_load{"CEC Performance Model with Module Database"} = define()
 	cec_module_update_ui();
 	cec_module_plot();
 };
-on_change{'cec_is_bifacial'} = cec_module_update_ui;
+	
 on_change{'cec_temp_corr_mode'} = cec_module_update_ui;
 on_change{'cec_mounting_config'} = cec_module_update_ui;
 on_change{'cec_heat_transfer'} = cec_module_update_ui;
-on_change{'module_name'} = cec_module_plot;
+on_change{'cec_is_bifacial'} = cec_module_update_ui;
+on_change{'module_name'} = define()
+{
+	cec_module_update_ui();
+	cec_module_plot();
+};

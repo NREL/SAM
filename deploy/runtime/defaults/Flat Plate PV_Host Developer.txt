@@ -1,5 +1,5 @@
 1
-1045
+1047
 6par_aisc
 1
 1
@@ -272,19 +272,19 @@ annual_beam
 1
 1
 1
-6.867773
+7.656164
 annual_diffuse
 1
 1
 1
 1
-1.458562
+1.282186
 annual_global
 1
 1
 1
 1
-5.383627
+5.879175
 annual_peak
 1
 1
@@ -302,13 +302,13 @@ annual_tdry
 1
 1
 1
-6.556728
+22.835627
 annual_wspd
 1
 1
 1
 1
-0.592694
+1.869863
 array_area
 1
 1
@@ -2163,7 +2163,7 @@ elev
 1
 1
 1
-2265.000000
+321.000000
 en_ac_lifetime_losses
 1
 1
@@ -2366,7 +2366,7 @@ file_name
 1
 4
 83
-C:\Code\sam\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+C:\Code\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -3753,12 +3753,16 @@ lat
 1
 1
 1
-37.450001
+33.450001
 layout_warning
 1
 4
 26
 No system sizing messages.
+lbl_bifacial
+1
+4
+0
 lbl_csp
 1
 4
@@ -3853,6 +3857,12 @@ lib_dispatch_sched_weekend
 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
 
+lib_is_bifacial
+1
+1
+1
+1
+0.000000
 library_folder_list
 1
 4
@@ -3904,7 +3914,7 @@ lon
 1
 1
 1
--105.860001
+-112.059998
 mera_cost1
 1
 1
@@ -5287,7 +5297,7 @@ solar_data_file_name
 1
 4
 83
-C:\Code\sam\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+C:\Code\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
 solar_data_source
 1
 4
@@ -5297,12 +5307,12 @@ solar_resource
 1
 4
 45
-alamosa_co_37.469449_-105.870021_psmv3_60_tmy
+phoenix_az_33.448377_-112.074037_psmv3_60_tmy
 solar_resource_file
 1
 4
 83
-C:\Code\sam\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+C:\Code\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
 solution_mode_message
 1
 4
@@ -5477,7 +5487,7 @@ station_id
 1
 4
 6
-449343
+310820
 subarray1_azimuth
 1
 1
@@ -5815,13 +5825,13 @@ subarray2_string_vmp
 1
 1
 1
-0.000000
+401.100006
 subarray2_string_voc
 1
 1
 1
 1
-0.000000
+475.300018
 subarray2_tilt
 1
 1
@@ -6002,13 +6012,13 @@ subarray3_string_vmp
 1
 1
 1
-0.000000
+401.100006
 subarray3_string_voc
 1
 1
 1
 1
-0.000000
+475.300018
 subarray3_tilt
 1
 1
@@ -6189,13 +6199,13 @@ subarray4_string_vmp
 1
 1
 1
-0.000000
+401.100006
 subarray4_string_voc
 1
 1
 1
 1
-0.000000
+475.300018
 subarray4_tilt
 1
 1
