@@ -1,7 +1,7 @@
 Geothermal Plant and Equipment
-826
-705
-41
+909
+699
+42
 GroupBox
 
 1
@@ -699,7 +699,7 @@ Name
 geotherm.egs_design_temp_autoselect
 X
 3
-558
+543
 Y
 3
 159
@@ -1322,6 +1322,36 @@ AlignRight
 AlignTop
 2
 0
+CheckBox
+
+1
+8
+Name
+5
+23
+optimize_geotherm_plant
+X
+3
+543
+Y
+3
+135
+Width
+3
+264
+Height
+3
+24
+Caption
+5
+42
+Optimize plant efficiency for minimum LCOE
+State
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -2002,7 +2032,7 @@ TabOrder
 3
 10
 
-37
+38
 adjust
 3
 5
@@ -2323,6 +2353,20 @@ Geothermal Plant and Equipment
 1
 0.000000
 Numeric
+optimize_geotherm_plant
+3
+1
+Optimize geothermal plant efficiency
+ 
+Geothermal Plant and Equipment
+0
+3
+1
+1
+1
+1
+0.000000
+CheckBox
 plant_efficiency_input
 3
 1
@@ -2634,7 +2678,7 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-799
+1316
 function update_controls()
 {
 	// enable/disable all the appropriate controls on the page according to
@@ -2649,13 +2693,34 @@ function update_controls()
 	if (${resource_type}==0)
 		value("decline_type", 0);
 }
+function enable_optimize()
+{
+	plant_type = value('conversion_type');
+	
+	// flash plant can't be optimized
+	if (plant_type == 1){
+		value('optimize_geotherm_plant', false);
+	}
+	
+	// enable checkbox only for binary plant
+	enable('optimize_geotherm_plant', !plant_type);
+}
 
+function optimize_efficiency()
+{
+	logmsg('test');
+	// Loop to modify efficiency and calculate LCOE
+
+}
 on_load{"Geothermal Plant and Equipment"}=define() {
 	update_controls();
+	optimize_efficiency();
 };	
 
 on_change{"conversion_type"} = define() {
 	update_controls();
+	enable_optimize();
+	optimize_efficiency();
 };
 
 on_change{'analysis_type'} = define() {
@@ -2664,5 +2729,8 @@ on_change{'analysis_type'} = define() {
 
 on_change{'specify_pump_work'} = define() {
 	update_controls();
+};
+on_change{'optimize_geotherm_plant'} = define() {
+	optimize_efficiency();
 };
 
