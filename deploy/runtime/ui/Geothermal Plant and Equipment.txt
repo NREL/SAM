@@ -2579,7 +2579,7 @@ Geothermal Plant and Equipment
 15.000000
 Numeric
 
-4668
+4667
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -2607,7 +2607,6 @@ equations{ 'ui_calculations_only' } = define() {
 equations{ '$MIMO$ geothermal' } = define() {
     obj = ssc_create();
 	ssc_var( obj, 'ui_calculations_only', 1 ); // set to 1 so model only does UI calculations (much faster)
-
 	ssc_var( obj, 'system_capacity', ${nameplate} );
 	ssc_var( obj, 'adjust:constant', 0.0 );
 
@@ -2692,7 +2691,7 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-1917
+2198
 function update_controls()
 {
 	// enable/disable all the appropriate controls on the page according to
@@ -2728,23 +2727,33 @@ function optimize_efficiency()
 	// Loop to modify efficiency and calculate LCOE
 	geothermal = ssc_module_create_from_case('geothermal');	
 	
-	for(i = 0; i <= 100 ; i += 10){
+	for(i = 30; i <= 100 ; i += 10){
 		value('plant_efficiency_input', i);
 		ssc_exec(geothermal, 'geothermal');
 		
 		gen = ssc_var(geothermal, 'gen');
 		value('gen', gen);
-		single_owner = ssc_module_create_from_case('singleowner');
 		
-		ssc_var(single_owner, 'gen', gen ); 
-		ssc_exec(single_owner, 'singleowner');
-		lcoe_real = ssc_var(single_owner, "lcoe_real");
+		if (financing() == 'Single Owner'){
+			financial = ssc_module_create_from_case('singleowner');
+			ssc_var(financial, 'gen', gen ); 
+			ssc_exec(financial, 'singleowner');
+		} 
+		else if (financing() == 'Leveraged Partnership Flip'){
+			financial = ssc_module_create_from_case('levpartflip');
+			ssc_var(financial, 'gen', gen ); 
+			ssc_exec(financial, 'levpartflip');
+		} 
+		
+		lcoe_real = ssc_var(financial, 'lcoe_real');
 		if( lcoe_real < optimal_lcoe) 
 		{
 			optimal_lcoe = lcoe_real; 
 			optimal_i = i;
 		}
+		ssc_free(financial);
 	}
+	ssc_free(geothermal);
 	value('plant_efficiency_input', optimal_i);
 
 }
