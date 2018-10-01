@@ -50,6 +50,9 @@
 #ifndef __sammain_h
 #define __sammain_h
 
+// to load binary ui forms and defaults uncomment following
+//#define UI_BINARY 1
+
 #include <exception>
 #include <memory>
 
@@ -188,8 +191,11 @@ public:
 	InputPageData();
 
 	void Clear();
-	void Write( wxOutputStream &os );
-	bool Read( wxInputStream &is );
+	void Write(wxOutputStream &os);
+	bool Read(wxInputStream &is);
+
+	void Write_text(wxOutputStream &os, wxString &);
+	bool Read_text(wxInputStream &is, wxString &);
 
 	wxUIFormData &Form() { return m_form; }
 	VarDatabase &Variables() { return m_vars; }
@@ -217,7 +223,8 @@ public:
 	InputPageData *Lookup( const wxString &name );
 	void Clear();
 
-	bool LoadFile( const wxString &file );
+	bool LoadFile(const wxString &file);
+	bool LoadFileText(const wxString &file);
 private:
 	InputPageDataHash m_hash;
 };

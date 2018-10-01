@@ -57,6 +57,7 @@
 #include <wx/tokenzr.h>
 #include <wx/log.h>
 #include <wx/mstream.h>
+#include <wx/txtstrm.h>
 
 #include <lk/stdlib.h>
 #include <lk/eval.h>
@@ -303,6 +304,162 @@ bool VarTable::Read( wxInputStream &_I )
 	return in.Read8() == code;
 }
 
+bool VarTable::Write_text(const wxString &file, size_t maxdim)
+{
+	wxFFileOutputStream out(file);
+	if (!out.IsOk()) return false;
+	Write_text(out, maxdim);
+	return true;
+}
+
+
+void VarTable::Write_text(wxOutputStream &_O, size_t maxdim)
+{
+	wxTextOutputStream out(_O, wxEOL_UNIX);
+	out.Write8(1);
+	out.PutChar('\n');
+	wxArrayString names;
+	VarValue *v;
+	if (maxdim == 0)
+	{
+		out.Write32(size());
+		out.PutChar('\n');
+		// add sorting for consistent and comparable defaults 
+		/*
+		for (iterator it = begin(); it != end(); ++it)
+		{
+			out.WriteString(it->first);
+			out.PutChar('\n');
+			it->second->Write_text(_O);
+
+			if (it->second->Type() == VV_BINARY)
+			{
+				wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)it->first.c_str(), (int)it->second->Binary().GetDataLen());
+			}
+		}
+		*/
+		names = ListAll();
+		names.Sort();
+		for (size_t i = 0; i < names.Count(); i++)
+		{
+			v = Get(names[i]);
+			if (v != NULL)
+			{
+				out.WriteString(names[i]);
+				out.PutChar('\n');
+				v->Write_text(_O);
+
+				if (v->Type() == VV_BINARY)
+				{
+					wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)v->Binary().GetDataLen());
+				}
+			}
+		}
+	}
+	else
+	{
+// add sorting for consistent and comparable defaults 
+//		wxArrayString names;
+/*
+		std::vector<VarValue*> list;
+		list.reserve(size());
+
+		for (iterator it = begin(); it != end(); ++it)
+		{
+			VarValue &vv = *(it->second);
+			if (vv.Type() == VV_ARRAY
+				&& vv.Length() <= maxdim)
+			{
+				names.Add(it->first);
+				list.push_back(it->second);
+			}
+			else if (vv.Type() == VV_MATRIX
+				&& vv.Matrix().nrows() <= maxdim
+				&& vv.Matrix().ncols() <= maxdim)
+			{
+				names.Add(it->first);
+				list.push_back(it->second);
+			}
+			else if (vv.Type() != VV_MATRIX
+				&& vv.Type() != VV_ARRAY)
+			{
+				names.Add(it->first);
+				list.push_back(it->second);
+			}
+		}
+
+		out.Write32(list.size());
+		out.PutChar('\n');
+*/
+		for (iterator it = begin(); it != end(); ++it)
+		{
+			VarValue &vv = *(it->second);
+			if (vv.Type() == VV_ARRAY
+				&& vv.Length() <= maxdim)
+				names.Add(it->first);
+			else if (vv.Type() == VV_MATRIX
+				&& vv.Matrix().nrows() <= maxdim
+				&& vv.Matrix().ncols() <= maxdim)
+				names.Add(it->first);
+			else if (vv.Type() != VV_MATRIX
+				&& vv.Type() != VV_ARRAY)
+				names.Add(it->first);
+		}
+
+		names.Sort();
+		out.Write32(names.Count());
+		out.PutChar('\n');
+
+		for (size_t i = 0; i<names.Count(); i++)
+		{
+			v = Get(names[i]);
+			if (v != NULL)
+			{
+				out.WriteString(names[i]);
+				out.PutChar('\n');
+				v->Write_text(_O);
+
+				if (v->Type() == VV_BINARY)
+				{
+					wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)v->Binary().GetDataLen());
+				}
+			}
+		}
+	}
+}
+bool VarTable::Read_text(const wxString &file)
+{
+	wxFFileInputStream in(file);
+	if (!in.IsOk()) return false;
+	else return Read_text(in);
+}
+
+bool VarTable::Read_text(wxInputStream &_I)
+{
+	clear();
+
+	wxTextInputStream in(_I, "\n");
+	in.Read8(); //ver
+
+	bool ok = true;
+	size_t n = in.Read32();
+	for (size_t i = 0; i<n; i++)
+	{
+		wxString name = in.ReadWord();
+		VarValue *value = new VarValue;
+		ok = ok && value->Read_text(_I);
+
+		if (value->Type() == VV_BINARY)
+		{
+			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen());
+		}
+
+		if (find(name) == end()) (*this)[name] = value;
+		else delete value;
+	}
+
+	return ok;
+}
 
 VarValue VarValue::Invalid; // declaration
 
@@ -475,7 +632,7 @@ void VarValue::Copy( const VarValue &rhs )
 
 void VarValue::Write( wxOutputStream &_O )
 {
-	wxDataOutputStream out( _O );
+	wxDataOutputStream out(_O);
 
 	out.Write8( 0xf2 );
 	out.Write8( 1 );
@@ -493,7 +650,7 @@ void VarValue::Write( wxOutputStream &_O )
 		out.Write32( m_val.ncols() );
 		for ( size_t r=0;r<m_val.nrows();r++ )
 			for( size_t c=0;c<m_val.ncols();c++ )
-				out.WriteFloat( m_val(r,c) );
+				out.WriteFloat(m_val(r, c));
 		break;
 	case VV_TABLE:
 		m_tab.Write( _O );
@@ -510,9 +667,9 @@ void VarValue::Write( wxOutputStream &_O )
 	out.Write8( 0xf2 );
 }
 
-bool VarValue::Read( wxInputStream &_I )
+bool VarValue::Read(wxInputStream &_I)
 {
-	wxDataInputStream in( _I );
+	wxDataInputStream in(_I);
 
 	wxUint8 code = in.Read8();
 	in.Read8(); // ver
@@ -520,7 +677,7 @@ bool VarValue::Read( wxInputStream &_I )
 	m_type = in.Read8();
 
 	size_t nr, nc, len;
-	switch( m_type )
+	switch (m_type)
 	{
 	case VV_INVALID:
 		break;
@@ -529,28 +686,172 @@ bool VarValue::Read( wxInputStream &_I )
 	case VV_MATRIX:
 		nr = in.Read32();
 		nc = in.Read32();
-		if ( nr*nc < 1 ) return false; // big error
-		m_val.resize_fill( nr, nc, 0.0f );
-		for ( size_t r=0;r<nr;r++ )
-			for( size_t c=0;c<nc;c++ )
-				m_val(r,c) = in.ReadFloat();
+		if (nr*nc < 1) return false; // big error
+		m_val.resize_fill(nr, nc, 0.0f);
+		for (size_t r = 0; r<nr; r++)
+			for (size_t c = 0; c<nc; c++)
+				m_val(r, c) = in.ReadFloat();
 		break;
 	case VV_TABLE:
-		m_tab.Read( _I );
+		m_tab.Read(_I);
 		break;
 	case VV_STRING:
 		m_str = in.ReadString();
 		break;
 	case VV_BINARY:
 		len = in.Read32();
-		_I.Read( m_bin.GetWriteBuf( len ), len );
-		m_bin.UngetWriteBuf( len );
+		_I.Read(m_bin.GetWriteBuf(len), len);
+		m_bin.UngetWriteBuf(len);
 		break;
 	}
 
 	return in.Read8() == code;
 }
-	
+
+void VarValue::Write_text(wxOutputStream &_O)
+{
+	wxTextOutputStream out(_O, wxEOL_UNIX);
+	size_t n;
+	wxString x;
+
+	out.Write8(1);
+	out.PutChar('\n');
+	out.Write8(m_type);
+	out.PutChar('\n');
+
+	switch (m_type)
+	{
+	case VV_INVALID:
+		break; // no data to be written
+	case VV_NUMBER:
+	case VV_ARRAY:
+	case VV_MATRIX:
+		out.Write32(m_val.nrows());
+		out.PutChar('\n');
+		out.Write32(m_val.ncols());
+		out.PutChar('\n');
+		for (size_t r = 0; r < m_val.nrows(); r++)
+		{
+			for (size_t c = 0; c < m_val.ncols(); c++)
+			{
+				out.WriteDouble(m_val(r, c));
+	//			out.PutChar('\n');
+				if (m_val.nrows()*m_val.ncols() > 1) out.PutChar(' ');
+			}
+			if (m_val.nrows()*m_val.ncols() > 1) out.PutChar('\n');
+		}
+		out.PutChar('\n');
+		break;
+	case VV_TABLE:
+		m_tab.Write_text(_O);
+		break;
+	case VV_STRING:
+		x = m_str;
+		x.Replace("\r", "");
+		n = x.Len();
+		out.Write32((wxUint32)n);
+		if (n > 0)
+		{
+			out.PutChar('\n');
+			for (size_t i = 0; i < n; i++)
+			{
+				out.PutChar(x[i]);
+			}
+		}
+		out.PutChar('\n');
+		break;
+	case VV_BINARY:
+		out.Write32(m_bin.GetDataLen());
+		out.PutChar('\n');
+		wxByte *p = (wxByte*)m_bin.GetData();
+		for (size_t i = 0; i < m_bin.GetDataLen(); i++)
+			out.Write(p[i]);
+//		_O.Write(m_bin.GetData(), m_bin.GetDataLen());
+//		out.PutChar('`');
+		break;
+	}
+
+}
+
+bool VarValue::Read_text(wxInputStream &_I)
+{
+	wxTextInputStream in(_I, "\n");
+	size_t n;
+
+	in.Read8(); // ver
+
+	m_type = in.Read8();
+
+	bool ok = true;
+
+	size_t nr, nc, len;
+	switch (m_type)
+	{
+	case VV_INVALID:
+		break;
+	case VV_NUMBER:
+	case VV_ARRAY:
+	case VV_MATRIX:
+		nr = in.Read32();
+		nc = in.Read32();
+		if (nr*nc < 1) return false; // big error
+		m_val.resize_fill(nr, nc, 0.0f);
+		if (nc*nr > 1)
+		{
+			for (size_t r = 0; r < nr; r++)
+			{
+				wxString x = in.ReadLine();
+				wxArrayString ar = wxStringTokenize(x, ' ');
+				if (nc != ar.Count()) return false;
+				for (size_t c = 0; c < nc; c++)
+				{
+					double y;
+					if (ar[c].ToDouble(&y))
+						m_val(r, c) = y;
+					else
+						return false;
+				}
+			}
+		}
+		else
+			m_val(0, 0) = in.ReadDouble();
+		/*
+		for (size_t r = 0; r < nr; r++)
+			for (size_t c = 0; c < nc; c++)
+			{
+		//		m_val(r, c) = in.ReadDouble();
+			}
+			*/
+		break;
+	case VV_TABLE:
+		ok = ok && m_tab.Read_text(_I);
+		break;
+	case VV_STRING:
+		n = in.Read32();
+		m_str.Clear();
+		if (n > 0)
+		{
+			for (size_t i = 0; i < n; i++)
+				m_str.Append(in.GetChar());
+		}
+		break;
+	case VV_BINARY:
+		len = in.Read32();
+		m_bin.SetBufSize(len);
+		m_bin.Clear();
+//		char *p = (char*)m_bin.GetWriteBuf(len);
+		for (size_t i = 0; i <len; i++)
+			m_bin.AppendByte(in.GetChar());
+
+//		_I.Read(m_bin.GetWriteBuf(len), len);
+//		m_bin.UngetWriteBuf(len);
+		break;
+	}
+
+	return ok;
+//	return in.Read8() == code;
+}
+
 int VarValue::Type() const { return m_type; }
 wxString VarValue::TypeAsString() const {
 	switch (m_type) {
@@ -1061,11 +1362,11 @@ VarInfo::VarInfo( const VarInfo &copy )
 	DefaultValue.Copy( copy.DefaultValue );
 }
 
-void VarInfo::Write( wxOutputStream &os )
+void VarInfo::Write(wxOutputStream &os)
 {
 	wxDataOutputStream out(os);
-	out.Write8( 0xe1 );
-//	out.Write8(2);
+	out.Write8(0xe1);
+	//	out.Write8(2);
 	out.Write8(3); // change to version 3 after wxString "UIObject" field added
 
 	out.Write32( Type );
@@ -1077,16 +1378,17 @@ void VarInfo::Write( wxOutputStream &os )
 	DefaultValue.Write( os );
 	out.WriteString(UIObject);
 
-	out.Write8( 0xe1 );
+	out.Write8(0xe1);
 }
 
-bool VarInfo::Read( wxInputStream &is )
+
+bool VarInfo::Read(wxInputStream &is)
 {
 	wxDataInputStream in(is);
 	wxUint8 code = in.Read8();
 	int ver = in.Read8(); // ver
 
-	if ( ver < 2 ) in.ReadString(); // formerly, name field
+	if (ver < 2) in.ReadString(); // formerly, name field
 
 	Type = in.Read32();
 	Label = in.ReadString();
@@ -1094,13 +1396,112 @@ bool VarInfo::Read( wxInputStream &is )
 	Group = in.ReadString();
 	IndexLabels = wxSplit( in.ReadString(), '|' );
 	Flags = in.Read32();
-	bool valok = DefaultValue.Read( is );
-	if (ver < 3) 
+	bool valok = DefaultValue.Read(is);
+	if (ver < 3)
 		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
 	else
 		UIObject = in.ReadString();
 	wxUint8 lastcode = in.Read8();
 	return  lastcode == code && valok;
+}
+
+void VarInfo::Write_text(wxOutputStream &os)
+{
+	wxTextOutputStream out(os, wxEOL_UNIX);
+	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+	out.PutChar('\n');
+	out.Write32(Type);
+	out.PutChar('\n');
+	if (Label.Len() > 0)
+		out.WriteString(Label);
+	else 
+		out.WriteString(" ");
+	out.PutChar('\n');
+	if (Units.Len() > 0)
+		out.WriteString(Units);
+	else
+		out.WriteString(" ");
+	out.PutChar('\n');
+	if (Group.Len() > 0)
+		out.WriteString(Group);
+	else
+		out.WriteString(" ");
+	out.PutChar('\n');
+	/* Handle multiline equations in IndexLabels
+		e.g. PV system Design
+		Numeric
+		subarray1_nstrings
+		3
+		1
+		Number of parallel strings 1
+
+		PV System Design
+		=${pv.array.strings_in_parallel}
+		- ?${pv.subarray2.enable}[0|${pv.subarray2.num_strings}]
+		- ?${pv.subarray3.enable}[0|${pv.subarray3.num_strings}]
+		- ?${pv.subarray4.enable}[0|${pv.subarray4.num_strings}]
+		9
+		1
+		1
+		1
+		1
+		0.000000
+	*/
+	wxString x = "";
+	if (IndexLabels.Count() > 0)
+	{
+		x = wxJoin(IndexLabels, '|');
+	}
+	size_t n = x.Len();
+	out.Write32((wxUint32)n);
+	if (n > 0)
+	{
+		out.PutChar('\n');
+		for (size_t i = 0; i < n; i++)
+		{
+			out.PutChar(x[i]);
+		}
+	}
+	out.PutChar('\n');
+	out.Write32(Flags);
+	out.PutChar('\n');
+	DefaultValue.Write_text(os);
+	if (UIObject.Len() > 0)
+		out.WriteString(UIObject);
+	else
+		out.WriteString(" ");
+	out.PutChar('\n');
+}
+
+bool VarInfo::Read_text(wxInputStream &is)
+{
+	wxTextInputStream in(is, "\n", wxConvAuto(wxFONTENCODING_UTF8));
+	int ver = in.Read8(); // ver
+
+	if (ver < 2) in.ReadWord(); // formerly, name field
+
+	bool ok = true;
+
+	Type = in.Read32();
+	Label = in.ReadWord();
+	Units = in.ReadWord();
+	Group = in.ReadWord();
+	size_t n = in.Read32();
+	if (n > 0)
+	{
+		wxString x;
+		for (size_t i = 0; i < n; i++)
+			x.Append(in.GetChar());
+		IndexLabels = wxSplit(x, '|');
+	}
+
+	Flags = in.Read32();
+	ok = ok && DefaultValue.Read_text(is);
+	if (ver < 3)
+		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
+	else
+		UIObject = in.ReadWord();
+	return  ok;
 }
 
 VarDatabase::VarDatabase()
@@ -1119,20 +1520,20 @@ bool VarDatabase::LoadFile( const wxString &file, const wxString &page )
 	return Read( ff, page );
 }
 
-void VarDatabase::Write( wxOutputStream &os )
+void VarDatabase::Write(wxOutputStream &os)
 {
 	wxDataOutputStream out(os);
-	out.Write8( 0xf8 );
-	out.Write8( 1 );
-	out.Write32( size() );
-	for( VarInfoHash::iterator it = begin();
+	out.Write8(0xf8);
+	out.Write8(1);
+	out.Write32(size());
+	for (VarInfoHash::iterator it = begin();
 		it != end();
-		++it )
+		++it)
 	{
-		out.WriteString( it->first );
-		it->second->Write( os );
+		out.WriteString(it->first);
+		it->second->Write(os);
 	}
-	out.Write8( 0xf8 );
+	out.Write8(0xf8);
 }
 
 bool VarDatabase::Read( wxInputStream &is, const wxString &page )
@@ -1162,6 +1563,66 @@ bool VarDatabase::Read( wxInputStream &is, const wxString &page )
 	if ( !ok ) return false;
 
 	return in.Read8() == code;
+}
+
+void VarDatabase::Write_text(wxOutputStream &os)
+{
+	wxTextOutputStream out(os, wxEOL_UNIX);
+	out.PutChar('\n');
+	out.Write32(size());
+	out.PutChar('\n');
+	// Sort for consistent order
+	/*
+	for (VarInfoHash::iterator it = begin();
+		it != end();
+		++it)
+	{
+		out.WriteString(it->first);
+		out.PutChar('\n');
+		it->second->Write_text(os);
+	}
+	*/
+	VarInfo *v;
+	wxArrayString as = ListAll();
+	as.Sort();
+	for (size_t i = 0; i < as.Count(); i++)
+	{
+		v = Lookup(as[i]);
+		if (v != NULL)
+		{
+			out.WriteString(as[i]);
+			out.PutChar('\n');
+			v->Write_text(os);
+		}
+	}
+}
+
+bool VarDatabase::Read_text(wxInputStream &is, const wxString &page)
+{
+	wxTextInputStream in(is, "\n");
+	size_t n = in.Read32();
+	bool ok = true;
+	wxArrayString list;
+	for (size_t i = 0; i<n; i++)
+	{
+		wxString name = in.ReadWord();
+		VarInfo *vv = 0;
+
+		VarInfoHash::iterator it = find(name);
+		if (it != end())
+			vv = it->second;
+		else
+			vv = new VarInfo;
+
+		ok = ok && vv->Read_text(is);
+
+		(*this)[name] = vv;
+		if (!page.IsEmpty()) list.Add(name);
+	}
+	return ok;
+	
+//	if (!ok) return false;
+//	return in.Read8() == code;
 }
 
 
