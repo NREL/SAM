@@ -947,7 +947,7 @@ Name
 gross_output
 X
 3
-654
+651
 Y
 3
 81
@@ -1283,8 +1283,8 @@ Label
 12
 Name
 5
-10
-object 712
+9
+object 77
 X
 3
 444
@@ -2002,7 +2002,7 @@ TabOrder
 3
 10
 
-38
+37
 adjust
 3
 5
@@ -2130,20 +2130,6 @@ Geothermal Plant and Equipment
 1
 0.000000
 Numeric
-eff_secondlaw
-3
-1
- 
-%
- 
-0
-0
-1
-1
-1
-1
-0.000000
-Default
 excess_pressure_pump
 3
 1
@@ -2192,7 +2178,7 @@ Enter Plant Design Temperature (EGS only)
 'C
 Geothermal Plant and Equipment
 0
-2
+0
 1
 1
 1
