@@ -2691,7 +2691,7 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-2198
+3099
 function update_controls()
 {
 	// enable/disable all the appropriate controls on the page according to
@@ -2706,6 +2706,7 @@ function update_controls()
 	if (${resource_type}==0)
 		value("decline_type", 0);
 }
+/*
 function enable_optimize()
 {
 	plant_type = value('conversion_type');
@@ -2718,19 +2719,36 @@ function enable_optimize()
 	// enable checkbox only for binary plant
 	enable('optimize_geotherm_plant', !plant_type);
 }
-
+*/
 function optimize_efficiency()
 {
 	logmsg('test');
 	optimal_lcoe = 999999;
 	optimal_i = null;
 	// Loop to modify efficiency and calculate LCOE
-	geothermal = ssc_module_create_from_case('geothermal');	
+	
 	
 	for(i = 30; i <= 100 ; i += 10){
+		geothermal = ssc_module_create_from_case('geothermal');	
 		value('plant_efficiency_input', i);
 		ssc_exec(geothermal, 'geothermal');
-		
+		////Creating and running case for 
+		////cmod_geothermal_costs - binary plant type:
+		cost = ssc_create('geothermal_cost');
+		conversion_type = 0;
+		gross_output = value("gross_output") * 1000;
+		design_temp = ssc_var(geothermal, "design_temp");
+		//msgbox(design_temp);
+		second_law_eff = ssc_var(geothermal, "eff_secondlaw");
+		//msgbox(second_law_eff);
+		ssc_var(cost,'gross_output', gross_output);
+		ssc_var(cost,'design_temp', design_temp);
+		ssc_var(cost,'eff_secondlaw', second_law_eff);
+		ssc_var(cost, "conversion_type", conversion_type);
+		ssc_exec(cost, 'geothermal_costs');	
+		plant_per_kW = ssc_var(cost, "baseline_cost");	
+		value("geotherm.cost.plant_per_kW", plant_per_kW);
+		//msgbox(plant_per_kW);
 		gen = ssc_var(geothermal, 'gen');
 		value('gen', gen);
 		
@@ -2745,23 +2763,28 @@ function optimize_efficiency()
 			ssc_exec(financial, 'levpartflip');
 		} 
 		
-		lcoe_real = ssc_var(financial, 'lcoe_real');
-		if( lcoe_real < optimal_lcoe) 
+		lcoe_nom = ssc_var(financial, 'lcoe_nom');
+		msgbox(lcoe_nom);
+		if( lcoe_nom < optimal_lcoe) 
 		{
-			optimal_lcoe = lcoe_real; 
+			optimal_lcoe = lcoe_nom; 
+			//msgbox(optimal_lcoe);
 			optimal_i = i;
+		//	msgbox(optimal_i);
 		}
-		ssc_free(financial);
+		
 	}
-	ssc_free(geothermal);
 	value('plant_efficiency_input', optimal_i);
-
+	//ssc_free(financial);
+	//ssc_free(geothermal);
+	//ssc_free(cost);
 }
 
 
 on_load{"Geothermal Plant and Equipment"}=define() {
 	update_controls();
-	enable_optimize();
+	value('optimize_geotherm_plant', 0);
+	//enable_optimize();
 };	
 
 on_change{"conversion_type"} = define() {
@@ -2778,6 +2801,8 @@ on_change{'specify_pump_work'} = define() {
 	update_controls();
 };
 on_change{'optimize_geotherm_plant'} = define() {
+	if(value('optimize_geotherm_plant') == 1){
 	optimize_efficiency();
+	}
 };
 
