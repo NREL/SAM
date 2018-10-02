@@ -1505,7 +1505,7 @@ equations{ 'ud_COPY_T_amb_des' } = define(){
 equations{ 'ud_COPY_T_HTF_des' } = define(){
 	return ${PB_COPY_T_htf_hot_des}; };
 
-2022
+1975
 on_change{'btn_gen_inputs'} = define() {
 	//value("ud_ind_od", [[1,2,3,4,5,6,7],[11,22,33,44,55,66,77]]);
 	
@@ -1521,8 +1521,6 @@ on_change{'btn_gen_inputs'} = define() {
 	T_amb_des = value("ud_COPY_T_amb_des");
 	T_amb_high = value("ud_T_amb_high");
 	n_T_amb = value("ud_T_amb_levels");
-	
-	//n_rows = 3*(n_T_htf + n_m_dot + n_T_amb);
 	
 	if ( n_T_htf <= 1 ) {
 		T_htf_ini = T_htf_des;
