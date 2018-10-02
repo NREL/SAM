@@ -1,7 +1,7 @@
 /*@
 
 <br><br>
-This macro helps the user determine the optimal array size and layout on a land of fixed dimensions. The array placement is optimized with respect to 3 main strategies:
+This macro helps the user determine the optimal array size, Ground Coverage Ratio (GCR), and module tilt angle over an area of fixed dimensions. The array placement is optimized with respect to 3 main strategies:
 <br><br> 
  
 <ol>
@@ -14,10 +14,10 @@ This macro helps the user determine the optimal array size and layout on a land 
  
 //Macro User Interface Widgets
 //@ name=length;type=number;label=Enter the Length of Field or Rooftop (m):;value=100
-//@ name=width;type=number;label=Enter the width of Field or Rooftop (m):;value=50
+//@ name=width;type=number;label=Enter the Width of Field or Rooftop (m):;value=50
 //@ name=setback;type=number;label=Enter the setback (in m) from edges (this is the area over which modules cannot be placed):;value=1 
-//@ name=max_gcr;type=number;label=Enter the maximum Ground Coverage Ratio (GCR) over which modules can be placed:;value=1 
-//@ name=min_gcr;type=number;label=Enter the minimum Ground Coverage Ratio (GCR) over which modules can be placed (value cannot equal 0):;value=0.1 
+//@ name=max_gcr;type=number;label=Enter the maximum GCR over which modules can be placed:;value=1 
+//@ name=min_gcr;type=number;label=Enter the minimum GCR over which modules can be placed (value cannot equal 0):;value=0.1 
 //@ name=gcr_steps;type=number;label=Enter the increments you would like to iterate GCR over:;value=0.1
 //@ name=max_tilt;type=number;label=Enter the maximum allowable (fixed) tilt angle (in Degrees):;value=90
 //@ name=min_tilt;type=number;label=Enter the minimum allowable (fixed) tilt angle (in Degrees):;value=0
@@ -50,22 +50,29 @@ acreage = area*0.0002471;
 
 ///////////////////////////////////**** DEFINING PLACEHOLDER VARIABLES ****///////////////////////////////////
 
-//Placeholders:
+//Placeholders for max AEP:
 max_energy = 0;						//Placeholder for maximum Annual Energy Production (AEP)
 optimum_gcr = 0 ;					//Placeholder for the optimum GCR that yields maximum AEP 
 optimum_tilt = 0;					//Placeholder for the panel tilt angle that yields maximum AEP
 max_system_size = 0;				//Placeholder for the system size that produces maximum annual energy
 energy_npv = 0;						//Placeholder for the npv at max energy configuration
+max_aep_yield = 0;					//Placeholder for energy yield at max AEP
+
+//PLaceholders for max NPV:
 max_npv = -9999999999;				//PLaceholder for the max npv
 system_size_npv = 0;				//Placeholder for the system size at max npv
 gcr_npv = 0;						//placeholder for the gcr at max npv
 tilt_npv = 0;						//Placeholder for the tilt at max npv
 aep_npv = 0;						//Placeholder for aep at max NPV
+max_npv_yield = 0;					//Placeholder for energy yield at max NPV
+
+//Placeholders for max Energy Yield:
 max_yield = 0;						//Placeholder for max energy yield of system
 gcr_yield = 0;						//Placeholder for gcr at max energy yield of system
 tilt_yield = 0;						//Placeholder for tilt at max energy yield of system
 system_size_yield = 0;				//Placeholder for system size at max energy yield of system
 aep_yield = 0;						//Placeholder for AEP at max energy yield of system
+max_yield_npv = 0;					//PLaceholder for NPV at max energy yield
 
 //Placeholders for storing layout configuration at max AEP: 
 nmody =  get('subarray1_nmody');	//This currently can only be changed within the active case running on SAM
@@ -128,21 +135,21 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {
 	i = i + 1;
 }
 
-//Variable to keep a tab of rows in the loop
-if (get('subarray1_mod_orient') == 1) {			//if module orientation is landscape, then length of panel is used in calculation length of row
+//Variable to keep count of number of rows in the loop:
+if (get('subarray1_mod_orient') == 1) {			//if module orientation is landscape, then length of panel is used in calculating length of row
 	module_length = get('module_length');		//Length of 1 module
 	bottom_length = module_length;				//Initial length of bottom row of modules 
 	set('subarray1_nmodx', 1);
 }
-elseif (get('subarray1_mod_orient') == 0) { 	//If module orientation is portrait, then width of panel is used in calculation length of row		
-	module_length = get('module_width');		//Length of 1 module
+elseif (get('subarray1_mod_orient') == 0) { 		//If module orientation is portrait, then width of panel is used in calculation length of row		
+	module_length = get('module_width');			//Length of 1 module
 	bottom_length = module_length;				//Initial length of bottom row of modules 
 	set('subarray1_nmodx', 1);
 }
 
 
 p = 0;
-n = 0;
+n = 0;		//number of panels along side bottom of row
 i = 0;
 
 //Fitting modules along length of field:
@@ -182,12 +189,10 @@ i = 0;
 for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for iterating over a range of GCR
 
 	j = -1;				//counter variable to keep tab of the columns in the loop
-	if(i <10) {
-		set('desired_size', system_size[i]);
-		set('subarray1_gcr', gcr);
-		set('subarray1_nmodx', bottom_modules[i]);
-		}
-	else continue;
+	set('desired_size', system_size[i]);
+	set('subarray1_gcr', gcr);
+	set('subarray1_nmodx', bottom_modules[i]);
+	
 	
 	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {	//Loop for iterating over a range of tilt angles
 		j = j + 1; 									//Variable to keep a tab of columns in the loop
@@ -197,6 +202,7 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 		annual_energy[i][j] = get('annual_energy');
 		npv[i][j] = get('npv');
 		yield[i][j] = get('kwh_per_kw');
+		type[i] = gcr;
 		
 		//Storing the appropriate results (when calculating maximum AEP) in the respective placeholders
 		if (annual_energy[i][j] > max_energy) {						
@@ -209,6 +215,7 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 			aep_nrows = get('ui_subarray1_nrows');
 			aep_row_spacing = get('ui_subarray1_row_spacing');
 			aep_total_modules = get('total_modules');
+			max_aep_yield = yield[i][j];
 		}
 				
 		//Storing the appropriate results when calculating maximum NPV in the respective placeholders
@@ -222,6 +229,7 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 			npv_nrows = get('ui_subarray1_nrows');
 			npv_row_spacing = get('ui_subarray1_row_spacing');
 			npv_total_modules = get('total_modules');
+			max_npv_yield = yield[i][j];
 		}
 				
 				
@@ -236,6 +244,7 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 			yield_nrows = get('ui_subarray1_nrows');
 			yield_row_spacing = get('ui_subarray1_row_spacing');
 			yield_total_modules = get('total_modules');
+			max_yield_npv = npv[i][j];
 		}
 	}
 	i = i + 1;		
@@ -247,63 +256,186 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 
 ///////////////////////////////////**** R E S U L T S ****///////////////////////////////////
 
+str = '<html><body><h1> Summary of Results </h1><p>Reported for case: ' + active_case() + '</p>\n';
 
 //Max AEP Results:
-outln("\n\tResults for Max Annual Energy Production:\n");
-outln("\tMax Annual Energy Production (AEP): "+ max_energy + " kWh");
-outln("\tOptimum GCR: " , optimum_gcr );
-outln("\tOptimum Tilt Angle (In Degrees): " , optimum_tilt ); 
-outln("\tSystem Size That Produces Max Annual Energy Production: "+ max_system_size + " kW");
-outln("\tNPV at max energy: $ "+ energy_npv + "kWh");
-outln("\n\tArray Layout Configuration at max AEP is: ");
-outln("\tNumber of modules along bottom: " + aep_nmodx +" modules"); 
-outln("\tNumber of modules along side of each row (note: this was set by the user in the active case): " + nmody + " module(s)");
-outln("\tNumber of rows: " + aep_nrows + " rows"); 
-outln("\tRow spacing estimate: " + aep_row_spacing + " m");
-outln("\tTotal number of modules: " + aep_total_modules + " modules\n");
+str += '<br><h5>Results for Max Annual Energy Production (AEP): </h5>';
+str += '<br>GCR: ' + optimum_gcr ;
+str += '<br>Tilt Angle (In Degrees): ' + optimum_tilt ; 
+str += '<br>Number of modules along bottom: ' + aep_nmodx + ' modules'; 
+str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
+str += '<br>Number of rows: ' + aep_nrows + ' rows'; 
+str += '<br>Row spacing estimate: ' + aep_row_spacing + ' m';
+str += '<br>Total number of modules: ' + aep_total_modules + ' modules\n';
+str += '<br><br>AEP: '+ max_energy + ' kWh';
+str += '<br>System Size: '+ max_system_size + ' kW';
+str += '<br>Net Present Value (NPV): $ '+ energy_npv;
+str += '<br>Energy Yield: '+ max_aep_yield + ' kWh/kW';
+
+
+
+
+
+//Table for AEP Results
+str += '<br><br><strong> AEP at Specified Combinations of GCR and Tilt Angles (kWH): <br></strong>';
+
+str += '<table>'; 
+str += '<table border = "1">';
+str += '<th> </th>';
+for (tilt = min_tilt  ; tilt <= max_tilt ; tilt = tilt + tilt_steps)
+{
+	str += '<th>Tilt Angle: ' + tilt + '</th>';
+}
+
+i = 0;
+for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
+	j = -1;
+	str += '<tr>';
+	str += '<th>GCR: ' + gcr + '</th>';
+	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
+		j = j + 1;
+		if (annual_energy[i][j] == max_energy) str += '<td bgcolor = #00ff00>';
+		else str += '<td>';
+		str += ' ' + round(annual_energy[i][j]) + ' '; 
+		str += '</td>';
+	}
+	i = i + 1;
+	str += '</tr>'; 
+}
+
+str += '</table>';
+str += '<table>'; 
+str += '<table>';
+str += '<tr>'; 
+str += '<td bgcolor = #00ff00>';
+str += '<font size="2">Max AEP</font>';
+str += '</tr>'; 
+str += '</table>';
+
 
 
 //Max NPV Results:
-outln("\n\tResults for Max Net Present Value:\n");
-outln("\n\tMax NPV = $ ", max_npv);
-outln("\tNPV optmized GCR : ", gcr_npv);
-outln("\tNPV optimized Tilt (in Degrees): ", tilt_npv);
-outln("\tNPV optimized System Size : "+ system_size_npv + " kW");
-outln("\tNPV optimized AEP : "+ aep_npv + " kWh"); 
-outln("\n\tArray Layout Configuration at max NPV is: ");
-outln("\tNumber of modules along bottom: " + npv_nmodx +" modules"); 
-outln("\tNumber of modules along side of each row (note: this was set by the user in the active case): " + nmody + " module(s)");
-outln("\tNumber of rows: " + npv_nrows + " rows"); 
-outln("\tRow spacing estimate: " + npv_row_spacing + " m");
-outln("\tTotal number of modules: " + npv_total_modules + " modules\n");
+str += '<br><h5>Results for Max NPV: </h5>';
+str += '<br>GCR: ' + gcr_npv;
+str +=  '<br>Tilt Angle(in Degrees): ' +  tilt_npv;
+str += '<br>Number of modules along bottom: ' + npv_nmodx +' modules'; 
+str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
+str += '<br>Number of rows: ' + npv_nrows +' rows '; 
+str += '<br>Row spacing estimate: ' + npv_row_spacing + 'm';
+str += '<br>Total number of modules: ' + npv_total_modules + ' modules';
+str += '<br><br>AEP: '+ aep_npv + ' kWh'; 
+str += '<br>System Size : '+ system_size_npv + ' kW';
+str += '<br>NPV: $ ' + max_npv;
+str += '<br>Energy Yield: '+ max_npv_yield + ' kWh/kW';
+
+
+
+//Table for NPV Results:
+str += '<br><br><strong> NPV at Specified Combinations of GCR and Tilt Angles (in $): <br></strong>';
+
+str += '<table>'; 
+str += '<table border = "1">';
+str += '<th> </th>';
+for (tilt = min_tilt  ; tilt <= max_tilt ; tilt = tilt + tilt_steps)
+{
+	str += '<th>Tilt Angle: ' + tilt + '</th>';
+}
+
+i = 0;
+for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
+	j = -1;
+	str += '<tr>';
+	str += '<th>GCR: ' + gcr + '</th>';
+	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
+		j = j + 1;
+		if (npv[i][j] == max_npv) str += '<td bgcolor = #00ff00>';
+		else str += '<td>';
+		str += ' ' + round(npv[i][j]) + ' '; 
+		str += '</td>';
+	}
+	i = i + 1;
+	str += '</tr>'; 
+}
+
+str += '</table>';
+str += '<table>'; 
+str += '<table>';
+str += '<tr>'; 
+str += '<td bgcolor = #00ff00>';
+str += '<font size="2">Max NPV</font>';
+str += '</tr>'; 
+str += '</table>';
 
 
 //Max Energy Yield Results:
-outln("\n\tResults for Max Energy Yield:\n");
-outln("\n\tMax Energy Yield: "+ max_yield + " kWh/kW");
-outln("\tMax Energy Yield Optmized GCR: ", gcr_yield);
-outln("\tOptimal Tilt That Returns Max Energy Yield (In Degrees): ", tilt_yield);
-outln("\tMax energy yield optimized system size: ", system_size_yield + " kW");
-outln("\tAEP at Max Energy Yield: "+ aep_yield + " kWh\n" ); 
-outln("\n\tArray Layout Configuration at max Energy Yield is: ");
-outln("\tNumber of modules along bottom: " + yield_nmodx +" modules"); 
-outln("\tNumber of modules along side of each row (note: this was set by the user in the active case): " + nmody + " module(s)");
-outln("\tNumber of rows: " + yield_nrows + " rows"); 
-outln("\tRow spacing estimate: " + yield_row_spacing + " m");
-outln("\tTotal number of modules: " + yield_total_modules + " modules\n");
+str += '<br><h5>Results for Max Energy Yield: </h5>';
+str += '<br>GCR: '+ gcr_yield;
+str += '<br>Energy Yield (In Degrees): ' + tilt_yield;
+str += '<br>Number of modules along bottom: ' + yield_nmodx +' modules';
+str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
+str += '<br>Number of rows: ' + yield_nrows + ' rows'; 
+str += '<br>Row spacing estimate: ' + yield_row_spacing + ' m';
+str += '<br>Total number of modules: ' + yield_total_modules + ' modules<br><br>';
+str += 'AEP: '+ aep_yield + ' kWh ' ; 
+str += '<br>System Size: '+ system_size_yield + ' kW';
+str += '<br>NPV: $ ' + max_yield_npv ; 
+str += '<br>Energy Yield: '+ max_yield + ' kWh/kW';
 
+
+//Table for Energy Yield Results:
+str += '<br><br><strong>Energy Yield at Specified Combinations of GCR and Tilt Angles (kWh/kW): <br></strong>';
+
+str += '<table>'; 
+str += '<table border = "1">';
+str += '<th> </th>';
+for (tilt = min_tilt  ; tilt <= max_tilt ; tilt = tilt + tilt_steps)
+{
+	str += '<th>Tilt Angle: ' + tilt + '</th>';
+}
+
+i = 0;
+for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
+	j = -1;
+	str += '<tr>';
+	str += '<th>GCR: ' + gcr + '</th>';
+	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
+		j = j + 1;
+		if (yield[i][j] == max_yield) str += '<td bgcolor = #00ff00>';
+		else str += '<td>';
+		str += ' ' + round(yield[i][j]) + ' '; 
+		str += '</td>';
+	}
+	i = i + 1;
+	str += '</tr>'; 
+}
+
+str += '</table>';
+str += '<table>'; 
+str += '<table>';
+str += '<tr>'; 
+str += '<td bgcolor = #00ff00>';
+str += '<font size="2">Max Energy Yield</font>';
+str += '</tr>'; 
+str += '</table>';
 
 
 
 
 ///////////////////////////////////**** P L O T T I N G ****///////////////////////////////////
 
+clr = ['#FF0000',	'#00FFFF',	'#FF00FF',	'#0000A0',	'#9ACD32',	'#800080',	'#FFFF00',	'#00FF00',	'#0000FF',	'#C0C0C0',	'#808080',	
+	   '#000000',	'#FFA500',	'#A52A2A',	'#800000',	'#008000',	'#F08080', 	'#90EE90',	'#FFB6C1',	'#FFA07A',	'#20B2AA',	'#87CEFA',	
+	   '#778899',	'#778899',	'#FFFFE0',	'#00FF00',	'#32CD32',	'#FAF0E6',	'#FF00FF',	'#800000',	'#66CDAA',	'#0000CD',	'#BA55D3',	
+	   '#9370DB',	'#3CB371',	'#7B68EE',	'#00FA9A',	'#48D1CC',	'#C71585',	'#191970',	'#F5FFFA',	'#FFE4E1',	'#FFE4B5',	'#FFDEAD',	
+	   '#000080',	'#FDF5E6',	'#808000',	'#6B8E23',	'#FFA500',	'#FF4500',	'#DA70D6',	'#EEE8AA',	'#98FB98',	'#AFEEEE',	'#DB7093',	
+	   '#FFEFD5',	'#FFDAB9',	'#CD853F',	'#FFC0CB',	'#DDA0DD',	'#B0E0E6',	'#800080',	'#663399',	'#FF0000',	'#BC8F8F',	'#4169E1',	
+	   '#8B4513',	'#FA8072',	'#F4A460',	'#2E8B57',	'#FFF5EE',	'#A0522D',	'#C0C0C0',	'#87CEEB',	'#6A5ACD',	'#708090',	'#708090',	
+	   '#FFFAFA',	'#00FF7F',	'#4682B4',	'#D2B48C',	'#008080',	'#D8BFD8',	'#FF6347',	'#40E0D0',	'#EE82EE',	'#F5DEB3', 	'#F5F5F5',	
+	   '#FFFF00',	'#ADD8E6'];
 
 //Plotting the AEP as a function of tilt angle (for various GCRs):
 newplot();
 for ( count = 0; count <= (#annual_energy - 1) ; count = count + 1) {
-	type = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8, 0.9, 1.0];
-	clr = ['red', 'green', 'blue', 'orange', 'yellow', 'brown', 'black', 'purple', 'pink', 'grey'];
 	plot(x, annual_energy[count],{series = type[count], color = clr[count], size = 3});
 	axis('x1', {'label' = "Tilt Angle "});
 	axis('y1', {'label' = "Annual Energy Production  (kWh)"});
@@ -314,8 +446,6 @@ for ( count = 0; count <= (#annual_energy - 1) ; count = count + 1) {
 //Plotting the NPV as a function of tilt angle (for various GCRs):
 newplot();
 for ( k = 0; k <= (#annual_energy - 1) ; k = k + 1) {
-	type = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8, 0.9, 1.0];
-	clr = ['red', 'green', 'blue', 'orange', 'yellow', 'brown', 'black', 'purple', 'pink', 'grey'];
 	plot(x, npv[k],{series = type[k], color = clr[k], size = 3});
 	axis('x1', {'label' = "Tilt Angle"});
 	axis('y1', {'label' = "Net Present Value  ($)"});
@@ -326,8 +456,6 @@ for ( k = 0; k <= (#annual_energy - 1) ; k = k + 1) {
 //Plotting the energy yield as a function of tilt angle (for various GCRs):
 newplot();
 for ( l = 0; l <= (#annual_energy - 1) ; l = l + 1) {
-	type = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8, 0.9, 1.0];
-	clr = ['red', 'green', 'blue', 'orange', 'yellow', 'brown', 'black', 'purple', 'pink', 'grey'];
 	plot(x, yield[l],{series = type[l], color = clr[l], size = 3});   //This is the energy yield of the system
 	axis('x1', {'label' = "Tilt Angle "});
 	axis('y1', {'label' = "Energy Yield  (kWh/kW)"});
@@ -335,7 +463,11 @@ for ( l = 0; l <= (#annual_energy - 1) ; l = l + 1) {
 }
 
 
+str += '</body></html>';
+html_dialog(str, 'Optimal Array Layout', [1000,800]);
 
 ///////////////////////////////////**** END OF SCRIPT****///////////////////////////////////
+
+
 
 
