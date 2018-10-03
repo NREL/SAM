@@ -6,8 +6,7 @@ deploy/* linguist-vendored
 
 # ...Unless the name matches the following
 # overriding patterns
-#deploy/runtime/defaults/*.txt text eol=lf
-#deploy/runtime/ui/*.txt text eol=lf
+deploy/runtime/defaults/*.txt text eol=lf
 
 # Definitively text files 
 *.txt text
