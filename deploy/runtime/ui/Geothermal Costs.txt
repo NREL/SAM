@@ -7384,7 +7384,7 @@ equations{ 'system_use_lifetime_output' } = define() {
 equations{ 'system_recapitalization_cost' } = define() {
 	return ${geotherm.cost.recap}; };
 
-5256
+5279
 
 function reset_geothermal_plant_cost()
 {
@@ -7502,6 +7502,7 @@ on_change{"geotherm.cost.plant_auto_estimate"} = define()
 				enable("geotherm.cost.plant_per_kW", false);
 				
 			}
+	ssc_free(geothermal);
 	}
 	else {
 		enable("geotherm.cost.plant_per_kW", true);
