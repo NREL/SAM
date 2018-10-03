@@ -29,9 +29,9 @@ This macro helps the user determine the optimal array size, Ground Coverage Rati
 length = macro.length ; 					//Length of field (m)
 width = macro.width;						//Width of fiel (m)
 setback = macro.setback;					//Distance from edge of land that is off limits for placement of modules (m)
-	effective_length = length - setback;		//(Calculated Value) Actual length of the field that is available for placement of modules (m)
-	effective_width = width - setback;			//(Calculated Value) Actual width of the field that is available for placement of modules	(m)
-	area = effective_length * effective_width; 	//(Calculated Value) Total effective land area (in m^2)
+effective_length = length - setback;		//(Calculated Value) Actual length of the field that is available for placement of modules (m)
+effective_width = width - setback;			//(Calculated Value) Actual width of the field that is available for placement of modules	(m)
+area = effective_length * effective_width; 	//(Calculated Value) Total effective land area (in m^2)
 max_gcr = macro.max_gcr;					//Allow the user to input max GCR
 min_gcr = macro.min_gcr;					//Allow the user to input min GCR
 gcr_steps = macro.gcr_steps;				//Allow the  user to input the increments of GCR they want to calculate over

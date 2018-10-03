@@ -1,0 +1,97 @@
+/*@
+This macro calculates the Geothermal Plant's optimum plant efficiency that minimizes its Levelized Cost of Electricity (LCOE). 
+
+<br><br>Note: This optimizer only works for the binary plant type. 
+@*/
+
+if(get('conversion_type') == 1) {
+msgbox('You selected the Flash Plant type in the active case. This optimizer only works for the binary plant type. Please change the plant type in the active case and run this macro again.');
+exit;
+}
+
+set('plant_efficiency_input', 100);
+set('geotherm.cost.plant_auto_estimate', true);
+simulate();
+
+count = 0;
+min_lcoe = 9999999;
+optimal_i = null; 
+flag = false;
+flag_nested = false;
+k = null;
+c = 0;
+for(i = 100 ; i >= 0 ; i = i - 10) {
+	outln("i = " + i);
+	set('plant_efficiency_input', i);
+	set('geotherm.cost.plant_auto_estimate', true);
+	outln("Efficiency = " + i);
+	simulate();
+	outln("Baseline Cost = " + get('geotherm.cost.plant_per_kW'));
+	set('geotherm.cost.plant_auto_estimate', false);
+	lcoe[count] = get('lcoe_real');
+	outln('lcoe = ' + lcoe[count]);
+
+
+	//If minimum lcoe has been reached, flag is turned 'on' to step into the nested for loop
+	if((count > 0)  &&  (lcoe[count - 1] < lcoe[count] )) {
+		outln("nested lcoe = " + lcoe[count] + "\n");
+		//flag = true;
+		i = i + 10;
+	
+		for( k = i + 9 ; k >= i ; k = k - 1) {
+		set('plant_efficiency_input', k);
+		set('geotherm.cost.plant_auto_estimate', true);
+		outln("Efficiency = " + k);
+		simulate();
+		outln("Baseline Cost = " + get('geotherm.cost.plant_per_kW'));
+		set('geotherm.cost.plant_auto_estimate', false);
+		lcoe[c] = get('lcoe_real');
+		outln('lcoe = ' + lcoe[c]);
+		if((c > 0) && (lcoe[c - 1] < lcoe[c] )) {
+			outln("condition lcoe = " + lcoe[c] + "\n");
+			//flag_nested = true;
+			flag = true;
+			min_lcoe = lcoe[c-1] ;
+			optimal_i = k;
+			if (flag == true) {
+			k = count -6;
+			}
+		}
+		c = c + 1;
+	}
+		
+	}
+	/*
+	if (min_lcoe >= lcoe[count]) {
+		min_lcoe = lcoe[count] ;
+		optimal_i = i;
+	}
+	*/
+	
+
+
+	if (flag == true || lcoe[count] == 0) {
+	i = -1;
+	}
+	count += 1;
+	
+}
+
+outln("min_lcoe: " + min_lcoe);
+outln("optimal efficiency = " + optimal_i + " %");
+set('plant_efficiency_input', optimal_i);
+msgbox('Plant has the lowest LCOE of $' + min_lcoe/100 + '/kWh at an overall efficiency of ' + optimal_i + '%');
+
+
+
+
+
+
+
+
+/*
+str = '<html><body><h3> Result </h3><p>Reported for case: ' + active_case() + '</p>\n';
+str += 'Plant has the lowest LCOE of $' + min_lcoe/100 + '/kWh at an overall efficiency of ' + optimal_i + '%'; 
+str += '</body></html>';
+html_dialog(str, 'Optimal Plant Efficiency', [500,200]);
+*/

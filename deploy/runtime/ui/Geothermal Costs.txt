@@ -3134,10 +3134,10 @@ Name
 geotherm.cost.plant_auto_estimate
 X
 3
-27
+30
 Y
 3
-579
+582
 Width
 3
 314
@@ -7384,7 +7384,8 @@ equations{ 'system_use_lifetime_output' } = define() {
 equations{ 'system_recapitalization_cost' } = define() {
 	return ${geotherm.cost.recap}; };
 
-5613
+5256
+
 function reset_geothermal_plant_cost()
 {
 	// This should never get called for flash plants - the checkbox that calls this code is disabled for flash plants
@@ -7404,6 +7405,7 @@ function reset_geothermal_plant_cost()
 	}
 }
 
+
 function update_cost_input_control()
 {
 	enable("geotherm.cost.plant_per_kW", value("geotherm.cost.plant_auto_estimate") == 0 );
@@ -7412,7 +7414,7 @@ function update_cost_input_control()
 
 on_change{"geotherm.cost.plant_auto_estimate"} = define()
 {
-	//update_cost_input_control();
+	update_cost_input_control();
 	//reset_geothermal_plant_cost();
 	if (value("geotherm.cost.plant_auto_estimate") != 0)
 	{
@@ -7431,7 +7433,6 @@ on_change{"geotherm.cost.plant_auto_estimate"} = define()
 				ssc_var(cost,'design_temp', design_temp);
 				ssc_var(cost,'eff_secondlaw', second_law_eff);
 				ssc_var(cost, "conversion_type", conversion_type);
-				
 				logmsg('conversion_type: ' + to_string(conversion_type));
 				logmsg('gross_output: ' + to_string(gross_output));
 				logmsg('design_temp: ' + to_string(design_temp));
@@ -7514,15 +7515,5 @@ on_load{'Geothermal Costs'} = define() {
 		value("geotherm.cost.plant_auto_estimate", 1 );
 		enable("geotherm.cost.plant_per_kW", false);
 	}
-	//else // this is a flash plant
-	//{
-	//	value("geotherm.cost.plant_auto_estimate_last_setting", value("geotherm.cost.plant_auto_estimate")); // save users choice for binary
-		
-	//}
-	
-	// if this is a binary plant, enable; otherwise, disable
-	//enable("geotherm.cost.plant_auto_estimate", (${conversion_type} == 0) );
-
-	//update_cost_input_control();
 };
 
