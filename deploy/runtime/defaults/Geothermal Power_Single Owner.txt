@@ -1,5 +1,5 @@
 1
-518
+517
 CT
 1
 1
@@ -2515,12 +2515,6 @@ om_production
 1
 3.000000
 om_production_escal
-1
-1
-1
-1
-0.000000
-optimize_geotherm_plant
 1
 1
 1
