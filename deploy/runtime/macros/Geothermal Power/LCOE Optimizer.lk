@@ -27,7 +27,6 @@ for(i = 100 ; i >= 0 ; i = i - 10) {
 	outln("Efficiency = " + i);
 	simulate();
 	outln("Baseline Cost = " + get('geotherm.cost.plant_per_kW'));
-	set('geotherm.cost.plant_auto_estimate', false);
 	lcoe[count] = get('lcoe_real');
 	outln('lcoe = ' + lcoe[count]);
 
@@ -40,11 +39,9 @@ for(i = 100 ; i >= 0 ; i = i - 10) {
 	
 		for( k = i + 9 ; k >= i ; k = k - 1) {
 		set('plant_efficiency_input', k);
-		set('geotherm.cost.plant_auto_estimate', true);
 		outln("Efficiency = " + k);
 		simulate();
 		outln("Baseline Cost = " + get('geotherm.cost.plant_per_kW'));
-		set('geotherm.cost.plant_auto_estimate', false);
 		lcoe[c] = get('lcoe_real');
 		outln('lcoe = ' + lcoe[c]);
 		if((c > 0) && (lcoe[c - 1] < lcoe[c] )) {
