@@ -1,5 +1,5 @@
 1
-395
+397
 LeadAcid_q10
 1
 1
@@ -1691,6 +1691,12 @@ fixed_plant_input
 1
 1
 0.000000
+generic_lifetime_simulation
+1
+1
+1
+1
+0.000000
 genericsys.cost.contingency
 1
 1
@@ -2745,6 +2751,12 @@ system_capacity
 1
 1
 1.709000
+system_degradation
+1
+2
+1
+1
+0.000000
 system_use_lifetime_output
 1
 1

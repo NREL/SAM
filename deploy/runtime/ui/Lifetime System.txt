@@ -249,7 +249,7 @@ Degradation
 Default
 
 0
-1451
+1448
 on_load{'Lifetime System'} = define()
 {
 	check_tech();
@@ -272,7 +272,7 @@ function check_tech()
 	}
 	else if (technology() == 'Generic System')
 	{
-		message = 'In this mode, one year of degradation of the battery is modeled, which may not accurately represent battery performance in subsequent years. To consider multiyear degradation, including battery replacement costs, please select "PV simulation over analysis period".';
+		message = 'In this mode, one year of degradation of the battery is modeled, which may not accurately represent battery performance in subsequent years. To consider multiyear degradation, including battery replacement costs, please select "Simulation over analysis period".';
 		show_battery_message = true;
 	}
 	

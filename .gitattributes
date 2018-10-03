@@ -6,6 +6,7 @@ deploy/* linguist-vendored
 
 # ...Unless the name matches the following
 # overriding patterns
+deploy/runtime/defaults/*.txt text eol=lf
 
 # Definitively text files 
 *.txt text
@@ -13,6 +14,7 @@ deploy/* linguist-vendored
 *.cpp text
 *.h text
 *.lk text
+
 # Ensure those won't be messed up with
 *.jpg binary
 *.data binary

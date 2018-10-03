@@ -2961,7 +2961,7 @@ Total Installed Costs
 0.000000
 Numeric
 
-2142
+2205
 equations{ 'nameplate_capacity' } = define() {
 	return ${system_capacity}; };
 
@@ -3019,10 +3019,11 @@ equations{ 'genericsys.cost.plant_scaled' } = define() {
 
 
 equations { 'system_use_lifetime_output' } = define () {
-	return 0;};
+		return ${generic_lifetime_simulation};
+	};
 equations { 'system_use_recapitalization' } = define () {
-	return 0;};
-
+		return ${generic_lifetime_simulation};
+	};
 
 152
 //on_load{"Generic Systems Costs"}=define()
