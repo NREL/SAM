@@ -1,7 +1,7 @@
 Geothermal Plant and Equipment
 909
 699
-42
+43
 CheckBox
 
 1
@@ -226,7 +226,7 @@ Y
 87
 Width
 3
-239
+185
 Height
 3
 21
@@ -965,6 +965,50 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+12
+Name
+5
+22
+geotherm_flash_message
+X
+3
+252
+Y
+3
+87
+Width
+3
+267
+Height
+3
+24
+Caption
+5
+0
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -2675,36 +2719,42 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-936
+1092
 function update_controls()
 {
+	flash_message();
+	show('geotherm_flash_message', ${conversion_type});
+
 	// enable/disable all the appropriate controls on the page according to
 	// the user's selections
-	enable("decline_type", (${resource_type}!=0) );
-	enable("nameplate", (${analysis_type}==0) );
-	enable("num_wells", (${analysis_type}==1) );
-	enable("conversion_subtype", (${conversion_type}!=0) );
-	enable("specified_pump_work_amount", (${specify_pump_work}==1) );
+	enable('plant_efficiency_input', !${conversion_type});
+	enable("decline_type", ${resource_type} );
+	enable("nameplate", !${analysis_type} );
+	enable("num_wells", ${analysis_type} );
+	enable("conversion_subtype", ${conversion_type});
+	enable("specified_pump_work_amount", ${specify_pump_work} );
 
 	// if this is a hydrothermal plant, set this to 'specify decline rate'
 	if (${resource_type}==0)
 		value("decline_type", 0);
 }
 
-
+function flash_message()
+{
+	message = '';
+	
+	if (${conversion_type})
+		message = 'Flash plant efficiency calculated internally';
+	
+	property( 'geotherm_flash_message','Caption',message );
+}
 
 on_load{"Geothermal Plant and Equipment"}=define() {
-	update_controls();};	
+	update_controls();
+};	
 
 on_change{"conversion_type"} = define() {
 	update_controls();
-	if (value('conversion_type') == 1) {
-		enable('plant_efficiency_input', false);
-	}
-	else
-	{
-	enable('plant_efficiency_input', true);
-	}
 };
 
 on_change{'analysis_type'} = define() {
