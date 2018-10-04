@@ -5,7 +5,7 @@ This macro calculates the Geothermal Plant's optimum plant efficiency that minim
 @*/
 
 if(get('conversion_type') == 1) {
-msgbox('You selected the Flash Plant type in the active case. This optimizer only works for the binary plant type. Please change the plant type in the active case and run this macro again.');
+	msgbox('You selected the Flash Plant type in the active case. This optimizer only works for the binary plant type. Please change the plant type in the active case and run this macro again.');
 exit;
 }
 
@@ -23,7 +23,6 @@ c = 0;
 for(i = 100 ; i >= 0 ; i = i - 10) {
 	outln("i = " + i);
 	set('plant_efficiency_input', i);
-	set('geotherm.cost.plant_auto_estimate', true);
 	outln("Efficiency = " + i);
 	simulate();
 	outln("Baseline Cost = " + get('geotherm.cost.plant_per_kW'));
@@ -49,7 +48,7 @@ for(i = 100 ; i >= 0 ; i = i - 10) {
 			//flag_nested = true;
 			flag = true;
 			min_lcoe = lcoe[c-1] ;
-			optimal_i = k;
+			optimal_i = k+1;
 			if (flag == true) {
 			k = count -6;
 			}
