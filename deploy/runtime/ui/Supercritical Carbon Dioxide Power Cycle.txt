@@ -1740,7 +1740,7 @@ TabOrder
 3
 4294967295
 
-45
+46
 P_high_limit
 3
 1
@@ -1839,6 +1839,20 @@ sCO2 Power Cycle
 1
 0.000000
  
+_dd_sco2_cycle_config
+3
+1
+Cycle Configuration
+ 
+sCO2 Power Cycle
+0
+0
+1
+1
+1
+1
+0.000000
+Default
 _sco2_P_high_limit
 3
 1
@@ -1852,7 +1866,7 @@ sCO2 Power Cycle
 1
 1
 0.000000
- 
+Default
 _sco2_P_ref
 3
 1
@@ -2394,7 +2408,7 @@ equations{ 'sco2_cycle_config' } = define() {
    	];
 };
 
-14923
+15141
 on_load{"Supercritical Carbon Dioxide Power Cycle"} = define() {
 	
 	if( ${is_sco2_msg_disabled} == 0.0 )
@@ -2434,6 +2448,10 @@ on_change{'btn_sco2_design_point'} = define() {
 
 on_change{'btn_sco2_des_and_udpc'} = define() {
 	sco2_design_point(1);
+};
+
+on_change{'dd_sco2_cycle_config'} = define() {
+	compare_des_pars();
 };
 
 on_change{"T_htf_hot_des"} = define() {
@@ -2676,6 +2694,10 @@ function compare_des_pars () {
 		//property("_sco2_P_high_limit", "BackColour", [192, 192, 192]);
 		enable("_sco2_P_high_limit", false);
 	}
+	if(${dd_sco2_cycle_config} != ${_dd_sco2_cycle_config})
+	{
+		is_des_par_diff = true;
+	}
 	value("is_sco2_des_par_diff", is_des_par_diff);
 	update_radio_buttons();
 }
@@ -2791,6 +2813,7 @@ function sco2_design_point(is_gen_udpc) {
 	
 	value("is_sco2_designed", 1.0);
 	value("is_sco2_des_par_diff", 1.0);
+	value("_dd_sco2_cycle_config",${dd_sco2_cycle_config});
 	value("_sco2_T_htf_hot_des", ${T_htf_hot_des});
 	value('_sco2_deltaT_PHX', ${deltaT_PHX});
 	value("_sco2_T_amb_des", ${sco2_T_amb_des});
