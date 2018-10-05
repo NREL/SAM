@@ -1,5 +1,5 @@
 1
-348
+347
 ac_nameplate
 1
 1
@@ -544,8 +544,8 @@ federal_tax_rate
 file_name
 1
 4
-85
-F:\SAMDEV\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+87
+C:\Projects\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
 gcr
 1
 1
@@ -1752,8 +1752,8 @@ show_tax_credits
 solar_data_file_name
 1
 4
-85
-F:\SAMDEV\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+87
+C:\Projects\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
 solar_data_source
 1
 4
@@ -1767,8 +1767,8 @@ phoenix_az_33.448377_-112.074037_psmv3_60_tmy
 solar_resource_file
 1
 4
-85
-F:\SAMDEV\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+87
+C:\Projects\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
 state
 1
 4
@@ -1797,12 +1797,6 @@ system_capacity
 1
 1
 199.751999
-system_use_lifetime_output
-1
-1
-1
-1
-0.000000
 system_use_recapitalization
 1
 1
