@@ -2581,7 +2581,7 @@ TabOrder
 3
 20
 
-27
+26
 battery_energy
 3
 1
@@ -2890,20 +2890,6 @@ Direct Capital Costs
 1
 0.000000
 Numeric
-system_use_lifetime_output
-3
-1
- 
- 
-Direct Capital Costs
-0
-8
-1
-1
-1
-1
-0.000000
-Default
 system_use_recapitalization
 3
 1
@@ -2961,7 +2947,7 @@ Total Installed Costs
 0.000000
 Numeric
 
-2205
+2102
 equations{ 'nameplate_capacity' } = define() {
 	return ${system_capacity}; };
 
@@ -3018,11 +3004,8 @@ equations{ 'genericsys.cost.plant_scaled' } = define() {
 };
 
 
-equations { 'system_use_lifetime_output' } = define () {
-		return ${generic_lifetime_simulation};
-	};
 equations { 'system_use_recapitalization' } = define () {
-		return ${generic_lifetime_simulation};
+		return ${system_use_lifetime_output};
 	};
 
 152
