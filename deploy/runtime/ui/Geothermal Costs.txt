@@ -7274,7 +7274,7 @@ Geothermal Costs
 0.000000
 Numeric
 
-10935
+14038
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -7463,6 +7463,58 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 	if (${geotherm.cost.plant_auto_estimate})
 	{
 		geothermal = ssc_module_create_from_case('geothermal');	
+		ssc_var( geothermal, 'system_capacity', ${nameplate} );
+
+		ssc_var( geothermal, 'resource_type', ${resource_type} );   // INTEGER
+		ssc_var( geothermal, 'resource_temp', ${resource_temp} );
+		ssc_var( geothermal, 'resource_depth', ${resource_depth} );
+													
+		// Other inputs							    
+		ssc_var( geothermal, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER
+		ssc_var( geothermal, 'model_choice', ${model_choice} );    // INTEGER
+													
+		// geothermal plant and equipment		    
+		ssc_var( geothermal, 'nameplate', ${nameplate} );
+		ssc_var( geothermal, 'analysis_type', ${analysis_type} );   //INTEGER
+		ssc_var( geothermal, 'num_wells', ${num_wells} );
+		ssc_var( geothermal, 'conversion_type', ${conversion_type} ); // INTEGER
+		ssc_var( geothermal, 'plant_efficiency_input', ${plant_efficiency_input} );
+		ssc_var( geothermal, 'conversion_subtype', ${conversion_subtype} ); // INTEGER
+		ssc_var( geothermal, 'decline_type', ${decline_type} );       // INTEGER
+		ssc_var( geothermal, 'temp_decline_rate', ${temp_decline_rate} );
+		ssc_var( geothermal, 'temp_decline_max', ${temp_decline_max} );
+		ssc_var( geothermal, 'wet_bulb_temp', ${wet_bulb_temp} );
+		ssc_var( geothermal, 'ambient_pressure', ${ambient_pressure} );
+		ssc_var( geothermal, 'well_flow_rate', ${well_flow_rate} );
+		ssc_var( geothermal, 'pump_efficiency', ${pump_efficiency} );
+		ssc_var( geothermal, 'delta_pressure_equip', ${delta_pressure_equip} );
+		ssc_var( geothermal, 'excess_pressure_pump', ${excess_pressure_pump} );
+		ssc_var( geothermal, 'well_diameter', ${well_diameter} );
+		ssc_var( geothermal, 'casing_size', ${casing_size} );
+		ssc_var( geothermal, 'inj_well_diam', ${inj_well_diam} );
+		ssc_var( geothermal, 'design_temp', ${design_temp} );
+		ssc_var( geothermal, 'specify_pump_work', ${specify_pump_work} ); // INTEGER
+		ssc_var( geothermal, 'specified_pump_work_amount', ${specified_pump_work_amount} );
+
+		// detailed geothermal inputs
+		ssc_var( geothermal, 'rock_thermal_conductivity', ${rock_thermal_conductivity} );
+		ssc_var( geothermal, 'rock_specific_heat', ${rock_specific_heat} );
+		ssc_var( geothermal, 'rock_density', ${rock_density} );
+		ssc_var( geothermal, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER
+		ssc_var( geothermal, 'reservoir_pressure_change', ${reservoir_pressure_change} );
+		ssc_var( geothermal, 'reservoir_width', ${reservoir_width} );
+		ssc_var( geothermal, 'reservoir_height', ${reservoir_height} );
+		ssc_var( geothermal, 'reservoir_permeability', ${reservoir_permeability} );		
+		ssc_var( geothermal, 'inj_prod_well_distance', ${inj_prod_well_distance} );		
+		ssc_var( geothermal, 'subsurface_water_loss', ${subsurface_water_loss} ); 		
+		ssc_var( geothermal, 'fracture_aperature', ${fracture_aperature} );
+		ssc_var( geothermal, 'fracture_width', ${fracture_width} );
+		ssc_var( geothermal, 'num_fractures', ${num_fractures} ); // INTEGER
+		ssc_var( geothermal, 'fracture_angle', ${fracture_angle} );
+
+		// temp input for testing
+		ssc_var( geothermal, 'hr_pl_nlev', ${hr_pl_nlev} ); // INTEGER
+		
 		if (ssc_exec(geothermal, 'geothermal') == 0) 
 		{
 			cost = ssc_create('geothermal_cost');

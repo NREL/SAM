@@ -4,6 +4,7 @@ This macro calculates the Geothermal Plant's optimum plant efficiency that minim
 <br><br>Note: This optimizer only works for the binary plant type. 
 @*/
 
+
 if(get('conversion_type') == 1) {
 	msgbox('You selected the Flash Plant type in the active case. This optimizer only works for the binary plant type. Please change the plant type in the active case and run this macro again.');
 exit;
@@ -13,49 +14,66 @@ set('plant_efficiency_input', 100);
 set('geotherm.cost.plant_auto_estimate', true);
 simulate();
 
+// Initialize variables
 count = 0;
 min_lcoe = 9999999;
 optimal_i = null; 
+optimal_cost_at_min_lcoe = null;
 flag = false;
 flag_nested = false;
 k = null;
 c = 0;
-for(i = 100 ; i >= 0 ; i = i - 10) {
-	outln("i = " + i);
-	set('plant_efficiency_input', i);
-	outln("Efficiency = " + i);
-	simulate();
-	outln("Baseline Cost = " + get('geotherm.cost.plant_per_kW'));
-	lcoe[count] = get('lcoe_real');
-	outln('lcoe = ' + lcoe[count]);
 
+// Top loop
+for(i = 100 ; i >= 0 ; i = i - 10) 
+{
+	set('plant_efficiency_input', i);
+	simulate();
+	
+	lcoe[count] = get('lcoe_real');
+	system_cost[count] = get('geotherm.cost.plant_per_kW');
+	
+	outln("Efficiency = " + i);
+	outln('lcoe = ' + lcoe[count]);
+	outln('system_cost = ' + system_cost[count]);
+	outln('');
 
 	//If minimum lcoe has been reached, flag is turned 'on' to step into the nested for loop
-	if((count > 0)  &&  (lcoe[count - 1] < lcoe[count] )) {
+	if((count > 0)  &&  (lcoe[count - 1] < lcoe[count] )) 
+	{
 		outln("nested lcoe = " + lcoe[count] + "\n");
 		//flag = true;
 		i = i + 10;
 	
-		for( k = i + 9 ; k >= i ; k = k - 1) {
-		set('plant_efficiency_input', k);
-		outln("Efficiency = " + k);
-		simulate();
-		outln("Baseline Cost = " + get('geotherm.cost.plant_per_kW'));
-		lcoe[c] = get('lcoe_real');
-		outln('lcoe = ' + lcoe[c]);
-		if((c > 0) && (lcoe[c - 1] < lcoe[c] )) {
-			outln("condition lcoe = " + lcoe[c] + "\n");
-			//flag_nested = true;
-			flag = true;
-			min_lcoe = lcoe[c-1] ;
-			optimal_i = k+1;
-			if (flag == true) {
-			k = count -6;
-			}
-		}
-		c = c + 1;
-	}
+		for( k = i + 9 ; k >= i ; k = k - 1) 
+		{
+			set('plant_efficiency_input', k);
+			simulate();
+			
+			lcoe[c] = get('lcoe_real');
+			system_cost[c] = get('geotherm.cost.plant_per_kW');
+			
+			outln("Efficiency = " + k);
+			outln('lcoe = ' + lcoe[c]);
+			outln('system_cost = ' + system_cost[c]);
+			outln('');
 		
+			if((c > 0) && (lcoe[c - 1] < lcoe[c] )) 
+			{
+				outln("condition lcoe = " + lcoe[c] + "\n");
+				//flag_nested = true;
+				flag = true;
+				min_lcoe = lcoe[c-1] ;
+				optimal_i = k+1;
+				optimal_cost_at_min_lcoe = system_cost[c-1];
+				
+				if (flag == true) 
+				{
+					k = count -6;
+				}
+			}
+			c = c + 1;
+		}
 	}
 	/*
 	if (min_lcoe >= lcoe[count]) {
@@ -73,13 +91,14 @@ for(i = 100 ; i >= 0 ; i = i - 10) {
 	
 }
 
+outln("System cost at minimum: $" + to_string(optimal_cost_at_min_lcoe));
 outln("min_lcoe: " + min_lcoe);
 outln("optimal efficiency = " + optimal_i + " %");
-set('plant_efficiency_input', optimal_i);
 msgbox('Plant has the lowest LCOE of $' + min_lcoe/100 + '/kWh at an overall efficiency of ' + optimal_i + '%');
 
 
-
+set('plant_efficiency_input', optimal_i);
+simulate();
 
 
 
