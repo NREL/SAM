@@ -327,7 +327,7 @@ int Library::GetFieldIndex( const wxString &name )
 int Library::FindEntry( const wxString &name )
 {
 	for( size_t i=m_startRow;i<m_csv.NumRows();i++ )
-		if ( m_csv(i,0) == name )
+		if (name.IsSameAs(m_csv(i, 0), false))
 			return (int)(i-m_startRow);
 
 	return -1;

@@ -1,7 +1,7 @@
 Generic System Costs
 792
-449
-46
+489
+51
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 780
 Height
 3
-149
+179
 Caption
 5
 20
@@ -42,7 +42,7 @@ X
 6
 Y
 3
-162
+183
 Width
 3
 780
@@ -69,7 +69,7 @@ X
 6
 Y
 3
-357
+387
 Width
 3
 780
@@ -93,10 +93,10 @@ Name
 Label111
 X
 3
-506
+510
 Y
 3
-177
+204
 Width
 3
 104
@@ -138,10 +138,10 @@ Name
 Label11129
 X
 3
-378
+381
 Y
 3
-177
+204
 Width
 3
 104
@@ -183,10 +183,10 @@ Name
 Label11130
 X
 3
-243
+246
 Y
 3
-177
+204
 Width
 3
 104
@@ -218,6 +218,184 @@ AlignRight
 AlignTop
 2
 0
+Numeric
+
+1
+16
+Name
+5
+14
+battery_energy
+X
+3
+174
+Y
+3
+87
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+3
+Numeric
+
+1
+16
+Name
+5
+15
+battery_per_kWh
+X
+3
+474
+Y
+3
+87
+Width
+3
+76
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+Numeric
+
+1
+16
+Name
+5
+13
+battery_total
+X
+3
+642
+Y
+3
+84
+Width
+3
+136
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+12
 Numeric
 
 1
@@ -287,10 +465,10 @@ Name
 genericsys.cost.contingency
 X
 3
-639
+642
 Y
 3
-84
+111
 Width
 3
 136
@@ -347,10 +525,10 @@ Name
 genericsys.cost.contingency_percent
 X
 3
-363
+366
 Y
 3
-84
+111
 Width
 3
 100
@@ -406,10 +584,10 @@ Name
 genericsys.cost.epc.fixed
 X
 3
-510
+513
 Y
 3
-201
+228
 Width
 3
 100
@@ -466,10 +644,10 @@ Name
 genericsys.cost.epc.nonfixed
 X
 3
-381
+384
 Y
 3
-198
+225
 Width
 3
 100
@@ -525,10 +703,10 @@ Name
 genericsys.cost.epc.percent
 X
 3
-246
+249
 Y
 3
-201
+228
 Width
 3
 100
@@ -585,10 +763,10 @@ Name
 genericsys.cost.epc.total
 X
 3
-639
+642
 Y
 3
-201
+228
 Width
 3
 136
@@ -645,10 +823,10 @@ Name
 genericsys.cost.installed_per_capacity
 X
 3
-642
+645
 Y
 3
-408
+435
 Width
 3
 133
@@ -765,7 +943,7 @@ Name
 genericsys.cost.plant
 X
 3
-639
+642
 Y
 3
 33
@@ -825,7 +1003,7 @@ Name
 genericsys.cost.plant_scaled
 X
 3
-639
+642
 Y
 3
 60
@@ -885,10 +1063,10 @@ Name
 genericsys.cost.plm.fixed
 X
 3
-510
+513
 Y
 3
-225
+252
 Width
 3
 100
@@ -945,10 +1123,10 @@ Name
 genericsys.cost.plm.nonfixed
 X
 3
-381
+384
 Y
 3
-222
+249
 Width
 3
 100
@@ -1004,10 +1182,10 @@ Name
 genericsys.cost.plm.percent
 X
 3
-246
+249
 Y
 3
-225
+252
 Width
 3
 100
@@ -1064,10 +1242,10 @@ Name
 genericsys.cost.plm.total
 X
 3
-639
+642
 Y
 3
-225
+252
 Width
 3
 136
@@ -1124,10 +1302,10 @@ Name
 genericsys.cost.sales_tax.percent
 X
 3
-279
+282
 Y
 3
-270
+297
 Width
 3
 100
@@ -1183,10 +1361,10 @@ Name
 genericsys.cost.sales_tax.total
 X
 3
-639
+642
 Y
 3
-270
+297
 Width
 3
 136
@@ -1243,10 +1421,10 @@ Name
 genericsys.cost.sales_tax.value
 X
 3
-492
+495
 Y
 3
-270
+297
 Width
 3
 100
@@ -1302,10 +1480,10 @@ Name
 lblFinancingCost
 X
 3
-27
+30
 Y
 3
-390
+417
 Width
 3
 302
@@ -1406,10 +1584,10 @@ Name
 object 21
 X
 3
-36
+39
 Y
 3
-255
+282
 Width
 3
 573
@@ -1442,10 +1620,10 @@ Name
 object 2141
 X
 3
-639
+642
 Y
 3
-297
+324
 Width
 3
 136
@@ -1477,10 +1655,10 @@ Name
 object 2142
 X
 3
-639
+642
 Y
 3
-108
+135
 Width
 3
 136
@@ -1512,10 +1690,10 @@ Name
 object 7
 X
 3
-465
+468
 Y
 3
-126
+153
 Width
 3
 171
@@ -1555,6 +1733,51 @@ Name
 5
 10
 object 721
+X
+3
+321
+Y
+3
+87
+Width
+3
+18
+Height
+3
+21
+Caption
+5
+1
+×
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+12
+object 72114
 X
 3
 321
@@ -1602,10 +1825,10 @@ Name
 object 723
 X
 3
-42
+45
 Y
 3
-225
+252
 Width
 3
 198
@@ -1647,10 +1870,10 @@ Name
 object 724
 X
 3
-42
+45
 Y
 3
-201
+228
 Width
 3
 198
@@ -1692,10 +1915,10 @@ Name
 object 732
 X
 3
-465
+468
 Y
 3
-384
+411
 Width
 3
 171
@@ -1737,10 +1960,10 @@ Name
 object 733
 X
 3
-465
+468
 Y
 3
-309
+336
 Width
 3
 171
@@ -1782,10 +2005,10 @@ Name
 object 735
 X
 3
-615
+618
 Y
 3
-225
+252
 Width
 3
 18
@@ -1827,10 +2050,10 @@ Name
 object 736
 X
 3
-615
+618
 Y
 3
-201
+228
 Width
 3
 18
@@ -1872,10 +2095,10 @@ Name
 object 737
 X
 3
-489
+492
 Y
 3
-222
+249
 Width
 3
 18
@@ -1917,10 +2140,10 @@ Name
 object 738
 X
 3
-489
+492
 Y
 3
-201
+228
 Width
 3
 18
@@ -1962,10 +2185,10 @@ Name
 object 739
 X
 3
-354
+357
 Y
 3
-225
+252
 Width
 3
 18
@@ -2007,10 +2230,10 @@ Name
 object 740
 X
 3
-354
+357
 Y
 3
-201
+228
 Width
 3
 18
@@ -2052,7 +2275,52 @@ Name
 object 743
 X
 3
-609
+615
+Y
+3
+87
+Width
+3
+18
+Height
+3
+21
+Caption
+5
+1
+=
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+12
+object 74312
+X
+3
+615
 Y
 3
 60
@@ -2097,7 +2365,7 @@ Name
 object 744
 X
 3
-609
+615
 Y
 3
 33
@@ -2142,10 +2410,10 @@ Name
 total_direct_cost
 X
 3
-639
+642
 Y
 3
-126
+153
 Width
 3
 136
@@ -2202,10 +2470,10 @@ Name
 total_indirect_cost
 X
 3
-639
+642
 Y
 3
-309
+336
 Width
 3
 136
@@ -2262,10 +2530,10 @@ Name
 total_installed_cost
 X
 3
-642
+645
 Y
 3
-384
+411
 Width
 3
 133
@@ -2313,7 +2581,49 @@ TabOrder
 3
 20
 
-24
+26
+battery_energy
+3
+1
+Battery bank
+kWh
+Direct Capital Costs
+0
+8
+1
+1
+1
+1
+0.000000
+Numeric
+battery_per_kWh
+3
+1
+Battery cost per capacity
+$/kWh dc
+Direct Capital Costs
+0
+2
+1
+1
+1
+1
+0.000000
+Numeric
+battery_total
+3
+1
+Battery cost
+$
+Direct Capital Costs
+0
+9
+1
+1
+1
+1
+0.000000
+Numeric
 fixed_plant_input
 3
 1
@@ -2580,20 +2890,6 @@ Direct Capital Costs
 1
 0.000000
 Numeric
-system_use_lifetime_output
-3
-1
- 
- 
-Direct Capital Costs
-0
-8
-1
-1
-1
-1
-0.000000
-Default
 system_use_recapitalization
 3
 1
@@ -2651,9 +2947,18 @@ Total Installed Costs
 0.000000
 Numeric
 
-1908
+2102
 equations{ 'nameplate_capacity' } = define() {
 	return ${system_capacity}; };
+
+equations{ 'battery_energy' } = define() {
+	return ?${en_batt}
+			[0,	${batt_computed_bank_capacity}];};
+
+equations{ 'battery_total' } = define() {
+	return ${battery_energy}*${battery_per_kWh};
+};
+
 
 equations{ 'total_installed_cost' } = define() {
 	return ${total_direct_cost}+${total_indirect_cost}; };
@@ -2669,7 +2974,7 @@ equations{ 'genericsys.cost.sales_tax.value' } = define() {
 
 equations{ 'genericsys.cost.contingency' } = define() {
 	return ${genericsys.cost.contingency_percent}/100
-*(${genericsys.cost.plant}+${genericsys.cost.plant_scaled}); };
+*(${genericsys.cost.plant}+${genericsys.cost.plant_scaled}+${battery_total}); };
 
 equations{ 'total_indirect_cost' } = define() {
 	return ${genericsys.cost.epc.total}+${genericsys.cost.plm.total}+${genericsys.cost.sales_tax.total}; };
@@ -2680,7 +2985,7 @@ equations{ 'genericsys.cost.sales_tax.total' } = define() {
 equations{ 'total_direct_cost' } = define() {
 	return ${genericsys.cost.contingency}
 +${genericsys.cost.plant}
-+${genericsys.cost.plant_scaled}; };
++${genericsys.cost.plant_scaled} +${battery_total}; };
 
 equations{ 'genericsys.cost.plant'} = define() {
 	return ${fixed_plant_input};
@@ -2699,11 +3004,9 @@ equations{ 'genericsys.cost.plant_scaled' } = define() {
 };
 
 
-equations { 'system_use_lifetime_output' } = define () {
-	return 0;};
 equations { 'system_use_recapitalization' } = define () {
-	return 0;};
-
+		return ${system_use_lifetime_output};
+	};
 
 152
 //on_load{"Generic Systems Costs"}=define()
