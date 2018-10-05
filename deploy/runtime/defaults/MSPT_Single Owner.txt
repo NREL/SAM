@@ -1,5 +1,5 @@
 1
-664
+662
 A_sf_UI
 1
 1
@@ -252,7 +252,13 @@ UA_total_calc
 1
 1
 1
-nan
+inf
+_dd_sco2_cycle_config
+1
+1
+1
+1
+0.000000
 _sco2_P_high_limit
 1
 1
