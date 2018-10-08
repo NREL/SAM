@@ -348,9 +348,18 @@ Battery
 Numeric
 
 0
-364
+540
 on_load{'Battery Configuration'} = define()
 {
+	if (technology() == 'Generic System')
+	{
+		value('batt_ac_or_dc',1);
+		enable('batt_ac_or_dc',0);
+		enable('batt_dc_dc_efficiency', 0);
+	}
+	else
+		enable('batt_ac_or_dc',1);
+
 	check_configuration();
 	on_change{'batt_ac_or_dc'};
 };
