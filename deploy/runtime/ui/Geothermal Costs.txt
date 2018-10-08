@@ -3164,7 +3164,7 @@ Name
 geotherm.cost.plant_per_kW
 X
 3
-360
+381
 Y
 3
 543
@@ -3224,7 +3224,7 @@ Name
 geotherm.cost.plant_per_kW_input
 X
 3
-360
+381
 Y
 3
 543
@@ -7274,7 +7274,7 @@ Geothermal Costs
 0.000000
 Numeric
 
-14038
+14182
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -7359,8 +7359,15 @@ equations{ 'geotherm.cost.surf_total' } = define() {
 equations{ 'geotherm.cost.installed_per_capacity' } = define() {
 	return ${total_installed_cost}/${geotherm.net_output}/1000; };
 
-equations{ 'geotherm.cost.plant_total' } = define() {
-	return  ${geotherm.cost.plant_per_kW} * ${geotherm.cost.plant_size}; };
+equations{ 'geotherm.cost.plant_total' } = define() 
+{
+	if (${geotherm.cost.plant_auto_estimate} == 0){
+		return  ${geotherm.cost.plant_per_kW_input} * ${geotherm.cost.plant_size}; 
+	}
+	else {
+		return  ${geotherm.cost.plant_per_kW} * ${geotherm.cost.plant_size}; 
+	}
+};
 
 equations{ 'geotherm.cost.epc.total' } = define() {
 	return ${geotherm.cost.epc.fixed}+${geotherm.cost.epc.nonfixed}; };
