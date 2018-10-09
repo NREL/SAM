@@ -1,7 +1,7 @@
 Geothermal Costs
 824
 1148
-112
+113
 GroupBox
 
 1
@@ -150,13 +150,13 @@ X
 12
 Y
 3
-519
+510
 Width
 3
 797
 Height
 3
-89
+116
 Caption
 5
 18
@@ -3134,10 +3134,10 @@ Name
 geotherm.cost.plant_auto_estimate
 X
 3
-27
+30
 Y
 3
-579
+582
 Width
 3
 314
@@ -3164,7 +3164,67 @@ Name
 geotherm.cost.plant_per_kW
 X
 3
-372
+381
+Y
+3
+543
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+16
+Numeric
+
+1
+16
+Name
+5
+32
+geotherm.cost.plant_per_kW_input
+X
+3
+381
 Y
 3
 543
@@ -5908,7 +5968,7 @@ TabOrder
 3
 0
 
-92
+93
 geotherm.cost.capital_total
 3
 1
@@ -6463,7 +6523,7 @@ Cost
 $/kW
 Geothermal Costs
 0
-0
+8
 1
 1
 1
@@ -6484,6 +6544,20 @@ Geothermal Costs
 1
 0.000000
 Default
+geotherm.cost.plant_per_kW_input
+3
+1
+Cost
+$/kW
+Geothermal Costs
+0
+0
+1
+1
+1
+1
+1800.000000
+Numeric
 geotherm.cost.plant_size
 3
 1
@@ -7200,7 +7274,7 @@ Geothermal Costs
 0.000000
 Numeric
 
-7504
+14182
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -7285,8 +7359,15 @@ equations{ 'geotherm.cost.surf_total' } = define() {
 equations{ 'geotherm.cost.installed_per_capacity' } = define() {
 	return ${total_installed_cost}/${geotherm.net_output}/1000; };
 
-equations{ 'geotherm.cost.plant_total' } = define() {
-	return  ${geotherm.cost.plant_per_kW} * ${geotherm.cost.plant_size}; };
+equations{ 'geotherm.cost.plant_total' } = define() 
+{
+	if (${geotherm.cost.plant_auto_estimate} == 0){
+		return  ${geotherm.cost.plant_per_kW_input} * ${geotherm.cost.plant_size}; 
+	}
+	else {
+		return  ${geotherm.cost.plant_per_kW} * ${geotherm.cost.plant_size}; 
+	}
+};
 
 equations{ 'geotherm.cost.epc.total' } = define() {
 	return ${geotherm.cost.epc.fixed}+${geotherm.cost.epc.nonfixed}; };
@@ -7383,8 +7464,146 @@ equations{ 'system_use_lifetime_output' } = define() {
 	
 equations{ 'system_recapitalization_cost' } = define() {
 	return ${geotherm.cost.recap}; };
+	
+equations{ 'geotherm.cost.plant_per_kW'} = define() {
 
-1769
+	if (${geotherm.cost.plant_auto_estimate})
+	{
+		geothermal = ssc_module_create_from_case('geothermal');	
+		ssc_var( geothermal, 'system_capacity', ${nameplate} );
+
+		ssc_var( geothermal, 'resource_type', ${resource_type} );   // INTEGER
+		ssc_var( geothermal, 'resource_temp', ${resource_temp} );
+		ssc_var( geothermal, 'resource_depth', ${resource_depth} );
+													
+		// Other inputs							    
+		ssc_var( geothermal, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER
+		ssc_var( geothermal, 'model_choice', ${model_choice} );    // INTEGER
+													
+		// geothermal plant and equipment		    
+		ssc_var( geothermal, 'nameplate', ${nameplate} );
+		ssc_var( geothermal, 'analysis_type', ${analysis_type} );   //INTEGER
+		ssc_var( geothermal, 'num_wells', ${num_wells} );
+		ssc_var( geothermal, 'conversion_type', ${conversion_type} ); // INTEGER
+		ssc_var( geothermal, 'plant_efficiency_input', ${plant_efficiency_input} );
+		ssc_var( geothermal, 'conversion_subtype', ${conversion_subtype} ); // INTEGER
+		ssc_var( geothermal, 'decline_type', ${decline_type} );       // INTEGER
+		ssc_var( geothermal, 'temp_decline_rate', ${temp_decline_rate} );
+		ssc_var( geothermal, 'temp_decline_max', ${temp_decline_max} );
+		ssc_var( geothermal, 'wet_bulb_temp', ${wet_bulb_temp} );
+		ssc_var( geothermal, 'ambient_pressure', ${ambient_pressure} );
+		ssc_var( geothermal, 'well_flow_rate', ${well_flow_rate} );
+		ssc_var( geothermal, 'pump_efficiency', ${pump_efficiency} );
+		ssc_var( geothermal, 'delta_pressure_equip', ${delta_pressure_equip} );
+		ssc_var( geothermal, 'excess_pressure_pump', ${excess_pressure_pump} );
+		ssc_var( geothermal, 'well_diameter', ${well_diameter} );
+		ssc_var( geothermal, 'casing_size', ${casing_size} );
+		ssc_var( geothermal, 'inj_well_diam', ${inj_well_diam} );
+		ssc_var( geothermal, 'design_temp', ${design_temp} );
+		ssc_var( geothermal, 'specify_pump_work', ${specify_pump_work} ); // INTEGER
+		ssc_var( geothermal, 'specified_pump_work_amount', ${specified_pump_work_amount} );
+
+		// detailed geothermal inputs
+		ssc_var( geothermal, 'rock_thermal_conductivity', ${rock_thermal_conductivity} );
+		ssc_var( geothermal, 'rock_specific_heat', ${rock_specific_heat} );
+		ssc_var( geothermal, 'rock_density', ${rock_density} );
+		ssc_var( geothermal, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER
+		ssc_var( geothermal, 'reservoir_pressure_change', ${reservoir_pressure_change} );
+		ssc_var( geothermal, 'reservoir_width', ${reservoir_width} );
+		ssc_var( geothermal, 'reservoir_height', ${reservoir_height} );
+		ssc_var( geothermal, 'reservoir_permeability', ${reservoir_permeability} );		
+		ssc_var( geothermal, 'inj_prod_well_distance', ${inj_prod_well_distance} );		
+		ssc_var( geothermal, 'subsurface_water_loss', ${subsurface_water_loss} ); 		
+		ssc_var( geothermal, 'fracture_aperature', ${fracture_aperature} );
+		ssc_var( geothermal, 'fracture_width', ${fracture_width} );
+		ssc_var( geothermal, 'num_fractures', ${num_fractures} ); // INTEGER
+		ssc_var( geothermal, 'fracture_angle', ${fracture_angle} );
+
+		// temp input for testing
+		ssc_var( geothermal, 'hr_pl_nlev', ${hr_pl_nlev} ); // INTEGER
+		
+		if (ssc_exec(geothermal, 'geothermal') == 0) 
+		{
+			cost = ssc_create('geothermal_cost');
+			
+			conversion_type = ${conversion_type};
+			gross_output = ${geotherm.cost.plant_size};
+			design_temp = ssc_var(geothermal, "design_temp");
+			second_law_eff = ssc_var(geothermal, "eff_secondlaw");
+			ssc_var(cost,'gross_output', gross_output);
+			ssc_var(cost,'design_temp', design_temp);
+			ssc_var(cost,'eff_secondlaw', second_law_eff);
+			ssc_var(cost, "conversion_type", conversion_type);
+			
+			//Flash
+			if (${conversion_type})
+			{
+				qRejectTotal = ssc_var(geothermal, "qRejectTotal");
+				qCondenser = ssc_var(geothermal, "qCondenser");
+				v_stage_1 = ssc_var(geothermal, "v_stage_1");
+				v_stage_2 = ssc_var(geothermal, "v_stage_2");
+				v_stage_3 = ssc_var(geothermal, "v_stage_3");
+				GF_flowrate = ssc_var(geothermal, "GF_flowrate");
+				qRejectByStage_1 = ssc_var(geothermal, "qRejectByStage_1");
+				qRejectByStage_2 = ssc_var(geothermal, "qRejectByStage_2");
+				qRejectByStage_3 = ssc_var(geothermal, "qRejectByStage_3");
+				ncg_condensate_pump = ssc_var(geothermal, "ncg_condensate_pump");
+				cw_pump_work = ssc_var(geothermal, "cw_pump_work");
+				pressure_ratio_1 = ssc_var(geothermal, "pressure_ratio_1");
+				pressure_ratio_2 = ssc_var(geothermal, "pressure_ratio_2");
+				pressure_ratio_3 = ssc_var(geothermal, "pressure_ratio_3");
+				condensate_pump_power = ssc_var(geothermal, "condensate_pump_power");
+				cwflow = ssc_var(geothermal, "cwflow");
+				cw_pump_head = ssc_var(geothermal, "cw_pump_head");
+				spec_vol = ssc_var(geothermal, "spec_vol");
+				x_hp = ssc_var(geothermal, "x_hp");
+				hp_flash_pressure = ssc_var(geothermal, "hp_flash_pressure");
+				spec_vol_lp = ssc_var(geothermal, "spec_vol_lp");
+				x_lp = ssc_var(geothermal, "x_lp");			
+				lp_flash_pressure = ssc_var(geothermal, "lp_flash_pressure");
+				flash_count = ssc_var(geothermal, "flash_count"); 
+				
+				ssc_var(cost,'qRejectTotal', qRejectTotal);
+				ssc_var(cost,'qCondenser', qCondenser);
+				ssc_var(cost,'v_stage_1', v_stage_1);
+				ssc_var(cost,'v_stage_2', v_stage_2);
+				ssc_var(cost,'v_stage_3', v_stage_3);
+				ssc_var(cost,'GF_flowrate', GF_flowrate);
+				ssc_var(cost,'qRejectByStage_1', qRejectByStage_1);
+				ssc_var(cost,'qRejectByStage_2', qRejectByStage_2);
+				ssc_var(cost,'qRejectByStage_3', qRejectByStage_3);
+				ssc_var(cost,"ncg_condensate_pump", ncg_condensate_pump);
+				ssc_var(cost,"cw_pump_work", cw_pump_work);
+				ssc_var(cost,"pressure_ratio_1", pressure_ratio_1);
+				ssc_var(cost,"pressure_ratio_2", pressure_ratio_2);
+				ssc_var(cost,"pressure_ratio_3", pressure_ratio_3);
+				ssc_var(cost,"condensate_pump_power",condensate_pump_power);
+				ssc_var(cost,"cwflow", cwflow);
+				ssc_var(cost,"cw_pump_head", cw_pump_head);
+				ssc_var(cost,'spec_vol', spec_vol);
+				ssc_var(cost,'x_hp', x_hp);
+				ssc_var(cost,'hp_flash_pressure', hp_flash_pressure);
+				ssc_var(cost,'spec_vol_lp', spec_vol_lp);
+				ssc_var(cost,'x_lp', x_lp);
+				ssc_var(cost,'lp_flash_pressure', lp_flash_pressure);
+				ssc_var(cost,'flash_count', flash_count);
+			}
+			
+			ssc_exec(cost, 'geothermal_costs');	
+			plant_per_kW = ssc_var(cost, "baseline_cost");	
+			
+			return plant_per_kW;
+		}
+		ssc_free(geothermal);
+	}
+	else
+	{
+		return 0;
+	}
+};
+
+1386
+
 function reset_geothermal_plant_cost()
 {
 	// This should never get called for flash plants - the checkbox that calls this code is disabled for flash plants
@@ -7404,31 +7623,24 @@ function reset_geothermal_plant_cost()
 	}
 }
 
+
 function update_cost_input_control()
 {
-	enable("geotherm.cost.plant_per_kW", value("geotherm.cost.plant_auto_estimate") == 0 );
+	// show calculated value if selected
+	show("geotherm.cost.plant_per_kW", value("geotherm.cost.plant_auto_estimate") );
+	
+	// show input value if not selected
+	show("geotherm.cost.plant_per_kW_input", value("geotherm.cost.plant_auto_estimate") == 0);
+
 }
 
 
 on_change{"geotherm.cost.plant_auto_estimate"} = define()
 {
-	update_cost_input_control();
-	reset_geothermal_plant_cost();
+	update_cost_input_control();	
 };
 
 on_load{'Geothermal Costs'} = define() {
-	if (value("conversion_type") == 0) // binary plant
-	{
-		value("geotherm.cost.plant_auto_estimate", value("geotherm.cost.plant_auto_estimate_last_setting") );
-	}
-	else // this is a flash plant
-	{
-		value("geotherm.cost.plant_auto_estimate_last_setting", value("geotherm.cost.plant_auto_estimate")); // save users choice for binary
-		value("geotherm.cost.plant_auto_estimate", 0);
-	}
-	
-	// if this is a binary plant, enable; otherwise, disable
-	enable("geotherm.cost.plant_auto_estimate", (${conversion_type} == 0) );
-
 	update_cost_input_control();
 };
+

@@ -2302,7 +2302,7 @@ federal_tax_rate
 2
 1
 1
-35.000000
+20.000000
 first_year_output
 1
 1

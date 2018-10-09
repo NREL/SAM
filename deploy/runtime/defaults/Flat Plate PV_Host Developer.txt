@@ -1,5 +1,5 @@
 1
-1047
+1029
 6par_aisc
 1
 1
@@ -2361,7 +2361,7 @@ federal_tax_rate
 2
 1
 1
-35.000000
+20.000000
 file_name
 1
 4
@@ -4582,12 +4582,6 @@ pv.storage.p6.discharge
 1
 0.000000
 pv.storage.p6.gridcharge
-1
-1
-1
-1
-0.000000
-pv_lifetime_simulation
 1
 1
 1
