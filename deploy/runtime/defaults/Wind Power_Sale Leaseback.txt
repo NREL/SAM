@@ -2250,7 +2250,7 @@ federal_tax_rate
 2
 1
 1
-28.000000
+20.000000
 flip_target_percent
 1
 1

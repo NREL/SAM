@@ -398,7 +398,7 @@ Battery
 DataArray
 
 0
-683
+691
 on_load{'Battery Replacements'} = define() {
 	on_change{'batt_replacement_option'}();
 };
@@ -406,8 +406,8 @@ on_load{'Battery Replacements'} = define() {
 on_change{ 'batt_replacement_option' } = define() {
 	option = value('batt_replacement_option');
 	
-	if (varinfo("pv_lifetime_simulation"))
-		lifetime = value('pv_lifetime_simulation');
+	if (varinfo("system_use_lifetime_output"))
+		lifetime = value('system_use_lifetime_output');
 	else 
 		lifetime = 0;
 	
