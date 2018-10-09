@@ -1725,7 +1725,7 @@ Geothermal Resource
 1
 1
 1
-2.000000
+0.000000
 RadioChoice
 reservoir_pressure_change_type_old_setting
 3

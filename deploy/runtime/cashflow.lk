@@ -40,7 +40,7 @@ function cf_om_expenses() {
 
     tech = technology();
 
-    if ( tech == 'Flat Plate PV' && value('en_batt') == 1 ) // PVWatts does not have battery replacements as of 2017.1.17
+    if (( tech == 'Flat Plate PV' || tech == 'Generic System' ) && value('en_batt') == 1 ) // PVWatts does not have battery replacements as of 2017.1.17
 		cfline( 'cf_battery_replacement_cost', 0);
 
     fueltech = ( tech != 'Flat Plate PV' && 

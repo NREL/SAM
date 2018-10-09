@@ -1,5 +1,5 @@
 1
-661
+662
 A_sf_UI
 1
 1
@@ -253,6 +253,12 @@ UA_total_calc
 1
 1
 inf
+_dd_sco2_cycle_config
+1
+1
+1
+1
+0.000000
 _sco2_P_high_limit
 1
 1
@@ -1928,7 +1934,7 @@ federal_tax_rate
 2
 1
 1
-35.000000
+20.000000
 field_fl_props
 1
 3

@@ -1,5 +1,5 @@
 1
-399
+400
 LeadAcid_q10
 1
 1
@@ -1713,7 +1713,7 @@ federal_tax_rate
 2
 1
 1
-35.000000
+20.000000
 first_year_output
 1
 1
@@ -2768,6 +2768,12 @@ system_capacity
 1
 1
 1.709030
+system_degradation
+1
+2
+1
+1
+0.000000
 system_use_lifetime_output
 1
 1

@@ -5200,7 +5200,7 @@ TabOrder
 3
 52
 
-63
+62
 battery_energy
 3
 1
@@ -6015,20 +6015,6 @@ Capital Costs
 1
 0.000000
 Default
-system_use_lifetime_output
-3
-1
- 
- 
-Capital Costs
-0
-8
-1
-1
-1
-1
-0.000000
-Default
 system_use_recapitalization
 3
 1
@@ -6086,7 +6072,7 @@ Capital Costs
 0.000000
 Numeric
 
-5632
+5516
 
 
 equations{ 'engr_total' } = define() {
@@ -6261,17 +6247,11 @@ equations{ 'total_direct_cost' } = define() {
 		+${install_margin_total}
 		+${contingency}; };
 
-equations { 'system_use_lifetime_output' } = define () {
-	if( technology() == "PVWatts" )
-		return 0;
-	else
-		return ${pv_lifetime_simulation};
-	};
 equations { 'system_use_recapitalization' } = define () {
 	if( technology() == "PVWatts" )
 		return 0;
 	else
-		return ${pv_lifetime_simulation};
+		return ${system_use_lifetime_output};
 	};
 
 equations { 'battery_total' } = define () {
