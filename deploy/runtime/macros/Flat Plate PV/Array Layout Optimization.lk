@@ -29,15 +29,20 @@ This macro helps the user determine the optimal array size, Ground Coverage Rati
 length = macro.length ; 					//Length of field (m)
 width = macro.width;						//Width of fiel (m)
 setback = macro.setback;					//Distance from edge of land that is off limits for placement of modules (m)
-	effective_length = length - setback;		//(Calculated Value) Actual length of the field that is available for placement of modules (m)
-	effective_width = width - setback;			//(Calculated Value) Actual width of the field that is available for placement of modules	(m)
-	area = effective_length * effective_width; 	//(Calculated Value) Total effective land area (in m^2)
+effective_length = length - setback;		//(Calculated Value) Actual length of the field that is available for placement of modules (m)
+effective_width = width - setback;			//(Calculated Value) Actual width of the field that is available for placement of modules	(m)
+area = effective_length * effective_width; 	//(Calculated Value) Total effective land area (in m^2)
 max_gcr = macro.max_gcr;					//Allow the user to input max GCR
 min_gcr = macro.min_gcr;					//Allow the user to input min GCR
 gcr_steps = macro.gcr_steps;				//Allow the  user to input the increments of GCR they want to calculate over
 max_tilt = macro.max_tilt;					//Allow the user to input max tilt angle
 min_tilt = macro.min_tilt;					//Allow the user to input min tilt angel
 tilt_steps = macro.tilt_steps;				//Allow the user the input the increments of tilt angle they want to calculate over
+
+//If the user wants to iterate over fixed GCR or tilt angle, and sets either of
+//of the two variables to 0, then change value to 1 to prevent infinite looping.
+if(gcr_steps == 0 ) gcr_steps = 1;
+if(tilt_steps == 0) tilt_steps = 1;
 
 
 //Acres to m^2 conversion:
@@ -370,7 +375,7 @@ str += '</table>';
 //Max Energy Yield Results:
 str += '<br><h5>Results for Max Energy Yield: </h5>';
 str += '<br>GCR: '+ gcr_yield;
-str += '<br>Energy Yield (In Degrees): ' + tilt_yield;
+str += '<br>Tilt Angle(In Degrees): ' + tilt_yield;
 str += '<br>Number of modules along bottom: ' + yield_nmodx +' modules';
 str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
 str += '<br>Number of rows: ' + yield_nrows + ' rows'; 
