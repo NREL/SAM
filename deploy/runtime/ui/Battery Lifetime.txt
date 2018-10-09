@@ -729,8 +729,8 @@ Height
 24
 Caption
 5
-134
-On the "Lifetime" tab, please select "PV simulation over analysis period" to consider multi-year battery degradations and replacements
+131
+On the "Lifetime" tab, please select "Simulation over analysis period" to consider multi-year battery degradations and replacements
 TextColour
 4
 0
