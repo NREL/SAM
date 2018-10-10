@@ -1,7 +1,7 @@
 Inverter CEC Coefficient Generator
 1268
 978
-27
+28
 GroupBox
 
 1
@@ -616,7 +616,7 @@ Name
 inv_cec_cg_idcmax
 X
 3
-495
+447
 Y
 3
 531
@@ -675,7 +675,7 @@ Name
 inv_cec_cg_mppt_hi
 X
 3
-1056
+873
 Y
 3
 531
@@ -734,7 +734,7 @@ Name
 inv_cec_cg_mppt_low
 X
 3
-774
+672
 Y
 3
 531
@@ -783,6 +783,65 @@ BackColour
 TabOrder
 3
 14
+Numeric
+
+1
+16
+Name
+5
+19
+inv_cec_cg_num_mppt
+X
+3
+1146
+Y
+3
+531
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Choice
 
 1
@@ -1175,7 +1234,7 @@ Name
 inv_cec_cg_vdcmax
 X
 3
-249
+252
 Y
 3
 531
@@ -1284,7 +1343,7 @@ TabOrder
 3
 15
 
-19
+20
 inv_cec_cg_c0
 3
 1
@@ -1424,6 +1483,20 @@ PV Inverter (CEC Coefficient Generator)
 1
 0.000000
 Numeric
+inv_cec_cg_num_mppt
+3
+1
+Number of MPPT inputs
+ 
+PV Inverter (CEC Coefficient Generator)
+0
+0
+1
+1
+1
+1
+1.000000
+Default
 inv_cec_cg_num_samples
 3
 1

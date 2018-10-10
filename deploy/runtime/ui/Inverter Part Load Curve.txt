@@ -1,7 +1,7 @@
 Inverter Part Load Curve
-789
-734
-26
+791
+752
+27
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 764
 Height
 3
-95
+121
 Caption
 5
 16
@@ -42,7 +42,7 @@ X
 12
 Y
 3
-645
+669
 Width
 3
 764
@@ -96,7 +96,7 @@ X
 12
 Y
 3
-288
+312
 Width
 3
 764
@@ -123,7 +123,7 @@ X
 12
 Y
 3
-237
+261
 Width
 3
 764
@@ -285,7 +285,7 @@ X
 189
 Y
 3
-672
+696
 Width
 3
 153
@@ -312,7 +312,7 @@ X
 27
 Y
 3
-672
+696
 Width
 3
 153
@@ -398,7 +398,7 @@ X
 21
 Y
 3
-309
+333
 Width
 3
 326
@@ -473,7 +473,7 @@ X
 375
 Y
 3
-672
+696
 Width
 3
 386
@@ -839,6 +839,65 @@ Numeric
 16
 Name
 5
+15
+inv_pd_num_mppt
+X
+3
+555
+Y
+3
+228
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
 11
 inv_pd_paco
 X
@@ -964,7 +1023,7 @@ X
 228
 Y
 3
-255
+279
 Width
 3
 100
@@ -1141,7 +1200,7 @@ X
 12
 Y
 3
-606
+630
 Width
 3
 759
@@ -1186,7 +1245,7 @@ X
 357
 Y
 3
-309
+333
 Width
 3
 411
@@ -1194,7 +1253,7 @@ Height
 3
 282
 
-17
+18
 inv_pd_ac_voltage
 3
 1
@@ -1598,6 +1657,20 @@ PV Inverter (Part Load Curve)
 1
 1
 250.000000
+Numeric
+inv_pd_num_mppt
+3
+1
+Number of MPPT inputs
+ 
+PV Inverter (Part Load Curve)
+0
+0
+1
+1
+1
+1
+1.000000
 Numeric
 inv_pd_paco
 3
