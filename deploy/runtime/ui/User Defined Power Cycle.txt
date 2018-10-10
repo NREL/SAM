@@ -1,7 +1,7 @@
 User Defined Power Cycle
 905
 1075
-23
+21
 GroupBox
 
 1
@@ -29,60 +29,33 @@ User Defined Power Cycle Design Parameters
 Bold
 2
 1
-GroupBox
+Button
 
 1
 7
 Name
 5
-8
-object 4
+14
+btn_gen_inputs
 X
 3
-3
+69
 Y
 3
-750
+291
 Width
 3
-899
+114
 Height
 3
-318
+26
 Caption
 5
-46
-Performance as Function of Ambient Temperature
-Bold
-2
-1
-GroupBox
-
-1
-7
-Name
-5
-9
-object 41
-X
+15
+Generate Inputs
+TabOrder
 3
-3
-Y
-3
-423
-Width
-3
-899
-Height
-3
-321
-Caption
-5
-45
-Performance as Function of HTF Mass Flow Rate
-Bold
-2
-1
+4294967295
 GroupBox
 
 1
@@ -102,104 +75,14 @@ Width
 899
 Height
 3
-327
+978
 Caption
 5
-42
-Performance as Function of HTF Temperature
+86
+Performance as Function of HTF Temperature, HTF Mass Flow Rate and Ambient Temperature
 Bold
 2
 1
-Label
-
-1
-12
-Name
-5
-8
-object 7
-X
-3
-15
-Y
-3
-765
-Width
-3
-615
-Height
-3
-24
-Caption
-5
-91
-Low, design, and high HTF temperatures for parameter interactions with ambient temperature:
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-12
-Name
-5
-10
-object 721
-X
-3
-15
-Y
-3
-441
-Width
-3
-621
-Height
-3
-24
-Caption
-5
-94
-Low, design, and high ambient temperatures for parameter interactions with HTF mass flow rate:
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 Label
 
 1
@@ -222,8 +105,8 @@ Height
 24
 Caption
 5
-90
-Low, design, and high mass flow rates (ṁ) for parameter interactions with HTF temperature:
+60
+Low, design, and high parameter values for input generation:
 TextColour
 4
 0
@@ -255,10 +138,10 @@ Name
 ud_COPY_T_HTF_des
 X
 3
-234
+183
 Y
 3
-816
+165
 Width
 3
 90
@@ -314,10 +197,10 @@ Name
 ud_COPY_T_amb_des
 X
 3
-234
+768
 Y
 3
-495
+165
 Width
 3
 90
@@ -432,10 +315,10 @@ Name
 ud_T_amb_high
 X
 3
-234
+768
 Y
 3
-519
+189
 Width
 3
 90
@@ -481,79 +364,63 @@ BackColour
 TabOrder
 3
 4294967295
-DataMatrix
+Numeric
 
 1
-22
+16
 Name
 5
 15
-ud_T_amb_ind_od
+ud_T_amb_levels
 X
 3
-18
+768
 Y
 3
-867
+228
 Width
 3
-874
+90
 Height
 3
-192
-PasteAppendRows
-2
+21
+Value
 1
-PasteAppendCols
-2
-0
-ShowRows
-2
-1
-ShowRowLabels
-2
-0
-RowLabels
-5
-0
-ShadeR0C0
-2
-0
-ShadeC0
-2
-1
-ShowCols
-2
-0
-ShowColLabels
-2
-1
-ColLabels
-5
-241
-Ambient temperature °C\n(at HTF temp ⇒), Ẇ cycle \nlow, Ẇ cycle \ndesign, Ẇ cycle \nhigh, Heat in \nlow, Heat in \ndesign, Heat in \nhigh, Ẇ cooling \nlow, Ẇ cooling \ndesign, Ẇ cooling \nhigh, ṁ water \nlow, ṁ water \ndesign, ṁ water \nhigh
-NumRowsLabel
-5
-5
-Rows:
-NumColsLabel
-5
-5
-Cols:
-Layout
+0.000000
+Mode
 3
 0
-ChoiceColumn
+Format
 3
-4294967295
-Choices
+1
+Decimals
+3
+0
+Prefix
 5
-15
-Choice1,Choice2
-HideColumn
-3
-4294967295
-ShowColumn
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
 3
 4294967295
 Numeric
@@ -566,10 +433,10 @@ Name
 ud_T_amb_low
 X
 3
-234
+768
 Y
 3
-471
+141
 Width
 3
 90
@@ -625,10 +492,10 @@ Name
 ud_T_htf_high
 X
 3
-234
+183
 Y
 3
-840
+189
 Width
 3
 90
@@ -674,79 +541,63 @@ BackColour
 TabOrder
 3
 4294967295
-DataMatrix
+Numeric
 
 1
-22
+16
 Name
 5
 15
-ud_T_htf_ind_od
+ud_T_htf_levels
 X
 3
-21
+183
 Y
 3
-219
+228
 Width
 3
-847
+90
 Height
 3
-192
-PasteAppendRows
-2
+21
+Value
 1
-PasteAppendCols
-2
-0
-ShowRows
-2
-1
-ShowRowLabels
-2
-0
-RowLabels
-5
-0
-ShadeR0C0
-2
-0
-ShadeC0
-2
-1
-ShowCols
-2
-0
-ShowColLabels
-2
-1
-ColLabels
-5
-235
-HTF temperature °C\n(at HTF ṁ ⇒), Ẇ cycle \nlow, Ẇ cycle \ndesign, Ẇ cycle \nhigh, Heat in \nlow, Heat in \ndesign, Heat in \nhigh, Ẇ cooling \nlow, Ẇ cooling \ndesign, Ẇ cooling \nhigh, ṁ water \nlow, ṁ water \ndesign, ṁ water \nhigh 
-NumRowsLabel
-5
-5
-Rows:
-NumColsLabel
-5
-5
-Cols:
-Layout
+0.000000
+Mode
 3
 0
-ChoiceColumn
+Format
 3
-4294967295
-Choices
+1
+Decimals
+3
+0
+Prefix
 5
-15
-Choice1,Choice2
-HideColumn
-3
-4294967295
-ShowColumn
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
 3
 4294967295
 Numeric
@@ -759,10 +610,10 @@ Name
 ud_T_htf_low
 X
 3
-234
+183
 Y
 3
-792
+141
 Width
 3
 90
@@ -926,6 +777,81 @@ BackColour
 TabOrder
 3
 4294967295
+DataMatrix
+
+1
+22
+Name
+5
+9
+ud_ind_od
+X
+3
+183
+Y
+3
+288
+Width
+3
+480
+Height
+3
+750
+PasteAppendRows
+2
+1
+PasteAppendCols
+2
+0
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+ShadeC0
+2
+0
+ShowCols
+2
+1
+ShowColLabels
+2
+1
+ColLabels
+5
+76
+HTF Temp. , HTF ṁ , Ambient Temp. , Ẇ cycle , Heat in , Ẇ cooling , ṁ water 
+NumRowsLabel
+5
+5
+Rows:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+0
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
 Numeric
 
 1
@@ -936,7 +862,7 @@ Name
 ud_m_dot_design
 X
 3
-234
+477
 Y
 3
 165
@@ -995,7 +921,7 @@ Name
 ud_m_dot_htf_high
 X
 3
-234
+477
 Y
 3
 189
@@ -1044,79 +970,63 @@ BackColour
 TabOrder
 3
 4294967295
-DataMatrix
+Numeric
 
 1
-22
+16
 Name
 5
 19
-ud_m_dot_htf_ind_od
+ud_m_dot_htf_levels
 X
 3
-18
+477
 Y
 3
-546
+228
 Width
 3
-865
+90
 Height
 3
-192
-PasteAppendRows
-2
+21
+Value
 1
-PasteAppendCols
-2
-0
-ShowRows
-2
-1
-ShowRowLabels
-2
-0
-RowLabels
-5
-0
-ShadeR0C0
-2
-0
-ShadeC0
-2
-1
-ShowCols
-2
-0
-ShowColLabels
-2
-1
-ColLabels
-5
-242
-HTF mass flow rate\n(at ambient temp ⇒), Ẇ cycle \nlow, Ẇ cycle \ndesign, Ẇ cycle \nhigh, Heat in \nlow, Heat in \ndesign, Heat in \nhigh, Ẇ cooling \nlow, Ẇ cooling \ndesign, Ẇ cooling \nhigh, ṁ water \nlow, ṁ water \ndesign, ṁ water \nhigh 
-NumRowsLabel
-5
-5
-Rows:
-NumColsLabel
-5
-5
-Cols:
-Layout
+0.000000
+Mode
 3
 0
-ChoiceColumn
+Format
 3
-4294967295
-Choices
+1
+Decimals
+3
+0
+Prefix
 5
-15
-Choice1,Choice2
-HideColumn
-3
-4294967295
-ShowColumn
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
 3
 4294967295
 Numeric
@@ -1129,7 +1039,7 @@ Name
 ud_m_dot_htf_low
 X
 3
-234
+477
 Y
 3
 141
@@ -1238,7 +1148,7 @@ TabOrder
 3
 4294967295
 
-16
+20
 ud_COPY_T_HTF_des
 3
 1
@@ -1305,13 +1215,24 @@ Power Cycle
 1
 1
 3
-3
-13
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-
+1
+1
+0.000000
 DataMatrix
+ud_T_amb_levels
+3
+1
+Number of levels
+ 
+Power Cycle
+0
+0
+1
+1
+1
+1
+20.000000
+Default
 ud_T_amb_low
 3
 1
@@ -1343,20 +1264,31 @@ Default
 ud_T_htf_ind_od
 3
 3
-Off design parametric on hot HTF temp
+Off-design parametric on htf temperature
  
 Power Cycle
 0
 1
 1
 3
-3
-13
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-
+1
+1
+0.000000
 DataMatrix
+ud_T_htf_levels
+3
+1
+Number of levels
+ 
+Power Cycle
+0
+0
+1
+1
+1
+1
+20.000000
+Default
 ud_T_htf_low
 3
 1
@@ -1399,6 +1331,23 @@ Power Cycle
 1
 0.000000
 Default
+ud_ind_od
+3
+3
+Off design parametrics
+ 
+Power Cycle
+0
+1
+1
+3
+3
+7
+1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
+1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
+1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
+
+DataMatrix
 ud_m_dot_design
 3
 1
@@ -1437,13 +1386,24 @@ Power Cycle
 1
 1
 3
-3
-13
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-
+1
+1
+0.000000
 DataMatrix
+ud_m_dot_htf_levels
+3
+1
+Number of levels
+ 
+Power Cycle
+0
+0
+1
+1
+1
+1
+20.000000
+Default
 ud_m_dot_htf_low
 3
 1
@@ -1486,4 +1446,88 @@ equations{ 'ud_COPY_T_amb_des' } = define(){
 equations{ 'ud_COPY_T_HTF_des' } = define(){
 	return ${PB_COPY_T_htf_hot_des}; };
 
-0
+1975
+on_change{'btn_gen_inputs'} = define() {
+	//value("ud_ind_od", [[1,2,3,4,5,6,7],[11,22,33,44,55,66,77]]);
+	
+	T_htf_low = value("ud_T_htf_low");
+	T_htf_des = value("ud_COPY_T_HTF_des");
+	T_htf_high = value("ud_T_htf_high");
+	n_T_htf = value("ud_T_htf_levels");
+	m_dot_low = value("ud_m_dot_htf_low");
+	m_dot_des = value("ud_m_dot_design");
+	m_dot_high = value("ud_m_dot_htf_high");
+	n_m_dot = value("ud_m_dot_htf_levels");
+	T_amb_low = value("ud_T_amb_low");
+	T_amb_des = value("ud_COPY_T_amb_des");
+	T_amb_high = value("ud_T_amb_high");
+	n_T_amb = value("ud_T_amb_levels");
+	
+	if ( n_T_htf <= 1 ) {
+		T_htf_ini = T_htf_des;
+		dT_htf = 0;
+	}
+	else {
+		T_htf_ini = T_htf_low;
+		dT_htf = (T_htf_high - T_htf_low) / max((n_T_htf - 1), 1);
+	}
+	if ( n_m_dot <= 1 ) {
+		m_dot_ini = m_dot_des;
+		dm_dot = 0;
+	}
+	else {
+		m_dot_ini = m_dot_low;
+		dm_dot = (m_dot_high - m_dot_low) / max((n_m_dot - 1), 1);
+	}
+	if ( n_T_amb <= 1 ) {
+		T_amb_ini = T_amb_des;
+		dT_amb = 0;
+	}
+	else {
+		T_amb_ini = T_amb_low;
+		dT_amb = (T_amb_high - T_amb_low) / max((n_T_amb - 1), 1);
+	}
+	
+	tbl_inputs = [];
+	tbl_idx = 0;
+	m_dot_lvls = [m_dot_low, m_dot_des, m_dot_high];
+	for( i=0; i<#m_dot_lvls; i++) {
+		for( j=0; j<n_T_htf; j++ ) {
+			row = [];
+			row += T_htf_ini + j*dT_htf;
+			row += m_dot_lvls[i];
+			row += T_amb_des;
+			row += [0, 0, 0, 0];
+			tbl_inputs[tbl_idx] = row;
+			tbl_idx++;
+		}
+	}
+
+	T_amb_lvls = [T_amb_low, T_amb_des, T_amb_high];
+	for( i=0; i<#T_amb_lvls; i++) {
+		for( j=0; j<n_m_dot; j++ ) {
+			row = [];
+			row += T_htf_des;
+			row += m_dot_ini + j*dm_dot;
+			row += T_amb_lvls[i];
+			row += [0, 0, 0, 0];
+			tbl_inputs[tbl_idx] = row;
+			tbl_idx++;
+		}
+	}
+	
+	T_htf_lvls = [T_htf_low, T_htf_des, T_htf_high];
+	for( i=0; i<#T_htf_lvls; i++) {
+		for( j=0; j<n_T_amb; j++ ) {
+			row = [];
+			row += T_htf_lvls[i];
+			row += m_dot_des;
+			row += T_amb_ini + j*dT_amb;
+			row += [0, 0, 0, 0];
+			tbl_inputs[tbl_idx] = row;
+			tbl_idx++;
+		}
+	}
+
+	value("ud_ind_od", tbl_inputs);
+};
