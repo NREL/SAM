@@ -6171,7 +6171,7 @@ equations{ 'install_labor_total' } = define() {
 equations{ 'module_num_units' } = define() {
 	if ( technology() == "PVWatts" ) return 1;
 	elseif ( technology() == "PVWatts_battery" ) return 1;
-	else return ${modules_per_string}*${strings_in_parallel};
+	else return ${total_modules};
 };
 
 equations{ 'landprep_total' } = define() {
