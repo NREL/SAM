@@ -1,5 +1,5 @@
 1
-677
+674
 A_sf_UI
 1
 1
@@ -2005,8 +2005,8 @@ field_model_type
 file_name
 1
 4
-112
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -11461,10 +11461,6 @@ lat
 1
 1
 34.849998
-lbl_csp
-1
-4
-0
 lib_dispatch_factor1
 1
 1
@@ -12409,8 +12405,8 @@ site_spec_cost
 solar_data_file_name
 1
 4
-112
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
 solar_data_source
 1
 4
@@ -12424,8 +12420,8 @@ daggett_ca_34.864032_-116.888098_psmv3_60_tmy
 solar_resource_file
 1
 4
-112
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
 solarm
 1
 1
@@ -13109,12 +13105,6 @@ ui_wacc
 1
 1
 6.672750
-use_specific_weather_file
-1
-1
-1
-1
-0.000000
 user_fluid
 1
 3
@@ -13122,10 +13112,6 @@ user_fluid
 9
 1.000000 7.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 
 
-user_specified_weather_file
-1
-4
-0
 v_wind_max
 1
 1
