@@ -1,5 +1,5 @@
 1
-525
+524
 A_sf
 1
 1
@@ -4882,11 +4882,6 @@ site_spec_cost
 1
 1
 16.000000
-solar_data_file_name
-1
-4
-85
-F:\SAMDEV\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
 solar_data_source
 1
 4

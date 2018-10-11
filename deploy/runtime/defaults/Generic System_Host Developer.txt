@@ -1,5 +1,5 @@
 1
-540
+541
 LeadAcid_q10
 1
 1
@@ -2397,6 +2397,12 @@ flip_target_year
 1
 1
 10.000000
+generic_degradation
+1
+2
+1
+1
+0.000000
 genericsys.cost.contingency
 1
 1

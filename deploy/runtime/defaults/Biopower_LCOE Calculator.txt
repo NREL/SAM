@@ -1,5 +1,5 @@
 1
-355
+352
 Label
 1
 1
@@ -1930,7 +1930,7 @@ file_name
 1
 4
 81
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
 fixed_charge_rate
 1
 1
@@ -1971,10 +1971,6 @@ lat
 1
 1
 46.900002
-lbl_csp
-1
-4
-0
 library_folder_list
 1
 4
@@ -1997,7 +1993,7 @@ solar_data_file_name
 1
 4
 81
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
 solar_data_source
 1
 4
@@ -2012,7 +2008,7 @@ solar_resource_file
 1
 4
 81
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
 state
 1
 4
@@ -2123,16 +2119,6 @@ ui_wacc
 1
 1
 0.054439
-use_specific_weather_file
-1
-1
-1
-1
-0.000000
-user_specified_weather_file
-1
-4
-0
 variable_operating_cost
 1
 1

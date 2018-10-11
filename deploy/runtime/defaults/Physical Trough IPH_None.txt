@@ -1,5 +1,5 @@
 1
-621
+620
 A_aperture
 1
 2
@@ -3344,11 +3344,6 @@ single_loop_aperature
 1
 1
 2624.000000
-solar_data_file_name
-1
-4
-86
-F:\SAMDEV\sam\deploy\solar_resource\imperial_ca_32.847553_-115.569439_psmv3_60_tmy.csv
 solar_data_source
 1
 4

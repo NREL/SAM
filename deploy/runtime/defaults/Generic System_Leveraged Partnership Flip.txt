@@ -1,5 +1,5 @@
 1
-482
+483
 LeadAcid_q10
 1
 1
@@ -1213,7 +1213,7 @@ cost_dev_fee_tax_liability
 1
 1
 1
-8783066.000000
+5685120.000000
 cost_dev_fee_value
 1
 1
@@ -2397,6 +2397,12 @@ flip_target_year
 1
 1
 9.000000
+generic_degradation
+1
+2
+1
+1
+0.000000
 genericsys.cost.contingency
 1
 1
@@ -3574,7 +3580,7 @@ ui_wacc
 1
 1
 1
-6.184500
+6.672750
 user_capacity_factor
 1
 1
