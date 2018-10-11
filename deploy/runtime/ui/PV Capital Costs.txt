@@ -6072,9 +6072,7 @@ Capital Costs
 0.000000
 Numeric
 
-5516
-
-
+5485
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6272,7 +6270,6 @@ equations { 'battery_energy' } = define () {
 	else
 		return 0;
 };
-
 1216
 on_load{"PV Capital Costs"}=define()
 {
