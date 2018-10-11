@@ -1577,7 +1577,7 @@ TabOrder
 3
 8
 
-29
+26
 annual_beam
 3
 1
@@ -1783,18 +1783,6 @@ Location and Resource
 1
 0.000000
 Numeric
-lbl_csp
-3
-4
- 
- 
-Location and Resource
-0
-0
-1
-4
-0
-Default
 library_folder_list
 3
 4
@@ -1843,19 +1831,21 @@ Location and Resource
 8
 1
 4
-0
+45
+phoenix_az_33.448377_-112.074037_psmv3_60_tmy
 TextEntry
 solar_data_source
 3
 4
-Data Source
+Data Source 
  
-Location and Resource
+ Location and Resource
 0
 8
 1
 4
-0
+3
+src
 TextEntry
 solar_resource
 3
@@ -1921,32 +1911,6 @@ Location and Resource
 1
 0.000000
 Numeric
-use_specific_weather_file
-3
-1
-Use weather file on disk
- 
-Location and Resource
-0
-3
-1
-1
-1
-1
-0.000000
-CheckBox
-user_specified_weather_file
-3
-4
-Weather file on disk
- 
-Location and Resource
-0
-3
-1
-4
-0
-TextEntry
 wf_nrecords
 3
 1
@@ -1962,10 +1926,11 @@ Location and Resource
 8760.000000
 Default
 
-352
+358
+
 equations{'solar_resource_file'} = define() {
-	if ( ${use_specific_weather_file} ) return ${user_specified_weather_file};
-	else return ${solar_data_file_name};
+/*	if ( ${use_specific_weather_file} ) return ${user_specified_weather_file};
+	else */ return ${solar_data_file_name};
 };
 
 equations{'file_name'} = define() {
@@ -1976,10 +1941,10 @@ equations{'file_name'} = define() {
 equations{'library_folder_list'} = define() {
 	return ${library_paths};
 };	
-13357
+13369
 
 on_load{'Solar Resource Data'} = define() {
-	on_change{'use_specific_weather_file'}();
+//	on_change{'use_specific_weather_file'}();
 	show('annual_snow',technology() == "Flat Plate PV");
 	display_csp_message();
 	on_change{'in_location_options'}();
@@ -2027,21 +1992,22 @@ on_change{'solar_data_file_name'} = define() {
 	
 	ssc_free( obj );
 };
-
+/*
 on_change{'use_specific_weather_file'} = define() {
 	enable( 'user_specified_weather_file', value('use_specific_weather_file') );
 	enable( 'select_weather_file', value('use_specific_weather_file') );
 };
-
+*/
 
 on_change{'select_weather_file'} = define() {
 	file = choose_file( '', 'Choose a weather file', 
 		'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');
-		
+/*		
 	if ( file != '' ) {
 		file = replace(file, '\\', '/');
 		value( 'user_specified_weather_file', file );
 	}
+	*/
 };
 
 function set_library_paths()
