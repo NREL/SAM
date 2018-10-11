@@ -79,6 +79,7 @@ public:
 	static wxArrayString ListAll();
 	static void UnloadAll();
 	static Library *Find( const wxString &name );
+	bool caseSensitiveFind = true;
 	
 	struct Field
 	{
