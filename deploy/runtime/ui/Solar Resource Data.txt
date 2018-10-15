@@ -1950,18 +1950,7 @@ TabOrder
 3
 4294967295
 
-32
-332
-3
-0
-	else 
-		return ${solar_data_file_name}; // file name from solar resource library csv file
-};
-0
-0
-1
-0
-Default
+31
 annual_albedo
 3
 1
