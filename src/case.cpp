@@ -947,7 +947,9 @@ int Case::RecalculateAll( bool quietly )
 
 void Case::AddListener( CaseEventListener *cel )
 {
-	m_listeners.push_back( cel );
+	if (cel) {
+		m_listeners.push_back(cel);
+	}
 }
 
 void Case::RemoveListener( CaseEventListener *cel )
@@ -956,10 +958,12 @@ void Case::RemoveListener( CaseEventListener *cel )
 	{
 		for (size_t i = 0; i < m_listeners.size(); i++)
 		{
-			if (m_listeners[i] == cel)
-			{
-				m_listeners.erase(m_listeners.begin() + i);
-				break;
+			if (cel) {
+				if (m_listeners[i] == cel)
+				{
+					m_listeners.erase(m_listeners.begin() + i);
+					break;
+				}
 			}
 		}
 	}
