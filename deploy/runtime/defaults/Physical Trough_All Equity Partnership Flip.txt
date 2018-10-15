@@ -1,5 +1,5 @@
 1
-1126
+1130
 A_aperture
 1
 2
@@ -4720,6 +4720,12 @@ in_nsrdb_options
 1
 1
 0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
 inflation_rate
 1
 1
@@ -4732,6 +4738,12 @@ insurance_rate
 1
 1
 0.500000
+is_advanced
+1
+1
+1
+1
+0.000000
 is_hx
 1
 1
@@ -7216,6 +7228,16 @@ ui_receiver_description
 4
 12
 Schott PTR80
+use_specific_weather_file
+1
+1
+1
+1
+0.000000
+user_specified_weather_file
+1
+4
+0
 vol_tank
 1
 1

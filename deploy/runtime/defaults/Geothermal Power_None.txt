@@ -1,5 +1,5 @@
 1
-133
+137
 CT
 1
 1
@@ -489,8 +489,8 @@ hybrid_dispatch_schedule
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -508,6 +508,12 @@ in_nsrdb_options
 1
 1
 0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
 inj_prod_well_distance
 1
 1
@@ -520,6 +526,12 @@ inj_well_diam
 1
 1
 10.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 lat
 1
 1
@@ -782,6 +794,16 @@ ui_calculations_only
 1
 1
 0.000000
+use_specific_weather_file
+1
+1
+1
+1
+0.000000
+user_specified_weather_file
+1
+4
+0
 well_diameter
 1
 1

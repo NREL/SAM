@@ -1,5 +1,5 @@
 1
-533
+535
 FossilFill
 1
 2
@@ -2135,8 +2135,8 @@ ibn
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -2149,6 +2149,12 @@ in_location_options
 1
 0.000000
 in_nsrdb_options
+1
+1
+1
+1
+0.000000
+in_time_step
 1
 1
 1
@@ -2178,6 +2184,12 @@ irr_des
 1
 1
 950.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 istableunsorted
 1
 1

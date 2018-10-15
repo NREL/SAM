@@ -1,5 +1,5 @@
 1
-80
+84
 ac_nameplate
 1
 1
@@ -212,8 +212,8 @@ gcr
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -231,12 +231,24 @@ in_nsrdb_options
 1
 1
 0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
 inv_eff
 1
 1
 1
 1
 96.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 lat
 1
 1
@@ -482,6 +494,16 @@ ui_wacc
 1
 1
 0.054439
+use_specific_weather_file
+1
+1
+1
+1
+0.000000
+user_specified_weather_file
+1
+4
+0
 variable_operating_cost
 1
 1

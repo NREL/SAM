@@ -1,5 +1,5 @@
 1
-975
+980
 6par_aisc
 1
 1
@@ -267,6 +267,12 @@ analysis_period_warning
 4
 12
 No messages.
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -2673,8 +2679,8 @@ iec61853_test_data
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -2687,6 +2693,12 @@ in_location_options
 1
 0.000000
 in_nsrdb_options
+1
+1
+1
+1
+0.000000
+in_time_step
 1
 1
 1
@@ -3544,6 +3556,12 @@ inverterarray_power
 1
 16940.000000
 irrad_mode
+1
+1
+1
+1
+0.000000
+is_advanced
 1
 1
 1
@@ -6248,12 +6266,22 @@ ui_subarray4_row_spacing
 1
 1
 11.100950
+use_specific_weather_file
+1
+1
+1
+1
+0.000000
 use_wf_albedo
 1
 1
 1
 1
 0.000000
+user_specified_weather_file
+1
+4
+0
 vdcmax_inverter
 1
 1
