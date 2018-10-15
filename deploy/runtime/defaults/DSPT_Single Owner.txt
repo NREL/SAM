@@ -1,5 +1,5 @@
 1
-612
+616
 A_sf
 1
 1
@@ -7892,8 +7892,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -7911,6 +7911,12 @@ in_nsrdb_options
 1
 1
 0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
 inflation_rate
 1
 1
@@ -7923,6 +7929,12 @@ insurance_rate
 1
 1
 0.500000
+is_advanced
+1
+1
+1
+1
+0.000000
 is_optimize
 1
 1
@@ -9161,6 +9173,16 @@ ui_wacc
 1
 1
 6.672750
+use_specific_weather_file
+1
+1
+1
+1
+0.000000
+user_specified_weather_file
+1
+4
+0
 v_wind_max
 1
 1

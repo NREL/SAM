@@ -1,5 +1,5 @@
 1
-174
+178
 Monthly_util
 1
 2
@@ -405,8 +405,8 @@ gcr
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -424,6 +424,12 @@ in_nsrdb_options
 1
 1
 0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
 inflation_rate
 1
 1
@@ -436,6 +442,12 @@ inv_eff
 1
 1
 96.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 lat
 1
 1
@@ -1104,6 +1116,16 @@ ur_voltage_min
 1
 1
 0.000000
+use_specific_weather_file
+1
+1
+1
+1
+0.000000
+user_specified_weather_file
+1
+4
+0
 utility_bill_data
 1
 2

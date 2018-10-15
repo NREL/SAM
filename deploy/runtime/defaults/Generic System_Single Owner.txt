@@ -1,5 +1,5 @@
 1
-472
+474
 LeadAcid_q10
 1
 1
@@ -2725,6 +2725,12 @@ import_message
 1
 4
 0
+in_time_step
+1
+1
+1
+1
+0.000000
 inflation_rate
 1
 1
@@ -2737,6 +2743,12 @@ insurance_rate
 1
 1
 0.500000
+is_advanced
+1
+1
+1
+1
+0.000000
 itc_fed_amount
 1
 1

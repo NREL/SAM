@@ -1,5 +1,5 @@
 1
-419
+421
 A_aperture
 1
 1
@@ -1707,8 +1707,8 @@ hybrid_tou9
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -1721,6 +1721,18 @@ in_location_options
 1
 0.000000
 in_nsrdb_options
+1
+1
+1
+1
+0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
+is_advanced
 1
 1
 1
