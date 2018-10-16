@@ -1,5 +1,5 @@
 1
-520
+522
 CT
 1
 1
@@ -114,6 +114,12 @@ analysis_period_warning
 12
 No messages.
 analysis_type
+1
+1
+1
+1
+0.000000
+annual_albedo
 1
 1
 1
@@ -2949,6 +2955,10 @@ solar_data_file_name
 4
 106
 C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4

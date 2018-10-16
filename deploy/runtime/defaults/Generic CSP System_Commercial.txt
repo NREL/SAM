@@ -1,5 +1,5 @@
 1
-470
+471
 FossilFill
 1
 2
@@ -2272,6 +2272,10 @@ show_tax_credits
 1
 1
 1.000000
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4

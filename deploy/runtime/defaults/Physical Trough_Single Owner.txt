@@ -1,5 +1,5 @@
 1
-1129
+1130
 A_aperture
 1
 2
@@ -5987,6 +5987,10 @@ solar_data_file_name
 4
 106
 C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\tucson_az_32.222607_-110.974711_psmv3_60_tmy.csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4

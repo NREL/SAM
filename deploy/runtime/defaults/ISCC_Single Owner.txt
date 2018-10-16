@@ -1,5 +1,5 @@
 1
-526
+527
 A_sf
 1
 1
@@ -4894,6 +4894,10 @@ site_spec_cost
 1
 1
 16.000000
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4
