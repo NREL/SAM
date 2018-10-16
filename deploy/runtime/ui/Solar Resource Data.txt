@@ -1950,7 +1950,7 @@ TabOrder
 3
 4294967295
 
-31
+32
 annual_albedo
 3
 1
@@ -2249,6 +2249,18 @@ Location and Resource
 45
 phoenix_az_33.448377_-112.074037_psmv3_60_tmy
 TextEntry
+solar_data_file_name_load
+3
+4
+Loaded value
+ 
+ 
+0
+0
+1
+4
+0
+Default
 solar_data_source
 3
 4
@@ -2380,20 +2392,51 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-16139
+17767
 on_load{'Solar Resource Data'} = define() {
+	old_val = value('use_specific_weather_file');
+//	msgbox('0. user_specified='+value('use_specific_weather_file'));
 	on_change{'in_location_options'}();
+//	msgbox('1. user_specified='+value('use_specific_weather_file'));
 	on_change{'in_nsrdb_options'}();
+//	msgbox('2. user_specified='+value('use_specific_weather_file'));
 	update_library_folders('');
+//	msgbox('3. user_specified='+value('use_specific_weather_file'));
 	update_info();
+//	msgbox('4. user_specified='+value('use_specific_weather_file'));
+	value('solar_data_file_name_load', value('solar_data_file_name'));
 };
 
+on_change{'solar_resource'} = define() {
+//	msgbox('solar_resource change 0. user_specified='+value('use_specific_weather_file') + 
+//	'\nuser=' + value('user_specified_weather_file') +
+//	'\nlib='+ value('solar_data_file_name'));
+	if (	value('solar_data_file_name_load') != value('solar_data_file_name'))
+	{
+		value('use_specific_weather_file',0);
+	}
+//	msgbox('solar_resource change 1. user_specified='+value('use_specific_weather_file') + 
+//	'\nuser=' + value('user_specified_weather_file') +
+//	'\nlib='+ value('solar_data_file_name'));
+};
+/*
+// without this crash 
 on_change{'solar_data_file_name'} = define() {
+	msgbox('solar_data_file_name change 0. user_specified='+value('use_specific_weather_file') + 
+	'\nuser=' + value('user_specified_weather_file') +
+	'\nlib='+ value('solar_data_file_name'));
 	value('use_specific_weather_file',0);
+	msgbox('solar_data_file_name change 1. user_specified='+value('use_specific_weather_file') + 
+	'\nuser=' + value('user_specified_weather_file') +
+	'\nlib='+ value('solar_data_file_name'));
 };
-
+*/
 on_change{'solar_resource_file'} = define() {
-	update_info();
+//	msgbox('solar_resource_file on change, user_specified='+value('use_specific_weather_file') + ', ' + value('solar_resource_file'));
+	if (value('use_specific_weather_file') == 0)
+	{
+		update_info();
+	}
 };
 
 // add user specified file folder path to list of
@@ -2439,6 +2482,7 @@ function update_info()
 	// reload library and exit
 	if (!file_exists(wf) )
 	{
+//	msgbox('rescan, wf = ' + wf);
 		rescanlibrary( 'solar' );
 		update_library_folders( '' );
 		refresh('solar_resource');
