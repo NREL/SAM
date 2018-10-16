@@ -1,5 +1,5 @@
 1
-88
+89
 FRUL
 1
 1
@@ -353,6 +353,10 @@ solar_data_file_name
 4
 107
 C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4

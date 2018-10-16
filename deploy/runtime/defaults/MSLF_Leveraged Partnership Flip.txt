@@ -1,5 +1,5 @@
 1
-768
+769
 A_aperture
 1
 1
@@ -4024,6 +4024,10 @@ sm1_aperture
 1
 1
 489728.968750
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4

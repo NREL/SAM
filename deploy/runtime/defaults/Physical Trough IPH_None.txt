@@ -1,5 +1,5 @@
 1
-622
+623
 A_aperture
 1
 2
@@ -3356,6 +3356,10 @@ single_loop_aperature
 1
 1
 2624.000000
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4

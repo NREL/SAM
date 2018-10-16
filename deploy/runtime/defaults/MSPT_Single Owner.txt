@@ -1,5 +1,5 @@
 1
-669
+670
 A_sf_UI
 1
 1
@@ -12387,6 +12387,10 @@ solar_data_file_name
 4
 118
 C:\Users\tneises\Documents\Projects\GitHub\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4

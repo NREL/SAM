@@ -1,5 +1,5 @@
 1
-327
+328
 Label
 1
 1
@@ -1926,6 +1926,10 @@ solar_data_file_name
 4
 81
 C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4

@@ -1,5 +1,5 @@
 1
-680
+681
 A_aperture
 1
 3
@@ -3810,6 +3810,10 @@ show_tax_credits
 1
 1
 1.000000
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4
