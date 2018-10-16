@@ -24,8 +24,8 @@ Height
 220
 Caption
 5
-31
-Automated DC-connection options
+26
+Automated dispatch options
 Bold
 2
 1
@@ -485,9 +485,9 @@ Selection
 Items
 6
 5
-Auto DC-connected dispatch: Perfect look ahead
-Auto DC-connected dispatch: 1-day look behind
-Auto DC-connected dispatch: Input forecast
+Automated dispatch: Perfect look ahead
+Automated dispatch: 1-day look behind
+Automated dispatch: Input forecast
 Input custom dispatch
 Manual dispatch
 ShowCaptions
@@ -1025,8 +1025,8 @@ batt_dispatch_choice
 Battery dispatch choice front-of-meter
  
 Battery
-175
-Auto DC-connected dispatch: 1-day look ahead|Auto DC-connected dispatch: 1-day look behind| Auto DC-connected dispatch: Input forecast| Input battery dispatch| Manual dispatch
+148
+Automated dispatch: 1-day look ahead|Automated dispatch: 1-day look behind|Automated dispatch: Input forecast|Input battery dispatch|Manual dispatch
 3
 1
 1
