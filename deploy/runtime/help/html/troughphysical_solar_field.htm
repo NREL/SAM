@@ -38,7 +38,7 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">The Solar Field page displays variables and options that describe the size and properties of the solar field, properties of the heat transfer fluid. It also displays reference design specifications of the solar field.</span></p>
+<p class="p_Text"><span class="f_Text">The Solar Field page displays variables and options that describe the size and properties of the solar field, and properties of the heat transfer fluid. It also displays reference design specifications of the solar field.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For a detailed explanation of the physical trough model, see Wagner, M. J.; Gilman, P. (2011). </span><span class="f_Emphasis">Technical Manual for the SAM Physical Trough Model</span><span class="f_Note">. 124 pp.; NREL Report No. TP-5500-51825. <a href="http://www.nrel.gov/docs/fy11osti/51825.pdf" target="_blank" class="weblink">http://www.nrel.gov/docs/fy11osti/51825.pdf</a> (3.7 MB)</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Solar Field Parameters</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Option 1 and Option 2</span></p>
@@ -59,7 +59,7 @@
 <p class="p_VariableDescription"><img alt="IMG_solar-field-layout-subsections" width="351" height="141" style="margin:0;width:351px;height:141px;border:none" src="img_solar-field-layout-subsections.png"/></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The number of field subsections determine the location and shape of header piping that delivers heat transfer fluid to the power block, which affects the heat loss calculation.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Header pipe roughness (m)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The header pipe roughness is a measure of the internal surface roughness of the header and runner piping. SAM uses this value in calculation of the shear force and piping pressure drop in the headers.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The header pipe roughness is a measure of the internal surface roughness of the header and runner piping. SAM uses this value in calculation of the shear force and piping pressure drops.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Surface roughness is important in determining the scale of the pressure drop throughout the system. As a general rule, the rougher the surface, the higher the pressure drop (and parasitic pumping power load). The surface roughness is a function of the material and manufacturing method used for the piping.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">HTF pump efficiency</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The electrical-to-mechanical energy conversion efficiency of the field heat transfer fluid pump. This value accounts for all mechanical, thermodynamic, and electrical efficiency losses.</span></p>
@@ -77,151 +77,151 @@
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note">If you define a custom fluid, SAM disables the minimum and maximum operating temperature variables and displays zero because it does not have information about the operating limits for the fluid you defined. You can check the time series temperature data in the results to ensure that they do not exceed the limits for your custom fluid.</span></p>
 <p class="p_TitleTable" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleTable">Heat transfer fluids on the Field HTF Fluid list.</span></p>
-<div style="text-align: center; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 12px 0px;"><table id="tbl_HeatTransferFluidProperties" class="Default No Border" style="width:100%; border:none; border-spacing:0px;">
+<div style="text-align: center; text-indent: 0; padding: 0 0 0 0; margin: 0 0 12px 0;"><table id="tbl_HeatTransferFluidProperties" class="Default No Border" style="width:100%;">
 <thead>
-<tr style="text-align:left;vertical-align:bottom;">
-<th style="vertical-align:bottom; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Name</span></p>
+<tr>
+<th style="vertical-align:bottom;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Name</span></p>
 </th>
-<th style="vertical-align:bottom; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Type</span></p>
+<th style="vertical-align:bottom;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Type</span></p>
 </th>
-<th style="vertical-align:bottom; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Min Optimal Operating Temp</span></p>
+<th style="vertical-align:bottom;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Min Optimal Operating Temp</span></p>
 <p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">ºC</span></p>
 </th>
-<th style="vertical-align:bottom; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Max Optimal Operating Temp*</span></p>
+<th style="vertical-align:bottom;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Max Optimal Operating Temp*</span></p>
 <p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">ºC</span></p>
 </th>
-<th style="vertical-align:bottom; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Freeze Point</span></p>
+<th style="vertical-align:bottom;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Freeze Point</span></p>
 <p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">ºC</span></p>
 </th>
-<th style="vertical-align:bottom; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Comments</span></p>
+<th style="vertical-align:bottom;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Comments</span></p>
 </th>
 </tr>
 </thead>
 <tbody>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Hitec Solar Salt</span></p>
+<tr>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Hitec Solar Salt</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nitrate Salt</span></p>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nitrate Salt</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">238</span></p>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">238</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">593</span></p>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">593</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">238</span></p>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">238</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Hitec</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nitrate Salt</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">142</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">538</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">142</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Hitec XL</span></p>
+<tr>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Hitec</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nitrate Salt</span></p>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nitrate Salt</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">120</span></p>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">142</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">500</span></p>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">538</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">120</span></p>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">142</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Caloria HT 43</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Mineral Hydrocarbon</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-12</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">315</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-12 (pour point)</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">used in first Luz trough plant, SEGS I</span></p>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Therminol VP-1</span></p>
+<tr>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Hitec XL</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Mixture of Biphenyl and Diphenyl Oxide</span></p>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nitrate Salt</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">12</span></p>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">120</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">400</span></p>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">500</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">12 (crystallization point)</span></p>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">120</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Standard for current generation oil HTF systems</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Therminol 59</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Synthetic HTF</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-45</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">315</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-68 (pour point)</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Therminol 66</span></p>
+<tr>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Caloria HT 43</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">?</span></p>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Mineral Hydrocarbon</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-12</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">345</span></p>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">315</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-25 (pour point)</span></p>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-12 (pour point)</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Dowtherm Q</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Synthetic Oil</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-35</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">330</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">n/a</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">used in first Luz trough plant, SEGS I</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Dowtherm RP</span></p>
+<tr>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Therminol VP-1</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Synthetic Oil</span></p>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Mixture of Biphenyl and Diphenyl Oxide</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">n/a</span></p>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">12</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">330</span></p>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">400</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">n/a</span></p>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">12 (crystallization point)</span></p>
 </td>
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Standard for current generation oil HTF systems</span></p>
+</td>
+</tr>
+<tr>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Therminol 59</span></p>
+</td>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Synthetic HTF</span></p>
+</td>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-45</span></p>
+</td>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">315</span></p>
+</td>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-68 (pour point)</span></p>
+</td>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Therminol 66</span></p>
+</td>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">?</span></p>
+</td>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+</td>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">345</span></p>
+</td>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-25 (pour point)</span></p>
+</td>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Dowtherm Q</span></p>
+</td>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Synthetic Oil</span></p>
+</td>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-35</span></p>
+</td>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">330</span></p>
+</td>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">n/a</span></p>
+</td>
+<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Dowtherm RP</span></p>
+</td>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Synthetic Oil</span></p>
+</td>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">n/a</span></p>
+</td>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">330</span></p>
+</td>
+<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">n/a</span></p>
+</td>
+<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
 </td>
 </tr>
 </tbody>
@@ -261,41 +261,42 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Max field flow velocity (m/s)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The maximum allowable HTF flow velocity through the field.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum and maximum solar field HTF flow velocity depend on the minimum and maximum HTF mass flow rates, HTF density at the design loop inlet temperature, and the absorber tube inner diameter specified on the Receivers page. SAM calculates the field HTF flow velocity for the receiver type with the smallest diameter.</span></p>
-<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table class="Default No Border" style="border:none; border-spacing:0px;">
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Variable Name</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table class="Default No Border" >
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Variable Name</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Equation</span></p>
+<td style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Equation</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Notes</span></p>
+<td style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Notes</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Min field flow velocity</span></p>
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Min field flow velocity</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-MinFieldFlowVelocity" width="135" height="38" style="margin:0px auto 0px auto;width:135px;height:38px;border:none" src="eq_trp-minfieldflowvelocity.png"/></p>
+<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-MinFieldFlowVelocity" width="135" height="38" style="margin:0 auto 0 auto;width:135px;height:38px;border:none" src="eq_trp-minfieldflowvelocity.png"/></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Evaluate rho at SF inlet temp</span></p>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Evaluate rho at SF inlet temp</span></p>
 <p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Minimum tube diameter is for tube diameters from whole loop</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Max field flow velocity</span></p>
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Max field flow velocity</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-MaxFieldFlowVelocity" width="141" height="38" style="margin:0px auto 0px auto;width:141px;height:38px;border:none" src="eq_trp-maxfieldflowvelocity.png"/></p>
+<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-MaxFieldFlowVelocity" width="141" height="38" style="margin:0 auto 0 auto;width:141px;height:38px;border:none" src="eq_trp-maxfieldflowvelocity.png"/></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Evaluate rho at SF outlet temp</span></p>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Evaluate rho at SF outlet temp</span></p>
 </td>
 </tr>
 </table>
 </div>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Header design min flow velocity (m/s)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum allowable HTF flow velocity in the header piping under design conditions.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum allowable HTF flow velocity in the header piping under design conditions, in the cold headers and hot headers, respectively.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Header design max flow velocity (m/s)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum allowable HTF flow velocity in the header piping under design conditions. The minimum/maximum header flow velocities are used to determine the diameter of the header piping as flow is diverted to each loop in the field. After flow is distributed (or collected) to/from the loops, System Advisor calculates the flow velocity and resizes the piping to correspond to the maximum velocity if the calculated value falls outside of the user-specified range.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum allowable HTF flow velocity in the header piping under design conditions in the cold headers and hot headers, respectively.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum and maximum header flow velocities are used to determine the diameter of the header piping as flow is diverted to each loop in the field. After flow is distributed (or collected) to/from the loops, System Advisor calculates the flow velocity and resizes the piping to correspond to the maximum velocity if the calculated value falls outside of the user-specified range.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Design Point</span></h3>
 <p class="p_Text"><span class="f_Text">The design point variables show values at the Irradiation at Design Value that SAM uses to determine the system capacity in sizing calculations, and for area-based costs on the <a href="trough_system_costs.htm" class="topiclink">System Costs</a> page.</span></p>
-<p class="p_Text"><span class="f_Text">For a description of the equations for the design point variables, see </span><span class="f_VariableDescription">See <a href="troughphysical_solar_field.htm#calcvalues" class="topiclink">Equations for Calculated Values</a>.</span></p>
+<p class="p_Text"><span class="f_Text">For a description of the equations for the design point variables, see </span><span class="f_VariableDescription"><a href="troughphysical_solar_field.htm#calcvalues" class="topiclink">Equations for Calculated Values</a>.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Single loop aperture (m²)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The aperture area of a single loop of collectors, equal to the product of aperture width, reflective area, times the structure length times the number of collector assemblies per loop according to the distribution of the up to four collector types in the field. This area does not include non-reflective surface on the collector or non-reflective space between collectors.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Single Loop Aperture (m²) = Sum of the SCA Reflective Aperture Area (m²) values for each SCA in the loop</span></p>
@@ -320,103 +321,87 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The thermal energy delivered by the solar field under design conditions at the actual solar multiple.</span></p>
 <h4 class="p_Heading4"><a id="calcvalues" class="hmanchor"></a><span class="f_Heading4">Equations for Calculated Values</span></h4>
 <p class="p_Text"><span class="f_Text">The following table shows the equations SAM uses to calculate the values for the variables above that you cannot edit. (In Windows, the calculated values appear in blue.)</span></p>
-<div style="text-align: center; text-indent: 0px; page-break-inside: avoid; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table class="Default No Border" style="width:100%; border:none; border-spacing:0px;">
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Variable Name</span></p>
+<div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="Default No Border" style="width:100%;">
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Variable Name</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Equation</span></p>
+<td style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Equation</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Notes</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Single loop aperture</span></p>
-</td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-SingleLoopAperture" width="77" height="22" style="margin:0px auto 0px auto;width:77px;height:22px;border:none" src="eq_trp-singleloopaperture.png"/></p>
-</td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Sum of aperture area of each individual SCA in the loop</span></p>
+<td style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Notes</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Loop optical efficiency</span></p>
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Single loop aperture</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">= Aggregate SCA Efficiency * Aggregate Receiver Optical Efficiency</span></p>
+<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-SingleLoopAperture" width="77" height="22" style="margin:0 auto 0 auto;width:77px;height:22px;border:none" src="eq_trp-singleloopaperture.png"/></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Efficiencies are calculated elsewhere</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total loop conversion efficiency</span></p>
-</td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">= Loop Optical Efficiency * Receiver Heat Loss Efficiency</span></p>
-</td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><img alt="EQ_TRP-LoopTotalEfficiency" width="44" height="20" style="margin:0;width:44px;height:20px;border:none" src="eq_trp-looptotalefficiency.png"/><span class="f_ImageCaption"> used in Total Required Aperture equation</span></p>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Sum of aperture area of each individual SCA in the loop</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total required aperture, SM=1</span></p>
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Loop optical efficiency</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-TotalReqAperture" width="179" height="40" style="margin:0px auto 0px auto;width:179px;height:40px;border:none" src="eq_trp-totalreqaperture.png"/></p>
+<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">= Aggregate SCA Efficiency * Aggregate Receiver Optical Efficiency</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><img alt="EQ_TRP-AsfSM" width="40" height="20" style="margin:0;width:40px;height:20px;border:none" src="eq_trp-asfsm.png"/> used in Required Number of Loops equation</p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Required number of loops, SM=1</span></p>
-</td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-ReqNumberLoops" width="54" height="37" style="margin:0px auto 0px auto;width:54px;height:37px;border:none" src="eq_trp-reqnumberloops.png"/></p>
-</td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Efficiencies are calculated elsewhere</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Actual number of loops</span></p>
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total loop conversion efficiency</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-ActualNumberLoops1" width="110" height="32" style="margin:0px auto 0px auto;width:110px;height:32px;border:none" src="eq_trp-actualnumberloops1.png"/><span class="f_TableTextCenter"> </span><br />
-<img alt="EQ_TRP-ActualNumberLoops2" width="79" height="32" style="margin:0px auto 0px auto;width:79px;height:32px;border:none" src="eq_trp-actualnumberloops2.png"/></p>
+<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">= Loop Optical Efficiency * Receiver Heat Loss Efficiency</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Equation depends on solar field option: Option 1 uses the solar multiple value that you specify, Option 2 uses the field aperture area that you specify.</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total aperture reflective area</span></p>
-</td>
-<td style="vertical-align:middle; padding:2px;"><p style="text-align: center;"><img alt="EQ_TRP-ActualAperture" width="117" height="20" style="margin:0px auto 0px auto;width:117px;height:20px;border:none" src="eq_trp-actualaperture.png"/></p>
-</td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><img alt="EQ_TRP-LoopTotalEfficiency" width="44" height="20" style="margin:0;width:44px;height:20px;border:none" src="eq_trp-looptotalefficiency.png"/><span class="f_ImageCaption"> used in Total Required Aperture equation</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Actual solar multiple</span></p>
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total required aperture, SM=1</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-SM" width="19" height="18" style="margin:0px auto 0px auto;width:19px;height:18px;border:none" src="eq_trp-sm.png"/><br />
-<span class="f_TableTextCenter"> <img alt="EQ_TRP-SM1" width="35" height="30" style="margin:0px auto 0px auto;width:35px;height:30px;border:none" src="eq_trp-sm1.png"/></span></p>
+<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-TotalReqAperture" width="179" height="40" style="margin:0 auto 0 auto;width:179px;height:40px;border:none" src="eq_trp-totalreqaperture.png"/></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Equation depends on solar field option: Option 1 is the solar multiple value that you specify, Option 2 is the ratio.</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Field thermal output</span></p>
-</td>
-<td style="vertical-align:middle; padding:2px;"><p style="text-align: center;"><img alt="EQ_TRP-FieldThermalOutput" width="100" height="40" style="margin:0px auto 0px auto;width:100px;height:40px;border:none" src="eq_trp-fieldthermaloutput.png"/></p>
-</td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">pb = power block</span></p>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><img alt="EQ_TRP-AsfSM" width="40" height="20" style="margin:0;width:40px;height:20px;border:none" src="eq_trp-asfsm.png"/> used in Required Number of Loops equation</p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Solar field area</span></p>
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Required number of loops, SM=1</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p style="text-align: center;"><img alt="EQ_TRP-SolarFieldArea" width="203" height="38" style="margin:0px auto 0px auto;width:203px;height:38px;border:none" src="eq_trp-solarfieldarea.png"/></p>
+<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-ReqNumberLoops" width="54" height="37" style="margin:0 auto 0 auto;width:54px;height:37px;border:none" src="eq_trp-reqnumberloops.png"/></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><img alt="EQ_TRP-Wscai" width="34" height="19" style="margin:0;width:34px;height:19px;border:none" src="eq_trp-wscai.png"/><span class="f_TableTextLeft"> is the aperture width of each SCA i in the loop</span></p>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:middle;">
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total land area</span></p>
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Actual number of loops</span></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">= Solar field area * Non-Solar field land area multiplier</span></p>
+<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-ActualNumberLoops1" width="110" height="32" style="margin:0 auto 0 auto;width:110px;height:32px;border:none" src="eq_trp-actualnumberloops1.png"/><span class="f_TableTextCenter"> </span><br />
+<img alt="EQ_TRP-ActualNumberLoops2" width="79" height="32" style="margin:0 auto 0 auto;width:79px;height:32px;border:none" src="eq_trp-actualnumberloops2.png"/></p>
 </td>
-<td style="vertical-align:middle; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Equation depends on solar field option: Option 1 uses the solar multiple value that you specify, Option 2 uses the field aperture area that you specify.</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total aperture reflective area</span></p>
+</td>
+<td style="vertical-align:middle;"><p style="text-align: center;"><img alt="EQ_TRP-ActualAperture" width="117" height="20" style="margin:0 auto 0 auto;width:117px;height:20px;border:none" src="eq_trp-actualaperture.png"/></p>
+</td>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Actual solar multiple</span></p>
+</td>
+<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-SM" width="19" height="18" style="margin:0 auto 0 auto;width:19px;height:18px;border:none" src="eq_trp-sm.png"/><br />
+<span class="f_TableTextCenter"> <img alt="EQ_TRP-SM1" width="35" height="30" style="margin:0 auto 0 auto;width:35px;height:30px;border:none" src="eq_trp-sm1.png"/></span></p>
+</td>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Equation depends on solar field option: Option 1 is the solar multiple value that you specify, Option 2 is the ratio.</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Field thermal output</span></p>
+</td>
+<td style="vertical-align:middle;"><p style="text-align: center;"><img alt="EQ_TRP-FieldThermalOutput" width="100" height="40" style="margin:0 auto 0 auto;width:100px;height:40px;border:none" src="eq_trp-fieldthermaloutput.png"/></p>
+</td>
+<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">pb = power block</span></p>
 </td>
 </tr>
 </table>
@@ -468,7 +453,7 @@
 <p class="p_Normal"><span class="f_Text">The solar field consists of loops of collector-receiver assemblies. On the Solar Field page, you specify the characteristics of a single loop in the field.</span></p>
 <p class="p_Text"><img alt="IMG_TroughPhysical-SingleLoopInField" width="499" height="249" style="margin:0;width:499px;height:249px;border:none" src="img_troughphysical-singleloopinfield.png"/></p>
 <p class="p_Text"><span class="f_Text">When you configure a loop, you specify the following characteristics using the single loop configuration diagram:</span></p>
-<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Number of assemblies in a single loop.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Collector (SCA) type of each assembly in the loop.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Receiver (HCE) type of each assembly in the loop.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Collector defocusing order, if applicable.</span></p><p class="p_Text"><span class="f_Text">Each rectangle in the diagram represents a collector-receiver assembly. </span><span class="f_List">SAM allows you to specify a single loop of up to 35 collector-receiver assemblies, and up to four different receiver and collector types.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Number of assemblies in a single loop.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Collector (SCA) type of each assembly in the loop.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Receiver (HCE) type of each assembly in the loop.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Collector defocusing order, if applicable.</span></p><p class="p_Text"><span class="f_Text">Each rectangle in the diagram represents a collector-receiver assembly. </span><span class="f_List">SAM allows you to specify a single loop of up to 35 collector-receiver assemblies, and up to four different receiver and collector types.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> In the current version of SAM, it is not possible to specify more than one loop. If your field consists of different types of collectors and receivers, you must represent the proportion of different types in a single loop.</span></p>
 <p class="p_Text"><span class="f_Text">Assembly #1, at the cold end of the loop, appears at the top left corner of the diagram. Depending on the collector defocusing option you use, you may need to know each assembly's number to assign a collector defocusing order. </span><span class="f_TableTextLeft"> See <a href="troughphysical_solar_field.htm#physical_sfcollectordefocusing" class="topiclink">Defining Collector Defocusing</a> for details.</span></p>
 <p class="p_Text"><img alt="SS_TroughPhysicalSF-ConfigureLoopDiagram" width="437" height="230" style="margin:0;width:437px;height:230px;border:none" src="ss_troughphysicalsf-configureloopdiagram.png"/></p>
@@ -476,16 +461,16 @@
 <p class="p_Text"><img alt="SS_PhysicalTroughSF-AssemblyDiagram" width="562" height="191" style="margin:0;width:562px;height:191px;border:none" src="ss_physicaltroughsf-assemblydiagram.png"/></p>
 <p class="p_Text"><span class="f_Text">The characteristics of each collector type are defined on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors page</a>, and of each receiver type on the <a href="troughphysical_receivers_hces.htm" class="topiclink">Receivers page</a>.</span></p>
 <p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To specify the loop configuration:</span></p>
-<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">In Number of SCA/HCE assemblies per loop, type a number between 1 and 32. SAM displays a rectangle for each assembly in the loop.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">If the loop has more than one type of collector, define each of up to four collector types on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors page</a>. At this stage in your analysis, you can simply make note of the type number for each collector type you plan to include in the loop and define its characteristics on the Collectors page later.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit SCAs</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Use your mouse to select all of the collectors to which you want to assign a type number. You can use the Ctrl key to select individual collectors.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Use your keyboard to type the number corresponding to the collector's type number as defined on the Collectors page. SAM displays the collector (SCA) type number and color in the rectangle representing the collector type.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">Repeat Steps 4-5 for each collector type in the loop.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;display:inline-block;width:24px;margin-left:-24px">7.</span><span class="f_ProcedureStep">If the loop includes more than one receiver type, click </span><span class="f_CHInterfaceElement">Edit HCEs</span><span class="f_ProcedureStep">, and follow Steps 4-6 for each receiver (HCE) type. You can define up to four receiver types on the <a href="troughphysical_receivers_hces.htm" class="topiclink">Receivers page</a>.</span></p><h4 class="p_Heading4"><a id="physical_sfcollectordefocusing" class="hmanchor"></a><span class="f_Heading4">Defining Collector Defocusing</span></h4>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">In Number of SCA/HCE assemblies per loop, type a number between 1 and 32. SAM displays a rectangle for each assembly in the loop.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">If the loop has more than one type of collector, define each of up to four collector types on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors page</a>. At this stage in your analysis, you can simply make note of the type number for each collector type you plan to include in the loop and define its characteristics on the Collectors page later.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit SCAs</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Use your mouse to select all of the collectors to which you want to assign a type number. You can use the Ctrl key to select individual collectors.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Use your keyboard to type the number corresponding to the collector's type number as defined on the Collectors page. SAM displays the collector (SCA) type number and color in the rectangle representing the collector type.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">Repeat Steps 4-5 for each collector type in the loop.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">7.</span><span class="f_ProcedureStep">If the loop includes more than one receiver type, click </span><span class="f_CHInterfaceElement">Edit HCEs</span><span class="f_ProcedureStep">, and follow Steps 4-6 for each receiver (HCE) type. You can define up to four receiver types on the <a href="troughphysical_receivers_hces.htm" class="topiclink">Receivers page</a>.</span></p><h4 class="p_Heading4"><a id="physical_sfcollectordefocusing" class="hmanchor"></a><span class="f_Heading4">Defining Collector Defocusing</span></h4>
 <p class="p_Text"><span class="f_Text">During hours when the solar field delivers more thermal energy than the power cycle (and thermal storage system, if available) can accept, or when the mass flow rate is higher than the maximum single loop flow rate defined on the Solar Field page, SAM defocuses collectors in the solar field to reduce the solar field thermal output. Mathematically, the model multiplies the radiation incident on the collector by a defocusing factor. In a physical system, the collector tracker would adjust the collector angle to reduce the amount of absorbed energy.</span></p>
 <p class="p_Text"><span class="f_Text">SAM provides three defocusing options:</span></p>
-<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Option 1. No partial defocusing allowed: Collectors are either oriented toward the sun or in stow position. Collectors defocus in the order you specify. You should define a defocusing order as described below for this option.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Option 2. Partial defocusing allowed with sequenced defocusing: Collectors can partially defocus by making slight adjustments in the tracking angle. Collectors defocus in the order you specify. You should define a defocusing order as described below for this option.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Option 3. Partial defocusing allowed with simultaneous defocusing: </span><span class="f_List">Collectors can partially defocus by making slight adjustments in the tracking angle. </span><span class="f_ListLast">All of the collectors in the field defocus by the same amount at the same time. You do not need to define a defocusing order for this option.</span></p><p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To define collector defocusing option:</span></p>
-<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ProcedureStep">In the Solar Field Parameters options, choose a defocusing option (see descriptions above):</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Option 1: Clear </span><span class="f_CHInterfaceElement">Allow partial defocusing</span><span class="f_ProcedureStepNoNumber">.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Option 1. No partial defocusing allowed: Collectors are either oriented toward the sun or in stow position. Collectors defocus in the order you specify. You should define a defocusing order as described below for this option.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Option 2. Partial defocusing allowed with sequenced defocusing: Collectors can partially defocus by making slight adjustments in the tracking angle. Collectors defocus in the order you specify. You should define a defocusing order as described below for this option.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Option 3. Partial defocusing allowed with simultaneous defocusing: </span><span class="f_List">Collectors can partially defocus by making slight adjustments in the tracking angle. </span><span class="f_ListLast">All of the collectors in the field defocus by the same amount at the same time. You do not need to define a defocusing order for this option.</span></p><p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To define collector defocusing option:</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ProcedureStep">In the Solar Field Parameters options, choose a defocusing option (see descriptions above):</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Option 1: Clear </span><span class="f_CHInterfaceElement">Allow partial defocusing</span><span class="f_ProcedureStepNoNumber">.</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Option 2: Check </span><span class="f_CHInterfaceElement">Allow partial defocusing</span><span class="f_ProcedureStepNoNumber">, and choose </span><span class="f_CHInterfaceElement">Sequenced</span><span class="f_ProcedureStepNoNumber">.</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Option 3: Check </span><span class="f_CHInterfaceElement">Allow partial defocusing</span><span class="f_ProcedureStepNoNumber">, and choose </span><span class="f_CHInterfaceElement">Simultaneous</span><span class="f_ProcedureStepNoNumber">.</span></p>
 <p class="p_Text"><span class="f_Text">If you choose Option 1 or Option 2, you should define the defocus order as described in the next procedure. If you choose Option 3, SAM ignores the defocusing order displayed in the single loop diagram.</span></p>
 <p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To define the defocus order:</span></p>
-<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">If you choose Option 1 or 2 for the defocusing option, under Single Loop Configuration, click Edit Defocus Order.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click each collector-receiver assembly in the loop, and type a number in the Defocus Order window. Assemblies are numbered starting at the top right corner of the diagram, at the cold end of the loop. Be sure to assign a unique defocus order number to each assembly.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Click </span><span class="f_CHInterfaceElement">Reset Defocus</span><span class="f_ProcedureStepNoNumber"> if you want the defocus order to start at the hot end of the loop and proceed sequentially to the cold end of the loop.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">If you choose Option 1 or 2 for the defocusing option, under Single Loop Configuration, click Edit Defocus Order.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click each collector-receiver assembly in the loop, and type a number in the Defocus Order window. Assemblies are numbered starting at the top right corner of the diagram, at the cold end of the loop. Be sure to assign a unique defocus order number to each assembly.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Click </span><span class="f_CHInterfaceElement">Reset Defocus</span><span class="f_ProcedureStepNoNumber"> if you want the defocus order to start at the hot end of the loop and proceed sequentially to the cold end of the loop.</span></p>
 
 </td></tr></table>
 

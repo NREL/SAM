@@ -50,7 +50,7 @@
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="dclosses" class="hmanchor"></a><span class="f_Heading3_atocs_">DC Losses</span></h3>
 <p class="p_Text"><span class="f_Text">The DC losses account for DC electrical losses on the DC side of the system that the module model does not calculate, such as electrical losses in the DC wiring that connects modules in the array.</span></p>
 <p class="p_Text"><span class="f_Text">The five DC loss categories (mismatch, diodes and connections, etc) are to help you keep track of factors influencing the total DC loss. You can see the effect of the total DC loss in the hourly results:</span></p>
-<p class="p_EquationExcel" style="text-indent: -119px; margin: 0px 0px 6px 167px;"><span class="f_EquationExcel">Net DC array power = Subarray 1 Gross DC power × ( 1 - Subarray 1 Total DC power loss ÷ 100% ) </span><br />
+<p class="p_EquationExcel" style="text-indent: -119px; margin: 0 0 6px 167px;"><span class="f_EquationExcel">Net DC array power = Subarray 1 Gross DC power × ( 1 - Subarray 1 Total DC power loss ÷ 100% ) </span><br />
 <span class="f_EquationExcel">+ Subarray 2 Gross DC power × ( 1 - Subarray 2 Total DC power loss ÷ 100% )</span><br />
 <span class="f_EquationExcel">+ Subarray 3 Gross DC power × ( 1 - Subarray 3 Total DC power loss ÷ 100% )</span><br />
 <span class="f_EquationExcel">+ Subarray 4 Gross DC power × ( 1 - Subarray 4 Total DC power loss ÷ 100% )</span></p>
@@ -70,7 +70,7 @@
 <p class="p_Text"><span class="f_Text">The total DC power loss for each subarray represents the subarray's total DC electrical loss:</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total DC power loss, %</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The total DC power loss is the total loss that applies to each subarray:</span></p>
-<p class="p_EquationExcel" style="text-indent: -198px; margin: 0px 0px 6px 247px;"><span class="f_EquationExcel">Total DC power loss = 100% × { 1 - [ ( 1 - Mismatch ÷ 100% )</span><br />
+<p class="p_EquationExcel" style="text-indent: -198px; margin: 0 0 6px 247px;"><span class="f_EquationExcel">Total DC power loss = 100% × { 1 - [ ( 1 - Mismatch ÷ 100% )</span><br />
 <span class="f_EquationExcel">× ( 1 - Diodes and connections ÷ 100% )</span><br />
 <span class="f_EquationExcel">× ( 1 - DC wiring ÷ 100% )</span><br />
 <span class="f_EquationExcel">× ( 1 - Tracking error ÷ 100% )</span><br />
@@ -85,78 +85,78 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Each module is connected to its own <a href="pv_inverter.htm#microinverters" class="topiclink">microinverter</a>.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">DC optimizers</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Power electronics minimize array losses.</span></p>
-<div style="text-align: center; text-indent: 0px; page-break-inside: avoid; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="margin:0 auto; border:none; border-spacing:0px;">
+<div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="margin:0 auto; border:none; border-spacing:0;">
 <thead>
-<tr style="text-align:left;vertical-align:top;">
-<th style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Arial,Helvetica,sans-serif; color: #000000;">&nbsp;</span></p>
+<tr>
+<th style="vertical-align:top; padding:0;"><p style="margin: 0 0 8px 0;"><span style="font-family: Arial,Helvetica,sans-serif; color: #000000;">&nbsp;</span></p>
 </th>
-<th style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">String inverters</span></p>
+<th style="vertical-align:top; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">String inverters</span></p>
 </th>
-<th style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Microinverters</span></p>
+<th style="vertical-align:top; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Microinverters</span></p>
 </th>
-<th style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">DC optimizers</span></p>
+<th style="vertical-align:top; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">DC optimizers</span></p>
 </th>
 </tr>
 </thead>
 <tbody>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Module mismatch</span></p>
+<tr>
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Module mismatch</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Diodes and connections</span></p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.5</span></p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.5</span></p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.5</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">DC wiring</span></p>
+<tr>
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Diodes and connections</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.5</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.5</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Tracking error</span></p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.5</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Nameplate</span></p>
+<tr>
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">DC wiring</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">DC power optimizer loss</span></p>
+<tr>
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Tracking error</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Nameplate</span></p>
+</td>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+</td>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+</td>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">DC power optimizer loss</span></p>
+</td>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+</td>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+</td>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1</span></p>
 </td>
 </tr>
 </tbody>
@@ -176,7 +176,7 @@
 <p class="p_Text"><span class="f_Text">Use curtailment and availability losses to represent reductions in the system's output or complete system outages for maintenance, forced outages due to grid constraints, or other situations that prevent the system from operating as designed.</span></p>
 <p class="p_Text"><span class="f_Text">To edit the curtailment and availability losses, click </span><span class="f_CHInterfaceElement">Edit losses</span><span class="f_Text">.</span></p>
 <p class="p_Text"><span class="f_Text">The Edit Losses window allows you to define loss factors as follows:</span></p>
-<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Constant loss is a single loss factor that applies to the system's entire output. You can use this to model an availability factor.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Hourly losses apply to specific hours of the year.</span></p><p class="p_Text"><span class="f_Text">SAM reduces the system's output in each hour by the loss percentage that you specify for that hour. For a given hour, a loss of zero would result in no adjustment. A loss of 5% would reduce the output by 5%, and a loss of -5% would increase the output value by 5%. For subhourly simulations, SAM applies the loss factor for a given hour to each time step in that hour.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Constant loss is a single loss factor that applies to the system's entire output. You can use this to model an availability factor.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Hourly losses apply to specific hours of the year.</span></p><p class="p_Text"><span class="f_Text">SAM reduces the system's output in each hour by the loss percentage that you specify for that hour. For a given hour, a loss of zero would result in no adjustment. A loss of 5% would reduce the output by 5%, and a loss of -5% would increase the output value by 5%. For subhourly simulations, SAM applies the loss factor for a given hour to each time step in that hour.</span></p>
 <p class="p_Text"><img alt="SS_Hourly_Factors" width="568" height="256" style="margin:0;width:568px;height:256px;border:none" src="ss_hourly_factors.png"/></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Constant loss</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM reduces the hourly output value for each time step by the percentage that you specify, which effectively reduces the system's total annual output by that amount.</span></p>
