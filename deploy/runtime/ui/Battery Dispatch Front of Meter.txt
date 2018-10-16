@@ -1,7 +1,7 @@
 Battery Dispatch Front of Meter
-1000
-365
-25
+1002
+372
+26
 GroupBox
 
 1
@@ -15,17 +15,17 @@ X
 345
 Y
 3
-15
+18
 Width
 3
 643
 Height
 3
-220
+250
 Caption
 5
-31
-Automated DC-connection options
+26
+Automated dispatch options
 Bold
 2
 1
@@ -87,13 +87,13 @@ X
 345
 Y
 3
-240
+270
 Width
 3
 643
 Height
 3
-109
+88
 Caption
 5
 22
@@ -120,12 +120,57 @@ Width
 985
 Height
 3
-355
+364
 Caption
 5
 27
 Storage Dispatch Controller
 Bold
+2
+1
+Label
+
+1
+12
+Name
+5
+18
+batt_auto_fom_help
+X
+3
+345
+Y
+3
+36
+Width
+3
+624
+Height
+3
+48
+Caption
+5
+216
+The automated dispatch models consider the PPA price, electricity rate, costs to cycle, and inverter clipping to decide when to charge and discharge, using one of the time horizon options.  See help for more details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 Divider
@@ -177,7 +222,7 @@ X
 486
 Y
 3
-297
+327
 Width
 3
 90
@@ -211,7 +256,7 @@ X
 759
 Y
 3
-201
+237
 Width
 3
 90
@@ -270,7 +315,7 @@ X
 759
 Y
 3
-174
+210
 Width
 3
 219
@@ -301,7 +346,7 @@ X
 606
 Y
 3
-126
+162
 Width
 3
 372
@@ -346,7 +391,7 @@ X
 603
 Y
 3
-111
+147
 Width
 3
 339
@@ -485,9 +530,9 @@ Selection
 Items
 6
 5
-Auto DC-connected dispatch: Perfect look ahead
-Auto DC-connected dispatch: 1-day look behind
-Auto DC-connected dispatch: Input forecast
+Automated dispatch: Perfect look ahead
+Automated dispatch: 1-day look behind
+Automated dispatch: Input forecast
 Input custom dispatch
 Manual dispatch
 ShowCaptions
@@ -512,7 +557,7 @@ X
 357
 Y
 3
-258
+288
 Width
 3
 279
@@ -557,7 +602,7 @@ X
 357
 Y
 3
-111
+147
 Width
 3
 219
@@ -593,7 +638,7 @@ X
 519
 Y
 3
-126
+162
 Width
 3
 48
@@ -652,7 +697,7 @@ X
 519
 Y
 3
-153
+189
 Width
 3
 45
@@ -711,7 +756,7 @@ X
 357
 Y
 3
-75
+111
 Width
 3
 90
@@ -738,7 +783,7 @@ X
 453
 Y
 3
-75
+111
 Width
 3
 516
@@ -779,13 +824,13 @@ X
 357
 Y
 3
-54
+84
 Width
 3
 627
 Height
 3
-16
+19
 Orientation
 3
 0
@@ -1025,8 +1070,8 @@ batt_dispatch_choice
 Battery dispatch choice front-of-meter
  
 Battery
-175
-Auto DC-connected dispatch: 1-day look ahead|Auto DC-connected dispatch: 1-day look behind| Auto DC-connected dispatch: Input forecast| Input battery dispatch| Manual dispatch
+148
+Automated dispatch: 1-day look ahead|Automated dispatch: 1-day look behind|Automated dispatch: Input forecast|Input battery dispatch|Manual dispatch
 3
 1
 1
