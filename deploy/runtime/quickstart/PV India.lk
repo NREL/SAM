@@ -75,12 +75,22 @@ while (run_wizard_again)
 // Show solar resource page
 show_page( 'Location and Resource');
 
+// Add India weather files to solar resource library
+indiaWeatherDir = runtimedir() + '/quickstart/pv_india_weather';
+x = get_settings('solar_data_paths');
+if ( strpos( x, indiaWeatherDir ) < 0 )
+{
+	if ( x != '' ) x += ';';
+	x += indiaWeatherDir;
+	set_settings('solar_data_paths', x );
+	rescanlibrary( 'solar' );
+}
+
 // Highlight resource selection box in UI
 focusto('GroupBox2');
 geom = widgetpos('GroupBox2');
 transp( geom, 'yellow', 70 );
 millisleep(500);
-
 
 // Get Location from User
 currentSRD = get('solar_resource');

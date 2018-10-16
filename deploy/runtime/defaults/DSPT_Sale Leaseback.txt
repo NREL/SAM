@@ -1,5 +1,5 @@
 1
-611
+612
 A_sf
 1
 1
@@ -264,6 +264,12 @@ analysis_period_warning
 4
 12
 No messages.
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -8950,7 +8956,7 @@ solar_resource
 1
 4
 45
-daggett_ca_34.864032_-116.888098_psmv3_60_tmy
+daggett_ca_34.865371_-116.783023_psmv3_60_tmy
 solar_resource_file
 1
 4

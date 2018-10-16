@@ -788,6 +788,42 @@ AlignRight
 AlignTop
 2
 1
+Divider
+
+1
+9
+Name
+5
+14
+group_optional
+X
+3
+603
+Y
+3
+660
+Width
+3
+267
+Height
+3
+16
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+13
+Optional Data
+Bold
+2
+1
 TextEntry
 
 1
@@ -1248,42 +1284,6 @@ BackColour
 TabOrder
 3
 11
-Divider
-
-1
-9
-Name
-5
-9
-object 21
-X
-3
-603
-Y
-3
-660
-Width
-3
-267
-Height
-3
-16
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-13
-Optional Data
-Bold
-2
-1
 Divider
 
 1
@@ -2432,7 +2432,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-18115
+18228
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 //	msgbox('1. user_specified='+value('use_specific_weather_file'));
@@ -2532,7 +2532,9 @@ function update_info()
 	property( 'summary_caption' , 'Caption' , msg_caption );
 	property( 'summary_caption' , 'TextColour' , msg_color );
 	show('btn_file_add', show_button);
-	show('annual_snow',technology() == "Flat Plate PV");
+	show('group_optional',technology() == 'Flat Plate PV');
+	show('annual_snow',technology() == 'Flat Plate PV');
+	show('annual_albedo',technology() == 'Flat Plate PV');
 	refresh();
 	
 	// if selected library file is no longer in library

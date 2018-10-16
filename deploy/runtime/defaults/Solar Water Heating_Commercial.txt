@@ -1,5 +1,5 @@
 1
-342
+343
 FRUL
 1
 1
@@ -95,6 +95,12 @@ analysis_period_warning
 4
 12
 No messages.
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1

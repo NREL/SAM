@@ -1,5 +1,5 @@
 1
-462
+463
 AntiFrPar
 1
 1
@@ -1034,6 +1034,12 @@ periods
 1
 1
 1.000000
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -1843,7 +1849,7 @@ solar_resource
 1
 4
 44
-tucson_az_32.222607_-110.974711_psmv3_60_tmy
+tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
