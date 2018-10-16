@@ -1,5 +1,5 @@
 1
-328
+329
 Label
 1
 1
@@ -42,6 +42,12 @@ periods
 1
 1
 1.000000
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -1938,8 +1944,8 @@ TMY2
 solar_resource
 1
 4
-19
-USA ND Fargo (TMY2)
+42
+fargo_nd_46.877186_-96.789803_psmv3_60_tmy
 solar_resource_file
 1
 4

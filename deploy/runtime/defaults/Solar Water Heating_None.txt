@@ -1,5 +1,5 @@
 1
-89
+90
 FRUL
 1
 1
@@ -84,6 +84,12 @@ albedo
 1
 1
 0.200000
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1

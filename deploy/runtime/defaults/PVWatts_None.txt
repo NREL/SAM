@@ -1,5 +1,5 @@
 1
-56
+57
 ac_nameplate
 1
 1
@@ -42,6 +42,12 @@ periods
 1
 1
 1.000000
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -298,7 +304,7 @@ solar_resource
 1
 4
 45
-phoenix_az_33.448377_-112.074037_psmv3_60_tmy
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4

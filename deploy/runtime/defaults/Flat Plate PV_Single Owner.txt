@@ -5142,7 +5142,7 @@ solar_resource
 1
 4
 45
-phoenix_az_33.448377_-112.074037_psmv3_60_tmy
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4

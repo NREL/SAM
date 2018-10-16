@@ -1,5 +1,5 @@
 1
-484
+485
 ac_nameplate
 1
 1
@@ -53,6 +53,12 @@ analysis_period_warning
 4
 12
 No messages.
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -2677,7 +2683,7 @@ solar_resource
 1
 4
 45
-alamosa_co_37.469449_-105.870021_psmv3_60_tmy
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
