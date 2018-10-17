@@ -134,20 +134,20 @@ transp( geom, 'yellow', 0 );
 show_page('System Design');
 
 // Highlight resource selection box in UI
-focusto('desired_size');
-geom = widgetpos('desired_size');
+focusto('system_capacity');
+geom = widgetpos('system_capacity');
 transp( geom, 'yellow', 70 );
 millisleep(500);
 
 sysSize = in( "What is your desired PV array size (kW)?", 
-			   get('desired_size'), 
+			   get('system_capacity'), 
 			   "Desired PV Array Size",
 			   [defaultX, defaultY] );
 exitIf(sysSize == "");
 
 sysSize = to_real(sysSize);//sdt
 
-set('desired_size', sysSize );
+set('system_capacity', sysSize );
 
 // Review time
 millisleep(1000);
@@ -635,7 +635,7 @@ runTornado = yesno("Would you like to run a few parametrics and generate a torna
 if (runTornado){
 	variation = 0.10;
 	outLabel = 'lcog';
-	vars = [ 'desired_size', 'per_module', 'om_capacity',
+	vars = [ 'system_capacity', 'per_module', 'om_capacity',
 			'debt_percent',	'term_int_rate','loan_moratorium'];
 	
 	/* TODO - make function or retrieve additional data in varinfo */
