@@ -1,5 +1,5 @@
 1
-114
+117
 A_absorber
 1
 1
@@ -204,6 +204,12 @@ alpha_wall
 1
 1
 0.600000
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -420,8 +426,8 @@ h_slot_gap
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -434,6 +440,18 @@ in_location_options
 1
 0.000000
 in_nsrdb_options
+1
+1
+1
+1
+0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
+is_advanced
 1
 1
 1
@@ -525,11 +543,10 @@ slope_ns
 1
 1
 0.000000
-solar_data_file_name
+solar_data_file_name_load
 1
 4
-85
-F:\SAMDEV\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+0
 solar_data_source
 1
 4
@@ -539,7 +556,7 @@ solar_resource
 1
 4
 45
-phoenix_az_33.448377_-112.074037_psmv3_60_tmy
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4

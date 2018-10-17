@@ -1,7 +1,7 @@
 PV System Design
-843
-984
-89
+839
+1008
+102
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 824
 Height
 3
-125
+132
 Caption
 5
 13
@@ -42,44 +42,17 @@ X
 9
 Y
 3
-390
+147
 Width
 3
 824
 Height
 3
-479
+749
 Caption
 5
 12
 DC Subarrays
-Bold
-2
-1
-GroupBox
-
-1
-7
-Name
-5
-9
-GroupBox4
-X
-3
-9
-Y
-3
-135
-Width
-3
-824
-Height
-3
-253
-Caption
-5
-37
-Configuration at Reference Conditions
 Bold
 2
 1
@@ -96,10 +69,10 @@ X
 9
 Y
 3
-873
+903
 Width
 3
-825
+824
 Height
 3
 89
@@ -120,10 +93,10 @@ Name
 HLine1
 X
 3
-18
+12
 Y
 3
-474
+753
 Width
 3
 802
@@ -141,8 +114,44 @@ Colour
 255
 Caption
 5
-20
-String Configuration
+52
+Electrical Sizing Information (See Help for Details)
+Bold
+2
+1
+Divider
+
+1
+9
+Name
+5
+8
+HLine111
+X
+3
+12
+Y
+3
+228
+Width
+3
+802
+Height
+3
+18
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+24
+Electrical Configuration
 Bold
 2
 1
@@ -156,10 +165,10 @@ Name
 HLine12
 X
 3
-18
+12
 Y
 3
-543
+420
 Width
 3
 802
@@ -188,24 +197,24 @@ Label
 12
 Name
 5
-6
-Label1
+9
+Label1123
 X
 3
-561
+66
 Y
 3
-162
+369
 Width
 3
-260
+218
 Height
 3
 21
 Caption
 5
-39
-Sizing messages (see Help for details):
+38
+String Vmp at reference conditions (V)
 TextColour
 4
 0
@@ -223,7 +232,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -233,14 +242,59 @@ Label
 12
 Name
 5
-7
-Label11
+9
+Label1124
 X
 3
-72
+66
 Y
 3
-519
+345
+Width
+3
+218
+Height
+3
+21
+Caption
+5
+38
+String Voc at reference conditions (V)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+9
+Label1133
+X
+3
+66
+Y
+3
+321
 Width
 3
 218
@@ -250,7 +304,97 @@ Height
 Caption
 5
 29
-Strings allocated to subarray
+Number of modules in subarray
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+9
+Label1145
+X
+3
+66
+Y
+3
+297
+Width
+3
+218
+Height
+3
+21
+Caption
+5
+31
+Strings in parallel in subarray
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+9
+Label1146
+X
+3
+66
+Y
+3
+273
+Width
+3
+218
+Height
+3
+21
+Caption
+5
+30
+Modules per string in subarray
 TextColour
 4
 0
@@ -285,7 +429,7 @@ X
 66
 Y
 3
-801
+681
 Width
 3
 218
@@ -330,7 +474,7 @@ X
 66
 Y
 3
-777
+657
 Width
 3
 218
@@ -375,7 +519,7 @@ X
 66
 Y
 3
-729
+609
 Width
 3
 218
@@ -420,7 +564,7 @@ X
 66
 Y
 3
-705
+585
 Width
 3
 218
@@ -462,16 +606,16 @@ Name
 Label2
 X
 3
-561
+51
 Y
 3
-291
+849
 Width
 3
-260
+264
 Height
 3
-66
+34
 Caption
 5
 89
@@ -507,16 +651,16 @@ Name
 Label213
 X
 3
-18
+12
 Y
 3
-411
+165
 Width
 3
 800
 Height
 3
-60
+41
 Caption
 5
 285
@@ -552,10 +696,10 @@ Name
 Label214
 X
 3
-297
+291
 Y
 3
-894
+924
 Width
 3
 533
@@ -594,103 +738,13 @@ Label
 Name
 5
 6
-Label3
-X
-3
-366
-Y
-3
-153
-Width
-3
-110
-Height
-3
-21
-Caption
-5
-9
-Inverters
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-12
-Name
-5
-7
-Label31
-X
-3
-129
-Y
-3
-153
-Width
-3
-110
-Height
-3
-21
-Caption
-5
-7
-Modules
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-12
-Name
-5
-6
 Label4
 X
 3
-426
+420
 Y
 3
-459
+213
 Width
 3
 110
@@ -732,10 +786,10 @@ Name
 Label41
 X
 3
-561
+555
 Y
 3
-459
+213
 Width
 3
 110
@@ -777,10 +831,10 @@ Name
 Label411
 X
 3
-696
+690
 Y
 3
-459
+213
 Width
 3
 110
@@ -822,10 +876,10 @@ Name
 Label4111
 X
 3
-294
+288
 Y
 3
-459
+213
 Width
 3
 110
@@ -867,10 +921,10 @@ Name
 Label5
 X
 3
-294
+288
 Y
 3
-495
+249
 Width
 3
 110
@@ -912,10 +966,10 @@ Name
 Picture1
 X
 3
-30
+33
 Y
 3
-573
+453
 Width
 3
 190
@@ -938,10 +992,10 @@ Name
 batt_max_power
 X
 3
-417
+666
 Y
 3
-321
+105
 Width
 3
 82
@@ -997,13 +1051,13 @@ Name
 dcac_ratio
 X
 3
-165
+666
 Y
 3
-78
+81
 Width
 3
-100
+82
 Height
 3
 21
@@ -1046,65 +1100,6 @@ BackColour
 TabOrder
 3
 3
-Numeric
-
-1
-16
-Name
-5
-12
-desired_size
-X
-3
-165
-Y
-3
-54
-Width
-3
-100
-Height
-3
-21
-Value
-1
-10.000000
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-2
 Label
 
 1
@@ -1115,10 +1110,10 @@ Name
 gcr_info
 X
 3
-18
+21
 Y
 3
-825
+708
 Width
 3
 795
@@ -1163,7 +1158,7 @@ X
 84
 Y
 3
-753
+633
 Width
 3
 200
@@ -1205,10 +1200,10 @@ Name
 inverter_count
 X
 3
-417
+135
 Y
 3
-225
+33
 Width
 3
 82
@@ -1264,16 +1259,16 @@ Name
 layout_warning
 X
 3
-561
+327
 Y
 3
-186
+774
 Width
 3
-260
+478
 Height
 3
-99
+108
 Text
 5
 0
@@ -1295,65 +1290,51 @@ BackColour
 TabOrder
 3
 21
-Numeric
+Label
 
 1
-16
+12
 Name
 5
-18
-modules_per_string
+14
+lbl_multi_mppt
 X
 3
-150
+66
 Y
 3
-225
+393
 Width
 3
-82
+218
 Height
 3
 21
-Value
-1
-10.000000
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-3
-Prefix
+Caption
 5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
+32
+Inverter MPPT input for subarray
+TextColour
 4
 0
 0
 0
 255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
+Bold
+2
+0
+FontSize
 3
-9
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Numeric
 
 1
@@ -1364,10 +1345,10 @@ Name
 mppt_hi_inverter
 X
 3
-417
+204
 Y
 3
-297
+825
 Width
 3
 82
@@ -1423,10 +1404,10 @@ Name
 mppt_low_inverter
 X
 3
-417
+204
 Y
 3
-273
+801
 Width
 3
 82
@@ -1482,13 +1463,13 @@ Name
 num_strings_total
 X
 3
-141
+399
 Y
 3
-495
+81
 Width
 3
-100
+82
 Height
 3
 21
@@ -1537,27 +1518,27 @@ Label
 12
 Name
 5
-34
-pv_system_inverter_voltage_warning
+8
+object 7
 X
 3
-273
+30
 Y
 3
-345
+63
 Width
 3
-270
+190
 Height
 3
-39
+43
 Caption
 5
-16
-Inverter Warning
+61
+Please specify the DC system size using "DC Subarrays" below.
 TextColour
 4
-255
+0
 0
 0
 255
@@ -1576,102 +1557,6 @@ AlignRight
 AlignTop
 2
 1
-RadioChoice
-
-1
-10
-Name
-5
-19
-size_auto_or_manual
-X
-3
-30
-Y
-3
-27
-Width
-3
-794
-Height
-3
-23
-Selection
-3
-4294967295
-Items
-6
-2
-Specify desired array size
-Specify modules and inverters
-ShowCaptions
-2
-1
-Horizontal
-2
-1
-TabOrder
-3
-1
-Numeric
-
-1
-16
-Name
-5
-19
-strings_in_parallel
-X
-3
-150
-Y
-3
-249
-Width
-3
-82
-Height
-3
-21
-Value
-1
-4.000000
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-10
 Numeric
 
 1
@@ -1685,7 +1570,7 @@ X
 288
 Y
 3
-729
+609
 Width
 3
 100
@@ -1744,7 +1629,7 @@ X
 288
 Y
 3
-801
+681
 Width
 3
 101
@@ -1774,7 +1659,7 @@ X
 288
 Y
 3
-753
+633
 Width
 3
 100
@@ -1820,6 +1705,65 @@ BackColour
 TabOrder
 3
 27
+Numeric
+
+1
+16
+Name
+5
+28
+subarray1_modules_per_string
+X
+3
+288
+Y
+3
+273
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+23
 MonthlyFactor
 
 1
@@ -1833,7 +1777,7 @@ X
 288
 Y
 3
-702
+582
 Width
 3
 87
@@ -1852,14 +1796,132 @@ Numeric
 16
 Name
 5
+20
+subarray1_mppt_input
+X
+3
+288
+Y
+3
+393
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+18
+subarray1_nmodules
+X
+3
+288
+Y
+3
+321
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+23
+Numeric
+
+1
+16
+Name
+5
 18
 subarray1_nstrings
 X
 3
-294
+288
 Y
 3
-519
+297
 Width
 3
 100
@@ -1918,7 +1980,7 @@ X
 288
 Y
 3
-777
+657
 Width
 3
 100
@@ -1970,6 +2032,124 @@ Numeric
 16
 Name
 5
+20
+subarray1_string_vmp
+X
+3
+288
+Y
+3
+369
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+23
+Numeric
+
+1
+16
+Name
+5
+20
+subarray1_string_voc
+X
+3
+288
+Y
+3
+345
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+23
+Numeric
+
+1
+16
+Name
+5
 14
 subarray1_tilt
 X
@@ -1977,7 +2157,7 @@ X
 288
 Y
 3
-705
+585
 Width
 3
 100
@@ -2036,7 +2216,7 @@ X
 288
 Y
 3
-681
+561
 Width
 3
 119
@@ -2066,7 +2246,7 @@ X
 288
 Y
 3
-564
+444
 Width
 3
 113
@@ -2103,10 +2283,10 @@ Name
 subarray2_azimuth
 X
 3
-423
+420
 Y
 3
-729
+609
 Width
 3
 100
@@ -2162,10 +2342,10 @@ Name
 subarray2_backtrack
 X
 3
-423
+420
 Y
 3
-801
+681
 Width
 3
 101
@@ -2192,10 +2372,10 @@ Name
 subarray2_enable
 X
 3
-426
+420
 Y
 3
-495
+249
 Width
 3
 101
@@ -2222,10 +2402,10 @@ Name
 subarray2_gcr
 X
 3
-423
+420
 Y
 3
-753
+633
 Width
 3
 100
@@ -2271,6 +2451,65 @@ BackColour
 TabOrder
 3
 34
+Numeric
+
+1
+16
+Name
+5
+28
+subarray2_modules_per_string
+X
+3
+420
+Y
+3
+273
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+30
 MonthlyFactor
 
 1
@@ -2281,10 +2520,10 @@ Name
 subarray2_monthly_tilt
 X
 3
-423
+420
 Y
 3
-702
+582
 Width
 3
 87
@@ -2303,14 +2542,132 @@ Numeric
 16
 Name
 5
+20
+subarray2_mppt_input
+X
+3
+420
+Y
+3
+393
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+18
+subarray2_nmodules
+X
+3
+420
+Y
+3
+321
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+30
+Numeric
+
+1
+16
+Name
+5
 18
 subarray2_nstrings
 X
 3
-426
+420
 Y
 3
-519
+297
 Width
 3
 100
@@ -2366,10 +2723,10 @@ Name
 subarray2_rotlim
 X
 3
-423
+420
 Y
 3
-777
+657
 Width
 3
 100
@@ -2421,14 +2778,132 @@ Numeric
 16
 Name
 5
+20
+subarray2_string_vmp
+X
+3
+420
+Y
+3
+369
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+30
+Numeric
+
+1
+16
+Name
+5
+20
+subarray2_string_voc
+X
+3
+420
+Y
+3
+345
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+30
+Numeric
+
+1
+16
+Name
+5
 14
 subarray2_tilt
 X
 3
-423
+420
 Y
 3
-705
+585
 Width
 3
 100
@@ -2484,10 +2959,10 @@ Name
 subarray2_tilt_eq_lat
 X
 3
-423
+420
 Y
 3
-681
+561
 Width
 3
 113
@@ -2514,10 +2989,10 @@ Name
 subarray2_track_mode
 X
 3
-423
+420
 Y
 3
-564
+444
 Width
 3
 113
@@ -2554,10 +3029,10 @@ Name
 subarray3_azimuth
 X
 3
-558
+555
 Y
 3
-729
+609
 Width
 3
 100
@@ -2613,10 +3088,10 @@ Name
 subarray3_backtrack
 X
 3
-558
+555
 Y
 3
-801
+681
 Width
 3
 98
@@ -2643,10 +3118,10 @@ Name
 subarray3_enable
 X
 3
-561
+555
 Y
 3
-495
+249
 Width
 3
 98
@@ -2673,10 +3148,10 @@ Name
 subarray3_gcr
 X
 3
-558
+555
 Y
 3
-753
+633
 Width
 3
 100
@@ -2722,6 +3197,65 @@ BackColour
 TabOrder
 3
 41
+Numeric
+
+1
+16
+Name
+5
+28
+subarray3_modules_per_string
+X
+3
+555
+Y
+3
+273
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+37
 MonthlyFactor
 
 1
@@ -2732,10 +3266,10 @@ Name
 subarray3_monthly_tilt
 X
 3
-558
+555
 Y
 3
-702
+582
 Width
 3
 87
@@ -2754,14 +3288,132 @@ Numeric
 16
 Name
 5
+20
+subarray3_mppt_input
+X
+3
+555
+Y
+3
+393
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+18
+subarray3_nmodules
+X
+3
+555
+Y
+3
+321
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+37
+Numeric
+
+1
+16
+Name
+5
 18
 subarray3_nstrings
 X
 3
-561
+555
 Y
 3
-519
+297
 Width
 3
 100
@@ -2817,10 +3469,10 @@ Name
 subarray3_rotlim
 X
 3
-558
+555
 Y
 3
-777
+657
 Width
 3
 100
@@ -2872,14 +3524,132 @@ Numeric
 16
 Name
 5
+20
+subarray3_string_vmp
+X
+3
+555
+Y
+3
+369
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+37
+Numeric
+
+1
+16
+Name
+5
+20
+subarray3_string_voc
+X
+3
+555
+Y
+3
+345
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+37
+Numeric
+
+1
+16
+Name
+5
 14
 subarray3_tilt
 X
 3
-558
+555
 Y
 3
-705
+585
 Width
 3
 100
@@ -2935,10 +3705,10 @@ Name
 subarray3_tilt_eq_lat
 X
 3
-558
+555
 Y
 3
-681
+561
 Width
 3
 116
@@ -2965,10 +3735,10 @@ Name
 subarray3_track_mode
 X
 3
-558
+555
 Y
 3
-564
+444
 Width
 3
 113
@@ -3005,10 +3775,10 @@ Name
 subarray4_azimuth
 X
 3
-693
+690
 Y
 3
-729
+609
 Width
 3
 100
@@ -3064,10 +3834,10 @@ Name
 subarray4_backtrack
 X
 3
-693
+690
 Y
 3
-801
+681
 Width
 3
 101
@@ -3094,10 +3864,10 @@ Name
 subarray4_enable
 X
 3
-696
+690
 Y
 3
-495
+249
 Width
 3
 98
@@ -3124,10 +3894,10 @@ Name
 subarray4_gcr
 X
 3
-693
+690
 Y
 3
-753
+633
 Width
 3
 100
@@ -3173,6 +3943,65 @@ BackColour
 TabOrder
 3
 48
+Numeric
+
+1
+16
+Name
+5
+28
+subarray4_modules_per_string
+X
+3
+690
+Y
+3
+273
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+44
 MonthlyFactor
 
 1
@@ -3183,10 +4012,10 @@ Name
 subarray4_monthly_tilt
 X
 3
-693
+690
 Y
 3
-702
+582
 Width
 3
 87
@@ -3205,14 +4034,132 @@ Numeric
 16
 Name
 5
+20
+subarray4_mppt_input
+X
+3
+690
+Y
+3
+393
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+18
+subarray4_nmodules
+X
+3
+690
+Y
+3
+321
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+44
+Numeric
+
+1
+16
+Name
+5
 18
 subarray4_nstrings
 X
 3
-696
+690
 Y
 3
-519
+297
 Width
 3
 100
@@ -3268,10 +4215,10 @@ Name
 subarray4_rotlim
 X
 3
-693
+690
 Y
 3
-777
+657
 Width
 3
 100
@@ -3323,14 +4270,132 @@ Numeric
 16
 Name
 5
+20
+subarray4_string_vmp
+X
+3
+690
+Y
+3
+369
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+44
+Numeric
+
+1
+16
+Name
+5
+20
+subarray4_string_voc
+X
+3
+690
+Y
+3
+345
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+44
+Numeric
+
+1
+16
+Name
+5
 14
 subarray4_tilt
 X
 3
-693
+690
 Y
 3
-705
+585
 Width
 3
 100
@@ -3386,10 +4451,10 @@ Name
 subarray4_tilt_eq_lat
 X
 3
-693
+690
 Y
 3
-681
+561
 Width
 3
 113
@@ -3416,10 +4481,10 @@ Name
 subarray4_track_mode
 X
 3
-693
+690
 Y
 3
-564
+444
 Width
 3
 113
@@ -3456,10 +4521,10 @@ Name
 system_capacity
 X
 3
-150
+399
 Y
 3
-177
+33
 Width
 3
 82
@@ -3515,10 +4580,10 @@ Name
 total_area
 X
 3
-150
+399
 Y
 3
-273
+105
 Width
 3
 82
@@ -3574,10 +4639,10 @@ Name
 total_dc_inverter_capacity
 X
 3
-417
+666
 Y
 3
-201
+57
 Width
 3
 82
@@ -3633,10 +4698,10 @@ Name
 total_inverter_capacity
 X
 3
-417
+666
 Y
 3
-177
+33
 Width
 3
 82
@@ -3692,10 +4757,10 @@ Name
 total_land_area
 X
 3
-141
+135
 Y
 3
-924
+954
 Width
 3
 100
@@ -3751,10 +4816,10 @@ Name
 total_module_area
 X
 3
-141
+135
 Y
 3
-897
+927
 Width
 3
 99
@@ -3810,10 +4875,10 @@ Name
 total_modules
 X
 3
-150
+399
 Y
 3
-201
+57
 Width
 3
 82
@@ -3865,191 +4930,14 @@ Numeric
 16
 Name
 5
-19
-user_inverter_count
-X
-3
-582
-Y
-3
-102
-Width
-3
-100
-Height
-3
-21
-Value
-1
-1.000000
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-6
-Numeric
-
-1
-16
-Name
-5
-23
-user_modules_per_string
-X
-3
-582
-Y
-3
-54
-Width
-3
-100
-Height
-3
-21
-Value
-1
-10.000000
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4
-Numeric
-
-1
-16
-Name
-5
-24
-user_strings_in_parallel
-X
-3
-582
-Y
-3
-78
-Width
-3
-100
-Height
-3
-21
-Value
-1
-4.000000
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-5
-Numeric
-
-1
-16
-Name
-5
 15
 vdcmax_inverter
 X
 3
-417
+204
 Y
 3
-249
+777
 Width
 3
 82
@@ -4095,126 +4983,8 @@ BackColour
 TabOrder
 3
 17
-Numeric
 
-1
-16
-Name
-5
-10
-vmp_string
-X
-3
-150
-Y
-3
-321
-Width
-3
-82
-Height
-3
-21
-Value
-1
-9999.000000
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-13
-Numeric
-
-1
-16
-Name
-5
-10
-voc_string
-X
-3
-150
-Y
-3
-297
-Width
-3
-82
-Height
-3
-21
-Value
-1
-9999.000000
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-12
-
-66
+78
 array_area
 3
 1
@@ -4250,27 +5020,27 @@ DC to AC ratio
  
 PV System Design
 0
-2
+8
 1
 1
 1
 1
 1.100000
 Numeric
-desired_size
+inv_num_mppt
 3
 1
-Desired array size
-kWdc
+Number of inverter MPPT inputs
+ 
 PV System Design
 0
-2
+8
 1
 1
 1
 1
-10.000000
-Numeric
+1.000000
+Default
 inverter_count
 3
 1
@@ -4279,7 +5049,7 @@ Number of inverters
 PV System Design
 15
 =\pv_size_array
-8
+2
 1
 1
 1
@@ -4298,21 +5068,6 @@ PV System Design
 4
 0
 MultilineText
-modules_per_string
-3
-1
-Modules per string
- 
-PV System Design
-15
-=\pv_size_array
-8
-1
-1
-1
-1
-10.000000
-Numeric
 mppt_hi_inverter
 3
 1
@@ -4358,7 +5113,7 @@ Default
 num_strings_total
 3
 1
-Strings in array
+Total number of strings
  
 PV System Design
 32
@@ -4384,36 +5139,6 @@ PV System Design
 1
 0.000000
 Default
-size_auto_or_manual
-3
-1
-Mode
- 
-PV System Design
-56
-Specify desired array size|Specify modules and inverters
-1
-1
-1
-1
-1
-0.000000
-RadioChoice
-strings_in_parallel
-3
-1
-Strings in parallel
- 
-PV System Design
-15
-=\pv_size_array
-8
-1
-1
-1
-1
-4.000000
-Numeric
 subarray1_azimuth
 3
 1
@@ -4456,6 +5181,21 @@ PV System Design
 1
 0.300000
 Default
+subarray1_modules_per_string
+3
+1
+Subarray 1 modules per string
+ 
+PV System Design
+15
+=\pv_size_array
+3
+1
+1
+1
+1
+10.000000
+Numeric
 subarray1_monthly_tilt
 3
 2
@@ -4471,6 +5211,34 @@ PV System Design
 0.000000 40.000000 40.000000 20.000000 20.000000 20.000000 20.000000 20.000000 20.000000 40.000000 40.000000 40.000000 
 
 MonthlyFactor
+subarray1_mppt_input
+3
+1
+Subarray 1 inverter MPPT input
+ 
+PV System Design
+0
+1
+1
+1
+1
+1
+1.000000
+Numeric
+subarray1_nmodules
+3
+1
+Subarray 1 number of modules
+ 
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
+Numeric
 subarray1_nstrings
 3
 1
@@ -4482,7 +5250,7 @@ PV System Design
     - ?${pv.subarray2.enable}[0|${pv.subarray2.num_strings}]
     - ?${pv.subarray3.enable}[0|${pv.subarray3.num_strings}]
     - ?${pv.subarray4.enable}[0|${pv.subarray4.num_strings}]
-9
+3
 1
 1
 1
@@ -4502,6 +5270,34 @@ PV System Design
 1
 1
 45.000000
+Numeric
+subarray1_string_vmp
+3
+1
+Subarray 2 string Vmp
+V
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
+Numeric
+subarray1_string_voc
+3
+1
+Subarray 1 string Voc
+V
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
 Numeric
 subarray1_tilt
 3
@@ -4602,6 +5398,20 @@ PV System Design
 1
 0.300000
 Default
+subarray2_modules_per_string
+3
+1
+Subarray 2 modules per string
+ 
+PV System Design
+0
+3
+1
+1
+1
+1
+0.000000
+Numeric
 subarray2_monthly_tilt
 3
 2
@@ -4617,6 +5427,34 @@ PV System Design
 0.000000 40.000000 40.000000 20.000000 20.000000 20.000000 20.000000 20.000000 20.000000 40.000000 40.000000 40.000000 
 
 Default
+subarray2_mppt_input
+3
+1
+Subarray 2 inverter MPPT input
+ 
+PV System Design
+0
+1
+1
+1
+1
+1
+1.000000
+Numeric
+subarray2_nmodules
+3
+1
+Subarray 2 number of modules
+ 
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
+Numeric
 subarray2_nstrings
 3
 1
@@ -4644,6 +5482,34 @@ PV System Design
 1
 1
 45.000000
+Numeric
+subarray2_string_vmp
+3
+1
+Subarray 2 string Vmp
+V
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
+Numeric
+subarray2_string_voc
+3
+1
+Subarray 2 string Voc
+V
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
 Numeric
 subarray2_tilt
 3
@@ -4744,6 +5610,20 @@ PV System Design
 1
 0.300000
 Default
+subarray3_modules_per_string
+3
+1
+Subarray 3 modules per string
+ 
+PV System Design
+0
+3
+1
+1
+1
+1
+0.000000
+Numeric
 subarray3_monthly_tilt
 3
 2
@@ -4759,6 +5639,34 @@ PV System Design
 0.000000 40.000000 40.000000 20.000000 20.000000 20.000000 20.000000 20.000000 20.000000 40.000000 40.000000 40.000000 
 
 Default
+subarray3_mppt_input
+3
+1
+Subarray 3 inverter MPPT input
+ 
+PV System Design
+0
+1
+1
+1
+1
+1
+1.000000
+Numeric
+subarray3_nmodules
+3
+1
+Subarray 3 number of modules
+ 
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
+Numeric
 subarray3_nstrings
 3
 1
@@ -4786,6 +5694,34 @@ PV System Design
 1
 1
 45.000000
+Numeric
+subarray3_string_vmp
+3
+1
+Subarray 3 string Vmp
+V
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
+Numeric
+subarray3_string_voc
+3
+1
+Subarray 3 string Voc
+V
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
 Numeric
 subarray3_tilt
 3
@@ -4886,6 +5822,20 @@ PV System Design
 1
 0.300000
 Default
+subarray4_modules_per_string
+3
+1
+Subarray 4 modules per string
+ 
+PV System Design
+0
+3
+1
+1
+1
+1
+0.000000
+Numeric
 subarray4_monthly_tilt
 3
 2
@@ -4901,6 +5851,34 @@ PV System Design
 0.000000 40.000000 40.000000 20.000000 20.000000 20.000000 20.000000 20.000000 20.000000 40.000000 40.000000 40.000000 
 
 Default
+subarray4_mppt_input
+3
+1
+Subarray 4 inverter MPPT input
+ 
+PV System Design
+0
+1
+1
+1
+1
+1
+1.000000
+Numeric
+subarray4_nmodules
+3
+1
+Subarray 4 number of modules
+ 
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
+Numeric
 subarray4_nstrings
 3
 1
@@ -4928,6 +5906,34 @@ PV System Design
 1
 1
 45.000000
+Numeric
+subarray4_string_vmp
+3
+1
+Subarray 4 string Vmp
+V
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
+Numeric
+subarray4_string_voc
+3
+1
+Subarray 4 string Voc
+V
+PV System Design
+0
+9
+1
+1
+1
+1
+0.000000
 Numeric
 subarray4_tilt
 3
@@ -4975,7 +5981,7 @@ RadioChoice
 system_capacity
 3
 1
-Nameplate capacity
+Nameplate DC capacity
 kWdc
 PV System Design
 0
@@ -5003,7 +6009,7 @@ Numeric
 total_dc_inverter_capacity
 3
 1
-Total capacity
+Total DC inverter capacity
 kWdc
 PV System Design
 0
@@ -5017,7 +6023,7 @@ Numeric
 total_inverter_capacity
 3
 1
-Total capacity
+Total AC capacity
 kWac
 PV System Design
 0
@@ -5059,7 +6065,7 @@ Numeric
 total_modules
 3
 1
-Number of modules
+Total number of modules
  
 PV System Design
 0
@@ -5069,48 +6075,6 @@ PV System Design
 1
 1
 0.000000
-Numeric
-user_inverter_count
-3
-1
-Number of inverters
- 
-PV System Design
-0
-2
-1
-1
-1
-1
-1.000000
-Numeric
-user_modules_per_string
-3
-1
-Modules per string
- 
-PV System Design
-0
-2
-1
-1
-1
-1
-10.000000
-Numeric
-user_strings_in_parallel
-3
-1
-Strings in parallel
- 
-PV System Design
-0
-2
-1
-1
-1
-1
-4.000000
 Numeric
 vdcmax_inverter
 3
@@ -5126,120 +6090,15 @@ PV System Design
 1
 0.000000
 Numeric
-vmp_string
-3
-1
-String Vmp
-V
-PV System Design
-0
-8
-1
-1
-1
-1
-0.000000
-Numeric
-voc_string
-3
-1
-String Voc
-V
-PV System Design
-0
-8
-1
-1
-1
-1
-0.000000
-Numeric
 
-8973
-equations{ '$MIMO$ pv_size_array' } = define()
-{
-	if (${size_auto_or_manual}==1)
-	{
-		${modules_per_string} = ${user_modules_per_string};
-		${strings_in_parallel} = ${user_strings_in_parallel};
-		${inverter_count} = ${user_inverter_count};
-		//positive number of inverters warning
-	}
-	if (${size_auto_or_manual}==0)
-	{
-		/* Sizing rules
-		1. Voc < Vdcmax
-		2. Vmp > Vmin
-		3. Vmp < Vmax
-		4. num series * num_parallel is about desired array size (num_parallel = desired / (num series * mod_power)
-		5. num inverters is about desired array size (num_inv = num_series * num_parallel * mod_power) / inv_power
-		*/
-			
-		// module parameters
-		mod_vmp= ?${module_model} [	${spe_vmp},${cec_v_mp_ref},${6par_vmp},${snl_ref_vmp},${sd11par_Vmp0}];
-		mod_voc= ?${module_model} [	${spe_voc},${cec_v_oc_ref},${6par_voc},${snl_ref_voc},${sd11par_Voc0}];
-		mod_power= ?${module_model} [${spe_power}, ${cec_p_mp_ref}, ${6par_pmp}, ${snl_ref_pmp},${sd11par_Pmp0}];
-		//default logstatus mimo_pv_size_array: Invalid module selection
-		//if mod_power<=0 logstatus mimo_pv_size_array: The module power is less than zero.Please check the module selected
-		//if mod_vmp<=0 logstatus mimo_pv_size_array: The module Vmp = %lg Wdc. The sizing wizard only works with modules with positive Vmp
+7976
+equations{ 'total_modules' } = define() {
+	a = ${subarray1_modules_per_string} * ${subarray1_nstrings}
+		+ (${subarray2_modules_per_string} * ${subarray2_nstrings}) * ${subarray2_enable}
+		+ (${subarray3_modules_per_string} * ${subarray3_nstrings}) * ${subarray3_enable}
+		+ (${subarray4_modules_per_string} * ${subarray4_nstrings}) * ${subarray4_enable};
 
-		// inverter parameters
-		inv_vmin= ?${inverter_model} [${inv_snl_mppt_low}, ${inv_ds_mppt_low}, ${inv_pd_mppt_low},${inv_cec_cg_mppt_low}];
-		inv_vdcmax= ?${inverter_model} [${inv_snl_vdcmax}, ${inv_ds_vdcmax}, ${inv_pd_vdcmax},${inv_cec_cg_vdcmax}];
-		inv_vmax= ?${inverter_model} [${inv_snl_mppt_hi}, ${inv_ds_mppt_hi}, ${inv_pd_mppt_hi},${inv_cec_cg_mppt_hi}];
-		inv_power= ?${inverter_model} [${inv_snl_paco}, ${inv_ds_paco}, ${inv_pd_paco},${inv_cec_cg_paco}];
-		//default logstatus mimo_pv_size_array: Invalid inverter selection
-		
-		// DC-connected battery parameters (assumed to use common inverter)
-		batt_max_power_dc = 0;
-		
-		f = financing();
-		if (f != "LCOE Calculator" && f != "None")
-		{
-			if (${en_batt}){
-				if (${batt_ac_or_dc} == 0)
-					batt_max_power_dc = ${batt_max_power};
-			}
-		}
-		
-		// calculations
-		if(mod_vmp>0)
-		{num_series= 0.5 * (inv_vmin + inv_vmax)/mod_vmp;}
-		if(inv_vdcmax > 0){
-			while ((num_series > 0) && ((num_series*mod_voc) > inv_vdcmax)){
-				num_series= num_series -1;
-			}
-		}
-		if (num_series < 1)
-		{ num_series= 1;}
-		num_series= to_int(num_series);
-		num_parallel= ${desired_size} * 1000 /(num_series * mod_power);
-		if (num_parallel < 1)
-		{ num_parallel= 1;}
-		num_parallel= to_int(num_parallel);
-		//if (desired_size * 1000 < inv_power) logstatus mimo_pv_size_array: The desired array power is less than a single inverter capacity
-		if (${dcac_ratio} > 0)
-		{ 	inverters = ((num_series * num_parallel * mod_power) /* + batt_max_power_dc */) / (${dcac_ratio} * inv_power);
-			//round inverters for best DC-AC ratio
-			if((inverters - floor(inverters)) < 0.5)
-			{	num_inverters = floor(inverters); }
-			else
-			{	num_inverters = ceil(inverters); }
-		}
-				
-		else
-		{ num_inverters = ceil(((num_series * num_parallel * mod_power) /* + batt_max_power_dc */) / inv_power);}
-		if (num_inverters < 1)
-		{ num_inverters = 1;}
-		
-		${modules_per_string} = num_series;
-		${strings_in_parallel} = num_parallel;
-		${inverter_count} = num_inverters;
-	}
-};
-
-equations{ 'total_modules' } = define() {	
-	return ${modules_per_string} * ${strings_in_parallel}; };
+	return a; };
 
 equations{ 'system_capacity' } = define() {
 	return ?${module_model}
@@ -5265,9 +6124,23 @@ equations{ 'total_area' } = define() {
 
 equations{ 'total_module_area' } = define() {
 	return ${total_area};
-	};
+};
 
-equations{ 'voc_string' } = define() {
+equations{ 'dcac_ratio' } = define() {
+	return ${system_capacity} /${total_inverter_capacity} ;
+};
+
+equations{ 'inv_num_mppt' } = define() {
+	return ?${inverter_model}
+	[
+		${inv_snl_num_mppt},
+		${inv_ds_num_mppt}, 
+		${inv_pd_num_mppt}, 
+		${inv_cec_num_mppt}
+	] ;
+};
+
+equations{ 'subarray1_string_voc' } = define() {
 	return ?${module_model}
 [
 	${spe_voc},
@@ -5276,9 +6149,42 @@ equations{ 'voc_string' } = define() {
 	${snl_voco},
 	${sd11par_Voc0}
 ]
-	* ${modules_per_string}; };
+	* ${subarray1_modules_per_string}; };
 	
-equations{ 'vmp_string' } = define() {
+equations{ 'subarray2_string_voc' } = define() {
+	return ?${module_model}
+[
+	${spe_voc},
+	${cec_v_oc_ref},
+	${6par_voc},
+	${snl_voco},
+	${sd11par_Voc0}
+]
+	* ${subarray2_modules_per_string}; };
+	
+equations{ 'subarray3_string_voc' } = define() {
+	return ?${module_model}
+[
+	${spe_voc},
+	${cec_v_oc_ref},
+	${6par_voc},
+	${snl_voco},
+	${sd11par_Voc0}
+]
+	* ${subarray3_modules_per_string}; };
+	
+equations{ 'subarray4_string_voc' } = define() {
+	return ?${module_model}
+[
+	${spe_voc},
+	${cec_v_oc_ref},
+	${6par_voc},
+	${snl_voco},
+	${sd11par_Voc0}
+]
+	* ${subarray4_modules_per_string}; };
+	
+equations{ 'subarray1_string_vmp' } = define() {
 	return ?${module_model}
 [
 	${spe_vmp},
@@ -5287,7 +6193,40 @@ equations{ 'vmp_string' } = define() {
 	${snl_ref_vmp},
 	${sd11par_Vmp0}
 ]
-	* ${modules_per_string}; };
+	* ${subarray1_modules_per_string}; };
+	
+equations{ 'subarray2_string_vmp' } = define() {
+	return ?${module_model}
+[
+	${spe_vmp},
+	${cec_v_mp_ref},
+	${6par_vmp},
+	${snl_ref_vmp},
+	${sd11par_Vmp0}
+]
+	* ${subarray2_modules_per_string}; };
+	
+equations{ 'subarray3_string_vmp' } = define() {
+	return ?${module_model}
+[
+	${spe_vmp},
+	${cec_v_mp_ref},
+	${6par_vmp},
+	${snl_ref_vmp},
+	${sd11par_Vmp0}
+]
+	* ${subarray3_modules_per_string}; };
+	
+equations{ 'subarray4_string_vmp' } = define() {
+	return ?${module_model}
+[
+	${spe_vmp},
+	${cec_v_mp_ref},
+	${6par_vmp},
+	${snl_ref_vmp},
+	${sd11par_Vmp0}
+]
+	* ${subarray4_modules_per_string}; };
 
 equations{ 'total_inverter_capacity' } = define() {
 	return ?${inverter_model} 
@@ -5340,13 +6279,7 @@ equations{ 'num_enabled' } = define() {
 	return 1+${subarray2_enable}+${subarray3_enable}+${subarray4_enable}; };
 
 equations{ 'num_strings_total' } = define() {
-	return ${strings_in_parallel}; };
-
-equations{ 'subarray1_nstrings' } = define() {
-	return ${strings_in_parallel}
-    - ?${subarray2_enable}[0,${subarray2_nstrings}]
-    - ?${subarray3_enable}[0,${subarray3_nstrings}]
-    - ?${subarray4_enable}[0,${subarray4_nstrings}]; };
+	return ${subarray1_nstrings} + ${subarray2_nstrings} + ${subarray3_nstrings} + ${subarray4_nstrings}; };
 
 equations{ 'total_land_area' } = define() {
 	area = ?${module_model}
@@ -5357,18 +6290,20 @@ equations{ 'total_land_area' } = define() {
 		${snl_area},
 		${sd11par_area}
 	] ;
-	land = ${modules_per_string} * area *
-		(${subarray1_nstrings}/${subarray1_gcr} +
-		 ${subarray2_enable}*${subarray2_nstrings}/${subarray2_gcr} + 
-		 ${subarray3_enable}*${subarray3_nstrings}/${subarray3_gcr} +
-		 ${subarray4_enable}*${subarray4_nstrings}/${subarray4_gcr});
+	land = area *
+		(${subarray1_modules_per_string}*${subarray1_nstrings}/${subarray1_gcr} +
+		 ${subarray2_enable}*${subarray2_modules_per_string}*${subarray2_nstrings}/${subarray2_gcr} + 
+		 ${subarray3_enable}*${subarray3_modules_per_string}*${subarray3_nstrings}/${subarray3_gcr} +
+		 ${subarray4_enable}*${subarray4_modules_per_string}*${subarray4_nstrings}/${subarray4_gcr});
 	return land	* 0.0002471; }; //convert to acres
 
 equations{ 'array_area' } = define() {
 	return ${total_area}; };
-	
+
 equations{ 'layout_warning'} = define(){
 
+	message = '';
+	
 	// DC-connected battery parameters (assumed to use common inverter)
 	dc_connected_battery = false;
 	f = financing();
@@ -5380,26 +6315,14 @@ equations{ 'layout_warning'} = define(){
 				value = (${system_capacity} + ${batt_max_power})/${total_inverter_capacity};
 				value_no_batt = (${system_capacity})/${total_inverter_capacity};
 				
-				message = ('DC/AC ratio for PV only is ' + sprintf('%.2f', value_no_batt) + '.\nActual DC/AC ratio with DC-connected battery (common inverter) is ' +  sprintf('%.2f', value) + '.\n');
+				message += ('DC/AC ratio for PV only is ' + sprintf('%.2f', value_no_batt) + '.\nActual DC/AC ratio with DC-connected battery (common inverter) is ' +  sprintf('%.2f', value) + '.\n');
 				dc_connected_battery = true;
 			}
 		}
 
 	}
-	if (!dc_connected_battery)
-	{
-		value = ${system_capacity}/${total_inverter_capacity};
-		message = ('Actual DC/AC ratio is ' +  sprintf('%.2f', value) + '. ');
-	}
 	
-	//dc-ac ratio information for auto-sized systems
-	if(${size_auto_or_manual} == 0 && abs(value - ${dcac_ratio}) > 0.05)
-	{
-		message += 'To get closer to the desired DC/AC Ratio, you may need to select a different module and/or inverter. ';
-		if (dc_connected_battery)
-			message += 'Or modify battery size. ';
-	}	
-	//string voltage information for both manually and automatically sized systems		
+	//string voltage information	
 	mod_vmp= ?${module_model} [	${spe_vmp},${cec_v_mp_ref},${6par_vmp},${snl_ref_vmp},${sd11par_Vmp0}];
 	mod_voc= ?${module_model} [	${spe_voc},${cec_v_oc_ref},${6par_voc},${snl_ref_voc},${sd11par_Voc0}];
 
@@ -5407,24 +6330,53 @@ equations{ 'layout_warning'} = define(){
 	max_modules = floor(${mppt_hi_inverter} / mod_voc);
 	if ( ${mppt_low_inverter} == 0 || ${mppt_hi_inverter} == 0 )
 	{
-		message +='\nThis inverter does not have data for MPPT voltage limits, so SAM cannot calculate MPPT clipping.';
+		message +='This inverter does not have data for MPPT voltage limits, so SAM cannot calculate MPPT clipping.\n';
 	}
 	elseif (max_modules < min_modules)
 	{
-		message += '\nFor this combination of module and inverter, it is not possible to size the string to keep string Voc and Vmp within the MPPT voltage limits. ';
-		message += 'To avoid inverter MPPT clipping, try a different module or inverter. ';
+		message += 'For this combination of module and inverter, it is not possible to size the string to keep string Voc and Vmp within the MPPT voltage limits. ';
+		message += 'To avoid inverter MPPT clipping, try a different module or inverter.\n';
 	}
 	else 
 	{
-		if (${voc_string} < ${mppt_low_inverter} || ${vmp_string} < ${mppt_low_inverter})
-			message += '\nThe string voltage is below the inverter minimum MPPT voltage at reference conditions. Consider using more modules per string.';
-		else if (${voc_string} > ${vdcmax_inverter} || ${vmp_string} > ${vdcmax_inverter})
-			message += '\nThe string voltage exceeds the inverter maximum rated voltage at reference conditions. Consider using fewer modules per string.';
-		else if (${voc_string} > ${mppt_hi_inverter} || ${vmp_string} > ${mppt_hi_inverter})
-			message += '\nThe string voltage exceeds the inverter maximum MPPT voltage at reference conditions. Consider using fewer modules per string.';
+		//string voc & vmp
+		voc = [${subarray1_string_voc}, ${subarray2_enable} * ${subarray2_string_voc}, ${subarray3_enable} * ${subarray3_string_voc}, ${subarray4_enable} * ${subarray4_string_voc}];
+		vmp = [${subarray1_string_vmp}, ${subarray2_enable} * ${subarray2_string_vmp}, ${subarray3_enable} * ${subarray3_string_vmp}, ${subarray4_enable} * ${subarray4_string_vmp}];
+
+		for (i=0; i<4; i++)
+		{
+			if (voc[i] != 0 && (voc[i] < ${mppt_low_inverter} || vmp[i] < ${mppt_low_inverter}))
+				message += 'Subarray ' + to_string(i+1) + ' string voltage is below the inverter minimum MPPT voltage at reference conditions. Consider using more modules per string.\n';
+			else if (voc[i] != 0 && (voc[i] > ${vdcmax_inverter} || vmp[i] > ${vdcmax_inverter}))
+				message += 'Subarray ' + to_string(i+1) + ' string voltage exceeds the inverter maximum rated voltage at reference conditions. Consider using fewer modules per string.\n';
+			else if (voc[i] != 0 && (voc[i] > ${mppt_hi_inverter} || vmp[i] > ${mppt_hi_inverter}))
+				message += 'Subarray ' + to_string(i+1) + ' string voltage exceeds the inverter maximum MPPT voltage at reference conditions. Consider using fewer modules per string.\n';
+		}
 	}
 
+	if (message == '')
+		message = 'No system sizing messages.';
 	return message; 
+};
+
+equations{ 'subarray1_nmodules' } = define() 
+{
+	return ${subarray1_modules_per_string} * ${subarray1_nstrings};
+};
+
+equations{ 'subarray2_nmodules' } = define() 
+{
+	return ${subarray2_enable} * ${subarray2_modules_per_string} * ${subarray2_nstrings};
+};
+
+equations{ 'subarray3_nmodules' } = define() 
+{
+	return ${subarray3_enable} * ${subarray3_modules_per_string} * ${subarray3_nstrings};
+};
+
+equations{ 'subarray4_nmodules' } = define() 
+{
+	return ${subarray4_enable} * ${subarray4_modules_per_string} * ${subarray4_nstrings};
 };
 
 equations{ 'batt_max_power' } = define() 
@@ -5439,110 +6391,121 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-4366
-on_load{'PV System Design'} = define()
+4885
+//show warning about MPPT input number
+function mppt_warning()
 {
-	on_change{'size_auto_or_manual'}();	
-	on_change{'subarray1_tilt_eq_lat'}();
-	on_change{'subarray1_track_mode'}();
-	
-	// enable/disable subarrays
-	on_change{'subarray2_enable'}();
-	on_change{'subarray3_enable'}();
-	on_change{'subarray4_enable'}();
-	
-	inverter_warning_check();
-};
-
-on_change{'size_auto_or_manual'} = define()
-{
-	isauto = (value('size_auto_or_manual') == 0);
-	
-	enable( 'desired_size', isauto);
-	enable( 'dcac_ratio', isauto);
-
-	enable( 'user_modules_per_string', !isauto );
-	enable( 'user_strings_in_parallel', !isauto );
-	enable( 'user_inverter_count', !isauto );
-	
-	inverter_warning_check();
-};
-
-function inverter_warning_check()
-{
-	message = '';
-	
-	// if inverter has no operating voltage limit, display warning
-	if (${vdcmax_inverter} == 0 && ${size_auto_or_manual} == 0)
-		message = 'Inverter voltage limits are not available for this inverter. Modules per string set to 1.';
-	
-	property( 'pv_system_inverter_voltage_warning','Caption',message );
+	x = false;
+	for (i = 1; i <=4; i++)
+	{
+		en = true;
+		if ( i != 1)
+			en = value('subarray' + to_string(i) + '_enable');
+		var = 'subarray' + to_string(i) + '_mppt_input';
+		if (en && value(var) > value('inv_num_mppt'))
+			x = true;
+	}
+	if (x) msgbox('One or more specified subarray MPPT inputs exceed the number of inputs specified on the Inverter page.');
 }
 
-
-function sysdesign_enable_subarray_items( isub, en )
+//shows or hides all subarray inputs, to be used when subarrays are enabled or disabled
+function sysdesign_show_hide_subarray_inputs( isub, en)
 {
 	prefix = "subarray" + to_string(isub) + "_";
-	vars = [
+	all_subarray_variables = [		
 		"azimuth",
+		"backtrack",
+		"gcr",
+		"modules_per_string",
+		"monthly_tilt", 
+		"mppt_input", 
+		"nmodules",
 		"nstrings",
 		"rotlim",
+		"string_vmp",
+		"string_voc",
 		"tilt",
 		"tilt_eq_lat",
-		"track_mode",
-		"gcr" ];
+		"track_mode" ];
+		
+	//hide all subarray related inputs if the subarray is disabled
+	if (!en)
+	{
+		for (i=0;i<#all_subarray_variables;i++)
+			show( prefix + all_subarray_variables[i], 0 );
+	}
 	
-	for (i=0;i<#vars;i++)
-		enable( prefix + vars[i], en );
+	//if subarray is enabled, then need to show all inputs, then fix tracking inputs
+	else
+	{
+		//show all inputs
+		for (i=0;i<#all_subarray_variables;i++)
+			show( prefix + all_subarray_variables[i], 1 );
+
+		//MPPT inputs only show up if multi-MPPT inverter specified
+		multi_mppt = ( value('inv_num_mppt') > 1 );
+		if (!multi_mppt) //set mppt input back to 1 if not multi-mppt so that simulation will run correctly
+			value(prefix + 'mppt_input', 1);
+		show( prefix + "mppt_input", multi_mppt);
+		
+		//Tracking inputs
+		tracking = value(prefix + "track_mode");
+		//seasonal tilt vs normal tilts
+		seasonal = (tracking == 4);
+		show(prefix + "monthly_tilt", seasonal);
+		show(prefix + "tilt_eq_lat", !seasonal);
+		show(prefix + "tilt", !seasonal);
+		//tilt=lat checkbox: subarray must be enabled and tracking mode must be fixed, 1-axis, or A-axis	
+		enable(prefix + "tilt_eq_lat", (tracking == 0 || tracking == 1 || tracking == 3));	
+		//tilt: subarray must be enabled, tracking mode must be fixed, 1-axis, or A-axis, and tilt=lat must not be checked
+		tel = value(prefix+"tilt_eq_lat");
+		enable(prefix + "tilt", (tel==0) && (tracking == 0 || tracking == 1 || tracking == 3));
+		//azimuth: subarray must be enabled, tracking mode must be fixed, 1-axis, or seasonal
+		enable( prefix+"azimuth", (tracking == 1 || tracking == 0 || tracking == 4) );	
+		//tracker rotation limit and backtracking: subarray must be enabled, tracking mode must be 1-axis
+		enable( prefix+"rotlim", (tracking == 1) );
+		enable( prefix+"backtrack", (tracking==1) );	
+	}
+	
+	refresh();
 }
 
-function sysdesign_enable_tracking_type( isub )
+on_load{'PV System Design'} = define()
 {
-	prefix = "subarray" + to_string(isub) + "_";
-	sub_enabled = 1;
-	if (isub > 1)
-		sub_enabled = value(prefix + "enable");
-	tracking = value(prefix + "track_mode");
-	
-	//tilt inputs: show/hide single value or seasonal
-	seasonal = (tracking == 4);
-	show(prefix + "monthly_tilt", seasonal);
-	show(prefix + "tilt_eq_lat", !seasonal);
-	show(prefix + "tilt", !seasonal);
-	
-	//tilt=lat checkbox: subarray must be enabled and tracking mode must be fixed, 1-axis, or A-axis	
-	enable(prefix + "tilt_eq_lat", sub_enabled && (tracking == 0 || tracking == 1 || tracking == 3));
-	
-	//tilt: subarray must be enabled, tracking mode must be fixed, 1-axis, or A-axis, and tilt=lat must not be checked
-	tel = value(prefix+"tilt_eq_lat");
-	enable(prefix + "tilt", sub_enabled && (tel==0) && (tracking == 0 || tracking == 1 || tracking == 3));
+	// show/hide/enable/disable inputs for all subarrays
+	sysdesign_show_hide_subarray_inputs(1, 1);
+	sysdesign_show_hide_subarray_inputs(2, value('subarray2_enable'));
+	sysdesign_show_hide_subarray_inputs(3, value('subarray3_enable'));
+	sysdesign_show_hide_subarray_inputs(4, value('subarray4_enable'));
+	// show/hide label for multiple MPPT inputs
+	multi_mppt = ( value('inv_num_mppt') > 1 );
+	show('lbl_multi_mppt', multi_mppt);
+	// show/hide battery max power input
+	battery = false;
+	f = financing();
+	if (f != "LCOE Calculator" && f != "None")
+		if (${en_batt})
+			battery = true;
+	show('batt_max_power', battery);
+	// warning for MPPT input > number of inverter inputs
+	if (multi_mppt)	mppt_warning();
+};
 
-	//azimuth: subarray must be enabled, trackind mode must be fixed, 1-axis, or seasonal
-	enable( prefix+"azimuth", (tracking == 1 || tracking == 0 || tracking == 4) && sub_enabled );
-	
-	//gcr is always enabled if subarray is, in function sysdesign_enable_subarray_items()
-	//tracker rotation limit and backtracking: subarray must be enabled, tracking mode must be 1-axis
-	enable( prefix+"rotlim", (tracking == 1) && sub_enabled );
-	enable( prefix+"backtrack", (tracking==1) && sub_enabled);
+on_change{'subarray2_enable'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
+on_change{'subarray3_enable'} = define() { sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') ); };
+on_change{'subarray4_enable'} = define() { sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') ); };
 
-}
+on_change{'subarray1_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 1, 1 ); };
+on_change{'subarray2_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
+on_change{'subarray3_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') ); };
+on_change{'subarray4_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable')); };
 
-on_change{'subarray2_enable'} = define() { sysdesign_enable_subarray_items( 2, value('subarray2_enable') );  sysdesign_enable_tracking_type( 2 ); };
-on_change{'subarray3_enable'} = define() { sysdesign_enable_subarray_items( 3, value('subarray3_enable') );  sysdesign_enable_tracking_type( 3 ); };
-on_change{'subarray4_enable'} = define() { sysdesign_enable_subarray_items( 4, value('subarray4_enable') );  sysdesign_enable_tracking_type( 4 ); };
+on_change{'subarray1_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 1, 1 );  };
+on_change{'subarray2_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') );  };
+on_change{'subarray3_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') );  };
+on_change{'subarray4_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );  };
 
-
-//on_change{'subarray1_tilt_eq_lat'} = define() { enable( 'subarray1_tilt', value('subarray1_tilt_eq_lat') == 0 ); };
-//on_change{'subarray2_tilt_eq_lat'} = define() { enable( 'subarray2_tilt', value('subarray2_tilt_eq_lat') == 0  && value('subarray2_enable') ); };
-//on_change{'subarray3_tilt_eq_lat'} = define() { enable( 'subarray3_tilt', value('subarray3_tilt_eq_lat') == 0  && value('subarray3_enable') ); };
-//on_change{'subarray4_tilt_eq_lat'} = define() { enable( 'subarray4_tilt', value('subarray4_tilt_eq_lat') == 0  && value('subarray4_enable') ); };
-
-on_change{'subarray1_tilt_eq_lat'} = define() { sysdesign_enable_tracking_type( 1 ); };
-on_change{'subarray2_tilt_eq_lat'} = define() { sysdesign_enable_tracking_type( 2 ); };
-on_change{'subarray3_tilt_eq_lat'} = define() { sysdesign_enable_tracking_type( 3 ); };
-on_change{'subarray4_tilt_eq_lat'} = define() { sysdesign_enable_tracking_type( 4 ); };
-
-on_change{'subarray1_track_mode'} = define() {  sysdesign_enable_tracking_type( 1 );  };
-on_change{'subarray2_track_mode'} = define() {  sysdesign_enable_tracking_type( 2 );  };
-on_change{'subarray3_track_mode'} = define() {  sysdesign_enable_tracking_type( 3 );  };
-on_change{'subarray4_track_mode'} = define() {  sysdesign_enable_tracking_type( 4 );  };
+on_change{'subarray1_mppt_input'} = define() {  mppt_warning();  };
+on_change{'subarray2_mppt_input'} = define() {  mppt_warning();  };
+on_change{'subarray3_mppt_input'} = define() {  mppt_warning();  };
+on_change{'subarray4_mppt_input'} = define() {  mppt_warning();  };

@@ -1,5 +1,5 @@
 1
-326
+329
 Label
 1
 1
@@ -42,6 +42,12 @@ periods
 1
 1
 1.000000
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -1862,12 +1868,12 @@ file_name
 1
 4
 81
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -1885,16 +1891,24 @@ in_nsrdb_options
 1
 1
 0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 lat
 1
 1
 1
 1
 46.900002
-lbl_csp
-1
-4
-0
 library_folder_list
 1
 4
@@ -1917,7 +1931,11 @@ solar_data_file_name
 1
 4
 81
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4
@@ -1926,13 +1944,13 @@ TMY2
 solar_resource
 1
 4
-19
-USA ND Fargo (TMY2)
+42
+fargo_nd_46.877186_-96.789803_psmv3_60_tmy
 solar_resource_file
 1
 4
 81
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\USA ND Fargo (TMY2).csv
 state
 1
 4

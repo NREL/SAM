@@ -1288,8 +1288,8 @@ Height
 24
 Caption
 5
-108
-The product of number of modules along side and bottom should be equal to the number of modules in subarray.
+127
+The product of number of modules along side and bottom and number of rows should be equal to the number of modules in subarray.
 TextColour
 4
 0
@@ -4204,7 +4204,7 @@ Shading and Snow
 0.000000
 Default
 
-3660
+3700
 equations{'ui_subarray1_length_side'} = define() {
 	o=${subarray1_mod_orient};
 	n=${subarray1_nmody};
@@ -4302,28 +4302,28 @@ return ?${module_model}
 };
 
 equations{ 'subarray1_ref_nmodules' } = define() {
-	return ${subarray1_nstrings} * ${modules_per_string};
+	return ${subarray1_nstrings} * ${subarray1_modules_per_string};
 };
 
 equations{ 'subarray2_ref_nmodules' } = define() {
 	if(${subarray2_enable} == 0)
 		return 0;
 	else
-		return ${subarray2_nstrings} * ${modules_per_string};
+		return ${subarray2_nstrings} * ${subarray2_modules_per_string};
 };
 
 equations{ 'subarray3_ref_nmodules' } = define() {
 	if(${subarray3_enable} == 0)
 		return 0;
 	else
-		return ${subarray3_nstrings} * ${modules_per_string};
+		return ${subarray3_nstrings} * ${subarray3_modules_per_string};
 };
 
 equations{ 'subarray4_ref_nmodules' } = define() {
 	if(${subarray4_enable} == 0)
 		return 0;
 	else
-		return ${subarray4_nstrings} * ${modules_per_string};
+		return ${subarray4_nstrings} * ${subarray4_modules_per_string};
 };
 
 equations{ 'subarray1_gcr_ref' } = define() {

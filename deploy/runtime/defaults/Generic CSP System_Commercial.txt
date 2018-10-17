@@ -1,5 +1,5 @@
 1
-469
+472
 FossilFill
 1
 2
@@ -182,6 +182,12 @@ analysis_period_warning
 4
 12
 No messages.
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -1269,7 +1275,7 @@ federal_tax_rate
 2
 1
 1
-35.000000
+20.000000
 ffrac
 1
 2
@@ -1566,8 +1572,8 @@ ibn
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -1580,6 +1586,12 @@ in_location_options
 1
 0.000000
 in_nsrdb_options
+1
+1
+1
+1
+0.000000
+in_time_step
 1
 1
 1
@@ -1609,6 +1621,12 @@ irr_des
 1
 1
 950.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 istableunsorted
 1
 1
@@ -2260,11 +2278,10 @@ show_tax_credits
 1
 1
 1.000000
-solar_data_file_name
+solar_data_file_name_load
 1
 4
-85
-F:\SAMDEV\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
+0
 solar_data_source
 1
 4
@@ -2274,7 +2291,7 @@ solar_resource
 1
 4
 45
-daggett_ca_34.864032_-116.888098_psmv3_60_tmy
+daggett_ca_34.865371_-116.783023_psmv3_60_tmy
 solar_resource_file
 1
 4

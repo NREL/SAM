@@ -1,5 +1,5 @@
 1
-464
+468
 adjust
 1
 5
@@ -47,6 +47,12 @@ analysis_period_warning
 4
 12
 No messages.
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -351,7 +357,7 @@ const_per_interest1
 1
 1
 1
-60794.636719
+60794.621094
 const_per_interest2
 1
 1
@@ -411,7 +417,7 @@ const_per_interest_total
 1
 1
 1
-60794.636719
+60794.621094
 const_per_months1
 1
 1
@@ -508,7 +514,7 @@ const_per_principal1
 1
 1
 1
-6079463.500000
+6079462.000000
 const_per_principal2
 1
 1
@@ -538,13 +544,13 @@ const_per_principal_total
 1
 1
 1
-6079463.500000
+6079462.000000
 const_per_total1
 1
 1
 1
 1
-121589.273438
+121589.242188
 const_per_total2
 1
 1
@@ -604,7 +610,7 @@ construction_financing_cost
 1
 1
 1
-121589.273438
+121589.242188
 cost_debt_closing
 1
 1
@@ -1068,12 +1074,12 @@ federal_tax_rate
 2
 1
 1
-35.000000
+20.000000
 file_name
 1
 4
-85
-F:\SAMDEV\sam\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -1103,13 +1109,13 @@ hcpv.array.nameplate
 1
 1
 1
-1126.657959
+1126.657715
 hcpv.array.overall_est_eff
 1
 1
 1
 1
-24.863405
+24.863398
 hcpv.array.packing_factor
 1
 1
@@ -1121,7 +1127,7 @@ hcpv.array.single_tracker_nameplate
 1
 1
 1
-56.332897
+56.332882
 hcpv.array.total_land_area
 1
 1
@@ -1133,13 +1139,13 @@ hcpv.array.tracker_power
 1
 1
 1
-1126.657959
+1126.657593
 hcpv.cost.bos_equip.totalcost
 1
 1
 1
 1
-371797.156250
+371797.062500
 hcpv.cost.bos_equip_fixed
 1
 1
@@ -1193,7 +1199,7 @@ hcpv.cost.engr.total
 1
 1
 1
-22533.158203
+22533.154297
 hcpv.cost.grid.fixed
 1
 1
@@ -1223,7 +1229,7 @@ hcpv.cost.install_labor.totalcost
 1
 1
 1
-461929.750000
+461929.656250
 hcpv.cost.install_labor_fixed
 1
 1
@@ -1247,7 +1253,7 @@ hcpv.cost.install_margin.totalcost
 1
 1
 1
-292931.062500
+292931.000000
 hcpv.cost.install_margin_fixed
 1
 1
@@ -1331,7 +1337,7 @@ hcpv.cost.land.total
 1
 1
 1
-45066.316406
+45066.308594
 hcpv.cost.land_area.value
 1
 1
@@ -1367,7 +1373,7 @@ hcpv.cost.landprep.total
 1
 1
 1
-225331.593750
+225331.546875
 hcpv.cost.module.costunits
 1
 1
@@ -1391,7 +1397,7 @@ hcpv.cost.module.totalcost
 1
 1
 1
-3154642.250000
+3154641.500000
 hcpv.cost.modulearray.area
 1
 1
@@ -1403,7 +1409,7 @@ hcpv.cost.modulearray.power
 1
 1
 1
-1126.657959
+1126.657715
 hcpv.cost.per_inverter
 1
 1
@@ -1439,7 +1445,7 @@ hcpv.cost.permitting.total
 1
 1
 1
-11266.579102
+11266.577148
 hcpv.cost.sales_tax.percent
 1
 1
@@ -1451,7 +1457,7 @@ hcpv.cost.sales_tax.total
 1
 1
 1
-275012.656250
+275012.593750
 hcpv.cost.sales_tax.value
 1
 1
@@ -1463,7 +1469,7 @@ hcpv.cost.tracker.totalcost
 1
 1
 1
-912592.937500
+912592.750000
 hcpv.cost.tracker_fixed
 1
 1
@@ -1499,7 +1505,7 @@ hcpv.module.est_eff
 1
 1
 1
-29.805765
+29.805758
 hcpv.module.mam_ref
 1
 1
@@ -1541,7 +1547,7 @@ hcpv.module.power
 1
 1
 1
-375.552643
+375.552551
 hcpv.module.rad0
 1
 1
@@ -1869,8 +1875,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -1883,6 +1889,12 @@ in_location_options
 1
 0.000000
 in_nsrdb_options
+1
+1
+1
+1
+0.000000
+in_time_step
 1
 1
 1
@@ -1965,6 +1977,12 @@ inv_snl_mppt_low
 1
 1
 330.000000
+inv_snl_num_mppt
+1
+1
+1
+1
+1.000000
 inv_snl_paco
 1
 1
@@ -2001,6 +2019,12 @@ inv_snl_vdco
 1
 1
 368.096039
+is_advanced
+1
+1
+1
+1
+0.000000
 itc_fed_amount
 1
 1
@@ -2091,10 +2115,6 @@ lat
 1
 1
 37.450001
-lbl_csp
-1
-4
-0
 lib_dispatch_factor1
 1
 1
@@ -2212,7 +2232,7 @@ mera_cost1
 1
 1
 1
-281664.500000
+281664.437500
 mera_cost2
 1
 1
@@ -2611,7 +2631,7 @@ property_assessed_value
 1
 1
 1
-6079463.500000
+6079462.000000
 property_tax_rate
 1
 1
@@ -2723,8 +2743,12 @@ show_construction_period
 solar_data_file_name
 1
 4
-85
-F:\SAMDEV\sam\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4
@@ -2734,12 +2758,12 @@ solar_resource
 1
 4
 45
-alamosa_co_37.469449_-105.870021_psmv3_60_tmy
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-85
-F:\SAMDEV\sam\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
 solution_mode_message
 1
 4
@@ -2765,7 +2789,7 @@ system_capacity
 1
 1
 1
-1126.657959
+1126.657715
 system_use_lifetime_output
 1
 1
@@ -2804,19 +2828,19 @@ total_direct_cost
 1
 1
 1
-5500253.000000
+5500252.000000
 total_indirect_cost
 1
 1
 1
 1
-579210.312500
+579210.187500
 total_installed_cost
 1
 1
 1
 1
-6079463.500000
+6079462.000000
 tz
 1
 1
@@ -2828,7 +2852,7 @@ ui_wacc
 1
 1
 1
-6.184500
+6.672750
 use_specific_weather_file
 1
 1

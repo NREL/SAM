@@ -5200,7 +5200,7 @@ TabOrder
 3
 52
 
-63
+62
 battery_energy
 3
 1
@@ -6015,20 +6015,6 @@ Capital Costs
 1
 0.000000
 Default
-system_use_lifetime_output
-3
-1
- 
- 
-Capital Costs
-0
-8
-1
-1
-1
-1
-0.000000
-Default
 system_use_recapitalization
 3
 1
@@ -6086,9 +6072,7 @@ Capital Costs
 0.000000
 Numeric
 
-5660
-
-
+5485
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6185,7 +6169,7 @@ equations{ 'install_labor_total' } = define() {
 equations{ 'module_num_units' } = define() {
 	if ( technology() == "PVWatts" ) return 1;
 	elseif ( technology() == "PVWatts_battery" ) return 1;
-	else return ${modules_per_string}*${strings_in_parallel};
+	else return ${total_modules};
 };
 
 equations{ 'landprep_total' } = define() {
@@ -6261,17 +6245,11 @@ equations{ 'total_direct_cost' } = define() {
 		+${install_margin_total}
 		+${contingency}; };
 
-equations { 'system_use_lifetime_output' } = define () {
-	if( technology() == "PVWatts" )
-		return 0;
-	else
-		return ${pv_lifetime_simulation};
-	};
 equations { 'system_use_recapitalization' } = define () {
 	if( technology() == "PVWatts" )
 		return 0;
 	else
-		return ${pv_lifetime_simulation};
+		return ${system_use_lifetime_output};
 	};
 
 equations { 'battery_total' } = define () {
@@ -6292,7 +6270,6 @@ equations { 'battery_energy' } = define () {
 	else
 		return 0;
 };
-
 1216
 on_load{"PV Capital Costs"}=define()
 {

@@ -9,19 +9,19 @@ before_script:
   - ln -s $HOME/wx-3.1.1/bin/wx-config $HOME/wx-3.1.1/bin/wx-config-3
   - user=$(echo $TRAVIS_REPO_SLUG | sed 's,/.*$,,')
   - (cd ../ && pwd)
-  - export GTEST=/home/travis/build/$user/googletest/googletest
+ # - export GTEST=/home/travis/build/$user/googletest/googletest
   - export LKDIR=/home/travis/build/$user/lk
   - export WEXDIR=/home/travis/build/$user/wex
   - export SSCDIR=/home/travis/build/$user/ssc
   - export SAMNTDIR=/home/travis/build/$user/SAM
-  - git clone https://github.com/google/googletest /home/travis/build/$user/googletest
+ # - git clone https://github.com/google/googletest /home/travis/build/$user/googletest
   - git clone https://github.com/$user/lk $LKDIR
   - git clone https://github.com/$user/wex $WEXDIR
   - git clone https://github.com/$user/ssc $SSCDIR
   
 script:
   - export PATH=$PATH:$HOME/wx-3.1.1/bin
-  - make -C $GTEST/make
+ # - make -C $GTEST/make
   - make -C $LKDIR/build_linux
   - make -C $WEXDIR/build_linux
   - make -C $SSCDIR/build_linux

@@ -1,5 +1,5 @@
 1
-437
+439
 a_error_test_number
 1
 1
@@ -1702,7 +1702,7 @@ federal_tax_rate
 2
 1
 1
-28.000000
+20.000000
 foundation_cost
 1
 1
@@ -1979,6 +1979,12 @@ ibi_uti_percent_tax_sta
 1
 1
 1.000000
+in_time_step
+1
+1
+1
+1
+0.000000
 inflation_rate
 1
 1
@@ -2021,6 +2027,12 @@ interconnect_voltage
 1
 1
 137.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 itc_fed_amount
 1
 1

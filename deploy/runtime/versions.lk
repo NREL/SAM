@@ -50,27 +50,154 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+version_upgrade{'2018.9.20'} = define() {
+	const cfg = config();
+	if (cfg.tech == 'Flat Plate PV')
+	{
+		//upgrades for multiple MPPT inverters
+		x = oldvalue('modules_per_string');
+		value('subarray1_modules_per_string', x, 'Variable change to be able to model different numbers of modules per string between subarrays.');
+		for (i = 2; i <= 4; i++)
+		{				
+			if (value('subarray' + to_string(i) + '_enable') == 1)
+				value('subarray' + to_string(i) +'_modules_per_string', x, 'Variable change to be able to model different numbers of modules per string between subarrays.');
+		}
+		
+		//message that we got rid of auto sizing
+		if (oldvalue('size_auto_or_manual') == 0)
+			message('We have removed the option for SAM to automatically size your system using the "Specify desired array size" '
+			'option on the System Design page. Please see Help on the System Design page for more details.', 'warning');
+		
+		//bug fix for multiple subarrays with unequal numbers of strings
+		if (value('num_enabled') > 1)
+		{
+			uneven = false;
+			prev_subarray = value('subarray1_nstrings');
+			for (i = 2; i <= 4; i++)
+			{	
+				if (!value('subarray' + to_string(i) + '_enable')) //skip disabled subarrays
+					continue;
+				this_subarray = value('subarray' + to_string(i) + '_nstrings');
+				if (this_subarray != prev_subarray) //only need to check against previous subarray because all subarrays had to be the same, or it would have been affected by bug
+					uneven = true;
+				prev_subarray = this_subarray;
+			}
+			if (uneven)
+				message('This version fixes a bug that caused SAM to calculate the wrong maximum power point when multiple subarrays were '
+				'enabled with unequal numbers of strings. The fix will cause slight changes to your results.', 'warning');
+		}
+	}
+
+	if (cfg.tech == 'Physical Trough' || cfg.tech == 'MSPT' || cfg.tech == 'MSLF') {
+		// Combines the three UDPC tables into one //
+		
+		// Get the three user defined power cycle tables that no longer exist
+		x_ud_T_htf = value('ud_T_htf_ind_od');
+		x_ud_m_dot = value('ud_m_dot_htf_ind_od');
+		x_ud_T_amb = value('ud_T_amb_ind_od');
+
+		// Get the low, design, and high indep values
+		x_T_htf_lvls = [value('ud_T_htf_low'), value('ud_COPY_T_HTF_des'), value('ud_T_htf_high')];
+		x_m_dot_lvls = [value('ud_m_dot_htf_low'), value('ud_m_dot_design'), value('ud_m_dot_htf_high')];
+		x_T_amb_lvls = [value('ud_T_amb_low'), value('ud_COPY_T_amb_des'), value('ud_T_amb_high')];
+		
+		// Columns with the dependent values
+		x_col_idxs = [[1, 4, 7, 10],  // low
+					[2, 5, 8, 11],    // des
+					[3, 6, 9, 12]];   // high
+		
+		x_new_table = [];
+		x_new_idx = 0;
+		
+		// T_htf table //
+		// for each level
+		for (i=0; i < #x_col_idxs; i++) {
+			// for each row in original table
+			for (j=0; j < #x_ud_T_htf; j++) {
+				x_row = [];
+				x_row += x_ud_T_htf[j][0];  // indep val
+				x_row += x_m_dot_lvls[i];
+				x_row += x_T_amb_lvls[1];   // design level
+				// grab each dependent value
+				for (k=0; k < #x_col_idxs[0]; k++) {
+					x_row += x_ud_T_htf[j][x_col_idxs[i][k]];
+				}
+				x_new_table[x_new_idx] = x_row;
+				x_new_idx++;
+			}
+		}
+		
+		// m_dot table //
+		// for each level
+		for (i=0; i < #x_col_idxs; i++) {
+			// for each row in original table
+			for (j=0; j < #x_ud_m_dot; j++) {
+				x_row = [];
+				x_row += x_T_htf_lvls[1];   // design level
+				x_row += x_ud_m_dot[j][0];  // indep val
+				x_row += x_T_amb_lvls[i];
+				// grab each dependent value
+				for (k=0; k < #x_col_idxs[0]; k++) {
+					x_row += x_ud_m_dot[j][x_col_idxs[i][k]];
+				}
+				x_new_table[x_new_idx] = x_row;
+				x_new_idx++;
+			}
+		}
+		
+		// T_amb table //
+		// for each level
+		for (i=0; i < #x_col_idxs; i++) {
+			// for each row in original table
+			for (j=0; j < #x_ud_T_amb; j++) {
+				x_row = [];
+				x_row += x_T_htf_lvls[i];
+				x_row += x_m_dot_lvls[1];   // design level
+				x_row += x_ud_T_amb[j][0];  // indep val
+				// grab each dependent value
+				for (k=0; k < #x_col_idxs[0]; k++) {
+					x_row += x_ud_T_amb[j][x_col_idxs[i][k]];
+				}
+				x_new_table[x_new_idx] = x_row;
+				x_new_idx++;
+			}
+		}
+
+		value('ud_ind_od', x_new_table);  // output new combined table
+		
+		value('ud_T_htf_levels', #x_ud_T_htf);       // set number of levels
+		value('ud_m_dot_htf_levels', #x_ud_m_dot);
+		value('ud_T_amb_levels', #x_ud_T_amb);
+		
+		message('This version combines the three user-defined power cycle (UDPC) tables into one. The values from the three '
+				'original tables have been moved to this new single table. This change will not affect your results.', 'warning');
+	}
+};
 
 version_upgrade{'2018.8.29'} = define() {
 	const cfg = config();
 
 	// solar resource
-	solar_resource_techs = "Flat Plate PV,PVWatts,High-X Concentrating PV,Biopower,Geothermal Power,Solar Water Heating,Physical Trough,Empirical Trough,MSPT,DSPT,MSLF,DSLF,Dish Stirling,Generic CSP System,Physical Trough IPH,DSGL IPH";
+	solar_resource_techs = 'Flat Plate PV,PVWatts,High-X Concentrating PV,Biopower,'
+	                     + 'Geothermal Power,Solar Water Heating,Physical Trough,'
+	                     + 'Empirical Trough,MSPT,DSPT,MSLF,DSLF,Dish Stirling,'
+	                     + 'Generic CSP System,Physical Trough IPH,DSGL IPH,ISCC';
 	if ( strpos( solar_resource_techs , cfg.tech ) > -1 )
 	{
 		message("The new Solar Resource input page makes it easy to download weather files from "
 		"the latest version of the National Solar Radiation Database (NSRDB) as TMY, single-year, "
-		"or multiple files for P50/P90 simulations. As part of these improvements we removed "
+		"or multiple files for P50/P90 simulations. As part of these improvements, we removed "
 		"the old default weather file library because it contained out-of-date data. "
-		"<br><br>Use the tools on the Solar Resource input page to download the weather "
-		"and build a library with just the files you need for your work. See Help for more details.");
+		"<br><br>Use the tools on the Solar Resource input page to download weather files "
+		"and build a library with the files you need for your work.");
 		
 		// check that current weather file is not already in library
 
 		library = csvread( userlocaldatadir() + '/SolarResourceData.csv', { 'table' = true } );
 		wf_in_lib = ( library{'Name'} ?@ value( 'solar_resource' ) ) > -1;
-		
-		if ( value('use_specific_weather_file') == 1 )
+		download_ok = false;
+
+		if ( value('use_specific_weather_file') == 1 ) // file was user specified file
 		{
 			user_wf = value('user_specified_weather_file');
 			add_folder = yesno( 'Add folder to SAM weather file folders?\n' 
@@ -87,15 +214,17 @@ version_upgrade{'2018.8.29'} = define() {
 				if ( strlen( x ) > 0 ) 
 					x += ';';
 				x += path_only( user_wf );
-				set_settings('solar_data_paths', x ); // not sure how to update solar_data_paths setting
+				paths = get_settings('solar_data_paths');
+				if ( strpos( lower(paths), lower(x) < 0 ) )
+					set_settings('solar_data_paths', x ); // not sure how to update solar_data_paths setting
 				rescanlibrary('solar');// need to refresh library here
 				libkey = file_only( user_wf );
 				libkey = mid(libkey,0,#libkey-4);		
 				value( 'solar_resource', libkey );
 			}	
-			else
+			else // user chose not to add folder, so set to default Arizona file
 			{
-				msgbox( 'Setting weather file to Phoenix, Arizona.\nUse the tools on the Solar Resource page to download '
+				msgbox( 'Setting weather file to default file for Phoenix, Arizona.\nUse the tools on the Solar Resource page to download '
 					    + 'or choose a different file.');
 				value( 'solar_resource', 'phoenix_az_33.448377_-112.074037_psmv3_60_tmy' );	    
 			}
@@ -104,16 +233,15 @@ version_upgrade{'2018.8.29'} = define() {
 		{
 			message( 'The weather file ' + value('solar_resource') + ' is in your solar resource library.' );
 		}
-		else
+		else // file was not user file and not already in library, so try to download replacement file
 		{
 		
-			download_ok = false;
 			user_ok = false;
 
 			// get latitude and longitude from old file solar resource ui inputs
 			lat = value( 'lat' );
 			lon = value( 'lon' );
-			
+
 			// url for nsrdb download (based on callback script for solar resource form
 			url = 'https://developer.nrel.gov/api/solar/nsrdb_psm3_download.csv';
 			url += '?api_key=<SAMAPIKEY>';
@@ -123,6 +251,7 @@ version_upgrade{'2018.8.29'} = define() {
 			url += '&&mailing_list=false';
 			url += '&&reason=SAM';
 			url += '&&interval=60';
+
 			//url += '&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed'; //SEE NSRDB.CPP 
 			url += '&&utc=false';
 			url += '&&leap_day=false';
@@ -146,40 +275,47 @@ version_upgrade{'2018.8.29'} = define() {
 			                + ' is not in your solar resource library. '
 			                + 'Click Yes to download a replacement file from the NSRDB now. '
 			                + 'Click No to download or choose a different file later.' );
-			if ( user_ok ) 
+
+			if ( user_ok ) // user chose to download replacement file
 			{
 				ok = curl( url , { 'file'= fname } ); // curl() should automatically replace <SAMAPI> and <USEREMAIL > with values from private.h
+
 				// rudimentary check that downloaded weather file is valid
+				test = csvread( fname );
 				if ( ok )
-					if ( csvread( fname ) != null) // NSRDB returns a JSON file instead of CSV if lat/lon not in database
+					if ( #test > 10 ) // valid file has more than 10 rows
 						download_ok = true;
+
+				// if file was downloaded refresh solar resource library and update value
+				if ( download_ok )
+				{
+					rescanlibrary('solar');
+					lib_name = replace( file_only( fname ), '.csv' , '' );
+					value( 'solar_resource' , lib_name );
+					message( 'New weather file downloaded for ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) +
+							' degrees E and added to solar resource library:\n' + file_only(fname) );
+				}
+				else // download failed, set library to default Phoenix file
+				{
+					remove_file( fname );
+					msgbox('Failed to download new weather file!\nA weather file for your '
+							+ 'location at ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) 
+							+ ' degrees E may not be available from the NSRDB, or the NSRDB '
+							+ 'service may be down. \n\nSetting weather file to default for '
+							+ 'Phoenix, Arizona. Use the tools on the Solar Resource page to download '
+							+ 'or choose a different file later.');
+					value( 'solar_resource', 'phoenix_az_33.448377_-112.074037_psmv3_60_tmy' );	    
+					message('Failed to download new weather file for ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) + ' degrees E. A weather file for that location may not be available from the NSRDB, or the NSRDB service may be down. Use the tools on the Solar Resource page to download or choose a weather file.');
+				}
 			}
-			else
+			else // user chose not to download replacement file, set library to default Phoenix file
 			{
-				msgbox( 'Setting weather file to Phoenix, Arizona.\nUse the tools on the Solar Resource page to download '
+				msgbox( 'Setting weather file to default for Phoenix, Arizona.\nUse the tools on the Solar Resource page to download '
 					    + 'or choose a different file.');
 				value( 'solar_resource', 'phoenix_az_33.448377_-112.074037_psmv3_60_tmy' );	    
 			}
-			
-			// refresh solar resource library and update value
-			if ( download_ok )
-			{
-				rescanlibrary('solar');
-				lib_name = replace( file_only( fname ), '.csv' , '' );
-				value( 'solar_resource' , lib_name );
-				message( 'New weather file downloaded for Latitude = ' + lat + ' , Longitude = ' + lon +
-				         ' and added to solar resource library:\n' + file_only(fname) );
-
-			}
-			else
-			{
-				msgbox('Failed to download new weather file!\nA weather file for your location may not be available from the NSRDB, or the NSRDB service may be down. Use the tools on the Solar Resource page to download or choose a weather file.');
-				message('Failed to download new weather file for Latidude = ' + lat + ' , Longitude = ' + lon + '. A weather file for that location may not be available from the NSRDB, or the NSRDB service may be down. Use the tools on the Solar Resource page to download or choose a weather file.');
-			}
-
 		}
 	}
-
 	
 	if (cfg.tech == "Wind Power")
 		if (value('wind_farm_wake_model') == 2)

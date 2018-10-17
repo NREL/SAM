@@ -116,7 +116,9 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
-	{ 2018, 9, 13 }, // Beta for Webinar - expires 9/13/2019.
+		{ 2018, 10, 17 }, //Beta version for defaults expires 10/17/2019
+		{ 2018, 9, 20 }, //new version number for MPPT upgrades
+		{ 2018, 9, 13 }, // Beta for Webinar - expires 9/13/2019.
 		{ 2018, 9, 10 }, // Beta for Webinar - expires 9/10/2019.
 		{ 2018, 8, 29 }, // Beta for Bifacial - expires 8/29/2019.
 		{ 2018, 8, 20 }, // Beta for testing - internal with no expiration.
@@ -977,11 +979,10 @@ bool MainWindow::LoadProject( const wxString &file )
 
 	if ( file_ver < sam_ver )
 	{
-		wxMessageBox( wxString::Format("The file you are opening (%s) was created with a previous version of SAM, version %d.%d.%d.\n\n"
-			"Improvements to SAM may change the results relative to previous versions. Care should be taken when making comparisons (external to SAM) "
-			"between results calculated for one design option using this version of SAM and results calculated for another design option using a "
-			"previous version of SAM.  All options should be analyzed with a single version of SAM.\n\n",
-			(const char*)wxFileNameFromPath(file).c_str(), major, minor, micro),
+		wxMessageBox( wxString::Format("The file you are opening was created with an older version of SAM, Version %d.%d.%d.\n\n%s\n\n"
+			"There may be changes between versions that cause simulation results to be different. The Version Upgrade Report in the next "
+			"window lists any input variables that have changed between versions.\n\n",
+			major, minor, micro, (const char*)wxFileNameFromPath(file).c_str()),
 			"Notice", wxICON_INFORMATION, this);
 		
 //		wxBusyInfo info( "Upgrading project file to current SAM version..." );

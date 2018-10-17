@@ -1,5 +1,5 @@
 1
-527
+532
 CT
 1
 1
@@ -114,6 +114,12 @@ analysis_period_warning
 12
 No messages.
 analysis_type
+1
+1
+1
+1
+0.000000
+annual_albedo
 1
 1
 1
@@ -604,7 +610,7 @@ cost_dev_fee_tax_liability
 1
 1
 1
-774341.500000
+501217.250000
 cost_dev_fee_value
 1
 1
@@ -1134,12 +1140,12 @@ federal_tax_rate
 2
 1
 1
-35.000000
+20.000000
 file_name
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+106
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -1170,6 +1176,12 @@ fracture_width
 1
 1
 175.000000
+gen
+1
+2
+1
+1
+0.000000
 geopowerblock.pwrb.condenser_type
 1
 1
@@ -1455,13 +1467,19 @@ geotherm.cost.plant_per_kW
 1
 1
 1
-1800.000000
+0.000000
 geotherm.cost.plant_per_kW.bak
 1
 1
 1
 1
 0.000000
+geotherm.cost.plant_per_kW_input
+1
+1
+1
+1
+1800.000000
 geotherm.cost.plant_size
 1
 1
@@ -2190,8 +2208,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -2204,6 +2222,12 @@ in_location_options
 1
 0.000000
 in_nsrdb_options
+1
+1
+1
+1
+0.000000
+in_time_step
 1
 1
 1
@@ -2233,6 +2257,12 @@ insurance_rate
 1
 1
 0.500000
+is_advanced
+1
+1
+1
+1
+0.000000
 itc_fed_amount
 1
 1
@@ -2323,10 +2353,6 @@ lat
 1
 1
 33.610001
-lbl_csp
-1
-4
-0
 lib_dispatch_factor1
 1
 1
@@ -2979,8 +3005,12 @@ show_construction_period
 solar_data_file_name
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+106
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4
@@ -2994,8 +3024,8 @@ blythe_ca_33.617773_-114.588261_psmv3_60_tmy
 solar_resource_file
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+106
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 solution_mode_message
 1
 4
@@ -3164,7 +3194,7 @@ ui_wacc
 1
 1
 1
-6.184500
+6.672750
 use_specific_weather_file
 1
 1

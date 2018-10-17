@@ -149,7 +149,7 @@ function setup_flat_plate_pv_pages()
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
     addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
-           {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='pv_lifetime_simulation' } );
+           {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
 	
 }
 
@@ -196,11 +196,13 @@ function setup_pv_residential_pages( mode ) // mode determines whether or not th
 function setup_thirdparty_pages( load, degradation ) // FOR NOW, THIRD PARTY OWNERSHIP MODEL IS ONLY VALID FOR PVWATTS AND PV DETAILED and generic system!!
 {
   setting( { 'analysis_period_var'='cf_length' } );
+  /*
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
            {  'sidebar'='Lifetime','help'='lifetime' } );
   }
+  */
   addpage( [[ 'Financial Third Party Ownership']],
            { 'sidebar'='Financial Parameters', 'help'='fin_thirdparty'} );
   setup_utility_rate();
@@ -1052,29 +1054,33 @@ setup_geothermal_power_pages();
 function setup_generic_system_pages()
 {
 	addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
+    addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
+			[ {'name'='Lifetime Generic', 'caption'='Simulation over analysis period' }],],
+           {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
+
 }
 
 setconfig( 'Generic System', 'Residential' );	
-setmodules( ['generic_system', 'battery', 'utilityrate5', 'cashloan']);
+setmodules( ['generic_system', 'utilityrate5', 'cashloan']);
 setup_generic_system_pages();
 setup_battery_pages_behind_the_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_residential_pages( LOAD_SIMPLE, LIFETIME_SYSTEM ); //does not include building load calculator
+setup_residential_pages( LOAD_SIMPLE, LIFETIME_PV ); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Third Party' );
-setmodules( ['generic_system', 'battery', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['generic_system', 'utilityrate5', 'thirdpartyownership']);
 setup_generic_system_pages();
 setup_battery_pages_behind_the_meter();
-setup_thirdparty_pages( LOAD_SIMPLE, LIFETIME_SYSTEM );
+setup_thirdparty_pages( LOAD_SIMPLE, LIFETIME_PV );
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Commercial' );	
-setmodules( ['generic_system', 'battery', 'utilityrate5', 'cashloan']);
+setmodules( ['generic_system',  'utilityrate5', 'cashloan']);
 setup_generic_system_pages();
 setup_battery_pages_behind_the_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_commercial_pages(0, LIFETIME_SYSTEM); //does not include building load calculator
+setup_commercial_pages(0, LIFETIME_PV); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Commercial PPA' );	
@@ -1082,7 +1088,7 @@ setmodules( ['generic_system', 'ippppa']);
 setup_generic_system_pages();
 setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_commercial_ppa_pages(LIFETIME_SYSTEM);
+setup_commercial_ppa_pages(LIFETIME_PV);
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Independent Power Producer' );
@@ -1090,47 +1096,47 @@ setmodules( ['generic_system', 'ippppa']);
 setup_generic_system_pages();
 setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_independent_power_producer_pages(LIFETIME_SYSTEM);
+setup_independent_power_producer_pages(LIFETIME_PV);
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Leveraged Partnership Flip' );
-setmodules( ['generic_system', 'battery', 'levpartflip']);
+setmodules( ['generic_system',  'levpartflip']);
 setup_generic_system_pages();
 setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_leveraged_partnership_flip_pages(LIFETIME_SYSTEM);
+setup_leveraged_partnership_flip_pages(LIFETIME_PV);
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'All Equity Partnership Flip' );
-setmodules( ['generic_system', 'battery', 'equpartflip']);
+setmodules( ['generic_system',  'equpartflip']);
 setup_generic_system_pages();
 setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
+setup_all_equity_partnership_flip_pages(LIFETIME_PV);
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Sale Leaseback' );
-setmodules( ['generic_system', 'battery','saleleaseback']);
+setmodules( ['generic_system', 'saleleaseback']);
 setup_generic_system_pages();
 setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_sale_leaseback_pages(LIFETIME_SYSTEM);
+setup_sale_leaseback_pages(LIFETIME_PV);
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Single Owner' );
-setmodules( ['generic_system', 'battery', 'singleowner']);
+setmodules( ['generic_system',  'singleowner']);
 setup_generic_system_pages();
 setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_single_owner_pages(LIFETIME_SYSTEM);
+setup_single_owner_pages(LIFETIME_PV);
 
 
 setconfig( 'Generic System', 'Host Developer' );
-setmodules( ['generic_system', 'battery', 'utilityrate5', 'host_developer']);
+setmodules( ['generic_system', 'utilityrate5', 'host_developer']);
 setup_generic_system_pages();
 setup_battery_pages_behind_the_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_host_developer_pages( LOAD_SIMPLE, LIFETIME_SYSTEM ); //includes building load calculator by default in this function
+setup_host_developer_pages( LOAD_SIMPLE, LIFETIME_PV ); //includes building load calculator by default in this function
 
 
 
@@ -1143,7 +1149,7 @@ setup_lcoefcr_pages();
 //-----------------------------------------------------
 setconfig( 'Generic System', 'None' );
 setmodules( ['generic_system']);
-setup_generic_system_pages();
+addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
 
 
 // Generic CSP System //////////////////////////////////////////////////////////
@@ -1719,8 +1725,7 @@ if ( en_pvsamv3 )
 
 	addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
-		   {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='pv_lifetime_simulation' } );
+		   {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
 
 	setup_battery_pages_behind_the_meter();
 }
-

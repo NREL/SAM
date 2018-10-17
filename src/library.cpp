@@ -196,7 +196,9 @@ Library *Library::Load( const wxString &file )
 				delete old;
 			}
 		}
-
+		// set case sensitivty for library entries comparison by name
+		if (l->GetName() == "CEC Modules")
+			l->caseSensitiveFind = false;
 		gs_libs.m_libs.push_back( l );
 		return l;
 	}
@@ -300,7 +302,8 @@ wxString Library::GetName() const
 wxArrayString Library::ListEntries()
 {
 	wxArrayString list;
-	for( size_t i=m_startRow;i<m_csv.NumRows();i++ )
+	size_t r = m_csv.NumRows();
+	for( size_t i=m_startRow;i<r;i++ )
 		list.Add( m_csv(i,0) );
 	return list;
 }
@@ -326,8 +329,9 @@ int Library::GetFieldIndex( const wxString &name )
 
 int Library::FindEntry( const wxString &name )
 {
-	for( size_t i=m_startRow;i<m_csv.NumRows();i++ )
-		if ( m_csv(i,0) == name )
+	size_t r = m_csv.NumRows();
+	for( size_t i=m_startRow;i<r;i++ )
+		if (name.IsSameAs(m_csv(i, 0), caseSensitiveFind))
 			return (int)(i-m_startRow);
 
 	return -1;

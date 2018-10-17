@@ -1,7 +1,7 @@
 Battery Dispatch Front of Meter
-1000
-365
-25
+1002
+372
+26
 GroupBox
 
 1
@@ -15,17 +15,17 @@ X
 345
 Y
 3
-15
+18
 Width
 3
 643
 Height
 3
-220
+250
 Caption
 5
-31
-Automated DC-connection options
+26
+Automated dispatch options
 Bold
 2
 1
@@ -87,13 +87,13 @@ X
 345
 Y
 3
-240
+270
 Width
 3
 643
 Height
 3
-109
+88
 Caption
 5
 22
@@ -120,12 +120,57 @@ Width
 985
 Height
 3
-355
+364
 Caption
 5
 27
 Storage Dispatch Controller
 Bold
+2
+1
+Label
+
+1
+12
+Name
+5
+18
+batt_auto_fom_help
+X
+3
+345
+Y
+3
+36
+Width
+3
+624
+Height
+3
+48
+Caption
+5
+216
+The automated dispatch models consider the PPA price, electricity rate, costs to cycle, and inverter clipping to decide when to charge and discharge, using one of the time horizon options.  See help for more details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 Divider
@@ -177,7 +222,7 @@ X
 486
 Y
 3
-297
+327
 Width
 3
 90
@@ -211,7 +256,7 @@ X
 759
 Y
 3
-201
+237
 Width
 3
 90
@@ -270,7 +315,7 @@ X
 759
 Y
 3
-174
+210
 Width
 3
 219
@@ -301,7 +346,7 @@ X
 606
 Y
 3
-126
+162
 Width
 3
 372
@@ -346,7 +391,7 @@ X
 603
 Y
 3
-111
+147
 Width
 3
 339
@@ -485,9 +530,9 @@ Selection
 Items
 6
 5
-Auto DC-connected dispatch: Perfect look ahead
-Auto DC-connected dispatch: 1-day look behind
-Auto DC-connected dispatch: Input forecast
+Automated dispatch: Perfect look ahead
+Automated dispatch: 1-day look behind
+Automated dispatch: Input forecast
 Input custom dispatch
 Manual dispatch
 ShowCaptions
@@ -512,7 +557,7 @@ X
 357
 Y
 3
-258
+288
 Width
 3
 279
@@ -557,7 +602,7 @@ X
 357
 Y
 3
-111
+147
 Width
 3
 219
@@ -593,7 +638,7 @@ X
 519
 Y
 3
-126
+162
 Width
 3
 48
@@ -652,7 +697,7 @@ X
 519
 Y
 3
-153
+189
 Width
 3
 45
@@ -711,7 +756,7 @@ X
 357
 Y
 3
-75
+111
 Width
 3
 90
@@ -738,7 +783,7 @@ X
 453
 Y
 3
-75
+111
 Width
 3
 516
@@ -779,13 +824,13 @@ X
 357
 Y
 3
-54
+84
 Width
 3
 627
 Height
 3
-16
+19
 Orientation
 3
 0
@@ -1025,8 +1070,8 @@ batt_dispatch_choice
 Battery dispatch choice front-of-meter
  
 Battery
-175
-Auto DC-connected dispatch: 1-day look ahead|Auto DC-connected dispatch: 1-day look behind| Auto DC-connected dispatch: Input forecast| Input battery dispatch| Manual dispatch
+148
+Automated dispatch: 1-day look ahead|Automated dispatch: 1-day look behind|Automated dispatch: Input forecast|Input battery dispatch|Manual dispatch
 3
 1
 1
@@ -1138,7 +1183,7 @@ equations{'dispatch_tod_factors'} = define()
 };
 
 
-3925
+4058
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
 	// fom = front of meter
@@ -1169,36 +1214,44 @@ on_change{'batt_cycle_cost_choice'} = define()
 
 function run_forecast(file)
 {
-	logmsg('Forecast file: ' + file);
-	
-	user_specified_weather_file_old = ${user_specified_weather_file};
-	use_specific_weather_file_old = ${use_specific_weather_file};
-	solar_resource_file_old = ${solar_resource_file};
-	
-	if ( file != '' ) {
-		file = replace(file, '\\', '/');
-	}	
-
-	forecast_run = ssc_module_create_from_case('pvsamv1');
-	ssc_var(forecast_run, 'en_batt', false);
-	ssc_var(forecast_run, 'use_specific_weather_file', true);	
-	ssc_var(forecast_run, 'user_specified_weather_file', file);
-	ssc_var(forecast_run, 'solar_resource_file', file);	
+	// only run forecast for DC-connected, AC-connected doesn't need
+	if (value('batt_ac_or_dc') == 0)
+	{
+		logmsg('Forecast file: ' + file);
 		
-	
-	logmsg('use_specific_weather_file: ' + ssc_var(forecast_run, 'use_specific_weather_file'));
-	logmsg('user_specified_weather_file: ' + ssc_var(forecast_run, 'user_specified_weather_file'));
-	logmsg('solar_resource_file: ' + ssc_var(forecast_run, 'solar_resource_file'));
+		user_specified_weather_file_old = ${user_specified_weather_file};
+		use_specific_weather_file_old = ${use_specific_weather_file};
+		solar_resource_file_old = ${solar_resource_file};
+		
+		if ( file != '' ) {
+			file = replace(file, '\\', '/');
+		}	
 
+		forecast_run = ssc_module_create_from_case('pvsamv1');
+		ssc_var(forecast_run, 'en_batt', false);
+		ssc_var(forecast_run, 'use_specific_weather_file', true);	
+		ssc_var(forecast_run, 'user_specified_weather_file', file);
+		ssc_var(forecast_run, 'solar_resource_file', file);	
+			
+		
+		logmsg('use_specific_weather_file: ' + ssc_var(forecast_run, 'use_specific_weather_file'));
+		logmsg('user_specified_weather_file: ' + ssc_var(forecast_run, 'user_specified_weather_file'));
+		logmsg('solar_resource_file: ' + ssc_var(forecast_run, 'solar_resource_file'));
 
-	status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=false, 'hold_dialog'=false});
-	
-	if (status != 0)
-		logmsg('Battery forecast run failed with error: ' + status);
+		status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=false, 'hold_dialog'=false});
+		
+		if (status != 0)
+			logmsg('Battery forecast run failed with error: ' + status);
+		else
+		{
+			${batt_pv_dc_forecast} = ssc_var(forecast_run, 'dc_net');
+			${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');
+		}
+	}
 	else
 	{
-		${batt_pv_dc_forecast} = ssc_var(forecast_run, 'dc_net');
-		${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');
+		${batt_pv_dc_forecast} = [0];
+		${batt_pv_clipping_forecast} = [0];
 	}
 		
 	ssc_free(forecast_run);
@@ -1254,9 +1307,6 @@ function toggle_dispatch_fom()
 	// Automated DC controllers
 	else if (mode < 3)
 	{
-		// battery topology must be DC for these controllers
-		${batt_ac_or_dc} = 0;
-		
 		enable_auto_inputs_fom(true);
 		toggle_cycle_cost();
 		

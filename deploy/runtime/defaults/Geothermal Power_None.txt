@@ -1,5 +1,5 @@
 1
-135
+139
 CT
 1
 1
@@ -103,6 +103,12 @@ ambient_pressure
 1
 14.700000
 analysis_type
+1
+1
+1
+1
+0.000000
+annual_albedo
 1
 1
 1
@@ -223,8 +229,8 @@ excess_pressure_pump
 file_name
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+106
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 fracture_angle
 1
 1
@@ -243,6 +249,12 @@ fracture_width
 1
 1
 175.000000
+gen
+1
+2
+1
+1
+0.000000
 geopowerblock.pwrb.condenser_type
 1
 1
@@ -483,8 +495,8 @@ hybrid_dispatch_schedule
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -502,6 +514,12 @@ in_nsrdb_options
 1
 1
 0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
 inj_prod_well_distance
 1
 1
@@ -514,16 +532,18 @@ inj_well_diam
 1
 1
 10.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 lat
 1
 1
 1
 1
 33.610001
-lbl_csp
-1
-4
-0
 library_folder_list
 1
 4
@@ -693,8 +713,12 @@ rock_thermal_conductivity
 solar_data_file_name
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+106
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4
@@ -708,8 +732,8 @@ blythe_ca_33.617773_-114.588261_psmv3_60_tmy
 solar_resource_file
 1
 4
-84
-F:\SAMDEV\sam\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+106
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 specified_pump_work_amount
 1
 1

@@ -1,6 +1,6 @@
 Supercritical Carbon Dioxide Power Cycle
-911
-470
+910
+451
 33
 Numeric
 
@@ -8,14 +8,14 @@ Numeric
 16
 Name
 5
-9
-P_in_calc
+11
+HTR_UA_calc
 X
 3
 753
 Y
 3
-264
+336
 Width
 3
 90
@@ -33,7 +33,66 @@ Format
 0
 Decimals
 3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
 2
+1
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+11
+LTR_UA_calc
+X
+3
+753
+Y
+3
+312
+Width
+3
+90
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
 Prefix
 5
 0
@@ -67,14 +126,73 @@ Numeric
 16
 Name
 5
-10
-P_out_calc
+9
+P_IP_calc
 X
 3
 753
 Y
 3
 288
+Width
+3
+90
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+9
+P_in_calc
+X
+3
+753
+Y
+3
+264
 Width
 3
 90
@@ -297,65 +415,6 @@ BackColour
 TabOrder
 3
 6
-Numeric
-
-1
-16
-Name
-5
-13
-UA_total_calc
-X
-3
-753
-Y
-3
-312
-Width
-3
-90
-Height
-3
-21
-Value
-1
-0.000000
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-0
-ForeColour
-4
-80
-80
-80
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -834,8 +893,8 @@ Numeric
 16
 Name
 5
-19
-_sco2_recup_eff_max
+24
+_sco2_fan_power_perc_net
 X
 3
 411
@@ -859,7 +918,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1162,7 +1221,7 @@ X
 213
 Y
 3
-432
+408
 Width
 3
 100
@@ -1257,7 +1316,7 @@ Width
 899
 Height
 3
-456
+432
 Caption
 5
 16
@@ -1459,65 +1518,6 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
-
-1
-16
-Name
-5
-13
-recup_eff_max
-X
-3
-213
-Y
-3
-408
-Width
-3
-100
-Height
-3
-21
-Value
-1
-0.000000
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-12
 Numeric
 
 1
@@ -1740,7 +1740,49 @@ TabOrder
 3
 4294967295
 
-45
+49
+HTR_UA_calc
+3
+1
+High temp recuperator conductance
+MW/K
+sCO2 Power Cycle
+0
+8
+1
+1
+1
+1
+0.000000
+Default
+LTR_UA_calc
+3
+1
+Low temp recuperator conductance
+MW/K
+sCO2 Power Cycle
+0
+8
+1
+1
+1
+1
+0.000000
+Default
+P_IP_calc
+3
+1
+Intermediate pressure
+MPa
+sCO2 Power Cycle
+0
+8
+1
+1
+1
+1
+0.000000
+Default
 P_high_limit
 3
 1
@@ -1758,7 +1800,7 @@ Default
 P_in_calc
 3
 1
-Compressor inlet pressure
+Low pressure
 MPa
 sCO2 Power Cycle
 0
@@ -1768,7 +1810,7 @@ sCO2 Power Cycle
 1
 1
 0.000000
- 
+Default
 P_out_calc
 3
 1
@@ -1782,7 +1824,7 @@ sCO2 Power Cycle
 1
 1
 0.000000
- 
+Default
 SCO2_COPY_P_ref
 3
 1
@@ -1825,20 +1867,20 @@ sCO2 Power Cycle
 1
 0.000000
 Default
-UA_total_calc
+_dd_sco2_cycle_config
 3
 1
-Recuperator conductance (UA)
-kW/K
+Cycle Configuration
+ 
 sCO2 Power Cycle
 0
-8
+0
 1
 1
 1
 1
 0.000000
- 
+Default
 _sco2_P_high_limit
 3
 1
@@ -1852,7 +1894,7 @@ sCO2 Power Cycle
 1
 1
 0.000000
- 
+Default
 _sco2_P_ref
 3
 1
@@ -1965,6 +2007,20 @@ sCO2 Power Cycle
 1
 0.000000
 Default
+_sco2_fan_power_perc_net
+3
+1
+ 
+ 
+sCO2 Power Cycle
+0
+1
+1
+1
+1
+1
+0.000000
+Default
 _sco2_recup_eff_max
 3
 1
@@ -1996,7 +2052,7 @@ Default
 deltaT_PHX
 3
 1
-PHX temperature difference
+PHX approach temperature
 °C
 sCO2 Power Cycle
 0
@@ -2038,7 +2094,7 @@ Default
 fan_power_perc_net
 3
 1
-Net power used for cooling fan
+Cooling fan electricity consumption
 %
 sCO2 Power Cycle
 0
@@ -2158,7 +2214,7 @@ Default
 recomp_frac_calc
 3
 1
-Recompression Fraction
+Recompression fraction
  
 sCO2 Power Cycle
 0
@@ -2168,7 +2224,7 @@ sCO2 Power Cycle
 1
 1
 0.000000
- 
+Default
 recup_eff_max
 3
 1
@@ -2269,11 +2325,11 @@ sCO2 Power Cycle
 1
 1
 0.000000
- 
+Default
 sco2ud_T_htf_cold_calc
 3
 1
-HTF cold temperature sCO2
+HTF cold temperature
 °C
 sCO2 Power Cycle
 0
@@ -2394,7 +2450,7 @@ equations{ 'sco2_cycle_config' } = define() {
    	];
 };
 
-14923
+16123
 on_load{"Supercritical Carbon Dioxide Power Cycle"} = define() {
 	
 	if( ${is_sco2_msg_disabled} == 0.0 )
@@ -2436,6 +2492,10 @@ on_change{'btn_sco2_des_and_udpc'} = define() {
 	sco2_design_point(1);
 };
 
+on_change{'dd_sco2_cycle_config'} = define() {
+	compare_des_pars();
+};
+
 on_change{"T_htf_hot_des"} = define() {
 	compare_des_pars();
 };
@@ -2473,6 +2533,10 @@ on_change{"recup_eff_max"} = define() {
 };
 
 on_change{"P_high_limit"} = define() {
+	compare_des_pars();
+};
+
+on_change{"fan_power_perc_net"} = define() {
 	compare_des_pars();
 };
 
@@ -2676,6 +2740,37 @@ function compare_des_pars () {
 		//property("_sco2_P_high_limit", "BackColour", [192, 192, 192]);
 		enable("_sco2_P_high_limit", false);
 	}
+	if(${fan_power_perc_net} != ${_sco2_fan_power_perc_net})
+	{
+		is_des_par_diff = true;
+		if(isnan(${_sco2_fan_power_perc_net}))
+		{
+			//property("_sco2_P_high_limit", "BackColour", [192,192,192]);
+			enable("_sco2_fan_power_perc_net", false);
+		}
+		else
+		{
+			//property("_sco2_P_high_limit", "BackColour", [255, 0, 0]);
+			enable("_sco2_fan_power_perc_net", true);
+		}
+	}
+	else
+	{
+		//property("_sco2_P_high_limit", "BackColour", [192, 192, 192]);
+		enable("_sco2_fan_power_perc_net", false);
+	}
+	if(${dd_sco2_cycle_config} != ${_dd_sco2_cycle_config})
+	{
+		is_des_par_diff = true;
+	}
+	if(${dd_sco2_cycle_config}==0)
+	{
+		enable("P_IP_calc", true);
+	}
+	else
+	{
+		enable("P_IP_calc", false);
+	}
 	value("is_sco2_des_par_diff", is_des_par_diff);
 	update_radio_buttons();
 }
@@ -2712,10 +2807,12 @@ function update_ui() {
 
 	if( ${is_sco2_designed} == 0.0 )
 	{
-		value("UA_total_calc",nan());
+		value('HTR_UA_calc',nan());
+		value('LTR_UA_calc',nan());
 		value('sco2ud_T_htf_cold_calc',nan());
 		value("recomp_frac_calc",nan());
 		value("P_in_calc",nan());
+		value("P_IP_calc",nan());
 		value("P_out_calc",nan());
 	}
 	
@@ -2730,7 +2827,8 @@ function update_ui() {
 		value("_sco2_eta_c", nan());
 		value("_sco2_eta_t", nan());
 		value("_sco2_recup_eff_max", nan());
-		value("_sco2_P_high_limit", nan());		
+		value("_sco2_P_high_limit", nan());
+		value("_sco2_fan_power_perc_net", nan());		
 	}
 	compare_des_pars();
 	refresh();
@@ -2754,8 +2852,8 @@ function sco2_design_point(is_gen_udpc) {
 	ssc_var(obj, "eta_isen_rc", ${eta_c});				//[-] Re-compressor isentropic efficiency
 	ssc_var(obj, "eta_isen_pc", ${eta_c});              //[-] Precompressor isentropic efficiency
 	ssc_var(obj, "eta_isen_t", ${eta_t});				//[-] Turbine isentropic efficiency
-	ssc_var(obj, "LT_recup_eff_max", ${recup_eff_max});	//[-] Max effectiveness in LT recuperator
-	ssc_var(obj, "HT_recup_eff_max", ${recup_eff_max});	//[-] Max effectiveness in HT recuperator
+	ssc_var(obj, "LT_recup_eff_max", 1.0);				//[-] Max effectiveness in LT recuperator
+	ssc_var(obj, "HT_recup_eff_max", 1.0);				//[-] Max effectiveness in HT recuperator
 	ssc_var(obj, "P_high_limit", ${P_high_limit});		//[MPa] Cycle high pressure limit
 	ssc_var(obj, "dT_PHX_cold_approach", ${deltaT_PHX});	//[C] Temperature difference between cold HTF and cold CO2 PHX inlet
 	ssc_var(obj, "fan_power_frac", ${fan_power_perc_net}/100);	//[-] Fraction of net cycle power consumed by air cooler fan
@@ -2791,6 +2889,7 @@ function sco2_design_point(is_gen_udpc) {
 	
 	value("is_sco2_designed", 1.0);
 	value("is_sco2_des_par_diff", 1.0);
+	value("_dd_sco2_cycle_config",${dd_sco2_cycle_config});
 	value("_sco2_T_htf_hot_des", ${T_htf_hot_des});
 	value('_sco2_deltaT_PHX', ${deltaT_PHX});
 	value("_sco2_T_amb_des", ${sco2_T_amb_des});
@@ -2801,6 +2900,7 @@ function sco2_design_point(is_gen_udpc) {
 	value("_sco2_eta_t", ${eta_t});
 	value("_sco2_recup_eff_max", ${recup_eff_max});
 	value("_sco2_P_high_limit", ${P_high_limit});
+	value("_sco2_fan_power_perc_net", ${fan_power_perc_net});
 	
 	if(is_gen_udpc)
 	{
@@ -2814,24 +2914,29 @@ function sco2_design_point(is_gen_udpc) {
 	compare_des_pars();
 	refresh();
 	
-	UA_total = ssc_var(obj, "UA_recup_total");
 	recomp_frac = ssc_var(obj, "recomp_frac");
+	LTR_UA_calc = ssc_var(obj, "UA_LTR");
+	HTR_UA_calc = ssc_var(obj, "UA_HTR");
 	if(${sco2_cycle_config}==1)
 	{
 		P_comp_in = ssc_var(obj, "P_comp_in");
+		P_IP_calc = nan();
 	}
 	else
 	{
 		P_comp_in = ssc_var(obj, "pc_P_in_des");
+		P_IP_calc = ssc_var(obj, "P_comp_in");
 	}
 	P_comp_out = ssc_var(obj, "P_comp_out");
 	T_htf_cold = ssc_var(obj, "T_htf_cold_des");
 	
 	value('sco2ud_T_htf_cold_calc',T_htf_cold);
-	value("UA_total_calc",UA_total);
 	value("recomp_frac_calc",recomp_frac);
 	value("P_in_calc",P_comp_in);
+	value("P_IP_calc",P_IP_calc);
 	value("P_out_calc",P_comp_out);
+	value("LTR_UA_calc", LTR_UA_calc);
+	value("HTR_UA_calc", HTR_UA_calc);
 	
 	cycle_type_str = "recompression";
 	sco2_min_frac = 0.5;

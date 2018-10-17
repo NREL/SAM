@@ -1,7 +1,35 @@
 Geothermal Plant and Equipment
-826
-705
-41
+909
+699
+43
+CheckBox
+
+1
+8
+Name
+5
+0
+X
+3
+0
+Y
+3
+0
+Width
+3
+0
+Height
+3
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+0
 GroupBox
 
 1
@@ -198,7 +226,7 @@ Y
 87
 Width
 3
-239
+185
 Height
 3
 21
@@ -699,7 +727,7 @@ Name
 geotherm.egs_design_temp_autoselect
 X
 3
-558
+543
 Y
 3
 159
@@ -937,6 +965,50 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+12
+Name
+5
+22
+geotherm_flash_message
+X
+3
+252
+Y
+3
+87
+Width
+3
+267
+Height
+3
+24
+Caption
+5
+0
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -1284,7 +1356,7 @@ Label
 Name
 5
 9
-object 74
+object 77
 X
 3
 444
@@ -2002,7 +2074,7 @@ TabOrder
 3
 10
 
-37
+38
 adjust
 3
 5
@@ -2144,6 +2216,20 @@ Geothermal Plant and Equipment
 1
 50.759998
 Numeric
+gen
+3
+2
+System Generation Calculated
+kW
+Geothermal Plant and Equipment
+0
+1
+1
+2
+1
+1
+0.000000
+Default
 geotherm.conversion_type_name
 3
 4
@@ -2521,7 +2607,7 @@ Geothermal Plant and Equipment
 15.000000
 Numeric
 
-4668
+4667
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -2549,7 +2635,6 @@ equations{ 'ui_calculations_only' } = define() {
 equations{ '$MIMO$ geothermal' } = define() {
     obj = ssc_create();
 	ssc_var( obj, 'ui_calculations_only', 1 ); // set to 1 so model only does UI calculations (much faster)
-
 	ssc_var( obj, 'system_capacity', ${nameplate} );
 	ssc_var( obj, 'adjust:constant', 0.0 );
 
@@ -2634,20 +2719,34 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-799
+1092
 function update_controls()
 {
+	flash_message();
+	show('geotherm_flash_message', ${conversion_type});
+
 	// enable/disable all the appropriate controls on the page according to
 	// the user's selections
-	enable("decline_type", (${resource_type}!=0) );
-	enable("nameplate", (${analysis_type}==0) );
-	enable("num_wells", (${analysis_type}==1) );
-	enable("conversion_subtype", (${conversion_type}!=0) );
-	enable("specified_pump_work_amount", (${specify_pump_work}==1) );
+	enable('plant_efficiency_input', !${conversion_type});
+	enable("decline_type", ${resource_type} );
+	enable("nameplate", !${analysis_type} );
+	enable("num_wells", ${analysis_type} );
+	enable("conversion_subtype", ${conversion_type});
+	enable("specified_pump_work_amount", ${specify_pump_work} );
 
 	// if this is a hydrothermal plant, set this to 'specify decline rate'
 	if (${resource_type}==0)
 		value("decline_type", 0);
+}
+
+function flash_message()
+{
+	message = '';
+	
+	if (${conversion_type})
+		message = 'Flash plant efficiency calculated internally';
+	
+	property( 'geotherm_flash_message','Caption',message );
 }
 
 on_load{"Geothermal Plant and Equipment"}=define() {
@@ -2665,4 +2764,3 @@ on_change{'analysis_type'} = define() {
 on_change{'specify_pump_work'} = define() {
 	update_controls();
 };
-
