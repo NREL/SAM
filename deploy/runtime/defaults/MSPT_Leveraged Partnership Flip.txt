@@ -1,5 +1,5 @@
 1
-677
+678
 A_sf_UI
 1
 1
@@ -313,6 +313,12 @@ _sco2_eta_t
 1
 1
 inf
+_sco2_fan_power_perc_net
+1
+1
+1
+1
+0.000000
 _sco2_recup_eff_max
 1
 1
@@ -2005,8 +2011,8 @@ field_model_type
 file_name
 1
 4
-112
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
+118
+C:\Users\tneises\Documents\Projects\GitHub\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -12409,8 +12415,8 @@ site_spec_cost
 solar_data_file_name
 1
 4
-112
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
+118
+C:\Users\tneises\Documents\Projects\GitHub\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
 solar_data_source
 1
 4
@@ -12424,8 +12430,8 @@ daggett_ca_34.864032_-116.888098_psmv3_60_tmy
 solar_resource_file
 1
 4
-112
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
+118
+C:\Users\tneises\Documents\Projects\GitHub\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
 solarm
 1
 1
