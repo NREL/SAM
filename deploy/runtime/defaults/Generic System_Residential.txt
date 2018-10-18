@@ -2194,7 +2194,7 @@ system_use_lifetime_output
 1
 1
 1
-1.000000
+0.000000
 system_use_recapitalization
 1
 1
