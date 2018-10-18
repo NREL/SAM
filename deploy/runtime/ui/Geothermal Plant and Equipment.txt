@@ -975,13 +975,13 @@ Name
 geotherm_binary_message
 X
 3
-204
+162
 Y
 3
 84
 Width
 3
-267
+357
 Height
 3
 24
@@ -1019,13 +1019,13 @@ Name
 geotherm_flash_message
 X
 3
-237
+213
 Y
 3
 84
 Width
 3
-267
+300
 Height
 3
 24
@@ -2763,7 +2763,7 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-1382
+1391
 function update_controls()
 {
 	flash_message();
@@ -2801,7 +2801,7 @@ function binary_message()
 	message = '';
 	
 	if (!${conversion_type})
-		message = 'Plant Efficiency is the percentage of maximum brine efficiency';
+		message = 'Plant efficiency set as percentage of maximum possible plant efficiency';
 	
 	property( 'geotherm_binary_message','Caption',message );
 }
