@@ -244,8 +244,11 @@ function generic_system_metrics()
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
-	if ( value('en_batt') == 1 )
-		metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
+	if ( varinfo('en_batt') ) {
+		if (value('en_batt')){
+			metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
+		}
+	}
 	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 }
 
