@@ -2770,7 +2770,7 @@ TabOrder
 3
 41
 
-64
+85
 FieldConfig
 3
 1
@@ -2841,6 +2841,104 @@ MSLF Solar Field
 1
 1
 950.000000
+Default
+L_rnr_pb
+3
+1
+Length of runner pipe in pb
+m
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+L_rnr_per_xpan
+3
+1
+Threshold length of straight runner pipe without an expansion loop
+m
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+L_xpan_hdr
+3
+1
+Combined perpendicular lengths of each header expansion loop
+m
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+L_xpan_rnr
+3
+1
+Combined perpendicular lengths of each runner expansion loop
+m
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+Min_rnr_xpans
+3
+1
+Minimum number of expansion loops per single-diameter runner section
+-
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+N_hdr_per_xpan
+3
+1
+Number of collector loops per expansion loop
+-
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+N_max_hdr_diams
+3
+1
+Max header diameters
+-
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
 Default
 T_amb_sf_des
 3
@@ -2926,6 +3024,62 @@ MSLF Solar Field
 1
 525.000000
 Default
+V_hdr_cold_max
+3
+1
+Header design max flow velocity
+m/s
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+V_hdr_cold_min
+3
+1
+Header design min flow velocity
+m/s
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+V_hdr_hot_max
+3
+1
+ 
+m/s
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+V_hdr_hot_min
+3
+1
+ 
+m/s
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
 V_hdr_max
 3
 1
@@ -3010,6 +3164,20 @@ MSLF Solar Field
 1
 0.000000
 Default
+calc_design_pipe_vals
+3
+1
+Calculate temps and pressures at design conditions for runners and headers
+-
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
 csp.mslf.sf.FieldConfig
 3
 1
@@ -3077,6 +3245,20 @@ csp.mslf.sf.sm_or_area
 MSLF Solar Field
 0
 0
+1
+1
+1
+1
+0.000000
+Default
+custom_sf_pipe_sizes
+3
+1
+Use custom solar field pipe diams, wallthks, and lengths
+-
+MSLF Solar Field
+0
+2
 1
 1
 1
@@ -3447,6 +3629,34 @@ MSLF Solar Field
 1
 0.000000
 Default
+northsouth_field_sep
+3
+1
+North/south separation between subfields. 0 = SCAs are touching
+m
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+offset_xpan_hdr
+3
+1
+Location of first header expansion loop. 1 = after first collector loop
+-
+MSLF Solar Field
+0
+2
+1
+1
+1
+1
+0.000000
+Default
 rec_htf_vol
 3
 1
@@ -3461,6 +3671,48 @@ MSLF Solar Field
 1
 1.000000
 Default
+sf_hdr_diams
+3
+2
+Custom header diameters
+m
+MSLF Solar Field
+0
+0
+1
+2
+1
+1
+0.000000
+Default
+sf_hdr_lengths
+3
+2
+Custom header lengths
+m
+MSLF Solar Field
+0
+0
+1
+2
+1
+1
+0.000000
+Default
+sf_hdr_wallthicks
+3
+2
+Custom header wall thicknesses
+m
+MSLF Solar Field
+0
+0
+1
+2
+1
+1
+0.000000
+Default
 sf_q_design
 3
 1
@@ -3471,6 +3723,48 @@ MSLF Solar Field
 8
 1
 1
+1
+1
+0.000000
+Default
+sf_rnr_diams
+3
+2
+Custom runner diameters
+m
+MSLF Solar Field
+0
+0
+1
+2
+1
+1
+0.000000
+Default
+sf_rnr_lengths
+3
+2
+Custom runner lengths
+m
+MSLF Solar Field
+0
+0
+1
+2
+1
+1
+0.000000
+Default
+sf_rnr_wallthicks
+3
+2
+Custom runner wall thicknesses
+m
+MSLF Solar Field
+0
+0
+1
+2
 1
 1
 0.000000

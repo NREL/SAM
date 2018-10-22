@@ -2870,7 +2870,7 @@ bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
 		return ShowNumericValuesDialog(title, values);
 	}
 
-	wxMessageBox("Could not edit values for \"" + vi->Label + "\" (domain type error)");
+	wxMessageBox("Value type for \"" + vi->Label + "\" is not numeric. Cannot edit in Quick Setup.");
 	return false;
 }
 
