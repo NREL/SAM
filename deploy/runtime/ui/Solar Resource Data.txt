@@ -2432,7 +2432,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-18228
+18378
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 //	msgbox('1. user_specified='+value('use_specific_weather_file'));
@@ -2593,8 +2593,10 @@ function update_library_folders( new_path )
 		rescanlibrary( 'solar' );
 	}
 	if ( x != '' )
-		x = '\n' + replace( x, ';', '\n');
-	value('library_folder_list', get_settings('NSRDBDownloadFolder') + x );
+		x = replace( x, ';', '\n');
+	if ( strpos( x, get_settings( 'solar_download_path' ) ) == -1 )
+		x = get_settings( 'solar_download_path' ) + '\n' + x;
+	value('library_folder_list', x );
 }
 
 function display_csp_message() 
@@ -2642,6 +2644,11 @@ nsrdb_all = define() {
 		fn = hash{'file'};
 		dn = hash{'folder'};
 		af = hash{'addfolder'};
+		if ( fn != '' )
+		{
+			error = wf_check( fn );
+			msgbox( error );
+		}	
 		if (af == "no")
 		{
 			if ((fn != '') && (dn != ''))
