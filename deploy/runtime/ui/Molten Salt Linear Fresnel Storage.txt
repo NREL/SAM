@@ -1421,7 +1421,7 @@ TabOrder
 3
 2
 
-43
+46
 TES_cap
 3
 1
@@ -1472,6 +1472,20 @@ T_tank_hot_ini
 MSLF Thermal Storage
 0
 8
+1
+1
+1
+1
+0.000000
+Default
+T_tank_hot_inlet_min
+3
+1
+Minimum hot tank htf inlet temperature
+C
+MSLF Parasitics
+0
+2
 1
 1
 1
@@ -1843,6 +1857,20 @@ MSLF Thermal Storage
 1
 1.000000
 Default
+has_hot_tank_bypass
+3
+1
+Bypass valve connects field outlet to cold tank
+-
+MSLF Parasitics
+0
+2
+1
+1
+1
+1
+0.000000
+Default
 hot_tank_Thtr
 3
 1
@@ -1955,6 +1983,20 @@ MSLF Thermal Storage
 1
 1
 1.000000
+Default
+tanks_in_parallel
+3
+1
+Tanks are in parallel, not in series, with solar field
+-
+MSLF Parasitics
+0
+2
+1
+1
+1
+1
+0.000000
 Default
 tes_temp
 3
