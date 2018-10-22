@@ -1376,7 +1376,7 @@ TabOrder
 3
 4
 
-21
+28
 Pipe_hl_coef
 3
 1
@@ -1404,6 +1404,20 @@ MSLF Parasitics
 1
 1
 125.000000
+Default
+V_tes_des
+3
+1
+Design-point velocity to size the TES pipe diameters
+m/s
+MSLF Parasitics
+0
+2
+1
+1
+1
+1
+0.000000
 Default
 aux_array
 3
@@ -1629,6 +1643,48 @@ MSLF Parasitics
 1
 0.000000
 Default
+custom_sgs_pipe_sizes
+3
+1
+Use custom SGS pipe diams, wallthks, and lengths
+-
+MSLF Parasitics
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+custom_tes_p_loss
+3
+1
+TES pipe losses are based on custom lengths and coeffs
+-
+MSLF Parasitics
+0
+2
+1
+1
+1
+1
+0.000000
+Default
+k_tes_loss_coeffs
+3
+2
+Minor loss coeffs for the coll, gen, and bypass loops
+-
+MSLF Parasitics
+0
+0
+1
+2
+1
+1
+0.000000
+Default
 pb_fixed_par
 3
 1
@@ -1656,6 +1712,48 @@ MSLF Parasitics
 1
 1
 0.550000
+Default
+sgs_diams
+3
+2
+Custom SGS diameters
+m
+MSLF Parasitics
+0
+0
+1
+2
+1
+1
+0.000000
+Default
+sgs_lengths
+3
+2
+Custom SGS lengths
+m
+MSLF Parasitics
+0
+0
+1
+2
+1
+1
+0.000000
+Default
+sgs_wallthicks
+3
+2
+Custom SGS wall thicknesses
+m
+MSLF Parasitics
+0
+0
+1
+2
+1
+1
+0.000000
 Default
 tes_pump_coef
 3
