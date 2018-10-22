@@ -1199,7 +1199,21 @@ TabOrder
 3
 10
 
-31
+32
+DP_SGS
+3
+1
+Pressure drop within the steam generator
+bar
+MSLF Power Cycle
+0
+2
+1
+1
+1
+1
+0.000000
+Default
 PB_COPY_T_htf_cold_des
 3
 1
