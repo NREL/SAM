@@ -9,6 +9,16 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 <li> Maximizing Net Present Value (NPV) of System 
 <li> Maximizing Energy Yield (kWh/kW) of the System
 </ol>
+
+<br><br> Once the simulation is completed, you will have the option of automatically updating your current subarray layout based on one of the 3 optimization strategies outlined above. Values updated include: strings in parallel, tilt, GCR, and number of modules along bottom of row.
+
+
+<br><br> 
+<b>Warnings and Tips:</b> 
+<ul>
+	<li> For accurate results, ensure self-shading is enabled under the Shading and Layout page in the active case.
+	<li> This macro can also be used to optimize an entire PV system, by manually disabling subarrays 2, 3, and 4, and treating subarray 1 as whole system's configuration.
+
 @*/
  
  
@@ -35,6 +45,7 @@ if ( typeof(macro) == 'unknown' ) {
 ///////////////////////////////////**** USER DEFINED INPUTS ****///////////////////////////////////
 
 //User Defined Inputs:
+subarray_x = macro.subarray_x;				//Subarray to be optimized 
 length = macro.length ; 					//Length of field (m)
 width = macro.width;						//Width of fiel (m)
 setback = macro.setback;					//Distance from edge of land that is off limits for placement of modules (m)
@@ -47,7 +58,8 @@ gcr_steps = macro.gcr_steps;				//Allow the  user to input the increments of GCR
 max_tilt = macro.max_tilt;					//Allow the user to input max tilt angle
 min_tilt = macro.min_tilt;					//Allow the user to input min tilt angel
 tilt_steps = macro.tilt_steps;				//Allow the user the input the increments of tilt angle they want to calculate over
-dcac = macro.dcac;
+dcac = macro.dcac;							//Desired Dc to AC ratio 
+update_results = macro.update_results;		//Update subarray layout optimized for 1 of the 3 strategies, or do not update at all
 
 //Acres to m^2 conversion:
 //land_area = 0.223;					//Effective land area after factoring in setbacks (in acres)
@@ -62,6 +74,80 @@ if(tilt_steps <= 0) tilt_steps = max_tilt;
 
 
 ///////////////////////////////////**** DEFINING PLACEHOLDER VARIABLES ****///////////////////////////////////
+
+//Store subarray 1's configuration information:
+subarray1_modules_per_string = get('subarray1_modules_per_string');
+subarray1_nstrings = get('subarray1_nstrings');
+subarray1_track_mode = get('subarray1_track_mode');
+subarray1_tilt = get('subarray1_tilt');
+subarray1_azimuth =	get('subarray1_azimuth');
+subarray1_gcr = get('subarray1_gcr');
+subarray1_shade_mode = get('subarray1_shade_mode');
+subarray1_mod_orient = get('subarray1_mod_orient');
+subarray1_nmody = get('subarray1_nmody');
+subarray1_nmodx = get('subarray1_nmodx');
+inverter_count = get('inverter_count');
+
+//Reminder to re-enable subarray (if the subarray was enabled before the macro) after simulation is complete.
+subarray_2_flag = 0;
+subarray_3_flag = 0;
+subarray_4_flag = 0;
+if(get('subarray2_enable') == 1) subarray_2_flag = 1;
+if(get('subarray3_enable') == 1) subarray_3_flag = 1;
+if(get('subarray4_enable') == 1) subarray_4_flag = 1;
+
+
+
+if(subarray_x == 'Subarray 1') {
+outln("value of subarray to be optimized: " + subarray_x);
+set('subarray2_enable', 0);
+set('subarray3_enable', 0);
+set('subarray4_enable', 0);
+}
+
+if(subarray_x == 'Subarray 2') {
+outln("value of subarray to be optimized: " + subarray_x);
+set('subarray1_modules_per_string', get('subarray2_modules_per_string'));	//Value stays constant throughout simulation
+set('subarray1_track_mode', get('subarray2_track_mode'));
+set('subarray1_azimuth', get('subarray2_azimuth'));
+set('subarray1_shade_mode', get('subarray2_shade_mode'));
+set('subarray1_mod_orient', get('subarray2_mod_orient'));
+set('subarray1_nmody', get('subarray2_nmody'));
+
+set('subarray2_enable', 0);
+set('subarray3_enable', 0);
+set('subarray4_enable', 0);
+}
+
+if(subarray_x == 'Subarray 3') {
+outln("value of subarray to be optimized: " + subarray_x);
+set('subarray1_modules_per_string', get('subarray3_modules_per_string'));
+set('subarray1_track_mode', get('subarray3_track_mode'));
+set('subarray1_azimuth', get('subarray3_azimuth'));
+set('subarray1_shade_mode', get('subarray3_shade_mode'));
+set('subarray1_mod_orient', get('subarray3_mod_orient'));
+set('subarray1_nmody', get('subarray3_nmody'));
+
+set('subarray2_enable', 0);
+set('subarray3_enable', 0);
+set('subarray4_enable', 0);
+}
+
+if(subarray_x == 'Subarray 4') {
+outln("value of subarray to be optimized: " + subarray_x);
+set('subarray1_modules_per_string', get('subarray4_modules_per_string'));
+set('subarray1_track_mode', get('subarray4_track_mode'));
+set('subarray1_azimuth', get('subarray4_azimuth'));
+set('subarray1_shade_mode', get('subarray4_shade_mode'));
+set('subarray1_mod_orient', get('subarray4_mod_orient'));
+set('subarray1_nmody', get('subarray4_nmody'));
+
+set('subarray2_enable', 0);
+set('subarray3_enable', 0);
+set('subarray4_enable', 0);
+}
+
+
 
 //Placeholders for max AEP:
 max_energy = 0;						//Placeholder for maximum Annual Energy Production (AEP)
@@ -265,9 +351,9 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 	if(strings_in_parallel[i] == 0) strings_in_parallel[i] = 1;
 	set_strings_in_parallel = strings_in_parallel[i];
 	inverter_capacity_total = system_size[i] / dcac;
-	num_inverters = to_int(inverter_capacity_total / inverter_power);
-	if(num_inverters == 0) num_inverters = 1;
-	set('inverter_count', num_inverters);
+	num_inverters[i] = to_int(inverter_capacity_total / inverter_power);
+	if(num_inverters[i] == 0) num_inverters[i] = 1;
+	set('inverter_count', num_inverters[i]);
 	set('subarray1_nstrings', to_int(set_strings_in_parallel));
 	set('subarray1_gcr', gcr);
 	set('subarray1_nmodx', bottom_modules[i]);
@@ -300,6 +386,8 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 			aep_row_spacing = get('ui_subarray1_row_spacing');
 			aep_total_modules = get('total_modules');
 			max_aep_yield = yield[i][j];
+			
+			string_in_parallel_aep = get('subarray1_nstrings');
 		}
 				
 		//Storing the appropriate results when calculating maximum NPV in the respective placeholders
@@ -314,6 +402,7 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 			npv_row_spacing = get('ui_subarray1_row_spacing');
 			npv_total_modules = get('total_modules');
 			max_npv_yield = yield[i][j];
+			string_in_parallel_npv = get('subarray1_nstrings');
 		}
 				
 				
@@ -329,6 +418,8 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 			yield_row_spacing = get('ui_subarray1_row_spacing');
 			yield_total_modules = get('total_modules');
 			max_yield_npv = npv[i][j];
+			
+			string_in_parallel_yield = get('subarray1_nstrings');
 		}
 	}
 	i = i + 1;		
@@ -552,3 +643,142 @@ html_dialog(str, 'Optimal Array Layout', [1000,800]);
 
 ///////////////////////////////////**** END OF SCRIPT****///////////////////////////////////
 
+
+//Re-enable those subarrays that were enabled before the macro (but were not the subarray being optimized):
+if(subarray_2_flag == 1) set('subarray2_enable', 1);
+if(subarray_3_flag == 1) set('subarray3_enable', 1);
+if(subarray_4_flag == 1) set('subarray4_enable', 1);
+
+
+
+//Now update fields for subarray to be optimized:
+
+if(subarray_x == 'Subarray 1') {
+	if(update_results == 'Max AEP') {
+			set('subarray1_nstrings', string_in_parallel_aep);
+			set('subarray1_tilt', optimum_tilt);
+			set('subarray1_gcr', optimum_gcr);
+			set('subarray1_nmodx', aep_nmodx);
+		}
+	else if(update_results == 'Max NPV'){
+		set('subarray1_nstrings', string_in_parallel_npv );
+		set('subarray1_tilt', tilt_npv);
+		set('subarray1_gcr', gcr_npv);
+		set('subarray1_nmodx', npv_nmodx );
+	}
+	else if(update_results == 'Max Energy Yield') {
+		set('subarray1_nstrings', string_in_parallel_yield  );
+		set('subarray1_tilt', tilt_yield);
+		set('subarray1_gcr', gcr_yield);
+		set('subarray1_nmodx', yield_nmodx );
+	}
+}
+
+
+if (subarray_x == 'Subarray 2') {
+	//Value stays constant throughout simulation
+	set('subarray2_modules_per_string', get('subarray1_modules_per_string'));	
+	set('subarray2_track_mode', get('subarray1_track_mode'));
+	set('subarray2_azimuth', get('subarray1_azimuth'));
+	set('subarray2_shade_mode', get('subarray1_shade_mode'));
+	set('subarray2_mod_orient', get('subarray1_mod_orient'));
+	set('subarray2_nmody', get('subarray1_nmody'));
+	
+	//Updating optimized values based on user's selection
+	if(update_results == 'Max AEP') {
+		set('subarray2_nstrings', string_in_parallel_aep);
+		set('subarray2_tilt', optimum_tilt);
+		set('subarray2_gcr', optimum_gcr);
+		set('subarray2_nmodx', aep_nmodx);
+	}
+	else if(update_results == 'Max NPV'){
+		set('subarray2_nstrings', string_in_parallel_npv );
+		set('subarray2_tilt', tilt_npv);
+		set('subarray2_gcr', gcr_npv);
+		set('subarray2_nmodx', npv_nmodx );
+	}
+	else if(update_results == 'Max Energy Yield') {
+		set('subarray2_nstrings', string_in_parallel_yield  );
+		set('subarray2_tilt', tilt_yield);
+		set('subarray2_gcr', gcr_yield);
+		set('subarray2_nmodx', yield_nmodx );
+	}
+}
+
+if (subarray_x == 'Subarray 3') {
+	//Value stays constant throughout simulation
+	set('subarray3_modules_per_string', get('subarray1_modules_per_string'));	
+	set('subarray3_track_mode', get('subarray1_track_mode'));
+	set('subarray3_azimuth', get('subarray1_azimuth'));
+	set('subarray3_shade_mode', get('subarray1_shade_mode'));
+	set('subarray3_mod_orient', get('subarray1_mod_orient'));
+	set('subarray3_nmody', get('subarray1_nmody'));
+	
+	//Updating optimized values based on user's selection
+	if(update_results == 'Max AEP') {
+		set('subarray3_nstrings', string_in_parallel_aep);
+		set('subarray3_tilt', optimum_tilt);
+		set('subarray3_gcr', optimum_gcr);
+		set('subarray3_nmodx', aep_nmodx);
+	}
+	else if(update_results == 'Max NPV'){
+		set('subarray3_nstrings', string_in_parallel_npv );
+		set('subarray3_tilt', tilt_npv);
+		set('subarray3_gcr', gcr_npv);
+		set('subarray3_nmodx', npv_nmodx );
+	}
+	else if(update_results == 'Max Energy Yield') {
+		set('subarray3_nstrings', string_in_parallel_yield  );
+		set('subarray3_tilt', tilt_yield);
+		set('subarray3_gcr', gcr_yield);
+		set('subarray3_nmodx', yield_nmodx );
+	}
+}
+
+if (subarray_x == 'Subarray 4') {
+	//Value stays constant throughout simulation
+	set('subarray4_modules_per_string', get('subarray1_modules_per_string'));	
+	set('subarray4_track_mode', get('subarray1_track_mode'));
+	set('subarray4_azimuth', get('subarray1_azimuth'));
+	set('subarray4_shade_mode', get('subarray1_shade_mode'));
+	set('subarray4_mod_orient', get('subarray1_mod_orient'));
+	set('subarray4_nmody', get('subarray1_nmody'));
+	
+	//Updating optimized values based on user's selection
+	if(update_results == 'Max AEP') {
+		set('subarray4_nstrings', string_in_parallel_aep);
+		set('subarray4_tilt', optimum_tilt);
+		set('subarray4_gcr', optimum_gcr);
+		set('subarray4_nmodx', aep_nmodx);
+	}
+	else if(update_results == 'Max NPV'){
+		set('subarray4_nstrings', string_in_parallel_npv );
+		set('subarray4_tilt', tilt_npv);
+		set('subarray4_gcr', gcr_npv);
+		set('subarray4_nmodx', npv_nmodx );
+	}
+	else if(update_results == 'Max Energy Yield') {
+		set('subarray4_nstrings', string_in_parallel_yield  );
+		set('subarray4_tilt', tilt_yield);
+		set('subarray4_gcr', gcr_yield);
+		set('subarray4_nmodx', yield_nmodx );
+	}
+}
+
+
+//Reset values of subarray 1 (from before the macro was run):
+if(subarray_x != 'Subarray 1') {
+	set('subarray1_modules_per_string',subarray1_modules_per_string);
+	set('subarray1_nstrings', subarray1_nstrings);
+	set('subarray1_track_mode', subarray1_track_mode);
+	set('subarray1_tilt', subarray1_tilt);
+	set('subarray1_azimuth', subarray1_azimuth);
+	set('subarray1_gcr', subarray1_gcr);
+	set('subarray1_shade_mode', subarray1_shade_mode);
+	set('subarray1_mod_orient', subarray1_mod_orient);
+	set('subarray1_nmody', subarray1_nmody);
+	set('subarray1_nmodx', subarray1_nmodx);
+	set('inverter_count', inverter_count);
+}
+
+  		
