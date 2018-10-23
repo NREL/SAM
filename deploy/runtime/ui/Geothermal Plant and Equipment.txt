@@ -1,7 +1,7 @@
 Geothermal Plant and Equipment
 909
 699
-43
+44
 CheckBox
 
 1
@@ -971,17 +971,61 @@ Label
 12
 Name
 5
+23
+geotherm_binary_message
+X
+3
+162
+Y
+3
+84
+Width
+3
+357
+Height
+3
+24
+Caption
+5
+0
+TextColour
+4
+0
+0
+255
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
 22
 geotherm_flash_message
 X
 3
-252
+213
 Y
 3
-87
+84
 Width
 3
-267
+300
 Height
 3
 24
@@ -2719,12 +2763,15 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-1092
+1391
 function update_controls()
 {
 	flash_message();
 	show('geotherm_flash_message', ${conversion_type});
-
+	
+	binary_message();
+	show('geotherm_binary_message', !${conversion_type});
+	
 	// enable/disable all the appropriate controls on the page according to
 	// the user's selections
 	enable('plant_efficiency_input', !${conversion_type});
@@ -2748,6 +2795,17 @@ function flash_message()
 	
 	property( 'geotherm_flash_message','Caption',message );
 }
+
+function binary_message()
+{
+	message = '';
+	
+	if (!${conversion_type})
+		message = 'Plant efficiency set as percentage of maximum possible plant efficiency';
+	
+	property( 'geotherm_binary_message','Caption',message );
+}
+
 
 on_load{"Geothermal Plant and Equipment"}=define() {
 	update_controls();
