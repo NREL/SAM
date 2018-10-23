@@ -1,5 +1,6 @@
 # System Advisor Model (SAM)
 [![TravisCI](https://travis-ci.org/NREL/SAM.svg?branch=develop)](https://travis-ci.org/NREL/SAM)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FNREL%2FSAM.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FNREL%2FSAM?ref=badge_shield)
 
 The SAM Open Source Project repository contains the source code, tools, and instructions to build a desktop version of the National Renewable Energy Laboratory's System Advisor Model (SAM). SAM is a simulation program for electricity generation projects. It has models for different kinds of renewable energy systems and financial models for residential, commercial, and utility-scale projects. For more details about SAM's capabilities, see the SAM website at [https://sam.nrel.gov/](https://sam.nrel.gov/).
 
@@ -61,3 +62,6 @@ If you would like to submit code to fix an issue or add a feature, you can use G
 # License
 
 SAM's open source code is copyrighted by the Alliance for Sustainable Energy and licensed under a [mixed MIT and GPLv3 license](LICENSE.md). It allows for-profit and not-for-profit organizations to develop and redistribute software based on SAM under terms of an MIT license and requires that research entities including national laboratories, colleges and universities, and non-profit organizations make the source code of any redistribution publicly available under terms of a GPLv3 license. .
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FNREL%2FSAM.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FNREL%2FSAM?ref=badge_large)
