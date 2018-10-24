@@ -9,6 +9,7 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 <li> Maximizing Net Present Value (NPV) of System 
 <li> Maximizing Energy Yield (kWh/kW) of the System
 </ol>
+<<<<<<< HEAD
 
 <br><br> Once the simulation is completed, you will have the option of automatically updating your current subarray layout based on one of the 3 optimization strategies outlined above. Optimized values that are updated include: strings in parallel, tilt, GCR, and number of modules along bottom of row.
 
@@ -19,13 +20,20 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 	<li> For accurate results, ensure self-shading is enabled under the Shading and Layout page in the active case.
 	<li> This macro can also be used to optimize an entire PV system, by manually disabling subarrays 2, 3, and 4, and treating subarray 1 as whole system's configuration. This strategy assumes that entire PV system (all active subarrays) has the same azimuth, tilt angle, GCR, etc.
 	<li> Number of inverters recommended for each optimization strategy is only for that particalur subarray and not the entire system. 
+=======
+>>>>>>> develop
 @*/
  
  
 //Macro User Interface Widgets
 //@ name=subarray_x;type=combo;label=Subarray to be optimized;value=Subarray 1,Subarray 2,Subarray 3,Subarray 4;sel=0
+
 //@ name=length;type=number;label=Enter the Length of Field or Rooftop (m):;value=35
 //@ name=width;type=number;label=Enter the width of Field or Rooftop (m):;value=25
+
+
+
+
 //@ name=setback;type=number;label=Enter the setback (in m) from edges:;value=1 
 //@ name=max_gcr;type=number;label=Enter the maximum GCR:;value=1 
 //@ name=min_gcr;type=number;label=Enter the minimum GCR(value cannot equal 0):;value=0.1 
@@ -45,7 +53,10 @@ if ( typeof(macro) == 'unknown' ) {
 ///////////////////////////////////**** USER DEFINED INPUTS ****///////////////////////////////////
 
 //User Defined Inputs:
+
 subarray_x = macro.subarray_x;				//Subarray to be optimized 
+
+
 length = macro.length ; 					//Length of field (m)
 width = macro.width;						//Width of fiel (m)
 setback = macro.setback;					//Distance from edge of land that is off limits for placement of modules (m)
@@ -58,15 +69,26 @@ gcr_steps = macro.gcr_steps;				//Allow the  user to input the increments of GCR
 max_tilt = macro.max_tilt;					//Allow the user to input max tilt angle
 min_tilt = macro.min_tilt;					//Allow the user to input min tilt angel
 tilt_steps = macro.tilt_steps;				//Allow the user the input the increments of tilt angle they want to calculate over
+
 dcac = macro.dcac;							//Desired Dc to AC ratio 
 update_results = macro.update_results;		//Update subarray layout optimized for 1 of the 3 strategies, or do not update at all
 
 acreage = area*0.0002471;					//m^2 to acres conversion
 
+
+
+
+
+
+
+
+
+
 //If the user wants to iterate over fixed GCR or tilt angle, and sets either of
 //the two variables to 0, then change value to 1 to prevent infinite looping.
 if(gcr_steps <= 0 ) gcr_steps = max_gcr;
 if(tilt_steps <= 0) tilt_steps = max_tilt;
+
 
 
 ///////////////**** DETERMINING WHICH SUBARRAY IS TO BE OPTIMIZED AND STORING EXISTING USER INPUT VALUES ****/////////////////
@@ -150,6 +172,8 @@ if(subarray_x == 'Subarray 4') {
 }
 
 
+
+
 ///////////////////////////////////**** DEFINING PLACEHOLDER VARIABLES ****///////////////////////////////////
 
 //Placeholders for max AEP:
@@ -199,7 +223,11 @@ yield_total_modules = 0;
 
 ///////////////////////////////////**** ARRAY PLACEMENT ****///////////////////////////////////
 
+
 outln("\n\tOptimizing Array Layout for given ranges of GCR and Tilt over area of " + acreage + " acres. This may take up to a minute.");
+
+
+
 
 //Function for storing module power
 
@@ -257,7 +285,13 @@ system_sizer = define(gcr) {
 		
 		module_area = get('module_area');
 		set('subarray1_gcr', gcr);
+
 		system_size = gcr*(area/module_area)*(module_power/1000) ;
+
+		//set('desired_size', gcr*(area/module_area)*(module_power/1000));
+		system_size = gcr*(area/module_area)*(module_power/1000) ;
+		//system_size = get('desired_size');
+
 		return system_size;
 	};
 
@@ -270,6 +304,7 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {
 }
 
 //Variable to keep count of number of rows in the loop:
+
 if (get('subarray1_mod_orient') == 1) {					//if module orientation is landscape, then length of panel is used in calculating length of row
 	module_length = get('module_length');				//Length of 1 module
 	bottom_length = module_length;						//Initial length of bottom row of modules 
@@ -278,7 +313,17 @@ if (get('subarray1_mod_orient') == 1) {					//if module orientation is landscape
 elseif (get('subarray1_mod_orient') == 0) { 			//If module orientation is portrait, then width of panel is used in calculation length of row		
 	module_length = get('module_width');				//Length of 1 module
 	bottom_length = module_length;						//Initial length of bottom row of modules 
-	set('subarray1_nmodx', 1);
+
+
+
+
+
+
+
+
+
+
+set('subarray1_nmodx', 1);
 }
 
 
@@ -288,11 +333,27 @@ i = 0;
 
 //Fitting modules along length of field:
 for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {						//For loop to iterate over the entire range of (user input) GCRs, to make sure module placement along length and width of the field is in sync with the respective GCRs. So, for instance, even though the field length could accomodate a longer row of modules, number of modules in each row and alongside row is restricted.	
+
 		
 	n = to_int((effective_length/module_length) );									//Set modules along entire effective length
 	set('subarray1_nmodx',n);
 	
 	//At this point modules have been placed along bottom. System sizes have been calculated at respective GCRs.  
+
+	
+	
+
+
+
+	
+	
+
+
+
+
+
+
+
 	
 	//While loop to make sure number of modules along bottom row doesn't exceed system size at that GCR
 	while(get('subarray1_nmodx') < n){
@@ -300,6 +361,15 @@ for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {						//For loop to
 		set('subarray1_nmodx',n);
 	}
 	
+
+
+
+
+
+
+
+	
+
 	//So at this point, we set modules along bottom. Now, find how many strings in parallel you need.
 	strings_in_parallel[i] = to_int(number_of_modules[i] /get('subarray1_modules_per_string'));
 	set('subarray1_nstrings', strings_in_parallel[i]);
@@ -323,6 +393,7 @@ for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {						//For loop to
 
 ///////////////////////////////////**** S I M U L A T I O N ****///////////////////////////////////
 
+
 i = 0;
 progress_gcr = 0;	//Progress tracker
 
@@ -339,19 +410,46 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 	inverter_power = inverter_info();	//in kW
 	j = -1;				//counter variable to keep tab of the columns in the loop
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//Setting desired system size:
 	if(strings_in_parallel[i] == 0) strings_in_parallel[i] = 1;
 	set_strings_in_parallel = strings_in_parallel[i];
 	inverter_capacity_total = system_size[i] / dcac;
+
 	num_inverters[i] = to_int(inverter_capacity_total / inverter_power);
 	if(num_inverters[i] == 0) num_inverters[i] = 1;
 	set('inverter_count', num_inverters[i]);
+
+
+
+
+
 	set('subarray1_nstrings', to_int(set_strings_in_parallel));
 	set('subarray1_gcr', gcr);
 	set('subarray1_nmodx', bottom_modules[i]);
 	num_rows[i] = get('ui_subarray1_nrows');
 	
 	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {	//Loop for iterating over a range of tilt angles
+
+
+
+
+
+
+
+
 
 		j = j + 1; 									//Variable to keep a tab of columns in the loop
 		x[j] = min_tilt + (tilt_steps * j); 		//Array to store the tilt angles the user would like to iterate over
@@ -374,10 +472,13 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 			aep_row_spacing = get('ui_subarray1_row_spacing');
 			aep_total_modules = get('total_modules');
 			max_aep_yield = yield[i][j];
+
 			
 			string_in_parallel_aep = get('subarray1_nstrings');
 			modules_per_string_aep = get('subarray1_modules_per_string');
-			inverter_aep = get('inverter_count');
+	inverter_aep = get('inverter_count');
+
+
 		}
 				
 		//Storing the appropriate results when calculating maximum NPV in the respective placeholders
@@ -392,9 +493,12 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 			npv_row_spacing = get('ui_subarray1_row_spacing');
 			npv_total_modules = get('total_modules');
 			max_npv_yield = yield[i][j];
+
 			string_in_parallel_npv = get('subarray1_nstrings');
 			modules_per_string_npv = get('subarray1_modules_per_string');
 			inverter_npv = get('inverter_count');
+
+
 		}
 				
 				
@@ -410,10 +514,13 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 			yield_row_spacing = get('ui_subarray1_row_spacing');
 			yield_total_modules = get('total_modules');
 			max_yield_npv = npv[i][j];
+
 			
 			string_in_parallel_yield = get('subarray1_nstrings');
 			modules_per_string_yield = get('subarray1_modules_per_string');
 			inverter_yield = get('inverter_count');
+
+
 		}
 	}
 	i = i + 1;		
@@ -426,20 +533,31 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 ///////////////////////////////////**** R E S U L T S ****///////////////////////////////////
 
 str = '<html><body><h1> Summary of Results </h1><p>Reported for case: ' + active_case() + '</p>\n';
+
 str += '<br>Showing results for: ' + subarray_x;
 str += '<br><em>Note: Optimal number of inverters reported are only for this particular subarray and not the entire system</em>';
 //Max AEP Results:
 str += '<br><h5>Results for Max Annual Energy Production (AEP): </h5>';
 str += '<br>GCR: ' + optimum_gcr ;
 str += '<br>Tilt Angle (in Degrees): ' + optimum_tilt ; 
+
+
+
+
+
+
+
 str += '<br>Number of modules along bottom: ' + aep_nmodx + ' modules'; 
 str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
 str += '<br>Number of rows: ' + aep_nrows + ' rows'; 
 str += '<br>Row spacing estimate: ' + aep_row_spacing + ' m';
 str += '<br>Total number of modules: ' + aep_total_modules + ' modules\n';
+
 str += '<br>Modules per string in subarray (set by the user in the active case): ' + modules_per_string_aep + ' modules';
 str += '<br>Strings in parallel in subarray: ' + string_in_parallel_aep + ' strings';
 str += '<br>Number of inverters: ' + inverter_aep;
+
+
 str += '<br><br>AEP: '+ max_energy + ' kWh';
 str += '<br>System Size: '+ max_system_size + ' kW';
 str += '<br>Net Present Value (NPV): $ '+ energy_npv;
@@ -490,15 +608,22 @@ str += '</table>';
 //Max NPV Results:
 str += '<br><h5>Results for Max NPV: </h5>';
 str += '<br>GCR: ' + gcr_npv;
+
 str +=  '<br>Tilt Angle (in Degrees): ' +  tilt_npv;
+
+
+
 str += '<br>Number of modules along bottom: ' + npv_nmodx +' modules'; 
 str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
 str += '<br>Number of rows: ' + npv_nrows +' rows '; 
 str += '<br>Row spacing estimate: ' + npv_row_spacing + 'm';
 str += '<br>Total number of modules: ' + npv_total_modules + ' modules';
+
 str += '<br>Modules per string in subarray (set by the user in the active case): ' + modules_per_string_npv + ' modules';
 str += '<br>Strings in parallel in subarray: ' + string_in_parallel_npv + ' strings';
 str += '<br>Number of inverters: ' + inverter_npv;
+
+
 str += '<br><br>AEP: '+ aep_npv + ' kWh'; 
 str += '<br>System Size : '+ system_size_npv + ' kW';
 str += '<br>NPV: $ ' + max_npv;
@@ -546,16 +671,25 @@ str += '</table>';
 //Max Energy Yield Results:
 str += '<br><h5>Results for Max Energy Yield: </h5>';
 str += '<br>GCR: '+ gcr_yield;
+
 str += '<br>Tilt Angle (in Degrees): ' + tilt_yield;
+
+
+
 str += '<br>Number of modules along bottom: ' + yield_nmodx +' modules';
 str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
 str += '<br>Number of rows: ' + yield_nrows + ' rows'; 
 str += '<br>Row spacing estimate: ' + yield_row_spacing + ' m';
+
 str += '<br>Total number of modules: ' + yield_total_modules + ' modules';
 str += '<br>Modules per string in subarray (set by the user in the active case): ' + modules_per_string_yield + ' modules';
 str += '<br>Strings in parallel in subarray: ' + string_in_parallel_yield + ' strings';
 str += '<br>Number of inverters: ' + inverter_yield;
 str += '<br><br>AEP: '+ aep_yield + ' kWh ' ; 
+
+
+
+
 str += '<br>System Size: '+ system_size_yield + ' kW';
 str += '<br>NPV: $ ' + max_yield_npv ; 
 str += '<br>Energy Yield: '+ max_yield + ' kWh/kW';
@@ -644,6 +778,7 @@ for ( l = 0; l <= (#annual_energy - 1) ; l = l + 1) {
 
 str += '</body></html>';
 html_dialog(str, 'Optimal Array Layout', [1000,800]);
+
 
 
 
@@ -800,3 +935,13 @@ if(subarray_x != 'Subarray 1') {
 ///////////////////////////////////**** End of Script ****///////////////////////////////////
 
   		
+
+
+
+
+
+
+
+
+
+
