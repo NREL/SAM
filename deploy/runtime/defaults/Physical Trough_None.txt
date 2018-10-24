@@ -1,5 +1,5 @@
 1
-792
+795
 A_aperture
 1
 2
@@ -754,6 +754,12 @@ alpha_env
 0.020000 0.020000 0.000000 0.000000 
 0.020000 0.020000 0.000000 0.000000 
 
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -3149,8 +3155,8 @@ field_thermal_output
 file_name
 1
 4
-111
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\tucson_az_32.222607_-110.974711_psmv3_60_tmy.csv
+106
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\tucson_az_32.222607_-110.974711_psmv3_60_tmy.csv
 fixed_land_area
 1
 1
@@ -3311,6 +3317,18 @@ in_nsrdb_options
 1
 1
 0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 is_hx
 1
 1
@@ -3330,10 +3348,6 @@ lat
 1
 1
 32.209999
-lbl_csp
-1
-4
-0
 lib_A_aperture
 1
 1
@@ -3993,8 +4007,12 @@ single_loop_aperature
 solar_data_file_name
 1
 4
-111
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\tucson_az_32.222607_-110.974711_psmv3_60_tmy.csv
+106
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\tucson_az_32.222607_-110.974711_psmv3_60_tmy.csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4
@@ -4010,12 +4028,12 @@ solar_resource
 1
 4
 44
-tucson_az_32.222607_-110.974711_psmv3_60_tmy
+tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-111
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\tucson_az_32.222607_-110.974711_psmv3_60_tmy.csv
+106
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\tucson_az_32.222607_-110.974711_psmv3_60_tmy.csv
 specified_solar_multiple
 1
 1

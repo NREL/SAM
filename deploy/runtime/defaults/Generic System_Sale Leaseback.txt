@@ -1,5 +1,5 @@
 1
-465
+468
 LeadAcid_q10
 1
 1
@@ -1201,7 +1201,7 @@ cost_dev_fee_tax_liability
 1
 1
 1
-8783066.000000
+5685120.000000
 cost_dev_fee_value
 1
 1
@@ -2333,6 +2333,12 @@ flip_target_year
 1
 1
 20.000000
+generic_degradation
+1
+2
+1
+1
+0.000000
 genericsys.cost.contingency
 1
 1
@@ -2709,6 +2715,12 @@ import_message
 1
 4
 0
+in_time_step
+1
+1
+1
+1
+0.000000
 inflation_rate
 1
 1
@@ -2721,6 +2733,12 @@ insurance_rate
 1
 1
 0.500000
+is_advanced
+1
+1
+1
+1
+0.000000
 itc_fed_amount
 1
 1
