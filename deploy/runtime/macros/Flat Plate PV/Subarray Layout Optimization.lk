@@ -331,10 +331,12 @@ progress_gcr = 0;	//Progress tracker
 for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for iterating over a range of GCR
 
 	//Return what percent of the simulation is complete:
+	if((max_gcr - min_gcr) != 0) {		//Skip showing progress if user is running simulation over one GCR value only
 	progress = to_int((progress_gcr/(max_gcr - min_gcr)) * 100);
 	progress_gcr += gcr_steps ;
-	
 	outln("\n\t[" + progress + "% complete] Currently simulating over GCR of: " + gcr);
+	}
+	
 	module_power = module_info() / 1000;		//divided by 1000 to get result in kW
 	inverter_power = inverter_info();	//in kW
 	j = -1;				//counter variable to keep tab of the columns in the loop
