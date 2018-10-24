@@ -1,5 +1,5 @@
 1
-651
+654
 A_aperture
 1
 2
@@ -568,6 +568,12 @@ alpha_env
 0.020000 0.020000 0.000000 0.000000 
 0.020000 0.020000 0.000000 0.000000 
 
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -2851,8 +2857,8 @@ hot_tank_max_heat
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -2870,12 +2876,24 @@ in_nsrdb_options
 1
 1
 0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
 init_hot_htf_percent
 1
 1
 1
 1
 30.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 is_model_heat_sink_piping
 1
 1
@@ -3429,11 +3447,10 @@ single_loop_aperature
 1
 1
 2624.000000
-solar_data_file_name
+solar_data_file_name_load
 1
 4
-86
-F:\SAMDEV\sam\deploy\solar_resource\imperial_ca_32.847553_-115.569439_psmv3_60_tmy.csv
+0
 solar_data_source
 1
 4
@@ -3448,8 +3465,8 @@ solar_mult
 solar_resource
 1
 4
-46
-imperial_ca_32.847553_-115.569439_psmv3_60_tmy
+44
+tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4

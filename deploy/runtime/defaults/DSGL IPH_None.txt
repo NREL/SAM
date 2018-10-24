@@ -1,5 +1,5 @@
 1
-214
+217
 A_aperture
 1
 3
@@ -365,6 +365,12 @@ alpha_env
 0.020000 0.020000 0.000000 0.000000 
 0.000000 0.000000 0.000000 0.000000 
 
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -1193,8 +1199,8 @@ heat_sink_dP_frac
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -1207,6 +1213,18 @@ in_location_options
 1
 0.000000
 in_nsrdb_options
+1
+1
+1
+1
+0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
+is_advanced
 1
 1
 1
@@ -1304,11 +1322,10 @@ sh_eps_HCE4
 0.000000 
 0.000000 
 
-solar_data_file_name
+solar_data_file_name_load
 1
 4
-86
-F:\SAMDEV\sam\deploy\solar_resource\imperial_ca_32.847553_-115.569439_psmv3_60_tmy.csv
+0
 solar_data_source
 1
 4
@@ -1317,8 +1334,8 @@ NSRDB
 solar_resource
 1
 4
-46
-imperial_ca_32.847553_-115.569439_psmv3_60_tmy
+44
+tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4

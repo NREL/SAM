@@ -1,7 +1,7 @@
 PV System Design
-839
-1008
-102
+837
+998
+104
 GroupBox
 
 1
@@ -12,20 +12,47 @@ Name
 GroupBox1
 X
 3
+306
+Y
+3
+6
+Width
+3
+527
+Height
+3
+141
+Caption
+5
+14
+Sizing Summary
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+10
+GroupBox11
+X
+3
 9
 Y
 3
 6
 Width
 3
-824
+293
 Height
 3
-132
+141
 Caption
 5
-13
-System Sizing
+9
+AC Sizing
 Bold
 2
 1
@@ -51,8 +78,8 @@ Height
 749
 Caption
 5
-12
-DC Subarrays
+27
+DC Sizing and Configuration
 Bold
 2
 1
@@ -992,10 +1019,10 @@ Name
 batt_max_power
 X
 3
-666
+459
 Y
 3
-105
+108
 Width
 3
 82
@@ -1041,6 +1068,33 @@ BackColour
 TabOrder
 3
 14
+Button
+
+1
+7
+Name
+5
+17
+btn_set_subarrays
+X
+3
+18
+Y
+3
+246
+Width
+3
+252
+Height
+3
+24
+Caption
+5
+31
+Set subarrays for multiple MPPT
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1051,10 +1105,10 @@ Name
 dcac_ratio
 X
 3
-666
+135
 Y
 3
-81
+60
 Width
 3
 82
@@ -1203,7 +1257,7 @@ X
 135
 Y
 3
-33
+36
 Width
 3
 82
@@ -1463,10 +1517,10 @@ Name
 num_strings_total
 X
 3
-399
+720
 Y
 3
-81
+60
 Width
 3
 82
@@ -1522,20 +1576,20 @@ Name
 object 7
 X
 3
-30
+21
 Y
 3
-63
+87
 Width
 3
-190
+274
 Height
 3
-43
+37
 Caption
 5
-61
-Please specify the DC system size using "DC Subarrays" below.
+78
+Size the system using modules per string and strings in parallel inputs below.
 TextColour
 4
 0
@@ -4521,10 +4575,10 @@ Name
 system_capacity
 X
 3
-399
+459
 Y
 3
-33
+84
 Width
 3
 82
@@ -4580,10 +4634,10 @@ Name
 total_area
 X
 3
-399
+720
 Y
 3
-105
+84
 Width
 3
 82
@@ -4639,10 +4693,10 @@ Name
 total_dc_inverter_capacity
 X
 3
-666
+459
 Y
 3
-57
+60
 Width
 3
 82
@@ -4698,10 +4752,10 @@ Name
 total_inverter_capacity
 X
 3
-666
+459
 Y
 3
-33
+36
 Width
 3
 82
@@ -4875,10 +4929,10 @@ Name
 total_modules
 X
 3
-399
+720
 Y
 3
-57
+36
 Width
 3
 82
@@ -6009,7 +6063,7 @@ Numeric
 total_dc_inverter_capacity
 3
 1
-Total DC inverter capacity
+Total inverter DC capacity
 kWdc
 PV System Design
 0
@@ -6391,11 +6445,11 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-4885
+5980
 //show warning about MPPT input number
 function mppt_warning()
 {
-	x = false;
+	msg = '';
 	for (i = 1; i <=4; i++)
 	{
 		en = true;
@@ -6403,9 +6457,35 @@ function mppt_warning()
 			en = value('subarray' + to_string(i) + '_enable');
 		var = 'subarray' + to_string(i) + '_mppt_input';
 		if (en && value(var) > value('inv_num_mppt'))
-			x = true;
+		{
+			msg = 'Inverter MPPT Input Error!\nSubarray ' + i + ' is enabled with inverter MPPT input for subarray set to ' + value(var) + ', which exceeds the number of inverter MPPT inputs, ' + value('inv_num_mppt') + '.';
+			msg += '\n\nEither change the number of MPPT inputs on the Inverter input page, or correct the inverter MPPT input for the subarray.';
+		}	
 	}
-	if (x) msgbox('One or more specified subarray MPPT inputs exceed the number of inputs specified on the Inverter page.');
+	if (msg!='') msgbox(msg);
+}
+
+// enable subarrays and assign mppt input number
+// based on number of mppt inputs from inverter page
+function mppt_enable_subarrays()
+{
+	num_mppt = value('inv_num_mppt');
+	if ( num_mppt < 1 || num_mppt > 4 )
+	{
+		msgbox( 'Number of MPPT Inputs Error!\nThe number of MPPT inputs is ' + num_mppt + '. It must be between 1 and 4.\n\nTo fix the problem, on the Inverter page, change the Number of MPPT Inputs value.' );
+		return;
+	}
+	if ( num_mppt > 1 )
+		for ( i=0; i<4; i++ )
+		{
+			if ( i > 0 && i < num_mppt )
+			{
+				value( 'subarray' + to_string(i+1) + '_enable' , 1 );
+				value( 'subarray' + to_string(i+1) + '_mppt_input' , i+1 );
+			}
+			elseif ( i > 0 )
+				value( 'subarray' + to_string(i+1) + '_enable' , 0 );
+		}
 }
 
 //shows or hides all subarray inputs, to be used when subarrays are enabled or disabled
@@ -6480,6 +6560,7 @@ on_load{'PV System Design'} = define()
 	// show/hide label for multiple MPPT inputs
 	multi_mppt = ( value('inv_num_mppt') > 1 );
 	show('lbl_multi_mppt', multi_mppt);
+	show('btn_set_subarrays', multi_mppt);
 	// show/hide battery max power input
 	battery = false;
 	f = financing();
@@ -6490,6 +6571,8 @@ on_load{'PV System Design'} = define()
 	// warning for MPPT input > number of inverter inputs
 	if (multi_mppt)	mppt_warning();
 };
+
+on_change{'btn_set_subarrays'} = define() { mppt_enable_subarrays(); };
 
 on_change{'subarray2_enable'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
 on_change{'subarray3_enable'} = define() { sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') ); };

@@ -1,5 +1,5 @@
 1
-115
+117
 a_error_test_number
 1
 1
@@ -139,6 +139,18 @@ fixed_operating_cost
 1
 1
 765000.000000
+in_time_step
+1
+1
+1
+1
+0.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 resource_definition_type
 1
 1

@@ -1,5 +1,5 @@
 1
-1029
+1049
 6par_aisc
 1
 1
@@ -267,6 +267,12 @@ analysis_period_warning
 4
 12
 No messages.
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -2365,8 +2371,8 @@ federal_tax_rate
 file_name
 1
 4
-83
-C:\Code\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -2722,8 +2728,8 @@ iec61853_test_data
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -2736,6 +2742,12 @@ in_location_options
 1
 0.000000
 in_nsrdb_options
+1
+1
+1
+1
+0.000000
+in_time_step
 1
 1
 1
@@ -3598,6 +3610,12 @@ irrad_mode
 1
 1
 0.000000
+is_advanced
+1
+1
+1
+1
+0.000000
 itc_fed_amount
 1
 1
@@ -3760,10 +3778,6 @@ layout_warning
 26
 No system sizing messages.
 lbl_bifacial
-1
-4
-0
-lbl_csp
 1
 4
 0
@@ -5290,8 +5304,12 @@ snl_voco
 solar_data_file_name
 1
 4
-83
-C:\Code\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4
@@ -5301,12 +5319,12 @@ solar_resource
 1
 4
 45
-phoenix_az_33.448377_-112.074037_psmv3_60_tmy
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-83
-C:\Code\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
 solution_mode_message
 1
 4
@@ -5728,7 +5746,7 @@ subarray2_modules_per_string
 1
 1
 1
-7.000000
+0.000000
 subarray2_monthly_tilt
 1
 2
@@ -5915,7 +5933,7 @@ subarray3_modules_per_string
 1
 1
 1
-7.000000
+0.000000
 subarray3_monthly_tilt
 1
 2
@@ -6102,7 +6120,7 @@ subarray4_modules_per_string
 1
 1
 1
-7.000000
+0.000000
 subarray4_monthly_tilt
 1
 2
@@ -6436,7 +6454,7 @@ ui_wacc
 1
 1
 1
-6.184500
+6.672750
 ur_annual_min_charge
 1
 1
@@ -6676,8 +6694,8 @@ https://www.aps.com/library/rates/et-2.pdf
 ur_start_date
 1
 4
-5
-empty
+9
+<invalid>
 ur_ts_sell_rate
 1
 2
@@ -6688,8 +6706,8 @@ ur_ts_sell_rate
 ur_uri
 1
 4
-5
-empty
+9
+<invalid>
 ur_voltage_category
 1
 4

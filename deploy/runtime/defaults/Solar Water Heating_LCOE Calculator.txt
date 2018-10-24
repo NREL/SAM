@@ -1,5 +1,5 @@
 1
-116
+119
 FRUL
 1
 1
@@ -84,6 +84,12 @@ albedo
 1
 1
 0.200000
+annual_albedo
+1
+1
+1
+1
+0.000000
 annual_beam
 1
 1
@@ -208,8 +214,8 @@ capital_cost
 city
 1
 4
-10
-Des Moines
+1
+-
 coll_mode
 1
 1
@@ -219,8 +225,8 @@ coll_mode
 country
 1
 4
-3
-USA
+1
+-
 custom_mains
 1
 2
@@ -253,12 +259,12 @@ elev
 1
 1
 1
-294.000000
+2265.000000
 file_name
 1
 4
-90
-C:\Users\jfreeman\Documents\SAMNT\samnt\deploy\solar_resource\USA IA Des Moines (TMY2).csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
 fixed_charge_rate
 1
 1
@@ -292,8 +298,8 @@ iam
 in_location
 1
 4
-66
-"Type a street address or latitude, longitude (skip for advanced)"
+64
+Type a street address or latitude, longitude (skip for advanced)
 in_location_list
 1
 4
@@ -311,7 +317,19 @@ in_nsrdb_options
 1
 1
 0.000000
+in_time_step
+1
+1
+1
+1
+0.000000
 irrad_mode
+1
+1
+1
+1
+0.000000
+is_advanced
 1
 1
 1
@@ -322,11 +340,7 @@ lat
 1
 1
 1
-41.533298
-lbl_csp
-1
-4
-0
+37.450001
 library_folder_list
 1
 4
@@ -342,7 +356,7 @@ lon
 1
 1
 1
--93.650002
+-105.860001
 mdot
 1
 1
@@ -416,13 +430,17 @@ sky_model
 solar_data_file_name
 1
 4
-90
-C:\Users\jfreeman\Documents\SAMNT\samnt\deploy\solar_resource\USA IA Des Moines (TMY2).csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+solar_data_file_name_load
+1
+4
+0
 solar_data_source
 1
 4
-4
-TMY2
+5
+NSRDB
 solar_resource
 1
 4
@@ -431,8 +449,8 @@ alamosa_co_37.469449_-105.870021_psmv3_60_tmy
 solar_resource_file
 1
 4
-90
-C:\Users\jfreeman\Documents\SAMNT\samnt\deploy\solar_resource\USA IA Des Moines (TMY2).csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
 srcc_FRUL
 1
 1
@@ -491,13 +509,13 @@ Glazed Flat-Plate
 state
 1
 4
-2
-IA
+1
+-
 station_id
 1
 4
-5
-14933
+6
+449343
 system_capacity
 1
 1
@@ -539,7 +557,7 @@ tz
 1
 1
 1
--6.000000
+-7.000000
 ui_capital_cost_capacity
 1
 1

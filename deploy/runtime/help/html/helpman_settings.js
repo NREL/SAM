@@ -13,7 +13,7 @@ var agent = navigator.userAgent,
   platform = navigator.platform,
   hmBrowser = {};
   hmBrowser.touch = !!(('ontouchstart' in window && !window.opera) || ('msmaxtouchpoints' in window.navigator) || ('maxtouchpoints' in window.navigator) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
-  hmBrowser.nonDeskTouch = ((hmBrowser.touch && !/win32/i.test(platform)) || (hmBrowser.touch && /win32/i.test(platform) && /mobile/i.test(agent)));
+  hmBrowser.nonDeskTouch = ((hmBrowser.touch && !/win32|win64/i.test(platform)) || (hmBrowser.touch && /win32|win64/i.test(platform) && /mobile/i.test(agent)));
 
   hmBrowser.eventType = (('onmousedown' in window && !hmBrowser.nonDeskTouch) ? "mouse" : ('ontouchstart' in window) ? "touch" : ('msmaxtouchpoints' in window.navigator || navigator.msMaxTouchPoints > 0) ? "mstouchpoints" : ('maxtouchpoints' in window.navigator || navigator.maxTouchPoints > 0) ? "touchpoints" : "mouse");
   	 switch(hmBrowser.eventType) {
