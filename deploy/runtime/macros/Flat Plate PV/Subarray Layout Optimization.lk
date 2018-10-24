@@ -24,8 +24,8 @@ This macro helps the user determine the optimal subarray size, ground coverage r
  
 //Macro User Interface Widgets
 //@ name=subarray_x;type=combo;label=Subarray to be optimized;value=Subarray 1,Subarray 2,Subarray 3,Subarray 4;sel=0
-//@ name=length;type=number;label=Enter the Length of Field or Rooftop (m):;value=100
-//@ name=width;type=number;label=Enter the width of Field or Rooftop (m):;value=50
+//@ name=length;type=number;label=Enter the Length of Field or Rooftop (m):;value=35
+//@ name=width;type=number;label=Enter the width of Field or Rooftop (m):;value=25
 //@ name=setback;type=number;label=Enter the setback (in m) from edges:;value=1 
 //@ name=max_gcr;type=number;label=Enter the maximum GCR:;value=1 
 //@ name=min_gcr;type=number;label=Enter the minimum GCR(value cannot equal 0):;value=0.1 
@@ -61,7 +61,7 @@ tilt_steps = macro.tilt_steps;				//Allow the user the input the increments of t
 dcac = macro.dcac;							//Desired Dc to AC ratio 
 update_results = macro.update_results;		//Update subarray layout optimized for 1 of the 3 strategies, or do not update at all
 
-acreage = area*0.0002471;				//m^2 to acres conversion
+acreage = area*0.0002471;					//m^2 to acres conversion
 
 //If the user wants to iterate over fixed GCR or tilt angle, and sets either of
 //the two variables to 0, then change value to 1 to prevent infinite looping.
@@ -199,7 +199,7 @@ yield_total_modules = 0;
 
 ///////////////////////////////////**** ARRAY PLACEMENT ****///////////////////////////////////
 
-outln("\n\tOptimizing Array Layout for given ranges of GCR and Tilt over area of " + acreage + " acres...");
+outln("\n\tOptimizing Array Layout for given ranges of GCR and Tilt over area of " + acreage + " acres. This may take up to a minute.");
 
 //Function for storing module power
 
@@ -257,9 +257,7 @@ system_sizer = define(gcr) {
 		
 		module_area = get('module_area');
 		set('subarray1_gcr', gcr);
-		//set('desired_size', gcr*(area/module_area)*(module_power/1000));
 		system_size = gcr*(area/module_area)*(module_power/1000) ;
-		//system_size = get('desired_size');
 		return system_size;
 	};
 
@@ -272,14 +270,14 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {
 }
 
 //Variable to keep count of number of rows in the loop:
-if (get('subarray1_mod_orient') == 1) {			//if module orientation is landscape, then length of panel is used in calculating length of row
-	module_length = get('module_length');		//Length of 1 module
-	bottom_length = module_length;				//Initial length of bottom row of modules 
+if (get('subarray1_mod_orient') == 1) {					//if module orientation is landscape, then length of panel is used in calculating length of row
+	module_length = get('module_length');				//Length of 1 module
+	bottom_length = module_length;						//Initial length of bottom row of modules 
 	set('subarray1_nmodx', 1);
 }
-elseif (get('subarray1_mod_orient') == 0) { 		//If module orientation is portrait, then width of panel is used in calculation length of row		
-	module_length = get('module_width');			//Length of 1 module
-	bottom_length = module_length;				//Initial length of bottom row of modules 
+elseif (get('subarray1_mod_orient') == 0) { 			//If module orientation is portrait, then width of panel is used in calculation length of row		
+	module_length = get('module_width');				//Length of 1 module
+	bottom_length = module_length;						//Initial length of bottom row of modules 
 	set('subarray1_nmodx', 1);
 }
 
@@ -291,7 +289,7 @@ i = 0;
 //Fitting modules along length of field:
 for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {						//For loop to iterate over the entire range of (user input) GCRs, to make sure module placement along length and width of the field is in sync with the respective GCRs. So, for instance, even though the field length could accomodate a longer row of modules, number of modules in each row and alongside row is restricted.	
 		
-	n = to_int((effective_length/module_length) );		//Set modules along entire effective length
+	n = to_int((effective_length/module_length) );									//Set modules along entire effective length
 	set('subarray1_nmodx',n);
 	
 	//At this point modules have been placed along bottom. System sizes have been calculated at respective GCRs.  
@@ -325,13 +323,18 @@ for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {						//For loop to
 
 ///////////////////////////////////**** S I M U L A T I O N ****///////////////////////////////////
 
-outln("\n\tRunning Simulations for Optimized Array Layouts at Every Combination of GCR and Tilt. This may take a minute...");
-
 i = 0;
+progress_gcr = 0;	//Progress tracker
+
 //Nested for loop to calculate maximum AEP, maximum NPV, and max energy yield
 //for user input range of GCR and tilt angles
 for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for iterating over a range of GCR
-	//progressbar({'title' = "Simulating", 'message' = "Progress"});
+
+	//Return what percent of the simulation is complete:
+	progress = to_int((progress_gcr/(max_gcr - min_gcr)) * 100);
+	progress_gcr += gcr_steps ;
+	
+	outln("\n\t[" + progress + "% complete] Currently simulating over GCR of: " + gcr);
 	module_power = module_info() / 1000;		//divided by 1000 to get result in kW
 	inverter_power = inverter_info();	//in kW
 	j = -1;				//counter variable to keep tab of the columns in the loop
