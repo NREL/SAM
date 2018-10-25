@@ -1,5 +1,5 @@
 1
-504
+502
 a_error_test_number
 1
 1
@@ -2549,12 +2549,6 @@ ibi_uti_percent_tax_sta
 1
 1
 1.000000
-in_time_step
-1
-1
-1
-1
-0.000000
 inflation_rate
 1
 1
@@ -2597,12 +2591,6 @@ interconnect_voltage
 1
 1
 137.000000
-is_advanced
-1
-1
-1
-1
-0.000000
 itc_fed_amount
 1
 1
@@ -3303,8 +3291,8 @@ reference_number_turbines
 reference_resource_file
 1
 4
-86
-C:\Projects\GitHub\NREL\ui_as_text\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+83
+C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 reference_sales_tax_percent
 1
 1
@@ -3533,13 +3521,13 @@ total_obos_cost
 1
 1
 1
-0.000000
+746412736.000000
 total_obos_cost_per_kw
 1
 1
 1
 1
-0.000000
+15550.265625
 towerInstallMethod
 1
 1
@@ -3623,7 +3611,7 @@ ui_wacc
 1
 1
 1
-6.412350
+6.672750
 use_specific_wf_wind
 1
 1
@@ -3856,8 +3844,8 @@ USA
 wind_resource.description
 1
 4
-65
-Southern WY - flat lands (NREL AWS Truepower representative file)
+80
+Southern WY - flat lands (NREL AWS Truepower representative file),,,,,,,,,,,,,,,
 wind_resource.elev
 1
 1
@@ -3867,8 +3855,8 @@ wind_resource.elev
 wind_resource.file
 1
 4
-86
-C:\Projects\GitHub\NREL\ui_as_text\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+83
+C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource.lat
 1
 1
@@ -3923,8 +3911,8 @@ wind_resource.year
 wind_resource_filename
 1
 4
-86
-C:\Projects\GitHub\NREL\ui_as_text\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+83
+C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1
