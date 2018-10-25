@@ -103,6 +103,10 @@ if(subarray_x == 'Subarray 2') {
 		msgbox("You are trying to optimize Subarray 2, which is currently disabled in the active case.");
 		exit;
 	}
+	if(get('subarray2_modules_per_string') == 0) {
+		msgbox("Subarray 2 has 0 modules per string.");
+		exit;
+	}
 	set('subarray1_modules_per_string', get('subarray2_modules_per_string'));	//Value stays constant throughout simulation
 	set('subarray1_track_mode', get('subarray2_track_mode'));
 	set('subarray1_azimuth', get('subarray2_azimuth'));
@@ -120,6 +124,10 @@ if(subarray_x == 'Subarray 3') {
 		msgbox("You are trying to optimize Subarray 3, which is currently disabled in the active case.");
 		exit;
 	}
+	if(get('subarray3_modules_per_string') == 0) {
+		msgbox("Subarray 3 has 0 modules per string.");
+		exit;
+	}
 	set('subarray1_modules_per_string', get('subarray3_modules_per_string'));
 	set('subarray1_track_mode', get('subarray3_track_mode'));
 	set('subarray1_azimuth', get('subarray3_azimuth'));
@@ -135,6 +143,10 @@ if(subarray_x == 'Subarray 3') {
 if(subarray_x == 'Subarray 4') {
 	if(get('subarray4_enable') == 0) {
 		msgbox("You are trying to optimize Subarray 4, which is currently disabled in the active case.");
+		exit;
+	}
+	if(get('subarray4_modules_per_string') == 0) {
+		msgbox("Subarray 4 has 0 modules per string.");
 		exit;
 	}
 	set('subarray1_modules_per_string', get('subarray4_modules_per_string'));
@@ -796,7 +808,7 @@ if(subarray_x != 'Subarray 1') {
 	set('subarray1_mod_orient', subarray1_mod_orient);
 	set('subarray1_nmody', subarray1_nmody);
 	set('subarray1_nmodx', subarray1_nmodx);
-	set('inverter_count', inverter_count);
+	//set('inverter_count', inverter_count);
 }
 
 ///////////////////////////////////**** End of Script ****///////////////////////////////////
