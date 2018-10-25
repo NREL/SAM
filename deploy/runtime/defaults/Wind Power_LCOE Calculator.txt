@@ -1,5 +1,5 @@
 1
-117
+115
 a_error_test_number
 1
 1
@@ -139,18 +139,6 @@ fixed_operating_cost
 1
 1
 765000.000000
-in_time_step
-1
-1
-1
-1
-0.000000
-is_advanced
-1
-1
-1
-1
-0.000000
 resource_definition_type
 1
 1
@@ -459,8 +447,8 @@ USA
 wind_resource.description
 1
 4
-65
-Southern WY - flat lands (NREL AWS Truepower representative file)
+80
+Southern WY - flat lands (NREL AWS Truepower representative file),,,,,,,,,,,,,,,
 wind_resource.elev
 1
 1
@@ -470,8 +458,8 @@ wind_resource.elev
 wind_resource.file
 1
 4
-56
-C:\SAM\2017.9.5\wind_resource\WY Southern-Flat Lands.srw
+83
+C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource.lat
 1
 1
@@ -522,12 +510,12 @@ wind_resource.year
 1
 1
 1
-0.000000
+1900.000000
 wind_resource_filename
 1
 4
-56
-C:\SAM\2017.9.5\wind_resource\WY Southern-Flat Lands.srw
+83
+C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1
