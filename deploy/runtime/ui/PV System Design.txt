@@ -1,7 +1,7 @@
 PV System Design
-837
-998
-104
+839
+1042
+107
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 527
 Height
 3
-141
+160
 Caption
 5
 14
@@ -48,7 +48,7 @@ Width
 293
 Height
 3
-141
+160
 Caption
 5
 9
@@ -69,7 +69,7 @@ X
 9
 Y
 3
-147
+168
 Width
 3
 824
@@ -96,7 +96,7 @@ X
 9
 Y
 3
-903
+933
 Width
 3
 824
@@ -123,7 +123,7 @@ X
 12
 Y
 3
-753
+783
 Width
 3
 802
@@ -159,7 +159,7 @@ X
 12
 Y
 3
-228
+255
 Width
 3
 802
@@ -195,7 +195,7 @@ X
 12
 Y
 3
-420
+450
 Width
 3
 802
@@ -231,7 +231,7 @@ X
 66
 Y
 3
-369
+399
 Width
 3
 218
@@ -276,7 +276,7 @@ X
 66
 Y
 3
-345
+375
 Width
 3
 218
@@ -321,7 +321,7 @@ X
 66
 Y
 3
-321
+348
 Width
 3
 218
@@ -366,7 +366,7 @@ X
 66
 Y
 3
-297
+324
 Width
 3
 218
@@ -411,7 +411,7 @@ X
 66
 Y
 3
-273
+300
 Width
 3
 218
@@ -456,7 +456,7 @@ X
 66
 Y
 3
-681
+711
 Width
 3
 218
@@ -501,7 +501,7 @@ X
 66
 Y
 3
-657
+687
 Width
 3
 218
@@ -546,7 +546,7 @@ X
 66
 Y
 3
-609
+639
 Width
 3
 218
@@ -591,7 +591,7 @@ X
 66
 Y
 3
-585
+615
 Width
 3
 218
@@ -636,7 +636,7 @@ X
 51
 Y
 3
-849
+879
 Width
 3
 264
@@ -681,7 +681,7 @@ X
 12
 Y
 3
-165
+192
 Width
 3
 800
@@ -726,7 +726,7 @@ X
 291
 Y
 3
-924
+954
 Width
 3
 533
@@ -771,7 +771,7 @@ X
 420
 Y
 3
-213
+240
 Width
 3
 110
@@ -816,7 +816,7 @@ X
 555
 Y
 3
-213
+240
 Width
 3
 110
@@ -861,7 +861,7 @@ X
 690
 Y
 3
-213
+240
 Width
 3
 110
@@ -906,7 +906,7 @@ X
 288
 Y
 3
-213
+240
 Width
 3
 110
@@ -951,7 +951,7 @@ X
 288
 Y
 3
-249
+276
 Width
 3
 110
@@ -996,7 +996,7 @@ X
 33
 Y
 3
-453
+483
 Width
 3
 190
@@ -1081,7 +1081,7 @@ X
 18
 Y
 3
-246
+273
 Width
 3
 252
@@ -1105,7 +1105,7 @@ Name
 dcac_ratio
 X
 3
-135
+150
 Y
 3
 60
@@ -1154,6 +1154,124 @@ BackColour
 TabOrder
 3
 3
+Numeric
+
+1
+16
+Name
+5
+18
+desired_dcac_ratio
+X
+3
+150
+Y
+3
+108
+Width
+3
+82
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+12
+desired_size
+X
+3
+150
+Y
+3
+84
+Width
+3
+82
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -1167,7 +1285,7 @@ X
 21
 Y
 3
-708
+738
 Width
 3
 795
@@ -1212,7 +1330,7 @@ X
 84
 Y
 3
-633
+663
 Width
 3
 200
@@ -1254,7 +1372,7 @@ Name
 inverter_count
 X
 3
-135
+150
 Y
 3
 36
@@ -1316,7 +1434,7 @@ X
 327
 Y
 3
-774
+804
 Width
 3
 478
@@ -1357,7 +1475,7 @@ X
 66
 Y
 3
-393
+423
 Width
 3
 218
@@ -1402,7 +1520,7 @@ X
 204
 Y
 3
-825
+855
 Width
 3
 82
@@ -1461,7 +1579,7 @@ X
 204
 Y
 3
-801
+831
 Width
 3
 82
@@ -1566,20 +1684,50 @@ BackColour
 TabOrder
 3
 22
+CheckBox
+
+1
+8
+Name
+5
+19
+size_auto_or_manual
+X
+3
+24
+Y
+3
+129
+Width
+3
+268
+Height
+3
+24
+Caption
+5
+45
+Have SAM try to automatically size the system
+State
+2
+1
+TabOrder
+3
+4294967295
 Label
 
 1
 12
 Name
 5
-8
-object 7
+19
+sizing_instructions
 X
 3
 21
 Y
 3
-87
+90
 Width
 3
 274
@@ -1624,7 +1772,7 @@ X
 288
 Y
 3
-609
+639
 Width
 3
 100
@@ -1683,7 +1831,7 @@ X
 288
 Y
 3
-681
+711
 Width
 3
 101
@@ -1713,7 +1861,7 @@ X
 288
 Y
 3
-633
+663
 Width
 3
 100
@@ -1772,7 +1920,7 @@ X
 288
 Y
 3
-273
+300
 Width
 3
 100
@@ -1831,7 +1979,7 @@ X
 288
 Y
 3
-582
+612
 Width
 3
 87
@@ -1857,7 +2005,7 @@ X
 288
 Y
 3
-393
+423
 Width
 3
 100
@@ -1916,7 +2064,7 @@ X
 288
 Y
 3
-321
+348
 Width
 3
 100
@@ -1975,7 +2123,7 @@ X
 288
 Y
 3
-297
+324
 Width
 3
 100
@@ -2034,7 +2182,7 @@ X
 288
 Y
 3
-657
+687
 Width
 3
 100
@@ -2093,7 +2241,7 @@ X
 288
 Y
 3
-369
+399
 Width
 3
 100
@@ -2152,7 +2300,7 @@ X
 288
 Y
 3
-345
+375
 Width
 3
 100
@@ -2211,7 +2359,7 @@ X
 288
 Y
 3
-585
+615
 Width
 3
 100
@@ -2270,7 +2418,7 @@ X
 288
 Y
 3
-561
+591
 Width
 3
 119
@@ -2300,7 +2448,7 @@ X
 288
 Y
 3
-444
+474
 Width
 3
 113
@@ -2340,7 +2488,7 @@ X
 420
 Y
 3
-609
+639
 Width
 3
 100
@@ -2399,7 +2547,7 @@ X
 420
 Y
 3
-681
+711
 Width
 3
 101
@@ -2429,7 +2577,7 @@ X
 420
 Y
 3
-249
+276
 Width
 3
 101
@@ -2459,7 +2607,7 @@ X
 420
 Y
 3
-633
+663
 Width
 3
 100
@@ -2518,7 +2666,7 @@ X
 420
 Y
 3
-273
+300
 Width
 3
 100
@@ -2577,7 +2725,7 @@ X
 420
 Y
 3
-582
+612
 Width
 3
 87
@@ -2603,7 +2751,7 @@ X
 420
 Y
 3
-393
+423
 Width
 3
 100
@@ -2662,7 +2810,7 @@ X
 420
 Y
 3
-321
+348
 Width
 3
 100
@@ -2721,7 +2869,7 @@ X
 420
 Y
 3
-297
+324
 Width
 3
 100
@@ -2780,7 +2928,7 @@ X
 420
 Y
 3
-657
+687
 Width
 3
 100
@@ -2839,7 +2987,7 @@ X
 420
 Y
 3
-369
+399
 Width
 3
 100
@@ -2898,7 +3046,7 @@ X
 420
 Y
 3
-345
+375
 Width
 3
 100
@@ -2957,7 +3105,7 @@ X
 420
 Y
 3
-585
+615
 Width
 3
 100
@@ -3016,7 +3164,7 @@ X
 420
 Y
 3
-561
+591
 Width
 3
 113
@@ -3046,7 +3194,7 @@ X
 420
 Y
 3
-444
+474
 Width
 3
 113
@@ -3086,7 +3234,7 @@ X
 555
 Y
 3
-609
+639
 Width
 3
 100
@@ -3145,7 +3293,7 @@ X
 555
 Y
 3
-681
+711
 Width
 3
 98
@@ -3175,7 +3323,7 @@ X
 555
 Y
 3
-249
+276
 Width
 3
 98
@@ -3205,7 +3353,7 @@ X
 555
 Y
 3
-633
+663
 Width
 3
 100
@@ -3264,7 +3412,7 @@ X
 555
 Y
 3
-273
+300
 Width
 3
 100
@@ -3323,7 +3471,7 @@ X
 555
 Y
 3
-582
+612
 Width
 3
 87
@@ -3349,7 +3497,7 @@ X
 555
 Y
 3
-393
+423
 Width
 3
 100
@@ -3408,7 +3556,7 @@ X
 555
 Y
 3
-321
+348
 Width
 3
 100
@@ -3467,7 +3615,7 @@ X
 555
 Y
 3
-297
+324
 Width
 3
 100
@@ -3526,7 +3674,7 @@ X
 555
 Y
 3
-657
+687
 Width
 3
 100
@@ -3585,7 +3733,7 @@ X
 555
 Y
 3
-369
+399
 Width
 3
 100
@@ -3644,7 +3792,7 @@ X
 555
 Y
 3
-345
+375
 Width
 3
 100
@@ -3703,7 +3851,7 @@ X
 555
 Y
 3
-585
+615
 Width
 3
 100
@@ -3762,7 +3910,7 @@ X
 555
 Y
 3
-561
+591
 Width
 3
 116
@@ -3792,7 +3940,7 @@ X
 555
 Y
 3
-444
+474
 Width
 3
 113
@@ -3832,7 +3980,7 @@ X
 690
 Y
 3
-609
+639
 Width
 3
 100
@@ -3891,7 +4039,7 @@ X
 690
 Y
 3
-681
+711
 Width
 3
 101
@@ -3921,7 +4069,7 @@ X
 690
 Y
 3
-249
+276
 Width
 3
 98
@@ -3951,7 +4099,7 @@ X
 690
 Y
 3
-633
+663
 Width
 3
 100
@@ -4010,7 +4158,7 @@ X
 690
 Y
 3
-273
+300
 Width
 3
 100
@@ -4069,7 +4217,7 @@ X
 690
 Y
 3
-582
+612
 Width
 3
 87
@@ -4095,7 +4243,7 @@ X
 690
 Y
 3
-393
+423
 Width
 3
 100
@@ -4154,7 +4302,7 @@ X
 690
 Y
 3
-321
+348
 Width
 3
 100
@@ -4213,7 +4361,7 @@ X
 690
 Y
 3
-297
+324
 Width
 3
 100
@@ -4272,7 +4420,7 @@ X
 690
 Y
 3
-657
+687
 Width
 3
 100
@@ -4331,7 +4479,7 @@ X
 690
 Y
 3
-369
+399
 Width
 3
 100
@@ -4390,7 +4538,7 @@ X
 690
 Y
 3
-345
+375
 Width
 3
 100
@@ -4449,7 +4597,7 @@ X
 690
 Y
 3
-585
+615
 Width
 3
 100
@@ -4508,7 +4656,7 @@ X
 690
 Y
 3
-561
+591
 Width
 3
 113
@@ -4538,7 +4686,7 @@ X
 690
 Y
 3
-444
+474
 Width
 3
 113
@@ -4814,7 +4962,7 @@ X
 135
 Y
 3
-954
+984
 Width
 3
 100
@@ -4873,7 +5021,7 @@ X
 135
 Y
 3
-927
+957
 Width
 3
 99
@@ -4991,7 +5139,7 @@ X
 204
 Y
 3
-777
+807
 Width
 3
 82
@@ -5038,7 +5186,7 @@ TabOrder
 3
 17
 
-78
+81
 array_area
 3
 1
@@ -5080,6 +5228,34 @@ PV System Design
 1
 1
 1.100000
+Numeric
+desired_dcac_ratio
+3
+1
+Desired DC to AC Ratio
+ 
+PV System Design
+0
+2
+1
+1
+1
+1
+1.100000
+Numeric
+desired_size
+3
+1
+Desired array size
+kWdc
+PV System Design
+0
+2
+1
+1
+1
+1
+100.000000
 Numeric
 inv_num_mppt
 3
@@ -5187,6 +5363,20 @@ m
 PV System Design
 0
 0
+1
+1
+1
+1
+0.000000
+Default
+size_auto_or_manual
+3
+1
+Sizing Mode: Auto or Manual
+ 
+PV System Design
+0
+1
 1
 1
 1
@@ -6145,7 +6335,93 @@ PV System Design
 0.000000
 Numeric
 
-7976
+11383
+equations{ '$MIMO$ pv_size_array' } = define()
+{
+	if (${size_auto_or_manual}==1)
+	{
+		//disable subarrays 2-4- this only works for a single subarray
+		${subarray2_enable} = 0;
+		${subarray3_enable} = 0;
+		${subarray4_enable} = 0;
+		
+		//Now size subarray 1 only
+		/* Sizing rules
+		1. Voc < Vdcmax
+		2. Vmp > Vmin
+		3. Vmp < Vmax
+		4. num series * num_parallel is about desired array size (num_parallel = desired / (num series * mod_power)
+		5. num inverters is about desired array size (num_inv = num_series * num_parallel * mod_power) / inv_power
+		*/
+			
+		// module parameters
+		mod_vmp= ?${module_model} [	${spe_vmp},${cec_v_mp_ref},${6par_vmp},${snl_ref_vmp},${sd11par_Vmp0}];
+		mod_voc= ?${module_model} [	${spe_voc},${cec_v_oc_ref},${6par_voc},${snl_ref_voc},${sd11par_Voc0}];
+		mod_power= ?${module_model} [${spe_power}, ${cec_p_mp_ref}, ${6par_pmp}, ${snl_ref_pmp},${sd11par_Pmp0}];
+
+		// inverter parameters
+		inv_vmin= ?${inverter_model} [${inv_snl_mppt_low}, ${inv_ds_mppt_low}, ${inv_pd_mppt_low},${inv_cec_cg_mppt_low}];
+		inv_vdcmax= ?${inverter_model} [${inv_snl_vdcmax}, ${inv_ds_vdcmax}, ${inv_pd_vdcmax},${inv_cec_cg_vdcmax}];
+		inv_vmax= ?${inverter_model} [${inv_snl_mppt_hi}, ${inv_ds_mppt_hi}, ${inv_pd_mppt_hi},${inv_cec_cg_mppt_hi}];
+		inv_power= ?${inverter_model} [${inv_snl_paco}, ${inv_ds_paco}, ${inv_pd_paco},${inv_cec_cg_paco}];
+		
+		// DC-connected battery parameters (assumed to use common inverter)
+		batt_max_power_dc = 0;
+		
+		f = financing();
+		if (f != "LCOE Calculator" && f != "None")
+		{
+			if (${en_batt}){
+				if (${batt_ac_or_dc} == 0)
+					batt_max_power_dc = ${batt_max_power};
+			}
+		}
+		
+		// calculations
+		if(mod_vmp>0)
+		{num_series= 0.5 * (inv_vmin + inv_vmax)/mod_vmp;}
+		if(inv_vdcmax > 0){
+			while ((num_series > 0) && ((num_series*mod_voc) > inv_vdcmax)){
+				num_series= num_series -1;
+			}
+		}
+		if (num_series < 1) num_series= 1;
+		num_series= to_int(num_series);
+		num_parallel= ${desired_size} * 1000 /(num_series * mod_power);
+		if (num_parallel < 1) num_parallel= 1;
+		num_parallel= to_int(num_parallel);
+		if (${desired_dcac_ratio} > 0)
+		{ 	inverters = ((num_series * num_parallel * mod_power) /* + batt_max_power_dc */) / (${desired_dcac_ratio} * inv_power);
+			//round inverters for best DC-AC ratio
+			if((inverters - floor(inverters)) < 0.5)
+			{	num_inverters = floor(inverters); }
+			else
+			{	num_inverters = ceil(inverters); }
+		}				
+		else
+		{ num_inverters = ceil(((num_series * num_parallel * mod_power) /* + batt_max_power_dc */) / inv_power);}
+		if (num_inverters < 1)
+		{ num_inverters = 1;}
+		
+		//check that the sizing was close to the desired sizes, otherwise, error out if more than 10% away
+		proposed_size = num_series * num_parallel * mod_power / 1000; //convert W to kW
+		proposed_ratio = proposed_size / (num_inverters * inv_power / 1000); //convert inverter W to kW
+		if (abs(proposed_size - ${desired_size}) / ${desired_size} > 0.1 || abs(proposed_ratio - ${desired_dcac_ratio}) / ${desired_dcac_ratio} > 0.1)
+		{
+			num_series = 0;
+			num_parallel = 0;
+			inverter_count = 0;
+			msgbox('SAM was not able to automatically size the system close enough to your desired size. Please size the system manually, or enter another size.');
+		}	
+		
+		//assign the final calculated numbers
+		${subarray1_modules_per_string} = num_series;
+		${subarray1_nstrings} = num_parallel;
+		${inverter_count} = num_inverters;
+	}
+
+};
+
 equations{ 'total_modules' } = define() {
 	a = ${subarray1_modules_per_string} * ${subarray1_nstrings}
 		+ (${subarray2_modules_per_string} * ${subarray2_nstrings}) * ${subarray2_enable}
@@ -6445,7 +6721,7 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-5980
+7329
 //show warning about MPPT input number
 function mppt_warning()
 {
@@ -6491,6 +6767,7 @@ function mppt_enable_subarrays()
 //shows or hides all subarray inputs, to be used when subarrays are enabled or disabled
 function sysdesign_show_hide_subarray_inputs( isub, en)
 {
+	auto_size = (value('size_auto_or_manual') == 1);
 	prefix = "subarray" + to_string(isub) + "_";
 	all_subarray_variables = [		
 		"azimuth",
@@ -6521,6 +6798,10 @@ function sysdesign_show_hide_subarray_inputs( isub, en)
 		//show all inputs
 		for (i=0;i<#all_subarray_variables;i++)
 			show( prefix + all_subarray_variables[i], 1 );
+			
+		//number of modules per string and number of strings only show up if auto-size is off
+		enable(prefix + 'modules_per_string', !auto_size);
+		enable(prefix + 'nstrings', !auto_size);
 
 		//MPPT inputs only show up if multi-MPPT inverter specified
 		multi_mppt = ( value('inv_num_mppt') > 1 );
@@ -6550,14 +6831,49 @@ function sysdesign_show_hide_subarray_inputs( isub, en)
 	refresh();
 }
 
+function show_hide_inputs_auto_size() 
+{
+	if (value('size_auto_or_manual') == 0)
+	{
+		enable('inverter_count', 1);
+		show('sizing_instructions', 1);
+		show('desired_size', 0);
+		show('desired_dcac_ratio', 0);
+		enable('subarray2_enable', 1);
+		enable('subarray3_enable', 1);
+		enable('subarray4_enable', 1);
+		sysdesign_show_hide_subarray_inputs(1, 1);
+		sysdesign_show_hide_subarray_inputs(2, value('subarray2_enable'));
+		sysdesign_show_hide_subarray_inputs(3, value('subarray3_enable'));
+		sysdesign_show_hide_subarray_inputs(4, value('subarray4_enable'));
+	}
+	else
+	{
+		enable('inverter_count', 0);
+		show('sizing_instructions', 0);
+		show('desired_size', 1);
+		show('desired_dcac_ratio', 1);
+		enable('subarray2_enable', 0);
+		enable('subarray3_enable', 0);
+		enable('subarray4_enable', 0);
+		sysdesign_show_hide_subarray_inputs(1, 1);
+		sysdesign_show_hide_subarray_inputs(2, 0);
+		sysdesign_show_hide_subarray_inputs(3, 0);
+		sysdesign_show_hide_subarray_inputs(4, 0);
+	}
+	
+	refresh();
+}
+
 on_load{'PV System Design'} = define()
 {
 	// show/hide/enable/disable inputs for all subarrays
-	sysdesign_show_hide_subarray_inputs(1, 1);
+	show_hide_inputs_auto_size();
+	/*sysdesign_show_hide_subarray_inputs(1, 1);
 	sysdesign_show_hide_subarray_inputs(2, value('subarray2_enable'));
 	sysdesign_show_hide_subarray_inputs(3, value('subarray3_enable'));
 	sysdesign_show_hide_subarray_inputs(4, value('subarray4_enable'));
-	// show/hide label for multiple MPPT inputs
+	*/// show/hide label for multiple MPPT inputs
 	multi_mppt = ( value('inv_num_mppt') > 1 );
 	show('lbl_multi_mppt', multi_mppt);
 	show('btn_set_subarrays', multi_mppt);
@@ -6573,6 +6889,8 @@ on_load{'PV System Design'} = define()
 };
 
 on_change{'btn_set_subarrays'} = define() { mppt_enable_subarrays(); };
+
+on_change{'size_auto_or_manual'} = define() { show_hide_inputs_auto_size(); };
 
 on_change{'subarray2_enable'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
 on_change{'subarray3_enable'} = define() { sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') ); };
