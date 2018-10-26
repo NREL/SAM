@@ -265,11 +265,7 @@ lat
 library_folder_list
 1
 4
-157
-C:\Users\ndiorio\Desktop\weather
-C:\Users\ndiorio\Desktop\weather
-C:/Projects/ssc/test/input_cases/pvsamv1_data
-C:/Projects/ssc/test/input_cases/pvsamv1_data
+0
 library_paths
 1
 4
