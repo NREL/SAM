@@ -2412,8 +2412,7 @@ lib_dispatch_sched_weekend
 library_folder_list
 1
 4
-2
-""
+0
 library_paths
 1
 4

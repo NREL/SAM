@@ -3212,9 +3212,7 @@ lib_is_bifacial
 library_folder_list
 1
 4
-134
-C:\Projects\SAM\Documentation\P50P90\2018.5.21_Trough_IPH_Paul\weather_files
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource
+0
 library_paths
 1
 4
