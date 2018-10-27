@@ -549,7 +549,9 @@ void NSRDBDialog::GetResources()
 			wxLogStatus("link info: %s, %s, %s, %s, %s, %s", displayName.c_str(), name.c_str(), type.c_str(), year.c_str(), interval.c_str(), URL.c_str());
 #endif
 			// SAM does not recognize spectral datasets at this time
-			if (name.Lower() != "spectral-tmy") 
+			// skip psm files per 10/25/2018 meeting
+			if ((name.Lower() != "spectral-tmy") 
+				&& (name.Lower() != "psm"))
 				m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, loc, attributes));
 		}
 	}
