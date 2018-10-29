@@ -70,7 +70,7 @@ Name
 annual_albedo
 X
 3
-738
+753
 Y
 3
 708
@@ -129,7 +129,7 @@ Name
 annual_beam
 X
 3
-147
+150
 Y
 3
 681
@@ -188,7 +188,7 @@ Name
 annual_diffuse
 X
 3
-147
+150
 Y
 3
 708
@@ -247,7 +247,7 @@ Name
 annual_global
 X
 3
-147
+150
 Y
 3
 654
@@ -306,7 +306,7 @@ Name
 annual_snow
 X
 3
-738
+753
 Y
 3
 681
@@ -365,10 +365,10 @@ Name
 annual_tdry
 X
 3
-462
+477
 Y
 3
-651
+654
 Width
 3
 103
@@ -424,7 +424,7 @@ Name
 annual_wspd
 X
 3
-462
+477
 Y
 3
 681
@@ -630,7 +630,7 @@ Width
 846
 Height
 3
-36
+42
 Caption
 5
 248
@@ -762,7 +762,7 @@ Width
 846
 Height
 3
-36
+39
 Caption
 5
 198
@@ -798,16 +798,16 @@ Name
 group_optional
 X
 3
-603
+606
 Y
 3
-660
+657
 Width
 3
 267
 Height
 3
-16
+25
 Orientation
 3
 0
@@ -1150,7 +1150,7 @@ X
 24
 Y
 3
-27
+30
 Width
 3
 846
@@ -1192,7 +1192,7 @@ Name
 library_folder_list
 X
 3
-27
+24
 Y
 3
 219
@@ -1420,7 +1420,7 @@ Name
 object 7
 X
 3
-345
+366
 Y
 3
 708
@@ -1646,7 +1646,7 @@ X
 24
 Y
 3
-48
+51
 Width
 3
 846
@@ -1671,13 +1671,13 @@ Name
 solar_resource_file
 X
 3
-87
+108
 Y
 3
 495
 Width
 3
-619
+598
 Height
 3
 24
@@ -2304,7 +2304,7 @@ Default
 solar_data_source
 3
 4
-Data Source 
+Data Source
  
  Location and Resource
 0
