@@ -123,10 +123,18 @@ if (results == null)
 	msgbox('Failed to parse data returned from the NREL Wind Prospector.');
 	exit;
 }
-errors = results.error.message;
+
+//If there is an internal server error:
+server_error = results.error;
+if(server_error != null) {
+msgbox("Error: " + results.error.message);
+exit;
+}
+
+errors = results.errors;	//If there is no error message, then results.errors.message does not exist. In that case errors is <null> and use of the # operand on errors is illegal.
 if (#errors != 0)
 {
-	msgbox(errors);
+	msgbox(results.errors.message);
 	exit;
 }
 
