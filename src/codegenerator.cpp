@@ -574,17 +574,17 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("Python 3");						// 5
 	code_languages.Add("Java");							// 6
 	code_languages.Add("Android Studio (Android)");		// 7 
-#ifdef __WXMSW__
+//#ifdef __WXMSW__
 	code_languages.Add("C#");							// 8
 	code_languages.Add("VBA");							// 9
-#endif
-#ifdef __WXMAC__
-    code_languages.Add("XCode Swift (iOS)");			// 8
-#endif
-#ifdef __WXGTK__
-	code_languages.Add("PHP 5");						// 8
-	code_languages.Add("PHP 7");						// 9
-#endif
+//#endif
+//#ifdef __WXMAC__
+    code_languages.Add("XCode Swift (iOS)");			// 8 (10)
+//#endif
+//#ifdef __WXGTK__
+	code_languages.Add("PHP 5");						// 8 (11)
+	code_languages.Add("PHP 7");						// 9 (12)
+//#endif
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
@@ -685,7 +685,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
         fn += ".cpp"; // ndk jni file
         cg = new CodeGen_android(c, fn);
     }
-#ifdef __WXMSW__
+//#ifdef __WXMSW__
 	else if (lang == 8) // c#
 	{
 		fn += ".cs";
@@ -696,26 +696,29 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		fn += ".bas";
 		cg = new CodeGen_vba(c, fn);
 	}
-#endif
-#ifdef __WXMAC__
-    else if (lang == 8) // Swift iOS
-    {
+//#endif
+//#ifdef __WXMAC__
+//	else if (lang == 8) // Swift iOS
+	else if (lang == 10) // Swift iOS
+	{
         fn += ".swift";
         cg = new CodeGen_ios(c, fn);
     }
-#endif
-#ifdef __WXGTK__
-	else if (lang == 8) // php
+//#endif
+//#ifdef __WXGTK__
+//	else if (lang == 8) // php
+	else if (lang == 11) // php
 	{
 		fn += ".php";
 		cg = new CodeGen_php5(c, fn);
 	}
-	else if (lang == 9) // php
+//	else if (lang == 9) // php
+	else if (lang == 12) // php
 	{
 		fn += ".php";
 		cg = new CodeGen_php7(c, fn);
 	}
-#endif
+//#endif
 	else
 		return false;
 
