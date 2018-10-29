@@ -2765,11 +2765,11 @@ function compare_des_pars () {
 	}
 	if(${dd_sco2_cycle_config}==0)
 	{
-		enable("P_IP_calc", true);
+		enable("P_IP_calc", false);
 	}
 	else
 	{
-		enable("P_IP_calc", false);
+		enable("P_IP_calc", true);
 	}
 	value("is_sco2_des_par_diff", is_des_par_diff);
 	update_radio_buttons();

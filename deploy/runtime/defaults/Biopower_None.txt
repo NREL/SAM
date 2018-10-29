@@ -1912,9 +1912,7 @@ lat
 library_folder_list
 1
 4
-77
-C:\Projects\SAM\Documentation\P50P90\2018.5.21_Trough_IPH_Paul\weather_files
-
+0
 library_paths
 1
 4
