@@ -184,9 +184,7 @@ lat
 library_folder_list
 1
 4
-44
-C:\Users\gaobo\SAM Downloaded Weather Files
-
+0
 library_paths
 1
 4

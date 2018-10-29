@@ -230,6 +230,8 @@
 
 copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.dll" "$(SAMNTDIR)\deploy\$(Platform)"
 copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktooldx32.exe" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktooldx32.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -278,6 +280,8 @@ copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.pdb" "$(SAMNTD
 
 copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.dll" "$(SAMNTDIR)\deploy\$(Platform)"
 copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoold.exe" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoold.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -326,6 +330,8 @@ copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.pdb" "$(SAMNTDIR)
 
 copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.dll" "$(SAMNTDIR)\deploy\$(Platform)"
 copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoolx32.exe" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoolx32.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
     <PreBuildEvent>
@@ -378,6 +384,8 @@ copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.pdb" "$(SAMNTDI
 
 copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\ssc.dll" "$(SAMNTDIR)\deploy\$(Platform)"
 copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\ssc.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktool.exe" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktool.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
     <PreBuildEvent>
