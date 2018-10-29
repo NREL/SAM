@@ -96,6 +96,7 @@ if(get('subarray4_enable') == 1) {
 
 system_inverter_count = 0;	//Keeps count of the number of inverters the system needs (only used when user chooses to optimize all active subarrays).
 continue_macro = true;		
+time_simulation = 0;		
 if(subarray_x != 'All Active Subarrays') outln("\n\tOptimizing Array Layout for given ranges of GCR and Tilt over area of " + acreage + " acres.");
 else {
 	//Calculate time taken for 1 simulation. 
