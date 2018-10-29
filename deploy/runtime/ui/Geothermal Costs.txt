@@ -6523,7 +6523,7 @@ Cost
 $/kW
 Geothermal Costs
 0
-10
+8
 1
 1
 1
@@ -7602,7 +7602,7 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 	}
 };
 
-1388
+1386
 
 function reset_geothermal_plant_cost()
 {
@@ -7638,7 +7638,6 @@ function update_cost_input_control()
 on_change{"geotherm.cost.plant_auto_estimate"} = define()
 {
 	update_cost_input_control();	
-	
 };
 
 on_load{'Geothermal Costs'} = define() {
