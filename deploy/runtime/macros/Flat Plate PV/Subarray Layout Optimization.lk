@@ -18,7 +18,7 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 <ul>
 	<li> For accurate results, ensure self-shading is enabled under the Shading and Layout page in the active case.
 	<li> This macro can also be used to optimize an entire PV system, by manually disabling subarrays 2, 3, and 4, and treating subarray 1 as whole system's configuration. This strategy assumes that entire PV system (all active subarrays) has the same azimuth, tilt angle, GCR, etc.
-	<li> Number of inverters recommended for each optimization strategy is only for that particalur subarray and not the entire system. 
+	<li><b> Number of inverters recommended for each optimization strategy is only for that particalur subarray and not the entire system. </b>
 @*/
  
  
@@ -32,7 +32,7 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 //@ name=gcr_steps;type=number;label=Enter the increments you would like to iterate GCR over:;value=0.1
 //@ name=max_tilt;type=number;label=Enter the maximum allowable (fixed) tilt angle (in Degrees):;value=90
 //@ name=min_tilt;type=number;label=Enter the minimum allowable (fixed) tilt angle (in Degrees):;value=0
-//@ name=tilt_steps;type=number;label=Enter for tilt angle (in Degrees):;value=10
+//@ name=tilt_steps;type=number;label=Enter the increments for tilt angle (in Degrees):;value=10
 //@ name=dcac;type=number;label=Desired DC to AC Ratio:;value=1.20
 //@ name=update_results;type=combo;label=Update subarray configuration in active case optimized for;value=Max AEP,Max NPV,Max Energy Yield,Do Not Update;sel=3
 
@@ -93,6 +93,10 @@ if(get('subarray3_enable') == 1) subarray_3_flag = 1;
 if(get('subarray4_enable') == 1) subarray_4_flag = 1;
 
 if(subarray_x == 'Subarray 1') {
+	if(get('subarray1_modules_per_string') == 0) {
+		msgbox("Subarray 1 has 0 modules per string.");
+		exit;
+	}
 	set('subarray2_enable', 0);
 	set('subarray3_enable', 0);
 	set('subarray4_enable', 0);
@@ -441,7 +445,9 @@ for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 			//Loop for ite
 
 str = '<html><body><h1> Summary of Results </h1><p>Reported for case: ' + active_case() + '</p>\n';
 str += '<br>Showing results for: ' + subarray_x;
-str += '<br><em>Note: Optimal number of inverters reported are only for this particular subarray and not the entire system</em>';
+str += '<br><table bgcolor = #FFFF00><b>Note:</b> Optimal number of inverters reported are only for this particular subarray and not the entire system.</table>';
+str += '<p><i>(If you are using this macro to optimize all active subarrays, note down the recommended number of inverters for this subarray. Once you have optimized all active subarray configurations, add all the recommended number of inverters for each subarray to give you the recommended number of inverters for the entire system.)</i></p>';
+		
 //Max AEP Results:
 str += '<br><h5>Results for Max Annual Energy Production (AEP): </h5>';
 str += '<br>GCR: ' + optimum_gcr ;
@@ -812,5 +818,3 @@ if(subarray_x != 'Subarray 1') {
 }
 
 ///////////////////////////////////**** End of Script ****///////////////////////////////////
-
-  		
