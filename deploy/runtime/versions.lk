@@ -54,6 +54,12 @@ version_upgrade{'2018.9.20'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Flat Plate PV')
 	{
+		//upgrades for the new way that auto-sizing works
+		autosize = oldvalue('size_auto_or_manual');
+		value('size_auto_or_manual', abs(1-autosize), 'Variables changed order.'); //size_auto_or_manual switched order
+		dcac_old = oldvalue('dcac_ratio');
+		value('desired_dcac_ratio', dcac_old, 'Renamed DC-AC Ratio input variable.');
+		
 		//upgrades for multiple MPPT inverters
 		x = oldvalue('modules_per_string');
 		value('subarray1_modules_per_string', x, 'Variable change to be able to model different numbers of modules per string between subarrays.');
