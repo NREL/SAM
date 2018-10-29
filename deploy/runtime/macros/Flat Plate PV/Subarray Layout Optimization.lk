@@ -17,9 +17,8 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 <b>Warnings and Tips:</b> 
 <ul>
 	<li> For accurate results, ensure self-shading is enabled under the Shading and Layout page in the active case.
-	<li> This macro can also be used to optimize an entire PV system, by manually disabling subarrays 2, 3, and 4, and treating subarray 1 as whole system's configuration. This strategy assumes that entire PV system (all active subarrays) has the same azimuth, tilt angle, GCR, etc.
 	<li><b> If optimizing a single subarray, the number of inverters recommended for each optimization strategy is only for that particalur subarray and not the entire system. </b>
-	<li> Ensure number of modules per string in subarray is greater than 0.
+	<li> Ensure number of modules per string in any active subarray is greater than 0.
 @*/
  
  
@@ -68,18 +67,20 @@ acreage = area*0.0002471;					//m^2 to acres conversion
 //the two variables to 0, then change value to 1 to prevent infinite looping.
 if(gcr_steps <= 0 ) gcr_steps = max_gcr;
 if(tilt_steps <= 0) tilt_steps = max_tilt;
-single_subarray = false;
-if(subarray_x != 'All Active Subarrays') {
-	single_subarray = true;
-	outln('single subarray');
-	}
 
-timer = 1;
+//If single_subarray is false implies that the user chose to optimize 'All Active Subarrays'
+single_subarray = false;
+if(subarray_x != 'All Active Subarrays') single_subarray = true;
+
+
+//Keeping tab of all subarrays that the user enabled in the active case; and a reminder to re-enable subarray (if the subarray was enabled before the macro) after simulation is complete.
+
+timer = 1;					//variable used in calculation of estimated time macro will take to finish
 subarray_flag[0] = 1; 		//where subarray_flag[0] is subarray 1.
 subarray_flag[1] = 0;
 subarray_flag[2] = 0;
 subarray_flag[3] = 0;
-//Reminder to re-enable subarray (if the subarray was enabled before the macro) after simulation is complete.
+
 if(get('subarray2_enable') == 1) {
 	timer += 1;
 	subarray_flag[1] = 1;
@@ -93,13 +94,14 @@ if(get('subarray4_enable') == 1) {
 	subarray_flag[3] = 1;
 	}
 
-system_inverter_count = 0;
-continue_macro = true;
+system_inverter_count = 0;	//Keeps count of the number of inverters the system needs (only used when user chooses to optimize all active subarrays).
+continue_macro = true;		
 if(subarray_x != 'All Active Subarrays') outln("\n\tOptimizing Array Layout for given ranges of GCR and Tilt over area of " + acreage + " acres.");
 else {
+	//Calculate time taken for 1 simulation. 
 	start_timer();
 	simulate();
-	time_simulation = (elapsed_time()/1000) * ((max_gcr - min_gcr)/gcr_steps) * ((max_tilt - min_tilt) / tilt_steps) * timer * (1/60);
+	time_simulation = (elapsed_time()/1000) * ((max_gcr - min_gcr)/gcr_steps) * ((max_tilt - min_tilt) / tilt_steps) * timer * (1/60);		//Formula to estimate total time macro will take to complete if user is optimizing all active subarrays.
 	continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take " + time_simulation + " minute(s) to complete. Proceed?");
 	if (continue_macro == false) {
 		outln("\n	Consider reducing iterations of GCR and Tilt angle, or optimize over a single subarray instead for a quicker simulation.");
@@ -111,7 +113,9 @@ else {
 ////////////////////////**** DETERMINING WHICH SUBARRAY IS TO BE OPTIMIZED AND STORING EXISTING USER INPUT VALUES ****////////////////////////////
 
 subarray_to_optimize = 0;
-set_subarray = 0;
+
+//This while loop goes through every enabled subarray to find the optimum.
+
 while (subarray_to_optimize < 4) {			//since there can only be a maximum of 4 subarrays in SAM
 	
 		if( single_subarray != true && timer == 1) single_subarray = true;
@@ -125,7 +129,17 @@ while (subarray_to_optimize < 4) {			//since there can only be a maximum of 4 su
 	
 		if( subarray_to_optimize == 3 && subarray_flag[3] == 0) break; 		//End macro at this point if and when subarray 4 is reached and it is disabled in active simulation.
 		
-		outln('\t\nOptimizing Subarray: ' + (subarray_to_optimize + 1) );
+		//If the user is optimizing all active subarrays, ask them to input the allotted area for each subarray:
+		if(single_subarray != true) {
+			length = in("Enter length (in m) of field or rooftop alloted for " + subarray_x +". [Note: this does not include setback length]");
+			width = in("Enter width (in m) of field or rooftop alloted for " + subarray_x +". [Note: this does not include setback length]");
+			effective_length = to_real(length) - setback;		//(Calculated Value) Actual length of the field that is available for placement of modules (m)
+			effective_width = to_real(width) - setback;			//(Calculated Value) Actual width of the field that is available for placement of modules	(m)
+			area = effective_length * effective_width; 	//(Calculated Value) Total effective land area (in m^2)
+		}
+		
+		
+		outln('\t\nOptimizing Subarray ' + (subarray_to_optimize + 1) + ' over an area of ' + area + ' m^2' );
 		//Store subarray 1's configuration information:
 		subarray1_modules_per_string = get('subarray1_modules_per_string');
 		subarray1_nstrings = get('subarray1_nstrings');
@@ -884,8 +898,7 @@ html_dialog(str, 'Optimal Array Layout', [1000,800]);
 
 
 subarray_to_optimize++;
-if(single_subarray == true) break;
-
+if(single_subarray == true) break;			//If user is optimizing only a single subarray, exit the while loop, i.e., end the macro at this point.
 
 }
 
