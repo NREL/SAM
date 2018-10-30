@@ -136,7 +136,7 @@ batt_simple_kw
 1
 1
 1
-30.000000
+50.000000
 batt_simple_kwh
 1
 1
