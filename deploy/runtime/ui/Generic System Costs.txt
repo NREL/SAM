@@ -1,7 +1,7 @@
 Generic System Costs
-792
-489
-51
+873
+673
+55
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 780
 Height
 3
-179
+203
 Caption
 5
 20
@@ -42,7 +42,7 @@ X
 6
 Y
 3
-183
+207
 Width
 3
 780
@@ -69,7 +69,7 @@ X
 6
 Y
 3
-387
+411
 Width
 3
 780
@@ -96,7 +96,7 @@ X
 510
 Y
 3
-204
+228
 Width
 3
 104
@@ -141,7 +141,7 @@ X
 381
 Y
 3
-204
+228
 Width
 3
 104
@@ -186,7 +186,7 @@ X
 246
 Y
 3
-204
+228
 Width
 3
 104
@@ -283,6 +283,65 @@ Numeric
 16
 Name
 5
+14
+battery_per_kW
+X
+3
+474
+Y
+3
+111
+Width
+3
+76
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+Numeric
+
+1
+16
+Name
+5
 15
 battery_per_kWh
 X
@@ -343,13 +402,72 @@ Numeric
 Name
 5
 13
+battery_power
+X
+3
+174
+Y
+3
+111
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0.000000
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+3
+Numeric
+
+1
+16
+Name
+5
+13
 battery_total
 X
 3
 642
 Y
 3
-84
+108
 Width
 3
 136
@@ -465,10 +583,10 @@ Name
 genericsys.cost.contingency
 X
 3
-642
+639
 Y
 3
-111
+138
 Width
 3
 136
@@ -528,7 +646,7 @@ X
 366
 Y
 3
-111
+138
 Width
 3
 100
@@ -587,7 +705,7 @@ X
 513
 Y
 3
-228
+252
 Width
 3
 100
@@ -647,7 +765,7 @@ X
 384
 Y
 3
-225
+249
 Width
 3
 100
@@ -706,7 +824,7 @@ X
 249
 Y
 3
-228
+252
 Width
 3
 100
@@ -766,7 +884,7 @@ X
 642
 Y
 3
-228
+252
 Width
 3
 136
@@ -826,7 +944,7 @@ X
 645
 Y
 3
-435
+459
 Width
 3
 133
@@ -1066,7 +1184,7 @@ X
 513
 Y
 3
-252
+276
 Width
 3
 100
@@ -1126,7 +1244,7 @@ X
 384
 Y
 3
-249
+273
 Width
 3
 100
@@ -1185,7 +1303,7 @@ X
 249
 Y
 3
-252
+276
 Width
 3
 100
@@ -1245,7 +1363,7 @@ X
 642
 Y
 3
-252
+276
 Width
 3
 136
@@ -1305,7 +1423,7 @@ X
 282
 Y
 3
-297
+321
 Width
 3
 100
@@ -1364,7 +1482,7 @@ X
 642
 Y
 3
-297
+321
 Width
 3
 136
@@ -1424,7 +1542,7 @@ X
 495
 Y
 3
-297
+321
 Width
 3
 100
@@ -1483,7 +1601,7 @@ X
 30
 Y
 3
-417
+441
 Width
 3
 302
@@ -1587,7 +1705,7 @@ X
 39
 Y
 3
-282
+306
 Width
 3
 573
@@ -1623,7 +1741,7 @@ X
 642
 Y
 3
-324
+348
 Width
 3
 136
@@ -1658,7 +1776,7 @@ X
 642
 Y
 3
-135
+162
 Width
 3
 136
@@ -1693,7 +1811,7 @@ X
 468
 Y
 3
-153
+180
 Width
 3
 171
@@ -1738,7 +1856,7 @@ X
 321
 Y
 3
-87
+111
 Width
 3
 18
@@ -1821,6 +1939,51 @@ Label
 12
 Name
 5
+11
+object 7217
+X
+3
+321
+Y
+3
+87
+Width
+3
+18
+Height
+3
+21
+Caption
+5
+1
+×
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
 10
 object 723
 X
@@ -1828,7 +1991,7 @@ X
 45
 Y
 3
-252
+276
 Width
 3
 198
@@ -1873,7 +2036,7 @@ X
 45
 Y
 3
-228
+252
 Width
 3
 198
@@ -1918,7 +2081,7 @@ X
 468
 Y
 3
-411
+435
 Width
 3
 171
@@ -1963,7 +2126,7 @@ X
 468
 Y
 3
-336
+360
 Width
 3
 171
@@ -2008,7 +2171,7 @@ X
 618
 Y
 3
-252
+276
 Width
 3
 18
@@ -2053,7 +2216,7 @@ X
 618
 Y
 3
-228
+252
 Width
 3
 18
@@ -2098,7 +2261,7 @@ X
 492
 Y
 3
-249
+273
 Width
 3
 18
@@ -2143,7 +2306,7 @@ X
 492
 Y
 3
-228
+252
 Width
 3
 18
@@ -2188,7 +2351,7 @@ X
 357
 Y
 3
-252
+276
 Width
 3
 18
@@ -2233,7 +2396,7 @@ X
 357
 Y
 3
-228
+252
 Width
 3
 18
@@ -2278,7 +2441,52 @@ X
 615
 Y
 3
-87
+84
+Width
+3
+18
+Height
+3
+21
+Caption
+5
+1
++
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+12
+object 74312
+X
+3
+615
+Y
+3
+60
 Width
 3
 18
@@ -2316,14 +2524,14 @@ Label
 12
 Name
 5
-12
-object 74312
+11
+object 7432
 X
 3
 615
 Y
 3
-60
+108
 Width
 3
 18
@@ -2413,7 +2621,7 @@ X
 642
 Y
 3
-153
+180
 Width
 3
 136
@@ -2473,7 +2681,7 @@ X
 642
 Y
 3
-336
+360
 Width
 3
 136
@@ -2533,7 +2741,7 @@ X
 645
 Y
 3
-411
+435
 Width
 3
 133
@@ -2581,11 +2789,11 @@ TabOrder
 3
 20
 
-26
+28
 battery_energy
 3
 1
-Battery bank
+Battery pack
 kWh
 Direct Capital Costs
 0
@@ -2596,6 +2804,20 @@ Direct Capital Costs
 1
 0.000000
 Numeric
+battery_per_kW
+3
+1
+Battery cost per kW
+$/kW dc
+Direct Capital Costs
+0
+2
+1
+1
+1
+1
+600.000000
+Numeric
 battery_per_kWh
 3
 1
@@ -2604,6 +2826,20 @@ $/kWh dc
 Direct Capital Costs
 0
 2
+1
+1
+1
+1
+0.000000
+Numeric
+battery_power
+3
+1
+Battery power
+kW
+Direct Capital Costs
+0
+8
 1
 1
 1
@@ -2947,7 +3183,7 @@ Total Installed Costs
 0.000000
 Numeric
 
-2102
+2241
 equations{ 'nameplate_capacity' } = define() {
 	return ${system_capacity}; };
 
@@ -2955,10 +3191,13 @@ equations{ 'battery_energy' } = define() {
 	return ?${en_batt}
 			[0,	${batt_computed_bank_capacity}];};
 
-equations{ 'battery_total' } = define() {
-	return ${battery_energy}*${battery_per_kWh};
-};
+equations{ 'battery_power' } = define() {
+	return ?${en_batt}
+			[0,	${batt_power_discharge_max}];};
 
+equations{ 'battery_total' } = define() {
+	return ${battery_energy}*${battery_per_kWh} + ${battery_power}*${battery_per_kW} ;
+};
 
 equations{ 'total_installed_cost' } = define() {
 	return ${total_direct_cost}+${total_indirect_cost}; };
