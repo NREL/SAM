@@ -2432,7 +2432,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-18292
+19147
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2511,9 +2511,9 @@ on_change{'solar_data_settings'} = define() {
 		if ( strlen( value( 'library_folder_list' ) ) < L )
 		{
 			library_files = csvread( userlocaldatadir() + '/SolarResourceData.csv' , { 'table' = true });
-			if ( library_files{'File name'} ?@ value( 'solar_resource_file' ) < 0 )
+			if ( ( library_files{'File name'} ?@ value( 'solar_resource_file' ) ) < 0 )
 			{
-				first_item = library_files{'File name'}[3];
+				first_item = library_files{'File name'}[2];
 				first_item = replace( file_only(first_item), '.csv', '' );
 				msgbox( 'Weather file removed from library!\nThe file ' 
 			        + value( file_only('solar_resource_file') )
@@ -2625,8 +2625,8 @@ function update_library_folders( new_path )
 {
 	x = get_settings('solar_data_paths');
 
-	// add new path if provided
-	if ( new_path != '' && dir_exists( new_path ) )
+	// add new path if provided and it doesn't already exist in the library
+	if ( new_path != '' && dir_exists( new_path ) && ( strpos( x, new_path ) < 0 ) )
 	{
 		if ( x != '' )
 			x += ';';
@@ -2930,8 +2930,27 @@ nsrdb_get = define( )
 				progressbar( pb );
 				pb = progressbar( { 'title' = 'Download Progress' , 'message' = 'Starting download.' , 'cancelbutton' = false , 'time' = false , 'max' = #location*#type } );
 			}
-			
-			// for each year	
+		
+			// create folder for multiple years to facilitate
+			// p50 p90 and add to library folders list
+			// do not put tmy file in multiple year folder
+			// use default folder if mdkir() fails
+			default_download_path = folder + '/';
+			path = default_download_path;
+			if ( #type > 1 )
+			{
+				path += clean_name( location[n] );
+				if ( !dir_exists( path ) )
+				{
+					if ( !mkdir( path, true ) )
+						path = default_download_path;
+				}
+				if ( path != default_download_path && i == 0)
+					update_library_folders( path );
+			}
+				
+			// for each year
+			fname_tmy = '';
 			for( i=0; i<#type; i++ )
 			{
 
@@ -2940,30 +2959,22 @@ nsrdb_get = define( )
 				else
 					base_url += '&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo'; //SEE NSRDB.CPP 
 
-				write_line( flog, '\nYear ' + to_string(i+1) + ' of ' + #type + ': ' + type[i]);
+				write_line( flog, '\nFile ' + to_string(i+1) + ' of ' + #type + ': ' + type[i]);
 				write_line( flog, '----------------------------------------------------------\n');	
 				url = base_url + '&names=' + to_string(type[i]);
 				url += '&wkt=POINT(' + dataset[n].lon + '%20' + dataset[n].lat + ')';
 				//str_url = replace( url, mid( url, strpos( url, 'api_key=' ) + strlen( 'api_key=' ), 40 ), '<API_KEY>' );
 				write_line( flog, url + '\n');
-				// create folder for multiple years to facilitate p50 p90
-				// do not put tmy file in multiple year folder
-				// use default folder if mdkir() fails
-				path = folder + '/';
-				if ( #type > 1 && strpos( lower(type[i]), 'tmy' ) == -1 )
-				{
-					path = folder + '/' + clean_name( location[n] + '/');
-					if ( !dir_exists( path ) )
-						if ( !mkdir( path, true ) )
-							path = folder + '/';
-				}
-				fname = path + clean_name( location[n] ) + '_' + dataset[n].lat + '_' + dataset[n].lon + '_psmv3_' + time_step + '_' + type[i] + '.csv';
+				fname = path + '/' + clean_name( location[n] ) + '_' + dataset[n].lat + '_' + dataset[n].lon + '_psmv3_' + time_step + '_' + type[i] + '.csv';
+				if ( type[i] == 'tmy' )
+					fname_tmy = fname;
+				
 				if ( file_exists( fname ) )
 					write_line( flog, 'File skipped, already exists: ' + fname + '\n');
 				else	
 				{
 					start = start_timer();
-					progressbar( pb, { 'message' = 'Downloading ' + type[i] + ' file for \"' + location[n] + '\". File ' + to_string(i+n+1) + ' of ' + to_string(#location+#type) + '.' , 'value' = 1+i+n } );
+					progressbar( pb, { 'message' = 'Downloading ' + type[i] + ' file for \"' + location[n] + '\". File ' + to_string(i+n+1) + ' of ' + to_string(#location+#type-1) + '.' , 'value' = 1+i+n } );
 					wf = curl( url , { 'file'= fname } ); // curl() should replace <SAMAPI> and <USEREMAIL > with values from private.h
 					time = elapsed_time() / 1000;
 					write_line( flog, 'Download time: ' + time + ' seconds.\n' );
@@ -2981,11 +2992,15 @@ nsrdb_get = define( )
 						else
 							write_line( flog, '* Failed to rename ' + fname + '.\n' );	
 					}
-					else
+					// set library to last file that was downloaded and passed weather file test
+					elseif ( i == #type - 1 ) 
 					{
-						// sets library to last file that was downloaded and passed weather file test
 						rescanlibrary('solar');
-						libkey = file_only( fname );
+						// for multiple file download set library to tmy file
+						if ( #type > 1 )
+							libkey = file_only( fname_tmy );
+						else
+							libkey = file_only( fname );
 						libkey = mid(libkey,0,#libkey-4);		
 						value( 'solar_resource', libkey );
 						write_line( flog, 'Weather file test passed: ' + fname + '.\n');
@@ -3004,12 +3019,22 @@ nsrdb_get = define( )
 	progressbar( pb );
 	close ( flog );
 	if ( download_ok )
-		msg = 'Download finished.';
+		msg = 'Download complete!\n';
 	else
-		msg = 'Download finished with errors.';
+		msg = 'Download finished with errors!\n';
+	if ( #type > 1 )
+	{
+		msg += 'Multiple single-year files downloaded to:\n  ' + path + '\n';
+		msg += 'Click \"P50 P90\" and choose this folder for P50 P90 simulations.\n\n';
+		msg += 'TMY file downloaded to:\n  ' + default_download_path + '\n';
+		msg += 'and selected from library for simulation to compare to P50 result.\n\n';
 		
-	/*show_log = yesno( msg + '\nOpen log file?' );
+	}
+	else
+		msg += 'Weather file(s) downloaded to:\n' + path + '.\n';
+	msg += '\nOpen log file?';
+	show_log = yesno( msg );
 	if ( show_log )
-		browse( log_file );*/
-	browse( path_only( log_file ) );
+		browse( log_file );
+	//browse( path_only( log_file ) );
 };
