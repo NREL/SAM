@@ -265,11 +265,7 @@ lat
 library_folder_list
 1
 4
-157
-C:\Users\ndiorio\Desktop\weather
-C:\Users\ndiorio\Desktop\weather
-C:/Projects/ssc/test/input_cases/pvsamv1_data
-C:/Projects/ssc/test/input_cases/pvsamv1_data
+0
 library_paths
 1
 4
@@ -372,7 +368,7 @@ solar_resource
 1
 4
 45
-alamosa_co_37.469449_-105.870021_psmv3_60_tmy
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4

@@ -180,7 +180,36 @@
 </tr>
 </table>
 </div>
-
+<div style="text-align: left; text-indent: 0px; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><img id="TOGGLE0186A3_ICON" class="dropdown-toggle-icon" alt="ico-minus-16x16" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-minus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" href="javascript:HMToggle('toggle','TOGGLE0186A3','TOGGLE0186A3_ICON')">Supercritical Carbon Dioxide Power Cycle</a></span></td></tr></table></div><div id="TOGGLE0186A3" class="dropdown-toggle-body" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="Toggle Content Table" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The supercritical carbon dioxide power cycle model requires that you provide high level cycle design data.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="ambienttemperature" class="hmanchor"></a><span class="f_Heading3_atocs_">Design Parameters</span></h3>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ambient temperature at design</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The outside air temperature at the design point.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Air cooler approach temperature</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The difference between the ambient temperature at design and the main compressor inlet temperature. This input also applies to the pre-compressor in the partial cooling cycle. Smaller approach temperatures correspond to larger, more expensive air coolers, which you should capture in the power cycle cost.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">PHX approach temperature</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The design point difference between the HTF hot temperature the turbine inlet temperature. Smaller approach temperatures correspond to larger, more expensive primary heat exchanger, which you could capture in the power cycle cost.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Compressor(s) Isentropic Efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The design point isentropic efficiency for each compressor in the cycle.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Turbine Isentropic Efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The design point isentropic efficiency for the turbine.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cooling fan electricity consumption</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Percent of the design power cycle gross output consumed by the air cooler fan(s) at design. Smaller values will increase the annual plant generation but results in more expensive air coolers, which you should capture in the power cycle cost. For the partial cooling cycle, this value is split evenly between the two air coolers.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="ambienttemperature" class="hmanchor"></a><span class="f_Heading3_atocs_">Design Solution Outputs</span></h3>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">HTF cold temperature</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The HTF cold temperature is governed by the cycle design solution. The power tower model will use this calculated value during the annual simulation, so it is good practice to set the corresponding variable on the System Design page to this value.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Recompression fraction</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The fraction of the turbine mass flow rate that bypasses the main compressor via the recompressor.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Low pressure</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The lowest pressure in the cycle. This is the main compressor inlet in the recompression cycle and the pre-compressor inlet in the partial cooling cycle</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Recuperator conductance</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The sum of the low and high temperature recuperator conductance, assuming both are counterflow heat exchangers.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ambient temperature</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The outside air temperature at the design point.</span></p></td>
+</tr>
+</table>
+</div>
 </td></tr></table>
 
 <script type="text/javascript">

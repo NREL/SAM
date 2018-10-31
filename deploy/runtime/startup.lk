@@ -196,13 +196,13 @@ function setup_pv_residential_pages( mode ) // mode determines whether or not th
 function setup_thirdparty_pages( load, degradation ) // FOR NOW, THIRD PARTY OWNERSHIP MODEL IS ONLY VALID FOR PVWATTS AND PV DETAILED and generic system!!
 {
   setting( { 'analysis_period_var'='cf_length' } );
-  /*
+  
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
            {  'sidebar'='Lifetime','help'='lifetime' } );
   }
-  */
+  
   addpage( [[ 'Financial Third Party Ownership']],
            { 'sidebar'='Financial Parameters', 'help'='fin_thirdparty'} );
   setup_utility_rate();
@@ -812,13 +812,6 @@ setup_pvwatts_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE, LIFETIME_SYSTEM ); //includes building load calculator
 
-setconfig( 'PVWatts', 'Third Party' );	
-setmodules( ['pvwattsv5', 'belpe', 'battwatts', 'utilityrate5', 'thirdpartyownership']);
-setup_pvwatts_battery_pages();
-setup_thirdparty_pages( LOAD_BELPE , LIFETIME_SYSTEM); //includes building load calculator by default in this function
-
-
-
 setconfig( 'PVWatts', 'Commercial' );	
 setmodules( ['pvwattsv5', 'battwatts', 'utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages();
@@ -868,6 +861,14 @@ setmodules( ['pvwattsv5', 'utilityrate5', 'host_developer']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_host_developer_pages( LOAD_SIMPLE, LIFETIME_SYSTEM ); //includes building load calculator by default in this function
+
+
+setconfig( 'PVWatts', 'Third Party' );	
+setmodules( ['pvwattsv5', 'belpe', 'battwatts', 'utilityrate5', 'thirdpartyownership']);
+setup_pvwatts_battery_pages();
+setup_thirdparty_pages( LOAD_BELPE , LIFETIME_SYSTEM); //includes building load calculator by default in this function
+
+
 
 // Wind Power //////////////////////////////////////////////////////////////////
 

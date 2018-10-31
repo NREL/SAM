@@ -113,7 +113,7 @@ W_dot_part_load_des
 1
 1
 1
-14.195214
+14.195210
 Wpar_prodD_coefs
 1
 2
@@ -234,7 +234,7 @@ csp.gss.pwrb.design_parasitic_load
 1
 1
 1
-14.827715
+14.827710
 csp.gss.pwrb.gross_net_conversion_factor
 1
 1
@@ -348,7 +348,7 @@ csp.gss.pwrb.temp_par_design
 1
 1
 1
-0.007562
+0.007561
 csp.gss.pwrb.temp_par_f0
 1
 1
@@ -601,7 +601,7 @@ elev
 1
 1
 1
-641.000000
+561.000000
 etaQ_coefs
 1
 2
@@ -760,8 +760,8 @@ ffrac
 file_name
 1
 4
-85
-F:\SAMDEV\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 hrs_tes
 1
 1
@@ -856,15 +856,10 @@ latitude
 1
 1
 34.849998
-lbl_csp
-1
-4
-0
 library_folder_list
 1
 4
-2
-""
+0
 library_paths
 1
 4
@@ -875,13 +870,13 @@ lon
 1
 1
 1
--116.900002
+-116.779999
 longitude
 1
 1
 1
 1
--116.900002
+-116.779999
 ntod
 1
 1
@@ -965,6 +960,11 @@ sfhlV_coefs
 4
 0.000000 0.014720 0.002526 0.000000 
 
+solar_data_file_name
+1
+4
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -982,8 +982,8 @@ daggett_ca_34.865371_-116.783023_psmv3_60_tmy
 solar_resource_file
 1
 4
-85
-F:\SAMDEV\sam\deploy\solar_resource\daggett_ca_34.864032_-116.888098_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 solarm
 1
 1
@@ -998,8 +998,8 @@ state
 station_id
 1
 4
-6
-214257
+5
+91486
 storage_config
 1
 1

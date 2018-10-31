@@ -102,18 +102,17 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 
 	m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));
 	m_btnChkAll = new wxButton(this, ID_btnChkAll, "Select all");
-	m_btnChkPsm30 = new wxButton(this, ID_btnChkPsm30, "Select PSM 30-minute"); //cpg
-	m_btnChkPsm60 = new wxButton(this, ID_btnChkPsm60, "Select PSM hourly"); //cpg
+	m_btnChkPsm30 = new wxButton(this, ID_btnChkPsm30, "Select PSM V3 30-minute"); //cpg
+	m_btnChkPsm60 = new wxButton(this, ID_btnChkPsm60, "Select PSM V3 hourly"); //cpg
 	m_btnChkNone = new wxButton(this, ID_btnChkNone, "Clear all");
 	m_btnUnselectFiltered = new wxButton(this, ID_btnUnselectFiltered, "Clear filtered");
 	m_btnSelectFiltered = new wxButton(this, ID_btnSelectFiltered, "Select filtered");
-	m_btnResources = new wxButton(this, ID_btnResources, "Search");
+	m_btnResources = new wxButton(this, ID_btnResources, "Find");
 	m_search = new wxSearchCtrl(this, ID_search, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER | wxTE_PROCESS_TAB);
 	m_cboWeatherFile = new wxComboBox(this, ID_cboWeatherFile, ""); // populate with selected resources
 	m_chlResources = new wxCheckListBox(this, ID_chlResources, wxDefaultPosition, wxSize(800,200)); // populate with returned resources
 
-
-	wxString msg = "Use this window to choose weather files to download from the NSRDB to a folder on your computer and add it to your solar resource library.\nType an address or latitude and longtitude, for example, \"15031 denver west parkway golden co\" or \"40.1,-109.3\", and click Search to list all files available in the database for that location.\nWhen the list appears, choose the file or files you want to download. For the most up-to-date data, choose PSM files.\n\nThe email address you used to register SAM will be sent to the NREL NSRDB. If you do not want share your email address with the NSRDB, click Cancel now.";
+	wxString msg = "Use this window to list all weather files available from the NSRDB for a given location, and choose files to download and add to your solar resource library.\nType an address or latitude and longtitude, for example, \"15031 denver west parkway golden co\" or \"40.1,-109.3\", and click Find to list available files.\nWhen the list appears, choose the file or files you want to download. PSM V3 files are the most up-to-date.\n\nThe email address you used to register SAM will be sent to the NREL NSRDB. If you do not want share your email address with the NSRDB, click Cancel now.";
 
 	wxBoxSizer *szAddress = new wxBoxSizer(wxHORIZONTAL);
 	szAddress->Add(new wxStaticText(this, wxID_ANY, "1. Find location:"), 0, wxALL , 2);
@@ -139,7 +138,7 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	szChkBtn->Add(m_btnChkNone, 0, wxALL, 2);
 
 	wxBoxSizer *szgrid = new wxBoxSizer(wxVERTICAL);
-	szgrid->Add(new wxStaticText(this, wxID_ANY, "2. Choose files to download or click OK to download default PSM hourly TMY file:"), 0, wxALL, 2);
+	szgrid->Add(new wxStaticText(this, wxID_ANY, "2. Choose files to download:"), 0, wxALL, 2);
 	szgrid->Add(m_chlResources, 10, wxALL | wxEXPAND, 1);
 	szgrid->Add(szChkBtn, 0, wxALL, 1);
 
@@ -169,7 +168,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				GetResources();
 				std::sort(m_links.begin(),m_links.end());
 				// select first item (should be tmy)
-				if (m_links.size() > 0) m_links[0].is_selected = true;
+				//if (m_links.size() > 0) m_links[0].is_selected = true;
 				RefreshList();
 			}
 			break;
@@ -209,7 +208,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 			{
 				for (size_t i = 0; i < m_links.size(); i++)
 				{
-					if ((m_links[i].name.Lower() == "psm") && (m_links[i].interval.Lower() == "30"))
+					if ((m_links[i].name.Lower() == "psmv3") && (m_links[i].interval.Lower() == "30"))
 						m_links[i].is_selected = true;
 					else
 						m_links[i].is_selected = false;
@@ -221,7 +220,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 			{
 				for (size_t i = 0; i < m_links.size(); i++)
 				{
-					if ((m_links[i].name.Lower() == "psm") && (m_links[i].interval.Lower() == "60"))
+					if ((m_links[i].name.Lower() == "psmv3") && (m_links[i].interval.Lower() == "60"))
 						m_links[i].is_selected = true;
 					else
 						m_links[i].is_selected = false;
@@ -259,7 +258,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				if (dlg.ShowModal() == wxID_OK)
 				{
 					m_txtFolder->SetValue( dlg.GetPath());
-					SamApp::Settings().Write("NSRDBDownloadFolder", dlg.GetPath());
+					SamApp::Settings().Write("solar_data_paths", dlg.GetPath());
 				}
 			}
 			break;
@@ -512,8 +511,7 @@ void NSRDBDialog::GetResources()
 	loc.Replace(",", "_");
 	loc.Replace("(", "_"); 
 	loc.Replace(")", "_");
-
-
+	loc.Replace("__", "_");
 
 	m_chlResources->Clear();
 	m_cboWeatherFile->Clear();
@@ -536,8 +534,9 @@ void NSRDBDialog::GetResources()
 			URL.Replace("youremail", "<USEREMAIL>");
 			// URL - min attributes for each type 
 			wxString attributes = "";
-			if ((name.Trim() == "psm") && (year.Trim() != "tmy"))
-				attributes = "&attributes=dhi,dni,dew_point,surface_air_temperature_nwp,surface_pressure_background,surface_relative_humidity_nwp,wind_speed_10m_nwp";
+			if ((name.Trim() == "psmv3") && (year.Trim() != "tmy")) //replace psm with psmv3 10/22/2018, relative_humidity not available for tmy
+				attributes = "&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,wind_speed,wind_direction,surface_albedo";
+				//attributes = "&attributes=dhi,dni,dew_point,surface_air_temperature_nwp,surface_pressure_background,surface_relative_humidity_nwp,wind_speed_10m_nwp";
 			else if ((name.Trim() == "mts2") || (name.Trim() == "mts2-tmy"))
 				attributes = "&attributes=dhi,dni,dew_point,temp_dryb,atm_pres,rel_hum,wind_spd";
 			else if (name.Trim() == "mts1") // untested
@@ -550,7 +549,9 @@ void NSRDBDialog::GetResources()
 			wxLogStatus("link info: %s, %s, %s, %s, %s, %s", displayName.c_str(), name.c_str(), type.c_str(), year.c_str(), interval.c_str(), URL.c_str());
 #endif
 			// SAM does not recognize spectral datasets at this time
-			if (name.Lower() != "spectral-tmy") 
+			// skip psm files per 10/25/2018 meeting
+			if ((name.Lower() != "spectral-tmy") 
+				&& (name.Lower() != "psm"))
 				m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, loc, attributes));
 		}
 	}

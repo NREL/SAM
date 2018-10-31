@@ -1992,9 +1992,7 @@ lat
 library_folder_list
 1
 4
-77
-C:\Projects\SAM\Documentation\P50P90\2018.5.21_Trough_IPH_Paul\weather_files
-
+0
 library_paths
 1
 4
@@ -2024,8 +2022,8 @@ TMY2
 solar_resource
 1
 4
-42
-fargo_nd_46.877186_-96.789803_psmv3_60_tmy
+31
+fargo_nd_46.9_-96.8_mts1_60_tmy
 solar_resource_file
 1
 4
