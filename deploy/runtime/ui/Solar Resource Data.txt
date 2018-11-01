@@ -2432,7 +2432,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-20572
+20659
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2679,10 +2679,7 @@ nsrdb_all = define() {
 		dn = hash{'folder'};
 		af = hash{'addfolder'};
 		if ( fn != '' )
-		{
 			error = wf_check( fn );
-			msgbox( error );
-		}	
 		if (af == "no")
 		{
 			if ((fn != '') && (dn != ''))
@@ -2752,10 +2749,13 @@ nsrdb = define ( location )
 				if ( strpos( lower(var.error.code), 'api' ) > -1 ) // no or invalid api key
 					msg += 'See private.h to set API keys.';
 			}
-			elseif ( var.outputs == null )
+			elseif ( var.outputs == null || var.outputs == [])
+			{
 				msg = 'No NSRDB data available for \"' + location + '\".';
-			elseif ( var.outputs == [] )
-				msg = 'No NSRDB data available for \"' + location + '\".';
+				msgbox( 'No NSRDB data available!\nData for ' + location + ' is not available in the NSRDB.');
+			}
+//			elseif (  )
+//				msg = 'No NSRDB data available for \"' + location + '\".';
 			else
 				json_ok = true;
 		}
