@@ -11,8 +11,7 @@ body, table, tr, th /* Normal */
 }
 span.f_CHCode /* CH Code */
 {
- font-size: 12pt;
- font-family: Consolas;
+ font-family: Courier,monospace;
 }
 span.f_CHEquationVariable /* CH Equation Variable */
 {
@@ -250,7 +249,7 @@ p, p.p_Normal, div.p_Normal, li.p_Normal /* Normal */
 }
 .p_CHCode /* CH Code */
 {
- font-size: 12pt;
+ font-size: 10pt;
 }
 .p_CHEquationVariable /* CH Equation Variable */
 {
@@ -604,19 +603,6 @@ text-align: left;
 table.Default.No.Border th, table.Default.No.Border td {
 vertical-align: top;
 padding: 2px;
-}
-table.Default.Shaded.Rows {
-border: solid 2px #C0C0C0;
-border-spacing: 0;
-border-collapse: collapse;
-}
-table.Default.Shaded.Rows tr {
-text-align: left;
-}
-table.Default.Shaded.Rows th, table.Default.Shaded.Rows td {
-vertical-align: top;
-padding: 4px;
-border: solid thin #C0C0C0;
 }
 table.Topic.Status.Table {
 border: none;

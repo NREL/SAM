@@ -6335,7 +6335,7 @@ PV System Design
 0.000000
 Numeric
 
-11469
+11383
 equations{ '$MIMO$ pv_size_array' } = define()
 {
 	if (${size_auto_or_manual}==1)
@@ -6609,10 +6609,7 @@ equations{ 'num_enabled' } = define() {
 	return 1+${subarray2_enable}+${subarray3_enable}+${subarray4_enable}; };
 
 equations{ 'num_strings_total' } = define() {
-	return ${subarray1_nstrings} 
-		+ (?${subarray2_enable}[0,${subarray2_nstrings}])
-		+ (?${subarray3_enable}[0,${subarray3_nstrings}])
-		+ (?${subarray4_enable}[0,${subarray4_nstrings}]) ; };
+	return ${subarray1_nstrings} + ${subarray2_nstrings} + ${subarray3_nstrings} + ${subarray4_nstrings}; };
 
 equations{ 'total_land_area' } = define() {
 	area = ?${module_model}

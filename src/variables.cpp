@@ -734,20 +734,7 @@ void VarValue::Write_text(wxOutputStream &_O)
 		{
 			for (size_t c = 0; c < m_val.ncols(); c++)
 			{
-//				out.WriteDouble(m_val(r, c));
-				wxString sd;
-				sd.Printf("%g", m_val(r, c));
-				out.WriteString(sd);
-/*
-void wxTextOutputStream::WriteDouble(double d)
-{
-	wxString str;
-
-	str.Printf(wxT("%f"), d);
-	WriteString(str);
-}
-
-*/
+				out.WriteDouble(m_val(r, c));
 	//			out.PutChar('\n');
 				if (m_val.nrows()*m_val.ncols() > 1) out.PutChar(' ');
 			}
