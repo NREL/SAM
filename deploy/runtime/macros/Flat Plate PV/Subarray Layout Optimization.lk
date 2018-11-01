@@ -852,6 +852,7 @@ str += '</table>';
 
 
 
+
 ///////////////////////////////////**** P L O T T I N G ****///////////////////////////////////
 
 clr = ['#FF0000',	'#00FFFF',	'#FF00FF',	'#0000A0',	'#9ACD32',	'#800080',	'#FFFF00',	'#00FF00',	'#0000FF',	'#C0C0C0',	'#808080',	
@@ -870,7 +871,7 @@ for ( count = 0; count <= (#annual_energy - 1) ; count = count + 1) {
 	plot(x, annual_energy[count],{series = type[count], color = clr[count], size = 3});
 	axis('x1', {'label' = "Tilt Angle "});
 	axis('y1', {'label' = "Annual Energy Production  (kWh)"});
-	plotopt({'legendpos'='right', 'coarse'=true, 'fine'=true, 'title' = "Annual Energy Production at Various GCR [" + subarray_x + "]"});
+	plotopt({'legendpos'='right', 'export_graph' = true, 'coarse'=true, 'fine'=true, 'title' = "Annual Energy Production at Various GCR [" + subarray_x + "]"});
 }
 
 
