@@ -6263,7 +6263,7 @@ Capital Costs
 0.000000
 Numeric
 
-5915
+5938
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6304,9 +6304,13 @@ equations{ 'contingency' } = define() {
 };
 
 equations{ 'land_area_value' } = define() {
-	if ( technology() == "PVWatts" ) return 0;
-	elseif ( technology() == "PVWatts_battery" ) return 0;
-	else return ${total_land_area};
+	tech = technology();
+	if ( tech == "PVWatts" || tech == "PVWatts_battery" || tech == "Fuel Cell") {
+		return 0;
+	}
+	else {
+		return ${total_land_area};
+	}
 };
 
 equations{ 'inverter_power' } = define() {
