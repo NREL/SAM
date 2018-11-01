@@ -1,6 +1,6 @@
 Generic System Costs
-873
-673
+791
+508
 55
 GroupBox
 

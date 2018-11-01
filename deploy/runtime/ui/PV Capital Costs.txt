@@ -1,6 +1,6 @@
 PV Capital Costs
-947
-892
+827
+732
 103
 GroupBox
 
@@ -6263,7 +6263,7 @@ Capital Costs
 0.000000
 Numeric
 
-5938
+6067
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6275,12 +6275,15 @@ equations{ 'inverter_num_units' } = define() {
 	elseif ( technology() == "PV_battery" ) return ${inverter_count};
 	elseif ( technology() == "PVWatts" ) return 1;
 	elseif ( technology() == "PVWatts_battery" ) return 1;
+	elseif ( technology() == "Fuel Cell") return 1;
 	else return 0;
 };
 
 equations{ 'module_power' } = define() {
-	if( technology() == "PVWatts" ) return ${system_capacity};
-	elseif( technology() == "PVWatts_battery" ) return ${system_capacity};
+	tech = technology();
+	if ( tech == "PVWatts" || tech == "PVWatts_battery" || tech == "Fuel Cell") { 
+		return ${system_capacity};
+	}
 	else {
 		// Flat Plate PV
 		return 0.001*?${module_model}
@@ -6314,8 +6317,10 @@ equations{ 'land_area_value' } = define() {
 };
 
 equations{ 'inverter_power' } = define() {
-	if ( technology() == "PVWatts" ) return ${system_capacity}/${dc_ac_ratio};
-	elseif ( technology() == "PVWatts_battery" ) return ${system_capacity}/${dc_ac_ratio};
+	tech = technology();
+	if ( tech == "PVWatts" || tech == "PVWatts_battery" || tech == "Fuel Cell") {
+		return ${system_capacity}/${dc_ac_ratio};
+	}
 	else return 0.001*?${inverter_model}
 			[
 				${inv_snl_paco},
@@ -6362,8 +6367,10 @@ equations{ 'install_labor_total' } = define() {
 		+ ${modulearray_area}*${install_labor_perarea}; };
 
 equations{ 'module_num_units' } = define() {
-	if ( technology() == "PVWatts" ) return 1;
-	elseif ( technology() == "PVWatts_battery" ) return 1;
+	tech = technology();
+	if ( tech == "PVWatts" || tech == "PVWatts_battery" || tech == "Fuel Cell") { 
+		return 1;
+	}
 	else return ${total_modules};
 };
 
@@ -6386,8 +6393,10 @@ equations{ 'inverterarray_power' } = define() {
 	return ${inverter_power}*${inverter_num_units}; };
 
 equations{ 'modulearray_area' } = define() {
-	if ( technology() == 'PVWatts' ) return 0;
-	elseif ( technology() == 'PVWatts_battery' ) return 0;
+	tech = technology();
+	if ( tech == "PVWatts" || tech == "PVWatts_battery" || tech == "Fuel Cell") {
+		return 0;
+	}
 	else return ${total_land_area};
 };
 
@@ -6451,13 +6460,13 @@ equations { 'battery_total' } = define () {
 	return ${battery_energy}*${battery_per_kWh} + ${battery_power}*${battery_per_kW};};
 	
 equations { 'battery_energy' } = define () {
-	if( technology() == "Flat Plate PV" )
+	if( technology() == "Flat Plate PV" || technology() == "Fuel Cell")
 			return ?${en_batt}
 				[0,	${batt_computed_bank_capacity}];
 	else if ((technology() == "PVWatts" ) && 
 		  ( (financing() == 'Residential') || 
 			(financing() == 'Commercial') || 
-		    (financing() == 'Third Party')))
+		    (financing() == 'Third Party'))) 
 		{
 			return ?${batt_simple_enable}
 				[0,	${batt_simple_kwh}];
@@ -6466,7 +6475,7 @@ equations { 'battery_energy' } = define () {
 		return 0;
 };
 equations { 'battery_power' } = define () {
-	if( technology() == "Flat Plate PV" )
+	if( technology() == "Flat Plate PV" || technology() == "Fuel Cell")
 			return ?${en_batt}
 				[0,	${batt_power_discharge_max}];
 	else if ((technology() == "PVWatts" ) && 
