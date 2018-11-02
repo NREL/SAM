@@ -758,7 +758,7 @@ i = 0;
 for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
 	j = -1;
 	str += '<tr>';
-	str += '<th>GCR: ' + gcr + '</th>';
+	str += '<th>GCR: ' + num_to_str( gcr , 3 ) + '</th>';
 	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
 		j = j + 1;
 		if (annual_energy[i][j] == max_energy) str += '<td bgcolor = #00ff00>';
@@ -815,7 +815,7 @@ i = 0;
 for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
 	j = -1;
 	str += '<tr>';
-	str += '<th>GCR: ' + gcr + '</th>';
+	str += '<th>GCR: ' + num_to_str( gcr , 3) + '</th>';
 	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
 		j = j + 1;
 		if (npv[i][j] == max_npv) str += '<td bgcolor = #00ff00>';
@@ -870,7 +870,7 @@ i = 0;
 for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
 	j = -1;
 	str += '<tr>';
-	str += '<th>GCR: ' + gcr + '</th>';
+	str += '<th>GCR: ' + num_to_str( gcr , 3) + '</th>';
 	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
 		j = j + 1;
 		if (yield[i][j] == max_yield) str += '<td bgcolor = #00ff00>';
