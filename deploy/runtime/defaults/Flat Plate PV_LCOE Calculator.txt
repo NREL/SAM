@@ -324,6 +324,12 @@ c_tax_rate
 1
 1
 40.000000
+calculated_dcac_ratio
+1
+1
+1
+1
+1.200000
 capital_cost
 1
 1
@@ -586,12 +592,6 @@ periods
 3
 0.000000 0.000000 0.000000 
 
-dcac_ratio
-1
-1
-1
-1
-1.180690
 dcoptimizer_loss
 1
 1
@@ -617,6 +617,12 @@ elev
 1
 358.000000
 en_snow_model
+1
+1
+1
+1
+0.000000
+enable_auto_size
 1
 1
 1
@@ -1787,12 +1793,6 @@ shading_3d_scene
 1
 6
 0
-size_auto_or_manual
-1
-1
-1
-1
-0.000000
 sky_model
 1
 1

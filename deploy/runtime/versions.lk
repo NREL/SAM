@@ -50,16 +50,54 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
-version_upgrade{'2018.9.20'} = define() {
+version_upgrade{'2018.10.29'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Flat Plate PV')
 	{
 		//upgrades for the new way that auto-sizing works
-		autosize = oldvalue('size_auto_or_manual');
-		value('size_auto_or_manual', abs(1-autosize), 'Variables changed order.'); //size_auto_or_manual switched order
 		dcac_old = oldvalue('dcac_ratio');
 		value('desired_dcac_ratio', dcac_old, 'Renamed DC-AC Ratio input variable.');
-		
+		old_autosize = oldvalue('size_auto_or_manual');
+		if (old_autosize == 1) //specify desired array size
+			value('enable_auto_size', 0, 'Changed variable name and value for automatically sizing system.');
+		else if (old_autosize == 0) //auto-size in old version
+		{
+			//get previous system configuration
+			desired_size = value('desired_size');
+			desired_dcac_ratio = dcac_old;
+			old_calculated_size = value('system_capacity');
+			old_calculated_dcac_ratio = old_calculated_size / value('total_inverter_capacity');
+			
+			//the new sizing algorithm hasn't changed except for the errors, so check those:
+			//if the auto-sizing calculation would now result in an error, turn off auto sizing and leave the old system config
+			if (abs(old_calculated_size - desired_size) / desired_size > 0.1 || abs(old_calculated_dcac_ratio - desired_dcac_ratio) / desired_dcac_ratio > 0.1)
+			{
+				value('enable_auto_size', 0, 'Changed the way SAM automatically sizes systems.');
+				message('We have updated the way that SAM automatically sizes systems in this version. We have used the same system configuration' 
+				' as was specified in your old file, but turned off automatic system sizing in this case because it did not result in the same system.'
+				' Please go to the System Design page if you wish to turn automatic system sizing on again.', 'warning');
+
+			}
+			//multiple subarrays not allowed with new auto-sizing
+			else if (value('subarray2_enable') == 1 || value('subarray3_enable') == 1 || value('subarray4_enable') == 1)
+			{
+				value('enable_auto_size', 0, 'Changed the way SAM automatically sizes systems.');
+				message('We have updated the way that SAM automatically sizes systems in this version. We have used the same system configuration' 
+				' as was specified in your old file, but turned off automatic system sizing in this case because the new automatic system sizing'
+				' algorithms no longer work with multiple subarrays. Please go to the System Design page if you wish to turn automatic system sizing on again.', 'warning');
+			}
+	
+			//if auto-sizing doesn't result in an error, turn it on
+			else
+				value('enable_auto_size', 1, 'Changed variable name and value for automatically sizing system.');
+		}
+	}
+};
+
+version_upgrade{'2018.9.20'} = define() {
+	const cfg = config();
+	if (cfg.tech == 'Flat Plate PV')
+	{
 		//upgrades for multiple MPPT inverters
 		x = oldvalue('modules_per_string');
 		value('subarray1_modules_per_string', x, 'Variable change to be able to model different numbers of modules per string between subarrays.');
@@ -69,10 +107,11 @@ version_upgrade{'2018.9.20'} = define() {
 				value('subarray' + to_string(i) +'_modules_per_string', x, 'Variable change to be able to model different numbers of modules per string between subarrays.');
 		}
 		
+		/*
 		//message that we got rid of auto sizing
 		if (oldvalue('size_auto_or_manual') == 0)
 			message('We have removed the option for SAM to automatically size your system using the "Specify desired array size" '
-			'option on the System Design page. Please see Help on the System Design page for more details.', 'warning');
+			'option on the System Design page. Please see Help on the System Design page for more details.', 'warning');*/
 		
 		//bug fix for multiple subarrays with unequal numbers of strings
 		if (value('num_enabled') > 1)
@@ -182,7 +221,7 @@ version_upgrade{'2018.9.20'} = define() {
 
 version_upgrade{'2018.8.29'} = define() {
 	const cfg = config();
-
+	
 	// solar resource
 	solar_resource_techs = 'Flat Plate PV,PVWatts,High-X Concentrating PV,Biopower,'
 	                     + 'Geothermal Power,Solar Water Heating,Physical Trough,'
