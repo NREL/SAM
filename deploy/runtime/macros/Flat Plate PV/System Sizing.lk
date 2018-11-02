@@ -10,7 +10,7 @@
 <p>&nbsp;</p>
 <div align=center>
 <table bgcolor=#ffffa5 width=80% cellpadding=5>
-<tr><td><strong>Note.</strong> If you use the <strong>Specify desired array size</strong> option to size the system, this macro changes the option to <strong>Specify modules and inverters</strong> so that you can make any recommended adjustments.</td></tr>
+<tr><td><strong>Note.</strong> If you select the <strong>Have SAM try to automatically size the system</strong> option in the System Design page, this macro assumes the system only has a <b>single</b> subarray.</td></tr>
 </table>
 </div>
 @*/
@@ -27,6 +27,10 @@ if ( typeof(macro) == 'unknown' ) {
 	msgbox('This macro must be run from within a case.');
 	exit;
 }
+
+//Max number of subarrays allowed in SAM:
+max_subarrays = 4;
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // Functions
@@ -364,7 +368,6 @@ if ( financial )
 	analysis_period = get( 'analysis_period' );
  
 //Get configuration info of all subarrays 
-max_subarrays = 4;
 for(i = 0; i < max_subarrays ; i++) {
 	modules_per_string[i] = get('subarray' + to_string(i + 1) + '_modules_per_string'); // need to calculate string voc, and pmp_string for number of strings suggestion (subarray 1)
 	strings_in_parallel[i] = get('subarray' + to_string(i + 1) + '_nstrings'); // calculate suggested number of strings in parallel to reduce power limiting (subarray 1)
@@ -520,22 +523,17 @@ if ( nameplate_dcac < dcac_min || nameplate_dcac > dcac_max )
 // check 2: modules per string based on temperature-adjusted voc
 modules_per_string_max = floor( inverter.vdcmax / voc_max_design );
 modules_per_string_min = ceil( inverter.vmppt_min / vmp_min_design );
-voc_ok[0] = true;
-voc_ok[1] = true;
-voc_ok[2] = true;
-voc_ok[3] = true;
 voc_system = true;
-if ( (voc_max_design * modules_per_string[0] ) > inverter.vdcmax ) // temperature adjusted array voc > inverter vdcmax 
-	voc_ok[0] = false;
-if ( (voc_max_design * modules_per_string[1] ) > inverter.vdcmax ) // temperature adjusted array voc > inverter vdcmax 
-	voc_ok[1] = false;
-if ( (voc_max_design * modules_per_string[2] ) > inverter.vdcmax ) // temperature adjusted array voc > inverter vdcmax 
-	voc_ok[2] = false;
-if ( (voc_max_design * modules_per_string[3] ) > inverter.vdcmax ) // temperature adjusted array voc > inverter vdcmax 
-	voc_ok[3] = false;
+for ( i = 0 ; i < max_subarrays ; i++) {
 	
-if(voc_ok[0] == false || voc_ok[1] == false || voc_ok[2] == false || voc_ok[3] == false )  
-	voc_system = false;
+	voc_ok[i] = true;
+	if ( (voc_max_design * modules_per_string[i] ) > inverter.vdcmax ) // temperature adjusted array voc > inverter vdcmax 
+		voc_ok[i] = false;
+	
+	if(voc_ok[i] == false) 
+		voc_system = false;
+
+}
 
 modules_same = [];
 modules_diff = [];
@@ -634,7 +632,7 @@ tabledata_params[6][0] = 'Module Voc temperature coefficient, &beta;Voc (%/&deg;
 tabledata_params[6][1] = module.bvoc;
 tabledata_params[7][0] = 'Module Pmp temperature coefficient, &gamma;Pmp (%/&deg;C)';
 tabledata_params[7][1] = module.gpmp;
-tabledata_params[8][0] = 'Ambient temperature range from weather file, Tamb_min &ndash; Tamb_max (&deg;C)';
+tabledata_params[8][0] = 'Ambient temperature range from weather file, T<sub>amb_min</sub> &ndash; T<sub>amb_max</sub> (&deg;C)';
 tabledata_params[8][1] = [ t_dry_min , t_dry_max ];
 tabledata_params[9][0] = 'Maximum design ambient temperature, Tmax (&deg;C)';
 tabledata_params[9][1] = macro.t_max;
@@ -809,19 +807,20 @@ str += ' modules to a 3% worst-case scenario.</p>';
 
 str += '<h2>Tips for System Sizing</h2>';
 
-str += '<p>The nameplate DC/AC ratio of your system is ' + num_to_str( nameplate_dcac, 1 ) + '.';
+str += '<p>The nameplate DC/AC ratio of your system is ' + num_to_str( nameplate_dcac, 2 ) + '.';
+
 if (dcac_ok)
-	str += ' This is within the reasonable range of ' + dcac_min + ' &ndash; ' + dcac_max + '. Some designs use DC/AC ratios of up to 1.5.';
-else if (get('dcac_ratio') < dcac_min)
+	str += ' This is within the reasonable range of ' + num_to_str( dcac_min , 2 ) + ' &ndash; ' + num_to_str( dcac_max , 2 ) + '. Some designs use DC/AC ratios of up to 1.5.';
+elseif (get('calculated_dcac_ratio') < dcac_min)
 {
 	
-	str += ' This is below the acceptable range of ' + dcac_min + ' &ndash; ' + dcac_max;
+	str += ' This is below the acceptable range of ' + num_to_str( dcac_min , 2 ) + ' &ndash; ' + num_to_str( dcac_max , 2 );
 	str += '. Consider <b> increasing</b> the number of strings in parallel in the active subarrays in your system. Alternatively, consider <b>removing</b> some inverters from the system.';
 //	str += ' to ' + strings_in_parallel_new + ' to resolve this issue.';		//Does not apply incase of multiple subarrays
 }
-else // if (get('dcac_ratio') > dcac_max)
+else //if (get('dcac_ratio') > dcac_min) 
 {
-	str += ' This is over the acceptable range of ' + dcac_min + ' &ndash; ' + dcac_max;
+	str += ' This is over the acceptable range of ' + num_to_str( dcac_min , 2 ) + ' &ndash; ' + num_to_str( dcac_max , 2 );
 	str += '. Consider <b>reducing</b> the number of strings in parallel in the active subarrays in your system. Alternatively, consider <b>adding</b> more inverters to the system.';
 //	str += ' to ' + strings_in_parallel_new + ' to resolve this issue.';		//Does not apply incase of multiple subarrays
 }
