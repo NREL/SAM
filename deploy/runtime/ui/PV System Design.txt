@@ -1101,8 +1101,8 @@ Numeric
 16
 Name
 5
-10
-dcac_ratio
+21
+calculated_dcac_ratio
 X
 3
 150
@@ -1269,6 +1269,36 @@ BackColour
 255
 255
 255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+8
+Name
+5
+16
+enable_auto_size
+X
+3
+24
+Y
+3
+129
+Width
+3
+268
+Height
+3
+24
+Caption
+5
+45
+Have SAM try to automatically size the system
+State
+2
+1
 TabOrder
 3
 4294967295
@@ -1684,36 +1714,6 @@ BackColour
 TabOrder
 3
 22
-CheckBox
-
-1
-8
-Name
-5
-19
-size_auto_or_manual
-X
-3
-24
-Y
-3
-129
-Width
-3
-268
-Height
-3
-24
-Caption
-5
-45
-Have SAM try to automatically size the system
-State
-2
-1
-TabOrder
-3
-4294967295
 Label
 
 1
@@ -5215,7 +5215,7 @@ Battery
 1
 0.000000
 Numeric
-dcac_ratio
+calculated_dcac_ratio
 3
 1
 DC to AC ratio
@@ -5257,6 +5257,20 @@ PV System Design
 1
 100.000000
 Numeric
+enable_auto_size
+3
+1
+Sizing Mode: Auto or Manual
+ 
+PV System Design
+0
+1
+1
+1
+1
+1
+0.000000
+Default
 inv_num_mppt
 3
 1
@@ -5363,20 +5377,6 @@ m
 PV System Design
 0
 0
-1
-1
-1
-1
-0.000000
-Default
-size_auto_or_manual
-3
-1
-Sizing Mode: Auto or Manual
- 
-PV System Design
-0
-1
 1
 1
 1
@@ -6335,10 +6335,10 @@ PV System Design
 0.000000
 Numeric
 
-11383
+11477
 equations{ '$MIMO$ pv_size_array' } = define()
 {
-	if (${size_auto_or_manual}==1)
+	if (${enable_auto_size}==1)
 	{
 		//disable subarrays 2-4- this only works for a single subarray
 		${subarray2_enable} = 0;
@@ -6456,7 +6456,7 @@ equations{ 'total_module_area' } = define() {
 	return ${total_area};
 };
 
-equations{ 'dcac_ratio' } = define() {
+equations{ 'calculated_dcac_ratio' } = define() {
 	return ${system_capacity} /${total_inverter_capacity} ;
 };
 
@@ -6609,7 +6609,10 @@ equations{ 'num_enabled' } = define() {
 	return 1+${subarray2_enable}+${subarray3_enable}+${subarray4_enable}; };
 
 equations{ 'num_strings_total' } = define() {
-	return ${subarray1_nstrings} + ${subarray2_nstrings} + ${subarray3_nstrings} + ${subarray4_nstrings}; };
+	return ${subarray1_nstrings} 
+		+ (?${subarray2_enable}[0,${subarray2_nstrings}])
+		+ (?${subarray3_enable}[0,${subarray3_nstrings}])
+		+ (?${subarray4_enable}[0,${subarray4_nstrings}]) ; };
 
 equations{ 'total_land_area' } = define() {
 	area = ?${module_model}
@@ -6721,7 +6724,7 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-7329
+7320
 //show warning about MPPT input number
 function mppt_warning()
 {
@@ -6767,7 +6770,7 @@ function mppt_enable_subarrays()
 //shows or hides all subarray inputs, to be used when subarrays are enabled or disabled
 function sysdesign_show_hide_subarray_inputs( isub, en)
 {
-	auto_size = (value('size_auto_or_manual') == 1);
+	auto_size = (value('enable_auto_size') == 1);
 	prefix = "subarray" + to_string(isub) + "_";
 	all_subarray_variables = [		
 		"azimuth",
@@ -6833,7 +6836,7 @@ function sysdesign_show_hide_subarray_inputs( isub, en)
 
 function show_hide_inputs_auto_size() 
 {
-	if (value('size_auto_or_manual') == 0)
+	if (value('enable_auto_size') == 0)
 	{
 		enable('inverter_count', 1);
 		show('sizing_instructions', 1);
@@ -6890,7 +6893,7 @@ on_load{'PV System Design'} = define()
 
 on_change{'btn_set_subarrays'} = define() { mppt_enable_subarrays(); };
 
-on_change{'size_auto_or_manual'} = define() { show_hide_inputs_auto_size(); };
+on_change{'enable_auto_size'} = define() { show_hide_inputs_auto_size(); };
 
 on_change{'subarray2_enable'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
 on_change{'subarray3_enable'} = define() { sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') ); };
