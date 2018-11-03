@@ -1,7 +1,7 @@
 CEC Performance Model with Module Database
-1019
-1084
-54
+1014
+1114
+55
 GroupBox
 
 1
@@ -69,7 +69,7 @@ X
 9
 Y
 3
-984
+1008
 Width
 3
 1000
@@ -102,7 +102,7 @@ Width
 1000
 Height
 3
-80
+107
 Caption
 5
 21
@@ -204,7 +204,7 @@ X
 18
 Y
 3
-1047
+1071
 Width
 3
 917
@@ -280,7 +280,7 @@ X
 18
 Y
 3
-1005
+1029
 Width
 3
 923
@@ -2484,6 +2484,51 @@ Fields
 5
 181
 Name,Technology,Bifacial,STC,PTC,A_c,Length,Width,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,T_NOCT,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_r,BIPV,Version,Date
+Label
+
+1
+12
+Name
+5
+8
+object 7
+X
+3
+15
+Y
+3
+978
+Width
+3
+924
+Height
+3
+24
+Caption
+5
+124
+The model assumes a reference bandgap voltage Eg_ref = 1.121 eV, and temperature coefficient for bandgap of -0.0002677 eV/K.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Plot
 
 1
@@ -2560,7 +2605,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 beta_oc_calc
 3
@@ -2574,7 +2619,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_a_ref
 3
@@ -2588,7 +2633,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_adjust
 3
@@ -2602,7 +2647,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Default
 cec_alpha_sc
 3
@@ -2616,7 +2661,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_area
 3
@@ -2630,7 +2675,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_array_cols
 3
@@ -2644,7 +2689,7 @@ PV Module (CEC Database)
 1
 1
 1
-10.000000
+10
 Numeric
 cec_array_rows
 3
@@ -2658,7 +2703,7 @@ PV Module (CEC Database)
 1
 1
 1
-1.000000
+1
 Numeric
 cec_backside_temp
 3
@@ -2672,7 +2717,7 @@ PV Module (CEC Database)
 1
 1
 1
-20.000000
+20
 Numeric
 cec_beta_oc
 3
@@ -2686,7 +2731,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_bifacial_ground_clearance_height
 3
@@ -2700,7 +2745,7 @@ PV Module (CEC Database)
 1
 1
 1
-1.000000
+1
 Numeric
 cec_bifacial_transmission_factor
 3
@@ -2714,7 +2759,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.013000
+0.013
 Default
 cec_bifaciality
 3
@@ -2728,7 +2773,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.650000
+0.65
 Default
 cec_eff
 3
@@ -2742,7 +2787,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_gamma_r
 3
@@ -2756,7 +2801,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_gap_spacing
 3
@@ -2770,7 +2815,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.050000
+0.05
 Numeric
 cec_heat_transfer
 3
@@ -2785,7 +2830,7 @@ Module Dimensions|Array Dimensions
 1
 1
 1
-0.000000
+0
 Choice
 cec_height
 3
@@ -2800,7 +2845,7 @@ One story building height or lower|Two story building height or higher
 1
 1
 1
-0.000000
+0
 Choice
 cec_i_l_ref
 3
@@ -2814,7 +2859,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_i_mp_ref
 3
@@ -2828,7 +2873,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_i_o_ref
 3
@@ -2842,7 +2887,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_i_sc_ref
 3
@@ -2856,7 +2901,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_is_bifacial
 3
@@ -2870,7 +2915,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Default
 cec_material
 3
@@ -2897,7 +2942,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_module_width
 3
@@ -2911,7 +2956,7 @@ PV Module (CEC Database)
 1
 1
 1
-1.000000
+1
 Numeric
 cec_mounting_config
 3
@@ -2926,7 +2971,7 @@ Rack|Flush|Integrated|Gap
 1
 1
 1
-0.000000
+0
 Choice
 cec_mounting_orientation
 3
@@ -2941,7 +2986,7 @@ Structures do not impede flow underneath module|Vertical Supporting Structures|H
 1
 1
 1
-0.000000
+0
 Choice
 cec_n_s
 3
@@ -2955,7 +3000,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_p_mp_ref
 3
@@ -2969,7 +3014,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_r_s
 3
@@ -2983,7 +3028,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_r_sh_ref
 3
@@ -2997,7 +3042,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_standoff
 3
@@ -3012,7 +3057,7 @@ Building integrated|Greater than 3.5 in|2.5-3.5 in|1.5-2.5 in|0.5-1.5 in|Less th
 1
 1
 1
-6.000000
+6
 Choice
 cec_t_noct
 3
@@ -3026,7 +3071,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_temp_corr_mode
 3
@@ -3041,7 +3086,7 @@ Nominal operating cell temperature (NOCT) method|Heat transfer method
 1
 1
 1
-0.000000
+0
 RadioChoice
 cec_v_mp_ref
 3
@@ -3055,7 +3100,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 cec_v_oc_ref
 3
@@ -3069,7 +3114,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 gamma_r_calc
 3
@@ -3083,7 +3128,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 lbl_bifacial
 3
@@ -3109,7 +3154,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.000000
+0
 Default
 module_name
 3
