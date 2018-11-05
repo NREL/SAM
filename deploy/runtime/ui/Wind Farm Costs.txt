@@ -24,7 +24,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -84,7 +84,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -145,7 +145,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -206,7 +206,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1023,7 +1023,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1082,7 +1082,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1182,7 +1182,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1241,7 +1241,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1300,7 +1300,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1360,7 +1360,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1420,7 +1420,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1481,7 +1481,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1541,7 +1541,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1602,7 +1602,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1663,7 +1663,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2041,7 +2041,22 @@ equations { 'sales_tax_total' } = define() {
 		${sales_tax_basis} * 0.01 * ${sales_tax_rate};
 };
 
-13788
+14149
+on_change{'install_type'} = define()
+{
+	if (value('wind.turbine.radio_list_or_design') == 0) // library turbine
+	{
+		kw_rating = value('wind_turbine_kw_rating');
+		if ( kw_rating >= 1000) //utility scale onshore turbine, 1 MW or greater
+		{
+			if (value('install_type') == 1)
+				value('om_capacity',  [144]);
+			else
+				value('om_capacity', [44]);
+		}
+	}
+};
+
 on_change{'btn_est_turbine_cost'} = define() 
 {
 	if (value('install_type') == 1) //offshore installation
