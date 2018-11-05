@@ -846,7 +846,7 @@ Dish Stirling Engine
 1
 1
 1
-0.000019
+1.94116e-05
 Default
 Beale_fourth_coef
 3
@@ -874,7 +874,7 @@ Dish Stirling Engine
 1
 1
 1
--0.000000
+-3.18449e-10
 Default
 Beale_third_coef
 3

@@ -263,7 +263,7 @@ Height
 24
 Value
 1
-0.000000
+1e-10
 Mode
 3
 1

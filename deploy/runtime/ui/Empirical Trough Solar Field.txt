@@ -2667,7 +2667,7 @@ Empirical Trough Solar Field
 1
 1
 1
--0.000017
+-1.683e-05
 Numeric
 SfPipeHl3
 3
@@ -2681,7 +2681,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.000000
+6.78e-08
 Numeric
 SfPipeHl300
 3

@@ -2426,7 +2426,7 @@ IEC-68153 PV Module Model
 1
 1
 1
--0.000091
+-9.1e-05
 Numeric
 sd11par_Egref
 3
@@ -2482,7 +2482,7 @@ IEC-68153 PV Module Model
 1
 1
 1
-0.000000
+2.08522e-09
 Numeric
 sd11par_Isc0
 3
