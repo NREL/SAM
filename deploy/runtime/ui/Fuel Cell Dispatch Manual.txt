@@ -3703,7 +3703,7 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-6517
+6481
 on_load{'Fuel Cell Dispatch Manual'}=define()
 {	
 	show_label();
@@ -3798,7 +3798,6 @@ function toggle_dispatch()
 	}
 	else {
 		if (mode == 4 && fc_mode != 2){
-			${fuelcell_dispatch_choice} = 2;
 			enable_manual_inputs(true, true, true, true, true);
 			toggle_discharge_percent();
 			toggle_gridcharge_percent();

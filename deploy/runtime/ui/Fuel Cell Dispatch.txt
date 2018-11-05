@@ -364,17 +364,14 @@ Allowed to shutdown|Idle at min power
 RadioChoice
 
 0
-567
+508
 function fuelcell_message()
 {
 	mode = ${batt_dispatch_choice};
 	fc_mode = ${fuelcell_dispatch_choice};
 	
 	showMsg = false;
-	if (mode == 4 && fc_mode != 2){
-		showMsg = true;
-	}
-	else if (fc_mode == 2 && mode != 4){
+	if (fc_mode == 2 && mode != 4){
 		showMsg = true;
 	}
 	show('fuelCellMessage', showMsg);
