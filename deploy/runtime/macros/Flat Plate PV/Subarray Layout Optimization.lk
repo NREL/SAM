@@ -148,7 +148,7 @@ else {
 	elseif ( time_simulation_min == 0 && (time_simulation_sec / 10) > 1) 
 		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 00:" + time_simulation_sec + " seconds to complete. Proceed?");
 	elseif ( time_simulation_min < 10 && (time_simulation_sec / 10) < 1)
-		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 0:0" + time_simulation_sec + " minute(s) to complete. Proceed?");
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 0" + time_simulation_min + ":0" + time_simulation_sec + " minute(s) to complete. Proceed?");
 	elseif ( time_simulation_min < 10 && (time_simulation_sec / 10) > 1)
 		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 0" + time_simulation_min + ":" + time_simulation_sec + " minute(s) to complete. Proceed?");
 	elseif ( time_simulation_min > 10 && (time_simulation_sec / 10) < 1)
