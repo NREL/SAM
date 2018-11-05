@@ -240,6 +240,7 @@ version_upgrade{'2018.8.29'} = define() {
 
 		library = csvread( userlocaldatadir() + '/SolarResourceData.csv', { 'table' = true } );
 		wf_in_lib = ( library{'Name'} ?@ value( 'solar_resource' ) ) > -1;
+		first_wf_in_lib = library{'Name'}[3];
 		download_ok = false;
 
 		if ( value('use_specific_weather_file') == 1 ) // file was user specified file
@@ -267,11 +268,11 @@ version_upgrade{'2018.8.29'} = define() {
 				libkey = mid(libkey,0,#libkey-4);		
 				value( 'solar_resource', libkey );
 			}	
-			else // user chose not to add folder, so set to default Arizona file
+			else // user chose not to add folder, so set to first file in library
 			{
-				msgbox( 'Setting weather file to default file for Phoenix, Arizona.\nUse the tools on the Solar Resource page to download '
-					    + 'or choose a different file.');
-				value( 'solar_resource', 'phoenix_az_33.448377_-112.074037_psmv3_60_tmy' );	    
+				msgbox( 'Setting weather file to the first file in your solar resource library.\nUse the tools on the Solar Resource page to download '
+					    + 'or choose a different file.\n\n' + first_wf_in_lib);
+				value( 'solar_resource', first_wf_in_lib );	    
 			}
 		}
 		elseif ( wf_in_lib )
@@ -296,8 +297,8 @@ version_upgrade{'2018.8.29'} = define() {
 			url += '&&mailing_list=false';
 			url += '&&reason=SAM';
 			url += '&&interval=60';
-
-			//url += '&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed'; //SEE NSRDB.CPP 
+			
+			url +='&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo';
 			url += '&&utc=false';
 			url += '&&leap_day=false';
 			url += '&&names=tmy';
@@ -326,10 +327,12 @@ version_upgrade{'2018.8.29'} = define() {
 				ok = curl( url , { 'file'= fname } ); // curl() should automatically replace <SAMAPI> and <USEREMAIL > with values from private.h
 
 				// rudimentary check that downloaded weather file is valid
-				test = csvread( fname );
 				if ( ok )
-					if ( #test > 10 ) // valid file has more than 10 rows
-						download_ok = true;
+				{
+					test = csvread( fname );
+					if ( test != null )
+						if ( #test > 10 ) download_ok = true;// valid file has more than 10 rows
+				}			
 
 				// if file was downloaded refresh solar resource library and update value
 				if ( download_ok )
@@ -340,24 +343,25 @@ version_upgrade{'2018.8.29'} = define() {
 					message( 'New weather file downloaded for ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) +
 							' degrees E and added to solar resource library:\n' + file_only(fname) );
 				}
-				else // download failed, set library to default Phoenix file
+				else // download failed, set library to first file
 				{
 					remove_file( fname );
 					msgbox('Failed to download new weather file!\nA weather file for your '
 							+ 'location at ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) 
 							+ ' degrees E may not be available from the NSRDB, or the NSRDB '
-							+ 'service may be down. \n\nSetting weather file to default for '
-							+ 'Phoenix, Arizona. Use the tools on the Solar Resource page to download '
-							+ 'or choose a different file later.');
-					value( 'solar_resource', 'phoenix_az_33.448377_-112.074037_psmv3_60_tmy' );	    
+							+ 'service may be down.\n\nPlease contact sam.support@nrel.gov for help with your weather file.\n\n'
+							+ 'Setting weather file to first file in your solar resource '
+							+ 'library. Use the tools on the Solar Resource page to download '
+							+ 'or choose a different file later.\n\n' + first_wf_in_lib );
+					value( 'solar_resource', first_wf_in_lib );	    
 					message('Failed to download new weather file for ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) + ' degrees E. A weather file for that location may not be available from the NSRDB, or the NSRDB service may be down. Use the tools on the Solar Resource page to download or choose a weather file.');
 				}
 			}
-			else // user chose not to download replacement file, set library to default Phoenix file
+			else // user chose not to download replacement file, set library to first file
 			{
-				msgbox( 'Setting weather file to default for Phoenix, Arizona.\nUse the tools on the Solar Resource page to download '
-					    + 'or choose a different file.');
-				value( 'solar_resource', 'phoenix_az_33.448377_-112.074037_psmv3_60_tmy' );	    
+				msgbox( 'Setting weather file to first weather file in your solar resource library.\nUse the tools on the Solar Resource page to download '
+					    + 'or choose a different file.\n\n' + first_wf_in_lib);
+				value( 'solar_resource', first_wf_in_lib );	    
 			}
 		}
 	}
