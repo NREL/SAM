@@ -1,7 +1,7 @@
 Fuel Cell Dispatch
 998
 169
-7
+8
 Divider
 
 1
@@ -135,6 +135,51 @@ Caption
 19
 Fuel Cell Operation
 Bold
+2
+1
+Label
+
+1
+12
+Name
+5
+15
+fuelCellMessage
+X
+3
+333
+Y
+3
+108
+Width
+3
+315
+Height
+3
+45
+Caption
+5
+82
+Both fuel cell and storage dispatch must be set to manual to enable manual control
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 RadioChoice
@@ -319,11 +364,34 @@ Allowed to shutdown|Idle at min power
 RadioChoice
 
 0
-214
+567
+function fuelcell_message()
+{
+	mode = ${batt_dispatch_choice};
+	fc_mode = ${fuelcell_dispatch_choice};
+	
+	showMsg = false;
+	if (mode == 4 && fc_mode != 2){
+		showMsg = true;
+	}
+	else if (fc_mode == 2 && mode != 4){
+		showMsg = true;
+	}
+	show('fuelCellMessage', showMsg);
+	refresh();
+}
 on_load{'Fuel Cell Dispatch'} = define() {
 	on_change{'fuelcell_dispatch_choice'}(); 
+	toggle_dispatch();
+	fuelcell_message();
 };
 on_change{'fuelcell_dispatch_choice'} = define(){
 
 	enable('fuelcell_fixed_pct', value('fuelcell_dispatch_choice') == 0);
+	fuelcell_message();
 }; 
+
+
+
+
+

@@ -1350,13 +1350,13 @@ Name
 batt_manual_dispatch_label
 X
 3
-702
+621
 Y
 3
 30
 Width
 3
-252
+333
 Height
 3
 45
@@ -1395,13 +1395,13 @@ Name
 batt_manual_dispatch_label_fom
 X
 3
-783
+621
 Y
 3
 108
 Width
 3
-174
+336
 Height
 3
 132
@@ -3703,12 +3703,13 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-5956
-on_load{'Battery Dispatch Manual'}=define()
+6517
+on_load{'Fuel Cell Dispatch Manual'}=define()
 {	
 	show_label();
 	toggle_dispatch();
-		
+	
+	
 	on_change{'pv.storage.p1.discharge'};
 	on_change{'pv.storage.p2.discharge'};
 	on_change{'pv.storage.p3.discharge'};
@@ -3781,37 +3782,42 @@ function toggle_dispatch()
 {
 	allow_grid_charge = true;
 	allow_pv_charge = true;
+	allow_fc_charge = true;
 	allow_discharge = true;
 	
-	front_of_meter = !behind_the_meter();
-	if (front_of_meter == true)
-	{
-		mode = ${batt_dispatch_choice};
-		if (mode == 4)
-		{
-			allow_grid_charge = true;
-			enable_manual_inputs(true, allow_pv_charge, allow_grid_charge, allow_discharge);
-			toggle_discharge_percent();
-			toggle_gridcharge_percent();
-		}
-		else
-			enable_manual_inputs(false, false, false, false);
-	}
-	else
-	{
-		mode = ${batt_dispatch_choice};
+	btm = behind_the_meter();
+	mode = ${batt_dispatch_choice};
+	fc_mode = ${fuelcell_dispatch_choice};
 
-		if (mode != 4)
-			enable_manual_inputs(false, false, false, false);
-		else
-		{
-			enable_manual_inputs(true, allow_pv_charge, allow_grid_charge, allow_discharge );
+	if (mode == 4 && fc_mode == 2)
+	{
+		allow_grid_charge = true;
+		enable_manual_inputs(true, allow_pv_charge, allow_fc_charge, allow_grid_charge, allow_discharge);
+		toggle_discharge_percent();
+		toggle_gridcharge_percent();
+	}
+	else {
+		if (mode == 4 && fc_mode != 2){
+			${fuelcell_dispatch_choice} = 2;
+			enable_manual_inputs(true, true, true, true, true);
 			toggle_discharge_percent();
 			toggle_gridcharge_percent();
 		}
-		toggle_dispatch_target();
-		toggle_custom_dispatch();
+		else if (mode != 4 && fc_mode == 2){
+			${fuelcell_dispatch_choice} = 0;
+			enable_manual_inputs(false, false, false, false, false);
+		}
+		else if (btm)
+		{
+			enable_manual_inputs(false, false, false, false, false);
+			toggle_dispatch_target();
+			toggle_custom_dispatch();	
+		}
+		else {
+			enable_manual_inputs(false, false, false, false, false);
+		}
 	}
+	fuelcell_message();
 }
 function toggle_dispatch_target()
 {
@@ -3855,6 +3861,15 @@ function enable_pv_charge(on_off)
 	enable('pv.storage.p5.charge',on_off);
 	enable('pv.storage.p6.charge',on_off);
 }
+function enable_fc_charge(on_off)
+{
+	enable('fc.storage.p1.charge',on_off);
+	enable('fc.storage.p2.charge',on_off);
+	enable('fc.storage.p3.charge',on_off);
+	enable('fc.storage.p4.charge',on_off);
+	enable('fc.storage.p5.charge',on_off);
+	enable('fc.storage.p6.charge',on_off);
+}
 function enable_discharge(on_off)
 {
 	enable('pv.storage.p1.discharge',on_off);
@@ -3871,9 +3886,10 @@ function enable_discharge(on_off)
 	enable('batt_discharge_percent_6',on_off);
 }
 
-function enable_manual_inputs(on_off, allow_pv_charge, allow_grid_charge, allow_discharge)
+function enable_manual_inputs(on_off, allow_pv_charge, allow_fc_charge, allow_grid_charge, allow_discharge)
 {
 	enable_pv_charge(allow_pv_charge);
+	enable_fc_charge(allow_fc_charge);
 	enable_grid_charge(allow_grid_charge);
 	enable_discharge(allow_discharge);
 	
