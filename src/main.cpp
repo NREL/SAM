@@ -116,6 +116,7 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2018, 11, 5 }, //Beta version for testing expires 11/5/2019
 		{ 2018, 10, 29 }, //Beta version for testing expires 10/29/2019
 		{ 2018, 10, 17 }, //Beta version for defaults expires 10/17/2019
 		{ 2018, 9, 20 }, //new version number for MPPT upgrades
