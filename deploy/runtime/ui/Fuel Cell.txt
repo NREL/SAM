@@ -582,8 +582,8 @@ Numeric
 16
 Name
 5
-23
-fuelcell_fuel_available
+26
+fuelcell_fuel_available_in
 X
 3
 168
@@ -641,8 +641,8 @@ Numeric
 16
 Name
 5
-19
-fuelcell_fuel_price
+22
+fuelcell_fuel_price_in
 X
 3
 168
@@ -725,45 +725,14 @@ Selection
 TabOrder
 3
 4294967295
-Choice
-
-1
-8
-Name
-5
-18
-fuelcell_lhv_units
-X
-3
-261
-Y
-3
-705
-Width
-3
-90
-Height
-3
-24
-Items
-6
-2
-Btu/lbm
-MJ/kg
-Selection
-3
-4294967295
-TabOrder
-3
-4294967295
 Numeric
 
 1
 16
 Name
 5
-28
-fuelcell_lower_heating_value
+15
+fuelcell_lhv_in
 X
 3
 168
@@ -812,6 +781,37 @@ BackColour
 255
 255
 255
+TabOrder
+3
+4294967295
+Choice
+
+1
+8
+Name
+5
+18
+fuelcell_lhv_units
+X
+3
+261
+Y
+3
+705
+Width
+3
+90
+Height
+3
+24
+Items
+6
+2
+Btu/lbm
+MJ/kg
+Selection
+3
+4294967295
 TabOrder
 3
 4294967295
@@ -1210,22 +1210,7 @@ Bold
 2
 1
 
-17
-fuelcell_available_units
-3
-1
-Available fuel units
- 
-Fuel Cell
-22
-Liters|kg|cubic meters
-1
-1
-1
-1
-1
-0.000000
-Choice
+20
 fuelcell_degradation
 3
 1
@@ -1301,27 +1286,64 @@ Quantity available
  
 Fuel Cell
 0
-0
+8
 1
 1
 1
 1
 10000.000000
 Numeric
+fuelcell_fuel_available_in
+3
+0
+Fuel available
+ 
+Fuel Cell
+0
+2
+1
+0
+Default
+fuelcell_fuel_available_units
+3
+1
+Available fuel units
+ 
+Fuel Cell
+22
+Liters|kg|cubic meters
+1
+1
+1
+1
+1
+0.000000
+Choice
 fuelcell_fuel_price
 3
 1
 Price
- 
+ $/MCf
 Fuel Cell
 0
-0
+8
 1
 1
 1
 1
 7.500000
 Numeric
+fuelcell_fuel_price_in
+3
+0
+Price
+ 
+Fuel Cell
+0
+2
+1
+0
+Default
 fuelcell_fuel_type
 3
 1
@@ -1337,6 +1359,31 @@ Natural Gas|Diesel
 1
 0.000000
 Choice
+fuelcell_lhv
+3
+1
+Lower Heating Value
+ MJ/kg
+Fuel Cell
+0
+8
+1
+1
+1
+1
+20267.000000
+Numeric
+fuelcell_lhv_in
+3
+0
+Lower Heating Value
+ MJ/kg
+Fuel Cell
+0
+2
+1
+0
+Default
 fuelcell_lhv_units
 3
 1
@@ -1352,20 +1399,6 @@ Btu/lbm|MJ/kg
 1
 0.000000
 Choice
-fuelcell_lower_heating_value
-3
-1
-Lower Heating Value
- 
-Fuel Cell
-0
-2
-1
-1
-1
-1
-20267.000000
-Numeric
 fuelcell_number_of_units
 3
 1
@@ -1467,7 +1500,53 @@ Fuel Cell
 20.000000
 Numeric
 
-0
+1012
+equations{ 'fuelcell_fuel_available'} = define(){
+	liter_per_m3 = 1000;
+	
+	// natural gas
+	kg_per_liter = 0.9/liter_per_m3; 
+	
+	// Diesel
+	if (${fuelcell_fuel_type} == 1){
+		kg_per_liter = 832/liter_per_m3;
+	}
+	
+	fuel_available = ${fuelcell_fuel_available_in};
+	
+	// Convert L to kg 
+	if (${fuelcell_available_units} == 0){
+		 fuel_available = fuel_available * kg_per_liter;
+	}
+	// Convert m3 to kg
+	else if (${fuelcell_available_units} == 2){
+		 fuel_available = fuel_available * kg_per_liter * liter_per_m3;
+	}
+	
+	return fuel_available;
+};
+
+equations{ 'fuelcell_fuel_price'} = define(){
+	fuel_price = ${fuelcell_fuel_price_in};
+	
+	// Convert $/MMBtu to $/MCF (1 MMBTu = 0.973 MCF)
+	if (${fuelcell_price_units} == 1){
+		fuel_price = fuel_price * 0.973;
+	}
+	
+	return fuel_price;
+};
+
+equations{ 'fuelcell_lhv'} = define(){
+	lhv = ${fuelcell_lhv_in};
+	
+	// Convert Btu/lbm to MJ/kg (1 Btu = 0.0011 MJ and 1 lbm = 0.453592 kg)
+	if (${fuelcell_lhv_units} == 0){
+		lhv = lhv * 0.0024250868622022;
+	}
+	
+	return lhv;
+};
 906
 on_load{'Fuel Cell'} = define() {
 	on_change{'fuelcell_efficiency'}(); 
