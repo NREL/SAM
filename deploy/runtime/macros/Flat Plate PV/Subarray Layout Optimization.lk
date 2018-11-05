@@ -143,7 +143,19 @@ else {
 	time_simulation = (elapsed_time()/1000) * ((max_gcr - min_gcr)/gcr_steps) * ((max_tilt - min_tilt) / tilt_steps) * timer * (1/60);		//Formula to estimate total time macro will take to complete if user is optimizing all active subarrays.
 	time_simulation_min = floor(time_simulation);
 	time_simulation_sec = floor((time_simulation - time_simulation_min) * 60);
-	continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take " + time_simulation_min + ":" + time_simulation_sec + " minute(s) to complete. Proceed?");
+	if ( time_simulation_min == 0 && (time_simulation_sec / 10) < 1)
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 00:0" + time_simulation_sec + " seconds to complete. Proceed?");
+	elseif ( time_simulation_min == 0 && (time_simulation_sec / 10) > 1) 
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 00:" + time_simulation_sec + " seconds to complete. Proceed?");
+	elseif ( time_simulation_min < 10 && (time_simulation_sec / 10) < 1)
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 0:0" + time_simulation_sec + " minute(s) to complete. Proceed?");
+	elseif ( time_simulation_min < 10 && (time_simulation_sec / 10) > 1)
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 0" + time_simulation_min + ":" + time_simulation_sec + " minute(s) to complete. Proceed?");
+	elseif ( time_simulation_min > 10 && (time_simulation_sec / 10) < 1)
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take " + time_simulation_min + ":0" + time_simulation_sec + " minute(s) to complete. Proceed?");
+	elseif ( time_simulation_min > 10 && (time_simulation_sec / 10) > 1)
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take " + time_simulation_min + ":" + time_simulation_sec + " minute(s) to complete. Proceed?");
+	
 	if (continue_macro == false) {
 		outln("\n	Consider reducing iterations of GCR and Tilt angle, or optimize over a single subarray instead for a quicker simulation.");
 		exit;
