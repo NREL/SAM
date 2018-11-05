@@ -3695,7 +3695,7 @@ Empirical Trough Parasitics
 1
 1
 1
-0.000011
+1.052e-05
 Numeric
 ui_par_sf_area
 3
@@ -3723,7 +3723,7 @@ Empirical Trough Parasitics
 1
 1
 1
-0.000000
+2.66e-07
 Numeric
 ui_par_tes_const
 3

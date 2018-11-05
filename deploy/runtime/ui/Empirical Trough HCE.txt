@@ -5708,7 +5708,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000006
+5.65e-06
 Numeric
 HCEA3_2
 3
@@ -5722,7 +5722,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000011
+1.13e-05
 Numeric
 HCEA3_3
 3
@@ -5736,7 +5736,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000019
+1.85e-05
 Numeric
 HCEA3_4
 3
@@ -5764,7 +5764,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+7.62e-08
 Numeric
 HCEA4_2
 3
@@ -5778,7 +5778,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+1.73e-07
 Numeric
 HCEA4_3
 3
@@ -5792,7 +5792,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000001
+6.89e-07
 Numeric
 HCEA4_4
 3
