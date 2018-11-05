@@ -3608,7 +3608,7 @@ permitting_per_watt
 1
 1
 1
-0.1
+0.11
 permitting_percent
 1
 1
