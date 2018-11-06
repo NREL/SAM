@@ -1,5 +1,5 @@
 1
-586
+589
 LeadAcid_q10
 1
 1
@@ -1638,14 +1638,16 @@ dispatch_manual_charge
 1
 2
 1
-1
-0.000000
+6
+1.000000 1.000000 1.000000 0.000000 0.000000 0.000000 
+
 dispatch_manual_discharge
 1
 2
 1
-1
-0.000000
+6
+0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 
+
 dispatch_manual_fuelcellcharge
 1
 0
@@ -1660,8 +1662,9 @@ dispatch_manual_percent_discharge
 1
 2
 1
-1
-0.000000
+2
+25.000000 0.000000 
+
 dispatch_manual_percent_gridcharge
 1
 2
@@ -1744,8 +1747,9 @@ dispatch_tod_factors
 1
 2
 1
-1
-0.000000
+9
+1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
+
 dscr
 1
 1
@@ -1919,12 +1923,6 @@ flip_target_year
 1
 1
 10.000000
-fuelcell_available_units
-1
-1
-1
-1
-0.000000
 fuelcell_degradation
 1
 1
@@ -1977,8 +1975,26 @@ fuelcell_fuel_available
 1
 1
 1
-10000.000000
+0.900000
+fuelcell_fuel_available_in
+1
+1
+1
+1
+1000.000000
+fuelcell_fuel_available_units
+1
+1
+1
+1
+0.000000
 fuelcell_fuel_price
+1
+1
+1
+1
+7.500000
+fuelcell_fuel_price_in
 1
 1
 1
@@ -1990,18 +2006,24 @@ fuelcell_fuel_type
 1
 1
 0.000000
+fuelcell_lhv
+1
+1
+1
+1
+49.149235
+fuelcell_lhv_in
+1
+1
+1
+1
+20267.000000
 fuelcell_lhv_units
 1
 1
 1
 1
 0.000000
-fuelcell_lower_heating_value
-1
-1
-1
-1
-20267.000000
 fuelcell_number_of_units
 1
 1
@@ -2431,7 +2453,7 @@ installed_per_capacity
 1
 1
 1
-nan
+5.521648
 insurance_rate
 1
 1
@@ -2455,7 +2477,7 @@ inverter_num_units
 1
 1
 1
-0.000000
+1.000000
 inverter_power
 1
 1
@@ -2467,13 +2489,13 @@ inverter_total
 1
 1
 1
-0.000000
+11833333.000000
 inverterarray_power
 1
 1
 1
 1
-0.000000
+16666.666016
 is_advanced
 1
 1
@@ -2813,7 +2835,7 @@ losses
 1
 1
 1
-14.000000
+14.075661
 losses_user
 1
 1
@@ -2864,7 +2886,7 @@ module_num_units
 1
 1
 1
-0.000000
+1.000000
 module_power
 1
 1
@@ -2876,7 +2898,7 @@ module_total
 1
 1
 1
-0.000000
+96800000.000000
 module_type
 1
 1
@@ -2894,7 +2916,7 @@ modulearray_power
 1
 1
 1
-0.000000
+20000.000000
 months_receivables_reserve
 1
 1
@@ -2912,7 +2934,7 @@ nominal_discount_rate
 1
 1
 1
-0.000000
+8.137500
 om_capacity
 1
 2
@@ -3188,7 +3210,7 @@ property_assessed_value
 1
 1
 1
-1799638.500000
+110432968.000000
 property_tax_rate
 1
 1
@@ -3481,7 +3503,7 @@ subtotal_direct
 1
 1
 1
-1799638.500000
+110432968.000000
 system_capacity
 1
 1
@@ -3532,7 +3554,7 @@ total_direct_cost
 1
 1
 1
-1799638.500000
+110432968.000000
 total_indirect_cost
 1
 1
@@ -3544,7 +3566,7 @@ total_installed_cost
 1
 1
 1
-1799638.500000
+110432968.000000
 tz
 1
 1
@@ -3556,7 +3578,7 @@ ui_wacc
 1
 1
 1
-0.000000
+4.068750
 use_specific_weather_file
 1
 1

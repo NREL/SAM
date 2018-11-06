@@ -272,38 +272,6 @@ AlignRight
 AlignTop
 2
 1
-Choice
-
-1
-8
-Name
-5
-24
-fuelcell_available_units
-X
-3
-261
-Y
-3
-759
-Width
-3
-90
-Height
-3
-24
-Items
-6
-3
-Liters
-kg
-Cubic meters
-Selection
-3
-4294967295
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -326,7 +294,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -385,7 +353,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -444,7 +412,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -598,7 +566,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -635,6 +603,38 @@ BackColour
 TabOrder
 3
 4294967295
+Choice
+
+1
+8
+Name
+5
+29
+fuelcell_fuel_available_units
+X
+3
+261
+Y
+3
+759
+Width
+3
+90
+Height
+3
+24
+Items
+6
+3
+L
+kg
+m3
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -657,7 +657,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -747,7 +747,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -837,7 +837,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -927,7 +927,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -986,7 +986,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1077,7 +1077,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1136,7 +1136,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1295,15 +1295,18 @@ Fuel Cell
 Numeric
 fuelcell_fuel_available_in
 3
-0
+1
 Fuel available
  
 Fuel Cell
 0
 2
 1
-0
-Default
+1
+1
+1
+1000.000000
+Numeric
 fuelcell_fuel_available_units
 3
 1
@@ -1335,15 +1338,18 @@ Fuel Cell
 Numeric
 fuelcell_fuel_price_in
 3
-0
+1
 Price
  
 Fuel Cell
 0
 2
 1
-0
-Default
+1
+1
+1
+7.500000
+Numeric
 fuelcell_fuel_type
 3
 1
@@ -1375,15 +1381,18 @@ Fuel Cell
 Numeric
 fuelcell_lhv_in
 3
-0
+1
 Lower Heating Value
  MJ/kg
 Fuel Cell
 0
 2
 1
-0
-Default
+1
+1
+1
+20267.000000
+Numeric
 fuelcell_lhv_units
 3
 1
@@ -1500,7 +1509,7 @@ Fuel Cell
 20.000000
 Numeric
 
-1012
+1022
 equations{ 'fuelcell_fuel_available'} = define(){
 	liter_per_m3 = 1000;
 	
@@ -1515,11 +1524,11 @@ equations{ 'fuelcell_fuel_available'} = define(){
 	fuel_available = ${fuelcell_fuel_available_in};
 	
 	// Convert L to kg 
-	if (${fuelcell_available_units} == 0){
+	if (${fuelcell_fuel_available_units} == 0){
 		 fuel_available = fuel_available * kg_per_liter;
 	}
 	// Convert m3 to kg
-	else if (${fuelcell_available_units} == 2){
+	else if (${fuelcell_fuel_available_units} == 2){
 		 fuel_available = fuel_available * kg_per_liter * liter_per_m3;
 	}
 	
