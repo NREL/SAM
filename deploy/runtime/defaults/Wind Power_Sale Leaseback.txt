@@ -2556,7 +2556,7 @@ install_type
 1
 1
 1
-1
+0
 insurance_cost
 1
 1
@@ -2887,7 +2887,7 @@ om_capacity
 2
 1
 1
-144
+44
 om_capacity_escal
 1
 1
