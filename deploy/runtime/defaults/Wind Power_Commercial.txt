@@ -1996,7 +1996,7 @@ install_type
 1
 1
 1
-1
+0
 insurance_cost
 1
 1
