@@ -2026,7 +2026,7 @@ desired_size
 1
 1
 1
-100
+18000
 developer_equity_percent
 1
 1
