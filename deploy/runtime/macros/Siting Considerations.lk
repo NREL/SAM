@@ -124,18 +124,17 @@ if (results == null)
 	exit;
 }
 
+
 //If there is an internal server error:
 server_error = results.error;
-if(server_error != 0) {
+if(server_error != null) {
 	if(server_error == 'Internal Server Error')
 		msgbox( server_error + ': Make sure the location is within the United States border.');
-	elseif (results.error.message != null)
-		msgbox(results.error.message);
 	else 
 		msgbox( server_error );
-
 	exit;
 }
+
 
 errors = results.errors;	//If there is no error message, then results.errors.message does not exist. In that case errors is <null> and use of the # operand on errors is illegal.
 if (#errors != 0)
