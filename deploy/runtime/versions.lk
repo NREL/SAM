@@ -91,6 +91,20 @@ version_upgrade{'2018.10.29'} = define() {
 			else
 				value('enable_auto_size', 1, 'Changed variable name and value for automatically sizing system.');
 		}
+		// battery model update dispatch
+		if (value('en_batt')){
+			finance = cfg.fin;
+			if (finance == "Residential" || finance == "Commercial" || finance == "Third Party"){
+				if (value('batt_dispatch_choice') == 3){
+					value('batt_dispatch_choice', 4);
+				}
+			}
+			else {
+				value('batt_dispatch_choice', 4);
+			}
+			message('We have updated the battery controller, which may result in different operational behavior than the previous version.' 
+				' Please check to ensure the battery still operates as you expect.', 'warning');
+		}
 	}
 };
 
