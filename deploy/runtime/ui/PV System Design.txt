@@ -141,8 +141,8 @@ Colour
 255
 Caption
 5
-52
-Electrical Sizing Information (See Help for Details)
+29
+Electrical Sizing Information
 Bold
 2
 1
@@ -1294,8 +1294,8 @@ Height
 24
 Caption
 5
-45
-Have SAM try to automatically size the system
+33
+Estimate Subarray 1 configuration
 State
 2
 1
