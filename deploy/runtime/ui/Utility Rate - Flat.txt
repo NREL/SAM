@@ -494,7 +494,7 @@ Net energy metering
 Net energy metering with $ credits
 Net billing
 Net billing with carryover to next month
-Buy all, sell all
+Buy all / sell all
 ShowCaptions
 2
 1
@@ -837,8 +837,8 @@ ur_metering_option
 Metering option
  
 Electricity Rates - General
-377
-Monthly total excess rolled over to next month bill in kWh|Monthly total excess credited to next month bill in $ at sell rate(s)|Cumulative hourly (subhourly) excess credited to current month bill in $ at sell rate(s)|Cumulative hourly (subhourly) excess credited to next month bill in $ at sell rate(s)|All generation sold at sell rate(s) and all load purchased at buy rate(s)
+127
+Net energy metering|Net energy metering with $ credits|Net billing|Net billing with carryover to next month| Buy all / sell all
 3
 1
 1
