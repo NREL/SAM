@@ -11,7 +11,8 @@ body, table, tr, th /* Normal */
 }
 span.f_CHCode /* CH Code */
 {
- font-family: Courier,monospace;
+ font-size: 12pt;
+ font-family: Consolas;
 }
 span.f_CHEquationVariable /* CH Equation Variable */
 {
@@ -196,6 +197,9 @@ span.f_TextCode /* Text Code */
 {
  font-family: Courier,monospace;
 }
+span.f_Tip /* Tip */
+{
+}
 span.f_Title /* Title */
 {
  font-family: Arial,Helvetica,sans-serif;
@@ -249,7 +253,7 @@ p, p.p_Normal, div.p_Normal, li.p_Normal /* Normal */
 }
 .p_CHCode /* CH Code */
 {
- font-size: 10pt;
+ font-size: 12pt;
 }
 .p_CHEquationVariable /* CH Equation Variable */
 {
@@ -530,6 +534,15 @@ p, p.p_Normal, div.p_Normal, li.p_Normal /* Normal */
  font-size: 10pt;
  margin: 0 0 6px 24px;
 }
+.p_Tip /* Tip */
+{
+ font-size: 10pt;
+ border-color: #000000;
+ border-style: double;
+ border-width: 2px;
+ padding: 5px 5px 5px 5px;
+ margin: 7px 91px 7px 91px;
+}
 .p_Title /* Title */
 {
  font-size: 10pt;
@@ -603,6 +616,19 @@ text-align: left;
 table.Default.No.Border th, table.Default.No.Border td {
 vertical-align: top;
 padding: 2px;
+}
+table.Default.Shaded.Rows {
+border: solid 2px #C0C0C0;
+border-spacing: 0;
+border-collapse: collapse;
+}
+table.Default.Shaded.Rows tr {
+text-align: left;
+}
+table.Default.Shaded.Rows th, table.Default.Shaded.Rows td {
+vertical-align: top;
+padding: 4px;
+border: solid thin #C0C0C0;
 }
 table.Topic.Status.Table {
 border: none;
