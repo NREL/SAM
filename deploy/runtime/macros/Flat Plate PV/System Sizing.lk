@@ -8,11 +8,7 @@
 <li>By default, the macro displays a report in a SAM window. If you want to export the report, choose Yes for <b>Show results in default browser?</b> to save the report as an HTML file and open it in your default browser. You can then use the browser's tools to export it to PDF or another format.
 </ol>
 <p>&nbsp;</p>
-<div align=center>
-<table bgcolor=#ffffa5 width=80% cellpadding=5>
-<tr><td><strong>Note.</strong> If you select the <strong>Have SAM try to automatically size the system</strong> option in the System Design page, this macro assumes the system only has a <b>single</b> subarray.</td></tr>
-</table>
-</div>
+
 @*/
 
 //@ name=dc_degradation;type=number;label=Annual DC degradation (%);value=0.5
