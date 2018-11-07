@@ -4906,7 +4906,7 @@ subarray2_modules_per_string
 1
 1
 1
-0
+1
 subarray2_monthly_tilt
 1
 2
@@ -4949,7 +4949,7 @@ subarray2_nstrings
 1
 1
 1
-0
+1
 subarray2_rear_irradiance_loss
 1
 1
@@ -5093,7 +5093,7 @@ subarray3_modules_per_string
 1
 1
 1
-0
+1
 subarray3_monthly_tilt
 1
 2
@@ -5136,7 +5136,7 @@ subarray3_nstrings
 1
 1
 1
-0
+1
 subarray3_rear_irradiance_loss
 1
 1
@@ -5280,7 +5280,7 @@ subarray4_modules_per_string
 1
 1
 1
-0
+1
 subarray4_monthly_tilt
 1
 2
@@ -5323,7 +5323,7 @@ subarray4_nstrings
 1
 1
 1
-0
+1
 subarray4_rear_irradiance_loss
 1
 1
