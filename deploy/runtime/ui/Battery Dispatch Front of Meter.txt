@@ -265,7 +265,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -647,7 +647,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -706,7 +706,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -978,7 +978,7 @@ Battery
 1
 1
 1
-100.000000
+100
 Numeric
 batt_custom_dispatch
 3
@@ -992,7 +992,7 @@ Battery
 2
 1
 1
-0.000000
+0
 Default
 batt_cycle_cost
 3
@@ -1006,7 +1006,7 @@ Battery
 1
 1
 1
-0.100000
+0.1
 Numeric
 batt_cycle_cost_choice
 3
@@ -1020,7 +1020,7 @@ Battery
 1
 1
 1
-0.000000
+0
 Choice
 batt_dispatch_auto_can_charge
 3
@@ -1034,7 +1034,7 @@ Battery
 1
 1
 1
-1.000000
+1
 CheckBox
 batt_dispatch_auto_can_clipcharge
 3
@@ -1048,7 +1048,7 @@ Battery
 1
 1
 1
-1.000000
+1
 CheckBox
 batt_dispatch_auto_can_gridcharge
 3
@@ -1062,7 +1062,7 @@ Battery
 1
 1
 1
-0.000000
+0
 CheckBox
 batt_dispatch_choice
 3
@@ -1077,7 +1077,7 @@ Automated dispatch: Perfect look ahead|Automated dispatch: 1-day look behind|Aut
 1
 1
 1
-0.000000
+0
 RadioChoice
 batt_dispatch_update_frequency_hours
 3
@@ -1091,7 +1091,7 @@ Battery
 1
 1
 1
-24.000000
+24
 Numeric
 batt_look_ahead_hours
 3
@@ -1105,7 +1105,7 @@ Battery
 1
 1
 1
-18.000000
+18
 Numeric
 batt_pv_clipping_forecast
 3
@@ -1119,7 +1119,7 @@ Battery
 2
 1
 1
-0.000000
+0
 Default
 batt_pv_dc_forecast
 3
@@ -1133,7 +1133,7 @@ Battery
 2
 1
 1
-0.000000
+0
 Default
 batt_user_specified_weather_file
 3
@@ -1152,14 +1152,14 @@ dispatch_tod_factors
 2
 PPA TOD factors
  
- 
+Battery
 0
 8
 1
 2
 1
 1
-0.000000
+0
 Default
 
 502

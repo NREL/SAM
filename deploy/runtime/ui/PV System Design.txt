@@ -5303,7 +5303,7 @@ Numeric
 layout_warning
 3
 4
- 
+PV layout warning message
  
 PV System Design
 0
@@ -5343,7 +5343,7 @@ Numeric
 num_enabled
 3
 1
- 
+Number of enabled subarrays
  
 PV System Design
 0
@@ -5560,7 +5560,7 @@ Numeric
 subarray1_tilt_eq_lat
 3
 1
- 
+Set tilt to latitude 1
  
 PV System Design
 0
@@ -5772,7 +5772,7 @@ Numeric
 subarray2_tilt_eq_lat
 3
 1
- 
+Set tilt to latitude 2
  
 PV System Design
 0
@@ -5984,7 +5984,7 @@ Numeric
 subarray3_tilt_eq_lat
 3
 1
- 
+Set tilt to latitude 3
  
 PV System Design
 0
@@ -6196,7 +6196,7 @@ Numeric
 subarray4_tilt_eq_lat
 3
 1
- 
+Set tilt to latitude 4
  
 PV System Design
 0

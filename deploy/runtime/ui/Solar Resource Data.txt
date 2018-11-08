@@ -82,7 +82,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -141,7 +141,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -200,7 +200,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -259,7 +259,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -318,7 +318,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -377,7 +377,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -436,7 +436,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -705,7 +705,7 @@ Height
 24
 Value
 1
-317.000000
+317
 Mode
 3
 1
@@ -1054,7 +1054,7 @@ Height
 24
 Value
 1
-1.100000
+1.1
 Mode
 3
 1
@@ -1246,7 +1246,7 @@ Height
 24
 Value
 1
-1.200000
+1.2
 Mode
 3
 1
@@ -1852,7 +1852,7 @@ Height
 24
 Value
 1
--7.500000
+-7.5
 Mode
 3
 1
@@ -1912,7 +1912,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -2004,7 +2004,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Default
 annual_beam
 3
@@ -2018,7 +2018,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 annual_diffuse
 3
@@ -2032,7 +2032,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 annual_global
 3
@@ -2046,7 +2046,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 annual_snow
 3
@@ -2060,7 +2060,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Default
 annual_tdry
 3
@@ -2074,7 +2074,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 annual_wspd
 3
@@ -2088,7 +2088,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 city
 3
@@ -2128,7 +2128,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 file_name
 3
@@ -2181,7 +2181,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Default
 in_nsrdb_options
 3
@@ -2195,7 +2195,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Choice
 in_time_step
 3
@@ -2209,7 +2209,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Default
 is_advanced
 3
@@ -2223,7 +2223,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Default
 lat
 3
@@ -2237,7 +2237,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 library_folder_list
 3
@@ -2275,7 +2275,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 solar_data_file_name
 3
@@ -2376,7 +2376,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 use_specific_weather_file
 3
@@ -2390,7 +2390,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Default
 user_specified_weather_file
 3
@@ -2416,7 +2416,7 @@ Location and Resource
 1
 1
 1
-8760.000000
+8760
 Default
 
 332
@@ -2432,7 +2432,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-19147
+19237
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2780,8 +2780,8 @@ nsrdb = define ( location )
 		msgbox( 'Failed to geocode address!\nThe address or latitude-longitude pair, \"' + location + '\", may be invalid, or SAM may be unable to connect to the internet.' );
 		msg = 'Failed to convert to latitude-longitude pair: \"' + location + '\". ';
 	}
-
-	return { 'name' = name , 'msg' = msg , 'url' = url , 'years' = years , 'ok' = geocode_ok && json_ok , 'lat' = g.lat, 'lon' = g.lon };
+	msgbox( '\ngeocode_ok = ' + geocode_ok + '\njson_ok = ' + json_ok );
+	return { 'name' = name , 'msg' = msg , 'url' = url , 'years' = years , 'ok' = ( geocode_ok == true ) && ( json_ok == true ) , 'lat' = g.lat, 'lon' = g.lon };
 };
 
 wf_check = define( wf )
@@ -3028,7 +3028,6 @@ nsrdb_get = define( )
 		msg += 'Click \"P50 P90\" and choose this folder for P50 P90 simulations.\n\n';
 		msg += 'TMY file downloaded to:\n  ' + default_download_path + '\n';
 		msg += 'and selected from library for simulation to compare to P50 result.\n\n';
-		
 	}
 	else
 		msg += 'Weather file(s) downloaded to:\n' + path + '.\n';
