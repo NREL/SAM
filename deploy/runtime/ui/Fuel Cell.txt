@@ -625,10 +625,11 @@ Height
 24
 Items
 6
-3
+4
 L
 kg
 m3
+MCf
 Selection
 3
 4294967295
@@ -806,9 +807,10 @@ Height
 24
 Items
 6
-2
+3
 Btu/lbm
 MJ/kg
+Btu/ft3
 Selection
 3
 4294967295
@@ -1283,7 +1285,7 @@ fuelcell_fuel_available
 3
 1
 Quantity available
- 
+ MCF
 Fuel Cell
 0
 8
@@ -1313,14 +1315,14 @@ fuelcell_fuel_available_units
 Available fuel units
  
 Fuel Cell
-22
-Liters|kg|cubic meters
+26
+Liters|kg|cubic meters|Mcf
 1
 1
 1
 1
 1
-0.000000
+3.000000
 Choice
 fuelcell_fuel_price
 3
@@ -1369,7 +1371,7 @@ fuelcell_lhv
 3
 1
 Lower Heating Value
- MJ/kg
+Btu/ft3
 Fuel Cell
 0
 8
@@ -1377,7 +1379,7 @@ Fuel Cell
 1
 1
 1
-20267.000000
+1033.000000
 Numeric
 fuelcell_lhv_in
 3
@@ -1399,14 +1401,14 @@ fuelcell_lhv_units
 Lower heating value units
  
 Fuel Cell
-13
-Btu/lbm|MJ/kg
+21
+Btu/lbm|MJ/kg|Btu/ft3
 1
 1
 1
 1
 1
-0.000000
+2.000000
 Choice
 fuelcell_number_of_units
 3
@@ -1509,9 +1511,10 @@ Fuel Cell
 20.000000
 Numeric
 
-1022
+1666
 equations{ 'fuelcell_fuel_available'} = define(){
 	liter_per_m3 = 1000;
+	MCF_per_liter = 28316.846592;
 	
 	// natural gas
 	kg_per_liter = 0.9/liter_per_m3; 
@@ -1523,14 +1526,19 @@ equations{ 'fuelcell_fuel_available'} = define(){
 	
 	fuel_available = ${fuelcell_fuel_available_in};
 	
-	// Convert L to kg 
+	// Convert L to MCF 
 	if (${fuelcell_fuel_available_units} == 0){
-		 fuel_available = fuel_available * kg_per_liter;
+		 fuel_available = fuel_available * MCF_per_liter;
 	}
-	// Convert m3 to kg
+	// Convert kg to MCF
+	else if (${fuelcell_fuel_available_units} == 1){
+		 fuel_available = (fuel_available/ kg_per_liter) * MCF_per_liter;
+	}
+	// Convert m3 to MCF
 	else if (${fuelcell_fuel_available_units} == 2){
-		 fuel_available = fuel_available * kg_per_liter * liter_per_m3;
+		 fuel_available = fuel_available * liter_per_m3 * kg_per_liter * MCF_per_liter;
 	}
+	
 	
 	return fuel_available;
 };
@@ -1548,12 +1556,27 @@ equations{ 'fuelcell_fuel_price'} = define(){
 
 equations{ 'fuelcell_lhv'} = define(){
 	lhv = ${fuelcell_lhv_in};
+	kg_per_lb = 0.453592;
+	btu_per_mj = 0.0011;
 	
-	// Convert Btu/lbm to MJ/kg (1 Btu = 0.0011 MJ and 1 lbm = 0.453592 kg)
-	if (${fuelcell_lhv_units} == 0){
-		lhv = lhv * 0.0024250868622022;
+	// natural gas density: https://www.engineeringtoolbox.com/gas-density-d_158.html
+	lb_per_ft3 = 0.44;
+		
+	// Diesel density: https://www.engineeringtoolbox.com/fuels-densities-specific-volumes-d_166.html
+	if (${fuelcell_fuel_type} == 1){
+		lb_per_ft3 = 54.6;
 	}
 	
+	// https://www.eia.gov/totalenergy/data/monthly/pdf/sec13_5.pdf
+	// Convert Btu/lbm to Btu/ft3 
+	if (${fuelcell_lhv_units} == 0){
+		lhv = lhv * lb_per_ft3;
+	}
+	// Convert MJ/kg to Btu/ft3
+	else if (${fuelcell_lhv_units} == 1){
+		lhv = lhv * kg_per_lb * btu_per_mj * lb_per_ft3;
+	}
+		
 	return lhv;
 };
 906
