@@ -80,7 +80,12 @@ function num_to_str( x , d )
 	// only format x if it is a number
 	if ( typeof(x) == 'number' )
 	{
-		str = sprintf('%.'+to_string(d)+',',x);
+		
+		if( ( d == 0) && (mod( round(x) , 10) == 0) )	
+			str = round(x);
+		else 
+			str = sprintf('%.'+to_string(d)+',',x);			// This step converts a number (for d = 0) like 409.857 to 41 instead of 410. This if-else condition is a workaround that bug.
+
 		arr = split(str,'.');
 		if ( #arr > 1 )
 			num_decs = strlen(to_string(arr[1]));

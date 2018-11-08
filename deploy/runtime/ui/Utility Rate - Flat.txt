@@ -132,8 +132,8 @@ Height
 170
 Caption
 5
-39
-Monthly Accounting of Excess Generation
+20
+Metering and Billing
 Bold
 2
 1
@@ -397,7 +397,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -480,7 +480,7 @@ Y
 237
 Width
 3
-538
+346
 Height
 3
 134
@@ -490,11 +490,11 @@ Selection
 Items
 6
 5
-Monthly total excess rolled over to next month bill in kWh
-Monthly total excess credited to next month bill in $ at sell rate(s)
-Cumulative hourly (subhourly) excess credited to current month bill in $ at sell rate(s)
-Cumulative hourly (subhourly)  excess credited to next month bill in $ at sell rate(s)
-All generation sold at sell rate(s) and all load purchased at buy rate(s)
+Net energy metering
+Net energy metering with $ credits
+Net billing
+Net billing with carryover to next month
+Buy all / sell all
 ShowCaptions
 2
 1
@@ -526,7 +526,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -585,7 +585,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -644,7 +644,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -801,7 +801,7 @@ Electricity Rates - General
 2
 1
 1
-0.000000
+0
 SchedNumeric
 ur_annual_min_charge
 3
@@ -815,7 +815,7 @@ Electricity Rates - General
 1
 1
 1
-0.000000
+0
 Numeric
 ur_en_ts_sell_rate
 3
@@ -829,7 +829,7 @@ Electricity Rates - General
 1
 1
 1
-0.000000
+0
 CheckBox
 ur_metering_option
 3
@@ -837,14 +837,14 @@ ur_metering_option
 Metering option
  
 Electricity Rates - General
-377
-Monthly total excess rolled over to next month bill in kWh|Monthly total excess credited to next month bill in $ at sell rate(s)|Cumulative hourly (subhourly) excess credited to current month bill in $ at sell rate(s)|Cumulative hourly (subhourly) excess credited to next month bill in $ at sell rate(s)|All generation sold at sell rate(s) and all load purchased at buy rate(s)
+127
+Net energy metering|Net energy metering with $ credits|Net billing|Net billing with carryover to next month| Buy all / sell all
 3
 1
 1
 1
 1
-0.000000
+0
 RadioChoice
 ur_monthly_fixed_charge
 3
@@ -858,7 +858,7 @@ Electricity Rates - General
 1
 1
 1
-0.000000
+0
 Numeric
 ur_monthly_min_charge
 3
@@ -872,12 +872,12 @@ Electricity Rates - General
 1
 1
 1
-0.000000
+0
 Numeric
 ur_nm_yearend_sell_rate
 3
 1
-Sell rate for kWh rolled over at end of year
+Sell rate for kWh credits remaining at end of year
 $/kWh
 Electricity Rates - General
 0
@@ -886,7 +886,7 @@ Electricity Rates - General
 1
 1
 1
-0.000000
+0
 Numeric
 ur_ratedata_filename
 3
@@ -912,7 +912,7 @@ Electricity Rates - General
 2
 1
 1
-0.000000
+0
 DataArray
 
 0
