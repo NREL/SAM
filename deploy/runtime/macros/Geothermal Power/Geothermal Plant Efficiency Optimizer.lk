@@ -92,8 +92,11 @@ for(i = 100 ; i >= 0 ; i = i - 10)
 	//If minimum lcoe has been reached, step into the nested (intermediate) for loop
 	if((count > 0)  &&  (lcoe[count - 1] < lcoe[count] )) 		//(count > 0) condition ensures outermost loop runs entirely atleast once
 	{
-		//min_lcoe = lcoe[count -1 ];
-		i = i + 10;			//resets i to value for which lowest project LCOE was recorded
+		if( (i + 10) == 100)
+			i = i + 0;
+		else
+			i = i + 10;			//resets i to value for which lowest project LCOE was recorded
+		
 		count = 0; 			//Reset counter for intermediate loop
 		
 		//INTERMEDIATE LOOP
