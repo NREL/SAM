@@ -5199,7 +5199,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Default
 batt_max_power
 3
@@ -5213,7 +5213,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Numeric
 calculated_dcac_ratio
 3
@@ -5227,7 +5227,7 @@ PV System Design
 1
 1
 1
-1.1
+1.100000
 Numeric
 desired_dcac_ratio
 3
@@ -5241,7 +5241,7 @@ PV System Design
 1
 1
 1
-1.1
+1.100000
 Numeric
 desired_size
 3
@@ -5255,7 +5255,7 @@ PV System Design
 1
 1
 1
-100
+100.000000
 Numeric
 enable_auto_size
 3
@@ -5269,7 +5269,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Default
 inv_num_mppt
 3
@@ -5283,7 +5283,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Default
 inverter_count
 3
@@ -5298,7 +5298,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 layout_warning
 3
@@ -5324,7 +5324,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 mppt_low_inverter
 3
@@ -5338,7 +5338,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 num_enabled
 3
@@ -5352,7 +5352,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Default
 num_strings_total
 3
@@ -5367,7 +5367,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 offset
 3
@@ -5381,7 +5381,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Default
 subarray1_azimuth
 3
@@ -5395,7 +5395,7 @@ PV System Design
 1
 1
 1
-180
+180.000000
 Numeric
 subarray1_backtrack
 3
@@ -5409,7 +5409,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 CheckBox
 subarray1_gcr
 3
@@ -5423,7 +5423,7 @@ PV System Design
 1
 1
 1
-0.3
+0.300000
 Default
 subarray1_modules_per_string
 3
@@ -5438,7 +5438,7 @@ PV System Design
 1
 1
 1
-10
+10.000000
 Numeric
 subarray1_monthly_tilt
 3
@@ -5452,7 +5452,7 @@ PV System Design
 2
 1
 12
-0 40 40 20 20 20 20 20 20 40 40 40 
+0.000000 40.000000 40.000000 20.000000 20.000000 20.000000 20.000000 20.000000 20.000000 40.000000 40.000000 40.000000 
 
 MonthlyFactor
 subarray1_mppt_input
@@ -5467,7 +5467,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 subarray1_nmodules
 3
@@ -5481,7 +5481,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray1_nstrings
 3
@@ -5499,7 +5499,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 subarray1_rotlim
 3
@@ -5513,7 +5513,7 @@ PV System Design
 1
 1
 1
-45
+45.000000
 Numeric
 subarray1_string_vmp
 3
@@ -5527,7 +5527,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray1_string_voc
 3
@@ -5541,7 +5541,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray1_tilt
 3
@@ -5555,7 +5555,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray1_tilt_eq_lat
 3
@@ -5569,7 +5569,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 CheckBox
 subarray1_track_mode
 3
@@ -5584,7 +5584,7 @@ Fixed|1 Axis|2 Axis|Azimuth Axis|Seasonal Tilt
 1
 1
 1
-0
+0.000000
 RadioChoice
 subarray2_azimuth
 3
@@ -5598,7 +5598,7 @@ PV System Design
 1
 1
 1
-180
+180.000000
 Numeric
 subarray2_backtrack
 3
@@ -5612,7 +5612,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 CheckBox
 subarray2_enable
 3
@@ -5626,7 +5626,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 CheckBox
 subarray2_gcr
 3
@@ -5640,7 +5640,7 @@ PV System Design
 1
 1
 1
-0.3
+0.300000
 Default
 subarray2_modules_per_string
 3
@@ -5654,7 +5654,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 subarray2_monthly_tilt
 3
@@ -5668,7 +5668,7 @@ PV System Design
 2
 1
 12
-0 40 40 20 20 20 20 20 20 40 40 40 
+0.000000 40.000000 40.000000 20.000000 20.000000 20.000000 20.000000 20.000000 20.000000 40.000000 40.000000 40.000000 
 
 Default
 subarray2_mppt_input
@@ -5683,7 +5683,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 subarray2_nmodules
 3
@@ -5697,7 +5697,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray2_nstrings
 3
@@ -5711,7 +5711,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 subarray2_rotlim
 3
@@ -5725,7 +5725,7 @@ PV System Design
 1
 1
 1
-45
+45.000000
 Numeric
 subarray2_string_vmp
 3
@@ -5739,7 +5739,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray2_string_voc
 3
@@ -5753,7 +5753,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray2_tilt
 3
@@ -5767,7 +5767,7 @@ PV System Design
 1
 1
 1
-20
+20.000000
 Numeric
 subarray2_tilt_eq_lat
 3
@@ -5781,7 +5781,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 CheckBox
 subarray2_track_mode
 3
@@ -5796,7 +5796,7 @@ Fixed|1 Axis|2 Axis|Azimuth Axis|Seasonal Tilt
 1
 1
 1
-0
+0.000000
 RadioChoice
 subarray3_azimuth
 3
@@ -5810,7 +5810,7 @@ PV System Design
 1
 1
 1
-180
+180.000000
 Numeric
 subarray3_backtrack
 3
@@ -5824,7 +5824,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 CheckBox
 subarray3_enable
 3
@@ -5838,7 +5838,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 CheckBox
 subarray3_gcr
 3
@@ -5852,7 +5852,7 @@ PV System Design
 1
 1
 1
-0.3
+0.300000
 Default
 subarray3_modules_per_string
 3
@@ -5866,7 +5866,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 subarray3_monthly_tilt
 3
@@ -5880,7 +5880,7 @@ PV System Design
 2
 1
 12
-0 40 40 20 20 20 20 20 20 40 40 40 
+0.000000 40.000000 40.000000 20.000000 20.000000 20.000000 20.000000 20.000000 20.000000 40.000000 40.000000 40.000000 
 
 Default
 subarray3_mppt_input
@@ -5895,7 +5895,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 subarray3_nmodules
 3
@@ -5909,7 +5909,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray3_nstrings
 3
@@ -5923,7 +5923,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 subarray3_rotlim
 3
@@ -5937,7 +5937,7 @@ PV System Design
 1
 1
 1
-45
+45.000000
 Numeric
 subarray3_string_vmp
 3
@@ -5951,7 +5951,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray3_string_voc
 3
@@ -5965,7 +5965,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray3_tilt
 3
@@ -5979,7 +5979,7 @@ PV System Design
 1
 1
 1
-20
+20.000000
 Numeric
 subarray3_tilt_eq_lat
 3
@@ -5993,7 +5993,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 CheckBox
 subarray3_track_mode
 3
@@ -6008,7 +6008,7 @@ Fixed|1 Axis|2 Axis|Azimuth Axis|Seasonal Tilt
 1
 1
 1
-0
+0.000000
 RadioChoice
 subarray4_azimuth
 3
@@ -6022,7 +6022,7 @@ PV System Design
 1
 1
 1
-180
+180.000000
 Numeric
 subarray4_backtrack
 3
@@ -6036,7 +6036,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 CheckBox
 subarray4_enable
 3
@@ -6050,7 +6050,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 CheckBox
 subarray4_gcr
 3
@@ -6064,7 +6064,7 @@ PV System Design
 1
 1
 1
-0.3
+0.300000
 Default
 subarray4_modules_per_string
 3
@@ -6078,7 +6078,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 subarray4_monthly_tilt
 3
@@ -6092,7 +6092,7 @@ PV System Design
 2
 1
 12
-0 40 40 20 20 20 20 20 20 40 40 40 
+0.000000 40.000000 40.000000 20.000000 20.000000 20.000000 20.000000 20.000000 20.000000 40.000000 40.000000 40.000000 
 
 Default
 subarray4_mppt_input
@@ -6107,7 +6107,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 subarray4_nmodules
 3
@@ -6121,7 +6121,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray4_nstrings
 3
@@ -6135,7 +6135,7 @@ PV System Design
 1
 1
 1
-1
+1.000000
 Numeric
 subarray4_rotlim
 3
@@ -6149,7 +6149,7 @@ PV System Design
 1
 1
 1
-45
+45.000000
 Numeric
 subarray4_string_vmp
 3
@@ -6163,7 +6163,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray4_string_voc
 3
@@ -6177,7 +6177,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 subarray4_tilt
 3
@@ -6191,7 +6191,7 @@ PV System Design
 1
 1
 1
-20
+20.000000
 Numeric
 subarray4_tilt_eq_lat
 3
@@ -6205,7 +6205,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 CheckBox
 subarray4_track_mode
 3
@@ -6220,7 +6220,7 @@ Fixed|1 Axis|2 Axis|Azimuth Axis|Seasonal Tilt
 1
 1
 1
-0
+0.000000
 RadioChoice
 system_capacity
 3
@@ -6234,7 +6234,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 total_area
 3
@@ -6248,7 +6248,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 total_dc_inverter_capacity
 3
@@ -6262,7 +6262,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 total_inverter_capacity
 3
@@ -6276,7 +6276,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 total_land_area
 3
@@ -6290,7 +6290,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 total_module_area
 3
@@ -6304,7 +6304,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 total_modules
 3
@@ -6318,7 +6318,7 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 vdcmax_inverter
 3
@@ -6332,10 +6332,10 @@ PV System Design
 1
 1
 1
-0
+0.000000
 Numeric
 
-11477
+11488
 equations{ '$MIMO$ pv_size_array' } = define()
 {
 	if (${enable_auto_size}==1)
@@ -6379,17 +6379,18 @@ equations{ '$MIMO$ pv_size_array' } = define()
 		
 		// calculations
 		if(mod_vmp>0)
-		{num_series= 0.5 * (inv_vmin + inv_vmax)/mod_vmp;}
-		if(inv_vdcmax > 0){
-			while ((num_series > 0) && ((num_series*mod_voc) > inv_vdcmax)){
-				num_series= num_series -1;
+		{
+			num_series= 0.5 * (inv_vmin + inv_vmax)/mod_vmp;}
+			if(inv_vdcmax > 0){
+				while ((num_series > 0) && ((num_series*mod_voc) > inv_vdcmax)){
+					num_series= num_series -1;
+				}
 			}
-		}
 		if (num_series < 1) num_series= 1;
-		num_series= to_int(num_series);
+		num_series= round(num_series);
 		num_parallel= ${desired_size} * 1000 /(num_series * mod_power);
 		if (num_parallel < 1) num_parallel= 1;
-		num_parallel= to_int(num_parallel);
+		num_parallel= round(num_parallel);
 		if (${desired_dcac_ratio} > 0)
 		{ 	inverters = ((num_series * num_parallel * mod_power) /* + batt_max_power_dc */) / (${desired_dcac_ratio} * inv_power);
 			//round inverters for best DC-AC ratio
@@ -6406,7 +6407,7 @@ equations{ '$MIMO$ pv_size_array' } = define()
 		//check that the sizing was close to the desired sizes, otherwise, error out if more than 10% away
 		proposed_size = num_series * num_parallel * mod_power / 1000; //convert W to kW
 		proposed_ratio = proposed_size / (num_inverters * inv_power / 1000); //convert inverter W to kW
-		if (abs(proposed_size - ${desired_size}) / ${desired_size} > 0.1 || abs(proposed_ratio - ${desired_dcac_ratio}) / ${desired_dcac_ratio} > 0.1)
+		if (abs(proposed_size - ${desired_size}) / ${desired_size} > 0.2) // || abs(proposed_ratio - ${desired_dcac_ratio}) / ${desired_dcac_ratio} > 0.1)
 		{
 			num_series = 0;
 			num_parallel = 0;
