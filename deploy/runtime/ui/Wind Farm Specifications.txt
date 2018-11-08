@@ -155,7 +155,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -385,7 +385,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -445,7 +445,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -504,7 +504,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -633,7 +633,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -718,7 +718,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -809,7 +809,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -868,7 +868,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -958,7 +958,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1048,7 +1048,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1107,7 +1107,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1273,7 +1273,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Default
 desired_farm_size
 3
@@ -1287,7 +1287,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Default
 rows
 3
@@ -1301,7 +1301,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Default
 sizing_warning
 3
@@ -1315,7 +1315,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Default
 specify_label
 3
@@ -1329,7 +1329,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Default
 system_capacity
 3
@@ -1343,7 +1343,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Default
 wind_farm_losses_percent
 3
@@ -1357,7 +1357,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Numeric
 wind_farm_num_turbines
 3
@@ -1371,7 +1371,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Numeric
 wind_farm_sizing_mode
 3
@@ -1385,7 +1385,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Default
 wind_farm_wake_model
 3
@@ -1400,7 +1400,7 @@ Simple Wake Model|Park (WAsP)|Eddy-Viscosity
 1
 1
 1
-0.000000
+0
 Choice
 wind_farm_xCoord_file
 3
@@ -1414,7 +1414,7 @@ Wind Farm
 2
 1
 1
-0.000000
+0
 Default
 wind_farm_xCoordinates
 3
@@ -1428,7 +1428,7 @@ Wind Farm
 2
 1
 1
-0.000000
+0
 Default
 wind_farm_yCoord_file
 3
@@ -1442,7 +1442,7 @@ Wind Farm
 2
 1
 1
-0.000000
+0
 Default
 wind_farm_yCoordinates
 3
@@ -1456,7 +1456,7 @@ Wind Farm
 2
 1
 1
-0.000000
+0
 Default
 wind_resource_turbulence_coeff
 3
@@ -1470,7 +1470,7 @@ Wind Farm
 1
 1
 1
-0.100000
+0.1
 Numeric
 windfarm.farm.layout_angle
 3
@@ -1484,7 +1484,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Numeric
 windfarm.farm.layout_slider
 3
@@ -1498,7 +1498,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Slider
 windfarm.farm.number_of_rows
 3
@@ -1512,7 +1512,7 @@ Wind Farm
 1
 1
 1
-4.000000
+4
 Numeric
 windfarm.farm.offset
 3
@@ -1526,7 +1526,7 @@ Wind Farm
 1
 1
 1
-250.000000
+250
 Numeric
 windfarm.farm.offset_type
 3
@@ -1541,7 +1541,7 @@ Every Other Row|Each Row
 1
 1
 1
-1.000000
+1
 Choice
 windfarm.farm.row_spacing
 3
@@ -1555,7 +1555,7 @@ Wind Farm
 1
 1
 1
-750.000000
+750
 Numeric
 windfarm.farm.shape
 3
@@ -1569,7 +1569,7 @@ Wind Farm
 1
 1
 1
-0.000000
+0
 Choice
 windfarm.farm.turbine_spacing
 3
@@ -1583,7 +1583,7 @@ Wind Farm
 1
 1
 1
-500.000000
+500
 Numeric
 windfarm.farm.turbines_per_row
 3
@@ -1597,7 +1597,7 @@ Wind Farm
 1
 1
 1
-8.000000
+8
 Numeric
 windfarm.layout.file_or_controls
 3
@@ -1612,7 +1612,7 @@ Import wind turbine location data file|Define wind farm using layout generator (
 1
 1
 1
-1.000000
+1
 RadioChoice
 
 3423

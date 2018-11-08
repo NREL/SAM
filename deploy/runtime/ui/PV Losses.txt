@@ -825,7 +825,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1047,7 +1047,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1655,7 +1655,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1714,7 +1714,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1773,7 +1773,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1832,7 +1832,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1891,7 +1891,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1950,7 +1950,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2036,7 +2036,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2095,7 +2095,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2154,7 +2154,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2213,7 +2213,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2272,7 +2272,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2331,7 +2331,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2390,7 +2390,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2449,7 +2449,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2535,7 +2535,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2594,7 +2594,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2653,7 +2653,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2712,7 +2712,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2771,7 +2771,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2830,7 +2830,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2889,7 +2889,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2948,7 +2948,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3034,7 +3034,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3093,7 +3093,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3152,7 +3152,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3211,7 +3211,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3270,7 +3270,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3329,7 +3329,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3388,7 +3388,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3447,7 +3447,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3533,7 +3533,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3592,7 +3592,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3651,7 +3651,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3710,7 +3710,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3769,7 +3769,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3820,7 +3820,7 @@ Losses
 1
 1
 1
-1.000000
+1
 Numeric
 adjust
 3
@@ -3860,7 +3860,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Default
 subarray1_dcloss
 3
@@ -3874,7 +3874,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray1_dcwiring_loss
 3
@@ -3888,7 +3888,7 @@ Losses
 1
 1
 1
-2.000000
+2
 Numeric
 subarray1_diodeconn_loss
 3
@@ -3902,7 +3902,7 @@ Losses
 1
 1
 1
-0.500000
+0.5
 Numeric
 subarray1_mismatch_loss
 3
@@ -3916,7 +3916,7 @@ Losses
 1
 1
 1
-2.000000
+2
 Numeric
 subarray1_nameplate_loss
 3
@@ -3930,7 +3930,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray1_rear_irradiance_loss
 3
@@ -3944,7 +3944,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray1_soiling
 3
@@ -3958,7 +3958,7 @@ Losses
 2
 1
 12
-5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 
+5 5 5 5 5 5 5 5 5 5 5 5 
 
 MonthlyFactor
 subarray1_soiling_annual_average
@@ -3973,7 +3973,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray1_tracking_loss
 3
@@ -3987,7 +3987,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray2_dcloss
 3
@@ -4001,7 +4001,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray2_dcwiring_loss
 3
@@ -4015,7 +4015,7 @@ Losses
 1
 1
 1
-2.000000
+2
 Numeric
 subarray2_diodeconn_loss
 3
@@ -4029,7 +4029,7 @@ Losses
 1
 1
 1
-0.500000
+0.5
 Numeric
 subarray2_mismatch_loss
 3
@@ -4043,7 +4043,7 @@ Losses
 1
 1
 1
-2.000000
+2
 Numeric
 subarray2_nameplate_loss
 3
@@ -4057,7 +4057,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray2_rear_irradiance_loss
 3
@@ -4071,7 +4071,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray2_soiling
 3
@@ -4085,7 +4085,7 @@ Losses
 2
 1
 12
-5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 
+5 5 5 5 5 5 5 5 5 5 5 5 
 
 MonthlyFactor
 subarray2_soiling_annual_average
@@ -4100,7 +4100,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray2_tracking_loss
 3
@@ -4114,7 +4114,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray3_dcloss
 3
@@ -4128,7 +4128,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray3_dcwiring_loss
 3
@@ -4142,7 +4142,7 @@ Losses
 1
 1
 1
-2.000000
+2
 Numeric
 subarray3_diodeconn_loss
 3
@@ -4156,7 +4156,7 @@ Losses
 1
 1
 1
-0.500000
+0.5
 Numeric
 subarray3_mismatch_loss
 3
@@ -4170,7 +4170,7 @@ Losses
 1
 1
 1
-2.000000
+2
 Numeric
 subarray3_nameplate_loss
 3
@@ -4184,7 +4184,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray3_rear_irradiance_loss
 3
@@ -4198,7 +4198,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray3_soiling
 3
@@ -4212,7 +4212,7 @@ Losses
 2
 1
 12
-5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 
+5 5 5 5 5 5 5 5 5 5 5 5 
 
 MonthlyFactor
 subarray3_soiling_annual_average
@@ -4227,7 +4227,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray3_tracking_loss
 3
@@ -4241,7 +4241,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray4_dcloss
 3
@@ -4255,7 +4255,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray4_dcwiring_loss
 3
@@ -4269,7 +4269,7 @@ Losses
 1
 1
 1
-2.000000
+2
 Numeric
 subarray4_diodeconn_loss
 3
@@ -4283,7 +4283,7 @@ Losses
 1
 1
 1
-0.500000
+0.5
 Numeric
 subarray4_mismatch_loss
 3
@@ -4297,7 +4297,7 @@ Losses
 1
 1
 1
-2.000000
+2
 Numeric
 subarray4_nameplate_loss
 3
@@ -4311,7 +4311,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray4_rear_irradiance_loss
 3
@@ -4325,7 +4325,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray4_soiling
 3
@@ -4339,7 +4339,7 @@ Losses
 2
 1
 12
-5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 
+5 5 5 5 5 5 5 5 5 5 5 5 
 
 MonthlyFactor
 subarray4_soiling_annual_average
@@ -4354,7 +4354,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 subarray4_tracking_loss
 3
@@ -4368,7 +4368,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 transformer_load_loss
 3
@@ -4382,7 +4382,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 transformer_no_load_loss
 3
@@ -4396,7 +4396,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 transformer_rating
 3
@@ -4410,7 +4410,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 transmission_loss
 3
@@ -4424,7 +4424,7 @@ Losses
 1
 1
 1
-0.000000
+0
 Numeric
 
 1555

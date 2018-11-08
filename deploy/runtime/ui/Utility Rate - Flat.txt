@@ -837,8 +837,8 @@ ur_metering_option
 Metering option
  
 Electricity Rates - General
-127
-Net energy metering|Net energy metering with $ credits|Net billing|Net billing with carryover to next month| Buy all / sell all
+126
+Net energy metering|Net energy metering with $ credits|Net billing|Net billing with carryover to next month|Buy all / sell all
 3
 1
 1
