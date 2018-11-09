@@ -51,7 +51,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -110,7 +110,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -162,7 +162,7 @@ Salvage Value
 1
 1
 1
-0.000000
+0
 Default
 salvage_value
 3
@@ -176,7 +176,7 @@ Salvage Value
 1
 1
 1
-0.000000
+0
 Default
 
 111
