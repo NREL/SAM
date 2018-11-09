@@ -43,37 +43,7 @@
 <span class="f_CHNote">&nbsp;</span><br />
 <span class="f_Note">SAM assumes that all modules in the array operate at their maximum power point. The electrical loss associated with module voltage mismatch is an input on the <a href="pv_losses.htm" class="topiclink">Losses</a> page. When you model a system with microinverters, you should change the mismatch loss to zero as described in the procedure below.</span><br />
 <span class="f_Note">&nbsp;</span><br />
-<span class="f_Note">SAM's self-shading model does not account for MPPT tracking of individual modules and is not suitable for use with microinverters.</span><br />
-<span class="f_Note">&nbsp;</span><br />
-<span class="f_Note">The example below is for a small system with microinverters, but the approach would be the same for a large system with thousands of modules and microinverters.</span></p>
-<p class="p_TextCenter"><img alt="IMG_PV_Layout_7" width="400" height="204" style="margin:0 auto 0 auto;width:400px;height:204px;border:none" src="img_pv_layout_7.png"/></p>
-<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="Default Shaded Rows" style="width:100%;">
-<tr>
-<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Number of MPPT inputs</span></p>
-</td>
-<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1</span></p>
-</td>
-</tr>
-<tr>
-<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Number of inverters</span></p>
-</td>
-<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">4</span></p>
-</td>
-</tr>
-<tr>
-<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Modules per string in subarray 1</span></p>
-</td>
-<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1</span></p>
-</td>
-</tr>
-<tr>
-<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Strings in parallel in subarray 1</span></p>
-</td>
-<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">4</span></p>
-</td>
-</tr>
-</table>
-</div>
+<span class="f_Note">SAM's self-shading model does not account for MPPT tracking of individual modules and is not suitable for use with microinverters.</span></p>
 <p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To model a system with using microinverters in the Detailed Photovoltaic model:</span></p>
 <p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the <a href="pv_inverter.htm" class="topiclink">Inverter</a> page, choose the <a href="pv_inverter.htm#sandia" class="topiclink">CEC Database inverter model</a>. Sort inverter list by Paco to find a microinverter with a power rating suitable for your application. You can also type the first few letter of the manufacturer name to find the inverter you want to model. If your inverter is not in the list, choose the <a href="pv_inverter.htm#datasheet" class="topiclink">Inverter Datasheet model</a> to enter inverter parameters from the manufacturer data sheet.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">On the <a href="pv_module.htm" class="topiclink">Module</a> page choose a module mode, choose a module matched with the microinverter. You can sort the list by STC to sort the list by module power rating.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Compare the module's maximum power (Pmp) rating to the inverter's maximum DC power rating, and the module maximum power voltage (Vmp) to the inverter's nominal DC voltage rating to match the components.</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Consult the manufacturer data sheet or design guidelines for more specific details.</span></p>
