@@ -231,7 +231,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -290,7 +290,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -349,7 +349,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -408,7 +408,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -467,7 +467,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -526,7 +526,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -585,7 +585,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -644,7 +644,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -703,7 +703,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -762,7 +762,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -821,7 +821,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -880,7 +880,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -939,7 +939,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -998,7 +998,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1057,7 +1057,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1116,7 +1116,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1175,7 +1175,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1234,7 +1234,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1293,7 +1293,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1352,7 +1352,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1403,7 +1403,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.000000
+0
 Default
 Piping_loss
 3
@@ -1417,7 +1417,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-10200.000000
+10200
 Default
 aux_par
 3
@@ -1431,7 +1431,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.023000
+0.023
 Default
 aux_par_0
 3
@@ -1445,7 +1445,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.483000
+0.483
 Default
 aux_par_1
 3
@@ -1459,7 +1459,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.517000
+0.517
 Default
 aux_par_2
 3
@@ -1473,7 +1473,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.000000
+0
 Default
 aux_par_f
 3
@@ -1487,7 +1487,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-1.000000
+1
 Default
 bop_par
 3
@@ -1501,7 +1501,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.000000
+0
 Default
 bop_par_0
 3
@@ -1515,7 +1515,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.483000
+0.483
 Default
 bop_par_1
 3
@@ -1529,7 +1529,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.517000
+0.517
 Default
 bop_par_2
 3
@@ -1543,7 +1543,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.000000
+0
 Default
 bop_par_f
 3
@@ -1557,7 +1557,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-1.000000
+1
 Default
 csp.dst.calc.aux
 3
@@ -1571,7 +1571,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.dst.calc.bop
 3
@@ -1585,7 +1585,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.000000
+0
 Default
 eta_rec_pump
 3
@@ -1599,7 +1599,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.850000
+0.85
 Default
 p_run
 3
@@ -1613,7 +1613,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.055000
+0.055
 Default
 pb_fixed_par
 3
@@ -1627,7 +1627,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.005500
+0.0055
 Default
 piping_length_add
 3
@@ -1641,7 +1641,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.000000
+0
 Default
 piping_length_mult
 3
@@ -1655,7 +1655,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-2.600000
+2.6
 Default
 q_start
 3
@@ -1669,7 +1669,7 @@ Direct Steam Power Tower Parasitics
 1
 1
 1
-0.025000
+0.025
 Default
 
 654

@@ -62,34 +62,23 @@ version_upgrade{'2018.10.29'} = define() {
 			value('enable_auto_size', 0, 'Changed variable name and value for automatically sizing system.');
 		else if (old_autosize == 0) //auto-size in old version
 		{
-			//get previous system configuration
-			desired_size = value('desired_size');
-			desired_dcac_ratio = dcac_old;
-			old_calculated_size = value('system_capacity');
-			old_calculated_dcac_ratio = old_calculated_size / value('total_inverter_capacity');
-			
-			//the new sizing algorithm hasn't changed except for the errors, so check those:
-			//if the auto-sizing calculation would now result in an error, turn off auto sizing and leave the old system config
-			if (abs(old_calculated_size - desired_size) / desired_size > 0.1 || abs(old_calculated_dcac_ratio - desired_dcac_ratio) / desired_dcac_ratio > 0.1)
-			{
-				value('enable_auto_size', 0, 'Changed the way SAM automatically sizes systems.');
-				message('We have updated the way that SAM automatically sizes systems in this version. We have used the same system configuration' 
-				' as was specified in your old file, but turned off automatic system sizing in this case because it did not result in the same system.'
-				' Please go to the System Design page if you wish to turn automatic system sizing on again.', 'warning');
-
-			}
 			//multiple subarrays not allowed with new auto-sizing
-			else if (value('subarray2_enable') == 1 || value('subarray3_enable') == 1 || value('subarray4_enable') == 1)
+			if (value('subarray2_enable') == 1 || value('subarray3_enable') == 1 || value('subarray4_enable') == 1)
 			{
 				value('enable_auto_size', 0, 'Changed the way SAM automatically sizes systems.');
 				message('We have updated the way that SAM automatically sizes systems in this version. We have used the same system configuration' 
 				' as was specified in your old file, but turned off automatic system sizing in this case because the new automatic system sizing'
 				' algorithms no longer work with multiple subarrays. Please go to the System Design page if you wish to turn automatic system sizing on again.', 'warning');
 			}
-	
-			//if auto-sizing doesn't result in an error, turn it on
 			else
-				value('enable_auto_size', 1, 'Changed variable name and value for automatically sizing system.');
+			{
+				value('enable_auto_size', 0, 'Changed the way SAM automatically sizes systems.');
+				message('We have updated the way that SAM automatically sizes systems in this version. We have used the same system configuration' 
+				' as was specified in your old file, but turned off automatic system sizing in this case because it may not result in the same system configuration.'
+				' Please go to the System Design page if you wish to turn automatic system sizing on again.', 'warning');
+
+			}
+	
 		}
 		// battery model update dispatch
 		if (value('en_batt')){

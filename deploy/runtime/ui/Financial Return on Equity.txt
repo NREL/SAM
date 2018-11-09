@@ -127,7 +127,7 @@ Return on Equity Parameters
 2
 1
 1
-0.000000
+0
 SchedNumeric
 
 0

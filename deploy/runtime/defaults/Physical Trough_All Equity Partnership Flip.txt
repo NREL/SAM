@@ -1562,7 +1562,7 @@ csp.dtr.cost.storage.cost_per_kwht
 1
 1
 1
-57
+62
 csp.dtr.cost.storage.mwht
 1
 1
