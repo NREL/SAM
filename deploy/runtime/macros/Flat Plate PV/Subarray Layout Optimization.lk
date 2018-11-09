@@ -964,3 +964,5 @@ if(single_subarray == true) break;			//If user is optimizing only a single subar
 }
 
 ///////////////////////////////////**** End of Script ****///////////////////////////////////
+
+outln('\n//////***** Simulation Complete *****//////');
