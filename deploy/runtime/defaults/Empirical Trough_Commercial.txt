@@ -1528,7 +1528,7 @@ csp.tr.cost.storage.cost_per_kwht
 1
 1
 1
-57
+62
 csp.tr.cost.storage.mwht
 1
 1
@@ -1712,7 +1712,7 @@ federal_tax_rate
 2
 1
 1
-20
+21
 ffrac
 1
 2
@@ -3043,7 +3043,7 @@ real_discount_rate
 1
 1
 1
-5.5
+6.4
 sales_tax_rate
 1
 1

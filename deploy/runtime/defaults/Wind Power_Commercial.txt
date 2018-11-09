@@ -1702,7 +1702,7 @@ federal_tax_rate
 2
 1
 1
-20
+21
 foundation_cost
 1
 1
@@ -2663,7 +2663,7 @@ real_discount_rate
 1
 1
 1
-5.5
+6.4
 reference_capacity
 1
 1

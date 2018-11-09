@@ -96,7 +96,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -155,7 +155,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -215,7 +215,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -275,7 +275,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -335,7 +335,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -387,7 +387,7 @@ Cost of Acquiring Financing
 1
 1
 1
-0.000000
+0
 Numeric
 cost_dev_fee_tax_liability
 3
@@ -401,7 +401,7 @@ Tax on development fee in Year 1
 1
 1
 1
-0.000000
+0
 Default
 cost_dev_fee_value
 3
@@ -415,7 +415,7 @@ Cost of Acquiring Financing
 1
 1
 1
-0.000000
+0
 Numeric
 cost_equity_closing
 3
@@ -429,7 +429,7 @@ Cost of Acquiring Financing
 1
 1
 1
-0.000000
+0
 Numeric
 cost_other_financing
 3
@@ -443,7 +443,7 @@ Cost of Acquiring Financing
 1
 1
 1
-0.000000
+0
 Numeric
 
 339

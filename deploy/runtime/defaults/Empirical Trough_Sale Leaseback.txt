@@ -1811,7 +1811,7 @@ csp.tr.cost.storage.cost_per_kwht
 1
 1
 1
-57
+62
 csp.tr.cost.storage.mwht
 1
 1

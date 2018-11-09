@@ -510,7 +510,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -570,7 +570,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -629,7 +629,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -689,7 +689,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -749,7 +749,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -809,7 +809,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -869,7 +869,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -929,7 +929,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -989,7 +989,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1049,7 +1049,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1109,7 +1109,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1169,7 +1169,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1229,7 +1229,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1288,7 +1288,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1348,7 +1348,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1407,7 +1407,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1467,7 +1467,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1527,7 +1527,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1586,7 +1586,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1646,7 +1646,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1706,7 +1706,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1766,7 +1766,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1826,7 +1826,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1886,7 +1886,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1946,7 +1946,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2006,7 +2006,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2065,7 +2065,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2125,7 +2125,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2185,7 +2185,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2245,7 +2245,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2305,7 +2305,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2364,7 +2364,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2424,7 +2424,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2484,7 +2484,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2543,7 +2543,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2603,7 +2603,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2663,7 +2663,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2723,7 +2723,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2782,7 +2782,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2886,7 +2886,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2946,7 +2946,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3006,7 +3006,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3058,7 +3058,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.bop_mwe
 3
@@ -3072,7 +3072,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.bop_per_kwe
 3
@@ -3086,7 +3086,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.contingency
 3
@@ -3100,7 +3100,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.contingency_percent
 3
@@ -3114,7 +3114,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-10.000000
+10
 Default
 csp.tr.cost.epc.fixed
 3
@@ -3128,7 +3128,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.epc.per_acre
 3
@@ -3142,7 +3142,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.epc.per_watt
 3
@@ -3156,7 +3156,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.epc.percent
 3
@@ -3170,7 +3170,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-15.000000
+15
 Default
 csp.tr.cost.epc.total
 3
@@ -3184,7 +3184,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.fossil_backup
 3
@@ -3198,7 +3198,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.fossil_backup.cost_per_kwe
 3
@@ -3212,7 +3212,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.fossil_backup.mwe
 3
@@ -3226,7 +3226,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.htf_system
 3
@@ -3240,7 +3240,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.htf_system.area
 3
@@ -3254,7 +3254,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.htf_system.cost_per_m2
 3
@@ -3268,7 +3268,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-50.000000
+50
 Default
 csp.tr.cost.installed_per_capacity
 3
@@ -3282,7 +3282,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.nameplate
 3
@@ -3296,7 +3296,7 @@ Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.plm.fixed
 3
@@ -3310,7 +3310,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.plm.per_acre
 3
@@ -3324,7 +3324,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-10000.000000
+10000
 Default
 csp.tr.cost.plm.per_watt
 3
@@ -3338,7 +3338,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.plm.percent
 3
@@ -3352,7 +3352,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.plm.total
 3
@@ -3366,7 +3366,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.power_plant
 3
@@ -3380,7 +3380,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.power_plant.cost_per_kwe
 3
@@ -3394,7 +3394,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-880.000000
+880
 Default
 csp.tr.cost.power_plant.mwe
 3
@@ -3408,7 +3408,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.sales_tax.percent
 3
@@ -3422,7 +3422,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-80.000000
+80
 Default
 csp.tr.cost.sales_tax.total
 3
@@ -3436,7 +3436,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.sales_tax.value
 3
@@ -3450,7 +3450,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.site_improvements
 3
@@ -3464,7 +3464,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.site_improvements.area
 3
@@ -3478,7 +3478,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.site_improvements.cost_per_m2
 3
@@ -3492,7 +3492,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-20.000000
+20
 Default
 csp.tr.cost.solar_field
 3
@@ -3506,7 +3506,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.solar_field.area
 3
@@ -3520,7 +3520,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.solar_field.cost_per_m2
 3
@@ -3534,7 +3534,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-350.000000
+350
 Default
 csp.tr.cost.storage
 3
@@ -3548,7 +3548,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.storage.cost_per_kwht
 3
@@ -3562,7 +3562,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-70.000000
+70
 Default
 csp.tr.cost.storage.mwht
 3
@@ -3576,7 +3576,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.tr.cost.total_land_area
 3
@@ -3590,7 +3590,7 @@ Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 system_use_lifetime_output
 3
@@ -3604,7 +3604,7 @@ system_use_lifetime_output
 1
 1
 1
-0.000000
+0
 Default
 system_use_recapitalization
 3
@@ -3618,7 +3618,7 @@ system_use_recapitalization
 1
 1
 1
-0.000000
+0
 Default
 total_direct_cost
 3
@@ -3632,7 +3632,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 total_indirect_cost
 3
@@ -3646,7 +3646,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 total_installed_cost
 3
@@ -3660,7 +3660,7 @@ Empirical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 
 3568

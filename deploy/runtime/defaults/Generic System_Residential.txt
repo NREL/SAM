@@ -1110,7 +1110,7 @@ federal_tax_rate
 2
 1
 1
-20
+15
 first_year_output
 1
 1
@@ -2134,7 +2134,7 @@ real_discount_rate
 1
 1
 1
-5.5
+6.4
 sales_tax_rate
 1
 1
