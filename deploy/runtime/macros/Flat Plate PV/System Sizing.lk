@@ -598,7 +598,7 @@ stable_sort(modules_diff,2);
 ////////////////////////////////////////////////////////////////////////////////
 
 num_plots = 0;
-for ( j=0; j<4; j++ )
+for ( j=0; j < max_subarrays; j++ )
 {
 	if ( vdc_hi[j] > -999 )
 	{
@@ -623,7 +623,7 @@ for ( j=0; j<4; j++ )
 			'title' = 'Figure ' + to_string(num_plots+1) + ': ' + pre_str + 'String Voltages', // underscore makes subscript
 			'line_data' = line_data, // vmppt_min, vmppt_max, and Vdcmax if Vdcmax != Vmppt_max
 			'line_labels' = line_labels,
-			'bar_data' = [voc_max_design * modules_per_string[0], voc_hi[j], vdc_hi[j], vdc_low[j], vmp_min_design * modules_per_string[0] ], // one value for each bar
+			'bar_data' = [voc_max_design * modules_per_string[j], voc_hi[j], vdc_hi[j], vdc_low[j], vmp_min_design * modules_per_string[j] ], // one value for each bar
 			'bar_label' = '',
 			'x_label' = 'VDC',
 			'y_labels' = ['Max Design Voc','Max Operating Voc','Max Operating Vdc','Min Operating Vdc','Min Design Vdc'], // one label for each bar
