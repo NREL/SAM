@@ -381,7 +381,7 @@ nameplate_ac = get('total_inverter_capacity');
 
 // run simulation and quit if simulation fails
 sim_msg = '';
-ok = simulate( sim_msg );
+ok = simulate( sim_msg , true );
 if ( !ok )
 {
 	msgbox( 'Simulation Failed!\nThere is a problem with your inputs that caused the simulation to fail with the following message:\n\n' + sim_msg + '\n\nPlease correct the problem and try running the macro again.');
