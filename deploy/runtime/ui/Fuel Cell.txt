@@ -1245,7 +1245,7 @@ fuelcell_dynamic_response
 3
 1
 Response after startup
-kW/min
+kW/h
 Fuel Cell
 0
 2
