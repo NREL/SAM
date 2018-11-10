@@ -47,7 +47,7 @@ function cf_om_expenses() {
     { 
 		cfline( 'cf_battery_replacement_cost', 0);
 		// electricity purchase for PV single owner only as of October 2018
-		if ( tech == 'Flat Plate PV' && fin == 'Single Owner' && value ('en_electricity_rates') == 1 )
+		if ( (tech == 'Flat Plate PV'  || tech == 'Generic System') && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
 			cfline( 'cf_utility_bill', 0);
 	}
 	
@@ -1975,8 +1975,18 @@ function send_excel_om(xl) {
 	} 
 	
 	// electricity purchase for PV - Single Owner only as of Oct 2018
-	if ( fin == 'Single Owner' && tech == 'Flat Plate PV' && value( 'en_electricity_rates' ) == 1 )
-		send_excel( xl, 'cf_utility_bill' );
+	
+		if ( (tech == 'Flat Plate PV'  || tech == 'Generic System') && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
+		{
+		// utility bill
+			ub = output('cf_utility_bill'); // array of rate cost  
+			sched = alloc(#ub); 
+			for ( i=0; i<#ub; i++ ) 
+			{ 
+				sched[i]=ub[i]; 
+			} 
+			xl_set( xl, sched, 'cf_utility_bill'); 
+		}
 } 
  
 function send_excel_rescom(xl) 
