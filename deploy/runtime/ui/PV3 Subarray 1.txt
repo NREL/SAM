@@ -55,7 +55,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -176,7 +176,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -235,7 +235,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -294,7 +294,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -353,7 +353,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -446,7 +446,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -505,7 +505,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1388,7 +1388,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1447,7 +1447,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1506,7 +1506,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1565,7 +1565,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1624,7 +1624,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1683,7 +1683,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1742,7 +1742,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1801,7 +1801,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1860,7 +1860,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1919,7 +1919,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1978,7 +1978,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2105,7 +2105,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2164,7 +2164,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2223,7 +2223,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2282,7 +2282,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2341,7 +2341,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2400,7 +2400,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2459,7 +2459,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2518,7 +2518,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2577,7 +2577,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2636,7 +2636,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2687,7 +2687,7 @@ Inverter type
 1
 1
 1
-0.000000
+0
 Default
 inverter_count
 3
@@ -2701,7 +2701,7 @@ PV System Design
 1
 1
 1
-1.000000
+1
 Default
 module
 3
@@ -2715,7 +2715,7 @@ Module
 1
 1
 1
-0.000000
+0
 Default
 modules_per_string
 3
@@ -2729,7 +2729,7 @@ PV System Design
 1
 1
 1
-10.000000
+10
 Default
 mppt_hi_inverter
 3
@@ -2743,7 +2743,7 @@ PV System Design
 1
 1
 1
-0.000000
+0
 Default
 mppt_low_inverter
 3
@@ -2757,7 +2757,7 @@ PV System Design
 1
 1
 1
-0.000000
+0
 Default
 num_mppt
 3
@@ -2771,7 +2771,7 @@ Number of MPPT inputs
 1
 1
 1
-0.000000
+0
 Default
 section1_ac_capacity
 3
@@ -2785,7 +2785,7 @@ kW AC
 1
 1
 1
-0.000000
+0
 Default
 section1_dc_capacity
 3
@@ -2799,7 +2799,7 @@ kW DC
 1
 1
 1
-0.000000
+0
 Default
 section1_dcac_ratio
 3
@@ -2813,7 +2813,7 @@ Section 1 DC to AC Ratio
 1
 1
 1
-0.000000
+0
 Default
 strings_in_parallel
 3
@@ -2827,7 +2827,7 @@ PV System Design
 1
 1
 1
-4.000000
+4
 Default
 subarray1_azimuth
 3
@@ -2841,7 +2841,7 @@ PV System Design
 1
 1
 1
-180.000000
+180
 Default
 subarray1_backtrack
 3
@@ -2855,7 +2855,7 @@ PV System Design
 1
 1
 1
-0.000000
+0
 Default
 subarray1_rotlim
 3
@@ -2869,7 +2869,7 @@ PV System Design
 1
 1
 1
-45.000000
+45
 Default
 subarray1_tilt
 3
@@ -2883,7 +2883,7 @@ PV System Design
 1
 1
 1
-0.000000
+0
 Default
 subarray_track_mode
 3
@@ -2898,7 +2898,7 @@ Fixed|1 Axis |2 Axis|Azimuth Axis|Seasonal Tilt
 1
 1
 1
-0.000000
+0
 Default
 system_AC_capacity
 3
@@ -2945,7 +2945,7 @@ Total System Inverters
 1
 1
 1
-0.000000
+0
 Default
 system_num_mod
 3
@@ -2959,7 +2959,7 @@ Total System Modules
 1
 1
 1
-0.000000
+0
 Default
 total_modules
 3
@@ -2973,7 +2973,7 @@ PV System Design
 1
 1
 1
-0.000000
+0
 Default
 vdcmax_inverter
 3
@@ -2987,7 +2987,7 @@ PV System Design
 1
 1
 1
-0.000000
+0
 Default
 vmp_string
 3
@@ -3001,7 +3001,7 @@ PV System Design
 1
 1
 1
-0.000000
+0
 Default
 voc_string
 3
@@ -3015,7 +3015,7 @@ PV System Design
 1
 1
 1
-0.000000
+0
 Default
 
 0

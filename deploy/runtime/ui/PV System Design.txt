@@ -1,6 +1,6 @@
 PV System Design
-839
-1042
+893
+1029
 107
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 6
 Width
 3
-527
+575
 Height
 3
 160
@@ -633,13 +633,13 @@ Name
 Label2
 X
 3
-51
+24
 Y
 3
 879
 Width
 3
-264
+291
 Height
 3
 34
@@ -684,10 +684,10 @@ Y
 192
 Width
 3
-800
+824
 Height
 3
-41
+50
 Caption
 5
 285
@@ -1019,7 +1019,7 @@ Name
 batt_max_power
 X
 3
-459
+480
 Y
 3
 108
@@ -1665,7 +1665,7 @@ Name
 num_strings_total
 X
 3
-720
+771
 Y
 3
 60
@@ -4723,7 +4723,7 @@ Name
 system_capacity
 X
 3
-459
+480
 Y
 3
 84
@@ -4782,7 +4782,7 @@ Name
 total_area
 X
 3
-720
+771
 Y
 3
 84
@@ -4841,7 +4841,7 @@ Name
 total_dc_inverter_capacity
 X
 3
-459
+480
 Y
 3
 60
@@ -4900,7 +4900,7 @@ Name
 total_inverter_capacity
 X
 3
-459
+480
 Y
 3
 36
@@ -5077,7 +5077,7 @@ Name
 total_modules
 X
 3
-720
+771
 Y
 3
 36

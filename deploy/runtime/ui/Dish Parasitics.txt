@@ -51,7 +51,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -110,7 +110,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -169,7 +169,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -228,7 +228,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -287,7 +287,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -380,7 +380,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -439,7 +439,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -498,7 +498,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -557,7 +557,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -616,7 +616,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -675,7 +675,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -726,7 +726,7 @@ Dish Parasitics
 1
 1
 1
-100.000000
+100
 Default
 P_tower_fan
 3
@@ -740,7 +740,7 @@ P_tower_fan
 1
 1
 1
-0.000000
+0
 Default
 T_cool_speed2
 3
@@ -754,7 +754,7 @@ Dish Parasitics
 1
 1
 1
-20.000000
+20
 Default
 T_cool_speed3
 3
@@ -768,7 +768,7 @@ Dish Parasitics
 1
 1
 1
-30.000000
+30
 Default
 Tower_water_outlet_temp
 3
@@ -782,7 +782,7 @@ Tower_water_outlet_temp
 1
 1
 1
-0.000000
+0
 Default
 b_cooler
 3
@@ -796,7 +796,7 @@ Dish Parasitics
 1
 1
 1
-0.700000
+0.7
 Default
 b_radiator
 3
@@ -810,7 +810,7 @@ Dish Parasitics
 1
 1
 1
-0.700000
+0.7
 Default
 cooling_fluid
 3
@@ -824,7 +824,7 @@ cooling_fluid
 1
 1
 1
-0.000000
+0
 Default
 cooling_tower_on
 3
@@ -838,7 +838,7 @@ cooling_tower_on
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.coolfluid
 3
@@ -853,7 +853,7 @@ Water|V50%EG|V25%EG|V40%PG|V40%EG
 1
 1
 1
-1.000000
+1
 Default
 d_pipe_tower
 3
@@ -867,7 +867,7 @@ d_pipe_tower
 1
 1
 1
-0.400000
+0.4
 Default
 epsilon_cooler_test
 3
@@ -881,7 +881,7 @@ Dish Parasitics
 1
 1
 1
-0.600000
+0.6
 Default
 epsilon_power_test
 3
@@ -895,7 +895,7 @@ epsilon_power_test
 1
 1
 1
-0.700000
+0.7
 Default
 epsilon_radiator_test
 3
@@ -909,7 +909,7 @@ Dish Parasitics
 1
 1
 1
-0.600000
+0.6
 Default
 eta_tower_pump
 3
@@ -923,7 +923,7 @@ eta_tower_pump
 1
 1
 1
-0.600000
+0.6
 Default
 ew_dish_separation
 3
@@ -937,7 +937,7 @@ ew_dish_separation
 1
 1
 1
-15.000000
+15
 Default
 fan_control_signal
 3
@@ -951,7 +951,7 @@ fan_control_signal
 1
 1
 1
-1.000000
+1
 Default
 fan_speed1
 3
@@ -965,7 +965,7 @@ Dish Parasitics
 1
 1
 1
-400.000000
+400
 Default
 fan_speed2
 3
@@ -979,7 +979,7 @@ Dish Parasitics
 1
 1
 1
-550.000000
+550
 Default
 fan_speed3
 3
@@ -993,7 +993,7 @@ Dish Parasitics
 1
 1
 1
-650.000000
+650
 Default
 ns_dish_separation
 3
@@ -1007,7 +1007,7 @@ ns_dish_separation
 1
 1
 1
-15.000000
+15
 Default
 pump_speed
 3
@@ -1021,7 +1021,7 @@ Dish Parasitics
 1
 1
 1
-1800.000000
+1800
 Default
 system_availability
 3
@@ -1035,7 +1035,7 @@ system_availability
 1
 1
 1
-1.000000
+1
 Default
 tower_m_dot_water
 3
@@ -1049,7 +1049,7 @@ tower_m_dot_water
 1
 1
 1
-134000.000000
+134000
 Default
 tower_m_dot_water_test
 3
@@ -1063,7 +1063,7 @@ tower_m_dot_water_test
 1
 1
 1
-0.000000
+0
 Default
 tower_mode
 3
@@ -1077,7 +1077,7 @@ tower_mode
 1
 1
 1
-1.000000
+1
 Default
 tower_pipe_material
 3
@@ -1091,7 +1091,7 @@ tower_pipe_material
 1
 1
 1
-1.000000
+1
 Default
 
 77

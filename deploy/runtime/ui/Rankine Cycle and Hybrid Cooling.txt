@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -142,7 +142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -201,7 +201,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -260,7 +260,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -319,7 +319,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -437,7 +437,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -496,7 +496,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -555,7 +555,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -614,7 +614,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -673,7 +673,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -732,7 +732,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -791,7 +791,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -850,7 +850,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -909,7 +909,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -968,7 +968,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1072,7 +1072,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1581,7 +1581,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1663,7 +1663,7 @@ Power Cycle
 1
 1
 1
-1.000000
+1
 Default
 F_wc
 3
@@ -1677,7 +1677,7 @@ Power Cycle
 2
 1
 1
-0.000000
+0
 Default
 P_boil
 3
@@ -1691,7 +1691,7 @@ Power Cycle
 1
 1
 1
-100.000000
+100
 Default
 P_cond_min
 3
@@ -1705,7 +1705,7 @@ Power Cycle
 1
 1
 1
-1.250000
+1.25
 Default
 P_cond_ratio
 3
@@ -1719,7 +1719,7 @@ Power Cycle
 1
 1
 1
-1.002800
+1.0028
 Default
 T_ITD_des
 3
@@ -1733,7 +1733,7 @@ Power Cycle
 1
 1
 1
-16.000000
+16
 Default
 T_amb_des
 3
@@ -1747,7 +1747,7 @@ Power Cycle
 1
 1
 1
-27.000000
+27
 Default
 T_approach
 3
@@ -1761,7 +1761,7 @@ Power Cycle
 1
 1
 1
-5.000000
+5
 Default
 combo_condenser_type
 3
@@ -1776,7 +1776,7 @@ Evaporative|Air-cooled|Hybrid
 1
 1
 1
-0.000000
+0
 Choice
 dT_cw_ref
 3
@@ -1790,7 +1790,7 @@ Power Cycle
 1
 1
 1
-20.000000
+20
 Default
 hybrid_tou1
 3
@@ -1804,7 +1804,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 hybrid_tou2
 3
@@ -1818,7 +1818,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 hybrid_tou3
 3
@@ -1832,7 +1832,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 hybrid_tou4
 3
@@ -1846,7 +1846,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 hybrid_tou5
 3
@@ -1860,7 +1860,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 hybrid_tou6
 3
@@ -1874,7 +1874,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 hybrid_tou7
 3
@@ -1888,7 +1888,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 hybrid_tou8
 3
@@ -1902,7 +1902,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 hybrid_tou9
 3
@@ -1916,7 +1916,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 n_pl_inc
 3
@@ -1930,7 +1930,7 @@ Power Cycle
 1
 1
 1
-8.000000
+8
 Default
 pb_bd_frac
 3
@@ -1944,7 +1944,7 @@ Power Cycle
 1
 1
 1
-0.013000
+0.013
 Default
 pressure_mode
 3
@@ -1959,7 +1959,7 @@ Fixed pressure|Sliding pressure
 1
 1
 1
-0.000000
+0
 Default
 tech_type
 3
@@ -1973,7 +1973,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 
 458

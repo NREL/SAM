@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -218,7 +218,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -322,7 +322,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -381,7 +381,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -440,7 +440,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -499,7 +499,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -657,7 +657,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -716,7 +716,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -775,7 +775,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -834,7 +834,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -893,7 +893,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -952,7 +952,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1011,7 +1011,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1093,7 +1093,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1179,7 +1179,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1238,7 +1238,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1297,7 +1297,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1356,7 +1356,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1468,7 +1468,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1527,7 +1527,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1586,7 +1586,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1645,7 +1645,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1704,7 +1704,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1763,7 +1763,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1822,7 +1822,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1881,7 +1881,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1940,7 +1940,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1999,7 +1999,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2058,7 +2058,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2109,7 +2109,7 @@ Tower and Receiver
 1
 1
 1
-12.440000
+12.44
 Default
 Flow_type
 3
@@ -2123,7 +2123,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 N_panels
 3
@@ -2137,7 +2137,7 @@ Tower and Receiver
 1
 1
 1
-24.000000
+24
 Default
 REC_COPY_Q_rec_des
 3
@@ -2151,7 +2151,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 REC_COPY_T_htf_cold_des
 3
@@ -2165,7 +2165,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 REC_COPY_T_htf_hot_des
 3
@@ -2179,7 +2179,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 REC_COPY_solarm
 3
@@ -2193,7 +2193,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.rec.cav_ap_height
 3
@@ -2207,7 +2207,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.rec.cav_ap_hw_ratio
 3
@@ -2221,7 +2221,7 @@ Tower and Receiver
 1
 1
 1
-1.200000
+1.2
 Default
 csp.pt.rec.cav_lip_height_ratio
 3
@@ -2235,7 +2235,7 @@ Tower and Receiver
 1
 1
 1
-0.100000
+0.1
 Default
 csp.pt.rec.flow_pattern
 3
@@ -2250,7 +2250,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.rec.htf_c_avg
 3
@@ -2264,7 +2264,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.rec.htf_t_avg
 3
@@ -2278,7 +2278,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.rec.htf_type
 3
@@ -2293,7 +2293,7 @@ Salt (60% NaNO3 40% KNO3)|Salt (46.5% LiF 11.5% NaF 42% KF)|User-defined...
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.rec.material_type
 3
@@ -2308,7 +2308,7 @@ Stainless AISI316
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.rec.max_flow_to_rec
 3
@@ -2322,7 +2322,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.rec.max_oper_frac
 3
@@ -2336,7 +2336,7 @@ Tower and Receiver
 1
 1
 1
-1.200000
+1.2
 Default
 d_tube_out
 3
@@ -2350,7 +2350,7 @@ Tower and Receiver
 1
 1
 1
-40.000000
+40
 Default
 delta_flux_hrs
 3
@@ -2364,7 +2364,7 @@ Tower and Receiver
 1
 1
 1
-1.000000
+1
 Default
 epsilon
 3
@@ -2378,7 +2378,7 @@ Tower and Receiver
 1
 1
 1
-0.880000
+0.88
 Default
 eta_pump
 3
@@ -2392,7 +2392,7 @@ Tower and Receiver
 1
 1
 1
-0.850000
+0.85
 Default
 f_rec_min
 3
@@ -2406,7 +2406,7 @@ Tower and Receiver
 1
 1
 1
-0.250000
+0.25
 Default
 field_fl_props
 3
@@ -2420,7 +2420,7 @@ Tower and Receiver
 3
 1
 9
-1.000000 7.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 
+1 7 0 0 0 0 0 0 0 
 
 MaterialProperties
 flux_max
@@ -2435,7 +2435,7 @@ Tower and Receiver
 1
 1
 1
-1200.000000
+1200
 Default
 h_tower
 3
@@ -2449,7 +2449,7 @@ Tower and Receiver
 1
 1
 1
-183.330002
+183.33
 Default
 hl_ffact
 3
@@ -2463,7 +2463,7 @@ Tower and Receiver
 1
 1
 1
-1.000000
+1
 Default
 is_iscc
 3
@@ -2477,7 +2477,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 mat_tube
 3
@@ -2491,7 +2491,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 n_flux_days
 3
@@ -2505,7 +2505,7 @@ Tower and Receiver
 1
 1
 1
-8.000000
+8
 Default
 n_flux_x
 3
@@ -2519,7 +2519,7 @@ Receiver flux map resolution
 1
 1
 1
-12.000000
+12
 Default
 piping_length
 3
@@ -2533,7 +2533,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 piping_length_const
 3
@@ -2547,7 +2547,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 piping_length_mult
 3
@@ -2561,7 +2561,7 @@ Tower and Receiver
 1
 1
 1
-1.000000
+1
 Default
 piping_loss
 3
@@ -2575,7 +2575,7 @@ Tower and Receiver
 1
 1
 1
-35.000000
+35
 Default
 piping_loss_tot
 3
@@ -2589,7 +2589,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 rec_absorptance
 3
@@ -2603,7 +2603,7 @@ Tower and Receiver
 1
 1
 1
-0.940000
+0.94
 Default
 rec_aspect
 3
@@ -2617,7 +2617,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 rec_d_spec
 3
@@ -2631,7 +2631,7 @@ Tower and Receiver
 1
 1
 1
-15.000000
+15
 Default
 rec_height
 3
@@ -2645,7 +2645,7 @@ Tower and Receiver
 1
 1
 1
-15.490000
+15.49
 Default
 rec_hl_perm2
 3
@@ -2659,7 +2659,7 @@ Tower and Receiver
 1
 1
 1
-30.000000
+30
 Default
 rec_htf
 3
@@ -2673,7 +2673,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 rec_qf_delay
 3
@@ -2687,7 +2687,7 @@ Tower and Receiver
 1
 1
 1
-0.250000
+0.25
 Default
 rec_su_delay
 3
@@ -2701,7 +2701,7 @@ Tower and Receiver
 1
 1
 1
-0.200000
+0.2
 Default
 receiver_type
 3
@@ -2716,7 +2716,7 @@ External receiver|Cavity receiver
 1
 1
 1
-0.000000
+0
 Default
 th_tube
 3
@@ -2730,7 +2730,7 @@ Tower and Receiver
 1
 1
 1
-1.250000
+1.25
 Default
 tower_technology
 3
@@ -2744,7 +2744,7 @@ Tower and Receiver
 1
 1
 1
-0.000000
+0
 Default
 user_fluid
 3
@@ -2758,7 +2758,7 @@ Tower and Receiver
 3
 1
 1
-0.000000
+0
 Default
 
 2399

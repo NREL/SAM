@@ -51,7 +51,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -110,7 +110,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -169,7 +169,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -228,7 +228,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -287,7 +287,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -346,7 +346,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -405,7 +405,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -464,7 +464,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -523,7 +523,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -582,7 +582,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -668,7 +668,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -727,7 +727,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -786,7 +786,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -845,7 +845,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -896,7 +896,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_T_htf_cold_des
 3
@@ -910,7 +910,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_T_htf_hot_des
 3
@@ -924,7 +924,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_design_eff
 3
@@ -938,7 +938,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_gross_net_conversion_factor
 3
@@ -952,7 +952,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_htf_cp_avg
 3
@@ -966,7 +966,7 @@ kJ/kg-K
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_nameplate
 3
@@ -980,7 +980,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_q_pb_design
 3
@@ -994,7 +994,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 PB_m_dot_htf_cycle_des
 3
@@ -1008,7 +1008,7 @@ kg/s
 1
 1
 1
-0.000000
+0
 Default
 cycle_cutoff_frac
 3
@@ -1022,7 +1022,7 @@ Power Cycle
 1
 1
 1
-0.250000
+0.25
 Default
 cycle_max_frac
 3
@@ -1036,7 +1036,7 @@ Power Cycle
 1
 1
 1
-1.200000
+1.2
 Default
 pb_pump_coef
 3
@@ -1050,7 +1050,7 @@ Power Cycle
 1
 1
 1
-0.550000
+0.55
 Default
 q_sby_frac
 3
@@ -1064,7 +1064,7 @@ Power Cycle
 1
 1
 1
-0.150000
+0.15
 Default
 startup_frac
 3
@@ -1078,7 +1078,7 @@ Power Cycle
 1
 1
 1
-0.200000
+0.2
 Default
 startup_time
 3
@@ -1092,7 +1092,7 @@ Power Cycle
 1
 1
 1
-0.300000
+0.3
 Default
 system_capacity
 3
@@ -1106,7 +1106,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 
 1013

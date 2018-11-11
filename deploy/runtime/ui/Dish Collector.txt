@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -196,7 +196,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -255,7 +255,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -306,7 +306,7 @@ Dish Collector
 1
 1
 1
-41.200001
+41.2
 Default
 A_total
 3
@@ -320,7 +320,7 @@ Dish Collector
 1
 1
 1
-42.900002
+42.9
 Default
 I_cut_in
 3
@@ -334,7 +334,7 @@ Dish Collector
 1
 1
 1
-275.000000
+275
 Default
 rho
 3
@@ -348,7 +348,7 @@ Dish Collector
 1
 1
 1
-0.940000
+0.94
 Default
 
 0

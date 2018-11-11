@@ -24,7 +24,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -106,7 +106,7 @@ Height
 24
 Value
 1
-0.500000
+0.5
 Mode
 3
 1
@@ -516,7 +516,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1

@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -245,7 +245,7 @@ Height
 21
 Value
 1
-950.000000
+950
 Mode
 3
 1
@@ -349,7 +349,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -408,7 +408,7 @@ Height
 21
 Value
 1
-25.000000
+25
 Mode
 3
 1
@@ -467,7 +467,7 @@ Height
 21
 Value
 1
-230.000000
+230
 Mode
 3
 1
@@ -526,7 +526,7 @@ Height
 21
 Value
 1
-10.000000
+10
 Mode
 3
 1
@@ -585,7 +585,7 @@ Height
 21
 Value
 1
-440.000000
+440
 Mode
 3
 1
@@ -644,7 +644,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -703,7 +703,7 @@ Height
 21
 Value
 1
-1.600000
+1.6
 Mode
 3
 1
@@ -762,7 +762,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -821,7 +821,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -880,7 +880,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -939,7 +939,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -998,7 +998,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1057,7 +1057,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1116,7 +1116,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1175,7 +1175,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1234,7 +1234,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1359,7 +1359,7 @@ Height
 21
 Value
 1
-1.800000
+1.8
 Mode
 3
 1
@@ -1418,7 +1418,7 @@ Height
 21
 Value
 1
-862848.000000
+862848
 Mode
 3
 1
@@ -1477,7 +1477,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1536,7 +1536,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1595,7 +1595,7 @@ Height
 21
 Value
 1
-120.000000
+120
 Mode
 3
 1
@@ -1654,7 +1654,7 @@ Height
 21
 Value
 1
-0.020000
+0.02
 Mode
 3
 1
@@ -1713,7 +1713,7 @@ Height
 21
 Value
 1
-2.700000
+2.7
 Mode
 3
 1
@@ -1772,7 +1772,7 @@ Height
 21
 Value
 1
-0.850000
+0.85
 Mode
 3
 1
@@ -1831,7 +1831,7 @@ Height
 21
 Value
 1
-0.005000
+0.005
 Mode
 3
 1
@@ -1890,7 +1890,7 @@ Height
 21
 Value
 1
-0.010000
+0.01
 Mode
 3
 1
@@ -1949,7 +1949,7 @@ Height
 21
 Value
 1
-0.025000
+0.025
 Mode
 3
 1
@@ -2008,7 +2008,7 @@ Height
 21
 Value
 1
-0.075000
+0.075
 Mode
 3
 1
@@ -2067,7 +2067,7 @@ Height
 21
 Value
 1
-0.050000
+0.05
 Mode
 3
 1
@@ -2155,7 +2155,7 @@ Height
 21
 Value
 1
-0.050000
+0.05
 Mode
 3
 1
@@ -2214,7 +2214,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2273,7 +2273,7 @@ Height
 21
 Value
 1
-12.000000
+12
 Mode
 3
 0
@@ -2332,7 +2332,7 @@ Height
 21
 Value
 1
-4.000000
+4
 Mode
 3
 0
@@ -2391,7 +2391,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2450,7 +2450,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2509,7 +2509,7 @@ Height
 21
 Value
 1
-10.000000
+10
 Mode
 3
 1
@@ -2568,7 +2568,7 @@ Height
 21
 Value
 1
-10.000000
+10
 Mode
 3
 1
@@ -2627,7 +2627,7 @@ Height
 21
 Value
 1
-0.750000
+0.75
 Mode
 3
 1
@@ -2678,7 +2678,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 I_bn
 3
@@ -2692,7 +2692,7 @@ Beam normal radiation (input kJ/m2-hr)
 1
 1
 1
-0.000000
+0
 Default
 I_bn_des
 3
@@ -2706,7 +2706,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-950.000000
+950
 Default
 PB_pump_coef
 3
@@ -2720,7 +2720,7 @@ PB_pump_coef
 1
 1
 1
-0.000000
+0
 Default
 P_amb
 3
@@ -2734,7 +2734,7 @@ Ambient pressure
 1
 1
 1
-930.500000
+930.5
 Default
 P_turb_des
 3
@@ -2748,7 +2748,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 SolarAz_init
 3
@@ -2762,7 +2762,7 @@ Solar azimuth angle
 1
 1
 1
-0.000000
+0
 Default
 SolarZen
 3
@@ -2776,7 +2776,7 @@ Solar zenith angle
 1
 1
 1
-0.000000
+0
 Default
 T_amb_des_sf
 3
@@ -2790,7 +2790,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-25.000000
+25
 Default
 T_cold_ref
 3
@@ -2804,7 +2804,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-230.000000
+230
 Default
 T_db
 3
@@ -2818,7 +2818,7 @@ T_db
 1
 1
 1
-15.000000
+15
 Default
 T_dp
 3
@@ -2832,7 +2832,7 @@ The dewpoint temperature
 1
 1
 1
-10.000000
+10
 Default
 T_fp
 3
@@ -2846,7 +2846,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-10.000000
+10
 Default
 T_hot
 3
@@ -2860,7 +2860,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-440.000000
+440
 Default
 T_pb_out_init
 3
@@ -2874,7 +2874,7 @@ Fluid temperature from the power block
 1
 1
 1
-290.000000
+290
 Default
 V_wind
 3
@@ -2888,7 +2888,7 @@ Ambient windspeed
 1
 1
 1
-0.000000
+0
 Default
 V_wind_max
 3
@@ -2902,7 +2902,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-20.000000
+20
 Default
 azimuth
 3
@@ -2916,7 +2916,7 @@ azimuth
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.area_multiplier
 3
@@ -2930,7 +2930,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-1.600000
+1.6
 Default
 csp.lf.sf.dp.actual_aper
 3
@@ -2944,7 +2944,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.dp.loop_aperture
 3
@@ -2958,7 +2958,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.dp.loop_opt_eff
 3
@@ -2972,7 +2972,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.dp.loop_therm_eff
 3
@@ -2986,7 +2986,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.dp.piping_therm_eff
 3
@@ -3000,7 +3000,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.dp.sm1_aperture
 3
@@ -3014,7 +3014,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.dp.sm1_numloops
 3
@@ -3028,7 +3028,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.dp.total_loop_conv_eff
 3
@@ -3042,7 +3042,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.field_area
 3
@@ -3056,7 +3056,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.geom1_area_frac
 3
@@ -3070,7 +3070,7 @@ a_b
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.geom2_area_frac
 3
@@ -3084,7 +3084,7 @@ a_sh
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.sh_geom_unique
 3
@@ -3098,7 +3098,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.sm_or_area
 3
@@ -3112,7 +3112,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.specified_solar_multiple
 3
@@ -3126,7 +3126,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-1.800000
+1.8
 Default
 csp.lf.sf.specified_total_aperture
 3
@@ -3140,7 +3140,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-862848.000000
+862848
 Default
 csp.lf.sf.total_land_area
 3
@@ -3154,7 +3154,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.total_pres_drop
 3
@@ -3168,7 +3168,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.sf.washes_per_year
 3
@@ -3182,7 +3182,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-120.000000
+120
 Default
 csp.lf.sf.water_per_wash
 3
@@ -3196,7 +3196,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.020000
+0.02
 Default
 dnifc
 3
@@ -3210,7 +3210,7 @@ dnifc
 1
 1
 1
-0.000000
+0
 Default
 e_startup
 3
@@ -3224,7 +3224,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-2.700000
+2.7
 Default
 eta_pump
 3
@@ -3238,7 +3238,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.850000
+0.85
 Default
 fP_boil_to_sh
 3
@@ -3252,7 +3252,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.005000
+0.005
 Default
 fP_hdr_c
 3
@@ -3266,7 +3266,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.010000
+0.01
 Default
 fP_hdr_h
 3
@@ -3280,7 +3280,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.025000
+0.025
 Default
 fP_sf_boil
 3
@@ -3294,7 +3294,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.075000
+0.075
 Default
 fP_sf_sh
 3
@@ -3308,7 +3308,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.050000
+0.05
 Default
 is_multgeom
 3
@@ -3322,7 +3322,7 @@ is_multgeom
 1
 1
 1
-1.000000
+1
 Default
 is_oncethru
 3
@@ -3337,7 +3337,7 @@ Recirculated boiler|Once through
 1
 1
 1
-0.000000
+0
 Default
 is_sh
 3
@@ -3351,7 +3351,7 @@ is_sh
 1
 1
 1
-1.000000
+1
 Default
 latitude
 3
@@ -3365,7 +3365,7 @@ latitude
 1
 1
 1
-0.000000
+0
 Default
 m_dot_htf_ref
 3
@@ -3379,7 +3379,7 @@ Reference HTF flow rate at design conditions
 1
 1
 1
-0.000000
+0
 Default
 m_dot_min
 3
@@ -3393,7 +3393,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.050000
+0.05
 Default
 m_pb_demand
 3
@@ -3407,7 +3407,7 @@ Demand htf flow from the power block
 1
 1
 1
-0.000000
+0
 Default
 nLoops
 3
@@ -3421,7 +3421,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 nModBoil
 3
@@ -3435,7 +3435,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-12.000000
+12
 Default
 nModSH
 3
@@ -3449,7 +3449,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-4.000000
+4
 Default
 q_max_aux
 3
@@ -3463,7 +3463,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 shift
 3
@@ -3477,7 +3477,7 @@ Shift in longitude from local standard meridian
 1
 1
 1
-0.000000
+0
 Default
 solarm
 3
@@ -3491,7 +3491,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.000000
+0
 Default
 tes_hours
 3
@@ -3505,7 +3505,7 @@ tes_hours
 1
 1
 1
-0.000000
+0
 Default
 theta_dep
 3
@@ -3519,7 +3519,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-10.000000
+10
 Default
 theta_stow
 3
@@ -3533,7 +3533,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-10.000000
+10
 Default
 tilt
 3
@@ -3547,7 +3547,7 @@ tilt
 1
 1
 1
-0.000000
+0
 Default
 track_mode
 3
@@ -3561,7 +3561,7 @@ track_mode
 1
 1
 1
-1.000000
+1
 Default
 x_b_des
 3
@@ -3575,7 +3575,7 @@ Linear Fresnel Solar Field
 1
 1
 1
-0.750000
+0.75
 Default
 
 3117

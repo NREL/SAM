@@ -200,7 +200,7 @@ Degradation
 2
 1
 1
-0.000000
+0
 Default
 
 0

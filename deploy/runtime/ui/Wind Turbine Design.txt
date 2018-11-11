@@ -115,7 +115,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -175,7 +175,7 @@ Height
 21
 Value
 1
-80.000000
+80
 Mode
 3
 1
@@ -235,7 +235,7 @@ Height
 21
 Value
 1
-8.000000
+8
 Mode
 3
 1
@@ -362,7 +362,7 @@ Height
 21
 Value
 1
-0.140000
+0.14
 Mode
 3
 1
@@ -421,7 +421,7 @@ Height
 21
 Value
 1
-25.000000
+25
 Mode
 3
 1
@@ -481,7 +481,7 @@ Height
 21
 Value
 1
-4.000000
+4
 Mode
 3
 1
@@ -541,7 +541,7 @@ Height
 21
 Value
 1
-80.000000
+80
 Mode
 3
 1
@@ -646,7 +646,7 @@ Height
 21
 Value
 1
-1500.000000
+1500
 Mode
 3
 1
@@ -706,7 +706,7 @@ Height
 21
 Value
 1
-1500.000000
+1500
 Mode
 3
 1
@@ -766,7 +766,7 @@ Height
 21
 Value
 1
-0.450000
+0.45
 Mode
 3
 1
@@ -845,7 +845,7 @@ Height
 21
 Value
 1
-75.000000
+75
 Mode
 3
 1
@@ -905,7 +905,7 @@ Height
 21
 Value
 1
-75.000000
+75
 Mode
 3
 1
@@ -985,7 +985,7 @@ Wind Turbine
 1
 1
 1
-17.344999
+17.345
 Default
 a_error_test_string
 3
@@ -1012,7 +1012,7 @@ Wind Turbine
 1
 1
 1
-0.000000
+0
 Default
 wind.turbine.blade_design
 3
@@ -1027,7 +1027,7 @@ Baseline|Advanced Design
 1
 1
 1
-0.000000
+0
 Choice
 wind.turbine.drive_train
 3
@@ -1042,7 +1042,7 @@ Wind Turbine
 1
 1
 1
-0.000000
+0
 Choice
 wind.turbine.dummy
 3
@@ -1056,7 +1056,7 @@ Wind Turbine
 1
 1
 1
-0.000000
+0
 Default
 wind.turbine.elevation
 3
@@ -1070,7 +1070,7 @@ Wind Turbine
 1
 1
 1
-0.000000
+0
 Default
 wind.turbine.max_tip_speed
 3
@@ -1084,7 +1084,7 @@ Wind Turbine
 1
 1
 1
-80.000000
+80
 Numeric
 wind.turbine.max_tspeed_ratio
 3
@@ -1098,7 +1098,7 @@ Wind Turbine
 1
 1
 1
-8.000000
+8
 Numeric
 wind.turbine.name_only
 3
@@ -1126,7 +1126,7 @@ Select a turbine from the library|Define turbine design characteristics
 1
 1
 1
-0.000000
+0
 RadioChoice
 wind.turbine.region2nhalf_slope
 3
@@ -1140,7 +1140,7 @@ Wind Turbine
 1
 1
 1
-5.000000
+5
 Default
 wind.turbine.tower_design
 3
@@ -1155,7 +1155,7 @@ Baseline|Advanced Design
 1
 1
 1
-0.000000
+0
 Choice
 wind_resource_shear
 3
@@ -1169,7 +1169,7 @@ Wind Turbine
 1
 1
 1
-0.140000
+0.14
 Numeric
 wind_turbine_IEC_Class_from_lib
 3
@@ -1196,7 +1196,7 @@ Wind Turbine
 1
 1
 1
-25.000000
+25
 Numeric
 wind_turbine_cutin
 3
@@ -1210,7 +1210,7 @@ Wind Turbine
 1
 1
 1
-4.000000
+4
 Default
 wind_turbine_hub_ht
 3
@@ -1224,7 +1224,7 @@ Wind Turbine
 1
 1
 1
-80.000000
+80
 Numeric
 wind_turbine_kw_rating
 3
@@ -1238,7 +1238,7 @@ Wind Turbine
 1
 1
 1
-1500.000000
+1500
 Numeric
 wind_turbine_kw_rating_from_lib
 3
@@ -1252,7 +1252,7 @@ Wind Turbine
 1
 1
 1
-1800.000000
+1800
 Default
 wind_turbine_kw_rating_input
 3
@@ -1266,7 +1266,7 @@ Wind Turbine
 1
 1
 1
-1500.000000
+1500
 Numeric
 wind_turbine_max_cp
 3
@@ -1280,7 +1280,7 @@ Wind Turbine
 1
 1
 1
-0.450000
+0.45
 Numeric
 wind_turbine_powercurve_err_msg
 3
@@ -1306,7 +1306,7 @@ Wind Turbine
 2
 1
 1
-0.000000
+0
 Default
 wind_turbine_powercurve_powerout
 3
@@ -1320,7 +1320,7 @@ Wind Turbine
 2
 1
 1
-0.000000
+0
 Default
 wind_turbine_powercurve_powerout_from_lib
 3
@@ -1334,7 +1334,7 @@ Wind Turbine
 2
 1
 1
-0.000000
+0
 Default
 wind_turbine_powercurve_windspeeds
 3
@@ -1348,7 +1348,7 @@ Wind Turbine
 2
 1
 1
-0.000000
+0
 Default
 wind_turbine_powercurve_windspeeds_from_lib
 3
@@ -1362,7 +1362,7 @@ Wind Turbine
 2
 1
 1
-0.000000
+0
 Default
 wind_turbine_rated_wind_speed
 3
@@ -1376,7 +1376,7 @@ Wind Turbine
 1
 1
 1
-0.000000
+0
 Default
 wind_turbine_rotor_diameter
 3
@@ -1390,7 +1390,7 @@ Wind Turbine
 1
 1
 1
-75.000000
+75
 Numeric
 wind_turbine_rotor_diameter_from_lib
 3
@@ -1404,7 +1404,7 @@ Wind Turbine
 1
 1
 1
-80.000000
+80
 Default
 wind_turbine_rotor_diameter_input
 3
@@ -1418,7 +1418,7 @@ Wind Turbine
 1
 1
 1
-75.000000
+75
 Numeric
 wind_turbine_selection
 3

@@ -123,7 +123,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -182,7 +182,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -241,7 +241,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -382,7 +382,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -441,7 +441,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -500,7 +500,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -846,7 +846,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -905,7 +905,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -956,7 +956,7 @@ Electricity Rates - Description Metadata
 1
 1
 1
-0.000000
+0
 Numeric
 ur_demand_max
 3
@@ -970,7 +970,7 @@ Electricity Rates - Description Metadata
 1
 1
 1
-0.000000
+0
 Numeric
 ur_demand_min
 3
@@ -984,7 +984,7 @@ Electricity Rates - Description Metadata
 1
 1
 1
-0.000000
+0
 Numeric
 ur_description
 3
@@ -1024,7 +1024,7 @@ Electricity Rates - Description Metadata
 1
 1
 1
-0.000000
+0
 Numeric
 ur_energy_max
 3
@@ -1038,7 +1038,7 @@ Electricity Rates - Description Metadata
 1
 1
 1
-0.000000
+0
 Numeric
 ur_energy_min
 3
@@ -1052,7 +1052,7 @@ Electricity Rates - Description Metadata
 1
 1
 1
-0.000000
+0
 Numeric
 ur_name
 3
@@ -1155,7 +1155,7 @@ Electricity Rates - Description Metadata
 1
 1
 1
-0.000000
+0
 Numeric
 ur_voltage_min
 3
@@ -1169,7 +1169,7 @@ Electricity Rates - Description Metadata
 1
 1
 1
-0.000000
+0
 Numeric
 
 0

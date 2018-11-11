@@ -12,13 +12,13 @@ Name
 BatteryChargeOptions
 X
 3
-39
+33
 Y
 3
 183
 Width
 3
-219
+264
 Height
 3
 36

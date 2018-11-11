@@ -1283,13 +1283,13 @@ Name
 object 718
 X
 3
-165
+150
 Y
 3
 519
 Width
 3
-132
+147
 Height
 3
 24
