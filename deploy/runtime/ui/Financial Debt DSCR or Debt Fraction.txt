@@ -96,7 +96,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -155,7 +155,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -295,7 +295,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -354,7 +354,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -413,7 +413,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -644,7 +644,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -703,7 +703,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -762,7 +762,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -858,7 +858,7 @@ Project Term Debt
 1
 1
 1
-0.000000
+0
 Numeric
 cost_debt_fee
 3
@@ -872,7 +872,7 @@ Project Term Debt
 1
 1
 1
-0.000000
+0
 Numeric
 debt_message
 3
@@ -899,7 +899,7 @@ Debt percent|DSCR
 1
 1
 1
-1.000000
+1
 RadioChoice
 debt_percent
 3
@@ -913,7 +913,7 @@ Project Term Debt
 1
 1
 1
-50.000000
+50
 Numeric
 dscr
 3
@@ -927,7 +927,7 @@ Project Term Debt
 1
 1
 1
-0.000000
+0
 Numeric
 loan_moratorium
 3
@@ -941,7 +941,7 @@ Project Term Debt
 1
 1
 1
-0.000000
+0
 Numeric
 payment_option
 3
@@ -956,7 +956,7 @@ Equal payments (standard amortization)|Fixed principal declining interest
 1
 1
 1
-0.000000
+0
 RadioChoice
 term_int_rate
 3
@@ -970,7 +970,7 @@ Project Term Debt
 1
 1
 1
-0.000000
+0
 Numeric
 term_tenor
 3
@@ -984,7 +984,7 @@ Project Term Debt
 1
 1
 1
-0.000000
+0
 Numeric
 ui_wacc
 3
@@ -998,7 +998,7 @@ Project Term Debt
 1
 1
 1
-0.000000
+0
 Numeric
 
 342

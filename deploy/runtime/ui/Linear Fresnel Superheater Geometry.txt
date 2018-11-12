@@ -1947,7 +1947,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2006,7 +2006,7 @@ Height
 21
 Value
 1
-44.800000
+44.8
 Mode
 3
 1
@@ -2065,7 +2065,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2124,7 +2124,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2183,7 +2183,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2242,7 +2242,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2301,7 +2301,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2360,7 +2360,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2450,7 +2450,7 @@ Height
 21
 Value
 1
-1.000000
+1
 Mode
 3
 1
@@ -2509,7 +2509,7 @@ Height
 21
 Value
 1
-0.724000
+0.724
 Mode
 3
 1
@@ -2568,7 +2568,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2658,7 +2658,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2717,7 +2717,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2776,7 +2776,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2835,7 +2835,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2894,7 +2894,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2953,7 +2953,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3012,7 +3012,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3071,7 +3071,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3130,7 +3130,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3189,7 +3189,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3248,7 +3248,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3307,7 +3307,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3366,7 +3366,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3425,7 +3425,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3484,7 +3484,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3543,7 +3543,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3602,7 +3602,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3661,7 +3661,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3720,7 +3720,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3779,7 +3779,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3838,7 +3838,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3897,7 +3897,7 @@ Height
 21
 Value
 1
-0.935000
+0.935
 Mode
 3
 1
@@ -3994,7 +3994,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4053,7 +4053,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4112,7 +4112,7 @@ Height
 21
 Value
 1
-513.600000
+513.6
 Mode
 3
 1
@@ -4171,7 +4171,7 @@ Height
 21
 Value
 1
-0.950000
+0.95
 Mode
 3
 1
@@ -4304,7 +4304,7 @@ Height
 21
 Value
 1
-1.000000
+1
 Mode
 3
 1
@@ -4363,7 +4363,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4455,7 +4455,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4514,7 +4514,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4603,7 +4603,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4662,7 +4662,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4721,7 +4721,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4780,7 +4780,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4871,7 +4871,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4930,7 +4930,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4989,7 +4989,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5081,7 +5081,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5140,7 +5140,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5229,7 +5229,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5288,7 +5288,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5347,7 +5347,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5406,7 +5406,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5497,7 +5497,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5556,7 +5556,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5615,7 +5615,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5707,7 +5707,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5766,7 +5766,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5855,7 +5855,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5914,7 +5914,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5973,7 +5973,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6032,7 +6032,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6123,7 +6123,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6182,7 +6182,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6241,7 +6241,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6333,7 +6333,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6392,7 +6392,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6481,7 +6481,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6540,7 +6540,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6599,7 +6599,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6658,7 +6658,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6749,7 +6749,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6808,7 +6808,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6860,7 +6860,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.annulus_gas
 3
@@ -6874,7 +6874,7 @@ csp.lf.geom2.annulus_gas
 2
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.aper_width
 3
@@ -6888,7 +6888,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-16.559999
+16.56
 Default
 csp.lf.geom2.avg_field_temp_dt_design
 3
@@ -6902,7 +6902,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.coll_length
 3
@@ -6916,7 +6916,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-44.799999
+44.8
 Default
 csp.lf.geom2.coll_opt_loss_norm_inc
 3
@@ -6930,7 +6930,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.diam_absorber_inner
 3
@@ -6944,7 +6944,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.066000
+0.066
 Default
 csp.lf.geom2.diam_absorber_outer
 3
@@ -6958,7 +6958,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.070000
+0.07
 Default
 csp.lf.geom2.diam_absorber_plug
 3
@@ -6972,7 +6972,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.diam_envelope_inner
 3
@@ -6986,7 +6986,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.115000
+0.115
 Default
 csp.lf.geom2.diam_envelope_outer
 3
@@ -7000,7 +7000,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.120000
+0.12
 Default
 csp.lf.geom2.flow_type
 3
@@ -7015,7 +7015,7 @@ Tube flow|Annular flow
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.general_error
 3
@@ -7029,7 +7029,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-1.000000
+1
 Default
 csp.lf.geom2.geom_error
 3
@@ -7043,7 +7043,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.724000
+0.724
 Default
 csp.lf.geom2.glazing_intact
 3
@@ -7057,7 +7057,7 @@ csp.lf.geom2.glazing_intact
 2
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.heat_loss_at_design
 3
@@ -7071,7 +7071,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.hl_mode
 3
@@ -7086,7 +7086,7 @@ Polynomial heat loss model|Evacuated tube model
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.hlpolyt0
 3
@@ -7100,7 +7100,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.hlpolyt1
 3
@@ -7114,7 +7114,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.672000
+0.672
 Default
 csp.lf.geom2.hlpolyt2
 3
@@ -7142,7 +7142,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.hlpolyt4
 3
@@ -7156,7 +7156,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.hlpolyw0
 3
@@ -7170,7 +7170,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-1.000000
+1
 Default
 csp.lf.geom2.hlpolyw1
 3
@@ -7184,7 +7184,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.hlpolyw2
 3
@@ -7198,7 +7198,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.hlpolyw3
 3
@@ -7212,7 +7212,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.hlpolyw4
 3
@@ -7226,7 +7226,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.iaml0
 3
@@ -7240,7 +7240,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-1.003100
+1.0031
 Default
 csp.lf.geom2.iaml1
 3
@@ -7254,7 +7254,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
--0.225900
+-0.2259
 Default
 csp.lf.geom2.iaml2
 3
@@ -7268,7 +7268,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.536800
+0.5368
 Default
 csp.lf.geom2.iaml3
 3
@@ -7282,7 +7282,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
--1.643400
+-1.6434
 Default
 csp.lf.geom2.iaml4
 3
@@ -7296,7 +7296,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.722200
+0.7222
 Default
 csp.lf.geom2.iamt0
 3
@@ -7310,7 +7310,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.989600
+0.9896
 Default
 csp.lf.geom2.iamt1
 3
@@ -7324,7 +7324,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.044000
+0.044
 Default
 csp.lf.geom2.iamt2
 3
@@ -7338,7 +7338,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
--0.072100
+-0.0721
 Default
 csp.lf.geom2.iamt3
 3
@@ -7352,7 +7352,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
--0.232700
+-0.2327
 Default
 csp.lf.geom2.iamt4
 3
@@ -7366,7 +7366,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.inner_roughness
 3
@@ -7380,7 +7380,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000045
+4.5e-05
 Default
 csp.lf.geom2.mirror_refl
 3
@@ -7394,7 +7394,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.935000
+0.935
 Default
 csp.lf.geom2.opt_mode
 3
@@ -7408,7 +7408,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.rec_optical_derate
 3
@@ -7422,7 +7422,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.rec_thermal_derate
 3
@@ -7436,7 +7436,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.refl_aper_area
 3
@@ -7450,7 +7450,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-513.599976
+513.6
 Default
 csp.lf.geom2.soiling
 3
@@ -7464,7 +7464,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.950000
+0.95
 Default
 csp.lf.geom2.solpos_collinc_table
 3
@@ -7478,8 +7478,8 @@ Linear Fresnel Superheater Geometry
 3
 2
 2
-0.000000 0.000000 
-0.000000 0.000000 
+0 0 
+0 0 
 
 DataMatrix
 csp.lf.geom2.track_error
@@ -7494,7 +7494,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-1.000000
+1
 Default
 csp.lf.geom2.var1.abs_abs
 3
@@ -7508,7 +7508,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.960000
+0.96
 Default
 csp.lf.geom2.var1.abs_emis
 3
@@ -7522,7 +7522,7 @@ csp.lf.geom2.var1.abs_emis
 2
 1
 1
-0.138400
+0.1384
 Default
 csp.lf.geom2.var1.annulus_pressure
 3
@@ -7536,7 +7536,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000100
+0.0001
 Default
 csp.lf.geom2.var1.bellows_shadowing
 3
@@ -7550,7 +7550,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.960000
+0.96
 Default
 csp.lf.geom2.var1.broken_glass
 3
@@ -7564,7 +7564,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var1.env_abs
 3
@@ -7578,7 +7578,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.020000
+0.02
 Default
 csp.lf.geom2.var1.env_emis
 3
@@ -7592,7 +7592,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.860000
+0.86
 Default
 csp.lf.geom2.var1.env_trans
 3
@@ -7606,7 +7606,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.963000
+0.963
 Default
 csp.lf.geom2.var1.field_fraction
 3
@@ -7620,7 +7620,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.985000
+0.985
 Default
 csp.lf.geom2.var1.gas_type
 3
@@ -7635,7 +7635,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-2.000000
+2
 Default
 csp.lf.geom2.var1.hce_dirt
 3
@@ -7649,7 +7649,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.980000
+0.98
 Default
 csp.lf.geom2.var1.rated_heat_loss
 3
@@ -7663,7 +7663,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-150.000000
+150
 Default
 csp.lf.geom2.var2.abs_abs
 3
@@ -7677,7 +7677,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.960000
+0.96
 Default
 csp.lf.geom2.var2.abs_emis
 3
@@ -7691,7 +7691,7 @@ csp.lf.geom2.var2.abs_emis
 2
 1
 1
-0.650000
+0.65
 Default
 csp.lf.geom2.var2.annulus_pressure
 3
@@ -7705,7 +7705,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-750.000000
+750
 Default
 csp.lf.geom2.var2.bellows_shadowing
 3
@@ -7719,7 +7719,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.960000
+0.96
 Default
 csp.lf.geom2.var2.broken_glass
 3
@@ -7733,7 +7733,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var2.env_abs
 3
@@ -7747,7 +7747,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.020000
+0.02
 Default
 csp.lf.geom2.var2.env_emis
 3
@@ -7761,7 +7761,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.860000
+0.86
 Default
 csp.lf.geom2.var2.env_trans
 3
@@ -7775,7 +7775,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.963000
+0.963
 Default
 csp.lf.geom2.var2.field_fraction
 3
@@ -7789,7 +7789,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.010000
+0.01
 Default
 csp.lf.geom2.var2.gas_type
 3
@@ -7804,7 +7804,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var2.hce_dirt
 3
@@ -7818,7 +7818,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.980000
+0.98
 Default
 csp.lf.geom2.var2.rated_heat_loss
 3
@@ -7832,7 +7832,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-1100.000000
+1100
 Default
 csp.lf.geom2.var3.abs_abs
 3
@@ -7846,7 +7846,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.800000
+0.8
 Default
 csp.lf.geom2.var3.abs_emis
 3
@@ -7860,7 +7860,7 @@ csp.lf.geom2.var3.abs_emis
 2
 1
 1
-0.650000
+0.65
 Default
 csp.lf.geom2.var3.annulus_pressure
 3
@@ -7874,7 +7874,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-750.000000
+750
 Default
 csp.lf.geom2.var3.bellows_shadowing
 3
@@ -7888,7 +7888,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.960000
+0.96
 Default
 csp.lf.geom2.var3.broken_glass
 3
@@ -7902,7 +7902,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-1.000000
+1
 Default
 csp.lf.geom2.var3.env_abs
 3
@@ -7916,7 +7916,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var3.env_emis
 3
@@ -7930,7 +7930,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-1.000000
+1
 Default
 csp.lf.geom2.var3.env_trans
 3
@@ -7944,7 +7944,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-1.000000
+1
 Default
 csp.lf.geom2.var3.field_fraction
 3
@@ -7958,7 +7958,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.005000
+0.005
 Default
 csp.lf.geom2.var3.gas_type
 3
@@ -7973,7 +7973,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var3.hce_dirt
 3
@@ -7987,7 +7987,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-1.000000
+1
 Default
 csp.lf.geom2.var3.rated_heat_loss
 3
@@ -8001,7 +8001,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-1500.000000
+1500
 Default
 csp.lf.geom2.var4.abs_abs
 3
@@ -8015,7 +8015,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var4.abs_emis
 3
@@ -8029,7 +8029,7 @@ csp.lf.geom2.var4.abs_emis
 2
 1
 1
-0.138400
+0.1384
 Default
 csp.lf.geom2.var4.annulus_pressure
 3
@@ -8043,7 +8043,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var4.bellows_shadowing
 3
@@ -8057,7 +8057,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var4.broken_glass
 3
@@ -8071,7 +8071,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var4.env_abs
 3
@@ -8085,7 +8085,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var4.env_emis
 3
@@ -8099,7 +8099,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var4.env_trans
 3
@@ -8113,7 +8113,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var4.field_fraction
 3
@@ -8127,7 +8127,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var4.gas_type
 3
@@ -8142,7 +8142,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var4.hce_dirt
 3
@@ -8156,7 +8156,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.var4.rated_heat_loss
 3
@@ -8170,7 +8170,7 @@ Linear Fresnel Superheater Geometry
 1
 1
 1
-0.000000
+0
 Default
 
 2664

@@ -128,7 +128,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -187,7 +187,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -246,7 +246,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -337,7 +337,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -396,7 +396,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -455,7 +455,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -748,7 +748,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -807,7 +807,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -871,7 +871,7 @@ Capacity factor after plant loss
 1
 1
 1
-0.000000
+0
 Numeric
 conv_eff
 3
@@ -885,7 +885,7 @@ Generic System Plant
 1
 1
 1
-0.000000
+0
 Numeric
 derate
 3
@@ -899,7 +899,7 @@ Generic System Plant
 1
 1
 1
-9.000000
+9
 Numeric
 energy_output_array
 3
@@ -913,7 +913,7 @@ Generic System Plant
 2
 1
 1
-0.000000
+0
 DataArray
 first_year_output
 3
@@ -927,7 +927,7 @@ Generic System Plant
 1
 1
 1
-0.000000
+0
 Numeric
 first_year_output_peak
 3
@@ -941,7 +941,7 @@ Generic System Plant
 1
 1
 1
-0.000000
+0
 Numeric
 heat_rate
 3
@@ -955,7 +955,7 @@ Generic System Plant
 1
 1
 1
-10.000000
+10
 Numeric
 import_message
 3
@@ -982,7 +982,7 @@ Constant generation profile from nameplate capacity and capacity factor|Import h
 1
 1
 1
-0.000000
+0
 RadioChoice
 system_capacity
 3
@@ -996,7 +996,7 @@ Generic System Plant
 1
 1
 1
-1000.000000
+1000
 Numeric
 user_capacity_factor
 3
@@ -1010,7 +1010,7 @@ Generic System Plant
 1
 1
 1
-100.000000
+100
 Numeric
 
 1123

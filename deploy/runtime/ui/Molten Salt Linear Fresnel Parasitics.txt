@@ -276,7 +276,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -335,7 +335,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -394,7 +394,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -453,7 +453,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -512,7 +512,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -571,7 +571,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -630,7 +630,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -689,7 +689,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -748,7 +748,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -807,7 +807,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -866,7 +866,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -925,7 +925,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -984,7 +984,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1043,7 +1043,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1102,7 +1102,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1161,7 +1161,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1220,7 +1220,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1279,7 +1279,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1338,7 +1338,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1389,7 +1389,7 @@ MSLF Parasitics
 1
 1
 1
-0.450000
+0.45
 Default
 SCA_drives_elec
 3
@@ -1403,7 +1403,7 @@ MSLF Parasitics
 1
 1
 1
-125.000000
+125
 Default
 V_tes_des
 3
@@ -1417,7 +1417,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 aux_array
 3
@@ -1431,7 +1431,7 @@ MSLF Parasitics
 2
 1
 1
-0.000000
+0
 Default
 bop_array
 3
@@ -1445,7 +1445,7 @@ MSLF Parasitics
 2
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.aux_array_c0
 3
@@ -1459,7 +1459,7 @@ MSLF Parasitics
 1
 1
 1
-0.483000
+0.483
 Default
 csp.mslf.control.aux_array_c1
 3
@@ -1473,7 +1473,7 @@ MSLF Parasitics
 1
 1
 1
-0.517000
+0.517
 Default
 csp.mslf.control.aux_array_c2
 3
@@ -1487,7 +1487,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.aux_array_mult
 3
@@ -1501,7 +1501,7 @@ MSLF Parasitics
 1
 1
 1
-0.022730
+0.02273
 Default
 csp.mslf.control.aux_array_pf
 3
@@ -1515,7 +1515,7 @@ MSLF Parasitics
 1
 1
 1
-1.000000
+1
 Default
 csp.mslf.control.bop_array_c0
 3
@@ -1529,7 +1529,7 @@ MSLF Parasitics
 1
 1
 1
-0.483000
+0.483
 Default
 csp.mslf.control.bop_array_c1
 3
@@ -1543,7 +1543,7 @@ MSLF Parasitics
 1
 1
 1
-0.517000
+0.517
 Default
 csp.mslf.control.bop_array_c2
 3
@@ -1557,7 +1557,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.bop_array_mult
 3
@@ -1571,7 +1571,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.bop_array_pf
 3
@@ -1585,7 +1585,7 @@ MSLF Parasitics
 1
 1
 1
-1.000000
+1
 Default
 csp.mslf.par.calc.aux
 3
@@ -1599,7 +1599,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.par.calc.bop
 3
@@ -1613,7 +1613,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.par.calc.frac_gross
 3
@@ -1627,7 +1627,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.par.calc.tracking
 3
@@ -1641,7 +1641,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 custom_sgs_pipe_sizes
 3
@@ -1655,7 +1655,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 custom_tes_p_loss
 3
@@ -1669,7 +1669,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 k_tes_loss_coeffs
 3
@@ -1683,7 +1683,7 @@ MSLF Parasitics
 2
 1
 1
-0.000000
+0
 Default
 pb_fixed_par
 3
@@ -1697,7 +1697,7 @@ MSLF Parasitics
 1
 1
 1
-0.005500
+0.0055
 Default
 pb_pump_coef
 3
@@ -1711,7 +1711,7 @@ MSLF Parasitics
 1
 1
 1
-0.550000
+0.55
 Default
 sgs_diams
 3
@@ -1725,7 +1725,7 @@ MSLF Parasitics
 2
 1
 1
-0.000000
+0
 Default
 sgs_lengths
 3
@@ -1739,7 +1739,7 @@ MSLF Parasitics
 2
 1
 1
-0.000000
+0
 Default
 sgs_wallthicks
 3
@@ -1753,7 +1753,7 @@ MSLF Parasitics
 2
 1
 1
-0.000000
+0
 Default
 tes_pump_coef
 3
@@ -1767,7 +1767,7 @@ MSLF Parasitics
 1
 1
 1
-0.150000
+0.15
 Default
 
 1226

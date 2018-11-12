@@ -294,7 +294,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -354,7 +354,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -413,7 +413,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -473,7 +473,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -532,7 +532,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -592,7 +592,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -652,7 +652,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -712,7 +712,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -771,7 +771,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -831,7 +831,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -890,7 +890,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -950,7 +950,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1010,7 +1010,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1069,7 +1069,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1129,7 +1129,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1189,7 +1189,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1248,7 +1248,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1308,7 +1308,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1367,7 +1367,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1427,7 +1427,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1487,7 +1487,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1546,7 +1546,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1606,7 +1606,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1666,7 +1666,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1725,7 +1725,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1785,7 +1785,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1844,7 +1844,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1904,7 +1904,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1963,7 +1963,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2023,7 +2023,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2082,7 +2082,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2142,7 +2142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2201,7 +2201,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2261,7 +2261,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2320,7 +2320,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2380,7 +2380,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2439,7 +2439,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2499,7 +2499,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2559,7 +2559,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2618,7 +2618,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2678,7 +2678,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2729,7 +2729,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.bagasse_resource
 3
@@ -2743,7 +2743,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.barley_price
 3
@@ -2757,7 +2757,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.barley_resource
 3
@@ -2771,7 +2771,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.biomass_cost
 3
@@ -2785,7 +2785,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.biomass_fuel_cost
 3
@@ -2799,7 +2799,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.biomass_fuel_cost_esc
 3
@@ -2813,7 +2813,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.biomass_fuel_used
 3
@@ -2827,7 +2827,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.bit_price
 3
@@ -2841,7 +2841,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.bit_resource
 3
@@ -2855,7 +2855,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.coal_fuel_cost
 3
@@ -2869,7 +2869,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.coal_fuel_cost_esc
 3
@@ -2883,7 +2883,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.coal_fuel_used
 3
@@ -2897,7 +2897,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.coal_per_mmbtu
 3
@@ -2911,7 +2911,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.feedstock1_price
 3
@@ -2925,7 +2925,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.feedstock1_resource
 3
@@ -2939,7 +2939,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.feedstock2_price
 3
@@ -2953,7 +2953,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.feedstock2_resource
 3
@@ -2967,7 +2967,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.fixed_delivery_cost
 3
@@ -2981,7 +2981,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.forest_price
 3
@@ -2995,7 +2995,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.forest_resource
 3
@@ -3009,7 +3009,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.green_biomass_cost
 3
@@ -3023,7 +3023,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.herb_price
 3
@@ -3037,7 +3037,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.herb_resource
 3
@@ -3051,7 +3051,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.lig_price
 3
@@ -3065,7 +3065,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.lig_resource
 3
@@ -3079,7 +3079,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.mill_price
 3
@@ -3093,7 +3093,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.mill_resource
 3
@@ -3107,7 +3107,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.rice_price
 3
@@ -3121,7 +3121,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.rice_resource
 3
@@ -3135,7 +3135,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.stover_price
 3
@@ -3149,7 +3149,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.stover_resource
 3
@@ -3163,7 +3163,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.subbit_price
 3
@@ -3177,7 +3177,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.subbit_resource
 3
@@ -3191,7 +3191,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.urban_price
 3
@@ -3205,7 +3205,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.urban_resource
 3
@@ -3219,7 +3219,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.var_delivery_cost
 3
@@ -3233,7 +3233,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.wheat_price
 3
@@ -3247,7 +3247,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.wheat_resource
 3
@@ -3261,7 +3261,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.woody_price
 3
@@ -3275,7 +3275,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 biopwr.feedstockcost.woody_resource
 3
@@ -3289,7 +3289,7 @@ Feedstock Costs
 1
 1
 1
-0.000000
+0
 Default
 om_opt_fuel_1_cost
 3
@@ -3303,7 +3303,7 @@ om_opt_fuel_1_cost
 2
 1
 1
-0.000000
+0
 Default
 om_opt_fuel_1_cost_escal
 3
@@ -3317,7 +3317,7 @@ om_opt_fuel_1_cost_escal
 1
 1
 1
-0.000000
+0
 Default
 om_opt_fuel_1_usage
 3
@@ -3331,7 +3331,7 @@ om_opt_fuel_1_usage
 1
 1
 1
-0.000000
+0
 Default
 om_opt_fuel_2_cost
 3
@@ -3345,7 +3345,7 @@ om_opt_fuel_2_cost
 2
 1
 1
-0.000000
+0
 Default
 om_opt_fuel_2_cost_escal
 3
@@ -3359,7 +3359,7 @@ om_opt_fuel_2_cost_escal
 1
 1
 1
-0.000000
+0
 Default
 om_opt_fuel_2_usage
 3
@@ -3373,7 +3373,7 @@ om_opt_fuel_2_usage
 1
 1
 1
-0.000000
+0
 Default
 
 5159

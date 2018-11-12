@@ -157,7 +157,7 @@ Physical Trough Collector Library
 2
 1
 4
-470.299988 470.299988 470.299988 470.299988 
+470.3 470.3 470.3 470.3 
 
 Default
 Ave_Focal_Length
@@ -172,7 +172,7 @@ Physical Trough Collector Library
 2
 1
 4
-1.800000 1.800000 1.800000 1.800000 
+1.8 1.8 1.8 1.8 
 
 Default
 ColperSCA
@@ -187,7 +187,7 @@ Physical Trough Collector Library
 2
 1
 1
-12.000000
+12
 Default
 Dirt_mirror
 3
@@ -201,7 +201,7 @@ Physical Trough Collector Library
 2
 1
 4
-0.950000 0.950000 0.950000 0.950000 
+0.95 0.95 0.95 0.95 
 
 Default
 Distance_SCA
@@ -216,7 +216,7 @@ Physical Trough Collector Library
 2
 1
 1
-1.000000
+1
 Default
 Error
 3
@@ -230,7 +230,7 @@ Physical Trough Collector Library
 2
 1
 4
-0.990000 0.990000 0.990000 0.990000 
+0.99 0.99 0.99 0.99 
 
 Default
 GeomEffects
@@ -245,7 +245,7 @@ Physical Trough Collector Library
 2
 1
 4
-0.980000 0.980000 0.980000 0.980000 
+0.98 0.98 0.98 0.98 
 
 Default
 IAM_matrix
@@ -260,7 +260,7 @@ IAM_matrix
 3
 1
 1
-0.000000
+0
 Default
 L_SCA
 3
@@ -274,7 +274,7 @@ Physical Trough Collector Library
 2
 1
 1
-100.000000
+100
 Default
 L_aperture
 3
@@ -288,7 +288,7 @@ Physical Trough Collector Library
 2
 1
 1
-8.500000
+8.5
 Default
 Rho_mirror_clean
 3
@@ -302,7 +302,7 @@ Physical Trough Collector Library
 2
 1
 4
-0.935000 0.935000 0.935000 0.935000 
+0.935 0.935 0.935 0.935 
 
 Default
 TrackingError
@@ -317,7 +317,7 @@ Physical Trough Collector Library
 2
 1
 4
-0.994000 0.994000 0.994000 0.994000 
+0.994 0.994 0.994 0.994 
 
 Default
 W_aperture
@@ -332,7 +332,7 @@ Physical Trough Collector Library
 2
 1
 4
-5.000000 5.000000 5.000000 5.000000 
+5 5 5 5 
 
 Default
 arr_collectors_in_loop
@@ -347,7 +347,7 @@ Physical Trough Collector Library
 2
 1
 1
-0.000000
+0
 Default
 collector_library
 3
@@ -388,7 +388,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Ave_Focal_Length
 3
@@ -402,7 +402,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_ColperSCA
 3
@@ -416,7 +416,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Dirt_mirror
 3
@@ -430,7 +430,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Distance_SCA
 3
@@ -444,7 +444,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Error
 3
@@ -458,7 +458,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_GeomEffects
 3
@@ -472,7 +472,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_IamF0
 3
@@ -486,7 +486,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_IamF1
 3
@@ -500,7 +500,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_IamF2
 3
@@ -514,7 +514,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_IamF3
 3
@@ -528,7 +528,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_L_SCA
 3
@@ -542,7 +542,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Rho_mirror_clean
 3
@@ -556,7 +556,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_TrackingError
 3
@@ -570,7 +570,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_W_aperture
 3
@@ -584,7 +584,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 lib_collector_description
 3
@@ -611,7 +611,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 nColt
 3
@@ -625,7 +625,7 @@ Physical Trough Collector Library
 1
 1
 1
-4.000000
+4
 Default
 ui_A_aperture
 3
@@ -639,7 +639,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Numeric
 ui_Ave_Focal_length
 3
@@ -653,7 +653,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_ColperSCA
 3
@@ -667,7 +667,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Dirt_mirror
 3
@@ -681,7 +681,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Distance_SCA
 3
@@ -695,7 +695,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Error
 3
@@ -709,7 +709,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_GeomEffects
 3
@@ -723,7 +723,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_IamF0
 3
@@ -737,7 +737,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_IamF1
 3
@@ -751,7 +751,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_IamF2
 3
@@ -765,7 +765,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_IamF3
 3
@@ -779,7 +779,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_L_SCA
 3
@@ -793,7 +793,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Rho_mirror_clean
 3
@@ -807,7 +807,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_TrackingError
 3
@@ -821,7 +821,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_W_aperture
 3
@@ -835,7 +835,7 @@ Physical Trough Collector Library
 1
 1
 1
-0.000000
+0
 Default
 ui_collector_description
 3

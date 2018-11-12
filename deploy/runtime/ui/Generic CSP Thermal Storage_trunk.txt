@@ -321,7 +321,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -380,7 +380,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -439,7 +439,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -498,7 +498,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -557,7 +557,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -616,7 +616,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -675,7 +675,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -734,7 +734,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -793,7 +793,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -852,7 +852,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -911,7 +911,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -970,7 +970,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1029,7 +1029,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1088,7 +1088,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1139,7 +1139,7 @@ azimuth
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.tes.charge_loss_f0
 3
@@ -1153,7 +1153,7 @@ GSS Thermal Storage
 1
 1
 1
-1.000000
+1
 Default
 csp.gss.tes.charge_loss_f1
 3
@@ -1167,7 +1167,7 @@ GSS Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.tes.charge_loss_f2
 3
@@ -1181,7 +1181,7 @@ GSS Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.tes.charge_loss_f3
 3
@@ -1195,7 +1195,7 @@ GSS Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.tes.max_capacity
 3
@@ -1209,7 +1209,7 @@ GSS Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.tes.notify_text
 3
@@ -1236,7 +1236,7 @@ GSS Thermal Storage
 1
 1
 1
-1.000000
+1
 Default
 csp.gss.tes.temp_loss_f1
 3
@@ -1250,7 +1250,7 @@ GSS Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.tes.temp_loss_f2
 3
@@ -1264,7 +1264,7 @@ GSS Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.tes.temp_loss_f3
 3
@@ -1278,7 +1278,7 @@ GSS Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 f_charge
 3
@@ -1292,7 +1292,7 @@ GSS Thermal Storage
 1
 1
 1
-0.980000
+0.98
 Default
 f_disch
 3
@@ -1306,7 +1306,7 @@ GSS Thermal Storage
 1
 1
 1
-0.980000
+0.98
 Default
 f_etes_0
 3
@@ -1320,7 +1320,7 @@ GSS Thermal Storage
 1
 1
 1
-0.100000
+0.1
 Default
 f_teshl_ref
 3
@@ -1334,7 +1334,7 @@ GSS Thermal Storage
 1
 1
 1
-0.350000
+0.35
 Default
 hrs_tes
 3
@@ -1348,7 +1348,7 @@ GSS Thermal Storage
 1
 1
 1
-6.000000
+6
 Default
 ibh
 3
@@ -1362,7 +1362,7 @@ ibh
 1
 1
 1
-0.000000
+0
 Default
 ibn
 3
@@ -1376,7 +1376,7 @@ ibn
 1
 1
 1
-0.000000
+0
 Default
 itoth
 3
@@ -1390,7 +1390,7 @@ itoth
 1
 1
 1
-0.000000
+0
 Default
 latitude
 3
@@ -1404,7 +1404,7 @@ latitude
 1
 1
 1
-0.000000
+0
 Default
 longitude
 3
@@ -1418,7 +1418,7 @@ longitude
 1
 1
 1
-0.000000
+0
 Default
 ntod
 3
@@ -1432,7 +1432,7 @@ ntod
 1
 1
 1
-0.000000
+0
 Default
 tdb
 3
@@ -1446,7 +1446,7 @@ tdb
 1
 1
 1
-15.000000
+15
 Default
 teshlT_coefs
 3
@@ -1460,7 +1460,7 @@ teshlT_coefs
 2
 1
 1
-0.000000
+0
 Default
 teshlX_coefs
 3
@@ -1474,7 +1474,7 @@ teshlX_coefs
 2
 1
 1
-0.000000
+0
 Default
 tilt
 3
@@ -1488,7 +1488,7 @@ tilt
 1
 1
 1
-0.000000
+0
 Default
 timezone
 3
@@ -1502,7 +1502,7 @@ timezone
 1
 1
 1
-0.000000
+0
 Default
 twb
 3
@@ -1516,7 +1516,7 @@ twb
 1
 1
 1
-10.000000
+10
 Default
 vwind
 3
@@ -1530,7 +1530,7 @@ vwind
 1
 1
 1
-1.000000
+1
 Default
 
 1191

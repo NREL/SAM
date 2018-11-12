@@ -90,7 +90,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -185,7 +185,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -244,7 +244,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -303,7 +303,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -363,7 +363,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -422,7 +422,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -512,7 +512,7 @@ Tax and Insurance Rates
 2
 1
 1
-0.000000
+0
 SchedNumeric
 insurance_rate
 3
@@ -526,7 +526,7 @@ Tax and Insurance Rates
 1
 1
 1
-1.000000
+1
 Default
 prop_tax_assessed_decline
 3
@@ -540,7 +540,7 @@ Tax and Insurance Rates
 1
 1
 1
-0.000000
+0
 Default
 prop_tax_cost_assessed_percent
 3
@@ -554,7 +554,7 @@ Tax and Insurance Rates
 1
 1
 1
-100.000000
+100
 Default
 property_assessed_value
 3
@@ -568,7 +568,7 @@ Tax and Insurance Rates
 1
 1
 1
-0.000000
+0
 Default
 property_tax_rate
 3
@@ -582,7 +582,7 @@ Tax and Insurance Rates
 1
 1
 1
-1.000000
+1
 Default
 sales_tax_rate
 3
@@ -596,7 +596,7 @@ Tax and Insurance Rates
 1
 1
 1
-0.000000
+0
 Default
 state_tax_rate
 3
@@ -610,7 +610,7 @@ Tax and Insurance Rates
 2
 1
 1
-0.000000
+0
 SchedNumeric
 
 133

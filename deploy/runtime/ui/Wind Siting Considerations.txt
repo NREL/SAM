@@ -396,7 +396,7 @@ Height
 24
 Value
 1
-10.000000
+10
 Mode
 3
 0
@@ -459,7 +459,7 @@ Wind Siting Considerations
 1
 1
 1
-0.000000
+0
 RadioChoice
 txtBarriersUrl
 3
@@ -486,7 +486,7 @@ Wind Siting Considerations
 1
 1
 1
-10.000000
+10
 Numeric
 
 0

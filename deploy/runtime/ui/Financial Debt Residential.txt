@@ -213,7 +213,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -316,7 +316,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -376,7 +376,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -435,7 +435,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -576,7 +576,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -636,7 +636,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -687,7 +687,7 @@ Residential Loan
 1
 1
 1
-100.000000
+100
 Numeric
 debt_message
 3
@@ -713,7 +713,7 @@ Residential Loan
 1
 1
 1
-0.000000
+0
 Numeric
 loan_rate
 3
@@ -727,7 +727,7 @@ Residential Loan
 1
 1
 1
-6.000000
+6
 Numeric
 loan_term
 3
@@ -741,7 +741,7 @@ Residential Loan
 1
 1
 1
-30.000000
+30
 Numeric
 market
 3
@@ -755,7 +755,7 @@ Residential Loan
 1
 1
 1
-0.000000
+0
 Default
 mortgage
 3
@@ -770,7 +770,7 @@ Standard loan|Mortgage
 1
 1
 1
-1.000000
+1
 RadioChoice
 ui_net_capital_cost
 3
@@ -784,7 +784,7 @@ Residential Loan
 1
 1
 1
-0.000000
+0
 Numeric
 ui_wacc
 3
@@ -798,7 +798,7 @@ Residential Loan
 1
 1
 1
-0.000000
+0
 Numeric
 
 1732

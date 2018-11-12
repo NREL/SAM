@@ -366,7 +366,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -426,7 +426,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -486,7 +486,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -546,7 +546,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -606,7 +606,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -801,7 +801,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -861,7 +861,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -921,7 +921,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -981,7 +981,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1041,7 +1041,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1093,7 +1093,7 @@ Equity Flip Structure
 1
 1
 1
-0.000000
+0
 Numeric
 developer_postflip_cash_percent
 3
@@ -1107,7 +1107,7 @@ Equity Flip Structure
 1
 1
 1
-0.000000
+0
 Numeric
 developer_postflip_tax_percent
 3
@@ -1121,7 +1121,7 @@ Equity Flip Structure
 1
 1
 1
-0.000000
+0
 Numeric
 developer_preflip_cash_percent
 3
@@ -1135,7 +1135,7 @@ Equity Flip Structure
 1
 1
 1
-0.000000
+0
 Numeric
 developer_preflip_tax_percent
 3
@@ -1149,7 +1149,7 @@ Equity Flip Structure
 1
 1
 1
-0.000000
+0
 Numeric
 tax_investor_equity_percent
 3
@@ -1163,7 +1163,7 @@ Equity Flip Structure
 1
 1
 1
-98.000000
+98
 Numeric
 tax_investor_postflip_cash_percent
 3
@@ -1177,7 +1177,7 @@ Equity Flip Structure
 1
 1
 1
-10.000000
+10
 Numeric
 tax_investor_postflip_tax_percent
 3
@@ -1191,7 +1191,7 @@ Equity Flip Structure
 1
 1
 1
-10.000000
+10
 Numeric
 tax_investor_preflip_cash_percent
 3
@@ -1205,7 +1205,7 @@ Equity Flip Structure
 1
 1
 1
-98.000000
+98
 Numeric
 tax_investor_preflip_tax_percent
 3
@@ -1219,7 +1219,7 @@ Equity Flip Structure
 1
 1
 1
-98.000000
+98
 Numeric
 
 555

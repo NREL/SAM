@@ -96,7 +96,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -147,7 +147,7 @@ Cost of Acquiring Financing
 1
 1
 1
-0.000000
+0
 Numeric
 
 0

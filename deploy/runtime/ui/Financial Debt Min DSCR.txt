@@ -96,7 +96,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -199,7 +199,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -258,7 +258,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -362,7 +362,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -422,7 +422,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -482,7 +482,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -533,7 +533,7 @@ Project Term Debt
 1
 1
 1
-50.000000
+50
 Numeric
 debt_message
 3
@@ -559,7 +559,7 @@ Project Term Debt
 1
 1
 1
-6.000000
+6
 Numeric
 loan_term
 3
@@ -573,7 +573,7 @@ Project Term Debt
 1
 1
 1
-30.000000
+30
 Numeric
 ui_loan_amount
 3
@@ -587,7 +587,7 @@ Project Term Debt
 1
 1
 1
-0.000000
+0
 Numeric
 ui_net_capital_cost
 3
@@ -601,7 +601,7 @@ Project Term Debt
 1
 1
 1
-0.000000
+0
 Numeric
 ui_wacc
 3
@@ -615,7 +615,7 @@ Project Term Debt
 1
 1
 1
-0.000000
+0
 Numeric
 
 2092
