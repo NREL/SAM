@@ -501,7 +501,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -560,7 +560,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -619,7 +619,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -678,7 +678,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -737,7 +737,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -796,7 +796,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -855,7 +855,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -914,7 +914,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -973,7 +973,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1032,7 +1032,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1091,7 +1091,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1150,7 +1150,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1209,7 +1209,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1268,7 +1268,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1327,7 +1327,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1386,7 +1386,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1655,7 +1655,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1714,7 +1714,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1773,7 +1773,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1832,7 +1832,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1891,7 +1891,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1950,7 +1950,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2009,7 +2009,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2068,7 +2068,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2127,7 +2127,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2186,7 +2186,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2245,7 +2245,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2304,7 +2304,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2363,7 +2363,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2422,7 +2422,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2481,7 +2481,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2540,7 +2540,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2599,7 +2599,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2658,7 +2658,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2717,7 +2717,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2776,7 +2776,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2835,7 +2835,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2894,7 +2894,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2953,7 +2953,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3004,7 +3004,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_interest2
 3
@@ -3018,7 +3018,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_interest3
 3
@@ -3032,7 +3032,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_interest4
 3
@@ -3046,7 +3046,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_interest5
 3
@@ -3060,7 +3060,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_interest_rate1
 3
@@ -3074,7 +3074,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_interest_rate2
 3
@@ -3088,7 +3088,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_interest_rate3
 3
@@ -3102,7 +3102,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_interest_rate4
 3
@@ -3116,7 +3116,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_interest_rate5
 3
@@ -3130,7 +3130,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_interest_total
 3
@@ -3144,7 +3144,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_months1
 3
@@ -3158,7 +3158,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_months2
 3
@@ -3172,7 +3172,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_months3
 3
@@ -3186,7 +3186,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_months4
 3
@@ -3200,7 +3200,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_months5
 3
@@ -3214,7 +3214,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_name1
 3
@@ -3293,7 +3293,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_percent2
 3
@@ -3307,7 +3307,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_percent3
 3
@@ -3321,7 +3321,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_percent4
 3
@@ -3335,7 +3335,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_percent5
 3
@@ -3349,7 +3349,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_percent_total
 3
@@ -3363,7 +3363,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_principal1
 3
@@ -3377,7 +3377,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_principal2
 3
@@ -3391,7 +3391,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_principal3
 3
@@ -3405,7 +3405,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_principal4
 3
@@ -3419,7 +3419,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_principal5
 3
@@ -3433,7 +3433,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_principal_total
 3
@@ -3447,7 +3447,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_total1
 3
@@ -3461,7 +3461,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_total2
 3
@@ -3475,7 +3475,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_total3
 3
@@ -3489,7 +3489,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_total4
 3
@@ -3503,7 +3503,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_total5
 3
@@ -3517,7 +3517,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_upfront_rate1
 3
@@ -3531,7 +3531,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_upfront_rate2
 3
@@ -3545,7 +3545,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_upfront_rate3
 3
@@ -3559,7 +3559,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_upfront_rate4
 3
@@ -3573,7 +3573,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 const_per_upfront_rate5
 3
@@ -3587,7 +3587,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 construction_financing_cost
 3
@@ -3601,7 +3601,7 @@ Construction Period Debt
 1
 1
 1
-0.000000
+0
 Numeric
 
 3665

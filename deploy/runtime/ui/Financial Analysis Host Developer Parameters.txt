@@ -51,7 +51,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -154,7 +154,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -213,7 +213,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -272,7 +272,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -331,7 +331,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -462,7 +462,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -513,7 +513,7 @@ Financial Analysis Parameters
 1
 1
 1
-30.000000
+30
 Default
 analysis_period_warning
 3
@@ -539,7 +539,7 @@ Financial Analysis Parameters
 1
 1
 1
-0.000000
+0
 Default
 host_real_discount_rate
 3
@@ -553,7 +553,7 @@ Financial Analysis Parameters
 1
 1
 1
-5.500000
+5.5
 Default
 inflation_rate
 3
@@ -567,7 +567,7 @@ Financial Analysis Parameters
 1
 1
 1
-2.500000
+2.5
 Default
 nominal_discount_rate
 3
@@ -581,7 +581,7 @@ Financial Analysis Parameters
 1
 1
 1
-0.000000
+0
 Default
 real_discount_rate
 3
@@ -595,7 +595,7 @@ Financial Analysis Parameters
 1
 1
 1
-5.500000
+5.5
 Default
 
 313

@@ -276,7 +276,7 @@ Height
 21
 Value
 1
-0.005500
+0.0055
 Mode
 3
 1
@@ -335,7 +335,7 @@ Height
 21
 Value
 1
-0.003500
+0.0035
 Mode
 3
 1
@@ -394,7 +394,7 @@ Height
 21
 Value
 1
-0.200000
+0.2
 Mode
 3
 1
@@ -453,7 +453,7 @@ Height
 21
 Value
 1
-0.483000
+0.483
 Mode
 3
 1
@@ -512,7 +512,7 @@ Height
 21
 Value
 1
-0.571000
+0.571
 Mode
 3
 1
@@ -571,7 +571,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -630,7 +630,7 @@ Height
 21
 Value
 1
-1.000000
+1
 Mode
 3
 1
@@ -689,7 +689,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -748,7 +748,7 @@ Height
 21
 Value
 1
-0.023000
+0.023
 Mode
 3
 1
@@ -807,7 +807,7 @@ Height
 21
 Value
 1
-0.483000
+0.483
 Mode
 3
 1
@@ -866,7 +866,7 @@ Height
 21
 Value
 1
-0.571000
+0.571
 Mode
 3
 1
@@ -925,7 +925,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -984,7 +984,7 @@ Height
 21
 Value
 1
-1.000000
+1
 Mode
 3
 1
@@ -1043,7 +1043,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1102,7 +1102,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1161,7 +1161,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1220,7 +1220,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1271,7 +1271,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.005500
+0.0055
 Default
 Pipe_hl_coef
 3
@@ -1285,7 +1285,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.003500
+0.0035
 Default
 SCA_drives_elec
 3
@@ -1299,7 +1299,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.200000
+0.2
 Default
 aux_array
 3
@@ -1313,7 +1313,7 @@ Physical Trough Parasitics
 2
 1
 1
-0.000000
+0
 Default
 bop_array
 3
@@ -1327,7 +1327,7 @@ Physical Trough Parasitics
 2
 1
 1
-0.000000
+0
 Default
 csp.lf.par.aux_c0
 3
@@ -1341,7 +1341,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.483000
+0.483
 Default
 csp.lf.par.aux_c1
 3
@@ -1355,7 +1355,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.571000
+0.571
 Default
 csp.lf.par.aux_c2
 3
@@ -1369,7 +1369,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.par.aux_pf
 3
@@ -1383,7 +1383,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-1.000000
+1
 Default
 csp.lf.par.aux_total
 3
@@ -1397,7 +1397,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.par.aux_val
 3
@@ -1411,7 +1411,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.023000
+0.023
 Default
 csp.lf.par.bop_c0
 3
@@ -1425,7 +1425,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.483000
+0.483
 Default
 csp.lf.par.bop_c1
 3
@@ -1439,7 +1439,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.571000
+0.571
 Default
 csp.lf.par.bop_c2
 3
@@ -1453,7 +1453,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.par.bop_pf
 3
@@ -1467,7 +1467,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-1.000000
+1
 Default
 csp.lf.par.bop_total
 3
@@ -1481,7 +1481,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.par.bop_val
 3
@@ -1495,7 +1495,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.par.fixed_total
 3
@@ -1509,7 +1509,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.par.tracking_total
 3
@@ -1523,7 +1523,7 @@ Linear Fresnel Parasitics
 1
 1
 1
-0.000000
+0
 Default
 
 998

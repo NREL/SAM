@@ -231,7 +231,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -290,7 +290,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -349,7 +349,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -408,7 +408,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -467,7 +467,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -526,7 +526,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -585,7 +585,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -644,7 +644,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -703,7 +703,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -762,7 +762,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -821,7 +821,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -880,7 +880,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -939,7 +939,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -990,7 +990,7 @@ Tower Parasitics
 1
 1
 1
-0.023000
+0.023
 Default
 aux_par_0
 3
@@ -1004,7 +1004,7 @@ Tower Parasitics
 1
 1
 1
-0.483000
+0.483
 Default
 aux_par_1
 3
@@ -1018,7 +1018,7 @@ Tower Parasitics
 1
 1
 1
-0.571000
+0.571
 Default
 aux_par_2
 3
@@ -1032,7 +1032,7 @@ Tower Parasitics
 1
 1
 1
-0.000000
+0
 Default
 aux_par_f
 3
@@ -1046,7 +1046,7 @@ Tower Parasitics
 1
 1
 1
-1.000000
+1
 Default
 bop_par
 3
@@ -1060,7 +1060,7 @@ Tower Parasitics
 1
 1
 1
-0.025000
+0.025
 Default
 bop_par_0
 3
@@ -1074,7 +1074,7 @@ Tower Parasitics
 1
 1
 1
-0.000000
+0
 Numeric
 bop_par_1
 3
@@ -1088,7 +1088,7 @@ Tower Parasitics
 1
 1
 1
-0.483000
+0.483
 Default
 bop_par_2
 3
@@ -1102,7 +1102,7 @@ Tower Parasitics
 1
 1
 1
-0.000000
+0
 Default
 bop_par_f
 3
@@ -1116,7 +1116,7 @@ Tower Parasitics
 1
 1
 1
-1.000000
+1
 Default
 csp.pt.par.calc.aux
 3
@@ -1130,7 +1130,7 @@ Tower Parasitics
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.par.calc.bop
 3
@@ -1144,7 +1144,7 @@ Tower Parasitics
 1
 1
 1
-0.000000
+0
 Default
 pb_fixed_par
 3
@@ -1158,7 +1158,7 @@ Tower Parasitics
 1
 1
 1
-0.005500
+0.0055
 Default
 
 285

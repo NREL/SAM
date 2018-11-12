@@ -24,7 +24,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -110,7 +110,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -169,7 +169,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -228,7 +228,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -287,7 +287,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -346,7 +346,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -405,7 +405,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -703,7 +703,7 @@ Battery
 1
 1
 1
-20.000000
+20
 Numeric
 batt_Cp
 3
@@ -717,7 +717,7 @@ Battery
 1
 1
 1
-4183.000000
+4183
 Numeric
 batt_h_to_ambient
 3
@@ -731,7 +731,7 @@ Battery
 1
 1
 1
-5.000000
+5
 Numeric
 batt_height
 3
@@ -745,7 +745,7 @@ Battery
 1
 1
 1
-0.425000
+0.425
 Numeric
 batt_length
 3
@@ -759,7 +759,7 @@ Battery
 1
 1
 1
-0.250000
+0.25
 Numeric
 batt_mass
 3
@@ -773,7 +773,7 @@ Battery
 1
 1
 1
-56.000000
+56
 Numeric
 batt_specific_energy_per_mass
 3
@@ -787,7 +787,7 @@ Battery
 1
 1
 1
-150.000000
+150
 Numeric
 batt_specific_energy_per_volume
 3
@@ -801,7 +801,7 @@ Battery
 1
 1
 1
-300.000000
+300
 Numeric
 batt_volume
 3
@@ -815,7 +815,7 @@ Battery
 1
 1
 1
-0.001000
+0.001
 Numeric
 batt_width
 3
@@ -829,7 +829,7 @@ Battery
 1
 1
 1
-0.181000
+0.181
 Numeric
 cap_vs_temp
 3
@@ -843,10 +843,10 @@ Battery
 3
 4
 2
--15.000000 65.000000 
-0.000000 85.000000 
-25.000000 100.000000 
-40.000000 104.000000 
+-15 65 
+0 85 
+25 100 
+40 104 
 
 DataArray
 

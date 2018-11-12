@@ -807,7 +807,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -866,7 +866,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -925,7 +925,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1007,7 +1007,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1066,7 +1066,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1125,7 +1125,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1184,7 +1184,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1243,7 +1243,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1302,7 +1302,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1361,7 +1361,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1420,7 +1420,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1479,7 +1479,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1538,7 +1538,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1597,7 +1597,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1656,7 +1656,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1715,7 +1715,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1805,7 +1805,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1864,7 +1864,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1923,7 +1923,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1982,7 +1982,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2041,7 +2041,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2100,7 +2100,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2159,7 +2159,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2218,7 +2218,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2277,7 +2277,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2336,7 +2336,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2395,7 +2395,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2454,7 +2454,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2513,7 +2513,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2572,7 +2572,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2631,7 +2631,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2690,7 +2690,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2749,7 +2749,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2808,7 +2808,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2867,7 +2867,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2926,7 +2926,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2985,7 +2985,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3044,7 +3044,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3103,7 +3103,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3242,7 +3242,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3293,7 +3293,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 T_pcdes
 3
@@ -3307,7 +3307,7 @@ GSS Power Block
 1
 1
 1
-21.000000
+21
 Default
 W_dot_par_fixed
 3
@@ -3321,7 +3321,7 @@ MWe
 1
 1
 1
-0.000000
+0
 Numeric
 W_dot_part_load_des
 3
@@ -3335,7 +3335,7 @@ MWe
 1
 1
 1
-0.000000
+0
 Numeric
 Wpar_prodD_coefs
 3
@@ -3349,7 +3349,7 @@ GSS Power Block
 2
 1
 1
-0.000000
+0
 Default
 Wpar_prodQ_coefs
 3
@@ -3363,7 +3363,7 @@ GSS Power Block
 2
 1
 1
-0.000000
+0
 Default
 Wpar_prodT_coefs
 3
@@ -3377,7 +3377,7 @@ GSS Power Block
 2
 1
 1
-0.000000
+0
 Default
 adjust
 3
@@ -3404,7 +3404,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.gross_net_conversion_factor
 3
@@ -3418,7 +3418,7 @@ GSS Power Block
 1
 1
 1
-0.910000
+0.91
 Default
 csp.gss.pwrb.nameplate
 3
@@ -3432,7 +3432,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.pl_eff_f0
 3
@@ -3446,7 +3446,7 @@ GSS Power Block
 1
 1
 1
-0.900000
+0.9
 Default
 csp.gss.pwrb.pl_eff_f1
 3
@@ -3460,7 +3460,7 @@ GSS Power Block
 1
 1
 1
-0.100000
+0.1
 Default
 csp.gss.pwrb.pl_eff_f2
 3
@@ -3474,7 +3474,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.pl_eff_f3
 3
@@ -3488,7 +3488,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.pl_eff_f4
 3
@@ -3502,7 +3502,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.pl_par_design
 3
@@ -3516,7 +3516,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.pl_par_f0
 3
@@ -3530,7 +3530,7 @@ GSS Power Block
 1
 1
 1
-1.000000
+1
 Default
 csp.gss.pwrb.pl_par_f1
 3
@@ -3544,7 +3544,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.pl_par_f2
 3
@@ -3558,7 +3558,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.pl_par_f3
 3
@@ -3572,7 +3572,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.temp_corr_mode
 3
@@ -3587,7 +3587,7 @@ Wet bulb|Dry bulb
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.temp_eff_f0
 3
@@ -3601,7 +3601,7 @@ GSS Power Block
 1
 1
 1
-1.000000
+1
 Default
 csp.gss.pwrb.temp_eff_f1
 3
@@ -3615,7 +3615,7 @@ GSS Power Block
 1
 1
 1
--0.002000
+-0.002
 Default
 csp.gss.pwrb.temp_eff_f2
 3
@@ -3629,7 +3629,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.temp_eff_f3
 3
@@ -3643,7 +3643,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.temp_eff_f4
 3
@@ -3657,7 +3657,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.temp_par_design
 3
@@ -3671,7 +3671,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.temp_par_f0
 3
@@ -3685,7 +3685,7 @@ GSS Power Block
 1
 1
 1
-1.000000
+1
 Default
 csp.gss.pwrb.temp_par_f1
 3
@@ -3699,7 +3699,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.temp_par_f2
 3
@@ -3713,7 +3713,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.gss.pwrb.temp_par_f3
 3
@@ -3727,7 +3727,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 dni_par_design
 3
@@ -3741,7 +3741,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 dni_par_f0
 3
@@ -3755,7 +3755,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 dni_par_f1
 3
@@ -3769,7 +3769,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 dni_par_f2
 3
@@ -3783,7 +3783,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 dni_par_f3
 3
@@ -3797,7 +3797,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 etaQ_coefs
 3
@@ -3811,7 +3811,7 @@ GSS Power Block
 2
 1
 1
-0.000000
+0
 Default
 etaT_coefs
 3
@@ -3825,7 +3825,7 @@ GSS Power Block
 2
 1
 1
-0.000000
+0
 Default
 eta_des
 3
@@ -3839,7 +3839,7 @@ GSS Power Block
 1
 1
 1
-0.350000
+0.35
 Default
 eta_lhv
 3
@@ -3853,7 +3853,7 @@ GSS Power Block
 1
 1
 1
-0.900000
+0.9
 Default
 f_Wpar_fixed
 3
@@ -3867,7 +3867,7 @@ GSS Power Block
 1
 1
 1
-0.005500
+0.0055
 Default
 f_Wpar_prod
 3
@@ -3881,7 +3881,7 @@ GSS Power Block
 1
 1
 1
-0.080000
+0.08
 Default
 f_par_tot_des
 3
@@ -3895,7 +3895,7 @@ f_par_tot_des
 1
 1
 1
-0.000000
+0
 Numeric
 f_startup
 3
@@ -3909,7 +3909,7 @@ GSS Power Block
 1
 1
 1
-0.200000
+0.2
 Default
 f_wmax
 3
@@ -3923,7 +3923,7 @@ GSS Power Block
 1
 1
 1
-1.100000
+1.1
 Default
 f_wmin
 3
@@ -3937,7 +3937,7 @@ GSS Power Block
 1
 1
 1
-0.250000
+0.25
 Default
 system_capacity
 3
@@ -3951,7 +3951,7 @@ GSS Power Block
 1
 1
 1
-0.000000
+0
 Default
 w_des
 3
@@ -3965,7 +3965,7 @@ GSS Power Block
 1
 1
 1
-110.000000
+110
 Default
 
 2431

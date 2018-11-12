@@ -240,7 +240,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -299,7 +299,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -358,7 +358,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -417,7 +417,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -594,7 +594,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -653,7 +653,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -712,7 +712,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -771,7 +771,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -830,7 +830,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -889,7 +889,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -948,7 +948,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1007,7 +1007,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1066,7 +1066,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1125,7 +1125,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1184,7 +1184,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1243,7 +1243,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1329,7 +1329,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1388,7 +1388,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1447,7 +1447,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1506,7 +1506,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1565,7 +1565,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1624,7 +1624,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1683,7 +1683,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1742,7 +1742,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1827,7 +1827,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1886,7 +1886,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1945,7 +1945,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2004,7 +2004,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2063,7 +2063,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2122,7 +2122,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2181,7 +2181,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2240,7 +2240,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2299,7 +2299,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2358,7 +2358,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2417,7 +2417,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2468,7 +2468,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 H_rec
 3
@@ -2482,7 +2482,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 P_b_in_init
 3
@@ -2496,7 +2496,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 P_cond_init
 3
@@ -2510,7 +2510,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 P_hp_in_des
 3
@@ -2524,7 +2524,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 P_hp_out
 3
@@ -2538,7 +2538,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 P_hp_out_des
 3
@@ -2552,7 +2552,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 P_ref
 3
@@ -2566,7 +2566,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 Q_rec_des
 3
@@ -2580,7 +2580,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 THT
 3
@@ -2594,7 +2594,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 T_cold_ref
 3
@@ -2608,7 +2608,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
--1.230000
+-1.23
 Default
 T_fw_init
 3
@@ -2622,7 +2622,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 T_hot
 3
@@ -2636,7 +2636,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 T_hot_ref
 3
@@ -2650,7 +2650,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 T_hp_out
 3
@@ -2664,7 +2664,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 T_rh_out_des
 3
@@ -2678,7 +2678,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-485.000000
+485
 Default
 T_rh_target
 3
@@ -2692,7 +2692,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 T_sh_out_des
 3
@@ -2706,7 +2706,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-545.000000
+545
 Default
 b_q_loss_flux
 3
@@ -2720,7 +2720,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-100.000000
+100
 Default
 csp.dst.abs_rh
 3
@@ -2734,7 +2734,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.950000
+0.95
 Default
 csp.dst.abs_sh
 3
@@ -2748,7 +2748,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.950000
+0.95
 Default
 csp.dst.eff_b_ref
 3
@@ -2762,7 +2762,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.880000
+0.88
 Default
 csp.dst.eff_rh_ref
 3
@@ -2776,7 +2776,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.750000
+0.75
 Default
 csp.dst.eff_sh_ref
 3
@@ -2790,7 +2790,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.840000
+0.84
 Default
 csp.dst.emis_rh
 3
@@ -2804,7 +2804,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-1.000000
+1
 Default
 csp.dst.emis_sh
 3
@@ -2818,7 +2818,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-1.000000
+1
 Default
 csp.dst.f_rec_max
 3
@@ -2832,7 +2832,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-1.050000
+1.05
 Default
 csp.dst.flow_pattern
 3
@@ -2847,7 +2847,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-1.000000
+1
 Default
 csp.dst.mat_boiler
 3
@@ -2862,7 +2862,7 @@ Stainless AISI316|T91 Steel
 1
 1
 1
-0.000000
+0
 Default
 csp.dst.mat_rh
 3
@@ -2877,7 +2877,7 @@ Stainless AISI316|T91 Steel
 1
 1
 1
-1.000000
+1
 Default
 csp.dst.mat_sh
 3
@@ -2892,7 +2892,7 @@ Stainless AISI316|T91 Steel
 1
 1
 1
-1.000000
+1
 Default
 csp.dst.max_b_flux
 3
@@ -2906,7 +2906,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-550.000000
+550
 Default
 csp.dst.max_rh_flux
 3
@@ -2920,7 +2920,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-140.000000
+140
 Default
 csp.dst.max_sh_flux
 3
@@ -2934,7 +2934,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-280.000000
+280
 Default
 csp.dst.num_2panelgroups
 3
@@ -2948,7 +2948,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-6.000000
+6
 Default
 csp.dst.solar_multiple
 3
@@ -2962,7 +2962,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-1.900000
+1.9
 Default
 ct
 3
@@ -2976,7 +2976,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 cycle_max_frac
 3
@@ -2990,7 +2990,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 d_rec
 3
@@ -3004,7 +3004,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-21.000000
+21
 Default
 d_rh
 3
@@ -3018,7 +3018,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.038100
+0.0381
 Default
 d_sh
 3
@@ -3032,7 +3032,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.019050
+0.01905
 Default
 d_t_boiler
 3
@@ -3046,7 +3046,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.025400
+0.0254
 Default
 delta_flux_hrs
 3
@@ -3060,7 +3060,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-2.000000
+2
 Default
 design_eff
 3
@@ -3074,7 +3074,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 dni_des
 3
@@ -3088,7 +3088,7 @@ W/m²
 1
 1
 1
-950.000000
+950
 Default
 f_h_b
 3
@@ -3102,7 +3102,7 @@ Fraction of receiver height to boiler
 1
 1
 1
-0.000000
+0
 Default
 f_h_rh
 3
@@ -3116,7 +3116,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.200000
+0.2
 Default
 f_h_sh
 3
@@ -3130,7 +3130,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.400000
+0.4
 Default
 f_mdot_rh_init
 3
@@ -3144,7 +3144,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 f_mdotrh_des
 3
@@ -3158,7 +3158,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 f_pb_cutoff
 3
@@ -3172,7 +3172,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 f_pb_sb
 3
@@ -3186,7 +3186,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 f_rec_min
 3
@@ -3200,7 +3200,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.250000
+0.25
 Default
 flowtype
 3
@@ -3214,7 +3214,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 flux_max
 3
@@ -3228,7 +3228,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
--1.000000
+-1
 Default
 h_boiler
 3
@@ -3242,7 +3242,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-10.000000
+10
 Default
 h_rh
 3
@@ -3256,7 +3256,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-5.000000
+5
 Default
 h_sh
 3
@@ -3270,7 +3270,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-7.250000
+7.25
 Default
 h_tower
 3
@@ -3284,7 +3284,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-205.000000
+205
 Default
 hl_ffact
 3
@@ -3298,7 +3298,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-1.000000
+1
 Default
 lhv_eff
 3
@@ -3312,7 +3312,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 mat_boiler
 3
@@ -3326,7 +3326,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 mat_rh
 3
@@ -3340,7 +3340,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 mat_sh
 3
@@ -3354,7 +3354,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 n_flux_days
 3
@@ -3368,7 +3368,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-8.000000
+8
 Default
 n_flux_x
 3
@@ -3382,7 +3382,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-12.000000
+12
 Default
 n_flux_y
 3
@@ -3396,7 +3396,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-1.000000
+1
 Default
 n_panels
 3
@@ -3410,7 +3410,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-16.000000
+16
 Default
 p_cycle_design
 3
@@ -3424,7 +3424,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 q_aux_max
 3
@@ -3438,7 +3438,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 q_pb_design
 3
@@ -3452,7 +3452,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 q_rec_des
 3
@@ -3466,7 +3466,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-500.000000
+500
 Default
 rec_absorptance
 3
@@ -3480,7 +3480,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.940000
+0.94
 Default
 rec_aspect
 3
@@ -3494,7 +3494,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 rec_emis
 3
@@ -3508,7 +3508,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.880000
+0.88
 Default
 rec_hl_perm2
 3
@@ -3522,7 +3522,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 rec_htf
 3
@@ -3536,7 +3536,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 rec_qf_delay
 3
@@ -3550,7 +3550,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.200000
+0.2
 Default
 rec_su_delay
 3
@@ -3564,7 +3564,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.300000
+0.3
 Default
 ref_htf_flow
 3
@@ -3578,7 +3578,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 rh_q_loss_flux
 3
@@ -3592,7 +3592,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-100.000000
+100
 Default
 sh_q_loss_flux
 3
@@ -3606,7 +3606,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-100.000000
+100
 Default
 t_standby_ini
 3
@@ -3620,7 +3620,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.000000
+0
 Default
 th_rh
 3
@@ -3676,7 +3676,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-1.000000
+1
 Default
 x_b_target
 3
@@ -3690,7 +3690,7 @@ Direct Steam Power Tower Receiver
 1
 1
 1
-0.500000
+0.5
 Default
 
 3421

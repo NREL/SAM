@@ -699,7 +699,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -758,7 +758,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -817,7 +817,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -876,7 +876,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -935,7 +935,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -994,7 +994,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1053,7 +1053,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1112,7 +1112,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1171,7 +1171,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1230,7 +1230,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1289,7 +1289,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1434,7 +1434,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1493,7 +1493,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1552,7 +1552,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1611,7 +1611,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1670,7 +1670,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1729,7 +1729,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1788,7 +1788,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1847,7 +1847,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1906,7 +1906,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1965,7 +1965,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2055,7 +2055,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2114,7 +2114,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2173,7 +2173,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2232,7 +2232,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2291,7 +2291,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2350,7 +2350,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -2454,7 +2454,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2513,7 +2513,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2572,7 +2572,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2631,7 +2631,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2690,7 +2690,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2749,7 +2749,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2800,7 +2800,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 F_wc
 3
@@ -2814,7 +2814,7 @@ Power Cycle
 2
 1
 1
-0.000000
+0
 Default
 P_boil
 3
@@ -2828,7 +2828,7 @@ Power Cycle
 1
 1
 1
-100.000000
+100
 Default
 P_cond_min
 3
@@ -2842,7 +2842,7 @@ Power Cycle
 1
 1
 1
-1.250000
+1.25
 Default
 P_cond_ratio
 3
@@ -2856,7 +2856,7 @@ Power Cycle
 1
 1
 1
-1.002800
+1.0028
 Default
 P_ref
 3
@@ -2870,7 +2870,7 @@ Power Cycle
 1
 1
 1
-111.000000
+111
 Default
 T_ITD_des
 3
@@ -2884,7 +2884,7 @@ Power Cycle
 1
 1
 1
-16.000000
+16
 Default
 T_amb_des
 3
@@ -2898,7 +2898,7 @@ Power Cycle
 1
 1
 1
-20.000000
+20
 Default
 T_approach
 3
@@ -2912,7 +2912,7 @@ Power Cycle
 1
 1
 1
-5.000000
+5
 Default
 T_htf_cold_ref
 3
@@ -2926,7 +2926,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 T_htf_hot_ref
 3
@@ -2940,7 +2940,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 T_set_aux
 3
@@ -2954,7 +2954,7 @@ Power Cycle
 1
 1
 1
-525.000000
+525
 Default
 T_startup
 3
@@ -2968,7 +2968,7 @@ Power Cycle
 1
 1
 1
-400.000000
+400
 Default
 adjust
 3
@@ -2996,7 +2996,7 @@ Minimum backup level|Supplemental operation
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.cycle.CT
 3
@@ -3011,7 +3011,7 @@ Evaporative|Air-cooled|Hybrid
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.cycle.F_wc1
 3
@@ -3025,7 +3025,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.cycle.F_wc2
 3
@@ -3039,7 +3039,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.cycle.F_wc3
 3
@@ -3053,7 +3053,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.cycle.F_wc4
 3
@@ -3067,7 +3067,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.cycle.F_wc5
 3
@@ -3081,7 +3081,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.cycle.F_wc6
 3
@@ -3095,7 +3095,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.cycle.F_wc7
 3
@@ -3109,7 +3109,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.cycle.F_wc8
 3
@@ -3123,7 +3123,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.cycle.F_wc9
 3
@@ -3137,7 +3137,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.cycle.gr_to_net
 3
@@ -3151,7 +3151,7 @@ Power Cycle
 1
 1
 1
-0.900000
+0.9
 Default
 csp.mslf.cycle.sliding_pres
 3
@@ -3166,7 +3166,7 @@ Fixed pressure|Sliding pressure
 1
 1
 1
-1.000000
+1
 Default
 cycle_cutoff_frac
 3
@@ -3180,7 +3180,7 @@ Power Cycle
 1
 1
 1
-0.250000
+0.25
 Default
 cycle_max_frac
 3
@@ -3194,7 +3194,7 @@ Power Cycle
 1
 1
 1
-1.050000
+1.05
 Default
 dT_cw_ref
 3
@@ -3208,7 +3208,7 @@ Power Cycle
 1
 1
 1
-10.000000
+10
 Default
 eta_lhv
 3
@@ -3222,7 +3222,7 @@ Power Cycle
 1
 1
 1
-0.900000
+0.9
 Default
 eta_ref
 3
@@ -3236,7 +3236,7 @@ Power Cycle
 1
 1
 1
-0.377400
+0.3774
 Default
 fossil_mode
 3
@@ -3250,7 +3250,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 hx_config
 3
@@ -3264,7 +3264,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 is_hx
 3
@@ -3278,7 +3278,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 lhv_eff
 3
@@ -3292,7 +3292,7 @@ Power Cycle
 1
 1
 1
-0.900000
+0.9
 Default
 m_dot_in
 3
@@ -3306,7 +3306,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 n_pl_inc
 3
@@ -3320,7 +3320,7 @@ Power Cycle
 1
 1
 1
-2.000000
+2
 Default
 nameplate
 3
@@ -3334,7 +3334,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 pb_bd_frac
 3
@@ -3348,7 +3348,7 @@ Power Cycle
 1
 1
 1
-0.020000
+0.02
 Default
 pb_rated_cap
 3
@@ -3362,7 +3362,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 pb_tech_type
 3
@@ -3376,7 +3376,7 @@ Power Cycle
 1
 1
 1
-2.000000
+2
 Default
 q_design
 3
@@ -3390,7 +3390,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 q_sby_frac
 3
@@ -3404,7 +3404,7 @@ Power Cycle
 1
 1
 1
-0.200000
+0.2
 Default
 sliding_pres
 3
@@ -3418,7 +3418,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 startup_frac
 3
@@ -3432,7 +3432,7 @@ Power Cycle
 1
 1
 1
-0.200000
+0.2
 Default
 startup_time
 3
@@ -3446,7 +3446,7 @@ Power Cycle
 1
 1
 1
-0.500000
+0.5
 Default
 system_capacity
 3
@@ -3460,7 +3460,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 t_standby_reset
 3
@@ -3474,7 +3474,7 @@ Power Cycle
 1
 1
 1
-2.000000
+2
 Default
 tech_type
 3
@@ -3488,7 +3488,7 @@ Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 
 1513

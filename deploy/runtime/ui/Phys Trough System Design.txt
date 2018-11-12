@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -142,7 +142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -201,7 +201,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -260,7 +260,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -319,7 +319,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -378,7 +378,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -730,7 +730,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -789,7 +789,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -848,7 +848,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -907,7 +907,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -966,7 +966,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1061,7 +1061,7 @@ Phys Trough System Design
 1
 1
 1
-950.000000
+950
 Default
 SD_COPY_field_thermal_output
 3
@@ -1075,7 +1075,7 @@ MWt
 1
 1
 1
-0.000000
+0
 Numeric
 SD_COPY_nLoops
 3
@@ -1089,7 +1089,7 @@ Phys Trough System Design
 1
 1
 1
-1.000000
+1
 Numeric
 SD_COPY_solar_mult
 3
@@ -1103,7 +1103,7 @@ Phys Trough System Design
 1
 1
 1
-0.000000
+0
 Numeric
 SD_COPY_total_aperture
 3
@@ -1117,7 +1117,7 @@ Phys Trough System Design
 1
 1
 1
-0.000000
+0
 Numeric
 T_loop_in_des
 3
@@ -1131,7 +1131,7 @@ Phys Trough System Design
 1
 1
 1
-290.000000
+290
 Default
 T_loop_out
 3
@@ -1145,7 +1145,7 @@ Phys Trough System Design
 1
 1
 1
-393.000000
+393
 Default
 adjust
 3
@@ -1172,7 +1172,7 @@ Phys Trough System Design
 1
 1
 1
-0.550000
+0.55
 Numeric
 q_pb_design
 3
@@ -1186,7 +1186,7 @@ Phys Trough System Design
 1
 1
 1
-100.000000
+100
 Default
 specified_q_dot_rec_des
 3
@@ -1200,7 +1200,7 @@ Phys Trough System Design
 1
 1
 1
-0.000000
+0
 Default
 specified_solar_multiple
 3
@@ -1214,7 +1214,7 @@ Phys Trough System Design
 1
 1
 1
-1.900000
+1.9
 Default
 system_capacity
 3
@@ -1228,7 +1228,7 @@ Phys Trough System Design
 1
 1
 1
-0.000000
+0
 Numeric
 tshours
 3
@@ -1242,7 +1242,7 @@ Phys Trough System Design
 1
 1
 1
-6.000000
+6
 Default
 
 518

@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -142,7 +142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -201,7 +201,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -260,7 +260,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -319,7 +319,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -378,7 +378,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -437,7 +437,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -496,7 +496,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -555,7 +555,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -614,7 +614,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -673,7 +673,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -732,7 +732,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -791,7 +791,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -850,7 +850,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -909,7 +909,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1053,7 +1053,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1112,7 +1112,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1171,7 +1171,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1230,7 +1230,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1481,7 +1481,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1540,7 +1540,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1599,7 +1599,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1702,7 +1702,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1753,7 +1753,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 LTR_UA_calc
 3
@@ -1767,7 +1767,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 P_IP_calc
 3
@@ -1781,7 +1781,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 P_high_limit
 3
@@ -1795,7 +1795,7 @@ sCO2 Power Cycle
 1
 1
 1
-25.000000
+25
 Default
 P_in_calc
 3
@@ -1809,7 +1809,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 P_out_calc
 3
@@ -1823,7 +1823,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 SCO2_COPY_P_ref
 3
@@ -1837,7 +1837,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 SCO2_COPY_T_htf_hot_des
 3
@@ -1851,7 +1851,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 SCO2_COPY_design_eff
 3
@@ -1865,7 +1865,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _dd_sco2_cycle_config
 3
@@ -1879,7 +1879,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _sco2_P_high_limit
 3
@@ -1893,7 +1893,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _sco2_P_ref
 3
@@ -1907,7 +1907,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _sco2_T_amb_des
 3
@@ -1921,7 +1921,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _sco2_T_approach
 3
@@ -1935,7 +1935,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _sco2_T_htf_hot_des
 3
@@ -1949,7 +1949,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _sco2_deltaT_PHX
 3
@@ -1963,7 +1963,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _sco2_design_eff
 3
@@ -1977,7 +1977,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _sco2_eta_c
 3
@@ -1991,7 +1991,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _sco2_eta_t
 3
@@ -2005,12 +2005,12 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _sco2_fan_power_perc_net
 3
 1
- 
+Fan power percent of net
  
 sCO2 Power Cycle
 0
@@ -2019,12 +2019,12 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 _sco2_recup_eff_max
 3
 1
-Max. recuperator effectiveness
+Maximum recuperator effectiveness
  
 sCO2 Power Cycle
 0
@@ -2033,21 +2033,21 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 dd_sco2_cycle_config
 3
 1
 Cycle Configuration
  
- 
+sCO2 Power Cycle
 0
 0
 1
 1
 1
 1
-0.000000
+0
 Default
 deltaT_PHX
 3
@@ -2061,7 +2061,7 @@ sCO2 Power Cycle
 1
 1
 1
-20.000000
+20
 Default
 eta_c
 3
@@ -2075,7 +2075,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.890000
+0.89
 Default
 eta_t
 3
@@ -2089,7 +2089,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.900000
+0.9
 Default
 fan_power_perc_net
 3
@@ -2103,7 +2103,7 @@ sCO2 Power Cycle
 1
 1
 1
-1.000000
+1
 Default
 is_sco2_des_par_diff
 3
@@ -2117,7 +2117,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
  
 is_sco2_designed
 3
@@ -2131,7 +2131,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
  
 is_sco2_msg_disabled
 3
@@ -2145,7 +2145,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
  
 is_sco2_off_designed
 3
@@ -2159,7 +2159,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
  
 is_sco2_preprocess
 3
@@ -2173,12 +2173,12 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 msg_des_par_diff
 3
 4
- 
+User interface message 1
  
 sCO2 Power Cycle
 0
@@ -2190,7 +2190,7 @@ Default
 msg_nan
 3
 4
- 
+User interface message 2
  
 sCO2 Power Cycle
 0
@@ -2202,7 +2202,7 @@ Default
 msg_off_des
 3
 4
- 
+User interface message 3
  
 sCO2 Power Cycle
 0
@@ -2223,7 +2223,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 recup_eff_max
 3
@@ -2237,7 +2237,7 @@ sCO2 Power Cycle
 1
 1
 1
-1.000000
+1
 Default
 sco2_T_amb_des
 3
@@ -2251,7 +2251,7 @@ sCO2 Power Cycle
 1
 1
 1
-42.000000
+42
 Default
 sco2_T_approach
 3
@@ -2265,12 +2265,12 @@ sCO2 Power Cycle
 1
 1
 1
-15.000000
+15
 Default
 sco2_cycle_config
 3
 1
- 
+Cycle configuration
  
 sCO2 Power Cycle
 0
@@ -2279,7 +2279,7 @@ sCO2 Power Cycle
 1
 1
 1
-1.000000
+1
 Default
 sco2ud_T_amb_high
 3
@@ -2293,7 +2293,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
  
 sco2ud_T_amb_ind_od
 3
@@ -2307,9 +2307,9 @@ sCO2 Power Cycle
 3
 3
 13
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
+1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 
 
  
 sco2ud_T_amb_low
@@ -2324,7 +2324,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 sco2ud_T_htf_cold_calc
 3
@@ -2338,7 +2338,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 sco2ud_T_htf_high
 3
@@ -2352,7 +2352,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
  
 sco2ud_T_htf_ind_od
 3
@@ -2366,9 +2366,9 @@ sCO2 Power Cycle
 3
 3
 13
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
+1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 
 
  
 sco2ud_T_htf_low
@@ -2383,7 +2383,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
  
 sco2ud_m_dot_htf_high
 3
@@ -2397,7 +2397,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
  
 sco2ud_m_dot_htf_ind_od
 3
@@ -2411,9 +2411,9 @@ sCO2 Power Cycle
 3
 3
 13
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
-1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 
+1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 
 
  
 sco2ud_m_dot_htf_low
@@ -2428,7 +2428,7 @@ sCO2 Power Cycle
 1
 1
 1
-0.000000
+0
  
 
 414

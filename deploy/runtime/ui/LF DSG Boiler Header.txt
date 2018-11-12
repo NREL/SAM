@@ -16,7 +16,7 @@ A_aperture
 3
 1
 1
-0.000000
+0
 Default
 AbsorberMaterial
 3
@@ -30,7 +30,7 @@ AbsorberMaterial
 3
 1
 1
-0.000000
+0
 Default
 AnnulusGas
 3
@@ -44,7 +44,7 @@ AnnulusGas
 3
 1
 1
-0.000000
+0
 Default
 D_2
 3
@@ -58,7 +58,7 @@ D_2
 3
 1
 1
-0.000000
+0
 Default
 D_3
 3
@@ -72,7 +72,7 @@ D_3
 3
 1
 1
-0.000000
+0
 Default
 D_4
 3
@@ -86,7 +86,7 @@ D_4
 3
 1
 1
-0.000000
+0
 Default
 D_5
 3
@@ -100,7 +100,7 @@ D_5
 3
 1
 1
-0.000000
+0
 Default
 D_p
 3
@@ -114,7 +114,7 @@ D_p
 3
 1
 1
-0.000000
+0
 Default
 Design_loss
 3
@@ -128,7 +128,7 @@ Design_loss
 3
 1
 1
-0.000000
+0
 Default
 Dirt_HCE
 3
@@ -142,7 +142,7 @@ Dirt_HCE
 3
 1
 1
-0.000000
+0
 Default
 EPSILON_4
 3
@@ -156,7 +156,7 @@ EPSILON_4
 3
 1
 1
-0.000000
+0
 Default
 Flow_type
 3
@@ -170,7 +170,7 @@ Flow_type
 3
 1
 1
-0.000000
+0
 Default
 GeomEffects
 3
@@ -184,7 +184,7 @@ GeomEffects
 3
 1
 1
-0.000000
+0
 Default
 GlazingIntactIn
 3
@@ -198,7 +198,7 @@ GlazingIntactIn
 3
 1
 1
-0.000000
+0
 Default
 HCE_FieldFrac
 3
@@ -212,7 +212,7 @@ HCE_FieldFrac
 3
 1
 1
-0.000000
+0
 Default
 HLCharType
 3
@@ -226,7 +226,7 @@ HLCharType
 3
 1
 1
-0.000000
+0
 Default
 HL_W
 3
@@ -240,7 +240,7 @@ HL_W
 3
 1
 1
-0.000000
+0
 Default
 HL_dT
 3
@@ -254,7 +254,7 @@ HL_dT
 3
 1
 1
-0.000000
+0
 Default
 IAM_L
 3
@@ -268,7 +268,7 @@ IAM_L
 3
 1
 1
-0.000000
+0
 Default
 IAM_T
 3
@@ -282,7 +282,7 @@ IAM_T
 3
 1
 1
-0.000000
+0
 Default
 L_col
 3
@@ -296,7 +296,7 @@ L_col
 3
 1
 1
-0.000000
+0
 Default
 OptCharType
 3
@@ -310,7 +310,7 @@ OptCharType
 3
 1
 1
-0.000000
+0
 Default
 P_a
 3
@@ -324,7 +324,7 @@ P_a
 3
 1
 1
-0.000000
+0
 Default
 Rough
 3
@@ -338,7 +338,7 @@ Rough
 3
 1
 1
-0.000000
+0
 Default
 Shadowing
 3
@@ -352,7 +352,7 @@ Shadowing
 3
 1
 1
-0.000000
+0
 Default
 Tau_envelope
 3
@@ -366,7 +366,7 @@ Tau_envelope
 3
 1
 1
-0.000000
+0
 Default
 TrackingError
 3
@@ -380,7 +380,7 @@ TrackingError
 3
 1
 1
-0.000000
+0
 Default
 alpha_abs
 3
@@ -394,7 +394,7 @@ alpha_abs
 3
 1
 1
-0.000000
+0
 Default
 alpha_env
 3
@@ -408,7 +408,7 @@ alpha_env
 3
 1
 1
-0.000000
+0
 Default
 b_OpticalTable
 3
@@ -422,7 +422,7 @@ b_OpticalTable
 3
 1
 1
-0.000000
+0
 Default
 b_eps_HCE1
 3
@@ -436,7 +436,7 @@ b_eps_HCE1
 3
 1
 1
-0.000000
+0
 Default
 b_eps_HCE2
 3
@@ -450,7 +450,7 @@ b_eps_HCE2
 3
 1
 1
-0.000000
+0
 Default
 b_eps_HCE3
 3
@@ -464,7 +464,7 @@ b_eps_HCE3
 3
 1
 1
-0.000000
+0
 Default
 b_eps_HCE4
 3
@@ -478,7 +478,7 @@ b_eps_HCE4
 3
 1
 1
-0.000000
+0
 Default
 csp.lf.geom2.opt_mode
 3
@@ -492,7 +492,7 @@ required in LF Boiler Geometry
 1
 1
 1
-0.000000
+0
 Default
 dirt_mirror
 3
@@ -506,7 +506,7 @@ dirt_mirror
 3
 1
 1
-0.000000
+0
 Default
 error
 3
@@ -520,7 +520,7 @@ error
 3
 1
 1
-0.000000
+0
 Default
 rho_mirror_clean
 3
@@ -534,7 +534,7 @@ rho_mirror_clean
 3
 1
 1
-0.000000
+0
 Default
 sh_OpticalTable
 3
@@ -548,7 +548,7 @@ sh_OpticalTable
 3
 1
 1
-0.000000
+0
 Default
 sh_eps_HCE1
 3
@@ -562,7 +562,7 @@ sh_eps_HCE1
 3
 1
 1
-0.000000
+0
 Default
 sh_eps_HCE2
 3
@@ -576,7 +576,7 @@ sh_eps_HCE2
 3
 1
 1
-0.000000
+0
 Default
 sh_eps_HCE3
 3
@@ -590,7 +590,7 @@ sh_eps_HCE3
 3
 1
 1
-0.000000
+0
 Default
 sh_eps_HCE4
 3
@@ -604,7 +604,7 @@ sh_eps_HCE4
 3
 1
 1
-0.000000
+0
 Default
 
 5474

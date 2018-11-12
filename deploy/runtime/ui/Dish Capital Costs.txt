@@ -510,7 +510,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -570,7 +570,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -629,7 +629,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -689,7 +689,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -749,7 +749,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -809,7 +809,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -869,7 +869,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -929,7 +929,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -988,7 +988,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1048,7 +1048,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1108,7 +1108,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1168,7 +1168,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1228,7 +1228,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1288,7 +1288,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1348,7 +1348,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1407,7 +1407,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1467,7 +1467,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1527,7 +1527,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1587,7 +1587,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1647,7 +1647,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1707,7 +1707,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1767,7 +1767,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1827,7 +1827,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1886,7 +1886,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1946,7 +1946,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2006,7 +2006,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2066,7 +2066,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2126,7 +2126,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2185,7 +2185,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2245,7 +2245,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2349,7 +2349,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2409,7 +2409,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2469,7 +2469,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2521,7 +2521,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.collector.area
 3
@@ -2535,7 +2535,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.collector.cost_per_m2
 3
@@ -2549,7 +2549,7 @@ Dish Capital Costs
 1
 1
 1
-900.000000
+900
 Default
 csp.ds.cost.contingency
 3
@@ -2563,7 +2563,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.contingency_percent
 3
@@ -2577,7 +2577,7 @@ Dish Capital Costs
 1
 1
 1
-10.000000
+10
 Default
 csp.ds.cost.engine
 3
@@ -2591,7 +2591,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.engine.cost_per_kw
 3
@@ -2605,7 +2605,7 @@ Dish Capital Costs
 1
 1
 1
-2000.000000
+2000
 Default
 csp.ds.cost.engine.kw
 3
@@ -2619,7 +2619,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.epc.fixed
 3
@@ -2633,7 +2633,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.epc.per_acre
 3
@@ -2647,7 +2647,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.epc.per_watt
 3
@@ -2661,7 +2661,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.epc.percent
 3
@@ -2675,7 +2675,7 @@ Dish Capital Costs
 1
 1
 1
-16.000000
+16
 Default
 csp.ds.cost.epc.total
 3
@@ -2689,7 +2689,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.installed_per_capacity
 3
@@ -2703,7 +2703,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.nameplate
 3
@@ -2717,7 +2717,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.plm.fixed
 3
@@ -2731,7 +2731,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.plm.per_acre
 3
@@ -2745,7 +2745,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.plm.per_watt
 3
@@ -2759,7 +2759,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.plm.percent
 3
@@ -2773,7 +2773,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.plm.total
 3
@@ -2787,7 +2787,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.receiver
 3
@@ -2801,7 +2801,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.receiver.cost_per_kw
 3
@@ -2815,7 +2815,7 @@ Dish Capital Costs
 1
 1
 1
-1000.000000
+1000
 Default
 csp.ds.cost.receiver.kw
 3
@@ -2829,7 +2829,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.sales_tax.percent
 3
@@ -2843,7 +2843,7 @@ Dish Capital Costs
 1
 1
 1
-80.000000
+80
 Default
 csp.ds.cost.sales_tax.total
 3
@@ -2857,7 +2857,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.sales_tax.value
 3
@@ -2871,7 +2871,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.site_improvements
 3
@@ -2885,7 +2885,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.site_improvements.area
 3
@@ -2899,7 +2899,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.cost.site_improvements.cost_per_m2
 3
@@ -2913,7 +2913,7 @@ Dish Capital Costs
 1
 1
 1
-3.000000
+3
 Default
 csp.ds.cost.total_land_area
 3
@@ -2927,7 +2927,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 system_use_lifetime_output
 3
@@ -2941,7 +2941,7 @@ system_use_lifetime_output
 1
 1
 1
-0.000000
+0
 Default
 system_use_recapitalization
 3
@@ -2955,7 +2955,7 @@ system_use_recapitalization
 1
 1
 1
-0.000000
+0
 Default
 total_direct_cost
 3
@@ -2969,7 +2969,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 total_indirect_cost
 3
@@ -2983,7 +2983,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 total_installed_cost
 3
@@ -2997,7 +2997,7 @@ Dish Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 
 2886

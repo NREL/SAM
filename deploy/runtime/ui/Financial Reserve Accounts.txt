@@ -393,7 +393,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -452,7 +452,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -511,7 +511,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -570,7 +570,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -629,7 +629,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -688,7 +688,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -747,7 +747,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -878,7 +878,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -937,7 +937,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -996,7 +996,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1181,7 +1181,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1240,7 +1240,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1299,7 +1299,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1350,7 +1350,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Numeric
 equip1_reserve_cost
 3
@@ -1364,7 +1364,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Numeric
 equip1_reserve_freq
 3
@@ -1378,7 +1378,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Numeric
 equip2_reserve_cost
 3
@@ -1392,7 +1392,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Numeric
 equip2_reserve_freq
 3
@@ -1406,7 +1406,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Numeric
 equip3_reserve_cost
 3
@@ -1420,7 +1420,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Numeric
 equip3_reserve_freq
 3
@@ -1434,7 +1434,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Numeric
 equip_reserve_depr_fed
 3
@@ -1449,7 +1449,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Choice
 equip_reserve_depr_sta
 3
@@ -1464,7 +1464,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Choice
 mera_cost1
 3
@@ -1478,7 +1478,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Numeric
 mera_cost2
 3
@@ -1492,7 +1492,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Numeric
 mera_cost3
 3
@@ -1506,7 +1506,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Numeric
 mera_name1
 3
@@ -1559,7 +1559,7 @@ Reserve Accounts
 1
 1
 1
-0.000000
+0
 Numeric
 months_working_reserve
 3
@@ -1573,7 +1573,7 @@ Reserve Accounts
 1
 1
 1
-6.000000
+6
 Numeric
 reserves_interest
 3
@@ -1587,7 +1587,7 @@ Reserve Accounts
 1
 1
 1
-1.750000
+1.75
 Numeric
 
 298

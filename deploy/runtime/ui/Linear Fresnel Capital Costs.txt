@@ -510,7 +510,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -570,7 +570,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -629,7 +629,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -689,7 +689,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -749,7 +749,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -809,7 +809,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -869,7 +869,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -929,7 +929,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -989,7 +989,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1049,7 +1049,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1109,7 +1109,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1169,7 +1169,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1229,7 +1229,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1288,7 +1288,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1348,7 +1348,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1407,7 +1407,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1467,7 +1467,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1527,7 +1527,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1586,7 +1586,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1646,7 +1646,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1706,7 +1706,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1766,7 +1766,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1826,7 +1826,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1886,7 +1886,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1946,7 +1946,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2006,7 +2006,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2065,7 +2065,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2125,7 +2125,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2185,7 +2185,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2245,7 +2245,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2305,7 +2305,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2364,7 +2364,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2424,7 +2424,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2484,7 +2484,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2543,7 +2543,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2603,7 +2603,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2663,7 +2663,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2723,7 +2723,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2783,7 +2783,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2879,7 +2879,7 @@ actual_aper
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.bop
 3
@@ -2893,7 +2893,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.bop_mwe
 3
@@ -2907,7 +2907,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.bop_per_kwe
 3
@@ -2921,7 +2921,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.contingency
 3
@@ -2935,7 +2935,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.contingency_percent
 3
@@ -2949,7 +2949,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-10.000000
+10
 Default
 csp.lf.cost.epc.cost_per_watt
 3
@@ -2963,7 +2963,7 @@ Physical Trough Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.epc.fixed
 3
@@ -2977,7 +2977,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.epc.per_acre
 3
@@ -2991,7 +2991,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.epc.per_watt
 3
@@ -3005,7 +3005,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.epc.percent
 3
@@ -3019,7 +3019,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-15.000000
+15
 Default
 csp.lf.cost.epc.total
 3
@@ -3033,7 +3033,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.fossil_backup
 3
@@ -3047,7 +3047,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.fossil_backup.cost_per_kwe
 3
@@ -3061,7 +3061,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.fossil_backup.mwe
 3
@@ -3075,7 +3075,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.htf_system
 3
@@ -3089,7 +3089,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.htf_system.area
 3
@@ -3103,7 +3103,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.htf_system.cost_per_m2
 3
@@ -3117,7 +3117,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-50.000000
+50
 Default
 csp.lf.cost.installed_per_capacity
 3
@@ -3131,7 +3131,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.nameplate
 3
@@ -3145,7 +3145,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.plm.fixed
 3
@@ -3159,7 +3159,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.plm.per_acre
 3
@@ -3173,7 +3173,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-10000.000000
+10000
 Default
 csp.lf.cost.plm.per_watt
 3
@@ -3187,7 +3187,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.plm.percent
 3
@@ -3201,7 +3201,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.plm.total
 3
@@ -3215,7 +3215,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.power_plant
 3
@@ -3229,7 +3229,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.power_plant.cost_per_kwe
 3
@@ -3243,7 +3243,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-880.000000
+880
 Default
 csp.lf.cost.power_plant.mwe
 3
@@ -3257,7 +3257,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.sales_tax.percent
 3
@@ -3271,7 +3271,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-80.000000
+80
 Default
 csp.lf.cost.sales_tax.total
 3
@@ -3285,7 +3285,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.sales_tax.value
 3
@@ -3299,7 +3299,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.site_improvements
 3
@@ -3313,7 +3313,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.site_improvements.area
 3
@@ -3327,7 +3327,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.site_improvements.cost_per_m2
 3
@@ -3341,7 +3341,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-20.000000
+20
 Default
 csp.lf.cost.solar_field
 3
@@ -3355,7 +3355,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.solar_field.area
 3
@@ -3369,7 +3369,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.solar_field.cost_per_m2
 3
@@ -3383,7 +3383,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-350.000000
+350
 Default
 csp.lf.cost.total_direct
 3
@@ -3397,7 +3397,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.total_indirect
 3
@@ -3411,7 +3411,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.total_installed
 3
@@ -3425,7 +3425,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 csp.lf.cost.total_land_area
 3
@@ -3439,7 +3439,7 @@ Linear Fresnel Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 system_use_lifetime_output
 3
@@ -3453,7 +3453,7 @@ system_use_lifetime_output
 1
 1
 1
-0.000000
+0
 Default
 system_use_recapitalization
 3
@@ -3467,7 +3467,7 @@ system_use_recapitalization
 1
 1
 1
-0.000000
+0
 Default
 total_direct_cost
 3
@@ -3481,7 +3481,7 @@ total_direct_cost
 1
 1
 1
-0.000000
+0
 Default
 total_installed_cost
 3
@@ -3495,7 +3495,7 @@ total_installed_cost
 1
 1
 1
-0.000000
+0
 Default
 
 3871

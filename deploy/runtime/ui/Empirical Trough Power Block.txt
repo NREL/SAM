@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -142,7 +142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -201,7 +201,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -260,7 +260,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -373,7 +373,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -927,7 +927,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -986,7 +986,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1045,7 +1045,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1104,7 +1104,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1163,7 +1163,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1222,7 +1222,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1281,7 +1281,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1340,7 +1340,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1399,7 +1399,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1458,7 +1458,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1517,7 +1517,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1576,7 +1576,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1666,7 +1666,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1725,7 +1725,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1784,7 +1784,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2002,7 +2002,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2061,7 +2061,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2120,7 +2120,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2179,7 +2179,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2320,7 +2320,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2400,7 +2400,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.037370
+0.03737
 Numeric
 E2TPLF1
 3
@@ -2414,7 +2414,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.988230
+0.98823
 Numeric
 E2TPLF2
 3
@@ -2456,7 +2456,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.000000
+0
 Numeric
 LHVBoilEff
 3
@@ -2470,7 +2470,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.900000
+0.9
 Numeric
 MaxGrOut
 3
@@ -2484,7 +2484,7 @@ Empirical Trough Power Block
 1
 1
 1
-1.150000
+1.15
 Numeric
 MinGrOut
 3
@@ -2498,7 +2498,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.250000
+0.25
 Numeric
 PTTMAX
 3
@@ -2512,7 +2512,7 @@ PTTMAX
 1
 1
 1
-0.000000
+0
 Default
 PTTMIN
 3
@@ -2526,7 +2526,7 @@ PTTMIN
 1
 1
 1
-0.000000
+0
 Default
 T2EPLF0
 3
@@ -2554,7 +2554,7 @@ Empirical Trough Power Block
 1
 1
 1
-1.006200
+1.0062
 Numeric
 T2EPLF2
 3
@@ -2596,7 +2596,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.000000
+0
 Numeric
 TempCorr0
 3
@@ -2610,7 +2610,7 @@ Empirical Trough Power Block
 1
 1
 1
-1.000000
+1
 Numeric
 TempCorr1
 3
@@ -2624,7 +2624,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.000000
+0
 Numeric
 TempCorr2
 3
@@ -2638,7 +2638,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.000000
+0
 Numeric
 TempCorr3
 3
@@ -2652,7 +2652,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.000000
+0
 Numeric
 TempCorr4
 3
@@ -2666,7 +2666,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.000000
+0
 Numeric
 TempCorrF
 3
@@ -2681,7 +2681,7 @@ Wet-bulb Basis|Dry-bulb Basis
 1
 1
 1
-0.000000
+0
 Choice
 TurSUE
 3
@@ -2695,7 +2695,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.200000
+0.2
 Numeric
 TurbEffG
 3
@@ -2709,7 +2709,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.377400
+0.3774
 Numeric
 TurbOutG
 3
@@ -2723,7 +2723,7 @@ Empirical Trough Power Block
 1
 1
 1
-110.000000
+110
 Numeric
 adjust
 3
@@ -2750,7 +2750,7 @@ lib_E2TPLF0
 1
 1
 1
-0.000000
+0
 Default
 lib_E2TPLF1
 3
@@ -2764,7 +2764,7 @@ lib_E2TPLF1
 1
 1
 1
-0.000000
+0
 Default
 lib_E2TPLF2
 3
@@ -2778,7 +2778,7 @@ lib_E2TPLF2
 1
 1
 1
-0.000000
+0
 Default
 lib_E2TPLF3
 3
@@ -2792,7 +2792,7 @@ lib_E2TPLF3
 1
 1
 1
-0.000000
+0
 Default
 lib_E2TPLF4
 3
@@ -2806,7 +2806,7 @@ lib_E2TPLF4
 1
 1
 1
-0.000000
+0
 Default
 lib_MaxGrOut
 3
@@ -2820,7 +2820,7 @@ lib_MaxGrOut
 1
 1
 1
-0.000000
+0
 Default
 lib_MinGrOut
 3
@@ -2834,7 +2834,7 @@ lib_MinGrOut
 1
 1
 1
-0.000000
+0
 Default
 lib_T2EPLF0
 3
@@ -2848,7 +2848,7 @@ lib_T2EPLF0
 1
 1
 1
-0.000000
+0
 Default
 lib_T2EPLF1
 3
@@ -2862,7 +2862,7 @@ lib_T2EPLF1
 1
 1
 1
-0.000000
+0
 Default
 lib_T2EPLF2
 3
@@ -2876,7 +2876,7 @@ lib_T2EPLF2
 1
 1
 1
-0.000000
+0
 Default
 lib_T2EPLF3
 3
@@ -2890,7 +2890,7 @@ lib_T2EPLF3
 1
 1
 1
-0.000000
+0
 Default
 lib_T2EPLF4
 3
@@ -2904,7 +2904,7 @@ lib_T2EPLF4
 1
 1
 1
-0.000000
+0
 Default
 lib_TempCorr0
 3
@@ -2918,7 +2918,7 @@ lib_TempCorr0
 1
 1
 1
-0.000000
+0
 Default
 lib_TempCorr1
 3
@@ -2932,7 +2932,7 @@ lib_TempCorr1
 1
 1
 1
-0.000000
+0
 Default
 lib_TempCorr2
 3
@@ -2946,7 +2946,7 @@ lib_TempCorr2
 1
 1
 1
-0.000000
+0
 Default
 lib_TempCorr3
 3
@@ -2960,7 +2960,7 @@ lib_TempCorr3
 1
 1
 1
-0.000000
+0
 Default
 lib_TempCorr4
 3
@@ -2974,7 +2974,7 @@ lib_TempCorr4
 1
 1
 1
-0.000000
+0
 Default
 lib_TempCorrF
 3
@@ -2988,7 +2988,7 @@ lib_TempCorrF
 1
 1
 1
-0.000000
+0
 Default
 lib_TurSUE
 3
@@ -3002,7 +3002,7 @@ lib_TurSUE
 1
 1
 1
-0.000000
+0
 Default
 lib_TurbEffG
 3
@@ -3016,7 +3016,7 @@ lib_TurbEffG
 1
 1
 1
-0.000000
+0
 Default
 lib_ui_pb_description
 3
@@ -3070,7 +3070,7 @@ system_capacity
 1
 1
 1
-0.000000
+0
 Default
 ui_gross_net_conversion_factor
 3
@@ -3084,7 +3084,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.900000
+0.9
 Numeric
 ui_max_therm_input
 3
@@ -3098,7 +3098,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.000000
+0
 Numeric
 ui_min_therm_input
 3
@@ -3112,7 +3112,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.000000
+0
 Numeric
 ui_net_capacity
 3
@@ -3126,7 +3126,7 @@ Empirical Trough Power Block
 1
 1
 1
-100.000000
+100
 Numeric
 ui_pb_description
 3
@@ -3166,7 +3166,7 @@ Empirical Trough Power Block
 1
 1
 1
-0.000000
+0
 Numeric
 use_pb_library_values
 3
@@ -3180,7 +3180,7 @@ Use library values
 1
 1
 1
-1.000000
+1
 CheckBox
 
 1279

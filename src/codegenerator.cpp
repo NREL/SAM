@@ -5447,7 +5447,13 @@ bool CodeGen_php5::SupportingFiles()
     // add php.ini for module location
     // add Makefile
 #if defined(__WXMSW__)  // no windows support yet
-    return false;
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 5.4.16 and Zend 2.4.0 on 3/3/2018\n");
+	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
+	fclose(f);
+	return true;
 #elif defined(__WXOSX__)
     fn = m_folder + "/php.ini";
     f = fopen(fn.c_str(), "w");
@@ -6097,15 +6103,27 @@ bool CodeGen_php7::SupportingFiles()
 	fprintf(f, "extension=%s/sscphp.so\n", (const char *)m_folder.c_str());
 	fclose(f);
 #if defined(__WXMSW__)  // no windows support yet
-	return false;
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
+	fclose(f);
+	return true;
 #elif defined(__WXOSX__) // not tested on OS X 
-	return false;
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
+	fclose(f);
+	return true;
 #elif defined(__WXGTK__)
 	// add Makefile (currently linux only)
 	fn = m_folder + "/Makefile";
 	f = fopen(fn.c_str(), "w");
 	if (!f) return false;
-	fprintf(f, "# Built and tested on Fedora 25 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
 	fprintf(f, "# PHP and Zend installation using php package, e.g. sudo yum install php\n");
 	fprintf(f, "# Header files from php-devel package, e.g. sudo yum install php-devel\n");
 	fprintf(f, "# Set PHPDIR to your php installation which can be found using the command php -i\n");
