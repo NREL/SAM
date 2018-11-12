@@ -619,34 +619,42 @@ Battery
 MonthlyFactor
 
 0
-1093
+1223
 on_load{'Battery Dispatch Behind the Meter'}=define()
 {	
 	toggle_dispatch();
-		
+	
 	on_change{'batt_dispatch_choice'};
 	on_change{'batt_target_choice'};
 };
 
-on_change{'batt_dispatch_choice'}=define(){toggle_dispatch();};
+on_change{'batt_dispatch_choice'}=define(){
+	toggle_dispatch();
+	toggle_custom_dispatch();
+};
 on_change{'batt_target_choice'} = define(){toggle_dispatch_target();};
-
-function toggle_dispatch_target()
-{
-	mode = ${batt_dispatch_choice};
-	if (mode != 2)
-		enable_target_inputs(false);
-	else
-		enable_target_inputs(true);
-}
 
 function toggle_custom_dispatch()
 {
 	mode = ${batt_dispatch_choice};
-	if (mode != 3)
-		enable('batt_custom_dispatch', false);
-	else
+	en_batt = ${en_batt};
+	
+	enable('batt_custom_dispatch', false);
+	if (en_batt && mode == 3){
 		enable('batt_custom_dispatch', true);
+	}
+}
+function toggle_dispatch_target()
+{
+	mode = ${batt_dispatch_choice};
+	en_batt = ${en_batt};
+	btm = behind_the_meter();
+	
+	enable_target_inputs(false);
+	if (en_batt && btm && mode == 2){
+		enable_target_inputs(true);
+	}
+	
 }
 function enable_target_inputs(on_off)
 {

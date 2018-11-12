@@ -265,7 +265,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -647,7 +647,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -706,7 +706,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1183,7 +1183,7 @@ equations{'dispatch_tod_factors'} = define()
 };
 
 
-4121
+4229
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
 	// fom = front of meter
@@ -1277,10 +1277,18 @@ function toggle_forecast()
 	}
 
 }
+
 function toggle_custom_dispatch()
 {
-	enable('batt_custom_dispatch', ${batt_dispatch_choice} == 3);
+	mode = ${batt_dispatch_choice};
+	en_batt = ${en_batt};
+	
+	enable('batt_custom_dispatch', false);
+	if (en_batt && mode == 3){
+		enable('batt_custom_dispatch', true);
+	}
 }
+
 function toggle_dispatch_fom()
 {
 	// call the common Battery Manual toggle dispatch
