@@ -177,7 +177,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -236,7 +236,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -295,7 +295,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -354,7 +354,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -467,7 +467,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -526,7 +526,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -585,7 +585,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -644,7 +644,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -703,7 +703,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -762,7 +762,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -821,7 +821,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -880,7 +880,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -984,7 +984,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1043,7 +1043,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1102,7 +1102,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1161,7 +1161,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1212,7 +1212,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 PB_COPY_T_htf_cold_des
 3
@@ -1226,7 +1226,7 @@ C
 1
 1
 1
-0
+0.000000
 Default
 PB_COPY_T_htf_hot_des
 3
@@ -1240,7 +1240,7 @@ C
 1
 1
 1
-0
+0.000000
 Default
 PB_COPY_htf_cp_avg
 3
@@ -1254,7 +1254,7 @@ kJ/kg-K
 1
 1
 1
-0
+0.000000
 Default
 PB_COPY_q_pb_design
 3
@@ -1268,7 +1268,7 @@ MWt
 1
 1
 1
-0
+0.000000
 Default
 PB_m_dot_htf_cycle_des
 3
@@ -1282,7 +1282,7 @@ kg/s
 1
 1
 1
-0
+0.000000
 Default
 P_ref
 3
@@ -1296,7 +1296,7 @@ Physical Trough Power Cycle
 1
 1
 1
-110
+110.000000
 Numeric
 T_set_aux
 3
@@ -1310,7 +1310,7 @@ Physical Trough Power Cycle
 1
 1
 1
-391
+391.000000
 Numeric
 T_startup
 3
@@ -1324,7 +1324,7 @@ Physical Trough Power Cycle
 1
 1
 1
-350
+350.000000
 Numeric
 W_pb_design
 3
@@ -1338,7 +1338,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 adjust
 3
@@ -1366,7 +1366,7 @@ Minimum backup level|Supplemental operation
 1
 1
 1
-0
+0.000000
 Choice
 csp.dtr.pwrb.design_inlet_temp
 3
@@ -1380,7 +1380,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0
+0.000000
 Numeric
 csp.dtr.pwrb.design_outlet_temp
 3
@@ -1394,7 +1394,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0
+0.000000
 Numeric
 csp.dtr.pwrb.gross_net_conversion_factor
 3
@@ -1408,7 +1408,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.9
+0.900000
 Numeric
 csp.dtr.pwrb.nameplate
 3
@@ -1422,7 +1422,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0
+0.000000
 Numeric
 cycle_cutoff_frac
 3
@@ -1436,7 +1436,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.25
+0.250000
 Numeric
 cycle_max_frac
 3
@@ -1450,7 +1450,7 @@ Physical Trough Power Cycle
 1
 1
 1
-1.15
+1.150000
 Numeric
 eta_lhv
 3
@@ -1464,7 +1464,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.9
+0.900000
 Numeric
 eta_ref
 3
@@ -1478,7 +1478,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.3774
+0.377400
 Numeric
 fossil_mode
 3
@@ -1492,7 +1492,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 q_max_aux
 3
@@ -1506,7 +1506,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 q_pb_design
 3
@@ -1520,7 +1520,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 q_sby_frac
 3
@@ -1534,7 +1534,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.2
+0.200000
 Numeric
 startup_frac
 3
@@ -1548,7 +1548,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.2
+0.200000
 Numeric
 startup_time
 3
@@ -1562,7 +1562,7 @@ Physical Trough Power Cycle
 1
 1
 1
-1
+1.000000
 Numeric
 system_capacity
 3
@@ -1576,7 +1576,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 t_standby_reset
 3
@@ -1590,7 +1590,7 @@ Physical Trough Power Cycle
 1
 1
 1
-2
+2.000000
 Numeric
 
 1310

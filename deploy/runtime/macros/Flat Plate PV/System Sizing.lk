@@ -8,7 +8,11 @@
 <li>By default, the macro displays a report in a SAM window. If you want to export the report, choose Yes for <b>Show results in default browser?</b> to save the report as an HTML file and open it in your default browser. You can then use the browser's tools to export it to PDF or another format.
 </ol>
 <p>&nbsp;</p>
-
+<div align=center>
+<table bgcolor=#ffffa5 width=80% cellpadding=5>
+<tr><td><strong>Note.</strong> If you use the <strong>Specify desired array size</strong> option to size the system, this macro changes the option to <strong>Specify modules and inverters</strong> so that you can make any recommended adjustments.</td></tr>
+</table>
+</div>
 @*/
 
 //@ name=dc_degradation;type=number;label=Annual DC degradation (%);value=0.5
@@ -23,10 +27,6 @@ if ( typeof(macro) == 'unknown' ) {
 	msgbox('This macro must be run from within a case.');
 	exit;
 }
-
-//Max number of subarrays allowed in SAM:
-max_subarrays = 4;
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // Functions
@@ -45,12 +45,7 @@ function num_to_str( x , d )
 	// only format x if it is a number
 	if ( typeof(x) == 'number' )
 	{
-		
-		if( ( d == 0) && (mod( round(x) , 10) == 0) )	
-			str = round(x);
-		else 
-			str = sprintf('%.'+to_string(d)+',',x);			// This step converts a number (for d = 0) like 409.857 to 41 instead of 410. This if-else condition is a workaround that bug.
-
+		str = sprintf('%.'+to_string(d)+',',x);
 		arr = split(str,'.');
 		if ( #arr > 1 )
 			num_decs = strlen(to_string(arr[1]));
@@ -91,11 +86,10 @@ function html_table ( T ) // arr, row_headers, title
 {
 	rows = #T.arr;
 	cols = #T.arr[0];
-	//outln(cols);
 	if ( T.title == '' )
 		h = '';
 	else
-		h = '<p align="center"><font face="Segoe UI"; size="2">' + T.title + '</font></p>';
+		h = '<p align="center"><font face="Segoe UI"; size="1.25">' + T.title + '</font></p>';
 	h += '<table bgcolor="#dddddd" width="100%">\n';
 	for ( i=0; i<rows; i++ )
 	{
@@ -104,7 +98,7 @@ function html_table ( T ) // arr, row_headers, title
 		if ( mod( i, 2 ) != 0 ) // alternate stripes
 			attr = ' bgcolor="#ffffff"';
 		h += '<tr' + attr + '>';
-		for ( j=0; j < cols; j++ )
+		for ( j=0; j<cols; j++ )
 		{
 			data = T.arr[i][j];
 			if ( data == '' || data == ' ' )
@@ -367,21 +361,26 @@ if (configuration()[1] == 'None')
 	financial = false;
 if ( financial ) 
 	analysis_period = get( 'analysis_period' );
- 
-//Get configuration info of all subarrays 
-for(i = 0; i < max_subarrays ; i++) {
-	modules_per_string[i] = get('subarray' + to_string(i + 1) + '_modules_per_string'); // need to calculate string voc, and pmp_string for number of strings suggestion (subarray 1)
-	strings_in_parallel[i] = get('subarray' + to_string(i + 1) + '_nstrings'); // calculate suggested number of strings in parallel to reduce power limiting (subarray 1)
+
+// make sure sizing option is set to specify modules and inverters
+if ( get('size_auto_or_manual') == 0 )
+{
+	set( 'user_modules_per_string', get('modules_per_string') );
+	set( 'user_strings_in_parallel', get('strings_in_parallel') );
+	set( 'user_inverter_count', get('inverter_count') );
+	set('size_auto_or_manual' , 1);
 }
 
-num_modules = get('total_modules');
+modules_per_string = get('modules_per_string'); // need to calculate string voc, and pmp_string for number of strings suggestion
+strings_in_parallel = get('strings_in_parallel'); // calculate suggested number of strings in parallel to reduce power limiting
+num_modules = modules_per_string * strings_in_parallel;
 num_inverters = get('inverter_count');
 nameplate_dc = get('system_capacity');
 nameplate_ac = get('total_inverter_capacity');
 
 // run simulation and quit if simulation fails
 sim_msg = '';
-ok = simulate( sim_msg , true );
+ok = simulate( sim_msg );
 if ( !ok )
 {
 	msgbox( 'Simulation Failed!\nThere is a problem with your inputs that caused the simulation to fail with the following message:\n\n' + sim_msg + '\n\nPlease correct the problem and try running the macro again.');
@@ -437,7 +436,7 @@ for (i=0; i<#inv_dc_input_ts; i++)
 	if ( inv_dc_input_ts[i] >= inverter.pdco * num_inverters / 1000 )
 		inv_power_at_capacity_num_ts++;
 inv_dc_input_ts = null;		
-inv_powerlimitloss_ts = get('inv_cliploss');		//Gets time series data of inverter clipping losses
+inv_powerlimitloss_ts = get('inv_cliploss');
 num_ts = #inv_powerlimitloss_ts;
 inv_powerlimitloss_max = max(inv_powerlimitloss_ts);
 inv_powerlimitloss = sum(inv_powerlimitloss_ts);
@@ -475,9 +474,7 @@ t_dry_min = min(t_dry);
 t_dry_max = max(t_dry);
 t_dry = null;
 t_stc = 25;
-vlow_boundary = false;		//[T-F] When set to True, it ignores the hours of sunrise and sunset when voltage input to the inverter is rapidly rising/dropping when recording Vdc for vdc_low;
-		
-for (j=0; j<max_subarrays; j++) //loop through subarrays
+for (j=0; j<4; j++) //loop through subarrays
 {
 	if(j>0) //subarray 1 is always enabled
 	{
@@ -492,29 +489,11 @@ for (j=0; j<max_subarrays; j++) //loop through subarrays
 	var_str = 'subarray' + to_string(j+1) + '_voc';
 	voc_ts = get(var_str); //Volts
 	voc_hi[j] = max(voc_ts); //Volts
-	
-	//Loop for sampling V inputs to the inverter, and recording the lowest Vdc input in the year:
 	for(i=0; i<8760;i++)
 	{
-		if(sunup[i] == 0)
-			vlow_boundary = false;		//Ignores voltage values during night time	
-		
-		if(sunup[i] == 1) {
-		
-			//Ignoring the hour up until sunrise is complete:
-			if((sunup[i-1] == 0) && (vdc_ts[i] > 0)) 		//If sunrise happened in the previous hour (Sometimes sunup jumps from 0 to 1)
-				vlow_boundary = true;
-			elseif((sunup[i-1] == 2) && (vdc_ts[i] > 0)) 	//Sometimes sunup jumps from 0 to 1 rather than 0 to 2
-				vlow_boundary = true;
-			
-			//Ignore the final hour when the sun is setting - and Vdc input to the inverter is rapidly falling
-				if((sunup[i+1] == 3) || (sunup[i+1] == 0))
-					vlow_boundary = false;
-					
-			//Candidate for lowest Vdc input to the inverter will now only be recorded between (and excluding) the hours of sunrise & sunset:
-			if((vlow_boundary != false ) && (vdc_ts[i] < vdc_low[j])) //lowest voltage seen when the sun is up (system is operating)			
+		if(sunup[i] == 1)
+			if(vdc_ts[i] < vdc_low[j]) //lowest voltage seen when the sun is up (system is operating)
 				vdc_low[j] = vdc_ts[i]; //Volts
-		}
 	}
 	vdc_ts = null;
 	voc_ts = null;
@@ -526,40 +505,33 @@ for (j=0; j<max_subarrays; j++) //loop through subarrays
 vmp_min_design = ( module.vmp + ( macro.t_max + macro.t_adj - t_stc ) * module.gpmp/100 * module.vmp ); // single module
 voc_max_design = ( module.voc + ( macro.t_min - t_stc ) * module.bvoc/100 * module.voc ); // single module
 
-
-
 ////////////////////////////////////////////////////////////////////////////////
 // design suggestions
 ////////////////////////////////////////////////////////////////////////////////
 
 // check 1: number of strings based on dc-ac ratio
 dcac_ok = true;
-//n = 0;
-//strings_in_parallel_new = strings_in_parallel[0];
-
-if ( nameplate_dcac < dcac_min || nameplate_dcac > dcac_max ) 
+if ( nameplate_dcac < dcac_min || nameplate_dcac > dcac_max )
 	dcac_ok = false;
-
 
 // check 2: modules per string based on temperature-adjusted voc
 modules_per_string_max = floor( inverter.vdcmax / voc_max_design );
 modules_per_string_min = ceil( inverter.vmppt_min / vmp_min_design );
-voc_system = true;
-for ( i = 0 ; i < max_subarrays ; i++) {
-	
-	voc_ok[i] = true;
-	if ( (voc_max_design * modules_per_string[i] ) > inverter.vdcmax ) // temperature adjusted array voc > inverter vdcmax 
-		voc_ok[i] = false;
-	
-	if(voc_ok[i] == false) 
-		voc_system = false;
-
-}
+voc_ok = true;
+if ( voc_max_design > inverter.vdcmax ) // temperature adjusted array voc > inverter vdcmax 
+	voc_ok = false;
 
 modules_same = [];
 modules_diff = [];
 if ( module.lib != {} ) // module model has library
 {
+	if ( !voc_ok ) // reduce strings in parallel
+	{
+		pmp_string = module.pmp * modules_per_string;
+		modules_per_string_excess = inv_powerlimitloss_max * 1000 / pmp_string;
+		strings_in_parallel_new = strings_in_parallel - floor(modules_per_string_excess);
+	}
+	
 	voc_old = to_int( module.voc * 100 ) / 100;
 	pmp_old = module.pmp;
 	voc = module.lib_voc;
@@ -598,7 +570,7 @@ stable_sort(modules_diff,2);
 ////////////////////////////////////////////////////////////////////////////////
 
 num_plots = 0;
-for ( j=0; j < max_subarrays; j++ )
+for ( j=0; j<4; j++ )
 {
 	if ( vdc_hi[j] > -999 )
 	{
@@ -623,11 +595,11 @@ for ( j=0; j < max_subarrays; j++ )
 			'title' = 'Figure ' + to_string(num_plots+1) + ': ' + pre_str + 'String Voltages', // underscore makes subscript
 			'line_data' = line_data, // vmppt_min, vmppt_max, and Vdcmax if Vdcmax != Vmppt_max
 			'line_labels' = line_labels,
-			'bar_data' = [voc_max_design * modules_per_string[j], voc_hi[j], vdc_hi[j], vdc_low[j], vmp_min_design * modules_per_string[j] ], // one value for each bar
+			'bar_data' = [voc_max_design * modules_per_string, voc_hi[j], vdc_hi[j], vdc_low[j], vmp_min_design * modules_per_string ], // one value for each bar
 			'bar_label' = '',
 			'x_label' = 'VDC',
 			'y_labels' = ['Max Design Voc','Max Operating Voc','Max Operating Vdc','Min Operating Vdc','Min Design Vdc'], // one label for each bar
-			 'export_graph' = true} );
+			'export_graph' = true } );
 		num_plots++;
 	}	
 }
@@ -648,18 +620,18 @@ tabledata_params[3][1] = [ inverter.vmppt_min , inverter.vmppt_max ];
 tabledata_params[4][0] = 'Inverter maximum voltage, Vdcmax (VDC)';
 tabledata_params[4][1] = inverter.vdcmax;
 tabledata_params[5][0] = 'String open circuit voltage, Voc (VDC)';
-tabledata_params[5][1] = module.voc * modules_per_string[0];
+tabledata_params[5][1] = module.voc * modules_per_string;
 tabledata_params[6][0] = 'Module Voc temperature coefficient, &beta;Voc (%/&deg;C)';
 tabledata_params[6][1] = module.bvoc;
 tabledata_params[7][0] = 'Module Pmp temperature coefficient, &gamma;Pmp (%/&deg;C)';
 tabledata_params[7][1] = module.gpmp;
-tabledata_params[8][0] = 'Ambient temperature range from weather file, T<sub>amb_min</sub> &ndash; T<sub>amb_max</sub> (&deg;C)';
+tabledata_params[8][0] = 'Ambient temperature range from weather file, Tamb_min &ndash; Tamb_max (&deg;C)';
 tabledata_params[8][1] = [ t_dry_min , t_dry_max ];
 tabledata_params[9][0] = 'Maximum design ambient temperature, Tmax (&deg;C)';
 tabledata_params[9][1] = macro.t_max;
 tabledata_params[10][0] = 'Minimum design ambient temperature, Tmin (&deg;C)';
 tabledata_params[10][1] = macro.t_min;
-tabledata_params[11][0] = 'Temperature adjustment for mounting, T<sub>adj</sub> (&deg;C)';
+tabledata_params[11][0] = 'Temperature adjustment for mounting, Tadj (&deg;C)';
 tabledata_params[11][1] = macro.t_adj;
 tabledata_params[12][0] = 'Mounting type implied by temperature correction inputs';
 tabledata_params[12][1] = module.mounting;
@@ -697,59 +669,31 @@ tabledata_powerloss[4][1] = [inv_powerlimitloss_percent_ac,clipping_energy_moder
 tabledata_powerloss[4][2] = [mpptloss_percent_ac,clipping_energy_moderate*100,clipping_energy_severe*100];
 
 tabletitle_modules_same = 'Suitable Modules from the Same Manufacturer';
-//find index for how many subarrays are enabled:
-
-count = 0;
-
 tabledata_modules_same[0][0] = 'Module';
 tabledata_modules_same[0][1] = 'Array Power (kW)';
-for (i = 2 ; i < (2 + max_subarrays) ; i++) {
-	if(get('subarray'+ to_string(i-1) + '_enable') != 0) {
-		count = count + 1;
-		tabledata_modules_same[0][count + 1] = 'Subarray ' + to_string(i-1) + ' String Voc (VDC)';
-	
-	}
-}
-tabledata_modules_same[0][count + 2] = 'Nameplate DC/AC Ratio';
-
-c = 0;
-for(column = 2 ; column < (max_subarrays + 2) ; column++){
-	if(get('subarray'+ to_string(column-1) + '_enable') != 0) {
-		c = c + 1;
-		for (i=0; i<#modules_same; i++ )
-		{
-			tabledata_modules_same[i+1][0]		= modules_same[i][0];
-			tabledata_modules_same[i+1][1]		= modules_same[i][1] * num_modules / 1000; // pmp
-			tabledata_modules_same[i+1][c + 1]	= modules_same[i][2] * modules_per_string[column - 2]; // voc
-			tabledata_modules_same[i+1][count + 2]		= modules_same[i][1] * num_modules / 1000 / nameplate_ac; // dc/ac ratio
-		}
-	}
+tabledata_modules_same[0][2] = 'String Voc (VDC)';
+tabledata_modules_same[0][3] = 'Nameplate DC/AC Ratio';
+for (i=0; i<#modules_same; i++ )
+{
+	tabledata_modules_same[i+1][0] = modules_same[i][0];
+	tabledata_modules_same[i+1][2] = modules_same[i][2] * modules_per_string; // voc
+	tabledata_modules_same[i+1][1] = modules_same[i][1] * num_modules / 1000; // pmp
+	tabledata_modules_same[i+1][3] = modules_same[i][1] * num_modules / 1000 / nameplate_ac; // dc/ac ratio
 }
 
-count_diff = 0;
 tabletitle_modules_diff = 'Suitable Modules from Different Manufacturers';
 tabledata_modules_diff[0][0] = 'Module';
 tabledata_modules_diff[0][1] = 'Array Power (kW)';
-for (i = 2 ; i < (2 + max_subarrays) ; i++) {
-	if(get('subarray'+ to_string(i-1) + '_enable') != 0) {
-		count_diff = count_diff + 1;
-		tabledata_modules_diff[0][count_diff +1] = 'Subarray ' + to_string(i-1) + ' String Voc (VDC)';
-	}
+tabledata_modules_diff[0][2] = 'String Voc (VDC)';
+tabledata_modules_diff[0][3] = 'Nameplate DC/AC Ratio';
+for (i=0; i<#modules_diff; i++ )
+{
+	tabledata_modules_diff[i+1][0] = modules_diff[i][0];
+	tabledata_modules_diff[i+1][2] = modules_diff[i][2] * modules_per_string; // voc
+	tabledata_modules_diff[i+1][1] = modules_diff[i][1] * num_modules / 1000; // pmp
+	tabledata_modules_diff[i+1][3] = modules_diff[i][1] * num_modules / 1000 / nameplate_ac; // dc/ac ratio
 }
-tabledata_modules_diff[0][count_diff + 2] = 'Nameplate DC/AC Ratio';
-c = 0;
-for(column_diff = 2 ; column_diff < (max_subarrays + 2) ; column_diff++){
-	if(get('subarray'+ to_string(column_diff - 1) + '_enable') != 0) {
-		c = c + 1;
-		for (i=0; i<#modules_diff; i++ )
-		{
-			tabledata_modules_diff[i+1][0]				= modules_diff[i][0];
-			tabledata_modules_diff[i+1][1]				= modules_diff[i][1] * num_modules / 1000; // pmp
-			tabledata_modules_diff[i+1][c + 1]			= modules_diff[i][2] * modules_per_string[column_diff - 2]; // voc
-			tabledata_modules_diff[i+1][count_diff + 2] = modules_diff[i][1] * num_modules / 1000 / nameplate_ac; // dc/ac ratio
-		}
-	}
-}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Export to CSV
 ////////////////////////////////////////////////////////////////////////////////
@@ -797,15 +741,15 @@ str += '<li>No color indicates losses less than 20% of annual power output or 5%
 str += '<p>The figure(s) below show the inverter rated MPPT voltage range with worst case';
 str += ' design maximum open-circuit voltage and minimum maximum-power voltage, along with';
 str += ' the operating open circuit, minimum, and maximum voltages from the';
-str += ' simulation results for each <u>active</u> subarray in the system.</p>';
+str += ' simulation results for each subarray in the system.</p>';
 for (i=0; i<#voperating_graphs; i++)
 	str += '<p align="center"><img src="' + voperating_graphs[i] + '" /></p>';
 num_fig = i;	
 str += '<p>The equations for the design string voltages use parameters from Table 1:</p>';
-str += '<p align="center"><font face="verdana">V<sub>dc , min_design</sub>';
-str += ' = [ V<sub>mp</sub> + ( T<sub>max</sub> + T<sub>adj</sub> - T<sub>stc</sub> ) * &gamma;P<sub>mp</sub>/100% * P<sub>mp</sub> ] * modules_per_string</font></p>'; 
-str += '<p align="center"><font face="verdana">V<sub>oc , max_design</sub>';
-str += ' = [ V<sub>oc</sub> + ( T<sub>low</sub> - T<sub>stc</sub> ) * &beta;V<sub>oc</sub>/100% * V<sub>oc</sub> ] * modules_per_string</font></p>'; // TO DO check Voc units %/C vs V/C in table and equations
+str += '<p align="center"><font face="verdana">Vdcmin_design';
+str += ' = [ Vmp + ( Tmax + Tadj - Tstc ) * &gamma;Pmp/100% * Pmp ] * modules_per_string</font></p>'; 
+str += '<p align="center"><font face="verdana">Vocmax_design';
+str += ' = [ Voc + ( Tlow - Tstc ) * &beta;Voc/100% * Voc ] * modules_per_string</font></p>'; // TO DO check Voc units %/C vs V/C in table and equations
 
 //DC-AC Ratio Information
 is_degradation = analysis_period > 1;
@@ -828,64 +772,25 @@ str += ' modules to a 3% worst-case scenario.</p>';
 
 str += '<h2>Tips for System Sizing</h2>';
 
-str += '<p>The nameplate DC/AC ratio of your system is ' + num_to_str( nameplate_dcac, 2 ) + '.';
-
+str += '<p>The nameplate DC/AC ratio of your system is ' + num_to_str( nameplate_dcac, 1 ) + '.';
 if (dcac_ok)
-	str += ' This is within the reasonable range of ' + num_to_str( dcac_min , 2 ) + ' &ndash; ' + num_to_str( dcac_max , 2 ) + '. Some designs use DC/AC ratios of up to 1.5.';
-elseif (get('calculated_dcac_ratio') < dcac_min)
-{
-	
-	str += ' This is below the acceptable range of ' + num_to_str( dcac_min , 2 ) + ' &ndash; ' + num_to_str( dcac_max , 2 );
-	str += '. Consider <b> increasing</b> the number of strings in parallel in the active subarrays in your system. Alternatively, consider <b>removing</b> some inverters from the system.';
-//	str += ' to ' + strings_in_parallel_new + ' to resolve this issue.';		//Does not apply incase of multiple subarrays
-}
-else //if (get('dcac_ratio') > dcac_min) 
-{
-	str += ' This is over the acceptable range of ' + num_to_str( dcac_min , 2 ) + ' &ndash; ' + num_to_str( dcac_max , 2 );
-	str += '. Consider <b>reducing</b> the number of strings in parallel in the active subarrays in your system. Alternatively, consider <b>adding</b> more inverters to the system.';
-//	str += ' to ' + strings_in_parallel_new + ' to resolve this issue.';		//Does not apply incase of multiple subarrays
-}
-
-str +='</p>';
-
-str += '<p>The maximum design operating voltage of each active subarray in your system is as follows:</p> ';
-str += '<ul>';
-str += '<li><b><u>Subarray 1:</b></u> ' + num_to_str( voc_max_design * modules_per_string[0], 0) + ' V<sub>DC</sub>.';
-if (voc_ok[0])
-	str += ' This is less than the inverter rated maximum ' + inverter.vdcmax + ' V<sub>DC</sub>.';
+	str += ' This is within the reasonable range of ' + dcac_min + ' &ndash; ' + dcac_max + '. Some designs use DC/AC ratios of up to 1.5.';
 else
-	str += ' This is greater than the inverter rated maximum ' + inverter.vdcmax + ' V<sub>DC</sub>.</li>';
-
-if(get('subarray2_enable') != 0) {
-	str += '<li><b><u>Subarray 2:</b></u> ' + num_to_str( voc_max_design * modules_per_string[1], 0) + ' V<sub>DC</sub>.';
-	if (voc_ok[1])
-		str += ' This is less than the inverter rated maximum ' + inverter.vdcmax + ' V<sub>DC</sub>.';
-	else
-		str += ' This is greater than the inverter rated maximum ' + inverter.vdcmax + ' V<sub>DC</sub>.</li>';
-
+{
+	str += ' This is outside of the acceptable range of ' + dcac_min + ' &ndash; ' + dcac_max;
+	str += '. Try reducing the number of strings in parallel from ' + strings_in_parallel;
+//	str += ' to ' + strings_in_parallel_new + ' to resolve this issue.';
 }
-
-if(get('subarray3_enable') != 0) {
-	str += '<li><b><u>Subarray 3:</b></u> ' + num_to_str( voc_max_design * modules_per_string[2], 0) + ' V<sub>DC</sub>.';
-	if (voc_ok[2])
-		str += ' This is less than the inverter rated maximum ' + inverter.vdcmax + ' V<sub>DC</sub>.';
-	else
-		str += ' This is greater than the inverter rated maximum ' + inverter.vdcmax + ' V<sub>DC</sub>.</li>';
-
-}	
-
-if(get('subarray4_enable') != 0) {
-	str += '<li><b><u>Subarray 4:</b></u> ' + num_to_str( voc_max_design * modules_per_string[3], 0) + ' V<sub>DC</sub>.';
-	if (voc_ok[3])
-		str += ' This is less than the inverter rated maximum ' + inverter.vdcmax + ' V<sub>DC</sub>.';
-	else
-		str += ' This is greater than the inverter rated maximum ' + inverter.vdcmax + ' V<sub>DC</sub>.</li>';
-
-}
-str += '</ul>';
 str +='</p>';
 
-str += '<p>Your system uses the ' + module.name + ' module and ' + replace(inverter.name,':','') + ' inverter.' + ? ( #modules_same > 1 && #modules_diff > 1) [ '', 'The tables below list ' + ? ( voc_system && dcac_ok )  [ '' , 'other ' ] + ' modules that are suitable for your system. ' ] + '</p>';
+str += '<p>The maximum design operating voltage of your system is ' + num_to_str( voc_max_design * modules_per_string, 0) + ' VDC.';
+if (voc_ok)
+	str += ' This is less than the inverter rated maximum ' + inverter.vdcmax + ' VDC.';
+else
+	str += ' This is greater than the inverter rated maximum ' + inverter.vdcmax + ' VDC.';
+str +='</p>';
+
+str += '<p>Your system uses the ' + module.name + ' module and ' + replace(inverter.name,':','') + ' inverter.' + ? ( #modules_same > 1 && #modules_diff > 1) [ '', 'The tables below list ' + ? ( voc_ok && dcac_ok )  [ '' , 'other ' ] + ' modules that are suitable for your system. ' ] + '</p>';
 
 if ( #modules_same > 1 )
 {

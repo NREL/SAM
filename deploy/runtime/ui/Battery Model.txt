@@ -83,21 +83,21 @@ Battery
 1
 1
 1
-93
+93.000000
 Default
 LeadAcid_q10_computed
 3
 1
  
 Ah
-Battery
+ 
 0
 8
 1
 1
 1
 1
-0
+0.000000
 Numeric
 LeadAcid_q20
 3
@@ -111,7 +111,7 @@ Battery
 1
 1
 1
-100
+100.000000
 Default
 LeadAcid_q20_computed
 3
@@ -125,7 +125,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Numeric
 LeadAcid_qn
 3
@@ -139,7 +139,7 @@ Battery
 1
 1
 1
-60
+60.000000
 Default
 LeadAcid_qn_computed
 3
@@ -153,7 +153,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Numeric
 LeadAcid_tn
 3
@@ -167,7 +167,7 @@ Battery
 1
 1
 1
-1
+1.000000
 Default
 batt_Qexp
 3
@@ -181,7 +181,7 @@ battery
 1
 1
 1
-1
+1.000000
 Numeric
 batt_Qnom
 3
@@ -195,7 +195,7 @@ battery
 1
 1
 1
-56
+56.000000
 Numeric
 batt_chem
 3
@@ -209,7 +209,7 @@ Battery
 1
 1
 1
-1
+1.000000
 Default
 batt_meter_position
 3
@@ -223,7 +223,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Default
 batt_type
 3
@@ -238,7 +238,7 @@ Lead Acid: Flooded|Lead Acid: VRLA Gel|Lead Acid: VRLA AGM|Lead Acid: Custom|Lit
 1
 1
 1
-0
+0.000000
 Choice
 
 269

@@ -1,7 +1,7 @@
 CEC Performance Model with User Entered Specifications
 1288
 708
-39
+37
 Numeric
 
 1
@@ -12,10 +12,10 @@ Name
 6par_aisc_display
 X
 3
-333
+330
 Y
 3
-369
+387
 Width
 3
 100
@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -71,10 +71,10 @@ Name
 6par_aisc_units
 X
 3
-435
+432
 Y
 3
-369
+387
 Width
 3
 64
@@ -114,7 +114,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -173,7 +173,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -232,7 +232,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -291,7 +291,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -338,10 +338,10 @@ Name
 6par_bvoc_display
 X
 3
-333
+330
 Y
 3
-345
+363
 Width
 3
 100
@@ -350,7 +350,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -397,10 +397,10 @@ Name
 6par_bvoc_units
 X
 3
-435
+432
 Y
 3
-345
+363
 Width
 3
 64
@@ -504,10 +504,10 @@ Name
 6par_gpmp
 X
 3
-333
+330
 Y
 3
-393
+411
 Width
 3
 100
@@ -516,7 +516,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -563,10 +563,10 @@ Name
 6par_imp
 X
 3
-333
+330
 Y
 3
-273
+291
 Width
 3
 100
@@ -575,7 +575,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -652,10 +652,10 @@ Name
 6par_isc
 X
 3
-333
+330
 Y
 3
-321
+339
 Width
 3
 100
@@ -664,7 +664,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -753,10 +753,10 @@ Name
 6par_mounting
 X
 3
-237
+234
 Y
 3
-519
+513
 Width
 3
 280
@@ -794,7 +794,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -841,10 +841,10 @@ Name
 6par_nser
 X
 3
-333
+330
 Y
 3
-417
+435
 Width
 3
 100
@@ -853,7 +853,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 0
@@ -912,7 +912,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -959,10 +959,10 @@ Name
 6par_standoff
 X
 3
-237
+234
 Y
 3
-495
+489
 Width
 3
 280
@@ -1000,7 +1000,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1047,10 +1047,10 @@ Name
 6par_vmp
 X
 3
-333
+330
 Y
 3
-249
+267
 Width
 3
 100
@@ -1059,7 +1059,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1106,10 +1106,10 @@ Name
 6par_voc
 X
 3
-333
+330
 Y
 3
-297
+315
 Width
 3
 100
@@ -1118,7 +1118,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1174,7 +1174,7 @@ Width
 533
 Height
 3
-224
+233
 Caption
 5
 19
@@ -1192,16 +1192,16 @@ Name
 GroupBox2
 X
 3
-9
+6
 Y
 3
-237
+249
 Width
 3
 533
 Height
 3
-248
+218
 Caption
 5
 25
@@ -1249,13 +1249,13 @@ X
 9
 Y
 3
-486
+471
 Width
 3
 533
 Height
 3
-62
+77
 Caption
 5
 22
@@ -1522,51 +1522,6 @@ Name
 object 7
 X
 3
-18
-Y
-3
-441
-Width
-3
-516
-Height
-3
-36
-Caption
-5
-124
-The model assumes a reference bandgap voltage Eg_ref = 1.121 eV, and temperature coefficient for bandgap of -0.0002677 eV/K.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-12
-Name
-5
-10
-object 737
-X
-3
 27
 Y
 3
@@ -1602,51 +1557,6 @@ AlignRight
 AlignTop
 2
 1
-Label
-
-1
-12
-Name
-5
-12
-object 73738
-X
-3
-15
-Y
-3
-978
-Width
-3
-924
-Height
-3
-24
-Caption
-5
-124
-The model assumes a reference bandgap voltage Eg_ref = 1.121 eV, and temperature coefficient for bandgap of -0.0002677 eV/K.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 
 25
 6par_aisc
@@ -1661,7 +1571,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-0.004
+0.004000
 Numeric
 6par_aisc_display
 3
@@ -1675,7 +1585,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-0.004
+0.004000
 Default
 6par_aisc_units
 3
@@ -1690,7 +1600,7 @@ A/°C|%/°C
 1
 1
 1
-0
+0.000000
 Choice
 6par_area
 3
@@ -1704,7 +1614,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-1.3
+1.300000
 Numeric
 6par_bifacial_ground_clearance_height
 3
@@ -1718,7 +1628,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-1
+1.000000
 Numeric
 6par_bifacial_transmission_factor
 3
@@ -1732,7 +1642,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-0.013
+0.013000
 Default
 6par_bifaciality
 3
@@ -1746,7 +1656,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-0.65
+0.650000
 Default
 6par_bvoc
 3
@@ -1760,7 +1670,7 @@ PV Module (CEC User Specified)
 1
 1
 1
--0.11
+-0.110000
 Numeric
 6par_bvoc_display
 3
@@ -1774,7 +1684,7 @@ PV Module (CEC User Specified)
 1
 1
 1
--0.11
+-0.110000
 Default
 6par_bvoc_units
 3
@@ -1789,7 +1699,7 @@ V/°C|%/°C
 1
 1
 1
-0
+0.000000
 Choice
 6par_celltech
 3
@@ -1804,14 +1714,14 @@ monoSi|multiSi|CdTe|CIS|CIGS|Amorphous
 1
 1
 1
-1
+1.000000
 Choice
 6par_data_filename
 3
 4
  
  
-PV Module (CEC User Specified)
+ 
 0
 0
 1
@@ -1830,7 +1740,7 @@ PV Module (CEC User Specified)
 1
 1
 1
--0.41
+-0.410000
 Numeric
 6par_imp
 3
@@ -1844,7 +1754,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-6
+6.000000
 Numeric
 6par_is_bifacial
 3
@@ -1858,7 +1768,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-0
+0.000000
 Default
 6par_isc
 3
@@ -1872,7 +1782,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-7
+7.000000
 Numeric
 6par_module_name
 3
@@ -1900,7 +1810,7 @@ One story building height or lower|Two story building height or higher
 1
 1
 1
-0
+0.000000
 Choice
 6par_mpeff
 3
@@ -1914,7 +1824,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-0
+0.000000
 Numeric
 6par_nser
 3
@@ -1928,7 +1838,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-60
+60.000000
 Numeric
 6par_pmp
 3
@@ -1942,7 +1852,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-0
+0.000000
 Numeric
 6par_standoff
 3
@@ -1957,7 +1867,7 @@ Building integrated|Greater than 3.5 in|2.5-3.5 in|1.5-2.5 in|0.5-1.5 in|Less th
 1
 1
 1
-6
+6.000000
 Choice
 6par_tnoct
 3
@@ -1971,7 +1881,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-46
+46.000000
 Numeric
 6par_vmp
 3
@@ -1985,7 +1895,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-30
+30.000000
 Numeric
 6par_voc
 3
@@ -1999,7 +1909,7 @@ PV Module (CEC User Specified)
 1
 1
 1
-37
+37.000000
 Numeric
 
 456

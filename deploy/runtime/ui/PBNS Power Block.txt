@@ -141,7 +141,7 @@ Height
 21
 Value
 1
-0.9
+0.900000
 Mode
 3
 1
@@ -200,7 +200,7 @@ Height
 21
 Value
 1
-110
+110.000000
 Mode
 3
 1
@@ -259,7 +259,7 @@ Height
 21
 Value
 1
-1.25
+1.250000
 Mode
 3
 1
@@ -318,7 +318,7 @@ Height
 21
 Value
 1
-1.0028
+1.002800
 Mode
 3
 1
@@ -377,7 +377,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -436,7 +436,7 @@ Height
 21
 Value
 1
-16
+16.000000
 Mode
 3
 1
@@ -495,7 +495,7 @@ Height
 21
 Value
 1
-21
+21.000000
 Mode
 3
 1
@@ -554,7 +554,7 @@ Height
 21
 Value
 1
-5
+5.000000
 Mode
 3
 1
@@ -726,7 +726,7 @@ Height
 21
 Value
 1
-0.94
+0.940000
 Mode
 3
 1
@@ -785,7 +785,7 @@ Height
 21
 Value
 1
-0.25
+0.250000
 Mode
 3
 1
@@ -844,7 +844,7 @@ Height
 21
 Value
 1
-1.05
+1.050000
 Mode
 3
 1
@@ -903,7 +903,7 @@ Height
 21
 Value
 1
-10
+10.000000
 Mode
 3
 1
@@ -962,7 +962,7 @@ Height
 21
 Value
 1
-107
+107.000000
 Mode
 3
 1
@@ -1021,7 +1021,7 @@ Height
 21
 Value
 1
-0.38
+0.380000
 Mode
 3
 1
@@ -1080,7 +1080,7 @@ Height
 21
 Value
 1
-8
+8.000000
 Mode
 3
 0
@@ -1139,7 +1139,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1243,7 +1243,7 @@ Height
 21
 Value
 1
-0.02
+0.020000
 Mode
 3
 1
@@ -1302,7 +1302,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1361,7 +1361,7 @@ Height
 21
 Value
 1
-0.2
+0.200000
 Mode
 3
 1
@@ -1420,7 +1420,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1479,7 +1479,7 @@ Height
 21
 Value
 1
-0.35
+0.350000
 Mode
 3
 1
@@ -1538,7 +1538,7 @@ Height
 21
 Value
 1
-0.35
+0.350000
 Mode
 3
 1
@@ -1597,7 +1597,7 @@ Height
 21
 Value
 1
-2
+2.000000
 Mode
 3
 1
@@ -1648,7 +1648,7 @@ Power Cycle With No Storage
 1
 1
 1
-0
+0.000000
 Default
 LHV_eff
 3
@@ -1662,7 +1662,7 @@ Power Cycle With No Storage
 1
 1
 1
-0.9
+0.900000
 Default
 P_amb_pwb
 3
@@ -1676,7 +1676,7 @@ Power Cycle With No Storage
 1
 1
 1
-960
+960.000000
 Default
 P_boil_des
 3
@@ -1690,7 +1690,7 @@ Power Cycle With No Storage
 1
 1
 1
-110
+110.000000
 Default
 P_cond_min
 3
@@ -1704,7 +1704,7 @@ Power Cycle With No Storage
 1
 1
 1
-1.25
+1.250000
 Default
 P_cond_ratio
 3
@@ -1718,7 +1718,7 @@ Power Cycle With No Storage
 1
 1
 1
-1.0028
+1.002800
 Default
 P_rh_ref
 3
@@ -1732,7 +1732,7 @@ Power Cycle With No Storage
 1
 1
 1
-0
+0.000000
 Default
 T_ITD_des
 3
@@ -1746,7 +1746,7 @@ Power Cycle With No Storage
 1
 1
 1
-16
+16.000000
 Default
 T_amb_des
 3
@@ -1760,7 +1760,7 @@ Power Cycle With No Storage
 1
 1
 1
-21
+21.000000
 Default
 T_approach
 3
@@ -1774,7 +1774,7 @@ Power Cycle With No Storage
 1
 1
 1
-5
+5.000000
 Default
 T_db_pwb
 3
@@ -1788,7 +1788,7 @@ Power Cycle With No Storage
 1
 1
 1
-12.8
+12.800000
 Default
 T_wb
 3
@@ -1802,7 +1802,7 @@ Power Cycle With No Storage
 1
 1
 1
-12.8
+12.800000
 Default
 adjust
 3
@@ -1830,7 +1830,7 @@ Evaporative|Air-cooled|Hybrid
 1
 1
 1
-0
+0.000000
 Default
 csp.pbns.fossil_mode_lf
 3
@@ -1845,7 +1845,7 @@ Minimum backup level|Supplemental operation|Topping mode
 1
 1
 1
-0
+0.000000
 Default
 csp.pbns.fossil_mode_st
 3
@@ -1860,7 +1860,7 @@ Minimum backup level|Supplemental operation
 1
 1
 1
-0
+0.000000
 Default
 csp.pbns.gross_net_conv_factor
 3
@@ -1874,7 +1874,7 @@ Power Cycle With No Storage
 1
 1
 1
-0.94
+0.940000
 Default
 csp.pbns.pb_init_remain
 3
@@ -1888,7 +1888,7 @@ Power Cycle With No Storage
 1
 1
 1
-1
+1.000000
 Default
 cycle_cutoff_frac
 3
@@ -1902,7 +1902,7 @@ Power Cycle With No Storage
 1
 1
 1
-0.25
+0.250000
 Default
 cycle_max_fraction
 3
@@ -1916,7 +1916,7 @@ Power Cycle With No Storage
 1
 1
 1
-1.05
+1.050000
 Default
 dT_cw_ref
 3
@@ -1930,7 +1930,7 @@ Power Cycle With No Storage
 1
 1
 1
-10
+10.000000
 Default
 demand_var
 3
@@ -1944,7 +1944,7 @@ Power Cycle With No Storage
 1
 1
 1
-107
+107.000000
 Default
 dp_b
 3
@@ -1958,7 +1958,7 @@ Power Cycle With No Storage
 1
 1
 1
-0
+0.000000
 Default
 dp_rh
 3
@@ -1972,7 +1972,7 @@ Power Cycle With No Storage
 1
 1
 1
-0
+0.000000
 Default
 dp_sh
 3
@@ -1986,7 +1986,7 @@ Power Cycle With No Storage
 1
 1
 1
-5
+5.000000
 Default
 eta_ref
 3
@@ -2000,7 +2000,7 @@ Power Cycle With No Storage
 1
 1
 1
-0.38
+0.380000
 Default
 f_recSU
 3
@@ -2014,7 +2014,7 @@ Power Cycle With No Storage
 1
 1
 1
-1
+1.000000
 Default
 fossil_mode
 3
@@ -2028,7 +2028,7 @@ Power Cycle With No Storage
 1
 1
 1
-0
+0.000000
 Default
 m_dot_st
 3
@@ -2042,7 +2042,7 @@ Power Cycle With No Storage
 1
 1
 1
-0
+0.000000
 Default
 n_pl_inc
 3
@@ -2056,7 +2056,7 @@ Power Cycle With No Storage
 1
 1
 1
-8
+8.000000
 Default
 nameplate
 3
@@ -2070,7 +2070,7 @@ Power Cycle With No Storage
 1
 1
 1
-0
+0.000000
 Default
 pb_bd_frac
 3
@@ -2084,7 +2084,7 @@ Power Cycle With No Storage
 1
 1
 1
-0.02
+0.020000
 Default
 pc_mode
 3
@@ -2098,7 +2098,7 @@ Power Cycle With No Storage
 1
 1
 1
-1
+1.000000
 Default
 q_pb_des
 3
@@ -2112,7 +2112,7 @@ Power Cycle With No Storage
 1
 1
 1
-0
+0.000000
 Default
 q_sby_frac
 3
@@ -2126,7 +2126,7 @@ Power Cycle With No Storage
 1
 1
 1
-0.2
+0.200000
 Default
 relhum
 3
@@ -2140,7 +2140,7 @@ Power Cycle With No Storage
 1
 1
 1
-0.25
+0.250000
 Default
 rh_frac_ref
 3
@@ -2154,7 +2154,7 @@ Power Cycle With No Storage
 1
 1
 1
-0
+0.000000
 Default
 standby_control
 3
@@ -2168,7 +2168,7 @@ Power Cycle With No Storage
 1
 1
 1
-0
+0.000000
 Default
 startup_frac
 3
@@ -2182,7 +2182,7 @@ Power Cycle With No Storage
 1
 1
 1
-0.35
+0.350000
 Default
 startup_time
 3
@@ -2196,7 +2196,7 @@ Power Cycle With No Storage
 1
 1
 1
-0.35
+0.350000
 Default
 system_capacity
 3
@@ -2210,7 +2210,7 @@ Power Cycle With No Storage
 1
 1
 1
-0
+0.000000
 Default
 t_sby
 3
@@ -2224,7 +2224,7 @@ Power Cycle With No Storage
 1
 1
 1
-2
+2.000000
 Default
 
 516

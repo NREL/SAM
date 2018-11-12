@@ -232,7 +232,7 @@ Location and Resource
 2
 1
 12
-0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.200000 0.200000 0.200000 0.200000 0.200000 0.200000 0.200000 0.200000 0.200000 0.200000 0.200000 0.200000 
 
 MonthlyFactor
 irrad_mode
@@ -247,7 +247,7 @@ Location and Resource
 1
 1
 1
-0
+0.000000
 RadioChoice
 sky_model
 3
@@ -262,7 +262,7 @@ Isotropic|HDKR|Perez
 1
 1
 1
-2
+2.000000
 RadioChoice
 use_wf_albedo
 3
@@ -276,7 +276,7 @@ Location and Resource
 1
 1
 1
-0
+0.000000
 CheckBox
 
 0

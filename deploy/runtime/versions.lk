@@ -50,57 +50,16 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
-version_upgrade{'2018.10.29'} = define() {
-	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
-	{
-		//upgrades for the new way that auto-sizing works
-		dcac_old = oldvalue('dcac_ratio');
-		value('desired_dcac_ratio', dcac_old, 'Renamed DC-AC Ratio input variable.');
-		old_autosize = oldvalue('size_auto_or_manual');
-		if (old_autosize == 1) //specify desired array size
-			value('enable_auto_size', 0, 'Changed variable name and value for automatically sizing system.');
-		else if (old_autosize == 0) //auto-size in old version
-		{
-			//multiple subarrays not allowed with new auto-sizing
-			if (value('subarray2_enable') == 1 || value('subarray3_enable') == 1 || value('subarray4_enable') == 1)
-			{
-				value('enable_auto_size', 0, 'Changed the way SAM automatically sizes systems.');
-				message('We have updated the way that SAM automatically sizes systems in this version. We have used the same system configuration' 
-				' as was specified in your old file, but turned off automatic system sizing in this case because the new automatic system sizing'
-				' algorithms no longer work with multiple subarrays. Please go to the System Design page if you wish to turn automatic system sizing on again.', 'warning');
-			}
-			else
-			{
-				value('enable_auto_size', 0, 'Changed the way SAM automatically sizes systems.');
-				message('We have updated the way that SAM automatically sizes systems in this version. We have used the same system configuration' 
-				' as was specified in your old file, but turned off automatic system sizing in this case because it may not result in the same system configuration.'
-				' Please go to the System Design page if you wish to turn automatic system sizing on again.', 'warning');
-
-			}
-	
-		}
-		// battery model update dispatch
-		if (value('en_batt')){
-			finance = cfg.fin;
-			if (finance == "Residential" || finance == "Commercial" || finance == "Third Party"){
-				if (value('batt_dispatch_choice') == 3){
-					value('batt_dispatch_choice', 4);
-				}
-			}
-			else {
-				value('batt_dispatch_choice', 4);
-			}
-			message('We have updated the battery controller, which may result in different operational behavior than the previous version.' 
-				' Please check to ensure the battery still operates as you expect.', 'warning');
-		}
-	}
-};
-
 version_upgrade{'2018.9.20'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Flat Plate PV')
 	{
+		//upgrades for the new way that auto-sizing works
+		autosize = oldvalue('size_auto_or_manual');
+		value('size_auto_or_manual', abs(1-autosize), 'Variables changed order.'); //size_auto_or_manual switched order
+		dcac_old = oldvalue('dcac_ratio');
+		value('desired_dcac_ratio', dcac_old, 'Renamed DC-AC Ratio input variable.');
+		
 		//upgrades for multiple MPPT inverters
 		x = oldvalue('modules_per_string');
 		value('subarray1_modules_per_string', x, 'Variable change to be able to model different numbers of modules per string between subarrays.');
@@ -110,11 +69,10 @@ version_upgrade{'2018.9.20'} = define() {
 				value('subarray' + to_string(i) +'_modules_per_string', x, 'Variable change to be able to model different numbers of modules per string between subarrays.');
 		}
 		
-		/*
 		//message that we got rid of auto sizing
 		if (oldvalue('size_auto_or_manual') == 0)
 			message('We have removed the option for SAM to automatically size your system using the "Specify desired array size" '
-			'option on the System Design page. Please see Help on the System Design page for more details.', 'warning');*/
+			'option on the System Design page. Please see Help on the System Design page for more details.', 'warning');
 		
 		//bug fix for multiple subarrays with unequal numbers of strings
 		if (value('num_enabled') > 1)
@@ -224,7 +182,7 @@ version_upgrade{'2018.9.20'} = define() {
 
 version_upgrade{'2018.8.29'} = define() {
 	const cfg = config();
-	
+
 	// solar resource
 	solar_resource_techs = 'Flat Plate PV,PVWatts,High-X Concentrating PV,Biopower,'
 	                     + 'Geothermal Power,Solar Water Heating,Physical Trough,'
@@ -243,7 +201,6 @@ version_upgrade{'2018.8.29'} = define() {
 
 		library = csvread( userlocaldatadir() + '/SolarResourceData.csv', { 'table' = true } );
 		wf_in_lib = ( library{'Name'} ?@ value( 'solar_resource' ) ) > -1;
-		first_wf_in_lib = library{'Name'}[3];
 		download_ok = false;
 
 		if ( value('use_specific_weather_file') == 1 ) // file was user specified file
@@ -271,11 +228,11 @@ version_upgrade{'2018.8.29'} = define() {
 				libkey = mid(libkey,0,#libkey-4);		
 				value( 'solar_resource', libkey );
 			}	
-			else // user chose not to add folder, so set to first file in library
+			else // user chose not to add folder, so set to default Arizona file
 			{
-				msgbox( 'Setting weather file to the first file in your solar resource library.\nUse the tools on the Solar Resource page to download '
-					    + 'or choose a different file.\n\n' + first_wf_in_lib);
-				value( 'solar_resource', first_wf_in_lib );	    
+				msgbox( 'Setting weather file to default file for Phoenix, Arizona.\nUse the tools on the Solar Resource page to download '
+					    + 'or choose a different file.');
+				value( 'solar_resource', 'phoenix_az_33.448377_-112.074037_psmv3_60_tmy' );	    
 			}
 		}
 		elseif ( wf_in_lib )
@@ -300,8 +257,8 @@ version_upgrade{'2018.8.29'} = define() {
 			url += '&&mailing_list=false';
 			url += '&&reason=SAM';
 			url += '&&interval=60';
-			
-			url +='&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo';
+
+			//url += '&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed'; //SEE NSRDB.CPP 
 			url += '&&utc=false';
 			url += '&&leap_day=false';
 			url += '&&names=tmy';
@@ -330,12 +287,10 @@ version_upgrade{'2018.8.29'} = define() {
 				ok = curl( url , { 'file'= fname } ); // curl() should automatically replace <SAMAPI> and <USEREMAIL > with values from private.h
 
 				// rudimentary check that downloaded weather file is valid
+				test = csvread( fname );
 				if ( ok )
-				{
-					test = csvread( fname );
-					if ( test != null )
-						if ( #test > 10 ) download_ok = true;// valid file has more than 10 rows
-				}			
+					if ( #test > 10 ) // valid file has more than 10 rows
+						download_ok = true;
 
 				// if file was downloaded refresh solar resource library and update value
 				if ( download_ok )
@@ -346,25 +301,24 @@ version_upgrade{'2018.8.29'} = define() {
 					message( 'New weather file downloaded for ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) +
 							' degrees E and added to solar resource library:\n' + file_only(fname) );
 				}
-				else // download failed, set library to first file
+				else // download failed, set library to default Phoenix file
 				{
 					remove_file( fname );
 					msgbox('Failed to download new weather file!\nA weather file for your '
 							+ 'location at ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) 
 							+ ' degrees E may not be available from the NSRDB, or the NSRDB '
-							+ 'service may be down.\n\nPlease contact sam.support@nrel.gov for help with your weather file.\n\n'
-							+ 'Setting weather file to first file in your solar resource '
-							+ 'library. Use the tools on the Solar Resource page to download '
-							+ 'or choose a different file later.\n\n' + first_wf_in_lib );
-					value( 'solar_resource', first_wf_in_lib );	    
+							+ 'service may be down. \n\nSetting weather file to default for '
+							+ 'Phoenix, Arizona. Use the tools on the Solar Resource page to download '
+							+ 'or choose a different file later.');
+					value( 'solar_resource', 'phoenix_az_33.448377_-112.074037_psmv3_60_tmy' );	    
 					message('Failed to download new weather file for ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) + ' degrees E. A weather file for that location may not be available from the NSRDB, or the NSRDB service may be down. Use the tools on the Solar Resource page to download or choose a weather file.');
 				}
 			}
-			else // user chose not to download replacement file, set library to first file
+			else // user chose not to download replacement file, set library to default Phoenix file
 			{
-				msgbox( 'Setting weather file to first weather file in your solar resource library.\nUse the tools on the Solar Resource page to download '
-					    + 'or choose a different file.\n\n' + first_wf_in_lib);
-				value( 'solar_resource', first_wf_in_lib );	    
+				msgbox( 'Setting weather file to default for Phoenix, Arizona.\nUse the tools on the Solar Resource page to download '
+					    + 'or choose a different file.');
+				value( 'solar_resource', 'phoenix_az_33.448377_-112.074037_psmv3_60_tmy' );	    
 			}
 		}
 	}

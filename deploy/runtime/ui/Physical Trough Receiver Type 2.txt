@@ -1245,7 +1245,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1304,7 +1304,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1363,7 +1363,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1422,7 +1422,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1481,7 +1481,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1540,7 +1540,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1630,7 +1630,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1730,7 +1730,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1789,7 +1789,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1848,7 +1848,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1907,7 +1907,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1996,7 +1996,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2055,7 +2055,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2114,7 +2114,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2173,7 +2173,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2264,7 +2264,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2323,7 +2323,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2382,7 +2382,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2441,7 +2441,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2500,7 +2500,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2589,7 +2589,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2648,7 +2648,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2707,7 +2707,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2766,7 +2766,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2857,7 +2857,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2916,7 +2916,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2975,7 +2975,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3034,7 +3034,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3093,7 +3093,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3182,7 +3182,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3241,7 +3241,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3300,7 +3300,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3359,7 +3359,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3450,7 +3450,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3509,7 +3509,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3568,7 +3568,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3627,7 +3627,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3686,7 +3686,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3775,7 +3775,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3834,7 +3834,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3893,7 +3893,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -3952,7 +3952,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -4043,7 +4043,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -4102,7 +4102,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -4286,7 +4286,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Choice
 csp_dtr_hce_design_heat_loss_2
 3
@@ -4300,7 +4300,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_diam_absorber_inner_2
 3
@@ -4314,7 +4314,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.066
+0.066000
 Numeric
 csp_dtr_hce_diam_absorber_outer_2
 3
@@ -4328,7 +4328,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.07
+0.070000
 Numeric
 csp_dtr_hce_diam_absorber_plug_2
 3
@@ -4342,7 +4342,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_diam_envelope_inner_2
 3
@@ -4356,7 +4356,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.109
+0.109000
 Numeric
 csp_dtr_hce_diam_envelope_outer_2
 3
@@ -4370,7 +4370,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.115
+0.115000
 Numeric
 csp_dtr_hce_flow_type_2
 3
@@ -4385,7 +4385,7 @@ Tube flow|Annular flow
 1
 1
 1
-0
+0.000000
 Choice
 csp_dtr_hce_inner_roughness_2
 3
@@ -4399,7 +4399,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-4.6e-05
+0.000046
 Numeric
 csp_dtr_hce_notify_text_2
 3
@@ -4426,7 +4426,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var1_abs_abs_2
 3
@@ -4440,7 +4440,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.95
+0.950000
 Numeric
 csp_dtr_hce_var1_annulus_pressure_2
 3
@@ -4454,7 +4454,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.0001
+0.000100
 Numeric
 csp_dtr_hce_var1_bellows_shadowing_2
 3
@@ -4468,7 +4468,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.963
+0.963000
 Numeric
 csp_dtr_hce_var1_broken_glass_2
 3
@@ -4482,7 +4482,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 CheckBox
 csp_dtr_hce_var1_env_abs_2
 3
@@ -4496,7 +4496,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.02
+0.020000
 Numeric
 csp_dtr_hce_var1_env_emis_2
 3
@@ -4510,7 +4510,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.86
+0.860000
 Numeric
 csp_dtr_hce_var1_env_trans_2
 3
@@ -4524,7 +4524,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.963
+0.963000
 Numeric
 csp_dtr_hce_var1_field_fraction_2
 3
@@ -4538,7 +4538,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-1
+1.000000
 Numeric
 csp_dtr_hce_var1_gas_type_2
 3
@@ -4553,7 +4553,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-2
+2.000000
 Choice
 csp_dtr_hce_var1_hce_dirt_2
 3
@@ -4567,7 +4567,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.98
+0.980000
 Numeric
 csp_dtr_hce_var1_rated_heat_loss_2
 3
@@ -4581,7 +4581,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-250
+250.000000
 Numeric
 csp_dtr_hce_var2_abs_abs_2
 3
@@ -4595,7 +4595,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var2_annulus_pressure_2
 3
@@ -4609,7 +4609,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var2_bellows_shadowing_2
 3
@@ -4623,7 +4623,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.963
+0.963000
 Numeric
 csp_dtr_hce_var2_broken_glass_2
 3
@@ -4637,7 +4637,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 CheckBox
 csp_dtr_hce_var2_env_abs_2
 3
@@ -4651,7 +4651,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var2_env_emis_2
 3
@@ -4665,7 +4665,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var2_env_trans_2
 3
@@ -4679,7 +4679,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var2_field_fraction_2
 3
@@ -4693,7 +4693,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var2_gas_type_2
 3
@@ -4708,7 +4708,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-2
+2.000000
 Choice
 csp_dtr_hce_var2_hce_dirt_2
 3
@@ -4722,7 +4722,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.98
+0.980000
 Numeric
 csp_dtr_hce_var2_rated_heat_loss_2
 3
@@ -4736,7 +4736,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var3_abs_abs_2
 3
@@ -4750,7 +4750,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var3_annulus_pressure_2
 3
@@ -4764,7 +4764,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var3_bellows_shadowing_2
 3
@@ -4778,7 +4778,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.963
+0.963000
 Numeric
 csp_dtr_hce_var3_broken_glass_2
 3
@@ -4792,7 +4792,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 CheckBox
 csp_dtr_hce_var3_env_abs_2
 3
@@ -4806,7 +4806,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var3_env_emis_2
 3
@@ -4820,7 +4820,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var3_env_trans_2
 3
@@ -4834,7 +4834,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var3_field_fraction_2
 3
@@ -4848,7 +4848,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var3_gas_type_2
 3
@@ -4863,7 +4863,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-2
+2.000000
 Choice
 csp_dtr_hce_var3_hce_dirt_2
 3
@@ -4877,7 +4877,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.98
+0.980000
 Numeric
 csp_dtr_hce_var3_rated_heat_loss_2
 3
@@ -4891,7 +4891,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var4_abs_abs_2
 3
@@ -4905,7 +4905,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var4_annulus_pressure_2
 3
@@ -4919,7 +4919,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var4_bellows_shadowing_2
 3
@@ -4933,7 +4933,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.963
+0.963000
 Numeric
 csp_dtr_hce_var4_broken_glass_2
 3
@@ -4947,7 +4947,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 CheckBox
 csp_dtr_hce_var4_env_abs_2
 3
@@ -4961,7 +4961,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var4_env_emis_2
 3
@@ -4975,7 +4975,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var4_env_trans_2
 3
@@ -4989,7 +4989,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var4_field_fraction_2
 3
@@ -5003,7 +5003,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 csp_dtr_hce_var4_gas_type_2
 3
@@ -5018,7 +5018,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-2
+2.000000
 Choice
 csp_dtr_hce_var4_hce_dirt_2
 3
@@ -5032,7 +5032,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0.98
+0.980000
 Numeric
 csp_dtr_hce_var4_rated_heat_loss_2
 3
@@ -5046,7 +5046,7 @@ Physical Trough Receiver Type 2
 1
 1
 1
-0
+0.000000
 Numeric
 epsilon_3_21
 3
@@ -5060,7 +5060,7 @@ Physical Trough Receiver Type 2
 3
 1
 1
-0.1384
+0.138400
 ValueMatrix
 epsilon_3_22
 3
@@ -5074,7 +5074,7 @@ Physical Trough Receiver Type 2
 3
 1
 1
-0
+0.000000
 ValueMatrix
 epsilon_3_23
 3
@@ -5088,7 +5088,7 @@ Physical Trough Receiver Type 2
 3
 1
 1
-0
+0.000000
 ValueMatrix
 epsilon_3_24
 3
@@ -5102,7 +5102,7 @@ Physical Trough Receiver Type 2
 3
 1
 1
-0
+0.000000
 ValueMatrix
 
 1232

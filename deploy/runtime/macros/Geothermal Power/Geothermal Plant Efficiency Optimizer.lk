@@ -23,44 +23,6 @@ exit;
 }
 else outln("Calculating...");
 
-
-// format numbers comma thousands indicator, 2 decimal places
-// note: will display integers with 2 decimals, e.g., display 3 as 3.00
-function num_to_str( x , d )
-{
-	// only format x if it is a number
-	if ( typeof(x) == 'number' )
-	{
-		str = sprintf('%.'+to_string(d)+',',x);
-		arr = split(str,'.');
-		if ( #arr > 1 )
-			num_decs = strlen(to_string(arr[1]));
-		else
-			num_decs = 0;
-		// if number has one or more decimal places less than the desired number	
-		if ( #arr > 1 && num_decs < d)
-		{
-			for (i=0; i<d-num_decs; i++)
-				str += '0';
-		}
-		// if number has no decimal places
-		elseif ( #arr == 1 && d > 0 )
-		{
-			str += '.';
-			for (i=0; i<d; i++)
-				str += '0';
-		}		
-	}
-	// if x is a string, return it
-	elseif ( typeof(x) == 'string' )
-		str = x;
-	// if x is not a number or string, convert it to a string with no formatting	
-	else	
-		str = to_string( x );
-	return str;
-}
-
-
 set('geotherm.cost.plant_auto_estimate', true);
 
 
@@ -92,11 +54,8 @@ for(i = 100 ; i >= 0 ; i = i - 10)
 	//If minimum lcoe has been reached, step into the nested (intermediate) for loop
 	if((count > 0)  &&  (lcoe[count - 1] < lcoe[count] )) 		//(count > 0) condition ensures outermost loop runs entirely atleast once
 	{
-		if( (i + 10) == 100)
-			i = i + 0;
-		else
-			i = i + 10;			//resets i to value for which lowest project LCOE was recorded
-		
+		//min_lcoe = lcoe[count -1 ];
+		i = i + 10;			//resets i to value for which lowest project LCOE was recorded
 		count = 0; 			//Reset counter for intermediate loop
 		
 		//INTERMEDIATE LOOP
@@ -157,10 +116,10 @@ set('plant_efficiency_input', optimal_i);			//Set the plant efficiency in the ac
 //////////////****** DISPLAYING RESULTS IN HTML WINDOW ******//////////////
 
 str = '<html><body><h3> Result </h3><p>Reported for case: ' + active_case() + '</p><br><br>';
-str += 'Plant has the lowest LCOE of &#162;' + num_to_str( min_lcoe, 2 ) + '/kWh at an overall efficiency of ' + num_to_str( optimal_i , 2) + '%'; 
+str += 'Plant has the lowest LCOE of $' + min_lcoe/100 + '/kWh at an overall efficiency of ' + optimal_i + '%'; 
 str += '<br>Simulate the active case which is now updated with this optimized plant efficiency value.';
 str += '</body></html>';
-html_dialog(str, 'Optimal Plant Efficiency', [600,200]);
+html_dialog(str, 'Optimal Plant Efficiency', [600,300]);
 
 
 //////////////****** END OF SCRIPT ******//////////////

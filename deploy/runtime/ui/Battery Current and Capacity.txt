@@ -51,7 +51,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -110,7 +110,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -169,7 +169,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -228,7 +228,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -287,7 +287,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -346,7 +346,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -405,7 +405,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -464,7 +464,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -613,7 +613,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -672,7 +672,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -731,7 +731,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -790,7 +790,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -849,7 +849,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -946,7 +946,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1005,7 +1005,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1064,7 +1064,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1123,7 +1123,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1226,7 +1226,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1358,7 +1358,7 @@ Battery
 1
 1
 1
-1
+1.000000
 Default
 batt_C_rate_max_discharge
 3
@@ -1372,7 +1372,7 @@ Battery
 1
 1
 1
-1
+1.000000
 Default
 batt_Qfull
 3
@@ -1386,7 +1386,7 @@ Battery
 1
 1
 1
-5
+5.000000
 Default
 batt_Qfull_flow
 3
@@ -1400,7 +1400,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Default
 batt_cell_current_charge_max
 3
@@ -1414,7 +1414,7 @@ Battery
 1
 1
 1
-10
+10.000000
 Default
 batt_cell_current_discharge_max
 3
@@ -1428,7 +1428,7 @@ Battery
 1
 1
 1
-10
+10.000000
 Default
 batt_cell_power_charge_max
 3
@@ -1442,7 +1442,7 @@ Battery
 1
 1
 1
-2
+2.000000
 Numeric
 batt_cell_power_discharge_max
 3
@@ -1456,7 +1456,7 @@ Battery
 1
 1
 1
-2
+2.000000
 Numeric
 batt_computed_bank_capacity
 3
@@ -1470,7 +1470,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Default
 batt_computed_series
 3
@@ -1484,7 +1484,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Default
 batt_computed_stacks_series
 3
@@ -1498,7 +1498,7 @@ Battery
 1
 1
 1
-1
+1.000000
 Numeric
 batt_computed_strings
 3
@@ -1512,7 +1512,7 @@ Battery
 1
 1
 1
-1
+1.000000
 Default
 batt_computed_voltage
 3
@@ -1526,7 +1526,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Default
 batt_current_charge_max
 3
@@ -1540,21 +1540,21 @@ Battery
 1
 1
 1
-100
+100.000000
 Default
 batt_current_choice
 3
 1
  
  
-Battery
+ 
 0
 0
 1
 1
 1
 1
-1
+1.000000
 RadioChoice
 batt_current_discharge_max
 3
@@ -1568,7 +1568,7 @@ Battery
 1
 1
 1
-100
+100.000000
 Default
 batt_num_cells
 3
@@ -1582,7 +1582,7 @@ Battery
 1
 1
 1
-1
+1.000000
 Numeric
 batt_power_charge_max
 3
@@ -1596,7 +1596,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Default
 batt_power_discharge_max
 3
@@ -1610,7 +1610,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Default
 batt_time_capacity
 3
@@ -1624,7 +1624,7 @@ Battery
 1
 1
 1
-2
+2.000000
 Default
 
 5949

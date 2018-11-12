@@ -321,7 +321,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Default
 batt_losses
 3
@@ -335,7 +335,7 @@ Battery
 2
 1
 1
-0
+0.000000
 Default
 batt_losses_charging
 3
@@ -349,7 +349,7 @@ Battery
 2
 1
 1
-0
+0.000000
 Default
 batt_losses_discharging
 3
@@ -363,7 +363,7 @@ Battery
 2
 1
 1
-0
+0.000000
 Default
 batt_losses_idle
 3
@@ -377,7 +377,7 @@ Battery
 2
 1
 1
-0
+0.000000
 Default
 
 0

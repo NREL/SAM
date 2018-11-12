@@ -51,7 +51,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -110,7 +110,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -169,7 +169,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -228,7 +228,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -287,7 +287,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -346,7 +346,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -405,7 +405,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -464,7 +464,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -640,7 +640,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -994,7 +994,7 @@ Battery
 1
 1
 1
-0.1
+0.100000
 Default
 batt_Qexp_percent
 3
@@ -1008,7 +1008,7 @@ Battery
 1
 1
 1
-1
+1.000000
 Default
 batt_Qnom_percent
 3
@@ -1022,7 +1022,7 @@ Battery
 1
 1
 1
-95
+95.000000
  
 batt_Vexp
 3
@@ -1036,7 +1036,7 @@ Battery
 1
 1
 1
-2.05
+2.050000
  
 batt_Vfull
 3
@@ -1050,7 +1050,7 @@ Battery
 1
 1
 1
-2.2
+2.200000
  
 batt_Vnom
 3
@@ -1064,7 +1064,7 @@ Battery
 1
 1
 1
-2.04
+2.040000
  
 batt_Vnom_default
 3
@@ -1078,7 +1078,7 @@ Battery
 1
 1
 1
-2
+2.000000
 Default
 batt_bank_voltage
 3
@@ -1092,7 +1092,7 @@ Battery
 1
 1
 1
-450
+450.000000
 Default
 batt_resistance
 3
@@ -1106,7 +1106,7 @@ Battery
 1
 1
 1
-0.1
+0.100000
 Default
 batt_voltage_choice
 3
@@ -1120,7 +1120,7 @@ Battery
 1
 1
 1
-0
+0.000000
 Default
 batt_voltage_matrix
 3
@@ -1135,12 +1135,12 @@ Depth of discharge [%]| Cell voltage [V]
 3
 6
 2
-0 1.2 
-20 1.1 
-40 1.05 
-60 1 
-80 0.95 
-100 0.5 
+0.000000 1.200000 
+20.000000 1.100000 
+40.000000 1.050000 
+60.000000 1.000000 
+80.000000 0.950000 
+100.000000 0.500000 
 
 Default
 

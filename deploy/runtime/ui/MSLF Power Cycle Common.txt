@@ -177,7 +177,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -236,7 +236,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -295,7 +295,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -354,7 +354,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -413,7 +413,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -472,7 +472,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -585,7 +585,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -644,7 +644,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -703,7 +703,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -762,7 +762,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -821,7 +821,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -925,7 +925,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -984,7 +984,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1043,7 +1043,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1102,7 +1102,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1161,7 +1161,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1212,7 +1212,7 @@ MSLF Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 PB_COPY_T_htf_cold_des
 3
@@ -1226,7 +1226,7 @@ C
 1
 1
 1
-0
+0.000000
 Default
 PB_COPY_T_htf_hot_des
 3
@@ -1240,7 +1240,7 @@ PB_COPY_T_htf_hot_des
 1
 1
 1
-0
+0.000000
 Default
 PB_COPY_htf_cp_avg
 3
@@ -1254,7 +1254,7 @@ kJ/kg-K
 1
 1
 1
-0
+0.000000
 Default
 PB_COPY_q_pb_design
 3
@@ -1268,7 +1268,7 @@ MWt
 1
 1
 1
-0
+0.000000
 Default
 PB_m_dot_htf_cycle_des
 3
@@ -1282,7 +1282,7 @@ kg/s
 1
 1
 1
-0
+0.000000
 Default
 P_ref
 3
@@ -1296,7 +1296,7 @@ MSLF Power Cycle
 1
 1
 1
-111
+111.000000
 Default
 T_htf_cold_ref
 3
@@ -1310,7 +1310,7 @@ MSLF Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 T_htf_hot_ref
 3
@@ -1324,7 +1324,7 @@ MSLF Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 T_set_aux
 3
@@ -1338,7 +1338,7 @@ MSLF Power Cycle
 1
 1
 1
-525
+525.000000
 Default
 T_startup
 3
@@ -1352,7 +1352,7 @@ MSLF Power Cycle
 1
 1
 1
-400
+400.000000
 Default
 adjust
 3
@@ -1380,7 +1380,7 @@ Minimum backup level|Supplemental operation
 1
 1
 1
-0
+0.000000
 Default
 csp.mslf.cycle.gr_to_net
 3
@@ -1394,7 +1394,7 @@ MSLF Power Cycle
 1
 1
 1
-0.9
+0.900000
 Default
 cycle_cutoff_frac
 3
@@ -1408,7 +1408,7 @@ MSLF Power Cycle
 1
 1
 1
-0.25
+0.250000
 Default
 cycle_max_frac
 3
@@ -1422,7 +1422,7 @@ MSLF Power Cycle
 1
 1
 1
-1.05
+1.050000
 Default
 eta_lhv
 3
@@ -1436,7 +1436,7 @@ MSLF Power Cycle
 1
 1
 1
-0.9
+0.900000
 Default
 eta_ref
 3
@@ -1450,7 +1450,7 @@ MSLF Power Cycle
 1
 1
 1
-0.3774
+0.377400
 Default
 fossil_mode
 3
@@ -1464,7 +1464,7 @@ MSLF Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 hx_config
 3
@@ -1478,7 +1478,7 @@ MSLF Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 is_hx
 3
@@ -1492,7 +1492,7 @@ MSLF Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 lhv_eff
 3
@@ -1506,7 +1506,7 @@ lhv_eff
 1
 1
 1
-0.9
+0.900000
 Default
 m_dot_in
 3
@@ -1520,7 +1520,7 @@ m_dot_in
 1
 1
 1
-0
+0.000000
 Default
 nameplate
 3
@@ -1534,7 +1534,7 @@ MSLF Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 pb_rated_cap
 3
@@ -1548,7 +1548,7 @@ MSLF Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 pb_tech_type
 3
@@ -1562,7 +1562,7 @@ pb_tech_type
 1
 1
 1
-2
+2.000000
 Default
 q_design
 3
@@ -1576,7 +1576,7 @@ MSLF Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 q_sby_frac
 3
@@ -1590,7 +1590,7 @@ MSLF Power Cycle
 1
 1
 1
-0.2
+0.200000
 Default
 startup_frac
 3
@@ -1604,7 +1604,7 @@ MSLF Power Cycle
 1
 1
 1
-0.2
+0.200000
 Default
 startup_time
 3
@@ -1618,7 +1618,7 @@ MSLF Power Cycle
 1
 1
 1
-0.5
+0.500000
 Default
 system_capacity
 3
@@ -1632,7 +1632,7 @@ MSLF Power Cycle
 1
 1
 1
-0
+0.000000
 Default
 t_standby_reset
 3
@@ -1646,7 +1646,7 @@ MSLF Power Cycle
 1
 1
 1
-2
+2.000000
 Default
 
 1502

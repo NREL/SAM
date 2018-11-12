@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -304,7 +304,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -363,7 +363,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -422,7 +422,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -481,7 +481,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -540,7 +540,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -622,7 +622,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -681,7 +681,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -740,7 +740,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -799,7 +799,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -959,7 +959,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1106,7 +1106,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1165,7 +1165,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1255,7 +1255,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1314,7 +1314,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 0
@@ -1472,7 +1472,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1531,7 +1531,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1590,7 +1590,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1649,7 +1649,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1708,7 +1708,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1767,7 +1767,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1915,7 +1915,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1974,7 +1974,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2033,7 +2033,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2092,7 +2092,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 0
@@ -2151,7 +2151,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2210,7 +2210,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2356,7 +2356,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2415,7 +2415,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2474,7 +2474,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2533,7 +2533,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2592,7 +2592,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2672,7 +2672,7 @@ Solar Water Heating
 1
 1
 1
-3.84
+3.840000
 Numeric
 FRta
 3
@@ -2686,7 +2686,7 @@ Solar Water Heating
 1
 1
 1
-0.605
+0.605000
 Numeric
 T_room
 3
@@ -2700,7 +2700,7 @@ Solar Water Heating
 1
 1
 1
-20
+20.000000
 Numeric
 T_set
 3
@@ -2714,7 +2714,7 @@ Solar Water Heating
 1
 1
 1
-54
+54.000000
 Numeric
 T_tank_max
 3
@@ -2728,7 +2728,7 @@ Solar Water Heating
 1
 1
 1
-82.2
+82.199997
 Numeric
 U_tank
 3
@@ -2742,7 +2742,7 @@ Solar Water Heating
 1
 1
 1
-1.5
+1.500000
 Numeric
 V_tank
 3
@@ -2756,7 +2756,7 @@ Solar Water Heating
 1
 1
 1
-0.45
+0.450000
 Numeric
 adjust
 3
@@ -2783,7 +2783,7 @@ Solar Water Heating
 1
 1
 1
-0.3
+0.300000
 Numeric
 annual_draw
 3
@@ -2797,7 +2797,7 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 Numeric
 area_coll
 3
@@ -2811,7 +2811,7 @@ Solar Water Heating
 1
 1
 1
-1.74
+1.740000
 Numeric
 azimuth
 3
@@ -2825,12 +2825,12 @@ Solar Water Heating
 1
 1
 1
-180
+180.000000
 Numeric
 coll_mode
 3
 1
-Collector mode
+ 
  
 Solar Water Heating
 0
@@ -2839,35 +2839,35 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 RadioChoice
 custom_mains
 3
 2
 Hourly custom mains profile
 C
-Solar Water Heating
+ 
 0
 0
 1
 2
 1
 1
-0
+0.000000
 DataArray
 custom_set
 3
 2
 Hourly custom set temperatures
 C
-Solar Water Heating
+ 
 0
 0
 1
 2
 1
 1
-0
+0.000000
 DataArray
 daily_draw
 3
@@ -2881,21 +2881,21 @@ Solar Water Heating
 1
 1
 1
-112
+112.000000
 Numeric
 draw
 3
 2
 Hourly hot water draw profile
 kg/hr
-Solar Water Heating
+ 
 0
 0
 1
 2
 1
 1
-0
+0.000000
 DataArray
 fluid
 3
@@ -2910,7 +2910,7 @@ Water|Glycol
 1
 1
 1
-1
+1.000000
 Choice
 hx_eff
 3
@@ -2924,7 +2924,7 @@ Solar Water Heating
 1
 1
 1
-0.75
+0.750000
 Numeric
 iam
 3
@@ -2938,7 +2938,7 @@ Solar Water Heating
 1
 1
 1
-0.19
+0.190000
 Numeric
 irrad_mode
 3
@@ -2953,7 +2953,7 @@ Beam and Diffuse|Total and Beam
 1
 1
 1
-0
+0.000000
 Choice
 mdot
 3
@@ -2967,7 +2967,7 @@ Solar Water Heating
 1
 1
 1
-0.12618
+0.126180
 Numeric
 ncoll
 3
@@ -2981,7 +2981,7 @@ Solar Water Heating
 1
 1
 1
-3
+3.000000
 Numeric
 pipe_diam
 3
@@ -2995,7 +2995,7 @@ Solar Water Heating
 1
 1
 1
-0.019
+0.019000
 Numeric
 pipe_insul
 3
@@ -3009,7 +3009,7 @@ Solar Water Heating
 1
 1
 1
-0.01905
+0.019050
 Numeric
 pipe_k
 3
@@ -3023,7 +3023,7 @@ Solar Water Heating
 1
 1
 1
-0.0342
+0.034200
 Numeric
 pipe_length
 3
@@ -3037,7 +3037,7 @@ Solar Water Heating
 1
 1
 1
-20.3
+20.299999
 Numeric
 pump_eff
 3
@@ -3051,7 +3051,7 @@ Solar Water Heating
 1
 1
 1
-0.85
+0.850000
 Numeric
 pump_power
 3
@@ -3065,28 +3065,28 @@ Solar Water Heating
 1
 1
 1
-32
+32.000000
 Numeric
 scaled_draw
 3
 2
-Scaled hot water draw profile
  
-Solar Water Heating
+ 
+ 
 0
 8
 1
 2
 1
 1
-0
+0.000000
 Default
 shading
 3
 5
 Shading losses
  
-Solar Water Heating
+ 
 0
 0
 1
@@ -3099,7 +3099,7 @@ shading_3d_scene
 6
  
  
-Solar Water Heating
+ 
 0
 0
 1
@@ -3119,7 +3119,7 @@ Isotropic|HDKR|Perez
 1
 1
 1
-1
+1.000000
 Choice
 srcc_FRUL
 3
@@ -3133,7 +3133,7 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 Numeric
 srcc_FRta
 3
@@ -3147,7 +3147,7 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 Numeric
 srcc_area
 3
@@ -3161,7 +3161,7 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 Numeric
 srcc_iam
 3
@@ -3175,7 +3175,7 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 Numeric
 srcc_item
 3
@@ -3230,7 +3230,7 @@ Water|Glycol
 1
 1
 1
-0
+0.000000
 Default
 srcc_test_fluid_display
 3
@@ -3263,14 +3263,14 @@ system_capacity
 1
 Rated system size
 kW
-Solar Water Heating
+ 
 0
 8
 1
 1
 1
 1
-0
+0.000000
 Numeric
 tank_h2d_ratio
 3
@@ -3284,21 +3284,21 @@ Solar Water Heating
 1
 1
 1
-2
+2.000000
 Numeric
 test_flow
 3
 1
 Test flow
 kg/hr
-Solar Water Heating
+ 
 0
 8
 1
 1
 1
 1
-0
+0.000000
 Numeric
 test_fluid
 3
@@ -3313,7 +3313,7 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 Numeric
 tilt
 3
@@ -3327,7 +3327,7 @@ Solar Water Heating
 1
 1
 1
-30
+30.000000
 Numeric
 total_area
 3
@@ -3341,7 +3341,7 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 Numeric
 use_custom_mains
 3
@@ -3355,7 +3355,7 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 CheckBox
 use_custom_set
 3
@@ -3369,7 +3369,7 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 CheckBox
 use_draw_scaling
 3
@@ -3383,7 +3383,7 @@ Solar Water Heating
 1
 1
 1
-1
+1.000000
 CheckBox
 user_FRUL
 3
@@ -3397,7 +3397,7 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 Numeric
 user_FRta
 3
@@ -3411,7 +3411,7 @@ Solar Water Heating
 1
 1
 1
-0
+0.000000
 Numeric
 user_area_coll
 3
@@ -3425,7 +3425,7 @@ Solar Water Heating
 1
 1
 1
-3.74
+3.740000
 Numeric
 user_iam
 3
@@ -3439,7 +3439,7 @@ Solar Water Heating
 1
 1
 1
-0.2
+0.200000
 Numeric
 user_test_flow
 3
@@ -3453,7 +3453,7 @@ Solar Water Heating
 1
 1
 1
-0.05
+0.050000
 Numeric
 user_test_fluid
 3
@@ -3468,7 +3468,7 @@ Water|Glycol
 1
 1
 1
-0
+0.000000
 Choice
 
 1188

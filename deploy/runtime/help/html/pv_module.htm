@@ -39,7 +39,7 @@
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">The Module page allows you to choose a model to represent the photovoltaic module's performance. For each time step of the simulation, the module model calculates the DC electrical output of a single module based on the design parameters and the incident solar radiation (plane-of-array irradiance) calculated from data in the <a href="pv_location_and_resource.htm" class="topiclink">weather file</a>. </span></p>
-<p class="p_Text"><span class="f_Text">SAM assumes that the system is made up of an array of identical modules, which can be wired into up to four DC subarrays. The photovoltaic array's electric output depends on the number of modules in the system and the orientation, tracking, shading, and other parameters on the <a href="pv_system_design.htm" class="topiclink">System Design</a> page, and any losses you specify on the <a href="pv_shading.htm" class="topiclink">Shading and Snow</a> and <a href="pv_losses.htm" class="topiclink">Losses</a> pages. The array's electrical output is fed to a bank of one or more inverters, whose characteristics appear on the <a href="pv_inverter.htm" class="topiclink">Inverter page</a>. </span></p>
+<p class="p_Text"><span class="f_Text">SAM assumes that the system is made up of an array of identical modules, which can be wired into up to four <a href="pv_system_design.htm#dcsubarrays" class="topiclink">DC subarrays</a>. The photovoltaic array's electric output depends on the number of modules in the system and the orientation, tracking, shading, and other parameters on the <a href="pv_system_design.htm" class="topiclink">System Design</a> page, and any losses you specify on the <a href="pv_shading.htm" class="topiclink">Shading and Snow</a> and <a href="pv_losses.htm" class="topiclink">Losses</a> pages. The array's electrical output is fed to a bank of one or more inverters, whose characteristics appear on the <a href="pv_inverter.htm" class="topiclink">Inverter page</a>. </span></p>
 <p class="p_Text"><span class="f_Text">SAM displays the name of the active module model at the top of the Module page. Click the model name to choose a different model:</span></p>
 <p class="p_Text"><img alt="SS_PVModule-ChooseModel" width="431" height="161" style="margin:0;width:431px;height:161px;border:none" src="ss_pvmodule-choosemodel.png"/></p>
 <p class="p_Text"><span class="f_Text">You can choose from five different module performance models:</span></p>
@@ -78,17 +78,6 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Temperature Coefficients</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM displays the temperature coefficients in %/°C and W/°C at maximum power, open circuit, and short circuit.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The temperature coefficients are based on data collected from laboratory test results and may not match coefficients provided by the manufacturer on the module's data sheet.</span></p>
-<h4 class="p_Heading4"><span class="f_Heading4">Bifacial Specifications</span></h4>
-<p class="p_Text"><span class="f_Text">SAM's bifacial model is adapted from Marion, B, et. al (2017) A Practical Irradiance Model for Bifacial PV Modules, available for download at <a href="https://sam.nrel.gov/performance" target="_blank" class="weblink">https://sam.nrel.gov/performance</a>. The model's open source implementation is available on the NREL GitHub website at <a href="github.com/NREL/bifacialvf" target="_blank" class="weblink" title="github.com/NREL/bifacialvf">github.com/NREL/bifacialvf</a>. The bifacial model calculates the plane-of-array irradiance on the rear side of the PV modules assuming infinite rows. The rear-side plane-of-array irradiance is multiplied by the module bifaciality factor, and then added to the front-side plane-of-array irradiance, which is then sent to the module model to predict module DC power. Primary drivers of the rear-side POA irradiance include the ground albedo, row-to-row spacing (function of ground-coverage ratio), and ground clearance height.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Module is bifacial</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Check this box to enable the bifacial model and its inputs.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">The CEC module library indicates whether the module is bifacial. You can sort the library table by clicking the Bifacial column heading: Bifacial modules have a value of one.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Transmission Fraction</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A fraction between 0 and 1 specifying the percentage of array row area (including through the modules) that allows light to transmit through from front to rear.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Bifaciality</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A fraction between 0 and 1 specifying the relative efficiency of the rear-side compared to the front-side </span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ground clearance height </span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The height from the ground to the bottom of the PV module. &nbsp;For systems with tracking, this is the height at a zero-degree tilt angle.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="cectempcorr" class="hmanchor"></a><span class="f_Heading3_atocs_">CEC Temperature Correction</span></h3>
 <p class="p_Text"><span class="f_Text">The CEC model provides two modes for modeling the effect of cell temperature on module performance:</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">The Nominal operating cell temperature (NOCT) method</span></p>
@@ -217,47 +206,47 @@
 <p class="p_Text"><span class="f_Text">The </span><span class="f_Emphasis">a</span><span class="f_Text">, </span><span class="f_Emphasis">b</span><span class="f_Text">, and </span><span class="f_Emphasis">dT</span><span class="f_Text"> parameters determine the relationship between ambient temperature and module temperature. See the <a href="pv_module.htm#sandiatempcorrequations" class="topiclink">equations</a> below for details. </span></p>
 <p class="p_Text"><span class="f_Text">SAM allows you to choose from a set of pre-determined values of the parameters for different module mounting options, or specify your own values for the parameters. For the Concentrating PV model, you can assign a set values to the parameters, or specify your own. </span></p>
 <p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">For most analyses involving flat-plate modules mounted on open racks, choose </span><span class="f_CHInterfaceElement">Use Database Values</span><span class="f_List">. These are the values determined empirically during testing of the module. Most of the modules in the database were tested on open racks.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">To see how a flat-plate module might perform under different mounting conditions, choose an appropriate option from the list. Be sure to choose an option that is consistent with the module you are modeling. You may need to refer to the module's specification sheet for information about its structure.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">For the Concentrating PV model, use the default values (click </span><span class="f_CHInterfaceElement">Default Temperature Inputs</span><span class="f_List">) unless you have a set of </span><span class="f_Emphasis">a</span><span class="f_List">, </span><span class="f_Emphasis">b</span><span class="f_List">, and </span><span class="f_Emphasis">dT</span><span class="f_List"> values for your module. </span><span class="f_Text">See the <a href="pv_module.htm#sandiatempcorrequations" class="topiclink">equations</a> below for details.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">If you understand the Sandia model well enough to generate your own temperature correction coefficients, choose </span><span class="f_CHInterfaceElement">User Defined</span><span class="f_ListLast">, and type your own values for </span><span class="f_Emphasis">a</span><span class="f_ListLast">, </span><span class="f_Emphasis">b</span><span class="f_ListLast">, and </span><span class="f_Emphasis">dT</span><span class="f_ListLast">. </span><span class="f_Text">See the <a href="pv_module.htm#sandiatempcorrequations" class="topiclink">equations</a> below for details.</span></p><p class="p_TitleTable" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleTable">Table 1. Description of the module structure and mounting options.</span></p>
-<div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="Default Shaded Rows" style="width:100%;">
+<div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="margin:0 auto; border:none; border-spacing:0;">
 <tr>
-<td style="width:185px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Module Structure</span><br />
+<td style="vertical-align:top; width:185px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Module Structure</span><br />
 <span class="f_TableHeadColumn">and Mounting</span></p>
 </td>
-<td><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Description</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Description</span></p>
 </td>
 </tr>
 <tr>
-<td style="vertical-align:middle; width:185px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Glass/Cell/Polymer Sheet</span><br />
+<td style="vertical-align:middle; width:185px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Glass/Cell/Polymer Sheet</span><br />
 <span class="f_TableTextCenter">Open Rack</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Solar cells are between a glass front and polymer back, and the module is mounted on an open rack allowing air to circulate freely around the module.</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Solar cells are between a glass front and polymer back, and the module is mounted on an open rack allowing air to circulate freely around the module.</span></p>
 </td>
 </tr>
 <tr>
-<td style="vertical-align:middle; width:185px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Glass/Cell/Glass </span><br />
+<td style="vertical-align:middle; width:185px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Glass/Cell/Glass </span><br />
 <span class="f_TableTextCenter">Open Rack</span></p>
 </td>
-<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Solar cells are between a glass front and glass back, and the module is mounted on an open rack allowing air to circulate freely around the module.</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Solar cells are between a glass front and glass back, and the module is mounted on an open rack allowing air to circulate freely around the module.</span></p>
 </td>
 </tr>
 <tr>
-<td style="vertical-align:middle; width:185px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Polymer/Thin Film/Steel</span><br />
+<td style="vertical-align:middle; width:185px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Polymer/Thin Film/Steel</span><br />
 <span class="f_TableTextCenter">Open Rack </span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Solar cells are between a transparent polymer front and steel back, and the module is mounted on an open rack allowing air to circulate freely around the module.</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Solar cells are between a transparent polymer front and steel back, and the module is mounted on an open rack allowing air to circulate freely around the module.</span></p>
 </td>
 </tr>
 <tr>
-<td style="vertical-align:middle; width:185px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Glass/Cell/Polymer Sheet</span><br />
+<td style="vertical-align:middle; width:185px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Glass/Cell/Polymer Sheet</span><br />
 <span class="f_TableTextCenter">Insulated Back</span></p>
 </td>
-<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Solar cells are between a glass front and polymer back, and the module is mounted directly to a building surface in a building-integrated PV (BIPV) application preventing air from flowing over the module back.</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Solar cells are between a glass front and polymer back, and the module is mounted directly to a building surface in a building-integrated PV (BIPV) application preventing air from flowing over the module back.</span></p>
 </td>
 </tr>
 <tr>
-<td style="vertical-align:middle; width:185px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Glass/Cell/Glass</span><br />
+<td style="vertical-align:middle; width:185px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Glass/Cell/Glass</span><br />
 <span class="f_TableTextCenter">Close Roof Mount</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Solar cells are between a glass front and glass back, and the module is mounted on a rack with little clearance between the building surface and module back allowing little air to flow over the module back.</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Solar cells are between a glass front and glass back, and the module is mounted on a rack with little clearance between the building surface and module back allowing little air to flow over the module back.</span></p>
 </td>
 </tr>
 </table>
@@ -268,94 +257,94 @@
 <p class="p_Text"><span class="f_Text">The temperature correction equations use the following input values from the Module page:</span></p>
 <p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Temperature coefficients. The Sandia model uses the four values listed in the Temperature Coefficients column. The Simple Efficiency and Concentrating PV models use the single temperature coefficient of power value.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Temperature correction coefficients: </span><span class="f_CHEquationVariable">a</span><span class="f_ListLast">, </span><span class="f_CHEquationVariable">b</span><span class="f_ListLast">, and </span><span class="f_CHEquationVariable">dT</span><span class="f_ListLast">. For the Sandia and Simple Efficiency models, the three values appear under the Module Structure - Mounting option. For the Concentrating PV model, the values appear below the temperature coefficient variable.</span></p><p class="p_Text"><span class="f_Text">The equations use four hourly data sets from the weather file. You can see the hourly data by either viewing the weather data from the <a href="pv_location_and_resource.htm" class="topiclink">Location and Resource</a> page, or viewing the time series results data after running a simulation:</span></p>
 <p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Incident direct normal radiation</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Incident diffuse radiation</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Ambient temperature</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Wind speed</span></p><p class="p_TitleTable" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleTable">Table 2. Empirically-determined coefficients from the Sandia database for each of the module structure and mounting options available on the Module page.</span></p>
-<div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="Default Shaded Rows" style="width:100%;">
+<div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="margin:0 auto; border:none; border-spacing:0;">
 <tr>
-<td><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Module Structure</span><br />
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Module Structure</span><br />
 <span class="f_TableHeadColumn">and Mounting</span></p>
 </td>
-<td><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">&nbsp;</span><br />
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">&nbsp;</span><br />
 <span class="f_TableHeadColumn">a </span></p>
 </td>
-<td><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">&nbsp;</span><br />
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">&nbsp;</span><br />
 <span class="f_TableHeadColumn">b </span></p>
 </td>
-<td><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">dT</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">dT</span></p>
 <p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">ºC</span></p>
 </td>
 </tr>
 <tr>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Glass/Cell/Polymer Sheet</span><br />
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Glass/Cell/Polymer Sheet</span><br />
 <span class="f_TableTextLeft">Open Rack</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-3.56</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-3.56</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.0750</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.0750</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3</span></p>
 </td>
 </tr>
 <tr>
-<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Glass/Cell/Glass </span><br />
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Glass/Cell/Glass </span><br />
 <span class="f_TableTextLeft">Open Rack</span></p>
 </td>
-<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-3.47</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-3.47</span></p>
 </td>
-<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.0594</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.0594</span></p>
 </td>
-<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3</span></p>
 </td>
 </tr>
 <tr>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Polymer/Thin Film/Steel</span><br />
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Polymer/Thin Film/Steel</span><br />
 <span class="f_TableTextLeft">Open Rack </span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-3.58</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-3.58</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.113</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.113</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3</span></p>
 </td>
 </tr>
 <tr>
-<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Glass/Cell/Polymer Sheet</span><br />
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Glass/Cell/Polymer Sheet</span><br />
 <span class="f_TableTextLeft">Insulated Back</span></p>
 </td>
-<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-2.81</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-2.81</span></p>
 </td>
-<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.0455</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.0455</span></p>
 </td>
-<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
 </td>
 </tr>
 <tr>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Glass/Cell/Glass</span><br />
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Glass/Cell/Glass</span><br />
 <span class="f_TableTextLeft">Close Roof Mount</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-2.98</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-2.98</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.0471</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.0471</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1</span></p>
-</td>
-</tr>
-<tr>
-<td style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Concentrating PV Module</span></p>
-</td>
-<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-3.2</span></p>
-</td>
-<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.09</span></p>
-</td>
-<td style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">17</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1</span></p>
 </td>
 </tr>
 <tr>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">User Defined</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Concentrating PV Module</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-99</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-3.2</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.09</span></p>
 </td>
-<td style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">17</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">User Defined</span></p>
+</td>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-99</span></p>
+</td>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+</td>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
 </td>
 </tr>
 </table>
@@ -363,47 +352,47 @@
 <p class="p_Text"><span class="f_Text">&nbsp;</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The default values for the User Defined option effectively remove temperature correction from the model so that the cell temperature is equal to the ambient temperature.</span></p>
 <p class="p_TitleTable" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleTable">Table 3. Sample temperature coefficient values for different cell types based on an informal survey of manufacturer module specifications.</span></p>
-<div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="Default Shaded Rows" style="width:100%;">
+<div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="margin:0 auto; border:none; border-spacing:0;">
 <tr>
-<td><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Cell Type</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Cell Type</span></p>
 </td>
-<td><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Maximum Power Temperature Coefficient (%/°C)</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Maximum Power Temperature Coefficient (%/°C)</span></p>
 </td>
 </tr>
 <tr>
-<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Monocrystalline Silicon</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Monocrystalline Silicon</span></p>
 </td>
-<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.49</span></p>
-</td>
-</tr>
-<tr>
-<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Polycrystalline Silicon</span></p>
-</td>
-<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.49</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.49</span></p>
 </td>
 </tr>
 <tr>
-<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Amorphous Silicon</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Polycrystalline Silicon</span></p>
 </td>
-<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.24</span></p>
-</td>
-</tr>
-<tr>
-<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Amorphous Silicon Triple Junction</span></p>
-</td>
-<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.21</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.49</span></p>
 </td>
 </tr>
 <tr>
-<td style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Copper Indium Gallium DiSelenide (CIGS)</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Amorphous Silicon</span></p>
 </td>
-<td style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.45</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.24</span></p>
 </td>
 </tr>
 <tr>
-<td><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Cadmium Telluride (CdTe)</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Amorphous Silicon Triple Junction</span></p>
 </td>
-<td><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.25</span></p>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.21</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Copper Indium Gallium DiSelenide (CIGS)</span></p>
+</td>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.45</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Cadmium Telluride (CdTe)</span></p>
+</td>
+<td style="vertical-align:top; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.25</span></p>
 </td>
 </tr>
 </table>
@@ -497,7 +486,7 @@
 <tr>
 <td><p class="p_Text"><span class="f_Text">The flat-plate photovoltaic simple efficiency module model calculates the module's hourly DC output assuming that the module efficiency varies with radiation incident on the module as defined by the radiation level and efficiency table. The model makes an adjustment for cell temperature using the <a href="pv_module.htm#sandiatempcorr" class="topiclink">Sandia temperature correction algorithm</a>.</span></p>
 <p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To use the simple efficiency module model:</span></p>
-<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the Module page, choose </span><span class="f_CHInterfaceElement">Simple Efficiency Module Model</span><span class="f_ProcedureStep">.</span></p><p class="p_Normal" style="text-indent: 0; padding-left: 48px; margin-left: 0;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Enter a temperature coefficient. </span><span class="f_ProcedureStepNoNumber">This is the number typically reported on manufacturer specification sheets as the maximum power coefficient.</span><span class="f_TableTextLeft"> See <a href="pv_module.htm#sandiatempcorr" class="topiclink">Sandia Temperature Correction</a> for suggested values</span><span class="f_ProcedureStepNoNumber">.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Enter the module's total cell area in square meters, equivalent to the product of the cell area and number of cells.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Type values for the module's maximum power and open circuit voltages. SAM uses these values for array sizing on the <a href="pv_system_design.htm" class="topiclink">System Design</a> page.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Choose a module structure from the three available options (displayed as front material / cell / back material). See <a href="pv_module.htm#sandiatempcorr" class="topiclink">Sandia Temperature Correction</a> for details.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Module manufacturers typically include a description of the front material, and frame or back material in a mechanical characteristics section of module specification sheets.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the Module page, choose </span><span class="f_CHInterfaceElement">Simple Efficiency Module Model</span><span class="f_ProcedureStep">.</span></p><p class="p_Normal" style="text-indent: 0; padding-left: 48px; margin-left: 0;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Enter a temperature coefficient. </span><span class="f_ProcedureStepNoNumber">This is the number typically reported on manufacturer specification sheets as the maximum power coefficient.</span><span class="f_TableTextLeft"> See <a href="pv_module.htm#sandiatempcorr" class="topiclink">Sandia Temperature Correction</a> for suggested values</span><span class="f_ProcedureStepNoNumber">.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Enter the module's total cell area in square meters, equivalent to the product of the cell area and number of cells.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Type values for the module's maximum power and open circuit voltages. SAM uses these values for array sizing on the <a href="pv_system_design.htm#sizing" class="topiclink">System Design</a> page.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Choose a module structure from the three available options (displayed as front material / cell / back material). See <a href="pv_module.htm#sandiatempcorr" class="topiclink">Sandia Temperature Correction</a> for details.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Module manufacturers typically include a description of the front material, and frame or back material in a mechanical characteristics section of module specification sheets.</span></p>
 <p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">In the Radiation Level and Efficiency Table, enter an efficiency value for each of the five incident global radiation reference values in increasing order. If you are defining the efficiency curve with fewer than five efficiency values, </span><span class="f_Emphasis">you must include five radiation values</span><span class="f_ProcedureStep">, but you can assign the same efficiency value to more than one radiation value. For example, to represent a module with 13.5% constant efficiency, you would assign the value 13.5 to each of the five radiation values 200, 400, 600, 850, 1000.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">7.</span><span class="f_ProcedureStep">Choose the radiation level that represents the reference value, often 1000 W/m</span><span class="f_ProcedureStep" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_ProcedureStep"> for flat-plate modules.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM uses the reference value to calculate the module's rated power, displayed as the Power variable on the Module page.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Characteristics</span></h3>
 <p class="p_Text"><span class="f_Text">The module characteristics define the module's capacity, efficiency, and thermal characteristics.</span></p>
@@ -508,22 +497,11 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Area, m</span><span class="f_VariableName" style="font-size: 7pt; vertical-align: super;">2</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The module collector area in square meters. To calculate the area for a given module power rating at a given reference radiation level, divide the power rating by the module efficiency and radiation level. For example, a module with a 100 W rating and 13.5% efficiency at 1000 W/m</span><span class="f_VariableDescription" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableDescription"> would requires an area of 100 W / (0.135 × 1000 W/m</span><span class="f_VariableDescription" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableDescription">) = 0.74074 m</span><span class="f_VariableDescription" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableDescription">.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum power voltage (Vmp)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The voltage at the module's maximum power point.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The voltage at the module's maximum power point. SAM uses this value for <a href="pv_system_design.htm" class="topiclink">Array sizing</a>.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Open circuit voltage (Voc)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The module's open circuit voltage.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The module's open circuit voltage. SAM uses this value for <a href="pv_system_design.htm#sizing" class="topiclink">Array sizing</a>.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Module structure and mounting</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The module's front and back materials (front material/cell/back material) used in the <a href="pv_module.htm#sandiatempcorr" class="topiclink">Sandia temperature correction algorithm</a></span><span class="f_ProcedureStep">.</span></p>
-<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Bifacial Specifications</span></h3>
-<p class="p_Text"><span class="f_Text">SAM's bifacial model is adapted from Marion, B, et. al (2017) A Practical Irradiance Model for Bifacial PV Modules, available for download at <a href="https://sam.nrel.gov/performance" target="_blank" class="weblink">https://sam.nrel.gov/performance</a>. The model's open source implementation is available on the NREL GitHub website at <a href="github.com/NREL/bifacialvf" target="_blank" class="weblink" title="github.com/NREL/bifacialvf">github.com/NREL/bifacialvf</a>. The bifacial model calculates the plane-of-array irradiance on the rear side of the PV modules assuming infinite rows. The rear-side plane-of-array irradiance is multiplied by the module bifaciality factor, and then added to the front-side plane-of-array irradiance, which is then sent to the module model to predict module DC power. Primary drivers of the rear-side POA irradiance include the ground albedo, row-to-row spacing (function of ground-coverage ratio), and ground clearance height.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Module is bifacial</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Check this box to enable the bifacial model and its inputs.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">The CEC module library indicates whether the module is bifacial. You can sort the library table by clicking the Bifacial column heading: Bifacial modules have a value of one.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Transmission Fraction</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A fraction between 0 and 1 specifying the percentage of array row area (including through the modules) that allows light to transmit through from front to rear.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Bifaciality</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A fraction between 0 and 1 specifying the relative efficiency of the rear-side compared to the front-side </span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ground clearance height </span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The height from the ground to the bottom of the PV module. &nbsp;For systems with tracking, this is the height at a zero-degree tilt angle.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Radiation Level and Efficiency Table</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Irradiance (W/m2)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The plane-of-array total (beam and diffuse) irradiance level at which the given efficiency value applies.</span></p>
@@ -597,17 +575,6 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The surface area of the entire module.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Nominal operating cell temperature, °C</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The nominal operating cell temperature (NOCT) of the module is the measured cell temperature of the module at NOCT test conditions: 800 W/m² incident irradiance, 20 degrees Celsius ambient temperature, and 1 m/s wind speed. The mounting configuration under test conditions is typically open rack, except building-integrated (BIPV) modules which are tested in a building-integrated configuration.</span></p>
-<h4 class="p_Heading4"><span class="f_Heading4">Bifacial Specifications</span></h4>
-<p class="p_Text"><span class="f_Text">SAM's bifacial model is adapted from Marion, B, et. al (2017) A Practical Irradiance Model for Bifacial PV Modules, available for download at <a href="https://sam.nrel.gov/performance" target="_blank" class="weblink">https://sam.nrel.gov/performance</a>. The model's open source implementation is available on the NREL GitHub website at <a href="github.com/NREL/bifacialvf" target="_blank" class="weblink" title="github.com/NREL/bifacialvf">github.com/NREL/bifacialvf</a>. The bifacial model calculates the plane-of-array irradiance on the rear side of the PV modules assuming infinite rows. The rear-side plane-of-array irradiance is multiplied by the module bifaciality factor, and then added to the front-side plane-of-array irradiance, which is then sent to the module model to predict module DC power. Primary drivers of the rear-side POA irradiance include the ground albedo, row-to-row spacing (function of ground-coverage ratio), and ground clearance height.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Module is bifacial</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Check this box to enable the bifacial model and its inputs.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">The CEC module library indicates whether the module is bifacial. You can sort the library table by clicking the Bifacial column heading: Bifacial modules have a value of one.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Transmission Fraction</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A fraction between 0 and 1 specifying the percentage of array row area (including through the modules) that allows light to transmit through from front to rear.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Bifaciality</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A fraction between 0 and 1 specifying the relative efficiency of the rear-side compared to the front-side </span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ground clearance height </span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The height from the ground to the bottom of the PV module. &nbsp;For systems with tracking, this is the height at a zero-degree tilt angle.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Electrical Specifications</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum power point voltage (Vmp), V</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The reference maximum power point voltage at STC.</span></p>
@@ -644,101 +611,101 @@
 <div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0 3px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="iec68153" class="hmanchor"></a><img id="TOGGLE0186A5_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-minus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A5','TOGGLE0186A5_ICON')">IEC 68153 Single Diode Model</a></span></td></tr></table></div><div id="TOGGLE0186A5" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="Toggle Content Table" style="width:100%;">
 <tr>
 <td><p class="p_Text"><span class="f_Text">The IEC-61853 Single Diode model is a detailed method for predicting the performance of flat plate photovoltaic modules. &nbsp;The model uses data from modules tested according to the International Electrotechnical Commission (IEC) power and rating standard, <a href="http://www.solarabcs.org/about/publications/reports/pv-mod-power-rating/" target="_blank" class="weblink" title="http://www.solarabcs.org/about/publications/reports/pv-mod-power-rating/">IEC 61853</a>, </span><span class="f_Text" style="font-style: italic;">Irradiance and Temperature Performance Measurements and Power Rating</span><span class="f_Text">. The standard describes requirements for testing PV module performance at maximum power operation for a set of 23 operational conditions, denoted by a * in the table below.</span></p>
-<div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="Default Shaded Rows" style="width:100%;">
+<div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="margin:0 auto; border:none; border-spacing:0;">
 <tr>
-<td style="width:111px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Irradiance (W/m2)</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Irradiance (W/m2)</span></p>
 </td>
-<td style="width:111px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Tmodule = 15 ºC</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Tmodule = 15 ºC</span></p>
 </td>
-<td style="width:111px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Tmodule= 25 ºC</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Tmodule= 25 ºC</span></p>
 </td>
-<td style="width:111px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Tmodule = 50 ºC</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Tmodule = 50 ºC</span></p>
 </td>
-<td style="width:111px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Tmodule = 75 ºC</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Tmodule = 75 ºC</span></p>
 </td>
 </tr>
 <tr>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">1100</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">1100</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">N/A</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">N/A</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
-</td>
-</tr>
-<tr>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">1000</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
 </tr>
 <tr>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">800</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">1000</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
-</td>
-</tr>
-<tr>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">600</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
 </tr>
 <tr>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">400</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">800</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">N/A</span></p>
-</td>
-</tr>
-<tr>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">200</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
-</td>
-<td style="width:111px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">N/A</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
 </tr>
 <tr>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">100</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">600</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">N/A</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
 </td>
-<td style="width:111px; background-color:#C0C0C0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">N/A</span></p>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">400</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">N/A</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">200</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">N/A</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">100</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">N/A</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">N/A</span></p>
 </td>
 </tr>
 </table>

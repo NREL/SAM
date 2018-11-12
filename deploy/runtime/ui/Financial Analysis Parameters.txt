@@ -51,7 +51,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 0
@@ -154,7 +154,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -213,7 +213,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -272,7 +272,7 @@ Height
 24
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -323,7 +323,7 @@ Financial Analysis Parameters
 1
 1
 1
-30
+30.000000
 Default
 analysis_period_warning
 3
@@ -349,7 +349,7 @@ Financial Analysis Parameters
 1
 1
 1
-2.5
+2.500000
 Default
 nominal_discount_rate
 3
@@ -363,7 +363,7 @@ Financial Analysis Parameters
 1
 1
 1
-0
+0.000000
 Default
 real_discount_rate
 3
@@ -377,7 +377,7 @@ Financial Analysis Parameters
 1
 1
 1
-5.5
+5.500000
 Default
 
 152

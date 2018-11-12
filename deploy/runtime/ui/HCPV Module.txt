@@ -393,13 +393,13 @@ X
 15
 Y
 3
-864
+852
 Width
 3
 350
 Height
 3
-93
+105
 Caption
 5
 205
@@ -672,7 +672,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -785,7 +785,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -844,7 +844,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -903,7 +903,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -962,7 +962,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1021,7 +1021,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1080,7 +1080,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1139,7 +1139,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1198,7 +1198,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1257,7 +1257,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1316,7 +1316,7 @@ Height
 21
 Value
 1
-200
+200.000000
 Mode
 3
 1
@@ -1375,7 +1375,7 @@ Height
 21
 Value
 1
-200
+200.000000
 Mode
 3
 1
@@ -1434,7 +1434,7 @@ Height
 21
 Value
 1
-400
+400.000000
 Mode
 3
 1
@@ -1493,7 +1493,7 @@ Height
 21
 Value
 1
-400
+400.000000
 Mode
 3
 1
@@ -1552,7 +1552,7 @@ Height
 21
 Value
 1
-600
+600.000000
 Mode
 3
 1
@@ -1611,7 +1611,7 @@ Height
 21
 Value
 1
-600
+600.000000
 Mode
 3
 1
@@ -1670,7 +1670,7 @@ Height
 21
 Value
 1
-900
+900.000000
 Mode
 3
 1
@@ -1729,7 +1729,7 @@ Height
 21
 Value
 1
-900
+900.000000
 Mode
 3
 1
@@ -1788,7 +1788,7 @@ Height
 21
 Value
 1
-1000
+1000.000000
 Mode
 3
 1
@@ -1847,7 +1847,7 @@ Height
 21
 Value
 1
-1e+06
+1000000.000000
 Mode
 3
 1
@@ -1926,7 +1926,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -1985,7 +1985,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2044,7 +2044,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2103,7 +2103,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2162,7 +2162,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2221,7 +2221,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2280,7 +2280,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2339,7 +2339,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2398,7 +2398,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2457,7 +2457,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2516,7 +2516,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2575,7 +2575,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2634,7 +2634,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 0
@@ -2693,7 +2693,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2792,7 +2792,7 @@ Height
 21
 Value
 1
-0
+0.000000
 Mode
 3
 1
@@ -2843,7 +2843,7 @@ Concentrating PV Simple Efficiency Model
 1
 1
 1
-0
+0.000000
 Default
 hcpv.module.cell_temp
 3
@@ -2857,7 +2857,7 @@ Concentrating PV Module
 1
 1
 1
-0
+0.000000
 Default
 hcpv.module.est_eff
 3
@@ -2871,7 +2871,7 @@ HCPV Module
 1
 1
 1
-0
+0.000000
 Default
 hcpv.module.mam_ref
 3
@@ -2885,7 +2885,7 @@ HCPV Module
 1
 1
 1
-0
+0.000000
 Default
 hcpv.module.mjeff0
 3
@@ -2899,7 +2899,7 @@ Concentrating PV Module
 1
 1
 1
-30
+30.000000
 Default
 hcpv.module.mjeff1
 3
@@ -2913,7 +2913,7 @@ Concentrating PV Module
 1
 1
 1
-34
+34.000000
 Default
 hcpv.module.mjeff2
 3
@@ -2927,7 +2927,7 @@ Concentrating PV Module
 1
 1
 1
-36
+36.000000
 Default
 hcpv.module.mjeff3
 3
@@ -2941,7 +2941,7 @@ Concentrating PV Module
 1
 1
 1
-37
+37.000000
 Default
 hcpv.module.mjeff4
 3
@@ -2955,7 +2955,7 @@ Concentrating PV Module
 1
 1
 1
-37
+37.000000
 Default
 hcpv.module.power
 3
@@ -2969,7 +2969,7 @@ Concentrating PV Module
 1
 1
 1
-0
+0.000000
 Default
 hcpv.module.rad0
 3
@@ -2983,7 +2983,7 @@ Concentrating PV Module
 1
 1
 1
-200
+200.000000
 Default
 hcpv.module.rad0X
 3
@@ -2997,7 +2997,7 @@ Concentrating PV Simple Efficiency Model
 1
 1
 1
-0
+0.000000
 Default
 hcpv.module.rad1
 3
@@ -3011,7 +3011,7 @@ Concentrating PV Module
 1
 1
 1
-400
+400.000000
 Default
 hcpv.module.rad1X
 3
@@ -3025,7 +3025,7 @@ Concentrating PV Simple Efficiency Model
 1
 1
 1
-0
+0.000000
 Default
 hcpv.module.rad2
 3
@@ -3039,7 +3039,7 @@ Concentrating PV Module
 1
 1
 1
-600
+600.000000
 Default
 hcpv.module.rad2X
 3
@@ -3053,7 +3053,7 @@ Concentrating PV Simple Efficiency Model
 1
 1
 1
-0
+0.000000
 Default
 hcpv.module.rad3
 3
@@ -3067,7 +3067,7 @@ Concentrating PV Module
 1
 1
 1
-900
+900.000000
 Default
 hcpv.module.rad3X
 3
@@ -3081,7 +3081,7 @@ Concentrating PV Simple Efficiency Model
 1
 1
 1
-0
+0.000000
 Default
 hcpv.module.rad4
 3
@@ -3095,7 +3095,7 @@ Concentrating PV Module
 1
 1
 1
-1000
+1000.000000
 Default
 hcpv.module.rad4X
 3
@@ -3109,7 +3109,7 @@ Concentrating PV Simple Efficiency Model
 1
 1
 1
-0
+0.000000
 Default
 module_a
 3
@@ -3123,7 +3123,7 @@ Concentrating PV Module
 1
 1
 1
--3.2
+-3.200000
 Default
 module_a0
 3
@@ -3137,7 +3137,7 @@ Concentrating PV Simple Efficiency Model
 1
 1
 1
-0.935
+0.935000
 Default
 module_a1
 3
@@ -3151,7 +3151,7 @@ Concentrating PV Simple Efficiency Model
 1
 1
 1
-0.06557
+0.065570
 Default
 module_a2
 3
@@ -3193,7 +3193,7 @@ Concentrating PV Simple Efficiency Model
 1
 1
 1
--4.6e-05
+-0.000046
 Default
 module_alignment_error
 3
@@ -3207,7 +3207,7 @@ HCPV Module
 1
 1
 1
-0.93
+0.930000
 Default
 module_b
 3
@@ -3221,7 +3221,7 @@ Concentrating PV Module
 1
 1
 1
--0.09
+-0.090000
 Default
 module_cell_area
 3
@@ -3235,7 +3235,7 @@ Concentrating PV Module
 1
 1
 1
-1
+1.000000
 Default
 module_concentration
 3
@@ -3249,7 +3249,7 @@ Concentrating PV Simple Efficiency Model
 1
 1
 1
-700
+700.000000
 Default
 module_dT
 3
@@ -3263,7 +3263,7 @@ Concentrating PV Module
 1
 1
 1
-17
+17.000000
 Default
 module_flutter_loss_coeff
 3
@@ -3277,7 +3277,7 @@ HCPV Module
 1
 1
 1
-0.01
+0.010000
 Default
 module_mjeff
 3
@@ -3291,7 +3291,7 @@ module_mjeff
 2
 1
 1
-0
+0.000000
 Default
 module_ncells
 3
@@ -3305,7 +3305,7 @@ Concentrating PV Simple Efficiency Model
 1
 1
 1
-20
+20.000000
 Default
 module_optical_error
 3
@@ -3319,7 +3319,7 @@ HCPV Module
 1
 1
 1
-0.9
+0.900000
 Default
 module_rad
 3
@@ -3333,7 +3333,7 @@ module_rad
 2
 1
 1
-0
+0.000000
 Default
 module_reference
 3
@@ -3347,7 +3347,7 @@ Concentrating PV Module
 1
 1
 1
-3
+3.000000
 Default
 module_temp_coeff
 3
@@ -3361,7 +3361,7 @@ Concentrating PV Module
 1
 1
 1
--0.15
+-0.150000
 Default
 
 2425
