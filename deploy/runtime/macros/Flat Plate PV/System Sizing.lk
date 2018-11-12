@@ -8,11 +8,7 @@
 <li>By default, the macro displays a report in a SAM window. If you want to export the report, choose Yes for <b>Show results in default browser?</b> to save the report as an HTML file and open it in your default browser. You can then use the browser's tools to export it to PDF or another format.
 </ol>
 <p>&nbsp;</p>
-<div align=center>
-<table bgcolor=#ffffa5 width=80% cellpadding=5>
-<tr><td><strong>Note.</strong> If you select the <strong>Have SAM try to automatically size the system</strong> option in the System Design page, this macro assumes the system only has a <b>single</b> subarray.</td></tr>
-</table>
-</div>
+
 @*/
 
 //@ name=dc_degradation;type=number;label=Annual DC degradation (%);value=0.5
@@ -49,7 +45,12 @@ function num_to_str( x , d )
 	// only format x if it is a number
 	if ( typeof(x) == 'number' )
 	{
-		str = sprintf('%.'+to_string(d)+',',x);
+		
+		if( ( d == 0) && (mod( round(x) , 10) == 0) )	
+			str = round(x);
+		else 
+			str = sprintf('%.'+to_string(d)+',',x);			// This step converts a number (for d = 0) like 409.857 to 41 instead of 410. This if-else condition is a workaround that bug.
+
 		arr = split(str,'.');
 		if ( #arr > 1 )
 			num_decs = strlen(to_string(arr[1]));
@@ -380,7 +381,7 @@ nameplate_ac = get('total_inverter_capacity');
 
 // run simulation and quit if simulation fails
 sim_msg = '';
-ok = simulate( sim_msg );
+ok = simulate( sim_msg , true );
 if ( !ok )
 {
 	msgbox( 'Simulation Failed!\nThere is a problem with your inputs that caused the simulation to fail with the following message:\n\n' + sim_msg + '\n\nPlease correct the problem and try running the macro again.');
@@ -474,7 +475,9 @@ t_dry_min = min(t_dry);
 t_dry_max = max(t_dry);
 t_dry = null;
 t_stc = 25;
-for (j=0; j<4; j++) //loop through subarrays
+vlow_boundary = false;		//[T-F] When set to True, it ignores the hours of sunrise and sunset when voltage input to the inverter is rapidly rising/dropping when recording Vdc for vdc_low;
+		
+for (j=0; j<max_subarrays; j++) //loop through subarrays
 {
 	if(j>0) //subarray 1 is always enabled
 	{
@@ -489,11 +492,29 @@ for (j=0; j<4; j++) //loop through subarrays
 	var_str = 'subarray' + to_string(j+1) + '_voc';
 	voc_ts = get(var_str); //Volts
 	voc_hi[j] = max(voc_ts); //Volts
+	
+	//Loop for sampling V inputs to the inverter, and recording the lowest Vdc input in the year:
 	for(i=0; i<8760;i++)
 	{
-		if(sunup[i] == 1)
-			if(vdc_ts[i] < vdc_low[j]) //lowest voltage seen when the sun is up (system is operating)
+		if(sunup[i] == 0)
+			vlow_boundary = false;		//Ignores voltage values during night time	
+		
+		if(sunup[i] == 1) {
+		
+			//Ignoring the hour up until sunrise is complete:
+			if((sunup[i-1] == 0) && (vdc_ts[i] > 0)) 		//If sunrise happened in the previous hour (Sometimes sunup jumps from 0 to 1)
+				vlow_boundary = true;
+			elseif((sunup[i-1] == 2) && (vdc_ts[i] > 0)) 	//Sometimes sunup jumps from 0 to 1 rather than 0 to 2
+				vlow_boundary = true;
+			
+			//Ignore the final hour when the sun is setting - and Vdc input to the inverter is rapidly falling
+				if((sunup[i+1] == 3) || (sunup[i+1] == 0))
+					vlow_boundary = false;
+					
+			//Candidate for lowest Vdc input to the inverter will now only be recorded between (and excluding) the hours of sunrise & sunset:
+			if((vlow_boundary != false ) && (vdc_ts[i] < vdc_low[j])) //lowest voltage seen when the sun is up (system is operating)			
 				vdc_low[j] = vdc_ts[i]; //Volts
+		}
 	}
 	vdc_ts = null;
 	voc_ts = null;
@@ -577,7 +598,7 @@ stable_sort(modules_diff,2);
 ////////////////////////////////////////////////////////////////////////////////
 
 num_plots = 0;
-for ( j=0; j<4; j++ )
+for ( j=0; j < max_subarrays; j++ )
 {
 	if ( vdc_hi[j] > -999 )
 	{
@@ -602,7 +623,7 @@ for ( j=0; j<4; j++ )
 			'title' = 'Figure ' + to_string(num_plots+1) + ': ' + pre_str + 'String Voltages', // underscore makes subscript
 			'line_data' = line_data, // vmppt_min, vmppt_max, and Vdcmax if Vdcmax != Vmppt_max
 			'line_labels' = line_labels,
-			'bar_data' = [voc_max_design * modules_per_string[0], voc_hi[j], vdc_hi[j], vdc_low[j], vmp_min_design * modules_per_string[0] ], // one value for each bar
+			'bar_data' = [voc_max_design * modules_per_string[j], voc_hi[j], vdc_hi[j], vdc_low[j], vmp_min_design * modules_per_string[j] ], // one value for each bar
 			'bar_label' = '',
 			'x_label' = 'VDC',
 			'y_labels' = ['Max Design Voc','Max Operating Voc','Max Operating Vdc','Min Operating Vdc','Min Design Vdc'], // one label for each bar

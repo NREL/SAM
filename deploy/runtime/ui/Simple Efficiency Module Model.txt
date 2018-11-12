@@ -649,7 +649,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -708,7 +708,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -767,7 +767,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -826,7 +826,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -885,7 +885,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -944,7 +944,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1003,7 +1003,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1103,7 +1103,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1162,7 +1162,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1221,7 +1221,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1280,7 +1280,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1339,7 +1339,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1398,7 +1398,7 @@ Height
 21
 Value
 1
-1.000000
+1
 Mode
 3
 1
@@ -1522,7 +1522,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1581,7 +1581,7 @@ Height
 21
 Value
 1
-200.000000
+200
 Mode
 3
 1
@@ -1640,7 +1640,7 @@ Height
 21
 Value
 1
-400.000000
+400
 Mode
 3
 1
@@ -1699,7 +1699,7 @@ Height
 21
 Value
 1
-600.000000
+600
 Mode
 3
 1
@@ -1758,7 +1758,7 @@ Height
 21
 Value
 1
-800.000000
+800
 Mode
 3
 1
@@ -1817,7 +1817,7 @@ Height
 21
 Value
 1
-1000.000000
+1000
 Mode
 3
 1
@@ -1916,7 +1916,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1975,7 +1975,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2034,7 +2034,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2085,7 +2085,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-0.000000
+0
 Numeric
 spe_area
 3
@@ -2099,7 +2099,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-0.740740
+0.74074
 Numeric
 spe_b
 3
@@ -2113,7 +2113,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-0.000000
+0
 Numeric
 spe_bifacial_ground_clearance_height
 3
@@ -2127,7 +2127,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-1.000000
+1
 Default
 spe_bifacial_transmission_factor
 3
@@ -2141,7 +2141,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-0.013000
+0.013
 Default
 spe_bifaciality
 3
@@ -2155,7 +2155,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-0.650000
+0.65
 Default
 spe_dT
 3
@@ -2169,7 +2169,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-0.000000
+0
 Numeric
 spe_data_filename
 3
@@ -2195,7 +2195,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-13.500000
+13.5
 Numeric
 spe_eff1
 3
@@ -2209,7 +2209,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-13.500000
+13.5
 Numeric
 spe_eff2
 3
@@ -2223,7 +2223,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-13.500000
+13.5
 Numeric
 spe_eff3
 3
@@ -2237,7 +2237,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-13.500000
+13.5
 Numeric
 spe_eff4
 3
@@ -2251,7 +2251,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-13.500000
+13.5
 Numeric
 spe_fd
 3
@@ -2265,7 +2265,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-1.000000
+1
 Numeric
 spe_is_bifacial
 3
@@ -2279,7 +2279,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-0.000000
+0
 Default
 spe_module_structure
 3
@@ -2294,7 +2294,7 @@ Glass/Cell/Polymer Sheet - Open Rack|Glass/Cell/Glass - Open Rack|Polymer/Thin F
 1
 1
 1
-0.000000
+0
 Choice
 spe_power
 3
@@ -2308,7 +2308,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-100.000000
+100
 Numeric
 spe_rad0
 3
@@ -2322,7 +2322,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-200.000000
+200
 Numeric
 spe_rad1
 3
@@ -2336,7 +2336,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-400.000000
+400
 Numeric
 spe_rad2
 3
@@ -2350,7 +2350,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-600.000000
+600
 Numeric
 spe_rad3
 3
@@ -2364,7 +2364,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-800.000000
+800
 Numeric
 spe_rad4
 3
@@ -2378,7 +2378,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-1000.000000
+1000
 Numeric
 spe_reference
 3
@@ -2392,7 +2392,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-4.000000
+4
 RadioChoice
 spe_temp_coeff
 3
@@ -2406,7 +2406,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
--0.500000
+-0.5
 Numeric
 spe_vmp
 3
@@ -2420,7 +2420,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-30.000000
+30
 Numeric
 spe_voc
 3
@@ -2434,7 +2434,7 @@ PV Module (Simple Efficiency)
 1
 1
 1
-36.000000
+36
 Numeric
 
 236

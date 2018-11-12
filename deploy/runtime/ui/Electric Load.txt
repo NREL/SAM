@@ -231,7 +231,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -282,7 +282,7 @@ Electric Load
 2
 1
 1
-0.000000
+0
 Default
 escal_other
 3
@@ -296,7 +296,7 @@ Electric Load
 2
 1
 1
-0.000000
+0
 Default
 load_escalation
 3
@@ -310,7 +310,7 @@ Electric Load
 2
 1
 1
-0.000000
+0
 Default
 ui_annual_load
 3
@@ -324,7 +324,7 @@ Electric Load
 1
 1
 1
-0.000000
+0
 Numeric
 
 351

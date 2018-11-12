@@ -515,7 +515,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -616,7 +616,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -704,7 +704,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -797,7 +797,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 CheckBox
 user_specified_wf_wind
 3
@@ -824,7 +824,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 Numeric
 wind_climate.msg
 3
@@ -851,7 +851,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 Default
 wind_climate.url_info
 3
@@ -890,7 +890,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 Numeric
 wind_resource.closest_speed_meas_ht
 3
@@ -904,7 +904,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 Numeric
 wind_resource.country
 3
@@ -942,7 +942,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 Numeric
 wind_resource.file
 3
@@ -968,7 +968,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 Numeric
 wind_resource.lat_requested
 3
@@ -982,7 +982,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 Default
 wind_resource.location
 3
@@ -1022,7 +1022,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 Numeric
 wind_resource.lon_requested
 3
@@ -1036,7 +1036,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 Default
 wind_resource.requested_ht
 3
@@ -1050,7 +1050,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 Numeric
 wind_resource.state
 3
@@ -1076,7 +1076,7 @@ Wind Resource by Location
 1
 1
 1
-0.000000
+0
 Default
 wind_resource_filename
 3

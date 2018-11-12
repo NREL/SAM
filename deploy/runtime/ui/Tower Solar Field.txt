@@ -213,7 +213,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -272,7 +272,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -331,7 +331,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -390,7 +390,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -449,7 +449,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -537,7 +537,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -596,7 +596,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -655,7 +655,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -714,7 +714,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -773,7 +773,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -832,7 +832,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -891,7 +891,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -950,7 +950,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1038,7 +1038,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1097,7 +1097,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1156,7 +1156,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1215,7 +1215,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1301,7 +1301,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1435,7 +1435,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1494,7 +1494,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1553,7 +1553,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1612,7 +1612,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1671,7 +1671,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1730,7 +1730,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1789,7 +1789,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1848,7 +1848,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1907,7 +1907,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -2137,7 +2137,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2196,7 +2196,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2255,7 +2255,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -2374,7 +2374,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2433,7 +2433,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2535,7 +2535,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2594,7 +2594,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -2653,7 +2653,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2704,7 +2704,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 I_bn_des
 3
@@ -2718,7 +2718,7 @@ Heliostat Field
 1
 1
 1
-950.000000
+950
 Default
 V_wind_10
 3
@@ -2732,7 +2732,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 bop_spec_cost
 3
@@ -2746,7 +2746,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 c_atm_0
 3
@@ -2774,7 +2774,7 @@ Heliostat Field
 1
 1
 1
-0.104600
+0.1046
 Default
 c_atm_2
 3
@@ -2788,7 +2788,7 @@ Heliostat Field
 1
 1
 1
--0.017000
+-0.017
 Default
 c_atm_3
 3
@@ -2816,7 +2816,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 cant_type
 3
@@ -2831,7 +2831,7 @@ None|On-axis|Equinox|Summer Solstice|Winter Solstice
 1
 1
 1
-1.000000
+1
 Default
 check_max_flux
 3
@@ -2845,7 +2845,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 contingency_rate
 3
@@ -2859,7 +2859,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 cost_sf_fixed
 3
@@ -2873,7 +2873,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.sf.fixed_land_area
 3
@@ -2887,7 +2887,7 @@ Heliostat Field
 1
 1
 1
-44.500000
+44.5
 Default
 csp.pt.sf.heliostat_area
 3
@@ -2901,7 +2901,7 @@ Heliostat Field
 1
 1
 1
-148.550003
+148.55
 Default
 csp.pt.sf.land_overhead_factor
 3
@@ -2915,7 +2915,7 @@ Heliostat Field
 1
 1
 1
-1.300000
+1.3
 Default
 csp.pt.sf.total_land_area
 3
@@ -2929,7 +2929,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.sf.tower_height
 3
@@ -2943,7 +2943,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 dens_mirror
 3
@@ -2957,7 +2957,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 dni_des_calc
 3
@@ -2971,7 +2971,7 @@ Heliostat Field
 1
 1
 1
-950.000000
+950
 Default
 error_equiv
 3
@@ -2985,7 +2985,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 field_control
 3
@@ -2999,7 +2999,7 @@ Heliostat Field
 1
 1
 1
-1.000000
+1
 Default
 focus_type
 3
@@ -3014,7 +3014,7 @@ Flat|Ideal
 1
 1
 1
-1.000000
+1
 Default
 fossil_spec_cost
 3
@@ -3028,7 +3028,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 hel_stow_deploy
 3
@@ -3042,7 +3042,7 @@ Heliostat Field
 1
 1
 1
-8.000000
+8
 Default
 helio_active_fraction
 3
@@ -3056,7 +3056,7 @@ Heliostat Field
 1
 1
 1
-0.990000
+0.99
 Default
 helio_area_tot
 3
@@ -3070,7 +3070,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 helio_height
 3
@@ -3084,7 +3084,7 @@ Heliostat Field
 1
 1
 1
-12.188000
+12.188
 Default
 helio_optical_error
 3
@@ -3098,7 +3098,7 @@ Heliostat Field
 1
 1
 1
-1.530000
+1.53
 Default
 helio_optical_error_mrad
 3
@@ -3112,7 +3112,7 @@ Heliostat Field
 1
 1
 1
-1.530000
+1.53
 Default
 helio_positions
 3
@@ -3126,7 +3126,7 @@ Heliostat Field
 3
 1
 3
-0.000000 0.000000 0.000000 
+0 0 0 
 
 DataMatrix
 helio_reflectance
@@ -3141,7 +3141,7 @@ Heliostat Field
 1
 1
 1
-0.950000
+0.95
 Default
 helio_width
 3
@@ -3155,7 +3155,7 @@ Heliostat Field
 1
 1
 1
-12.188000
+12.188
 Default
 heliostat_spec_cost
 3
@@ -3169,7 +3169,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 is_optimize
 3
@@ -3183,7 +3183,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 land_area_base
 3
@@ -3197,7 +3197,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 land_max
 3
@@ -3211,7 +3211,7 @@ Heliostat Field
 1
 1
 1
-7.500000
+7.5
 Default
 land_max_calc
 3
@@ -3225,7 +3225,7 @@ Heliostat Field
 1
 1
 1
-1150.000000
+1150
 Default
 land_min
 3
@@ -3239,7 +3239,7 @@ Heliostat Field
 1
 1
 1
-0.750000
+0.75
 Default
 land_min_calc
 3
@@ -3253,7 +3253,7 @@ Heliostat Field
 1
 1
 1
-75.000000
+75
 Default
 land_spec_cost
 3
@@ -3267,7 +3267,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 n_azi
 3
@@ -3281,7 +3281,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 n_facet_x
 3
@@ -3295,7 +3295,7 @@ Heliostat Field
 1
 1
 1
-2.000000
+2
 Default
 n_facet_y
 3
@@ -3309,7 +3309,7 @@ Heliostat Field
 1
 1
 1
-8.000000
+8
 Default
 n_hel
 3
@@ -3323,7 +3323,7 @@ Heliostat Field
 1
 1
 1
-8629.000000
+8629
 Default
 n_zen
 3
@@ -3337,7 +3337,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 opt_algorithm
 3
@@ -3352,7 +3352,7 @@ BOBYQA|COBYLA|NEWOUA|Nelder-Mead|Subplex|RSGS
 1
 1
 1
-1.000000
+1
 Default
 opt_conv_tol
 3
@@ -3366,7 +3366,7 @@ Heliostat Field
 1
 1
 1
-0.001000
+0.001
 Default
 opt_flux_penalty
 3
@@ -3380,7 +3380,7 @@ Heliostat Field
 1
 1
 1
-0.350000
+0.35
 Default
 opt_init_step
 3
@@ -3394,7 +3394,7 @@ Heliostat Field
 1
 1
 1
-0.050000
+0.05
 Default
 opt_max_iter
 3
@@ -3408,7 +3408,7 @@ Heliostat Field
 1
 1
 1
-200.000000
+200
 Default
 override_layout
 3
@@ -3422,7 +3422,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 CheckBox
 override_opt
 3
@@ -3436,7 +3436,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 CheckBox
 p_start
 3
@@ -3450,7 +3450,7 @@ Heliostat Field
 1
 1
 1
-0.025000
+0.025
 Numeric
 p_track
 3
@@ -3464,7 +3464,7 @@ Heliostat Field
 1
 1
 1
-0.055000
+0.055
 Numeric
 plant_spec_cost
 3
@@ -3478,7 +3478,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 q_design
 3
@@ -3492,7 +3492,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 rec_cost_exp
 3
@@ -3506,7 +3506,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 rec_height
 3
@@ -3520,7 +3520,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 rec_ref_area
 3
@@ -3534,7 +3534,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 rec_ref_cost
 3
@@ -3548,7 +3548,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 run_type
 3
@@ -3562,7 +3562,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 sales_tax_frac
 3
@@ -3576,7 +3576,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 sf_adjust
 3
@@ -3603,7 +3603,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 tes_spec_cost
 3
@@ -3617,7 +3617,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 tower_exp
 3
@@ -3631,7 +3631,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 tower_fixed_cost
 3
@@ -3645,7 +3645,7 @@ Heliostat Field
 1
 1
 1
-0.000000
+0
 Default
 v_wind_max
 3
@@ -3659,7 +3659,7 @@ Heliostat Field
 1
 1
 1
-15.000000
+15
 Default
 washing_frequency
 3
@@ -3673,7 +3673,7 @@ Heliostat Field
 1
 1
 1
-63.000000
+63
 Numeric
 water_usage_per_wash
 3
@@ -3687,7 +3687,7 @@ Heliostat Field
 1
 1
 1
-0.700000
+0.7
 Numeric
 
 3546

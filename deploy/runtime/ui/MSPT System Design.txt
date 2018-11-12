@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -142,7 +142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -201,7 +201,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -260,7 +260,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -319,7 +319,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -378,7 +378,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -437,7 +437,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -764,7 +764,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -823,7 +823,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -882,7 +882,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -941,7 +941,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1000,7 +1000,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1095,7 +1095,7 @@ System Design
 1
 1
 1
-110.000000
+110
 Default
 Q_rec_des
 3
@@ -1109,7 +1109,7 @@ System Design
 1
 1
 1
-0.000000
+0
 Default
 T_htf_cold_des
 3
@@ -1123,7 +1123,7 @@ System Design
 1
 1
 1
-290.000000
+290
 Default
 T_htf_hot_des
 3
@@ -1137,7 +1137,7 @@ System Design
 1
 1
 1
-574.000000
+574
 Default
 design_eff
 3
@@ -1151,7 +1151,7 @@ System Design
 1
 1
 1
-0.450000
+0.45
 Default
 dni_des
 3
@@ -1165,7 +1165,7 @@ System Design
 1
 1
 1
-950.000000
+950
 Default
 gross_net_conversion_factor
 3
@@ -1179,7 +1179,7 @@ System Design
 1
 1
 1
-0.900000
+0.9
 Default
 nameplate
 3
@@ -1193,7 +1193,7 @@ System Design
 1
 1
 1
-0.000000
+0
 Default
 q_pb_design
 3
@@ -1207,7 +1207,7 @@ System Design
 1
 1
 1
-0.000000
+0
 Default
 sf_excess
 3
@@ -1221,7 +1221,7 @@ System Design
 1
 1
 1
-1.000000
+1
 Default
 solarm
 3
@@ -1235,7 +1235,7 @@ System Design
 1
 1
 1
-1.900000
+1.9
 Default
 tshours
 3
@@ -1249,7 +1249,7 @@ System Design
 1
 1
 1
-6.000000
+6
 Default
 tshours_sf
 3
@@ -1263,7 +1263,7 @@ System Design
 1
 1
 1
-0.000000
+0
 Default
 ui_msg
 3

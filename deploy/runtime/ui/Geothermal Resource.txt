@@ -105,7 +105,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -164,7 +164,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -223,7 +223,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -282,7 +282,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -341,7 +341,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -400,7 +400,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -459,7 +459,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -518,7 +518,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -577,7 +577,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -677,7 +677,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -736,7 +736,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -826,7 +826,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -885,7 +885,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -944,7 +944,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1041,7 +1041,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1100,7 +1100,7 @@ Height
 21
 Value
 1
-6000.000000
+6000
 Mode
 3
 1
@@ -1147,7 +1147,7 @@ Name
 resource_potential
 X
 3
-648
+651
 Y
 3
 30
@@ -1159,7 +1159,7 @@ Height
 21
 Value
 1
-210.000000
+210
 Mode
 3
 1
@@ -1218,7 +1218,7 @@ Height
 21
 Value
 1
-200.000000
+200
 Mode
 3
 1
@@ -1314,7 +1314,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1365,7 +1365,7 @@ Geothermal Resource
 1
 1
 1
-15.000000
+15
 Numeric
 fracture_aperature
 3
@@ -1379,7 +1379,7 @@ Geothermal Resource
 1
 1
 1
-0.000400
+0.0004
 Numeric
 fracture_width
 3
@@ -1393,7 +1393,7 @@ Geothermal Resource
 1
 1
 1
-175.000000
+175
 Numeric
 geotherm.avg_reservoir_temp
 3
@@ -1407,7 +1407,7 @@ Geothermal Resource
 1
 1
 1
-0.000000
+0
 Numeric
 geotherm.avg_reservoir_tempF
 3
@@ -1421,7 +1421,7 @@ Geothermal Resource
 1
 1
 1
-0.000000
+0
 Numeric
 geotherm.basecase_choice
 3
@@ -1435,7 +1435,7 @@ Geothermal Resource
 1
 1
 1
-0.000000
+0
 Default
 geotherm.bottom_hole_pressure
 3
@@ -1449,7 +1449,7 @@ Geothermal Resource
 1
 1
 1
-0.000000
+0
 Numeric
 geotherm.bottom_hole_pressureBar
 3
@@ -1463,7 +1463,7 @@ Geothermal Resource
 1
 1
 1
-0.000000
+0
 Numeric
 geotherm.delta_pressure_reservoir
 3
@@ -1477,7 +1477,7 @@ Geothermal Resource
 1
 1
 1
-0.000000
+0
 Numeric
 geotherm.delta_pressure_reservoirBar
 3
@@ -1491,7 +1491,7 @@ Geothermal Resource
 1
 1
 1
-0.000000
+0
 Numeric
 geotherm.egs_ambient_temp
 3
@@ -1505,7 +1505,7 @@ Geothermal Resource
 1
 1
 1
-15.000000
+15
 Default
 geotherm.errors2
 3
@@ -1532,7 +1532,7 @@ geotherm.lookup.depth_array
 2
 1
 1
-0.000000
+0
 Default
 geotherm.lookup.latitude
 3
@@ -1546,7 +1546,7 @@ geotherm.lookup.latitude
 1
 1
 1
--1.000000
+-1
 Default
 geotherm.lookup.location
 3
@@ -1573,7 +1573,7 @@ geotherm.lookup.longitude
 1
 1
 1
--1.000000
+-1
 Default
 geotherm.lookup.temp_array
 3
@@ -1587,7 +1587,7 @@ geotherm.lookup.temp_array
 2
 1
 1
-0.000000
+0
 Default
 geotherm.resource.choice
 3
@@ -1614,7 +1614,7 @@ Geothermal Resource
 1
 1
 1
-0.000000
+0
 Default
 geotherm.resource_type_name
 3
@@ -1641,7 +1641,7 @@ Geothermal Resource
 1
 1
 1
-0.000000
+0
 Default
 inj_prod_well_distance
 3
@@ -1655,7 +1655,7 @@ Geothermal Resource
 1
 1
 1
-1500.000000
+1500
 Numeric
 num_fractures
 3
@@ -1669,7 +1669,7 @@ Geothermal Resource
 1
 1
 1
-6.000000
+6
 Numeric
 reservoir_height
 3
@@ -1683,7 +1683,7 @@ Geothermal Resource
 1
 1
 1
-100.000000
+100
 Numeric
 reservoir_permeability
 3
@@ -1697,7 +1697,7 @@ Geothermal Resource
 1
 1
 1
-0.050000
+0.05
 Numeric
 reservoir_pressure_change
 3
@@ -1711,7 +1711,7 @@ Geothermal Resource
 1
 1
 1
-0.350000
+0.35
 Numeric
 reservoir_pressure_change_type
 3
@@ -1725,7 +1725,7 @@ Geothermal Resource
 1
 1
 1
-0.000000
+0
 RadioChoice
 reservoir_pressure_change_type_old_setting
 3
@@ -1739,7 +1739,7 @@ reservoir_pressure_change_type_old_setting
 1
 1
 1
-2.000000
+2
 Default
 reservoir_width
 3
@@ -1753,7 +1753,7 @@ Geothermal Resource
 1
 1
 1
-500.000000
+500
 Numeric
 resource_depth
 3
@@ -1767,7 +1767,7 @@ Geothermal Resource
 1
 1
 1
-6000.000000
+6000
 Numeric
 resource_potential
 3
@@ -1781,7 +1781,7 @@ Geothermal Resource
 1
 1
 1
-210.000000
+210
 Numeric
 resource_temp
 3
@@ -1795,7 +1795,7 @@ Geothermal Resource
 1
 1
 1
-200.000000
+200
 Numeric
 resource_type
 3
@@ -1809,7 +1809,7 @@ resource_type
 1
 1
 1
-0.000000
+0
 RadioChoice
 rock_density
 3
@@ -1823,7 +1823,7 @@ Geothermal Resource
 1
 1
 1
-2600.000000
+2600
 Default
 rock_specific_heat
 3
@@ -1837,7 +1837,7 @@ Geothermal Resource
 1
 1
 1
-950.000000
+950
 Default
 rock_thermal_conductivity
 3
@@ -1851,7 +1851,7 @@ Geothermal Resource
 1
 1
 1
-259200.000000
+259200
 Default
 subsurface_water_loss
 3
@@ -1865,7 +1865,7 @@ Geothermal Resource
 1
 1
 1
-2.000000
+2
 Numeric
 
 362

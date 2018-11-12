@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -142,7 +142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -201,7 +201,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -260,7 +260,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -319,7 +319,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -378,7 +378,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -437,7 +437,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -524,7 +524,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -583,7 +583,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -630,7 +630,7 @@ Name
 inv_snl_num_mppt
 X
 3
-570
+594
 Y
 3
 216
@@ -642,7 +642,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -701,7 +701,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -760,7 +760,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -819,7 +819,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -878,7 +878,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -937,7 +937,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -996,7 +996,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1256,7 +1256,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_c0
 3
@@ -1270,7 +1270,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_c1
 3
@@ -1284,7 +1284,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_c2
 3
@@ -1298,7 +1298,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_c3
 3
@@ -1312,7 +1312,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_eff_cec
 3
@@ -1326,7 +1326,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_eff_euro
 3
@@ -1340,7 +1340,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_idcmax
 3
@@ -1354,7 +1354,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_inverter_name
 3
@@ -1382,7 +1382,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_mppt_low
 3
@@ -1396,7 +1396,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_num_mppt
 3
@@ -1410,7 +1410,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-1.000000
+1
 Numeric
 inv_snl_paco
 3
@@ -1424,7 +1424,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_pdco
 3
@@ -1438,7 +1438,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_pnt
 3
@@ -1452,7 +1452,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_pso
 3
@@ -1466,7 +1466,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_vdcmax
 3
@@ -1480,7 +1480,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_snl_vdco
 3
@@ -1494,7 +1494,7 @@ PV Inverter (CEC Database)
 1
 1
 1
-0.000000
+0
 Numeric
 
 1771

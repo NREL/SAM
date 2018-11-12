@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -142,7 +142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -201,7 +201,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -260,7 +260,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -319,7 +319,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -378,7 +378,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -662,7 +662,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -721,7 +721,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -780,7 +780,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2803,7 +2803,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3023,7 +3023,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3082,7 +3082,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3141,7 +3141,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3200,7 +3200,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3259,7 +3259,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3318,7 +3318,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3377,7 +3377,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3436,7 +3436,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3495,7 +3495,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3554,7 +3554,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3613,7 +3613,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3672,7 +3672,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3731,7 +3731,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3941,7 +3941,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4000,7 +4000,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4059,7 +4059,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4118,7 +4118,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4177,7 +4177,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4236,7 +4236,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4295,7 +4295,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4354,7 +4354,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4413,7 +4413,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4472,7 +4472,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4531,7 +4531,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4590,7 +4590,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4649,7 +4649,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4708,7 +4708,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4767,7 +4767,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4826,7 +4826,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4885,7 +4885,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4944,7 +4944,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5003,7 +5003,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5062,7 +5062,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5121,7 +5121,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5180,7 +5180,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5239,7 +5239,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5298,7 +5298,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5357,7 +5357,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5416,7 +5416,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5475,7 +5475,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5534,7 +5534,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5593,7 +5593,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5652,7 +5652,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5711,7 +5711,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5770,7 +5770,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5829,7 +5829,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5888,7 +5888,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5947,7 +5947,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6006,7 +6006,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6065,7 +6065,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6124,7 +6124,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6183,7 +6183,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6242,7 +6242,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6301,7 +6301,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6360,7 +6360,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6419,7 +6419,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6478,7 +6478,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6537,7 +6537,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6596,7 +6596,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6655,7 +6655,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6714,7 +6714,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6773,7 +6773,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6832,7 +6832,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6891,7 +6891,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -6950,7 +6950,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -7009,7 +7009,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -7068,7 +7068,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -7328,7 +7328,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -7387,7 +7387,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -7446,7 +7446,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -7505,7 +7505,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -7564,7 +7564,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -7615,7 +7615,7 @@ MSLF Collector and Receiver
 1
 1
 1
-470.299988
+470.3
 Default
 AbsorberMaterial
 3
@@ -7629,7 +7629,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 AnnulusGas
 3
@@ -7643,7 +7643,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 ColAz
 3
@@ -7657,7 +7657,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 DP_coefs
 3
@@ -7671,7 +7671,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 DP_nominal
 3
@@ -7685,7 +7685,7 @@ MSLF Collector and Receiver
 1
 1
 1
-2.500000
+2.5
 Default
 DP_pressure_loss
 3
@@ -7699,7 +7699,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 D_abs_in
 3
@@ -7713,7 +7713,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 D_abs_out
 3
@@ -7727,7 +7727,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 D_glass_in
 3
@@ -7741,7 +7741,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 D_glass_out
 3
@@ -7755,7 +7755,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 D_plug
 3
@@ -7769,7 +7769,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 Design_loss
 3
@@ -7783,7 +7783,7 @@ Design_loss
 2
 1
 1
-0.000000
+0
 Default
 Dirt_mirror
 3
@@ -7797,7 +7797,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.950000
+0.95
 Default
 Error
 3
@@ -7811,7 +7811,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.990000
+0.99
 Default
 Flow_type
 3
@@ -7825,7 +7825,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 GeomEffects
 3
@@ -7839,7 +7839,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.980000
+0.98
 Default
 GlazingIntactIn
 3
@@ -7853,7 +7853,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 HCE_FieldFrac
 3
@@ -7867,7 +7867,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 HL_T_coefs
 3
@@ -7881,7 +7881,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 HL_w_coefs
 3
@@ -7895,7 +7895,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 IAM_L_coefs
 3
@@ -7909,7 +7909,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 IAM_T_coefs
 3
@@ -7923,7 +7923,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 I_b
 3
@@ -7937,7 +7937,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 L_crossover
 3
@@ -7951,7 +7951,7 @@ MSLF Collector and Receiver
 1
 1
 1
-15.000000
+15
 Default
 L_mod
 3
@@ -7965,7 +7965,7 @@ MSLF Collector and Receiver
 1
 1
 1
-44.799999
+44.8
 Default
 L_mod_spacing
 3
@@ -7979,7 +7979,7 @@ MSLF Collector and Receiver
 1
 1
 1
-1.000000
+1
 Default
 OpticalTable
 3
@@ -7993,7 +7993,7 @@ MSLF Collector and Receiver
 3
 1
 4
-2.000000 1.000000 2.000000 1.000000 
+2 1 2 1 
 
 Default
 P_a
@@ -8008,7 +8008,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 P_amb
 3
@@ -8022,7 +8022,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 Rough
 3
@@ -8036,7 +8036,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 Shadowing
 3
@@ -8050,7 +8050,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 T_cold_in
 3
@@ -8064,7 +8064,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 T_db
 3
@@ -8078,7 +8078,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 T_dp
 3
@@ -8092,7 +8092,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 Tau_envelope
 3
@@ -8106,7 +8106,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 TrackingError
 3
@@ -8120,7 +8120,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.994000
+0.994
 Default
 V_wind
 3
@@ -8134,7 +8134,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 W_pb_design
 3
@@ -8148,7 +8148,7 @@ W_pb_design
 1
 1
 1
-0.000000
+0
 Default
 alpha_abs
 3
@@ -8162,7 +8162,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 alpha_env
 3
@@ -8176,7 +8176,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 azimuth
 3
@@ -8190,7 +8190,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.AbsorberMaterial
 3
@@ -8205,7 +8205,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.AnnulusGas1
 3
@@ -8220,7 +8220,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.AnnulusGas2
 3
@@ -8235,7 +8235,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.AnnulusGas3
 3
@@ -8250,7 +8250,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-2.000000
+2
 Default
 csp.mslf.sf.AnnulusGas4
 3
@@ -8265,7 +8265,7 @@ Air|Argon|Hydrogen
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.DP_coefs0
 3
@@ -8279,7 +8279,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.DP_coefs1
 3
@@ -8293,7 +8293,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.DP_coefs2
 3
@@ -8307,7 +8307,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.DP_coefs3
 3
@@ -8321,7 +8321,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.D_abs_in
 3
@@ -8335,7 +8335,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.066000
+0.066
 Default
 csp.mslf.sf.D_abs_out
 3
@@ -8349,7 +8349,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.070000
+0.07
 Default
 csp.mslf.sf.D_glass_in
 3
@@ -8363,7 +8363,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.115000
+0.115
 Default
 csp.mslf.sf.D_glass_out
 3
@@ -8377,7 +8377,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.120000
+0.12
 Default
 csp.mslf.sf.D_plug
 3
@@ -8391,7 +8391,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.Design_loss1
 3
@@ -8405,7 +8405,7 @@ MSLF Collector and Receiver
 1
 1
 1
-150.000000
+150
 Default
 csp.mslf.sf.Design_loss2
 3
@@ -8419,7 +8419,7 @@ MSLF Collector and Receiver
 1
 1
 1
-1100.000000
+1100
 Default
 csp.mslf.sf.Design_loss3
 3
@@ -8433,7 +8433,7 @@ MSLF Collector and Receiver
 1
 1
 1
-1500.000000
+1500
 Default
 csp.mslf.sf.Design_loss4
 3
@@ -8447,7 +8447,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.Flow_type
 3
@@ -8462,7 +8462,7 @@ Tube flow|Annular flow
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.GlazingIntactIn1
 3
@@ -8476,7 +8476,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.GlazingIntactIn2
 3
@@ -8490,7 +8490,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.GlazingIntactIn3
 3
@@ -8504,7 +8504,7 @@ MSLF Collector and Receiver
 1
 1
 1
-1.000000
+1
 Default
 csp.mslf.sf.GlazingIntactIn4
 3
@@ -8518,7 +8518,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.HCE_FieldFrac1
 3
@@ -8532,7 +8532,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.985000
+0.985
 Default
 csp.mslf.sf.HCE_FieldFrac2
 3
@@ -8546,7 +8546,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.010000
+0.01
 Default
 csp.mslf.sf.HCE_FieldFrac3
 3
@@ -8560,7 +8560,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.005000
+0.005
 Default
 csp.mslf.sf.HCE_FieldFrac4
 3
@@ -8574,7 +8574,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.HL_T_coefs0
 3
@@ -8588,7 +8588,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.HL_T_coefs1
 3
@@ -8602,7 +8602,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.672000
+0.672
 Default
 csp.mslf.sf.HL_T_coefs2
 3
@@ -8630,7 +8630,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.HL_T_coefs4
 3
@@ -8644,7 +8644,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.HL_w_coefs0
 3
@@ -8658,7 +8658,7 @@ MSLF Collector and Receiver
 1
 1
 1
-1.000000
+1
 Default
 csp.mslf.sf.HL_w_coefs1
 3
@@ -8672,7 +8672,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.HL_w_coefs2
 3
@@ -8686,7 +8686,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.HL_w_coefs3
 3
@@ -8700,7 +8700,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.HL_w_coefs4
 3
@@ -8714,7 +8714,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.IAM_L_coefs0
 3
@@ -8728,7 +8728,7 @@ MSLF Collector and Receiver
 1
 1
 1
-1.003100
+1.0031
 Default
 csp.mslf.sf.IAM_L_coefs1
 3
@@ -8742,7 +8742,7 @@ MSLF Collector and Receiver
 1
 1
 1
--0.225900
+-0.2259
 Default
 csp.mslf.sf.IAM_L_coefs2
 3
@@ -8756,7 +8756,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.536800
+0.5368
 Default
 csp.mslf.sf.IAM_L_coefs3
 3
@@ -8770,7 +8770,7 @@ MSLF Collector and Receiver
 1
 1
 1
--1.643400
+-1.6434
 Default
 csp.mslf.sf.IAM_L_coefs4
 3
@@ -8784,7 +8784,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.722200
+0.7222
 Default
 csp.mslf.sf.IAM_T_coefs0
 3
@@ -8798,7 +8798,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.989600
+0.9896
 Default
 csp.mslf.sf.IAM_T_coefs1
 3
@@ -8812,7 +8812,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.044000
+0.044
 Default
 csp.mslf.sf.IAM_T_coefs2
 3
@@ -8826,7 +8826,7 @@ MSLF Collector and Receiver
 1
 1
 1
--0.072100
+-0.0721
 Default
 csp.mslf.sf.IAM_T_coefs3
 3
@@ -8840,7 +8840,7 @@ MSLF Collector and Receiver
 1
 1
 1
--0.232700
+-0.2327
 Default
 csp.mslf.sf.IAM_T_coefs4
 3
@@ -8854,7 +8854,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.P_a1
 3
@@ -8868,7 +8868,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000100
+0.0001
 Default
 csp.mslf.sf.P_a2
 3
@@ -8882,7 +8882,7 @@ MSLF Collector and Receiver
 1
 1
 1
-750.000000
+750
 Default
 csp.mslf.sf.P_a3
 3
@@ -8896,7 +8896,7 @@ MSLF Collector and Receiver
 1
 1
 1
-750.000000
+750
 Default
 csp.mslf.sf.P_a4
 3
@@ -8910,7 +8910,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.Rough
 3
@@ -8924,7 +8924,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000045
+4.5e-05
 Default
 csp.mslf.sf.Shadowing1
 3
@@ -8938,7 +8938,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.960000
+0.96
 Default
 csp.mslf.sf.Shadowing2
 3
@@ -8952,7 +8952,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.960000
+0.96
 Default
 csp.mslf.sf.Shadowing3
 3
@@ -8966,7 +8966,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.960000
+0.96
 Default
 csp.mslf.sf.Shadowing4
 3
@@ -8980,7 +8980,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.963000
+0.963
 Default
 csp.mslf.sf.Tau_envelope1
 3
@@ -8994,7 +8994,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.963000
+0.963
 Default
 csp.mslf.sf.Tau_envelope2
 3
@@ -9008,7 +9008,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.963000
+0.963
 Default
 csp.mslf.sf.Tau_envelope3
 3
@@ -9022,7 +9022,7 @@ MSLF Collector and Receiver
 1
 1
 1
-1.000000
+1
 Default
 csp.mslf.sf.Tau_envelope4
 3
@@ -9036,7 +9036,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.alpha_abs1
 3
@@ -9050,7 +9050,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.960000
+0.96
 Default
 csp.mslf.sf.alpha_abs2
 3
@@ -9064,7 +9064,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.960000
+0.96
 Default
 csp.mslf.sf.alpha_abs3
 3
@@ -9078,7 +9078,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.800000
+0.8
 Default
 csp.mslf.sf.alpha_abs4
 3
@@ -9092,7 +9092,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.alpha_env1
 3
@@ -9106,7 +9106,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.020000
+0.02
 Default
 csp.mslf.sf.alpha_env2
 3
@@ -9120,7 +9120,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.020000
+0.02
 Default
 csp.mslf.sf.alpha_env3
 3
@@ -9134,7 +9134,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.alpha_env4
 3
@@ -9148,7 +9148,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.avg_dt_des
 3
@@ -9162,7 +9162,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.dirt_env1
 3
@@ -9176,7 +9176,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.980000
+0.98
 Default
 csp.mslf.sf.dirt_env2
 3
@@ -9190,7 +9190,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.980000
+0.98
 Default
 csp.mslf.sf.dirt_env3
 3
@@ -9204,7 +9204,7 @@ MSLF Collector and Receiver
 1
 1
 1
-1.000000
+1
 Default
 csp.mslf.sf.dirt_env4
 3
@@ -9218,7 +9218,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.980000
+0.98
 Default
 csp.mslf.sf.epsilon_glass1
 3
@@ -9232,7 +9232,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.860000
+0.86
 Default
 csp.mslf.sf.epsilon_glass2
 3
@@ -9246,7 +9246,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.860000
+0.86
 Default
 csp.mslf.sf.epsilon_glass3
 3
@@ -9260,7 +9260,7 @@ MSLF Collector and Receiver
 1
 1
 1
-1.000000
+1
 Default
 csp.mslf.sf.epsilon_glass4
 3
@@ -9274,7 +9274,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.opt_model
 3
@@ -9289,7 +9289,7 @@ Solar position|Collector incidence table|IAM polys
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.sf.rec_model
 3
@@ -9304,7 +9304,7 @@ Polynomial heat loss model|Evacuated tube model
 1
 1
 1
-0.000000
+0
 Default
 defocus
 3
@@ -9318,7 +9318,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 demand_var
 3
@@ -9332,7 +9332,7 @@ demand_var
 1
 1
 1
-0.000000
+0
 Default
 dirt_env
 3
@@ -9346,7 +9346,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 epsilon_abs_1
 3
@@ -9360,7 +9360,7 @@ MSLF Collector and Receiver
 3
 1
 1
-0.000000
+0
 ValueMatrix
 epsilon_abs_2
 3
@@ -9375,7 +9375,7 @@ Temp ('C)|Emittance
 3
 1
 1
-0.000000
+0
 ValueMatrix
 epsilon_abs_3
 3
@@ -9390,7 +9390,7 @@ Temp ('C)|Emittance
 3
 1
 1
-0.000000
+0
 ValueMatrix
 epsilon_abs_4
 3
@@ -9405,7 +9405,7 @@ Temp ('C)|Emittance
 3
 1
 1
-0.000000
+0
 ValueMatrix
 epsilon_glass
 3
@@ -9419,7 +9419,7 @@ MSLF Collector and Receiver
 2
 1
 1
-0.000000
+0
 Default
 hl_derate
 3
@@ -9433,7 +9433,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 hl_des
 3
@@ -9447,7 +9447,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 opt_derate
 3
@@ -9461,7 +9461,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 opt_model
 3
@@ -9475,7 +9475,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 opt_normal
 3
@@ -9489,7 +9489,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 q_pb_design
 3
@@ -9503,7 +9503,7 @@ q_pb_design
 1
 1
 1
-0.000000
+0
 Default
 rec_model
 3
@@ -9517,7 +9517,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 reflectivity
 3
@@ -9531,7 +9531,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.935000
+0.935
 Default
 tilt
 3
@@ -9545,7 +9545,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 track_mode
 3
@@ -9559,7 +9559,7 @@ MSLF Collector and Receiver
 1
 1
 1
-0.000000
+0
 Default
 
 8539

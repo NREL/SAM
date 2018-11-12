@@ -24,7 +24,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -114,7 +114,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -173,7 +173,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -232,7 +232,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -292,7 +292,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -351,7 +351,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -437,7 +437,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -497,7 +497,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -587,7 +587,7 @@ Height
 24
 Value
 1
-19.000000
+19
 Mode
 3
 0
@@ -646,7 +646,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -705,7 +705,7 @@ Height
 24
 Value
 1
-3.000000
+3
 Mode
 3
 1
@@ -764,7 +764,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -854,7 +854,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -913,7 +913,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1002,7 +1002,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1062,7 +1062,7 @@ Height
 24
 Value
 1
-5000000.000000
+5e+06
 Mode
 3
 1
@@ -1121,7 +1121,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1180,7 +1180,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1240,7 +1240,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1300,7 +1300,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1360,7 +1360,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1420,7 +1420,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1479,7 +1479,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1539,7 +1539,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1598,7 +1598,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1658,7 +1658,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1717,7 +1717,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1776,7 +1776,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1836,7 +1836,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1895,7 +1895,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1984,7 +1984,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -2529,7 +2529,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2619,7 +2619,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2678,7 +2678,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2737,7 +2737,7 @@ Height
 24
 Value
 1
-5.000000
+5
 Mode
 3
 1
@@ -2856,7 +2856,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2916,7 +2916,7 @@ Height
 24
 Value
 1
-5.000000
+5
 Mode
 3
 1
@@ -2975,7 +2975,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3035,7 +3035,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -3125,7 +3125,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -3184,7 +3184,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -3243,7 +3243,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -3333,7 +3333,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -3392,7 +3392,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -3451,7 +3451,7 @@ Height
 24
 Value
 1
-10.000000
+10
 Mode
 3
 1
@@ -3510,7 +3510,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3569,7 +3569,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3628,7 +3628,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3751,7 +3751,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3811,7 +3811,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3871,7 +3871,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3962,7 +3962,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4021,7 +4021,7 @@ Height
 24
 Value
 1
-0.020000
+0.02
 Mode
 3
 1
@@ -4080,7 +4080,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4170,7 +4170,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -4229,7 +4229,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4280,7 +4280,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 access_road_entrances_choice
 3
@@ -4294,7 +4294,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Choice
 access_road_entrances_input
 3
@@ -4308,7 +4308,7 @@ Wind BOS Costs
 1
 1
 1
-8.000000
+8
 Numeric
 access_road_entrances_sugg
 3
@@ -4322,7 +4322,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Default
 access_roads_cost
 3
@@ -4336,7 +4336,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_total_budgeted_cost
 3
@@ -4350,7 +4350,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_total_cost_per_kw
 3
@@ -4364,7 +4364,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Default
 building_cost
 3
@@ -4378,7 +4378,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 construction_time
 3
@@ -4392,7 +4392,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 construction_time_choice
 3
@@ -4406,7 +4406,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Choice
 construction_time_input
 3
@@ -4420,7 +4420,7 @@ Wind BOS Costs
 1
 1
 1
-19.000000
+19
 Numeric
 construction_time_sugg
 3
@@ -4434,7 +4434,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Default
 contingency
 3
@@ -4448,7 +4448,7 @@ Wind BOS Costs
 1
 1
 1
-3.000000
+3
 Numeric
 crane_breakdowns
 3
@@ -4462,7 +4462,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 crane_breakdowns_choice
 3
@@ -4476,7 +4476,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Choice
 crane_breakdowns_input
 3
@@ -4490,7 +4490,7 @@ Wind BOS Costs
 1
 1
 1
-8.000000
+8
 Numeric
 crane_breakdowns_sugg
 3
@@ -4504,7 +4504,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Default
 delivery_assist_required
 3
@@ -4518,7 +4518,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 CheckBox
 development_cost
 3
@@ -4532,7 +4532,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 development_fee
 3
@@ -4546,7 +4546,7 @@ Wind BOS Costs
 1
 1
 1
-5.000000
+5
 Default
 development_fee_input
 3
@@ -4560,7 +4560,7 @@ Wind BOS Costs
 1
 1
 1
-5000000.000000
+5e+06
 Numeric
 distance_to_interconnect
 3
@@ -4574,7 +4574,7 @@ Wind BOS Costs
 1
 1
 1
-5.000000
+5
 Numeric
 electrical_installation_cost
 3
@@ -4588,7 +4588,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 electrical_materials_cost
 3
@@ -4602,7 +4602,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 engineering_cost
 3
@@ -4616,7 +4616,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 erection_cost
 3
@@ -4630,7 +4630,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 farm_size_MW
 3
@@ -4644,7 +4644,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 foundation_cost
 3
@@ -4658,7 +4658,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 hub_height
 3
@@ -4672,7 +4672,7 @@ Wind BOS Costs
 1
 1
 1
-100.000000
+100
 Numeric
 insurance_cost
 3
@@ -4686,7 +4686,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 interconnect_voltage
 3
@@ -4700,7 +4700,7 @@ Wind BOS Costs
 1
 1
 1
-137.000000
+137
 Numeric
 machine_rating
 3
@@ -4714,7 +4714,7 @@ Wind BOS Costs
 1
 1
 1
-2000.000000
+2000
 Numeric
 markup_cost
 3
@@ -4728,7 +4728,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 mv_overhead_collector
 3
@@ -4742,7 +4742,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 mv_thermal_backfill
 3
@@ -4756,7 +4756,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 new_switchyard_required
 3
@@ -4770,7 +4770,7 @@ Wind BOS Costs
 1
 1
 1
-1.000000
+1
 CheckBox
 number_of_turbines
 3
@@ -4784,7 +4784,7 @@ Wind BOS Costs
 1
 1
 1
-100.000000
+100
 Numeric
 om_building_size
 3
@@ -4798,7 +4798,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 om_building_size_choice
 3
@@ -4812,7 +4812,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Choice
 om_building_size_input
 3
@@ -4826,7 +4826,7 @@ Wind BOS Costs
 1
 1
 1
-5000.000000
+5000
 Numeric
 om_building_size_sugg
 3
@@ -4840,7 +4840,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Default
 overhead
 3
@@ -4854,7 +4854,7 @@ Wind BOS Costs
 1
 1
 1
-5.000000
+5
 Numeric
 pad_mount_transformer_required
 3
@@ -4868,7 +4868,7 @@ Wind BOS Costs
 1
 1
 1
-1.000000
+1
 CheckBox
 performance_bond
 3
@@ -4882,7 +4882,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 CheckBox
 power_performance_cost
 3
@@ -4896,7 +4896,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 profit_margin
 3
@@ -4910,7 +4910,7 @@ Wind BOS Costs
 1
 1
 1
-5.000000
+5
 Numeric
 project_mgmt_cost
 3
@@ -4924,7 +4924,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 project_total_budgeted_cost
 3
@@ -4938,7 +4938,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Default
 quantity_permanent_met_towers
 3
@@ -4952,7 +4952,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 quantity_permanent_met_towers_choice
 3
@@ -4966,7 +4966,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Choice
 quantity_permanent_met_towers_input
 3
@@ -4980,7 +4980,7 @@ Wind BOS Costs
 1
 1
 1
-2.000000
+2
 Numeric
 quantity_permanent_met_towers_sugg
 3
@@ -4994,7 +4994,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Default
 quantity_test_met_towers
 3
@@ -5008,7 +5008,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 quantity_test_met_towers_choice
 3
@@ -5022,7 +5022,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Choice
 quantity_test_met_towers_input
 3
@@ -5036,7 +5036,7 @@ Wind BOS Costs
 1
 1
 1
-3.000000
+3
 Numeric
 quantity_test_met_towers_sugg
 3
@@ -5050,7 +5050,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Default
 rock_trenching_required
 3
@@ -5064,7 +5064,7 @@ Wind BOS Costs
 1
 1
 1
-10.000000
+10
 Numeric
 rotor_diameter
 3
@@ -5078,7 +5078,7 @@ Wind BOS Costs
 1
 1
 1
-110.000000
+110
 Numeric
 sales_and_use_tax
 3
@@ -5092,7 +5092,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 site_compound_security_cost
 3
@@ -5106,7 +5106,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 site_terrain
 3
@@ -5120,7 +5120,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Choice
 soil_condition
 3
@@ -5134,7 +5134,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Choice
 substation_cost
 3
@@ -5148,7 +5148,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 tower_top_mass
 3
@@ -5162,7 +5162,7 @@ Wind BOS Costs
 1
 1
 1
-88.000000
+88
 Default
 transmission_cost
 3
@@ -5176,7 +5176,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 transportation_cost
 3
@@ -5190,7 +5190,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 turbine_capital_cost
 3
@@ -5204,7 +5204,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Default
 turbine_layout
 3
@@ -5218,7 +5218,7 @@ Wind BOS Costs
 1
 1
 1
-1.000000
+1
 Choice
 turbine_transportation
 3
@@ -5232,7 +5232,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 warranty_management
 3
@@ -5246,7 +5246,7 @@ Wind BOS Costs
 1
 1
 1
-0.020000
+0.02
 Numeric
 weather_delay_days
 3
@@ -5260,7 +5260,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Numeric
 weather_delay_days_choice
 3
@@ -5274,7 +5274,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Choice
 weather_delay_days_input
 3
@@ -5288,7 +5288,7 @@ Wind BOS Costs
 1
 1
 1
-20.000000
+20
 Numeric
 weather_delay_days_sugg
 3
@@ -5302,7 +5302,7 @@ Wind BOS Costs
 1
 1
 1
-0.000000
+0
 Default
 
 7404

@@ -405,7 +405,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -542,7 +542,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -632,7 +632,7 @@ Depreciation
 2
 1
 1
-0.000000
+0
 SchedNumeric
 depr_fed_sl_years
 3
@@ -646,7 +646,7 @@ Depreciation
 1
 1
 1
-7.000000
+7
 Numeric
 depr_fed_type
 3
@@ -661,7 +661,7 @@ No depreciation|5-yr MACRS|Straight line|Custom
 1
 1
 1
-1.000000
+1
 RadioChoice
 depr_sta_custom
 3
@@ -675,7 +675,7 @@ Depreciation
 2
 1
 1
-0.000000
+0
 SchedNumeric
 depr_sta_sl_years
 3
@@ -689,7 +689,7 @@ Depreciation
 1
 1
 1
-7.000000
+7
 Numeric
 depr_sta_type
 3
@@ -704,7 +704,7 @@ No depreciation|5-yr MACRS|Straight line|Custom
 1
 1
 1
-1.000000
+1
 RadioChoice
 
 0

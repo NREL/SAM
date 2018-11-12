@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -250,7 +250,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -309,7 +309,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -368,7 +368,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -427,7 +427,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -486,7 +486,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -545,7 +545,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -604,7 +604,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -663,7 +663,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -714,7 +714,7 @@ Dish Receiver
 1
 1
 1
-0.150000
+0.15
 Default
 A_wall
 3
@@ -728,7 +728,7 @@ Dish Receiver
 1
 1
 1
-0.150000
+0.15
 Default
 DELTA_T_REFLUX
 3
@@ -742,7 +742,7 @@ DELTA_T_REFLUX
 1
 1
 1
-40.000000
+40
 Default
 L_cav
 3
@@ -756,7 +756,7 @@ Dish Receiver
 1
 1
 1
-0.350000
+0.35
 Default
 L_insulation
 3
@@ -770,7 +770,7 @@ Dish Receiver
 1
 1
 1
-0.075000
+0.075
 Default
 P_cav
 3
@@ -784,7 +784,7 @@ Dish Receiver
 1
 1
 1
-101.000000
+101
 Default
 alpha_absorber
 3
@@ -798,7 +798,7 @@ Dish Receiver
 1
 1
 1
-0.900000
+0.9
 Default
 alpha_wall
 3
@@ -812,7 +812,7 @@ Dish Receiver
 1
 1
 1
-0.600000
+0.6
 Default
 d_ap
 3
@@ -826,7 +826,7 @@ Dish Receiver
 1
 1
 1
-0.140000
+0.14
 Default
 d_cav
 3
@@ -840,7 +840,7 @@ Dish Receiver
 1
 1
 1
-0.350000
+0.35
 Default
 k_insulation
 3
@@ -854,7 +854,7 @@ Dish Receiver
 1
 1
 1
-0.060000
+0.06
 Default
 rec_type
 3
@@ -868,7 +868,7 @@ rec_type
 1
 1
 1
-1.000000
+1
 Default
 transmittance_cover
 3
@@ -882,7 +882,7 @@ transmittance_cover
 1
 1
 1
-1.000000
+1
 Default
 
 0

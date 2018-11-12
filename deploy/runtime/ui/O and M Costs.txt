@@ -226,7 +226,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -326,7 +326,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -426,7 +426,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -526,7 +526,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -578,7 +578,7 @@ Operation and Maintenance Costs
 2
 1
 1
-50.000000
+50
 SchedNumeric
 om_capacity_escal
 3
@@ -592,7 +592,7 @@ Operation and Maintenance Costs
 1
 1
 1
-0.000000
+0
 Numeric
 om_fixed
 3
@@ -606,7 +606,7 @@ Operation and Maintenance Costs
 2
 1
 1
-0.000000
+0
 SchedNumeric
 om_fixed_escal
 3
@@ -620,7 +620,7 @@ Operation and Maintenance Costs
 1
 1
 1
-0.000000
+0
 Numeric
 om_fuel_cost
 3
@@ -634,7 +634,7 @@ Operation and Maintenance Costs
 2
 1
 1
-0.000000
+0
 SchedNumeric
 om_fuel_cost_escal
 3
@@ -648,7 +648,7 @@ Operation and Maintenance Costs
 1
 1
 1
-0.000000
+0
 Numeric
 om_production
 3
@@ -662,7 +662,7 @@ Operation and Maintenance Costs
 2
 1
 1
-0.000000
+0
 SchedNumeric
 om_production_escal
 3
@@ -676,7 +676,7 @@ Operation and Maintenance Costs
 1
 1
 1
-0.000000
+0
 Numeric
 
 0
