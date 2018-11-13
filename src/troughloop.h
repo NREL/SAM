@@ -109,7 +109,6 @@ private:
 
 	std::vector<LoopNode> mLoop;
 
-	int nMaxTypes;
 	wxNumericCtrl *mNumSCAs;
 	TRLoopRenderer *mRenderer;
 	wxRadioButton *mEditModeSCA;

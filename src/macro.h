@@ -50,11 +50,36 @@
 #ifndef __macro_h
 #define __macro_h
 
-#include <wx/splitter.h>
-#include <wx/html/htmlwin.h>
+#include <memory>
 
+#include <wx/arrstr.h>
+#include <wx/dir.h>
+#include <wx/dirctrl.h>
+#include <wx/dirdlg.h>
+#include <wx/file.h>
+#include <wx/filefn.h>
+#include <wx/html/htmlwin.h>
+#include <wx/panel.h>
+#include <wx/sizer.h>
+#include <wx/splitter.h>
+#include <wx/textctrl.h>
+#include <wx/tokenzr.h>
+#include <wx/wfstream.h>
+
+#include <lk/parse.h>
+#include <lk/eval.h>
+#include <lk/stdlib.h>
+#include <lk/codegen.h>
+#include <lk/vm.h>
+
+#include <wex/metro.h>
+#include <wex/utils.h>
 #include <wex/lkscript.h>
 #include <wex/uiform.h>
+
+#include "script.h"
+#include "main.h"
+#include "casewin.h"
 
 class wxMetroButton;
 class wxMetroListBox;
@@ -132,5 +157,44 @@ private:
 	DECLARE_EVENT_TABLE();
 
 };
+
+class FileNameInputCtrl : public wxPanel
+{
+public:
+	FileNameInputCtrl(wxWindow *parent, const wxString &_label, const wxString &_filename, const wxString &_filter = "csv,txt");
+
+	wxString GetFileName() {
+		return m_fileName;
+	}
+
+private:
+
+	void OnSelect(wxCommandEvent &);
+
+	wxTextCtrl *m_text;
+	wxString m_fileName, m_filter, m_label, m_dir;
+
+	DECLARE_EVENT_TABLE();
+};
+
+class FolderNameInputCtrl : public wxPanel
+{
+public:
+	FolderNameInputCtrl(wxWindow *parent, const wxString &_label, const wxString &folderName);
+
+	wxString GetFolderName() {
+		return m_dir;
+	}
+
+private:
+
+	void OnSelect(wxCommandEvent &);
+
+	wxTextCtrl * m_text;
+	wxString m_dir, m_label;
+
+	DECLARE_EVENT_TABLE();
+};
+
 
 #endif

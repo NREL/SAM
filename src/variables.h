@@ -105,7 +105,12 @@ public:
 	bool Write( const wxString &file, size_t maxdim= 0);
 	bool Read( wxInputStream & );
 	bool Read( const wxString &file );
-		
+
+	void Write_text(wxOutputStream &, size_t maxdim = 0); // MaxDim specifies the maximum allowable array or matrix dimension when writing.
+	bool Write_text(const wxString &file, size_t maxdim = 0);
+	bool Read_text(wxInputStream &);
+	bool Read_text(const wxString &file);
+
 };
 
 class VarValue
@@ -132,10 +137,14 @@ public:
 	bool ValueEqual( VarValue &rhs);
 	void Copy( const VarValue &rhs );
 
-	void Write( wxOutputStream & );
-	bool Read( wxInputStream & );
-	
+	void Write(wxOutputStream &);
+	bool Read(wxInputStream &);
+
+	void Write_text(wxOutputStream &);
+	bool Read_text(wxInputStream &);
+
 	int Type() const;
+	wxString TypeAsString() const;
 	void ChangeType(int type);
 	void SetType( int t );
 	void Set( int val );
@@ -197,8 +206,11 @@ public:
 	VarInfo();
 	VarInfo( const VarInfo &copy );
 
-	void Write( wxOutputStream & );
-	bool Read( wxInputStream & );
+	void Write(wxOutputStream &);
+	bool Read(wxInputStream &);
+
+	void Write_text(wxOutputStream &);
+	bool Read_text(wxInputStream &);
 
 	int Type;
 	wxString Label;
@@ -252,6 +264,9 @@ public:
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream &, const wxString &page = wxEmptyString );
 	
+	void Write_text(wxOutputStream &);
+	bool Read_text(wxInputStream &, const wxString &page = wxEmptyString);
+
 private:
 	
 	typedef unordered_map<wxString, wxArrayString, wxStringHash, wxStringEqual> StringArrayHash;

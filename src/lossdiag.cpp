@@ -154,8 +154,8 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 
 	if ( m_list.size() == 0 )
 	{
-		dv.Text( x, y+th, "No loss diagram items specified." );
-		dv.Text( x, y+th+th, wxString("Current case: ") + ( GetCase() ? GetCaseName() : wxString("none") ) );
+		dv.Text( x, y+th, "This performance model does not specify any loss diagram items." );
+		dv.Text( x, y+th+th, wxString("Current case name is ") + ( GetCase() ? GetCaseName() : wxString("none") ) );
 		return;
 	}
 
@@ -207,35 +207,44 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 		}
 		else
 		{
-			float lw = li.value/100.0f*cursize; // width of section that is lost
-
+			float lw = 0.0;
 			dv.Line( x, y, x, y+sec_height ); // left vertical line
 
 			// text point
 			float tpx = textx-0.05;
 			float tpy = y+sec_height/2;
 
-			if( li.value >= 0 )
+			if( li.value >= 0 ) // loss
 			{
+				lw = li.value / 100.0f*cursize; // width of section that is lost
 				dv.Arc( x + cursize, y-sec_height/2, 2*(tpx-(x+cursize)), sec_height, 180, 270 );
 				dv.Arc( x + cursize-lw, y-sec_height/2, 2*(tpx-(x+cursize-lw)), sec_height, 180, 270);
-				dv.Line( x+cursize-lw, y, x+cursize-lw, y+sec_height ); // vertical line down on left
+				dv.Line( x+cursize-lw, y, x+cursize-lw, y+sec_height ); // vertical line down on right
 			}
-			else
+			else // gain
 			{
-				dv.Arc( x + cursize, y+sec_height/2, 2*(tpx-(x+cursize)), sec_height/2, 90, 180 );
-				dv.Arc( x + cursize-lw, y+sec_height/2, 2*(tpx-(x+cursize-lw)), sec_height/2, 90, 180);
-				dv.Line( x+cursize, y, x+cursize,y+0.75*sec_height );
-				dv.Line( x+cursize-lw, y+0.75f*sec_height, x+cursize-lw, y+sec_height);
+				lw = -li.value / 100.0f*cursize; // width of section that is lost
+				dv.Arc( x + cursize, y+sec_height/2, 2*(tpx-(x+cursize-lw)), sec_height/2, 90, 180 );
+				dv.Arc( x + cursize+lw, y+sec_height/2, 2*(tpx-(x+cursize)), sec_height/2, 90, 180);
+				dv.Line( x+cursize, y, x+cursize,y+0.75f*sec_height ); 
+				dv.Line( x+cursize+lw, y+0.75f*sec_height, x+cursize+lw, y+sec_height); // vertical line down on right
+				textx += lw;
 			}
 			
 			dv.Text( textx, tpy-th, li.text );
 			int ilv = li.value * 1000;
 			double lv = ilv / 1000.0;
 //			dv.Text(textx, tpy + 0.1f*th, wxString::Format("-%g %%", li.value));
-			dv.Text(textx, tpy + 0.1f*th, wxString::Format("-%g %%", lv));
-
-			cursize -= lw;
+			if (li.value >= 0)
+			{
+				dv.Text(textx, tpy + 0.1f*th, wxString::Format("-%g %%", lv));
+				cursize -= lw;
+			}
+			else
+			{
+				dv.Text(textx, tpy + 0.1f*th, wxString::Format("%g %%", 0.0 - lv));
+				cursize += lw;
+			}
 		}
 		
 		y += sec_height;
@@ -264,7 +273,7 @@ void LossDiagramObject::Configure( bool from_case, bool scale )
 
 
 LossDiagCallbackContext::LossDiagCallbackContext( Case *c, Simulation *sim, LossDiagramObject *ld, const wxString &desc )
-	: CaseCallbackContext( c, desc ), m_sim( sim ), m_lossDiag( ld ) { }
+	: CaseCallbackContext( c, desc ), m_lossDiag( ld ), m_sim (sim) { }
 
 LossDiagramObject &LossDiagCallbackContext::GetDiagram() { return *m_lossDiag; }
 Simulation &LossDiagCallbackContext::GetSimulation() { return *m_sim; }

@@ -65,6 +65,8 @@
 class Case;
 class ConfigInfo;
 
+bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname);
+
 class ISimulationHandler
 {
 private:
@@ -102,6 +104,9 @@ class Simulation
 {
 public:
 	Simulation( Case *cc, const wxString &name );
+	virtual ~Simulation() {
+	  // provide a virtual destructor for safety
+	}
 	
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
@@ -118,6 +123,7 @@ public:
 	void SetName( const wxString &s ) { m_name = s; }
 	wxString GetName() { return m_name; }
 	VarValue *GetInput( const wxString &name );
+	void SetInput(const wxString & name, lk::vardata_t val);
 
 	// generate code
 	bool Generate_lk(FILE *fp);
@@ -218,4 +224,5 @@ private:
 	wxThreadProgressDialog *m_tpd;
 	wxFrame *m_transp;
 };
+
 #endif

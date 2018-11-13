@@ -182,9 +182,10 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 	ssc_data_set_string(pdata, "file_name", (const char*)file.c_str());
 	ssc_data_set_number(pdata, "header_only", 0);
 
-	if ( ssc_module_exec_simple_nothread( "wfreader", pdata ) )
+	if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
 	{
 		wxLogStatus("error scanning '" + file + "'");
+		cxt.error(err);
 		cxt.result().assign(0.0);
 		return;
 	}
@@ -417,10 +418,36 @@ static void fcall_addpage( lk::invoke_t &cxt )
 
 		}
 	}
-
-
 	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs );
 }
+
+
+static void fcall_getsettings(lk::invoke_t &cxt)
+{
+	LK_DOC("get_settings", "Gets a setting field for the current project", "(string:name):string:value");
+
+	wxString str = cxt.arg(0).as_string();
+	wxString buf = "";
+	SamApp::Settings().Read(str, &buf);
+	cxt.result().assign(buf);
+
+	/*
+		wxString buf="";
+		SamApp::Settings().Read("solar_data_paths", &buf);
+		cxt.result().assign(buf);
+    */
+}
+
+static void fcall_setsettings(lk::invoke_t &cxt)
+{
+	LK_DOC("set_settings", "Sets a setting field for the current project", "(string:name, string:value):none");
+
+	wxString str = cxt.arg(0).as_string();
+	wxString buf = cxt.arg(1).as_string();
+	SamApp::Settings().Write(str, buf);
+
+}
+
 
 static void fcall_setting( lk::invoke_t &cxt )
 {
@@ -573,6 +600,22 @@ static void fcall_add_loss_term( lk::invoke_t &cxt )
 		{
 			if ( vv->Type() == VV_NUMBER )
 				ld.AddLossTerm( vv->Value(), cxt.arg(1).as_string() );
+		}
+	}
+}
+
+static void fcall_add_gain_term(lk::invoke_t &cxt)
+{
+	LK_DOC("add_gain_term", "Adds a gain to the loss diagram.", "(string:variable name, string:text):none");
+	if (LossDiagCallbackContext *ldcc = static_cast<LossDiagCallbackContext*>(cxt.user_data()))
+	{
+		Simulation &sim = ldcc->GetSimulation();
+		LossDiagramObject &ld = ldcc->GetDiagram();
+
+		if (VarValue *vv = sim.GetValue(cxt.arg(0).as_string()))
+		{
+			if (vv->Type() == VV_NUMBER)
+				ld.AddLossTerm(-vv->Value(), cxt.arg(1).as_string());
 		}
 	}
 }
@@ -1208,6 +1251,141 @@ static void fcall_xl_get( lk::invoke_t &cxt )
 		cxt.error( "invalid xl-obj-ref" );
 }
 
+static void fcall_xl_read(lk::invoke_t &cxt)
+{
+	LK_DOC("xl_read", "Read an excel file into a 2D array (default) or a table. Options: "
+		"'skip' (header lines to skip), "
+		"'numeric' (t/f to return numbers), "
+		"'order' (r/c, row-major order default), "
+		"'table' (t/f to return a table assuming 1 header line with names)",
+		"(string:file[, table:options]):array or table");
+
+	lk::vardata_t &out = cxt.result();
+	out.empty_hash();
+
+	size_t nskip = 0;
+	bool rowMajor = true;
+	bool tonum = false;
+	bool astable = false;
+	if (cxt.arg_count() > 1 && cxt.arg(1).deref().type() == lk::vardata_t::HASH)
+	{
+		lk::vardata_t &opts = cxt.arg(1).deref();
+
+		if (lk::vardata_t *item = opts.lookup("skip"))
+			nskip = item->as_unsigned();
+
+		if (lk::vardata_t *item = opts.lookup("numeric"))
+			tonum = item->as_boolean();
+
+		if (lk::vardata_t *item = opts.lookup("table"))
+			astable = item->as_boolean();
+
+		if (lk::vardata_t *item = opts.lookup("order"))
+			rowMajor = (item->as_string() == "c") ? false : true;
+	}
+
+	if (lkXLObject *xl = dynamic_cast<lkXLObject*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+	{
+		wxArrayString vals;
+		int rowCount, columnCount;
+		xl->Excel().getUsedCellRange(rowCount, columnCount, vals); 
+		
+		if (nskip >= rowCount - 1) nskip = 0;
+		if (astable)
+		{
+			if (rowMajor) {
+				wxArrayString colHeaders;
+				//read column headers from first nonskipped row
+				for (size_t c = 0; c < columnCount; c++) {
+					wxString name = vals[c*rowCount + nskip];
+					colHeaders.push_back(name);
+					if (name.IsEmpty()) continue;
+
+					lk::vardata_t &it = out.hash_item(name);
+					it.empty_vector();
+					it.resize(rowCount - 1 - nskip);
+				}
+				for (size_t c = 0; c < columnCount; c++) {
+					lk::vardata_t* it = out.lookup(colHeaders[c]);
+					if (it == NULL) continue;
+					for (size_t r = 1 + nskip; r < rowCount; r++) {
+						if (vals[c*rowCount + r] != wxEmptyString) {
+							if (tonum) it->index(r - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
+							else it->index(r - 1 - nskip)->assign(vals[c*rowCount + r]);
+						}
+					}
+				}
+			}
+			else {
+				wxArrayString rowHeaders;
+				//read row headers from first nonskipped column
+				for (size_t r = 0; r < rowCount; r++) {
+					wxString name = vals[nskip*rowCount + r];
+					rowHeaders.push_back(name);
+					if (name.IsEmpty()) continue;
+
+					lk::vardata_t &it = out.hash_item(name);
+					it.empty_vector();
+					it.resize(columnCount - 1 - nskip);
+				}
+
+				for (size_t r = 0; r < rowCount; r++) {
+					lk::vardata_t* it = out.lookup(rowHeaders[r]);
+					if (it == NULL) continue;
+					for (size_t c = 1 + nskip; c < columnCount; c++) {
+						if (vals[c*rowCount + r] != wxEmptyString) {
+							if (tonum) it->index(c - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
+							else it->index(c - 1 - nskip)->assign(vals[c*rowCount + r]);
+						}
+					}
+				}
+			}
+		}
+		else {
+			if (rowMajor == true) {
+				out.empty_vector();
+				out.vec()->resize(rowCount - nskip);
+				for (size_t r = nskip; r < rowCount; r++) {
+					lk::vardata_t *row = out.index(r-nskip);
+					row->empty_vector();
+					row->vec()->resize(columnCount);
+					for (size_t c = 0; c < columnCount; c++)
+					{
+						if (vals[c*rowCount + r] == wxEmptyString) continue;
+						if (tonum) {
+							row->index(c)->assign(wxAtof(vals[c*rowCount + r]));
+						}
+						else {
+							row->index(c)->assign(vals[c*rowCount + r]);
+						}
+					}
+				}
+			}
+			else {
+				out.empty_vector();
+				out.vec()->resize(columnCount - nskip);
+				for (size_t c = nskip; c < columnCount; c++) {
+					lk::vardata_t *col = out.index(c-nskip);
+					col->empty_vector();
+					col->vec()->resize(rowCount);
+					for (size_t r = 0; r < rowCount; r++)
+					{
+						if (vals[c*rowCount + r] == wxEmptyString) continue;
+						if (tonum) {
+							col->index(r)->assign(wxAtof(vals[c*rowCount + r]));
+						}
+						else {
+							col->index(r)->assign(vals[c*rowCount + r]);
+						}
+					}
+				}
+			}
+		}
+	}
+	else
+		cxt.error("invalid xl-obj-ref");
+
+}
 #endif
 
 
@@ -1347,8 +1525,6 @@ static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_
 	}
 }
 
-
-
 class lkSSCdataObj : public lk::objref_t
 {
 	ssc_data_t m_data;
@@ -1358,6 +1534,10 @@ public:
 		m_data = ssc_data_create();
 	}
 	
+	lkSSCdataObj(ssc_data_t p_data) {
+		m_data = p_data;
+	}
+
 	virtual ~lkSSCdataObj() {
 		ssc_data_free( m_data );
 	}
@@ -1391,6 +1571,93 @@ void fcall_ssc_create( lk::invoke_t &cxt )
 {
 	LK_DOC( "ssc_create", "Create a new empty SSC data container object.", "(none):ssc-obj-ref" );	
 	cxt.result().assign( cxt.env()->insert_object( new lkSSCdataObj ) );
+}
+
+void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
+{
+	LK_DOC("ssc_module_create_from_case", "Create a new SSC data container object populated from the input compute module values defined in the current case", "(string:compute_module_name):ssc-obj-ref");
+	
+	// Get the existing simulation object from the base
+	Case *c = SamApp::Window()->GetCurrentCase();
+	Simulation &sim = c->BaseCase();
+
+	// Create the ssc_data and compute module 
+	wxString cm = cxt.arg(0).as_string();
+	ssc_data_t p_data = ssc_data_create();
+	ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
+	if (!p_mod)
+	{
+		cxt.error("could not create ssc module: " + cm);
+		return;
+	}
+
+	// Assign the compute module with existing values
+	int pidx = 0;
+	while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+	{
+		int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+		int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+		wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+		wxString reqd(ssc_info_required(p_inf));
+
+		if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+		{
+			// handle ssc variable names
+			// that are explicit field accesses"shading:mxh"
+			wxString field;
+			int pos = name.Find(':');
+			if (pos != wxNOT_FOUND)
+			{
+				field = name.Mid(pos + 1);
+				name = name.Left(pos);
+			}
+
+			int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+			if (existing_type != data_type)
+			{
+				if (VarValue *vv = sim.GetInput(name))
+				{
+					if (!field.IsEmpty())
+					{
+						if (vv->Type() != VV_TABLE)
+							cxt.error("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
+
+						bool do_copy_var = false;
+						if (reqd.Left(1) == "?")
+						{
+							// if the SSC variable is optional, check for the 'en_<field>' element in the table
+							if (VarValue *en_flag = vv->Table().Get("en_" + field))
+								if (en_flag->Boolean())
+									do_copy_var = true;
+						}
+						else do_copy_var = true;
+
+						if (do_copy_var)
+						{
+							if (VarValue *vv_field = vv->Table().Get(field))
+							{
+								if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
+									cxt.error("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+							}
+						}
+
+					}
+
+					if (!VarValueToSSC(vv, p_data, name))
+						cxt.error("Error translating data from SAM UI to SSC for " + name);
+
+				}
+				else if (reqd == "*")
+					cxt.error("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
+			}
+		}
+	}
+
+	// Run the ssc compute module and dump results into the cxt
+	cxt.result().assign(cxt.env()->insert_object(new lkSSCdataObj(p_data)));
+	ssc_module_free(p_mod);
+
+	// ssc_data_free is called later, as creating the new lkSSCdataObj doesn't actually create a deep copy of p_data
 }
 
 void fcall_ssc_free( lk::invoke_t &cxt )
@@ -1798,8 +2065,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 	//Create a folder to put the weather file in
 	wxString wfdir;
-	SamApp::Settings().Read("weather_file_dir", &wfdir);
-	if (wfdir.IsEmpty()) wfdir = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
+	wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
 	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
 
 	//Create the filename
@@ -1814,7 +2080,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		wxMessageBox("Failed to download the closest WIND toolkit weather file from NREL for your location. The NREL service might be down- please try again later.");
 		return;
 	}
-
+	
 	//Return the downloaded filename
 	cxt.result().assign(filename);
 }
@@ -2448,9 +2714,6 @@ static void copy_matts(lk::vardata_t &val, matrix_t<float> &mts)
 }
 
 
-
-
-
 void fcall_editscene3d(lk::invoke_t &cxt)
 {
 	LK_DOC("editscene3d", "Loads the 3D scene editor for a given 3D scene variable name.", "(string:variable, number:lat, number:lon, number:tz, string:location, number:minute_step,[bool:use_groups]):table");
@@ -2524,238 +2787,248 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 		}
 	}
 
-	dlg.ShowModal();
-	wxMemoryOutputStream out;
-	st->Write(out);
-	size_t len = out.GetSize();
-	if (len > 0)
+	int retval = dlg.ShowModal();
+	// 5100 == SAVE and CLOSE, 5101 = X
+	if (retval == 5101)
 	{
-		bin.Clear();
-		void *buf = bin.GetWriteBuf(len);
-		out.CopyTo(buf, len);
-		bin.UngetWriteBuf(len);
-		SamApp::Window()->Project().SetModified(true);
-		// refresh any changes - fixes issue of following analysis differences when updating scene
-		wxMemoryInputStream in(bin.GetData(), bin.GetDataLen());
-		if (!st->Read(in))
-			wxMessageBox("Error loading stored 3D scene data.");
+		cxt.result().hash_item("ierr").assign(-1.0);
+		cxt.result().hash_item("message").assign(wxString("closed and do not apply"));
+		return;
 	}
-
-
-
-	// Timeseries
-
-
-	std::vector<ShadeTool::shadets> shadets;
-	if (st->SimulateTimeseries(min_step, shadets, use_groups) && shadets.size() > 0)
+	else
 	{
-		wxArrayInt order1;
-		wxArrayString part1;
-		if (!use_groups) // use overal shading factor
+		//wxMessageBox(wxString::Format("dialog close value = %d", retval));
+		wxMemoryOutputStream out;
+		st->Write(out);
+		size_t len = out.GetSize();
+		if (len > 0)
 		{
-			// overall losses for the system are always in table 0
-			lk::vardata_t &v = cxt.result().hash_item("losses");
-			matrix_t<float> mat_ts(shadets[0].ts.size(), 1);
-			for (size_t i = 0; i < shadets[0].ts.size(); i++)
-				mat_ts.at(i, 0) = shadets[0].ts[i];
-			copy_matts(v, mat_ts);
-			order1.push_back(0);
+			bin.Clear();
+			void *buf = bin.GetWriteBuf(len);
+			out.CopyTo(buf, len);
+			bin.UngetWriteBuf(len);
+			SamApp::Window()->Project().SetModified(true);
+			// refresh any changes - fixes issue of following analysis differences when updating scene
+			wxMemoryInputStream in(bin.GetData(), bin.GetDataLen());
+			if (!st->Read(in))
+				wxMessageBox("Error loading stored 3D scene data.");
 		}
-		else
+
+
+
+		// Timeseries
+
+
+		std::vector<ShadeTool::shadets> shadets;
+		if (st->SimulateTimeseries(min_step, shadets, use_groups) && shadets.size() > 0)
 		{
-			// now copy over all the subarray sections
-			// the user must label them as 'Subarray1.string1', 'Subarray1.string2', etc for them to get placed in the right section
-
-			// return in order of subarray 1, subarray 2, subarray 3, subarray 4 for application in ui
-			// first parse and group first part of names
-			for (size_t i = 0; i < shadets.size(); i++)
+			wxArrayInt order1;
+			wxArrayString part1;
+			if (!use_groups) // use overal shading factor
 			{
-
-				wxString name = shadets[i].name.Lower();
-				wxArrayString p1p2 = wxSplit(name, '.');
-				if (p1p2.Count() > 0)
-					name = p1p2[0];
-
-				if (part1.Count() < 1) part1.push_back(name);
-
-				if (part1.Index(name) == wxNOT_FOUND)
-					part1.push_back(name);
+				// overall losses for the system are always in table 0
+				lk::vardata_t &v = cxt.result().hash_item("losses");
+				matrix_t<float> mat_ts(shadets[0].ts.size(), 1);
+				for (size_t i = 0; i < shadets[0].ts.size(); i++)
+					mat_ts.at(i, 0) = shadets[0].ts[i];
+				copy_matts(v, mat_ts);
+				order1.push_back(0);
 			}
-			// TODO: here can check for at most 4 subarrays
-			for (size_t i = 0; i < part1.Count(); i++)
-				order1.push_back(i);
-			// check group names and reorder if necessary
-			wxArrayInt tmp_order;
-			int j = 0;
-			while ((tmp_order.Count() < order1.Count()) && (j < 100 )) // allow for double digit numbering
+			else
 			{
-				// Index does not work with null values,
-				for (size_t i = 0; i < part1.size(); i++)
+				// now copy over all the subarray sections
+				// the user must label them as 'Subarray1.string1', 'Subarray1.string2', etc for them to get placed in the right section
+
+				// return in order of subarray 1, subarray 2, subarray 3, subarray 4 for application in ui
+				// first parse and group first part of names
+				for (size_t i = 0; i < shadets.size(); i++)
 				{
-					wxString name = part1[i];
-					if (name.Find(wxString::Format("%d", j)) != wxNOT_FOUND)
-					{
-						if (tmp_order.Count() < 1) tmp_order.push_back(i);
-						if (tmp_order.Index(i) == wxNOT_FOUND)
-							tmp_order.push_back(i);
-					}
-				}
-				j++;
-			}
-			if (tmp_order.Count() == order1.Count())
-			{
-				for (size_t i = 0; i < order1.size(); i++)
-					order1[i] = tmp_order[i];
-			}
-			// the callback only considers first four subarrays
-			
 
-			wxArrayInt order2;
-			wxArrayString part2;
-			wxArrayInt sort_order2;
-			// construct matrices for each
-			for (size_t io1 = 0; io1 < order1.Count(); io1++)
-			{
-				size_t nrows = 8760;
-				size_t ncols = 1;
-				order2.Clear();
-				part2.Clear();
-
-				for (size_t its = 0; its < shadets.size(); its++)
-				{
-					wxString name = shadets[its].name.Lower();
+					wxString name = shadets[i].name.Lower();
 					wxArrayString p1p2 = wxSplit(name, '.');
-					if (p1p2.Count() < 1) continue;
-					if (p1p2[0] == part1[order1[io1]])  // part of this sub array
-					{
-						order2.push_back(its); // save index
-						nrows = shadets[its].ts.size(); // number of rows for matrix should be 8760 * 60/ num_min;
-						// can save string names and reorder
-						if (p1p2.Count() > 1) // parallel strings
-							name = p1p2[1];
-						// null comparisons do not work using Index!
-						if (part2.Count() < 1) part2.push_back(name);
-						if (part2.Index(name) == wxNOT_FOUND)
-							part2.push_back(name);
-					}
-				}
+					if (p1p2.Count() > 0)
+						name = p1p2[0];
 
-				
-				// check string names and reorder if necessary
-				// up to 8 parallel strings considered in callback
-				sort_order2.Clear();
+					if (part1.Count() < 1) part1.push_back(name);
+
+					if (part1.Index(name) == wxNOT_FOUND)
+						part1.push_back(name);
+				}
+				// TODO: here can check for at most 4 subarrays
+				for (size_t i = 0; i < part1.Count(); i++)
+					order1.push_back(i);
+				// check group names and reorder if necessary
+				wxArrayInt tmp_order;
 				int j = 0;
-				while ((sort_order2.Count() < order2.Count()) && (j < 100)) // allow for double digit numbering
+				while ((tmp_order.Count() < order1.Count()) && (j < 100)) // allow for double digit numbering
 				{
-					for (size_t i = 0; i < part2.size(); i++)
+					// Index does not work with null values,
+					for (size_t i = 0; i < part1.size(); i++)
 					{
-						wxString name = part2[i];
+						wxString name = part1[i];
 						if (name.Find(wxString::Format("%d", j)) != wxNOT_FOUND)
 						{
-							if (sort_order2.Index(i) == wxNOT_FOUND)
-								sort_order2.push_back(i);
+							if (tmp_order.Count() < 1) tmp_order.push_back(i);
+							if (tmp_order.Index(i) == wxNOT_FOUND)
+								tmp_order.push_back(i);
 						}
 					}
 					j++;
 				}
-				
-				if (sort_order2.Count() != order2.Count())
+				if (tmp_order.Count() == order1.Count())
 				{
-					sort_order2.Clear();
-					for (size_t i = 0; i < order2.size(); i++)
-						sort_order2.push_back(i);
+					for (size_t i = 0; i < order1.size(); i++)
+						order1[i] = tmp_order[i];
 				}
-				
-
-				ncols = order2.size();
-				matrix_t<float> mat_ts(nrows, ncols);
-				for (size_t c = 0; c < order2.Count(); c++)
-					for (size_t r = 0; r < shadets[order2[sort_order2[c]]].ts.size(); r++)
-						mat_ts.at(r, c) = shadets[order2[sort_order2[c]]].ts[r];
+				// the callback only considers first four subarrays
 
 
-				//	set names for subarray processing in callback independent of what set in scene 3d but order is preserved.
-				wxString name;
-				name.Printf("subarray%d", (int)(io1 + 1));
-
-				lk::vardata_t &sec = cxt.result().hash_item(name);
-				copy_matts(sec, mat_ts);
-			}
-		}
-
-		// diffuse
-		std::vector<ShadeTool::diffuse> diffuse;
-		if (st->SimulateDiffuse(diffuse, use_groups) && diffuse.size() > 0)
-		{
-			if (diffuse.size() != shadets.size()) // TODO how to combine diffuse for parallel strings
-			{
-				cxt.result().hash_item("ierr").assign(4.0);
-				cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors not equal to diurnal timeseries count."));
-			}
-			else
-			{
-				if (!use_groups)
+				wxArrayInt order2;
+				wxArrayString part2;
+				wxArrayInt sort_order2;
+				// construct matrices for each
+				for (size_t io1 = 0; io1 < order1.Count(); io1++)
 				{
-					if (diffuse.size() != 1 || order1.Count() != 1)
+					size_t nrows = 8760;
+					size_t ncols = 1;
+					order2.Clear();
+					part2.Clear();
+
+					for (size_t its = 0; its < shadets.size(); its++)
 					{
-						cxt.result().hash_item("ierr").assign(4.0);
-						cxt.result().hash_item("message").assign(wxString::Format("Error in simulation of diffuse shading factors %d not equal 1.", (int) diffuse.size()));
+						wxString name = shadets[its].name.Lower();
+						wxArrayString p1p2 = wxSplit(name, '.');
+						if (p1p2.Count() < 1) continue;
+						if (p1p2[0] == part1[order1[io1]])  // part of this sub array
+						{
+							order2.push_back(its); // save index
+							nrows = shadets[its].ts.size(); // number of rows for matrix should be 8760 * 60/ num_min;
+							// can save string names and reorder
+							if (p1p2.Count() > 1) // parallel strings
+								name = p1p2[1];
+							// null comparisons do not work using Index!
+							if (part2.Count() < 1) part2.push_back(name);
+							if (part2.Index(name) == wxNOT_FOUND)
+								part2.push_back(name);
+						}
+					}
+
+
+					// check string names and reorder if necessary
+					// up to 8 parallel strings considered in callback
+					sort_order2.Clear();
+					int j = 0;
+					while ((sort_order2.Count() < order2.Count()) && (j < 100)) // allow for double digit numbering
+					{
+						for (size_t i = 0; i < part2.size(); i++)
+						{
+							wxString name = part2[i];
+							if (name.Find(wxString::Format("%d", j)) != wxNOT_FOUND)
+							{
+								if (sort_order2.Index(i) == wxNOT_FOUND)
+									sort_order2.push_back(i);
+							}
+						}
+						j++;
+					}
+
+					if (sort_order2.Count() != order2.Count())
+					{
+						sort_order2.Clear();
+						for (size_t i = 0; i < order2.size(); i++)
+							sort_order2.push_back(i);
+					}
+
+
+					ncols = order2.size();
+					matrix_t<float> mat_ts(nrows, ncols);
+					for (size_t c = 0; c < order2.Count(); c++)
+						for (size_t r = 0; r < shadets[order2[sort_order2[c]]].ts.size(); r++)
+							mat_ts.at(r, c) = shadets[order2[sort_order2[c]]].ts[r];
+
+
+					//	set names for subarray processing in callback independent of what set in scene 3d but order is preserved.
+					wxString name;
+					name.Printf("subarray%d", (int)(io1 + 1));
+
+					lk::vardata_t &sec = cxt.result().hash_item(name);
+					copy_matts(sec, mat_ts);
+				}
+			}
+
+			// diffuse
+			std::vector<ShadeTool::diffuse> diffuse;
+			if (st->SimulateDiffuse(diffuse, use_groups) && diffuse.size() > 0)
+			{
+				if (diffuse.size() != shadets.size()) // TODO how to combine diffuse for parallel strings
+				{
+					cxt.result().hash_item("ierr").assign(4.0);
+					cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors not equal to diurnal timeseries count."));
+				}
+				else
+				{
+					if (!use_groups)
+					{
+						if (diffuse.size() != 1 || order1.Count() != 1)
+						{
+							cxt.result().hash_item("ierr").assign(4.0);
+							cxt.result().hash_item("message").assign(wxString::Format("Error in simulation of diffuse shading factors %d not equal 1.", (int)diffuse.size()));
+						}
+						else
+						{
+							lk::vardata_t &ds = cxt.result().hash_item("diffuse");
+							ds.empty_vector();
+							ds.vec()->reserve(diffuse.size());
+							for (size_t i = 0; i < order1.Count(); i++)
+							{
+								ds.vec_append(diffuse[order1[i]].shade_percent);
+							}
+						}
 					}
 					else
 					{
 						lk::vardata_t &ds = cxt.result().hash_item("diffuse");
 						ds.empty_vector();
 						ds.vec()->reserve(diffuse.size());
-						for (size_t i = 0; i < order1.Count(); i++)
+						// group and calculate for each subarray
+						for (size_t io1 = 0; io1 < order1.Count(); io1++)
 						{
-							ds.vec_append(diffuse[order1[i]].shade_percent);
-						}
-					}
-				}
-				else
-				{
-					lk::vardata_t &ds = cxt.result().hash_item("diffuse");
-					ds.empty_vector();
-					ds.vec()->reserve(diffuse.size());
-					// group and calculate for each subarray
-					for (size_t io1 = 0; io1 < order1.Count(); io1++)
-					{
-						double average = 0;
-						double count = 0;
-						for (size_t its = 0; its < diffuse.size(); its++)
-						{
-							wxString name = diffuse[its].name.Lower();
-							wxArrayString p1p2 = wxSplit(name, '.');
-							if (p1p2.Count() < 1) continue;
-							if (p1p2[0] == part1[order1[io1]])  // part of this sub array
+							double average = 0;
+							double count = 0;
+							for (size_t its = 0; its < diffuse.size(); its++)
 							{
-								average += diffuse[its].shade_factor;
-								count += diffuse[its].shade_count;
+								wxString name = diffuse[its].name.Lower();
+								wxArrayString p1p2 = wxSplit(name, '.');
+								if (p1p2.Count() < 1) continue;
+								if (p1p2[0] == part1[order1[io1]])  // part of this sub array
+								{
+									average += diffuse[its].shade_factor;
+									count += diffuse[its].shade_count;
+								}
 							}
+							if (count > 0)
+								average /= count;
+							else
+								average = 0;
+							ds.vec_append(average);
 						}
-						if (count > 0)
-							average /= count;
-						else
-							average = 0;
-						ds.vec_append(average);
 					}
 				}
 			}
+			else
+			{
+				cxt.result().hash_item("ierr").assign(3.0);
+				cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors."));
+			}
+			cxt.result().hash_item("ierr").assign(0.0);
+			cxt.result().hash_item("nsubarrays").assign((double)(order1.Count()));
 		}
 		else
 		{
-			cxt.result().hash_item("ierr").assign(3.0);
-			cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors."));
+			cxt.result().hash_item("ierr").assign(2.0);
+			cxt.result().hash_item("message").assign(wxString("Error in simulation of timeseries shading factors."));
 		}
-		cxt.result().hash_item("ierr").assign(0.0);
-		cxt.result().hash_item("nsubarrays").assign((double)(order1.Count()));
 	}
-	else
-	{
-		cxt.result().hash_item("ierr").assign(2.0);
-		cxt.result().hash_item("message").assign(wxString("Error in simulation of timeseries shading factors."));
-	}
-
 }
 
 
@@ -2788,7 +3061,7 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		reloaded = Library::Load( wind_resource_db );
 	}
 
-	if ( reloaded != 0 )
+	if ( &cc != NULL && reloaded != 0 )
 	{
 		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
 		for( size_t i=0;i<objs.size();i++ )
@@ -3467,6 +3740,13 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 	*/
 	fclose(fp);
 
+	// delete any output or error that may exist
+	if (wxFileExists(workdir + "/SAMLHS.LSP"))
+		wxRemoveFile(workdir + "/SAMLHS.LSP");
+
+	if (wxFileExists(workdir + "/LHS.ERR"))
+		wxRemoveFile(workdir + "/LHS.ERR");
+
 	// run the executable synchronously
 	wxString curdir = wxGetCwd();
 	wxSetWorkingDirectory(workdir);
@@ -3567,14 +3847,6 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 		}
 	}
 	fclose(fp);
-	
-	// delete any output or error that may exist
-	if (wxFileExists(workdir + "/SAMLHS.LSP"))
-		wxRemoveFile(workdir + "/SAMLHS.LSP");
-	if (wxFileExists(workdir + "/LHS.ERR"))
-		wxRemoveFile(workdir + "/LHS.ERR");
-
-
 }
 
 
@@ -3616,9 +3888,9 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	if (cxt.arg_count() > 3)
 		seed_val = cxt.arg(3).as_integer();
 
-	int sv = seed_val;
-	if (seed_val <= 0) // for threaded, no random number guarenteed unless passed as seed.
-		sv = wxGetLocalTime();
+	int sv = wxGetLocalTime();
+	if (seed_val > 0)
+		sv = seed_val;
 	
 	wxString lhsexe(SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY));
 	if (!wxFileExists(lhsexe))
@@ -3863,6 +4135,137 @@ void fcall_step_result( lk::invoke_t &cxt )
 		cxt.error("invalid step-obj-ref");
 }
 
+static void fcall_parametric_run(lk::invoke_t &cxt)
+{
+	LK_DOC("parametric_run", "Run the parametrics for the currently active case, returns 0 if no errors.  Errors and warnings are optinally returned in the first parameter.", "( [string:messages] ):boolean");
+
+	CaseWindow *cw = SamApp::Window()->GetCurrentCaseWindow();
+	if (!cw) {
+		cxt.error("no case found");
+		cxt.result().assign(1.0);
+		return;
+	}
+	cw->GetParametricViewer()->RunSimulationsFromMacro();
+	cxt.result().assign(0.0);
+}
+
+void fcall_parametric_get(lk::invoke_t &cxt)
+{
+	LK_DOC("parametric_get", "Returns array of output variable from parametric simulation within the current case, or the output from a single run", "(string: output variable, {number:index}):variant");
+	
+	Case *c = SamApp::Window()->GetCurrentCase();
+	if (!c) {
+		cxt.error("no case found");
+		return;
+	}
+	int singleVal = -1;
+	if (cxt.arg_count() > 1) {
+		singleVal = cxt.arg(1).as_integer();
+	}
+
+	lk::vardata_t &out = cxt.result();
+	std::vector<Simulation*> sims = c->Parametric().Runs;
+	size_t start = 0, end = sims.size();
+	if (singleVal == -1) {
+		out.empty_vector();
+		out.vec()->resize(sims.size());
+	}
+	else {
+		start = singleVal;
+		end = singleVal + 1;
+	}
+	wxString vName = cxt.arg(0).as_string();
+	VarValue* vv = sims[0]->GetValue(vName);
+	if (!vv) return;
+	if (vv->Type() == VV_STRING) {
+		for (size_t i = start; i < end; i++) {
+			wxString val = sims[i]->GetValue(cxt.arg(0).as_string())->String();
+			if (singleVal > -1) {
+				out.assign(val);
+				return;
+			}
+			out.index(i)->assign(val);
+		}
+	}
+	else if (vv->Type() == VV_NUMBER) {
+		for (size_t i = start; i < end; i++) {
+			float val = sims[i]->GetValue(cxt.arg(0).as_string())->Value();
+			if (singleVal > -1) {
+				out.assign(val);
+				return;
+			}
+			out.index(i)->assign(val);
+		}
+	}
+	else if (vv->Type() == VV_ARRAY) {
+		size_t n = 0;
+		for (size_t i = start; i < end; i++) {
+			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Array(&n);
+			lk::vardata_t* row = nullptr;
+			if (singleVal > -1) {
+				out.empty_vector();
+				out.vec()->resize(n);
+				row = &out;
+			}
+			else {
+				row = out.index(i);
+				row->empty_vector();
+				row->vec()->resize(n);
+			}
+			for (size_t j = 0; j < n; j++)
+				row->index(j)->assign(val[j]);
+		}
+	}
+	else if (vv->Type() == VV_MATRIX) {
+		size_t r = 0;
+		size_t c = 0;
+		for (size_t i = start; i < end; i++) {
+			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Matrix(&r, &c);
+			lk::vardata_t* rows = nullptr;
+			if (singleVal > -1) {
+				out.empty_vector();
+				out.vec()->resize(r);
+				rows = &out;
+			}
+			else {
+				rows = out.index(i);
+				rows->empty_vector();
+				rows->vec()->resize(r);
+			}
+			for (size_t n = 0; n < r; n++) {
+				lk::vardata_t *col = rows->index(n);
+				col->empty_vector();
+				col->vec()->resize(c);
+				for (size_t m = 0; m < c; m++) {
+					col->index(m)->assign(val[ n*c+m ]);				
+				}
+			}
+		}
+	}
+	else {
+		cxt.error("variable type is not string, number, array or matrix.");
+	}
+}
+
+static void fcall_parametric_export(lk::invoke_t &cxt)
+{
+	LK_DOC("parametric_export", "Export the parametric table to a csv (default) or Excel file. Returns 1 upon success.", "( string:file, [boolean:excel] ):boolean");
+
+	CaseWindow *cw = SamApp::Window()->GetCurrentCaseWindow();
+	if (!cw) {
+		cxt.error("no case found");
+		cxt.result().assign(0.0);
+		return;
+	}
+	wxString file = cxt.arg(0).as_string();
+	bool ext;
+	if (cxt.arg_count() > 1) {
+		ext = cxt.arg(1).as_boolean();
+	}
+	if (cw->GetParametricViewer()->ExportFromMacro(file, ext)) cxt.result().assign(1.0);
+	else cxt.result().assign(0.0);
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -3887,6 +4290,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_xl_close,
 		fcall_xl_wkbook,
 		fcall_xl_sheet,
+		fcall_xl_read,
 		fcall_xl_set,
 		fcall_xl_get,
 		fcall_xl_autosizecols,
@@ -3900,6 +4304,9 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_lhs_run,
 		fcall_lhs_error,
 		fcall_lhs_vector,
+		fcall_parametric_get,
+		fcall_parametric_run,
+		fcall_parametric_export,
 		fcall_step_create,
 		fcall_step_free,
 		fcall_step_vector,
@@ -3908,6 +4315,11 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_step_result,
 		fcall_sam_async,
 		fcall_sam_packaged_task,
+		fcall_showsettings,
+		fcall_setting,
+		fcall_getsettings,
+		fcall_setsettings,
+		fcall_rescanlibrary,
 		0 };
 	return (lk::fcall_t*)vec;
 }
@@ -3916,6 +4328,7 @@ lk::fcall_t* invoke_ssc_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_ssc_create,
+		fcall_ssc_module_create_from_case,
 		fcall_ssc_free,
 		fcall_ssc_dump,
 		fcall_ssc_var,
@@ -3987,6 +4400,7 @@ lk::fcall_t* invoke_lossdiag_funcs()
 	static const lk::fcall_t vec[] = {
 		fcall_new_baseline,
 		fcall_add_loss_term,
+		fcall_add_gain_term,
 		0 };
 	return (lk::fcall_t*)vec;
 }
@@ -4019,7 +4433,6 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_urdb_list_rates,
 		fcall_editscene3d,
 		fcall_showsettings,
-		fcall_rescanlibrary,
 		0 };
 	return (lk::fcall_t*)vec;
 }

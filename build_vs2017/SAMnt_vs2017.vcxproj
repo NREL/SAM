@@ -111,7 +111,7 @@
   <PropertyGroup Label="Globals">
     <ProjectName>SAMnt</ProjectName>
     <ProjectGuid>{9A9D38AE-B137-4FDB-9715-F356B0844B27}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -226,10 +226,12 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+      <Command>robocopy "$(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin" "$(SAMNTDIR)\deploy\$(Platform)" /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.dll $(SAMNTDIR)\deploy\$(Platform)
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.pdb $(SAMNTDIR)\deploy\$(Platform)\
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.dll" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktooldx32.exe" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktooldx32.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -274,10 +276,12 @@ copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscdx32.pdb $(SAMNTDIR)
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+      <Command>robocopy "$(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin" "$(SAMNTDIR)\deploy\$(Platform)" /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.dll $(SAMNTDIR)\deploy\$(Platform)
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.pdb $(SAMNTDIR)\deploy\$(Platform)\
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.dll" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoold.exe" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoold.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -322,10 +326,12 @@ copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscd.pdb $(SAMNTDIR)\de
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+      <Command>robocopy "$(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin" "$(SAMNTDIR)\deploy\$(Platform)" /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.dll $(SAMNTDIR)\deploy\$(Platform)
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.pdb $(SAMNTDIR)\deploy\$(Platform)\
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.dll" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoolx32.exe" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoolx32.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
     <PreBuildEvent>
@@ -374,10 +380,12 @@ copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sscx32.pdb $(SAMNTDIR)\
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+      <Command>robocopy "$(WEXDIR)\build_vs2017\libcurl_ssl_$(Platform)\bin" "$(SAMNTDIR)\deploy\$(Platform)" /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
-copy $(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\ssc.dll" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\ssc.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktool.exe" "$(SAMNTDIR)\deploy\$(Platform)"
+copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktool.pdb" "$(SAMNTDIR)\deploy\$(Platform)"
 </Command>
     </PostBuildEvent>
     <PreBuildEvent>

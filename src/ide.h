@@ -117,8 +117,10 @@ public:
 	wxString GetEquations() { return m_equationScript->GetText(); }
 	void SetEquations( const wxString &e ) { m_equationScript->SetText( e ); }
 	
-	bool Write( const wxString &name );
-	bool Load( const wxString &name );
+	bool Write(const wxString &name);
+	bool Load(const wxString &name);
+	bool Write_text(const wxString &name);
+	bool Load_text(const wxString &name);
 	void LoadFormList( const wxString &sel = wxEmptyString );
 	void LoadVarList( const wxString &sel = wxEmptyString );
 	wxUIFormDesigner *GetDesigner() { return m_uiFormEditor; }
@@ -136,8 +138,8 @@ private:
 	void OnTextFind( wxCommandEvent & );
 
 	wxString m_formName;
-	ExFormData m_exForm;
 	InputPageData m_ipd;
+	ExFormData m_exForm;
 	
 
 	VarDatabase m_varCopyBuffer;

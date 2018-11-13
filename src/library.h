@@ -79,6 +79,7 @@ public:
 	static wxArrayString ListAll();
 	static void UnloadAll();
 	static Library *Find( const wxString &name );
+	bool caseSensitiveFind = true;
 	
 	struct Field
 	{
@@ -163,7 +164,6 @@ protected:
 	
 private:
 	wxString m_library;
-	bool m_inclEntryName;
 
 	std::vector<bool> m_sortDir;
 

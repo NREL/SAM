@@ -96,6 +96,7 @@ public:
 	
 #ifdef __WXMSW__
 	static bool ParseAndCaptureRange( const wxString &range, wxString &val, wxExcelAutomation &xl );
+	static wxArrayString EnumerateAlphaIndex(const wxString &_start, const wxString &_end);
 #endif
 };
 

@@ -125,6 +125,7 @@ public:
 
 	bool IsInput(int col);
 	bool IsInput(wxString &var_name);
+	bool IsValid(const ParametricData::Var& pv);
 	VarInfo* GetVarInfo(int row, int col);
 	void SetVarInfo(int row, int col, VarInfo *vi);
 	VarValue* GetVarValue(int row, int col);
@@ -206,6 +207,9 @@ public:
 	void SetGraphs(std::vector<Graph> &gl);
 	void GetGraphs(std::vector<Graph> &gl);
 
+	wxString RunSimulationsFromMacro();
+	bool ExportFromMacro(wxString path, bool asExcel = true);
+
 private:
 	void OnCommand(wxCommandEvent &evt);
 	void OnGridColLabelRightClick(wxGridEvent &evt);
@@ -230,7 +234,14 @@ private:
 
 	void ShowAllData();
 
+	bool ImportAsNumber(wxString& vals, VarValue& vv);
+	bool ImportAsArray(wxString& vals, VarValue& vv);
+	bool ImportAsMatrix(wxString& vals, VarValue& vv);
+	bool ImportAsTable(wxString& vals, VarValue& vv);
+	void ImportData(wxArrayString& vals, int& row, int& col);
 	void CopyToClipboard();
+	wxArrayString getFromCSV(const wxString& input_name, int& rows, int& cols);
+	wxArrayString getFromExcel(const wxString& input_name, int& rows, int& cols);
 	void SaveToCSV();
 	void SendToExcel();
 	void GetTextData(wxString &dat, char sep);

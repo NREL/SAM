@@ -153,10 +153,9 @@ private:
 	wxString m_addFolder;
 	wxComboBox *m_cboWeatherFile;
 	wxCheckListBox *m_chlResources;
-	wxButton *m_btnChkAll, *m_btnChkNone,*m_btnUnselectFiltered, *m_btnSelectFiltered, *m_btnResources, *m_btnFolder, *m_btnChkPsm30, *m_btnChkPsm60, *m_btnDownload; 
+	wxButton *m_btnChkAll, *m_btnChkNone,*m_btnUnselectFiltered, *m_btnSelectFiltered, *m_btnResources, *m_btnFolder, *m_btnChkPsm30, *m_btnChkPsm60; 
 	wxTextCtrl *m_txtFolder;
 	wxTextCtrl *m_txtAddress;
-	wxCheckBox *m_chkFolder;
 	wxSearchCtrl *m_search;
 
 	DECLARE_EVENT_TABLE()

@@ -81,6 +81,7 @@
 #include "casewin.h"
 #include "results.h"
 #include "invoke.h"
+#include "simulation.h"
 
 CodeGenCallbackContext::CodeGenCallbackContext(CodeGen_Base *c, const wxString &desc)
 	: CaseCallbackContext(c->GetCase(), desc), m_cgb(c)
@@ -98,81 +99,6 @@ void CodeGenCallbackContext::SetupLibraries(lk::env_t *env)
 	env->register_funcs(invoke_codegencallback_funcs(), this);
 }
 
-
-
-static bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname)
-{
-	switch (vv->Type())
-	{
-	case VV_NUMBER:
-		ssc_data_set_number(pdata, sscname.c_str(), (ssc_number_t)vv->Value());
-		break;
-	case VV_ARRAY:
-	{
-		size_t n;
-		float *p = vv->Array(&n);
-		if (sizeof(ssc_number_t) == sizeof(float))
-			ssc_data_set_array(pdata, sscname.c_str(), p, n);
-		else
-		{
-			ssc_number_t *pp = new ssc_number_t[n];
-			for (size_t i = 0; i<n; i++)
-				pp[i] = p[i];
-
-			ssc_data_set_array(pdata, sscname.c_str(), pp, n);
-
-			delete[] pp;
-		}
-	}
-	break;
-	case VV_MATRIX:
-	{
-		matrix_t<float> &fl = vv->Matrix();
-		if (sizeof(ssc_number_t) == sizeof(float))
-		{
-			ssc_data_set_matrix(pdata, sscname.c_str(), fl.data(), fl.nrows(), fl.ncols());
-		}
-		else
-		{
-			ssc_number_t *pp = new ssc_number_t[fl.nrows() * fl.ncols()];
-			size_t n = 0;
-			for (size_t r = 0; r < fl.nrows(); r++)
-				for (size_t c = 0; c<fl.ncols(); c++)
-					pp[n++] = (ssc_number_t)fl(r, c);
-
-			ssc_data_set_matrix(pdata, sscname.c_str(), pp, fl.nrows(), fl.ncols());
-			delete[] pp;
-		}
-	}
-	break;
-	case VV_STRING:
-		ssc_data_set_string(pdata, sscname.c_str(), vv->String().c_str());
-		break;
-	case VV_TABLE:
-	{
-		ssc_data_t tab = ssc_data_create();
-		VarTable &vt = vv->Table();
-		for (VarTable::iterator it = vt.begin();
-			it != vt.end();
-			++it)
-		{
-			VarValueToSSC(it->second, tab, it->first);
-		}
-
-		ssc_data_set_table(pdata, sscname.c_str(), tab);
-
-		ssc_data_free(tab); // ssc_data_set_table above makes a deep copy, so free this here
-	}
-	break;
-
-
-	case VV_INVALID:
-	default:
-		return false;
-	}
-
-	return true;
-}
 
 
 
@@ -258,8 +184,11 @@ CodeGen_Base::~CodeGen_Base()
 bool CodeGen_Base::PlatformFiles()
 {
 	// copy appropriate dll
-#if defined(__WXMSW__)
+#if defined(__WXMSW__) && defined (__64BIT__)
 	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
+	wxString f2 = m_folder + "/ssc.dll";
+#elif defined(__WXMSW__) && defined(__32BIT__)
+	wxString f1 = SamApp::GetAppPath() + "/sscx32.dll";
 	wxString f2 = m_folder + "/ssc.dll";
 #elif defined(__WXOSX__)
 	wxString f1 = SamApp::GetAppPath() + "/../Frameworks/ssc.dylib";
@@ -645,17 +574,17 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("Python 3");						// 5
 	code_languages.Add("Java");							// 6
 	code_languages.Add("Android Studio (Android)");		// 7 
-#ifdef __WXMSW__
+//#ifdef __WXMSW__
 	code_languages.Add("C#");							// 8
 	code_languages.Add("VBA");							// 9
-#endif
-#ifdef __WXMAC__
-    code_languages.Add("XCode Swift (iOS)");			// 8
-#endif
-#ifdef __WXGTK__
-	code_languages.Add("PHP 5");						// 8
-	code_languages.Add("PHP 7");						// 9
-#endif
+//#endif
+//#ifdef __WXMAC__
+    code_languages.Add("XCode Swift (iOS)");			// 8 (10)
+//#endif
+//#ifdef __WXGTK__
+	code_languages.Add("PHP 5");						// 8 (11)
+	code_languages.Add("PHP 7");						// 9 (12)
+//#endif
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
@@ -756,7 +685,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
         fn += ".cpp"; // ndk jni file
         cg = new CodeGen_android(c, fn);
     }
-#ifdef __WXMSW__
+//#ifdef __WXMSW__
 	else if (lang == 8) // c#
 	{
 		fn += ".cs";
@@ -767,26 +696,29 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		fn += ".bas";
 		cg = new CodeGen_vba(c, fn);
 	}
-#endif
-#ifdef __WXMAC__
-    else if (lang == 8) // Swift iOS
-    {
+//#endif
+//#ifdef __WXMAC__
+//	else if (lang == 8) // Swift iOS
+	else if (lang == 10) // Swift iOS
+	{
         fn += ".swift";
         cg = new CodeGen_ios(c, fn);
     }
-#endif
-#ifdef __WXGTK__
-	else if (lang == 8) // php
+//#endif
+//#ifdef __WXGTK__
+//	else if (lang == 8) // php
+	else if (lang == 11) // php
 	{
 		fn += ".php";
 		cg = new CodeGen_php5(c, fn);
 	}
-	else if (lang == 9) // php
+//	else if (lang == 9) // php
+	else if (lang == 12) // php
 	{
 		fn += ".php";
 		cg = new CodeGen_php7(c, fn);
 	}
-#endif
+//#endif
 	else
 		return false;
 
@@ -2813,14 +2745,15 @@ bool CodeGen_matlab::Footer()
 }
 
 
-
-
 // Python 2.7.8 and 3.4.2 code generation class
-
-CodeGen_python::CodeGen_python(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
+#pragma warning(push)
+#pragma warning(disable : 4589)
+CodeGen_python::CodeGen_python(Case * cc, const wxString & folder) : CodeGen_Base(cc, folder)
 {
+	// Doesn't require initializer for CodeGen_Base
+	// virtual base classes are only initialized by the most-derived type (python2, python3)
 }
-
+#pragma warning(pop)
 bool CodeGen_python::FreeSSCModule()
 {
 	fprintf(m_fp, "	ssc.module_free(module)\n");
@@ -3019,7 +2952,7 @@ bool CodeGen_python::Footer()
 
 
 // Python 2
-CodeGen_python2::CodeGen_python2(Case *cc, const wxString &folder) : CodeGen_python(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_python2::CodeGen_python2(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_python(cc, folder)
 {
 }
 
@@ -3196,7 +3129,7 @@ bool CodeGen_python2::Input(ssc_data_t p_data, const char *name, const wxString 
 
 
 
-CodeGen_python3::CodeGen_python3(Case *cc, const wxString &folder) : CodeGen_python(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_python3::CodeGen_python3(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_python(cc, folder)
 {
 }
 
@@ -4734,11 +4667,14 @@ bool CodeGen_java::Footer()
 
 
 // PHP code generation class
-
-CodeGen_php::CodeGen_php(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
+#pragma warning(push)
+#pragma warning(disable : 4589)
+CodeGen_php::CodeGen_php(Case * cc, const wxString & folder) : CodeGen_Base(cc, folder)
 {
+	// Doesn't require initializer for CodeGen_Base
+	// virtual base classes are only initialized by the most-derived type (php5, php7)
 }
-
+#pragma warning(pop)
 
 bool CodeGen_php::Output(ssc_data_t p_data)
 {
@@ -4970,7 +4906,7 @@ bool CodeGen_php::Footer()
 	return true;
 }
 
-CodeGen_php5::CodeGen_php5(Case *cc, const wxString &folder) : CodeGen_php(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_php5::CodeGen_php5(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_php(cc, folder)
 {
 }
 
@@ -5511,7 +5447,13 @@ bool CodeGen_php5::SupportingFiles()
     // add php.ini for module location
     // add Makefile
 #if defined(__WXMSW__)  // no windows support yet
-    return false;
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 5.4.16 and Zend 2.4.0 on 3/3/2018\n");
+	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
+	fclose(f);
+	return true;
 #elif defined(__WXOSX__)
     fn = m_folder + "/php.ini";
     f = fopen(fn.c_str(), "w");
@@ -5576,7 +5518,7 @@ bool CodeGen_php5::SupportingFiles()
 #endif
 }
 
-CodeGen_php7::CodeGen_php7(Case *cc, const wxString &folder) : CodeGen_php(cc, folder), CodeGen_Base(cc, folder)
+CodeGen_php7::CodeGen_php7(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder), CodeGen_php(cc, folder)
 {
 }
 
@@ -6161,15 +6103,27 @@ bool CodeGen_php7::SupportingFiles()
 	fprintf(f, "extension=%s/sscphp.so\n", (const char *)m_folder.c_str());
 	fclose(f);
 #if defined(__WXMSW__)  // no windows support yet
-	return false;
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
+	fclose(f);
+	return true;
 #elif defined(__WXOSX__) // not tested on OS X 
-	return false;
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
+	fclose(f);
+	return true;
 #elif defined(__WXGTK__)
 	// add Makefile (currently linux only)
 	fn = m_folder + "/Makefile";
 	f = fopen(fn.c_str(), "w");
 	if (!f) return false;
-	fprintf(f, "# Built and tested on Fedora 25 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
 	fprintf(f, "# PHP and Zend installation using php package, e.g. sudo yum install php\n");
 	fprintf(f, "# Header files from php-devel package, e.g. sudo yum install php-devel\n");
 	fprintf(f, "# Set PHPDIR to your php installation which can be found using the command php -i\n");

@@ -86,6 +86,7 @@ public:
 	virtual ~CaseWindow();
 
 	Case *GetCase() { return m_case; }
+	ParametricViewer* GetParametricViewer() { return m_parametrics; }
 
 	void UpdateConfiguration();
 
@@ -193,10 +194,6 @@ class SelectVariableDialog : public wxDialog
 private:	
 	wxExtTextCtrl *txtSearch;
 	wxExtTreeCtrl *tree;
-	wxButton *btnOk;
-	wxButton *btnCancel;
-	wxButton *btnUncheckAll;
-	wxButton *btnExpandAll;
 
 public:
 	SelectVariableDialog( wxWindow *parent, const wxString &title );

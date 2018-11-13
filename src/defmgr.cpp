@@ -60,7 +60,11 @@
 
 static wxString GetDefaultsFile( const wxString &t, const wxString &f )
 {	
+#ifdef UI_BINARY
 	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f;
+#else
+	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".txt";
+#endif
 }
 
 static wxString GetTypeStr( int type )
@@ -289,7 +293,7 @@ void ValueEditor::OnEditField( wxCommandEvent & )
 
 
 enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY, ID_LOAD, ID_CONFIGS, 
-	ID_POPUP_first, ID_CHECK_ALL, ID_UNCHECK_ALL, ID_CHECK_SELECTED, ID_UNCHECK_SELECTED, ID_POPUP_last };
+	ID_POPUP_first, ID_CHECK_ALL, ID_UNCHECK_ALL, ID_CHECK_SELECTED, ID_UNCHECK_SELECTED, ID_SAVE_TEXT, ID_SAVE_BINARY, ID_POPUP_last };
 
 BEGIN_EVENT_TABLE( DefaultsManager, wxPanel )
 	EVT_BUTTON( ID_QUERY, DefaultsManager::OnQuery )
@@ -384,7 +388,46 @@ void DefaultsManager::OnPopupMenu( wxCommandEvent &evt )
 			if ( m_configList->IsSelected(i) )
 				m_configList->Check( i, evt.GetId() == ID_CHECK_SELECTED );
 		break;
+	case ID_SAVE_BINARY:
+	case ID_SAVE_TEXT:
+		OnSaveAsType(evt);
+		break;
 	}
+}
+
+void DefaultsManager::OnSaveAsType(wxCommandEvent &evt)
+{
+	for (size_t i = 0; i < m_configList->GetCount(); i++)
+		if (m_configList->IsChecked(i))
+		{
+			wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
+			VarTable tab;
+			bool success = true;
+#ifdef UI_BINARY
+			if (!tab.Read(file))
+#else
+			if (!tab.Read_text(file))
+#endif
+			{
+				Log("file read error: " + file);
+				continue;
+			}
+			if (evt.GetId() == ID_SAVE_BINARY)
+			{
+				file = SamApp::GetRuntimePath() + "/defaults/" + m_techList[i] + "_" + m_finList[i];
+				success = tab.Write(file);
+			}
+			else if (evt.GetId() == ID_SAVE_TEXT)
+			{
+				file = SamApp::GetRuntimePath() + "/defaults/" + m_techList[i] + "_" + m_finList[i] + ".txt";
+				success = tab.Write_text(file);
+			}
+			else
+				Log(wxString::Format("invalid event ID: %d", evt.GetId()));
+
+			if (!success)
+				Log("file write error: " + file);
+		}
 }
 
 void DefaultsManager::OnListRightClick( wxMouseEvent & )
@@ -393,8 +436,12 @@ void DefaultsManager::OnListRightClick( wxMouseEvent & )
 	menu.Append( ID_CHECK_SELECTED, "Check selected" );
 	menu.Append( ID_UNCHECK_SELECTED, "Uncheck selected" );
 	menu.AppendSeparator();
-	menu.Append( ID_CHECK_ALL, "Check all" );
-	menu.Append( ID_UNCHECK_ALL, "Uncheck all" );
+	menu.Append(ID_CHECK_ALL, "Check all");
+	menu.Append(ID_UNCHECK_ALL, "Uncheck all");
+	menu.AppendSeparator();
+//	menu.Append(ID_SAVE_BINARY, "Save checked as binary");
+//	menu.Append(ID_SAVE_TEXT, "Save checked as text");
+	menu.Append(ID_SAVE_TEXT, "Save checked");
 	PopupMenu( &menu );
 }
 
@@ -418,7 +465,11 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 		
 		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 		VarTable tab;
+#ifdef UI_BINARY
 		if ( !tab.Read( file ))			
+#else
+		if (!tab.Read_text(file))
+#endif
 		{
 			Log("file error: " + file);
 			continue;
@@ -434,15 +485,19 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 void DefaultsManager::OnLoad( wxCommandEvent & )
 {
 	ClearLog();
-	size_t i=0;
-	for (i=0;i<(int)m_configList->GetCount();i++)
+	size_t i = 0;
+	for (i = 0;i < m_configList->GetCount(); i++)
 		if (m_configList->IsChecked(i)) break;
 
-	if ( i == (int)m_configList->GetCount() ) return;
+	if ( i == m_configList->GetCount() ) return;
 
 	wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 	VarTable tab;
-	if ( !tab.Read( file ))			
+#ifdef UI_BINARY
+	if (!tab.Read(file))
+#else
+	if (!tab.Read_text(file))
+#endif
 	{
 		Log("file read error: " + file);
 		return;
@@ -473,7 +528,11 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 				
 		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 		VarTable tab;
-		if ( !tab.Read( file ))			
+#ifdef UI_BINARY
+		if (!tab.Read(file))
+#else
+		if (!tab.Read_text(file))
+#endif
 		{
 			Log("file read error: " + file);
 			continue;
@@ -537,7 +596,11 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 
 		if ( needs_write )
 		{
-			if ( !tab.Write( file ) )
+#ifdef UI_BINARY
+			if (!tab.Write(file))
+#else
+			if (!tab.Write_text(file))
+#endif
 				Log("file write error: " + file );
 		}
 	}
@@ -559,17 +622,25 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 		wxString file = GetDefaultsFile(m_techList[i], m_finList[i]);
 		
 		VarTable tab;
+#ifdef UI_BINARY
 		if ( !tab.Read( file ) )
+#else
+		if (!tab.Read_text(file))
+#endif
 		{
 			Log("read error: " + file );
 			continue;
 		}
 
-		if ( VarValue *vv = tab.Get( name ) )
+		if ( tab.Get( name ) )
 		{
 			tab.Delete( name );
 
-			if (!tab.Write( file ) )
+#ifdef UI_BINARY
+			if (!tab.Write(file))
+#else
+			if (!tab.Write_text(file))
+#endif
 				Log("Error writing: " + file );
 			else
 				Log("Deleted '" + name + "' from " + m_techList[i] + ", " + m_finList[i]);

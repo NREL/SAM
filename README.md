@@ -1,6 +1,10 @@
 # System Advisor Model (SAM)
+[![TravisCI](https://travis-ci.org/NREL/SAM.svg?branch=develop)](https://travis-ci.org/NREL/SAM)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FNREL%2FSAM.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FNREL%2FSAM?ref=badge_shield)
 
 The SAM Open Source Project repository contains the source code, tools, and instructions to build a desktop version of the National Renewable Energy Laboratory's System Advisor Model (SAM). SAM is a simulation program for electricity generation projects. It has models for different kinds of renewable energy systems and financial models for residential, commercial, and utility-scale projects. For more details about SAM's capabilities, see the SAM website at [https://sam.nrel.gov/](https://sam.nrel.gov/).
+
+For a short video describing the SAM repositories, see https://youtu.be/E5z1iiZfZ3M.
 
 The desktop version of SAM for Windows, Mac, or Linux builds from the following open source projects:
 
@@ -8,7 +12,7 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 * [LK](https://github.com/nrel/lk) is a scripting language that is integrated into SAM and allows users to add functionality to the program.
 
-* [wxWidgets](https://www.wxwidgets.org/) is a cross-platform graphical user interface platform used for SAM's user interface, and for the development tools included with SSC (SDKtool) and LK (LKscript). The current version of SAM uses wxWidgets 3.1.0.
+* [wxWidgets](https://www.wxwidgets.org/) is a cross-platform graphical user interface platform used for SAM's user interface, and for the development tools included with SSC (SDKtool) and LK (LKscript). The current version of SAM uses wxWidgets 3.1.1.
 
 * [WEX](https://github.com/nrel/wex) is a set of extensions to wxWidgets for custom user-interface elements used by SAM, and by LKscript and DView, which are integrated into SAM.
 
@@ -28,11 +32,11 @@ These are the general quick steps you need to follow to set up your computer for
 
 1. Set up your development tools:
 
-    * Windows: Visual Studio 2013 Professional or Express edition. Download from list of older versions at https://www.visualstudio.com/vs/older-downloads (requires Microsoft ID and password).
+    * Windows: Visual Studio 2017 Community or other editions available at https://www.visualstudio.com/.
     * Mac: Apple Command Line Tools, available at https://developer.apple.com/download/more/ (requires Apple ID and password).
     * Linux: g++ compiler available at http://www.cprogramming.com/g++.html or as part of the Linux distribution.
 
-2. Download the wxWidgets 3.1.0 source code for your operating system from https://www.wxwidgets.org/downloads/.
+2. Download the wxWidgets 3.1.1 source code for your operating system from https://www.wxwidgets.org/downloads/.
 
 3. Build wxWidgets.
 
@@ -58,3 +62,6 @@ If you would like to submit code to fix an issue or add a feature, you can use G
 # License
 
 SAM's open source code is copyrighted by the Alliance for Sustainable Energy and licensed under a [mixed MIT and GPLv3 license](LICENSE.md). It allows for-profit and not-for-profit organizations to develop and redistribute software based on SAM under terms of an MIT license and requires that research entities including national laboratories, colleges and universities, and non-profit organizations make the source code of any redistribution publicly available under terms of a GPLv3 license. .
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FNREL%2FSAM.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FNREL%2FSAM?ref=badge_large)

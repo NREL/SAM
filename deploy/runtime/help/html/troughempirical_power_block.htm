@@ -42,9 +42,9 @@
 <p class="p_Text"><span class="f_Text">The Power Block parameters describe the equipment in the system that converts thermal energy from the solar field or thermal energy storage system into electricity. The power block is based on a steam turbine that runs on a conventional Rankine power cycle and may or may not include fossil fuel backup. Power block components include a turbine, heat exchangers to transfer heat from the solar field or thermal energy storage system to the turbine, and a cooling system to dissipate waste heat. SAM considers the thermal energy storage system to be a separate component, which is described on the <a href="troughempirical_thermal_storage.htm" class="topiclink">Thermal Storage page</a>.</span></p>
 <p class="p_Text"><span class="f_Text">The input variables on the Power Block page are divided into two groups. The turbine ratings group determines the capacity of the power block, and the power cycle group defines the performance parameters of the reference turbine.</span></p>
 <p class="p_Text"><span class="f_Text">For a more detailed description of the model, please download the CSP trough reference manual from the SAM website's support page: <a href="https://sam.nrel.gov/reference" target="_blank" class="weblink">https://sam.nrel.gov/reference</a>.</span></p>
-<div style="text-align: left; text-indent: 0px; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="powerblock_inputvariablereference" class="hmanchor"></a><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-minus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Input Variable Reference</a></span></td></tr></table></div><div id="TOGGLE0186A1" class="dropdown-toggle-body" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="Toggle Content Table" style="width:100%; border:none; border-spacing:0px;">
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Plant Characteristics</span></h3>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0 3px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="powerblock_inputvariablereference" class="hmanchor"></a><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-minus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Input Variable Reference</a></span></td></tr></table></div><div id="TOGGLE0186A1" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="Toggle Content Table" style="width:100%;">
+<tr>
+<td><h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Plant Characteristics</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design Gross Output (MWe)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The power cycle's design output, not accounting for parasitic losses. SAM </span><span style="font-family: Verdana,Geneva,Arial,sans-serif;">uses this value to size system components, such as the solar field area when you use the solar multiple to specify the solar field size.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Estimated Gross to Net Conversion Factor</span></p>
@@ -55,7 +55,7 @@
 <p class="p_Text"><span class="f_Text">Use curtailment and availability losses to represent reductions in the system's output or complete system outages for maintenance, forced outages due to grid constraints, or other situations that prevent the system from operating as designed.</span></p>
 <p class="p_Text"><span class="f_Text">To edit the curtailment and availability losses, click </span><span class="f_CHInterfaceElement">Edit losses</span><span class="f_Text">.</span></p>
 <p class="p_Text"><span class="f_Text">The Edit Losses window allows you to define loss factors as follows:</span></p>
-<p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Constant loss is a single loss factor that applies to the system's entire output. You can use this to model an availability factor.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Hourly losses apply to specific hours of the year.</span></p><p class="p_Text"><span class="f_Text">SAM reduces the system's output in each hour by the loss percentage that you specify for that hour. For a given hour, a loss of zero would result in no adjustment. A loss of 5% would reduce the output by 5%, and a loss of -5% would increase the output value by 5%. For subhourly simulations, SAM applies the loss factor for a given hour to each time step in that hour.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Constant loss is a single loss factor that applies to the system's entire output. You can use this to model an availability factor.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Hourly losses apply to specific hours of the year.</span></p><p class="p_Text"><span class="f_Text">SAM reduces the system's output in each hour by the loss percentage that you specify for that hour. For a given hour, a loss of zero would result in no adjustment. A loss of 5% would reduce the output by 5%, and a loss of -5% would increase the output value by 5%. For subhourly simulations, SAM applies the loss factor for a given hour to each time step in that hour.</span></p>
 <p class="p_Text"><img alt="SS_Hourly_Factors" width="568" height="256" style="margin:0;width:568px;height:256px;border:none" src="ss_hourly_factors.png"/></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Constant loss</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM reduces the hourly output value for each time step by the percentage that you specify, which effectively reduces the system's total annual output by that amount.</span></p>
@@ -102,362 +102,362 @@
 </tr>
 </table>
 </div>
-<div style="text-align: left; text-indent: 0px; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="powerblock_powercyclelibraryoptions" class="hmanchor"></a><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-minus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">Power Cycle Library Options</a></span></td></tr></table></div><div id="TOGGLE0186A2" class="dropdown-toggle-body" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="Toggle Content Table" style="width:100%; border:none; border-spacing:0px;">
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The power cycle library includes six reference turbines. See <a href="libraries.htm" class="topiclink">Working with Libraries</a> for information about managing libraries.</span></p>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0 3px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="powerblock_powercyclelibraryoptions" class="hmanchor"></a><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-minus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">Power Cycle Library Options</a></span></td></tr></table></div><div id="TOGGLE0186A2" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="Toggle Content Table" style="width:100%;">
+<tr>
+<td><p class="p_Text"><span class="f_Text">The power cycle library includes six reference turbines. See <a href="libraries.htm" class="topiclink">Working with Libraries</a> for information about managing libraries.</span></p>
 <p class="p_Text"><span class="f_Text">The reference turbines include five conventional Rankine-cycle steam turbines in a range of sizes, and one organic Rankine-cycle turbine. Conventional Rankine-cycle turbines are similar to those used in coal, nuclear, or natural gas power plants. A heat exchanger transfers energy from the solar field's heat transfer fluid to generate steam that drives the turbine. The organic Rankine-cycle turbine operates on the same principle as the conventional turbine, but uses an organic fluid, typically butane or pentane, to run the turbine instead of water.</span></p>
 <p class="p_TitleTable" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleTable">Table 7. Power cycle reference systems.</span></p>
-<div style="text-align: center; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 12px 0px;"><table id="tbl_PowerCycleSystems" style="margin:0 auto; border:none; border-spacing:0px;">
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:bottom; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Reference System</span></p>
+<div style="text-align: center; text-indent: 0; padding: 0 0 0 0; margin: 0 0 12px 0;"><table id="tbl_PowerCycleSystems" style="margin:0 auto; border:none; border-spacing:0;">
+<tr>
+<td style="vertical-align:bottom; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Reference System</span></p>
 </td>
-<td style="vertical-align:bottom; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Approximate Solar Field Size Range</span></p>
+<td style="vertical-align:bottom; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Approximate Solar Field Size Range</span></p>
 <p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">m</span><span class="f_TableHeadColumn" style="font-size: 7pt; font-family: Arial,Helvetica,sans-serif; vertical-align: super;">2</span></p>
 </td>
-<td style="vertical-align:bottom; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Approximate Operating Temperature</span></p>
+<td style="vertical-align:bottom; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Approximate Operating Temperature</span></p>
 <p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">ºC</span></p>
 </td>
-<td style="vertical-align:bottom; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Suggested Modeling Application</span></p>
+<td style="vertical-align:bottom; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Suggested Modeling Application</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">APS Ormat 1 MWe 300C</span></p>
+<tr>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">APS Ormat 1 MWe 300C</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">10,000</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">10,000</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">300</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">300</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Organic Rankine-cycle power block</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:middle; height:32px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nexant 450C HTF</span></p>
-</td>
-<td style="vertical-align:middle; height:32px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-</span></p>
-</td>
-<td style="vertical-align:middle; height:32px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">450</span></p>
-</td>
-<td style="vertical-align:middle; height:32px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">High-temperature heat transfer fluid (molten salt)</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Organic Rankine-cycle power block</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nexant 500C HTF</span></p>
+<tr>
+<td style="vertical-align:middle; height:32px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nexant 450C HTF</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-</span></p>
+<td style="vertical-align:middle; height:32px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">500</span></p>
+<td style="vertical-align:middle; height:32px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">450</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">High-temperature heat transfer fluid (molten salt)</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">SEGS 30 MWe Turbine</span></p>
-</td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">180,000 - 230,000</span></p>
-</td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">300 - 400</span></p>
-</td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Typical applications</span></p>
+<td style="vertical-align:middle; height:32px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">High-temperature heat transfer fluid (molten salt)</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">SEGS 80 MWe Turbine</span></p>
+<tr>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nexant 500C HTF</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">460,000 - 480,000</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">400</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">500</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Typical applications</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">High-temperature heat transfer fluid (molten salt)</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Siemens 400C HTF</span></p>
+<tr>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">SEGS 30 MWe Turbine</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">&nbsp;</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">180,000 - 230,000</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">400</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">300 - 400</span></p>
 </td>
-<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">High-temperature heat transfer fluid</span></p>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Typical applications</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">SEGS 80 MWe Turbine</span></p>
+</td>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">460,000 - 480,000</span></p>
+</td>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">400</span></p>
+</td>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Typical applications</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Siemens 400C HTF</span></p>
+</td>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">&nbsp;</span></p>
+</td>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">400</span></p>
+</td>
+<td style="vertical-align:middle; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">High-temperature heat transfer fluid</span></p>
 </td>
 </tr>
 </table>
 </div>
 <p class="p_Text"><span class="f_Text">When you choose a turbine from the reference system library, SAM changes the values of the Power Cycle variables. The following table shows the power cycle parameters for the standard reference systems. Note that you can use any value for the Rated Turbine Net Capacity and Design Turbine Gross Output variables, SAM will use the reference system parameters with the rated and design turbine parameters.</span></p>
 <p class="p_TitleTable" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleTable">Table 8. Reference system parameters.</span></p>
-<div style="text-align: center; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 12px 0px;"><table style="margin:0 auto; border:none; border-spacing:0px;">
+<div style="text-align: center; text-indent: 0; padding: 0 0 0 0; margin: 0 0 12px 0;"><table style="margin:0 auto; border:none; border-spacing:0;">
 <thead>
-<tr style="text-align:left;vertical-align:top;">
-<th style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">Parameter Name</span></p>
+<tr>
+<th style="vertical-align:top; height:16px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">Parameter Name</span></p>
 </th>
-<th style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">SEGS 30</span></p>
+<th style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">SEGS 30</span></p>
 </th>
-<th style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">SEGS 80</span></p>
+<th style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">SEGS 80</span></p>
 </th>
-<th style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">APS ORC</span></p>
+<th style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">APS ORC</span></p>
 </th>
-<th style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">Nexant 450</span></p>
+<th style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">Nexant 450</span></p>
 </th>
-<th style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">Nexant 500</span></p>
+<th style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">Nexant 500</span></p>
 </th>
-<th style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">Siemens 400</span></p>
+<th style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn" style="font-size: 9pt;">Siemens 400</span></p>
 </th>
 </tr>
 </thead>
 <tbody>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Estimated Net Output at Design</span></p>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Estimated Net Output at Design</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">30</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">30</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">80</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">80</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">100</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">100</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">100</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">100</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">50</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Design Gross Output</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">35</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">89</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.160</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">110</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">110</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">55</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">50</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Design Cycle Thermal Input</span></p>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Design Gross Output</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">93.3</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">35</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">235.8</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">89</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">5.600</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.160</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">278.0</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">110</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">269.9</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">110</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">147.2</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Rated Cycle Conversion Efficiency</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.3749</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.3774</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.2071</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.3957</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.4076</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.3736</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">55</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Max Turbine Over Design Operation</span></p>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Design Cycle Thermal Input</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">93.3</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">235.8</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">5.600</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">278.0</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">269.9</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Min Turbine Operation</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">147.2</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Therm to Elec F0</span></p>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Rated Cycle Conversion Efficiency</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0571910</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.3749</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0377260</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.3774</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.1593790</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.2071</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0240590</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.3957</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0252994</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.4076</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0298</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Therm to Elec F1</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.0041000</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.0062000</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.9261810</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.0254800</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.0261900</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.7219</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.3736</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Therm to Elec F2</span></p>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Max Turbine Over Design Operation</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.1255000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0763160</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.1349230</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.7158</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Therm to Elec F3</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0724470</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0447750</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-1.3605660</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.5518</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.15</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Therm to Elec F4</span></p>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Min Turbine Operation</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.4588420</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.1430</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Elec to Therm F0</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0565200</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0373700</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.1492050</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0234837</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0246620</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.044964</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.15</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Elec to Therm F1</span></p>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Therm to Elec F0</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.9822000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0571910</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.9882300</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0377260</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.8521820</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.1593790</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.9751230</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0240590</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.9744650</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0252994</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.182900</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Elec to Therm F2</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0982950</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0649910</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.3247150</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
-</td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.563880</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0298</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Elec to Therm F3</span></p>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Therm to Elec F1</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0595730</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.0041000</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0393880</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.0062000</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.4486300</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.9261810</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.0254800</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.0261900</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.467190</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.7219</span></p>
 </td>
 </tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; height:16px; padding:0px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Elec to Therm F4</span></p>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Therm to Elec F2</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.1255000</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0763160</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.1256020</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.1349230</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
 </td>
-<td style="vertical-align:top; width:11%; height:16px; padding:0px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.130090</span></p>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.7158</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Therm to Elec F3</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0724470</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0447750</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-1.3605660</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.5518</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Therm to Elec F4</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.4588420</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.1430</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Elec to Therm F0</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0565200</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0373700</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.1492050</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0234837</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0246620</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.044964</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Elec to Therm F1</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.9822000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.9882300</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.8521820</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.9751230</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.9744650</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">1.182900</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Elec to Therm F2</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0982950</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.0649910</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.3247150</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.563880</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Elec to Therm F3</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0595730</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0393880</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.4486300</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.467190</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; height:16px; padding:0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft" style="font-size: 9pt;">Cycle Part-load Elec to Therm F4</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.1256020</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">0.0000000</span></p>
+</td>
+<td style="vertical-align:top; width:11%; height:16px; padding:0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter" style="font-size: 8pt;">-0.130090</span></p>
 </td>
 </tr>
 </tbody>
@@ -468,9 +468,9 @@
 </tr>
 </table>
 </div>
-<div style="text-align: left; text-indent: 0px; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="powerblock_pbsimulationcalculations" class="hmanchor"></a><img id="TOGGLE0186A3_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-minus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A3','TOGGLE0186A3_ICON')">Power Block Simulation Calculations</a></span></td></tr></table></div><div id="TOGGLE0186A3" class="dropdown-toggle-body" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="Toggle Content Table" style="width:100%; border:none; border-spacing:0px;">
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The equations below show how SAM uses the Power Cycle parameters during the simulation to calculate the thermal energy delivered to the power block, </span><span class="f_CHEquationVariable">Q</span><span class="f_CHVariableSubscript">pb</span><span class="f_Text">. You can use this information to develop your own set of coefficients instead of coefficients from the power cycle library.</span></p>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0 3px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="powerblock_pbsimulationcalculations" class="hmanchor"></a><img id="TOGGLE0186A3_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-minus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A3','TOGGLE0186A3_ICON')">Power Block Simulation Calculations</a></span></td></tr></table></div><div id="TOGGLE0186A3" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="Toggle Content Table" style="width:100%;">
+<tr>
+<td><p class="p_Text"><span class="f_Text">The equations below show how SAM uses the Power Cycle parameters during the simulation to calculate the thermal energy delivered to the power block, </span><span class="f_CHEquationVariable">Q</span><span class="f_CHVariableSubscript">pb</span><span class="f_Text">. You can use this information to develop your own set of coefficients instead of coefficients from the power cycle library.</span></p>
 <p class="p_Text"><img alt="EQ_PB_Qpb" width="88" height="45" style="margin:0;width:88px;height:45px;border:none" src="eq_pb_qpb.png"/></p>
 <p class="p_Text"><span class="f_Text">This is the non-dimensional thermal energy into the power block. This fractional value is input into the </span><span class="f_CHInterfaceElement">Cycle Part-load Therm to Elec</span><span class="f_Text"> polynomial equation that describes non-dimensional net electric output as a function of load:</span></p>
 <p class="p_Text"><img alt="EQ_PB_Wgr" width="337" height="28" style="margin:0;width:337px;height:28px;border:none" src="eq_pb_wgr.png"/></p>

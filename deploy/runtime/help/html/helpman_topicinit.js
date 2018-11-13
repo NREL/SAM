@@ -352,11 +352,13 @@ var HMSearchCheck = function(obj) {
   var foundHilite = window.location.search.lastIndexOf("zoom_highlight") > 0;
   if (!foundHilite) {
     var fontTags = obj.getElementsByTagName("FONT");
+if (fontTags.length == 0)
+fontTags = obj.getElementsByTagName("font");
     if (fontTags.length > 0) {
       var hStyle = "";
       for (var cCheck = 0; cCheck < fontTags.length; cCheck++) {
         hStyle = fontTags[cCheck].style.cssText;
-        if (hStyle.indexOf("BACKGROUND-COLOR") == 0) {
+        if (hStyle.indexOf("BACKGROUND-COLOR") == 0 || hStyle.indexOf("background-color") == 0) {
           foundHilite = true;
           break; 
         }

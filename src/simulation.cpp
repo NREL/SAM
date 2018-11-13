@@ -27,7 +27,7 @@
 #include "case.h"
 
 
-static bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
+bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
 {
 	switch( vv->Type() )
 	{
@@ -100,7 +100,6 @@ static bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscna
 
 	return true;
 }
-
 
 Simulation::Simulation( Case *cc, const wxString &name )
 	: m_case( cc ), m_name( name )
@@ -245,6 +244,20 @@ VarValue *Simulation::GetInput( const wxString &name )
 		return val;
 
 	return m_case->Values().Get( name );
+}
+
+void Simulation::SetInput(const wxString & name, lk::vardata_t val) {
+	//if (VarValue *vv = m_inputs.Get(name)) {
+	//	if (vv->Type == VV_NUMBER && val.type == 3) {
+
+	//	}
+	//	else if (vv->Type == VV_STRING && val.type == 4) {
+
+	//	}
+	//	else if (vv->Type == VV_ARRAY && val.type == 5) {
+
+	//	}
+	//}
 }
 
 bool Simulation::Ok()
