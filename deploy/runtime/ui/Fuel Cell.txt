@@ -748,9 +748,11 @@ Height
 24
 Items
 6
-2
+4
 Natural Gas
 Diesel
+Hydrogen
+Custom
 Selection
 3
 4294967295
@@ -1047,9 +1049,10 @@ Height
 24
 Items
 6
-2
+3
 $/MCf
 $/MMBtu
+$/gal
 Selection
 3
 4294967295
@@ -1568,8 +1571,8 @@ fuelcell_fuel_type
 Fuel Type
  
 Fuel Cell
-18
-Natural Gas|Diesel
+34
+Natural Gas|Diesel|Hydrogen|Custom
 2
 1
 1
@@ -1668,8 +1671,8 @@ fuelcell_price_units
 Fuel Price Units
  
 Fuel Cell
-13
-$/MCf|$/MMBtu
+19
+$/MCf|$/MMBtu|$/gal
 1
 1
 1
@@ -1778,7 +1781,7 @@ kW|% of nameplate
 1.000000
 Choice
 
-2415
+2799
 equations{ 'fuelcell_fuel_available'} = define(){
 	liter_per_m3 = 1000;
 	MCF_per_liter = 28316.846592;
@@ -1790,6 +1793,9 @@ equations{ 'fuelcell_fuel_available'} = define(){
 	if (${fuelcell_fuel_type} == 1){
 		kg_per_liter = 832/liter_per_m3;
 	}
+	else if (${fuelcell_fuel_type} == 2){
+		kg_per_liter = 0.071; // http://www.airproducts.com/Products/Gases/gas-facts/conversion-formulas/weight-and-volume-equivalents/hydrogen.aspx
+	} 
 	
 	fuel_available = ${fuelcell_fuel_available_in};
 	
@@ -1832,6 +1838,10 @@ equations{ 'fuelcell_lhv'} = define(){
 	// Diesel density: https://www.engineeringtoolbox.com/fuels-densities-specific-volumes-d_166.html
 	if (${fuelcell_fuel_type} == 1){
 		lb_per_ft3 = 54.6;
+	}
+	// Hydrogen: http://www.airproducts.com/Products/Gases/gas-facts/conversion-formulas/weight-and-volume-equivalents/hydrogen.aspx
+	else if (${fuelcell_fuel_type} == 2){
+		lb_per_ft3 = 1.0/192.0;
 	}
 	
 	// https://www.eia.gov/totalenergy/data/monthly/pdf/sec13_5.pdf
@@ -1879,15 +1889,59 @@ equations{'fuelcell_unit_min_power'} = define()
 
 };
 
-906
+2143
 on_load{'Fuel Cell'} = define() {
 	on_change{'fuelcell_efficiency'}(); 
+	on_change{'fuelcell_fuel_type'}();
 	//plot_efficiency();
 };
 
 on_change{'fuelcell_efficiency'} = define(){
 	plot_efficiency();
 };
+
+on_change{'fuelcell_fuel_type'} = define(){
+	type = value('fuelcell_fuel_type');
+	lhv = value('fuelcell_lhv_in');
+	price = value('fuelcell_fuel_price_in');
+	
+	lhv_unit = value('fuelcell_lhv_units'); /* Btu/lbm, MJ/kg, Btu/ft3 */
+	price_unit = value('fuelcell_price_units'); /*$/MCf, $/MMBtu, $/gal */
+	
+	// Natural Gas 
+	if (type == 0){
+		lhv = 983;    // https://www.engineeringtoolbox.com/heating-values-fuel-gases-d_823.html
+		price = 8.73; //https://www.eia.gov/naturalgas/data.php#prices
+		lhv_unit = 2;
+		price_unit = 0;
+	}
+	// Diesel 
+	else if (type == 1){
+		lhv = 19604; // (https://www.engineeringtoolbox.com/fuels-higher-calorific-values-d_169.html)
+		price = 3.317; // https://www.eia.gov/petroleum/gasdiesel/ 
+		lhv_unit = 0;
+		price_unit = 2;
+		
+	}
+	// Hydrogen
+	else if (type == 2){
+		lhv = 51591; // https://www.engineeringtoolbox.com/heating-values-fuel-gases-d_823.html)
+		price = 5.60; //https://cafcp.org/content/cost-refill
+		lhv_unit = 2;
+		price_unit = 2;
+	}
+	// Custom
+	else {
+		lhv_unit = 2;
+		price_unit = 0;
+	}
+	
+	value('fuelcell_lhv_in', lhv);
+	value('fuelcell_fuel_price_in', price);
+	value('fuelcell_lhv_units', lhv_unit);
+	value('fuelcell_price_units', price_unit);
+};
+
 
 function plot_efficiency()
 {
