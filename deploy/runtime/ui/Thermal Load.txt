@@ -3024,7 +3024,7 @@ Thermal Load
 1.000000
 Default
 
-2795
+2793
 equations{ '$MIMO$ thermalload' } = define() {
 
 	const nday = [31,28,31,30,31,30,31,31,30,31,30,31];
@@ -3072,7 +3072,7 @@ equations{ '$MIMO$ thermalload' } = define() {
 	
 	if(mod(len, 8760) != 0)
 	{
-		msgbox("Hourly thermal load data must be a multiple of 8760. Current length = %d\n", count);
+		msgbox("Hourly thermal load data must be a multiple of 8760. Current length = %d\n", len);
 		return false;
 	}
 		

@@ -771,7 +771,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -830,7 +830,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -889,7 +889,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -948,7 +948,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1007,7 +1007,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1066,7 +1066,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1125,7 +1125,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1184,7 +1184,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1243,7 +1243,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1302,7 +1302,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1361,7 +1361,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1420,7 +1420,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1479,7 +1479,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1578,7 +1578,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1773,7 +1773,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1832,7 +1832,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1891,7 +1891,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1950,7 +1950,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2009,7 +2009,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2068,7 +2068,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2127,7 +2127,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2186,7 +2186,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2245,7 +2245,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2304,7 +2304,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2363,7 +2363,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2422,7 +2422,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2481,7 +2481,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3024,7 +3024,7 @@ Electric Load
 
 Default
 
-2966
+2964
 equations{ 'escal_other' } = define() {
 	return ${escal_input_hourly};
 };
@@ -3086,7 +3086,7 @@ equations{ '$MIMO$ elecload' } = define() {
 	
 	if(mod(len, 8760) != 0)
 	{
-		msgbox("Hourly electric load data must be a multiple of 8760. Current length = %d\n", count);
+		msgbox("Hourly electric load data must be a multiple of 8760. Current length = %d\n", len);
 		return false;
 	}
 		

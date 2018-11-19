@@ -1,0 +1,590 @@
+Thermal Rate
+506
+432
+10
+GroupBox
+
+1
+7
+Name
+5
+8
+object 4
+X
+3
+30
+Y
+3
+258
+Width
+3
+454
+Height
+3
+102
+Caption
+5
+9
+Sell rate
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+9
+object 48
+X
+3
+30
+Y
+3
+144
+Width
+3
+454
+Height
+3
+102
+Caption
+5
+8
+Buy rate
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+9
+object 49
+X
+3
+12
+Y
+3
+30
+Width
+3
+480
+Height
+3
+342
+Caption
+5
+13
+Thermal rates
+Bold
+2
+1
+Label
+
+1
+12
+Name
+5
+8
+object 7
+X
+3
+60
+Y
+3
+54
+Width
+3
+384
+Height
+3
+88
+Caption
+5
+145
+Thermal rates. Buy rates for thermal loads and sell rates for excess thermal generation. Either a flat rate or a timestep rate can be specified. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+RadioChoice
+
+1
+10
+Name
+5
+23
+thermal_buy_rate_option
+X
+3
+39
+Y
+3
+171
+Width
+3
+438
+Height
+3
+38
+Selection
+3
+0
+Items
+6
+2
+Flat buy rate
+Timestep buy rate
+ShowCaptions
+2
+1
+Horizontal
+2
+1
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+21
+thermal_flat_buy_rate
+X
+3
+126
+Y
+3
+210
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+22
+thermal_flat_sell_rate
+X
+3
+126
+Y
+3
+321
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+RadioChoice
+
+1
+10
+Name
+5
+24
+thermal_sell_rate_option
+X
+3
+39
+Y
+3
+279
+Width
+3
+438
+Height
+3
+38
+Selection
+3
+0
+Items
+6
+2
+Flat sell rate
+Timestep sell rate
+ShowCaptions
+2
+1
+Horizontal
+2
+1
+TabOrder
+3
+4294967295
+DataArray
+
+1
+9
+Name
+5
+25
+thermal_timestep_buy_rate
+X
+3
+300
+Y
+3
+210
+Width
+3
+90
+Height
+3
+24
+Mode
+3
+1
+Label
+5
+0
+Description
+5
+33
+Enter thermal buy rates in $/kW-t
+TabOrder
+3
+4294967295
+DataArray
+
+1
+9
+Name
+5
+26
+thermal_timestep_sell_rate
+X
+3
+300
+Y
+3
+318
+Width
+3
+90
+Height
+3
+24
+Mode
+3
+1
+Label
+5
+0
+Description
+5
+34
+Enter thermal sell rates in $/kW-t
+TabOrder
+3
+4294967295
+
+8
+thermal_buy_rate
+3
+2
+Thermal buy rate
+$/kW-t
+Thermal Rate
+0
+8
+1
+2
+1
+1
+0.000000
+Default
+thermal_buy_rate_option
+3
+1
+ 
+ 
+Thermal Rate
+31
+Flat buy rate|Timestep buy rate
+0
+1
+1
+1
+1
+0.000000
+RadioChoice
+thermal_flat_buy_rate
+3
+1
+Buy rate
+$/kWh-t
+Thermal Rate
+0
+2
+1
+1
+1
+1
+0.000000
+Numeric
+thermal_flat_sell_rate
+3
+1
+Sell Rate
+$/kWh-t
+Thermal Rate
+0
+2
+1
+1
+1
+1
+0.000000
+Numeric
+thermal_sell_rate
+3
+2
+Themal sell rate
+$/kW-t
+Thermal Rate
+0
+8
+1
+2
+1
+1
+0.000000
+Default
+thermal_sell_rate_option
+3
+1
+ 
+ 
+Thermal Rate
+33
+Flat sell rate|Timestep sell rate
+0
+1
+1
+1
+1
+0.000000
+RadioChoice
+thermal_timestep_buy_rate
+3
+2
+timestep buy rate 
+$/kW-t
+Thermal Rate
+0
+3
+1
+2
+1
+1
+0.000000
+DataArray
+thermal_timestep_sell_rate
+3
+2
+Timestep sell rate
+$/kW-t
+Thermal Rate
+0
+1
+1
+2
+1
+1
+0.000000
+DataArray
+
+1116
+equations{ '$MIMO$ thermalrate' } = define() {
+
+	fin = financing();
+	if(fin == "Commercial")
+	{
+		if (${thermal_buy_rate_option} == 0)
+		{
+			buy_rate = alloc(8760);
+			for (i=0;i<#buy_rate; i++)
+				buy_rate[i] = ${thermal_flat_buy_rate};
+		}
+		else if (${thermal_buy_rate_option} == 1)
+		{
+			buy_rate = ${thermal_timestep_buy_rate};
+		}
+		else 
+		{
+			buy_rate = alloc(8760);
+			for (i=0;i<#buy_rate; i++)
+				buy_rate[i] = 0.0;
+		}
+	}
+	else
+	{
+		buy_rate = alloc(8760);
+		for (i=0;i<#buy_rate; i++)
+			buy_rate[i] = 0.0;
+	}
+	
+	if (fin == "Single Owner" || fin == "Commercial")
+	{
+		if (${thermal_sell_rate_option} == 0)
+		{
+			sell_rate = alloc(8760);
+			for (i=0;i<#sell_rate; i++)
+				sell_rate[i] = ${thermal_flat_sell_rate};
+		}
+		else if (${thermal_sell_rate_option} == 1)
+		{
+			sell_rate = ${thermal_timestep_sell_rate};
+		}
+		else 
+		{
+			sell_rate = alloc(8760);
+			for (i=0;i<#sell_rate; i++)
+				sell_rate[i] = 0.0;
+		}
+	}
+	else
+	{
+		sell_rate = alloc(8760);
+		for (i=0;i<#sell_rate; i++)
+			sell_rate[i] = 0.0;
+	}
+	
+	
+	${thermal_buy_rate} = buy_rate;
+	${thermal_sell_rate} = sell_rate;
+
+	return 0;
+};
+661
+
+on_load{'Thermal Rate'} = define() {
+	fin = financing();
+	buy_enable = (fin == "Commercial");
+	enable("thermal_buy_rate_option",fin);
+	enable("thermal_flat_buy_rate",fin);
+	enable("thermal_timestep_buy_rate",fin);
+	if (buy_enable) on_change{'thermal_buy_rate_option'}();
+	on_change{'thermal_sell_rate_option'}();
+};
+
+on_change{'thermal_buy_rate_option'} = define() {
+	x = value('thermal_buy_rate_option');
+	enable('thermal_flat_buy_rate',!x);
+	enable('thermal_timestep_buy_rate',x);
+};
+
+on_change{'thermal_sell_rate_option'} = define() {
+	x = value('thermal_sell_rate_option');
+	enable('thermal_flat_sell_rate',!x);
+	enable('thermal_timestep_sell_rate',x);
+};
