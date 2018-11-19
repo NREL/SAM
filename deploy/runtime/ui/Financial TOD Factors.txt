@@ -1331,8 +1331,8 @@ Height
 63
 Caption
 5
-282
-TOD factors are multipliers that apply to the PPA price. Choose "TOD factors by shedule" to define factors using the TOD periods with weekday and weekend hour-by-month matrices. Choose "TOD factors by time step" to assign a factor to each simulation time step. See Help for details.
+283
+TOD factors are multipliers that apply to the PPA price. Choose "TOD factors by schedule" to define factors using the TOD periods with weekday and weekend hour-by-month matrices. Choose "TOD factors by time step" to assign a factor to each simulation time step. See Help for details.
 TextColour
 4
 0
@@ -1837,7 +1837,7 @@ TOD factors and schedule library
 Time of Delivery Factors
 27
 TOD Schedules and Factors|0
-18
+19
 1
 4
 16
