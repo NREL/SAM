@@ -294,14 +294,21 @@ function biopower_metrics()
 // Technology Metrics
 metrics{ 'Flat Plate PV' } = define() { 
 	pv_metrics(); 
-	if ((financing()!='LCOE Calculator') && (financing() != 'None'))
+	if ((financing()!='LCOE Calculator') && (financing() != 'None')){
 		if ( value('en_batt') == 1 )
 			metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
+		}
 };
 metrics{ 'PVWatts' } = define() {	
 	pvwatts_metrics(); 
-	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party"))
+	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party")){
 		if ( value('batt_simple_enable') == 1 )
+				metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
+		}
+};
+metrics{ 'Fuel Cell' } = define() {	
+	pvwatts_metrics(); 
+	if ( value('en_batt') == 1 )
 			metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
 };
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
