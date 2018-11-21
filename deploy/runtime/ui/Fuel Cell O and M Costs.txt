@@ -565,8 +565,8 @@ SchedNumeric
 11
 Name
 5
-13
-fc_fuel_price
+12
+fc_fuel_cost
 X
 3
 492
@@ -1075,68 +1075,86 @@ TabOrder
 batt_om_capacity
 3
 2
- 
- 
- 
+Battery fixed cost by capacity 
+$/kW-yr 
+Operation and Maintenance Costs
 0
-0
+3
 1
-0
+2
+1
+1
+0.000000
 SchedNumeric
 batt_om_fixed
 3
 2
- 
- 
- 
+Battery fixed annual cost 
+$/yr
+Operation and Maintenance Costs
 0
-0
+3
 1
-0
+2
+1
+1
+0.000000
 SchedNumeric
-fc_fuel_price
+fc_fuel_cost
 3
 2
+Fuel cell fuel cost
  
- 
- 
+Operation and Maintenance Costs
 0
-0
+3
 1
-0
+2
+1
+1
+0.000000
 SchedNumeric
 fc_om_capacity
 3
 2
- 
- 
- 
+Fuel cell fixed cost by capacity
+$/kW-yr
+Operation and Maintenance Costs
 0
-0
+3
 1
-0
+2
+1
+1
+0.000000
 SchedNumeric
 fc_om_fixed
 3
 2
- 
- 
- 
+Fuel cell fixed annual cost
+$/yr
+Operation and Maintenance Costs
 0
-0
+3
 1
-0
+2
+1
+1
+0.000000
 SchedNumeric
 fuelcell_price_units
 3
 1
  
  
- 
+Operation and Maintenance Costs
 0
 0
 1
-0
+1
+1
+1
+0.000000
 Choice
 om_capacity
 3
@@ -1253,35 +1271,44 @@ Numeric
 pv_om_capacity
 3
 2
- 
- 
- 
+PV fixed cost by capacity
+$/kW-yr 
+Operation and Maintenance Costs
 0
-0
+3
 1
-0
+2
+1
+1
+0.000000
 SchedNumeric
 pv_om_fixed
 3
 2
- 
- 
- 
+PV ixed annual cost 
+$/yr
+Operation and Maintenance Costs
 0
-0
+3
 1
-0
+2
+1
+1
+0.000000
 SchedNumeric
 pv_om_production
 3
 2
- 
- 
- 
+PV variable cost by generation
+$/MWh 
+Operation and Maintenance Costs
 0
-0
+3
 1
-0
+2
+1
+1
+0.000000
 SchedNumeric
 
 419

@@ -5855,11 +5855,14 @@ engr_percent
 1
  
  
- 
+Capital Costs
 0
 0
 1
-0
+1
+1
+1
+0.000000
 Numeric
 engr_total
 3
