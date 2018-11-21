@@ -1745,7 +1745,7 @@ equations{'fuelcell_unit_min_power'} = define()
 
 };
 
-2143
+2165
 on_load{'Fuel Cell'} = define() {
 	on_change{'fuelcell_efficiency'}(); 
 	on_change{'fuelcell_fuel_type'}();
@@ -1759,43 +1759,43 @@ on_change{'fuelcell_efficiency'} = define(){
 on_change{'fuelcell_fuel_type'} = define(){
 	type = value('fuelcell_fuel_type');
 	lhv = value('fuelcell_lhv_in');
-	price = value('fuelcell_fuel_price_in');
+	//price = value('fuelcell_fuel_price_in');
 	
 	lhv_unit = value('fuelcell_lhv_units'); /* Btu/lbm, MJ/kg, Btu/ft3 */
-	price_unit = value('fuelcell_price_units'); /*$/MCf, $/MMBtu, $/gal */
+	//price_unit = value('fuelcell_price_units'); /*$/MCf, $/MMBtu, $/gal */
 	
 	// Natural Gas 
 	if (type == 0){
 		lhv = 983;    // https://www.engineeringtoolbox.com/heating-values-fuel-gases-d_823.html
-		price = 8.73; //https://www.eia.gov/naturalgas/data.php#prices
+		//price = 8.73; //https://www.eia.gov/naturalgas/data.php#prices
 		lhv_unit = 2;
-		price_unit = 0;
+		//price_unit = 0;
 	}
 	// Diesel 
 	else if (type == 1){
 		lhv = 19604; // (https://www.engineeringtoolbox.com/fuels-higher-calorific-values-d_169.html)
-		price = 3.317; // https://www.eia.gov/petroleum/gasdiesel/ 
+		//price = 3.317; // https://www.eia.gov/petroleum/gasdiesel/ 
 		lhv_unit = 0;
-		price_unit = 2;
+		//price_unit = 2;
 		
 	}
 	// Hydrogen
 	else if (type == 2){
 		lhv = 51591; // https://www.engineeringtoolbox.com/heating-values-fuel-gases-d_823.html)
-		price = 5.60; //https://cafcp.org/content/cost-refill
+		//price = 5.60; //https://cafcp.org/content/cost-refill
 		lhv_unit = 2;
-		price_unit = 2;
+		//price_unit = 2;
 	}
 	// Custom
 	else {
 		lhv_unit = 2;
-		price_unit = 0;
+		//price_unit = 0;
 	}
 	
 	value('fuelcell_lhv_in', lhv);
-	value('fuelcell_fuel_price_in', price);
+	//value('fuelcell_fuel_price_in', price);
 	value('fuelcell_lhv_units', lhv_unit);
-	value('fuelcell_price_units', price_unit);
+	//value('fuelcell_price_units', price_unit);
 };
 
 
