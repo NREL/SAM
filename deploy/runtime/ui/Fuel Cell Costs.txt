@@ -1,6 +1,6 @@
 Fuel Cell Costs
-991
-848
+952
+827
 136
 GroupBox
 
@@ -261,7 +261,7 @@ Label
 Name
 5
 8
-Label232
+Label233
 X
 3
 495
@@ -306,7 +306,7 @@ Label
 Name
 5
 8
-Label234
+Label235
 X
 3
 396
@@ -3688,7 +3688,7 @@ Y
 567
 Width
 3
-70
+73
 Height
 3
 21
@@ -4222,7 +4222,7 @@ Y
 615
 Width
 3
-76
+73
 Height
 3
 21
@@ -6044,7 +6044,7 @@ Name
 object 79810
 X
 3
-471
+675
 Y
 3
 600
@@ -6085,11 +6085,11 @@ Label
 12
 Name
 5
-11
-object 7987
+12
+object 79813
 X
 3
-675
+471
 Y
 3
 600
@@ -7714,7 +7714,7 @@ Land area
 acres
 Capital Costs
 0
-8
+0
 1
 1
 1
@@ -8227,7 +8227,7 @@ Capital Costs
 0.000000
 Numeric
 
-7028
+6824
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -8270,16 +8270,6 @@ equations{ 'contingency' } = define() {
 				+${bos_equip_total}
 				+${install_labor_total} 
 				+${install_margin_total} );
-};
-
-equations{ 'land_area_value' } = define() {
-	tech = technology();
-	if ( tech == "PVWatts" || tech == "PVWatts_battery" || tech == "Fuel Cell") {
-		return 0;
-	}
-	else {
-		return ${total_land_area};
-	}
 };
 
 equations{ 'inverter_power' } = define() {
