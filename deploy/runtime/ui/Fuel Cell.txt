@@ -1,7 +1,7 @@
 Fuel Cell
 986
 838
-31
+29
 Divider
 
 1
@@ -588,7 +588,7 @@ X
 168
 Y
 3
-777
+753
 Width
 3
 90
@@ -647,7 +647,7 @@ X
 261
 Y
 3
-777
+753
 Width
 3
 90
@@ -664,65 +664,6 @@ MCf
 Selection
 3
 4294967295
-TabOrder
-3
-4294967295
-Numeric
-
-1
-16
-Name
-5
-22
-fuelcell_fuel_price_in
-X
-3
-168
-Y
-3
-750
-Width
-3
-90
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
 TabOrder
 3
 4294967295
@@ -1024,38 +965,6 @@ BackColour
 255
 255
 255
-TabOrder
-3
-4294967295
-Choice
-
-1
-8
-Name
-5
-20
-fuelcell_price_units
-X
-3
-261
-Y
-3
-750
-Width
-3
-90
-Height
-3
-24
-Items
-6
-3
-$/MCf
-$/MMBtu
-$/gal
-Selection
-3
-4294967295
 TabOrder
 3
 4294967295
@@ -1396,7 +1305,7 @@ Bold
 2
 1
 
-26
+23
 fuelcell_degradation
 3
 1
@@ -1537,34 +1446,6 @@ Liters|kg|cubic meters|Mcf
 1
 3.000000
 Choice
-fuelcell_fuel_price
-3
-1
-Price
- $/MCf
-Fuel Cell
-0
-8
-1
-1
-1
-1
-7.500000
-Numeric
-fuelcell_fuel_price_in
-3
-1
-Price
- 
-Fuel Cell
-0
-2
-1
-1
-1
-1
-7.500000
-Numeric
 fuelcell_fuel_type
 3
 1
@@ -1665,21 +1546,6 @@ Fuel Cell
 1
 0.000000
 Numeric
-fuelcell_price_units
-3
-1
-Fuel Price Units
- 
-Fuel Cell
-19
-$/MCf|$/MMBtu|$/gal
-1
-1
-1
-1
-1
-0.000000
-Choice
 fuelcell_replacement_percent
 3
 1
@@ -1781,7 +1647,7 @@ kW|% of nameplate
 1.000000
 Choice
 
-2799
+2560
 equations{ 'fuelcell_fuel_available'} = define(){
 	liter_per_m3 = 1000;
 	MCF_per_liter = 28316.846592;
@@ -1816,16 +1682,6 @@ equations{ 'fuelcell_fuel_available'} = define(){
 	return fuel_available;
 };
 
-equations{ 'fuelcell_fuel_price'} = define(){
-	fuel_price = ${fuelcell_fuel_price_in};
-	
-	// Convert $/MMBtu to $/MCF (1 MMBTu = 0.973 MCF)
-	if (${fuelcell_price_units} == 1){
-		fuel_price = fuel_price * 0.973;
-	}
-	
-	return fuel_price;
-};
 
 equations{ 'fuelcell_lhv'} = define(){
 	lhv = ${fuelcell_lhv_in};
