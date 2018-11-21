@@ -69,7 +69,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -225,7 +225,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -313,7 +313,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -372,7 +372,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -507,7 +507,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -566,7 +566,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -625,7 +625,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -676,7 +676,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 shading_3d_scene
 3
@@ -702,7 +702,7 @@ Shading and Snow
 1
 1
 1
-0.300000
+0.3
 Default
 subarray1_mod_orient
 3
@@ -717,7 +717,7 @@ Portrait| Landscape
 1
 1
 1
-0.000000
+0
 Choice
 subarray1_nmodx
 3
@@ -731,7 +731,7 @@ Shading and Snow
 1
 1
 1
-8.000000
+8
 Numeric
 subarray1_nmody
 3
@@ -745,7 +745,7 @@ Shading and Snow
 1
 1
 1
-2.000000
+2
 Numeric
 subarray1_ref_nmodules
 3
@@ -759,7 +759,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 subarray1_shade_mode
 3
@@ -774,7 +774,7 @@ None|Standard (Non-linear)|Thin film (Linear)
 1
 1
 1
-0.000000
+0
 Choice
 subarray1_shading
 3
@@ -801,7 +801,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 ui_subarray1_nrows
 3
@@ -815,7 +815,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 ui_subarray1_row_spacing
 3
@@ -829,7 +829,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 ui_subarray2_length_side
 3
@@ -843,7 +843,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 ui_subarray2_nrows
 3
@@ -857,7 +857,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 ui_subarray2_row_spacing
 3
@@ -871,7 +871,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 ui_subarray3_length_side
 3
@@ -885,7 +885,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 ui_subarray3_nrows
 3
@@ -899,7 +899,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 ui_subarray3_row_spacing
 3
@@ -913,7 +913,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 ui_subarray4_length_side
 3
@@ -927,7 +927,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 ui_subarray4_nrows
 3
@@ -941,7 +941,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 ui_subarray4_row_spacing
 3
@@ -955,7 +955,7 @@ Shading and Snow
 1
 1
 1
-0.000000
+0
 Default
 
 3482

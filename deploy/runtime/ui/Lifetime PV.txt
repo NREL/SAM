@@ -441,7 +441,7 @@ Lifetime daily AC losses
 2
 1
 1
-0.000000
+0
 Default
 dc_degradation
 3
@@ -455,7 +455,7 @@ Degradation
 2
 1
 1
-0.000000
+0
 Default
 dc_lifetime_losses
 3
@@ -469,7 +469,7 @@ Lifetime daily DC losses
 2
 1
 1
-0.000000
+0
 Default
 en_ac_lifetime_losses
 3
@@ -483,7 +483,7 @@ Enable AC lifetime losses
 1
 1
 1
-0.000000
+0
 Default
 en_dc_lifetime_losses
 3
@@ -497,7 +497,7 @@ Enable DC lifetime losses
 1
 1
 1
-0.000000
+0
 Default
 
 0

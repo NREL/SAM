@@ -86,7 +86,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -145,7 +145,7 @@ Height
 24
 Value
 1
-7.050000
+7.05
 Mode
 3
 1
@@ -204,7 +204,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -263,7 +263,7 @@ Height
 24
 Value
 1
-0.000000
+1e-10
 Mode
 3
 1
@@ -322,7 +322,7 @@ Height
 24
 Value
 1
-10.000000
+10
 Mode
 3
 1
@@ -381,7 +381,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -440,7 +440,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -499,7 +499,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -558,7 +558,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -659,7 +659,7 @@ Height
 24
 Value
 1
-1500.000000
+1500
 Mode
 3
 1
@@ -718,7 +718,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -777,7 +777,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -836,7 +836,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -895,7 +895,7 @@ Height
 24
 Value
 1
-1.200000
+1.2
 Mode
 3
 1
@@ -954,7 +954,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1013,7 +1013,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1072,7 +1072,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1131,7 +1131,7 @@ Height
 24
 Value
 1
-100.000000
+100
 Mode
 3
 1
@@ -1190,7 +1190,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1494,7 +1494,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -2935,7 +2935,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2994,7 +2994,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3053,7 +3053,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3112,7 +3112,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3225,7 +3225,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1

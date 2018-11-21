@@ -302,7 +302,7 @@ Battery
 1
 1
 1
-99.000000
+99
 Numeric
 batt_ac_or_dc
 3
@@ -316,7 +316,7 @@ Battery
 1
 1
 1
-1.000000
+1
 RadioChoice
 batt_dc_ac_efficiency
 3
@@ -330,7 +330,7 @@ Battery
 1
 1
 1
-99.000000
+99
 Numeric
 batt_dc_dc_efficiency
 3
@@ -344,7 +344,7 @@ Battery
 1
 1
 1
-99.000000
+99
 Numeric
 
 0

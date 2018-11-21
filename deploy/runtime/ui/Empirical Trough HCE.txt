@@ -77,7 +77,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -136,7 +136,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -195,7 +195,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -254,7 +254,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -313,7 +313,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -372,7 +372,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -431,7 +431,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -490,7 +490,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -549,7 +549,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -608,7 +608,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -667,7 +667,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -726,7 +726,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -785,7 +785,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -844,7 +844,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -903,7 +903,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -962,7 +962,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1021,7 +1021,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1080,7 +1080,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1139,7 +1139,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1198,7 +1198,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1257,7 +1257,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1316,7 +1316,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1375,7 +1375,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1434,7 +1434,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1493,7 +1493,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1552,7 +1552,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1611,7 +1611,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1670,7 +1670,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1729,7 +1729,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1788,7 +1788,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1847,7 +1847,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1906,7 +1906,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1965,7 +1965,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2024,7 +2024,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2083,7 +2083,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2142,7 +2142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2201,7 +2201,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2260,7 +2260,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2319,7 +2319,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2378,7 +2378,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2437,7 +2437,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2496,7 +2496,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2555,7 +2555,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2614,7 +2614,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2673,7 +2673,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2732,7 +2732,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2791,7 +2791,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2850,7 +2850,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4079,7 +4079,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4138,7 +4138,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4197,7 +4197,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4256,7 +4256,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4735,7 +4735,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4794,7 +4794,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4853,7 +4853,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4912,7 +4912,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5135,7 +5135,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5194,7 +5194,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5253,7 +5253,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5312,7 +5312,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5371,7 +5371,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5430,7 +5430,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5489,7 +5489,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5540,7 +5540,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-4.050000
+4.05
 Numeric
 HCEA0_2
 3
@@ -5554,7 +5554,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-50.799999
+50.8
 Numeric
 HCEA0_3
 3
@@ -5568,7 +5568,7 @@ Empirical Trough SCA HCE
 1
 1
 1
--9.950000
+-9.95
 Numeric
 HCEA0_4
 3
@@ -5582,7 +5582,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCEA1_1
 3
@@ -5596,7 +5596,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.247000
+0.247
 Numeric
 HCEA1_2
 3
@@ -5610,7 +5610,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.904000
+0.904
 Numeric
 HCEA1_3
 3
@@ -5624,7 +5624,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.465000
+0.465
 Numeric
 HCEA1_4
 3
@@ -5638,7 +5638,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCEA2_1
 3
@@ -5652,7 +5652,7 @@ Empirical Trough SCA HCE
 1
 1
 1
--0.001460
+-0.00146
 Numeric
 HCEA2_2
 3
@@ -5694,7 +5694,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCEA3_1
 3
@@ -5708,7 +5708,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000006
+5.65e-06
 Numeric
 HCEA3_2
 3
@@ -5722,7 +5722,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000011
+1.13e-05
 Numeric
 HCEA3_3
 3
@@ -5736,7 +5736,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000019
+1.85e-05
 Numeric
 HCEA3_4
 3
@@ -5750,7 +5750,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCEA4_1
 3
@@ -5764,7 +5764,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+7.62e-08
 Numeric
 HCEA4_2
 3
@@ -5778,7 +5778,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+1.73e-07
 Numeric
 HCEA4_3
 3
@@ -5792,7 +5792,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000001
+6.89e-07
 Numeric
 HCEA4_4
 3
@@ -5806,7 +5806,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCEA5_1
 3
@@ -5820,7 +5820,7 @@ Empirical Trough SCA HCE
 1
 1
 1
--1.700000
+-1.7
 Numeric
 HCEA5_2
 3
@@ -5834,7 +5834,7 @@ Empirical Trough SCA HCE
 1
 1
 1
--43.200001
+-43.2
 Numeric
 HCEA5_3
 3
@@ -5848,7 +5848,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-24.700001
+24.7
 Numeric
 HCEA5_4
 3
@@ -5862,7 +5862,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCEA6_1
 3
@@ -5876,7 +5876,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.012500
+0.0125
 Numeric
 HCEA6_2
 3
@@ -5890,7 +5890,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.524000
+0.524
 Numeric
 HCEA6_3
 3
@@ -5904,7 +5904,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-3.370000
+3.37
 Numeric
 HCEA6_4
 3
@@ -5918,7 +5918,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCEBelShad
 3
@@ -5932,7 +5932,7 @@ HCEBelShad
 2
 1
 1
-0.000000
+0
 Default
 HCEBelShad_1
 3
@@ -5946,7 +5946,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.963000
+0.963
 Numeric
 HCEBelShad_2
 3
@@ -5960,7 +5960,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.963000
+0.963
 Numeric
 HCEBelShad_3
 3
@@ -5974,7 +5974,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.963000
+0.963
 Numeric
 HCEBelShad_4
 3
@@ -5988,7 +5988,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCEEnvTrans
 3
@@ -6002,7 +6002,7 @@ HCEEnvTrans
 2
 1
 1
-0.000000
+0
 Default
 HCEEnvTrans_1
 3
@@ -6016,7 +6016,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.963000
+0.963
 Numeric
 HCEEnvTrans_2
 3
@@ -6030,7 +6030,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.963000
+0.963
 Numeric
 HCEEnvTrans_3
 3
@@ -6044,7 +6044,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-1.000000
+1
 Numeric
 HCEEnvTrans_4
 3
@@ -6058,7 +6058,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCEFrac
 3
@@ -6072,7 +6072,7 @@ HCEFrac
 2
 1
 4
-0.000000 0.000000 0.000000 0.000000 
+0 0 0 0 
 
 Default
 HCEFrac_1
@@ -6087,7 +6087,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.985000
+0.985
 Numeric
 HCEFrac_2
 3
@@ -6101,7 +6101,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.010000
+0.01
 Numeric
 HCEFrac_3
 3
@@ -6115,7 +6115,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.005000
+0.005
 Numeric
 HCEFrac_4
 3
@@ -6129,7 +6129,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCE_A0
 3
@@ -6143,7 +6143,7 @@ HCE_A0
 2
 1
 1
-0.000000
+0
 Default
 HCE_A1
 3
@@ -6157,7 +6157,7 @@ HCE_A1
 2
 1
 1
-0.000000
+0
 Default
 HCE_A2
 3
@@ -6171,7 +6171,7 @@ HCE_A2
 2
 1
 1
-0.000000
+0
 Default
 HCE_A3
 3
@@ -6185,7 +6185,7 @@ HCE_A3
 2
 1
 1
-0.000000
+0
 Default
 HCE_A4
 3
@@ -6199,7 +6199,7 @@ HCE_A4
 2
 1
 1
-0.000000
+0
 Default
 HCE_A5
 3
@@ -6213,7 +6213,7 @@ HCE_A5
 2
 1
 1
-0.000000
+0
 Default
 HCE_A6
 3
@@ -6227,7 +6227,7 @@ HCE_A6
 2
 1
 1
-0.000000
+0
 Default
 HCEabs
 3
@@ -6241,7 +6241,7 @@ HCEabs
 2
 1
 1
-0.000000
+0
 Default
 HCEabs_1
 3
@@ -6255,7 +6255,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.960000
+0.96
 Numeric
 HCEabs_2
 3
@@ -6269,7 +6269,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.960000
+0.96
 Numeric
 HCEabs_3
 3
@@ -6283,7 +6283,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.800000
+0.8
 Numeric
 HCEabs_4
 3
@@ -6297,7 +6297,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCEmisc
 3
@@ -6311,7 +6311,7 @@ HCEmisc
 2
 1
 1
-0.000000
+0
 Default
 HCEmisc_1
 3
@@ -6325,7 +6325,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-1.000000
+1
 Numeric
 HCEmisc_2
 3
@@ -6339,7 +6339,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-1.000000
+1
 Numeric
 HCEmisc_3
 3
@@ -6353,7 +6353,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-1.000000
+1
 Numeric
 HCEmisc_4
 3
@@ -6367,7 +6367,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 HCEtype
 3
@@ -6381,7 +6381,7 @@ HCEtype
 2
 1
 4
-1.000000 1.000000 1.000000 1.000000 
+1 1 1 1 
 
 Default
 NumHCETypes
@@ -6396,7 +6396,7 @@ NumHCETypes
 1
 1
 1
-4.000000
+4
 Default
 PerfFac
 3
@@ -6410,7 +6410,7 @@ PerfFac
 2
 1
 1
-0.000000
+0
 Default
 PerfFac_1
 3
@@ -6424,7 +6424,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-1.000000
+1
 Numeric
 PerfFac_2
 3
@@ -6438,7 +6438,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-1.000000
+1
 Numeric
 PerfFac_3
 3
@@ -6452,7 +6452,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-1.000000
+1
 Numeric
 PerfFac_4
 3
@@ -6466,7 +6466,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 calc_hce_col_factor
 3
@@ -6480,7 +6480,7 @@ calc_hce_col_factor
 1
 1
 1
-0.000000
+0
 Default
 hce_library
 3
@@ -6508,7 +6508,7 @@ lib_HCEA0
 1
 1
 1
-0.000000
+0
 Default
 lib_HCEA1
 3
@@ -6522,7 +6522,7 @@ lib_HCEA1
 1
 1
 1
-0.000000
+0
 Default
 lib_HCEA2
 3
@@ -6536,7 +6536,7 @@ lib_HCEA2
 1
 1
 1
-0.000000
+0
 Default
 lib_HCEA3
 3
@@ -6550,7 +6550,7 @@ lib_HCEA3
 1
 1
 1
-0.000000
+0
 Default
 lib_HCEA4
 3
@@ -6564,7 +6564,7 @@ lib_HCEA4
 1
 1
 1
-0.000000
+0
 Default
 lib_HCEA5
 3
@@ -6578,7 +6578,7 @@ lib_HCEA5
 1
 1
 1
-0.000000
+0
 Default
 lib_HCEA6
 3
@@ -6592,7 +6592,7 @@ lib_HCEA6
 1
 1
 1
-0.000000
+0
 Default
 lib_HCEBelShad
 3
@@ -6606,7 +6606,7 @@ lib_HCEBelShad
 1
 1
 1
-0.000000
+0
 Default
 lib_HCEEnvTrans
 3
@@ -6620,7 +6620,7 @@ lib_HCEEnvTrans
 1
 1
 1
-0.000000
+0
 Default
 lib_HCEabs
 3
@@ -6634,7 +6634,7 @@ lib_HCEabs
 1
 1
 1
-0.000000
+0
 Default
 lib_HCEmisc
 3
@@ -6648,7 +6648,7 @@ lib_HCEmisc
 1
 1
 1
-0.000000
+0
 Default
 lib_PerfFac
 3
@@ -6662,7 +6662,7 @@ lib_PerfFac
 1
 1
 1
-0.000000
+0
 Default
 lib_hce_broken_glass
 3
@@ -6676,7 +6676,7 @@ lib_hce_broken_glass
 1
 1
 1
-0.000000
+0
 Default
 lib_hce_condition
 3
@@ -6716,7 +6716,7 @@ ui_HCEA0
 1
 1
 1
-0.000000
+0
 Default
 ui_HCEA1
 3
@@ -6730,7 +6730,7 @@ ui_HCEA1
 1
 1
 1
-0.000000
+0
 Default
 ui_HCEA2
 3
@@ -6744,7 +6744,7 @@ ui_HCEA2
 1
 1
 1
-0.000000
+0
 Default
 ui_HCEA3
 3
@@ -6758,7 +6758,7 @@ ui_HCEA3
 1
 1
 1
-0.000000
+0
 Default
 ui_HCEA4
 3
@@ -6772,7 +6772,7 @@ ui_HCEA4
 1
 1
 1
-0.000000
+0
 Default
 ui_HCEA5
 3
@@ -6786,7 +6786,7 @@ ui_HCEA5
 1
 1
 1
-0.000000
+0
 Default
 ui_HCEA6
 3
@@ -6800,7 +6800,7 @@ ui_HCEA6
 1
 1
 1
-0.000000
+0
 Default
 ui_HCEBelShad
 3
@@ -6814,7 +6814,7 @@ ui_HCEBelShad
 1
 1
 1
-0.000000
+0
 Default
 ui_HCEEnvTrans
 3
@@ -6828,7 +6828,7 @@ ui_HCEEnvTrans
 1
 1
 1
-0.000000
+0
 Default
 ui_HCEFrac
 3
@@ -6842,7 +6842,7 @@ ui_HCEFrac
 1
 1
 1
-0.000000
+0
 Default
 ui_HCEabs
 3
@@ -6856,7 +6856,7 @@ ui_HCEabs
 1
 1
 1
-0.000000
+0
 Default
 ui_HCEmisc
 3
@@ -6870,7 +6870,7 @@ ui_HCEmisc
 1
 1
 1
-0.000000
+0
 Default
 ui_PerfFac
 3
@@ -6884,7 +6884,7 @@ ui_PerfFac
 1
 1
 1
-0.000000
+0
 Default
 ui_hce_HCEdust
 3
@@ -6898,7 +6898,7 @@ ui_hce_HCEdust
 1
 1
 1
-0.000000
+0
 Default
 ui_hce_broken_glass
 3
@@ -6912,7 +6912,7 @@ ui_hce_broken_glass
 1
 1
 1
-1.000000
+1
 Default
 ui_hce_broken_glass_1
 3
@@ -6926,7 +6926,7 @@ Trough SCA HCE
 1
 1
 1
-0.000000
+0
 CheckBox
 ui_hce_broken_glass_2
 3
@@ -6940,7 +6940,7 @@ Trough SCA HCE
 1
 1
 1
-0.000000
+0
 CheckBox
 ui_hce_broken_glass_3
 3
@@ -6954,7 +6954,7 @@ Trough SCA HCE
 1
 1
 1
-1.000000
+1
 CheckBox
 ui_hce_broken_glass_4
 3
@@ -6968,7 +6968,7 @@ Trough SCA HCE
 1
 1
 1
-0.000000
+0
 CheckBox
 ui_hce_condition
 3
@@ -7047,7 +7047,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 ui_hce_heat_losses_2
 3
@@ -7061,7 +7061,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 ui_hce_heat_losses_3
 3
@@ -7075,7 +7075,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 ui_hce_heat_losses_4
 3
@@ -7089,7 +7089,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 ui_hce_hl_term_1
 3
@@ -7103,7 +7103,7 @@ ui_hce_hl_term_1
 1
 1
 1
-0.000000
+0
 Default
 ui_hce_hl_term_2
 3
@@ -7117,7 +7117,7 @@ ui_hce_hl_term_2
 1
 1
 1
-0.000000
+0
 Default
 ui_hce_hl_term_3
 3
@@ -7131,7 +7131,7 @@ ui_hce_hl_term_3
 1
 1
 1
-0.000000
+0
 Default
 ui_hce_hl_term_4
 3
@@ -7145,7 +7145,7 @@ ui_hce_hl_term_4
 1
 1
 1
-0.000000
+0
 Default
 ui_hce_name
 3
@@ -7224,7 +7224,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 ui_hce_opt_eff_2
 3
@@ -7238,7 +7238,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 ui_hce_opt_eff_3
 3
@@ -7252,7 +7252,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 ui_hce_opt_eff_4
 3
@@ -7266,7 +7266,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 ui_hce_opt_eff_weighted
 3
@@ -7280,7 +7280,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 ui_hce_thermloss_weighted_m
 3
@@ -7294,7 +7294,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 ui_hce_thermloss_weighted_m2
 3
@@ -7308,7 +7308,7 @@ Empirical Trough SCA HCE
 1
 1
 1
-0.000000
+0
 Numeric
 ui_lib_hce_heat_loss_factor_1
 3
@@ -7322,7 +7322,7 @@ ui_lib_hce_heat_loss_factor_1
 1
 1
 1
-0.000000
+0
 Default
 ui_lib_hce_heat_loss_factor_2
 3
@@ -7336,7 +7336,7 @@ ui_lib_hce_heat_loss_factor_2
 1
 1
 1
-0.000000
+0
 Default
 ui_lib_hce_heat_loss_factor_3
 3
@@ -7350,7 +7350,7 @@ ui_lib_hce_heat_loss_factor_3
 1
 1
 1
-0.000000
+0
 Default
 ui_lib_hce_heat_loss_factor_4
 3
@@ -7364,7 +7364,7 @@ ui_lib_hce_heat_loss_factor_4
 1
 1
 1
-0.000000
+0
 Default
 
 6340

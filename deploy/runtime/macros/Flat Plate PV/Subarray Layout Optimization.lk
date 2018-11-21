@@ -73,6 +73,49 @@ single_subarray = false;
 if(subarray_x != 'All Active Subarrays') single_subarray = true;
 
 
+// format numbers comma thousands indicator, 2 decimal places
+// note: will display integers with 2 decimals, e.g., display 3 as 3.00
+function num_to_str( x , d )
+{
+	// only format x if it is a number
+	if ( typeof(x) == 'number' )
+	{
+		
+		if( ( d == 0) && (mod( round(x) , 10) == 0) )	
+			str = round(x);
+		else 
+			str = sprintf('%.'+to_string(d)+',',x);			// This step converts a number (for d = 0) like 409.857 to 41 instead of 410. This if-else condition is a workaround that bug.
+
+		arr = split(str,'.');
+		if ( #arr > 1 )
+			num_decs = strlen(to_string(arr[1]));
+		else
+			num_decs = 0;
+		// if number has one or more decimal places less than the desired number	
+		if ( #arr > 1 && num_decs < d)
+		{
+			for (i=0; i<d-num_decs; i++)
+				str += '0';
+		}
+		// if number has no decimal places
+		elseif ( #arr == 1 && d > 0 )
+		{
+			str += '.';
+			for (i=0; i<d; i++)
+				str += '0';
+		}		
+	}
+	// if x is a string, return it
+	elseif ( typeof(x) == 'string' )
+		str = x;
+	// if x is not a number or string, convert it to a string with no formatting	
+	else	
+		str = to_string( x );
+	return str;
+}
+
+
+
 //Keeping tab of all subarrays that the user enabled in the active case; and a reminder to re-enable subarray (if the subarray was enabled before the macro) after simulation is complete.
 
 timer = 1;					//variable used in calculation of estimated time macro will take to finish
@@ -97,13 +140,27 @@ if(get('subarray4_enable') == 1) {
 system_inverter_count = 0;	//Keeps count of the number of inverters the system needs (only used when user chooses to optimize all active subarrays).
 continue_macro = true;		
 time_simulation = 0;		
-if(subarray_x != 'All Active Subarrays') outln("\n\tOptimizing Array Layout for given ranges of GCR and Tilt over area of " + acreage + " acres.");
+if(subarray_x != 'All Active Subarrays') outln("\n\tOptimizing Array Layout for given ranges of GCR and Tilt over area of " + num_to_str(acreage, 3) + " acres.");
 else {
 	//Calculate time taken for 1 simulation. 
 	start_timer();
 	simulate();
 	time_simulation = (elapsed_time()/1000) * ((max_gcr - min_gcr)/gcr_steps) * ((max_tilt - min_tilt) / tilt_steps) * timer * (1/60);		//Formula to estimate total time macro will take to complete if user is optimizing all active subarrays.
-	continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take " + time_simulation + " minute(s) to complete. Proceed?");
+	time_simulation_min = floor(time_simulation);
+	time_simulation_sec = floor((time_simulation - time_simulation_min) * 60);
+	if ( time_simulation_min == 0 && (time_simulation_sec / 10) < 1)
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 00:0" + time_simulation_sec + " seconds to complete. Proceed?");
+	elseif ( time_simulation_min == 0 && (time_simulation_sec / 10) > 1) 
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 00:" + time_simulation_sec + " seconds to complete. Proceed?");
+	elseif ( time_simulation_min < 10 && (time_simulation_sec / 10) < 1)
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 0" + time_simulation_min + ":0" + time_simulation_sec + " minute(s) to complete. Proceed?");
+	elseif ( time_simulation_min < 10 && (time_simulation_sec / 10) > 1)
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 0" + time_simulation_min + ":" + time_simulation_sec + " minute(s) to complete. Proceed?");
+	elseif ( time_simulation_min > 10 && (time_simulation_sec / 10) < 1)
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take " + time_simulation_min + ":0" + time_simulation_sec + " minute(s) to complete. Proceed?");
+	elseif ( time_simulation_min > 10 && (time_simulation_sec / 10) > 1)
+		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take " + time_simulation_min + ":" + time_simulation_sec + " minute(s) to complete. Proceed?");
+	
 	if (continue_macro == false) {
 		outln("\n	Consider reducing iterations of GCR and Tilt angle, or optimize over a single subarray instead for a quicker simulation.");
 		exit;
@@ -114,10 +171,12 @@ else {
 ////////////////////////**** DETERMINING WHICH SUBARRAY IS TO BE OPTIMIZED AND STORING EXISTING USER INPUT VALUES ****////////////////////////////
 
 subarray_to_optimize = 0;
+max_subarrays = 4;			//Change this number if SAM changes max number of subarrays allowed in a simulation
+
 
 //This while loop goes through every enabled subarray to find the optimum.
 
-while (subarray_to_optimize < 4) {			//since there can only be a maximum of 4 subarrays in SAM
+while (subarray_to_optimize < max_subarrays) {			//since there can only be a maximum of 4 subarrays in SAM
 	
 		if( single_subarray != true && timer == 1) single_subarray = true;
 		
@@ -412,7 +471,7 @@ while (subarray_to_optimize < 4) {			//since there can only be a maximum of 4 su
 			if((max_gcr - min_gcr) != 0) {		//Skip showing progress if user is running simulation over one GCR value only
 			progress = to_int((progress_gcr/(max_gcr - min_gcr)) * 100);
 			progress_gcr += gcr_steps ;
-			outln("\n\t[" + progress + "% complete] Currently simulating over GCR of: " + gcr);
+			outln("\n\t[" + progress + "% complete] Currently simulating over GCR of: " + num_to_str(gcr , 3));
 			}
 			
 			module_power = module_info() / 1000;		//divided by 1000 to get result in kW
@@ -682,20 +741,20 @@ else {
 
 //Max AEP Results:
 str += '<br><h5>Results for Max Annual Energy Production (AEP): </h5>';
-str += '<br>GCR: ' + optimum_gcr ;
+str += '<br>GCR: ' + num_to_str(optimum_gcr , 3) ;
 str += '<br>Tilt Angle (in Degrees): ' + optimum_tilt ; 
 str += '<br>Number of modules along bottom: ' + aep_nmodx + ' modules'; 
 str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
-str += '<br>Number of rows: ' + aep_nrows + ' rows'; 
-str += '<br>Row spacing estimate: ' + aep_row_spacing + ' m';
+str += '<br>Number of rows: ' + num_to_str(aep_nrows , 1) + ' rows'; 
+str += '<br>Row spacing estimate: ' + num_to_str( aep_row_spacing, 2 ) + ' m';
 str += '<br>Total number of modules: ' + aep_total_modules + ' modules\n';
 str += '<br>Modules per string in subarray (set by the user in the active case): ' + modules_per_string_aep + ' modules';
 str += '<br>Strings in parallel in subarray: ' + string_in_parallel_aep + ' strings';
 str += '<br>Number of inverters: ' + inverter_aep;
-str += '<br><br>AEP: '+ max_energy + ' kWh';
-str += '<br>System Size: '+ max_system_size + ' kW';
-str += '<br>Net Present Value (NPV): $ '+ energy_npv;
-str += '<br>Energy Yield: '+ max_aep_yield + ' kWh/kW';
+str += '<br><br>AEP: '+ num_to_str(max_energy , 0) + ' kWh';
+str += '<br>System Size: '+ num_to_str(max_system_size , 0) + ' kW';
+str += '<br>Net Present Value (NPV): $ '+ num_to_str(energy_npv , 0);
+str += '<br>Energy Yield: '+ num_to_str(max_aep_yield , 1) + ' kWh/kW';
 
 
 
@@ -716,7 +775,7 @@ i = 0;
 for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
 	j = -1;
 	str += '<tr>';
-	str += '<th>GCR: ' + gcr + '</th>';
+	str += '<th>GCR: ' + num_to_str( gcr , 3 ) + '</th>';
 	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
 		j = j + 1;
 		if (annual_energy[i][j] == max_energy) str += '<td bgcolor = #00ff00>';
@@ -741,20 +800,20 @@ str += '</table>';
 
 //Max NPV Results:
 str += '<br><h5>Results for Max NPV: </h5>';
-str += '<br>GCR: ' + gcr_npv;
+str += '<br>GCR: ' + num_to_str(gcr_npv,3);
 str +=  '<br>Tilt Angle (in Degrees): ' +  tilt_npv;
 str += '<br>Number of modules along bottom: ' + npv_nmodx +' modules'; 
 str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
-str += '<br>Number of rows: ' + npv_nrows +' rows '; 
-str += '<br>Row spacing estimate: ' + npv_row_spacing + 'm';
+str += '<br>Number of rows: ' + num_to_str(npv_nrows,1) +' rows '; 
+str += '<br>Row spacing estimate: ' + num_to_str(npv_row_spacing , 2) + 'm';
 str += '<br>Total number of modules: ' + npv_total_modules + ' modules';
 str += '<br>Modules per string in subarray (set by the user in the active case): ' + modules_per_string_npv + ' modules';
 str += '<br>Strings in parallel in subarray: ' + string_in_parallel_npv + ' strings';
 str += '<br>Number of inverters: ' + inverter_npv;
-str += '<br><br>AEP: '+ aep_npv + ' kWh'; 
-str += '<br>System Size : '+ system_size_npv + ' kW';
-str += '<br>NPV: $ ' + max_npv;
-str += '<br>Energy Yield: '+ max_npv_yield + ' kWh/kW';
+str += '<br><br>AEP: '+ num_to_str(aep_npv,0) + ' kWh'; 
+str += '<br>System Size : '+ num_to_str(system_size_npv,0) + ' kW';
+str += '<br>NPV: $ ' + num_to_str(max_npv,0);
+str += '<br>Energy Yield: '+ num_to_str(max_npv_yield,1) + ' kWh/kW';
 
 
 
@@ -773,7 +832,7 @@ i = 0;
 for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
 	j = -1;
 	str += '<tr>';
-	str += '<th>GCR: ' + gcr + '</th>';
+	str += '<th>GCR: ' + num_to_str( gcr , 3) + '</th>';
 	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
 		j = j + 1;
 		if (npv[i][j] == max_npv) str += '<td bgcolor = #00ff00>';
@@ -797,20 +856,20 @@ str += '</table>';
 
 //Max Energy Yield Results:
 str += '<br><h5>Results for Max Energy Yield: </h5>';
-str += '<br>GCR: '+ gcr_yield;
+str += '<br>GCR: '+ num_to_str(gcr_yield , 3);
 str += '<br>Tilt Angle (in Degrees): ' + tilt_yield;
 str += '<br>Number of modules along bottom: ' + yield_nmodx +' modules';
 str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
-str += '<br>Number of rows: ' + yield_nrows + ' rows'; 
-str += '<br>Row spacing estimate: ' + yield_row_spacing + ' m';
+str += '<br>Number of rows: ' + num_to_str(yield_nrows,1) + ' rows'; 
+str += '<br>Row spacing estimate: ' + num_to_str(yield_row_spacing,2) + ' m';
 str += '<br>Total number of modules: ' + yield_total_modules + ' modules';
 str += '<br>Modules per string in subarray (set by the user in the active case): ' + modules_per_string_yield + ' modules';
 str += '<br>Strings in parallel in subarray: ' + string_in_parallel_yield + ' strings';
 str += '<br>Number of inverters: ' + inverter_yield;
-str += '<br><br>AEP: '+ aep_yield + ' kWh ' ; 
+str += '<br><br>AEP: '+ num_to_str(aep_yield,0) + ' kWh ' ; 
 str += '<br>System Size: '+ system_size_yield + ' kW';
-str += '<br>NPV: $ ' + max_yield_npv ; 
-str += '<br>Energy Yield: '+ max_yield + ' kWh/kW';
+str += '<br>NPV: $ ' + num_to_str(max_yield_npv,0) ; 
+str += '<br>Energy Yield: '+ num_to_str(max_yield,1) + ' kWh/kW';
 
 
 //Table for Energy Yield Results:
@@ -828,7 +887,7 @@ i = 0;
 for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
 	j = -1;
 	str += '<tr>';
-	str += '<th>GCR: ' + gcr + '</th>';
+	str += '<th>GCR: ' + num_to_str( gcr , 3) + '</th>';
 	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
 		j = j + 1;
 		if (yield[i][j] == max_yield) str += '<td bgcolor = #00ff00>';
@@ -852,6 +911,7 @@ str += '</table>';
 
 
 
+
 ///////////////////////////////////**** P L O T T I N G ****///////////////////////////////////
 
 clr = ['#FF0000',	'#00FFFF',	'#FF00FF',	'#0000A0',	'#9ACD32',	'#800080',	'#FFFF00',	'#00FF00',	'#0000FF',	'#C0C0C0',	'#808080',	
@@ -870,7 +930,7 @@ for ( count = 0; count <= (#annual_energy - 1) ; count = count + 1) {
 	plot(x, annual_energy[count],{series = type[count], color = clr[count], size = 3});
 	axis('x1', {'label' = "Tilt Angle "});
 	axis('y1', {'label' = "Annual Energy Production  (kWh)"});
-	plotopt({'legendpos'='right', 'coarse'=true, 'fine'=true, 'title' = "Annual Energy Production at Various GCR [" + subarray_x + "]"});
+	plotopt({'legendpos'='right', 'export_graph' = true, 'coarse'=true, 'fine'=true, 'title' = "Annual Energy Production at Various GCR [" + subarray_x + "]"});
 }
 
 
@@ -904,3 +964,5 @@ if(single_subarray == true) break;			//If user is optimizing only a single subar
 }
 
 ///////////////////////////////////**** End of Script ****///////////////////////////////////
+
+outln('\n//////***** Simulation Complete *****//////');

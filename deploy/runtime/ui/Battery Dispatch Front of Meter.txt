@@ -1,6 +1,6 @@
 Battery Dispatch Front of Meter
-1002
-372
+1106
+379
 26
 GroupBox
 
@@ -12,16 +12,16 @@ Name
 AutoDCBox
 X
 3
-345
+354
 Y
 3
 18
 Width
 3
-643
+724
 Height
 3
-250
+262
 Caption
 5
 26
@@ -84,16 +84,16 @@ Name
 InputDispatchBox
 X
 3
-345
+414
 Y
 3
-270
+285
 Width
 3
 643
 Height
 3
-88
+73
 Caption
 5
 22
@@ -117,7 +117,7 @@ Y
 3
 Width
 3
-985
+1075
 Height
 3
 364
@@ -138,13 +138,13 @@ Name
 batt_auto_fom_help
 X
 3
-345
+378
 Y
 3
 36
 Width
 3
-624
+687
 Height
 3
 48
@@ -219,7 +219,7 @@ Name
 batt_custom_dispatch
 X
 3
-486
+591
 Y
 3
 327
@@ -253,10 +253,10 @@ Name
 batt_cycle_cost
 X
 3
-759
+828
 Y
 3
-237
+246
 Width
 3
 90
@@ -312,10 +312,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-759
+828
 Y
 3
-210
+219
 Width
 3
 219
@@ -343,16 +343,16 @@ Name
 batt_cycle_cost_description
 X
 3
-606
+672
 Y
 3
 162
 Width
 3
-372
+393
 Height
 3
-42
+54
 Caption
 5
 139
@@ -460,7 +460,7 @@ Y
 300
 Width
 3
-279
+318
 Height
 3
 24
@@ -490,7 +490,7 @@ Y
 249
 Width
 3
-183
+234
 Height
 3
 24
@@ -523,7 +523,7 @@ Width
 294
 Height
 3
-108
+111
 Selection
 3
 4
@@ -554,16 +554,16 @@ Name
 batt_dispatch_label
 X
 3
-357
+435
 Y
 3
-288
+300
 Width
 3
-279
+522
 Height
 3
-33
+27
 Caption
 5
 75
@@ -635,10 +635,10 @@ Name
 batt_dispatch_update_frequency_hours
 X
 3
-519
+567
 Y
 3
-162
+165
 Width
 3
 48
@@ -694,10 +694,10 @@ Name
 batt_look_ahead_hours
 X
 3
-519
+567
 Y
 3
-189
+192
 Width
 3
 45
@@ -753,7 +753,7 @@ Name
 batt_select_weather_file_forecast
 X
 3
-357
+423
 Y
 3
 111
@@ -780,7 +780,7 @@ Name
 batt_user_specified_weather_file
 X
 3
-453
+519
 Y
 3
 111
@@ -821,10 +821,10 @@ Name
 batt_weather_label
 X
 3
-357
+423
 Y
 3
-84
+87
 Width
 3
 627
@@ -978,7 +978,7 @@ Battery
 1
 1
 1
-100.000000
+100
 Numeric
 batt_custom_dispatch
 3
@@ -992,7 +992,7 @@ Battery
 2
 1
 1
-0.000000
+0
 Default
 batt_cycle_cost
 3
@@ -1006,7 +1006,7 @@ Battery
 1
 1
 1
-0.100000
+0.1
 Numeric
 batt_cycle_cost_choice
 3
@@ -1020,7 +1020,7 @@ Battery
 1
 1
 1
-0.000000
+0
 Choice
 batt_dispatch_auto_can_charge
 3
@@ -1034,7 +1034,7 @@ Battery
 1
 1
 1
-1.000000
+1
 CheckBox
 batt_dispatch_auto_can_clipcharge
 3
@@ -1048,7 +1048,7 @@ Battery
 1
 1
 1
-1.000000
+1
 CheckBox
 batt_dispatch_auto_can_gridcharge
 3
@@ -1062,7 +1062,7 @@ Battery
 1
 1
 1
-0.000000
+0
 CheckBox
 batt_dispatch_choice
 3
@@ -1077,7 +1077,7 @@ Automated dispatch: Perfect look ahead|Automated dispatch: 1-day look behind|Aut
 1
 1
 1
-0.000000
+0
 RadioChoice
 batt_dispatch_update_frequency_hours
 3
@@ -1091,7 +1091,7 @@ Battery
 1
 1
 1
-24.000000
+24
 Numeric
 batt_look_ahead_hours
 3
@@ -1105,7 +1105,7 @@ Battery
 1
 1
 1
-18.000000
+18
 Numeric
 batt_pv_clipping_forecast
 3
@@ -1119,7 +1119,7 @@ Battery
 2
 1
 1
-0.000000
+0
 Default
 batt_pv_dc_forecast
 3
@@ -1133,7 +1133,7 @@ Battery
 2
 1
 1
-0.000000
+0
 Default
 batt_user_specified_weather_file
 3
@@ -1152,14 +1152,14 @@ dispatch_tod_factors
 2
 PPA TOD factors
  
- 
+Battery
 0
 8
 1
 2
 1
 1
-0.000000
+0
 Default
 
 502
@@ -1183,7 +1183,7 @@ equations{'dispatch_tod_factors'} = define()
 };
 
 
-4229
+4121
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
 	// fom = front of meter
@@ -1277,18 +1277,10 @@ function toggle_forecast()
 	}
 
 }
-
 function toggle_custom_dispatch()
 {
-	mode = ${batt_dispatch_choice};
-	en_batt = ${en_batt};
-	
-	enable('batt_custom_dispatch', false);
-	if (en_batt && mode == 3){
-		enable('batt_custom_dispatch', true);
-	}
+	enable('batt_custom_dispatch', ${batt_dispatch_choice} == 3);
 }
-
 function toggle_dispatch_fom()
 {
 	// call the common Battery Manual toggle dispatch

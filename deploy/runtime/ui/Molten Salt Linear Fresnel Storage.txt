@@ -51,7 +51,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -110,7 +110,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -208,7 +208,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -267,7 +267,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -357,7 +357,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -416,7 +416,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -475,7 +475,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -534,7 +534,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -593,7 +593,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -652,7 +652,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -711,7 +711,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -770,7 +770,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -829,7 +829,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -888,7 +888,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -947,7 +947,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1029,7 +1029,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1088,7 +1088,7 @@ Height
 21
 Value
 1
-1.000000
+1
 Mode
 3
 0
@@ -1147,7 +1147,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1206,7 +1206,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1265,7 +1265,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1324,7 +1324,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1383,7 +1383,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1434,7 +1434,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 T_field_in_des
 3
@@ -1448,7 +1448,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 T_tank_cold_ini
 3
@@ -1462,7 +1462,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 T_tank_hot_ini
 3
@@ -1476,7 +1476,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 T_tank_hot_inlet_min
 3
@@ -1490,7 +1490,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 V_tank_hot_ini
 3
@@ -1504,7 +1504,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 cold_tank_Thtr
 3
@@ -1518,7 +1518,7 @@ MSLF Thermal Storage
 1
 1
 1
-250.000000
+250
 Default
 csp.mslf.control.ffrac1
 3
@@ -1532,7 +1532,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.ffrac2
 3
@@ -1546,7 +1546,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.ffrac3
 3
@@ -1560,7 +1560,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.ffrac4
 3
@@ -1574,7 +1574,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.ffrac5
 3
@@ -1588,7 +1588,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.ffrac6
 3
@@ -1602,7 +1602,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.ffrac7
 3
@@ -1616,7 +1616,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.ffrac8
 3
@@ -1630,7 +1630,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.ffrac9
 3
@@ -1644,7 +1644,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.store_fluid
 3
@@ -1659,7 +1659,7 @@ Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm
 1
 1
 1
-3.000000
+3
 Default
 csp.mslf.control.tes_cp
 3
@@ -1673,7 +1673,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.control.tes_dens
 3
@@ -1687,7 +1687,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.enet.tes_fp_mode
 3
@@ -1702,7 +1702,7 @@ Electric heating|Fossil heating
 1
 1
 1
-1.000000
+1
 Default
 csp.mslf.tes.estimated_heat_loss
 3
@@ -1716,7 +1716,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.tes.htf_max_opt_temp
 3
@@ -1730,7 +1730,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.tes.htf_min_opt_temp
 3
@@ -1744,7 +1744,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.mslf.tes.notify_text
 3
@@ -1771,7 +1771,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 dt_cold
 3
@@ -1785,7 +1785,7 @@ MSLF Thermal Storage
 1
 1
 1
-5.000000
+5
 Default
 dt_hot
 3
@@ -1799,7 +1799,7 @@ MSLF Thermal Storage
 1
 1
 1
-5.000000
+5
 Default
 eta_tes_htr
 3
@@ -1813,7 +1813,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.980000
+0.98
 Default
 fp_mode
 3
@@ -1827,7 +1827,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 h_tank
 3
@@ -1841,7 +1841,7 @@ MSLF Thermal Storage
 1
 1
 1
-20.000000
+20
 Default
 h_tank_min
 3
@@ -1855,7 +1855,7 @@ MSLF Thermal Storage
 1
 1
 1
-1.000000
+1
 Default
 has_hot_tank_bypass
 3
@@ -1869,7 +1869,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 hot_tank_Thtr
 3
@@ -1883,7 +1883,7 @@ MSLF Thermal Storage
 1
 1
 1
-450.000000
+450
 Default
 hx_derate
 3
@@ -1897,7 +1897,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 mslf_is_hx
 3
@@ -1911,7 +1911,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 q_max_aux
 3
@@ -1925,7 +1925,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 store_fl_props
 3
@@ -1939,7 +1939,7 @@ MSLF Thermal Storage
 3
 1
 9
-1.000000 7.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 
+1 7 0 0 0 0 0 0 0 
 
 Default
 store_fluid
@@ -1954,7 +1954,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 tank_max_heat
 3
@@ -1968,7 +1968,7 @@ MSLF Thermal Storage
 1
 1
 1
-25.000000
+25
 Default
 tank_pairs
 3
@@ -1982,7 +1982,7 @@ MSLF Thermal Storage
 1
 1
 1
-1.000000
+1
 Default
 tanks_in_parallel
 3
@@ -1996,7 +1996,7 @@ MSLF Parasitics
 1
 1
 1
-0.000000
+0
 Default
 tes_temp
 3
@@ -2010,7 +2010,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 tshours
 3
@@ -2024,7 +2024,7 @@ MSLF Thermal Storage
 1
 1
 1
-6.000000
+6
 Default
 u_tank
 3
@@ -2038,7 +2038,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.400000
+0.4
 Default
 vol_min
 3
@@ -2052,7 +2052,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 vol_tank
 3
@@ -2066,7 +2066,7 @@ MSLF Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 
 4136

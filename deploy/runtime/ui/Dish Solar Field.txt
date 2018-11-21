@@ -200,7 +200,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -259,7 +259,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -318,7 +318,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -377,7 +377,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -436,7 +436,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -495,7 +495,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -554,7 +554,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -613,7 +613,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -717,7 +717,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -776,7 +776,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -835,7 +835,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -894,7 +894,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -958,7 +958,7 @@ Dish Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.ncollectors
 3
@@ -972,7 +972,7 @@ Dish Solar Field
 1
 1
 1
-0.000000
+0
 Default
 csp.ds.total_capacity
 3
@@ -986,7 +986,7 @@ Dish Solar Field
 1
 1
 1
-0.000000
+0
 Default
 ew_dish_sep
 3
@@ -1000,7 +1000,7 @@ Dish Solar Field
 1
 1
 1
-15.000000
+15
 Default
 h_slot_gap
 3
@@ -1014,7 +1014,7 @@ Dish Solar Field
 1
 1
 1
-1.000000
+1
 Default
 n_ew
 3
@@ -1028,7 +1028,7 @@ Dish Solar Field
 1
 1
 1
-80.000000
+80
 Default
 n_ns
 3
@@ -1042,7 +1042,7 @@ Dish Solar Field
 1
 1
 1
-50.000000
+50
 Default
 ns_dish_sep
 3
@@ -1056,7 +1056,7 @@ Dish Solar Field
 1
 1
 1
-15.000000
+15
 Default
 slope_ew
 3
@@ -1070,7 +1070,7 @@ Dish Solar Field
 1
 1
 1
-0.000000
+0
 Default
 slope_ns
 3
@@ -1084,7 +1084,7 @@ Dish Solar Field
 1
 1
 1
-0.000000
+0
 Default
 system_capacity
 3
@@ -1098,7 +1098,7 @@ Dish Solar Field
 1
 1
 1
-0.000000
+0
 Default
 w_slot_gap
 3
@@ -1112,7 +1112,7 @@ Dish Solar Field
 1
 1
 1
-1.000000
+1
 Default
 wind_stow_speed
 3
@@ -1126,7 +1126,7 @@ Dish Solar Field
 1
 1
 1
-16.000000
+16
 Default
 
 385

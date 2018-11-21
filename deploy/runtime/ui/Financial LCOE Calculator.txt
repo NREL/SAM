@@ -63,7 +63,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -122,7 +122,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -220,7 +220,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -279,7 +279,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -338,7 +338,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -397,7 +397,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -456,7 +456,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -515,7 +515,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -574,7 +574,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -633,7 +633,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1083,7 +1083,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1142,7 +1142,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1201,7 +1201,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1297,7 +1297,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1393,7 +1393,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1496,7 +1496,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1555,7 +1555,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1614,7 +1614,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1673,7 +1673,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1732,7 +1732,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1791,7 +1791,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1850,7 +1850,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1901,7 +1901,7 @@ LCOE Calculator
 2
 1
 1
-0.000000
+0
 SchedNumeric
 c_construction_duration
 3
@@ -1915,7 +1915,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 c_construction_interest
 3
@@ -1929,7 +1929,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 c_debt_percent
 3
@@ -1943,7 +1943,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 c_depreciation_schedule
 3
@@ -1957,7 +1957,7 @@ LCOE Calculator
 2
 1
 6
-20.000000 32.000000 19.200001 11.520000 11.520000 5.760000 
+20 32 19.2 11.52 11.52 5.76 
 
 SchedNumeric
 c_equity_return
@@ -1972,7 +1972,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 c_inflation
 3
@@ -1986,7 +1986,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 c_lifetime
 3
@@ -2000,7 +2000,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 c_nominal_interest_rate
 3
@@ -2014,7 +2014,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 c_tax_rate
 3
@@ -2028,7 +2028,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 capital_cost
 3
@@ -2042,7 +2042,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 fixed_charge_rate
 3
@@ -2056,7 +2056,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 fixed_operating_cost
 3
@@ -2070,7 +2070,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_capital_cost_capacity
 3
@@ -2084,7 +2084,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_capital_cost_fixed
 3
@@ -2098,7 +2098,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_cfin
 3
@@ -2112,7 +2112,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_cost_input_option
 3
@@ -2127,7 +2127,7 @@ Enter costs in $|Enter costs in $/kW
 1
 1
 1
-0.000000
+0
 Default
 ui_crf
 3
@@ -2141,7 +2141,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_fcr_input_option
 3
@@ -2155,7 +2155,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_fixed_charge_rate
 3
@@ -2169,7 +2169,7 @@ LCOE Calculator
 1
 1
 1
-1.000000
+1
 Default
 ui_ireal
 3
@@ -2183,7 +2183,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_lbl_cff_msg
 3
@@ -2209,7 +2209,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_operating_cost_fixed
 3
@@ -2223,7 +2223,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_pfin
 3
@@ -2237,7 +2237,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_system_capacity
 3
@@ -2251,7 +2251,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_variable_operating_cost
 3
@@ -2265,7 +2265,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 ui_wacc
 3
@@ -2279,7 +2279,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 variable_operating_cost
 3
@@ -2293,7 +2293,7 @@ LCOE Calculator
 1
 1
 1
-0.000000
+0
 Default
 
 1770

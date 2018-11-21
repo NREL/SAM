@@ -51,7 +51,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -167,7 +167,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -226,7 +226,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -341,7 +341,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -400,7 +400,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -459,7 +459,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -518,7 +518,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -577,7 +577,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -636,7 +636,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -695,7 +695,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -754,7 +754,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -813,7 +813,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -872,7 +872,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -931,7 +931,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -990,7 +990,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1049,7 +1049,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1108,7 +1108,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1425,7 +1425,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1484,7 +1484,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1535,7 +1535,7 @@ PVWatts
 1
 1
 1
-0.000000
+0
 Numeric
 adjust
 3
@@ -1563,7 +1563,7 @@ Fixed open rack|Fixed roof mount|1 Axis Tracking|1 Axis Backtracking|2 Axis Trac
 1
 1
 1
-0.000000
+0
 Choice
 azimuth
 3
@@ -1577,7 +1577,7 @@ PVWatts
 1
 1
 1
-180.000000
+180
 Numeric
 dc_ac_ratio
 3
@@ -1591,12 +1591,12 @@ PVWatts
 1
 1
 1
-1.100000
+1.1
 Numeric
 en_user_spec_losses
 3
 1
- 
+Enable user specified losses
  
 PVWatts
 0
@@ -1605,7 +1605,7 @@ PVWatts
 1
 1
 1
-0.000000
+0
 CheckBox
 gcr
 3
@@ -1619,7 +1619,7 @@ PVWatts
 1
 1
 1
-0.400000
+0.4
 Numeric
 inv_eff
 3
@@ -1633,7 +1633,7 @@ PVWatts
 1
 1
 1
-96.000000
+96
 Numeric
 loss_age
 3
@@ -1647,7 +1647,7 @@ PVWatts
 1
 1
 1
-0.000000
+0
 Numeric
 loss_avail
 3
@@ -1661,7 +1661,7 @@ PVWatts
 1
 1
 1
-3.000000
+3
 Numeric
 loss_conn
 3
@@ -1675,7 +1675,7 @@ PVWatts
 1
 1
 1
-0.500000
+0.5
 Numeric
 loss_lid
 3
@@ -1689,7 +1689,7 @@ PVWatts
 1
 1
 1
-1.500000
+1.5
 Numeric
 loss_mismatch
 3
@@ -1703,7 +1703,7 @@ PVWatts
 1
 1
 1
-2.000000
+2
 Numeric
 loss_nameplate
 3
@@ -1717,7 +1717,7 @@ PVWatts
 1
 1
 1
-1.000000
+1
 Numeric
 loss_shading
 3
@@ -1731,7 +1731,7 @@ PVWatts
 1
 1
 1
-3.000000
+3
 Numeric
 loss_snow
 3
@@ -1745,7 +1745,7 @@ PVWatts
 1
 1
 1
-0.000000
+0
 Numeric
 loss_soiling
 3
@@ -1759,7 +1759,7 @@ PVWatts
 1
 1
 1
-2.000000
+2
 Numeric
 loss_wiring
 3
@@ -1773,7 +1773,7 @@ PVWatts
 1
 1
 1
-2.000000
+2
 Numeric
 losses
 3
@@ -1787,7 +1787,7 @@ PVWatts
 1
 1
 1
-14.000000
+14
 Numeric
 losses_user
 3
@@ -1801,7 +1801,7 @@ PVWatts
 1
 1
 1
-14.000000
+14
 Numeric
 module_type
 3
@@ -1816,7 +1816,7 @@ Standard|Premium|Thin film
 1
 1
 1
-0.000000
+0
 Choice
 shading
 3
@@ -1834,9 +1834,9 @@ ShadingFactors
 shading_3d_scene
 3
 6
+3D shading scene
  
- 
- 
+PVWatts
 0
 0
 1
@@ -1855,7 +1855,7 @@ PVWatts
 1
 1
 1
-4.000000
+4
 Numeric
 tilt
 3
@@ -1869,7 +1869,7 @@ PVWatts
 1
 1
 1
-42.820000
+42.82
 Numeric
 
 492

@@ -231,7 +231,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -290,7 +290,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -349,7 +349,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -408,7 +408,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -467,7 +467,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -526,7 +526,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -585,7 +585,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -644,7 +644,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -695,7 +695,7 @@ ISCC Parasitics
 2
 1
 1
-0.000000
+0
 Default
 bop_par
 3
@@ -709,7 +709,7 @@ ISCC Parasitics
 1
 1
 1
-0.025000
+0.025
 Default
 bop_par_0
 3
@@ -723,7 +723,7 @@ ISCC Parasitics
 1
 1
 1
-0.000000
+0
 Numeric
 bop_par_1
 3
@@ -737,7 +737,7 @@ ISCC Parasitics
 1
 1
 1
-0.483000
+0.483
 Default
 bop_par_2
 3
@@ -751,7 +751,7 @@ ISCC Parasitics
 1
 1
 1
-0.000000
+0
 Default
 bop_par_f
 3
@@ -765,7 +765,7 @@ ISCC Parasitics
 1
 1
 1
-1.000000
+1
 Default
 csp.pt.par.bop_c1
 3
@@ -779,7 +779,7 @@ ISCC Parasitics
 1
 1
 1
-0.571000
+0.571
 Default
 csp.pt.par.calc.bop
 3
@@ -793,7 +793,7 @@ ISCC Parasitics
 1
 1
 1
-0.000000
+0
 Default
 pb_fixed_par
 3
@@ -807,7 +807,7 @@ ISCC Parasitics
 1
 1
 1
-0.000000
+0
 Default
 pb_fixed_par_mwe
 3
@@ -821,7 +821,7 @@ MWe
 1
 1
 1
-0.000000
+0
 Default
 
 346

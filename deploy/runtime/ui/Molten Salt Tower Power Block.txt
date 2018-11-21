@@ -546,7 +546,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -605,7 +605,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -664,7 +664,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -723,7 +723,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -782,7 +782,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -841,7 +841,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -900,7 +900,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -959,7 +959,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1018,7 +1018,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1077,7 +1077,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1136,7 +1136,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1195,7 +1195,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1254,7 +1254,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1313,7 +1313,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1372,7 +1372,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1431,7 +1431,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1490,7 +1490,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1549,7 +1549,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1667,7 +1667,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1726,7 +1726,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1785,7 +1785,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1844,7 +1844,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1903,7 +1903,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1962,7 +1962,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2021,7 +2021,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2080,7 +2080,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2139,7 +2139,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2229,7 +2229,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2288,7 +2288,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2374,7 +2374,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2433,7 +2433,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2492,7 +2492,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2551,7 +2551,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2610,7 +2610,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2669,7 +2669,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -2800,7 +2800,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2859,7 +2859,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2947,7 +2947,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3006,7 +3006,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3065,7 +3065,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3124,7 +3124,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3220,7 +3220,7 @@ Tower Power Block
 1
 1
 1
-1.000000
+1
 Default
 F_wc
 3
@@ -3234,7 +3234,7 @@ Tower Power Block
 2
 1
 1
-0.000000
+0
 Default
 PB_COPY_P_ref
 3
@@ -3248,7 +3248,7 @@ MWe
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_T_htf_cold_des
 3
@@ -3262,7 +3262,7 @@ HTF Cold Temperature
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_T_htf_hot_des
 3
@@ -3276,7 +3276,7 @@ HTF Hot Temperature
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_design_eff
 3
@@ -3290,7 +3290,7 @@ Cycle Thermal Efficiency
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_gross_net_conversion_factor
 3
@@ -3304,7 +3304,7 @@ Estimated gross to net conversion factor
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_nameplate
 3
@@ -3318,7 +3318,7 @@ MWe
 1
 1
 1
-0.000000
+0
 Default
 PB_COPY_q_pb_design
 3
@@ -3332,7 +3332,7 @@ MWt
 1
 1
 1
-0.000000
+0
 Default
 P_boil
 3
@@ -3346,7 +3346,7 @@ Tower Power Block
 1
 1
 1
-100.000000
+100
 Default
 P_cond_min
 3
@@ -3360,7 +3360,7 @@ Tower Power Block
 1
 1
 1
-1.250000
+1.25
 Default
 P_cond_ratio
 3
@@ -3374,7 +3374,7 @@ Tower Power Block
 1
 1
 1
-1.002800
+1.0028
 Default
 P_high_limit
 3
@@ -3388,7 +3388,7 @@ Tower Power Block
 1
 1
 1
-25.000000
+25
 Default
 P_in_calc
 3
@@ -3402,7 +3402,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 P_out_calc
 3
@@ -3416,7 +3416,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 T_ITD_des
 3
@@ -3430,7 +3430,7 @@ Tower Power Block
 1
 1
 1
-16.000000
+16
 Default
 T_amb_des
 3
@@ -3444,7 +3444,7 @@ Tower Power Block
 1
 1
 1
-27.000000
+27
 Default
 T_approach
 3
@@ -3458,7 +3458,7 @@ Tower Power Block
 1
 1
 1
-5.000000
+5
 Default
 T_htf_cold_calc
 3
@@ -3472,7 +3472,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 UA_total_calc
 3
@@ -3486,7 +3486,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Numeric
 csp.pt.pwrb.condenser_type
 3
@@ -3501,7 +3501,7 @@ Evaporative|Air-cooled|Hybrid
 1
 1
 1
-0.000000
+0
 Choice
 csp.pt.pwrb.hc_ctl1
 3
@@ -3515,7 +3515,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.pwrb.hc_ctl2
 3
@@ -3529,7 +3529,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.pwrb.hc_ctl3
 3
@@ -3543,7 +3543,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.pwrb.hc_ctl4
 3
@@ -3557,7 +3557,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.pwrb.hc_ctl5
 3
@@ -3571,7 +3571,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.pwrb.hc_ctl6
 3
@@ -3585,7 +3585,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.pwrb.hc_ctl7
 3
@@ -3599,7 +3599,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.pwrb.hc_ctl8
 3
@@ -3613,7 +3613,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.pwrb.hc_ctl9
 3
@@ -3627,7 +3627,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.pwrb.pressure_mode
 3
@@ -3642,7 +3642,7 @@ Fixed pressure|Sliding pressure
 1
 1
 1
-0.000000
+0
 Default
 cycle_cutoff_frac
 3
@@ -3656,7 +3656,7 @@ Tower Power Block
 1
 1
 1
-0.250000
+0.25
 Default
 cycle_max_frac
 3
@@ -3670,7 +3670,7 @@ Tower Power Block
 1
 1
 1
-1.200000
+1.2
 Default
 dT_cw_ref
 3
@@ -3684,7 +3684,7 @@ Tower Power Block
 1
 1
 1
-20.000000
+20
 Default
 deltaT_PHX
 3
@@ -3698,7 +3698,7 @@ Tower Power Block
 1
 1
 1
-5.000000
+5
 Default
 eta_c
 3
@@ -3712,7 +3712,7 @@ Tower Power Block
 1
 1
 1
-0.900000
+0.9
 Default
 eta_t
 3
@@ -3726,7 +3726,7 @@ Tower Power Block
 1
 1
 1
-0.900000
+0.9
 Default
 fan_power_perc_net
 3
@@ -3740,7 +3740,7 @@ Tower Power Block
 1
 1
 1
-1.000000
+1
 Default
 fossil_mode
 3
@@ -3754,7 +3754,7 @@ Tower Power Block
 1
 1
 1
-1.000000
+1
 Default
 is_sco2_optimized
 3
@@ -3768,7 +3768,7 @@ is sco2 optimized??
 1
 1
 1
-0.000000
+0
 Numeric
 n_pl_inc
 3
@@ -3782,7 +3782,7 @@ Tower Power Block
 1
 1
 1
-8.000000
+8
 Default
 pb_bd_frac
 3
@@ -3796,7 +3796,7 @@ Tower Power Block
 1
 1
 1
-0.013000
+0.013
 Default
 pb_pump_coef
 3
@@ -3810,7 +3810,7 @@ kW/kg/s
 1
 1
 1
-0.550000
+0.55
 Default
 pc_config
 3
@@ -3825,7 +3825,7 @@ Steam Rankine| sCO2 Recompression/Simple
 1
 1
 1
-0.000000
+0
 Default
 q_sby_frac
 3
@@ -3839,7 +3839,7 @@ Tower Power Block
 1
 1
 1
-0.150000
+0.15
 Default
 recomp_frac_calc
 3
@@ -3853,7 +3853,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 startup_frac
 3
@@ -3867,7 +3867,7 @@ Tower Power Block
 1
 1
 1
-0.200000
+0.2
 Default
 startup_time
 3
@@ -3881,7 +3881,7 @@ Tower Power Block
 1
 1
 1
-0.300000
+0.3
 Default
 system_capacity
 3
@@ -3895,7 +3895,7 @@ Tower Power Block
 1
 1
 1
-0.000000
+0
 Default
 
 1171

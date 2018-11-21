@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -142,7 +142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -201,7 +201,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -283,7 +283,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -342,7 +342,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -590,7 +590,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -649,7 +649,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -708,7 +708,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -767,7 +767,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -818,7 +818,7 @@ ISCC
 1
 1
 1
-317.399994
+317.4
 Default
 T_htf_hot_des
 3
@@ -832,7 +832,7 @@ ISCC
 1
 1
 1
-364.500000
+364.5
 Default
 T_steam_sh_out_des
 3
@@ -846,7 +846,7 @@ ISCC
 1
 1
 1
-334.500000
+334.5
 Default
 W_dot_solar_des
 3
@@ -860,7 +860,7 @@ ISCC
 1
 1
 1
-64.500000
+64.5
 Default
 adjust
 3
@@ -887,7 +887,7 @@ ISCC
 1
 1
 1
-465.200012
+465.2
 Default
 max_solar_design
 3
@@ -901,7 +901,7 @@ ISCC
 1
 1
 1
-184.500000
+184.5
 Default
 nameplate
 3
@@ -915,7 +915,7 @@ MWe
 1
 1
 1
-100.000000
+100
 Default
 ngcc_model
 3
@@ -929,7 +929,7 @@ ISCC
 1
 1
 1
-1.000000
+1
 Default
 pb_pump_coef
 3
@@ -943,7 +943,7 @@ kW/kg/s
 1
 1
 1
-0.550000
+0.55
 Default
 pinch_point_coldside
 3
@@ -957,7 +957,7 @@ ISCC
 1
 1
 1
-10.000000
+10
 Default
 pinch_point_hotside
 3
@@ -971,7 +971,7 @@ ISCC
 1
 1
 1
-30.000000
+30
 Default
 q_pb_design
 3
@@ -985,7 +985,7 @@ ISCC
 1
 1
 1
-150.000000
+150
 Default
 system_capacity
 3
@@ -999,7 +999,7 @@ ISCC
 1
 1
 1
-100.000000
+100
 Default
 
 1404

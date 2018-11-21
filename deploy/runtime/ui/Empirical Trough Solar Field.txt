@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -385,7 +385,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -534,7 +534,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -593,7 +593,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -652,7 +652,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -711,7 +711,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -770,7 +770,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -829,7 +829,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -888,7 +888,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -947,7 +947,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1006,7 +1006,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1065,7 +1065,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1124,7 +1124,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1183,7 +1183,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1242,7 +1242,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1301,7 +1301,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1360,7 +1360,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1419,7 +1419,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1501,7 +1501,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1560,7 +1560,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1619,7 +1619,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1678,7 +1678,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1813,7 +1813,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1872,7 +1872,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1931,7 +1931,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1990,7 +1990,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2049,7 +2049,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2108,7 +2108,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2167,7 +2167,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2226,7 +2226,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2285,7 +2285,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2344,7 +2344,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2403,7 +2403,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2462,7 +2462,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2513,7 +2513,7 @@ Empirical Trough Solar Field
 1
 1
 1
-10.000000
+10
 Numeric
 Distance_SCA
 3
@@ -2527,7 +2527,7 @@ Empirical Trough Solar Field
 1
 1
 1
-1.000000
+1
 Numeric
 HTFFluid
 3
@@ -2541,7 +2541,7 @@ HTFFluid
 1
 1
 1
-0.000000
+0
 Default
 HtfGalArea
 3
@@ -2555,7 +2555,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.614000
+0.614
 Numeric
 MinHtfTemp
 3
@@ -2569,7 +2569,7 @@ Empirical Trough Solar Field
 1
 1
 1
-50.000000
+50
 Numeric
 NumScas
 3
@@ -2583,7 +2583,7 @@ Empirical Trough Solar Field
 1
 1
 1
-4.000000
+4
 Numeric
 Row_Distance
 3
@@ -2597,7 +2597,7 @@ Empirical Trough Solar Field
 1
 1
 1
-15.000000
+15
 Numeric
 SFTempInit
 3
@@ -2611,7 +2611,7 @@ Empirical Trough Solar Field
 1
 1
 1
-100.000000
+100
 Numeric
 SfInTempD
 3
@@ -2625,7 +2625,7 @@ Empirical Trough Solar Field
 1
 1
 1
-293.000000
+293
 Numeric
 SfOutTempD
 3
@@ -2639,7 +2639,7 @@ Empirical Trough Solar Field
 1
 1
 1
-391.000000
+391
 Numeric
 SfPipeHl1
 3
@@ -2667,7 +2667,7 @@ Empirical Trough Solar Field
 1
 1
 1
--0.000017
+-1.683e-05
 Numeric
 SfPipeHl3
 3
@@ -2681,7 +2681,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.000000
+6.78e-08
 Numeric
 SfPipeHl300
 3
@@ -2695,7 +2695,7 @@ Empirical Trough Solar Field
 1
 1
 1
-10.000000
+10
 Numeric
 Solar_Field_Area
 3
@@ -2709,7 +2709,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 Solar_Field_Mult
 3
@@ -2723,7 +2723,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 Stow_Angle
 3
@@ -2737,7 +2737,7 @@ Empirical Trough Solar Field
 1
 1
 1
-170.000000
+170
 Numeric
 azimuth
 3
@@ -2751,7 +2751,7 @@ Empirical Trough Solar
 1
 1
 1
-0.000000
+0
 Numeric
 calc_aperture_area_at_sm_1
 3
@@ -2765,7 +2765,7 @@ none
 1
 1
 1
-0.000000
+0
 Default
 calc_field_htf_average_temp
 3
@@ -2779,7 +2779,7 @@ none
 1
 1
 1
-0.000000
+0
 Default
 i_SfTi
 3
@@ -2793,7 +2793,7 @@ i_SfTi
 1
 1
 1
-0.000000
+0
 Default
 tilt
 3
@@ -2807,7 +2807,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 track_mode
 3
@@ -2821,7 +2821,7 @@ track_mode
 1
 1
 1
-1.000000
+1
 Default
 ui_aperture_area_per_SCA
 3
@@ -2835,7 +2835,7 @@ Empirical Trough Solar Field
 1
 1
 1
-470.299988
+470.3
 Numeric
 ui_custom_htf
 3
@@ -2849,7 +2849,7 @@ Empirical Trough Solar Field
 3
 1
 9
-1.000000 7.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 
+1 7 0 0 0 0 0 0 0 
 
 MaterialProperties
 ui_design_exact_area_sm_1
@@ -2864,7 +2864,7 @@ Empirical Trough Solar Field
 1
 1
 1
-438591.000000
+438591
 Numeric
 ui_design_exact_num_scas_sm_1
 3
@@ -2878,7 +2878,7 @@ Empirical Trough Solar Field
 1
 1
 1
-932.578003
+932.578
 Numeric
 ui_field_htf_max_operating_temp
 3
@@ -2892,7 +2892,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 ui_field_htf_min_operating_temp
 3
@@ -2906,7 +2906,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 ui_field_htf_type
 3
@@ -2921,7 +2921,7 @@ Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm
 1
 1
 1
-3.000000
+3
 Choice
 ui_field_layout_option
 3
@@ -2935,7 +2935,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.000000
+0
 RadioChoice
 ui_fixed_land_area
 3
@@ -2949,7 +2949,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 ui_hce_weighted_optical_efficiency
 3
@@ -2977,7 +2977,7 @@ Empirical Trough Solar Field
 1
 1
 1
-36.100498
+36.1005
 Numeric
 ui_land_multiplier
 3
@@ -2991,7 +2991,7 @@ Empirical Trough Solar Field
 1
 1
 1
-1.400000
+1.4
 Numeric
 ui_pb_q_design
 3
@@ -3005,7 +3005,7 @@ Empirical Trough Solar Field
 1
 1
 1
-294.118011
+294.118
 Numeric
 ui_piping_heat_loss
 3
@@ -3019,7 +3019,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 ui_reference_ambient_temperature
 3
@@ -3033,7 +3033,7 @@ Empirical Trough Solar Field
 1
 1
 1
-25.000000
+25
 Numeric
 ui_reference_direct_normal_irradiance
 3
@@ -3047,7 +3047,7 @@ Empirical Trough Solar Field
 1
 1
 1
-950.000000
+950
 Numeric
 ui_reference_wind_speed
 3
@@ -3061,7 +3061,7 @@ Empirical Trough Solar Field
 1
 1
 1
-5.000000
+5
 Numeric
 ui_solar_field_area
 3
@@ -3075,7 +3075,7 @@ Empirical Trough Solar Field
 1
 1
 1
-887875.000000
+887875
 Numeric
 ui_solar_multiple
 3
@@ -3089,7 +3089,7 @@ Empirical Trough Solar Field
 1
 1
 1
-2.000000
+2
 Numeric
 ui_total_land_area
 3
@@ -3103,7 +3103,7 @@ Empirical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 
 4098

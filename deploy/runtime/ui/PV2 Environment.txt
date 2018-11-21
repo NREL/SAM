@@ -459,7 +459,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -518,7 +518,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -577,7 +577,7 @@ Height
 24
 Value
 1
-9999.000000
+9999
 Mode
 3
 1
@@ -672,7 +672,7 @@ en_3d_shading
 1
 1
 1
-0.000000
+0
 CheckBox
 en_snow_model
 3
@@ -686,7 +686,7 @@ en_snow_model
 1
 1
 1
-0.000000
+0
 CheckBox
 loss_model_3d
 3
@@ -701,7 +701,7 @@ Linear| beam ~ f(area) and diffuse|Nonlinear via shading database
 1
 1
 1
-0.000000
+0
 Choice
 soiling
 3
@@ -715,7 +715,7 @@ Monthly soiling loss
 2
 1
 12
-2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 
+2 2 2 2 2 2 2 2 2 2 2 2 
 
 MonthlyFactor
 soiling_annual_average
@@ -730,7 +730,7 @@ Annual average soiling loss
 1
 1
 1
-0.000000
+0
 Numeric
 total_area
 3
@@ -744,7 +744,7 @@ total_area
 1
 1
 1
-0.000000
+0
 Numeric
 total_land_area
 3
@@ -758,7 +758,7 @@ total_land_area
 1
 1
 1
-0.000000
+0
 Numeric
 
 79

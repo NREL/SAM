@@ -82,7 +82,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -141,7 +141,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -200,7 +200,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -259,7 +259,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -318,7 +318,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -377,7 +377,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -574,7 +574,7 @@ Height
 24
 Value
 1
-317.000000
+317
 Mode
 3
 1
@@ -634,7 +634,7 @@ Height
 24
 Value
 1
-1.100000
+1.1
 Mode
 3
 1
@@ -739,7 +739,7 @@ Height
 24
 Value
 1
-1.200000
+1.2
 Mode
 3
 1
@@ -1457,7 +1457,7 @@ Height
 24
 Value
 1
--7.500000
+-7.5
 Mode
 3
 1
@@ -1579,7 +1579,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 annual_diffuse
 3
@@ -1593,7 +1593,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 annual_global
 3
@@ -1607,7 +1607,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 annual_snow
 3
@@ -1621,7 +1621,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Default
 annual_tdry
 3
@@ -1635,7 +1635,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 annual_wspd
 3
@@ -1649,7 +1649,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 city
 3
@@ -1689,7 +1689,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 file_name
 3
@@ -1715,7 +1715,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 lbl_csp
 3
@@ -1741,7 +1741,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 solar_data_file_name
 3
@@ -1830,7 +1830,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 Numeric
 use_specific_weather_file
 3
@@ -1844,7 +1844,7 @@ Location and Resource
 1
 1
 1
-0.000000
+0
 CheckBox
 user_specified_weather_file
 3
@@ -1870,7 +1870,7 @@ Location and Resource
 1
 1
 1
-8760.000000
+8760
 Default
 
 275

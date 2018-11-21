@@ -699,7 +699,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -758,7 +758,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -817,7 +817,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -876,7 +876,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -935,7 +935,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -994,7 +994,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1053,7 +1053,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1112,7 +1112,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1257,7 +1257,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1316,7 +1316,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1375,7 +1375,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1434,7 +1434,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1493,7 +1493,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1552,7 +1552,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1611,7 +1611,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1670,7 +1670,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1729,7 +1729,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1788,7 +1788,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1847,7 +1847,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1906,7 +1906,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1965,7 +1965,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2055,7 +2055,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2114,7 +2114,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2173,7 +2173,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2232,7 +2232,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2291,7 +2291,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2350,7 +2350,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -2454,7 +2454,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2513,7 +2513,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2572,7 +2572,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2631,7 +2631,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2690,7 +2690,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2749,7 +2749,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2800,7 +2800,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 F_wc
 3
@@ -2814,7 +2814,7 @@ Physical Trough Power Cycle
 2
 1
 1
-0.000000
+0
 Default
 P_boil
 3
@@ -2828,7 +2828,7 @@ Physical Trough Power Cycle
 1
 1
 1
-100.000000
+100
 Numeric
 P_cond_min
 3
@@ -2842,7 +2842,7 @@ Physical Trough Power Cycle
 1
 1
 1
-1.250000
+1.25
 Numeric
 P_cond_ratio
 3
@@ -2856,7 +2856,7 @@ Physical Trough Power Cycle
 1
 1
 1
-1.002800
+1.0028
 Numeric
 T_ITD_des
 3
@@ -2870,7 +2870,7 @@ Physical Trough Power Cycle
 1
 1
 1
-16.000000
+16
 Numeric
 T_amb_des
 3
@@ -2884,7 +2884,7 @@ Physical Trough Power Cycle
 1
 1
 1
-27.000000
+27
 Numeric
 T_approach
 3
@@ -2898,7 +2898,7 @@ Physical Trough Power Cycle
 1
 1
 1
-5.000000
+5
 Numeric
 T_set_aux
 3
@@ -2912,7 +2912,7 @@ Physical Trough Power Cycle
 1
 1
 1
-391.000000
+391
 Numeric
 T_startup
 3
@@ -2926,7 +2926,7 @@ Physical Trough Power Cycle
 1
 1
 1
-350.000000
+350
 Numeric
 W_pb_design
 3
@@ -2940,7 +2940,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 adjust
 3
@@ -2968,7 +2968,7 @@ Minimum backup level|Supplemental operation
 1
 1
 1
-0.000000
+0
 Choice
 combo_condenser_type
 3
@@ -2983,7 +2983,7 @@ Evaporative|Air-cooled|Hybrid
 1
 1
 1
-0.000000
+0
 Choice
 csp.dtr.pwrb.design_inlet_temp
 3
@@ -2997,7 +2997,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.design_outlet_temp
 3
@@ -3011,7 +3011,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.gross_net_conversion_factor
 3
@@ -3025,7 +3025,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.900000
+0.9
 Numeric
 csp.dtr.pwrb.hc_ctl1
 3
@@ -3039,7 +3039,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.hc_ctl2
 3
@@ -3053,7 +3053,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.hc_ctl3
 3
@@ -3067,7 +3067,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.hc_ctl4
 3
@@ -3081,7 +3081,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.hc_ctl5
 3
@@ -3095,7 +3095,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.hc_ctl6
 3
@@ -3109,7 +3109,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.hc_ctl7
 3
@@ -3123,7 +3123,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.hc_ctl8
 3
@@ -3137,7 +3137,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.hc_ctl9
 3
@@ -3151,7 +3151,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.nameplate
 3
@@ -3165,7 +3165,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.pwrb.pressure_mode
 3
@@ -3180,7 +3180,7 @@ Fixed pressure|Sliding pressure
 1
 1
 1
-0.000000
+0
 Choice
 cycle_cutoff_frac
 3
@@ -3194,7 +3194,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.250000
+0.25
 Numeric
 cycle_max_frac
 3
@@ -3208,7 +3208,7 @@ Physical Trough Power Cycle
 1
 1
 1
-1.150000
+1.15
 Numeric
 dT_cw_ref
 3
@@ -3222,7 +3222,7 @@ Physical Trough Power Cycle
 1
 1
 1
-10.000000
+10
 Numeric
 eta_lhv
 3
@@ -3236,7 +3236,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.900000
+0.9
 Numeric
 eta_ref
 3
@@ -3250,7 +3250,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.377400
+0.3774
 Numeric
 fossil_mode
 3
@@ -3264,7 +3264,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 n_pl_inc
 3
@@ -3278,7 +3278,7 @@ Physical Trough Power Cycle
 1
 1
 1
-8.000000
+8
 Numeric
 pb_bd_frac
 3
@@ -3292,7 +3292,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.013000
+0.013
 Numeric
 pb_rated_cap
 3
@@ -3306,7 +3306,7 @@ Physical Trough Power Cycle
 1
 1
 1
-110.000000
+110
 Numeric
 q_max_aux
 3
@@ -3320,7 +3320,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 q_pb_design
 3
@@ -3334,7 +3334,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 q_sby_frac
 3
@@ -3348,7 +3348,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.200000
+0.2
 Numeric
 startup_frac
 3
@@ -3362,7 +3362,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.200000
+0.2
 Numeric
 startup_time
 3
@@ -3376,7 +3376,7 @@ Physical Trough Power Cycle
 1
 1
 1
-1.000000
+1
 Numeric
 system_capacity
 3
@@ -3390,7 +3390,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 t_standby_reset
 3
@@ -3404,7 +3404,7 @@ Physical Trough Power Cycle
 1
 1
 1
-2.000000
+2
 Numeric
 tech_type
 3
@@ -3418,7 +3418,7 @@ Physical Trough Power Cycle
 1
 1
 1
-0.000000
+0
 Default
 
 1255

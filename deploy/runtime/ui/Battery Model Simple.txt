@@ -143,7 +143,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -202,7 +202,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -246,35 +246,35 @@ batt_simple_chemistry
 1
 Battery chemistry
  
-battery
+Battery
 0
 2
 1
 1
 1
 1
-0.000000
+0
 Choice
 batt_simple_dispatch
 3
 1
 Battery dispatch
  
-battery
+Battery
 0
 2
 1
 1
 1
 1
-0.000000
+0
 Choice
 batt_simple_enable
 3
 1
  
  
-battery
+Battery
 19
 "Enable"| "Disable"
 2
@@ -282,49 +282,49 @@ battery
 1
 1
 1
-0.000000
+0
 CheckBox
 batt_simple_kw
 3
 1
 Battery power
 kW
-battery
+Battery
 0
 2
 1
 1
 1
 1
-3.000000
+3
 Numeric
 batt_simple_kwh
 3
 1
 Battery capacity
 kWh
- 
+Battery
 0
 2
 1
 1
 1
 1
-10.000000
+10
 Numeric
 batt_simple_meter_position
 3
 1
 Battery meter position
 battery
- 
+Battery
 0
 8
 1
 1
 1
 1
-0.000000
+0
 Default
 
 249

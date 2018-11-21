@@ -24,7 +24,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -84,7 +84,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -145,7 +145,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -206,7 +206,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1023,7 +1023,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1082,7 +1082,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1182,7 +1182,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1241,7 +1241,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1300,7 +1300,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1360,7 +1360,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1420,7 +1420,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1481,7 +1481,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1541,7 +1541,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1602,7 +1602,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1663,7 +1663,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1715,7 +1715,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 bos_cost_per_kw
 3
@@ -1729,7 +1729,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 bos_cost_per_turbine
 3
@@ -1743,7 +1743,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 bos_cost_total
 3
@@ -1757,7 +1757,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 est_bos_cost
 3
@@ -1782,7 +1782,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 install_type
 3
@@ -1796,7 +1796,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 reference_capacity
 3
@@ -1810,7 +1810,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 reference_number_turbines
 3
@@ -1824,7 +1824,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 reference_resource_file
 3
@@ -1851,7 +1851,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 sales_tax_basis
 3
@@ -1865,7 +1865,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 sales_tax_total
 3
@@ -1879,7 +1879,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 system_use_lifetime_output
 3
@@ -1893,7 +1893,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 system_use_recapitalization
 3
@@ -1907,7 +1907,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 total_installed_cost
 3
@@ -1921,7 +1921,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 total_installed_cost_per_kw
 3
@@ -1935,7 +1935,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 turbine_cost_fixed
 3
@@ -1949,7 +1949,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 turbine_cost_per_kw
 3
@@ -1963,7 +1963,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 turbine_cost_per_turbine
 3
@@ -1977,7 +1977,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 turbine_cost_total
 3
@@ -1991,7 +1991,7 @@ Wind Farm Costs
 1
 1
 1
-0.000000
+0
 Default
 
 1271
@@ -2041,40 +2041,64 @@ equations { 'sales_tax_total' } = define() {
 		${sales_tax_basis} * 0.01 * ${sales_tax_rate};
 };
 
-12825
+14149
+on_change{'install_type'} = define()
+{
+	if (value('wind.turbine.radio_list_or_design') == 0) // library turbine
+	{
+		kw_rating = value('wind_turbine_kw_rating');
+		if ( kw_rating >= 1000) //utility scale onshore turbine, 1 MW or greater
+		{
+			if (value('install_type') == 1)
+				value('om_capacity',  [144]);
+			else
+				value('om_capacity', [44]);
+		}
+	}
+};
+
 on_change{'btn_est_turbine_cost'} = define() 
 {
 	if (value('install_type') == 1) //offshore installation
 	{
-		value('turbine_cost_per_kw', 1466);
+		value('turbine_cost_per_kw', 1557);
 		value('turbine_cost_per_turbine', 0);
 		value('turbine_cost_fixed', 0);
 		value('sales_tax_basis', 0);
-		msgbox('Average 2015 installed cost of an offshore turbine applied to the turbine cost inputs.');
+		msgbox('Average 2017 installed cost of an offshore turbine applied to the turbine cost inputs.');
 		return;
 	}
 
 	turbine_choice = value('wind.turbine.radio_list_or_design');
 	if (turbine_choice == 0) // library turbine
 	{
-		if (value('wind_turbine_kw_rating') >= 1000) //utility scale onshore turbine, 1 MW or greater
+		kw_rating = value('wind_turbine_kw_rating');
+		if ( kw_rating >= 1000) //utility scale onshore turbine, 1 MW or greater
 		{
-			value('turbine_cost_per_kw', 1209);
+			value('turbine_cost_per_kw', 1094);
 			value('turbine_cost_per_turbine', 0);
 			value('turbine_cost_fixed', 0);
 			value('sales_tax_basis', 0);
-			msgbox('Average 2015 installed cost of a land-based utility scale turbine (1 MW or greater) applied to the turbine cost inputs.');
+			msgbox('Average 2017 installed cost of a land-based utility scale turbine (1 MW or greater) applied to the turbine cost inputs.');
 			return;
 		}
-		else //small scale onshore turbine, < 1 MW
+		else if (kw_rating >= 100) // commerical scale onshore turbine, 100kw - 1MW
 		{
-			value('turbine_cost_per_kw', 2765);
+			value('turbine_cost_per_kw',  4393);
 			value('turbine_cost_per_turbine', 0);
 			value('turbine_cost_fixed', 0);
 			value('sales_tax_basis', 0);
-			msgbox('Average 2015 installed cost of a land-based small wind turbine (less than 1 MW) applied to the turbine cost inputs.');
+			msgbox('Average 2017 installed cost of a land-based commercial scale wind turbine (100kW to 1MW) applied to the turbine cost inputs.');
 			return;
-			
+		}
+		else 
+		{
+			value('turbine_cost_per_kw',  4410);
+			value('turbine_cost_per_turbine', 0);
+			value('turbine_cost_fixed', 0);
+			value('sales_tax_basis', 0);
+			msgbox('Average 2017 installed cost of a land-based small wind turbine (less than 100 kW) applied to the turbine cost inputs.');
+			return;
 		}
 	}		
 	else {
@@ -2095,11 +2119,11 @@ on_change{'btn_est_bos_cost'} = define()
 	{
 		if (value('reference_number_turbines') == 1)
 		{
-			value('bos_cost_per_kw', 2167);
+			value('bos_cost_per_kw', 2289);
 			value('turbine_cost_per_turbine', 0);
 			value('turbine_cost_fixed', 0);
 			value('sales_tax_basis', 0);
-			msgbox('Average 2015 installed cost of an offshore single wind turbine applied to the turbine cost inputs.');
+			msgbox('Average 2017 installed cost of an offshore single wind turbine applied to the turbine cost inputs.');
 			return;
 		}
 		else
@@ -2121,25 +2145,36 @@ on_change{'btn_est_bos_cost'} = define()
 	msg = '';
 	if (value('reference_capacity') < 20000)
 	{
-		if (value('wind_turbine_kw_rating') < 1000) //small scale turbine, < 1 MW
+		kw_rating = value('wind_turbine_kw_rating');
+		if (kw_rating >= 1000) //utility turbine, small system
 		{
-			value('bos_cost_per_kw', 2995);
-			value('bos_cost_per_turbine', 0);
-			value('bos_cost_fixed', 0);
-			value('sales_tax_basis', 0);
-			msg = msg + 'Warning: This Balance of System model is intended for systems that are 20MW or greater. The model may estimate higher BOS costs than are actually likely. '
-				+'Average 2014 installed balance of system costs for small land-based turbines have been applied to the balance of system cost inputs. '
-				+ 'To use these numbers in your analysis, click Ok and ignore the instructions below. Otherwise, ';
-		}
-		else if (value('wind_turbine_kw_rating') >= 1000) //utility turbine, small system
-		{
-			value('bos_cost_per_kw', 330);
+			value('bos_cost_per_kw', 360);
 			value('bos_cost_per_turbine', 0);
 			value('bos_cost_fixed', 0);
 			value('sales_tax_basis', 0);
 			msg = msg +'Warning: this Balance of System model is intended for systems that are 20MW or greater. The model may estimate higher BOS costs than are actually likely. '
-				+'Average 2014 installed balance of system costs for land-based utility scale turbines (1 MW or greater) have been applied to the balance of system cost inputs. '
+				+'Average 2017 installed balance of system costs for land-based utility scale turbines (1 MW or greater) have been applied to the balance of system cost inputs. '
 				+'To use these numbers in your analysis, click Ok and ignore the instructions below. Otherwise, ';
+		}
+		else if ( kw_rating >= 100) // commercial scale turbine, 100kW-1MW
+		{
+			value('bos_cost_per_kw', 2996);
+			value('bos_cost_per_turbine', 0);
+			value('bos_cost_fixed', 0);
+			value('sales_tax_basis', 0);
+			msg = msg + 'Warning: This Balance of System model is intended for systems that are 20MW or greater. The model may estimate higher BOS costs than are actually likely. '
+				+'Average 2017 installed balance of system costs for commercial scale land-based turbines have been applied to the balance of system cost inputs. '
+				+ 'To use these numbers in your analysis, click Ok and ignore the instructions below. Otherwise, ';
+		}
+		else
+		{
+			value('bos_cost_per_kw', 7543);
+			value('bos_cost_per_turbine', 0);
+			value('bos_cost_fixed', 0);
+			value('sales_tax_basis', 0);
+			msg = msg + 'Warning: This Balance of System model is intended for systems that are 20MW or greater. The model may estimate higher BOS costs than are actually likely. '
+				+'Average 2017 installed balance of system costs for small land-based turbines have been applied to the balance of system cost inputs. '
+				+ 'To use these numbers in your analysis, click Ok and ignore the instructions below. Otherwise, ';
 		}
 	}
 	msg = msg + 'Please enter inputs in the Land-Based Balance of System Cost Model section below and click Apply BOS Estimate.'; //prompt user to fill in inputs

@@ -53,7 +53,7 @@
 static const char *version_label = 0; //"iscc-ge"; 
 
 // API keys for SAM to use with developer.nrel.gov services.
-const char *sam_api_key = "";
+const char *sam_api_key ="";
 
 
 // Google APIs:
@@ -67,3 +67,5 @@ static const char *GOOGLE_API_KEY = "";
 // user name: aron.dobos@nrel.gov
 // passwd: 1H*****....******r
 static const char *BING_API_KEY = "";
+
+

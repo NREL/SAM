@@ -1572,7 +1572,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1632,7 +1632,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1691,7 +1691,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1750,7 +1750,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1809,7 +1809,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1869,7 +1869,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1929,7 +1929,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1989,7 +1989,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2048,7 +2048,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2108,7 +2108,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2168,7 +2168,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2228,7 +2228,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2287,7 +2287,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2347,7 +2347,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2407,7 +2407,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2467,7 +2467,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2526,7 +2526,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2585,7 +2585,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2644,7 +2644,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2704,7 +2704,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2763,7 +2763,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2822,7 +2822,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2881,7 +2881,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2972,7 +2972,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -3031,7 +3031,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3090,7 +3090,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3150,7 +3150,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3209,7 +3209,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3269,7 +3269,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3328,7 +3328,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3387,7 +3387,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3447,7 +3447,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3507,7 +3507,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3566,7 +3566,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3626,7 +3626,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3685,7 +3685,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3744,7 +3744,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3804,7 +3804,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3895,7 +3895,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -3954,7 +3954,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4013,7 +4013,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4073,7 +4073,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4132,7 +4132,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4192,7 +4192,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4252,7 +4252,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4312,7 +4312,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4371,7 +4371,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4431,7 +4431,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4491,7 +4491,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4551,7 +4551,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4611,7 +4611,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4671,7 +4671,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4731,7 +4731,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4790,7 +4790,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4849,7 +4849,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4953,7 +4953,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5013,7 +5013,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5073,7 +5073,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5125,7 +5125,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.bos_equip_fixed
 3
@@ -5139,7 +5139,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.bos_equip_perarea
 3
@@ -5153,7 +5153,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.bos_equip_perwatt
 3
@@ -5167,7 +5167,7 @@ HCPV Costs
 1
 1
 1
-0.330000
+0.33
 Default
 hcpv.cost.contingency
 3
@@ -5181,7 +5181,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.contingency_percent
 3
@@ -5195,7 +5195,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.engr.fixed
 3
@@ -5209,7 +5209,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.engr.per_watt
 3
@@ -5223,7 +5223,7 @@ HCPV Costs
 1
 1
 1
-0.020000
+0.02
 Default
 hcpv.cost.engr.percent
 3
@@ -5237,7 +5237,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.engr.total
 3
@@ -5251,7 +5251,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.grid.fixed
 3
@@ -5265,7 +5265,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.grid.per_watt
 3
@@ -5279,7 +5279,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.grid.percent
 3
@@ -5293,7 +5293,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.grid.total
 3
@@ -5307,7 +5307,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.install_labor.totalcost
 3
@@ -5321,7 +5321,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.install_labor_fixed
 3
@@ -5335,7 +5335,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.install_labor_perarea
 3
@@ -5349,7 +5349,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.install_labor_perwatt
 3
@@ -5363,7 +5363,7 @@ HCPV Costs
 1
 1
 1
-0.410000
+0.41
 Default
 hcpv.cost.install_margin.totalcost
 3
@@ -5377,7 +5377,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.install_margin_fixed
 3
@@ -5391,7 +5391,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.install_margin_perarea
 3
@@ -5405,7 +5405,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.install_margin_perwatt
 3
@@ -5419,7 +5419,7 @@ HCPV Costs
 1
 1
 1
-0.260000
+0.26
 Default
 hcpv.cost.installed_per_capacity
 3
@@ -5433,7 +5433,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.inverter.costunits
 3
@@ -5448,7 +5448,7 @@ $/Wac|$/Unit
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.inverter.num_units
 3
@@ -5463,7 +5463,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.inverter.power
 3
@@ -5477,7 +5477,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.inverter.totalcost
 3
@@ -5491,7 +5491,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.inverterarray.power
 3
@@ -5505,7 +5505,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.land.fixed
 3
@@ -5519,7 +5519,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.land.per_acre
 3
@@ -5533,7 +5533,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.land.per_watt
 3
@@ -5547,7 +5547,7 @@ HCPV Costs
 1
 1
 1
-0.040000
+0.04
 Default
 hcpv.cost.land.percent
 3
@@ -5561,7 +5561,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.land.total
 3
@@ -5575,7 +5575,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.land_area.value
 3
@@ -5589,7 +5589,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.landprep.fixed
 3
@@ -5603,7 +5603,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.landprep.per_acre
 3
@@ -5617,7 +5617,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.landprep.per_watt
 3
@@ -5631,7 +5631,7 @@ HCPV Costs
 1
 1
 1
-0.200000
+0.2
 Default
 hcpv.cost.landprep.percent
 3
@@ -5645,7 +5645,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.landprep.total
 3
@@ -5659,7 +5659,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.module.costunits
 3
@@ -5674,7 +5674,7 @@ $/Wdc|$/Unit
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.module.num_units
 3
@@ -5689,7 +5689,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.module.power
 3
@@ -5703,7 +5703,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.module.totalcost
 3
@@ -5717,7 +5717,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.modulearray.area
 3
@@ -5731,7 +5731,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.modulearray.power
 3
@@ -5745,7 +5745,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.per_inverter
 3
@@ -5759,7 +5759,7 @@ HCPV Costs
 1
 1
 1
-0.230000
+0.23
 Default
 hcpv.cost.per_module
 3
@@ -5773,7 +5773,7 @@ HCPV Costs
 1
 1
 1
-2.800000
+2.8
 Default
 hcpv.cost.permitting.fixed
 3
@@ -5787,7 +5787,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.permitting.per_watt
 3
@@ -5801,7 +5801,7 @@ HCPV Costs
 1
 1
 1
-0.010000
+0.01
 Default
 hcpv.cost.permitting.percent
 3
@@ -5815,7 +5815,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.permitting.total
 3
@@ -5829,7 +5829,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.sales_tax.percent
 3
@@ -5843,7 +5843,7 @@ HCPV Costs
 1
 1
 1
-100.000000
+100
 Default
 hcpv.cost.sales_tax.total
 3
@@ -5857,7 +5857,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.sales_tax.value
 3
@@ -5871,7 +5871,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.tracker.totalcost
 3
@@ -5885,7 +5885,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.tracker_fixed
 3
@@ -5899,7 +5899,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.tracker_perarea
 3
@@ -5913,7 +5913,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 hcpv.cost.tracker_perwatt
 3
@@ -5927,7 +5927,7 @@ HCPV Costs
 1
 1
 1
-0.810000
+0.81
 Default
 system_use_lifetime_output
 3
@@ -5941,7 +5941,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 system_use_recapitalization
 3
@@ -5955,7 +5955,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 total_direct_cost
 3
@@ -5969,7 +5969,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 total_indirect_cost
 3
@@ -5983,7 +5983,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 total_installed_cost
 3
@@ -5997,7 +5997,7 @@ HCPV Costs
 1
 1
 1
-0.000000
+0
 Default
 
 4953

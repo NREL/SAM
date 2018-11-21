@@ -14,7 +14,6 @@ addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Leverag
 addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Geothermal Power', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
-addconfig( 'Fuel Cell', ['Commercial', 'Single Owner']);
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -204,7 +203,7 @@ function setup_thirdparty_pages( load, degradation ) // FOR NOW, THIRD PARTY OWN
   }
   
   addpage( [[ 'Financial Third Party Ownership']],
-           { 'sidebar'='Financial Parameters', 'help'='fin_thirdparty'} );
+           { 'sidebar'='Financial Parameters', 'help'='fin_tpo_host'} );
   setup_utility_rate();
   setup_elec_load_page( load ); // BELPE IS VALID FOR BOTH PVWATTS AND PV DETAILED, but not generic system
 }
@@ -364,7 +363,7 @@ function setup_host_developer_pages(mode, degradation)
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
               {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
                {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]], 
-           { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+           { 'sidebar'='Financial Parameters', 'help'='fin_tpo_host_developer' }  );
   addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
            
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
