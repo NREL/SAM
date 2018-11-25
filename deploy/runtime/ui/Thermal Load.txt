@@ -749,46 +749,6 @@ AlignRight
 AlignTop
 2
 1
-SchedNumeric
-
-1
-11
-Name
-5
-26
-escal_thermal_input_hourly
-X
-3
-564
-Y
-3
-201
-Width
-3
-100
-Height
-3
-21
-Label
-5
-5
-Value
-UseSchedule
-2
-0
-ScheduleOnly
-2
-0
-FixedLength
-3
-4294967295
-Description
-5
-110
-Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
-TabOrder
-3
-4294967295
 CheckBox
 
 1
@@ -1744,6 +1704,46 @@ BackColour
 TabOrder
 3
 0
+SchedNumeric
+
+1
+11
+Name
+5
+23
+thermal_load_escalation
+X
+3
+564
+Y
+3
+201
+Width
+3
+100
+Height
+3
+21
+Label
+5
+5
+Value
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+110
+Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
+TabOrder
+3
+4294967295
 DataArray
 
 1
@@ -2574,20 +2574,6 @@ TabOrder
 0
 
 32
-escal_thermal_input_hourly
-3
-2
-Load growth rate
-%/yr
-Thermal Load
-0
-2
-1
-2
-1
-1
-0.000000
-Default
 normalize_to_thermal_bill
 3
 1
@@ -2600,7 +2586,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_1
 3
@@ -2614,7 +2600,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_10
 3
@@ -2628,7 +2614,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_11
 3
@@ -2642,7 +2628,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_12
 3
@@ -2656,7 +2642,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_2
 3
@@ -2670,7 +2656,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_3
 3
@@ -2684,7 +2670,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_4
 3
@@ -2698,7 +2684,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_5
 3
@@ -2712,7 +2698,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_6
 3
@@ -2726,7 +2712,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_7
 3
@@ -2740,7 +2726,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_8
 3
@@ -2754,7 +2740,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_9
 3
@@ -2768,7 +2754,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_annual_peak
 3
@@ -2782,7 +2768,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_bill_data
 3
@@ -2796,7 +2782,7 @@ Thermal Load
 2
 1
 12
-300.000000 300.000000 300.000000 300.000000 300.000000 400.000000 500.000000 500.000000 400.000000 300.000000 300.000000 300.000000 
+300 300 300 300 300 400 500 500 400 300 300 300 
 
 Default
 thermal_load
@@ -2811,7 +2797,7 @@ Thermal Load
 2
 1
 1
-0.000000
+0
 Default
 thermal_load_annual_total
 3
@@ -2825,7 +2811,21 @@ Thermal Load
 1
 1
 1
-0.000000
+0
+Default
+thermal_load_escalation
+3
+2
+Load growth rate
+%/yr
+Thermal Load
+0
+2
+1
+2
+1
+1
+0
 Default
 thermal_load_user_data
 3
@@ -2839,7 +2839,7 @@ Thermal Load
 2
 1
 1
-0.000000
+0
 DataArray
 thermal_peak_1
 3
@@ -2853,7 +2853,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_peak_10
 3
@@ -2867,7 +2867,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_peak_11
 3
@@ -2881,7 +2881,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_peak_12
 3
@@ -2895,7 +2895,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_peak_2
 3
@@ -2909,7 +2909,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_peak_3
 3
@@ -2923,7 +2923,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_peak_4
 3
@@ -2937,7 +2937,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_peak_5
 3
@@ -2951,7 +2951,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_peak_6
 3
@@ -2965,7 +2965,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_peak_7
 3
@@ -2979,7 +2979,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_peak_8
 3
@@ -2993,7 +2993,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_peak_9
 3
@@ -3007,7 +3007,7 @@ Thermal Load
 1
 1
 1
-0.000000
+0
 Default
 thermal_scale_factor
 3
@@ -3021,7 +3021,7 @@ Thermal Load
 1
 1
 1
-1.000000
+1
 Default
 
 2793
