@@ -1,7 +1,79 @@
 Thermal Rate
-506
-432
-10
+501
+598
+13
+GroupBox
+
+1
+7
+Name
+5
+9
+GroupBox9
+X
+3
+12
+Y
+3
+375
+Width
+3
+480
+Height
+3
+210
+Caption
+5
+17
+Annual Escalation
+Bold
+2
+1
+Label
+
+1
+12
+Name
+5
+6
+Label4
+X
+3
+21
+Y
+3
+429
+Width
+3
+454
+Height
+3
+145
+Caption
+5
+284
+In Value mode, enter a rate in real terms because SAM applies both escalation and inflation to the total first-year thermal bill to calculate the annual thermal bill in later years. In Schedule mode, enter rates in nominal terms because inflation does not apply. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 GroupBox
 
 1
@@ -102,7 +174,7 @@ Width
 384
 Height
 3
-88
+54
 Caption
 5
 145
@@ -128,43 +200,6 @@ AlignRight
 AlignTop
 2
 1
-RadioChoice
-
-1
-10
-Name
-5
-23
-thermal_buy_rate_option
-X
-3
-39
-Y
-3
-171
-Width
-3
-438
-Height
-3
-38
-Selection
-3
-0
-Items
-6
-2
-Flat buy rate
-Timestep buy rate
-ShowCaptions
-2
-1
-Horizontal
-2
-1
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -172,7 +207,7 @@ Numeric
 Name
 5
 21
-thermal_flat_buy_rate
+thermal_buy_rate_flat
 X
 3
 126
@@ -224,6 +259,83 @@ BackColour
 TabOrder
 3
 4294967295
+RadioChoice
+
+1
+10
+Name
+5
+23
+thermal_buy_rate_option
+X
+3
+39
+Y
+3
+171
+Width
+3
+438
+Height
+3
+38
+Selection
+3
+0
+Items
+6
+2
+Flat buy rate
+Timestep buy rate
+ShowCaptions
+2
+1
+Horizontal
+2
+1
+TabOrder
+3
+4294967295
+SchedNumeric
+
+1
+11
+Name
+5
+23
+thermal_rate_escalation
+X
+3
+249
+Y
+3
+396
+Width
+3
+75
+Height
+3
+21
+Label
+5
+5
+Value
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+129
+Type an escalation rate (%) for each year. Each year's rate applies to the first-year electricity cost. Inflation does not apply.
+TabOrder
+3
+8
 Numeric
 
 1
@@ -231,7 +343,7 @@ Numeric
 Name
 5
 22
-thermal_flat_sell_rate
+thermal_sell_rate_flat
 X
 3
 126
@@ -387,7 +499,7 @@ TabOrder
 3
 4294967295
 
-8
+9
 thermal_buy_rate
 3
 2
@@ -400,8 +512,22 @@ Thermal Rate
 2
 1
 1
-0.000000
+0
 Default
+thermal_buy_rate_flat
+3
+1
+Buy rate
+$/kWh-t
+Thermal Rate
+0
+2
+1
+1
+1
+1
+0
+Numeric
 thermal_buy_rate_option
 3
 1
@@ -415,36 +541,22 @@ Flat buy rate|Timestep buy rate
 1
 1
 1
-0.000000
+0
 RadioChoice
-thermal_flat_buy_rate
+thermal_rate_escalation
 3
-1
-Buy rate
-$/kWh-t
+2
+Thermal rate escalation
+%/yr
 Thermal Rate
 0
 2
 1
-1
-1
-1
-0.000000
-Numeric
-thermal_flat_sell_rate
-3
-1
-Sell Rate
-$/kWh-t
-Thermal Rate
-0
 2
 1
 1
-1
-1
-0.000000
-Numeric
+0
+SchedNumeric
 thermal_sell_rate
 3
 2
@@ -457,8 +569,22 @@ Thermal Rate
 2
 1
 1
-0.000000
+0
 Default
+thermal_sell_rate_flat
+3
+1
+Sell Rate
+$/kWh-t
+Thermal Rate
+0
+2
+1
+1
+1
+1
+0
+Numeric
 thermal_sell_rate_option
 3
 1
@@ -472,7 +598,7 @@ Flat sell rate|Timestep sell rate
 1
 1
 1
-0.000000
+0
 RadioChoice
 thermal_timestep_buy_rate
 3
@@ -486,7 +612,7 @@ Thermal Rate
 2
 1
 1
-0.000000
+0
 DataArray
 thermal_timestep_sell_rate
 3
@@ -500,7 +626,7 @@ Thermal Rate
 2
 1
 1
-0.000000
+0
 DataArray
 
 1116
@@ -513,7 +639,7 @@ equations{ '$MIMO$ thermalrate' } = define() {
 		{
 			buy_rate = alloc(8760);
 			for (i=0;i<#buy_rate; i++)
-				buy_rate[i] = ${thermal_flat_buy_rate};
+				buy_rate[i] = ${thermal_buy_rate_flat};
 		}
 		else if (${thermal_buy_rate_option} == 1)
 		{
@@ -539,7 +665,7 @@ equations{ '$MIMO$ thermalrate' } = define() {
 		{
 			sell_rate = alloc(8760);
 			for (i=0;i<#sell_rate; i++)
-				sell_rate[i] = ${thermal_flat_sell_rate};
+				sell_rate[i] = ${thermal_sell_rate_flat};
 		}
 		else if (${thermal_sell_rate_option} == 1)
 		{
@@ -571,7 +697,7 @@ on_load{'Thermal Rate'} = define() {
 	fin = financing();
 	buy_enable = (fin == "Commercial");
 	enable("thermal_buy_rate_option",fin);
-	enable("thermal_flat_buy_rate",fin);
+	enable("thermal_buy_rate_flat",fin);
 	enable("thermal_timestep_buy_rate",fin);
 	if (buy_enable) on_change{'thermal_buy_rate_option'}();
 	on_change{'thermal_sell_rate_option'}();
@@ -579,12 +705,12 @@ on_load{'Thermal Rate'} = define() {
 
 on_change{'thermal_buy_rate_option'} = define() {
 	x = value('thermal_buy_rate_option');
-	enable('thermal_flat_buy_rate',!x);
+	enable('thermal_buy_rate_flat',!x);
 	enable('thermal_timestep_buy_rate',x);
 };
 
 on_change{'thermal_sell_rate_option'} = define() {
 	x = value('thermal_sell_rate_option');
-	enable('thermal_flat_sell_rate',!x);
+	enable('thermal_sell_rate_flat',!x);
 	enable('thermal_timestep_sell_rate',x);
 };
