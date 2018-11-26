@@ -2296,7 +2296,7 @@ Weather file value on load
  
 Location and Resource
 0
-0
+4
 1
 4
 0
@@ -2334,7 +2334,7 @@ Weather file
  
 Location and Resource
 0
-8
+12
 1
 4
 0
