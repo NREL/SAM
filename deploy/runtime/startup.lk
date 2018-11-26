@@ -1041,7 +1041,7 @@ setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for comme
 
 // Fuel Cell /////////////////////////////////////////////////////////
 setconfig( 'Fuel Cell', 'Commercial');
-setmodules( ['pvwattsv5', 'fuelcell', 'battery', 'utilityrate5', 'cashloan'] );
+setmodules( ['pvwattsv5', 'fuelcell', 'battery', 'utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_btm();
@@ -1050,15 +1050,17 @@ setup_commercial_pages(LOAD_SIMPLE,LIFETIME_PV); //belpe not valid for commercia
 addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rate'});
 addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
-/*
+
 setconfig( 'Fuel Cell', 'Single Owner');
-setmodules( ['pvwattsv5', 'fuelcell', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv5', 'fuelcell', 'battery', 'utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_fom();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'Fuel Cell Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='fuel_cell_costs' } );
 setup_single_owner_pages(LIFETIME_PV);
-*/
+setup_utility_rate_optional();
+addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rate'});
+
 
 // Geothermal Power ////////////////////////////////////////////////////////////
 setconfig( 'Geothermal Power', 'Independent Power Producer' );
