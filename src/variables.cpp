@@ -1790,6 +1790,13 @@ VarInfo *VarInfoLookup::Lookup( const wxString &name )
 	else return it->second;
 }
 
+wxString VarInfoLookup::LookupByLabel(const wxString &label)
+{
+	for (VarInfoHash::iterator it = begin(); it != end(); ++it)
+		if (it->second->Label.IsSameAs(label, false))
+			return it->first;
+	return wxEmptyString;
+}
 
 
 VarTableScriptInterpreter::VarTableScriptInterpreter( lk::node_t *tree, lk::env_t *env, VarTable *vt )

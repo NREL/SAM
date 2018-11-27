@@ -1341,6 +1341,31 @@ void SelectVariableDialog::ShowAllItems()
 	tree->ScrollTo(this->m_root);
 }
 
+wxString SelectVariableDialog::PrettyPrintLabel(const wxString name, const VarInfo vi) {
+	return PrettyPrintLabel(name, vi.Label, wxString::Format(wxT("%i"), vi.Type), vi.Units, vi.Group);
+}
+
+wxString SelectVariableDialog::PrettyPrintLabel(const wxString name, const wxString label, const wxString type, 
+												const wxString units, const wxString group) {
+	wxString ppLabel = label;
+	ppLabel += " {'" + name + "'}";
+	if (!units.IsEmpty()) ppLabel += " (" + units + ")";
+	int ty = wxAtoi(type);
+	wxString sty;
+	if (ty == VV_NUMBER) sty = "number";
+	else if (ty == VV_ARRAY) sty = "array";
+	else if (ty == VV_MATRIX) sty = "matrix";
+	else if (ty == VV_STRING) sty = "string";
+	else if (ty == VV_TABLE) sty = "table";
+	ppLabel += " [" + sty + "]";
+
+	if (!group.IsEmpty())
+		ppLabel = group + "/" + ppLabel;
+	else
+		ppLabel = "Other/" + ppLabel;
+	return ppLabel;
+}
+
 void SelectVariableDialog::SetItems(const wxArrayString &names, const wxArrayString &labels)
 {
 	if ( names.Count() != labels.Count() ) return;
@@ -1533,22 +1558,7 @@ void VarSelectDialog::SetConfiguration( const wxString &tech, const wxString &fi
 			++it )
 		{
 			names.Add( it->first );
-			wxString label( it->second->Label );
-			label += " {'" + it->first + "'}";
-			if ( !it->second->Units.IsEmpty() ) label += " (" + it->second->Units + ")";
-			int ty = it->second->Type;
-			wxString sty;
-			if (ty == VV_NUMBER ) sty = "number";
-			else if ( ty == VV_ARRAY ) sty = "array";
-			else if ( ty == VV_MATRIX ) sty = "matrix";
-			else if ( ty == VV_STRING ) sty = "string";
-			else if ( ty == VV_TABLE ) sty = "table";
-			label += " [" + sty + "]";
-
-			if ( !it->second->Group.IsEmpty() )
-				label = it->second->Group + "/" + label;
-			else
-				label = "Other/" + label;
+			wxString label = PrettyPrintLabel(it->first, *(it->second));
 
 			labels.Add( label );
 		}

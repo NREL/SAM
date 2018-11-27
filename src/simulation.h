@@ -162,9 +162,10 @@ public:
 		
 	static bool ListAllOutputs( ConfigInfo *cfg, 
 		wxArrayString *names, 
-		wxArrayString *labels, 
+		wxArrayString *labels,
 		wxArrayString *units, 
 		wxArrayString *groups, 
+		wxArrayString* types,
 		bool single_values = false );
 
 	static int DispatchThreads( wxThreadProgressDialog &tpd, 
