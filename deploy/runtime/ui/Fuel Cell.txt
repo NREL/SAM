@@ -1,7 +1,7 @@
 Fuel Cell
-986
-838
-29
+967
+976
+33
 Divider
 
 1
@@ -80,6 +80,33 @@ GroupBox
 7
 Name
 5
+17
+Stack Replacement
+X
+3
+9
+Y
+3
+306
+Width
+3
+950
+Height
+3
+144
+Caption
+5
+17
+Stack Replacement
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
 11
 fuelCellBox
 X
@@ -138,10 +165,10 @@ Name
 fuelCellBox3
 X
 3
-6
+9
 Y
 3
-306
+450
 Width
 3
 950
@@ -165,10 +192,10 @@ Name
 fuelCellBox4
 X
 3
-6
+9
 Y
 3
-660
+804
 Width
 3
 950
@@ -192,10 +219,10 @@ Name
 fuelCellFuelLabel
 X
 3
-381
+384
 Y
 3
-684
+828
 Width
 3
 522
@@ -237,10 +264,10 @@ Name
 fuelCellTypeLabel
 X
 3
-315
+312
 Y
 3
-36
+27
 Width
 3
 615
@@ -490,10 +517,10 @@ Name
 fuelcell_efficiency
 X
 3
-21
+24
 Y
 3
-330
+474
 Width
 3
 514
@@ -565,10 +592,10 @@ Name
 fuelcell_efficiency_plot
 X
 3
-540
+543
 Y
 3
-330
+474
 Width
 3
 400
@@ -585,10 +612,10 @@ Name
 fuelcell_fuel_available_in
 X
 3
-168
+171
 Y
 3
-753
+897
 Width
 3
 90
@@ -644,10 +671,10 @@ Name
 fuelcell_fuel_available_units
 X
 3
-261
+264
 Y
 3
-753
+897
 Width
 3
 90
@@ -677,10 +704,10 @@ Name
 fuelcell_fuel_type
 X
 3
-168
+171
 Y
 3
-693
+837
 Width
 3
 90
@@ -710,10 +737,10 @@ Name
 fuelcell_lhv_in
 X
 3
-168
+171
 Y
 3
-723
+867
 Width
 3
 90
@@ -769,10 +796,10 @@ Name
 fuelcell_lhv_units
 X
 3
-261
+264
 Y
 3
-723
+867
 Width
 3
 90
@@ -968,6 +995,89 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+12
+Name
+5
+26
+fuelcell_replacement_label
+X
+3
+654
+Y
+3
+381
+Width
+3
+251
+Height
+3
+50
+Caption
+5
+57
+Enter a 1 to replace fuel cell stack in each year desired
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+RadioChoice
+
+1
+10
+Name
+5
+27
+fuelcell_replacement_option
+X
+3
+60
+Y
+3
+336
+Width
+3
+219
+Height
+3
+76
+Selection
+3
+0
+Items
+6
+3
+No replacements
+Replace at specified capacity
+Replace at specified schedule
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -978,10 +1088,10 @@ Name
 fuelcell_replacement_percent
 X
 3
-750
+582
 Y
 3
-225
+342
 Width
 3
 54
@@ -1024,6 +1134,40 @@ BackColour
 255
 255
 255
+TabOrder
+3
+4294967295
+DataArray
+
+1
+9
+Name
+5
+29
+fuelcell_replacement_schedule
+X
+3
+549
+Y
+3
+381
+Width
+3
+90
+Height
+3
+24
+Mode
+3
+2
+Label
+5
+33
+Battery bank replacement schedule
+Description
+5
+93
+Battery bank replacement schedule (enter a 1 for years in which a battery replacement occurs)
 TabOrder
 3
 4294967295
@@ -1305,7 +1449,7 @@ Bold
 2
 1
 
-23
+25
 fuelcell_degradation
 3
 1
@@ -1318,7 +1462,7 @@ Fuel Cell
 1
 1
 1
-0.010000
+0.01
 Numeric
 fuelcell_degradation_input
 3
@@ -1332,7 +1476,7 @@ Fuel Cell
 1
 1
 1
-20.000000
+20
 Numeric
 fuelcell_degradation_restart
 3
@@ -1346,7 +1490,7 @@ Fuel Cell
 1
 1
 1
-1.000000
+1
 Numeric
 fuelcell_degradation_units
 3
@@ -1361,7 +1505,7 @@ kW/hr|%/year
 1
 1
 1
-1.000000
+1
 Choice
 fuelcell_dynamic_response
 3
@@ -1375,7 +1519,7 @@ Fuel Cell
 1
 1
 1
-0.500000
+0.5
 Numeric
 fuelcell_efficiency
 3
@@ -1390,17 +1534,17 @@ Fuel Cell
 3
 11
 3
-0.000000 0.000000 50.000000 
-16.000000 21.000000 50.000000 
-25.000000 25.000000 50.000000 
-34.000000 32.000000 50.000000 
-44.000000 37.000000 50.000000 
-53.000000 42.000000 50.000000 
-62.000000 47.000000 49.000000 
-72.000000 50.000000 48.000000 
-82.000000 52.000000 47.000000 
-90.000000 52.000000 46.000000 
-100.000000 51.000000 45.000000 
+0 0 50 
+16 21 50 
+25 25 50 
+34 32 50 
+44 37 50 
+53 42 50 
+62 47 49 
+72 50 48 
+82 52 47 
+90 52 46 
+100 51 45 
 
 DataMatrix
 fuelcell_fuel_available
@@ -1415,7 +1559,7 @@ Fuel Cell
 1
 1
 1
-10000.000000
+10000
 Numeric
 fuelcell_fuel_available_in
 3
@@ -1429,7 +1573,7 @@ Fuel Cell
 1
 1
 1
-1000.000000
+1000
 Numeric
 fuelcell_fuel_available_units
 3
@@ -1444,7 +1588,7 @@ Liters|kg|cubic meters|Mcf
 1
 1
 1
-3.000000
+3
 Choice
 fuelcell_fuel_type
 3
@@ -1459,7 +1603,7 @@ Natural Gas|Diesel|Hydrogen|Custom
 1
 1
 1
-0.000000
+0
 Choice
 fuelcell_lhv
 3
@@ -1473,7 +1617,7 @@ Fuel Cell
 1
 1
 1
-1033.000000
+1033
 Numeric
 fuelcell_lhv_in
 3
@@ -1487,7 +1631,7 @@ Fuel Cell
 1
 1
 1
-20267.000000
+20267
 Numeric
 fuelcell_lhv_units
 3
@@ -1502,7 +1646,7 @@ Btu/lbm|MJ/kg|Btu/ft3
 1
 1
 1
-2.000000
+2
 Choice
 fuelcell_number_of_units
 3
@@ -1516,7 +1660,7 @@ Fuel Cell
 1
 1
 1
-1.000000
+1
 Numeric
 fuelcell_power
 3
@@ -1530,7 +1674,7 @@ Fuel Cell
 1
 1
 1
-0.000000
+0
 Numeric
 fuelcell_power_min
 3
@@ -1544,12 +1688,27 @@ Fuel Cell
 1
 1
 1
-0.000000
+0
 Numeric
+fuelcell_replacement_option
+3
+1
+Replacement option
+ 
+Fuel Cell
+75
+No replacements|Replace at specified capacity|Replace at specified schedule
+1
+1
+1
+1
+1
+0
+RadioChoice
 fuelcell_replacement_percent
 3
 1
-Replacement percent
+Fuel cell stack replacement threshold
 %
 Fuel Cell
 0
@@ -1558,8 +1717,22 @@ Fuel Cell
 1
 1
 1
-50.000000
+50
 Numeric
+fuelcell_replacement_schedule
+3
+2
+Fuel cell replacement schedule
+ 
+Fuel Cell
+0
+0
+1
+2
+1
+1
+0
+DataArray
 fuelcell_startup_time
 3
 1
@@ -1572,7 +1745,7 @@ Fuel Cell
 1
 1
 1
-24.000000
+24
 Numeric
 fuelcell_type
 3
@@ -1587,7 +1760,7 @@ MCFC|PAFC|SOFC|Custom
 1
 1
 1
-0.000000
+0
 Choice
 fuelcell_unit_max_power
 3
@@ -1601,7 +1774,7 @@ Fuel Cell
 1
 1
 1
-100.000000
+100
 Numeric
 fuelcell_unit_min_power
 3
@@ -1615,7 +1788,7 @@ Fuel Cell
 1
 1
 1
-20.000000
+20
 Numeric
 fuelcell_unit_min_power_input
 3
@@ -1629,7 +1802,7 @@ Fuel Cell
 1
 1
 1
-20.000000
+20
 Numeric
 fuelcell_unit_min_units
 3
@@ -1644,7 +1817,7 @@ kW|% of nameplate
 1
 1
 1
-1.000000
+1
 Choice
 
 2560
@@ -1745,11 +1918,17 @@ equations{'fuelcell_unit_min_power'} = define()
 
 };
 
-2165
+2432
 on_load{'Fuel Cell'} = define() {
 	on_change{'fuelcell_efficiency'}(); 
 	on_change{'fuelcell_fuel_type'}();
+	on_change{'fuelcell_replacement_option'}();
 	//plot_efficiency();
+};
+
+on_change{'fuelcell_replacement_option'} = define(){
+	enable('fuelcell_replacement_percent', value('fuelcell_replacement_option')==1);
+	enable('fuelcell_replacement_schedule', value('fuelcell_replacement_option')==2);
 };
 
 on_change{'fuelcell_efficiency'} = define(){
