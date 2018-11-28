@@ -1041,7 +1041,7 @@ setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for comme
 
 // Fuel Cell /////////////////////////////////////////////////////////
 setconfig( 'Fuel Cell', 'Commercial');
-setmodules( ['pvwattsv5', 'fuelcell', 'battery', 'utilityrate5', 'thermalrate', 'cashloan'] );
+setmodules( ['pvwattsv5_lifetime', 'fuelcell', 'battery', 'utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_btm();
@@ -1052,7 +1052,7 @@ addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_loa
 
 
 setconfig( 'Fuel Cell', 'Single Owner');
-setmodules( ['pvwattsv5', 'fuelcell', 'battery', 'utilityrate5', 'thermalrate', 'singleowner']);
+setmodules( ['pvwattsv5_lifetime', 'fuelcell', 'battery', 'utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_fom();
