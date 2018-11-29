@@ -7074,7 +7074,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 battery_per_kW
 3
@@ -7088,7 +7088,7 @@ Capital Costs
 1
 1
 1
-600.000000
+600
 Numeric
 battery_per_kWh
 3
@@ -7102,7 +7102,7 @@ Capital Costs
 1
 1
 1
-600.000000
+600
 Numeric
 battery_power
 3
@@ -7116,7 +7116,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 battery_total
 3
@@ -7130,7 +7130,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_equip_battperkw
 3
@@ -7144,7 +7144,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_equip_fcperkw
 3
@@ -7158,7 +7158,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_equip_fixed
 3
@@ -7172,7 +7172,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_equip_perarea
 3
@@ -7186,7 +7186,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_equip_perwatt
 3
@@ -7200,7 +7200,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_equip_total
 3
@@ -7214,7 +7214,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 contingency
 3
@@ -7228,7 +7228,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 contingency_percent
 3
@@ -7242,7 +7242,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 engr_fixed
 3
@@ -7256,7 +7256,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 engr_per_battkw
 3
@@ -7270,7 +7270,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 engr_per_fckw
 3
@@ -7284,7 +7284,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 engr_per_watt
 3
@@ -7298,7 +7298,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 engr_percent
 3
@@ -7312,7 +7312,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 engr_total
 3
@@ -7326,7 +7326,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 fuelcell_per_kW
 3
@@ -7340,7 +7340,7 @@ Capital Costs
 1
 1
 1
-400.000000
+400
 Numeric
 fuelcell_power_total
 3
@@ -7354,7 +7354,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 fuelcell_total
 3
@@ -7368,7 +7368,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 grid_fixed
 3
@@ -7382,7 +7382,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 grid_per_battkw
 3
@@ -7396,7 +7396,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 grid_per_fckw
 3
@@ -7410,7 +7410,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 grid_per_watt
 3
@@ -7424,7 +7424,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 grid_percent
 3
@@ -7438,7 +7438,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 grid_total
 3
@@ -7452,7 +7452,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_labor_battperkw
 3
@@ -7466,7 +7466,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_labor_fcperkw
 3
@@ -7480,7 +7480,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_labor_fixed
 3
@@ -7494,7 +7494,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_labor_perarea
 3
@@ -7508,7 +7508,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_labor_perwatt
 3
@@ -7522,7 +7522,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_labor_total
 3
@@ -7536,7 +7536,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_margin_battperkw
 3
@@ -7550,7 +7550,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_margin_fcperkw
 3
@@ -7564,7 +7564,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_margin_fixed
 3
@@ -7578,7 +7578,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_margin_perarea
 3
@@ -7592,7 +7592,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_margin_perwatt
 3
@@ -7606,7 +7606,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_margin_total
 3
@@ -7620,7 +7620,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 installed_per_capacity
 3
@@ -7634,7 +7634,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 inverter_costunits
 3
@@ -7649,7 +7649,7 @@ $/Wac|$/Wdc|$/Unit
 1
 1
 1
-0.000000
+0
 Choice
 inverter_num_units
 3
@@ -7663,7 +7663,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 inverter_power
 3
@@ -7677,7 +7677,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 inverter_total
 3
@@ -7691,7 +7691,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 inverterarray_power
 3
@@ -7705,7 +7705,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_area_value
 3
@@ -7719,7 +7719,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_fixed
 3
@@ -7733,7 +7733,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_per_acre
 3
@@ -7747,7 +7747,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_per_battkw
 3
@@ -7761,7 +7761,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_per_fckw
 3
@@ -7775,7 +7775,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_per_watt
 3
@@ -7789,7 +7789,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_percent
 3
@@ -7803,7 +7803,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_total
 3
@@ -7817,7 +7817,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_fixed
 3
@@ -7831,7 +7831,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_per_acre
 3
@@ -7845,7 +7845,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_per_battkw
 3
@@ -7859,7 +7859,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_per_fckw
 3
@@ -7873,7 +7873,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_per_watt
 3
@@ -7887,7 +7887,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_percent
 3
@@ -7901,7 +7901,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_total
 3
@@ -7915,7 +7915,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 module_costunits
 3
@@ -7930,7 +7930,7 @@ $/Wdc|$/Unit
 1
 1
 1
-0.000000
+0
 Choice
 module_num_units
 3
@@ -7944,7 +7944,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 module_power
 3
@@ -7958,7 +7958,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 module_total
 3
@@ -7972,7 +7972,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 modulearray_area
 3
@@ -7986,7 +7986,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 modulearray_power
 3
@@ -8000,7 +8000,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 per_inverter
 3
@@ -8014,7 +8014,7 @@ Capital Costs
 1
 1
 1
-0.710000
+0.71
 Numeric
 per_module
 3
@@ -8028,7 +8028,7 @@ Capital Costs
 1
 1
 1
-4.840000
+4.84
 Numeric
 permitting_fixed
 3
@@ -8042,7 +8042,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 permitting_per_battkw
 3
@@ -8056,7 +8056,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 permitting_per_fckw
 3
@@ -8070,7 +8070,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 permitting_per_watt
 3
@@ -8084,7 +8084,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 permitting_percent
 3
@@ -8098,7 +8098,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 permitting_total
 3
@@ -8112,7 +8112,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 sales_tax_percent
 3
@@ -8126,7 +8126,7 @@ Capital Costs
 1
 1
 1
-100.000000
+100
 Numeric
 sales_tax_total
 3
@@ -8140,7 +8140,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 sales_tax_value
 3
@@ -8154,7 +8154,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 subtotal_direct
 3
@@ -8168,7 +8168,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 system_use_recapitalization
 3
@@ -8182,7 +8182,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 total_direct_cost
 3
@@ -8196,7 +8196,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 total_indirect_cost
 3
@@ -8210,7 +8210,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 total_installed_cost
 3
@@ -8224,15 +8224,15 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 
-6824
+6914
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
 			+ ${battery_power} * ${engr_per_battkw}
-			+ ${fuelcell_power} * ${engr_per_fckw}
+			+ ${fuelcell_power_nameplate} * ${engr_per_fckw}
 			+ ${engr_fixed};
 };
 
@@ -8306,14 +8306,14 @@ equations{ 'land_total' } = define() {
 		+ ${land_percent}/100*${total_direct_cost} 
 		+ ${modulearray_power}*1000*${land_per_watt} 
 		+ ${battery_power} * ${land_per_battkw}
-		+ ${fuelcell_power} * ${land_per_fckw}
+		+ ${fuelcell_power_nameplate} * ${land_per_fckw}
 		+ ${land_fixed}; };
 
 equations{ 'permitting_total' } = define() {
 	return ${permitting_percent}/100*${total_direct_cost} 
 		+ ${modulearray_power}*1000*${permitting_per_watt} 
 		+ ${battery_power} * ${permitting_per_battkw}
-		+ ${fuelcell_power} * ${permitting_per_fckw}
+		+ ${fuelcell_power_nameplate} * ${permitting_per_fckw}
 		+ ${permitting_fixed}; };
 
 equations{ 'sales_tax_total' } = define() {
@@ -8325,7 +8325,7 @@ equations{ 'install_labor_total' } = define() {
 	return ${install_labor_fixed}
 		+ ${modulearray_power}*1000*${install_labor_perwatt}
 		+ ${battery_power} * ${install_labor_battperkw}
-		+ ${fuelcell_power} * ${install_labor_fcperkw}
+		+ ${fuelcell_power_nameplate} * ${install_labor_fcperkw}
 		+ ${modulearray_area}*${install_labor_perarea}; };
 
 equations{ 'module_num_units' } = define() {
@@ -8341,7 +8341,7 @@ equations{ 'landprep_total' } = define() {
 		+ ${landprep_percent}/100*${total_direct_cost} 
 		+ ${modulearray_power}*1000*${landprep_per_watt} 
 		+ ${battery_power} * ${landprep_per_battkw}
-		+ ${fuelcell_power} * ${landprep_per_fckw}
+		+ ${fuelcell_power_nameplate} * ${landprep_per_fckw}
 		+ ${landprep_fixed}; };
 
 
@@ -8349,7 +8349,7 @@ equations{ 'install_margin_total' } = define() {
 	return ${install_margin_fixed}
 		+ ${modulearray_power}*1000*${install_margin_perwatt}
 		+ ${battery_power} * ${install_margin_battperkw}
-		+ ${fuelcell_power} * ${install_margin_fcperkw}
+		+ ${fuelcell_power_nameplate} * ${install_margin_fcperkw}
 		+ ${modulearray_area}*${install_margin_perarea}; };
 
 equations{ 'total_installed_cost' } = define() {
@@ -8378,7 +8378,7 @@ equations{ 'grid_total' } = define() {
 	return ${grid_percent}/100*${total_direct_cost} 
 		+ ${modulearray_power}*1000*${grid_per_watt} 
 		+ ${battery_power} * ${grid_per_battkw}
-		+ ${fuelcell_power} * ${grid_per_fckw}
+		+ ${fuelcell_power_nameplate} * ${grid_per_fckw}
 		+ ${grid_fixed}; };
 
 equations{ 'inverter_total' } = define() {
@@ -8395,7 +8395,7 @@ equations{ 'bos_equip_total' } = define() {
 	return ${bos_equip_fixed}
 + ${modulearray_power}*1000*${bos_equip_perwatt}
 + ${battery_power} * ${bos_equip_battperkw}
-+ ${fuelcell_power} * ${bos_equip_fcperkw}
++ ${fuelcell_power_nameplate} * ${bos_equip_fcperkw}
 + ${modulearray_area}*${bos_equip_perarea}; };
 
 
@@ -8461,7 +8461,7 @@ equations { 'battery_power' } = define () {
 };
 equations { 'fuelcell_power_total' } = define () {
 	if( technology() == "Fuel Cell"){
-		return ${fuelcell_power};
+		return ${fuelcell_power_nameplate};
 	}
 	else
 		return 0;

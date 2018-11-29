@@ -1056,7 +1056,7 @@ setmodules( ['pvwattsv5_lifetime', 'fuelcell', 'battery', 'utilityrate5', 'therm
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_fom();
-addpage( [[ 'Fuel Cell Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='fuel_cell_costs' } );
+addpage( [[ 'Fuel Cell Costs','Fuel Cell O and M Costs' ]], { 'sidebar'='System Costs', 'help'='fuel_cell_costs' } );
 setup_single_owner_pages(LIFETIME_PV);
 setup_utility_rate_optional();
 addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rate'});

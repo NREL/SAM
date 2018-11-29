@@ -883,14 +883,14 @@ Numeric
 16
 Name
 5
-14
-fuelcell_power
+18
+fuelcell_power_min
 X
 3
 153
 Y
 3
-249
+276
 Width
 3
 57
@@ -942,14 +942,14 @@ Numeric
 16
 Name
 5
-18
-fuelcell_power_min
+24
+fuelcell_power_nameplate
 X
 3
 153
 Y
 3
-276
+249
 Width
 3
 57
@@ -1662,10 +1662,10 @@ Fuel Cell
 1
 1
 Numeric
-fuelcell_power
+fuelcell_power_min
 3
 1
-Total nameplate power
+Total min power
 kW
 Fuel Cell
 0
@@ -1676,10 +1676,10 @@ Fuel Cell
 1
 0
 Numeric
-fuelcell_power_min
+fuelcell_power_nameplate
 3
 1
-Total min power
+Total nameplate power
 kW
 Fuel Cell
 0
@@ -1820,7 +1820,7 @@ kW|% of nameplate
 1
 Choice
 
-2560
+2570
 equations{ 'fuelcell_fuel_available'} = define(){
 	liter_per_m3 = 1000;
 	MCF_per_liter = 28316.846592;
@@ -1898,7 +1898,7 @@ equations{'fuelcell_degradation'} = define()
 	return degradation;
 };
 
-equations{'fuelcell_power'} = define(){
+equations{'fuelcell_power_nameplate'} = define(){
 	return (${fuelcell_unit_max_power} * ${fuelcell_number_of_units});
 };
 

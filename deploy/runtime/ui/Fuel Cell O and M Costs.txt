@@ -485,86 +485,6 @@ SchedNumeric
 11
 Name
 5
-16
-batt_om_capacity
-X
-3
-360
-Y
-3
-72
-Width
-3
-90
-Height
-3
-21
-Label
-5
-5
-Value
-UseSchedule
-2
-0
-ScheduleOnly
-2
-0
-FixedLength
-3
-4294967295
-Description
-5
-109
-Type a fixed cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
-TabOrder
-3
-3
-SchedNumeric
-
-1
-11
-Name
-5
-13
-batt_om_fixed
-X
-3
-360
-Y
-3
-48
-Width
-3
-90
-Height
-3
-21
-Label
-5
-5
-Value
-UseSchedule
-2
-0
-ScheduleOnly
-2
-0
-FixedLength
-3
-4294967295
-Description
-5
-106
-Type a fixed cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
-TabOrder
-3
-1
-SchedNumeric
-
-1
-11
-Name
-5
 12
 fc_fuel_cost
 X
@@ -598,17 +518,48 @@ Description
 TabOrder
 3
 4294967295
+Choice
+
+1
+8
+Name
+5
+20
+fuelcell_price_units
+X
+3
+591
+Y
+3
+120
+Width
+3
+90
+Height
+3
+24
+Items
+6
+2
+$/MCf
+$/MMBtu
+Selection
+3
+1
+TabOrder
+3
+4294967295
 SchedNumeric
 
 1
 11
 Name
 5
-14
-fc_om_capacity
+11
+om_capacity
 X
 3
-492
+234
 Y
 3
 72
@@ -644,14 +595,14 @@ SchedNumeric
 11
 Name
 5
-11
-fc_om_fixed
+12
+om_capacity1
 X
 3
-492
+360
 Y
 3
-48
+72
 Width
 3
 90
@@ -673,43 +624,51 @@ FixedLength
 4294967295
 Description
 5
-106
-Type a fixed cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
+109
+Type a fixed cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-1
-Choice
+3
+SchedNumeric
 
 1
-8
+11
 Name
 5
-20
-fuelcell_price_units
+12
+om_capacity2
 X
 3
-591
+492
 Y
 3
-120
+72
 Width
 3
 90
 Height
 3
-24
-Items
-6
-3
-$/MCf
-$/MMBtu
-$/gal
-Selection
+21
+Label
+5
+5
+Value
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
 3
 4294967295
+Description
+5
+109
+Type a fixed cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -770,6 +729,126 @@ BackColour
 TabOrder
 3
 4
+SchedNumeric
+
+1
+11
+Name
+5
+8
+om_fixed
+X
+3
+234
+Y
+3
+48
+Width
+3
+90
+Height
+3
+21
+Label
+5
+5
+Value
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+106
+Type a fixed cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
+TabOrder
+3
+1
+SchedNumeric
+
+1
+11
+Name
+5
+9
+om_fixed1
+X
+3
+360
+Y
+3
+48
+Width
+3
+90
+Height
+3
+21
+Label
+5
+5
+Value
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+106
+Type a fixed cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
+TabOrder
+3
+1
+SchedNumeric
+
+1
+11
+Name
+5
+9
+om_fixed2
+X
+3
+492
+Y
+3
+48
+Width
+3
+90
+Height
+3
+21
+Label
+5
+5
+Value
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+106
+Type a fixed cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
+TabOrder
+3
+1
 Numeric
 
 1
@@ -890,6 +969,46 @@ BackColour
 TabOrder
 3
 8
+SchedNumeric
+
+1
+11
+Name
+5
+13
+om_production
+X
+3
+234
+Y
+3
+96
+Width
+3
+90
+Height
+3
+21
+Label
+5
+5
+Value
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+113
+Type a variable cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
+TabOrder
+3
+5
 Numeric
 
 1
@@ -950,156 +1069,22 @@ BackColour
 TabOrder
 3
 6
-SchedNumeric
-
-1
-11
-Name
-5
-14
-pv_om_capacity
-X
-3
-234
-Y
-3
-72
-Width
-3
-90
-Height
-3
-21
-Label
-5
-5
-Value
-UseSchedule
-2
-0
-ScheduleOnly
-2
-0
-FixedLength
-3
-4294967295
-Description
-5
-109
-Type a fixed cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
-TabOrder
-3
-3
-SchedNumeric
-
-1
-11
-Name
-5
-11
-pv_om_fixed
-X
-3
-234
-Y
-3
-48
-Width
-3
-90
-Height
-3
-21
-Label
-5
-5
-Value
-UseSchedule
-2
-0
-ScheduleOnly
-2
-0
-FixedLength
-3
-4294967295
-Description
-5
-106
-Type a fixed cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
-TabOrder
-3
-1
-SchedNumeric
-
-1
-11
-Name
-5
-16
-pv_om_production
-X
-3
-234
-Y
-3
-96
-Width
-3
-90
-Height
-3
-21
-Label
-5
-5
-Value
-UseSchedule
-2
-0
-ScheduleOnly
-2
-0
-FixedLength
-3
-4294967295
-Description
-5
-113
-Type a variable cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
-TabOrder
-3
-5
 
 17
-batt_om_capacity
+add_om_num_types
 3
-2
-Battery fixed cost by capacity 
-$/kW-yr 
+1
+ 
+ 
 Operation and Maintenance Costs
 0
-3
-1
-2
+8
 1
 1
-0.000000
-SchedNumeric
-batt_om_fixed
-3
-2
-Battery fixed annual cost 
-$/yr
-Operation and Maintenance Costs
+1
+1
 0
-3
-1
-2
-1
-1
-0.000000
-SchedNumeric
+Default
 fc_fuel_cost
 3
 2
@@ -1112,9 +1097,66 @@ Operation and Maintenance Costs
 2
 1
 1
-0.000000
+0
 SchedNumeric
-fc_om_capacity
+fuelcell_price_units
+3
+1
+ Fuel cost units
+ 
+Operation and Maintenance Costs
+13
+$/MCf|$/MMBtu
+3
+1
+1
+1
+1
+1
+Choice
+om_capacity
+3
+2
+PV fixed cost by capacity
+$/kW-yr 
+Operation and Maintenance Costs
+0
+3
+1
+2
+1
+1
+0
+SchedNumeric
+om_capacity1
+3
+2
+Battery fixed cost by capacity 
+$/kW-yr 
+Operation and Maintenance Costs
+0
+3
+1
+2
+1
+1
+0
+SchedNumeric
+om_capacity1_nameplate
+3
+1
+ 
+ 
+Operation and Maintenance Costs
+0
+8
+1
+1
+1
+1
+0
+Default
+om_capacity2
 3
 2
 Fuel cell fixed cost by capacity
@@ -1126,50 +1168,22 @@ Operation and Maintenance Costs
 2
 1
 1
-0.000000
-SchedNumeric
-fc_om_fixed
-3
-2
-Fuel cell fixed annual cost
-$/yr
-Operation and Maintenance Costs
 0
-3
-1
-2
-1
-1
-0.000000
 SchedNumeric
-fuelcell_price_units
+om_capacity2_nameplate
 3
 1
  
  
-Operation and Maintenance Costs
-0
-0
-1
-1
-1
-1
-0.000000
-Choice
-om_capacity
-3
-2
-Fixed cost by capacity
-$/kW-yr
 Operation and Maintenance Costs
 0
 8
 1
-2
 1
 1
-50.000000
-SchedNumeric
+1
+0
+Default
 om_capacity_escal
 3
 1
@@ -1182,21 +1196,49 @@ Operation and Maintenance Costs
 1
 1
 1
-0.000000
+0
 Numeric
 om_fixed
 3
 2
-Fixed annual cost
+PV fixed annual cost 
 $/yr
 Operation and Maintenance Costs
 0
-8
+3
 1
 2
 1
 1
-0.000000
+0
+SchedNumeric
+om_fixed1
+3
+2
+Battery fixed annual cost 
+$/yr
+Operation and Maintenance Costs
+0
+3
+1
+2
+1
+1
+0
+SchedNumeric
+om_fixed2
+3
+2
+Fuel cell fixed annual cost
+$/yr
+Operation and Maintenance Costs
+0
+3
+1
+2
+1
+1
+0
 SchedNumeric
 om_fixed_escal
 3
@@ -1210,7 +1252,7 @@ Operation and Maintenance Costs
 1
 1
 1
-0.000000
+0
 Numeric
 om_fuel_cost
 3
@@ -1224,7 +1266,7 @@ Operation and Maintenance Costs
 2
 1
 1
-0.000000
+0
 SchedNumeric
 om_fuel_cost_escal
 3
@@ -1238,21 +1280,21 @@ Operation and Maintenance Costs
 1
 1
 1
-0.000000
+0
 Numeric
 om_production
 3
 2
-Variable cost by generation
-$/MWh
+PV variable cost by generation
+$/MWh 
 Operation and Maintenance Costs
 0
-8
+3
 1
 2
 1
 1
-0.000000
+0
 SchedNumeric
 om_production_escal
 3
@@ -1266,65 +1308,42 @@ Operation and Maintenance Costs
 1
 1
 1
-0.000000
+0
 Numeric
-pv_om_capacity
-3
-2
-PV fixed cost by capacity
-$/kW-yr 
-Operation and Maintenance Costs
-0
-3
-1
-2
-1
-1
-0.000000
-SchedNumeric
-pv_om_fixed
-3
-2
-PV ixed annual cost 
-$/yr
-Operation and Maintenance Costs
-0
-3
-1
-2
-1
-1
-0.000000
-SchedNumeric
-pv_om_production
-3
-2
-PV variable cost by generation
-$/MWh 
-Operation and Maintenance Costs
-0
-3
-1
-2
-1
-1
-0.000000
-SchedNumeric
 
-419
-/*
+846
+
 equations{ 'om_fuel_cost'} = define(){
-	fuel_price = ${fc_fuel_price};
-	// need all prices in $/MMBtu (including gallons)
+	fuel_price = ${fc_fuel_cost};
+	// need all prices in $/MMBtu 
 	// Convert $/MMBtu to $/MCF (1 MMBTu = 0.973 MCF)
-	if (${fc_price_units} == 1){
-		fuel_price = fuel_price * 0.973;
-	}
+	if (${fuelcell_price_units} == 0)
+		for(i=0;i<#fuel_price;i++)
+			fuel_price[i] = fuel_price[i]/0.973;
 	
 	return fuel_price;
 };
-
-// calculate and set om_fixed, om_capacity, om_production and om_fuel_cost
-// set all as array based on schedules or first values and escalations 
+/*
+Set additional o and m cost values calculated in financial models
+only one fuel cost 
+Capacity and production o and m costs cannot be combined 
+since have different multipliers base on technology
 */
+equations{ 'add_om_num_types'} = define(){
+	return 2;
+};
+equations{ 'om_capacity1_nameplate'} = define(){
+	return ${batt_computed_bank_capacity};
+};
+equations{ 'om_capacity2_nameplate'} = define(){
+	return ${fuelcell_power_nameplate};
+};
+/*
+equations{ 'add_om_capacity_names'} = define(){
+	return "batt_computed_bank_capacity;fuelcell_power_nameplate";
+};
+*/
+
+
+
 0

@@ -50,6 +50,14 @@ function cf_om_expenses() {
 		if ( (tech == 'Flat Plate PV'  || tech == 'Generic System') && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
 			cfline( 'cf_utility_bill', 0);
 	}
+	if (tech == "Fuel Cell")
+	{
+		cfline( "Battery", -1); 
+		cfline( 'cf_om_fixed1_expense,cf_om_capacity1_expense', 2); 
+		cfline( "Fuel Cell", -1); 
+		cfline( 'cf_om_fixed2_expense,cf_om_capacity2_expense', 2); 
+	}
+	
 	
     fuel_tech = ( tech != 'Flat Plate PV' &&  
                  tech != 'PVWatts' &&  
@@ -57,7 +65,7 @@ function cf_om_expenses() {
                  tech != 'Solar Water Heating' &&  
                  tech != 'Wind Power' && 
                  tech != 'Biopower'); 
-	if ( fuel_tech == true ) cfline('cf_om_fuel_expense', 0); 
+	if ( fuel_tech == true ) cfline('cf_om_fuel_expense', 2); 
 	 
 	if ( tech == 'Biopower' ) cfline( 'cf_om_opt_fuel_1_expense', 0); 
 	if ( tech == 'Biopower' ) cfline( 'cf_om_opt_fuel_2_expense', 0); 
