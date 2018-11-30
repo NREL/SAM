@@ -606,175 +606,185 @@ p, p.p_Normal, div.p_Normal, li.p_Normal /* Normal */
  margin: 0 0 12px 0;
 }
 /* Table styles */
-table.Default.No.Border {
+table.DefaultNoBorder {
+width: 100%;
 border: none;
 border-spacing: 0;
 }
-table.Default.No.Border tr {
+table.DefaultNoBorder tr.DefaultNoBorder {
 text-align: left;
 }
-table.Default.No.Border th, table.Default.No.Border td {
+table.DefaultNoBorder th.DefaultNoBorder, table.DefaultNoBorder td.DefaultNoBorder {
 vertical-align: top;
 padding: 2px;
+border: none;
 }
-table.Default.Shaded.Rows {
+table.DefaultShadedRows {
+width: 100%;
 border: solid 2px #C0C0C0;
 border-spacing: 0;
 border-collapse: collapse;
 }
-table.Default.Shaded.Rows tr {
+table.DefaultShadedRows tr.DefaultShadedRows {
 text-align: left;
 }
-table.Default.Shaded.Rows th, table.Default.Shaded.Rows td {
+table.DefaultShadedRows th.DefaultShadedRows, table.DefaultShadedRows td.DefaultShadedRows {
 vertical-align: top;
 padding: 4px;
 border: solid thin #C0C0C0;
 }
-table.Topic.Status.Table {
+table.TopicStatusTable {
 border: none;
 border-spacing: 0;
 border-collapse: collapse;
 }
-table.Topic.Status.Table tr {
+table.TopicStatusTable tr.TopicStatusTable {
 text-align: left;
 }
-table.Topic.Status.Table th, table.Topic.Status.Table td {
+table.TopicStatusTable th.TopicStatusTable, table.TopicStatusTable td.TopicStatusTable {
 vertical-align: top;
 padding: 2px;
 border: solid thin;
 }
-table.Equation.Table {
+table.EquationTable {
 border: none;
 border-spacing: 0;
 border-collapse: collapse;
 }
-table.Equation.Table tr {
+table.EquationTable tr.EquationTable {
 text-align: left;
 }
-table.Equation.Table th, table.Equation.Table td {
+table.EquationTable th.EquationTable, table.EquationTable td.EquationTable {
 vertical-align: top;
 padding: 2px;
 border: solid thin;
 }
-table.Metrics.Table {
+table.MetricsTable {
 border: none;
 border-spacing: 0;
 border-collapse: collapse;
 }
-table.Metrics.Table tr {
+table.MetricsTable tr.MetricsTable {
 text-align: left;
 }
-table.Metrics.Table th, table.Metrics.Table td {
+table.MetricsTable th.MetricsTable, table.MetricsTable td.MetricsTable {
 vertical-align: top;
 padding: 0;
 border: solid thin;
 }
-table.Metrics.Table th {
+table.MetricsTable th {
 background-color:#808080;
 }
-table.Table.Styles2 {
+table.TableStyles2 {
 border: none;
 border-spacing: 0;
 }
-table.Table.Styles2 tr {
+table.TableStyles2 tr.TableStyles2 {
 text-align: left;
 }
-table.Table.Styles2 th, table.Table.Styles2 td {
+table.TableStyles2 th.TableStyles2, table.TableStyles2 td.TableStyles2 {
 vertical-align: top;
 padding: 0;
+border: none;
 }
-table.Toggle.Content.Table {
+table.ToggleContentTable {
+width: 100%;
 border: none;
 border-spacing: 0;
 }
-table.Toggle.Content.Table tr {
+table.ToggleContentTable tr.ToggleContentTable {
 text-align: left;
 }
-table.Toggle.Content.Table th, table.Toggle.Content.Table td {
+table.ToggleContentTable th.ToggleContentTable, table.ToggleContentTable td.ToggleContentTable {
 vertical-align: top;
 padding: 0;
+border: none;
 }
-table.Topic.Summary.Table {
+table.TopicSummaryTable {
+width: 100%;
 border: none;
 border-spacing: 0;
 }
-table.Topic.Summary.Table tr {
+table.TopicSummaryTable tr.TopicSummaryTable {
 text-align: left;
 }
-table.Topic.Summary.Table th, table.Topic.Summary.Table td {
+table.TopicSummaryTable th.TopicSummaryTable, table.TopicSummaryTable td.TopicSummaryTable {
 vertical-align: top;
 padding: 0;
+border: none;
 }
-table.Topic.TOC.Table {
+table.TopicTOCTable {
 width: 90%;
 background-color: #EBF2DE;
 border: solid thin;
 border-spacing: 0;
 }
-table.Topic.TOC.Table tr {
+table.TopicTOCTable tr.TopicTOCTable {
 text-align: left;
 }
-table.Topic.TOC.Table th, table.Topic.TOC.Table td {
+table.TopicTOCTable th.TopicTOCTable, table.TopicTOCTable td.TopicTOCTable {
 vertical-align: top;
 padding: 0;
 border: none;
 }
-table.Topic.TOC.Table th {
+table.TopicTOCTable th {
 background-color:#9bbb59;
 }
-table.UI.Group.Table {
+table.UIGroupTable {
 border: none;
 border-spacing: 10px;
 }
-table.UI.Group.Table tr {
+table.UIGroupTable tr.UIGroupTable {
 text-align: left;
 }
-table.UI.Group.Table th, table.UI.Group.Table td {
+table.UIGroupTable th.UIGroupTable, table.UIGroupTable td.UIGroupTable {
 vertical-align: top;
 padding: 2px;
 border: solid thin #999999;
 }
-table.Variable.Descriptions.Table {
+table.VariableDescriptionsTable {
 width: 95%;
 border: solid 2px;
 border-spacing: 0;
 border-collapse: collapse;
 }
-table.Variable.Descriptions.Table tr {
+table.VariableDescriptionsTable tr.VariableDescriptionsTable {
 text-align: left;
 }
-table.Variable.Descriptions.Table th, table.Variable.Descriptions.Table td {
+table.VariableDescriptionsTable th.VariableDescriptionsTable, table.VariableDescriptionsTable td.VariableDescriptionsTable {
 vertical-align: top;
 padding: 2px;
 border: solid thin;
 }
-table.Variable.List.Sortable {
+table.VariableListSortable {
 border: none;
 border-spacing: 0;
 }
-table.Variable.List.Sortable tr {
+table.VariableListSortable tr.VariableListSortable {
 text-align: left;
 }
-table.Variable.List.Sortable th, table.Variable.List.Sortable td {
+table.VariableListSortable th.VariableListSortable, table.VariableListSortable td.VariableListSortable {
 vertical-align: top;
 padding: 0;
+border: none;
 }
-table.Variable.List.Sortable th {
+table.VariableListSortable th {
 background-color:#999999;
 }
-table.Where.Table {
+table.WhereTable {
 border: none;
 border-spacing: 0;
 }
-table.Where.Table tr {
+table.WhereTable tr.WhereTable {
 text-align: left;
 }
-table.Where.Table th, table.Where.Table td {
+table.WhereTable th.WhereTable, table.WhereTable td.WhereTable {
 vertical-align: top;
 padding: 2px;
+border: none;
 }
-div.hmrotate90  { display:inline-block; transform: -webkit-writing-mode: vertical-rl; -ms-writing-mode: tb-rl; writing-mode: vertical-rl; }
-div.hmrotate270 { display:inline-block; transform: -webkit-writing-mode: vertical-rl; -ms-writing-mode: tb-rl; writing-mode: vertical-rl; transform: rotate(180deg); }
+div.hmrotate90  { display:inline-block; -webkit-writing-mode: vertical-rl; -ms-writing-mode: tb-rl; writing-mode: vertical-rl; }
+div.hmrotate270 { display:inline-block; -webkit-writing-mode: vertical-rl; -ms-writing-mode: tb-rl; writing-mode: vertical-rl; transform: rotate(180deg); }
 
 
 
