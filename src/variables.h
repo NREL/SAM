@@ -234,6 +234,7 @@ public:
 	void Add( VarInfoLookup *vil );
 	
 	VarInfo *Lookup( const wxString &name );
+	wxString LookupByLabel(const wxString &label);
 	wxArrayString ListAll();
 
 	int Type( const wxString &name );

@@ -799,90 +799,104 @@ bool ParametricViewer::ImportAsTable(wxString& vals, VarValue& vv) {
 
 void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	wxArrayString inputNames, outputNames;
-	// check if var is input or output variable
-	wxArrayString names, labels, units, groups;
-	Simulation::ListAllOutputs(m_case->GetConfiguration(),
-		&names, &labels, &units, &groups);
+	wxArrayString allOutputNames, allOutputLabels;
+	Simulation::ListAllOutputs(m_case->GetConfiguration(), &allOutputNames, &allOutputLabels, NULL, NULL, NULL);
 	for (int c = 0; c < col; c++) {
+		if (vals[c*row].Len() == 0)
+			continue;
+		// get the VarInfo corresponding to column header
 		wxArrayString splitUnit = wxSplit(vals[c*row], '(');
-		wxArrayString splitGroup = wxSplit(splitUnit[0], '/');
-		wxString name = splitGroup.Count() > 1 ? splitGroup[1] : splitGroup[0];
-		if (name[name.size() - 1] == ' ') name = name.SubString(0, name.size() - 2);
-
+		wxString name = splitUnit[0];
+		name = name.Trim();
 		VarInfoLookup &vil = m_case->GetConfiguration()->Variables;
-		bool found = false;
-		for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
-		{
-			wxString label = it->second->Label;
-			if (name.IsSameAs(label, false)) {
-				if ((it->second->Flags & VF_PARAMETRIC) && !(it->second->Flags & VF_INDICATOR) && !(it->second->Flags & VF_CALCULATED)) {
-					found = true;
-					name = it->first;
-					std::vector<VarValue> vvv;
-					ParametricData::Var pv;
-					for (int r = 1; r < row; r++) {
-						VarValue vv;
-						if (vals[c*row + r].Len() == 0) {
-							vv = it->second->DefaultValue;
-							vvv.push_back(vv);
-							continue;
-						}
-						if (ImportAsNumber(vals[c*row + r], vv)) {
-							vvv.push_back(vv);
-							continue;
-						}
-						if (ImportAsArray(vals[c*row + r], vv)) {
-							vvv.push_back(vv);
-							continue;
-						}
-						if (ImportAsMatrix(vals[c*row + r], vv)) {
-							vvv.push_back(vv);
-							continue;
-						}
-						if (ImportAsTable(vals[c*row + r], vv)) {
-							vvv.push_back(vv);
-							continue;
-						}
-						vv.Set(vals[c*row + r]);
-						vvv.push_back(vv);
-					}
-					pv.Values = vvv;
-					pv.Name = name;
-					if (!m_grid_data->IsValid(pv)) {
-						wxString typeS = m_case->BaseCase().GetInput(pv.Name)->TypeAsString();
-						wxString typeS2 = pv.Values[0].TypeAsString();
-						wxString errorStr = "Import Error: Value type of " + vals[c*row] + " is {" + typeS2 + "}, should be {" + typeS + "}.";
-						// some variables listed as {array} but can be single-value number
-						if (typeS == "array" && typeS2 == "number") {
-							errorStr += "\nTip: Insert ';' after a number to convert it to a single-entry array.";
-						}
-						wxMessageBox(errorStr);
-					}
-					m_grid_data->AddSetup(pv);
-					inputNames.push_back(name);
-					break;
-				}
+		VarInfo* vi = vil.Lookup(name);
+
+		// if not name is not of variable, see if it's a label
+		if (!vi) {
+			wxString vn = vil.LookupByLabel(name);
+			if (vn.Len() > 0) {
+				name = vn;
+				vi = vil.Lookup(name);
 			}
 		}
-		if (!found) {
-			for (size_t i = 0; i<labels.size(); i++)
+		// if not input, see if output
+		if (!vi) {
+			bool found = false;
+			for (size_t i = 0; i < allOutputNames.size(); i++)
 			{
-				if (name.IsSameAs(labels[i], false)) {
+				if (name.IsSameAs(allOutputNames[i], false)) {
+					outputNames.push_back(allOutputNames[i]);
 					found = true;
-					outputNames.push_back(names[i]);
 					break;
 				}
-				else if (name.IsSameAs(names[i], false)) {
+				else if (name.IsSameAs(allOutputLabels[i], false)) {
+					outputNames.push_back(allOutputNames[i]);
 					found = true;
-					outputNames.push_back(names[i]);
 					break;
 				}
 			}
-		}
-		if (!found) {
+			if (found) continue;
 			wxMessageBox("Error: could not identify parametric variable " + vals[c*row]);
 			continue;
 		}
+		if (!((vi->Flags & VF_PARAMETRIC) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED))) {
+			wxMessageBox("Error: " + name + " cannot be parametrized.");
+			continue;
+		}
+
+		// import column values
+		std::vector<VarValue> vvv;
+		ParametricData::Var pv;
+		int type = vi->Type;
+		for (int r = 1; r < row; r++) {
+			VarValue vv;
+			if (vals[c*row + r].Len() == 0) {
+				vv = vi->DefaultValue;
+				vvv.push_back(vv);
+				continue;
+			}
+			switch (type) {
+			case VV_NUMBER:
+				if (ImportAsNumber(vals[c*row + r], vv))
+					vvv.push_back(vv);
+				break;
+			case VV_ARRAY:
+				if (ImportAsArray(vals[c*row + r], vv))
+					vvv.push_back(vv);
+				break;
+			case VV_MATRIX:
+				if (ImportAsMatrix(vals[c*row + r], vv))
+					vvv.push_back(vv);
+				break;
+			case VV_STRING:
+				vv.Set(vals[c*row + r]);
+				vvv.push_back(vv);
+				break;
+			case VV_TABLE:
+				if (ImportAsTable(vals[c*row + r], vv))
+					vvv.push_back(vv);
+				break;
+			case VV_BINARY:
+			case VV_INVALID:
+			default:
+				break;
+			}
+
+		}
+		pv.Values = vvv;
+		pv.Name = name;
+		if (!m_grid_data->IsValid(pv)) {
+			wxString typeS = m_case->BaseCase().GetInput(pv.Name)->TypeAsString();
+			wxString typeS2 = pv.Values[0].TypeAsString();
+			wxString errorStr = "Import Error: Value type of " + vals[c*row] + " is {" + typeS2 + "}, should be {" + typeS + "}.";
+			// some variables listed as {array} but can be single-value number
+			if (typeS == "array" && typeS2 == "number") {
+				errorStr += "\nTip: Insert ';' after a number to convert it to a single-entry array.";
+			}
+			wxMessageBox(errorStr);
+		}
+		m_grid_data->AddSetup(pv);
+		inputNames.push_back(name);
 	}
 	m_input_names = inputNames;
 	m_output_names = outputNames;
@@ -917,7 +931,12 @@ wxArrayString ParametricViewer::getFromCSV(const wxString& input_name, int& row,
 	col = csv.NumCols();
 	for (int c = 0; c < col; c++) {
 		for (int r = 0; r < row; r++) {
-			vals.push_back(csv(r, c));
+			wxString val = csv(r, c);
+			if (val.Len() > 0 && (val[0] == '$')) {
+				val = val.Mid(1);
+			}
+			val = val.Trim();
+			vals.push_back(val);
 		}
 	}
 	csv.Clear();
@@ -1268,6 +1287,7 @@ void ParametricViewer::SelectInputs()
 	ConfigInfo *ci = m_case->GetConfiguration();
 	VarInfoLookup &vil = ci->Variables;
 
+	SelectVariableDialog dlg(this, "Select Inputs");
 	for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
 	{
 		wxString name = it->first;
@@ -1276,21 +1296,13 @@ void ParametricViewer::SelectInputs()
 		// update to select only "Parametric" variables and NOT calculated variables
 		if ((vi.Flags & VF_PARAMETRIC) 	&& !(vi.Flags & VF_INDICATOR)	&& !(vi.Flags & VF_CALCULATED))
 		{
-			wxString label = vi.Label;
-			if (label.IsEmpty())
-				label = "{ " + name + " }";
-			if (!vi.Units.IsEmpty())
-				label += " (" + vi.Units + ")";
-			if (!vi.Group.IsEmpty())
-				label = vi.Group + "/" + label;
-
+			wxString label = dlg.PrettyPrintLabel(name, vi);
 			labels.Add(label);
 			names.Add(name);
 		}
 	}
 
 	wxSortByLabels(names, labels);
-	SelectVariableDialog dlg(this, "Select Inputs");
 	dlg.SetItems(names, labels);
 	dlg.SetCheckedNames(m_input_names);
 	if (dlg.ShowModal() == wxID_OK)
@@ -1304,24 +1316,21 @@ void ParametricViewer::SelectInputs()
 
 void ParametricViewer::SelectOutputs()
 {
-	wxString case_name(SamApp::Project().GetCaseName(m_case));
 	wxArrayString output_names, output_labels;
-	wxArrayString names, labels, units, groups;
+	wxArrayString names, labels, units, groups, types;
 	Simulation::ListAllOutputs(m_case->GetConfiguration(),
-		&names, &labels, &units, &groups);
+		&names, &labels, &units, &groups, &types);
 
+	SelectVariableDialog dlg(this, "Select Outputs");
 	for (size_t i = 0; i<labels.size(); i++)
 	{
-		if (!units[i].IsEmpty())
-			labels[i] += " (" + units[i] + ")";
-
-		if (!groups[i].IsEmpty())
-			labels[i] = groups[i] + "/" + labels[i];
+		wxString label = dlg.PrettyPrintLabel(names[i], labels[i], types[i], units[i], groups[i] );
+		output_labels.Add(label);
+		output_names.Add(names[i]);
 	}
 
-	wxSortByLabels(names, labels);
-	SelectVariableDialog dlg(this, "Select Outputs");
-	dlg.SetItems(names, labels);
+	wxSortByLabels(output_names, output_labels);
+	dlg.SetItems(output_names, output_labels);
 	dlg.SetCheckedNames(m_output_names);
 	if (dlg.ShowModal() == wxID_OK)
 	{
@@ -1535,7 +1544,7 @@ wxString ParametricGridData::GetColLabelValue(int col)
 		{
 			if (VarInfo *vi = m_par.GetCase()->Variables().Lookup(m_var_names[col]))
 			{
-				col_label = vi->Label;
+				col_label = m_var_names[col];
 				col_units = vi->Units;
 			}
 		}
@@ -1543,20 +1552,20 @@ wxString ParametricGridData::GetColLabelValue(int col)
 		{
 			if (m_par.Runs.size() > 0)
 			{
-				col_label = m_par.Runs[0]->GetLabel(m_var_names[col]);
+				col_label = m_var_names[col];
 				col_units = m_par.Runs[0]->GetUnits(m_var_names[col]);
 			}
 			if (col_label.IsEmpty() || (col_label.Left(11) == "<not found:"))
 			{
 				wxArrayString names, labels, units, groups;
 				Simulation::ListAllOutputs(m_case->GetConfiguration(),
-					&names, &labels, &units, &groups, true);
+					&names, &labels, &units, &groups, NULL, true);
 				int ndx = names.Index(m_var_names[col]);
 				if (ndx == wxNOT_FOUND)
 					col_label = m_var_names[col];
 				else
 				{
-					col_label = labels[ndx];
+					col_label = names[ndx];
 					col_units = units[ndx];
 				}
 			}
@@ -2944,6 +2953,7 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &)
 	ConfigInfo *ci = m_case->GetConfiguration();
 	VarInfoLookup &vil = ci->Variables;
 
+	SelectVariableDialog dlg(this, "Select Inputs");
 	for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
 	{
 		wxString name = it->first;
@@ -2952,13 +2962,7 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &)
 		// update to select only "Parametric" variables
 		if ((vi.Flags & VF_PARAMETRIC) && !(vi.Flags & VF_INDICATOR) && !(vi.Flags & VF_CALCULATED))
 		{
-			wxString label = vi.Label;
-			if (label.IsEmpty())
-				label = "{ " + name + " }";
-			if (!vi.Units.IsEmpty())
-				label += " (" + vi.Units + ")";
-			if (!vi.Group.IsEmpty())
-				label = vi.Group + "/" + label;
+			wxString label = dlg.PrettyPrintLabel(name, vi);
 
 			labels.Add(label);
 			names.Add(name);
@@ -2966,7 +2970,6 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &)
 	}
 
 	wxSortByLabels(names, labels);
-	SelectVariableDialog dlg(this, "Select Inputs");
 	dlg.SetItems(names, labels);
 	dlg.SetCheckedNames(m_input_names);
 	if (dlg.ShowModal() == wxID_OK)
