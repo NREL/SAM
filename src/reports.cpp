@@ -738,7 +738,7 @@ static wxString InsertVariable( wxWindow *parent, bool with_curly = true )
 	{
 		wxString case_name( SamApp::Project().GetCaseName( cur_cases[i] ) );
 		wxArrayString output_names, output_labels, output_groups;
-		Simulation::ListAllOutputs( cur_cases[i]->GetConfiguration(), &output_names, &output_labels, &output_groups, 0 );
+		Simulation::ListAllOutputs( cur_cases[i]->GetConfiguration(), &output_names, &output_labels, &output_groups, NULL, 0 );
 
 		for (int j=0;j<(int)output_labels.size();j++)
 		{

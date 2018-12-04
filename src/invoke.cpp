@@ -744,7 +744,7 @@ void invoke_get_var_info( Case *c, const wxString &name, lk::vardata_t &result )
 	{
 		wxArrayString names, labels, units, groups;
 		Simulation::ListAllOutputs( c->GetConfiguration(),
-			&names, &labels, &units, &groups );
+			&names, &labels, &units, &groups, nullptr );
 		int idx = names.Index( name );
 		if ( idx >=0 )
 		{

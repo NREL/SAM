@@ -94,6 +94,9 @@ version_upgrade{'2018.10.29'} = define() {
 			message('We have updated the battery controller, which may result in different operational behavior than the previous version.' 
 				' Please check to ensure the battery still operates as you expect.', 'warning');
 		}
+		if (value('irrad_mode') > 2) //POA input options
+			message('We have updated the way that the POA decomposition algorithm handles calculating negative DNI or DHI data. You may receive more simulation warnings than you did previously, '
+			'and your results may change slightly, particularly toward the beginning and end of the day.', 'warning');
 	}
 };
 

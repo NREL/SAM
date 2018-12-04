@@ -2834,7 +2834,7 @@ Collector mode
  
 Solar Water Heating
 0
-0
+1
 1
 1
 1
