@@ -3837,7 +3837,7 @@ CSP Dispatch Control
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
-TOUSchedule
+Default
 weekend_schedule
 3
 3
@@ -3863,7 +3863,7 @@ CSP Dispatch Control
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
-TOUSchedule
+Default
 
 2977
 equations{ '$MIMO$ dispatch_vars_by_tech' } = define() {
