@@ -1693,7 +1693,7 @@ en_electricity_rates
 1
 1
 1
-1
+0
 energy_output_array
 1
 2
@@ -3074,7 +3074,7 @@ ur_ec_is_shown
 1
 1
 1
-1
+0
 ur_ec_sched_weekday
 1
 3
