@@ -75,6 +75,7 @@ public:
 	struct Var {
 		wxString Name;
 		std::vector<VarValue> Values;
+		bool IsInput;
 	};
 	std::vector<Var> Setup;
 	std::vector<Simulation*> Runs;
@@ -82,8 +83,8 @@ public:
 	std::vector<wxArrayString> QuickSetup;
 	size_t QuickSetupMode;
 
-	int FindSetup(wxString &name);
-	bool RemoveSetup(wxString &name);
+	int FindSetup(wxString &name, bool IsInput);
+	bool RemoveSetup(wxString &name, bool IsInput);
 
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
@@ -124,7 +125,7 @@ public:
 	wxString GetVarName(int row, int col);
 
 	bool IsInput(int col);
-	bool IsInput(wxString &var_name);
+	bool IsInput(ParametricData::Var &var);
 	bool IsValid(const ParametricData::Var& pv);
 	VarInfo* GetVarInfo(int row, int col);
 	void SetVarInfo(int row, int col, VarInfo *vi);
@@ -139,7 +140,7 @@ public:
 	wxArrayString GetOutputNames();
 
 	void AddSetup(ParametricData::Var &var);
-	void DeleteSetup(wxString &var_name);
+	void DeleteSetup(ParametricData::Var &var);
 	void UpdateNumberRows(int rows);
 	bool RunSimulations_single();
 	bool Generate_lk();
