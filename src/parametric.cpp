@@ -532,6 +532,22 @@ bool ParametricViewer::ExportFromMacro(wxString path, bool asExcel) {
 	return true;
 }
 
+bool ParametricViewer::SetInputFromMacro(wxString varName, size_t index, wxString val) {
+	int c = m_grid_data->GetColumnForName(varName);
+	if (c == wxNOT_FOUND)
+		return false;
+	if (index < 0 || index >= (int)m_grid_data->GetNumberRows())
+		return false;
+	m_grid_data->SetValue((int)index, c, val);
+	if (m_grid_data->GetValue((int)index, c) == val) {
+		m_grid->SetTable(m_grid_data);
+		UpdateGrid();
+		return true;
+	}
+	return false;
+}
+
+
 void ParametricViewer::OnCommand(wxCommandEvent &evt)
 {
 	switch (evt.GetId())
@@ -1738,10 +1754,10 @@ void ParametricGridData::SetValue(int row, int col, const wxString& value)
 	{
 		if (IsInput(col))
 		{
-			VarValue *vv = &m_par.Setup[col].Values[row];
-			VarValue::Parse(vv->Type(), value, *vv);
-			if (row < (int)m_valid_run.size())
+			if ( row >= 0 && row < (int)m_valid_run.size())
 			{
+				VarValue *vv = &m_par.Setup[col].Values[row];
+				VarValue::Parse(vv->Type(), value, *vv);
 				m_valid_run[row] = false;
 				ClearResults(row);
 			}
