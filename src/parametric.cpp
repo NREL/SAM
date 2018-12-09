@@ -3179,7 +3179,7 @@ void Parametric_QS::UpdateCaseParametricData()
 		wxArrayString outputs;
 		for (size_t i = 0; i < par.Setup.size(); i++)
 		{
-			if (m_case->Values().Get(par.Setup[i].Name))
+			if (par.Setup[i].IsInput)
 				continue;
 			outputs.Add(par.Setup[i].Name);
 		}
@@ -3269,6 +3269,7 @@ void Parametric_QS::UpdateCaseParametricData()
 				break;
 			}
 		}
+
 
 		// add original outputs back 
 		for (size_t i = 0; i < outputs.Count(); i++)
