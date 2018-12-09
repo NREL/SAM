@@ -108,8 +108,6 @@ int ParametricData::FindSetup(wxString &name, bool IsInput)
 	int ndx = -1;
 	for (size_t i = 0; i < Setup.size(); i++)
 	{
-		bool a = (Setup[i].Name == name);
-		bool b = (Setup[i].IsInput == IsInput);
 		if (Setup[i].Name == name && Setup[i].IsInput == IsInput)
 		{
 			ndx = (int)i;
@@ -827,8 +825,12 @@ bool ParametricViewer::ImportAsTable(wxString& vals, VarValue& vv) {
 
 void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	wxArrayString inputNames, outputNames;
+	bool inputcol = true;
 	wxArrayString allOutputNames, allOutputLabels;
 	Simulation::ListAllOutputs(m_case->GetConfiguration(), &allOutputNames, &allOutputLabels, NULL, NULL, NULL);
+	VarInfoLookup &vil = m_case->GetConfiguration()->Variables;
+
+
 	for (int c = 0; c < col; c++) {
 		if (vals[c*row].Len() == 0)
 			continue;
@@ -836,7 +838,6 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 		wxArrayString splitUnit = wxSplit(vals[c*row], '(');
 		wxString name = splitUnit[0];
 		name = name.Trim();
-		VarInfoLookup &vil = m_case->GetConfiguration()->Variables;
 		VarInfo* vi = vil.Lookup(name);
 
 		// if not name is not of variable, see if it's a label
@@ -847,18 +848,21 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 				vi = vil.Lookup(name);
 			}
 		}
-		// if not input, see if output
-		if (!vi) {
+		inputcol = true;
+		// if not input or already listed as input, see if output
+		if (!vi || (inputNames.Index(name) != wxNOT_FOUND)) {
 			bool found = false;
 			for (size_t i = 0; i < allOutputNames.size(); i++)
 			{
 				if (name.IsSameAs(allOutputNames[i], false)) {
 					outputNames.push_back(allOutputNames[i]);
+					inputcol = false;
 					found = true;
 					break;
 				}
 				else if (name.IsSameAs(allOutputLabels[i], false)) {
 					outputNames.push_back(allOutputNames[i]);
+					inputcol = false;
 					found = true;
 					break;
 				}
@@ -913,7 +917,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 		}
 		pv.Values = vvv;
 		pv.Name = name;
-		pv.IsInput = true;
+		pv.IsInput = inputcol;
 		if (!m_grid_data->IsValid(pv)) {
 			wxString typeS = m_case->BaseCase().GetInput(pv.Name)->TypeAsString();
 			wxString typeS2 = pv.Values[0].TypeAsString();
