@@ -17,7 +17,7 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 <b>Warnings and Tips:</b> 
 <ul>
 	<li> For accurate results, ensure self-shading is enabled under the Shading and Layout page in the active case.
-	<li><b> If optimizing a single subarray, the number of inverters recommended for each optimization strategy is only for that particalur subarray and not the entire system. </b>
+	<li><b> If optimizing a single subarray, the number of inverters recommended for each optimization strategy is only for that particular subarray and not the entire system. </b>
 	<li> Ensure number of modules per string in any active subarray is greater than 0.
 @*/
  
@@ -739,6 +739,28 @@ else {
 	set('inverter_count', system_inverter_count);
 }
 
+str += '<br><br><Given below is the <b>System Size</b> at each iteration of GCR. If you are only optimizing a single subarray, this table represents the subarray size (kW) ';
+//str += '<th> </th>';
+iter = 0;
+
+str += '<table>'; 
+str += '<table border = "1">';
+str += '<th>GCR </th>';
+str += '<th>Size (kW)</th>';
+
+for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
+	str += '<tr>';
+	//str += '<th>GCR: ' + num_to_str( gcr , 3) + '</th>';
+	str += '<th>' + num_to_str( gcr , 3) + '</th>';
+	str += '<td align="center">';
+	str += '	' + system_size[iter] ;
+	str += '</td>';
+	iter = iter + 1;
+	str += '</tr>'; 
+}
+str += '</table>';
+
+
 //Max AEP Results:
 str += '<br><h5>Results for Max Annual Energy Production (AEP): </h5>';
 str += '<br>GCR: ' + num_to_str(optimum_gcr , 3) ;
@@ -966,3 +988,6 @@ if(single_subarray == true) break;			//If user is optimizing only a single subar
 ///////////////////////////////////**** End of Script ****///////////////////////////////////
 
 outln('\n//////***** Simulation Complete *****//////');
+
+
+
