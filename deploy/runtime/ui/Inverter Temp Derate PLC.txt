@@ -158,7 +158,7 @@ inv_tdc_plc
 3
 Inv Temp Derate Part Load Curve
  
-Inverter Temp Derate Curves
+Inverter Temperature
 0
 3
 1

@@ -156,9 +156,9 @@ Height
 inv_tdc_cec_cg
 3
 3
-Inv Temp Derate CEC CG
+Inv Temp Derate CEC Coefficient Generator
  
-Inverter Temp Derate Curves
+Inverter Temperature
 0
 3
 1
