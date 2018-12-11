@@ -53,6 +53,12 @@ elseif(fin_model[1] == 'None') {
 	exit;
 }
 
+//Allowing the user to optimize NPV from Developer/investor/host perspective:
+elseif(fin_model[1] == 'Leveraged Partnership Flip' || fin_model[1] == 'All Equity Partnership Flip') 
+	stakeholder = choose_from_list([ 'Developer' , 'Investor' ] , "Optimize NPV of project from perspective of: " );
+
+elseif(fin_model[1] == 'Host Developer')	
+	stakeholder = choose_from_list([ 'Host' , 'Developer' ] , "Optimize NPV of project from perspective of: " );
 
 ///////////////////////////////////**** USER DEFINED INPUTS ****///////////////////////////////////
 
@@ -360,16 +366,16 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 				if (module_model == 0){
 					module_power = get('spe_power');
 				}
-				else if (module_model == 1){
+				elseif (module_model == 1){
 					module_power = get('cec_p_mp_ref');
 				}
-				else if (module_model == 2){
+				elseif (module_model == 2){
 					module_power = get('6par_pmp');
 				}
-				else if (module_model == 3){
+				elseif (module_model == 3){
 					module_power = get('snl_ref_pmp');
 				}
-				else if (module_model == 4){
+				elseif (module_model == 4){
 					module_power = get('sd11par_Pmp0');
 				}
 				return module_power;
@@ -384,13 +390,13 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 			if (inverter_model == 0) {
 				inverter_power = get('inv_snl_paco')/1000;
 				}
-			else if (inverter_model == 1) {
+			elseif (inverter_model == 1) {
 				inverter_power = get('inv_ds_paco')/1000;
 				}
-			else if (inverter_model == 2) {
+			elseif (inverter_model == 2) {
 				inverter_power = get('inv_pd_paco')/1000;
 				}
-			else if (inverter_model == 3) { 
+			elseif (inverter_model == 3) { 
 				inverter_power = get('inv_cec_cg_paco')/1000;
 				}
 			return inverter_power;
@@ -510,15 +516,23 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 				simulate();
 				annual_energy[i][j] = get('annual_energy');
 				
-				if(fin_model[1] == 'Residential' || fin_model[1] == 'Commercial' || fin_model[1] == 'Third Party' ){
+				if(fin_model[1] == 'Residential' || fin_model[1] == 'Commercial' || fin_model[1] == 'Third Party' )	
 					npv[i][j] = get('npv');
-				}
-				elseif(fin_model[1] == 'Host Developer' || fin_model[1] == 'Single Owner') {
+				
+				elseif(fin_model[1] == 'Host Developer' && stakeholder == 'Developer') 
 					npv[i][j] = get('project_return_aftertax_npv');
-				}
-				elseif(fin_model[1] == 'Leveraged Partnership Flip' || fin_model[1] == 'All Equity Partnership Flip') {
-					npv[i][j] = get('cf_project_return_aftertax_npv');
-				}
+					
+				elseif(fin_model[1] == 'Host Developer' && stakeholder == 'Host') 
+					npv[i][j] = get('npv');
+				
+				elseif(fin_model[1] == 'Single Owner')
+					npv[i][j] = get('project_return_aftertax_npv');
+				
+				elseif((fin_model[1] == 'Leveraged Partnership Flip' || fin_model[1] == 'All Equity Partnership Flip') && stakeholder == 'Developer') 
+					npv[i][j] = get('sponsor_aftertax_npv');
+				
+				elseif((fin_model[1] == 'Leveraged Partnership Flip' || fin_model[1] == 'All Equity Partnership Flip') && stakeholder == 'Investor') 
+					npv[i][j] = get('tax_investor_aftertax_npv');
 				
 				
 				yield[i][j] = get('kwh_per_kw');
@@ -541,7 +555,7 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 					modules_per_string_aep = get('subarray1_modules_per_string');
 					inverter_aep = get('inverter_count');
 				}
-						
+			//	outln(max_npv + '	' + npv[i][j]);		
 				//Storing the appropriate results when calculating maximum NPV in the respective placeholders
 				if (max_npv < npv[i][j]) {
 					max_npv = npv[i][j];
@@ -600,7 +614,7 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 					set('inverter_count', inverter_aep);
 					system_inverter_count = system_inverter_count + get('inverter_count');
 				}
-			else if(update_results == 'Max NPV'){
+			elseif(update_results == 'Max NPV'){
 				set('subarray1_nstrings', string_in_parallel_npv );
 				set('subarray1_tilt', tilt_npv);
 				set('subarray1_gcr', gcr_npv);
@@ -608,7 +622,7 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 				set('inverter_count', inverter_npv);
 				system_inverter_count = system_inverter_count + get('inverter_count');
 			}
-			else if(update_results == 'Max Energy Yield') {
+			elseif(update_results == 'Max Energy Yield') {
 				set('subarray1_nstrings', string_in_parallel_yield  );
 				set('subarray1_tilt', tilt_yield);
 				set('subarray1_gcr', gcr_yield);
@@ -638,7 +652,7 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 				set('inverter_count', inverter_aep);
 				system_inverter_count = system_inverter_count + get('inverter_count');
 			}
-			else if(update_results == 'Max NPV'){
+			elseif(update_results == 'Max NPV'){
 				set('subarray2_nstrings', string_in_parallel_npv );
 				set('subarray2_tilt', tilt_npv);
 				set('subarray2_gcr', gcr_npv);
@@ -646,7 +660,7 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 				set('inverter_count', inverter_npv);
 				system_inverter_count = system_inverter_count + get('inverter_count');
 			}
-			else if(update_results == 'Max Energy Yield') {
+			elseif(update_results == 'Max Energy Yield') {
 				set('subarray2_nstrings', string_in_parallel_yield  );
 				set('subarray2_tilt', tilt_yield);
 				set('subarray2_gcr', gcr_yield);
@@ -674,7 +688,7 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 				set('inverter_count', inverter_aep);
 				system_inverter_count = system_inverter_count + get('inverter_count');
 			}
-			else if(update_results == 'Max NPV'){
+			elseif(update_results == 'Max NPV'){
 				set('subarray3_nstrings', string_in_parallel_npv );
 				set('subarray3_tilt', tilt_npv);
 				set('subarray3_gcr', gcr_npv);
@@ -682,7 +696,7 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 				set('inverter_count', inverter_npv);
 				system_inverter_count = system_inverter_count + get('inverter_count');
 			}
-			else if(update_results == 'Max Energy Yield') {
+			elseif(update_results == 'Max Energy Yield') {
 				set('subarray3_nstrings', string_in_parallel_yield  );
 				set('subarray3_tilt', tilt_yield);
 				set('subarray3_gcr', gcr_yield);
@@ -710,7 +724,7 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 				set('inverter_count', inverter_aep);
 				system_inverter_count = system_inverter_count + get('inverter_count');
 			}
-			else if(update_results == 'Max NPV'){
+			elseif(update_results == 'Max NPV'){
 				set('subarray4_nstrings', string_in_parallel_npv );
 				set('subarray4_tilt', tilt_npv);
 				set('subarray4_gcr', gcr_npv);
@@ -718,7 +732,7 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 				set('inverter_count', inverter_npv);
 				system_inverter_count = system_inverter_count + get('inverter_count');
 			}
-			else if(update_results == 'Max Energy Yield') {
+			elseif(update_results == 'Max Energy Yield') {
 				set('subarray4_nstrings', string_in_parallel_yield  );
 				set('subarray4_tilt', tilt_yield);
 				set('subarray4_gcr', gcr_yield);
