@@ -42,6 +42,18 @@ if ( typeof(macro) == 'unknown' ) {
 	exit;
 }
 
+//Check to see financial model selected (which determines name of NPV variable name):
+fin_model = configuration();
+if(fin_model[1] == 'Sale Leaseback' || fin_model[1] == 'LCOE Calculator') {
+	msgbox('Sorry, this macro does not currently support the ' + fin_model[1] + ' model!');
+	exit;
+}
+elseif(fin_model[1] == 'None') {
+	msgbox('Sorry, this macro does not currently support the No Financial model!');
+	exit;
+}
+
+
 ///////////////////////////////////**** USER DEFINED INPUTS ****///////////////////////////////////
 
 //User Defined Inputs:
@@ -497,7 +509,18 @@ while (subarray_to_optimize < max_subarrays) {			//since there can only be a max
 				set('subarray1_tilt', tilt);
 				simulate();
 				annual_energy[i][j] = get('annual_energy');
-				npv[i][j] = get('npv');
+				
+				if(fin_model[1] == 'Residential' || fin_model[1] == 'Commercial' || fin_model[1] == 'Third Party' ){
+					npv[i][j] = get('npv');
+				}
+				elseif(fin_model[1] == 'Host Developer' || fin_model[1] == 'Single Owner') {
+					npv[i][j] = get('project_return_aftertax_npv');
+				}
+				elseif(fin_model[1] == 'Leveraged Partnership Flip' || fin_model[1] == 'All Equity Partnership Flip') {
+					npv[i][j] = get('cf_project_return_aftertax_npv');
+				}
+				
+				
 				yield[i][j] = get('kwh_per_kw');
 				type[i] = gcr;
 				
