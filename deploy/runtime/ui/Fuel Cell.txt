@@ -1,7 +1,7 @@
 Fuel Cell
 967
 976
-33
+34
 Divider
 
 1
@@ -615,7 +615,7 @@ X
 171
 Y
 3
-897
+924
 Width
 3
 90
@@ -674,7 +674,7 @@ X
 264
 Y
 3
-897
+924
 Width
 3
 90
@@ -691,6 +691,35 @@ MCf
 Selection
 3
 4294967295
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+8
+Name
+5
+21
+fuelcell_fuel_limited
+X
+3
+171
+Y
+3
+894
+Width
+3
+90
+Height
+3
+24
+Caption
+5
+0
+State
+2
+0
 TabOrder
 3
 4294967295
@@ -1449,7 +1478,7 @@ Bold
 2
 1
 
-25
+26
 fuelcell_degradation
 3
 1
@@ -1590,6 +1619,20 @@ Liters|kg|cubic meters|Mcf
 1
 3
 Choice
+fuelcell_fuel_limited
+3
+1
+Fuel limited on site
+ 
+Fuel Cell
+0
+0
+1
+1
+1
+1
+0
+CheckBox
 fuelcell_fuel_type
 3
 1
@@ -1918,12 +1961,19 @@ equations{'fuelcell_unit_min_power'} = define()
 
 };
 
-2432
+2842
 on_load{'Fuel Cell'} = define() {
 	on_change{'fuelcell_efficiency'}(); 
 	on_change{'fuelcell_fuel_type'}();
 	on_change{'fuelcell_replacement_option'}();
+	on_change{'fuelcell_fuel_limited'}();
+	
+	check_fuel_limited();
 	//plot_efficiency();
+};
+
+on_change{'fuelcell_fuel_limited'} = define(){
+	check_fuel_limited();
 };
 
 on_change{'fuelcell_replacement_option'} = define(){
@@ -1996,4 +2046,14 @@ function plot_efficiency()
 	plotopt( {'title'='Efficiencies vs Power Load', 'legend'=true, 'legendpos'=[65,60]});
 	axis( 'x1', {'label'='Power Load (%)', 'min'=0, 'max'=100});
 	axis( 'y1', {'label'='Efficiency (%)', 'min'=0, 'max'=max(max(electricalPercent),max(heatRecovery))+10});
+}
+
+function check_fuel_limited()
+{
+	enable('fuelcell_fuel_available_in', value('fuelcell_fuel_limited'));
+	enable('fuelcell_fuel_available_units', value('fuelcell_fuel_limited'));
+	
+	if (value('fuelcell_fuel_limited') == 0){
+		value('fuelcell_fuel_available_in', 1e10);
+	}
 }

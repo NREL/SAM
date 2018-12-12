@@ -1,5 +1,5 @@
 1
-608
+609
 LeadAcid_q10
 1
 1
@@ -1467,8 +1467,8 @@ federal_tax_rate
 file_name
 1
 4
-109
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+82
+C:\SAM\2018.11.29\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 fuelcell_degradation
 1
 1
@@ -1559,6 +1559,12 @@ fuelcell_fuel_available_in
 1
 1000
 fuelcell_fuel_available_units
+1
+1
+1
+1
+0
+fuelcell_fuel_limited
 1
 1
 1
@@ -3122,8 +3128,8 @@ show_tax_credits
 solar_data_file_name
 1
 4
-109
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+82
+C:\SAM\2018.11.29\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -3142,8 +3148,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-109
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+82
+C:\SAM\2018.11.29\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 state
 1
 4
