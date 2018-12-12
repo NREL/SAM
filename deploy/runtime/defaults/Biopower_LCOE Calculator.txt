@@ -1952,8 +1952,8 @@ fixed_operating_cost
 in_location
 1
 4
-64
-Type a street address or latitude, longitude (skip for advanced)
+63
+Type a location name, street address, or latitude and longitude
 in_location_list
 1
 4

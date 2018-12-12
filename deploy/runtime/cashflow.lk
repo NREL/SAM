@@ -2230,6 +2230,8 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel(       xl, 'depr_alloc_sl_20_percent'); 
 	send_excel(       xl, 'depr_alloc_sl_39_percent'); 
 	send_excel(       xl, 'depr_alloc_sl_5_percent'); 
+	send_excel(       xl, 'depr_alloc_custom_percent'); 
+	send_excel(       xl, 'depr_custom_schedule');
 	send_excel(       xl, 'depr_bonus_fed'); 
 	send_excel_yesno( xl, 'depr_bonus_fed_macrs_15'); 
 	send_excel_yesno( xl, 'depr_bonus_fed_macrs_5'); 
@@ -2237,6 +2239,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel_yesno( xl, 'depr_bonus_fed_sl_20'); 
 	send_excel_yesno( xl, 'depr_bonus_fed_sl_39'); 
 	send_excel_yesno( xl, 'depr_bonus_fed_sl_5'); 
+	send_excel_yesno( xl, 'depr_bonus_fed_custom'); 
 	send_excel(       xl, 'depr_bonus_sta'); 
 	send_excel_yesno( xl, 'depr_bonus_sta_macrs_15'); 
 	send_excel_yesno( xl, 'depr_bonus_sta_macrs_5'); 
@@ -2244,18 +2247,21 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel_yesno( xl, 'depr_bonus_sta_sl_20'); 
 	send_excel_yesno( xl, 'depr_bonus_sta_sl_39'); 
 	send_excel_yesno( xl, 'depr_bonus_sta_sl_5'); 
+	send_excel_yesno( xl, 'depr_bonus_sta_custom'); 
 	send_excel_yesno( xl, 'depr_itc_fed_macrs_15'); 
 	send_excel_yesno( xl, 'depr_itc_fed_macrs_5'); 
 	send_excel_yesno( xl, 'depr_itc_fed_sl_15'); 
 	send_excel_yesno( xl, 'depr_itc_fed_sl_20'); 
 	send_excel_yesno( xl, 'depr_itc_fed_sl_39'); 
 	send_excel_yesno( xl, 'depr_itc_fed_sl_5'); 
+	send_excel_yesno( xl, 'depr_itc_fed_custom'); 
 	send_excel_yesno( xl, 'depr_itc_sta_macrs_15'); 
 	send_excel_yesno( xl, 'depr_itc_sta_macrs_5'); 
 	send_excel_yesno( xl, 'depr_itc_sta_sl_15'); 
 	send_excel_yesno( xl, 'depr_itc_sta_sl_20'); 
 	send_excel_yesno( xl, 'depr_itc_sta_sl_39'); 
 	send_excel_yesno( xl, 'depr_itc_sta_sl_5'); 
+	send_excel_yesno( xl, 'depr_itc_sta_custom'); 
 	 
 //	send_excel(       xl, 'dscr'); //input 
 	send_excel(       xl, 'dscr_reserve_months'); 
