@@ -1271,7 +1271,7 @@ Numeric
 inv_pd_data
 3
 3
-Inverter Part Load Curve Data
+Inverter part load curve data
  
 PV Inverter (Part Load Curve)
 0
@@ -1536,9 +1536,9 @@ DataMatrix
 inv_pd_data_filename
 3
 4
+Inverter data filename
  
- 
- 
+PV Inverter (Part Load Curve)
 0
 0
 1
@@ -1548,7 +1548,7 @@ TextEntry
 inv_pd_eff
 3
 1
-Effiiciency
+Efficiency
 %
 PV Inverter (Part Load Curve)
 0
@@ -1605,7 +1605,7 @@ RadioChoice
 inv_pd_efficiency
 3
 2
- 
+Part load curve efficiency data
  
 PV Inverter (Part Load Curve)
 0
@@ -1689,8 +1689,8 @@ Numeric
 inv_pd_partload
 3
 2
- 
- 
+Part load curve power data
+Wac
 PV Inverter (Part Load Curve)
 0
 8

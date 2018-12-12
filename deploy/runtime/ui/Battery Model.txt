@@ -174,7 +174,7 @@ batt_Qexp
 1
  
 Ah
-battery
+Battery
 0
 9
 1
@@ -188,7 +188,7 @@ batt_Qnom
 1
  
 Ah
-battery
+Battery
 0
 9
 1
