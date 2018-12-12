@@ -776,10 +776,8 @@ else {
 	set('inverter_count', system_inverter_count);
 }
 
-str += '<br><br><Given below is the <b>System Size</b> at each iteration of GCR. If you are only optimizing a single subarray, this table represents the subarray size (kW) ';
-//str += '<th> </th>';
+str += '<p>Given below is the System Size at each iteration of GCR. If you are only optimizing a single subarray, this table represents the subarray size (kW): </p>';
 iter = 0;
-
 str += '<table>'; 
 str += '<table border = "1">';
 str += '<th>GCR </th>';
