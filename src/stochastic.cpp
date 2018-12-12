@@ -1470,7 +1470,7 @@ void StochasticPanel::UpdateFromSimInfo()
 	m_outputList->Freeze();
 	m_outputList->Clear();
 	wxArrayString vars, labels;
-	Simulation::ListAllOutputs( m_case->GetConfiguration(), &vars, &labels, NULL, NULL, true );
+	Simulation::ListAllOutputs( m_case->GetConfiguration(), &vars, &labels, NULL, NULL, NULL, true );
 
 	for (size_t i=0;i<m_sd.Outputs.Count();i++)
 	{
@@ -1848,7 +1848,7 @@ void StochasticPanel::OnAddOutput(wxCommandEvent &)
 {	
 	wxArrayString names, labels, units, groups;
 	Simulation::ListAllOutputs( m_case->GetConfiguration(), 
-		&names, &labels, &units, &groups, true );
+		&names, &labels, &units, &groups, NULL, true );
 
 	for( size_t i=0;i<labels.size();i++ )
 	{
@@ -2089,7 +2089,7 @@ void StochasticPanel::Simulate()
 	}
 
 	wxArrayString output_vars( m_sd.Outputs ), output_labels, output_units, ov, ol, ou;
-	Simulation::ListAllOutputs( m_case->GetConfiguration(), &ov, &ol, &ou, NULL, true );
+	Simulation::ListAllOutputs( m_case->GetConfiguration(), &ov, &ol, &ou, NULL, NULL, true );
 	for( size_t i=0;i<output_vars.size();i++ )
 	{
 		int idx = ov.Index( output_vars[i] );

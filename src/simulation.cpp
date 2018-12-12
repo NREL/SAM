@@ -935,6 +935,7 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 	wxArrayString *labels, 
 	wxArrayString *units, 
 	wxArrayString *groups,
+	wxArrayString* types,
 	bool single_values )
 {
 	if ( !cfg ) return false;
@@ -959,6 +960,7 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 					if ( labels ) labels->Add( wxString(ssc_info_label( p_inf )) );
 					if ( units ) units->Add( wxString(ssc_info_units( p_inf )) );
 					if ( groups ) groups->Add( wxString(ssc_info_group( p_inf )) );
+					if ( types ) types->Add(wxString::Format(wxT("%i"), data_type));
 				}
 			}
 		}

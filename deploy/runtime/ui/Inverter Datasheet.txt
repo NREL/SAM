@@ -1416,9 +1416,9 @@ Numeric
 inv_ds_data_filename
 3
 4
+Inverter data filename
  
- 
- 
+PV Inverter (Datasheet)
 0
 0
 1
@@ -1428,7 +1428,7 @@ TextEntry
 inv_ds_eff
 3
 1
-Inverter Efficiency
+Inverter efficiency
 %
 PV Inverter (Datasheet)
 0
@@ -1456,7 +1456,7 @@ Numeric
 inv_ds_eff_type
 3
 1
-Use Weighted or Manufacturer Efficiency
+Use weighted or manufacturer efficiency
  
 PV Inverter (Datasheet)
 0
@@ -1582,7 +1582,7 @@ Numeric
 inv_ds_pnt_suggested
 3
 1
- 
+Suggested power consumption at night
 Wac
 PV Inverter (Datasheet)
 0
@@ -1610,7 +1610,7 @@ Numeric
 inv_ds_pso_suggested
 3
 1
- 
+Suggested power consumption during operation
 Wdc
 PV Inverter (Datasheet)
 0
