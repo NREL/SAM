@@ -1,7 +1,7 @@
 Thermal Rate
 501
 598
-13
+14
 GroupBox
 
 1
@@ -114,13 +114,13 @@ X
 30
 Y
 3
-144
+116
 Width
 3
 454
 Height
 3
-102
+130
 Caption
 5
 8
@@ -291,6 +291,35 @@ ShowCaptions
 2
 1
 Horizontal
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+8
+Name
+5
+28
+thermal_buy_rate_tie_to_fuel
+X
+3
+189
+Y
+3
+138
+Width
+3
+90
+Height
+3
+24
+Caption
+5
+0
+State
 2
 1
 TabOrder
@@ -499,7 +528,7 @@ TabOrder
 3
 4294967295
 
-9
+10
 thermal_buy_rate
 3
 2
@@ -543,6 +572,21 @@ Flat buy rate|Timestep buy rate
 1
 0
 RadioChoice
+thermal_buy_rate_tie_to_fuel
+3
+1
+Set buy rate to fuel cost
+ 
+ 
+12
+Thermal Rate
+0
+1
+1
+1
+1
+1
+CheckBox
 thermal_rate_escalation
 3
 2
@@ -629,10 +673,11 @@ Thermal Rate
 0
 DataArray
 
-1116
+1138
 equations{ '$MIMO$ thermalrate' } = define() {
 
 	fin = financing();
+	tech = technology();
 	if(fin == "Commercial")
 	{
 		if (${thermal_buy_rate_option} == 0)
@@ -691,7 +736,7 @@ equations{ '$MIMO$ thermalrate' } = define() {
 
 	return 0;
 };
-661
+1240
 
 on_load{'Thermal Rate'} = define() {
 	fin = financing();
@@ -699,8 +744,16 @@ on_load{'Thermal Rate'} = define() {
 	enable("thermal_buy_rate_option",fin);
 	enable("thermal_buy_rate_flat",fin);
 	enable("thermal_timestep_buy_rate",fin);
-	if (buy_enable) on_change{'thermal_buy_rate_option'}();
+	if (buy_enable) {
+		on_change{'thermal_buy_rate_option'}();
+	}
 	on_change{'thermal_sell_rate_option'}();
+	on_change{'thermal_buy_rate_tie_to_fuel'}();
+	tie_buy_rate_to_fuel_cost();
+};
+
+on_change{'thermal_buy_rate_tie_to_fuel'} = define(){
+	tie_buy_rate_to_fuel_cost();
 };
 
 on_change{'thermal_buy_rate_option'} = define() {
@@ -714,3 +767,14 @@ on_change{'thermal_sell_rate_option'} = define() {
 	enable('thermal_sell_rate_flat',!x);
 	enable('thermal_timestep_sell_rate',x);
 };
+
+function tie_buy_rate_to_fuel_cost(){
+	if (value('thermal_buy_rate_tie_to_fuel')){
+		value('thermal_buy_rate_option', 0);
+		
+		fuel_cost_mmbtu = value('om_fuel_cost')[0];
+		fuel_cost_kwht = value('om_fuel_nominal_convervision_efficiency') * 0.01 * fuel_cost_mmbtu / 293.07;
+		value('thermal_buy_rate_flat', fuel_cost_kwht);
+	}
+	enable('thermal_buy_rate_option', value('thermal_buy_rate_tie_to_fuel')==0);
+}
