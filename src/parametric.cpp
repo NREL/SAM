@@ -1540,8 +1540,6 @@ bool ParametricGridData::IsInput(int col)
 {
 	if ((col>-1) && (col < m_cols))
 	{
-//		wxString var_name = m_par.Setup[col].Name;
-//		return IsInput(var_name);
 		return m_par.Setup[col].IsInput;
 	}
 	else
@@ -1551,23 +1549,6 @@ bool ParametricGridData::IsInput(int col)
 bool ParametricGridData::IsInput(ParametricData::Var &var)
 {
 	return var.IsInput;
-	/*
-//	if (VarValue *vv = m_par.GetCase()->Values().Get(var_name))
-	if (VarInfo *vi = m_par.GetCase()->Variables().Lookup(var_name))
-	{
-		if (m_input_names.Index(var_name) != wxNOT_FOUND)
-			return true;
-		else
-		{
-			if ((vi->Flags & VF_PARAMETRIC) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED))
-				return true;
-			else
-				return false;
-		}
-	}
-	else
-		return false;
-		*/
 }
 
 
@@ -2470,7 +2451,6 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 	{
 		wxString var_name = m_par.Setup[i].Name;
 		if ((input_names.Index(var_name) == wxNOT_FOUND) && (m_par.Setup[i].IsInput))
-//			if ((input_names.Index(var_name) == wxNOT_FOUND) && (IsInput(var_name)))
 				to_remove.push_back(m_par.Setup[i]);
 	}
 	ParametricData::Var pv;
