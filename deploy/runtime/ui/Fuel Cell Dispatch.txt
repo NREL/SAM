@@ -385,7 +385,7 @@ Fuel Cell
 2
 1
 1
-0.000000
+0
 Default
 fuelcell_dispatch_choice
 3
@@ -400,7 +400,7 @@ Fixed output|Follow electric load|Manual dispatch|Input dispatch
 1
 1
 1
-0.000000
+0
 RadioChoice
 fuelcell_dispatch_input
 3
@@ -414,7 +414,7 @@ Fuel Cell
 2
 1
 1
-0.000000
+0
 DataArray
 fuelcell_dispatch_input_units
 3
@@ -429,7 +429,7 @@ kW|% nameplate
 1
 1
 1
-0.000000
+0
 Choice
 fuelcell_fixed_pct
 3
@@ -443,22 +443,22 @@ Fuel Cell
 1
 1
 1
-95.000000
+95
 Numeric
 fuelcell_operation_options
 3
 1
- 
+ Fuel cell shutdown option
  
 Fuel Cell
 37
 Allowed to shutdown|Idle at min power
-2
+3
 1
 1
 1
 1
-1.000000
+1
 RadioChoice
 
 250
