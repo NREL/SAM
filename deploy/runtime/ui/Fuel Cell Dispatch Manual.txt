@@ -3856,7 +3856,7 @@ Battery
 0
  
 
-3535
+3385
 equations{ 'dispatch_manual_charge' } = define() {
 	return [ ${pv.storage.p1.charge},
 	${pv.storage.p2.charge},
@@ -3956,19 +3956,14 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	}
 	return ret_array;
 };
-quations{ 'dispatch_manual_percent_fc_discharge'} = define() {
+equations{ 'dispatch_manual_percent_fc_discharge'} = define() {
 	count = 0;
-	discharge_array = ${dispatch_manual_fuelcell_discharge};
-	for (i = 0; i != #discharge_array; i++)
+	discharge_array = ${dispatch_manual_fuelcelldischarge};
+	ret_array = [];
+	for (i = 0; i < #discharge_array; i++)
 	{
-		ret_array[count] = 0;
 		if (discharge_array[i] == 1)
-		{
-			/* It would be nice if this worked
-			str2return = sprintf('batt_discharge_percent_%d',i+1);
-			ret_array[count] = env(str2return);
-			*/
-		
+		{		
 			if (i == 0)
 				ret_array[count] = ${fc_discharge_percent_1};
 			else if (i == 1)
