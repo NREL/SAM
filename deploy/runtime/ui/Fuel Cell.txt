@@ -2034,14 +2034,14 @@ equations{'fuelcell_unit_min_power'} = define()
 
 };
 
-2842
+2844
 on_load{'Fuel Cell'} = define() {
 	on_change{'fuelcell_efficiency'}(); 
 	on_change{'fuelcell_fuel_type'}();
 	on_change{'fuelcell_replacement_option'}();
 	on_change{'fuelcell_fuel_limited'}();
 	
-	check_fuel_limited();
+	check_fuel_limited();	
 	//plot_efficiency();
 };
 

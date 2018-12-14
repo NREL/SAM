@@ -348,10 +348,11 @@ Battery
 Numeric
 
 0
-540
+577
 on_load{'Battery Configuration'} = define()
 {
-	if (technology() == 'Generic System')
+	tech = technology();
+	if (tech == 'Generic System' || tech == 'Fuel Cell')
 	{
 		value('batt_ac_or_dc',1);
 		enable('batt_ac_or_dc',0);
