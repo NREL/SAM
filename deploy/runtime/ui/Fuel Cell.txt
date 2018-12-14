@@ -1,7 +1,7 @@
 Fuel Cell
 967
 976
-34
+35
 Divider
 
 1
@@ -454,8 +454,67 @@ Numeric
 16
 Name
 5
-25
-fuelcell_dynamic_response
+30
+fuelcell_dynamic_response_down
+X
+3
+495
+Y
+3
+234
+Width
+3
+57
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+28
+fuelcell_dynamic_response_up
 X
 3
 495
@@ -1478,7 +1537,7 @@ Bold
 2
 1
 
-26
+27
 fuelcell_degradation
 3
 1
@@ -1536,10 +1595,10 @@ kW/hr|%/year
 1
 1
 Choice
-fuelcell_dynamic_response
+fuelcell_dynamic_response_down
 3
 1
-Response after startup
+Ramp rate down limit
 kW/h
 Fuel Cell
 0
@@ -1548,7 +1607,21 @@ Fuel Cell
 1
 1
 1
-0.5
+20
+Numeric
+fuelcell_dynamic_response_up
+3
+1
+Ramp rate up limit
+kW/h
+Fuel Cell
+0
+2
+1
+1
+1
+1
+20
 Numeric
 fuelcell_efficiency
 3
