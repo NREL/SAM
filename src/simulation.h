@@ -50,6 +50,8 @@
 #ifndef __simulation_h
 #define __simulation_h
 
+#include <map>
+
 #include <wx/string.h>
 #include <wx/stream.h>
 #include <wx/dialog.h>
@@ -191,6 +193,7 @@ protected:
 	wxArrayString m_outputList;
 	VarTable m_outputs;
 	wxArrayString m_errors, m_warnings, m_notices;
+
 	StringHash m_outputLabels, m_outputUnits, m_uiHints;
 	int m_sscElapsedMsec;
 	int m_totalElapsedMsec;
