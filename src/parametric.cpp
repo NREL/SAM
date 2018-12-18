@@ -2852,7 +2852,7 @@ bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
 
 
 	if (vvtype == VV_NUMBER
-		&& vi->IndexLabels.Count() > 0)
+		&& vi->IndexLabels.Count() > 0 && vi->UIObject != "Numeric")
 	{
 		// fixed domain selection (combo box, list, radio choice etc)
 		wxArrayString fixed_items = vi->IndexLabels;
@@ -3091,7 +3091,7 @@ wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &varname)
 
 
 	if (vvtype == VV_NUMBER
-		&& vi->IndexLabels.Count() > 0)
+		&& vi->IndexLabels.Count() > 0 && vi->UIObject != "Numeric")
 	{
 		// fixed domain selection (combo box, list, radio choice etc)
 		wxArrayString fixed_items = vi->IndexLabels;
