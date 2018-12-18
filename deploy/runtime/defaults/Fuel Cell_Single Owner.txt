@@ -1,5 +1,5 @@
 1
-690
+691
 LeadAcid_q10
 1
 1
@@ -2086,6 +2086,13 @@ flip_target_year
 1
 1
 10
+fuelcell_availability_schedule
+1
+3
+1
+2
+0 0 
+
 fuelcell_degradation
 1
 1
