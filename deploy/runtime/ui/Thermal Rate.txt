@@ -1,7 +1,7 @@
 Thermal Rate
-501
-598
-14
+498
+631
+15
 GroupBox
 
 1
@@ -15,7 +15,7 @@ X
 12
 Y
 3
-375
+414
 Width
 3
 480
@@ -42,7 +42,7 @@ X
 21
 Y
 3
-429
+468
 Width
 3
 454
@@ -87,7 +87,7 @@ X
 30
 Y
 3
-258
+279
 Width
 3
 454
@@ -114,13 +114,13 @@ X
 30
 Y
 3
-116
+123
 Width
 3
 454
 Height
 3
-130
+154
 Caption
 5
 8
@@ -147,7 +147,7 @@ Width
 480
 Height
 3
-342
+381
 Caption
 5
 13
@@ -213,7 +213,7 @@ X
 126
 Y
 3
-210
+237
 Width
 3
 90
@@ -272,7 +272,7 @@ X
 39
 Y
 3
-171
+195
 Width
 3
 438
@@ -325,6 +325,65 @@ State
 TabOrder
 3
 4294967295
+Numeric
+
+1
+16
+Name
+5
+29
+thermal_conversion_efficiency
+X
+3
+249
+Y
+3
+162
+Width
+3
+69
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 SchedNumeric
 
 1
@@ -338,7 +397,7 @@ X
 249
 Y
 3
-396
+435
 Width
 3
 75
@@ -378,7 +437,7 @@ X
 126
 Y
 3
-321
+342
 Width
 3
 90
@@ -437,7 +496,7 @@ X
 39
 Y
 3
-279
+300
 Width
 3
 438
@@ -474,7 +533,7 @@ X
 300
 Y
 3
-210
+237
 Width
 3
 90
@@ -507,7 +566,7 @@ X
 300
 Y
 3
-318
+339
 Width
 3
 90
@@ -528,7 +587,7 @@ TabOrder
 3
 4294967295
 
-10
+11
 thermal_buy_rate
 3
 2
@@ -587,6 +646,20 @@ Thermal Rate
 1
 1
 CheckBox
+thermal_conversion_efficiency
+3
+1
+Nominal heat conversion efficiency
+%
+Thermal Rate
+0
+2
+1
+1
+1
+1
+50
+Default
 thermal_rate_escalation
 3
 2
@@ -736,7 +809,7 @@ equations{ '$MIMO$ thermalrate' } = define() {
 
 	return 0;
 };
-1240
+1311
 
 on_load{'Thermal Rate'} = define() {
 	fin = financing();
@@ -769,11 +842,12 @@ on_change{'thermal_sell_rate_option'} = define() {
 };
 
 function tie_buy_rate_to_fuel_cost(){
+	enable('thermal_conversion_efficiency', value('thermal_buy_rate_tie_to_fuel'));
 	if (value('thermal_buy_rate_tie_to_fuel')){
 		value('thermal_buy_rate_option', 0);
 		
 		fuel_cost_mmbtu = value('om_fuel_cost')[0];
-		fuel_cost_kwht = value('om_fuel_nominal_convervision_efficiency') * 0.01 * fuel_cost_mmbtu / 293.07;
+		fuel_cost_kwht = value('thermal_conversion_efficiency') * 0.01 * fuel_cost_mmbtu / 293.07;
 		value('thermal_buy_rate_flat', fuel_cost_kwht);
 	}
 	enable('thermal_buy_rate_option', value('thermal_buy_rate_tie_to_fuel')==0);

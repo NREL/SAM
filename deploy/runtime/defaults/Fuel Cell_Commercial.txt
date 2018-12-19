@@ -2613,12 +2613,6 @@ om_fuel_cost_escal
 1
 1
 0
-om_fuel_nominal_convervision_efficiency
-1
-1
-1
-1
-50
 om_fuel_price_units
 1
 1
@@ -3319,6 +3313,12 @@ thermal_buy_rate_tie_to_fuel
 1
 1
 1
+thermal_conversion_efficiency
+1
+1
+1
+1
+50
 thermal_load
 1
 2
