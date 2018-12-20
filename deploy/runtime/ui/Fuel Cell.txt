@@ -915,9 +915,8 @@ Height
 24
 Items
 6
-4
+3
 Natural Gas
-Diesel
 Hydrogen
 Custom
 Selection
@@ -1838,8 +1837,8 @@ fuelcell_fuel_type
 Fuel Type
  
 Fuel Cell
-34
-Natural Gas|Diesel|Hydrogen|Custom
+27
+Natural Gas|Hydrogen|Custom
 2
 1
 1
@@ -2062,7 +2061,7 @@ kW|% of nameplate
 1
 Choice
 
-2570
+2333
 equations{ 'fuelcell_fuel_available'} = define(){
 	liter_per_m3 = 1000;
 	MCF_per_liter = 28316.846592;
@@ -2070,11 +2069,8 @@ equations{ 'fuelcell_fuel_available'} = define(){
 	// natural gas
 	kg_per_liter = 0.9/liter_per_m3; 
 	
-	// Diesel
+	// hydrogen
 	if (${fuelcell_fuel_type} == 1){
-		kg_per_liter = 832/liter_per_m3;
-	}
-	else if (${fuelcell_fuel_type} == 2){
 		kg_per_liter = 0.071; // http://www.airproducts.com/Products/Gases/gas-facts/conversion-formulas/weight-and-volume-equivalents/hydrogen.aspx
 	} 
 	
@@ -2106,12 +2102,8 @@ equations{ 'fuelcell_lhv'} = define(){
 	// natural gas density: https://www.engineeringtoolbox.com/gas-density-d_158.html
 	lb_per_ft3 = 0.44;
 		
-	// Diesel density: https://www.engineeringtoolbox.com/fuels-densities-specific-volumes-d_166.html
-	if (${fuelcell_fuel_type} == 1){
-		lb_per_ft3 = 54.6;
-	}
 	// Hydrogen: http://www.airproducts.com/Products/Gases/gas-facts/conversion-formulas/weight-and-volume-equivalents/hydrogen.aspx
-	else if (${fuelcell_fuel_type} == 2){
+	if (${fuelcell_fuel_type} == 1){
 		lb_per_ft3 = 1.0/192.0;
 	}
 	
@@ -2160,15 +2152,44 @@ equations{'fuelcell_unit_min_power'} = define()
 
 };
 
-2844
+4626
 on_load{'Fuel Cell'} = define() {
+
 	on_change{'fuelcell_efficiency'}(); 
 	on_change{'fuelcell_fuel_type'}();
 	on_change{'fuelcell_replacement_option'}();
 	on_change{'fuelcell_fuel_limited'}();
 	
 	check_fuel_limited();	
-	//plot_efficiency();
+};
+
+function check_type()
+{
+	change = false;
+	type = value('fuelcell_type');
+	
+	if ( type < 3){
+		change = yesno('Change defaults for this fuel cell type?');
+	}
+	
+	if (change)
+	{
+		// MCFC
+		if (type == 0){
+			MCFC();
+		}
+		// PAFC
+		else if (type == 1){
+			PAFC();
+		}
+		// SOFC
+		else if (type == 2){
+			SOFC();
+		}
+	}
+}
+on_change{'fuelcell_type'} = define(){
+	check_type();
 };
 
 on_change{'fuelcell_fuel_limited'} = define(){
@@ -2199,16 +2220,8 @@ on_change{'fuelcell_fuel_type'} = define(){
 		lhv_unit = 2;
 		//price_unit = 0;
 	}
-	// Diesel 
-	else if (type == 1){
-		lhv = 19604; // (https://www.engineeringtoolbox.com/fuels-higher-calorific-values-d_169.html)
-		//price = 3.317; // https://www.eia.gov/petroleum/gasdiesel/ 
-		lhv_unit = 0;
-		//price_unit = 2;
-		
-	}
 	// Hydrogen
-	else if (type == 2){
+	else if (type == 1){
 		lhv = 51591; // https://www.engineeringtoolbox.com/heating-values-fuel-gases-d_823.html)
 		//price = 5.60; //https://cafcp.org/content/cost-refill
 		lhv_unit = 2;
@@ -2255,4 +2268,79 @@ function check_fuel_limited()
 	if (value('fuelcell_fuel_limited') == 0){
 		value('fuelcell_fuel_available_in', 1e10);
 	}
+}
+
+// 300 kW MCFC
+function MCFC()
+{
+	value('fuelcell_unit_max_power', 300);
+	value('fuelcell_unit_min_units', 1);
+	value('fuelcell_unit_min_power_input', 20); 
+	value('fuelcell_dynamic_response_down', 50);
+	value('fuelcell_dynamic_response_up', 50);
+	
+	efficiencyTable = [ 
+				[0.0,3.0,50],
+				[16.1,19.0,50],
+				[25.5,22.8,50],
+				[34.8,28.5,50],
+				[44.1,33.9,50],
+				[53.4,38.4,50],
+				[62.7,43.0,49],
+				[72.0,45.3,48],
+				[81.4,47.2,47],
+				[90.7,47.0,46],
+				[100,46.1,45]
+				];
+	value('fuelcell_efficiency',efficiencyTable);
+}
+
+// 200 kW SOFC
+function SOFC()
+{
+	value('fuelcell_unit_max_power', 200);
+	value('fuelcell_unit_min_units', 1);
+	value('fuelcell_unit_min_power_input', 30); 
+	value('fuelcell_dynamic_response_down', 500);
+	value('fuelcell_dynamic_response_up', 500);
+	
+	efficiencyTable = [ 
+				[0.0,3.0,50],
+				[16.1,21.0,50],
+				[25.5,25.2,50],
+				[34.8,31.5,50],
+				[44.1,37.3,50],
+				[53.4,42.6,50],
+				[62.7,47.4,49],
+				[72.0,49.9,48],
+				[81.4,52.0,47],
+				[90.7,51.8,46],
+				[100,50.7,45]
+				];
+	value('fuelcell_efficiency',efficiencyTable);
+}
+
+// 400 kW PAFC
+function PAFC()
+{
+	value('fuelcell_unit_max_power', 400);
+	value('fuelcell_unit_min_units', 1);
+	value('fuelcell_unit_min_power_input', 133); 
+	value('fuelcell_dynamic_response_down', 400);
+	value('fuelcell_dynamic_response_up', 400);
+	
+	efficiencyTable = [ 
+				[0.0,10.5,71.6],
+				[10.0,20.3,63.8],
+				[20.0,26.9,58.5],
+				[30.0,31.4,54.9],
+				[40.0,34.1,52.8],
+				[50.0,35.9,51.3],
+				[60.0,36.9,50.5],
+				[70.0,37.5,50.0],
+				[80.0,37.7,49.8],
+				[90.0,37.7,49.9],
+				[100.0,37.4,50.0]
+				];
+	value('fuelcell_efficiency',efficiencyTable);
 }
