@@ -1230,7 +1230,7 @@ Label
 Value
 UseSchedule
 2
-1
+0
 ScheduleOnly
 2
 0
@@ -1269,7 +1269,7 @@ Label
 Value
 UseSchedule
 2
-1
+0
 ScheduleOnly
 2
 0
@@ -1590,7 +1590,7 @@ Battery replacement cost
 $/kWh
 Operation and Maintenance Costs
 0
-1
+3
 1
 2
 1
@@ -1604,7 +1604,7 @@ Fuel cell stack replacement cost
 $/kW
 Operation and Maintenance Costs
 0
-1
+3
 1
 2
 1
