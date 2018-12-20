@@ -471,24 +471,10 @@ equations{ 'fuelcell_dispatch'} = define(){
 	}
 	return dispatch;
 };
-726
-function fuelcell_message()
-{
-	en_batt = ${en_batt};
-	mode = ${batt_dispatch_choice};
-	fc_mode = ${fuelcell_dispatch_choice};
-	
-	showMsg = false;
-	if (fc_mode == 2 && (en_batt && mode != 4)){
-		showMsg = true;
-	}
-	show('fuelCellMessage', showMsg);
-	refresh();
-}
+418
 on_load{'Fuel Cell Dispatch'} = define() {
 	on_change{'fuelcell_dispatch_choice'}(); 
 	toggle_dispatch();
-	//fuelcell_message();
 };
 on_change{'fuelcell_dispatch_choice'} = define(){
 	enable('fuelcell_fixed_pct', value('fuelcell_dispatch_choice') == 0);
@@ -496,7 +482,6 @@ on_change{'fuelcell_dispatch_choice'} = define(){
 	enable('fuelcell_dispatch_input_units', value('fuelcell_dispatch_choice') == 3);
 
 	toggle_dispatch();
-	//fuelcell_message();
 }; 
 
 

@@ -1183,7 +1183,7 @@ equations{'dispatch_tod_factors'} = define()
 };
 
 
-4121
+4252
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
 	// fom = front of meter
@@ -1293,6 +1293,15 @@ function toggle_dispatch_fom()
 	toggle_forecast();
 	
 	mode = ${batt_dispatch_choice};
+	en_batt = ${en_batt}; 
+	
+	if (!en_batt){
+		enable_auto_inputs_fom(false);
+		enable_non_manual_inputs_fom(false);
+		return;
+	}
+	
+	
 	// manual disptch
 	if (mode == 4)
 	{
