@@ -1,5 +1,5 @@
 1
-669
+667
 A_sf_UI
 1
 1
@@ -11719,18 +11719,6 @@ om_production_escal
 1
 1
 0
-om_replacement_cost1
-1
-2
-1
-1
-600
-om_replacement_cost2
-1
-2
-1
-1
-400
 om_replacement_cost_escal
 1
 1

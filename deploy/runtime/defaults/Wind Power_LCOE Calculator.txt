@@ -1,5 +1,5 @@
 1
-118
+116
 a_error_test_number
 1
 1
@@ -139,18 +139,6 @@ fixed_operating_cost
 1
 1
 765000
-om_replacement_cost1
-1
-2
-1
-1
-600
-om_replacement_cost2
-1
-2
-1
-1
-400
 om_replacement_cost_escal
 1
 1

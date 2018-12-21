@@ -1,5 +1,5 @@
 1
-171
+169
 CT
 1
 1
@@ -669,18 +669,6 @@ num_wells_getem
 1
 1
 2.85652
-om_replacement_cost1
-1
-2
-1
-1
-600
-om_replacement_cost2
-1
-2
-1
-1
-400
 om_replacement_cost_escal
 1
 1

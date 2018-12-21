@@ -1,5 +1,5 @@
 1
-466
+464
 AntiFrPar
 1
 1
@@ -1809,18 +1809,6 @@ lon
 1
 1
 -110.98
-om_replacement_cost1
-1
-2
-1
-1
-600
-om_replacement_cost2
-1
-2
-1
-1
-400
 om_replacement_cost_escal
 1
 1

@@ -809,7 +809,7 @@ equations{ '$MIMO$ thermalrate' } = define() {
 
 	return 0;
 };
-1311
+1313
 
 on_load{'Thermal Rate'} = define() {
 	fin = financing();
@@ -847,7 +847,7 @@ function tie_buy_rate_to_fuel_cost(){
 		value('thermal_buy_rate_option', 0);
 		
 		fuel_cost_mmbtu = value('om_fuel_cost')[0];
-		fuel_cost_kwht = value('thermal_conversion_efficiency') * 0.01 * fuel_cost_mmbtu / 293.07;
+		fuel_cost_kwht = fuel_cost_mmbtu / 293.07 / (value('thermal_conversion_efficiency') * 0.01);
 		value('thermal_buy_rate_flat', fuel_cost_kwht);
 	}
 	enable('thermal_buy_rate_option', value('thermal_buy_rate_tie_to_fuel')==0);

@@ -1,5 +1,5 @@
 1
-361
+359
 Label
 1
 1
@@ -2005,18 +2005,6 @@ lon
 1
 1
 -96.8
-om_replacement_cost1
-1
-2
-1
-1
-600
-om_replacement_cost2
-1
-2
-1
-1
-400
 om_replacement_cost_escal
 1
 1

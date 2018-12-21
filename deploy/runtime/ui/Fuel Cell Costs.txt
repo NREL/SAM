@@ -8227,7 +8227,7 @@ Capital Costs
 0
 Numeric
 
-6914
+6956
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -8406,6 +8406,7 @@ equations{ 'subtotal_direct' } = define() {
 	return ${module_total}
 		+${inverter_total}
 		+${battery_total}
+		+${fuelcell_total}
 		+${bos_equip_total}
 		+${install_labor_total}
 		+${install_margin_total}; };
@@ -8414,6 +8415,7 @@ equations{ 'total_direct_cost' } = define() {
 	return ${module_total}
 		+${inverter_total}
 		+${battery_total}
+		+${fuelcell_total}
 		+${bos_equip_total}
 		+${install_labor_total}
 		+${install_margin_total}
@@ -8468,8 +8470,8 @@ equations { 'fuelcell_power_total' } = define () {
 };
 equations { 'fuelcell_total' } = define () {
 	return ${fuelcell_power_total}*${fuelcell_per_kW};};
-1289
-on_load{"PV Capital Costs"}=define()
+1288
+on_load{"Fuel Cell Costs"}=define()
 {
 	f = financing();
 	t = technology();
