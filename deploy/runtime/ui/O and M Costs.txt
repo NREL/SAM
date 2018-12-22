@@ -1,6 +1,6 @@
 O and M Costs
-795
-202
+801
+196
 14
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 780
 Height
 3
-196
+176
 Caption
 5
 31
@@ -138,7 +138,7 @@ Width
 235
 Height
 3
-142
+110
 Caption
 5
 190
@@ -808,7 +808,7 @@ Operation and Maintenance Costs
 Numeric
 
 0
-945
+950
 on_load{"O and M Costs"}=define(){
 tech=technology();
 // show for all techs that have non-zero system.annual_fuel(except biopower tech number 12 and gassification tech number 16 - fuel o and m on feedstock page)
@@ -830,8 +830,8 @@ tech=technology();
     ||(tech=="DSLF") 
     ||(tech=="MSLF") 
      );
-	};
-	show('om_replacement_cost1', (tech=="Generic System")  ||(tech=="Flat Plate PV"));
-    show('om_replacement_escal', (tech=="Generic System")  ||(tech=="Flat Plate PV"));
 
-	
+	show('om_replacement_cost1', (tech=="Generic System")  ||(tech=="Flat Plate PV"));
+    show('om_replacement_cost_escal', (tech=="Generic System")  ||(tech=="Flat Plate PV"));
+
+	};	
