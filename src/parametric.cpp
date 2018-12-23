@@ -1357,7 +1357,7 @@ void ParametricViewer::SelectOutputs()
 	SelectVariableDialog dlg(this, "Select Outputs");
 	for (size_t i = 0; i<labels.size(); i++)
 	{
-		wxString label = dlg.PrettyPrintLabel(names[i], labels[i], types[i], units[i], groups[i] );
+		wxString label = dlg.PrettyPrintLabel(names[i], labels[i], types[i], units[i], groups[i], true );
 		output_labels.Add(label);
 		output_names.Add(names[i]);
 	}
@@ -3295,7 +3295,9 @@ void Parametric_QS::RefreshVariableList()
 		}
 		wxString suffix = "";
 
-		if (!vi->Units.IsEmpty())
+//		if (!vi->Units.IsEmpty())
+//			suffix += " (" + vi->Units + ") ";
+		if (vi->Units.Trim().length() > 0 )
 			suffix += " (" + vi->Units + ") ";
 
 		if (!vi->Group.IsEmpty())
