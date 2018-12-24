@@ -768,7 +768,7 @@ Width
 311
 Height
 3
-88
+112
 Caption
 5
 191

@@ -174,7 +174,7 @@ Width
 384
 Height
 3
-54
+72
 Caption
 5
 145
@@ -306,7 +306,7 @@ Name
 thermal_buy_rate_tie_to_fuel
 X
 3
-189
+300
 Y
 3
 138
@@ -335,7 +335,7 @@ Name
 thermal_conversion_efficiency
 X
 3
-249
+300
 Y
 3
 162

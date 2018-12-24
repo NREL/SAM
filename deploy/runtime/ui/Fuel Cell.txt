@@ -309,7 +309,7 @@ Width
 615
 Height
 3
-66
+84
 Caption
 5
 320
