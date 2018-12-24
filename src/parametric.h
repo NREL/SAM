@@ -210,7 +210,7 @@ public:
 
 	wxString RunSimulationsFromMacro();
 	bool ExportFromMacro(wxString path, bool asExcel = true);
-	bool SetInputFromMacro(wxString varName, size_t index, wxString val);
+	bool SetInputFromMacro(wxString varName, int index, wxString val);
 
 private:
 	void OnCommand(wxCommandEvent &evt);
