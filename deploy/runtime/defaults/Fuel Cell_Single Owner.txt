@@ -1,5 +1,5 @@
 1
-699
+706
 LeadAcid_q10
 1
 1
@@ -1775,6 +1775,12 @@ dispatch_manual_sched_weekend
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
+dispatch_manual_units_fc_discharge
+1
+2
+1
+1
+0
 dispatch_sched_weekday
 1
 3
@@ -2058,6 +2064,42 @@ fc_discharge_percent_6
 1
 1
 95
+fc_discharge_units_1
+1
+1
+1
+1
+1
+fc_discharge_units_2
+1
+1
+1
+1
+1
+fc_discharge_units_3
+1
+1
+1
+1
+1
+fc_discharge_units_4
+1
+1
+1
+1
+1
+fc_discharge_units_5
+1
+1
+1
+1
+1
+fc_discharge_units_6
+1
+1
+1
+1
+1
 fc_fuel_cost
 1
 2

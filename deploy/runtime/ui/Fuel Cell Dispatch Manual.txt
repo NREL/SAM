@@ -1,7 +1,7 @@
 Fuel Cell Dispatch Manual
 1007
 591
-73
+80
 Label
 
 1
@@ -57,7 +57,7 @@ Name
 AllowChargeFromFuelCellLabel
 X
 3
-630
+636
 Y
 3
 24
@@ -66,7 +66,7 @@ Width
 111
 Height
 3
-51
+42
 Caption
 5
 29
@@ -102,7 +102,7 @@ Name
 AllowDischargingLabel
 X
 3
-486
+444
 Y
 3
 36
@@ -327,16 +327,16 @@ Name
 Percent of rated to discharge
 X
 3
-555
+474
 Y
 3
-75
+60
 Width
 3
 84
 Height
 3
-21
+36
 Caption
 5
 11
@@ -1596,7 +1596,7 @@ Name
 fc.p1.discharge
 X
 3
-519
+477
 Y
 3
 96
@@ -1625,7 +1625,7 @@ Name
 fc.p2.discharge
 X
 3
-519
+477
 Y
 3
 123
@@ -1654,7 +1654,7 @@ Name
 fc.p3.discharge
 X
 3
-519
+477
 Y
 3
 150
@@ -1683,7 +1683,7 @@ Name
 fc.p4.discharge
 X
 3
-519
+477
 Y
 3
 177
@@ -1712,7 +1712,7 @@ Name
 fc.p5.discharge
 X
 3
-519
+477
 Y
 3
 204
@@ -1741,7 +1741,7 @@ Name
 fc.p6.discharge
 X
 3
-519
+477
 Y
 3
 231
@@ -1944,7 +1944,7 @@ Name
 fc_discharge_percent_1
 X
 3
-555
+513
 Y
 3
 99
@@ -2003,7 +2003,7 @@ Name
 fc_discharge_percent_2
 X
 3
-555
+513
 Y
 3
 126
@@ -2062,7 +2062,7 @@ Name
 fc_discharge_percent_3
 X
 3
-555
+513
 Y
 3
 153
@@ -2121,7 +2121,7 @@ Name
 fc_discharge_percent_4
 X
 3
-555
+513
 Y
 3
 180
@@ -2180,7 +2180,7 @@ Name
 fc_discharge_percent_5
 X
 3
-555
+513
 Y
 3
 207
@@ -2239,7 +2239,361 @@ Name
 fc_discharge_percent_6
 X
 3
-555
+513
+Y
+3
+234
+Width
+3
+42
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+20
+fc_discharge_units_1
+X
+3
+573
+Y
+3
+99
+Width
+3
+42
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+20
+fc_discharge_units_2
+X
+3
+573
+Y
+3
+126
+Width
+3
+42
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+20
+fc_discharge_units_3
+X
+3
+573
+Y
+3
+153
+Width
+3
+42
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+20
+fc_discharge_units_4
+X
+3
+573
+Y
+3
+180
+Width
+3
+42
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+20
+fc_discharge_units_5
+X
+3
+573
+Y
+3
+207
+Width
+3
+42
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+20
+fc_discharge_units_6
+X
+3
+573
 Y
 3
 234
@@ -3017,8 +3371,53 @@ State
 TabOrder
 3
 4294967295
+Label
 
-58
+1
+12
+Name
+5
+11
+units label
+X
+3
+573
+Y
+3
+66
+Width
+3
+63
+Height
+3
+24
+Caption
+5
+10
+# of units
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+
+65
 batt_discharge_percent_1
 3
 1
@@ -3351,6 +3750,20 @@ Battery
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
 DiurnalPeriod
+dispatch_manual_units_fc_discharge
+3
+2
+Number of fuel cell units to operate
+ 
+Fuel Cell
+0
+9
+1
+2
+1
+1
+0
+Default
 fc.p1.discharge
 3
 1
@@ -3602,6 +4015,90 @@ Fuel Cell
 1
 1
 95
+Numeric
+fc_discharge_units_1
+3
+1
+Number of units to run period 1
+ 
+Fuel Cell
+0
+1
+1
+1
+1
+1
+1
+Numeric
+fc_discharge_units_2
+3
+1
+Number of units to run period 2
+ 
+Fuel Cell
+0
+1
+1
+1
+1
+1
+1
+Numeric
+fc_discharge_units_3
+3
+1
+Number of units to run period 3
+ 
+Fuel Cell
+0
+1
+1
+1
+1
+1
+1
+Numeric
+fc_discharge_units_4
+3
+1
+Number of units to run period 4
+ 
+Fuel Cell
+0
+1
+1
+1
+1
+1
+1
+Numeric
+fc_discharge_units_5
+3
+1
+Number of units to run period 5
+ 
+Fuel Cell
+0
+1
+1
+1
+1
+1
+1
+Numeric
+fc_discharge_units_6
+3
+1
+Number of units to run period 6
+ 
+ 
+0
+1
+1
+1
+1
+1
+1
 Numeric
 pv.storage.p1.charge
 3
@@ -3856,7 +4353,7 @@ Battery
 0
  
 
-3385
+4061
 equations{ 'dispatch_manual_charge' } = define() {
 	return [ ${pv.storage.p1.charge},
 	${pv.storage.p2.charge},
@@ -3981,7 +4478,32 @@ equations{ 'dispatch_manual_percent_fc_discharge'} = define() {
 	}
 	return ret_array;
 };
-8236
+equations{ 'dispatch_manual_units_fc_discharge'} = define() {
+	count = 0;
+	discharge_array = ${dispatch_manual_fuelcelldischarge};
+	ret_array = [];
+	for (i = 0; i < #discharge_array; i++)
+	{
+		if (discharge_array[i] == 1)
+		{		
+			if (i == 0)
+				ret_array[count] = ${fc_discharge_units_1};
+			else if (i == 1)
+				ret_array[count] = ${fc_discharge_units_2};
+			else if (i == 2)
+				ret_array[count] = ${fc_discharge_units_3};
+			else if (i == 3)
+				ret_array[count] = ${fc_discharge_units_4};		
+			else if (i == 4)
+				ret_array[count] = ${fc_discharge_units_5};	
+			else if (i == 5)
+				ret_array[count] = ${fc_discharge_units_6};	
+			count++;
+		}
+	}
+	return ret_array;
+};
+8944
 on_load{'Fuel Cell Dispatch Manual'}=define()
 {	
 	show_label();
@@ -4072,6 +4594,13 @@ function toggle_fc_discharge_percent()
 	enable('fc_discharge_percent_4', en_manual &&(value('fc.p4.discharge')==1));
 	enable('fc_discharge_percent_5', en_manual &&(value('fc.p5.discharge')==1));
 	enable('fc_discharge_percent_6', en_manual &&(value('fc.p6.discharge')==1));
+	
+	enable('fc_discharge_units_1', en_manual && (value('fc.p1.discharge')==1));
+	enable('fc_discharge_units_2', en_manual && (value('fc.p2.discharge')==1));
+	enable('fc_discharge_units_3', en_manual &&(value('fc.p3.discharge')==1));
+	enable('fc_discharge_units_4', en_manual &&(value('fc.p4.discharge')==1));
+	enable('fc_discharge_units_5', en_manual &&(value('fc.p5.discharge')==1));
+	enable('fc_discharge_units_6', en_manual &&(value('fc.p6.discharge')==1));
 }
 function toggle_gridcharge_percent()
 {
@@ -4130,6 +4659,7 @@ function enable_grid_charge(on_off)
 	enable('pv.storage.p4.gridcharge',on_off);
 	enable('pv.storage.p5.gridcharge',on_off);
 	enable('pv.storage.p6.gridcharge',on_off);
+	
 	enable('batt_gridcharge_percent_1',on_off);
 	enable('batt_gridcharge_percent_2',on_off);
 	enable('batt_gridcharge_percent_3',on_off);
@@ -4163,12 +4693,20 @@ function enable_fc_discharge(on_off)
 	enable('fc.p4.discharge',on_off);
 	enable('fc.p5.discharge',on_off);
 	enable('fc.p6.discharge',on_off);
+	
 	enable('fc_discharge_percent_1',on_off);
 	enable('fc_discharge_percent_2',on_off);
 	enable('fc_discharge_percent_3',on_off);
 	enable('fc_discharge_percent_4',on_off);
 	enable('fc_discharge_percent_5',on_off);
 	enable('fc_discharge_percent_6',on_off);
+	
+	enable('fc_discharge_units_1',on_off);
+	enable('fc_discharge_units_2',on_off);
+	enable('fc_discharge_units_3',on_off);
+	enable('fc_discharge_units_4',on_off);
+	enable('fc_discharge_units_5',on_off);
+	enable('fc_discharge_units_6',on_off);
 }
 function enable_discharge(on_off)
 {
@@ -4178,6 +4716,7 @@ function enable_discharge(on_off)
 	enable('pv.storage.p4.discharge',on_off);
 	enable('pv.storage.p5.discharge',on_off);
 	enable('pv.storage.p6.discharge',on_off);
+	
 	enable('batt_discharge_percent_1',on_off);
 	enable('batt_discharge_percent_2',on_off);
 	enable('batt_discharge_percent_3',on_off);
