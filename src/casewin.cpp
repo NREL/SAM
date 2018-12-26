@@ -1351,7 +1351,6 @@ wxString SelectVariableDialog::PrettyPrintLabel(const wxString name, const wxStr
 	wxString un = units;
 	un = un.Trim();
 	ppLabel += " {'" + name + "'}";
-//	if (!units.IsEmpty()) ppLabel += " (" + units + ")";
 	if (!un.IsEmpty()) ppLabel += " (" + un + ")";
 	int ty = wxAtoi(type);
 	wxString sty = "";

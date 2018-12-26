@@ -3295,8 +3295,6 @@ void Parametric_QS::RefreshVariableList()
 		}
 		wxString suffix = "";
 
-//		if (!vi->Units.IsEmpty())
-//			suffix += " (" + vi->Units + ") ";
 		if (vi->Units.Trim().length() > 0 )
 			suffix += " (" + vi->Units + ") ";
 
