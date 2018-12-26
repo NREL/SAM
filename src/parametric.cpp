@@ -530,14 +530,14 @@ bool ParametricViewer::ExportFromMacro(wxString path, bool asExcel) {
 	return true;
 }
 
-bool ParametricViewer::SetInputFromMacro(wxString varName, size_t index, wxString val) {
+bool ParametricViewer::SetInputFromMacro(wxString varName, int index, wxString val) {
 	int c = m_grid_data->GetColumnForName(varName);
 	if (c == wxNOT_FOUND)
 		return false;
-	if (index < 0 || index >= (int)m_grid_data->GetNumberRows())
+	if (index < 0 || index >= m_grid_data->GetNumberRows())
 		return false;
-	m_grid_data->SetValue((int)index, c, val);
-	if (m_grid_data->GetValue((int)index, c) == val) {
+	m_grid_data->SetValue(index, c, val);
+	if (m_grid_data->GetValue(index, c) == val) {
 		m_grid->SetTable(m_grid_data);
 		UpdateGrid();
 		return true;
@@ -1357,7 +1357,7 @@ void ParametricViewer::SelectOutputs()
 	SelectVariableDialog dlg(this, "Select Outputs");
 	for (size_t i = 0; i<labels.size(); i++)
 	{
-		wxString label = dlg.PrettyPrintLabel(names[i], labels[i], types[i], units[i], groups[i] );
+		wxString label = dlg.PrettyPrintLabel(names[i], labels[i], types[i], units[i], groups[i], true );
 		output_labels.Add(label);
 		output_names.Add(names[i]);
 	}
@@ -3295,7 +3295,7 @@ void Parametric_QS::RefreshVariableList()
 		}
 		wxString suffix = "";
 
-		if (!vi->Units.IsEmpty())
+		if (vi->Units.Trim().length() > 0 )
 			suffix += " (" + vi->Units + ") ";
 
 		if (!vi->Group.IsEmpty())
