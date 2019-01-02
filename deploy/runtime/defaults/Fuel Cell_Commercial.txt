@@ -1,5 +1,5 @@
 1
-628
+629
 LeadAcid_q10
 1
 1
@@ -511,6 +511,12 @@ batt_dispatch_auto_can_charge
 1
 1
 1
+batt_dispatch_auto_can_fuelcellcharge
+1
+1
+1
+1
+0
 batt_dispatch_auto_can_gridcharge
 1
 1

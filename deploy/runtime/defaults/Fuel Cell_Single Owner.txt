@@ -1,5 +1,5 @@
 1
-706
+707
 LeadAcid_q10
 1
 1
@@ -529,6 +529,12 @@ batt_dispatch_auto_can_clipcharge
 1
 1
 1
+batt_dispatch_auto_can_fuelcellcharge
+1
+1
+1
+1
+0
 batt_dispatch_auto_can_gridcharge
 1
 1
@@ -2115,8 +2121,8 @@ federal_tax_rate
 file_name
 1
 4
-82
-C:\SAM\2018.12.20\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+87
+C:\Projects\sam\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -3918,8 +3924,8 @@ show_construction_period
 solar_data_file_name
 1
 4
-82
-C:\SAM\2018.12.20\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+87
+C:\Projects\sam\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -3938,8 +3944,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-82
-C:\SAM\2018.12.20\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+87
+C:\Projects\sam\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solution_mode_message
 1
 4

@@ -1,7 +1,7 @@
 Battery Dispatch Front of Meter
 1106
 379
-26
+27
 GroupBox
 
 1
@@ -468,6 +468,36 @@ Caption
 5
 44
 Battery can charge from clipped system power
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+8
+Name
+5
+37
+batt_dispatch_auto_can_fuelcellcharge
+X
+3
+45
+Y
+3
+324
+Width
+3
+318
+Height
+3
+24
+Caption
+5
+34
+Battery can charge from fuel cell 
 State
 2
 1
@@ -965,7 +995,7 @@ TabOrder
 3
 9
 
-14
+15
 batt_auto_gridcharge_max_daily
 3
 1
@@ -1049,6 +1079,20 @@ Battery
 1
 1
 1
+CheckBox
+batt_dispatch_auto_can_fuelcellcharge
+3
+1
+ 
+ 
+Battery
+0
+3
+1
+1
+1
+1
+0
 CheckBox
 batt_dispatch_auto_can_gridcharge
 3
@@ -1183,7 +1227,7 @@ equations{'dispatch_tod_factors'} = define()
 };
 
 
-4252
+4329
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
 	// fom = front of meter
@@ -1192,6 +1236,8 @@ on_load{'Battery Dispatch Front of Meter'}=define()
 	on_change{'batt_dispatch_choice'};
 	on_change{'batt_select_weather_file_forecast'};
 	on_change{'batt_cycle_cost_choice'};
+	
+	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
 };
 
 on_change{'batt_dispatch_choice'}=define()
