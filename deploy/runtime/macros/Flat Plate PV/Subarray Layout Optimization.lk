@@ -5,9 +5,10 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 <br><br> 
  
 <ol>
-<li> Maximizing Annual Energy Production (AEP)
-<li> Maximizing Net Present Value (NPV) of System 
-<li> Maximizing Energy Yield (kWh/kW) of the System
+<li> Maximizing Annual Energy Production (AEP)</li>
+<li> Maximizing Net Present Value (NPV) of System</li>
+<li> Maximizing Energy Yield (kWh/kW) of the System</li>
+<li> Minimizing Levelized Cost of Electricity (cents/kWh)</li>
 </ol>
 
 <br><br> Once the simulation is completed, you will have the option of automatically updating your current subarray layout based on one of the 3 optimization strategies outlined above. Optimized values that are updated include: strings in parallel, tilt, GCR, and number of modules along bottom of row.
@@ -116,8 +117,8 @@ if(get('subarray'+to_string(sub_number[1])+'_modules_per_string') == 0) {
 //This block contains declarations of all functions used in the rest of this script. 
 	
 //========================================================================================================================================================================================================================================================================
-
-function time_display(minute, second) {	//This function formats the time displayed 
+//Display estimated time this macro will take to complet (in MM:SS format):
+function time_display(minute, second) {	
 
 	if ( minute == 0 && (second / 10) < 1)
 		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 00:0" + second + " seconds to complete. Proceed?");
@@ -271,7 +272,7 @@ function npv_getter (fin_config) {
 }
 
 //========================================================================================================================================================================================================================================================================
-//Function to display optimal system configuration, as well as its techno-economic results:
+//Function to creat a striped table to display optimal system configuration, as well as its techno-economic results for all 4 optimization strategies:
 function display_results(gcr, tilt, nmodx, nmody, nrows, row_spacing, total_modules, modules_per_string, 
 						 string_in_parallel , num_inverters, aep, sys_size, npv, yield, lcoe) {	//total of 14 arguments
 						 
@@ -365,6 +366,7 @@ function display_results(gcr, tilt, nmodx, nmody, nrows, row_spacing, total_modu
 
 //========================================================================================================================================================================================================================================================================
 
+//Function to display a table of results obtained for each combination of GCR and Tilt angle:
 function display_table(min_gcr, max_gcr, gcr_steps, min_tilt, max_tilt, tilt_steps, array, dictionary, strategy) {	//strategy parameter checks if table is for LCOE -> in which case increase number of significant digits
 	h = '<table>'; 
 	h += '<table border = "1";  align = "center">';
@@ -398,7 +400,7 @@ function display_table(min_gcr, max_gcr, gcr_steps, min_tilt, max_tilt, tilt_ste
 }
 
 //========================================================================================================================================================================================================================================================================
-
+//Display green highlighted cell below results table (to display maximum/minimum value)
 function table_key(key) {
 	h = '<table  align = "center">';
 	h += '<tr>'; 
@@ -421,7 +423,7 @@ clr = ['#FF0000',	'#00FFFF',	'#FF00FF',	'#0000A0',	'#9ACD32',	'#800080',	'#FFFF0
 	   '#FFFAFA',	'#00FF7F',	'#4682B4',	'#D2B48C',	'#008080',	'#D8BFD8',	'#FF6347',	'#40E0D0',	'#EE82EE',	'#F5DEB3', 	'#F5F5F5',	
 	   '#FFFF00',	'#ADD8E6'];
 
-
+//Create a plot with GCR on the y-axis and tilt angle on the x-axis:
 function new_plot(array, clr, yaxis_title, graph_title, graph_name){
 	newplot(true);
 	for ( count = 0; count <= (#array - 1) ; count = count + 1) {
@@ -578,6 +580,7 @@ while (subarray_to_optimize < max_subarrays) {
 		///////////////////////////////////**** ARRAY PLACEMENT ****///////////////////////////////////
 
 		i = 0;	
+		//Loop over GCR to determine system size for each GCR, as well as determine number of modules required for each system size:
 		for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
 			module_power = module_info();
 			system_size[i] = to_int(system_sizer(gcr));
@@ -585,7 +588,6 @@ while (subarray_to_optimize < max_subarrays) {
 			i = i + 1;
 		}
 
-		//Variable to keep count of number of rows in the loop:
 		if (get('subarray1_mod_orient') == 1) {					//if module orientation is landscape, then length of panel is used in calculating length of row
 			module_length = get('module_length');				//Length of 1 module
 			bottom_length = module_length;						//Initial length of bottom row of modules 
@@ -601,23 +603,22 @@ while (subarray_to_optimize < max_subarrays) {
 		p = 0;
 		n = 0;		//number of panels along side bottom of row
 		i = 0;
-
-		//Fitting modules along length of field:
-		for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {						//For loop to iterate over the entire range of (user input) GCRs, to make sure module placement along length and width of the field is in sync with the respective GCRs. So, for instance, even though the field length could accomodate a longer row of modules, number of modules in each row and alongside row is restricted.	
-				
-			n = to_int((effective_length/module_length) );									//Set modules along entire effective length
+		//For loop to iterate over the entire range of (user input) GCRs, to make sure module placement along length and width of the field is 
+		//in sync with the respective GCRs. So, for instance, even though the field length could accomodate a longer row of modules, number of modules 
+		//in each row and alongside row is restricted to maintain GCR:	
+		for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {		//Fitting modules along length of field:				
+			
+			//Start by placing modules along effective lenght of field:	
+			n = to_int((effective_length/module_length) );									
 			set('subarray1_nmodx',n);
 			
-			//At this point modules have been placed along bottom. System sizes have been calculated at respective GCRs.  
-			
-			//While loop to make sure number of modules along bottom row doesn't exceed system size at that GCR
-			while(get('subarray1_nmodx') < n){
+			//While loop to make sure number of modules along bottom row doesn't exceed system size at that GCR.
+			while(get('subarray1_nmodx') < n){	
 				n -= 1;
 				set('subarray1_nmodx',n);
 			}
 			
-			//So at this point, we set modules along bottom. Now, find how many strings in parallel you need.
-			//outln(get('subarray1_modules_per_string'));
+			//Finding how many strings in parallel we need:
 			strings_in_parallel[i] = to_int(number_of_modules[i] /get('subarray1_modules_per_string'));
 			set('subarray1_nstrings', strings_in_parallel[i]);
 			
@@ -629,14 +630,12 @@ while (subarray_to_optimize < max_subarrays) {
 				
 			}
 			
-			
 			bottom_modules[p] = n;
-			set('subarray1_nmodx', bottom_modules[p]);
+			set('subarray1_nmodx', bottom_modules[p]);	
 			
 			p = p + 1;
 			i = i + 1;
 		}
-
 
 		///////////////////////////////////**** S I M U L A T I O N ****///////////////////////////////////
 
@@ -760,10 +759,6 @@ while (subarray_to_optimize < max_subarrays) {
 					modules_per_string_lcoe = get('subarray1_modules_per_string');
 					inverter_lcoe = get('inverter_count');
 				}
-				
-				
-				
-				
 				
 			}
 			i = i + 1;		
