@@ -822,6 +822,13 @@ void ResultsViewer::Setup( Simulation *sim )
 				an_period = (int)vv->Value();
 	}
 
+	wxArrayString varlabels;
+	for (size_t i = 0; i < vars.size(); i++)
+	{
+		varlabels.push_back(sim->GetLabel(vars[i]));
+	}
+	wxSortByLabels(vars, varlabels);
+
 	for( size_t i=0;i<vars.size();i++ )
 	{
 		if ( VarValue *vv = m_sim->GetValue( vars[i] ) )

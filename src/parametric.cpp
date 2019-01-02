@@ -103,12 +103,12 @@ void ParametricData::ClearRuns()
 }
 
 // limits number of inputs to 65,536 on 32bit...
-int ParametricData::FindSetup(wxString &name)
+int ParametricData::FindSetup(wxString &name, bool IsInput)
 {
 	int ndx = -1;
 	for (size_t i = 0; i < Setup.size(); i++)
 	{
-		if (Setup[i].Name == name)
+		if (Setup[i].Name == name && Setup[i].IsInput == IsInput)
 		{
 			ndx = (int)i;
 			break;
@@ -117,10 +117,10 @@ int ParametricData::FindSetup(wxString &name)
 	return ndx;
 }
 
-bool ParametricData::RemoveSetup(wxString &name)
+bool ParametricData::RemoveSetup(wxString &name, bool IsInput)
 {
 	bool removed = false;
-	int ndx = FindSetup(name);
+	int ndx = FindSetup(name, IsInput);
 	if (ndx > -1)
 	{
 		int sz = Setup.size();
@@ -135,7 +135,7 @@ void ParametricData::Write( wxOutputStream &_O )
 	wxDataOutputStream out( _O );
 
 	out.Write8( 0x2b );
-	out.Write8( 3 ); // version
+	out.Write8( 4 ); // version
 
 	out.Write32( Setup.size() );
 	for( size_t i=0;i<Setup.size();i++ )
@@ -144,6 +144,11 @@ void ParametricData::Write( wxOutputStream &_O )
 		out.Write32( Setup[i].Values.size() );
 		for( size_t k=0;k<Setup[i].Values.size();k++ )
 			Setup[i].Values[k].Write( _O );
+		// version 4 upgrade
+		if (!Setup[i].IsInput)
+			out.Write8(0);
+		else
+			out.Write8(1);
 	}
 
 	out.Write32( Runs.size() );
@@ -182,6 +187,11 @@ bool ParametricData::Read( wxInputStream &_I )
 			vv.Read( _I );
 			x.Values.push_back( vv );
 		}
+		// version 4
+		if (ver > 3)
+			x.IsInput = (in.Read8() > 0);
+		else
+			x.IsInput = true; // default assumption of input.
 		Setup.push_back( x );
 	}
 
@@ -520,6 +530,22 @@ bool ParametricViewer::ExportFromMacro(wxString path, bool asExcel) {
 	return true;
 }
 
+bool ParametricViewer::SetInputFromMacro(wxString varName, int index, wxString val) {
+	int c = m_grid_data->GetColumnForName(varName);
+	if (c == wxNOT_FOUND)
+		return false;
+	if (index < 0 || index >= m_grid_data->GetNumberRows())
+		return false;
+	m_grid_data->SetValue(index, c, val);
+	if (m_grid_data->GetValue(index, c) == val) {
+		m_grid->SetTable(m_grid_data);
+		UpdateGrid();
+		return true;
+	}
+	return false;
+}
+
+
 void ParametricViewer::OnCommand(wxCommandEvent &evt)
 {
 	switch (evt.GetId())
@@ -799,8 +825,12 @@ bool ParametricViewer::ImportAsTable(wxString& vals, VarValue& vv) {
 
 void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	wxArrayString inputNames, outputNames;
+	bool inputcol = true;
 	wxArrayString allOutputNames, allOutputLabels;
 	Simulation::ListAllOutputs(m_case->GetConfiguration(), &allOutputNames, &allOutputLabels, NULL, NULL, NULL);
+	VarInfoLookup &vil = m_case->GetConfiguration()->Variables;
+
+
 	for (int c = 0; c < col; c++) {
 		if (vals[c*row].Len() == 0)
 			continue;
@@ -808,7 +838,6 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 		wxArrayString splitUnit = wxSplit(vals[c*row], '(');
 		wxString name = splitUnit[0];
 		name = name.Trim();
-		VarInfoLookup &vil = m_case->GetConfiguration()->Variables;
 		VarInfo* vi = vil.Lookup(name);
 
 		// if not name is not of variable, see if it's a label
@@ -819,18 +848,21 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 				vi = vil.Lookup(name);
 			}
 		}
-		// if not input, see if output
-		if (!vi) {
+		inputcol = true;
+		// if not input or already listed as input, see if output
+		if (!vi || (inputNames.Index(name) != wxNOT_FOUND)) {
 			bool found = false;
 			for (size_t i = 0; i < allOutputNames.size(); i++)
 			{
 				if (name.IsSameAs(allOutputNames[i], false)) {
 					outputNames.push_back(allOutputNames[i]);
+					inputcol = false;
 					found = true;
 					break;
 				}
 				else if (name.IsSameAs(allOutputLabels[i], false)) {
 					outputNames.push_back(allOutputNames[i]);
+					inputcol = false;
 					found = true;
 					break;
 				}
@@ -885,6 +917,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 		}
 		pv.Values = vvv;
 		pv.Name = name;
+		pv.IsInput = inputcol;
 		if (!m_grid_data->IsValid(pv)) {
 			wxString typeS = m_case->BaseCase().GetInput(pv.Name)->TypeAsString();
 			wxString typeS2 = pv.Values[0].TypeAsString();
@@ -1324,7 +1357,7 @@ void ParametricViewer::SelectOutputs()
 	SelectVariableDialog dlg(this, "Select Outputs");
 	for (size_t i = 0; i<labels.size(); i++)
 	{
-		wxString label = dlg.PrettyPrintLabel(names[i], labels[i], types[i], units[i], groups[i] );
+		wxString label = dlg.PrettyPrintLabel(names[i], labels[i], types[i], units[i], groups[i], true );
 		output_labels.Add(label);
 		output_names.Add(names[i]);
 	}
@@ -1411,7 +1444,7 @@ void ParametricGridData::Init()
 	for (int i = 0; i < m_cols; i++)
 	{
 		wxString var_name = m_par.Setup[i].Name;
-		if (IsInput(var_name))
+		if (IsInput(m_par.Setup[i]))
 			m_input_names.push_back(var_name);
 		else
 			m_output_names.push_back(var_name);
@@ -1437,7 +1470,7 @@ void ParametricGridData::UpdateSetup()
 	int i, ndx;
 	for (i = 0; i < (int)m_input_names.Count(); i++)
 	{
-		ndx = m_par.FindSetup(m_input_names[i]);
+		ndx = m_par.FindSetup(m_input_names[i], true);
 		if (ndx < 0)
 		{
 			// throw error?
@@ -1449,7 +1482,7 @@ void ParametricGridData::UpdateSetup()
 
 	for (i = 0; i < (int)m_output_names.Count(); i++)
 	{
-		ndx = m_par.FindSetup(m_output_names[i]);
+		ndx = m_par.FindSetup(m_output_names[i], false);
 		if (ndx < 0)
 		{
 			// throw error?
@@ -1507,30 +1540,15 @@ bool ParametricGridData::IsInput(int col)
 {
 	if ((col>-1) && (col < m_cols))
 	{
-		wxString var_name = m_par.Setup[col].Name;
-		return IsInput(var_name);
+		return m_par.Setup[col].IsInput;
 	}
 	else
 		return false;
 }
 
-bool ParametricGridData::IsInput(wxString &var_name)
+bool ParametricGridData::IsInput(ParametricData::Var &var)
 {
-//	if (VarValue *vv = m_par.GetCase()->Values().Get(var_name))
-	if (VarInfo *vi = m_par.GetCase()->Variables().Lookup(var_name))
-	{
-		if (m_input_names.Index(var_name) != wxNOT_FOUND)
-			return true;
-		else
-		{
-			if ((vi->Flags & VF_PARAMETRIC) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED))
-				return true;
-			else
-				return false;
-		}
-	}
-	else
-		return false;
+	return var.IsInput;
 }
 
 
@@ -1721,10 +1739,10 @@ void ParametricGridData::SetValue(int row, int col, const wxString& value)
 	{
 		if (IsInput(col))
 		{
-			VarValue *vv = &m_par.Setup[col].Values[row];
-			VarValue::Parse(vv->Type(), value, *vv);
-			if (row < (int)m_valid_run.size())
+			if ( row >= 0 && row < (int)m_valid_run.size())
 			{
+				VarValue *vv = &m_par.Setup[col].Values[row];
+				VarValue::Parse(vv->Type(), value, *vv);
 				m_valid_run[row] = false;
 				ClearResults(row);
 			}
@@ -1916,17 +1934,17 @@ void ParametricGridData::AddSetup(ParametricData::Var &var)
 	AppendCols();
 }
 
-void ParametricGridData::DeleteSetup(wxString &var_name)
+void ParametricGridData::DeleteSetup(ParametricData::Var &var)
 {
-	if (m_par.RemoveSetup(var_name))
+	if (m_par.RemoveSetup(var.Name, var.IsInput))
 	{
 		DeleteCols();
 		// reset simulaiton input to base case input
 		for (int row = 0; row < m_rows; row++)
 		{
-			if (VarValue *vv = m_case->BaseCase().GetInput(var_name))
+			if (VarValue *vv = m_case->BaseCase().GetInput(var.Name))
 			{
-				m_par.Runs[row]->Override(var_name, *vv);
+				m_par.Runs[row]->Override(var.Name, *vv);
 				m_valid_run[row] = false;
 			}
 		}
@@ -1943,7 +1961,7 @@ void ParametricGridData::UpdateNumberRows(int rows)
 		for (size_t i = 0; i < m_var_names.Count(); i++)
 		{
 			// update Setup
-			int ndx = m_par.FindSetup(m_var_names[i]);
+			int ndx = m_par.FindSetup(m_var_names[i], true);
 			if (ndx > -1)
 			{
 				if (((int)m_par.Setup[i].Values.size() < rows) && (IsInput(i)))
@@ -2411,7 +2429,7 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 {
 	for (size_t i = 0; i < input_names.size(); i++)
 	{
-		int ndx = m_par.FindSetup(input_names[i]);
+		int ndx = m_par.FindSetup(input_names[i], true);
 		if (ndx < 0)
 		{
 			std::vector<VarValue> vvv;
@@ -2423,18 +2441,20 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 			}
 			pv.Name = input_names[i];
 			pv.Values = vvv;
+			pv.IsInput = true;
 			AddSetup(pv);
 		}
 	}
 	// remove any variables not selected
-	wxArrayString to_remove;
+	std::vector< ParametricData::Var> to_remove;
 	for (size_t i = 0; i < m_par.Setup.size(); i++)
 	{
 		wxString var_name = m_par.Setup[i].Name;
-		if ((input_names.Index(var_name) == wxNOT_FOUND) && (IsInput(var_name)))
-			to_remove.push_back(var_name);
+		if ((input_names.Index(var_name) == wxNOT_FOUND) && (m_par.Setup[i].IsInput))
+				to_remove.push_back(m_par.Setup[i]);
 	}
-	for (size_t i = 0; i < to_remove.Count(); i++)
+	ParametricData::Var pv;
+	for (size_t i = 0; i < to_remove.size(); i++)
 	{
 		DeleteSetup(to_remove[i]);
 	}
@@ -2449,7 +2469,7 @@ void ParametricGridData::UpdateOutputs(wxArrayString &output_names)
 {
 	for (size_t i = 0; i < output_names.size(); i++)
 	{
-		int ndx = m_par.FindSetup(output_names[i]);
+		int ndx = m_par.FindSetup(output_names[i], false);
 		if (ndx < 0)
 		{
 			std::vector<VarValue> vvv;
@@ -2461,18 +2481,19 @@ void ParametricGridData::UpdateOutputs(wxArrayString &output_names)
 			}
 			pv.Name = output_names[i];
 			pv.Values = vvv;
+			pv.IsInput = false;
 			AddSetup(pv);
 		}
 	}
 	// remove any variables not selected
-	wxArrayString to_remove;
+	std::vector< ParametricData::Var> to_remove;
 	for (size_t i = 0; i < m_par.Setup.size(); i++)
 	{
 		wxString var_name = m_par.Setup[i].Name;
-		if ((output_names.Index(var_name) == wxNOT_FOUND) && (!IsInput(var_name)))
-			to_remove.push_back(var_name);
+		if ((output_names.Index(var_name) == wxNOT_FOUND) && (!IsInput(m_par.Setup[i])))
+			to_remove.push_back(m_par.Setup[i]);
 	}
-	for (size_t i = 0; i < to_remove.Count(); i++)
+	for (size_t i = 0; i < to_remove.size(); i++)
 		DeleteSetup(to_remove[i]);
 	m_output_names = output_names;
 	UpdateSetup();
@@ -2831,7 +2852,7 @@ bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
 
 
 	if (vvtype == VV_NUMBER
-		&& vi->IndexLabels.Count() > 0)
+		&& vi->IndexLabels.Count() > 0 && vi->UIObject != "Numeric")
 	{
 		// fixed domain selection (combo box, list, radio choice etc)
 		wxArrayString fixed_items = vi->IndexLabels;
@@ -3070,7 +3091,7 @@ wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &varname)
 
 
 	if (vvtype == VV_NUMBER
-		&& vi->IndexLabels.Count() > 0)
+		&& vi->IndexLabels.Count() > 0 && vi->UIObject != "Numeric")
 	{
 		// fixed domain selection (combo box, list, radio choice etc)
 		wxArrayString fixed_items = vi->IndexLabels;
@@ -3138,7 +3159,7 @@ void Parametric_QS::UpdateCaseParametricData()
 		wxArrayString outputs;
 		for (size_t i = 0; i < par.Setup.size(); i++)
 		{
-			if (m_case->Values().Get(par.Setup[i].Name))
+			if (par.Setup[i].IsInput)
 				continue;
 			outputs.Add(par.Setup[i].Name);
 		}
@@ -3161,6 +3182,7 @@ void Parametric_QS::UpdateCaseParametricData()
 			}
 			pv.Name = m_input_names[i];
 			pv.Values = vvv;
+			pv.IsInput = true;
 			par.Setup.push_back(pv);
 		}
 		for (size_t num_run = 0; num_run < num_runs; num_run++)
@@ -3228,6 +3250,7 @@ void Parametric_QS::UpdateCaseParametricData()
 			}
 		}
 
+
 		// add original outputs back 
 		for (size_t i = 0; i < outputs.Count(); i++)
 		{
@@ -3242,6 +3265,7 @@ void Parametric_QS::UpdateCaseParametricData()
 			}
 			pv.Name = outputs[i];
 			pv.Values = vvv;
+			pv.IsInput = false;
 			par.Setup.push_back(pv);
 		}
 
@@ -3271,7 +3295,7 @@ void Parametric_QS::RefreshVariableList()
 		}
 		wxString suffix = "";
 
-		if (!vi->Units.IsEmpty())
+		if (vi->Units.Trim().length() > 0 )
 			suffix += " (" + vi->Units + ") ";
 
 		if (!vi->Group.IsEmpty())

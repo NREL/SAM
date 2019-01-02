@@ -14,6 +14,7 @@
 // and click Refresh Library to add the file to your solar resource library.
 //
 // Written and tested in SAM 2017.9.5 r4 in July 2018
+// Updated Dec 2018 for SAM 2018.11.11
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -88,7 +89,7 @@ function download_nsrdb( email, apikey )
 	
 	// data avalailable from NSRDB API
 	options = [ 'TMY' ];
-	for( year = 1998; year <= 2016; year++ )
+	for( year = 1998; year <= 2017; year++ )
 		options[#options] = to_string(year);
 	
 	// get data year or TMY from user	
@@ -99,13 +100,14 @@ function download_nsrdb( email, apikey )
 	
 	// construct URL for call to NSRDB API
 	// https://developer.nrel.gov/docs/solar/nsrdb/psm3_data_download/
-	url = webapi( 'nsrdb_download' ); 
-	url = replace(url, '<USEREMAIL>', email );
-	url = replace(url, '<SAMAPIKEY>', apikey );
-	url = replace(url, '<LON>', lon );
-	url = replace(url, '<LAT>', lat );
-	url = replace(url, '<DATASET>', dataset );
-	
+	url = 'https://developer.nrel.gov/api/solar/nsrdb_psm3_download.csv'
+	    + '?api_key=' + nrel_api_key + '&email=' + nrel_api_email 
+	    + '&full_name=SAM+User&affiliation=Test+Organization&reason=Example&mailing_list=true'
+	    + '&wkt=POINT('+ lon + '+' + lat + ')'
+	    + '&names=' + dataset
+	    + '&attributes=dhi,dni,ghi,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,air_temperature,surface_pressure,relative_humidity,solar_zenith_angle,total_precipitable_water,wind_direction,wind_speed,fill_flag'
+	    + '&leap_day=false&utc=false&interval=30'; 
+
 	outln(url);	
 	logmsg( url );
 	

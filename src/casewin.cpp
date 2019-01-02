@@ -1342,22 +1342,36 @@ void SelectVariableDialog::ShowAllItems()
 }
 
 wxString SelectVariableDialog::PrettyPrintLabel(const wxString name, const VarInfo vi) {
-	return PrettyPrintLabel(name, vi.Label, wxString::Format(wxT("%i"), vi.Type), vi.Units, vi.Group);
+	return PrettyPrintLabel(name, vi.Label, wxString::Format(wxT("%i"), vi.Type), vi.Units, vi.Group, false);
 }
 
 wxString SelectVariableDialog::PrettyPrintLabel(const wxString name, const wxString label, const wxString type, 
-												const wxString units, const wxString group) {
+												const wxString units, const wxString group, bool ssc_variable) {
 	wxString ppLabel = label;
+	wxString un = units;
+	un = un.Trim();
 	ppLabel += " {'" + name + "'}";
-	if (!units.IsEmpty()) ppLabel += " (" + units + ")";
+	if (!un.IsEmpty()) ppLabel += " (" + un + ")";
 	int ty = wxAtoi(type);
-	wxString sty;
-	if (ty == VV_NUMBER) sty = "number";
-	else if (ty == VV_ARRAY) sty = "array";
-	else if (ty == VV_MATRIX) sty = "matrix";
-	else if (ty == VV_STRING) sty = "string";
-	else if (ty == VV_TABLE) sty = "table";
-	ppLabel += " [" + sty + "]";
+	wxString sty = "";
+	if (ssc_variable)
+	{
+		if (ty == SSC_NUMBER) sty = "number";
+		else if (ty == SSC_ARRAY) sty = "array";
+		else if (ty == SSC_MATRIX) sty = "matrix";
+		else if (ty == SSC_STRING) sty = "string";
+		else if (ty == SSC_TABLE) sty = "table";
+	}
+	else
+	{
+		if (ty == VV_NUMBER) sty = "number";
+		else if (ty == VV_ARRAY) sty = "array";
+		else if (ty == VV_MATRIX) sty = "matrix";
+		else if (ty == VV_STRING) sty = "string";
+		else if (ty == VV_TABLE) sty = "table";
+	}
+	if (sty != "")
+		ppLabel += " [" + sty + "]";
 
 	if (!group.IsEmpty())
 		ppLabel = group + "/" + ppLabel;
