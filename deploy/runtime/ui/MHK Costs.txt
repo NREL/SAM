@@ -4623,28 +4623,26 @@ Capital Costs
 0
 Default
 
-5604
+5401
 // Get calculated UI values that are independent variables
 //    in cost calculations
 
 	// Heliostat Reflective Area
 equations{ 'csp.pt.cost.heliostats_m2' } = define() {
-	area = ${A_sf_UI};
+	area = 12;
 	return area;	};
 	
 equations{ 'csp.pt.cost.site_improvements_m2' } = define() {
-	return ${A_sf_UI}; };
+	return 17; };
 	
 	// Tower Height
 equations{'ui_tower_height'} = define() {
-	tech = technology();
-	if ( tech == 'ISCC' ) return ${THT};
-	else if ( tech == 'MSPT' || tech == 'DSPT' ) return ${h_tower};
+	return 18;
 };
 
 	// Receiver Height
 equations{'ui_receiver_height'} = define() {
-	return ${rec_height};
+	return 25;
 };
 
 equations{ 'csp.pt.cost.rec_height' } = define() {
@@ -4658,7 +4656,7 @@ equations{ 'csp.pt.cost.rec_height' } = define() {
 
 	// Heliostat Height
 equations{'ui_heliostat_height'} = define() {
-	return ${helio_height};
+	return 23;
 };
 
 
@@ -4700,15 +4698,15 @@ equations{ 'csp.pt.cost.power_block_mwe' } = define() {
 
 	// Total land area
 equations{ 'csp.pt.cost.total_land_area' } = define() {
-	return ${csp.pt.sf.total_land_area};};
+	return 105;};
 	
 	// Cycle net (nameplate) capacity
 equations{ 'csp.pt.cost.nameplate' } = define() {
-	return ${nameplate}; };
+	return 600; };
 
 	// Sales tax rate
 equations{ 'csp.pt.cost.sales_tax.value' } = define() {
-	return ${sales_tax_rate}; };
+	return 5; };
 
 	// Other stuff
 equations { 'system_use_lifetime_output' } = define () {

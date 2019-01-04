@@ -1,5 +1,5 @@
 1
-146
+149
 a_error_test_number
 1
 1
@@ -21,8 +21,9 @@ c_construction_cost
 1
 2
 1
-1
-0
+3
+80 10 10 
+
 c_construction_duration
 1
 1
@@ -34,13 +35,13 @@ c_construction_interest
 1
 1
 1
-0
+8
 c_debt_percent
 1
 1
 1
 1
-0
+60
 c_depreciation_schedule
 1
 2
@@ -53,37 +54,37 @@ c_equity_return
 1
 1
 1
-0
+13
 c_inflation
 1
 1
 1
 1
-0
+2.5
 c_lifetime
 1
 1
 1
 1
-0
+20
 c_nominal_interest_rate
 1
 1
 1
 1
-0
+8
 c_tax_rate
 1
 1
 1
 1
-0
+40
 capital_cost
 1
 1
 1
 1
-0
+12407.4
 contingency_rate
 1
 1
@@ -107,7 +108,7 @@ csp.pt.cost.contingency
 1
 1
 1
-0
+99462.7
 csp.pt.cost.epc.fixed
 1
 1
@@ -137,7 +138,7 @@ csp.pt.cost.epc.total
 1
 1
 1
-0
+183500
 csp.pt.cost.fossil
 1
 1
@@ -149,25 +150,25 @@ csp.pt.cost.heliostats
 1
 1
 1
-0
+2534.64
 csp.pt.cost.heliostats_m2
 1
 1
 1
 1
-0
+12
 csp.pt.cost.installed_per_capacity
 1
 1
 1
 1
-0
+2.42628
 csp.pt.cost.nameplate
 1
 1
 1
 1
-0
+600
 csp.pt.cost.plm.fixed
 1
 1
@@ -227,25 +228,25 @@ csp.pt.cost.sales_tax.total
 1
 1
 1
-0
+48933.4
 csp.pt.cost.sales_tax.value
 1
 1
 1
 1
-0
+5
 csp.pt.cost.site_improvements
 1
 1
 1
 1
-0
+36
 csp.pt.cost.site_improvements_m2
 1
 1
 1
 1
-0
+17
 csp.pt.cost.storage
 1
 1
@@ -263,25 +264,25 @@ csp.pt.cost.total_land_area
 1
 1
 1
-0
+105
 csp.pt.cost.tower
 1
 1
 1
 1
-0
+1.1213e+06
 fixed_charge_rate
 1
 1
 1
 1
-1
+0.0975058
 fixed_operating_cost
 1
 1
 1
 1
-0
+373.32
 fossil_spec_cost
 1
 1
@@ -300,6 +301,12 @@ land_spec_cost
 1
 1
 0
+number_devices
+1
+1
+1
+1
+10
 om_capacity
 1
 2
@@ -378,6 +385,24 @@ resource_definition_type
 1
 1
 0
+resource_heatmap
+1
+3
+12
+24
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 
+2 2 1 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 2 2 
+2 1 1 3 3 3 5 5 5 5 5 5 5 5 5 5 5 5 3 3 3 1 1 2 
+2 1 1 3 3 3 5 5 6 6 6 6 6 6 6 6 5 5 3 3 3 1 1 2 
+2 1 1 3 3 3 5 6 6 8 8 8 8 8 8 6 6 5 3 3 3 1 1 2 
+2 1 1 3 3 3 5 6 6 8 8 8 8 8 8 6 6 5 3 3 3 1 1 2 
+2 1 1 3 3 3 5 5 6 6 6 6 6 6 6 6 5 5 3 3 3 1 1 2 
+2 1 1 3 3 3 5 5 5 5 5 5 5 5 5 5 5 5 3 3 3 1 1 2 
+2 2 1 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 2 2 
+2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+
 sales_tax_frac
 1
 1
@@ -390,6 +415,12 @@ site_spec_cost
 1
 1
 3
+system_capacity
+1
+1
+1
+1
+7.32
 system_use_lifetime_output
 1
 1
@@ -413,19 +444,19 @@ total_direct_cost
 1
 1
 1
-0
+1.22334e+06
 total_indirect_cost
 1
 1
 1
 1
-0
+232434
 total_installed_cost
 1
 1
 1
 1
-0
+1.45577e+06
 tower_exp
 1
 1
@@ -443,7 +474,7 @@ ui_capital_cost_capacity
 1
 1
 1
-0
+1695
 ui_capital_cost_fixed
 1
 1
@@ -455,49 +486,49 @@ ui_cfin
 1
 1
 1
-0
+1.0389
 ui_cost_input_option
 1
 1
 1
 1
-0
+1
 ui_crf
 1
 1
 1
 1
-0
+0.0832903
 ui_direct_subtotal
 1
 1
 1
 1
-0
+1.12387e+06
 ui_fcr_input_option
 1
 1
 1
 1
-0
+1
 ui_fixed_charge_rate
 1
 1
 1
 1
-1
+0.098
 ui_heliostat_height
 1
 1
 1
 1
-0
+23
 ui_ireal
 1
 1
 1
 1
-0
+0.0536585
 ui_lbl_cff_msg
 1
 4
@@ -507,7 +538,7 @@ ui_operating_cost_capacity
 1
 1
 1
-0
+51
 ui_operating_cost_fixed
 1
 1
@@ -519,25 +550,25 @@ ui_pfin
 1
 1
 1
-0
+1.12684
 ui_receiver_height
 1
 1
 1
 1
-0
+25
 ui_system_capacity
 1
 1
 1
 1
-0
+7.32
 ui_tower_height
 1
 1
 1
 1
-0
+18
 ui_variable_operating_cost
 1
 1
@@ -549,7 +580,7 @@ ui_wacc
 1
 1
 1
-0
+0.054439
 use_specific_wf_wind
 1
 1
@@ -724,7 +755,7 @@ wind_resource.requested_ht
 1
 1
 1
-0
+80
 wind_resource.state
 1
 4
@@ -750,8 +781,8 @@ wind_resource_shear
 wind_turbine_IEC_Class_from_lib
 1
 4
-1
-0
+7
+unknown
 wind_turbine_cut_out
 1
 1
@@ -775,13 +806,13 @@ wind_turbine_kw_rating
 1
 1
 1
-1
+0.732
 wind_turbine_kw_rating_from_lib
 1
 1
 1
 1
-1
+0.732
 wind_turbine_kw_rating_input
 1
 1
@@ -808,48 +839,48 @@ wind_turbine_powercurve_powerout
 1
 2
 1
-15
-0 0 0.048 0.155 0.39 0.69 1.02 1.22 1.19 1.085 1 0.9 0.5 0 0 
+30
+0 0 0 0.034 0.07 0.137 0.252 0.39 0.524 0.621 0.699 0.73 0.732 0.73 0.73 0.73 0.73 0.73 0.73 0.73 0 0 0 0 0 0 0 0 0 0 
 
 wind_turbine_powercurve_powerout_from_lib
 1
 2
 1
-15
-0 0 0.048 0.155 0.39 0.69 1.02 1.22 1.19 1.085 1 0.9 0.5 0 0 
+30
+0 0 0 0.034 0.07 0.137 0.252 0.39 0.524 0.621 0.699 0.73 0.732 0.73 0.73 0.73 0.73 0.73 0.73 0.73 0 0 0 0 0 0 0 0 0 0 
 
 wind_turbine_powercurve_windspeeds
 1
 2
 1
-15
-0 3 3.6 5.4 7.2 8.9 10.7 12.5 14.3 16.1 17.9 19.7 21 23 40 
+30
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 
 
 wind_turbine_powercurve_windspeeds_from_lib
 1
 2
 1
-15
-0 3 3.6 5.4 7.2 8.9 10.7 12.5 14.3 16.1 17.9 19.7 21 23 40 
+30
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 
 
 wind_turbine_rated_wind_speed
 1
 1
 1
 1
-1
+0.732
 wind_turbine_rotor_diameter
 1
 1
 1
 1
-2.5
+1
 wind_turbine_rotor_diameter_from_lib
 1
 1
 1
 1
-2.5
+1
 wind_turbine_rotor_diameter_input
 1
 1
@@ -859,5 +890,5 @@ wind_turbine_rotor_diameter_input
 wind_turbine_selection
 1
 4
-15
-Bergey BWC XL.1
+26
+Ampair 600-230 1.7m 0.7kw 
