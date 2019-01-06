@@ -50,6 +50,7 @@
 //#include <wx/statline.h>
 #include <wx/stattext.h>
 #include <wx/combobox.h>
+#include <wx/listbox.h>
 #include <wx/textctrl.h>
 #include <wx/valtext.h>
 #include <wx/radiobut.h>
@@ -65,7 +66,7 @@ static const char *help_text =
 
 enum {
 	ID_radAddress, ID_radLatLon, ID_cboYears,
-	ID_txtAddress, ID_txtLat, ID_txtLon
+	ID_txtAddress, ID_txtLat, ID_txtLon, ID_lsthubheights
 };
 
 BEGIN_EVENT_TABLE( WindToolkitDialog, wxDialog )
@@ -91,9 +92,23 @@ WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	years.Add("2010");
 	years.Add("2011");
 	years.Add("2012");
+	years.Add("2013");
 
-	wxString InitialValue = "2012";
+	wxString InitialValue = "2013";
 	cboYears = new wxComboBox(this, ID_cboYears, InitialValue, wxDefaultPosition, wxDefaultSize, years, wxCB_READONLY);
+
+	wxArrayString hubheights;
+	hubheights.Add("10m");
+	hubheights.Add("40m");
+	hubheights.Add("60m");
+	hubheights.Add("80m");
+	hubheights.Add("100m");
+	hubheights.Add("120m");
+	hubheights.Add("140m");
+	hubheights.Add("160m");
+	hubheights.Add("200m");
+
+	lstHubheights = new wxListBox(this, ID_lsthubheights, wxDefaultPosition, wxDefaultSize, hubheights, wxLB_MULTIPLE);
 
 	wxBoxSizer *szll = new wxBoxSizer( wxHORIZONTAL );
 	szll->Add( new wxStaticText( this, wxID_ANY, "Latitude" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
@@ -112,9 +127,14 @@ WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	szyr->Add( new wxStaticText( this, wxID_ANY, "Select year"), wxALL|wxALIGN_CENTER_VERTICAL, 15 );
 	szyr->Add( cboYears, 0, wxALL, 5 );
 
+	wxBoxSizer *szhh = new wxBoxSizer(wxHORIZONTAL);
+	szhh->Add(new wxStaticText(this, wxID_ANY, "Select hub height"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
+	szhh->Add(lstHubheights, 0, wxALL, 5);
+
 	wxBoxSizer *szmain = new wxBoxSizer( wxVERTICAL );
 	szmain->Add( szgrid, 0, wxLEFT|wxRIGHT|wxTOP, 10 );
-	szmain->Add( szyr, 0, wxLEFT|wxRIGHT, 10 );
+	szmain->Add(szyr, 0, wxLEFT | wxRIGHT, 10);
+	szmain->Add(szhh, 0, wxLEFT | wxRIGHT, 10);
 
 	wxStaticText *note = new wxStaticText(this, wxID_ANY, help_text);
 	note->Wrap(550);
@@ -180,4 +200,13 @@ double WindToolkitDialog::GetLongitude()
 wxString WindToolkitDialog::GetYear()
 {
 	return cboYears->GetStringSelection();
+}
+
+wxArrayString WindToolkitDialog::GetHubHeights()
+{
+	wxArrayString hh;
+	for (int i = 0; i < lstHubheights->GetCount(); i++)
+		if (lstHubheights->IsSelected(i))
+			hh.Add(lstHubheights->GetString(i));
+	return hh;
 }

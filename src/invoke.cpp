@@ -2044,43 +2044,116 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		lon = spd.GetLongitude();
 	}
 
-	//Create URL for weather file download
-	wxString url;
-	url = SamApp::WebApi("windtoolkit");
-	url.Replace("<YEAR>", spd.GetYear(), 1);
-	url.Replace("<LAT>", wxString::Format( "%lg", lat), 1);
-	url.Replace("<LON>", wxString::Format( "%lg", lon), 1);
-	url.Replace("<SAMAPIKEY>", wxString(sam_api_key) );
 
-	//Download the weather file
-	wxEasyCurl curl;
-	bool ok = curl.Get(url, "Downloading data from wind toolkit...", SamApp::Window() );	//true won't let it return to code unless it's done downloading
-	// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
+	wxArrayString hh = spd.GetHubHeights();
 
-	if ( !ok )
-	{
-		wxMessageBox("Failed to download data from web service.");
-		return;
-	}
+	wxString location;
+	location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
+	location = location + "_" + year;
+	wxString filename;
 
 	//Create a folder to put the weather file in
 	wxString wfdir;
 	wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
 	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
 
+
+	wxArrayString wfs;
+
+	//Create URL for each hub height file download
+	wxString url;
+	bool ok;
+
+	wxCSVData csv_main, csv;
+
 	//Create the filename
-	wxString location;
-	location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
-	location = location + year;
-	wxString filename = wfdir + "/" + location + ".srw";
-	
-	//write data to file
-	if (!curl.WriteDataToFile(filename))
+	filename = wfdir + "/" + location;
+
+	wxEasyCurl curl;
+
+
+	for (size_t i = 0; i < hh.Count(); i++)
 	{
-		wxMessageBox("Failed to download the closest WIND toolkit weather file from NREL for your location. The NREL service might be down- please try again later.");
+		url = SamApp::WebApi("windtoolkit");
+		url.Replace("<YEAR>", year);
+		url.Replace("<HUBHEIGHT>", hh[i].Left(hh[i].Len()-1));
+		url.Replace("<LAT>", wxString::Format("%lg", lat));
+		url.Replace("<LON>", wxString::Format("%lg", lon));
+		url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
+
+
+		ok = curl.Get(url, "Downloading data from wind toolkit...", SamApp::Window());	//true won't let it return to code unless it's done downloading
+		// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
+
+		if (!ok)
+		{
+			wxMessageBox("Failed to download data from web service.");
+			wxMessageBox("URL=" + url);
+			return;
+		}
+		wxString srw_api_data = curl.GetDataAsString();
+		if (!csv.ReadString(srw_api_data))
+		{
+			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
+			return;
+		}
+
+		double press, temp;
+		// Pressure 2nd column or check header row 3 with labels row 4 units and row 5 hub heights
+		// Switch speed and direction cheaders
+		wxString speed;
+		// header label
+		speed = csv(2, 3);
+		csv(2, 3) = csv(2, 2);
+		csv(2, 2) = speed;
+		// header units
+		speed = csv(3, 3);
+		csv(3, 3) = csv(3, 2);
+		csv(3, 2) = speed;
+		for (size_t j = 5; j < csv.NumRows(); j++)
+		{
+			// pressure Pa to atm
+			if (!csv(j, 1).ToDouble(&press))
+			{
+				wxMessageBox(wxString::Format("Failed to convert from Pa to atm for (row, col) = (%d, 1) for file %s.",(int)j, filename));
+				return;
+			}
+			press *= 9.86923e-6; // Pascals to atm 1 Pa = 9.86923e-6 atm
+			csv(j, 1) = wxString::FromDouble(press);
+			// temperature K to C
+			if (!csv(j, 0).ToDouble(&temp))
+			{
+				wxMessageBox(wxString::Format("Failed to convert from K to C for (row, col) = (%d, 0) for file %s.", (int)j, filename));
+				return;
+			}
+			temp -= 273.15; // Kelvin to Celcius 0 K = -273.15 C
+			csv(j, 0) = wxString::FromDouble(temp);
+			// switch speed and direction columns - wind weather file reader only handles Temp, Press, Speed, Direction
+			speed = csv(j, 3);
+			csv(j, 3) = csv(j, 2); // set speed equal direction
+			csv(j, 2) = speed; // set direction column equal speed
+		}
+		if (i == 0)
+			csv_main.Copy(csv);
+		else
+		{
+			// add header (row 2), units (row 3) and hub heights (row 4)
+			// add data (rows 5 through end of data)
+			for (size_t j = 2; j < csv.NumRows() && j < csv_main.NumRows(); j++)
+				for (size_t k = 0; k < 4; k++)
+					csv_main(j, i * 4 + k) = csv(j, k);
+		}
+		filename += "_" + hh[i];
+	}
+
+	// write out combined hub height file 
+	filename += ".srw";
+	if (!csv_main.WriteFile(filename))
+	{
+		wxMessageBox(wxString::Format("Failed to write downloaded weather file %s.", filename));
 		return;
 	}
-	
+
 	//Return the downloaded filename
 	cxt.result().assign(filename);
 }
@@ -3070,6 +3143,101 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 	}
 }
 
+void fcall_librarygetcurrentselection(lk::invoke_t &cxt)
+{
+	LK_DOC("librarygetcurrentselection", "Return the text of the current selection for the library specified", "(string:libraryctrlname):string");
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+	lk_string ret_val = "";
+
+	wxString name(cxt.arg(0).as_string().Lower());
+	if (&cc != NULL)
+	{
+		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+		for (size_t i = 0; i < objs.size(); i++)
+			if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+			{
+				if (objs[i]->GetName().Lower() == name)
+				{
+					ret_val = lc->GetEntrySelection();
+					break;
+				}
+			}
+	}
+	cxt.result().assign(ret_val);
+}
+
+void fcall_librarygetfiltertext(lk::invoke_t &cxt)
+{
+	LK_DOC("librarygetfiltertext", "Return the text of the search string for the library on the", "(string:libraryctrlname):string");
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+	lk_string ret_val = "";
+
+	wxString name(cxt.arg(0).as_string().Lower());
+	if (&cc != NULL)
+	{
+		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+		for (size_t i = 0; i < objs.size(); i++)
+			if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+			{
+				if (objs[i]->GetName().Lower() == name)
+				{
+					ret_val = lc->GetFilterText();
+					break;
+				}
+			}
+	}
+	cxt.result().assign(ret_val);
+}
+
+
+void fcall_librarygetnumbermatches(lk::invoke_t &cxt)
+{
+	LK_DOC("librarygetnumbermatches", "Return the number of library items matching the search string for the library specified", "(string:libraryctrlname):number");
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+	double ret_val = 0;
+
+	wxString name(cxt.arg(0).as_string().Lower());
+	if (&cc != NULL)
+	{
+		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+		for (size_t i = 0; i < objs.size(); i++)
+			if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+			{
+				if (objs[i]->GetName().Lower() == name)
+				{
+					ret_val = (double)lc->GetNumberMatches();
+					break;
+				}
+			}
+	}
+	cxt.result().assign(ret_val);
+}
+
+
+void fcall_librarynotifytext(lk::invoke_t &cxt)
+{
+	LK_DOC("librarynotifytext", "Gets or sets the notify string for the library specified", "(string:libraryctrlname, [string:notifytext]):string");
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+	wxString ret_val = "";
+
+	wxString name(cxt.arg(0).as_string().Lower());
+	if (&cc != NULL)
+	{
+		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+		for (size_t i = 0; i < objs.size(); i++)
+			if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+			{
+				if (objs[i]->GetName().Lower() == name)
+				{
+					if (cxt.arg_count() == 2)
+						lc->SetNotifyText(cxt.arg(1).as_string());
+					ret_val = lc->GetNotifyText();
+					break;
+				}
+			}
+	}
+	cxt.result().assign(ret_val);
+}
 
 // threading ported over from lk to use lhs
 
@@ -4320,6 +4488,10 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_getsettings,
 		fcall_setsettings,
 		fcall_rescanlibrary,
+		fcall_librarygetcurrentselection,
+		fcall_librarygetfiltertext,
+		fcall_librarygetnumbermatches,
+		fcall_librarynotifytext,
 		0 };
 	return (lk::fcall_t*)vec;
 }

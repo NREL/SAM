@@ -153,6 +153,10 @@ public:
 	bool SetEntrySelection( const wxString &entry );
 	wxString GetEntrySelection();
 
+	size_t GetNumberMatches() { return m_nmatches; };
+	wxString GetFilterText() { return m_filter->GetValue(); };
+	wxString GetNotifyText() { return m_notify->GetLabel(); }
+	void SetNotifyText(wxString &txt) { m_notify->SetLabel(txt); }
 
 	wxString GetCellValue( long item, long col );
 	void UpdateList();
@@ -197,6 +201,7 @@ private:
 	LibraryListView *m_list;
 
 	bool m_sendEvents;
+	size_t m_nmatches;
 	
 	
 	DECLARE_EVENT_TABLE();
