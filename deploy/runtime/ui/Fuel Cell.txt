@@ -1,7 +1,7 @@
 Fuel Cell
 976
 1127
-42
+43
 Divider
 
 1
@@ -1105,6 +1105,36 @@ Selection
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+8
+Name
+5
+19
+fuelcell_is_started
+X
+3
+93
+Y
+3
+318
+Width
+3
+90
+Height
+3
+24
+Caption
+5
+11
+Started up 
+State
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1886,7 +1916,7 @@ Bold
 2
 1
 
-33
+34
 fuelcell_availability_schedule
 3
 3
@@ -2143,6 +2173,20 @@ Natural Gas|Hydrogen|Custom
 1
 0
 Choice
+fuelcell_is_started
+3
+1
+Started up already
+ 
+Fuel Cell
+0
+1
+1
+1
+1
+1
+0
+CheckBox
 fuelcell_lhv
 3
 1
@@ -2480,13 +2524,14 @@ equations{'fuelcell_dynamic_response_down'} = define()
 	return response;
 };
 
-4962
+5187
 on_load{'Fuel Cell'} = define() {
 
 	on_change{'fuelcell_efficiency'}(); 
 	on_change{'fuelcell_fuel_type'}();
 	on_change{'fuelcell_replacement_option'}();
 	on_change{'fuelcell_fuel_limited'}();
+	on_change{'fuelcell_is_started'}();
 	
 	check_fuel_limited();	
 };
@@ -2519,7 +2564,12 @@ function check_type()
 on_change{'fuelcell_type'} = define(){
 	check_type();
 };
-
+on_change{'fuelcell_is_started'} = define(){
+	enable('fuelcell_startup_time', !value('fuelcell_is_started'));
+	if (value('fuelcell_is_started')){
+		value('fuelcell_startup_time', 0);
+	}
+};
 on_change{'fuelcell_fuel_limited'} = define(){
 	check_fuel_limited();
 };

@@ -1,5 +1,5 @@
 1
-707
+708
 LeadAcid_q10
 1
 1
@@ -2274,6 +2274,12 @@ fuelcell_fuel_limited
 1
 0
 fuelcell_fuel_type
+1
+1
+1
+1
+0
+fuelcell_is_started
 1
 1
 1
