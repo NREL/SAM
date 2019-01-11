@@ -427,6 +427,7 @@ LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wx
 	SetBackgroundColour( *wxWHITE );
 
 	m_sendEvents = true;
+	m_nmatches = 0;
 
 	m_label = new wxStaticText( this, wxID_ANY, wxT("Search for:") );
 	m_filter = new wxTextCtrl( this, ID_FILTER );
@@ -498,7 +499,7 @@ bool LibraryCtrl::SetEntrySelection( const wxString &entry )
 wxString LibraryCtrl::GetEntrySelection()
 {
 	long sel = m_list->GetFirstSelected();
-	if ( sel >= 0 && sel < (long)m_view.size() ) return m_view[ sel ].name;
+	if (sel >= 0 && sel < (long)m_view.size()) return m_view[sel].name;
 	return wxEmptyString;
 }
 
@@ -598,8 +599,8 @@ void LibraryCtrl::UpdateList()
 	m_view.clear();
 	if ( m_entries.size() > 0 )
 		m_view.reserve( m_entries.size() );
-
-	size_t nmatches = 0;
+	
+	m_nmatches = 0;
 
 	if( Library *lib = Library::Find( m_library ) )
 	{
@@ -620,14 +621,14 @@ void LibraryCtrl::UpdateList()
 				)
 			{
 				m_view.push_back( viewable(m_entries[i], i) );
-				nmatches++;
+				m_nmatches++;
 			}
 			else if ( target == sel )
 				m_view.push_back( viewable(m_entries[i], i) );
 		}
 	}
 
-	if ( nmatches == 0 )
+	if ( m_nmatches == 0 )
 	{
 		m_notify->SetLabel( "No matches. (selected item shown)" );
 		Layout();
@@ -701,8 +702,17 @@ void LibraryCtrl::OnColClick( wxListEvent &evt )
 
 void LibraryCtrl::OnCommand( wxCommandEvent &evt )
 {
-	if( evt.GetId() == ID_FILTER || evt.GetId() == ID_TARGET )
+	if (evt.GetId() == ID_FILTER || evt.GetId() == ID_TARGET)
+	{
 		UpdateList();
+		if (evt.GetId() == ID_FILTER)
+		{
+			wxCommandEvent issue(wxEVT_LISTBOX, GetId());
+			issue.SetEventObject(this);
+			issue.SetInt(evt.GetSelection());
+			ProcessEvent(issue);
+		}
+	}
 }
 
 void LibraryCtrl::SetLabel( const wxString &text )

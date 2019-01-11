@@ -338,3 +338,7 @@ build_osx/SAM
 build_osx/SAM\.app/Contents/Frameworks/
 
 build_osx/SAM\.app/Contents/
+
+src/private_os\.h
+
+src/private_sam\.h

@@ -1,0 +1,232 @@
+/*@ 
+
+<p>This macro reads data from an OND or PAN file and populates inputs on SAM's
+ Module or Inverter input page.</p>
+
+<p>The macro was tested with OND and PAN text files from PVsyst Version 6.6 and
+SAM 2018.11.11. It will not convert binary OND or PAN files from older versions
+of PVsyst.</p>
+
+<p><strong>Notes:</strong></p> 
+<ul>
+<li>For inverters, the script reads the number of MPPT inputs from the OND file
+and sets the value in SAM accordingly. For inverters with more than one MPPT input,
+you may need to assign a subarray to each MPPT input on the System Design page.</li>
+<li>For bifacial modules, the script does not read the bifaciality factor from 
+the PAN file. You will need to set the bifacial inputs by hand on SAM's Module
+input page.</li>
+</ul>
+@*/
+
+function read_pvsyst_file ( file , T )
+{
+	text_line = '';
+	first_line = '';
+	arr = [];
+	skipped_data = [];
+	n = 0;
+	T{'error'} = '';
+	fin = open( file, 'r' );
+	read_line( fin, first_line );
+	if ( strpos( lower(first_line), 'pvobject_' ) < 0 )
+	{
+		T{'error'} = 'File does not appear to be a PVsyst PAN or OND text file.';
+	}
+	else
+	{
+		while( read_line( fin, text_line ) )
+		{
+			if ( text_line != '' ) // skip blank lines (assume blank lines have no spaces)
+			{
+				// assume lines with valid data contain an equal sign that separates a 
+				// pvsyst variable name from its value
+				arr = split( text_line, '=' ); 
+				arr[0] = replace( arr[0], ' ' , '' ); // remove leading spaces
+			}
+			if ( lower(arr[0]) == 'pvobject_' ) 
+			{
+				T{'componenttype'} = arr[1]; // not used by sam
+			} 
+			if ( #arr == 1 ) // skip lines with no equal sign
+			{
+				continue;
+			}
+			elseif ( T ?@ lower( arr[0] ) )
+			{
+				T{lower(arr[0])} = arr[1];
+			}
+			else
+			{
+				skipped_data[n] = arr;
+				n++;
+			}
+		}
+	}
+	close( fin );
+	T{'skippeddata'} = skipped_data;
+	return( T );
+}
+
+// opens a pan file and returns a table of pan variables and their values
+// only returns variables that have equivalents in sam.
+function read_pan_file ( f )
+{
+
+	Tvars = {};
+
+	// initialize table of pvsyst variables that sam uses
+	Tvars{'muisc'} = ''; 
+	Tvars{'width'} = '';
+	Tvars{'height'} = '';
+	Tvars{'muvocspec'} = '';
+	Tvars{'tecnol'} = '';
+	Tvars{'mupmpreq'} = '';
+	Tvars{'imp'} = '';
+	Tvars{'isc'} = '';
+	Tvars{'manufacturer'} = '';
+	Tvars{'model'} = '';
+	Tvars{'ncels'} = '';
+	Tvars{'vmp'} = '';
+	Tvars{'voc'} = '';
+
+	return( read_pvsyst_file( f, Tvars ) );
+
+}
+
+function read_ond_file ( f )
+{
+
+	var = {};
+
+	// initialize table of pvsyst variables that sam uses
+	Tvars{'pmaxout'} = '';
+	Tvars{'vmppmin'} = '';
+	Tvars{'vmppmax'} = '';
+	Tvars{'vmppnom'} = '';
+	Tvars{'vabsmax'} = '';
+	Tvars{'pseuil'} = '';
+	Tvars{'modeaffenum'} = '';
+	Tvars{'efficmax'} = '';
+	Tvars{'nbmppt'} = '';
+	Tvars{'night_loss'} = '';
+
+	return( read_pvsyst_file( f, Tvars ) );
+
+}
+
+// converts a table of pvsyst pan file variables to a table of input variables
+// for sam's module model with user-entered specifications
+function pan_to_sam_vars( T )
+{
+
+	sam_var = {};
+	
+	// some pvsyst variables need conversion before using in sam
+	aisc = to_real(T.muisc) / 1000; // mA/degC to A/degC
+	bvoc = to_real(T.muvocspec) / 1000; // mV/degC to V/degC
+	aiscunits = 0; // A/degC in SAM
+	bvocunits = 0; // V/degC in SAM
+	area = to_real(T.width) * to_real(T.height);
+	modulename = T.manufacturer + ' ' + T.model;
+	mounting = 0;
+	standoff = 6;
+	tnoct = 46;
+	celltech={};
+	celltech.sam = ['monoSi','multiSi','CdTe','CIS','CIGS','Amorphous'];
+	celltech.pvsyst = ['mtSiMono','undefined!','undefined!','undefined!','undefined!','undefined!'];
+
+	// assign SAM variable values
+	sam_var{'6par_aisc_display'} = aisc; // muisc /1000 // muisc is mA/degC
+	sam_var{'6par_aisc_units'} = aiscunits; // not in pvsys, set to 0 for A/degC
+	sam_var{'6par_area'} = area; // width * height, pvsyst cell area is not used
+	sam_var{'6par_bvoc_display'} = bvoc; // mV/degC
+	sam_var{'6par_bvoc_units'} = bvocunits; // not in pvsyst, set to 0 for V/degC
+	sam_var{'6par_celltech'} = celltech.sam[lower(celltech.pvsyst) ?@ T.tecnol];
+	sam_var{'6par_gpmp'} = to_real(T.mupmpreq); // %/degC no conversion required
+	sam_var{'6par_imp'} = to_real(T.imp); // A
+	sam_var{'6par_isc'} = to_real(T.isc); // A
+	sam_var{'6par_module_name'} = modulename; // manufacturer + model (strings)
+	sam_var{'6par_mounting'} = mounting; // use default, see field thermal loss factor inputs in pvsyst
+	sam_var{'6par_nser'} = to_real(T.ncels);
+	sam_var{'6par_standoff'} = standoff; // use default, see field thermal loss factor inputs in pvsyst 
+	sam_var{'6par_tnoct'} = tnoct; // not used in pvsyst, set to 46 ??
+	sam_var{'6par_vmp'} = to_real(T.vmp); //
+	sam_var{'6par_voc'} = to_real(T.voc); // V
+
+	return sam_var;
+}
+
+// converts a table of pvsyst ond file variables to a table of input variables
+// for sam's inverter datasheet model
+function ond_to_sam_vars( T )
+{
+	sam_var = {};
+
+	// set inv_ds_eff_type to 1 for manufacturer
+	sam_var{'inv_ds_eff_type'} = 1;
+	
+	// assign SAM variable values
+	sam_var{'inv_ds_paco'} = to_real(T{'pmaxout'}) * 1000; // kW to W
+	sam_var{'inv_ds_eff_peak_or_nom'} = to_real(T{'efficmax'});
+	sam_var{'inv_ds_pnt'} = to_real(T{'night_loss'}); // should be very small
+	sam_var{'inv_ds_pso'} = to_real(T{'pseuil'}); // power threshold in UI is minimum power to operate and inverter self consumption, should be about 1% of nominal power
+	sam_var{'inv_ds_vdco'} = to_real(T{'vmppnom'});
+	sam_var{'inv_ds_vdcmax'} = to_real(T{'vabsmax'});
+	sam_var{'inv_ds_mppt_low'} = to_real(T{'vmppmin'});
+	sam_var{'inv_ds_mppt_hi'} = to_real(T{'vmppmax'});
+	sam_var{'inv_ds_num_mppt'} = to_real(T{'nbmppt'});
+
+	return sam_var;
+}
+
+// read values from a table of sam variables and set value of inputs
+// set model = 1 for ond/inverter, model = 2 for pan/module
+function set_sam_inputs( var , model )
+{
+	vars = @var;
+	if ( model == 1 ) { set( 'inverter_model' , model ); }
+	elseif ( model == 2 ) { set( 'module_model', model ); }
+	else { outln('invalid model'); }
+	for( i=0; i<#vars; i++ ) 
+	{ set( vars[i], var{vars[i]} ); }
+}
+	
+////////////////////////////////////////////////////////////////////////////////
+// Main
+////////////////////////////////////////////////////////////////////////////////
+
+fname = choose_file( homedir(), 'Choose PAN or OND file', 'PVsyst files (*.ond;*.pan)|*.ond;*.pan' );
+outln( 'Converting ' + fname + '...' );
+if ( strpos( lower(fname), 'pan' ) > -1 )
+{
+	
+	pan_vars = read_pan_file( fname );
+	if ( pan_vars{'error'} == '' )
+	{
+		sam_vars = pan_to_sam_vars( pan_vars );
+		set_sam_inputs( sam_vars , 2 );
+		show_page( 'Module' );
+	}
+	else 
+	{
+		msgbox( 'Failed to convert PAN file!\n' + pan_vars{'error'} + '\n\nThis macro cannot convert binary files from PVsyst versions ealier than Version 6.6.'); 
+	}
+		
+}
+elseif	( strpos( lower(fname), 'ond' ) > -1 )
+{
+	ond_vars = read_ond_file( fname );
+	if ( ond_vars{'error'} == '' )
+	{
+		sam_vars = ond_to_sam_vars( ond_vars );
+		set_sam_inputs( sam_vars , 1 );	
+		show_page( 'Inverter' );
+	}
+	else 
+	{
+		msgbox( 'Failed to convert OND file!\n' + pan_vars{'error'} + '\n\nThis macro cannot convert binary files from PVsyst versions ealier than Version 6.6.'); 
+	}
+}
+else
+	outln( 'File must have extension pan or ond.' );
+outln('Done.');

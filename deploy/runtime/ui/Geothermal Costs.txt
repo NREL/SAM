@@ -6519,7 +6519,7 @@ Default
 geotherm.cost.plant_per_kW
 3
 1
-Cost
+Baseline Cost
 $/kW
 Geothermal Costs
 0
@@ -6547,7 +6547,7 @@ Default
 geotherm.cost.plant_per_kW_input
 3
 1
-Cost
+Baseline Cost
 $/kW
 Geothermal Costs
 0
