@@ -8470,7 +8470,7 @@ equations { 'fuelcell_power_total' } = define () {
 };
 equations { 'fuelcell_total' } = define () {
 	return ${fuelcell_power_total}*${fuelcell_per_kW};};
-1288
+1351
 on_load{"Fuel Cell Costs"}=define()
 {
 	f = financing();
@@ -8505,10 +8505,15 @@ on_load{"Fuel Cell Costs"}=define()
 function show_battery_costs(t, f)
 {
 	show_battery = false;
-	if (t == "PVWatts" &&((f=='Residential')||(f=='Commercial')||(f=='Third Party')))
+	if (t == "PVWatts" &&((f=='Residential')||(f=='Commercial')||(f=='Third Party'))){
 		show_battery = true;
-	else if (t == 'Flat Plate PV' && (f !='LCOE Calculator') && (f !='None'))
+	}
+	else if (t == 'Flat Plate PV' && (f !='LCOE Calculator') && (f !='None')){
 		show_battery = true;
+	}
+	else if (t == 'Fuel Cell'){
+		show_battery = true;
+	}
 	
 	return show_battery;
 
