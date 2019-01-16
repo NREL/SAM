@@ -1312,7 +1312,7 @@ class C_des_stacked_outputs_plot:
                 y_label = self.var_info_metrics[key].s_label
                                                
                 if(self.add_subplot_letter):
-                    y_label = r'$\bf{' + format(j_l_i) + ") " + '}$' + y_label
+                    y_label = r'$\bf{' + format(j_l_i) + ")" + '}$' + " " + y_label
                         
                 if(n_cols > 1):
                     j_axis = a_ax[j_row,j_col]

@@ -112,7 +112,7 @@ def get_des_od_label_unit_info__calc_metrics():
     info["W_dot"] = C_des_od_label_unit_info("W_dot_net_des", "W_dot_net_od", "Net\nPower [MWe]", "Net Power [MWe]", "[MWe]")
     info["W_dot"].limit_var = "W_dot_net_des"
     info["eta"] = C_des_od_label_unit_info("eta_thermal_calc", "eta_thermal_od", "Thermal\nEfficiency [-]", "Thermal Efficiency [-]", "[-]")
-    info["Q_dot"] = C_des_od_label_unit_info("q_dot_PHX", "Q_dot_od", "Thermal\nInput[MWt]", "Thermal Input [MWt]", "[MWt]")   
+    info["Q_dot"] = C_des_od_label_unit_info("q_dot_PHX", "Q_dot_od", "Thermal\nInput [MWt]", "Thermal Input [MWt]", "[MWt]")   
     info["min_phx_deltaT"] = C_des_od_label_unit_info("min_phx_deltaT", "none", "Min PHX HTF\nTemp Diff [C]", "Min Allowable PHX HTF Temp Diff [C]", "[C]")
     info["min_phx_deltaT"].od_d_type = "nan"
     info["f_recomp"] = C_des_od_label_unit_info("recomp_frac", "recomp_frac_od", "Recompression\nFraction [-]", "Recompression Fraction [-]", "[-]")
@@ -220,6 +220,11 @@ def get_des_od_label_unit_info__calc_metrics():
     info["recup_LTR_UA_frac"]  = C_des_od_label_unit_info("recup_LTR_UA_frac", "none", "Fraction of Total\nUA to LTR [-]", "Fraction of Total Conductance to LTR [-]", "[-]")
     info["recup_LTR_UA_frac"].od_d_type = "nan"
         
+    info["PHX_m_dot_HTF"] = C_des_od_label_unit_info("m_dot_htf_des", "none", "PHX HTF\n Mass Flow Rate [kg/s]", "PHX HTF Mass Flow Rate [kg/s]", "[kg/s]")
+    info["PHX_m_dot_HTF"].od_d_type = "nan"
+    info["PHX_m_dot_HTF"].y_label_style = "sci"
+    info["PHX_UA"] = C_des_od_label_unit_info("UA_PHX", "none", "PHX\nConductance [MW/K]", "PHX Conductance [MW/K]", "[MW/K]")
+    info["PHX_UA"].od_d_type = "nan"
     info["PHX_dT"] = C_des_od_label_unit_info("deltaT_HTF_PHX", "deltaT_HTF_PHX_od", "PHX HTF\nTemp Diff [C]", "PHX HTF Temperature Difference [C]", "[C]")
     info["PHX_eff"] = C_des_od_label_unit_info("eff_PHX", "phx_eff_od", "PHX\nEffectivenes [-]", "PHX Effectiveness [-]", "[-]")
     info["PHX_cost"] = C_des_od_label_unit_info("PHX_cost", "none", "PHX\nCost [M$]", "PHX Cost [M$]", "[M$]")
