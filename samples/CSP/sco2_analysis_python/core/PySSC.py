@@ -1,5 +1,6 @@
 #Created with SAM version 0.0.0
 import string, sys, struct, os
+from pathlib import Path
 absFilePath = os.path.abspath(__file__)
 print(absFilePath)
 fileDir = os.path.dirname(os.path.abspath(__file__))
@@ -9,7 +10,11 @@ c_number = c_float # must be c_double or c_float depending on how defined in ssc
 class PySSC:
 	def __init__(self):
 		if sys.platform == 'win32' or sys.platform == 'cygwin':
-			self.pdll = CDLL(fileDir + "\ssc.dll") 
+			file_dll = fileDir + "\ssc.dll"
+			if(Path(file_dll).is_file()):
+				self.pdll = CDLL(fileDir + "\ssc.dll") 
+			else:
+				raise NameError("SSC DLL file not found in Core directory")
 		elif sys.platform == 'darwin':
 			self.pdll = CDLL("ssc.dylib") 
 		elif sys.platform == 'linux2':
