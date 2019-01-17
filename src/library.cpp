@@ -762,7 +762,7 @@ bool ShowWindResourceDataSettings()
 	return false;
 }
 
-bool ScanSolarResourceData( const wxString &db_file, bool show_busy )
+bool ScanSolarResourceData( const wxString &db_file, bool )
 {
 //	wxBusyInfo *busy = 0;
 //	if ( show_busy )
