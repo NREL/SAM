@@ -904,10 +904,14 @@ void fcall_property( lk::invoke_t &cxt )
 			if ( val.type() == lk::vardata_t::VECTOR
 				&& val.length() == 3 )
 			{
+// Strange error about conversion to wxColourBase::ChannelType, doesn't appear valid
+#pragma warning (push)
+#pragma warning (disable: 4242)
 				p.Set( wxColour(
-					val.index(0)->as_integer(),
-					val.index(1)->as_integer(),
-					val.index(2)->as_integer() ) );
+					val.index(0)->as_unsigned(),
+					val.index(1)->as_unsigned(),
+					val.index(2)->as_unsigned()) );
+#pragma warning (pop)
 			}
 			else
 			{
@@ -3229,8 +3233,10 @@ void fcall_librarynotifytext(lk::invoke_t &cxt)
 			{
 				if (objs[i]->GetName().Lower() == name)
 				{
-					if (cxt.arg_count() == 2)
-						lc->SetNotifyText(cxt.arg(1).as_string());
+					if (cxt.arg_count() == 2) {
+						wxString tmp = (wxString)(cxt.arg(1).as_string());
+						lc->SetNotifyText(tmp);
+					}
 					ret_val = lc->GetNotifyText();
 					break;
 				}
@@ -4449,11 +4455,11 @@ static void fcall_parametric_export(lk::invoke_t &cxt)
 		return;
 	}
 	wxString file = cxt.arg(0).as_string();
-	bool ext;
+	bool asExcel = false;
 	if (cxt.arg_count() > 1) {
-		ext = cxt.arg(1).as_boolean();
+		asExcel = cxt.arg(1).as_boolean();
 	}
-	if (cw->GetParametricViewer()->ExportFromMacro(file, ext)) cxt.result().assign(1.0);
+	if (cw->GetParametricViewer()->ExportFromMacro(file, asExcel)) cxt.result().assign(1.0);
 	else cxt.result().assign(0.0);
 }
 

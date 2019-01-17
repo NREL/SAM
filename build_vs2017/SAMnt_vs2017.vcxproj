@@ -191,7 +191,7 @@
       <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/w44242 /wd4456 /wd4457 /wd4458 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(SSCDIR);$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LK_USE_WXWIDGETS;__32BIT__;WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;PSAPI_VERSION=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -206,6 +206,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>LK_USE_WXWIDGETS;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -241,7 +242,7 @@ copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktooldx32.pdb" "$(SA
       <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/w44242 /wd4456 /wd4457 /wd4458 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(SSCDIR);$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);$(WXMSW3)\lib\vc_x64_lib\mswud;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LK_USE_WXWIDGETS;__64BIT__;WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;PSAPI_VERSION=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -256,6 +257,7 @@ copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktooldx32.pdb" "$(SA
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>LK_USE_WXWIDGETS;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -291,7 +293,7 @@ copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoold.pdb" "$(SAMNT
       <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/w44242 /wd4456 /wd4457 /wd4458 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>$(SSCDIR);$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LK_USE_WXWIDGETS;__32BIT__;WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;PSAPI_VERSION=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -304,6 +306,7 @@ copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoold.pdb" "$(SAMNT
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>LK_USE_WXWIDGETS;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -345,7 +348,7 @@ copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoolx32.pdb" "$(SAM
       <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/w44242 /wd4456 /wd4457 /wd4458 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>$(SSCDIR);$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);$(WXMSW3)\lib\vc_x64_lib\mswu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LK_USE_WXWIDGETS;__64BIT__;WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;PSAPI_VERSION=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -358,6 +361,7 @@ copy "$(SSCDIR)\build_vs2017\$(Platform)\$(Configuration)\sdktoolx32.pdb" "$(SAM
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>LK_USE_WXWIDGETS;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
