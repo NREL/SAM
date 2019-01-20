@@ -1,40 +1,45 @@
-/*@
-
-<p>Location data from a CSV file is read in, TMY or a specified year's data is downloaded from the NSRDB and placed into a user-specified folder
-<br><br>
-Locations can be specified as latitudes and longitudes or as addresses. 
-<br><br>
-Input:<br><ul>
-<li>CSV file with the relevent column headers (depending on Location mode): lat, lon, address, dataset.
-and rows containing the desired location data. <br/>
-As an example, here is the header line and subsequent rows of data.  <br/>
-Note, both address and lat,lon are provided for reference, but only one set is required  <br/>
-	<br/>
-	lat, lon, address, dataset <br/>
-	39.7444, -105.152, 15013 Denver W Pkwy Golden CO, tmy <br/>
-	38.8977, -77.0365, 1600 Pennsylvania Ave NW Washington DC, 2013 <br/>
-	<br/>
-The NSRDB typically supports years of 1998 - 2016 for the dataset (in addition to tmy). <br/>
-If the year input falls out of those ranges, a warning will be issued <br/>
-<li>Output folder
-<li>Location mode: Select whether data is specified as latitude and longitude or address.
-<li>Desired weather data interval.  Select 30-minute or 60-minute
-<br></ul>
-
-Output:<br><ul>
-<li>CSV files saved to the user specified folder
-
-<br><br>
-<i> Click "Run macro" above to download the weather files after setting up your inputs </i>
-
-@*/
+/////////////////////////////////////////////////////////////////////////////////
+//
+// This script reads a list of location names or lat/lon pairs from a text
+// file and downloads weather files from the NSRDB PSM V3 or SUNY International
+// datasets.
+//
+// The text file should be formatted as follows:
+//
+//	 lat, lon, dataset
+//	 39.7444, -105.152, tmy
+//	 38.8977, -77.0365, 2013
+//   ...
+//
+//	 address, dataset
+//	 15013 Denver W Pkwy Golden CO, tmy
+//	 Washington DC, 2013
+//   ...
+//
+//	 lat, lon, address, dataset
+//	 39.7444, -105.152, 15013 Denver W Pkwy Golden CO, tmy
+//	 38.8977, -77.0365, Washington DC, 2013
+//   ...
+//
+// It provides the option to download a single TMY file or a set of single-year
+// files for P50/P90 analysis.
+//
+// This script replicates the weather file download function on SAM's Location
+// and Resource page.
+//
+// The script was written in SAM 2018.11.11.
+//
+////////////////////////////////////////////////////////////////////////////////
 
 //@ name=location_file;type=filename;label=Location file:;value=;
 //@ name=location_output;type=folder;label=Output folder:;value=;
 //@ name=Location_mode;type=combo;label=Location mode:;value=Latitude and Longitude,Address;sel=0;
 //@ name=interval;type=combo;label=Desired interval (minutes):;value=30,60;sel=1;
 
-
+location_file = choose_file( cwd(), 'Choose Input Data File', 'Text Files (*.*}|*.*');
+location_output = choose_dir( cwd(), 'Choose Folder for Output');
+location_mode = choose_from_list(['Latitude and Longitude','Address'],'Choose input mode:','Choose Input Mode',0);
+interval = choose_from_list([60,30],'Choose time step in minutes:','Choose Time Step',0);
 function get_nsrdb( lat, lon, dataset, location_output, interval)
 {
 	valid = to_real(lat) >= -90 && to_real(lat) <= 90 && to_real(lon) >= -180 && to_real(lon) <= 180;
@@ -52,6 +57,7 @@ function get_nsrdb( lat, lon, dataset, location_output, interval)
 
 ////////////////////////////////////////////////////////////////////////////////
 
+	// get list of available NSRDB datasets for the location
 	url = webapi( 'nsrdb_query' );
 	outln( url );
 	url = replace( url, '<LAT>', lat );
