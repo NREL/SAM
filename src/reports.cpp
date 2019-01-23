@@ -428,7 +428,7 @@ void SamReportWindow::OnPageSel( wxListEvent & )
 	if (idx >= 0) m_layoutCtrl->SetPage( m_template.GetPage( idx ) );
 }
 
-void SamReportWindow::OnPageRClick( wxListEvent &evt )
+void SamReportWindow::OnPageRClick( wxListEvent & )
 {
 //	int idx = evt.GetSelection();
 //	idx = 0;

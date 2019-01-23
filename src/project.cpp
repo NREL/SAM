@@ -272,10 +272,10 @@ void ProjectFile::Write( wxOutputStream &output )
 
 	out.Write16( 0x3c ); // identifier code
 	out.Write16( 3 ); // data format version
-	out.Write16( m_verMajor );
-	out.Write16( m_verMinor );
-	out.Write16( m_verMicro );
-	out.Write16( m_verPatch );
+	out.Write16( (wxUint16)m_verMajor );
+	out.Write16((wxUint16)m_verMinor );
+	out.Write16((wxUint16)m_verMicro );
+	out.Write16((wxUint16)m_verPatch );
 
 	m_properties["ssc_version"] = wxString::Format("%d", ssc_version());
 	m_properties["ssc_build_info"] = wxString(ssc_build_info());
