@@ -2097,42 +2097,6 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
 			return;
 		}
-
-		double press, temp;
-		// Pressure 2nd column or check header row 3 with labels row 4 units and row 5 hub heights
-		// Switch speed and direction cheaders
-		wxString speed;
-		// header label
-		speed = csv(2, 3);
-		csv(2, 3) = csv(2, 2);
-		csv(2, 2) = speed;
-		// header units
-		speed = csv(3, 3);
-		csv(3, 3) = csv(3, 2);
-		csv(3, 2) = speed;
-		for (size_t j = 5; j < csv.NumRows(); j++)
-		{
-			// pressure Pa to atm
-			if (!csv(j, 1).ToDouble(&press))
-			{
-				wxMessageBox(wxString::Format("Failed to convert from Pa to atm for (row, col) = (%d, 1) for file %s.",(int)j, filename));
-				return;
-			}
-			press *= 9.86923e-6; // Pascals to atm 1 Pa = 9.86923e-6 atm
-			csv(j, 1) = wxString::FromDouble(press);
-			// temperature K to C
-			if (!csv(j, 0).ToDouble(&temp))
-			{
-				wxMessageBox(wxString::Format("Failed to convert from K to C for (row, col) = (%d, 0) for file %s.", (int)j, filename));
-				return;
-			}
-			temp -= 273.15; // Kelvin to Celcius 0 K = -273.15 C
-			csv(j, 0) = wxString::FromDouble(temp);
-			// switch speed and direction columns - wind weather file reader only handles Temp, Press, Speed, Direction
-			speed = csv(j, 3);
-			csv(j, 3) = csv(j, 2); // set speed equal direction
-			csv(j, 2) = speed; // set direction column equal speed
-		}
 		if (i == 0)
 			csv_main.Copy(csv);
 		else
@@ -3230,7 +3194,10 @@ void fcall_librarynotifytext(lk::invoke_t &cxt)
 				if (objs[i]->GetName().Lower() == name)
 				{
 					if (cxt.arg_count() == 2)
-						lc->SetNotifyText(cxt.arg(1).as_string());
+					{
+						wxString str = cxt.arg(1).as_string();
+						lc->SetNotifyText(str);
+					}
 					ret_val = lc->GetNotifyText();
 					break;
 				}
