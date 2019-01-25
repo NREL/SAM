@@ -528,7 +528,8 @@ class C_sco2_sim:
         if(self.m_also_save_csv):
             with open(s_file_name+'.csv','w', newline='') as f:
                 w = csv.writer(f)
-                w.writerows(self.m_solve_dict.items())
+                write_dictionary_to_csv(self.m_solve_dict, w)
+                #w.writerows(self.m_solve_dict.items())
             f.close()
     
     def save_m_par_solve_dict(self, s_file_name):
@@ -1058,8 +1059,11 @@ def write_dictionary_to_csv(dict_in, csv_write_obj):
     
     for key in dict_in:
         row = [key]
-        for val in dict_in[key]:
-            row.append(val)
+        if(isinstance(dict_in[key],list)):        
+            for val in dict_in[key]:
+                row.append(val)
+        else:
+            row.append(dict_in[key])
         csv_write_obj.writerow(row)
 
 def compare_des_and_od_at_des(dict_results, i_od = 0):
