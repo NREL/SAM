@@ -711,7 +711,7 @@ function interpolate_file(input_file, intervals_per_hour){
 	output_data = check_sunup(output, lat, long, tz);
 	
 	output_dir = wfdownloaddir();
-	output_path = output_dir+'\\'+input_name+ '_'+(60/intervals_per_hour)+'mInterpolated.csv';
+	output_path = output_dir+'/'+input_name+ '_'+(60/intervals_per_hour)+'mInterpolated.csv';
 	csvwrite(output_path, output_data);
 	return output_path;
 }
