@@ -49,7 +49,8 @@ website.</p>
 
 <p>The macro will attempt to convert the file you open and save the converted
 data in a SAM CSV file in the same folder as the original file with <i>_samcsv</i>
-appended to the original name.</p>
+appended to the original name. It will also run SAM's weather file checker on
+the file and report any errors it finds.</p>
 
 @*/
 
@@ -88,6 +89,37 @@ function main()
 	else { outln( 'No format specified.' ); }
 	
 	outln( 'Done.');
+}
+
+function wf_check ( wf )
+{
+	obj = ssc_create();
+	ssc_var( obj, 'input_file', wf );
+	result = ssc_exec( obj, 'wfcheck', {'show_dialog'=true, 'dialog_title'='Processing'} );
+	if ( result == 0 )
+	{
+		n = ssc_var( obj, 'nwarnings');
+		if ( n == 0 )
+		{
+			outln('File passed weather file check.');
+			return true;
+		}	
+		else
+		{
+			outln( 'File failed weather file check:' );
+			for( i=0;i<n;i++ )
+			{
+				outln( '\t* ' + ssc_var( obj, 'warning' + to_string(i) ) );
+			}
+			return false;
+		}
+	}
+	else
+	{
+		outln( 'Failed to run weather file check:\n\n' + result );
+		return false;
+	}
+	ssc_free( obj );
 }
 
 // convert TMY2, TMY3, or EPW file formats to SAM CSV using the SSC wfcsvconv compute module
@@ -404,9 +436,12 @@ function solar_anywhere_to_sam_csv( wf )
 	// if input file is for a single year, show converted data in data viewer
 	if (fcount == 0 )
 	{
-		outln('Weather file successfully converted to:\n\t' + output_file );
-		//display_data( output_file );
-		dview_solar( output_file );
+		outln('Weather file converted to:\n\t' + output_file );
+		if ( wf_check( output_file ) ) 
+		{	 
+			dview_solar( output_file );
+			browse( path_only( output_file ) );
+		}
 	} 
 } 
 
@@ -464,42 +499,48 @@ function pvsyst_csv_to_sam_csv( wf )
 
 	output_file = replace( wf, '.csv' , '_samcsv.csv' );
 	
-	outln( 'Creating string to write to output file...' );
-	str = '';
+	fout = open( output_file, 'w' );
 
 	keys = @Header;
+	str = '';
 	for ( i=0; i<#keys; i++ )
 	{
 		str += keys[i];
 		if ( i<#keys-1 ) { str += ','; }
-		else { str += '\n'; }
+		//else { str += '\n'; }
+		else { write_line( fout, str ); }
 	}
+	str = '';
 	for ( i=0; i<#keys; i++ )
 	{
 		str += Header{keys[i]};
 		if ( i<#keys-1 ) { str += ','; }
-		else { str += '\n'; }
+		//else { str += '\n'; }
+		else { write_line( fout, str ); }
 	}
 
 	keys = @Data;
 	for ( i=0; i<#Data{keys[0]}; i++ )
 	{
+		str = '';
 		for ( j=0; j<#keys; j++ )
 		{
 			str += Data{keys[j]}[i];
 			if ( j<#keys-1 ) { str += ','; }
-			else { str += '\n'; }
+			//else { str += '\n'; }
 		}
+		write_line( fout, str );
 	}
-	outln( 'Writing data to output file...' );
-	ok = write_text_file( output_file, str );
-	if ( ok ) 
+
+	close( fout );
+
+	outln('Weather file converted to:\n\t' + output_file );
+	
+	if ( wf_check( output_file ) ) 
 	{ 
-		outln('Weather file successfully converted to:\n\t' + output_file );
 		dview_solar( output_file );
 		browse( path_only( output_file ) );
 	}
-	else { outln( 'Failed to write data to ' + output_file ); }
 
 }
 
@@ -672,11 +713,14 @@ function pvgis_5_csv_to_sam_csv( wf )
 	// close output file
 	close( fout );
 
-	outln('Weather file successfully converted to:\n\t' + fout_name );
+	outln('Weather file converted to:\n\t' + fout_name );
+
+	if ( wf_check( output_file ) ) 
+	{ 
+		dview_solar( output_file );
+		browse( path_only( output_file ) );
+	}
 	
-	// open output file in default application for CSV files
-	browse( path_only(fout_name) );
-	dview_solar( fout_name );
 }
 
 // Main ////////////////////////////////////////////////////////////////////////
