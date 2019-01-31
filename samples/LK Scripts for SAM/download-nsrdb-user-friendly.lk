@@ -7,7 +7,8 @@ you to select the data file(s) you want to download.
 The script will also read a list of locations from a CSV file with either of
 a list of addresses and location names, or of latitude and longitudes.
 
-CSV format for list of addresses and location names:
+CSV format for list of addresses and/or location names. Addresses and place names
+containing commas should be enclosed in double quotes ("):
 
 address
 lebanon or
@@ -23,8 +24,8 @@ lat,lon
 34,-110
 33.4,-109.6
 
-It replicates the functionality of the download button on the Location and
-Resource page.
+This script replicates the functionality of the download button on the Location 
+and Resource page.
 
 Click Run above to start the script.
  
@@ -36,10 +37,24 @@ Written in SAM 2018.11.11, January 2019
 //////////////////////////////////////////////////////////////////////////////*/
 
 // folder to store weather files (script creates subfolder for each location).
-path = choose_dir(wfdownloaddir(), 'Choose a Folder to Store Downloaded Files');
 
+path = '';
+path = choose_dir(wfdownloaddir(), 'Choose a Folder to Store Downloaded Files');
+if ( path == '' ) 
+{
+	outln( 'You must choose a folder to store downloaded files. Exiting script.' );
+	exit;
+}
+
+location_option = '';
 options = ['Download file for single location','Import list of locations from CSV file'];
-location_option = choose_from_list( ['Download file for single location','Import list of locations from file'],'Choose one:','Single or Multiple Location',0);
+location_option = choose_from_list( options ,'Choose one:','Single or Multiple Location',0);
+if ( location_option == '' )
+{
+	outln( 'You must choose a location option. Exiting script.' );
+	exit;
+}
+
 
 site = {};
 site.lat = []; 
@@ -49,12 +64,10 @@ site.name = [];
 if ( location_option == options[0] )
 {
 	location = in( 'Enter a location name, street address, or lat,lon pair:','40.1,-109.3','Location Information');
-	// function lat_lon ( location )
-	// {
 	lat_lon = geocode( location );
 	if ( lat_lon.ok == false )
 	{
-		msgbox( 'Failed to convert location to latitude and longitude!\n' + location + '\n\nExiting script.');
+		outln( 'Failed to convert location to latitude and longitude!\n\t' + location + '\n\tExiting script.');
 		exit;
 	}
 	else
@@ -75,16 +88,10 @@ if ( location_option == options[0] )
 		}
 		site.name[0] = addr;
 	}
-	// return T; // T.lat, T.lon
-	// }
-
 }
 else
 {
 	location_file = choose_file( cwd(), 'Choose Location File', 'CSV files (*.csv)|*.csv');
-	// given a file with a list of locations, return a table of locations
-	// function get_location_list( location_file )
-	// {
 	locations = csvread(location_file,{'table'=true});
 	keys = @locations;
 	n_records = 0;
@@ -100,10 +107,9 @@ else
 	}
 	else
 	{
-		msgbox( 'CSV file must have first row "address" or "lat,lon"!\n' + keys + '\n\nExiting script.' );
+		outln( 'CSV file must have first row "address" or "lat,lon"!\n\t' + keys + '\n\tExiting script.' );
+		exit;
 	}
-	// return T; // T.locations, T.is_address
-	// }
 	//For each site in lookup file
 	for ( j=0; j<n_records; j++ )
 	{
@@ -129,6 +135,7 @@ else
 	}	
 }
 
+outln( site );
 // nsrdb query to determine what data is available for location
 // https://developer.nrel.gov/docs/solar/nsrdb/nsrdb_data_query/
 // var.outputs: array of tables for each dataset available for the location [{psm dataset},{psmv3 dataset},{mts1 dataset}...]
@@ -137,34 +144,28 @@ else
 // var.outputs[x].links: array of tables [{year,interval,link},{year,interval,link},...]
 // var.outputs[x].name: string version name 'suny-international','psmv3','mts1','mts2'
 
+wf = {};
+n = 0;
 for ( s=0 ; s<#site.lat; s++ )
 {
 	// on first pass, get list of available versions and urls
 	if ( s == 0 )
 	{
-		// given a lat,lon pair, return a table of available data and urls from the NSRDB
-		// function nsrdb_query( lat, lon )
-		// {
 		base_url = 'http://developer.nrel.gov/api/solar/';
 		query_url = 'nsrdb_data_query.json?api_key=<SAMAPIKEY>&wkt=POINT(' + to_string(site.lon[s]) + '+' + to_string(site.lat[s]) + ')';
 		url = base_url + query_url;
 		json_str = curl( url );
 		var = json_read( json_str );
-
 		if ( #var.errors > 0 )
 		{
-			msgbox( 'NSRDB Error!\n' + var.errors[0] + '\n\nFor location name ' + site.name[s] + '.\n\nExiting script.' );
+			outln( 'NSRDB Error!\n\t' + var.errors[0] + '\n\tFor location name ' + site.name[s] + '.\n\tExiting script.' );
 			exit;
 		}
 		if (#var.outputs == 0)
 		{
-			msgbox( 'No NSRDB data found for location name ' + site.name[s] + '.\nNSRDB grid cell coordinates: Latitude = ' + site.lat[s] + ', Longitude = ' + site.lon[s] + '.\n\nExiting script.' );
+			outln( 'No NSRDB data found for location name ' + site.name[s] + '.\n\tNSRDB grid cell coordinates: Latitude = ' + site.lat[s] + ', Longitude = ' + site.lon[s] + '.\n\tExiting script.' );
 			exit;
 		}
-		// return var;
-		// }
-
-		// get list of available versions and years
 		for( i=0; i<#var.outputs; i++ )
 		{
 			available_versions[i] = var.outputs[i].name;
@@ -182,9 +183,21 @@ for ( s=0 ; s<#site.lat; s++ )
 		years = available_years; // contains mix of numbers 2001, 2002, etc. and strings tmy, all
 		if ( #years > 1 )
 		{
-			years[#years] = 'all';
-		}	
-		year = choose_from_list( years, 'Choose a year (Choose "all" to download all years for P50/P90 simulations:  ','Choose Year' );
+			years_new = alloc( #years+1 );
+			years_new[0] = 'all';
+			for ( i=1; i<#years_new; i++ )
+			{
+				years_new[i] = years[i-1];
+			}
+			years = years_new;
+		}
+		year = '';	
+		year = choose_from_list( years, 'Choose a year (Choose "all" to download all years for P50/P90 simulations):  ','Choose Year' );
+		if ( year == '' )
+		{
+			outln( 'You must choose a year. Exiting script.' );
+			exit;
+		}
 		if ( ( year != 'all' ) && ( strpos( year, 'tmy' ) < 0 ) ) // mts1 versions uses 'tmy2' instead of 'tmy'
 		{
 			year = to_int( year );
@@ -199,21 +212,33 @@ for ( s=0 ; s<#site.lat; s++ )
 			interval = to_int( interval );
 		}	
 	}
-
 	// get download urls for all available versions, intervals, and years, create
 	// file names for downloads
-	wf = {};
-	n = 0;
 	for( i=0; i<#links; i++ )
 	{
 		if ( year == 'all' )
 		{
-			outln('get urls for all years');
+			for ( j=0; j<#years; j++ )
+			{
+				if ( years[j] != 'all' )
+				{
+					if ( (links[i].year == years[j]) && (links[i].interval == interval) )
+					{
+						if ( years[j] == 'tmy' ) { intvl = 60; }
+						else { intvl = interval; }
+						url = links[i].link;
+						url = replace( url, 'yourapikey', '<SAMAPIKEY>' );
+						url = replace( url, 'youremail', '' );
+						wf.url[n] = url;
+						wf.fname[n] = path + '/nsrdb_' + site.name[s] + '_' + site.lat[s] + '_' + site.lon[s] + '_' + intvl + 'min_' + years[j] + '.csv';
+						n++;
+					}
+				}	
+			}	
 		}
 		elseif ( (links[i].year == year) && (links[i].interval == interval) )
 		{
 			url = links[i].link;
-			outln(url);
 			url = replace( url, 'yourapikey', '<SAMAPIKEY>' );
 			url = replace( url, 'youremail', '' );
 			wf.url[n] = url;
@@ -223,33 +248,45 @@ for ( s=0 ; s<#site.lat; s++ )
 	}
 }
 
-outln( 'Number of available files = ' + #wf.url );
-
 // download test file to get server error message from test file
+out( 'Testing NSRDB connection...');
 ok = curl( wf.url[0], {'file' = wf.fname[0] } );
-if ( !ok ) { outln( 'Test download failed.' ); }
+if ( !ok ) { outln( 'test failed. NSRDB server could be down.' ); }
 else
 {
 	arr = csvread( wf.fname[0] );
 	if ( #arr < 10 )
 	{
-		msgbox( 'Download Error!\n' + 'Message from NSRDB server: \n\n' +  arr + '\n\nExiting script.' ); 
+		outln( '\nDownload Error!\n' + 'Message from NSRDB server: \n\t' +  arr + '\nExiting script.' ); 
 		remove_file( wf.fname[0] );
 		exit;
 	}
-	else { remove_file( wf.fname[0] ); }
+	else 
+	{
+		outln( 'test OK.');
+		remove_file( wf.fname[0] ); 
+	}
 }
 
 // download requested files
 n=0;
+outln( '\nDownloading ' + #wf.url + ' files...' );
+outln();
 for( i=0; i<#wf.url; i++ )
 {
-		outln( 'Downloading data to ' + wf.fname[i] );
-		outln( wf.url[i] );
-		outln();
+		outln( 'File ' + to_string(i+1) +  ' of ' + #wf.url + ':\n\t' + wf.fname[i] );
+		outln( 'URL:\n\t' + wf.url[i] );
 		ok = curl( wf.url[i], {'file' = wf.fname[i] } );
-		if ( !ok ) { outln( '  Download failed.' ); }
-		else { n++; }
+		if ( !ok ) 
+		{
+			outln( '\tDownload failed.' ); 
+		}
+		else 
+		{
+			outln( '\tDownload succeeded.' );
+			n++; 
+		}
+		outln();
 }
 
 outln( 'Done.' );
