@@ -39,19 +39,74 @@ function get_nsrdb( lat, lon, dataset, location_output, interval)
 {
 	valid = to_real(lat) >= -90 && to_real(lat) <= 90 && to_real(lon) >= -180 && to_real(lon) <= 180;
 	if ( !valid )
-		return 'Lat/lon not valid';
-		
+	{
+		return 'Latitude = ' + lat + 'or longitude = ' + ' is not valid!';
+	}	
+/*		
 	url = webapi( 'nsrdb_download' );
 	url = replace(url, '<LON>', lon );
 	url = replace(url, '<LAT>', lat );
 	url = replace(url, '<DATASET>', dataset );
 	url = replace(url, '<INTERVAL>', interval);
+*/
+
+////////////////////////////////////////////////////////////////////////////////
+
+	url = webapi( 'nsrdb_query' );
+	outln( url );
+	url = replace( url, '<LAT>', lat );
+	url = replace( url, '<LON>', lon );
+	json_str = curl( url );
+	var = json_read( json_str );
+	if ( typeof( var ) == 'table' )
+	{
+		if ( var.errors != [] )
+		{
+			outln(var.errors);
+			if ( strpos( lower(var.errors.code), 'api' ) > -1 ) // no or invalid api key
+				outln('See private.h to set API keys.');
+		}
+		elseif ( var.outputs == null )
+		{
+			outln('No NSRDB data available for \"' + location + '\".');
+		}	
+		elseif ( var.outputs == [] )
+			outln('No NSRDB data available for \"' + location + '\".');
+		else
+			json_ok = true;
+	}
+	else
+	{
+		outln('NSRDB did not return valid JSON string:');
+		outln(json_str);
+		if ( strpos( lower(json_str), 'api' ) > -1 ) // no or invalid api key
+			outln('See private.h to set API keys.');
+	}
+	if ( json_ok )
+	{
+		arr = var.outputs;
+		for ( i=0; i<#arr; i++ )
+		{
+			name = arr[i].name;
+			if ( name == 'suny-international' || name == 'psmv3' )
+				{ best_dataset = i; }
+		}
+		// PSM V3 is var.outputs[1]
+		// SUNY International is var.outputs[0]
+		name = var.outputs[best_dataset].name;
+		url = split(var.outputs[best_dataset].links[0].link,'?')[0];
+		years = var.outputs[best_dataset].availableYears;
+		outln('URL for NSRDB query: ' + url);
+	}
+
+////////////////////////////////////////////////////////////////////////////////
+
 	
 	// Download file (try a few times in case server is busy)
 	attempt = 0;
 	
-	name = to_string(lat) + '_' + to_string(lon) + '_' + to_string(dataset) + '.csv';
-	wf = location_output + '/' + name ;
+	wfname = to_string(lat) + '_' + to_string(lon) + '_' + to_string(name) + '.csv';
+	wf = location_output + '/' + wfname ;
 	
 	while (!file_exists(wf) && attempt < 3)
 	{
@@ -73,7 +128,7 @@ function get_nsrdb( lat, lon, dataset, location_output, interval)
 		{
 			obj = json_file(wf );	
 			outln('Error in downloaded weather file data for ' 
-				+ name + ':\n' 
+				+ wfname + ':\n\t' 
 				+ ( (typeof(obj)=='table' && obj ?@ 'errors') ? obj.errors[0] : result ) );
 			remove_file( wf );
 		}
@@ -82,7 +137,7 @@ function get_nsrdb( lat, lon, dataset, location_output, interval)
 	}
 	// Report error message if tried to download and failed
 	if (attempt == 3 && !file_exists(wf)){
-		outln(name + ' did not download successfully!');
+		outln('Attempt to download ' + wfname + ' failed!\n');
 	}
 }	
 
@@ -111,15 +166,22 @@ function main()
 	interval = to_string(macro.interval);
 	location_mode = to_string(macro.location_mode);
 	
-	outln('Reading: ' + location_file);
-	outln('Writing to: ' + location_output);
+	if ( location_file == '' || location_output == '' )
+	{
+		outln( 'Please choose both a location file and an output folder!');
+		exit;
+	}
+		
+	outln('Location file: ' + location_file);
+	outln('Output folder: ' + location_output);
 	outln('');
 	locations = text_to_table(location_file);
-	
 	n_records = 0;
-	if (!strcmp(location_mode, 'Address')){
+	if (!strcmp(location_mode, 'Address') > -1 )
+	{
 		n_records = #locations.address;
-	} else {
+	} else 
+	{
 		n_records = #locations.lat;
 	}
 
@@ -130,19 +192,21 @@ function main()
 		lon = 0;
 		
 		// Geocode
-		if (!strcmp(location_mode, 'Address')){
+		if (!strcmp(location_mode, 'Address') > -1)
+		{
 			latlon = geocode(locations.address[j]);
 			lat = latlon.lat;
 			lon = latlon.lon;
 		}
-		else {
+		else 
+		{
 			lat = locations.lat[j];
 			lon = locations.lon[j];
 		}
 		dataset = locations.dataset[j];
 		
 		// status message
-		outln('Getting weather file ' + j + " for " + to_string(lat) + ", " + to_string(lon) + ", " + to_string(dataset));
+		outln('Getting weather file ' + to_string(j+1) + ' of ' + to_string(n_records) + ' for ' + to_string(lat) + ', ' + to_string(lon) + ', ' + to_string(dataset));
 		
 		if (stricmp(to_string(dataset), 'tmy') != 0)
 		{

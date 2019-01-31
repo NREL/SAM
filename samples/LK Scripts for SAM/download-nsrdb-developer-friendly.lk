@@ -28,12 +28,10 @@ Written in SAM 2018.11.11, December 2018
 
 //////////////////////////////////////////////////////////////////////////////*/
 
-// NREL Developer Network credentials. Sign up at https://developer.nrel.gov/
-email = '';
-key = '';
-
-//email = '';
-//key = '';
+// NREL Developer Network credentials.
+// Get your own key at https://developer.nrel.gov/ or use SAM's built-in key.
+email = ''; 
+key = '<SAMAPIKEY>'; // or replace with your own key
 
 // folder to store weather files (script creates subfolder for each location).
 path = homedir() + '/nsrdb_download/';
@@ -63,7 +61,6 @@ url = base_url + query_url;
 
 json_str = curl( url );
 var = json_read( json_str );
-outln(var.error);
 if ( var.error != null )
 {
 	msgbox( 'NSRDB Error!\n' + var.error.message + '\n\nExiting script.' );
@@ -114,15 +111,33 @@ else { outln( 'List of URLs written to ' + fname + '.\n'); }
 
 year = '2014'; // 'tmy' or year '2009', '2017', etc. as string. 'all' to download all years
 interval = 60; // 30 or 60 minutes as number (only 60-minute data available for tmy)
-version = 'psmv3'; // string
-// 'psmv3' (PSM V3)
-// 'mts1' (1961-1990 update aka TMY2)
-// 'mts2' (1991-2005 update aka TMY3 )
-// 'mts3' (1991-2010 update aka TMY3 )
-// 'psm' (PSM V2 discontinued Dec 31 2018)
-// 'suny-international' (SUNY data for India, Bangladesh, Bhutan, Nepal, Sri Lanka, and parts of Pakistan and Afghanistan)
-// see https://nsrdb.nrel.gov/current-version for U.S. data
-// and https://nsrdb.nrel.gov/international-datasets for international data
+version = 'psmv3'; // string as listed below
+
+/*///////////////
+   'psmv3' (PSM V3)
+   'mts1' (1961-1990 update aka TMY2)
+   'mts2' (1991-2005 update aka TMY3 )
+   'mts3' (1991-2010 update aka TMY3 )
+   'psm' (PSM V2 discontinued Dec 31 2018)
+   'suny-international' (SUNY data for India, Bangladesh, Bhutan, Nepal, Sri Lanka, and parts of Pakistan and Afghanistan)
+   see https://developer.nrel.gov/docs/solar/nsrdb/ for a list of datasets with links to API documentation
+   see https://nsrdb.nrel.gov/current-version for description of U.S. data
+   and https://nsrdb.nrel.gov/international-datasets for a description of international data
+
+Note: to choose data to include in file, add &attributes= to the URL with a 
+list of data. For example the list of available attributes for the PSM 3 
+database is listed at https://developer.nrel.gov/docs/solar/nsrdb/psm3_data_download/
+as: air_temperature, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_type, 
+    dew_point, dhi, dni, fill_flag, ghi, relative_humidity, solar_zenith_angle, 
+    surface_albedo, surface_pressure, total_precipitable_water, wind_direction, 
+    wind_speed 
+
+When you do not specify an attribute parameter, the NSRDB returns a default set
+of attributes. 
+
+Available attributes and their names are different for the different datasets,
+so mts1 has a different attribute list than psme, for example.
+*///////////////
 
 // download test file to get server error message from test file
 ok = curl( wf.url[0], {'file' = wf.fname[0] } );
