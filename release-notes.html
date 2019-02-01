@@ -49,6 +49,20 @@
 </ul>
 
 -->
+	 
+<h1>Version 2018.11.11 Revision 1, SSC Version 202: December 2, 2018</h1>
+	 
+<p>This is a maintenance update that fixes the following issues with SAM 2018.11.11</p>
+	 
+<ul>
+<li>Fix issue with weather files in EPW format from PVGIS V5 without a final blank line.</li>
+<li>Fix model for decomposing POA irradiance into beam irradiance to better handle out-of-range POA values.</li>
+<li>Fix electricity bill calculation to correctly account for Weekend energy rates. This issue was introduced in SAM 2018.11.11.</li>
+<li>Fix PV bifacial module model to work with weather file with POA irradiance as input.</li>
+<li>Add Electricity Rate input page to Generic System / PPA Single Owner configuration so that cash flow correctly handles cost of charging battery from the grid. This caused problems with the spreadsheet for the cash flow send-to-Excel with Equations feature.</li>
+<li>Fix Location and Resource page to correctly download weather files for CSP systems and make it clear that location for NSRDB download is not required to be a street address.</li>
+</ul>
+
 <h1>Version 2018.11.11, SSC Version 198: November 11, 2018</h1>
 
 <p>This new version introduces new models for third party ownership, bifacial photovoltaic modules, multiple maximum power point trackers for photovoltaic systems, and accesses the latest solar resource data (PSM V3) from the National Solar Radiation Database. It also includes enhancements to the battery storage and CSP parabolic trough models.</p>
