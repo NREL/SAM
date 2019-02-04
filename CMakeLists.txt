@@ -13,7 +13,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
 set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
-find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base)
+find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base)
 include(${wxWidgets_USE_FILE})
 
 include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
@@ -95,7 +95,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 		NAMES lkosxwx3d.a lkuxwx3d.lib
 		PATHS $ENV{LKDIR})
 	find_library( SSC_LIB
-		NAMES sscd.dylib sscd.lib
+		NAMES sscd.dylib sscd.so sscd.lib
 		PATHS $ENV{SSCDIR}/ssc)
 	set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
@@ -113,24 +113,30 @@ else()
 		NAMES lkosxwx3.a lkuxwx3.a lk.lib
 		PATHS $ENV{LKDIR})
 	find_library(SSC_LIB
-		NAMES ssc.dylib ssc.lib
+		NAMES  sscd.dylib ssc.so ssc.lib
 		PATHS $ENV{SSCDIR}/ssc)
 endif()
 
 # setup linking dependencies and flags
-target_link_libraries(${SAM_EXE} -lm -lcurl)
-target_link_libraries(${SAM_EXE} ${WEX_LIB} ${LK_LIB} ${SSC_LIB}) 
+target_link_libraries(${SAM_EXE} ${SSC_LIB} ${WEX_LIB} ${LK_LIB} ) 
 target_link_libraries(${SAM_EXE} ${wxWidgets_LIBRARIES})
+target_link_libraries(${SAM_EXE} -lm -lcurl)
 
-message("here ${SSC_LIB}")
 
 if(MSVC)
 # need msvc optimization levels & different configs, windows sdk
 	add_compile_options(/W4 /WX)
 	add_compile_definitions( _CRT_SECURE_NO_WARNINGS _MBCS __WXMSW__)
 else(MSVC)
-	add_compile_options(-Wall -O3 -arch x86_64 -fno-common ${wxWidgets_CXX_FLAGS})
-	add_compile_definitions(LK_USE_WXWIDGETS WX_PRECOMP )
+
+	if (APPLE)
+		add_compile_options(-arch x86_64 -fno-common)
+		add_compile_definitions(WX_PRECOMP)
+	else()
+		add_compile_options(-Wno-deprecated -Wno-misleading-indentation)
+	endif()
+	add_compile_options(-Wall -Werror -Wno-unknown-pragmas -O3 -std=c++11 ${wxWidgets_CXX_FLAGS})
+	add_compile_definitions(LK_USE_WXWIDGETS )
 endif(MSVC)
 
 # dynamic linking
@@ -153,4 +159,36 @@ if (APPLE)
 		COMMAND cp ${SSC_LIB} ${SAM_APP}/Contents/Frameworks
 		COMMAND install_name_tool -rpath $ENV{SSCDIR}/ssc ${SAM_APP}/Contents/Frameworks/ ${SAM_APP}/Contents/MacOS/SAM 
 	)
+elseif(UNIX)
+	set_target_properties(${SAM_EXE} 
+		PROPERTIES OUTPUT_NAME sam.bin)
+	add_custom_command(
+		TARGET ${SAM_EXE}
+		POST_BUILD
+		COMMAND rm -rf ${PROJECT_SOURCE_DIR}/sam.deploy)
+	set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/sam.deploy)
+	install(TARGETS ${SAM_EXE} 
+		RUNTIME DESTINATION linux_64)
+	install(FILES ${SSC_LIB} 
+		DESTINATION linux_64)
+	install(FILES Sandia/linux/lhs.bin Sandia/linux/stepwise.bin
+		DESTINATION runtime/bin)
+	install(DIRECTORY build_linux/GtkTheme
+		DESTINATION linux_64)
+	install(DIRECTORY deploy/libraries deploy/runtime deploy/solar_resource deploy/wind_resource
+		DESTINATION .)
+
+	set(CPACK_GENERATOR "STGZ;TGZ")
+	set(CPACK_PACKAGE_FILE_NAME "sam.deploy")
+	set(CPACK)
+	include(CPack)
+	add_custom_target( installer
+		COMMAND "rm" "-f" "install0"
+		COMMAND "echo" "#!/bin/sh" ">" "install0"
+		COMMAND "echo" "SAMVER=Open.Source" ">>" "install0"
+		COMMAND "cat" "install0" "${CMAKE_SOURCE_DIR}/build_linux/install.sh" "sam.deploy.tar.gz" ">" "sam-linux-$(SAMVER).run"
+		COMMAND "chmod" "a+x" "sam-linux-$(SAMVER).run"
+		COMMAND "./sam-linux-$(SAMVER).run"
+		DEPENDS ${SAM_EXE})
+
 endif()
