@@ -4,15 +4,12 @@ from pathlib import Path
 absFilePath = os.path.abspath(__file__)
 print(absFilePath)
 fileDir = os.path.dirname(os.path.abspath(__file__))
-#did ignore work?
 
 from ctypes import *
 c_number = c_float # must be c_double or c_float depending on how defined in sscapi.h
 class PySSC:
 	def __init__(self):
 		if sys.platform == 'win32' or sys.platform == 'cygwin':
-			fileDir = "C:\\Users\\tneises\\Documents\\Projects\\GitHub\\ssc\\build_vs2017\\x64\\Release"
-			print("Using SSC DLL from here: ", fileDir)
 			file_dll = fileDir + "\ssc.dll"
 			if(Path(file_dll).is_file()):
 				self.pdll = CDLL(fileDir + "\ssc.dll") 
