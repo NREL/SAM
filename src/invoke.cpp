@@ -3197,16 +3197,9 @@ void fcall_librarynotifytext(lk::invoke_t &cxt)
 			{
 				if (objs[i]->GetName().Lower() == name)
 				{
-<<<<<<< HEAD
-					if (cxt.arg_count() == 2)
-					{
-						wxString str = cxt.arg(1).as_string();
-						lc->SetNotifyText(str);
-=======
 					if (cxt.arg_count() == 2) {
 						wxString tmp = (wxString)(cxt.arg(1).as_string());
 						lc->SetNotifyText(tmp);
->>>>>>> develop
 					}
 					ret_val = lc->GetNotifyText();
 					break;
