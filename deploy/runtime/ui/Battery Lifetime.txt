@@ -886,7 +886,7 @@ Battery
 DataMatrix
 
 0
-5049
+5053
 on_load{'Battery Lifetime'} = define() {
 	on_change{'batt_lifetime_matrix'}(); 
 	on_change{'batt_calendar_choice'}();
@@ -983,7 +983,7 @@ function plot_calendar_life()
 		
 			T = T_vec[scenario];
 			SOC = SOC_vec[scenario]; 
-			k_cal = a * exp(b*(1/T - 1/296)) * exp(SOC/T - 1/296);
+			k_cal = a * exp(b*(1/T - 1/296)) * exp(c*(SOC/T - 1/296));
 			q = [];
 			t = [];
 		
