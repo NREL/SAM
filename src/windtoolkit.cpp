@@ -206,7 +206,7 @@ wxArrayString WindToolkitDialog::GetHubHeights()
 {
 	wxArrayString hh;
 	for (size_t i = 0; i < lstHubheights->GetCount(); i++)
-		if (lstHubheights->IsSelected((int)i))
+		if (lstHubheights->IsSelected(i))
 			hh.Add(lstHubheights->GetString(i));
 	return hh;
 }

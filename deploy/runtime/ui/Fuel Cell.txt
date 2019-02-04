@@ -1,5 +1,5 @@
 Fuel Cell
-976
+984
 1127
 43
 Divider
@@ -207,7 +207,7 @@ Y
 603
 Width
 3
-950
+968
 Height
 3
 349
@@ -234,7 +234,7 @@ Y
 957
 Width
 3
-950
+965
 Height
 3
 163
@@ -2524,7 +2524,7 @@ equations{'fuelcell_dynamic_response_down'} = define()
 	return response;
 };
 
-5187
+5249
 on_load{'Fuel Cell'} = define() {
 
 	on_change{'fuelcell_efficiency'}(); 
@@ -2631,11 +2631,11 @@ function plot_efficiency()
 	}
 			
 	plot( powerPercent, electricalPercent, {'thick'=2, 'type'='line', 'color'='blue', 'series'='Electrical efficiency %'});
-	plot( powerPercent, heatRecovery, {'thick'=2, 'type'='line', 'color'='red', 'series'='Max heat recovery %'});
+	plot( powerPercent, heatRecovery, {'thick'=2, 'type'='line', 'color'='red', 'style'='dash','series'='Max heat recovery %'});
 	
-	plotopt( {'title'='Efficiencies vs Power Load', 'legend'=true, 'legendpos'=[65,60]});
-	axis( 'x1', {'label'='Power Load (%)', 'min'=0, 'max'=100});
-	axis( 'y1', {'label'='Efficiency (%)', 'min'=0, 'max'=max(max(electricalPercent),max(heatRecovery))+10});
+	plotopt( {'title'='Efficiencies vs Power Load', 'legend'=true, 'legendpos'=[65,60], 'font'='Arial', 'scale'=1.3});
+	axis( 'x1', {'label'='Power Load (%)', 'min'=0, 'max'=100, size=12});
+	axis( 'y1', {'label'='Efficiency (%)', 'min'=0, 'max'=max(max(electricalPercent),max(heatRecovery))+10, size=12});
 }
 
 function check_fuel_limited()
