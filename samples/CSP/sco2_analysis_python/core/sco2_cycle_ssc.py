@@ -122,13 +122,17 @@ def get_des_od_label_unit_info__calc_metrics():
     info["cycle_spec_cost"].od_d_type = "nan"
     info["cycle_spec_cost_thermal"] = C_des_od_label_unit_info("cycle_spec_cost_thermal", "none", "Cycle Spec\nCost [$/kWt]", "Cycle Specific Cost [$/kWt]", "[kWt]")
     info["cycle_spec_cost_thermal"].od_d_type = "nan"
+    info["T_htf_cold"] = C_des_od_label_unit_info("T_htf_cold_des", "T_htf_cold_od", "HTF Cold\nReturn Temp [C]", "HTF Cold Return Temperature [C]", "[C]")
     
     info["MC_T_in"] = C_des_od_label_unit_info("T_comp_in", "T_mc_in_od", "Main Comp\nInlet Temp [C]", "Main Compressor Inlet Temp [C]", "[C]")
     info["MC_P_in"] = C_des_od_label_unit_info("P_comp_in", "P_comp_in_od", "Main Comp\nInlet Pres [MPa]", "Main Compressor Inlet Pres [MPa]", "[MPa]")
     info["MC_P_out"] = C_des_od_label_unit_info("P_comp_out", "P_mc_out_od", "Main Comp\nOutlet Pres [MPa]", "Main Compressor Outlet Pres [MPa]", "[MPa]")
     info["MC_P_out"].limit_var = "P_high_limit"
+    info["MC_T_out"] = C_des_od_label_unit_info("mc_T_out", "mc_T_out_od", "Main Comp\nOutlet Temp [C]", "Main Compressor Outlet Temp [C]", "[C]")
     info["MC_W_dot"] = C_des_od_label_unit_info("mc_W_dot", "mc_W_dot_od", "Main Comp\nPower [MWe]", "Main Compressor Power [MWe]", "[MWe]")
+    info["MC_rho_in"] = C_des_od_label_unit_info("mc_rho_in", "mc_rho_in_od", "Main Comp\nInlet Density [kg/m3]", "Main Compressor Inlet Density [kg/m3]", "[kg/m3]")
     info["MC_m_dot"] = C_des_od_label_unit_info("mc_m_dot_des", "mc_m_dot_od", "Main Comp\nMass Flow [kg/s]", "Main Compressor Mass Flow Rate [kg/s]", "[kg/s]")
+    info["MC_ideal_spec_work"] = C_des_od_label_unit_info("mc_ideal_spec_work", "mc_ideal_spec_work_od", "Main Comp\nIsen Spec Work [kJ/kg]", "Main Compressor Isen Spec Work [kJ/kg]", "[kJ/kg]")
     info["MC_phi"] = C_des_od_label_unit_info("mc_phi_des", "mc_phi_od", "Main Comp\nFlow Coef [-]", "Main Compressor Flow Coefficient [-]", "[-]")
     info["MC_phi"].limit_var = "mc_phi_surge"
     info["MC_phi"].limit_var_type = "min"
@@ -185,6 +189,7 @@ def get_des_od_label_unit_info__calc_metrics():
         
     info["t_T_in"] = C_des_od_label_unit_info("T_turb_in", "T_co2_PHX_out_od", "Turbine\nInlet Temp [C]", "Turbine Inlet Temperature [C]", "[C]")
     info["t_T_in"].limit_var = "T_htf_hot_des"
+    info["t_T_out"] = C_des_od_label_unit_info("t_T_out_des", "t_T_out_od", "Turbine\nOutlet Temp [C]", "Turbine Outlet Temperature [C]", "[C]")
     info["t_W_dot"] = C_des_od_label_unit_info("t_W_dot", "t_W_dot_od", "Turbine\nPower [MWe]", "Turbine Power [MWe]", "[MWe]")
     info["t_m_dot"] = C_des_od_label_unit_info("t_m_dot_des", "t_m_dot_od", "Turbine\nMass Flow [kg/s]", "Turbine Mass Flow Rate [kg/s]", "[kg/s]")
     info["t_nu"] = C_des_od_label_unit_info("t_nu_des", "t_nu_od", "Turbine\nVelocity Ratio [-]", "Turbine Velocity Ratio [-]", "[-]")
@@ -220,6 +225,7 @@ def get_des_od_label_unit_info__calc_metrics():
     info["recup_LTR_UA_frac"]  = C_des_od_label_unit_info("recup_LTR_UA_frac", "none", "Fraction of Total\nUA to LTR [-]", "Fraction of Total Conductance to LTR [-]", "[-]")
     info["recup_LTR_UA_frac"].od_d_type = "nan"
         
+    info["PHX_T_co2_in"] = C_des_od_label_unit_info("T_co2_PHX_in", "T_co2_PHX_in_od", "PHX CO2\nInlet Temp [C]", "PHX CO2 Inlet Temperature [C]", "[C]")
     info["PHX_m_dot_HTF"] = C_des_od_label_unit_info("m_dot_htf_des", "none", "PHX HTF\n Mass Flow Rate [kg/s]", "PHX HTF Mass Flow Rate [kg/s]", "[kg/s]")
     info["PHX_m_dot_HTF"].od_d_type = "nan"
     info["PHX_m_dot_HTF"].y_label_style = "sci"
@@ -229,6 +235,10 @@ def get_des_od_label_unit_info__calc_metrics():
     info["PHX_eff"] = C_des_od_label_unit_info("eff_PHX", "phx_eff_od", "PHX\nEffectivenes [-]", "PHX Effectiveness [-]", "[-]")
     info["PHX_cost"] = C_des_od_label_unit_info("PHX_cost", "none", "PHX\nCost [M$]", "PHX Cost [M$]", "[M$]")
     info["PHX_cost"].od_d_type = "nan"
+    
+    info["LP_cooler_T_in"] = C_des_od_label_unit_info("LP_cooler_T_in", "LP_cooler_T_in_od", "LP Cooler\nInlet Temp [C]", "Low Pressure Cooler Inlet Temp [C]", "[C]")
+    info["LP_cooler_in_isen_deltah_to_P_mc_out"] = C_des_od_label_unit_info("LP_cooler_in_isen_deltah_to_P_mc_out", "LP_cooler_in_isen_deltah_to_P_mc_out_od", "LP Cool In\nIsen Spec Work [kJ/kg]", "Low Pressure Cooler Inlet Isen Spec Work [kJ/kg]", "[kJ/kg]")
+    info["LP_cooler_rho_in"] = C_des_od_label_unit_info("LP_cooler_rho_in", "LP_cooler_rho_in_od", "LP Cooler\nInlet Density [kg/m3]", "Low Pressure Cooler Inlet Density [kg/m3]", "[kg/m3]")
     
     info["LP_cooler_cost"] = C_des_od_label_unit_info("LP_cooler_cost", "none", "LP Cooler\nCost [M$]", "Low Pressure Cooler Cost [M$]", "[M$]")
     info["LP_cooler_cost"].od_d_type = "nan"

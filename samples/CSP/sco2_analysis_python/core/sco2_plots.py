@@ -940,7 +940,7 @@ class C_OD_stacked_outputs_plot:
         self.legend_fontsize = 14           #8
         
         self.n_leg_cols = 3
-        self.is_label_leg_cols = ""
+        self.is_label_leg_cols = ""        # LIST
         
         self.bb_y_max_is_leg = 0.92
         
@@ -950,7 +950,7 @@ class C_OD_stacked_outputs_plot:
         
     def create_plot(self):
         
-        print(self.list_dict_results[0]["rc_tip_ratio_od"])
+        print(self.list_dict_results[0]["eta_thermal_od"])
         
         legend_lines = []
         legend_labels = []
