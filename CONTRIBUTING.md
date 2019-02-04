@@ -1,4 +1,5 @@
 # Contributing to SAM
+The SAM team welcomes your contribution to the project! 
 
 You can contribute to SAM by letting us know about problems or suggesting new features, or by making your own changes or additions to the code. You may want to help us fix an [issue someone else reported](https://github.com/NREL/SAM/issues), fix an issue you discovered, or add a new feature to SAM.
 
@@ -8,31 +9,46 @@ If you find a problem with SAM, or would like to request a new feature, let us k
 
 If you have a question about using SAM, you can ask us on the [SAM support forum](https://sam.nrel.gov/support).
 
-## Contribute code to the SAM project
+## SAM Contribution Policy  
 
-If you are ready to contribute code to SAM, there are a couple of things you should know first:
+If you contribute code, you agree that your contribution may be incorporated into SAM and made available under the SAM license in compliance with standard [GitHub terms of service](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license).  
 
-* First off, please read [SAM's Contribution Policy](https://github.com/NREL/SAM/wiki/Contribution-Policy).  In particular, you'll need to send us an email (to [nicholas.diorio@nrel.gov](nicholas.diorio@nrel.gov)) that states:
+In the effort to make SAM easy to contribute to, the contribution process is composed of three simple steps:  
 
-_I agree to contribute to SAM. I agree to the following terms and conditions for my contributions: First, I agree that I am licensing my contributions under the terms of the current SAM license. Second, I agree that, in order to conform to any future open source software license(s) under which SAM may be provided, the terms of my license may be modified without any notice to me and without my consent. Third, I represent and warrant that I am authorized to make the contributions and grant the license. If my employer has rights to intellectual property that includes my contributions, I represent and warrant that I have received permission to make contributions and grant the required license on behalf of my employer._
+1. [Fork](https://help.github.com/articles/fork-a-repo/) the relevant SAM [repositories](https://github.com/NREL/SAM/wiki/Software-Dependencies). 
+2. Make your modifications.  For large new features, we suggest that you [email us](nicholas.diorio@nrel.gov) before you start working so that we coordinate your contribution (see more info for large contributions below!).
+3. Create a [pull request](https://help.github.com/articles/about-pull-requests/).
 
-* SAM consists of [several code repositories](https://github.com/NREL/SAM/wiki/Software-Dependencies), so you will need to determine where to make your contribution. For example, if you are making a change to the way SAM's detailed photovoltaic model makes a calculation, you would work with the [SSC](https://github.com/NREL/SSC) repository. If you are adding a new feature that changes both calculations and the user interface, like adding a new photovoltaic module model, then you would work with both the SSC repository and the SAM repository. If you need help figuring out where your contribution should go, please [let us know](mailto://sam.support@nrel.gov).
+### Additional contribution help
+Some additional details on what makes it more likely that your code will be readily accepted into the main development version of SAM.
 
-* We use GitHub to manage the open source project, so you will need to learn how to use it to fork, clone, branch, check out, pull, add, commit, and push your work. 
+<details><summary>For large contributions</summary>
+<p>
+If your contribution is larger (e.g. a new feature), it helps us to have a detailed description of the project that you are proposing, the precise functionalities that you plan to implement as part of the project, and a time frame for implementation. After we review your materials, we may ask you to revise your materials. For the greatest likelihood of success, it would be great to align on functionalities to be addressed.  
+</p>
+</details>
 
-### Instructions
+<details><summary>Code quality and testing</summary>
+<p>
+We want SAM to adhere to high quality standards. Please try and broadly adhere to the same style of code in the area you will be working. Any bugs, either discovered by you, us, or any users will be tracked on the GitHub issues page for the specific repository (SSC or SAM). We request you that you take full responsibility for correcting bugs. We'd also really love for you to write a new unit test for the code you contribute!
+</p>
+</details>
 
-Here are the steps we would like you to follow when you contribute code to SAM:
 
-1. Install GitHub on your computer.
-1. Follow the instructions on the [SAM wiki](https://github.com/NREL/sam/wiki) to clone the SAM repositories and build SAM.
-1. Create a fork on GitHub.com for the repository (SAM, SSC, LK, or WEX) you are contributing to.
-1. Clone your fork to create a local copy on your computer.
-1. Create a branch for your changes.
-1. Make your changes to the code.
-1. Build SAM and test it to make sure your code works as expected (see [below](#test-protocol)).
-1. Commit and push the changes to the branch.
-1. Create a pull request for us to review the branch. If the changes meet our requirements, we will merge the branch into the main repository.
+<details><summary>Documentation</summary>
+<p>
+Proper documentation is crucial for our users; without it users will not know how to use your contribution!  If you add a new feature to SAM, we please ask you to submit some documentation as a Word, LaTex, Markdown or simple text document that our team will integrate SAM’s Help system.  
+</p>
+</details>
+
+<details><summary>For further assistance</summary>
+<p>
+Nicholas DiOrio  
+SAM Software Engineering  
+nicholas.diorio@nrel.gov  
+303.384.7359
+</p>
+</details>
 
 ### Resources for Learning GitHub
 
@@ -47,17 +63,3 @@ If you are new to GitHub, you can find helpful articles to help you learn how it
 * [Fork a Repo](https://help.github.com/articles/fork-a-repo/) from GitHub Help.
 
 * [About pull requests](https://help.github.com/articles/about-pull-requests/) from GitHub Help.
-
-### Test Protocol
-
-We are in the process of setting up a Google Test framework for testing your contribution to ensure that it does not cause any problems with the software. 
-
-For now, you can help to ensure that your code works with the rest of SAM by:
-
-1. Compiling SAM with your contribution for Windows, Mac, and Linux.
-
-3. Fixing any compiler warning messages.
-
-3. Running simulations in the compiled program with several configurations.
-
-For example, if you made changes to how the weather file processor works with solar resource data, you might want to run simulations with the photovoltaic, concentrating solar power, and solar hot water heating models to make sure those models all work with your new code.
