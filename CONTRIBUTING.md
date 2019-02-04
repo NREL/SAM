@@ -1,13 +1,7 @@
 # Contributing to SAM
 The SAM team welcomes your contribution to the project! 
 
-You can contribute to SAM by letting us know about problems or suggesting new features, or by making your own changes or additions to the code. You may want to help us fix an [issue someone else reported](https://github.com/NREL/SAM/issues), fix an issue you discovered, or add a new feature to SAM.
-
-## Let us know about a problem or suggest a new feature
-
-If you find a problem with SAM, or would like to request a new feature, let us know by [submitting an issue](https://github.com/NREL/SAM/issues/new).
-
-If you have a question about using SAM, you can ask us on the [SAM support forum](https://sam.nrel.gov/support).
+You can contribute to SAM by letting us know about problems or suggesting new features, or by making your own changes or additions to the code. You may want to report or help us fix an [issue someone else reported](https://github.com/NREL/SAM/issues), fix an issue you discovered, or add a new feature to SAM. If you have a question about using SAM, you can ask us on the [SAM support forum](https://sam.nrel.gov/support).
 
 ## SAM Contribution Policy  
 
@@ -50,7 +44,8 @@ nicholas.diorio@nrel.gov
 </p>
 </details>
 
-### Resources for Learning GitHub
+<details><summary>Resources for learning GitHub</summary>
+<p>
 
 If you are new to GitHub, you can find helpful articles to help you learn how it works on the web. Some examples are:
 
@@ -63,3 +58,6 @@ If you are new to GitHub, you can find helpful articles to help you learn how it
 * [Fork a Repo](https://help.github.com/articles/fork-a-repo/) from GitHub Help.
 
 * [About pull requests](https://help.github.com/articles/about-pull-requests/) from GitHub Help.
+
+</p>
+</details>
