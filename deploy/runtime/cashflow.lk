@@ -1975,8 +1975,8 @@ function send_excel_om(xl) {
 	} 
 	
 	// electricity purchase for PV - Single Owner only as of Oct 2018
-	
-		if ( (tech == 'Flat Plate PV'  || tech == 'Generic System') && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
+	// need to update to work with generic system - Single Owner
+		if ( (tech == 'Flat Plate PV') && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
 		{
 		// utility bill
 			ub = output('cf_utility_bill'); // array of rate cost  
