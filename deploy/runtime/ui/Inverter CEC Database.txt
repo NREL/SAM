@@ -500,8 +500,8 @@ Library
 CEC Inverters
 Fields
 5
-76
-Name,Paco,Pdco,Pso,Pnt,Vac,Vdcmax,Vdco,Mppt_high,Mppt_low,C0,C1,C2,C3,Idcmax
+94
+Name,Paco,Pdco,Pso,Pnt,Vac,Vdcmax,Vdco,Mppt_high,Mppt_low,C0,C1,C2,C3,Idcmax,cec_type,cec_date
 Numeric
 
 1
@@ -1243,7 +1243,31 @@ Height
 3
 297
 
-18
+20
+inv_cec_date
+3
+4
+CEC inverter database date
+ 
+PV Inverter (CEC Database)
+0
+0
+1
+4
+0
+Default
+inv_cec_type
+3
+4
+CEC inverter database type
+ 
+PV Inverter (CEC Database)
+0
+0
+1
+4
+0
+Default
 inv_snl_ac_voltage
 3
 1
