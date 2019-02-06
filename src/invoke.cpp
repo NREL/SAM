@@ -2033,7 +2033,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	wxString year;
 	year = spd.GetYear();
 	double lat, lon;
-	ecd.Update(1, 50);
+	ecd.Update(1, 50.0f);
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
 		if (!wxEasyCurl::GeoCode(spd.GetAddress(), &lat, &lon, NULL, false))
@@ -2047,6 +2047,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		lat = spd.GetLatitude();
 		lon = spd.GetLongitude();
 	}
+	ecd.Update(1, 100.0f);
 	ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
 
 	wxArrayString hh = spd.GetHubHeights();
@@ -2066,7 +2067,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 	//Create URL for each hub height file download
 	wxString url;
-	bool ok;
+	bool ok, success=true;
 	wxArrayString urls, displaynames;
 	wxCSVData csv_main, csv;
 
@@ -2074,12 +2075,6 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	filename = wfdir + "/" + location;
 
 	std::vector<wxEasyCurl*> curls;
-
-	// testing progress bar
-//	SimulationDialog tpd = SimulationDialog(wxString::Format("Downloading data for %d hub heights", (int)hh.Count()), 1);
-//	int pdmax = 25 * (int)hh.Count(); // average of 25 seconds to download
-//	wxProgressDialog pd(wxString::Format("Downloading data for %d hub heights", (int)hh.Count()), "Downloading data for " + hh[0] + " hub height", pdmax, SamApp::Window());
-
 
 	for (size_t i = 0; i < hh.Count(); i++)
 	{
@@ -2090,7 +2085,6 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		url.Replace("<LON>", wxString::Format("%lg", lon));
 		url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 		wxEasyCurl *curl = new wxEasyCurl;
-//		curl->Start(url);
 		curls.push_back(curl);
 		urls.push_back(url);
 		displaynames.push_back(hh[i]);
@@ -2102,7 +2096,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	// no need to create extra unnecessary threads 
 	if (nthread > (int)urls.size()) nthread = (int)urls.size();
 
-	ecd.NewStage("Retieving weather data", nthread);
+	ecd.NewStage("Retrieving weather data", nthread);
 
 
 
@@ -2129,12 +2123,12 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	for (int i = 0; i < nthread; i++)
 		threads[i]->Run();
 
-	size_t its = 0;
-	unsigned long ms = 500; // 1s
+	size_t its = 0, its0=0;
+	unsigned long ms = 500; // 0.5s
 	// can time first download to get better estimate
-	float tot_time = 10 * hh.Count();
-	float per;
-	wxString cur_hh;
+	float tot_time = 25 * (float)hh.Count(); // 25 s guess based on test downloads
+	float per,act_time;
+	wxString cur_hh="";
 	while (1)
 	{
 		size_t i, num_finished = 0;
@@ -2149,15 +2143,20 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		for (i = 0; i < threads.size(); i++)
 		{
 			wxString update;
-			//float per = threads[i]->GetPercent(&update);
-			per = (float)(its * ms) / (10*tot_time);
+			per = (float)(its * ms) / (10*tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
 			ecd.Update(i, per, update);
 			wxArrayString msgs = threads[i]->GetNewMessages();
 			ecd.Log(msgs);
 			if (threads[i]->GetDataAsString() != cur_hh)
 			{
+				if (cur_hh == hh[0])
+				{ // adjust actual time based on first download
+					act_time = (float)(its * ms) / 1000.0f;
+					tot_time = act_time * (float)hh.Count();
+					its;
+				}
 				cur_hh = threads[i]->GetDataAsString();
-				ecd.Log(threads[i]->GetDataAsString());
+				ecd.Log("Downloading data for " + cur_hh + " hub height.");
 			}
 		}
 
@@ -2168,49 +2167,33 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		{
 			for (i = 0; i < threads.size(); i++)
 				threads[i]->Cancel();
+			if (success)
+			{
+				ecd.Log("Download Cancelled.");
+				success = false;
+			}
 		}
 		its++;
 		::wxMilliSleep(ms);
 	}
 
-
-	size_t nok = 0;
-	// wait on the joinable threads
-	for (size_t i = 0; i < threads.size(); i++)
+	if (success)
 	{
-		threads[i]->Wait();
-		nok += threads[i]->NOk();
-
-		// update final progress
-		float per = threads[i]->GetPercent();
-		ecd.Update(i, per);
-
-		// get any final simulation messages
-		wxArrayString msgs = threads[i]->GetNewMessages();
-		ecd.Log(msgs);
-	}
-
-	// get all retrieved data and combine
-
-/*
-
-		for (size_t j = i * 25; j < (i + 1) * 25; j++)
+		size_t nok = 0;
+		// wait on the joinable threads
+		for (size_t i = 0; i < threads.size(); i++)
 		{
-			if (!pd.Update(j, wxString::Format("Downloading data for %s hub height", (const char *)hh[i])))
-				break;
-			//		ok = curl.Get(url, "Downloading data from wind toolkit...", SamApp::Window());	//true won't let it return to code unless it's done downloading
-			ok = curl.Get(url, wxEmptyString, SamApp::Window());	//true won't let it return to code unless it's done downloading
-		}
-		// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
+			threads[i]->Wait();
+			nok += threads[i]->NOk();
 
-		if (!ok)
-		{
-//			wxMessageBox("Failed to download data from web service.");
-//			wxMessageBox("URL=" + url);
-			ecd.Update(pdmax, "Failed to download data from web service. URL=" + url);
-			return;
+			// update final progress
+			float per = threads[i]->GetPercent();
+			ecd.Update(i, per);
+
+			// get any final simulation messages
+			wxArrayString msgs = threads[i]->GetNewMessages();
+			ecd.Log(msgs);
 		}
-*/
 
 		for (size_t i = 0; i < hh.Count(); i++)
 		{
@@ -2219,7 +2202,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 			{
 				//			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
 				ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
-				return;
+				success=false;
 			}
 			if (i == 0)
 				csv_main.Copy(csv);
@@ -2233,9 +2216,9 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 			}
 			filename += "_" + hh[i];
 		}
-	// write out combined hub height file 
-	filename += ".srw";
-
+		// write out combined hub height file 
+		filename += ".srw";
+	}
 
 
 
@@ -2247,7 +2230,8 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 	threads.clear();
 	curls.clear();
-
+	if (!success)
+		return;
 
 	if (!csv_main.WriteFile(filename))
 	{
