@@ -38,7 +38,7 @@ class C_des_od_label_unit_info:
         self.y_label_style = ""
         self.y_axis_min_max = ""
         self.ticks = ""
-        self.minloc = ""
+        self.minloc = 2
         
     def print_des_od_comp(self, dict_results, i_od):
         if(self.des_var == "none"):
