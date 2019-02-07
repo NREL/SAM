@@ -2026,7 +2026,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		return;
 	}
 	// Setup progress dialog in main UI thread
-	wxEasyCurlDialog ecd = wxEasyCurlDialog("Setting up location",1,SamApp::Window());
+	wxEasyCurlDialog ecd = wxEasyCurlDialog("Setting up location",1);
 
 	//Get parameters from the dialog box for weather file download
 	wxString year;
@@ -2038,6 +2038,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		if (!wxEasyCurl::GeoCode(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
 			ecd.Log("Failed to geocode address");
+			ecd.Finalize();
 			return;
 		}
 	}
@@ -2218,20 +2219,23 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 
 	// delete all the thread objects
-	for (size_t i = 0; i < threads.size(); i++)
-		delete threads[i];
 	for (size_t i = 0; i < curls.size(); i++)
 		delete curls[i];
+	for (size_t i = 0; i < threads.size(); i++)
+		delete threads[i];
 
 	threads.clear();
 	curls.clear();
 	if (!success)
+	{
+		ecd.Finalize();
 		return;
+	}
 
 	if (!csv_main.WriteFile(filename))
 	{
-//		wxMessageBox(wxString::Format("Failed to write downloaded weather file %s.", filename));
 		ecd.Log(wxString::Format("Failed to write downloaded weather file %s.", filename));
+		ecd.Finalize();
 		return;
 	}
 	//Return the downloaded filename
