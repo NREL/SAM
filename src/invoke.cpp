@@ -2067,7 +2067,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 	//Create URL for each hub height file download
 	wxString url;
-	bool ok, success=true;
+	bool success=true;
 	wxArrayString urls, displaynames;
 	wxCSVData csv_main, csv;
 
@@ -2123,7 +2123,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	for (int i = 0; i < nthread; i++)
 		threads[i]->Run();
 
-	size_t its = 0, its0=0;
+	size_t its = 0;
 	unsigned long ms = 500; // 0.5s
 	// can time first download to get better estimate
 	float tot_time = 25 * (float)hh.Count(); // 25 s guess based on test downloads
@@ -2153,7 +2153,6 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 				{ // adjust actual time based on first download
 					act_time = (float)(its * ms) / 1000.0f;
 					tot_time = act_time * (float)hh.Count();
-					its;
 				}
 				cur_hh = threads[i]->GetDataAsString();
 				ecd.Log("Downloading data for " + cur_hh + " hub height.");
