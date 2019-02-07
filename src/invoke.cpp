@@ -2115,8 +2115,6 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 			ithr = 0;
 	}
 
-	sw.Start();
-
 	// start the threads
 	for (int i = 0; i < nthread; i++)
 		threads[i]->Run();
