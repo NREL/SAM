@@ -67,7 +67,6 @@
 #include <wx/mstream.h>
 #include <wx/busyinfo.h>
 #include <wx/arrstr.h>
-#include <wx/progdlg.h>
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/lkscript.h>
@@ -2090,7 +2089,6 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		displaynames.push_back(hh[i]);
 	}
 
-	wxStopWatch sw;
 	int nthread = hh.Count();
 	nthread = 1;
 	// no need to create extra unnecessary threads 
