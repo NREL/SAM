@@ -863,8 +863,6 @@ def cycle_label(cycle_data, is_multi_line = False, is_file_name = False):
         
     return label
 
-
-    
 class C_OD_stacked_outputs_plot:
     
     def __init__(self, list_dict_results):
@@ -873,58 +871,25 @@ class C_OD_stacked_outputs_plot:
         
         self.is_save = False
         self.file_name = ""
+        self.dpi = 300
+        self.file_ext = ".png"
         
         self.x_var = "T_amb"
         
         self.is_legend = True
         self.leg_var = "T_amb"
         self.list_leg_spec = ""
-        self.is_separate_design_point = False
         
-        self.is_plot_des_pts = True
-        self.is_plot_each_des_pt = True             # if False, assumes each dict has same design point
-        self.list_des_pts = []
+        self.add_subplot_letter = False
+                
+        self.is_separate_design_point = False       # Separates design point in legend
+        self.is_plot_each_des_pt = True             # if False, assumes each dict dataset has same design point
+        self.is_plot_des_pts = True                 # if True, plot marker for design point
+        self.list_des_pts = []                      # if is_plot_des_pts is False, then this list can specify which datasets' design points are plotted. e.g. [0,3]
         
-        self.is_shade_infeasible = True
-        
-        
-        #### Pressure Sweep
-       # self.y_vars = ["eta", "W_dot", "MC_P_out",
-       #             "MC_m_dot","MC_phi","MC_tip_speed",
-       #             "RC_m_dot","RC_phi","RC_tip_speed"]
-        
-        #### Temperature Sweep
-        #self.y_vars = ["eta", "W_dot", "MC_P_out", "PHX_dT"]
-        
-        #### Temperature Sweep: cold temp control
-        #self.y_vars = ["eta", "W_dot", "MC_P_out", "MC_T_in", "RC_phi", "PHX_dT"]
-        
-        #### Overview (lots of plots)
-        #self.y_vars = ["eta","W_dot","Q_dot","PHX_dT","MC_P_in","MC_P_out",
-        #               "MC_W_dot","MC_m_dot","MC_phi","MC_tip_speed","MC_eta","f_recomp",
-        #               "RC_W_dot", "RC_m_dot","RC_phi","RC_tip_speed","RC_eta","RC_T_in",
-        #               "t_W_dot", "t_m_dot", "t_eta", "t_T_in", "LTR_eff", "HTR_eff"]
+        self.is_shade_infeasible = True             # for FINAL dataset, shade all subplot where any metric in y_val exceeds its value in var_info_metrics
 
-        #### Overview - Partial Cooling (lots of plots)
-        #self.y_vars = ["eta","W_dot","Q_dot","PHX_dT","MC_P_in","MC_P_out",
-        #               "PC_W_dot","PC_m_dot","PC_phi","PC_tip_speed","PC_eta","RC_T_in",
-        #               "MC_W_dot","MC_m_dot","MC_phi","MC_tip_speed","MC_eta","f_recomp",
-        #               "RC_W_dot", "RC_m_dot","RC_phi","RC_tip_speed","RC_eta","RC_T_in",
-        #               "t_W_dot", "t_m_dot", "t_eta", "t_T_in", "LTR_eff", "HTR_eff"]
-
-        #### component limits - Partial Cooling (lots of plots)
-        self.y_vars = ["eta","W_dot","MC_P_out",
-                       "PC_m_dot","PC_phi","PC_tip_speed",
-                       "MC_m_dot","MC_phi","MC_tip_speed",
-                       "RC_m_dot","RC_phi","RC_tip_speed"]
-        
-        #### component limits - Partial Cooling (lots of plots)
-        #self.y_vars = ["eta","W_dot","MC_P_out",
-        #               "MC_m_dot","MC_phi","MC_tip_speed",
-        #               "RC_m_dot","RC_phi","RC_tip_speed",
-        #               "LTR_eff", "HTR_eff", "PHX_eff"]
-
-        #self.y_vars = ["eta", "W_dot"]
+        self.y_vars = ["eta", "W_dot"]
         
         self.plot_colors = ['k','b','g','r','c']
         self.l_s = ['-','--','-.',':']
@@ -943,14 +908,18 @@ class C_OD_stacked_outputs_plot:
         self.is_label_leg_cols = ""        # LIST
         
         self.bb_y_max_is_leg = 0.92
+        self.bb_h_pad = 2
+        self.bb_w_pad = 0.75
         
         self.max_rows = 3
 
         self.var_info_metrics = py_sco2.get_des_od_label_unit_info__combined()
+        self.var_results_check = "eta_thermal_od"
+        self.fig_num = 1
         
     def create_plot(self):
         
-        print(self.list_dict_results[0]["eta_thermal_od"])
+        print(self.list_dict_results[0][self.var_results_check])
         
         legend_lines = []
         legend_labels = []
@@ -966,14 +935,14 @@ class C_OD_stacked_outputs_plot:
         n_subplots = len(self.y_vars)
 
         n_cols = (n_subplots - 1)//self.max_rows + 1
-        print("Columns = ", n_cols)
+        #print("Columns = ", n_cols)
         n_rows = int(np.ceil(n_subplots/n_cols))
-        print("Rows = ", n_rows)
+        #print("Rows = ", n_rows)
 
         f_h = self.h_subplot * n_rows
         f_w = self.w_subplot * n_cols
 
-        fig1, a_ax = plt.subplots(nrows = n_rows, ncols = n_cols, num = 1,figsize=(f_w,f_h))
+        fig1, a_ax = plt.subplots(nrows = n_rows, ncols = n_cols, num = self.fig_num,figsize=(f_w,f_h))
         
         n_datasets = len(self.list_dict_results)
         
@@ -981,41 +950,41 @@ class C_OD_stacked_outputs_plot:
 
         for i in range(n_datasets):
         
-            n_od_pts = len(self.list_dict_results[i][self.x_var_od])
-            y_feasible_flag = [False for i in range(n_od_pts)]
+            n_od_pts_i = len(self.list_dict_results[i][self.x_var_od])
+            y_feasible_flag_i = [False for i in range(n_od_pts_i)]      # This is reset every dataset...
             
-            color_od = self.plot_colors[i%len(self.plot_colors)]
+            color_od_i = self.plot_colors[i%len(self.plot_colors)]
             if(self.is_change_ls_each_plot):
-                ls_od = self.l_s[i%len(self.l_s)]
+                ls_od_i = self.l_s[i%len(self.l_s)]
             else:
                 color_iteration = i // len(self.plot_colors)
-                ls_od = self.l_s[color_iteration%len(self.l_s)]
-            mrk = self.mss[i%len(self.mss)]
+                ls_od_i = self.l_s[color_iteration%len(self.l_s)]
+            mrk_i = self.mss[i%len(self.mss)]
             
-            ls_des = color_od + mrk
+            ls_des_i = color_od_i + mrk_i
         
             if(self.var_info_metrics[self.x_var].des == -999):                                                                                                                           
-                x_val_des = self.list_dict_results[i][self.x_var_des]
+                x_val_des_i = self.list_dict_results[i][self.x_var_des]  # Design point x value
             else:
-                x_val_des = self.var_info_metrics[self.x_var].des
+                x_val_des_i = self.var_info_metrics[self.x_var].des      # Design point x value
                  
-            des_txt_leg = ""
-            od_txt_leg = ""
+            des_txt_leg_i = ""
+            od_txt_leg_i = ""
                                                  
             if(self.list_leg_spec != ""):
-                des_txt_leg = self.list_leg_spec[i]
+                des_txt_leg_i = self.list_leg_spec[i]
                 if(not(isinstance(self.list_leg_spec[i], list))):
                     self.is_separate_design_point = False
             else:
                 if(self.var_info_metrics[self.leg_var].des == -999):
-                    des_leg_val = self.list_dict_results[i][self.var_info_metrics[self.leg_var].des_var]
+                    des_leg_val_i = self.list_dict_results[i][self.var_info_metrics[self.leg_var].des_var]
                 else:
-                    des_leg_val = self.var_info_metrics[self.leg_var].des
+                    des_leg_val_i = self.var_info_metrics[self.leg_var].des
                 
-                od_leg_val = self.list_dict_results[i][self.var_info_metrics[self.leg_var].od_var][0]
+                od_leg_val_i = self.list_dict_results[i][self.var_info_metrics[self.leg_var].od_var][0]
                 
-                des_txt_leg = "Design " + self.var_info_metrics[self.leg_var].l_label + " = " + "{:.2f}".format(des_leg_val)
-                od_txt_leg = self.var_info_metrics[self.leg_var].l_label + " = " + "{:.2f}".format(od_leg_val)
+                des_txt_leg_i = "Design " + self.var_info_metrics[self.leg_var].l_label + " = " + "{:.2f}".format(des_leg_val_i)
+                od_txt_leg_i = self.var_info_metrics[self.leg_var].l_label + " = " + "{:.2f}".format(od_leg_val_i)
             
             if( self.is_label_leg_cols != "" and i % n_leg_rows == 0 ):
                 if(len(self.is_label_leg_cols) == self.n_leg_cols):
@@ -1028,18 +997,20 @@ class C_OD_stacked_outputs_plot:
             if(self.is_separate_design_point):
                 if(self.is_plot_each_des_pt or i == 0):
                         # Marker
-                    legend_lines.append(mlines.Line2D([],[],color = color_od, marker = mrk,  label = des_txt_leg))
-                    legend_labels.append(des_txt_leg)
+                    legend_lines.append(mlines.Line2D([],[],color = color_od_i, marker = mrk_i,  label = des_txt_leg_i))
+                    legend_labels.append(des_txt_leg_i)
                     # Line
-                legend_lines.append(mlines.Line2D([],[],color = color_od, ls = ls_od, label = od_txt_leg))
-                legend_labels.append(od_txt_leg)                   
+                legend_lines.append(mlines.Line2D([],[],color = color_od_i, ls = ls_od_i, label = od_txt_leg_i))
+                legend_labels.append(od_txt_leg_i)                   
             else:
                     # Marker & Line
-                legend_lines.append(mlines.Line2D([],[],color = color_od, ls = ls_od, marker = mrk,  label = des_txt_leg))
-                legend_labels.append(des_txt_leg)
+                legend_lines.append(mlines.Line2D([],[],color = color_od_i, ls = ls_od_i, marker = mrk_i,  label = des_txt_leg_i))
+                legend_labels.append(des_txt_leg_i)
                 
             
             for j, key in enumerate(self.y_vars):
+                
+                j_l_i = string.ascii_lowercase[j]
                 
                 j_col = j//n_rows
                 j_row = j%n_rows
@@ -1048,63 +1019,66 @@ class C_OD_stacked_outputs_plot:
                 y_des_key = self.var_info_metrics[key].des_var
                 y_label = self.var_info_metrics[key].s_label
                 y_limit = self.var_info_metrics[key].limit_var
-                                               
+                
+                if(self.add_subplot_letter):
+                    y_label = r'$\bf{' + format(j_l_i) + ")" + '}$' + " " + y_label
+                        
                 if(n_cols > 1):
-                                                   
-                    a_ax[j_row,j_col].plot(self.list_dict_results[i][self.x_var_od], self.list_dict_results[i][y_od_key], color_od+ls_od)
-                    
-                    if(self.is_plot_des_pts or (i in self.list_des_pts)):
-                        if(self.is_plot_each_des_pt or i == 0):
-                            if(self.var_info_metrics[key].des_d_type == "single"):
-                                if(self.var_info_metrics[key].des_var == "none"):
-                                    a_ax[j_row,j_col].plot(x_val_des, self.var_info_metrics[key].des, ls_des)
-                                else:
-                                    a_ax[j_row,j_col].plot(x_val_des, self.list_dict_results[i][y_des_key], ls_des)
-                            elif(self.var_info_metrics[key].des_d_type == "list"):
-                                for i_s in range(len(self.list_dict_results[i][y_des_key])):
-                                    a_ax[j_row,j_col].plot(x_val_des, self.list_dict_results[i][y_des_key][i_s], ls_des)
-                    
-                    if(y_limit != ""):
-                        y_limit_list = [self.list_dict_results[i][y_limit] for ind in range(len(self.list_dict_results[i][self.x_var_od]))]
-                        a_ax[j_row,j_col].plot(self.list_dict_results[i][self.x_var_od], y_limit_list, 'm:')
-                    
-                    if(i == n_datasets - 1):
-                        print("y labels...")
-                        a_ax[j_row,j_col].set_ylabel(y_label, fontsize = self.axis_label_fontsize)
-                    
-                        a_ax[j_row,j_col].tick_params(labelsize = self.tick_lab_fontsize)
-                    
-                        a_ax[j_row,j_col].grid(which = 'both', color = 'gray', alpha = 1)
-                    
-                        if(j_row == n_rows - 1 or j == n_subplots - 1):
-                            a_ax[j_row,j_col].set_xlabel(self.x_label, fontsize = self.axis_label_fontsize)
-                            
-                        #if(i == n_datasets - 1):
-                        custom_auto_y_axis_scale(a_ax[j_row,j_col])  
-                        
+                    j_axis = a_ax[j_row,j_col]
+                elif(n_rows > 1):
+                    j_axis = a_ax[j_row]
                 else:
+                    j_axis = a_ax
                     
-                    if(y_limit != ""):
-                        y_limit_list = [self.list_dict_results[i][y_limit] for ind in range(len(self.list_dict_results[i][self.x_var_od]))]
-                        a_ax[j_row].plot(self.list_dict_results[i][self.x_var_od], y_limit_list, 'm--')
+                j_axis.plot(self.list_dict_results[i][self.x_var_od], self.list_dict_results[i][y_od_key], color_od_i+ls_od_i)
+                
+                if(self.is_plot_des_pts or (i in self.list_des_pts)):
+                    if(self.is_plot_each_des_pt or i == 0):
+                        if(self.var_info_metrics[key].des_d_type == "single"):
+                            if(self.var_info_metrics[key].des_var == "none"):
+                                j_axis.plot(x_val_des_i, self.var_info_metrics[key].des, ls_des_i)
+                            else:
+                                j_axis.plot(x_val_des_i, self.list_dict_results[i][y_des_key], ls_des_i)
+                        elif(self.var_info_metrics[key].des_d_type == "list"):
+                            for i_s in range(len(self.list_dict_results[i][y_des_key])):
+                                j_axis.plot(x_val_des_i, self.list_dict_results[i][y_des_key][i_s], ls_des_i)
+                                
+                if(y_limit != ""):
+                    y_limit_list = [self.list_dict_results[i][y_limit] for ind in range(len(self.list_dict_results[i][self.x_var_od]))]
+                    j_axis.plot(self.list_dict_results[i][self.x_var_od], y_limit_list, 'm:')
                     
-                    a_ax[j_row].plot(self.list_dict_results[i][self.x_var_od], self.list_dict_results[i][y_od_key], color_od+ls_od)
+                if(i == n_datasets - 1):
                     
-                    if(self.var_info_metrics[key].des_d_type == "single"):
-                        a_ax[j_row].plot(x_val_des, self.list_dict_results[i][y_des_key], ls_des)
-                    elif(self.var_info_metrics[key].des_d_type == "list"):
-                        for i_s in range(len(self.list_dict_results[i][y_des_key])):
-                            a_ax[j_row].plot(x_val_des, self.list_dict_results[i][y_des_key][i_s], ls_des)
+                    j_axis.set_ylabel(y_label, fontsize = self.axis_label_fontsize)
                     
-                    a_ax[j_row].set_ylabel(y_label)
+                    if(self.var_info_metrics[key].y_label_style == "sci"):
+                        j_axis.ticklabel_format(style="sci", axis='y', scilimits=(0,0))
+                        j_axis.yaxis.get_offset_text().set_fontsize(self.tick_lab_fontsize)
+                
+                    j_axis.tick_params(labelsize = self.tick_lab_fontsize)
                     
-                    a_ax[j_row].grid(which = 'both', color = 'gray', alpha = 1)
-                    
-                    if(j_row == n_rows - 1 or j == n_subplots - 1):
-                        a_ax[j_row].set_xlabel(self.x_label)
+                    if( self.var_info_metrics[self.x_var].y_axis_min_max != "" ):
+                        j_axis.set_xlim(self.var_info_metrics[self.x_var].y_axis_min_max[0], self.var_info_metrics[self.x_var].y_axis_min_max[1])
                         
-                    if(i == n_datasets - 1):
-                        custom_auto_y_axis_scale(a_ax[j_row])
+                        if( self.var_info_metrics[self.x_var].ticks != "" ):
+                            j_axis.set_xticks(self.var_info_metrics[self.x_var].ticks)
+                            
+                    if( self.var_info_metrics[self.x_var].minloc != "" ):
+                        j_axis.xaxis.set_minor_locator(AutoMinorLocator(self.var_info_metrics[self.x_var].minloc))
+                
+                    j_axis.grid(which = 'both', color = 'gray', alpha = 1)
+                
+                    if(j_row == n_rows - 1 or j == n_subplots - 1):
+                        j_axis.set_xlabel(self.x_label, fontsize = self.axis_label_fontsize)
+                        
+                    if(self.var_info_metrics[key].y_axis_min_max == ""):
+                        custom_auto_y_axis_scale(j_axis)
+                    else:
+                        j_axis.set_ylim(self.var_info_metrics[key].y_axis_min_max[0], self.var_info_metrics[key].y_axis_min_max[1])
+                        
+                    if(self.var_info_metrics[key].minloc != ""):
+                        j_axis.yaxis.set_minor_locator(AutoMinorLocator(self.var_info_metrics[key].minloc))
+
                         
                 if(self.is_shade_infeasible):
                     if(y_limit != ""):
@@ -1113,31 +1087,25 @@ class C_OD_stacked_outputs_plot:
                                for k_in, y_k_val_local in enumerate(y_val_local):
                                    if(self.var_info_metrics[key].limit_var_type == "max"):
                                        if(y_k_val_local > self.list_dict_results[i][y_limit]):
-                                           y_feasible_flag[j_in] = True
+                                           y_feasible_flag_i[j_in] = True
                                    else:
                                        if(y_k_val_local < self.list_dict_results[i][y_limit]):
-                                           y_feasible_flag[j_in] = True
+                                           y_feasible_flag_i[j_in] = True
                             else:
                                 if(self.var_info_metrics[key].limit_var_type == "max"):
                                     if(y_val_local > self.list_dict_results[i][y_limit]):
-                                        y_feasible_flag[j_in] = True
+                                        y_feasible_flag_i[j_in] = True
                                 else:
                                     if(y_val_local < self.list_dict_results[i][y_limit]):                                        
-                                        y_feasible_flag[j_in] = True
-        
-#        n_leg_cols = n_datasets
-#        
-#        if(self.is_separate_design_point):
-#            n_leg_cols = n_datasets*2
-            
-        if(self.is_legend):
-            fig1.legend(legend_lines, legend_labels, fontsize = self.legend_fontsize, ncol = self.n_leg_cols, loc = "upper center", bbox_to_anchor = (0.5,1.0))
+                                        y_feasible_flag_i[j_in] = True
+
+        fig1.legend(legend_lines, legend_labels, fontsize = self.legend_fontsize, ncol = self.n_leg_cols, 
+             loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
         
         if(self.is_legend):
-            plt.tight_layout(pad=0.0,h_pad=2.0, w_pad = 1.0, rect=(0.02,0.02,0.99,self.bb_y_max_is_leg))
+        	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.012,0.02,0.98,self.bb_y_max_is_leg))
         else:
-            plt.tight_layout(pad=0.0,h_pad=2.0, w_pad = 1.0, rect=(0.02,0.02,0.99,0.96))
-           
+        	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.02,0.02,0.99,0.96))
         
         # Hide unused subplots
         for j in range(n_subplots, n_cols*n_rows):
@@ -1145,7 +1113,8 @@ class C_OD_stacked_outputs_plot:
             j_row = j%n_rows
             
             a_ax[j_row,j_col].set_visible(False)
-            
+        
+        # Shade infeasible regions
         for j, key in enumerate(self.y_vars):
             j_col = j//n_rows
             j_row = j%n_rows
@@ -1154,19 +1123,19 @@ class C_OD_stacked_outputs_plot:
 
                 if(self.is_shade_infeasible and n_datasets == 1):
                     y_lower, y_upper = a_ax[j_row,j_col].get_ylim()
-                    a_ax[j_row,j_col].fill_between(self.list_dict_results[0][self.x_var_od], y_lower, y_upper, where=y_feasible_flag, facecolor='red', alpha=0.5)
+                    a_ax[j_row,j_col].fill_between(self.list_dict_results[0][self.x_var_od], y_lower, y_upper, where=y_feasible_flag_i, facecolor='red', alpha=0.5)
                 
             else: 
 
                 if(self.is_shade_infeasible and n_datasets == 1):
                     y_lower, y_upper = a_ax[j_row].get_ylim()
-                    a_ax[j_row].fill_between(self.list_dict_results[0][self.x_var_od], y_lower, y_upper, where=y_feasible_flag, facecolor='red', alpha=0.5)
+                    a_ax[j_row].fill_between(self.list_dict_results[0][self.x_var_od], y_lower, y_upper, where=y_feasible_flag_i, facecolor='red', alpha=0.5)
             
         if(self.is_save and self.file_name != ""):    
          
-            plt.savefig(self.file_name + ".png")
+            plt.savefig(self.file_name + self.file_ext, dpi = self.dpi)
         
-            plt.close()  
+            plt.close() 
 
 class C_des_stacked_outputs_plot:
     
@@ -1182,15 +1151,15 @@ class C_des_stacked_outputs_plot:
         self.x_var = "recup_tot_UA"
         
         self.is_legend = True
-        self.leg_var = "min_phx_deltaT"
-        self.list_leg_spec = ""
+        self.leg_var = "min_phx_deltaT"     # variable that legend uses to differentiate datasets. overwritten if list_leg_spec is defined
+        self.list_leg_spec = ""             # list of strings for legend for each dataset
         
         self.add_subplot_letter = False
 
         #### component limits - Partial Cooling (lots of plots)
         self.y_vars = ["eta","cycle_cost"]
         
-        self.min_var = ""
+        self.min_var = ""             # If this is defined, plot will add a point at the x value corresponding to the min value of this variable
         
         self.plot_colors = ['k','b','g','r','c']
         self.l_s = ['-','--','-.',':']
@@ -1293,8 +1262,7 @@ class C_des_stacked_outputs_plot:
                 #else:
                 #    print("The number of input Legend Column Labels", len(self.is_label_leg_cols),
         		#		  "is not equal to the number of legend columns", self.n_leg_cols)
-            
-                    
+                        
             if(self.is_line_mkr):
                 legend_lines.append(mlines.Line2D([],[],color = color_i, ls = ls_i, marker = mrk_i,  label = i_txt_leg))
             else:
@@ -1320,8 +1288,6 @@ class C_des_stacked_outputs_plot:
                     j_axis = a_ax[j_row]
                 else:
                     j_axis = a_ax
-                                               
-                #if(n_cols > 1):
                     
                 j_axis.plot(self.list_dict_results[i][self.x_var_des], self.list_dict_results[i][y_des_key], plt_style_i)
                 
@@ -1360,32 +1326,6 @@ class C_des_stacked_outputs_plot:
                         
                         if(self.var_info_metrics[key].minloc != ""):
                             j_axis.yaxis.set_minor_locator(AutoMinorLocator(self.var_info_metrics[key].minloc))
-                
-                            
-#                else:
-#                    
-#                    j_axis.plot(self.list_dict_results[i][self.x_var_des], self.list_dict_results[i][y_des_key], plt_style_i)
-#                                        
-#                    j_axis.set_ylabel(y_label, fontsize = self.axis_label_fontsize)
-#                    
-#                    j_axis.tick_params(labelsize = self.tick_lab_fontsize)
-#                    
-#                    j_axis.grid(which = 'both', color = 'gray', alpha = 1)
-#                    
-#                    if(j_row == n_rows - 1 or j == n_subplots - 1):
-#                        j_axis.set_xlabel(self.x_label, fontsize = self.axis_label_fontsize)
-#                        
-#                    if(i == n_datasets - 1):
-#                        if(self.var_info_metrics[key].y_label_style == "sci"):
-#                            print("y format")
-#                            j_axis.ticklabel_format(style="sci", axis='y', scilimits=(0,0))
-#                        else:
-#                            custom_auto_y_axis_scale(j_axis)
-                        
-                    
-        
-        
-            
 
         if(self.is_legend):
             if( self.is_label_leg_cols != "" and len(self.is_label_leg_cols) == 1):
