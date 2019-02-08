@@ -2029,16 +2029,20 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		cxt.result().assign(wxEmptyString);
 		return;
 	}
+	// Setup progress dialog in main UI thread
+	wxEasyCurlDialog ecd = wxEasyCurlDialog("Setting up location",1);
 
 	//Get parameters from the dialog box for weather file download
 	wxString year;
 	year = spd.GetYear();
 	double lat, lon;
+	ecd.Update(1, 50.0f);
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
-		if (!wxEasyCurl::GeoCode(spd.GetAddress(), &lat, &lon))
+		if (!wxEasyCurl::GeoCode(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
-			wxMessageBox("Failed to geocode address");
+			ecd.Log("Failed to geocode address");
+			ecd.Finalize();
 			return;
 		}
 	}
@@ -2047,7 +2051,8 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		lat = spd.GetLatitude();
 		lon = spd.GetLongitude();
 	}
-
+	ecd.Update(1, 100.0f);
+	ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
 
 	wxArrayString hh = spd.GetHubHeights();
 
@@ -2066,62 +2071,177 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 	//Create URL for each hub height file download
 	wxString url;
-	bool ok;
-
+	bool success=true;
+	wxArrayString urls, displaynames;
 	wxCSVData csv_main, csv;
 
 	//Create the filename
 	filename = wfdir + "/" + location;
 
-	wxEasyCurl curl;
-
+	std::vector<wxEasyCurl*> curls;
 
 	for (size_t i = 0; i < hh.Count(); i++)
 	{
 		url = SamApp::WebApi("windtoolkit");
 		url.Replace("<YEAR>", year);
-		url.Replace("<HUBHEIGHT>", hh[i].Left(hh[i].Len()-1));
+		url.Replace("<HUBHEIGHT>", hh[i].Left(hh[i].Len() - 1));
 		url.Replace("<LAT>", wxString::Format("%lg", lat));
 		url.Replace("<LON>", wxString::Format("%lg", lon));
 		url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
-
-
-		ok = curl.Get(url, "Downloading data from wind toolkit...", SamApp::Window());	//true won't let it return to code unless it's done downloading
-		// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
-
-		if (!ok)
-		{
-			wxMessageBox("Failed to download data from web service.");
-			wxMessageBox("URL=" + url);
-			return;
-		}
-		wxString srw_api_data = curl.GetDataAsString();
-		if (!csv.ReadString(srw_api_data))
-		{
-			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
-			return;
-		}
-		if (i == 0)
-			csv_main.Copy(csv);
-		else
-		{
-			// add header (row 2), units (row 3) and hub heights (row 4)
-			// add data (rows 5 through end of data)
-			for (size_t j = 2; j < csv.NumRows() && j < csv_main.NumRows(); j++)
-				for (size_t k = 0; k < 4; k++)
-					csv_main(j, i * 4 + k) = csv(j, k);
-		}
-		filename += "_" + hh[i];
+		wxEasyCurl *curl = new wxEasyCurl;
+		curls.push_back(curl);
+		urls.push_back(url);
+		displaynames.push_back(hh[i]);
 	}
 
-	// write out combined hub height file 
-	filename += ".srw";
-	if (!csv_main.WriteFile(filename))
+	int nthread = hh.Count();
+	nthread = 1;
+	// no need to create extra unnecessary threads 
+	if (nthread > (int)urls.size()) nthread = (int)urls.size();
+
+	ecd.NewStage("Retrieving weather data", nthread);
+
+
+
+	std::vector<wxEasyCurlThread*> threads;
+	for (int i = 0; i < nthread; i++)
 	{
-		wxMessageBox(wxString::Format("Failed to write downloaded weather file %s.", filename));
+		wxEasyCurlThread *t = new wxEasyCurlThread(i);
+		threads.push_back(t);
+		t->Create();
+	}
+
+	// round robin assign each simulation to a thread
+	size_t ithr = 0;
+	for (size_t i = 0; i < urls.size(); i++)
+	{
+		threads[ithr++]->Add(curls[i],urls[i],displaynames[i]);
+		if (ithr == threads.size())
+			ithr = 0;
+	}
+
+	// start the threads
+	for (int i = 0; i < nthread; i++)
+		threads[i]->Run();
+
+	size_t its = 0;
+	unsigned long ms = 500; // 0.5s
+	// can time first download to get better estimate
+	float tot_time = 25 * (float)hh.Count(); // 25 s guess based on test downloads
+	float per,act_time;
+	wxString cur_hh="";
+	while (1)
+	{
+		size_t i, num_finished = 0;
+		for (i = 0; i < threads.size(); i++)
+			if (!threads[i]->IsRunning())
+				num_finished++;
+
+		if (num_finished == threads.size())
+			break;
+
+		// threads still running so update interface
+		for (i = 0; i < threads.size(); i++)
+		{
+			wxString update;
+			per = (float)(its * ms) / (10*tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
+			ecd.Update(i, per, update);
+			wxArrayString msgs = threads[i]->GetNewMessages();
+			ecd.Log(msgs);
+			if (threads[i]->GetDataAsString() != cur_hh)
+			{
+				if (cur_hh == hh[0])
+				{ // adjust actual time based on first download
+					act_time = (float)(its * ms) / 1000.0f;
+					tot_time = act_time * (float)hh.Count();
+				}
+				cur_hh = threads[i]->GetDataAsString();
+				ecd.Log("Downloading data for " + cur_hh + " hub height.");
+			}
+		}
+
+		wxGetApp().Yield();
+
+		// if dialog's cancel button was pressed, send cancel signal to all threads
+		if (ecd.Canceled())
+		{
+			for (i = 0; i < threads.size(); i++)
+				threads[i]->Cancel();
+			if (success)
+			{
+				ecd.Log("Download Cancelled.");
+				success = false;
+			}
+		}
+		its++;
+		::wxMilliSleep(ms);
+	}
+
+	if (success)
+	{
+		size_t nok = 0;
+		// wait on the joinable threads
+		for (size_t i = 0; i < threads.size(); i++)
+		{
+			threads[i]->Wait();
+			nok += threads[i]->NOk();
+
+			// update final progress
+			float per = threads[i]->GetPercent();
+			ecd.Update(i, per);
+
+			// get any final simulation messages
+			wxArrayString msgs = threads[i]->GetNewMessages();
+			ecd.Log(msgs);
+		}
+
+		for (size_t i = 0; i < hh.Count(); i++)
+		{
+			wxString srw_api_data = curls[i]->GetDataAsString();
+			if (!csv.ReadString(srw_api_data))
+			{
+				//			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
+				ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
+				success=false;
+			}
+			if (i == 0)
+				csv_main.Copy(csv);
+			else
+			{
+				// add header (row 2), units (row 3) and hub heights (row 4)
+				// add data (rows 5 through end of data)
+				for (size_t j = 2; j < csv.NumRows() && j < csv_main.NumRows(); j++)
+					for (size_t k = 0; k < 4; k++)
+						csv_main(j, i * 4 + k) = csv(j, k);
+			}
+			filename += "_" + hh[i];
+		}
+		// write out combined hub height file 
+		filename += ".srw";
+	}
+
+
+
+	// delete all the thread objects
+	for (size_t i = 0; i < curls.size(); i++)
+		delete curls[i];
+	for (size_t i = 0; i < threads.size(); i++)
+		delete threads[i];
+
+	threads.clear();
+	curls.clear();
+	if (!success)
+	{
+		ecd.Finalize();
 		return;
 	}
 
+	if (!csv_main.WriteFile(filename))
+	{
+		ecd.Log(wxString::Format("Failed to write downloaded weather file %s.", filename));
+		ecd.Finalize();
+		return;
+	}
 	//Return the downloaded filename
 	cxt.result().assign(filename);
 }

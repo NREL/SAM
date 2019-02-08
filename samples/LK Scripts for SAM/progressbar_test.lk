@@ -1,0 +1,75 @@
+/*
+This script demonstrates how to use the progressbar() function.
+
+The first example uses a single progress bar for two nested processes, and the
+secons example uses two progress bars, one for each nested process.
+
+Written and tested in SAM 2018.11.11r1, February 2019
+*/
+
+n_queries = 10;
+m_queries = 5;
+
+// one progress bar
+/*
+pb = progressbar( { 'title' = 'Download Progress' , 
+                    'message' = 'Starting download.' , 
+                    'cancelbutton' = true , 
+                    'closebutton' = true , 
+                    'time' = true , 
+                    'max' = n_queries*m_queries } );
+pb_count = 0;
+for( i=0; i<n_queries; i++ )
+{
+	progressbar( pb, { 'message' = 'Query ' + pb_count , 'value' = 1+pb_count } );
+	url = 'https://developer.nrel.gov/api/solar/nsrdb_data_query.json?&api_key=<SAMAPIKEY>&lat=32.715738&lon=-117.161084';
+	json = curl( url ); // curl() should replace <SAMAPI> and <USEREMAIL > with values from private.h
+	outln( 'Query ' + i + ':\n' + json + '\n');
+	pb_count++;
+	
+	for ( j=0; j<m_queries; j++ )
+	{
+		progressbar( pb, { 'message' = 'Query ' + pb_count , 'value' = 1+pb_count } );
+		url = 'https://developer.nrel.gov/api/solar/nsrdb_data_query.json?&api_key=<SAMAPIKEY>&lat=32.715738&lon=-117.161084';
+		json = curl( url ); 
+		outln( 'Query ' + i + ':\n' + json + '\n');
+		pb_count++;
+	}
+	
+}
+
+progressbar( pb );
+*/
+
+// two progress bars
+pb1 = progressbar( { 'title' = 'Download Progress First Query' , 
+                    'message' = 'Starting download.' , 
+                    'cancelbutton' = false , 
+                    'closebutton' = false , 
+                    'time' = false, 
+                    'max' = n_queries } );
+for( i=0; i<n_queries; i++ )
+{
+	progressbar( pb1, { 'message' = 'First query ' + i , 'value' = 1+i } );
+	url = 'https://developer.nrel.gov/api/solar/nsrdb_data_query.json?&api_key=<SAMAPIKEY>&lat=32.715738&lon=-117.161084';
+	json = curl( url ); // curl() should replace <SAMAPI> and <USEREMAIL > with values from private.h
+	outln( 'Query ' + i + ':\n' + json + '\n');
+	
+	pb2 = progressbar( { 'title' = 'Download Progress Second Query' , 
+                    'message' = 'Starting download.' , 
+                    'cancelbutton' = false, 
+                    'closebutton' = false, 
+                    'time' = false, 
+                    'max' = m_queries } );
+	for ( j=0; j<m_queries; j++ )
+	{
+		progressbar( pb2, { 'message' = 'Second 1uery ' + j , 'value' = 1+j } );
+		url = 'https://developer.nrel.gov/api/solar/nsrdb_data_query.json?&api_key=<SAMAPIKEY>&lat=32.715738&lon=-117.161084';
+		json = curl( url ); 
+		outln( 'Query ' + j + ':\n' + json + '\n');
+	}
+	progressbar( pb2 );
+	
+}
+
+progressbar( pb1 );
