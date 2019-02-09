@@ -2120,11 +2120,12 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	for (int i = 0; i < nthread; i++)
 		threads[i]->Run();
 
-	size_t its = 0;
+	size_t its = 0, its0=0;
 	unsigned long ms = 500; // 0.5s
 	// can time first download to get better estimate
 	float tot_time = 25 * (float)hh.Count(); // 25 s guess based on test downloads
-	float per,act_time;
+	float per=0.0f,act_time;
+	int curhh = 0;
 	wxString cur_hh="";
 	while (1)
 	{
@@ -2140,19 +2141,23 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		for (i = 0; i < threads.size(); i++)
 		{
 			wxString update;
-			per = (float)(its * ms) / (10*tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
+			per += (float)(ms) / (10 * tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
+			if (per > 100.0) per = (float)curhh / (float)hh.Count() * 100.0 - 10.0; // reset 10%
 			ecd.Update(i, per, update);
 			wxArrayString msgs = threads[i]->GetNewMessages();
 			ecd.Log(msgs);
 			if (threads[i]->GetDataAsString() != cur_hh)
 			{
-				if (cur_hh == hh[0])
-				{ // adjust actual time based on first download
-					act_time = (float)(its * ms) / 1000.0f;
+				if (cur_hh != "")
+					{ // adjust actual time based on first download
+					act_time = (float)((its-its0) * ms) / 1000.0f;
 					tot_time = act_time * (float)hh.Count();
+					its0 = its;
 				}
 				cur_hh = threads[i]->GetDataAsString();
 				ecd.Log("Downloading data for " + cur_hh + " hub height.");
+				per = (float)curhh / (float)hh.Count() * 100.0;
+				curhh++;
 			}
 		}
 
