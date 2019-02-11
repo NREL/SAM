@@ -59,6 +59,23 @@
 <p>This is a maintenance update that fixes the following issues with SAM 2018.11.11:</p>
 	 
 <ul>
+	<li>Fix NSRDB weather file download issues.</li>
+	<li>Fix Generic System with PPA Single Owner issues with batteries and subhourly load data.</li>
+	<li>Fix Solar Interpolation macro issue in Linux and macOS and with SAM CSV format.</li>
+	<li>For photovoltaic model albedo data, use monthly data if hourly data is missing from weather file.</li>
+	<li>Fix issue with transmission loss and constant DC loss factor not being applied correctly.</li>
+	<li>For Python API, add <code>staticmethods</code> for <code>info</code> calls.</li>
+	<li>Fix CSP User-defined Power Cycle input tables.</li>
+	<li>Improve Power Tower optimization and heliostat field layout user interface on Solar Field input page.</li>
+	<li>Fix Code Generator for variables with a colon (:) in the name.</li>
+	<li>Improve Parametrics variable browser display of variable names.</li>
+	<li>Fix battery dispatch for front-of-meter AC-connected system.</li>
+	<li>Fix CSP parabolic trough with broken glass HCE tubes.</li>
+	<li>Speed up SSC <code>windpower</code> module in Linux.</li>
+	<li>LK <code>geocode()</code> function now returns time zone in addition to latitude and longitude.</li>
+	 </ul>
+	 
+<ul>
 <li>Fix issue with weather files in EPW format from PVGIS V5 without a final blank line.</li>
 <li>Fix model for decomposing POA irradiance into beam irradiance to better handle out-of-range POA values.</li>
 <li>Fix electricity bill calculation to correctly account for Weekend energy rates. This issue was introduced in SAM 2018.11.11.</li>
