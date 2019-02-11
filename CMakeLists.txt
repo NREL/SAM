@@ -1,6 +1,6 @@
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-cmake_minimum_required(VERSION 3.7)
+cmake_minimum_required(VERSION 3.12)
 
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
 
@@ -13,7 +13,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
 set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
-find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base)
+if(APPLE)
+	find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base)
+elseif()
+	find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base)
+endif()
+
 include(${wxWidgets_USE_FILE})
 
 include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
@@ -70,17 +75,14 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # Setup Application
 if (APPLE)
 	set(MACOSX_BUNDLE_ICON_FILE SAM.icns)
-	set(SAM_ICON ${CMAKE_SOURCE_DIR}/build_osx/SAM.icns)
+	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/SAM.icns)
 	set_source_files_properties(${SAM_ICON} PROPERTIES
 		MACOSX_PACKAGE_LOCATION "Resources")
 elseif(WIN32)
-	set(SAM_ICON ${CMAKE_SOURCE_DIR}/build_vs2013/SAM.rc)
+	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_vs2013/SAM.rc)
 endif()
 
 # set build types for archive
-unset(WEX_LIB CACHE)
-unset(LK_LIB CACHE)
-unset(SSC_LIB CACHE)
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_executable(SAMd 
 		WIN32
@@ -88,15 +90,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 		${SAM_SRC}
 		${SAM_ICON})
 	set(SAM_EXE SAMd)
-	find_library( WEX_LIB
-		NAMES wexosxwx3d.a wexuxwx3d.a wexd.lib
-		PATHS $ENV{WEXDIR})
-	find_library( LK_LIB
-		NAMES lkosxwx3d.a lkuxwx3d.lib
-		PATHS $ENV{LKDIR})
-	find_library( SSC_LIB
-		NAMES sscd.dylib sscd.so sscd.lib
-		PATHS $ENV{SSCDIR}/ssc)
+
 	set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
 else()
@@ -106,19 +100,48 @@ else()
 		${SAM_SRC}
 		${SAM_ICON})
 	set(SAM_EXE SAM)
-	find_library( WEX_LIB
-		NAMES wexosxwx3.a  wexuxwx3.a wex.lib
-		PATHS $ENV{WEXDIR})
-	find_library( LK_LIB
-		NAMES lkosxwx3.a lkuxwx3.a lk.lib
-		PATHS $ENV{LKDIR})
-	find_library(SSC_LIB
-		NAMES  sscd.dylib ssc.so ssc.lib
-		PATHS $ENV{SSCDIR}/ssc)
 endif()
 
 # setup linking dependencies and flags
-target_link_libraries(${SAM_EXE} ${SSC_LIB} ${WEX_LIB} ${LK_LIB} ) 
+
+# if running as combined build, make sure to link to projects
+if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
+	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+		target_link_libraries(${SAM_EXE} lkd wexd sscd)
+		set(SSC_LIB $ENV{SSCDIR}/ssc/sscd.dylib)
+	else()
+		target_link_libraries(${SAM_EXE} lk wex ssc)
+		set(SSC_LIB $ENV{SSCDIR}/ssc/ssc.dylib)
+	endif()
+else()
+	unset(WEX_LIB CACHE)
+	unset(LK_LIB CACHE)
+	unset(SSC_LIB CACHE)
+	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+		find_library( WEX_LIB
+				NAMES wexd.a wexd.lib
+				PATHS $ENV{WEXDIR})
+		find_library( LK_LIB
+				NAMES lkd.a lkd.lib
+				PATHS $ENV{LKDIR})
+		find_library( SSC_LIB
+				NAMES sscd.dylib sscd.so sscd.lib
+				PATHS $ENV{SSCDIR}/ssc)
+	else()
+		find_library( WEX_LIB
+				NAMES wex.a wex.lib
+				PATHS $ENV{WEXDIR})
+		find_library( LK_LIB
+				NAMES lk.a lk.lib
+				PATHS $ENV{LKDIR})
+		find_library(SSC_LIB
+				NAMES  ssc.dylib ssc.so ssc.lib
+				PATHS $ENV{SSCDIR}/ssc)
+	endif()
+	target_link_libraries(${SAM_EXE} ${SSC_LIB} ${WEX_LIB} ${LK_LIB} )
+endif()
+
+# setup linking dependencies and flags
 target_link_libraries(${SAM_EXE} ${wxWidgets_LIBRARIES})
 target_link_libraries(${SAM_EXE} -lm -lcurl)
 
@@ -145,19 +168,19 @@ SET(CMAKE_SKIP_BUILD_RPATH)
 # create application info for executable
 if (APPLE)
 	set_target_properties(${SAM_EXE} PROPERTIES
-		MACOSX_BUNDLE_INFO_PLIST ${CMAKE_SOURCE_DIR}/build_osx/Info-SAM.plist
+		MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/Info-SAM.plist
 	)
 	set(SAM_APP ${CMAKE_CURRENT_SOURCE_DIR}/${SAM_EXE}.app)
 	add_custom_command(
 		TARGET ${SAM_EXE}
 		POST_BUILD 
-		COMMAND rsync -a -v --ignore-existing ${CMAKE_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
+		COMMAND rsync -a -v --ignore-existing ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
 		COMMAND mkdir -p ${SAM_APP}/Contents/runtime
-		COMMAND cp ${CMAKE_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime
-		COMMAND cp ${CMAKE_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
+		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime
+		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
 		COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
 		COMMAND cp ${SSC_LIB} ${SAM_APP}/Contents/Frameworks
-		COMMAND install_name_tool -rpath $ENV{SSCDIR}/ssc ${SAM_APP}/Contents/Frameworks/ ${SAM_APP}/Contents/MacOS/SAM 
+		COMMAND install_name_tool -rpath $ENV{SSCDIR}/ssc ${SAM_APP}/Contents/Frameworks/ ${SAM_APP}/Contents/MacOS/${SAM_EXE}
 	)
 elseif(UNIX)
 	set_target_properties(${SAM_EXE} 
