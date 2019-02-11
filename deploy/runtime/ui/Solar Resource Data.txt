@@ -2351,7 +2351,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-21877
+22579
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2666,7 +2666,6 @@ nsrdb = define ( location )
 	g = geocode( location );
 	if ( !g.ok ) // sometimes correct address fails but works on second try
 	{
-		msg += 'Geocoding failed for ' + location + '. Trying again. ';
 		g = geocode( location );
 	}
 	
@@ -2683,46 +2682,63 @@ nsrdb = define ( location )
 		{
 			if ( var.errors != [] )
 			{
-				msg += var.errors + '. ';
+				msg += var.errors + '.\n';
 				if ( strpos( lower(var.errors.code), 'api' ) > -1 ) // no or invalid api key
 					msg += 'See private.h to set API keys.';
 			}
 			elseif ( var.outputs == null )
-				msg += 'No NSRDB data available for \"' + location + '\".';
+			{
+				msg += 'No NSRDB data available for \"' + location + '\".\nSee https://sam.nrel.gov/weather for links to other data sources.';
+			}
 			elseif ( var.outputs == [] )
-				msg += 'No NSRDB data available for \"' + location + '\".';
+			{
+				msg += 'No NSRDB data available for \"' + location + '\".\nSee https://sam.nrel.gov/weather for links to other data sources.';
+			}
 			else
+			{
 				json_ok = true;
+			}	
 		}
 		else
 		{
-			msg += 'NSRDB did not return valid JSON string:';
-			msg += json_str + '\n';
+			msg += 'NSRDB did not return valid JSON string:\n';
+			msg += json_str;
 			if ( strpos( lower(json_str), 'api' ) > -1 ) // no or invalid api key
+			{
 				msg += 'See private.h to set API keys.';
+			}	
 		}
 		if ( json_ok )
 		{
 			arr = var.outputs;
+			best_dataset = -1;
 			for ( i=0; i<#arr; i++ )
 			{
 				name = arr[i].name;
 				if ( name == 'suny-international' || name == 'psmv3' )
-					{ best_dataset = i; }
-					
+				{
+					best_dataset = i; 
+				}
 			}
-			// PSM V3 is var.outputs[1]
-			// SUNY International is var.outputs[0]
-			name = var.outputs[best_dataset].name;
-			url = split(var.outputs[best_dataset].links[0].link,'?')[0];
-			years = var.outputs[best_dataset].availableYears;
+			if (best_dataset > -1 )
+			{
+				// PSM V3 is var.outputs[1]
+				// SUNY International is var.outputs[0]
+				name = var.outputs[best_dataset].name;
+				url = split(var.outputs[best_dataset].links[0].link,'?')[0];
+				years = var.outputs[best_dataset].availableYears;
+			}
+/*			else
+			{
+				msg += 'No NSRDB PSM V3 data available for \"' + location + '\". ';
+				msg += 'Try using the Legacy data option to find data from a different dataset.';
+			}*/
 		}
 	}
 	else
 	{
 		geocode_ok = false;
-		//msgbox( 'Failed to geocode address!\nThe address or latitude-longitude pair, \"' + location + '\", may be invalid, or SAM may be unable to connect to the internet.' );
-		msg += 'Failed to convert to latitude-longitude pair: \"' + location + '\". ';
+		msg += 'Failed to convert to latitude-longitude pair: \"' + location + '\" ';
 	}
 	ok_test = ( geocode_ok == true ) && ( json_ok == true );
 	return { 'name' = name , 'msg' = msg , 'url' = url , 'years' = years , 'ok' = ok_test , 'lat' = g.lat, 'lon' = g.lon };
@@ -2781,21 +2797,23 @@ nsrdb_get = define( )
 
 	write_line( flog, 'Requested location(s): ' + location + '\n');
 	
-	pb = progressbar( { 'title' = 'Download Progress' , 'message' = 'Starting download.' , 'cancelbutton' = false , 'closebutton' = false , 'time' = false , 'max' = #location } );
+	pb_locations = progressbar( { 'title' = 'Download Progress' , 'message' = 'Starting download.' , 'cancelbutton' = false , 'closebutton' = false , 'time' = false , 'max' = #location } );
 
 	for ( n=0; n<#location; n++ )
 	{
 		write_line( flog, '----------------------------------------------------------');	
 		write_line( flog, 'Location ' + to_string(n+1) + ' of ' + #location + ': \"' + location[n]  + '\"');
 		write_line( flog, '----------------------------------------------------------\n');	
-		progressbar( pb, { 'message' = 'Getting data availability for \"' + location[n] + '\".' , 'value' = 1+n } );
+		progressbar( pb_locations, { 'message' = 'Getting download information for \"' + location[n] + '\".' , 'value' = 1+n } );
 		dataset[n] = nsrdb( location[n] );
-		write_line( flog, dataset[n].msg + '\n' );
+		progressbar( pb_locations, { 'message' = 'Processing download information for \"' + location[n] + '\".' , 'value' = 1+n } );
+		//write_line( flog, dataset[n].msg + '\n' );
 		if ( !dataset[n].ok )
 		{
 			download_ok = false;
 			write_line( flog, dataset[n].msg + '\n');
-			if ( #location == 1 ) { msgbox( 'Failed to download weather file!\n' + dataset[n].msg ); }
+			//msgbox( 'Failed to download weather file!\n' + dataset[n].msg ); 
+			msg += dataset[n].msg + '\n';
 			continue;
 		}	
 
@@ -2872,12 +2890,6 @@ nsrdb_get = define( )
 			base_url += '&utc=false';
 			base_url += '&leap_day=false';
 
-			if ( #type > 1 && n==0)
-			{
-				progressbar( pb );
-				pb = progressbar( { 'title' = 'Download Progress' , 'message' = 'Starting download.' , 'cancelbutton' = false , 'time' = false , 'max' = #location*#type } );
-			}
-		
 			// create folder for multiple years to facilitate
 			// p50 p90 and add to library folders list
 			// do not put tmy file in multiple year folder
@@ -2890,17 +2902,22 @@ nsrdb_get = define( )
 				path = path + '/' + clean_name( location[n] ) ;
 				if ( !dir_exists( path ) )
 				{
-					if ( !mkdir( path, true ) )
+					if ( !mkdir( path, false ) )
 					{	path = default_download_path; }
 				}
 				if ( path != default_download_path && i == 0)
 				{	update_library_folders( path ); }
 			}
+			
+			pb_years = progressbar( { 'title' = 'Download Progress for ' + location[n] , 'message' = 'Downloading, please wait...', 'cancelbutton' = false , 'closebutton' = false , 'time' = false , 'max' = #type } );
 				
 			// for each year
 			for( i=0; i<#type; i++ )
 			{
+				progressbar( pb_years, { 'message' = 'Preparing file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );
+
 				file_skipped = false;
+				no_current_data = false;
 				if ( dataset[n].name == 'psmv3' )
 				{
 					if ( type[i] == 'tmy' ) // relative_humidity not available for psmv3 tmy data
@@ -2916,13 +2933,17 @@ nsrdb_get = define( )
 						{ base_url += '&attributes=dni,dhi,ghi,dew_point,surface_temperature,surface_pressure,relative_humidity,wdir,wspd,snow_depth'; }
 				}
 				else
-					{ msgbox('Invalid dataset!\nNo attributes defined for ' + dataset[n].name ); }
+				{
+					no_current_data = true;
+					dataset_name = dataset[n].name;
+					msg += 'No NSRDB PSM V3 or SUNY International data available for ' + dataset[n].location + '.\n';
+					msg += 'Try using the Legacy data option to download a file from the ' + dataset_name +' dataset.';
+				}
 					
 				write_line( flog, '\nFile ' + to_string(i+1) + ' of ' + #type + ': ' + type[i]);
 				write_line( flog, '----------------------------------------------------------\n');	
 				url = base_url + '&names=' + to_string(type[i]);
 				url += '&wkt=POINT(' + dataset[n].lon + '%20' + dataset[n].lat + ')';
-				//str_url = replace( url, mid( url, strpos( url, 'api_key=' ) + strlen( 'api_key=' ), 40 ), '<API_KEY>' );
 				write_line( flog, url + '\n');
 
 				fname = path + '/' + clean_name( location[n] ) + '_' + dataset[n].lat + '_' + dataset[n].lon + '_psmv3_' + time_step + '_' + type[i] + '.csv';
@@ -2942,12 +2963,13 @@ nsrdb_get = define( )
 						set_library( fname );
 					}	
 				}
-				else	
+				elseif ( !no_current_data )	
 				{
 					start = start_timer();
-					progressbar( pb, { 'message' = 'Downloading ' + type[i] + ' file for \"' + location[n] + '\". File ' + to_string(i+n+1) + ' of ' + to_string(#location+#type-1) + '.' , 'value' = 1+i+n } );
+					progressbar( pb_years, { 'message' = 'Downloading file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );
 					wf = curl( url , { 'file'= fname } ); // curl() should replace <SAMAPI> and <USEREMAIL > with values from private.h
 					time = elapsed_time() / 1000;
+					progressbar( pb_years, { 'message' = 'Checking file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );
 					write_line( flog, 'Download time: ' + time + ' seconds.\n' );
 					wf_error = wf_check( fname );
 					if ( wf_error != 0 ) // usually indicates NSRDB returned a file containing error message instead of weather data
@@ -2956,6 +2978,7 @@ nsrdb_get = define( )
 						nsrdb_message = read_text_file( fname );
 						write_line( flog, 'Weather file test failed, ' + wf_error + ': ' + fname + '.\n');
 						write_line( flog, 'Message from NSRDB: ' + left( replace( nsrdb_message, '\n', ';'), 300 ) + '\n');
+						msg += 'Weather file test failed for ' + file_only( fname ) + '.';
 						fname_new = replace( fname, '.csv' , '_bad.txt' ); // rename file so next download attempt won't detect existing file
 						ok = rename_file( fname , fname_new );
 						if ( ok ) 
@@ -2975,57 +2998,54 @@ nsrdb_get = define( )
 					}	
 				}
 			}
+			progressbar( pb_years );
 		}	
 		else
 		{
 			download_ok = false;
 			write_line( flog, dataset[n].msg + '\n');
 		}
-		progressbar( pb, { 'message' = 'Done.' , 'value' = #location*#type } );
 	}
 
-	progressbar( pb );
+	progressbar( pb_locations );
 	close ( flog );
-	msg = '';
-	if ( download_ok && #type > 1 )
+	if ( download_ok && #type > 1 ) // multiple years
 	{
-		msg += 'Download complete!\n';
-		msg += 'Multiple single-year files downloaded to:\n  ' + path + '\n\n';
-		//msg += 'Click \"P50 P90\" and choose this folder for P50 P90 simulations.\n\n';
-		msg += 'TMY file downloaded to:\n  ' + default_download_path + '\n';
-		msg += 'and selected from library for simulation to compare to P50 result.\n\n';
-		msg += '\n\nDo you want to show instructions for running a P50/P90 analysis now?';
-		if ( yesno( msg ) )
+		str = 'Download complete!\n';
+		str += 'Multiple single-year files downloaded to:\n  ' + path + '\n\n';
+		//str += 'Click \"P50 P90\" and choose this folder for P50 P90 simulations.\n\n';
+		str += 'TMY file downloaded to:\n  ' + default_download_path + '\n';
+		str += 'and selected from library for simulation to compare to P50 result.\n\n';
+		str += '\n\nDo you want to show instructions for running a P50/P90 analysis now?';
+		if ( yesno( str ) )
 		{
 			folder = path;
-			msg = 'Instructions for running P50/P90 simulations:\n\n'
+			p50p90_text = 'Instructions for running P50/P90 simulations:\n\n'
 			+ '1. Click P50 / P90 at the bottom left of the main SAM window.\n\n'
 			+ '2. Click the ellipses (...) to the right of the Select Weather File Folder box.\n\n'
 			+ '3. Navigate to ' + folder + '.\n\n'
 			+ '4. Click "Run P50/P90 simulations".\n'
-			+ '\n\nIf you want to set a custom P value in addition to P10, P50 and P90, you can type a value for "Custom Px" before running the simulations.'
+			+ '\nIf you want to set a custom P value in addition to P10, P50 and P90, you can type a value for "Custom Px" before running the simulations.'
 			+ '\n\nTo remove this note window, delete all of its contents and close the window.';
-			pagenote( msg );
+			pagenote( p50p90_text );
 		}
 	}
-	elseif ( download_ok && !file_skipped )
+	elseif ( download_ok && !file_skipped && !no_current_data )
 	{
-		msg += 'Download complete!\n';
-		msg += 'Weather file(s) downloaded to:\n' + path + '.\n';
-		msg += '\nOpen log file?';
-		show_log = yesno( msg );
+		str = 'Download complete!\n';
+		str += 'Weather file(s) downloaded to:\n' + path + '.\n';
+		str += '\nOpen log file?';
+		show_log = yesno( str );
 		if ( show_log ) { browse( log_file ); }
 	}
 	elseif ( download_ok && file_skipped )
 	{
-		msg += 'File already in library!\n Download skipped.\n\n' + fname;
-		msgbox( msg );
+		str += 'File already in library!\n Download skipped.\n\n' + fname;
+		msgbox( str );
 	}
 	else 
 	{
-		msg = 'Download finished with errors!\n'; 
-		msg += '\nOpen log file?';
-		show_log = yesno( msg );
+		show_log = yesno( 'Download finished with errors!\n' + msg + '\nOpen log file?');
 		if ( show_log ) { browse( log_file ); }
 	}
 

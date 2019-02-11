@@ -163,7 +163,7 @@ static bool SSCTypeToSSC( int ssc_type, ssc_data_t pdata, const wxString &sscnam
 
 static wxString TableElementFileNames(const char *ssc_varname)
 {
-	// handle SAMnt table (":") naming for files to be read into ssc 
+	// handle SAMnt table (":") naming for files to be read into ssc
 	wxString fn = wxString(ssc_varname);
 	fn.Replace(":", "_");
 	return fn;
@@ -384,7 +384,7 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
 		{
 			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-			int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+			int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
 			const char* var_name = ssc_info_name(p_inf);
 			wxString name(var_name); // assumed to be non-null
 			wxString reqd(ssc_info_required(p_inf));
@@ -550,9 +550,9 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	return (m_errors.Count() == 0);
 }
 
-void CodeGen_Base::AddData(CodeGenData md) 
-{ 
-	m_data.push_back(md); 
+void CodeGen_Base::AddData(CodeGenData md)
+{
+	m_data.push_back(md);
 }
 
 bool CodeGen_Base::Ok()
@@ -573,7 +573,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("Python 2");						// 4
 	code_languages.Add("Python 3");						// 5
 	code_languages.Add("Java");							// 6
-	code_languages.Add("Android Studio (Android)");		// 7 
+	code_languages.Add("Android Studio (Android)");		// 7
 //#ifdef __WXMSW__
 	code_languages.Add("C#");							// 8
 	code_languages.Add("VBA");							// 9
@@ -907,7 +907,7 @@ bool CodeGen_c::Output(ssc_data_t p_data)
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 	{
 		const char *name = (const char*)m_data[ii].var.c_str();
-		int type = ::ssc_data_query(p_data, name); 
+		int type = ::ssc_data_query(p_data, name);
 		switch (type)
 		{
 		case SSC_STRING:
@@ -1352,7 +1352,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 					fprintf(m_fp, " { %.17gf,", dbl_value);
 				else if (k%nc == (nc - 1))
 					fprintf(m_fp, " %.17gf },", dbl_value);
-				else 
+				else
 					fprintf(m_fp, " %.17gf, ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
@@ -2460,7 +2460,7 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 				if (dbl_value > 1e38) dbl_value = 1e38;
 				if (k%nc == (nc - 1))
 					fprintf(m_fp, " %.17g ;", dbl_value);
-				else 
+				else
 					fprintf(m_fp, " %.17g  ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
@@ -2925,6 +2925,12 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "	def info_uihint( self, p_inf ):\n");
 	fprintf(f, "		self.pdll.ssc_info_uihint.restype = c_char_p\n");
 	fprintf(f, "		return self.pdll.ssc_info_uihint( c_void_p(p_inf) )\n");
+	fprintf(f, "	def info_required( self, p_inf ):\n");
+	fprintf(f, "		self.pdll.ssc_info_required.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_info_required( c_void_p(p_inf) )\n");
+	fprintf(f, "	def info_constraints( self, p_inf ):\n");
+	fprintf(f, "		self.pdll.ssc_info_constraints.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_info_constraints( c_void_p(p_inf) )\n");
 	fprintf(f, "	def module_exec( self, p_mod, p_data ):\n");
 	fprintf(f, "		self.pdll.ssc_module_exec.restype = c_int\n");
 	fprintf(f, "		return self.pdll.ssc_module_exec( c_void_p(p_mod), c_void_p(p_data) )\n");
@@ -3364,7 +3370,7 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 		if (dbl_value > 1e38) dbl_value = 1e38;
 		fprintf(m_fp, "		api.ssc_data_set_number( data, \"%s\", %.17gf );\n", name, dbl_value);
 		break;
-	case SSC_ARRAY: 
+	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
@@ -3461,7 +3467,7 @@ bool CodeGen_java::Header()
 	fprintf(m_fp, "public class %s\n", (const char*)m_name.c_str());
 	fprintf(m_fp, "{\n");
 	fprintf(m_fp, "	public static SSCAPIJNI api;\n");
-	
+
 	// handle csv files
 	// arrays
 	fprintf(m_fp, "	public static void set_array(long cxt, String name, String csvFile, int len)\n");
@@ -3573,7 +3579,7 @@ bool CodeGen_java::FreeSSCModule()
 
 bool CodeGen_java::SupportingFiles()
 {
-	// add JNI file - java class 
+	// add JNI file - java class
 	wxString fn = m_folder + "/SSCAPIJNI.java";
 	FILE *f = fopen(fn.c_str(), "w");
 	if (!f) return false;
@@ -6110,7 +6116,7 @@ bool CodeGen_php7::SupportingFiles()
 	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
 	fclose(f);
 	return true;
-#elif defined(__WXOSX__) // not tested on OS X 
+#elif defined(__WXOSX__) // not tested on OS X
 	fn = m_folder + "/php.ini";
 	f = fopen(fn.c_str(), "w");
 	if (!f) return false;
@@ -7015,7 +7021,7 @@ bool CodeGen_ios::SupportingFiles()
     return false;
 #endif
     return wxRemoveFile(f2);
-   
+
 }
 
 bool CodeGen_ios::Footer()
@@ -7040,7 +7046,7 @@ bool CodeGen_android::Output(ssc_data_t p_data)
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 	{
 		const char *name = (const char*)m_data[ii].var.c_str();
-		int type = ::ssc_data_query(p_data, name); 
+		int type = ::ssc_data_query(p_data, name);
 		switch (type)
 		{
 		case SSC_STRING:
@@ -7243,7 +7249,7 @@ bool CodeGen_android::Header()
     fprintf(m_fp, "    return 0;\n");
     fprintf(m_fp, "}\n");
     fprintf(m_fp, "\n");
-    
+
     fprintf(m_fp, "int set_string(ssc_data_t p_data, const char *name, const char* filename, AAssetManager *mgr, std::string path)\n");
     fprintf(m_fp, "{\n");
     fprintf(m_fp, "    if (file_from_APK(mgr, filename, path)==1) {\n");
@@ -7255,7 +7261,7 @@ bool CodeGen_android::Header()
     fprintf(m_fp, "    return 0;\n");
     fprintf(m_fp, "}\n");
     fprintf(m_fp, "\n");
-            
+
 	// arrays
 	fprintf(m_fp, "int set_array(ssc_data_t p_data, const char *name, const char* filename, int len, AAssetManager *mgr, std::string path)\n");
 	fprintf(m_fp, "{\n");
@@ -7481,7 +7487,7 @@ bool CodeGen_android::SupportingFiles()
     return false;
 #endif
     return wxRemoveFile(f2);
-    
+
 }
 
 bool CodeGen_android::Footer()
@@ -7569,7 +7575,7 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char *name, const wxString &, 
 					fprintf(m_fp, " [ %.17g,", dbl_value);
 				else if (k%nc == (nc - 1))
 					fprintf(m_fp, " %.17g ],", dbl_value);
-				else 
+				else
 					fprintf(m_fp, " %.17g, ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
@@ -7619,5 +7625,4 @@ bool CodeGen_json::Footer()
 	fprintf(m_fp, "}\n");
 	return true;
 }
-
 

@@ -1,5 +1,5 @@
 1
-916
+919
 6par_aisc
 1
 1
@@ -189,12 +189,6 @@ LeadAcid_tn
 1
 1
 1
-T_room
-1
-1
-1
-1
-20
 ac_lifetime_losses
 1
 2
@@ -874,6 +868,24 @@ batt_resistance
 1
 1
 0.2
+batt_room_temperature_celsius
+1
+2
+1
+1
+1.4013e-44
+batt_room_temperature_single
+1
+1
+1
+1
+20
+batt_room_temperature_vector
+1
+2
+1
+1
+0
 batt_size_choice
 1
 1
@@ -912,6 +924,12 @@ batt_target_power_monthly
 12
 1 1 1 1 1 1 1 1 1 1 1 1 
 
+batt_thermal_choice
+1
+1
+1
+1
+0
 batt_time_capacity
 1
 1
