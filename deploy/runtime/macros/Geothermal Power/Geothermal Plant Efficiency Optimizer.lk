@@ -157,7 +157,7 @@ set('plant_efficiency_input', optimal_i);			//Set the plant efficiency in the ac
 //////////////****** DISPLAYING RESULTS IN HTML WINDOW ******//////////////
 
 str = '<html><body><h3> Result </h3><p>Reported for case: ' + active_case() + '</p><br><br>';
-str += 'Plant has the lowest LCOE of &#162;' + num_to_str( min_lcoe, 2 ) + '/kWh at an overall efficiency of ' + num_to_str( optimal_i , 2) + '%'; 
+str += 'Plant has the lowest LCOE of &#162;' + num_to_str( min_lcoe, 2 ) + '/kWh at an overall efficiency of ' + num_to_str( optimal_i , 1) + '%'; 
 str += '<br>Simulate the active case which is now updated with this optimized plant efficiency value.';
 str += '</body></html>';
 html_dialog(str, 'Optimal Plant Efficiency', [600,200]);

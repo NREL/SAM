@@ -2423,7 +2423,7 @@ Geothermal Plant and Equipment
 1
 1
 1
-15000
+30000
 Numeric
 num_wells
 3
