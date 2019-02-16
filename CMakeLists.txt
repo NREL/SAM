@@ -8,9 +8,10 @@ if(MSVC)
 	set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Debug and Release Builds Configured" FORCE)
 endif()
 
+add_subdirectory(api)
+
 Project(sam)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
 set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
 if(APPLE)
@@ -149,17 +150,19 @@ target_link_libraries(${SAM_EXE} -lm -lcurl)
 if(MSVC)
 # need msvc optimization levels & different configs, windows sdk
 	add_compile_options(/W4 /WX)
-	add_compile_definitions( _CRT_SECURE_NO_WARNINGS _MBCS __WXMSW__)
+	add_compile_definitions( _CRT_SECURE_NO_WARNINGS _MBCS )
+	target_compile_definitions(${SAM_EXE} __WXMSW__)
 else(MSVC)
 
 	if (APPLE)
 		add_compile_options(-arch x86_64 -fno-common)
-		add_compile_definitions(WX_PRECOMP)
+		target_compile_definitions(${SAM_EXE} PUBLIC WX_PRECOMP)
 	else()
 		add_compile_options(-Wno-deprecated -Wno-misleading-indentation)
 	endif()
-	add_compile_options(-Wall -Werror -Wno-unknown-pragmas -O3 -std=c++11 ${wxWidgets_CXX_FLAGS})
-	add_compile_definitions(LK_USE_WXWIDGETS )
+	add_compile_options(-Wall -Werror -Wno-unknown-pragmas -O3 -std=c++11)
+	target_compile_options(${SAM_EXE} PUBLIC ${wxWidgets_CXX_FLAGS})
+	target_compile_definitions(${SAM_EXE} PUBLIC LK_USE_WXWIDGETS )
 endif(MSVC)
 
 # dynamic linking
@@ -215,3 +218,4 @@ elseif(UNIX)
 		DEPENDS ${SAM_EXE})
 
 endif()
+
