@@ -25,8 +25,9 @@ include(${wxWidgets_USE_FILE})
 include_directories(../src $ENV{LKDIR}/include $ENV{SSCDIR})
 
 add_executable(export_config
-        export_config.h
-        export_config.cpp)
+        export_config.cpp export_config.h
+        startup_extractor.cpp startup_extractor.h
+        input_page_extractor.cpp input_page_extractor.h)
 
 set(SAM_API_SRC
         sam_api.cpp
@@ -54,7 +55,7 @@ else()
     set(SAM_API_LIB SAM_apid)
 endif()
 
-target_include_directories(${SAM_API_LIB} PUBLIC
+include_directories(
         . ../src $ENV{LKDIR}/include $ENV{WEXDIR}/include $ENV{SSCDIR} ../tcs)
 
 # setup linking dependencies and flags
@@ -68,7 +69,7 @@ if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
         target_link_libraries(${SAM_API_LIB} lk wex ssc)
         set(SSC_LIB $ENV{SSCDIR}/ssc/ssc.dylib)
     endif()
-    target_link_libraries(export_config lkd sscd)
+    target_link_libraries(export_config lkd wexd sscd)
 else()
     unset(LK_LIB CACHE)
     unset(SSC_LIB CACHE)
@@ -76,6 +77,9 @@ else()
         find_library( LK_LIB
                 NAMES lkd.a lkd.lib
                 PATHS $ENV{LKDIR})
+        find_library( WEX_LIB
+                NAMES wexd.a wexd.lib
+                PATHS $ENV{WEXDIR})
         find_library( SSC_LIB
                 NAMES sscd.dylib sscd.so sscd.lib
                 PATHS $ENV{SSCDIR}/ssc)
@@ -83,17 +87,22 @@ else()
         find_library( LK_LIB
                 NAMES lk.a lk.lib
                 PATHS $ENV{LKDIR})
+        find_library( WEX_LIB
+                NAMES wex.a wex.lib
+                PATHS $ENV{WEXDIR})
         find_library(SSC_LIB
                 NAMES  ssc.dylib ssc.so ssc.lib
                 PATHS $ENV{SSCDIR}/ssc)
     endif()
-    target_link_libraries(${SAM_API_LIB} ${SSC_LIB} ${LK_LIB} )
-    target_link_libraries(${export_config} ${SSC_LIB} ${LK_LIB} ${wxWidgets_LIBRARIES})
+    target_link_libraries(${SAM_API_LIB} ${SSC_LIB} ${LK_LIB} ${wxWidgets_LIBRARIES})
+    target_link_libraries(${export_config} ${SSC_LIB} ${WEX_LIB} ${LK_LIB} ${wxWidgets_LIBRARIES})
 
 endif()
 
 # setup linking dependencies and flags
 target_link_libraries(export_config -lm)
+target_compile_definitions(export_config PUBLIC LK_USE_WXWIDGETS )
+
 target_link_libraries(${SAM_API_LIB} -lm -lcurl)
 target_compile_definitions(${SAM_API_LIB} PUBLIC LK_USE_WXWIDGETS )
 
