@@ -30,7 +30,7 @@ add_executable(export_config
 
 set(SAM_API_SRC
         sam_api.cpp
-        ../src/invoke.cpp
+        #../src/invoke.cpp
         ../src/variables.cpp
         ../src/equations.cpp)
 
@@ -42,30 +42,30 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # set build types for archive
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_library(SAM_apid
+    add_executable(SAM_apid
             ${SAM_API_SRC})
     set(SAM_API_LIB SAM_apid)
 
     set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
 else()
-    add_library(SAM_api
+    add_executable(SAM_api
             ${SAM_API_SRC})
     set(SAM_API_LIB SAM_apid)
 endif()
 
 target_include_directories(${SAM_API_LIB} PUBLIC
-        . ../src $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
+        . ../src $ENV{LKDIR}/include $ENV{WEXDIR}/include $ENV{SSCDIR} ../tcs)
 
 # setup linking dependencies and flags
 
 # if running as combined build, make sure to link to projects
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-        target_link_libraries(${SAM_API_LIB} lkd sscd)
+        target_link_libraries(${SAM_API_LIB} lkd wexd sscd)
         set(SSC_LIB $ENV{SSCDIR}/ssc/sscd.dylib)
     else()
-        target_link_libraries(${SAM_API_LIB} lk ssc)
+        target_link_libraries(${SAM_API_LIB} lk wex ssc)
         set(SSC_LIB $ENV{SSCDIR}/ssc/ssc.dylib)
     endif()
     target_link_libraries(export_config lkd sscd)
@@ -93,6 +93,7 @@ else()
 endif()
 
 # setup linking dependencies and flags
-target_link_libraries(${SAM_API_LIB} -lm -lcurl)
 target_link_libraries(export_config -lm)
+target_link_libraries(${SAM_API_LIB} -lm -lcurl)
+target_compile_definitions(${SAM_API_LIB} PUBLIC LK_USE_WXWIDGETS )
 
