@@ -164,7 +164,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -223,7 +223,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -282,7 +282,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -341,7 +341,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -400,7 +400,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -459,7 +459,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -518,7 +518,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -577,7 +577,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -636,7 +636,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -695,7 +695,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -754,7 +754,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -813,7 +813,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -913,7 +913,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -972,7 +972,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1031,7 +1031,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1082,7 +1082,7 @@ Physical Trough Collector Type 3
 2
 1
 3
-1.000000 0.050600 -0.176300 
+1 0.0506 -0.1763 
 
 DataArray
 csp_dtr_sca_ap_length_4
@@ -1097,7 +1097,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-8.500000
+8.5
 Numeric
 csp_dtr_sca_aperture_4
 3
@@ -1111,7 +1111,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-470.299988
+470.3
 Numeric
 csp_dtr_sca_ave_focal_len_4
 3
@@ -1125,7 +1125,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-1.800000
+1.8
 Numeric
 csp_dtr_sca_calc_costh_4
 3
@@ -1139,7 +1139,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.000000
+0
 Default
 csp_dtr_sca_calc_end_gain_4
 3
@@ -1153,7 +1153,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.000000
+0
 Default
 csp_dtr_sca_calc_end_loss_4
 3
@@ -1167,7 +1167,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.000000
+0
 Numeric
 csp_dtr_sca_calc_iam_4
 3
@@ -1181,7 +1181,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.000000
+0
 Numeric
 csp_dtr_sca_calc_latitude_4
 3
@@ -1195,7 +1195,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.000000
+0
 Default
 csp_dtr_sca_calc_sca_eff_4
 3
@@ -1209,7 +1209,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.000000
+0
 Numeric
 csp_dtr_sca_calc_theta_4
 3
@@ -1223,7 +1223,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.000000
+0
 Default
 csp_dtr_sca_calc_zenith_4
 3
@@ -1237,7 +1237,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.000000
+0
 Default
 csp_dtr_sca_clean_reflectivity_4
 3
@@ -1251,7 +1251,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.935000
+0.935
 Numeric
 csp_dtr_sca_general_error_4
 3
@@ -1265,7 +1265,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.990000
+0.99
 Numeric
 csp_dtr_sca_geometry_effects_4
 3
@@ -1279,7 +1279,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.980000
+0.98
 Numeric
 csp_dtr_sca_length_4
 3
@@ -1293,7 +1293,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-102.000000
+102
 Numeric
 csp_dtr_sca_mirror_dirt_4
 3
@@ -1307,7 +1307,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.950000
+0.95
 Numeric
 csp_dtr_sca_ncol_per_sca_4
 3
@@ -1321,7 +1321,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-12.000000
+12
 Numeric
 csp_dtr_sca_notify_text_4
 3
@@ -1348,7 +1348,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-1.000000
+1
 Numeric
 csp_dtr_sca_tracking_error_4
 3
@@ -1362,7 +1362,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-0.994000
+0.994
 Numeric
 csp_dtr_sca_w_profile_4
 3
@@ -1376,7 +1376,7 @@ Physical Trough Collector Type 4
 1
 1
 1
-5.000000
+5
 Numeric
 
 1826

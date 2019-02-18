@@ -24,7 +24,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -83,7 +83,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -142,7 +142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -224,7 +224,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -463,7 +463,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -522,7 +522,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -581,7 +581,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -640,7 +640,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -691,7 +691,7 @@ LF DSG System Design
 1
 1
 1
-950.000000
+950
 Default
 P_turb_des
 3
@@ -705,7 +705,7 @@ LF DSG System Design
 1
 1
 1
-70.000000
+70
 Numeric
 T_cold_ref
 3
@@ -719,7 +719,7 @@ LF DSG System Design
 1
 1
 1
-290.000000
+290
 Default
 T_hot
 3
@@ -733,7 +733,7 @@ LF DSG System Design
 1
 1
 1
-393.000000
+393
 Default
 adjust
 3
@@ -760,7 +760,7 @@ LF DSG System Design
 1
 1
 1
-0.010000
+0.01
 Numeric
 q_pb_des
 3
@@ -774,7 +774,7 @@ LF DSG System Design
 1
 1
 1
-100.000000
+100
 Default
 specified_q_dot_rec_des
 3
@@ -788,7 +788,7 @@ LF DSG System Design
 1
 1
 1
-0.000000
+0
 Default
 specified_solar_multiple
 3
@@ -802,7 +802,7 @@ LF DSG System Design
 1
 1
 1
-1.900000
+1.9
 Default
 system_capacity
 3
@@ -816,7 +816,7 @@ Phys Trough System Design
 1
 1
 1
-0.000000
+0
 Numeric
 x_b_des
 3
@@ -830,7 +830,7 @@ LF DSG System Design
 1
 1
 1
-0.500000
+0.5
 Numeric
 
 308

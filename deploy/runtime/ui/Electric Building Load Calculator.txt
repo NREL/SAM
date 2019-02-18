@@ -163,7 +163,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -251,7 +251,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -310,7 +310,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -369,7 +369,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -428,7 +428,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -487,7 +487,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -586,7 +586,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1096,7 +1096,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1155,7 +1155,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1214,7 +1214,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1273,7 +1273,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1332,7 +1332,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1391,7 +1391,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1450,7 +1450,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1509,7 +1509,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1568,7 +1568,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1627,7 +1627,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1686,7 +1686,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1745,7 +1745,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1804,7 +1804,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2935,7 +2935,7 @@ Residential Load Calculator
 2
 1
 1
-0.000000
+0
 Default
 Occ_Schedule
 3
@@ -2949,7 +2949,7 @@ Residential Load Calculator
 2
 1
 1
-1.000000
+1
 Default
 Occupants
 3
@@ -2963,7 +2963,7 @@ Residential Load Calculator
 1
 1
 1
-4.000000
+4
 Default
 Retrofits
 3
@@ -2977,7 +2977,7 @@ Residential Load Calculator
 1
 1
 1
-0.000000
+0
 Default
 Stories
 3
@@ -2991,7 +2991,7 @@ Residential Load Calculator
 1
 1
 1
-2.000000
+2
 Default
 TCool
 3
@@ -3005,7 +3005,7 @@ Residential Load Calculator
 1
 1
 1
-76.000000
+76
 Default
 TCoolSB
 3
@@ -3019,7 +3019,7 @@ Residential Load Calculator
 1
 1
 1
-76.000000
+76
 Default
 THeat
 3
@@ -3033,7 +3033,7 @@ Residential Load Calculator
 1
 1
 1
-68.000000
+68
 Default
 THeatSB
 3
@@ -3047,7 +3047,7 @@ Residential Load Calculator
 1
 1
 1
-68.000000
+68
 Default
 T_Sched
 3
@@ -3061,7 +3061,7 @@ Residential Load Calculator
 2
 1
 1
-1.000000
+1
 Default
 YrBuilt
 3
@@ -3075,7 +3075,7 @@ Residential Load Calculator
 1
 1
 1
-1980.000000
+1980
 Default
 en_belpe
 3
@@ -3089,7 +3089,7 @@ Residential Load Calculator
 1
 1
 1
-0.000000
+0
  
 en_cool
 3
@@ -3103,7 +3103,7 @@ Residential Load Calculator
 1
 1
 1
-1.000000
+1
 Default
 en_dish
 3
@@ -3117,7 +3117,7 @@ Residential Load Calculator
 1
 1
 1
-1.000000
+1
 Default
 en_dry
 3
@@ -3131,7 +3131,7 @@ Residential Load Calculator
 1
 1
 1
-1.000000
+1
 Default
 en_fridge
 3
@@ -3145,7 +3145,7 @@ Residential Load Calculator
 1
 1
 1
-1.000000
+1
 Default
 en_heat
 3
@@ -3159,7 +3159,7 @@ Residential Load Calculator
 1
 1
 1
-1.000000
+1
 Default
 en_mels
 3
@@ -3173,7 +3173,7 @@ Residential Load Calculator
 1
 1
 1
-1.000000
+1
 Default
 en_range
 3
@@ -3187,7 +3187,7 @@ Residential Load Calculator
 1
 1
 1
-1.000000
+1
 Default
 en_wash
 3
@@ -3201,7 +3201,7 @@ Residential Load Calculator
 1
 1
 1
-1.000000
+1
 Default
 escal_input_belpe
 3
@@ -3215,7 +3215,7 @@ Residential Load Calculator
 2
 1
 1
-0.000000
+0
 Default
 floor_area
 3
@@ -3229,7 +3229,7 @@ Residential Load Calculator
 1
 1
 1
-500.000000
+500
 Default
 load_1
 3
@@ -3243,7 +3243,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 load_10
 3
@@ -3257,7 +3257,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 load_11
 3
@@ -3271,7 +3271,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 load_12
 3
@@ -3285,7 +3285,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 load_2
 3
@@ -3299,7 +3299,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 load_3
 3
@@ -3313,7 +3313,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 load_4
 3
@@ -3327,7 +3327,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 load_5
 3
@@ -3341,7 +3341,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 load_6
 3
@@ -3355,7 +3355,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 load_7
 3
@@ -3369,7 +3369,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 load_8
 3
@@ -3383,7 +3383,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 load_9
 3
@@ -3397,7 +3397,7 @@ Residential Load Calculator
 1
 1
 1
-100.000000
+100
 Default
 
 592

@@ -1,66 +1,7 @@
 Battery Thermal
-999
-430
-14
-Numeric
-
-1
-16
-Name
-5
-6
-T_room
-X
-3
-195
-Y
-3
-159
-Width
-3
-36
-Height
-3
-24
-Value
-1
-0.000000
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
+1004
+542
+17
 GroupBox
 
 1
@@ -80,7 +21,7 @@ Width
 985
 Height
 3
-422
+533
 Caption
 5
 16
@@ -110,7 +51,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -169,7 +110,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -219,7 +160,7 @@ X
 492
 Y
 3
-309
+408
 Width
 3
 90
@@ -228,7 +169,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -271,6 +212,97 @@ Numeric
 16
 Name
 5
+28
+batt_room_temperature_single
+X
+3
+213
+Y
+3
+216
+Width
+3
+36
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+DataArray
+
+1
+9
+Name
+5
+28
+batt_room_temperature_vector
+X
+3
+213
+Y
+3
+246
+Width
+3
+90
+Height
+3
+24
+Mode
+3
+1
+Label
+5
+0
+Description
+5
+0
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
 29
 batt_specific_energy_per_mass
 X
@@ -278,7 +310,7 @@ X
 237
 Y
 3
-309
+408
 Width
 3
 90
@@ -287,7 +319,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -337,7 +369,7 @@ X
 237
 Y
 3
-336
+435
 Width
 3
 90
@@ -346,7 +378,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -383,6 +415,83 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+12
+Name
+5
+22
+batt_temperature_input
+X
+3
+54
+Y
+3
+159
+Width
+3
+225
+Height
+3
+24
+Caption
+5
+37
+Choose environment temperature option
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Choice
+
+1
+8
+Name
+5
+19
+batt_thermal_choice
+X
+3
+54
+Y
+3
+186
+Width
+3
+249
+Height
+3
+24
+Items
+6
+3
+Set to ambient temperature
+Enter single fixed temperature
+Enter time series temperature
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -396,7 +505,7 @@ X
 492
 Y
 3
-336
+435
 Width
 3
 90
@@ -405,7 +514,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -556,7 +665,7 @@ X
 27
 Y
 3
-282
+381
 Width
 3
 582
@@ -612,7 +721,7 @@ X
 36
 Y
 3
-372
+471
 Width
 3
 906
@@ -654,20 +763,20 @@ Name
 thermal_model_label5
 X
 3
-18
+24
 Y
 3
-186
+288
 Width
 3
 306
 Height
 3
-90
+87
 Caption
 5
-145
-Model assumes battery with specific heat Cp sits in room of fixed temperature.  Heat transfer to room proportional to heat transfer coefficient h
+156
+Model assumes battery with specific heat Cp sits in environment of specified temperature.  Heat transfer to room proportional to heat transfer coefficient h
 TextColour
 4
 0
@@ -690,21 +799,7 @@ AlignTop
 2
 1
 
-11
-T_room
-3
-1
-Room temperature
-C
-Battery
-0
-2
-1
-1
-1
-1
-20.000000
-Numeric
+14
 batt_Cp
 3
 1
@@ -717,7 +812,7 @@ Battery
 1
 1
 1
-4183.000000
+4183
 Numeric
 batt_h_to_ambient
 3
@@ -731,7 +826,7 @@ Battery
 1
 1
 1
-5.000000
+5
 Numeric
 batt_height
 3
@@ -745,7 +840,7 @@ Battery
 1
 1
 1
-0.425000
+0.425
 Numeric
 batt_length
 3
@@ -759,7 +854,7 @@ Battery
 1
 1
 1
-0.250000
+0.25
 Numeric
 batt_mass
 3
@@ -773,8 +868,52 @@ Battery
 1
 1
 1
-56.000000
+56
 Numeric
+batt_room_temperature_celsius
+3
+2
+ Calculated environment temperature
+C
+Battery
+0
+8
+1
+2
+1
+1
+0
+Default
+batt_room_temperature_single
+3
+1
+Environment temperature
+C
+Battery
+23
+Environment temperature
+2
+1
+1
+1
+1
+20
+Numeric
+batt_room_temperature_vector
+3
+2
+Environment temperature
+C
+Battery
+23
+Environment temperature
+0
+1
+2
+1
+1
+0
+DataArray
 batt_specific_energy_per_mass
 3
 1
@@ -787,7 +926,7 @@ Battery
 1
 1
 1
-150.000000
+150
 Numeric
 batt_specific_energy_per_volume
 3
@@ -801,8 +940,22 @@ Battery
 1
 1
 1
-300.000000
+300
 Numeric
+batt_thermal_choice
+3
+1
+Choose temperature option
+ 
+Battery
+0
+1
+1
+1
+1
+1
+0
+Choice
 batt_volume
 3
 1
@@ -815,7 +968,7 @@ Battery
 1
 1
 1
-0.001000
+0.001
 Numeric
 batt_width
 3
@@ -829,7 +982,7 @@ Battery
 1
 1
 1
-0.181000
+0.181
 Numeric
 cap_vs_temp
 3
@@ -843,14 +996,14 @@ Battery
 3
 4
 2
--15.000000 65.000000 
-0.000000 85.000000 
-25.000000 100.000000 
-40.000000 104.000000 
+-15 65 
+0 85 
+25 100 
+40 104 
 
 DataArray
 
-528
+1444
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -875,9 +1028,78 @@ equations{'batt_height'} = define()
 	// assume cube
 	return pow(${batt_volume},0.3333333);
 };
-595
+
+equations{'batt_room_temperature_celsius'} = define()
+{
+	if (technology() != 'Generic System')
+	{
+		wfread = ssc_create();
+		ssc_var(wfread, "file_name", ${solar_resource_file});
+		ssc_var(wfread, "header_only", 0);
+		
+		T = [];
+		if (!ssc_exec(wfread, "wfreader")){
+			T = ssc_var(wfread, "tdry");
+		}
+		else {
+			msgbox('failed');
+			return 0;
+		}
+	}
+	else {
+		len = 8760;
+		if (${spec_mode} == 1){
+			T = ${energy_output_array};
+			len = #T;
+		}
+		for (i = 0; i < len; i++){
+			T[i] = 20;
+		}
+	}
+	
+	// initialize to ambient
+	T_ambient = T;
+	
+	// Single value, scale to input size
+	if (${batt_thermal_choice} == 1){
+		T_room = ${batt_room_temperature_single};
+		for (i = 0; i < #T; i++){
+			T_ambient[i] = T_room;
+		}
+	}
+	// Input time series
+	if (${batt_thermal_choice} == 2){
+		T_room = ${batt_room_temperature_vector};
+		for (i = 0; i < #T_room; i++){
+			T_ambient[i] = T_room[i];
+		}
+	}
+	return T_ambient;
+};
+1151
 on_load{'Battery Thermal'} = define() {
 	on_change{'cap_vs_temp'}(); // update the plot
+	on_change{'batt_thermal_choice'}();
+	
+	show_thermal_options;
+};
+
+function show_thermal_options()
+{
+	tech = technology();
+
+	// there is no weather data in generic model
+	if (tech == 'Generic System' && ${batt_thermal_choice}==0){
+		${batt_thermal_choice} = 1;
+		msgbox('Generic system has no weather file, cannot set to ambient temperature');
+	}
+	enable('batt_room_temperature_single', ${batt_thermal_choice}==1);
+	enable('batt_room_temperature_vector', ${batt_thermal_choice}==2);
+}
+
+on_change{'batt_thermal_choice'} = define()
+{
+	show_thermal_options();
 };
 
 on_change{ 'cap_vs_temp' } = define() {

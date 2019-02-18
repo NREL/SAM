@@ -114,7 +114,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -173,7 +173,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -232,7 +232,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -291,7 +291,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -369,7 +369,7 @@ Battery
 1
 1
 1
-50.000000
+50
 Numeric
 batt_maximum_SOC
 3
@@ -383,7 +383,7 @@ Battery
 1
 1
 1
-95.000000
+95
 Default
 batt_minimum_SOC
 3
@@ -397,7 +397,7 @@ Battery
 1
 1
 1
-30.000000
+30
 Default
 batt_minimum_modetime
 3
@@ -411,7 +411,7 @@ Battery
 1
 1
 1
-10.000000
+10
 Default
 
 0

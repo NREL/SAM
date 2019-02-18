@@ -2,7 +2,7 @@
 *  Copyright 2017 Alliance for Sustainable Energy, LLC
 *
 *  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (ï¿½Allianceï¿½) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
+*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
 *  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
 *  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
 *  copies to the public, perform publicly and display publicly, and to permit others to do so.
@@ -26,8 +26,8 @@
 *  4. Redistribution of this software, without modification, must refer to the software by the same
 *  designation. Redistribution of a modified version of this software (i) may not refer to the modified
 *  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as ï¿½System Advisor Modelï¿½ or ï¿½SAMï¿½. Except
-*  to comply with the foregoing, the terms ï¿½System Advisor Modelï¿½, ï¿½SAMï¿½, or any confusingly similar
+*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
+*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
 *  designation may not be used to refer to any modified version of this software or any modified
 *  version of the underlying software originally provided by Alliance without the prior written consent
 *  of Alliance.
@@ -47,25 +47,25 @@
 *  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************************************/
 
-//#define __BETARELEASE__ 1  // comment this line out to disable beta option
-//#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
-//#define __BETAEXPIRE_DAY__ 31
-//#define __BETAEXPIRE_MONTH__ wxDateTime::Jul
-//#define __BETAEXPIRE_YEAR__ 2017
 
 // can be used to indicate specialized releases for particular testers, i.e. 'iscc-ge'
 // by default, should be NULL
 static const char *version_label = 0; //"iscc-ge"; 
 
 // API keys for SAM to use with developer.nrel.gov services.
-// request at https://developer.nrel.gov/signup/
-const char *sam_api_key = ""; // 40 character key
+const char *sam_api_key ="";
+
 
 // Google APIs:
-// geocoding at https://console.developers.google.com/apis/api/geocoding_backend/overview
 // login to developer api console at: https://code.google.com/apis/console
+// user name: aron.dobos@nrel.gov
+// passwd: 1H*****....******r
 static const char *GOOGLE_API_KEY = "";
 
 // Bing Map APIs:
 // login to account center at: https://www.bingmapsportal.com/
+// user name: aron.dobos@nrel.gov
+// passwd: 1H*****....******r
 static const char *BING_API_KEY = "";
+
+

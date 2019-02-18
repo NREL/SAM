@@ -51,7 +51,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -110,7 +110,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -208,7 +208,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -267,7 +267,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -326,7 +326,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -385,7 +385,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -444,7 +444,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -503,7 +503,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -562,7 +562,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -621,7 +621,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -680,7 +680,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -739,7 +739,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -798,7 +798,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -857,7 +857,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -916,7 +916,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -975,7 +975,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1034,7 +1034,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1093,7 +1093,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1175,7 +1175,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1234,7 +1234,7 @@ Height
 21
 Value
 1
-1.000000
+1
 Mode
 3
 0
@@ -1293,7 +1293,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1352,7 +1352,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1411,7 +1411,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1462,7 +1462,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-300.000000
+300
 Numeric
 T_tank_hot_inlet_min
 3
@@ -1476,7 +1476,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-400.000000
+400
 Default
 V_tank_hot_ini
 3
@@ -1490,7 +1490,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 cold_tank_Thtr
 3
@@ -1504,7 +1504,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-250.000000
+250
 Numeric
 combo_tes_htf_type
 3
@@ -1519,7 +1519,7 @@ Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm
 1
 1
 1
-3.000000
+3
 Choice
 csp.dtr.tes.estimated_heat_loss
 3
@@ -1533,7 +1533,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.tes.fluid_dens
 3
@@ -1547,7 +1547,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.tes.fluid_sph
 3
@@ -1561,7 +1561,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.tes.htf_calc_temp
 3
@@ -1575,7 +1575,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.tes.htf_max_opt_temp
 3
@@ -1589,7 +1589,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.tes.htf_min_opt_temp
 3
@@ -1603,7 +1603,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.tes.hx_derate
 3
@@ -1617,7 +1617,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.tes.min_fluid_volume
 3
@@ -1631,7 +1631,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.tes.tank_diameter
 3
@@ -1645,7 +1645,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 csp.dtr.tes.thermal_capacity
 3
@@ -1659,7 +1659,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 dt_cold
 3
@@ -1673,7 +1673,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-7.000000
+7
 Numeric
 dt_hot
 3
@@ -1687,7 +1687,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-5.000000
+5
 Numeric
 eta_tes_htr
 3
@@ -1701,7 +1701,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.980000
+0.98
 Numeric
 f_tc_cold
 3
@@ -1715,7 +1715,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-2.000000
+2
 Default
 h_tank
 3
@@ -1729,7 +1729,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-20.000000
+20
 Numeric
 h_tank_min
 3
@@ -1743,7 +1743,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-1.000000
+1
 Numeric
 has_hot_tank_bypass
 3
@@ -1757,7 +1757,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 hot_tank_Thtr
 3
@@ -1771,7 +1771,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-365.000000
+365
 Numeric
 hx_config
 3
@@ -1785,7 +1785,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-2.000000
+2
 Default
 is_hx
 3
@@ -1799,7 +1799,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 nodes
 3
@@ -1813,7 +1813,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-2000.000000
+2000
 Default
 store_fl_props
 3
@@ -1827,7 +1827,7 @@ Physical Trough Thermal Storage
 3
 1
 1
-1.000000
+1
 MaterialProperties
 store_fluid
 3
@@ -1841,7 +1841,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Default
 t_ch_out_max
 3
@@ -1855,7 +1855,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-500.000000
+500
 Default
 t_dis_out_min
 3
@@ -1869,7 +1869,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-500.000000
+500
 Default
 tank_max_heat
 3
@@ -1883,7 +1883,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 tank_pairs
 3
@@ -1897,7 +1897,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-1.000000
+1
 Numeric
 tanks_in_parallel
 3
@@ -1911,7 +1911,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-1.000000
+1
 Default
 tc_fill
 3
@@ -1925,7 +1925,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-7.000000
+7
 Default
 tc_void
 3
@@ -1939,7 +1939,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.250000
+0.25
 Default
 tes_type
 3
@@ -1953,7 +1953,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-1.000000
+1
 Default
 tshours
 3
@@ -1967,7 +1967,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-6.000000
+6
 Numeric
 u_tank
 3
@@ -1981,7 +1981,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.300000
+0.3
 Numeric
 vol_tank
 3
@@ -1995,7 +1995,7 @@ Physical Trough Thermal Storage
 1
 1
 1
-0.000000
+0
 Numeric
 
 3596

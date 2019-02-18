@@ -51,7 +51,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -110,7 +110,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -169,7 +169,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -240,7 +240,7 @@ Weibull Wind Speed
 1
 1
 1
-2.000000
+2
 Numeric
 weibull_reference_height
 3
@@ -254,7 +254,7 @@ Weibull Wind Speed
 1
 1
 1
-50.000000
+50
 Numeric
 weibull_wind_speed
 3
@@ -268,7 +268,7 @@ Weibull Wind Speed
 1
 1
 1
-7.250000
+7.25
 Numeric
 
 0

@@ -240,7 +240,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -299,7 +299,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -628,7 +628,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -687,7 +687,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -746,7 +746,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -805,7 +805,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -864,7 +864,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -923,7 +923,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -982,7 +982,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1041,7 +1041,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1100,7 +1100,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1264,7 +1264,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1346,7 +1346,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1405,7 +1405,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1464,7 +1464,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1523,7 +1523,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1611,7 +1611,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1670,7 +1670,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1729,7 +1729,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1788,7 +1788,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1847,7 +1847,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1906,7 +1906,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1965,7 +1965,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2024,7 +2024,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2083,7 +2083,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2142,7 +2142,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2238,7 +2238,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2297,7 +2297,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2356,7 +2356,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2415,7 +2415,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2474,7 +2474,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2533,7 +2533,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2592,7 +2592,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2651,7 +2651,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2710,7 +2710,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2769,7 +2769,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2828,7 +2828,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2887,7 +2887,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2966,7 +2966,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3025,7 +3025,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3076,7 +3076,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Default
 D_cpnt
 3
@@ -3090,7 +3090,7 @@ Physical Trough Solar Field
 3
 1
 1
-0.000000
+0
 Default
 FieldConfig
 3
@@ -3104,7 +3104,7 @@ FieldConfig
 1
 1
 1
-0.000000
+0
 Default
 Fluid
 3
@@ -3118,7 +3118,7 @@ Fluid
 1
 1
 1
-18.000000
+18
 Default
 HDR_rough
 3
@@ -3132,7 +3132,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000046
+4.6e-05
 Numeric
 I_bn_des
 3
@@ -3146,7 +3146,7 @@ Physical Trough Solar Field
 1
 1
 1
-950.000000
+950
 Numeric
 K_cpnt
 3
@@ -3160,7 +3160,7 @@ Physical Trough Solar Field
 3
 1
 1
-0.000000
+0
 Default
 L_cpnt
 3
@@ -3174,7 +3174,7 @@ Physical Trough Solar Field
 3
 1
 1
-0.000000
+0
 Default
 L_rnr_pb
 3
@@ -3188,7 +3188,7 @@ Physical Trough Solar Field
 1
 1
 1
-25.000000
+25
 Numeric
 L_rnr_per_xpan
 3
@@ -3202,7 +3202,7 @@ Physical Trough Solar Field
 1
 1
 1
-70.000000
+70
 Numeric
 L_xpan_hdr
 3
@@ -3216,7 +3216,7 @@ Physical Trough Solar Field
 1
 1
 1
-20.000000
+20
 Numeric
 L_xpan_rnr
 3
@@ -3230,7 +3230,7 @@ Physical Trough Solar Field
 1
 1
 1
-20.000000
+20
 Numeric
 Min_rnr_xpans
 3
@@ -3244,7 +3244,7 @@ Physical Trough Solar Field
 1
 1
 1
-1.000000
+1
 Numeric
 N_hdr_per_xpan
 3
@@ -3258,7 +3258,7 @@ Physical Trough Solar Field
 1
 1
 1
-2.000000
+2
 Numeric
 N_max_hdr_diams
 3
@@ -3272,7 +3272,7 @@ Physical Trough Solar Field
 1
 1
 1
-10.000000
+10
 Numeric
 Row_Distance
 3
@@ -3286,7 +3286,7 @@ Physical Trough Solar Field
 1
 1
 1
-15.000000
+15
 Numeric
 SolarAz
 3
@@ -3300,7 +3300,7 @@ Initial condition for solar azimuth angle
 1
 1
 1
-0.000000
+0
 Default
 T_fp
 3
@@ -3314,7 +3314,7 @@ Physical Trough Solar Field
 1
 1
 1
-50.000000
+50
 Numeric
 T_loop_in_des
 3
@@ -3328,7 +3328,7 @@ Physical Trough Solar Field
 1
 1
 1
-293.000000
+293
 Numeric
 T_loop_out
 3
@@ -3342,7 +3342,7 @@ Physical Trough Solar Field
 1
 1
 1
-391.000000
+391
 Numeric
 Type_cpnt
 3
@@ -3356,7 +3356,7 @@ Physical Trough Solar Field
 3
 1
 1
-0.000000
+0
 Default
 V_hdr_cold_max
 3
@@ -3370,7 +3370,7 @@ Physical Trough Solar Field
 1
 1
 1
-3.000000
+3
 Numeric
 V_hdr_cold_min
 3
@@ -3384,7 +3384,7 @@ Physical Trough Solar Field
 1
 1
 1
-2.000000
+2
 Numeric
 V_hdr_hot_max
 3
@@ -3398,7 +3398,7 @@ Physical Trough Solar Field
 1
 1
 1
-3.000000
+3
 Numeric
 V_hdr_hot_min
 3
@@ -3412,7 +3412,7 @@ Physical Trough Solar Field
 1
 1
 1
-2.000000
+2
 Numeric
 accept_init
 3
@@ -3426,7 +3426,7 @@ In acceptance testing mode - require steady-state startup
 1
 1
 1
-0.000000
+0
 Default
 accept_loc
 3
@@ -3440,7 +3440,7 @@ In acceptance testing mode - temperature sensor location (1=hx,2=loop)
 1
 1
 1
-1.000000
+1
 Default
 accept_mode
 3
@@ -3454,7 +3454,7 @@ Acceptance testing mode? (1=yes, 0=no)
 1
 1
 1
-0.000000
+0
 Default
 azimuth
 3
@@ -3468,7 +3468,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 calc_design_pipe_vals
 3
@@ -3482,7 +3482,7 @@ Physical Trough Solar Field
 1
 1
 1
-1.000000
+1
 Default
 combo_FieldConfig
 3
@@ -3497,7 +3497,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Choice
 combo_feather
 3
@@ -3512,7 +3512,7 @@ Sequenced|Simultaneous
 1
 1
 1
-1.000000
+1
 Choice
 combo_htf_type
 3
@@ -3527,7 +3527,7 @@ Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm
 1
 1
 1
-3.000000
+3
 Choice
 cspdtr_loop_hce_heat_loss
 3
@@ -3541,7 +3541,7 @@ Loop receiver heat loss
 1
 1
 1
-1.000000
+1
 Default
 custom_sf_pipe_sizes
 3
@@ -3555,7 +3555,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Default
 eta_pump
 3
@@ -3569,7 +3569,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.850000
+0.85
 Numeric
 field_fl_props
 3
@@ -3583,7 +3583,7 @@ field_fl_props
 3
 1
 9
-1.000000 7.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 
+1 7 0 0 0 0 0 0 0 
 
 Default
 field_htf_cp_avg
@@ -3598,7 +3598,7 @@ kJ/kg-K
 1
 1
 1
-0.000000
+0
 Default
 field_htf_max_operating_temp
 3
@@ -3612,7 +3612,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 field_htf_min_operating_temp
 3
@@ -3626,7 +3626,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 field_thermal_output
 3
@@ -3640,7 +3640,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 fixed_land_area
 3
@@ -3654,7 +3654,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 fluid_dens_inlet_temp
 3
@@ -3668,7 +3668,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Default
 fluid_dens_outlet_temp
 3
@@ -3682,7 +3682,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Default
 fthrctrl
 3
@@ -3696,7 +3696,7 @@ Defocusing strategy input
 1
 1
 1
-0.000000
+0
 Default
 fthrok
 3
@@ -3710,7 +3710,7 @@ Physical Trough Solar Field
 1
 1
 1
-1.000000
+1
 CheckBox
 loop_optical_efficiency
 3
@@ -3724,7 +3724,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 m_dot_htfmax
 3
@@ -3738,7 +3738,7 @@ Physical Trough Solar Field
 1
 1
 1
-12.000000
+12
 Numeric
 m_dot_htfmin
 3
@@ -3752,7 +3752,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.200000
+0.2
 Numeric
 max_field_flow_velocity
 3
@@ -3766,7 +3766,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 mc_bal_cold
 3
@@ -3780,7 +3780,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.200000
+0.2
 Numeric
 mc_bal_hot
 3
@@ -3794,7 +3794,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.200000
+0.2
 Numeric
 mc_bal_sca
 3
@@ -3808,7 +3808,7 @@ Physical Trough Solar Field
 1
 1
 1
-4.500000
+4.5
 Numeric
 min_field_flow_velocity
 3
@@ -3822,7 +3822,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 min_inner_diameter
 3
@@ -3836,7 +3836,7 @@ Minimum absorber inner diameter in loop
 1
 1
 1
-0.066000
+0.066
 Default
 nLoops
 3
@@ -3850,7 +3850,7 @@ Physical Trough Solar Field
 1
 1
 1
-8.000000
+8
 Numeric
 nSCA
 3
@@ -3864,7 +3864,7 @@ Number of assemblies per loop
 1
 1
 1
-8.000000
+8
 Default
 non_solar_field_land_area_multiplier
 3
@@ -3878,7 +3878,7 @@ Physical Trough Solar Field
 1
 1
 1
-1.400000
+1.4
 Numeric
 northsouth_field_sep
 3
@@ -3892,7 +3892,7 @@ Physical Trough Solar Field
 1
 1
 1
-20.000000
+20
 Numeric
 object 11
 3
@@ -3906,7 +3906,7 @@ object 11
 1
 1
 1
-0.000000
+0
 Numeric
 offset_xpan_hdr
 3
@@ -3920,7 +3920,7 @@ Physical Trough Solar Field
 1
 1
 1
-1.000000
+1
 Numeric
 radio_sm_or_area
 3
@@ -3934,7 +3934,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 RadioChoice
 required_number_of_loops_for_SM1
 3
@@ -3948,7 +3948,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 sf_hdr_diams
 3
@@ -3962,7 +3962,7 @@ Physical Trough Solar Field
 2
 1
 1
--1.000000
+-1
 Default
 sf_hdr_lengths
 3
@@ -3976,7 +3976,7 @@ Physical Trough Solar Field
 2
 1
 1
--1.000000
+-1
 Default
 sf_hdr_wallthicks
 3
@@ -3990,7 +3990,7 @@ Physical Trough Solar Field
 2
 1
 1
--1.000000
+-1
 Default
 sf_rnr_diams
 3
@@ -4004,7 +4004,7 @@ Physical Trough Solar Field
 2
 1
 1
--1.000000
+-1
 Default
 sf_rnr_lengths
 3
@@ -4018,7 +4018,7 @@ Physical Trough Solar Field
 2
 1
 1
--1.000000
+-1
 Default
 sf_rnr_wallthicks
 3
@@ -4032,7 +4032,7 @@ Physical Trough Solar Field
 2
 1
 1
--1.000000
+-1
 Default
 sf_type
 3
@@ -4046,7 +4046,7 @@ Solar field type, 1 = trough, 2 = tower
 1
 1
 1
-1.000000
+1
 Default
 single_loop_aperature
 3
@@ -4060,7 +4060,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 solar_mult
 3
@@ -4074,7 +4074,7 @@ Physical Trough Solar Field
 1
 1
 1
-2.000000
+2
 Numeric
 specified_solar_multiple
 3
@@ -4088,7 +4088,7 @@ Physical Trough Solar Field
 1
 1
 1
-2.000000
+2
 Numeric
 specified_total_aperture
 3
@@ -4102,7 +4102,7 @@ Physical Trough Solar Field
 1
 1
 1
-877000.000000
+877000
 Numeric
 theta_dep
 3
@@ -4116,7 +4116,7 @@ Physical Trough Solar Field
 1
 1
 1
-10.000000
+10
 Numeric
 theta_stow
 3
@@ -4130,7 +4130,7 @@ Physical Trough Solar Field
 1
 1
 1
-170.000000
+170
 Numeric
 tilt
 3
@@ -4144,7 +4144,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 total_aperture
 3
@@ -4158,7 +4158,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 total_land_area
 3
@@ -4172,7 +4172,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 total_loop_conversion_efficiency
 3
@@ -4186,7 +4186,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 total_required_aperture_for_SM1
 3
@@ -4200,7 +4200,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.000000
+0
 Numeric
 track_mode
 3
@@ -4214,7 +4214,7 @@ track_mode
 1
 1
 1
-1.000000
+1
 Default
 trough_loop_control
 3
@@ -4228,7 +4228,7 @@ Physical Trough Solar Field
 2
 1
 25
-8.000000 1.000000 1.000000 8.000000 1.000000 1.000000 7.000000 1.000000 1.000000 6.000000 1.000000 1.000000 5.000000 1.000000 1.000000 4.000000 1.000000 1.000000 3.000000 1.000000 1.000000 2.000000 1.000000 1.000000 1.000000 
+8 1 1 8 1 1 7 1 1 6 1 1 5 1 1 4 1 1 3 1 1 2 1 1 1 
 
 TroughLoop
 washing_frequency
@@ -4243,7 +4243,7 @@ Physical Trough Solar Field
 1
 1
 1
-63.000000
+63
 Numeric
 water_usage_per_wash
 3
@@ -4257,7 +4257,7 @@ Physical Trough Solar Field
 1
 1
 1
-0.275000
+0.275
 Numeric
 
 6756

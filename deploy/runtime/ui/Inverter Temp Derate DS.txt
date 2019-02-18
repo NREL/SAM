@@ -158,14 +158,14 @@ inv_tdc_ds
 3
 Inv Temp Derate Datasheet
  
-Inverter Temp Derate Curves
+Inverter Temperature
 0
 3
 1
 3
 1
 3
-1.000000 52.799999 -0.021000 
+1 52.8 -0.021 
 
 DataMatrix
 

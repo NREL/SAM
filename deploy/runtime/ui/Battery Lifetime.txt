@@ -51,7 +51,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -110,7 +110,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -169,7 +169,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -559,7 +559,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -786,7 +786,7 @@ Battery
 1
 1
 1
-0.002660
+0.00266
 Numeric
 batt_calendar_b
 3
@@ -800,7 +800,7 @@ Battery
 1
 1
 1
--7280.000000
+-7280
 Numeric
 batt_calendar_c
 3
@@ -814,7 +814,7 @@ Battery
 1
 1
 1
-930.000000
+930
 Numeric
 batt_calendar_choice
 3
@@ -828,7 +828,7 @@ Battery
 1
 1
 1
-0.000000
+0
 RadioChoice
 batt_calendar_lifetime_matrix
 3
@@ -842,9 +842,9 @@ Battery
 3
 3
 2
-0.000000 100.000000 
-3650.000000 80.000000 
-7300.000000 50.000000 
+0 100 
+3650 80 
+7300 50 
 
 DataMatrix
 batt_calendar_q0
@@ -859,7 +859,7 @@ Battery
 1
 1
 1
-1.020000
+1.02
 Numeric
 batt_lifetime_matrix
 3
@@ -873,20 +873,20 @@ Battery
 3
 9
 3
-30.000000 0.000000 100.000000 
-30.000000 1100.000000 90.000000 
-30.000000 1200.000000 50.000000 
-50.000000 0.000000 100.000000 
-50.000000 400.000000 90.000000 
-50.000000 500.000000 50.000000 
-100.000000 0.000000 100.000000 
-100.000000 100.000000 90.000000 
-100.000000 150.000000 50.000000 
+30 0 100 
+30 1100 90 
+30 1200 50 
+50 0 100 
+50 400 90 
+50 500 50 
+100 0 100 
+100 100 90 
+100 150 50 
 
 DataMatrix
 
 0
-5049
+5053
 on_load{'Battery Lifetime'} = define() {
 	on_change{'batt_lifetime_matrix'}(); 
 	on_change{'batt_calendar_choice'}();
@@ -983,7 +983,7 @@ function plot_calendar_life()
 		
 			T = T_vec[scenario];
 			SOC = SOC_vec[scenario]; 
-			k_cal = a * exp(b*(1/T - 1/296)) * exp(SOC/T - 1/296);
+			k_cal = a * exp(b*(1/T - 1/296)) * exp(c*(SOC/T - 1/296));
 			q = [];
 			t = [];
 		

@@ -120,7 +120,7 @@ Name
 Label1
 X
 3
-396
+402
 Y
 3
 288
@@ -411,7 +411,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -511,7 +511,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -607,7 +607,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -666,7 +666,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -725,7 +725,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -784,7 +784,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -843,7 +843,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -902,7 +902,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -961,7 +961,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1020,7 +1020,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1067,7 +1067,7 @@ Name
 inv_ds_pnt_suggested
 X
 3
-396
+402
 Y
 3
 333
@@ -1079,7 +1079,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1138,7 +1138,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1185,7 +1185,7 @@ Name
 inv_ds_pso_suggested
 X
 3
-396
+402
 Y
 3
 309
@@ -1197,7 +1197,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1256,7 +1256,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1315,7 +1315,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1411,16 +1411,16 @@ PV Inverter (Datasheet)
 1
 1
 1
-240.000000
+240
 Numeric
 inv_ds_data_filename
 3
 4
+Inverter data filename
  
- 
- 
+PV Inverter (Datasheet)
 0
-0
+1
 1
 4
 0
@@ -1428,7 +1428,7 @@ TextEntry
 inv_ds_eff
 3
 1
-Inverter Efficiency
+Inverter efficiency
 %
 PV Inverter (Datasheet)
 0
@@ -1437,7 +1437,7 @@ PV Inverter (Datasheet)
 1
 1
 1
-1.000000
+1
 Default
 inv_ds_eff_peak_or_nom
 3
@@ -1451,12 +1451,12 @@ PV Inverter (Datasheet)
 1
 1
 1
-96.000000
+96
 Numeric
 inv_ds_eff_type
 3
 1
-Use Weighted or Manufacturer Efficiency
+Use weighted or manufacturer efficiency
  
 PV Inverter (Datasheet)
 0
@@ -1465,7 +1465,7 @@ PV Inverter (Datasheet)
 1
 1
 1
-0.000000
+0
 RadioChoice
 inv_ds_eff_weighted
 3
@@ -1479,7 +1479,7 @@ PV Inverter (Datasheet)
 1
 1
 1
-96.000000
+96
 Numeric
 inv_ds_idcmax
 3
@@ -1493,7 +1493,7 @@ PV Inverter (Datasheet)
 1
 1
 1
-18.000000
+18
 Numeric
 inv_ds_mppt_hi
 3
@@ -1507,7 +1507,7 @@ PV Inverter (Datasheet)
 1
 1
 1
-480.000000
+480
 Numeric
 inv_ds_mppt_low
 3
@@ -1521,7 +1521,7 @@ PV Inverter (Datasheet)
 1
 1
 1
-250.000000
+250
 Numeric
 inv_ds_num_mppt
 3
@@ -1535,7 +1535,7 @@ PV Inverter (Datasheet)
 1
 1
 1
-1.000000
+1
 Numeric
 inv_ds_paco
 3
@@ -1549,7 +1549,7 @@ PV Inverter (Datasheet)
 1
 1
 1
-4000.000000
+4000
 Numeric
 inv_ds_pdco
 3
@@ -1563,7 +1563,7 @@ PV Inverter (Datasheet)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_ds_pnt
 3
@@ -1577,21 +1577,21 @@ PV Inverter (Datasheet)
 1
 1
 1
-1.000000
+1
 Numeric
 inv_ds_pnt_suggested
 3
 1
- 
+Suggested power consumption at night
 Wac
 PV Inverter (Datasheet)
 0
-8
+9
 1
 1
 1
 1
-0.000000
+0
 Numeric
 inv_ds_pso
 3
@@ -1605,21 +1605,21 @@ PV Inverter (Datasheet)
 1
 1
 1
-0.000000
+0
 Numeric
 inv_ds_pso_suggested
 3
 1
- 
+WSuggested power consumption during operation
 Wdc
 PV Inverter (Datasheet)
 0
-8
+9
 1
 1
 1
 1
-0.000000
+0
 Numeric
 inv_ds_vdcmax
 3
@@ -1633,7 +1633,7 @@ PV Inverter (Datasheet)
 1
 1
 1
-600.000000
+600
 Numeric
 inv_ds_vdco
 3
@@ -1647,7 +1647,7 @@ PV Inverter (Datasheet)
 1
 1
 1
-310.000000
+310
 Numeric
 
 413

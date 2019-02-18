@@ -51,7 +51,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -147,7 +147,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -206,7 +206,7 @@ Height
 24
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -302,7 +302,7 @@ Battery
 1
 1
 1
-99.000000
+99
 Numeric
 batt_ac_or_dc
 3
@@ -316,7 +316,7 @@ Battery
 1
 1
 1
-1.000000
+1
 RadioChoice
 batt_dc_ac_efficiency
 3
@@ -330,7 +330,7 @@ Battery
 1
 1
 1
-99.000000
+99
 Numeric
 batt_dc_dc_efficiency
 3
@@ -344,14 +344,15 @@ Battery
 1
 1
 1
-99.000000
+99
 Numeric
 
 0
-540
+577
 on_load{'Battery Configuration'} = define()
 {
-	if (technology() == 'Generic System')
+	tech = technology();
+	if (tech == 'Generic System' || tech == 'Fuel Cell')
 	{
 		value('batt_ac_or_dc',1);
 		enable('batt_ac_or_dc',0);

@@ -254,7 +254,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -313,7 +313,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -372,7 +372,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -431,7 +431,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -490,7 +490,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -549,7 +549,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -608,7 +608,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -667,7 +667,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -726,7 +726,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -785,7 +785,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -844,7 +844,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -903,7 +903,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -962,7 +962,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1021,7 +1021,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1080,7 +1080,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1139,7 +1139,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1198,7 +1198,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1257,7 +1257,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1316,7 +1316,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1375,7 +1375,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1434,7 +1434,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1493,7 +1493,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1552,7 +1552,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1739,7 +1739,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1803,7 +1803,7 @@ System Control
 1
 1
 1
-0.023000
+0.023
 Default
 aux_par_0
 3
@@ -1817,7 +1817,7 @@ System Control
 1
 1
 1
-0.483000
+0.483
 Default
 aux_par_1
 3
@@ -1831,7 +1831,7 @@ System Control
 1
 1
 1
-0.571000
+0.571
 Default
 aux_par_2
 3
@@ -1845,7 +1845,7 @@ System Control
 1
 1
 1
-0.000000
+0
 Default
 aux_par_f
 3
@@ -1859,7 +1859,7 @@ System Control
 1
 1
 1
-1.000000
+1
 Default
 bop_par
 3
@@ -1873,7 +1873,7 @@ System Control
 1
 1
 1
-0.025000
+0.025
 Default
 bop_par_0
 3
@@ -1887,7 +1887,7 @@ System Control
 1
 1
 1
-0.000000
+0
 Numeric
 bop_par_1
 3
@@ -1901,7 +1901,7 @@ System Control
 1
 1
 1
-0.483000
+0.483
 Default
 bop_par_2
 3
@@ -1915,7 +1915,7 @@ System Control
 1
 1
 1
-0.000000
+0
 Default
 bop_par_f
 3
@@ -1929,7 +1929,7 @@ System Control
 1
 1
 1
-1.000000
+1
 Default
 csp.pt.par.calc.aux
 3
@@ -1943,7 +1943,7 @@ System Control
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.par.calc.bop
 3
@@ -1957,7 +1957,7 @@ System Control
 1
 1
 1
-0.000000
+0
 Default
 disp_csu_cost
 3
@@ -1971,7 +1971,7 @@ System Control
 1
 1
 1
-10000.000000
+10000
 Default
 disp_frequency
 3
@@ -1985,7 +1985,7 @@ System Control
 1
 1
 1
-24.000000
+24
 Default
 disp_horizon
 3
@@ -1999,7 +1999,7 @@ System Control
 1
 1
 1
-48.000000
+48
 Default
 disp_max_iter
 3
@@ -2013,7 +2013,7 @@ System Control
 1
 1
 1
-10000.000000
+10000
 Default
 disp_mip_gap
 3
@@ -2027,7 +2027,7 @@ System Control
 1
 1
 1
-0.055000
+0.055
 Default
 disp_pen_delta_w
 3
@@ -2041,7 +2041,7 @@ System Control
 1
 1
 1
-0.100000
+0.1
 Default
 disp_rsu_cost
 3
@@ -2055,7 +2055,7 @@ System Control
 1
 1
 1
-952.000000
+952
 Default
 disp_time_weighting
 3
@@ -2069,7 +2069,7 @@ System Control
 1
 1
 1
-0.990000
+0.99
 Default
 disp_timeout
 3
@@ -2083,7 +2083,7 @@ System Control
 1
 1
 1
-5.000000
+5
 Default
 disp_wlim_max
 3
@@ -2097,7 +2097,7 @@ System Control
 1
 1
 1
-0.000000
+0
 Default
 disp_wlim_maxspec
 3
@@ -2111,7 +2111,7 @@ System Control
 1
 1
 1
-1.000000
+1
 Default
 dispatch_series
 3
@@ -2125,7 +2125,7 @@ System Control
 2
 1
 1
-0.000000
+0
 Default
 is_dispatch
 3
@@ -2139,7 +2139,7 @@ System Control
 1
 1
 1
-0.000000
+0
 Default
 is_dispatch_series
 3
@@ -2153,7 +2153,7 @@ System Control
 1
 1
 1
-0.000000
+0
 Default
 is_wlim_series
 3
@@ -2167,7 +2167,7 @@ System Control
 1
 1
 1
-1.000000
+1
 Default
 pb_fixed_par
 3
@@ -2181,7 +2181,7 @@ System Control
 1
 1
 1
-0.005500
+0.0055
 Default
 time_start
 3
@@ -2195,7 +2195,7 @@ System Control
 1
 1
 1
-0.000000
+0
 Default
 time_stop
 3
@@ -2209,7 +2209,7 @@ System Control
 1
 1
 1
-31536000.000000
+3.1536e+07
 Default
 wlim_series
 3
@@ -2223,7 +2223,7 @@ System Control
 2
 1
 1
-0.000000
+0
 Default
 
 626

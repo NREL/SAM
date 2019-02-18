@@ -116,7 +116,7 @@ void ExcelExchange::Write( wxOutputStream &_O )
 	{
 		out.WriteString( Vars[i].Name );
 		out.WriteString( Vars[i].Range );
-		out.Write8( Vars[i].Type );
+		out.Write8( (wxUint8)Vars[i].Type );
 	}
 	
 	out.Write32( Summary.size() );

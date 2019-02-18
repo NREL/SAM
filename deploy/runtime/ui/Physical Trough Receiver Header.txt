@@ -157,7 +157,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 AnnulusGas
 3
@@ -171,7 +171,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 D_2
 3
@@ -185,7 +185,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 D_3
 3
@@ -199,7 +199,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 D_4
 3
@@ -213,7 +213,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 D_5
 3
@@ -227,7 +227,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 D_p
 3
@@ -241,7 +241,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 Design_loss
 3
@@ -255,7 +255,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 Dirt_HCE
 3
@@ -269,7 +269,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 EPSILON_4
 3
@@ -283,7 +283,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 EPSILON_5
 3
@@ -297,7 +297,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 Flow_type
 3
@@ -311,7 +311,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 GlazingIntactIn
 3
@@ -325,7 +325,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 HCE_FieldFrac
 3
@@ -339,7 +339,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 P_a
 3
@@ -353,7 +353,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 Rough
 3
@@ -367,7 +367,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 SCADefocusArray
 3
@@ -381,7 +381,7 @@ Physical Trough Receiver Library
 2
 1
 1
-0.000000
+0
 Default
 SCAInfoArray
 3
@@ -395,7 +395,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 Shadowing
 3
@@ -409,7 +409,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 Tau_envelope
 3
@@ -423,7 +423,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 alpha_abs
 3
@@ -437,7 +437,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 alpha_env
 3
@@ -451,7 +451,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 lib_AbsorberMaterial
 3
@@ -465,7 +465,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_AnnulusGas_1
 3
@@ -479,7 +479,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_AnnulusGas_2
 3
@@ -493,7 +493,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_AnnulusGas_3
 3
@@ -507,7 +507,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_D_2
 3
@@ -521,7 +521,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_D_3
 3
@@ -535,7 +535,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_D_4
 3
@@ -549,7 +549,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_D_5
 3
@@ -563,7 +563,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_D_p
 3
@@ -577,7 +577,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Design_loss_1
 3
@@ -591,7 +591,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Design_loss_2
 3
@@ -605,7 +605,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Design_loss_3
 3
@@ -619,7 +619,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Dirt_HCE_1
 3
@@ -633,7 +633,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Dirt_HCE_2
 3
@@ -647,7 +647,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Dirt_HCE_3
 3
@@ -661,7 +661,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Flow_type
 3
@@ -675,7 +675,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_GlazingIntactIn_1
 3
@@ -689,7 +689,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_GlazingIntactIn_2
 3
@@ -703,7 +703,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_GlazingIntactIn_3
 3
@@ -717,7 +717,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_P_a_1
 3
@@ -731,7 +731,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_P_a_2
 3
@@ -745,7 +745,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_P_a_3
 3
@@ -759,7 +759,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Rough
 3
@@ -773,7 +773,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Shadowing_1
 3
@@ -787,7 +787,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Shadowing_2
 3
@@ -801,7 +801,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Shadowing_3
 3
@@ -815,7 +815,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Tau_envelope_1
 3
@@ -829,7 +829,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Tau_envelope_2
 3
@@ -843,7 +843,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_Tau_envelope_3
 3
@@ -857,7 +857,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_alpha_abs_1
 3
@@ -871,7 +871,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_alpha_abs_2
 3
@@ -885,7 +885,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_alpha_abs_3
 3
@@ -899,7 +899,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_alpha_env_1
 3
@@ -913,7 +913,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_alpha_env_2
 3
@@ -927,7 +927,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_alpha_env_3
 3
@@ -941,7 +941,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_epsilon_3_1
 3
@@ -955,7 +955,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 lib_epsilon_3_2
 3
@@ -969,7 +969,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 lib_epsilon_3_3
 3
@@ -983,7 +983,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 lib_epsilon_4_1
 3
@@ -997,7 +997,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_epsilon_4_2
 3
@@ -1011,7 +1011,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_epsilon_4_3
 3
@@ -1025,7 +1025,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 lib_receiver_description
 3
@@ -1052,7 +1052,7 @@ Physical Trough Receiver Library
 1
 1
 1
-4.000000
+4
 Default
 nHCEt
 3
@@ -1066,7 +1066,7 @@ Physical Trough Receiver Library
 1
 1
 1
-4.000000
+4
 Default
 receiver_library
 3
@@ -1107,7 +1107,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_AnnulusGas_1
 3
@@ -1121,7 +1121,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_AnnulusGas_2
 3
@@ -1135,7 +1135,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_AnnulusGas_3
 3
@@ -1149,7 +1149,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_D_2
 3
@@ -1163,7 +1163,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_D_3
 3
@@ -1177,7 +1177,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_D_4
 3
@@ -1191,7 +1191,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_D_5
 3
@@ -1205,7 +1205,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_D_p
 3
@@ -1219,7 +1219,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Design_loss_1
 3
@@ -1233,7 +1233,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Design_loss_2
 3
@@ -1247,7 +1247,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Design_loss_3
 3
@@ -1261,7 +1261,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Dirt_HCE_1
 3
@@ -1275,7 +1275,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Dirt_HCE_2
 3
@@ -1289,7 +1289,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Dirt_HCE_3
 3
@@ -1303,7 +1303,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Flow_type
 3
@@ -1317,7 +1317,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_GlazingIntactIn_1
 3
@@ -1331,7 +1331,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_GlazingIntactIn_2
 3
@@ -1345,7 +1345,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_GlazingIntactIn_3
 3
@@ -1359,7 +1359,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_P_a_1
 3
@@ -1373,7 +1373,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_P_a_2
 3
@@ -1387,7 +1387,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_P_a_3
 3
@@ -1401,7 +1401,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Rough
 3
@@ -1415,7 +1415,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Shadowing_1
 3
@@ -1429,7 +1429,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Shadowing_2
 3
@@ -1443,7 +1443,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Shadowing_3
 3
@@ -1457,7 +1457,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Tau_envelope_1
 3
@@ -1471,7 +1471,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Tau_envelope_2
 3
@@ -1485,7 +1485,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_Tau_envelope_3
 3
@@ -1499,7 +1499,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_alpha_abs_1
 3
@@ -1513,7 +1513,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_alpha_abs_2
 3
@@ -1527,7 +1527,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_alpha_abs_3
 3
@@ -1541,7 +1541,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_alpha_env_1
 3
@@ -1555,7 +1555,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_alpha_env_2
 3
@@ -1569,7 +1569,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_alpha_env_3
 3
@@ -1583,7 +1583,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_epsilon_3_1
 3
@@ -1597,7 +1597,7 @@ Physical Trough Receiver Library
 3
 1
 1
-1.000000
+1
 Default
 ui_epsilon_3_2
 3
@@ -1611,7 +1611,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 ui_epsilon_3_3
 3
@@ -1625,7 +1625,7 @@ Physical Trough Receiver Library
 3
 1
 1
-0.000000
+0
 Default
 ui_epsilon_4_1
 3
@@ -1639,7 +1639,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_epsilon_4_2
 3
@@ -1653,7 +1653,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_epsilon_4_3
 3
@@ -1667,7 +1667,7 @@ Physical Trough Receiver Library
 1
 1
 1
-0.000000
+0
 Default
 ui_receiver_description
 3

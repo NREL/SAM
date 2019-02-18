@@ -1341,6 +1341,45 @@ void SelectVariableDialog::ShowAllItems()
 	tree->ScrollTo(this->m_root);
 }
 
+wxString SelectVariableDialog::PrettyPrintLabel(const wxString name, const VarInfo vi) {
+	return PrettyPrintLabel(name, vi.Label, wxString::Format(wxT("%i"), vi.Type), vi.Units, vi.Group, false);
+}
+
+wxString SelectVariableDialog::PrettyPrintLabel(const wxString name, const wxString label, const wxString type, 
+												const wxString units, const wxString group, bool ssc_variable) {
+	wxString ppLabel = label;
+	wxString un = units;
+	un = un.Trim();
+	ppLabel += " {'" + name + "'}";
+	if (!un.IsEmpty()) ppLabel += " (" + un + ")";
+	int ty = wxAtoi(type);
+	wxString sty = "";
+	if (ssc_variable)
+	{
+		if (ty == SSC_NUMBER) sty = "number";
+		else if (ty == SSC_ARRAY) sty = "array";
+		else if (ty == SSC_MATRIX) sty = "matrix";
+		else if (ty == SSC_STRING) sty = "string";
+		else if (ty == SSC_TABLE) sty = "table";
+	}
+	else
+	{
+		if (ty == VV_NUMBER) sty = "number";
+		else if (ty == VV_ARRAY) sty = "array";
+		else if (ty == VV_MATRIX) sty = "matrix";
+		else if (ty == VV_STRING) sty = "string";
+		else if (ty == VV_TABLE) sty = "table";
+	}
+	if (sty != "")
+		ppLabel += " [" + sty + "]";
+
+	if (!group.IsEmpty())
+		ppLabel = group + "/" + ppLabel;
+	else
+		ppLabel = "Other/" + ppLabel;
+	return ppLabel;
+}
+
 void SelectVariableDialog::SetItems(const wxArrayString &names, const wxArrayString &labels)
 {
 	if ( names.Count() != labels.Count() ) return;
@@ -1533,28 +1572,13 @@ void VarSelectDialog::SetConfiguration( const wxString &tech, const wxString &fi
 			++it )
 		{
 			names.Add( it->first );
-			wxString label( it->second->Label );
-			label += " {'" + it->first + "'}";
-			if ( !it->second->Units.IsEmpty() ) label += " (" + it->second->Units + ")";
-			int ty = it->second->Type;
-			wxString sty;
-			if (ty == VV_NUMBER ) sty = "number";
-			else if ( ty == VV_ARRAY ) sty = "array";
-			else if ( ty == VV_MATRIX ) sty = "matrix";
-			else if ( ty == VV_STRING ) sty = "string";
-			else if ( ty == VV_TABLE ) sty = "table";
-			label += " [" + sty + "]";
-
-			if ( !it->second->Group.IsEmpty() )
-				label = it->second->Group + "/" + label;
-			else
-				label = "Other/" + label;
+			wxString label = PrettyPrintLabel(it->first, *(it->second));
 
 			labels.Add( label );
 		}
 
 		wxArrayString output_names, output_labels, output_units, output_groups;
-		Simulation::ListAllOutputs( ci, &output_names, &output_labels, &output_units, &output_groups, false );
+		Simulation::ListAllOutputs( ci, &output_names, &output_labels, &output_units, &output_groups, nullptr, false );
 		for( size_t i=0;i<output_names.size();i++ )
 		{
 			names.Add( output_names[i] );

@@ -375,7 +375,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -435,7 +435,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -527,7 +527,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -587,7 +587,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -647,7 +647,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -707,7 +707,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -767,7 +767,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -827,7 +827,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -887,7 +887,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -947,7 +947,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1052,7 +1052,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1111,7 +1111,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1170,7 +1170,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1229,7 +1229,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1289,7 +1289,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1349,7 +1349,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1409,7 +1409,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1469,7 +1469,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1529,7 +1529,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1589,7 +1589,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1649,7 +1649,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1740,7 +1740,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1800,7 +1800,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1860,7 +1860,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1912,7 +1912,7 @@ SHW Capital Costs
 1
 1
 1
-4000.000000
+4000
 Numeric
 collector
 3
@@ -1926,7 +1926,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 collector_cost_units
 3
@@ -1941,7 +1941,7 @@ $/m2|$/W|$/unit
 1
 1
 1
-0.000000
+0
 Choice
 contingency
 3
@@ -1955,7 +1955,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 contingency_percent
 3
@@ -1969,7 +1969,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 epc_fixed
 3
@@ -1983,7 +1983,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 epc_nonfixed
 3
@@ -1997,7 +1997,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 epc_percent
 3
@@ -2011,7 +2011,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 epc_total
 3
@@ -2025,7 +2025,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 installation
 3
@@ -2039,7 +2039,7 @@ SHW Capital Costs
 1
 1
 1
-1000.000000
+1000
 Numeric
 installed_per_capacity
 3
@@ -2053,7 +2053,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 num_collectors
 3
@@ -2068,7 +2068,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 per_collector
 3
@@ -2082,7 +2082,7 @@ SHW Capital Costs
 1
 1
 1
-6.000000
+6
 Numeric
 per_storage
 3
@@ -2096,7 +2096,7 @@ SHW Capital Costs
 1
 1
 1
-990.000000
+990
 Numeric
 plm_fixed
 3
@@ -2110,7 +2110,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 plm_nonfixed
 3
@@ -2124,7 +2124,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 plm_percent
 3
@@ -2138,7 +2138,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 plm_total
 3
@@ -2152,7 +2152,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 sales_tax_percent
 3
@@ -2166,7 +2166,7 @@ SHW Capital Costs
 1
 1
 1
-100.000000
+100
 Numeric
 sales_tax_total
 3
@@ -2180,7 +2180,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 sales_tax_value
 3
@@ -2194,7 +2194,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 storage
 3
@@ -2208,7 +2208,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 storage_cost_units
 3
@@ -2223,35 +2223,35 @@ $/m3|$/unit
 1
 1
 1
-1.000000
+1
 Choice
 system_use_lifetime_output
 3
 1
  
  
- 
+SHW Capital Costs
 0
 8
 1
 1
 1
 1
-0.000000
+0
 Default
 system_use_recapitalization
 3
 1
  
  
- 
+SHW Capital Costs
 0
 8
 1
 1
 1
 1
-0.000000
+0
 Default
 total_direct
 3
@@ -2265,7 +2265,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 total_indirect
 3
@@ -2279,7 +2279,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 total_installed_cost
 3
@@ -2293,7 +2293,7 @@ SHW Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 
 1574

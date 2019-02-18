@@ -1,0 +1,42 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+// Given the full path and name of a weather file, these two functions set the 
+// solar resource library to the file. The robust function checks to make sure
+// the file is in the library. The lite function does not check the file.
+//
+// Developed using SAM 2018.11.11
+//
+////////////////////////////////////////////////////////////////////////////////
+
+function set_library_robust ( f )
+{
+
+	f = lower( f );
+	if ( strpos( f, '.' ) < 0 ) { return false; }
+	key = file_only( f );
+	ext = ext_only( f );
+	if ( ext == 'csv' || ext == 'epw' || ext == 'tm2' )
+	{ key = replace( key, '.' + ext , '' ); }
+	else { return false; }
+	
+	items = library( 'SolarResourceData' );
+	item_pos = items ?@ key;
+	if ( item_pos > -1 ) 
+	{
+		set( 'solar_resource', key ); 
+		return true;
+	}
+	else { return false; } 
+
+}
+
+function set_library_lite ( f )
+{
+	key = file_only( f );
+	key = replace( key, '.' + ext_only( f ), '' );
+	set( 'solar_resource', key ); 
+}
+
+test = 'c/SAM/2018.11.11/deploy/solar_resource/phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv';
+outln( set_library_lite( test ) );
+outln( set_library_robust( test ) );

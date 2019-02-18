@@ -78,7 +78,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -137,7 +137,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -241,7 +241,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -300,7 +300,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -432,7 +432,7 @@ PPA Price and IRR
 1
 1
 1
-10.000000
+10
 Numeric
 flip_target_year
 3
@@ -446,7 +446,7 @@ PPA Price and IRR
 1
 1
 1
-10.000000
+10
 Numeric
 ppa_escalation
 3
@@ -460,7 +460,7 @@ PPA Price and IRR
 1
 1
 1
-1.000000
+1
 Numeric
 ppa_price_input
 3
@@ -474,7 +474,7 @@ PPA Price and IRR
 1
 1
 1
-0.000000
+0
 Numeric
 ppa_soln_mode
 3
@@ -489,7 +489,7 @@ Specify tax investor IRR target|Specify PPA price
 1
 1
 1
-0.000000
+0
 Default
 solution_mode_message
 3

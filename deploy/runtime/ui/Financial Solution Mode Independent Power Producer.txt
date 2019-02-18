@@ -324,7 +324,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -413,7 +413,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -472,7 +472,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -621,7 +621,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -709,7 +709,7 @@ PPA Price and IRR
 2
 1
 1
-0.150000
+0.15
 SchedNumeric
 bid_price_esc
 3
@@ -723,7 +723,7 @@ PPA Price and IRR
 1
 1
 1
-1.000000
+1
 Numeric
 min_dscr_required
 3
@@ -737,7 +737,7 @@ PPA Price and IRR
 1
 1
 1
-1.000000
+1
 CheckBox
 min_dscr_target
 3
@@ -751,7 +751,7 @@ PPA Price and IRR
 1
 1
 1
-1.400000
+1.4
 Numeric
 min_irr_target
 3
@@ -765,7 +765,7 @@ PPA Price and IRR
 1
 1
 1
-15.000000
+15
 Numeric
 optimize_lcoe_wrt_debt_fraction
 3
@@ -779,7 +779,7 @@ PPA Price and IRR
 1
 1
 1
-0.000000
+0
 CheckBox
 optimize_lcoe_wrt_ppa_escalation
 3
@@ -793,7 +793,7 @@ PPA Price and IRR
 1
 1
 1
-0.000000
+0
 CheckBox
 positive_cashflow_required
 3
@@ -807,7 +807,7 @@ PPA Price and IRR
 1
 1
 1
-1.000000
+1
 CheckBox
 ppa_escalation
 3
@@ -821,7 +821,7 @@ PPA Price and IRR
 1
 1
 1
-1.000000
+1
 Numeric
 soln_mode
 3
@@ -836,7 +836,7 @@ Specify IRR target|Specify PPA price
 1
 1
 1
-0.000000
+0
 RadioChoice
 
 0

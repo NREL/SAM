@@ -1,7 +1,7 @@
 Battery Dispatch Behind the Meter
-1001
-285
-15
+1005
+311
+16
 Label
 
 1
@@ -12,13 +12,13 @@ Name
 BatteryChargeOptions
 X
 3
-39
+33
 Y
 3
 183
 Width
 3
-219
+264
 Height
 3
 36
@@ -66,7 +66,7 @@ Width
 985
 Height
 3
-274
+298
 Caption
 5
 27
@@ -186,6 +186,36 @@ Caption
 5
 30
 Battery can charge from system
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+8
+Name
+5
+37
+batt_dispatch_auto_can_fuelcellcharge
+X
+3
+75
+Y
+3
+273
+Width
+3
+258
+Height
+3
+24
+Caption
+5
+33
+Battery can charge from fuel cell
 State
 2
 1
@@ -338,8 +368,8 @@ Colour
 255
 Caption
 5
-12
-Grid options
+14
+Charge options
 Bold
 2
 1
@@ -517,7 +547,7 @@ Bold
 2
 1
 
-7
+8
 batt_custom_dispatch
 3
 2
@@ -530,7 +560,7 @@ Battery
 2
 1
 1
-0.000000
+0
 DataArray
 batt_dispatch_auto_can_charge
 3
@@ -544,7 +574,21 @@ Battery
 1
 1
 1
-1.000000
+1
+CheckBox
+batt_dispatch_auto_can_fuelcellcharge
+3
+1
+Battery can charge from fuel cell
+ 
+Battery
+0
+3
+1
+1
+1
+1
+0
 CheckBox
 batt_dispatch_auto_can_gridcharge
 3
@@ -558,7 +602,7 @@ Battery
 1
 1
 1
-1.000000
+1
 CheckBox
 batt_dispatch_choice
 3
@@ -573,7 +617,7 @@ Peak shaving: 1-day look ahead|Peak shaving: 1-day look behind|Automated grid po
 1
 1
 1
-3.000000
+3
 RadioChoice
 batt_target_choice
 3
@@ -587,7 +631,7 @@ Battery
 1
 1
 1
-0.000000
+0
 Choice
 batt_target_power
 3
@@ -601,7 +645,7 @@ Battery
 2
 1
 1
-15.000000
+15
 DataArray
 batt_target_power_monthly
 3
@@ -615,17 +659,20 @@ Battery
 2
 1
 1
-0.000000
+0
 MonthlyFactor
 
 0
-1093
+1172
 on_load{'Battery Dispatch Behind the Meter'}=define()
 {	
 	toggle_dispatch();
 		
 	on_change{'batt_dispatch_choice'};
 	on_change{'batt_target_choice'};
+	
+	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
+	
 };
 
 on_change{'batt_dispatch_choice'}=define(){toggle_dispatch();};

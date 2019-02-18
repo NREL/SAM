@@ -1,6 +1,6 @@
 PV Capital Costs
-947
-892
+828
+732
 103
 GroupBox
 
@@ -690,7 +690,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -749,7 +749,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -808,7 +808,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -867,7 +867,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -926,7 +926,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -986,7 +986,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1045,7 +1045,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1104,7 +1104,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1163,7 +1163,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1223,7 +1223,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1283,7 +1283,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1342,7 +1342,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1401,7 +1401,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1460,7 +1460,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1519,7 +1519,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1579,7 +1579,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1638,7 +1638,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1697,7 +1697,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1756,7 +1756,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1816,7 +1816,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1875,7 +1875,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1934,7 +1934,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1993,7 +1993,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2053,7 +2053,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2112,7 +2112,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2171,7 +2171,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2230,7 +2230,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2290,7 +2290,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2383,7 +2383,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -2442,7 +2442,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2501,7 +2501,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2561,7 +2561,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2620,7 +2620,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2679,7 +2679,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2738,7 +2738,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2799,7 +2799,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2858,7 +2858,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2917,7 +2917,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -2977,7 +2977,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3036,7 +3036,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3097,7 +3097,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3156,7 +3156,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3215,7 +3215,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3576,7 +3576,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -3635,7 +3635,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3694,7 +3694,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -3754,7 +3754,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4611,7 +4611,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4670,7 +4670,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4729,7 +4729,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4788,7 +4788,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4847,7 +4847,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4906,7 +4906,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -4966,7 +4966,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5025,7 +5025,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5085,7 +5085,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5144,7 +5144,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5204,7 +5204,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5264,7 +5264,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5324,7 +5324,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -5376,7 +5376,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 battery_per_kW
 3
@@ -5390,7 +5390,7 @@ Capital Costs
 1
 1
 1
-600.000000
+600
 Numeric
 battery_per_kWh
 3
@@ -5404,7 +5404,7 @@ Capital Costs
 1
 1
 1
-600.000000
+600
 Numeric
 battery_power
 3
@@ -5418,7 +5418,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 battery_total
 3
@@ -5432,7 +5432,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_equip_fixed
 3
@@ -5446,7 +5446,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_equip_perarea
 3
@@ -5460,7 +5460,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_equip_perwatt
 3
@@ -5474,7 +5474,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 bos_equip_total
 3
@@ -5488,7 +5488,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 contingency
 3
@@ -5502,7 +5502,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 contingency_percent
 3
@@ -5516,7 +5516,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 engr_fixed
 3
@@ -5530,7 +5530,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 engr_per_watt
 3
@@ -5544,7 +5544,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 engr_percent
 3
@@ -5558,7 +5558,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 engr_total
 3
@@ -5572,7 +5572,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 grid_fixed
 3
@@ -5586,7 +5586,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 grid_per_watt
 3
@@ -5600,7 +5600,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 grid_percent
 3
@@ -5614,7 +5614,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 grid_total
 3
@@ -5628,7 +5628,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_labor_fixed
 3
@@ -5642,7 +5642,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_labor_perarea
 3
@@ -5656,7 +5656,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_labor_perwatt
 3
@@ -5670,7 +5670,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_labor_total
 3
@@ -5684,7 +5684,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_margin_fixed
 3
@@ -5698,7 +5698,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_margin_perarea
 3
@@ -5712,7 +5712,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_margin_perwatt
 3
@@ -5726,7 +5726,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 install_margin_total
 3
@@ -5740,7 +5740,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 installed_per_capacity
 3
@@ -5754,7 +5754,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 inverter_costunits
 3
@@ -5769,7 +5769,7 @@ $/Wac|$/Wdc|$/Unit
 1
 1
 1
-0.000000
+0
 Choice
 inverter_num_units
 3
@@ -5783,7 +5783,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 inverter_power
 3
@@ -5797,7 +5797,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 inverter_total
 3
@@ -5811,7 +5811,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 inverterarray_power
 3
@@ -5825,7 +5825,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_area_value
 3
@@ -5839,7 +5839,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_fixed
 3
@@ -5853,7 +5853,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_per_acre
 3
@@ -5867,7 +5867,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_per_watt
 3
@@ -5881,7 +5881,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_percent
 3
@@ -5895,7 +5895,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 land_total
 3
@@ -5909,7 +5909,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_fixed
 3
@@ -5923,7 +5923,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_per_acre
 3
@@ -5937,7 +5937,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_per_watt
 3
@@ -5951,7 +5951,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_percent
 3
@@ -5965,7 +5965,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 landprep_total
 3
@@ -5979,7 +5979,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 module_costunits
 3
@@ -5994,7 +5994,7 @@ $/Wdc|$/Unit
 1
 1
 1
-0.000000
+0
 Choice
 module_num_units
 3
@@ -6008,7 +6008,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 module_power
 3
@@ -6022,7 +6022,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 module_total
 3
@@ -6036,7 +6036,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 modulearray_area
 3
@@ -6050,7 +6050,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 modulearray_power
 3
@@ -6064,7 +6064,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 per_inverter
 3
@@ -6078,7 +6078,7 @@ Capital Costs
 1
 1
 1
-0.710000
+0.71
 Numeric
 per_module
 3
@@ -6092,7 +6092,7 @@ Capital Costs
 1
 1
 1
-4.840000
+4.84
 Numeric
 permitting_fixed
 3
@@ -6106,7 +6106,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 permitting_per_watt
 3
@@ -6120,7 +6120,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 permitting_percent
 3
@@ -6134,7 +6134,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 permitting_total
 3
@@ -6148,7 +6148,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 sales_tax_percent
 3
@@ -6162,7 +6162,7 @@ Capital Costs
 1
 1
 1
-100.000000
+100
 Numeric
 sales_tax_total
 3
@@ -6176,7 +6176,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 sales_tax_value
 3
@@ -6190,7 +6190,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 subtotal_direct
 3
@@ -6204,7 +6204,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 system_use_recapitalization
 3
@@ -6218,7 +6218,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Default
 total_direct_cost
 3
@@ -6232,7 +6232,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 total_indirect_cost
 3
@@ -6246,7 +6246,7 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 total_installed_cost
 3
@@ -6260,10 +6260,10 @@ Capital Costs
 1
 1
 1
-0.000000
+0
 Numeric
 
-5915
+5937
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6300,7 +6300,8 @@ equations{ 'contingency' } = define() {
 				+${inverter_total}
 				+${bos_equip_total}
 				+${install_labor_total} 
-				+${install_margin_total} );
+				+${install_margin_total}
+				+${battery_total} );
 };
 
 equations{ 'land_area_value' } = define() {

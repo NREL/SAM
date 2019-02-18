@@ -584,7 +584,7 @@ public:
 		{
 			wxArrayString labels, units, groups;
 			Simulation::ListAllOutputs( cc->GetConfiguration(), 
-				&m_names, &labels, &units, &groups, true );
+				&m_names, &labels, &units, &groups, nullptr, true );
 
 			for( size_t i=0;i<m_names.size();i++ )
 			{

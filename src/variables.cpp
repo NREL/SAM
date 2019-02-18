@@ -57,8 +57,8 @@
 #include <wx/tokenzr.h>
 #include <wx/log.h>
 #include <wx/mstream.h>
-#include <wx/txtstrm.h>
-
+//#include <wx/txtstrm.h>
+#include <wex/exttextstream.h>
 #include <lk/stdlib.h>
 #include <lk/eval.h>
 
@@ -315,7 +315,7 @@ bool VarTable::Write_text(const wxString &file, size_t maxdim)
 
 void VarTable::Write_text(wxOutputStream &_O, size_t maxdim)
 {
-	wxTextOutputStream out(_O, wxEOL_UNIX);
+	wxExtTextOutputStream out(_O, wxEOL_UNIX);
 	out.Write8(1);
 	out.PutChar('\n');
 	wxArrayString names;
@@ -438,7 +438,7 @@ bool VarTable::Read_text(wxInputStream &_I)
 {
 	clear();
 
-	wxTextInputStream in(_I, "\n");
+	wxExtTextInputStream in(_I, "\n");
 	in.Read8(); //ver
 
 	bool ok = true;
@@ -710,7 +710,7 @@ bool VarValue::Read(wxInputStream &_I)
 
 void VarValue::Write_text(wxOutputStream &_O)
 {
-	wxTextOutputStream out(_O, wxEOL_UNIX);
+	wxExtTextOutputStream out(_O, wxEOL_UNIX);
 	size_t n;
 	wxString x;
 
@@ -734,11 +734,11 @@ void VarValue::Write_text(wxOutputStream &_O)
 		{
 			for (size_t c = 0; c < m_val.ncols(); c++)
 			{
-//				out.WriteDouble(m_val(r, c));
-				wxString sd;
+				out.WriteDouble(m_val(r, c));
+				/*
+								wxString sd;
 				sd.Printf("%g", m_val(r, c));
 				out.WriteString(sd);
-/*
 void wxTextOutputStream::WriteDouble(double d)
 {
 	wxString str;
@@ -788,7 +788,7 @@ void wxTextOutputStream::WriteDouble(double d)
 
 bool VarValue::Read_text(wxInputStream &_I)
 {
-	wxTextInputStream in(_I, "\n");
+	wxExtTextInputStream in(_I, "\n");
 	size_t n;
 
 	in.Read8(); // ver
@@ -879,8 +879,8 @@ wxString VarValue::TypeAsString() const {
 	return wxString();
 }
 
-void VarValue::ChangeType(int type) { m_type = type; }
-void VarValue::SetType( int ty ) { m_type = ty; }
+void VarValue::ChangeType(int type) { m_type = (unsigned char)type; }
+void VarValue::SetType( int ty ) { m_type = (unsigned char)ty; }
 void VarValue::Set( int val ) { m_type = VV_NUMBER; m_val = (float)val; }
 void VarValue::Set( float val ) { m_type = VV_NUMBER; m_val = val; }
 void VarValue::Set( double val ) { m_type = VV_NUMBER; m_val = val; }
@@ -1420,7 +1420,7 @@ bool VarInfo::Read(wxInputStream &is)
 
 void VarInfo::Write_text(wxOutputStream &os)
 {
-	wxTextOutputStream out(os, wxEOL_UNIX);
+	wxExtTextOutputStream out(os, wxEOL_UNIX);
 	out.Write8(3); // change to version 3 after wxString "UIObject" field added
 	out.PutChar('\n');
 	out.Write32(Type);
@@ -1488,7 +1488,7 @@ void VarInfo::Write_text(wxOutputStream &os)
 
 bool VarInfo::Read_text(wxInputStream &is)
 {
-	wxTextInputStream in(is, "\n", wxConvAuto(wxFONTENCODING_UTF8));
+	wxExtTextInputStream in(is, "\n", wxConvAuto(wxFONTENCODING_UTF8));
 	int ver = in.Read8(); // ver
 
 	if (ver < 2) in.ReadWord(); // formerly, name field
@@ -1580,7 +1580,7 @@ bool VarDatabase::Read( wxInputStream &is, const wxString &page )
 
 void VarDatabase::Write_text(wxOutputStream &os)
 {
-	wxTextOutputStream out(os, wxEOL_UNIX);
+	wxExtTextOutputStream out(os, wxEOL_UNIX);
 	out.PutChar('\n');
 	out.Write32(size());
 	out.PutChar('\n');
@@ -1612,7 +1612,7 @@ void VarDatabase::Write_text(wxOutputStream &os)
 
 bool VarDatabase::Read_text(wxInputStream &is, const wxString &page)
 {
-	wxTextInputStream in(is, "\n");
+	wxExtTextInputStream in(is, "\n");
 	size_t n = in.Read32();
 	bool ok = true;
 	wxArrayString list;
@@ -1790,6 +1790,13 @@ VarInfo *VarInfoLookup::Lookup( const wxString &name )
 	else return it->second;
 }
 
+wxString VarInfoLookup::LookupByLabel(const wxString &label)
+{
+	for (VarInfoHash::iterator it = begin(); it != end(); ++it)
+		if (it->second->Label.IsSameAs(label, false))
+			return it->first;
+	return wxEmptyString;
+}
 
 
 VarTableScriptInterpreter::VarTableScriptInterpreter( lk::node_t *tree, lk::env_t *env, VarTable *vt )

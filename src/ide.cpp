@@ -671,6 +671,7 @@ enum {
 	ID_FORM_LIST,
 	ID_FORM_LIST_REFRESH,
 	ID_FORM_ADD,
+	ID_FORM_ADD_TEXT,
 	ID_FORM_SAVE,
 	ID_FORM_SAVE_ALL,
 	ID_FORM_LOAD_ALL,
@@ -738,6 +739,7 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON(ID_FORM_SAVE_ALL, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_LOAD_ALL, UIEditorPanel::OnCommand)
 
+	EVT_BUTTON(ID_FORM_ADD_TEXT, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_DELETE_TEXT, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_SAVE_TEXT, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_LOAD_TEXT, UIEditorPanel::OnCommand)
@@ -801,8 +803,9 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	wxBoxSizer *sz_form_tools = new wxBoxSizer( wxHORIZONTAL );
 	sz_form_tools->Add( new wxButton( this, ID_TEXT_FIND, "Search", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_LIST_REFRESH, "Refresh list", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_FORM_ADD, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
-//	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_ADD, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	sz_form_tools->Add(new wxButton(this, ID_FORM_ADD_TEXT, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE_TEXT, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
@@ -1293,6 +1296,29 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 	}
 	break;
 
+	case ID_FORM_ADD_TEXT:
+	{
+		wxString name = wxGetTextFromUser("Enter new form name:", "query", wxEmptyString, this);
+		if (name.IsEmpty()) return;
+
+		if (wxFileExists(SamApp::GetRuntimePath() + "/ui/" + name + ".txt"))
+		{
+			wxMessageBox("that form already exists.", "notice", wxOK, this);
+			return;
+		}
+		m_uiFormEditor->SetFormData(0);
+		m_exForm.DeleteAll();
+		m_ipd.Clear();
+
+		m_callbackScript->SetText(wxEmptyString);
+		m_equationScript->SetText(wxEmptyString);
+		Write_text(name);
+		if (!Load_text(name))
+			wxMessageBox("error loading newly created form: " + name, "notice", wxOK, this);
+		LoadFormList(name);
+		VarInfoToForm(wxEmptyString);
+	}
+	break;
 
 	case ID_FORM_DELETE_TEXT:
 	{

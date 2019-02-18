@@ -51,7 +51,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -110,7 +110,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -169,7 +169,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -228,7 +228,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -287,7 +287,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -346,7 +346,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -405,7 +405,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -464,7 +464,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -523,7 +523,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -582,7 +582,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -641,7 +641,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -700,7 +700,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -759,7 +759,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -818,7 +818,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -877,7 +877,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -963,7 +963,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1022,7 +1022,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 0
@@ -1081,7 +1081,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1140,7 +1140,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1199,7 +1199,7 @@ Height
 21
 Value
 1
-0.000000
+0
 Mode
 3
 1
@@ -1250,7 +1250,7 @@ Thermal Energy Storage
 1
 1
 1
-0.000000
+0
 Default
 TES_COPY_T_htf_cold_des
 3
@@ -1264,7 +1264,7 @@ Thermal Energy Storage
 1
 1
 1
-0.000000
+0
 Default
 TES_COPY_T_htf_hot_des
 3
@@ -1278,7 +1278,7 @@ Thermal Energy Storage
 1
 1
 1
-0.000000
+0
 Default
 TES_COPY_q_pb_design
 3
@@ -1292,7 +1292,7 @@ Thermal Energy Storage
 1
 1
 1
-0.000000
+0
 Default
 TES_COPY_tshours
 3
@@ -1306,7 +1306,7 @@ Thermal Energy Storage
 1
 1
 1
-0.000000
+0
 Default
 cold_tank_Thtr
 3
@@ -1320,7 +1320,7 @@ Thermal Energy Storage
 1
 1
 1
-280.000000
+280
 Default
 cold_tank_max_heat
 3
@@ -1334,7 +1334,7 @@ Thermal Energy Storage
 1
 1
 1
-15.000000
+15
 Default
 csp.pt.tes.heater_eff
 3
@@ -1348,7 +1348,7 @@ Thermal Energy Storage
 1
 1
 1
-0.990000
+0.99
 Default
 csp.pt.tes.htf_calc_temp
 3
@@ -1362,7 +1362,7 @@ Thermal Energy Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.tes.htf_density
 3
@@ -1376,7 +1376,7 @@ Thermal Energy Storage
 1
 1
 1
-0.000000
+0
 Default
 csp.pt.tes.tank_diameter
 3
@@ -1390,7 +1390,7 @@ Thermal Energy Storage
 1
 1
 1
-20.000000
+20
 Default
 h_tank
 3
@@ -1404,7 +1404,7 @@ Thermal Energy Storage
 1
 1
 1
-20.906500
+20.9065
 Default
 h_tank_min
 3
@@ -1418,7 +1418,7 @@ Thermal Energy Storage
 1
 1
 1
-1.000000
+1
 Default
 hot_tank_Thtr
 3
@@ -1432,7 +1432,7 @@ Thermal Energy Storage
 1
 1
 1
-500.000000
+500
 Default
 hot_tank_max_heat
 3
@@ -1446,7 +1446,7 @@ Thermal Energy Storage
 1
 1
 1
-30.000000
+30
 Default
 init_hot_htf_percent
 3
@@ -1460,7 +1460,7 @@ Thermal Energy Storage
 1
 1
 1
-30.000000
+30
 Default
 q_dot_tes_est
 3
@@ -1474,7 +1474,7 @@ Thermal Energy Storage
 1
 1
 1
-0.000000
+0
 Default
 tank_pairs
 3
@@ -1488,7 +1488,7 @@ Thermal Energy Storage
 1
 1
 1
-1.000000
+1
 Default
 tc_fill
 3
@@ -1502,7 +1502,7 @@ Thermal Energy Storage
 1
 1
 1
-8.000000
+8
 Default
 tes_avail_vol
 3
@@ -1516,7 +1516,7 @@ Thermal Energy Storage
 1
 1
 1
-0.000000
+0
 Default
 tes_type
 3
@@ -1530,7 +1530,7 @@ Thermal Energy Storage
 1
 1
 1
-1.000000
+1
 Default
 u_tank
 3
@@ -1544,7 +1544,7 @@ Thermal Energy Storage
 1
 1
 1
-1.200000
+1.2
 Default
 vol_tank
 3
@@ -1558,7 +1558,7 @@ Thermal Energy Storage
 1
 1
 1
-0.000000
+0
 Numeric
 
 1768

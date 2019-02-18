@@ -255,14 +255,14 @@ degradation
 2
 Degradation rate
 %/year
-Degradation
+Degradation and Lifetime
 0
 2
 1
 2
 1
 1
-0.000000
+0
 Default
 
 0

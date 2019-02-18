@@ -246,7 +246,7 @@ VarValue *Simulation::GetInput( const wxString &name )
 	return m_case->Values().Get( name );
 }
 
-void Simulation::SetInput(const wxString & name, lk::vardata_t val) {
+void Simulation::SetInput(const wxString & , lk::vardata_t) {
 	//if (VarValue *vv = m_inputs.Get(name)) {
 	//	if (vv->Type == VV_NUMBER && val.type == 3) {
 
@@ -776,11 +776,16 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 				wxString units( ssc_info_units( p_inf ) );
 				wxString ui_hint(ssc_info_uihint(p_inf));
 				
+
 				if ( (var_type == SSC_OUTPUT || var_type == SSC_INOUT ) && data_type == SSC_NUMBER )
 				{
 					ssc_number_t vval;
 					if ( ssc_data_get_number( p_data, name, &vval ) )
 					{
+						if (m_outputList.Index(name) != wxNOT_FOUND) {
+							m_outputList.Remove(name);
+						}
+
 						m_outputList.Add( name );
 						VarValue *vv = m_outputs.Create( name, VV_NUMBER );
 						vv->Set( (float) vval );
@@ -795,6 +800,9 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 					int len;
 					if ( ssc_number_t *varr = ssc_data_get_array( p_data, name, &len ) )
 					{
+						if (m_outputList.Index(name) != wxNOT_FOUND) {
+							m_outputList.Remove(name);
+						}
 						m_outputList.Add( name );
 						VarValue *vv = m_outputs.Create( name, VV_ARRAY );
 						float *ff = new float[len];
@@ -815,6 +823,9 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 					int nr, nc;
 					if (ssc_number_t *varr = ssc_data_get_matrix(p_data, name, &nr, &nc))
 					{
+						if (m_outputList.Index(name) != wxNOT_FOUND) {
+							m_outputList.Remove(name);
+						}
 						m_outputList.Add(name);
 						VarValue *vv = m_outputs.Create(name, VV_MATRIX);
 						matrix_t<float> ff(nr, nc);
@@ -935,6 +946,7 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 	wxArrayString *labels, 
 	wxArrayString *units, 
 	wxArrayString *groups,
+	wxArrayString* types,
 	bool single_values )
 {
 	if ( !cfg ) return false;
@@ -959,6 +971,7 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 					if ( labels ) labels->Add( wxString(ssc_info_label( p_inf )) );
 					if ( units ) units->Add( wxString(ssc_info_units( p_inf )) );
 					if ( groups ) groups->Add( wxString(ssc_info_group( p_inf )) );
+					if ( types ) types->Add(wxString::Format(wxT("%i"), data_type));
 				}
 			}
 		}
@@ -1241,3 +1254,4 @@ void SimulationDialog::NewStage( const wxString &title, int nbars_to_show )
 	m_tpd->ShowBars( nbars_to_show );
 	wxYield();
 }
+
