@@ -2331,6 +2331,58 @@ static bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double 
 }
 
 
+void fcall_calculated_list(lk::invoke_t &cxt)
+{
+	LK_DOC("calculated_list", "Returns all SSC compute module inputs from the current case that are a SAM UI calculated variable.", "():array");
+
+	wxString msg="";
+	Case *c = SamApp::Window()->GetCurrentCase();
+	if (!c) return;
+
+	ConfigInfo *ci = c->GetConfiguration();
+	if (!ci) return;
+
+	wxArrayString sim_list = ci->Simulations;
+	VarInfoLookup &vil = ci->Variables;
+
+	if (sim_list.size() == 0)
+	{
+		return cxt.result().assign("No simulation compute modules defined for this configuration.");
+	}
+
+	cxt.result().empty_vector();
+
+	for (size_t kk = 0; kk < sim_list.size(); kk++)
+	{
+		ssc_module_t p_mod = ssc_module_create(sim_list[kk].c_str());
+		if (!p_mod)
+		{
+			msg += ("could not create ssc module: " + sim_list[kk]);
+			break;
+		}
+
+		int pidx = 0;
+		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+		{
+			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+			wxString reqd(ssc_info_required(p_inf));
+
+			if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+			{
+				VarInfo* vi = vil.Lookup(name);
+				if (vi && (vi->Flags & VF_CALCULATED))
+					cxt.result().vec_append(name);
+			}
+		}
+	}
+	if (msg != "")
+		return	cxt.result().assign(msg);
+}
+
+
+
+
 void fcall_group_write(lk::invoke_t &cxt)
 {
 	LK_DOC("group_write", "Writes group data from current case to a file.", "(string:groupname, string:filename):boolean");
@@ -4717,6 +4769,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_openeiutilityrateform,
 		fcall_group_read,
 		fcall_group_write,
+		fcall_calculated_list,
 		fcall_urdb_read,
 		fcall_urdb_write,
 		fcall_urdb_get,
