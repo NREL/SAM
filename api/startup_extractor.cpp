@@ -17,25 +17,12 @@
 
 #include "startup_extractor.h"
 
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
-{
-    os << "[";
-    for (int i = 0; i < v.size(); ++i) {
-        os << "'" <<v[i] << "'";
-        if (i != v.size() - 1)
-            os << ", ";
-    }
-    os << "]";
-    return os;
-}
-
 // print into dictionary format
 void startup_extractor::print_config_to_input(){
     std::cout << "config_to_input_map = {\n";
     // configuration : {
-    for (auto it = config_to_input_pages.begin(); it != config_to_input_pages.end(); ++it){
-        if (it != config_to_input_pages.begin()) std::cout << ",\n";
+    for (auto it = SAM_config_to_input_pages.begin(); it != SAM_config_to_input_pages.end(); ++it){
+        if (it != SAM_config_to_input_pages.begin()) std::cout << ",\n";
         std::cout << "'" << it->first << "' :{\n\t";
         // group : [common_uiforms]
         for (size_t i = 0; i < it->second.size(); i++){
@@ -61,7 +48,7 @@ void startup_extractor::print_config_to_input(){
 void startup_extractor::print_config_to_modules(){
     std::cout << "config_to_modules_map = {\n";
     // configuration : {
-    for (auto it = config_to_modules.begin(); it != config_to_modules.end(); ++it){
+    for (auto it = SAM_config_to_modules.begin(); it != SAM_config_to_modules.end(); ++it){
         std::cout << "'"<< it->first << "':\n\t" << it->second ;
         std::cout << ",\n";
     }
@@ -101,6 +88,8 @@ bool startup_extractor::load_startup_script(const std::string script_file, std::
             for( size_t i=0;i<e.error_count();i++ )
                 errors->push_back( e.get_error(i) );
 
+        config_to_input_pages = SAM_config_to_input_pages;
+        config_to_modules = SAM_config_to_modules;
         return ok;
     }
 }

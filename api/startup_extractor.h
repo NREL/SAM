@@ -12,20 +12,10 @@
 #include <lk/stdlib.h>
 
 /**
- *
+ * Each input page consists of a page_info with the sidebar title in the SAM GUI, ui forms which are common
+ * to the page no matter what selection of variables is active, an exclusive variable which determines what
+ * subset of ui forms should be shown, and those exclusive ui forms, of which only one is shown at a time.
  */
-
-class startup_extractor{
-private:
-
-public:
-    void print_config_to_input();
-
-    void print_config_to_modules();
-
-    bool load_startup_script(const std::string script_file, std::vector<std::string>* errors);
-};
-
 
 struct page_info{
     std::string sidebar_title;
@@ -34,9 +24,38 @@ struct page_info{
     std::vector<std::string> exclusive_uiforms;
 };
 
-static std::unordered_map<std::string, std::vector<page_info>> config_to_input_pages;
-static std::unordered_map<std::string, std::vector<std::string>> config_to_modules;
+static std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages;
+static std::unordered_map<std::string, std::vector<std::string>> SAM_config_to_modules;
 static std::string active_config;
+
+
+
+/**
+ * This class extracts input pages for each technology-financial configuration from the startup.lk
+ * script, as well as the set of compute modules required for each configuration.
+ */
+
+class startup_extractor{
+private:
+    std::unordered_map<std::string, std::vector<page_info>> config_to_input_pages;
+    std::unordered_map<std::string, std::vector<std::string>> config_to_modules;
+
+public:
+    std::unordered_map<std::string, std::vector<page_info>> get_config_to_input_pages(){
+        return config_to_input_pages;
+    };
+
+    std::unordered_map<std::string, std::vector<std::string>> get_config_to_modules(){
+        return config_to_modules;
+    };
+
+    void print_config_to_input();
+
+    void print_config_to_modules();
+
+    bool load_startup_script(const std::string script_file, std::vector<std::string>* errors);
+};
+
 
 /**
  *
@@ -78,7 +97,7 @@ static void fcall_setmodules( lk::invoke_t &cxt )
     for( size_t i=0;i<m.length();i++ )
         list.push_back( m.index(i)->as_string() );
 
-    config_to_modules[active_config] = list;
+    SAM_config_to_modules[active_config] = list;
 }
 
 static void fcall_addpage( lk::invoke_t &cxt )
@@ -136,7 +155,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
 
         }
     }
-    config_to_input_pages[active_config].push_back(new_page);
+    SAM_config_to_input_pages[active_config].push_back(new_page);
 }
 
 
@@ -150,6 +169,19 @@ static lk::fcall_t* export_config_funcs() {
             fcall_setmodules,
             0 };
     return (lk::fcall_t*)vec;
+}
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
+{
+    os << "[";
+    for (int i = 0; i < v.size(); ++i) {
+        os << "'" <<v[i] << "'";
+        if (i != v.size() - 1)
+            os << ", ";
+    }
+    os << "]";
+    return os;
 }
 
 #endif //SYSTEM_ADVISOR_MODEL_EXTRACT_STARTUP_H

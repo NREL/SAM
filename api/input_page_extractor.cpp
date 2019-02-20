@@ -1,19 +1,9 @@
 #include "input_page_extractor.h"
 
-void input_page_extractor::get_variable_name(wxInputStream& is, wxString var_name) {
+void input_page_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
     wxTextInputStream in(is);
 
-    int ver = in.Read8(); // ver
-    if (ver < 2)
-        in.ReadWord();
-    for (size_t j = 0; j < 4; j++)
-        in.ReadLine();
-    if (in.Read32() > 0)
-        in.ReadLine();
-    in.ReadLine(); // flags
-
     std::vector<wxString> table_names;
-    wxString desc = in.ReadWord();
 
     in.Read8(); // ver
 
@@ -40,15 +30,10 @@ void input_page_extractor::get_variable_name(wxInputStream& is, wxString var_nam
         size_t m = in.Read32();
         for (size_t j = 0; j<m; j++)
         {
-            table_names.push_back(in.ReadWord());
+            std::string entry = in.ReadWord();
+            table_names.push_back(entry);
 
-            size_t n = in.Read32();
-            for (size_t k = 0; k<n; k++)
-            {
-                wxString name = in.ReadWord();
-                get_variable_name(is, var_name);
-
-            }
+            get_varvalue(is, entry);
         }
     }
 
@@ -61,7 +46,26 @@ void input_page_extractor::get_variable_name(wxInputStream& is, wxString var_nam
     else m_variables.push_back(var_name);
 }
 
-void input_page_extractor::get_equations_script(wxInputStream& is) {
+void input_page_extractor::get_varinfo(wxInputStream &is, wxString var_name) {
+    wxTextInputStream in(is);
+
+    int ver = in.Read8(); // ver
+    if (ver < 2)
+        in.ReadWord();
+    // type, label, units, group
+    for (size_t j = 0; j < 4; j++)
+        in.ReadLine();
+    // index labels
+    if (in.Read32() > 0)
+        in.ReadLine();
+    in.ReadLine(); // flags
+
+    get_varvalue(is, var_name);
+    if (ver >= 3) in.ReadLine();
+}
+
+/// Formatting of UI form txt taken from InputPageData::Read, VarDatabase::Read
+void input_page_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     wxTextInputStream in(is, "\n");
 
     for (size_t i = 0; i < 3; i++)
@@ -101,34 +105,39 @@ void input_page_extractor::get_equations_script(wxInputStream& is) {
 
     for (size_t i = 0; i < n; i++){
         wxString name = in.ReadWord();
-        get_variable_name(is, name);
+        get_varinfo(is, name);
     }
     in.ReadLine();
 
     // get equation script
-    m_eqn_script.Clear();
+    m_eqn_script.clear();
+    n = in.Read32();
+    wxString tmp;
+    if (n > 0)
+    {
+        for (size_t i = 0; i < n; i++)
+            tmp.Append(in.GetChar());
+    }
+    m_eqn_script = tmp.ToStdString();
+    tmp.clear();
+
+    m_callback_script.clear();
     n = in.Read32();
     if (n > 0)
     {
         for (size_t i = 0; i < n; i++)
-            m_eqn_script.Append(in.GetChar());
+            tmp.Append(in.GetChar());
     }
-    m_callback_script.Clear();
-    n = in.Read32();
-    if (n > 0)
-    {
-        for (size_t i = 0; i < n; i++)
-            m_callback_script.Append(in.GetChar());
-    }
+    m_callback_script = tmp.ToStdString();
 }
 
+bool input_page_extractor::extract(std::string file) {
+    wxFileName ff(file);
+    wxString name(ff.GetName());
 
-int extract() {
-    wxString ui_path = wxString(std::getenv("SAMDIR")) + "/deploy/ui/";
-
-    input_page_extractor ipl;
-    ipl.load_ui_form("/Users/dguittet/SAM-Development/sam/SAMd.app/Contents/runtime//ui/Financial Salvage Value.txt");
-
-
-    return 0;
+    wxFFileInputStream is(file, "r");
+    bool bff = is.IsOk();
+    if (!bff) return false;
+    get_eqn_and_callback_script(is);
+    return true;
 }

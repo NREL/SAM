@@ -24,16 +24,21 @@ include(${wxWidgets_USE_FILE})
 
 include_directories(../src $ENV{LKDIR}/include $ENV{SSCDIR})
 
-add_executable(export_config
-        export_config.cpp export_config.h
-        startup_extractor.cpp startup_extractor.h
-        input_page_extractor.cpp input_page_extractor.h)
-
-set(SAM_API_SRC
-        sam_api.cpp
+set(SAM_SOURCES
         #../src/invoke.cpp
         ../src/variables.cpp
         ../src/equations.cpp)
+
+add_executable(export_config
+        export_config.cpp export_config.h
+        startup_extractor.cpp startup_extractor.h
+        input_page_extractor.cpp input_page_extractor.h
+        equation_extractor.cpp equation_extractor.h
+        ${SAM_SOURCES})
+
+set(SAM_API_SRC
+        sam_api.cpp
+        ${SAM_SOURCES})
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
