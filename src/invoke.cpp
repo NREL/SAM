@@ -1294,13 +1294,13 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 		int rowCount, columnCount;
 		xl->Excel().getUsedCellRange(rowCount, columnCount, vals); 
 		
-		if (nskip >= rowCount - 1) nskip = 0;
+		if ((int)nskip >= rowCount - 1) nskip = 0;
 		if (astable)
 		{
 			if (rowMajor) {
 				wxArrayString colHeaders;
 				//read column headers from first nonskipped row
-				for (size_t c = 0; c < columnCount; c++) {
+				for (int c = 0; c < columnCount; c++) {
 					wxString name = vals[c*rowCount + nskip];
 					colHeaders.push_back(name);
 					if (name.IsEmpty()) continue;
@@ -1309,10 +1309,10 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 					it.empty_vector();
 					it.resize(rowCount - 1 - nskip);
 				}
-				for (size_t c = 0; c < columnCount; c++) {
+				for (int c = 0; c < columnCount; c++) {
 					lk::vardata_t* it = out.lookup(colHeaders[c]);
 					if (it == NULL) continue;
-					for (size_t r = 1 + nskip; r < rowCount; r++) {
+					for (int r = 1 + nskip; r < rowCount; r++) {
 						if (vals[c*rowCount + r] != wxEmptyString) {
 							if (tonum) it->index(r - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
 							else it->index(r - 1 - nskip)->assign(vals[c*rowCount + r]);
@@ -1323,7 +1323,7 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 			else {
 				wxArrayString rowHeaders;
 				//read row headers from first nonskipped column
-				for (size_t r = 0; r < rowCount; r++) {
+				for (int r = 0; r < rowCount; r++) {
 					wxString name = vals[nskip*rowCount + r];
 					rowHeaders.push_back(name);
 					if (name.IsEmpty()) continue;
@@ -1333,10 +1333,10 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 					it.resize(columnCount - 1 - nskip);
 				}
 
-				for (size_t r = 0; r < rowCount; r++) {
+				for (int r = 0; r < rowCount; r++) {
 					lk::vardata_t* it = out.lookup(rowHeaders[r]);
 					if (it == NULL) continue;
-					for (size_t c = 1 + nskip; c < columnCount; c++) {
+					for (int c = 1 + nskip; c < columnCount; c++) {
 						if (vals[c*rowCount + r] != wxEmptyString) {
 							if (tonum) it->index(c - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
 							else it->index(c - 1 - nskip)->assign(vals[c*rowCount + r]);
@@ -1349,11 +1349,11 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 			if (rowMajor == true) {
 				out.empty_vector();
 				out.vec()->resize(rowCount - nskip);
-				for (size_t r = nskip; r < rowCount; r++) {
+				for (int r = nskip; r < rowCount; r++) {
 					lk::vardata_t *row = out.index(r-nskip);
 					row->empty_vector();
 					row->vec()->resize(columnCount);
-					for (size_t c = 0; c < columnCount; c++)
+					for (int c = 0; c < columnCount; c++)
 					{
 						if (vals[c*rowCount + r] == wxEmptyString) continue;
 						if (tonum) {
@@ -1368,11 +1368,11 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 			else {
 				out.empty_vector();
 				out.vec()->resize(columnCount - nskip);
-				for (size_t c = nskip; c < columnCount; c++) {
+				for (int c = nskip; c < columnCount; c++) {
 					lk::vardata_t *col = out.index(c-nskip);
 					col->empty_vector();
 					col->vec()->resize(rowCount);
-					for (size_t r = 0; r < rowCount; r++)
+					for (int r = 0; r < rowCount; r++)
 					{
 						if (vals[c*rowCount + r] == wxEmptyString) continue;
 						if (tonum) {
@@ -2329,6 +2329,58 @@ static bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double 
 	}
 	return true;
 }
+
+
+void fcall_calculated_list(lk::invoke_t &cxt)
+{
+	LK_DOC("calculated_list", "Returns all SSC compute module inputs from the current case that are a SAM UI calculated variable.", "():array");
+
+	wxString msg="";
+	Case *c = SamApp::Window()->GetCurrentCase();
+	if (!c) return;
+
+	ConfigInfo *ci = c->GetConfiguration();
+	if (!ci) return;
+
+	wxArrayString sim_list = ci->Simulations;
+	VarInfoLookup &vil = ci->Variables;
+
+	if (sim_list.size() == 0)
+	{
+		return cxt.result().assign("No simulation compute modules defined for this configuration.");
+	}
+
+	cxt.result().empty_vector();
+
+	for (size_t kk = 0; kk < sim_list.size(); kk++)
+	{
+		ssc_module_t p_mod = ssc_module_create(sim_list[kk].c_str());
+		if (!p_mod)
+		{
+			msg += ("could not create ssc module: " + sim_list[kk]);
+			break;
+		}
+
+		int pidx = 0;
+		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+		{
+			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+			wxString reqd(ssc_info_required(p_inf));
+
+			if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+			{
+				VarInfo* vi = vil.Lookup(name);
+				if (vi && (vi->Flags & VF_CALCULATED))
+					cxt.result().vec_append(name);
+			}
+		}
+	}
+	if (msg != "")
+		return	cxt.result().assign(msg);
+}
+
+
 
 
 void fcall_group_write(lk::invoke_t &cxt)
@@ -4717,6 +4769,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_openeiutilityrateform,
 		fcall_group_read,
 		fcall_group_write,
+		fcall_calculated_list,
 		fcall_urdb_read,
 		fcall_urdb_write,
 		fcall_urdb_get,
