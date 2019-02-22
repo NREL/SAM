@@ -429,7 +429,7 @@ LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wx
 	m_sendEvents = true;
 	m_nmatches = 0;
 
-	m_label = new wxStaticText( this, wxID_ANY, wxT("Search for:") );
+	m_label = new wxStaticText( this, wxID_ANY, wxT("Filter:") );
 	m_filter = new wxTextCtrl( this, ID_FILTER );
 	m_target = new wxChoice( this, ID_TARGET );
 	m_notify = new wxStaticText( this, wxID_ANY, wxEmptyString );
@@ -440,9 +440,10 @@ LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wx
 	sz_horiz->Add( m_label, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	sz_horiz->Add( m_filter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	sz_horiz->Add( m_target, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-	sz_horiz->AddStretchSpacer();
+//	sz_horiz->AddStretchSpacer();
 	sz_horiz->Add( m_notify, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-	//sz_horiz->Add( new wxButton( this, ID_REFRESH, wxT("Refresh list") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+
+//sz_horiz->Add( new wxButton( this, ID_REFRESH, wxT("Refresh list") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 
 	wxBoxSizer *sz_vert = new wxBoxSizer( wxVERTICAL );
 	sz_vert->Add( sz_horiz, 0, wxALL|wxEXPAND, 0 );
@@ -630,7 +631,7 @@ void LibraryCtrl::UpdateList()
 
 	if ( m_nmatches == 0 )
 	{
-		m_notify->SetLabel( "No matches. (selected item shown)" );
+		m_notify->SetLabel( "No matches." );
 		Layout();
 	}
 	

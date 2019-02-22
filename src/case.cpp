@@ -263,7 +263,7 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 				if (entry < 0 || !lib->ApplyEntry(entry, varindex, *m_vt, changed))
 				{
 					nerrors++;
-					m_errors.Add("Library error: '" + vv->String() + "' is not available in the library. Choose a different item." );
+					m_errors.Add("Library error: '" + vv->String() + "'  is not available in the " + name + " library." );
 					wxArrayString errs( lib->GetErrors() );
 					for( size_t k=0;k<errs.size();k++ ) if ( !errs[k].IsEmpty() ) m_errors.Add( errs[k] );
 				}

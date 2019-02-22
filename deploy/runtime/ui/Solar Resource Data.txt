@@ -2351,11 +2351,12 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-22579
+22775
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
 	on_change{'is_advanced'}();
+	on_change{'solar_resource'}();
 	update_library_folders(''); // refresh list of library folders
 	value('solar_data_file_name_load', value('solar_data_file_name'));
 
@@ -2372,15 +2373,24 @@ on_load{'Solar Resource Data'} = define() {
 
 on_change{'solar_resource'} = define() {
 	if ( value('solar_data_file_name_load' ) != value('solar_data_file_name') )
-	{	value('use_specific_weather_file',0); }
+	{
+		value('use_specific_weather_file',0); 
+	}
 	update_info();
-	if (librarygetnumbermatches('solar_resource') < 1)
+	if (librarygetcurrentselection('solar_resource') == '' )
+	{
+		librarynotifytext('solar_resource','Please choose a file.');
+	}
+	elseif (librarygetnumbermatches('solar_resource') < 1)
 	{
 		value('in_location', librarygetfiltertext('solar_resource'));
 		librarynotifytext('solar_resource', 'No match found. Try downloading a weather file below.');
 	}
 	else
+	{
+		librarynotifytext('solar_resource', '');
 		value('in_location', '');
+	}	
 //	msgbox(librarygetfiltertext('solar_resource') + "," + librarygetnumbermatches('solar_resource') + "," + librarygetcurrentselection('solar_resource'));
 
 };
@@ -2426,15 +2436,13 @@ on_change{'refresh_library'} = define() {
 };
 
 on_change{'solar_data_settings'} = define() {
-	L = strlen( value( 'library_folder_list' ) );
 	if ( showsettings( 'solar' ) )
 	{
 		rescanlibrary( 'solar' );
 		update_library_folders( '' );
-		
-		// if a library folder was removed and current
-		// library selection is no longer in library,
-		// change to first item listed in library CSV file
+		// if current library selection is no longer in 
+		// library, change to first item listed in library CSV file
+		L = strlen( value( 'library_folder_list' ) );
 		if ( strlen( value( 'library_folder_list' ) ) < L )
 		{
 			library_files = csvread( userlocaldatadir() + '/SolarResourceData.csv' , { 'table' = true });
@@ -2442,13 +2450,13 @@ on_change{'solar_data_settings'} = define() {
 			{
 				first_item = library_files{'File name'}[2];
 				first_item = replace( file_only(first_item), '.csv', '' );
-				msgbox( 'Weather file removed from library!\nThe file ' 
-			        + value( file_only('solar_resource_file') )
-			        + ' is no longer in the solar resource library. Changing library selection to ' 
-			        +  first_item  + '.' );
+				msgbox( 'Selected weather file not in solar resource library!\nThe file ' 
+					     + value( file_only('solar_resource_file') )
+					     + ' is not in the solar resource library. Changing library selection to ' 
+					     +  first_item  + '.' );
 				value( 'solar_resource' , first_item );
 			}	
-		}	
+		}
 	}	
 };
 
@@ -2494,7 +2502,7 @@ function update_info()
 	wf = value('solar_resource_file'); 
 
 	// if selected library file is no longer in library
-	// reload library and exit
+	// reload library, and exit
 	if (!file_exists(wf) )
 	{
 		rescanlibrary( 'solar' );
@@ -2922,12 +2930,12 @@ nsrdb_get = define( )
 				{
 					if ( type[i] == 'tmy' ) // relative_humidity not available for psmv3 tmy data
 						{ base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo'; }
-					else
+					else // single year
 						{ base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo'; }
 				}
 				elseif ( dataset[n].name == 'suny-international' )
 				{
-					if ( type[i] == 'tmy' ) // relative_humidity not available for psmv3 tmy data
+					if ( type[i] == 'tmy' ) // relative_humidity not available for tmy data
 						{ base_url += '&attributes=dni,dhi,ghi,dew_point,surface_temperature,surface_pressure,wdir,wspd'; }
 					else
 						{ base_url += '&attributes=dni,dhi,ghi,dew_point,surface_temperature,surface_pressure,relative_humidity,wdir,wspd,snow_depth'; }
