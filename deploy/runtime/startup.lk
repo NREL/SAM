@@ -794,16 +794,16 @@ setup_iph_lcoefcr_pages();
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
 setconfig( 'Physical Trough', 'LCOE Calculator' );
-setmodules( ['tcstrough_physical', 'lcoefcr']);
+setmodules( ['trough_physical', 'lcoefcr']);
 setup_csp_physical_trough_pages();
 setup_lcoefcr_pages();
 
 setconfig( 'Physical Trough', 'None' );
-setmodules( ['tcstrough_physical']);
+setmodules( ['trough_physical']);
 setup_csp_physical_trough_pages();
 
 setconfig( 'Physical Trough', 'Commercial' );
-setmodules( ['tcstrough_physical', 'utilityrate5', 'cashloan']);
+setmodules( ['trough_physical', 'utilityrate5', 'cashloan']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_commercial_pages( LOAD_SIMPLE , LIFETIME_SYSTEM ); //belpe not valid for commercial
@@ -811,35 +811,35 @@ setup_commercial_pages( LOAD_SIMPLE , LIFETIME_SYSTEM ); //belpe not valid for c
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Independent Power Producer' );
-setmodules( ['tcstrough_physical', 'ippppa']);
+setmodules( ['trough_physical', 'ippppa']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_independent_power_producer_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Leveraged Partnership Flip' );
-setmodules( ['tcstrough_physical', 'levpartflip']);
+setmodules( ['trough_physical', 'levpartflip']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_leveraged_partnership_flip_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'All Equity Partnership Flip' );
-setmodules( ['tcstrough_physical', 'equpartflip']);
+setmodules( ['trough_physical', 'equpartflip']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Sale Leaseback' );
-setmodules( ['tcstrough_physical', 'saleleaseback']);
+setmodules( ['trough_physical', 'saleleaseback']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_sale_leaseback_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Single Owner' );
-setmodules( ['tcstrough_physical', 'singleowner']);
+setmodules( ['trough_physical', 'singleowner']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
