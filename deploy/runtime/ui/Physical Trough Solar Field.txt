@@ -3952,84 +3952,84 @@ Physical Trough Solar Field
 Numeric
 sf_hdr_diams
 3
-2
+3
 Custom header diameters
 m
 Physical Trough Solar Field
 0
 2
 1
-2
+3
 1
 1
 -1
 Default
 sf_hdr_lengths
 3
-2
+3
 Custom header lengths
 m
 Physical Trough Solar Field
 0
 2
 1
-2
+3
 1
 1
 -1
 Default
 sf_hdr_wallthicks
 3
-2
+3
 Custom header wall thicknesses
 m
 Physical Trough Solar Field
 0
 2
 1
-2
+3
 1
 1
 -1
 Default
 sf_rnr_diams
 3
-2
+3
 Custom runner diameters
 m
 Physical Trough Solar Field
 0
 2
 1
-2
+3
 1
 1
 -1
 Default
 sf_rnr_lengths
 3
-2
+3
 Custom runner lengths
 m
 Physical Trough Solar Field
 0
 2
 1
-2
+3
 1
 1
 -1
 Default
 sf_rnr_wallthicks
 3
-2
+3
 Custom runner wall thicknesses
 m
 Physical Trough Solar Field
 0
 2
 1
-2
+3
 1
 1
 -1

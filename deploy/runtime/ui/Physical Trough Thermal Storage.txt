@@ -1130,37 +1130,14 @@ BackColour
 TabOrder
 3
 12
-MaterialProperties
-
-1
-6
-Name
-5
-14
-store_fl_props
-X
-3
-648
-Y
-3
-201
-Width
-3
-98
-Height
-3
-24
-TabOrder
-3
-22
 Numeric
 
 1
 16
 Name
 5
-13
-tank_max_heat
+17
+hot_tank_max_heat
 X
 3
 648
@@ -1212,6 +1189,29 @@ BackColour
 TabOrder
 3
 15
+MaterialProperties
+
+1
+6
+Name
+5
+14
+store_fl_props
+X
+3
+648
+Y
+3
+201
+Width
+3
+98
+Height
+3
+24
+TabOrder
+3
+22
 Numeric
 
 1
@@ -1449,7 +1449,7 @@ TabOrder
 3
 2
 
-39
+41
 T_tank_cold_ini
 3
 1
@@ -1506,6 +1506,20 @@ Physical Trough Thermal Storage
 1
 250
 Numeric
+cold_tank_max_heat
+3
+1
+Cold tank heater capacity
+MWe
+Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+0.5
+Default
 combo_tes_htf_type
 3
 1
@@ -1773,6 +1787,20 @@ Physical Trough Thermal Storage
 1
 365
 Numeric
+hot_tank_max_heat
+3
+1
+Tank heater capacity
+MWe
+Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+25
+Numeric
 hx_config
 3
 1
@@ -1786,6 +1814,20 @@ Physical Trough Thermal Storage
 1
 1
 2
+Default
+init_hot_htf_percent
+3
+1
+Initial usable HTF in hot tank
+percent
+Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+30
 Default
 is_hx
 3
@@ -1871,20 +1913,6 @@ Physical Trough Thermal Storage
 1
 500
 Default
-tank_max_heat
-3
-1
-Tank heater capacity
-MWe
-Physical Trough Thermal Storage
-0
-2
-1
-1
-1
-1
-0
-Numeric
 tank_pairs
 3
 1
