@@ -24,18 +24,19 @@ void startup_extractor::print_config_to_input(){
     for (auto it = SAM_config_to_input_pages.begin(); it != SAM_config_to_input_pages.end(); ++it){
         if (it != SAM_config_to_input_pages.begin()) std::cout << ",\n";
         std::cout << "'" << it->first << "' :{\n\t";
-        // group : [common_uiforms]
+        // group : { 'common' : (common_uiforms)
         for (size_t i = 0; i < it->second.size(); i++){
             std::cout << "'"<< it->second[i].sidebar_title << "' :{\n\t\t";
             if (it->second[i].common_uiforms.size() > 0 ){
+                std::cout << "'common': \n\t\t\t";
                 std::cout << it->second[i].common_uiforms;
             }
-            // {exlusive_var : [exclusive_uiforms]
+            // {exlusive_var : (exclusive_uiforms)
             if (it->second[i].exclusive_var.size() > 0 ){
                 if (it->second[i].common_uiforms.size() > 0)
                     std::cout << ",\n\t\t" ;
-                std::cout << "{'" << it->second[i].exclusive_var << "' :\n\t\t\t" ;
-                std::cout << it->second[i].exclusive_uiforms << "}";
+                std::cout << "'" << it->second[i].exclusive_var << "' :\n\t\t\t" ;
+                std::cout << it->second[i].exclusive_uiforms << "";
             }
             if (i < it->second.size()-1) std::cout << "},\n\t";
             else std::cout << "\n\t}\n";

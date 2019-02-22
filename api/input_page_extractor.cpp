@@ -1,7 +1,10 @@
+#include <stdexcept>
+#include <iostream>
+
 #include "input_page_extractor.h"
 
 void input_page_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
-    wxTextInputStream in(is);
+    wxTextInputStream in(is, "\n");
 
     std::vector<wxString> table_names;
 
@@ -17,7 +20,7 @@ void input_page_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
                 in.ReadLine();
             }
         }
-        else in.ReadLine();
+        in.ReadLine();
     }
     // string
     else if (m_type == 4){
@@ -47,7 +50,7 @@ void input_page_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
 }
 
 void input_page_extractor::get_varinfo(wxInputStream &is, wxString var_name) {
-    wxTextInputStream in(is);
+    wxTextInputStream in(is, "\n");
 
     int ver = in.Read8(); // ver
     if (ver < 2)
@@ -56,9 +59,19 @@ void input_page_extractor::get_varinfo(wxInputStream &is, wxString var_name) {
     for (size_t j = 0; j < 4; j++)
         in.ReadLine();
     // index labels
-    if (in.Read32() > 0)
+    size_t n = in.Read32();
+    if (n > 0){
+        for (size_t i = 0; i < n; i++)
+            in.GetChar();
         in.ReadLine();
-    in.ReadLine(); // flags
+    }
+    std::string flag = in.ReadLine(); // flags
+    try{
+        std::stoi(flag);
+    }
+    catch (std::invalid_argument){
+        std::cout << "flag error: " << flag << " while parsing var info " << var_name << "\n";
+    }
 
     get_varvalue(is, var_name);
     if (ver >= 3) in.ReadLine();
