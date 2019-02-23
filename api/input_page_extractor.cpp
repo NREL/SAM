@@ -2,11 +2,10 @@
 #include <iostream>
 
 #include "input_page_extractor.h"
+#include "variables.h"
 
 void input_page_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
     wxTextInputStream in(is, "\n");
-
-    std::vector<wxString> table_names;
 
     in.Read8(); // ver
 
@@ -34,23 +33,22 @@ void input_page_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
         for (size_t j = 0; j<m; j++)
         {
             std::string entry = in.ReadWord();
-            table_names.push_back(entry);
-
             get_varvalue(is, entry);
         }
     }
-
-    // save variable names
-    if (table_names.size() > 0 ) {
-        for (size_t n = 0; n<table_names.size(); n++) {
-            m_variables.push_back(var_name + ":" + table_names[n]);
-        }
+    // binary
+    else if (m_type == 6){
+        size_t len = in.Read32();
+        for (size_t i = 0; i <len; i++)
+            in.GetChar();
     }
-    else m_variables.push_back(var_name);
 }
 
 void input_page_extractor::get_varinfo(wxInputStream &is, wxString var_name) {
     wxTextInputStream in(is, "\n");
+
+    wxArrayString table_names;
+
 
     int ver = in.Read8(); // ver
     if (ver < 2)
@@ -58,16 +56,22 @@ void input_page_extractor::get_varinfo(wxInputStream &is, wxString var_name) {
     // type, label, units, group
     for (size_t j = 0; j < 4; j++)
         in.ReadLine();
-    // index labels
+    // index labels for table
     size_t n = in.Read32();
     if (n > 0){
+        wxString x;
         for (size_t i = 0; i < n; i++)
-            in.GetChar();
+            x.Append(in.GetChar());
+        table_names = wxSplit(x, '|');
+
         in.ReadLine();
     }
     std::string flag = in.ReadLine(); // flags
+    int calculated = 0;
+
+    // conversion to string serves as check on parsing process
     try{
-        std::stoi(flag);
+        calculated = std::stoi(flag) & VF_CALCULATED;
     }
     catch (std::invalid_argument){
         std::cout << "flag error: " << flag << " while parsing var info " << var_name << "\n";
@@ -75,6 +79,20 @@ void input_page_extractor::get_varinfo(wxInputStream &is, wxString var_name) {
 
     get_varvalue(is, var_name);
     if (ver >= 3) in.ReadLine();
+
+    // save variable names
+    if (table_names.size() > 0 ) {
+        for (size_t i = 0; i<table_names.size(); i++) {
+            if (calculated)
+                m_calculated_variables.push_back(var_name + "." + table_names[i]);
+            else
+                m_direct_variables.push_back(var_name + "." + table_names[i]);
+        }
+    }
+    else{
+        if (calculated) m_calculated_variables.push_back(var_name);
+        else m_direct_variables.push_back(var_name);
+    }
 }
 
 /// Formatting of UI form txt taken from InputPageData::Read, VarDatabase::Read

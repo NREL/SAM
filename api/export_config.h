@@ -8,44 +8,24 @@
 
 #include "startup_extractor.h"
 
-/**
- * For each input page for a given configuration, stores the variables that are calculated
- * by equations or callbacks in both common and exclusive ui forms.
- *
- */
-
-struct page_variables_per_config{
-    std::string config_name;
-    std::unordered_map<std::string, std::vector<std::string>> page_to_eqn_outputs;
-    std::unordered_map<std::string, std::vector<std::string>> page_to_callback_cmods;
-    std::unordered_map<std::string, std::vector<std::string>> page_to_callback_outputs;
-};
-
-static std::vector<page_variables_per_config> SAM_page_variables;
-
-void print_page_variables_per_config(page_variables_per_config pvpc, std::string which_map){
-    std::unordered_map<std::string, std::vector<std::string>>* map;
-    if (which_map == "eqn")
-        map = &pvpc.page_to_eqn_outputs;
-    else if (which_map == "cmod")
-        map = &pvpc.page_to_callback_cmods;
-    else
-        map = &pvpc.page_to_callback_outputs;
-
-    // 'config_name' = {
-    std::cout << "'" << pvpc.config_name << "': {\n";
-    bool first = true;
-    for (auto it = map->begin(); it != map->end(); ++it){
-        if (it->second.size() == 0) continue;
-        if (!first)
-            std::cout << ",\n";
-        // 'page_name' : [output_vars],
-        std::cout << "\t'" << it->first << "': \n\t\t" << it->second;
-        first = false;
+void print_config_variables_info(){
+    for (auto it = SAM_config_to_case_variables.begin(); it != SAM_config_to_case_variables.end(); ++it){
+        // 'config_name' = {
+        std::cout << "'" << it->second.config_name << "': {\n";
+        bool first = true;
+        // equations: [inputs, outputs, ui_form]
+        std::cout << "\t\t'equations': [\n";
+        for (size_t n = 0; n < it->second.eqns_info.size(); n++){
+            std::cout << "\t\t\t" << it->second.eqns_info[n].inputs << ",\n";
+            std::cout << "\t\t\t" << it->second.eqns_info[n].outputs << ",\n";
+            std::cout << "\t\t\t" << it->second.eqns_info[n].ui_form << "]\n";
+        }
+        // secondary_cmods: [cmod ...]
+        std::cout << "\t\t'secondary_cmods':\n";
+        for (size_t n = 0; n < it->second.secondary_cmods.size(); n++){
+            std::cout << "\t\t\t" << it->second.secondary_cmods[n] << "\n";
+        }
     }
-    std::cout << "\n}";
 }
-
-
 
 #endif //__export_config_input_pages_

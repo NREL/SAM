@@ -18,8 +18,8 @@
 #include "startup_extractor.h"
 
 // print into dictionary format
-void startup_extractor::print_config_to_input(){
-    std::cout << "config_to_input_map = {\n";
+void startup_extractor::print_config_to_input_pages(){
+    std::cout << "config_to_input_pages_map = {\n";
     // configuration : {
     for (auto it = SAM_config_to_input_pages.begin(); it != SAM_config_to_input_pages.end(); ++it){
         if (it != SAM_config_to_input_pages.begin()) std::cout << ",\n";
@@ -49,7 +49,7 @@ void startup_extractor::print_config_to_input(){
 void startup_extractor::print_config_to_modules(){
     std::cout << "config_to_modules_map = {\n";
     // configuration : {
-    for (auto it = SAM_config_to_modules.begin(); it != SAM_config_to_modules.end(); ++it){
+    for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         std::cout << "'"<< it->first << "':\n\t" << it->second ;
         std::cout << ",\n";
     }
@@ -90,7 +90,7 @@ bool startup_extractor::load_startup_script(const std::string script_file, std::
                 errors->push_back( e.get_error(i) );
 
         config_to_input_pages = SAM_config_to_input_pages;
-        config_to_modules = SAM_config_to_modules;
+        config_to_modules = SAM_config_to_primary_modules;
         return ok;
     }
 }

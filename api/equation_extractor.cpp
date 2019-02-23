@@ -19,16 +19,19 @@ bool equation_extractor::parse_script(std::string eqn_script){
     else return true;
 }
 
-std::vector<std::string> equation_extractor::get_output_variables(){
-    output_variables.clear();
+void equation_extractor::export_to_equation_info(config_variables_info& cvi){
+    equation_info ei;
+    ei.ui_form = ui_form_name;
+
     std::vector<EqnData*> eqns = GetEquations();
     for (size_t i = 0; i < eqns.size(); i++){
-        // equations for which the result is the output
+        for (size_t n = 0; n < eqns[i]->inputs.Count(); n++){
+            ei.inputs.push_back(eqns[i]->inputs[n].ToStdString());
+        }
         for (size_t n = 0; n < eqns[i]->outputs.Count(); n++){
-            output_variables.push_back(eqns[i]->outputs[n].ToStdString());
+            ei.outputs.push_back(eqns[i]->outputs[n].ToStdString());
         }
     }
-    return output_variables;
 }
 
 size_t callback_extractor::parse_cmod_statement(std::string callback_script, size_t pos_start){
@@ -61,6 +64,6 @@ bool callback_extractor::parse_script(std::string callback_script) {
     return true;
 }
 
-std::vector<std::string> callback_extractor::get_compute_modules() {
-    return compute_modules;
+void callback_extractor::export_to_equation_info(config_variables_info &cvi){
+    cvi.secondary_cmods = compute_modules;
 }

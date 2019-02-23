@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "equations.h"
+#include "data_structures.h"
 
 /**
  *  One per config?
@@ -23,7 +24,8 @@ public:
 
     bool parse_script(std::string eqn_script);
 
-    std::vector<std::string> get_output_variables();
+    /// Returns the input and outputs of each equation
+    void export_to_equation_info(config_variables_info& cvi);
 };
 
 class callback_extractor{
@@ -40,7 +42,7 @@ public:
 
     bool parse_script(std::string callback_script);
 
-    std::vector<std::string> get_compute_modules();
+    void export_to_equation_info(config_variables_info &cvi);
 };
 
 #endif //SYSTEM_ADVISOR_MODEL_EQUATION_EXTRACTOR_H

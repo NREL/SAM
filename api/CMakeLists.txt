@@ -34,7 +34,7 @@ add_executable(export_config
         startup_extractor.cpp startup_extractor.h
         input_page_extractor.cpp input_page_extractor.h
         equation_extractor.cpp equation_extractor.h
-        ${SAM_SOURCES})
+        ${SAM_SOURCES} lk_env.h data_structures.h)
 
 set(SAM_API_SRC
         sam_api.cpp
