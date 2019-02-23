@@ -159,7 +159,7 @@ function setup_residential_pages( mode, degradation ) // mode determines whether
 {
   setting( { 'analysis_period_var'='cf_length' } );
   if (degradation == LIFETIME_SYSTEM )
-  {	
+  {
 	addpage( [[ 'Lifetime System']],
            {  'sidebar'='Lifetime','help'='lifetime' } );
   }
@@ -558,7 +558,7 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
 	addpage( [[ 'Physical Trough System Control' ,
 	  {'name' = 'Physical Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
-	  { 'sidebar'='System Control', 'help'='troughphysical_system_control' } );
+	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
 }
 
 function setup_cst_physical_trough_pages()
