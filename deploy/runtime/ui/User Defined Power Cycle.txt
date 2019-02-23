@@ -1433,7 +1433,7 @@ Power Cycle
 0
 Default
 
-316
+309
 equations{ 'ud_W_dot_cool_calc' } = define(){
 	return ${P_ref}*${ud_f_W_dot_cool_des}/100.0; };
 	
@@ -1444,8 +1444,8 @@ equations{ 'ud_COPY_T_amb_des' } = define(){
 	return ${ud_T_amb_des}; };
 	
 equations{ 'ud_COPY_T_HTF_des' } = define(){
-	return ${PB_COPY_T_htf_hot_des}; };
-
+	return ${T_htf_hot_des}; };
+	
 1975
 on_change{'btn_gen_inputs'} = define() {
 	//value("ud_ind_od", [[1,2,3,4,5,6,7],[11,22,33,44,55,66,77]]);

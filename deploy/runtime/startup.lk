@@ -533,7 +533,8 @@ function setup_fuel_cell_pages_fom()
 function setup_csp_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
-	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field', 'help'='troughphysical_solar_field' } );
+	addpage( [[ 'Physical Trough System Design' ]], { 'sidebar'='System Design', 'help'='troughphysical_solar_field' } );
+	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Trough Field', 'help'='troughphysical_solar_field' } );
 	addpage( [[ 'Physical Trough Collector Header',
 	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
 	 {'name'='Physical Trough Collector Type 2', 'caption'='Collector Type 2', 'collapsible'=true, 'collapsible_var'='sca_2_is_shown'},
@@ -546,18 +547,18 @@ function setup_csp_physical_trough_pages()
 	 {'name'='Physical Trough Receiver Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receivers (HCEs)', 'help'='troughphysical_receivers_hces' } );
-	addpage( [[ 'Rankine Cycle and Hybrid Cooling' ], [ 'User Defined Power Cycle' ]], 
+	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]], 
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
-			  'exclusive_header_pages' = ['Physical Trough Power Block Common']} );
+			  'exclusive_header_pages' = ['Physical Trough Power Cycle Common']} );
 	
 	//addpage( [[ 'Physical Trough Power Block Common' ,
 	  //{'name' = 'Physical Trough Rankine Cycle', 'caption' = 'Rankine Cycle', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  //{ 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
 	//addpage( [[ 'Physical Trough Power Block' ]], { 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
-	addpage( [[ 'Physical Trough Thermal Storage' ,
-	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
-	  { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
-	addpage( [[ 'Physical Trough Parasitics' ]], { 'sidebar'='Parasitics', 'help'='troughphysical_parasitics' } );
+	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
+	addpage( [[ 'Physical Trough System Control' ,
+	  {'name' = 'Physical Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
+	  { 'sidebar'='System Control', 'help'='troughphysical_system_control' } );
 }
 
 function setup_cst_physical_trough_pages()
