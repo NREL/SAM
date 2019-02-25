@@ -132,7 +132,14 @@ static void fcall_value( lk::invoke_t &cxt )
     LK_DOC("value", "Gets or sets the case value of a variable by name", "(string:name [,variant:value]):[variant]");
 
 //    CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
-//    wxString name = cxt.arg(0).as_string();
+    std::string name = cxt.arg(0).as_string().ToStdString();
+    if ( cxt.arg_count() == 1 ){
+        SAM_config_to_defaults[active_config].find(name)->second.Write(cxt.result());
+    }
+    else {
+        // check if the variable whose value is being assigned is a ssc variable
+
+    }
 //    if ( VarValue *vv = cc.GetValues().Get( name ) )
 //    {
 //        if ( cxt.arg_count() == 2 )
@@ -151,26 +158,98 @@ static void fcall_value( lk::invoke_t &cxt )
 
 static void fcall_varinfo( lk::invoke_t &cxt )
 {
-    LK_DOC("varinfo", "Gets meta data about an input or output variable. Returns null if the variable does not exist.", "(string:var name):table");
-    // nothing to do
+    LK_DOC("varinfo", "nothing to do", "(string:var name):table");
 }
 
 static void fcall_output(lk::invoke_t &cxt)
 {
-    LK_DOC("output", "Gets the requested output from the base case simulation for the current case.", "( string: output variable name ):none");
-    // nothing to do
+    LK_DOC("output", "nothing to do", "( string: output variable name ):none");
 }
 
 static void fcall_technology( lk::invoke_t &cxt )
 {
-    LK_DOC( "technology", "Return the current technology option name", "(void):string" );
-    // nothing to do
+    LK_DOC( "technology", "nothing to do", "(void):string" );
 }
 
 static void fcall_financing( lk::invoke_t &cxt )
 {
-    LK_DOC( "financing", "Return the current financing option name", "(void):string" );
-    // nothing to do
+    LK_DOC( "financing", "nothing to do", "(void):string" );
+}
+
+static void fcall_wfdownloaddir( lk::invoke_t &cxt){
+    LK_DOC( "wfdownloaddir", "Returns the folder into which solar data files are downloaded.", "(none):string" );
+}
+
+static void _wx_date_time(lk::invoke_t &cxt)
+{
+    LK_DOC("date_time", "Nothing to do", "(none):string");
+}
+
+static void _wx_msgbox(lk::invoke_t &cxt)
+{
+    LK_DOC("msgbox", "Nothing to do", "(string:message, [array:window position [x,y] or geometry [x,y,w,h]):boolean");
+}
+
+static void _wx_progressbar(lk::invoke_t &cxt) {
+    LK_DOC("progressbar", "Nothing to do", "");
+}
+
+static void _wx_showsettings(lk::invoke_t &cxt) {
+    LK_DOC("showsettings", "Nothing to do", "");
+}
+
+static void fcall_rescanlibrary(lk::invoke_t &cxt) {
+    LK_DOC("rescanlibrary", "Nothing to do", "");
+}
+
+static void fcall_show(lk::invoke_t &cxt) {
+    LK_DOC("show", "Nothing to do", "");
+}
+
+static void fcall_get_settings(lk::invoke_t &cxt) {
+    LK_DOC("get_settings", "Nothing to do", "");
+}
+
+static void fcall_set_settings(lk::invoke_t &cxt) {
+    LK_DOC("set_settings", "Nothing to do", "");
+}
+
+static void fcall_dview_solar(lk::invoke_t &cxt) {
+    LK_DOC("dview_solar", "Nothing to do", "");
+}
+
+static void fcall_geocode(lk::invoke_t &cxt) {
+    LK_DOC("geocode", "Do not enable geocoding", "");
+    cxt.result().empty_hash();
+    cxt.result().hash_item("ok").assign(0.0);
+}
+
+static void fcall_refresh(lk::invoke_t &cxt) {
+    LK_DOC("refresh", "Nothing to do", "");
+}
+
+static void fcall_nsrdbquery(lk::invoke_t &cxt)
+{
+    LK_DOC("nsrdbquery", "Do not enable nsrdb", "(none) : string");
+    cxt.result().assign(wxEmptyString);
+}
+
+static void fcall_librarygetnumbermatches(lk::invoke_t &cxt) {
+    LK_DOC("librarygetnumbermatches", "No matches", "(string:libraryctrlname):number");
+    cxt.result().assign(0.0);
+}
+
+static void fcall_librarygetfiltertext(lk::invoke_t &cxt){
+    LK_DOC("librarygetfiltertext", "Return empty", "(string:libraryctrlname):number");
+    cxt.result().assign("");
+}
+
+static void fcall_librarynotifytext(lk::invoke_t &cxt){
+    LK_DOC("librarynotifytext", "Nothing to do", "(string:libraryctrlname):number");
+}
+
+static void _wx_yesno(lk::invoke_t &cxt){
+    LK_DOC("yesno", "Nothing to do", "");
 }
 
 /**
@@ -187,6 +266,23 @@ static lk::fcall_t* invoke_casecallback_funcs()
             fcall_output,
             fcall_technology,
             fcall_financing,
+            fcall_wfdownloaddir,
+            _wx_date_time,
+            _wx_msgbox,
+            _wx_progressbar,
+            _wx_showsettings,
+            fcall_rescanlibrary,
+            fcall_show,
+            fcall_get_settings,
+            fcall_set_settings,
+            fcall_dview_solar,
+            fcall_geocode,
+            fcall_refresh,
+            fcall_nsrdbquery,
+            fcall_librarygetnumbermatches,
+            fcall_librarygetfiltertext,
+            fcall_librarynotifytext,
+            _wx_yesno,
             0 };
     return (lk::fcall_t*)vec;
 }
@@ -219,8 +315,7 @@ static void fcall_ssc_create( lk::invoke_t &cxt )
 
 static void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 {
-    LK_DOC("ssc_module_create_from_case", "Create a new SSC data container object populated from the input compute module values defined in the current case", "(string:compute_module_name):ssc-obj-ref");
-    // nothing to do
+    LK_DOC("ssc_module_create_from_case", "Nothing to do", "(string:compute_module_name):ssc-obj-ref");
 }
 
 static void fcall_ssc_free( lk::invoke_t &cxt )
@@ -260,7 +355,6 @@ static lk::fcall_t* invoke_ssc_funcs()
             0 };
     return (lk::fcall_t*)vec;
 }
-
 
 
 #endif //SYSTEM_ADVISOR_MODEL_LK_ENV_H

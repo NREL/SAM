@@ -4,8 +4,11 @@
 #include "input_page_extractor.h"
 #include "variables.h"
 
-void input_page_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
+std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_config_to_defaults;
+
+VarValue input_page_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
     wxTextInputStream in(is, "\n");
+    VarValue vv;
 
     in.Read8(); // ver
 
@@ -18,33 +21,43 @@ void input_page_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
             for (size_t r = 0; r < nr; r++) {
                 in.ReadLine();
             }
+            // need to do maybe
+            in.ReadLine();
         }
-        in.ReadLine();
+        else{
+            double def;
+            in.ReadLine().ToDouble(&def);
+            vv.Set(def);
+        }
     }
     // string
     else if (m_type == 4){
-        if (in.Read32() > 0) in.ReadLine();
+        if (in.Read32() > 0) vv.Set(in.ReadLine());
     }
     // table
     else if (m_type == 5){
         in.Read8(); //ver
 
         size_t m = in.Read32();
+        VarTable vt;
         for (size_t j = 0; j<m; j++)
         {
             std::string entry = in.ReadWord();
-            get_varvalue(is, entry);
+            vt.Set(entry, get_varvalue(is, entry));
         }
+        vv.Set(vt);
     }
     // binary
     else if (m_type == 6){
         size_t len = in.Read32();
         for (size_t i = 0; i <len; i++)
             in.GetChar();
+        vv.Set(wxMemoryBuffer());
     }
+
 }
 
-void input_page_extractor::get_varinfo(wxInputStream &is, wxString var_name) {
+VarValue input_page_extractor::get_var_default(wxInputStream &is, wxString var_name) {
     wxTextInputStream in(is, "\n");
 
     wxArrayString table_names;
@@ -77,7 +90,9 @@ void input_page_extractor::get_varinfo(wxInputStream &is, wxString var_name) {
         std::cout << "flag error: " << flag << " while parsing var info " << var_name << "\n";
     }
 
-    get_varvalue(is, var_name);
+    VarValue vv;
+    vv.Read_text(is);
+
     if (ver >= 3) in.ReadLine();
 
     // save variable names
@@ -93,6 +108,8 @@ void input_page_extractor::get_varinfo(wxInputStream &is, wxString var_name) {
         if (calculated) m_calculated_variables.push_back(var_name);
         else m_direct_variables.push_back(var_name);
     }
+
+    return vv;
 }
 
 /// Formatting of UI form txt taken from InputPageData::Read, VarDatabase::Read
@@ -135,8 +152,16 @@ void input_page_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     n = in.Read32();
 
     for (size_t i = 0; i < n; i++){
-        wxString name = in.ReadWord();
-        get_varinfo(is, name);
+        std::string name = in.ReadWord().ToStdString();
+        auto it = SAM_config_to_defaults[active_config].find(name);
+        if (it != SAM_config_to_defaults[active_config].end())
+            it->second.Read_text(is);
+        else{
+            VarInfo vi;
+            vi.Read_text(is);
+            SAM_config_to_defaults[active_config].insert({name, vi.DefaultValue});
+        }
+
     }
     in.ReadLine();
 

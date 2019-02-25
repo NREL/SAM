@@ -9,31 +9,33 @@
 #include "input_page_extractor.h"
 #include "equation_extractor.h"
 
+std::unordered_map<std::string, config_variables_info> SAM_config_to_case_variables;
+std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
+
+void load_ssc_variables_per_cmod(startup_extractor sue){
+
+}
+
 /// extract into page_variable_per_config
 bool extract_scripts_to_cvi(std::string ui_path, std::string ui_form_name, config_variables_info &cvi){
-    if (cvi.eqns_info.size() > 0){
-        std::cout << "Extracting script from "<< ui_form_name << " which already has eqn outputs.\n";
-        return false;
-    }
-    if (cvi.secondary_cmods.size() > 0){
-        std::cout << "Extracting script from "<< ui_form_name << " which already has callback cmods.\n";
-        return false;
-    }
-
     input_page_extractor ipl;
     if (!ipl.extract(ui_path + ui_form_name + ".txt")){
-        std::cout << "Cannot open " + ui_form_name + " file at " + ui_path;
+        std::cout << "extract_scripts_to_cvi error: Cannot open " + ui_form_name + " file at " + ui_path;
         return false;
     }
 
-    equation_extractor eqn_ext(ui_form_name);
-    eqn_ext.parse_script(ipl.get_eqn_script());
+    if (SAM_ui_form_to_eqn_info.find(ui_form_name) == SAM_ui_form_to_eqn_info.end()){
+        equation_extractor eqn_ext(ui_form_name);
+        eqn_ext.parse_script(ipl.get_eqn_script());
+        eqn_ext.export_to_equation_info();
+    }
 
-    callback_extractor cb_ext(ui_form_name);
-    cb_ext.parse_script(ipl.get_callback_script());
+    if (SAM_ui_form_to_secondary_cmod_info.find(ui_form_name) == SAM_ui_form_to_secondary_cmod_info.end()) {
+        callback_extractor cb_ext(ui_form_name, &ipl.m_env);
+        cb_ext.parse_script(ipl.get_callback_script());
+        cb_ext.export_to_secondary_cmod_info();
+    }
 
-    eqn_ext.export_to_equation_info(cvi);
-    cb_ext.export_to_equation_info(cvi);
     return true;
 }
 
@@ -59,12 +61,14 @@ int main(int argc, char *argv[]){
     startup_extractor su_e;
     su_e.load_startup_script(content, &errors);
 
+    load_ssc_variables_per_cmod(su_e);
+
     // for each configuration, extract the equations and callback scripts per input page
     std::string ui_path =  "../deploy/runtime/ui/";
 
-//    config_variables_info pvpc;
-//    extract_scripts_to_cvi(ui_path, "Solar Water Heating", pvpc);
-//    return 1;
+    config_variables_info pvpc;
+    extract_scripts_to_cvi(ui_path, "Solar Resource Data", pvpc);
+    return 1;
 
     std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages = su_e.get_config_to_input_pages();
 
@@ -93,7 +97,7 @@ int main(int argc, char *argv[]){
                 }
             }
         }
-        SAM_config_to_case_variables[cvi.config_name] = cvi;
+        SAM_config_to_case_variables.insert({cvi.config_name, cvi});
     }
 
     // output all data in python syntax
@@ -108,12 +112,12 @@ int main(int argc, char *argv[]){
     time_t now = time(0);
     std::cout << "\tDate: " << ctime(&now) <<"\n";
     std::cout << "\"\"\"\n\n";
-    su_e.print_config_to_input_pages();
+//    su_e.print_config_to_input_pages();
 
     std::cout << "\n\n\n";
-    su_e.print_config_to_modules();
+//    su_e.print_config_to_modules();
 
     std::cout << "# List of Variables that are used in equations #\n\n";
-    print_config_variables_info();
+    print_ui_form_to_eqn_variable();
 }
 

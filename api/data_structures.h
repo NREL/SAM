@@ -4,8 +4,17 @@
 #include <string>
 #include <unordered_map>
 #include <set>
+#include <iostream>
+
+#include "variables.h"
 
 /* List of all intermediate and exported data structures with descriptions */
+
+/**
+ * All inputs to SSC compute_modules: includes SSC_INPUT and SSC_INOUT
+ */
+
+extern std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 
 /**
  * Each input page consists of a page_info with the sidebar title in the SAM GUI, ui forms which are common
@@ -22,28 +31,45 @@ struct page_info{
 
 
 /// Bookmarks active configuration during startup.lk parsing
-static std::string active_config;
+extern std::string active_config;
 
 
 /**
  * Maps each technology-financial configuration to the ui forms in each SAM page
  * e.g. 'MSLF-None': { 'Location and Resource': {'common': Solar Resource Data } ...
  */
-static std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages;
+extern std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages;
 
 
 /**
  * Maps each technology-financial configuration to the primary compute_modules required
  * e.g. 'Biopower-LCOE Calculator': ('biomass', 'lcoefcr')
  */
-static std::unordered_map<std::string, std::vector<std::string>> SAM_config_to_primary_modules;
+extern std::unordered_map<std::string, std::vector<std::string>> SAM_config_to_primary_modules;
+
+
+/**
+ * Maps each technology-financial configuration to the default values found in included input pages
+ */
+extern std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_config_to_defaults;
 
 
 struct equation_info{
-    std::string ui_form;
     std::vector<std::string> inputs;
     std::vector<std::string> outputs;
 };
+
+extern std::unordered_map<std::string, std::vector<equation_info>> SAM_ui_form_to_eqn_info;
+
+
+struct secondary_cmod_info{
+    std::vector<std::string> inputs;
+    std::vector<std::string> outputs;
+};
+
+extern std::unordered_map<std::string, std::vector<secondary_cmod_info>> SAM_ui_form_to_secondary_cmod_info;
+
+
 
 /**
  * For each given configuration, stores the information required to match up ui variables with
@@ -83,7 +109,7 @@ struct config_variables_info{
 
 };
 
-static std::unordered_map<std::string, config_variables_info> SAM_config_to_case_variables;
+extern std::unordered_map<std::string, config_variables_info> SAM_config_to_case_variables;
 
 /**
  * Maps each technology-financial configuration to the secondary compute_modules required
@@ -93,12 +119,70 @@ static std::unordered_map<std::string, config_variables_info> SAM_config_to_case
 
 
 /// Bookmarks active ui form during UI script parsing
-static std::string active_ui;
+extern std::string active_ui;
 
 /**
  * Maps each config to the secondary cmod outputs that are used as inputs to the primary cmod
  * e.g. 'Wind Power-Residential': {'wind_obos': wind_turbine_rotor_diameter, rotorD)
  */
+
+
+// utils
+
+template <typename T>
+static std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
+{
+    os << "(";
+    for (int i = 0; i < v.size(); ++i) {
+        os << "'" <<v[i] << "'";
+        if (i != v.size() - 1)
+            os << ", ";
+    }
+    os << ")";
+    return os;
+}
+
+static void print_ui_form_to_eqn_variable(){
+    std::cout << "ui_form_to_eqn_var_map = {" << "\n";
+    for (auto it = SAM_ui_form_to_eqn_info.begin(); it != SAM_ui_form_to_eqn_info.end(); ++it){
+        if (it != SAM_ui_form_to_eqn_info.begin()) std::cout << ",\n";
+
+        // 'ui_form' = {
+        std::cout << "\t'" << it->first << "': {\n";
+        for (size_t i = 0; i <it->second.size(); i++){
+            if (i > 0) std::cout << ",\n";
+            std::cout << "\t\t" << it->second[i].inputs << ": \n";
+            std::cout << "\t\t\t" << it->second[i].outputs << "";
+        }
+        std::cout << "\t}";
+    }
+    std::cout << "}";
+}
+
+static void print_config_variables_info(){
+    std::cout << "config_variables_info = {\n";
+    for (auto it = SAM_config_to_case_variables.begin(); it != SAM_config_to_case_variables.end(); ++it){
+        // 'config_name' = {
+        std::cout << "'" << it->second.config_name << "' : {\n";
+        bool first = true;
+        // equations: [inputs, outputs, ui_form]
+        std::cout << "\t\t'equations': {\n";
+        for (size_t n = 0; n < it->second.eqns_info.size(); n++){
+            //std::cout << "\t\t\t" << it->second.eqns_info[n].inputs << ": \n";
+            //std::cout << "\t\t\t\t(" << it->second.eqns_info[n].outputs << ",\n";
+            //std::cout << "\t\t\t\t'" << it->second.eqns_info[n].ui_form << "')\n";
+        }
+        std::cout << "\t\t}\n";
+        // secondary_cmods: [cmod ...]
+        if (it->second.secondary_cmods.size() > 0){
+            std::cout << "\t\t'secondary_cmods':\n";
+            for (size_t n = 0; n < it->second.secondary_cmods.size(); n++){
+                std::cout << "\t\t\t" << it->second.secondary_cmods[n] << "\n";
+            }
+        }
+        std::cout << "\t}\n";
+    }
+}
 
 
 

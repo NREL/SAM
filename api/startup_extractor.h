@@ -40,17 +40,4 @@ public:
     bool load_startup_script(const std::string script_file, std::vector<std::string>* errors);
 };
 
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
-{
-    os << "[";
-    for (int i = 0; i < v.size(); ++i) {
-        os << "'" <<v[i] << "'";
-        if (i != v.size() - 1)
-            os << ", ";
-    }
-    os << "]";
-    return os;
-}
-
 #endif //SYSTEM_ADVISOR_MODEL_EXTRACT_STARTUP_H

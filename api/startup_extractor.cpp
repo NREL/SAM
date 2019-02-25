@@ -17,6 +17,10 @@
 
 #include "startup_extractor.h"
 
+std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages;
+std::unordered_map<std::string, std::vector<std::string>> SAM_config_to_primary_modules;
+std::string active_config;
+
 // print into dictionary format
 void startup_extractor::print_config_to_input_pages(){
     std::cout << "config_to_input_pages_map = {\n";

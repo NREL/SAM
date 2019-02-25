@@ -25,7 +25,6 @@ include(${wxWidgets_USE_FILE})
 include_directories(../src $ENV{LKDIR}/include $ENV{SSCDIR})
 
 set(SAM_SOURCES
-        #../src/invoke.cpp
         ../src/variables.cpp
         ../src/equations.cpp)
 

@@ -13,6 +13,7 @@
 #include <wx/wfstream.h>
 #include <wx/txtstrm.h>
 
+#include "variables.h"
 #include "lk_env.h"
 
 /**
@@ -28,19 +29,25 @@ private:
     std::vector<std::string> m_calculated_variables;
 
     /// Structure after VarValue::Read_text
-    void get_varvalue(wxInputStream &is, wxString var_name);
+    VarValue get_varvalue(wxInputStream &is, wxString var_name);
 
     /// Structured after VarInfo::Read_text, except returns variable's flag
-    void get_varinfo(wxInputStream &is, wxString var_name);
+    VarValue get_var_default(wxInputStream &is, wxString var_name);
 
     /// Stores the eqn and callback LK script
     void get_eqn_and_callback_script(wxInputStream& is);
 
-
 public:
+
     input_page_extractor() = default;
+    ~input_page_extractor(){
+        m_env.clear_vars();
+        m_env.clear_objs();
+    }
 
     bool extract(std::string file);
+
+    lk::env_t m_env;
 
     std::string get_eqn_script() {return m_eqn_script;}
 
