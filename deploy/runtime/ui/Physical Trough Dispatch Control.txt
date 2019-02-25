@@ -146,10 +146,10 @@ Name
 GroupBox2
 X
 3
-9
+6
 Y
 3
-3
+0
 Width
 3
 830
