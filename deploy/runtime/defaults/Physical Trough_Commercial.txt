@@ -1,5 +1,5 @@
 1
-1057
+1059
 A_aperture
 1
 2
@@ -48,6 +48,12 @@ ColperSCA
 8 8 8 8 
 
 DISCARD_UNUSED_latitude
+1
+1
+1
+1
+0
+DP_SGS
 1
 1
 1
@@ -6878,6 +6884,12 @@ wf_nrecords
 1
 1
 8760
+wind_stow_speed
+1
+1
+1
+1
+25
 wlim_series
 1
 2
