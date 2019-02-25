@@ -4235,7 +4235,7 @@ tech_type
 1
 1
 1
-2
+1
 tes_pump_coef
 1
 1
