@@ -1,7 +1,7 @@
 Physical Trough System Design
 869
-941
-22
+886
+21
 Numeric
 
 1
@@ -192,7 +192,7 @@ X
 246
 Y
 3
-261
+237
 Width
 3
 100
@@ -251,7 +251,7 @@ X
 246
 Y
 3
-237
+261
 Width
 3
 100
@@ -546,7 +546,7 @@ X
 6
 Y
 3
-375
+324
 Width
 3
 856
@@ -572,7 +572,7 @@ X
 444
 Y
 3
-273
+264
 Width
 3
 405
@@ -662,8 +662,8 @@ Colour
 255
 Caption
 5
-12
-Trough Field
+11
+Solar Field
 Bold
 2
 1
@@ -686,7 +686,7 @@ Width
 855
 Height
 3
-354
+306
 Caption
 5
 23
@@ -749,10 +749,10 @@ Name
 picture_border
 X
 3
-6
+9
 Y
 3
-372
+324
 Width
 3
 855
@@ -992,7 +992,7 @@ X
 687
 Y
 3
-294
+285
 Width
 3
 100
@@ -1038,65 +1038,6 @@ BackColour
 TabOrder
 3
 5
-Numeric
-
-1
-16
-Name
-5
-10
-tshours_sf
-X
-3
-687
-Y
-3
-318
-Width
-3
-100
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-7
 
 16
 I_bn_des
@@ -1144,7 +1085,7 @@ Default
 T_loop_in_des
 3
 1
-HTF cold temperature
+Loop inlet HTF temperature
 °C
 System Design
 0
@@ -1158,7 +1099,7 @@ Default
 T_loop_out
 3
 1
-HTF hot temperature
+Loop outlet HTF temperature
 °C
 System Design
 0
@@ -1298,7 +1239,7 @@ Numeric
 tshours
 3
 1
-Full load hours of storage
+Hours of storage at design point
 hours
 System Design
 0

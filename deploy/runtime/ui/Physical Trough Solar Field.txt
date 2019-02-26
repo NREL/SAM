@@ -1,7 +1,7 @@
 Physical Trough Solar Field
-864
-1241
-61
+866
+1231
+62
 Numeric
 
 1
@@ -15,7 +15,7 @@ X
 246
 Y
 3
-30
+144
 Width
 3
 100
@@ -74,7 +74,7 @@ X
 654
 Y
 3
-108
+120
 Width
 3
 100
@@ -133,7 +133,7 @@ X
 654
 Y
 3
-132
+144
 Width
 3
 100
@@ -192,7 +192,7 @@ X
 654
 Y
 3
-354
+24
 Width
 3
 100
@@ -251,7 +251,7 @@ X
 654
 Y
 3
-402
+72
 Width
 3
 100
@@ -310,13 +310,13 @@ X
 9
 Y
 3
-9
+180
 Width
 3
 404
 Height
 3
-320
+287
 Caption
 5
 22
@@ -337,13 +337,13 @@ X
 423
 Y
 3
-9
+180
 Width
 3
 437
 Height
 3
-320
+287
 Caption
 5
 19
@@ -364,17 +364,17 @@ X
 9
 Y
 3
-333
+6
 Width
 3
 850
 Height
 3
-146
+170
 Caption
 5
-12
-Design Point
+24
+Solar Field Design Point
 Bold
 2
 1
@@ -391,7 +391,7 @@ X
 9
 Y
 3
-735
+723
 Width
 3
 850
@@ -418,7 +418,7 @@ X
 9
 Y
 3
-558
+546
 Width
 3
 374
@@ -445,7 +445,7 @@ X
 9
 Y
 3
-483
+471
 Width
 3
 850
@@ -472,7 +472,7 @@ X
 9
 Y
 3
-675
+663
 Width
 3
 850
@@ -496,10 +496,10 @@ Name
 GroupBox6
 X
 3
-389
+390
 Y
 3
-558
+546
 Width
 3
 470
@@ -526,7 +526,7 @@ X
 246
 Y
 3
-204
+267
 Width
 3
 100
@@ -585,7 +585,7 @@ X
 24
 Y
 3
-777
+765
 Width
 3
 815
@@ -630,7 +630,7 @@ X
 24
 Y
 3
-756
+744
 Width
 3
 803
@@ -675,7 +675,7 @@ X
 462
 Y
 3
-522
+510
 Width
 3
 353
@@ -720,7 +720,7 @@ X
 462
 Y
 3
-501
+489
 Width
 3
 353
@@ -765,7 +765,7 @@ X
 654
 Y
 3
-255
+390
 Width
 3
 73
@@ -810,7 +810,7 @@ X
 750
 Y
 3
-255
+390
 Width
 3
 73
@@ -855,7 +855,7 @@ X
 246
 Y
 3
-228
+315
 Width
 3
 100
@@ -914,7 +914,7 @@ X
 246
 Y
 3
-60
+195
 Width
 3
 100
@@ -973,7 +973,7 @@ X
 246
 Y
 3
-156
+363
 Width
 3
 100
@@ -1029,10 +1029,10 @@ Name
 T_fp
 X
 3
-246
+654
 Y
 3
-276
+267
 Width
 3
 100
@@ -1091,7 +1091,7 @@ X
 654
 Y
 3
-300
+435
 Width
 3
 65
@@ -1150,7 +1150,7 @@ X
 654
 Y
 3
-276
+411
 Width
 3
 65
@@ -1209,7 +1209,7 @@ X
 750
 Y
 3
-300
+435
 Width
 3
 65
@@ -1268,7 +1268,7 @@ X
 750
 Y
 3
-276
+411
 Width
 3
 65
@@ -1327,7 +1327,7 @@ X
 243
 Y
 3
-525
+513
 Width
 3
 100
@@ -1386,7 +1386,7 @@ X
 246
 Y
 3
-180
+411
 Width
 3
 100
@@ -1418,13 +1418,13 @@ Name
 combo_feather
 X
 3
-270
+246
 Y
 3
-300
+435
 Width
 3
-118
+100
 Height
 3
 21
@@ -1452,7 +1452,7 @@ X
 654
 Y
 3
-30
+195
 Width
 3
 124
@@ -1491,7 +1491,7 @@ X
 246
 Y
 3
-252
+291
 Width
 3
 100
@@ -1550,7 +1550,7 @@ X
 786
 Y
 3
-27
+192
 Width
 3
 59
@@ -1573,7 +1573,7 @@ X
 654
 Y
 3
-84
+243
 Width
 3
 100
@@ -1632,7 +1632,7 @@ X
 654
 Y
 3
-60
+219
 Width
 3
 100
@@ -1691,7 +1691,7 @@ X
 654
 Y
 3
-426
+96
 Width
 3
 100
@@ -1750,7 +1750,7 @@ X
 120
 Y
 3
-696
+684
 Width
 3
 100
@@ -1806,10 +1806,10 @@ Name
 fthrok
 X
 3
-246
+354
 Y
 3
-300
+435
 Width
 3
 23
@@ -1838,7 +1838,7 @@ X
 246
 Y
 3
-375
+48
 Width
 3
 100
@@ -1897,7 +1897,7 @@ X
 654
 Y
 3
-180
+315
 Width
 3
 100
@@ -1956,7 +1956,7 @@ X
 654
 Y
 3
-156
+291
 Width
 3
 100
@@ -2015,7 +2015,7 @@ X
 654
 Y
 3
-228
+363
 Width
 3
 100
@@ -2074,7 +2074,7 @@ X
 633
 Y
 3
-606
+594
 Width
 3
 100
@@ -2133,7 +2133,7 @@ X
 633
 Y
 3
-582
+570
 Width
 3
 100
@@ -2192,7 +2192,7 @@ X
 633
 Y
 3
-630
+618
 Width
 3
 100
@@ -2251,7 +2251,7 @@ X
 654
 Y
 3
-204
+339
 Width
 3
 100
@@ -2310,7 +2310,7 @@ X
 501
 Y
 3
-696
+684
 Width
 3
 100
@@ -2369,7 +2369,7 @@ X
 246
 Y
 3
-447
+120
 Width
 3
 100
@@ -2428,7 +2428,7 @@ X
 246
 Y
 3
-351
+24
 Width
 3
 100
@@ -2487,7 +2487,7 @@ X
 246
 Y
 3
-108
+243
 Width
 3
 100
@@ -2546,7 +2546,7 @@ X
 246
 Y
 3
-84
+219
 Width
 3
 100
@@ -2605,7 +2605,7 @@ X
 243
 Y
 3
-501
+489
 Width
 3
 100
@@ -2664,7 +2664,7 @@ X
 654
 Y
 3
-378
+48
 Width
 3
 100
@@ -2723,7 +2723,7 @@ X
 714
 Y
 3
-696
+684
 Width
 3
 100
@@ -2782,7 +2782,7 @@ X
 246
 Y
 3
-399
+72
 Width
 3
 100
@@ -2841,7 +2841,7 @@ X
 246
 Y
 3
-423
+96
 Width
 3
 100
@@ -2887,6 +2887,65 @@ BackColour
 TabOrder
 3
 30
+Numeric
+
+1
+16
+Name
+5
+20
+total_tracking_power
+X
+3
+246
+Y
+3
+387
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
 TroughLoop
 
 1
@@ -2900,7 +2959,7 @@ X
 24
 Y
 3
-819
+807
 Width
 3
 815
@@ -2920,7 +2979,7 @@ X
 195
 Y
 3
-618
+606
 Width
 3
 100
@@ -2979,7 +3038,7 @@ X
 195
 Y
 3
-594
+582
 Width
 3
 100
@@ -3038,7 +3097,7 @@ X
 246
 Y
 3
-132
+339
 Width
 3
 100
@@ -3085,7 +3144,7 @@ TabOrder
 3
 2
 
-85
+86
 DISCARD_UNUSED_latitude
 3
 1
@@ -3117,7 +3176,7 @@ Default
 FIELD_COPY_I_bn_des
 3
 1
-Irradiation at design
+Design point DNI
 W/m²
 Physical Trough Solar Field
 0
@@ -3131,7 +3190,7 @@ Numeric
 FIELD_COPY_T_loop_in_des
 3
 1
-Design loop inlet temp
+Loop inlet HTF temperature
 °C
 Physical Trough Solar Field
 0
@@ -3145,7 +3204,7 @@ Numeric
 FIELD_COPY_T_loop_out
 3
 1
-Design loop outlet temp
+Loop outlet HTF temperature
 °C
 Physical Trough Solar Field
 0
@@ -3355,7 +3414,7 @@ Numeric
 Pipe_hl_coef
 3
 1
-Piping heat loss coefficient
+Piping thermal loss coefficient
 W/m²-K
 Physical Trough Solar Field
 0
@@ -3383,7 +3442,7 @@ Numeric
 SCA_drives_elec
 3
 1
-Tracking power
+Tracking power per SCA
 W/sca
 Physical Trough Solar Field
 0
@@ -3580,12 +3639,12 @@ Choice
 combo_feather
 3
 1
-Defocusing strategy
+Allow partial defocusing
  
 Physical Trough Solar Field
 22
 Sequenced|Simultaneous
-3
+2
 1
 1
 1
@@ -3709,7 +3768,7 @@ Numeric
 field_thermal_output
 3
 1
-Field thermal output
+Actual field thermal output
 MWt
 Physical Trough Solar Field
 0
@@ -3783,7 +3842,7 @@ Allow partial defocusing
  
 Physical Trough Solar Field
 0
-2
+3
 1
 1
 1
@@ -4210,6 +4269,20 @@ Physical Trough Solar Field
 1
 0
 Numeric
+total_tracking_power
+3
+1
+Total tracking power
+W
+Physical Trough Solar Field
+0
+8
+1
+1
+1
+1
+100
+Default
 track_mode
 3
 1
@@ -4282,7 +4355,7 @@ Physical Trough Solar Field
 25
 Default
 
-6731
+6830
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -4537,13 +4610,23 @@ equations{ 'SCADefocusArray' } = define() {
 	return p1;
 };
 
-3373
+equations{ 'total_tracking_power' } = define() {
+	return ${nSCA}*${nLoops}*${SCA_drives_elec};
+};
+
+3502
 on_load{'Physical Trough Solar Field'} = define() {
 	on_change{'combo_htf_type'}();
 	on_change{'trough_loop_control'}();
+	on_change{'fthrok'}();
 
 	//msgbox("value of 'assemblies_per_loop' is '" + ${assemblies_per_loop} + "'.");
 	//msgbox("value of 'loop_optical_efficiency' is '" + ${loop_optical_efficiency} + "'.");
+};
+
+on_change{'fthrok'} = define() {
+	bChecked = value('fthrok');
+    enable("combo_feather", bChecked);
 };
 
 function cspdtr_solf_userhtf_dens(temperatureC) {
