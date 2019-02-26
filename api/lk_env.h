@@ -134,29 +134,64 @@ static void fcall_value( lk::invoke_t &cxt )
 {
     LK_DOC("value", "Gets or sets the case value of a variable by name", "(string:name [,variant:value]):[variant]");
 
-//    CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
-    std::string name = cxt.arg(0).as_string().ToStdString();
-    if ( cxt.arg_count() == 1 ){
-        SAM_config_to_defaults[active_config].find(name)->second.Write(cxt.result());
+    lk::vardata_t vdt_1 = cxt.arg(0);
+    std::string var_left = cxt.arg(0).as_string().ToStdString();
+    // find which ui form the left hand variable is from
+    std::string ui_source = "";
+    std::vector<std::string> all_ui = ui_forms_for_config(active_config);
+
+    for (size_t i = 0; i < all_ui.size(); i++){
+        std::unordered_map<std::string, VarValue> ui_def = SAM_ui_form_to_defaults[all_ui[i]];
+        auto it = ui_def.find(var_left);
+        if (it != ui_def.end()){
+            // record as 'handle name: value' to enable many levels of indirection
+            VarValue vv;
+            vv.Set(var_left + ":" + it->second.AsString());
+
+            vv.Write(cxt.result());
+
+            ui_source = all_ui[i];
+            break;
+        }
     }
-    else {
+
+    if (ui_source == ""){
+        std::cout << "fcall_value error: could not find left hand variable " << var_left ;
+        std::cout << " in config " << active_config << "\n";
+        throw std::exception();
+    }
+
+    if ( cxt.arg_count() > 1 ){
         // check if the variable being assigned and the value being assigned are ssc inputs
-        std::string value_assigned = cxt.arg(1).as_string().ToStdString();
+        std::string var_right = cxt.arg(1).as_string().ToStdString();
+
+        std::string ui_handle;
+        size_t pos = var_right.find(":");
+        if (pos != std::string::npos){
+            ui_handle = var_right.substr(0, pos);
+        }
+        else{
+            ui_handle = var_right;
+        }
+
         bool assigning_to_ssc_var = false;
         bool assigning_from_ssc_var = false;
 
-        for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
-            auto inputs_vec = it->second;
+        auto primary_cmods = SAM_config_to_primary_modules[active_config];
+        for (size_t i = 0; i < primary_cmods.size(); i++){
+            std::string cmod = primary_cmods[i];
 
-            if (std::find(inputs_vec.begin(), inputs_vec.end(), name) != inputs_vec.end()){
+            auto inputs_vec = SAM_cmod_to_inputs[cmod];
+
+            if (std::find(inputs_vec.begin(), inputs_vec.end(), var_left) != inputs_vec.end()){
                 assigning_to_ssc_var = true;
             }
-            if (std::find(inputs_vec.begin(), inputs_vec.end(), name) != inputs_vec.end()){
-                assigning_to_ssc_var = true;
+            if (std::find(inputs_vec.begin(), inputs_vec.end(), ui_handle) != inputs_vec.end()){
+                assigning_from_ssc_var = true;
             }
         }
 
-        // if name is not an ssc variable, it may be an ui variable
+        // if var_left is not an ssc variable, it can be an ui variable or a constant
     }
 //    if ( VarValue *vv = cc.GetValues().Get( name ) )
 //    {

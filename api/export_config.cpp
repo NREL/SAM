@@ -4,10 +4,12 @@
 
 #include <ssc/sscapi.h>
 
-#include "export_config.h"
 #include "startup_extractor.h"
 #include "ui_form_extractor.h"
 #include "equation_extractor.h"
+#include "config_extractor.h"
+
+#include "export_config.h"
 
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 std::unordered_map<std::string, config_variables_info> SAM_config_to_case_variables;
@@ -52,9 +54,10 @@ int main(int argc, char *argv[]){
     }
 
     // parsing the callbacks require all ui forms in a config
-    //callback_extractor cb_ext(ui_form_name);
-    //cb_ext.parse_script(m_callback_script);
-    //cb_ext.export_to_secondary_cmod_info();
+    for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
+        config_extractor ce(it->first);
+        ce.register_callback_functions();
+    }
 
     // for each configuration,  per input page
     config_variables_info pvpc;

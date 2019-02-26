@@ -46,9 +46,9 @@ extern std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inp
 
 
 /**
- * Maps each technology-financial configuration to the default values found in included input pages
+ * Maps each ui form to the config-independent default values found in included input pages
  */
-extern std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_config_to_defaults;
+extern std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_ui_form_to_defaults;
 
 
 /**
@@ -145,7 +145,7 @@ extern std::unordered_map<std::string, config_variables_info> SAM_config_to_case
 
 
 /// Bookmarks active ui form during UI script parsing
-extern std::string active_ui;
+static std::string active_ui;
 
 /**
  * Maps each config to the secondary cmod outputs that are used as inputs to the primary cmod
@@ -166,6 +166,21 @@ static std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
     }
     os << ")";
     return os;
+}
+
+static std::vector<std::string> ui_forms_for_config(std::string config_name){
+    std::vector<std::string> all_ui_forms;
+    std::vector<page_info> pages = SAM_config_to_input_pages[config_name];
+
+    for (size_t p = 0; p < pages.size(); p++) {
+        for (size_t i = 0; i < pages[p].common_uiforms.size(); i++) {
+            all_ui_forms.push_back(pages[p].common_uiforms[i]);
+        }
+        for (size_t i = 0; i < pages[p].exclusive_uiforms.size(); i++) {
+            all_ui_forms.push_back(pages[p].exclusive_uiforms[i]);
+        }
+    }
+    return all_ui_forms;
 }
 
 static void print_ui_form_to_eqn_variable(){

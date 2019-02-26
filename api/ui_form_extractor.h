@@ -76,9 +76,9 @@ public:
             return NULL;
     }
 
-    ui_form_extractor* make_entry(std::string n) {
-        ui_form_extractor* ufe = new ui_form_extractor(n);
-        ui_form_map.insert({n, ufe});
+    ui_form_extractor* make_entry(std::string ui_form_name) {
+        ui_form_extractor* ufe = new ui_form_extractor(ui_form_name);
+        ui_form_map.insert({ui_form_name, ufe});
         return ufe;
     }
 

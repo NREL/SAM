@@ -5,7 +5,8 @@
 #include "equation_extractor.h"
 #include "variables.h"
 
-std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_config_to_defaults;
+std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_ui_form_to_defaults;
+ui_form_extractor_database SAM_ui_extracted_db;
 
 VarValue ui_form_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
     wxTextInputStream in(is, "\n");
@@ -100,13 +101,13 @@ void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     // save variable defaults for each configuration for use in ui script evaluation
     for (size_t i = 0; i < n; i++){
         std::string name = in.ReadWord().ToStdString();
-        auto it = SAM_config_to_defaults[active_config].find(name);
-        if (it != SAM_config_to_defaults[active_config].end())
+        auto it = SAM_ui_form_to_defaults[ui_form_name].find(name);
+        if (it != SAM_ui_form_to_defaults[ui_form_name].end())
             it->second.Read_text(is);
         else{
             VarInfo vi;
             vi.Read_text(is);
-            SAM_config_to_defaults[active_config].insert({name, vi.DefaultValue});
+            SAM_ui_form_to_defaults[ui_form_name].insert({name, vi.DefaultValue});
         }
 
     }
@@ -159,4 +160,5 @@ bool ui_form_extractor_database::populate_ui_data(std::string ui_path, std::vect
             return false;
         }
     }
+    return true;
 }

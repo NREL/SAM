@@ -9,8 +9,6 @@
 #include "startup_extractor.h"
 #include "ui_form_extractor.h"
 
-ui_form_extractor_database SAM_ui_extracted_db;
-
 /// create the cmod and get all the variable names of desired type
 std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string which_type){
     ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
