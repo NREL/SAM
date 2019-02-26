@@ -10,28 +10,18 @@
 
 /* List of all intermediate and exported data structures with descriptions */
 
-/**
- * All inputs to SSC compute_modules: includes SSC_INPUT and SSC_INOUT
- */
-
-extern std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 
 /**
  * Each input page consists of a page_info with the sidebar title in the SAM GUI, ui forms which are common
  * to the page no matter what selection of variables is active, an exclusive variable which determines what
  * subset of ui forms should be shown, and those exclusive ui forms, of which only one is shown at a time.
  */
-
 struct page_info{
     std::string sidebar_title;
     std::vector<std::string> common_uiforms;
     std::string exclusive_var = "";
     std::vector<std::string> exclusive_uiforms;
 };
-
-
-/// Bookmarks active configuration during startup.lk parsing
-extern std::string active_config;
 
 
 /**
@@ -49,25 +39,61 @@ extern std::unordered_map<std::string, std::vector<std::string>> SAM_config_to_p
 
 
 /**
+ * All inputs to primary and secondary compute_modules: includes SSC_INPUT and SSC_INOUT
+ */
+
+extern std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
+
+
+/**
  * Maps each technology-financial configuration to the default values found in included input pages
  */
 extern std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_config_to_defaults;
 
 
+/**
+ * Manages mapping and memory for ui_form_extractors
+ */
+class ui_form_extractor_database;
+extern ui_form_extractor_database SAM_ui_extracted_db;
+
+
+/**
+ * Maps each ui form with the ui input/outputs of each equation. Required for tracking if ui variables
+ * are changed via equations (becoming ui_outputs) before becoming primary ssc inputs.
+ */
 struct equation_info{
-    std::vector<std::string> inputs;
-    std::vector<std::string> outputs;
+    std::vector<std::string> ui_inputs;
+    std::vector<std::string> ui_outputs;
 };
 
 extern std::unordered_map<std::string, std::vector<equation_info>> SAM_ui_form_to_eqn_info;
 
 
+/**
+ * Maps each ui form with the ui input/outputs of each secondary cmod. Required for tracking which ui variables
+ * are used as secondary cmod inputs and if the ui_outputs are assigned as primary ssc inputs.
+ */
 struct secondary_cmod_info{
-    std::vector<std::string> inputs;
-    std::vector<std::string> outputs;
+    std::vector<std::string> ui_inputs;
+    std::vector<std::string> ui_outputs;
 };
 
 extern std::unordered_map<std::string, std::vector<secondary_cmod_info>> SAM_ui_form_to_secondary_cmod_info;
+
+
+/**
+ * All outputs to secondary compute_modules: SSC_OUTPUT
+ */
+
+extern std::unordered_map<std::string, std::vector<std::string>> SAM_secondary_cmod_to_outputs;
+
+
+/**
+ * Mapping how ui variables are transformed by equations and callbacks before being assigned to primary ssc inputs
+ * across
+ */
+
 
 
 
@@ -99,7 +125,7 @@ struct config_variables_info{
     std::vector<equation_info> eqns_info;
 
     /// first element is the ui variable name,
-    std::set<std::pair<std::string, std::string>> ssc_variables_to_eqn_inputs;
+    std::set<std::pair<std::string, std::string>> ssc_variables_to_eval_inputs;
     std::set<std::pair<std::string, std::string>> eqn_outputs_to_ssc_variables;
 
     std::vector<std::string> secondary_cmods;
@@ -151,8 +177,8 @@ static void print_ui_form_to_eqn_variable(){
         std::cout << "\t'" << it->first << "': {\n";
         for (size_t i = 0; i <it->second.size(); i++){
             if (i > 0) std::cout << ",\n";
-            std::cout << "\t\t" << it->second[i].inputs << ": \n";
-            std::cout << "\t\t\t" << it->second[i].outputs << "";
+            std::cout << "\t\t" << it->second[i].ui_inputs << ": \n";
+            std::cout << "\t\t\t" << it->second[i].ui_outputs << "";
         }
         std::cout << "\t}";
     }

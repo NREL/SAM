@@ -21,23 +21,18 @@
 
 class startup_extractor{
 private:
-    std::unordered_map<std::string, std::vector<page_info>> config_to_input_pages;
-    std::unordered_map<std::string, std::vector<std::string>> config_to_modules;
+    std::vector<std::string> errors;
 
 public:
-    std::unordered_map<std::string, std::vector<page_info>> get_config_to_input_pages(){
-        return config_to_input_pages;
-    };
-
-    std::unordered_map<std::string, std::vector<std::string>> get_config_to_modules(){
-        return config_to_modules;
-    };
 
     void print_config_to_input_pages();
 
     void print_config_to_modules();
 
-    bool load_startup_script(const std::string script_file, std::vector<std::string>* errors);
+    /// Populates SAM_config_to_input_pages and SAM_config_to_primary_modules
+    bool load_startup_script(const std::string script_file);
+
+    std::vector<std::string> get_unique_ui_forms();
 };
 
 #endif //SYSTEM_ADVISOR_MODEL_EXTRACT_STARTUP_H

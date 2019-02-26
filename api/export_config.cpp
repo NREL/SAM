@@ -6,38 +6,13 @@
 
 #include "export_config.h"
 #include "startup_extractor.h"
-#include "input_page_extractor.h"
+#include "ui_form_extractor.h"
 #include "equation_extractor.h"
 
-std::unordered_map<std::string, config_variables_info> SAM_config_to_case_variables;
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
+std::unordered_map<std::string, config_variables_info> SAM_config_to_case_variables;
 
-void load_ssc_variables_per_cmod(startup_extractor sue){
 
-}
-
-/// extract into page_variable_per_config
-bool extract_scripts_to_cvi(std::string ui_path, std::string ui_form_name, config_variables_info &cvi){
-    input_page_extractor ipl;
-    if (!ipl.extract(ui_path + ui_form_name + ".txt")){
-        std::cout << "extract_scripts_to_cvi error: Cannot open " + ui_form_name + " file at " + ui_path;
-        return false;
-    }
-
-    if (SAM_ui_form_to_eqn_info.find(ui_form_name) == SAM_ui_form_to_eqn_info.end()){
-        equation_extractor eqn_ext(ui_form_name);
-        eqn_ext.parse_script(ipl.get_eqn_script());
-        eqn_ext.export_to_equation_info();
-    }
-
-    if (SAM_ui_form_to_secondary_cmod_info.find(ui_form_name) == SAM_ui_form_to_secondary_cmod_info.end()) {
-        callback_extractor cb_ext(ui_form_name, &ipl.m_env);
-        cb_ext.parse_script(ipl.get_callback_script());
-        cb_ext.export_to_secondary_cmod_info();
-    }
-
-    return true;
-}
 
 int main(int argc, char *argv[]){
     // startup.lk file path should be provided via command line
@@ -54,23 +29,39 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
-    // load file and extract information for each technology-financial configuration
+    // from startup script, load file and extract information for each config
     std::string content = static_cast<std::stringstream const&>(std::stringstream() << ifs.rdbuf()).str();
-    std::vector<std::string> errors;
 
     startup_extractor su_e;
-    su_e.load_startup_script(content, &errors);
+    su_e.load_startup_script(content);
+    std::vector<std::string> unique_ui_form_names = su_e.get_unique_ui_forms();
 
-    load_ssc_variables_per_cmod(su_e);
+    // get all the SSC_INPUT & SSC_INOUT for all used compute_modules
+    load_primary_cmod_inputs();
 
-    // for each configuration, extract the equations and callback scripts per input page
+
+    // from each ui_form file, extract the config-independent defaults, equations and callback scripts
     std::string ui_path =  "../deploy/runtime/ui/";
+    SAM_ui_extracted_db.populate_ui_data(ui_path, unique_ui_form_names);
 
+    // parse the equations
+    for (size_t i = 0; i < unique_ui_form_names.size(); i++){
+        std::string ui_name = unique_ui_form_names[i];
+        equation_extractor eqn_ext(ui_name);
+        eqn_ext.parse_script(SAM_ui_extracted_db.find(ui_name)->get_eqn_script());
+    }
+
+    // parsing the callbacks require all ui forms in a config
+    //callback_extractor cb_ext(ui_form_name);
+    //cb_ext.parse_script(m_callback_script);
+    //cb_ext.export_to_secondary_cmod_info();
+
+    // for each configuration,  per input page
     config_variables_info pvpc;
-    extract_scripts_to_cvi(ui_path, "Solar Resource Data", pvpc);
+    //extract_scripts_to_cvi(ui_path, "Solar Resource Data", pvpc);
     return 1;
 
-    std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages = su_e.get_config_to_input_pages();
+//    std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages = su_e.get_config_to_input_pages();
 
     // export config_variables_info from page_info
     for (auto it = SAM_config_to_input_pages.begin(); it != SAM_config_to_input_pages.end(); ++it){
@@ -84,17 +75,17 @@ int main(int argc, char *argv[]){
             for (size_t c = 0; c < page_info_vector[page_n].common_uiforms.size(); c++){
                 std::string ui_form_name = page_info_vector[page_n].common_uiforms[c];
 
-                if (!extract_scripts_to_cvi(ui_path, ui_form_name, cvi)){
-                    return 1;
-                }
+//                if (!extract_scripts_to_cvi(ui_path, ui_form_name, cvi)){
+//                    return 1;
+//                }
             }
             for (size_t e = 0; e < page_info_vector[page_n].exclusive_uiforms.size(); e++){
                 std::string ui_form_name = page_info_vector[page_n].exclusive_uiforms[e];
 
                 std::vector<std::string> eqn_vars, cb_cmods;
-                if (!extract_scripts_to_cvi(ui_path, ui_form_name, cvi)){
-                    return 1;
-                }
+//                if (!extract_scripts_to_cvi(ui_path, ui_form_name, cvi)){
+//                    return 1;
+//                }
             }
         }
         SAM_config_to_case_variables.insert({cvi.config_name, cvi});

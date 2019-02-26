@@ -25,7 +25,8 @@ bool equation_extractor::parse_script(std::string eqn_script){
         }
         return false;
     }
-    else return true;
+    export_to_equation_info();
+    return true;
 }
 
 void equation_extractor::export_to_equation_info(){
@@ -35,10 +36,10 @@ void equation_extractor::export_to_equation_info(){
     for (size_t i = 0; i < eqns.size(); i++){
         equation_info ei;
         for (size_t n = 0; n < eqns[i]->inputs.Count(); n++){
-            ei.inputs.push_back(eqns[i]->inputs[n].ToStdString());
+            ei.ui_inputs.push_back(eqns[i]->inputs[n].ToStdString());
         }
         for (size_t n = 0; n < eqns[i]->outputs.Count(); n++){
-            ei.outputs.push_back(eqns[i]->outputs[n].ToStdString());
+            ei.ui_outputs.push_back(eqns[i]->outputs[n].ToStdString());
         }
         ei_vec.push_back(ei);
     }
@@ -78,15 +79,16 @@ bool callback_extractor::parse_script(std::string callback_script) {
     }
     else
     {
-        m_cbenv->register_funcs( lk::stdlib_basic() );
-        m_cbenv->register_funcs( lk::stdlib_sysio() );
-        m_cbenv->register_funcs( lk::stdlib_math() );
-        m_cbenv->register_funcs( lk::stdlib_string() );
-        m_cbenv->register_funcs( invoke_ssc_funcs() );
-        m_cbenv->register_funcs( invoke_casecallback_funcs() );
+
+        m_cbenv.register_funcs( lk::stdlib_basic() );
+        m_cbenv.register_funcs( lk::stdlib_sysio() );
+        m_cbenv.register_funcs( lk::stdlib_math() );
+        m_cbenv.register_funcs( lk::stdlib_string() );
+        m_cbenv.register_funcs( invoke_ssc_funcs() );
+        m_cbenv.register_funcs( invoke_casecallback_funcs() );
 
 
-        lk::eval e( tree, m_cbenv );
+        lk::eval e( tree, &m_cbenv );
 
         bool ok = e.run();
         if ( !ok )
@@ -107,7 +109,7 @@ bool callback_extractor::parse_script(std::string callback_script) {
 }
 
 lk::node_t * callback_extractor::parse_functions(const std::string &method_name){
-    lk::vardata_t *cbvar = m_cbenv->lookup( method_name, true);
+    lk::vardata_t *cbvar = m_cbenv.lookup( method_name, true);
 
     if (!cbvar || cbvar->type() != lk::vardata_t::HASH )
     {
@@ -135,17 +137,16 @@ lk::node_t * callback_extractor::parse_functions(const std::string &method_name)
         if (!invoke_function(p_define->right, obj_name))
             std::cout << "extract_function error: " << errors;
 
-        //return p_define->right;
+        return p_define->right;
 
     }
 }
 
 bool callback_extractor::invoke_function(lk::node_t *root, std::string f_name) {
 
-    lk::env_t local_env( m_cbenv );
 
     try {
-        lk::eval e( root, &local_env );
+        lk::eval e( root, &m_cbenv );
         if ( !e.run() )
         {
 

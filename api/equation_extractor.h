@@ -36,7 +36,7 @@ private:
     struct cb_data{ lk::node_t *tree; std::string source; };
     std::vector<cb_data*> m_cblist;
 
-    lk::env_t* m_cbenv;
+    lk::env_t m_cbenv;
 
     lk::node_t *parse_functions(const std::string &method_name);
 
@@ -44,9 +44,8 @@ private:
 
 public:
 
-    callback_extractor(std::string name, lk::env_t* env){
+    callback_extractor(std::string name){
         ui_form_name = name;
-        m_cbenv = env;
     };
 
     size_t parse_cmod_statement(std::string callback_script, size_t pos_start);

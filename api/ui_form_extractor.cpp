@@ -1,12 +1,13 @@
 #include <stdexcept>
 #include <iostream>
 
-#include "input_page_extractor.h"
+#include "ui_form_extractor.h"
+#include "equation_extractor.h"
 #include "variables.h"
 
 std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_config_to_defaults;
 
-VarValue input_page_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
+VarValue ui_form_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
     wxTextInputStream in(is, "\n");
     VarValue vv;
 
@@ -57,63 +58,8 @@ VarValue input_page_extractor::get_varvalue(wxInputStream &is, wxString var_name
 
 }
 
-VarValue input_page_extractor::get_var_default(wxInputStream &is, wxString var_name) {
-    wxTextInputStream in(is, "\n");
-
-    wxArrayString table_names;
-
-
-    int ver = in.Read8(); // ver
-    if (ver < 2)
-        in.ReadWord();
-    // type, label, units, group
-    for (size_t j = 0; j < 4; j++)
-        in.ReadLine();
-    // index labels for table
-    size_t n = in.Read32();
-    if (n > 0){
-        wxString x;
-        for (size_t i = 0; i < n; i++)
-            x.Append(in.GetChar());
-        table_names = wxSplit(x, '|');
-
-        in.ReadLine();
-    }
-    std::string flag = in.ReadLine(); // flags
-    int calculated = 0;
-
-    // conversion to string serves as check on parsing process
-    try{
-        calculated = std::stoi(flag) & VF_CALCULATED;
-    }
-    catch (std::invalid_argument){
-        std::cout << "flag error: " << flag << " while parsing var info " << var_name << "\n";
-    }
-
-    VarValue vv;
-    vv.Read_text(is);
-
-    if (ver >= 3) in.ReadLine();
-
-    // save variable names
-    if (table_names.size() > 0 ) {
-        for (size_t i = 0; i<table_names.size(); i++) {
-            if (calculated)
-                m_calculated_variables.push_back(var_name + "." + table_names[i]);
-            else
-                m_direct_variables.push_back(var_name + "." + table_names[i]);
-        }
-    }
-    else{
-        if (calculated) m_calculated_variables.push_back(var_name);
-        else m_direct_variables.push_back(var_name);
-    }
-
-    return vv;
-}
-
 /// Formatting of UI form txt taken from InputPageData::Read, VarDatabase::Read
-void input_page_extractor::get_eqn_and_callback_script(wxInputStream& is) {
+void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     wxTextInputStream in(is, "\n");
 
     for (size_t i = 0; i < 3; i++)
@@ -151,6 +97,7 @@ void input_page_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     in.ReadLine();
     n = in.Read32();
 
+    // save variable defaults for each configuration for use in ui script evaluation
     for (size_t i = 0; i < n; i++){
         std::string name = in.ReadWord().ToStdString();
         auto it = SAM_config_to_defaults[active_config].find(name);
@@ -187,13 +134,29 @@ void input_page_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     m_callback_script = tmp.ToStdString();
 }
 
-bool input_page_extractor::extract(std::string file) {
+bool ui_form_extractor::extract(std::string file) {
     wxFileName ff(file);
-    wxString name(ff.GetName());
 
+    // store the lk scripts
     wxFFileInputStream is(file, "r");
     bool bff = is.IsOk();
     if (!bff) return false;
     get_eqn_and_callback_script(is);
+
     return true;
+}
+
+/// Populates SAM_ui_extracted_db, SAM_ui_form_to_eqn_info, and
+bool ui_form_extractor_database::populate_ui_data(std::string ui_path, std::vector<std::string> ui_form_names){
+    for (size_t i = 0; i < ui_form_names.size(); i++){
+        std::string ui_name = ui_form_names[i];
+
+        ui_form_extractor* ui_fe = SAM_ui_extracted_db.make_entry(ui_name);
+        bool success = ui_fe->extract(ui_path + ui_name + ".txt");
+
+        if (!success){
+            std::cout << "ui_form_extractor_database error: Cannot open " + ui_name + " file at " + ui_path;
+            return false;
+        }
+    }
 }

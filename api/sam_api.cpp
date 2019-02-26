@@ -7,7 +7,7 @@
 #include <lk/stdlib.h>
 
 #include "startup_extractor.h"
-#include "input_page_extractor.h"
+#include "ui_form_extractor.h"
 
 #include "sam_api.h"
 

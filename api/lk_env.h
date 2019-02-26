@@ -10,6 +10,9 @@
 
 /* Set up LK environment specific for export_config */
 
+/// Bookmarks active configuration during startup.lk parsing
+static std::string active_config;
+
 /// export_config_funcs
 
 static void fcall_addconfig( lk::invoke_t &cxt )
@@ -137,8 +140,23 @@ static void fcall_value( lk::invoke_t &cxt )
         SAM_config_to_defaults[active_config].find(name)->second.Write(cxt.result());
     }
     else {
-        // check if the variable whose value is being assigned is a ssc variable
+        // check if the variable being assigned and the value being assigned are ssc inputs
+        std::string value_assigned = cxt.arg(1).as_string().ToStdString();
+        bool assigning_to_ssc_var = false;
+        bool assigning_from_ssc_var = false;
 
+        for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
+            auto inputs_vec = it->second;
+
+            if (std::find(inputs_vec.begin(), inputs_vec.end(), name) != inputs_vec.end()){
+                assigning_to_ssc_var = true;
+            }
+            if (std::find(inputs_vec.begin(), inputs_vec.end(), name) != inputs_vec.end()){
+                assigning_to_ssc_var = true;
+            }
+        }
+
+        // if name is not an ssc variable, it may be an ui variable
     }
 //    if ( VarValue *vv = cc.GetValues().Get( name ) )
 //    {
