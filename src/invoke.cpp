@@ -1294,13 +1294,13 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 		int rowCount, columnCount;
 		xl->Excel().getUsedCellRange(rowCount, columnCount, vals); 
 		
-		if (nskip >= rowCount - 1) nskip = 0;
+		if ((int)nskip >= rowCount - 1) nskip = 0;
 		if (astable)
 		{
 			if (rowMajor) {
 				wxArrayString colHeaders;
 				//read column headers from first nonskipped row
-				for (size_t c = 0; c < columnCount; c++) {
+				for (int c = 0; c < columnCount; c++) {
 					wxString name = vals[c*rowCount + nskip];
 					colHeaders.push_back(name);
 					if (name.IsEmpty()) continue;
@@ -1309,10 +1309,10 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 					it.empty_vector();
 					it.resize(rowCount - 1 - nskip);
 				}
-				for (size_t c = 0; c < columnCount; c++) {
+				for (int c = 0; c < columnCount; c++) {
 					lk::vardata_t* it = out.lookup(colHeaders[c]);
 					if (it == NULL) continue;
-					for (size_t r = 1 + nskip; r < rowCount; r++) {
+					for (int r = 1 + nskip; r < rowCount; r++) {
 						if (vals[c*rowCount + r] != wxEmptyString) {
 							if (tonum) it->index(r - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
 							else it->index(r - 1 - nskip)->assign(vals[c*rowCount + r]);
@@ -1323,7 +1323,7 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 			else {
 				wxArrayString rowHeaders;
 				//read row headers from first nonskipped column
-				for (size_t r = 0; r < rowCount; r++) {
+				for (int r = 0; r < rowCount; r++) {
 					wxString name = vals[nskip*rowCount + r];
 					rowHeaders.push_back(name);
 					if (name.IsEmpty()) continue;
@@ -1333,10 +1333,10 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 					it.resize(columnCount - 1 - nskip);
 				}
 
-				for (size_t r = 0; r < rowCount; r++) {
+				for (int r = 0; r < rowCount; r++) {
 					lk::vardata_t* it = out.lookup(rowHeaders[r]);
 					if (it == NULL) continue;
-					for (size_t c = 1 + nskip; c < columnCount; c++) {
+					for (int c = 1 + nskip; c < columnCount; c++) {
 						if (vals[c*rowCount + r] != wxEmptyString) {
 							if (tonum) it->index(c - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
 							else it->index(c - 1 - nskip)->assign(vals[c*rowCount + r]);
@@ -1349,11 +1349,11 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 			if (rowMajor == true) {
 				out.empty_vector();
 				out.vec()->resize(rowCount - nskip);
-				for (size_t r = nskip; r < rowCount; r++) {
+				for (int r = nskip; r < rowCount; r++) {
 					lk::vardata_t *row = out.index(r-nskip);
 					row->empty_vector();
 					row->vec()->resize(columnCount);
-					for (size_t c = 0; c < columnCount; c++)
+					for (int c = 0; c < columnCount; c++)
 					{
 						if (vals[c*rowCount + r] == wxEmptyString) continue;
 						if (tonum) {
@@ -1368,11 +1368,11 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 			else {
 				out.empty_vector();
 				out.vec()->resize(columnCount - nskip);
-				for (size_t c = nskip; c < columnCount; c++) {
+				for (int c = nskip; c < columnCount; c++) {
 					lk::vardata_t *col = out.index(c-nskip);
 					col->empty_vector();
 					col->vec()->resize(rowCount);
-					for (size_t r = 0; r < rowCount; r++)
+					for (int r = 0; r < rowCount; r++)
 					{
 						if (vals[c*rowCount + r] == wxEmptyString) continue;
 						if (tonum) {
@@ -2029,16 +2029,20 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		cxt.result().assign(wxEmptyString);
 		return;
 	}
+	// Setup progress dialog in main UI thread
+	wxEasyCurlDialog ecd = wxEasyCurlDialog("Setting up location",1);
 
 	//Get parameters from the dialog box for weather file download
 	wxString year;
 	year = spd.GetYear();
 	double lat, lon;
+	ecd.Update(1, 50.0f);
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
-		if (!wxEasyCurl::GeoCode(spd.GetAddress(), &lat, &lon))
+		if (!wxEasyCurl::GeoCode(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
-			wxMessageBox("Failed to geocode address");
+			ecd.Log("Failed to geocode address");
+			ecd.Finalize();
 			return;
 		}
 	}
@@ -2047,7 +2051,8 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		lat = spd.GetLatitude();
 		lon = spd.GetLongitude();
 	}
-
+	ecd.Update(1, 100.0f);
+	ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
 
 	wxArrayString hh = spd.GetHubHeights();
 
@@ -2066,62 +2071,182 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 	//Create URL for each hub height file download
 	wxString url;
-	bool ok;
-
+	bool success=true;
+	wxArrayString urls, displaynames;
 	wxCSVData csv_main, csv;
 
 	//Create the filename
 	filename = wfdir + "/" + location;
 
-	wxEasyCurl curl;
-
+	std::vector<wxEasyCurl*> curls;
 
 	for (size_t i = 0; i < hh.Count(); i++)
 	{
 		url = SamApp::WebApi("windtoolkit");
 		url.Replace("<YEAR>", year);
-		url.Replace("<HUBHEIGHT>", hh[i].Left(hh[i].Len()-1));
+		url.Replace("<HUBHEIGHT>", hh[i].Left(hh[i].Len() - 1));
 		url.Replace("<LAT>", wxString::Format("%lg", lat));
 		url.Replace("<LON>", wxString::Format("%lg", lon));
 		url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
-
-
-		ok = curl.Get(url, "Downloading data from wind toolkit...", SamApp::Window());	//true won't let it return to code unless it's done downloading
-		// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
-
-		if (!ok)
-		{
-			wxMessageBox("Failed to download data from web service.");
-			wxMessageBox("URL=" + url);
-			return;
-		}
-		wxString srw_api_data = curl.GetDataAsString();
-		if (!csv.ReadString(srw_api_data))
-		{
-			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
-			return;
-		}
-		if (i == 0)
-			csv_main.Copy(csv);
-		else
-		{
-			// add header (row 2), units (row 3) and hub heights (row 4)
-			// add data (rows 5 through end of data)
-			for (size_t j = 2; j < csv.NumRows() && j < csv_main.NumRows(); j++)
-				for (size_t k = 0; k < 4; k++)
-					csv_main(j, i * 4 + k) = csv(j, k);
-		}
-		filename += "_" + hh[i];
+		wxEasyCurl *curl = new wxEasyCurl;
+		curls.push_back(curl);
+		urls.push_back(url);
+		displaynames.push_back(hh[i]);
 	}
 
-	// write out combined hub height file 
-	filename += ".srw";
-	if (!csv_main.WriteFile(filename))
+	int nthread = hh.Count();
+	nthread = 1;
+	// no need to create extra unnecessary threads 
+	if (nthread > (int)urls.size()) nthread = (int)urls.size();
+
+	ecd.NewStage("Retrieving weather data", nthread);
+
+
+
+	std::vector<wxEasyCurlThread*> threads;
+	for (int i = 0; i < nthread; i++)
 	{
-		wxMessageBox(wxString::Format("Failed to write downloaded weather file %s.", filename));
+		wxEasyCurlThread *t = new wxEasyCurlThread(i);
+		threads.push_back(t);
+		t->Create();
+	}
+
+	// round robin assign each simulation to a thread
+	size_t ithr = 0;
+	for (size_t i = 0; i < urls.size(); i++)
+	{
+		threads[ithr++]->Add(curls[i],urls[i],displaynames[i]);
+		if (ithr == threads.size())
+			ithr = 0;
+	}
+
+	// start the threads
+	for (int i = 0; i < nthread; i++)
+		threads[i]->Run();
+
+	size_t its = 0, its0=0;
+	unsigned long ms = 500; // 0.5s
+	// can time first download to get better estimate
+	float tot_time = 25 * (float)hh.Count(); // 25 s guess based on test downloads
+	float per=0.0f,act_time;
+	int curhh = 0;
+	wxString cur_hh="";
+	while (1)
+	{
+		size_t i, num_finished = 0;
+		for (i = 0; i < threads.size(); i++)
+			if (!threads[i]->IsRunning())
+				num_finished++;
+
+		if (num_finished == threads.size())
+			break;
+
+		// threads still running so update interface
+		for (i = 0; i < threads.size(); i++)
+		{
+			wxString update;
+			per += (float)(ms) / (10 * tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
+			if (per > 100.0) per = (float)curhh / (float)hh.Count() * 100.0 - 10.0; // reset 10%
+			ecd.Update(i, per, update);
+			wxArrayString msgs = threads[i]->GetNewMessages();
+			ecd.Log(msgs);
+			if (threads[i]->GetDataAsString() != cur_hh)
+			{
+				if (cur_hh != "")
+					{ // adjust actual time based on first download
+					act_time = (float)((its-its0) * ms) / 1000.0f;
+					tot_time = act_time * (float)hh.Count();
+					its0 = its;
+				}
+				cur_hh = threads[i]->GetDataAsString();
+				ecd.Log("Downloading data for " + cur_hh + " hub height.");
+				per = (float)curhh / (float)hh.Count() * 100.0;
+				curhh++;
+			}
+		}
+
+		wxGetApp().Yield();
+
+		// if dialog's cancel button was pressed, send cancel signal to all threads
+		if (ecd.Canceled())
+		{
+			for (i = 0; i < threads.size(); i++)
+				threads[i]->Cancel();
+			if (success)
+			{
+				ecd.Log("Download Cancelled.");
+				success = false;
+			}
+		}
+		its++;
+		::wxMilliSleep(ms);
+	}
+
+	if (success)
+	{
+		size_t nok = 0;
+		// wait on the joinable threads
+		for (size_t i = 0; i < threads.size(); i++)
+		{
+			threads[i]->Wait();
+			nok += threads[i]->NOk();
+
+			// update final progress
+			float per = threads[i]->GetPercent();
+			ecd.Update(i, per);
+
+			// get any final simulation messages
+			wxArrayString msgs = threads[i]->GetNewMessages();
+			ecd.Log(msgs);
+		}
+
+		for (size_t i = 0; i < hh.Count(); i++)
+		{
+			wxString srw_api_data = curls[i]->GetDataAsString();
+			if (!csv.ReadString(srw_api_data))
+			{
+				//			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
+				ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
+				success=false;
+			}
+			if (i == 0)
+				csv_main.Copy(csv);
+			else
+			{
+				// add header (row 2), units (row 3) and hub heights (row 4)
+				// add data (rows 5 through end of data)
+				for (size_t j = 2; j < csv.NumRows() && j < csv_main.NumRows(); j++)
+					for (size_t k = 0; k < 4; k++)
+						csv_main(j, i * 4 + k) = csv(j, k);
+			}
+			filename += "_" + hh[i];
+		}
+		// write out combined hub height file 
+		filename += ".srw";
+	}
+
+
+
+	// delete all the thread objects
+	for (size_t i = 0; i < curls.size(); i++)
+		delete curls[i];
+	for (size_t i = 0; i < threads.size(); i++)
+		delete threads[i];
+
+	threads.clear();
+	curls.clear();
+	if (!success)
+	{
+		ecd.Finalize();
 		return;
 	}
 
+	if (!csv_main.WriteFile(filename))
+	{
+		ecd.Log(wxString::Format("Failed to write downloaded weather file %s.", filename));
+		ecd.Finalize();
+		return;
+	}
 	//Return the downloaded filename
 	cxt.result().assign(filename);
 }
@@ -2204,6 +2329,58 @@ static bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double 
 	}
 	return true;
 }
+
+
+void fcall_calculated_list(lk::invoke_t &cxt)
+{
+	LK_DOC("calculated_list", "Returns all SSC compute module inputs from the current case that are a SAM UI calculated variable.", "():array");
+
+	wxString msg="";
+	Case *c = SamApp::Window()->GetCurrentCase();
+	if (!c) return;
+
+	ConfigInfo *ci = c->GetConfiguration();
+	if (!ci) return;
+
+	wxArrayString sim_list = ci->Simulations;
+	VarInfoLookup &vil = ci->Variables;
+
+	if (sim_list.size() == 0)
+	{
+		return cxt.result().assign("No simulation compute modules defined for this configuration.");
+	}
+
+	cxt.result().empty_vector();
+
+	for (size_t kk = 0; kk < sim_list.size(); kk++)
+	{
+		ssc_module_t p_mod = ssc_module_create(sim_list[kk].c_str());
+		if (!p_mod)
+		{
+			msg += ("could not create ssc module: " + sim_list[kk]);
+			break;
+		}
+
+		int pidx = 0;
+		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+		{
+			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+			wxString reqd(ssc_info_required(p_inf));
+
+			if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+			{
+				VarInfo* vi = vil.Lookup(name);
+				if (vi && (vi->Flags & VF_CALCULATED))
+					cxt.result().vec_append(name);
+			}
+		}
+	}
+	if (msg != "")
+		return	cxt.result().assign(msg);
+}
+
+
 
 
 void fcall_group_write(lk::invoke_t &cxt)
@@ -4592,6 +4769,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_openeiutilityrateform,
 		fcall_group_read,
 		fcall_group_write,
+		fcall_calculated_list,
 		fcall_urdb_read,
 		fcall_urdb_write,
 		fcall_urdb_get,

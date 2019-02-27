@@ -6263,7 +6263,7 @@ Capital Costs
 0
 Numeric
 
-5915
+5937
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6300,7 +6300,8 @@ equations{ 'contingency' } = define() {
 				+${inverter_total}
 				+${bos_equip_total}
 				+${install_labor_total} 
-				+${install_margin_total} );
+				+${install_margin_total}
+				+${battery_total} );
 };
 
 equations{ 'land_area_value' } = define() {
