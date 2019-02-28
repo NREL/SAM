@@ -1010,7 +1010,7 @@ class C_OD_stacked_outputs_plot:
             
             for j, key in enumerate(self.y_vars):
                 
-                j_l_i = string.ascii_lowercase[j]
+                j_l_i = string.ascii_lowercase[j%26]
                 
                 j_col = j//n_rows
                 j_row = j%n_rows
@@ -1099,8 +1099,17 @@ class C_OD_stacked_outputs_plot:
                                     if(y_val_local < self.list_dict_results[i][y_limit]):                                        
                                         y_feasible_flag_i[j_in] = True
 
-        fig1.legend(legend_lines, legend_labels, fontsize = self.legend_fontsize, ncol = self.n_leg_cols, 
-             loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
+        #fig1.legend(legend_lines, legend_labels, fontsize = self.legend_fontsize, ncol = self.n_leg_cols, 
+        #     loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))        
+        
+        if(self.is_legend):
+            if( self.is_label_leg_cols != "" and len(self.is_label_leg_cols) == 1):
+                ii_leg = fig1.legend(legend_lines, legend_labels, title = self.is_label_leg_cols[0], fontsize = self.legend_fontsize, ncol = self.n_leg_cols, 
+                     loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
+                plt.setp(ii_leg.get_title(),fontsize=self.legend_fontsize)
+            else:
+                fig1.legend(legend_lines, legend_labels, fontsize = self.legend_fontsize, ncol = self.n_leg_cols, 
+                     loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
         
         if(self.is_legend):
         	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.012,0.02,0.98,self.bb_y_max_is_leg))
