@@ -14,7 +14,7 @@
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 std::unordered_map<std::string, config_variables_info> SAM_config_to_case_variables;
 
-
+std::string active_config;
 
 int main(int argc, char *argv[]){
     // startup.lk file path should be provided via command line
@@ -54,7 +54,15 @@ int main(int argc, char *argv[]){
     }
 
     // parsing the callbacks require all ui forms in a config
+    active_config = "";
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
+        // only do technology configs
+        if (it->first.find("None") == std::string::npos)
+            continue;
+        active_config = it->first;
+        if (active_config == "Generic CSP System-None"){
+            std::cout << "stophere";
+        }
         config_extractor ce(it->first);
         ce.register_callback_functions();
     }

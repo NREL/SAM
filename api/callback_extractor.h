@@ -8,6 +8,15 @@
 #include "lk_env.h"
 #include "data_structures.h"
 
+
+class extractor_interpreter : public lk::eval{
+public:
+    extractor_interpreter(lk::node_t *tree, lk::env_t* env):lk::eval(tree, env){}
+
+    virtual bool special_set( const std::string &name, lk::vardata_t &val );
+    virtual bool special_get( const std::string &name, lk::vardata_t &val );
+};
+
 class callback_extractor{
 private:
     std::string config_name;
@@ -48,6 +57,7 @@ public:
     void export_to_secondary_cmod_info();
 
 };
+
 
 
 #endif //SYSTEM_ADVISOR_MODEL_CALLBACK_EXTRACTOR_H

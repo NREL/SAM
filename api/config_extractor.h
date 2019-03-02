@@ -11,6 +11,7 @@ private:
     std::string config_name;
 
     lk::env_t m_env;
+
 public:
     config_extractor(std::string name){
         config_name = name;

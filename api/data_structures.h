@@ -74,19 +74,23 @@ extern std::unordered_map<std::string, std::vector<equation_info>> SAM_ui_form_t
  * Maps each ui form with the ui input/outputs of each secondary cmod. Required for tracking which ui variables
  * are used as secondary cmod inputs and if the ui_outputs are assigned as primary ssc inputs.
  */
-struct secondary_cmod_info{
-    std::vector<std::string> ui_inputs;
-    std::vector<std::string> ui_outputs;
+
+class secondary_cmod_info{
+private:
+    std::unordered_map<std::string, std::string> input_name_to_assignments;
+    std::unordered_map<std::string, std::string> output_name_to_assignments;
+public:
+    secondary_cmod_info(){};
+
+    std::string cmod_name;
+
+    void map_of_input(std::string input, std::string assignments);
+
+    void map_of_output(std::string output, std::string assignments);
 };
 
-extern std::unordered_map<std::string, std::vector<secondary_cmod_info>> SAM_ui_form_to_secondary_cmod_info;
+extern std::unordered_map<std::string, std::unordered_map<std::string, secondary_cmod_info>> SAM_config_to_secondary_cmod_info;
 
-
-/**
- * All outputs to secondary compute_modules: SSC_OUTPUT
- */
-
-extern std::unordered_map<std::string, std::vector<std::string>> SAM_secondary_cmod_to_outputs;
 
 
 /**
@@ -147,83 +151,40 @@ extern std::unordered_map<std::string, config_variables_info> SAM_config_to_case
 /// Bookmarks active ui form during UI script parsing
 static std::string active_ui;
 
+extern std::string active_object;
+
+extern std::unordered_map<std::string, std::vector<std::string>> SAM_ui_obj_to_enabled_variables;
+
+
 /**
  * Maps each config to the secondary cmod outputs that are used as inputs to the primary cmod
  * e.g. 'Wind Power-Residential': {'wind_obos': wind_turbine_rotor_diameter, rotorD)
  */
 
 
+/// Find which ui form a variable is defined inside for a given config
+std::string find_ui_form_source(std::string name, std::string config);
+
+/// Find the config-independent default VarValue for a variable for a given config
+VarValue* find_default_from_ui(std::string name, std::string config);
+
+/// Determine if a variable is a primary ssc input by returning cmod name
+std::string which_cmod_as_input(std::string name, std::string config);
+
+/// Determine if a variable is a secondary ssc output by returning cmod name
+std::string which_cmod_as_output(std::string name, std::string ui_form);
+
+
 // utils
 
 template <typename T>
-static std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
-{
-    os << "(";
-    for (int i = 0; i < v.size(); ++i) {
-        os << "'" <<v[i] << "'";
-        if (i != v.size() - 1)
-            os << ", ";
-    }
-    os << ")";
-    return os;
-}
+std::ostream& operator<<(std::ostream& os, const std::vector<T>& v);
 
-static std::vector<std::string> ui_forms_for_config(std::string config_name){
-    std::vector<std::string> all_ui_forms;
-    std::vector<page_info> pages = SAM_config_to_input_pages[config_name];
+std::vector<std::string> ui_forms_for_config(std::string config_name);
 
-    for (size_t p = 0; p < pages.size(); p++) {
-        for (size_t i = 0; i < pages[p].common_uiforms.size(); i++) {
-            all_ui_forms.push_back(pages[p].common_uiforms[i]);
-        }
-        for (size_t i = 0; i < pages[p].exclusive_uiforms.size(); i++) {
-            all_ui_forms.push_back(pages[p].exclusive_uiforms[i]);
-        }
-    }
-    return all_ui_forms;
-}
+void print_ui_form_to_eqn_variable();
 
-static void print_ui_form_to_eqn_variable(){
-    std::cout << "ui_form_to_eqn_var_map = {" << "\n";
-    for (auto it = SAM_ui_form_to_eqn_info.begin(); it != SAM_ui_form_to_eqn_info.end(); ++it){
-        if (it != SAM_ui_form_to_eqn_info.begin()) std::cout << ",\n";
-
-        // 'ui_form' = {
-        std::cout << "\t'" << it->first << "': {\n";
-        for (size_t i = 0; i <it->second.size(); i++){
-            if (i > 0) std::cout << ",\n";
-            std::cout << "\t\t" << it->second[i].ui_inputs << ": \n";
-            std::cout << "\t\t\t" << it->second[i].ui_outputs << "";
-        }
-        std::cout << "\t}";
-    }
-    std::cout << "}";
-}
-
-static void print_config_variables_info(){
-    std::cout << "config_variables_info = {\n";
-    for (auto it = SAM_config_to_case_variables.begin(); it != SAM_config_to_case_variables.end(); ++it){
-        // 'config_name' = {
-        std::cout << "'" << it->second.config_name << "' : {\n";
-        bool first = true;
-        // equations: [inputs, outputs, ui_form]
-        std::cout << "\t\t'equations': {\n";
-        for (size_t n = 0; n < it->second.eqns_info.size(); n++){
-            //std::cout << "\t\t\t" << it->second.eqns_info[n].inputs << ": \n";
-            //std::cout << "\t\t\t\t(" << it->second.eqns_info[n].outputs << ",\n";
-            //std::cout << "\t\t\t\t'" << it->second.eqns_info[n].ui_form << "')\n";
-        }
-        std::cout << "\t\t}\n";
-        // secondary_cmods: [cmod ...]
-        if (it->second.secondary_cmods.size() > 0){
-            std::cout << "\t\t'secondary_cmods':\n";
-            for (size_t n = 0; n < it->second.secondary_cmods.size(); n++){
-                std::cout << "\t\t\t" << it->second.secondary_cmods[n] << "\n";
-            }
-        }
-        std::cout << "\t}\n";
-    }
-}
+void print_config_variables_info();
 
 
 

@@ -8,10 +8,14 @@
 
 #include "data_structures.h"
 
+extern std::unordered_map<std::string, std::unordered_map<std::string, secondary_cmod_info>> SAM_config_to_secondary_cmod_info;
+
+
 /* Set up LK environment specific for export_config */
 
 /// Bookmarks active configuration during startup.lk parsing
-static std::string active_config;
+extern std::string active_config;
+extern std::string active_cmod;
 
 /// export_config_funcs
 
@@ -134,35 +138,32 @@ static void fcall_value( lk::invoke_t &cxt )
 {
     LK_DOC("value", "Gets or sets the case value of a variable by name", "(string:name [,variant:value]):[variant]");
 
-    lk::vardata_t vdt_1 = cxt.arg(0);
     std::string var_left = cxt.arg(0).as_string().ToStdString();
+
     // find which ui form the left hand variable is from
-    std::string ui_source = "";
-    std::vector<std::string> all_ui = ui_forms_for_config(active_config);
+    std::string ui_source = find_ui_form_source(var_left, active_config);
 
-    for (size_t i = 0; i < all_ui.size(); i++){
-        std::unordered_map<std::string, VarValue> ui_def = SAM_ui_form_to_defaults[all_ui[i]];
-        auto it = ui_def.find(var_left);
-        if (it != ui_def.end()){
-            // record as 'handle name: value' to enable many levels of indirection
-            VarValue vv;
-            vv.Set(var_left + ":" + it->second.AsString());
+    // if getting a variable, return config-independent default found in ui form and save the mapping
+    if ( cxt.arg_count() == 1 ){
+        VarValue* def_vv = find_default_from_ui(var_left, active_config);
 
-            vv.Write(cxt.result());
+        if (def_vv)
+            def_vv->Write(cxt.result());
 
-            ui_source = all_ui[i];
-            break;
+        // if setting values into a secondary cmod, return the name and value of the variable
+        if (active_cmod.length() > 0 ){
+            std::string map = var_left + ":" + def_vv->AsString().ToStdString();
+            cxt.result().assign(map);
         }
     }
-
-    if (ui_source == ""){
-        std::cout << "fcall_value error: could not find left hand variable " << var_left ;
-        std::cout << " in config " << active_config << "\n";
-        throw std::exception();
-    }
-
-    if ( cxt.arg_count() > 1 ){
+    else{
         // check if the variable being assigned and the value being assigned are ssc inputs
+        if (std::strcmp(cxt.arg(1).typestr(), "number") == 0){
+            // if it's a number, simply assign it
+            cxt.result().assign(cxt.arg(1).as_number());
+            return;
+        }
+
         std::string var_right = cxt.arg(1).as_string().ToStdString();
 
         std::string ui_handle;
@@ -174,39 +175,26 @@ static void fcall_value( lk::invoke_t &cxt )
             ui_handle = var_right;
         }
 
-        bool assigning_to_ssc_var = false;
+        std::string assigning_to_ssc_cmod = which_cmod_as_input(var_left, active_config);
         bool assigning_from_ssc_var = false;
 
-        auto primary_cmods = SAM_config_to_primary_modules[active_config];
-        for (size_t i = 0; i < primary_cmods.size(); i++){
-            std::string cmod = primary_cmods[i];
-
-            auto inputs_vec = SAM_cmod_to_inputs[cmod];
-
-            if (std::find(inputs_vec.begin(), inputs_vec.end(), var_left) != inputs_vec.end()){
-                assigning_to_ssc_var = true;
-            }
-            if (std::find(inputs_vec.begin(), inputs_vec.end(), ui_handle) != inputs_vec.end()){
-                assigning_from_ssc_var = true;
-            }
+        if (ui_source == "" && (assigning_to_ssc_cmod.length() > 0)){
+            std::cout << "fcall_value error: could not find left hand variable " << var_left ;
+            std::cout << " in config " << active_config << "\n";
+            throw std::exception();
         }
 
-        // if var_left is not an ssc variable, it can be an ui variable or a constant
+        VarValue vv;
+        vv.Set(var_left + ":" + ui_handle);
+
+        vv.Write(cxt.result());
+
+        // if var_left is an ssc variable
+        if (assigning_to_ssc_cmod.length() > 0){
+
+        }
     }
-//    if ( VarValue *vv = cc.GetValues().Get( name ) )
-//    {
-//        if ( cxt.arg_count() == 2 )
-//        {
-//            if ( vv->Read( cxt.arg(1), false ) )
-//                cc.GetCase().VariableChanged( name );
-//            else
-//                cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
-//        }
-//        else
-//            vv->Write( cxt.result() );
-//    }
-//    else
-//        cxt.error("variable '" + name + "' does not exist in this context" );
+
 }
 
 static void fcall_varinfo( lk::invoke_t &cxt )
@@ -305,6 +293,113 @@ static void _wx_yesno(lk::invoke_t &cxt){
     LK_DOC("yesno", "Nothing to do", "");
 }
 
+static void fcall_logmsg( lk::invoke_t &cxt )
+{
+    LK_DOC("logmsg", "Nothing to do", "(...):none");
+}
+
+static void fcall_enable( lk::invoke_t &cxt )
+{
+    LK_DOC("enable", "Record logic of which ui widgets should be enabled ", "(string:name, boolean:enable):none");
+    std::string ui_obj_name = cxt.arg(0).as_string().ToStdString();
+    if (SAM_ui_obj_to_enabled_variables.find(active_object) != SAM_ui_obj_to_enabled_variables.end()){
+        auto it = SAM_ui_obj_to_enabled_variables.find(active_object);
+        if (std::find(it->second.begin(), it->second.end(), ui_obj_name) == it->second.end()){
+            it->second.push_back(ui_obj_name);
+            return;
+        }
+    }
+    else{
+        std::vector<std::string> vec;
+        vec.push_back(ui_obj_name);
+        SAM_ui_obj_to_enabled_variables.insert({active_object, vec});
+    }
+}
+
+static void _wx_choose_file(lk::invoke_t &cxt) {
+    LK_DOC("choose_file", "Nothing to do", "");
+    cxt.result().assign("");
+
+}
+
+static void fcall_property(lk::invoke_t &cxt) {
+    LK_DOC("property", "Nothing to do", "");
+    cxt.result().assign("");
+
+}
+
+static void fcall_webapi(lk::invoke_t &cxt) {
+    LK_DOC("webapi", "Nothing to do", "");
+    cxt.result().assign("");
+}
+
+static void fcall_curl(lk::invoke_t &cxt) {
+    LK_DOC("curl", "Nothing to do", "");
+}
+
+
+static void fcall_editscene3d(lk::invoke_t &cxt) {
+    LK_DOC("editscene3d", "Nothing to do", "");
+}
+
+static void fcall_clearplot(lk::invoke_t &cxt) {
+    LK_DOC("clearplot", "Nothing to do", "");
+}
+
+static void fcall_setplot(lk::invoke_t &cxt) {
+    LK_DOC("setplot", "Nothing to do", "");
+}
+
+static void fcall_plot(lk::invoke_t &cxt) {
+    LK_DOC("plot", "Nothing to do", "");
+}
+
+static void fcall_axis(lk::invoke_t &cxt) {
+    LK_DOC("axis", "Nothing to do", "");
+}
+
+static void fcall_in(lk::invoke_t &cxt) {
+    LK_DOC("in", "Nothing to do", "");
+}
+
+static void fcall_windtoolkit(lk::invoke_t &cxt) {
+    LK_DOC("windtoolkit", "Nothing to do", "");
+}
+
+static void fcall_json_read(lk::invoke_t &cxt) {
+    LK_DOC("json_read", "Nothing to do", "");
+    cxt.result().assign("");
+}
+
+static void fcall_plot_inverter_curve(lk::invoke_t &cxt) {
+    LK_DOC("plot_inverter_curve", "Nothing to do", "");
+}
+
+static void _alloc(lk::invoke_t & cxt)
+{
+    LK_DOC("alloc", "Allocates an array of one or two dimensions.", "(integer, {integer}):array");
+    cxt.result().empty_vector();
+
+    int dim1 = (int)cxt.arg(0).as_number();
+    int dim2 = (cxt.arg_count() == 2) ? (int)cxt.arg(1).as_number() : -1;
+
+    if (dim1 < 1)
+        return;
+
+    cxt.result().resize(dim1);
+
+    if (dim2 > 0)
+    {
+        for (int i = 0; i < dim1; i++)
+        {
+            lk::vardata_t *item = cxt.result().index(i);
+            item->empty_vector();
+            item->resize(dim2);
+        }
+    }
+}
+
+
 /**
  *
  * These versions of lk functions are used to export a map of ui to ssc variables.
@@ -336,6 +431,22 @@ static lk::fcall_t* invoke_casecallback_funcs()
             fcall_librarygetfiltertext,
             fcall_librarynotifytext,
             _wx_yesno,
+            fcall_logmsg,
+            fcall_enable,
+            _wx_choose_file,
+            fcall_property,
+            fcall_webapi,
+            fcall_curl,
+            fcall_editscene3d,
+            fcall_setplot,
+            fcall_clearplot,
+            fcall_plot,
+            fcall_axis,
+            fcall_in,
+            fcall_windtoolkit,
+            fcall_json_read,
+            fcall_plot_inverter_curve,
+            _alloc,
             0 };
     return (lk::fcall_t*)vec;
 }
@@ -348,6 +459,31 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
              "Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none",
              "Get a variable value", "(ssc-obj-ref:data, string:name):variant" );
 
+    // get
+    std::string var_left = cxt.arg(1).as_string().ToStdString();
+    if (cxt.arg_count() == 2){
+
+        // return a mapping: "Pdco"
+    }
+    // set
+    else{
+        // if there isn't data for this config yet, create a new vector of secondary_cmod_infos
+        if (SAM_config_to_secondary_cmod_info.find(active_config) == SAM_config_to_secondary_cmod_info.end())
+            SAM_config_to_secondary_cmod_info.insert({active_config,
+                                                      std::unordered_map<std::string, secondary_cmod_info>()});
+        auto cmods = &SAM_config_to_secondary_cmod_info.find(active_config)->second;
+
+        // if there isn't info for the current cmod, add new
+        if (cmods->find(active_cmod) == cmods->end()){
+            // if the cmod isn't registered yet, add it
+            cmods->insert({active_cmod, secondary_cmod_info()});
+            secondary_cmod_info* cmod_info = &(cmods->find(active_cmod)->second);
+
+            cmod_info->map_of_input(var_left, cxt.arg(2).as_string().ToStdString());
+
+        }
+
+    }
 //    if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 //    {
 //        wxString name = cxt.arg(1).as_string();
@@ -362,8 +498,8 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
 
 static void fcall_ssc_create( lk::invoke_t &cxt )
 {
-    LK_DOC( "ssc_create", "Create a new empty SSC data container object.", "(none):ssc-obj-ref" );
-//    cxt.result().assign( cxt.env()->insert_object( new lkSSCdataObj ) );
+    LK_DOC( "ssc_create", "Activate active_cmod for value tracking", "(none):ssc-obj-ref" );
+    active_cmod = "tbd";
 }
 
 static void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
@@ -385,8 +521,15 @@ static void fcall_ssc_dump( lk::invoke_t &cxt )
 
 static void fcall_ssc_exec( lk::invoke_t &cxt )
 {
-    LK_DOC( "ssc_exec", "Run a compute module with the provided data context. returns zero if successful. Options include: show_dialog, hold_dialog, debug_file, dialog_title", "( ssc-obj-ref:data, string:module, [table:options] ):variant" );
-    //save
+    LK_DOC( "ssc_exec", "Save name of active secondary cmod & update map", "( ssc-obj-ref:data, string:module, [table:options] ):variant" );
+    // make copy of info for "tbd" active_cmod before removing it
+    std::unordered_map<std::string, secondary_cmod_info> info = SAM_config_to_secondary_cmod_info[active_cmod];
+    SAM_config_to_secondary_cmod_info.erase(active_cmod);
+
+    active_cmod = cxt.arg(1).as_string().ToStdString();
+    SAM_config_to_secondary_cmod_info.insert({active_cmod, info});
+
+    cxt.result().assign(1);
 }
 
 /**

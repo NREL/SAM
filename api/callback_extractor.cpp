@@ -8,6 +8,27 @@
 
 #include "callback_extractor.h"
 #include "lk_env.h"
+#include "data_structures.h"
+
+std::string active_object;
+std::string active_cmod;
+std::unordered_map<std::string, std::vector<std::string>> SAM_ui_obj_to_enabled_variables;
+
+bool extractor_interpreter::special_get(const std::string &name, lk::vardata_t &val) {
+    bool ok = false;
+    if (VarValue* vv = find_default_from_ui(name, active_config))
+        ok = vv->Write( val );
+
+    return ok;
+}
+
+bool extractor_interpreter::special_set(const std::string &name, lk::vardata_t &val) {
+    bool ok = false;
+    if ( VarValue *vv = find_default_from_ui(name, active_config))
+        ok = vv->Read( val );
+
+    return ok;
+}
 
 size_t callback_extractor::parse_cmod_statement(std::string callback_script, size_t pos_start){
     size_t start = callback_script.find_first_of("\'\"", pos_start);
@@ -85,7 +106,14 @@ int callback_extractor::invoke_method_type(const std::string &method_name) {
             return 0;
         }
 
-        error += (int)invoke_function(p_define->right, obj_name);
+        // clear active_cmod in case it was set previously in another object invocation
+        active_cmod = "";
+        active_object = obj_name;
+        if (active_object== "istableunsorted"){
+            std::cout << "stophere";
+        }
+        if (!invoke_function(p_define->right, obj_name))
+            error += 1;
 
     }
     return error;
@@ -94,11 +122,11 @@ int callback_extractor::invoke_method_type(const std::string &method_name) {
 bool callback_extractor::invoke_function(lk::node_t *root, std::string f_name) {
 
     try {
-        lk::eval e( root, m_env );
-        if ( !e.run() )
+        extractor_interpreter eval = extractor_interpreter(root, m_env);
+        if ( !eval.run())
         {
-            for (size_t i=0;i<e.error_count();i++)
-                errors.push_back(e.get_error(i));
+            for (size_t i=0;i<eval.error_count();i++)
+                errors.push_back(eval.get_error(i));
             return false;
         }
         return true;
@@ -111,7 +139,12 @@ bool callback_extractor::invoke_function(lk::node_t *root, std::string f_name) {
 }
 
 bool callback_extractor::extract_functions() {
-    invoke_method_type("on_change");
+    int nerrors = invoke_method_type("on_change");
+    if (nerrors > 0){
+        std::cout << "callback_extractor::extract_functions error: " << nerrors << " 'on_change' obj errors\n";
+        for (size_t i = 0; i < errors.size(); i++)
+            std::cout << errors[i] << "\n";
+    }
 //        for( size_t i=0;i<cases.size();i++ )
 //        {
 //            Invoke( cases[i], pf.GetCaseName( cases[i] ), cb );

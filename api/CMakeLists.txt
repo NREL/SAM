@@ -34,7 +34,7 @@ add_executable(export_config
         ui_form_extractor.cpp ui_form_extractor.h
         equation_extractor.cpp equation_extractor.h
         ${SAM_SOURCES}
-        lk_env.h data_structures.h config_extractor.cpp config_extractor.h callback_extractor.cpp callback_extractor.h)
+        lk_env.h data_structures.h config_extractor.cpp config_extractor.h callback_extractor.cpp callback_extractor.h data_structures.cpp)
 
 set(SAM_API_SRC
         sam_api.cpp
