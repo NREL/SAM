@@ -30,8 +30,24 @@ void secondary_cmod_info::map_of_output(std::string output, std::string assignme
 
 // move all implementations in here
 
+std::vector<equation_info> find_eqn_info(std::string ui_var, std::string config){
+    std::vector<equation_info> eqn_infos;
+
+    std::vector<std::string> all_ui_forms = find_ui_forms_for_config(config);
+    for (size_t i = 0; i < all_ui_forms.size(); i++){
+        std::vector<equation_info>& eqn_infos = SAM_ui_form_to_eqn_info.find(all_ui_forms[i])->second;
+        for (size_t j = 0; j < eqn_infos.size(); j++){
+            auto input_names = eqn_infos[j].ui_inputs;
+            if (std::find(input_names.begin(), input_names.end(), ui_var) != input_names.end()){
+                eqn_infos.push_back(eqn_infos[j]);
+            }
+        }
+    }
+    return eqn_infos;
+}
+
 std::string find_ui_form_source(std::string name, std::string config){
-    std::vector<std::string> all_ui = ui_forms_for_config(config);
+    std::vector<std::string> all_ui = find_ui_forms_for_config(config);
 
     for (size_t i = 0; i < all_ui.size(); i++){
         std::unordered_map<std::string, VarValue> ui_def = SAM_ui_form_to_defaults[all_ui[i]];
@@ -43,7 +59,7 @@ std::string find_ui_form_source(std::string name, std::string config){
 }
 
 VarValue* find_default_from_ui(std::string name, std::string config){
-    std::vector<std::string> all_ui = ui_forms_for_config(config);
+    std::vector<std::string> all_ui = find_ui_forms_for_config(config);
 
     for (size_t i = 0; i < all_ui.size(); i++){
         std::unordered_map<std::string, VarValue> ui_def = SAM_ui_form_to_defaults[all_ui[i]];
@@ -53,6 +69,22 @@ VarValue* find_default_from_ui(std::string name, std::string config){
     }
     return NULL;
 }
+
+std::vector<std::string> find_ui_forms_for_config(std::string config_name){
+    std::vector<std::string> all_ui_forms;
+    std::vector<page_info> pages = SAM_config_to_input_pages[config_name];
+
+    for (size_t p = 0; p < pages.size(); p++) {
+        for (size_t i = 0; i < pages[p].common_uiforms.size(); i++) {
+            all_ui_forms.push_back(pages[p].common_uiforms[i]);
+        }
+        for (size_t i = 0; i < pages[p].exclusive_uiforms.size(); i++) {
+            all_ui_forms.push_back(pages[p].exclusive_uiforms[i]);
+        }
+    }
+    return all_ui_forms;
+}
+
 
 std::string which_cmod_as_input(std::string name, std::string config){
     auto primary_cmods = SAM_config_to_primary_modules[config];
@@ -90,20 +122,6 @@ std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
     return os;
 }
 
-std::vector<std::string> ui_forms_for_config(std::string config_name){
-    std::vector<std::string> all_ui_forms;
-    std::vector<page_info> pages = SAM_config_to_input_pages[config_name];
-
-    for (size_t p = 0; p < pages.size(); p++) {
-        for (size_t i = 0; i < pages[p].common_uiforms.size(); i++) {
-            all_ui_forms.push_back(pages[p].common_uiforms[i]);
-        }
-        for (size_t i = 0; i < pages[p].exclusive_uiforms.size(); i++) {
-            all_ui_forms.push_back(pages[p].exclusive_uiforms[i]);
-        }
-    }
-    return all_ui_forms;
-}
 
 void print_ui_form_to_eqn_variable(){
     std::cout << "ui_form_to_eqn_var_map = {" << "\n";

@@ -53,16 +53,23 @@ int main(int argc, char *argv[]){
         eqn_ext.parse_script(SAM_ui_extracted_db.find(ui_name)->get_eqn_script());
     }
 
-    // parsing the callbacks require all ui forms in a config
+    // parsing the callbacks requires all ui forms in a config
     active_config = "";
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         // only do technology configs
         if (it->first.find("None") == std::string::npos)
             continue;
         active_config = it->first;
-        if (active_config == "Generic CSP System-None"){
-            std::cout << "stophere";
+        // no battery defaults
+        if (active_config == "Battery-None"){
+            continue;
         }
+
+        // focus on this one
+        if (active_config != "Flat Plate PV-None"){
+            continue;
+        }
+
         config_extractor ce(it->first);
         ce.register_callback_functions();
     }

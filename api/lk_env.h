@@ -145,7 +145,7 @@ static void fcall_value( lk::invoke_t &cxt )
 
     // if getting a variable, return config-independent default found in ui form and save the mapping
     if ( cxt.arg_count() == 1 ){
-        VarValue* def_vv = find_default_from_ui(var_left, active_config);
+        VarValue* def_vv = SAM_config_to_defaults.find(active_config)->second.Get(var_left);
 
         if (def_vv)
             def_vv->Write(cxt.result());
@@ -398,7 +398,26 @@ static void _alloc(lk::invoke_t & cxt)
         }
     }
 }
+static void fcall_current_at_voltage_cec(lk::invoke_t &cxt) {
+    LK_DOC("current_at_voltage_cec", "Nothing do to", "...");
+}
 
+
+static void fcall_plotopt(lk::invoke_t &cxt) {
+    LK_DOC("plotopt", "Nothing to do", "");
+}
+
+static void _editscene3d(lk::invoke_t &cxt) {
+    LK_DOC("editscene3d", "Set as error", "");
+    cxt.result().empty_hash();
+    cxt.result().hash_item("ierr").assign(1.0);
+}
+
+static void fcall_substance_density(lk::invoke_t &cxt)
+{
+    LK_DOC("substance_density", "Assign as 0", "");
+    std::cout << "substance_density not implemented\n";
+}
 
 /**
  *
@@ -447,6 +466,10 @@ static lk::fcall_t* invoke_casecallback_funcs()
             fcall_json_read,
             fcall_plot_inverter_curve,
             _alloc,
+            fcall_current_at_voltage_cec,
+            fcall_plotopt,
+            _editscene3d,
+            fcall_substance_density,
             0 };
     return (lk::fcall_t*)vec;
 }

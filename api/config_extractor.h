@@ -12,10 +12,15 @@ private:
 
     lk::env_t m_env;
 
+    std::string defaults_file_dir = "../deploy/runtime/defaults/";
+
 public:
     config_extractor(std::string name){
         config_name = name;
+        assert(load_defaults_for_config());
     }
+
+    bool load_defaults_for_config();
 
     void register_callback_functions();
 };

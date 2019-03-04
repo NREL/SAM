@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <lk/eval.h>
 
 #include "equations.h"
 #include "lk_env.h"
@@ -13,8 +14,8 @@ class extractor_interpreter : public lk::eval{
 public:
     extractor_interpreter(lk::node_t *tree, lk::env_t* env):lk::eval(tree, env){}
 
-    virtual bool special_set( const std::string &name, lk::vardata_t &val );
-    virtual bool special_get( const std::string &name, lk::vardata_t &val );
+    virtual bool special_set( const lk_string &name, lk::vardata_t &val );
+    virtual bool special_get( const lk_string &name, lk::vardata_t &val );
 };
 
 class callback_extractor{

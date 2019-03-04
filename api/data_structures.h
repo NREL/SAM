@@ -50,6 +50,11 @@ extern std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inp
  */
 extern std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_ui_form_to_defaults;
 
+/**
+ * Maps each configuration to its specific defaults found in defaults text files
+ */
+ extern std::unordered_map<std::string, VarTable> SAM_config_to_defaults;
+
 
 /**
  * Manages mapping and memory for ui_form_extractors
@@ -180,7 +185,7 @@ std::string which_cmod_as_output(std::string name, std::string ui_form);
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T>& v);
 
-std::vector<std::string> ui_forms_for_config(std::string config_name);
+std::vector<std::string> find_ui_forms_for_config(std::string config_name);
 
 void print_ui_form_to_eqn_variable();
 

@@ -14,17 +14,19 @@ std::string active_object;
 std::string active_cmod;
 std::unordered_map<std::string, std::vector<std::string>> SAM_ui_obj_to_enabled_variables;
 
-bool extractor_interpreter::special_get(const std::string &name, lk::vardata_t &val) {
+bool extractor_interpreter::special_get(const lk_string &name, lk::vardata_t &val) {
     bool ok = false;
-    if (VarValue* vv = find_default_from_ui(name, active_config))
+    VarTable* vt = &SAM_config_to_defaults[active_config];
+    if ( VarValue *vv = vt->Get( name.ToStdString() ) )
         ok = vv->Write( val );
 
     return ok;
 }
 
-bool extractor_interpreter::special_set(const std::string &name, lk::vardata_t &val) {
+bool extractor_interpreter::special_set(const lk_string &name, lk::vardata_t &val) {
     bool ok = false;
-    if ( VarValue *vv = find_default_from_ui(name, active_config))
+    VarTable* vt = &SAM_config_to_defaults[active_config];
+    if ( VarValue *vv = vt->Get( name.ToStdString() ) )
         ok = vv->Read( val );
 
     return ok;
@@ -109,7 +111,7 @@ int callback_extractor::invoke_method_type(const std::string &method_name) {
         // clear active_cmod in case it was set previously in another object invocation
         active_cmod = "";
         active_object = obj_name;
-        if (active_object== "istableunsorted"){
+        if (active_object== "inv_cec_cg_test_samples"){
             std::cout << "stophere";
         }
         if (!invoke_function(p_define->right, obj_name))
@@ -139,19 +141,17 @@ bool callback_extractor::invoke_function(lk::node_t *root, std::string f_name) {
 }
 
 bool callback_extractor::extract_functions() {
-    int nerrors = invoke_method_type("on_change");
+    int nerrors = invoke_method_type("on_load");
+    if (nerrors > 0){
+        std::cout << "callback_extractor::extract_functions error: " << nerrors << " 'on_load' obj errors\n";
+        for (size_t i = 0; i < errors.size(); i++)
+            std::cout << errors[i] << "\n";
+    }
+
+    nerrors = invoke_method_type("on_change");
     if (nerrors > 0){
         std::cout << "callback_extractor::extract_functions error: " << nerrors << " 'on_change' obj errors\n";
         for (size_t i = 0; i < errors.size(); i++)
             std::cout << errors[i] << "\n";
     }
-//        for( size_t i=0;i<cases.size();i++ )
-//        {
-//            Invoke( cases[i], pf.GetCaseName( cases[i] ), cb );
-//
-//            // recalculate equations in each case for each consecutive upgrade
-//            // to make sure all variables are in sync
-//            if ( cases[i]->RecalculateAll( true ) < 0 )
-//                GetLog().push_back( log( WARNING, "Error updating calculated values in '" + pf.GetCaseName(cases[i]) + "' during upgrade process.  Please resolve any errors, save the project file, and reopen it." ) );
-//        }
 }
