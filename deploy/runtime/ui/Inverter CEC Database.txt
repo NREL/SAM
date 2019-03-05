@@ -1750,7 +1750,7 @@ equations{ '$MIMO$ SandiaInverterEfficiencies' } = define()
 equations { 'inv_cec_name' } = define () {
 	return ${inv_snl_inverter_name};
 };
-3295
+3539
 function plot_inverter_curve()
 {
 	//assign specs
@@ -1848,6 +1848,11 @@ on_load{"Inverter CEC Database"} = define()
 	plot_inverter_curve();
 	on_change{"inv_snl_inverter_name"}();
 	show_mppt_msg();
+	if( librarygetcurrentselection('inv_snl_inverter_name') == '' )
+	{
+		old_name = value( 'inv_snl_inverter_name' );
+		librarynotifytext('inv_snl_inverter_name', 'Please choose an inverter. ' + old_name + ' is not available in the library.');
+	}
 };
 
 on_change{'inv_snl_inverter_name'} = define()
