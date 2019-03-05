@@ -2144,7 +2144,7 @@ lat
 3
 1
 Latitude
-°
+DD
 Location and Resource
 0
 8
@@ -2182,7 +2182,7 @@ lon
 3
 1
 Longitude
-°
+DD
 Location and Resource
 0
 8
@@ -2347,7 +2347,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-25849
+25912
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2581,7 +2581,7 @@ function update_info( ctxt )
 	else
 	{
 		librarynotifytext('solar_resource', ''); //'Everything is fine.'
-		value('in_location', '');
+		value('in_location', 'Type a location name, street address, or latitude and longitude');
 	}	
 	/*msgbox('libraryget functions'+
 	'\nfiltertext = ' + librarygetfiltertext('solar_resource') 
