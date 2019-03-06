@@ -4,9 +4,6 @@ The SAM team welcomes your contribution to the project!
 You can contribute to SAM by letting us know about problems or suggesting new features, or by making your own changes or additions to the code. You may want to report or help us fix an [issue someone else reported](https://github.com/NREL/SAM/issues), fix an issue you discovered, or add a new feature to SAM. If you have a question about using SAM, you can ask us on the [SAM support forum](https://sam.nrel.gov/support).
 
 ## SAM Contribution Policy  
-
-If you contribute code, you agree that your contribution may be incorporated into SAM and made available under the SAM license in compliance with standard [GitHub terms of service](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license).  
-
 In the effort to make SAM easy to contribute to, the contribution process is composed of four simple steps:  
 
 1. Click through to <a href="https://www.clahub.com/agreements/NREL/SAM">sign the Contributor License Agreement</a>.
