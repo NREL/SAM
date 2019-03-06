@@ -7,11 +7,12 @@ You can contribute to SAM by letting us know about problems or suggesting new fe
 
 If you contribute code, you agree that your contribution may be incorporated into SAM and made available under the SAM license in compliance with standard [GitHub terms of service](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license).  
 
-In the effort to make SAM easy to contribute to, the contribution process is composed of three simple steps:  
+In the effort to make SAM easy to contribute to, the contribution process is composed of four simple steps:  
 
-1. [Fork](https://help.github.com/articles/fork-a-repo/) the relevant SAM [repositories](https://github.com/NREL/SAM/wiki/Software-Dependencies). 
-2. Make your modifications.  For large new features, we suggest that you [email us](nicholas.diorio@nrel.gov) before you start working so that we coordinate your contribution (see more info for large contributions below!).
-3. Create a [pull request](https://help.github.com/articles/about-pull-requests/).
+1. Click through to <a href="https://www.clahub.com/agreements/NREL/SAM">sign the Contributor License Agreement</a>.
+2. [Fork](https://help.github.com/articles/fork-a-repo/) the relevant SAM [repositories](https://github.com/NREL/SAM/wiki/Software-Dependencies). 
+3. Make your modifications.  For large new features, we suggest that you [email us](nicholas.diorio@nrel.gov) before you start working so that we coordinate your contribution (see more info for large contributions below!).
+4. Create a [pull request](https://help.github.com/articles/about-pull-requests/).
 
 ### Additional contribution help
 Some additional details on what makes it more likely that your code will be readily accepted into the main development version of SAM.
