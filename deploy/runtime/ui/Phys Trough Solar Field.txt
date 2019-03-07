@@ -3109,7 +3109,7 @@ TabOrder
 3
 4294967295
 
-65
+86
 DISCARD_UNUSED_latitude
 3
 1
@@ -3120,6 +3120,20 @@ Physical Trough Solar Field
 8
 1
 1
+1
+1
+0
+Default
+D_cpnt
+3
+3
+Interconnect component diameters
+m
+Physical Trough Solar Field
+0
+2
+1
+3
 1
 1
 0
@@ -3166,6 +3180,34 @@ Physical Trough Solar Field
 1
 4.6e-05
 Numeric
+K_cpnt
+3
+3
+Interconnect component minor loss coefficients
+-
+Physical Trough Solar Field
+0
+2
+1
+3
+1
+1
+0
+Default
+L_cpnt
+3
+3
+Interconnect component lengths
+m
+Physical Trough Solar Field
+0
+2
+1
+3
+1
+1
+0
+Default
 L_heat_sink_piping
 3
 1
@@ -3180,6 +3222,104 @@ Phys Trough Solar Field
 1
 50
 Numeric
+L_rnr_pb
+3
+1
+Length of runner pipe in pb
+m
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+25
+Default
+L_rnr_per_xpan
+3
+1
+Threshold length of straight runner pipe without an expansion loop
+m
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+70
+Default
+L_xpan_hdr
+3
+1
+Combined perpendicular lengths of each header expansion loop
+m
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+20
+Default
+L_xpan_rnr
+3
+1
+Combined perpendicular lengths of each runner expansion loop
+m
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+20
+Default
+Min_rnr_xpans
+3
+1
+Minimum number of expansion loops per single-diameter runner section
+m
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+1
+Default
+N_hdr_per_xpan
+3
+1
+Number of collector loops per expansion loop
+-
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+2
+Default
+N_max_hdr_diams
+3
+1
+Max header diameters
+-
+Physical Trough Solar Field
+0
+2
+1
+1
+1
+1
+10
+Default
 Pipe_hl_coef
 3
 1
@@ -3320,6 +3460,20 @@ Physical Trough Solar Field
 1
 50
 Numeric
+Type_cpnt
+3
+3
+Interconnect component type
+-
+Physical Trough Solar Field
+0
+2
+1
+3
+1
+1
+0
+Default
 V_hdr_max
 3
 1
@@ -3404,6 +3558,20 @@ Physical Trough Solar Field
 1
 0
 Numeric
+calc_design_pipe_vals
+3
+1
+ Calculate temps and pressures at design conditions for runners and headers
+ -
+Phys Trough Solar Field
+0
+2
+1
+1
+1
+1
+1
+Default
 combo_FieldConfig
 3
 1
@@ -3447,6 +3615,20 @@ Loop receiver heat loss
 1
 1
 1
+Default
+custom_sf_pipe_sizes
+3
+1
+Use custom solar field pipe diams, wallthks, and lengths
+-
+Phys Trough Solar Field
+0
+2
+1
+1
+1
+1
+0
 Default
 eta_pump
 3
@@ -3771,6 +3953,34 @@ Physical Trough Solar Field
 1
 1.4
 Numeric
+northsouth_field_sep
+3
+1
+North/south separation between subfields. 0 = SCAs are touching
+m
+Phys Trough Solar Field
+0
+2
+1
+1
+1
+1
+20
+Default
+offset_xpan_hdr
+3
+1
+Location of first header expansion loop. 1 = after first collector loop
+-
+Phys Trough Solar Field
+0
+2
+1
+1
+1
+1
+1
+Default
 radio_sm_or_area
 3
 1
@@ -3799,6 +4009,90 @@ Physical Trough Solar Field
 1
 0
 Numeric
+sf_hdr_diams
+3
+3
+Custom header diameters
+m
+Phys Trough Solar Field
+0
+2
+1
+3
+1
+1
+-1
+Default
+sf_hdr_lengths
+3
+3
+Custom header lengths
+m
+Phys Trough Solar Field
+0
+2
+1
+3
+1
+1
+-1
+Default
+sf_hdr_wallthicks
+3
+3
+Custom header wall thicknesses
+m
+Phys Trough Solar Field
+0
+2
+1
+3
+1
+1
+-1
+Default
+sf_rnr_diams
+3
+3
+Custom runner diameters
+m
+Phys Trough Solar Field
+0
+2
+1
+3
+1
+1
+-1
+Default
+sf_rnr_lengths
+3
+3
+Custom runner lengths
+m
+Phys Trough Solar Field
+0
+2
+1
+3
+1
+1
+-1
+Default
+sf_rnr_wallthicks
+3
+3
+Custom runner wall thicknesses
+m
+Phys Trough Solar Field
+0
+2
+1
+3
+1
+1
+-1
+Default
 sf_type
 3
 1
