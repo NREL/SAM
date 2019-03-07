@@ -41,6 +41,14 @@
 <p class="p_Text"><span class="f_Text">The Location and Ambient Conditions page allows you to choose a weather file to specify ambient conditions for the Steam Rankine Cycle for a biomass power system.</span></p>
 <p class="p_Text"><span class="f_Text">The <a href="biopower.htm" class="topiclink">biomass power</a> model uses data from a weather file to describe ambient conditions for the <a href="biopower_plant_specs.htm" class="topiclink">Rankine steam cycle</a>, and for modeling feedstock drying. It uses separate data set to describe the biomass resource (<a href="biopower_feedstock.htm" class="topiclink">feedstock</a>). The geographical coordinates in the weather file determines the location for the <a href="biopower_feedstock.htm" class="topiclink">feedstock</a>.</span></p>
 <p class="p_Text"><span class="f_Text">Ambient conditions also affect biomass composition, but on a monthly rather than hourly timescale. SAM calculates average monthly temperature, pressure, and humidity values from the hourly values in the weather file, and uses those values to represent the average ambient conditions for each month of the year. SAM uses the same set of twelve monthly average values for each year of the plant's life.</span></p>
+<p class="p_Note"><span class="f_CHNote">Important Note!</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The biomass power model requires a weather file with global horizontal irradiance (GHI) data. The model will not work if the annual average of global horizontal irradiance is &quot;NaN.&quot;</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">Files from the NSRDB PSM V3 dataset do not have GHI data. The legacy NSRDB MTS1 weather files do have GHI data, but the MTS1 dataset is out of date and only has files for a few hundred weather stations in the United States. Use the Legacy data (advanced) check box to see if an MTS1 file is available for your project location. Use <a href="https://maps.nrel.gov/nsrdb-viewer/?aL=gv7w60%255Bv%255D%3Dt&amp;bL=clight&amp;cE=0&amp;lR=0&amp;mC=4.740675384778373%2C22.8515625&amp;zL=2" target="_blank" class="weblink" title="https://maps.nrel.gov/nsrdb-viewer/?aL=gv7w60%255Bv%255D%3Dt&amp;bL=clight&amp;cE=0&amp;lR=0&amp;mC=4.740675384778373%2C22.8515625&amp;zL=2">this link to see a map</a> of MTS1 weather stations. </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">Please contact SAM Support at <a href="mailto:sam.support@nrel.gov" class="weblink">sam.support@nrel.gov</a> if you need help finding weather data to use for your project.</span><br />
+<span class="f_Note">&nbsp;</span></p>
 
 </td></tr></table>
 

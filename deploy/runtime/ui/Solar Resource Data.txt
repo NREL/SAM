@@ -2347,7 +2347,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-25912
+26168
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2658,17 +2658,23 @@ function update_library_folders( new_path )
 
 function display_csp_message() 
 {
-	str = 'CSP models use a different time convention than NREL NSRDB data. See Help for details.';
 	tech = technology();
 	csp_techs = ['Physical Trough','Empirical Trough','MSPT','DSPT','MSLF','DSLF','Dish Stirling','Generic CSP System'];
 	for ( i=0; i<#csp_techs; i++ )
 	{
 		if ( tech == csp_techs[i] ) 
 		{
+			str = 'CSP models use a different time convention than NREL NSRDB data. See Help for details.';
 			property( 'lbl_csp' , 'Caption', str );		
 			property( 'lbl_csp' , 'TextColour', 'red' );		
 		}	
 	}
+	if ( tech == 'Biopower' ) 
+	{
+		str = 'The Biomass Combustion model requires a weather file with global horizontal irradiance data. See Help for details.';
+		property( 'lbl_csp' , 'Caption', str );		
+		property( 'lbl_csp' , 'TextColour', 'red' );		
+	}	
 }
 
 // display window for advanced download
