@@ -10,7 +10,6 @@
 #include "lk_env.h"
 
 std::unordered_map<std::string, std::vector<equation_info>> SAM_ui_form_to_eqn_info;
-std::unordered_map<std::string, std::vector<secondary_cmod_info>> SAM_ui_form_to_secondary_cmod_info;
 
 bool equation_extractor::parse_script(std::string eqn_script){
     lk::input_string data( eqn_script );

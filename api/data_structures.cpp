@@ -7,8 +7,6 @@
 #include "ui_form_extractor.h"
 #include "data_structures.h"
 
-std::unordered_map<std::string, std::unordered_map<std::string, secondary_cmod_info>> SAM_config_to_secondary_cmod_info;
-
 
 /// create the cmod and get all the variable names of desired type
 std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string which_type){
@@ -52,26 +50,6 @@ void load_primary_cmod_inputs() {
                 SAM_cmod_to_inputs.insert({cmod_name, inputs_vec});
             }
         }
-    }
-}
-
-void secondary_cmod_info::map_of_input(std::string input, std::string assignments){
-    // if value has already been mapped
-    if (input_name_to_assignments.find(input) != input_name_to_assignments.end()){
-        std::cout << "already mapped";
-    }
-    else{
-        input_name_to_assignments.insert({input, assignments});
-    }
-}
-
-void secondary_cmod_info::map_of_output(std::string output, std::string assignments){
-    if (output_name_to_assignments.find(output) != output_name_to_assignments.end()){
-        std::cout << "already mapped";
-
-    }
-    else{
-        output_name_to_assignments.insert({output, assignments});
     }
 }
 
@@ -165,16 +143,6 @@ std::string which_cmod_as_input(std::string name, std::string config){
     return "";
 }
 
-std::string which_cmod_as_output(std::string name, std::string config){
-    if (SAM_config_to_secondary_cmod_info.find(config) == SAM_config_to_secondary_cmod_info.end()){
-        return "";
-    }
-    auto secondary_cmods = SAM_config_to_secondary_cmod_info[config];
-    for (auto it = secondary_cmods.begin(); it != secondary_cmods.end(); ++it){
-// need to populate variables for new cmods
-    }
-    return "";
-}
 
 std::vector<std::string> split_identity_string(std::string str, size_t n){
     size_t pos = str.find("args:");
@@ -191,6 +159,27 @@ std::vector<std::string> split_identity_string(std::string str, size_t n){
     args.push_back(str);
     assert(args.size() == n);
     return args;
+}
+
+std::string unescape(const std::string& s){
+    std::string res;
+    std::string::const_iterator it = s.begin();
+    while (it != s.end()){
+        char c = *it++;
+
+        switch (c){
+            case '\t': break;
+            case '\n': break;
+            case '\"': break;
+            case '\'': break;
+            case ';': break;
+            case ' ': break;
+            default:
+                res += c;
+        }
+
+    }
+    return res;
 }
 
 template <typename T>
@@ -222,29 +211,4 @@ void print_ui_form_to_eqn_variable(){
         std::cout << "\t}";
     }
     std::cout << "}";
-}
-
-void print_config_variables_info(){
-    std::cout << "config_variables_info = {\n";
-    for (auto it = SAM_config_to_case_variables.begin(); it != SAM_config_to_case_variables.end(); ++it){
-        // 'config_name' = {
-        std::cout << "'" << it->second.config_name << "' : {\n";
-        bool first = true;
-        // equations: [inputs, outputs, ui_form]
-        std::cout << "\t\t'equations': {\n";
-        for (size_t n = 0; n < it->second.eqns_info.size(); n++){
-            //std::cout << "\t\t\t" << it->second.eqns_info[n].inputs << ": \n";
-            //std::cout << "\t\t\t\t(" << it->second.eqns_info[n].outputs << ",\n";
-            //std::cout << "\t\t\t\t'" << it->second.eqns_info[n].ui_form << "')\n";
-        }
-        std::cout << "\t\t}\n";
-        // secondary_cmods: [cmod ...]
-        if (it->second.secondary_cmods.size() > 0){
-            std::cout << "\t\t'secondary_cmods':\n";
-            for (size_t n = 0; n < it->second.secondary_cmods.size(); n++){
-                std::cout << "\t\t\t" << it->second.secondary_cmods[n] << "\n";
-            }
-        }
-        std::cout << "\t}\n";
-    }
 }

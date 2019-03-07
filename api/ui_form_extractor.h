@@ -24,7 +24,6 @@
 
 class ui_form_extractor {
 private:
-    std::string ui_form_name;
     std::string m_eqn_script;
     std::string m_callback_script;
     lk::env_t m_env;
@@ -36,6 +35,12 @@ private:
     void get_eqn_and_callback_script(wxInputStream& is);
 
 public:
+    std::string ui_form_name;
+
+    std::vector<std::string> m_onload_obj;
+    std::vector<std::string> m_onchange_obj;
+
+    std::vector<std::string> m_functions;
 
     ui_form_extractor(std::string n){
         ui_form_name = n;
@@ -47,10 +52,6 @@ public:
 
     std::string get_callback_script() {return m_callback_script;}
 
-    std::vector<std::string> m_onload_obj;
-    std::vector<std::string> m_onchange_obj;
-
-    std::vector<std::string> m_functions;
 };
 
 

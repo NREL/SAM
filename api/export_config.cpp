@@ -13,7 +13,6 @@
 
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_outputs;
-std::unordered_map<std::string, config_variables_info> SAM_config_to_case_variables;
 
 
 std::string active_config;
@@ -80,39 +79,7 @@ int main(int argc, char *argv[]){
     }
 
     // for each configuration,  per input page
-    config_variables_info pvpc;
-    //extract_scripts_to_cvi(ui_path, "Solar Resource Data", pvpc);
     return 1;
-
-//    std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages = su_e.get_config_to_input_pages();
-
-    // export config_variables_info from page_info
-    for (auto it = SAM_config_to_input_pages.begin(); it != SAM_config_to_input_pages.end(); ++it){
-        config_variables_info cvi;
-        cvi.config_name = it->first;
-        std::vector<page_info> page_info_vector = it->second;
-
-        for (size_t page_n = 0; page_n < page_info_vector.size(); page_n++){
-            std::string page_name = page_info_vector[page_n].sidebar_title;
-
-            for (size_t c = 0; c < page_info_vector[page_n].common_uiforms.size(); c++){
-                std::string ui_form_name = page_info_vector[page_n].common_uiforms[c];
-
-//                if (!extract_scripts_to_cvi(ui_path, ui_form_name, cvi)){
-//                    return 1;
-//                }
-            }
-            for (size_t e = 0; e < page_info_vector[page_n].exclusive_uiforms.size(); e++){
-                std::string ui_form_name = page_info_vector[page_n].exclusive_uiforms[e];
-
-                std::vector<std::string> eqn_vars, cb_cmods;
-//                if (!extract_scripts_to_cvi(ui_path, ui_form_name, cvi)){
-//                    return 1;
-//                }
-            }
-        }
-        SAM_config_to_case_variables.insert({cvi.config_name, cvi});
-    }
 
     // output all data in python syntax
     std::cout << "\"\"\"\n";

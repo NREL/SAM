@@ -8,9 +8,6 @@
 
 #include "data_structures.h"
 
-extern std::unordered_map<std::string, std::unordered_map<std::string, secondary_cmod_info>> SAM_config_to_secondary_cmod_info;
-
-
 /* Set up LK environment specific for export_config */
 
 /// Bookmarks active configuration during startup.lk parsing
@@ -140,58 +137,54 @@ static void fcall_value( lk::invoke_t &cxt )
 {
     LK_DOC("value", "Gets or sets the case value of a variable by name", "(string:name [,variant:value]):[variant]");
 
-    std::string var_left = cxt.arg(0).as_string().ToStdString();
 
-    // find which ui form the left hand variable is from
-    std::string ui_source = find_ui_of_variable(var_left, active_config);
-
-    // if getting a variable, return config-independent default found in ui form and save the mapping
+    // if getting a variable, return config-dependent default
     if ( cxt.arg_count() == 1 ){
-        VarValue* def_vv = SAM_config_to_defaults.find(active_config)->second.Get(var_left);
+        std::string var_name = cxt.arg(0).as_string().ToStdString();
+
+        VarValue* def_vv = SAM_config_to_defaults.find(active_config)->second.Get(var_name);
 
         if (def_vv)
             def_vv->Write(cxt.result());
 
         // if setting values into a secondary cmod, return the name and value of the variable
-        if (active_cmod.length() > 0 ){
-            std::string map = var_left;// + ":" + def_vv->AsString().ToStdString();
-            cxt.result().assign(map);
-        }
+//        if (active_cmod.length() > 0 ){
+//            std::string map = var_left;// + ":" + def_vv->AsString().ToStdString();
+//            cxt.result().assign(map);
+//        }
     }
-    else{
-        // check if the variable being assigned and the value being assigned are ssc inputs
-        if (std::strcmp(cxt.arg(1).typestr(), "number") == 0){
-            // if it's a number, simply assign it
-            cxt.result().assign(cxt.arg(1).as_number());
-            return;
+    else {
+
+        auto var_graph = SAM_config_to_variable_graph.find(active_config)->second;
+
+        std::vector<std::string> args = split_identity_string(cxt.error(), 2);
+        std::string dest_name = args[0];
+
+        // the source could be a local variable, a literal, a constant, a special_get, or a call to value(...)
+        std::string src_name = args[1];
+
+        // check if the dest is an ssc variable
+        bool dest_is_ssc = which_cmod_as_input(dest_name, active_config).length() > 0;
+
+        bool src_is_ssc;
+        if (argument_of_special(src_name)) {
+            src_is_ssc = which_cmod_as_input(src_name, active_config).length() > 0;
+        } else if (argument_of_value(src_name)) {
+            // check if the ui variable is an ssc variable
+            src_is_ssc = which_cmod_as_input(src_name, active_config).length() > 0;
         }
 
-        std::string var_right = cxt.arg(1).as_string().ToStdString();
+        std::string obj_stack = active_object
+                                + (active_subobject.length() > 0 ? ":" + active_subobject : "");
 
-        std::string ui_handle;
-        size_t pos = var_right.find(":");
-        if (pos != std::string::npos){
-            ui_handle = var_right.substr(0, pos);
-        }
-        else{
-            ui_handle = var_right;
-        }
+        // add the source vertex & edge if they don't exist already
+        var_graph->add_vertex(src_name, src_is_ssc);
 
-        std::string assigning_to_ssc_cmod = which_cmod_as_input(var_left, active_config);
+        var_graph->add_edge(src_name, src_is_ssc, dest_name, dest_is_ssc,
+                            active_method, active_object, "value(" + cxt.error() + ")");
 
-        if (ui_source == "" && (assigning_to_ssc_cmod.length() > 0)){
-            std::cout << "fcall_value error: could not find left hand variable " << var_left ;
-            std::cout << " in config " << active_config << "\n";
-            assert(false);
-        }
-
-        VarValue vv;
-        vv.Set(var_left + ":" + ui_handle);
-
-        vv.Write(cxt.result());
-
-        digraph* var_graph = SAM_config_to_variable_graph.find(active_config)->second;
-        var_graph->add_edge(var_left, ui_handle, active_method, active_object);
+        // overwrite the variable in the config-dependent defaults?
+        find_default_from_ui(dest_name, active_config)->Read(cxt.arg(1));
     }
 
 }
@@ -429,18 +422,18 @@ static void fcall_snlinverter( lk::invoke_t &cxt )
 {
     LK_DOC( "snlinverter", "Map calculation of the sandia inverter AC power from DC and specs", "(number:pdc, number:vdc, number:vdco, number:pdco, number:pso, number:paco, number:c0, number:c1, number:c2, number:c3):number" );
 
-    std::vector<std::string> args = split_identity_string(cxt.error(), 10);
-
-    digraph* graph = SAM_config_to_variable_graph.find(active_config)->second;
-
-    // if the arguments are in the graph, insert the output as snlinverter:tbd
-    // where tbd will be replaced by name of variable later
-    graph->add_vertex("snlinverter:tbd", false);
-    for (size_t i = 0; i < args.size(); i++){
-        if (graph->find_vertex(args[i])){
-            graph->add_edge(args[i], "snlinverter:tbd", active_method, active_subobject);
-        }
-    }
+//    std::vector<std::string> args = split_identity_string(cxt.error(), 10);
+//
+//    digraph* graph = SAM_config_to_variable_graph.find(active_config)->second;
+//
+//    // if the arguments are in the graph, insert the output as snlinverter:tbd
+//    // where tbd will be replaced by name of variable later
+//    graph->add_vertex("snlinverter:tbd", false);
+//    for (size_t i = 0; i < args.size(); i++){
+//        if (graph->find_vertex(args[i])){
+//            graph->add_edge(args[i], "snlinverter:tbd", active_method, active_subobject);
+//        }
+//    }
 
     double pdc = cxt.arg(0).as_number();
     double vdc = cxt.arg(1).as_number();
@@ -528,31 +521,42 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
              "Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none",
              "Get a variable value", "(ssc-obj-ref:data, string:name):variant" );
 
-//    secondary_cmod_info* cmod_info = &(cmods->find(active_cmod)->second);
-
 
     // get
-    std::string var_left = cxt.arg(1).as_string().ToStdString();
     if (cxt.arg_count() == 2){
-        std::vector<std::string> args = split_identity_string(cxt.error(), 2);
-        cxt.result().assign(var_left);
+        std::string var_name = cxt.arg(1).as_string().ToStdString();
+        cxt.result().assign(var_name);
     }
     // set
     else{
-        std::vector<std::string> args = split_identity_string(cxt.error(), 3);
-
         auto var_graph = SAM_config_to_variable_graph.find(active_config)->second;
 
-        std::string ui_handle = active_cmod + ":" + args[2];
-        var_graph->add_vertex(ui_handle, false);
-        if (std::strcmp(var_left.c_str(), ui_handle.c_str()) != 0){
-            var_graph->add_edge(ui_handle, var_left, active_method, active_object );
+        std::vector<std::string> args = split_identity_string(cxt.error(), 3);
+        std::string dest_name = args[1];
+
+        // the source could be a local variable, a literal, a constant, a special_get, or a call to value(...)
+        std::string src_name = args[2];
+
+        // check if the ui variable is an ssc variable
+        bool is_ssc;
+        if (argument_of_special(src_name)){
+            is_ssc = which_cmod_as_input(src_name, active_config).length() > 0;
+        }
+        else if (argument_of_value(src_name)){
+            // check if the ui variable is an ssc variable
+            is_ssc = which_cmod_as_input(src_name, active_config).length() > 0;
         }
 
-        //var_graph->add_edge()
+        std::string obj_stack = active_object
+                + ":" + (active_subobject.length() > 0 ? active_subobject + ":" : ":")
+                + active_cmod; // probably "tbd" since the identity is unknown until ssc_exec
 
+        // add the source vertex & edge if they don't exist already
+        var_graph->add_vertex(src_name, is_ssc);
+
+        var_graph->add_edge(src_name, is_ssc, dest_name, false,
+                active_method, active_object, "ssc_var(" + cxt.error() + ")");
     }
-
 }
 
 static void fcall_ssc_create( lk::invoke_t &cxt )
@@ -569,7 +573,7 @@ static void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 static void fcall_ssc_free( lk::invoke_t &cxt )
 {
     LK_DOC( "ssc_free", "Frees up an SSC data object.", "(ssc-obj-ref:data):none" );
-    active_cmod = "tbd";
+    active_cmod = "";
 }
 
 static void fcall_ssc_dump( lk::invoke_t &cxt )

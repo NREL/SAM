@@ -82,28 +82,6 @@ struct equation_info{
 extern std::unordered_map<std::string, std::vector<equation_info>> SAM_ui_form_to_eqn_info;
 
 
-/**
- * Maps each ui form with the ui input/outputs of each secondary cmod. Required for tracking which ui variables
- * are used as secondary cmod inputs and if the ui_outputs are assigned as primary ssc inputs.
- */
-
-class secondary_cmod_info{
-private:
-    std::unordered_map<std::string, std::string> input_name_to_assignments;
-    std::unordered_map<std::string, std::string> output_name_to_assignments;
-public:
-    secondary_cmod_info(){};
-
-    std::string cmod_name;
-
-    void map_of_input(std::string input, std::string assignments);
-
-    void map_of_output(std::string output, std::string assignments);
-};
-
-extern std::unordered_map<std::string, std::unordered_map<std::string, secondary_cmod_info>> SAM_config_to_secondary_cmod_info;
-
-
 
 /**
  * Mapping how ui variables are transformed by equations and callbacks before being assigned to primary ssc inputs
@@ -111,53 +89,6 @@ extern std::unordered_map<std::string, std::unordered_map<std::string, secondary
  */
 
 extern std::unordered_map<std::string, digraph*> SAM_config_to_variable_graph;
-
-
-/**
- * For each given configuration, stores the information required to match up ui variables with
- * the ssc variables for primary compute modules, considering equation evaluations and
- * secondary compute module simulations.
- *
- * primary variables that are not calculated,
- * the secondary variables which are non-calculated variables for secondary compute_modules
- * called within the case, and evaluated inputs which are outputs of equations and secondary
- * compute_modules. Maps from eqn and secondary cmod outputs to case inputs are stored,
- * as are maps from case inputs into eqns and secondary cmods.
- *
- */
-
-struct config_variables_info{
-    std::string config_name;
-
-    /// non-calculated variables that are inputs to eqns and primary simulation
-    std::vector<std::string> primary_inputs;
-
-    /// non-calculated variables that are inputs to secondary and primary simulations
-    std::vector<std::string> secondary_inputs;
-
-    /// calculated from eqns and secondary cmods that are inputs to secondary and primary simulations
-    std::vector<std::string> evaluated_inputs;
-
-    std::vector<equation_info> eqns_info;
-
-    /// first element is the ui variable name,
-    std::set<std::pair<std::string, std::string>> ssc_variables_to_eval_inputs;
-    std::set<std::pair<std::string, std::string>> eqn_outputs_to_ssc_variables;
-
-    std::vector<std::string> secondary_cmods;
-
-    std::set<std::pair<std::string, std::string>> ui_variables_to_secondary_inputs;
-    std::set<std::pair<std::string, std::string>> secondary_outputs_to_ui_variables;
-
-};
-
-extern std::unordered_map<std::string, config_variables_info> SAM_config_to_case_variables;
-
-/**
- * Maps each technology-financial configuration to the secondary compute_modules required
- * e.g. 'Biopower-LCOE Calculator': ('biomass', 'lcoefcr')
- */
-
 
 
 /// Bookmarks active ui form during UI script parsing
@@ -191,10 +122,6 @@ VarValue* find_default_from_ui(std::string name, std::string config);
 /// Determine if a variable is a primary ssc input by returning cmod name
 std::string which_cmod_as_input(std::string name, std::string config);
 
-/// Determine if a variable is a secondary ssc output by returning cmod name
-std::string which_cmod_as_output(std::string name, std::string ui_form);
-
-
 // utils
 
 std::vector<std::string> split_identity_string(std::string str, size_t n);
@@ -211,6 +138,27 @@ static void clear_arg_string(lk::invoke_t& cxt){
     }
 }
 
+std::string unescape(const std::string& s);
+
+static bool argument_of_special(std::string& s){
+    if (s.find("${") == std::string::npos)
+        return false;
+    size_t pos1 = s.find("${");
+    size_t pos2 = s.find("}");
+    s = s.substr(pos1 + 2, pos2);
+    s = unescape(s);
+    return true;
+}
+
+static bool argument_of_value(std::string& s){
+    if (s.find("value(") == std::string::npos)
+        return false;
+    size_t pos1 = s.find("value(");
+    size_t pos2 = s.find(")");
+    s = s.substr(pos1 + 6, pos2);
+    s = unescape(s);
+    return true;
+}
 
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T>& v);
@@ -219,7 +167,6 @@ std::vector<std::string> find_ui_forms_for_config(std::string config_name);
 
 void print_ui_form_to_eqn_variable();
 
-void print_config_variables_info();
 
 
 

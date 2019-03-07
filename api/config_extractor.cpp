@@ -69,7 +69,13 @@ bool config_extractor::map_equations(){
 
             for (size_t s = 0; s < inputs.size(); s++){
                 for (size_t d = 0; d < outputs.size(); d++){
-                    if (!var_graph->add_edge(inputs[s], outputs[d], EQN, ui)){
+                    bool src_is_ssc, dest_is_ssc;
+
+                    src_is_ssc = ( which_cmod_as_input(inputs[s], config_name).length() > 0 );
+                    dest_is_ssc = ( which_cmod_as_input(outputs[d], config_name).length() > 0 );
+
+
+                    if (!var_graph->add_edge(inputs[s], src_is_ssc, outputs[d], dest_is_ssc, EQN, ui, std::string())){
                         std::cout << "config_extractor::map_equation error: could not find vertices ";
                         std::cout << inputs[s] << " or " << outputs[d] << " in " << config_name << "\n";
                     }

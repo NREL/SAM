@@ -66,6 +66,9 @@ public:
 
 };
 
+std::string spell_out(lk::expr_t *n, std::vector<std::string> &vertex_names, std::vector<bool> &vertex_is_ssc);
 
+std::string spell_list(lk::list_t *l, std::vector<std::string> &vertex_names, std::vector<bool> &vertex_is_ssc,
+                       bool map_literals);
 
 #endif //SYSTEM_ADVISOR_MODEL_CALLBACK_EXTRACTOR_H
