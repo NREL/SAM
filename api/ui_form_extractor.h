@@ -27,9 +27,6 @@ private:
     std::string ui_form_name;
     std::string m_eqn_script;
     std::string m_callback_script;
-    std::vector<std::string> m_direct_variables;
-    std::vector<std::string> m_calculated_variables;
-
     lk::env_t m_env;
 
     /// Gets default values and stores into SAM_config_to_defaults
@@ -49,6 +46,11 @@ public:
     std::string get_eqn_script() {return m_eqn_script;}
 
     std::string get_callback_script() {return m_callback_script;}
+
+    std::vector<std::string> m_onload_obj;
+    std::vector<std::string> m_onchange_obj;
+
+    std::vector<std::string> m_functions;
 };
 
 

@@ -16,6 +16,8 @@ extern std::unordered_map<std::string, std::unordered_map<std::string, secondary
 /// Bookmarks active configuration during startup.lk parsing
 extern std::string active_config;
 extern std::string active_cmod;
+extern int active_method; // LOAD or CHNG
+
 
 /// export_config_funcs
 
@@ -141,7 +143,7 @@ static void fcall_value( lk::invoke_t &cxt )
     std::string var_left = cxt.arg(0).as_string().ToStdString();
 
     // find which ui form the left hand variable is from
-    std::string ui_source = find_ui_form_source(var_left, active_config);
+    std::string ui_source = find_ui_of_variable(var_left, active_config);
 
     // if getting a variable, return config-independent default found in ui form and save the mapping
     if ( cxt.arg_count() == 1 ){
@@ -152,7 +154,7 @@ static void fcall_value( lk::invoke_t &cxt )
 
         // if setting values into a secondary cmod, return the name and value of the variable
         if (active_cmod.length() > 0 ){
-            std::string map = var_left + ":" + def_vv->AsString().ToStdString();
+            std::string map = var_left;// + ":" + def_vv->AsString().ToStdString();
             cxt.result().assign(map);
         }
     }
@@ -176,12 +178,11 @@ static void fcall_value( lk::invoke_t &cxt )
         }
 
         std::string assigning_to_ssc_cmod = which_cmod_as_input(var_left, active_config);
-        bool assigning_from_ssc_var = false;
 
         if (ui_source == "" && (assigning_to_ssc_cmod.length() > 0)){
             std::cout << "fcall_value error: could not find left hand variable " << var_left ;
             std::cout << " in config " << active_config << "\n";
-            throw std::exception();
+            assert(false);
         }
 
         VarValue vv;
@@ -189,10 +190,8 @@ static void fcall_value( lk::invoke_t &cxt )
 
         vv.Write(cxt.result());
 
-        // if var_left is an ssc variable
-        if (assigning_to_ssc_cmod.length() > 0){
-
-        }
+        digraph* var_graph = SAM_config_to_variable_graph.find(active_config)->second;
+        var_graph->add_edge(var_left, ui_handle, active_method, active_object);
     }
 
 }
@@ -214,7 +213,14 @@ static void fcall_technology( lk::invoke_t &cxt )
 
 static void fcall_financing( lk::invoke_t &cxt )
 {
-    LK_DOC( "financing", "nothing to do", "(void):string" );
+    LK_DOC( "financing", "return financial model", "(void):string" );
+    size_t pos = active_config.find("-");
+    std::string f = active_config.substr(pos+1);
+    if (f.find("-") != std::string::npos){
+        pos = f.find("-");
+        f = f.substr(pos+1);
+    }
+    cxt.result().assign( f );
 }
 
 static void fcall_wfdownloaddir( lk::invoke_t &cxt){
@@ -419,6 +425,45 @@ static void fcall_substance_density(lk::invoke_t &cxt)
     std::cout << "substance_density not implemented\n";
 }
 
+static void fcall_snlinverter( lk::invoke_t &cxt )
+{
+    LK_DOC( "snlinverter", "Map calculation of the sandia inverter AC power from DC and specs", "(number:pdc, number:vdc, number:vdco, number:pdco, number:pso, number:paco, number:c0, number:c1, number:c2, number:c3):number" );
+
+    std::vector<std::string> args = split_identity_string(cxt.error(), 10);
+
+    digraph* graph = SAM_config_to_variable_graph.find(active_config)->second;
+
+    // if the arguments are in the graph, insert the output as snlinverter:tbd
+    // where tbd will be replaced by name of variable later
+    graph->add_vertex("snlinverter:tbd", false);
+    for (size_t i = 0; i < args.size(); i++){
+        if (graph->find_vertex(args[i])){
+            graph->add_edge(args[i], "snlinverter:tbd", active_method, active_subobject);
+        }
+    }
+
+    double pdc = cxt.arg(0).as_number();
+    double vdc = cxt.arg(1).as_number();
+    double vdco = cxt.arg(2).as_number();
+    double pdco = cxt.arg(3).as_number();
+    double pso = cxt.arg(4).as_number();
+    double paco = cxt.arg(5).as_number();
+    double c0 = cxt.arg(6).as_number();
+    double c1 = cxt.arg(7).as_number();
+    double c2 = cxt.arg(8).as_number();
+    double c3 = cxt.arg(9).as_number();
+
+    double vdcminusvdco = vdc - vdco;
+    double A = pdco * (1 + c1 * vdcminusvdco);
+    double B = pso * (1 + c2 * vdcminusvdco);
+    B = (B<0)? 0:B;
+
+    double C = c0 * (1 + c3 * vdcminusvdco);
+    double pac = ((paco / (A- B)) - C * (A - B)) * (pdc - B) + C * (pdc - B) * (pdc - B);
+
+    cxt.result().assign( pac );
+}
+
 /**
  *
  * These versions of lk functions are used to export a map of ui to ssc variables.
@@ -470,6 +515,7 @@ static lk::fcall_t* invoke_casecallback_funcs()
             fcall_plotopt,
             _editscene3d,
             fcall_substance_density,
+            fcall_snlinverter,
             0 };
     return (lk::fcall_t*)vec;
 }
@@ -482,41 +528,31 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
              "Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none",
              "Get a variable value", "(ssc-obj-ref:data, string:name):variant" );
 
+//    secondary_cmod_info* cmod_info = &(cmods->find(active_cmod)->second);
+
+
     // get
     std::string var_left = cxt.arg(1).as_string().ToStdString();
     if (cxt.arg_count() == 2){
-
-        // return a mapping: "Pdco"
+        std::vector<std::string> args = split_identity_string(cxt.error(), 2);
+        cxt.result().assign(var_left);
     }
     // set
     else{
-        // if there isn't data for this config yet, create a new vector of secondary_cmod_infos
-        if (SAM_config_to_secondary_cmod_info.find(active_config) == SAM_config_to_secondary_cmod_info.end())
-            SAM_config_to_secondary_cmod_info.insert({active_config,
-                                                      std::unordered_map<std::string, secondary_cmod_info>()});
-        auto cmods = &SAM_config_to_secondary_cmod_info.find(active_config)->second;
+        std::vector<std::string> args = split_identity_string(cxt.error(), 3);
 
-        // if there isn't info for the current cmod, add new
-        if (cmods->find(active_cmod) == cmods->end()){
-            // if the cmod isn't registered yet, add it
-            cmods->insert({active_cmod, secondary_cmod_info()});
-            secondary_cmod_info* cmod_info = &(cmods->find(active_cmod)->second);
+        auto var_graph = SAM_config_to_variable_graph.find(active_config)->second;
 
-            cmod_info->map_of_input(var_left, cxt.arg(2).as_string().ToStdString());
-
+        std::string ui_handle = active_cmod + ":" + args[2];
+        var_graph->add_vertex(ui_handle, false);
+        if (std::strcmp(var_left.c_str(), ui_handle.c_str()) != 0){
+            var_graph->add_edge(ui_handle, var_left, active_method, active_object );
         }
 
+        //var_graph->add_edge()
+
     }
-//    if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
-//    {
-//        wxString name = cxt.arg(1).as_string();
-//        if (cxt.arg_count() == 2)
-//            sscvar_to_lkvar( cxt.result(), (const char*)name.ToUTF8(), *ssc );
-//        else if (cxt.arg_count() == 3)
-//            lkvar_to_sscvar( *ssc, (const char*)name.ToUTF8(), cxt.arg(2).deref() );
-//    }
-//    else
-//        cxt.error( "invalid ssc-obj-ref" );
+
 }
 
 static void fcall_ssc_create( lk::invoke_t &cxt )
@@ -533,7 +569,7 @@ static void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 static void fcall_ssc_free( lk::invoke_t &cxt )
 {
     LK_DOC( "ssc_free", "Frees up an SSC data object.", "(ssc-obj-ref:data):none" );
-    // nothing to do
+    active_cmod = "tbd";
 }
 
 static void fcall_ssc_dump( lk::invoke_t &cxt )
@@ -544,15 +580,23 @@ static void fcall_ssc_dump( lk::invoke_t &cxt )
 
 static void fcall_ssc_exec( lk::invoke_t &cxt )
 {
-    LK_DOC( "ssc_exec", "Save name of active secondary cmod & update map", "( ssc-obj-ref:data, string:module, [table:options] ):variant" );
-    // make copy of info for "tbd" active_cmod before removing it
-    std::unordered_map<std::string, secondary_cmod_info> info = SAM_config_to_secondary_cmod_info[active_cmod];
-    SAM_config_to_secondary_cmod_info.erase(active_cmod);
+    LK_DOC( "ssc_exec", "Save name of active secondary cmod & update maps, assign as success", "( ssc-obj-ref:data, string:module, [table:options] ):variant" );
 
     active_cmod = cxt.arg(1).as_string().ToStdString();
-    SAM_config_to_secondary_cmod_info.insert({active_cmod, info});
 
-    cxt.result().assign(1);
+    // make sure all secondary cmod vars info is loaded into SAM_cmod_to_inputs and SAM_cmod_to_outputs
+    if (SAM_cmod_to_inputs.find(active_cmod) == SAM_cmod_to_inputs.end()){
+        std::vector<std::string> inputs_vec = get_cmod_var_info(active_cmod, "in");
+        SAM_cmod_to_inputs.insert({active_cmod, inputs_vec});
+
+        std::vector<std::string>  outputs_vec = get_cmod_var_info(active_cmod, "out");
+        SAM_cmod_to_outputs.insert({active_cmod, outputs_vec});
+    }
+
+    // rename vertices in graph with "tbd:var"
+    SAM_config_to_variable_graph.find(active_config)->second->rename_cmod_vertices(active_cmod);
+
+    cxt.result().assign(0.);
 }
 
 /**

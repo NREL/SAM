@@ -2,9 +2,58 @@
 #include <string>
 #include <algorithm>
 
+#include <ssc/sscapi.h>
+
+#include "ui_form_extractor.h"
 #include "data_structures.h"
 
 std::unordered_map<std::string, std::unordered_map<std::string, secondary_cmod_info>> SAM_config_to_secondary_cmod_info;
+
+
+/// create the cmod and get all the variable names of desired type
+std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string which_type){
+    ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
+    std::vector<std::string> variable_names;
+
+    int var_index = 0;
+    ssc_info_t mod_info = ssc_module_var_info(p_mod, var_index);
+    while (mod_info){
+        int var_type = ssc_info_var_type(mod_info);
+        std::string name = ssc_info_name(mod_info);
+
+        // if SSC_INPUT or SSC_INOUT
+        if (which_type == "in"){
+            if ( var_type == 1 || var_type == 3) {
+                variable_names.push_back(name);
+            }
+        }
+        else{
+            if ( var_type == 2) {
+                variable_names.push_back(name);
+            }
+        }
+        ++var_index;
+        mod_info = ssc_module_var_info(p_mod, var_index);
+    }
+    return variable_names;
+}
+
+/// get input information for compute modules that are used in all configurations
+void load_primary_cmod_inputs() {
+    // for primary modules, only require inputs
+    for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
+        auto modules_vec = it->second;
+
+        for (size_t i = 0; i < modules_vec.size(); i++){
+            std::string cmod_name = modules_vec[i];
+
+            if (SAM_cmod_to_inputs.find(cmod_name) == SAM_cmod_to_inputs.end()){
+                std::vector<std::string> inputs_vec = get_cmod_var_info(cmod_name, "in");
+                SAM_cmod_to_inputs.insert({cmod_name, inputs_vec});
+            }
+        }
+    }
+}
 
 void secondary_cmod_info::map_of_input(std::string input, std::string assignments){
     // if value has already been mapped
@@ -46,7 +95,7 @@ std::vector<equation_info> find_eqn_info(std::string ui_var, std::string config)
     return eqn_infos;
 }
 
-std::string find_ui_form_source(std::string name, std::string config){
+std::string find_ui_of_variable(std::string name, std::string config){
     std::vector<std::string> all_ui = find_ui_forms_for_config(config);
 
     for (size_t i = 0; i < all_ui.size(); i++){
@@ -56,18 +105,6 @@ std::string find_ui_form_source(std::string name, std::string config){
         }
     }
     return "";
-}
-
-VarValue* find_default_from_ui(std::string name, std::string config){
-    std::vector<std::string> all_ui = find_ui_forms_for_config(config);
-
-    for (size_t i = 0; i < all_ui.size(); i++){
-        std::unordered_map<std::string, VarValue> ui_def = SAM_ui_form_to_defaults[all_ui[i]];
-        if (ui_def.find(name) != ui_def.end()){
-            return &ui_def[name];
-        }
-    }
-    return NULL;
 }
 
 std::vector<std::string> find_ui_forms_for_config(std::string config_name){
@@ -84,6 +121,36 @@ std::vector<std::string> find_ui_forms_for_config(std::string config_name){
     }
     return all_ui_forms;
 }
+
+ui_form_extractor* find_ui_of_object(std::string obj, std::string config){
+    std::vector<std::string> all_ui = find_ui_forms_for_config(config);
+
+    for (size_t i = 0; i < all_ui.size(); i++){
+        ui_form_extractor* ui_fe = SAM_ui_extracted_db.find(all_ui[i]);
+        assert(ui_fe);
+        if (find(ui_fe->m_onload_obj.begin(), ui_fe->m_onload_obj.end(), obj) != ui_fe->m_onload_obj.end())
+            return ui_fe;
+        if (find(ui_fe->m_onchange_obj.begin(), ui_fe->m_onchange_obj.end(), obj) != ui_fe->m_onchange_obj.end())
+            return ui_fe;
+        if (find(ui_fe->m_functions.begin(), ui_fe->m_functions.end(), obj) != ui_fe->m_functions.end())
+            return ui_fe;
+    }
+    return nullptr;
+}
+
+VarValue* find_default_from_ui(std::string name, std::string config){
+    std::vector<std::string> all_ui = find_ui_forms_for_config(config);
+
+    for (size_t i = 0; i < all_ui.size(); i++){
+        std::unordered_map<std::string, VarValue> ui_def = SAM_ui_form_to_defaults[all_ui[i]];
+        if (ui_def.find(name) != ui_def.end()){
+            return &ui_def[name];
+        }
+    }
+    return NULL;
+}
+
+
 
 
 std::string which_cmod_as_input(std::string name, std::string config){
@@ -107,6 +174,23 @@ std::string which_cmod_as_output(std::string name, std::string config){
 // need to populate variables for new cmods
     }
     return "";
+}
+
+std::vector<std::string> split_identity_string(std::string str, size_t n){
+    size_t pos = str.find("args:");
+    if (pos == std::string::npos)
+        assert(false);
+    std::vector<std::string> args;
+    str = str.substr(pos+5);
+    pos = str.find(":");
+    while (pos != std::string::npos){
+        args.push_back(str.substr(0, pos));
+        str = str.substr(pos+1);
+        pos = str.find(":");
+    }
+    args.push_back(str);
+    assert(args.size() == n);
+    return args;
 }
 
 template <typename T>

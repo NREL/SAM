@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "variables.h"
+#include "variable_graph.h"
 
 /* List of all intermediate and exported data structures with descriptions */
 
@@ -43,6 +44,12 @@ extern std::unordered_map<std::string, std::vector<std::string>> SAM_config_to_p
  */
 
 extern std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
+
+/**
+ * All secondary compute_modules: SSC_OUT
+ */
+
+extern std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_outputs;
 
 
 /**
@@ -103,7 +110,7 @@ extern std::unordered_map<std::string, std::unordered_map<std::string, secondary
  * across
  */
 
-
+extern std::unordered_map<std::string, digraph*> SAM_config_to_variable_graph;
 
 
 /**
@@ -154,9 +161,11 @@ extern std::unordered_map<std::string, config_variables_info> SAM_config_to_case
 
 
 /// Bookmarks active ui form during UI script parsing
-static std::string active_ui;
+extern std::string active_ui;
 
 extern std::string active_object;
+
+extern std::string active_subobject;
 
 extern std::unordered_map<std::string, std::vector<std::string>> SAM_ui_obj_to_enabled_variables;
 
@@ -166,9 +175,15 @@ extern std::unordered_map<std::string, std::vector<std::string>> SAM_ui_obj_to_e
  * e.g. 'Wind Power-Residential': {'wind_obos': wind_turbine_rotor_diameter, rotorD)
  */
 
+std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string which_type);
+
+void load_primary_cmod_inputs();
 
 /// Find which ui form a variable is defined inside for a given config
-std::string find_ui_form_source(std::string name, std::string config);
+std::string find_ui_of_variable(std::string name, std::string config);
+
+class ui_form_extractor;
+ui_form_extractor* find_ui_of_object(std::string obj, std::string config);
 
 /// Find the config-independent default VarValue for a variable for a given config
 VarValue* find_default_from_ui(std::string name, std::string config);
@@ -181,6 +196,21 @@ std::string which_cmod_as_output(std::string name, std::string ui_form);
 
 
 // utils
+
+std::vector<std::string> split_identity_string(std::string str, size_t n);
+
+static void clear_arg_string(lk::invoke_t& cxt){
+    size_t pos = cxt.error().find("args");
+    if (pos == std::string::npos)
+        return;
+    else if (pos == 0){
+        cxt.clear_error();
+    }
+    else{
+        cxt.error(cxt.error().substr(0, pos));
+    }
+}
+
 
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T>& v);

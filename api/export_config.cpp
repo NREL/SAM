@@ -8,11 +8,13 @@
 #include "ui_form_extractor.h"
 #include "equation_extractor.h"
 #include "config_extractor.h"
-
+#include "data_structures.h"
 #include "export_config.h"
 
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
+std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_outputs;
 std::unordered_map<std::string, config_variables_info> SAM_config_to_case_variables;
+
 
 std::string active_config;
 
@@ -71,7 +73,10 @@ int main(int argc, char *argv[]){
         }
 
         config_extractor ce(it->first);
+        ce.map_equations();
         ce.register_callback_functions();
+        std::cout << "\n\n\n\n";
+        SAM_config_to_variable_graph[active_config]->print_dot();
     }
 
     // for each configuration,  per input page

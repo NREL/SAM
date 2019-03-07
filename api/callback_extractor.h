@@ -10,12 +10,19 @@
 #include "data_structures.h"
 
 
+
 class extractor_interpreter : public lk::eval{
 public:
     extractor_interpreter(lk::node_t *tree, lk::env_t* env):lk::eval(tree, env){}
 
+    bool interpret(lk::node_t *root, lk::env_t*cur_env, lk::vardata_t &result, unsigned int flags,
+        unsigned int &ctl_id);
+
     virtual bool special_set( const lk_string &name, lk::vardata_t &val );
     virtual bool special_get( const lk_string &name, lk::vardata_t &val );
+
+    void map_assignment(lk::node_t *src, lk::node_t *dest);
+
 };
 
 class callback_extractor{
