@@ -49,7 +49,7 @@ extern std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inp
  * All secondary compute_modules: SSC_OUT
  */
 
-extern std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_outputs;
+extern std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_cmod_to_outputs;
 
 
 /**
@@ -109,6 +109,8 @@ extern std::unordered_map<std::string, std::vector<std::string>> SAM_ui_obj_to_e
 std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string which_type);
 
 void load_primary_cmod_inputs();
+
+void load_secondary_cmod_outputs(std::string cmod_name);
 
 /// Find which ui form a variable is defined inside for a given config
 std::string find_ui_of_variable(std::string name, std::string config);

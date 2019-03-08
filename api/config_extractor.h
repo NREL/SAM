@@ -27,7 +27,18 @@ public:
 
     config_extractor(std::string name);
 
-    ~config_extractor(){delete var_graph;}
+    ~config_extractor(){
+        delete var_graph;
+
+        // clear global config-specific variables
+        active_ui = "";
+        active_config = "";
+        active_cmod = "";
+        active_subobject = "";
+        active_method = -1;
+        map_subobject = true;
+        subobjects_completed.clear();
+    }
 
     bool load_defaults_for_config();
 

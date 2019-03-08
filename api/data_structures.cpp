@@ -7,6 +7,55 @@
 #include "ui_form_extractor.h"
 #include "data_structures.h"
 
+std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_cmod_to_outputs;
+
+void load_secondary_cmod_outputs(std::string cmod_name){
+
+    if (SAM_cmod_to_outputs.find(cmod_name) != SAM_cmod_to_outputs.end())
+        return;
+
+    SAM_cmod_to_outputs.insert({cmod_name, std::unordered_map<std::string, VarValue>() });
+    auto outputs_map = &(SAM_cmod_to_outputs.find(cmod_name)->second);
+
+    ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
+
+    int var_index = 0;
+    ssc_info_t mod_info = ssc_module_var_info(p_mod, var_index);
+    while (mod_info){
+        int var_type = ssc_info_var_type(mod_info);
+
+        // if SSC_OUTPUT
+        if ( var_type == 2) {
+            std::string name = ssc_info_name(mod_info);
+            outputs_map->insert({name, VarValue()});
+            VarValue& vv = outputs_map->find(name)->second;
+
+            int data_type = ssc_info_data_type(mod_info);
+
+            switch(data_type){
+                case SSC_INVALID:
+                    break;
+                case SSC_STRING:
+                    vv.Set("");
+                    break;
+                case SSC_NUMBER:
+                    vv.Set(0);
+                    break;
+                case SSC_ARRAY:
+                    vv.Set(std::vector<int>());
+                    break;
+                case SSC_MATRIX:
+                    vv.Set(matrix_t<float>());
+                    break;
+                case SSC_TABLE:
+                    vv.Set(VarTable());
+                    break;
+            }
+        }
+        ++var_index;
+        mod_info = ssc_module_var_info(p_mod, var_index);
+    }
+}
 
 /// create the cmod and get all the variable names of desired type
 std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string which_type){

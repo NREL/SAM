@@ -12,7 +12,6 @@
 #include "export_config.h"
 
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
-std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_outputs;
 
 
 std::string active_config;

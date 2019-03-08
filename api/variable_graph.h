@@ -139,12 +139,7 @@ public:
             return nullptr;
 
         if (edge* e = src->get_edge_out_to(dest)){
-            if (e->type == type)
-                return e;
-            else{
-                std::cout << "type was different for edge between " << src_name << " and " << dest_name << "\n";
-                return nullptr;
-            }
+            return e;
         }
         else
             return nullptr;
@@ -155,8 +150,6 @@ public:
         assert(type >= 0);
         if (find_edge(src, src_is_ssc, dest, dest_is_ssc, type))
             return true;
-        if (src.find("tbd") != -1 || dest.find("tbd") != -1)
-            std::cout << "add_edge: " << dest << " to " << src << "\n";
         vertex* v1 = find_vertex(src, src_is_ssc);
         vertex* v2 = find_vertex(dest, dest_is_ssc);
         if (!v1 || !v2){

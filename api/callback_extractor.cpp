@@ -18,6 +18,9 @@ std::string active_ui;
 std::string active_subobject;
 std::string active_cmod;
 int active_method = -1;
+bool map_subobject;
+std::vector<std::string> subobjects_completed;
+
 std::unordered_map<std::string, std::vector<std::string>> SAM_ui_obj_to_enabled_variables;
 extern std::unordered_map<std::string, digraph*> SAM_config_to_variable_graph;
 
@@ -38,8 +41,11 @@ bool extractor_interpreter::special_get(const lk_string &name, lk::vardata_t &va
 bool extractor_interpreter::special_set(const lk_string &name, lk::vardata_t &val) {
     bool ok = false;
     VarTable* vt = &SAM_config_to_defaults[active_config];
-    if ( VarValue *vv = vt->Get( name ) )
-        ok = vv->Read( val, true );
+    if ( VarValue *vv = vt->Get( name ) ){
+        ok = vv->Read( val, false );
+        if (!ok)
+            ok = vv->Read( val, true);
+    }
 
     if (!ok){
         errors().push_back("special_set error: could not find " + name + " in " + active_config);
@@ -248,7 +254,7 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
     graph->add_vertex(dest_var, dest_is_ssc);
 
     for (size_t i = 0; i < vertex_names.size(); i++){
-        graph->add_edge(vertex_names[i], vertex_is_ssc[i], dest_var, false, active_method, active_subobject, expression);
+        graph->add_edge(vertex_names[i], vertex_is_ssc[i], dest_var, dest_is_ssc, active_method, active_subobject, expression);
     }
 }
 
@@ -461,8 +467,16 @@ bool extractor_interpreter::interpret(lk::node_t *root,
                     // evaluate expression before the lhs identifier
                     ok = ok && interpret(n4->right, cur_env, r, flags, ctl_id);
 
-                    if (active_method >= 0 ){
-                        map_assignment(n4->right, n4->left);
+                    // active_method only active during equation or callback parsing
+                    if (active_method >= 0) {
+                        // if parsing a subobject, check if it's been mapped before
+                        if ((active_subobject.length() > 0) && map_subobject)
+                        {
+                            map_assignment(n4->right, n4->left);
+                        }
+                        else if (active_subobject.length() == 0){
+                            map_assignment(n4->right, n4->left);
+                        }
                     }
 
                     // if on the LHS of the assignment we have a special variable i.e. ${xy}, use a
@@ -742,6 +756,16 @@ bool extractor_interpreter::interpret(lk::node_t *root,
                         assert(false);
                     }
 
+                    // save the subobject so we don't repeat the map_assignment
+                    if (std::find(subobjects_completed.begin(), subobjects_completed.end(), active_subobject)
+                        == subobjects_completed.end()){
+                        subobjects_completed.push_back(active_subobject);
+                        map_subobject = true;
+                    }
+                    else{
+                        map_subobject = false;
+                    }
+
                     node_t *block = define->right;
 
                     // create new environment frame
@@ -827,6 +851,7 @@ bool extractor_interpreter::interpret(lk::node_t *root,
 
                     // mark return from the defined object
                     active_subobject = "";
+                    map_subobject = true;
 
                     // do a deep copy of internalized references
                     result.deep_localize();
@@ -1186,8 +1211,9 @@ int callback_extractor::invoke_method_type(const std::string &method_name) {
         active_cmod = "";
         active_object = obj_name;
         active_subobject = "";
+        map_subobject = true;
         if (active_object== "Inverter CEC Coefficient Generator"){
-            std::cout << "stophere\n";
+//            std::cout << "stophere\n";
         }
         if (!invoke_function(p_define->right, obj_name))
             error += 1;
@@ -1225,7 +1251,6 @@ bool callback_extractor::extract_functions() {
     }
 
     active_method = CHNG;
-    // do a check of completed subobjects... esp before map_assignment
     nerrors = invoke_method_type("on_change");
     if (nerrors > 0){
         std::cout << "callback_extractor::extract_functions error: " << nerrors << " 'on_change' obj errors\n";

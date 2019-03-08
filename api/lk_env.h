@@ -14,6 +14,8 @@
 extern std::string active_config;
 extern std::string active_cmod;
 extern int active_method; // LOAD or CHNG
+extern bool map_subobject; // true if subobject hasn't been mapped before
+extern std::vector<std::string> subobjects_completed;
 
 
 /// export_config_funcs
@@ -177,14 +179,14 @@ static void fcall_value( lk::invoke_t &cxt )
         std::string obj_stack = active_object
                                 + (active_subobject.length() > 0 ? ":" + active_subobject : "");
 
-        // add the source vertex & edge if they don't exist already
-        var_graph->add_vertex(src_name, src_is_ssc);
+        if (map_subobject){
+            // add the source vertex & edge if they don't exist already
+            var_graph->add_vertex(src_name, src_is_ssc);
 
-        var_graph->add_edge(src_name, src_is_ssc, dest_name, dest_is_ssc,
-                            active_method, active_object, "value(" + cxt.error() + ")");
+            var_graph->add_edge(src_name, src_is_ssc, dest_name, dest_is_ssc,
+                                active_method, active_object, "value(" + cxt.error() + ")");
 
-        // overwrite the variable in the config-dependent defaults?
-        //find_default_from_ui(dest_name, active_config)->Read(cxt.arg(1));
+        }
     }
 
 }
@@ -522,10 +524,14 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
              "Get a variable value", "(ssc-obj-ref:data, string:name):variant" );
 
 
-    // get
+    // get needs to return value of proper type, which can be found by populating secondary_cmod_defaults
     if (cxt.arg_count() == 2){
         std::string var_name = cxt.arg(1).as_string().ToStdString();
-        cxt.result().assign(var_name);
+        auto map = SAM_cmod_to_outputs.find(active_cmod)->second;
+        auto it = map.find(var_name);
+        assert(it != map.end());
+        VarValue& vv = it->second;
+        vv.Write(cxt.result());
     }
     // set will map the argument to the secondary compute module vertex
     else{
@@ -551,12 +557,14 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
                 + ":" + (active_subobject.length() > 0 ? active_subobject + ":" : ":")
                 + active_cmod; // probably "tbd" since the identity is unknown until ssc_exec
 
-        // add the vertices & edge if they don't exist already
-        var_graph->add_vertex(src_name, is_ssc);
-        var_graph->add_vertex(dest_name, false);
+        if (map_subobject) {
+            // add the vertices & edge if they don't exist already
+            var_graph->add_vertex(src_name, is_ssc);
+            var_graph->add_vertex(dest_name, false);
 
-        var_graph->add_edge(src_name, is_ssc, dest_name, false,
-                active_method, active_object, "ssc_var(" + cxt.error() + ")");
+            var_graph->add_edge(src_name, is_ssc, dest_name, false,
+                                active_method, active_object, "ssc_var(" + cxt.error() + ")");
+        }
     }
 }
 
@@ -593,18 +601,20 @@ static void fcall_ssc_exec( lk::invoke_t &cxt )
     if (SAM_cmod_to_inputs.find(active_cmod) == SAM_cmod_to_inputs.end()){
         std::vector<std::string> inputs_vec = get_cmod_var_info(active_cmod, "in");
         SAM_cmod_to_inputs.insert({active_cmod, inputs_vec});
-
-        std::vector<std::string>  outputs_vec = get_cmod_var_info(active_cmod, "out");
-        SAM_cmod_to_outputs.insert({active_cmod, outputs_vec});
     }
 
-    // rename vertices in graph with "tbd:var"
-    digraph* graph = SAM_config_to_variable_graph.find(active_config)->second;
-    graph->rename_cmod_vertices(active_cmod);
-
-    graph->rename_vertex("tbd", false, active_cmod);
+    load_secondary_cmod_outputs(active_cmod);
 
     cxt.result().assign(0.);
+
+    if (map_subobject) {
+        // rename vertices in graph with "tbd:var"
+        digraph *graph = SAM_config_to_variable_graph.find(active_config)->second;
+        graph->rename_cmod_vertices(active_cmod);
+
+        graph->rename_vertex("tbd", false, active_cmod);
+
+    }
 }
 
 /**
