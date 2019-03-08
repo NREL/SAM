@@ -76,8 +76,7 @@ bool config_extractor::map_equations(){
 
 
                     if (!var_graph->add_edge(inputs[s], src_is_ssc, outputs[d], dest_is_ssc, EQN, ui, std::string())){
-                        std::cout << "config_extractor::map_equation error: could not find vertices ";
-                        std::cout << inputs[s] << " or " << outputs[d] << " in " << config_name << "\n";
+                        std::cout << "config_extractor::map_equation error: could not find vertices \n";
                     }
                 }
             }

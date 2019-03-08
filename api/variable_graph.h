@@ -20,6 +20,7 @@ enum {
 
 class vertex;
 
+// directed
 class edge{
 public:
     int type;
@@ -38,6 +39,7 @@ public:
     }
 };
 
+// each vertex is responsible for the memory of its edges_out
 class vertex{
 public:
     std::string name;
@@ -49,22 +51,46 @@ public:
         name = n;
         is_ssc_var = is_ssc;
     }
+
+    edge* get_edge_out_to(vertex* dest){
+        for (size_t i = 0; i < edges_out.size(); i++){
+            if (edges_out[i]->dest == dest)
+                return edges_out[i];
+        }
+        return nullptr;
+    }
+
+    edge* get_edge_in_from(vertex* src){
+        for (size_t i = 0; i < edges_in.size(); i++){
+            if (edges_in[i]->src == src)
+                return edges_out[i];
+        }
+        return nullptr;
+    }
+
+    ~vertex(){
+        for (size_t e = 0; e < edges_out.size(); e++){
+            delete edges_out[e];
+        }
+    }
 };
 
 class digraph{
 private:
     std::string name;
-    std::unordered_map<std::string, vertex*> vertices;
-    std::vector<edge*> edges;
+    // vertices can have the same name but at 0 position is not an ssc var, and at 1 it is
+    // secondary compute modules act as a non-ssc var vertex
+    std::unordered_map<std::string, std::vector<vertex*>> vertices;
+
 
 public:
     digraph(std::string n){name = n;}
     ~digraph(){
         for (auto it = vertices.begin(); it != vertices.end(); ++it){
-            delete it->second;
-        }
-        for (size_t i = 0; i < edges.size(); i++){
-            delete edges[i];
+            if (it->second[0])
+                delete it->second[0];
+            if (it->second[1])
+                delete it->second[1];
         }
     }
 
@@ -72,19 +98,22 @@ public:
         if (find_vertex(n, is_ssc))
             return;
         vertex* v = new vertex(n, is_ssc);
-        vertices.insert({n, v});
+        auto it = vertices.find(n);
+        if (it == vertices.end()){
+            std::vector<vertex*> vs(2, nullptr);
+            vertices.insert({n, vs});
+        }
+        vertices.find(n)->second.at((size_t)is_ssc) = v;
     }
 
     vertex* find_vertex(std::string n, bool is_ssc){
-        if (vertices.find(n) != vertices.end()){
-            vertex* v = vertices.find(n)->second;
-            if (v->is_ssc_var == is_ssc)
-                return v;
-            else
-                return nullptr;
-        }
-        else
+        auto it = vertices.find(n);
+        if (it == vertices.end())
             return nullptr;
+        std::vector<vertex*> vec = it->second;
+        if (vertex* v = vec.at((size_t)is_ssc))
+            return v;
+        return nullptr;
     }
 
     void delete_vertex(vertex* v){
@@ -95,103 +124,114 @@ public:
         for (size_t i = 0; i < v->edges_out.size(); i++){
             delete_edge(v->edges_out[i]);
         }
-        vertices.erase(v->name);
-        delete v;
+        auto it = vertices.find(v->name)->second;
+        if (it.at(0) == v){
+            delete it.at(0);
+        }
+        else
+            delete it.at(1);
     }
 
-    edge* find_edge(std::string v1, std::string v2, int type){
-        for (size_t i = 0; i < edges.size(); i++){
-            edge* e = edges[i];
-            bool match = (std::strcmp(e->src->name.c_str(), v1.c_str()) == 0)
-                    && (std::strcmp(e->dest->name.c_str(), v2.c_str()) == 0)
-                    && (e->type == type);
-            if (match)
+    edge* find_edge(std::string src_name, bool src_is_ssc, std::string dest_name, bool dest_is_ssc, int type){
+        vertex* src = find_vertex(src_name, src_is_ssc);
+        vertex* dest = find_vertex(dest_name, dest_is_ssc);
+        if (!src || !dest)
+            return nullptr;
+
+        if (edge* e = src->get_edge_out_to(dest)){
+            if (e->type == type)
                 return e;
+            else{
+                std::cout << "type was different for edge between " << src_name << " and " << dest_name << "\n";
+                return nullptr;
+            }
         }
-        return nullptr;
+        else
+            return nullptr;
     }
 
     bool add_edge(std::string src, bool src_is_ssc, std::string dest, bool dest_is_ssc,
             int type, std::string obj, std::string expression) {
         assert(type >= 0);
-        if (find_edge(src, dest, type))
+        if (find_edge(src, src_is_ssc, dest, dest_is_ssc, type))
             return true;
         if (src.find("tbd") != -1 || dest.find("tbd") != -1)
             std::cout << "add_edge: " << dest << " to " << src << "\n";
         vertex* v1 = find_vertex(src, src_is_ssc);
         vertex* v2 = find_vertex(dest, dest_is_ssc);
         if (!v1 || !v2){
-            std::cout << "digraph::add_edge error: could not find vertices " + (!v1? src : dest) << "\n";
+            std::cout << "digraph::add_edge error: could not find vertices ";
+            std::cout << (!v1? src + " " + std::to_string(src_is_ssc)
+                : dest + " " + std::to_string(dest_is_ssc) ) << "\n";
             return false;
         }
         edge* e = new edge(v1, v2, type, obj, expression);
-        edges.push_back(e);
-        v1->edges_out.push_back(edges.back());
-        v2->edges_in.push_back(edges.back());
+
+        v1->edges_out.push_back(e);
+        v2->edges_in.push_back(e);
         return true;
     }
 
-    void update_edges(vertex* v){
-        for (size_t e = 0; e < v->edges_in.size(); e++){
-            edge* edge_in = v->edges_in[e];
-            edge_in->dest = v;
-        }
-        for (size_t e = 0; e < v->edges_out.size(); e++){
-            edge* edge_out = v->edges_out[e];
-            edge_out->src = v;
-        }
-    }
 
     void delete_edge(edge* e){
         assert(e);
-        auto src_edges_out = e->src->edges_out;
-        for (size_t i = 0; i < src_edges_out.size(); i++){
-            if (src_edges_out[i] == e){
-                src_edges_out.erase(src_edges_out.begin() + i);
+        vertex* src = e->src;
+        for (size_t i = 0; i < src->edges_out.size(); i++){
+            if (src->edges_out[i] == e){
+                src->edges_out.erase(src->edges_out.begin() + i);
                 break;
             }
         }
-        auto dest_edges_in = e->dest->edges_in;
-        for (size_t i = 0; i < dest_edges_in.size(); i++){
-            if (dest_edges_in[i] == e){
-                dest_edges_in.erase(dest_edges_in.begin() + i);
+        vertex* dest = e->dest;
+        for (size_t i = 0; i < dest->edges_in.size(); i++){
+            if (dest->edges_in[i] == e){
+                dest->edges_in.erase(dest->edges_in.begin() + i);
                 break;
             }
         }
-        for (size_t i = 0; i < edges.size(); i++){
-            if (edges[i] == e)
-                edges.erase(edges.begin() + i);
-            delete e;
-            break;
-        }
+        delete e;
     }
 
-    void rename_vertex(vertex* v, std::string n){
-        assert(v);
-        v->name = n;
-        update_edges(v);
+    // rename vertices map key and vertex itself
+    void rename_vertex(std::string old, bool is_ssc, std::string n){
+        auto old_it = vertices.find(old);
+        if (old_it == vertices.end()){
+            std::cout << "digraph::rename_vertex error: could not find \'" << old << "\' vertex\n";
+            assert(false);
+        }
+
+        // new entry by new name
+        vertices.insert({n, std::vector<vertex*>(2, nullptr)});
+        std::vector<vertex*>& new_vec = vertices.find(n)->second;
+
+        // move ownership of pointer & rename vertex
+        new_vec.at((size_t)is_ssc) = old_it->second.at((size_t)is_ssc);
+        assert(new_vec.at((size_t)is_ssc));
+        new_vec.at((size_t)is_ssc)->name = n;
+        old_it->second.at((size_t)is_ssc) = nullptr;
+
+        // if no vertices by the old name, delete hash entry
+        if (!old_it->second.at(0) && !old_it->second.at(1))
+            vertices.erase(old_it);
     }
 
     // vertices inserted as tbd:var will be rename to cmod:var, with duplication check
     void rename_cmod_vertices(std::string cmod_name){
+        size_t not_ssc_var = 0; // secondary cmod variables are not primary
         for (auto it = vertices.begin(); it != vertices.end(); ++it){
-            if (it->second->name.find("tbd:") != std::string::npos){
-                vertex* v = it->second;
-                std::string new_name = v->name;
+            if (it->first.find("tbd:") != std::string::npos){
 
+                std::string new_name = it->first;
                 size_t pos = new_name.find("tbd:");
                 new_name.replace(pos, 4, (cmod_name + ":"));
 
-                if (find_vertex(new_name, false)){
-                    delete_vertex(v);
-                }
-                else{
-                    v->name = new_name;
-                    update_edges(v);
-                }
+                rename_vertex(it->first, not_ssc_var, new_name);
+
             }
         }
     }
+
+    void print_vertex(vertex *v);
 
     void print_dot();
 };

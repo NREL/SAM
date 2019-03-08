@@ -38,8 +38,8 @@ bool extractor_interpreter::special_get(const lk_string &name, lk::vardata_t &va
 bool extractor_interpreter::special_set(const lk_string &name, lk::vardata_t &val) {
     bool ok = false;
     VarTable* vt = &SAM_config_to_defaults[active_config];
-    if ( VarValue *vv = vt->Get( name.ToStdString() ) )
-        ok = vv->Read( val );
+    if ( VarValue *vv = vt->Get( name ) )
+        ok = vv->Read( val, true );
 
     if (!ok){
         errors().push_back("special_set error: could not find " + name + " in " + active_config);
@@ -48,7 +48,7 @@ bool extractor_interpreter::special_set(const lk_string &name, lk::vardata_t &va
 }
 
 
-std::string spell_list(lk::list_t *l, std::vector<std::string> &vertex_names, std::vector<bool> &vertex_is_ssc,
+std::string spell_list(lk::list_t *l, std::vector<std::string> *vertex_names, std::vector<bool> *vertex_is_ssc,
                        bool map_literals_only) {
     digraph* graph = SAM_config_to_variable_graph.find(active_config)->second;
 
@@ -61,8 +61,8 @@ std::string spell_list(lk::list_t *l, std::vector<std::string> &vertex_names, st
             if (map_literals_only){
                 bool is_ssc_var = which_cmod_as_input(lit->value, active_config).length() > 0;
                 if (graph->find_vertex(lit->value, is_ssc_var)){
-                    vertex_names.push_back(lit->value);
-                    vertex_is_ssc.push_back(is_ssc_var);
+                    if (vertex_names) vertex_names->push_back(lit->value);
+                    if (vertex_is_ssc) vertex_is_ssc->push_back(is_ssc_var);
                 }
                 continue;
             }
@@ -70,8 +70,8 @@ std::string spell_list(lk::list_t *l, std::vector<std::string> &vertex_names, st
         else if (lk::iden_t* id = dynamic_cast<lk::iden_t*>(l->items[i])){
             s += id->name;
             if (graph->find_vertex(id->name, false)){
-                vertex_names.push_back(id->name);
-                vertex_is_ssc.push_back(false);
+                if (vertex_names) vertex_names->push_back(id->name);
+                if (vertex_is_ssc) vertex_is_ssc->push_back(false);
             }
         }
         else if (lk::constant_t* c = dynamic_cast<lk::constant_t*>(l->items[i])){
@@ -92,7 +92,7 @@ std::string spell_list(lk::list_t *l, std::vector<std::string> &vertex_names, st
     return s;
 }
 
-std::string spell_out(lk::expr_t *n, std::vector<std::string> &vertex_names, std::vector<bool> &vertex_is_ssc) {
+std::string spell_out(lk::expr_t *n, std::vector<std::string> *vertex_names, std::vector<bool> *vertex_is_ssc) {
     digraph* graph = SAM_config_to_variable_graph.find(active_config)->second;
     std::string s;
 
@@ -105,17 +105,23 @@ std::string spell_out(lk::expr_t *n, std::vector<std::string> &vertex_names, std
     }
     else if (lk::iden_t* left_i = dynamic_cast<lk::iden_t*>(n->left)){
         s += left_i->name;
-        if (graph->find_vertex(left_i->name, false)){
-            vertex_names.push_back(left_i->name);
-            vertex_is_ssc.push_back(false);
-        }
-        // if function identity is value(...)
-        else if (std::strcmp(left_i->name.c_str(), "value") == 0){
+        // if function identity is value(...), then getting a value
+        if (std::strcmp(left_i->name.c_str(), "value") == 0){
             calling_value_function = true;
+            size_t arg_count = dynamic_cast<lk::list_t*>(n->right)->items.size();
+            assert(arg_count == 1);
         }
-        // if function identity is ssc_var(...)
+        // if function identity is ssc_var(...), then getting an output from secondary cmod
         else if (std::strcmp(left_i->name.c_str(), "ssc_var") == 0){
+            size_t arg_count = dynamic_cast<lk::list_t*>(n->right)->items.size();
+            assert(arg_count == 2);
+            if (vertex_names) vertex_names->push_back(active_cmod);
+            if (vertex_is_ssc) vertex_is_ssc->push_back(false);
             calling_ssc_var_function = true;
+        }
+        else if (graph->find_vertex(left_i->name, false)){
+            if (vertex_names) vertex_names->push_back(left_i->name);
+            if (vertex_is_ssc) vertex_is_ssc->push_back(false);
         }
     }
     else if (lk::literal_t* left_l = dynamic_cast<lk::literal_t*>(n->left)){
@@ -140,8 +146,8 @@ std::string spell_out(lk::expr_t *n, std::vector<std::string> &vertex_names, std
     else if (lk::iden_t* right_i = dynamic_cast<lk::iden_t*>(n->right)){
         s += right_i->name;
         if (graph->find_vertex(right_i->name, false)){
-            vertex_names.push_back(right_i->name);
-            vertex_is_ssc.push_back(false);
+            if (vertex_names) vertex_names->push_back(right_i->name);
+            if (vertex_is_ssc) vertex_is_ssc->push_back(false);
         }
     }
     else if (lk::constant_t* right_c = dynamic_cast<lk::constant_t*>(n->right)){
@@ -151,13 +157,18 @@ std::string spell_out(lk::expr_t *n, std::vector<std::string> &vertex_names, std
         s += "\"" + right_l->value + "\"";
         if (calling_value_function){
             if (graph->find_vertex(right_l->value, true)){
-                vertex_names.push_back(right_l->value);
-                vertex_is_ssc.push_back(true);
+                if (vertex_names) vertex_names->push_back(right_l->value);
+                if (vertex_is_ssc) vertex_is_ssc->push_back(true);
             }
         }
     }
     else if (lk::list_t* right_lt = dynamic_cast<lk::list_t*>(n->right)){
-        s += spell_list(right_lt, vertex_names, vertex_is_ssc, calling_ssc_var_function | calling_value_function);
+        if (calling_value_function)
+            s += spell_list(right_lt, vertex_names, vertex_is_ssc, true);
+        else if (calling_ssc_var_function)
+            s += spell_list(right_lt, nullptr, nullptr, false);
+        else
+            s += spell_list(right_lt, vertex_names, vertex_is_ssc, false);
     }
     else if (n->right){
         std::cout << "spell_out error in " << active_config << ", " << active_object << ", " << active_subobject;
@@ -178,14 +189,15 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
     // find the destination variable
     if (lk::iden_t* dest_id = dynamic_cast<lk::iden_t*>(dest)){
         dest_var = dest_id->name;
-        if (dest_id->special)
+        if (dest_id->special && (which_cmod_as_input(dest_id->name.ToStdString(), active_config).length() > 0))
             dest_is_ssc = true;
     }
     else if (lk::expr_t* expr_var = dynamic_cast<lk::expr_t*>(dest)){
         // likely an entry in an array
-        while (expr_var = dynamic_cast<lk::expr_t*>(expr_var->left)){
-            dest_var = dynamic_cast<lk::iden_t*>(expr_var->left)->name;
+        while(dynamic_cast<lk::expr_t*>(expr_var->left)){
+            expr_var = dynamic_cast<lk::expr_t*>(expr_var->left);
         }
+        dest_var = dynamic_cast<lk::iden_t*>(expr_var->left)->name;
     }
     else{
         std::cout << "extractor_interpreter::map_assignment error in dest" << active_config << ", " << active_object;
@@ -201,14 +213,23 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
 
     if (lk::iden_t* src_id = dynamic_cast<lk::iden_t*>(src)){
         vertex_names.push_back(src_id->name);
-        vertex_is_ssc.push_back(src_id->special);
+        bool is_ssc = false;
+        if ( src_id->special && (which_cmod_as_input(src_id->name, active_config).length() > 0))
+            is_ssc = true;
+        vertex_is_ssc.push_back(is_ssc);
     }
     // if value or special_get was called, may be primary ssc variable
     else if (lk::expr_t* node = dynamic_cast<lk::expr_t*>(src)){
-        expression = spell_out(node, vertex_names, vertex_is_ssc);
+        expression = spell_out(node, &vertex_names, &vertex_is_ssc);
     }
     else if (dynamic_cast<lk::literal_t*>(src) || dynamic_cast<lk::constant_t*>(src)){
-        // if assigning a string literal or constant number, don't need to map anything
+        // if assigning a string or number, don't need to map anything but save the vertex for future references
+        graph->add_vertex(dest_var, dest_is_ssc);
+        return;
+    }
+    else if (lk::cond_t* cond = dynamic_cast<lk::cond_t*>(src)){
+        map_assignment(cond->on_true, dest);
+        map_assignment(cond->on_false, dest);
         return;
     }
     else{
@@ -224,9 +245,7 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
     }
 
     // add variable and mapping to graph if they don't already exist
-    if (!graph->find_vertex(dest_var, dest_is_ssc)){
-        graph->add_vertex(dest_var, dest_is_ssc);
-    }
+    graph->add_vertex(dest_var, dest_is_ssc);
 
     for (size_t i = 0; i < vertex_names.size(); i++){
         graph->add_edge(vertex_names[i], vertex_is_ssc[i], dest_var, false, active_method, active_subobject, expression);
@@ -662,6 +681,9 @@ bool extractor_interpreter::interpret(lk::node_t *root,
                                     else if (lk::constant_t* var_const = dynamic_cast<lk::constant_t*>(argvals->items[iarg])){
                                         identity_tracker += ":" + std::to_string(var_const->value);
                                     }
+                                    else if (lk::expr_t* var_expr = dynamic_cast<lk::expr_t*>(argvals->items[iarg])){
+                                        identity_tracker += ":" + spell_out(var_expr, nullptr, nullptr);
+                                    }
                                     else{
                                         identity_tracker += ":" + cxt.arg(iarg).as_string().ToStdString();
                                     }
@@ -952,7 +974,7 @@ bool extractor_interpreter::interpret(lk::node_t *root,
             }
         }
         catch (lk::error_t &e) {
-            std::cout << "error at line: " << n4->line() << "\n";
+            std::cout << "caught error at line: " << n4->line() << "\n";
             return false;
         }
     }
@@ -986,7 +1008,7 @@ bool extractor_interpreter::interpret(lk::node_t *root,
             }
         }
         catch (lk::error_t &e) {
-            std::cout << "error at line: " << n5->line() << "\n";
+            std::cout << "caught error at line: " << n5->line() << "\n";
             return false;
         }
     }
@@ -1203,6 +1225,7 @@ bool callback_extractor::extract_functions() {
     }
 
     active_method = CHNG;
+    // do a check of completed subobjects... esp before map_assignment
     nerrors = invoke_method_type("on_change");
     if (nerrors > 0){
         std::cout << "callback_extractor::extract_functions error: " << nerrors << " 'on_change' obj errors\n";

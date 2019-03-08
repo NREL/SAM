@@ -158,7 +158,7 @@ static void fcall_value( lk::invoke_t &cxt )
         auto var_graph = SAM_config_to_variable_graph.find(active_config)->second;
 
         std::vector<std::string> args = split_identity_string(cxt.error(), 2);
-        std::string dest_name = args[0];
+        std::string dest_name = cxt.arg(0).as_string().ToStdString();
 
         // the source could be a local variable, a literal, a constant, a special_get, or a call to value(...)
         std::string src_name = args[1];
@@ -184,7 +184,7 @@ static void fcall_value( lk::invoke_t &cxt )
                             active_method, active_object, "value(" + cxt.error() + ")");
 
         // overwrite the variable in the config-dependent defaults?
-        find_default_from_ui(dest_name, active_config)->Read(cxt.arg(1));
+        //find_default_from_ui(dest_name, active_config)->Read(cxt.arg(1));
     }
 
 }
@@ -527,12 +527,12 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
         std::string var_name = cxt.arg(1).as_string().ToStdString();
         cxt.result().assign(var_name);
     }
-    // set
+    // set will map the argument to the secondary compute module vertex
     else{
         auto var_graph = SAM_config_to_variable_graph.find(active_config)->second;
 
         std::vector<std::string> args = split_identity_string(cxt.error(), 3);
-        std::string dest_name = args[1];
+        std::string dest_name = active_cmod;    // likely "tbd"
 
         // the source could be a local variable, a literal, a constant, a special_get, or a call to value(...)
         std::string src_name = args[2];
@@ -551,8 +551,9 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
                 + ":" + (active_subobject.length() > 0 ? active_subobject + ":" : ":")
                 + active_cmod; // probably "tbd" since the identity is unknown until ssc_exec
 
-        // add the source vertex & edge if they don't exist already
+        // add the vertices & edge if they don't exist already
         var_graph->add_vertex(src_name, is_ssc);
+        var_graph->add_vertex(dest_name, false);
 
         var_graph->add_edge(src_name, is_ssc, dest_name, false,
                 active_method, active_object, "ssc_var(" + cxt.error() + ")");
@@ -598,7 +599,10 @@ static void fcall_ssc_exec( lk::invoke_t &cxt )
     }
 
     // rename vertices in graph with "tbd:var"
-    SAM_config_to_variable_graph.find(active_config)->second->rename_cmod_vertices(active_cmod);
+    digraph* graph = SAM_config_to_variable_graph.find(active_config)->second;
+    graph->rename_cmod_vertices(active_cmod);
+
+    graph->rename_vertex("tbd", false, active_cmod);
 
     cxt.result().assign(0.);
 }

@@ -153,10 +153,12 @@ static bool argument_of_special(std::string& s){
 static bool argument_of_value(std::string& s){
     if (s.find("value(") == std::string::npos)
         return false;
-    size_t pos1 = s.find("value(");
-    size_t pos2 = s.find(")");
-    s = s.substr(pos1 + 6, pos2);
     s = unescape(s);
+    size_t pos1 = s.find("value()(");
+    s = s.substr(pos1 + 8);
+    pos1 = s.find(")");
+    s = s.substr(0, pos1);
+
     return true;
 }
 

@@ -5,12 +5,24 @@
 
 #include "variable_graph.h"
 
+void digraph::print_vertex(vertex *v) {
+    for (size_t i = 0; i < v->edges_out.size(); i++){
+        std::cout << "\t" << v->edges_out[i]->src->name << " -> " << v->edges_out[i]->dest->name << ";\n";
+    }
+}
+
 void digraph::print_dot() {
-    std::cout << "digraph " << name << " {\n";
+    std::string str = name;
+
+    std::string::iterator end_pos = std::remove(str.begin(), str.end(), ' ');
+    str.erase(end_pos, str.end());
+
+    std::cout << "digraph " << str << " {\n";
     for (auto it = vertices.begin(); it != vertices.end(); ++it){
-        auto e = it->second->edges_out;
-        for (size_t i = 0; i < e.size(); i++){
-            std::cout << "\t" << e[i]->src << " -> " << e[i]->dest << ";\n";
+        for (size_t i = 0; i < 2; i++){
+            if (vertex* v = it->second.at(i)){
+                print_vertex(v);
+            }
         }
     }
     std::cout << "}";
