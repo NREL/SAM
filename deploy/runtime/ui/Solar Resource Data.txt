@@ -2392,7 +2392,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-27411
+27414
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2862,8 +2862,9 @@ function nsrdb( location )
 				name = var.outputs[best_dataset].name;
 				url = split(var.outputs[best_dataset].links[0].link,'?')[0];
 				years = var.outputs[best_dataset].availableYears;
-				dataset_dataset = true;
+				dataset_ok = true;
 			}
+			else
 			{
 				msg += 'No NSRDB PSM V3 data available for \"' + location + '\". ';
 				msg += 'Try using the Legacy data option to find data from a different dataset.\n';
