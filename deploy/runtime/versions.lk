@@ -52,7 +52,7 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 // ** Not sure how this works for patches, so using new version number for testing
-version_upgrade{'2019.3.1'} = define () {
+version_upgrade{'2018.11.10'} = define () {
 	const cfg = config();
 	if ( cfg.tech == 'Flat Plate PV' )
 	{
@@ -78,7 +78,7 @@ version_upgrade{'2019.3.1'} = define () {
 		message('We updated the CEC inverter library from the November 2018 version to the March 1, 2019 version. The new library includes both grid support and utility interactive inverters as defined by the CEC since January 15, 2019.'); 
 	}
 };
-ade{'2018.10.29'} = define() {
+version_upgrade{'2018.10.29'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Flat Plate PV')
 	{

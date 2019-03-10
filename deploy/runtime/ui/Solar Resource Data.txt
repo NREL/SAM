@@ -2392,7 +2392,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-27414
+27685
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2665,7 +2665,10 @@ function update_info( ctxt )
 			value( 'annual_wspd', ssc_var(obj, 'annual_wspd') );
 			value( 'annual_snow', ssc_var(obj, 'annual_snow') );
 			value( 'annual_albedo', ssc_var(obj, 'annual_albedo') );
-
+			rhum = ssc_var(obj, 'rhum');
+			rhum_ok = true;
+			if ( isnan( rhum[0] ) ) { rhum_ok = false; }
+			
 			// **NOTE: DOES THIS NEED TO BE UPDATED TO WORK FOR USER SPECIFIED FILE? **
 			// used for timestep calculation in editscene3d
 			value( 'wf_nrecords', ssc_var(obj, 'nrecords') );
@@ -2723,6 +2726,7 @@ function update_library_folders( new_path )
 function display_tech_message() 
 {
 	str = '';
+	str_and = '';
 	tech = technology();
 	csp_techs = ['Physical Trough','Empirical Trough','MSPT','DSPT','MSLF','DSLF','Dish Stirling','Generic CSP System'];
 	for ( i=0; i<#csp_techs; i++ )
@@ -2732,12 +2736,24 @@ function display_tech_message()
 			str = 'CSP models use a different time convention than NREL NSRDB data. See Help for details.';
 		}	
 	}
-	if ( tech == 'Biopower' && isnan( value('annual_global' ) ) ) 
-	{
-		str = 'The Biomass Combustion model requires a weather file with global horizontal irradiance data. See Help for details.';
-	}	
+	if ( tech == 'Biopower' )
+	{ 
+		if ( isnan( value('annual_global') ) || !rhum_ok )
+		{
+			str = 'The Biopower model requires ';
+		}
+		if ( isnan( value('annual_global' ) ) ) 
+		{
+			str += 'global horizontal irradiance data ';
+			str_and = 'and ';
+		}	
+		if ( !rhum_ok ) 
+		{
+		str += str_and + 'relative humidity data. See Help for details.';
+		}	
+	}
 	property( 'caption_techs' , 'Caption', str );		
-	property( 'caption_techs' , 'TextColour', 'red' );		
+	property( 'caption_techs' , 'TextColour', 'red' );
 }
 
 // display window for advanced download
