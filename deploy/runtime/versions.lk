@@ -52,7 +52,7 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 // ** Not sure how this works for patches, so using new version number for testing
-version_upgrade{'2018.11.10'} = define () {
+version_upgrade{'2018.11.11'} = define () {
 	const cfg = config();
 	if ( cfg.tech == 'Flat Plate PV' )
 	{
