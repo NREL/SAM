@@ -1693,7 +1693,7 @@ PV Inverter (CEC Database)
 0
 Numeric
 
-1852
+1772
 equations{ '$MIMO$ SandiaInverterEfficiencies' } = define()
 {
 	//assign specs
@@ -1747,10 +1747,7 @@ equations{ '$MIMO$ SandiaInverterEfficiencies' } = define()
 	${inv_snl_eff_euro} = euro_eff * 100;
 };
 
-equations { 'inv_cec_name' } = define () {
-	return ${inv_snl_inverter_name};
-};
-3539
+3904
 function plot_inverter_curve()
 {
 	//assign specs
@@ -1825,7 +1822,8 @@ function plot_inverter_curve()
 	//MAKE THE PLOT	
 	setplot("pv.inv.sandia.eff_curve");
 	clearplot("pv.inv.sandia.eff_curve");
-	plotopt({"title"=${inv_snl_inverter_name},"popup"=true,"backcolor"=[255,255,255],"legend"=true, "legendpos"=[65,60]});
+	//plotopt({"title"=${inv_snl_inverter_name},"popup"=true,"backcolor"=[255,255,255],"legend"=true, "legendpos"=[65,60]});
+	plotopt({"title"=value("inv_cec_name"),"popup"=true,"backcolor"=[255,255,255],"legend"=true, "legendpos"=[65,60]});
 	plot(x,y,{"thick"=1.5, "scale"=true,"color"=[100,200,100], "series"="Vdco"});
 	if(bolShowmppt_low){
 		plot(xlow,ylow,{"thick"=1.5, "scale"=true, "color"=[100,100,200], "series"="Mppt-low"});
@@ -1843,21 +1841,30 @@ function show_mppt_msg() {
 	refresh();
 }
 
-on_load{"Inverter CEC Database"} = define()
-{
-	plot_inverter_curve();
-	on_change{"inv_snl_inverter_name"}();
-	show_mppt_msg();
+function inverter_not_available_msg() {
 	if( librarygetcurrentselection('inv_snl_inverter_name') == '' )
 	{
 		old_name = value( 'inv_snl_inverter_name' );
 		librarynotifytext('inv_snl_inverter_name', 'Please choose an inverter. ' + old_name + ' is not available in the library.');
 	}
+}
+
+on_load{"Inverter CEC Database"} = define()
+{
+	value( 'inv_cec_name', value( 'inv_snl_inverter_name' ) );
+	plot_inverter_curve();
+	show_mppt_msg();
+	inverter_not_available_msg();
 };
 
 on_change{'inv_snl_inverter_name'} = define()
 {
+	if( librarygetcurrentselection( 'inv_snl_inverter_name' ) != '' )
+	{
+		value( 'inv_cec_name', value('inv_snl_inverter_name') );
+	}	
 	plot_inverter_curve();
+	show_mppt_msg();
 };
 
 on_change{'inv_snl_num_mppt'} = define()
