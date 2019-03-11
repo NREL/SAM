@@ -2392,7 +2392,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-27685
+27760
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -3179,7 +3179,8 @@ function nsrdb_get()
 	}
 	elseif ( download_ok && file_skipped )
 	{
-		str += 'File already in library!\n Download skipped.\n\n' + fname;
+		str = 'File already in library.\n Download skipped.\n\n' + fname;
+//		str += 'File already in library!\n Download skipped.\n' + fname + '\n';
 		msgbox( str );
 	}
 	else 
