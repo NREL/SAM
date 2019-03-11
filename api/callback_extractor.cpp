@@ -253,8 +253,12 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
     // add variable and mapping to graph if they don't already exist
     graph->add_vertex(dest_var, dest_is_ssc);
 
+    std::string obj_stack = active_object
+                            + (active_subobject.length() > 0 ? ":" + active_subobject  : "")
+                            + (active_cmod.length() > 0 ? ":" + active_cmod  : "");
+
     for (size_t i = 0; i < vertex_names.size(); i++){
-        graph->add_edge(vertex_names[i], vertex_is_ssc[i], dest_var, dest_is_ssc, active_method, active_subobject, expression);
+        graph->add_edge(vertex_names[i], vertex_is_ssc[i], dest_var, dest_is_ssc, active_method, obj_stack, expression);
     }
 }
 

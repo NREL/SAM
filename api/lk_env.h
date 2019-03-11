@@ -184,7 +184,7 @@ static void fcall_value( lk::invoke_t &cxt )
             var_graph->add_vertex(src_name, src_is_ssc);
 
             var_graph->add_edge(src_name, src_is_ssc, dest_name, dest_is_ssc,
-                                active_method, active_object, "value(" + cxt.error() + ")");
+                                active_method, obj_stack, "value(" + cxt.error() + ")");
 
         }
     }
@@ -563,7 +563,7 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
             var_graph->add_vertex(dest_name, false);
 
             var_graph->add_edge(src_name, is_ssc, dest_name, false,
-                                active_method, active_object, "ssc_var(" + cxt.error() + ")");
+                                active_method, obj_stack, "ssc_var(" + cxt.error() + ")");
         }
     }
 }

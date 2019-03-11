@@ -11,12 +11,18 @@
 #include "data_structures.h"
 #include "export_config.h"
 
+#include "test.h"
+
+
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 
 
 std::string active_config;
 
 int main(int argc, char *argv[]){
+
+//    run_variable_graph_tests();
+
     // startup.lk file path should be provided via command line
     const std::string& filename = "/Users/dguittet/SAM-Development/sam/deploy/runtime/startup.lk";
 
@@ -55,6 +61,8 @@ int main(int argc, char *argv[]){
 
     // parsing the callbacks requires all ui forms in a config
     active_config = "";
+    std::string graph_path =  "../../../pySAM/Graphs";
+
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         // only do technology configs
         if (it->first.find("None") == std::string::npos)
@@ -74,7 +82,10 @@ int main(int argc, char *argv[]){
         ce.map_equations();
         ce.register_callback_functions();
         std::cout << "\n\n\n\n";
-        SAM_config_to_variable_graph[active_config]->print_dot();
+//        SAM_config_to_variable_graph[active_config]->print_dot();
+        digraph subgraph(active_config);
+        SAM_config_to_variable_graph[active_config]->subgraph_ssc_only(subgraph);
+        subgraph.print_dot(graph_path);
     }
 
     // for each configuration,  per input page
