@@ -1,3 +1,29 @@
+/*@
+Currently, the recorded GHI value in some EPW weather files does not match the calculated GHI value in SAM. This discrepancy is due to 
+a non-standard minute timestep in  the weather file. This macro allows you to change the minute timestep recording in the EPW weather file 
+to close the gap between the recorded and calculated GHI values respectively. 
+
+<br>
+<br>
+<b>Note: </b>The EPW weather file with the corrected minute timestep is converted to a CSV file and stored in the same folder with the extension (*_samcsv.csv).
+<br>
+<br>
+<img src="$MACROPATH/epw_timeshift.JPG">
+@*/
+
+
+//=========================================================================================================================================================
+//	The first 2 specifies the number of graphs you_re going to create, the second 1 is timestep (1 means hourly), then a graph label, then the series 1 label,
+//	series 1 units label, whether or not the series is selected when the window pops up (1 means yes), series 1 data, series 2 label, series 2 units label, 
+//	whether or not series 2 is selected (1 means yes), series 2 data.
+
+//	dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, dc.timeseries_dc_power, 'AC Power', 'kW', 1.0, ac.timeseries_ac_power);
+
+
+
+
+//=========================================================================================================================================================
+
 // convert TMY2, TMY3, or EPW file formats to SAM CSV using the SSC wfcsvconv compute module
 function ssc_wfcsvconv( wf  )
 {
@@ -28,17 +54,42 @@ function ssc_wfcsvconv( wf  )
 			if ( !ok ) { outln( 'Failed to rename file.' );}
 			outln('Weather file successfully converted to:\n\t' + new_name );
 			
+			
+					 
+			
+			//corrected_ghi = get('gh_calc');
+			//outln(get('gh_calc'));
+			
+			
 			tcorr = in('Enter minute timestep correction:', '0', '');
 			txt = csvread(new_name);
+			j = 0;
 			for (i = 3; i < 8763; i++){
+				t[j] = j;
 				txt[i][4] = tcorr;
-			}		
+				recorded_ghi[j] = txt[i][5];
+				j++;
+			}	
+			
 			csvwrite(new_name, txt);
+			uiyield();
+			new_name = 'C:/Users/PBHASKAR/sam/deploy/solar_resource/imperial_ca_32.835205_-115.572398_psmv3_60_tmy.csv';
+			set('solar_resource', new_name);
+			set('solar_resource_file', new_name);
+			
+			simulate('', true);
+			calculated_ghi = get('gh_calc');
+			
+			dview(2, 1, 'Recorded v. Calculated GHI', 'Irradiance GHI Recorded', 'W/m2', 1.0, recorded_ghi, 'Irradiance GHI Calculated', 'W/m2', 0.0, calculated_ghi );
+
+
+
+			
+				
 			
 			browse( path_only(new_name) ); // show output file folder
 			
-			simulate('', true);
-			dview_solar( new_name ); // display output file in DView
+						
 		}
 		else
 		{
@@ -109,6 +160,7 @@ function wf_check ( wf )
 //=========================================================================================================================================================
 
 main();
+			
 
 
 
