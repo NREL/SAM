@@ -2412,9 +2412,7 @@ lib_dispatch_sched_weekend
 library_folder_list
 1
 4
-87
-C:\Users\PBHASKAR\sam\deploy\solar_resource
-C:\Users\PBHASKAR\sam\deploy\solar_resource
+0
 library_paths
 1
 4

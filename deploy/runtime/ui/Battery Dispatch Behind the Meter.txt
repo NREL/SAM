@@ -637,7 +637,7 @@ batt_target_power
 3
 2
 Time series
-kWdc
+kWac
 Battery
 0
 0
@@ -651,7 +651,7 @@ batt_target_power_monthly
 3
 2
 Single or monthly
-kWdc
+kWac
 Battery
 0
 0

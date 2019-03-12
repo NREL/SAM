@@ -2039,7 +2039,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	ecd.Update(1, 50.0f);
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
-		if (!wxEasyCurl::GeoCode(spd.GetAddress(), &lat, &lon, NULL, false))
+		if (!wxEasyCurl::GeoCodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
 			ecd.Log("Failed to geocode address");
 			ecd.Finalize();
