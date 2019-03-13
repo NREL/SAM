@@ -22,7 +22,7 @@ public:
         ui_form_name = name;
     };
 
-    bool parse_script(std::string eqn_script);
+    bool parse_and_export_eqns(std::string eqn_script);
 
     std::string spell_script();
 

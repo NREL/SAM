@@ -63,6 +63,10 @@ edge* digraph::find_edge(std::string src_name, bool src_is_ssc, std::string dest
         return nullptr;
 }
 
+edge* digraph::find_edge(edge* edge){
+    return find_edge(edge->src->name, edge->src->is_ssc_var, edge->dest->name, edge->dest->is_ssc_var, edge->type);
+}
+
 bool digraph::add_edge(vertex* src, vertex* dest, int type, std::string obj, std::string expression){
     if (!src || !dest){
         std::cout << "/* digraph::add_edge error: vertices null */ \n";
@@ -231,51 +235,39 @@ void digraph::subgraph_ssc_only(digraph& new_graph){
     }
 }
 
+// copy into the subgraph all the downstream ui variables
+void digraph::subgraph_ssc_to_ui(digraph &subgraph) {
+    subgraph_ssc_only(subgraph);
+    auto vertices_new = subgraph.get_vertices();
+    for (auto it = vertices_new.begin(); it != vertices_new.end(); ++it){
+        for (size_t i = 0; i < 2; i++){
+            vertex* new_v = it->second.at(i);
+            if (!new_v)
+                continue;
+            // get original vertex
+            vertex* og_v = find_vertex(new_v->name, new_v->is_ssc_var);
+            for (size_t e = 0; e < og_v->edges_out.size(); e++){
+                edge* e_out = og_v->edges_out[e];
+
+                if (e_out->dest->is_ssc_var)
+                    continue;
+                if (!subgraph.find_edge(e_out)){
+                    vertex* v = subgraph.add_vertex(e_out->dest->name, false);
+                    subgraph.add_edge(new_v, v, e_out->type, e_out->obj_name, e_out->expression);
+                }
+            }
+
+        }
+    }
+}
+
 std::string format_vertex_name(vertex* v){
     // make sure first character is not a number
     std::string s;
     size_t sz = 0;
 
     try {
-        int i = (int)std::stod(v->name, &sz);
-
-        switch(i){
-            case 1:
-                s += "one__";
-                break;
-            case 2:
-                s += "two__";
-                break;
-            case 3:
-                s += "three__";
-                break;
-            case 4:
-                s += "four__";
-                break;
-            case 5:
-                s += "five__";
-                break;
-            case 6:
-                s += "six__";
-                break;
-            case 7:
-                s += "seven__";
-                break;
-            case 8:
-                s += "eight__";
-                break;
-            case 9:
-                s += "nine__";
-                break;
-            case 10:
-                s += "ten__";
-                break;
-            case 11:
-                s += "eleven__";
-                break;
-            default:
-                break;
-        }
+        (int)std::stod(v->name, &sz);
     }
     catch(std::invalid_argument ){}
 
@@ -289,6 +281,9 @@ std::string format_vertex_name(vertex* v){
         s += v->name.substr(sz, pos);
     else
         s += v->name.substr(sz);
+
+    s = "\"" + s + "\"";
+
     return s;
 }
 
@@ -333,7 +328,7 @@ void digraph::print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std
     }
 }
 
-void digraph::print_dot(std::string filepath) {
+void digraph::print_dot(std::string filepath, std::string ext) {
 
     std::string str = name;
     std::string::iterator end_pos = std::remove(str.begin(), str.end(), ' ');
@@ -345,8 +340,8 @@ void digraph::print_dot(std::string filepath) {
     std::ofstream graph_file;
     std::ofstream legend_file;
     if (filepath.length() > 0){
-        graph_file.open(filepath + "/" + str + ".gv");
-        legend_file.open(filepath + "/" + str + "_legend.gv");
+        graph_file.open(filepath + "/" + str + ext);
+        legend_file.open(filepath + "/" + str + "_legend" + ext);
         assert(graph_file.is_open());
         assert(legend_file.is_open());
 

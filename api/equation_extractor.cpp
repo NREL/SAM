@@ -11,7 +11,7 @@
 
 std::unordered_map<std::string, std::vector<equation_info>> SAM_ui_form_to_eqn_info;
 
-bool equation_extractor::parse_script(std::string eqn_script){
+bool equation_extractor::parse_and_export_eqns(std::string eqn_script){
     lk::input_string data( eqn_script );
     wxArrayString errors;
 

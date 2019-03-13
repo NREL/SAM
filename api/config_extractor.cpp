@@ -142,7 +142,7 @@ void config_extractor::register_callback_functions() {
     // for all the ui forms, parse the callback functions
     std::vector<std::string> all_ui = find_ui_forms_for_config(config_name);
 
-//    cb_ext.parse_script(SAM_ui_extracted_db.find("Financial TOD Factors")->get_callback_script());
+//    cb_ext.parse_and_export_eqns(SAM_ui_extracted_db.find("Financial TOD Factors")->get_callback_script());
 //    cb_ext.extract_functions();
 //    return;
 

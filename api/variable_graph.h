@@ -111,6 +111,8 @@ public:
 
     edge* find_edge(std::string src_name, bool src_is_ssc, std::string dest_name, bool dest_is_ssc, int type);
 
+    edge* find_edge(edge* edge);
+
     bool add_edge(vertex* src, vertex* dest, int type, std::string obj, std::string expression);
 
     bool add_edge(std::string src, bool src_is_ssc, std::string dest, bool dest_is_ssc,
@@ -128,10 +130,12 @@ public:
 
     void subgraph_ssc_only(digraph& g);
 
+    void subgraph_ssc_to_ui(digraph &subgraph);
+
     void print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std::string, std::string> *obj_keys = nullptr,
                           std::unordered_map<std::string, std::string> *eqn_keys = nullptr);
 
-    void print_dot(std::string filepath);
+    void print_dot(std::string filepath, std::string ext = ".gv");
 };
 
 #endif //SYSTEM_ADVISOR_MODEL_VARIABLE_GRAPH_H

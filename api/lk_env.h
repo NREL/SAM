@@ -325,7 +325,7 @@ static void _wx_choose_file(lk::invoke_t &cxt) {
 
 static void fcall_property(lk::invoke_t &cxt) {
     LK_DOC("property", "Nothing to do", "");
-    cxt.result().assign("");
+    cxt.result().assign(1.0);
 
 }
 

@@ -48,8 +48,11 @@ public:
         graph->print_dot(graph_path);
     }
 
-    void print_subgraph(std::string graph_path){
-        subgraph->print_dot(graph_path);
+    void print_subgraphs(std::string graph_path){
+        subgraph->print_dot(graph_path, ".sgv");
+        digraph subgraph_with_downstream_ui(config_name);
+        graph->subgraph_ssc_to_ui(subgraph_with_downstream_ui);
+        subgraph_with_downstream_ui.print_dot(graph_path, ".sugv");
     }
 
     void encode_edge(edge* e);

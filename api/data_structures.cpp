@@ -8,7 +8,7 @@
 #include "data_structures.h"
 
 std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_cmod_to_outputs;
-std::unordered_map<std::string, std::unordered_map<std::string, size_t>> SAM_config_to_ssc_index;
+std::unordered_map<std::string, std::unordered_map<std::string, size_t>> SAM_cmod_to_ssc_index;
 
 
 void load_secondary_cmod_outputs(std::string cmod_name){
@@ -61,16 +61,21 @@ void load_secondary_cmod_outputs(std::string cmod_name){
 
 /// create the cmod and get all the variable names of desired type, saving the indices
 std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string which_type){
+
+    if (SAM_cmod_to_ssc_index.find(cmod_name) != SAM_cmod_to_ssc_index.end()){
+        if (which_type == "in")
+            return SAM_cmod_to_inputs[cmod_name];
+        else{
+            assert(false);
+            std::cout << "get_cmod_var_info error: Not Implemented\n";
+        }
+
+    }
     ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
     std::vector<std::string> variable_names;
 
-    auto it = SAM_config_to_ssc_index.find(active_config);
-    if (it == SAM_config_to_ssc_index.end()){
-        SAM_config_to_ssc_index.insert({active_config, std::unordered_map<std::string, size_t>()});
-        it = SAM_config_to_ssc_index.find(active_config);
-    }
-
-    std::unordered_map<std::string, size_t>& index_map = it->second;
+    SAM_cmod_to_ssc_index.insert({cmod_name, std::unordered_map<std::string, size_t>()});
+    std::unordered_map<std::string, size_t>& index_map = SAM_cmod_to_ssc_index.find(cmod_name)->second;
 
     int var_index = 0;
     ssc_info_t mod_info = ssc_module_var_info(p_mod, var_index);
@@ -90,6 +95,8 @@ std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string wh
             }
         }
 
+        if (index_map.find(name) != index_map.end())
+            std::cout << "get_cmod_var_info warning: " << name << " already exists in " << cmod_name << "\n";
         index_map.insert({name, (size_t)var_index});
 
         ++var_index;

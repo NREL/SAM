@@ -42,7 +42,7 @@ extern std::unordered_map<std::string, std::vector<std::string>> SAM_config_to_p
 /**
  * Maps each compute_module variable to its index in the info table for each config
  */
-extern std::unordered_map<std::string, std::unordered_map<std::string, size_t>> SAM_config_to_ssc_index;
+extern std::unordered_map<std::string, std::unordered_map<std::string, size_t>> SAM_cmod_to_ssc_index;
 
 
 /**

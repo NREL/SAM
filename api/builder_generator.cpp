@@ -91,7 +91,8 @@ void builder_generator::gather_variables(){
     for (size_t p = 0; p < pg_info.size(); p++){
         if (pg_info[p].common_uiforms.size() > 0){
             // add the ui form variables into a group based on the sidebar title
-            std::string group_name = pg_info[p].sidebar_title + "Common";
+            std::string group_name = pg_info[p].sidebar_title
+                    + (pg_info[p].exclusive_uiforms.size() > 0 ? "Common" : "");
             modules.insert({group_name, std::map<std::string, vertex*>()});
             modules_order.push_back(group_name);
             std::map<std::string, vertex*>& var_map = modules.find(group_name)->second;
@@ -174,6 +175,23 @@ void export_function_declaration(std::ofstream& ff, std::string return_type, std
     ff << "SAM_error* err);\n\n";
 }
 
+std::string spell_type(int type){
+    switch(type){
+        case SSC_INVALID:
+            return "invalid";
+        case SSC_STRING:
+            return "string";
+        case SSC_NUMBER:
+            return "numeric";
+        case SSC_ARRAY:
+            return "array";
+        case SSC_MATRIX:
+            return "matrix";
+        case SSC_TABLE:
+            return "table";
+    }
+}
+
 void builder_generator::create_api_functions(std::string module){
     std::ofstream fx_file;
     std::string module_symbol = format_as_code(module);
@@ -196,10 +214,10 @@ void builder_generator::create_api_functions(std::string module){
     // create the module-specific var_table wrapper
 
     fx_file << "/** \n";
-    fx_file << " * Create a " << module_symbol << " variable table for a " << symbol_name << " system\\n";
+    fx_file << " * Create a " << module_symbol << " variable table for a " << symbol_name << " system\n";
     fx_file << " * @param def: the set of financial model-dependent defaults to use (None, Residential, ...)\n";
     fx_file << " * @param[in,out] err: a pointer to an error object\n";
-    fx_file << "*/\n\n";
+    fx_file << " */\n\n";
 
     export_function_declaration(fx_file, sig, sig + "_Create", {"const char* def"});
 
@@ -211,8 +229,40 @@ void builder_generator::create_api_functions(std::string module){
         std::string var_symbol = sig + "_" + it->first;
         vertex* v = it->second;
 
-        fx_file << "/**\n";
-        fx_file << " * "
+        int ind = (int)SAM_cmod_to_ssc_index[v->cmod][v->name];
+        ssc_info_t mod_info = ssc_module_var_info(ssc_module_objects[v->cmod], ind);
+
+        fx_file << "\t/**\n";
+        fx_file << "\t * Set " << it->first << ": " << ssc_info_label(mod_info) << "\n";
+        fx_file << "\t * type: " << spell_type(ssc_info_data_type(mod_info)) << "\n";
+        fx_file << "\t * units: ";
+        std::string units_str = ssc_info_units(mod_info);
+        if (units_str.length() > 0)
+            fx_file << units_str << "\n";
+        else
+            fx_file << "None\n";
+
+        fx_file << "\t * options: ";
+        std::string meta_str = ssc_info_meta(mod_info);
+        if (meta_str.length() > 0)
+            fx_file << meta_str << "\n";
+        else
+            fx_file << "None\n";
+
+        fx_file << "\t * constraints: ";
+        std::string cons_str = ssc_info_constraints(mod_info);
+        if (cons_str.length() > 0)
+            fx_file << cons_str << "\n";
+        else
+            fx_file << "None\n";
+
+        fx_file << "\t * required if: ";
+        std::string req_str = ssc_info_required(mod_info);
+        if (req_str.find('=') != std::string::npos)
+            fx_file << req_str << "\n";
+        else
+            fx_file << "None\n";
+        fx_file << "\t */\n";
 
         export_function_declaration(fx_file, "void", var_symbol + "_Set", {sig + "ptr", get_parameter_type(v)});
 
@@ -231,6 +281,7 @@ void builder_generator::create_api_functions(std::string module){
                          "#endif";
 
     fx_file << footer;
+    fx_file.close();
 }
 
 void builder_generator::create_api_data(){
@@ -281,6 +332,7 @@ void builder_generator::create_api_data(){
                          "#endif";
 
     data_file << error_obj << footer;
+    data_file.close();
 }
 
 void builder_generator::create_source_interfaces(std::vector<vertex *> &vertices) {

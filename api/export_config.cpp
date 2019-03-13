@@ -57,12 +57,12 @@ int main(int argc, char *argv[]){
     for (size_t i = 0; i < unique_ui_form_names.size(); i++){
         std::string ui_name = unique_ui_form_names[i];
         equation_extractor eqn_ext(ui_name);
-        eqn_ext.parse_script(SAM_ui_extracted_db.find(ui_name)->get_eqn_script());
+        eqn_ext.parse_and_export_eqns(SAM_ui_extracted_db.find(ui_name)->get_eqn_script());
     }
 
     // parsing the callbacks requires all ui forms in a config
     active_config = "";
-    std::string graph_path =  "../../../pySAM/Graphs";
+    std::string graph_path =  "../../../pySAM/Graphs/Files";
 
     std::string api_path = "../../../pySAM/library";
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
@@ -76,9 +76,9 @@ int main(int argc, char *argv[]){
         }
 
         // focus on this one
-        if (active_config != "Flat Plate PV-None"){
-            continue;
-        }
+//        if (active_config != "Flat Plate PV-None"){
+//            continue;
+//        }
 
         config_extractor ce(it->first);
         ce.map_equations();
@@ -89,7 +89,7 @@ int main(int argc, char *argv[]){
 
         // get all the expressions
         builder_generator b_gen(&ce);
-        //b_gen.print_subgraph(graph_path);
+        b_gen.print_subgraphs(graph_path);
         b_gen.generate_interface(api_path);
 //        b_gen.get_expressions();
     }
