@@ -12,6 +12,7 @@ to close the gap between the recorded and calculated GHI values respectively.
 @*/
 
 
+
 //=========================================================================================================================================================
 //	The first 2 specifies the number of graphs you_re going to create, the second 1 is timestep (1 means hourly), then a graph label, then the series 1 label,
 //	series 1 units label, whether or not the series is selected when the window pops up (1 means yes), series 1 data, series 2 label, series 2 units label, 
@@ -103,7 +104,7 @@ function ssc_wfcsvconv( wf  )
 			set_custom = yesno('Set custom minute timestep?');
 			
 			if(!set_custom){
-					dview(4, 1, 'Recorded v. Calculated GHI', 'Irradiance GHI Recorded', 'W/m2', 1.0, recorded_ghi, 
+				dview(4, 1, 'Recorded v. Calculated GHI', 'Irradiance GHI', 'W/m2', 1.0, recorded_ghi, 
 					'Irradiance GHI Calculated at 0 Minute Timestep', 'W/m2', 0.0, time_0,  
 					'Irradiance GHI Calculated at 30 Minute Timestep', 'W/m2', 0.0, time_30, 
 					'Irradiance GHI Calculated at 60 Minute Timestep', 'W/m2', 0.0, time_60);
@@ -112,7 +113,7 @@ function ssc_wfcsvconv( wf  )
 					min_custom = in('Enter custom timestep');
 					time_custom = timestep_shift(new_name, to_int(min_custom));
 					
-					dview(5, 1, 'Recorded v. Calculated GHI', 'Irradiance GHI Recorded', 'W/m2', 1.0, recorded_ghi, 
+					dview(5, 1, 'Recorded v. Calculated GHI', 'GHI Recorded', 'W/m2', 1.0, recorded_ghi, 
 					'Irradiance GHI Calculated at 0 Minute Timestep', 'W/m2', 0.0, time_0,  
 					'Irradiance GHI Calculated at 30 Minute Timestep', 'W/m2', 0.0, time_30, 
 					'Irradiance GHI Calculated at 60 Minute Timestep', 'W/m2', 0.0, time_60,
@@ -156,3 +157,4 @@ function main()
 
 
 main();
+
