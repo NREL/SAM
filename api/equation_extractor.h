@@ -24,6 +24,8 @@ public:
 
     bool parse_script(std::string eqn_script);
 
+    std::string spell_script();
+
     /// Returns the input and outputs of each equation
     void export_to_equation_info();
 };

@@ -8,6 +8,7 @@
 #include "ui_form_extractor.h"
 #include "equation_extractor.h"
 #include "config_extractor.h"
+#include "builder_generator.h"
 #include "data_structures.h"
 #include "export_config.h"
 
@@ -63,6 +64,7 @@ int main(int argc, char *argv[]){
     active_config = "";
     std::string graph_path =  "../../../pySAM/Graphs";
 
+    std::string api_path = "../../../pySAM/library";
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         // only do technology configs
         if (it->first.find("None") == std::string::npos)
@@ -82,13 +84,16 @@ int main(int argc, char *argv[]){
         ce.map_equations();
         ce.register_callback_functions();
         std::cout << "\n\n\n\n";
-//        SAM_config_to_variable_graph[active_config]->print_dot();
-        digraph subgraph(active_config);
-        SAM_config_to_variable_graph[active_config]->subgraph_ssc_only(subgraph);
-        subgraph.print_dot(graph_path);
+        SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
+
+
+        // get all the expressions
+        builder_generator b_gen(&ce);
+        //b_gen.print_subgraph(graph_path);
+        b_gen.generate_interface(api_path);
+//        b_gen.get_expressions();
     }
 
-    // for each configuration,  per input page
     return 1;
 
     // output all data in python syntax

@@ -68,6 +68,9 @@ bool digraph::add_edge(vertex* src, vertex* dest, int type, std::string obj, std
         std::cout << "/* digraph::add_edge error: vertices null */ \n";
         return false;
     }
+    if (dest->name == "spe_power"){
+        std::cout << expression << "\n";
+    }
     edge* e = new edge(src, dest, type, obj, expression);
     src->edges_out.push_back(e);
     dest->edges_in.push_back(e);
@@ -136,6 +139,7 @@ void digraph::rename_vertex(std::string old, bool is_ssc, std::string n){
     vertex* v = new_vec.at((size_t)is_ssc);
     assert(v);
     v->name = n;
+    v->cmod = n;
     for (size_t i = 0; i < v->edges_in.size(); i++){
         edge* e = v->edges_in[i];
         if (e->obj_name.find("tbd") != std::string::npos){
@@ -159,7 +163,7 @@ void digraph::rename_vertex(std::string old, bool is_ssc, std::string n){
 
 // vertices inserted as tbd:var will be rename to cmod:var, with duplication check
 void digraph::rename_cmod_vertices(std::string cmod_name){
-    size_t not_ssc_var = 0; // secondary cmod variables are not primary
+    bool not_ssc_var = false; // secondary cmod variables are not primary
     for (auto it = vertices.begin(); it != vertices.end(); ++it){
         if (it->first.find("tbd:") != std::string::npos){
 
@@ -168,7 +172,6 @@ void digraph::rename_cmod_vertices(std::string cmod_name){
             new_name.replace(pos, 4, (cmod_name + ":"));
 
             rename_vertex(it->first, not_ssc_var, new_name);
-
         }
     }
 }
@@ -292,11 +295,12 @@ std::string format_vertex_name(vertex* v){
 void digraph::print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std::string, std::string> *obj_keys,
                            std::unordered_map<std::string, std::string> *eqn_keys) {
 
-    const char* colors[] = {"black", "brown4", "darkorange3", "lightslateblue", "mediumorchid",
+    const char* colors[] = {"black", "brown4", "darkorange3", "lightslateblue", "mediumorchid", "firebrick", "indigo",
                             "burlywood4", "azure4", "darkorchid4", "aquamarine3", "olivedrab", "palevioletred", "darkgoldenrod2",
-                            "gold4"};
+                            "gold4", "crimson", "chartreuse4", "sienna4", "skyblue4", "orange3", "seashell4", "sienna", "sienna1",
+                            "sienna2", "sienna3", "sienna4", "skyblue", "skyblue1", "skyblue2", "skyblue3", "skyblue4", "slateblue"};
     size_t cnt = eqn_keys->size() + obj_keys->size();
-
+    if (cnt > 31) cnt = 0;
 
     for (size_t i = 0; i < v->edges_out.size(); i++){
         std::string src_str = format_vertex_name(v->edges_out[i]->src);
@@ -304,7 +308,7 @@ void digraph::print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std
         if (src_str.length() > 0 && dest_str.length() > 0){
             ofs << "\t" << src_str << " -> " << dest_str;
             edge* e = v->edges_out[i];
-            if (e->type == 1){
+            if (e->type == 0){
                 if (eqn_keys->find(e->obj_name) == eqn_keys->end()){
                     eqn_keys->insert({e->obj_name, colors[cnt]});
                     ofs << " [color=" << colors[cnt] << ", style=dashed]" << ";\n";
@@ -324,6 +328,7 @@ void digraph::print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std
                     ofs << " [color=" << obj_keys->find(e->obj_name)->second << "]" << ";\n";
                 }
             }
+            if (cnt > 31) cnt = 0;
         }
     }
 }
@@ -360,8 +365,8 @@ void digraph::print_dot(std::string filepath) {
     std::unordered_map<std::string, std::string> obj_keys;
 
     // print graph of variables
-    graph_file << "digraph " << str << " {\n;";
-    graph_file << "\t" << "label =" << name <<";\n\tlabelloc=top;\n";
+    graph_file << "digraph " << str << " {\n";
+    graph_file << "\t" << "label =\"" << name <<"\";\n\tlabelloc=top;\n";
     graph_file << "\trankdir=LR;\n\tranksep=\"3\";\n";
 
     for (auto it = vertices.begin(); it != vertices.end(); ++it){
@@ -390,9 +395,8 @@ void digraph::print_dot(std::string filepath) {
 
     // print legend
     legend_file << "digraph " << str << "_legend {\n";
-    legend_file << "\tlabel=\"Legend: " << name << "\";\n";
-    legend_file << "\tlabel =" << name <<";\n\tlabelloc=top;\n";
-    legend_file << "\tranksep=\"3\";\n";
+    legend_file << "\tlabel=\"Legend: " << name << "\";\n\tlabelloc=top;\n";
+    legend_file << "\trankdir=LR;\tranksep=\"3\";\n";
     legend_file << "\tkey [label=<<table border=\"0\" cellpadding=\"2\" cellspacing=\"25\" cellborder=\"0\">\n";
 
     for (size_t i = 0; i < eqn_keys.size(); i++){

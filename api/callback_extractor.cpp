@@ -251,7 +251,9 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
     }
 
     // add variable and mapping to graph if they don't already exist
-    graph->add_vertex(dest_var, dest_is_ssc);
+    vertex* v = graph->add_vertex(dest_var, dest_is_ssc);
+    if (active_cmod.length() > 0)
+        v->cmod = active_cmod;
 
     std::string obj_stack = active_object
                             + (active_subobject.length() > 0 ? ":" + active_subobject  : "")

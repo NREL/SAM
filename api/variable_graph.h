@@ -8,6 +8,8 @@
 
 #include <lk/absyn.h>
 
+#include "variables.h"
+
 /**
  * Implements a very simple directed graph for keeping track of variable transformations
  */
@@ -43,9 +45,11 @@ public:
 class vertex{
 public:
     std::string name;
+    std::string ui_form;
     std::vector<edge*> edges_out;
     std::vector<edge*> edges_in;
     bool is_ssc_var;    // is an input to primary compute module
+    std::string cmod;
 
     vertex(std::string n, bool is_ssc){
         name = n;
@@ -95,6 +99,8 @@ public:
         }
     }
 
+    std::unordered_map<std::string, std::vector<vertex*>>& get_vertices(){return vertices;}
+
     vertex* add_vertex(std::string n, bool is_ssc);
 
     vertex* find_vertex(std::string n, bool is_ssc);
@@ -109,8 +115,6 @@ public:
 
     bool add_edge(std::string src, bool src_is_ssc, std::string dest, bool dest_is_ssc,
             int type, std::string obj, std::string expression);
-
-
 
     void delete_edge(edge* e);
 

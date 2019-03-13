@@ -8,6 +8,8 @@
 #include "data_structures.h"
 
 std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_cmod_to_outputs;
+std::unordered_map<std::string, std::unordered_map<std::string, size_t>> SAM_config_to_ssc_index;
+
 
 void load_secondary_cmod_outputs(std::string cmod_name){
 
@@ -57,10 +59,18 @@ void load_secondary_cmod_outputs(std::string cmod_name){
     }
 }
 
-/// create the cmod and get all the variable names of desired type
+/// create the cmod and get all the variable names of desired type, saving the indices
 std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string which_type){
     ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
     std::vector<std::string> variable_names;
+
+    auto it = SAM_config_to_ssc_index.find(active_config);
+    if (it == SAM_config_to_ssc_index.end()){
+        SAM_config_to_ssc_index.insert({active_config, std::unordered_map<std::string, size_t>()});
+        it = SAM_config_to_ssc_index.find(active_config);
+    }
+
+    std::unordered_map<std::string, size_t>& index_map = it->second;
 
     int var_index = 0;
     ssc_info_t mod_info = ssc_module_var_info(p_mod, var_index);
@@ -79,6 +89,9 @@ std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string wh
                 variable_names.push_back(name);
             }
         }
+
+        index_map.insert({name, (size_t)var_index});
+
         ++var_index;
         mod_info = ssc_module_var_info(p_mod, var_index);
     }
@@ -121,6 +134,16 @@ std::vector<equation_info> find_eqn_info(std::string ui_var, std::string config)
     }
     return eqn_infos;
 }
+
+
+page_info& find_page_info_of_variable(std::string name, std::string config){
+    std::vector<page_info>& pg_info = SAM_config_to_input_pages.find(active_config)->second;
+
+    for (size_t i = 0; i < pg_info.size(); i++){
+
+    }
+}
+
 
 std::string find_ui_of_variable(std::string name, std::string config){
     std::vector<std::string> all_ui = find_ui_forms_for_config(config);

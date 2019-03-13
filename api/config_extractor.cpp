@@ -48,14 +48,24 @@ bool config_extractor::load_defaults_for_config(){
     return true;
 }
 
-void config_extractor::load_variables_into_graph(VarTable &vt) {
+size_t config_extractor::load_variables_into_graph(VarTable &vt) {
+    size_t n = 0;
     wxArrayString var_names = vt.ListAll(nullptr);
     for (size_t i = 0; i < var_names.size(); i++){
         std::string name = var_names[i].ToStdString();
-        bool is_ssc_var = (which_cmod_as_input(name, config_name).length() > 0);
-        var_graph->add_vertex(name, is_ssc_var);
+        std::string cmod = which_cmod_as_input(name, config_name);
+        bool is_ssc_var = (cmod.length() > 0);
+        vertex* v = var_graph->add_vertex(name, is_ssc_var);
+        v->cmod = cmod;
+        if (is_ssc_var) n+=1;
     }
+    return n;
 }
+
+std::string config_extractor::spell_equation(lk::node_t *node){
+    return "";
+}
+
 
 bool config_extractor::map_equations(){
     std::vector<std::string> ui_forms = find_ui_forms_for_config(config_name);
@@ -64,6 +74,8 @@ bool config_extractor::map_equations(){
         std::string ui = ui_forms[i];
         std::vector<equation_info> eqns = SAM_ui_form_to_eqn_info[ui];
         for (size_t j = 0; j < eqns.size(); j++){
+            EqnData* eq_data = eqns[j].eqn_data;
+
             std::vector<std::string> inputs = eqns[j].ui_inputs;
             std::vector<std::string> outputs = eqns[j].ui_outputs;
 
@@ -74,8 +86,19 @@ bool config_extractor::map_equations(){
                     src_is_ssc = ( which_cmod_as_input(inputs[s], config_name).length() > 0 );
                     dest_is_ssc = ( which_cmod_as_input(outputs[d], config_name).length() > 0 );
 
+                    // get location of eqn
+                    std::string callstack = ui;
+                    if (eq_data->result_is_output){
+                        callstack += ":EQN";
+                    }
+                    else{
+                        callstack += ":MIMO";
+                    }
 
-                    if (!var_graph->add_edge(inputs[s], src_is_ssc, outputs[d], dest_is_ssc, EQN, ui, std::string())){
+                    // get the expression
+                    std::string expression = spell_equation(eq_data->tree);
+
+                    if (!var_graph->add_edge(inputs[s], src_is_ssc, outputs[d], dest_is_ssc, EQN, callstack, expression)){
                         std::cout << "/* config_extractor::map_equations error adding edge between ";
                         std::cout << inputs[s] << " and " + outputs[d] + " */ \n";
                     }

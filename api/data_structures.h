@@ -6,6 +6,7 @@
 #include <set>
 #include <iostream>
 
+#include "equations.h"
 #include "variables.h"
 #include "variable_graph.h"
 
@@ -37,6 +38,11 @@ extern std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_inp
  * e.g. 'Biopower-LCOE Calculator': ('biomass', 'lcoefcr')
  */
 extern std::unordered_map<std::string, std::vector<std::string>> SAM_config_to_primary_modules;
+
+/**
+ * Maps each compute_module variable to its index in the info table for each config
+ */
+extern std::unordered_map<std::string, std::unordered_map<std::string, size_t>> SAM_config_to_ssc_index;
 
 
 /**
@@ -77,6 +83,7 @@ extern ui_form_extractor_database SAM_ui_extracted_db;
 struct equation_info{
     std::vector<std::string> ui_inputs;
     std::vector<std::string> ui_outputs;
+    EqnData* eqn_data;
 };
 
 extern std::unordered_map<std::string, std::vector<equation_info>> SAM_ui_form_to_eqn_info;
@@ -111,6 +118,8 @@ std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string wh
 void load_primary_cmod_inputs();
 
 void load_secondary_cmod_outputs(std::string cmod_name);
+
+page_info& find_page_info_of_variable(std::string name, std::string config);
 
 /// Find which ui form a variable is defined inside for a given config
 std::string find_ui_of_variable(std::string name, std::string config);

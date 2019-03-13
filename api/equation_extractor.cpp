@@ -40,6 +40,7 @@ void equation_extractor::export_to_equation_info(){
         for (size_t n = 0; n < eqns[i]->outputs.Count(); n++){
             ei.ui_outputs.push_back(eqns[i]->outputs[n].ToStdString());
         }
+        ei.eqn_data = eqns[i];
         ei_vec.push_back(ei);
     }
     if (ei_vec.size() > 0)

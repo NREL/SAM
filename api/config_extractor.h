@@ -20,7 +20,7 @@ private:
 
     digraph* var_graph;
 
-    void load_variables_into_graph(VarTable &vt);
+    size_t load_variables_into_graph(VarTable &vt);
 
     void export_to_ui_form_db(std::string ui);
 public:
@@ -42,9 +42,17 @@ public:
 
     bool load_defaults_for_config();
 
+    std::string spell_equation(lk::node_t *node);
+
     bool map_equations();
 
     void register_callback_functions();
+
+    std::string get_name() {return config_name;}
+
+    digraph* get_variable_graph(){
+            return var_graph;
+    }
 };
 
 #endif //SYSTEM_ADVISOR_MODEL_CONFIG_EXTRACTOR_H
