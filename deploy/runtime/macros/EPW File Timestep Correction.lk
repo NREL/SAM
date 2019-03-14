@@ -1,7 +1,8 @@
 /*@
-Currently, the recorded GHI value in some EPW weather files does not match the calculated GHI value in SAM. This discrepancy is due to 
-a non-standard minute timestep in  the weather file. This macro allows you to change the minute timestep recording in the EPW weather file 
-to close the gap between the recorded and calculated GHI values respectively. 
+Currently, the recorded GHI value in some EPW weather files does not match the calculated GHI value in SAM. This discrepancy is most likely related to when the 
+measurement was taken in the EPW weather file versus the exact time used in SAM for calculating the corresponding GHI value. This macro allows you to correct 
+the minute offset in the EPW file being used by presenting graphs for recorded GHI (W/m2) from the weather file, and GHI value calculated in SAM for minute 
+offsets of (0, 30, 60, and custom) minutes. 
 
 <br>
 <br>
