@@ -159,6 +159,8 @@ bool ui_form_extractor_database::populate_ui_data(std::string ui_path, std::vect
             std::cout << "ui_form_extractor_database error: Cannot open " + ui_name + " file at " + ui_path;
             return false;
         }
+
+        ui_fe->export_eqn_infos();
     }
     return true;
 }

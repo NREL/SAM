@@ -193,7 +193,11 @@ static void fcall_value( lk::invoke_t &cxt )
 
 static void fcall_varinfo( lk::invoke_t &cxt )
 {
-    LK_DOC("varinfo", "nothing to do", "(string:var name):table");
+    LK_DOC("varinfo", "Assign empty strings", "(string:var name):table");
+    cxt.result().empty_hash();
+    cxt.result().hash_item("label").assign( "" );
+    cxt.result().hash_item("units").assign( "" );
+    cxt.result().hash_item("group").assign( "" );
 }
 
 static void fcall_output(lk::invoke_t &cxt)
@@ -420,6 +424,7 @@ static void fcall_substance_density(lk::invoke_t &cxt)
     std::cout << "substance_density not implemented\n";
 }
 
+
 static void fcall_snlinverter( lk::invoke_t &cxt )
 {
     LK_DOC( "snlinverter", "Map calculation of the sandia inverter AC power from DC and specs", "(number:pdc, number:vdc, number:vdco, number:pdco, number:pso, number:paco, number:c0, number:c1, number:c2, number:c3):number" );
@@ -457,6 +462,10 @@ static void fcall_snlinverter( lk::invoke_t &cxt )
     double pac = ((paco / (A- B)) - C * (A - B)) * (pdc - B) + C * (pdc - B) * (pdc - B);
 
     cxt.result().assign( pac );
+}
+
+static void _html_dialog(lk::invoke_t &cxt){
+    LK_DOC("html_dialog", "Do nothing.", "(string:html source, [string:title], [array:window size [w,h] or geometry [x,y,w,h]]):none");
 }
 
 /**
@@ -511,6 +520,7 @@ static lk::fcall_t* invoke_casecallback_funcs()
             _editscene3d,
             fcall_substance_density,
             fcall_snlinverter,
+            _html_dialog,
             0 };
     return (lk::fcall_t*)vec;
 }

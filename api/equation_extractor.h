@@ -6,6 +6,7 @@
 
 #include "equations.h"
 #include "data_structures.h"
+#include "lk_env.h"
 
 /**
  *  One per config?
@@ -14,20 +15,35 @@
 class equation_extractor : public EqnDatabase{
 private:
     std::string ui_form_name;
-    std::vector<std::string> input_variables;
-    std::vector<std::string> output_variables;
+    std::vector<std::string> errors;
+    lk::env_t* m_env;
 
 public:
     equation_extractor(std::string name){
         ui_form_name = name;
+        m_env = new lk::env_t;
+        m_env->register_funcs( lk::stdlib_basic() );
+        m_env->register_funcs( lk::stdlib_sysio() );
+        m_env->register_funcs( lk::stdlib_math() );
+        m_env->register_funcs( lk::stdlib_string() );
+        m_env->register_funcs( invoke_ssc_funcs() );
+        m_env->register_funcs( invoke_casecallback_funcs() );
     };
+
+    ~equation_extractor(){
+        delete m_env;
+    }
 
     bool parse_and_export_eqns(std::string eqn_script);
 
-    std::string spell_script();
-
     /// Returns the input and outputs of each equation
     void export_to_equation_info();
+
+    std::string translate_to_cplusplus(equation_info &eqn_info, std::ofstream &of);
+
+    std::vector<std::string> get_errors(){
+        return errors;
+    }
 };
 
 

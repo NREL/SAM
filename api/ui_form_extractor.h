@@ -15,6 +15,7 @@
 
 #include "variables.h"
 #include "lk_env.h"
+#include "equation_extractor.h"
 
 /**
  * This class extracts the variables, equations and callbacks LK script from the ui form file.
@@ -26,7 +27,8 @@ class ui_form_extractor {
 private:
     std::string m_eqn_script;
     std::string m_callback_script;
-    lk::env_t m_env;
+
+    equation_extractor* eqn_extractor;
 
     /// Gets default values and stores into SAM_config_to_defaults
     VarValue get_varvalue(wxInputStream &is, wxString var_name);
@@ -44,13 +46,32 @@ public:
 
     ui_form_extractor(std::string n){
         ui_form_name = n;
+        eqn_extractor = new equation_extractor(n);
     };
+
+    ~ui_form_extractor(){
+        delete eqn_extractor;
+    }
 
     bool extract(std::string file);
 
-    std::string get_eqn_script() {return m_eqn_script;}
-
     std::string get_callback_script() {return m_callback_script;}
+
+    bool export_eqn_infos(){
+        return eqn_extractor->parse_and_export_eqns(m_eqn_script);
+    }
+
+    std::vector<equation_info>* get_eqn_infos(){
+        if (SAM_ui_form_to_eqn_info.find(ui_form_name) != SAM_ui_form_to_eqn_info.end())
+            return &(SAM_ui_form_to_eqn_info.find(ui_form_name)->second);
+        else
+            return nullptr;
+    }
+
+    std::string translate_to_cplusplus(equation_info &eqn_info, std::ofstream &of) {
+        return eqn_extractor->translate_to_cplusplus(eqn_info, of);
+    };
+
 
 };
 
@@ -71,8 +92,8 @@ public:
             delete it->second;
     }
 
-    ui_form_extractor* find(std::string n){
-        auto it = ui_form_map.find(n);
+    ui_form_extractor* find(std::string ui_name){
+        auto it = ui_form_map.find(ui_name);
         if (it != ui_form_map.end())
             return it->second;
         else
@@ -86,6 +107,7 @@ public:
     }
 
     bool populate_ui_data(std::string ui_path, std::vector<std::string> ui_form_names);
+
 };
 
 #endif //SYSTEM_ADVISOR_MODEL_EXTRACT_INPUT_PAGE_H

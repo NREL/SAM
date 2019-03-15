@@ -290,12 +290,12 @@ std::string format_vertex_name(vertex* v){
 void digraph::print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std::string, std::string> *obj_keys,
                            std::unordered_map<std::string, std::string> *eqn_keys) {
 
-    const char* colors[] = {"black", "brown4", "darkorange3", "lightslateblue", "mediumorchid", "firebrick", "indigo",
-                            "burlywood4", "azure4", "darkorchid4", "aquamarine3", "olivedrab", "palevioletred", "darkgoldenrod2",
-                            "gold4", "crimson", "chartreuse4", "sienna4", "skyblue4", "orange3", "seashell4", "sienna", "sienna1",
-                            "sienna2", "sienna3", "sienna4", "skyblue", "skyblue1", "skyblue2", "skyblue3", "skyblue4", "slateblue"};
+//    const char* colors[] = {"black", "brown4", "darkorange3", "lightslateblue", "mediumorchid", "firebrick", "indigo",
+//                            "burlywood4", "azure4", "darkorchid4", "aquamarine3", "olivedrab", "palevioletred", "darkgoldenrod2",
+//                            "gold4", "crimson", "chartreuse4", "sienna4", "skyblue4", "orange3", "seashell4", "sienna", "sienna1",
+//                            "sienna2", "sienna3", "sienna4", "skyblue", "skyblue1", "skyblue2", "skyblue3", "skyblue4", "slateblue"};
     size_t cnt = eqn_keys->size() + obj_keys->size();
-    if (cnt > 31) cnt = 0;
+//    if (cnt > 31) cnt = 0;
 
     for (size_t i = 0; i < v->edges_out.size(); i++){
         std::string src_str = format_vertex_name(v->edges_out[i]->src);
@@ -303,24 +303,25 @@ void digraph::print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std
         if (src_str.length() > 0 && dest_str.length() > 0){
             ofs << "\t" << src_str << " -> " << dest_str;
             edge* e = v->edges_out[i];
+            std::string edge_label = std::to_string(cnt);
             if (e->type == 0){
                 if (eqn_keys->find(e->obj_name) == eqn_keys->end()){
-                    eqn_keys->insert({e->obj_name, colors[cnt]});
-                    ofs << " [color=" << colors[cnt] << ", style=dashed]" << ";\n";
+                    eqn_keys->insert({e->obj_name, edge_label});
+                    ofs << " [label=" << edge_label << ", style=dashed]" << ";\n";
                     cnt+=1;
                 }
                 else{
-                    ofs << " [color=" << eqn_keys->find(e->obj_name)->second << ", style=dashed]" << ";\n";
+                    ofs << " [label=" << eqn_keys->find(e->obj_name)->second << ", style=dashed]" << ";\n";
                 }
             }
             else{
                 if (obj_keys->find(e->obj_name) == obj_keys->end()){
-                    obj_keys->insert({e->obj_name, colors[cnt]});
-                    ofs << " [color=" << colors[cnt] << "]" << ";\n";
+                    obj_keys->insert({e->obj_name, edge_label});
+                    ofs << " [label=" << edge_label << "]" << ";\n";
                     cnt+=1;
                 }
                 else{
-                    ofs << " [color=" << obj_keys->find(e->obj_name)->second << "]" << ";\n";
+                    ofs << " [label=" << obj_keys->find(e->obj_name)->second << "]" << ";\n";
                 }
             }
             if (cnt > 31) cnt = 0;
@@ -414,14 +415,14 @@ void digraph::print_dot(std::string filepath, std::string ext) {
 
     size_t i = 0;
     for (auto it = eqn_keys.begin(); it != eqn_keys.end(); ++it){
-        legend_file << "\tkey:e" << i << ":e -> key2:e" << i << ":w [style=dashed, color=" << it->second;
-        legend_file << ", label=\"" << it->first << "\"]\n";
+        legend_file << "\tkey:e" << i << ":e -> key2:e" << i << ":w [style=dashed, label=\"" << it->second;
+        legend_file << ": " << it->first << "\"]\n";
         i++;
     }
     i=0;
     for (auto it = obj_keys.begin(); it != obj_keys.end(); ++it){
-        legend_file << "\t\tkey:o" << i << ":e -> key2:o" << i << ":w [color=" << it->second;
-        legend_file << ", label=\"" << it->first << "\"]\n";
+        legend_file << "\tkey:o" << i << ":e -> key2:o" << i << ":w [label=\"" << it->second;
+        legend_file << ": " << it->first << "\"]\n";
         i++;
     }
     legend_file << "}";

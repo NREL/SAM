@@ -53,13 +53,6 @@ int main(int argc, char *argv[]){
     std::string ui_path =  "../deploy/runtime/ui/";
     SAM_ui_extracted_db.populate_ui_data(ui_path, unique_ui_form_names);
 
-    // parse the equations
-    for (size_t i = 0; i < unique_ui_form_names.size(); i++){
-        std::string ui_name = unique_ui_form_names[i];
-        equation_extractor eqn_ext(ui_name);
-        eqn_ext.parse_and_export_eqns(SAM_ui_extracted_db.find(ui_name)->get_eqn_script());
-    }
-
     // parsing the callbacks requires all ui forms in a config
     active_config = "";
     std::string graph_path =  "../../../pySAM/Graphs/Files";
@@ -67,7 +60,7 @@ int main(int argc, char *argv[]){
     std::string api_path = "../../../pySAM/library";
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         // only do technology configs
-        if (it->first.find("None") == std::string::npos)
+        if (it->first.find("None") == std::string::npos && it->first.find("MSPT") == std::string::npos)
             continue;
         active_config = it->first;
         // no battery defaults
@@ -76,7 +69,7 @@ int main(int argc, char *argv[]){
         }
 
         // focus on this one
-//        if (active_config != "Flat Plate PV-None"){
+//        if (active_config != "Flat Plate PV-None" ){
 //            continue;
 //        }
 
@@ -91,7 +84,6 @@ int main(int argc, char *argv[]){
         builder_generator b_gen(&ce);
         b_gen.print_subgraphs(graph_path);
         b_gen.generate_interface(api_path);
-//        b_gen.get_expressions();
     }
 
     return 1;

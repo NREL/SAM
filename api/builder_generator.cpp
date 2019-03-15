@@ -6,17 +6,13 @@
 #include <ssc/sscapi.h>
 
 #include "lk_env.h"
+#include "lk_eval.h"
 #include "data_structures.h"
 #include "variable_graph.h"
+#include "ui_form_extractor.h"
 
 #include "builder_generator.h"
 
-
-std::string format_as_code(std::string s){
-    std::string::iterator end_pos = std::remove(s.begin(), s.end(), ' ');
-    s.erase(end_pos, s.end());
-    return s.substr(0, s.find('-'));
-}
 
 void builder_generator::load_cmods(){
     auto cmods = SAM_config_to_primary_modules[active_config];
@@ -309,6 +305,7 @@ void builder_generator::create_api_data(){
     sig = sig + "_";
 
     // declaration of modules and submodules
+    create_definitions();
     for (size_t i = 0; i < modules_order.size(); i++){
         std::string module_name = modules_order[i];
         data_file << "\t /** " << module_name << " */\n";
@@ -357,28 +354,73 @@ void builder_generator::create_source_interfaces(std::vector<vertex *> &vertices
     }
 }
 
-void builder_generator::get_expressions(){
+bool builder_generator::eqn_in_subgraph(equation_info eq){
+    for (size_t i = 0; i < eq.ui_inputs.size(); i++ ){
+        std::string name = eq.ui_inputs[i];
+        bool is_ssc = which_cmod_as_input(name, config_name).length() > 0;
+        if (!is_ssc && !subgraph->find_vertex(eq.ui_inputs[i], false))
+            return false;
+    }
+    for (size_t i = 0; i < eq.ui_outputs.size(); i++ ){
+        std::string name = eq.ui_outputs[i];
+        bool is_ssc = which_cmod_as_input(name, config_name).length() > 0;
+        if (is_ssc)
+            return true;
+        if (!is_ssc && !subgraph->find_vertex(eq.ui_outputs[i], false))
+            return false;
+    }
+    return true;
+}
+
+void builder_generator::create_definitions() {
+    std::ofstream fx_file;
+    fx_file.open(filepath + "/" +  symbol_name + ".cpp");
+    assert(fx_file.is_open());
+
+
+    fx_file << "#include \"" << symbol_name << "-data.h\"\n\n";
+
+
+    const char* includes = "#ifdef __cplusplus\n"
+                           "extern \"C\"\n"
+                           "{\n"
+                           "#endif\n\n";
+
+    fx_file << includes;
+
+    std::string sig = "SAM_" + symbol_name;
+
+
+    int n = 0;
     std::unordered_map<std::string, std::vector<vertex*>>& vertices = subgraph->get_vertices();
-    for (auto it = vertices.begin(); it != vertices.end(); ++it){
-        if (vertex* v_ui = it->second.at(0)){
-            for (size_t i = 0; i < v_ui->edges_out.size(); i++) {
-                edge *e = v_ui->edges_out[i];
-                encode_edge(e);
-            }
-        }
-        if (vertex* v_ssc = it->second.at(1)){
-            for (size_t i = 0; i < v_ssc->edges_out.size(); i++) {
-                edge *e = v_ssc->edges_out[i];
-                encode_edge(e);
+    std::vector<std::string> ui_forms = find_ui_forms_for_config(config_name);
+    for (size_t i = 0; i < ui_forms.size(); i++){
+        ui_form_extractor* ui_extractor = SAM_ui_extracted_db.find(ui_forms[i]);
+        std::vector<equation_info>* eqns = ui_extractor->get_eqn_infos();
+        for (size_t j = 0; j < eqns->size(); j++){
+            equation_info eq_info = (*eqns)[j];
+            if (eqn_in_subgraph(eq_info)){
+                if (i == 2 & j == 10 && sig == "SAM_MSPT"){
+                    std::cout << "stop here";
+                }
+                ui_extractor->translate_to_cplusplus(eq_info, fx_file);
+                fx_file << "\n\n";
+
+                n+=1;
             }
         }
     }
+    std::cout << n << "\n";
+    fx_file.close();
 }
 
 void builder_generator::generate_interface(std::string fp) {
     filepath = fp;
     gather_variables();
     create_api_data();
+
+
+
 
     auto udv = get_user_defined_variables();
 
@@ -396,8 +438,9 @@ void builder_generator::generate_interface(std::string fp) {
         all_ssc_vars += vec.size();
     }
 
+    std::cout << config_name << ": \n";
     std::cout << "number user defined: " << udv.size() << "; number eval: " << evalv.size() << "\n";
-    std::cout << "number total: " << all_ssc_vars << " in " << cmods.size() << " cmods\n";
+    std::cout << "number of all ssc vars: " << all_ssc_vars << " in " << cmods.size() << " cmods\n";
 
     std::cout << udv << "\n" << evalv << "\n\n\n" << all_vars;
 

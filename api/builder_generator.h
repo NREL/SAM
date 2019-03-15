@@ -60,7 +60,9 @@ public:
 
     void create_source_interfaces(std::vector<vertex *> &vertices);
 
-    void get_expressions();
+    bool eqn_in_subgraph(equation_info eq);
+
+    void create_definitions();
 
     void generate_interface(std::string filepath);
 

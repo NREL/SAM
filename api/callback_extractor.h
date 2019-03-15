@@ -3,27 +3,13 @@
 
 #include <string>
 #include <vector>
-#include <lk/eval.h>
+
 
 #include "equations.h"
 #include "lk_env.h"
 #include "data_structures.h"
+#include "lk_eval.h"
 
-
-
-class extractor_interpreter : public lk::eval{
-public:
-    extractor_interpreter(lk::node_t *tree, lk::env_t* env):lk::eval(tree, env){}
-
-    bool interpret(lk::node_t *root, lk::env_t*cur_env, lk::vardata_t &result, unsigned int flags,
-        unsigned int &ctl_id);
-
-    virtual bool special_set( const lk_string &name, lk::vardata_t &val );
-    virtual bool special_get( const lk_string &name, lk::vardata_t &val );
-
-    void map_assignment(lk::node_t *src, lk::node_t *dest);
-
-};
 
 class callback_extractor{
 private:
@@ -66,10 +52,5 @@ public:
     void export_to_secondary_cmod_info();
 
 };
-
-std::string spell_out(lk::expr_t *n, std::vector<std::string> *vertex_names, std::vector<bool> *vertex_is_ssc);
-
-std::string spell_list(lk::list_t *l, std::vector<std::string> *vertex_names, std::vector<bool> *vertex_is_ssc,
-                       bool map_literals_only);
 
 #endif //SYSTEM_ADVISOR_MODEL_CALLBACK_EXTRACTOR_H
