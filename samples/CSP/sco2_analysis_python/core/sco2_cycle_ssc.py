@@ -150,6 +150,9 @@ def get_des_od_label_unit_info__calc_metrics():
     info["MC_cost"].od_d_type = "nan"
     
     info["RC_T_in"] = C_des_od_label_unit_info("rc_T_in_des", "rc_T_in_od", "Re-Comp\nInlet Temp [C]", "Re-Compressor Inlet Temp [C]", "[C]")
+    info["RC_P_in"] = C_des_od_label_unit_info("rc_P_in_des", "rc_P_in_od", "Re-Comp\nInlet Pres [MPa]", "Re-Compressor Inlet Pres [MPa]","[MPa]")
+    info["RC_T_out"] = C_des_od_label_unit_info("rc_T_out_des", "rc_T_out_od", "Re-Comp\nOutlet Temp [C]", "Re-Compressor Outlet Temp [C]", "[C]")
+    info["RC_P_out"] = C_des_od_label_unit_info("rc_P_out_des", "rc_P_out_od", "Re-Comp\nOutlet Pres [MPa]", "Re-Compressor Outlet Pres [MPa]", "[MPa]")
     info["RC_W_dot"] = C_des_od_label_unit_info("rc_W_dot", "rc_W_dot_od", "Re-Comp\nPower [MWe]", "Re-Compressor Power [MWe]", "[MWe]")
     info["RC_m_dot"] = C_des_od_label_unit_info("rc_m_dot_des", "rc_m_dot_od", "Re-Comp\nMass Flow [kg/s]", "Re-Compressor Mass Flow Rate [kg/s]", "[kg/s]")
     info["RC_phi"] = C_des_od_label_unit_info("rc_phi_des", "rc_phi_od", "Re-Comp\nFlow Coef [-]", "Re-Compressor Flow Coefficient [-]", "[-]")
@@ -189,7 +192,9 @@ def get_des_od_label_unit_info__calc_metrics():
         
     info["t_T_in"] = C_des_od_label_unit_info("T_turb_in", "T_co2_PHX_out_od", "Turbine\nInlet Temp [C]", "Turbine Inlet Temperature [C]", "[C]")
     info["t_T_in"].limit_var = "T_htf_hot_des"
+    info["t_P_in"] = C_des_od_label_unit_info("t_P_in_des", "t_P_in_od", "Turbine\nInlet Pres [MPa]", "Turbine Inlet Pressure [MPa]", "[MPa]")
     info["t_T_out"] = C_des_od_label_unit_info("t_T_out_des", "t_T_out_od", "Turbine\nOutlet Temp [C]", "Turbine Outlet Temperature [C]", "[C]")
+    info["t_P_out"] = C_des_od_label_unit_info("t_P_out_des", "t_P_out_od", "Turbine\nOutlet Pres [MPa]", "Turbine Outlet Pressure [MPa]", "[MPa]")
     info["t_W_dot"] = C_des_od_label_unit_info("t_W_dot", "t_W_dot_od", "Turbine\nPower [MWe]", "Turbine Power [MWe]", "[MWe]")
     info["t_m_dot"] = C_des_od_label_unit_info("t_m_dot_des", "t_m_dot_od", "Turbine\nMass Flow [kg/s]", "Turbine Mass Flow Rate [kg/s]", "[kg/s]")
     info["t_nu"] = C_des_od_label_unit_info("t_nu_des", "t_nu_od", "Turbine\nVelocity Ratio [-]", "Turbine Velocity Ratio [-]", "[-]")
@@ -199,21 +204,26 @@ def get_des_od_label_unit_info__calc_metrics():
     info["t_cost"] = C_des_od_label_unit_info("t_cost", "none", "Turbine\nCost [M$]", "Turbine Cost [M$]", "[M$]")
     info["t_cost"].od_d_type = "nan"
 
+    info["LTR_HP_T_out"] = C_des_od_label_unit_info("LTR_HP_T_out_des", "LTR_HP_T_out_od", "LTR HP\nOutlet Temp [C]", "LTR HP Outlet Temperature [C]", "[C]")
     info["LTR_UA"] = C_des_od_label_unit_info("UA_LTR", "none", "LTR\nUW [MW/K]", "Low Temp Recuperator Conductance [MW/K]", "[MW/K]")
     info["LTR_UA"].od_d_type = "nan"
     info["LTR_eff"] = C_des_od_label_unit_info("eff_LTR", "eff_LTR_od", "LTR\nEffectiveness [-]", "Low Temp Recuperator Effectiveness [-]", "[-]")
     info["LTR_q_dot"] = C_des_od_label_unit_info("q_dot_LTR", "q_dot_LTR_od", "LTR\nDuty [MWt]", "Low Temp Recuperator Duty [MWt]", "[MWt]")
-    info["LTR_min_dT"] = C_des_od_label_unit_info("LTR_min_dT", "none", "LTR Min\nTemp Difference [C]", "LTR Min Temperature Difference [C]", "[C]")
-    info["LTR_min_dT"].od_d_type = "nan"
+    info["LTR_LP_deltaP"] = C_des_od_label_unit_info("LTR_LP_deltaP_des", "LTR_LP_deltaP_od", "LTR LP\nPres Drop [-]", "LTR LP Pressure Drop [-]", "[-]")
+    info["LTR_HP_deltaP"] = C_des_od_label_unit_info("LTR_HP_deltaP_des", "LTR_HP_deltaP_od", "LTR HP\nPres Drop [-]", "LTR HP Pressure Drop [-]", "[-]")
+    info["LTR_min_dT"] = C_des_od_label_unit_info("LTR_min_dT", "LTR_min_dT_od", "LTR Min\nTemp Difference [C]", "LTR Min Temperature Difference [C]", "[C]")
     info["LTR_cost"] = C_des_od_label_unit_info("LTR_cost", "none", "LTR\nCost [M$]", "Low Temp Recuperator Cost [M$]", "[M$]")
     info["LTR_cost"].od_d_type = "nan"
     
+    info["HTR_LP_T_out"] = C_des_od_label_unit_info("HTR_LP_T_out_des", "HTR_LP_T_out_od", "HTR LP\nOutlet Temp [C]", "HTR LP Outlet Temperature [C]", "[C]")
+    info["HTR_HP_T_in"] = C_des_od_label_unit_info("HTR_HP_T_in_des", "HTR_HP_T_in_od", "HTR HP\nInlet Temp [C]", "HTR HP Inlet Temperature [C]", "[C]")
     info["HTR_UA"] = C_des_od_label_unit_info("UA_HTR", "none", "HTR\nUW [MW/K]", "High Temp Recuperator Conductance [MW/K]", "[MW/K]")
     info["HTR_UA"].od_d_type = "nan"
     info["HTR_eff"] = C_des_od_label_unit_info("eff_HTR", "eff_HTR_od", "HTR\nEffectiveness [-]", "High Temp Recuperator Effectiveness [-]", "[-]")
     info["HTR_q_dot"] = C_des_od_label_unit_info("q_dot_HTR", "q_dot_HTR_od", "HTR\nDuty [MWt]", "High Temp Recuperator Duty [MWt]", "[MWt]")
-    info["HTR_min_dT"] = C_des_od_label_unit_info("HTR_min_dT", "none", "HTR Min\nTemp Difference [C]", "HTR Min Temperature Difference [C]", "[C]")
-    info["HTR_min_dT"].od_d_type = "nan"
+    info["HTR_LP_deltaP"] = C_des_od_label_unit_info("HTR_LP_deltaP_des", "HTR_LP_deltaP_od", "HTR LP\nPres Drop [-]", "HTR LP Pressure Drop [-]", "[-]")
+    info["HTR_HP_deltaP"] = C_des_od_label_unit_info("HTR_HP_deltaP_des", "HTR_HP_deltaP_od", "HTR HP\nPres Drop [-]", "HTR HP Pressure Drop [-]", "[-]")
+    info["HTR_min_dT"] = C_des_od_label_unit_info("HTR_min_dT", "HTR_min_dT_od", "HTR Min\nTemp Difference [C]", "HTR Min Temperature Difference [C]", "[C]")
     info["HTR_cost"] = C_des_od_label_unit_info("HTR_cost", "none", "HTR\nCost [M$]", "High Temp Recuperator Cost [M$]", "[M$]")
     info["HTR_cost"].od_d_type = "nan"
     
@@ -226,6 +236,7 @@ def get_des_od_label_unit_info__calc_metrics():
     info["recup_LTR_UA_frac"].od_d_type = "nan"
         
     info["PHX_T_co2_in"] = C_des_od_label_unit_info("T_co2_PHX_in", "T_co2_PHX_in_od", "PHX CO2\nInlet Temp [C]", "PHX CO2 Inlet Temperature [C]", "[C]")
+    info["PHX_P_co2_in"] = C_des_od_label_unit_info("P_co2_PHX_in", "P_co2_PHX_in_od", "PHX CO2\nInlet Pres [MPa]", "PHX CO2 Inlet Pressure [MPa]", "[MPa]")
     info["PHX_m_dot_HTF"] = C_des_od_label_unit_info("m_dot_htf_des", "none", "PHX HTF\n Mass Flow Rate [kg/s]", "PHX HTF Mass Flow Rate [kg/s]", "[kg/s]")
     info["PHX_m_dot_HTF"].od_d_type = "nan"
     info["PHX_m_dot_HTF"].y_label_style = "sci"
@@ -233,12 +244,14 @@ def get_des_od_label_unit_info__calc_metrics():
     info["PHX_UA"].od_d_type = "nan"
     info["PHX_dT"] = C_des_od_label_unit_info("deltaT_HTF_PHX", "deltaT_HTF_PHX_od", "PHX HTF\nTemp Diff [C]", "PHX HTF Temperature Difference [C]", "[C]")
     info["PHX_eff"] = C_des_od_label_unit_info("eff_PHX", "phx_eff_od", "PHX\nEffectivenes [-]", "PHX Effectiveness [-]", "[-]")
+    info["PHX_co2_deltaP"] = C_des_od_label_unit_info("PHX_co2_deltaP_des", "phx_co2_deltaP_od", "PHX CO2\nPres Drop [-]", "PHX CO2 Pressure Drop [-]", "[-]")
     info["PHX_cost"] = C_des_od_label_unit_info("PHX_cost", "none", "PHX\nCost [M$]", "PHX Cost [M$]", "[M$]")
     info["PHX_cost"].od_d_type = "nan"
     
     info["LP_cooler_T_in"] = C_des_od_label_unit_info("LP_cooler_T_in", "LP_cooler_T_in_od", "LP Cooler\nInlet Temp [C]", "Low Pressure Cooler Inlet Temp [C]", "[C]")
     info["LP_cooler_in_isen_deltah_to_P_mc_out"] = C_des_od_label_unit_info("LP_cooler_in_isen_deltah_to_P_mc_out", "LP_cooler_in_isen_deltah_to_P_mc_out_od", "LP Cool In\nIsen Spec Work [kJ/kg]", "Low Pressure Cooler Inlet Isen Spec Work [kJ/kg]", "[kJ/kg]")
     info["LP_cooler_rho_in"] = C_des_od_label_unit_info("LP_cooler_rho_in", "LP_cooler_rho_in_od", "LP Cooler\nInlet Density [kg/m3]", "Low Pressure Cooler Inlet Density [kg/m3]", "[kg/m3]")
+    info["LP_cooler_co2_deltaP"] = C_des_od_label_unit_info("LP_cooler_co2_deltaP_des", "LP_cooler_co2_deltaP_od", "LP Cooler CO2\nPres Drop [-]", "LP Cooler Pressure Drop [-]", "[-]")
     
     info["LP_cooler_cost"] = C_des_od_label_unit_info("LP_cooler_cost", "none", "LP Cooler\nCost [M$]", "Low Pressure Cooler Cost [M$]", "[M$]")
     info["LP_cooler_cost"].od_d_type = "nan"
@@ -329,13 +342,13 @@ def get_default_sco2_dict():
     des_par["T_htf_hot_des"] = 670.0;      #[C] HTF design hot temperature (PHX inlet)
     des_par["dT_PHX_hot_approach"] = 20.0; #[C/K] Temperature difference between hot HTF and turbine inlet       
     des_par["T_amb_des"] = 35.0;           #[C] Ambient temperature at design 
-    des_par["dT_mc_approach"] = 10.0;      #[C] Temperature difference between main compressor CO2 inlet and ambient air
+    des_par["dT_mc_approach"] = 5.0;       #[C] Temperature difference between main compressor CO2 inlet and ambient air
     des_par["site_elevation"] = 300;       #[m] Used to size air cooler...
     des_par["W_dot_net_des"] = 115.0;      #[MWe] Design cycle power output (no cooling parasitics)
     
     des_par["design_method"] = 2;          #[-] 1 = specify efficiency, 2 = specify total recup UA
     des_par["eta_thermal_des"] = 0.46;     #[-] Power cycle thermal efficiency
-    des_par["UA_recup_tot_des"] = 40000/115.0*des_par["W_dot_net_des"]   #[kW/K] Total recuperator conductance
+    des_par["UA_recup_tot_des"] = 30000/115.0*des_par["W_dot_net_des"]   #[kW/K] Total recuperator conductance
     
     des_par["cycle_config"] = 1            #[1] = RC, [2] = PC
            
@@ -350,9 +363,10 @@ def get_default_sco2_dict():
     des_par["eta_isen_rc"] = 0.89;         #[-] Recompressor isentropic efficiency
     des_par["eta_isen_pc"] = 0.89;         #[-] Precompressor isentropic efficiency
     des_par["eta_isen_t"] = 0.90;          #[-] Turbine isentropic efficiency
-    des_par["LT_recup_eff_max"] = 0.96;    #[-] Maximum effectiveness low temperature recuperator
-    des_par["HT_recup_eff_max"] = 0.96;    #[-] Maximum effectiveness high temperature recuperator
-    des_par["deltaP_counterHX_frac"] = 0.0;#[-] Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop
+    eff_max = 1.0
+    des_par["LT_recup_eff_max"] = eff_max;    #[-] Maximum effectiveness low temperature recuperator
+    des_par["HT_recup_eff_max"] = eff_max;    #[-] Maximum effectiveness high temperature recuperator
+    des_par["deltaP_counterHX_frac"] = 0.005;#[-] Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop
     des_par["P_high_limit"] = 25;          #[MPa] Cycle high pressure limit
     
     des_par["dT_PHX_cold_approach"] = 20;  #[C/K] Temperature difference between cold HTF and cold CO2 PHX inlet

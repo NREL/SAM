@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Shading and Snow</title>
+   <title>Shading and Layout</title>
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -29,7 +29,7 @@
 <table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
     <td style="text-align:left">
-      <h1 class="p_Heading1"><span class="f_Heading1">Shading and Snow</span></h1>
+      <h1 class="p_Heading1"><span class="f_Heading1">Shading and Layout</span></h1>
 
     </td>
   </tr>
@@ -160,11 +160,10 @@
 <td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">For a description of the model, see Ryberg, D.; Freeman, J. (2015). Integration, Validation, and Application of a PV Snow Coverage Model in SAM. National Renewable Energy Laboratory. NREL/TP-6A20-64260, available on the SAM website <a href="https://sam.nrel.gov/performance" target="_blank" class="weblink" title="https://sam.nrel.gov/performance">Performance Documentation page</a></span></p>
 <p class="p_Text"><span class="f_Text">For a video demonstration of the snow model, see &quot;Estimating PV Losses Due to Snow Coverage in SAM&quot; by Severin Ryberg from the <a href="https://sam.nrel.gov/virtual-conference-2015" target="_blank" class="weblink" title="https://sam.nrel.gov/virtual-conference-2015">SAM Virtual Conference 2015</a>.</span></p>
 <p class="p_Text"><span class="f_Text">Use the following output variables to explore the effect of snow cover (see <a href="pv_results.htm" class="topiclink">Results</a> for descriptions of the variables):</span></p>
-<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_CHInterfaceElement" style="font-family: 'Lucida Sans Unicode','Lucida Grande','Lucida Sans','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Array DC power loss due to snow (kW)</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_CHInterfaceElement" style="font-family: 'Lucida Sans Unicode','Lucida Grande','Lucida Sans','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Weather file snow depth file (cm)</span></p><p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Snow depth data is not available in the NSRDB PSM dataset. It is available in the older MTS 1 (TMY2) data, which can be downloaded from <a href="http://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/" target="_blank" class="weblink" title="http://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/">http://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/</a>.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_CHInterfaceElement" style="font-family: 'Lucida Sans Unicode','Lucida Grande','Lucida Sans','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Array DC power loss due to snow (kW)</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_CHInterfaceElement" style="font-family: 'Lucida Sans Unicode','Lucida Grande','Lucida Sans','Arial';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Weather file snow depth file (cm)</span></p><p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Snow depth data is not available in the NSRDB PSM V3 dataset. It is available in the older MTS 1 (<a href="https://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/" target="_blank" class="weblink" title="https://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/">TMY2</a>) data, which you can download using the Legacy data option on the Location and Resource page if your project location is near an MTS 1 data site.</span></p>
 <p class="p_Text"><span class="f_Text">SAM's snow model for photovoltaic systems estimates the loss in system output during time steps when the array is covered in snow. It uses snow depth data from the weather file, and for time steps with snow, estimates the percentage of the photovoltaic array that is covered with snow based on the array's tilt angle, plane-of-array irradiance, and ambient temperature. The model assumes that the array is completely covered with snow when the snow depth data indicates a snowfall, and that snow slides off the array as the ambient temperature increases.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Estimate losses due to snow</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Check this option to model snow losses if the weather file on the <a href="pv_location_and_resource.htm" class="topiclink">Location and Resource</a> page includes snow depth data.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The TMY3 files in SAM's solar resource library do not include snow depth data. Weather files from the current NSRDB and from the old TMY2 files do include snow depth data.</span></p>
 </td>
 </tr>
 </table>

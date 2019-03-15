@@ -219,7 +219,7 @@ void LocationSetup::OnAddressChange( wxCommandEvent & )
 	wxYield();
 
 	double lat, lon, tz;
-	if ( !wxEasyCurl::GeoCode( m_address->GetValue(), &lat, &lon, &tz ) )
+	if ( !wxEasyCurl::GeoCodeDeveloper( m_address->GetValue(), &lat, &lon, &tz ) )
 	{
 		wxMessageBox("failed to geocode address");
 		return;

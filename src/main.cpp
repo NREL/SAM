@@ -1984,7 +1984,7 @@ extern void RegisterReportObjectTypes();
 
 
 	wxEasyCurl::Initialize();
-	wxEasyCurl::SetApiKeys( GOOGLE_API_KEY, BING_API_KEY );
+	wxEasyCurl::SetApiKeys( GOOGLE_API_KEY, BING_API_KEY, DEVELOPER_API_KEY );
 	wxEasyCurl::SetUrlEscape( "<SAMAPIKEY>", wxString(sam_api_key) );
 
 	wxPLPlot::AddPdfFontDir( GetRuntimePath() + "/pdffonts" );
