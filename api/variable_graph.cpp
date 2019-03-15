@@ -290,12 +290,11 @@ std::string format_vertex_name(vertex* v){
 void digraph::print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std::string, std::string> *obj_keys,
                            std::unordered_map<std::string, std::string> *eqn_keys) {
 
-//    const char* colors[] = {"black", "brown4", "darkorange3", "lightslateblue", "mediumorchid", "firebrick", "indigo",
-//                            "burlywood4", "azure4", "darkorchid4", "aquamarine3", "olivedrab", "palevioletred", "darkgoldenrod2",
-//                            "gold4", "crimson", "chartreuse4", "sienna4", "skyblue4", "orange3", "seashell4", "sienna", "sienna1",
-//                            "sienna2", "sienna3", "sienna4", "skyblue", "skyblue1", "skyblue2", "skyblue3", "skyblue4", "slateblue"};
+    const char* colors[] = {"black", "brown4", "darkorange3", "lightslateblue", "mediumorchid", "firebrick", "indigo",
+                            "burlywood4", "azure4", "darkorchid4", "aquamarine3", "olivedrab", "palevioletred", "darkgoldenrod2",
+                            "gold4", "crimson", "chartreuse4", "sienna4", "skyblue4", "orange3", "seashell4", "sienna", "sienna1",
+                            "sienna2", "sienna3", "sienna4", "skyblue", "skyblue1", "skyblue2", "skyblue3", "skyblue4", "slateblue"};
     size_t cnt = eqn_keys->size() + obj_keys->size();
-//    if (cnt > 31) cnt = 0;
 
     for (size_t i = 0; i < v->edges_out.size(); i++){
         std::string src_str = format_vertex_name(v->edges_out[i]->src);
@@ -307,24 +306,28 @@ void digraph::print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std
             if (e->type == 0){
                 if (eqn_keys->find(e->obj_name) == eqn_keys->end()){
                     eqn_keys->insert({e->obj_name, edge_label});
-                    ofs << " [label=" << edge_label << ", style=dashed]" << ";\n";
+                    ofs << " [label=" << edge_label << ", style=dashed, color = ";
+                    ofs << colors[(cnt % 31)] << "]" << ";\n";
                     cnt+=1;
                 }
                 else{
-                    ofs << " [label=" << eqn_keys->find(e->obj_name)->second << ", style=dashed]" << ";\n";
+                    ofs << " [label=" << eqn_keys->find(e->obj_name)->second;
+                    int ind = std::stoi(eqn_keys->find(e->obj_name)->second);
+                    ofs << ", style=dashed, color = " << colors[(size_t)ind % 31] << "]" << ";\n";
                 }
             }
             else{
                 if (obj_keys->find(e->obj_name) == obj_keys->end()){
                     obj_keys->insert({e->obj_name, edge_label});
-                    ofs << " [label=" << edge_label << "]" << ";\n";
+                    ofs << " [label=" << edge_label << ", color = " << colors[(cnt % 31)] << "]" << ";\n";
                     cnt+=1;
                 }
                 else{
-                    ofs << " [label=" << obj_keys->find(e->obj_name)->second << "]" << ";\n";
+                    int ind = std::stoi(obj_keys->find(e->obj_name)->second);
+                    ofs << " [label=" << obj_keys->find(e->obj_name)->second;
+                    ofs << ", color = " << colors[(size_t)ind % 31] << "]" << ";\n";
                 }
             }
-            if (cnt > 31) cnt = 0;
         }
     }
 }

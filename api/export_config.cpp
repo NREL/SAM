@@ -55,9 +55,9 @@ int main(int argc, char *argv[]){
 
     // parsing the callbacks requires all ui forms in a config
     active_config = "";
-    std::string graph_path =  "../../../pySAM/Graphs/Files";
+    std::string graph_path =  "/Graphs/Files";
 
-    std::string api_path = "../../../pySAM/library";
+    std::string api_path = "/library";
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         // only do technology configs
         if (it->first.find("None") == std::string::npos && it->first.find("MSPT") == std::string::npos)
