@@ -1,7 +1,7 @@
 Fuel Cell
-984
-1127
-43
+1037
+1234
+46
 Divider
 
 1
@@ -137,6 +137,51 @@ Stack Replacement
 Bold
 2
 1
+Label
+
+1
+12
+Name
+5
+17
+degradation_label
+X
+3
+726
+Y
+3
+168
+Width
+3
+210
+Height
+3
+63
+Caption
+5
+64
+Fuel cell degradation is assumed to degrade the max power output
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 GroupBox
 
 1
@@ -210,7 +255,7 @@ Width
 968
 Height
 3
-349
+457
 Caption
 5
 10
@@ -231,7 +276,7 @@ X
 9
 Y
 3
-957
+1065
 Width
 3
 965
@@ -258,7 +303,7 @@ X
 384
 Y
 3
-981
+1089
 Width
 3
 522
@@ -870,10 +915,10 @@ X
 27
 Y
 3
-627
+747
 Width
 3
-514
+526
 Height
 3
 300
@@ -906,8 +951,8 @@ ShowColLabels
 1
 ColLabels
 5
-57
-% Power, Electrical Efficiency LHV (%), Max Heat Recovery
+61
+% Power, Electrical Efficiency LHV (%), Max Heat Recovery (%)
 NumRowsLabel
 5
 5
@@ -932,6 +977,82 @@ HideColumn
 ShowColumn
 3
 4294967295
+Choice
+
+1
+8
+Name
+5
+26
+fuelcell_efficiency_choice
+X
+3
+291
+Y
+3
+627
+Width
+3
+336
+Height
+3
+24
+Items
+6
+2
+Power percent function of nameplate power
+Power percent as function of degraded max power
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Label
+
+1
+12
+Name
+5
+31
+fuelcell_efficiency_choice_help
+X
+3
+72
+Y
+3
+672
+Width
+3
+861
+Height
+3
+66
+Caption
+5
+302
+The electrical efficiency is applied to the power generated to calculate fuel consumption, while heat recovery percent determines heat generation.  These efficiencies are calculated from the percent power output, which can be defined relative the original nameplate power, or to the degraded max power.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Plot
 
 1
@@ -942,13 +1063,13 @@ Name
 fuelcell_efficiency_plot
 X
 3
-546
+555
 Y
 3
-627
+747
 Width
 3
-400
+415
 Height
 3
 300
@@ -965,7 +1086,7 @@ X
 171
 Y
 3
-1077
+1185
 Width
 3
 90
@@ -1024,7 +1145,7 @@ X
 264
 Y
 3
-1077
+1185
 Width
 3
 90
@@ -1057,7 +1178,7 @@ X
 171
 Y
 3
-1047
+1155
 Width
 3
 90
@@ -1086,7 +1207,7 @@ X
 171
 Y
 3
-990
+1098
 Width
 3
 90
@@ -1148,7 +1269,7 @@ X
 171
 Y
 3
-1020
+1128
 Width
 3
 90
@@ -1207,7 +1328,7 @@ X
 264
 Y
 3
-1020
+1128
 Width
 3
 90
@@ -1916,7 +2037,7 @@ Bold
 2
 1
 
-34
+35
 fuelcell_availability_schedule
 3
 3
@@ -2101,6 +2222,20 @@ Fuel Cell
 100 51 45 
 
 DataMatrix
+fuelcell_efficiency_choice
+3
+1
+Choose power percentage definition
+ 
+Fuel Cell
+0
+2
+1
+1
+1
+1
+0
+Choice
 fuelcell_fuel_available
 3
 1
