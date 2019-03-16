@@ -10,7 +10,7 @@
 class builder_generator {
 private:
     std::string config_name;
-    std::string symbol_name;
+    std::string config_symbol;
     config_extractor* config_ext;
     digraph* graph;
     digraph* subgraph;
@@ -21,6 +21,8 @@ private:
 
     std::unordered_map<std::string, ssc_module_t> ssc_module_objects;
 
+    static std::unordered_map<std::string, std::vector<std::string>> m_config_to_modules;
+
     /// create cmod objects to access variable information
     void load_cmods();
 
@@ -28,11 +30,15 @@ private:
 
     void select_ui_variables(std::string ui_name, std::map<std::string, vertex*>& var_map);
 
+    std::string get_parameter_type(vertex *v, std::string cmod);
+
+    std::string get_return_type(vertex *v, std::string cmod);
+
     void gather_variables();
 
-    void create_api_functions(std::string module);
+    void create_builder_headers(std::string cmod_name, std::string module, std::ofstream &of);
 
-    void create_api_data();
+    void create_api_data(std::string cmod_name);
 public:
 
     builder_generator(config_extractor* ce);
@@ -62,9 +68,9 @@ public:
 
     bool eqn_in_subgraph(equation_info eq);
 
-    void create_definitions();
+    void create_builder_definitions(std::string cmod_name);
 
-    void generate_interface(std::string filepath);
+    void create_interface(std::string fp);
 
     std::vector<std::string> get_user_defined_variables();
 

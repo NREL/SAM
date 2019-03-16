@@ -55,12 +55,12 @@ int main(int argc, char *argv[]){
 
     // parsing the callbacks requires all ui forms in a config
     active_config = "";
-    std::string graph_path =  "/Graphs/Files";
+    std::string graph_path =  "./Graphs/Files";
 
-    std::string api_path = "/library";
+    std::string api_path = "./library";
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         // only do technology configs
-        if (it->first.find("None") == std::string::npos && it->first.find("MSPT") == std::string::npos)
+        if (it->first.find("None") == std::string::npos && it->first.find("MSPT-Single Owner") == std::string::npos)
             continue;
         active_config = it->first;
         // no battery defaults
@@ -69,9 +69,9 @@ int main(int argc, char *argv[]){
         }
 
         // focus on this one
-//        if (active_config != "Flat Plate PV-None" ){
-//            continue;
-//        }
+        if (active_config != "Generic System-None" ){
+            continue;
+        }
 
         config_extractor ce(it->first);
         ce.map_equations();
@@ -83,7 +83,7 @@ int main(int argc, char *argv[]){
         // get all the expressions
         builder_generator b_gen(&ce);
         b_gen.print_subgraphs(graph_path);
-        b_gen.generate_interface(api_path);
+        b_gen.create_interface(api_path);
     }
 
     return 1;

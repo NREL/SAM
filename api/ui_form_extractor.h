@@ -68,8 +68,8 @@ public:
             return nullptr;
     }
 
-    std::string translate_to_cplusplus(equation_info &eqn_info, std::ofstream &of) {
-        return eqn_extractor->translate_to_cplusplus(eqn_info, of);
+    bool translate_to_cplusplus(equation_info &eqn_info, std::ofstream &of, std::string config) {
+        return eqn_extractor->translate_to_cplusplus(eqn_info, of, config);
     };
 
 

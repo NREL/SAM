@@ -39,7 +39,7 @@ public:
     /// Returns the input and outputs of each equation
     void export_to_equation_info();
 
-    std::string translate_to_cplusplus(equation_info &eqn_info, std::ofstream &of);
+    bool translate_to_cplusplus(equation_info &eqn_info, std::ofstream &of, std::string config);
 
     std::vector<std::string> get_errors(){
         return errors;

@@ -1135,19 +1135,32 @@ std::string indent(std::string s, size_t n){
     }
     s = tabs + s;
     size_t pos = s.find('\n');
-    size_t size = s.length();
-    while(pos != std::string::npos){
+    while(pos != std::string::npos && pos != s.length()-1){
         s.insert(pos+1,tabs);
         pos = s.find('\n', pos+1);
     }
     return s;
 }
 
-std::string format_as_code(std::string s){
-    std::string::iterator end_pos = std::remove(s.begin(), s.end(), ' ');
-    s.erase(end_pos, s.end());
-    std::replace(s.begin(), s.end(), '-', '_');
-    return s;
+std::string format_as_symbol(std::string s){
+    char cs[128] = {'\0'};
+    size_t i = 0, j = 0;
+    cs[i] = (char)std::toupper(s[j]);
+    i++;
+    j++;
+    while (s[j])
+    {
+        if (s[j] == ' ' || s[j] == '-' || s[j] == '_'){
+            cs[i] = (char)std::toupper(s[j+1]);
+            j++;
+        }
+        else{
+            cs[i] = s[j];
+        }
+        i++;
+        j++;
+    }
+    return cs;
 }
 
 
@@ -1180,8 +1193,8 @@ std::string translator::translate_special_get(const lk_string &name) {
     }
 }
 
-bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &result, unsigned int flags,
-                           unsigned int &ctl_id) {
+bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &result, unsigned int flags, unsigned int &ctl_id,
+                           std::string output_name) {
     using namespace lk;
     if (!root) return true;
 
@@ -1195,8 +1208,11 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
         for (size_t i = 0; i < n1->items.size() && ctl_id == CTL_NONE; i++)
         {
             std::string statement;
-            translate(n1->items[i], cur_env, statement, flags, ctl_id);
-            result += statement + ";\n";
+            translate(n1->items[i], cur_env, statement, flags, ctl_id, output_name);
+            result += statement;
+            if(result.back() != ';' && result.back() != '}')
+                result += ";";
+            result += "\n";
         }
 
         return ok;
@@ -1204,10 +1220,10 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
     else if (iter_t *n2 = dynamic_cast<iter_t*>(root))
     {
         std::string init, test, adv, block;
-        translate(n2->init, cur_env, init, flags, ctl_id);
-        translate(n2->test, cur_env, test, flags, ctl_id);
-        translate(n2->adv, cur_env, adv, flags, ctl_id);
-        translate(n2->block, cur_env, result, flags, ctl_id);
+        translate(n2->init, cur_env, init, flags, ctl_id, output_name);
+        translate(n2->test, cur_env, test, flags, ctl_id, output_name);
+        translate(n2->adv, cur_env, adv, flags, ctl_id, output_name);
+        translate(n2->block, cur_env, result, flags, ctl_id, output_name);
 
         result += "for ( " + init + "; " + test + "; " + adv + " ){\n";
         result += indent(block) + "\n}\n";
@@ -1216,18 +1232,22 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
     }
     else if (cond_t *n3 = dynamic_cast<cond_t*>(root))
     {
-        std::string test;
-        translate(n3->test, cur_env, test, flags, ctl_id);
+        std::string test, ontrue, onfalse;
+        translate(n3->test, cur_env, test, flags, ctl_id, output_name);
 
         result += "if ( " + test + " ) {\n";
 
-        translate(n3->on_true, cur_env, test, flags, ctl_id);
+        translate(n3->on_true, cur_env, ontrue, flags, ctl_id, output_name);
 
-        result += "\t" + test + "\n}\nelse{\n";
+        result += "\t" + ontrue + "\n}";
 
-        translate(n3->on_false, cur_env, test, flags, ctl_id);
+        if (n3->on_false){
+            result += "\nelse{\n";
 
-        result += "\t" + test + "\n}\n";
+            translate(n3->on_false, cur_env, onfalse, flags, ctl_id, output_name);
+
+            result += "\t" + onfalse + "\n}\n";
+        }
     }
     else if (expr_t *n4 = dynamic_cast<expr_t*>(root))
     {
@@ -1239,23 +1259,23 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
 
             switch (n4->oper) {
                 case expr_t::PLUS:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " + " + r;
                     return ok;
                 case expr_t::MINUS:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " - " + r;
                     return ok;
                 case expr_t::MULT:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " * " + r;
                     return ok;
                 case expr_t::DIV:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " / " + r;
                     return ok;
 
@@ -1285,8 +1305,8 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                     return false;
 
                 case expr_t::MINUSAT:
-                    translate(n4->right, cur_env, r, flags, ctl_id);
-                    translate(n4->left, cur_env, l, flags, ctl_id);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
 
 //                    if (l.deref().type() == vardata_t::HASH)
 //                    {
@@ -1314,11 +1334,11 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
 //                    return true;
 
                 case expr_t::INCR:
-                    translate(n4->left, cur_env, l, flags | ENV_MUTABLE, ctl_id);
+                    translate(n4->left, cur_env, l, flags | ENV_MUTABLE, ctl_id, output_name);
                     result += l + " += 1";
                     return ok;
                 case expr_t::DECR:
-                    translate(n4->left, cur_env, l, flags | ENV_MUTABLE, ctl_id);
+                    translate(n4->left, cur_env, l, flags | ENV_MUTABLE, ctl_id, output_name);
                     result += l + " -= 1";
                     return ok;
                 case expr_t::DEFINE:
@@ -1329,7 +1349,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
 
 
                     // evaluate expression before the lhs identifier
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
 
                     // if on the LHS of the assignment we have a special variable i.e. ${xy}, use a
                     // hack to assign the value to the storage location
@@ -1340,66 +1360,66 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                         }
 
                     // otherwise evaluate the LHS in a mutable context, as normal.
-                    translate(n4->left, cur_env, l, flags | ENV_MUTABLE, ctl_id);
+                    translate(n4->left, cur_env, l, flags | ENV_MUTABLE, ctl_id, output_name);
                     result += l + " = " + r;
 
                     return ok;
                 case expr_t::LOGIOR:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " || " + r;
                     return ok;
                 case expr_t::LOGIAND:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " && " + r;
                     return ok;
                 case expr_t::NOT:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
                     result += "!" + l;
                     return ok;
                 case expr_t::EQ:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " == " + r;
                     return ok;
                 case expr_t::NE:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " != " + r;
                     return ok;
                 case expr_t::LT:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " < " + r;
                     return ok;
                 case expr_t::LE:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " <= " + r;
                     return ok;
                 case expr_t::GT:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " > " + r;
                     return ok;
                 case expr_t::GE:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += l + " >= " + r;
                     return ok;
                 case expr_t::EXP:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
                     result += "pow( " + l + ", " + r + " )";
                     return ok;
                 case expr_t::NEG:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
                     result += "( " + l + " * -1 )";
                     return ok;
                 case expr_t::WHEREAT:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
-                    translate(n4->right, cur_env, r, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_name);
 
                     interpret(n4->left, cur_env, vd_l, flags, ctl_id);
 
@@ -1426,7 +1446,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                 {
                     interpret(n4->left, cur_env, vd_l, flags, ctl_id);
 
-                    translate(n4->left, cur_env, l, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
 
 
                     bool anonymous = (vd_l.type() == vardata_t::VECTOR);
@@ -1439,7 +1459,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                         return false;
                     }
 
-                    translate(n4->right, cur_env, r, 0, ctl_id);
+                    translate(n4->right, cur_env, r, 0, ctl_id, output_name);
 
 //                    if ((flags&ENV_MUTABLE) && (arr.type() != vardata_t::VECTOR || arr.length() <= idx))
 //                        arr.resize(idx + 1);
@@ -1500,7 +1520,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                                 {
                                     std::string argval;
                                     unsigned int c = 0;
-                                    ok = ok && translate(argvals->items[iarg], cur_env, argval, flags, c);
+                                    ok = ok && translate(argvals->items[iarg], cur_env, argval, flags, c, output_name);
                                     result += argval;
                                     if (iarg != nargs-1)
                                         result += "; ";
@@ -1510,7 +1530,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                         }
                     }
 
-                    translate(n4->left, cur_env, l, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
                     vardata_t vd_t;
                     expr_t *define = dynamic_cast<expr_t*>(vd_t.deref().func());
                     if (!define)
@@ -1530,7 +1550,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                 }
                     break;
                 case expr_t::SIZEOF:
-                    translate(n4->left, cur_env, l, flags, ctl_id);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_name);
 
                     interpret(n4->left, cur_env, vd_l, flags, ctl_id);
                     if (vd_l.deref().type() == vardata_t::VECTOR)
@@ -1622,7 +1642,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                         for (size_t i = 0; i < p->items.size(); i++)
                         {
                             std::string v;
-                            translate(p->items[i], cur_env, v, flags, ctl_id);
+                            translate(p->items[i], cur_env, v, flags, ctl_id, output_name);
                             if (i != p->items.size()-1)
                                 result += ", ";
                         }
@@ -1667,7 +1687,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
 
                     // get the switch variable as an argument
                     std::string switchval, case_block;
-                    translate(n4->left, cur_env, switchval, flags, ctl_id);
+                    translate(n4->left, cur_env, switchval, flags, ctl_id, output_name);
                     aux_fx.args.push_back("int " + switchval);
 
                     list_t *p = dynamic_cast<list_t*>(n4->right);
@@ -1684,7 +1704,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                     }
 
                     // get name
-                    aux_fx.name = "switch_by_" + switchval + "_" + format_as_code(ui_form_name);
+                    aux_fx.name = "switch_by_" + switchval + "_" + format_as_symbol(ui_form_name);
                     // register the auxiliary function
                     while (aux_functions.find(aux_fx.name) != aux_functions.end()){
                         aux_fx.name += "0";
@@ -1696,7 +1716,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                     aux_fx.block += "switch( " + switchval + " ){\n";
                     for (size_t i = 0; i < p->items.size(); i++){
                         aux_fx.block += "\tcase " + std::to_string(i) + ":\n";
-                        translate(p->items[i], cur_env, case_block, flags, ctl_id);
+                        translate(p->items[i], cur_env, case_block, flags, ctl_id, output_name);
                         aux_fx.block += "\t\t" + var + " = "+ case_block + ";\n";
                         aux_fx.block += "\t\tbreak;\n";
                         case_block.clear();
@@ -1731,23 +1751,27 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                     if (n5->rexpr != 0)
                     {
                         std::string s;
-                        translate(n5->rexpr, cur_env, s, flags, ctl_id);
+                        translate(n5->rexpr, cur_env, s, flags, ctl_id, output_name);
 
-                        result += "return " + s + ";";
+                        result += "return " + s;
+
 //                        result.copy(l.deref());
                     }
-                    ctl_id = CTL_RETURN;
+//                    ctl_id = CTL_RETURN;
                     return ok;
                 case ctlstmt_t::EXIT:
-                    ctl_id = CTL_EXIT;
+//                    ctl_id = CTL_EXIT;
+                    result += "exit();\n";
                     return true;
                     break;
                 case ctlstmt_t::BREAK:
-                    ctl_id = CTL_BREAK;
+//                    ctl_id = CTL_BREAK;
+                    result += "break;\n";
                     return true;
                     break;
                 case ctlstmt_t::CONTINUE:
-                    ctl_id = CTL_CONTINUE;
+//                    ctl_id = CTL_CONTINUE;
+                    result += "continue;\n";
                     return true;
                     break;
             }

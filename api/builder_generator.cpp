@@ -12,7 +12,20 @@
 #include "ui_form_extractor.h"
 
 #include "builder_generator.h"
+#include "builder_generator_info.h"
 
+std::unordered_map<std::string, std::vector<std::string>> builder_generator::m_config_to_modules
+    = std::unordered_map<std::string, std::vector<std::string>>();
+
+builder_generator::builder_generator(config_extractor *ce){
+    config_ext = ce;
+    config_name = config_ext->get_name();
+    graph = config_ext->get_variable_graph();
+    subgraph = new digraph(config_name);
+    graph->subgraph_ssc_only(*subgraph);
+    config_symbol = format_as_symbol(config_name);
+    load_cmods();
+}
 
 void builder_generator::load_cmods(){
     auto cmods = SAM_config_to_primary_modules[active_config];
@@ -21,16 +34,6 @@ void builder_generator::load_cmods(){
         ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
         ssc_module_objects.insert({cmod_name, p_mod});
     }
-}
-
-builder_generator::builder_generator(config_extractor *ce){
-    config_ext = ce;
-    config_name = config_ext->get_name();
-    graph = config_ext->get_variable_graph();
-    subgraph = new digraph(config_name);
-    graph->subgraph_ssc_only(*subgraph);
-    symbol_name = format_as_code(config_name);
-    load_cmods();
 }
 
 enum{
@@ -60,7 +63,8 @@ bool builder_generator::ssc_var_user_defined(std::string var_name){
         return false;
     if (vertex* v = subgraph->find_vertex(var_name, true)){
         // not user defined unless it's a source node
-        if (get_vertex_type(v) != SOURCE)
+        int type = get_vertex_type(v);
+        if (type != SOURCE && type != ISOLATED)
             return false;
     }
     return true;
@@ -89,14 +93,15 @@ void builder_generator::gather_variables(){
             // add the ui form variables into a group based on the sidebar title
             std::string group_name = pg_info[p].sidebar_title
                     + (pg_info[p].exclusive_uiforms.size() > 0 ? "Common" : "");
-            modules.insert({group_name, std::map<std::string, vertex*>()});
+            std::map<std::string, vertex*> map;
+            modules.insert({group_name, map});
             modules_order.push_back(group_name);
-            std::map<std::string, vertex*>& var_map = modules.find(group_name)->second;
+            std::map<std::string, vertex*>* var_map = &(modules.find(group_name)->second);
 
             for (size_t i = 0; i < pg_info[p].common_uiforms.size(); i++) {
                 // add all the variables and associate their VarValue with the vertex
                 std::string ui_name = pg_info[p].common_uiforms[i];
-                select_ui_variables(ui_name, var_map);
+                select_ui_variables(ui_name, *var_map);
             }
         }
 
@@ -113,51 +118,127 @@ void builder_generator::gather_variables(){
             select_ui_variables(ui_name, var_map);
         }
     }
+
+    // add modules and inputs that are not in UI
+    std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config_name];
+
+    for (size_t i = 0; i < primary_cmods.size(); i++) {
+        std::string cmod_name = primary_cmods[i];
+        std::vector<std::string> map = cmod_to_extra_modules[cmod_name];
+        for (size_t j = 0; j < map.size(); j++){
+            std::string module_name = map[j];
+            // add the module
+            modules.insert({module_name, std::map<std::string, vertex*>()});
+            modules_order.push_back(module_name);
+        }
+
+        // add an extra "common" module to catch unsorted variables
+        modules.insert({"Common", std::map<std::string, vertex*>()});
+        modules_order.push_back("Common");
+
+        // go through all the ssc variables and make sure they are in the graph and in modules
+        std::vector<std::string> all_ssc = SAM_cmod_to_inputs[cmod_name];
+        for (size_t j = 0; j < all_ssc.size(); j++){
+            std::string var = all_ssc[j];
+            vertex* v = graph->find_vertex(var, true);
+            if (!v){
+                std::string md = find_module_of_var(var, cmod_name);
+                // if it belongs to a module
+                v = graph->add_vertex(var, true);
+                if (md.length() != 0){
+                    modules.find(md)->second.insert({var, v});
+                }
+                // add it to "common"
+                else{
+                    modules.find("Common")->second.insert({var, v});
+                }
+            }
+        }
+    }
+
+    m_config_to_modules.insert({config_name, modules_order});
 }
 
-std::string get_parameter_type(vertex* v){
+std::string builder_generator::get_parameter_type(vertex *v, std::string cmod) {
+    // try to get from defaults
     VarValue* vv = find_default_from_ui(v->name, active_config);
-    assert(vv);
-    int data_type = vv->Type();
+    if(vv){
+        switch(vv->Type()) {
+            case VV_INVALID:
+                return "/* INVALID INPUT */";
+            case VV_BINARY:
+                return "/* NOT IMPLEMENTED: binary input */";
+            case VV_TABLE:
+                return "ssc_data_t table";
+            case VV_STRING:
+                return "const char* string";
+            case VV_MATRIX:
+                return "float* matrix, int nr, int nc";
+            case VV_ARRAY:
+                return "float* array, int length";
+            case VV_NUMBER:
+                return "float number";
+        }
+    }
+    // otherwise get from ssc var info
+    int ind = (int)SAM_cmod_to_ssc_index[cmod][v->name];
+    ssc_info_t mod_info = ssc_module_var_info(ssc_module_objects[cmod], ind);
+    assert(mod_info);
 
-    switch(data_type) {
-        case VV_INVALID:
-            return "/* INVALID INPUT */";
-        case VV_BINARY:
-            return "/* NOT IMPLEMENTED: binary input */";
-        case VV_TABLE:
-            return "ssc_data_t table";
-        case VV_STRING:
+    switch(ssc_info_data_type(mod_info)) {
+        case SSC_STRING:
             return "const char* string";
-        case VV_MATRIX:
+        case SSC_MATRIX:
             return "float* matrix, int nr, int nc";
-        case VV_ARRAY:
+        case SSC_ARRAY:
             return "float* array, int length";
-        case VV_NUMBER:
+        case SSC_NUMBER:
             return "float number";
+        case SSC_TABLE:
+            return "var_table vt";
+        default:
+            return "ERROR";
     }
 }
 
-std::string get_return_type(vertex* v){
+std::string builder_generator::get_return_type(vertex *v, std::string cmod) {
     VarValue* vv = find_default_from_ui(v->name, active_config);
-    assert(vv);
-    int data_type = vv->Type();
+    if (vv){
+        switch(vv->Type()) {
+            case VV_INVALID:
+                return "/* INVALID INPUT */";
+            case VV_BINARY:
+                return "/* NOT IMPLEMENTED: binary input */";
+            case VV_TABLE:
+                return "ssc_data_t";
+            case VV_STRING:
+                return "const char*";
+            case VV_MATRIX:
+                return "float*";
+            case VV_ARRAY:
+                return "float*";
+            case VV_NUMBER:
+                return "float";
+        }
+    }
+    // otherwise get from ssc var info
+    int ind = (int)SAM_cmod_to_ssc_index[cmod][v->name];
+    ssc_info_t mod_info = ssc_module_var_info(ssc_module_objects[cmod], ind);
+    assert(mod_info);
 
-    switch(data_type) {
-        case VV_INVALID:
-            return "/* INVALID INPUT */";
-        case VV_BINARY:
-            return "/* NOT IMPLEMENTED: binary input */";
-        case VV_TABLE:
-            return "ssc_data_t";
-        case VV_STRING:
+    switch(ssc_info_data_type(mod_info)) {
+        case SSC_STRING:
             return "const char*";
-        case VV_MATRIX:
+        case SSC_MATRIX:
             return "float*";
-        case VV_ARRAY:
+        case SSC_ARRAY:
             return "float*";
-        case VV_NUMBER:
+        case SSC_NUMBER:
             return "float";
+        case SSC_TABLE:
+            return "var_table";
+        default:
+            return "ERROR";
     }
 }
 
@@ -188,48 +269,40 @@ std::string spell_type(int type){
     }
 }
 
-void builder_generator::create_api_functions(std::string module){
-    std::ofstream fx_file;
-    std::string module_symbol = format_as_code(module);
-    fx_file.open(filepath + "/" + module_symbol + ".h");
-    assert(fx_file.is_open());
+void builder_generator::create_builder_headers(std::string cmod_name, std::string module, std::ofstream &fx_file) {
+    std::string module_symbol = format_as_symbol(module);
 
-    fx_file << "#ifndef SAM_" << util::upper_case(module_symbol) << "_FUNCTIONS_H_\n";
-    fx_file << "#define SAM_" << util::upper_case(module_symbol) << "_FUNCTIONS_H_\n\n";
-    fx_file << "#include \"" << symbol_name << "-data.h\"\n\n";
-
-    const char* includes = "#ifdef __cplusplus\n"
-                           "extern \"C\"\n"
-                           "{\n"
-                           "#endif\n\n";
-
-    fx_file << includes;
-
-    std::string sig = "SAM_" + symbol_name + "_" + module_symbol;
+    std::string sig = "SAM_" + format_as_symbol(cmod_name) + "_" + module_symbol;
 
     // create the module-specific var_table wrapper
 
-    fx_file << "/** \n";
-    fx_file << " * Create a " << module_symbol << " variable table for a " << symbol_name << " system\n";
-    fx_file << " * @param def: the set of financial model-dependent defaults to use (None, Residential, ...)\n";
-    fx_file << " * @param[in,out] err: a pointer to an error object\n";
-    fx_file << " */\n\n";
+    fx_file << "\t/** \n";
+    fx_file << "\t * Create a " << module_symbol << " variable table for a " << config_symbol << " system\n";
+    fx_file << "\t * @param def: the set of financial model-dependent defaults to use (None, Residential, ...)\n";
+    fx_file << "\t * @param[in,out] err: a pointer to an error object\n";
+    fx_file << "\t */\n";
 
-    export_function_declaration(fx_file, sig, sig + "_Create", {"const char* def"});
+    export_function_declaration(fx_file, sig, sig + "_create", {"const char* def"});
 
+    fx_file << "\n";
 
+    // setters
+    std::map<std::string, vertex*> ssc_vars = modules[module];
+    std::vector<vertex*> interface_vertices;
+    for (auto it = ssc_vars.begin(); it != ssc_vars.end(); ++it){
+        std::string var_name = it->first;
 
-    // setter
-    std::map<std::string, vertex*> map = modules.find(module)->second;
-    for (auto it = map.begin(); it != map.end(); ++it){
-        std::string var_symbol = sig + "_" + it->first;
         vertex* v = it->second;
 
-        int ind = (int)SAM_cmod_to_ssc_index[v->cmod][v->name];
-        ssc_info_t mod_info = ssc_module_var_info(ssc_module_objects[v->cmod], ind);
+        interface_vertices.push_back(v);
+
+        std::string var_symbol = sig + "_" + var_name;
+
+        int ind = (int)SAM_cmod_to_ssc_index[cmod_name][var_name];
+        ssc_info_t mod_info = ssc_module_var_info(ssc_module_objects[cmod_name], ind);
 
         fx_file << "\t/**\n";
-        fx_file << "\t * Set " << it->first << ": " << ssc_info_label(mod_info) << "\n";
+        fx_file << "\t * Set " << var_name << ": " << ssc_info_label(mod_info) << "\n";
         fx_file << "\t * type: " << spell_type(ssc_info_data_type(mod_info)) << "\n";
         fx_file << "\t * units: ";
         std::string units_str = ssc_info_units(mod_info);
@@ -260,33 +333,31 @@ void builder_generator::create_api_functions(std::string module){
             fx_file << "None\n";
         fx_file << "\t */\n";
 
-        export_function_declaration(fx_file, "void", var_symbol + "_Set", {sig + "ptr", get_parameter_type(v)});
-
-    }
-    for (auto it = map.begin(); it != map.end(); ++it){
-        std::string var_symbol = sig + "_" + it->first;
-        vertex* v = it->second;
-
-        // getter
-        export_function_declaration(fx_file, get_return_type(v), var_symbol+"_Get", {sig + "ptr"});
+        export_function_declaration(fx_file, "void", var_symbol + "_set", {sig + " ptr",
+                                                                           get_parameter_type(v, cmod_name)});
     }
 
-    const char* footer = "#ifdef __cplusplus\n"
-                         "} /* end of extern \"C\" { */\n"
-                         "#endif\n\n"
-                         "#endif";
+    // getters
+    fx_file << "\n\t/**\n";
+    fx_file << "\t * Getters\n\t */\n\n";
 
-    fx_file << footer;
-    fx_file.close();
+    for (size_t i = 0; i < interface_vertices.size(); i++){
+        vertex* v = interface_vertices[i];
+        std::string var_symbol = sig + "_" + v->name;
+
+        export_function_declaration(fx_file, get_return_type(v, cmod_name), var_symbol + "_get", {sig + " ptr"});
+    }
 }
 
-void builder_generator::create_api_data(){
+void builder_generator::create_api_data(std::string cmod_name) {
+    std::string cmod_symbol = format_as_symbol(cmod_name);
+
     std::ofstream data_file;
-    data_file.open(filepath + "/" +  symbol_name + "-data.h");
+    data_file.open(filepath + "/" +  cmod_symbol + "-data.h");
     assert(data_file.is_open());
 
-    data_file << "#ifndef SAM_" << util::upper_case(symbol_name) << "_DATA_H_\n";
-    data_file << "#define SAM_" << util::upper_case(symbol_name) << "_DATA_H_\n\n";
+    data_file << "#ifndef SAM_" << util::upper_case(cmod_symbol) << "_DATA_H_\n";
+    data_file << "#define SAM_" << util::upper_case(cmod_symbol) << "_DATA_H_\n\n";
 
     const char* includes = "#include <stdint.h>\n"
                            "#ifdef __cplusplus\n"
@@ -296,7 +367,7 @@ void builder_generator::create_api_data(){
 
     data_file << includes;
 
-    std::string sig = "\ttypedef void * SAM_" + symbol_name ;
+    std::string sig = "\ttypedef void * SAM_" + cmod_symbol ;
 
     // declaration of technology system
     data_file << "\t /** Technology module object */\n";
@@ -304,31 +375,38 @@ void builder_generator::create_api_data(){
 
     sig = sig + "_";
 
-    // declaration of modules and submodules
-    create_definitions();
-    for (size_t i = 0; i < modules_order.size(); i++){
-        std::string module_name = modules_order[i];
-        data_file << "\t /** " << module_name << " */\n";
-        data_file << sig << format_as_code(module_name) << ";\n";
-        create_api_functions(module_name);
-    }
+    // print out the equation and callbacks for the cmod
+    create_builder_definitions(cmod_name);
 
-    const char* error_obj = "\n"
-                            "\t/** SAM error object\n"
-                            "\t *\n"
-                            "\t * if error_code != 0, there is an error\n"
-                            "\t */\n"
-                            "\ttypedef struct SAM_error{\n"
-                            "\t\tint32_t error_code;\n"
-                            "\t\tconst char* message;\n"
-                            "\t} SAM_error;\n\n";
+    // declaration of modules and submodules by group
+    std::ofstream fx_file;
+    fx_file.open(filepath + "/" + cmod_symbol + "-builder.h");
+    assert(fx_file.is_open());
+
+    fx_file << "#ifndef SAM_" << util::upper_case(cmod_symbol) << "_FUNCTIONS_H_\n";
+    fx_file << "#define SAM_" << util::upper_case(cmod_symbol) << "_FUNCTIONS_H_\n\n";
+    fx_file << "#include \"" << cmod_symbol << "-data.h\"\n\n";
+
+    fx_file << includes;
+
+    for (size_t i = 0; i < modules_order.size(); i++){
+        assert(modules[modules_order[i]].size() > 0);
+        std::string module_name = modules_order[i];
+        fx_file << "\t /** " << module_name << " */\n";
+        fx_file << sig << format_as_symbol(module_name) << ";\n\n";
+        create_builder_headers(cmod_name, module_name, fx_file);
+        fx_file << "\n\n";
+    }
 
     const char* footer = "#ifdef __cplusplus\n"
                          "} /* end of extern \"C\" { */\n"
                          "#endif\n\n"
                          "#endif";
 
-    data_file << error_obj << footer;
+    fx_file << footer;
+    fx_file.close();
+
+    data_file << footer;
     data_file.close();
 }
 
@@ -372,23 +450,18 @@ bool builder_generator::eqn_in_subgraph(equation_info eq){
     return true;
 }
 
-void builder_generator::create_definitions() {
+void builder_generator::create_builder_definitions(std::string cmod_name) {
     std::ofstream fx_file;
-    fx_file.open(filepath + "/" +  symbol_name + ".cpp");
+    std::string cmod_symbol = format_as_symbol(cmod_name);
+
+    fx_file.open(filepath + "/" +  cmod_symbol + "-builder.cpp");
     assert(fx_file.is_open());
 
 
-    fx_file << "#include \"" << symbol_name << "-data.h\"\n\n";
+    fx_file << "#include \"" << cmod_symbol << "-data.h\"\n\n";
+    fx_file << "#include \"" << cmod_symbol << "-builder.h\"\n\n";
 
-
-    const char* includes = "#ifdef __cplusplus\n"
-                           "extern \"C\"\n"
-                           "{\n"
-                           "#endif\n\n";
-
-    fx_file << includes;
-
-    std::string sig = "SAM_" + symbol_name;
+    std::string sig = "SAM_" + cmod_symbol;
 
 
     int n = 0;
@@ -403,7 +476,7 @@ void builder_generator::create_definitions() {
                 if (i == 2 & j == 10 && sig == "SAM_MSPT"){
                     std::cout << "stop here";
                 }
-                ui_extractor->translate_to_cplusplus(eq_info, fx_file);
+                ui_extractor->translate_to_cplusplus(eq_info, fx_file, config_name );
                 fx_file << "\n\n";
 
                 n+=1;
@@ -414,13 +487,26 @@ void builder_generator::create_definitions() {
     fx_file.close();
 }
 
-void builder_generator::generate_interface(std::string fp) {
+void builder_generator::create_interface(std::string fp) {
     filepath = fp;
     gather_variables();
-    create_api_data();
 
+    std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config_name];
 
+    for (size_t i = 0; i < primary_cmods.size(); i++) {
 
+        create_api_data(primary_cmods[i]);
+    }
+
+    const char* error_obj = "\n"
+                            "\t/** SAM error object\n"
+                            "\t *\n"
+                            "\t * if error_code != 0, there is an error\n"
+                            "\t */\n"
+                            "\ttypedef struct SAM_error{\n"
+                            "\t\tint32_t error_code;\n"
+                            "\t\tconst char* message;\n"
+                            "\t} SAM_error;\n\n";
 
     auto udv = get_user_defined_variables();
 

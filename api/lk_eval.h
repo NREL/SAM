@@ -42,7 +42,7 @@ struct function_builder{
 
 std::string indent(std::string s, size_t n = 1);
 
-std::string format_as_code(std::string s);
+std::string format_as_symbol(std::string s);
 
 class translator : public lk::eval{
 private:
@@ -69,8 +69,8 @@ private:
 public:
     translator(lk::node_t *tree, lk::env_t* env):lk::eval(tree, env){}
 
-    bool translate(lk::node_t *root, lk::env_t *cur_env, std::string &result, unsigned int flags,
-                   unsigned int &ctl_id);
+    bool translate(lk::node_t *root, lk::env_t *cur_env, std::string &result, unsigned int flags, unsigned int &ctl_id,
+                       std::string output_name);
 
     virtual bool special_set( const lk_string &name, lk::vardata_t &val );
 

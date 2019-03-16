@@ -32,12 +32,23 @@ public:
     std::string expression;
     lk::node_t* root;
 
+    edge(){}
+
     edge(vertex* v_src, vertex* v_dest, int t, std::string obj = "", std::string expr = "") {
         src = v_src;
         dest = v_dest;
         type = t;
         obj_name = obj;
         expression = expr;
+    }
+
+    edge( const edge &obj){
+        type = obj.type;
+        obj_name = obj.obj_name;
+        src = obj.src;
+        dest = obj.dest;
+        expression = obj.expression;
+        root = obj.root;
     }
 };
 
@@ -51,9 +62,20 @@ public:
     bool is_ssc_var;    // is an input to primary compute module
     std::string cmod;
 
+    vertex(){}
+
     vertex(std::string n, bool is_ssc){
         name = n;
         is_ssc_var = is_ssc;
+    }
+
+    vertex( const vertex &obj){
+        name = obj.name;
+        ui_form = obj.ui_form;
+        is_ssc_var = obj.is_ssc_var;
+        cmod = obj.cmod;
+        edges_out = obj.edges_out;
+        edges_in = obj.edges_in;
     }
 
     edge* get_edge_out_to(vertex* dest){

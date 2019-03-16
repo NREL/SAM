@@ -1,6 +1,8 @@
 #ifndef SYSTEM_ADVISOR_MODEL_LK_ENV_H
 #define SYSTEM_ADVISOR_MODEL_LK_ENV_H
 
+#include <fstream>
+
 #include <lk/absyn.h>
 #include <lk/parse.h>
 #include <lk/eval.h>
@@ -468,6 +470,18 @@ static void _html_dialog(lk::invoke_t &cxt){
     LK_DOC("html_dialog", "Do nothing.", "(string:html source, [string:title], [array:window size [w,h] or geometry [x,y,w,h]]):none");
 }
 
+static void _librarygetcurrentselection(lk::invoke_t &cxt){
+    LK_DOC("librarygetcurrentselection", "Do nothing.", "");
+    cxt.result().assign("");
+}
+
+static void fcall_userlocaldatadir( lk::invoke_t &cxt )
+{
+    LK_DOC("userlocaldatadir", "Nothing", "(none):string");
+    cxt.result().assign( "");
+}
+
+
 /**
  *
  * These versions of lk functions are used to export a map of ui to ssc variables.
@@ -521,6 +535,8 @@ static lk::fcall_t* invoke_casecallback_funcs()
             fcall_substance_density,
             fcall_snlinverter,
             _html_dialog,
+            _librarygetcurrentselection,
+            fcall_userlocaldatadir,
             0 };
     return (lk::fcall_t*)vec;
 }
