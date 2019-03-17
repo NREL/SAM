@@ -23,18 +23,14 @@ private:
 
     static std::unordered_map<std::string, std::vector<std::string>> m_config_to_modules;
 
-    /// create cmod objects to access variable information
-    void load_cmods();
 
     bool ssc_var_user_defined(std::string var_name);
 
     void select_ui_variables(std::string ui_name, std::map<std::string, vertex*>& var_map);
 
-    std::string get_parameter_type(vertex *v, std::string cmod);
-
-    std::string get_return_type(vertex *v, std::string cmod);
-
     void gather_variables();
+
+    void export_variables_json();
 
     void create_builder_headers(std::string cmod_name, std::string module, std::ofstream &of);
 

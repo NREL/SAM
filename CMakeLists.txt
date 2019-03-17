@@ -8,7 +8,7 @@ if(MSVC)
 	set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Debug and Release Builds Configured" FORCE)
 endif()
 
-add_subdirectory(generate_api)
+add_subdirectory(api_autogen)
 add_subdirectory(api)
 
 Project(sam)

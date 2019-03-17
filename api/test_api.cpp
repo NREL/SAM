@@ -10,7 +10,7 @@
 void create(){
     GenericSystem system = GenericSystem();
 
-    system.PowerPlant.set_derate(10.f);
+//    system.PowerPlant.set_derate(10.f);
 
     std::cout << system.PowerPlant.get_derate();
 
@@ -19,21 +19,14 @@ void create(){
     std::cout << system.PowerPlant.get_conv_eff();
 }
 
-void ssc(){
-    ssc_data_t data = ssc_data_create();
-    ssc_data_set_number(data, "derate", 1.f);
-    float f;
-    ssc_data_get_number(data, "derate", &f);
-    ssc_data_free(data);
-}
-
 int main(int argc, char *argv[]){
 
-    create();
-//    ssc();
-
-
-
+    try {
+        create();
+    } catch (const std::exception& e) {
+        std::cerr << "Error during poll: " << e.what() << std::endl;
+        return 1;
+    }
 
 
 

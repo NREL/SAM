@@ -30,12 +30,20 @@ set(SAM_SOURCES
         ../src/equations.cpp)
 
 add_executable(export_config
+        ${SAM_SOURCES}
         export_config.cpp export_config.h
         startup_extractor.cpp startup_extractor.h
         ui_form_extractor.cpp ui_form_extractor.h
         equation_extractor.cpp equation_extractor.h
-        ${SAM_SOURCES}
-        lk_env.h data_structures.h config_extractor.cpp config_extractor.h callback_extractor.cpp callback_extractor.h data_structures.cpp variable_graph.cpp variable_graph.h test.cpp test.h builder_generator.h builder_generator.cpp lk_eval.cpp lk_eval.h builder_generator_info.h)
+        lk_env.h
+        data_structures.cpp data_structures.h
+        config_extractor.cpp config_extractor.h
+        callback_extractor.cpp callback_extractor.h
+         variable_graph.cpp variable_graph.h
+        test.cpp test.h
+        builder_generator.h builder_generator.cpp
+        lk_eval.cpp lk_eval.h
+        builder_generator_helper.h )
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

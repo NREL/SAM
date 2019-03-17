@@ -48,7 +48,7 @@ float SAM_GenericSystem_PowerPlant_conv_eff_eval(SAM_GenericSystem ptr, SAM_erro
     float result = 0.f;
     translateExceptions(err, [&]{
         var_table* vt = static_cast<var_table*>(ptr);
-        result = PowerPlant_conv_eff_eqn(vt);
+        result = GenericSystem_conv_eff_eqn(vt);
     });
     return result;
 }
@@ -57,7 +57,11 @@ SAM_EXPORT float SAM_GenericSystem_PowerPlant_derate_get(SAM_GenericSystem ptr, 
     float result;
     translateExceptions(err, [&]{
         var_table* vt = static_cast<var_table*>(ptr);
-        result = vt->lookup("derate")->num;
+        if (var_data* v = vt->lookup("derate")){
+            result = v->num;
+        }
+        else
+            make_access_error("SAM_GenericSystem", "derate");
     });
     return result;
 }

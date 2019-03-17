@@ -12,7 +12,7 @@
 #include "ui_form_extractor.h"
 
 #include "builder_generator.h"
-#include "builder_generator_info.h"
+#include "builder_generator_helper.h"
 
 std::unordered_map<std::string, std::vector<std::string>> builder_generator::m_config_to_modules
     = std::unordered_map<std::string, std::vector<std::string>>();
@@ -24,17 +24,17 @@ builder_generator::builder_generator(config_extractor *ce){
     subgraph = new digraph(config_name);
     graph->subgraph_ssc_only(*subgraph);
     config_symbol = format_as_symbol(config_name);
-    load_cmods();
-}
 
-void builder_generator::load_cmods(){
+    // load all cmod variables for this configuration and save the ssc types to the vertices
     auto cmods = SAM_config_to_primary_modules[active_config];
     for (size_t i = 0; i < cmods.size(); i++){
         std::string cmod_name = cmods[i];
         ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
         ssc_module_objects.insert({cmod_name, p_mod});
+
     }
 }
+
 
 enum{
     SOURCE,
@@ -122,6 +122,7 @@ void builder_generator::gather_variables(){
     // add modules and inputs that are not in UI
     std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config_name];
 
+    // extra modules first such as adjustments factors
     for (size_t i = 0; i < primary_cmods.size(); i++) {
         std::string cmod_name = primary_cmods[i];
         std::vector<std::string> map = cmod_to_extra_modules[cmod_name];
@@ -130,6 +131,15 @@ void builder_generator::gather_variables(){
             // add the module
             modules.insert({module_name, std::map<std::string, vertex*>()});
             modules_order.push_back(module_name);
+
+            // add the variables
+            auto extra_vars = extra_modules_to_members[module_name];
+            auto module_map = modules[module_name];
+            for (size_t k = 0; k < extra_vars.size(); j++){
+                vertex* v = graph->add_vertex(extra_vars[k], true);
+                v->cmod = cmod_name;
+                module_map.insert({extra_vars[k], v});
+            }
         }
 
         // add an extra "common" module to catch unsorted variables
@@ -142,9 +152,11 @@ void builder_generator::gather_variables(){
             std::string var = all_ssc[j];
             vertex* v = graph->find_vertex(var, true);
             if (!v){
+                // see if it belongs to a module
                 std::string md = find_module_of_var(var, cmod_name);
-                // if it belongs to a module
+
                 v = graph->add_vertex(var, true);
+                v->cmod = cmod_name;
                 if (md.length() != 0){
                     modules.find(md)->second.insert({var, v});
                 }
@@ -154,120 +166,72 @@ void builder_generator::gather_variables(){
                 }
             }
         }
+
+        // delete Common if it's empty
+        if (modules["Common"].size() == 0)
+            modules.erase("Common");
     }
 
     m_config_to_modules.insert({config_name, modules_order});
 }
 
-std::string builder_generator::get_parameter_type(vertex *v, std::string cmod) {
-    // try to get from defaults
-    VarValue* vv = find_default_from_ui(v->name, active_config);
-    if(vv){
-        switch(vv->Type()) {
-            case VV_INVALID:
-                return "/* INVALID INPUT */";
-            case VV_BINARY:
-                return "/* NOT IMPLEMENTED: binary input */";
-            case VV_TABLE:
-                return "ssc_data_t table";
-            case VV_STRING:
-                return "const char* string";
-            case VV_MATRIX:
-                return "float* matrix, int nr, int nc";
-            case VV_ARRAY:
-                return "float* array, int length";
-            case VV_NUMBER:
-                return "float number";
+
+void builder_generator::export_variables_json(){
+    std::ofstream json;
+    json.open(filepath + "/defaults/" + config_symbol + ".json");
+    assert(json.is_open());
+
+    json << "{\n";
+    json << "\t\"" + config_symbol + "_defaults\": {\n";
+
+    std::unordered_map<std::string, bool> completed_tables;
+    for (size_t i = 0; i < modules_order.size(); i++){
+        std::string module_name = modules_order[i];
+        json << "\t\t\"" + module_name + "\": {\n";
+        std::cout << "\n";
+
+        std::map<std::string, vertex*>& map = modules.find(module_name)->second;
+        for (auto it = map.begin(); it != map.end(); ++it){
+            std::string var = it->first;
+            vertex* v = it->second;
+
+            int ssc_type = get_ssc_type(v, ssc_module_objects);
+
+            // if it's a table entry, print the whole table rather than single entry
+            if(var.find(":") != std::string::npos){
+                var = var.substr(0, var.find(":"));
+                ssc_type = SSC_TABLE;
+                if (completed_tables.find(var) == completed_tables.end()){
+                    completed_tables.insert({var, true});
+                }
+                else{
+                    continue;
+                }
+            }
+
+            json << "\t\t\t\"" + var + "\": {\n";
+            json << "\t\t\t\t\"type\": \"" << ssc_type << "\",\n";
+            json << "\t\t\t\t\"value\": ";
+
+            VarValue* vv = SAM_config_to_defaults[config_name][var];
+
+            // vv can be null in the case of variables not available in UI
+            json << ssc_value_to_json(ssc_type, vv) << "\n\t\t\t}";
+
+            if (std::next(it) != map.end()) json << ",";
+            json << "\n";
         }
+        json << "\t\t}";
+        if (i != modules_order.size() - 1) json << ",";
+        json << "\n";
     }
-    // otherwise get from ssc var info
-    int ind = (int)SAM_cmod_to_ssc_index[cmod][v->name];
-    ssc_info_t mod_info = ssc_module_var_info(ssc_module_objects[cmod], ind);
-    assert(mod_info);
+    json << "\t}\n}";
 
-    switch(ssc_info_data_type(mod_info)) {
-        case SSC_STRING:
-            return "const char* string";
-        case SSC_MATRIX:
-            return "float* matrix, int nr, int nc";
-        case SSC_ARRAY:
-            return "float* array, int length";
-        case SSC_NUMBER:
-            return "float number";
-        case SSC_TABLE:
-            return "var_table vt";
-        default:
-            return "ERROR";
-    }
+    json.close();
+
 }
 
-std::string builder_generator::get_return_type(vertex *v, std::string cmod) {
-    VarValue* vv = find_default_from_ui(v->name, active_config);
-    if (vv){
-        switch(vv->Type()) {
-            case VV_INVALID:
-                return "/* INVALID INPUT */";
-            case VV_BINARY:
-                return "/* NOT IMPLEMENTED: binary input */";
-            case VV_TABLE:
-                return "ssc_data_t";
-            case VV_STRING:
-                return "const char*";
-            case VV_MATRIX:
-                return "float*";
-            case VV_ARRAY:
-                return "float*";
-            case VV_NUMBER:
-                return "float";
-        }
-    }
-    // otherwise get from ssc var info
-    int ind = (int)SAM_cmod_to_ssc_index[cmod][v->name];
-    ssc_info_t mod_info = ssc_module_var_info(ssc_module_objects[cmod], ind);
-    assert(mod_info);
 
-    switch(ssc_info_data_type(mod_info)) {
-        case SSC_STRING:
-            return "const char*";
-        case SSC_MATRIX:
-            return "float*";
-        case SSC_ARRAY:
-            return "float*";
-        case SSC_NUMBER:
-            return "float";
-        case SSC_TABLE:
-            return "var_table";
-        default:
-            return "ERROR";
-    }
-}
-
-void export_function_declaration(std::ofstream& ff, std::string return_type, std::string name,
-        std::vector<std::string> inputs){
-
-    ff << "\tSAM_EXPORT " << return_type << " " << name << "(";
-    for (size_t i = 0; i < inputs.size(); i++){
-        ff << inputs[i] << ", ";
-    }
-    ff << "SAM_error* err);\n\n";
-}
-
-std::string spell_type(int type){
-    switch(type){
-        case SSC_INVALID:
-            return "invalid";
-        case SSC_STRING:
-            return "string";
-        case SSC_NUMBER:
-            return "numeric";
-        case SSC_ARRAY:
-            return "array";
-        case SSC_MATRIX:
-            return "matrix";
-        case SSC_TABLE:
-            return "table";
-    }
-}
 
 void builder_generator::create_builder_headers(std::string cmod_name, std::string module, std::ofstream &fx_file) {
     std::string module_symbol = format_as_symbol(module);
@@ -334,7 +298,8 @@ void builder_generator::create_builder_headers(std::string cmod_name, std::strin
         fx_file << "\t */\n";
 
         export_function_declaration(fx_file, "void", var_symbol + "_set", {sig + " ptr",
-                                                                           get_parameter_type(v, cmod_name)});
+                                                                           print_parameter_type(v, cmod_name,
+                                                                                                ssc_module_objects)});
     }
 
     // getters
@@ -345,7 +310,7 @@ void builder_generator::create_builder_headers(std::string cmod_name, std::strin
         vertex* v = interface_vertices[i];
         std::string var_symbol = sig + "_" + v->name;
 
-        export_function_declaration(fx_file, get_return_type(v, cmod_name), var_symbol + "_get", {sig + " ptr"});
+        export_function_declaration(fx_file, print_return_type(v, cmod_name, ssc_module_objects), var_symbol + "_get", {sig + " ptr"});
     }
 }
 
@@ -490,6 +455,7 @@ void builder_generator::create_builder_definitions(std::string cmod_name) {
 void builder_generator::create_interface(std::string fp) {
     filepath = fp;
     gather_variables();
+    export_variables_json();
 
     std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config_name];
 
@@ -553,3 +519,4 @@ std::vector<std::string> builder_generator::get_evaluated_variables() {
     }
     return vec;
 }
+
