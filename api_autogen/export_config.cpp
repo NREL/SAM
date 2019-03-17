@@ -69,7 +69,7 @@ int main(int argc, char *argv[]){
         }
 
         // focus on this one
-        if (active_config != "Generic System-None" ){
+        if (active_config != "Flat Plate PV-None" ){
             continue;
         }
 

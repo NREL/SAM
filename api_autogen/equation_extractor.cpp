@@ -92,12 +92,48 @@ bool equation_extractor::translate_to_cplusplus(equation_info &eqn_info, std::of
     translator e( eqn_info.eqn_data->tree, m_env );
     e.set_ui_source(ui_form_name);
 
-    // figure out if single or multiple outputs
-    std::string output_name = "MIMO";
-    if (eqn_info.ui_outputs.size() == 1)
-        output_name = eqn_info.ui_outputs[0];
+    size_t n_outputs = eqn_info.ui_outputs.size();
 
-    // translate eq
+
+    // figure out the return value of the eqn by whether its single or multiple outputs
+    std::string output_name;
+    int type;
+    if (n_outputs == 1){
+        output_name = eqn_info.ui_outputs[0];
+        type = find_default_from_ui(output_name, active_config)->Type();
+    }
+    else{
+        // return MIMOs as table
+        output_name = "vt";
+        type = 5;
+    }
+
+
+    if (output_name == "vt"){
+        std::cout << eqn_info.ui_outputs << "\n";
+    }
+
+
+    // print function signature
+    of << typestr[type] << " ";
+    of << "SAM_" + format_as_symbol(ui_form_name) + "_" + output_name + "_eqn(var_table* vt, lk::invoke_t* cxt){\n";
+
+
+    // set up inputs and outputs variable placeholders
+    of << "\t// inputs\n";
+    for (size_t i = 0; i < eqn_info.ui_inputs.size(); i++){
+        std::string name = eqn_info.ui_inputs[i];
+        of << "\t" << translate_lookup(name, config) << "\n";
+    }
+    of << "\n\t// outputs\n";
+    for (size_t i = 0; i < eqn_info.ui_outputs.size(); i++){
+        std::string name = eqn_info.ui_outputs[i];
+        VarValue* vv = find_default_from_ui(name, config);
+        of << "\t" << typestr[vv->Type()] << " " + name << ";\n\n";
+    }
+
+
+    // translate the equation
     std::string result;
     unsigned int ctl = 0;
     bool ok = e.translate(eqn_info.eqn_data->tree, m_env, result, 0, ctl, output_name);
@@ -109,76 +145,42 @@ bool equation_extractor::translate_to_cplusplus(equation_info &eqn_info, std::of
         return false;
     }
 
-    // print auxiliary functions above
+
+    // print lambda functions and the enclosing function
     auto aux_fx = e.get_aux_functions();
     for (auto it = aux_fx.begin(); it != aux_fx.end(); ++it){
-        function_builder fb = it->second;
-        of << fb.ret_type << " " << fb.name << "(";
-        for (size_t i = 0; i < fb.args.size(); i++){
-            of << fb.args[i];
-            if (i != fb.args.size() - 1)
-                of <<", ";
-        }
-        of << "){\n";
-        of << indent(fb.block);
-        of << "}\n\n";
+        of << indent(it->second) << "\n";
     }
+    of << indent(result) << "\n\n";
 
-    // if single output, return type is set by VarValue, otherwise return a table
-    int type = 5;                   // var_table
-    if (output_name != "MIMO")
-        type = find_default_from_ui(output_name, active_config)->Type();
 
-    // begin equation function
-    of << typestr[type] << " ";
-    of << "SAM_" + format_as_symbol(ui_form_name) + "_" + output_name + "_eqn(var_table* vt, lk::invoke_t* cxt){\n";
-
-    // set up inputs and outputs (if MIMO) variable placeholders
-    of << "\t// inputs\n";
-    for (size_t i = 0; i < eqn_info.ui_inputs.size(); i++){
-        std::string name = eqn_info.ui_inputs[i];
-        of << "\t" << translate_lookup(name, config) << "\n";
-
-    }
-    of << "\n";
-    if (output_name == "MIMO"){
-        of << "\t// outputs\n";
-        for (size_t i = 0; i < eqn_info.ui_outputs.size(); i++){
-            std::string name = eqn_info.ui_outputs[i];
-            VarValue* vv = find_default_from_ui(name, config);
-            of << "\t" << typestr[vv->Type()] << " " + name << ";\n\n";
-        }
-    }
-
-    // translated block
-    of << indent(result);
-
-    // if function has already returned, end definition now
+    // check if function has already returned, then end definition now
     if (result.find("return") != std::string::npos){
         of << "}\n\n";
         return true;
     }
 
-    // set up cxt values for UI
+
+    // copy UI output values into cxt.result()
     of << "\tif (cxt){\n";
-    size_t n = eqn_info.ui_outputs.size();
-    if ( n==1 ){
-        of << "\t\tcxt.result().assign(" + output_name + ");\n";
+    if ( n_outputs == 1 ){
+        of << "\t\tcxt->result().assign(\"" << output_name << "\", " << output_name + ");\n";
     }
     else{
         of << "\t\tcxt->result().empty_hash();\n";
-        for (size_t i = 0; i < n; i++){
+        for (size_t i = 0; i < n_outputs; i++){
             std::string var = eqn_info.ui_outputs[i];
-            of << "\t\tcxt.result().hash_item(\""<< var << "\").assign( \"" << var << "\" );\n";
+            of << "\t\tcxt->result().hash_item(\""<< var << "\", " << var << ");\n";
         }
     }
     of << "\t}\n\n";
 
-    // set up single return value or a table
-    if (n > 1){
+
+    // set up return argument: either a single return value or a table
+    if (n_outputs > 1){
         of << "\tvar_table vt;\n";
         output_name = "vt";
-        for (size_t i = 0; i < n; i++){
+        for (size_t i = 0; i < n_outputs; i++){
             std::string var = eqn_info.ui_outputs[i];
 
             int type = find_default_from_ui(var, config)->Type();
@@ -189,7 +191,10 @@ bool equation_extractor::translate_to_cplusplus(equation_info &eqn_info, std::of
             of << "\tvt.assign( \"" << var << "\", "<< var << " );\n";
         }
     }
-    of << "\treturn " << output_name << ";\n";
+    else{
+        of << "\treturn " << output_name << ";\n";
+    }
+
     of << "\n}\n\n";
     return true;
 }

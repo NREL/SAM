@@ -49,7 +49,7 @@ private:
     std::string ui_form_name;
     std::string code;
 
-    std::unordered_map<std::string, function_builder> aux_functions;
+    std::unordered_map<std::string, std::string> aux_functions;
 
     std::string where_at_vector(std::string){
         assert(false);
@@ -70,19 +70,21 @@ public:
     translator(lk::node_t *tree, lk::env_t* env):lk::eval(tree, env){}
 
     bool translate(lk::node_t *root, lk::env_t *cur_env, std::string &result, unsigned int flags, unsigned int &ctl_id,
-                       std::string output_name);
+                   std::string &output_prefix);
 
     virtual bool special_set( const lk_string &name, lk::vardata_t &val );
 
     virtual bool special_get( const lk_string &name, lk::vardata_t &val );
 
-    std::string translate_special_get( const lk_string &name);
+    std::string get_vv_type(const lk_string &name);
 
     void set_ui_source(std::string ui){
         ui_form_name = ui;
     }
 
-    std::unordered_map<std::string, function_builder> get_aux_functions(){ return aux_functions; };
+
+
+    std::unordered_map<std::string, std::string> get_aux_functions(){ return aux_functions; };
 
 };
 
