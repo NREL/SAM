@@ -7,6 +7,7 @@
 #include "equations.h"
 #include "data_structures.h"
 #include "lk_env.h"
+#include "config_extractor.h"
 
 /**
  *  One per config?
@@ -34,12 +35,12 @@ public:
         delete m_env;
     }
 
+
     bool parse_and_export_eqns(std::string eqn_script);
 
     /// Returns the input and outputs of each equation
     void export_to_equation_info();
 
-    bool translate_to_cplusplus(equation_info &eqn_info, std::ofstream &of, std::string config);
 
     std::vector<std::string> get_errors(){
         return errors;

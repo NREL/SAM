@@ -133,22 +133,13 @@ std::vector<equation_info> find_eqn_info(std::string ui_var, std::string config)
     for (size_t i = 0; i < all_ui_forms.size(); i++){
         std::vector<equation_info>& eqn_infos = SAM_ui_form_to_eqn_info.find(all_ui_forms[i])->second;
         for (size_t j = 0; j < eqn_infos.size(); j++){
-            auto input_names = eqn_infos[j].ui_inputs;
+            auto input_names = eqn_infos[j].all_inputs;
             if (std::find(input_names.begin(), input_names.end(), ui_var) != input_names.end()){
                 eqn_infos.push_back(eqn_infos[j]);
             }
         }
     }
     return eqn_infos;
-}
-
-
-page_info& find_page_info_of_variable(std::string name, std::string config){
-    std::vector<page_info>& pg_info = SAM_config_to_input_pages.find(active_config)->second;
-
-    for (size_t i = 0; i < pg_info.size(); i++){
-
-    }
 }
 
 
@@ -284,10 +275,28 @@ void print_ui_form_to_eqn_variable(){
         std::cout << "\t'" << it->first << "': {\n";
         for (size_t i = 0; i <it->second.size(); i++){
             if (i > 0) std::cout << ",\n";
-            std::cout << "\t\t" << it->second[i].ui_inputs << ": \n";
-            std::cout << "\t\t\t" << it->second[i].ui_outputs << "";
+            std::cout << "\t\t" << it->second[i].all_inputs << ": \n";
+            std::cout << "\t\t\t" << it->second[i].all_outputs << "";
         }
         std::cout << "\t}";
     }
     std::cout << "}";
 }
+
+
+equation_info& find_equation_info_from_edge(edge *e, std::string config){
+    auto ui_forms = find_ui_forms_for_config(config);
+    for (size_t i = 0; i < ui_forms.size(); i++){
+        std::string& ui_form = ui_forms[i];
+
+        auto& vec = SAM_ui_form_to_eqn_info[ui_form];
+        for (size_t j = 0; j < vec.size(); j++){
+            equation_info& eq = vec.at(j);
+            if (std::find(eq.all_inputs.begin(), eq.all_inputs.end(), e->src->name) != eq.all_inputs.end()
+                && std::find(eq.all_outputs.begin(), eq.all_outputs.end(), e->dest->name) != eq.all_outputs.end()){
+                return eq;
+            }
+        }
+    }
+}
+

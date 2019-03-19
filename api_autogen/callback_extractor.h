@@ -9,19 +9,17 @@
 #include "lk_env.h"
 #include "data_structures.h"
 #include "lk_eval.h"
-
+#include "config_extractor.h"
 
 class callback_extractor{
 private:
+
     std::string config_name;
 
     lk::env_t* m_env;
 
     std::vector<std::string> errors;
 
-    struct cb_data{ lk::node_t *tree; std::string source; };
-
-    std::vector<cb_data*> m_cblist;
 
     int invoke_method_type(const std::string &method_name);
 
@@ -48,8 +46,6 @@ public:
 
     /// invokes each function
     bool extract_functions();
-
-    void export_to_secondary_cmod_info();
 
 };
 

@@ -16,6 +16,8 @@
 #include "variables.h"
 #include "lk_env.h"
 #include "equation_extractor.h"
+#include "callback_extractor.h"
+#include <cstddef>
 
 /**
  * This class extracts the variables, equations and callbacks LK script from the ui form file.
@@ -24,10 +26,13 @@
  */
 
 class ui_form_extractor {
+
 private:
     std::string m_eqn_script;
     std::string m_callback_script;
 
+    lk::env_t m_env;
+    friend class equation_extractor;
     equation_extractor* eqn_extractor;
 
     /// Gets default values and stores into SAM_config_to_defaults
@@ -43,6 +48,7 @@ public:
     std::vector<std::string> m_onchange_obj;
 
     std::vector<std::string> m_functions;
+
 
     ui_form_extractor(std::string n){
         ui_form_name = n;
@@ -67,11 +73,6 @@ public:
         else
             return nullptr;
     }
-
-    bool translate_to_cplusplus(equation_info &eqn_info, std::ofstream &of, std::string config) {
-        return eqn_extractor->translate_to_cplusplus(eqn_info, of, config);
-    };
-
 
 };
 

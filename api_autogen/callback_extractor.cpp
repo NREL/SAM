@@ -12,6 +12,7 @@
 #include "callback_extractor.h"
 #include "lk_env.h"
 #include "data_structures.h"
+#include "builder_generator_helper.h"
 
 std::string active_object;
 std::string active_ui;
@@ -99,6 +100,8 @@ int callback_extractor::invoke_method_type(const std::string &method_name) {
             return 0;
         }
 
+
+        active_ui =
         // clear active_cmod in case it was set previously in another object invocation
         active_cmod = "";
         active_object = obj_name;
@@ -154,3 +157,5 @@ bool callback_extractor::extract_functions() {
 
     return true;
 }
+
+

@@ -43,7 +43,7 @@ add_executable(export_config
         test.cpp test.h
         builder_generator.h builder_generator.cpp
         lk_eval.cpp lk_eval.h
-        builder_generator_helper.h )
+        builder_generator_helper.h builder_generator_helper.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

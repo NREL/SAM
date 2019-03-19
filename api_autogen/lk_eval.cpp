@@ -208,6 +208,7 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
         assert(false);
     }
 
+    std::string ui_name = find_ui_of_variable(dest_var, active_config);
 
     // source variables and whether they are primary ssc variables
     std::vector<std::string> vertex_names;
@@ -226,7 +227,7 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
     }
     else if (dynamic_cast<lk::literal_t*>(src) || dynamic_cast<lk::constant_t*>(src)){
         // if assigning a string or number, don't need to map anything but save the vertex for future references
-        graph->add_vertex(dest_var, dest_is_ssc);
+        graph->add_vertex(dest_var, dest_is_ssc), ui_name;
         return;
     }
     else if (lk::cond_t* cond = dynamic_cast<lk::cond_t*>(src)){
@@ -237,7 +238,7 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
     else{
         std::cout << "extractor_interpreter::map_assignment error in source" << active_config << ", " << active_object;
         std::cout  << ", " << active_subobject << " at " << src->line() << " in ";
-        std::cout << find_ui_of_object(active_subobject, active_config)->ui_form_name << "\n";
+        std::cout << ui_name << "\n";
         assert(false);
     }
 
@@ -247,7 +248,7 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
     }
 
     // add variable and mapping to graph if they don't already exist
-    vertex* v = graph->add_vertex(dest_var, dest_is_ssc);
+    vertex* v = graph->add_vertex(dest_var, dest_is_ssc, ui_name);
     if (active_cmod.length() > 0)
         v->cmod = active_cmod;
 
@@ -256,7 +257,8 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
                             + (active_cmod.length() > 0 ? ":" + active_cmod  : "");
 
     for (size_t i = 0; i < vertex_names.size(); i++){
-        graph->add_edge(vertex_names[i], vertex_is_ssc[i], dest_var, dest_is_ssc, active_method, obj_stack, expression);
+        graph->add_edge(vertex_names[i], vertex_is_ssc[i], dest_var, dest_is_ssc, active_method, obj_stack, expression,
+                        ui_name, nullptr);
     }
 }
 
@@ -489,8 +491,13 @@ bool extractor_interpreter::interpret(lk::node_t *root,
 
                     // otherwise evaluate the LHS in a mutable context, as normal.
                     ok = ok && interpret(n4->left, cur_env, l, flags | ENV_MUTABLE, ctl_id);
-                    l.deref().copy(r.deref());
-                    result.copy(r.deref());
+                    try{
+                        l.deref().copy(r.deref());
+                        result.copy(r.deref());
+                    }
+                    catch(error_t& e){
+                        std:: cout << "could not deref " << e.what() << "\n";
+                    }
 
                     return ok;
                 case expr_t::LOGIOR:
@@ -1001,7 +1008,7 @@ bool extractor_interpreter::interpret(lk::node_t *root,
             }
         }
         catch (lk::error_t &e) {
-            std::cout << "caught error at line: " << n4->line() << "\n";
+            std::cout << "caught error at line: " << " for " << e.text << "\n";
             return false;
         }
     }
@@ -1035,7 +1042,7 @@ bool extractor_interpreter::interpret(lk::node_t *root,
             }
         }
         catch (lk::error_t &e) {
-            std::cout << "caught error at line: " << n5->line() << "\n";
+            std::cout << "caught error at line: " << n5->line() << " for " << e.text << "\n";
             return false;
         }
     }
@@ -1053,7 +1060,7 @@ bool extractor_interpreter::interpret(lk::node_t *root,
                 std::cout << "error at line: " << n6->line();
                 std::cout << " overriding previous non-const identifier with const-ness not allowed: " + n6->name + "\n";
                 result.nullify();
-                return false;
+//                return false;
             }
 
             if (n6->globalval)
@@ -1061,7 +1068,7 @@ bool extractor_interpreter::interpret(lk::node_t *root,
                 std::cout << "error at line: " << n6->line();
                 std::cout << " overriding previous non-global identifier with global-ness not allowed: " + n6->name + "\n";
                 result.nullify();
-                return false;
+//                return false;
             }
 
             result.assign(x);
@@ -1186,9 +1193,14 @@ bool translator::special_get(const lk_string &name, lk::vardata_t &val) {
 
 
 std::string translator::get_vv_type(const lk_string &name) {
-    int type = find_default_from_ui(name.ToStdString(), active_config)->Type();
+    int type;
+    VarTable* vt = &SAM_config_to_defaults[active_config];
+    if ( VarValue *vv2 = vt->Get( name ) )
+        type = vv2->Type();
+    else
+        type = 0;
 
-    std::vector<std::string> vv_typestr = {"void", "float", "util::matrix_t<float>"
+    std::vector<std::string> vv_typestr = {"undefined", "float", "util::matrix_t<float>"
             , "util::matrix_t<float>", "std::string", "var_table", "binary"};
 
     return vv_typestr[type];
@@ -1225,10 +1237,10 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
         translate(n2->init, cur_env, init, flags, ctl_id, output_prefix);
         translate(n2->test, cur_env, test, flags, ctl_id, output_prefix);
         translate(n2->adv, cur_env, adv, flags, ctl_id, output_prefix);
-        translate(n2->block, cur_env, result, flags, ctl_id, output_prefix);
+        translate(n2->block, cur_env, block, flags, ctl_id, output_prefix);
 
         result += "for ( " + init + "; " + test + "; " + adv + " ){\n";
-        result += indent(block) + "\n}\n";
+        result += indent(block) + "\n}";
 
         return true;
     }
@@ -1238,7 +1250,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
         translate(n3->test, cur_env, test, flags, ctl_id, type_name);
 
         // set up error message in case
-        std::string msg = " std::runtime_exception(\"";
+        std::string msg = " std::runtime_error(\"";
         msg += ui_form_name + " conditional error: " + test + "\")";
 
         result += "if ( " + test + " ) {\n";
@@ -1250,10 +1262,10 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
             ontrue.insert(pos+5, msg);
         }
 
-        result += "\t" + ontrue + "\n}";
+        result += indent(ontrue) + "\n}";
 
         if (n3->on_false){
-            result += "\nelse{\n";
+            result += "\nelse ";
 
             translate(n3->on_false, cur_env, onfalse, flags, ctl_id, output_prefix);
 
@@ -1262,8 +1274,12 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                 onfalse.insert(pos+5, msg);
             }
 
-            result += "\t" + onfalse + "\n}\n";
+            if (onfalse.substr(0,2) != "if")
+                result += "{\n" + indent(onfalse) + "}";
+            else
+                result += onfalse;
         }
+        return true;
     }
     else if (expr_t *n4 = dynamic_cast<expr_t*>(root))
     {
@@ -1296,28 +1312,24 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                     return ok;
 
                 case expr_t::PLUSEQ:
-//                    do_op_eq(do_plus_eq, n4, cur_env, flags, ctl_id, result, l, r);
-                    std::cout << "pluseq not implemented";
-                    assert(false);
-
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_prefix);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_prefix);
+                    result += l + " += " + r;
                     return false;
                 case expr_t::MINUSEQ:
-//                    do_op_eq(do_minus_eq, n4, cur_env, flags, ctl_id, result, l, r);
-                    std::cout << "minuseq not implemented";
-                    assert(false);
-
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_prefix);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_prefix);
+                    result += l + " -= " + r;
                     return false;
                 case expr_t::MULTEQ:
-//                    do_op_eq(do_mult_eq, n4, cur_env, flags, ctl_id, result, l, r);
-                    std::cout << "multeq not implemented";
-                    assert(false);
-
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_prefix);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_prefix);
+                    result += l + " *= " + r;
                     return false;
                 case expr_t::DIVEQ:
-//                    do_op_eq(do_div_eq, n4, cur_env, flags, ctl_id, result, l, r);
-                    std::cout << "diveq not implemented";
-                    assert(false);
-
+                    translate(n4->right, cur_env, r, flags, ctl_id, output_prefix);
+                    translate(n4->left, cur_env, l, flags, ctl_id, output_prefix);
+                    result += l + " /= " + r;
                     return false;
 
                 case expr_t::MINUSAT:
@@ -1357,10 +1369,13 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                     translate(n4->left, cur_env, l, flags | ENV_MUTABLE, ctl_id, output_prefix);
                     result += l + " -= 1";
                     return ok;
-                case expr_t::DEFINE:
+                case expr_t::DEFINE:{
                     std::cout << "Define not implemented";
-                    assert(false);
+                    std::string def;
+                    translate(n4->right, cur_env, def, flags, ctl_id, output_prefix);
+                    result += def;
                     return ok;
+                }
                 case expr_t::ASSIGN:
                 {
                     // evaluate expression and type before the lhs identifier
@@ -1379,7 +1394,27 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                     // otherwise evaluate the LHS in a mutable context, as normal.
                     translate(n4->left, cur_env, l, flags | ENV_MUTABLE, ctl_id, type_name);
 
-                    // if the LHS variable is newly created in environment, make sure to save its type
+                    // check if it's a vector or single-valued
+                    std::string arr_name, indexer;
+                    if (lk::expr_t* expr = dynamic_cast<lk::expr_t*>(n4->left)){
+                        if (lk::iden_t* id_l = dynamic_cast<lk::iden_t*>(expr->left)){
+                            arr_name = id_l->name.ToStdString();
+                        }
+                        if (lk::iden_t* id_r = dynamic_cast<lk::iden_t*>(expr->right)){
+                            indexer = id_r->name.ToStdString();
+                        }
+                        else if (lk::constant_t* cnt_r = dynamic_cast<lk::constant_t*>(expr->right)){
+                            indexer = std::to_string((size_t)cnt_r->value);
+                        }
+                        else{
+                            size_t pos = l.find("[");
+                            size_t pos2 = l.find("]");
+                            assert( pos != std::string::npos && pos2 != std::string::npos);
+                            indexer = l.substr(pos, pos2-pos);
+                        }
+                    }
+
+                    // if the LHS variable is newly created in environment, save it and print its type
                     if (type_name != ""){
                         if (lk::iden_t* id = dynamic_cast<lk::iden_t*>(n4->left)){
                             vardata_t* v = cur_env->lookup(id->name, !(flags&ENV_MUTABLE));
@@ -1391,10 +1426,34 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                                 v->empty_vector();
                             else if (type_name == "var_table")
                                 v->empty_hash();
+                            result += type_name + " ";
                         }
-                        result += type_name + " ";
+                        else if (lk::expr_t* ex = dynamic_cast<lk::expr_t*>(n4->left)){
+
+                            if (indexer == "")
+                                assert(!"not implemented");
+
+                            vardata_t* v = cur_env->lookup(arr_name, !(flags&ENV_MUTABLE));
+
+                            if (v->type() == vardata_t::NULLVAL){
+                                // save the types
+                                v->empty_vector();
+                                if (type_name == "float")
+                                    v->vec_append(0.0);
+                                else
+                                    v->vec_append("");
+
+                                result += "std::vector<" + type_name + "> " + arr_name + ";\n";
+                            }
+                        }
                     }
-                    result += l + " = " + r;
+
+                    // print
+                    if (indexer.length() == 0)
+                        result += l + " = " + r;
+                    else{
+                        result += arr_name + ".insert(" + arr_name + ".begin()+" + indexer + ", " + r+ ");" ;
+                    }
                     return ok;
                 }
                 case expr_t::LOGIOR:
@@ -1477,25 +1536,10 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                     }
                 case expr_t::INDEX:
                 {
-                    interpret(n4->left, cur_env, vd_l, flags, ctl_id);
 
                     translate(n4->left, cur_env, l, flags, ctl_id, output_prefix);
 
-
-                    bool anonymous = (vd_l.type() == vardata_t::VECTOR);
-
-                    vardata_t &arr = vd_l.deref();
-
-                    if (!(flags & ENV_MUTABLE) && arr.type() != vardata_t::VECTOR) {
-                        std::cout << "error at line: " << n4->left->line();
-                        std::cout << "cannot index non array data in non mutable context\n";
-                        return false;
-                    }
-
                     translate(n4->right, cur_env, r, 0, ctl_id, output_prefix);
-
-//                    if ((flags&ENV_MUTABLE) && (arr.type() != vardata_t::VECTOR || arr.length() <= idx))
-//                        arr.resize(idx + 1);
 
                     result += l + "[" + r + "]";
                     return ok;
@@ -1530,32 +1574,28 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
 //                    else
 //                        result.nullify();
                 case expr_t::CALL:
-                case expr_t::THISCALL:
-                {
+                case expr_t::THISCALL: {
                     expr_t *cur_expr = n4;
 
-                    if (iden_t *iden = dynamic_cast<iden_t*>(n4->left))
-                    {
+                    if (iden_t *iden = dynamic_cast<iden_t *>(n4->left)) {
                         // query function table for identifier
-                        if (lk::fcallinfo_t *fi = cur_env->lookup_func(iden->name))
-                        {
+                        if (lk::fcallinfo_t *fi = cur_env->lookup_func(iden->name)) {
                             result += iden->name + "( ";
-                            list_t *argvals = dynamic_cast<list_t*>(n4->right);
+                            list_t *argvals = dynamic_cast<list_t *>(n4->right);
 
                             // first determine number of arguments
                             size_t nargs = 0;
                             if (argvals) nargs = argvals->items.size();
 
                             bool ok = true;
-                            if (nargs > 0)
-                            {
-                                for (size_t iarg = 0; iarg < nargs; iarg++)
-                                {
+                            if (nargs > 0) {
+                                for (size_t iarg = 0; iarg < nargs; iarg++) {
                                     std::string argval;
                                     unsigned int c = 0;
-                                    ok = ok && translate(argvals->items[iarg], cur_env, argval, flags, c, output_prefix);
+                                    ok = ok &&
+                                         translate(argvals->items[iarg], cur_env, argval, flags, c, output_prefix);
                                     result += argval;
-                                    if (iarg != nargs-1)
+                                    if (iarg != nargs - 1)
                                         result += ", ";
                                 }
                             }
@@ -1565,43 +1605,136 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                     }
 
                     translate(n4->left, cur_env, l, flags, ctl_id, output_prefix);
+                    if (l.find("plot") != std::string::npos){
+                        std::cout << "translator warning: skipping 'plot' function " << l << " in " << ui_form_name << "\n";
+                        return true;
+                    }
+                    result += l;
+
                     vardata_t vd_t;
-                    expr_t *define = dynamic_cast<expr_t*>(vd_t.deref().func());
-                    if (!define)
-                    {
-                        std::cout << "error at line: " << n4->line ();
+                    interpret(n4->left, cur_env, vd_t, flags, ctl_id);
+                    expr_t *define = dynamic_cast<expr_t *>(vd_t.deref().func());
+                    if (!define) {
+                        std::cout << "error at line: " << n4->line();
                         std::cout << "error in function call: malformed 'define'\n";
                         return false;
-                    }
-                    else{
-                        std::cout << "not doing defines\n";
-                        assert(false);
-                    }
+                    } else {
+                        node_t *block = define->right;
 
-                    node_t *block = define->right;
+                        // create new environment frame
+                        env_t frame(cur_env);
 
-                    return true;
+                        // number of expected arguments
+                        list_t *argnames = dynamic_cast<list_t *>(define->left);
+                        size_t nargs_expected = argnames ? argnames->items.size() : 0;
+
+                        // number of provided arguments
+                        list_t *argvals = dynamic_cast<list_t *>(n4->right);
+                        size_t nargs_given = argvals ? argvals->items.size() : 0;
+
+                        if (n4->oper == expr_t::THISCALL)
+                            nargs_given++;
+
+                        if (nargs_given < nargs_expected) {
+                            std::cout << "error at line: " << n4->line() << "nargs_given < nargs_expected\n";
+                            return false;
+                        }
+
+                        // evaluate each argument and assign it into the new environment
+                        expr_t *thisexpr = dynamic_cast<expr_t *>(cur_expr->left);
+                        if (cur_expr->oper == expr_t::THISCALL
+                            && thisexpr != 0
+                            && thisexpr->left != 0) {
+                            vardata_t thisobj;
+                            unsigned int c = CTL_NONE;
+                            if (!interpret(thisexpr->left, cur_env, thisobj, flags, c)) {
+                                std::cout << "error at line: " << cur_expr->line();
+                                std::cout << "failed to evaluate 'this' parameter 0 for THISCALL -> method\n";
+                                return false;
+                            }
+
+                            if (thisobj.type() != vardata_t::REFERENCE) {
+                                std::cout << "error at line: " << cur_expr->line();
+                                std::cout << "'this' parameter did not evaluate to a reference\n";
+                                return false;
+                            }
+
+                            std::string fx, type_name;
+                            c = CTL_NONE;
+                            translate(thisexpr->left, cur_env, fx, flags, c, type_name);
+
+                            result += fx;
+
+                            frame.assign("this", new vardata_t(thisobj));
+                        }
+
+                        vardata_t *__args = new vardata_t;
+                        __args->empty_vector();
+
+                        if (argvals) {
+                            for (size_t argindex = 0;
+                                 argindex < argvals->items.size();
+                                 argindex++) {
+                                vardata_t v;
+                                iden_t *id = 0;
+
+                                unsigned int c = CTL_NONE;
+                                if (!interpret(argvals->items[argindex], cur_env, v, flags, c)) {
+                                    std::cout << "error at line: " << argvals->items[argindex];
+                                    std::cout << "failed to initialize function call argument\n";
+                                    return false;
+                                }
+                                std::string str, type_name;
+                                translate(argvals->items[argindex], cur_env, str, flags, c, type_name);
+
+                                result += str + "\n";
+
+                                if (argindex < argnames->items.size() &&
+                                    ((id = dynamic_cast<iden_t *>(argnames->items[argindex])) != 0))
+                                    frame.assign(id->name, new vardata_t(v));
+
+                                __args->vec()->push_back(vardata_t(v));
+                            }
+                        }
+
+                        frame.assign("__args", __args);
+
+                        // now evaluate the function block in the new environment
+                        std::string type_name, block_str;
+                        translate(block, &frame, block_str, flags, ctl_id, type_name);
+                        result += block_str;
+
+                        // reset the sequence control
+                        if (ctl_id != CTL_EXIT) ctl_id = CTL_NONE;
+
+                        // environment frame will automatically be destroyed here
+                        return true;
+                    }
                 }
-                    break;
                 case expr_t::SIZEOF:
                     translate(n4->left, cur_env, l, flags, ctl_id, output_prefix);
 
                     interpret(n4->left, cur_env, vd_l, flags, ctl_id);
                     if (vd_l.deref().type() == vardata_t::VECTOR)
                     {
-                        vardata_t* tmp = vd_l.deref().index(0);
+                        std::vector<lk::vardata_t>* tmp = vd_l.deref().vec();
                         std::string type;
-                        if (tmp->type() == vardata_t::NUMBER){
-                            result += "sizeof( " + l + " )/sizeof(" + l + "[0])";
-                            return ok;
-                        }
+                        if (tmp->size() > 0){
+                            if ((*tmp)[0].type() == vardata_t::NUMBER){
+                                result += "sizeof( " + l + " )/sizeof(" + l + "[0])";
+                                return ok;
+                            }
+                            else{
+                                std::cout << "sizeof string not implemented\n";
+                                assert(false);
+                                return false;
+                            }
 
-                        else{
-                            std::cout << "sizeof string not implemented\n";
-                            assert(false);
-                            return false;
                         }
-                        return ok;
+                        else{
+                            // try as a matrix
+                            result += l + ".size()";
+                        }
                     }
                     else if (vd_l.deref().type() == vardata_t::STRING)
                     {
@@ -1622,13 +1755,13 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
 //                        }
 //                        result.assign(count);
                         std::cout << "sizeof hash not implemeneted\n";
+                        assert(false);
                         return ok;
                     }
                     else
                     {
-                        std::cout << "error at line: " << n4->line();
-                        std::cout << "operand to # ('sizeof') must be a array, string, or table type\n";
-                        return false;
+                        // guess
+                        result += l + ".size()";
                     }
                     break;
                 case expr_t::KEYSOF:
@@ -1646,10 +1779,14 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
 //                            if ((*it).second->deref().type() != vardata_t::NULLVAL)
 //                                result.vec_append((*it).first);
 //                        }
+                        assert(false);
+
                         return true;
                     }
                     else
                     {
+                        assert(false);
+
                         std::cout << "error at line: " << n4->line() << " operand to @ (keysof) must be a table\n";
                         return false;
                     }
@@ -1686,35 +1823,47 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                     return ok && ctl_id == CTL_NONE;
                 case expr_t::INITHASH:
                 {
-                    std::cout << "inithash not implemented\n";
-//                    result.empty_hash();
-//                    list_t *p = dynamic_cast<list_t*>(n4->left);
-//                    if (p)
-//                    {
-//                        for (size_t i = 0; i < p->items.size(); i++)
-//                        {
-//                            expr_t *assign = dynamic_cast<expr_t*>(p->items[i]);
-//                            if (assign && assign->oper == expr_t::ASSIGN)
-//                            {
-//                                vardata_t vkey, vval;
-//                                ok = ok && interpret(assign->left, cur_env, vkey, flags, ctl_id)
-//                                     && interpret(assign->right, cur_env, vval, flags, ctl_id);
-//
-//                                if (ok)
-//                                {
+//                    vardata_t vd;
+//                    vd.empty_hash();
+                    // create table
+                    result += "{";
+
+                    std::string valtype;
+                    list_t *p = dynamic_cast<list_t*>(n4->left);
+                    if (p)
+                    {
+                        for (size_t i = 0; i < p->items.size(); i++)
+                        {
+                            expr_t *assign = dynamic_cast<expr_t*>(p->items[i]);
+                            if (assign && assign->oper == expr_t::ASSIGN)
+                            {
+                                std::string vkey, vval, type;
+                                translate(assign->left, cur_env, vkey, flags, ctl_id, type);
+                                translate(assign->right, cur_env, vval, flags, ctl_id, type);
+
+                                result += "\"" + vkey + "\": \"" + vval + "\"";
+                                if (valtype != type){
+                                    valtype = "mixed";
+                                    std::cout << "inithash error " << ui_form_name << "types are mixed\n";
+                                }
+
+                                if (i != p->items.size())
+                                    result += ", ";
+
 //                                    lk_string key = vkey.as_string();
-//                                    varhash_t *h = result.hash();
+//                                    varhash_t *h = vd.hash();
 //                                    varhash_t::iterator it = h->find(key);
 //                                    if (it != h->end())
 //                                        (*it).second->copy(vval.deref());
 //                                    else
 //                                        (*h)[key] = new vardata_t(vval.deref());
-//                                }
-//                            }
-//                        }
-//                    }
+                            }
+                        }
+                        result += "}";
+                    }
+                    // save into env
+                    return ok;
                 }
-                    return ok && ctl_id == CTL_NONE;
                 case expr_t::SWITCH:
                 {
                     // create lambda switch
@@ -1732,8 +1881,8 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                     vardata_t vd;
                     interpret(p->items[0], cur_env, vd, flags, ctl_id);
                     if (vd.type() != vardata_t::NUMBER){
-                        std::cout << "switch types must be numeric\n";
-                        assert(false);
+                        std::cout << "warning: switch types must be numeric but type of";
+                        std::cout << switchval << " is " << vd.typestr() <<"\n";
                     }
 
                     lambda += "\tfloat switch_result;\n";
@@ -1745,9 +1894,9 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
                         lambda += "\t\t\tbreak;\n";
                         case_block.clear();
                     }
-                    lambda += "\t\tdefault:\n\t\t\tthrow std::runtime_exception(\"" + ui_form_name;
+                    lambda += "\t\tdefault:\n\t\t\tthrow std::runtime_error(\"" + ui_form_name;
                     lambda += " switch undefined case for " + switchval + "\");\n";
-                    lambda += "\t\t}\n\treturn switch_var;\n};\n";
+                    lambda += "\t\t}\n\treturn switch_result;\n};\n";
 
 
                     aux_functions.insert({switchval, lambda});
@@ -1761,7 +1910,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
             }
         }
         catch (lk::error_t &e) {
-            std::cout << "caught error at line: " << n4->line() << "\n";
+            std::cout << "caught error at line: " << n4->line() << " for " << e.text << "\n";
             return false;
         }
     }
@@ -1810,7 +1959,7 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
             }
         }
         catch (lk::error_t &e) {
-            std::cout << "caught error at line: " << n5->line() << "\n";
+            std::cout << "caught error at line: " << n5->line() << " for " << e.text << "\n";
             return false;
         }
     }
@@ -1844,14 +1993,17 @@ bool translator::translate(lk::node_t *root, lk::env_t *cur_env, std::string &re
             }
 
             size_t type = (size_t)x->type();
-            assert(type > 1);
+            assert(type < 8);
             if (type == 2){
                 type = (size_t )x->deref().type();
             }
 
-            std::vector<std::string> typestr = {"", "null", "reference", "float", "std::string", "util::matrix_t<float>", "var_table"};
+            std::vector<std::string> typestr = {"", "auto", "reference", "float", "std::string",
+                                                "util::matrix_t<float>", "var_table", "function"};
             if (output_prefix == "")
-                output_prefix = typestr[type];
+                output_prefix =
+
+                        typestr[type];
             result += n6->name;
             return true;
         }

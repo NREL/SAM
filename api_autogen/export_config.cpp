@@ -64,12 +64,12 @@ int main(int argc, char *argv[]){
             continue;
         active_config = it->first;
         // no battery defaults
-        if (active_config == "Battery-None"){
-            continue;
-        }
+//        if (active_config != "Battery-None" && active_config != "Flat Plate PV-None"){
+//            continue;
+//        }
 
         // focus on this one
-        if (active_config != "Flat Plate PV-None" ){
+        if (active_config != "MSPT-Single Owner" ){
             continue;
         }
 
@@ -82,8 +82,8 @@ int main(int argc, char *argv[]){
 
         // get all the expressions
         builder_generator b_gen(&ce);
+        b_gen.create_all(api_path);
         b_gen.print_subgraphs(graph_path);
-        b_gen.create_interface(api_path);
     }
 
     return 1;

@@ -182,11 +182,13 @@ static void fcall_value( lk::invoke_t &cxt )
                                 + (active_subobject.length() > 0 ? ":" + active_subobject : "");
 
         if (map_subobject){
+            std::string ui = find_ui_of_variable(dest_name, active_config);
             // add the source vertex & edge if they don't exist already
-            var_graph->add_vertex(src_name, src_is_ssc);
+            var_graph->add_vertex(src_name, src_is_ssc, ui);
 
             var_graph->add_edge(src_name, src_is_ssc, dest_name, dest_is_ssc,
-                                active_method, obj_stack, "value(" + cxt.error() + ")");
+                                active_method, obj_stack, "value(" + cxt.error() + ")",
+                                ui, nullptr);
 
         }
     }
@@ -584,12 +586,14 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
                 + active_cmod; // probably "tbd" since the identity is unknown until ssc_exec
 
         if (map_subobject) {
+            std::string ui = find_ui_of_variable(dest_name, active_config);
             // add the vertices & edge if they don't exist already
-            var_graph->add_vertex(src_name, is_ssc);
-            var_graph->add_vertex(dest_name, false);
+            var_graph->add_vertex(src_name, is_ssc, ui);
+            var_graph->add_vertex(dest_name, false, ui);
 
             var_graph->add_edge(src_name, is_ssc, dest_name, false,
-                                active_method, obj_stack, "ssc_var(" + cxt.error() + ")");
+                                active_method, obj_stack, "ssc_var(" + cxt.error() + ")",
+                                ui, nullptr);
         }
     }
 }

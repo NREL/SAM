@@ -8,13 +8,13 @@ void make_test_graph(digraph& g){
     vertex* ui2 = g.add_vertex("ui2", false);
     vertex* ui3 = g.add_vertex("ui3", false);
     vertex* ui4 = g.add_vertex("ui4", false);
-    g.add_edge(ssc1, ssc2, 1, "", "");
-    g.add_edge(ssc1, ui1, 1, "", "");
-    g.add_edge(ui1, ssc2, 1, "", "");
-    g.add_edge(ssc3, ui2, 1, "", "");
-    g.add_edge(ui1, ui3, 1, "", "");
-    g.add_edge(ui3, ssc2, 1, "", "");
-    g.add_edge(ui4, ssc1, 1, "", "");
+    g.add_edge(ssc1, ssc2, 1, "", "", std::string(), nullptr);
+    g.add_edge(ssc1, ui1, 1, "", "", std::string(), nullptr);
+    g.add_edge(ui1, ssc2, 1, "", "", std::string(), nullptr);
+    g.add_edge(ssc3, ui2, 1, "", "", std::string(), nullptr);
+    g.add_edge(ui1, ui3, 1, "", "", std::string(), nullptr);
+    g.add_edge(ui3, ssc2, 1, "", "", std::string(), nullptr);
+    g.add_edge(ui4, ssc1, 1, "", "", std::string(), nullptr);
 
 }
 

@@ -8,6 +8,7 @@ std::unordered_map<std::string, digraph*> SAM_config_to_variable_graph;
 
 config_extractor::config_extractor(std::string name){
     config_name = name;
+    cb_ext = new callback_extractor(name, m_env);
     var_graph = new digraph(name);
     assert(load_defaults_for_config());
     assert(SAM_config_to_variable_graph.find(config_name) == SAM_config_to_variable_graph.end());
@@ -57,9 +58,12 @@ size_t config_extractor::load_variables_into_graph(VarTable &vt) {
     wxArrayString var_names = vt.ListAll(nullptr);
     for (size_t i = 0; i < var_names.size(); i++){
         std::string name = var_names[i].ToStdString();
+        if (name == "n_flux_x"){
+            std::cout << "stop here\n";
+        }
         std::string cmod = which_cmod_as_input(name, config_name);
         bool is_ssc_var = (cmod.length() > 0);
-        vertex* v = var_graph->add_vertex(name, is_ssc_var);
+        vertex* v = var_graph->add_vertex(name, is_ssc_var, find_ui_of_variable(name, config_name));
         v->cmod = cmod;
         if (is_ssc_var) n+=1;
     }
@@ -76,12 +80,12 @@ bool config_extractor::map_equations(){
 
     for (size_t i = 0; i < ui_forms.size(); i++){
         std::string ui = ui_forms[i];
-        std::vector<equation_info> eqns = SAM_ui_form_to_eqn_info[ui];
+        std::vector<equation_info>& eqns = SAM_ui_form_to_eqn_info[ui];
         for (size_t j = 0; j < eqns.size(); j++){
             EqnData* eq_data = eqns[j].eqn_data;
 
-            std::vector<std::string> inputs = eqns[j].ui_inputs;
-            std::vector<std::string> outputs = eqns[j].ui_outputs;
+            std::vector<std::string> inputs = eqns[j].all_inputs;
+            std::vector<std::string> outputs = eqns[j].all_outputs;
 
             for (size_t s = 0; s < inputs.size(); s++){
                 for (size_t d = 0; d < outputs.size(); d++){
@@ -94,18 +98,23 @@ bool config_extractor::map_equations(){
                     std::string callstack = ui;
                     if (eq_data->result_is_output){
                         callstack += ":EQN";
+                        if (ui == "LF DSG System Design"){
+                            std::cout << "stophere";
+                        }
                     }
                     else{
-                        callstack += ":MIMO";
+                        callstack += ":" + eq_data->outputs[0] + "_MIMO";
                     }
 
                     // get the expression
                     std::string expression = spell_equation(eq_data->tree);
 
-                    if (!var_graph->add_edge(inputs[s], src_is_ssc, outputs[d], dest_is_ssc, EQN, callstack, expression)){
+                    if (!var_graph->add_edge(inputs[s], src_is_ssc, outputs[d], dest_is_ssc, EQN, callstack,
+                                                      expression, ui, eq_data->tree)){
                         std::cout << "/* config_extractor::map_equations error adding edge between ";
                         std::cout << inputs[s] << " and " + outputs[d] + " */ \n";
                     }
+
                 }
             }
 
@@ -119,29 +128,32 @@ void config_extractor::export_to_ui_form_db(std::string ui_name){
     assert(ui_fe);
 
     lk::vardata_t *cbvar = m_env.lookup( "on_load", true);
-    assert(cbvar->type() == lk::vardata_t::HASH );
+    if(cbvar && cbvar->type() == lk::vardata_t::HASH ){
+        lk::varhash_t* h = cbvar->hash();
+        for (auto it = h->begin(); it != h->end(); ++it){
+            std::string obj_name = it->first.ToStdString();
+            ui_fe->m_onload_obj.push_back(obj_name);
+        }
 
-    lk::varhash_t* h = cbvar->hash();
-    for (auto it = h->begin(); it != h->end(); ++it){
-        std::string obj_name = it->first.ToStdString();
-        ui_fe->m_onload_obj.push_back(obj_name);
     }
+
 
     cbvar = m_env.lookup( "on_change", true);
-    assert(cbvar->type() == lk::vardata_t::HASH );
+    if(cbvar && cbvar->type() == lk::vardata_t::HASH ){
+        lk::varhash_t* h = cbvar->hash();
+        for (auto it = h->begin(); it != h->end(); ++it){
+            std::string obj_name = it->first.ToStdString();
+            ui_fe->m_onchange_obj.push_back(obj_name);
+        }
 
-    h = cbvar->hash();
-    for (auto it = h->begin(); it != h->end(); ++it){
-        std::string obj_name = it->first.ToStdString();
-        ui_fe->m_onchange_obj.push_back(obj_name);
     }
+
 }
 
 /// setting active_config and active_ui
 void config_extractor::register_callback_functions() {
     std::vector<page_info> pages = SAM_config_to_input_pages[config_name];
 
-    callback_extractor cb_ext(config_name, m_env);
 
     // for all the ui forms, parse the callback functions
     std::vector<std::string> all_ui = find_ui_forms_for_config(config_name);
@@ -152,15 +164,14 @@ void config_extractor::register_callback_functions() {
 
     for (size_t i = 0; i < all_ui.size(); i++){
         active_ui = all_ui[i];
-        cb_ext.parse_script(SAM_ui_extracted_db.find(all_ui[i])->get_callback_script());
+        cb_ext->parse_script(SAM_ui_extracted_db.find(all_ui[i])->get_callback_script());
         export_to_ui_form_db(active_ui);
     }
-    // not used during extract_functions since all functions have been collected for a single config
     active_ui = "";
 
     // run through first time to get variable mapping, making sure to run the equations for special variables...
 
-    cb_ext.extract_functions();
+    cb_ext->extract_functions();
 
     // run through until nothing changes...
 }

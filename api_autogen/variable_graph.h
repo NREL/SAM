@@ -26,11 +26,12 @@ class vertex;
 class edge{
 public:
     int type;
-    std::string obj_name; // for call_backs
+    std::string obj_name; // for call_backs & eqns, MIMO's are named as "*first_output*_MIMO"
     vertex* src;
     vertex* dest;
     std::string expression;
     lk::node_t* root;
+    std::string ui_form;
 
     edge(){}
 
@@ -49,6 +50,17 @@ public:
         dest = obj.dest;
         expression = obj.expression;
         root = obj.root;
+        ui_form = obj.ui_form;
+    }
+
+    edge& operator=( const edge &obj){
+        type = obj.type;
+        obj_name = obj.obj_name;
+        src = obj.src;
+        dest = obj.dest;
+        expression = obj.expression;
+        root = obj.root;
+        ui_form = obj.ui_form;
     }
 };
 
@@ -110,6 +122,8 @@ private:
 
 
 public:
+    digraph() = default;
+
     digraph(std::string n){name = n;}
 
     ~digraph(){
@@ -123,7 +137,8 @@ public:
 
     std::unordered_map<std::string, std::vector<vertex*>>& get_vertices(){return vertices;}
 
-    vertex* add_vertex(std::string n, bool is_ssc);
+
+    vertex* add_vertex(std::string n, bool is_ssc, std::string ui_source = "");
 
     vertex* find_vertex(std::string n, bool is_ssc);
 
@@ -135,10 +150,11 @@ public:
 
     edge* find_edge(edge* edge);
 
-    bool add_edge(vertex* src, vertex* dest, int type, std::string obj, std::string expression);
+    edge *add_edge(vertex *src, vertex *dest, const int &type, const std::string &obj, const std::string &expression,
+                       const std::string ui_form, lk::node_t *root);
 
-    bool add_edge(std::string src, bool src_is_ssc, std::string dest, bool dest_is_ssc,
-            int type, std::string obj, std::string expression);
+    edge *add_edge(std::string src, bool src_is_ssc, std::string dest, bool dest_is_ssc, int type, std::string obj,
+                       std::string expression, std::string ui_form, lk::node_t *root);
 
     void delete_edge(edge* e);
 
@@ -154,10 +170,30 @@ public:
 
     void subgraph_ssc_to_ui(digraph &subgraph);
 
+    void get_unique_edge_expressions(std::unordered_map<std::string, edge*>& unique_edge_obj_names);
+
     void print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std::string, std::string> *obj_keys = nullptr,
                           std::unordered_map<std::string, std::string> *eqn_keys = nullptr);
 
     void print_dot(std::string filepath, std::string ext = ".gv");
 };
+
+enum{
+    SOURCE,
+    SINK,
+    ISOLATED,
+    CONNECTED
+};
+
+static int get_vertex_type(vertex *v){
+    if (v->edges_out.size() + v->edges_in.size() == 0)
+        return ISOLATED;
+    else if (v->edges_out.size() == 0)
+        return SINK;
+    else if (v->edges_in.size() == 0)
+        return SOURCE;
+    else
+        return CONNECTED;
+}
 
 #endif //SYSTEM_ADVISOR_MODEL_VARIABLE_GRAPH_H

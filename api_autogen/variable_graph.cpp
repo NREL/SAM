@@ -7,9 +7,12 @@
 #include "variable_graph.h"
 #include "data_structures.h"
 
-vertex* digraph::add_vertex(std::string n, bool is_ssc){
+vertex* digraph::add_vertex(std::string n, bool is_ssc, std::string ui_source){
     if (vertex* v = find_vertex(n, is_ssc))
         return v;
+    if (n == "n_flux_x"){
+        std::cout << "stop here\n";
+    }
     vertex* v = new vertex(n, is_ssc);
     auto it = vertices.find(n);
     if (it == vertices.end()){
@@ -17,6 +20,7 @@ vertex* digraph::add_vertex(std::string n, bool is_ssc){
         vertices.insert({n, vs});
     }
     vertices.find(n)->second.at((size_t)is_ssc) = v;
+    v->ui_form = ui_source;
     return v;
 }
 
@@ -67,31 +71,34 @@ edge* digraph::find_edge(edge* edge){
     return find_edge(edge->src->name, edge->src->is_ssc_var, edge->dest->name, edge->dest->is_ssc_var, edge->type);
 }
 
-bool digraph::add_edge(vertex* src, vertex* dest, int type, std::string obj, std::string expression){
+edge * digraph::add_edge(vertex *src, vertex *dest, const int &type, const std::string &obj, const std::string &expression,
+                         const std::string ui_form = "", lk::node_t *root = 0) {
     if (!src || !dest){
         std::cout << "/* digraph::add_edge error: vertices null */ \n";
-        return false;
+        return nullptr;
     }
     if (dest->name == "spe_power"){
         std::cout << expression << "\n";
     }
     edge* e = new edge(src, dest, type, obj, expression);
+    e->ui_form = ui_form;
+    e->root = root;
     src->edges_out.push_back(e);
     dest->edges_in.push_back(e);
-    return true;
+    return e;
 }
 
 
-bool digraph::add_edge(std::string src, bool src_is_ssc, std::string dest, bool dest_is_ssc,
-              int type, std::string obj, std::string expression) {
+edge * digraph::add_edge(std::string src, bool src_is_ssc, std::string dest, bool dest_is_ssc, int type, std::string obj,
+                         std::string expression, std::string ui_form, lk::node_t *root) {
     assert(type >= 0);
 
-    if (find_edge(src, src_is_ssc, dest, dest_is_ssc, type))
-        return true;
-    if (find_edge(dest, dest_is_ssc, src, src_is_ssc, type))
-        return true;
+    if (edge* e = find_edge(src, src_is_ssc, dest, dest_is_ssc, type))
+        return e;
+    if (edge* e = find_edge(dest, dest_is_ssc, src, src_is_ssc, type))
+        return e;
     if (std::strcmp(dest.c_str(), src.c_str()) == 0 && src_is_ssc == dest_is_ssc){
-        return false;
+        return nullptr;
     }
 
     vertex* v1 = find_vertex(src, src_is_ssc);
@@ -100,10 +107,10 @@ bool digraph::add_edge(std::string src, bool src_is_ssc, std::string dest, bool 
         std::cout << "/* digraph::add_edge error: could not find vertices ";
         std::cout << (!v1? src + " " + std::to_string(src_is_ssc)
                          : dest + " " + std::to_string(dest_is_ssc) ) << " */\n";
-        return false;
+        return nullptr;
     }
 
-    return add_edge(v1, v2, type, obj, expression);
+    return add_edge(v1, v2, type, obj, expression, ui_form, root);
 }
 
 
@@ -180,6 +187,21 @@ void digraph::rename_cmod_vertices(std::string cmod_name){
     }
 }
 
+void digraph::get_unique_edge_expressions(std::unordered_map<std::string, edge*>& unique_edge_obj_names) {
+    for (auto it = vertices.begin(); it != vertices.end(); ++it){
+        for (size_t is_ssc = 0; is_ssc < 2; is_ssc++){
+            vertex* v = it->second.at(is_ssc);
+            if (!v)
+                continue;
+            for (size_t i = 0; i < v->edges_out.size(); i++){
+                edge* e = v->edges_out[i];
+                if (unique_edge_obj_names.find(e->obj_name) == unique_edge_obj_names.end()){
+                    unique_edge_obj_names.insert({e->obj_name, e});
+                }
+            }
+        }
+    }
+};
 
 bool digraph::copy_vertex_descendants(vertex *v){
     // if vertex has already been added, so has its descendants
@@ -193,14 +215,14 @@ bool digraph::copy_vertex_descendants(vertex *v){
             return false;
         // if it is a ssc var, add the vertex
         else{
-            add_vertex(v->name, v->is_ssc_var);
+            add_vertex(v->name, v->is_ssc_var, v->ui_form);
             return true;
         }
     }
 
     // if vertex is ssc, add it now in case none of its descendants are ssc
     if (v->is_ssc_var){
-        add_vertex(v->name, v->is_ssc_var);
+        add_vertex(v->name, v->is_ssc_var, v->ui_form);
         add = true;
     }
 
@@ -209,9 +231,10 @@ bool digraph::copy_vertex_descendants(vertex *v){
 
         // if any of the descendants of this edge is ssc, copy
         if(copy_vertex_descendants(dest) ){
-            add_vertex(v->name, v->is_ssc_var);
+            add_vertex(v->name, v->is_ssc_var, v->ui_form);
             edge* e = v->edges_out[i];
-            add_edge(v->name, v->is_ssc_var, dest->name, dest->is_ssc_var, e->type, e->obj_name, e->expression);
+            edge* e_new = add_edge(v->name, v->is_ssc_var, dest->name, dest->is_ssc_var, e->type, e->obj_name,
+                                   e->expression, e->ui_form, e->root);
             add = true;
         }
     }
@@ -235,9 +258,9 @@ void digraph::subgraph_ssc_only(digraph& new_graph){
     }
 }
 
-// copy into the subgraph all the downstream ui variables
+// copy into the subgraph all the upstream to source and downstream to sink variables
 void digraph::subgraph_ssc_to_ui(digraph &subgraph) {
-    subgraph_ssc_only(subgraph);
+//    subgraph_ssc_only(subgraph);
     auto vertices_new = subgraph.get_vertices();
     for (auto it = vertices_new.begin(); it != vertices_new.end(); ++it){
         for (size_t i = 0; i < 2; i++){
@@ -246,17 +269,31 @@ void digraph::subgraph_ssc_to_ui(digraph &subgraph) {
                 continue;
             // get original vertex
             vertex* og_v = find_vertex(new_v->name, new_v->is_ssc_var);
+            if (!og_v){
+                std::cout << "subgraph_ssc_to_ui warning::" << new_v->name << " in " << new_v->ui_form;
+                std::cout << " not found in original graph for " << name << "\n";
+                continue;
+            }
             for (size_t e = 0; e < og_v->edges_out.size(); e++){
                 edge* e_out = og_v->edges_out[e];
 
-                if (e_out->dest->is_ssc_var)
-                    continue;
                 if (!subgraph.find_edge(e_out)){
-                    vertex* v = subgraph.add_vertex(e_out->dest->name, false);
-                    subgraph.add_edge(new_v, v, e_out->type, e_out->obj_name, e_out->expression);
+                    vertex* v = subgraph.add_vertex(e_out->dest->name, false, e_out->ui_form);
+                    subgraph.add_edge(new_v, v, e_out->type, e_out->obj_name, e_out->expression, e_out->ui_form, e_out->root);
                 }
             }
 
+            if (new_v->is_ssc_var ){
+                for (size_t e = 0; e < og_v->edges_in.size(); e++){
+                    edge* e_in = og_v->edges_in[e];
+
+                    if (!subgraph.find_edge(e_in)){
+                        vertex* v = subgraph.add_vertex(e_in->src->name, e_in->src->is_ssc_var, e_in->ui_form);
+                        assert(subgraph.add_edge(v, new_v, e_in->type, e_in->obj_name, e_in->expression,
+                                e_in->ui_form, e_in->root));
+                    }
+                }
+            }
         }
     }
 }
@@ -366,7 +403,7 @@ void digraph::print_dot(std::string filepath, std::string ext) {
     // print graph of variables
     graph_file << "digraph " << str << " {\n";
     graph_file << "\t" << "label =\"" << name <<"\";\n\tlabelloc=top;\n";
-    graph_file << "\trankdir=LR;\n\tranksep=\"3\";\n";
+    graph_file << "\trankdir=LR;\n\tranksep=\"1\";\n";
 
     for (auto it = vertices.begin(); it != vertices.end(); ++it){
         if (vertex* v = it->second.at(0)){

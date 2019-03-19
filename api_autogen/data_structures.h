@@ -81,8 +81,13 @@ extern ui_form_extractor_database SAM_ui_extracted_db;
  * are changed via equations (becoming ui_outputs) before becoming primary ssc inputs.
  */
 struct equation_info{
-    std::vector<std::string> ui_inputs;
-    std::vector<std::string> ui_outputs;
+    std::vector<std::string> all_inputs;
+    std::vector<std::string> all_outputs;
+
+    std::vector<std::string> ssc_only_inputs;
+    std::vector<std::string> ui_only_inputs;
+
+    std::string ui_source;
     EqnData* eqn_data;
 };
 
@@ -97,6 +102,22 @@ extern std::unordered_map<std::string, std::vector<equation_info>> SAM_ui_form_t
 
 extern std::unordered_map<std::string, digraph*> SAM_config_to_variable_graph;
 
+
+
+/**
+ * Maps each ui form with its callbacks. ui variables may be ssc
+ * or only found in the ui. Creating using information from digraph
+ */
+struct callback_info{
+    std::vector<std::string> ssc_only_inputs;
+    std::vector<std::string> ui_only_inputs;
+
+    std::vector<std::string> all_outputs;
+
+    std::string method_name;
+    std::string function_name;
+    std::string ui_source;
+};
 
 /// Bookmarks active ui form during UI script parsing
 extern std::string active_ui;
@@ -180,7 +201,7 @@ std::vector<std::string> find_ui_forms_for_config(std::string config_name);
 
 void print_ui_form_to_eqn_variable();
 
-
+equation_info& find_equation_info_from_edge(edge *edge, std::string config);
 
 
 #endif //SYSTEM_ADVISOR_MODEL_EXPORTED_MAPS_H
