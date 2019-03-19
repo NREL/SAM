@@ -366,7 +366,14 @@ bool translate_callback_to_cplusplus(config_extractor *config_ext, callback_info
     std::string subhandle = cb_info.function_name;
     int type = -1;
     if (n_outputs == 1){
-        type = find_default_from_ui(cb_info.all_outputs[0], config)->Type();
+        VarValue* vv = find_default_from_ui(cb_info.all_outputs[0], config);
+        if (vv)
+            type = vv->Type();
+        else{
+            std::cout << "translate_callback_to_cpluscplus::warning:: single output " << cb_info.all_outputs[0];
+            std::cout << " not found, for function: " << cb_info.function_name << " in ui " << cb_info.ui_source << "\n";
+            return false;
+        }
     }
     else{
         // return multiple values as table

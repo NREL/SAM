@@ -69,7 +69,7 @@ int main(int argc, char *argv[]){
 //        }
 
         // focus on this one
-        if (active_config != "MSPT-Single Owner" ){
+        if (active_config == "MSPT-Single Owner" ){
             continue;
         }
 
