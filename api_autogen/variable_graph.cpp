@@ -10,7 +10,7 @@
 vertex* digraph::add_vertex(std::string n, bool is_ssc, std::string ui_source){
     if (vertex* v = find_vertex(n, is_ssc))
         return v;
-    if (n == "n_flux_x"){
+    if (n == "landbase"){
         std::cout << "stop here\n";
     }
     vertex* v = new vertex(n, is_ssc);

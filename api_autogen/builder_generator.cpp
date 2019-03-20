@@ -312,32 +312,45 @@ std::unordered_map<std::string, edge *> builder_generator::gather_functions() {
                         continue;
                     int type = get_vertex_type(v);
 
-                    // if it is another cmod, add all the inputs of that cmod
+                    // if it is another cmod, add all the ui inputs of that cmod
                     auto it = SAM_cmod_to_inputs.find(v->name);
                     if (it != SAM_cmod_to_inputs.end()) {
                         for (size_t i = 0; i < it->second.size(); i++) {
                             cb_info.ui_only_inputs.push_back(it->second[i]);
                             // add new inputs and connect it only to the secondary cmod
                             vertex* src = subgraph->add_vertex(it->second[i], false, e->ui_form);
+                            src->cmod = v->name;
+
                             vertex* dest = subgraph->find_vertex(v->name, false);
+                            dest->cmod = v->name;
                             subgraph->add_edge(src, dest, e->type, e->obj_name, e->expression, e->ui_form, e->root);
-                            src = graph->add_vertex(it->second[i], false);
+
+                            // add to original graph also
+                            src = graph->add_vertex(it->second[i], false, e->ui_form);
+                            src->cmod = v->name;
                             dest = graph->find_vertex(v->name, false);
+                            dest->cmod = v->name;
                             graph->add_edge(src, dest, e->type, e->obj_name, e->expression, e->ui_form, e->root);
                         }
                         continue;
                     }
 
+                    // if it's an input
                     if (type == SOURCE){
                         if (is_ssc)
                             cb_info.ssc_only_inputs.push_back(v->name);
                         // might be name of secondary compute module
                         else{
-                            // add new input and connect it to all the function's outputs
+                            // add new input and copy its edges from original graph
                             cb_info.ui_only_inputs.push_back(v->name);
-                            for (size_t m = 0; m < cb_info.all_outputs.size(); m++){
-                                vertex* src = subgraph->add_vertex(v->name, false);
-                                vertex* dest = subgraph->find_vertex(cb_info.all_outputs[m], true);
+                            vertex* src = subgraph->add_vertex(v->name, false);
+
+                            vertex* src_og = graph->find_vertex(v->name, false);
+                            assert(src_og);
+                            for (size_t m = 0; m < src_og->edges_out.size(); m++){
+                                vertex* dest_og = src_og->edges_out[m]->dest;
+                                vertex* dest = subgraph->add_vertex(dest_og->name, dest_og->is_ssc_var, dest_og->ui_form);
+
                                 subgraph->add_edge(src, dest, e->type, e->obj_name, e->expression, e->ui_form, e->root);
                             }
                         }
