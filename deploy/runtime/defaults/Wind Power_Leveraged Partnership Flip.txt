@@ -1,5 +1,5 @@
 1
-513
+515
 a_error_test_number
 1
 1
@@ -117,7 +117,7 @@ bos_cost_total
 1
 1
 1
-7.46413e+08
+1.728e+07
 bos_total_budgeted_cost
 1
 1
@@ -610,13 +610,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-6.17814e+06
+555475
 cost_dev_fee_value
 1
 1
 1
 1
-2.41333e+07
+2.09376e+06
 cost_equity_closing
 1
 1
@@ -2911,7 +2911,7 @@ nominal_discount_rate
 1
 1
 1
-8.1375
+9.06
 number_install_seasons
 1
 1
@@ -2995,6 +2995,18 @@ om_production
 1
 0
 om_production_escal
+1
+1
+1
+1
+0
+om_replacement_cost1
+1
+2
+1
+1
+0
+om_replacement_cost_escal
 1
 1
 1
@@ -3233,7 +3245,7 @@ property_assessed_value
 1
 1
 1
-8.04445e+08
+6.9792e+07
 property_tax_rate
 1
 1
@@ -3345,8 +3357,8 @@ reference_number_turbines
 reference_resource_file
 1
 4
-83
-C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+85
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 reference_sales_tax_percent
 1
 1
@@ -3577,25 +3589,25 @@ total_installed_cost
 1
 1
 1
-8.04445e+08
+6.9792e+07
 total_installed_cost_per_kw
 1
 1
 1
 1
-16759.3
+1454
 total_obos_cost
 1
 1
 1
 1
-7.46413e+08
+7.46351e+08
 total_obos_cost_per_kw
 1
 1
 1
 1
-15550.3
+15549
 towerInstallMethod
 1
 1
@@ -3661,7 +3673,7 @@ turbine_cost_total
 1
 1
 1
-5.8032e+07
+5.2512e+07
 turbine_layout
 1
 1
@@ -3679,7 +3691,7 @@ ui_wacc
 1
 1
 1
-6.67275
+7.10145
 use_specific_wf_wind
 1
 1
@@ -3923,8 +3935,8 @@ wind_resource.elev
 wind_resource.file
 1
 4
-83
-C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+85
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource.lat
 1
 1
@@ -3979,8 +3991,8 @@ wind_resource.year
 wind_resource_filename
 1
 4
-83
-C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+85
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1

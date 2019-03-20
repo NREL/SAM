@@ -5,7 +5,7 @@ This macro calculates the optimum plant efficiency of the Binary Geothermal Plan
 <br><br>How the macro works:
 
 <br><ol>
-<li>The optimizer runs simulations for plant efficiencies starting at the max efficiency of 100%, and records the project's LCOE at every iteration.</li>
+<li>The optimizer runs simulations for plant efficiencies starting at efficiency of 100% of maximum plant efficiency (the highest efficiency plant GETEM allows), and records the project's LCOE at every iteration.</li>
 <li>Once the optimizer calculates the project's lowest LCOE, the simulation is ended.</li>
 <li>The active case is automatically updated with this lowest LCOE value. </ii>
 </ol>
@@ -152,15 +152,21 @@ for(i = 100 ; i >= 0 ; i = i - 10)
 } //End of outermost loop
 
 set('plant_efficiency_input', optimal_i);			//Set the plant efficiency in the active case to this optimum plant efficiency
-
+obj = ssc_module_create_from_case('geothermal');
+ssc_exec(obj, 'geothermal');
+eff_secondlaw_ = (ssc_var(obj,'eff_secondlaw')) * 100;
 
 //////////////****** DISPLAYING RESULTS IN HTML WINDOW ******//////////////
 
-str = '<html><body><h3> Result </h3><p>Reported for case: ' + active_case() + '</p><br><br>';
-str += 'Plant has the lowest LCOE of &#162;' + num_to_str( min_lcoe, 2 ) + '/kWh at an overall efficiency of ' + num_to_str( optimal_i , 2) + '%'; 
-str += '<br>Simulate the active case which is now updated with this optimized plant efficiency value.';
+str = '<html><body><h3> Result </h3><p>Reported for case: ' + active_case() + '</p>';
+str += '<br>Plant has the lowest LCOE of &#162;' + num_to_str( min_lcoe, 2 ) + '/kWh at an overall efficiency of ' + num_to_str( optimal_i , 1) + '%'; 
+str += '<br>2nd law efficiency is: ' + num_to_str(eff_secondlaw_ , 2) + '%';
+str += '<br><br><b>Notes:</b><ul>';
+str += '<li>Overall plant efficiency here refers to percentage of maximum brine effectiveness.</li>';
+str += '<li>Simulate the active case which is now updated with this optimized plant efficiency value.</li>';
+str += '</ul>';
 str += '</body></html>';
-html_dialog(str, 'Optimal Plant Efficiency', [600,200]);
+html_dialog(str, 'Optimal Plant Efficiency', [600,250]);
 
 
 //////////////****** END OF SCRIPT ******//////////////

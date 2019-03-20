@@ -294,15 +294,26 @@ function biopower_metrics()
 // Technology Metrics
 metrics{ 'Flat Plate PV' } = define() { 
 	pv_metrics(); 
-	if ((financing()!='LCOE Calculator') && (financing() != 'None'))
+	if ((financing()!='LCOE Calculator') && (financing() != 'None')){
 		if ( value('en_batt') == 1 )
 			metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
+		}
 };
 metrics{ 'PVWatts' } = define() {	
 	pvwatts_metrics(); 
-	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party"))
+	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party")){
 		if ( value('batt_simple_enable') == 1 )
+				metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
+		}
+};
+metrics{ 'Fuel Cell' } = define() {	
+	pvwatts_metrics(); 
+	if ( value('en_batt') == 1 )
 			metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
+	metric( 'thermal_cost_without_system_year1',{'label'='Thermal bill without system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
+	metric( 'thermal_cost_with_system_year1',{'label'='Thermal bill with system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
+	metric( 'thermal_savings_year1',{'label'='Net thermal savings with system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
+			
 };
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
 metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };

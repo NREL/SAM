@@ -147,20 +147,20 @@ Name
 btn_optimize
 X
 3
-21
+303
 Y
 3
-321
+336
 Width
 3
-368
+86
 Height
 3
 25
 Caption
 5
-29
-Optimize solar field geometry
+9
+Calculate
 TabOrder
 3
 4294967295
@@ -174,20 +174,20 @@ Name
 btn_solarpilot
 X
 3
-21
+303
 Y
 3
-294
+309
 Width
 3
-368
+86
 Height
 3
 25
 Caption
 5
-25
-Generate heliostat layout
+9
+Calculate
 TabOrder
 3
 4294967295
@@ -2305,17 +2305,17 @@ X
 21
 Y
 3
-348
+309
 Width
 3
-230
+281
 Height
 3
 24
 Caption
 5
-27
-Always layout automatically
+48
+Generate heliostat layout using tower dimensions
 State
 2
 0
@@ -2332,20 +2332,20 @@ Name
 override_opt
 X
 3
-255
+21
 Y
 3
-348
+336
 Width
 3
-135
+279
 Height
 3
 24
 Caption
 5
-15
-Always optimize
+46
+Optimize heliostat layout and tower dimensions
 State
 2
 0

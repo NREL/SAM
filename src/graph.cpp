@@ -130,15 +130,15 @@ bool Graph::Write( wxOutputStream &os )
 	ds.Write8( ShowXValues ? 1 : 0 );
 	ds.Write8( ShowYValues ? 1 : 0  );
 	ds.Write8( ShowLegend ? 1 : 0  );
-	ds.Write8( LegendPos );
-	ds.Write8( Size );
+	ds.Write8((wxUint8)LegendPos );
+	ds.Write8((wxUint8)Size );
 	ds.Write8( CoarseGrid ? 1 : 0  );
 	ds.Write8( FineGrid ? 1 : 0  );
 	ds.WriteDouble( YMin );
 	ds.WriteDouble( YMax );
 	ds.WriteString( Notes );
 	ds.WriteDouble( FontScale );
-	ds.Write8( FontFace );
+	ds.Write8((wxUint8)FontFace );
 
 	ds.Write16( 0xfd ); // identifier
 	return true;

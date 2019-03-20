@@ -1,5 +1,5 @@
 1
-479
+482
 adjust
 1
 5
@@ -634,7 +634,7 @@ cost_dev_fee_tax_liability
 1
 1
 1
-46690.3
+48386.4
 cost_dev_fee_value
 1
 1
@@ -1074,7 +1074,7 @@ elev
 1
 1
 1
-2265
+358
 equip1_reserve_cost
 1
 1
@@ -1132,8 +1132,8 @@ federal_tax_rate
 file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+109
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -1966,6 +1966,21 @@ insurance_rate
 1
 1
 0.5
+inv_cec_date
+1
+4
+2
+''
+inv_cec_name
+1
+4
+2
+''
+inv_cec_type
+1
+4
+2
+''
 inv_snl_ac_voltage
 1
 1
@@ -2017,8 +2032,8 @@ inv_snl_idcmax
 inv_snl_inverter_name
 1
 4
-56
-Advanced Energy: Solaron 333-3159000-1XX 480V [CEC 2009]
+64
+Advanced Energy Industries: Solaron 333 kW (3159000-XXXX) [480V]
 inv_snl_mppt_hi
 1
 1
@@ -2168,7 +2183,7 @@ lat
 1
 1
 1
-37.45
+33.45
 lib_dispatch_factor1
 1
 1
@@ -2279,7 +2294,7 @@ lon
 1
 1
 1
--105.867
+-111.98
 mera_cost1
 1
 1
@@ -2440,7 +2455,7 @@ nominal_discount_rate
 1
 1
 1
-8.1375
+9.06
 om_capacity
 1
 2
@@ -2484,6 +2499,18 @@ om_production
 1
 0
 om_production_escal
+1
+1
+1
+1
+0
+om_replacement_cost1
+1
+2
+1
+1
+0
+om_replacement_cost_escal
 1
 1
 1
@@ -2784,8 +2811,8 @@ show_construction_period
 solar_data_file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+109
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -2803,8 +2830,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+109
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solution_mode_message
 1
 4
@@ -2823,8 +2850,8 @@ state_tax_rate
 station_id
 1
 4
-6
-449343
+5
+78208
 system_capacity
 1
 1
@@ -2919,7 +2946,7 @@ ui_wacc
 1
 1
 1
-6.67275
+7.10145
 use_specific_weather_file
 1
 1

@@ -1,5 +1,5 @@
 1
-548
+550
 FossilFill
 1
 2
@@ -119,7 +119,7 @@ Wpar_prodD_coefs
 2
 1
 4
-0 -0.086635 0.584528 0 
+0 -0.0866353 0.584528 0 
 
 Wpar_prodQ_coefs
 1
@@ -661,7 +661,7 @@ cost_dev_fee_tax_liability
 1
 1
 1
-5.43358e+06
+5.63097e+06
 cost_dev_fee_value
 1
 1
@@ -1850,7 +1850,7 @@ f_t_amb_loss_des
 1
 1
 1
-0.001391
+0.00139112
 f_teshl_ref
 1
 1
@@ -1862,7 +1862,7 @@ f_v_wind_loss_des
 1
 1
 1
-0.017246
+0.0172456
 f_wmax
 1
 1
@@ -1897,8 +1897,8 @@ ffrac
 file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+109
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -2532,7 +2532,7 @@ nominal_discount_rate
 1
 1
 1
-8.1375
+9.06
 ntod
 1
 1
@@ -2582,6 +2582,18 @@ om_production
 1
 3.5
 om_production_escal
+1
+1
+1
+1
+0
+om_replacement_cost1
+1
+2
+1
+1
+0
+om_replacement_cost_escal
 1
 1
 1
@@ -2955,8 +2967,8 @@ show_construction_period
 solar_data_file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+109
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -2974,8 +2986,8 @@ daggett_ca_34.865371_-116.783023_psmv3_60_tmy
 solar_resource_file
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+109
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 solarm
 1
 1
@@ -3392,7 +3404,7 @@ ui_wacc
 1
 1
 1
-6.67275
+7.10145
 use_specific_weather_file
 1
 1

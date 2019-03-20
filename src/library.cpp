@@ -427,8 +427,9 @@ LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wx
 	SetBackgroundColour( *wxWHITE );
 
 	m_sendEvents = true;
+	m_nmatches = 0;
 
-	m_label = new wxStaticText( this, wxID_ANY, wxT("Search for:") );
+	m_label = new wxStaticText( this, wxID_ANY, wxT("Filter:") );
 	m_filter = new wxTextCtrl( this, ID_FILTER );
 	m_target = new wxChoice( this, ID_TARGET );
 	m_notify = new wxStaticText( this, wxID_ANY, wxEmptyString );
@@ -439,9 +440,10 @@ LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wx
 	sz_horiz->Add( m_label, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	sz_horiz->Add( m_filter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	sz_horiz->Add( m_target, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-	sz_horiz->AddStretchSpacer();
+//	sz_horiz->AddStretchSpacer();
 	sz_horiz->Add( m_notify, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-	//sz_horiz->Add( new wxButton( this, ID_REFRESH, wxT("Refresh list") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+
+//sz_horiz->Add( new wxButton( this, ID_REFRESH, wxT("Refresh list") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 
 	wxBoxSizer *sz_vert = new wxBoxSizer( wxVERTICAL );
 	sz_vert->Add( sz_horiz, 0, wxALL|wxEXPAND, 0 );
@@ -498,7 +500,7 @@ bool LibraryCtrl::SetEntrySelection( const wxString &entry )
 wxString LibraryCtrl::GetEntrySelection()
 {
 	long sel = m_list->GetFirstSelected();
-	if ( sel >= 0 && sel < (long)m_view.size() ) return m_view[ sel ].name;
+	if (sel >= 0 && sel < (long)m_view.size()) return m_view[sel].name;
 	return wxEmptyString;
 }
 
@@ -598,8 +600,8 @@ void LibraryCtrl::UpdateList()
 	m_view.clear();
 	if ( m_entries.size() > 0 )
 		m_view.reserve( m_entries.size() );
-
-	size_t nmatches = 0;
+	
+	m_nmatches = 0;
 
 	if( Library *lib = Library::Find( m_library ) )
 	{
@@ -620,16 +622,16 @@ void LibraryCtrl::UpdateList()
 				)
 			{
 				m_view.push_back( viewable(m_entries[i], i) );
-				nmatches++;
+				m_nmatches++;
 			}
 			else if ( target == sel )
 				m_view.push_back( viewable(m_entries[i], i) );
 		}
 	}
 
-	if ( nmatches == 0 )
+	if ( m_nmatches == 0 )
 	{
-		m_notify->SetLabel( "No matches. (selected item shown)" );
+		m_notify->SetLabel( "No matches." );
 		Layout();
 	}
 	
@@ -701,8 +703,17 @@ void LibraryCtrl::OnColClick( wxListEvent &evt )
 
 void LibraryCtrl::OnCommand( wxCommandEvent &evt )
 {
-	if( evt.GetId() == ID_FILTER || evt.GetId() == ID_TARGET )
+	if (evt.GetId() == ID_FILTER || evt.GetId() == ID_TARGET)
+	{
 		UpdateList();
+		if (evt.GetId() == ID_FILTER)
+		{
+			wxCommandEvent issue(wxEVT_LISTBOX, GetId());
+			issue.SetEventObject(this);
+			issue.SetInt(evt.GetSelection());
+			ProcessEvent(issue);
+		}
+	}
 }
 
 void LibraryCtrl::SetLabel( const wxString &text )
@@ -752,7 +763,7 @@ bool ShowWindResourceDataSettings()
 	return false;
 }
 
-bool ScanSolarResourceData( const wxString &db_file, bool show_busy )
+bool ScanSolarResourceData( const wxString &db_file, bool  )
 {
 //	wxBusyInfo *busy = 0;
 //	if ( show_busy )

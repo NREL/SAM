@@ -52,10 +52,11 @@
 
 #include <wx/dialog.h>
 
-
+class wxListBox;
 class wxComboBox;
 class wxRadioButton;
 class wxTextCtrl;
+class wxArrayString;
 
 class WindToolkitDialog : public wxDialog
 {
@@ -68,10 +69,12 @@ public:
 	double GetLatitude();
 	double GetLongitude();
 	wxString GetYear();
+	wxArrayString GetHubHeights();
 
 private:
 	void OnEvt(wxCommandEvent &);
 
+	wxListBox *lstHubheights;
 	wxComboBox *cboYears;
 	wxRadioButton *radAddress, *radLatLon;
 	wxTextCtrl *txtAddress, *txtLat, *txtLon;

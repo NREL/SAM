@@ -1,5 +1,5 @@
 1
-144
+147
 adjust
 1
 5
@@ -264,12 +264,12 @@ elev
 1
 1
 1
-321
+358
 file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+109
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 fixed_charge_rate
 1
 1
@@ -478,6 +478,21 @@ in_time_step
 1
 1
 0
+inv_cec_date
+1
+4
+2
+''
+inv_cec_name
+1
+4
+2
+''
+inv_cec_type
+1
+4
+2
+''
 inv_snl_ac_voltage
 1
 1
@@ -529,8 +544,8 @@ inv_snl_idcmax
 inv_snl_inverter_name
 1
 4
-56
-Advanced Energy: Solaron 333-3159000-1XX 480V [CEC 2009]
+64
+Advanced Energy Industries: Solaron 333 kW (3159000-XXXX) [480V]
 inv_snl_mppt_hi
 1
 1
@@ -611,7 +626,7 @@ lon
 1
 1
 1
--112.06
+-111.98
 module_a
 1
 1
@@ -725,8 +740,8 @@ module_temp_coeff
 solar_data_file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+109
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -744,8 +759,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+109
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 state
 1
 4
@@ -754,8 +769,8 @@ state
 station_id
 1
 4
-6
-310820
+5
+78208
 system_capacity
 1
 1

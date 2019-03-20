@@ -444,7 +444,7 @@ void NSRDBDialog::GetResources()
 	double lat, lon;
 	if (is_addr)	//entered an address instead of a lat/long
 	{
-		if (!wxEasyCurl::GeoCode(loc, &lat, &lon))
+		if (!wxEasyCurl::GeoCodeDeveloper(loc, &lat, &lon))
 		{
 			wxMessageBox("Failed to geocode address");
 			return;

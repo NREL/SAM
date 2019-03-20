@@ -132,7 +132,7 @@ fixed_charge_rate
 1
 1
 1
-0.097506
+0.0975058
 fixed_operating_cost
 1
 1
@@ -198,7 +198,7 @@ ui_crf
 1
 1
 1
-0.08329
+0.0832903
 ui_fcr_input_option
 1
 1
@@ -216,7 +216,7 @@ ui_ireal
 1
 1
 1
-0.053659
+0.0536585
 ui_lbl_cff_msg
 1
 4
@@ -458,8 +458,8 @@ wind_resource.elev
 wind_resource.file
 1
 4
-83
-C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+85
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource.lat
 1
 1
@@ -514,8 +514,8 @@ wind_resource.year
 wind_resource_filename
 1
 4
-83
-C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+85
+C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1

@@ -151,7 +151,7 @@ fixed_charge_rate
 1
 1
 1
-0.097506
+0.0975058
 fixed_operating_cost
 1
 1
@@ -221,7 +221,7 @@ ui_crf
 1
 1
 1
-0.08329
+0.0832903
 ui_fcr_input_option
 1
 1
@@ -239,7 +239,7 @@ ui_ireal
 1
 1
 1
-0.053659
+0.0536585
 ui_lbl_cff_msg
 1
 4
