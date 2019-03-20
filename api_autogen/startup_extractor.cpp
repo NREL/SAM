@@ -68,7 +68,7 @@ bool startup_extractor::load_startup_script(const std::string script_file){
          || parse.token() != lk::lexer::END)
     {
         for( int i=0;i<parse.error_count();i++ )
-            errors.push_back( parse.error(i) );
+            errors.push_back( parse.error(i).ToStdString());
         errors.push_back( "parsing did not reach end of input" );
         return false;
     }
@@ -87,7 +87,7 @@ bool startup_extractor::load_startup_script(const std::string script_file){
 
         if ( !ok )
             for( size_t i=0;i<e.error_count();i++ )
-                errors.push_back( e.get_error(i) );
+                errors.push_back( e.get_error(i).ToStdString());
 
         return ok;
     }

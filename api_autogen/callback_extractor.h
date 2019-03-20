@@ -5,7 +5,7 @@
 #include <vector>
 
 
-#include "equations.h"
+#include "../src/equations.h"
 #include "lk_env.h"
 #include "data_structures.h"
 #include "lk_eval.h"

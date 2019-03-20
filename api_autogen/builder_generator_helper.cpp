@@ -287,7 +287,7 @@ bool translate_equation_to_cplusplus(config_extractor *config_ext, equation_info
     if ( !ok ){
         for( size_t i=0;i<e.error_count();i++ ){
             std::cout << "equation_extractor::equation_to_cplusplus error " << e.get_error(i) << "\n";
-            config_ext->get_errors().push_back( e.get_error(i) );
+            config_ext->get_errors().push_back( e.get_error(i).ToStdString());
         }
         return false;
     }
@@ -421,8 +421,8 @@ bool translate_callback_to_cplusplus(config_extractor *config_ext, callback_info
     of << result << "\n\n";
     if ( !ok ){
         for( size_t i=0;i<e.error_count();i++ ){
-            std::cout << "equation_extractor::equation_to_cplusplus error " << e.get_error(i) << "\n";
-            config_ext->get_errors().push_back( e.get_error(i) );
+            std::cout << "equation_extractor::equation_to_cplusplus error " << e.get_error(i).ToStdString() << "\n";
+            config_ext->get_errors().push_back( e.get_error(i).ToStdString());
         }
         return false;
     }

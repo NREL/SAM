@@ -3,7 +3,7 @@
 
 #include "ui_form_extractor.h"
 #include "equation_extractor.h"
-#include "variables.h"
+#include "../src/variables.h"
 
 std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_ui_form_to_defaults;
 ui_form_extractor_database SAM_ui_extracted_db;
@@ -44,7 +44,7 @@ VarValue ui_form_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
         VarTable vt;
         for (size_t j = 0; j<m; j++)
         {
-            std::string entry = in.ReadWord();
+            std::string entry = in.ReadWord().ToStdString();
             vt.Set(entry, get_varvalue(is, entry));
         }
         vv.Set(vt);

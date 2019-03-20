@@ -8,7 +8,7 @@
 
 #include <lk/absyn.h>
 
-#include "variables.h"
+#include "../src/variables.h"
 
 /**
  * Implements a very simple directed graph for keeping track of variable transformations

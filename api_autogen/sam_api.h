@@ -3,9 +3,9 @@
 
 #include <ssc/sscapi.h>
 
-#include "invoke.h"
-#include "equations.h"
-#include "variables.h"
+#include "../src/invoke.h"
+#include "../src/equations.h"
+#include "../src/variables.h"
 
 #if defined(__WINDOWS__)&&defined(__DLL__)
 #define SAMEXPORT __declspec(dllexport)

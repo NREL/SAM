@@ -13,7 +13,7 @@
 #include <wx/wfstream.h>
 #include <wx/txtstrm.h>
 
-#include "variables.h"
+#include "../src/variables.h"
 #include "lk_env.h"
 #include "equation_extractor.h"
 #include "callback_extractor.h"
