@@ -1,29 +1,383 @@
 {
-	"GenericSystemNone_defaults": {
-		"Power Plant": {
-			"derate": {
-				"type": "float",
-				"value": "4"
-			},
-			"energy_output_array": {
-				"type": "array",
-				"value": "0;"
-			},
-			"heat_rate": {
-				"type": "float",
-				"value": "10"
-			},
-			"spec_mode": {
+	"BiopowerNone_defaults": {
+		"Location and Ambient Conditions": {
+		},
+		"Feedstock": {
+			"biopwr.feedstock.additional_opt": {
 				"type": "float",
 				"value": "0"
 			},
-			"system_capacity": {
+			"biopwr.feedstock.bagasse_c": {
 				"type": "float",
-				"value": "100000"
+				"value": "0.4695"
 			},
-			"user_capacity_factor": {
+			"biopwr.feedstock.bagasse_h": {
 				"type": "float",
-				"value": "43.6"
+				"value": "0.0547"
+			},
+			"biopwr.feedstock.bagasse_moisture_wet": {
+				"type": "float",
+				"value": "50"
+			},
+			"biopwr.feedstock.bagasse_obtainable": {
+				"type": "float",
+				"value": "2"
+			},
+			"biopwr.feedstock.bagasse_resource": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.barley_c": {
+				"type": "float",
+				"value": "0.4288"
+			},
+			"biopwr.feedstock.barley_h": {
+				"type": "float",
+				"value": "0.0553"
+			},
+			"biopwr.feedstock.barley_moisture_wet": {
+				"type": "float",
+				"value": "16"
+			},
+			"biopwr.feedstock.barley_obtainable": {
+				"type": "float",
+				"value": "2"
+			},
+			"biopwr.feedstock.barley_resource": {
+				"type": "float",
+				"value": "105198"
+			},
+			"biopwr.feedstock.bit_c": {
+				"type": "float",
+				"value": "0.767"
+			},
+			"biopwr.feedstock.bit_h": {
+				"type": "float",
+				"value": "0.0469"
+			},
+			"biopwr.feedstock.bit_moisture_wet": {
+				"type": "float",
+				"value": "10"
+			},
+			"biopwr.feedstock.bit_resource": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.coal_opt": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.collection_radius": {
+				"type": "float",
+				"value": "75"
+			},
+			"biopwr.feedstock.feedstock1_c": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.feedstock1_h": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.feedstock1_moisture_wet": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.feedstock1_opt": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.feedstock1_resource": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.feedstock1_user_hhv": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.feedstock2_c": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.feedstock2_h": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.feedstock2_moisture_wet": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.feedstock2_opt": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.feedstock2_resource": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.feedstock2_user_hhv": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.forest_c": {
+				"type": "float",
+				"value": "0.4894"
+			},
+			"biopwr.feedstock.forest_h": {
+				"type": "float",
+				"value": "0.0577"
+			},
+			"biopwr.feedstock.forest_moisture_wet": {
+				"type": "float",
+				"value": "44"
+			},
+			"biopwr.feedstock.forest_obtainable": {
+				"type": "float",
+				"value": "2"
+			},
+			"biopwr.feedstock.forest_resource": {
+				"type": "float",
+				"value": "244553"
+			},
+			"biopwr.feedstock.herb_c": {
+				"type": "float",
+				"value": "0.4776"
+			},
+			"biopwr.feedstock.herb_h": {
+				"type": "float",
+				"value": "0.0577"
+			},
+			"biopwr.feedstock.herb_moisture_wet": {
+				"type": "float",
+				"value": "16"
+			},
+			"biopwr.feedstock.herb_obtainable": {
+				"type": "float",
+				"value": "10"
+			},
+			"biopwr.feedstock.herb_resource": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.lig_c": {
+				"type": "float",
+				"value": "0.498"
+			},
+			"biopwr.feedstock.lig_h": {
+				"type": "float",
+				"value": "0.033"
+			},
+			"biopwr.feedstock.lig_moisture_wet": {
+				"type": "float",
+				"value": "39"
+			},
+			"biopwr.feedstock.lig_resource": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.mill_c": {
+				"type": "float",
+				"value": "0.4876"
+			},
+			"biopwr.feedstock.mill_h": {
+				"type": "float",
+				"value": "0.059"
+			},
+			"biopwr.feedstock.mill_moisture_wet": {
+				"type": "float",
+				"value": "48"
+			},
+			"biopwr.feedstock.mill_obtainable": {
+				"type": "float",
+				"value": "2"
+			},
+			"biopwr.feedstock.mill_resource": {
+				"type": "float",
+				"value": "16963"
+			},
+			"biopwr.feedstock.rice_c": {
+				"type": "float",
+				"value": "0.3965"
+			},
+			"biopwr.feedstock.rice_h": {
+				"type": "float",
+				"value": "0.0488"
+			},
+			"biopwr.feedstock.rice_moisture_wet": {
+				"type": "float",
+				"value": "67"
+			},
+			"biopwr.feedstock.rice_obtainable": {
+				"type": "float",
+				"value": "2"
+			},
+			"biopwr.feedstock.rice_resource": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.stover_c": {
+				"type": "float",
+				"value": "0.4035"
+			},
+			"biopwr.feedstock.stover_h": {
+				"type": "float",
+				"value": "0.0531"
+			},
+			"biopwr.feedstock.stover_moisture_wet": {
+				"type": "float",
+				"value": "30"
+			},
+			"biopwr.feedstock.stover_obtainable": {
+				"type": "float",
+				"value": "2"
+			},
+			"biopwr.feedstock.stover_resource": {
+				"type": "float",
+				"value": "1.90315e+06"
+			},
+			"biopwr.feedstock.subbit_c": {
+				"type": "float",
+				"value": "0.608"
+			},
+			"biopwr.feedstock.subbit_h": {
+				"type": "float",
+				"value": "0.053"
+			},
+			"biopwr.feedstock.subbit_moisture_wet": {
+				"type": "float",
+				"value": "25"
+			},
+			"biopwr.feedstock.subbit_resource": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.feedstock.urban_c": {
+				"type": "float",
+				"value": "0.4905"
+			},
+			"biopwr.feedstock.urban_h": {
+				"type": "float",
+				"value": "0.05988"
+			},
+			"biopwr.feedstock.urban_moisture_wet": {
+				"type": "float",
+				"value": "12"
+			},
+			"biopwr.feedstock.urban_obtainable": {
+				"type": "float",
+				"value": "2"
+			},
+			"biopwr.feedstock.urban_resource": {
+				"type": "float",
+				"value": "50147"
+			},
+			"biopwr.feedstock.wheat_c": {
+				"type": "float",
+				"value": "0.4433"
+			},
+			"biopwr.feedstock.wheat_h": {
+				"type": "float",
+				"value": "0.0532"
+			},
+			"biopwr.feedstock.wheat_moisture_wet": {
+				"type": "float",
+				"value": "12"
+			},
+			"biopwr.feedstock.wheat_obtainable": {
+				"type": "float",
+				"value": "2"
+			},
+			"biopwr.feedstock.wheat_resource": {
+				"type": "float",
+				"value": "881115"
+			},
+			"biopwr.feedstock.woody_c": {
+				"type": "float",
+				"value": "0.4993"
+			},
+			"biopwr.feedstock.woody_h": {
+				"type": "float",
+				"value": "0.061"
+			},
+			"biopwr.feedstock.woody_moisture_wet": {
+				"type": "float",
+				"value": "25"
+			},
+			"biopwr.feedstock.woody_obtainable": {
+				"type": "float",
+				"value": "10"
+			},
+			"biopwr.feedstock.woody_resource": {
+				"type": "float",
+				"value": "0"
+			}
+		},
+		"Plant Specs": {
+			"biopwr.plant.boiler.excess_air": {
+				"type": "float",
+				"value": "20"
+			},
+			"biopwr.plant.boiler.flue_temp": {
+				"type": "float",
+				"value": "390"
+			},
+			"biopwr.plant.boiler.num": {
+				"type": "float",
+				"value": "2"
+			},
+			"biopwr.plant.boiler.over_design": {
+				"type": "float",
+				"value": "10"
+			},
+			"biopwr.plant.boiler.steam_grade": {
+				"type": "float",
+				"value": "2"
+			},
+			"biopwr.plant.combustor_type": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.plant.drying_method": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.plant.drying_spec_wet": {
+				"type": "float",
+				"value": "10"
+			},
+			"biopwr.plant.par_percent": {
+				"type": "float",
+				"value": "6"
+			},
+			"biopwr.plant.ramp_opt": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.plant.ramp_opt1": {
+				"type": "float",
+				"value": "10000"
+			},
+			"biopwr.plant.ramp_opt2": {
+				"type": "float",
+				"value": "50"
+			},
+			"biopwr.plant.rated_eff": {
+				"type": "float",
+				"value": "0.35"
+			},
+			"biopwr.plant.tou_option": {
+				"type": "float",
+				"value": "0"
+			}
+		},
+		"Emissions": {
+			"biopwr.emissions.transport_legs": {
+				"type": "float",
+				"value": "0"
+			},
+			"biopwr.emissions.transport_long": {
+				"type": "float",
+				"value": "0"
 			}
 		},
 		"Common": {
@@ -36,23 +390,6 @@
 					"en_periods": "0",
 					"periods": ["1.000000"]}
 			},
-			"analysis_period": {
-				"type": "undefined",
-				"value": "invalid"
-			},
-			"dc_adjust": {
-				"type": "var_table",
-				"value": {
-				}
-			},
-			"generic_degradation": {
-				"type": "undefined",
-				"value": "invalid"
-			},
-			"system_use_lifetime_output": {
-				"type": "undefined",
-				"value": "invalid"
-			}
 		}
 	}
 }

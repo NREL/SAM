@@ -1,29 +1,103 @@
 {
-	"GenericSystemNone_defaults": {
-		"Power Plant": {
-			"derate": {
+	"HighXConcentratingPVNone_defaults": {
+		"Location and Resource": {
+		},
+		"Module": {
+			"module_alignment_error": {
 				"type": "float",
-				"value": "4"
+				"value": "0.93"
 			},
-			"energy_output_array": {
-				"type": "array",
-				"value": "0;"
-			},
-			"heat_rate": {
+			"module_cell_area": {
 				"type": "float",
-				"value": "10"
+				"value": "1"
 			},
-			"spec_mode": {
+			"module_concentration": {
 				"type": "float",
-				"value": "0"
+				"value": "700"
 			},
-			"system_capacity": {
+			"module_flutter_loss_coeff": {
 				"type": "float",
-				"value": "100000"
+				"value": "0.01"
 			},
-			"user_capacity_factor": {
+			"module_ncells": {
 				"type": "float",
-				"value": "43.6"
+				"value": "20"
+			},
+			"module_optical_error": {
+				"type": "float",
+				"value": "0.9"
+			},
+			"module_reference": {
+				"type": "float",
+				"value": "3"
+			}
+		},
+		"Inverter": {
+			"inv_snl_c0": {
+				"type": "float",
+				"value": "-6.12e-08"
+			},
+			"inv_snl_c1": {
+				"type": "float",
+				"value": "9.16e-05"
+			},
+			"inv_snl_c2": {
+				"type": "float",
+				"value": "0.00235"
+			},
+			"inv_snl_c3": {
+				"type": "float",
+				"value": "0.00083"
+			},
+			"inv_snl_paco": {
+				"type": "float",
+				"value": "333000"
+			},
+			"inv_snl_pdco": {
+				"type": "float",
+				"value": "342726"
+			},
+			"inv_snl_pso": {
+				"type": "float",
+				"value": "1139.96"
+			},
+			"inv_snl_vdco": {
+				"type": "float",
+				"value": "368.096"
+			}
+		},
+		"Array": {
+			"array_ac_wiring_loss": {
+				"type": "float",
+				"value": "0.99"
+			},
+			"array_dc_mismatch_loss": {
+				"type": "float",
+				"value": "0.97"
+			},
+			"array_dc_wiring_loss": {
+				"type": "float",
+				"value": "0.97"
+			},
+			"array_diode_conn_loss": {
+				"type": "float",
+				"value": "0.99"
+			},
+			"array_modules_per_tracker": {
+				"type": "float",
+				"value": "150"
+			},
+			"array_num_trackers": {
+				"type": "float",
+				"value": "20"
+			},
+			"array_tracker_power_fraction": {
+				"type": "float",
+				"value": "0.02"
+			},
+			"array_tracking_error": {
+				"type": "float",
+				"value": "0.98"
 			}
 		},
 		"Common": {
@@ -36,23 +110,6 @@
 					"en_periods": "0",
 					"periods": ["1.000000"]}
 			},
-			"analysis_period": {
-				"type": "undefined",
-				"value": "invalid"
-			},
-			"dc_adjust": {
-				"type": "var_table",
-				"value": {
-				}
-			},
-			"generic_degradation": {
-				"type": "undefined",
-				"value": "invalid"
-			},
-			"system_use_lifetime_output": {
-				"type": "undefined",
-				"value": "invalid"
-			}
 		}
 	}
 }

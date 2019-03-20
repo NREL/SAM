@@ -9,9 +9,6 @@ extern "C"
 {
 #endif
 
-	 /** Power Plant */
-	typedef void * SAM_GenericSystem_PowerPlant;
-
 	/** 
 	 * Create a PowerPlant variable table for a GenericSystemNone system
 	 * @param def: the set of financial model-dependent defaults to use (None, Residential, ...)
@@ -98,9 +95,6 @@ extern "C"
 	SAM_EXPORT float SAM_GenericSystem_PowerPlant_user_capacity_factor_get(SAM_GenericSystem_PowerPlant ptr, SAM_error* err);
 
 
-
-	 /** Common */
-	typedef void * SAM_GenericSystem_Common;
 
 	/** 
 	 * Create a Common variable table for a GenericSystemNone system

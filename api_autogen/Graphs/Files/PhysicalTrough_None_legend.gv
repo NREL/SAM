@@ -1,0 +1,156 @@
+digraph PhysicalTrough_None_legend {
+	label="Legend: Physical Trough-None";
+	labelloc=top;
+	rankdir=LR;	ranksep="3";
+	key [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td align="right" port="e0">eqn_var0</td></tr>
+	<tr><td align="right" port="e1">eqn_var1</td></tr>
+	<tr><td align="right" port="e2">eqn_var2</td></tr>
+	<tr><td align="right" port="e3">eqn_var3</td></tr>
+	<tr><td align="right" port="e4">eqn_var4</td></tr>
+	<tr><td align="right" port="e5">eqn_var5</td></tr>
+	<tr><td align="right" port="e6">eqn_var6</td></tr>
+	<tr><td align="right" port="e7">eqn_var7</td></tr>
+	<tr><td align="right" port="e8">eqn_var8</td></tr>
+	<tr><td align="right" port="e9">eqn_var9</td></tr>
+	<tr><td align="right" port="e10">eqn_var10</td></tr>
+	<tr><td align="right" port="e11">eqn_var11</td></tr>
+	<tr><td align="right" port="e12">eqn_var12</td></tr>
+	<tr><td align="right" port="e13">eqn_var13</td></tr>
+	<tr><td align="right" port="e14">eqn_var14</td></tr>
+	<tr><td align="right" port="e15">eqn_var15</td></tr>
+	<tr><td align="right" port="e16">eqn_var16</td></tr>
+	<tr><td align="right" port="e17">eqn_var17</td></tr>
+	<tr><td align="right" port="e18">eqn_var18</td></tr>
+	<tr><td align="right" port="e19">eqn_var19</td></tr>
+	<tr><td align="right" port="e20">eqn_var20</td></tr>
+	<tr><td align="right" port="e21">eqn_var21</td></tr>
+	<tr><td align="right" port="o0">func_var0</td></tr>
+	<tr><td align="right" port="o1">func_var1</td></tr>
+	<tr><td align="right" port="o2">func_var2</td></tr>
+	<tr><td align="right" port="o3">func_var3</td></tr>
+	<tr><td align="right" port="o4">func_var4</td></tr>
+	<tr><td align="right" port="o5">func_var5</td></tr>
+	<tr><td align="right" port="o6">func_var6</td></tr>
+	<tr><td align="right" port="o7">func_var7</td></tr>
+	<tr><td align="right" port="o8">func_var8</td></tr>
+	<tr><td align="right" port="o9">func_var9</td></tr>
+	<tr><td align="right" port="o10">func_var10</td></tr>
+	<tr><td align="right" port="o11">func_var11</td></tr>
+	<tr><td align="right" port="o12">func_var12</td></tr>
+	<tr><td align="right" port="o13">func_var13</td></tr>
+	<tr><td align="right" port="o14">func_var14</td></tr>
+	<tr><td align="right" port="o15">func_var15</td></tr>
+	<tr><td align="right" port="o16">func_var16</td></tr>
+	<tr><td align="right" port="o17">func_var17</td></tr>
+	<tr><td align="right" port="o18">func_var18</td></tr>
+	<tr><td align="right" port="o19">func_var19</td></tr>
+	<tr><td align="right" port="o20">func_var20</td></tr>
+	<tr><td align="right" port="o21">func_var21</td></tr>
+	<tr><td align="right" port="o22">func_var22</td></tr>
+	<tr><td align="right" port="o23">func_var23</td></tr>
+	<tr><td align="right" port="o24">func_var24</td></tr>
+	<tr><td align="right" port="o25">func_var25</td></tr>
+	<tr><td align="right" port="o26">func_var26</td></tr>
+	</table>>]
+	key2 [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td port="e0">&nbsp;</td></tr>
+	<tr><td port="e1">&nbsp;</td></tr>
+	<tr><td port="e2">&nbsp;</td></tr>
+	<tr><td port="e3">&nbsp;</td></tr>
+	<tr><td port="e4">&nbsp;</td></tr>
+	<tr><td port="e5">&nbsp;</td></tr>
+	<tr><td port="e6">&nbsp;</td></tr>
+	<tr><td port="e7">&nbsp;</td></tr>
+	<tr><td port="e8">&nbsp;</td></tr>
+	<tr><td port="e9">&nbsp;</td></tr>
+	<tr><td port="e10">&nbsp;</td></tr>
+	<tr><td port="e11">&nbsp;</td></tr>
+	<tr><td port="e12">&nbsp;</td></tr>
+	<tr><td port="e13">&nbsp;</td></tr>
+	<tr><td port="e14">&nbsp;</td></tr>
+	<tr><td port="e15">&nbsp;</td></tr>
+	<tr><td port="e16">&nbsp;</td></tr>
+	<tr><td port="e17">&nbsp;</td></tr>
+	<tr><td port="e18">&nbsp;</td></tr>
+	<tr><td port="e19">&nbsp;</td></tr>
+	<tr><td port="e20">&nbsp;</td></tr>
+	<tr><td port="e21">&nbsp;</td></tr>
+	<tr><td port="o0">&nbsp;</td></tr>
+	<tr><td port="o1">&nbsp;</td></tr>
+	<tr><td port="o2">&nbsp;</td></tr>
+	<tr><td port="o3">&nbsp;</td></tr>
+	<tr><td port="o4">&nbsp;</td></tr>
+	<tr><td port="o5">&nbsp;</td></tr>
+	<tr><td port="o6">&nbsp;</td></tr>
+	<tr><td port="o7">&nbsp;</td></tr>
+	<tr><td port="o8">&nbsp;</td></tr>
+	<tr><td port="o9">&nbsp;</td></tr>
+	<tr><td port="o10">&nbsp;</td></tr>
+	<tr><td port="o11">&nbsp;</td></tr>
+	<tr><td port="o12">&nbsp;</td></tr>
+	<tr><td port="o13">&nbsp;</td></tr>
+	<tr><td port="o14">&nbsp;</td></tr>
+	<tr><td port="o15">&nbsp;</td></tr>
+	<tr><td port="o16">&nbsp;</td></tr>
+	<tr><td port="o17">&nbsp;</td></tr>
+	<tr><td port="o18">&nbsp;</td></tr>
+	<tr><td port="o19">&nbsp;</td></tr>
+	<tr><td port="o20">&nbsp;</td></tr>
+	<tr><td port="o21">&nbsp;</td></tr>
+	<tr><td port="o22">&nbsp;</td></tr>
+	<tr><td port="o23">&nbsp;</td></tr>
+	<tr><td port="o24">&nbsp;</td></tr>
+	<tr><td port="o25">&nbsp;</td></tr>
+	<tr><td port="o26">&nbsp;</td></tr>
+	</table>>]
+	key:e0:e -> key2:e0:w [style=dashed, label="38: Physical Trough Power Block Common:W_pb_design_MIMO"]
+	key:e1:e -> key2:e1:w [style=dashed, label="36: Rankine Cycle and Hybrid Cooling:EQN"]
+	key:e2:e -> key2:e2:w [style=dashed, label="35: Physical Trough Parasitics:EQN"]
+	key:e3:e -> key2:e3:w [style=dashed, label="34: Physical Trough Receiver Header:EPSILON_4_MIMO"]
+	key:e4:e -> key2:e4:w [style=dashed, label="33: User Defined Power Cycle:EQN"]
+	key:e5:e -> key2:e5:w [style=dashed, label="27: Physical Trough Collector Type 2:EQN"]
+	key:e6:e -> key2:e6:w [style=dashed, label="43: Physical Trough Collector Header:EQN"]
+	key:e7:e -> key2:e7:w [style=dashed, label="26: Physical Trough Collector Type 1:EQN"]
+	key:e8:e -> key2:e8:w [style=dashed, label="13: Physical Trough Receiver Header:EQN"]
+	key:e9:e -> key2:e9:w [style=dashed, label="20: CSP Dispatch Control:FossilFill_MIMO"]
+	key:e10:e -> key2:e10:w [style=dashed, label="16: Physical Trough Collector Type 4:EQN"]
+	key:e11:e -> key2:e11:w [style=dashed, label="19: Physical Trough Collector Type 3:EQN"]
+	key:e12:e -> key2:e12:w [style=dashed, label="11: Physical Trough Thermal Storage:EQN"]
+	key:e13:e -> key2:e13:w [style=dashed, label="21: Physical Trough Receiver Type 2:EQN"]
+	key:e14:e -> key2:e14:w [style=dashed, label="42: Solar Resource Data:EQN"]
+	key:e15:e -> key2:e15:w [style=dashed, label="39: Physical Trough Collector Header:collectors_in_field_MIMO"]
+	key:e16:e -> key2:e16:w [style=dashed, label="32: Physical Trough Receiver Type 1:EQN"]
+	key:e17:e -> key2:e17:w [style=dashed, label="15: Physical Trough Receiver Type 4:EQN"]
+	key:e18:e -> key2:e18:w [style=dashed, label="18: Physical Trough Collector Header:W_aperture_MIMO"]
+	key:e19:e -> key2:e19:w [style=dashed, label="9: Physical Trough Solar Field:EQN"]
+	key:e20:e -> key2:e20:w [style=dashed, label="10: Physical Trough Power Block Common:EQN"]
+	key:e21:e -> key2:e21:w [style=dashed, label="14: Physical Trough Receiver Type 3:EQN"]
+	key:o0:e -> key2:o0:w [label="47: Rankine Cycle and Hybrid Cooling:combo_condenser_type"]
+	key:o1:e -> key2:o1:w [label="45: Solar Resource Data:update_info"]
+	key:o2:e -> key2:o2:w [label="44: Physical Trough Thermal Storage"]
+	key:o3:e -> key2:o3:w [label="30: apply_receiver_library_1"]
+	key:o4:e -> key2:o4:w [label="22: apply_collector_library_2"]
+	key:o5:e -> key2:o5:w [label="37: combo_htf_type"]
+	key:o6:e -> key2:o6:w [label="2: btn_download:nsrdb_get"]
+	key:o7:e -> key2:o7:w [label="0: btn_download:nsrdb"]
+	key:o8:e -> key2:o8:w [label="4: btn_gen_inputs"]
+	key:o9:e -> key2:o9:w [label="31: apply_receiver_library_3"]
+	key:o10:e -> key2:o10:w [label="40: Physical Trough Solar Field:combo_htf_type"]
+	key:o11:e -> key2:o11:w [label="29: apply_receiver_library_2"]
+	key:o12:e -> key2:o12:w [label="3: btn_file_add"]
+	key:o13:e -> key2:o13:w [label="1: btn_download"]
+	key:o14:e -> key2:o14:w [label="41: Physical Trough Solar Field:hx_derate_update_module"]
+	key:o15:e -> key2:o15:w [label="46: Solar Resource Data"]
+	key:o16:e -> key2:o16:w [label="28: apply_receiver_library_4"]
+	key:o17:e -> key2:o17:w [label="23: apply_collector_library_3"]
+	key:o18:e -> key2:o18:w [label="25: apply_collector_library_1"]
+	key:o19:e -> key2:o19:w [label="12: Physical Trough Collector Header:collector_library"]
+	key:o20:e -> key2:o20:w [label="8: Physical Trough Solar Field:hx_derate_update_module:user_htf_comparison"]
+	key:o21:e -> key2:o21:w [label="48: Physical Trough Solar Field:radio_sm_or_area"]
+	key:o22:e -> key2:o22:w [label="7: Physical Trough Solar Field:trough_loop_control"]
+	key:o23:e -> key2:o23:w [label="24: apply_collector_library_4"]
+	key:o24:e -> key2:o24:w [label="6: Solar Resource Data:update_library_folders"]
+	key:o25:e -> key2:o25:w [label="5: copy_schedule"]
+	key:o26:e -> key2:o26:w [label="17: Physical Trough Receiver Header:receiver_library"]
+}

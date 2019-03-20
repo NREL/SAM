@@ -1,0 +1,84 @@
+digraph SolarWaterHeating_None {
+	label ="Solar Water Heating-None";
+	labelloc=top;
+	rankdir=LR;
+	ranksep="1";
+	"area_coll" [style=filled, fillcolor=grey]
+	"system_capacity" [style=filled, fillcolor=grey]
+	"FRta" [style=filled, fillcolor=grey]
+	"iam" [style=filled, fillcolor=grey]
+	"FRUL" [style=filled, fillcolor=grey]
+	"ncoll" [style=filled, fillcolor=grey]
+	"use_custom_mains" [style=filled, fillcolor=grey]
+	"scaled_draw" [style=filled, fillcolor=grey]
+	"test_fluid" [style=filled, fillcolor=grey]
+	"solar_resource_file" [style=filled, fillcolor=grey]
+	"test_flow" [style=filled, fillcolor=grey]
+	"use_custom_set" [style=filled, fillcolor=grey]
+
+	"nrec" -> "minute_step" [label=0, color = black];
+	"n" -> "dataset" [label=1, color = brown4];
+	"folder" -> "log_file" [label=2, color = darkorange3];
+	"log_file" -> "flog" [label=2, color = darkorange3];
+	"user_test_fluid" -> "test_fluid" [label=3, style=dashed, color = lightslateblue];
+	"x" -> "paths" [label=4, color = mediumorchid];
+	"location" -> "pb_locations" [label=2, color = darkorange3];
+	"location" -> "g" [label=5, color = firebrick];
+	"location" -> "dataset" [label=1, color = brown4];
+	"user_FRta" -> "FRta" [label=3, style=dashed, color = lightslateblue];
+	"user_test_flow" -> "test_flow" [label=3, style=dashed, color = lightslateblue];
+	"minute_step" -> "x" [label=0, color = black];
+	"srcc_area" -> "area_coll" [label=3, style=dashed, color = lightslateblue];
+	"coll_mode" -> "test_fluid" [label=3, style=dashed, color = lightslateblue];
+	"coll_mode" -> "FRUL" [label=3, style=dashed, color = lightslateblue];
+	"coll_mode" -> "FRta" [label=3, style=dashed, color = lightslateblue];
+	"coll_mode" -> "iam" [label=3, style=dashed, color = lightslateblue];
+	"coll_mode" -> "area_coll" [label=3, style=dashed, color = lightslateblue];
+	"coll_mode" -> "test_flow" [label=3, style=dashed, color = lightslateblue];
+	"coll_mode" -> "state" [label=6, color = indigo];
+	"area_coll" -> "system_capacity" [label=3, style=dashed, color = lightslateblue];
+	"area_coll" -> "total_area" [label=3, style=dashed, color = lightslateblue];
+	"msg" -> "show_log" [label=1, color = brown4];
+	"draw" -> "scaled_draw" [label=7, style=dashed, color = burlywood4];
+	"draw" -> "annual_draw" [label=7, style=dashed, color = burlywood4];
+	"user_FRUL" -> "FRUL" [label=3, style=dashed, color = lightslateblue];
+	"json_ok" -> "ok_test" [label=5, color = firebrick];
+	"FRta" -> "system_capacity" [label=3, style=dashed, color = lightslateblue];
+	"library_folder_list" -> "L" [label=8, color = azure4];
+	"FRUL" -> "system_capacity" [label=3, style=dashed, color = lightslateblue];
+	"daily_draw" -> "scaled_draw" [label=7, style=dashed, color = burlywood4];
+	"daily_draw" -> "annual_draw" [label=7, style=dashed, color = burlywood4];
+	"use_specific_weather_file" -> "solar_resource_file" [label=9, style=dashed, color = darkorchid4];
+	"lat" -> "x" [label=0, color = black];
+	"solar_data_file_name" -> "solar_resource_file" [label=9, style=dashed, color = darkorchid4];
+	"solar_data_file_name" -> "solar_data_file_name_load" [label=10, color = aquamarine3];
+	"srcc_test_fluid" -> "test_fluid" [label=3, style=dashed, color = lightslateblue];
+	"ncoll" -> "system_capacity" [label=3, style=dashed, color = lightslateblue];
+	"ncoll" -> "total_area" [label=3, style=dashed, color = lightslateblue];
+	"lon" -> "x" [label=0, color = black];
+	"use_custom_mains" -> "state" [label=11, color = olivedrab];
+	"tz" -> "x" [label=0, color = black];
+	"wf_nrecords" -> "nrec" [label=0, color = black];
+	"in_location" -> "location" [label=2, color = darkorange3];
+	"user_area_coll" -> "area_coll" [label=3, style=dashed, color = lightslateblue];
+	"get_settings()( "solar_download_path" )+"
+"+replace()( clean_list, ";", "
+" )" -> "library_folder_list" [label=4, color = mediumorchid];
+	"srcc_FRUL" -> "FRUL" [label=3, style=dashed, color = lightslateblue];
+	"city" -> "x" [label=0, color = black];
+	"srcc_FRta" -> "FRta" [label=3, style=dashed, color = lightslateblue];
+	"srcc_test_flow" -> "test_flow" [label=3, style=dashed, color = lightslateblue];
+	"srcc_iam" -> "iam" [label=3, style=dashed, color = lightslateblue];
+	"user_iam" -> "iam" [label=3, style=dashed, color = lightslateblue];
+	"user_specified_weather_file" -> "solar_resource_file" [label=9, style=dashed, color = darkorchid4];
+	"geocode_ok" -> "ok_test" [label=5, color = firebrick];
+	"use_draw_scaling" -> "scaled_draw" [label=7, style=dashed, color = burlywood4];
+	"use_draw_scaling" -> "annual_draw" [label=7, style=dashed, color = burlywood4];
+	"use_draw_scaling" -> "state" [label=12, color = palevioletred];
+	"state" -> "x" [label=0, color = black];
+	"solar_resource_file" -> "file_name" [label=9, style=dashed, color = darkorchid4];
+	"solar_resource_file" -> "wf" [label=8, color = azure4];
+	"solar_resource_file" -> "f_name" [label=13, color = darkgoldenrod2];
+	"use_custom_set" -> "state" [label=14, color = gold4];
+	"file_to_key()( f_name )" -> "solar_resource" [label=13, color = darkgoldenrod2];
+}

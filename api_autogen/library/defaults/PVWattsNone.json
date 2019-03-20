@@ -1,29 +1,31 @@
 {
-	"GenericSystemNone_defaults": {
-		"Power Plant": {
-			"derate": {
-				"type": "float",
-				"value": "4"
+	"PVWattsNone_defaults": {
+		"Location and Resource": {
+			"solar_data_file_name": {
+				"type": "string",
+				"value": "null"
 			},
-			"energy_output_array": {
-				"type": "array",
-				"value": "0;"
-			},
-			"heat_rate": {
-				"type": "float",
-				"value": "10"
-			},
-			"spec_mode": {
+			"use_specific_weather_file": {
 				"type": "float",
 				"value": "0"
 			},
+			"user_specified_weather_file": {
+				"type": "string",
+				"value": "null"
+			}
+		},
+		"System Design": {
+			"array_type": {
+				"type": "float",
+				"value": "0"
+			},
+			"dc_ac_ratio": {
+				"type": "float",
+				"value": "1.2"
+			},
 			"system_capacity": {
 				"type": "float",
-				"value": "100000"
-			},
-			"user_capacity_factor": {
-				"type": "float",
-				"value": "43.6"
+				"value": "4"
 			}
 		},
 		"Common": {
@@ -36,20 +38,16 @@
 					"en_periods": "0",
 					"periods": ["1.000000"]}
 			},
-			"analysis_period": {
+			"batt_simple_enable": {
 				"type": "undefined",
 				"value": "invalid"
 			},
-			"dc_adjust": {
+			"shading": {
 				"type": "var_table",
 				"value": {
-				}
+					}
 			},
-			"generic_degradation": {
-				"type": "undefined",
-				"value": "invalid"
-			},
-			"system_use_lifetime_output": {
+			"solar_resource_data": {
 				"type": "undefined",
 				"value": "invalid"
 			}

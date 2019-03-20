@@ -1,0 +1,36 @@
+digraph Biopower_None_legend {
+	label="Legend: Biopower-None";
+	labelloc=top;
+	rankdir=LR;	ranksep="3";
+	key [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td align="right" port="e0">eqn_var0</td></tr>
+	<tr><td align="right" port="e1">eqn_var1</td></tr>
+	<tr><td align="right" port="o0">func_var0</td></tr>
+	<tr><td align="right" port="o1">func_var1</td></tr>
+	<tr><td align="right" port="o2">func_var2</td></tr>
+	<tr><td align="right" port="o3">func_var3</td></tr>
+	<tr><td align="right" port="o4">func_var4</td></tr>
+	<tr><td align="right" port="o5">func_var5</td></tr>
+	<tr><td align="right" port="o6">func_var6</td></tr>
+	</table>>]
+	key2 [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td port="e0">&nbsp;</td></tr>
+	<tr><td port="e1">&nbsp;</td></tr>
+	<tr><td port="o0">&nbsp;</td></tr>
+	<tr><td port="o1">&nbsp;</td></tr>
+	<tr><td port="o2">&nbsp;</td></tr>
+	<tr><td port="o3">&nbsp;</td></tr>
+	<tr><td port="o4">&nbsp;</td></tr>
+	<tr><td port="o5">&nbsp;</td></tr>
+	<tr><td port="o6">&nbsp;</td></tr>
+	</table>>]
+	key:e0:e -> key2:e0:w [style=dashed, label="1: Biopower Plant Specifications:EQN"]
+	key:e1:e -> key2:e1:w [style=dashed, label="0: Biopower Feedstock:EQN"]
+	key:o0:e -> key2:o0:w [label="7: btnQueryEnergyCrops"]
+	key:o1:e -> key2:o1:w [label="3: Biopower Emissions Comparison:biopwr.emissions.transport_long"]
+	key:o2:e -> key2:o2:w [label="6: Biopower Plant Specifications:biopwr.plant.tou_option"]
+	key:o3:e -> key2:o3:w [label="2: Biopower Emissions Comparison:biopwr.emissions.transport_legs"]
+	key:o4:e -> key2:o4:w [label="5: Biopower Plant Specifications:biopwr.plant.drying_method"]
+	key:o5:e -> key2:o5:w [label="8: btnQueryResource"]
+	key:o6:e -> key2:o6:w [label="4: Biopower Feedstock:biopwr.feedstock.additional_opt"]
+}
