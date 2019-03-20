@@ -1,7 +1,7 @@
-MHK Device
+MHK Wave Device
 961
 688
-9
+8
 GroupBox
 
 1
@@ -43,65 +43,6 @@ X
 Y
 3
 186
-Width
-3
-90
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-16
-Name
-5
-15
-system_capacity
-X
-3
-120
-Y
-3
-213
 Width
 3
 90
@@ -435,7 +376,7 @@ Fields
 14
 Name,KW Rating
 
-35
+34
 a_error_test_number
 3
 1
@@ -485,20 +426,6 @@ resource_definition_type
 Wind Turbine
 0
 0
-1
-1
-1
-1
-0
-Default
-system_capacity
-3
-1
-System Capacity
- 
- 
-0
-8
 1
 1
 1

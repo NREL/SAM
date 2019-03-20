@@ -27,7 +27,8 @@ addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Leveraged Partne
 if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
-addconfig( 'MHKWave', ['LCOE Calculator']);
+addconfig( 'MHKwave', ['LCOE Calculator']);
+addconfig( 'MHKtidal', ['LCOE Calculator']);
 
 if ( en_pvsamv3 ) configopt( 'Photovoltaic',              {'long_name'='Photovoltaic (super detailed)',            'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
 configopt( 'Flat Plate PV',               { 'long_name'='Photovoltaic (detailed)',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
@@ -49,7 +50,8 @@ configopt( 'MSLF',        				  { 'long_name'='CSP linear Fresnel molten salt', 
 if ( en_iscc ) { configopt( 'ISCC',       { 'long_name'='CSP integrated solar combined cycle',    'short_name'='Tower Salt ISCC',  'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
 configopt( 'Physical Trough IPH',         { 'long_name'='Process heat parabolic trough',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'DSGL IPH',                    { 'long_name'='Process heat linear direct steam',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
-configopt( 'MHKWave',                     { 'long_name'='Marine Hydrokinetic- Wave',              'short_name'='MHK',              'description'='Wave or tidal marine hydrokinetic system' });
+configopt( 'MHKwave',                     { 'long_name'='Marine Hydrokinetic- Wave',              'short_name'='MHKwave',           'description'='Wave marine hydrokinetic system' });
+configopt( 'MHKtidal',                    { 'long_name'='Marine Hydrokinetic- Tidal',             'short_name'='MHKtidal',          'description'='Tidal marine hydrokinetic system' });
 
 configopt( 'LCOE Calculator',             { 'long_name'='LCOE calculator (FCR method)',           'short_name'='LCOE Calculator',  'description'='Calculate LCOE using fixed charge rate method' } );
 configopt( 'Residential',                 { 'long_name'='Residential (distributed)',           	  'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
@@ -1748,17 +1750,29 @@ addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sid
 setup_single_owner_pages(LIFETIME_SYSTEM);
 
 // Marine Hydrokinetic ////////////////////////////////////////////////////////////////////
-function setup_mhk_pages()
+function setup_mhkwave_pages()
 {
-	addpage( [[ 'MHK Resource']], { 'sidebar'='Marine Resource', 'help'='wind_resource' } );
-	addpage( [[ 'MHK Device' ]], { 'sidebar'='MHK Device', 'help'='wind_turbine' } );
-	addpage( [[ 'MHK Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+	addpage( [[ 'MHK Wave Resource']], { 'sidebar'='Marine Resource', 'help'='wind_resource' } );
+	addpage( [[ 'MHK Wave Device' ]], { 'sidebar'='MHK Device', 'help'='wind_turbine' } );
+	addpage( [[ 'MHK Farm' ]], { 'sidebar'='MHK Farm', 'help'='wind_farm' } );
+	addpage( [[ 'MHK Wave Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 }
-setconfig( 'MHKWave', 'LCOE Calculator' );
-setmodules( ['mhk', 'lcoefcr']);
-setup_mhk_pages();
+setconfig( 'MHKwave', 'LCOE Calculator' );
+setmodules( ['mhkwave', 'lcoefcr']);
+setup_mhkwave_pages();
 setup_lcoefcr_pages();	
 
+function setup_mhktidal_pages()
+{
+	addpage( [[ 'MHK Tidal Resource']], { 'sidebar'='Marine Resource', 'help'='wind_resource' } );
+	addpage( [[ 'MHK Tidal Device' ]], { 'sidebar'='MHK Device', 'help'='wind_turbine' } );
+	addpage( [[ 'MHK Farm' ]], { 'sidebar'='MHK Farm', 'help'='wind_farm' } );
+	addpage( [[ 'MHK Tidal Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+}
+setconfig( 'MHKtidal', 'LCOE Calculator' );
+setmodules( ['mhktidal', 'lcoefcr']);
+setup_mhktidal_pages();
+setup_lcoefcr_pages();
 
 
 
