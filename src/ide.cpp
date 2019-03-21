@@ -581,6 +581,7 @@ public:
 			}
 			
 			m_ui->SetCallbacks( cb );
+			m_ui->SetEquations(eqn);
 
 			wxShowTextMessageDialog( wxString::Format("textual replacements\n\tcallbacks: %d equations: %d\n\n", n_cbreps, n_eqnreps )
 				+ result, "Remapping result", this );
