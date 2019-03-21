@@ -12,7 +12,7 @@
 #include "SAM_GenericSystem.h"
 
 
-SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_error* err){
+SAM_EXPORT SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_error* err){
     SAM_GenericSystem result = nullptr;
     translateExceptions(err, [&]{
         if (std::strcmp(def, "Res")){
@@ -48,7 +48,7 @@ float SAM_GenericSystem_PowerPlant_conv_eff_eval(SAM_GenericSystem ptr, SAM_erro
     float result = 0.f;
     translateExceptions(err, [&]{
         var_table* vt = static_cast<var_table*>(ptr);
-        result = GenericSystem_conv_eff_eqn(vt);
+        result = GenericSystem_conv_eff_eval(vt);
     });
     return result;
 }

@@ -99,8 +99,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SSCDIR);$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);$(WXMSW3)\lib\vc_x64_lib\mswu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SSCDIR);;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>${SSCDIR}\build_vs2017\x64\Debug\sscd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -118,14 +121,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\api\ErrorHandler.cpp" />
+    <ClCompile Include="..\..\api\GenericSystem-External.cpp" />
     <ClCompile Include="..\..\api\SAM_GenericSystem.cpp" />
-    <ClCompile Include="..\..\api\test_api.cpp" />
+    <ClCompile Include="..\..\api\SystemLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\api\ErrorHandler.h" />
+    <ClInclude Include="..\..\api\GenericSystem-External.h" />
     <ClInclude Include="..\..\api\sam_api.h" />
     <ClInclude Include="..\..\api\SAM_GenericSystem.h" />
-    <ClInclude Include="..\..\api\test_api.h" />
+    <ClInclude Include="..\..\api\SystemLoader.h" />
     <ClInclude Include="..\..\api\visibility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

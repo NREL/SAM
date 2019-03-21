@@ -1,48 +1,24 @@
 #ifndef SYSTEM_ADVISOR_MODEL_TEST_API_H
 #define SYSTEM_ADVISOR_MODEL_TEST_API_H
 
-#include "SAM_GenericSystem.h"
 #include <iostream>
+#include <string>
+#include <fstream>
+#include <unordered_map>
 
+#include "SAM_GenericSystem.h"
+#include "ErrorHandler.h"
+#include "SystemLoader.h"
 
-//
-// Error handling
-//
-
-struct Error {
-    Error() : opaque(nullptr) {}
-
-    ~Error()
-    {
-        if (opaque) {
-            error_destruct(opaque);
-        }
-    }
-
-    SAM_error opaque;
-};
-
-class ThrowOnError {
-public:
-    ~ThrowOnError() noexcept(false)
-    {
-        if (_error.opaque) {
-            throw std::runtime_error(error_message(_error.opaque));
-        }
-    }
-
-    operator SAM_error*() { return &_error.opaque; }
-
-private:
-    Error _error;
-};
 
 class GenericSystem_PowerPlant {
 private:
     SAM_GenericSystem system;
 
 public:
-    GenericSystem_PowerPlant(){}
+    GenericSystem_PowerPlant(){
+        system = nullptr;
+    }
 
     void attach(SAM_GenericSystem enclosing_system){
         system = enclosing_system;
@@ -70,23 +46,56 @@ class Common{
 };
 
 class GenericSystem {
+private:
+    ssc_module_t cmod;
+
 public:
+    SAM_GenericSystem system;
+
+    GenericSystem_PowerPlant PowerPlant;
+    Common Common;
+
     GenericSystem(const char* def = 0)
     :system(SAM_GenericSystem_construct(def, ThrowOnError()))
     {
         std::cout << "Generic constructor system" << system <<"\n" ;
         PowerPlant.attach(system);
+
+        cmod = ssc_module_create("generic_system");
+        if (!cmod)
+            throw std::runtime_error("Could not create cmod");
+
+        if (def != 0){
+            loadFromFile(def);
+        }
     }
 
     ~GenericSystem(){
         SAM_GenericSystem_destruct(system);
+        ssc_module_free(cmod);
     }
 
-    GenericSystem_PowerPlant PowerPlant;
-    Common Common;
+    bool loadFromFile(std::string file){
+        std::ofstream f;
+        f.open(file);
+        if (!f.is_open())
+            throw std::runtime_error("File could not be opened: " + file);
 
-    SAM_GenericSystem system;
-private:
+        // load some data structure containing defaults until we have:
+        std::string group;
+        std::string var_name;
+        std::string type;
+        std::string value;
+
+        SystemLoader loader;
+
+    }
+
+    int execute(){
+
+        return ssc_module_exec( cmod, system );
+
+    }
 };
 
 

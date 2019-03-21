@@ -16,10 +16,6 @@ struct error {
     std::string message;
 };
 
-const char* error_message(SAM_error error);
-
-void error_destruct(SAM_error error);
-
 }
 
 /// Returns true if fn executed without throwing an error, false otherwise.
@@ -44,3 +40,36 @@ static bool translateExceptions(SAM_error* out_error, Fn&& fn)
 }
 
 void make_access_error(std::string obj_name, std::string var);
+
+//
+// Error handling
+//
+
+struct Error {
+    Error() : opaque(nullptr) {}
+
+    ~Error()
+    {
+        if (opaque) {
+            error_destruct(opaque);
+        }
+    }
+
+    SAM_error opaque;
+};
+
+class ThrowOnError {
+public:
+    ~ThrowOnError() noexcept(false)
+    {
+        if (_error.opaque) {
+            throw std::runtime_error(error_message(_error.opaque));
+        }
+    }
+
+    operator SAM_error*() { return &_error.opaque; }
+
+private:
+    Error _error;
+};
+

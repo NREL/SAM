@@ -31,7 +31,7 @@ private:
 
     void gather_variables();
 
-    void export_variables_json();
+    void export_variables_json(const std::string &cmod);
 
     std::unordered_map<std::string, edge *> gather_functions();
 
@@ -57,7 +57,7 @@ public:
         subgraph->print_dot(graph_path, ".sgv");
         digraph subgraph_with_downstream_ui(config_name);
         graph->subgraph_ssc_to_ui(subgraph_with_downstream_ui);
-        subgraph_with_downstream_ui.print_dot(graph_path, ".sugv");
+//        subgraph_with_downstream_ui.print_dot(graph_path, ".sugv");
     }
 
 

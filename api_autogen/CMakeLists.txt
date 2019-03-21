@@ -16,8 +16,19 @@ if (UNIX)
     set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
     find_package(wxWidgets COMPONENTS xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base REQUIRED)
 else()
+    add_compile_options(/W3 /wd4996)
+    if (CMAKE_BUILD_TYPE STREQUAL Debug)
+        add_compile_options(/MDd)
+        add_compile_definitions(_DEBUG)
+    else()
+        add_compile_options(/MD /O2)
+        add_compile_definitions(NDEBUG )
+    endif()
+    add_compile_definitions( WIN32 _CRT_SECURE_NO_DEPRECATE=1 _CRT_NON_CONFORMING_SWPRINTFS=1
+            _SCL_SECURE_NO_WARNINGS=1 __WXMSW__ _UNICODE NOPCH)
+
     set(wxWidgets_CONFIGURATION mswu)
-    set(wxWidgets_ROOT_DIR "C:\\System Advisor Model Code\\wxWidgets-3.1.1")
+    set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
     find_package(wxWidgets COMPONENTS qa webview aui richtext html propgrid adv net stc core base scintilla REQUIRED)
 endif()
 
@@ -81,7 +92,7 @@ else()
                 NAMES  ssc.dylib ssc.so ssc.lib
                 PATHS $ENV{SSCDIR}/ssc)
     endif()
-    target_link_libraries(${export_config} ${SSC_LIB} ${WEX_LIB} ${LK_LIB} ${wxWidgets_LIBRARIES})
+    target_link_libraries(export_config ${SSC_LIB} ${WEX_LIB} ${LK_LIB} ${wxWidgets_LIBRARIES})
 
 endif()
 
@@ -92,3 +103,10 @@ target_compile_definitions(export_config PUBLIC LK_USE_WXWIDGETS )
 # setup linking dependencies and flags
 target_link_libraries(export_config -lm)
 
+# windows
+if(MSVC)
+    set_target_properties(export_config PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
+#    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${SANDBOX_EXE})
+endif()
