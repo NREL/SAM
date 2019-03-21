@@ -62,6 +62,8 @@ std::string translate_fx(function_builder fb, std::ofstream &of) {
 //    std::cout << "){\n";
 //    std::cout << fb.block;
 //    of << "}\n\n";
+	std::string str = "";
+	return str;
 }
 
 

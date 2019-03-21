@@ -1178,6 +1178,7 @@ std::string format_as_symbol(std::string s){
 
 bool translator::special_set(const lk_string &name, lk::vardata_t &val) {
     assert(false);
+	return false;
 }
 
 bool translator::special_get(const lk_string &name, lk::vardata_t &val) {
