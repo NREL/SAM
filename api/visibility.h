@@ -1,5 +1,5 @@
 #pragma once
-
+#define system_advisor_model_EXPORTS
 #if defined(_WIN32) || defined(__CYGWIN__)
 #ifdef system_advisor_model_EXPORTS
     #ifdef __GNUC__

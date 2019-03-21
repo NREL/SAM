@@ -17,7 +17,10 @@
     <ClCompile Include="..\..\api\SAM_GenericSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\api\test_api.cpp">
+    <ClCompile Include="..\..\api\GenericSystem-External.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\api\SystemLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -31,10 +34,13 @@
     <ClInclude Include="..\..\api\SAM_GenericSystem.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\api\test_api.h">
+    <ClInclude Include="..\..\api\visibility.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\api\visibility.h">
+    <ClInclude Include="..\..\api\GenericSystem-External.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\api\SystemLoader.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

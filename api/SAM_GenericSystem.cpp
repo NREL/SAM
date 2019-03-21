@@ -12,7 +12,7 @@
 #include "SAM_GenericSystem.h"
 
 
-SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_error* err){
+SAM_EXPORT SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_error* err){
     SAM_GenericSystem result = nullptr;
     translateExceptions(err, [&]{
         if (std::strcmp(def, "Res")){
