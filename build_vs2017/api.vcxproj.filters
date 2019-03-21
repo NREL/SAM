@@ -26,7 +26,10 @@
     <ClCompile Include="..\api\SystemLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\ssc\ssc\cmod_generic_system-builder.cpp">
+    <ClCompile Include="..\..\ssc\ssc\vartab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ssc\shared\lib_util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -52,7 +55,10 @@
     <ClInclude Include="..\api\visibility.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\ssc\ssc\cmod_generic_system-builder.h">
+    <ClInclude Include="..\..\ssc\ssc\vartab.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ssc\shared\lib_util.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
