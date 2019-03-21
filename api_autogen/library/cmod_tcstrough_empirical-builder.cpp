@@ -5,7 +5,7 @@
 
 #include "cmod_tcstrough_empirical-builder.h"
 
-float TcstroughEmpirical_EmpiricalTroughThermalStorage_PFSmax_eval(var_table* vt, invoke_t* cxt)
+float TcstroughEmpirical_PFSmax_eval(var_table* vt)
 {
 	// inputs
 	float ui_tes_htf_type = vt->lookup("ui_tes_htf_type")->num;
@@ -24,17 +24,13 @@ float TcstroughEmpirical_EmpiricalTroughThermalStorage_PFSmax_eval(var_table* vt
 	else {
 		PFSmax = ui_q_design * TurTesOutAdj / TurTesEffAdj;}
 
-	if (cxt){
-		cxt->result().assign("PFSmax", PFSmax);
-	}
-
 	return PFSmax;
 
 }
 
 
 
-float TcstroughEmpirical_EmpiricalTroughPowerBlock_system_capacity_eval(var_table* vt, invoke_t* cxt)
+float TcstroughEmpirical_system_capacity_eval(var_table* vt)
 {
 	// inputs
 	float ui_net_capacity = vt->lookup("ui_net_capacity")->num;
@@ -44,17 +40,13 @@ float TcstroughEmpirical_EmpiricalTroughPowerBlock_system_capacity_eval(var_tabl
 
 	system_capacity = ui_net_capacity * 1000.000000;
 
-	if (cxt){
-		cxt->result().assign("system_capacity", system_capacity);
-	}
-
 	return system_capacity;
 
 }
 
 
 
-float TcstroughEmpirical_EmpiricalTroughHCE_ui_hce_opt_eff_1_eval(var_table* vt, invoke_t* cxt)
+float TcstroughEmpirical_ui_hce_opt_eff_1_eval(var_table* vt)
 {
 	// inputs
 	float calc_hce_col_factor = vt->lookup("calc_hce_col_factor")->num;
@@ -85,17 +77,13 @@ float TcstroughEmpirical_EmpiricalTroughHCE_ui_hce_opt_eff_1_eval(var_table* vt,
 
 	ui_hce_opt_eff_1 = calc_hce_col_factor * switch_ui_hce_broken_glass_1() * HCEBelShad_1 * HCEEnvTrans_1 * HCEabs_1 * HCEmisc_1;
 
-	if (cxt){
-		cxt->result().assign("ui_hce_opt_eff_1", ui_hce_opt_eff_1);
-	}
-
 	return ui_hce_opt_eff_1;
 
 }
 
 
 
-float TcstroughEmpirical_EmpiricalTroughSCA_calc_col_factor_eval(var_table* vt, invoke_t* cxt)
+float TcstroughEmpirical_calc_col_factor_eval(var_table* vt)
 {
 	// inputs
 	float TrkTwstErr = vt->lookup("TrkTwstErr")->num;
@@ -109,17 +97,13 @@ float TcstroughEmpirical_EmpiricalTroughSCA_calc_col_factor_eval(var_table* vt, 
 
 	calc_col_factor = TrkTwstErr * GeoAcc * MirRef * MirCln * ConcFac;
 
-	if (cxt){
-		cxt->result().assign("calc_col_factor", calc_col_factor);
-	}
-
 	return calc_col_factor;
 
 }
 
 
 
-float TcstroughEmpirical_EmpiricalTroughSolarField_ui_piping_heat_loss_eval(var_table* vt, invoke_t* cxt)
+float TcstroughEmpirical_ui_piping_heat_loss_eval(var_table* vt)
 {
 	// inputs
 	float SfPipeHl3 = vt->lookup("SfPipeHl3")->num;
@@ -133,17 +117,13 @@ float TcstroughEmpirical_EmpiricalTroughSolarField_ui_piping_heat_loss_eval(var_
 
 	ui_piping_heat_loss = SfPipeHl3 * pow( calc_field_htf_average_temp, 3.000000 ) + SfPipeHl2 * pow( calc_field_htf_average_temp, 2.000000 ) + SfPipeHl1 * calc_field_htf_average_temp * SfPipeHl300;
 
-	if (cxt){
-		cxt->result().assign("ui_piping_heat_loss", ui_piping_heat_loss);
-	}
-
 	return ui_piping_heat_loss;
 
 }
 
 
 
-float TcstroughEmpirical_EmpiricalTroughParasitics_HhtfPar_eval(var_table* vt, invoke_t* cxt)
+float TcstroughEmpirical_HhtfPar_eval(var_table* vt)
 {
 	// inputs
 	float HhtfParPF = vt->lookup("HhtfParPF")->num;
@@ -154,10 +134,6 @@ float TcstroughEmpirical_EmpiricalTroughParasitics_HhtfPar_eval(var_table* vt, i
 	float HhtfPar;
 
 	HhtfPar = HhtfParPF * ui_par_tes_const * ui_par_turb_out_gr;
-
-	if (cxt){
-		cxt->result().assign("HhtfPar", HhtfPar);
-	}
 
 	return HhtfPar;
 

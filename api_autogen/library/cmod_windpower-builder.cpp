@@ -5,7 +5,7 @@
 
 #include "cmod_windpower-builder.h"
 
-float Windpower_WindFarmSpecifications_system_capacity_eval(var_table* vt, invoke_t* cxt)
+float Windpower_system_capacity_eval(var_table* vt)
 {
 	// inputs
 	float wind_farm_num_turbines = vt->lookup("wind_farm_num_turbines")->num;
@@ -16,17 +16,13 @@ float Windpower_WindFarmSpecifications_system_capacity_eval(var_table* vt, invok
 
 	system_capacity = wind_farm_num_turbines * wind_turbine_kw_rating;
 
-	if (cxt){
-		cxt->result().assign("system_capacity", system_capacity);
-	}
-
 	return system_capacity;
 
 }
 
 
 
-var_table Windpower_WindFarmSpecifications_wind_farm_num_turbines_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table Windpower_wind_farm_num_turbines_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float wind_farm_sizing_mode = vt->lookup("wind_farm_sizing_mode")->num;
@@ -145,15 +141,6 @@ var_table Windpower_WindFarmSpecifications_wind_farm_num_turbines_MIMO_eval(var_
 	;
 
 
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("wind_farm_num_turbines", wind_farm_num_turbines);
-		cxt->result().hash_item("wind_farm_xCoordinates", wind_farm_xCoordinates);
-		cxt->result().hash_item("wind_farm_yCoordinates", wind_farm_yCoordinates);
-		cxt->result().hash_item("rows", rows);
-		cxt->result().hash_item("cols", cols);
-	}
-
 	var_table vt;
 	vt.assign( "wind_farm_num_turbines", wind_farm_num_turbines );
 	vt.assign( "wind_farm_xCoordinates", wind_farm_xCoordinates );
@@ -165,7 +152,7 @@ var_table Windpower_WindFarmSpecifications_wind_farm_num_turbines_MIMO_eval(var_
 
 
 
-var_table Windpower_WindTurbineDesign_wind_turbine_powercurve_windspeeds_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table Windpower_wind_turbine_powercurve_windspeeds_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float wind.turbine.radio_list_or_design = vt->lookup("wind.turbine.radio_list_or_design")->num;
@@ -299,15 +286,6 @@ var_table Windpower_WindTurbineDesign_wind_turbine_powercurve_windspeeds_MIMO_ev
 	wind_turbine_powercurve_err_msg = errmsg;
 	throw;
 
-
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("wind_turbine_powercurve_windspeeds", wind_turbine_powercurve_windspeeds);
-		cxt->result().hash_item("wind_turbine_powercurve_powerout", wind_turbine_powercurve_powerout);
-		cxt->result().hash_item("wind_turbine_rated_wind_speed", wind_turbine_rated_wind_speed);
-		cxt->result().hash_item("wind_turbine_powercurve_err_msg", wind_turbine_powercurve_err_msg);
-		cxt->result().hash_item("wind_turbine_powercurve_hub_efficiency", wind_turbine_powercurve_hub_efficiency);
-	}
 
 	var_table vt;
 	vt.assign( "wind_turbine_powercurve_windspeeds", wind_turbine_powercurve_windspeeds );

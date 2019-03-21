@@ -109,7 +109,7 @@ value( inv_cec_cg_c3, c3 );
 
 
 
-var_table Pvsamv1_InverterCECDatabase_inv_snl_eff_cec_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table Pvsamv1_inv_snl_eff_cec_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float inv_snl_vdco = vt->lookup("inv_snl_vdco")->num;
@@ -170,12 +170,6 @@ var_table Pvsamv1_InverterCECDatabase_inv_snl_eff_cec_MIMO_eval(var_table* vt, i
 	inv_snl_eff_euro = euro_eff * 100.000000;
 
 
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("inv_snl_eff_cec", inv_snl_eff_cec);
-		cxt->result().hash_item("inv_snl_eff_euro", inv_snl_eff_euro);
-	}
-
 	var_table vt;
 	vt.assign( "inv_snl_eff_cec", inv_snl_eff_cec );
 	vt.assign( "inv_snl_eff_euro", inv_snl_eff_euro );
@@ -184,7 +178,7 @@ var_table Pvsamv1_InverterCECDatabase_inv_snl_eff_cec_MIMO_eval(var_table* vt, i
 
 
 
-float Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_p_mp_ref_eval(var_table* vt, invoke_t* cxt)
+float Pvsamv1_cec_p_mp_ref_eval(var_table* vt)
 {
 	// inputs
 	float cec_i_mp_ref = vt->lookup("cec_i_mp_ref")->num;
@@ -195,17 +189,13 @@ float Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_p_mp_ref_eval(var_table*
 
 	cec_p_mp_ref = cec_i_mp_ref * cec_v_mp_ref;
 
-	if (cxt){
-		cxt->result().assign("cec_p_mp_ref", cec_p_mp_ref);
-	}
-
 	return cec_p_mp_ref;
 
 }
 
 
 
-float Pvsamv1_InverterPartLoadCurve_inv_pd_pdco_eval(var_table* vt, invoke_t* cxt)
+float Pvsamv1_inv_pd_pdco_eval(var_table* vt)
 {
 	// inputs
 	float inv_pd_paco = vt->lookup("inv_pd_paco")->num;
@@ -216,17 +206,13 @@ float Pvsamv1_InverterPartLoadCurve_inv_pd_pdco_eval(var_table* vt, invoke_t* cx
 
 	inv_pd_pdco = inv_pd_paco / inv_pd_eff / 100.000000;
 
-	if (cxt){
-		cxt->result().assign("inv_pd_pdco", inv_pd_pdco);
-	}
-
 	return inv_pd_pdco;
 
 }
 
 
 
-float Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_pmp_eval(var_table* vt, invoke_t* cxt)
+float Pvsamv1_6par_pmp_eval(var_table* vt)
 {
 	// inputs
 	float 6par_vmp = vt->lookup("6par_vmp")->num;
@@ -237,17 +223,13 @@ float Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_pmp_eval(var
 
 	6par_pmp = 6par_vmp * 6par_imp;
 
-	if (cxt){
-		cxt->result().assign("6par_pmp", 6par_pmp);
-	}
-
 	return 6par_pmp;
 
 }
 
 
 
-float Pvsamv1_PVSystemDesign_total_modules_eval(var_table* vt, invoke_t* cxt)
+float Pvsamv1_total_modules_eval(var_table* vt)
 {
 	// inputs
 	float subarray1_modules_per_string = vt->lookup("subarray1_modules_per_string")->num;
@@ -269,17 +251,13 @@ float Pvsamv1_PVSystemDesign_total_modules_eval(var_table* vt, invoke_t* cxt)
 	total_modules = a;
 
 
-	if (cxt){
-		cxt->result().assign("total_modules", total_modules);
-	}
-
 	return total_modules;
 
 }
 
 
 
-var_table Pvsamv1_PVSystemDesign_subarray2_enable_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table Pvsamv1_subarray2_enable_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float enable_auto_size = vt->lookup("enable_auto_size")->num;
@@ -441,16 +419,6 @@ var_table Pvsamv1_PVSystemDesign_subarray2_enable_MIMO_eval(var_table* vt, invok
 	
 	}
 
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("subarray2_enable", subarray2_enable);
-		cxt->result().hash_item("subarray3_enable", subarray3_enable);
-		cxt->result().hash_item("subarray4_enable", subarray4_enable);
-		cxt->result().hash_item("subarray1_modules_per_string", subarray1_modules_per_string);
-		cxt->result().hash_item("subarray1_nstrings", subarray1_nstrings);
-		cxt->result().hash_item("inverter_count", inverter_count);
-	}
-
 	var_table vt;
 	vt.assign( "subarray2_enable", subarray2_enable );
 	vt.assign( "subarray3_enable", subarray3_enable );
@@ -463,7 +431,7 @@ var_table Pvsamv1_PVSystemDesign_subarray2_enable_MIMO_eval(var_table* vt, invok
 
 
 
-float Pvsamv1_SimpleEfficiencyModuleModel_spe_power_eval(var_table* vt, invoke_t* cxt)
+float Pvsamv1_spe_power_eval(var_table* vt)
 {
 	// inputs
 	float spe_reference = vt->lookup("spe_reference")->num;
@@ -507,10 +475,6 @@ float Pvsamv1_SimpleEfficiencyModuleModel_spe_power_eval(var_table* vt, invoke_t
 	};
 
 	spe_power = switch_spe_reference() * spe_area;
-
-	if (cxt){
-		cxt->result().assign("spe_power", spe_power);
-	}
 
 	return spe_power;
 
@@ -561,7 +525,7 @@ value( inv_cec_cg_c3, c3 );
 
 
 
-var_table Pvsamv1_InverterCECCoefficientGenerator_inv_cec_cg_eff_cec_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table Pvsamv1_inv_cec_cg_eff_cec_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float inv_cec_cg_vdco = vt->lookup("inv_cec_cg_vdco")->num;
@@ -622,12 +586,6 @@ var_table Pvsamv1_InverterCECCoefficientGenerator_inv_cec_cg_eff_cec_MIMO_eval(v
 	inv_cec_cg_eff_euro = euro_eff * 100.000000;
 
 
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("inv_cec_cg_eff_cec", inv_cec_cg_eff_cec);
-		cxt->result().hash_item("inv_cec_cg_eff_euro", inv_cec_cg_eff_euro);
-	}
-
 	var_table vt;
 	vt.assign( "inv_cec_cg_eff_cec", inv_cec_cg_eff_cec );
 	vt.assign( "inv_cec_cg_eff_euro", inv_cec_cg_eff_euro );
@@ -636,7 +594,7 @@ var_table Pvsamv1_InverterCECCoefficientGenerator_inv_cec_cg_eff_cec_MIMO_eval(v
 
 
 
-var_table Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_ref_a_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table Pvsamv1_snl_ref_a_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float snl_module_structure = vt->lookup("snl_module_structure")->num;
@@ -827,29 +785,6 @@ var_table Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_ref_a_MIMO
 	snl_voc_temp_1 = dVoc_dT;
 	snl_ref_eff = 100.000000 * Pmp / snl_area / Eb + Ed;
 
-
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("snl_ref_a", snl_ref_a);
-		cxt->result().hash_item("snl_ref_b", snl_ref_b);
-		cxt->result().hash_item("snl_ref_dT", snl_ref_dT);
-		cxt->result().hash_item("snl_ref_isc", snl_ref_isc);
-		cxt->result().hash_item("snl_ref_isc_temp_0", snl_ref_isc_temp_0);
-		cxt->result().hash_item("snl_ref_isc_temp_1", snl_ref_isc_temp_1);
-		cxt->result().hash_item("snl_ref_imp", snl_ref_imp);
-		cxt->result().hash_item("snl_ref_imp_temp_0", snl_ref_imp_temp_0);
-		cxt->result().hash_item("snl_imp_temp_1", snl_imp_temp_1);
-		cxt->result().hash_item("snl_ref_vmp", snl_ref_vmp);
-		cxt->result().hash_item("snl_ref_vmp_temp_0", snl_ref_vmp_temp_0);
-		cxt->result().hash_item("snl_ref_vmp_temp_1", snl_ref_vmp_temp_1);
-		cxt->result().hash_item("snl_ref_pmp", snl_ref_pmp);
-		cxt->result().hash_item("snl_ref_pmp_temp_0", snl_ref_pmp_temp_0);
-		cxt->result().hash_item("snl_ref_pmp_temp_1", snl_ref_pmp_temp_1);
-		cxt->result().hash_item("snl_ref_voc", snl_ref_voc);
-		cxt->result().hash_item("snl_ref_voc_temp_0", snl_ref_voc_temp_0);
-		cxt->result().hash_item("snl_voc_temp_1", snl_voc_temp_1);
-		cxt->result().hash_item("snl_ref_eff", snl_ref_eff);
-	}
 
 	var_table vt;
 	vt.assign( "snl_ref_a", snl_ref_a );

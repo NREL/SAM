@@ -34,7 +34,7 @@ enable( csp.mslf.tes.htf_max_opt_temp, !bCustomHTF );
 
 
 
-float TcsMSLF_MoltenSaltLinearFresnelSolarField_sm1_aperture_eval(var_table* vt, invoke_t* cxt)
+float TcsMSLF_sm1_aperture_eval(var_table* vt)
 {
 	// inputs
 	float sf_q_design = vt->lookup("sf_q_design")->num;
@@ -46,17 +46,13 @@ float TcsMSLF_MoltenSaltLinearFresnelSolarField_sm1_aperture_eval(var_table* vt,
 
 	sm1_aperture = sf_q_design / I_bn_des * loop_eff * 1000000.000000;
 
-	if (cxt){
-		cxt->result().assign("sm1_aperture", sm1_aperture);
-	}
-
 	return sm1_aperture;
 
 }
 
 
 
-float TcsMSLF_MSLFPowerCycleCommon_system_capacity_eval(var_table* vt, invoke_t* cxt)
+float TcsMSLF_system_capacity_eval(var_table* vt)
 {
 	// inputs
 	float nameplate = vt->lookup("nameplate")->num;
@@ -65,10 +61,6 @@ float TcsMSLF_MSLFPowerCycleCommon_system_capacity_eval(var_table* vt, invoke_t*
 	float system_capacity;
 
 	system_capacity = nameplate * 1000.000000;
-
-	if (cxt){
-		cxt->result().assign("system_capacity", system_capacity);
-	}
 
 	return system_capacity;
 
@@ -113,7 +105,7 @@ enable( csp.mslf.tes.htf_max_opt_temp, !bCustomHTF );
 
 
 
-float TcsMSLF_MoltenSaltLinearFresnelCollectorAndReceiver_hl_derate_eval(var_table* vt, invoke_t* cxt)
+float TcsMSLF_hl_derate_eval(var_table* vt)
 {
 	// inputs
 	float hl_des = vt->lookup("hl_des")->num;
@@ -126,17 +118,13 @@ float TcsMSLF_MoltenSaltLinearFresnelCollectorAndReceiver_hl_derate_eval(var_tab
 
 	hl_derate = 1.000000 - hl_des / I_bn_des * A_aperture / L_mod;
 
-	if (cxt){
-		cxt->result().assign("hl_derate", hl_derate);
-	}
-
 	return hl_derate;
 
 }
 
 
 
-float TcsMSLF_MoltenSaltLinearFresnelStorage_csp.mslf.control.tes_dens_eval(var_table* vt, invoke_t* cxt)
+float TcsMSLF_csp.mslf.control.tes_dens_eval(var_table* vt)
 {
 	// inputs
 	float csp.mslf.control.store_fluid = vt->lookup("csp.mslf.control.store_fluid")->num;
@@ -186,10 +174,6 @@ float TcsMSLF_MoltenSaltLinearFresnelStorage_csp.mslf.control.tes_dens_eval(var_
 	};
 
 	csp.mslf.control.tes_dens = switch_csp.mslf.control.store_fluid();
-
-	if (cxt){
-		cxt->result().assign("csp.mslf.control.tes_dens", csp.mslf.control.tes_dens);
-	}
 
 	return csp.mslf.control.tes_dens;
 

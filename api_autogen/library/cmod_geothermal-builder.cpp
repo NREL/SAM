@@ -5,7 +5,7 @@
 
 #include "cmod_geothermal-builder.h"
 
-float Geothermal_GeothermalPowerBlock_T_htf_hot_ref_eval(var_table* vt, invoke_t* cxt)
+float Geothermal_T_htf_hot_ref_eval(var_table* vt)
 {
 	// inputs
 	float design_temp = vt->lookup("design_temp")->num;
@@ -15,17 +15,13 @@ float Geothermal_GeothermalPowerBlock_T_htf_hot_ref_eval(var_table* vt, invoke_t
 
 	T_htf_hot_ref = design_temp;
 
-	if (cxt){
-		cxt->result().assign("T_htf_hot_ref", T_htf_hot_ref);
-	}
-
 	return T_htf_hot_ref;
 
 }
 
 
 
-float Geothermal_GeothermalPlantAndEquipment_design_temp_eval(var_table* vt, invoke_t* cxt)
+float Geothermal_design_temp_eval(var_table* vt)
 {
 	// inputs
 	float geotherm.egs_design_temp_autoselect = vt->lookup("geotherm.egs_design_temp_autoselect")->num;
@@ -41,17 +37,13 @@ float Geothermal_GeothermalPlantAndEquipment_design_temp_eval(var_table* vt, inv
 	else {
 		design_temp = geotherm.egs_design_temp_input;}
 
-	if (cxt){
-		cxt->result().assign("design_temp", design_temp);
-	}
-
 	return design_temp;
 
 }
 
 
 
-var_table Geothermal_GeothermalPlantAndEquipment_num_wells_getem_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table Geothermal_num_wells_getem_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float nameplate = vt->lookup("nameplate")->num;
@@ -172,19 +164,6 @@ var_table Geothermal_GeothermalPlantAndEquipment_num_wells_getem_MIMO_eval(var_t
 	ssc_free( obj );
 	std::string = 0.000000;
 
-
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("num_wells_getem", num_wells_getem);
-		cxt->result().hash_item("geotherm.plant_efficiency_used", geotherm.plant_efficiency_used);
-		cxt->result().hash_item("gross_output", gross_output);
-		cxt->result().hash_item("pump_depth", pump_depth);
-		cxt->result().hash_item("pump_work", pump_work);
-		cxt->result().hash_item("pump_size_hp", pump_size_hp);
-		cxt->result().hash_item("geotherm.delta_pressure_reservoir", geotherm.delta_pressure_reservoir);
-		cxt->result().hash_item("geotherm.avg_reservoir_temp", geotherm.avg_reservoir_temp);
-		cxt->result().hash_item("geotherm.bottom_hole_pressure", geotherm.bottom_hole_pressure);
-	}
 
 	var_table vt;
 	vt.assign( "num_wells_getem", num_wells_getem );

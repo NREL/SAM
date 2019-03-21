@@ -9,6 +9,8 @@ endif()
 
 Project(SAM_API)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+
 
 #include_directories(../src $ENV{LKDIR}/include $ENV{SSCDIR})
 include_directories(. $ENV{SSCDIR})
@@ -20,23 +22,25 @@ set(SAM_API_SRC
         visibility.h
         SAM_GenericSystem.h
         SAM_GenericSystem.cpp
-        test_api.h
-        test_api.cpp
-    )
+        GenericSystem-External.h
+        GenericSystem-External.cpp
+        SystemLoader.cpp
+        SystemLoader.h
+        )
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # set build types for archive
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_executable(SAM_apid
-            ${SAM_API_SRC} )
+    add_library(SAM_apid SHARED
+            ${SAM_API_SRC})
     set(SAM_API_LIB SAM_apid)
 
     set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
 else()
-    add_executable(SAM_api
+    add_library(SAM_api SHARED
             ${SAM_API_SRC})
     set(SAM_API_LIB SAM_apid)
 endif()
@@ -64,6 +68,7 @@ else()
                 PATHS $ENV{SSCDIR}/ssc)
     endif()
 endif()
+set_property(TARGET ${SAM_API_LIB} PROPERTY PREFIX "")
 
 
 #setup compile options
@@ -74,3 +79,24 @@ target_compile_options(${SAM_API_LIB} PUBLIC -O3 -std=c++11 )
 target_link_libraries(${SAM_API_LIB} -lm -lcurl)
 target_link_libraries(${SAM_API_LIB} ${SSC_LIB})
 
+
+## make test
+
+add_executable(SAM_api_test
+        test.cpp)
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_link_libraries(SAM_api_test sscd SAM_apid)
+
+
+else()
+    target_link_libraries(SAM_api_test ssc SAM_api)
+
+endif()
+
+#setup compile options
+target_compile_options(SAM_api_test PUBLIC -O3 -std=c++11 )
+
+
+# setup linking dependencies and flags
+target_link_libraries(SAM_api_test -lm -lcurl)

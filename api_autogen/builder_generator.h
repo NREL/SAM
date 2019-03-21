@@ -31,7 +31,7 @@ private:
 
     void gather_variables();
 
-    void export_variables_json();
+    void export_variables_json(const std::string &cmod);
 
     std::unordered_map<std::string, edge *> gather_functions();
 

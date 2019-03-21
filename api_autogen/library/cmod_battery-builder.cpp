@@ -5,7 +5,7 @@
 
 #include "cmod_battery-builder.h"
 
-var_table Battery_BatteryCurrentAndCapacity_batt_computed_voltage_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table Battery_batt_computed_voltage_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float batt_size_choice = vt->lookup("batt_size_choice")->num;
@@ -159,23 +159,6 @@ var_table Battery_BatteryCurrentAndCapacity_batt_computed_voltage_MIMO_eval(var_
 	}
 
 
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("batt_computed_voltage", batt_computed_voltage);
-		cxt->result().hash_item("batt_computed_series", batt_computed_series);
-		cxt->result().hash_item("batt_computed_strings", batt_computed_strings);
-		cxt->result().hash_item("batt_num_cells", batt_num_cells);
-		cxt->result().hash_item("batt_computed_bank_capacity", batt_computed_bank_capacity);
-		cxt->result().hash_item("batt_power_discharge_max", batt_power_discharge_max);
-		cxt->result().hash_item("batt_power_charge_max", batt_power_charge_max);
-		cxt->result().hash_item("batt_time_capacity", batt_time_capacity);
-		cxt->result().hash_item("batt_C_rate_max_charge", batt_C_rate_max_charge);
-		cxt->result().hash_item("batt_C_rate_max_discharge", batt_C_rate_max_discharge);
-		cxt->result().hash_item("batt_current_charge_max", batt_current_charge_max);
-		cxt->result().hash_item("batt_current_discharge_max", batt_current_discharge_max);
-		cxt->result().hash_item("batt_computed_stacks_series", batt_computed_stacks_series);
-	}
-
 	var_table vt;
 	vt.assign( "batt_computed_voltage", batt_computed_voltage );
 	vt.assign( "batt_computed_series", batt_computed_series );
@@ -195,7 +178,7 @@ var_table Battery_BatteryCurrentAndCapacity_batt_computed_voltage_MIMO_eval(var_
 
 
 
-float Battery_BatteryThermal_batt_width_eval(var_table* vt, invoke_t* cxt)
+float Battery_batt_width_eval(var_table* vt)
 {
 	// inputs
 	float batt_volume = vt->lookup("batt_volume")->num;
@@ -205,17 +188,13 @@ float Battery_BatteryThermal_batt_width_eval(var_table* vt, invoke_t* cxt)
 
 	batt_width = pow( batt_volume, 0.333333 );
 
-	if (cxt){
-		cxt->result().assign("batt_width", batt_width);
-	}
-
 	return batt_width;
 
 }
 
 
 
-var_table Battery_BatteryCurrentAndCapacity_LeadAcid_q10_computed_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table Battery_LeadAcid_q10_computed_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float batt_computed_strings = vt->lookup("batt_computed_strings")->num;
@@ -234,13 +213,6 @@ var_table Battery_BatteryCurrentAndCapacity_LeadAcid_q10_computed_MIMO_eval(var_
 	LeadAcid_qn_computed = batt_computed_strings * LeadAcid_qn * batt_Qfull / 100.000000;
 
 
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("LeadAcid_q10_computed", LeadAcid_q10_computed);
-		cxt->result().hash_item("LeadAcid_q20_computed", LeadAcid_q20_computed);
-		cxt->result().hash_item("LeadAcid_qn_computed", LeadAcid_qn_computed);
-	}
-
 	var_table vt;
 	vt.assign( "LeadAcid_q10_computed", LeadAcid_q10_computed );
 	vt.assign( "LeadAcid_q20_computed", LeadAcid_q20_computed );
@@ -250,7 +222,7 @@ var_table Battery_BatteryCurrentAndCapacity_LeadAcid_q10_computed_MIMO_eval(var_
 
 
 
-var_table Battery_BatteryCurrentAndCapacity_batt_Qexp_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table Battery_batt_Qexp_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float batt_Qexp_percent = vt->lookup("batt_Qexp_percent")->num;
@@ -269,13 +241,6 @@ var_table Battery_BatteryCurrentAndCapacity_batt_Qexp_MIMO_eval(var_table* vt, i
 	batt_Qfull_flow = batt_computed_bank_capacity * 1000.000000 / batt_computed_voltage;
 
 
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("batt_Qexp", batt_Qexp);
-		cxt->result().hash_item("batt_Qnom", batt_Qnom);
-		cxt->result().hash_item("batt_Qfull_flow", batt_Qfull_flow);
-	}
-
 	var_table vt;
 	vt.assign( "batt_Qexp", batt_Qexp );
 	vt.assign( "batt_Qnom", batt_Qnom );
@@ -285,7 +250,7 @@ var_table Battery_BatteryCurrentAndCapacity_batt_Qexp_MIMO_eval(var_table* vt, i
 
 
 
-util::matrix_t<ssc_number_t> Battery_BatteryDispatchManual_dispatch_manual_percent_gridcharge_eval(var_table* vt, invoke_t* cxt)
+util::matrix_t<ssc_number_t> Battery_dispatch_manual_percent_gridcharge_eval(var_table* vt)
 {
 	// inputs
 	util::matrix_t<ssc_number_t> dispatch_manual_gridcharge = vt->lookup("dispatch_manual_gridcharge")->num;
@@ -330,10 +295,6 @@ util::matrix_t<ssc_number_t> Battery_BatteryDispatchManual_dispatch_manual_perce
 	}
 	dispatch_manual_percent_gridcharge = ret_array;
 
-
-	if (cxt){
-		cxt->result().assign("dispatch_manual_percent_gridcharge", dispatch_manual_percent_gridcharge);
-	}
 
 	return dispatch_manual_percent_gridcharge;
 

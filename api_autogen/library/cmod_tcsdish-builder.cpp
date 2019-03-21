@@ -5,7 +5,7 @@
 
 #include "cmod_tcsdish-builder.h"
 
-float Tcsdish_DishSolarField_csp.ds.ncollectors_eval(var_table* vt, invoke_t* cxt)
+float Tcsdish_csp.ds.ncollectors_eval(var_table* vt)
 {
 	// inputs
 	float n_ew = vt->lookup("n_ew")->num;
@@ -15,10 +15,6 @@ float Tcsdish_DishSolarField_csp.ds.ncollectors_eval(var_table* vt, invoke_t* cx
 	float csp.ds.ncollectors;
 
 	csp.ds.ncollectors = n_ew * n_ns;
-
-	if (cxt){
-		cxt->result().assign("csp.ds.ncollectors", csp.ds.ncollectors);
-	}
 
 	return csp.ds.ncollectors;
 

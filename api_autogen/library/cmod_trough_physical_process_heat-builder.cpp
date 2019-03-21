@@ -5,7 +5,7 @@
 
 #include "cmod_trough_physical_process_heat-builder.h"
 
-var_table TroughPhysicalProcessHeat_PhysicalTroughCollectorHeader_W_aperture_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table TroughPhysicalProcessHeat_W_aperture_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float csp_dtr_sca_w_profile_1 = vt->lookup("csp_dtr_sca_w_profile_1")->num;
@@ -143,23 +143,6 @@ var_table TroughPhysicalProcessHeat_PhysicalTroughCollectorHeader_W_aperture_MIM
 	Distance_SCA = acollector;
 
 
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("W_aperture", W_aperture);
-		cxt->result().hash_item("max_collector_width", max_collector_width);
-		cxt->result().hash_item("A_aperture", A_aperture);
-		cxt->result().hash_item("TrackingError", TrackingError);
-		cxt->result().hash_item("GeomEffects", GeomEffects);
-		cxt->result().hash_item("Rho_mirror_clean", Rho_mirror_clean);
-		cxt->result().hash_item("Dirt_mirror", Dirt_mirror);
-		cxt->result().hash_item("Error", Error);
-		cxt->result().hash_item("Ave_Focal_Length", Ave_Focal_Length);
-		cxt->result().hash_item("L_SCA", L_SCA);
-		cxt->result().hash_item("L_aperture", L_aperture);
-		cxt->result().hash_item("ColperSCA", ColperSCA);
-		cxt->result().hash_item("Distance_SCA", Distance_SCA);
-	}
-
 	var_table vt;
 	vt.assign( "W_aperture", W_aperture );
 	vt.assign( "max_collector_width", max_collector_width );
@@ -179,7 +162,7 @@ var_table TroughPhysicalProcessHeat_PhysicalTroughCollectorHeader_W_aperture_MIM
 
 
 
-var_table TroughPhysicalProcessHeat_PhysicalTroughCollectorHeader_collectors_in_field_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table TroughPhysicalProcessHeat_collectors_in_field_MIMO_eval(var_table* vt)
 {
 	// inputs
 	util::matrix_t<ssc_number_t> SCAInfoArray = vt->lookup("SCAInfoArray")->num;
@@ -208,12 +191,6 @@ var_table TroughPhysicalProcessHeat_PhysicalTroughCollectorHeader_collectors_in_
 	arr_collectors_in_loop = c;
 
 
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("collectors_in_field", collectors_in_field);
-		cxt->result().hash_item("arr_collectors_in_loop", arr_collectors_in_loop);
-	}
-
 	var_table vt;
 	vt.assign( "collectors_in_field", collectors_in_field );
 	vt.assign( "arr_collectors_in_loop", arr_collectors_in_loop );
@@ -222,7 +199,7 @@ var_table TroughPhysicalProcessHeat_PhysicalTroughCollectorHeader_collectors_in_
 
 
 
-util::matrix_t<ssc_number_t> TroughPhysicalProcessHeat_PhysTroughSolarField_D_cpnt_eval(var_table* vt, invoke_t* cxt)
+util::matrix_t<ssc_number_t> TroughPhysicalProcessHeat_D_cpnt_eval(var_table* vt)
 {
 	// inputs
 	float nSCA = vt->lookup("nSCA")->num;
@@ -246,10 +223,6 @@ util::matrix_t<ssc_number_t> TroughPhysicalProcessHeat_PhysTroughSolarField_D_cp
 	D.insert(D.begin()+[nSCA + 2.000000, D_cpnt_x_1);
 	float = D;
 
-
-	if (cxt){
-		cxt->result().assign("float", float);
-	}
 
 	return float;
 

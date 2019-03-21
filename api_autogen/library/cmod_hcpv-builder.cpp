@@ -5,7 +5,7 @@
 
 #include "cmod_hcpv-builder.h"
 
-float Hcpv_HCPVArray_array_num_inverters_eval(var_table* vt, invoke_t* cxt)
+float Hcpv_array_num_inverters_eval(var_table* vt)
 {
 	// inputs
 	float hcpv.array.nameplate = vt->lookup("hcpv.array.nameplate")->num;
@@ -16,17 +16,13 @@ float Hcpv_HCPVArray_array_num_inverters_eval(var_table* vt, invoke_t* cxt)
 
 	array_num_inverters = ceil( hcpv.array.nameplate / inv_snl_pdco / 1000.000000 );
 
-	if (cxt){
-		cxt->result().assign("array_num_inverters", array_num_inverters);
-	}
-
 	return array_num_inverters;
 
 }
 
 
 
-float Hcpv_HCPVModule_hcpv.module.area_eval(var_table* vt, invoke_t* cxt)
+float Hcpv_hcpv.module.area_eval(var_table* vt)
 {
 	// inputs
 	float module_concentration = vt->lookup("module_concentration")->num;
@@ -37,10 +33,6 @@ float Hcpv_HCPVModule_hcpv.module.area_eval(var_table* vt, invoke_t* cxt)
 	float hcpv.module.area;
 
 	hcpv.module.area = module_concentration * module_cell_area * 0.000100 * module_ncells;
-
-	if (cxt){
-		cxt->result().assign("hcpv.module.area", hcpv.module.area);
-	}
 
 	return hcpv.module.area;
 

@@ -5,7 +5,7 @@
 
 #include "cmod_tcslinear_fresnel-builder.h"
 
-float TcslinearFresnel_LinearFresnelBoilerGeometry_csp.lf.geom1.avg_field_temp_dt_design_eval(var_table* vt, invoke_t* cxt)
+float TcslinearFresnel_csp.lf.geom1.avg_field_temp_dt_design_eval(var_table* vt)
 {
 	// inputs
 	float T_cold_ref = vt->lookup("T_cold_ref")->num;
@@ -17,17 +17,13 @@ float TcslinearFresnel_LinearFresnelBoilerGeometry_csp.lf.geom1.avg_field_temp_d
 
 	csp.lf.geom1.avg_field_temp_dt_design = T_cold_ref + T_hot / 2.000000 - T_amb_des_sf;
 
-	if (cxt){
-		cxt->result().assign("csp.lf.geom1.avg_field_temp_dt_design", csp.lf.geom1.avg_field_temp_dt_design);
-	}
-
 	return csp.lf.geom1.avg_field_temp_dt_design;
 
 }
 
 
 
-float TcslinearFresnel_LinearFresnelSuperheaterGeometry_csp.lf.geom2.rec_thermal_derate_eval(var_table* vt, invoke_t* cxt)
+float TcslinearFresnel_csp.lf.geom2.rec_thermal_derate_eval(var_table* vt)
 {
 	// inputs
 	float csp.lf.geom2.heat_loss_at_design = vt->lookup("csp.lf.geom2.heat_loss_at_design")->num;
@@ -40,17 +36,13 @@ float TcslinearFresnel_LinearFresnelSuperheaterGeometry_csp.lf.geom2.rec_thermal
 
 	csp.lf.geom2.rec_thermal_derate = 1.000000 - csp.lf.geom2.heat_loss_at_design / I_bn_des * csp.lf.geom2.refl_aper_area / csp.lf.geom2.coll_length;
 
-	if (cxt){
-		cxt->result().assign("csp.lf.geom2.rec_thermal_derate", csp.lf.geom2.rec_thermal_derate);
-	}
-
 	return csp.lf.geom2.rec_thermal_derate;
 
 }
 
 
 
-float TcslinearFresnel_PBNSPowerBlock_system_capacity_eval(var_table* vt, invoke_t* cxt)
+float TcslinearFresnel_system_capacity_eval(var_table* vt)
 {
 	// inputs
 	float nameplate = vt->lookup("nameplate")->num;
@@ -60,17 +52,13 @@ float TcslinearFresnel_PBNSPowerBlock_system_capacity_eval(var_table* vt, invoke
 
 	system_capacity = nameplate * 1000.000000;
 
-	if (cxt){
-		cxt->result().assign("system_capacity", system_capacity);
-	}
-
 	return system_capacity;
 
 }
 
 
 
-float TcslinearFresnel_LinearFresnelSolarField_csp.lf.sf.geom2_area_frac_eval(var_table* vt, invoke_t* cxt)
+float TcslinearFresnel_csp.lf.sf.geom2_area_frac_eval(var_table* vt)
 {
 	// inputs
 	float csp.lf.sf.sh_geom_unique = vt->lookup("csp.lf.sf.sh_geom_unique")->num;
@@ -98,10 +86,6 @@ float TcslinearFresnel_LinearFresnelSolarField_csp.lf.sf.geom2_area_frac_eval(va
 	};
 
 	csp.lf.sf.geom2_area_frac = switch_csp.lf.sf.sh_geom_unique();
-
-	if (cxt){
-		cxt->result().assign("csp.lf.sf.geom2_area_frac", csp.lf.sf.geom2_area_frac);
-	}
 
 	return csp.lf.sf.geom2_area_frac;
 

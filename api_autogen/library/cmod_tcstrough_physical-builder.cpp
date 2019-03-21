@@ -5,7 +5,7 @@
 
 #include "cmod_tcstrough_physical-builder.h"
 
-float TcstroughPhysical_PhysicalTroughPowerBlockCommon_system_capacity_eval(var_table* vt, invoke_t* cxt)
+float TcstroughPhysical_system_capacity_eval(var_table* vt)
 {
 	// inputs
 	float csp.dtr.pwrb.nameplate = vt->lookup("csp.dtr.pwrb.nameplate")->num;
@@ -15,17 +15,13 @@ float TcstroughPhysical_PhysicalTroughPowerBlockCommon_system_capacity_eval(var_
 
 	system_capacity = csp.dtr.pwrb.nameplate * 1000.000000;
 
-	if (cxt){
-		cxt->result().assign("system_capacity", system_capacity);
-	}
-
 	return system_capacity;
 
 }
 
 
 
-float TcstroughPhysical_PhysicalTroughSolarField_total_loop_conversion_efficiency_eval(var_table* vt, invoke_t* cxt)
+float TcstroughPhysical_total_loop_conversion_efficiency_eval(var_table* vt)
 {
 	// inputs
 	float loop_optical_efficiency = vt->lookup("loop_optical_efficiency")->num;
@@ -36,17 +32,13 @@ float TcstroughPhysical_PhysicalTroughSolarField_total_loop_conversion_efficienc
 
 	total_loop_conversion_efficiency = loop_optical_efficiency * cspdtr_loop_hce_heat_loss;
 
-	if (cxt){
-		cxt->result().assign("total_loop_conversion_efficiency", total_loop_conversion_efficiency);
-	}
-
 	return total_loop_conversion_efficiency;
 
 }
 
 
 
-var_table TcstroughPhysical_PhysicalTroughCollectorHeader_W_aperture_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table TcstroughPhysical_W_aperture_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float csp_dtr_sca_w_profile_1 = vt->lookup("csp_dtr_sca_w_profile_1")->num;
@@ -184,23 +176,6 @@ var_table TcstroughPhysical_PhysicalTroughCollectorHeader_W_aperture_MIMO_eval(v
 	Distance_SCA = acollector;
 
 
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("W_aperture", W_aperture);
-		cxt->result().hash_item("max_collector_width", max_collector_width);
-		cxt->result().hash_item("A_aperture", A_aperture);
-		cxt->result().hash_item("TrackingError", TrackingError);
-		cxt->result().hash_item("GeomEffects", GeomEffects);
-		cxt->result().hash_item("Rho_mirror_clean", Rho_mirror_clean);
-		cxt->result().hash_item("Dirt_mirror", Dirt_mirror);
-		cxt->result().hash_item("Error", Error);
-		cxt->result().hash_item("Ave_Focal_Length", Ave_Focal_Length);
-		cxt->result().hash_item("L_SCA", L_SCA);
-		cxt->result().hash_item("L_aperture", L_aperture);
-		cxt->result().hash_item("ColperSCA", ColperSCA);
-		cxt->result().hash_item("Distance_SCA", Distance_SCA);
-	}
-
 	var_table vt;
 	vt.assign( "W_aperture", W_aperture );
 	vt.assign( "max_collector_width", max_collector_width );
@@ -220,7 +195,7 @@ var_table TcstroughPhysical_PhysicalTroughCollectorHeader_W_aperture_MIMO_eval(v
 
 
 
-var_table TcstroughPhysical_PhysicalTroughPowerBlockCommon_W_pb_design_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table TcstroughPhysical_W_pb_design_MIMO_eval(var_table* vt)
 {
 	// inputs
 	float P_ref = vt->lookup("P_ref")->num;
@@ -241,13 +216,6 @@ var_table TcstroughPhysical_PhysicalTroughPowerBlockCommon_W_pb_design_MIMO_eval
 	q_pb_design = qdesign;
 	q_max_aux = qdesign;
 
-
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("W_pb_design", W_pb_design);
-		cxt->result().hash_item("q_pb_design", q_pb_design);
-		cxt->result().hash_item("q_max_aux", q_max_aux);
-	}
 
 	var_table vt;
 	vt.assign( "W_pb_design", W_pb_design );
@@ -370,7 +338,7 @@ enable( specified_total_aperture, state == 1.000000 );
 
 
 
-var_table TcstroughPhysical_PhysicalTroughCollectorHeader_collectors_in_field_MIMO_eval(var_table* vt, invoke_t* cxt)
+var_table TcstroughPhysical_collectors_in_field_MIMO_eval(var_table* vt)
 {
 	// inputs
 	util::matrix_t<ssc_number_t> SCAInfoArray = vt->lookup("SCAInfoArray")->num;
@@ -398,12 +366,6 @@ var_table TcstroughPhysical_PhysicalTroughCollectorHeader_collectors_in_field_MI
 	collectors_in_field = str + Hot;
 	arr_collectors_in_loop = c;
 
-
-	if (cxt){
-		cxt->result().empty_hash();
-		cxt->result().hash_item("collectors_in_field", collectors_in_field);
-		cxt->result().hash_item("arr_collectors_in_loop", arr_collectors_in_loop);
-	}
 
 	var_table vt;
 	vt.assign( "collectors_in_field", collectors_in_field );
@@ -517,7 +479,7 @@ enable( specified_total_aperture, state == 1.000000 );
 
 
 
-float TcstroughPhysical_PhysicalTroughThermalStorage_csp.dtr.tes.hx_derate_eval(var_table* vt, invoke_t* cxt)
+float TcstroughPhysical_csp.dtr.tes.hx_derate_eval(var_table* vt)
 {
 	// inputs
 	float is_hx = vt->lookup("is_hx")->num;
@@ -537,10 +499,6 @@ float TcstroughPhysical_PhysicalTroughThermalStorage_csp.dtr.tes.hx_derate_eval(
 		float T_htf_ave = 0.500000 * T_loop_out + T_loop_in_des;
 		float T_cold_baseline = 50.000000;
 		csp.dtr.tes.hx_derate = T_htf_ave - 2.000000 * dt_ave - T_cold_baseline / T_htf_ave - T_cold_baseline;
-	}
-
-	if (cxt){
-		cxt->result().assign("csp.dtr.tes.hx_derate", csp.dtr.tes.hx_derate);
 	}
 
 	return csp.dtr.tes.hx_derate;

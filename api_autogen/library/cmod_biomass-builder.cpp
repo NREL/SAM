@@ -5,7 +5,7 @@
 
 #include "cmod_biomass-builder.h"
 
-float Biomass_BiopowerPlantSpecifications_biopwr.plant.nameplate_eval(var_table* vt, invoke_t* cxt)
+float Biomass_biopwr.plant.nameplate_eval(var_table* vt)
 {
 	// inputs
 	float biopwr.plant.boiler.cap_per_boiler = vt->lookup("biopwr.plant.boiler.cap_per_boiler")->num;
@@ -18,17 +18,13 @@ float Biomass_BiopowerPlantSpecifications_biopwr.plant.nameplate_eval(var_table*
 
 	biopwr.plant.nameplate = biopwr.plant.boiler.cap_per_boiler * biopwr.plant.boiler.num * biopwr.plant.boiler.steam_enthalpy * 0.000293 * biopwr.plant.rated_eff;
 
-	if (cxt){
-		cxt->result().assign("biopwr.plant.nameplate", biopwr.plant.nameplate);
-	}
-
 	return biopwr.plant.nameplate;
 
 }
 
 
 
-float Biomass_BiopowerFeedstock_biopwr.feedstock.total_moisture_eval(var_table* vt, invoke_t* cxt)
+float Biomass_biopwr.feedstock.total_moisture_eval(var_table* vt)
 {
 	// inputs
 	float biopwr.feedstock.bagasse_frac = vt->lookup("biopwr.feedstock.bagasse_frac")->num;
@@ -66,10 +62,6 @@ float Biomass_BiopowerFeedstock_biopwr.feedstock.total_moisture_eval(var_table* 
 	float biopwr.feedstock.total_moisture;
 
 	biopwr.feedstock.total_moisture = biopwr.feedstock.bagasse_frac * biopwr.feedstock.bagasse_moisture / 100.000000 + biopwr.feedstock.barley_frac * biopwr.feedstock.barley_moisture / 100.000000 + biopwr.feedstock.stover_frac * biopwr.feedstock.stover_moisture / 100.000000 + biopwr.feedstock.rice_frac * biopwr.feedstock.rice_moisture / 100.000000 + biopwr.feedstock.wheat_frac * biopwr.feedstock.wheat_moisture / 100.000000 + biopwr.feedstock.forest_frac * biopwr.feedstock.forest_moisture / 100.000000 + biopwr.feedstock.mill_frac * biopwr.feedstock.mill_moisture / 100.000000 + biopwr.feedstock.urban_frac * biopwr.feedstock.urban_moisture / 100.000000 + biopwr.feedstock.woody_frac * biopwr.feedstock.woody_moisture / 100.000000 + biopwr.feedstock.herb_frac * biopwr.feedstock.herb_moisture / 100.000000 + biopwr.feedstock.feedstock1_frac * biopwr.feedstock.feedstock1_moisture / 100.000000 + biopwr.feedstock.feedstock2_frac * biopwr.feedstock.feedstock2_moisture / 100.000000 + biopwr.feedstock.bit_frac * biopwr.feedstock.bit_moisture / 100.000000 + biopwr.feedstock.subbit_frac * biopwr.feedstock.subbit_moisture / 100.000000 + biopwr.feedstock.lig_frac * biopwr.feedstock.lig_moisture / 100.000000;
-
-	if (cxt){
-		cxt->result().assign("biopwr.feedstock.total_moisture", biopwr.feedstock.total_moisture);
-	}
 
 	return biopwr.feedstock.total_moisture;
 

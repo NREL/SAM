@@ -77,7 +77,7 @@ int main(int argc, char *argv[]){
 //            continue;
 //        }
 
-        // focus on this one
+        // focus on this one, or skip it
         if (active_config == "MSPT-Single Owner" ){
             continue;
         }
