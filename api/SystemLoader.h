@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#ifdef __WXMSW__
+#ifdef __WINDOWS__
 	#include "dlfnc.h"
 #else
 	#include <dlfcn.h>

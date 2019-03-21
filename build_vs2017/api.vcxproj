@@ -69,7 +69,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\api</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -103,7 +105,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SSCDIR);$(SSCDIR)/shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDLL;LK_USE_WXWIDGETS;__64BIT__;WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;PSAPI_VERSION=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDLL;__64BIT__;WIN32; __WINDOWS__; _DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;_UNICODE;_WINDOWS;NOPCH;PSAPI_VERSION=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;psapi.lib;wininet.lib;winhttp.lib;sscd.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -129,7 +131,6 @@
     <ClCompile Include="..\..\ssc\ssc\vartab.cpp" />
     <ClCompile Include="..\api\dlfnc.cpp" />
     <ClCompile Include="..\api\ErrorHandler.cpp" />
-    <ClCompile Include="..\api\GenericSystem-External.cpp" />
     <ClCompile Include="..\api\SAM_GenericSystem.cpp" />
     <ClCompile Include="..\api\SystemLoader.cpp" />
   </ItemGroup>
@@ -138,7 +139,6 @@
     <ClInclude Include="..\..\ssc\ssc\vartab.h" />
     <ClInclude Include="..\api\dlfnc.h" />
     <ClInclude Include="..\api\ErrorHandler.h" />
-    <ClInclude Include="..\api\GenericSystem-External.h" />
     <ClInclude Include="..\api\sam_api.h" />
     <ClInclude Include="..\api\SAM_GenericSystem.h" />
     <ClInclude Include="..\api\SystemLoader.h" />

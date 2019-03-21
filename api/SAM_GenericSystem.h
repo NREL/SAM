@@ -3,6 +3,8 @@
 
 #include "visibility.h"
 #include "ErrorHandler.h"
+#include <ssc/sscapi.h>
+
 
 #include <ssc/cmod_generic_system-builder.h>
 //#include "cmod_generic_system-builder.h"

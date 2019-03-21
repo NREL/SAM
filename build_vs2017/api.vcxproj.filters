@@ -17,9 +17,6 @@
     <ClCompile Include="..\api\ErrorHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\api\GenericSystem-External.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\api\SAM_GenericSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -38,9 +35,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\api\ErrorHandler.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\api\GenericSystem-External.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\api\sam_api.h">

@@ -6,6 +6,8 @@
 #include <fstream>
 #include <unordered_map>
 
+#include "ssc/sscapi.h"
+
 #include "SAM_GenericSystem.h"
 #include "ErrorHandler.h"
 #include "SystemLoader.h"
@@ -47,7 +49,7 @@ class Common{
 
 class GenericSystem {
 private:
-    ssc_module_t cmod;
+    SAM_GenericSystem cmod;
 
 public:
     SAM_GenericSystem system;
