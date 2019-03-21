@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <stdlib.h>
 
 #include <ssc/sscapi.h>
 
@@ -24,13 +25,20 @@ int main(int argc, char *argv[]){
 
 //    run_variable_graph_tests();
 
-    // startup.lk file path should be provided via command line
-    const std::string& filename = "/Users/dguittet/SAM-Development/sam/deploy/runtime/startup.lk";
+    // get environment variables
+    char* pPath;
+    pPath = getenv ("SAMNTDIR");
+    if (pPath!=NULL)
+        printf ("The current path is: %s \n",pPath);
+    std::string sam_path = std::string(pPath);
 
-    if (argc < 2){
-        std::cout << "startup.lk script file required.\n";
-        return 1;
-    }
+    // startup.lk file path should be provided via command line
+    const std::string& filename = sam_path + "/deploy/runtime/startup.lk";
+
+//    if (argc < 2){
+//        std::cout << "startup.lk script file required.\n";
+//        return 1;
+//    }
 
     std::ifstream ifs(filename.c_str());
     if(!ifs.is_open()){
@@ -50,14 +58,15 @@ int main(int argc, char *argv[]){
 
 
     // from each ui_form file, extract the config-independent defaults, equations and callback scripts
-    std::string ui_path =  "../deploy/runtime/ui/";
+    std::string ui_path = sam_path + "/deploy/runtime/ui/";
     SAM_ui_extracted_db.populate_ui_data(ui_path, unique_ui_form_names);
 
     // parsing the callbacks requires all ui forms in a config
     active_config = "";
-    std::string graph_path =  "./Graphs/Files";
 
-    std::string api_path = "./library";
+    std::string graph_path = sam_path + "/api_autogen/Graphs/Files";
+    std::string api_path = sam_path + "/api_autogen/library";
+
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         // only do technology configs
         if (it->first.find("None") == std::string::npos && it->first.find("MSPT-Single Owner") == std::string::npos)
@@ -68,7 +77,7 @@ int main(int argc, char *argv[]){
 //            continue;
 //        }
 
-        // focus on this one
+        // focus on this one, or skip it
         if (active_config == "MSPT-Single Owner" ){
             continue;
         }

@@ -48,7 +48,7 @@ float SAM_GenericSystem_PowerPlant_conv_eff_eval(SAM_GenericSystem ptr, SAM_erro
     float result = 0.f;
     translateExceptions(err, [&]{
         var_table* vt = static_cast<var_table*>(ptr);
-        result = GenericSystem_conv_eff_eqn(vt);
+        result = GenericSystem_conv_eff_eval(vt);
     });
     return result;
 }

@@ -261,9 +261,9 @@ bool translate_equation_to_cplusplus(config_extractor *config_ext, equation_info
     // save & print function signature
     std::string sig;
     sig += typestr_core[type] + " ";
-    sig += format_as_symbol(cmod) + "_" + format_as_symbol(eqn_info.ui_source) + "_"
-            + subhandle + "_eval(var_table* vt, invoke_t* cxt)\n";
-    of << sig << "{\n";
+    sig += format_as_symbol(cmod) + "_"
+            + subhandle + "_eval(var_table* vt)";
+    of << sig << "\n{\n";
 
 
     // set up inputs and outputs variable placeholders
@@ -307,20 +307,6 @@ bool translate_equation_to_cplusplus(config_extractor *config_ext, equation_info
         return true;
     }
 
-
-    // copy UI output values into cxt.result()
-    of << "\tif (cxt){\n";
-    if ( n_outputs == 1 ){
-        of << "\t\tcxt->result().assign(\"" << output_name << "\", " << output_name + ");\n";
-    }
-    else{
-        of << "\t\tcxt->result().empty_hash();\n";
-        for (size_t i = 0; i < n_outputs; i++){
-            std::string var = eqn_info.all_outputs[i];
-            of << "\t\tcxt->result().hash_item(\""<< var << "\", " << var << ");\n";
-        }
-    }
-    of << "\t}\n\n";
 
 
     // set up return argument: either a single return value or a table

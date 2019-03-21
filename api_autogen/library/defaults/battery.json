@@ -1,0 +1,334 @@
+{
+	"battery_defaults": {
+		"Battery None": {
+		},
+		"Battery Model": {
+			"LeadAcid_q10": {
+				"type": "float",
+				"None": "93"
+			},
+			"LeadAcid_q20": {
+				"type": "float",
+				"None": "100"
+			},
+			"LeadAcid_qn": {
+				"type": "float",
+				"None": "60"
+			},
+			"batt_type": {
+				"type": "float",
+				"None": "8"
+			}
+		},
+		"Battery Bank Sizing": {
+			"batt_C_rate_max_charge_input": {
+				"type": "float",
+				"None": "0.5"
+			},
+			"batt_C_rate_max_discharge_input": {
+				"type": "float",
+				"None": "0.5"
+			},
+			"batt_bank_ncells_serial": {
+				"type": "float",
+				"None": "3"
+			},
+			"batt_bank_nseries_stacks": {
+				"type": "float",
+				"None": "1"
+			},
+			"batt_bank_nstrings": {
+				"type": "float",
+				"None": "1"
+			},
+			"batt_bank_power": {
+				"type": "float",
+				"None": "1000"
+			},
+			"batt_bank_power_dc_ac": {
+				"type": "float",
+				"None": "0"
+			},
+			"batt_bank_size": {
+				"type": "float",
+				"None": "2000"
+			},
+			"batt_bank_size_dc_ac": {
+				"type": "float",
+				"None": "0"
+			},
+			"batt_bank_size_specify": {
+				"type": "float",
+				"None": "0"
+			},
+			"batt_size_choice": {
+				"type": "float",
+				"None": "0"
+			}
+		},
+		"Battery Current and Capacity": {
+			"batt_Qfull": {
+				"type": "float",
+				"None": "2.25"
+			},
+			"batt_cell_current_charge_max": {
+				"type": "float",
+				"None": "10"
+			},
+			"batt_cell_current_discharge_max": {
+				"type": "float",
+				"None": "10"
+			},
+			"batt_cell_power_charge_max": {
+				"type": "float",
+				"None": "2"
+			},
+			"batt_cell_power_discharge_max": {
+				"type": "float",
+				"None": "2"
+			},
+			"batt_current_choice": {
+				"type": "float",
+				"None": "0"
+			}
+		},
+		"Battery Configuration": {
+			"batt_ac_or_dc": {
+				"type": "float",
+				"None": "1"
+			},
+			"batt_dc_ac_efficiency": {
+				"type": "float",
+				"None": "96"
+			}
+		},
+		"Battery Dispatch Behind the Meter": {
+			"batt_dispatch_choice": {
+				"type": "float",
+				"None": "0"
+			}
+		},
+		"Battery Dispatch Common": {
+			"batt_minimum_SOC": {
+				"type": "float",
+				"None": "15"
+			}
+		},
+		"Battery Dispatch Manual": {
+			"batt_discharge_percent_1": {
+				"type": "float",
+				"None": "25"
+			},
+			"batt_discharge_percent_2": {
+				"type": "float",
+				"None": "25"
+			},
+			"batt_discharge_percent_3": {
+				"type": "float",
+				"None": "15"
+			},
+			"batt_discharge_percent_4": {
+				"type": "float",
+				"None": "25"
+			},
+			"batt_discharge_percent_5": {
+				"type": "float",
+				"None": "25"
+			},
+			"batt_discharge_percent_6": {
+				"type": "float",
+				"None": "25"
+			},
+			"batt_gridcharge_percent_1": {
+				"type": "float",
+				"None": "25"
+			},
+			"batt_gridcharge_percent_2": {
+				"type": "float",
+				"None": "25"
+			},
+			"batt_gridcharge_percent_3": {
+				"type": "float",
+				"None": "25"
+			},
+			"batt_gridcharge_percent_4": {
+				"type": "float",
+				"None": "25"
+			},
+			"batt_gridcharge_percent_5": {
+				"type": "float",
+				"None": "25"
+			},
+			"batt_gridcharge_percent_6": {
+				"type": "float",
+				"None": "25"
+			},
+			"pv.storage.p1.discharge": {
+				"type": "float",
+				"None": "0"
+			},
+			"pv.storage.p1.gridcharge": {
+				"type": "float",
+				"None": "0"
+			},
+			"pv.storage.p2.discharge": {
+				"type": "float",
+				"None": "0"
+			},
+			"pv.storage.p2.gridcharge": {
+				"type": "float",
+				"None": "0"
+			},
+			"pv.storage.p3.discharge": {
+				"type": "float",
+				"None": "1"
+			},
+			"pv.storage.p3.gridcharge": {
+				"type": "float",
+				"None": "0"
+			},
+			"pv.storage.p4.discharge": {
+				"type": "float",
+				"None": "0"
+			},
+			"pv.storage.p4.gridcharge": {
+				"type": "float",
+				"None": "0"
+			},
+			"pv.storage.p5.discharge": {
+				"type": "float",
+				"None": "0"
+			},
+			"pv.storage.p5.gridcharge": {
+				"type": "float",
+				"None": "0"
+			},
+			"pv.storage.p6.discharge": {
+				"type": "float",
+				"None": "0"
+			},
+			"pv.storage.p6.gridcharge": {
+				"type": "float",
+				"None": "0"
+			}
+		},
+		"Battery Lifetime": {
+			"batt_calendar_choice": {
+				"type": "float",
+				"None": "0"
+			},
+			"batt_lifetime_matrix": {
+				"type": "matrix",
+				"None": []
+			}
+		},
+		"Battery Replacements": {
+			"batt_replacement_option": {
+				"type": "float",
+				"None": "0"
+			}
+		},
+		"Battery Voltage": {
+			"batt_C_rate": {
+				"type": "float",
+				"None": "0.2"
+			},
+			"batt_Qexp_percent": {
+				"type": "float",
+				"None": "1.78"
+			},
+			"batt_Qnom_percent": {
+				"type": "float",
+				"None": "88.9"
+			},
+			"batt_Vexp": {
+				"type": "float",
+				"None": "4.05"
+			},
+			"batt_Vfull": {
+				"type": "float",
+				"None": "4.1"
+			},
+			"batt_Vnom": {
+				"type": "float",
+				"None": "3.4"
+			},
+			"batt_Vnom_default": {
+				"type": "float",
+				"None": "3.6"
+			},
+			"batt_bank_voltage": {
+				"type": "float",
+				"None": "500"
+			},
+			"batt_resistance": {
+				"type": "float",
+				"None": "0.2"
+			},
+			"batt_voltage_choice": {
+				"type": "float",
+				"None": "0"
+			}
+		},
+		"Battery Ancillary Losses": {
+			"batt_loss_choice": {
+				"type": "float",
+				"None": "0"
+			}
+		},
+		"Battery Thermal": {
+			"batt_specific_energy_per_mass": {
+				"type": "float",
+				"None": "197.33"
+			},
+			"cap_vs_temp": {
+				"type": "matrix",
+				"None": []
+			}
+		},
+		"Lifetime": {
+		},
+		"Common": {
+			"annual_energy": {
+				"type": "undefined",
+				"None": "invalid"
+			},
+			"batt_target_choice": {
+				"type": "float",
+				"None": "0"
+			},
+			"batt_target_power": {
+				"type": "array",
+				"None": "0"
+			},
+			"batt_target_power_monthly": {
+				"type": "array",
+				"None": "0"
+			},
+			"capacity_factor": {
+				"type": "undefined",
+				"None": "invalid"
+			},
+			"dispatch_manual_fuelcellcharge": {
+				"type": "undefined",
+				"None": "invalid"
+			},
+			"fuelcell_power": {
+				"type": "undefined",
+				"None": "invalid"
+			},
+			"gen": {
+				"type": "undefined",
+				"None": "invalid"
+			},
+			"load": {
+				"type": "undefined",
+				"None": "invalid"
+			},
+			"percent_complete": {
+				"type": "undefined",
+				"None": "invalid"
+			}
+		}
+	}
+}

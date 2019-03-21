@@ -1,0 +1,59 @@
+digraph PVWatts_None {
+	label ="PVWatts-None";
+	labelloc=top;
+	rankdir=LR;
+	ranksep="1";
+	"array_type" [style=filled, fillcolor=grey]
+	"solar_resource_file" [style=filled, fillcolor=grey]
+	"system_capacity" [style=filled, fillcolor=grey]
+	"losses" [style=filled, fillcolor=grey]
+	"dc_ac_ratio" [style=filled, fillcolor=grey]
+
+	"file_to_key()( f_name )" -> "solar_resource" [label=0, color = black];
+	"nrec" -> "minute_step" [label=1, color = brown4];
+	"minute_step" -> "x" [label=1, color = brown4];
+	"n" -> "dataset" [label=2, color = darkorange3];
+	"location" -> "pb_locations" [label=3, color = lightslateblue];
+	"location" -> "g" [label=4, color = mediumorchid];
+	"location" -> "dataset" [label=2, color = darkorange3];
+	"msg" -> "show_log" [label=2, color = darkorange3];
+	"loss_soiling" -> "losses" [label=5, style=dashed, color = firebrick];
+	"log_file" -> "flog" [label=3, color = lightslateblue];
+	"geocode_ok" -> "ok_test" [label=4, color = mediumorchid];
+	"loss_age" -> "losses" [label=5, style=dashed, color = firebrick];
+	"get_settings()( "solar_download_path" )+"
+"+replace()( clean_list, ";", "
+" )" -> "library_folder_list" [label=6, color = indigo];
+	"folder" -> "log_file" [label=3, color = lightslateblue];
+	"city" -> "x" [label=1, color = brown4];
+	"loss_conn" -> "losses" [label=5, style=dashed, color = firebrick];
+	"loss_avail" -> "losses" [label=5, style=dashed, color = firebrick];
+	"array_type" -> "arr" [label=7, color = burlywood4];
+	"solar_resource_file" -> "file_name" [label=8, style=dashed, color = azure4];
+	"solar_resource_file" -> "wf" [label=9, color = darkorchid4];
+	"solar_resource_file" -> "f_name" [label=0, color = black];
+	"loss_lid" -> "losses" [label=5, style=dashed, color = firebrick];
+	"in_location" -> "location" [label=3, color = lightslateblue];
+	"wf_nrecords" -> "nrec" [label=1, color = brown4];
+	"lat" -> "x" [label=1, color = brown4];
+	"loss_wiring" -> "losses" [label=5, style=dashed, color = firebrick];
+	"lon" -> "x" [label=1, color = brown4];
+	"library_folder_list" -> "L" [label=9, color = darkorchid4];
+	"loss_shading" -> "losses" [label=5, style=dashed, color = firebrick];
+	"en_user_spec_losses" -> "losses" [label=5, style=dashed, color = firebrick];
+	"en_user_spec_losses" -> "enul" [label=7, color = burlywood4];
+	"solar_data_file_name" -> "solar_resource_file" [label=8, style=dashed, color = azure4];
+	"solar_data_file_name" -> "solar_data_file_name_load" [label=10, color = aquamarine3];
+	"loss_nameplate" -> "losses" [label=5, style=dashed, color = firebrick];
+	"json_ok" -> "ok_test" [label=4, color = mediumorchid];
+	"system_capacity" -> "ac_nameplate" [label=5, style=dashed, color = firebrick];
+	"loss_mismatch" -> "losses" [label=5, style=dashed, color = firebrick];
+	"use_specific_weather_file" -> "solar_resource_file" [label=8, style=dashed, color = azure4];
+	"user_specified_weather_file" -> "solar_resource_file" [label=8, style=dashed, color = azure4];
+	"x" -> "paths" [label=6, color = indigo];
+	"losses_user" -> "losses" [label=5, style=dashed, color = firebrick];
+	"state" -> "x" [label=1, color = brown4];
+	"loss_snow" -> "losses" [label=5, style=dashed, color = firebrick];
+	"tz" -> "x" [label=1, color = brown4];
+	"dc_ac_ratio" -> "ac_nameplate" [label=5, style=dashed, color = firebrick];
+}

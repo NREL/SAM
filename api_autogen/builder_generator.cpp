@@ -167,13 +167,17 @@ void builder_generator::gather_variables(){
 }
 
 
-void builder_generator::export_variables_json(){
+//
+void builder_generator::export_variables_json(const std::string &cmod) {
     std::ofstream json;
-    json.open(filepath + "/defaults/" + config_symbol + ".json");
+    json.open(filepath + "/defaults/" + cmod + ".json");
+
+    // later implement for several financial models
+    std::string financial = config_name.substr(config_name.find('-')+1);
     assert(json.is_open());
 
     json << "{\n";
-    json << "\t\"" + config_symbol + "_defaults\": {\n";
+    json << "\t\"" + cmod + "_defaults\": {\n";
 
     std::unordered_map<std::string, bool> completed_tables;
     for (size_t i = 0; i < modules_order.size(); i++){
@@ -204,7 +208,7 @@ void builder_generator::export_variables_json(){
 
             json << "\t\t\t\"" + var + "\": {\n";
             json << "\t\t\t\t\"type\": \"" << vv_typestr[vv_type] << "\",\n";
-            json << "\t\t\t\t\"value\": ";
+            json << "\t\t\t\t\"" << financial << "\": ";
 
             VarValue* vv = SAM_config_to_defaults[config_name][var];
 
@@ -520,13 +524,6 @@ void builder_generator::create_cmod_builder_cpp(std::string cmod_name,
     header_file << "#define _CMOD_" << util::upper_case(cmod_name) << "_BUILDER_H_\n";
 
     const char* include_h = "\n"
-                            "#ifdef LK_USE_WXWIDGETS\n"
-                            "#include <lk/env.h>\n"
-                            "typedef lk::invoke_t invoke_t;\n"
-                            "#else\n"
-                            "typedef void invoke_t;\n"
-                            "#endif\n"
-                            "\n"
                             "#include \"vartab.h\"";
 
     header_file << include_h << "\n\n\n";
@@ -574,10 +571,6 @@ void builder_generator::create_cmod_builder_cpp(std::string cmod_name,
 
             std::cout << e->ui_form << fx_sig;
 
-            // insert default invoke_t* cxt = 0 for header
-            size_t pos = fx_sig.find("cxt");
-            assert(pos != std::string::npos);
-            fx_sig.insert(pos+3, " = 0");
 
             // make a nice comment block
             header_file << "//\n// Evaluates ";
@@ -594,9 +587,8 @@ void builder_generator::create_cmod_builder_cpp(std::string cmod_name,
                     header_file << ", ";
                 else header_file << "\n";
             }
-            header_file << "// @param[in,out] *cxt: a invoke_t* that for storing the results\n";
             header_file << "// @returns single value or var_table\n//\n";
-            header_file << fx_sig << "\n\n";
+            header_file << fx_sig << ";\n\n";
 
         }
         // translate callbacks
@@ -711,10 +703,8 @@ void builder_generator::create_all(std::string fp) {
     // epand the subgraph to include ui variables which may affect downstream ssc variables
     graph->subgraph_ssc_to_ui(*subgraph);
 
-    gather_variables();
-    export_variables_json();
-
     std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config_name];
+
 
     // only working on technology systems, cannot yet pair with financial model
     // modules and modules_order will need to be reset per cmod
@@ -722,19 +712,17 @@ void builder_generator::create_all(std::string fp) {
         std::cout << "warning: really not implemented yet but short circuit for now\n;";
     }
 
+    gather_variables();
+
+
+
 
         create_api_header(primary_cmods[0]);
         create_cmod_builder_cpp(primary_cmods[0], unique_subgraph_edges);
 
-    const char* error_obj = "\n"
-                            "\t/** SAM error object\n"
-                            "\t *\n"
-                            "\t * if error_code != 0, there is an error\n"
-                            "\t */\n"
-                            "\ttypedef struct SAM_error{\n"
-                            "\t\tint32_t error_code;\n"
-                            "\t\tconst char* message;\n"
-                            "\t} SAM_error;\n\n";
+    // export defaults for all configurations at the end
+    export_variables_json(primary_cmods[0]);
+
 
     auto udv = get_user_defined_variables();
 
