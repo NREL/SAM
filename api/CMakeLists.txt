@@ -31,6 +31,20 @@ set(SAM_API_SRC
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+if(MSVC)
+    add_compile_options(/W3 /wd4996)
+    if (CMAKE_BUILD_TYPE STREQUAL Debug)
+        add_compile_options(/MDd)
+        add_compile_definitions(_DEBUG)
+    else()
+        add_compile_options(/MD /O2)
+        add_compile_definitions(NDEBUG )
+    endif()
+    add_compile_definitions( __DLL__ __64BIT____WINDOWS__ _CRT_NON_CONFORMING_SWPRINTFS=1
+        _SCL_SECURE_NO_WARNINGS=1 _UNICODE NOPCH)
+endif()
+
+
 # set build types for archive
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_library(SAM_apid SHARED
@@ -100,3 +114,10 @@ target_compile_options(SAM_api_test PUBLIC -O3 -std=c++11 )
 
 # setup linking dependencies and flags
 target_link_libraries(SAM_api_test -lm -lcurl)
+
+if(MSVC)
+    set_target_properties(${SAM_API_LIB} PROPERTIES
+            LIBRARY_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${SAM_API_LIB})
+endif()
