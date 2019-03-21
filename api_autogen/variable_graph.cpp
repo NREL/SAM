@@ -274,14 +274,14 @@ void digraph::subgraph_ssc_to_ui(digraph &subgraph) {
                 std::cout << " not found in original graph for " << name << "\n";
                 continue;
             }
-            for (size_t e = 0; e < og_v->edges_out.size(); e++){
-                edge* e_out = og_v->edges_out[e];
-
-                if (!subgraph.find_edge(e_out)){
-                    vertex* v = subgraph.add_vertex(e_out->dest->name, false, e_out->ui_form);
-                    subgraph.add_edge(new_v, v, e_out->type, e_out->obj_name, e_out->expression, e_out->ui_form, e_out->root);
-                }
-            }
+//            for (size_t e = 0; e < og_v->edges_out.size(); e++){
+//                edge* e_out = og_v->edges_out[e];
+//
+//                if (!subgraph.find_edge(e_out)){
+//                    vertex* v = subgraph.add_vertex(e_out->dest->name, false, e_out->ui_form);
+//                    subgraph.add_edge(new_v, v, e_out->type, e_out->obj_name, e_out->expression, e_out->ui_form, e_out->root);
+//                }
+//            }
 
             if (new_v->is_ssc_var ){
                 for (size_t e = 0; e < og_v->edges_in.size(); e++){

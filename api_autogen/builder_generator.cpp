@@ -630,11 +630,6 @@ void builder_generator::create_cmod_builder_cpp(std::string cmod_name,
 
             std::cout << e->ui_form << fx_sig;
 
-            // insert default invoke_t* cxt = 0 for header
-            pos = fx_sig.find("cxt");
-            assert(pos != std::string::npos);
-            fx_sig.insert(pos+3, " = 0");
-
             // make a nice comment block
             header_file << "//\n// Function ";
             for (size_t k = 0; k < cb_info.all_outputs.size(); k++){
@@ -658,7 +653,7 @@ void builder_generator::create_cmod_builder_cpp(std::string cmod_name,
             }
             header_file << "// @param[in,out] *cxt: a invoke_t* that for storing the results\n";
             header_file << "// @returns single value or var_table\n//\n";
-            header_file << fx_sig << "\n\n";
+            header_file << fx_sig << ";\n\n";
         }
     }
 

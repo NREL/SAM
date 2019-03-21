@@ -82,13 +82,15 @@ public:
             throw std::runtime_error("File could not be opened: " + file);
 
         // load some data structure containing defaults until we have:
-        std::string group;
-        std::string var_name;
-        std::string type;
-        std::string value;
+        std::string group = "PowerPlant";
+        std::string var_name = "heat_rate";
+        std::string type = "float";
+        float value = 1.f;
 
-        SystemLoader loader;
+        SystemLoader loader(system);
 
+        // calling SAM_GenericSystem_PowerPlant_heat_rate_set
+        loader.loadFloat("GenericSystem", group, var_name, value);
     }
 
     int execute(){

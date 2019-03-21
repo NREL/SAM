@@ -370,8 +370,8 @@ bool translate_callback_to_cplusplus(config_extractor *config_ext, callback_info
     std::string sig;
     sig += typestr_core[type] + " ";
     sig += format_as_symbol(cmod) + "_" + format_as_symbol(cb_info.ui_source) + "_"
-            + format_as_symbol(subhandle) + "_func(var_table* vt, invoke_t* cxt)\n";
-    of << sig << "{\n";
+            + format_as_symbol(subhandle) + "_func(var_table* vt)";
+    of << sig << "\n{\n";
 
 
     // set up inputs and outputs variable placeholders
