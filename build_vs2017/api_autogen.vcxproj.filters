@@ -41,9 +41,6 @@
     <ClCompile Include="..\..\api_autogen\startup_extractor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\api_autogen\test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\api_autogen\ui_form_extractor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -83,9 +80,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\api_autogen\startup_extractor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\api_autogen\test.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\api_autogen\ui_form_extractor.h">

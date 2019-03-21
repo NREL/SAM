@@ -3,7 +3,11 @@
 
 #include <string>
 #include <iostream>
-#include <dlfcn.h>
+#ifdef __WXMSW__
+	#include "dlfnc.h"
+#else
+	#include <dlfcn.h>
+#endif
 
 
 #include "ErrorHandler.h"
@@ -47,7 +51,7 @@ public:
     }
 
     void loadFloat(void* system, std::string cmod, std::string var_name, float value){
-        SAM_set_float_t hello = (SAM_set_float_t) dlsym(handle, yourfunc.c_str());
+       // SAM_set_float_t hello = (SAM_set_float_t) dlsym(handle, yourfunc.c_str());
 
     }
 

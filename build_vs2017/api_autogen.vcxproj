@@ -135,7 +135,6 @@
     <ClCompile Include="..\..\api_autogen\lk_eval.cpp" />
     <ClCompile Include="..\..\api_autogen\SAM_error.cpp" />
     <ClCompile Include="..\..\api_autogen\startup_extractor.cpp" />
-    <ClCompile Include="..\..\api_autogen\test.cpp" />
     <ClCompile Include="..\..\api_autogen\ui_form_extractor.cpp" />
     <ClCompile Include="..\..\api_autogen\variable_graph.cpp" />
   </ItemGroup>
@@ -151,7 +150,6 @@
     <ClInclude Include="..\..\api_autogen\lk_eval.h" />
     <ClInclude Include="..\..\api_autogen\sam_api.h" />
     <ClInclude Include="..\..\api_autogen\startup_extractor.h" />
-    <ClInclude Include="..\..\api_autogen\test.h" />
     <ClInclude Include="..\..\api_autogen\ui_form_extractor.h" />
     <ClInclude Include="..\..\api_autogen\variable_graph.h" />
   </ItemGroup>

@@ -56,7 +56,7 @@ VarValue ui_form_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
             in.GetChar();
         vv.Set(wxMemoryBuffer());
     }
-
+	return vv;
 }
 
 /// Formatting of UI form txt taken from InputPageData::Read, VarDatabase::Read
