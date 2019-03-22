@@ -2,6 +2,8 @@
 #ifndef DLFCN_H
 #define DLFCN_H
 
+#ifdef __WINDOWS__
+
 #define RTLD_GLOBAL 0x100 /* do not hide entries in this module */
 #define RTLD_LOCAL  0x000 /* hide entries in this module */
 
@@ -30,4 +32,5 @@ extern "C" {
 }
 #endif
 
+#endif
 #endif

@@ -33,11 +33,8 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         target_link_libraries(SAM_api_test sscd SAM_apid)
-        set(SSC_LIB $ENV{SSCDIR}/ssc/sscd.dylib
-					$ENV{SSCDIR}/ssc/sscd.lib)
     else()
         target_link_libraries(SAM_api_test ssc SAM_apid)
-        set(SSC_LIB $ENV{SSCDIR}/ssc/ssc.dylib)
     endif()
 else()
     unset(SSC_LIB CACHE)
@@ -45,12 +42,12 @@ else()
     find_library( SSC_LIB
             NAMES sscd.dylib sscd.so sscd.lib
             PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
-   
+    target_link_libraries(SAM_api_test ${SSC_LIB} SAM_apid)
+
 endif()
 
 
 
-target_link_libraries(SAM_api_test ${SSC_LIB} SAM_apid)
 
 #setup compile options
 if(MSVC)

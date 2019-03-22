@@ -9,7 +9,7 @@
 #include "ssc/sscapi.h"
 
 #include "visibility.h"
-#include "dlfnc.h"
+#include "dlfcn.h"
 
 
 #include "SAM_GenericSystem.h"

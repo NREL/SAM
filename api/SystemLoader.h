@@ -4,14 +4,14 @@
 #include <string>
 #include <iostream>
 #ifdef __WINDOWS__
-	#include "dlfnc.h"
+	#include "dlfcn_win.h"
 #else
 	#include <dlfcn.h>
 #endif
 
 #include <ssc/vartab.h>
 #include "ErrorHandler.h"
-#include "sam_api.h"
+#include "SAM_api.h"
 
 typedef float (*SAM_set_float_t)(void*, float, SAM_error*);
 
