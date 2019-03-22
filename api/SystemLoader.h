@@ -9,11 +9,11 @@
 	#include <dlfcn.h>
 #endif
 
-
+#include <ssc/vartab.h>
 #include "ErrorHandler.h"
 #include "sam_api.h"
 
-typedef float (*SAM_set_float_t)();
+typedef float (*SAM_set_float_t)(void*, float, SAM_error*);
 
 
 
@@ -23,11 +23,18 @@ typedef float (*SAM_set_float_t)();
 
 class SystemLoader {
 private:
-    void* handle;
+    void* m_handle;
+    void* m_system;
 
 public:
 
-    SystemLoader(){
+    SystemLoader(void* system){
+        auto* vt = static_cast<var_table*>(system);
+
+        if (!vt){
+            throw std::runtime_error("Error creating SystemLoader");
+        }
+        m_system = system;
 
         char* pPath;
         pPath = getenv ("SAMNTDIR");
@@ -35,9 +42,9 @@ public:
             printf ("The current path is: %s \n",pPath);
         std::string lib_path = std::string(pPath) + "/api/SAM_apid.dylib";
 
-        handle = dlopen(lib_path.c_str(), RTLD_LAZY);
+        m_handle = dlopen(lib_path.c_str(), RTLD_LAZY);
 
-        if (!handle) {
+        if (!m_handle) {
             std::string msg(dlerror());
             throw std::runtime_error( "Cannot open library: " + msg );
         }
@@ -46,13 +53,20 @@ public:
         dlerror();
     }
 
-    void loadString(void* system, std::string cmod, std::string var_name, std::string value){
+    void loadString(std::string cmod, std::string var_name, std::string value){
 
     }
 
-    void loadFloat(void* system, std::string cmod, std::string var_name, float value){
-       // SAM_set_float_t hello = (SAM_set_float_t) dlsym(handle, yourfunc.c_str());
+    void loadFloat(const std::string& cmod_symbol, const std::string& group,
+            const std::string& var_name, const float& value){
+        std::string funcName = "SAM_" + cmod_symbol + "_" + group + "_" + var_name + "_set";
 
+        std::cout << "Loading " << funcName << ": ";
+
+        auto floatFunc = (SAM_set_float_t) dlsym(m_handle, funcName.c_str());
+
+        float conv_eff = floatFunc(m_system, value, nullptr);
+        std::cout << conv_eff;
     }
 
 

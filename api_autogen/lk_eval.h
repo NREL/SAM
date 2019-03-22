@@ -64,7 +64,7 @@ private:
 //                        }
 //
 //                        result.assign(-1.0);
-		return false;
+		return "";
     }
 
 public:

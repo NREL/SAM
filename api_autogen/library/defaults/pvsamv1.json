@@ -171,10 +171,6 @@
 				"type": "float",
 				"None": "0"
 			},
-			"6par_gpmp": {
-				"type": "float",
-				"None": "-0.41"
-			},
 			"6par_imp": {
 				"type": "float",
 				"None": "6"
@@ -182,10 +178,6 @@
 			"6par_isc": {
 				"type": "float",
 				"None": "7"
-			},
-			"6par_nser": {
-				"type": "float",
-				"None": "60"
 			},
 			"6par_vmp": {
 				"type": "float",

@@ -10,7 +10,7 @@
 // @param[in,out] *cxt: a invoke_t* that for storing the results
 // @returns single value or var_table
 //
-float TcsMSLF_MoltenSaltLinearFresnelStorage_MoltenSaltLinearFresnelStorage_func(var_table* vt, invoke_t* cxt = 0)
+float TcsMSLF_MoltenSaltLinearFresnelStorage_MoltenSaltLinearFresnelStorage_func(var_table* vt, invoke_t* cxt)
 
 
 //
@@ -33,7 +33,7 @@ float TcsMSLF_system_capacity_eval(var_table* vt);
 // @param[in,out] *cxt: a invoke_t* that for storing the results
 // @returns single value or var_table
 //
-var_table TcsMSLF_MoltenSaltLinearFresnelStorage_MoltenSaltLinearFresnelStorage_func(var_table* vt, invoke_t* cxt = 0)
+var_table TcsMSLF_MoltenSaltLinearFresnelStorage_MoltenSaltLinearFresnelStorage_func(var_table* vt, invoke_t* cxt)
 
 
 //
