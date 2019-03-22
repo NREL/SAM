@@ -370,8 +370,8 @@ bool translate_callback_to_cplusplus(config_extractor *config_ext, callback_info
     std::string sig;
     sig += typestr_core[type] + " ";
     sig += format_as_symbol(cmod) + "_" + format_as_symbol(cb_info.ui_source) + "_"
-            + format_as_symbol(subhandle) + "_func(var_table* vt, invoke_t* cxt)\n";
-    of << sig << "{\n";
+            + format_as_symbol(subhandle) + "_func(var_table* vt)";
+    of << sig << "\n{\n";
 
 
     // set up inputs and outputs variable placeholders
@@ -414,4 +414,114 @@ bool translate_callback_to_cplusplus(config_extractor *config_ext, callback_info
     }
 
     config_ext->completed_callback_signatures.insert({&cb_info, sig});
+}
+
+void print_var_info_table(const std::string &config_name, const std::string &filepath) {
+    // print new ssc var_info table
+
+    std::vector<page_info>& pg_info = SAM_config_to_input_pages.find(active_config)->second;
+
+    std::unordered_map<std::string, std::unordered_map<std::string, bool>> module_to_variables;
+
+    for (size_t p = 0; p < pg_info.size(); p++){
+        if (pg_info[p].common_uiforms.size() > 0){
+            // add the ui form variables into a group based on the sidebar title
+            std::string group_name = pg_info[p].sidebar_title
+                                     + (pg_info[p].exclusive_uiforms.size() > 0 ? "Common" : "");
+            std::unordered_map<std::string, bool> map;
+            module_to_variables.insert({group_name, map});
+
+            auto* var_map = &(module_to_variables.find(group_name)->second);
+
+            for (size_t i = 0; i < pg_info[p].common_uiforms.size(); i++) {
+                // add all the variables and associate their VarValue with the vertex
+                std::string ui_name = pg_info[p].common_uiforms[i];
+                std::unordered_map<std::string, VarValue> ui_def = SAM_ui_form_to_defaults[ui_name];
+                for (auto it = ui_def.begin(); it != ui_def.end(); ++it){
+                    std::string var_name = it->first;
+
+                    var_map->insert({var_name, true});
+                }
+
+            }
+        }
+
+        // add each exclusive form as its own (sub)module
+        for (size_t i = 0; i < pg_info[p].exclusive_uiforms.size(); i++) {
+            // add all the variables and associate their VarValue with the vertex
+            std::string ui_name = pg_info[p].exclusive_uiforms[i];
+
+            std::string submod_name = ui_name;
+            module_to_variables.insert({submod_name, std::unordered_map<std::string, bool>()});
+
+            auto& var_map = module_to_variables.find(submod_name)->second;
+
+            std::unordered_map<std::string, VarValue> ui_def = SAM_ui_form_to_defaults[ui_name];
+            for (auto it = ui_def.begin(); it != ui_def.end(); ++it){
+                std::string var_name = it->first;
+
+                var_map.insert({var_name, true});
+            }
+        }
+    }
+
+
+    auto cmods = SAM_config_to_primary_modules[config_name];
+
+
+    for (size_t i = 0; i < cmods.size(); i++){
+        std::string cmod_name = cmods[i];
+
+        std::ofstream var_info_fx;
+        var_info_fx.open(filepath + "/varinfo/" + cmod_name + ".cpp");
+        assert(var_info_fx.is_open());
+
+        var_info_fx << "static var_info _cm_vtab_" + cmod_name + "[] = {\n"
+                                                                 "\t// VARTYPE\tDATATYPE\tNAME\tLABEL\tUNITS\tMETA\tGROUP\tREQUIRED_IF\tCONSTRAINTS\tUI_HINTS\n";
+
+
+        ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
+        std::vector<std::string> variable_names;
+
+
+        SAM_cmod_to_ssc_index.insert({cmod_name, std::unordered_map<std::string, size_t>()});
+        std::unordered_map<std::string, size_t>& index_map = SAM_cmod_to_ssc_index.find(cmod_name)->second;
+
+        int var_index = 0;
+        ssc_info_t mod_info = ssc_module_var_info(p_mod, var_index);
+        while (mod_info){
+            int var_type = ssc_info_var_type(mod_info);
+            int data_type = ssc_info_data_type(mod_info);
+            std::string name = ssc_info_name(mod_info);
+            std::string label = ssc_info_label(mod_info);
+            std::string units = ssc_info_units(mod_info);
+            std::string meta = ssc_info_meta(mod_info);
+            std::string group, uihints;
+
+            for (auto it = module_to_variables.begin(); it != module_to_variables.end(); ++it){
+                auto var_it = it->second.find(name);
+                if (var_it != it->second.end())
+                    group = it->first;
+            }
+
+            std::string required_if = ssc_info_required(mod_info);
+            std::string constraints = ssc_info_constraints(mod_info);
+            if (ssc_info_uihint(mod_info))
+                uihints = ssc_info_uihint(mod_info);
+
+            std::vector<std::string> var_str = {"", "SSC_INPUT", "SSC_OUTPUT", "SSCINOUT"};
+            std::vector<std::string> data_str= {"SSC_INVALID", "SSC_STRING", "SSC_NUMBER", "SSC_ARRAY", "SSC_MATRIX", "SSC_TABLE"};
+
+            var_info_fx << "{ \t" << var_str[var_type] << ", \t" << data_str[data_type]<< ", \t\"" << name << "\", \t\"" << label << "\", \t\"";
+            var_info_fx << units << "\", \t\"" << meta << "\", \t\"" << group << "\", \t\"" << required_if;
+            var_info_fx << "\", \t\"" << constraints << "\", \t\"" << uihints << "\"},\n";
+
+
+            ++var_index;
+            mod_info = ssc_module_var_info(p_mod, var_index);
+        }
+        var_info_fx << "var_info_invalid};";
+        var_info_fx.close();
+    }
+
 }

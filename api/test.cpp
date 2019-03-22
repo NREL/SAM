@@ -25,7 +25,8 @@ void create(){
 void loadFromFile(){
     
     
-    GenericSystem system = GenericSystem("default");
+    GenericSystem system = GenericSystem("None");
+
 }
 
 int main(int argc, char *argv[]){

@@ -51,6 +51,6 @@ bool translate_equation_to_cplusplus(config_extractor *config_ext, equation_info
 bool translate_callback_to_cplusplus(config_extractor *config_ext, callback_info &cb_info, std::ofstream &of,
                                      const std::string &cmod);
 
-
+void print_var_info_table(const std::string &config, const std::string &filepath);
 
 #endif //SYSTEM_ADVISOR_MODEL_BUILDER_GENERATOR_INFO_H

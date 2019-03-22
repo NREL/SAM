@@ -10,16 +10,7 @@
 // @param[in,out] *cxt: a invoke_t* that for storing the results
 // @returns single value or var_table
 //
-var_table Pvsamv1_IEC61853SingleDiodeModel_BtnCalcIec65153Par_func(var_table* vt, invoke_t* cxt = 0)
-
-
-//
-// Function inv_cec_cg_c0, inv_cec_cg_vdco, inv_cec_cg_pdco, inv_cec_cg_c3, inv_cec_cg_psco, inv_cec_cg_c1, inv_cec_cg_c2 for a Inverter CEC Coefficient Generator module
-// @param *vt: a var_table* that contains: Vdco, Pdco, c1, Pso, c0, c2, c3
-// @param[in,out] *cxt: a invoke_t* that for storing the results
-// @returns single value or var_table
-//
-var_table Pvsamv1_InverterCECCoefficientGenerator_InverterCECCoefficientGenerator_func(var_table* vt, invoke_t* cxt = 0)
+var_table Pvsamv1_IEC61853SingleDiodeModel_BtnCalcIec65153Par_func(var_table* vt, invoke_t* cxt)
 
 
 //
@@ -65,11 +56,20 @@ float Pvsamv1_total_modules_eval(var_table* vt);
 var_table Pvsamv1_subarray2_enable_MIMO_eval(var_table* vt);
 
 //
-// Evaluates spe_power for a Simple Efficiency Module Model module
-// @param *vt: a var_table* that contains: spe_reference, spe_eff0, spe_rad0, spe_eff1, spe_rad1, spe_eff2, spe_rad2, spe_eff3, spe_rad3, spe_eff4, spe_rad4, spe_area
+// Evaluates inv_cec_cg_eff_cec, inv_cec_cg_eff_euro for a Inverter CEC Coefficient Generator module
+// @param *vt: a var_table* that contains: inv_cec_cg_vdco, inv_cec_cg_pdco, inv_cec_cg_psco, inv_cec_cg_paco, inv_cec_cg_c0, inv_cec_cg_c1, inv_cec_cg_c2, inv_cec_cg_c3
 // @returns single value or var_table
 //
-float Pvsamv1_spe_power_eval(var_table* vt);
+var_table Pvsamv1_inv_cec_cg_eff_cec_MIMO_eval(var_table* vt);
+
+//
+// Function inv_cec_cg_c0, inv_cec_cg_vdco, inv_cec_cg_pdco, inv_cec_cg_c3, inv_cec_cg_psco, inv_cec_cg_c1, inv_cec_cg_c2 for a Inverter CEC Coefficient Generator module
+// @param *vt: a var_table* that contains: Vdco, Pdco, c1, Pso, c0, c2, c3
+// @param[in,out] *cxt: a invoke_t* that for storing the results
+// @returns single value or var_table
+//
+var_table Pvsamv1_InverterCECCoefficientGenerator_InverterCECCoefficientGenerator_func(var_table* vt, invoke_t* cxt)
+
 
 //
 // Function Pdco, c1, c3, c2, Vdco, Pso, c0, result for a  module
@@ -78,15 +78,15 @@ inv_cec_cg_test_samples, inv_cec_cg_paco, inv_cec_cg_sample_power_units, inv_cec
 // @param[in,out] *cxt: a invoke_t* that for storing the results
 // @returns single value or var_table
 //
-var_table Pvsamv1_InverterCECCoefficientGenerator_InverterCECCoefficientGenerator_func(var_table* vt, invoke_t* cxt = 0)
+var_table Pvsamv1_InverterCECCoefficientGenerator_InverterCECCoefficientGenerator_func(var_table* vt, invoke_t* cxt)
 
 
 //
-// Evaluates inv_cec_cg_eff_cec, inv_cec_cg_eff_euro for a Inverter CEC Coefficient Generator module
-// @param *vt: a var_table* that contains: inv_cec_cg_vdco, inv_cec_cg_pdco, inv_cec_cg_psco, inv_cec_cg_paco, inv_cec_cg_c0, inv_cec_cg_c1, inv_cec_cg_c2, inv_cec_cg_c3
+// Evaluates spe_power for a Simple Efficiency Module Model module
+// @param *vt: a var_table* that contains: spe_reference, spe_eff0, spe_rad0, spe_eff1, spe_rad1, spe_eff2, spe_rad2, spe_eff3, spe_rad3, spe_eff4, spe_rad4, spe_area
 // @returns single value or var_table
 //
-var_table Pvsamv1_inv_cec_cg_eff_cec_MIMO_eval(var_table* vt);
+float Pvsamv1_spe_power_eval(var_table* vt);
 
 //
 // Evaluates snl_ref_a, snl_ref_b, snl_ref_dT, snl_ref_isc, snl_ref_isc_temp_0, snl_ref_isc_temp_1, snl_ref_imp, snl_ref_imp_temp_0, snl_imp_temp_1, snl_ref_vmp, snl_ref_vmp_temp_0, snl_ref_vmp_temp_1, snl_ref_pmp, snl_ref_pmp_temp_0, snl_ref_pmp_temp_1, snl_ref_voc, snl_ref_voc_temp_0, snl_voc_temp_1, snl_ref_eff for a Sandia PV Array Performance Model with Module Database module

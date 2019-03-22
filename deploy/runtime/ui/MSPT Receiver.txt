@@ -2761,7 +2761,7 @@ Tower and Receiver
 0
 Default
 
-2399
+2329
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
 	[
@@ -2844,10 +2844,6 @@ equations{ 'piping_loss_tot' } = define() {
 equations{ 'receiver_type' } = define()
 {
 	return 0;	// external receiver
-};
-
-equations{ 'n_flux_x' } = define() {
-	return max(12, ${N_panels});
 };
 
 equations{ 'REC_COPY_solarm' } = define() {
