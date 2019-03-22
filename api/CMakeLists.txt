@@ -21,9 +21,7 @@ set(SAM_API_SRC
         SAM_api.h
         visibility.h
         SAM_GenericSystem.h
-        SAM_GenericSystem.cpp
-        SystemLoader.cpp
-        SystemLoader.h)
+        SAM_GenericSystem.cpp SAM_api.cpp)
 		
 
 set(CMAKE_CXX_STANDARD 11)

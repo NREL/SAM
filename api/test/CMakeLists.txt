@@ -21,6 +21,8 @@ add_executable(SAM_api_test
         test.cpp
         GenericSystem-External.h
         GenericSystem-External.cpp
+        SystemLoader.h
+        SystemLoader.cpp
         )
 
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
