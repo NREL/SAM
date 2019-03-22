@@ -38,7 +38,7 @@ var_table TcstroughPhysical_W_pb_design_MIMO_eval(var_table* vt);
 // @param[in,out] *cxt: a invoke_t* that for storing the results
 // @returns single value or var_table
 //
-var_table TcstroughPhysical_PhysicalTroughSolarField_PhysicalTroughSolarField_func(var_table* vt, invoke_t* cxt = 0)
+var_table TcstroughPhysical_PhysicalTroughSolarField_PhysicalTroughSolarField_func(var_table* vt, invoke_t* cxt)
 
 
 //
@@ -54,7 +54,7 @@ var_table TcstroughPhysical_collectors_in_field_MIMO_eval(var_table* vt);
 // @param[in,out] *cxt: a invoke_t* that for storing the results
 // @returns single value or var_table
 //
-float TcstroughPhysical_PhysicalTroughSolarField_PhysicalTroughSolarField_func(var_table* vt, invoke_t* cxt = 0)
+float TcstroughPhysical_PhysicalTroughSolarField_PhysicalTroughSolarField_func(var_table* vt, invoke_t* cxt)
 
 
 //

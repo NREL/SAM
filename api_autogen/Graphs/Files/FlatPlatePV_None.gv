@@ -5,7 +5,6 @@ digraph FlatPlatePV_None {
 	ranksep="1";
 	"parsolve" [shape=polygon, style=filled, fillcolor=darkslategray3]
 	"iec61853par" [shape=polygon, style=filled, fillcolor=darkslategray3]
-	"celltype" [style=filled, fillcolor=grey]
 	"subarray2_dcwiring_loss" [style=filled, fillcolor=grey]
 	"cec_gamma_r" [style=filled, fillcolor=grey]
 	"par_imp" [style=filled, fillcolor=grey]
@@ -102,7 +101,6 @@ digraph FlatPlatePV_None {
 	"cec_i_sc_ref" [style=filled, fillcolor=grey]
 	"snl_a2" [style=filled, fillcolor=grey]
 	"snl_c0" [style=filled, fillcolor=grey]
-	"par_gpmp" [style=filled, fillcolor=grey]
 	"snl_b3" [style=filled, fillcolor=grey]
 	"subarray3_diodeconn_loss" [style=filled, fillcolor=grey]
 	"spe_voc" [style=filled, fillcolor=grey]
@@ -185,7 +183,6 @@ digraph FlatPlatePV_None {
 	"snl_c3" [style=filled, fillcolor=grey]
 	"inv_cec_cg_vdco" [style=filled, fillcolor=grey]
 	"inverter_model" [style=filled, fillcolor=grey]
-	"par_nser" [style=filled, fillcolor=grey]
 	"snl_b4" [style=filled, fillcolor=grey]
 	"sd11par_c2" [style=filled, fillcolor=grey]
 	"subarray4_nmodx" [style=filled, fillcolor=grey]
@@ -338,16 +335,17 @@ digraph FlatPlatePV_None {
 	"cec_gamma_r" -> "gamma_r_calc" [label=26, style=dashed, color = skyblue];
 	"r_sh_ref" -> "Icec" [label=14, color = gold4];
 	"city" -> "x" [label=5, color = firebrick];
+	"par_imp" -> "parsolve" [label=20, color = seashell4];
+	"par_imp" -> "Icec" [label=3, color = lightslateblue];
 	"par_imp" -> "par_pmp" [label=24, style=dashed, color = sienna3];
 	"par_imp" -> "par_mpeff" [label=24, style=dashed, color = sienna3];
-	"par_imp" -> "parsolve" [label=20, color = seashell4];
 	"par_imp" -> "y" [label=3, color = lightslateblue];
 	"subarray1_nmody" -> "ui_subarray1_row_spacing" [label=27, style=dashed, color = skyblue1];
 	"subarray1_nmody" -> "ui_subarray1_nrows" [label=27, style=dashed, color = skyblue1];
 	"subarray1_nmody" -> "ui_subarray1_length_side" [label=27, style=dashed, color = skyblue1];
 	"subarray3_soiling" -> "subarray3_soiling_annual_average" [label=25, style=dashed, color = sienna4];
-	"par_isc" -> "par_aisc" [label=24, style=dashed, color = sienna3];
 	"par_isc" -> "parsolve" [label=20, color = seashell4];
+	"par_isc" -> "par_aisc" [label=24, style=dashed, color = sienna3];
 	"par_isc" -> "y" [label=3, color = lightslateblue];
 	"inv_snl_pdco" -> "inv_snl_eff_cec" [label=28, style=dashed, color = skyblue2];
 	"inv_snl_pdco" -> "inv_snl_eff_euro" [label=28, style=dashed, color = skyblue2];
@@ -590,6 +588,8 @@ digraph FlatPlatePV_None {
 	"subarray2_string_vmp" -> "layout_warning" [label=29, style=dashed, color = skyblue3];
 	"cec_i_o_ref" -> "i_o_ref" [label=14, color = gold4];
 	"aop" -> "y" [label=9, color = darkorchid4];
+	"par_voc" -> "parsolve" [label=20, color = seashell4];
+	"par_voc" -> "interval" [label=3, color = lightslateblue];
 	"par_voc" -> "par_bvoc" [label=24, style=dashed, color = sienna3];
 	"par_voc" -> "layout_warning" [label=29, style=dashed, color = skyblue3];
 	"par_voc" -> "subarray3_string_voc" [label=29, style=dashed, color = skyblue3];
@@ -602,7 +602,6 @@ digraph FlatPlatePV_None {
 	"par_voc" -> "subarray1_nstrings" [label=32, style=dashed, color = brown4];
 	"par_voc" -> "inverter_count" [label=32, style=dashed, color = brown4];
 	"par_voc" -> "subarray2_string_voc" [label=29, style=dashed, color = skyblue3];
-	"par_voc" -> "parsolve" [label=20, color = seashell4];
 	"par_voc" -> "x" [label=3, color = lightslateblue];
 	"inv_cec_cg" -> "Pdco" [label=22, color = sienna1];
 	"inv_cec_cg" -> "Vdco" [label=22, color = sienna1];
@@ -1395,6 +1394,9 @@ digraph FlatPlatePV_None {
 	"subarray2_nameplate_loss" -> "subarray2_dcloss" [label=25, style=dashed, color = sienna4];
 	"inv_snl_inverter_name" -> "inv_cec_name" [label=54, color = sienna2];
 	"inv_snl_inverter_name" -> "old_name" [label=55, color = sienna3];
+	"par_vmp" -> "parsolve" [label=20, color = seashell4];
+	"par_vmp" -> "interval" [label=3, color = lightslateblue];
+	"par_vmp" -> "Vcec" [label=3, color = lightslateblue];
 	"par_vmp" -> "par_pmp" [label=24, style=dashed, color = sienna3];
 	"par_vmp" -> "par_mpeff" [label=24, style=dashed, color = sienna3];
 	"par_vmp" -> "layout_warning" [label=29, style=dashed, color = skyblue3];
@@ -1408,7 +1410,6 @@ digraph FlatPlatePV_None {
 	"par_vmp" -> "subarray1_nstrings" [label=32, style=dashed, color = brown4];
 	"par_vmp" -> "inverter_count" [label=32, style=dashed, color = brown4];
 	"par_vmp" -> "subarray3_string_vmp" [label=29, style=dashed, color = skyblue3];
-	"par_vmp" -> "parsolve" [label=20, color = seashell4];
 	"par_vmp" -> "x" [label=3, color = lightslateblue];
 	"subarray3_dcwiring_loss" -> "subarray3_dcloss" [label=25, style=dashed, color = sienna4];
 	"snl_isco" -> "snl_ref_a" [label=36, style=dashed, color = firebrick];

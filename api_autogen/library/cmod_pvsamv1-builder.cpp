@@ -59,56 +59,6 @@ ssc_free( S );
 
 
 
-var_table Pvsamv1_InverterCECCoefficientGenerator_InverterCECCoefficientGenerator_func(var_table* vt, invoke_t* cxt)
-{
-	// inputs
-	undefined Vdco
-	undefined Pdco
-	undefined c1
-	undefined Pso
-	undefined c0
-	undefined c2
-	undefined c3
-
-	// outputs
-	float inv_cec_cg_c0;
-	float inv_cec_cg_vdco;
-	float inv_cec_cg_pdco;
-	float inv_cec_cg_c3;
-	float inv_cec_cg_psco;
-	float inv_cec_cg_c1;
-	float inv_cec_cg_c2;
-
-calc_coefficientsobj = ssc_create(  );
-ssc_var( obj, inv_cec_cg_paco, value( inv_cec_cg_paco ) );
-ssc_var( obj, inv_cec_cg_sample_power_units, value( inv_cec_cg_sample_power_units ) );
-ssc_var( obj, inv_cec_cg_test_samples, value( inv_cec_cg_test_samples ) );
-std::string result = ssc_exec( obj, inv_cec_cg, {"show_dialog": "0.000000", "hold_dialog": "0.000000", } );
-if ( result != 0.000000 ) {
-	msgbox( Failed to solve for inverter coefficients. Please check your inputs. );
-	;
-
-}
-std::string Pdco = ssc_var( obj, Pdco );
-std::string Vdco = ssc_var( obj, Vdco );
-std::string Pso = ssc_var( obj, Pso );
-std::string c0 = ssc_var( obj, c0 );
-std::string c1 = ssc_var( obj, c1 );
-std::string c2 = ssc_var( obj, c2 );
-std::string c3 = ssc_var( obj, c3 );
-ssc_free( obj );
-value( inv_cec_cg_pdco, Pdco );
-value( inv_cec_cg_vdco, Vdco );
-value( inv_cec_cg_psco, Pso );
-value( inv_cec_cg_c0, c0 );
-value( inv_cec_cg_c1, c1 );
-value( inv_cec_cg_c2, c2 );
-value( inv_cec_cg_c3, c3 );
-;
-
-
-
-
 var_table Pvsamv1_inv_snl_eff_cec_MIMO_eval(var_table* vt)
 {
 	// inputs
@@ -431,100 +381,6 @@ var_table Pvsamv1_subarray2_enable_MIMO_eval(var_table* vt)
 
 
 
-float Pvsamv1_spe_power_eval(var_table* vt)
-{
-	// inputs
-	float spe_reference = vt->lookup("spe_reference")->num;
-	float spe_eff0 = vt->lookup("spe_eff0")->num;
-	float spe_rad0 = vt->lookup("spe_rad0")->num;
-	float spe_eff1 = vt->lookup("spe_eff1")->num;
-	float spe_rad1 = vt->lookup("spe_rad1")->num;
-	float spe_eff2 = vt->lookup("spe_eff2")->num;
-	float spe_rad2 = vt->lookup("spe_rad2")->num;
-	float spe_eff3 = vt->lookup("spe_eff3")->num;
-	float spe_rad3 = vt->lookup("spe_rad3")->num;
-	float spe_eff4 = vt->lookup("spe_eff4")->num;
-	float spe_rad4 = vt->lookup("spe_rad4")->num;
-	float spe_area = vt->lookup("spe_area")->num;
-
-	// outputs
-	float spe_power;
-
-	auto switch_spe_reference = [&]{
-		float switch_result;
-		switch( spe_reference ){
-			case 0:
-				switch_result = spe_eff0 / 100.000000 * spe_rad0;
-				break;
-			case 1:
-				switch_result = spe_eff1 / 100.000000 * spe_rad1;
-				break;
-			case 2:
-				switch_result = spe_eff2 / 100.000000 * spe_rad2;
-				break;
-			case 3:
-				switch_result = spe_eff3 / 100.000000 * spe_rad3;
-				break;
-			case 4:
-				switch_result = spe_eff4 / 100.000000 * spe_rad4;
-				break;
-			default:
-				throw std::runtime_error("Simple Efficiency Module Model switch undefined case for spe_reference");
-			}
-		return switch_result;
-	};
-
-	spe_power = switch_spe_reference() * spe_area;
-
-	return spe_power;
-
-}
-
-
-
-var_table Pvsamv1_InverterCECCoefficientGenerator_InverterCECCoefficientGenerator_func(var_table* vt, invoke_t* cxt)
-{
-	// inputs
-	float inv_cec_cg_paco = vt->lookup("inv_cec_cg_paco")->num;
-	util::matrix_t<ssc_number_t> inv_cec_cg_test_samples = vt->lookup("inv_cec_cg_test_samples")->num;
-	float inv_cec_cg_paco = vt->lookup("inv_cec_cg_paco")->num;
-	float inv_cec_cg_sample_power_units = vt->lookup("inv_cec_cg_sample_power_units")->num;
-	util::matrix_t<ssc_number_t> inv_cec_cg_test_samples = vt->lookup("inv_cec_cg_test_samples")->num;
-	float inv_cec_cg_sample_power_units = vt->lookup("inv_cec_cg_sample_power_units")->num;
-	undefined obj
-
-	// outputs
-
-calc_coefficientsobj = ssc_create(  );
-ssc_var( obj, inv_cec_cg_paco, value( inv_cec_cg_paco ) );
-ssc_var( obj, inv_cec_cg_sample_power_units, value( inv_cec_cg_sample_power_units ) );
-ssc_var( obj, inv_cec_cg_test_samples, value( inv_cec_cg_test_samples ) );
-std::string result = ssc_exec( obj, inv_cec_cg, {"show_dialog": "0.000000", "hold_dialog": "0.000000", } );
-if ( result != 0.000000 ) {
-	msgbox( Failed to solve for inverter coefficients. Please check your inputs. );
-	;
-
-}
-std::string Pdco = ssc_var( obj, Pdco );
-std::string Vdco = ssc_var( obj, Vdco );
-std::string Pso = ssc_var( obj, Pso );
-std::string c0 = ssc_var( obj, c0 );
-std::string c1 = ssc_var( obj, c1 );
-std::string c2 = ssc_var( obj, c2 );
-std::string c3 = ssc_var( obj, c3 );
-ssc_free( obj );
-value( inv_cec_cg_pdco, Pdco );
-value( inv_cec_cg_vdco, Vdco );
-value( inv_cec_cg_psco, Pso );
-value( inv_cec_cg_c0, c0 );
-value( inv_cec_cg_c1, c1 );
-value( inv_cec_cg_c2, c2 );
-value( inv_cec_cg_c3, c3 );
-;
-
-
-
-
 var_table Pvsamv1_inv_cec_cg_eff_cec_MIMO_eval(var_table* vt)
 {
 	// inputs
@@ -589,6 +445,150 @@ var_table Pvsamv1_inv_cec_cg_eff_cec_MIMO_eval(var_table* vt)
 	var_table vt;
 	vt.assign( "inv_cec_cg_eff_cec", inv_cec_cg_eff_cec );
 	vt.assign( "inv_cec_cg_eff_euro", inv_cec_cg_eff_euro );
+
+}
+
+
+
+var_table Pvsamv1_InverterCECCoefficientGenerator_InverterCECCoefficientGenerator_func(var_table* vt, invoke_t* cxt)
+{
+	// inputs
+	undefined Vdco
+	undefined Pdco
+	undefined c1
+	undefined Pso
+	undefined c0
+	undefined c2
+	undefined c3
+
+	// outputs
+	float inv_cec_cg_c0;
+	float inv_cec_cg_vdco;
+	float inv_cec_cg_pdco;
+	float inv_cec_cg_c3;
+	float inv_cec_cg_psco;
+	float inv_cec_cg_c1;
+	float inv_cec_cg_c2;
+
+calc_coefficientsobj = ssc_create(  );
+ssc_var( obj, inv_cec_cg_paco, value( inv_cec_cg_paco ) );
+ssc_var( obj, inv_cec_cg_sample_power_units, value( inv_cec_cg_sample_power_units ) );
+ssc_var( obj, inv_cec_cg_test_samples, value( inv_cec_cg_test_samples ) );
+std::string result = ssc_exec( obj, inv_cec_cg, {"show_dialog": "0.000000", "hold_dialog": "0.000000", } );
+if ( result != 0.000000 ) {
+	msgbox( Failed to solve for inverter coefficients. Please check your inputs. );
+	;
+
+}
+std::string Pdco = ssc_var( obj, Pdco );
+std::string Vdco = ssc_var( obj, Vdco );
+std::string Pso = ssc_var( obj, Pso );
+std::string c0 = ssc_var( obj, c0 );
+std::string c1 = ssc_var( obj, c1 );
+std::string c2 = ssc_var( obj, c2 );
+std::string c3 = ssc_var( obj, c3 );
+ssc_free( obj );
+value( inv_cec_cg_pdco, Pdco );
+value( inv_cec_cg_vdco, Vdco );
+value( inv_cec_cg_psco, Pso );
+value( inv_cec_cg_c0, c0 );
+value( inv_cec_cg_c1, c1 );
+value( inv_cec_cg_c2, c2 );
+value( inv_cec_cg_c3, c3 );
+;
+
+
+
+
+var_table Pvsamv1_InverterCECCoefficientGenerator_InverterCECCoefficientGenerator_func(var_table* vt, invoke_t* cxt)
+{
+	// inputs
+	float inv_cec_cg_paco = vt->lookup("inv_cec_cg_paco")->num;
+	util::matrix_t<ssc_number_t> inv_cec_cg_test_samples = vt->lookup("inv_cec_cg_test_samples")->num;
+	float inv_cec_cg_paco = vt->lookup("inv_cec_cg_paco")->num;
+	float inv_cec_cg_sample_power_units = vt->lookup("inv_cec_cg_sample_power_units")->num;
+	util::matrix_t<ssc_number_t> inv_cec_cg_test_samples = vt->lookup("inv_cec_cg_test_samples")->num;
+	float inv_cec_cg_sample_power_units = vt->lookup("inv_cec_cg_sample_power_units")->num;
+	undefined obj
+
+	// outputs
+
+calc_coefficientsobj = ssc_create(  );
+ssc_var( obj, inv_cec_cg_paco, value( inv_cec_cg_paco ) );
+ssc_var( obj, inv_cec_cg_sample_power_units, value( inv_cec_cg_sample_power_units ) );
+ssc_var( obj, inv_cec_cg_test_samples, value( inv_cec_cg_test_samples ) );
+std::string result = ssc_exec( obj, inv_cec_cg, {"show_dialog": "0.000000", "hold_dialog": "0.000000", } );
+if ( result != 0.000000 ) {
+	msgbox( Failed to solve for inverter coefficients. Please check your inputs. );
+	;
+
+}
+std::string Pdco = ssc_var( obj, Pdco );
+std::string Vdco = ssc_var( obj, Vdco );
+std::string Pso = ssc_var( obj, Pso );
+std::string c0 = ssc_var( obj, c0 );
+std::string c1 = ssc_var( obj, c1 );
+std::string c2 = ssc_var( obj, c2 );
+std::string c3 = ssc_var( obj, c3 );
+ssc_free( obj );
+value( inv_cec_cg_pdco, Pdco );
+value( inv_cec_cg_vdco, Vdco );
+value( inv_cec_cg_psco, Pso );
+value( inv_cec_cg_c0, c0 );
+value( inv_cec_cg_c1, c1 );
+value( inv_cec_cg_c2, c2 );
+value( inv_cec_cg_c3, c3 );
+;
+
+
+
+
+float Pvsamv1_spe_power_eval(var_table* vt)
+{
+	// inputs
+	float spe_reference = vt->lookup("spe_reference")->num;
+	float spe_eff0 = vt->lookup("spe_eff0")->num;
+	float spe_rad0 = vt->lookup("spe_rad0")->num;
+	float spe_eff1 = vt->lookup("spe_eff1")->num;
+	float spe_rad1 = vt->lookup("spe_rad1")->num;
+	float spe_eff2 = vt->lookup("spe_eff2")->num;
+	float spe_rad2 = vt->lookup("spe_rad2")->num;
+	float spe_eff3 = vt->lookup("spe_eff3")->num;
+	float spe_rad3 = vt->lookup("spe_rad3")->num;
+	float spe_eff4 = vt->lookup("spe_eff4")->num;
+	float spe_rad4 = vt->lookup("spe_rad4")->num;
+	float spe_area = vt->lookup("spe_area")->num;
+
+	// outputs
+	float spe_power;
+
+	auto switch_spe_reference = [&]{
+		float switch_result;
+		switch( spe_reference ){
+			case 0:
+				switch_result = spe_eff0 / 100.000000 * spe_rad0;
+				break;
+			case 1:
+				switch_result = spe_eff1 / 100.000000 * spe_rad1;
+				break;
+			case 2:
+				switch_result = spe_eff2 / 100.000000 * spe_rad2;
+				break;
+			case 3:
+				switch_result = spe_eff3 / 100.000000 * spe_rad3;
+				break;
+			case 4:
+				switch_result = spe_eff4 / 100.000000 * spe_rad4;
+				break;
+			default:
+				throw std::runtime_error("Simple Efficiency Module Model switch undefined case for spe_reference");
+			}
+		return switch_result;
+	};
+
+	spe_power = switch_spe_reference() * spe_area;
+
+	return spe_power;
 
 }
 

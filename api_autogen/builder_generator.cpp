@@ -630,6 +630,7 @@ void builder_generator::create_cmod_builder_cpp(std::string cmod_name,
 
             std::cout << e->ui_form << fx_sig;
 
+
             // make a nice comment block
             header_file << "//\n// Function ";
             for (size_t k = 0; k < cb_info.all_outputs.size(); k++){
@@ -719,27 +720,10 @@ void builder_generator::create_all(std::string fp) {
     export_variables_json(primary_cmods[0]);
 
 
-    auto udv = get_user_defined_variables();
 
-    auto evalv = get_evaluated_variables();
+    // print var_info table
+//    print_var_info_table(config_name, filepath);
 
-    size_t all_ssc_vars = 0;
-
-    auto cmods = SAM_config_to_primary_modules[config_name];
-
-    auto all_vars = udv;
-
-    for (size_t i = 0; i < cmods.size(); i++){
-        auto vec = get_cmod_var_info(cmods[i], "in");
-        all_vars = vec;
-        all_ssc_vars += vec.size();
-    }
-
-    std::cout << config_name << ": \n";
-    std::cout << "number user defined: " << udv.size() << "; number eval: " << evalv.size() << "\n";
-    std::cout << "number of all ssc vars: " << all_ssc_vars << " in " << cmods.size() << " cmods\n";
-
-    std::cout << udv << "\n" << evalv << "\n\n\n" << all_vars;
 
 }
 

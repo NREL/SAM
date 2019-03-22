@@ -545,16 +545,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bvoc_units_set(SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications ptr, const char* string, SAM_error* err);
 
 	/**
-	 * Set 6par_gpmp: Maximum power point temperature coefficient
-	 * type: numeric
-	 * units: %/C
-	 * options: None
-	 * constraints: None
-	 * required if: module_model=2
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_gpmp_set(SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications ptr, float number, SAM_error* err);
-
-	/**
 	 * Set 6par_imp: Imp
 	 * type: numeric
 	 * units: A
@@ -573,16 +563,6 @@ extern "C"
 	 * required if: module_model=2
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_isc_set(SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications ptr, float number, SAM_error* err);
-
-	/**
-	 * Set 6par_nser: Nseries
-	 * type: numeric
-	 * units: None
-	 * options: None
-	 * constraints: INTEGER,POSITIVE
-	 * required if: module_model=2
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_nser_set(SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications ptr, float number, SAM_error* err);
 
 	/**
 	 * Set 6par_vmp: Maximum power point voltage
@@ -619,13 +599,9 @@ extern "C"
 
 	SAM_EXPORT const char* SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bvoc_units_get(SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications ptr, SAM_error* err);
 
-	SAM_EXPORT float SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_gpmp_get(SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications ptr, SAM_error* err);
-
 	SAM_EXPORT float SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_imp_get(SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications ptr, SAM_error* err);
 
 	SAM_EXPORT float SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_isc_get(SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications ptr, SAM_error* err);
-
-	SAM_EXPORT float SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_nser_get(SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications ptr, SAM_error* err);
 
 	SAM_EXPORT float SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_vmp_get(SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications ptr, SAM_error* err);
 
