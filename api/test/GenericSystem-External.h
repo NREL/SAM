@@ -9,7 +9,6 @@
 #include "ssc/sscapi.h"
 
 #include "visibility.h"
-#include "dlfcn.h"
 
 
 #include "SAM_GenericSystem.h"
@@ -81,19 +80,20 @@ public:
         ssc_module_free(cmod);
     }
 
-    bool loadFromFile(std::string file){
-        std::ofstream f;
-        f.open(file);
-        if (!f.is_open())
-            throw std::runtime_error("File could not be opened: " + file);
+    bool loadFromFile(std::string def){
 
-        // load some data structure containing defaults until we have:
-        std::string group;
-        std::string var_name;
-        std::string type;
-        std::string value;
 
-        //SystemLoader loader;
+
+        if (def == "None"){
+            // load some data structure containing defaults until we have:
+            std::string group = "PowerPlant";
+            std::string var_name = "heat_rate";
+            std::string type = "float";
+            float value = 1.f;
+
+            SystemLoader loader(system, path);
+            loader.loadFloat("GenericSystem", group, var_name, value);
+        }
 
     }
 
