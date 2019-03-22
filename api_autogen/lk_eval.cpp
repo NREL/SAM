@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <cctype>
 
 #include <lk/absyn.h>
 #include <lk/parse.h>
@@ -59,9 +60,9 @@ std::string extractor_interpreter::spell_list(lk::list_t *l, std::vector<std::st
             s += lit->value;
             s += "\"";
             if (map_literals_only){
-                bool is_ssc_var = which_cmod_as_input(lit->value, active_config).length() > 0;
-                if (graph->find_vertex(lit->value, is_ssc_var)){
-                    if (vertex_names) vertex_names->push_back(lit->value);
+                bool is_ssc_var = which_cmod_as_input(lit->value.ToStdString(), active_config).length() > 0;
+                if (graph->find_vertex(lit->value.ToStdString(), is_ssc_var)){
+                    if (vertex_names) vertex_names->push_back(lit->value.ToStdString());
                     if (vertex_is_ssc) vertex_is_ssc->push_back(is_ssc_var);
                 }
                 continue;
@@ -69,8 +70,8 @@ std::string extractor_interpreter::spell_list(lk::list_t *l, std::vector<std::st
         }
         else if (lk::iden_t* id = dynamic_cast<lk::iden_t*>(l->items[i])){
             s += id->name;
-            if (graph->find_vertex(id->name, false)){
-                if (vertex_names) vertex_names->push_back(id->name);
+            if (graph->find_vertex(id->name.ToStdString(), false)){
+                if (vertex_names) vertex_names->push_back(id->name.ToStdString());
                 if (vertex_is_ssc) vertex_is_ssc->push_back(false);
             }
         }
@@ -119,8 +120,8 @@ std::string extractor_interpreter::spell_out(lk::expr_t *n, std::vector<std::str
             if (vertex_is_ssc) vertex_is_ssc->push_back(false);
             calling_ssc_var_function = true;
         }
-        else if (graph->find_vertex(left_i->name, false)){
-            if (vertex_names) vertex_names->push_back(left_i->name);
+        else if (graph->find_vertex(left_i->name.ToStdString(), false)){
+            if (vertex_names) vertex_names->push_back(left_i->name.ToStdString());
             if (vertex_is_ssc) vertex_is_ssc->push_back(false);
         }
     }
@@ -147,8 +148,8 @@ std::string extractor_interpreter::spell_out(lk::expr_t *n, std::vector<std::str
     }
     else if (lk::iden_t* right_i = dynamic_cast<lk::iden_t*>(n->right)){
         s += right_i->name;
-        if (graph->find_vertex(right_i->name, false)){
-            if (vertex_names) vertex_names->push_back(right_i->name);
+        if (graph->find_vertex(right_i->name.ToStdString(), false)){
+            if (vertex_names) vertex_names->push_back(right_i->name.ToStdString());
             if (vertex_is_ssc) vertex_is_ssc->push_back(false);
         }
     }
@@ -158,8 +159,8 @@ std::string extractor_interpreter::spell_out(lk::expr_t *n, std::vector<std::str
     else if (lk::literal_t* right_l = dynamic_cast<lk::literal_t*>(n->right)){
         s += "\"" + right_l->value + "\"";
         if (calling_value_function){
-            if (graph->find_vertex(right_l->value, true)){
-                if (vertex_names) vertex_names->push_back(right_l->value);
+            if (graph->find_vertex(right_l->value.ToStdString(), true)){
+                if (vertex_names) vertex_names->push_back(right_l->value.ToStdString());
                 if (vertex_is_ssc) vertex_is_ssc->push_back(true);
             }
         }
@@ -215,9 +216,9 @@ void extractor_interpreter::map_assignment(lk::node_t *src, lk::node_t *dest) {
     std::vector<bool> vertex_is_ssc;
 
     if (lk::iden_t* src_id = dynamic_cast<lk::iden_t*>(src)){
-        vertex_names.push_back(src_id->name);
+        vertex_names.push_back(src_id->name.ToStdString());
         bool is_ssc = false;
-        if ( src_id->special && (which_cmod_as_input(src_id->name, active_config).length() > 0))
+        if ( src_id->special && (which_cmod_as_input(src_id->name.ToStdString(), active_config).length() > 0))
             is_ssc = true;
         vertex_is_ssc.push_back(is_ssc);
     }
@@ -1177,6 +1178,7 @@ std::string format_as_symbol(std::string s){
 
 bool translator::special_set(const lk_string &name, lk::vardata_t &val) {
     assert(false);
+	return false;
 }
 
 bool translator::special_get(const lk_string &name, lk::vardata_t &val) {

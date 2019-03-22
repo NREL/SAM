@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "equations.h"
+#include "../src/equations.h"
 #include "data_structures.h"
 #include "lk_env.h"
 #include "config_extractor.h"

@@ -54,7 +54,7 @@ static void fcall_setmodules( lk::invoke_t &cxt )
     std::vector<std::string> list;
     lk::vardata_t &m = cxt.arg(0);
     for( size_t i=0;i<m.length();i++ )
-        list.push_back( m.index(i)->as_string() );
+        list.push_back( m.index(i)->as_string().ToStdString() );
 
     SAM_config_to_primary_modules[active_config] = list;
 }
@@ -74,11 +74,11 @@ static void fcall_addpage( lk::invoke_t &cxt )
             if ( item.type() == lk::vardata_t::HASH )
             {
                 if ( lk::vardata_t *name = item.lookup( "name" ) )
-                    new_page.common_uiforms.push_back(name->as_string());
+                    new_page.common_uiforms.push_back(name->as_string().ToStdString());
             }
             else
             {
-                new_page.common_uiforms.push_back(item.as_string());
+                new_page.common_uiforms.push_back(item.as_string().ToStdString());
             }
         }
     }
@@ -108,7 +108,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
             {
                 for( size_t i=0;i<vec.length();i++ )
                 {
-                    new_page.common_uiforms.push_back(vec.index(i)->as_string());
+                    new_page.common_uiforms.push_back(vec.index(i)->as_string().ToStdString());
                 }
             }
 
@@ -161,7 +161,7 @@ static void fcall_value( lk::invoke_t &cxt )
 
         auto var_graph = SAM_config_to_variable_graph.find(active_config)->second;
 
-        std::vector<std::string> args = split_identity_string(cxt.error(), 2);
+        std::vector<std::string> args = split_identity_string(cxt.error().ToStdString(), 2);
         std::string dest_name = cxt.arg(0).as_string().ToStdString();
 
         // the source could be a local variable, a literal, a constant, a special_get, or a call to value(...)
@@ -187,7 +187,7 @@ static void fcall_value( lk::invoke_t &cxt )
             var_graph->add_vertex(src_name, src_is_ssc, ui);
 
             var_graph->add_edge(src_name, src_is_ssc, dest_name, dest_is_ssc,
-                                active_method, obj_stack, "value(" + cxt.error() + ")",
+                                active_method, obj_stack, "value(" + cxt.error().ToStdString() + ")",
                                 ui, nullptr);
 
         }
@@ -281,7 +281,7 @@ static void fcall_refresh(lk::invoke_t &cxt) {
 static void fcall_nsrdbquery(lk::invoke_t &cxt)
 {
     LK_DOC("nsrdbquery", "Do not enable nsrdb", "(none) : string");
-    cxt.result().assign(wxEmptyString);
+    cxt.result().assign("");
 }
 
 static void fcall_librarygetnumbermatches(lk::invoke_t &cxt) {
@@ -565,7 +565,7 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
     else{
         auto var_graph = SAM_config_to_variable_graph.find(active_config)->second;
 
-        std::vector<std::string> args = split_identity_string(cxt.error(), 3);
+        std::vector<std::string> args = split_identity_string(cxt.error().ToStdString(), 3);
         std::string dest_name = active_cmod;    // likely "tbd"
 
         // the source could be a local variable, a literal, a constant, a special_get, or a call to value(...)
@@ -592,7 +592,7 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
             var_graph->add_vertex(dest_name, false, ui);
 
             var_graph->add_edge(src_name, is_ssc, dest_name, false,
-                                active_method, obj_stack, "ssc_var(" + cxt.error() + ")",
+                                active_method, obj_stack, "ssc_var(" + cxt.error().ToStdString() + ")",
                                 ui, nullptr);
         }
     }

@@ -11,11 +11,11 @@
 void create(){
     GenericSystem system = GenericSystem();
 
-    system.PowerPlant.set_derate(10.f);
+//    system.PowerPlant.set_derate(10.f);
 
-    std::cout << system.PowerPlant.get_derate();
+//    std::cout << system.PowerPlant.get_derate();
 
-    system.PowerPlant.set_heat_rate(1.f);
+//    system.PowerPlant.set_heat_rate(1.f);
 
     std::cout << system.PowerPlant.get_conv_eff();
 
@@ -25,8 +25,7 @@ void create(){
 void loadFromFile(){
     
     
-    GenericSystem system = GenericSystem("None");
-
+   // GenericSystem system = GenericSystem("default");
 }
 
 int main(int argc, char *argv[]){
