@@ -16,10 +16,6 @@ struct error {
     std::string message;
 };
 
-const char* error_message(SAM_error error);
-
-void error_destruct(SAM_error error);
-
 }
 
 /// Returns true if fn executed without throwing an error, false otherwise.

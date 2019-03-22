@@ -13,7 +13,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
 
 #include_directories(../src $ENV{LKDIR}/include $ENV{SSCDIR})
-include_directories(. $ENV{SSCDIR})
+include_directories(. $ENV{SSCDIR} $ENV{SSCDIR}/ssc)
 
 set(SAM_API_SRC
         ErrorHandler.h
@@ -22,33 +22,17 @@ set(SAM_API_SRC
         visibility.h
         SAM_GenericSystem.h
         SAM_GenericSystem.cpp
-        GenericSystem-External.h
-        GenericSystem-External.cpp
         SystemLoader.cpp
-        SystemLoader.h
-        )
+        SystemLoader.h)
+		
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-if(MSVC)
-    add_compile_options(/W3 /wd4996)
-    if (CMAKE_BUILD_TYPE STREQUAL Debug)
-        add_compile_options(/MDd)
-        add_compile_definitions(_DEBUG)
-    else()
-        add_compile_options(/MD /O2)
-        add_compile_definitions(NDEBUG )
-    endif()
-    add_compile_definitions( __DLL__ __64BIT____WINDOWS__ _CRT_NON_CONFORMING_SWPRINTFS=1
-        _SCL_SECURE_NO_WARNINGS=1 _UNICODE NOPCH)
-endif()
-
 
 # set build types for archive
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_library(SAM_apid SHARED
-            ${SAM_API_SRC})
+    add_library(SAM_apid SHARED ${SAM_API_SRC})
     set(SAM_API_LIB SAM_apid)
 
     set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
@@ -72,52 +56,38 @@ if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     endif()
 else()
     unset(SSC_LIB CACHE)
+	
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         find_library( SSC_LIB
                 NAMES sscd.dylib sscd.so sscd.lib
-                PATHS $ENV{SSCDIR}/ssc)
+                PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
     else()
         find_library(SSC_LIB
-                NAMES  ssc.dylib ssc.so ssc.lib
-                PATHS $ENV{SSCDIR}/ssc)
+                NAMES ssc.dylib ssc.so sscd.lib
+                PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/ssc/build_vs2017/x64/Release ) 
     endif()
 endif()
 set_property(TARGET ${SAM_API_LIB} PROPERTY PREFIX "")
 
 
-#setup compile options
-target_compile_options(${SAM_API_LIB} PUBLIC -O3 -std=c++11 )
+if(MSVC)
+    add_compile_options(/W3 /wd4996)
+    if (CMAKE_BUILD_TYPE STREQUAL Debug)
+        add_compile_options(/MDd)
+        add_compile_definitions(_DEBUG)
+    else()
+        add_compile_options(/MD /O2)
+        add_compile_definitions(NDEBUG )
+    endif()
+    add_compile_definitions( __DLL__ __64BIT__ __WINDOWS__ _WINDOWS _CRT_NON_CONFORMING_SWPRINTFS=1
+        _SCL_SECURE_NO_WARNINGS=1 _UNICODE NOPCH)
+else()
+	#setup compile options and linking
+	target_compile_options(${SAM_API_LIB} PUBLIC -O3 -std=c++11 )
+	target_link_libraries(${SAM_API_LIB} -lm -lcurl)
+endif()
 
-
-# setup linking dependencies and flags
-target_link_libraries(${SAM_API_LIB} -lm -lcurl)
+target_compile_definitions(${SAM_API_LIB} PUBLIC system_advisor_model_EXPORT)
 target_link_libraries(${SAM_API_LIB} ${SSC_LIB})
 
-
-## make test
-
-add_executable(SAM_api_test
-        test.cpp)
-
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_link_libraries(SAM_api_test sscd SAM_apid)
-
-
-else()
-    target_link_libraries(SAM_api_test ssc SAM_api)
-
-endif()
-
-#setup compile options
-target_compile_options(SAM_api_test PUBLIC -O3 -std=c++11 )
-
-
-# setup linking dependencies and flags
-target_link_libraries(SAM_api_test -lm -lcurl)
-
-if(MSVC)
-    set_target_properties(${SAM_API_LIB} PROPERTIES
-            LIBRARY_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
-    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${SAM_API_LIB})
-endif()
+add_subdirectory(test)

@@ -5,7 +5,8 @@
 #include <string>
 
 #include <lk/env.h>
-#include <variables.h>
+//#include <variables.h>
+#include "../src/variables.h"
 
 #include "variable_graph.h"
 #include "config_extractor.h"

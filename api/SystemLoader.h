@@ -3,7 +3,11 @@
 
 #include <string>
 #include <iostream>
-#include <dlfcn.h>
+#ifdef __WINDOWS__
+	#include "dlfnc.h"
+#else
+	#include <dlfcn.h>
+#endif
 
 #include <ssc/vartab.h>
 #include "ErrorHandler.h"

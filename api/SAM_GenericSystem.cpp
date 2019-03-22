@@ -4,51 +4,46 @@
 #include <memory>
 #include <iostream>
 
-#include <ssc/vartab.h>
 #include <ssc/cmod_generic_system-builder.h>
+#include <ssc/sscapi.h>
 
 #include "SAM_api.h"
 #include "ErrorHandler.h"
 #include "SAM_GenericSystem.h"
 
 
-SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_error* err){
+SAM_EXPORT SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_error* err){
     SAM_GenericSystem result = nullptr;
     translateExceptions(err, [&]{
-        if (std::strcmp(def, "Res")){
-
-        }
-        result = new var_table;
+        
+        result = ssc_data_create();
     });
     return result;
 }
 
-void SAM_GenericSystem_destruct(SAM_GenericSystem gs_system)
+SAM_EXPORT void SAM_GenericSystem_destruct(SAM_GenericSystem gs_system)
 {
-    var_table *vt = static_cast<var_table*>(gs_system);
-    if (vt) delete vt;
+	ssc_data_free(gs_system);
 }
 
-void SAM_GenericSystem_PowerPlant_derate_set(SAM_GenericSystem ptr, float number, SAM_error* err){
+SAM_EXPORT void SAM_GenericSystem_PowerPlant_derate_set(SAM_GenericSystem ptr, float number, SAM_error* err){
     translateExceptions(err, [&]{
-        var_table* vt = static_cast<var_table*>(ptr);
-        vt->assign("derate", number);
+		ssc_data_set_number(ptr, "derate", number);
     });
 }
 
-void SAM_GenericSystem_PowerPlant_heat_rate_set(SAM_GenericSystem ptr, float number, SAM_error* err){
+SAM_EXPORT void SAM_GenericSystem_PowerPlant_heat_rate_set(SAM_GenericSystem ptr, float number, SAM_error* err){
     translateExceptions(err, [&]{
-        var_table* vt = static_cast<var_table*>(ptr);
-        vt->assign("heat_rate", number);
+		ssc_data_set_number(ptr, "heat_rate", number);
+
     });
 }
 
 
-float SAM_GenericSystem_PowerPlant_conv_eff_eval(SAM_GenericSystem ptr, SAM_error* err){
+SAM_EXPORT float SAM_GenericSystem_PowerPlant_conv_eff_eval(SAM_GenericSystem ptr, SAM_error* err){
     float result = 0.f;
     translateExceptions(err, [&]{
-        var_table* vt = static_cast<var_table*>(ptr);
-        result = GenericSystem_conv_eff_eval(vt);
+        result = GenericSystem_conv_eff_eval(ptr);
     });
     return result;
 }
@@ -56,11 +51,7 @@ float SAM_GenericSystem_PowerPlant_conv_eff_eval(SAM_GenericSystem ptr, SAM_erro
 SAM_EXPORT float SAM_GenericSystem_PowerPlant_derate_get(SAM_GenericSystem ptr, SAM_error* err){
     float result;
     translateExceptions(err, [&]{
-        var_table* vt = static_cast<var_table*>(ptr);
-        if (var_data* v = vt->lookup("derate")){
-            result = v->num;
-        }
-        else
+        if (!ssc_data_get_number(ptr, "derate", &result))
             make_access_error("SAM_GenericSystem", "derate");
     });
     return result;

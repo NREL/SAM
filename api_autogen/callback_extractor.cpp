@@ -49,7 +49,7 @@ bool callback_extractor::parse_script(std::string callback_script) {
 
     if ( parse.error_count() != 0 || parse.token() != lk::lexer::END){
         for( int i=0;i<parse.error_count();i++ )
-            errors.push_back( parse.error(i) );
+            errors.push_back( parse.error(i).ToStdString());
         errors.push_back( "callback script parsing did not reach end of input" );
         if ( tree ) delete tree;
         return false;
@@ -61,7 +61,7 @@ bool callback_extractor::parse_script(std::string callback_script) {
         bool ok = e.run();
         if ( !ok ){
             for( size_t i=0;i<e.error_count();i++ )
-                errors.push_back( e.get_error(i) );
+                errors.push_back( e.get_error(i).ToStdString());
             return false;
         }
 
@@ -124,7 +124,7 @@ bool callback_extractor::invoke_function(lk::node_t *root, std::string f_name) {
         if ( !eval.run())
         {
             for (size_t i=0;i<eval.error_count();i++)
-                errors.push_back(eval.get_error(i));
+                errors.push_back(eval.get_error(i).ToStdString());
             return false;
         }
         return true;

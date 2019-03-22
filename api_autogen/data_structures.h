@@ -6,8 +6,8 @@
 #include <set>
 #include <iostream>
 
-#include "equations.h"
-#include "variables.h"
+#include "../src/equations.h"
+#include "../src/variables.h"
 #include "variable_graph.h"
 
 /* List of all intermediate and exported data structures with descriptions */

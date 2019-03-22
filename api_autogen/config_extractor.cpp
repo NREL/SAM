@@ -120,6 +120,7 @@ bool config_extractor::map_equations(){
 
         }
     }
+	return true;
 }
 
 /// add this instance to ui_form_extractor_database for future reference

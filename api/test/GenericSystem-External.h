@@ -6,6 +6,12 @@
 #include <fstream>
 #include <unordered_map>
 
+#include "ssc/sscapi.h"
+
+#include "visibility.h"
+#include "dlfnc.h"
+
+
 #include "SAM_GenericSystem.h"
 #include "ErrorHandler.h"
 #include "SystemLoader.h"
@@ -47,7 +53,7 @@ class Common{
 
 class GenericSystem {
 private:
-    ssc_module_t cmod;
+    SAM_GenericSystem cmod;
 
 public:
     SAM_GenericSystem system;
@@ -82,15 +88,13 @@ public:
             throw std::runtime_error("File could not be opened: " + file);
 
         // load some data structure containing defaults until we have:
-        std::string group = "PowerPlant";
-        std::string var_name = "heat_rate";
-        std::string type = "float";
-        float value = 1.f;
+        std::string group;
+        std::string var_name;
+        std::string type;
+        std::string value;
 
-        SystemLoader loader(system);
+        //SystemLoader loader;
 
-        // calling SAM_GenericSystem_PowerPlant_heat_rate_set
-        loader.loadFloat("GenericSystem", group, var_name, value);
     }
 
     int execute(){

@@ -3,8 +3,11 @@
 
 #include "visibility.h"
 #include "ErrorHandler.h"
+#include <ssc/sscapi.h>
+
 
 #include <ssc/cmod_generic_system-builder.h>
+//#include "cmod_generic_system-builder.h"
 
 #include <stdint.h>
 #ifdef __cplusplus
@@ -25,7 +28,7 @@ extern "C"
 
 	SAM_EXPORT SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_error* err);
 
-    void SAM_GenericSystem_destruct(SAM_GenericSystem gs_system);
+    SAM_EXPORT void SAM_GenericSystem_destruct(SAM_GenericSystem gs_system);
 
     //
     // Modules and associated parameters
