@@ -87,14 +87,15 @@ public:
         if (def == "None"){
             // load some data structure containing defaults until we have:
             std::string group = "PowerPlant";
-            std::string var_name = "heat_rate";
+            std::string var_name = "derate";
             std::string type = "float";
             float value = 1.f;
 
             SystemLoader loader(system, path);
             loader.loadFloat("GenericSystem", group, var_name, value);
+			std::cout << PowerPlant.get_derate();
         }
-
+		return true;
     }
 
     int execute(){

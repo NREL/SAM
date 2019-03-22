@@ -1,28 +1,35 @@
 #include <string>
 #include <iostream>
 
-#ifdef __WINDOWS__
-#include "dlfcn_win.h"
+#if defined(__WINDOWS__)||defined(WIN32)||defined(_WIN32)||defined(__MINGW___)||defined(_MSC_VER)
+#include <Windows.h>
+#define RTLD_LAZY   0x000 /* accept unresolved externs */
+
+void *dll_open(const char *name) { return (void*) ::LoadLibraryA(name); }
+void dll_close(void *handle) { ::FreeLibrary((HMODULE)handle); }
+void *dll_sym(void *handle, const char *name) { return (void*) ::GetProcAddress((HMODULE)handle, name); }
 #else
 #include <dlfcn.h>
+void *dll_open(const char *name) { return dlopen(name, RTLD_LAZY); }
+void dll_close(void *handle) { dlclose(handle); }
+void *dll_sym(void *handle, const char *name) { return dlsym(handle, name); }
 #endif
 
 #include "SAM_api.h"
 
 #define CHECK_DLL_LOADED() \
-	if (!handle) {std::string msg(dlerror()); throw std::runtime_error( "Cannot open library: " + msg );}
+	if (!handle) {std::string msg("Cannot open SAM library"); \
+		 throw std::runtime_error( msg );}
 
 #define CHECK_FUNC_LOADED() \
-    if (!func) {std::string msg(dlerror()); throw std::runtime_error( "Cannot load function " + funcName + ": " + msg);}
+    if (!func) {throw std::runtime_error( "Cannot load function " + std::string(funcName) );}
 
 SAM_EXPORT void* SAM_load_library(const char* filepath){
 
-    void* handle = dlopen(filepath, RTLD_LAZY);
-
+    void* handle = dll_open(filepath);
+	
     CHECK_DLL_LOADED()
 
-    // reset errors
-    dlerror();
 
     return handle;
 }
@@ -35,7 +42,7 @@ SAM_load_float(void *handle, const std::string &cmod_symbol, const std::string &
 
     std::cout << funcName << "\n";
 
-    auto func = (SAM_set_float_t) dlsym(handle, funcName.c_str());
+    auto func = (SAM_set_float_t) dll_sym(handle, funcName.c_str());
 
     CHECK_FUNC_LOADED()
 

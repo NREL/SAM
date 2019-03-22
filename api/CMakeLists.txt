@@ -19,9 +19,12 @@ set(SAM_API_SRC
         ErrorHandler.h
         ErrorHandler.cpp
         SAM_api.h
+		SAM_api.cpp
         visibility.h
+		dlfcn_win.h
+		dlfcn_win.cpp
         SAM_GenericSystem.h
-        SAM_GenericSystem.cpp SAM_api.cpp)
+        SAM_GenericSystem.cpp )
 		
 
 set(CMAKE_CXX_STANDARD 11)

@@ -9,10 +9,17 @@
 	#include <dlfcn.h>
 #endif
 
+#include "visibility.h"
 #include "ErrorHandler.h"
 #include "SAM_api.h"
 
+#ifdef __WINDOWS__
+static std::string path = std::string(getenv("SAMNTDIR")) + "/api/SAM_apid.dll";
+#elif __APPLE__
 static std::string path = std::string(getenv("SAMNTDIR")) + "/api/SAM_apid.dylib";
+#else
+static std::string path = std::string(getenv("SAMNTDIR")) + "/api/SAM_apid.so";
+#endif
 
 class SystemLoader {
 private:
@@ -39,7 +46,6 @@ public:
         SAM_set_float_t floatFunc = SAM_load_float(m_handle, cmod_symbol, group, var_name);
 
         float conv_eff = floatFunc(m_system, value, nullptr);
-        std::cout << conv_eff;
     }
 
 

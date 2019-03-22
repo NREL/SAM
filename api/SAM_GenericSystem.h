@@ -24,7 +24,7 @@ extern "C"
 	 * @param def_ the set of financial model-dependent defaults to use (None, Residential, ...)
 	 * @param[in,out] err_ a pointer to an error object
 	 */
-	typedef void * SAM_GenericSystem;
+	SAM_EXPORT typedef void * SAM_GenericSystem;
 
 	SAM_EXPORT SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_error* err);
 

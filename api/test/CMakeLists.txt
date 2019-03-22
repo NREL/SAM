@@ -40,11 +40,14 @@ if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     endif()
 else()
     unset(SSC_LIB CACHE)
-	
+	unset(SAM_API_LIB CACHE)
     find_library( SSC_LIB
             NAMES sscd.dylib sscd.so sscd.lib
             PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
-    target_link_libraries(SAM_api_test ${SSC_LIB} SAM_apid)
+	find_library( SAM_API_LIB
+            NAMES SAM_apid.dylib SAM_apid.so SAM_apid.lib
+            PATHS $ENV{SAMNTDIR}/sam/api)
+    target_link_libraries(SAM_api_test ${SSC_LIB} ${SAM_API_LIB})
 
 endif()
 
@@ -75,6 +78,6 @@ add_custom_command(
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different
 		$ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.dll ${CMAKE_CURRENT_SOURCE_DIR}
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different
-		$ENV{SAMNTDIR}/api/api.dll ${CMAKE_CURRENT_SOURCE_DIR}
+		$ENV{SAMNTDIR}/api/SAM_apid.dll ${CMAKE_CURRENT_SOURCE_DIR}
 	)
 endif()
