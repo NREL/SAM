@@ -21,18 +21,18 @@ SAM_EXPORT SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_er
     return result;
 }
 
-void SAM_GenericSystem_destruct(SAM_GenericSystem gs_system)
+SAM_EXPORT void SAM_GenericSystem_destruct(SAM_GenericSystem gs_system)
 {
 	ssc_data_free(gs_system);
 }
 
-void SAM_GenericSystem_PowerPlant_derate_set(SAM_GenericSystem ptr, float number, SAM_error* err){
+SAM_EXPORT void SAM_GenericSystem_PowerPlant_derate_set(SAM_GenericSystem ptr, float number, SAM_error* err){
     translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "derate", number);
     });
 }
 
-void SAM_GenericSystem_PowerPlant_heat_rate_set(SAM_GenericSystem ptr, float number, SAM_error* err){
+SAM_EXPORT void SAM_GenericSystem_PowerPlant_heat_rate_set(SAM_GenericSystem ptr, float number, SAM_error* err){
     translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "heat_rate", number);
 
@@ -40,7 +40,7 @@ void SAM_GenericSystem_PowerPlant_heat_rate_set(SAM_GenericSystem ptr, float num
 }
 
 
-float SAM_GenericSystem_PowerPlant_conv_eff_eval(SAM_GenericSystem ptr, SAM_error* err){
+SAM_EXPORT float SAM_GenericSystem_PowerPlant_conv_eff_eval(SAM_GenericSystem ptr, SAM_error* err){
     float result = 0.f;
     translateExceptions(err, [&]{
         result = GenericSystem_conv_eff_eval(ptr);

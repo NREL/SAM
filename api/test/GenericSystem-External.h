@@ -8,6 +8,10 @@
 
 #include "ssc/sscapi.h"
 
+#include "visibility.h"
+#include "dlfnc.h"
+
+
 #include "SAM_GenericSystem.h"
 #include "ErrorHandler.h"
 #include "SystemLoader.h"
@@ -89,7 +93,7 @@ public:
         std::string type;
         std::string value;
 
-        SystemLoader loader;
+        //SystemLoader loader;
 
     }
 

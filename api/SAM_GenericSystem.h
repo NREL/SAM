@@ -28,7 +28,7 @@ extern "C"
 
 	SAM_EXPORT SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_error* err);
 
-    void SAM_GenericSystem_destruct(SAM_GenericSystem gs_system);
+    SAM_EXPORT void SAM_GenericSystem_destruct(SAM_GenericSystem gs_system);
 
     //
     // Modules and associated parameters

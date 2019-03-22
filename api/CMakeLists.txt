@@ -87,38 +87,7 @@ else()
 	target_link_libraries(${SAM_API_LIB} -lm -lcurl)
 endif()
 
+target_compile_definitions(${SAM_API_LIB} PUBLIC system_advisor_model_EXPORT)
 target_link_libraries(${SAM_API_LIB} ${SSC_LIB})
 
-#####
-# make test
-#####
-
-add_executable(SAM_api_test
-        test.cpp
-        GenericSystem-External.h
-        GenericSystem-External.cpp
-        )
-
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_link_libraries(SAM_api_test sscd SAM_apid)
-else()
-    target_link_libraries(SAM_api_test ssc SAM_api)
-endif()
-
-#setup compile options
-
-
-if(MSVC)
-    add_compile_definitions( __64BIT__ __WINDOWS__ _
-        WINDOWS _CRT_NON_CONFORMING_SWPRINTFS=1
-        _SCL_SECURE_NO_WARNINGS=1 _UNICODE NOPCH)
-    set_target_properties(${SAM_API_LIB} PROPERTIES
-        LIBRARY_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
-    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} 
-        PROPERTY VS_STARTUP_PROJECT ${SAM_API_LIB})
-else()
-    target_compile_options(SAM_api_test PUBLIC -O3 -std=c++11 )
-
-    target_link_libraries(SAM_api_test -lm -lcurl)
-endif()
+add_subdirectory(test)
