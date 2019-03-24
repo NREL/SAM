@@ -1,6 +1,6 @@
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 2.8)
 
 
 if(APPLE)
@@ -45,8 +45,8 @@ else()
             NAMES sscd.dylib sscd.so sscd.lib
             PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
 	find_library( SAM_API_LIB
-            NAMES SAM_apid.dylib SAM_apid.so SAM_apid.lib
-            PATHS $ENV{SAMNTDIR}/sam/api)
+            NAMES libSAM_apid.dylib libSAM_apid.so libSAM_apid.lib
+            PATHS $ENV{SAMNTDIR}/api)
     target_link_libraries(SAM_api_test ${SSC_LIB} ${SAM_API_LIB})
 
 endif()
@@ -65,19 +65,8 @@ if(MSVC)
     set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} 
         PROPERTY VS_STARTUP_PROJECT ${SAM_API_LIB})
 else()
-    target_compile_options(SAM_api_test PUBLIC -O3 -std=c++11 )
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11" )
 
     target_link_libraries(SAM_api_test -lm -lcurl)
 endif()
 
-# copy needed dlls
-if(MSVC)
-add_custom_command(
-	TARGET SAM_api_test
-		POST_BUILD 
-		COMMAND ${CMAKE_COMMAND} -E copy_if_different
-		$ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.dll ${CMAKE_CURRENT_SOURCE_DIR}
-		COMMAND ${CMAKE_COMMAND} -E copy_if_different
-		$ENV{SAMNTDIR}/api/SAM_apid.dll ${CMAKE_CURRENT_SOURCE_DIR}
-	)
-endif()

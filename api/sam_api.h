@@ -29,7 +29,7 @@ SAM_EXPORT void* SAM_load_library(const char* filepath);
 
 
 SAM_EXPORT SAM_set_float_t
-SAM_load_float(void *handle, const std::string &cmod_symbol, const std::string &group, const std::string &var_name);
+SAM_load_float(void *handle, const char *cmod_symbol, const char *group, const char *var_name);
 
 
 #ifdef __cplusplus

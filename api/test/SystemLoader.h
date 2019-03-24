@@ -43,7 +43,7 @@ public:
     void loadFloat(const std::string& cmod_symbol, const std::string& group,
             const std::string& var_name, const float& value){
 
-        SAM_set_float_t floatFunc = SAM_load_float(m_handle, cmod_symbol, group, var_name);
+        SAM_set_float_t floatFunc = SAM_load_float(m_handle, cmod_symbol.c_str(), group.c_str(), var_name.c_str());
 
         float conv_eff = floatFunc(m_system, value, nullptr);
     }

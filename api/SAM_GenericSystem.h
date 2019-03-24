@@ -2,11 +2,12 @@
 #define SAM_GENERICSYSTEM_FUNCTIONS_H_
 
 #include "visibility.h"
-#include "ErrorHandler.h"
-#include <ssc/sscapi.h>
+#include "SAM_api.h"
+//#include "ErrorHandler.h"
+//#include <ssc/sscapi.h>
 
 
-#include <ssc/cmod_generic_system-builder.h>
+//#include <ssc/cmod_generic_system-builder.h>
 //#include "cmod_generic_system-builder.h"
 
 #include <stdint.h>

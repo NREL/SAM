@@ -26,10 +26,6 @@ bool config_extractor::load_defaults_for_config(){
     std::string filename = config_name.substr(0, pos) + "_" + config_name.substr(pos+1);
     std::string file = defaults_file_dir + filename + ".txt";
 
-    if (filename.find("MSPT") != std::string::npos){
-        std::cout << "stop here";
-    }
-
     wxFFileInputStream in(file);
     if (!in.IsOk())
     {

@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <stdexcept>
 
 #if defined(__WINDOWS__)||defined(WIN32)||defined(_WIN32)||defined(__MINGW___)||defined(_MSC_VER)
 #include <Windows.h>
@@ -35,10 +36,10 @@ SAM_EXPORT void* SAM_load_library(const char* filepath){
 }
 
 SAM_EXPORT SAM_set_float_t
-SAM_load_float(void *handle, const std::string &cmod_symbol, const std::string &group, const std::string &var_name) {
+SAM_load_float(void *handle, const char *cmod_symbol, const char *group, const char *var_name) {
     CHECK_DLL_LOADED()
 
-    std::string funcName = "SAM_" + cmod_symbol + "_" + group + "_" + var_name + "_set";
+    std::string funcName = "SAM_" + std::string(cmod_symbol) + "_" + std::string(group) + "_" + std::string(var_name) + "_set";
 
     std::cout << funcName << "\n";
 
