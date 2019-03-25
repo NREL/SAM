@@ -713,7 +713,7 @@ void builder_generator::create_all(std::string fp) {
 
 
 
-        create_api_header(primary_cmods[0]);
+//        create_api_header(primary_cmods[0]);
         create_cmod_builder_cpp(primary_cmods[0], unique_subgraph_edges);
 
     // export defaults for all configurations at the end

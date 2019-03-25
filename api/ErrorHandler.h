@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <memory>
 #include <type_traits>
+#include <stdexcept>
 #include <utility>
 #include <string>
 

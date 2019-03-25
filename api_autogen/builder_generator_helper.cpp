@@ -473,7 +473,7 @@ void print_var_info_table(const std::string &config_name, const std::string &fil
         std::string cmod_name = cmods[i];
 
         std::ofstream var_info_fx;
-        var_info_fx.open(filepath + "/varinfo/" + cmod_name + ".cpp");
+        var_info_fx.open(filepath + "/varinfo/" + config_name+ "_" + cmod_name + ".cpp");
         assert(var_info_fx.is_open());
 
         var_info_fx << "static var_info _cm_vtab_" + cmod_name + "[] = {\n"

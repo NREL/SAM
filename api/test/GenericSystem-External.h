@@ -58,7 +58,7 @@ public:
     SAM_GenericSystem system;
 
     GenericSystem_PowerPlant PowerPlant;
-    Common Common;
+    Common common;
 
     GenericSystem(const char* def = 0)
     :system(SAM_GenericSystem_construct(def, ThrowOnError()))
