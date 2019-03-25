@@ -2,10 +2,12 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 cmake_minimum_required(VERSION 2.8)
 
-
 if(APPLE)
     set(CMAKE_OSX_DEPLOYMENT_TARGET "10.7" CACHE STRING "Minimum OS X deployment version")
+elseif(MSVC)
+    set(CMAKE_SYSTEM_VERSION 8.1 CACHE TYPE INTERNAL FORCE)
 endif()
+
 
 if (UNIX AND NOT CMAKE_C_COMPILER)
     set(CMAKE_C_COMPILER gcc)
@@ -49,7 +51,7 @@ endif()
 
 if(APPLE)
     set(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
-endif(APPLE)
+endif()
 
 # setup linking dependencies and flags
 
@@ -123,16 +125,16 @@ if (system_advisor_model_EXPORT)
                 TARGET ${SAM_API_LIB}
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SSCDIR}/build_vs2017/x64/Debug/libsscd.dll $ENV{PYSAMDIR}/lib/
+                ${SSC_LIB} $ENV{PYSAMDIR}/lib/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SAMNTDIR}/api/libSAM_apid.dll $ENV{PYSAMDIR}/lib/
+                 $ENV{SAMNTDIR}/api/SAM_apid.dll $ENV{PYSAMDIR}/lib/
         )
     elseif(UNIX)
         add_custom_command(
                 TARGET ${SAM_API_LIB}
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SSCDIR}/ssc/libsscd.so $ENV{PYSAMDIR}/lib/
+                ${SSC_LIB} $ENV{PYSAMDIR}/lib/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 $ENV{SAMNTDIR}/api/libSAM_apid.so $ENV{PYSAMDIR}/lib/
         )
