@@ -17,9 +17,8 @@ endif()
 Project(SAM_API)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
-
-#include_directories(../src $ENV{LKDIR}/include $ENV{SSCDIR})
 include_directories(. $ENV{SSCDIR} $ENV{SSCDIR}/ssc)
 
 set(SAM_API_SRC
@@ -105,19 +104,6 @@ target_link_libraries(${SAM_API_LIB} ${SSC_LIB})
 
 add_subdirectory(test)
 
-# copy needed dlls to sam/api/test and PySAM
-# windows applications prefer the dlls in same path
-if (MSVC)
-    add_custom_command(
-            TARGET ${SAM_API_LIB}
-            POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.dll ${CMAKE_CURRENT_SOURCE_DIR}
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            $ENV{SAMNTDIR}/api/SAM_apid.dll ${CMAKE_CURRENT_SOURCE_DIR}
-    )
-endif()
-
 # PySAM setup.py
 if (system_advisor_model_EXPORT)
     if (MSVC)
@@ -125,7 +111,11 @@ if (system_advisor_model_EXPORT)
                 TARGET ${SAM_API_LIB}
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                ${SSC_LIB} $ENV{PYSAMDIR}/lib/
+                $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.lib $ENV{PYSAMDIR}/lib/
+				COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.dll $ENV{PYSAMDIR}/lib/
+				COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                $ENV{SAMNTDIR}/api/SAM_apid.lib $ENV{PYSAMDIR}/lib/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
                  $ENV{SAMNTDIR}/api/SAM_apid.dll $ENV{PYSAMDIR}/lib/
         )
@@ -139,4 +129,9 @@ if (system_advisor_model_EXPORT)
                 $ENV{SAMNTDIR}/api/libSAM_apid.so $ENV{PYSAMDIR}/lib/
         )
     endif()
+endif()
+
+#startup project for visual studios
+if (MSVC)
+	set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${SAM_API_LIB})
 endif()

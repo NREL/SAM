@@ -73,3 +73,16 @@ else()
     target_link_libraries(SAM_api_test -lm -lcurl)
 endif()
 
+
+# copy needed dlls to sam/api/test and PySAM
+# windows applications prefer the dlls in same path
+if (MSVC)
+    add_custom_command(
+            TARGET SAM_api_test
+            PRE_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.dll ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $ENV{SAMNTDIR}/api/SAM_apid.dll ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+endif()
