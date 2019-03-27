@@ -3,7 +3,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 cmake_minimum_required(VERSION 2.8)
 
 if(APPLE)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.7" CACHE STRING "Minimum OS X deployment version")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
 elseif(MSVC)
     set(CMAKE_SYSTEM_VERSION 8.1 CACHE TYPE INTERNAL FORCE)
 endif()
@@ -48,9 +48,6 @@ else()
     set(SAM_API_LIB SAM_api)
 endif()
 
-if(APPLE)
-    set(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
-endif()
 
 # setup linking dependencies and flags
 
@@ -58,17 +55,17 @@ endif()
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         target_link_libraries(${SAM_API_LIB} sscd)
-        set(SSC_LIB $ENV{SSCDIR}/ssc/sscd.dylib)
+        set(SSC_LIB sscd)
     else()
         target_link_libraries(${SAM_API_LIB} ssc)
-        set(SSC_LIB $ENV{SSCDIR}/ssc/ssc.dylib)
+        set(SSC_LIB ssc)
     endif()
 else()
     unset(SSC_LIB CACHE)
 	
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         find_library( SSC_LIB
-                NAMES sscd.dylib sscd.so sscd.lib
+                NAMES sscd.so sscd.lib
                 PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
     elseif(system_advisor_model_EXPORT)
         find_library( SSC_LIB
@@ -99,13 +96,23 @@ else()
     target_link_libraries(${SAM_API_LIB} -lm -lcurl)
 endif()
 
-add_definitions(-Dsystem_advisor_model_EXPORT)
 target_link_libraries(${SAM_API_LIB} ${SSC_LIB})
 
 add_subdirectory(test)
 
+
 # PySAM setup.py
+add_definitions(-Dsystem_advisor_model_EXPORT)
+if(APPLE)
+    set(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
+endif()
+
 if (system_advisor_model_EXPORT)
+    add_custom_command(
+        TARGET ${SAM_API_LIB}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/lib/
+    )
     if (MSVC)
         add_custom_command(
                 TARGET ${SAM_API_LIB}
@@ -124,7 +131,7 @@ if (system_advisor_model_EXPORT)
                 TARGET ${SAM_API_LIB}
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                ${SSC_LIB} $ENV{PYSAMDIR}/lib/
+                $ENV{SSCDIR}/ssc/libsscd.so $ENV{PYSAMDIR}/lib/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 $ENV{SAMNTDIR}/api/libSAM_apid.so $ENV{PYSAMDIR}/lib/
         )

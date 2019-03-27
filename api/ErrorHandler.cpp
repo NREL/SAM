@@ -6,7 +6,9 @@
 #include "ErrorHandler.h"
 #include "SAM_api.h"
 
-
+SAM_error new_error(){
+    return new error{""};
+}
 
 const char* error_message(SAM_error error)
 {

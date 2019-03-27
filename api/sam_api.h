@@ -14,6 +14,8 @@ extern "C" {
 typedef struct error* SAM_error;
 
 SAM_EXPORT
+SAM_error new_error();
+SAM_EXPORT
 const char* error_message(SAM_error error);
 SAM_EXPORT
 void error_destruct(SAM_error error);
