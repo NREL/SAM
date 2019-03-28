@@ -94,6 +94,10 @@ public:
             SystemLoader loader(system, path);
             loader.loadFloat("GenericSystem", group, var_name, value);
 			std::cout << PowerPlant.get_derate();
+
+			float f[2] = {1,2};
+			loader.loadArray("GenericSystem", group, "energy_output_array", f, 2);
+
         }
 		return true;
     }

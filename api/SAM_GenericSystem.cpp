@@ -39,6 +39,12 @@ SAM_EXPORT void SAM_GenericSystem_PowerPlant_heat_rate_set(SAM_GenericSystem ptr
     });
 }
 
+SAM_EXPORT void SAM_GenericSystem_PowerPlant_energy_output_array_set(SAM_GenericSystem ptr, float* array, int length, SAM_error* err){
+    translateExceptions(err, [&]{
+        ssc_data_set_array(ptr, "energy_output_array", array, length);
+
+    });
+}
 
 SAM_EXPORT float SAM_GenericSystem_PowerPlant_conv_eff_eval(SAM_GenericSystem ptr, SAM_error* err){
     float result = 0.f;
@@ -53,6 +59,16 @@ SAM_EXPORT float SAM_GenericSystem_PowerPlant_derate_get(SAM_GenericSystem ptr, 
     translateExceptions(err, [&]{
         if (!ssc_data_get_number(ptr, "derate", &result))
             make_access_error("SAM_GenericSystem", "derate");
+    });
+    return result;
+}
+
+SAM_EXPORT float* SAM_GenericSystem_PowerPlant_energy_output_array_get(SAM_GenericSystem ptr, int* length, SAM_error* err){
+    float* result;
+    translateExceptions(err, [&]{
+        result = ssc_data_get_array(ptr, "energy_output_array", length);
+        if (!result)
+            make_access_error("SAM_GenericSystem", "energy_output_array");
     });
     return result;
 }

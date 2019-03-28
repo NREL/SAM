@@ -104,7 +104,7 @@ extern "C"
 
 	SAM_EXPORT float SAM_GenericSystem_PowerPlant_derate_get(SAM_GenericSystem ptr, SAM_error* err);
 
-	SAM_EXPORT float* SAM_GenericSystem_PowerPlant_energy_output_array_get(SAM_GenericSystem ptr, SAM_error* err);
+	SAM_EXPORT float* SAM_GenericSystem_PowerPlant_energy_output_array_get(SAM_GenericSystem ptr, int* length, SAM_error* err);
 
 	SAM_EXPORT float SAM_GenericSystem_PowerPlant_heat_rate_get(SAM_GenericSystem ptr, SAM_error* err);
 

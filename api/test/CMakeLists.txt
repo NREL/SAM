@@ -85,4 +85,13 @@ if (MSVC)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
             $ENV{SAMNTDIR}/api/SAM_apid.dll ${CMAKE_CURRENT_SOURCE_DIR}
     )
+else()
+    add_custom_command(
+            TARGET SAM_api_test
+            PRE_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $ENV{SSCDIR}/ssc/libsscd.so ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $ENV{SAMNTDIR}/api/libSAM_apid.so ${CMAKE_CURRENT_SOURCE_DIR}
+    )
 endif()
