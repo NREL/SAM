@@ -5,6 +5,7 @@
 #include "GenericSystem-External.h"
 
 #include <ssc/sscapi.h>
+#include <shared/lib_util.h>
 
 
 void create(){
@@ -57,8 +58,23 @@ void loadFromFile(){
 
     std::cout << "str: " << SAM_table_read_string(table, "str", ThrowOnError()) << "\n";
 
+    std::vector<float> vec = {1,2};
+    util::matrix_t<float> mat(2, 1, &vec);
+    std::cout << "mat: " << mat.at(0, 0) << ", " << mat.at(1,0) << "\n";
+
+    char assignment_err_str[128] = "error assigning ";
+    strcat(assignment_err_str, s);
+
+    std::cout << "strcat: " << assignment_err_str << "\n";
+
+
 
     GenericSystem system = GenericSystem("None");
+
+
+
+    SAM_table_destruct(table, nullptr);
+
 }
 
 int main(int argc, char *argv[]){

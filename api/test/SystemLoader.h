@@ -57,7 +57,7 @@ public:
         SAM_get_array_t gFunc = SAM_get_array_func(m_handle, cmod_symbol.c_str(), group.c_str(), var_name.c_str(),
                                                   nullptr);
 
-        std::cout << "getting from loadarray: :" << gFunc(m_system, &length, nullptr)[0] << "\n";
+        std::cout << "getting from loadarray: :" << gFunc(m_system, &length, nullptr) << "\n";
 
     }
 

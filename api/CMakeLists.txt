@@ -112,28 +112,30 @@ if (system_advisor_model_EXPORT)
         TARGET ${SAM_API_LIB}
         POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/lib/
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $ENV{SAMNTDIR}/api/SAM_api.h $ENV{PYSAMDIR}/
     )
     if (MSVC)
         add_custom_command(
                 TARGET ${SAM_API_LIB}
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.lib $ENV{PYSAMDIR}/lib/
+                    $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.lib $ENV{PYSAMDIR}/lib/
 				COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.dll $ENV{PYSAMDIR}/lib/
+                    $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.dll $ENV{PYSAMDIR}/lib/
 				COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SAMNTDIR}/api/SAM_apid.lib $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/SAM_apid.lib $ENV{PYSAMDIR}/lib/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                 $ENV{SAMNTDIR}/api/SAM_apid.dll $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/SAM_apid.dll $ENV{PYSAMDIR}/lib/
         )
     elseif(UNIX)
         add_custom_command(
                 TARGET ${SAM_API_LIB}
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SSCDIR}/ssc/libsscd.so $ENV{PYSAMDIR}/lib/
+                    $ENV{SSCDIR}/ssc/libsscd.so $ENV{PYSAMDIR}/lib/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SAMNTDIR}/api/libSAM_apid.so $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/libSAM_apid.so $ENV{PYSAMDIR}/lib/
         )
     endif()
 endif()
