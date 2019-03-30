@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 
+#define _LIB_UTIL_CHECK_
 #include <ssc/vartab.h>
 #include "sscapi.h"
 #include "ErrorHandler.h"
@@ -47,9 +48,9 @@ std::string funcName = "SAM_" + std::string(cmod_symbol) + "_" + std::string(gro
 
 SAM_EXPORT SAM_set_float_t
 SAM_set_float_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_set_float_t func;
+    SAM_set_float_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("set");
+        FUNC_NAME_STR("fset");
         check_dll_loaded(handle);
         func = (SAM_set_float_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()
@@ -59,9 +60,9 @@ SAM_set_float_func(void *handle, const char *cmod_symbol, const char *group, con
 
 SAM_EXPORT SAM_set_array_t
 SAM_set_array_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_set_array_t func;
+    SAM_set_array_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("set");
+        FUNC_NAME_STR("aset");
         check_dll_loaded(handle);
         func = (SAM_set_array_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()
@@ -71,9 +72,9 @@ SAM_set_array_func(void *handle, const char *cmod_symbol, const char *group, con
 
 SAM_EXPORT SAM_set_matrix_t
 SAM_set_matrix_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_set_matrix_t func;
+    SAM_set_matrix_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("set");
+        FUNC_NAME_STR("mset");
         check_dll_loaded(handle);
         func = (SAM_set_matrix_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()
@@ -83,9 +84,9 @@ SAM_set_matrix_func(void *handle, const char *cmod_symbol, const char *group, co
 
 SAM_EXPORT SAM_set_string_t
 SAM_set_string_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_set_string_t func;
+    SAM_set_string_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("set");
+        FUNC_NAME_STR("sset");
         check_dll_loaded(handle);
         func = (SAM_set_string_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()
@@ -95,9 +96,9 @@ SAM_set_string_func(void *handle, const char *cmod_symbol, const char *group, co
 
 SAM_EXPORT SAM_set_table_t
 SAM_set_table_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_set_table_t func;
+    SAM_set_table_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("set");
+        FUNC_NAME_STR("tset");
         check_dll_loaded(handle);
         func = (SAM_set_table_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()
@@ -108,9 +109,9 @@ SAM_set_table_func(void *handle, const char *cmod_symbol, const char *group, con
 
 SAM_EXPORT SAM_get_float_t
 SAM_get_float_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_get_float_t func;
+    SAM_get_float_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("get");
+        FUNC_NAME_STR("fget");
         check_dll_loaded(handle);
         func = (SAM_get_float_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()
@@ -120,9 +121,9 @@ SAM_get_float_func(void *handle, const char *cmod_symbol, const char *group, con
 
 SAM_EXPORT SAM_get_array_t
 SAM_get_array_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_get_array_t func;
+    SAM_get_array_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("get");
+        FUNC_NAME_STR("aget");
         check_dll_loaded(handle);
         func = (SAM_get_array_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()
@@ -132,9 +133,9 @@ SAM_get_array_func(void *handle, const char *cmod_symbol, const char *group, con
 
 SAM_EXPORT SAM_get_matrix_t
 SAM_get_matrix_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_get_matrix_t func;
+    SAM_get_matrix_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("get");
+        FUNC_NAME_STR("mget");
         check_dll_loaded(handle);
         func = (SAM_get_matrix_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()
@@ -144,9 +145,9 @@ SAM_get_matrix_func(void *handle, const char *cmod_symbol, const char *group, co
 
 SAM_EXPORT SAM_get_string_t
 SAM_get_string_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_get_string_t func;
+    SAM_get_string_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("get");
+        FUNC_NAME_STR("sget");
         check_dll_loaded(handle);
         func = (SAM_get_string_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()
@@ -156,9 +157,9 @@ SAM_get_string_func(void *handle, const char *cmod_symbol, const char *group, co
 
 SAM_EXPORT SAM_get_table_t
 SAM_get_table_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_get_table_t func;
+    SAM_get_table_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("get");
+        FUNC_NAME_STR("tget");
         check_dll_loaded(handle);
         func = (SAM_get_table_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()

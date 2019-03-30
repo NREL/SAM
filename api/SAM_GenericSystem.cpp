@@ -26,7 +26,7 @@ SAM_EXPORT void SAM_GenericSystem_destruct(SAM_GenericSystem gs_system)
 	ssc_data_free(gs_system);
 }
 
-SAM_EXPORT void SAM_GenericSystem_PowerPlant_derate_set(SAM_GenericSystem ptr, float number, SAM_error* err){
+SAM_EXPORT void SAM_GenericSystem_PowerPlant_derate_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
     translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "derate", number);
     });
@@ -39,7 +39,8 @@ SAM_EXPORT void SAM_GenericSystem_PowerPlant_heat_rate_set(SAM_GenericSystem ptr
     });
 }
 
-SAM_EXPORT void SAM_GenericSystem_PowerPlant_energy_output_array_set(SAM_GenericSystem ptr, float* array, int length, SAM_error* err){
+SAM_EXPORT void SAM_GenericSystem_PowerPlant_energy_output_array_aset(SAM_GenericSystem ptr, float *array, int length,
+                                                                      SAM_error *err){
     translateExceptions(err, [&]{
         ssc_data_set_array(ptr, "energy_output_array", array, length);
 
@@ -54,7 +55,7 @@ SAM_EXPORT float SAM_GenericSystem_PowerPlant_conv_eff_eval(SAM_GenericSystem pt
     return result;
 }
 
-SAM_EXPORT float SAM_GenericSystem_PowerPlant_derate_get(SAM_GenericSystem ptr, SAM_error* err){
+SAM_EXPORT float SAM_GenericSystem_PowerPlant_derate_fget(SAM_GenericSystem ptr, SAM_error *err){
     float result;
     translateExceptions(err, [&]{
         if (!ssc_data_get_number(ptr, "derate", &result))
@@ -63,7 +64,8 @@ SAM_EXPORT float SAM_GenericSystem_PowerPlant_derate_get(SAM_GenericSystem ptr, 
     return result;
 }
 
-SAM_EXPORT float* SAM_GenericSystem_PowerPlant_energy_output_array_get(SAM_GenericSystem ptr, int* length, SAM_error* err){
+SAM_EXPORT float* SAM_GenericSystem_PowerPlant_energy_output_array_aget(SAM_GenericSystem ptr, int *length,
+                                                                        SAM_error *err){
     float* result;
     translateExceptions(err, [&]{
         result = ssc_data_get_array(ptr, "energy_output_array", length);

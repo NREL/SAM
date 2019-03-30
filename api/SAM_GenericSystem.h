@@ -45,7 +45,7 @@ extern "C"
      * constraints_ None
      * required if_ None
      */
-	SAM_EXPORT void SAM_GenericSystem_PowerPlant_derate_set(SAM_GenericSystem ptr, float number, SAM_error* err);
+	SAM_EXPORT void SAM_GenericSystem_PowerPlant_derate_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
 
 	/**
 	 * Set energy_output_array_ Array of Energy Output Profile
@@ -55,7 +55,8 @@ extern "C"
 	 * constraints_ None
 	 * required if_ None
 	 */
-	SAM_EXPORT void SAM_GenericSystem_PowerPlant_energy_output_array_set(SAM_GenericSystem ptr, float* array, int length, SAM_error* err);
+	SAM_EXPORT void SAM_GenericSystem_PowerPlant_energy_output_array_aset(SAM_GenericSystem ptr, float *array,
+                                                                          int length, SAM_error *err);
 
 	/**
 	 * Set heat_rate_ Heat Rate
@@ -102,9 +103,10 @@ extern "C"
 	 * Getters
 	 */
 
-	SAM_EXPORT float SAM_GenericSystem_PowerPlant_derate_get(SAM_GenericSystem ptr, SAM_error* err);
+	SAM_EXPORT float SAM_GenericSystem_PowerPlant_derate_fget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_GenericSystem_PowerPlant_energy_output_array_get(SAM_GenericSystem ptr, int* length, SAM_error* err);
+	SAM_EXPORT float* SAM_GenericSystem_PowerPlant_energy_output_array_aget(SAM_GenericSystem ptr, int *length,
+                                                                            SAM_error *err);
 
 	SAM_EXPORT float SAM_GenericSystem_PowerPlant_heat_rate_get(SAM_GenericSystem ptr, SAM_error* err);
 
