@@ -1,7 +1,7 @@
 MHK Wave Device
-961
-688
-8
+1608
+761
+12
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 950
 Height
 3
-671
+725
 Caption
 5
 10
@@ -29,6 +29,33 @@ MHK Device
 Bold
 2
 1
+Button
+
+1
+7
+Name
+5
+7
+btnPlot
+X
+3
+987
+Y
+3
+174
+Width
+3
+90
+Height
+3
+24
+Caption
+5
+4
+Plot
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -39,10 +66,10 @@ Name
 number_devices
 X
 3
-120
+1092
 Y
 3
-186
+114
 Width
 3
 90
@@ -88,6 +115,208 @@ BackColour
 TabOrder
 3
 4294967295
+GroupBox
+
+1
+7
+Name
+5
+8
+object 4
+X
+3
+30
+Y
+3
+375
+Width
+3
+844
+Height
+3
+340
+Caption
+5
+11
+Probability
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+9
+object 41
+X
+3
+30
+Y
+3
+27
+Width
+3
+844
+Height
+3
+340
+Caption
+5
+11
+Power Curve
+Bold
+2
+1
+DataMatrix
+
+1
+22
+Name
+5
+16
+wave_power_curve
+X
+3
+48
+Y
+3
+57
+Width
+3
+800
+Height
+3
+300
+PasteAppendRows
+2
+0
+PasteAppendCols
+2
+0
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+ShadeC0
+2
+0
+ShowCols
+2
+1
+ShowColLabels
+2
+1
+ColLabels
+5
+0
+NumRowsLabel
+5
+5
+Rows:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+0
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+DataMatrix
+
+1
+22
+Name
+5
+24
+wave_resource_definition
+X
+3
+51
+Y
+3
+402
+Width
+3
+800
+Height
+3
+300
+PasteAppendRows
+2
+0
+PasteAppendCols
+2
+0
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+ShadeC0
+2
+0
+ShowCols
+2
+1
+ShowColLabels
+2
+1
+ColLabels
+5
+0
+NumRowsLabel
+5
+5
+Rows:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+0
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
 Numeric
 
 1
@@ -98,10 +327,10 @@ Name
 wind_resource_shear
 X
 3
-120
+1092
 Y
 3
-153
+81
 Width
 3
 100
@@ -157,10 +386,10 @@ Name
 wind_turbine_hub_ht
 X
 3
-120
+1092
 Y
 3
-129
+57
 Width
 3
 100
@@ -217,10 +446,10 @@ Name
 wind_turbine_kw_rating
 X
 3
-120
+1092
 Y
 3
-81
+9
 Width
 3
 100
@@ -277,7 +506,7 @@ Name
 wind_turbine_power_curve_plot
 X
 3
-231
+960
 Y
 3
 237
@@ -297,10 +526,10 @@ Name
 wind_turbine_rotor_diameter
 X
 3
-120
+1092
 Y
 3
-105
+33
 Width
 3
 100
@@ -347,689 +576,119 @@ BackColour
 TabOrder
 3
 14
-Library
 
-1
 7
-Name
-5
-22
-wind_turbine_selection
-X
-3
-234
-Y
-3
-27
-Width
-3
-573
-Height
-3
-201
-Library
-5
-13
-Wind Turbines
-Fields
-5
-14
-Name,KW Rating
-
-34
-a_error_test_number
-3
-1
- 
- 
-Wind Turbine
-0
-8
-1
-1
-1
-1
-17.345
-Default
-a_error_test_string
-3
-4
- 
- 
-Wind Turbine
-0
-8
-1
-4
-17
-"default err msg"
-Default
 number_devices
 3
 1
-Number of Devices
  
  
-0
-0
-1
-1
-1
-1
-10
-Default
-resource_definition_type
-3
-1
  
- 
-Wind Turbine
 0
 0
 1
-1
-1
-1
 0
-Default
-wind.turbine.blade_design
-3
-1
-Blade design
- 
-Wind Turbine
-24
-Baseline|Advanced Design
-2
-1
-1
-1
-1
-0
-Choice
-wind.turbine.drive_train
-3
-1
-Drive train design
- 
-Wind Turbine
-81
-3 Stage Planetary|Single Stage - Low Speed Generator|Multi-Generator|Direct Drive
-2
-1
-1
-1
-1
-0
-Choice
-wind.turbine.dummy
-3
-1
- 
- 
-Wind Turbine
-0
-8
-1
-1
-1
-1
-0
-Default
-wind.turbine.elevation
-3
-1
-Turbine elevation (above sea level)
- 
-Wind Turbine
-0
-0
-1
-1
-1
-1
-0
-Default
-wind.turbine.max_tip_speed
-3
-1
-Maximum tip speed
- 
-Wind Turbine
-0
-2
-1
-1
-1
-1
-80
 Numeric
-wind.turbine.max_tspeed_ratio
+wave_power_curve
+3
+3
+ 
+ 
+ 
+0
+0
+1
+0
+DataMatrix
+wave_resource_definition
+3
+3
+ 
+ 
+ 
+0
+0
+1
 3
 1
-Maximum tip-speed ratio
- 
-Wind Turbine
-0
-2
-1
-1
-1
-1
-8
-Numeric
-wind.turbine.name_only
-3
-4
- 
- 
-Wind Turbine
-0
-8
-1
-4
 1
 0
-Default
-wind.turbine.radio_list_or_design
-3
-1
- 
- 
-Wind Turbine
-71
-Select a turbine from the library|Define turbine design characteristics
-0
-1
-1
-1
-1
-0
-RadioChoice
-wind.turbine.region2nhalf_slope
-3
-1
- 
- 
-Wind Turbine
-0
-0
-1
-1
-1
-1
-5
-Default
-wind.turbine.tower_design
-3
-1
-Tower design
- 
-Wind Turbine
-24
-Baseline|Advanced Design
-2
-1
-1
-1
-1
-0
-Choice
+DataMatrix
 wind_resource_shear
 3
 1
-Shear coefficient
  
-Wind Turbine
+ 
+ 
 0
-2
+0
 1
-1
-1
-1
-0.14
+0
 Numeric
-wind_turbine_IEC_Class_from_lib
-3
-4
- 
- 
-Wind Turbine
-0
-8
-1
-4
-1
-3
-Default
-wind_turbine_cut_out
-3
-1
-Cut-out wind speed
- 
-Wind Turbine
-0
-2
-1
-1
-1
-1
-25
-Numeric
-wind_turbine_cutin
-3
-1
-Cut-in wind speed
- 
-Wind Turbine
-0
-2
-1
-1
-1
-1
-4
-Default
 wind_turbine_hub_ht
 3
 1
-Hub height
  
-Wind Turbine
+ 
+ 
 0
-2
+0
 1
-1
-1
-1
-80
+0
 Numeric
 wind_turbine_kw_rating
 3
 1
-Rated output
  
-Wind Turbine
+ 
+ 
 0
-8
+0
 1
-1
-1
-1
-1500
+0
 Numeric
-wind_turbine_kw_rating_from_lib
-3
-1
- 
- 
-Wind Turbine
-0
-8
-1
-1
-1
-1
-1800
-Default
-wind_turbine_kw_rating_input
-3
-1
-User-defined rated output
- 
-Wind Turbine
-0
-2
-1
-1
-1
-1
-1500
-Numeric
-wind_turbine_max_cp
-3
-1
-Maximum Cp
- 
-Wind Turbine
-0
-2
-1
-1
-1
-1
-0.45
-Numeric
-wind_turbine_powercurve_err_msg
-3
-4
- 
- 
-Wind Turbine
-0
-8
-1
-4
-0
-Default
-wind_turbine_powercurve_hub_efficiency
-3
-2
- 
- 
-Wind Turbine
-0
-8
-1
-2
-1
-1
-0
-Default
-wind_turbine_powercurve_powerout
-3
-2
- 
- 
-Wind Turbine
-0
-8
-1
-2
-1
-1
-0
-Default
-wind_turbine_powercurve_powerout_from_lib
-3
-2
- 
- 
-Wind Turbine
-0
-8
-1
-2
-1
-1
-0
-Default
-wind_turbine_powercurve_windspeeds
-3
-2
- 
- 
-Wind Turbine
-0
-8
-1
-2
-1
-1
-0
-Default
-wind_turbine_powercurve_windspeeds_from_lib
-3
-2
- 
- 
-Wind Turbine
-0
-8
-1
-2
-1
-1
-0
-Default
-wind_turbine_rated_wind_speed
-3
-1
- 
- 
-Wind Turbine
-0
-8
-1
-1
-1
-1
-0
-Default
 wind_turbine_rotor_diameter
 3
 1
-Rotor diameter
  
-Wind Turbine
+ 
+ 
 0
-8
+0
 1
-1
-1
-1
-75
+0
 Numeric
-wind_turbine_rotor_diameter_from_lib
-3
-1
- 
- 
-Wind Turbine
+
 0
-8
-1
-1
-1
-1
-80
-Default
-wind_turbine_rotor_diameter_input
-3
-1
-User-defined rotor diameter
- 
-Wind Turbine
-0
-2
-1
-1
-1
-1
-75
-Numeric
-wind_turbine_selection
-3
-4
-Wind Turbine Selection
- 
-Wind Turbine
-15
-Wind Turbines|0
-19
-1
-4
-15
-Bergey BWC XL.1
-Library
-
-7110
-equations{ 'system_capacity' } = define() {
-	return ${number_devices} * ${wind_turbine_kw_rating};
-};
-
-// 'wind_turbine_rotor_diameter' is the SSC input
-equations{ 'wind_turbine_rotor_diameter' } = define() {
-	if ( ${wind.turbine.radio_list_or_design} == 0)
-		return ${wind_turbine_rotor_diameter_from_lib};
-	else
-		return ${wind_turbine_rotor_diameter_input};
-};
-
-// 'wind_turbine_kw_rating' is not used by SSC model, but it is used
-// to calculate the nameplate capacity on the wind farm page
-equations{ 'wind_turbine_kw_rating' } = define() {
-	if ( ${wind.turbine.radio_list_or_design} == 0)
-		return  ${wind_turbine_kw_rating_from_lib};
-	else
-		return ${wind_turbine_kw_rating_input};
-};
-
-equations{ '$MIMO$ windturbinemod' } = define() {
-	// reset the error message
-
-	// if we don't need to calculate the curve, get it from library and get out
-	if (${wind.turbine.radio_list_or_design} == 0) {
-		${wind_turbine_powercurve_windspeeds} = ${wind_turbine_powercurve_windspeeds_from_lib};
-		${wind_turbine_powercurve_powerout} = ${wind_turbine_powercurve_powerout_from_lib};
-		${wind_turbine_rated_wind_speed} = ${wind_turbine_kw_rating_from_lib}; // used for estimating a cost
-		${wind_turbine_powercurve_err_msg} = "";
-
-		return 0;
-	}
-	
-	// make sure error msg starts empty
-	errmsg = "";
-
-	// If user defined turbine, get user inputs, otherwise get values for kW rating and rotor diameter from the library for the (non-generic) turbine chosen in the drop-down
-	turbine_size = ${wind_turbine_kw_rating_input};
-	rotor_diameter = ${wind_turbine_rotor_diameter_input};
-	hubht = ${wind_turbine_hub_ht};
-	farmElevation = ${wind.turbine.elevation}; 	// The elevation will be used to change the turbine power curve, which will be passed into the SSC
-
-	// NOTE: April 2014, the last version of SAMwx did NOT account for hubht for air density calculation
-	// in this equation.  So, calculations with user defined turbines would create
-	// slightly different results.
-	// NOTE 2: Power curve is corrected by HUB HEIGHT air density from the weather file in SSC. 
-	// Therefore, only correct for elevation if using Weibull wind characteristics. Added 7/16/14 by JMF.
-	if(${wind_resource_model_choice} == 1) 
-	{
-		elevation = farmElevation + hubht;
-	}
-	else elevation  = 0;
-
-	max_cp = ${wind_turbine_max_cp};
-	max_tip_speed = ${wind.turbine.max_tip_speed};
-	max_tip_sp_ratio = ${wind.turbine.max_tspeed_ratio};
-	region2_slope = ${wind.turbine.region2nhalf_slope};
-	cut_in = ${wind_turbine_cutin};
-	cut_out = ${wind_turbine_cut_out};
-	drive_train_type = ${wind.turbine.drive_train}+1;
-	
-	// CALCULATE THE USER DEFINED TURBINE POWER CURVE ****************************************************************************************
-	if (drive_train_type == 1)
-		{a = 0.0128942744498754; b = 0.0850952825354708; c = 0.0000000000000000; }
-	elseif (drive_train_type == 2)
-		{a = 0.0133073345628390; b = 0.0365470617951171; c = 0.0610666545019234; }
-	elseif (drive_train_type == 3)
-		{a = 0.0154737171061919; b = 0.0446307743432406; c = 0.0578976395057887; }
-	elseif (drive_train_type == 4)
-		{a = 0.0100718545193597; b = 0.0199954344267153; c = 0.0689903255877759; }
-
-	eff = (1.0-(a+b+c));  // simplified from spreadsheet since the only value used was F22 = 1
-	rated_hub_power = turbine_size/eff;
-
-
-	//air_density = 101300.0 * pow( (1-((0.0065*elevation)/288.0)), (9.8/(0.0065*287.15)) ) / (287.15*(288.0-0.0065*elevation)); // used through March 4, 2013
-	// From Widipedia:
-	// sea level standard atmospheric pressure = 101.325 kPa (changes
-	// sea level standard temperature = 288.15 K
-	// Earth-surface gravitational acceleration = 9.80665 m/s2. (varies from 9.78 to 9.82 depending on where on earth it's measured)
-	// temperature lapse rate L = 0.0065 K/m
-	air_density = 101325.0 * pow( (1-((0.0065*elevation)/288.15)), (9.80665/(0.0065*287.15)) ) / (287.15*(288.15-0.0065*elevation));
-	
-	//diagnostic = sprintf("elevation: %f, air_density: %f",elevation,air_density);
-	//msgbox(diagnostic);
-
-	// these were called 'region 2.5 calculations' in the spreadsheet
-	omega_m = max_tip_speed / (rotor_diameter/2.0);
-	omega_0 = omega_m /(1.0+region2_slope/100.0);
-	t_sub_m = rated_hub_power*1000/omega_m;
-	k = (air_density * pi() * pow(rotor_diameter,5.0)*max_cp ) / (64*pow(max_tip_sp_ratio,3.0));
-	omegaT_a = k;
-	omegaT_b = -t_sub_m/(omega_m - omega_0);
-	omegaT_c = (t_sub_m * omega_0)/(omega_m - omega_0);
-	omegaT = -(omegaT_b/(2.0*omegaT_a))-(sqrt( pow(omegaT_b,2.0) - (4.0*omegaT_a*omegaT_c) ) / (2.0*omegaT_a));
-	wind_at_omegaT = (omegaT * rotor_diameter)/(2.0 * max_tip_sp_ratio);
-	power_at_omegaT = k * pow(omegaT,3.0) / 1000.0;
-	rated_wind_speed = 0.33 * pow((2.0*rated_hub_power*1000.0/(air_density*(pi()*pow(rotor_diameter,2.0)/4.0)*max_cp)),(1.0/3.0)) + 0.67 * (((1.0/(1.5*air_density*pi()*pow(rotor_diameter,2.0)*0.25*max_cp*pow(wind_at_omegaT,2.0)))*(1000.0*(rated_hub_power-power_at_omegaT)))+wind_at_omegaT);
-
-	//diagnostic = sprintf("wind_at_omegaT: %d, omegaT: %f, omegaT_c: %f, omegaT_a: %f, air_density: %f",wind_at_omegaT,omegaT,omegaT_c,omegaT_a,air_density);
-	//msgbox(diagnostic);
-
-	if (omegaT > omega_m) 
-		errmsg = sprintf("Turbine inputs are not valid, please adjust the inputs. omegaT: %f, omegaM: %f",omegaT,omega_m);
-
-	hub_power = 0;
-	step = 0.25; // TFF-March 4, 2013 - changed this from 1 to 0.25 to match Cost and Scaling model calculations
-	array_size = 1 + 40.0/step;
-	ws = alloc(array_size);
-	pc = alloc(array_size);
-	hub_efficiency = alloc(array_size);
-
-	for (i=0; i<array_size; i++)
-	{
-		ws[i] = i * step;
-
-		// calculate the power output from a generic turbine at wind speeds from 0 to 40 m/s (analagous to turbine power curve)
-		if ( (ws[i] <= cut_in) || (ws[i] >= cut_out) )
-			hub_power = 0;
-		else if (ws[i]<wind_at_omegaT) {
-			hub_power = k*pow(ws[i]*max_tip_sp_ratio/(rotor_diameter/2.0),3)/1000.0; // 'region 2' hub power
-			//diagnostic = sprintf("i: %d, k: %f, max_tip_sp_ratio: %f, rotor_diameter: %f, hub_power: %f",i,k,max_tip_sp_ratio,rotor_diameter,hub_power);
-			//msgbox(diagnostic);
-		}
-		else if (ws[i]<=rated_wind_speed)
-			hub_power = (rated_hub_power-power_at_omegaT)/(rated_wind_speed-wind_at_omegaT)*(ws[i]-wind_at_omegaT)+power_at_omegaT; // 'region 2.5' hub power
-		else
-			hub_power = rated_hub_power; // 'region 3' hub power
-
-		if (hub_power > rated_hub_power)
-		{
-			if (errmsg == "") errmsg = "User Defined turbine power curve calculation calculated power output > rated output where wind speed = " + ws[i];
-			hub_power = rated_hub_power;
-		}
-
-		if (hub_power == 0)
-			hub_efficiency[i] = 0;
-		else
-			hub_efficiency[i] = ((hub_power/rated_hub_power)-(a + b*(hub_power/rated_hub_power)+c*pow(hub_power/rated_hub_power,2))) / (hub_power/rated_hub_power);
-		pc[i] = hub_power * hub_efficiency[i];
-	}
-
-	// arrays
-	${wind_turbine_powercurve_windspeeds} = ws;
-	${wind_turbine_powercurve_powerout} = pc;
-	${wind_turbine_powercurve_hub_efficiency} = hub_efficiency;  // used to show values in Weibull graph
-
-	// other outputs
-	${wind_turbine_rated_wind_speed} = rated_wind_speed; // used for estimating a cost
-	${wind_turbine_powercurve_err_msg} = errmsg;
-
-	return 0;
-};
-
-
-4147
+1051
 function plot_turbine_curve()
 {
 	setplot('wind_turbine_power_curve_plot');
 	clearplot('wind_turbine_power_curve_plot');
-	plotopt( {'title'='Turbine power curve','backcolor'=[255,255,255], 'popup'=true, 'legend'=false, 'legendpos'=[75,10]}  );
+	plotopt( {'title'='Energy Production','backcolor'=[0,255,0]}  );
+
 	
-	ws = ${wind_turbine_powercurve_windspeeds};
-	pc = ${wind_turbine_powercurve_powerout};
-	plot( ws, pc, {'thick'=1, 'scale'=true, 'color'=[100,200,100], 'series'='Turbine Output'});
+	z_min = 9e99;
+	z_max = -9e99;
+	pc_all = ${wave_power_curve};
+	pd_all = ${wave_resource_definition};
+	// initially assume same size
+	x = alloc(#pc_all - 1, #pc_all[0] - 1);
+	y = alloc(#pc_all - 1, #pc_all[0] - 1);
+	z = alloc(#pc_all - 1, #pc_all[0] - 1);
+	for (r=1;r<#z;r++)
+	{
+		for (c=1;c<#z[0];c++)
+		{
+			y[r-1][c-1] = pc_all[r][0];
+			x[r-1][c-1] = pd_all[0][c];
+			z[r-1][c-1] = pc_all[r][c] * pd_all[r][c]*8760/100;
+			if (z[r-1][c-1] < z_min) z_min = z[r-1][c-1];
+			if (z[r-1][c-1] > z_max) z_max = z[r-1][c-1];
+		}
+	}
 	
-	high = max( ws );
-	low = min( ws );
-	pad = (high - low) * 0.05;
-	axis( 'x1', {'label'='Wind Speed (m/s)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });
-	
-	high = max( pc );
-	low = min( pc );
-	pad = (high - low) * 0.05;
-	axis( 'y1', {'label'='Turbine Power (kW)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });
+	contour( x, y, z, {'filled'=true, 'levels'=15, min=z_min, max=z_max});	
 	
 	// show any error messages
 	set_error_msg();
@@ -1040,117 +699,16 @@ function set_error_msg()
 	// Start with a fresh error message
 	errmsg = '';
 
-	// Check hub height compared to rotor diameter
-	rotor_diameter = ${wind_turbine_rotor_diameter};
-	hubht = ${wind_turbine_hub_ht};
-	if (hubht <  (rotor_diameter/2)+10) 
-		errmsg += 'Turbine hub height is too low for rotor diameter. ';
-	
-	// Check resource height compared to hub height- not for weibull
-	/*if(${wind_resource_model_choice} != 1) 
-	{
-		ssc = ssc_create();
-		ssc_var( ssc, 'file_name', ${wind_resource_filename});	
-		ssc_var(ssc, 'scan_header_only', 1);
-		ssc_var(ssc, 'requested_ht', hubht);
-		err = ssc_exec(ssc, 'wind_file_reader');
-		if (err != 0) //file didn't run successfully
-		{
-			msgbox('Could not check hub height compared to resource height. This may indicate a problem with your weather file.');
-			return;
-		}
-		closest_ht = ssc_var(ssc, 'closest_speed_meas_ht');
-		ssc_free(ssc);
-		if (hubht > closest_ht + 35) errmsg += 'Turbine hub height is more than 35 meters taller than the measured resource data. ';
-		if (hubht < closest_ht - 35) errmsg += 'Turbine hub height is more than 35 meters shorter than the measured resource data. ';
-	}*/
-	
-	// Check for negative values in power curve
-	pc = ${wind_turbine_powercurve_powerout};
-	for (i=0; i<#pc; i++)
-	{
-		if (pc[i] < 0) //negative power curve value
-		{
-			errmsg += 'Turbine power curve contains negative values. Please check your inputs. ';
-			break;
-		}
-	}
-	
-	//assign error message
-	property('wind_turbine_hub_ht_msg', 'Caption', errmsg );
 }
 
-on_change{'wind.turbine.radio_list_or_design'} = define()
+
+on_change{'btnPlot'}=define()
 {
-	turbine_definition_type = value('wind.turbine.radio_list_or_design');
-	bDesign = (turbine_definition_type == 1);
-	bWeibull = (${resource_definition_type} == 1);
-
-	show('wind_turbine_selection', !bDesign);
-	
-	show('wind_turbine_kw_rating_input', bDesign);
-	show('wind_turbine_rotor_diameter_input', bDesign);
-	show('wind_turbine_max_cp', bDesign);
-	show('wind.turbine.max_tip_speed', bDesign);
-	show('wind.turbine.max_tspeed_ratio', bDesign);
-	show('wind_turbine_cutin', bDesign);
-	show('wind_turbine_cut_out', bDesign);
-	show('wind.turbine.drive_train', bDesign);
-	show('wind.turbine.blade_design', bDesign);
-	show('wind.turbine.tower_design', bDesign);
-		
-	show('wind.turbine.elevation',false);
-	if (bDesign == true)  // define turbine design characteristics
-	  show('wind.turbine.elevation',bWeibull);
-	
 	plot_turbine_curve();
-
 };
 
-on_load{'Wind Turbine Design'}=define()
+on_load{'MHK Wave Device'}=define()
 {
-	on_change{'wind.turbine.radio_list_or_design'}();
-};
-
-on_change{'wind_turbine_selection'} = define() {
-	// user can only change this when ${wind.turbine.radio_list_or_design} == 0
 	plot_turbine_curve();
 };
-
-on_change{'wind_turbine_kw_rating_input'} = define() {
-	plot_turbine_curve();
-};
-
-on_change{'wind_turbine_rotor_diameter_input'} = define() {
-	plot_turbine_curve();
-};
-
-on_change{'wind_turbine_max_cp'} = define() {
-	plot_turbine_curve();
-};
-
-on_change{'wind.turbine.max_tip_speed'} = define() {
-	plot_turbine_curve();
-};
-
-on_change{'wind.turbine.max_tspeed_ratio'} = define() {
-	plot_turbine_curve();
-};
-
-on_change{'wind_turbine_cutin'} = define() {
-	plot_turbine_curve();
-};
-
-on_change{'wind_turbine_cut_out'} = define() {
-	plot_turbine_curve();
-};
-
-on_change{'wind.turbine.drive_train'} = define() {
-	plot_turbine_curve();
-};
-
-on_change{'wind_turbine_hub_ht'} = define() {
-	plot_turbine_curve();
-};
-
 
