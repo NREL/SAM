@@ -492,7 +492,7 @@ pagedata = [ ["./3dshad-3d-scene.htm","3D scene view","3D scene view The 3D scen
 ["./pv_microinverters.htm","Microinverters","Microinverters A microinverter is an inverter designed to be connected to a single module. A PV system with microinverters has a single inverter f...",""],
 ["./pv_module.htm","Module","Module The Module page allows you to choose a model to represent the photovoltaic module&#39;s performance. For each time step of the simulation, the ...",""],
 ["./pv_results.htm","Results","Detailed Photovoltaic Model Results SAM reports the detailed photovoltaic model simulation results for the time step of the simulation. Photovolta...",""],
-["./pv_shading.htm","Shading and Snow","Shading and Snow Shading and snow losses are reductions in the incident irradiance caused by shadows or snow on the photovoltaic modules in the ar...",""],
+["./pv_shading.htm","Shading and Layout","Shading and Layout Shading and snow losses are reductions in the incident irradiance caused by shadows or snow on the photovoltaic modules in the ...",""],
 ["./pv_sizing.htm","PV Sizing and Configuration","PV Sizing and Configuration SAM&#39;s two photovoltaic models offer different approaches to sizing the system: For PVWatts , you specify a nameplate D...",""],
 ["./pv_system_costs.htm","PV System Costs","PV System Costs The PV System Costs page provides access to variables that define the installation and operating costs of a photovoltaic project. ...",""],
 ["./pv_system_design.htm","System Design","System Design Use the System Design variables to size the photovoltaic system and choose tracking options. If your system includes battery storage...",""],

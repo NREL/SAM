@@ -58,14 +58,13 @@ const char *sam_api_key ="";
 
 // Google APIs:
 // login to developer api console at: https://code.google.com/apis/console
-// user name: aron.dobos@nrel.gov
-// passwd: 1H*****....******r
 static const char *GOOGLE_API_KEY = "";
 
 // Bing Map APIs:
 // login to account center at: https://www.bingmapsportal.com/
-// user name: aron.dobos@nrel.gov
-// passwd: 1H*****....******r
 static const char *BING_API_KEY = "";
 
+// Developer APIs:
+// login to account center at: https://developer.nrel.gov/
+static const char *DEVELOPER_API_KEY = "";
 
