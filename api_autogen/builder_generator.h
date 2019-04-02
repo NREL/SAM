@@ -4,20 +4,42 @@
 #include <string>
 #include <map>
 
+#include <ssc/sscapi.h>
+
 #include "variable_graph.h"
 #include "config_extractor.h"
 
+struct var_def{
+    std::string doc;
+    std::string reqif;
+    std::string constraints;
+    std::string returned;
+    std::string meta;
+    std::string cmod;
+    std::string group;
+    std::string name;
+    std::string type;
+    std::vector<var_def> table_entries;
+    bool is_ssc;
+};
+
+class builder_C_API;
+class builder_PySAM;
+
 class builder_generator {
+    friend builder_C_API;
+    friend builder_PySAM;
 private:
-    std::string config_name;
-    std::string config_symbol;
     config_extractor* config_ext;
     digraph* graph;
     digraph* subgraph;
+    std::string filepath;
+
     std::map<std::string, std::map<std::string, vertex*>> modules;
     std::vector<std::string> modules_order;
 
-    std::string filepath;
+    std::map<std::string, std::map<std::string, var_def>> m_vardefs;
+    std::vector<std::string> vardefs_order;
 
     std::unordered_map<std::string, ssc_module_t> ssc_module_objects;
 
@@ -29,18 +51,24 @@ private:
 
     void select_ui_variables(std::string ui_name, std::map<std::string, vertex*>& var_map);
 
+    void gather_variables_ssc(const std::string& cmod);
+
     void gather_variables();
 
     void export_variables_json(const std::string &cmod);
 
     std::unordered_map<std::string, edge *> gather_functions();
 
-    void create_SAM_headers(std::string cmod_name, std::string module, std::ofstream &fx_file);
 
     void create_api_header(std::string cmod_name);
-public:
 
-    builder_generator(config_extractor* ce);
+public:
+    std::string config_name;
+    std::string config_symbol;
+
+    builder_generator() = default;
+
+    explicit builder_generator(config_extractor* ce);
 
     ~builder_generator(){
         delete subgraph;

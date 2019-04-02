@@ -291,3 +291,20 @@ SAM_EXPORT void SAM_table_destruct(SAM_table t, SAM_error *err) {
         delete vt;
     });
 }
+
+
+SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_module_t cm = ssc_module_create(cmod);
+        if (!cm) throw std::runtime_error("Unable to create compute_module " + std::string(cmod));
+
+        if(verbosity == 0){
+            ssc_module_exec_set_print(0);
+        }
+
+        if (!ssc_module_exec( cm, data )) throw std::runtime_error("Unable to execute " + std::string(cmod));
+
+        ssc_module_free(cm);
+    });
+    return 1;
+}

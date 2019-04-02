@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <memory>
 
 #include <shared/lib_util.h>
 #include <ssc/sscapi.h>
@@ -13,12 +15,14 @@
 
 #include "builder_generator.h"
 #include "builder_generator_helper.h"
+#include "builder_C_API.h"
+#include "builder_PySAM.h"
 
-std::unordered_map<std::string, std::vector<std::string>> builder_generator::m_config_to_modules
-    = std::unordered_map<std::string, std::vector<std::string>>();
+std::unordered_map<std::string, std::vector<std::string> > builder_generator::m_config_to_modules
+    = std::unordered_map<std::string, std::vector<std::string> >();
 
-std::unordered_map<std::string, std::unordered_map<std::string, callback_info>> builder_generator::m_config_to_callback_info
-        = std::unordered_map<std::string, std::unordered_map<std::string, callback_info>>();
+std::unordered_map<std::string, std::unordered_map<std::string, callback_info> > builder_generator::m_config_to_callback_info
+        = std::unordered_map<std::string, std::unordered_map<std::string, callback_info> >();
 
 builder_generator::builder_generator(config_extractor *ce){
     config_ext = ce;
@@ -75,9 +79,120 @@ void builder_generator::select_ui_variables(std::string ui_name, std::map<std::s
     }
 }
 
+void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
+    ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
+
+    int var_index = 0;
+    ssc_info_t mod_info = ssc_module_var_info(p_mod, var_index);
+    std::map<std::string, var_def> outputs_map;
+    while (mod_info){
+
+        var_def vd;
+        vd.is_ssc = true;
+        vd.cmod = cmod_name;
+        vd.constraints = ssc_info_constraints(mod_info);
+        vd.meta = ssc_info_meta(mod_info);
+        vd.doc = std::string(ssc_info_label(mod_info)) + " [" + std::string(ssc_info_units(mod_info)) + "]";
+        vd.reqif = ssc_info_required(mod_info);
+        vd.group = ssc_info_group(mod_info);
+        vd.name = ssc_info_name(mod_info);
+
+        if (vd.group.length() == 0 || vd.group == vd.cmod){
+            vd.group = format_as_symbol(find_ui_of_variable(vd.name, config_name));
+            size_t pos = vd.group.find(format_as_symbol(cmod_name));
+            if (pos != std::string::npos){
+                vd.group = vd.group.substr(pos+format_as_symbol(cmod_name).length());
+            }
+            if (vd.group.length() == 0)
+                vd.group = "Common";
+        }
+
+        if (vd.group == "Adjustment Factors") {
+            ++var_index;
+            mod_info = ssc_module_var_info(p_mod, var_index);
+            continue;
+        }
+
+        std::vector<std::string> ssctype_str = {"invalid", "string", "number", "array", "matrix", "table"};
+        vd.type = ssctype_str[ssc_info_data_type(mod_info)];
+
+        int var_type = ssc_info_var_type(mod_info);
+
+        size_t pos = vd.name.find(':');
+        // if it's a table entry
+        if(pos != std::string::npos){
+            printf("table %s\n", vd.name.c_str());
+            std::string tab_name = vd.name.substr(0, pos);
+            if (var_type == 2){
+                auto it = outputs_map.find(tab_name);
+                if (it == outputs_map.end()){
+                    var_def table;
+                    table.name = tab_name;
+                    table.group = vd.group;
+                    table.cmod = cmod_name;
+                    table.type = "table";
+                    table.table_entries.push_back(vd);
+                    table.is_ssc = true;
+                    outputs_map.insert({tab_name, table});
+                }
+                else{
+                    it->second.table_entries.push_back(vd);
+                }
+            }
+            else{
+                auto it = m_vardefs.find(vd.group);
+                // if the group doesn't exist, add it
+                if (it == m_vardefs.end()){
+                    m_vardefs.insert({vd.group, std::map<std::string, var_def>()});
+                    it = m_vardefs.find(vd.group);
+                    vardefs_order.push_back(vd.group);
+                }
+                auto map = it->second.find(tab_name);
+                if (map == it->second.end()){
+                    var_def table;
+                    table.name = tab_name;
+                    table.group = vd.group;
+                    table.cmod = cmod_name;
+                    table.type = "table";
+                    table.table_entries.push_back(vd);
+                    table.is_ssc = true;
+                    it->second.insert({tab_name, table});
+                }
+                else{
+                    map->second.table_entries.push_back(vd);
+                }
+            }
+        }
+        else{
+            // regular values
+            if ( var_type == 1 || var_type == 3) {
+                auto it = m_vardefs.find(vd.group);
+                if (it == m_vardefs.end()){
+                    m_vardefs.insert({vd.group, std::map<std::string, var_def>()});
+                    it = m_vardefs.find(vd.group);
+                    vardefs_order.push_back(vd.group);
+                }
+
+                modules_order.push_back(vd.group);
+                it->second.insert({vd.name, vd});
+            }
+
+            else if ( var_type == 2) {
+                outputs_map.insert({vd.name, vd});
+            }
+        }
+
+        ++var_index;
+        mod_info = ssc_module_var_info(p_mod, var_index);
+    }
+    m_vardefs.insert({"Outputs", outputs_map});
+    vardefs_order.push_back("Outputs");
+
+}
+
 void builder_generator::gather_variables(){
     // gather modules by input page
-    std::vector<page_info>& pg_info = SAM_config_to_input_pages.find(active_config)->second;
+    std::vector<page_info>& pg_info = SAM_config_to_input_pages.find(config_name)->second;
 
     for (size_t p = 0; p < pg_info.size(); p++){
         if (pg_info[p].common_uiforms.size() > 0){
@@ -235,7 +350,7 @@ std::unordered_map<std::string, edge *> builder_generator::gather_functions() {
 
 
     // group all the edges from the same LK object together
-    std::unordered_map<std::string, std::unique_ptr<digraph>> fx_object_graphs;
+    std::unordered_map<std::string, std::unique_ptr<digraph> > fx_object_graphs;
 
     auto vertices = graph->get_vertices();
     for (auto it = vertices.begin(); it != vertices.end(); ++it){
@@ -374,86 +489,6 @@ std::unordered_map<std::string, edge *> builder_generator::gather_functions() {
 }
 
 
-void builder_generator::create_SAM_headers(std::string cmod_name, std::string module, std::ofstream &fx_file) {
-    std::string module_symbol = format_as_symbol(module);
-
-    std::string sig = "SAM_" + format_as_symbol(cmod_name) + "_" + module_symbol;
-
-    // create the module-specific var_table wrapper
-
-    fx_file << "\t/** \n";
-    fx_file << "\t * Create a " << module_symbol << " variable table for a " << config_symbol << " system\n";
-    fx_file << "\t * @param def: the set of financial model-dependent defaults to use (None, Residential, ...)\n";
-    fx_file << "\t * @param[in,out] err: a pointer to an error object\n";
-    fx_file << "\t */\n";
-
-    export_function_declaration(fx_file, sig, sig + "_create", {"const char* def"});
-
-    fx_file << "\n";
-
-    // setters
-    std::map<std::string, vertex*> ssc_vars = modules[module];
-    std::vector<vertex*> interface_vertices;
-    for (auto it = ssc_vars.begin(); it != ssc_vars.end(); ++it){
-        std::string var_name = it->first;
-
-        vertex* v = it->second;
-
-        interface_vertices.push_back(v);
-
-        std::string var_symbol = sig + "_" + var_name;
-
-        int ind = (int)SAM_cmod_to_ssc_index[cmod_name][var_name];
-        ssc_info_t mod_info = ssc_module_var_info(ssc_module_objects[cmod_name], ind);
-
-        fx_file << "\t/**\n";
-        fx_file << "\t * Set " << var_name << ": " << ssc_info_label(mod_info) << "\n";
-        fx_file << "\t * type: " << spell_type(ssc_info_data_type(mod_info)) << "\n";
-        fx_file << "\t * units: ";
-        std::string units_str = ssc_info_units(mod_info);
-        if (units_str.length() > 0)
-            fx_file << units_str << "\n";
-        else
-            fx_file << "None\n";
-
-        fx_file << "\t * options: ";
-        std::string meta_str = ssc_info_meta(mod_info);
-        if (meta_str.length() > 0)
-            fx_file << meta_str << "\n";
-        else
-            fx_file << "None\n";
-
-        fx_file << "\t * constraints: ";
-        std::string cons_str = ssc_info_constraints(mod_info);
-        if (cons_str.length() > 0)
-            fx_file << cons_str << "\n";
-        else
-            fx_file << "None\n";
-
-        fx_file << "\t * required if: ";
-        std::string req_str = ssc_info_required(mod_info);
-        if (req_str.find('=') != std::string::npos)
-            fx_file << req_str << "\n";
-        else
-            fx_file << "None\n";
-        fx_file << "\t */\n";
-
-        export_function_declaration(fx_file, "void", var_symbol + "_set", {sig + " ptr",
-                                                                           print_parameter_type(v, cmod_name,
-                                                                                                ssc_module_objects)});
-    }
-
-    // getters
-    fx_file << "\n\t/**\n";
-    fx_file << "\t * Getters\n\t */\n\n";
-
-    for (size_t i = 0; i < interface_vertices.size(); i++){
-        vertex* v = interface_vertices[i];
-        std::string var_symbol = sig + "_" + v->name;
-
-        export_function_declaration(fx_file, print_return_type(v, cmod_name, ssc_module_objects), var_symbol + "_get", {sig + " ptr"});
-    }
-}
 
 void builder_generator::create_api_header(std::string cmod_name) {
     std::string cmod_symbol = format_as_symbol(cmod_name);
@@ -480,7 +515,7 @@ void builder_generator::create_api_header(std::string cmod_name) {
             continue;
         }
         std::string module_name = modules_order[i];
-        create_SAM_headers(cmod_name, module_name, fx_file);
+//        create_SAM_headers(cmod_name, module_name, fx_file);
         fx_file << "\n\n";
     }
 
@@ -694,10 +729,10 @@ void builder_generator::create_all(std::string fp) {
     filepath = fp;
 
     // gather functions before variables to add in ui-only variables that may be skipped in subgraph
-    std::unordered_map<std::string, edge*> unique_subgraph_edges = gather_functions();
+//    std::unordered_map<std::string, edge*> unique_subgraph_edges = gather_functions();
 
     // epand the subgraph to include ui variables which may affect downstream ssc variables
-    graph->subgraph_ssc_to_ui(*subgraph);
+//    graph->subgraph_ssc_to_ui(*subgraph);
 
     std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config_name];
 
@@ -708,16 +743,24 @@ void builder_generator::create_all(std::string fp) {
         std::cout << "warning: really not implemented yet but short circuit for now\n;";
     }
 
-    gather_variables();
+//    gather_variables();
 
+    gather_variables_ssc(primary_cmods[0]);
 
+    // create C API
+    builder_C_API c_API(this);
 
+    c_API.create_SAM_headers(filepath, primary_cmods[0]);
+    c_API.create_SAM_definitions(filepath, primary_cmods[0]);
 
-//        create_api_header(primary_cmods[0]);
-        create_cmod_builder_cpp(primary_cmods[0], unique_subgraph_edges);
+    builder_PySAM pySAM(this);
+    pySAM.create_PySAM_files(filepath, primary_cmods[0]);
+
+//    create_api_header(primary_cmods[0]);
+//    create_cmod_builder_cpp(primary_cmods[0], unique_subgraph_edges);
 
     // export defaults for all configurations at the end
-    export_variables_json(primary_cmods[0]);
+//    export_variables_json(primary_cmods[0]);
 
 
 

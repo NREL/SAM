@@ -28,7 +28,9 @@ set(SAM_API_SRC
 		SAM_api.cpp
         visibility.h
         SAM_GenericSystem.h
-        SAM_GenericSystem.cpp )
+        SAM_GenericSystem.cpp
+        SAM_AdjustmentFactors.cpp
+        SAM_AdjustmentFactors.h)
 		
 
 set(CMAKE_CXX_STANDARD 11)

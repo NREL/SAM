@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.12)
 
 
 if(APPLE)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.13" CACHE STRING "Minimum OS X deployment version")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
 endif()
 
 Project(EXPORT_SAM_UI)
@@ -54,7 +54,7 @@ add_executable(export_config
         test.cpp test.h
         builder_generator.h builder_generator.cpp
         lk_eval.cpp lk_eval.h
-        builder_generator_helper.h builder_generator_helper.cpp)
+        builder_generator_helper.h builder_generator_helper.cpp builder_C_API.cpp builder_C_API.h builder_PySAM.cpp builder_PySAM.h)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -98,6 +98,8 @@ endif()
 
 #setup compile options
 target_compile_definitions(export_config PUBLIC LK_USE_WXWIDGETS )
+
+set_property(TARGET export_config PROPERTY CXX_STANDARD 11)
 
 
 # setup linking dependencies and flags

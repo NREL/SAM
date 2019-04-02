@@ -1,3 +1,6 @@
+#include <vector>
+#include <string>
+
 #include "builder_generator_helper.h"
 #include "config_extractor.h"
 

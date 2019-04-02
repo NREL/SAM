@@ -19,6 +19,31 @@ static std::string path = std::string(getenv("SAMNTDIR")) + "/api/SAM_apid.dll";
 static std::string path = std::string(getenv("SAMNTDIR")) + "/api/libSAM_apid.so";
 #endif
 
+static int PySAM_has_error_msg(SAM_error error, const char *msg){
+    printf("step1b, %s\n", msg);
+
+    const char* cc = error_message(error);
+    printf("step2b\n");
+
+    if ((cc != NULL) && (cc[0] != '\0')) {
+        printf("step3b\n");
+        char err_msg[256];
+        strncat(err_msg, cc, strlen(err_msg) - 1);
+        printf("step4b\n");
+        strncat(err_msg, ". ", 2);
+        strncat(err_msg, msg, strlen(msg));
+        printf("step5b\n");
+        printf("step6b\n");
+        error_destruct(error);
+        printf("step7b\n");
+        return 1;
+    }
+    printf("step8b\n");
+    error_destruct(error);
+    printf("step9b\n");
+    return 0;
+}
+
 class SystemLoader {
 private:
     void* m_handle;
@@ -64,8 +89,11 @@ public:
     void loadFloat(const std::string& cmod_symbol, const std::string& group,
             const std::string& var_name, const float& value){
 
+        SAM_error error = new_error();
         SAM_set_float_t floatFunc = SAM_set_float_func(m_handle, cmod_symbol.c_str(), group.c_str(), var_name.c_str(),
-                                                       nullptr);
+                                                       &error);
+        if (PySAM_has_error_msg(error, "Either parameter does not exist or is not numeric type.")) return;
+
 
         floatFunc(m_system, value, nullptr);
     }

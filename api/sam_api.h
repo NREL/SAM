@@ -127,6 +127,12 @@ SAM_get_string_func(void *handle, const char *cmod_symbol, const char *group, co
 SAM_EXPORT SAM_get_table_t
 SAM_get_table_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err);
 
+//
+// Running single simulations
+//
+
+SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_error *err);
+
 
 
 #ifdef __cplusplus
