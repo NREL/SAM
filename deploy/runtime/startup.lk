@@ -1755,7 +1755,7 @@ function setup_mhkwave_pages()
 	addpage( [[ 'MHK Wave Resource']], { 'sidebar'='Marine Resource', 'help'='wind_resource' } );
 	addpage( [[ 'MHK Wave Device' ]], { 'sidebar'='MHK Device', 'help'='wind_turbine' } );
 	addpage( [[ 'MHK Farm' ]], { 'sidebar'='MHK Farm', 'help'='wind_farm' } );
-	addpage( [[ 'MHK Wave Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+	addpage( [[ 'MHK Wave Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='mhk_system_costs' } );
 }
 setconfig( 'MHKwave', 'LCOE Calculator' );
 setmodules( ['mhkwave', 'lcoefcr']);
