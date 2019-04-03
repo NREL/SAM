@@ -1758,7 +1758,7 @@ function setup_mhkwave_pages()
 	addpage( [[ 'MHK Wave Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='mhk_system_costs' } );
 }
 setconfig( 'MHKwave', 'LCOE Calculator' );
-setmodules( ['mhkwave', 'lcoefcr']);
+setmodules( ['mhk_wave', 'lcoefcr']);
 setup_mhkwave_pages();
 setup_lcoefcr_pages();	
 
