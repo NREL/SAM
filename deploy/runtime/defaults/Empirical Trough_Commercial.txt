@@ -1722,9 +1722,7 @@ ffrac
 file_name
 1
 4
-108
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
-hce_library
+0
 1
 4
 24
@@ -3100,9 +3098,7 @@ show_tax_credits
 solar_data_file_name
 1
 4
-108
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
-solar_data_file_name_load
+0
 1
 4
 82
@@ -3120,9 +3116,7 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-108
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
-state
+0
 1
 4
 1

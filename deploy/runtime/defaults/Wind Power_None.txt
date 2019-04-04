@@ -273,8 +273,7 @@ USA
 wind_resource.description
 1
 4
-80
-Southern WY - flat lands (NREL AWS Truepower representative file),,,,,,,,,,,,,,,
+0
 wind_resource.elev
 1
 1
@@ -284,8 +283,7 @@ wind_resource.elev
 wind_resource.file
 1
 4
-83
-C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+0
 wind_resource.lat
 1
 1
@@ -340,8 +338,7 @@ wind_resource.year
 wind_resource_filename
 1
 4
-83
-C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+0
 wind_resource_model_choice
 1
 1

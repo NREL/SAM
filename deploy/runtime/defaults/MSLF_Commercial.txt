@@ -2239,8 +2239,7 @@ field_thermal_output
 file_name
 1
 4
-108
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 fossil_mode
 1
 1
@@ -3550,13 +3549,11 @@ sm1_aperture
 solar_data_file_name
 1
 4
-108
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 solar_data_file_name_load
 1
 4
-82
-C:\Code\sam\deploy\solar_resource\tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 solar_data_source
 1
 4
@@ -3582,8 +3579,7 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-108
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 solarm
 1
 1
