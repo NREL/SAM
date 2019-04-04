@@ -9033,7 +9033,6 @@ solar_data_file_name
 solar_data_file_name_load
 1
 4
-83
 0
 solar_data_source
 1
