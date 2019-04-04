@@ -96,6 +96,7 @@
 #include "stochastic.h"
 #include "codegencallback.h"
 #include "nsrdb.h"
+#include "graph.h"
 
 std::mutex global_mu;
 
@@ -622,7 +623,7 @@ static void fcall_add_gain_term(lk::invoke_t &cxt)
 
 static void fcall_agraph( lk::invoke_t &cxt )
 {
-	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bootom, right, floating)]):none" );
+	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bottom, right, floating)], [integer:graph_type(BAR, STACKED, LINE, SCATTER, CONTOUR)]:none" );
 	
 	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
 	{
@@ -635,6 +636,7 @@ static void fcall_agraph( lk::invoke_t &cxt )
 		ag.show_xvalues = true;
 		ag.show_legend = true;
 		ag.legend_pos = "bottom";
+		ag.Type = Graph::BAR;
 		if (cxt.arg_count() > 4)
 			ag.size = cxt.arg(4).as_integer();
 		if (cxt.arg_count() > 5)
@@ -643,6 +645,8 @@ static void fcall_agraph( lk::invoke_t &cxt )
 			ag.show_legend = cxt.arg(6).as_boolean();
 		if (cxt.arg_count() > 7)
 			ag.legend_pos = cxt.arg(7).as_string();
+		if (cxt.arg_count() > 8)
+			ag.Type = cxt.arg(8).as_integer();
 
 		ci->GetResultsViewer()->AddAutoGraph( ag );
 	}
