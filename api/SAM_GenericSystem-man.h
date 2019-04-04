@@ -1,8 +1,8 @@
 #ifndef SAM_GENERICSYSTEM_FUNCTIONS_H_
 #define SAM_GENERICSYSTEM_FUNCTIONS_H_
 
-#include "visibility.h"
-#include "SAM_api.h"
+#include "include/visibility.h"
+#include "include/SAM_api.h"
 
 
 #include <stdint.h>

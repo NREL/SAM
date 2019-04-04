@@ -3,7 +3,9 @@
     "Power Plant": {
       "derate": {
         "type": "float",
-        "None": "4"
+        "None": "4",
+        "Residential": "5",
+        "Commercial": "6"
       },
       "energy_output_array": {
         "type": "array",

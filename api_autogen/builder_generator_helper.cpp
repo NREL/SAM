@@ -177,6 +177,24 @@ std::string ssc_value_to_json(int ssc_type, VarValue* vv){
                 json += "\"0\"";
             json += "]";
             break;
+        case SSC_MATRIX:
+            json += "[\n";
+            if (vv){
+                matrix_t<float> mat = vv->Matrix();
+                for (size_t i = 0; i < mat.nrows(); i++){
+                    json += "\t\t\t\t[";
+                    for (size_t j = 0; j < mat.ncols(); j++){
+                        json += "\"" + std::to_string(mat.at(i, j)) + "\"";
+                        if (j != mat.ncols() - 1) json += ", ";
+                    }
+                    json += "]";
+                    if (i != mat.nrows() - 1) json += ",";
+                    json += "\n";
+                }
+            } else
+                json += "[\"0\"]";
+            json += "\t\t\t]";
+            break;
         case SSC_TABLE:
             json += "{\n";
             if (vv){

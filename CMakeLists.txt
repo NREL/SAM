@@ -184,7 +184,7 @@ if (APPLE)
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
 		COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
 		COMMAND cp ${SSC_LIB} ${SAM_APP}/Contents/Frameworks
-		COMMAND install_name_tool -rpath $ENV{SSCDIR}/ssc ${SAM_APP}/Contents/Frameworks/ ${SAM_APP}/Contents/MacOS/${SAM_EXE}
+		COMMAND install_name_tool -change $ENV{SSCDIR}/ssc ${SAM_APP}/Contents/Frameworks/ ${SAM_APP}/Contents/MacOS/${SAM_EXE}
 	)
 elseif(UNIX)
 	set_target_properties(${SAM_EXE} 

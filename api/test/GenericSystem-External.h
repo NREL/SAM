@@ -8,7 +8,7 @@
 
 #include "ssc/sscapi.h"
 
-#include "visibility.h"
+#include "include/visibility.h"
 
 
 #include "SAM_GenericSystem-man.h"

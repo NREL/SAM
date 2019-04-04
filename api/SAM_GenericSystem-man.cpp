@@ -7,7 +7,7 @@
 #include <ssc/cmod_generic_system-builder.h>
 #include <ssc/sscapi.h>
 
-#include "SAM_api.h"
+#include "include/SAM_api.h"
 #include "ErrorHandler.h"
 #include "SAM_GenericSystem-man.h"
 

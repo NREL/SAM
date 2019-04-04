@@ -7,7 +7,7 @@ void builder_C_API::create_SAM_headers(const std::string &file_dir, const std::s
     std::string cmod_symbol = format_as_symbol(cmod);
 
     std::ofstream fx_file;
-    fx_file.open(file_dir + "/SAM_" + cmod_symbol + ".h");
+    fx_file.open(file_dir + "/C/SAM_" + cmod_symbol + ".h");
     assert(fx_file.is_open());
 
     fx_file << "#ifndef SAM_" << util::upper_case(cmod_symbol)<< "_H_\n"
@@ -59,6 +59,7 @@ void builder_C_API::create_SAM_headers(const std::string &file_dir, const std::s
                    "\t//\n\n";
         for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
             std::string var_name = it->first;
+            std::string var_symbol = remove_periods(var_name);
 
             var_def vd = it->second;
 
@@ -86,7 +87,7 @@ void builder_C_API::create_SAM_headers(const std::string &file_dir, const std::s
 
             // 	SAM_EXPORT void SAM_GenericSystem_PowerPlant_derate_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
 
-            fx_file << "\tSAM_EXPORT void SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name << "_";
+            fx_file << "\tSAM_EXPORT void SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
             if (vd.type == "number") {
                 fx_file << "fset(SAM_" << cmod_symbol << " ptr, float number, SAM_error *err);\n\n";
             } else if (vd.type == "string") {
@@ -113,27 +114,28 @@ void builder_C_API::create_SAM_headers(const std::string &file_dir, const std::s
 
         for (auto it = vardefs.begin(); it != vardefs.end(); ++it){
             std::string var_name = it->first;
+            std::string var_symbol = remove_periods(var_name);
 
             var_def vd = it->second;
 
             if (vd.type == "number"){
-                fx_file << "\tSAM_EXPORT float SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name << "_";
+                fx_file << "\tSAM_EXPORT float SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "fget(SAM_" << cmod_symbol << " ptr, SAM_error *err);\n\n";
             }
             else if (vd.type == "string"){
-                fx_file << "\tSAM_EXPORT const char* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name << "_";
+                fx_file << "\tSAM_EXPORT const char* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "sget(SAM_" << cmod_symbol << " ptr, SAM_error *err);\n\n";
             }
             else if (vd.type == "array"){
-                fx_file << "\tSAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name << "_";
+                fx_file << "\tSAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "aget(SAM_" << cmod_symbol << " ptr, int* length, SAM_error *err);\n\n";
             }
             else if (vd.type == "matrix"){
-                fx_file << "\tSAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name << "_";
+                fx_file << "\tSAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "mget(SAM_" << cmod_symbol << " ptr, int* nrows, int* ncols, SAM_error *err);\n\n";
             }
             else if (vd.type == "table"){
-                fx_file << "\tSAM_EXPORT SAM_table SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name << "_";
+                fx_file << "\tSAM_EXPORT SAM_table SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "tget(SAM_" << cmod_symbol << " ptr, SAM_error *err);\n\n";
             }
             else{
@@ -153,7 +155,7 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
     std::string cmod_symbol = format_as_symbol(cmod);
 
     std::ofstream fx_file;
-    fx_file.open(file_dir + "/SAM_" + cmod_symbol + ".cpp");
+    fx_file.open(file_dir + "/C/SAM_" + cmod_symbol + ".cpp");
     assert(fx_file.is_open());
 
     fx_file << "#include <string>\n"
@@ -200,10 +202,11 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
 
         for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
             std::string var_name = it->first;
+            std::string var_symbol = remove_periods(var_name);
 
             var_def vd = it->second;
 
-            fx_file << "SAM_EXPORT void SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name;
+            fx_file << "SAM_EXPORT void SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol;
             if (vd.type == "number") {
                 fx_file << "_fset(SAM_" << cmod_symbol << " ptr, float number, SAM_error *err){\n"
                                                           "\ttranslateExceptions(err, [&]{\n"
@@ -220,15 +223,14 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
                                                           "\t\tssc_data_set_array(ptr, \"" << var_name
                         << "\", arr, length);\n\t});\n}";
             } else if (vd.type == "matrix") {
-                fx_file << "_mset(SAM_" << cmod_symbol << " ptr, float* mat, int nrows, int ncols, SAM_error *err);\n"
+                fx_file << "_mset(SAM_" << cmod_symbol << " ptr, float* mat, int nrows, int ncols, SAM_error *err){\n"
                                                           "\ttranslateExceptions(err, [&]{\n"
                                                           "\t\tssc_data_set_matrix(ptr, \"" << var_name
                         << "\", mat, nrows, ncols);\n\t});\n}";
             } else if (vd.type == "table") {
-                fx_file << "_tset(SAM_" << cmod_symbol << " ptr, SAM_table tab, SAM_error *err);\n\n"
-                                                          "\ttranslateExceptions(err, [&]{\n"
-                                                          "\t\tssc_data_set_table(ptr, \"" << var_name
-                        << "\", tab);\n\t});\n}";
+                fx_file << "_tset(SAM_" << cmod_symbol << " ptr, SAM_table tab, SAM_error *err){\n"
+                                                          "\tSAM_table_set_table(ptr, \"" << var_name << "\", tab, err);\n"
+                                                          "}\n\n";
             } else {
                 throw std::runtime_error(vd.type + " for " + var_name);
             }
@@ -244,11 +246,12 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
 
         for (auto it = vardefs.begin(); it != vardefs.end(); ++it){
             std::string var_name = it->first;
+            std::string var_symbol = remove_periods(var_name);
 
             var_def vd = it->second;
 
             if (vd.type == "number"){
-                fx_file << "SAM_EXPORT float SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name << "_";
+                fx_file << "SAM_EXPORT float SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "fget(SAM_" << cmod_symbol << " ptr, SAM_error *err){\n";
                 fx_file << "\tfloat result;\n"
                            "\ttranslateExceptions(err, [&]{\n"
@@ -257,40 +260,43 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
                            "\t});\n\treturn result;\n}\n\n";
             }
             else if (vd.type == "string"){
-                fx_file << "SAM_EXPORT const char* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name << "_";
+                fx_file << "SAM_EXPORT const char* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "sget(SAM_" << cmod_symbol << " ptr, SAM_error *err){\n";
-                fx_file << "\tconst char* result;\n"
+                fx_file << "\tconst char* result = nullptr;\n"
                            "\ttranslateExceptions(err, [&]{\n"
-                           "\tresult = ssc_data_get_string(ptr, \"" << var_name<< "\", &result);\n"
+                           "\tresult = ssc_data_get_string(ptr, \"" << var_name<< "\");\n"
                            "\tif (!result)\n"
                            "\t\tmake_access_error(\"SAM_" << cmod_symbol << "\", \"" << var_name << "\");\n"
                            "\t});\n\treturn result;\n}\n\n";
             }
             else if (vd.type == "array"){
-                fx_file << "SAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name << "_";
+                fx_file << "SAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "aget(SAM_" << cmod_symbol << " ptr, int* length, SAM_error *err){\n";
-                fx_file << "\tfloat* result;\n"
+                fx_file << "\tfloat* result = nullptr;\n"
                            "\ttranslateExceptions(err, [&]{\n"
-                           "\tif (!ssc_data_get_array(ptr, \"" << var_name<< "\", length))\n"
+                           "\tresult = ssc_data_get_array(ptr, \"" << var_name<< "\", length);\n"
+                           "\tif (!result)\n"
                            "\t\tmake_access_error(\"SAM_" << cmod_symbol << "\", \"" << var_name << "\");\n"
                            "\t});\n\treturn result;\n}\n\n";
 
             }
             else if (vd.type == "matrix"){
-                fx_file << "SAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name << "_";
+                fx_file << "SAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "mget(SAM_" << cmod_symbol << " ptr, int* nrows, int* ncols, SAM_error *err){\n";
-                fx_file << "\tfloat* result;\n"
+                fx_file << "\tfloat* result = nullptr;\n"
                            "\ttranslateExceptions(err, [&]{\n"
-                           "\tif (!ssc_data_get_matrix(ptr, \"" << var_name<< "\", nrows, ncols))\n"
+                           "\tresult = ssc_data_get_matrix(ptr, \"" << var_name<< "\", nrows, ncols);\n"
+                           "\tif (!result)\n"
                            "\t\tmake_access_error(\"SAM_" << cmod_symbol << "\", \"" << var_name << "\");\n"
                            "\t});\n\treturn result;\n}\n\n";
             }
             else if (vd.type == "table"){
-                fx_file << "SAM_EXPORT SAM_table SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_name << "_";
+                fx_file << "SAM_EXPORT SAM_table SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "tget(SAM_" << cmod_symbol << " ptr, SAM_error *err){\n";
-                fx_file << "\tSAM_table result;\n"
+                fx_file << "\tSAM_table result = nullptr;\n"
                            "\ttranslateExceptions(err, [&]{\n"
-                           "\tif (!ssc_data_get_table(ptr, \"" << var_name<< "\"))\n"
+                           "\tresult = ssc_data_get_table(ptr, \"" << var_name<< "\");\n"
+                           "\tif (!result)\n"
                            "\t\tmake_access_error(\"SAM_" << cmod_symbol << "\", \"" << var_name << "\");\n"
                            "\t});\n\treturn result;\n}\n\n";
             }

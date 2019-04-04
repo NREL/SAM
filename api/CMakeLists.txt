@@ -19,18 +19,32 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
-include_directories(. $ENV{SSCDIR} $ENV{SSCDIR}/ssc)
+include_directories(. include $ENV{SSCDIR} $ENV{SSCDIR}/ssc)
 
 set(SAM_API_SRC
-        ErrorHandler.h
         ErrorHandler.cpp
-        SAM_api.h
 		SAM_api.cpp
-        visibility.h
-        SAM_GenericSystem.h
-        SAM_GenericSystem.cpp
-        SAM_AdjustmentFactors.cpp
-        SAM_AdjustmentFactors.h)
+        include/visibility.h
+        src/SAM_AdjustmentFactors.cpp
+        src/SAM_Battery.cpp
+        src/SAM_Geothermal.cpp
+        src/SAM_Pvsamv1.cpp
+        src/SAM_TcsMSLF.cpp
+        src/SAM_TcslinearFresnel.cpp
+        src/SAM_TcstroughPhysical.cpp
+        src/SAM_Biomass.cpp
+        src/SAM_Hcpv.cpp
+        src/SAM_Pvwattsv5.cpp
+        src/SAM_Tcsdish.cpp
+        src/SAM_TcsmoltenSalt.cpp
+        src/SAM_TroughPhysicalProcessHeat.cpp
+        src/SAM_GenericSystem.cpp
+        src/SAM_LinearFresnelDsgIph.cpp
+        src/SAM_Swh.cpp
+        src/SAM_TcsgenericSolar.cpp
+        src/SAM_TcstroughEmpirical.cpp
+        src/SAM_Windpower.cpp
+        )
 		
 
 set(CMAKE_CXX_STANDARD 11)
@@ -114,8 +128,9 @@ if (system_advisor_model_EXPORT)
         TARGET ${SAM_API_LIB}
         POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/lib/
+        COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/include/
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            $ENV{SAMNTDIR}/api/SAM_api.h $ENV{PYSAMDIR}/
+            $ENV{SAMNTDIR}/api/include/SAM_api.h $ENV{PYSAMDIR}/include
     )
     if (MSVC)
         add_custom_command(

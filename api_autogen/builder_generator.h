@@ -19,6 +19,7 @@ struct var_def{
     std::string group;
     std::string name;
     std::string type;
+    int type_n;
     std::vector<var_def> table_entries;
     bool is_ssc;
 };

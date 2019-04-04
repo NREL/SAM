@@ -350,3 +350,7 @@ src/private_os\.h
 src/private_sam\.h
 
 samples/CSP/sco2_analysis_python/core/PySSC.py
+
+api_autogen/library/PySAM/
+
+api/test/SAM_api_test

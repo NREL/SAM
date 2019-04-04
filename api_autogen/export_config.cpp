@@ -69,14 +69,13 @@ int main(int argc, char *argv[]){
 
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         // only do technology configs
-        if (it->first.find("None") == std::string::npos && it->first.find("MSPT-Single Owner") == std::string::npos)
-            continue;
+
         active_config = it->first;
         // no defaults
-//        if (active_config.find("Independent Power Producer") != std::string::npos
-//            || active_config.find("Commercial PPA") != std::string::npos){
-//            continue;
-//        }
+        if (active_config.find("Independent Power Producer") != std::string::npos
+            || active_config.find("Commercial PPA") != std::string::npos){
+            continue;
+        }
 
 //        // focus on this one, or skip it
 //        if (active_config != "Generic System-None" ){

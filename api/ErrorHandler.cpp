@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "ErrorHandler.h"
-#include "SAM_api.h"
+#include "include/SAM_api.h"
 
 SAM_error new_error(){
     return new error;

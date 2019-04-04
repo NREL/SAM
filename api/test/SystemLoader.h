@@ -9,9 +9,9 @@
 	#include <dlfcn.h>
 #endif
 
-#include "visibility.h"
+#include "include/visibility.h"
 #include "ErrorHandler.h"
-#include "SAM_api.h"
+#include "include/SAM_api.h"
 
 #ifdef __WINDOWS__
 static std::string path = std::string(getenv("SAMNTDIR")) + "/api/SAM_apid.dll";

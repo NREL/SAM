@@ -1,8 +1,8 @@
 #ifndef SAM_GENERICSYSTEM_H_
 #define SAM_GENERICSYSTEM_H_
 
-#include "visibility.h"
-#include "SAM_api.h"
+#include "include/visibility.h"
+#include "include/SAM_api.h"
 
 
 #include <stdint.h>
@@ -30,6 +30,13 @@ extern "C"
 
 	SAM_EXPORT void SAM_GenericSystem_destruct(SAM_GenericSystem system);
 
+	SAM_EXPORT const char* SAM_GenericSystem_Plant_file_sget(SAM_GenericSystem ptr, SAM_error *err);
+
+    SAM_EXPORT void SAM_GenericSystem_Plant_file_sset(SAM_GenericSystem ptr, const char* str, SAM_error *err);
+
+    SAM_EXPORT void SAM_GenericSystem_Plant_data_tset(SAM_GenericSystem ptr, SAM_table tab, SAM_error *err);
+
+    SAM_EXPORT SAM_table SAM_GenericSystem_Plant_data_tget(SAM_GenericSystem ptr, SAM_error *err);
 
 	//
 	// Plant parameters

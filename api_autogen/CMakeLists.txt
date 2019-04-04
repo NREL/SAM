@@ -112,3 +112,32 @@ if(MSVC)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
 #    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT export_config)
 endif()
+
+if (system_advisor_model_EXPORT)
+    file(GLOB MY_PUBLIC_HEADERS
+           "${CMAKE_CURRENT_SOURCE_DIR}/library/C/*.h"
+            )
+
+    file(GLOB MY_SRC
+            "${CMAKE_CURRENT_SOURCE_DIR}/library/C/*.cpp"
+            )
+
+    file(GLOB PYSAM_SRC
+            "${CMAKE_CURRENT_SOURCE_DIR}/library/PySAM/*.c"
+            )
+
+    add_custom_command(
+            TARGET export_config
+            POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{SAMNTDIR}/api/include/
+            COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{SAMNTDIR}/api/src/
+            COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/src/
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                ${MY_PUBLIC_HEADERS} $ENV{SAMNTDIR}/api/include/
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                ${MY_SRC} $ENV{SAMNTDIR}/api/src/
+            COMMAND ${CMAKE_COMMAND} -E copy
+                ${PYSAM_SRC} $ENV{PYSAMDIR}/src/
+    )
+
+endif()

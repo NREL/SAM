@@ -6,9 +6,39 @@
 
 #include <ssc/sscapi.h>
 
-#include "SAM_api.h"
+#include "include/SAM_api.h"
 #include "ErrorHandler.h"
 #include "SAM_GenericSystem.h"
+
+SAM_EXPORT void SAM_GenericSystem_Plant_file_sset(SAM_GenericSystem ptr, const char* str, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_string(ptr, "solar_resource_file", str);
+    });
+}
+
+SAM_EXPORT const char* SAM_GenericSystem_Plant_file_sget(SAM_GenericSystem ptr, SAM_error *err){
+    const char* result;
+    translateExceptions(err, [&]{
+        result = ssc_data_get_string(ptr, "solar_resource_file");
+        if (!result)
+            make_access_error("SAM_GenericSystem", "solar_resource_file");
+    });
+    return result;
+}
+
+SAM_EXPORT SAM_table SAM_GenericSystem_Plant_data_tget(SAM_GenericSystem ptr, SAM_error *err){
+    SAM_table result;
+    translateExceptions(err, [&]{
+        result = ssc_data_get_table(ptr, "solar_resource_data");
+        if (!result)
+            make_access_error("SAM_GenericSystem", "solar_resource_data");
+    });
+    return result;
+}
+
+SAM_EXPORT void SAM_GenericSystem_Plant_data_tset(SAM_GenericSystem ptr, SAM_table tab, SAM_error *err){
+    SAM_table_set_table(ptr, "solar_resource_data", tab, err);
+}
 
 SAM_EXPORT SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_error* err){
 	SAM_GenericSystem result = nullptr;
