@@ -27,9 +27,14 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
 
         bool output = 0;
         std::string module_symbol = format_as_symbol(mm->first);
+
+        if (module_symbol == "AdjustmentFactors")
+            continue;
+
         if (module_symbol == "Outputs"){
             output = 1;
         }
+
 
         fx_file << "\n"
                    "\t/*\n"
@@ -101,10 +106,13 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
 
         // variable getter and setter (setters if not output)
         for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
-            std::string var_name = it->first;
-            std::string var_symbol = remove_periods(var_name);
+            std::string var_symbol = it->first;
 
             var_def vd = it->second;
+
+            if (module_symbol == "AdjustmentFactors")
+                continue;
+
 
             if (vd.type == "number") {
                 fx_file << "static PyObject *\n"
@@ -129,8 +137,8 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                         << module_symbol << "_get_" << var_symbol << "(" << module_symbol
                         << "Object *self, void *closure)\n"
                            "{\n"
-                           "\treturn PySAM_string_getter(SAM_" << cmod_symbol << "_" << module_symbol
-                        << "_file_sget, self->data_ptr);\n"
+                           "\treturn PySAM_string_getter(SAM_" << cmod_symbol << "_" << module_symbol << "_"
+                        << var_symbol << "_sget, self->data_ptr);\n"
                            "}\n"
                            "\n";
                 if (output)
@@ -139,8 +147,8 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                         << module_symbol << "_set_" << var_symbol << "(" << module_symbol
                         << "Object *self, PyObject *value, void *closure)\n"
                            "{\n"
-                           "\treturn PySAM_string_setter(value, SAM_" << cmod_symbol << "_" << module_symbol
-                        << "_file_sset, self->data_ptr);\n"
+                           "\treturn PySAM_string_setter(value, SAM_" << cmod_symbol << "_" << module_symbol << "_"
+                        << var_symbol << "_sset, self->data_ptr);\n"
                            "}\n\n";
             } else if (vd.type == "array") {
                 fx_file << "static PyObject *\n"
@@ -203,10 +211,12 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
 
         fx_file << "static PyGetSetDef " << module_symbol << "_getset[] = {\n";
         for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
-            std::string var_name = it->first;
-            std::string var_symbol = remove_periods(var_name);
+            std::string var_symbol = it->first;
 
             var_def vd = it->second;
+
+            if (module_symbol == "AdjustmentFactors")
+                continue;
 
             // make the PyGetSetDef struct
 
@@ -321,6 +331,9 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
         std::map<std::string, var_def> vardefs = mm->second;
 
         std::string module_symbol = format_as_symbol(mm->first);
+
+        if (module_symbol == "AdjustmentFactors")
+            continue;
     
         fx_file << "PyObject* " << module_symbol << "_obj = " << module_symbol << "_new(self->data_ptr);\n"
                    "\tPyDict_SetItemString(attr_dict, \"" << module_symbol << "\", " << module_symbol << "_obj);\n"
@@ -384,7 +397,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\t\treturn NULL;\n"
                "\t}\n"
                "\n"
-               "\tif (!PySAM_assign_from_nested_dict(self, self->x_attr, self->data_ptr, dict, \"" << cmod_symbol << "\"))\n"
+               "\tif (!PySAM_assign_from_nested_dict((PyObject*)self, self->x_attr, self->data_ptr, dict, \"" << cmod_symbol << "\"))\n"
                "\t\treturn NULL;\n"
                "\n"
                "\tPy_INCREF(Py_None);\n"
@@ -517,7 +530,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\tif (rv == NULL)\n"
                "\t\treturn NULL;\n"
                "\n"
-               "\tPySAM_load_defaults(rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", fin);\n"
+               "\tPySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", fin);\n"
                "\n"
                "\treturn (PyObject *)rv;\n"
                "}\n\n";
@@ -577,6 +590,9 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
 
         std::string module_symbol = format_as_symbol(mm->first);
         std::string name = module_symbol;
+
+        if (module_symbol == "AdjustmentFactors")
+            continue;
 
         fx_file << "\t/// Add the " << module_symbol << " type object to " << cmod_symbol << "_Type\n"
                    "\tif (PyType_Ready(&" << module_symbol << "_Type) < 0) { goto fail; }\n"

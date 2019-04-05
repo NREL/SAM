@@ -1171,6 +1171,8 @@ extern "C"
 
 	SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_uptake_fget(SAM_Biomass ptr, SAM_error *err);
 
+	SAM_EXPORT float SAM_Biomass_Outputs_system_heat_rate_fget(SAM_Biomass ptr, SAM_error *err);
+
 	SAM_EXPORT float SAM_Biomass_Outputs_system_hhv_heatrate_fget(SAM_Biomass ptr, SAM_error *err);
 
 	SAM_EXPORT float SAM_Biomass_Outputs_system_hhv_thermeff_fget(SAM_Biomass ptr, SAM_error *err);
@@ -1180,8 +1182,6 @@ extern "C"
 	SAM_EXPORT float SAM_Biomass_Outputs_system_lhv_thermeff_fget(SAM_Biomass ptr, SAM_error *err);
 
 	SAM_EXPORT float SAM_Biomass_Outputs_system_total_moisture_fget(SAM_Biomass ptr, SAM_error *err);
-
-	SAM_EXPORT float SAM_Biomass_Outputs_system_heat_rate_fget(SAM_Biomass ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

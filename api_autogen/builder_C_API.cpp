@@ -51,6 +51,9 @@ void builder_C_API::create_SAM_headers(const std::string &file_dir, const std::s
         auto mm = root->m_vardefs.find(root->vardefs_order[i]);
         std::map<std::string, var_def> vardefs = mm->second;
 
+        if (mm->first == "AdjustmentFactors")
+            continue;
+
         std::string module_symbol = format_as_symbol(mm->first);
 
         fx_file << "\n"
@@ -58,11 +61,10 @@ void builder_C_API::create_SAM_headers(const std::string &file_dir, const std::s
                    "\t// " << module_symbol << " parameters\n"
                    "\t//\n\n";
         for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
-            std::string var_name = it->first;
-            std::string var_symbol = remove_periods(var_name);
+            std::string var_symbol = it->first;
 
             var_def vd = it->second;
-
+            std::string var_name = vd.name;
 
             fx_file << "\t/**\n";
             fx_file << "\t * Set " << var_name << ": " << vd.doc << "\n";
@@ -108,15 +110,18 @@ void builder_C_API::create_SAM_headers(const std::string &file_dir, const std::s
         std::map<std::string, var_def> vardefs = mm->second;
         std::string module_symbol = format_as_symbol(mm->first);
 
+        if (mm->first == "AdjustmentFactors")
+            continue;
+
         // getters
         fx_file << "\n\t/**\n";
         fx_file << "\t * " << module_symbol << " Getters\n\t */\n\n";
 
         for (auto it = vardefs.begin(); it != vardefs.end(); ++it){
-            std::string var_name = it->first;
-            std::string var_symbol = remove_periods(var_name);
+            std::string var_symbol = it->first;
 
             var_def vd = it->second;
+            std::string var_name = vd.name;
 
             if (vd.type == "number"){
                 fx_file << "\tSAM_EXPORT float SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
@@ -200,11 +205,14 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
         std::map<std::string, var_def> vardefs = mm->second;
         std::string module_symbol = format_as_symbol(mm->first);
 
+        if (mm->first == "AdjustmentFactors")
+            continue;
+
         for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
-            std::string var_name = it->first;
-            std::string var_symbol = remove_periods(var_name);
+            std::string var_symbol = it->first;
 
             var_def vd = it->second;
+            std::string var_name = vd.name;
 
             fx_file << "SAM_EXPORT void SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol;
             if (vd.type == "number") {
@@ -244,11 +252,14 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
         std::map<std::string, var_def> vardefs = mm->second;
         std::string module_symbol = format_as_symbol(mm->first);
 
+        if (mm->first == "AdjustmentFactors")
+            continue;
+
         for (auto it = vardefs.begin(); it != vardefs.end(); ++it){
-            std::string var_name = it->first;
-            std::string var_symbol = remove_periods(var_name);
+            std::string var_symbol = it->first;
 
             var_def vd = it->second;
+            std::string var_name = vd.name;
 
             if (vd.type == "number"){
                 fx_file << "SAM_EXPORT float SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";

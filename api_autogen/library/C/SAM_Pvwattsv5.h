@@ -121,12 +121,36 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv5_SystemDesign_module_type_fset(SAM_Pvwattsv5 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set shading: 
+	 * Set shading:azal: Azimuth x altitude beam shading loss [%]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5_SystemDesign_shading_tset(SAM_Pvwattsv5 ptr, SAM_table tab, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5_SystemDesign_shading_azal_mset(SAM_Pvwattsv5 ptr, float* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set shading:diff: Diffuse shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_SystemDesign_shading_diff_fset(SAM_Pvwattsv5 ptr, float number, SAM_error *err);
+
+	/**
+	 * Set shading:mxh: Month x Hour beam shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_SystemDesign_shading_mxh_mset(SAM_Pvwattsv5 ptr, float* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set shading:timestep: Time step beam shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_SystemDesign_shading_timestep_mset(SAM_Pvwattsv5 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set system_capacity: System size (DC nameplate) [kW]
@@ -174,7 +198,13 @@ extern "C"
 
 	SAM_EXPORT float SAM_Pvwattsv5_SystemDesign_module_type_fget(SAM_Pvwattsv5 ptr, SAM_error *err);
 
-	SAM_EXPORT SAM_table SAM_Pvwattsv5_SystemDesign_shading_tget(SAM_Pvwattsv5 ptr, SAM_error *err);
+	SAM_EXPORT float* SAM_Pvwattsv5_SystemDesign_shading_azal_mget(SAM_Pvwattsv5 ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT float SAM_Pvwattsv5_SystemDesign_shading_diff_fget(SAM_Pvwattsv5 ptr, SAM_error *err);
+
+	SAM_EXPORT float* SAM_Pvwattsv5_SystemDesign_shading_mxh_mget(SAM_Pvwattsv5 ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT float* SAM_Pvwattsv5_SystemDesign_shading_timestep_mget(SAM_Pvwattsv5 ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT float SAM_Pvwattsv5_SystemDesign_system_capacity_fget(SAM_Pvwattsv5 ptr, SAM_error *err);
 

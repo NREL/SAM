@@ -249,12 +249,36 @@ extern "C"
 	SAM_EXPORT void SAM_Swh_SWH_scaled_draw_aset(SAM_Swh ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set shading: 
+	 * Set shading:azal: Azimuth x altitude beam shading loss [%]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Swh_SWH_shading_tset(SAM_Swh ptr, SAM_table tab, SAM_error *err);
+	SAM_EXPORT void SAM_Swh_SWH_shading_azal_mset(SAM_Swh ptr, float* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set shading:diff: Diffuse shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Swh_SWH_shading_diff_fset(SAM_Swh ptr, float number, SAM_error *err);
+
+	/**
+	 * Set shading:mxh: Month x Hour beam shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Swh_SWH_shading_mxh_mset(SAM_Swh ptr, float* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set shading:timestep: Time step beam shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Swh_SWH_shading_timestep_mset(SAM_Swh ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set sky_model: Tilted surface irradiance model [0/1/2]
@@ -382,7 +406,13 @@ extern "C"
 
 	SAM_EXPORT float* SAM_Swh_SWH_scaled_draw_aget(SAM_Swh ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT SAM_table SAM_Swh_SWH_shading_tget(SAM_Swh ptr, SAM_error *err);
+	SAM_EXPORT float* SAM_Swh_SWH_shading_azal_mget(SAM_Swh ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT float SAM_Swh_SWH_shading_diff_fget(SAM_Swh ptr, SAM_error *err);
+
+	SAM_EXPORT float* SAM_Swh_SWH_shading_mxh_mget(SAM_Swh ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT float* SAM_Swh_SWH_shading_timestep_mget(SAM_Swh ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT float SAM_Swh_SWH_sky_model_fget(SAM_Swh ptr, SAM_error *err);
 

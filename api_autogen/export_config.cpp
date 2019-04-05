@@ -78,9 +78,6 @@ int main(int argc, char *argv[]){
         }
 
 //        // focus on this one, or skip it
-//        if (active_config != "Generic System-None" ){
-//            continue;
-//        }
 
         config_extractor ce(it->first);
         //ce.map_equations();

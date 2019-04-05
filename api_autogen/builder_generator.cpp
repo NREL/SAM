@@ -127,25 +127,12 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
         int var_type = ssc_info_var_type(mod_info);
 
         size_t pos = vd.name.find(':');
-        // if it's a table entry
+        // if it's a table entry, x:y, add x_y as the variable symbol and keep x:y as the name
         if(pos != std::string::npos){
-//            printf("table %s\n", vd.name.c_str());
-            std::string tab_name = vd.name.substr(0, pos);
+            std::string str = vd.name;
+            std::replace(str.begin(), str.end(), ':', '_');
             if (var_type == 2){
-                auto it = outputs_map.find(tab_name);
-                if (it == outputs_map.end()){
-                    var_def table;
-                    table.name = tab_name;
-                    table.group = vd.group;
-                    table.cmod = cmod_name;
-                    table.type = "table";
-                    table.table_entries.push_back(vd);
-                    table.is_ssc = true;
-                    outputs_map.insert({tab_name, table});
-                }
-                else{
-                    it->second.table_entries.push_back(vd);
-                }
+                outputs_map.insert({str, vd});
             }
             else{
                 auto it = m_vardefs.find(vd.group);
@@ -155,24 +142,12 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
                     it = m_vardefs.find(vd.group);
                     vardefs_order.push_back(vd.group);
                 }
-                auto map = it->second.find(tab_name);
-                if (map == it->second.end()){
-                    var_def table;
-                    table.name = tab_name;
-                    table.group = vd.group;
-                    table.cmod = cmod_name;
-                    table.type = "table";
-                    table.table_entries.push_back(vd);
-                    table.is_ssc = true;
-                    it->second.insert({tab_name, table});
-                }
-                else{
-                    map->second.table_entries.push_back(vd);
-                }
+                it->second.insert({str, vd});
             }
         }
         else{
             // regular values
+            std::string var_symbol = remove_periods(vd.name);
             if ( var_type == 1 || var_type == 3) {
                 auto it = m_vardefs.find(vd.group);
                 if (it == m_vardefs.end()){
@@ -182,11 +157,11 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
                 }
 
                 modules_order.push_back(vd.group);
-                it->second.insert({vd.name, vd});
+                it->second.insert({var_symbol, vd});
             }
 
             else if ( var_type == 2) {
-                outputs_map.insert({vd.name, vd});
+                outputs_map.insert({var_symbol, vd});
             }
         }
 
@@ -295,7 +270,10 @@ void builder_generator::gather_variables(){
 //
 void builder_generator::export_variables_json(const std::string &cmod) {
     std::ofstream json;
-    std::string financial = format_as_symbol(config_name.substr(config_name.find('-')+1));
+
+    size_t pos = config_name.find_last_of('-');
+
+    std::string financial = format_as_symbol(config_name.substr(pos + 1));
     json.open(filepath + "/defaults/" + format_as_symbol(cmod) +"_" + format_as_symbol(financial)+ ".json");
 
     // later implement for several financial models
@@ -307,26 +285,43 @@ void builder_generator::export_variables_json(const std::string &cmod) {
     std::unordered_map<std::string, bool> completed_tables;
     for (size_t i = 0; i < vardefs_order.size(); i++){
         std::string module_name = vardefs_order[i];
+
         if (module_name == "Outputs")
             continue;
+
         std::string module_symbol = format_as_symbol(module_name);
         json << "\t\t\"" + module_symbol + "\": {";
 
         bool first = true;
         std::map<std::string, var_def>& map = m_vardefs.find(module_name)->second;
         for (auto it = map.begin(); it != map.end(); ++it){
-            std::string var = it->first;
+            std::string var_symbol = it->first;
             var_def v = it->second;
 
+            VarValue* vv = nullptr;
 
-            VarValue* vv = SAM_config_to_defaults[config_name][var];
+            // if adjustment factors, the default values are stored in a table
+            if (module_name == "AdjustmentFactors"){
+                size_t pos = v.name.find('_');
+                std::string adj_type = "adjust";
+                if (pos != std::string::npos){
+                    adj_type = v.name.substr(0, pos + 1) + adj_type;
+                }
+
+                vv = SAM_config_to_defaults[config_name][adj_type];
+                if (vv)
+                    vv = vv->Table().Get(v.name);
+            }
+            else
+                vv = SAM_config_to_defaults[config_name][v.name];
+
 
             // vv can be null in the case of variables not available in UI
             if (!vv && v.reqif != "*")
                 continue;
 
             if (!first) json << ",";
-            json << "\n\t\t\t\"" + remove_periods(var) + "\": ";
+            json << "\n\t\t\t\"" + remove_periods(var_symbol) + "\": ";
             json << ssc_value_to_json(v.type_n, vv);
 
             first = false;
@@ -726,8 +721,8 @@ std::vector<std::string> builder_generator::get_evaluated_variables() {
 void builder_generator::create_all(std::string fp) {
     filepath = fp;
 
-    bool print_json = true;
-    bool print_capi = false;
+    bool print_json = false;
+    bool print_capi = true;
     bool print_pysam = false;
 
     // gather functions before variables to add in ui-only variables that may be skipped in subgraph

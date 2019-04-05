@@ -2527,6 +2527,17 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_uptake_fget(SAM_Biomass pt
 
 
 
+SAM_EXPORT float SAM_Biomass_Outputs_system_heat_rate_fget(SAM_Biomass ptr, SAM_error *err){
+	float result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_heat_rate", &result))
+		make_access_error("SAM_Biomass", "system_heat_rate");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT float SAM_Biomass_Outputs_system_hhv_heatrate_fget(SAM_Biomass ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
@@ -2576,17 +2587,6 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_total_moisture_fget(SAM_Biomass ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.total_moisture", &result))
 		make_access_error("SAM_Biomass", "system.total_moisture");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float SAM_Biomass_Outputs_system_heat_rate_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_heat_rate", &result))
-		make_access_error("SAM_Biomass", "system_heat_rate");
 	});
 	return result;
 }

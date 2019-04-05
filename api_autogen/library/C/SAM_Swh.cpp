@@ -188,11 +188,29 @@ SAM_EXPORT void SAM_Swh_SWH_scaled_draw_aset(SAM_Swh ptr, float* arr, int length
 	});
 }
 
-SAM_EXPORT void SAM_Swh_SWH_shading_tset(SAM_Swh ptr, SAM_table tab, SAM_error *err){
-	SAM_table_set_table(ptr, "shading", tab, err);
+SAM_EXPORT void SAM_Swh_SWH_shading_azal_mset(SAM_Swh ptr, float* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "shading:azal", mat, nrows, ncols);
+	});
 }
 
+SAM_EXPORT void SAM_Swh_SWH_shading_diff_fset(SAM_Swh ptr, float number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading:diff", number);
+	});
+}
 
+SAM_EXPORT void SAM_Swh_SWH_shading_mxh_mset(SAM_Swh ptr, float* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "shading:mxh", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Swh_SWH_shading_timestep_mset(SAM_Swh ptr, float* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "shading:timestep", mat, nrows, ncols);
+	});
+}
 
 SAM_EXPORT void SAM_Swh_SWH_sky_model_fset(SAM_Swh ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -532,12 +550,47 @@ SAM_EXPORT float* SAM_Swh_SWH_scaled_draw_aget(SAM_Swh ptr, int* length, SAM_err
 
 
 
-SAM_EXPORT SAM_table SAM_Swh_SWH_shading_tget(SAM_Swh ptr, SAM_error *err){
-	SAM_table result = nullptr;
+SAM_EXPORT float* SAM_Swh_SWH_shading_azal_mget(SAM_Swh ptr, int* nrows, int* ncols, SAM_error *err){
+	float* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_table(ptr, "shading");
+	result = ssc_data_get_matrix(ptr, "shading:azal", nrows, ncols);
 	if (!result)
-		make_access_error("SAM_Swh", "shading");
+		make_access_error("SAM_Swh", "shading:azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float SAM_Swh_SWH_shading_diff_fget(SAM_Swh ptr, SAM_error *err){
+	float result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading:diff", &result))
+		make_access_error("SAM_Swh", "shading:diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float* SAM_Swh_SWH_shading_mxh_mget(SAM_Swh ptr, int* nrows, int* ncols, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "shading:mxh", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Swh", "shading:mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float* SAM_Swh_SWH_shading_timestep_mget(SAM_Swh ptr, int* nrows, int* ncols, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "shading:timestep", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Swh", "shading:timestep");
 	});
 	return result;
 }
