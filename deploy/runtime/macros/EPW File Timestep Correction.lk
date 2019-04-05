@@ -40,14 +40,20 @@ function timestep_shift( file_name , time ){
 		else {
 			
 			txt = csvread(file_name);
+			//Since the csv file does not have a minute column, it will need to be added manually.
+			//Accordingly, the subsequent columns will need to be shifted one over. 
 			txt[2][4] = 'Minute'; txt[2][5] = 'GHI'; txt[2][6] = 'DNI'; txt[2][7] = 'DHI'; txt[2][8] = 'Tdry'; txt[2][9] = 'Twet'; txt[2][10] = 'RH'; txt[2][11] = 'Pres'; txt[2][12] = 'Wspd'; txt[2][13] = 'Wdir'; txt[2][14] = 'Albedo';
 			
-			
+			//Loop over each row in the csv file and store/shift values 
 			for (i = 3; i < 8763; i++){
+				//Putting appropriate values under the 'Albedo' column:
 				if(txt[i][13] >= 0 || txt[i][13] <=1)
 					txt[i][14] = txt[i][13];
 				else
 					txt[i][14] = 0;
+				
+				//Since the csv file does not have a minute column, it will need to be added manually.
+				//Accordingly, the subsequent columns will need to be shifted one over. 
 				txt[i][13] = txt[i][12];
 				txt[i][12] = txt[i][11];
 				txt[i][11] = txt[i][10];
@@ -58,7 +64,8 @@ function timestep_shift( file_name , time ){
 				txt[i][6] = txt[i][5];
 				txt[i][5] = txt[i][4];
 				
-				txt[i][4] = time;	//Minute coloumn
+				//Add Minute coloumn:
+				txt[i][4] = time;	
 			}
 			//outln(txt);
 			csvwrite(file_name, txt);
@@ -122,8 +129,6 @@ function file_name( wf , time )
 // convert EPW file format to SAM CSV using the SSC wfcsvconv compute module
 function ssc_wfcsvconv( wf  )
 {
-	
-			
 			outln('');
 			new_name_original = file_name(wf, '_original_');
 			recorded_ghi = 	timestep_shift(new_name_original, -1);
@@ -145,7 +150,7 @@ function ssc_wfcsvconv( wf  )
 			outln('');
 			
 			set_custom = false;
-			set_custom = yesno('Set custom minute timestep?');
+			set_custom = yesno('View weather file with a custom minute timestep?');
 			
 			if(!set_custom){
 				dview(4, 1, 'Recorded v. Calculated GHI', 'GHI Recorded', 'W/m2', 1.0, recorded_ghi, 
@@ -163,15 +168,14 @@ function ssc_wfcsvconv( wf  )
 					'Irradiance GHI Calculated at 30 Minute Timestep', 'W/m2', 0.0, time_30, 
 					'Irradiance GHI Calculated at 60 Minute Timestep', 'W/m2', 0.0, time_60,
 					'Irradiance GHI Calculated at '+ to_string(min_custom)+' Minute Timestep', 'W/m2', 0.0, time_custom);
-					remove_file(new_name_custom);
+					
+					//remove_file(new_name_custom);
 				}
 			//Remove files:
-			remove_file(new_name_original);
-			remove_file(new_name_0);
-			remove_file(new_name_30);
-			remove_file(new_name_60);
-			
-		
+			//remove_file(new_name_original);
+			//remove_file(new_name_0);
+			//remove_file(new_name_30);
+			//remove_file(new_name_60);
 }
 
 //=========================================================================================================================================================
@@ -194,7 +198,10 @@ function main()
 	
 	
 	outln('\tDone.');
-	//msgbox('Would you like to save file?');
+	
+	
+	//Next step in this macro will be to ask the user what timestep would they save the file for:
+		//msgbox('Would you like to save file?');
 }
 
 
