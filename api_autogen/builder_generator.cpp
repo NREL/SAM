@@ -311,6 +311,8 @@ void builder_generator::export_variables_json(const std::string &cmod) {
                 vv = SAM_config_to_defaults[config_name][adj_type];
                 if (vv)
                     vv = vv->Table().Get(v.name);
+                else
+                    continue;
             }
             else
                 vv = SAM_config_to_defaults[config_name][v.name];
@@ -318,6 +320,10 @@ void builder_generator::export_variables_json(const std::string &cmod) {
 
             // vv can be null in the case of variables not available in UI
             if (!vv && v.reqif != "*")
+                continue;
+
+            // if it's an empty string, don't assign
+            if (vv && vv->Type() == VV_STRING && vv->AsString().length() == 0)
                 continue;
 
             if (!first) json << ",";
@@ -721,9 +727,9 @@ std::vector<std::string> builder_generator::get_evaluated_variables() {
 void builder_generator::create_all(std::string fp) {
     filepath = fp;
 
-    bool print_json = false;
+    bool print_json = true;
     bool print_capi = true;
-    bool print_pysam = false;
+    bool print_pysam = true;
 
     // gather functions before variables to add in ui-only variables that may be skipped in subgraph
 //    std::unordered_map<std::string, edge*> unique_subgraph_edges = gather_functions();

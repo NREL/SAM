@@ -329,8 +329,11 @@ SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_
             ssc_module_exec_set_print(0);
         }
 
-        if (!ssc_module_exec( cm, data )) throw std::runtime_error("Unable to execute " + std::string(cmod));
-
+        if (!ssc_module_exec( cm, data )){
+            std::string str = std::string(cmod) + " execution error. " + ssc_module_log(cm, 0, nullptr, nullptr);
+            ssc_module_free(cm);
+            throw std::runtime_error(str);
+        }
         ssc_module_free(cm);
     });
     return 1;
