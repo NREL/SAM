@@ -78,8 +78,8 @@ Height
 548
 Caption
 5
-17
-Wave Power Matrix
+23
+Wave Power Matrix (kW) 
 Bold
 2
 1
