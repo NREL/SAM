@@ -95,7 +95,7 @@ public:
     void create_cmod_builder_cpp(std::string cmod_name,
                                      const std::unordered_map<std::string, edge *> &unique_edge_obj_names);
 
-    void create_all(std::string fp);
+    void create_all(std::string fp, std::string cmod);
 
     std::vector<std::string> get_user_defined_variables();
 

@@ -26,23 +26,40 @@ set(SAM_API_SRC
 		SAM_api.cpp
         include/visibility.h
         src/SAM_AdjustmentFactors.cpp
-        src/SAM_Battery.cpp
-        src/SAM_Geothermal.cpp
-        src/SAM_Pvsamv1.cpp
+        src/SAM_Battwatts.cpp
+        src/SAM_Fuelcell.cpp
+        src/SAM_IphToLcoefcr.cpp
+        src/SAM_Pvwattsv5.cpp
+        src/SAM_Swh.cpp
+        src/SAM_Tcsiscc.cpp
+        src/SAM_Thermalrate.cpp
+        src/SAM_Belpe.cpp
+        src/SAM_GenericSystem.cpp
+        src/SAM_Lcoefcr.cpp
+        src/SAM_Pvwattsv5Lifetime.cpp
         src/SAM_TcsMSLF.cpp
         src/SAM_TcslinearFresnel.cpp
-        src/SAM_TcstroughPhysical.cpp
+        src/SAM_Thirdpartyownership.cpp
         src/SAM_Biomass.cpp
-        src/SAM_Hcpv.cpp
-        src/SAM_Pvwattsv5.cpp
-        src/SAM_Tcsdish.cpp
+        src/SAM_Geothermal.cpp
+        src/SAM_Levpartflip.cpp
+        src/SAM_Saleleaseback.cpp
+        src/SAM_TcsdirectSteam.cpp
         src/SAM_TcsmoltenSalt.cpp
         src/SAM_TroughPhysicalProcessHeat.cpp
-        src/SAM_GenericSystem.cpp
+        src/SAM_Cashloan.cpp
+        src/SAM_Hcpv.cpp
         src/SAM_LinearFresnelDsgIph.cpp
-        src/SAM_Swh.cpp
-        src/SAM_TcsgenericSolar.cpp
+        src/SAM_Singleowner.cpp
+        src/SAM_Tcsdish.cpp
         src/SAM_TcstroughEmpirical.cpp
+        src/SAM_Utilityrate5.cpp
+        src/SAM_Equpartflip.cpp
+        src/SAM_HostDeveloper.cpp
+        src/SAM_Pvsamv1.cpp
+        src/SAM_Battery.cpp
+        src/SAM_TcsgenericSolar.cpp
+        src/SAM_TcstroughPhysical.cpp
         src/SAM_Windpower.cpp
         )
 		
@@ -113,8 +130,6 @@ else()
 endif()
 
 target_link_libraries(${SAM_API_LIB} ${SSC_LIB})
-
-add_subdirectory(test)
 
 
 # PySAM setup.py

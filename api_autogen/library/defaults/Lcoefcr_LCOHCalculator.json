@@ -1,0 +1,15 @@
+{
+	"LCOHCalculator_defaults": {
+		"FinancialParameters": {
+			"capital_cost": 3.36e+06,
+			"fixed_charge_rate": 0.108079,
+			"fixed_operating_cost": 48000,
+			"variable_operating_cost": 0.001
+		},
+		"SimpleLCOE": {
+			"annual_energy": 0
+		},
+		"AdjustmentFactors": {
+		}
+	}
+}

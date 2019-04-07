@@ -74,21 +74,21 @@ SAM_EXPORT void SAM_GenericSystem_Plant_user_capacity_factor_fset(SAM_GenericSys
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_Common_analysis_period_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_Common_system_use_lifetime_output_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_FinancialAnalysisParameters_analysis_period_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_Common_generic_degradation_aset(SAM_GenericSystem ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_LifetimeGeneric_generic_degradation_aset(SAM_GenericSystem ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "generic_degradation", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_GenericSystem_Common_system_use_lifetime_output_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
@@ -170,7 +170,18 @@ SAM_EXPORT float SAM_GenericSystem_Plant_user_capacity_factor_fget(SAM_GenericSy
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Common_analysis_period_fget(SAM_GenericSystem ptr, SAM_error *err){
+SAM_EXPORT float SAM_GenericSystem_Common_system_use_lifetime_output_fget(SAM_GenericSystem ptr, SAM_error *err){
+	float result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
+		make_access_error("SAM_GenericSystem", "system_use_lifetime_output");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float SAM_GenericSystem_FinancialAnalysisParameters_analysis_period_fget(SAM_GenericSystem ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
@@ -181,23 +192,12 @@ SAM_EXPORT float SAM_GenericSystem_Common_analysis_period_fget(SAM_GenericSystem
 
 
 
-SAM_EXPORT float* SAM_GenericSystem_Common_generic_degradation_aget(SAM_GenericSystem ptr, int* length, SAM_error *err){
+SAM_EXPORT float* SAM_GenericSystem_LifetimeGeneric_generic_degradation_aget(SAM_GenericSystem ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "generic_degradation", length);
 	if (!result)
 		make_access_error("SAM_GenericSystem", "generic_degradation");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float SAM_GenericSystem_Common_system_use_lifetime_output_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
-		make_access_error("SAM_GenericSystem", "system_use_lifetime_output");
 	});
 	return result;
 }

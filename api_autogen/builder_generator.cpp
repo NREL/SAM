@@ -18,11 +18,15 @@
 #include "builder_C_API.h"
 #include "builder_PySAM.h"
 
+std::unordered_map<std::string, bool> SAM_completed_cmods;
+
+
 std::unordered_map<std::string, std::vector<std::string> > builder_generator::m_config_to_modules
     = std::unordered_map<std::string, std::vector<std::string> >();
 
 std::unordered_map<std::string, std::unordered_map<std::string, callback_info> > builder_generator::m_config_to_callback_info
         = std::unordered_map<std::string, std::unordered_map<std::string, callback_info> >();
+
 
 builder_generator::builder_generator(config_extractor *ce){
     config_ext = ce;
@@ -724,11 +728,11 @@ std::vector<std::string> builder_generator::get_evaluated_variables() {
 }
 
 
-void builder_generator::create_all(std::string fp) {
+void builder_generator::create_all(std::string fp, std::string cmod) {
     filepath = fp;
 
-    bool print_json = true;
-    bool print_capi = true;
+    bool print_json = false;
+    bool print_capi = false;
     bool print_pysam = true;
 
     // gather functions before variables to add in ui-only variables that may be skipped in subgraph
@@ -737,38 +741,49 @@ void builder_generator::create_all(std::string fp) {
     // epand the subgraph to include ui variables which may affect downstream ssc variables
 //    graph->subgraph_ssc_to_ui(*subgraph);
 
-    std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config_name];
 
 
-    // only working on technology systems, cannot yet pair with financial model
-    // modules and modules_order will need to be reset per cmod
-    if(primary_cmods.size() != 1){
-//        std::cout << "warning: really not implemented yet but short circuit for now\n;";
-    }
+        gather_variables_ssc(cmod);
 
-//    gather_variables();
+        // export defaults for all configurations at the end
+        if (print_json)
+            export_variables_json(cmod);
 
-    gather_variables_ssc(primary_cmods[0]);
-
-    // export defaults for all configurations at the end
-    if (print_json)
-        export_variables_json(primary_cmods[0]);
-
-    if (config_name.find("None") == std::string::npos && config_name.find("MSPT-Single Owner") == std::string::npos)
+    if (SAM_completed_cmods.find(cmod)!= SAM_completed_cmods.end()){
         return;
+
+    }
+//
+//    if (config_name.find("None") == std::string::npos && config_name != "MSPT-Single Owner"
+//        && config_name != "DSPT-Single Owner"){
+//        return;
+//    }
+
 
     // create C API
     if (print_capi){
         builder_C_API c_API(this);
 
-        c_API.create_SAM_headers(filepath, primary_cmods[0]);
-        c_API.create_SAM_definitions(filepath, primary_cmods[0]);
+        c_API.create_SAM_headers(filepath, cmod);
+        c_API.create_SAM_definitions(filepath, cmod);
     }
 
     if (print_pysam){
         builder_PySAM pySAM(this);
-        pySAM.create_PySAM_files(filepath, primary_cmods[0]);
+        pySAM.create_PySAM_files(filepath, cmod);
     }
+
+    SAM_completed_cmods.insert({cmod, 1});
+
+
+
+//    gather_variables();
+
+
+//    if (config_name.find("None") == std::string::npos && config_name.find("MSPT-Single Owner") == std::string::npos
+//            && config_name.find("DSPT-Single Owner") == std::string::npos)
+//        return;
+
 
 
 //    create_api_header(primary_cmods[0]);

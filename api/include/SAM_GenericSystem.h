@@ -21,7 +21,7 @@ extern "C"
 	 * @param[in,out] err: a pointer to an error object
 	 */
 
-	SAM_EXPORT typedef void * SAM_GenericSystem;
+	typedef void * SAM_GenericSystem;
 
 	SAM_EXPORT SAM_GenericSystem SAM_GenericSystem_construct(const char* def, SAM_error* err);
 
@@ -97,12 +97,30 @@ extern "C"
 	//
 
 	/**
+	 * Set system_use_lifetime_output: Generic lifetime simulation [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_GenericSystem_Common_system_use_lifetime_output_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+
+
+	//
+	// FinancialAnalysisParameters parameters
+	//
+
+	/**
 	 * Set analysis_period: Lifetime analysis period [years]
 	 * options: None
 	 * constraints: None
 	 * required if: system_use_lifetime_output=1
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Common_analysis_period_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_FinancialAnalysisParameters_analysis_period_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+
+
+	//
+	// LifetimeGeneric parameters
+	//
 
 	/**
 	 * Set generic_degradation: Annual module degradation [%/year]
@@ -110,15 +128,7 @@ extern "C"
 	 * constraints: None
 	 * required if: system_use_lifetime_output=1
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Common_generic_degradation_aset(SAM_GenericSystem ptr, float* arr, int length, SAM_error *err);
-
-	/**
-	 * Set system_use_lifetime_output: Generic lifetime simulation [0/1]
-	 * options: None
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_GenericSystem_Common_system_use_lifetime_output_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_LifetimeGeneric_generic_degradation_aset(SAM_GenericSystem ptr, float* arr, int length, SAM_error *err);
 
 
 	/**
@@ -144,11 +154,21 @@ extern "C"
 	 * Common Getters
 	 */
 
-	SAM_EXPORT float SAM_GenericSystem_Common_analysis_period_fget(SAM_GenericSystem ptr, SAM_error *err);
-
-	SAM_EXPORT float* SAM_GenericSystem_Common_generic_degradation_aget(SAM_GenericSystem ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT float SAM_GenericSystem_Common_system_use_lifetime_output_fget(SAM_GenericSystem ptr, SAM_error *err);
+
+
+	/**
+	 * FinancialAnalysisParameters Getters
+	 */
+
+	SAM_EXPORT float SAM_GenericSystem_FinancialAnalysisParameters_analysis_period_fget(SAM_GenericSystem ptr, SAM_error *err);
+
+
+	/**
+	 * LifetimeGeneric Getters
+	 */
+
+	SAM_EXPORT float* SAM_GenericSystem_LifetimeGeneric_generic_degradation_aget(SAM_GenericSystem ptr, int* length, SAM_error *err);
 
 
 	/**
