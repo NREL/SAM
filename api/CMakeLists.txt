@@ -3,7 +3,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 cmake_minimum_required(VERSION 2.8)
 
 if(APPLE)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.7" CACHE STRING "Minimum OS X deployment version")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
 elseif(MSVC)
     set(CMAKE_SYSTEM_VERSION 8.1 CACHE TYPE INTERNAL FORCE)
 endif()
@@ -19,16 +19,48 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
-include_directories(. $ENV{SSCDIR} $ENV{SSCDIR}/ssc)
+include_directories(. include $ENV{SSCDIR} $ENV{SSCDIR}/ssc)
 
 set(SAM_API_SRC
-        ErrorHandler.h
         ErrorHandler.cpp
-        SAM_api.h
 		SAM_api.cpp
-        visibility.h
-        SAM_GenericSystem.h
-        SAM_GenericSystem.cpp )
+        include/visibility.h
+        src/SAM_AdjustmentFactors.cpp
+        src/SAM_Battwatts.cpp
+        src/SAM_Fuelcell.cpp
+        src/SAM_IphToLcoefcr.cpp
+        src/SAM_Pvwattsv5.cpp
+        src/SAM_Swh.cpp
+        src/SAM_Tcsiscc.cpp
+        src/SAM_Belpe.cpp
+        src/SAM_GenericSystem.cpp
+        src/SAM_Lcoefcr.cpp
+        src/SAM_Pvwattsv5Lifetime.cpp
+        src/SAM_TcsMSLF.cpp
+        src/SAM_TcslinearFresnel.cpp
+        src/SAM_Thirdpartyownership.cpp
+        src/SAM_Biomass.cpp
+        src/SAM_Geothermal.cpp
+        src/SAM_Levpartflip.cpp
+        src/SAM_Saleleaseback.cpp
+        src/SAM_TcsdirectSteam.cpp
+        src/SAM_TcsmoltenSalt.cpp
+        src/SAM_TroughPhysicalProcessHeat.cpp
+        src/SAM_Cashloan.cpp
+        src/SAM_Hcpv.cpp
+        src/SAM_LinearFresnelDsgIph.cpp
+        src/SAM_Singleowner.cpp
+        src/SAM_Tcsdish.cpp
+        src/SAM_TcstroughEmpirical.cpp
+        src/SAM_Utilityrate5.cpp
+        src/SAM_Equpartflip.cpp
+        src/SAM_HostDeveloper.cpp
+        src/SAM_Pvsamv1.cpp
+        src/SAM_Battery.cpp
+        src/SAM_TcsgenericSolar.cpp
+        src/SAM_TcstroughPhysical.cpp
+        src/SAM_Windpower.cpp
+        )
 		
 
 set(CMAKE_CXX_STANDARD 11)
@@ -48,9 +80,6 @@ else()
     set(SAM_API_LIB SAM_api)
 endif()
 
-if(APPLE)
-    set(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
-endif()
 
 # setup linking dependencies and flags
 
@@ -58,21 +87,21 @@ endif()
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         target_link_libraries(${SAM_API_LIB} sscd)
-        set(SSC_LIB $ENV{SSCDIR}/ssc/sscd.dylib)
+        set(SSC_LIB sscd)
     else()
         target_link_libraries(${SAM_API_LIB} ssc)
-        set(SSC_LIB $ENV{SSCDIR}/ssc/ssc.dylib)
+        set(SSC_LIB ssc)
     endif()
 else()
     unset(SSC_LIB CACHE)
 	
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         find_library( SSC_LIB
-                NAMES sscd.dylib sscd.so sscd.lib
+                NAMES sscd.so sscd.lib
                 PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
     elseif(system_advisor_model_EXPORT)
         find_library( SSC_LIB
-                NAMES libsscd.so libsscd.lib
+                NAMES libssc.so libssc.lib ssc.so
                 PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
     else()
         find_library(SSC_LIB
@@ -99,34 +128,45 @@ else()
     target_link_libraries(${SAM_API_LIB} -lm -lcurl)
 endif()
 
-add_definitions(-Dsystem_advisor_model_EXPORT)
 target_link_libraries(${SAM_API_LIB} ${SSC_LIB})
 
-add_subdirectory(test)
 
 # PySAM setup.py
+add_definitions(-Dsystem_advisor_model_EXPORT)
+if(APPLE)
+    set(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
+endif()
+
 if (system_advisor_model_EXPORT)
+    add_custom_command(
+        TARGET ${SAM_API_LIB}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/lib/
+        COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/include/
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $ENV{SAMNTDIR}/api/include/SAM_api.h $ENV{PYSAMDIR}/include
+    )
     if (MSVC)
         add_custom_command(
                 TARGET ${SAM_API_LIB}
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.lib $ENV{PYSAMDIR}/lib/
+                    $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.lib $ENV{PYSAMDIR}/lib/
 				COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.dll $ENV{PYSAMDIR}/lib/
+                    $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.dll $ENV{PYSAMDIR}/lib/
 				COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SAMNTDIR}/api/SAM_apid.lib $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/SAM_api.lib $ENV{PYSAMDIR}/lib/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                 $ENV{SAMNTDIR}/api/SAM_apid.dll $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/SAM_api.dll $ENV{PYSAMDIR}/lib/
         )
     elseif(UNIX)
         add_custom_command(
                 TARGET ${SAM_API_LIB}
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                ${SSC_LIB} $ENV{PYSAMDIR}/lib/
+                    $ENV{SSCDIR}/ssc/libssc.so $ENV{PYSAMDIR}/lib/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $ENV{SAMNTDIR}/api/libSAM_apid.so $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/libSAM_api.so $ENV{PYSAMDIR}/lib/
         )
     endif()
 endif()

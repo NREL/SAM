@@ -1,3 +1,7 @@
+#include <vector>
+#include <string>
+#include <limits>
+
 #include "builder_generator_helper.h"
 #include "config_extractor.h"
 
@@ -159,20 +163,58 @@ std::string ssc_value_to_json(int ssc_type, VarValue* vv){
             json += "\"invalid\"";
             break;
         case SSC_STRING:
+            json += "\"" + (vv? vv->AsString() : "" ) + "\"";
+            break;
         case SSC_NUMBER:
-            json += "\"" + (vv? vv->AsString() : "0" ) + "\"";
+            if (vv && vv->Value() > std::numeric_limits<float>::max()){
+                char c[36];
+                sprintf(c, "%e", std::numeric_limits<float>::max());
+                json += c;
+            }
+            else
+                json += (vv? vv->AsString() : "0" );
             break;
         case SSC_ARRAY:
             json += "[";
             if (vv){
                 std::vector<float> vec = vv->Array();
                 for (size_t j = 0; j < vec.size(); j++){
-                    json += "\"" + std::to_string(vec[j]) + "\"";
+                    if (vec[j] > std::numeric_limits<float>::max()){
+                        char c[36];
+                        sprintf(c, "%e", std::numeric_limits<float>::max());
+                        json += c;
+                    }
+                    else
+                        json += std::to_string(vec[j]);
                     if (j != vec.size() - 1) json += ", ";
                 }
             } else
-                json += "\"0\"";
+                json += "0";
             json += "]";
+            break;
+        case SSC_MATRIX:
+            json += "[\n";
+            if (vv){
+                matrix_t<float> mat = vv->Matrix();
+                for (size_t i = 0; i < mat.nrows(); i++){
+                    json += "\t\t\t\t[";
+                    for (size_t j = 0; j < mat.ncols(); j++){
+                        if (mat.at(i, j) > std::numeric_limits<float>::max()){
+                            char c[36];
+                            sprintf(c, "%e", std::numeric_limits<float>::max());
+                            json += c;
+                        }
+                        else
+                            json += std::to_string(mat.at(i, j));
+                        if (j != mat.ncols() - 1) json += ", ";
+                    }
+                    json += "]";
+                    if (i != mat.nrows() - 1) json += ",";
+                    json += "\n";
+                }
+            } else
+                json += "[0]";
+            json += "\t\t\t]";
             break;
         case SSC_TABLE:
             json += "{\n";
@@ -193,7 +235,7 @@ std::string ssc_value_to_json(int ssc_type, VarValue* vv){
             }
             break;
         default:
-            json += "\"null\"";
+            json += "null";
     }
     return json;
 }

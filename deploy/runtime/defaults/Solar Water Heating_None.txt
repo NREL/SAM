@@ -196,8 +196,7 @@ elev
 file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+0
 fluid
 1
 1
@@ -269,11 +268,7 @@ library_folder_list
 library_paths
 1
 4
-157
-C:\Users\ndiorio\Desktop\weather
-C:\Users\ndiorio\Desktop\weather
-C:/Projects/ssc/test/input_cases/pvsamv1_data
-C:/Projects/ssc/test/input_cases/pvsamv1_data
+0
 lon
 1
 1
@@ -353,8 +348,7 @@ sky_model
 solar_data_file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+0
 solar_data_file_name_load
 1
 4
@@ -372,8 +366,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\alamosa_co_37.469449_-105.870021_psmv3_60_tmy.csv
+0
 srcc_FRUL
 1
 1

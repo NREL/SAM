@@ -65,11 +65,6 @@ std::vector<std::string> get_cmod_var_info(std::string cmod_name, std::string wh
     if (SAM_cmod_to_ssc_index.find(cmod_name) != SAM_cmod_to_ssc_index.end()){
         if (which_type == "in")
             return SAM_cmod_to_inputs[cmod_name];
-        else{
-            assert(false);
-            std::cout << "get_cmod_var_info error: Not Implemented\n";
-        }
-
     }
     ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
     std::vector<std::string> variable_names;

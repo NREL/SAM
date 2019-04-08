@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.12)
 
 
 if(APPLE)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.13" CACHE STRING "Minimum OS X deployment version")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
 endif()
 
 Project(EXPORT_SAM_UI)
@@ -54,7 +54,7 @@ add_executable(export_config
         test.cpp test.h
         builder_generator.h builder_generator.cpp
         lk_eval.cpp lk_eval.h
-        builder_generator_helper.h builder_generator_helper.cpp)
+        builder_generator_helper.h builder_generator_helper.cpp builder_C_API.cpp builder_C_API.h builder_PySAM.cpp builder_PySAM.h)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -99,6 +99,8 @@ endif()
 #setup compile options
 target_compile_definitions(export_config PUBLIC LK_USE_WXWIDGETS )
 
+set_property(TARGET export_config PROPERTY CXX_STANDARD 11)
+
 
 # setup linking dependencies and flags
 target_link_libraries(export_config -lm)
@@ -108,5 +110,34 @@ if(MSVC)
     set_target_properties(export_config PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
-#    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${SANDBOX_EXE})
+#    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT export_config)
+endif()
+
+if (system_advisor_model_EXPORT)
+    file(GLOB MY_PUBLIC_HEADERS
+           "${CMAKE_CURRENT_SOURCE_DIR}/library/C/*.h"
+            )
+
+    file(GLOB MY_SRC
+            "${CMAKE_CURRENT_SOURCE_DIR}/library/C/*.cpp"
+            )
+
+    file(GLOB PYSAM_SRC
+            "${CMAKE_CURRENT_SOURCE_DIR}/library/PySAM/*.c"
+            )
+
+    add_custom_command(
+            TARGET export_config
+            POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{SAMNTDIR}/api/include/
+            COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{SAMNTDIR}/api/src/
+            COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/src/
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                ${MY_PUBLIC_HEADERS} $ENV{SAMNTDIR}/api/include/
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                ${MY_SRC} $ENV{SAMNTDIR}/api/src/
+            COMMAND ${CMAKE_COMMAND} -E copy
+                ${PYSAM_SRC} $ENV{PYSAMDIR}/src/
+    )
+
 endif()

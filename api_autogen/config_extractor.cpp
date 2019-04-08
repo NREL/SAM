@@ -11,7 +11,7 @@ config_extractor::config_extractor(std::string name){
     cb_ext = new callback_extractor(name, m_env);
     var_graph = new digraph(name);
     assert(load_defaults_for_config());
-    assert(SAM_config_to_variable_graph.find(config_name) == SAM_config_to_variable_graph.end());
+//    assert(SAM_config_to_variable_graph.find(config_name) == SAM_config_to_variable_graph.end());
     SAM_config_to_variable_graph.insert({config_name, var_graph});
 }
 
@@ -54,9 +54,6 @@ size_t config_extractor::load_variables_into_graph(VarTable &vt) {
     wxArrayString var_names = vt.ListAll(nullptr);
     for (size_t i = 0; i < var_names.size(); i++){
         std::string name = var_names[i].ToStdString();
-        if (name == "n_flux_x"){
-            std::cout << "stop here\n";
-        }
         std::string cmod = which_cmod_as_input(name, config_name);
         bool is_ssc_var = (cmod.length() > 0);
         vertex* v = var_graph->add_vertex(name, is_ssc_var, find_ui_of_variable(name, config_name));

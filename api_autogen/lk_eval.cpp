@@ -1154,6 +1154,11 @@ std::string indent(std::string s, size_t n){
     return s;
 }
 
+std::string remove_periods(std::string str){
+    std::replace(str.begin(), str.end(), '.', '_');
+    return str;
+}
+
 std::string format_as_symbol(std::string s){
     char cs[128] = {'\0'};
     size_t i = 0, j = 0;
@@ -1165,6 +1170,10 @@ std::string format_as_symbol(std::string s){
         if (s[j] == ' ' || s[j] == '-' || s[j] == '_'){
             cs[i] = (char)std::toupper(s[j+1]);
             j++;
+        }
+        else if (s[j] == '.'){
+            j++;
+            continue;
         }
         else{
             cs[i] = s[j];

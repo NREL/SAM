@@ -3311,8 +3311,7 @@ reference_number_turbines
 reference_resource_file
 1
 4
-85
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+0
 reference_sales_tax_percent
 1
 1
@@ -3877,8 +3876,7 @@ wind_resource.elev
 wind_resource.file
 1
 4
-85
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+0
 wind_resource.lat
 1
 1
@@ -3933,8 +3931,7 @@ wind_resource.year
 wind_resource_filename
 1
 4
-85
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+0
 wind_resource_model_choice
 1
 1

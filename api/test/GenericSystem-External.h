@@ -8,10 +8,10 @@
 
 #include "ssc/sscapi.h"
 
-#include "visibility.h"
+#include "include/visibility.h"
 
 
-#include "SAM_GenericSystem.h"
+#include "SAM_GenericSystem-man.h"
 #include "ErrorHandler.h"
 #include "SystemLoader.h"
 
@@ -30,7 +30,7 @@ public:
     }
 
     void set_derate(float n){
-        SAM_GenericSystem_PowerPlant_derate_set(system, n, ThrowOnError());
+        SAM_GenericSystem_PowerPlant_derate_fset(system, n, ThrowOnError());
     }
 
     void set_heat_rate(float n){
@@ -38,7 +38,7 @@ public:
     }
 
     float get_derate(){
-        return SAM_GenericSystem_PowerPlant_derate_get(system, ThrowOnError());
+        return SAM_GenericSystem_PowerPlant_derate_fget(system, ThrowOnError());
     }
 
     float get_conv_eff(){
@@ -86,14 +86,22 @@ public:
 
         if (def == "None"){
             // load some data structure containing defaults until we have:
-            std::string group = "PowerPlant";
-            std::string var_name = "derate";
-            std::string type = "float";
-            float value = 1.f;
+            for (size_t i = 0 ; i < 1000; i++){
+                std::string group = "PowerPlant";
+                std::string var_name = "derate";
+                std::string type = "float";
+                float value = 1.f;
 
-            SystemLoader loader(system, path);
-            loader.loadFloat("GenericSystem", group, var_name, value);
-			std::cout << PowerPlant.get_derate();
+                SystemLoader loader(system, path);
+
+                loader.loadFloat("GenericSystem", group, var_name, value);
+                std::cout << PowerPlant.get_derate();
+
+                float f[2] = {1,2};
+                loader.loadArray("GenericSystem", group, "energy_output_array", f, 2);
+
+            }
+
         }
 		return true;
     }
