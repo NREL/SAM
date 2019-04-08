@@ -44,14 +44,6 @@ extern "C"
 	SAM_EXPORT void SAM_Thermalrate_Common_en_thermal_rates_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
 
 	/**
-	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
-	 * options: 0=hourly first year,1=hourly lifetime
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Thermalrate_Common_system_use_lifetime_output_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
-
-	/**
 	 * Set thermal_load_escalation: Annual load escalation [%/year]
 	 * options: None
 	 * constraints: None
@@ -61,7 +53,7 @@ extern "C"
 
 
 	//
-	// FinancialAnalysisParameters parameters
+	// Lifetime parameters
 	//
 
 	/**
@@ -70,7 +62,15 @@ extern "C"
 	 * constraints: INTEGER,POSITIVE
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Thermalrate_FinancialAnalysisParameters_analysis_period_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Thermalrate_Lifetime_analysis_period_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
+
+	/**
+	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
+	 * options: 0=hourly first year,1=hourly lifetime
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Thermalrate_Lifetime_system_use_lifetime_output_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
 
 
 	//
@@ -187,16 +187,16 @@ extern "C"
 
 	SAM_EXPORT float SAM_Thermalrate_Common_en_thermal_rates_fget(SAM_Thermalrate ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Thermalrate_Common_system_use_lifetime_output_fget(SAM_Thermalrate ptr, SAM_error *err);
-
 	SAM_EXPORT float* SAM_Thermalrate_Common_thermal_load_escalation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err);
 
 
 	/**
-	 * FinancialAnalysisParameters Getters
+	 * Lifetime Getters
 	 */
 
-	SAM_EXPORT float SAM_Thermalrate_FinancialAnalysisParameters_analysis_period_fget(SAM_Thermalrate ptr, SAM_error *err);
+	SAM_EXPORT float SAM_Thermalrate_Lifetime_analysis_period_fget(SAM_Thermalrate ptr, SAM_error *err);
+
+	SAM_EXPORT float SAM_Thermalrate_Lifetime_system_use_lifetime_output_fget(SAM_Thermalrate ptr, SAM_error *err);
 
 
 	/**

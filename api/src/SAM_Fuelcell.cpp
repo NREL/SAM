@@ -50,27 +50,27 @@ SAM_EXPORT void SAM_Fuelcell_Common_gen_aset(SAM_Fuelcell ptr, float* arr, int l
 	});
 }
 
-SAM_EXPORT void SAM_Fuelcell_Common_load_aset(SAM_Fuelcell ptr, float* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "load", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_Fuelcell_Common_percent_complete_fset(SAM_Fuelcell ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "percent_complete", number);
 	});
 }
 
-SAM_EXPORT void SAM_Fuelcell_Common_system_use_lifetime_output_fset(SAM_Fuelcell ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Fuelcell_Lifetime_analysis_period_fset(SAM_Fuelcell ptr, float number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "analysis_period", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_Lifetime_system_use_lifetime_output_fset(SAM_Fuelcell ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_Fuelcell_FinancialAnalysisParameters_analysis_period_fset(SAM_Fuelcell ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Fuelcell_Load_load_aset(SAM_Fuelcell ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "analysis_period", number);
+		ssc_data_set_array(ptr, "load", arr, length);
 	});
 }
 
@@ -300,18 +300,6 @@ SAM_EXPORT float* SAM_Fuelcell_Common_gen_aget(SAM_Fuelcell ptr, int* length, SA
 
 
 
-SAM_EXPORT float* SAM_Fuelcell_Common_load_aget(SAM_Fuelcell ptr, int* length, SAM_error *err){
-	float* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "load", length);
-	if (!result)
-		make_access_error("SAM_Fuelcell", "load");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT float SAM_Fuelcell_Common_percent_complete_fget(SAM_Fuelcell ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
@@ -323,7 +311,18 @@ SAM_EXPORT float SAM_Fuelcell_Common_percent_complete_fget(SAM_Fuelcell ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Fuelcell_Common_system_use_lifetime_output_fget(SAM_Fuelcell ptr, SAM_error *err){
+SAM_EXPORT float SAM_Fuelcell_Lifetime_analysis_period_fget(SAM_Fuelcell ptr, SAM_error *err){
+	float result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "analysis_period", &result))
+		make_access_error("SAM_Fuelcell", "analysis_period");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float SAM_Fuelcell_Lifetime_system_use_lifetime_output_fget(SAM_Fuelcell ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
@@ -334,11 +333,12 @@ SAM_EXPORT float SAM_Fuelcell_Common_system_use_lifetime_output_fget(SAM_Fuelcel
 
 
 
-SAM_EXPORT float SAM_Fuelcell_FinancialAnalysisParameters_analysis_period_fget(SAM_Fuelcell ptr, SAM_error *err){
-	float result;
+SAM_EXPORT float* SAM_Fuelcell_Load_load_aget(SAM_Fuelcell ptr, int* length, SAM_error *err){
+	float* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "analysis_period", &result))
-		make_access_error("SAM_Fuelcell", "analysis_period");
+	result = ssc_data_get_array(ptr, "load", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "load");
 	});
 	return result;
 }

@@ -313,8 +313,14 @@ void builder_generator::export_variables_json(const std::string &cmod) {
                 }
 
                 vv = SAM_config_to_defaults[config_name][adj_type];
-                if (vv)
-                    vv = vv->Table().Get(v.name);
+                if (vv){
+                    std::string name = v.name.substr(pos+1);
+                    if (name == "hourly" && !(vv->Table().Get("en_hourly")->Boolean()))
+                        continue;
+                    if (name == "periods" && !(vv->Table().Get("en_periods")->Boolean()))
+                        continue;
+                    vv = vv->Table().Get(name);
+                }
                 else
                     continue;
             }
@@ -731,9 +737,9 @@ std::vector<std::string> builder_generator::get_evaluated_variables() {
 void builder_generator::create_all(std::string fp, std::string cmod) {
     filepath = fp;
 
-    bool print_json = false;
+    bool print_json = true;
     bool print_capi = false;
-    bool print_pysam = true;
+    bool print_pysam = false;
 
     // gather functions before variables to add in ui-only variables that may be skipped in subgraph
 //    std::unordered_map<std::string, edge*> unique_subgraph_edges = gather_functions();
@@ -743,21 +749,16 @@ void builder_generator::create_all(std::string fp, std::string cmod) {
 
 
 
-        gather_variables_ssc(cmod);
+    gather_variables_ssc(cmod);
 
-        // export defaults for all configurations at the end
-        if (print_json)
-            export_variables_json(cmod);
+    if (print_json)
+        export_variables_json(cmod);
 
     if (SAM_completed_cmods.find(cmod)!= SAM_completed_cmods.end()){
         return;
-
     }
 //
-//    if (config_name.find("None") == std::string::npos && config_name != "MSPT-Single Owner"
-//        && config_name != "DSPT-Single Owner"){
-//        return;
-//    }
+
 
 
     // create C API

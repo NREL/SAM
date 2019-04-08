@@ -61,7 +61,7 @@ extern "C"
 
 
 	//
-	// FinancialAnalysisParameters parameters
+	// FinancialAnalysis parameters
 	//
 
 	/**
@@ -70,12 +70,7 @@ extern "C"
 	 * constraints: INTEGER,POSITIVE
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Utilityrate5_FinancialAnalysisParameters_analysis_period_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err);
-
-
-	//
-	// MoltenSaltLinearFresnelCapitalCosts parameters
-	//
+	SAM_EXPORT void SAM_Utilityrate5_FinancialAnalysis_analysis_period_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err);
 
 	/**
 	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
@@ -83,7 +78,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Utilityrate5_MoltenSaltLinearFresnelCapitalCosts_system_use_lifetime_output_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Utilityrate5_FinancialAnalysis_system_use_lifetime_output_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err);
 
 
 	//
@@ -301,17 +296,12 @@ extern "C"
 
 
 	/**
-	 * FinancialAnalysisParameters Getters
+	 * FinancialAnalysis Getters
 	 */
 
-	SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysisParameters_analysis_period_fget(SAM_Utilityrate5 ptr, SAM_error *err);
+	SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysis_analysis_period_fget(SAM_Utilityrate5 ptr, SAM_error *err);
 
-
-	/**
-	 * MoltenSaltLinearFresnelCapitalCosts Getters
-	 */
-
-	SAM_EXPORT float SAM_Utilityrate5_MoltenSaltLinearFresnelCapitalCosts_system_use_lifetime_output_fget(SAM_Utilityrate5 ptr, SAM_error *err);
+	SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysis_system_use_lifetime_output_fget(SAM_Utilityrate5 ptr, SAM_error *err);
 
 
 	/**

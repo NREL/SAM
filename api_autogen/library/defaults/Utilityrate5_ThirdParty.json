@@ -1,10 +1,10 @@
 {
 	"ThirdParty_defaults": {
 		"Common": {
-			"system_use_lifetime_output": 0
 		},
-		"FinancialThirdPartyOwnership": {
-			"analysis_period": 25
+		"FinancialAnalysis": {
+			"analysis_period": 25,
+			"system_use_lifetime_output": 0
 		},
 		"TimeSeries": {
 			"gen": [0],

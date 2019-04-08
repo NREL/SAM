@@ -1,10 +1,12 @@
 {
 	"SingleOwner_defaults": {
 		"Common": {
+		},
+		"Lifetime": {
+			"analysis_period": 30,
 			"system_use_lifetime_output": 0
 		},
-		"FinancialAnalysisParameters": {
-			"analysis_period": 30
+		"Load": {
 		},
 		"FuelCell": {
 			"dispatch_manual_fuelcellcharge": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],

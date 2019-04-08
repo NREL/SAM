@@ -32,7 +32,6 @@ set(SAM_API_SRC
         src/SAM_Pvwattsv5.cpp
         src/SAM_Swh.cpp
         src/SAM_Tcsiscc.cpp
-        src/SAM_Thermalrate.cpp
         src/SAM_Belpe.cpp
         src/SAM_GenericSystem.cpp
         src/SAM_Lcoefcr.cpp
@@ -102,7 +101,7 @@ else()
                 PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
     elseif(system_advisor_model_EXPORT)
         find_library( SSC_LIB
-                NAMES libsscd.so libsscd.lib
+                NAMES libssc.so libssc.lib ssc.so
                 PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
     else()
         find_library(SSC_LIB
@@ -156,18 +155,18 @@ if (system_advisor_model_EXPORT)
 				COMMAND ${CMAKE_COMMAND} -E copy_if_different
                     $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.dll $ENV{PYSAMDIR}/lib/
 				COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    $ENV{SAMNTDIR}/api/SAM_apid.lib $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/SAM_api.lib $ENV{PYSAMDIR}/lib/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    $ENV{SAMNTDIR}/api/SAM_apid.dll $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/SAM_api.dll $ENV{PYSAMDIR}/lib/
         )
     elseif(UNIX)
         add_custom_command(
                 TARGET ${SAM_API_LIB}
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    $ENV{SSCDIR}/ssc/libsscd.so $ENV{PYSAMDIR}/lib/
+                    $ENV{SSCDIR}/ssc/libssc.so $ENV{PYSAMDIR}/lib/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    $ENV{SAMNTDIR}/api/libSAM_apid.so $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/libSAM_api.so $ENV{PYSAMDIR}/lib/
         )
     endif()
 endif()

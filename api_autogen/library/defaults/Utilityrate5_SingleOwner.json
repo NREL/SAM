@@ -1,11 +1,11 @@
 {
 	"SingleOwner_defaults": {
 		"Common": {
-			"en_electricity_rates": 0,
-			"system_use_lifetime_output": 0
+			"en_electricity_rates": 0
 		},
-		"FinancialAnalysisParameters": {
-			"analysis_period": 25
+		"FinancialAnalysis": {
+			"analysis_period": 25,
+			"system_use_lifetime_output": 0
 		},
 		"TimeSeries": {
 			"gen": [0]

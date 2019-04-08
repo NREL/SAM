@@ -38,21 +38,21 @@ SAM_EXPORT void SAM_Thermalrate_Common_en_thermal_rates_fset(SAM_Thermalrate ptr
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_Common_system_use_lifetime_output_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
-	});
-}
-
 SAM_EXPORT void SAM_Thermalrate_Common_thermal_load_escalation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "thermal_load_escalation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_FinancialAnalysisParameters_analysis_period_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_Lifetime_analysis_period_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
+	});
+}
+
+SAM_EXPORT void SAM_Thermalrate_Lifetime_system_use_lifetime_output_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
@@ -133,17 +133,6 @@ SAM_EXPORT float SAM_Thermalrate_Common_en_thermal_rates_fget(SAM_Thermalrate pt
 
 
 
-SAM_EXPORT float SAM_Thermalrate_Common_system_use_lifetime_output_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
-		make_access_error("SAM_Thermalrate", "system_use_lifetime_output");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT float* SAM_Thermalrate_Common_thermal_load_escalation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
@@ -156,11 +145,22 @@ SAM_EXPORT float* SAM_Thermalrate_Common_thermal_load_escalation_aget(SAM_Therma
 
 
 
-SAM_EXPORT float SAM_Thermalrate_FinancialAnalysisParameters_analysis_period_fget(SAM_Thermalrate ptr, SAM_error *err){
+SAM_EXPORT float SAM_Thermalrate_Lifetime_analysis_period_fget(SAM_Thermalrate ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
 		make_access_error("SAM_Thermalrate", "analysis_period");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float SAM_Thermalrate_Lifetime_system_use_lifetime_output_fget(SAM_Thermalrate ptr, SAM_error *err){
+	float result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
+		make_access_error("SAM_Thermalrate", "system_use_lifetime_output");
 	});
 	return result;
 }

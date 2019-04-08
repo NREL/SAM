@@ -60,14 +60,6 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_Common_gen_aset(SAM_Fuelcell ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set load: Electricity load (year 1) [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Fuelcell_Common_load_aset(SAM_Fuelcell ptr, float* arr, int length, SAM_error *err);
-
-	/**
 	 * Set percent_complete: Estimated simulation status [%]
 	 * options: None
 	 * constraints: None
@@ -75,17 +67,9 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_Fuelcell_Common_percent_complete_fset(SAM_Fuelcell ptr, float number, SAM_error *err);
 
-	/**
-	 * Set system_use_lifetime_output: Lifetime simulation [0/1]
-	 * options: 0=SingleYearRepeated,1=RunEveryYear
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Fuelcell_Common_system_use_lifetime_output_fset(SAM_Fuelcell ptr, float number, SAM_error *err);
-
 
 	//
-	// FinancialAnalysisParameters parameters
+	// Lifetime parameters
 	//
 
 	/**
@@ -94,7 +78,28 @@ extern "C"
 	 * constraints: None
 	 * required if: system_use_lifetime_output=1
 	 */
-	SAM_EXPORT void SAM_Fuelcell_FinancialAnalysisParameters_analysis_period_fset(SAM_Fuelcell ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Fuelcell_Lifetime_analysis_period_fset(SAM_Fuelcell ptr, float number, SAM_error *err);
+
+	/**
+	 * Set system_use_lifetime_output: Lifetime simulation [0/1]
+	 * options: 0=SingleYearRepeated,1=RunEveryYear
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Fuelcell_Lifetime_system_use_lifetime_output_fset(SAM_Fuelcell ptr, float number, SAM_error *err);
+
+
+	//
+	// Load parameters
+	//
+
+	/**
+	 * Set load: Electricity load (year 1) [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Fuelcell_Load_load_aset(SAM_Fuelcell ptr, float* arr, int length, SAM_error *err);
 
 
 	//
@@ -368,18 +373,23 @@ extern "C"
 
 	SAM_EXPORT float* SAM_Fuelcell_Common_gen_aget(SAM_Fuelcell ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Fuelcell_Common_load_aget(SAM_Fuelcell ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT float SAM_Fuelcell_Common_percent_complete_fget(SAM_Fuelcell ptr, SAM_error *err);
-
-	SAM_EXPORT float SAM_Fuelcell_Common_system_use_lifetime_output_fget(SAM_Fuelcell ptr, SAM_error *err);
 
 
 	/**
-	 * FinancialAnalysisParameters Getters
+	 * Lifetime Getters
 	 */
 
-	SAM_EXPORT float SAM_Fuelcell_FinancialAnalysisParameters_analysis_period_fget(SAM_Fuelcell ptr, SAM_error *err);
+	SAM_EXPORT float SAM_Fuelcell_Lifetime_analysis_period_fget(SAM_Fuelcell ptr, SAM_error *err);
+
+	SAM_EXPORT float SAM_Fuelcell_Lifetime_system_use_lifetime_output_fget(SAM_Fuelcell ptr, SAM_error *err);
+
+
+	/**
+	 * Load Getters
+	 */
+
+	SAM_EXPORT float* SAM_Fuelcell_Load_load_aget(SAM_Fuelcell ptr, int* length, SAM_error *err);
 
 
 	/**

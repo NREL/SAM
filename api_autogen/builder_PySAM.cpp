@@ -7,11 +7,11 @@
 
 std::string all_fin_of_tech(const std::string config){
     std::string str;
-    std::string tech = config.substr(config.find_last_of('-'));
+    std::string tech = config.substr(0, config.find_last_of('-'));
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         std::string config_name = it->first;
         size_t pos = config.find_last_of('-');
-        if (config_name.substr(pos) == tech)
+        if (config_name.substr(0, pos) == tech)
             str += config_name.substr(pos+1) + ", ";
     }
     return str;

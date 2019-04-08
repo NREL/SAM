@@ -50,13 +50,13 @@ SAM_EXPORT void SAM_Utilityrate5_Common_ur_sell_eq_buy_fset(SAM_Utilityrate5 ptr
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate5_FinancialAnalysisParameters_analysis_period_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate5_FinancialAnalysis_analysis_period_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate5_MoltenSaltLinearFresnelCapitalCosts_system_use_lifetime_output_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate5_FinancialAnalysis_system_use_lifetime_output_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
@@ -221,7 +221,7 @@ SAM_EXPORT float SAM_Utilityrate5_Common_ur_sell_eq_buy_fget(SAM_Utilityrate5 pt
 
 
 
-SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysisParameters_analysis_period_fget(SAM_Utilityrate5 ptr, SAM_error *err){
+SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysis_analysis_period_fget(SAM_Utilityrate5 ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
@@ -232,7 +232,7 @@ SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysisParameters_analysis_period_fg
 
 
 
-SAM_EXPORT float SAM_Utilityrate5_MoltenSaltLinearFresnelCapitalCosts_system_use_lifetime_output_fget(SAM_Utilityrate5 ptr, SAM_error *err){
+SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysis_system_use_lifetime_output_fget(SAM_Utilityrate5 ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
