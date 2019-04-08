@@ -55,6 +55,12 @@ autographs{ 'Generic System' } = define() { base_technology_graphs(); };
 autographs{ 'Wind Power' } = define() { base_technology_graphs(); };
 
 //**************Technologies with unique graphs***************************
+
+autographs{ 'MHKwave' } = define()
+{
+	agraph( 'annual_energy_distribution', 'Annual Energy Distribution', 'Hs', 'Te', -1, true, false, 'bottom', 4); 
+};
+
 autographs{ 'PVWatts'} = define() 
 {	
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 

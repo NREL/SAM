@@ -59,6 +59,7 @@
 #include <wex/plot/pllineplot.h>
 #include <wex/plot/plscatterplot.h>
 #include <wex/plot/plcontourplot.h>
+#include <wex/plot/plcolourmap.h>
 
 #include <wex/dview/dvselectionlist.h>
 
@@ -362,39 +363,6 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 			if (plotdata[i].size() < 100)
 				plot->SetAntiAliasing(true);
 		}
-		else if (m_g.Type == Graph::CONTOUR)
-		{
-			// y size checked for 1 above
-//			double zmin = 1e99, zmax = -1e99;
-			wxMatrix<double> XX, YY, ZZ;
-			if (VarValue *vv = m_s->GetValue(m_g.Y[0]))
-			{
-				if (vv->Type() == VV_MATRIX)
-				{
-					// Assume col[0] contains x values in order
-					// assume row[0] contains y values in order
-					size_t nx, ny;
-					float *data = vv->Matrix(&nx, &ny);
-					XX.Resize(nx - 1, ny - 1);
-					YY.Resize(nx - 1, ny - 1);
-					ZZ.Resize(nx - 1, ny - 1);
-					for (size_t j = 1; j < ny; j++)
-					{
-						for (size_t i = 1; i < nx; i++)
-						{
-							XX.At(i, j) = data[i];
-							YY.At(i, j) = data[j*nx];
-							ZZ.At(i, j) = data[j*nx + i];
-						}
-					}
-					plot = new wxPLContourPlot(XX, YY, ZZ, true); // , wxEmptyString, 24, jet));
-//					wxPLColourMap *jet = new wxPLJetColourMap(zmin, zmax);
-//					plot->SetSideWidget(jet);
-//					plot->ShowGrid(false, false);
-
-				}
-			}
-		}
 
 
 		if ( ++cidx >= (int)s_colours.size() ) cidx = 0; // incr and wrap around colour index
@@ -410,67 +378,109 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 			bar_group[i]->SetGroup( bar_group );
 
 	// create the axes
-
-	// x-axis
-	if (ndata == 1)
+	if (ndata == 0) // contour
 	{
-		// single value axis
-		wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
-		if (m_g.ShowXValues)
+		if (m_g.Type == Graph::CONTOUR)
 		{
-			for (size_t i = 0; i < ynames.size(); i++)
-				x1->Add(i, m_s->GetLabel(ynames[i]));
+			// y size checked for 1 above
+			double zmin = 1e99, zmax = -1e99;
+			wxMatrix<double> XX, YY, ZZ;
+			if (VarValue *vv = m_s->GetValue(m_g.Y[0]))
+			{
+				if (vv->Type() == VV_MATRIX)
+				{
+					// Assume col[0] contains x values in order
+					// assume row[0] contains y values in order
+					size_t nx, ny;
+					float *data = vv->Matrix(&nx, &ny);
+					XX.Resize(nx - 1, ny - 1);
+					YY.Resize(nx - 1, ny - 1);
+					ZZ.Resize(nx - 1, ny - 1);
+					for (size_t i = 1; i < nx; i++)
+					{
+						for (size_t j = 1; j < ny; j++)
+						{
+							XX.At(i-1, j-1) = data[j];
+							YY.At(i-1, j -1) = data[i*ny];
+							ZZ.At(i-1, j-1) = data[i*ny + j];
+							if (ZZ.At(i-1, j - 1) < zmin) zmin = ZZ.At(i-1, j - 1);
+							if (ZZ.At(i-1, j - 1) > zmax) zmax = ZZ.At(i-1, j - 1);
+						}
+					}
+					wxPLContourPlot *plot = 0;
+					wxPLColourMap *jet = new wxPLJetColourMap(zmin, zmax);
+					plot = new wxPLContourPlot(XX, YY, ZZ, true, wxEmptyString, 24, jet);
+					if (plot != 0)
+					{
+						AddPlot(plot, wxPLPlotCtrl::X_TOP, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
+						SetSideWidget(jet);
+					}
+				}
+			}
 		}
-		SetXAxis1(x1);
-	}
-	else if (ndata == 12)
-	{
-		// month axis
-		wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, 12, m_g.XLabel);
-		for (size_t i = 0; i < 12; i++)
-			x1->Add(i, s_monthNames[i]);
-		SetXAxis1(x1);
 	}
 	else
 	{
-		// linear axis
-		SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
-	}
-	// setup y axis
-
-	if ( GetPlotCount() > 0 )
-	{
-		double ymin, ymax;
-		GetPlot(0)->GetMinMax( 0, 0, &ymin, &ymax );
-		for( size_t i=1;i<GetPlotCount();i++ )
-			GetPlot(i)->ExtendMinMax( 0, 0, &ymin, &ymax );
-
-		if ( m_g.Type == Graph::STACKED || m_g.Type == Graph::BAR )
-		{ // forcibly include the zero line for bar plots
-			if ( ymin > 0 ) ymin = 0;
-			if ( ymax < 0 ) ymax = 0;
+		// x-axis
+		if (ndata == 1)
+		{
+			// single value axis
+			wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
+			if (m_g.ShowXValues)
+			{
+				for (size_t i = 0; i < ynames.size(); i++)
+					x1->Add(i, m_s->GetLabel(ynames[i]));
+			}
+			SetXAxis1(x1);
 		}
-		
-		double yadj = (ymax-ymin)*0.05;
-		
-		if (ymin != 0) ymin -= yadj;
-		if (ymax != 0) ymax += yadj;
-
-		if (ymin == ymax) {
-			// no variation in y values, so pick some reasonable graph bounds
-		  if (ymax == 0)
-		    ymax = 1;
-		  else
-		    ymax += (ymax * 0.05);
-		  if (ymin == 0)
-		    ymin = -1;
-		  else
-		    ymin -= (ymin * 0.05);
+		else if (ndata == 12)
+		{
+			// month axis
+			wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, 12, m_g.XLabel);
+			for (size_t i = 0; i < 12; i++)
+				x1->Add(i, s_monthNames[i]);
+			SetXAxis1(x1);
 		}
+		else
+		{
+			// linear axis
+			SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
+		}
+		// setup y axis
 
-		SetYAxis1( new wxPLLinearAxis( ymin, ymax, m_g.YLabel ) );
+		if (GetPlotCount() > 0)
+		{
+			double ymin, ymax;
+			GetPlot(0)->GetMinMax(0, 0, &ymin, &ymax);
+			for (size_t i = 1; i < GetPlotCount(); i++)
+				GetPlot(i)->ExtendMinMax(0, 0, &ymin, &ymax);
+
+			if (m_g.Type == Graph::STACKED || m_g.Type == Graph::BAR)
+			{ // forcibly include the zero line for bar plots
+				if (ymin > 0) ymin = 0;
+				if (ymax < 0) ymax = 0;
+			}
+
+			double yadj = (ymax - ymin)*0.05;
+
+			if (ymin != 0) ymin -= yadj;
+			if (ymax != 0) ymax += yadj;
+
+			if (ymin == ymax) {
+				// no variation in y values, so pick some reasonable graph bounds
+				if (ymax == 0)
+					ymax = 1;
+				else
+					ymax += (ymax * 0.05);
+				if (ymin == 0)
+					ymin = -1;
+				else
+					ymin -= (ymin * 0.05);
+			}
+
+			SetYAxis1(new wxPLLinearAxis(ymin, ymax, m_g.YLabel));
+		}
 	}
-
 	Invalidate();
 	Refresh();
 	return 0;
