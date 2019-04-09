@@ -1770,7 +1770,7 @@ function setup_mhktidal_pages()
 	addpage( [[ 'MHK Tidal Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 }
 setconfig( 'MHKtidal', 'LCOE Calculator' );
-setmodules( ['mhktidal', 'lcoefcr']);
+setmodules( ['mhk_tidal', 'lcoefcr']);
 setup_mhktidal_pages();
 setup_lcoefcr_pages();
 

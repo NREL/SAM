@@ -61,6 +61,12 @@ autographs{ 'MHKwave' } = define()
 	agraph( 'annual_energy_distribution', 'Annual Energy Distribution', 'Hs', 'Te', -1, true, false, 'bottom', 4); 
 };
 
+autographs{ 'MHKtidal' } = define()
+{
+	agraph( 'annual_energy_distribution', 'Annual Energy Production', 'u (m/s)', 'kWh', -1, true, false,'bottom' );
+	agraph( 'annual_cumulative_energy_distribution', 'Annual Cumulative Energy Production', 'u (m/s)', 'kWh', -1, true, false,'bottom' );
+};
+
 autographs{ 'PVWatts'} = define() 
 {	
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 

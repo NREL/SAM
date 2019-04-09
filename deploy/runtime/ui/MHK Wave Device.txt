@@ -1,7 +1,7 @@
 MHK Wave Device
 1288
 1036
-5
+4
 GroupBox
 
 1
@@ -29,33 +29,6 @@ MHK Device
 Bold
 2
 1
-Button
-
-1
-7
-Name
-5
-7
-btnPlot
-X
-3
-240
-Y
-3
-720
-Width
-3
-90
-Height
-3
-24
-Caption
-5
-4
-Plot
-TabOrder
-3
-4294967295
 GroupBox
 
 1
@@ -195,7 +168,7 @@ wave_power_curve
 DataMatrix
 
 0
-1051
+1060
 function plot_turbine_curve()
 {
 	setplot('wind_turbine_power_curve_plot');
@@ -237,7 +210,7 @@ function set_error_msg()
 }
 
 
-on_change{'btnPlot'}=define()
+on_change{'wave_power_curve'}=define()
 {
 	plot_turbine_curve();
 };
