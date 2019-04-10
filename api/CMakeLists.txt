@@ -19,7 +19,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
-include_directories(. include $ENV{SSCDIR} $ENV{SSCDIR}/ssc)
+include_directories(. include $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
 
 set(SAM_API_SRC
         ErrorHandler.cpp
@@ -82,7 +82,9 @@ endif()
 
 
 # setup linking dependencies and flags
-
+if(MSVC)
+target_sources(${SAM_API_LIB} PRIVATE $ENV{SSCDIR}/ssc/vartab.cpp $ENV{SSCDIR}/shared/lib_util.cpp)
+endif() 
 # if running as combined build, make sure to link to projects
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -101,8 +103,8 @@ else()
                 PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
     elseif(system_advisor_model_EXPORT)
         find_library( SSC_LIB
-                NAMES libssc.so libssc.lib ssc.so
-                PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
+                NAMES libssc.so ssc.lib ssc.so
+                PATHS $ENV{SSCDIR}/ssc )
     else()
         find_library(SSC_LIB
                 NAMES ssc.dylib ssc.so sscd.lib
@@ -151,13 +153,13 @@ if (system_advisor_model_EXPORT)
                 TARGET ${SAM_API_LIB}
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.lib $ENV{PYSAMDIR}/lib/
+                    $ENV{SSCDIR}/build_vs2017/x64/Release/ssc.lib $ENV{PYSAMDIR}/data/
 				COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    $ENV{SSCDIR}/build_vs2017/x64/Debug/sscd.dll $ENV{PYSAMDIR}/lib/
+                    $ENV{SSCDIR}/build_vs2017/x64/Release/ssc.dll $ENV{PYSAMDIR}/data/
 				COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    $ENV{SAMNTDIR}/api/SAM_api.lib $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/SAM_api.lib $ENV{PYSAMDIR}/data/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    $ENV{SAMNTDIR}/api/SAM_api.dll $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/SAM_api.dll $ENV{PYSAMDIR}/data/
         )
     elseif(UNIX)
         add_custom_command(

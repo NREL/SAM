@@ -15,12 +15,13 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
 
-include_directories(.. $ENV{SSCDIR} $ENV{SSCDIR}/ssc)
+include_directories(. .. $ENV{SSCDIR} $ENV{SSCDIR}/ssc)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 add_executable(SAM_api_test
+		SAM_api.h
         test.cpp
         GenericSystem-External.h
         GenericSystem-External.cpp
@@ -45,11 +46,11 @@ else()
     unset(SSC_LIB CACHE)
 	unset(SAM_API_LIB CACHE)
     find_library( SSC_LIB
-            NAMES sscd.dylib sscd.so sscd.lib
-            PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
+            NAMES sscd.dylib sscd.so ssc.lib
+            PATHS ${CMAKE_CURRENT_SOURCE_DIR})
 	find_library( SAM_API_LIB
-            NAMES libSAM_apid.dylib libSAM_apid.so libSAM_apid.lib
-            PATHS $ENV{SAMNTDIR}/api)
+            NAMES libSAM_apid.dylib libSAM_apid.so SAM_api.lib
+            PATHS ${CMAKE_CURRENT_SOURCE_DIR})
     target_link_libraries(SAM_api_test ${SSC_LIB} ${SAM_API_LIB})
 
 endif()
@@ -62,11 +63,11 @@ if(MSVC)
     add_compile_definitions( __64BIT__ __WINDOWS__
         _WINDOWS _CRT_NON_CONFORMING_SWPRINTFS=1
         _SCL_SECURE_NO_WARNINGS=1 _UNICODE NOPCH)
-    set_target_properties(${SAM_API_LIB} PROPERTIES
+    set_target_properties(SAM_api_test PROPERTIES
         LIBRARY_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
     set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} 
-        PROPERTY VS_STARTUP_PROJECT ${SAM_API_LIB})
+        PROPERTY VS_STARTUP_PROJECT SAM_api_test)
 else()
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11" )
 
