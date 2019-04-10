@@ -137,13 +137,22 @@ target_link_libraries(${SAM_API_LIB} ${SSC_LIB})
 add_definitions(-Dsystem_advisor_model_EXPORT)
 if(APPLE)
     set(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
+    add_custom_command(
+        TARGET ${SAM_API_LIB}
+        POST_BUILD
+        COMMAND install_name_tool -id @rpath/libSAM_api.so $ENV{SAMNTDIR}/api/libSAM_api.so
+    )
+elseif(UNIX )
+    set(CMAKE_SHARED_LIBRARY_PREFIX "lib")
 endif()
 
+
+#export libraries
 if (system_advisor_model_EXPORT)
     add_custom_command(
         TARGET ${SAM_API_LIB}
         POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/lib/
+        COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/data/
         COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/include/
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             $ENV{SAMNTDIR}/api/include/SAM_api.h $ENV{PYSAMDIR}/include
@@ -166,9 +175,9 @@ if (system_advisor_model_EXPORT)
                 TARGET ${SAM_API_LIB}
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    $ENV{SSCDIR}/ssc/libssc.so $ENV{PYSAMDIR}/lib/
+                    $ENV{SSCDIR}/ssc/libssc.so $ENV{PYSAMDIR}/data/
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    $ENV{SAMNTDIR}/api/libSAM_api.so $ENV{PYSAMDIR}/lib/
+                    $ENV{SAMNTDIR}/api/libSAM_api.so $ENV{PYSAMDIR}/data/
         )
     endif()
 endif()
