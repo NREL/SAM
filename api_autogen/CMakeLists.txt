@@ -67,7 +67,11 @@ include_directories(
 
 # if running as combined build, make sure to link to projects
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-    target_link_libraries(export_config lkd wexd sscd)
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        target_link_libraries(export_config lkd wexd sscd)
+    else()
+        target_link_libraries(export_config lk wex ssc)
+    endif()
 else()
     unset(LK_LIB CACHE)
     unset(SSC_LIB CACHE)
@@ -105,6 +109,12 @@ set_property(TARGET export_config PROPERTY CXX_STANDARD 11)
 # setup linking dependencies and flags
 target_link_libraries(export_config -lm)
 
+# need to tell executable where to find libssc.so
+if(APPLE)
+    set_target_properties(export_config PROPERTIES LINK_FLAGS  "-Wl,-rpath -Wl,$ENV{SSCDIR}/ssc/")
+#    SET(CMAKE_INSTALL_RPATH "$ENV{SSCDIR}/ssc")
+endif()
+
 # windows
 if(MSVC)
     set_target_properties(export_config PROPERTIES
@@ -113,31 +123,3 @@ if(MSVC)
 #    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT export_config)
 endif()
 
-if (system_advisor_model_EXPORT)
-    file(GLOB MY_PUBLIC_HEADERS
-           "${CMAKE_CURRENT_SOURCE_DIR}/library/C/*.h"
-            )
-
-    file(GLOB MY_SRC
-            "${CMAKE_CURRENT_SOURCE_DIR}/library/C/*.cpp"
-            )
-
-    file(GLOB PYSAM_SRC
-            "${CMAKE_CURRENT_SOURCE_DIR}/library/PySAM/*.c"
-            )
-
-    add_custom_command(
-            TARGET export_config
-            POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{SAMNTDIR}/api/include/
-            COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{SAMNTDIR}/api/src/
-            COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{PYSAMDIR}/src/
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                ${MY_PUBLIC_HEADERS} $ENV{SAMNTDIR}/api/include/
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                ${MY_SRC} $ENV{SAMNTDIR}/api/src/
-            COMMAND ${CMAKE_COMMAND} -E copy
-                ${PYSAM_SRC} $ENV{PYSAMDIR}/src/
-    )
-
-endif()

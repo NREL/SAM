@@ -144,6 +144,8 @@ elseif(UNIX )
     set(CMAKE_SHARED_LIBRARY_PREFIX "lib")
 endif()
 
+
+#export libraries
 if (system_advisor_model_EXPORT)
     add_custom_command(
         TARGET ${SAM_API_LIB}

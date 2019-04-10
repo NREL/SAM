@@ -467,6 +467,8 @@ extern "C"
 
 	SAM_EXPORT float SAM_Fuelcell_Outputs_annual_fuel_usage_fget(SAM_Fuelcell ptr, SAM_error *err);
 
+	SAM_EXPORT float* SAM_Fuelcell_Outputs_fuelcell_electrical_efficiency_aget(SAM_Fuelcell ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT float* SAM_Fuelcell_Outputs_fuelcell_fuel_consumption_mcf_aget(SAM_Fuelcell ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT float* SAM_Fuelcell_Outputs_fuelcell_percent_load_aget(SAM_Fuelcell ptr, int* length, SAM_error *err);
