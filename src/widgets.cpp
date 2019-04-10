@@ -59,6 +59,7 @@
 #include <wex/csv.h>
 #include <wex/utils.h>
 #include <wex/extgrid.h>
+#include <wex/plot/plcolourmap.h>
 
 #ifndef S3D_STANDALONE
 #include "main.h"
@@ -2495,6 +2496,33 @@ void AFDataMatrixCtrl::OnCellChange(wxGridEvent &evt)
 
 	m_gridTable->SetMatrix(&m_data);
 	m_grid->SetCellValue(irow, icol, wxString::Format("%g", val));
+
+	size_t nr = m_data.nrows();
+	size_t nc = m_data.ncols();
+	size_t r, c;
+	// testing color updating
+	// find min and max
+	double zmin = 1e38, zmax = -1e38;
+	for (r = 1; r < nr; r++)
+	{
+		for (c = 1; c < nc; c++)
+		{
+			if (m_data(r, c) < zmin) zmin = m_data.at(r, c);
+			if (m_data(r, c) > zmax) zmax = m_data.at(r, c);
+		}
+	}
+	wxPLJetColourMap jet = wxPLJetColourMap(zmin, zmax);
+	for (r = 1; r < nr; r++)
+	{
+		for (c = 1; c < nc; c++)
+		{
+			wxColour clr = jet.ColourForValue(m_data.at(r, c));
+			m_grid->SetCellBackgroundColour(r, c, clr);
+			m_grid->SetCellTextColour(r, c, *wxLIGHT_GREY);
+		}
+	}
+	Layout();
+
 
 	wxCommandEvent dmcevt(wxEVT_AFDataMatrixCtrl_CHANGE, this->GetId());
 	dmcevt.SetEventObject(this);
