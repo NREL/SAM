@@ -32,7 +32,7 @@ Bold
 DataMatrix
 
 1
-22
+23
 Name
 5
 25
@@ -104,6 +104,9 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 
 1
 tidal_resource_definition

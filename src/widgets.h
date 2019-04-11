@@ -470,6 +470,10 @@ public:
 	void ShowCol(const int &col, bool show);
 	void ShowRow(const int &row, bool show);
 
+	void ColorMap(bool b);
+	bool ColorMap();
+
+	void UpdateColorMap();
 
 private:
 
@@ -491,6 +495,7 @@ private:
 	bool m_showrows;
 	bool m_showRowLabels;
 	wxString m_rowLabels;
+	bool m_colorMap;
 	bool m_shadeR0C0;
 	bool m_shadeC0;
 	bool m_showcols;
