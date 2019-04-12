@@ -91,6 +91,22 @@ function main()
 	outln( 'Done.');
 }
 
+function arr_to_str ( arr )
+{
+	if ( typeof( arr ) != 'array' )
+	{
+		str = null;
+	}
+	else
+	{
+		str = to_string( arr );
+		str = replace( str, '[ ', '' );
+		str = replace( str, ' ]', '' );
+		str = replace( str, ' ', '' );
+	}
+	return str;
+} 
+
 function wf_check ( wf )
 {
 	obj = ssc_create();
@@ -261,7 +277,7 @@ function solar_anywhere_to_sam_csv( wf )
 			h1[6] = arr[5]; // longitude
 			h1[7] = arr[3]; // time zone
 			h1[8] = arr[6]; // elevation
-			ok = write_line( fout , to_string(h1) );
+			ok = write_line( fout , arr_to_str(h1) );
 			if ( ok == false ) 
 			{
 				outln('Failed to write first header row to file. Exiting script.\n');
@@ -361,11 +377,12 @@ function solar_anywhere_to_sam_csv( wf )
 				h = 23;
 				if ( m == 1 && line > 2 ) 
 				{
-					y = y - 1;
-					m = 12;
-					d = 31;
+					data[0] = y - 1;
+					data[1] = 12;
+					data[2] = 31;
 				}
 			}
+			data[3] = to_string(h);
 			feb29 = ( m == 2 && d == 29 ); // feb29 is true for leap years
 			// check to see if input file is multi-year file
 			// if it is, close the output file and append year to file name 
@@ -390,16 +407,16 @@ function solar_anywhere_to_sam_csv( wf )
 				}
 				output_file = replace( wf, '.csv',  '_samcsv_' + y + '.csv');
 				fout = open( output_file , 'w' );
-				write_line( fout , to_string(headers) );
-				write_line( fout , to_string(h1) );
-				write_line( fout , to_string(column_headers) );
+				write_line( fout , headers );
+				write_line( fout , arr_to_str(h1) );
+				write_line( fout , column_headers );
 				fcount++;
 				outln('    Saving data for year ' + y + ' in\n     ' + file_only(output_file) );
 			}
 			// write converted data row to output file, skipping February 29 for leap years
 			if ( feb29 == false ) 
 			{
-				ok = write_line( fout , to_string(data) );
+				ok = write_line( fout , arr_to_str(data) );
 			}  
 			if ( ok == false ) 
 			{
