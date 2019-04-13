@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <memory>
+#include <set>
 
 #include <shared/lib_util.h>
 #include <ssc/sscapi.h>
@@ -97,7 +98,10 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
         vd.cmod = cmod_name;
         vd.constraints = ssc_info_constraints(mod_info);
         vd.meta = ssc_info_meta(mod_info);
-        vd.doc = std::string(ssc_info_label(mod_info)) + " [" + std::string(ssc_info_units(mod_info)) + "]";
+        vd.doc = std::string(ssc_info_label(mod_info));
+        std::string units = std::string(ssc_info_units(mod_info));
+        if (units.length() != 0)
+            vd.doc += " [" + units + "]";
         vd.reqif = ssc_info_required(mod_info);
         vd.group = ssc_info_group(mod_info);
         vd.name = ssc_info_name(mod_info);
@@ -172,8 +176,10 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
         ++var_index;
         mod_info = ssc_module_var_info(p_mod, var_index);
     }
-    m_vardefs.insert({"AdjustmentFactors", adj_map});
-    vardefs_order.push_back("AdjustmentFactors");
+    if (adj_map.size() > 0){
+        m_vardefs.insert({"AdjustmentFactors", adj_map});
+        vardefs_order.push_back("AdjustmentFactors");
+    }
     m_vardefs.insert({"Outputs", outputs_map});
     vardefs_order.push_back("Outputs");
 
@@ -270,21 +276,37 @@ void builder_generator::gather_variables(){
     m_config_to_modules.insert({config_name, modules_order});
 }
 
+std::string defaults_filename(std::string cmod_symbol, const std::string &config_name){
+    std::set<std::string> extra_tech_cmods = {"Pvwattsv5Lifetime", "Fuelcell", "StandAloneBattery", "Battwatts"};
+    std::set<std::string> extra_fin_cmods = {"Utilityrate5", "Belpe", "Cashloan", "Thermalrate", "Lcoefcr"};
+
+    size_t pos = config_name.find_last_of('-');
+    std::string tech = config_to_cmod_name.find(format_as_symbol(config_name.substr(0, pos)))->second;
+    std::string fin = config_to_cmod_name.find(format_as_symbol(config_name.substr(pos+1)))->second;
+    assert(tech.length() + fin.length());
+
+    if (cmod_symbol == "Battery")
+        cmod_symbol = "StandAloneBattery";
+    if (cmod_symbol == tech || extra_tech_cmods.find(cmod_symbol) != extra_tech_cmods.end())
+        return cmod_symbol + "_" + fin;
+    else if (cmod_symbol == fin || extra_fin_cmods.find(cmod_symbol) != extra_fin_cmods.end())
+        return cmod_symbol + "_" + tech;
+    else
+        assert(false);
+
+}
 
 //
 void builder_generator::export_variables_json(const std::string &cmod) {
     std::ofstream json;
 
-    size_t pos = config_name.find_last_of('-');
-
-    std::string financial = format_as_symbol(config_name.substr(pos + 1));
-    json.open(filepath + "/defaults/" + format_as_symbol(cmod) +"_" + format_as_symbol(financial)+ ".json");
+    json.open(filepath + "/defaults/" + defaults_filename(format_as_symbol(cmod), config_name) + ".json");
 
     // later implement for several financial models
     assert(json.is_open());
 
     json << "{\n";
-    json << "\t\"" + financial + "_defaults\": {\n";
+    json << "\t\"defaults\": {\n";
 
     std::unordered_map<std::string, bool> completed_tables;
     for (size_t i = 0; i < vardefs_order.size(); i++){
@@ -738,15 +760,14 @@ void builder_generator::create_all(std::string fp, std::string cmod) {
     filepath = fp;
 
     bool print_json = true;
-    bool print_capi = false;
-    bool print_pysam = false;
+    bool print_capi = true;
+    bool print_pysam = true;
 
     // gather functions before variables to add in ui-only variables that may be skipped in subgraph
 //    std::unordered_map<std::string, edge*> unique_subgraph_edges = gather_functions();
 
     // epand the subgraph to include ui variables which may affect downstream ssc variables
 //    graph->subgraph_ssc_to_ui(*subgraph);
-
 
 
     gather_variables_ssc(cmod);
@@ -758,8 +779,6 @@ void builder_generator::create_all(std::string fp, std::string cmod) {
         return;
     }
 //
-
-
 
     // create C API
     if (print_capi){

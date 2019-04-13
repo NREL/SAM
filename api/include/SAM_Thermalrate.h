@@ -32,7 +32,7 @@ extern "C"
 
 
 	//
-	// Common parameters
+	// ThermalRate parameters
 	//
 
 	/**
@@ -41,41 +41,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Thermalrate_Common_en_thermal_rates_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
-
-	/**
-	 * Set thermal_load_escalation: Annual load escalation [%/year]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Thermalrate_Common_thermal_load_escalation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err);
-
-
-	//
-	// Lifetime parameters
-	//
-
-	/**
-	 * Set analysis_period: Number of years in analysis [years]
-	 * options: None
-	 * constraints: INTEGER,POSITIVE
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Thermalrate_Lifetime_analysis_period_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
-
-	/**
-	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
-	 * options: 0=hourly first year,1=hourly lifetime
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Thermalrate_Lifetime_system_use_lifetime_output_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
-
-
-	//
-	// TimeSeries parameters
-	//
+	SAM_EXPORT void SAM_Thermalrate_ThermalRate_en_thermal_rates_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
 
 	/**
 	 * Set fuelcell_power_thermal: Fuel cell power generated [kW-t]
@@ -83,46 +49,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Thermalrate_TimeSeries_fuelcell_power_thermal_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err);
-
-	/**
-	 * Set thermal_load: Thermal load (year 1) [kW-t]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Thermalrate_TimeSeries_thermal_load_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err);
-
-
-	//
-	// Financials parameters
-	//
-
-	/**
-	 * Set inflation_rate: Inflation rate [%]
-	 * options: None
-	 * constraints: MIN=-99
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Thermalrate_Financials_inflation_rate_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
-
-
-	//
-	// AnnualOutput parameters
-	//
-
-	/**
-	 * Set thermal_degradation: Annual energy degradation [%]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Thermalrate_AnnualOutput_thermal_degradation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err);
-
-
-	//
-	// ThermalRate parameters
-	//
+	SAM_EXPORT void SAM_Thermalrate_ThermalRate_fuelcell_power_thermal_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err);
 
 	/**
 	 * Set thermal_buy_rate: Thermal buy rate [$/kW-t]
@@ -147,6 +74,30 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_buy_rate_option_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
+
+	/**
+	 * Set thermal_degradation: Annual energy degradation [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_degradation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err);
+
+	/**
+	 * Set thermal_load: Thermal load (year 1) [kW-t]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_load_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err);
+
+	/**
+	 * Set thermal_load_escalation: Annual load escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_load_escalation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err);
 
 	/**
 	 * Set thermal_rate_escalation: Annual thermal rate escalation [%/year]
@@ -181,56 +132,54 @@ extern "C"
 	SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_sell_rate_option_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
 
 
-	/**
-	 * Common Getters
-	 */
-
-	SAM_EXPORT float SAM_Thermalrate_Common_en_thermal_rates_fget(SAM_Thermalrate ptr, SAM_error *err);
-
-	SAM_EXPORT float* SAM_Thermalrate_Common_thermal_load_escalation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err);
-
+	//
+	// Lifetime parameters
+	//
 
 	/**
-	 * Lifetime Getters
+	 * Set analysis_period: Number of years in analysis [years]
+	 * options: None
+	 * constraints: INTEGER,POSITIVE
+	 * required if: *
 	 */
-
-	SAM_EXPORT float SAM_Thermalrate_Lifetime_analysis_period_fget(SAM_Thermalrate ptr, SAM_error *err);
-
-	SAM_EXPORT float SAM_Thermalrate_Lifetime_system_use_lifetime_output_fget(SAM_Thermalrate ptr, SAM_error *err);
-
+	SAM_EXPORT void SAM_Thermalrate_Lifetime_analysis_period_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
 
 	/**
-	 * TimeSeries Getters
+	 * Set inflation_rate: Inflation rate [%]
+	 * options: None
+	 * constraints: MIN=-99
+	 * required if: *
 	 */
-
-	SAM_EXPORT float* SAM_Thermalrate_TimeSeries_fuelcell_power_thermal_aget(SAM_Thermalrate ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT float* SAM_Thermalrate_TimeSeries_thermal_load_aget(SAM_Thermalrate ptr, int* length, SAM_error *err);
-
+	SAM_EXPORT void SAM_Thermalrate_Lifetime_inflation_rate_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
 
 	/**
-	 * Financials Getters
+	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
+	 * options: 0=hourly first year,1=hourly lifetime
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
 	 */
-
-	SAM_EXPORT float SAM_Thermalrate_Financials_inflation_rate_fget(SAM_Thermalrate ptr, SAM_error *err);
-
-
-	/**
-	 * AnnualOutput Getters
-	 */
-
-	SAM_EXPORT float* SAM_Thermalrate_AnnualOutput_thermal_degradation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err);
+	SAM_EXPORT void SAM_Thermalrate_Lifetime_system_use_lifetime_output_fset(SAM_Thermalrate ptr, float number, SAM_error *err);
 
 
 	/**
 	 * ThermalRate Getters
 	 */
 
+	SAM_EXPORT float SAM_Thermalrate_ThermalRate_en_thermal_rates_fget(SAM_Thermalrate ptr, SAM_error *err);
+
+	SAM_EXPORT float* SAM_Thermalrate_ThermalRate_fuelcell_power_thermal_aget(SAM_Thermalrate ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_buy_rate_aget(SAM_Thermalrate ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_buy_rate_flat_fget(SAM_Thermalrate ptr, SAM_error *err);
 
 	SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_buy_rate_option_fget(SAM_Thermalrate ptr, SAM_error *err);
+
+	SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_degradation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_load_aget(SAM_Thermalrate ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_load_escalation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_rate_escalation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err);
 
@@ -239,6 +188,17 @@ extern "C"
 	SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_sell_rate_flat_fget(SAM_Thermalrate ptr, SAM_error *err);
 
 	SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_sell_rate_option_fget(SAM_Thermalrate ptr, SAM_error *err);
+
+
+	/**
+	 * Lifetime Getters
+	 */
+
+	SAM_EXPORT float SAM_Thermalrate_Lifetime_analysis_period_fget(SAM_Thermalrate ptr, SAM_error *err);
+
+	SAM_EXPORT float SAM_Thermalrate_Lifetime_inflation_rate_fget(SAM_Thermalrate ptr, SAM_error *err);
+
+	SAM_EXPORT float SAM_Thermalrate_Lifetime_system_use_lifetime_output_fget(SAM_Thermalrate ptr, SAM_error *err);
 
 
 	/**

@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set solar_resource_file: local weather file path []
+	 * Set solar_resource_file: local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: *
@@ -62,7 +62,7 @@ extern "C"
 	//
 
 	/**
-	 * Set weekday_schedule: 12x24 Time of Use Values for week days []
+	 * Set weekday_schedule: 12x24 Time of Use Values for week days
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -70,7 +70,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_TouTranslator_weekday_schedule_mset(SAM_TcsdirectSteam ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set weekend_schedule: 12x24 Time of Use Values for week end days []
+	 * Set weekend_schedule: 12x24 Time of Use Values for week end days
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -83,7 +83,7 @@ extern "C"
 	//
 
 	/**
-	 * Set N_hel: Number of heliostats []
+	 * Set N_hel: Number of heliostats
 	 * options: None
 	 * constraints: None
 	 * required if: ?
@@ -99,7 +99,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_bop_spec_cost_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_0: Attenuation coefficient 0 []
+	 * Set c_atm_0: Attenuation coefficient 0
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.006789
@@ -107,7 +107,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_0_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_1: Attenuation coefficient 1 []
+	 * Set c_atm_1: Attenuation coefficient 1
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.1046
@@ -115,7 +115,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_1_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_2: Attenuation coefficient 2 []
+	 * Set c_atm_2: Attenuation coefficient 2
 	 * options: None
 	 * constraints: None
 	 * required if: ?=-0.0107
@@ -123,7 +123,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_2_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_3: Attenuation coefficient 3 []
+	 * Set c_atm_3: Attenuation coefficient 3
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.002845
@@ -131,7 +131,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_3_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set calc_fluxmaps: Include fluxmap calculations []
+	 * Set calc_fluxmaps: Include fluxmap calculations
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -139,7 +139,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_calc_fluxmaps_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cant_type: Heliostat cant method []
+	 * Set cant_type: Heliostat cant method
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -147,7 +147,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_cant_type_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set check_max_flux: Check max flux at design point []
+	 * Set check_max_flux: Check max flux at design point
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -195,7 +195,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_per_watt_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set csp.pt.cost.epc.percent: EPC cost percent of direct []
+	 * Set csp.pt.cost.epc.percent: EPC cost percent of direct
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -227,7 +227,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_per_watt_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set csp.pt.cost.plm.percent: PLM cost percent of direct []
+	 * Set csp.pt.cost.plm.percent: PLM cost percent of direct
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -243,7 +243,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_sf_fixed_land_area_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set csp.pt.sf.land_overhead_factor: Land overhead factor []
+	 * Set csp.pt.sf.land_overhead_factor: Land overhead factor
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -251,7 +251,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_sf_land_overhead_factor_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set delta_flux_hrs: Hourly frequency in flux map lookup []
+	 * Set delta_flux_hrs: Hourly frequency in flux map lookup
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1
@@ -259,7 +259,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_delta_flux_hrs_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dens_mirror: Ratio of reflective area to profile []
+	 * Set dens_mirror: Ratio of reflective area to profile
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -275,7 +275,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_dni_des_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set eta_map: Field efficiency array []
+	 * Set eta_map: Field efficiency array
 	 * options: None
 	 * constraints: None
 	 * required if: ?
@@ -283,7 +283,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_eta_map_mset(SAM_TcsdirectSteam ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set flux_maps: Flux map intensities []
+	 * Set flux_maps: Flux map intensities
 	 * options: None
 	 * constraints: None
 	 * required if: ?
@@ -291,7 +291,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_flux_maps_mset(SAM_TcsdirectSteam ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set flux_max: Maximum allowable flux []
+	 * Set flux_max: Maximum allowable flux
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1000
@@ -307,7 +307,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_flux_positions_mset(SAM_TcsdirectSteam ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set focus_type: Heliostat focus method []
+	 * Set focus_type: Heliostat focus method
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -331,7 +331,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_hel_stow_deploy_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set helio_active_fraction: Heliostat active frac. []
+	 * Set helio_active_fraction: Heliostat active frac.
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -371,7 +371,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_positions_mset(SAM_TcsdirectSteam ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set helio_reflectance: Heliostat reflectance []
+	 * Set helio_reflectance: Heliostat reflectance
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -395,7 +395,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_heliostat_spec_cost_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set interp_beta: Interpolation beta coef. []
+	 * Set interp_beta: Interpolation beta coef.
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1.99
@@ -403,7 +403,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_interp_beta_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set interp_nug: Interpolation nugget []
+	 * Set interp_nug: Interpolation nugget
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -411,7 +411,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_interp_nug_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set is_optimize: Do SolarPILOT optimization []
+	 * Set is_optimize: Do SolarPILOT optimization
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -419,7 +419,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_is_optimize_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set land_bound_list: Boundary table listing []
+	 * Set land_bound_list: Boundary table listing
 	 * options: None
 	 * constraints: None
 	 * required if: ?
@@ -435,7 +435,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_bound_table_mset(SAM_TcsdirectSteam ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set land_bound_type: Land boundary type []
+	 * Set land_bound_type: Land boundary type
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -467,7 +467,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_spec_cost_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set n_facet_x: Number of heliostat facets - X []
+	 * Set n_facet_x: Number of heliostat facets - X
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -475,7 +475,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_facet_x_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set n_facet_y: Number of heliostat facets - Y []
+	 * Set n_facet_y: Number of heliostat facets - Y
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -483,7 +483,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_facet_y_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set n_flux_days: No. days in flux map lookup []
+	 * Set n_flux_days: No. days in flux map lookup
 	 * options: None
 	 * constraints: None
 	 * required if: ?=8
@@ -491,7 +491,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_flux_days_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set n_flux_x: Flux map X resolution []
+	 * Set n_flux_x: Flux map X resolution
 	 * options: None
 	 * constraints: None
 	 * required if: ?=12
@@ -499,7 +499,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_flux_x_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set n_flux_y: Flux map Y resolution []
+	 * Set n_flux_y: Flux map Y resolution
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1
@@ -507,7 +507,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_flux_y_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_algorithm: Optimization algorithm []
+	 * Set opt_algorithm: Optimization algorithm
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -515,7 +515,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_algorithm_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_conv_tol: Optimization convergence tol []
+	 * Set opt_conv_tol: Optimization convergence tol
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.001
@@ -523,7 +523,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_conv_tol_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_flux_penalty: Optimization flux overage penalty []
+	 * Set opt_flux_penalty: Optimization flux overage penalty
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -531,7 +531,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_flux_penalty_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_init_step: Optimization initial step size []
+	 * Set opt_init_step: Optimization initial step size
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.05
@@ -539,7 +539,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_init_step_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_max_iter: Max. number iteration steps []
+	 * Set opt_max_iter: Max. number iteration steps
 	 * options: None
 	 * constraints: None
 	 * required if: ?=200
@@ -579,7 +579,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_q_design_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_absorptance: Receiver absorptance []
+	 * Set rec_absorptance: Receiver absorptance
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -587,7 +587,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_absorptance_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_aspect: Receiver aspect ratio []
+	 * Set rec_aspect: Receiver aspect ratio
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -595,7 +595,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_aspect_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_cost_exp: Receiver cost scaling exponent []
+	 * Set rec_cost_exp: Receiver cost scaling exponent
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -619,7 +619,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_hl_perm2_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_ref_area: Receiver reference area for cost scale []
+	 * Set rec_ref_area: Receiver reference area for cost scale
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -683,7 +683,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_total_installed_cost_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tower_exp: Tower cost scaling exponent []
+	 * Set tower_exp: Tower cost scaling exponent
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -707,7 +707,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_v_wind_max_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set washing_frequency: Mirror washing frequency []
+	 * Set washing_frequency: Mirror washing frequency
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1463,7 +1463,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_piping_length_add_fset(SAM_TcsdirectSteam ptr, float number, SAM_error *err);
 
 	/**
-	 * Set piping_length_mult: Piping length multiplier []
+	 * Set piping_length_mult: Piping length multiplier
 	 * options: None
 	 * constraints: None
 	 * required if: *

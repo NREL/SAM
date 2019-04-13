@@ -1,5 +1,5 @@
 {
-	"Residential_defaults": {
+	"defaults": {
 		"WindResourceFile": {
 		},
 		"WindTurbine": {

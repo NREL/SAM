@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set biopwr.emissions.avoided_cred:  []
+	 * Set biopwr.emissions.avoided_cred: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -44,7 +44,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_avoided_cred_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.emissions.collection_fuel:  []
+	 * Set biopwr.emissions.collection_fuel: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -52,7 +52,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_collection_fuel_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.emissions.grid_intensity:  []
+	 * Set biopwr.emissions.grid_intensity: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -60,7 +60,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_grid_intensity_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.emissions.pre_chipopt:  []
+	 * Set biopwr.emissions.pre_chipopt: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -68,7 +68,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_pre_chipopt_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.emissions.pre_grindopt:  []
+	 * Set biopwr.emissions.pre_grindopt: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -76,7 +76,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_pre_grindopt_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.emissions.pre_pelletopt:  []
+	 * Set biopwr.emissions.pre_pelletopt: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -84,7 +84,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_pre_pelletopt_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.emissions.transport_fuel:  []
+	 * Set biopwr.emissions.transport_fuel: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -92,7 +92,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_fuel_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.emissions.transport_legs:  []
+	 * Set biopwr.emissions.transport_legs: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -100,7 +100,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_legs_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.emissions.transport_long:  []
+	 * Set biopwr.emissions.transport_long: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -108,7 +108,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_long_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.emissions.transport_longmiles:  []
+	 * Set biopwr.emissions.transport_longmiles: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -116,7 +116,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_longmiles_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.emissions.transport_longopt:  []
+	 * Set biopwr.emissions.transport_longopt: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -124,7 +124,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_longopt_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.emissions.transport_predist:  []
+	 * Set biopwr.emissions.transport_predist: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -132,7 +132,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_predist_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.additional_opt:  []
+	 * Set biopwr.feedstock.additional_opt: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -140,7 +140,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_additional_opt_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.bagasse_frac: Bagasse feedstock fraction []
+	 * Set biopwr.feedstock.bagasse_frac: Bagasse feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -148,7 +148,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bagasse_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.bagasse_moisture:  []
+	 * Set biopwr.feedstock.bagasse_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -156,7 +156,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bagasse_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.barley_frac: Barley feedstock fraction []
+	 * Set biopwr.feedstock.barley_frac: Barley feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -164,7 +164,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_barley_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.barley_moisture:  []
+	 * Set biopwr.feedstock.barley_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -172,7 +172,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_barley_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.bit_frac: Bituminos coal feedstock fraction []
+	 * Set biopwr.feedstock.bit_frac: Bituminos coal feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -180,7 +180,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bit_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.bit_moisture:  []
+	 * Set biopwr.feedstock.bit_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -188,7 +188,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bit_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.collection_radius:  []
+	 * Set biopwr.feedstock.collection_radius: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -196,7 +196,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_collection_radius_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock1_c:  []
+	 * Set biopwr.feedstock.feedstock1_c: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -204,7 +204,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_c_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock1_frac:  []
+	 * Set biopwr.feedstock.feedstock1_frac: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -212,7 +212,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock1_h:  []
+	 * Set biopwr.feedstock.feedstock1_h: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -220,7 +220,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_h_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock1_hhv:  []
+	 * Set biopwr.feedstock.feedstock1_hhv: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -228,7 +228,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_hhv_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock1_moisture:  []
+	 * Set biopwr.feedstock.feedstock1_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -236,7 +236,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock1_resource: Opt feedstock 1 (dt/yr) []
+	 * Set biopwr.feedstock.feedstock1_resource: Opt feedstock 1 (dt/yr)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -244,7 +244,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_resource_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock2_c:  []
+	 * Set biopwr.feedstock.feedstock2_c: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -252,7 +252,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_c_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock2_frac:  []
+	 * Set biopwr.feedstock.feedstock2_frac: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -260,7 +260,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock2_h:  []
+	 * Set biopwr.feedstock.feedstock2_h: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -268,7 +268,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_h_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock2_hhv:  []
+	 * Set biopwr.feedstock.feedstock2_hhv: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -276,7 +276,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_hhv_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock2_moisture:  []
+	 * Set biopwr.feedstock.feedstock2_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -284,7 +284,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.feedstock2_resource: Opt feedstock 2 (dt/yr) []
+	 * Set biopwr.feedstock.feedstock2_resource: Opt feedstock 2 (dt/yr)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -292,7 +292,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_resource_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.forest_frac: Forest residue feedstock fraction []
+	 * Set biopwr.feedstock.forest_frac: Forest residue feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -300,7 +300,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_forest_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.forest_moisture:  []
+	 * Set biopwr.feedstock.forest_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -308,7 +308,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_forest_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.herb_c: Carbon fraction in herbaceous energy crop []
+	 * Set biopwr.feedstock.herb_c: Carbon fraction in herbaceous energy crop
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -316,7 +316,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_herb_c_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.herb_frac: Herbaceous energy crop feedstock fraction []
+	 * Set biopwr.feedstock.herb_frac: Herbaceous energy crop feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -324,7 +324,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_herb_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.herb_moisture:  []
+	 * Set biopwr.feedstock.herb_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -332,7 +332,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_herb_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.lig_frac: Lignite coal feedstock fraction []
+	 * Set biopwr.feedstock.lig_frac: Lignite coal feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -340,7 +340,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_lig_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.lig_moisture:  []
+	 * Set biopwr.feedstock.lig_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -348,7 +348,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_lig_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.mill_c: Carbon fraction in mill residue []
+	 * Set biopwr.feedstock.mill_c: Carbon fraction in mill residue
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -356,7 +356,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_mill_c_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.mill_frac: Mill residue feedstock fraction []
+	 * Set biopwr.feedstock.mill_frac: Mill residue feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -364,7 +364,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_mill_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.mill_moisture:  []
+	 * Set biopwr.feedstock.mill_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -372,7 +372,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_mill_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.rice_frac: Rice straw feedstock fraction []
+	 * Set biopwr.feedstock.rice_frac: Rice straw feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -380,7 +380,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_rice_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.rice_moisture:  []
+	 * Set biopwr.feedstock.rice_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -388,7 +388,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_rice_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.stover_frac: Stover feedstock fraction []
+	 * Set biopwr.feedstock.stover_frac: Stover feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -396,7 +396,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_stover_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.stover_moisture:  []
+	 * Set biopwr.feedstock.stover_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -404,7 +404,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_stover_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.subbit_frac: Sub-bituminous coal feedstock fraction []
+	 * Set biopwr.feedstock.subbit_frac: Sub-bituminous coal feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -412,7 +412,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_subbit_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.subbit_moisture:  []
+	 * Set biopwr.feedstock.subbit_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -420,7 +420,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_subbit_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.total: Total fuel resource (dt/yr) []
+	 * Set biopwr.feedstock.total: Total fuel resource (dt/yr)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -428,7 +428,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.total_biomass: Total biomass resource (dt/yr) []
+	 * Set biopwr.feedstock.total_biomass: Total biomass resource (dt/yr)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -436,7 +436,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.total_biomass_c: Biomass fraction carbon []
+	 * Set biopwr.feedstock.total_biomass_c: Biomass fraction carbon
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -444,7 +444,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_c_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.total_c: Mass fraction carbon []
+	 * Set biopwr.feedstock.total_c: Mass fraction carbon
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -452,7 +452,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_c_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.total_coal: Total coal resource (dt/yr) []
+	 * Set biopwr.feedstock.total_coal: Total coal resource (dt/yr)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -460,7 +460,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_coal_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.total_h: Mass fraction hydrogen []
+	 * Set biopwr.feedstock.total_h: Mass fraction hydrogen
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -468,7 +468,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_h_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.total_hhv: Dry feedstock HHV (Btu/lb) []
+	 * Set biopwr.feedstock.total_hhv: Dry feedstock HHV (Btu/lb)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -476,7 +476,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_hhv_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.total_lhv: Dry feedstock LHV (Btu/lb) []
+	 * Set biopwr.feedstock.total_lhv: Dry feedstock LHV (Btu/lb)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -484,7 +484,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_lhv_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.total_moisture: Overall Moisture Content (dry %) []
+	 * Set biopwr.feedstock.total_moisture: Overall Moisture Content (dry %)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -492,7 +492,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.urban_c: Carbon fraction in urban residue []
+	 * Set biopwr.feedstock.urban_c: Carbon fraction in urban residue
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -500,7 +500,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_urban_c_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.urban_frac: Urban wood residue feedstock fraction []
+	 * Set biopwr.feedstock.urban_frac: Urban wood residue feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -508,7 +508,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_urban_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.urban_moisture:  []
+	 * Set biopwr.feedstock.urban_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -516,7 +516,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_urban_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.wheat_frac: Wheat straw feedstock fraction []
+	 * Set biopwr.feedstock.wheat_frac: Wheat straw feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -524,7 +524,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_wheat_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.wheat_moisture:  []
+	 * Set biopwr.feedstock.wheat_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -532,7 +532,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_wheat_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.woody_c: Carbon fraction in woody energy crop []
+	 * Set biopwr.feedstock.woody_c: Carbon fraction in woody energy crop
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -540,7 +540,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_woody_c_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.woody_frac: Woody energy crop feedstock fraction []
+	 * Set biopwr.feedstock.woody_frac: Woody energy crop feedstock fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -548,7 +548,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_woody_frac_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.feedstock.woody_moisture:  []
+	 * Set biopwr.feedstock.woody_moisture: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -556,7 +556,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_woody_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.boiler.air_feed:  []
+	 * Set biopwr.plant.boiler.air_feed: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -564,7 +564,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_air_feed_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.boiler.cap_per_boiler:  []
+	 * Set biopwr.plant.boiler.cap_per_boiler: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -572,7 +572,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_cap_per_boiler_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.boiler.flue_temp:  []
+	 * Set biopwr.plant.boiler.flue_temp: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -580,7 +580,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_flue_temp_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.boiler.num:  []
+	 * Set biopwr.plant.boiler.num: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -588,7 +588,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_num_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.boiler.over_design:  []
+	 * Set biopwr.plant.boiler.over_design: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -596,7 +596,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_over_design_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.boiler.steam_enthalpy:  []
+	 * Set biopwr.plant.boiler.steam_enthalpy: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -604,7 +604,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_steam_enthalpy_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.boiler.steam_pressure:  []
+	 * Set biopwr.plant.boiler.steam_pressure: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -612,7 +612,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_steam_pressure_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.combustor_type:  []
+	 * Set biopwr.plant.combustor_type: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -620,7 +620,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_combustor_type_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.cycle_design_temp:  []
+	 * Set biopwr.plant.cycle_design_temp: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -628,7 +628,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_cycle_design_temp_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.disp.power:  []
+	 * Set biopwr.plant.disp.power: 
 	 * options: None
 	 * constraints: LENGTH=9
 	 * required if: *
@@ -636,7 +636,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_disp_power_aset(SAM_Biomass ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.drying_method:  []
+	 * Set biopwr.plant.drying_method: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -644,7 +644,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_drying_method_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.drying_spec:  []
+	 * Set biopwr.plant.drying_spec: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -652,7 +652,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_drying_spec_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.max_over_design:  []
+	 * Set biopwr.plant.max_over_design: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -660,7 +660,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_max_over_design_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.min_load:  []
+	 * Set biopwr.plant.min_load: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -668,7 +668,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_min_load_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.nameplate:  []
+	 * Set biopwr.plant.nameplate: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -676,7 +676,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_nameplate_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.par_percent:  []
+	 * Set biopwr.plant.par_percent: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -684,7 +684,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_par_percent_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.pl_eff_f0:  []
+	 * Set biopwr.plant.pl_eff_f0: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -692,7 +692,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f0_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.pl_eff_f1:  []
+	 * Set biopwr.plant.pl_eff_f1: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -700,7 +700,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f1_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.pl_eff_f2:  []
+	 * Set biopwr.plant.pl_eff_f2: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -708,7 +708,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f2_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.pl_eff_f3:  []
+	 * Set biopwr.plant.pl_eff_f3: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -716,7 +716,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f3_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.pl_eff_f4:  []
+	 * Set biopwr.plant.pl_eff_f4: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -724,7 +724,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f4_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.ramp_rate:  []
+	 * Set biopwr.plant.ramp_rate: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -732,7 +732,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_ramp_rate_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.rated_eff:  []
+	 * Set biopwr.plant.rated_eff: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -740,7 +740,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_rated_eff_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.temp_corr_mode:  []
+	 * Set biopwr.plant.temp_corr_mode: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -748,7 +748,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_corr_mode_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.temp_eff_f0:  []
+	 * Set biopwr.plant.temp_eff_f0: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -756,7 +756,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f0_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.temp_eff_f1:  []
+	 * Set biopwr.plant.temp_eff_f1: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -764,7 +764,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f1_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.temp_eff_f2:  []
+	 * Set biopwr.plant.temp_eff_f2: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -772,7 +772,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f2_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.temp_eff_f3:  []
+	 * Set biopwr.plant.temp_eff_f3: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -780,7 +780,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f3_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.temp_eff_f4:  []
+	 * Set biopwr.plant.temp_eff_f4: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -788,7 +788,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f4_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.tou_grid:  []
+	 * Set biopwr.plant.tou_grid: 
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -796,7 +796,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_tou_grid_sset(SAM_Biomass ptr, const char* str, SAM_error *err);
 
 	/**
-	 * Set biopwr.plant.tou_option:  []
+	 * Set biopwr.plant.tou_option: 
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -804,7 +804,7 @@ extern "C"
 	SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_tou_option_fset(SAM_Biomass ptr, float number, SAM_error *err);
 
 	/**
-	 * Set file_name: Local weather file path []
+	 * Set file_name: Local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: *

@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set solar_resource_file: local weather file path []
+	 * Set solar_resource_file: local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: *
@@ -78,7 +78,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_bop_spec_cost_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_0: Attenuation coefficient 0 []
+	 * Set c_atm_0: Attenuation coefficient 0
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.006789
@@ -86,7 +86,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_0_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_1: Attenuation coefficient 1 []
+	 * Set c_atm_1: Attenuation coefficient 1
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.1046
@@ -94,7 +94,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_1_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_2: Attenuation coefficient 2 []
+	 * Set c_atm_2: Attenuation coefficient 2
 	 * options: None
 	 * constraints: None
 	 * required if: ?=-0.0107
@@ -102,7 +102,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_2_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_3: Attenuation coefficient 3 []
+	 * Set c_atm_3: Attenuation coefficient 3
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.002845
@@ -110,7 +110,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_3_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set calc_fluxmaps: Include fluxmap calculations []
+	 * Set calc_fluxmaps: Include fluxmap calculations
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -118,7 +118,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_calc_fluxmaps_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cant_type: Heliostat cant method []
+	 * Set cant_type: Heliostat cant method
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -126,7 +126,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_cant_type_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set check_max_flux: Check max flux at design point []
+	 * Set check_max_flux: Check max flux at design point
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -174,7 +174,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_per_watt_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set csp.pt.cost.epc.percent: EPC cost percent of direct []
+	 * Set csp.pt.cost.epc.percent: EPC cost percent of direct
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -206,7 +206,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_per_watt_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set csp.pt.cost.plm.percent: PLM cost percent of direct []
+	 * Set csp.pt.cost.plm.percent: PLM cost percent of direct
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -222,7 +222,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_sf_fixed_land_area_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set csp.pt.sf.land_overhead_factor: Land overhead factor []
+	 * Set csp.pt.sf.land_overhead_factor: Land overhead factor
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -230,7 +230,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_sf_land_overhead_factor_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set delta_flux_hrs: Hourly frequency in flux map lookup []
+	 * Set delta_flux_hrs: Hourly frequency in flux map lookup
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1
@@ -270,7 +270,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_flux_maps_mset(SAM_Tcsiscc ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set flux_max: Maximum allowable flux []
+	 * Set flux_max: Maximum allowable flux
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1000
@@ -286,7 +286,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_flux_positions_mset(SAM_Tcsiscc ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set focus_type: Heliostat focus method []
+	 * Set focus_type: Heliostat focus method
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -398,7 +398,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_interp_nug_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set is_optimize: Do SolarPILOT optimization []
+	 * Set is_optimize: Do SolarPILOT optimization
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -454,7 +454,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_spec_cost_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set n_facet_x: Number of heliostat facets - X []
+	 * Set n_facet_x: Number of heliostat facets - X
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -462,7 +462,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_facet_x_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set n_facet_y: Number of heliostat facets - Y []
+	 * Set n_facet_y: Number of heliostat facets - Y
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -470,7 +470,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_facet_y_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set n_flux_days: No. days in flux map lookup []
+	 * Set n_flux_days: No. days in flux map lookup
 	 * options: None
 	 * constraints: None
 	 * required if: ?=8
@@ -494,7 +494,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_flux_y_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_algorithm: Optimization algorithm []
+	 * Set opt_algorithm: Optimization algorithm
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -502,7 +502,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_algorithm_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_conv_tol: Optimization convergence tol []
+	 * Set opt_conv_tol: Optimization convergence tol
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.001
@@ -510,7 +510,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_conv_tol_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_flux_penalty: Optimization flux overage penalty []
+	 * Set opt_flux_penalty: Optimization flux overage penalty
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -518,7 +518,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_flux_penalty_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_init_step: Optimization initial step size []
+	 * Set opt_init_step: Optimization initial step size
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.05
@@ -526,7 +526,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_init_step_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_max_iter: Max. number iteration steps []
+	 * Set opt_max_iter: Max. number iteration steps
 	 * options: None
 	 * constraints: None
 	 * required if: ?=200
@@ -582,7 +582,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_aspect_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_cost_exp: Receiver cost scaling exponent []
+	 * Set rec_cost_exp: Receiver cost scaling exponent
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -606,7 +606,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_hl_perm2_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_ref_area: Receiver reference area for cost scale []
+	 * Set rec_ref_area: Receiver reference area for cost scale
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -670,7 +670,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Heliostat_total_installed_cost_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tower_exp: Tower cost scaling exponent []
+	 * Set tower_exp: Tower cost scaling exponent
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -715,7 +715,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Receiver_D_rec_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set Flow_type: A flag indicating which flow pattern is used []
+	 * Set Flow_type: A flag indicating which flow pattern is used
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -731,7 +731,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Receiver_H_rec_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set N_panels: Number of individual panels on the receiver []
+	 * Set N_panels: Number of individual panels on the receiver
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -771,7 +771,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Receiver_T_htf_hot_des_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set crossover_shift: No. panels shift in receiver crossover position []
+	 * Set crossover_shift: No. panels shift in receiver crossover position
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -787,7 +787,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Receiver_d_tube_out_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set epsilon: The emissivity of the receiver surface coating []
+	 * Set epsilon: The emissivity of the receiver surface coating
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -795,7 +795,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Receiver_epsilon_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set eta_pump: Receiver HTF pump efficiency []
+	 * Set eta_pump: Receiver HTF pump efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -803,7 +803,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Receiver_eta_pump_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set f_rec_min: Minimum receiver mass flow rate turn down fraction []
+	 * Set f_rec_min: Minimum receiver mass flow rate turn down fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -819,7 +819,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Receiver_field_fl_props_mset(SAM_Tcsiscc ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set hl_ffact: The heat loss factor (thermal loss fudge factor) []
+	 * Set hl_ffact: The heat loss factor (thermal loss fudge factor)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -835,7 +835,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Receiver_m_dot_htf_max_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set mat_tube: The material name of the receiver tubes []
+	 * Set mat_tube: The material name of the receiver tubes
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -843,7 +843,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Receiver_mat_tube_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_htf: The name of the HTF used in the receiver []
+	 * Set rec_htf: The name of the HTF used in the receiver
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -851,7 +851,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Receiver_rec_htf_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_qf_delay: Energy-based rcvr startup delay (fraction of rated thermal power) []
+	 * Set rec_qf_delay: Energy-based rcvr startup delay (fraction of rated thermal power)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -867,7 +867,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Receiver_rec_su_delay_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set receiver_type: External=0, Cavity=1 []
+	 * Set receiver_type: External=0, Cavity=1
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -896,7 +896,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Powerblock_elev_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ngcc_model: 1: NREL, 2: GE []
+	 * Set ngcc_model: 1: NREL, 2: GE
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1029,7 +1029,7 @@ extern "C"
 	SAM_EXPORT void SAM_Tcsiscc_Parasitics_piping_length_const_fset(SAM_Tcsiscc ptr, float number, SAM_error *err);
 
 	/**
-	 * Set piping_length_mult: Piping length multiplier []
+	 * Set piping_length_mult: Piping length multiplier
 	 * options: None
 	 * constraints: None
 	 * required if: *

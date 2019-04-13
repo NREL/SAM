@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set azimuth: Azimuth angle of surface/axis []
+	 * Set azimuth: Azimuth angle of surface/axis
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -44,7 +44,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Weather_azimuth_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set file_name: local weather file path []
+	 * Set file_name: local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: *
@@ -52,7 +52,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Weather_file_name_sset(SAM_TcsMSLF ptr, const char* str, SAM_error *err);
 
 	/**
-	 * Set tilt: Tilt angle of surface/axis []
+	 * Set tilt: Tilt angle of surface/axis
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -60,7 +60,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Weather_tilt_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set track_mode: Tracking mode []
+	 * Set track_mode: Tracking mode
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -86,7 +86,7 @@ extern "C"
 	//
 
 	/**
-	 * Set weekday_schedule: 12x24 Time of Use Values for week days []
+	 * Set weekday_schedule: 12x24 Time of Use Values for week days
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -94,7 +94,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_TouTranslator_weekday_schedule_mset(SAM_TcsMSLF ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set weekend_schedule: 12x24 Time of Use Values for week end days []
+	 * Set weekend_schedule: 12x24 Time of Use Values for week end days
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -115,7 +115,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_A_aperture_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set AbsorberMaterial: Absorber material type []
+	 * Set AbsorberMaterial: Absorber material type
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -123,7 +123,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_AbsorberMaterial_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set AnnulusGas: Annulus gas type (1=air; 26=Ar; 27=H2) []
+	 * Set AnnulusGas: Annulus gas type (1=air; 26=Ar; 27=H2)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -147,7 +147,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_DP_SGS_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set DP_coefs: Pressure drop mass flow based part-load curve []
+	 * Set DP_coefs: Pressure drop mass flow based part-load curve
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -211,7 +211,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_Design_loss_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set Dirt_mirror: User-defined dirt on mirror derate []
+	 * Set Dirt_mirror: User-defined dirt on mirror derate
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -219,7 +219,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_Dirt_mirror_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set Error: User-defined general optical error derate []
+	 * Set Error: User-defined general optical error derate
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -227,7 +227,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_Error_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set FieldConfig: Number of subfield headers []
+	 * Set FieldConfig: Number of subfield headers
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -235,7 +235,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_FieldConfig_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set Flow_type: The flow type through the absorber []
+	 * Set Flow_type: The flow type through the absorber
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -243,7 +243,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_Flow_type_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set Fluid: Field HTF fluid number []
+	 * Set Fluid: Field HTF fluid number
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -251,7 +251,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_Fluid_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set GeomEffects: Geometry effects derate []
+	 * Set GeomEffects: Geometry effects derate
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -259,7 +259,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_GeomEffects_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set GlazingIntactIn: The glazing intact flag []
+	 * Set GlazingIntactIn: The glazing intact flag
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -267,7 +267,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_GlazingIntactIn_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCE_FieldFrac: The fraction of the field occupied by this HCE type []
+	 * Set HCE_FieldFrac: The fraction of the field occupied by this HCE type
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -299,7 +299,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_HL_w_coefs_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set IAM_L_coefs: Incidence angle modifier coefficients - longitudinal plane []
+	 * Set IAM_L_coefs: Incidence angle modifier coefficients - longitudinal plane
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -307,7 +307,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_IAM_L_coefs_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set IAM_T_coefs: Incidence angle modifier coefficients - transversal plane []
+	 * Set IAM_T_coefs: Incidence angle modifier coefficients - transversal plane
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -355,7 +355,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_L_mod_spacing_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set OpticalTable: Values of the optical efficiency table []
+	 * Set OpticalTable: Values of the optical efficiency table
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -403,7 +403,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_SCA_drives_elec_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set Shadowing: Receiver bellows shadowing loss factor []
+	 * Set Shadowing: Receiver bellows shadowing loss factor
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -443,7 +443,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_T_dp_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set T_field_in_des: Label []
+	 * Set T_field_in_des: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -459,7 +459,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_T_field_ini_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set T_field_out_des: Label []
+	 * Set T_field_out_des: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -491,7 +491,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_T_loop_out_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set T_set_aux: Label []
+	 * Set T_set_aux: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -507,7 +507,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_T_startup_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set T_tank_cold_ini: Label []
+	 * Set T_tank_cold_ini: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -515,7 +515,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_T_tank_cold_ini_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set T_tank_hot_ini: Label []
+	 * Set T_tank_hot_ini: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -531,7 +531,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_T_tank_hot_inlet_min_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set Tau_envelope: Envelope transmittance []
+	 * Set Tau_envelope: Envelope transmittance
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -539,7 +539,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_Tau_envelope_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set TrackingError: Tracking error derate []
+	 * Set TrackingError: Tracking error derate
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -563,7 +563,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_V_hdr_min_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set V_tank_hot_ini: Label []
+	 * Set V_tank_hot_ini: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -595,7 +595,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_V_wind_des_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set W_pb_design: Label []
+	 * Set W_pb_design: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -603,7 +603,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_W_pb_design_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set alpha_abs: Absorber absorptance []
+	 * Set alpha_abs: Absorber absorptance
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -611,7 +611,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_alpha_abs_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set alpha_env: Envelope absorptance []
+	 * Set alpha_env: Envelope absorptance
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -619,7 +619,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_alpha_env_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set aux_array: Label []
+	 * Set aux_array: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -627,7 +627,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_aux_array_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set bop_array: Label []
+	 * Set bop_array: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -643,7 +643,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_calc_design_pipe_vals_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cold_tank_Thtr: Label []
+	 * Set cold_tank_Thtr: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -667,7 +667,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_custom_tes_p_loss_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cycle_cutoff_frac: Label []
+	 * Set cycle_cutoff_frac: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -675,7 +675,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_cycle_cutoff_frac_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cycle_max_frac: Label []
+	 * Set cycle_max_frac: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -683,7 +683,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_cycle_max_frac_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set defocus: Defocus control []
+	 * Set defocus: Defocus control
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -691,7 +691,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_defocus_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dirt_env: Loss due to dirt on the receiver envelope []
+	 * Set dirt_env: Loss due to dirt on the receiver envelope
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -699,7 +699,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_dirt_env_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dt_cold: Label []
+	 * Set dt_cold: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -707,7 +707,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_dt_cold_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dt_hot: Label []
+	 * Set dt_hot: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -715,7 +715,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_dt_hot_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set epsilon_abs_1: Absorber emittance - HCE variation 1 []
+	 * Set epsilon_abs_1: Absorber emittance - HCE variation 1
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -723,7 +723,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_epsilon_abs_1_mset(SAM_TcsMSLF ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set epsilon_abs_2: Absorber emittance - HCE variation 2 []
+	 * Set epsilon_abs_2: Absorber emittance - HCE variation 2
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -731,7 +731,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_epsilon_abs_2_mset(SAM_TcsMSLF ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set epsilon_abs_3: Absorber emittance - HCE variation 3 []
+	 * Set epsilon_abs_3: Absorber emittance - HCE variation 3
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -739,7 +739,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_epsilon_abs_3_mset(SAM_TcsMSLF ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set epsilon_abs_4: Absorber emittance - HCE variation 4 []
+	 * Set epsilon_abs_4: Absorber emittance - HCE variation 4
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -747,7 +747,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_epsilon_abs_4_mset(SAM_TcsMSLF ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set epsilon_glass: Glass envelope emissivity []
+	 * Set epsilon_glass: Glass envelope emissivity
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -755,7 +755,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_epsilon_glass_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set eta_pump: HTF pump efficiency []
+	 * Set eta_pump: HTF pump efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -763,7 +763,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_eta_pump_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set f_tc_cold: Label []
+	 * Set f_tc_cold: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -771,7 +771,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_f_tc_cold_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set fc_on: Label []
+	 * Set fc_on: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -779,7 +779,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_fc_on_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ffrac: Label []
+	 * Set ffrac: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -787,7 +787,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_ffrac_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set field_fl_props: Fluid property data []
+	 * Set field_fl_props: Fluid property data
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -795,7 +795,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_field_fl_props_mset(SAM_TcsMSLF ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set field_fluid: Label []
+	 * Set field_fluid: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -803,7 +803,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_field_fluid_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set fossil_mode: Label []
+	 * Set fossil_mode: Label
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -811,7 +811,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_fossil_mode_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set fthr_ok: Label []
+	 * Set fthr_ok: Label
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -819,7 +819,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_fthr_ok_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set fthrctrl: Defocusing strategy []
+	 * Set fthrctrl: Defocusing strategy
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -827,7 +827,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_fthrctrl_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set fthrok: Flag to allow partial defocusing of the collectors []
+	 * Set fthrok: Flag to allow partial defocusing of the collectors
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -835,7 +835,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_fthrok_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set h_tank: Label []
+	 * Set h_tank: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -843,7 +843,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_h_tank_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set h_tank_min: Label []
+	 * Set h_tank_min: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -859,7 +859,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_has_hot_tank_bypass_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hot_tank_Thtr: Label []
+	 * Set hot_tank_Thtr: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -867,7 +867,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_hot_tank_Thtr_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hx_config: Label []
+	 * Set hx_config: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -875,7 +875,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_hx_config_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set is_hx: Label []
+	 * Set is_hx: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -931,7 +931,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_mc_bal_sca_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set nLoops: Number of loops in the field []
+	 * Set nLoops: Number of loops in the field
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -939,7 +939,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_nLoops_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set nMod: Number of collector modules in a loop []
+	 * Set nMod: Number of collector modules in a loop
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -947,7 +947,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_nMod_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set nRecVar: Number of receiver variantions []
+	 * Set nRecVar: Number of receiver variantions
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: ?=4
@@ -955,7 +955,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_nRecVar_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set nSCA: Label []
+	 * Set nSCA: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -963,7 +963,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_nSCA_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set nodes: Label []
+	 * Set nodes: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -971,7 +971,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_nodes_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_model: The optical model []
+	 * Set opt_model: The optical model
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -979,7 +979,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_opt_model_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set pb_fixed_par: Label []
+	 * Set pb_fixed_par: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -987,7 +987,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_pb_fixed_par_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set pb_pump_coef: Label []
+	 * Set pb_pump_coef: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1003,7 +1003,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_pb_rated_cap_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set q_max_aux: Label []
+	 * Set q_max_aux: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1011,7 +1011,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_q_max_aux_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set q_pb_design: Label []
+	 * Set q_pb_design: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1027,7 +1027,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_rec_htf_vol_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_model: Receiver model type (1=Polynomial ; 2=Evac tube) []
+	 * Set rec_model: Receiver model type (1=Polynomial ; 2=Evac tube)
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -1035,7 +1035,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_rec_model_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set reflectivity: Solar-weighted mirror reflectivity value []
+	 * Set reflectivity: Solar-weighted mirror reflectivity value
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1067,7 +1067,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_sgs_wallthicks_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set solar_mult: Solar multiple []
+	 * Set solar_mult: Solar multiple
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1075,7 +1075,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_solar_mult_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set solarm: Label []
+	 * Set solarm: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1083,7 +1083,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_solarm_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set store_fl_props: Label []
+	 * Set store_fl_props: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1091,7 +1091,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_store_fl_props_mset(SAM_TcsMSLF ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set store_fluid: Label []
+	 * Set store_fluid: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1099,7 +1099,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_store_fluid_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set t_ch_out_max: Label []
+	 * Set t_ch_out_max: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1107,7 +1107,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_t_ch_out_max_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set t_dis_out_min: Label []
+	 * Set t_dis_out_min: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1115,7 +1115,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_t_dis_out_min_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set t_standby_reset: Label []
+	 * Set t_standby_reset: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1123,7 +1123,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_t_standby_reset_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tank_max_heat: Label []
+	 * Set tank_max_heat: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1131,7 +1131,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_tank_max_heat_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tank_pairs: Label []
+	 * Set tank_pairs: Label
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -1147,7 +1147,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_tanks_in_parallel_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tc_fill: Label []
+	 * Set tc_fill: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1155,7 +1155,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_tc_fill_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tc_void: Label []
+	 * Set tc_void: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1163,7 +1163,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_tc_void_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tes_pump_coef: Label []
+	 * Set tes_pump_coef: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1171,7 +1171,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_tes_pump_coef_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tes_temp: Label []
+	 * Set tes_temp: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1179,7 +1179,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_tes_temp_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tes_type: Label []
+	 * Set tes_type: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1203,7 +1203,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_theta_stow_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tshours: Label []
+	 * Set tshours: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1211,7 +1211,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_tshours_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tslogic_a: Label []
+	 * Set tslogic_a: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1219,7 +1219,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_tslogic_a_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set tslogic_b: Label []
+	 * Set tslogic_b: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1227,7 +1227,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_tslogic_b_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set tslogic_c: Label []
+	 * Set tslogic_c: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1235,7 +1235,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_tslogic_c_aset(SAM_TcsMSLF ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set u_tank: Label []
+	 * Set u_tank: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1243,7 +1243,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_Controller_u_tank_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set vol_tank: Label []
+	 * Set vol_tank: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1458,7 +1458,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_T_amb_high_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_T_amb_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_amb [C] []
+	 * Set ud_T_amb_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_amb [C]
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1482,7 +1482,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_T_htf_high_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_T_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_htf_hot [C] []
+	 * Set ud_T_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_htf_hot [C]
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1506,7 +1506,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_f_W_dot_cool_des_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_ind_od: Off design user-defined power cycle performance as function of T_htf, m_dot_htf [ND], and T_amb []
+	 * Set ud_ind_od: Off design user-defined power cycle performance as function of T_htf, m_dot_htf [ND], and T_amb
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1522,7 +1522,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_m_dot_htf_high_fset(SAM_TcsMSLF ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_m_dot_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on m_dot_htf [ND] []
+	 * Set ud_m_dot_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on m_dot_htf [ND]
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1

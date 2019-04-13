@@ -974,27 +974,27 @@ SAM_EXPORT void SAM_Singleowner_Battery_grid_to_batt_aset(SAM_Singleowner ptr, f
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_Common_gen_aset(SAM_Singleowner ptr, float* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "gen", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Common_utility_bill_w_sys_aset(SAM_Singleowner ptr, float* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "utility_bill_w_sys", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_Singleowner_SystemOutput_degradation_aset(SAM_Singleowner ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "degradation", arr, length);
 	});
 }
 
+SAM_EXPORT void SAM_Singleowner_SystemOutput_gen_aset(SAM_Singleowner ptr, float* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "gen", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Singleowner_SystemOutput_system_capacity_fset(SAM_Singleowner ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_UtilityBill_utility_bill_w_sys_aset(SAM_Singleowner ptr, float* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "utility_bill_w_sys", arr, length);
 	});
 }
 
@@ -3364,30 +3364,6 @@ SAM_EXPORT float* SAM_Singleowner_Battery_grid_to_batt_aget(SAM_Singleowner ptr,
 
 
 
-SAM_EXPORT float* SAM_Singleowner_Common_gen_aget(SAM_Singleowner ptr, int* length, SAM_error *err){
-	float* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "gen", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "gen");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float* SAM_Singleowner_Common_utility_bill_w_sys_aget(SAM_Singleowner ptr, int* length, SAM_error *err){
-	float* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "utility_bill_w_sys", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "utility_bill_w_sys");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT float* SAM_Singleowner_SystemOutput_degradation_aget(SAM_Singleowner ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3400,11 +3376,35 @@ SAM_EXPORT float* SAM_Singleowner_SystemOutput_degradation_aget(SAM_Singleowner 
 
 
 
+SAM_EXPORT float* SAM_Singleowner_SystemOutput_gen_aget(SAM_Singleowner ptr, int* length, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "gen");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT float SAM_Singleowner_SystemOutput_system_capacity_fget(SAM_Singleowner ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_Singleowner", "system_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float* SAM_Singleowner_UtilityBill_utility_bill_w_sys_aget(SAM_Singleowner ptr, int* length, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "utility_bill_w_sys", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "utility_bill_w_sys");
 	});
 	return result;
 }

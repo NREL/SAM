@@ -1082,31 +1082,31 @@ SAM_EXPORT void SAM_Cashloan_Cashloan_total_installed_cost_fset(SAM_Cashloan ptr
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Common_gen_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "gen", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Cashloan_AnnualOutput_degradation_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_SystemOutput_degradation_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "degradation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_AnnualOutput_system_use_lifetime_output_fset(SAM_Cashloan ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_SystemOutput_gen_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "gen", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Lifetime_system_use_lifetime_output_fset(SAM_Cashloan ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Thirdpartyownership_elec_cost_with_system_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_ThirdPartyOwnership_elec_cost_with_system_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "elec_cost_with_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Thirdpartyownership_elec_cost_without_system_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_ThirdPartyOwnership_elec_cost_without_system_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "elec_cost_without_system", arr, length);
 	});
@@ -3069,19 +3069,7 @@ SAM_EXPORT float SAM_Cashloan_Cashloan_total_installed_cost_fget(SAM_Cashloan pt
 
 
 
-SAM_EXPORT float* SAM_Cashloan_Common_gen_aget(SAM_Cashloan ptr, int* length, SAM_error *err){
-	float* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "gen", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "gen");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float* SAM_Cashloan_AnnualOutput_degradation_aget(SAM_Cashloan ptr, int* length, SAM_error *err){
+SAM_EXPORT float* SAM_Cashloan_SystemOutput_degradation_aget(SAM_Cashloan ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "degradation", length);
@@ -3093,7 +3081,19 @@ SAM_EXPORT float* SAM_Cashloan_AnnualOutput_degradation_aget(SAM_Cashloan ptr, i
 
 
 
-SAM_EXPORT float SAM_Cashloan_AnnualOutput_system_use_lifetime_output_fget(SAM_Cashloan ptr, SAM_error *err){
+SAM_EXPORT float* SAM_Cashloan_SystemOutput_gen_aget(SAM_Cashloan ptr, int* length, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float SAM_Cashloan_Lifetime_system_use_lifetime_output_fget(SAM_Cashloan ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
@@ -3104,7 +3104,7 @@ SAM_EXPORT float SAM_Cashloan_AnnualOutput_system_use_lifetime_output_fget(SAM_C
 
 
 
-SAM_EXPORT float* SAM_Cashloan_Thirdpartyownership_elec_cost_with_system_aget(SAM_Cashloan ptr, int* length, SAM_error *err){
+SAM_EXPORT float* SAM_Cashloan_ThirdPartyOwnership_elec_cost_with_system_aget(SAM_Cashloan ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "elec_cost_with_system", length);
@@ -3116,7 +3116,7 @@ SAM_EXPORT float* SAM_Cashloan_Thirdpartyownership_elec_cost_with_system_aget(SA
 
 
 
-SAM_EXPORT float* SAM_Cashloan_Thirdpartyownership_elec_cost_without_system_aget(SAM_Cashloan ptr, int* length, SAM_error *err){
+SAM_EXPORT float* SAM_Cashloan_ThirdPartyOwnership_elec_cost_without_system_aget(SAM_Cashloan ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "elec_cost_without_system", length);

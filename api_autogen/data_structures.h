@@ -129,6 +129,44 @@ extern std::string active_subobject;
 extern std::unordered_map<std::string, std::vector<std::string>> SAM_ui_obj_to_enabled_variables;
 
 
+static std::unordered_map<std::string, std::string> config_to_cmod_name = {
+        {"AllEquityPartnershipFlip", "Equpartflip"},
+        {"Battery", "StandAloneBattery"},
+        {"Battwatts", "Battwatts"},
+        {"Belpe", "Belpe"},
+        {"Biopower", "Biomass"},
+        {"Commercial", "Commercial"},
+        {"DishStirling", "Tcsdish"},
+        {"DSGLIPH", "LinearFresnelDsgIph"},
+        {"DSLF", "TcslinearFresnel"},
+        {"DSPT", "TcsdirectSteam"},
+        {"EmpiricalTrough", "TcstroughEmpirical"},
+        {"FlatPlatePV", "Pvsamv1"},
+        {"FuelCell", "Fuelcell"},
+        {"GenericCSPSystem", "TcsgenericSolar"},
+        {"GenericSystem", "GenericSystem"},
+        {"GeothermalPower", "Geothermal"},
+        {"HighXConcentratingPV", "Hcpv"},
+        {"HostDeveloper", "HostDeveloper"},
+        {"ISCC", "Tcsiscc"},
+        {"LCOECalculator", "Lcoefcr"},
+        {"LCOHCalculator", "IphToLcoefcr"},
+        {"LeveragedPartnershipFlip", "Levpartflip"},
+        {"MSLF", "TcsMSLF"},
+        {"MSPT", "TcsmoltenSalt"},
+        {"None", "None"},
+        {"PhysicalTrough", "TcstroughPhysical"},
+        {"PhysicalTroughIPH", "TroughPhysicalProcessHeat"},
+        {"PVWatts", "Pvwattsv5"},
+        {"Residential", "Residential"},
+        {"SaleLeaseback", "Saleleaseback"},
+        {"SingleOwner", "Singleowner"},
+        {"SolarWaterHeating", "Swh"},
+        {"ThirdParty", "Thirdpartyownership"},
+        {"Utilityrate5", "Utilityrate5"},
+        {"WindPower", "Windpower"}
+};
+
 /**
  * Maps each config to the secondary cmod outputs that are used as inputs to the primary cmod
  * e.g. 'Wind Power-Residential': {'wind_obos': wind_turbine_rotor_diameter, rotorD)

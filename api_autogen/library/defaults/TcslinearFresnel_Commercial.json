@@ -1,5 +1,5 @@
 {
-	"Commercial_defaults": {
+	"defaults": {
 		"Weather": {
 			"azimuth": 0,
 			"tilt": 33,

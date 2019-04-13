@@ -1,5 +1,5 @@
 {
-	"Commercial_defaults": {
+	"defaults": {
 		"WindResourceFile": {
 		},
 		"WindTurbine": {

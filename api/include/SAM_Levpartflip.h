@@ -129,7 +129,7 @@ extern "C"
 	//
 
 	/**
-	 * Set add_om_num_types: Number of O and M types []
+	 * Set add_om_num_types: Number of O and M types
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
@@ -1261,7 +1261,7 @@ extern "C"
 	//
 
 	/**
-	 * Set degradation: Annual energy degradation []
+	 * Set degradation: Annual energy degradation
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1295,7 +1295,7 @@ extern "C"
 	//
 
 	/**
-	 * Set system_lifetime_recapitalize: Recapitalization boolean []
+	 * Set system_lifetime_recapitalize: Recapitalization boolean
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -1332,7 +1332,7 @@ extern "C"
 	//
 
 	/**
-	 * Set dispatch_factor1: TOD factor for period 1 []
+	 * Set dispatch_factor1: TOD factor for period 1
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
@@ -1340,7 +1340,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_TimeOfDelivery_dispatch_factor1_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor2: TOD factor for period 2 []
+	 * Set dispatch_factor2: TOD factor for period 2
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
@@ -1348,7 +1348,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_TimeOfDelivery_dispatch_factor2_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor3: TOD factor for period 3 []
+	 * Set dispatch_factor3: TOD factor for period 3
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
@@ -1356,7 +1356,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_TimeOfDelivery_dispatch_factor3_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor4: TOD factor for period 4 []
+	 * Set dispatch_factor4: TOD factor for period 4
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
@@ -1364,7 +1364,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_TimeOfDelivery_dispatch_factor4_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor5: TOD factor for period 5 []
+	 * Set dispatch_factor5: TOD factor for period 5
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
@@ -1372,7 +1372,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_TimeOfDelivery_dispatch_factor5_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor6: TOD factor for period 6 []
+	 * Set dispatch_factor6: TOD factor for period 6
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
@@ -1380,7 +1380,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_TimeOfDelivery_dispatch_factor6_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor7: TOD factor for period 7 []
+	 * Set dispatch_factor7: TOD factor for period 7
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
@@ -1388,7 +1388,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_TimeOfDelivery_dispatch_factor7_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor8: TOD factor for period 8 []
+	 * Set dispatch_factor8: TOD factor for period 8
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
@@ -1396,7 +1396,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_TimeOfDelivery_dispatch_factor8_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor9: TOD factor for period 9 []
+	 * Set dispatch_factor9: TOD factor for period 9
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
@@ -1404,7 +1404,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_TimeOfDelivery_dispatch_factor9_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factors_ts: Dispatch payment factor array []
+	 * Set dispatch_factors_ts: Dispatch payment factor array
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=1
@@ -1702,7 +1702,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_Depreciation_depr_custom_schedule_aset(SAM_Levpartflip ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set depr_fedbas_method: Method of federal depreciation reduction []
+	 * Set depr_fedbas_method: Method of federal depreciation reduction
 	 * options: 0=5yr MACRS,1=Proportional
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
@@ -1822,7 +1822,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_Depreciation_depr_itc_sta_sl_5_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set depr_stabas_method: Method of state depreciation reduction []
+	 * Set depr_stabas_method: Method of state depreciation reduction
 	 * options: 0=5yr MACRS,1=Proportional
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
@@ -1830,7 +1830,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_Depreciation_depr_stabas_method_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set equip_reserve_depr_fed: Major equipment reserve federal depreciation []
+	 * Set equip_reserve_depr_fed: Major equipment reserve federal depreciation
 	 * options: 0=5yr MACRS,1=15yr MACRS,2=5yr SL,3=15yr SL, 4=20yr SL,5=39yr SL,6=Custom
 	 * constraints: INTEGER,MIN=0,MAX=6
 	 * required if: ?=0
@@ -1838,7 +1838,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_Depreciation_equip_reserve_depr_fed_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set equip_reserve_depr_sta: Major equipment reserve state depreciation []
+	 * Set equip_reserve_depr_sta: Major equipment reserve state depreciation
 	 * options: 0=5yr MACRS,1=15yr MACRS,2=5yr SL,3=15yr SL, 4=20yr SL,5=39yr SL,6=Custom
 	 * constraints: INTEGER,MIN=0,MAX=6
 	 * required if: ?=0
@@ -1888,7 +1888,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_SolutionMode_ppa_soln_max_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ppa_soln_max_iterations: PPA solution maximum number of iterations []
+	 * Set ppa_soln_max_iterations: PPA solution maximum number of iterations
 	 * options: None
 	 * constraints: INTEGER,MIN=1
 	 * required if: ?=100
@@ -1912,7 +1912,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_SolutionMode_ppa_soln_mode_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ppa_soln_tolerance: PPA solution tolerance []
+	 * Set ppa_soln_tolerance: PPA solution tolerance
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1e-3
@@ -1954,7 +1954,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_ProjectTermDebt_debt_percent_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dscr: Debt service coverage ratio []
+	 * Set dscr: Debt service coverage ratio
 	 * options: None
 	 * constraints: MIN=0
 	 * required if: ?=1.5
@@ -2068,7 +2068,7 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_IRRTargets_flip_target_percent_fset(SAM_Levpartflip ptr, float number, SAM_error *err);
 
 	/**
-	 * Set flip_target_year: Return target year []
+	 * Set flip_target_year: Return target year
 	 * options: None
 	 * constraints: MIN=1
 	 * required if: ?=11
