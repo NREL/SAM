@@ -147,7 +147,7 @@ struct CashFlowLine {
 
 struct AutoGraph {
 	wxString title, xlabel, ylabel, yvals, legend_pos;
-	int size;
+	int size, Type;
 	bool show_legend, show_xvalues;
 };
 	
