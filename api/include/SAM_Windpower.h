@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set wind_resource_data: wind resouce data in memory []
+	 * Set wind_resource_data: wind resouce data in memory
 	 * options: None
 	 * constraints: None
 	 * required if: ?
@@ -44,7 +44,7 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_WindResourceFile_wind_resource_data_tset(SAM_Windpower ptr, SAM_table tab, SAM_error *err);
 
 	/**
-	 * Set wind_resource_filename: local wind data file path []
+	 * Set wind_resource_filename: local wind data file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: ?
@@ -57,7 +57,7 @@ extern "C"
 	//
 
 	/**
-	 * Set wind_resource_shear: Shear exponent []
+	 * Set wind_resource_shear: Shear exponent
 	 * options: None
 	 * constraints: MIN=0
 	 * required if: *
@@ -73,7 +73,7 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_WindTurbine_wind_turbine_hub_ht_fset(SAM_Windpower ptr, float number, SAM_error *err);
 
 	/**
-	 * Set wind_turbine_max_cp: Max cp []
+	 * Set wind_turbine_max_cp: Max cp
 	 * options: None
 	 * constraints: MIN=0
 	 * required if: wind_resource_model_choice=1
@@ -216,7 +216,7 @@ extern "C"
 	//
 
 	/**
-	 * Set weibull_k_factor: Weibull K factor for wind resource []
+	 * Set weibull_k_factor: Weibull K factor for wind resource
 	 * options: None
 	 * constraints: None
 	 * required if: wind_resource_model_choice=1
@@ -232,7 +232,7 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_WindSpeedWeibullDistribution_weibull_reference_height_fset(SAM_Windpower ptr, float number, SAM_error *err);
 
 	/**
-	 * Set weibull_wind_speed: Average wind speed for Weibull model []
+	 * Set weibull_wind_speed: Average wind speed for Weibull model
 	 * options: None
 	 * constraints: MIN=0
 	 * required if: wind_resource_model_choice=1

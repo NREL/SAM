@@ -1,5 +1,5 @@
 {
-	"SingleOwner_defaults": {
+	"defaults": {
 		"GeoHourly": {
 			"CT": 3,
 			"HTF": 3,

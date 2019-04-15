@@ -1,5 +1,5 @@
 {
-	"SaleLeaseback_defaults": {
+	"defaults": {
 		"WindResourceFile": {
 		},
 		"WindTurbine": {

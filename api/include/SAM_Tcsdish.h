@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set file_name: local weather file path []
+	 * Set file_name: local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: *

@@ -766,7 +766,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughPhysical_SolarField_fthrctrl_fset(SAM_TcstroughPhysical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set fthrok: Flag to allow partial defocusing of the collectors []
+	 * Set fthrok: Flag to allow partial defocusing of the collectors
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -1416,7 +1416,7 @@ extern "C"
 	//
 
 	/**
-	 * Set weekday_schedule: Dispatch 12mx24h schedule for week days []
+	 * Set weekday_schedule: Dispatch 12mx24h schedule for week days
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1424,7 +1424,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughPhysical_TouTranslator_weekday_schedule_mset(SAM_TcstroughPhysical ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set weekend_schedule: Dispatch 12mx24h schedule for weekends []
+	 * Set weekend_schedule: Dispatch 12mx24h schedule for weekends
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1594,7 +1594,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughPhysical_UserDefinedPC_ud_T_amb_high_fset(SAM_TcstroughPhysical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_T_amb_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_amb [C] []
+	 * Set ud_T_amb_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_amb [C]
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1618,7 +1618,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughPhysical_UserDefinedPC_ud_T_htf_high_fset(SAM_TcstroughPhysical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_T_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_htf_hot [C] []
+	 * Set ud_T_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_htf_hot [C]
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1642,7 +1642,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughPhysical_UserDefinedPC_ud_f_W_dot_cool_des_fset(SAM_TcstroughPhysical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_ind_od: Off design user-defined power cycle performance as function of T_htf, m_dot_htf [ND], and T_amb []
+	 * Set ud_ind_od: Off design user-defined power cycle performance as function of T_htf, m_dot_htf [ND], and T_amb
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1658,7 +1658,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughPhysical_UserDefinedPC_ud_m_dot_htf_high_fset(SAM_TcstroughPhysical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_m_dot_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on m_dot_htf [ND] []
+	 * Set ud_m_dot_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on m_dot_htf [ND]
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1

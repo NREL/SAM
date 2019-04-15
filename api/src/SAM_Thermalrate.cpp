@@ -32,51 +32,15 @@ SAM_EXPORT void SAM_Thermalrate_destruct(SAM_Thermalrate system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_Thermalrate_Common_en_thermal_rates_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_en_thermal_rates_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_thermal_rates", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_Common_thermal_load_escalation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "thermal_load_escalation", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Thermalrate_Lifetime_analysis_period_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "analysis_period", number);
-	});
-}
-
-SAM_EXPORT void SAM_Thermalrate_Lifetime_system_use_lifetime_output_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
-	});
-}
-
-SAM_EXPORT void SAM_Thermalrate_TimeSeries_fuelcell_power_thermal_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_fuelcell_power_thermal_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "fuelcell_power_thermal", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Thermalrate_TimeSeries_thermal_load_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "thermal_load", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Thermalrate_Financials_inflation_rate_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "inflation_rate", number);
-	});
-}
-
-SAM_EXPORT void SAM_Thermalrate_AnnualOutput_thermal_degradation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "thermal_degradation", arr, length);
 	});
 }
 
@@ -95,6 +59,24 @@ SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_buy_rate_flat_fset(SAM_Therm
 SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_buy_rate_option_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "thermal_buy_rate_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_degradation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "thermal_degradation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_load_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "thermal_load", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_load_escalation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "thermal_load_escalation", arr, length);
 	});
 }
 
@@ -122,7 +104,25 @@ SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_sell_rate_option_fset(SAM_Th
 	});
 }
 
-SAM_EXPORT float SAM_Thermalrate_Common_en_thermal_rates_fget(SAM_Thermalrate ptr, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_Lifetime_analysis_period_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "analysis_period", number);
+	});
+}
+
+SAM_EXPORT void SAM_Thermalrate_Lifetime_inflation_rate_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "inflation_rate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Thermalrate_Lifetime_system_use_lifetime_output_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
+	});
+}
+
+SAM_EXPORT float SAM_Thermalrate_ThermalRate_en_thermal_rates_fget(SAM_Thermalrate ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_thermal_rates", &result))
@@ -133,81 +133,12 @@ SAM_EXPORT float SAM_Thermalrate_Common_en_thermal_rates_fget(SAM_Thermalrate pt
 
 
 
-SAM_EXPORT float* SAM_Thermalrate_Common_thermal_load_escalation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "thermal_load_escalation", length);
-	if (!result)
-		make_access_error("SAM_Thermalrate", "thermal_load_escalation");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float SAM_Thermalrate_Lifetime_analysis_period_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "analysis_period", &result))
-		make_access_error("SAM_Thermalrate", "analysis_period");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float SAM_Thermalrate_Lifetime_system_use_lifetime_output_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
-		make_access_error("SAM_Thermalrate", "system_use_lifetime_output");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float* SAM_Thermalrate_TimeSeries_fuelcell_power_thermal_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+SAM_EXPORT float* SAM_Thermalrate_ThermalRate_fuelcell_power_thermal_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "fuelcell_power_thermal", length);
 	if (!result)
 		make_access_error("SAM_Thermalrate", "fuelcell_power_thermal");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float* SAM_Thermalrate_TimeSeries_thermal_load_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "thermal_load", length);
-	if (!result)
-		make_access_error("SAM_Thermalrate", "thermal_load");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float SAM_Thermalrate_Financials_inflation_rate_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
-		make_access_error("SAM_Thermalrate", "inflation_rate");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float* SAM_Thermalrate_AnnualOutput_thermal_degradation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "thermal_degradation", length);
-	if (!result)
-		make_access_error("SAM_Thermalrate", "thermal_degradation");
 	});
 	return result;
 }
@@ -242,6 +173,42 @@ SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_buy_rate_option_fget(SAM_Th
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_buy_rate_option", &result))
 		make_access_error("SAM_Thermalrate", "thermal_buy_rate_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_degradation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "thermal_degradation", length);
+	if (!result)
+		make_access_error("SAM_Thermalrate", "thermal_degradation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_load_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "thermal_load", length);
+	if (!result)
+		make_access_error("SAM_Thermalrate", "thermal_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_load_escalation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "thermal_load_escalation", length);
+	if (!result)
+		make_access_error("SAM_Thermalrate", "thermal_load_escalation");
 	});
 	return result;
 }
@@ -288,6 +255,39 @@ SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_sell_rate_option_fget(SAM_T
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_sell_rate_option", &result))
 		make_access_error("SAM_Thermalrate", "thermal_sell_rate_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float SAM_Thermalrate_Lifetime_analysis_period_fget(SAM_Thermalrate ptr, SAM_error *err){
+	float result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "analysis_period", &result))
+		make_access_error("SAM_Thermalrate", "analysis_period");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float SAM_Thermalrate_Lifetime_inflation_rate_fget(SAM_Thermalrate ptr, SAM_error *err){
+	float result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
+		make_access_error("SAM_Thermalrate", "inflation_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float SAM_Thermalrate_Lifetime_system_use_lifetime_output_fget(SAM_Thermalrate ptr, SAM_error *err){
+	float result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
+		make_access_error("SAM_Thermalrate", "system_use_lifetime_output");
 	});
 	return result;
 }

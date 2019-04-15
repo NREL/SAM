@@ -38,7 +38,14 @@ static void fcall_setconfig( lk::invoke_t &cxt )
 static void fcall_configopt( lk::invoke_t &cxt )
 {
     LK_DOC("configopt", "Sets configuration options, such as long_name, short_name, description, etc.", "(string:config name, table:options):none");
-    // nothing to do
+    lk::vardata_t &tab = cxt.arg(1).deref();
+    std::string s;
+    s += cxt.arg(0).as_string() + " | ";
+    if( lk::vardata_t *vv = tab.lookup( "long_name" ) )
+        s += vv->as_string() + " | ";
+    if( lk::vardata_t *vv = tab.lookup( "description" ) )
+        s += vv->as_string();
+    std::cout << s << "\n";
 }
 
 static void fcall_setting( lk::invoke_t &cxt )

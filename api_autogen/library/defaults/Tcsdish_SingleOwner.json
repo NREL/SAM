@@ -1,5 +1,5 @@
 {
-	"SingleOwner_defaults": {
+	"defaults": {
 		"Weather": {
 		},
 		"Dish": {

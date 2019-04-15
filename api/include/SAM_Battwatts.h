@@ -113,7 +113,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battwatts_Common_inverter_efficiency_fset(SAM_Battwatts ptr, float number, SAM_error *err);
 
 	/**
-	 * Set inverter_model: Inverter model specifier []
+	 * Set inverter_model: Inverter model specifier
 	 * options: 0=cec,1=datasheet,2=partload,3=coefficientgenerator,4=generic
 	 * constraints: INTEGER,MIN=0,MAX=4
 	 * required if: None

@@ -1,5 +1,5 @@
 {
-	"SingleOwner_defaults": {
+	"defaults": {
 		"Common": {
 		},
 		"Lifetime": {
@@ -78,8 +78,6 @@
 			"fuelcell_type": 2,
 			"fuelcell_unit_max_power": 200,
 			"fuelcell_unit_min_power": 60
-		},
-		"AdjustmentFactors": {
 		}
 	}
 }

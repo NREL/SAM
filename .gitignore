@@ -354,3 +354,5 @@ samples/CSP/sco2_analysis_python/core/PySSC.py
 api_autogen/library/PySAM/
 
 api/test/SAM_api_test
+
+api_autogen/library/C/

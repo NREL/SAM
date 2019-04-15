@@ -105,7 +105,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_annual_energy_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_C_rate: Rate at which voltage vs. capacity curve input []
+	 * Set batt_C_rate: Rate at which voltage vs. capacity curve input
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -185,7 +185,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_Vnom_default_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_ac_dc_efficiency: Inverter AC to battery DC efficiency []
+	 * Set batt_ac_dc_efficiency: Inverter AC to battery DC efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -193,7 +193,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_ac_dc_efficiency_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_ac_or_dc: Battery interconnection (AC or DC) []
+	 * Set batt_ac_or_dc: Battery interconnection (AC or DC)
 	 * options: 0=DC_Connected,1=AC_Connected
 	 * constraints: None
 	 * required if: None
@@ -241,7 +241,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_calendar_choice_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_calendar_lifetime_matrix: Days vs capacity []
+	 * Set batt_calendar_lifetime_matrix: Days vs capacity
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -249,7 +249,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_calendar_lifetime_matrix_mset(SAM_Battery ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set batt_calendar_q0: Calendar life model initial capacity cofficient []
+	 * Set batt_calendar_q0: Calendar life model initial capacity cofficient
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -257,7 +257,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_calendar_q0_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_chem: Battery chemistry []
+	 * Set batt_chem: Battery chemistry
 	 * options: 0=LeadAcid,1=LiIon
 	 * constraints: None
 	 * required if: None
@@ -273,7 +273,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_computed_bank_capacity_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_computed_series: Number of cells in series []
+	 * Set batt_computed_series: Number of cells in series
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -281,7 +281,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_computed_series_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_computed_strings: Number of strings of cells []
+	 * Set batt_computed_strings: Number of strings of cells
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -297,7 +297,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_current_charge_max_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_current_choice: Limit cells by current or power []
+	 * Set batt_current_choice: Limit cells by current or power
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -337,7 +337,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_cycle_cost_choice_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_dc_ac_efficiency: Battery DC to AC efficiency []
+	 * Set batt_dc_ac_efficiency: Battery DC to AC efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -345,7 +345,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_dc_ac_efficiency_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_dc_dc_efficiency: PV DC to battery DC efficiency []
+	 * Set batt_dc_dc_efficiency: PV DC to battery DC efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -433,7 +433,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_length_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_lifetime_matrix: Cycles vs capacity at different depths-of-discharge []
+	 * Set batt_lifetime_matrix: Cycles vs capacity at different depths-of-discharge
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -505,7 +505,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_maximum_SOC_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_meter_position: Position of battery relative to electric meter []
+	 * Set batt_meter_position: Position of battery relative to electric meter
 	 * options: 0=BehindTheMeter,1=FrontOfMeter
 	 * constraints: None
 	 * required if: None
@@ -633,7 +633,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_batt_voltage_choice_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_voltage_matrix: Battery voltage vs. depth-of-discharge []
+	 * Set batt_voltage_matrix: Battery voltage vs. depth-of-discharge
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -657,7 +657,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_cap_vs_temp_mset(SAM_Battery ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_charge: Periods 1-6 charging from system allowed? []
+	 * Set dispatch_manual_charge: Periods 1-6 charging from system allowed?
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_dispatch_choice=4
@@ -665,7 +665,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_dispatch_manual_charge_aset(SAM_Battery ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_discharge: Periods 1-6 discharging allowed? []
+	 * Set dispatch_manual_discharge: Periods 1-6 discharging allowed?
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_dispatch_choice=4
@@ -673,7 +673,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_dispatch_manual_discharge_aset(SAM_Battery ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_gridcharge: Periods 1-6 grid charging allowed? []
+	 * Set dispatch_manual_gridcharge: Periods 1-6 grid charging allowed?
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_dispatch_choice=4
@@ -697,7 +697,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_dispatch_manual_percent_gridcharge_aset(SAM_Battery ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_sched: Battery dispatch schedule for weekday []
+	 * Set dispatch_manual_sched: Battery dispatch schedule for weekday
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_dispatch_choice=4
@@ -705,7 +705,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Battery_dispatch_manual_sched_mset(SAM_Battery ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_sched_weekend: Battery dispatch schedule for weekend []
+	 * Set dispatch_manual_sched_weekend: Battery dispatch schedule for weekend
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_dispatch_choice=4
@@ -768,7 +768,7 @@ extern "C"
 	//
 
 	/**
-	 * Set inverter_model: Inverter model specifier []
+	 * Set inverter_model: Inverter model specifier
 	 * options: 0=cec,1=datasheet,2=partload,3=coefficientgenerator,4=generic
 	 * constraints: INTEGER,MIN=0,MAX=4
 	 * required if: None
@@ -845,7 +845,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Inverter_inv_snl_paco_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set inverter_count: Number of inverters []
+	 * Set inverter_count: Number of inverters
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -858,7 +858,7 @@ extern "C"
 	//
 
 	/**
-	 * Set dcoptimizer_loss: PV loss in DC/DC w/MPPT conversion []
+	 * Set dcoptimizer_loss: PV loss in DC/DC w/MPPT conversion
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -871,7 +871,7 @@ extern "C"
 	//
 
 	/**
-	 * Set dispatch_manual_fuelcellcharge: Periods 1-6 charging from fuel cell allowed? []
+	 * Set dispatch_manual_fuelcellcharge: Periods 1-6 charging from fuel cell allowed?
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -900,7 +900,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRate_en_electricity_rates_fset(SAM_Battery ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ur_ec_sched_weekday: Energy charge weekday schedule []
+	 * Set ur_ec_sched_weekday: Energy charge weekday schedule
 	 * options: 12 x 24 matrix
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
@@ -908,7 +908,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRate_ur_ec_sched_weekday_mset(SAM_Battery ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_sched_weekend: Energy charge weekend schedule []
+	 * Set ur_ec_sched_weekend: Energy charge weekend schedule
 	 * options: 12 x 24 matrix
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
@@ -916,7 +916,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRate_ur_ec_sched_weekend_mset(SAM_Battery ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_tou_mat: Energy rates table []
+	 * Set ur_ec_tou_mat: Energy rates table
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
@@ -945,7 +945,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_EnergyMarket_dispatch_sched_weekend_mset(SAM_Battery ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_tod_factors: TOD factors for periods 1-9 []
+	 * Set dispatch_tod_factors: TOD factors for periods 1-9
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
@@ -953,7 +953,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_EnergyMarket_dispatch_tod_factors_aset(SAM_Battery ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set ppa_price_input: PPA Price Input []
+	 * Set ppa_price_input: PPA Price Input
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2

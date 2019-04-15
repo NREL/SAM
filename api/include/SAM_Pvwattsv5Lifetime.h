@@ -75,7 +75,7 @@ extern "C"
 	//
 
 	/**
-	 * Set solar_resource_data: Weather data []
+	 * Set solar_resource_data: Weather data
 	 * options: dn,df,tdry,wspd,lat,lon,tz
 	 * constraints: None
 	 * required if: ?
@@ -83,7 +83,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv5Lifetime_Weather_solar_resource_data_tset(SAM_Pvwattsv5Lifetime ptr, SAM_table tab, SAM_error *err);
 
 	/**
-	 * Set solar_resource_file: Weather file path []
+	 * Set solar_resource_file: Weather file path
 	 * options: None
 	 * constraints: None
 	 * required if: ?

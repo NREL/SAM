@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set file_name: local weather file path []
+	 * Set file_name: local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: *
@@ -584,7 +584,7 @@ extern "C"
 	//
 
 	/**
-	 * Set heat_sink_dP_frac: Fractional pressure drop through heat sink []
+	 * Set heat_sink_dP_frac: Fractional pressure drop through heat sink
 	 * options: None
 	 * constraints: None
 	 * required if: *

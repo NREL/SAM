@@ -50,19 +50,31 @@ SAM_EXPORT void SAM_Utilityrate5_Common_ur_sell_eq_buy_fset(SAM_Utilityrate5 ptr
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate5_FinancialAnalysis_analysis_period_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate5_Lifetime_analysis_period_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate5_FinancialAnalysis_system_use_lifetime_output_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate5_Lifetime_inflation_rate_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "inflation_rate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_Lifetime_system_use_lifetime_output_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate5_TimeSeries_gen_aset(SAM_Utilityrate5 ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate5_SystemOutput_degradation_aset(SAM_Utilityrate5 ptr, float* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "degradation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_SystemOutput_gen_aset(SAM_Utilityrate5 ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "gen", arr, length);
 	});
@@ -71,18 +83,6 @@ SAM_EXPORT void SAM_Utilityrate5_TimeSeries_gen_aset(SAM_Utilityrate5 ptr, float
 SAM_EXPORT void SAM_Utilityrate5_TimeSeries_load_aset(SAM_Utilityrate5 ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Utilityrate5_Financials_inflation_rate_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "inflation_rate", number);
-	});
-}
-
-SAM_EXPORT void SAM_Utilityrate5_AnnualOutput_degradation_aset(SAM_Utilityrate5 ptr, float* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "degradation", arr, length);
 	});
 }
 
@@ -221,7 +221,7 @@ SAM_EXPORT float SAM_Utilityrate5_Common_ur_sell_eq_buy_fget(SAM_Utilityrate5 pt
 
 
 
-SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysis_analysis_period_fget(SAM_Utilityrate5 ptr, SAM_error *err){
+SAM_EXPORT float SAM_Utilityrate5_Lifetime_analysis_period_fget(SAM_Utilityrate5 ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
@@ -232,7 +232,18 @@ SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysis_analysis_period_fget(SAM_Uti
 
 
 
-SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysis_system_use_lifetime_output_fget(SAM_Utilityrate5 ptr, SAM_error *err){
+SAM_EXPORT float SAM_Utilityrate5_Lifetime_inflation_rate_fget(SAM_Utilityrate5 ptr, SAM_error *err){
+	float result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
+		make_access_error("SAM_Utilityrate5", "inflation_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float SAM_Utilityrate5_Lifetime_system_use_lifetime_output_fget(SAM_Utilityrate5 ptr, SAM_error *err){
 	float result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
@@ -243,7 +254,19 @@ SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysis_system_use_lifetime_output_f
 
 
 
-SAM_EXPORT float* SAM_Utilityrate5_TimeSeries_gen_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err){
+SAM_EXPORT float* SAM_Utilityrate5_SystemOutput_degradation_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "degradation", length);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "degradation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float* SAM_Utilityrate5_SystemOutput_gen_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
@@ -261,29 +284,6 @@ SAM_EXPORT float* SAM_Utilityrate5_TimeSeries_load_aget(SAM_Utilityrate5 ptr, in
 	result = ssc_data_get_array(ptr, "load", length);
 	if (!result)
 		make_access_error("SAM_Utilityrate5", "load");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float SAM_Utilityrate5_Financials_inflation_rate_fget(SAM_Utilityrate5 ptr, SAM_error *err){
-	float result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
-		make_access_error("SAM_Utilityrate5", "inflation_rate");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float* SAM_Utilityrate5_AnnualOutput_degradation_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err){
-	float* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "degradation", length);
-	if (!result)
-		make_access_error("SAM_Utilityrate5", "degradation");
 	});
 	return result;
 }

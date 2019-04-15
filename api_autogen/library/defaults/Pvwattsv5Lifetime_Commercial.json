@@ -1,5 +1,5 @@
 {
-	"Commercial_defaults": {
+	"defaults": {
 		"Common": {
 			"system_use_lifetime_output": 0
 		},

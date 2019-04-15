@@ -5,16 +5,86 @@
 #include "builder_PySAM.h"
 #include "builder_generator_helper.h"
 
-std::string all_fin_of_tech(const std::string config){
+std::string all_options_of_cmod(const std::string &cmod_symbol, const std::string& config_name) {
+    size_t pos = config_name.find_last_of('-');
+    std::string tech = config_to_cmod_name[format_as_symbol(config_name.substr(0, pos))];
+    std::string fin = config_to_cmod_name[format_as_symbol(config_name.substr(pos+1))];
+    assert(tech.length() + fin.length());
+
     std::string str;
-    std::string tech = config.substr(0, config.find_last_of('-'));
+    bool first = true;
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
-        std::string config_name = it->first;
-        size_t pos = config.find_last_of('-');
-        if (config_name.substr(0, pos) == tech)
-            str += config_name.substr(pos+1) + ", ";
+        size_t p = it->first.find_last_of('-');
+        std::string t = config_to_cmod_name[format_as_symbol(it->first.substr(0, p))];
+        std::string f = config_to_cmod_name[format_as_symbol(it->first.substr(p+1))];
+
+        // searching for financial options of tech cmod
+        if (cmod_symbol == tech){
+            if (t == tech){
+                if (f == "IndependentPowerProducer" || f == "CommercialPPA")
+                    continue;
+                if (!first)
+                    str += ", ";
+                str += f;
+                first = false;
+            }
+        }
+        else{
+            if (f == fin){
+                if (!first)
+                    str += ", ";
+                str += t;
+                first = false;
+            }
+        }
     }
+    printf("%s, config%s, str: '%s'\n", cmod_symbol.c_str(), config_name.c_str(), str.c_str());
+    assert(str.length());
     return str;
+}
+
+std::string module_doc(const std::string& tech_symbol){
+    static std::unordered_map<std::string, std::string> desc = {
+            {"Battwatts", "Simplified battery storage model"},
+            {"Belpe", "Electric load calculator for residential buildings"},
+            {"Biomass", "Biomass combustion for electricity generation"},
+            {"CashloanModel", "Financial model for residential and commercial behind-the-meter projects"},
+            {"Equpartflip", "PPA all equity partnership flip (no debt) financial model"},
+            {"Fuelcell", "Fuel cell model"},
+            {"GenericSystem", "Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input"},
+            {"Geothermal", "Geothermal power model for hydrothermal and EGS systems with flash or binary conversion"},
+            {"Hcpv", "Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model"},
+            {"HostDeveloper", "Third party ownership with PPA financial model from host and developer perspective"},
+            {"IphToLcoefcr", "Calculate levelized cost of heat using fixed charge rate method for industrial process heat models"},
+            {"Lcoefcr", "Calculate levelized cost of electricity using fixed charge rate method instead of cash flow"},
+            {"Levpartflip", "PPA leveraged partnership flip (with debt) financial model"},
+            {"LinearFresnelDsgIph", "Linear Fresnel model with steam heat transfer fluid for industrial process heat applications"},
+            {"Pvsamv1", "Detailed photovoltaic system model with separate components for module and inverter"},
+            {"Pvwattsv5", "PVWatts photovoltaic system model with simple inputs"},
+            {"Pvwattsv5Lifetime", "PVWatts photovoltaic system model for multi-year lifetime analysis"},
+            {"Saleleaseback", "PPA sale leaseback partnership financial model"},
+            {"Singleowner", "PPA single owner financial model"},
+            {"StandAloneBattery", "Detailed battery storage model"},
+            {"Swh", "Solar water heating model for residential and commercial building applications"},
+            {"TcsdirectSteam", "CSP direct steam power tower model for power generation"},
+            {"Tcsdish", "CSP dish-Stirling model with parameters for SES and WGA-ADDS systems for power generation"},
+            {"TcsgenericSolar", "CSP power system model with solar field characterized using a table of optical efficiency values"},
+            {"Tcsiscc", "CSP molten salt power tower system with a natural gas combined cycle power plant"},
+            {"TcslinearFresnel", "Process heat linear direct steam "},
+            {"TcsmoltenSalt", "CSP molten salt power tower for power generation"},
+            {"TcsMSLF", "CSP linear Fresnel with molten salt heat transfer fluid for power generation"},
+            {"TcstroughEmpirical", "CSP parabolic trough model based on empirically-derived coefficients and equations for power generation"},
+            {"TcstroughPhysical", "CSP parabolic trough model based on heat transfer and thermodynamic principles for power generation"},
+            {"Thermalrate", "Thermal flat rate structure net revenue calculator"},
+            {"Thirdpartyownership", "Third party ownership with PPA or lease agreement financial model from host perspective"},
+            {"TroughPhysicalProcessHeat", "Parabolic trough for industrial process heat applications"},
+            {"Utilityrate5", "Retail electricity bill calculator"},
+            {"Windpower", "Wind power system with one or more wind turbines"}
+    };
+
+    auto it = desc.find(tech_symbol);
+    assert(it!=desc.end());
+    return it->second;
 }
 
 void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::string &cmod){
@@ -259,8 +329,16 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                 }
 
                 if (vd.reqif.length() > 0) {
-                    doc += "Required if: ";
-                    doc += vd.reqif + ".";
+                    if (vd.reqif == "*"){
+                        doc += "Required.";
+                    }
+                    else if (vd.reqif == "?=0"){
+                        doc += "0 if not set.";
+                    }
+                    else{
+                        doc += "Required if ";
+                        doc += vd.reqif + ".";
+                    }
                 }
 
                 fx_file << "(setter)" << module_symbol << "_set_" << var_symbol << ",\n";
@@ -351,32 +429,32 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
 
         std::string module_symbol = format_as_symbol(mm->first);
 
-        if (module_symbol == "AdjustmentFactors")
-            continue;
-    
-        fx_file << "PyObject* " << module_symbol << "_obj = " << module_symbol << "_new(self->data_ptr);\n"
-                   "\tPyDict_SetItemString(attr_dict, \"" << module_symbol << "\", " << module_symbol << "_obj);\n"
-                   "\tPy_DECREF(" << module_symbol << "_obj);\n\n";
+        if (module_symbol == "AdjustmentFactors"){
+            fx_file << "\tPyObject* AdjustmentFactorsModule = PyImport_ImportModule(\"AdjustmentFactors\");\n"
+                       "\n"
+                       "\tPyObject* data_cap = PyCapsule_New(self->data_ptr, NULL, NULL);\n"
+                       "\tPyObject* Adjust_obj = PyObject_CallMethod(AdjustmentFactorsModule, \"new\", \"(O)\", data_cap);\n"
+                       "\tPy_XDECREF(data_cap);\n"
+                       "\tPy_XDECREF(AdjustmentFactorsModule);\n"
+                       "\n"
+                       "\tif (!Adjust_obj){\n"
+                       "\t\tPyErr_SetString(PySAM_ErrorObject, \"Couldn't create AdjustmentFactorsObject\\n\");\n"
+                       "\t\treturn NULL;\n"
+                       "\t}\n"
+                       "\n"
+                       "\tPyDict_SetItemString(attr_dict, \"AdjustmentFactors\", Adjust_obj);\n"
+                       "\tPy_DECREF(Adjust_obj);\n\n";
+        }
+        else{
+            fx_file << "\tPyObject* " << module_symbol << "_obj = " << module_symbol << "_new(self->data_ptr);\n"
+                       "\tPyDict_SetItemString(attr_dict, \"" << module_symbol << "\", " << module_symbol << "_obj);\n"
+                       "\tPy_DECREF(" << module_symbol << "_obj);\n\n";
+        }
     }
     
-    // add adjustment group and close
-    
-    fx_file << "PyObject* AdjustmentFactorsModule = PyImport_ImportModule(\"AdjustmentFactors\");\n"
-               "\n"
-               "\tPyObject* data_cap = PyCapsule_New(self->data_ptr, NULL, NULL);\n"
-               "\tPyObject* Adjust_obj = PyObject_CallMethod(AdjustmentFactorsModule, \"new\", \"(O)\", data_cap);\n"
-               "\tPy_XDECREF(data_cap);\n"
-               "\tPy_XDECREF(AdjustmentFactorsModule);\n"
-               "\n"
-               "\tif (!Adjust_obj){\n"
-               "\t\tPyErr_SetString(PySAM_ErrorObject, \"Couldn't create AdjustmentFactorsObject\\n\");\n"
-               "\t\treturn NULL;\n"
-               "\t}\n"
-               "\n"
-               "\tPyDict_SetItemString(attr_dict, \"AdjustmentFactors\", Adjust_obj);\n"
-               "\tPy_DECREF(Adjust_obj);\n"
-               "\n"
-               "\treturn self;\n"
+    //  and close
+
+    fx_file << "\n\treturn self;\n"
                "}\n\n";
     
     // add methods
@@ -539,8 +617,8 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "" << tech_symbol << "_default(PyObject *self, PyObject *args)\n"
                "{\n"
                "\t" << tech_symbol << "Object *rv;\n"
-               "\tchar* fin = 0;\n"
-               "\tif (!PyArg_ParseTuple(args, \"s:default\", &fin)){\n"
+               "\tchar* def = 0;\n"
+               "\tif (!PyArg_ParseTuple(args, \"s:default\", &def)){\n"
                "\t\tPyErr_BadArgument();\n"
                "\t\treturn NULL;\n"
                "\t}\n"
@@ -548,7 +626,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\tif (rv == NULL)\n"
                "\t\treturn NULL;\n"
                "\n"
-               "\tPySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", fin);\n"
+               "\tPySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", def);\n"
                "\n"
                "\treturn (PyObject *)rv;\n"
                "}\n\n";
@@ -564,14 +642,14 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\t\t\t\tPyDoc_STR(\"new() -> new " << tech_symbol << " object\")},\n"
                "\t\t{\"default\",             " << tech_symbol << "_default,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"default(financial) -> new " << tech_symbol << " object with financial model-specific default attributes\\n\"\n"
-                                                                                  "\t\t\t\t\"Options: " << all_fin_of_tech(config_name) << "\")},\n"
+                                                                                  "\t\t\t\t\"Options: " << all_options_of_cmod(cmod_symbol, config_name) << "\")},\n"
                "\t\t{\"wrap\",             " << tech_symbol << "_wrap,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> new " << tech_symbol << " object around existing PySSC data\")},\n"
+               "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> new " << tech_symbol << " object around existing PySSC data, taking over memory ownership\")},\n"
                "\t\t{NULL,              NULL}           /* sentinel */\n"
                "};\n"
                "\n"
                "PyDoc_STRVAR(module_doc,\n"
-               "\t\t\t \"Refer to http://www.github.com/nrel/PySAM for source code.\");\n\n\n";
+               "\t\t\t \"" << module_doc(tech_symbol) << "\");\n\n\n";
 
     // define the execution of module and adjustmentfactors type
     fx_file << "static int\n"
@@ -580,27 +658,34 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\t/* Finalize the type object including setting type of the new type\n"
                "\t * object; doing it here is required for portability, too. */\n"
                "\n"
+               "\tif (PySAM_load_lib(m) < 0) goto fail;\n"
+               "\tif (PySAM_init_error(m) < 0) goto fail;\n"
+               "\n"
                "\t" << tech_symbol << "_Type.tp_dict = PyDict_New();\n"
                "\tif (!" << tech_symbol << "_Type.tp_dict) { goto fail; }\n"
-               "\n"
-               "\t/// Add the AdjustmentFactors type object to " << tech_symbol << "_Type\n"
-               "\tPyObject* AdjustmentFactorsModule = PyImport_ImportModule(\"AdjustmentFactors\");\n"
-               "\tif (!AdjustmentFactorsModule){\n"
-               "\t\tPyErr_SetImportError(PyUnicode_FromString(\"Could not import AdjustmentFactors module.\"), NULL, NULL);\n"
-               "\t}\n"
-               "\n"
-               "\tPyTypeObject* AdjustmentFactors_Type = (PyTypeObject*)PyObject_GetAttrString(AdjustmentFactorsModule, \"AdjustmentFactors\");\n"
-               "\tif (!AdjustmentFactors_Type){\n"
-               "\t\tPyErr_SetImportError(PyUnicode_FromString(\"Could not import AdjustmentFactors type.\"), NULL, NULL);\n"
-               "\t}\n"
-               "\tPy_XDECREF(AdjustmentFactorsModule);\n"
-               "\n"
-               "\tif (PyType_Ready(AdjustmentFactors_Type) < 0) { goto fail; }\n"
-               "\tPyDict_SetItemString(" << tech_symbol << "_Type.tp_dict,\n"
-               "\t\t\t\t\t\t \"AdjustmentFactors\",\n"
-               "\t\t\t\t\t\t (PyObject*)AdjustmentFactors_Type);\n"
-               "\tPy_DECREF(&AdjustmentFactors_Type);\n"
-               "\tPy_XDECREF(AdjustmentFactors_Type);\n\n";
+               "\n";
+
+    if (root->m_vardefs.find("AdjustmentFactors") != root->m_vardefs.end()){
+        fx_file << "\t/// Add the AdjustmentFactors type object to " << tech_symbol << "_Type\n"
+                "\tPyObject* AdjustmentFactorsModule = PyImport_ImportModule(\"AdjustmentFactors\");\n"
+                "\tif (!AdjustmentFactorsModule){\n"
+                "\t\tPyErr_SetImportError(PyUnicode_FromString(\"Could not import AdjustmentFactors module.\"), NULL, NULL);\n"
+                "\t}\n"
+                "\n"
+                "\tPyTypeObject* AdjustmentFactors_Type = (PyTypeObject*)PyObject_GetAttrString(AdjustmentFactorsModule, \"AdjustmentFactors\");\n"
+                "\tif (!AdjustmentFactors_Type){\n"
+                "\t\tPyErr_SetImportError(PyUnicode_FromString(\"Could not import AdjustmentFactors type.\"), NULL, NULL);\n"
+                "\t}\n"
+                "\tPy_XDECREF(AdjustmentFactorsModule);\n"
+                "\n"
+                "\tif (PyType_Ready(AdjustmentFactors_Type) < 0) { goto fail; }\n"
+                "\tPyDict_SetItemString(" << tech_symbol << "_Type.tp_dict,\n"
+                "\t\t\t\t\t\t \"AdjustmentFactors\",\n"
+                "\t\t\t\t\t\t (PyObject*)AdjustmentFactors_Type);\n"
+                "\tPy_DECREF(&AdjustmentFactors_Type);\n"
+                "\tPy_XDECREF(AdjustmentFactors_Type);\n\n";
+    }
+
 
     // add the group types
     for (size_t i = 0; i < root->vardefs_order.size() ; i++) {
@@ -628,10 +713,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\t\t\t\t\"" << tech_symbol << "\",\n"
                "\t\t\t\t(PyObject*)&" << tech_symbol << "_Type);\n\n";
 
-    fx_file << "\tif (PySAM_load_lib(m) < 0) goto fail;\n"
-               "\tif (PySAM_init_error() < 0) goto fail;\n"
-               "\n"
-               "\treturn 0;\n"
+    fx_file << "\treturn 0;\n"
                "\tfail:\n"
                "\tPy_XDECREF(m);\n"
                "\treturn -1;\n"

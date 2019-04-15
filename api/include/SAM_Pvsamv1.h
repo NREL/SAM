@@ -44,7 +44,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SolarResource_albedo_aset(SAM_Pvsamv1 ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set irrad_mode: Irradiance input translation mode []
+	 * Set irrad_mode: Irradiance input translation mode
 	 * options: 0=beam&diffuse,1=total&beam,2=total&diffuse,3=poa_reference,4=poa_pyranometer
 	 * constraints: INTEGER,MIN=0,MAX=4
 	 * required if: ?=0
@@ -52,7 +52,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SolarResource_irrad_mode_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sky_model: Diffuse sky model []
+	 * Set sky_model: Diffuse sky model
 	 * options: 0=isotropic,1=hkdr,2=perez
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=2
@@ -60,7 +60,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SolarResource_sky_model_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set solar_resource_data: Weather data []
+	 * Set solar_resource_data: Weather data
 	 * options: lat,lon,tz,elev,year,month,hour,minute,gh,dn,df,poa,tdry,twet,tdew,rhum,pres,Snow,alb,aod,wspd,wdir
 	 * constraints: None
 	 * required if: ?
@@ -68,7 +68,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SolarResource_solar_resource_data_tset(SAM_Pvsamv1 ptr, SAM_table tab, SAM_error *err);
 
 	/**
-	 * Set solar_resource_file: Weather file in TMY2, TMY3, EPW, or SAM CSV []
+	 * Set solar_resource_file: Weather file in TMY2, TMY3, EPW, or SAM CSV
 	 * options: None
 	 * constraints: None
 	 * required if: ?
@@ -427,7 +427,7 @@ extern "C"
 	//
 
 	/**
-	 * Set enable_mismatch_vmax_calc: Enable mismatched subarray Vmax calculation []
+	 * Set enable_mismatch_vmax_calc: Enable mismatched subarray Vmax calculation
 	 * options: None
 	 * constraints: BOOLEAN
 	 * required if: ?=0
@@ -435,7 +435,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_enable_mismatch_vmax_calc_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set inverter_count: Number of inverters []
+	 * Set inverter_count: Number of inverters
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: *
@@ -451,7 +451,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_azimuth_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray1_backtrack: Sub-array 1 Backtracking enabled []
+	 * Set subarray1_backtrack: Sub-array 1 Backtracking enabled
 	 * options: 0=no backtracking,1=backtrack
 	 * constraints: BOOLEAN
 	 * required if: subarray1_track_mode=1
@@ -467,7 +467,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_gcr_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray1_modules_per_string: Sub-array 1 Modules per string []
+	 * Set subarray1_modules_per_string: Sub-array 1 Modules per string
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: *
@@ -483,7 +483,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_monthly_tilt_aset(SAM_Pvsamv1 ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set subarray1_mppt_input: Sub-array 1 Inverter MPPT input number []
+	 * Set subarray1_mppt_input: Sub-array 1 Inverter MPPT input number
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: ?=1
@@ -491,7 +491,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_mppt_input_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray1_nstrings: Sub-array 1 Number of parallel strings []
+	 * Set subarray1_nstrings: Sub-array 1 Number of parallel strings
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: None
@@ -523,7 +523,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_tilt_eq_lat_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray1_track_mode: Sub-array 1 Tracking mode []
+	 * Set subarray1_track_mode: Sub-array 1 Tracking mode
 	 * options: 0=fixed,1=1axis,2=2axis,3=azi,4=monthly
 	 * constraints: INTEGER,MIN=0,MAX=4
 	 * required if: *
@@ -539,7 +539,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_azimuth_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray2_backtrack: Sub-array 2 Backtracking enabled []
+	 * Set subarray2_backtrack: Sub-array 2 Backtracking enabled
 	 * options: 0=no backtracking,1=backtrack
 	 * constraints: BOOLEAN
 	 * required if: None
@@ -563,7 +563,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_gcr_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray2_modules_per_string: Sub-array 2 Modules per string []
+	 * Set subarray2_modules_per_string: Sub-array 2 Modules per string
 	 * options: None
 	 * constraints: INTEGER,MIN=1
 	 * required if: subarray2_enable=1
@@ -579,7 +579,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_monthly_tilt_aset(SAM_Pvsamv1 ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set subarray2_mppt_input: Sub-array 2 Inverter MPPT input number []
+	 * Set subarray2_mppt_input: Sub-array 2 Inverter MPPT input number
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: ?=1
@@ -587,7 +587,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_mppt_input_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray2_nstrings: Sub-array 2 Number of parallel strings []
+	 * Set subarray2_nstrings: Sub-array 2 Number of parallel strings
 	 * options: None
 	 * constraints: INTEGER,MIN=1
 	 * required if: subarray2_enable=1
@@ -619,7 +619,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_tilt_eq_lat_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray2_track_mode: Sub-array 2 Tracking mode []
+	 * Set subarray2_track_mode: Sub-array 2 Tracking mode
 	 * options: 0=fixed,1=1axis,2=2axis,3=azi,4=monthly
 	 * constraints: INTEGER,MIN=0,MAX=4
 	 * required if: subarray2_enable=1
@@ -635,7 +635,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_azimuth_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray3_backtrack: Sub-array 3 Backtracking enabled []
+	 * Set subarray3_backtrack: Sub-array 3 Backtracking enabled
 	 * options: 0=no backtracking,1=backtrack
 	 * constraints: BOOLEAN
 	 * required if: None
@@ -659,7 +659,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_gcr_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray3_modules_per_string: Sub-array 3 Modules per string []
+	 * Set subarray3_modules_per_string: Sub-array 3 Modules per string
 	 * options: None
 	 * constraints: INTEGER,MIN=1
 	 * required if: subarray3_enable=1
@@ -675,7 +675,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_monthly_tilt_aset(SAM_Pvsamv1 ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set subarray3_mppt_input: Sub-array 3 Inverter MPPT input number []
+	 * Set subarray3_mppt_input: Sub-array 3 Inverter MPPT input number
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: ?=1
@@ -683,7 +683,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_mppt_input_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray3_nstrings: Sub-array 3 Number of parallel strings []
+	 * Set subarray3_nstrings: Sub-array 3 Number of parallel strings
 	 * options: None
 	 * constraints: INTEGER,MIN=1
 	 * required if: subarray3_enable=1
@@ -715,7 +715,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_tilt_eq_lat_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray3_track_mode: Sub-array 3 Tracking mode []
+	 * Set subarray3_track_mode: Sub-array 3 Tracking mode
 	 * options: 0=fixed,1=1axis,2=2axis,3=azi,4=monthly
 	 * constraints: INTEGER,MIN=0,MAX=4
 	 * required if: subarray3_enable=1
@@ -731,7 +731,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_azimuth_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray4_backtrack: Sub-array 4 Backtracking enabled []
+	 * Set subarray4_backtrack: Sub-array 4 Backtracking enabled
 	 * options: 0=no backtracking,1=backtrack
 	 * constraints: BOOLEAN
 	 * required if: None
@@ -755,7 +755,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_gcr_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray4_modules_per_string: Sub-array 4 Modules per string []
+	 * Set subarray4_modules_per_string: Sub-array 4 Modules per string
 	 * options: None
 	 * constraints: INTEGER,MIN=1
 	 * required if: subarray4_enable=1
@@ -771,7 +771,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_monthly_tilt_aset(SAM_Pvsamv1 ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set subarray4_mppt_input: Sub-array 4 Inverter MPPT input number []
+	 * Set subarray4_mppt_input: Sub-array 4 Inverter MPPT input number
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: ?=1
@@ -779,7 +779,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_mppt_input_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray4_nstrings: Sub-array 4 Number of parallel strings []
+	 * Set subarray4_nstrings: Sub-array 4 Number of parallel strings
 	 * options: None
 	 * constraints: INTEGER,MIN=1
 	 * required if: subarray4_enable=1
@@ -811,7 +811,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_tilt_eq_lat_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray4_track_mode: Sub-array 4 Tracking mode []
+	 * Set subarray4_track_mode: Sub-array 4 Tracking mode
 	 * options: 0=fixed,1=1axis,2=2axis,3=azi,4=monthly
 	 * constraints: INTEGER,MIN=0,MAX=4
 	 * required if: subarray4_enable=1
@@ -864,7 +864,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_mxh_mset(SAM_Pvsamv1 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set subarray1_shading:string_option: Sub-array 1 shading string option []
+	 * Set subarray1_shading:string_option: Sub-array 1 shading string option
 	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
@@ -912,7 +912,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_mxh_mset(SAM_Pvsamv1 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set subarray2_shading:string_option: Sub-array 2 Shading string option []
+	 * Set subarray2_shading:string_option: Sub-array 2 Shading string option
 	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
@@ -960,7 +960,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_mxh_mset(SAM_Pvsamv1 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set subarray3_shading:string_option: Sub-array 3 Shading string option []
+	 * Set subarray3_shading:string_option: Sub-array 3 Shading string option
 	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
@@ -1008,7 +1008,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_mxh_mset(SAM_Pvsamv1 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set subarray4_shading:string_option: Sub-array 4 Shading string option []
+	 * Set subarray4_shading:string_option: Sub-array 4 Shading string option
 	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
@@ -1029,7 +1029,7 @@ extern "C"
 	//
 
 	/**
-	 * Set module_aspect_ratio: Module aspect ratio []
+	 * Set module_aspect_ratio: Module aspect ratio
 	 * options: None
 	 * constraints: POSITIVE
 	 * required if: ?=1.7
@@ -1045,7 +1045,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Layout_subarray1_mod_orient_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray1_nmodx: Sub-array 1 Number of modules along bottom of row []
+	 * Set subarray1_nmodx: Sub-array 1 Number of modules along bottom of row
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: *
@@ -1053,7 +1053,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Layout_subarray1_nmodx_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray1_nmody: Sub-array 1 Number of modules along side of row []
+	 * Set subarray1_nmody: Sub-array 1 Number of modules along side of row
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: *
@@ -1069,7 +1069,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Layout_subarray2_mod_orient_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray2_nmodx: Sub-array 2 Number of modules along bottom of row []
+	 * Set subarray2_nmodx: Sub-array 2 Number of modules along bottom of row
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: subarray2_enable=1
@@ -1077,7 +1077,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Layout_subarray2_nmodx_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray2_nmody: Sub-array 2 Number of modules along side of row []
+	 * Set subarray2_nmody: Sub-array 2 Number of modules along side of row
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: subarray2_enable=1
@@ -1093,7 +1093,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Layout_subarray3_mod_orient_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray3_nmodx: Sub-array 3 Number of modules along bottom of row []
+	 * Set subarray3_nmodx: Sub-array 3 Number of modules along bottom of row
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: subarray3_enable=1
@@ -1101,7 +1101,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Layout_subarray3_nmodx_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray3_nmody: Sub-array 3 Number of modules along side of row []
+	 * Set subarray3_nmody: Sub-array 3 Number of modules along side of row
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: subarray3_enable=1
@@ -1117,7 +1117,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Layout_subarray4_mod_orient_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray4_nmodx: Sub-array 4 Number of modules along bottom of row []
+	 * Set subarray4_nmodx: Sub-array 4 Number of modules along bottom of row
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: subarray4_enable=1
@@ -1125,7 +1125,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Layout_subarray4_nmodx_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set subarray4_nmody: Sub-array 4 Number of modules along side of row []
+	 * Set subarray4_nmody: Sub-array 4 Number of modules along side of row
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: subarray4_enable=1
@@ -1138,7 +1138,7 @@ extern "C"
 	//
 
 	/**
-	 * Set module_model: Photovoltaic module model specifier []
+	 * Set module_model: Photovoltaic module model specifier
 	 * options: 0=spe,1=cec,2=6par_user,3=snl,4=sd11-iec61853,5=PVYield
 	 * constraints: INTEGER,MIN=0,MAX=5
 	 * required if: *
@@ -1151,7 +1151,7 @@ extern "C"
 	//
 
 	/**
-	 * Set spe_a: Cell temp parameter a []
+	 * Set spe_a: Cell temp parameter a
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=0
@@ -1167,7 +1167,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SimpleEfficiencyModuleModel_spe_area_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set spe_b: Cell temp parameter b []
+	 * Set spe_b: Cell temp parameter b
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=0
@@ -1199,7 +1199,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SimpleEfficiencyModuleModel_spe_bifaciality_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set spe_dT: Cell temp parameter dT []
+	 * Set spe_dT: Cell temp parameter dT
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=0
@@ -1263,7 +1263,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SimpleEfficiencyModuleModel_spe_is_bifacial_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set spe_module_structure: Mounting and module structure []
+	 * Set spe_module_structure: Mounting and module structure
 	 * options: 0=glass/cell/polymer sheet - open rack,1=glass/cell/glass - open rack,2=polymer/thin film/steel - open rack,3=Insulated back, building-integrated PV,4=close roof mount,5=user-defined
 	 * constraints: INTEGER,MIN=0,MAX=5
 	 * required if: module_model=0
@@ -1311,7 +1311,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SimpleEfficiencyModuleModel_spe_rad4_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set spe_reference: Reference irradiance level []
+	 * Set spe_reference: Reference irradiance level
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=4
 	 * required if: module_model=0
@@ -1348,7 +1348,7 @@ extern "C"
 	//
 
 	/**
-	 * Set cec_a_ref: Nonideality factor a []
+	 * Set cec_a_ref: Nonideality factor a
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=1
@@ -1380,7 +1380,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_area_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cec_array_cols: Columns of modules in array []
+	 * Set cec_array_cols: Columns of modules in array
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=1&cec_temp_corr_mode=1
@@ -1388,7 +1388,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_array_cols_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cec_array_rows: Rows of modules in array []
+	 * Set cec_array_rows: Rows of modules in array
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=1&cec_temp_corr_mode=1
@@ -1452,7 +1452,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gap_spacing_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cec_heat_transfer: Heat transfer dimensions []
+	 * Set cec_heat_transfer: Heat transfer dimensions
 	 * options: 0=module,1=array
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=1&cec_temp_corr_mode=1
@@ -1460,7 +1460,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_heat_transfer_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cec_height: Array mounting height []
+	 * Set cec_height: Array mounting height
 	 * options: 0=one story,1=two story
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=1
@@ -1524,7 +1524,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_module_width_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cec_mounting_config: Mounting configuration []
+	 * Set cec_mounting_config: Mounting configuration
 	 * options: 0=rack,1=flush,2=integrated,3=gap
 	 * constraints: INTEGER,MIN=0,MAX=3
 	 * required if: module_model=1&cec_temp_corr_mode=1
@@ -1532,7 +1532,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_mounting_config_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cec_mounting_orientation: Mounting structure orientation []
+	 * Set cec_mounting_orientation: Mounting structure orientation
 	 * options: 0=do not impede flow,1=vertical supports,2=horizontal supports
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: module_model=1&cec_temp_corr_mode=1
@@ -1540,7 +1540,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_mounting_orientation_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cec_n_s: Number of cells in series []
+	 * Set cec_n_s: Number of cells in series
 	 * options: None
 	 * constraints: POSITIVE
 	 * required if: module_model=1
@@ -1564,7 +1564,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_r_sh_ref_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cec_standoff: Standoff mode []
+	 * Set cec_standoff: Standoff mode
 	 * options: 0=bipv,1=>3.5in,2=2.5-3.5in,3=1.5-2.5in,4=0.5-1.5in,5=<0.5in,6=ground/rack
 	 * constraints: INTEGER,MIN=0,MAX=6
 	 * required if: module_model=1
@@ -1580,7 +1580,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_t_noct_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cec_temp_corr_mode: Cell temperature model selection []
+	 * Set cec_temp_corr_mode: Cell temperature model selection
 	 * options: 0=noct,1=mc
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=1
@@ -1657,7 +1657,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bvoc_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set 6par_celltech: Solar cell technology type []
+	 * Set 6par_celltech: Solar cell technology type
 	 * options: monoSi=0,multiSi=1,CdTe=2,CIS=3,CIGS=4,Amorphous=5
 	 * constraints: INTEGER,MIN=0,MAX=5
 	 * required if: module_model=2
@@ -1697,7 +1697,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_isc_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set 6par_mounting: Array mounting height []
+	 * Set 6par_mounting: Array mounting height
 	 * options: 0=one story,1=two story
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=2
@@ -1705,7 +1705,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_mounting_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set 6par_nser: Nseries []
+	 * Set 6par_nser: Nseries
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: module_model=2
@@ -1713,7 +1713,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_nser_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set 6par_standoff: Standoff mode []
+	 * Set 6par_standoff: Standoff mode
 	 * options: 0=bipv,1=>3.5in,2=2.5-3.5in,3=1.5-2.5in,4=0.5-1.5in,5=<0.5in,6=ground/rack
 	 * constraints: INTEGER,MIN=0,MAX=6
 	 * required if: module_model=2
@@ -1750,7 +1750,7 @@ extern "C"
 	//
 
 	/**
-	 * Set snl_a: Temperature coefficient a []
+	 * Set snl_a: Temperature coefficient a
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1758,7 +1758,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_a_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_a0: Air mass polynomial coeff 0 []
+	 * Set snl_a0: Air mass polynomial coeff 0
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1766,7 +1766,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_a0_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_a1: Air mass polynomial coeff 1 []
+	 * Set snl_a1: Air mass polynomial coeff 1
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1774,7 +1774,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_a1_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_a2: Air mass polynomial coeff 2 []
+	 * Set snl_a2: Air mass polynomial coeff 2
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1782,7 +1782,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_a2_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_a3: Air mass polynomial coeff 3 []
+	 * Set snl_a3: Air mass polynomial coeff 3
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1790,7 +1790,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_a3_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_a4: Air mass polynomial coeff 4 []
+	 * Set snl_a4: Air mass polynomial coeff 4
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1798,7 +1798,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_a4_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_aimp: Max power point current temperature coefficient []
+	 * Set snl_aimp: Max power point current temperature coefficient
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1806,7 +1806,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_aimp_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_aisc: Short circuit current temperature coefficient []
+	 * Set snl_aisc: Short circuit current temperature coefficient
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1814,7 +1814,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_aisc_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_area: Module area []
+	 * Set snl_area: Module area
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1822,7 +1822,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_area_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_b: Temperature coefficient b []
+	 * Set snl_b: Temperature coefficient b
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1830,7 +1830,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_b_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_b0: Incidence angle modifier polynomial coeff 0 []
+	 * Set snl_b0: Incidence angle modifier polynomial coeff 0
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1838,7 +1838,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_b0_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_b1: Incidence angle modifier polynomial coeff 1 []
+	 * Set snl_b1: Incidence angle modifier polynomial coeff 1
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1846,7 +1846,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_b1_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_b2: Incidence angle modifier polynomial coeff 2 []
+	 * Set snl_b2: Incidence angle modifier polynomial coeff 2
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1854,7 +1854,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_b2_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_b3: Incidence angle modifier polynomial coeff 3 []
+	 * Set snl_b3: Incidence angle modifier polynomial coeff 3
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1862,7 +1862,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_b3_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_b4: Incidence angle modifier polynomial coeff 4 []
+	 * Set snl_b4: Incidence angle modifier polynomial coeff 4
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1870,7 +1870,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_b4_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_b5: Incidence angle modifier polynomial coeff 5 []
+	 * Set snl_b5: Incidence angle modifier polynomial coeff 5
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1878,7 +1878,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_b5_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_bvmpo: Max power point voltage temperature coefficient []
+	 * Set snl_bvmpo: Max power point voltage temperature coefficient
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1886,7 +1886,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_bvmpo_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_bvoco: Open circuit voltage temperature coefficient []
+	 * Set snl_bvoco: Open circuit voltage temperature coefficient
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1894,7 +1894,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_bvoco_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_c0: C0 []
+	 * Set snl_c0: C0
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1902,7 +1902,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_c0_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_c1: C1 []
+	 * Set snl_c1: C1
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1910,7 +1910,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_c1_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_c2: C2 []
+	 * Set snl_c2: C2
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1918,7 +1918,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_c2_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_c3: C3 []
+	 * Set snl_c3: C3
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1926,7 +1926,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_c3_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_c4: C4 []
+	 * Set snl_c4: C4
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1934,7 +1934,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_c4_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_c5: C5 []
+	 * Set snl_c5: C5
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1942,7 +1942,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_c5_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_c6: C6 []
+	 * Set snl_c6: C6
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1950,7 +1950,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_c6_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_c7: C7 []
+	 * Set snl_c7: C7
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1958,7 +1958,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_c7_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_dtc: Temperature coefficient dT []
+	 * Set snl_dtc: Temperature coefficient dT
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1966,7 +1966,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_dtc_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_fd: Diffuse fraction []
+	 * Set snl_fd: Diffuse fraction
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1974,7 +1974,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_fd_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_impo: Max power point current []
+	 * Set snl_impo: Max power point current
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1982,7 +1982,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_impo_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_isco: Short circuit current []
+	 * Set snl_isco: Short circuit current
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1990,7 +1990,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_isco_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_ixo: Ix midpoint current []
+	 * Set snl_ixo: Ix midpoint current
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -1998,7 +1998,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_ixo_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_ixxo: Ixx midpoint current []
+	 * Set snl_ixxo: Ixx midpoint current
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -2006,7 +2006,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_ixxo_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_mbvmp: Irradiance dependence of Vmp temperature coefficient []
+	 * Set snl_mbvmp: Irradiance dependence of Vmp temperature coefficient
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -2014,7 +2014,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_mbvmp_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_mbvoc: Irradiance dependence of Voc temperature coefficient []
+	 * Set snl_mbvoc: Irradiance dependence of Voc temperature coefficient
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -2022,7 +2022,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_mbvoc_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_module_structure: Module and mounting structure configuration []
+	 * Set snl_module_structure: Module and mounting structure configuration
 	 * options: 0=Use Database Values,1=glass/cell/polymer sheet-open rack,2=glass/cell/glass-open rack,3=polymer/thin film/steel-open rack,4=Insulated back BIPV,5=close roof mount,6=user-defined
 	 * constraints: INTEGER,MIN=0,MAX=6
 	 * required if: module_model=3
@@ -2030,7 +2030,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_module_structure_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_n: Diode factor []
+	 * Set snl_n: Diode factor
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -2038,7 +2038,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_n_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_ref_a: User-specified a []
+	 * Set snl_ref_a: User-specified a
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -2046,7 +2046,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_ref_a_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_ref_b: User-specified b []
+	 * Set snl_ref_b: User-specified b
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -2054,7 +2054,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_ref_b_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_ref_dT: User-specified dT []
+	 * Set snl_ref_dT: User-specified dT
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -2062,7 +2062,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_ref_dT_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_series_cells: Number of cells in series []
+	 * Set snl_series_cells: Number of cells in series
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: module_model=3
@@ -2070,7 +2070,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_series_cells_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_vmpo: Max power point voltage []
+	 * Set snl_vmpo: Max power point voltage
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -2078,7 +2078,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SandiaPVArrayPerformanceModelWithModuleDatabase_snl_vmpo_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set snl_voco: Open circuit voltage []
+	 * Set snl_voco: Open circuit voltage
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=3
@@ -2091,7 +2091,7 @@ extern "C"
 	//
 
 	/**
-	 * Set sd11par_AMa0: Air mass modifier coeff 0 []
+	 * Set sd11par_AMa0: Air mass modifier coeff 0
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2099,7 +2099,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_AMa0_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_AMa1: Air mass modifier coeff 1 []
+	 * Set sd11par_AMa1: Air mass modifier coeff 1
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2107,7 +2107,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_AMa1_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_AMa2: Air mass modifier coeff 2 []
+	 * Set sd11par_AMa2: Air mass modifier coeff 2
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2115,7 +2115,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_AMa2_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_AMa3: Air mass modifier coeff 3 []
+	 * Set sd11par_AMa3: Air mass modifier coeff 3
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2123,7 +2123,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_AMa3_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_AMa4: Air mass modifier coeff 4 []
+	 * Set sd11par_AMa4: Air mass modifier coeff 4
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2203,7 +2203,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_area_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_c1: Rsh fit parameter 1 []
+	 * Set sd11par_c1: Rsh fit parameter 1
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2211,7 +2211,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_c1_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_c2: Rsh fit parameter 2 []
+	 * Set sd11par_c2: Rsh fit parameter 2
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2219,7 +2219,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_c2_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_c3: Rsh fit parameter 3 []
+	 * Set sd11par_c3: Rsh fit parameter 3
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2227,7 +2227,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_c3_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_d1: Rs fit parameter 1 []
+	 * Set sd11par_d1: Rs fit parameter 1
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2235,7 +2235,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_d1_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_d2: Rs fit parameter 2 []
+	 * Set sd11par_d2: Rs fit parameter 2
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2243,7 +2243,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_d2_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_d3: Rs fit parameter 3 []
+	 * Set sd11par_d3: Rs fit parameter 3
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2251,7 +2251,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_d3_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_glass: Module cover glass type []
+	 * Set sd11par_glass: Module cover glass type
 	 * options: 0=normal,1=AR glass
 	 * constraints: None
 	 * required if: module_model=4
@@ -2259,7 +2259,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_glass_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_mounting: Array mounting height []
+	 * Set sd11par_mounting: Array mounting height
 	 * options: 0=one story,1=two story
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=4
@@ -2267,7 +2267,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_mounting_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_n: Diode nonideality factor []
+	 * Set sd11par_n: Diode nonideality factor
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=4
@@ -2275,7 +2275,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_n_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_nser: Nseries []
+	 * Set sd11par_nser: Nseries
 	 * options: None
 	 * constraints: INTEGER,POSITIVE
 	 * required if: module_model=4
@@ -2283,7 +2283,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_IEC61853SingleDiodeModel_sd11par_nser_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sd11par_standoff: Standoff mode []
+	 * Set sd11par_standoff: Standoff mode
 	 * options: 0=bipv,1=>3.5in,2=2.5-3.5in,3=1.5-2.5in,4=0.5-1.5in,5=<0.5in,6=ground/rack
 	 * constraints: INTEGER,MIN=0,MAX=6
 	 * required if: module_model=4
@@ -2749,7 +2749,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Inverter_inv_ds_paco_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set inv_num_mppt: Number of MPPT inputs []
+	 * Set inv_num_mppt: Number of MPPT inputs
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=4
 	 * required if: ?=1
@@ -2789,7 +2789,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Inverter_inv_snl_paco_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set inverter_count: Number of inverters []
+	 * Set inverter_count: Number of inverters
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -2797,7 +2797,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Inverter_inverter_count_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set inverter_model: Inverter model specifier []
+	 * Set inverter_model: Inverter model specifier
 	 * options: 0=cec,1=datasheet,2=partload,3=coefficientgenerator,4=PVYield
 	 * constraints: INTEGER,MIN=0,MAX=4
 	 * required if: *
@@ -3467,7 +3467,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_LeadAcid_tn_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_C_rate: Rate at which voltage vs. capacity curve input []
+	 * Set batt_C_rate: Rate at which voltage vs. capacity curve input
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3547,7 +3547,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_Vnom_default_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_ac_dc_efficiency: Inverter AC to battery DC efficiency []
+	 * Set batt_ac_dc_efficiency: Inverter AC to battery DC efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3555,7 +3555,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_ac_dc_efficiency_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_ac_or_dc: Battery interconnection (AC or DC) []
+	 * Set batt_ac_or_dc: Battery interconnection (AC or DC)
 	 * options: 0=DC_Connected,1=AC_Connected
 	 * constraints: None
 	 * required if: None
@@ -3603,7 +3603,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_calendar_choice_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_calendar_lifetime_matrix: Days vs capacity []
+	 * Set batt_calendar_lifetime_matrix: Days vs capacity
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3611,7 +3611,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_calendar_lifetime_matrix_mset(SAM_Pvsamv1 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set batt_calendar_q0: Calendar life model initial capacity cofficient []
+	 * Set batt_calendar_q0: Calendar life model initial capacity cofficient
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3619,7 +3619,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_calendar_q0_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_chem: Battery chemistry []
+	 * Set batt_chem: Battery chemistry
 	 * options: 0=LeadAcid,1=LiIon
 	 * constraints: None
 	 * required if: None
@@ -3635,7 +3635,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_computed_bank_capacity_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_computed_series: Number of cells in series []
+	 * Set batt_computed_series: Number of cells in series
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3643,7 +3643,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_computed_series_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_computed_strings: Number of strings of cells []
+	 * Set batt_computed_strings: Number of strings of cells
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3659,7 +3659,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_current_charge_max_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_current_choice: Limit cells by current or power []
+	 * Set batt_current_choice: Limit cells by current or power
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3699,7 +3699,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_cycle_cost_choice_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_dc_ac_efficiency: Battery DC to AC efficiency []
+	 * Set batt_dc_ac_efficiency: Battery DC to AC efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3707,7 +3707,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_dc_ac_efficiency_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_dc_dc_efficiency: PV DC to battery DC efficiency []
+	 * Set batt_dc_dc_efficiency: PV DC to battery DC efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3795,7 +3795,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_length_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_lifetime_matrix: Cycles vs capacity at different depths-of-discharge []
+	 * Set batt_lifetime_matrix: Cycles vs capacity at different depths-of-discharge
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3867,7 +3867,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_maximum_SOC_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_meter_position: Position of battery relative to electric meter []
+	 * Set batt_meter_position: Position of battery relative to electric meter
 	 * options: 0=BehindTheMeter,1=FrontOfMeter
 	 * constraints: None
 	 * required if: None
@@ -3995,7 +3995,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_batt_voltage_choice_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set batt_voltage_matrix: Battery voltage vs. depth-of-discharge []
+	 * Set batt_voltage_matrix: Battery voltage vs. depth-of-discharge
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -4019,7 +4019,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_cap_vs_temp_mset(SAM_Pvsamv1 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_charge: Periods 1-6 charging from system allowed? []
+	 * Set dispatch_manual_charge: Periods 1-6 charging from system allowed?
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_dispatch_choice=4
@@ -4027,7 +4027,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_dispatch_manual_charge_aset(SAM_Pvsamv1 ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_discharge: Periods 1-6 discharging allowed? []
+	 * Set dispatch_manual_discharge: Periods 1-6 discharging allowed?
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_dispatch_choice=4
@@ -4035,7 +4035,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_dispatch_manual_discharge_aset(SAM_Pvsamv1 ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_gridcharge: Periods 1-6 grid charging allowed? []
+	 * Set dispatch_manual_gridcharge: Periods 1-6 grid charging allowed?
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_dispatch_choice=4
@@ -4059,7 +4059,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_dispatch_manual_percent_gridcharge_aset(SAM_Pvsamv1 ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_sched: Battery dispatch schedule for weekday []
+	 * Set dispatch_manual_sched: Battery dispatch schedule for weekday
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_dispatch_choice=4
@@ -4067,7 +4067,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Battery_dispatch_manual_sched_mset(SAM_Pvsamv1 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_sched_weekend: Battery dispatch schedule for weekend []
+	 * Set dispatch_manual_sched_weekend: Battery dispatch schedule for weekend
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_dispatch_choice=4
@@ -4125,7 +4125,7 @@ extern "C"
 	//
 
 	/**
-	 * Set inverter_model: Inverter model specifier []
+	 * Set inverter_model: Inverter model specifier
 	 * options: 0=cec,1=datasheet,2=partload,3=coefficientgenerator,4=generic
 	 * constraints: INTEGER,MIN=0,MAX=4
 	 * required if: None
@@ -4138,7 +4138,7 @@ extern "C"
 	//
 
 	/**
-	 * Set dcoptimizer_loss: PV loss in DC/DC w/MPPT conversion []
+	 * Set dcoptimizer_loss: PV loss in DC/DC w/MPPT conversion
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -4151,7 +4151,7 @@ extern "C"
 	//
 
 	/**
-	 * Set dispatch_manual_fuelcellcharge: Periods 1-6 charging from fuel cell allowed? []
+	 * Set dispatch_manual_fuelcellcharge: Periods 1-6 charging from fuel cell allowed?
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -4180,7 +4180,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRate_en_electricity_rates_fset(SAM_Pvsamv1 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ur_ec_sched_weekday: Energy charge weekday schedule []
+	 * Set ur_ec_sched_weekday: Energy charge weekday schedule
 	 * options: 12 x 24 matrix
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
@@ -4188,7 +4188,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRate_ur_ec_sched_weekday_mset(SAM_Pvsamv1 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_sched_weekend: Energy charge weekend schedule []
+	 * Set ur_ec_sched_weekend: Energy charge weekend schedule
 	 * options: 12 x 24 matrix
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
@@ -4196,7 +4196,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRate_ur_ec_sched_weekend_mset(SAM_Pvsamv1 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_tou_mat: Energy rates table []
+	 * Set ur_ec_tou_mat: Energy rates table
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
@@ -4225,7 +4225,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_EnergyMarket_dispatch_sched_weekend_mset(SAM_Pvsamv1 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_tod_factors: TOD factors for periods 1-9 []
+	 * Set dispatch_tod_factors: TOD factors for periods 1-9
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
@@ -4233,7 +4233,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_EnergyMarket_dispatch_tod_factors_aset(SAM_Pvsamv1 ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set ppa_price_input: PPA Price Input []
+	 * Set ppa_price_input: PPA Price Input
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2

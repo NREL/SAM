@@ -68,7 +68,7 @@ extern "C"
 	SAM_EXPORT void SAM_GenericSystem_Plant_heat_rate_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
 
 	/**
-	 * Set spec_mode: Spec mode: 0=constant CF,1=profile []
+	 * Set spec_mode: Spec mode: 0=constant CF,1=profile
 	 * options: None
 	 * constraints: None
 	 * required if: *

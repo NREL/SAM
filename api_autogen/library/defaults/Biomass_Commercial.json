@@ -1,5 +1,5 @@
 {
-	"Commercial_defaults": {
+	"defaults": {
 		"Biopower": {
 			"biopwr_emissions_avoided_cred": 1,
 			"biopwr_emissions_collection_fuel": 0,

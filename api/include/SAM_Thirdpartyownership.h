@@ -52,7 +52,7 @@ extern "C"
 	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err);
 
 	/**
-	 * Set depr_fed_type: Federal depreciation type []
+	 * Set depr_fed_type: Federal depreciation type
 	 * options: 0=none,1=macrs_half_year,2=sl,3=custom
 	 * constraints: INTEGER,MIN=0,MAX=3
 	 * required if: ?=0
@@ -76,7 +76,7 @@ extern "C"
 	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err);
 
 	/**
-	 * Set depr_sta_type: State depreciation type []
+	 * Set depr_sta_type: State depreciation type
 	 * options: 0=none,1=macrs_half_year,2=sl,3=custom
 	 * constraints: INTEGER,MIN=0,MAX=3
 	 * required if: ?=0

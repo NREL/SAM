@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set azimuth: Azimuth angle of surface/axis []
+	 * Set azimuth: Azimuth angle of surface/axis
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -44,7 +44,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Weather_azimuth_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set file_name: local weather file path []
+	 * Set file_name: local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: *
@@ -52,7 +52,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Weather_file_name_sset(SAM_TcstroughEmpirical ptr, const char* str, SAM_error *err);
 
 	/**
-	 * Set tilt: Tilt angle of surface/axis []
+	 * Set tilt: Tilt angle of surface/axis
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -60,7 +60,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Weather_tilt_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set track_mode: Tracking mode []
+	 * Set track_mode: Tracking mode
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -86,7 +86,7 @@ extern "C"
 	//
 
 	/**
-	 * Set weekday_schedule: 12x24 Time of Use Values for week days []
+	 * Set weekday_schedule: 12x24 Time of Use Values for week days
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -94,7 +94,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_TouTranslator_weekday_schedule_mset(SAM_TcstroughEmpirical ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set weekend_schedule: 12x24 Time of Use Values for week end days []
+	 * Set weekend_schedule: 12x24 Time of Use Values for week end days
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -123,7 +123,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Solarfield_Distance_SCA_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set HTFFluid: Type of Heat Transfer Fluid used []
+	 * Set HTFFluid: Type of Heat Transfer Fluid used
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -147,7 +147,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Solarfield_MinHtfTemp_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set NumScas: Number of SCAs per Row []
+	 * Set NumScas: Number of SCAs per Row
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -227,7 +227,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Solarfield_Solar_Field_Area_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set Solar_Field_Mult: Solar Field Multiple []
+	 * Set Solar_Field_Mult: Solar Field Multiple
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -256,7 +256,7 @@ extern "C"
 	//
 
 	/**
-	 * Set Ave_Focal_Length: Label []
+	 * Set Ave_Focal_Length: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -264,7 +264,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Sca_Ave_Focal_Length_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ConcFac: Label []
+	 * Set ConcFac: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -272,7 +272,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Sca_ConcFac_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set GeoAcc: Label []
+	 * Set GeoAcc: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -280,7 +280,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Sca_GeoAcc_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set IamF0: Label []
+	 * Set IamF0: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -288,7 +288,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Sca_IamF0_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set IamF1: Label []
+	 * Set IamF1: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -296,7 +296,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Sca_IamF1_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set IamF2: Label []
+	 * Set IamF2: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -304,7 +304,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Sca_IamF2_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set MirCln: Label []
+	 * Set MirCln: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -312,7 +312,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Sca_MirCln_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set MirRef: Label []
+	 * Set MirRef: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -320,7 +320,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Sca_MirRef_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set SCA_aper: Label []
+	 * Set SCA_aper: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -328,7 +328,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Sca_SCA_aper_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ScaLen: Label []
+	 * Set ScaLen: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -336,7 +336,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Sca_ScaLen_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set SfAvail: Label []
+	 * Set SfAvail: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -344,7 +344,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Sca_SfAvail_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TrkTwstErr: Label []
+	 * Set TrkTwstErr: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -357,7 +357,7 @@ extern "C"
 	//
 
 	/**
-	 * Set HCEBelShad: label []
+	 * Set HCEBelShad: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -365,7 +365,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCEBelShad_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCEEnvTrans: label []
+	 * Set HCEEnvTrans: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -373,7 +373,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCEEnvTrans_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCEFrac: Fraction of field that is this type of HCE []
+	 * Set HCEFrac: Fraction of field that is this type of HCE
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -381,7 +381,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCEFrac_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCE_A0: label []
+	 * Set HCE_A0: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -389,7 +389,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCE_A0_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCE_A1: label []
+	 * Set HCE_A1: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -397,7 +397,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCE_A1_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCE_A2: label []
+	 * Set HCE_A2: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -405,7 +405,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCE_A2_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCE_A3: label []
+	 * Set HCE_A3: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -413,7 +413,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCE_A3_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCE_A4: label []
+	 * Set HCE_A4: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -421,7 +421,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCE_A4_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCE_A5: label []
+	 * Set HCE_A5: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -429,7 +429,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCE_A5_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCE_A6: label []
+	 * Set HCE_A6: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -437,7 +437,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCE_A6_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCEabs: label []
+	 * Set HCEabs: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -445,7 +445,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCEabs_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCEdust: label []
+	 * Set HCEdust: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -453,7 +453,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCEdust_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCEmisc: label []
+	 * Set HCEmisc: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -461,7 +461,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCEmisc_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set HCEtype: Number indicating the receiver type []
+	 * Set HCEtype: Number indicating the receiver type
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -469,7 +469,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_HCEtype_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set NumHCETypes: Number of HCE types []
+	 * Set NumHCETypes: Number of HCE types
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -477,7 +477,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_NumHCETypes_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set PerfFac: label []
+	 * Set PerfFac: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -485,7 +485,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Hce_PerfFac_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set RefMirrAper: label []
+	 * Set RefMirrAper: label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -498,7 +498,7 @@ extern "C"
 	//
 
 	/**
-	 * Set E2TPLF0: Label []
+	 * Set E2TPLF0: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -506,7 +506,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_E2TPLF0_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set E2TPLF1: Label []
+	 * Set E2TPLF1: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -514,7 +514,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_E2TPLF1_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set E2TPLF2: Label []
+	 * Set E2TPLF2: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -522,7 +522,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_E2TPLF2_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set E2TPLF3: Label []
+	 * Set E2TPLF3: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -530,7 +530,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_E2TPLF3_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set E2TPLF4: Label []
+	 * Set E2TPLF4: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -538,7 +538,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_E2TPLF4_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set LHVBoilEff: Label []
+	 * Set LHVBoilEff: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -546,7 +546,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_LHVBoilEff_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set MaxGrOut: Label []
+	 * Set MaxGrOut: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -554,7 +554,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_MaxGrOut_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set MinGrOut: Label []
+	 * Set MinGrOut: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -562,7 +562,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_MinGrOut_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set PTTMAX: Label []
+	 * Set PTTMAX: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -570,7 +570,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_PTTMAX_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set PTTMIN: Label []
+	 * Set PTTMIN: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -578,7 +578,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_PTTMIN_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set T2EPLF0: Label []
+	 * Set T2EPLF0: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -586,7 +586,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_T2EPLF0_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set T2EPLF1: Label []
+	 * Set T2EPLF1: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -594,7 +594,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_T2EPLF1_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set T2EPLF2: Label []
+	 * Set T2EPLF2: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -602,7 +602,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_T2EPLF2_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set T2EPLF3: Label []
+	 * Set T2EPLF3: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -610,7 +610,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_T2EPLF3_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set T2EPLF4: Label []
+	 * Set T2EPLF4: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -618,7 +618,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_T2EPLF4_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TempCorr0: Label []
+	 * Set TempCorr0: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -626,7 +626,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_TempCorr0_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TempCorr1: Label []
+	 * Set TempCorr1: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -634,7 +634,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_TempCorr1_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TempCorr2: Label []
+	 * Set TempCorr2: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -642,7 +642,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_TempCorr2_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TempCorr3: Label []
+	 * Set TempCorr3: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -650,7 +650,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_TempCorr3_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TempCorr4: Label []
+	 * Set TempCorr4: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -658,7 +658,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_TempCorr4_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TempCorrF: Temp Correction Mode (0=wetbulb 1=drybulb basis) []
+	 * Set TempCorrF: Temp Correction Mode (0=wetbulb 1=drybulb basis)
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -666,7 +666,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_TempCorrF_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TurSUE: Label []
+	 * Set TurSUE: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -674,7 +674,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_TurSUE_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TurbEffG: Label []
+	 * Set TurbEffG: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -682,7 +682,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Pwrb_TurbEffG_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TurbOutG: Label []
+	 * Set TurbOutG: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -695,7 +695,7 @@ extern "C"
 	//
 
 	/**
-	 * Set E_tes_ini: Initial TES energy - fraction of max []
+	 * Set E_tes_ini: Initial TES energy - fraction of max
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -703,7 +703,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Tes_E_tes_ini_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set FossilFill: Label []
+	 * Set FossilFill: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -711,7 +711,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Tes_FossilFill_aset(SAM_TcstroughEmpirical ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set NUMTOU: Label []
+	 * Set NUMTOU: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -719,7 +719,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Tes_NUMTOU_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set PFSmax: Label []
+	 * Set PFSmax: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -727,7 +727,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Tes_PFSmax_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set PTSmax: Label []
+	 * Set PTSmax: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -735,7 +735,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Tes_PTSmax_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TSHOURS: Label []
+	 * Set TSHOURS: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -743,7 +743,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Tes_TSHOURS_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TSLogic: Label []
+	 * Set TSLogic: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -751,7 +751,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Tes_TSLogic_mset(SAM_TcstroughEmpirical ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set TnkHL: Label []
+	 * Set TnkHL: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -759,7 +759,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Tes_TnkHL_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TurTesEffAdj: Label []
+	 * Set TurTesEffAdj: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -767,7 +767,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Tes_TurTesEffAdj_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set TurTesOutAdj: Label []
+	 * Set TurTesOutAdj: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -780,7 +780,7 @@ extern "C"
 	//
 
 	/**
-	 * Set AntiFrPar: Label []
+	 * Set AntiFrPar: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -788,7 +788,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_AntiFrPar_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set BOPPar: Label []
+	 * Set BOPPar: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -796,7 +796,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_BOPPar_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set BOPParF0: Label []
+	 * Set BOPParF0: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -804,7 +804,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_BOPParF0_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set BOPParF1: Label []
+	 * Set BOPParF1: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -812,7 +812,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_BOPParF1_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set BOPParF2: Label []
+	 * Set BOPParF2: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -820,7 +820,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_BOPParF2_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set BOPParPF: Label []
+	 * Set BOPParPF: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -828,7 +828,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_BOPParPF_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set CHTFParF0: Label []
+	 * Set CHTFParF0: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -836,7 +836,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_CHTFParF0_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set CHTFParF1: Label []
+	 * Set CHTFParF1: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -844,7 +844,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_CHTFParF1_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set CHTFParF2: Label []
+	 * Set CHTFParF2: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -852,7 +852,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_CHTFParF2_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ChtfPar: Label []
+	 * Set ChtfPar: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -860,7 +860,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_ChtfPar_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ChtfParPF: Label []
+	 * Set ChtfParPF: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -868,7 +868,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_ChtfParPF_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set CtOpF: Label []
+	 * Set CtOpF: Label
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -876,7 +876,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_CtOpF_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set CtPar: Label []
+	 * Set CtPar: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -884,7 +884,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_CtPar_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set CtParF0: Label []
+	 * Set CtParF0: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -892,7 +892,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_CtParF0_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set CtParF1: Label []
+	 * Set CtParF1: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -900,7 +900,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_CtParF1_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set CtParF2: Label []
+	 * Set CtParF2: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -908,7 +908,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_CtParF2_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set CtParPF: Label []
+	 * Set CtParPF: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -916,7 +916,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_CtParPF_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set HhtfPar: Label []
+	 * Set HhtfPar: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -924,7 +924,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_HhtfPar_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set HhtfParF0: Label []
+	 * Set HhtfParF0: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -932,7 +932,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_HhtfParF0_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set HhtfParF1: Label []
+	 * Set HhtfParF1: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -940,7 +940,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_HhtfParF1_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set HhtfParF2: Label []
+	 * Set HhtfParF2: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -948,7 +948,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_HhtfParF2_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set HhtfParPF: Label []
+	 * Set HhtfParPF: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -956,7 +956,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_HhtfParPF_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set HtrPar: Label []
+	 * Set HtrPar: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -964,7 +964,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_HtrPar_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set HtrParF0: Label []
+	 * Set HtrParF0: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -972,7 +972,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_HtrParF0_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set HtrParF1: Label []
+	 * Set HtrParF1: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -980,7 +980,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_HtrParF1_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set HtrParF2: Label []
+	 * Set HtrParF2: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -988,7 +988,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_HtrParF2_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set HtrParPF: Label []
+	 * Set HtrParPF: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -996,7 +996,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_HtrParPF_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set PbFixPar: Label []
+	 * Set PbFixPar: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1004,7 +1004,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_PbFixPar_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set SfPar: Label []
+	 * Set SfPar: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1012,7 +1012,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughEmpirical_Parasitic_SfPar_fset(SAM_TcstroughEmpirical ptr, float number, SAM_error *err);
 
 	/**
-	 * Set SfParPF: Label []
+	 * Set SfParPF: Label
 	 * options: None
 	 * constraints: None
 	 * required if: *
