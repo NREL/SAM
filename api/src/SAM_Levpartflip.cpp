@@ -926,15 +926,15 @@ SAM_EXPORT void SAM_Levpartflip_PaymentIncentives_pbi_uti_term_fset(SAM_Levpartf
 	});
 }
 
-SAM_EXPORT void SAM_Levpartflip_Common_gen_aset(SAM_Levpartflip ptr, float* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "gen", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_Levpartflip_SystemOutput_degradation_aset(SAM_Levpartflip ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "degradation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Levpartflip_SystemOutput_gen_aset(SAM_Levpartflip ptr, float* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "gen", arr, length);
 	});
 }
 
@@ -3255,24 +3255,24 @@ SAM_EXPORT float SAM_Levpartflip_PaymentIncentives_pbi_uti_term_fget(SAM_Levpart
 
 
 
-SAM_EXPORT float* SAM_Levpartflip_Common_gen_aget(SAM_Levpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "gen", length);
-	if (!result)
-		make_access_error("SAM_Levpartflip", "gen");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT float* SAM_Levpartflip_SystemOutput_degradation_aget(SAM_Levpartflip ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "degradation", length);
 	if (!result)
 		make_access_error("SAM_Levpartflip", "degradation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float* SAM_Levpartflip_SystemOutput_gen_aget(SAM_Levpartflip ptr, int* length, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "gen");
 	});
 	return result;
 }

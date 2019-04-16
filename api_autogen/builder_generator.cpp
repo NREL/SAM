@@ -277,22 +277,13 @@ void builder_generator::gather_variables(){
 }
 
 std::string defaults_filename(std::string cmod_symbol, const std::string &config_name){
-    std::set<std::string> extra_tech_cmods = {"Pvwattsv5Lifetime", "Fuelcell", "StandAloneBattery", "Battwatts"};
-    std::set<std::string> extra_fin_cmods = {"Utilityrate5", "Belpe", "Cashloan", "Thermalrate", "Lcoefcr"};
 
     size_t pos = config_name.find_last_of('-');
     std::string tech = config_to_cmod_name.find(format_as_symbol(config_name.substr(0, pos)))->second;
     std::string fin = config_to_cmod_name.find(format_as_symbol(config_name.substr(pos+1)))->second;
     assert(tech.length() + fin.length());
 
-    if (cmod_symbol == "Battery")
-        cmod_symbol = "StandAloneBattery";
-    if (cmod_symbol == tech || extra_tech_cmods.find(cmod_symbol) != extra_tech_cmods.end())
-        return cmod_symbol + "_" + fin;
-    else if (cmod_symbol == fin || extra_fin_cmods.find(cmod_symbol) != extra_fin_cmods.end())
-        return cmod_symbol + "_" + tech;
-    else
-        assert(false);
+    return cmod_symbol + "_" + format_as_symbol(config_name);
 
 }
 

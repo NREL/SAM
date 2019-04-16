@@ -1,4 +1,5 @@
 #include <iostream>
+#include <set>
 
 #include <shared/lib_util.h>
 
@@ -11,32 +12,21 @@ std::string all_options_of_cmod(const std::string &cmod_symbol, const std::strin
     std::string fin = config_to_cmod_name[format_as_symbol(config_name.substr(pos+1))];
     assert(tech.length() + fin.length());
 
-    std::string str;
-    bool first = true;
+    std::set<std::string> config_set;
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
-        size_t p = it->first.find_last_of('-');
-        std::string t = config_to_cmod_name[format_as_symbol(it->first.substr(0, p))];
-        std::string f = config_to_cmod_name[format_as_symbol(it->first.substr(p+1))];
+        std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[it->first];
+        for (size_t i = 0; i < primary_cmods.size(); i++) {
+            if (format_as_symbol(primary_cmods[i]) == cmod_symbol){
+                config_set.insert(it->first);
+                break;
+            }
+        }
+    }
 
-        // searching for financial options of tech cmod
-        if (cmod_symbol == tech){
-            if (t == tech){
-                if (f == "IndependentPowerProducer" || f == "CommercialPPA")
-                    continue;
-                if (!first)
-                    str += ", ";
-                str += f;
-                first = false;
-            }
-        }
-        else{
-            if (f == fin){
-                if (!first)
-                    str += ", ";
-                str += t;
-                first = false;
-            }
-        }
+    std::string str;
+    for (auto it = config_set.begin(); it != config_set.end(); ++it){
+        if (it != config_set.begin()) str += "\\n";
+        str += format_as_symbol(*it);
     }
     printf("%s, config%s, str: '%s'\n", cmod_symbol.c_str(), config_name.c_str(), str.c_str());
     assert(str.length());
@@ -494,7 +484,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\t\treturn NULL;\n"
                "\t}\n"
                "\n"
-               "\tif (!PySAM_assign_from_nested_dict((PyObject*)self, self->x_attr, self->data_ptr, dict, \"" << tech_symbol << "\"))\n"
+               "\tif (!PySAM_assign_from_nested_dict((PyObject*)self, self->x_attr, self->data_ptr, dict, \"" << cmod_symbol << "\"))\n"
                "\t\treturn NULL;\n"
                "\n"
                "\tPy_INCREF(Py_None);\n"

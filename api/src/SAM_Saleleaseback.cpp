@@ -920,9 +920,21 @@ SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_uti_term_fset(SAM_Salele
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_Common_gen_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SystemOutput_degradation_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "degradation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_SystemOutput_gen_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "gen", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_SystemOutput_system_capacity_fset(SAM_Saleleaseback ptr, float number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
@@ -947,12 +959,6 @@ SAM_EXPORT void SAM_Saleleaseback_DHF_cost_equity_closing_fset(SAM_Saleleaseback
 SAM_EXPORT void SAM_Saleleaseback_DHF_cost_other_financing_fset(SAM_Saleleaseback ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_other_financing", number);
-	});
-}
-
-SAM_EXPORT void SAM_Saleleaseback_DHF_degradation_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "degradation", arr, length);
 	});
 }
 
@@ -1283,12 +1289,6 @@ SAM_EXPORT void SAM_Saleleaseback_DHF_sponsor_operating_margin_fset(SAM_Saleleas
 SAM_EXPORT void SAM_Saleleaseback_DHF_sponsor_operating_margin_escalation_fset(SAM_Saleleaseback ptr, float number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sponsor_operating_margin_escalation", number);
-	});
-}
-
-SAM_EXPORT void SAM_Saleleaseback_DHF_system_capacity_fset(SAM_Saleleaseback ptr, float number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
@@ -3148,12 +3148,35 @@ SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_uti_term_fget(SAM_Salel
 
 
 
-SAM_EXPORT float* SAM_Saleleaseback_Common_gen_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err){
+SAM_EXPORT float* SAM_Saleleaseback_SystemOutput_degradation_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "degradation", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "degradation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float* SAM_Saleleaseback_SystemOutput_gen_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
 		make_access_error("SAM_Saleleaseback", "gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT float SAM_Saleleaseback_SystemOutput_system_capacity_fget(SAM_Saleleaseback ptr, SAM_error *err){
+	float result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_capacity", &result))
+		make_access_error("SAM_Saleleaseback", "system_capacity");
 	});
 	return result;
 }
@@ -3198,18 +3221,6 @@ SAM_EXPORT float SAM_Saleleaseback_DHF_cost_other_financing_fget(SAM_Saleleaseba
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_other_financing", &result))
 		make_access_error("SAM_Saleleaseback", "cost_other_financing");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float* SAM_Saleleaseback_DHF_degradation_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err){
-	float* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "degradation", length);
-	if (!result)
-		make_access_error("SAM_Saleleaseback", "degradation");
 	});
 	return result;
 }
@@ -3816,17 +3827,6 @@ SAM_EXPORT float SAM_Saleleaseback_DHF_sponsor_operating_margin_escalation_fget(
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_operating_margin_escalation", &result))
 		make_access_error("SAM_Saleleaseback", "sponsor_operating_margin_escalation");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float SAM_Saleleaseback_DHF_system_capacity_fget(SAM_Saleleaseback ptr, SAM_error *err){
-	float result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_capacity", &result))
-		make_access_error("SAM_Saleleaseback", "system_capacity");
 	});
 	return result;
 }
