@@ -926,15 +926,15 @@ SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_uti_term_fset(SAM_Equpartf
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Common_gen_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemOutput_degradation_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "gen", arr, length);
+		ssc_data_set_array(ptr, "degradation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_DHF_degradation_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemOutput_gen_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "degradation", arr, length);
+		ssc_data_set_array(ptr, "gen", arr, length);
 	});
 }
 
@@ -3183,24 +3183,24 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_uti_term_fget(SAM_Equpart
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Common_gen_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+SAM_EXPORT float* SAM_Equpartflip_SystemOutput_degradation_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "gen", length);
+	result = ssc_data_get_array(ptr, "degradation", length);
 	if (!result)
-		make_access_error("SAM_Equpartflip", "gen");
+		make_access_error("SAM_Equpartflip", "degradation");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_DHF_degradation_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+SAM_EXPORT float* SAM_Equpartflip_SystemOutput_gen_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "degradation", length);
+	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
-		make_access_error("SAM_Equpartflip", "degradation");
+		make_access_error("SAM_Equpartflip", "gen");
 	});
 	return result;
 }
