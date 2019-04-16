@@ -1,5 +1,5 @@
 1
-518
+519
 LeadAcid_q10
 1
 1
@@ -1918,6 +1918,12 @@ genericsys.cost.sales_tax.value
 1
 1
 5
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+20000
 heat_rate
 1
 1
