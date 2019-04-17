@@ -472,6 +472,7 @@ function setup_windpower_pages()
 	//addpage( [[ 'Wind Siting Considerations' ]], { 'sidebar'='Siting Considerations' } );
 	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine' } );
 	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm' } );
+	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
 
 }
 
@@ -504,6 +505,7 @@ function setup_fuel_cell_pages_btm()
 	addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
            {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
+	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
 }
 
 function setup_fuel_cell_pages_fom()
@@ -528,6 +530,7 @@ function setup_fuel_cell_pages_fom()
 	addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
            {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
+	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
 }
 
 
@@ -924,7 +927,7 @@ setup_thirdparty_pages( LOAD_BELPE , LIFETIME_SYSTEM); //includes building load 
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Residential' );	
-setmodules( ['windpower',  'utilityrate5', 'cashloan']);
+setmodules( ['windpower', 'grid', 'utilityrate5', 'cashloan']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
@@ -934,7 +937,7 @@ setup_residential_pages( LOAD_SIMPLE, LIFETIME_SYSTEM ); //does not include buil
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Commercial' );	
-setmodules( ['windpower',  'utilityrate5', 'cashloan']);
+setmodules( ['windpower', 'grid', 'utilityrate5', 'cashloan']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
@@ -944,7 +947,7 @@ setup_commercial_pages( LOAD_SIMPLE , LIFETIME_SYSTEM ); //does not include buil
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Commercial PPA' );	
-setmodules( ['windpower',  'ippppa']);
+setmodules( ['windpower', 'grid', 'ippppa']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
@@ -954,7 +957,7 @@ setup_commercial_ppa_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Independent Power Producer' );
-setmodules( ['windpower', 'ippppa']);
+setmodules( ['windpower', 'grid','ippppa']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
@@ -964,7 +967,7 @@ setup_independent_power_producer_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Leveraged Partnership Flip' );
-setmodules( ['windpower', 'levpartflip']);
+setmodules( ['windpower', 'grid', 'levpartflip']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
@@ -974,7 +977,7 @@ setup_leveraged_partnership_flip_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'All Equity Partnership Flip' );
-setmodules( ['windpower', 'equpartflip']);
+setmodules( ['windpower', 'grid', 'equpartflip']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
@@ -984,7 +987,7 @@ setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Sale Leaseback' );
-setmodules( ['windpower', 'saleleaseback']);
+setmodules( ['windpower', 'grid','saleleaseback']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
@@ -994,7 +997,7 @@ setup_sale_leaseback_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Single Owner' );
-setmodules( ['windpower', 'singleowner']);
+setmodules( ['windpower', 'grid','singleowner']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
@@ -1004,7 +1007,7 @@ setup_single_owner_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'LCOE Calculator' );	
-setmodules( ['windpower',  'lcoefcr']);
+setmodules( ['windpower', 'grid','lcoefcr']);
 setup_windpower_pages();
 setup_lcoefcr_pages();		
 
@@ -1042,7 +1045,7 @@ setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for comme
 
 // Fuel Cell /////////////////////////////////////////////////////////
 setconfig( 'Fuel Cell', 'Commercial');
-setmodules( ['pvwattsv5_lifetime', 'fuelcell', 'battery', 'utilityrate5', 'thermalrate', 'cashloan'] );
+setmodules( ['pvwattsv5_lifetime', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_btm();
@@ -1053,7 +1056,7 @@ addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_loa
 
 
 setconfig( 'Fuel Cell', 'Single Owner');
-setmodules( ['pvwattsv5_lifetime', 'fuelcell', 'battery', 'utilityrate5', 'thermalrate', 'singleowner']);
+setmodules( ['pvwattsv5_lifetime', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_fom();
