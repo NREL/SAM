@@ -205,8 +205,10 @@ def get_des_od_label_unit_info__calc_metrics():
     info["t_cost"].od_d_type = "nan"
 
     info["LTR_HP_T_out"] = C_des_od_label_unit_info("LTR_HP_T_out_des", "LTR_HP_T_out_od", "LTR HP\nOutlet Temp [C]", "LTR HP Outlet Temperature [C]", "[C]")
-    info["LTR_UA"] = C_des_od_label_unit_info("UA_LTR", "none", "LTR\nUW [MW/K]", "Low Temp Recuperator Conductance [MW/K]", "[MW/K]")
+    info["LTR_UA"] = C_des_od_label_unit_info("LTR_UA_assigned", "none", "LTR\nUA Assigned [MW/K]", "LTR Conductance Assigned [MW/K]", "[MW/K]")
     info["LTR_UA"].od_d_type = "nan"
+    info["LTR_UA_calculated"] = C_des_od_label_unit_info("LTR_UA_calculated", "none", "LTR\nUA Calculated [MW/K]", "LTR Conductance Calculated [MW/K]", "[MW/K]")
+    info["LTR_UA_calculated"].od_d_type = "nan"
     info["LTR_eff"] = C_des_od_label_unit_info("eff_LTR", "eff_LTR_od", "LTR\nEffectiveness [-]", "Low Temp Recuperator Effectiveness [-]", "[-]")
     info["LTR_q_dot"] = C_des_od_label_unit_info("q_dot_LTR", "q_dot_LTR_od", "LTR\nDuty [MWt]", "Low Temp Recuperator Duty [MWt]", "[MWt]")
     info["LTR_LP_deltaP"] = C_des_od_label_unit_info("LTR_LP_deltaP_des", "LTR_LP_deltaP_od", "LTR LP\nPres Drop [-]", "LTR LP Pressure Drop [-]", "[-]")
@@ -217,8 +219,10 @@ def get_des_od_label_unit_info__calc_metrics():
     
     info["HTR_LP_T_out"] = C_des_od_label_unit_info("HTR_LP_T_out_des", "HTR_LP_T_out_od", "HTR LP\nOutlet Temp [C]", "HTR LP Outlet Temperature [C]", "[C]")
     info["HTR_HP_T_in"] = C_des_od_label_unit_info("HTR_HP_T_in_des", "HTR_HP_T_in_od", "HTR HP\nInlet Temp [C]", "HTR HP Inlet Temperature [C]", "[C]")
-    info["HTR_UA"] = C_des_od_label_unit_info("UA_HTR", "none", "HTR\nUW [MW/K]", "High Temp Recuperator Conductance [MW/K]", "[MW/K]")
+    info["HTR_UA"] = C_des_od_label_unit_info("HTR_UA_assigned", "none", "HTR\nUA Assigned [MW/K]", "HTR Conductance Assigned [MW/K]", "[MW/K]")
     info["HTR_UA"].od_d_type = "nan"
+    info["HTR_UA_calculated"] = C_des_od_label_unit_info("HTR_UA_calculated", "none", "HTR\nUA Calculated [MW/K]", "HTR Conductance Calculated [MW/K]", "[MW/K]")
+    info["HTR_UA_calculated"].od_d_type = "nan"
     info["HTR_eff"] = C_des_od_label_unit_info("eff_HTR", "eff_HTR_od", "HTR\nEffectiveness [-]", "High Temp Recuperator Effectiveness [-]", "[-]")
     info["HTR_q_dot"] = C_des_od_label_unit_info("q_dot_HTR", "q_dot_HTR_od", "HTR\nDuty [MWt]", "High Temp Recuperator Duty [MWt]", "[MWt]")
     info["HTR_LP_deltaP"] = C_des_od_label_unit_info("HTR_LP_deltaP_des", "HTR_LP_deltaP_od", "HTR LP\nPres Drop [-]", "HTR LP Pressure Drop [-]", "[-]")
@@ -229,8 +233,10 @@ def get_des_od_label_unit_info__calc_metrics():
     
     info["recup_total_cost"] = C_des_od_label_unit_info("recup_total_cost", "none", "Total Recup\n Cost [M$]", "Total Recuperator Cost [M$]", "[M$]")
     info["recup_total_cost"].od_d_type = "nan"
-    info["recup_tot_UA"] = C_des_od_label_unit_info("UA_recup_total", "none", "Total Recup\nUA [MW/K]", "Total Recuperator Conductance [MW/K]", "[MW/K]")
+    info["recup_tot_UA"] = C_des_od_label_unit_info("recup_total_UA_assigned", "none", "Total Recup\nUA Assigned [MW/K]", "Total Recuperator Conductance Assigned [MW/K]", "[MW/K]")
     info["recup_tot_UA"].od_d_type = "nan"
+    info["recup_tot_UA_calculated"] = C_des_od_label_unit_info("recup_total_UA_calculated", "none", "Total Recup\nUA Calculated [MW/K]", "Total Recuperator Conductance Calculated [MW/K]", "[MW/K]")
+    info["recup_tot_UA_calculated"].od_d_type = "nan"
     info["recup_tot_UA"].l_label = "Total Recuperator\nConductance [MW/K]"
     info["recup_LTR_UA_frac"]  = C_des_od_label_unit_info("recup_LTR_UA_frac", "none", "Fraction of Total\nUA to LTR [-]", "Fraction of Total Conductance to LTR [-]", "[-]")
     info["recup_LTR_UA_frac"].od_d_type = "nan"
