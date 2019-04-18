@@ -1404,6 +1404,7 @@ void ResultsViewer::CreateAutoGraphs()
 		g.ShowXValues = m_autographs[i].show_xvalues;
 		g.ShowLegend = m_autographs[i].show_legend;
 		g.Size = m_autographs[i].size;
+		g.Type = m_autographs[i].Type;
 		m_summaryLayout->Add( new AutoGraphCtrl( m_summaryLayout, m_sim, g ) );
 	}
 }

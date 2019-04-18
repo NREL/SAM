@@ -59,6 +59,7 @@
 #include <wex/csv.h>
 #include <wex/utils.h>
 #include <wex/extgrid.h>
+#include <wex/plot/plcolourmap.h>
 
 #ifndef S3D_STANDALONE
 #include "main.h"
@@ -2103,6 +2104,7 @@ bool bottombuttons)
 	m_shadeR0C0 = true;
 	m_shadeC0 = true;
 	m_showcols = true;
+	m_colorMap = false;
 	m_rowY2 = m_rowY1 = m_rowY0 = 0.0;
 	m_colY2 = m_colY1 = m_colY0 = 0.0;
 
@@ -2135,7 +2137,7 @@ bool bottombuttons)
 	m_grid->DisableDragColMove();
 	m_grid->DisableDragGridSize();
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
-	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, true, m_shadeC0));
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, true, m_shadeC0, !m_colorMap));
 
 #ifndef S3D_STANDALONE
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer(choices), new GridCellChoiceEditor(choices));
@@ -2381,7 +2383,7 @@ void AFDataMatrixCtrl::SetRowReadOnly(const int &row, bool readonly)
 void AFDataMatrixCtrl::ShadeR0C0(bool b)
 {
 	m_shadeR0C0 = b;
-	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(b, m_shadeR0C0, b || m_shadeC0));
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(b, m_shadeR0C0, b || m_shadeC0, !m_colorMap));
 	MatrixToGrid();
 }
 
@@ -2391,10 +2393,23 @@ bool AFDataMatrixCtrl::ShadeR0C0()
 }
 
 
+void AFDataMatrixCtrl::ColorMap(bool b)
+{
+	m_colorMap = b;
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, m_shadeR0C0, m_shadeC0 || m_shadeR0C0, !m_colorMap));
+	MatrixToGrid();
+}
+
+bool AFDataMatrixCtrl::ColorMap()
+{
+	return m_colorMap;
+}
+
+
 void AFDataMatrixCtrl::ShadeC0(bool b)
 {
 	m_shadeC0 = b;
-	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, m_shadeR0C0, b || m_shadeR0C0));
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, m_shadeR0C0, b || m_shadeR0C0, !m_colorMap));
 	MatrixToGrid();
 }
 
@@ -2496,9 +2511,46 @@ void AFDataMatrixCtrl::OnCellChange(wxGridEvent &evt)
 	m_gridTable->SetMatrix(&m_data);
 	m_grid->SetCellValue(irow, icol, wxString::Format("%g", val));
 
+	UpdateColorMap();
+
 	wxCommandEvent dmcevt(wxEVT_AFDataMatrixCtrl_CHANGE, this->GetId());
 	dmcevt.SetEventObject(this);
 	GetEventHandler()->ProcessEvent(dmcevt);
+}
+
+
+void AFDataMatrixCtrl::UpdateColorMap()
+{
+
+	if (m_colorMap)
+	{
+		size_t nr = m_data.nrows();
+		size_t nc = m_data.ncols();
+		size_t r, c;
+		double zmin = 1e38, zmax = -1e38;
+		for (r = 1; r < nr; r++)
+		{
+			for (c = 1; c < nc; c++)
+			{
+				if (m_data(r, c) < zmin) zmin = m_data.at(r, c);
+				if (m_data(r, c) > zmax) zmax = m_data.at(r, c);
+			}
+		}
+		double diff = zmax - zmin;
+		wxPLJetColourMap jet = wxPLJetColourMap(zmin - 0.35*diff, zmax+0.1*diff);
+//		wxPLCoarseRainbowColourMap jet = wxPLCoarseRainbowColourMap(zmin - 0.5*(zmax - zmin), zmax);
+		for (r = 1; r < nr; r++)
+		{
+			for (c = 1; c < nc; c++)
+			{
+				wxColour clr = jet.ColourForValue(m_data.at(r, c));
+				m_grid->SetCellBackgroundColour(r, c, clr);
+				//				m_grid->SetCellTextColour(r, c, *wxLIGHT_GREY);
+			}
+		}
+		m_grid->Refresh();
+	}
+
 }
 
 void AFDataMatrixCtrl::OnRowsColsChange(wxCommandEvent &)
@@ -2662,11 +2714,16 @@ void AFDataMatrixCtrl::MatrixToGrid()
 
 	m_labelRows->SetLabel(m_numRowsLabel);
 	m_labelCols->SetLabel(m_numColsLabel);
+
+	UpdateColorMap();
+
 	Layout();
 	m_grid->Thaw();
 	m_grid->Refresh();
 
 }
+
+
 
 void AFDataMatrixCtrl::SetRowLabelFormat(const wxString &val_fmt, double y2, double y1, double y0)
 {

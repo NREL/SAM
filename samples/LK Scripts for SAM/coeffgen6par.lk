@@ -1,7 +1,13 @@
+/*
+	This script runs the 6parsolve SSC compute module to calculate input parameters
+	for the 6-parameter single-diode photovoltaic model (CEC Module Model) from
+	datasheet parameters.
+*/
+
 // Create SAM SDK Simulation Core (SSC) object
 ssc = ssc_create();
 
-// Set input pariables for the compute module
+// Set input variables for the compute module
 ssc_var( ssc, 'celltype', 'multiSi' );
 ssc_var( ssc, 'Vmp', 30 );
 ssc_var( ssc, 'Imp', 6 );
