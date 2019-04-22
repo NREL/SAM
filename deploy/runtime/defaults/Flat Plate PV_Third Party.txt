@@ -1,5 +1,9 @@
 1
+<<<<<<< HEAD
 749
+=======
+747
+>>>>>>> patch
 6par_aisc
 1
 1
@@ -4551,6 +4555,14 @@ ui_annual_load
 1
 1
 1
+0
+ui_msg_arrdim
+1
+4
+0
+ui_msg_selfshad
+1
+4
 0
 ui_subarray1_length_side
 1
