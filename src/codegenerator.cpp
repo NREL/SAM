@@ -132,7 +132,7 @@ static bool SSCTypeToSSC( int ssc_type, ssc_data_t pdata, const wxString &sscnam
 		break;
 	case SSC_MATRIX:
 	{
-		matrix_t<float> fl(2,2,0.0);
+		matrix_t<ssc_number_t> fl(2,2,0.0);
 		if ( sizeof(ssc_number_t) == sizeof(float) )
 		{
 			ssc_data_set_matrix( pdata, sscname.c_str(), fl.data(), fl.nrows(), fl.ncols() );

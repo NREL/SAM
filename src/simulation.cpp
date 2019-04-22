@@ -39,7 +39,7 @@ bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
 		size_t n;
 		float *p = vv->Array( &n );
 		if ( sizeof(ssc_number_t) == sizeof( float ) )
-			ssc_data_set_array( pdata, sscname.c_str(), p, n );
+			ssc_data_set_array( pdata, sscname.c_str(), (ssc_number_t*)p, n );
 		else
 		{
 			ssc_number_t *pp = new ssc_number_t[n];
@@ -57,7 +57,7 @@ bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
 		matrix_t<float> &fl = vv->Matrix();
 		if ( sizeof(ssc_number_t) == sizeof(float) )
 		{
-			ssc_data_set_matrix( pdata, sscname.c_str(), fl.data(), fl.nrows(), fl.ncols() );
+			ssc_data_set_matrix( pdata, sscname.c_str(), (ssc_number_t*)fl.data(), fl.nrows(), fl.ncols() );
 		}
 		else
 		{
