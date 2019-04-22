@@ -603,18 +603,19 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		}
 		else if ( val.Type() == VV_MATRIX )
 		{
-			double *p;
 			size_t nr, nc;
 
 			if (dir == VAR_TO_OBJ)
 			{
-				p = val.Matrix( &nr, &nc );
-				dp->SetData( p, nr, nc );
+				double *p = val.Matrix( &nr, &nc );
+				dp->SetData( (float*)p, nr, nc );
 			}
 			else
 			{
-				p = dp->GetData( &nr, &nc );
-				val.Set( p, nr, nc );
+				// fundamental incompatability in current function requirements
+				// upcasting is pointless, already at a float precision.
+				float *p = dp->GetData( &nr, &nc );
+				val.Set( (double *)p, nr, nc );
 			}
 		}
 	}
