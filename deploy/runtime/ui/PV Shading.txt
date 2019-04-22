@@ -1,7 +1,7 @@
 PV Shading
 1043
 874
-77
+78
 GroupBox
 
 1
@@ -48,7 +48,7 @@ Width
 1026
 Height
 3
-450
+456
 Caption
 5
 68
@@ -249,7 +249,7 @@ X
 12
 Y
 3
-468
+456
 Width
 3
 284
@@ -294,7 +294,7 @@ X
 12
 Y
 3
-492
+480
 Width
 3
 284
@@ -332,14 +332,14 @@ Label
 12
 Name
 5
-13
-Label12111373
+14
+Label121113737
 X
 3
 96
 Y
 3
-567
+552
 Width
 3
 200
@@ -384,7 +384,7 @@ X
 96
 Y
 3
-543
+528
 Width
 3
 200
@@ -429,7 +429,7 @@ X
 96
 Y
 3
-519
+504
 Width
 3
 200
@@ -1037,7 +1037,7 @@ X
 678
 Y
 3
-636
+642
 Width
 3
 334
@@ -1411,16 +1411,16 @@ Name
 self_shading_diagram
 X
 3
-243
+273
 Y
 3
-636
+639
 Width
 3
-412
+376
 Height
 3
-112
+121
 Image
 7
 PV Shading_self_shading_diagram.png
@@ -1440,7 +1440,7 @@ X
 324
 Y
 3
-543
+528
 Width
 3
 100
@@ -1646,7 +1646,7 @@ X
 324
 Y
 3
-492
+480
 Width
 3
 100
@@ -1764,7 +1764,7 @@ X
 465
 Y
 3
-543
+528
 Width
 3
 100
@@ -1970,7 +1970,7 @@ X
 465
 Y
 3
-492
+480
 Width
 3
 100
@@ -2088,7 +2088,7 @@ X
 609
 Y
 3
-543
+528
 Width
 3
 100
@@ -2294,7 +2294,7 @@ X
 609
 Y
 3
-492
+480
 Width
 3
 100
@@ -2412,7 +2412,7 @@ X
 756
 Y
 3
-543
+528
 Width
 3
 100
@@ -2618,7 +2618,7 @@ X
 756
 Y
 3
-492
+480
 Width
 3
 100
@@ -2736,7 +2736,7 @@ X
 57
 Y
 3
-441
+438
 Width
 3
 810
@@ -2754,9 +2754,53 @@ Colour
 255
 Caption
 5
-24
-Calculated System Layout
+28
+Calculated Layout Parameters
 Bold
+2
+1
+Label
+
+1
+12
+Name
+5
+13
+ui_msg_arrdim
+X
+3
+117
+Y
+3
+582
+Width
+3
+885
+Height
+3
+21
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
 2
 1
 Label
@@ -2769,22 +2813,22 @@ Name
 ui_msg_selfshad
 X
 3
-294
+117
 Y
 3
-597
+606
 Width
 3
-720
+885
 Height
 3
-30
+21
 Caption
 5
 0
 TextColour
 4
-255
+0
 0
 0
 255
@@ -2860,7 +2904,7 @@ X
 324
 Y
 3
-519
+504
 Width
 3
 100
@@ -2919,7 +2963,7 @@ X
 324
 Y
 3
-468
+456
 Width
 3
 100
@@ -2978,7 +3022,7 @@ X
 324
 Y
 3
-567
+552
 Width
 3
 100
@@ -3037,7 +3081,7 @@ X
 465
 Y
 3
-519
+504
 Width
 3
 100
@@ -3096,7 +3140,7 @@ X
 465
 Y
 3
-468
+456
 Width
 3
 100
@@ -3155,7 +3199,7 @@ X
 465
 Y
 3
-567
+552
 Width
 3
 100
@@ -3214,7 +3258,7 @@ X
 609
 Y
 3
-519
+504
 Width
 3
 100
@@ -3273,7 +3317,7 @@ X
 609
 Y
 3
-468
+456
 Width
 3
 100
@@ -3332,7 +3376,7 @@ X
 609
 Y
 3
-567
+552
 Width
 3
 100
@@ -3391,7 +3435,7 @@ X
 756
 Y
 3
-519
+504
 Width
 3
 100
@@ -3450,7 +3494,7 @@ X
 756
 Y
 3
-468
+456
 Width
 3
 100
@@ -3509,7 +3553,7 @@ X
 756
 Y
 3
-567
+552
 Width
 3
 100
@@ -3556,7 +3600,7 @@ TabOrder
 3
 3
 
-46
+48
 en_snow_model
 3
 1
@@ -4035,6 +4079,30 @@ Shading and Snow
 1
 0
 ShadingFactors
+ui_msg_arrdim
+3
+4
+Text box for array dimension messages
+ 
+Shading and Snow
+0
+5
+1
+4
+0
+Default
+ui_msg_selfshad
+3
+4
+Text box for self shading messages
+ 
+Shading and Snow
+0
+5
+1
+4
+0
+Default
 ui_subarray1_length_side
 3
 1
@@ -4341,12 +4409,18 @@ equations{ 'subarray3_gcr_ref' } = define() {
 equations{ 'subarray4_gcr_ref' } = define() {
 	return ${subarray4_gcr};
 };
-7719
+9378
 //just run this function anytime anything relevant changes
 function input_enabling()
 {
-	msg='';
-	property('ui_msg_selfshad','Caption',msg);
+	msg_arrdim='';
+	msg_selfshad='';
+	color_arrdim='black';
+	color_selfshad='black';
+	property('ui_msg_arrdim','Caption',msg_arrdim);
+	property('ui_msg_arrdim','TextColour',color_arrdim);
+	property('ui_msg_selfshad','Caption',msg_selfshad);
+	property('ui_msg_selfshad','TextColour',color_selfshad);
 	
 	enable_module_area = false;
 	
@@ -4356,52 +4430,90 @@ function input_enabling()
 	}
 	property('ui_msg_snow','Caption',msg_snow);
 
+	n_one_row = '';
+	n_not_int = '';
+	n_selfshad = '';
 	for(i=1; i<=4; i++)
 	{
+	
 		prefix = 'subarray' + i + '_';
+	
 		//is subarray enabled?
 		en1 = false;
-		if (i==1)
-			en1 = true;
-		else
-			if (value(prefix + 'enable') == 1)
-				en1 = true;
+		if (i==1) { en1 = true;}
+		else {
+			if (value(prefix + 'enable') == 1) 
+			{ en1 = true; }
+		}	
+			
 		//is it the correct type of tracking?
 		en2 = false;
 		if (value(prefix + 'track_mode') == 0 || //fixed tilt
 			(value(prefix + 'track_mode') == 1 && value(prefix + 'backtrack') == 0)) //one-axis tracking w/o backtracking
-			en2 = true;
-		//has self-shading been selected?
+			{ en2 = true; }
+			
+		// self-shading enabled?
 		en3 = false;
-		if (value(prefix + 'shade_mode') == 1 //self-shaded selected
-			|| value(prefix + 'shade_mode') == 2) //linear shading selected
-			en3 = true;
+		if (value(prefix + 'shade_mode') == 1 //non-linear
+			|| value(prefix + 'shade_mode') == 2) //linear
+			{ en3 = true; }
 		
-		//has snow model been activated?
+		// snow model enabled?
 		en4 = false;
-		if( value("en_snow_model") == 1 ) en4 = true;
+		if( value("en_snow_model") == 1 ) 
+			{ en4 = true; }
 		
-		// has bifacial module been entered?
+		// bifacial module enabled?
 		en5 = is_bifacial();
 		
-		//display message self shading is enabled and nrows is not an integer
-		//or there is only one row
-		if (en3 == true ) {
+		// backtracking enabled?
+		en6 = (value(prefix + 'track_mode') == 1 && 
+		       value(prefix + 'backtrack') == 1);
+		
+		// self shading enabled and 
+		// nrows not an integer or 
+		// there is only one row 
+		// note nrows is set to zero if subarray disabled
+		// in callback equations on System Design form
+		if (en3 == true && en6 == false) {
+			color_arrdim = 'red';
 			nrows = value('ui_' + prefix + 'nrows');
-			if ( nrows == 1 ) msg = msg + 'Subarray ' + i + ' has only one row.\n';
-		    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer.\n';
+			if ( nrows == 1 ) { 
+				if ( n_one_row == '' ) { n_one_row = to_string( i ); }
+				elseif ( n_one_row != '' ) { n_one_row += ', ' + to_string(i); }
+				msg_arrdim = 'Self shading is enabled and subarray has only one row: Subarray ' + n_one_row + '. '; 
+				msg_arrdim += 'Adjust the number of modules to correct the problem.'; 
+			}
+		    if ( nrows-to_int(nrows) != 0 ) {
+				if ( n_not_int == '' ) { n_not_int = to_string( i ); }
+				elseif ( n_not_int != '' ) { n_not_int += ', ' + to_string(i); }
+				msg_arrdim = 'The number of rows in subarray is not an integer: Subarray ' + n_not_int + '. '; 
+				msg_arrdim += 'Adjust the number of modules to correct the problem.'; 
+			}
 		}
 
-		//display message if snow model is enabled and nrows is not an integer
+		if( en3 == true && en6 == true && en1 == true) {
+			color_selfshad = 'black';
+			if ( n_selfshad == '' ) { n_selfshad = to_string( i ); }
+			elseif ( n_selfshad != '' ) { n_selfshad += ', ' + to_string(i); }
+			msg_selfshad = 'Self shading does not apply when backtracking is enabled on System Design page: Subarray ' + n_selfshad + '.\n';
+		}
+
+		// snow enabled and nrows not an integer
 		if (en4 == true  && en3 == false) {
+			color_arrdim = 'red';
 			nrows = value('ui_' + prefix + 'nrows');
-		    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer.\n';
+		    if ( nrows-to_int(nrows) != 0 ) {
+				if ( n_not_int == '' ) { n_not_int = to_string( i ); }
+				elseif ( n_not_int != '' ) { n_not_int += ', ' + to_string(i); }
+				msg_arrdim = 'The number of rows in subarray is not an integer: Subarray ' + n_not_int + '.\n'; 
+			}
 		}
 
-		//now enable all the inputs
+		// enable inputs for each subarray
 		enable(prefix + 'shading', en1);
 		enable(prefix + 'shade_mode', (en1 && en2));
-		if (en3) enable_module_area = true;
+		if (en3) { enable_module_area = true; }
 		enable(prefix + 'mod_orient', (en1 && en2 && en3) || (en1 && en5));
 		enable('ui_' + prefix + 'length_side', (en1 && en2 && en3) || (en1 && en5));
 		enable('ui_' + prefix + 'nrows', (en1 && en2 && en3) || (en1 && en4) || (en1 && en5));
@@ -4411,9 +4523,14 @@ function input_enabling()
 		enable(prefix + 'nmodx', (en1 && en2 && en3) || (en1 && en4) || (en1 && en5) );
 		enable(prefix + 'nmody', (en1 && en2 && en3) || (en1 && en4) || (en1 && en5) );
 	}
+	
 	enable('module_area', enable_module_area);
-    if (msg!="") msg = msg + 'Adjust the number of modules to correct the problem.'; 
-	property('ui_msg_selfshad','Caption',msg);
+
+	property('ui_msg_arrdim','Caption',msg_arrdim);
+	property('ui_msg_arrdim','TextColour',color_arrdim);
+
+	property('ui_msg_selfshad','Caption',msg_selfshad);
+	property('ui_msg_selfshad','TextColour',color_selfshad);
 
 }
 
@@ -4462,16 +4579,16 @@ on_change{'edit_3d_scene'} = define() {
 		{
 		// check that nsubarrays = number enabled
 			
-			msg="";
-			if (x.nsubarrays != n_subarrays)
-				msg = "WARNING: You have " + n_subarrays + " subarrays enabled and " 
+			msg_3d="";
+			if (x.nsubarrays != n_subarrays) {
+				msg_3d = "WARNING: You have " + n_subarrays + " subarrays enabled and " 
 				+ x.nsubarrays + " subarrays in the 3D scene.\n";
+			}	
 				
-			msg += "Update timeseries shading and diffuse losses for " 
+			msg_3d += "Update timeseries shading and diffuse losses for " 
 				+ x.nsubarrays + " subarrays with calculated values from 3D scene?\n\n";
-		
-		
-			if( yesno(msg))
+			
+			if( yesno(msg_3d))
 			{
 	
 				for (i=0;i<4;i++)
@@ -4479,15 +4596,16 @@ on_change{'edit_3d_scene'} = define() {
 					pre = 'subarray' + to_string(i+1);
 					
 					timestep = x{ pre };
-					if ( timestep == null || typeof(timestep) != 'array' ) continue;
+					if ( timestep == null || typeof(timestep) != 'array' ) { continue;}
 					
 					// check parallel strings = number of subarray strings
 					if (value(pre + "_nstrings") != #timestep[0])
 					{
 						if (!yesno("WARNING: For " + pre + ", you specifed " 
-						+ value(pre + "_nstrings") + " strings and have " + #timestep[0] 
-						+ " strings in the 3D scene.\nDo you wish to continue with the 3D scene values?.\n\n"))
+								+ value(pre + "_nstrings") + " strings and have " + #timestep[0] 
+								+ " strings in the 3D scene.\nDo you wish to continue with the 3D scene values?.\n\n")) {
 							continue;
+						}
 					}
 					
 					shad = value( pre+'_shading');

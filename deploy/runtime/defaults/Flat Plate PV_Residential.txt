@@ -1,5 +1,5 @@
 1
-946
+948
 6par_aisc
 1
 1
@@ -5720,6 +5720,14 @@ ui_annual_load
 1
 1
 1
+0
+ui_msg_arrdim
+1
+4
+0
+ui_msg_selfshad
+1
+4
 0
 ui_net_capital_cost
 1
