@@ -180,7 +180,7 @@ class ArrayPopupDialog : public wxDialog
 {
 public:
 	ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxString &label, VarValue *vv);
-	ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels, std::vector<std::vector<float> > &values_vec);
+	ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels, std::vector<std::vector<double> > &values_vec);
 
 private:
 	void OnCommand(wxCommandEvent &evt);

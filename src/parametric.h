@@ -151,8 +151,8 @@ public:
 	void UpdateOutputs(wxArrayString &output_names);
 
 	double GetDouble(int row, int col);
-	std::vector<float> GetArray(int row, int col);
-	float *GetArray(int row, int col, size_t *n);
+	std::vector<double> GetArray(int row, int col);
+	double *GetArray(int row, int col, size_t *n);
 	wxString GetUnits(int col);
 
 	void FillDown(int col, int rows=2);

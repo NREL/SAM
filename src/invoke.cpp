@@ -1785,7 +1785,7 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 			lk_string errors;
 			int idx=0;
 			int ty = 0;
-			float tm = 0;
+			ssc_number_t tm = 0;
 			while ( const char *msg = ssc_module_log( mod, idx++, &ty, &tm ) )
 			{
 				errors += lk_string(msg);
@@ -4520,7 +4520,7 @@ void fcall_parametric_get(lk::invoke_t &cxt)
 	else if (vv->Type() == VV_ARRAY) {
 		size_t n = 0;
 		for (size_t i = start; i < end; i++) {
-			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Array(&n);
+			double* val = sims[i]->GetValue(cxt.arg(0).as_string())->Array(&n);
 			lk::vardata_t* row = nullptr;
 			if (singleVal > -1) {
 				out.empty_vector();
@@ -4540,7 +4540,7 @@ void fcall_parametric_get(lk::invoke_t &cxt)
 		size_t r = 0;
 		size_t c = 0;
 		for (size_t i = start; i < end; i++) {
-			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Matrix(&r, &c);
+			double* val = sims[i]->GetValue(cxt.arg(0).as_string())->Matrix(&r, &c);
 			lk::vardata_t* rows = nullptr;
 			if (singleVal > -1) {
 				out.empty_vector();

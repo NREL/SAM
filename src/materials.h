@@ -83,14 +83,14 @@ public:
 	MatPropCtrl(wxWindow *parent, int id, 
 		const wxPoint &pos = wxDefaultPosition, const wxSize &sz = wxDefaultSize);
 
-	void SetData(const matrix_t<float> &data);
-	matrix_t<float> GetData();
+	void SetData(const matrix_t<double> &data);
+	matrix_t<double> GetData();
 	
 	void OnButton(wxCommandEvent &evt);
 
 private:
 
-	matrix_t<float> m_data;
+	matrix_t<double> m_data;
 	DECLARE_EVENT_TABLE();
 };
 
@@ -100,8 +100,8 @@ class MatPropDialog : public wxDialog
 public:
 	MatPropDialog(wxWindow *parent);
 
-	void SetData(const matrix_t<float> &data);
-	matrix_t<float> GetData();
+	void SetData(const matrix_t<double> &data);
+	matrix_t<double> GetData();
 
 	void ChangeNumRows(int nrows, bool do_layout=true);
 

@@ -80,20 +80,20 @@ struct ShadingInputData
 //	int string_option; // 0=shading db,1=average,2=max,3=min
 	int string_option; // 0=shading db,1=average
 	bool en_timestep;
-	matrix_t<float> timestep;
+	matrix_t<double> timestep;
 
 	bool en_mxh;
-	matrix_t<float> mxh;
+	matrix_t<double> mxh;
 
 	bool en_azal;
-	matrix_t<float> azal;
+	matrix_t<double> azal;
 
 	bool en_diff;
 	double diff;
 
 	void clear();
-	void save( std::vector<float> &data );
-	bool load( const std::vector<float> &data );
+	void save( std::vector<double> &data );
+	bool load( const std::vector<double> &data );
 
 	void write( VarValue *vv );
 	bool read( VarValue *vv );
@@ -127,13 +127,13 @@ private:
 // based on AFFloatTable
 class wxShadingFactorsTable : public wxGridTableBase
 {
-	matrix_t<float> *d_mat;
+	matrix_t<double> *d_mat;
 	wxString label;
 	float def_val;
 
 public:
-	wxShadingFactorsTable(matrix_t<float> *da, float _def_val = 0, const wxString &_label = "");
-	void SetMatrix(matrix_t<float> *da);
+	wxShadingFactorsTable(matrix_t<double> *da, float _def_val = 0, const wxString &_label = "");
+	void SetMatrix(matrix_t<double> *da);
 	virtual int GetNumberRows();
 	virtual int GetNumberCols();
 	virtual bool IsEmptyCell(int row, int col);
@@ -170,9 +170,9 @@ public:
 		bool show_db_options = false,
 		bool sidebuttons = false);
 
-	void SetData(const matrix_t<float> &mat);
-	void GetData(matrix_t<float> &mat);
-	matrix_t<float> GetData() const { return m_data; }
+	void SetData(const matrix_t<double> &mat);
+	void GetData(matrix_t<double> &mat);
+	matrix_t<double> GetData() const { return m_data; }
 
 
 //	void SetStringCaption(const wxString &cap);
@@ -212,8 +212,8 @@ private:
 	bool Import(const wxString &file);
 	bool IsValidMinutes(int &minutes);
 
-	float m_default_val;
-	matrix_t<float> m_data;
+	double m_default_val;
+	matrix_t<double> m_data;
 	wxExtGridCtrl *m_grid;
 	wxShadingFactorsTable *m_grid_data;
 	wxStaticText *m_caption_col;

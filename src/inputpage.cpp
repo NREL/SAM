@@ -484,7 +484,7 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 	{
 		if ( dir == VAR_TO_OBJ )
 		{
-			std::vector<float> vals = val.Array();
+			std::vector<double> vals = val.Array();
 			bool bScheduleOnly = obj->Property("ScheduleOnly").GetBoolean();
 			if (!bScheduleOnly)
 				sn->UseSchedule( vals.size() > 1 );
@@ -500,7 +500,7 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		}
 		else
 		{
-			std::vector<float> vals;
+			std::vector<double> vals;
 			if ((sn->UseSchedule()) || (sn->ScheduleOnly()))
 				sn->GetSchedule( &vals );
 			else
@@ -508,11 +508,11 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 
 			val.Set( &vals[0], vals.size() );
 		}
-	}
+	} 
 	else if ( PTLayoutCtrl *pt = obj->GetNative<PTLayoutCtrl>() )
 	{
 		if ( dir == VAR_TO_OBJ )
-		{
+		{ 
 			VarTable &tab = val.Table();
 			if ( VarValue *v = tab.Get("grid") ) pt->SetGrid( v->Matrix() );
 			if ( VarValue *v = tab.Get("span") ) pt->SetSpanAngle( v->Value() );
@@ -603,18 +603,19 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		}
 		else if ( val.Type() == VV_MATRIX )
 		{
-			float *p;
 			size_t nr, nc;
 
 			if (dir == VAR_TO_OBJ)
 			{
-				p = val.Matrix( &nr, &nc );
-				dp->SetData( p, nr, nc );
+				double *p = val.Matrix( &nr, &nc );
+				dp->SetData( (float*)p, nr, nc );
 			}
 			else
 			{
-				p = dp->GetData( &nr, &nc );
-				val.Set( p, nr, nc );
+				// fundamental incompatability in current function requirements
+				// upcasting is pointless, already at a float precision.
+				float *p = dp->GetData( &nr, &nc );
+				val.Set( (double *)p, nr, nc );
 			}
 		}
 	}
