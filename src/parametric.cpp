@@ -744,7 +744,7 @@ bool ParametricViewer::ImportAsArray(wxString& vals, VarValue& vv) {
 	wxArrayString entries = wxSplit(vals, ';');
 	if (entries.Count() < 2) return false;
 	double valNum = 0.0;
-	std::vector<float> arr;
+	std::vector<double> arr;
 	for (size_t i = 0; i < entries.Count() - 1; i++) {
 		if (entries[i].ToDouble(&valNum)) {
 			arr.push_back(valNum);
@@ -763,13 +763,13 @@ bool ParametricViewer::ImportAsMatrix(wxString& vals, VarValue& vv) {
 	double valNum = 0.0;
 	size_t nr = rows.Count() - 1;
 	size_t nc = 0;
-	float* valArr = nullptr;
+	double* valArr = nullptr;
 	for (size_t i = 0; i < nr; i++) {
 		if (rows[i + 1].Find(']') != -1) {
 			wxArrayString entries = wxSplit(rows[i + 1].SubString(0, rows[i + 1].Len() - 2), ';');
 			if (i == 0) {
 				nc = entries.Count();
-				valArr = new float[nr * nc];
+				valArr = new double[nr * nc];
 			}
 			for (size_t j = 0; j < nc; j++) {
 				if (entries[j].ToDouble(&valNum)) {
@@ -1104,11 +1104,11 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 void ParametricViewer::ShowAllData()
 {
 	int col = m_selected_grid_col;
-	std::vector<std::vector<float> > values_vec;
+	std::vector<std::vector<double> > values_vec;
 	wxArrayString labels;
 	for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
 	{
-		std::vector<float> vec = m_grid_data->GetArray(row, col);
+		std::vector<double> vec = m_grid_data->GetArray(row, col);
 		if (vec.size() == 0) // single values
 			vec.push_back(m_grid_data->GetDouble(row, col));
 		values_vec.push_back(vec);
@@ -1230,12 +1230,12 @@ void ParametricViewer::AddPlot(const wxString &output_name)
 					for (int row = 0; row < m_grid_data->GetRowsCount(); row++)
 					{
 						size_t n;
-						float *y = m_grid_data->GetArray(row, col, &n);
+						double *y = m_grid_data->GetArray(row, col, &n);
 						size_t steps_per_hour = n/8760;
 						if ( steps_per_hour > 0 
 							&& steps_per_hour <= 60 
 							&& n == steps_per_hour*8760 )
-						{
+						{ 
 							dv->AddDataSet(new TimeSeriesData(y, n, 1.0/steps_per_hour, 0.0, // by default not instantaneous values for hourly data
 									m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", (int)(row + 1)), 
 									m_grid_data->GetUnits(col)), true );
@@ -2057,9 +2057,9 @@ double ParametricGridData::GetDouble(int row, int col)
 	return ret_val;
 }
 
-std::vector<float> ParametricGridData::GetArray(int row, int col)
+std::vector<double> ParametricGridData::GetArray(int row, int col)
 {
-	std::vector<float> ret_val;
+	std::vector<double> ret_val;
 	if (VarValue *vv = GetVarValue(row, col))
 	{
 		if (vv->Type() == VV_ARRAY)
@@ -2068,9 +2068,9 @@ std::vector<float> ParametricGridData::GetArray(int row, int col)
 	return ret_val;
 }
 
-float *ParametricGridData::GetArray(int row, int col, size_t *n)
+double *ParametricGridData::GetArray(int row, int col, size_t *n)
 {
-	float *ret_val=NULL;
+	double *ret_val = NULL;
 	if (VarValue *vv = GetVarValue(row, col))
 	{
 		if (vv->Type() == VV_ARRAY)
@@ -2078,6 +2078,7 @@ float *ParametricGridData::GetArray(int row, int col, size_t *n)
 	}
 	return ret_val;
 }
+
 
 wxString ParametricGridData::GetUnits(int col)
 {

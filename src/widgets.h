@@ -89,7 +89,7 @@ public:
 	void SetValue(double d);
 	void SetFormat( int deci, bool thousep, const wxString &pre, const wxString &post );
 	std::vector<double> GetSchedule();
-	void GetSchedule( std::vector<float> *vals );
+	void GetSchedule( std::vector<double> *vals );
 	int GetSchedLen();
 	void SetSchedule(const std::vector<double> &s);
 	void SetSchedule( const std::vector<float> &s );
@@ -159,14 +159,14 @@ public:
 	AFMonthlyFactorCtrl( wxWindow *parent, int id, 
 		const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
 
-	std::vector<float> Get( );
-	void Set( const std::vector<float> &data );
+	std::vector<double> Get( );
+	void Set( const std::vector<double> &data );
 	void SetDescription(const wxString &s);
 	wxString GetDescription();
 	void OnPressed(wxCommandEvent &evt);
 private:
 	wxString mDescription;
-	float mData[12];
+	double mData[12];
 	DECLARE_EVENT_TABLE();
 };
 
@@ -221,9 +221,9 @@ class AFDataArrayButton : public wxButton
 public:
 	AFDataArrayButton(wxWindow *parent, int id, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
 
-	void Set(const std::vector<float> &data);
-	void Get(std::vector<float> &data);
-	std::vector<float> Get() const { return mData; }
+	void Set(const std::vector<double> &data);
+	void Get(std::vector<double> &data);
+	std::vector<double> Get() const { return mData; }
 
 	void SetDataLabel(const wxString &s);
 	wxString GetDataLabel();
@@ -238,7 +238,7 @@ public:
 private:
 	wxString mDataLabel;
 	int mMode;
-	std::vector<float> mData;
+	std::vector<double> mData;
 	wxString m_description;
 
 	DECLARE_EVENT_TABLE();
@@ -403,10 +403,10 @@ public:
 		const int &choice_col = -1,
 		bool bottombuttons = false);
 
-	void SetData(const matrix_t<float> &mat);
-	void GetData(matrix_t<float> &mat);
-//	matrix_t<float> GetData() const;
-	matrix_t<float> GetData() const { return m_data; }
+	void SetData(const matrix_t<double> &mat);
+	void GetData(matrix_t<double> &mat);
+//	matrix_t<double> GetData() const;
+	matrix_t<double> GetData() const { return m_data; }
 
 	void SetValueLimits(float min = 0.0, float max = 0.0);
 	void GetValueLimits(float *min, float *max);
@@ -486,7 +486,7 @@ private:
 	wxString m_colFormat;
 	double m_colY2, m_colY1, m_colY0;
 
-	matrix_t<float> m_data;
+	matrix_t<double> m_data;
 	float m_minVal, m_maxVal;
 	wxNumericCtrl *m_numRows, *m_numCols;
 	wxExtGridCtrl *m_grid;
@@ -538,14 +538,14 @@ public:
 	bool UseTable();
 	void UseTable(bool b);
 
-	void Set( const matrix_t<float> &mat );
-	matrix_t<float> Get();
+	void Set( const matrix_t<double> &mat );
+	matrix_t<double> Get();
 
 	float GetSingleValue();
-	void SetSingleValue(float val);
+	void SetSingleValue(double val);
 
-	void GetTableData(matrix_t<float> *mat);
-	void SetTableData(const matrix_t<float> &mat);
+	void GetTableData(matrix_t<double> *mat);
+	void SetTableData(const matrix_t<double> &mat);
 
 	void SetTableSize(int nr, int nc);
 	void GetTableSize(int *nr, int *nc);
@@ -565,7 +565,7 @@ private:
 	wxButton *mBtnEditTable;
 	wxNumericCtrl *mSingleValue;
 
-	matrix_t<float> mTable;
+	matrix_t<double> mTable;
 	wxArrayString mColLabels;
 
 	int m_switchWidth;
@@ -589,9 +589,9 @@ public:
 	AFMonthByHourFactorCtrl(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &sz = wxDefaultSize);
 	virtual ~AFMonthByHourFactorCtrl();
 
-	void SetData(const matrix_t<float> &data);
-	void GetData( matrix_t<float> &mat );
-	matrix_t<float> GetData();
+	void SetData(const matrix_t<double> &data);
+	void GetData( matrix_t<double> &mat );
+	matrix_t<double> GetData();
 	
 	void SetTitle( const wxString &title);
 	wxString GetTitle( );
@@ -620,7 +620,7 @@ private:
 	void ApplyVal(int r, int c, double sf);
 	void DispatchEvent();
 
-	matrix_t<float> mData;
+	matrix_t<double> mData;
 	wxNumericCtrl *mShadingVal;
 	wxButton *mBtnApply;
 	wxExtGridCtrl *mGrid;
