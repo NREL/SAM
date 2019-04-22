@@ -121,15 +121,15 @@ public:
 
 	explicit VarValue( int i );
 	explicit VarValue( bool b );
-	explicit VarValue( float f );
-	explicit VarValue( const std::vector<float> &f );
-	explicit VarValue( const matrix_t<float> &m );
+	explicit VarValue( double f );
+	explicit VarValue( const std::vector<double> &f );
+	explicit VarValue( const matrix_t<double> &m );
 	explicit VarValue( const wxString &s );
 	explicit VarValue( const VarTable &t );
 	explicit VarValue( const wxMemoryBuffer &mb );
 
-	VarValue( float *arr, size_t n );
-	VarValue( float *mat, size_t r, size_t c );
+	VarValue( double *arr, size_t n );
+	VarValue( double *mat, size_t r, size_t c );
 
 	virtual ~VarValue();
 
@@ -151,25 +151,25 @@ public:
 	void Set( float val );
 	void Set( double val );
 	void Set( const std::vector<int> &ivec );
-	void Set( const std::vector<float> &fvec );
-	void Set( float *val, size_t n );
-	void Set( float *mat, size_t r, size_t c );
-	void Set( const ::matrix_t<float> &mat );
+	void Set( const std::vector<double> &fvec );
+	void Set(double *val, size_t n);
+	void Set(double *mat, size_t r, size_t c);
+	void Set(const ::matrix_t<double> &mat);
 	void Set( const wxString &str );
 	void Set( const VarTable &tab );
 	void Set( const wxMemoryBuffer &mb );
 
 	int Integer();
 	bool Boolean();
-	float Value();
-	float *Array( size_t *n );
-	std::vector<float> Array();
+	double Value();
+	double *Array( size_t *n );
+	std::vector<double> Array();
 	size_t Length();
 	size_t Rows(); 
 	size_t Columns();
 	std::vector<int> IntegerArray();
-	::matrix_t<float> &Matrix();
-	float *Matrix( size_t *nr, size_t *nc );
+	::matrix_t<double> &Matrix();
+	double *Matrix( size_t *nr, size_t *nc );
 	wxString String();
 	VarTable &Table();
 	wxMemoryBuffer &Binary();
@@ -183,7 +183,7 @@ public:
 	static VarValue Invalid;
 private:
 	unsigned char m_type;
-	::matrix_t<float> m_val;
+	::matrix_t<double> m_val;
 	wxString m_str;
 	VarTable m_tab;
 	wxMemoryBuffer m_bin;

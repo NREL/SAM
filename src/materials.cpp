@@ -72,13 +72,13 @@ MatPropCtrl::MatPropCtrl(wxWindow *parent, int id, const wxPoint &pos, const wxS
 		m_data.at(0,i) = 0;
 }
 
-void MatPropCtrl::SetData(const matrix_t<float> &data)
+void MatPropCtrl::SetData(const matrix_t<double> &data)
 {
 	if ( data.ncols() == 7 )
 		m_data = data;
 }
 
-matrix_t<float> MatPropCtrl::GetData()
+matrix_t<double> MatPropCtrl::GetData()
 {
 	return m_data;
 }
@@ -161,7 +161,7 @@ MatPropDialog::MatPropDialog(wxWindow *parent)
 	SetSizer( bxmain );
 }
 
-void MatPropDialog::SetData(const matrix_t<float> &data)
+void MatPropDialog::SetData(const matrix_t<double> &data)
 {
 	int nrows = data.nrows();
 
@@ -195,15 +195,15 @@ void MatPropDialog::SetData(const matrix_t<float> &data)
 
 }
 
-matrix_t<float> MatPropDialog::GetData()
+matrix_t<double> MatPropDialog::GetData()
 {
-	matrix_t<float> dat;
+	matrix_t<double> dat;
 	int nrows = m_grid->GetNumberRows();
 	dat.resize_fill(nrows, MPC_NCOLS, 0.0);
 
 	for (int r=0;r<nrows;r++)
 		for (int c=0;c<MPC_NCOLS;c++)
-			dat.at(r,c) = (float) wxAtof( m_grid->GetCellValue(r,c) );
+			dat.at(r,c) = (double) wxAtof( m_grid->GetCellValue(r,c) );
 
 	return dat;
 }
@@ -287,7 +287,7 @@ void MatPropDialog::Import()
 		}
 		
 
-		matrix_t<float> grid;
+		matrix_t<double> grid;
 		grid.resize_fill( csv.NumRows(), csv.NumCols(), 0.0f );
 		for (size_t r=0;r<grid.nrows();r++)
 			for (size_t c=0;c<grid.ncols();c++)
@@ -306,7 +306,7 @@ void MatPropDialog::Export()
 	if (fdlg.ShowModal() == wxID_OK)
 	{
 		wxCSVData csv;		
-		matrix_t<float> dat = GetData();
+		matrix_t<double> dat = GetData();
 		for (size_t r=0;r<dat.nrows();r++)
 			for (size_t c=0;c<dat.ncols();c++)
 				csv.Set( r, c, wxString::Format("%g", dat(r,c)) );

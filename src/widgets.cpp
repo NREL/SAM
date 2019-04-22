@@ -157,10 +157,10 @@ std::vector<double> AFSchedNumeric::GetSchedule()
 	return mSchedValues;
 }
 
-void AFSchedNumeric::GetSchedule( std::vector<float> *vals )
+void AFSchedNumeric::GetSchedule( std::vector<double> *vals )
 {
 	vals->clear();
-	for( size_t i=0;i<mSchedValues.size();i++) vals->push_back( (float)mSchedValues[i] );
+	for( size_t i=0;i<mSchedValues.size();i++) vals->push_back( (double)mSchedValues[i] );
 }
 int AFSchedNumeric::GetSchedLen()
 {
@@ -563,15 +563,15 @@ AFMonthlyFactorCtrl::AFMonthlyFactorCtrl( wxWindow *parent, int id,
 		mData[i] = 1.0f;
 }
 
-std::vector<float> AFMonthlyFactorCtrl::Get()
+std::vector<double> AFMonthlyFactorCtrl::Get()
 {
-	std::vector<float> data( 12, 0.0f );
+	std::vector<double> data( 12, 0.0f );
 	for (int i=0;i<12;i++)
 		data[i] = mData[i];
 	return data;
 }
 
-void AFMonthlyFactorCtrl::Set( const std::vector<float> &data )
+void AFMonthlyFactorCtrl::Set( const std::vector<double> &data )
 {
 	for (size_t i=0;i<12 && i<data.size();i++)
 		mData[i] = data[i];
@@ -625,7 +625,7 @@ public:
 		grdData->SetRowLabelSize( wxGRID_AUTOSIZE );
 		grdData->SetColLabelSize( wxGRID_AUTOSIZE );
 	
-		float d[12];
+		double d[12];
 		for (int i=0;i<12;i++) d[i] = 1;
 
 		SetData(d);
@@ -660,16 +660,16 @@ public:
 		else
 			grdData->Copy(true);
 	}
-	void SetData(float d[12])
+	void SetData(double d[12])
 	{
 		for (int i=0;i<12;i++)
 			grdData->SetCellValue( i, 0, wxString::Format("%g", d[i]) );
 	}
 
-	void GetData(float d[12])
+	void GetData(double d[12])
 	{
 		for (int i=0;i<12;i++)
-			d[i] = (float) wxAtof( grdData->GetCellValue(i,0) );
+			d[i] = (double) wxAtof( grdData->GetCellValue(i,0) );
 	}
 
 	void SetDescription(const wxString &data)
@@ -907,19 +907,19 @@ void AFSearchListBox::UpdateView()
 
 class AFFloatArrayTable : public wxGridTableBase
 {
-	std::vector<float> *d_arr;
+	std::vector<double> *d_arr;
 	int mode;
 	wxString label;
 
 public:
-	AFFloatArrayTable(std::vector<float> *da, int _mode, const wxString &_label)
+	AFFloatArrayTable(std::vector<double> *da, int _mode, const wxString &_label)
 	{
 		label = _label;
 		mode = _mode;
 		d_arr = da;
 	}
 
-	void SetArray(std::vector<float> *da)
+	void SetArray(std::vector<double> *da)
 	{
 		d_arr = da;
 	}
@@ -1227,13 +1227,13 @@ class AFDataMatrixTable : public wxGridTableBase
 
 public:
 	wxString label;
-	matrix_t<float> *d_mat ;
-	float def_val;
+	matrix_t<double> *d_mat ;
+	double def_val;
 	int choice_col;
 	wxString collabels;
 	wxString rowlabels;
 
-	AFDataMatrixTable(matrix_t<float> *da, const int &col, const wxString &_collabels, const wxString &_rowlabels)
+	AFDataMatrixTable(matrix_t<double> *da, const int &col, const wxString &_collabels, const wxString &_rowlabels)
 	{
 		SetMatrix(da);
 		choice_col = col;
@@ -1241,12 +1241,12 @@ public:
 		rowlabels = _rowlabels;
 	}
 
-	void SetMatrix(matrix_t<float> *da)
+	void SetMatrix(matrix_t<double> *da)
 	{
 		d_mat = da;
 	}
 
-	matrix_t<float> GetMatrix()
+	matrix_t<double> GetMatrix()
 	{
 		return *d_mat;
 	}
@@ -1360,7 +1360,7 @@ public:
 		if (pos > d_mat->nrows()) pos = d_mat->nrows();
 
 		size_t new_rows = d_mat->nrows() + nrows;
-		matrix_t<float> old(*d_mat);
+		matrix_t<double> old(*d_mat);
 		d_mat->resize_fill(new_rows, d_mat->ncols(), def_val);
 
 		for (size_t r = 0; r < pos && r < old.nrows(); r++)
@@ -1393,7 +1393,7 @@ public:
 			nrows = d_mat->nrows() - pos;
 
 		size_t new_rows = d_mat->nrows() - nrows;
-		matrix_t<float> old(*d_mat);
+		matrix_t<double> old(*d_mat);
 		d_mat->resize_preserve(new_rows, d_mat->ncols(), def_val);
 
 		for (size_t r = pos; r < new_rows && r + nrows < old.nrows(); r++)
@@ -1441,7 +1441,7 @@ public:
 		if (pos > d_mat->ncols()) pos = d_mat->ncols();
 
 		size_t new_cols = d_mat->ncols() + ncols;
-		matrix_t<float> old(*d_mat);
+		matrix_t<double> old(*d_mat);
 		d_mat->resize_fill(d_mat->nrows(), new_cols, def_val);
 
 		for (size_t r = 0; r < old.nrows(); r++)
@@ -1474,7 +1474,7 @@ public:
 			ncols = d_mat->ncols() - pos;
 
 		size_t new_cols = d_mat->ncols() - ncols;
-		matrix_t<float> old(*d_mat);
+		matrix_t<double> old(*d_mat);
 		d_mat->resize_preserve(d_mat->nrows(), new_cols, def_val);
 
 		for (size_t r = pos; r < old.nrows(); r++)
@@ -1510,7 +1510,7 @@ class AFDataArrayDialog : public wxDialog
 private:
 	wxString mLabel;
 	int mMode;
-	std::vector<float> mData;
+	std::vector<double> mData;
 	wxExtGridCtrl *Grid;
 	AFFloatArrayTable *GridTable;
 	wxStaticText *ModeLabel;
@@ -1602,7 +1602,7 @@ public:
 		return mMode;
 	}
 
-	void SetData(const std::vector<float> &data)
+	void SetData(const std::vector<double> &data)
 	{
 		mData = data;
 
@@ -1619,7 +1619,7 @@ public:
 		Grid->Refresh();
 	}
 
-	void GetData(std::vector<float> &data)
+	void GetData(std::vector<double> &data)
 	{
 		data = mData;
 	}
@@ -1704,7 +1704,7 @@ public:
 				return;
 			}
 
-			std::vector<float> arr;
+			std::vector<double> arr;
 			arr.reserve( mData.size() );
 
 			char buf[128];
@@ -1720,7 +1720,7 @@ public:
 					break;
 				}
 
-				arr.push_back( (float) atof(buf) );
+				arr.push_back( (double) atof(buf) );
 			}
 
 			if (!error) SetData(arr);
@@ -1768,11 +1768,11 @@ AFDataArrayButton::AFDataArrayButton( wxWindow *parent, int id, const wxPoint &p
 	mMode = DATA_ARRAY_8760_MULTIPLES;
 }
 
-void AFDataArrayButton::Get(std::vector<float> &data)
+void AFDataArrayButton::Get(std::vector<double> &data)
 {
 	data=mData;
 }
-void AFDataArrayButton::Set(const std::vector<float> &data)
+void AFDataArrayButton::Set(const std::vector<double> &data)
 {
 	if (mMode == DATA_ARRAY_8760_ONLY)
 	{
@@ -2419,7 +2419,7 @@ bool AFDataMatrixCtrl::ShadeC0()
 }
 
 
-void AFDataMatrixCtrl::SetData(const matrix_t<float> &mat)
+void AFDataMatrixCtrl::SetData(const matrix_t<double> &mat)
 {
 	m_data = mat;
 	NormalizeToLimits();
@@ -2442,7 +2442,7 @@ void AFDataMatrixCtrl::NormalizeToLimits()
 	}
 }
 
-void AFDataMatrixCtrl::GetData(matrix_t<float> &mat)
+void AFDataMatrixCtrl::GetData(matrix_t<double> &mat)
 {
 	mat = m_data;
 }
@@ -2795,7 +2795,7 @@ public:
 		SetSizer(szv_main);
 	}
 
-	void SetData(const matrix_t<float> &data, wxArrayString *collabels)
+	void SetData(const matrix_t<double> &data, wxArrayString *collabels)
 	{
 		if (data.nrows() < 1 || data.ncols() < 1)
 			return;
@@ -2824,14 +2824,14 @@ public:
 
 	}
 
-	void GetData(matrix_t<float> &data)
+	void GetData(matrix_t<double> &data)
 	{
 		int nr = Grid->GetNumberRows();
 		int nc = Grid->GetNumberCols();
 		data.resize_fill( nr, nc, 0.0f );
 		for (int r=0;r<nr;r++)
 			for (int c=0;c<nc;c++)
-				data.at(r,c) = wxAtof( Grid->GetCellValue(r,c) );
+				data.at(r,c) = (double)wxAtof( Grid->GetCellValue(r,c) );
 	}
 	
 	void OnCellChange(wxGridEvent &evt)
@@ -2937,17 +2937,17 @@ float AFValueMatrixButton::GetSingleValue()
 	return (float)mSingleValue->Value();
 }
 
-void AFValueMatrixButton::SetSingleValue(float val)
+void AFValueMatrixButton::SetSingleValue(double val)
 {
 	mSingleValue->SetValue((double)val);
 }
 
-void AFValueMatrixButton::GetTableData(matrix_t<float> *mat)
+void AFValueMatrixButton::GetTableData(matrix_t<double> *mat)
 {
 	if (mat) *mat = mTable;
 }
 
-void AFValueMatrixButton::SetTableData(const matrix_t<float> &mat)
+void AFValueMatrixButton::SetTableData(const matrix_t<double> &mat)
 {
 	mTable = mat;
 }
@@ -3039,7 +3039,7 @@ void AFValueMatrixButton::DispatchEvent()
 	GetEventHandler()->ProcessEvent(evt);
 }
 
-void AFValueMatrixButton::Set( const matrix_t<float> &mat )
+void AFValueMatrixButton::Set( const matrix_t<double> &mat )
 {
 	if ( mat.nrows() == 1 && mat.ncols() == 1 )
 	{
@@ -3053,13 +3053,13 @@ void AFValueMatrixButton::Set( const matrix_t<float> &mat )
 	}
 }
 
-matrix_t<float> AFValueMatrixButton::Get()
+matrix_t<double> AFValueMatrixButton::Get()
 {
 	if ( bUseTable ) return mTable;
 	else 
 	{
-		matrix_t<float> mat;
-		mat.resize_fill( 1, 1, (float)mSingleValue->Value() );
+		matrix_t<double> mat;
+		mat.resize_fill( 1, 1, (double)mSingleValue->Value() );
 		return mat;
 	}
 }
@@ -3199,7 +3199,7 @@ wxString AFMonthByHourFactorCtrl::GetLegend()
 }
 
 
-void AFMonthByHourFactorCtrl::SetData(const matrix_t<float> &data)
+void AFMonthByHourFactorCtrl::SetData(const matrix_t<double> &data)
 {
 	for (size_t r=0;r<SFROWS;r++)
 	{
@@ -3215,12 +3215,12 @@ void AFMonthByHourFactorCtrl::SetData(const matrix_t<float> &data)
 	UpdateGrid();
 }
 
-void  AFMonthByHourFactorCtrl::GetData( matrix_t<float> &mat )
+void  AFMonthByHourFactorCtrl::GetData( matrix_t<double> &mat )
 {
 	mat = mData;
 }
 
-matrix_t<float> AFMonthByHourFactorCtrl::GetData()
+matrix_t<double> AFMonthByHourFactorCtrl::GetData()
 {
 	 return mData; 
 }
@@ -3411,7 +3411,7 @@ void AFMonthByHourFactorCtrl::OnImport(wxCommandEvent &)
 			return;
 		}
 
-		matrix_t<float> grid;
+		matrix_t<double> grid;
 		grid.resize_fill( csv.NumRows(), csv.NumCols(), 0.0f );
 
 		for (size_t r=0;r<grid.nrows();r++)
@@ -3468,7 +3468,7 @@ void AFMonthByHourFactorCtrl::OnPaste(wxCommandEvent &)
 		int ncols = 0;
 		if (lines.Count() > 0)
 		{
-			matrix_t<float> grid;
+			matrix_t<double> grid;
 			grid.resize_fill(mData.nrows(), mData.ncols(), 0.0f);
 
 			for (size_t r = 0; r < grid.nrows(); r++)
