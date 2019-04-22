@@ -144,7 +144,7 @@ void ValueEditor::Set( const VarValue &vv )
 }
 void ValueEditor::ValueToForm()
 {
-	matrix_t<float> mat;
+	matrix_t<double> mat;
 	m_type->SetSelection( m_val.Type() );
 	switch( m_val.Type() )
 	{
@@ -157,7 +157,7 @@ void ValueEditor::ValueToForm()
 		if ( m_val.Length() > 0 )
 		{
 			size_t nn;
-			float *p = m_val.Array( &nn );
+			double *p = m_val.Array( &nn );
 			mat.resize_fill( nn, 0.0f );
 			for( size_t i=0;i<nn;i++ )
 				mat.at(i) = p[i];
@@ -178,6 +178,7 @@ void ValueEditor::ValueToForm()
 		break;
 	}
 }
+
 
 VarValue ValueEditor::Get()
 {
@@ -221,12 +222,12 @@ void ValueEditor::OnCommand( wxCommandEvent &evt )
 	case ID_MATRIX:
 		if ( m_val.Type() == VV_ARRAY )
 		{
-			matrix_t<float> mat;
+			matrix_t<double> mat;
 			m_matrix->GetData( mat );
 			int arrlen = mat.nrows();
 			if ( arrlen > 0 )
 			{
-				float *arr = new float[arrlen];
+				double *arr = new double[arrlen];
 				for( int i=0;i<arrlen;i++ )
 					arr[i] = mat(i,0);
 
@@ -234,11 +235,11 @@ void ValueEditor::OnCommand( wxCommandEvent &evt )
 				delete [] arr;
 			}
 			else
-				m_val.Set( std::vector<float>() ); // empty array
+				m_val.Set( std::vector<double>() ); // empty array
 		}
 		else if ( m_val.Type() == VV_MATRIX )
 		{
-			matrix_t<float> mat;
+			matrix_t<double> mat;
 			m_matrix->GetData( mat );
 			m_val.Set( mat );
 		}
@@ -577,7 +578,7 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 			else if ( vv->Type() == VV_ARRAY )
 			{	
 				size_t arrlen;
-				float *arr = value.Array( & arrlen );
+				double *arr = value.Array( & arrlen );
 				wxString s("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = ");
 				if ( arrlen > 25 )
 				{

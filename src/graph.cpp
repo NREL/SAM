@@ -320,7 +320,7 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 		if (yvars[i]->Type() == VV_ARRAY)
 		{
 			size_t n = 0;
-			float *p = yvars[i]->Array(&n);
+			double *p = yvars[i]->Array(&n);
 
 			plotdata[i].reserve(ndata);
 			for (size_t k = 0; k < n; k++)
@@ -392,7 +392,7 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 					// Assume col[0] contains x values in order
 					// assume row[0] contains y values in order
 					size_t nx, ny;
-					float *data = vv->Matrix(&nx, &ny);
+					double *data = vv->Matrix(&nx, &ny);
 					XX.Resize(nx - 1, ny - 1);
 					YY.Resize(nx - 1, ny - 1);
 					ZZ.Resize(nx - 1, ny - 1);
@@ -590,7 +590,7 @@ int GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 		if (yvars[i]->Type() == VV_ARRAY)
 		{
 			size_t n = 0;
-			float *p = yvars[i]->Array(&n);
+			double *p = yvars[i]->Array(&n);
 
 			plotdata[i].reserve(ndata);
 			for (size_t k = 0; k < n; k++)

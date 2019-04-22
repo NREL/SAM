@@ -90,10 +90,10 @@ public:
 		float constant; // updated from "factor" to "constant" 6/19/15
 
 		bool en_hourly;
-		std::vector<float> hourly;
+		std::vector<double> hourly;
 
 		bool en_periods;
-		matrix_t<float> periods; // stored as n x 3 matrix: columns: [start hour] [length hour] [factor]
+		matrix_t<double> periods; // stored as n x 3 matrix: columns: [start hour] [length hour] [factor]
 	};
 
 	bool DoEdit();
