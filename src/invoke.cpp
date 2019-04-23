@@ -1785,7 +1785,7 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 			lk_string errors;
 			int idx=0;
 			int ty = 0;
-			ssc_number_t tm = 0;
+			float tm = 0;
 			while ( const char *msg = ssc_module_log( mod, idx++, &ty, &tm ) )
 			{
 				errors += lk_string(msg);
