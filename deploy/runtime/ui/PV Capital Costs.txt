@@ -2629,7 +2629,7 @@ Format
 0
 Decimals
 3
-1
+3
 Prefix
 5
 0
@@ -6263,7 +6263,7 @@ Capital Costs
 0
 Numeric
 
-5937
+5939
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6385,7 +6385,7 @@ equations{ 'inverterarray_power' } = define() {
 equations{ 'modulearray_area' } = define() {
 	if ( technology() == 'PVWatts' ) return 0;
 	elseif ( technology() == 'PVWatts_battery' ) return 0;
-	else return ${total_land_area};
+	else return ${total_module_area};
 };
 
 equations{ 'total_indirect_cost' } = define() {
