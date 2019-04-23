@@ -68,7 +68,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_P_cond_min_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set P_cond_ratio: Condenser pressure ratio []
+	 * Set P_cond_ratio: Condenser pressure ratio
 	 * options: None
 	 * constraints: None
 	 * required if: ui_calculations_only=0
@@ -124,7 +124,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_ambient_pressure_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set analysis_type: Analysis Type []
+	 * Set analysis_type: Analysis Type
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -140,7 +140,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_casing_size_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set conversion_subtype: Conversion Subtype []
+	 * Set conversion_subtype: Conversion Subtype
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -148,7 +148,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_conversion_subtype_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set conversion_type: Conversion Type []
+	 * Set conversion_type: Conversion Type
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -164,7 +164,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_dT_cw_ref_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set decline_type: Temp decline Type []
+	 * Set decline_type: Temp decline Type
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -236,7 +236,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_geothermal_analysis_period_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hc_ctl1: HC Control 1 []
+	 * Set hc_ctl1: HC Control 1
 	 * options: None
 	 * constraints: None
 	 * required if: ui_calculations_only=0
@@ -244,7 +244,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_hc_ctl1_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hc_ctl2: HC Control 2 []
+	 * Set hc_ctl2: HC Control 2
 	 * options: None
 	 * constraints: None
 	 * required if: ui_calculations_only=0
@@ -252,7 +252,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_hc_ctl2_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hc_ctl3: HC Control 3 []
+	 * Set hc_ctl3: HC Control 3
 	 * options: None
 	 * constraints: None
 	 * required if: ui_calculations_only=0
@@ -260,7 +260,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_hc_ctl3_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hc_ctl4: HC Control 4 []
+	 * Set hc_ctl4: HC Control 4
 	 * options: None
 	 * constraints: None
 	 * required if: ui_calculations_only=0
@@ -268,7 +268,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_hc_ctl4_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hc_ctl5: HC Control 5 []
+	 * Set hc_ctl5: HC Control 5
 	 * options: None
 	 * constraints: None
 	 * required if: ui_calculations_only=0
@@ -276,7 +276,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_hc_ctl5_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hc_ctl6: HC Control 6 []
+	 * Set hc_ctl6: HC Control 6
 	 * options: None
 	 * constraints: None
 	 * required if: ui_calculations_only=0
@@ -284,7 +284,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_hc_ctl6_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hc_ctl7: HC Control 7 []
+	 * Set hc_ctl7: HC Control 7
 	 * options: None
 	 * constraints: None
 	 * required if: ui_calculations_only=0
@@ -292,7 +292,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_hc_ctl7_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hc_ctl8: HC Control 8 []
+	 * Set hc_ctl8: HC Control 8
 	 * options: None
 	 * constraints: None
 	 * required if: ui_calculations_only=0
@@ -300,7 +300,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_hc_ctl8_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hc_ctl9: HC Control 9 []
+	 * Set hc_ctl9: HC Control 9
 	 * options: None
 	 * constraints: None
 	 * required if: ui_calculations_only=0
@@ -316,7 +316,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_hr_pl_nlev_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hybrid_dispatch_schedule: Daily dispatch schedule []
+	 * Set hybrid_dispatch_schedule: Daily dispatch schedule
 	 * options: None
 	 * constraints: TOUSCHED
 	 * required if: ui_calculations_only=0
@@ -340,7 +340,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_inj_well_diam_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set model_choice: Which model to run (0,1,2) []
+	 * Set model_choice: Which model to run (0,1,2)
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -356,7 +356,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_nameplate_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set num_fractures: Number of fractures []
+	 * Set num_fractures: Number of fractures
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -364,7 +364,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_num_fractures_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set num_wells: Number of Wells []
+	 * Set num_wells: Number of Wells
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -372,7 +372,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_num_wells_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set num_wells_getem: Number of Wells GETEM calc'd []
+	 * Set num_wells_getem: Number of Wells GETEM calc'd
 	 * options: None
 	 * constraints: None
 	 * required if: ui_calculations_only=0
@@ -388,7 +388,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_pb_bd_frac_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set plant_efficiency_input: Plant efficiency []
+	 * Set plant_efficiency_input: Plant efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -436,7 +436,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_reservoir_pressure_change_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set reservoir_pressure_change_type: Reservoir pressure change type []
+	 * Set reservoir_pressure_change_type: Reservoir pressure change type
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -476,7 +476,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_resource_temp_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set resource_type: Type of Resource []
+	 * Set resource_type: Type of Resource
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -564,7 +564,7 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_temp_decline_rate_fset(SAM_Geothermal ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ui_calculations_only: If = 1, only run UI calculations []
+	 * Set ui_calculations_only: If = 1, only run UI calculations
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -601,7 +601,7 @@ extern "C"
 	//
 
 	/**
-	 * Set file_name: local weather file path []
+	 * Set file_name: local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: ui_calculations_only=0

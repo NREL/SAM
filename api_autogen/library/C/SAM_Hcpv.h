@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set file_name: Weather file in TMY2, TMY3, EPW, or SMW. []
+	 * Set file_name: Weather file in TMY2, TMY3, EPW, or SMW.
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: *
@@ -424,7 +424,7 @@ extern "C"
 	SAM_EXPORT void SAM_Hcpv_HCPVArray_array_wind_stow_speed_fset(SAM_Hcpv ptr, float number, SAM_error *err);
 
 	/**
-	 * Set azaltsf: Azimuth-Altitude Shading Table []
+	 * Set azaltsf: Azimuth-Altitude Shading Table
 	 * options: None
 	 * constraints: None
 	 * required if: *

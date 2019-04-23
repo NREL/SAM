@@ -55,7 +55,7 @@ extern "C"
 	 * Set energy_output_array: Array of Energy Output Profile [kW]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: spec_mode=1
 	 */
 	SAM_EXPORT void SAM_GenericSystem_Plant_energy_output_array_aset(SAM_GenericSystem ptr, float* arr, int length, SAM_error *err);
 
@@ -68,7 +68,7 @@ extern "C"
 	SAM_EXPORT void SAM_GenericSystem_Plant_heat_rate_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
 
 	/**
-	 * Set spec_mode: Spec mode: 0=constant CF,1=profile []
+	 * Set spec_mode: Spec mode: 0=constant CF,1=profile
 	 * options: None
 	 * constraints: None
 	 * required if: *

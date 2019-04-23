@@ -718,6 +718,18 @@ SAM_EXPORT float SAM_Fuelcell_Outputs_annual_fuel_usage_fget(SAM_Fuelcell ptr, S
 
 
 
+SAM_EXPORT float* SAM_Fuelcell_Outputs_fuelcell_electrical_efficiency_aget(SAM_Fuelcell ptr, int* length, SAM_error *err){
+	float* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "fuelcell_electrical_efficiency", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "fuelcell_electrical_efficiency");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT float* SAM_Fuelcell_Outputs_fuelcell_fuel_consumption_mcf_aget(SAM_Fuelcell ptr, int* length, SAM_error *err){
 	float* result = nullptr;
 	translateExceptions(err, [&]{

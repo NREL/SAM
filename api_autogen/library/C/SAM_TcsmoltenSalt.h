@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set solar_resource_data: Weather resource data in memory []
+	 * Set solar_resource_data: Weather resource data in memory
 	 * options: None
 	 * constraints: None
 	 * required if: ?
@@ -44,7 +44,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_LocationAndResource_solar_resource_data_tset(SAM_TcsmoltenSalt ptr, SAM_table tab, SAM_error *err);
 
 	/**
-	 * Set solar_resource_file: Local weather file path []
+	 * Set solar_resource_file: Local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: ?
@@ -57,7 +57,7 @@ extern "C"
 	//
 
 	/**
-	 * Set dispatch_factor1: Dispatch payment factor 1 []
+	 * Set dispatch_factor1: Dispatch payment factor 1
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -65,7 +65,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor2: Dispatch payment factor 2 []
+	 * Set dispatch_factor2: Dispatch payment factor 2
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -73,7 +73,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor3: Dispatch payment factor 3 []
+	 * Set dispatch_factor3: Dispatch payment factor 3
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -81,7 +81,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor4: Dispatch payment factor 4 []
+	 * Set dispatch_factor4: Dispatch payment factor 4
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -89,7 +89,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor5: Dispatch payment factor 5 []
+	 * Set dispatch_factor5: Dispatch payment factor 5
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -97,7 +97,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor6: Dispatch payment factor 6 []
+	 * Set dispatch_factor6: Dispatch payment factor 6
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -105,7 +105,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor7: Dispatch payment factor 7 []
+	 * Set dispatch_factor7: Dispatch payment factor 7
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -113,7 +113,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor8: Dispatch payment factor 8 []
+	 * Set dispatch_factor8: Dispatch payment factor 8
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -121,7 +121,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor9: Dispatch payment factor 9 []
+	 * Set dispatch_factor9: Dispatch payment factor 9
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -129,7 +129,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factors_ts: Dispatch payment factor array []
+	 * Set dispatch_factors_ts: Dispatch payment factor array
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=1
@@ -137,7 +137,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aset(SAM_TcsmoltenSalt ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24 []
+	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -145,7 +145,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mset(SAM_TcsmoltenSalt ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24 []
+	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -174,7 +174,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_A_sf_in_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set N_hel: Number of heliostats []
+	 * Set N_hel: Number of heliostats
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -182,7 +182,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_N_hel_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_0: Attenuation coefficient 0 []
+	 * Set c_atm_0: Attenuation coefficient 0
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.006789
@@ -190,7 +190,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_c_atm_0_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_1: Attenuation coefficient 1 []
+	 * Set c_atm_1: Attenuation coefficient 1
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.1046
@@ -198,7 +198,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_c_atm_1_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_2: Attenuation coefficient 2 []
+	 * Set c_atm_2: Attenuation coefficient 2
 	 * options: None
 	 * constraints: None
 	 * required if: ?=-0.0107
@@ -206,7 +206,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_c_atm_2_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set c_atm_3: Attenuation coefficient 3 []
+	 * Set c_atm_3: Attenuation coefficient 3
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.002845
@@ -214,7 +214,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_c_atm_3_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set calc_fluxmaps: Include fluxmap calculations []
+	 * Set calc_fluxmaps: Include fluxmap calculations
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -222,7 +222,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_calc_fluxmaps_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cant_type: Heliostat canting method []
+	 * Set cant_type: Heliostat canting method
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -230,7 +230,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_cant_type_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set check_max_flux: Check max flux at design point []
+	 * Set check_max_flux: Check max flux at design point
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -246,7 +246,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_csp_pt_sf_fixed_land_area_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set csp.pt.sf.land_overhead_factor: Land overhead factor []
+	 * Set csp.pt.sf.land_overhead_factor: Land overhead factor
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -254,7 +254,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_csp_pt_sf_land_overhead_factor_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dens_mirror: Ratio of heliostat reflective area to profile []
+	 * Set dens_mirror: Ratio of heliostat reflective area to profile
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -262,7 +262,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_dens_mirror_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set eta_map: Field efficiency array []
+	 * Set eta_map: Field efficiency array
 	 * options: None
 	 * constraints: None
 	 * required if: ?
@@ -270,7 +270,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_eta_map_mset(SAM_TcsmoltenSalt ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set eta_map_aod_format: Use 3D AOD format field efficiency array []
+	 * Set eta_map_aod_format: Use 3D AOD format field efficiency array
 	 * options: heliostat
 	 * constraints: None
 	 * required if: None
@@ -278,7 +278,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_eta_map_aod_format_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set field_model_type: 0=design field and tower/receiver geometry, 1=design field, 2=user specified field, 3=user performance maps vs solar position []
+	 * Set field_model_type: 0=design field and tower/receiver geometry, 1=design field, 2=user specified field, 3=user performance maps vs solar position
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -286,7 +286,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_field_model_type_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set flux_maps: Flux map intensities []
+	 * Set flux_maps: Flux map intensities
 	 * options: None
 	 * constraints: None
 	 * required if: ?
@@ -294,7 +294,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_flux_maps_mset(SAM_TcsmoltenSalt ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set focus_type: Heliostat focus method []
+	 * Set focus_type: Heliostat focus method
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -310,7 +310,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_hel_stow_deploy_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set helio_active_fraction: Heliostat active fraction []
+	 * Set helio_active_fraction: Heliostat active fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -342,7 +342,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_helio_optical_error_mrad_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set helio_positions: Heliostat position table []
+	 * Set helio_positions: Heliostat position table
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -350,7 +350,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_helio_positions_mset(SAM_TcsmoltenSalt ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set helio_reflectance: Heliostat reflectance []
+	 * Set helio_reflectance: Heliostat reflectance
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -374,7 +374,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_land_area_base_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set land_bound_list: Land boundary table listing []
+	 * Set land_bound_list: Land boundary table listing
 	 * options: None
 	 * constraints: None
 	 * required if: ?
@@ -406,7 +406,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_land_min_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set n_facet_x: Number of heliostat facets - X []
+	 * Set n_facet_x: Number of heliostat facets - X
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -414,7 +414,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_n_facet_x_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set n_facet_y: Number of heliostat facets - Y []
+	 * Set n_facet_y: Number of heliostat facets - Y
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -422,7 +422,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_n_facet_y_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_algorithm: Optimization algorithm []
+	 * Set opt_algorithm: Optimization algorithm
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -430,7 +430,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_opt_algorithm_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_conv_tol: Optimization convergence tolerance []
+	 * Set opt_conv_tol: Optimization convergence tolerance
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.001
@@ -438,7 +438,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_opt_conv_tol_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_flux_penalty: Optimization flux overage penalty []
+	 * Set opt_flux_penalty: Optimization flux overage penalty
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -446,7 +446,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_opt_flux_penalty_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_init_step: Optimization initial step size []
+	 * Set opt_init_step: Optimization initial step size
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.05
@@ -454,7 +454,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_opt_init_step_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set opt_max_iter: Max number iteration steps []
+	 * Set opt_max_iter: Max number iteration steps
 	 * options: None
 	 * constraints: None
 	 * required if: ?=200
@@ -547,7 +547,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_dni_des_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set gross_net_conversion_factor: Estimated gross to net conversion factor []
+	 * Set gross_net_conversion_factor: Estimated gross to net conversion factor
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -555,7 +555,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_gross_net_conversion_factor_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sf_excess: Heliostat field multiple []
+	 * Set sf_excess: Heliostat field multiple
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1.0
@@ -592,7 +592,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_D_rec_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set Flow_type: Receiver flow pattern: see figure on SAM Receiver page []
+	 * Set Flow_type: Receiver flow pattern: see figure on SAM Receiver page
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -600,7 +600,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_Flow_type_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set N_panels: Number of individual panels on the receiver []
+	 * Set N_panels: Number of individual panels on the receiver
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -608,7 +608,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set crossover_shift: Number of panels shift in receiver crossover position []
+	 * Set crossover_shift: Number of panels shift in receiver crossover position
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -616,7 +616,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_crossover_shift_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set csp.pt.rec.max_oper_frac: Maximum receiver mass flow rate fraction []
+	 * Set csp.pt.rec.max_oper_frac: Maximum receiver mass flow rate fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -632,7 +632,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_d_tube_out_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set delta_flux_hrs: Hourly frequency in flux map lookup []
+	 * Set delta_flux_hrs: Hourly frequency in flux map lookup
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1
@@ -640,7 +640,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_delta_flux_hrs_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set epsilon: The emissivity of the receiver surface coating []
+	 * Set epsilon: The emissivity of the receiver surface coating
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -648,7 +648,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_epsilon_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set eta_pump: Receiver HTF pump efficiency []
+	 * Set eta_pump: Receiver HTF pump efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -656,7 +656,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_eta_pump_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set f_rec_min: Minimum receiver mass flow rate turn down fraction []
+	 * Set f_rec_min: Minimum receiver mass flow rate turn down fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -672,7 +672,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_field_fl_props_mset(SAM_TcsmoltenSalt ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set flux_max: Maximum allowable flux []
+	 * Set flux_max: Maximum allowable flux
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1000
@@ -688,7 +688,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_h_tower_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set hl_ffact: The heat loss factor (thermal loss fudge factor) []
+	 * Set hl_ffact: The heat loss factor (thermal loss fudge factor)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -696,7 +696,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_hl_ffact_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set mat_tube: Receiver tube material, 2=Stainless AISI316 []
+	 * Set mat_tube: Receiver tube material, 2=Stainless AISI316
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -704,7 +704,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_mat_tube_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set n_flux_days: Number of days in flux map lookup []
+	 * Set n_flux_days: Number of days in flux map lookup
 	 * options: None
 	 * constraints: None
 	 * required if: ?=8
@@ -720,7 +720,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_const_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set piping_length_mult: Piping length multiplier []
+	 * Set piping_length_mult: Piping length multiplier
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -736,7 +736,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_absorptance: Receiver absorptance []
+	 * Set rec_absorptance: Receiver absorptance
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -760,7 +760,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_hl_perm2_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_htf: Receiver HTF, 17=Salt (60% NaNO3, 40% KNO3) 10=Salt (46.5% LiF 11.5% NaF 42% KF) 50=Lookup tables []
+	 * Set rec_htf: Receiver HTF, 17=Salt (60% NaNO3, 40% KNO3) 10=Salt (46.5% LiF 11.5% NaF 42% KF) 50=Lookup tables
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -768,7 +768,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_htf_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_qf_delay: Energy-based receiver startup delay (fraction of rated thermal power) []
+	 * Set rec_qf_delay: Energy-based receiver startup delay (fraction of rated thermal power)
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -909,7 +909,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemCosts_plant_spec_cost_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_cost_exp: Receiver cost scaling exponent []
+	 * Set rec_cost_exp: Receiver cost scaling exponent
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -917,7 +917,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemCosts_rec_cost_exp_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set rec_ref_area: Receiver reference area for cost scale []
+	 * Set rec_ref_area: Receiver reference area for cost scale
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -957,7 +957,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemCosts_tes_spec_cost_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tower_exp: Tower cost scaling exponent []
+	 * Set tower_exp: Tower cost scaling exponent
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1018,7 +1018,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate5_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set const_per_months1: Months prior to operation, loan 1 []
+	 * Set const_per_months1: Months prior to operation, loan 1
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1026,7 +1026,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months1_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set const_per_months2: Months prior to operation, loan 2 []
+	 * Set const_per_months2: Months prior to operation, loan 2
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1034,7 +1034,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months2_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set const_per_months3: Months prior to operation, loan 3 []
+	 * Set const_per_months3: Months prior to operation, loan 3
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1042,7 +1042,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months3_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set const_per_months4: Months prior to operation, loan 4 []
+	 * Set const_per_months4: Months prior to operation, loan 4
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1050,7 +1050,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months4_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set const_per_months5: Months prior to operation, loan 5 []
+	 * Set const_per_months5: Months prior to operation, loan 5
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1207,7 +1207,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_ThermalStorage_hot_tank_max_heat_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tank_pairs: Number of equivalent tank pairs []
+	 * Set tank_pairs: Number of equivalent tank pairs
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -1228,7 +1228,7 @@ extern "C"
 	//
 
 	/**
-	 * Set cycle_cutoff_frac: Minimum turbine operation fraction before shutdown []
+	 * Set cycle_cutoff_frac: Minimum turbine operation fraction before shutdown
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1236,7 +1236,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_PowerCycle_cycle_cutoff_frac_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set cycle_max_frac: Maximum turbine over design operation fraction []
+	 * Set cycle_max_frac: Maximum turbine over design operation fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1252,7 +1252,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_PowerCycle_pb_pump_coef_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set pc_config: PC configuration 0=Steam Rankine (224), 1=user defined, 2=sCO2 Recompression (424) []
+	 * Set pc_config: PC configuration 0=Steam Rankine (224), 1=user defined, 2=sCO2 Recompression (424)
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: ?=0
@@ -1260,7 +1260,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_PowerCycle_pc_config_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set q_sby_frac: Fraction of thermal power required for standby []
+	 * Set q_sby_frac: Fraction of thermal power required for standby
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1289,7 +1289,7 @@ extern "C"
 	//
 
 	/**
-	 * Set CT: Condensor type: 1=evaporative, 2=air, 3=hybrid []
+	 * Set CT: Condensor type: 1=evaporative, 2=air, 3=hybrid
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=0
@@ -1313,7 +1313,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_RankineCycle_P_cond_min_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set P_cond_ratio: Condenser pressure ratio []
+	 * Set P_cond_ratio: Condenser pressure ratio
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=0
@@ -1361,7 +1361,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_RankineCycle_n_pl_inc_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set pb_bd_frac: Power block blowdown steam fraction []
+	 * Set pb_bd_frac: Power block blowdown steam fraction
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=0
@@ -1369,7 +1369,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_RankineCycle_pb_bd_frac_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tech_type: Turbine inlet pressure control 1=Fixed, 3=Sliding []
+	 * Set tech_type: Turbine inlet pressure control 1=Fixed, 3=Sliding
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=0
@@ -1382,7 +1382,7 @@ extern "C"
 	//
 
 	/**
-	 * Set F_wc: TOU array of fractions indicating wet cooling share for hybrid cooling []
+	 * Set F_wc: TOU array of fractions indicating wet cooling share for hybrid cooling
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=0
@@ -1390,7 +1390,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_F_wc_aset(SAM_TcsmoltenSalt ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set ampl_data_dir: AMPL data file directory []
+	 * Set ampl_data_dir: AMPL data file directory
 	 * options: None
 	 * constraints: None
 	 * required if: ?=''
@@ -1398,7 +1398,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_ampl_data_dir_sset(SAM_TcsmoltenSalt ptr, const char* str, SAM_error *err);
 
 	/**
-	 * Set ampl_exec_call: System command to run AMPL code []
+	 * Set ampl_exec_call: System command to run AMPL code
 	 * options: None
 	 * constraints: None
 	 * required if: ?='ampl sdk_solution.run'
@@ -1414,7 +1414,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set aux_par_0: Aux heater, boiler parasitic - constant coefficient []
+	 * Set aux_par_0: Aux heater, boiler parasitic - constant coefficient
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1422,7 +1422,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_0_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set aux_par_1: Aux heater, boiler parasitic - linear coefficient []
+	 * Set aux_par_1: Aux heater, boiler parasitic - linear coefficient
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1430,7 +1430,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_1_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set aux_par_2: Aux heater, boiler parasitic - quadratic coefficient []
+	 * Set aux_par_2: Aux heater, boiler parasitic - quadratic coefficient
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1438,7 +1438,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_2_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set aux_par_f: Aux heater, boiler parasitic - multiplying fraction []
+	 * Set aux_par_f: Aux heater, boiler parasitic - multiplying fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1454,7 +1454,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set bop_par_0: Balance of plant parasitic power fraction - const coeff []
+	 * Set bop_par_0: Balance of plant parasitic power fraction - const coeff
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1462,7 +1462,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_0_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set bop_par_1: Balance of plant parasitic power fraction - linear coeff []
+	 * Set bop_par_1: Balance of plant parasitic power fraction - linear coeff
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1470,7 +1470,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_1_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set bop_par_2: Balance of plant parasitic power fraction - quadratic coeff []
+	 * Set bop_par_2: Balance of plant parasitic power fraction - quadratic coeff
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1478,7 +1478,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_2_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set bop_par_f: Balance of plant parasitic power fraction - mult frac []
+	 * Set bop_par_f: Balance of plant parasitic power fraction - mult frac
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1510,7 +1510,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_horizon_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set disp_max_iter: Max number of dispatch optimization iterations []
+	 * Set disp_max_iter: Max number of dispatch optimization iterations
 	 * options: None
 	 * constraints: None
 	 * required if: is_dispatch=1
@@ -1518,7 +1518,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_max_iter_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set disp_mip_gap: Dispatch optimization solution tolerance []
+	 * Set disp_mip_gap: Dispatch optimization solution tolerance
 	 * options: None
 	 * constraints: None
 	 * required if: is_dispatch=1
@@ -1534,7 +1534,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_pen_delta_w_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set disp_reporting: Dispatch optimization reporting level []
+	 * Set disp_reporting: Dispatch optimization reporting level
 	 * options: None
 	 * constraints: None
 	 * required if: ?=-1
@@ -1550,7 +1550,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_rsu_cost_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set disp_spec_bb: Dispatch optimization B&B heuristic []
+	 * Set disp_spec_bb: Dispatch optimization B&B heuristic
 	 * options: None
 	 * constraints: None
 	 * required if: ?=-1
@@ -1558,7 +1558,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_spec_bb_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set disp_spec_presolve: Dispatch optimization presolve heuristic []
+	 * Set disp_spec_presolve: Dispatch optimization presolve heuristic
 	 * options: None
 	 * constraints: None
 	 * required if: ?=-1
@@ -1566,7 +1566,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_spec_presolve_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set disp_spec_scaling: Dispatch optimization scaling heuristic []
+	 * Set disp_spec_scaling: Dispatch optimization scaling heuristic
 	 * options: None
 	 * constraints: None
 	 * required if: ?=-1
@@ -1574,7 +1574,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_spec_scaling_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set disp_steps_per_hour: Time steps per hour for dispatch optimization calculations []
+	 * Set disp_steps_per_hour: Time steps per hour for dispatch optimization calculations
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1
@@ -1582,7 +1582,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_steps_per_hour_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set disp_time_weighting: Dispatch optimization future time discounting factor []
+	 * Set disp_time_weighting: Dispatch optimization future time discounting factor
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.99
@@ -1598,7 +1598,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_timeout_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set dispatch_series: Time series dispatch factors []
+	 * Set dispatch_series: Time series dispatch factors
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -1606,7 +1606,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_dispatch_series_aset(SAM_TcsmoltenSalt ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction []
+	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1614,7 +1614,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_f_turb_tou_periods_aset(SAM_TcsmoltenSalt ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine []
+	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -1622,7 +1622,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_ampl_engine_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set is_dispatch: Allow dispatch optimization? []
+	 * Set is_dispatch: Allow dispatch optimization?
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -1630,7 +1630,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set is_dispatch_series: Use time-series dispatch factors []
+	 * Set is_dispatch_series: Use time-series dispatch factors
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -1638,7 +1638,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set is_wlim_series: Use time-series net electricity generation limits []
+	 * Set is_wlim_series: Use time-series net electricity generation limits
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -1646,7 +1646,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_wlim_series_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run []
+	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -1686,7 +1686,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_time_start_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set time_steps_per_hour: Number of simulation time steps per hour []
+	 * Set time_steps_per_hour: Number of simulation time steps per hour
 	 * options: None
 	 * constraints: None
 	 * required if: ?=-1
@@ -1702,7 +1702,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_time_stop_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set vacuum_arrays: Allocate arrays for only the required number of steps []
+	 * Set vacuum_arrays: Allocate arrays for only the required number of steps
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -1710,7 +1710,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_vacuum_arrays_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set weekday_schedule: 12x24 CSP operation Time-of-Use Weekday schedule []
+	 * Set weekday_schedule: 12x24 CSP operation Time-of-Use Weekday schedule
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1718,7 +1718,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_weekday_schedule_mset(SAM_TcsmoltenSalt ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set weekend_schedule: 12x24 CSP operation Time-of-Use Weekend schedule []
+	 * Set weekend_schedule: 12x24 CSP operation Time-of-Use Weekend schedule
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1755,7 +1755,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_amb_high_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_T_amb_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_amb [C] []
+	 * Set ud_T_amb_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_amb [C]
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1779,7 +1779,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_htf_high_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_T_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_htf_hot [C] []
+	 * Set ud_T_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_htf_hot [C]
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1803,7 +1803,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_f_W_dot_cool_des_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_ind_od: Off design user-defined power cycle performance as function of T_htf, m_dot_htf [ND], and T_amb []
+	 * Set ud_ind_od: Off design user-defined power cycle performance as function of T_htf, m_dot_htf [ND], and T_amb
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1811,7 +1811,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_ind_od_mset(SAM_TcsmoltenSalt ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ud_m_dot_htf_high: High level normalized HTF mass flow rate for T_HTF parametric []
+	 * Set ud_m_dot_htf_high: High level normalized HTF mass flow rate for T_HTF parametric
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1819,7 +1819,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_htf_high_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ud_m_dot_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on m_dot_htf [ND] []
+	 * Set ud_m_dot_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on m_dot_htf [ND]
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1827,7 +1827,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_htf_ind_od_mset(SAM_TcsmoltenSalt ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ud_m_dot_htf_low: Low level normalized HTF mass flow rate for T_HTF parametric []
+	 * Set ud_m_dot_htf_low: Low level normalized HTF mass flow rate for T_HTF parametric
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=1
@@ -1904,7 +1904,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle__sco2_deltaT_PHX_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set _sco2_design_eff: Preprocess input: cycle thermal efficiency []
+	 * Set _sco2_design_eff: Preprocess input: cycle thermal efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: is_sco2_preprocess=1
@@ -1912,7 +1912,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle__sco2_design_eff_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set _sco2_eta_c: Preprocess input: compressor isentropic efficiency []
+	 * Set _sco2_eta_c: Preprocess input: compressor isentropic efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: is_sco2_preprocess=1
@@ -1920,7 +1920,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle__sco2_eta_c_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set _sco2_eta_t: Preprocess input: turbine isentropic efficiency []
+	 * Set _sco2_eta_t: Preprocess input: turbine isentropic efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: is_sco2_preprocess=1
@@ -1928,7 +1928,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle__sco2_eta_t_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set _sco2_recup_eff_max: Preprocess input: max recuperator effectiveness []
+	 * Set _sco2_recup_eff_max: Preprocess input: max recuperator effectiveness
 	 * options: None
 	 * constraints: None
 	 * required if: is_sco2_preprocess=1
@@ -1944,7 +1944,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_deltaT_PHX_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set eta_c: Isentropic efficiency of compressor(s) []
+	 * Set eta_c: Isentropic efficiency of compressor(s)
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=2
@@ -1952,7 +1952,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_eta_c_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set eta_t: Isentropic efficiency of turbine []
+	 * Set eta_t: Isentropic efficiency of turbine
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=2
@@ -1968,7 +1968,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_fan_power_perc_net_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set is_sco2_preprocess: Is sco2 off-design performance preprocessed? 1=yes []
+	 * Set is_sco2_preprocess: Is sco2 off-design performance preprocessed? 1=yes
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -1976,7 +1976,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_is_sco2_preprocess_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set recup_eff_max: Maximum recuperator effectiveness []
+	 * Set recup_eff_max: Maximum recuperator effectiveness
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=2
@@ -2000,7 +2000,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_sco2_T_approach_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sco2_cycle_config: SCO2 cycle configuration, 1=recompression, 2=partial cooling []
+	 * Set sco2_cycle_config: SCO2 cycle configuration, 1=recompression, 2=partial cooling
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=2
@@ -2016,7 +2016,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_T_amb_high_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sco2ud_T_amb_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_amb [C] []
+	 * Set sco2ud_T_amb_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_amb [C]
 	 * options: None
 	 * constraints: None
 	 * required if: is_sco2_preprocess=1
@@ -2048,7 +2048,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_T_htf_high_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sco2ud_T_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_htf_hot [C] []
+	 * Set sco2ud_T_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_htf_hot [C]
 	 * options: None
 	 * constraints: None
 	 * required if: is_sco2_preprocess=1
@@ -2064,7 +2064,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_T_htf_low_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sco2ud_m_dot_htf_high: High level normalized HTF mass flow rate for T_HTF parametric []
+	 * Set sco2ud_m_dot_htf_high: High level normalized HTF mass flow rate for T_HTF parametric
 	 * options: None
 	 * constraints: None
 	 * required if: is_sco2_preprocess=1
@@ -2072,7 +2072,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_m_dot_htf_high_fset(SAM_TcsmoltenSalt ptr, float number, SAM_error *err);
 
 	/**
-	 * Set sco2ud_m_dot_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on m_dot_htf [ND] []
+	 * Set sco2ud_m_dot_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on m_dot_htf [ND]
 	 * options: None
 	 * constraints: None
 	 * required if: is_sco2_preprocess=1
@@ -2080,7 +2080,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_m_dot_htf_ind_od_mset(SAM_TcsmoltenSalt ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set sco2ud_m_dot_htf_low: Low level normalized HTF mass flow rate for T_HTF parametric []
+	 * Set sco2ud_m_dot_htf_low: Low level normalized HTF mass flow rate for T_HTF parametric
 	 * options: None
 	 * constraints: None
 	 * required if: is_sco2_preprocess=1

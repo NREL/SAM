@@ -61,7 +61,7 @@ extern "C"
 
 
 	//
-	// FinancialAnalysis parameters
+	// Lifetime parameters
 	//
 
 	/**
@@ -70,41 +70,7 @@ extern "C"
 	 * constraints: INTEGER,POSITIVE
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Utilityrate5_FinancialAnalysis_analysis_period_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err);
-
-	/**
-	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
-	 * options: 0=hourly first year,1=hourly lifetime
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Utilityrate5_FinancialAnalysis_system_use_lifetime_output_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err);
-
-
-	//
-	// TimeSeries parameters
-	//
-
-	/**
-	 * Set gen: System power generated [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Utilityrate5_TimeSeries_gen_aset(SAM_Utilityrate5 ptr, float* arr, int length, SAM_error *err);
-
-	/**
-	 * Set load: Electricity load (year 1) [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Utilityrate5_TimeSeries_load_aset(SAM_Utilityrate5 ptr, float* arr, int length, SAM_error *err);
-
-
-	//
-	// Financials parameters
-	//
+	SAM_EXPORT void SAM_Utilityrate5_Lifetime_analysis_period_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err);
 
 	/**
 	 * Set inflation_rate: Inflation rate [%]
@@ -112,11 +78,19 @@ extern "C"
 	 * constraints: MIN=-99
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Utilityrate5_Financials_inflation_rate_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Utilityrate5_Lifetime_inflation_rate_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err);
+
+	/**
+	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
+	 * options: 0=hourly first year,1=hourly lifetime
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Utilityrate5_Lifetime_system_use_lifetime_output_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err);
 
 
 	//
-	// AnnualOutput parameters
+	// SystemOutput parameters
 	//
 
 	/**
@@ -125,7 +99,28 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Utilityrate5_AnnualOutput_degradation_aset(SAM_Utilityrate5 ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Utilityrate5_SystemOutput_degradation_aset(SAM_Utilityrate5 ptr, float* arr, int length, SAM_error *err);
+
+	/**
+	 * Set gen: System power generated [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Utilityrate5_SystemOutput_gen_aset(SAM_Utilityrate5 ptr, float* arr, int length, SAM_error *err);
+
+
+	//
+	// TimeSeries parameters
+	//
+
+	/**
+	 * Set load: Electricity load (year 1) [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Utilityrate5_TimeSeries_load_aset(SAM_Utilityrate5 ptr, float* arr, int length, SAM_error *err);
 
 
 	//
@@ -215,7 +210,7 @@ extern "C"
 	//
 
 	/**
-	 * Set ur_ec_sched_weekday: Energy charge weekday schedule []
+	 * Set ur_ec_sched_weekday: Energy charge weekday schedule
 	 * options: 12x24
 	 * constraints: None
 	 * required if: *
@@ -223,7 +218,7 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_UtilityRateEnergyCharge_ur_ec_sched_weekday_mset(SAM_Utilityrate5 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_sched_weekend: Energy charge weekend schedule []
+	 * Set ur_ec_sched_weekend: Energy charge weekend schedule
 	 * options: 12x24
 	 * constraints: None
 	 * required if: *
@@ -231,7 +226,7 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_UtilityRateEnergyCharge_ur_ec_sched_weekend_mset(SAM_Utilityrate5 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_tou_mat: Energy rates table []
+	 * Set ur_ec_tou_mat: Energy rates table
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -252,7 +247,7 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_UtilityRateDemandCharge_ur_dc_enable_fset(SAM_Utilityrate5 ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ur_dc_flat_mat: Demand rates (flat) table []
+	 * Set ur_dc_flat_mat: Demand rates (flat) table
 	 * options: None
 	 * constraints: None
 	 * required if: ur_dc_enable=1
@@ -260,7 +255,7 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_UtilityRateDemandCharge_ur_dc_flat_mat_mset(SAM_Utilityrate5 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_dc_sched_weekday: Demand charge weekday schedule []
+	 * Set ur_dc_sched_weekday: Demand charge weekday schedule
 	 * options: 12x24
 	 * constraints: None
 	 * required if: None
@@ -268,7 +263,7 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_UtilityRateDemandCharge_ur_dc_sched_weekday_mset(SAM_Utilityrate5 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_dc_sched_weekend: Demand charge weekend schedule []
+	 * Set ur_dc_sched_weekend: Demand charge weekend schedule
 	 * options: 12x24
 	 * constraints: None
 	 * required if: None
@@ -276,7 +271,7 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_UtilityRateDemandCharge_ur_dc_sched_weekend_mset(SAM_Utilityrate5 ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_dc_tou_mat: Demand rates (TOU) table []
+	 * Set ur_dc_tou_mat: Demand rates (TOU) table
 	 * options: None
 	 * constraints: None
 	 * required if: ur_dc_enable=1
@@ -296,35 +291,30 @@ extern "C"
 
 
 	/**
-	 * FinancialAnalysis Getters
+	 * Lifetime Getters
 	 */
 
-	SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysis_analysis_period_fget(SAM_Utilityrate5 ptr, SAM_error *err);
+	SAM_EXPORT float SAM_Utilityrate5_Lifetime_analysis_period_fget(SAM_Utilityrate5 ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Utilityrate5_FinancialAnalysis_system_use_lifetime_output_fget(SAM_Utilityrate5 ptr, SAM_error *err);
+	SAM_EXPORT float SAM_Utilityrate5_Lifetime_inflation_rate_fget(SAM_Utilityrate5 ptr, SAM_error *err);
+
+	SAM_EXPORT float SAM_Utilityrate5_Lifetime_system_use_lifetime_output_fget(SAM_Utilityrate5 ptr, SAM_error *err);
+
+
+	/**
+	 * SystemOutput Getters
+	 */
+
+	SAM_EXPORT float* SAM_Utilityrate5_SystemOutput_degradation_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT float* SAM_Utilityrate5_SystemOutput_gen_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err);
 
 
 	/**
 	 * TimeSeries Getters
 	 */
 
-	SAM_EXPORT float* SAM_Utilityrate5_TimeSeries_gen_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT float* SAM_Utilityrate5_TimeSeries_load_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err);
-
-
-	/**
-	 * Financials Getters
-	 */
-
-	SAM_EXPORT float SAM_Utilityrate5_Financials_inflation_rate_fget(SAM_Utilityrate5 ptr, SAM_error *err);
-
-
-	/**
-	 * AnnualOutput Getters
-	 */
-
-	SAM_EXPORT float* SAM_Utilityrate5_AnnualOutput_degradation_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err);
 
 
 	/**

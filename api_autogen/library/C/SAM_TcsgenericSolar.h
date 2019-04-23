@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set azimuth: Azimuth angle of surface/axis []
+	 * Set azimuth: Azimuth angle of surface/axis
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -44,7 +44,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsgenericSolar_Weather_azimuth_fset(SAM_TcsgenericSolar ptr, float number, SAM_error *err);
 
 	/**
-	 * Set file_name: local weather file path []
+	 * Set file_name: local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: *
@@ -52,7 +52,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsgenericSolar_Weather_file_name_sset(SAM_TcsgenericSolar ptr, const char* str, SAM_error *err);
 
 	/**
-	 * Set tilt: Tilt angle of surface/axis []
+	 * Set tilt: Tilt angle of surface/axis
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -60,7 +60,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsgenericSolar_Weather_tilt_fset(SAM_TcsgenericSolar ptr, float number, SAM_error *err);
 
 	/**
-	 * Set track_mode: Tracking mode []
+	 * Set track_mode: Tracking mode
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -86,7 +86,7 @@ extern "C"
 	//
 
 	/**
-	 * Set weekday_schedule: 12x24 Time of Use Values for week days []
+	 * Set weekday_schedule: 12x24 Time of Use Values for week days
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -94,7 +94,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsgenericSolar_TouTranslator_weekday_schedule_mset(SAM_TcsgenericSolar ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set weekend_schedule: 12x24 Time of Use Values for week end days []
+	 * Set weekend_schedule: 12x24 Time of Use Values for week end days
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -379,7 +379,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsgenericSolar_Type260_itoth_fset(SAM_TcsgenericSolar ptr, float number, SAM_error *err);
 
 	/**
-	 * Set latitude: Site latitude []
+	 * Set latitude: Site latitude
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -387,7 +387,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsgenericSolar_Type260_latitude_fset(SAM_TcsgenericSolar ptr, float number, SAM_error *err);
 
 	/**
-	 * Set longitude: Site longitude []
+	 * Set longitude: Site longitude
 	 * options: None
 	 * constraints: None
 	 * required if: *

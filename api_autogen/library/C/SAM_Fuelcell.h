@@ -107,7 +107,7 @@ extern "C"
 	//
 
 	/**
-	 * Set dispatch_manual_fuelcellcharge: Periods 1-6 charging allowed? []
+	 * Set dispatch_manual_fuelcellcharge: Periods 1-6 charging allowed?
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -115,7 +115,7 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_fuelcellcharge_aset(SAM_Fuelcell ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_fuelcelldischarge: Periods 1-6 discharging allowed? []
+	 * Set dispatch_manual_fuelcelldischarge: Periods 1-6 discharging allowed?
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -123,7 +123,7 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_fuelcelldischarge_aset(SAM_Fuelcell ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_percent_fc_discharge: Periods 1-6 percent of max fuelcell output []
+	 * Set dispatch_manual_percent_fc_discharge: Periods 1-6 percent of max fuelcell output
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -131,7 +131,7 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_percent_fc_discharge_aset(SAM_Fuelcell ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_sched: Dispatch schedule for weekday []
+	 * Set dispatch_manual_sched: Dispatch schedule for weekday
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -139,7 +139,7 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_sched_mset(SAM_Fuelcell ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_sched_weekend: Dispatch schedule for weekend []
+	 * Set dispatch_manual_sched_weekend: Dispatch schedule for weekend
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -147,7 +147,7 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_sched_weekend_mset(SAM_Fuelcell ptr, float* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_manual_units_fc_discharge: Periods 1-6 number of fuel cell units? []
+	 * Set dispatch_manual_units_fc_discharge: Periods 1-6 number of fuel cell units?
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -187,7 +187,7 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_fuelcell_degradation_restart_schedule_fset(SAM_Fuelcell ptr, float number, SAM_error *err);
 
 	/**
-	 * Set fuelcell_degradation_restarts_per_year: Fuel cell scheduled restarts per year []
+	 * Set fuelcell_degradation_restarts_per_year: Fuel cell scheduled restarts per year
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -227,7 +227,7 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_fuelcell_dynamic_response_up_fset(SAM_Fuelcell ptr, float number, SAM_error *err);
 
 	/**
-	 * Set fuelcell_efficiency: Fuel cell efficiency table  []
+	 * Set fuelcell_efficiency: Fuel cell efficiency table 
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -283,7 +283,7 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_fuelcell_lhv_fset(SAM_Fuelcell ptr, float number, SAM_error *err);
 
 	/**
-	 * Set fuelcell_number_of_units: Fuel cell number of units []
+	 * Set fuelcell_number_of_units: Fuel cell number of units
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -307,7 +307,7 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_fuelcell_replacement_option_fset(SAM_Fuelcell ptr, float number, SAM_error *err);
 
 	/**
-	 * Set fuelcell_replacement_percent: Fuel cell replace at percentage []
+	 * Set fuelcell_replacement_percent: Fuel cell replace at percentage
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -315,7 +315,7 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_fuelcell_replacement_percent_fset(SAM_Fuelcell ptr, float number, SAM_error *err);
 
 	/**
-	 * Set fuelcell_replacement_schedule: Fuel cell replace on schedule []
+	 * Set fuelcell_replacement_schedule: Fuel cell replace on schedule
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -466,6 +466,8 @@ extern "C"
 	 */
 
 	SAM_EXPORT float SAM_Fuelcell_Outputs_annual_fuel_usage_fget(SAM_Fuelcell ptr, SAM_error *err);
+
+	SAM_EXPORT float* SAM_Fuelcell_Outputs_fuelcell_electrical_efficiency_aget(SAM_Fuelcell ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT float* SAM_Fuelcell_Outputs_fuelcell_fuel_consumption_mcf_aget(SAM_Fuelcell ptr, int* length, SAM_error *err);
 

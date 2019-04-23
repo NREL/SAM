@@ -36,7 +36,7 @@ extern "C"
 	//
 
 	/**
-	 * Set solar_resource_file: local weather file path []
+	 * Set solar_resource_file: local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
 	 * required if: *
@@ -49,7 +49,7 @@ extern "C"
 	//
 
 	/**
-	 * Set FRUL: FRUL []
+	 * Set FRUL: FRUL
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -57,7 +57,7 @@ extern "C"
 	SAM_EXPORT void SAM_Swh_SWH_FRUL_fset(SAM_Swh ptr, float number, SAM_error *err);
 
 	/**
-	 * Set FRta: FRta []
+	 * Set FRta: FRta
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -145,7 +145,7 @@ extern "C"
 	SAM_EXPORT void SAM_Swh_SWH_custom_set_aset(SAM_Swh ptr, float* arr, int length, SAM_error *err);
 
 	/**
-	 * Set fluid: Working fluid in system []
+	 * Set fluid: Working fluid in system
 	 * options: Water,Glycol
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: *
@@ -161,7 +161,7 @@ extern "C"
 	SAM_EXPORT void SAM_Swh_SWH_hx_eff_fset(SAM_Swh ptr, float number, SAM_error *err);
 
 	/**
-	 * Set iam: Incidence angle modifier []
+	 * Set iam: Incidence angle modifier
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -185,7 +185,7 @@ extern "C"
 	SAM_EXPORT void SAM_Swh_SWH_mdot_fset(SAM_Swh ptr, float number, SAM_error *err);
 
 	/**
-	 * Set ncoll: Number of collectors []
+	 * Set ncoll: Number of collectors
 	 * options: None
 	 * constraints: POSITIVE,INTEGER
 	 * required if: *
@@ -297,7 +297,7 @@ extern "C"
 	SAM_EXPORT void SAM_Swh_SWH_system_capacity_fset(SAM_Swh ptr, float number, SAM_error *err);
 
 	/**
-	 * Set tank_h2d_ratio: Solar tank height to diameter ratio []
+	 * Set tank_h2d_ratio: Solar tank height to diameter ratio
 	 * options: None
 	 * constraints: POSITIVE
 	 * required if: *
@@ -313,7 +313,7 @@ extern "C"
 	SAM_EXPORT void SAM_Swh_SWH_test_flow_fset(SAM_Swh ptr, float number, SAM_error *err);
 
 	/**
-	 * Set test_fluid: Fluid used in collector test []
+	 * Set test_fluid: Fluid used in collector test
 	 * options: Water,Glycol
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: *
