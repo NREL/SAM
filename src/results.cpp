@@ -615,7 +615,7 @@ ResultsViewer::~ResultsViewer()
 		delete m_tsDataSets[i];
 }
 
-TimeSeriesData::TimeSeriesData( float *p, size_t len, double ts_hour, double ts_offset, const wxString &label, const wxString &units )
+TimeSeriesData::TimeSeriesData( double *p, size_t len, double ts_hour, double ts_offset, const wxString &label, const wxString &units )
   	: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_label(label), m_units(units), m_startOffsetHours(ts_offset)
 {
 	/* nothing to do */
@@ -837,7 +837,7 @@ void ResultsViewer::Setup( Simulation *sim )
 			if ((vv->Type() == VV_ARRAY) && (!m_sim->GetLabel(vars[i]).IsEmpty()))
 			{
 				size_t n = 0;
-				float *p = vv->Array( &n );
+				double *p = vv->Array( &n );
 				
 				int steps_per_hour = (int)n / 8760; 
 				if (steps_per_hour * 8760 != (int)n)
@@ -966,8 +966,8 @@ void ResultsViewer::Setup( Simulation *sim )
 
 				if (VarValue *vv = m_sim->GetValue(cl.name))
 				{
-					float _val = 0.0f;
-					float *p = &_val;
+					double _val = 0.0;
+					double *p = &_val;
 					size_t n = 1;
 
 					if (vv->Type() == VV_ARRAY) p = vv->Array(&n);
@@ -1034,8 +1034,8 @@ void ResultsViewer::Setup( Simulation *sim )
 				{
 					if (VarValue *vv = m_sim->GetValue(list[i]))
 					{
-						float _val = 0.0f;
-						float *p = &_val;
+						double _val = 0.0f;
+						double *p = &_val;
 						size_t m = 1;
 
 						if (vv->Type() == VV_ARRAY) p = vv->Array(&n);
@@ -1404,6 +1404,7 @@ void ResultsViewer::CreateAutoGraphs()
 		g.ShowXValues = m_autographs[i].show_xvalues;
 		g.ShowLegend = m_autographs[i].show_legend;
 		g.Size = m_autographs[i].size;
+		g.Type = m_autographs[i].Type;
 		m_summaryLayout->Add( new AutoGraphCtrl( m_summaryLayout, m_sim, g ) );
 	}
 }
@@ -1669,8 +1670,8 @@ public:
 	struct ColData
 	{
 		wxString Label;
-		float * Values;
-		float SingleValue;
+		double * Values;
+		double SingleValue;
 		size_t N;
 	};
 
@@ -1702,7 +1703,7 @@ public:
 	void RemoveLeftCol();
 
 	// matrix specific
-	matrix_t<float> Matrix;
+	matrix_t<double> Matrix;
 	std::vector<wxString> MatrixColLabels;
 	std::vector<wxString> MatrixRowLabels;
 	wxString MatrixFormat; // can be general

@@ -83,7 +83,7 @@ LHS::LHS()
 	m_npoints = 500;
 	m_seedval = 0;
 }
-
+ 
 
 void LHS::Reset()
 {
@@ -2153,12 +2153,12 @@ void StochasticPanel::Simulate()
 			}
 			else if (m_case->Values().Get(iname)->Length() == 1)
 			{
-				float val[1];
-				val[0] = (float)input_data(i, j);
+				double val[1];
+				val[0] = (double)input_data(i, j);
 				s->Override(iname, VarValue(val,1));
 			}
 			else
-				s->Override(iname, VarValue((float)input_data(i, j)));
+				s->Override(iname, VarValue((double)input_data(i, j)));
 		}
 
 		if (!s->Prepare())
