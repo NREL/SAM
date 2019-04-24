@@ -6,7 +6,7 @@ The SAM Open Source Project repository contains the source code, tools, and inst
 
 For a short video describing the SAM repositories, see https://youtu.be/E5z1iiZfZ3M.
 
-For a the SAM release notes, see https://github.com/NREL/SAM/blob/gh-pages/doc/releasenotes.html.
+The [SAM release notes](https://nrel.github.io/SAM/doc/releasenotes.html) are in https://github.com/NREL/SAM/blob/gh-pages/doc/releasenotes.html.
 
 The desktop version of SAM for Windows, Mac, or Linux builds from the following open source projects:
 
