@@ -1,13 +1,5 @@
 1
-<<<<<<< HEAD
-<<<<<<< HEAD
 749
-=======
-747
->>>>>>> patch
-=======
-745
->>>>>>> parent of 78ddcb3... Fix #172 issue with UI messages for PV shading page
 6par_aisc
 1
 1
@@ -931,9 +923,8 @@ batt_replacement_schedule
 1
 2
 1
-30
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-
+1
+0
 batt_resistance
 1
 1
@@ -1163,7 +1154,7 @@ cec_i_l_ref
 1
 1
 1
-6.2368
+6.23681
 cec_i_mp_ref
 1
 1
