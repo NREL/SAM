@@ -32,68 +32,68 @@ SAM_EXPORT void SAM_GenericSystem_destruct(SAM_GenericSystem system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_GenericSystem_Plant_conv_eff_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_Plant_conv_eff_nset(SAM_GenericSystem ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "conv_eff", number);
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_Plant_derate_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_Plant_derate_nset(SAM_GenericSystem ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "derate", number);
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_Plant_energy_output_array_aset(SAM_GenericSystem ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_Plant_energy_output_array_aset(SAM_GenericSystem ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "energy_output_array", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_Plant_heat_rate_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_Plant_heat_rate_nset(SAM_GenericSystem ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "heat_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_Plant_spec_mode_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_Plant_spec_mode_nset(SAM_GenericSystem ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "spec_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_Plant_system_capacity_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_Plant_system_capacity_nset(SAM_GenericSystem ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_Plant_user_capacity_factor_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_Plant_user_capacity_factor_nset(SAM_GenericSystem ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "user_capacity_factor", number);
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_Lifetime_analysis_period_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_Lifetime_analysis_period_nset(SAM_GenericSystem ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_Lifetime_generic_degradation_aset(SAM_GenericSystem ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_Lifetime_generic_degradation_aset(SAM_GenericSystem ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "generic_degradation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_Lifetime_system_use_lifetime_output_fset(SAM_GenericSystem ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_GenericSystem_Lifetime_system_use_lifetime_output_nset(SAM_GenericSystem ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT float SAM_GenericSystem_Plant_conv_eff_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Plant_conv_eff_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "conv_eff", &result))
 		make_access_error("SAM_GenericSystem", "conv_eff");
@@ -103,8 +103,8 @@ SAM_EXPORT float SAM_GenericSystem_Plant_conv_eff_fget(SAM_GenericSystem ptr, SA
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Plant_derate_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Plant_derate_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "derate", &result))
 		make_access_error("SAM_GenericSystem", "derate");
@@ -114,8 +114,8 @@ SAM_EXPORT float SAM_GenericSystem_Plant_derate_fget(SAM_GenericSystem ptr, SAM_
 
 
 
-SAM_EXPORT float* SAM_GenericSystem_Plant_energy_output_array_aget(SAM_GenericSystem ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_GenericSystem_Plant_energy_output_array_aget(SAM_GenericSystem ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "energy_output_array", length);
 	if (!result)
@@ -126,8 +126,8 @@ SAM_EXPORT float* SAM_GenericSystem_Plant_energy_output_array_aget(SAM_GenericSy
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Plant_heat_rate_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Plant_heat_rate_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "heat_rate", &result))
 		make_access_error("SAM_GenericSystem", "heat_rate");
@@ -137,8 +137,8 @@ SAM_EXPORT float SAM_GenericSystem_Plant_heat_rate_fget(SAM_GenericSystem ptr, S
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Plant_spec_mode_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Plant_spec_mode_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "spec_mode", &result))
 		make_access_error("SAM_GenericSystem", "spec_mode");
@@ -148,8 +148,8 @@ SAM_EXPORT float SAM_GenericSystem_Plant_spec_mode_fget(SAM_GenericSystem ptr, S
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Plant_system_capacity_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Plant_system_capacity_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_GenericSystem", "system_capacity");
@@ -159,8 +159,8 @@ SAM_EXPORT float SAM_GenericSystem_Plant_system_capacity_fget(SAM_GenericSystem 
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Plant_user_capacity_factor_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Plant_user_capacity_factor_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "user_capacity_factor", &result))
 		make_access_error("SAM_GenericSystem", "user_capacity_factor");
@@ -170,8 +170,8 @@ SAM_EXPORT float SAM_GenericSystem_Plant_user_capacity_factor_fget(SAM_GenericSy
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Lifetime_analysis_period_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Lifetime_analysis_period_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
 		make_access_error("SAM_GenericSystem", "analysis_period");
@@ -181,8 +181,8 @@ SAM_EXPORT float SAM_GenericSystem_Lifetime_analysis_period_fget(SAM_GenericSyst
 
 
 
-SAM_EXPORT float* SAM_GenericSystem_Lifetime_generic_degradation_aget(SAM_GenericSystem ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_GenericSystem_Lifetime_generic_degradation_aget(SAM_GenericSystem ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "generic_degradation", length);
 	if (!result)
@@ -193,8 +193,8 @@ SAM_EXPORT float* SAM_GenericSystem_Lifetime_generic_degradation_aget(SAM_Generi
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Lifetime_system_use_lifetime_output_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Lifetime_system_use_lifetime_output_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
 		make_access_error("SAM_GenericSystem", "system_use_lifetime_output");
@@ -204,8 +204,8 @@ SAM_EXPORT float SAM_GenericSystem_Lifetime_system_use_lifetime_output_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Outputs_annual_energy_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Outputs_annual_energy_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
 		make_access_error("SAM_GenericSystem", "annual_energy");
@@ -215,8 +215,8 @@ SAM_EXPORT float SAM_GenericSystem_Outputs_annual_energy_fget(SAM_GenericSystem 
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Outputs_annual_fuel_usage_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Outputs_annual_fuel_usage_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
 		make_access_error("SAM_GenericSystem", "annual_fuel_usage");
@@ -226,8 +226,8 @@ SAM_EXPORT float SAM_GenericSystem_Outputs_annual_fuel_usage_fget(SAM_GenericSys
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Outputs_capacity_factor_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Outputs_capacity_factor_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
 		make_access_error("SAM_GenericSystem", "capacity_factor");
@@ -237,8 +237,8 @@ SAM_EXPORT float SAM_GenericSystem_Outputs_capacity_factor_fget(SAM_GenericSyste
 
 
 
-SAM_EXPORT float* SAM_GenericSystem_Outputs_gen_aget(SAM_GenericSystem ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_GenericSystem_Outputs_gen_aget(SAM_GenericSystem ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
@@ -249,8 +249,8 @@ SAM_EXPORT float* SAM_GenericSystem_Outputs_gen_aget(SAM_GenericSystem ptr, int*
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Outputs_kwh_per_kw_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Outputs_kwh_per_kw_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
 		make_access_error("SAM_GenericSystem", "kwh_per_kw");
@@ -260,8 +260,8 @@ SAM_EXPORT float SAM_GenericSystem_Outputs_kwh_per_kw_fget(SAM_GenericSystem ptr
 
 
 
-SAM_EXPORT float* SAM_GenericSystem_Outputs_monthly_energy_aget(SAM_GenericSystem ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_GenericSystem_Outputs_monthly_energy_aget(SAM_GenericSystem ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_energy", length);
 	if (!result)
@@ -272,8 +272,8 @@ SAM_EXPORT float* SAM_GenericSystem_Outputs_monthly_energy_aget(SAM_GenericSyste
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Outputs_system_heat_rate_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Outputs_system_heat_rate_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_heat_rate", &result))
 		make_access_error("SAM_GenericSystem", "system_heat_rate");
@@ -283,8 +283,8 @@ SAM_EXPORT float SAM_GenericSystem_Outputs_system_heat_rate_fget(SAM_GenericSyst
 
 
 
-SAM_EXPORT float SAM_GenericSystem_Outputs_water_usage_fget(SAM_GenericSystem ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_GenericSystem_Outputs_water_usage_nget(SAM_GenericSystem ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "water_usage", &result))
 		make_access_error("SAM_GenericSystem", "water_usage");

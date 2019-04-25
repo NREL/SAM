@@ -32,38 +32,38 @@ SAM_EXPORT void SAM_Lcoefcr_destruct(SAM_Lcoefcr system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_annual_energy_fset(SAM_Lcoefcr ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_annual_energy_nset(SAM_Lcoefcr ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "annual_energy", number);
 	});
 }
 
-SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_capital_cost_fset(SAM_Lcoefcr ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_capital_cost_nset(SAM_Lcoefcr ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "capital_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_fixed_charge_rate_fset(SAM_Lcoefcr ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_fixed_charge_rate_nset(SAM_Lcoefcr ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fixed_charge_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_fixed_operating_cost_fset(SAM_Lcoefcr ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_fixed_operating_cost_nset(SAM_Lcoefcr ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fixed_operating_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_variable_operating_cost_fset(SAM_Lcoefcr ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_variable_operating_cost_nset(SAM_Lcoefcr ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "variable_operating_cost", number);
 	});
 }
 
-SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_annual_energy_fget(SAM_Lcoefcr ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_annual_energy_nget(SAM_Lcoefcr ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
 		make_access_error("SAM_Lcoefcr", "annual_energy");
@@ -73,8 +73,8 @@ SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_annual_energy_fget(SAM_Lcoefcr ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_capital_cost_fget(SAM_Lcoefcr ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_capital_cost_nget(SAM_Lcoefcr ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capital_cost", &result))
 		make_access_error("SAM_Lcoefcr", "capital_cost");
@@ -84,8 +84,8 @@ SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_capital_cost_fget(SAM_Lcoefcr ptr, SAM_e
 
 
 
-SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_fixed_charge_rate_fget(SAM_Lcoefcr ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_fixed_charge_rate_nget(SAM_Lcoefcr ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fixed_charge_rate", &result))
 		make_access_error("SAM_Lcoefcr", "fixed_charge_rate");
@@ -95,8 +95,8 @@ SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_fixed_charge_rate_fget(SAM_Lcoefcr ptr, 
 
 
 
-SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_fixed_operating_cost_fget(SAM_Lcoefcr ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_fixed_operating_cost_nget(SAM_Lcoefcr ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fixed_operating_cost", &result))
 		make_access_error("SAM_Lcoefcr", "fixed_operating_cost");
@@ -106,8 +106,8 @@ SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_fixed_operating_cost_fget(SAM_Lcoefcr pt
 
 
 
-SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_variable_operating_cost_fget(SAM_Lcoefcr ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_variable_operating_cost_nget(SAM_Lcoefcr ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "variable_operating_cost", &result))
 		make_access_error("SAM_Lcoefcr", "variable_operating_cost");
@@ -117,8 +117,8 @@ SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_variable_operating_cost_fget(SAM_Lcoefcr
 
 
 
-SAM_EXPORT float SAM_Lcoefcr_Outputs_lcoe_fcr_fget(SAM_Lcoefcr ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Lcoefcr_Outputs_lcoe_fcr_nget(SAM_Lcoefcr ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoe_fcr", &result))
 		make_access_error("SAM_Lcoefcr", "lcoe_fcr");

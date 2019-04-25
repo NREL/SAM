@@ -41,7 +41,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_annual_energy_fset(SAM_Lcoefcr ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_annual_energy_nset(SAM_Lcoefcr ptr, double number, SAM_error *err);
 
 	/**
 	 * Set capital_cost: Capital cost [$]
@@ -49,7 +49,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_capital_cost_fset(SAM_Lcoefcr ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_capital_cost_nset(SAM_Lcoefcr ptr, double number, SAM_error *err);
 
 	/**
 	 * Set fixed_charge_rate: Fixed charge rate
@@ -57,7 +57,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_fixed_charge_rate_fset(SAM_Lcoefcr ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_fixed_charge_rate_nset(SAM_Lcoefcr ptr, double number, SAM_error *err);
 
 	/**
 	 * Set fixed_operating_cost: Annual fixed operating cost [$]
@@ -65,7 +65,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_fixed_operating_cost_fset(SAM_Lcoefcr ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_fixed_operating_cost_nset(SAM_Lcoefcr ptr, double number, SAM_error *err);
 
 	/**
 	 * Set variable_operating_cost: Annual variable operating cost [$/kWh]
@@ -73,29 +73,29 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_variable_operating_cost_fset(SAM_Lcoefcr ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Lcoefcr_SimpleLCOE_variable_operating_cost_nset(SAM_Lcoefcr ptr, double number, SAM_error *err);
 
 
 	/**
 	 * SimpleLCOE Getters
 	 */
 
-	SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_annual_energy_fget(SAM_Lcoefcr ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_annual_energy_nget(SAM_Lcoefcr ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_capital_cost_fget(SAM_Lcoefcr ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_capital_cost_nget(SAM_Lcoefcr ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_fixed_charge_rate_fget(SAM_Lcoefcr ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_fixed_charge_rate_nget(SAM_Lcoefcr ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_fixed_operating_cost_fget(SAM_Lcoefcr ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_fixed_operating_cost_nget(SAM_Lcoefcr ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Lcoefcr_SimpleLCOE_variable_operating_cost_fget(SAM_Lcoefcr ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_variable_operating_cost_nget(SAM_Lcoefcr ptr, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT float SAM_Lcoefcr_Outputs_lcoe_fcr_fget(SAM_Lcoefcr ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Lcoefcr_Outputs_lcoe_fcr_nget(SAM_Lcoefcr ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

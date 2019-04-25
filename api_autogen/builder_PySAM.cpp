@@ -23,10 +23,11 @@ std::string all_options_of_cmod(const std::string &cmod_symbol, const std::strin
         }
     }
 
-    std::string str;
+    std::string str = "config options:\\n\\n";
     for (auto it = config_set.begin(); it != config_set.end(); ++it){
-        if (it != config_set.begin()) str += "\\n";
-        str += format_as_symbol(*it);
+        if (it != config_set.begin())
+            str += "\\n";
+        str += "- \\\"" + format_as_symbol(*it) + "\\\"";
     }
     printf("%s, config%s, str: '%s'\n", cmod_symbol.c_str(), config_name.c_str(), str.c_str());
     assert(str.length());
@@ -198,8 +199,8 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                         << module_symbol << "_get_" << var_symbol << "(" << module_symbol
                         << "Object *self, void *closure)\n"
                            "{\n"
-                           "\treturn PySAM_float_getter(SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol
-                        << "_fget, self->data_ptr);\n"
+                           "\treturn PySAM_double_getter(SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol
+                        << "_nget, self->data_ptr);\n"
                            "}\n"
                            "\n";
                 if (output)
@@ -208,8 +209,8 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                         << module_symbol << "_set_" << var_symbol << "(" << module_symbol
                         << "Object *self, PyObject *value, void *closure)\n"
                            "{\n"
-                           "\treturn PySAM_float_setter(value, SAM_" << cmod_symbol << "_" << module_symbol << "_"
-                        << var_symbol << "_fset, self->data_ptr);\n"
+                           "\treturn PySAM_double_setter(value, SAM_" << cmod_symbol << "_" << module_symbol << "_"
+                        << var_symbol << "_nset, self->data_ptr);\n"
                            "}\n\n";
             } else if (vd.type == "string") {
                 fx_file << "static PyObject *\n"
@@ -244,7 +245,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                         << module_symbol << "_set_" << var_symbol << "(" << module_symbol
                         << "Object *self, PyObject *value, void *closure)\n"
                            "{\n"
-                           "\t\treturn PySAM_array_setter(value, SAM_" << cmod_symbol << "_" << module_symbol << "_"
+                           "\treturn PySAM_array_setter(value, SAM_" << cmod_symbol << "_" << module_symbol << "_"
                         << var_symbol << "_aset, self->data_ptr);\n"
                            "}\n\n";
             } else if (vd.type == "matrix") {
@@ -299,9 +300,9 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
 
             // make the PyGetSetDef struct
 
-            std::string doc = vd.doc;
-            doc += ", " + vd.type + ".";
+            std::vector<std::string> ssctype_str = {"None", "Str", "Float", "Sequence", "Sequence[Sequence]", "Dict"};
 
+            std::string doc = "type: " + ssctype_str[vd.type_n] + "\\n\\n" + vd.doc;
 
             fx_file << "{\"" << var_symbol << "\", (getter)" << module_symbol << "_get_" << var_symbol << ",";
 
@@ -309,32 +310,41 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
             if (output)
                 fx_file << "(setter)0,\n";
             else{
-                doc += "\\n ";
-                if (vd.meta.length() > 0)
-                    doc += vd.meta + "; ";
+                if (vd.meta.length() > 0){
+                    doc += "\\n\\n";
+                    if (vd.meta.find("=") != std::string::npos)
+                        doc += "*Options*: " + vd.meta ;
+                    else
+                        doc += "*Info*: " + vd.meta;
+                }
 
                 if (vd.constraints.length() > 0) {
-                    doc += "Constraints: ";
-                    doc += vd.constraints + "; ";
+                    doc += "\\n\\n";
+                    doc += "*Constraints*: ";
+                    doc += vd.constraints;
                 }
 
                 if (vd.reqif.length() > 0) {
+                    doc += "\\n\\n*Required*: ";
                     if (vd.reqif == "*"){
-                        doc += "Required.";
+                        doc += "True";
                     }
-                    else if (vd.reqif == "?=0"){
-                        doc += "0 if not set.";
-                    }
+                    else if (vd.reqif == "?")
+                        doc += "False";
                     else{
-                        doc += "Required if ";
-                        doc += vd.reqif + ".";
+                        size_t pos = vd.reqif.find("=");
+                        if (pos != std::string::npos){
+                            doc += "set to " + vd.reqif.substr(pos+1) + " if not provided.";
+
+                        } else
+                            doc += vd.reqif + "";
                     }
                 }
 
                 fx_file << "(setter)" << module_symbol << "_set_" << var_symbol << ",\n";
             }
 
-            fx_file << "\t\"" << doc << "\",\n \tNULL},\n";
+            fx_file << "\tPyDoc_STR(\"" << doc << "\"),\n \tNULL},\n";
 
         }
         fx_file << "\t{NULL}  /* Sentinel */\n};\n\n";
@@ -369,7 +379,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                       "\t\t0,                          /*tp_traverse*/\n"
                       "\t\t0,                          /*tp_clear*/\n"
                       "\t\t0,                          /*tp_richcompare*/\n"
-                      "\t\t0,                          /*tp_weaklistoffset*/\n"
+                      "\t\t0,                          /*tp_weaklistofnset*/\n"
                       "\t\t0,                          /*tp_iter*/\n"
                       "\t\t0,                          /*tp_iternext*/\n"
                       "\t\t" << module_symbol << "_methods,         /*tp_methods*/\n"
@@ -379,7 +389,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                       "\t\t0,                          /*tp_dict*/\n"
                       "\t\t0,                          /*tp_descr_get*/\n"
                       "\t\t0,                          /*tp_descr_set*/\n"
-                      "\t\t0,                          /*tp_dictoffset*/\n"
+                      "\t\t0,                          /*tp_dictofnset*/\n"
                       "\t\t0,                          /*tp_init*/\n"
                       "\t\t0,                          /*tp_alloc*/\n"
                       "\t\t0,             /*tp_new*/\n"
@@ -504,7 +514,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\t\t{\"assign\",            (PyCFunction)" << tech_symbol << "_assign,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from nested dictionary, except for Outputs\")},\n"
                "\t\t{\"export\",            (PyCFunction)" << tech_symbol << "_export,  METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"assign() -> None\\n Export attributes into dictionary\")},\n"
+               "\t\t\t\tPyDoc_STR(\"export() -> None\\n Export attributes into dictionary\")},\n"
                "\t\t{NULL,              NULL}           /* sentinel */\n"
                "};\n"
                "\n"
@@ -521,6 +531,8 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "}\n\n";
     
     // define technology type
+    std::string cmod_doc = "\"Wrapper for `cmod_" + cmod;
+    cmod_doc += ".cpp <https://github.com/NREL/ssc/blob/develop/ssc/cmod_" + cmod + ".cpp>`_\"";
     fx_file << "static PyTypeObject " << tech_symbol << "_Type = {\n"
                "\t\t/* The ob_type field must be initialized in the module init function\n"
                "\t\t * to be portable to Windows without using C++. */\n"
@@ -545,11 +557,11 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\t\t0,                          /*tp_setattro*/\n"
                "\t\t0,                          /*tp_as_buffer*/\n"
                "\t\tPy_TPFLAGS_DEFAULT,         /*tp_flags*/\n"
-               "\t\t\"see html for help\",        /*tp_doc*/\n"
+               "\t\t" << cmod_doc << ",        /*tp_doc*/\n"
                "\t\t0,                          /*tp_traverse*/\n"
                "\t\t0,                          /*tp_clear*/\n"
                "\t\t0,                          /*tp_richcompare*/\n"
-               "\t\t0,                          /*tp_weaklistoffset*/\n"
+               "\t\t0,                          /*tp_weaklistofnset*/\n"
                "\t\t0,                          /*tp_iter*/\n"
                "\t\t0,                          /*tp_iternext*/\n"
                "\t\t" << tech_symbol << "_methods,      /*tp_methods*/\n"
@@ -559,7 +571,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\t\t0,                          /*tp_dict*/\n"
                "\t\t0,                          /*tp_descr_get*/\n"
                "\t\t0,                          /*tp_descr_set*/\n"
-               "\t\t0,                          /*tp_dictoffset*/\n"
+               "\t\t0,                          /*tp_dictofnset*/\n"
                "\t\t0,                          /*tp_init*/\n"
                "\t\t0,                          /*tp_alloc*/\n"
                "\t\t0,                          /*tp_new*/\n"
@@ -631,10 +643,11 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\t\t{\"new\",             " << tech_symbol << "_new,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"new() -> new " << tech_symbol << " object\")},\n"
                "\t\t{\"default\",             " << tech_symbol << "_default,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"default(financial) -> new " << tech_symbol << " object with financial model-specific default attributes\\n\"\n"
-                                                                                  "\t\t\t\t\"Options: " << all_options_of_cmod(cmod_symbol, config_name) << "\")},\n"
+               "\t\t\t\tPyDoc_STR(\"default(config) -> new " << tech_symbol << " object with financial model-specific default attributes\\n\"\n"
+                                                                                  "\t\t\t\t\"" << all_options_of_cmod(cmod_symbol, config_name) << "\")},\n"
                "\t\t{\"wrap\",             " << tech_symbol << "_wrap,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> new " << tech_symbol << " object around existing PySSC data, taking over memory ownership\")},\n"
+               "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> new " << tech_symbol << " object around existing PySSC data, taking over memory ownership\\n\\n.. warning::\\n\\n"
+                                                                                "\tDo not call PySSC.data_free on the ssc_data_t provided to `wrap`\")},\n"
                "\t\t{NULL,              NULL}           /* sentinel */\n"
                "};\n"
                "\n"
@@ -738,15 +751,35 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
 
     fx_file.close();
 
-    bool print_setuppy = false;
-    if (!print_setuppy) return;
+    fx_file.open(file_dir + "/PySAM-doc/" + tech_symbol + ".rst");
+    assert(fx_file.is_open());
 
-    std::cout << "                 Extension('" << tech_symbol << "',\n"
-                 "                           ['" << tech_symbol << ".c'],\n"
-                 "                           include_dirs=[libpath],\n"
-                 "                           library_dirs=[libpath],\n"
-                 "                           libraries=libs,\n"
-                 "                           extra_link_args=extra_link_args\n"
-                 "                           ),\n";
+    fx_file << cmod_symbol << " Module\n**************************\n\n";
+
+    fx_file << "Creating an Instance\n=========================\n\n"
+               "There are three methods to create a new instance of a PySAM module. Using `default` populates the new"
+               "class' attributes with default values specific to a `config`. Each technology-financial"
+               "configuration corresponds to a SAM GUI configuration. Using `new` creates an instance with empty "
+               "attributes. The `wrap` function allows compatibility with PySSC, for details, refer to :ref:`PySSC`\n\n";
+
+    fx_file << ".. automodule:: PySAM." << cmod_symbol << "\n";
+    fx_file << "\t:members:\n\n";
+
+    fx_file << "Functions\n=========================\n\n"
+               ".. automodule:: PySAM." << cmod_symbol << "." << cmod_symbol << "\n\t:members:\n\n";
+
+    for (size_t i = 0; i < root->vardefs_order.size() ; i++) {
+        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+        std::map<std::string, var_def> vardefs = mm->second;
+
+        std::string module_symbol = format_as_symbol(mm->first);
+        std::string name = module_symbol;
+
+        fx_file << module_symbol << " Group\n==============\n\n";
+        fx_file << ".. autoclass:: PySAM." << cmod_symbol << "." << cmod_symbol << "." << module_symbol << "\n";
+        fx_file << "\t:members:\n\n";
+    }
+
+    fx_file.close();
 
 }

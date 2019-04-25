@@ -41,7 +41,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_Common_system_use_lifetime_output_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_Common_system_use_lifetime_output_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 
 	//
@@ -54,7 +54,7 @@ extern "C"
 	 * constraints: None
 	 * required if: system_use_lifetime_output=1
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_FinancialAnalysisParameters_analysis_period_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_FinancialAnalysisParameters_analysis_period_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 
 	//
@@ -67,7 +67,7 @@ extern "C"
 	 * constraints: None
 	 * required if: system_use_lifetime_output=1
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_LifetimePV_dc_degradation_aset(SAM_Pvwattsv5Lifetime ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_LifetimePV_dc_degradation_aset(SAM_Pvwattsv5Lifetime ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -101,7 +101,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=4,INTEGER
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_array_type_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_array_type_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 	/**
 	 * Set azimuth: Azimuth angle [deg]
@@ -109,7 +109,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=360
 	 * required if: array_type<4
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_azimuth_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_azimuth_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 	/**
 	 * Set dc_ac_ratio: DC to AC ratio [ratio]
@@ -117,7 +117,7 @@ extern "C"
 	 * constraints: POSITIVE
 	 * required if: ?=1.1
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_dc_ac_ratio_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_dc_ac_ratio_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 	/**
 	 * Set gcr: Ground coverage ratio [0..1]
@@ -125,7 +125,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=3
 	 * required if: ?=0.4
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_gcr_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_gcr_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 	/**
 	 * Set inv_eff: Inverter efficiency at rated power [%]
@@ -133,7 +133,7 @@ extern "C"
 	 * constraints: MIN=90,MAX=99.5
 	 * required if: ?=96
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_inv_eff_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_inv_eff_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 	/**
 	 * Set losses: System losses [%]
@@ -141,7 +141,7 @@ extern "C"
 	 * constraints: MIN=-5,MAX=99
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_losses_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_losses_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 	/**
 	 * Set module_type: Module type [0/1/2]
@@ -149,7 +149,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=2,INTEGER
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_module_type_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_module_type_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 	/**
 	 * Set shading:azal: Azimuth x altitude beam shading loss [%]
@@ -157,7 +157,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_azal_mset(SAM_Pvwattsv5Lifetime ptr, float* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_azal_mset(SAM_Pvwattsv5Lifetime ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set shading:diff: Diffuse shading loss [%]
@@ -165,7 +165,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_diff_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_diff_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 	/**
 	 * Set shading:mxh: Month x Hour beam shading loss [%]
@@ -173,7 +173,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_mxh_mset(SAM_Pvwattsv5Lifetime ptr, float* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_mxh_mset(SAM_Pvwattsv5Lifetime ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set shading:timestep: Time step beam shading loss [%]
@@ -181,7 +181,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_timestep_mset(SAM_Pvwattsv5Lifetime ptr, float* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_timestep_mset(SAM_Pvwattsv5Lifetime ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set system_capacity: System size (DC nameplate) [kW]
@@ -189,7 +189,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_system_capacity_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_system_capacity_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tilt: Tilt angle [deg]
@@ -197,7 +197,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=90
 	 * required if: array_type<4
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_tilt_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_tilt_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 
 	//
@@ -210,28 +210,28 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5Lifetime_Battwatts_batt_simple_enable_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5Lifetime_Battwatts_batt_simple_enable_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err);
 
 
 	/**
 	 * Common Getters
 	 */
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Common_system_use_lifetime_output_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Common_system_use_lifetime_output_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
 
 	/**
 	 * FinancialAnalysisParameters Getters
 	 */
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_FinancialAnalysisParameters_analysis_period_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_FinancialAnalysisParameters_analysis_period_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
 
 	/**
 	 * LifetimePV Getters
 	 */
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_LifetimePV_dc_degradation_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_LifetimePV_dc_degradation_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -247,111 +247,111 @@ extern "C"
 	 * PVWatts Getters
 	 */
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_array_type_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_array_type_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_azimuth_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_azimuth_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_dc_ac_ratio_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_dc_ac_ratio_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_gcr_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_gcr_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_inv_eff_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_inv_eff_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_losses_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_losses_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_module_type_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_module_type_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_PVWatts_shading_azal_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_PVWatts_shading_azal_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_shading_diff_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_shading_diff_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_PVWatts_shading_mxh_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_PVWatts_shading_mxh_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_PVWatts_shading_timestep_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_PVWatts_shading_timestep_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_system_capacity_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_system_capacity_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_tilt_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_tilt_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
 
 	/**
 	 * Battwatts Getters
 	 */
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Battwatts_batt_simple_enable_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Battwatts_batt_simple_enable_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_ac_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_ac_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_ac_annual_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_ac_annual_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_ac_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_ac_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_annual_energy_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_annual_energy_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_aoi_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_aoi_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_capacity_factor_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_capacity_factor_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_Pvwattsv5Lifetime_Outputs_city_sget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_dc_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_dc_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_dc_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_dc_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_df_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_df_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_dn_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_dn_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_elev_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_elev_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_gh_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_gh_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_inverter_efficiency_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_inverter_efficiency_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_inverter_model_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_inverter_model_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_kwh_per_kw_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_kwh_per_kw_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_lat_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_lat_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_Pvwattsv5Lifetime_Outputs_location_sget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_lon_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_lon_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_monthly_energy_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_monthly_energy_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_percent_complete_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_percent_complete_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_poa_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_poa_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_poa_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_poa_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_shad_beam_factor_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_shad_beam_factor_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_solrad_annual_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_solrad_annual_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_solrad_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_solrad_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_Pvwattsv5Lifetime_Outputs_state_sget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_sunup_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_sunup_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_tamb_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_tamb_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_tcell_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_tcell_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_tpoa_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_tpoa_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_ts_shift_hours_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_ts_shift_hours_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_tz_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_tz_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_wspd_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_wspd_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

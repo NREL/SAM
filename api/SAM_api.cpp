@@ -46,13 +46,13 @@ SAM_EXPORT void *SAM_load_library(const char *filepath, SAM_error *err) {
 #define FUNC_NAME_STR(type) \
 std::string funcName = "SAM_" + std::string(cmod_symbol) + "_" + std::string(group) + "_" + std::string(var_name) + "_" + std::string(type);
 
-SAM_EXPORT SAM_set_float_t
-SAM_set_float_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_set_float_t func = nullptr;
+SAM_EXPORT SAM_set_double_t
+SAM_set_double_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
+    SAM_set_double_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("fset");
+        FUNC_NAME_STR("nset");
         check_dll_loaded(handle);
-        func = (SAM_set_float_t) dll_sym(handle, funcName.c_str());
+        func = (SAM_set_double_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()
     });
     return func;
@@ -107,13 +107,13 @@ SAM_set_table_func(void *handle, const char *cmod_symbol, const char *group, con
 }
 
 
-SAM_EXPORT SAM_get_float_t
-SAM_get_float_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
-    SAM_get_float_t func = nullptr;
+SAM_EXPORT SAM_get_double_t
+SAM_get_double_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
+    SAM_get_double_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("fget");
+        FUNC_NAME_STR("nget");
         check_dll_loaded(handle);
-        func = (SAM_get_float_t) dll_sym(handle, funcName.c_str());
+        func = (SAM_get_double_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()
     });
     return func;
@@ -183,21 +183,21 @@ SAM_EXPORT SAM_table SAM_table_construct(SAM_error *err){
     return result;
 }
 
-SAM_EXPORT void SAM_table_set_num(SAM_table t, const char* key, float num, SAM_error *err){
+SAM_EXPORT void SAM_table_set_num(SAM_table t, const char* key, double num, SAM_error *err){
     translateExceptions(err, [&]{
         GET_VARTABLE()
         vt->assign( key, var_data( num ) );
     });
 }
 
-SAM_EXPORT void SAM_table_set_array(SAM_table t, const char* key, float* arr, int n, SAM_error *err){
+SAM_EXPORT void SAM_table_set_array(SAM_table t, const char* key, double* arr, int n, SAM_error *err){
     translateExceptions(err, [&]{
         GET_VARTABLE()
         vt->assign( key, var_data( arr, n ) );
     });
 }
 
-SAM_EXPORT void SAM_table_set_matrix(SAM_table t, const char* key, float* arr, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_table_set_matrix(SAM_table t, const char* key, double* arr, int nrows, int ncols, SAM_error *err){
     translateExceptions(err, [&]{
         GET_VARTABLE()
         vt->assign( key, var_data( arr, nrows, ncols ) );
@@ -230,8 +230,8 @@ if ( dat->type != ssc_type ) throw std::runtime_error(std::string(__func__) \
 
 
 
-SAM_EXPORT float* SAM_table_get_num(SAM_table t, const char *key, SAM_error *err){
-    float* result = nullptr;
+SAM_EXPORT double* SAM_table_get_num(SAM_table t, const char *key, SAM_error *err){
+    double* result = nullptr;
     translateExceptions(err, [&]{
         GET_VARTABLE()
         GET_VARDATA(key, SSC_NUMBER)
@@ -240,8 +240,8 @@ SAM_EXPORT float* SAM_table_get_num(SAM_table t, const char *key, SAM_error *err
     return result;
 }
 
-SAM_EXPORT float * SAM_table_get_array(SAM_table t, const char *key, int *n, SAM_error *err) {
-    float* result = nullptr;
+SAM_EXPORT double * SAM_table_get_array(SAM_table t, const char *key, int *n, SAM_error *err) {
+    double* result = nullptr;
     translateExceptions(err, [&]{
         GET_VARTABLE()
         GET_VARDATA(key, SSC_ARRAY)
@@ -251,9 +251,9 @@ SAM_EXPORT float * SAM_table_get_array(SAM_table t, const char *key, int *n, SAM
     return result;
 }
 
-SAM_EXPORT float *
+SAM_EXPORT double *
 SAM_table_get_matrix(SAM_table t, const char *key, int *nrows, int *ncols, SAM_error *err) {
-    float* result = nullptr;
+    double* result = nullptr;
     translateExceptions(err, [&]{
         GET_VARTABLE()
         GET_VARDATA(key, SSC_MATRIX)

@@ -32,98 +32,98 @@ SAM_EXPORT void SAM_Thermalrate_destruct(SAM_Thermalrate system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_en_thermal_rates_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_en_thermal_rates_nset(SAM_Thermalrate ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_thermal_rates", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_fuelcell_power_thermal_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_fuelcell_power_thermal_aset(SAM_Thermalrate ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "fuelcell_power_thermal", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_buy_rate_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_buy_rate_aset(SAM_Thermalrate ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "thermal_buy_rate", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_buy_rate_flat_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_buy_rate_flat_nset(SAM_Thermalrate ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "thermal_buy_rate_flat", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_buy_rate_option_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_buy_rate_option_nset(SAM_Thermalrate ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "thermal_buy_rate_option", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_degradation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_degradation_aset(SAM_Thermalrate ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "thermal_degradation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_load_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_load_aset(SAM_Thermalrate ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "thermal_load", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_load_escalation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_load_escalation_aset(SAM_Thermalrate ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "thermal_load_escalation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_rate_escalation_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_rate_escalation_aset(SAM_Thermalrate ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "thermal_rate_escalation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_sell_rate_aset(SAM_Thermalrate ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_sell_rate_aset(SAM_Thermalrate ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "thermal_sell_rate", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_sell_rate_flat_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_sell_rate_flat_nset(SAM_Thermalrate ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "thermal_sell_rate_flat", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_sell_rate_option_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_ThermalRate_thermal_sell_rate_option_nset(SAM_Thermalrate ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "thermal_sell_rate_option", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_Lifetime_analysis_period_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_Lifetime_analysis_period_nset(SAM_Thermalrate ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_Lifetime_inflation_rate_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_Lifetime_inflation_rate_nset(SAM_Thermalrate ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inflation_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thermalrate_Lifetime_system_use_lifetime_output_fset(SAM_Thermalrate ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thermalrate_Lifetime_system_use_lifetime_output_nset(SAM_Thermalrate ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT float SAM_Thermalrate_ThermalRate_en_thermal_rates_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_ThermalRate_en_thermal_rates_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_thermal_rates", &result))
 		make_access_error("SAM_Thermalrate", "en_thermal_rates");
@@ -133,8 +133,8 @@ SAM_EXPORT float SAM_Thermalrate_ThermalRate_en_thermal_rates_fget(SAM_Thermalra
 
 
 
-SAM_EXPORT float* SAM_Thermalrate_ThermalRate_fuelcell_power_thermal_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thermalrate_ThermalRate_fuelcell_power_thermal_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "fuelcell_power_thermal", length);
 	if (!result)
@@ -145,8 +145,8 @@ SAM_EXPORT float* SAM_Thermalrate_ThermalRate_fuelcell_power_thermal_aget(SAM_Th
 
 
 
-SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_buy_rate_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_buy_rate_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "thermal_buy_rate", length);
 	if (!result)
@@ -157,8 +157,8 @@ SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_buy_rate_aget(SAM_Thermalr
 
 
 
-SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_buy_rate_flat_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_buy_rate_flat_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_buy_rate_flat", &result))
 		make_access_error("SAM_Thermalrate", "thermal_buy_rate_flat");
@@ -168,8 +168,8 @@ SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_buy_rate_flat_fget(SAM_Ther
 
 
 
-SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_buy_rate_option_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_buy_rate_option_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_buy_rate_option", &result))
 		make_access_error("SAM_Thermalrate", "thermal_buy_rate_option");
@@ -179,8 +179,8 @@ SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_buy_rate_option_fget(SAM_Th
 
 
 
-SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_degradation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_degradation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "thermal_degradation", length);
 	if (!result)
@@ -191,8 +191,8 @@ SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_degradation_aget(SAM_Therm
 
 
 
-SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_load_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_load_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "thermal_load", length);
 	if (!result)
@@ -203,8 +203,8 @@ SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_load_aget(SAM_Thermalrate 
 
 
 
-SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_load_escalation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_load_escalation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "thermal_load_escalation", length);
 	if (!result)
@@ -215,8 +215,8 @@ SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_load_escalation_aget(SAM_T
 
 
 
-SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_rate_escalation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_rate_escalation_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "thermal_rate_escalation", length);
 	if (!result)
@@ -227,8 +227,8 @@ SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_rate_escalation_aget(SAM_T
 
 
 
-SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_sell_rate_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_sell_rate_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "thermal_sell_rate", length);
 	if (!result)
@@ -239,8 +239,8 @@ SAM_EXPORT float* SAM_Thermalrate_ThermalRate_thermal_sell_rate_aget(SAM_Thermal
 
 
 
-SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_sell_rate_flat_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_sell_rate_flat_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_sell_rate_flat", &result))
 		make_access_error("SAM_Thermalrate", "thermal_sell_rate_flat");
@@ -250,8 +250,8 @@ SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_sell_rate_flat_fget(SAM_The
 
 
 
-SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_sell_rate_option_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_sell_rate_option_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_sell_rate_option", &result))
 		make_access_error("SAM_Thermalrate", "thermal_sell_rate_option");
@@ -261,8 +261,8 @@ SAM_EXPORT float SAM_Thermalrate_ThermalRate_thermal_sell_rate_option_fget(SAM_T
 
 
 
-SAM_EXPORT float SAM_Thermalrate_Lifetime_analysis_period_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_Lifetime_analysis_period_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
 		make_access_error("SAM_Thermalrate", "analysis_period");
@@ -272,8 +272,8 @@ SAM_EXPORT float SAM_Thermalrate_Lifetime_analysis_period_fget(SAM_Thermalrate p
 
 
 
-SAM_EXPORT float SAM_Thermalrate_Lifetime_inflation_rate_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_Lifetime_inflation_rate_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
 		make_access_error("SAM_Thermalrate", "inflation_rate");
@@ -283,8 +283,8 @@ SAM_EXPORT float SAM_Thermalrate_Lifetime_inflation_rate_fget(SAM_Thermalrate pt
 
 
 
-SAM_EXPORT float SAM_Thermalrate_Lifetime_system_use_lifetime_output_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_Lifetime_system_use_lifetime_output_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
 		make_access_error("SAM_Thermalrate", "system_use_lifetime_output");
@@ -294,8 +294,8 @@ SAM_EXPORT float SAM_Thermalrate_Lifetime_system_use_lifetime_output_fget(SAM_Th
 
 
 
-SAM_EXPORT float SAM_Thermalrate_Outputs_thermal_cost_with_system_year1_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_cost_with_system_year1_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_cost_with_system_year1", &result))
 		make_access_error("SAM_Thermalrate", "thermal_cost_with_system_year1");
@@ -305,8 +305,8 @@ SAM_EXPORT float SAM_Thermalrate_Outputs_thermal_cost_with_system_year1_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Thermalrate_Outputs_thermal_cost_without_system_year1_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_cost_without_system_year1_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_cost_without_system_year1", &result))
 		make_access_error("SAM_Thermalrate", "thermal_cost_without_system_year1");
@@ -316,8 +316,8 @@ SAM_EXPORT float SAM_Thermalrate_Outputs_thermal_cost_without_system_year1_fget(
 
 
 
-SAM_EXPORT float SAM_Thermalrate_Outputs_thermal_load_year1_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_load_year1_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_load_year1", &result))
 		make_access_error("SAM_Thermalrate", "thermal_load_year1");
@@ -327,8 +327,8 @@ SAM_EXPORT float SAM_Thermalrate_Outputs_thermal_load_year1_fget(SAM_Thermalrate
 
 
 
-SAM_EXPORT float* SAM_Thermalrate_Outputs_thermal_revenue_with_system_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thermalrate_Outputs_thermal_revenue_with_system_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "thermal_revenue_with_system", length);
 	if (!result)
@@ -339,8 +339,8 @@ SAM_EXPORT float* SAM_Thermalrate_Outputs_thermal_revenue_with_system_aget(SAM_T
 
 
 
-SAM_EXPORT float* SAM_Thermalrate_Outputs_thermal_revenue_without_system_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thermalrate_Outputs_thermal_revenue_without_system_aget(SAM_Thermalrate ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "thermal_revenue_without_system", length);
 	if (!result)
@@ -351,8 +351,8 @@ SAM_EXPORT float* SAM_Thermalrate_Outputs_thermal_revenue_without_system_aget(SA
 
 
 
-SAM_EXPORT float SAM_Thermalrate_Outputs_thermal_savings_year1_fget(SAM_Thermalrate ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_savings_year1_nget(SAM_Thermalrate ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_savings_year1", &result))
 		make_access_error("SAM_Thermalrate", "thermal_savings_year1");

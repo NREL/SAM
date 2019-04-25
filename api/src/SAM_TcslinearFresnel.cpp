@@ -32,7 +32,7 @@ SAM_EXPORT void SAM_TcslinearFresnel_destruct(SAM_TcslinearFresnel system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Weather_azimuth_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Weather_azimuth_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "azimuth", number);
 	});
@@ -44,806 +44,806 @@ SAM_EXPORT void SAM_TcslinearFresnel_Weather_file_name_sset(SAM_TcslinearFresnel
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Weather_tilt_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Weather_tilt_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tilt", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Weather_track_mode_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Weather_track_mode_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "track_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_LinearFresnelr_system_capacity_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_LinearFresnelr_system_capacity_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_TouTranslator_weekday_schedule_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_TouTranslator_weekday_schedule_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "weekday_schedule", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_TouTranslator_weekend_schedule_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_TouTranslator_weekend_schedule_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "weekend_schedule", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_A_aperture_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_A_aperture_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "A_aperture", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_AbsorberMaterial_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_AbsorberMaterial_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "AbsorberMaterial", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_AnnulusGas_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_AnnulusGas_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "AnnulusGas", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_ColAz_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_ColAz_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ColAz", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_D_2_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_D_2_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "D_2", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_D_3_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_D_3_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "D_3", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_D_4_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_D_4_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "D_4", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_D_5_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_D_5_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "D_5", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_D_p_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_D_p_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "D_p", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Design_loss_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Design_loss_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "Design_loss", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Dirt_HCE_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Dirt_HCE_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "Dirt_HCE", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_EPSILON_4_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_EPSILON_4_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "EPSILON_4", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Flow_type_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Flow_type_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "Flow_type", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_GeomEffects_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_GeomEffects_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "GeomEffects", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_GlazingIntactIn_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_GlazingIntactIn_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "GlazingIntactIn", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_HCE_FieldFrac_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_HCE_FieldFrac_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "HCE_FieldFrac", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_HLCharType_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_HLCharType_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "HLCharType", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_HL_W_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_HL_W_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "HL_W", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_HL_dT_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_HL_dT_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "HL_dT", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_IAM_L_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_IAM_L_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "IAM_L", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_IAM_T_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_IAM_T_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "IAM_T", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_I_bn_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_I_bn_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "I_bn", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_I_bn_des_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_I_bn_des_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "I_bn_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_LHV_eff_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_LHV_eff_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "LHV_eff", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_L_col_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_L_col_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "L_col", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_OptCharType_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_OptCharType_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "OptCharType", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_PB_fixed_par_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_PB_fixed_par_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "PB_fixed_par", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_PB_pump_coef_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_PB_pump_coef_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "PB_pump_coef", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_P_a_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_P_a_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "P_a", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_P_amb_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_P_amb_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_amb", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_P_turb_des_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_P_turb_des_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_turb_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Pipe_hl_coef_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Pipe_hl_coef_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Pipe_hl_coef", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Rough_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Rough_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "Rough", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_SCA_drives_elec_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_SCA_drives_elec_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "SCA_drives_elec", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Shadowing_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Shadowing_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "Shadowing", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_SolarAz_init_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_SolarAz_init_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "SolarAz_init", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_SolarZen_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_SolarZen_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "SolarZen", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_T_amb_des_sf_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_T_amb_des_sf_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_amb_des_sf", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_T_db_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_T_db_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_db", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_T_dp_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_T_dp_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_dp", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_T_fp_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_T_fp_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_fp", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_T_pb_out_init_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_T_pb_out_init_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_pb_out_init", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Tau_envelope_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_Tau_envelope_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "Tau_envelope", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_TrackingError_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_TrackingError_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "TrackingError", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_V_wind_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_V_wind_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "V_wind", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_V_wind_max_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_V_wind_max_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "V_wind_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_alpha_abs_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_alpha_abs_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "alpha_abs", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_alpha_env_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_alpha_env_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "alpha_env", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_aux_array_aset(SAM_TcslinearFresnel ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_aux_array_aset(SAM_TcslinearFresnel ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "aux_array", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_b_OpticalTable_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_b_OpticalTable_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "b_OpticalTable", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_b_eps_HCE1_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_b_eps_HCE1_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "b_eps_HCE1", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_b_eps_HCE2_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_b_eps_HCE2_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "b_eps_HCE2", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_b_eps_HCE3_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_b_eps_HCE3_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "b_eps_HCE3", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_b_eps_HCE4_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_b_eps_HCE4_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "b_eps_HCE4", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_bop_array_aset(SAM_TcslinearFresnel ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_bop_array_aset(SAM_TcslinearFresnel ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "bop_array", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_cycle_cutoff_frac_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_cycle_cutoff_frac_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cycle_cutoff_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_cycle_max_fraction_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_cycle_max_fraction_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cycle_max_fraction", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_dirt_mirror_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_dirt_mirror_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dirt_mirror", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_dnifc_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_dnifc_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dnifc", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_e_startup_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_e_startup_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "e_startup", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_error_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_error_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "error", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_eta_pump_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_eta_pump_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "eta_pump", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fP_boil_to_sh_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fP_boil_to_sh_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fP_boil_to_sh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fP_hdr_c_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fP_hdr_c_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fP_hdr_c", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fP_hdr_h_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fP_hdr_h_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fP_hdr_h", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fP_sf_boil_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fP_sf_boil_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fP_sf_boil", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fP_sf_sh_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fP_sf_sh_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fP_sf_sh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_ffrac_aset(SAM_TcslinearFresnel ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_ffrac_aset(SAM_TcslinearFresnel ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ffrac", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fossil_mode_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_fossil_mode_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fossil_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_is_multgeom_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_is_multgeom_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_multgeom", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_is_oncethru_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_is_oncethru_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_oncethru", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_is_sh_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_is_sh_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_sh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_latitude_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_latitude_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "latitude", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_m_dot_htf_ref_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_m_dot_htf_ref_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "m_dot_htf_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_m_dot_min_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_m_dot_min_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "m_dot_min", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_m_pb_demand_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_m_pb_demand_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "m_pb_demand", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_nLoops_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_nLoops_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "nLoops", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_nModBoil_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_nModBoil_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "nModBoil", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_nModSH_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_nModSH_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "nModSH", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_q_max_aux_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_q_max_aux_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_max_aux", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_q_pb_des_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_q_pb_des_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_pb_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_q_sby_frac_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_q_sby_frac_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_sby_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_rho_mirror_clean_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_rho_mirror_clean_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "rho_mirror_clean", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_sh_OpticalTable_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_sh_OpticalTable_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "sh_OpticalTable", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_sh_eps_HCE1_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_sh_eps_HCE1_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "sh_eps_HCE1", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_sh_eps_HCE2_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_sh_eps_HCE2_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "sh_eps_HCE2", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_sh_eps_HCE3_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_sh_eps_HCE3_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "sh_eps_HCE3", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_sh_eps_HCE4_mset(SAM_TcslinearFresnel ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_sh_eps_HCE4_mset(SAM_TcslinearFresnel ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "sh_eps_HCE4", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_shift_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_shift_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "shift", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_solarm_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_solarm_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "solarm", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_t_sby_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_t_sby_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "t_sby", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_tes_hours_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_tes_hours_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tes_hours", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_theta_dep_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_theta_dep_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "theta_dep", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_theta_stow_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_theta_stow_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "theta_stow", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_x_b_des_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Solarfield_x_b_des_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "x_b_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Heliostat_csp_lf_sf_washes_per_year_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Heliostat_csp_lf_sf_washes_per_year_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.lf.sf.washes_per_year", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Heliostat_csp_lf_sf_water_per_wash_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Heliostat_csp_lf_sf_water_per_wash_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.lf.sf.water_per_wash", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_CT_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_CT_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "CT", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_F_wc_aset(SAM_TcslinearFresnel ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_F_wc_aset(SAM_TcslinearFresnel ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "F_wc", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_P_amb_pwb_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_P_amb_pwb_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_amb_pwb", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_P_boil_des_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_P_boil_des_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_boil_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_P_cond_min_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_P_cond_min_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_cond_min", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_P_cond_ratio_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_P_cond_ratio_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_cond_ratio", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_P_rh_ref_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_P_rh_ref_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_rh_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_ITD_des_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_ITD_des_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_ITD_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_amb_des_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_amb_des_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_amb_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_approach_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_approach_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_approach", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_cold_ref_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_cold_ref_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_cold_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_db_pwb_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_db_pwb_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_db_pwb", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_hot_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_hot_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_hot", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_wb_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_T_wb_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_wb", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_dT_cw_ref_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_dT_cw_ref_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dT_cw_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_demand_var_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_demand_var_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "demand_var", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_dp_b_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_dp_b_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dp_b", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_dp_rh_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_dp_rh_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dp_rh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_dp_sh_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_dp_sh_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dp_sh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_eta_ref_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_eta_ref_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "eta_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_f_recSU_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_f_recSU_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "f_recSU", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_m_dot_st_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_m_dot_st_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "m_dot_st", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_n_pl_inc_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_n_pl_inc_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_pl_inc", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_pb_bd_frac_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_pb_bd_frac_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pb_bd_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_pc_mode_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_pc_mode_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pc_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_q_sby_frac_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_q_sby_frac_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_sby_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_relhum_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_relhum_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "relhum", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_rh_frac_ref_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_rh_frac_ref_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rh_frac_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_standby_control_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_standby_control_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "standby_control", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_startup_frac_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_startup_frac_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "startup_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_startup_time_fset(SAM_TcslinearFresnel ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_TcslinearFresnel_Powerblock_startup_time_nset(SAM_TcslinearFresnel ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "startup_time", number);
 	});
 }
 
-SAM_EXPORT float SAM_TcslinearFresnel_Weather_azimuth_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Weather_azimuth_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "azimuth", &result))
 		make_access_error("SAM_TcslinearFresnel", "azimuth");
@@ -865,8 +865,8 @@ SAM_EXPORT const char* SAM_TcslinearFresnel_Weather_file_name_sget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Weather_tilt_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Weather_tilt_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tilt", &result))
 		make_access_error("SAM_TcslinearFresnel", "tilt");
@@ -876,8 +876,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Weather_tilt_fget(SAM_TcslinearFresnel ptr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Weather_track_mode_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Weather_track_mode_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "track_mode", &result))
 		make_access_error("SAM_TcslinearFresnel", "track_mode");
@@ -887,8 +887,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Weather_track_mode_fget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_LinearFresnelr_system_capacity_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_LinearFresnelr_system_capacity_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_TcslinearFresnel", "system_capacity");
@@ -898,8 +898,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_LinearFresnelr_system_capacity_fget(SAM_Tc
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_TouTranslator_weekday_schedule_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_TouTranslator_weekday_schedule_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "weekday_schedule", nrows, ncols);
 	if (!result)
@@ -910,8 +910,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_TouTranslator_weekday_schedule_mget(SAM_T
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_TouTranslator_weekend_schedule_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_TouTranslator_weekend_schedule_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "weekend_schedule", nrows, ncols);
 	if (!result)
@@ -922,8 +922,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_TouTranslator_weekend_schedule_mget(SAM_T
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_A_aperture_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_A_aperture_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "A_aperture", nrows, ncols);
 	if (!result)
@@ -934,8 +934,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_A_aperture_mget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_AbsorberMaterial_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_AbsorberMaterial_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "AbsorberMaterial", nrows, ncols);
 	if (!result)
@@ -946,8 +946,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_AbsorberMaterial_mget(SAM_Tcsl
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_AnnulusGas_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_AnnulusGas_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "AnnulusGas", nrows, ncols);
 	if (!result)
@@ -958,8 +958,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_AnnulusGas_mget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_ColAz_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_ColAz_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ColAz", &result))
 		make_access_error("SAM_TcslinearFresnel", "ColAz");
@@ -969,8 +969,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_ColAz_fget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_D_2_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_2_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "D_2", nrows, ncols);
 	if (!result)
@@ -981,8 +981,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_D_2_mget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_D_3_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_3_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "D_3", nrows, ncols);
 	if (!result)
@@ -993,8 +993,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_D_3_mget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_D_4_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_4_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "D_4", nrows, ncols);
 	if (!result)
@@ -1005,8 +1005,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_D_4_mget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_D_5_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_5_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "D_5", nrows, ncols);
 	if (!result)
@@ -1017,8 +1017,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_D_5_mget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_D_p_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_p_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "D_p", nrows, ncols);
 	if (!result)
@@ -1029,8 +1029,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_D_p_mget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Design_loss_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Design_loss_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "Design_loss", nrows, ncols);
 	if (!result)
@@ -1041,8 +1041,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Design_loss_mget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Dirt_HCE_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Dirt_HCE_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "Dirt_HCE", nrows, ncols);
 	if (!result)
@@ -1053,8 +1053,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Dirt_HCE_mget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_EPSILON_4_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_EPSILON_4_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "EPSILON_4", nrows, ncols);
 	if (!result)
@@ -1065,8 +1065,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_EPSILON_4_mget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Flow_type_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Flow_type_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "Flow_type", nrows, ncols);
 	if (!result)
@@ -1077,8 +1077,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Flow_type_mget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_GeomEffects_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_GeomEffects_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "GeomEffects", nrows, ncols);
 	if (!result)
@@ -1089,8 +1089,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_GeomEffects_mget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_GlazingIntactIn_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_GlazingIntactIn_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "GlazingIntactIn", nrows, ncols);
 	if (!result)
@@ -1101,8 +1101,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_GlazingIntactIn_mget(SAM_Tcsli
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_HCE_FieldFrac_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HCE_FieldFrac_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "HCE_FieldFrac", nrows, ncols);
 	if (!result)
@@ -1113,8 +1113,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_HCE_FieldFrac_mget(SAM_Tcsline
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_HLCharType_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HLCharType_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "HLCharType", nrows, ncols);
 	if (!result)
@@ -1125,8 +1125,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_HLCharType_mget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_HL_W_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HL_W_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "HL_W", nrows, ncols);
 	if (!result)
@@ -1137,8 +1137,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_HL_W_mget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_HL_dT_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HL_dT_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "HL_dT", nrows, ncols);
 	if (!result)
@@ -1149,8 +1149,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_HL_dT_mget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_IAM_L_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_IAM_L_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "IAM_L", nrows, ncols);
 	if (!result)
@@ -1161,8 +1161,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_IAM_L_mget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_IAM_T_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_IAM_T_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "IAM_T", nrows, ncols);
 	if (!result)
@@ -1173,8 +1173,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_IAM_T_mget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_I_bn_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_I_bn_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "I_bn", &result))
 		make_access_error("SAM_TcslinearFresnel", "I_bn");
@@ -1184,8 +1184,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_I_bn_fget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_I_bn_des_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_I_bn_des_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "I_bn_des", &result))
 		make_access_error("SAM_TcslinearFresnel", "I_bn_des");
@@ -1195,8 +1195,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_I_bn_des_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_LHV_eff_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_LHV_eff_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "LHV_eff", &result))
 		make_access_error("SAM_TcslinearFresnel", "LHV_eff");
@@ -1206,8 +1206,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_LHV_eff_fget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_L_col_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_L_col_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "L_col", nrows, ncols);
 	if (!result)
@@ -1218,8 +1218,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_L_col_mget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_OptCharType_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_OptCharType_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "OptCharType", nrows, ncols);
 	if (!result)
@@ -1230,8 +1230,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_OptCharType_mget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_PB_fixed_par_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_PB_fixed_par_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "PB_fixed_par", &result))
 		make_access_error("SAM_TcslinearFresnel", "PB_fixed_par");
@@ -1241,8 +1241,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_PB_fixed_par_fget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_PB_pump_coef_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_PB_pump_coef_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "PB_pump_coef", &result))
 		make_access_error("SAM_TcslinearFresnel", "PB_pump_coef");
@@ -1252,8 +1252,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_PB_pump_coef_fget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_P_a_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_P_a_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "P_a", nrows, ncols);
 	if (!result)
@@ -1264,8 +1264,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_P_a_mget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_P_amb_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_P_amb_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_amb", &result))
 		make_access_error("SAM_TcslinearFresnel", "P_amb");
@@ -1275,8 +1275,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_P_amb_fget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_P_turb_des_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_P_turb_des_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_turb_des", &result))
 		make_access_error("SAM_TcslinearFresnel", "P_turb_des");
@@ -1286,8 +1286,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_P_turb_des_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_Pipe_hl_coef_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_Pipe_hl_coef_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Pipe_hl_coef", &result))
 		make_access_error("SAM_TcslinearFresnel", "Pipe_hl_coef");
@@ -1297,8 +1297,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_Pipe_hl_coef_fget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Rough_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Rough_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "Rough", nrows, ncols);
 	if (!result)
@@ -1309,8 +1309,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Rough_mget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_SCA_drives_elec_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_SCA_drives_elec_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "SCA_drives_elec", &result))
 		make_access_error("SAM_TcslinearFresnel", "SCA_drives_elec");
@@ -1320,8 +1320,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_SCA_drives_elec_fget(SAM_Tcslin
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Shadowing_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Shadowing_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "Shadowing", nrows, ncols);
 	if (!result)
@@ -1332,8 +1332,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Shadowing_mget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_SolarAz_init_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_SolarAz_init_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "SolarAz_init", &result))
 		make_access_error("SAM_TcslinearFresnel", "SolarAz_init");
@@ -1343,8 +1343,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_SolarAz_init_fget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_SolarZen_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_SolarZen_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "SolarZen", &result))
 		make_access_error("SAM_TcslinearFresnel", "SolarZen");
@@ -1354,8 +1354,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_SolarZen_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_T_amb_des_sf_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_amb_des_sf_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_amb_des_sf", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_amb_des_sf");
@@ -1365,8 +1365,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_T_amb_des_sf_fget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_T_db_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_db_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_db", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_db");
@@ -1376,8 +1376,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_T_db_fget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_T_dp_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_dp_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_dp", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_dp");
@@ -1387,8 +1387,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_T_dp_fget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_T_fp_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_fp_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_fp", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_fp");
@@ -1398,8 +1398,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_T_fp_fget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_T_pb_out_init_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_pb_out_init_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_pb_out_init", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_pb_out_init");
@@ -1409,8 +1409,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_T_pb_out_init_fget(SAM_Tcslinea
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Tau_envelope_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Tau_envelope_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "Tau_envelope", nrows, ncols);
 	if (!result)
@@ -1421,8 +1421,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_Tau_envelope_mget(SAM_Tcslinea
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_TrackingError_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_TrackingError_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "TrackingError", nrows, ncols);
 	if (!result)
@@ -1433,8 +1433,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_TrackingError_mget(SAM_Tcsline
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_V_wind_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_V_wind_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "V_wind", &result))
 		make_access_error("SAM_TcslinearFresnel", "V_wind");
@@ -1444,8 +1444,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_V_wind_fget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_V_wind_max_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_V_wind_max_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "V_wind_max", &result))
 		make_access_error("SAM_TcslinearFresnel", "V_wind_max");
@@ -1455,8 +1455,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_V_wind_max_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_alpha_abs_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_alpha_abs_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "alpha_abs", nrows, ncols);
 	if (!result)
@@ -1467,8 +1467,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_alpha_abs_mget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_alpha_env_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_alpha_env_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "alpha_env", nrows, ncols);
 	if (!result)
@@ -1479,8 +1479,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_alpha_env_mget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_aux_array_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_aux_array_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "aux_array", length);
 	if (!result)
@@ -1491,8 +1491,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_aux_array_aget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_b_OpticalTable_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_OpticalTable_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "b_OpticalTable", nrows, ncols);
 	if (!result)
@@ -1503,8 +1503,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_b_OpticalTable_mget(SAM_Tcslin
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_b_eps_HCE1_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE1_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "b_eps_HCE1", nrows, ncols);
 	if (!result)
@@ -1515,8 +1515,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_b_eps_HCE1_mget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_b_eps_HCE2_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE2_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "b_eps_HCE2", nrows, ncols);
 	if (!result)
@@ -1527,8 +1527,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_b_eps_HCE2_mget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_b_eps_HCE3_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE3_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "b_eps_HCE3", nrows, ncols);
 	if (!result)
@@ -1539,8 +1539,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_b_eps_HCE3_mget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_b_eps_HCE4_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE4_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "b_eps_HCE4", nrows, ncols);
 	if (!result)
@@ -1551,8 +1551,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_b_eps_HCE4_mget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_bop_array_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_bop_array_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "bop_array", length);
 	if (!result)
@@ -1563,8 +1563,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_bop_array_aget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_cycle_cutoff_frac_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_cycle_cutoff_frac_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cycle_cutoff_frac", &result))
 		make_access_error("SAM_TcslinearFresnel", "cycle_cutoff_frac");
@@ -1574,8 +1574,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_cycle_cutoff_frac_fget(SAM_Tcsl
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_cycle_max_fraction_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_cycle_max_fraction_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cycle_max_fraction", &result))
 		make_access_error("SAM_TcslinearFresnel", "cycle_max_fraction");
@@ -1585,8 +1585,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_cycle_max_fraction_fget(SAM_Tcs
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_dirt_mirror_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_dirt_mirror_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "dirt_mirror", nrows, ncols);
 	if (!result)
@@ -1597,8 +1597,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_dirt_mirror_mget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_dnifc_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_dnifc_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dnifc", &result))
 		make_access_error("SAM_TcslinearFresnel", "dnifc");
@@ -1608,8 +1608,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_dnifc_fget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_e_startup_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_e_startup_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "e_startup", &result))
 		make_access_error("SAM_TcslinearFresnel", "e_startup");
@@ -1619,8 +1619,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_e_startup_fget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_error_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_error_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "error", nrows, ncols);
 	if (!result)
@@ -1631,8 +1631,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_error_mget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_eta_pump_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_eta_pump_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eta_pump", &result))
 		make_access_error("SAM_TcslinearFresnel", "eta_pump");
@@ -1642,8 +1642,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_eta_pump_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fP_boil_to_sh_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_boil_to_sh_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fP_boil_to_sh", &result))
 		make_access_error("SAM_TcslinearFresnel", "fP_boil_to_sh");
@@ -1653,8 +1653,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fP_boil_to_sh_fget(SAM_Tcslinea
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fP_hdr_c_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_hdr_c_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fP_hdr_c", &result))
 		make_access_error("SAM_TcslinearFresnel", "fP_hdr_c");
@@ -1664,8 +1664,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fP_hdr_c_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fP_hdr_h_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_hdr_h_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fP_hdr_h", &result))
 		make_access_error("SAM_TcslinearFresnel", "fP_hdr_h");
@@ -1675,8 +1675,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fP_hdr_h_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fP_sf_boil_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_sf_boil_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fP_sf_boil", &result))
 		make_access_error("SAM_TcslinearFresnel", "fP_sf_boil");
@@ -1686,8 +1686,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fP_sf_boil_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fP_sf_sh_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_sf_sh_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fP_sf_sh", &result))
 		make_access_error("SAM_TcslinearFresnel", "fP_sf_sh");
@@ -1697,8 +1697,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fP_sf_sh_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_ffrac_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_ffrac_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ffrac", length);
 	if (!result)
@@ -1709,8 +1709,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_ffrac_aget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fossil_mode_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fossil_mode_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fossil_mode", &result))
 		make_access_error("SAM_TcslinearFresnel", "fossil_mode");
@@ -1720,8 +1720,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_fossil_mode_fget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_is_multgeom_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_is_multgeom_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_multgeom", &result))
 		make_access_error("SAM_TcslinearFresnel", "is_multgeom");
@@ -1731,8 +1731,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_is_multgeom_fget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_is_oncethru_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_is_oncethru_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_oncethru", &result))
 		make_access_error("SAM_TcslinearFresnel", "is_oncethru");
@@ -1742,8 +1742,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_is_oncethru_fget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_is_sh_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_is_sh_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_sh", &result))
 		make_access_error("SAM_TcslinearFresnel", "is_sh");
@@ -1753,8 +1753,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_is_sh_fget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_latitude_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_latitude_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "latitude", &result))
 		make_access_error("SAM_TcslinearFresnel", "latitude");
@@ -1764,8 +1764,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_latitude_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_m_dot_htf_ref_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_m_dot_htf_ref_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "m_dot_htf_ref", &result))
 		make_access_error("SAM_TcslinearFresnel", "m_dot_htf_ref");
@@ -1775,8 +1775,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_m_dot_htf_ref_fget(SAM_Tcslinea
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_m_dot_min_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_m_dot_min_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "m_dot_min", &result))
 		make_access_error("SAM_TcslinearFresnel", "m_dot_min");
@@ -1786,8 +1786,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_m_dot_min_fget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_m_pb_demand_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_m_pb_demand_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "m_pb_demand", &result))
 		make_access_error("SAM_TcslinearFresnel", "m_pb_demand");
@@ -1797,8 +1797,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_m_pb_demand_fget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_nLoops_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_nLoops_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "nLoops", &result))
 		make_access_error("SAM_TcslinearFresnel", "nLoops");
@@ -1808,8 +1808,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_nLoops_fget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_nModBoil_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_nModBoil_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "nModBoil", &result))
 		make_access_error("SAM_TcslinearFresnel", "nModBoil");
@@ -1819,8 +1819,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_nModBoil_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_nModSH_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_nModSH_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "nModSH", &result))
 		make_access_error("SAM_TcslinearFresnel", "nModSH");
@@ -1830,8 +1830,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_nModSH_fget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_q_max_aux_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_q_max_aux_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_max_aux", &result))
 		make_access_error("SAM_TcslinearFresnel", "q_max_aux");
@@ -1841,8 +1841,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_q_max_aux_fget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_q_pb_des_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_q_pb_des_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_pb_des", &result))
 		make_access_error("SAM_TcslinearFresnel", "q_pb_des");
@@ -1852,8 +1852,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_q_pb_des_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_q_sby_frac_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_q_sby_frac_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_sby_frac", &result))
 		make_access_error("SAM_TcslinearFresnel", "q_sby_frac");
@@ -1863,8 +1863,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_q_sby_frac_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_rho_mirror_clean_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_rho_mirror_clean_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "rho_mirror_clean", nrows, ncols);
 	if (!result)
@@ -1875,8 +1875,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_rho_mirror_clean_mget(SAM_Tcsl
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_sh_OpticalTable_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_OpticalTable_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "sh_OpticalTable", nrows, ncols);
 	if (!result)
@@ -1887,8 +1887,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_sh_OpticalTable_mget(SAM_Tcsli
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE1_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE1_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "sh_eps_HCE1", nrows, ncols);
 	if (!result)
@@ -1899,8 +1899,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE1_mget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE2_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE2_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "sh_eps_HCE2", nrows, ncols);
 	if (!result)
@@ -1911,8 +1911,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE2_mget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE3_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE3_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "sh_eps_HCE3", nrows, ncols);
 	if (!result)
@@ -1923,8 +1923,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE3_mget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE4_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE4_mget(SAM_TcslinearFresnel ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "sh_eps_HCE4", nrows, ncols);
 	if (!result)
@@ -1935,8 +1935,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE4_mget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_shift_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_shift_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "shift", &result))
 		make_access_error("SAM_TcslinearFresnel", "shift");
@@ -1946,8 +1946,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_shift_fget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_solarm_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_solarm_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "solarm", &result))
 		make_access_error("SAM_TcslinearFresnel", "solarm");
@@ -1957,8 +1957,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_solarm_fget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_t_sby_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_t_sby_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "t_sby", &result))
 		make_access_error("SAM_TcslinearFresnel", "t_sby");
@@ -1968,8 +1968,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_t_sby_fget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_tes_hours_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_tes_hours_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tes_hours", &result))
 		make_access_error("SAM_TcslinearFresnel", "tes_hours");
@@ -1979,8 +1979,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_tes_hours_fget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_theta_dep_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_theta_dep_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "theta_dep", &result))
 		make_access_error("SAM_TcslinearFresnel", "theta_dep");
@@ -1990,8 +1990,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_theta_dep_fget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_theta_stow_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_theta_stow_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "theta_stow", &result))
 		make_access_error("SAM_TcslinearFresnel", "theta_stow");
@@ -2001,8 +2001,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_theta_stow_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_x_b_des_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_x_b_des_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "x_b_des", &result))
 		make_access_error("SAM_TcslinearFresnel", "x_b_des");
@@ -2012,8 +2012,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Solarfield_x_b_des_fget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Heliostat_csp_lf_sf_washes_per_year_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Heliostat_csp_lf_sf_washes_per_year_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.lf.sf.washes_per_year", &result))
 		make_access_error("SAM_TcslinearFresnel", "csp.lf.sf.washes_per_year");
@@ -2023,8 +2023,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Heliostat_csp_lf_sf_washes_per_year_fget(S
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Heliostat_csp_lf_sf_water_per_wash_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Heliostat_csp_lf_sf_water_per_wash_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.lf.sf.water_per_wash", &result))
 		make_access_error("SAM_TcslinearFresnel", "csp.lf.sf.water_per_wash");
@@ -2034,8 +2034,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Heliostat_csp_lf_sf_water_per_wash_fget(SA
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_CT_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_CT_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "CT", &result))
 		make_access_error("SAM_TcslinearFresnel", "CT");
@@ -2045,8 +2045,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_CT_fget(SAM_TcslinearFresnel pt
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Powerblock_F_wc_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Powerblock_F_wc_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "F_wc", length);
 	if (!result)
@@ -2057,8 +2057,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Powerblock_F_wc_aget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_P_amb_pwb_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_amb_pwb_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_amb_pwb", &result))
 		make_access_error("SAM_TcslinearFresnel", "P_amb_pwb");
@@ -2068,8 +2068,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_P_amb_pwb_fget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_P_boil_des_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_boil_des_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_boil_des", &result))
 		make_access_error("SAM_TcslinearFresnel", "P_boil_des");
@@ -2079,8 +2079,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_P_boil_des_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_P_cond_min_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_cond_min_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_cond_min", &result))
 		make_access_error("SAM_TcslinearFresnel", "P_cond_min");
@@ -2090,8 +2090,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_P_cond_min_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_P_cond_ratio_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_cond_ratio_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_cond_ratio", &result))
 		make_access_error("SAM_TcslinearFresnel", "P_cond_ratio");
@@ -2101,8 +2101,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_P_cond_ratio_fget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_P_rh_ref_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_rh_ref_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_rh_ref", &result))
 		make_access_error("SAM_TcslinearFresnel", "P_rh_ref");
@@ -2112,8 +2112,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_P_rh_ref_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_ITD_des_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_ITD_des_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_ITD_des", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_ITD_des");
@@ -2123,8 +2123,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_ITD_des_fget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_amb_des_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_amb_des_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_amb_des", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_amb_des");
@@ -2134,8 +2134,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_amb_des_fget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_approach_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_approach_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_approach", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_approach");
@@ -2145,8 +2145,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_approach_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_cold_ref_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_cold_ref_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_cold_ref", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_cold_ref");
@@ -2156,8 +2156,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_cold_ref_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_db_pwb_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_db_pwb_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_db_pwb", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_db_pwb");
@@ -2167,8 +2167,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_db_pwb_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_hot_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_hot_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_hot", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_hot");
@@ -2178,8 +2178,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_hot_fget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_wb_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_wb_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_wb", &result))
 		make_access_error("SAM_TcslinearFresnel", "T_wb");
@@ -2189,8 +2189,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_T_wb_fget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_dT_cw_ref_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dT_cw_ref_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dT_cw_ref", &result))
 		make_access_error("SAM_TcslinearFresnel", "dT_cw_ref");
@@ -2200,8 +2200,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_dT_cw_ref_fget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_demand_var_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_demand_var_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "demand_var", &result))
 		make_access_error("SAM_TcslinearFresnel", "demand_var");
@@ -2211,8 +2211,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_demand_var_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_dp_b_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dp_b_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dp_b", &result))
 		make_access_error("SAM_TcslinearFresnel", "dp_b");
@@ -2222,8 +2222,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_dp_b_fget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_dp_rh_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dp_rh_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dp_rh", &result))
 		make_access_error("SAM_TcslinearFresnel", "dp_rh");
@@ -2233,8 +2233,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_dp_rh_fget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_dp_sh_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dp_sh_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dp_sh", &result))
 		make_access_error("SAM_TcslinearFresnel", "dp_sh");
@@ -2244,8 +2244,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_dp_sh_fget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_eta_ref_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_eta_ref_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eta_ref", &result))
 		make_access_error("SAM_TcslinearFresnel", "eta_ref");
@@ -2255,8 +2255,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_eta_ref_fget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_f_recSU_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_f_recSU_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "f_recSU", &result))
 		make_access_error("SAM_TcslinearFresnel", "f_recSU");
@@ -2266,8 +2266,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_f_recSU_fget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_m_dot_st_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_m_dot_st_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "m_dot_st", &result))
 		make_access_error("SAM_TcslinearFresnel", "m_dot_st");
@@ -2277,8 +2277,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_m_dot_st_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_n_pl_inc_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_n_pl_inc_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_pl_inc", &result))
 		make_access_error("SAM_TcslinearFresnel", "n_pl_inc");
@@ -2288,8 +2288,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_n_pl_inc_fget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_pb_bd_frac_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_pb_bd_frac_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pb_bd_frac", &result))
 		make_access_error("SAM_TcslinearFresnel", "pb_bd_frac");
@@ -2299,8 +2299,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_pb_bd_frac_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_pc_mode_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_pc_mode_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pc_mode", &result))
 		make_access_error("SAM_TcslinearFresnel", "pc_mode");
@@ -2310,8 +2310,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_pc_mode_fget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_q_sby_frac_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_q_sby_frac_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_sby_frac", &result))
 		make_access_error("SAM_TcslinearFresnel", "q_sby_frac");
@@ -2321,8 +2321,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_q_sby_frac_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_relhum_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_relhum_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "relhum", &result))
 		make_access_error("SAM_TcslinearFresnel", "relhum");
@@ -2332,8 +2332,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_relhum_fget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_rh_frac_ref_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_rh_frac_ref_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rh_frac_ref", &result))
 		make_access_error("SAM_TcslinearFresnel", "rh_frac_ref");
@@ -2343,8 +2343,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_rh_frac_ref_fget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_standby_control_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_standby_control_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "standby_control", &result))
 		make_access_error("SAM_TcslinearFresnel", "standby_control");
@@ -2354,8 +2354,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_standby_control_fget(SAM_Tcslin
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_startup_frac_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_startup_frac_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "startup_frac", &result))
 		make_access_error("SAM_TcslinearFresnel", "startup_frac");
@@ -2365,8 +2365,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_startup_frac_fget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_startup_time_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_startup_time_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "startup_time", &result))
 		make_access_error("SAM_TcslinearFresnel", "startup_time");
@@ -2376,8 +2376,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Powerblock_startup_time_fget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_E_bal_startup_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_E_bal_startup_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "E_bal_startup", length);
 	if (!result)
@@ -2388,8 +2388,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_E_bal_startup_aget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_P_cond_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_P_cond_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_cond", length);
 	if (!result)
@@ -2400,8 +2400,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_P_cond_aget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_P_sf_in_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_P_sf_in_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_sf_in", length);
 	if (!result)
@@ -2412,8 +2412,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_P_sf_in_aget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_P_turb_in_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_P_turb_in_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_turb_in", length);
 	if (!result)
@@ -2424,8 +2424,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_P_turb_in_aget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_T_field_in_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_field_in_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_field_in", length);
 	if (!result)
@@ -2436,8 +2436,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_T_field_in_aget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_T_field_out_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_field_out_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_field_out", length);
 	if (!result)
@@ -2448,8 +2448,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_T_field_out_aget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_T_loop_out_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_loop_out_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_loop_out", length);
 	if (!result)
@@ -2460,8 +2460,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_T_loop_out_aget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_T_pb_in_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_pb_in_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_pb_in", length);
 	if (!result)
@@ -2472,8 +2472,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_T_pb_in_aget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_T_pb_out_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_pb_out_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_pb_out", length);
 	if (!result)
@@ -2484,8 +2484,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_T_pb_out_aget(SAM_TcslinearFresne
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_cool_par_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_cool_par_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_cool_par", length);
 	if (!result)
@@ -2496,8 +2496,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_cool_par_aget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_cycle_gross_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_cycle_gross_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_cycle_gross", length);
 	if (!result)
@@ -2508,8 +2508,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_cycle_gross_aget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_dot_aux_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_aux_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_aux", length);
 	if (!result)
@@ -2520,8 +2520,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_dot_aux_aget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_dot_bop_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_bop_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_bop", length);
 	if (!result)
@@ -2532,8 +2532,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_dot_bop_aget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_dot_col_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_col_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_col", length);
 	if (!result)
@@ -2544,8 +2544,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_dot_col_aget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_dot_fixed_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_fixed_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_fixed", length);
 	if (!result)
@@ -2556,8 +2556,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_dot_fixed_aget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_dot_pump_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_pump_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_pump", length);
 	if (!result)
@@ -2568,8 +2568,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_dot_pump_aget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_net_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_net_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_net", length);
 	if (!result)
@@ -2580,8 +2580,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_W_net_aget(SAM_TcslinearFresnel p
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Outputs_annual_W_cycle_gross_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_W_cycle_gross_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_W_cycle_gross", &result))
 		make_access_error("SAM_TcslinearFresnel", "annual_W_cycle_gross");
@@ -2591,8 +2591,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Outputs_annual_W_cycle_gross_fget(SAM_Tcsl
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Outputs_annual_energy_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_energy_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
 		make_access_error("SAM_TcslinearFresnel", "annual_energy");
@@ -2602,8 +2602,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Outputs_annual_energy_fget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Outputs_annual_fuel_usage_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_fuel_usage_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
 		make_access_error("SAM_TcslinearFresnel", "annual_fuel_usage");
@@ -2613,8 +2613,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Outputs_annual_fuel_usage_fget(SAM_Tcsline
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Outputs_annual_total_water_use_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_total_water_use_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_total_water_use", &result))
 		make_access_error("SAM_TcslinearFresnel", "annual_total_water_use");
@@ -2624,8 +2624,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Outputs_annual_total_water_use_fget(SAM_Tc
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_beam_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_beam_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "beam", length);
 	if (!result)
@@ -2636,8 +2636,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_beam_aget(SAM_TcslinearFresnel pt
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Outputs_capacity_factor_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Outputs_capacity_factor_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
 		make_access_error("SAM_TcslinearFresnel", "capacity_factor");
@@ -2647,8 +2647,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Outputs_capacity_factor_fget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Outputs_conversion_factor_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Outputs_conversion_factor_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "conversion_factor", &result))
 		make_access_error("SAM_TcslinearFresnel", "conversion_factor");
@@ -2658,8 +2658,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Outputs_conversion_factor_fget(SAM_Tcsline
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_dP_tot_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_dP_tot_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dP_tot", length);
 	if (!result)
@@ -2670,8 +2670,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_dP_tot_aget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_defocus_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_defocus_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "defocus", length);
 	if (!result)
@@ -2682,8 +2682,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_defocus_aget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_eta_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta", length);
 	if (!result)
@@ -2694,8 +2694,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_eta_aget(SAM_TcslinearFresnel ptr
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_eta_opt_ave_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_opt_ave_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_opt_ave", length);
 	if (!result)
@@ -2706,8 +2706,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_eta_opt_ave_aget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_eta_sf_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_sf_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_sf", length);
 	if (!result)
@@ -2718,8 +2718,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_eta_sf_aget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_eta_thermal_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_thermal_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_thermal", length);
 	if (!result)
@@ -2730,8 +2730,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_eta_thermal_aget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_f_bays_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_f_bays_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "f_bays", length);
 	if (!result)
@@ -2742,8 +2742,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_f_bays_aget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_gen_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_gen_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
@@ -2754,8 +2754,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_gen_aget(SAM_TcslinearFresnel ptr
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_hour_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_hour_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hour", length);
 	if (!result)
@@ -2766,8 +2766,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_hour_aget(SAM_TcslinearFresnel pt
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Outputs_kwh_per_kw_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Outputs_kwh_per_kw_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
 		make_access_error("SAM_TcslinearFresnel", "kwh_per_kw");
@@ -2777,8 +2777,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Outputs_kwh_per_kw_fget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot", length);
 	if (!result)
@@ -2789,8 +2789,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_aget(SAM_TcslinearFresnel p
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_aux_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_aux_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot_aux", length);
 	if (!result)
@@ -2801,8 +2801,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_aux_aget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_b_tot_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_b_tot_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot_b_tot", length);
 	if (!result)
@@ -2813,8 +2813,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_b_tot_aget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_field_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_field_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot_field", length);
 	if (!result)
@@ -2825,8 +2825,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_field_aget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_makeup_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_makeup_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot_makeup", length);
 	if (!result)
@@ -2837,8 +2837,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_makeup_aget(SAM_TcslinearFr
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_to_pb_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_to_pb_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot_to_pb", length);
 	if (!result)
@@ -2849,8 +2849,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_m_dot_to_pb_aget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_month_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_month_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "month", length);
 	if (!result)
@@ -2861,8 +2861,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_month_aget(SAM_TcslinearFresnel p
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_monthly_energy_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_monthly_energy_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_energy", length);
 	if (!result)
@@ -2873,8 +2873,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_monthly_energy_aget(SAM_Tcslinear
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_pres_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_pres_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pres", length);
 	if (!result)
@@ -2885,8 +2885,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_pres_aget(SAM_TcslinearFresnel pt
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_aux_fluid_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_aux_fluid_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_aux_fluid", length);
 	if (!result)
@@ -2897,8 +2897,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_aux_fluid_aget(SAM_TcslinearFre
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_aux_fuel_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_aux_fuel_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_aux_fuel", length);
 	if (!result)
@@ -2909,8 +2909,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_aux_fuel_aget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_dump_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_dump_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_dump", length);
 	if (!result)
@@ -2921,8 +2921,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_dump_aget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_field_delivered_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_field_delivered_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_field_delivered", length);
 	if (!result)
@@ -2933,8 +2933,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_field_delivered_aget(SAM_Tcslin
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_inc_tot_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_inc_tot_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_inc_tot", length);
 	if (!result)
@@ -2945,8 +2945,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_inc_tot_aget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_loss_piping_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_loss_piping_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_loss_piping", length);
 	if (!result)
@@ -2957,8 +2957,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_loss_piping_aget(SAM_TcslinearF
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_loss_rec_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_loss_rec_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_loss_rec", length);
 	if (!result)
@@ -2969,8 +2969,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_loss_rec_aget(SAM_TcslinearFres
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_loss_sf_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_loss_sf_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_loss_sf", length);
 	if (!result)
@@ -2981,8 +2981,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_loss_sf_aget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_to_pb_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_to_pb_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_to_pb", length);
 	if (!result)
@@ -2993,8 +2993,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_q_to_pb_aget(SAM_TcslinearFresnel
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_solazi_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_solazi_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "solazi", length);
 	if (!result)
@@ -3005,8 +3005,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_solazi_aget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_solzen_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_solzen_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "solzen", length);
 	if (!result)
@@ -3017,8 +3017,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_solzen_aget(SAM_TcslinearFresnel 
 
 
 
-SAM_EXPORT float SAM_TcslinearFresnel_Outputs_system_heat_rate_fget(SAM_TcslinearFresnel ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_TcslinearFresnel_Outputs_system_heat_rate_nget(SAM_TcslinearFresnel ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_heat_rate", &result))
 		make_access_error("SAM_TcslinearFresnel", "system_heat_rate");
@@ -3028,8 +3028,8 @@ SAM_EXPORT float SAM_TcslinearFresnel_Outputs_system_heat_rate_fget(SAM_Tcslinea
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_tdry_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_tdry_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tdry", length);
 	if (!result)
@@ -3040,8 +3040,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_tdry_aget(SAM_TcslinearFresnel pt
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_tou_value_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_tou_value_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tou_value", length);
 	if (!result)
@@ -3052,8 +3052,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_tou_value_aget(SAM_TcslinearFresn
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_twet_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_twet_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "twet", length);
 	if (!result)
@@ -3064,8 +3064,8 @@ SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_twet_aget(SAM_TcslinearFresnel pt
 
 
 
-SAM_EXPORT float* SAM_TcslinearFresnel_Outputs_wspd_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_wspd_aget(SAM_TcslinearFresnel ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wspd", length);
 	if (!result)
