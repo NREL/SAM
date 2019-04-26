@@ -177,10 +177,11 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                    "static PyMethodDef " << module_symbol << "_methods[] = {\n"
                    "\t\t{\"assign\",            (PyCFunction)"
                 << module_symbol << "_assign,  METH_VARARGS,\n"
-                   "\t\t\tPyDoc_STR(\"assign() -> None\\n Assign attributes from dictionary\")},\n"
+                   "\t\t\tPyDoc_STR(\"assign() -> None\\n Assign attributes from dictionary\\n\\n"
+                   "``" << module_symbol << "_vals = { var: val, ...}``\")},\n"
                    "\t\t{\"export\",            (PyCFunction)" << module_symbol
                 << "_export,  METH_VARARGS,\n"
-                   "\t\t\tPyDoc_STR(\"export() -> None\\n Export attributes into dictionary\")},\n"
+                   "\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into dictionary\")},\n"
                    "\t\t{NULL,              NULL}           /* sentinel */\n"
                    "};\n\n";
 
@@ -300,12 +301,13 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
 
             // make the PyGetSetDef struct
 
-            std::vector<std::string> ssctype_str = {"None", "Str", "Float", "Sequence", "Sequence[Sequence]", "Dict"};
+            std::vector<std::string> ssctype_str = {"None", "str", "float", "sequence", "sequence[sequence]", "dict"};
 
-            std::string doc = "type: " + ssctype_str[vd.type_n] + "\\n\\n" + vd.doc;
+            std::string doc = "*" + ssctype_str[vd.type_n] + "*";
+            if (vd.doc.length() > 0)
+                doc += ": " + vd.doc;
 
             fx_file << "{\"" << var_symbol << "\", (getter)" << module_symbol << "_get_" << var_symbol << ",";
-
 
             if (output)
                 fx_file << "(setter)0,\n";
@@ -512,9 +514,11 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\t\t{\"execute\",            (PyCFunction)" << tech_symbol << "_execute,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"execute(int verbosity) -> None\\n Execute simulation with verbosity level 0 (default) or 1\")},\n"
                "\t\t{\"assign\",            (PyCFunction)" << tech_symbol << "_assign,  METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from nested dictionary, except for Outputs\")},\n"
+               "\t\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from nested dictionary, except for Outputs\\n\\n"
+               "``nested_dict = { '" << root->vardefs_order[0] << "': { var: val, ...}, ...}``"
+               "\")},\n"
                "\t\t{\"export\",            (PyCFunction)" << tech_symbol << "_export,  METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"export() -> None\\n Export attributes into dictionary\")},\n"
+               "\t\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into nested dictionary\")},\n"
                "\t\t{NULL,              NULL}           /* sentinel */\n"
                "};\n"
                "\n"
@@ -531,8 +535,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "}\n\n";
     
     // define technology type
-    std::string cmod_doc = "\"Wrapper for `cmod_" + cmod;
-    cmod_doc += ".cpp <https://github.com/NREL/ssc/blob/develop/ssc/cmod_" + cmod + ".cpp>`_\"";
+
     fx_file << "static PyTypeObject " << tech_symbol << "_Type = {\n"
                "\t\t/* The ob_type field must be initialized in the module init function\n"
                "\t\t * to be portable to Windows without using C++. */\n"
@@ -557,7 +560,9 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\t\t0,                          /*tp_setattro*/\n"
                "\t\t0,                          /*tp_as_buffer*/\n"
                "\t\tPy_TPFLAGS_DEFAULT,         /*tp_flags*/\n"
-               "\t\t" << cmod_doc << ",        /*tp_doc*/\n"
+               "\t\t\"This class contains all the variable information for running a simulation. Variables are grouped"
+               " together in the subclasses as properties. If property assignments are the wrong type, an error is thrown."
+               "\",        /*tp_doc*/\n"
                "\t\t0,                          /*tp_traverse*/\n"
                "\t\t0,                          /*tp_clear*/\n"
                "\t\t0,                          /*tp_richcompare*/\n"
@@ -641,13 +646,13 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
                "\n"
                "static PyMethodDef " << tech_symbol << "Module_methods[] = {\n"
                "\t\t{\"new\",             " << tech_symbol << "_new,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"new() -> new " << tech_symbol << " object\")},\n"
+               "\t\t\t\tPyDoc_STR(\"new() -> " << tech_symbol << "\")},\n"
                "\t\t{\"default\",             " << tech_symbol << "_default,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"default(config) -> new " << tech_symbol << " object with financial model-specific default attributes\\n\"\n"
+               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nUse financial model-specific default attributes\\n\"\n"
                                                                                   "\t\t\t\t\"" << all_options_of_cmod(cmod_symbol, config_name) << "\")},\n"
                "\t\t{\"wrap\",             " << tech_symbol << "_wrap,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> new " << tech_symbol << " object around existing PySSC data, taking over memory ownership\\n\\n.. warning::\\n\\n"
-                                                                                "\tDo not call PySSC.data_free on the ssc_data_t provided to `wrap`\")},\n"
+               "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> " << tech_symbol << "\\n\\nUse existing PySSC data\\n\\n.. warning::\\n\\n"
+                                                                                "\tDo not call PySSC.data_free on the ssc_data_t provided to ``wrap``\")},\n"
                "\t\t{NULL,              NULL}           /* sentinel */\n"
                "};\n"
                "\n"
@@ -751,22 +756,32 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
 
     fx_file.close();
 
+    // export .rst documentation files for sphinx
+
     fx_file.open(file_dir + "/PySAM-doc/" + tech_symbol + ".rst");
     assert(fx_file.is_open());
 
-    fx_file << cmod_symbol << " Module\n**************************\n\n";
+    fx_file << ".. _" << tech_symbol << ":\n\n";
+
+    fx_file << cmod_symbol << "\n**************************\n\n";
+
+    std::string cmod_doc = "Wrapper for SAM Simulation Core model: `cmod_" + cmod;
+    cmod_doc += ".cpp <https://github.com/NREL/ssc/blob/develop/ssc/cmod_" + util::lower_case(cmod) + ".cpp>`_\n\n";
+
+    fx_file << cmod_doc;
 
     fx_file << "Creating an Instance\n=========================\n\n"
-               "There are three methods to create a new instance of a PySAM module. Using `default` populates the new"
-               "class' attributes with default values specific to a `config`. Each technology-financial"
-               "configuration corresponds to a SAM GUI configuration. Using `new` creates an instance with empty "
-               "attributes. The `wrap` function allows compatibility with PySSC, for details, refer to :ref:`PySSC`\n\n";
+               "There are three methods to create a new instance of a PySAM module. Using ``default`` populates the new"
+               "class' attributes with default values specific to a ``config``. Each technology-financial"
+               "configuration corresponds to a SAM GUI configuration. Using ``new`` creates an instance with empty "
+               "attributes. The ``wrap`` function allows compatibility with PySSC, for details, refer to :doc:`../PySSC`.\n\n"
+               "**" << tech_symbol << " model description**\n\n";
 
-    fx_file << ".. automodule:: PySAM." << cmod_symbol << "\n";
+    fx_file << ".. automodule:: PySAM." << tech_symbol << "\n";
     fx_file << "\t:members:\n\n";
 
     fx_file << "Functions\n=========================\n\n"
-               ".. automodule:: PySAM." << cmod_symbol << "." << cmod_symbol << "\n\t:members:\n\n";
+               ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "\n\t:members:\n\n";
 
     for (size_t i = 0; i < root->vardefs_order.size() ; i++) {
         auto mm = root->m_vardefs.find(root->vardefs_order[i]);
@@ -776,10 +791,75 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
         std::string name = module_symbol;
 
         fx_file << module_symbol << " Group\n==============\n\n";
-        fx_file << ".. autoclass:: PySAM." << cmod_symbol << "." << cmod_symbol << "." << module_symbol << "\n";
+        fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
         fx_file << "\t:members:\n\n";
     }
 
     fx_file.close();
 
+    // export .pyi stub files for static typing
+
+    fx_file.open(file_dir + "/PySAM-stubs/" + tech_symbol + ".pyi");
+    assert(fx_file.is_open());
+
+    for (size_t i = 0; i < root->vardefs_order.size(); i++) {
+        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+        std::map<std::string, var_def> vardefs = mm->second;
+
+        fx_file << "class " << mm->first << "(object):\n";
+        fx_file << "\tdef assign(self): \n"
+                   "\t\tpass\n"
+                   "\n"
+                   "\tdef export(self) -> Dict[Dict]\n"
+                   "\t\tpass\n"
+                   "\n"
+                   "\tdef __init__(self, *args, **kwargs): \n"
+                   "\t\tpass\n\n";
+
+        std::vector<std::string> statictype_str = {"None", "str", "float", "tuple", "tuple", "dict"};
+
+        for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
+            std::string var_symbol = it->first;
+            fx_file << "\t" << var_symbol << " = " << statictype_str[it->second.type_n] << "\n";
+        }
+        fx_file << "\n\n";
+    }
+
+    fx_file << "class " << tech_symbol << "(object):\n";
+    fx_file << "\tdef assign(self, dict):\n"
+               "\t\tpass\n"
+               "\n"
+               "\tdef execute(self, int_verbosity):\n"
+               "\t\tpass\n"
+               "\n"
+               "\tdef export(self):\n"
+               "\t\tpass\n"
+               "\n"
+               "\tdef __getattribute__(self, *args, **kwargs):\n"
+               "\t\tpass\n"
+               "\n"
+               "\tdef __init__(self, *args, **kwargs):\n"
+               "\t\tpass\n\n";
+
+    for (size_t i = 0; i < root->vardefs_order.size(); i++) {
+        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+        std::map<std::string, var_def> vardefs = mm->second;
+
+        fx_file << "\t" << mm->first << " = " << mm->first << "\n";
+    }
+    fx_file << "\n\n";
+
+    fx_file << "def default(config) -> " << tech_symbol <<"\n"
+               "\tpass\n"
+               "\n"
+               "def new() -> " << tech_symbol << "\n"
+               "\tpass\n"
+               "\n"
+               "def wrap(ssc_data_t) -> " << tech_symbol << "\n"
+               "\tpass\n"
+               "\n"
+               "__loader__ = None \n"
+               "\n"
+               "__spec__ = None\n";
+    fx_file.close();
 }

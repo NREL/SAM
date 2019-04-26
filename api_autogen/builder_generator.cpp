@@ -750,8 +750,8 @@ std::vector<std::string> builder_generator::get_evaluated_variables() {
 void builder_generator::create_all(std::string fp, std::string cmod) {
     filepath = fp;
 
-    bool print_json = true;
-    bool print_capi = true;
+    bool print_json = false;
+    bool print_capi = false;
     bool print_pysam = true;
 
     // gather functions before variables to add in ui-only variables that may be skipped in subgraph
