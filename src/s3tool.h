@@ -206,7 +206,7 @@ public:
 		std::vector<int> ids;
 
 		// calculated
-		matrix_t<float> sfac;
+		matrix_t<double> sfac;
 		matrix_t<double> shaded, active;
 		matrix_t<size_t> nsurf;
 		matrix_t<double> aoisum;

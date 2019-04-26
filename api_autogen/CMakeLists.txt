@@ -77,23 +77,23 @@ else()
     unset(SSC_LIB CACHE)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         find_library( LK_LIB
-                NAMES lkd.a lkd.lib
+                NAMES lkd.a lkd.lib lkd.dylib
                 PATHS $ENV{LKDIR})
         find_library( WEX_LIB
-                NAMES wexd.a wexd.lib
+                NAMES wexd.a wexd.lib wexd.dylib
                 PATHS $ENV{WEXDIR})
         find_library( SSC_LIB
                 NAMES sscd.dylib sscd.so sscd.lib
                 PATHS $ENV{SSCDIR}/ssc)
     else()
         find_library( LK_LIB
-                NAMES lk.a lk.lib
+                NAMES lk.a lk.lib lk.dylib
                 PATHS $ENV{LKDIR})
         find_library( WEX_LIB
-                NAMES wex.a wex.lib
+                NAMES wex.a wex.lib wex.dylib
                 PATHS $ENV{WEXDIR})
         find_library(SSC_LIB
-                NAMES  ssc.dylib ssc.so ssc.lib
+                NAMES ssc.dylib ssc.so ssc.lib
                 PATHS $ENV{SSCDIR}/ssc)
     endif()
     target_link_libraries(export_config ${SSC_LIB} ${WEX_LIB} ${LK_LIB} ${wxWidgets_LIBRARIES})

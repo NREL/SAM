@@ -41,7 +41,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=50
 	 * required if: ?=30
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_analysis_period_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_analysis_period_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set debt_fraction: Debt percentage [%]
@@ -49,7 +49,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_debt_fraction_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_debt_fraction_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set federal_tax_rate: Federal income tax rate [%]
@@ -57,7 +57,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_federal_tax_rate_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_federal_tax_rate_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set inflation_rate: Inflation rate [%]
@@ -65,7 +65,7 @@ extern "C"
 	 * constraints: MIN=-99
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_inflation_rate_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_inflation_rate_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set insurance_rate: Insurance rate [%]
@@ -73,7 +73,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_insurance_rate_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_insurance_rate_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set loan_rate: Loan rate [%]
@@ -81,7 +81,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_loan_rate_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_loan_rate_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set loan_term: Loan term [years]
@@ -89,7 +89,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=50
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_loan_term_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_loan_term_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set prop_tax_assessed_decline: Assessed value annual decline [%]
@@ -97,7 +97,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=5
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_prop_tax_assessed_decline_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_prop_tax_assessed_decline_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set prop_tax_cost_assessed_percent: Percent of pre-financing costs assessed [%]
@@ -105,7 +105,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=95
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_prop_tax_cost_assessed_percent_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_prop_tax_cost_assessed_percent_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set property_tax_rate: Property tax rate [%]
@@ -113,7 +113,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_property_tax_rate_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_property_tax_rate_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set real_discount_rate: Real discount rate [%]
@@ -121,7 +121,7 @@ extern "C"
 	 * constraints: MIN=-99
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_real_discount_rate_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_real_discount_rate_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set state_tax_rate: State income tax rate [%]
@@ -129,7 +129,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_state_tax_rate_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_state_tax_rate_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set system_capacity: System nameplate capacity [kW]
@@ -137,7 +137,7 @@ extern "C"
 	 * constraints: POSITIVE
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_system_capacity_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_system_capacity_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set system_heat_rate: System heat rate [MMBTus/MWh]
@@ -145,7 +145,7 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_system_heat_rate_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_system_heat_rate_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 
 	//
@@ -153,12 +153,12 @@ extern "C"
 	//
 
 	/**
-	 * Set add_om_num_types: Number of O and M types []
+	 * Set add_om_num_types: Number of O and M types
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_add_om_num_types_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_add_om_num_types_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set annual_fuel_usage: Fuel usage [kWht]
@@ -166,7 +166,7 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_annual_fuel_usage_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_annual_fuel_usage_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_capacity: Capacity-based System Costs amount [$/kWcap]
@@ -174,7 +174,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_capacity1: Battery capacity-based System Costs amount [$/kWcap]
@@ -182,7 +182,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity1_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity1_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_capacity1_nameplate: Battery capacity for System Costs values [kW]
@@ -190,7 +190,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity1_nameplate_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity1_nameplate_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_capacity2: Fuel cell capacity-based System Costs amount [$/kWcap]
@@ -198,7 +198,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity2_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity2_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_capacity2_nameplate: Fuel cell capacity for System Costs values [kW]
@@ -206,7 +206,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity2_nameplate_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity2_nameplate_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_capacity_escal: Capacity-based System Costs escalation [%/year]
@@ -214,7 +214,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_fixed: Fixed System Costs annual amount [$/year]
@@ -222,7 +222,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fixed_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fixed_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_fixed1: Battery fixed System Costs annual amount [$/year]
@@ -230,7 +230,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fixed1_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fixed1_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_fixed2: Fuel cell fixed System Costs annual amount [$/year]
@@ -238,7 +238,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fixed2_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fixed2_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_fixed_escal: Fixed System Costs escalation [%/year]
@@ -246,7 +246,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fixed_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fixed_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_fuel_cost: Fuel cost [$/MMBtu]
@@ -254,7 +254,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fuel_cost_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fuel_cost_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_fuel_cost_escal: Fuel cost escalation [%/year]
@@ -262,7 +262,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fuel_cost_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fuel_cost_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_1_cost: Biomass feedstock cost [$/unit]
@@ -270,7 +270,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_1_cost_escal: Biomass feedstock cost escalation [%/year]
@@ -278,7 +278,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_1_usage: Biomass feedstock usage [unit]
@@ -286,7 +286,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_1_usage_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_1_usage_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_2_cost: Coal feedstock cost [$/unit]
@@ -294,7 +294,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_2_cost_escal: Coal feedstock cost escalation [%/year]
@@ -302,7 +302,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_2_usage: Coal feedstock usage [unit]
@@ -310,7 +310,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_2_usage_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_2_usage_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_production: Production-based System Costs amount [$/MWh]
@@ -318,7 +318,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production1: Battery production-based System Costs amount [$/MWh]
@@ -326,7 +326,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production1_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production1_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production1_values: Battery production for System Costs values [kWh]
@@ -334,7 +334,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production1_values_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production1_values_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production2: Fuel cell production-based System Costs amount [$/MWh]
@@ -342,7 +342,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production2_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production2_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production2_values: Fuel cell production for System Costs values [kWh]
@@ -350,7 +350,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production2_values_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production2_values_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production_escal: Production-based System Costs escalation [%/year]
@@ -358,7 +358,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_replacement_cost1: Repacement cost 1 [$/kWh]
@@ -366,7 +366,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_replacement_cost1_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_replacement_cost1_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_replacement_cost2: Repacement cost 2 [$/kW]
@@ -374,7 +374,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_replacement_cost2_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_replacement_cost2_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
@@ -382,7 +382,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_replacement_cost_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_replacement_cost_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 
 	//
@@ -395,7 +395,7 @@ extern "C"
 	 * constraints: None
 	 * required if: depr_fed_type=3
 	 */
-	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_fed_custom_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_fed_custom_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set depr_fed_sl_years: Federal depreciation straight-line Years [years]
@@ -403,15 +403,15 @@ extern "C"
 	 * constraints: INTEGER,POSITIVE
 	 * required if: depr_fed_type=2
 	 */
-	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_fed_sl_years_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_fed_sl_years_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
-	 * Set depr_fed_type: Federal depreciation type []
+	 * Set depr_fed_type: Federal depreciation type
 	 * options: 0=none,1=macrs_half_year,2=sl,3=custom
 	 * constraints: INTEGER,MIN=0,MAX=3
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_fed_type_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_fed_type_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_sta_custom: State custom depreciation [%/year]
@@ -419,7 +419,7 @@ extern "C"
 	 * constraints: None
 	 * required if: depr_sta_type=3
 	 */
-	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_sta_custom_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_sta_custom_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set depr_sta_sl_years: State depreciation straight-line years [years]
@@ -427,15 +427,15 @@ extern "C"
 	 * constraints: INTEGER,POSITIVE
 	 * required if: depr_sta_type=2
 	 */
-	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_sta_sl_years_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_sta_sl_years_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
-	 * Set depr_sta_type: State depreciation type []
+	 * Set depr_sta_type: State depreciation type
 	 * options: 0=none,1=macrs_half_year,2=sl,3=custom
 	 * constraints: INTEGER,MIN=0,MAX=3
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_sta_type_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Depreciation_depr_sta_type_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 
 	//
@@ -448,7 +448,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_amount_deprbas_fed: Federal amount-based ITC reduces federal depreciation basis [0/1]
@@ -456,7 +456,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_amount_deprbas_sta: Federal amount-based ITC reduces state depreciation basis [0/1]
@@ -464,7 +464,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_percent: Federal percentage-based ITC percent [%]
@@ -472,7 +472,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_percent_deprbas_fed: Federal percentage-based ITC reduces federal depreciation basis [0/1]
@@ -480,7 +480,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_percent_deprbas_sta: Federal percentage-based ITC reduces state depreciation basis [0/1]
@@ -488,7 +488,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_percent_maxvalue: Federal percentage-based ITC maximum value [$]
@@ -496,7 +496,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_maxvalue_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_maxvalue_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_amount: State amount-based ITC amount [$]
@@ -504,7 +504,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_amount_deprbas_fed: State amount-based ITC reduces federal depreciation basis [0/1]
@@ -512,7 +512,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_amount_deprbas_sta: State amount-based ITC reduces state depreciation basis [0/1]
@@ -520,7 +520,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_percent: State percentage-based ITC percent [%]
@@ -528,7 +528,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_percent_deprbas_fed: State percentage-based ITC reduces federal depreciation basis [0/1]
@@ -536,7 +536,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_percent_deprbas_sta: State percentage-based ITC reduces state depreciation basis [0/1]
@@ -544,7 +544,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_percent_maxvalue: State percentage-based ITC maximum Value [$]
@@ -552,7 +552,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_maxvalue_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_maxvalue_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ptc_fed_amount: Federal PTC amount [$/kWh]
@@ -560,7 +560,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_fed_amount_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_fed_amount_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set ptc_fed_escal: Federal PTC escalation [%/year]
@@ -568,7 +568,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_fed_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_fed_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ptc_fed_term: Federal PTC term [years]
@@ -576,7 +576,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=10
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_fed_term_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_fed_term_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ptc_sta_amount: State PTC amount [$/kWh]
@@ -584,7 +584,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_sta_amount_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_sta_amount_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set ptc_sta_escal: State PTC escalation [%/year]
@@ -592,7 +592,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_sta_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_sta_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ptc_sta_term: State PTC term [years]
@@ -600,7 +600,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=10
 	 */
-	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_sta_term_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_TaxCreditIncentives_ptc_sta_term_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 
 	//
@@ -613,7 +613,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_amount_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_amount_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_fed_deprbas_fed: Federal CBI reduces federal depreciation basis [0/1]
@@ -621,7 +621,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_fed_deprbas_sta: Federal CBI reduces state depreciation basis [0/1]
@@ -629,7 +629,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_fed_maxvalue: Federal CBI maximum [$]
@@ -637,7 +637,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_maxvalue_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_maxvalue_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_fed_tax_fed: Federal CBI federal taxable [0/1]
@@ -645,7 +645,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_fed_tax_sta: Federal CBI state taxable [0/1]
@@ -653,7 +653,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_fed_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_amount: Other CBI amount [$/Watt]
@@ -661,7 +661,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_amount_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_amount_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_deprbas_fed: Other CBI reduces federal depreciation basis [0/1]
@@ -669,7 +669,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_deprbas_sta: Other CBI reduces state depreciation basis [0/1]
@@ -677,7 +677,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_maxvalue: Other CBI maximum [$]
@@ -685,7 +685,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_maxvalue_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_maxvalue_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_tax_fed: Other CBI federal taxable [0/1]
@@ -693,7 +693,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_tax_sta: Other CBI state taxable [0/1]
@@ -701,7 +701,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_oth_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_amount: State CBI amount [$/Watt]
@@ -709,7 +709,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_amount_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_amount_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_deprbas_fed: State CBI reduces federal depreciation basis [0/1]
@@ -717,7 +717,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_deprbas_sta: State CBI reduces state depreciation basis [0/1]
@@ -725,7 +725,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_maxvalue: State CBI maximum [$]
@@ -733,7 +733,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_maxvalue_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_maxvalue_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_tax_fed: State CBI federal taxable [0/1]
@@ -741,7 +741,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_tax_sta: State CBI state taxable [0/1]
@@ -749,7 +749,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_sta_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_amount: Utility CBI amount [$/Watt]
@@ -757,7 +757,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_amount_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_amount_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_deprbas_fed: Utility CBI reduces federal depreciation basis [0/1]
@@ -765,7 +765,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_deprbas_sta: Utility CBI reduces state depreciation basis [0/1]
@@ -773,7 +773,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_maxvalue: Utility CBI maximum [$]
@@ -781,7 +781,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_maxvalue_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_maxvalue_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_tax_fed: Utility CBI federal taxable [0/1]
@@ -789,7 +789,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_tax_sta: Utility CBI state taxable [0/1]
@@ -797,7 +797,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_cbi_uti_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_amount: Federal amount-based IBI amount [$]
@@ -805,7 +805,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_amount_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_amount_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_amount_deprbas_fed: Federal amount-based IBI reduces federal depreciation basis [0/1]
@@ -813,7 +813,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_amount_deprbas_sta: Federal amount-based IBI reduces state depreciation basis [0/1]
@@ -821,7 +821,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_amount_tax_fed: Federal amount-based IBI federal taxable [0/1]
@@ -829,7 +829,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_amount_tax_sta: Federal amount-based IBI state taxable [0/1]
@@ -837,7 +837,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent: Federal percentage-based IBI percent [%]
@@ -845,7 +845,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent_deprbas_fed: Federal percentage-based IBI reduces federal depreciation basis [0/1]
@@ -853,7 +853,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent_deprbas_sta: Federal percentage-based IBI reduces state depreciation basis [0/1]
@@ -861,7 +861,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent_maxvalue: Federal percentage-based IBI maximum value [$]
@@ -869,7 +869,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_maxvalue_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_maxvalue_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent_tax_fed: Federal percentage-based IBI federal taxable [0/1]
@@ -877,7 +877,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent_tax_sta: Federal percentage-based IBI state taxable [0/1]
@@ -885,7 +885,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_amount: Other amount-based IBI amount [$]
@@ -893,7 +893,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_amount_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_amount_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_amount_deprbas_fed: Other amount-based IBI reduces federal depreciation basis [0/1]
@@ -901,7 +901,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_amount_deprbas_sta: Other amount-based IBI reduces state depreciation basis [0/1]
@@ -909,7 +909,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_amount_tax_fed: Other amount-based IBI federal taxable [0/1]
@@ -917,7 +917,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_amount_tax_sta: Other amount-based IBI state taxable [0/1]
@@ -925,7 +925,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent: Other percentage-based IBI percent [%]
@@ -933,7 +933,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent_deprbas_fed: Other percentage-based IBI reduces federal depreciation basis [0/1]
@@ -941,7 +941,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent_deprbas_sta: Other percentage-based IBI reduces state depreciation basis [0/1]
@@ -949,7 +949,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent_maxvalue: Other percentage-based IBI maximum value [$]
@@ -957,7 +957,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_maxvalue_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_maxvalue_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent_tax_fed: Other percentage-based IBI federal taxable [0/1]
@@ -965,7 +965,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent_tax_sta: Other percentage-based IBI state taxable [0/1]
@@ -973,7 +973,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_amount: State amount-based IBI amount [$]
@@ -981,7 +981,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_amount_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_amount_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_amount_deprbas_fed: State amount-based IBI reduces federal depreciation basis [0/1]
@@ -989,7 +989,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_amount_deprbas_sta: State amount-based IBI reduces state depreciation basis [0/1]
@@ -997,7 +997,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_amount_tax_fed: State amount-based IBI federal taxable [0/1]
@@ -1005,7 +1005,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_amount_tax_sta: State amount-based IBI state taxable [0/1]
@@ -1013,7 +1013,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent: State percentage-based IBI percent [%]
@@ -1021,7 +1021,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent_deprbas_fed: State percentage-based IBI reduces federal depreciation basis [0/1]
@@ -1029,7 +1029,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent_deprbas_sta: State percentage-based IBI reduces state depreciation basis [0/1]
@@ -1037,7 +1037,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent_maxvalue: State percentage-based IBI maximum value [$]
@@ -1045,7 +1045,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_maxvalue_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_maxvalue_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent_tax_fed: State percentage-based IBI federal taxable [0/1]
@@ -1053,7 +1053,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent_tax_sta: State percentage-based IBI state taxable [0/1]
@@ -1061,7 +1061,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_amount: Utility amount-based IBI amount [$]
@@ -1069,7 +1069,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_amount_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_amount_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_amount_deprbas_fed: Utility amount-based IBI reduces federal depreciation basis [0/1]
@@ -1077,7 +1077,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_amount_deprbas_sta: Utility amount-based IBI reduces state depreciation basis [0/1]
@@ -1085,7 +1085,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_amount_tax_fed: Utility amount-based IBI federal taxable [0/1]
@@ -1093,7 +1093,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_amount_tax_sta: Utility amount-based IBI state taxable [0/1]
@@ -1101,7 +1101,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent: Utility percentage-based IBI percent [%]
@@ -1109,7 +1109,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent_deprbas_fed: Utility percentage-based IBI reduces federal depreciation basis [0/1]
@@ -1117,7 +1117,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent_deprbas_sta: Utility percentage-based IBI reduces state depreciation basis [0/1]
@@ -1125,7 +1125,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent_maxvalue: Utility percentage-based IBI maximum value [$]
@@ -1133,7 +1133,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_maxvalue_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_maxvalue_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent_tax_fed: Utility percentage-based IBI federal taxable [0/1]
@@ -1141,7 +1141,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent_tax_sta: Utility percentage-based IBI state taxable [0/1]
@@ -1149,7 +1149,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_fed_amount: Federal PBI amount [$/kWh]
@@ -1157,7 +1157,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_fed_amount_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_fed_amount_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set pbi_fed_escal: Federal PBI escalation [%]
@@ -1165,7 +1165,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_fed_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_fed_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_fed_tax_fed: Federal PBI federal taxable [0/1]
@@ -1173,7 +1173,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_fed_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_fed_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_fed_tax_sta: Federal PBI state taxable [0/1]
@@ -1181,7 +1181,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_fed_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_fed_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_fed_term: Federal PBI term [years]
@@ -1189,7 +1189,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_fed_term_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_fed_term_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_amount: Other PBI amount [$/kWh]
@@ -1197,7 +1197,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_oth_amount_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_oth_amount_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_escal: Other PBI escalation [%]
@@ -1205,7 +1205,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_oth_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_oth_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_tax_fed: Other PBI federal taxable [0/1]
@@ -1213,7 +1213,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_oth_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_oth_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_tax_sta: Other PBI state taxable [0/1]
@@ -1221,7 +1221,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_oth_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_oth_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_term: Other PBI term [years]
@@ -1229,7 +1229,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_oth_term_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_oth_term_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_sta_amount: State PBI amount [$/kWh]
@@ -1237,7 +1237,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_sta_amount_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_sta_amount_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set pbi_sta_escal: State PBI escalation [%]
@@ -1245,7 +1245,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_sta_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_sta_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_sta_tax_fed: State PBI federal taxable [0/1]
@@ -1253,7 +1253,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_sta_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_sta_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_sta_tax_sta: State PBI state taxable [0/1]
@@ -1261,7 +1261,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_sta_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_sta_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_sta_term: State PBI term [years]
@@ -1269,7 +1269,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_sta_term_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_sta_term_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_uti_amount: Utility PBI amount [$/kWh]
@@ -1277,7 +1277,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_uti_amount_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_uti_amount_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set pbi_uti_escal: Utility PBI escalation [%]
@@ -1285,7 +1285,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_uti_escal_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_uti_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_uti_tax_fed: Utility PBI federal taxable [0/1]
@@ -1293,7 +1293,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_uti_tax_fed_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_uti_tax_fed_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_uti_tax_sta: Utility PBI state taxable [0/1]
@@ -1301,7 +1301,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_uti_tax_sta_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_uti_tax_sta_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_uti_term: Utility PBI term [years]
@@ -1309,7 +1309,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_uti_term_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_PaymentIncentives_pbi_uti_term_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 
 	//
@@ -1322,7 +1322,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_batt_bank_replacement_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Battery_batt_bank_replacement_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set batt_computed_bank_capacity: Battery bank capacity [kWh]
@@ -1330,7 +1330,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_batt_computed_bank_capacity_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Battery_batt_computed_bank_capacity_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_replacement_option: Enable battery replacement? [0=none,1=capacity based,2=user schedule]
@@ -1338,7 +1338,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_batt_replacement_option_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Battery_batt_replacement_option_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_replacement_schedule: Battery bank replacements per year (user specified) [number/year]
@@ -1346,7 +1346,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_batt_replacement_schedule_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Battery_batt_replacement_schedule_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set battery_per_kWh: Battery cost [$/kWh]
@@ -1354,7 +1354,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_battery_per_kWh_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Battery_battery_per_kWh_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set en_batt: Enable battery storage model [0/1]
@@ -1362,7 +1362,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_en_batt_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Battery_en_batt_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 
 	//
@@ -1375,7 +1375,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_FuelCell_en_fuelcell_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FuelCell_en_fuelcell_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set fuelcell_computed_bank_capacity: Fuel cell capacity [kWh]
@@ -1383,7 +1383,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_computed_bank_capacity_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_computed_bank_capacity_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set fuelcell_per_kWh: Fuel cell cost [$/kWh]
@@ -1391,7 +1391,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_per_kWh_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_per_kWh_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set fuelcell_replacement: Fuel cell replacements per year [number/year]
@@ -1399,7 +1399,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_replacement_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_replacement_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set fuelcell_replacement_option: Enable fuel cell replacement? [0=none,1=capacity based,2=user schedule]
@@ -1407,7 +1407,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_replacement_option_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_replacement_option_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set fuelcell_replacement_schedule: Fuel cell replacements per year (user specified) [number/year]
@@ -1415,7 +1415,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_replacement_schedule_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_replacement_schedule_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -1428,7 +1428,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Cashloan_Cashloan_annual_energy_value_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Cashloan_annual_energy_value_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set annual_themal_value: Energy value [$]
@@ -1436,7 +1436,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_Cashloan_annual_themal_value_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Cashloan_annual_themal_value_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set market: Residential or Commercial Market [0/1]
@@ -1444,7 +1444,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Cashloan_Cashloan_market_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Cashloan_market_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mortgage: Use mortgage style loan (res. only) [0/1]
@@ -1452,7 +1452,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Cashloan_Cashloan_mortgage_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Cashloan_mortgage_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set salvage_percentage: Salvage value percentage [%]
@@ -1460,7 +1460,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Cashloan_Cashloan_salvage_percentage_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Cashloan_salvage_percentage_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
 	 * Set total_installed_cost: Total installed cost [$]
@@ -1468,24 +1468,11 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Cashloan_Cashloan_total_installed_cost_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Cashloan_total_installed_cost_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 
 	//
-	// Common parameters
-	//
-
-	/**
-	 * Set gen: Power generated by renewable resource [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Cashloan_Common_gen_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
-
-
-	//
-	// AnnualOutput parameters
+	// SystemOutput parameters
 	//
 
 	/**
@@ -1494,7 +1481,20 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Cashloan_AnnualOutput_degradation_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemOutput_degradation_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set gen: Power generated by renewable resource [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Cashloan_SystemOutput_gen_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// Lifetime parameters
+	//
 
 	/**
 	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
@@ -1502,11 +1502,11 @@ extern "C"
 	 * constraints: INTEGER,MIN=0
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Cashloan_AnnualOutput_system_use_lifetime_output_fset(SAM_Cashloan ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_Lifetime_system_use_lifetime_output_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 
 	//
-	// Thirdpartyownership parameters
+	// ThirdPartyOwnership parameters
 	//
 
 	/**
@@ -1515,7 +1515,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Cashloan_Thirdpartyownership_elec_cost_with_system_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_ThirdPartyOwnership_elec_cost_with_system_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set elec_cost_without_system: Energy value [$]
@@ -1523,625 +1523,625 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Cashloan_Thirdpartyownership_elec_cost_without_system_aset(SAM_Cashloan ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_ThirdPartyOwnership_elec_cost_without_system_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 
 	/**
 	 * FinancialParameters Getters
 	 */
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_analysis_period_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_analysis_period_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_debt_fraction_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_debt_fraction_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_FinancialParameters_federal_tax_rate_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_FinancialParameters_federal_tax_rate_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_inflation_rate_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_inflation_rate_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_insurance_rate_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_insurance_rate_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_loan_rate_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_loan_rate_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_loan_term_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_loan_term_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_prop_tax_assessed_decline_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_prop_tax_assessed_decline_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_prop_tax_cost_assessed_percent_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_prop_tax_cost_assessed_percent_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_property_tax_rate_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_property_tax_rate_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_real_discount_rate_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_real_discount_rate_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_FinancialParameters_state_tax_rate_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_FinancialParameters_state_tax_rate_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_system_capacity_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_system_capacity_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FinancialParameters_system_heat_rate_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_system_heat_rate_nget(SAM_Cashloan ptr, SAM_error *err);
 
 
 	/**
 	 * SystemCosts Getters
 	 */
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_add_om_num_types_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_add_om_num_types_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_annual_fuel_usage_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_annual_fuel_usage_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_capacity_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_capacity_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_capacity1_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_capacity1_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_om_capacity1_nameplate_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_capacity1_nameplate_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_capacity2_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_capacity2_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_om_capacity2_nameplate_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_capacity2_nameplate_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_om_capacity_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_capacity_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_fixed_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fixed_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_fixed1_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fixed1_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_fixed2_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fixed2_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_om_fixed_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_fixed_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_fuel_cost_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fuel_cost_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_om_fuel_cost_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_fuel_cost_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_om_opt_fuel_1_usage_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_1_usage_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_om_opt_fuel_2_usage_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_2_usage_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_production_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_production_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_production1_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_production1_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_production1_values_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_production1_values_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_production2_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_production2_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_production2_values_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_production2_values_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_om_production_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_production_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_replacement_cost1_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_replacement_cost1_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_SystemCosts_om_replacement_cost2_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_replacement_cost2_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_SystemCosts_om_replacement_cost_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_replacement_cost_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
 
 	/**
 	 * Depreciation Getters
 	 */
 
-	SAM_EXPORT float* SAM_Cashloan_Depreciation_depr_fed_custom_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Depreciation_depr_fed_custom_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Depreciation_depr_fed_sl_years_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Depreciation_depr_fed_sl_years_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Depreciation_depr_fed_type_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Depreciation_depr_fed_type_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Depreciation_depr_sta_custom_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Depreciation_depr_sta_custom_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Depreciation_depr_sta_sl_years_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Depreciation_depr_sta_sl_years_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Depreciation_depr_sta_type_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Depreciation_depr_sta_type_nget(SAM_Cashloan ptr, SAM_error *err);
 
 
 	/**
 	 * TaxCreditIncentives Getters
 	 */
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_maxvalue_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_maxvalue_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_maxvalue_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_maxvalue_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_TaxCreditIncentives_ptc_fed_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_ptc_fed_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_ptc_fed_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_fed_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_ptc_fed_term_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_fed_term_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_TaxCreditIncentives_ptc_sta_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_ptc_sta_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_ptc_sta_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_sta_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_TaxCreditIncentives_ptc_sta_term_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_sta_term_nget(SAM_Cashloan ptr, SAM_error *err);
 
 
 	/**
 	 * PaymentIncentives Getters
 	 */
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_fed_amount_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_amount_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_fed_maxvalue_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_fed_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_fed_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_oth_amount_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_amount_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_oth_maxvalue_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_oth_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_oth_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_sta_amount_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_amount_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_sta_maxvalue_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_sta_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_sta_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_uti_amount_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_amount_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_uti_maxvalue_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_uti_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_cbi_uti_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_fed_amount_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_fed_percent_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_fed_percent_maxvalue_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_maxvalue_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_oth_amount_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_oth_percent_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_oth_percent_maxvalue_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_maxvalue_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_sta_amount_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_sta_percent_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_sta_percent_maxvalue_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_maxvalue_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_uti_amount_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_uti_percent_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_uti_percent_maxvalue_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_maxvalue_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_PaymentIncentives_pbi_fed_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_fed_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_fed_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_fed_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_fed_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_fed_term_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_term_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_PaymentIncentives_pbi_oth_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_oth_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_oth_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_oth_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_oth_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_oth_term_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_term_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_PaymentIncentives_pbi_sta_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_sta_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_sta_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_sta_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_sta_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_sta_term_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_term_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_PaymentIncentives_pbi_uti_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_uti_amount_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_uti_escal_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_escal_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_uti_tax_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_uti_tax_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_PaymentIncentives_pbi_uti_term_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_term_nget(SAM_Cashloan ptr, SAM_error *err);
 
 
 	/**
 	 * Battery Getters
 	 */
 
-	SAM_EXPORT float* SAM_Cashloan_Battery_batt_bank_replacement_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Battery_batt_bank_replacement_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Battery_batt_computed_bank_capacity_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Battery_batt_computed_bank_capacity_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Battery_batt_replacement_option_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Battery_batt_replacement_option_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Battery_batt_replacement_schedule_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Battery_batt_replacement_schedule_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Battery_battery_per_kWh_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Battery_battery_per_kWh_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Battery_en_batt_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Battery_en_batt_nget(SAM_Cashloan ptr, SAM_error *err);
 
 
 	/**
 	 * FuelCell Getters
 	 */
 
-	SAM_EXPORT float SAM_Cashloan_FuelCell_en_fuelcell_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FuelCell_en_fuelcell_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FuelCell_fuelcell_computed_bank_capacity_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_computed_bank_capacity_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FuelCell_fuelcell_per_kWh_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_per_kWh_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_FuelCell_fuelcell_replacement_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_replacement_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_FuelCell_fuelcell_replacement_option_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_replacement_option_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_FuelCell_fuelcell_replacement_schedule_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_replacement_schedule_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
 
 	/**
 	 * Cashloan Getters
 	 */
 
-	SAM_EXPORT float* SAM_Cashloan_Cashloan_annual_energy_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Cashloan_annual_energy_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Cashloan_annual_themal_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Cashloan_annual_themal_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Cashloan_market_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Cashloan_market_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Cashloan_mortgage_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Cashloan_mortgage_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Cashloan_salvage_percentage_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Cashloan_salvage_percentage_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Cashloan_total_installed_cost_fget(SAM_Cashloan ptr, SAM_error *err);
-
-
-	/**
-	 * Common Getters
-	 */
-
-	SAM_EXPORT float* SAM_Cashloan_Common_gen_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Cashloan_total_installed_cost_nget(SAM_Cashloan ptr, SAM_error *err);
 
 
 	/**
-	 * AnnualOutput Getters
+	 * SystemOutput Getters
 	 */
 
-	SAM_EXPORT float* SAM_Cashloan_AnnualOutput_degradation_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemOutput_degradation_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_AnnualOutput_system_use_lifetime_output_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemOutput_gen_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
 
 	/**
-	 * Thirdpartyownership Getters
+	 * Lifetime Getters
 	 */
 
-	SAM_EXPORT float* SAM_Cashloan_Thirdpartyownership_elec_cost_with_system_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Lifetime_system_use_lifetime_output_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Thirdpartyownership_elec_cost_without_system_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+
+	/**
+	 * ThirdPartyOwnership Getters
+	 */
+
+	SAM_EXPORT double* SAM_Cashloan_ThirdPartyOwnership_elec_cost_with_system_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_ThirdPartyOwnership_elec_cost_without_system_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_adjusted_installed_cost_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_adjusted_installed_cost_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_cbi_total_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_cbi_total_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_cbi_total_oth_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_oth_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_cbi_total_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_cbi_total_uti_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_uti_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_after_tax_cash_flow_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_after_tax_cash_flow_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_after_tax_net_equity_cost_flow_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_after_tax_net_equity_cost_flow_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_battery_replacement_cost_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_battery_replacement_cost_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_cumulative_payback_with_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_cumulative_payback_with_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_cumulative_payback_without_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_cumulative_payback_without_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_debt_balance_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_balance_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_debt_payment_interest_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_payment_interest_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_debt_payment_principal_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_payment_principal_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_debt_payment_total_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_payment_total_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_deductible_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_deductible_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_discounted_costs_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_costs_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_discounted_cumulative_payback_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_cumulative_payback_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_discounted_payback_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_payback_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_discounted_savings_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_savings_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_effective_tax_frac_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_effective_tax_frac_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_energy_net_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_net_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_energy_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_fed_depr_sched_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_depr_sched_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_fed_depreciation_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_depreciation_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_fed_incentive_income_less_deductions_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_incentive_income_less_deductions_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_fed_tax_savings_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_tax_savings_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_fed_taxable_income_less_deductions_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_taxable_income_less_deductions_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_federal_tax_frac_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_federal_tax_frac_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_fuelcell_replacement_cost_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fuelcell_replacement_cost_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_insurance_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_insurance_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_cf_length_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_cf_length_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_net_salvage_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_net_salvage_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_nte_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_nte_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_capacity1_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_capacity1_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_capacity2_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_capacity2_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_capacity_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_capacity_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_fixed1_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fixed1_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_fixed2_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fixed2_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_fixed_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fixed_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_fuel_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fuel_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_production1_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_production1_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_production2_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_production2_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_om_production_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_production_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_operating_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_operating_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_payback_with_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_payback_with_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_payback_without_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_payback_without_expenses_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_pbi_total_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_pbi_total_fed_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_fed_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_pbi_total_oth_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_oth_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_pbi_total_sta_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_sta_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_pbi_total_uti_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_uti_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_property_tax_assessed_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_property_tax_assessed_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_property_tax_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_property_tax_expense_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_ptc_fed_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_fed_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_ptc_sta_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_sta_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_ptc_total_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_total_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_sta_and_fed_tax_savings_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_and_fed_tax_savings_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_sta_depr_sched_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_depr_sched_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_sta_depreciation_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_depreciation_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_sta_incentive_income_less_deductions_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_incentive_income_less_deductions_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_sta_tax_savings_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_tax_savings_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_sta_taxable_income_less_deductions_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_taxable_income_less_deductions_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_state_tax_frac_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_state_tax_frac_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_thermal_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_thermal_value_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Cashloan_Outputs_cf_value_added_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_value_added_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_discounted_payback_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_discounted_payback_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_effective_tax_rate_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_effective_tax_rate_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_first_cost_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_first_cost_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_ibi_total_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_ibi_total_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_ibi_total_oth_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_oth_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_ibi_total_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_ibi_total_uti_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_uti_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_itc_total_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_itc_total_fed_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_fed_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_itc_total_sta_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_sta_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_lcoe_nom_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_lcoe_nom_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_lcoe_real_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_lcoe_real_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_lcoptc_fed_nom_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_fed_nom_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_lcoptc_fed_real_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_fed_real_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_lcoptc_sta_nom_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_sta_nom_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_lcoptc_sta_real_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_sta_real_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_lnte_nom_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_lnte_nom_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_lnte_real_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_lnte_real_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_loan_amount_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_loan_amount_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_npv_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_npv_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_payback_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_payback_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_present_value_fuel_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_present_value_fuel_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_present_value_insandproptax_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_present_value_insandproptax_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_present_value_oandm_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_present_value_oandm_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_present_value_oandm_nonfuel_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_present_value_oandm_nonfuel_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_total_cost_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_total_cost_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_wacc_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_wacc_nget(SAM_Cashloan ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Cashloan_Outputs_year1_nte_fget(SAM_Cashloan ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_Outputs_year1_nte_nget(SAM_Cashloan ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

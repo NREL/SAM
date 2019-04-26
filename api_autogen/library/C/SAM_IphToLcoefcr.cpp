@@ -32,26 +32,26 @@ SAM_EXPORT void SAM_IphToLcoefcr_destruct(SAM_IphToLcoefcr system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_IphToLcoefcr_IPHLCOH_annual_electricity_consumption_fset(SAM_IphToLcoefcr ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_IphToLcoefcr_IPHLCOH_annual_electricity_consumption_nset(SAM_IphToLcoefcr ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "annual_electricity_consumption", number);
 	});
 }
 
-SAM_EXPORT void SAM_IphToLcoefcr_IPHLCOH_electricity_rate_fset(SAM_IphToLcoefcr ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_IphToLcoefcr_IPHLCOH_electricity_rate_nset(SAM_IphToLcoefcr ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "electricity_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_IphToLcoefcr_SimpleLCOE_fixed_operating_cost_fset(SAM_IphToLcoefcr ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_IphToLcoefcr_SimpleLCOE_fixed_operating_cost_nset(SAM_IphToLcoefcr ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fixed_operating_cost", number);
 	});
 }
 
-SAM_EXPORT float SAM_IphToLcoefcr_IPHLCOH_annual_electricity_consumption_fget(SAM_IphToLcoefcr ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_IphToLcoefcr_IPHLCOH_annual_electricity_consumption_nget(SAM_IphToLcoefcr ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_electricity_consumption", &result))
 		make_access_error("SAM_IphToLcoefcr", "annual_electricity_consumption");
@@ -61,8 +61,8 @@ SAM_EXPORT float SAM_IphToLcoefcr_IPHLCOH_annual_electricity_consumption_fget(SA
 
 
 
-SAM_EXPORT float SAM_IphToLcoefcr_IPHLCOH_electricity_rate_fget(SAM_IphToLcoefcr ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_IphToLcoefcr_IPHLCOH_electricity_rate_nget(SAM_IphToLcoefcr ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "electricity_rate", &result))
 		make_access_error("SAM_IphToLcoefcr", "electricity_rate");
@@ -72,8 +72,8 @@ SAM_EXPORT float SAM_IphToLcoefcr_IPHLCOH_electricity_rate_fget(SAM_IphToLcoefcr
 
 
 
-SAM_EXPORT float SAM_IphToLcoefcr_SimpleLCOE_fixed_operating_cost_fget(SAM_IphToLcoefcr ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_IphToLcoefcr_SimpleLCOE_fixed_operating_cost_nget(SAM_IphToLcoefcr ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fixed_operating_cost", &result))
 		make_access_error("SAM_IphToLcoefcr", "fixed_operating_cost");

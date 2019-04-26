@@ -41,7 +41,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=50
 	 * required if: ?=30
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_analysis_period_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_analysis_period_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set federal_tax_rate: Federal income tax rate [%]
@@ -49,7 +49,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_federal_tax_rate_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_federal_tax_rate_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set inflation_rate: Inflation rate [%]
@@ -57,7 +57,7 @@ extern "C"
 	 * constraints: MIN=-99
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_inflation_rate_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_inflation_rate_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set insurance_rate: Insurance rate [%]
@@ -65,7 +65,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_insurance_rate_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_insurance_rate_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set prop_tax_assessed_decline: Assessed value annual decline [%]
@@ -73,7 +73,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=5
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_prop_tax_assessed_decline_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_prop_tax_assessed_decline_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set prop_tax_cost_assessed_percent: Percent of pre-financing costs assessed [%]
@@ -81,7 +81,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=95
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_prop_tax_cost_assessed_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_prop_tax_cost_assessed_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set property_tax_rate: Property tax rate [%]
@@ -89,7 +89,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_property_tax_rate_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_property_tax_rate_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set real_discount_rate: Real discount rate [%]
@@ -97,7 +97,7 @@ extern "C"
 	 * constraints: MIN=-99
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_real_discount_rate_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_real_discount_rate_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set state_tax_rate: State income tax rate [%]
@@ -105,7 +105,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_state_tax_rate_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_state_tax_rate_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set system_capacity: System nameplate capacity [kW]
@@ -113,7 +113,7 @@ extern "C"
 	 * constraints: POSITIVE
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_system_capacity_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_system_capacity_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set system_heat_rate: System heat rate [MMBTus/MWh]
@@ -121,7 +121,7 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_system_heat_rate_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_system_heat_rate_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 
 	//
@@ -129,12 +129,12 @@ extern "C"
 	//
 
 	/**
-	 * Set add_om_num_types: Number of O and M types []
+	 * Set add_om_num_types: Number of O and M types
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_add_om_num_types_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_add_om_num_types_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set annual_fuel_usage: Fuel usage [kWht]
@@ -142,7 +142,7 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_annual_fuel_usage_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_annual_fuel_usage_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_capacity: Capacity-based System Costs amount [$/kWcap]
@@ -150,7 +150,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_capacity1: Battery capacity-based System Costs amount [$/kWcap]
@@ -158,7 +158,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity1_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity1_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_capacity1_nameplate: Battery capacity for System Costs values [kW]
@@ -166,7 +166,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity1_nameplate_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity1_nameplate_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_capacity2: Fuel cell capacity-based System Costs amount [$/kWcap]
@@ -174,7 +174,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity2_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity2_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_capacity2_nameplate: Fuel cell capacity for System Costs values [kW]
@@ -182,7 +182,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity2_nameplate_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity2_nameplate_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_capacity_escal: Capacity-based System Costs escalation [%/year]
@@ -190,7 +190,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_capacity_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_fixed: Fixed System Costs annual amount [$/year]
@@ -198,7 +198,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fixed_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fixed_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_fixed1: Battery fixed System Costs annual amount [$/year]
@@ -206,7 +206,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fixed1_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fixed1_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_fixed2: Fuel cell fixed System Costs annual amount [$/year]
@@ -214,7 +214,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fixed2_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fixed2_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_fixed_escal: Fixed System Costs escalation [%/year]
@@ -222,7 +222,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fixed_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fixed_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_fuel_cost: Fuel cost [$/MMBtu]
@@ -230,7 +230,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fuel_cost_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fuel_cost_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_fuel_cost_escal: Fuel cost escalation [%/year]
@@ -238,7 +238,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fuel_cost_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fuel_cost_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_1_cost: Biomass feedstock cost [$/unit]
@@ -246,7 +246,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_1_cost_escal: Biomass feedstock cost escalation [%/year]
@@ -254,7 +254,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_1_usage: Biomass feedstock usage [unit]
@@ -262,7 +262,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_usage_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_usage_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_2_cost: Coal feedstock cost [$/unit]
@@ -270,7 +270,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_2_cost_escal: Coal feedstock cost escalation [%/year]
@@ -278,7 +278,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_2_usage: Coal feedstock usage [unit]
@@ -286,7 +286,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_usage_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_usage_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_production: Production-based System Costs amount [$/MWh]
@@ -294,7 +294,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production1: Battery production-based System Costs amount [$/MWh]
@@ -302,7 +302,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production1_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production1_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production1_values: Battery production for System Costs values [kWh]
@@ -310,7 +310,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production1_values_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production1_values_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production2: Fuel cell production-based System Costs amount [$/MWh]
@@ -318,7 +318,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production2_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production2_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production2_values: Fuel cell production for System Costs values [kWh]
@@ -326,7 +326,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production2_values_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production2_values_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production_escal: Production-based System Costs escalation [%/year]
@@ -334,7 +334,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_production_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_replacement_cost1: Repacement cost 1 [$/kWh]
@@ -342,7 +342,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_replacement_cost1_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_replacement_cost1_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_replacement_cost2: Repacement cost 2 [$/kW]
@@ -350,7 +350,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_replacement_cost2_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_replacement_cost2_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
@@ -358,7 +358,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_replacement_cost_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_replacement_cost_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 
 	//
@@ -371,7 +371,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_amount_deprbas_fed: Federal amount-based ITC reduces federal depreciation basis [0/1]
@@ -379,7 +379,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_amount_deprbas_sta: Federal amount-based ITC reduces state depreciation basis [0/1]
@@ -387,7 +387,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_percent: Federal percentage-based ITC percent [%]
@@ -395,7 +395,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_percent_deprbas_fed: Federal percentage-based ITC reduces federal depreciation basis [0/1]
@@ -403,7 +403,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_percent_deprbas_sta: Federal percentage-based ITC reduces state depreciation basis [0/1]
@@ -411,7 +411,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_fed_percent_maxvalue: Federal percentage-based ITC maximum value [$]
@@ -419,7 +419,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_maxvalue_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_maxvalue_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_amount: State amount-based ITC amount [$]
@@ -427,7 +427,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_amount_deprbas_fed: State amount-based ITC reduces federal depreciation basis [0/1]
@@ -435,7 +435,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_amount_deprbas_sta: State amount-based ITC reduces state depreciation basis [0/1]
@@ -443,7 +443,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_percent: State percentage-based ITC percent [%]
@@ -451,7 +451,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_percent_deprbas_fed: State percentage-based ITC reduces federal depreciation basis [0/1]
@@ -459,7 +459,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_percent_deprbas_sta: State percentage-based ITC reduces state depreciation basis [0/1]
@@ -467,7 +467,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set itc_sta_percent_maxvalue: State percentage-based ITC maximum Value [$]
@@ -475,7 +475,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_maxvalue_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_maxvalue_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ptc_fed_amount: Federal PTC amount [$/kWh]
@@ -483,7 +483,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_amount_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_amount_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set ptc_fed_escal: Federal PTC escalation [%/year]
@@ -491,7 +491,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ptc_fed_term: Federal PTC term [years]
@@ -499,7 +499,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=10
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_term_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_term_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ptc_sta_amount: State PTC amount [$/kWh]
@@ -507,7 +507,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_amount_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_amount_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set ptc_sta_escal: State PTC escalation [%/year]
@@ -515,7 +515,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ptc_sta_term: State PTC term [years]
@@ -523,7 +523,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=10
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_term_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_term_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 
 	//
@@ -536,7 +536,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_amount_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_amount_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_fed_deprbas_fed: Federal CBI reduces federal depreciation basis [0/1]
@@ -544,7 +544,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_fed_deprbas_sta: Federal CBI reduces state depreciation basis [0/1]
@@ -552,7 +552,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_fed_maxvalue: Federal CBI maximum [$]
@@ -560,7 +560,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_maxvalue_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_maxvalue_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_fed_tax_fed: Federal CBI federal taxable [0/1]
@@ -568,7 +568,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_fed_tax_sta: Federal CBI state taxable [0/1]
@@ -576,7 +576,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_amount: Other CBI amount [$/Watt]
@@ -584,7 +584,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_amount_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_amount_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_deprbas_fed: Other CBI reduces federal depreciation basis [0/1]
@@ -592,7 +592,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_deprbas_sta: Other CBI reduces state depreciation basis [0/1]
@@ -600,7 +600,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_maxvalue: Other CBI maximum [$]
@@ -608,7 +608,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_maxvalue_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_maxvalue_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_tax_fed: Other CBI federal taxable [0/1]
@@ -616,7 +616,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_oth_tax_sta: Other CBI state taxable [0/1]
@@ -624,7 +624,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_amount: State CBI amount [$/Watt]
@@ -632,7 +632,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_amount_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_amount_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_deprbas_fed: State CBI reduces federal depreciation basis [0/1]
@@ -640,7 +640,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_deprbas_sta: State CBI reduces state depreciation basis [0/1]
@@ -648,7 +648,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_maxvalue: State CBI maximum [$]
@@ -656,7 +656,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_maxvalue_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_maxvalue_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_tax_fed: State CBI federal taxable [0/1]
@@ -664,7 +664,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_sta_tax_sta: State CBI state taxable [0/1]
@@ -672,7 +672,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_amount: Utility CBI amount [$/Watt]
@@ -680,7 +680,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_amount_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_amount_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_deprbas_fed: Utility CBI reduces federal depreciation basis [0/1]
@@ -688,7 +688,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_deprbas_sta: Utility CBI reduces state depreciation basis [0/1]
@@ -696,7 +696,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_maxvalue: Utility CBI maximum [$]
@@ -704,7 +704,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_maxvalue_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_maxvalue_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_tax_fed: Utility CBI federal taxable [0/1]
@@ -712,7 +712,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_tax_sta: Utility CBI state taxable [0/1]
@@ -720,7 +720,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_amount: Federal amount-based IBI amount [$]
@@ -728,7 +728,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_amount_deprbas_fed: Federal amount-based IBI reduces federal depreciation basis [0/1]
@@ -736,7 +736,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_amount_deprbas_sta: Federal amount-based IBI reduces state depreciation basis [0/1]
@@ -744,7 +744,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_amount_tax_fed: Federal amount-based IBI federal taxable [0/1]
@@ -752,7 +752,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_amount_tax_sta: Federal amount-based IBI state taxable [0/1]
@@ -760,7 +760,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent: Federal percentage-based IBI percent [%]
@@ -768,7 +768,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent_deprbas_fed: Federal percentage-based IBI reduces federal depreciation basis [0/1]
@@ -776,7 +776,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent_deprbas_sta: Federal percentage-based IBI reduces state depreciation basis [0/1]
@@ -784,7 +784,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent_maxvalue: Federal percentage-based IBI maximum value [$]
@@ -792,7 +792,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_maxvalue_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_maxvalue_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent_tax_fed: Federal percentage-based IBI federal taxable [0/1]
@@ -800,7 +800,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_fed_percent_tax_sta: Federal percentage-based IBI state taxable [0/1]
@@ -808,7 +808,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_amount: Other amount-based IBI amount [$]
@@ -816,7 +816,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_amount_deprbas_fed: Other amount-based IBI reduces federal depreciation basis [0/1]
@@ -824,7 +824,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_amount_deprbas_sta: Other amount-based IBI reduces state depreciation basis [0/1]
@@ -832,7 +832,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_amount_tax_fed: Other amount-based IBI federal taxable [0/1]
@@ -840,7 +840,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_amount_tax_sta: Other amount-based IBI state taxable [0/1]
@@ -848,7 +848,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent: Other percentage-based IBI percent [%]
@@ -856,7 +856,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent_deprbas_fed: Other percentage-based IBI reduces federal depreciation basis [0/1]
@@ -864,7 +864,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent_deprbas_sta: Other percentage-based IBI reduces state depreciation basis [0/1]
@@ -872,7 +872,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent_maxvalue: Other percentage-based IBI maximum value [$]
@@ -880,7 +880,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_maxvalue_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_maxvalue_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent_tax_fed: Other percentage-based IBI federal taxable [0/1]
@@ -888,7 +888,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_oth_percent_tax_sta: Other percentage-based IBI state taxable [0/1]
@@ -896,7 +896,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_amount: State amount-based IBI amount [$]
@@ -904,7 +904,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_amount_deprbas_fed: State amount-based IBI reduces federal depreciation basis [0/1]
@@ -912,7 +912,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_amount_deprbas_sta: State amount-based IBI reduces state depreciation basis [0/1]
@@ -920,7 +920,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_amount_tax_fed: State amount-based IBI federal taxable [0/1]
@@ -928,7 +928,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_amount_tax_sta: State amount-based IBI state taxable [0/1]
@@ -936,7 +936,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent: State percentage-based IBI percent [%]
@@ -944,7 +944,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent_deprbas_fed: State percentage-based IBI reduces federal depreciation basis [0/1]
@@ -952,7 +952,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent_deprbas_sta: State percentage-based IBI reduces state depreciation basis [0/1]
@@ -960,7 +960,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent_maxvalue: State percentage-based IBI maximum value [$]
@@ -968,7 +968,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_maxvalue_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_maxvalue_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent_tax_fed: State percentage-based IBI federal taxable [0/1]
@@ -976,7 +976,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_sta_percent_tax_sta: State percentage-based IBI state taxable [0/1]
@@ -984,7 +984,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_amount: Utility amount-based IBI amount [$]
@@ -992,7 +992,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_amount_deprbas_fed: Utility amount-based IBI reduces federal depreciation basis [0/1]
@@ -1000,7 +1000,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_amount_deprbas_sta: Utility amount-based IBI reduces state depreciation basis [0/1]
@@ -1008,7 +1008,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_amount_tax_fed: Utility amount-based IBI federal taxable [0/1]
@@ -1016,7 +1016,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_amount_tax_sta: Utility amount-based IBI state taxable [0/1]
@@ -1024,7 +1024,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent: Utility percentage-based IBI percent [%]
@@ -1032,7 +1032,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent_deprbas_fed: Utility percentage-based IBI reduces federal depreciation basis [0/1]
@@ -1040,7 +1040,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent_deprbas_sta: Utility percentage-based IBI reduces state depreciation basis [0/1]
@@ -1048,7 +1048,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent_maxvalue: Utility percentage-based IBI maximum value [$]
@@ -1056,7 +1056,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_maxvalue_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_maxvalue_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent_tax_fed: Utility percentage-based IBI federal taxable [0/1]
@@ -1064,7 +1064,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ibi_uti_percent_tax_sta: Utility percentage-based IBI state taxable [0/1]
@@ -1072,7 +1072,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_fed_amount: Federal PBI amount [$/kWh]
@@ -1080,7 +1080,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_fed_amount_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_fed_amount_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set pbi_fed_escal: Federal PBI escalation [%]
@@ -1088,7 +1088,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_fed_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_fed_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_fed_tax_fed: Federal PBI federal taxable [0/1]
@@ -1096,7 +1096,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_fed_tax_sta: Federal PBI state taxable [0/1]
@@ -1104,7 +1104,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_fed_term: Federal PBI term [years]
@@ -1112,7 +1112,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_fed_term_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_fed_term_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_amount: Other PBI amount [$/kWh]
@@ -1120,7 +1120,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_oth_amount_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_oth_amount_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_escal: Other PBI escalation [%]
@@ -1128,7 +1128,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_oth_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_oth_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_tax_fed: Other PBI federal taxable [0/1]
@@ -1136,7 +1136,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_tax_sta: Other PBI state taxable [0/1]
@@ -1144,7 +1144,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_term: Other PBI term [years]
@@ -1152,7 +1152,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_oth_term_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_oth_term_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_sta_amount: State PBI amount [$/kWh]
@@ -1160,7 +1160,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_sta_amount_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_sta_amount_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set pbi_sta_escal: State PBI escalation [%]
@@ -1168,7 +1168,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_sta_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_sta_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_sta_tax_fed: State PBI federal taxable [0/1]
@@ -1176,7 +1176,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_sta_tax_sta: State PBI state taxable [0/1]
@@ -1184,7 +1184,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_sta_term: State PBI term [years]
@@ -1192,7 +1192,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_sta_term_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_sta_term_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_uti_amount: Utility PBI amount [$/kWh]
@@ -1200,7 +1200,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_uti_amount_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_uti_amount_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set pbi_uti_escal: Utility PBI escalation [%]
@@ -1208,7 +1208,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_uti_escal_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_uti_escal_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_uti_tax_fed: Utility PBI federal taxable [0/1]
@@ -1216,7 +1216,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_uti_tax_sta: Utility PBI state taxable [0/1]
@@ -1224,7 +1224,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_uti_term: Utility PBI term [years]
@@ -1232,12 +1232,20 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_uti_term_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_PaymentIncentives_pbi_uti_term_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 
 	//
-	// Common parameters
+	// SystemOutput parameters
 	//
+
+	/**
+	 * Set degradation: Annual energy degradation
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Saleleaseback_SystemOutput_degradation_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set gen: Power generated by renewable resource [kW]
@@ -1245,7 +1253,15 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_Common_gen_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_SystemOutput_gen_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set system_capacity: System nameplate capacity [kW]
+	 * options: None
+	 * constraints: MIN=1e-3
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Saleleaseback_SystemOutput_system_capacity_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 
 	//
@@ -1258,7 +1274,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_construction_financing_cost_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_construction_financing_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cost_dev_fee_percent: Development fee (% pre-financing cost) [%]
@@ -1266,7 +1282,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=3
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_cost_dev_fee_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_cost_dev_fee_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cost_equity_closing: Equity closing cost [$]
@@ -1274,7 +1290,7 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: ?=100000
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_cost_equity_closing_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_cost_equity_closing_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cost_other_financing:  [$]
@@ -1282,15 +1298,7 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: ?=150000
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_cost_other_financing_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
-
-	/**
-	 * Set degradation: Annual energy degradation []
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_degradation_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_cost_other_financing_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_alloc_custom_percent: Custom depreciation federal and state allocation [%]
@@ -1298,7 +1306,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_custom_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_custom_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_alloc_macrs_15_percent: 15-yr MACRS depreciation federal and state allocation [%]
@@ -1306,7 +1314,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=1.5
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_macrs_15_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_macrs_15_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_alloc_macrs_5_percent: 5-yr MACRS depreciation federal and state allocation [%]
@@ -1314,7 +1322,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=89
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_macrs_5_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_macrs_5_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_alloc_sl_15_percent: 15-yr straight line depreciation federal and state allocation [%]
@@ -1322,7 +1330,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=3
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_15_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_15_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_alloc_sl_20_percent: 20-yr straight line depreciation federal and state allocation [%]
@@ -1330,7 +1338,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=3
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_20_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_20_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_alloc_sl_39_percent: 39-yr straight line depreciation federal and state allocation [%]
@@ -1338,7 +1346,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0.5
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_39_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_39_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_alloc_sl_5_percent: 5-yr straight line depreciation federal and state allocation [%]
@@ -1346,7 +1354,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_5_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_5_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_fed: Federal bonus depreciation [%]
@@ -1354,7 +1362,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_fed_custom: Federal bonus depreciation custom [0/1]
@@ -1362,7 +1370,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_custom_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_fed_macrs_15: Federal bonus depreciation 15-yr MACRS [0/1]
@@ -1370,7 +1378,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_15_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_fed_macrs_5: Federal bonus depreciation 5-yr MACRS [0/1]
@@ -1378,7 +1386,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_5_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_fed_sl_15: Federal bonus depreciation 15-yr straight line [0/1]
@@ -1386,7 +1394,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_15_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_fed_sl_20: Federal bonus depreciation 20-yr straight line [0/1]
@@ -1394,7 +1402,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_20_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_fed_sl_39: Federal bonus depreciation 39-yr straight line [0/1]
@@ -1402,7 +1410,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_39_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_fed_sl_5: Federal bonus depreciation 5-yr straight line [0/1]
@@ -1410,7 +1418,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_5_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_sta: State bonus depreciation [%]
@@ -1418,7 +1426,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_sta_custom: State bonus depreciation custom [0/1]
@@ -1426,7 +1434,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_custom_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_sta_macrs_15: State bonus depreciation 15-yr MACRS [0/1]
@@ -1434,7 +1442,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_15_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_sta_macrs_5: State bonus depreciation 5-yr MACRS [0/1]
@@ -1442,7 +1450,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_5_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_sta_sl_15: State bonus depreciation 15-yr straight line [0/1]
@@ -1450,7 +1458,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_15_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_sta_sl_20: State bonus depreciation 20-yr straight line [0/1]
@@ -1458,7 +1466,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_20_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_sta_sl_39: State bonus depreciation 39-yr straight line [0/1]
@@ -1466,7 +1474,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_39_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_sta_sl_5: State bonus depreciation 5-yr straight line [0/1]
@@ -1474,7 +1482,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_5_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_custom_schedule: Custom depreciation schedule [%]
@@ -1482,15 +1490,15 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_custom_schedule_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_custom_schedule_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set depr_fedbas_method: Method of federal depreciation reduction []
+	 * Set depr_fedbas_method: Method of federal depreciation reduction
 	 * options: 0=5yr MACRS,1=Proportional
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_fedbas_method_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_fedbas_method_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_fed_custom: Federal itc depreciation custom [0/1]
@@ -1498,7 +1506,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_custom_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_fed_macrs_15: Federal itc depreciation 15-yr MACRS [0/1]
@@ -1506,7 +1514,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_macrs_15_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_fed_macrs_5: Federal itc depreciation 5-yr MACRS [0/1]
@@ -1514,7 +1522,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_macrs_5_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_fed_sl_15: Federal itc depreciation 15-yr straight line [0/1]
@@ -1522,7 +1530,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_15_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_fed_sl_20: Federal itc depreciation 20-yr straight line [0/1]
@@ -1530,7 +1538,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_20_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_fed_sl_39: Federal itc depreciation 39-yr straight line [0/1]
@@ -1538,7 +1546,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_39_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_fed_sl_5: Federal itc depreciation 5-yr straight line [0/1]
@@ -1546,7 +1554,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_5_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_sta_custom: State itc depreciation custom [0/1]
@@ -1554,7 +1562,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_custom_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_sta_macrs_15: State itc depreciation 15-yr MACRS [0/1]
@@ -1562,7 +1570,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_macrs_15_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_sta_macrs_5: State itc depreciation 5-yr MACRS [0/1]
@@ -1570,7 +1578,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_macrs_5_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_sta_sl_15: State itc depreciation 15-yr straight line [0/1]
@@ -1578,7 +1586,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_15_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_sta_sl_20: State itc depreciation 20-yr straight line [0/1]
@@ -1586,7 +1594,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_20_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_sta_sl_39: State itc depreciation 39-yr straight line [0/1]
@@ -1594,7 +1602,7 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_39_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_itc_sta_sl_5: State itc depreciation 5-yr straight line [0/1]
@@ -1602,31 +1610,31 @@ extern "C"
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_5_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set depr_stabas_method: Method of state depreciation reduction []
+	 * Set depr_stabas_method: Method of state depreciation reduction
 	 * options: 0=5yr MACRS,1=Proportional
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_stabas_method_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_depr_stabas_method_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set equip_reserve_depr_fed: Major equipment reserve federal depreciation []
+	 * Set equip_reserve_depr_fed: Major equipment reserve federal depreciation
 	 * options: 0=5yr MACRS,1=15yr MACRS,2=5yr SL,3=15yr SL, 4=20yr SL,5=39yr SL,6=Custom
 	 * constraints: INTEGER,MIN=0,MAX=6
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_equip_reserve_depr_fed_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_equip_reserve_depr_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set equip_reserve_depr_sta: Major equipment reserve state depreciation []
+	 * Set equip_reserve_depr_sta: Major equipment reserve state depreciation
 	 * options: 0=5yr MACRS,1=15yr MACRS,2=5yr SL,3=15yr SL, 4=20yr SL,5=39yr SL,6=Custom
 	 * constraints: INTEGER,MIN=0,MAX=6
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_equip_reserve_depr_sta_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_equip_reserve_depr_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set flip_target_percent: After-tax flip/return target [%]
@@ -1634,15 +1642,15 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=11
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_flip_target_percent_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_flip_target_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set flip_target_year: Return target year []
+	 * Set flip_target_year: Return target year
 	 * options: None
 	 * constraints: MIN=1
 	 * required if: ?=11
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_flip_target_year_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_flip_target_year_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ppa_escalation: PPA escalation [%]
@@ -1650,7 +1658,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_escalation_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_escalation_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ppa_price_input: Initial year PPA price [$/kWh]
@@ -1658,7 +1666,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=10
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_price_input_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_price_input_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ppa_soln_max: PPA solution maximum ppa [cents/kWh]
@@ -1666,15 +1674,15 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=100
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_max_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_max_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ppa_soln_max_iterations: PPA solution maximum number of iterations []
+	 * Set ppa_soln_max_iterations: PPA solution maximum number of iterations
 	 * options: None
 	 * constraints: INTEGER,MIN=1
 	 * required if: ?=100
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_max_iterations_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_max_iterations_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ppa_soln_min: PPA solution minimum ppa [cents/kWh]
@@ -1682,7 +1690,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_min_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_min_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ppa_soln_mode: PPA solution mode [0/1]
@@ -1690,15 +1698,15 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_mode_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_mode_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ppa_soln_tolerance: PPA solution tolerance []
+	 * Set ppa_soln_tolerance: PPA solution tolerance
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1e-3
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_tolerance_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_tolerance_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set reserves_interest: Interest on reserves [%]
@@ -1706,7 +1714,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=1.75
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_reserves_interest_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_reserves_interest_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set salvage_percentage: Net pre-tax cash salvage value [%]
@@ -1714,7 +1722,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=10
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_salvage_percentage_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_salvage_percentage_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set sponsor_operating_margin: Annual Developer (Lessee) Operating Margin [$/kW]
@@ -1722,7 +1730,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=40
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_sponsor_operating_margin_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_sponsor_operating_margin_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set sponsor_operating_margin_escalation: Annual Developer (Lessee) Operating Margin Escalation [%]
@@ -1730,23 +1738,15 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=2
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_sponsor_operating_margin_escalation_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_sponsor_operating_margin_escalation_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set system_capacity: System nameplate capacity [kW]
-	 * options: None
-	 * constraints: MIN=1e-3
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_system_capacity_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
-
-	/**
-	 * Set system_lifetime_recapitalize: Recapitalization boolean []
+	 * Set system_lifetime_recapitalize: Recapitalization boolean
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_system_lifetime_recapitalize_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_system_lifetime_recapitalize_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set system_recapitalization_cost: Recapitalization cost [$]
@@ -1754,7 +1754,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_system_recapitalization_cost_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_system_recapitalization_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set system_recapitalization_escalation: Recapitalization escalation (above inflation) [%]
@@ -1762,7 +1762,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_system_recapitalization_escalation_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_system_recapitalization_escalation_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
@@ -1770,7 +1770,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_system_use_lifetime_output_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_system_use_lifetime_output_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set system_use_recapitalization: Recapitalization expenses [0/1]
@@ -1778,7 +1778,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_system_use_recapitalization_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_system_use_recapitalization_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tax_investor_required_lease_reserve: Lessor Required Lease Payment Reserve [months]
@@ -1786,7 +1786,7 @@ extern "C"
 	 * constraints: INTEGER
 	 * required if: ?=6
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_tax_investor_required_lease_reserve_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_tax_investor_required_lease_reserve_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set total_installed_cost: Installed cost [$]
@@ -1794,7 +1794,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_DHF_total_installed_cost_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_DHF_total_installed_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 
 	//
@@ -1802,84 +1802,84 @@ extern "C"
 	//
 
 	/**
-	 * Set dispatch_factor1: TOD factor for period 1 []
+	 * Set dispatch_factor1: TOD factor for period 1
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor1_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor1_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor2: TOD factor for period 2 []
+	 * Set dispatch_factor2: TOD factor for period 2
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor2_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor2_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor3: TOD factor for period 3 []
+	 * Set dispatch_factor3: TOD factor for period 3
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor3_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor3_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor4: TOD factor for period 4 []
+	 * Set dispatch_factor4: TOD factor for period 4
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor4_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor4_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor5: TOD factor for period 5 []
+	 * Set dispatch_factor5: TOD factor for period 5
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor5_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor6: TOD factor for period 6 []
+	 * Set dispatch_factor6: TOD factor for period 6
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor6_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor6_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor7: TOD factor for period 7 []
+	 * Set dispatch_factor7: TOD factor for period 7
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor7_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor7_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor8: TOD factor for period 8 []
+	 * Set dispatch_factor8: TOD factor for period 8
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor8_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor8_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor9: TOD factor for period 9 []
+	 * Set dispatch_factor9: TOD factor for period 9
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor9_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factor9_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factors_ts: Dispatch payment factor array []
+	 * Set dispatch_factors_ts: Dispatch payment factor array
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=1
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factors_ts_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_factors_ts_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set dispatch_sched_weekday: Diurnal weekday TOD periods [1..9]
@@ -1887,7 +1887,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekday_mset(SAM_Saleleaseback ptr, float* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekday_mset(SAM_Saleleaseback ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set dispatch_sched_weekend: Diurnal weekend TOD periods [1..9]
@@ -1895,7 +1895,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekend_mset(SAM_Saleleaseback ptr, float* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekend_mset(SAM_Saleleaseback ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set ppa_multiplier_model: PPA multiplier model [0/1]
@@ -1903,7 +1903,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_ppa_multiplier_model_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_ppa_multiplier_model_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 
 	//
@@ -1916,7 +1916,7 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: ?=0.25
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip1_reserve_cost_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip1_reserve_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set equip1_reserve_freq: Major equipment reserve 1 frequency [years]
@@ -1924,7 +1924,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0
 	 * required if: ?=12
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip1_reserve_freq_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip1_reserve_freq_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set equip2_reserve_cost: Major equipment reserve 2 cost [$/W]
@@ -1932,7 +1932,7 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip2_reserve_cost_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip2_reserve_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set equip2_reserve_freq: Major equipment reserve 2 frequency [years]
@@ -1940,7 +1940,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0
 	 * required if: ?=15
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip2_reserve_freq_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip2_reserve_freq_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set equip3_reserve_cost: Major equipment reserve 3 cost [$/W]
@@ -1948,7 +1948,7 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip3_reserve_cost_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip3_reserve_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set equip3_reserve_freq: Major equipment reserve 3 frequency [years]
@@ -1956,7 +1956,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0
 	 * required if: ?=20
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip3_reserve_freq_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_ReserveAccounts_equip3_reserve_freq_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 
 	//
@@ -1969,7 +1969,7 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_OtherCapitalCosts_months_receivables_reserve_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_OtherCapitalCosts_months_receivables_reserve_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set months_working_reserve: Working capital reserve months of operating costs [months]
@@ -1977,7 +1977,7 @@ extern "C"
 	 * constraints: MIN=0
 	 * required if: ?=6
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_OtherCapitalCosts_months_working_reserve_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_OtherCapitalCosts_months_working_reserve_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 
 	//
@@ -1990,7 +1990,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_Battery_batt_bank_replacement_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_Battery_batt_bank_replacement_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set batt_computed_bank_capacity: Battery bank capacity [kWh]
@@ -1998,7 +1998,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_Battery_batt_computed_bank_capacity_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_Battery_batt_computed_bank_capacity_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_replacement_option: Enable battery replacement? [0=none,1=capacity based,2=user schedule]
@@ -2006,7 +2006,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_Battery_batt_replacement_option_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_Battery_batt_replacement_option_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_replacement_schedule: Battery bank replacements per year (user specified) [number/year]
@@ -2014,7 +2014,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_Battery_batt_replacement_schedule_aset(SAM_Saleleaseback ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_Battery_batt_replacement_schedule_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set battery_per_kWh: Battery cost [$/kWh]
@@ -2022,7 +2022,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_Battery_battery_per_kWh_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_Battery_battery_per_kWh_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 	/**
 	 * Set en_batt: Enable battery storage model [0/1]
@@ -2030,1634 +2030,1634 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Saleleaseback_Battery_en_batt_fset(SAM_Saleleaseback ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_Saleleaseback_Battery_en_batt_nset(SAM_Saleleaseback ptr, double number, SAM_error *err);
 
 
 	/**
 	 * FinancialParameters Getters
 	 */
 
-	SAM_EXPORT float SAM_Saleleaseback_FinancialParameters_analysis_period_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_analysis_period_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_FinancialParameters_federal_tax_rate_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_FinancialParameters_federal_tax_rate_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_FinancialParameters_inflation_rate_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_inflation_rate_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_FinancialParameters_insurance_rate_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_insurance_rate_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_FinancialParameters_prop_tax_assessed_decline_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_prop_tax_assessed_decline_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_FinancialParameters_prop_tax_cost_assessed_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_prop_tax_cost_assessed_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_FinancialParameters_property_tax_rate_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_property_tax_rate_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_FinancialParameters_real_discount_rate_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_real_discount_rate_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_FinancialParameters_state_tax_rate_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_FinancialParameters_state_tax_rate_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_FinancialParameters_system_capacity_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_system_capacity_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_FinancialParameters_system_heat_rate_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_system_heat_rate_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
 
 	/**
 	 * SystemCosts Getters
 	 */
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_add_om_num_types_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_add_om_num_types_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_annual_fuel_usage_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_annual_fuel_usage_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_capacity_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_capacity_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_capacity1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_capacity1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_om_capacity1_nameplate_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_capacity1_nameplate_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_capacity2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_capacity2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_om_capacity2_nameplate_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_capacity2_nameplate_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_om_capacity_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_capacity_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_fixed_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fixed_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_fixed1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fixed1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_fixed2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fixed2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_om_fixed_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_fixed_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_fuel_cost_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fuel_cost_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_om_fuel_cost_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_fuel_cost_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_usage_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_usage_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_usage_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_usage_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_production_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_production1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_production1_values_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production1_values_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_production2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_production2_values_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production2_values_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_om_production_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_production_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_replacement_cost1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_replacement_cost1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_SystemCosts_om_replacement_cost2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_replacement_cost2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_SystemCosts_om_replacement_cost_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_replacement_cost_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
 
 	/**
 	 * TaxCreditIncentives Getters
 	 */
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_maxvalue_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_maxvalue_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_maxvalue_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_maxvalue_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_term_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_term_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_term_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_term_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
 
 	/**
 	 * PaymentIncentives Getters
 	 */
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_fed_amount_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_amount_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_fed_maxvalue_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_oth_amount_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_amount_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_oth_maxvalue_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_sta_amount_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_amount_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_sta_maxvalue_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_uti_amount_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_amount_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_uti_maxvalue_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_maxvalue_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_maxvalue_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_maxvalue_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_maxvalue_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_maxvalue_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_maxvalue_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_maxvalue_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_maxvalue_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_PaymentIncentives_pbi_fed_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_fed_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_fed_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_fed_term_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_term_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_PaymentIncentives_pbi_oth_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_oth_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_oth_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_oth_term_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_term_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_PaymentIncentives_pbi_sta_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_sta_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_sta_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_sta_term_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_term_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_PaymentIncentives_pbi_uti_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_uti_amount_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_uti_escal_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_escal_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_PaymentIncentives_pbi_uti_term_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_term_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
 
 	/**
-	 * Common Getters
+	 * SystemOutput Getters
 	 */
 
-	SAM_EXPORT float* SAM_Saleleaseback_Common_gen_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_SystemOutput_degradation_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Saleleaseback_SystemOutput_gen_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Saleleaseback_SystemOutput_system_capacity_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
 
 	/**
 	 * DHF Getters
 	 */
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_construction_financing_cost_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_construction_financing_cost_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_cost_dev_fee_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_cost_dev_fee_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_cost_equity_closing_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_cost_equity_closing_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_cost_other_financing_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_cost_other_financing_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_DHF_degradation_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_custom_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_alloc_custom_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_macrs_15_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_alloc_macrs_15_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_macrs_5_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_alloc_macrs_5_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_15_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_alloc_sl_15_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_20_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_alloc_sl_20_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_39_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_alloc_sl_39_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_5_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_alloc_sl_5_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_fed_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_fed_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_fed_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_fed_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_fed_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_sta_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_sta_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_sta_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_sta_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_bonus_sta_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_DHF_depr_custom_schedule_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_DHF_depr_custom_schedule_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_fedbas_method_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_fedbas_method_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_fed_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_fed_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_fed_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_fed_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_fed_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_fed_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_fed_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_sta_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_sta_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_sta_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_sta_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_sta_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_sta_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_itc_sta_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_depr_stabas_method_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_depr_stabas_method_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_equip_reserve_depr_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_equip_reserve_depr_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_equip_reserve_depr_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_equip_reserve_depr_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_flip_target_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_flip_target_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_flip_target_year_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_flip_target_year_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_escalation_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_ppa_escalation_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_price_input_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_ppa_price_input_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_max_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_ppa_soln_max_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_max_iterations_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_ppa_soln_max_iterations_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_min_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_ppa_soln_min_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_mode_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_ppa_soln_mode_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_tolerance_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_ppa_soln_tolerance_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_reserves_interest_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_reserves_interest_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_salvage_percentage_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_salvage_percentage_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_sponsor_operating_margin_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_sponsor_operating_margin_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_sponsor_operating_margin_escalation_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_sponsor_operating_margin_escalation_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_DHF_system_lifetime_recapitalize_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_system_capacity_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_system_recapitalization_cost_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_DHF_system_lifetime_recapitalize_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_system_recapitalization_escalation_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_system_recapitalization_cost_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_system_use_lifetime_output_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_system_recapitalization_escalation_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_system_use_recapitalization_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_system_use_lifetime_output_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_tax_investor_required_lease_reserve_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_DHF_system_use_recapitalization_fget(SAM_Saleleaseback ptr, SAM_error *err);
-
-	SAM_EXPORT float SAM_Saleleaseback_DHF_tax_investor_required_lease_reserve_fget(SAM_Saleleaseback ptr, SAM_error *err);
-
-	SAM_EXPORT float SAM_Saleleaseback_DHF_total_installed_cost_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_DHF_total_installed_cost_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
 
 	/**
 	 * TimeOfDelivery Getters
 	 */
 
-	SAM_EXPORT float SAM_Saleleaseback_TimeOfDelivery_dispatch_factor1_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor1_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TimeOfDelivery_dispatch_factor2_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor2_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TimeOfDelivery_dispatch_factor3_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor3_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TimeOfDelivery_dispatch_factor4_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor4_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TimeOfDelivery_dispatch_factor5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TimeOfDelivery_dispatch_factor6_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor6_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TimeOfDelivery_dispatch_factor7_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor7_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TimeOfDelivery_dispatch_factor8_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor8_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TimeOfDelivery_dispatch_factor9_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor9_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_TimeOfDelivery_dispatch_factors_ts_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_TimeOfDelivery_dispatch_factors_ts_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekday_mget(SAM_Saleleaseback ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekday_mget(SAM_Saleleaseback ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekend_mget(SAM_Saleleaseback ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekend_mget(SAM_Saleleaseback ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_TimeOfDelivery_ppa_multiplier_model_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_ppa_multiplier_model_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
 
 	/**
 	 * ReserveAccounts Getters
 	 */
 
-	SAM_EXPORT float SAM_Saleleaseback_ReserveAccounts_equip1_reserve_cost_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_ReserveAccounts_equip1_reserve_cost_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_ReserveAccounts_equip1_reserve_freq_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_ReserveAccounts_equip1_reserve_freq_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_ReserveAccounts_equip2_reserve_cost_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_ReserveAccounts_equip2_reserve_cost_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_ReserveAccounts_equip2_reserve_freq_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_ReserveAccounts_equip2_reserve_freq_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_ReserveAccounts_equip3_reserve_cost_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_ReserveAccounts_equip3_reserve_cost_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_ReserveAccounts_equip3_reserve_freq_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_ReserveAccounts_equip3_reserve_freq_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
 
 	/**
 	 * OtherCapitalCosts Getters
 	 */
 
-	SAM_EXPORT float SAM_Saleleaseback_OtherCapitalCosts_months_receivables_reserve_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_OtherCapitalCosts_months_receivables_reserve_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_OtherCapitalCosts_months_working_reserve_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_OtherCapitalCosts_months_working_reserve_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
 
 	/**
 	 * Battery Getters
 	 */
 
-	SAM_EXPORT float* SAM_Saleleaseback_Battery_batt_bank_replacement_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Battery_batt_bank_replacement_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Battery_batt_computed_bank_capacity_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Battery_batt_computed_bank_capacity_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Battery_batt_replacement_option_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Battery_batt_replacement_option_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Battery_batt_replacement_schedule_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Battery_batt_replacement_schedule_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Battery_battery_per_kWh_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Battery_battery_per_kWh_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Battery_en_batt_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Battery_en_batt_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_adjusted_installed_cost_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_adjusted_installed_cost_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_analysis_period_irr_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_analysis_period_irr_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_cbi_fedtax_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_fedtax_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_cbi_statax_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_statax_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_cbi_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_cbi_total_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_cbi_total_oth_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_oth_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_cbi_total_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_cbi_total_uti_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_uti_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_annual_costs_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_annual_costs_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_battery_replacement_cost_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_battery_replacement_cost_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_disbursement_equip1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_equip1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_disbursement_equip2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_equip2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_disbursement_equip3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_equip3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_disbursement_leasepayment_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_leasepayment_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_disbursement_merr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_merr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_disbursement_om_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_om_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_disbursement_receivables_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_receivables_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_effective_tax_frac_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_effective_tax_frac_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_apr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_apr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_aug_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_aug_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_dec_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dec_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch4_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch4_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch6_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch6_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch7_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch7_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch8_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch8_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch9_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch9_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_feb_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_feb_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_jan_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_jan_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_jul_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_jul_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_jun_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_jun_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_mar_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_mar_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_may_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_may_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD4_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD4_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD6_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD6_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD7_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD7_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD8_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD8_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD9_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD9_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_nov_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_nov_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_oct_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_oct_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_net_sep_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_sep_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_energy_value_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_value_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_feddepr_custom_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_custom_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_feddepr_macrs_15_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_macrs_15_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_feddepr_macrs_5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_macrs_5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_feddepr_me1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_me1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_feddepr_me2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_me2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_feddepr_me3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_me3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_feddepr_sl_15_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_15_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_feddepr_sl_20_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_20_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_feddepr_sl_39_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_39_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_feddepr_sl_5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_feddepr_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_federal_tax_frac_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_federal_tax_frac_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_funding_equip1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_equip1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_funding_equip2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_equip2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_funding_equip3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_equip3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_funding_leasepayment_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_leasepayment_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_funding_om_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_om_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_funding_receivables_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_receivables_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_insurance_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_insurance_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_cf_length_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_cf_length_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_net_salvage_value_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_net_salvage_value_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_om_capacity_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_capacity_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_om_fixed_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_fixed_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_om_fuel_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_fuel_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_om_production_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_production_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_operating_expenses_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_operating_expenses_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_pbi_fedtax_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_fedtax_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_pbi_statax_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_statax_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_pbi_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_pbi_total_fed_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_fed_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_pbi_total_oth_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_oth_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_pbi_total_sta_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_sta_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_pbi_total_uti_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_uti_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_ppa_price_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_ppa_price_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_pretax_cashflow_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pretax_cashflow_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_pretax_operating_cashflow_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pretax_operating_cashflow_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_property_tax_assessed_value_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_property_tax_assessed_value_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_property_tax_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_property_tax_expense_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_ptc_fed_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_ptc_fed_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_ptc_sta_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_ptc_sta_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_recapitalization_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_recapitalization_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_reserve_equip1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_equip1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_reserve_equip2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_equip2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_reserve_equip3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_equip3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_reserve_interest_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_interest_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_reserve_leasepayment_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_leasepayment_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_reserve_leasepayment_interest_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_leasepayment_interest_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_reserve_om_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_om_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_reserve_receivables_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_receivables_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_reserve_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_apr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_apr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_aug_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_aug_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_dec_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dec_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_dispatch1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_dispatch2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_dispatch3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_dispatch4_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch4_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_dispatch5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_dispatch6_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch6_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_dispatch7_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch7_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_dispatch8_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch8_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_dispatch9_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch9_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_feb_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_feb_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_jan_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_jan_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_jul_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_jul_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_jun_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_jun_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_mar_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_mar_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_may_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_may_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD4_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD4_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD6_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD6_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD7_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD7_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD8_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD8_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD9_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD9_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_nov_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_nov_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_oct_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_oct_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_revenue_sep_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_sep_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_adj_reserve_release_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_adj_reserve_release_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_cash_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_cash_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_devfee_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_devfee_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_irr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_irr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_npv_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_npv_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_tax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_tax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_income_prior_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_income_prior_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_income_with_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_income_with_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_taxable_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_taxable_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_financing_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_financing_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_investing_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_investing_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_lpra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_lpra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_margin_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_margin_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_me1cs_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me1cs_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_me1ra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me1ra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_me2cs_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me2cs_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_me2ra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me2ra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_me3cs_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me3cs_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_me3ra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me3ra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_mecs_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_mecs_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_operating_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_operating_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_operating_margin_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_operating_margin_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_irr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_irr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_npv_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_npv_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_ra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_ra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_receivablesra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_receivablesra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_statax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_statax_income_prior_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_income_prior_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_statax_income_with_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_income_with_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_statax_taxable_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_taxable_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_sponsor_wcra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_wcra_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_stadepr_custom_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_custom_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_stadepr_macrs_15_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_macrs_15_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_stadepr_macrs_5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_macrs_5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_stadepr_me1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_me1_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_stadepr_me2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_me2_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_stadepr_me3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_me3_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_stadepr_sl_15_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_15_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_stadepr_sl_20_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_20_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_stadepr_sl_39_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_39_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_stadepr_sl_5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_5_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_stadepr_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_total_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_state_tax_frac_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_state_tax_frac_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_cash_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_cash_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_irr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_irr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_itc_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_itc_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_max_irr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_max_irr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_npv_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_npv_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_ptc_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_ptc_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_tax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_tax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_income_prior_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_income_prior_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_income_with_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_income_with_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_taxable_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_taxable_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_financing_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_financing_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_investing_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_investing_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_operating_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_operating_activities_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_cashflow_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_cashflow_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_irr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_irr_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_npv_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_npv_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_income_prior_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_income_prior_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_income_with_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_income_with_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_taxable_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_taxable_incentives_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_cf_total_revenue_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_total_revenue_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_cost_financing_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_financing_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_cost_installed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_installed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_cost_installedperwatt_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_installedperwatt_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_debt_fraction_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_debt_fraction_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_alloc_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_alloc_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_alloc_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_alloc_none_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_none_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_alloc_none_percent_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_none_percent_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_alloc_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_alloc_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_alloc_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_alloc_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_alloc_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_percent_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_fedbas_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_after_itc_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_after_itc_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_after_itc_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_after_itc_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_percent_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_depr_stabas_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_distribution_of_development_fee_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_distribution_of_development_fee_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_effective_tax_rate_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_effective_tax_rate_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_dispatch1_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch1_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_dispatch2_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch2_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_dispatch3_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch3_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_dispatch4_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch4_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_dispatch5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_dispatch6_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch6_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_dispatch7_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch7_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_dispatch8_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch8_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_dispatch9_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch9_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_price1_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price1_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_price2_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price2_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_price3_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price3_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_price4_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price4_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_price5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_price6_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price6_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_price7_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price7_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_price8_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price8_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_energy_price9_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price9_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch1_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch1_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch2_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch2_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch3_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch3_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch4_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch4_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch6_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch6_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch7_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch7_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch8_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch8_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch9_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch9_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_flip_actual_irr_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_actual_irr_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_flip_actual_year_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_actual_year_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_flip_target_irr_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_target_irr_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_flip_target_year_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_target_year_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_ibi_fedtax_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_fedtax_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_ibi_statax_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_statax_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_ibi_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_ibi_total_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_ibi_total_oth_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_oth_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_ibi_total_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_ibi_total_uti_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_uti_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_issuance_of_equity_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_issuance_of_equity_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_fed_fixed_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_fixed_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_fed_percent_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_percent_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_fed_qual_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_fed_qual_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_fed_qual_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_fed_qual_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_fed_qual_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_fed_qual_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_fed_qual_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_fed_qual_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_sta_fixed_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_fixed_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_sta_percent_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_percent_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_sta_qual_custom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_custom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_sta_qual_macrs_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_sta_qual_macrs_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_sta_qual_sl_15_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_sta_qual_sl_20_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_sta_qual_sl_39_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_sta_qual_sl_5_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_sta_qual_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_total_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_total_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_total_fed_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_total_fed_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_itc_total_sta_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_total_sta_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_lcoe_nom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoe_nom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_lcoe_real_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoe_real_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_lcoptc_fed_nom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_fed_nom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_lcoptc_fed_real_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_fed_real_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_lcoptc_sta_nom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_sta_nom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_lcoptc_sta_real_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_sta_real_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_lppa_nom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_lppa_nom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_lppa_real_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_lppa_real_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_nominal_discount_rate_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_nominal_discount_rate_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_npv_annual_costs_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_annual_costs_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_npv_energy_nom_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_energy_nom_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_npv_energy_real_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_energy_real_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_npv_ppa_revenue_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_ppa_revenue_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_ppa_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_ppa_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_ppa_escalation_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_ppa_escalation_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_Saleleaseback_Outputs_ppa_multipliers_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Saleleaseback_Outputs_ppa_multipliers_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_ppa_price_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_ppa_price_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_present_value_fuel_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_fuel_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_present_value_insandproptax_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_insandproptax_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_present_value_oandm_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_oandm_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_present_value_oandm_nonfuel_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_oandm_nonfuel_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_prop_tax_assessed_value_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_prop_tax_assessed_value_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_purchase_of_plant_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_purchase_of_plant_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_sale_of_property_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_sale_of_property_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_salvage_value_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_salvage_value_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_size_of_equity_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_size_of_equity_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_sponsor_aftertax_irr_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_aftertax_irr_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_sponsor_aftertax_npv_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_aftertax_npv_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_sponsor_equity_in_lessee_llc_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_equity_in_lessee_llc_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_sponsor_pretax_irr_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_pretax_irr_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_sponsor_pretax_npv_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_pretax_npv_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_tax_investor_aftertax_irr_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_aftertax_irr_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_tax_investor_aftertax_npv_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_aftertax_npv_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_tax_investor_pretax_irr_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_pretax_irr_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_tax_investor_pretax_npv_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_pretax_npv_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_Saleleaseback_Outputs_wacc_fget(SAM_Saleleaseback ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Saleleaseback_Outputs_wacc_nget(SAM_Saleleaseback ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

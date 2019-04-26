@@ -41,7 +41,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Plant_conv_eff_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_Plant_conv_eff_nset(SAM_GenericSystem ptr, double number, SAM_error *err);
 
 	/**
 	 * Set derate: Derate [%]
@@ -49,15 +49,15 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Plant_derate_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_Plant_derate_nset(SAM_GenericSystem ptr, double number, SAM_error *err);
 
 	/**
 	 * Set energy_output_array: Array of Energy Output Profile [kW]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: spec_mode=1
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Plant_energy_output_array_aset(SAM_GenericSystem ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_Plant_energy_output_array_aset(SAM_GenericSystem ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set heat_rate: Heat Rate [MMBTUs/MWhe]
@@ -65,15 +65,15 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Plant_heat_rate_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_Plant_heat_rate_nset(SAM_GenericSystem ptr, double number, SAM_error *err);
 
 	/**
-	 * Set spec_mode: Spec mode: 0=constant CF,1=profile []
+	 * Set spec_mode: Spec mode: 0=constant CF,1=profile
 	 * options: None
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Plant_spec_mode_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_Plant_spec_mode_nset(SAM_GenericSystem ptr, double number, SAM_error *err);
 
 	/**
 	 * Set system_capacity: Nameplace Capcity [kW]
@@ -81,7 +81,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Plant_system_capacity_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_Plant_system_capacity_nset(SAM_GenericSystem ptr, double number, SAM_error *err);
 
 	/**
 	 * Set user_capacity_factor: Capacity Factor [%]
@@ -89,7 +89,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Plant_user_capacity_factor_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_Plant_user_capacity_factor_nset(SAM_GenericSystem ptr, double number, SAM_error *err);
 
 
 	//
@@ -102,7 +102,7 @@ extern "C"
 	 * constraints: None
 	 * required if: system_use_lifetime_output=1
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Lifetime_analysis_period_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_Lifetime_analysis_period_nset(SAM_GenericSystem ptr, double number, SAM_error *err);
 
 	/**
 	 * Set generic_degradation: Annual module degradation [%/year]
@@ -110,7 +110,7 @@ extern "C"
 	 * constraints: None
 	 * required if: system_use_lifetime_output=1
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Lifetime_generic_degradation_aset(SAM_GenericSystem ptr, float* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_Lifetime_generic_degradation_aset(SAM_GenericSystem ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set system_use_lifetime_output: Generic lifetime simulation [0/1]
@@ -118,58 +118,58 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_GenericSystem_Lifetime_system_use_lifetime_output_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+	SAM_EXPORT void SAM_GenericSystem_Lifetime_system_use_lifetime_output_nset(SAM_GenericSystem ptr, double number, SAM_error *err);
 
 
 	/**
 	 * Plant Getters
 	 */
 
-	SAM_EXPORT float SAM_GenericSystem_Plant_conv_eff_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Plant_conv_eff_nget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_GenericSystem_Plant_derate_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Plant_derate_nget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_GenericSystem_Plant_energy_output_array_aget(SAM_GenericSystem ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_GenericSystem_Plant_energy_output_array_aget(SAM_GenericSystem ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_GenericSystem_Plant_heat_rate_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Plant_heat_rate_nget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_GenericSystem_Plant_spec_mode_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Plant_spec_mode_nget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_GenericSystem_Plant_system_capacity_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Plant_system_capacity_nget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_GenericSystem_Plant_user_capacity_factor_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Plant_user_capacity_factor_nget(SAM_GenericSystem ptr, SAM_error *err);
 
 
 	/**
 	 * Lifetime Getters
 	 */
 
-	SAM_EXPORT float SAM_GenericSystem_Lifetime_analysis_period_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Lifetime_analysis_period_nget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_GenericSystem_Lifetime_generic_degradation_aget(SAM_GenericSystem ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_GenericSystem_Lifetime_generic_degradation_aget(SAM_GenericSystem ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_GenericSystem_Lifetime_system_use_lifetime_output_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Lifetime_system_use_lifetime_output_nget(SAM_GenericSystem ptr, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT float SAM_GenericSystem_Outputs_annual_energy_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Outputs_annual_energy_nget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_GenericSystem_Outputs_annual_fuel_usage_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Outputs_annual_fuel_usage_nget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_GenericSystem_Outputs_capacity_factor_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Outputs_capacity_factor_nget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_GenericSystem_Outputs_gen_aget(SAM_GenericSystem ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_GenericSystem_Outputs_gen_aget(SAM_GenericSystem ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_GenericSystem_Outputs_kwh_per_kw_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Outputs_kwh_per_kw_nget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float* SAM_GenericSystem_Outputs_monthly_energy_aget(SAM_GenericSystem ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_GenericSystem_Outputs_monthly_energy_aget(SAM_GenericSystem ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT float SAM_GenericSystem_Outputs_system_heat_rate_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Outputs_system_heat_rate_nget(SAM_GenericSystem ptr, SAM_error *err);
 
-	SAM_EXPORT float SAM_GenericSystem_Outputs_water_usage_fget(SAM_GenericSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GenericSystem_Outputs_water_usage_nget(SAM_GenericSystem ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

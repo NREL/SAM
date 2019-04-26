@@ -522,6 +522,7 @@ public:
 		AddProperty("Choices", new wxUIProperty(wxString("Choice1,Choice2")));
 		AddProperty("HideColumn", new wxUIProperty(-1));
 		AddProperty("ShowColumn", new wxUIProperty(-1));
+		AddProperty("ColorMap", new wxUIProperty(false));
 
 		Property("Width").Set(400);
 		Property("Height").Set(300);
@@ -545,6 +546,7 @@ public:
 		dm->SetNumColsLabel(Property("NumColsLabel").GetString());
 		dm->ShowCol(Property("ShowColumn").GetInteger(), true);
 		dm->ShowCol(Property("HideColumn").GetInteger(), false);
+		dm->ColorMap(Property("ColorMap").GetBoolean());
 		return AssignNative(dm);
 	}
 	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
@@ -564,9 +566,12 @@ public:
 			if (id == "NumColsLabel") dm->SetNumColsLabel(p->GetString());
 			if (id == "ShowColumn") dm->ShowCol(p->GetInteger(), true);
 			if (id == "HideColumn") dm->ShowCol(p->GetInteger(), false);
+			if (id == "ColorMap") dm->ColorMap(p->GetBoolean());
 		}
 	}
 };
+
+
 
 
 

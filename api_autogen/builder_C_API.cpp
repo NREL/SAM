@@ -87,17 +87,17 @@ void builder_C_API::create_SAM_headers(const std::string &file_dir, const std::s
                 fx_file << "None\n";
             fx_file << "\t */\n";
 
-            // 	SAM_EXPORT void SAM_GenericSystem_PowerPlant_derate_fset(SAM_GenericSystem ptr, float number, SAM_error *err);
+            // 	SAM_EXPORT void SAM_GenericSystem_PowerPlant_derate_nset(SAM_GenericSystem ptr, double number, SAM_error *err);
 
             fx_file << "\tSAM_EXPORT void SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
             if (vd.type == "number") {
-                fx_file << "fset(SAM_" << cmod_symbol << " ptr, float number, SAM_error *err);\n\n";
+                fx_file << "nset(SAM_" << cmod_symbol << " ptr, double number, SAM_error *err);\n\n";
             } else if (vd.type == "string") {
                 fx_file << "sset(SAM_" << cmod_symbol << " ptr, const char* str, SAM_error *err);\n\n";
             } else if (vd.type == "array") {
-                fx_file << "aset(SAM_" << cmod_symbol << " ptr, float* arr, int length, SAM_error *err);\n\n";
+                fx_file << "aset(SAM_" << cmod_symbol << " ptr, double* arr, int length, SAM_error *err);\n\n";
             } else if (vd.type == "matrix") {
-                fx_file << "mset(SAM_" << cmod_symbol << " ptr, float* mat, int nrows, int ncols, SAM_error *err);\n\n";
+                fx_file << "mset(SAM_" << cmod_symbol << " ptr, double* mat, int nrows, int ncols, SAM_error *err);\n\n";
             } else if (vd.type == "table") {
                 fx_file << "tset(SAM_" << cmod_symbol << " ptr, SAM_table tab, SAM_error *err);\n\n";
             } else {
@@ -124,19 +124,19 @@ void builder_C_API::create_SAM_headers(const std::string &file_dir, const std::s
             std::string var_name = vd.name;
 
             if (vd.type == "number"){
-                fx_file << "\tSAM_EXPORT float SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
-                fx_file << "fget(SAM_" << cmod_symbol << " ptr, SAM_error *err);\n\n";
+                fx_file << "\tSAM_EXPORT double SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
+                fx_file << "nget(SAM_" << cmod_symbol << " ptr, SAM_error *err);\n\n";
             }
             else if (vd.type == "string"){
                 fx_file << "\tSAM_EXPORT const char* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "sget(SAM_" << cmod_symbol << " ptr, SAM_error *err);\n\n";
             }
             else if (vd.type == "array"){
-                fx_file << "\tSAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
+                fx_file << "\tSAM_EXPORT double* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "aget(SAM_" << cmod_symbol << " ptr, int* length, SAM_error *err);\n\n";
             }
             else if (vd.type == "matrix"){
-                fx_file << "\tSAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
+                fx_file << "\tSAM_EXPORT double* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "mget(SAM_" << cmod_symbol << " ptr, int* nrows, int* ncols, SAM_error *err);\n\n";
             }
             else if (vd.type == "table"){
@@ -216,7 +216,7 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
 
             fx_file << "SAM_EXPORT void SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol;
             if (vd.type == "number") {
-                fx_file << "_fset(SAM_" << cmod_symbol << " ptr, float number, SAM_error *err){\n"
+                fx_file << "_nset(SAM_" << cmod_symbol << " ptr, double number, SAM_error *err){\n"
                                                           "\ttranslateExceptions(err, [&]{\n"
                                                           "\t\tssc_data_set_number(ptr, \"" << var_name
                         << "\", number);\n\t});\n}";
@@ -226,12 +226,12 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
                                                           "\t\tssc_data_set_string(ptr, \"" << var_name
                         << "\", str);\n\t});\n}";
             } else if (vd.type == "array") {
-                fx_file << "_aset(SAM_" << cmod_symbol << " ptr, float* arr, int length, SAM_error *err){\n"
+                fx_file << "_aset(SAM_" << cmod_symbol << " ptr, double* arr, int length, SAM_error *err){\n"
                                                           "\ttranslateExceptions(err, [&]{\n"
                                                           "\t\tssc_data_set_array(ptr, \"" << var_name
                         << "\", arr, length);\n\t});\n}";
             } else if (vd.type == "matrix") {
-                fx_file << "_mset(SAM_" << cmod_symbol << " ptr, float* mat, int nrows, int ncols, SAM_error *err){\n"
+                fx_file << "_mset(SAM_" << cmod_symbol << " ptr, double* mat, int nrows, int ncols, SAM_error *err){\n"
                                                           "\ttranslateExceptions(err, [&]{\n"
                                                           "\t\tssc_data_set_matrix(ptr, \"" << var_name
                         << "\", mat, nrows, ncols);\n\t});\n}";
@@ -262,9 +262,9 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
             std::string var_name = vd.name;
 
             if (vd.type == "number"){
-                fx_file << "SAM_EXPORT float SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
-                fx_file << "fget(SAM_" << cmod_symbol << " ptr, SAM_error *err){\n";
-                fx_file << "\tfloat result;\n"
+                fx_file << "SAM_EXPORT double SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
+                fx_file << "nget(SAM_" << cmod_symbol << " ptr, SAM_error *err){\n";
+                fx_file << "\tdouble result;\n"
                            "\ttranslateExceptions(err, [&]{\n"
                            "\tif (!ssc_data_get_number(ptr, \"" << var_name<< "\", &result))\n"
                            "\t\tmake_access_error(\"SAM_" << cmod_symbol << "\", \"" << var_name << "\");\n"
@@ -281,9 +281,9 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
                            "\t});\n\treturn result;\n}\n\n";
             }
             else if (vd.type == "array"){
-                fx_file << "SAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
+                fx_file << "SAM_EXPORT double* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "aget(SAM_" << cmod_symbol << " ptr, int* length, SAM_error *err){\n";
-                fx_file << "\tfloat* result = nullptr;\n"
+                fx_file << "\tdouble* result = nullptr;\n"
                            "\ttranslateExceptions(err, [&]{\n"
                            "\tresult = ssc_data_get_array(ptr, \"" << var_name<< "\", length);\n"
                            "\tif (!result)\n"
@@ -292,9 +292,9 @@ void builder_C_API::create_SAM_definitions(const std::string &file_dir, const st
 
             }
             else if (vd.type == "matrix"){
-                fx_file << "SAM_EXPORT float* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
+                fx_file << "SAM_EXPORT double* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
                 fx_file << "mget(SAM_" << cmod_symbol << " ptr, int* nrows, int* ncols, SAM_error *err){\n";
-                fx_file << "\tfloat* result = nullptr;\n"
+                fx_file << "\tdouble* result = nullptr;\n"
                            "\ttranslateExceptions(err, [&]{\n"
                            "\tresult = ssc_data_get_matrix(ptr, \"" << var_name<< "\", nrows, ncols);\n"
                            "\tif (!result)\n"

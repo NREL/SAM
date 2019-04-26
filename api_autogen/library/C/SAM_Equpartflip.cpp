@@ -32,1496 +32,1496 @@ SAM_EXPORT void SAM_Equpartflip_destruct(SAM_Equpartflip system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_Equpartflip_FinancialParameters_analysis_period_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_analysis_period_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_FinancialParameters_federal_tax_rate_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_federal_tax_rate_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "federal_tax_rate", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_FinancialParameters_inflation_rate_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_inflation_rate_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inflation_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_FinancialParameters_insurance_rate_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_insurance_rate_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "insurance_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_FinancialParameters_prop_tax_assessed_decline_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_prop_tax_assessed_decline_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "prop_tax_assessed_decline", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_FinancialParameters_prop_tax_cost_assessed_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_prop_tax_cost_assessed_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "prop_tax_cost_assessed_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_FinancialParameters_property_tax_rate_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_property_tax_rate_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "property_tax_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_FinancialParameters_real_discount_rate_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_real_discount_rate_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "real_discount_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_FinancialParameters_state_tax_rate_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_state_tax_rate_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "state_tax_rate", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_FinancialParameters_system_capacity_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_system_capacity_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_FinancialParameters_system_heat_rate_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_system_heat_rate_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_heat_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_add_om_num_types_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_add_om_num_types_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "add_om_num_types", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_annual_fuel_usage_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_annual_fuel_usage_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "annual_fuel_usage", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_capacity", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity1_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity1_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_capacity1", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity1_nameplate_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity1_nameplate_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_capacity1_nameplate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity2_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity2_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_capacity2", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity2_nameplate_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity2_nameplate_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_capacity2_nameplate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_capacity_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_fixed", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed1_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed1_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_fixed1", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed2_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed2_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_fixed2", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_fixed_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuel_cost_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuel_cost_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_fuel_cost", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuel_cost_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuel_cost_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_fuel_cost_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_1_cost_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_1_cost_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_opt_fuel_1_cost", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_1_cost_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_1_cost_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_opt_fuel_1_cost_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_1_usage_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_1_usage_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_opt_fuel_1_usage", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_2_cost_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_2_cost_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_opt_fuel_2_cost", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_2_cost_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_2_cost_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_opt_fuel_2_cost_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_2_usage_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_opt_fuel_2_usage_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_opt_fuel_2_usage", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_production", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production1_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production1_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_production1", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production1_values_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production1_values_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_production1_values", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production2_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production2_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_production2", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production2_values_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production2_values_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_production2_values", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_production_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost1_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost1_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_replacement_cost1", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost2_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost2_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_replacement_cost2", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_replacement_cost_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_total_installed_cost_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_total_installed_cost_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "total_installed_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_maxvalue_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_maxvalue_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_maxvalue_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_maxvalue_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_fed_amount_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_fed_amount_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ptc_fed_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_fed_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_fed_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_fed_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_fed_term_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_fed_term_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_fed_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_sta_amount_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_sta_amount_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ptc_sta_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_sta_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_sta_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_sta_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_sta_term_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_ptc_sta_term_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_sta_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_amount_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_amount_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_maxvalue_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_maxvalue_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_fed_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_amount_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_amount_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_maxvalue_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_maxvalue_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_oth_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_amount_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_amount_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_maxvalue_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_maxvalue_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_sta_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_amount_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_amount_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_maxvalue_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_maxvalue_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_cbi_uti_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_amount_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_amount_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_maxvalue_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_maxvalue_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_amount_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_amount_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_maxvalue_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_maxvalue_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_amount_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_amount_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_maxvalue_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_maxvalue_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_amount_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_amount_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_deprbas_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_deprbas_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_deprbas_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_deprbas_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_maxvalue_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_maxvalue_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_fed_amount_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_fed_amount_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "pbi_fed_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_fed_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_fed_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_fed_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_fed_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_fed_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_fed_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_fed_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_fed_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_fed_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_fed_term_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_fed_term_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_fed_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_oth_amount_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_oth_amount_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "pbi_oth_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_oth_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_oth_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_oth_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_oth_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_oth_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_oth_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_oth_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_oth_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_oth_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_oth_term_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_oth_term_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_oth_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_sta_amount_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_sta_amount_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "pbi_sta_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_sta_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_sta_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_sta_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_sta_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_sta_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_sta_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_sta_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_sta_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_sta_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_sta_term_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_sta_term_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_sta_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_uti_amount_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_uti_amount_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "pbi_uti_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_uti_escal_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_uti_escal_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_uti_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_uti_tax_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_uti_tax_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_uti_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_uti_tax_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_uti_tax_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_uti_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_uti_term_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_PaymentIncentives_pbi_uti_term_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_uti_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Common_gen_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "gen", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Equpartflip_DHF_degradation_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemOutput_degradation_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "degradation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemOutput_system_capacity_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SystemOutput_gen_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "gen", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_SystemOutput_system_capacity_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Recapitalization_system_lifetime_recapitalize_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Recapitalization_system_lifetime_recapitalize_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "system_lifetime_recapitalize", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Recapitalization_system_recapitalization_cost_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Recapitalization_system_recapitalization_cost_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_recapitalization_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Recapitalization_system_recapitalization_escalation_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Recapitalization_system_recapitalization_escalation_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_recapitalization_escalation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Recapitalization_system_use_recapitalization_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Recapitalization_system_use_recapitalization_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_recapitalization", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor1_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor1_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dispatch_factor1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor2_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor2_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dispatch_factor2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor3_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor3_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dispatch_factor3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor4_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor4_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dispatch_factor4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor5_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor5_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dispatch_factor5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor6_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor6_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dispatch_factor6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor7_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor7_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dispatch_factor7", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor8_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor8_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dispatch_factor8", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor9_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factor9_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dispatch_factor9", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factors_ts_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_factors_ts_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_factors_ts", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_sched_weekday_mset(SAM_Equpartflip ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_sched_weekday_mset(SAM_Equpartflip ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_sched_weekday", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_sched_weekend_mset(SAM_Equpartflip ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_dispatch_sched_weekend_mset(SAM_Equpartflip ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_sched_weekend", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_ppa_multiplier_model_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_ppa_multiplier_model_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_multiplier_model", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_system_use_lifetime_output_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_system_use_lifetime_output_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip1_reserve_cost_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip1_reserve_cost_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip1_reserve_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip1_reserve_freq_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip1_reserve_freq_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip1_reserve_freq", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip2_reserve_cost_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip2_reserve_cost_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip2_reserve_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip2_reserve_freq_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip2_reserve_freq_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip2_reserve_freq", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip3_reserve_cost_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip3_reserve_cost_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip3_reserve_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip3_reserve_freq_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_equip3_reserve_freq_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip3_reserve_freq", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_reserves_interest_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_ReserveAccounts_reserves_interest_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "reserves_interest", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_custom_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_custom_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_custom_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_macrs_15_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_macrs_15_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_macrs_15_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_macrs_5_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_macrs_5_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_macrs_5_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_sl_15_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_sl_15_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_15_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_sl_20_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_sl_20_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_20_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_sl_39_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_sl_39_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_39_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_sl_5_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_alloc_sl_5_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_5_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_custom_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_custom_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_macrs_15_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_macrs_15_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_macrs_5_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_macrs_5_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_15_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_15_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_20_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_20_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_39_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_39_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_5_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_5_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_custom_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_custom_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_macrs_15_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_macrs_15_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_macrs_5_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_macrs_5_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_15_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_15_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_20_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_20_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_39_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_39_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_5_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_5_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_custom_schedule_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_custom_schedule_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "depr_custom_schedule", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_fedbas_method_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_fedbas_method_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_fedbas_method", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_custom_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_custom_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_macrs_15_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_macrs_15_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_macrs_5_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_macrs_5_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_sl_15_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_sl_15_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_sl_20_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_sl_20_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_sl_39_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_sl_39_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_sl_5_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_fed_sl_5_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_custom_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_custom_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_macrs_15_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_macrs_15_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_macrs_5_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_macrs_5_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_sl_15_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_sl_15_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_sl_20_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_sl_20_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_sl_39_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_sl_39_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_sl_5_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_itc_sta_sl_5_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_stabas_method_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_depr_stabas_method_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_stabas_method", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_equip_reserve_depr_fed_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_equip_reserve_depr_fed_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip_reserve_depr_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Depreciation_equip_reserve_depr_sta_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Depreciation_equip_reserve_depr_sta_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip_reserve_depr_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SalvageValue_salvage_percentage_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SalvageValue_salvage_percentage_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "salvage_percentage", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_escalation_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_escalation_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_escalation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_price_input_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_price_input_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_price_input", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_soln_max_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_soln_max_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_soln_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_soln_max_iterations_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_soln_max_iterations_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_soln_max_iterations", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_soln_min_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_soln_min_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_soln_min", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_soln_mode_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_soln_mode_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_soln_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_soln_tolerance_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_SolutionMode_ppa_soln_tolerance_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_soln_tolerance", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_ConstructionFinancing_construction_financing_cost_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_ConstructionFinancing_construction_financing_cost_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "construction_financing_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_OtherCapitalCosts_cost_dev_fee_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_OtherCapitalCosts_cost_dev_fee_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_dev_fee_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_OtherCapitalCosts_cost_equity_closing_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_OtherCapitalCosts_cost_equity_closing_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_equity_closing", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_OtherCapitalCosts_cost_other_financing_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_OtherCapitalCosts_cost_other_financing_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_other_financing", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_OtherCapitalCosts_months_receivables_reserve_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_OtherCapitalCosts_months_receivables_reserve_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "months_receivables_reserve", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_OtherCapitalCosts_months_working_reserve_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_OtherCapitalCosts_months_working_reserve_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "months_working_reserve", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_IRRTargets_flip_target_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_IRRTargets_flip_target_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flip_target_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_IRRTargets_flip_target_year_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_IRRTargets_flip_target_year_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flip_target_year", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_IRRTargets_tax_investor_equity_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_IRRTargets_tax_investor_equity_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tax_investor_equity_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_IRRTargets_tax_investor_postflip_cash_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_IRRTargets_tax_investor_postflip_cash_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tax_investor_postflip_cash_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_IRRTargets_tax_investor_postflip_tax_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_IRRTargets_tax_investor_postflip_tax_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tax_investor_postflip_tax_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_IRRTargets_tax_investor_preflip_cash_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_IRRTargets_tax_investor_preflip_cash_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tax_investor_preflip_cash_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_IRRTargets_tax_investor_preflip_tax_percent_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_IRRTargets_tax_investor_preflip_tax_percent_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tax_investor_preflip_tax_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_mode_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_mode_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sponsor_cap_recovery_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_year_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_year_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sponsor_cap_recovery_year", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Battery_batt_bank_replacement_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Battery_batt_bank_replacement_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_bank_replacement", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Battery_batt_computed_bank_capacity_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Battery_batt_computed_bank_capacity_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_computed_bank_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Battery_batt_replacement_option_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Battery_batt_replacement_option_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_replacement_option", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Battery_batt_replacement_schedule_aset(SAM_Equpartflip ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Battery_batt_replacement_schedule_aset(SAM_Equpartflip ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_replacement_schedule", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Battery_battery_per_kWh_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Battery_battery_per_kWh_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "battery_per_kWh", number);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_Battery_en_batt_fset(SAM_Equpartflip ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_Battery_en_batt_nset(SAM_Equpartflip ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_batt", number);
 	});
 }
 
-SAM_EXPORT float SAM_Equpartflip_FinancialParameters_analysis_period_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_FinancialParameters_analysis_period_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
 		make_access_error("SAM_Equpartflip", "analysis_period");
@@ -1531,8 +1531,8 @@ SAM_EXPORT float SAM_Equpartflip_FinancialParameters_analysis_period_fget(SAM_Eq
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_FinancialParameters_federal_tax_rate_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_FinancialParameters_federal_tax_rate_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "federal_tax_rate", length);
 	if (!result)
@@ -1543,8 +1543,8 @@ SAM_EXPORT float* SAM_Equpartflip_FinancialParameters_federal_tax_rate_aget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_FinancialParameters_inflation_rate_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_FinancialParameters_inflation_rate_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
 		make_access_error("SAM_Equpartflip", "inflation_rate");
@@ -1554,8 +1554,8 @@ SAM_EXPORT float SAM_Equpartflip_FinancialParameters_inflation_rate_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_FinancialParameters_insurance_rate_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_FinancialParameters_insurance_rate_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "insurance_rate", &result))
 		make_access_error("SAM_Equpartflip", "insurance_rate");
@@ -1565,8 +1565,8 @@ SAM_EXPORT float SAM_Equpartflip_FinancialParameters_insurance_rate_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_FinancialParameters_prop_tax_assessed_decline_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_FinancialParameters_prop_tax_assessed_decline_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "prop_tax_assessed_decline", &result))
 		make_access_error("SAM_Equpartflip", "prop_tax_assessed_decline");
@@ -1576,8 +1576,8 @@ SAM_EXPORT float SAM_Equpartflip_FinancialParameters_prop_tax_assessed_decline_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_FinancialParameters_prop_tax_cost_assessed_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_FinancialParameters_prop_tax_cost_assessed_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "prop_tax_cost_assessed_percent", &result))
 		make_access_error("SAM_Equpartflip", "prop_tax_cost_assessed_percent");
@@ -1587,8 +1587,8 @@ SAM_EXPORT float SAM_Equpartflip_FinancialParameters_prop_tax_cost_assessed_perc
 
 
 
-SAM_EXPORT float SAM_Equpartflip_FinancialParameters_property_tax_rate_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_FinancialParameters_property_tax_rate_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "property_tax_rate", &result))
 		make_access_error("SAM_Equpartflip", "property_tax_rate");
@@ -1598,8 +1598,8 @@ SAM_EXPORT float SAM_Equpartflip_FinancialParameters_property_tax_rate_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_FinancialParameters_real_discount_rate_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_FinancialParameters_real_discount_rate_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "real_discount_rate", &result))
 		make_access_error("SAM_Equpartflip", "real_discount_rate");
@@ -1609,8 +1609,8 @@ SAM_EXPORT float SAM_Equpartflip_FinancialParameters_real_discount_rate_fget(SAM
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_FinancialParameters_state_tax_rate_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_FinancialParameters_state_tax_rate_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "state_tax_rate", length);
 	if (!result)
@@ -1621,8 +1621,8 @@ SAM_EXPORT float* SAM_Equpartflip_FinancialParameters_state_tax_rate_aget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_FinancialParameters_system_capacity_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_FinancialParameters_system_capacity_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_Equpartflip", "system_capacity");
@@ -1632,8 +1632,8 @@ SAM_EXPORT float SAM_Equpartflip_FinancialParameters_system_capacity_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_FinancialParameters_system_heat_rate_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_FinancialParameters_system_heat_rate_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_heat_rate", &result))
 		make_access_error("SAM_Equpartflip", "system_heat_rate");
@@ -1643,8 +1643,8 @@ SAM_EXPORT float SAM_Equpartflip_FinancialParameters_system_heat_rate_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_add_om_num_types_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_add_om_num_types_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "add_om_num_types", &result))
 		make_access_error("SAM_Equpartflip", "add_om_num_types");
@@ -1654,8 +1654,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_add_om_num_types_fget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_annual_fuel_usage_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_annual_fuel_usage_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
 		make_access_error("SAM_Equpartflip", "annual_fuel_usage");
@@ -1665,8 +1665,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_annual_fuel_usage_fget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_capacity_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_capacity_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_capacity", length);
 	if (!result)
@@ -1677,8 +1677,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_capacity_aget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_capacity1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_capacity1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_capacity1", length);
 	if (!result)
@@ -1689,8 +1689,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_capacity1_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_capacity1_nameplate_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_capacity1_nameplate_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_capacity1_nameplate", &result))
 		make_access_error("SAM_Equpartflip", "om_capacity1_nameplate");
@@ -1700,8 +1700,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_capacity1_nameplate_fget(SAM_Equ
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_capacity2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_capacity2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_capacity2", length);
 	if (!result)
@@ -1712,8 +1712,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_capacity2_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_capacity2_nameplate_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_capacity2_nameplate_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_capacity2_nameplate", &result))
 		make_access_error("SAM_Equpartflip", "om_capacity2_nameplate");
@@ -1723,8 +1723,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_capacity2_nameplate_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_capacity_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_capacity_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_capacity_escal", &result))
 		make_access_error("SAM_Equpartflip", "om_capacity_escal");
@@ -1734,8 +1734,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_capacity_escal_fget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_fixed_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fixed_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_fixed", length);
 	if (!result)
@@ -1746,8 +1746,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_fixed_aget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_fixed1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fixed1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_fixed1", length);
 	if (!result)
@@ -1758,8 +1758,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_fixed1_aget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_fixed2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fixed2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_fixed2", length);
 	if (!result)
@@ -1770,8 +1770,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_fixed2_aget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_fixed_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_fixed_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_fixed_escal", &result))
 		make_access_error("SAM_Equpartflip", "om_fixed_escal");
@@ -1781,8 +1781,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_fixed_escal_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_fuel_cost_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fuel_cost_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_fuel_cost", length);
 	if (!result)
@@ -1793,8 +1793,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_fuel_cost_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_fuel_cost_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_fuel_cost_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_fuel_cost_escal", &result))
 		make_access_error("SAM_Equpartflip", "om_fuel_cost_escal");
@@ -1804,8 +1804,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_fuel_cost_escal_fget(SAM_Equpart
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_opt_fuel_1_cost_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_opt_fuel_1_cost_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_opt_fuel_1_cost", length);
 	if (!result)
@@ -1816,8 +1816,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_opt_fuel_1_cost_aget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_opt_fuel_1_cost_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_opt_fuel_1_cost_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_opt_fuel_1_cost_escal", &result))
 		make_access_error("SAM_Equpartflip", "om_opt_fuel_1_cost_escal");
@@ -1827,8 +1827,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_opt_fuel_1_cost_escal_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_opt_fuel_1_usage_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_opt_fuel_1_usage_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_opt_fuel_1_usage", &result))
 		make_access_error("SAM_Equpartflip", "om_opt_fuel_1_usage");
@@ -1838,8 +1838,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_opt_fuel_1_usage_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_opt_fuel_2_cost_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_opt_fuel_2_cost_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_opt_fuel_2_cost", length);
 	if (!result)
@@ -1850,8 +1850,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_opt_fuel_2_cost_aget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_opt_fuel_2_cost_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_opt_fuel_2_cost_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_opt_fuel_2_cost_escal", &result))
 		make_access_error("SAM_Equpartflip", "om_opt_fuel_2_cost_escal");
@@ -1861,8 +1861,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_opt_fuel_2_cost_escal_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_opt_fuel_2_usage_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_opt_fuel_2_usage_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_opt_fuel_2_usage", &result))
 		make_access_error("SAM_Equpartflip", "om_opt_fuel_2_usage");
@@ -1872,8 +1872,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_opt_fuel_2_usage_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_production_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_production", length);
 	if (!result)
@@ -1884,8 +1884,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_production_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_production1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_production1", length);
 	if (!result)
@@ -1896,8 +1896,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_production1_aget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_production1_values_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production1_values_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_production1_values", length);
 	if (!result)
@@ -1908,8 +1908,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_production1_values_aget(SAM_Equ
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_production2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_production2", length);
 	if (!result)
@@ -1920,8 +1920,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_production2_aget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_production2_values_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production2_values_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_production2_values", length);
 	if (!result)
@@ -1932,8 +1932,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_production2_values_aget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_production_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_production_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_production_escal", &result))
 		make_access_error("SAM_Equpartflip", "om_production_escal");
@@ -1943,8 +1943,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_production_escal_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_replacement_cost1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_replacement_cost1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_replacement_cost1", length);
 	if (!result)
@@ -1955,8 +1955,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_replacement_cost1_aget(SAM_Equp
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_replacement_cost2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_replacement_cost2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_replacement_cost2", length);
 	if (!result)
@@ -1967,8 +1967,8 @@ SAM_EXPORT float* SAM_Equpartflip_SystemCosts_om_replacement_cost2_aget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_replacement_cost_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_replacement_cost_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_replacement_cost_escal", &result))
 		make_access_error("SAM_Equpartflip", "om_replacement_cost_escal");
@@ -1978,8 +1978,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_om_replacement_cost_escal_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemCosts_total_installed_cost_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_total_installed_cost_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
 		make_access_error("SAM_Equpartflip", "total_installed_cost");
@@ -1989,8 +1989,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemCosts_total_installed_cost_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_amount", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_amount");
@@ -2000,8 +2000,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_amount_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_amount_deprbas_fed");
@@ -2011,8 +2011,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_fed_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_amount_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_amount_deprbas_sta");
@@ -2022,8 +2022,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_sta_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_percent", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_percent");
@@ -2033,8 +2033,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_percent_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_percent_deprbas_fed");
@@ -2044,8 +2044,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_fed
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_percent_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_percent_deprbas_sta");
@@ -2055,8 +2055,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_sta
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_maxvalue_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_maxvalue_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_percent_maxvalue", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_percent_maxvalue");
@@ -2066,8 +2066,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_maxvalue_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_amount", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_amount");
@@ -2077,8 +2077,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_amount_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_amount_deprbas_fed");
@@ -2088,8 +2088,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_fed_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_amount_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_amount_deprbas_sta");
@@ -2099,8 +2099,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_sta_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_percent", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_percent");
@@ -2110,8 +2110,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_percent_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_percent_deprbas_fed");
@@ -2121,8 +2121,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_fed
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_percent_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_percent_deprbas_sta");
@@ -2132,8 +2132,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_sta
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_maxvalue_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_maxvalue_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_percent_maxvalue", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_percent_maxvalue");
@@ -2143,8 +2143,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_maxvalue_fg
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_TaxCreditIncentives_ptc_fed_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_TaxCreditIncentives_ptc_fed_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ptc_fed_amount", length);
 	if (!result)
@@ -2155,8 +2155,8 @@ SAM_EXPORT float* SAM_Equpartflip_TaxCreditIncentives_ptc_fed_amount_aget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_ptc_fed_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_ptc_fed_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ptc_fed_escal", &result))
 		make_access_error("SAM_Equpartflip", "ptc_fed_escal");
@@ -2166,8 +2166,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_ptc_fed_escal_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_ptc_fed_term_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_ptc_fed_term_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ptc_fed_term", &result))
 		make_access_error("SAM_Equpartflip", "ptc_fed_term");
@@ -2177,8 +2177,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_ptc_fed_term_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_TaxCreditIncentives_ptc_sta_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_TaxCreditIncentives_ptc_sta_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ptc_sta_amount", length);
 	if (!result)
@@ -2189,8 +2189,8 @@ SAM_EXPORT float* SAM_Equpartflip_TaxCreditIncentives_ptc_sta_amount_aget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_ptc_sta_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_ptc_sta_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ptc_sta_escal", &result))
 		make_access_error("SAM_Equpartflip", "ptc_sta_escal");
@@ -2200,8 +2200,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_ptc_sta_escal_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_ptc_sta_term_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_ptc_sta_term_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ptc_sta_term", &result))
 		make_access_error("SAM_Equpartflip", "ptc_sta_term");
@@ -2211,8 +2211,8 @@ SAM_EXPORT float SAM_Equpartflip_TaxCreditIncentives_ptc_sta_term_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_amount_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_fed_amount_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_amount", &result))
 		make_access_error("SAM_Equpartflip", "cbi_fed_amount");
@@ -2222,8 +2222,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_amount_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_fed_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "cbi_fed_deprbas_fed");
@@ -2233,8 +2233,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_deprbas_fed_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_fed_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "cbi_fed_deprbas_sta");
@@ -2244,8 +2244,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_deprbas_sta_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_maxvalue_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_maxvalue", &result))
 		make_access_error("SAM_Equpartflip", "cbi_fed_maxvalue");
@@ -2255,8 +2255,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_maxvalue_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "cbi_fed_tax_fed");
@@ -2266,8 +2266,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_tax_fed_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "cbi_fed_tax_sta");
@@ -2277,8 +2277,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_fed_tax_sta_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_amount_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_oth_amount_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_amount", &result))
 		make_access_error("SAM_Equpartflip", "cbi_oth_amount");
@@ -2288,8 +2288,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_amount_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "cbi_oth_deprbas_fed");
@@ -2299,8 +2299,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_deprbas_fed_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_oth_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "cbi_oth_deprbas_sta");
@@ -2310,8 +2310,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_deprbas_sta_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_maxvalue_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_maxvalue", &result))
 		make_access_error("SAM_Equpartflip", "cbi_oth_maxvalue");
@@ -2321,8 +2321,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_maxvalue_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "cbi_oth_tax_fed");
@@ -2332,8 +2332,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_tax_fed_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "cbi_oth_tax_sta");
@@ -2343,8 +2343,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_oth_tax_sta_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_amount_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_sta_amount_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_amount", &result))
 		make_access_error("SAM_Equpartflip", "cbi_sta_amount");
@@ -2354,8 +2354,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_amount_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "cbi_sta_deprbas_fed");
@@ -2365,8 +2365,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_deprbas_fed_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_sta_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "cbi_sta_deprbas_sta");
@@ -2376,8 +2376,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_deprbas_sta_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_maxvalue_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_maxvalue", &result))
 		make_access_error("SAM_Equpartflip", "cbi_sta_maxvalue");
@@ -2387,8 +2387,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_maxvalue_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "cbi_sta_tax_fed");
@@ -2398,8 +2398,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_tax_fed_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "cbi_sta_tax_sta");
@@ -2409,8 +2409,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_sta_tax_sta_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_amount_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_uti_amount_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_amount", &result))
 		make_access_error("SAM_Equpartflip", "cbi_uti_amount");
@@ -2420,8 +2420,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_amount_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_uti_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "cbi_uti_deprbas_fed");
@@ -2431,8 +2431,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_deprbas_fed_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_uti_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "cbi_uti_deprbas_sta");
@@ -2442,8 +2442,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_deprbas_sta_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_maxvalue_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_maxvalue", &result))
 		make_access_error("SAM_Equpartflip", "cbi_uti_maxvalue");
@@ -2453,8 +2453,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_maxvalue_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "cbi_uti_tax_fed");
@@ -2464,8 +2464,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_tax_fed_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "cbi_uti_tax_sta");
@@ -2475,8 +2475,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_cbi_uti_tax_sta_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_amount", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fed_amount");
@@ -2486,8 +2486,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_amount_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fed_amount_deprbas_fed");
@@ -2497,8 +2497,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_deprbas_fed_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_amount_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fed_amount_deprbas_sta");
@@ -2508,8 +2508,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_deprbas_sta_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_amount_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fed_amount_tax_fed");
@@ -2519,8 +2519,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_tax_fed_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_amount_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fed_amount_tax_sta");
@@ -2530,8 +2530,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_amount_tax_sta_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fed_percent");
@@ -2541,8 +2541,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fed_percent_deprbas_fed");
@@ -2552,8 +2552,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_deprbas_fed_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fed_percent_deprbas_sta");
@@ -2563,8 +2563,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_deprbas_sta_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_maxvalue_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_maxvalue_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent_maxvalue", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fed_percent_maxvalue");
@@ -2574,8 +2574,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_maxvalue_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fed_percent_tax_fed");
@@ -2585,8 +2585,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_tax_fed_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fed_percent_tax_sta");
@@ -2596,8 +2596,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_fed_percent_tax_sta_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_amount", &result))
 		make_access_error("SAM_Equpartflip", "ibi_oth_amount");
@@ -2607,8 +2607,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_amount_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_oth_amount_deprbas_fed");
@@ -2618,8 +2618,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_deprbas_fed_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_amount_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_oth_amount_deprbas_sta");
@@ -2629,8 +2629,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_deprbas_sta_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_amount_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_oth_amount_tax_fed");
@@ -2640,8 +2640,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_tax_fed_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_amount_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_oth_amount_tax_sta");
@@ -2651,8 +2651,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_amount_tax_sta_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent", &result))
 		make_access_error("SAM_Equpartflip", "ibi_oth_percent");
@@ -2662,8 +2662,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_oth_percent_deprbas_fed");
@@ -2673,8 +2673,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_deprbas_fed_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_oth_percent_deprbas_sta");
@@ -2684,8 +2684,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_deprbas_sta_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_maxvalue_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_maxvalue_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent_maxvalue", &result))
 		make_access_error("SAM_Equpartflip", "ibi_oth_percent_maxvalue");
@@ -2695,8 +2695,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_maxvalue_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_oth_percent_tax_fed");
@@ -2706,8 +2706,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_tax_fed_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_oth_percent_tax_sta");
@@ -2717,8 +2717,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_oth_percent_tax_sta_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_amount", &result))
 		make_access_error("SAM_Equpartflip", "ibi_sta_amount");
@@ -2728,8 +2728,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_amount_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_sta_amount_deprbas_fed");
@@ -2739,8 +2739,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_deprbas_fed_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_amount_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_sta_amount_deprbas_sta");
@@ -2750,8 +2750,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_deprbas_sta_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_amount_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_sta_amount_tax_fed");
@@ -2761,8 +2761,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_tax_fed_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_amount_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_sta_amount_tax_sta");
@@ -2772,8 +2772,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_amount_tax_sta_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent", &result))
 		make_access_error("SAM_Equpartflip", "ibi_sta_percent");
@@ -2783,8 +2783,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_sta_percent_deprbas_fed");
@@ -2794,8 +2794,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_deprbas_fed_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_sta_percent_deprbas_sta");
@@ -2805,8 +2805,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_deprbas_sta_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_maxvalue_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_maxvalue_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent_maxvalue", &result))
 		make_access_error("SAM_Equpartflip", "ibi_sta_percent_maxvalue");
@@ -2816,8 +2816,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_maxvalue_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_sta_percent_tax_fed");
@@ -2827,8 +2827,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_tax_fed_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_sta_percent_tax_sta");
@@ -2838,8 +2838,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_sta_percent_tax_sta_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_amount", &result))
 		make_access_error("SAM_Equpartflip", "ibi_uti_amount");
@@ -2849,8 +2849,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_amount_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_uti_amount_deprbas_fed");
@@ -2860,8 +2860,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_deprbas_fed_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_amount_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_uti_amount_deprbas_sta");
@@ -2871,8 +2871,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_deprbas_sta_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_amount_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_uti_amount_tax_fed");
@@ -2882,8 +2882,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_tax_fed_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_amount_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_uti_amount_tax_sta");
@@ -2893,8 +2893,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_amount_tax_sta_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent", &result))
 		make_access_error("SAM_Equpartflip", "ibi_uti_percent");
@@ -2904,8 +2904,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_deprbas_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_deprbas_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent_deprbas_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_uti_percent_deprbas_fed");
@@ -2915,8 +2915,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_deprbas_fed_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_deprbas_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_deprbas_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent_deprbas_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_uti_percent_deprbas_sta");
@@ -2926,8 +2926,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_deprbas_sta_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_maxvalue_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_maxvalue_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent_maxvalue", &result))
 		make_access_error("SAM_Equpartflip", "ibi_uti_percent_maxvalue");
@@ -2937,8 +2937,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_maxvalue_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_uti_percent_tax_fed");
@@ -2948,8 +2948,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_tax_fed_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_uti_percent_tax_sta");
@@ -2959,8 +2959,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_ibi_uti_percent_tax_sta_fget(
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_PaymentIncentives_pbi_fed_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_PaymentIncentives_pbi_fed_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pbi_fed_amount", length);
 	if (!result)
@@ -2971,8 +2971,8 @@ SAM_EXPORT float* SAM_Equpartflip_PaymentIncentives_pbi_fed_amount_aget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_fed_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_fed_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_fed_escal", &result))
 		make_access_error("SAM_Equpartflip", "pbi_fed_escal");
@@ -2982,8 +2982,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_fed_escal_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_fed_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_fed_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "pbi_fed_tax_fed");
@@ -2993,8 +2993,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_fed_tax_fed_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_fed_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_fed_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "pbi_fed_tax_sta");
@@ -3004,8 +3004,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_fed_tax_sta_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_fed_term_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_fed_term_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_fed_term", &result))
 		make_access_error("SAM_Equpartflip", "pbi_fed_term");
@@ -3015,8 +3015,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_fed_term_fget(SAM_Equpart
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_PaymentIncentives_pbi_oth_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_PaymentIncentives_pbi_oth_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pbi_oth_amount", length);
 	if (!result)
@@ -3027,8 +3027,8 @@ SAM_EXPORT float* SAM_Equpartflip_PaymentIncentives_pbi_oth_amount_aget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_oth_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_oth_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_oth_escal", &result))
 		make_access_error("SAM_Equpartflip", "pbi_oth_escal");
@@ -3038,8 +3038,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_oth_escal_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_oth_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_oth_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "pbi_oth_tax_fed");
@@ -3049,8 +3049,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_oth_tax_fed_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_oth_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_oth_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "pbi_oth_tax_sta");
@@ -3060,8 +3060,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_oth_tax_sta_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_oth_term_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_oth_term_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_oth_term", &result))
 		make_access_error("SAM_Equpartflip", "pbi_oth_term");
@@ -3071,8 +3071,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_oth_term_fget(SAM_Equpart
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_PaymentIncentives_pbi_sta_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_PaymentIncentives_pbi_sta_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pbi_sta_amount", length);
 	if (!result)
@@ -3083,8 +3083,8 @@ SAM_EXPORT float* SAM_Equpartflip_PaymentIncentives_pbi_sta_amount_aget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_sta_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_sta_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_sta_escal", &result))
 		make_access_error("SAM_Equpartflip", "pbi_sta_escal");
@@ -3094,8 +3094,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_sta_escal_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_sta_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_sta_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "pbi_sta_tax_fed");
@@ -3105,8 +3105,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_sta_tax_fed_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_sta_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_sta_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "pbi_sta_tax_sta");
@@ -3116,8 +3116,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_sta_tax_sta_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_sta_term_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_sta_term_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_sta_term", &result))
 		make_access_error("SAM_Equpartflip", "pbi_sta_term");
@@ -3127,8 +3127,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_sta_term_fget(SAM_Equpart
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_PaymentIncentives_pbi_uti_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_PaymentIncentives_pbi_uti_amount_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pbi_uti_amount", length);
 	if (!result)
@@ -3139,8 +3139,8 @@ SAM_EXPORT float* SAM_Equpartflip_PaymentIncentives_pbi_uti_amount_aget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_uti_escal_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_uti_escal_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_uti_escal", &result))
 		make_access_error("SAM_Equpartflip", "pbi_uti_escal");
@@ -3150,8 +3150,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_uti_escal_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_uti_tax_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_uti_tax_fed", &result))
 		make_access_error("SAM_Equpartflip", "pbi_uti_tax_fed");
@@ -3161,8 +3161,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_uti_tax_fed_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_uti_tax_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_uti_tax_sta", &result))
 		make_access_error("SAM_Equpartflip", "pbi_uti_tax_sta");
@@ -3172,8 +3172,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_uti_tax_sta_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_uti_term_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_PaymentIncentives_pbi_uti_term_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_uti_term", &result))
 		make_access_error("SAM_Equpartflip", "pbi_uti_term");
@@ -3183,20 +3183,8 @@ SAM_EXPORT float SAM_Equpartflip_PaymentIncentives_pbi_uti_term_fget(SAM_Equpart
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Common_gen_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "gen", length);
-	if (!result)
-		make_access_error("SAM_Equpartflip", "gen");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT float* SAM_Equpartflip_DHF_degradation_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_SystemOutput_degradation_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "degradation", length);
 	if (!result)
@@ -3207,8 +3195,20 @@ SAM_EXPORT float* SAM_Equpartflip_DHF_degradation_aget(SAM_Equpartflip ptr, int*
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SystemOutput_system_capacity_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double* SAM_Equpartflip_SystemOutput_gen_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_SystemOutput_system_capacity_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_Equpartflip", "system_capacity");
@@ -3218,8 +3218,8 @@ SAM_EXPORT float SAM_Equpartflip_SystemOutput_system_capacity_fget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Recapitalization_system_lifetime_recapitalize_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Recapitalization_system_lifetime_recapitalize_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "system_lifetime_recapitalize", length);
 	if (!result)
@@ -3230,8 +3230,8 @@ SAM_EXPORT float* SAM_Equpartflip_Recapitalization_system_lifetime_recapitalize_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Recapitalization_system_recapitalization_cost_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Recapitalization_system_recapitalization_cost_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_recapitalization_cost", &result))
 		make_access_error("SAM_Equpartflip", "system_recapitalization_cost");
@@ -3241,8 +3241,8 @@ SAM_EXPORT float SAM_Equpartflip_Recapitalization_system_recapitalization_cost_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Recapitalization_system_recapitalization_escalation_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Recapitalization_system_recapitalization_escalation_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_recapitalization_escalation", &result))
 		make_access_error("SAM_Equpartflip", "system_recapitalization_escalation");
@@ -3252,8 +3252,8 @@ SAM_EXPORT float SAM_Equpartflip_Recapitalization_system_recapitalization_escala
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Recapitalization_system_use_recapitalization_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Recapitalization_system_use_recapitalization_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_recapitalization", &result))
 		make_access_error("SAM_Equpartflip", "system_use_recapitalization");
@@ -3263,8 +3263,8 @@ SAM_EXPORT float SAM_Equpartflip_Recapitalization_system_use_recapitalization_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor1_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_dispatch_factor1_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dispatch_factor1", &result))
 		make_access_error("SAM_Equpartflip", "dispatch_factor1");
@@ -3274,8 +3274,8 @@ SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor1_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor2_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_dispatch_factor2_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dispatch_factor2", &result))
 		make_access_error("SAM_Equpartflip", "dispatch_factor2");
@@ -3285,8 +3285,8 @@ SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor2_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor3_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_dispatch_factor3_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dispatch_factor3", &result))
 		make_access_error("SAM_Equpartflip", "dispatch_factor3");
@@ -3296,8 +3296,8 @@ SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor3_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor4_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_dispatch_factor4_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dispatch_factor4", &result))
 		make_access_error("SAM_Equpartflip", "dispatch_factor4");
@@ -3307,8 +3307,8 @@ SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor4_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_dispatch_factor5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dispatch_factor5", &result))
 		make_access_error("SAM_Equpartflip", "dispatch_factor5");
@@ -3318,8 +3318,8 @@ SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor5_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor6_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_dispatch_factor6_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dispatch_factor6", &result))
 		make_access_error("SAM_Equpartflip", "dispatch_factor6");
@@ -3329,8 +3329,8 @@ SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor6_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor7_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_dispatch_factor7_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dispatch_factor7", &result))
 		make_access_error("SAM_Equpartflip", "dispatch_factor7");
@@ -3340,8 +3340,8 @@ SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor7_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor8_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_dispatch_factor8_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dispatch_factor8", &result))
 		make_access_error("SAM_Equpartflip", "dispatch_factor8");
@@ -3351,8 +3351,8 @@ SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor8_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor9_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_dispatch_factor9_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dispatch_factor9", &result))
 		make_access_error("SAM_Equpartflip", "dispatch_factor9");
@@ -3362,8 +3362,8 @@ SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_dispatch_factor9_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_TimeOfDelivery_dispatch_factors_ts_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_TimeOfDelivery_dispatch_factors_ts_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dispatch_factors_ts", length);
 	if (!result)
@@ -3374,8 +3374,8 @@ SAM_EXPORT float* SAM_Equpartflip_TimeOfDelivery_dispatch_factors_ts_aget(SAM_Eq
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_TimeOfDelivery_dispatch_sched_weekday_mget(SAM_Equpartflip ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_TimeOfDelivery_dispatch_sched_weekday_mget(SAM_Equpartflip ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekday", nrows, ncols);
 	if (!result)
@@ -3386,8 +3386,8 @@ SAM_EXPORT float* SAM_Equpartflip_TimeOfDelivery_dispatch_sched_weekday_mget(SAM
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_TimeOfDelivery_dispatch_sched_weekend_mget(SAM_Equpartflip ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_TimeOfDelivery_dispatch_sched_weekend_mget(SAM_Equpartflip ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekend", nrows, ncols);
 	if (!result)
@@ -3398,8 +3398,8 @@ SAM_EXPORT float* SAM_Equpartflip_TimeOfDelivery_dispatch_sched_weekend_mget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_ppa_multiplier_model_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_ppa_multiplier_model_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_multiplier_model", &result))
 		make_access_error("SAM_Equpartflip", "ppa_multiplier_model");
@@ -3409,8 +3409,8 @@ SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_ppa_multiplier_model_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_system_use_lifetime_output_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_system_use_lifetime_output_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
 		make_access_error("SAM_Equpartflip", "system_use_lifetime_output");
@@ -3420,8 +3420,8 @@ SAM_EXPORT float SAM_Equpartflip_TimeOfDelivery_system_use_lifetime_output_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip1_reserve_cost_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_ReserveAccounts_equip1_reserve_cost_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip1_reserve_cost", &result))
 		make_access_error("SAM_Equpartflip", "equip1_reserve_cost");
@@ -3431,8 +3431,8 @@ SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip1_reserve_cost_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip1_reserve_freq_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_ReserveAccounts_equip1_reserve_freq_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip1_reserve_freq", &result))
 		make_access_error("SAM_Equpartflip", "equip1_reserve_freq");
@@ -3442,8 +3442,8 @@ SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip1_reserve_freq_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip2_reserve_cost_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_ReserveAccounts_equip2_reserve_cost_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip2_reserve_cost", &result))
 		make_access_error("SAM_Equpartflip", "equip2_reserve_cost");
@@ -3453,8 +3453,8 @@ SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip2_reserve_cost_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip2_reserve_freq_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_ReserveAccounts_equip2_reserve_freq_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip2_reserve_freq", &result))
 		make_access_error("SAM_Equpartflip", "equip2_reserve_freq");
@@ -3464,8 +3464,8 @@ SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip2_reserve_freq_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip3_reserve_cost_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_ReserveAccounts_equip3_reserve_cost_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip3_reserve_cost", &result))
 		make_access_error("SAM_Equpartflip", "equip3_reserve_cost");
@@ -3475,8 +3475,8 @@ SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip3_reserve_cost_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip3_reserve_freq_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_ReserveAccounts_equip3_reserve_freq_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip3_reserve_freq", &result))
 		make_access_error("SAM_Equpartflip", "equip3_reserve_freq");
@@ -3486,8 +3486,8 @@ SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_equip3_reserve_freq_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_reserves_interest_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_ReserveAccounts_reserves_interest_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "reserves_interest", &result))
 		make_access_error("SAM_Equpartflip", "reserves_interest");
@@ -3497,8 +3497,8 @@ SAM_EXPORT float SAM_Equpartflip_ReserveAccounts_reserves_interest_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_custom_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_alloc_custom_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_custom_percent", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_custom_percent");
@@ -3508,8 +3508,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_custom_percent_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_macrs_15_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_alloc_macrs_15_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_15_percent", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_macrs_15_percent");
@@ -3519,8 +3519,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_macrs_15_percent_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_macrs_5_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_alloc_macrs_5_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_5_percent", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_macrs_5_percent");
@@ -3530,8 +3530,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_macrs_5_percent_fget(SA
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_sl_15_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_alloc_sl_15_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_15_percent", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_sl_15_percent");
@@ -3541,8 +3541,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_sl_15_percent_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_sl_20_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_alloc_sl_20_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_20_percent", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_sl_20_percent");
@@ -3552,8 +3552,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_sl_20_percent_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_sl_39_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_alloc_sl_39_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_39_percent", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_sl_39_percent");
@@ -3563,8 +3563,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_sl_39_percent_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_sl_5_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_alloc_sl_5_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_5_percent", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_sl_5_percent");
@@ -3574,8 +3574,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_alloc_sl_5_percent_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_fed");
@@ -3585,8 +3585,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_fed_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_fed_custom");
@@ -3596,8 +3596,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_custom_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_fed_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_fed_macrs_15");
@@ -3607,8 +3607,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_macrs_15_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_fed_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_fed_macrs_5");
@@ -3618,8 +3618,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_macrs_5_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_fed_sl_15");
@@ -3629,8 +3629,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_15_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_fed_sl_20");
@@ -3640,8 +3640,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_20_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_fed_sl_39");
@@ -3651,8 +3651,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_39_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_fed_sl_5");
@@ -3662,8 +3662,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_fed_sl_5_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_sta");
@@ -3673,8 +3673,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_sta_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_sta_custom");
@@ -3684,8 +3684,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_custom_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_sta_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_sta_macrs_15");
@@ -3695,8 +3695,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_macrs_15_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_sta_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_sta_macrs_5");
@@ -3706,8 +3706,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_macrs_5_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_sta_sl_15");
@@ -3717,8 +3717,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_15_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_sta_sl_20");
@@ -3728,8 +3728,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_20_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_sta_sl_39");
@@ -3739,8 +3739,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_39_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_bonus_sta_sl_5");
@@ -3750,8 +3750,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_bonus_sta_sl_5_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Depreciation_depr_custom_schedule_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Depreciation_depr_custom_schedule_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "depr_custom_schedule", length);
 	if (!result)
@@ -3762,8 +3762,8 @@ SAM_EXPORT float* SAM_Equpartflip_Depreciation_depr_custom_schedule_aget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_fedbas_method_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_fedbas_method_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_method", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_method");
@@ -3773,8 +3773,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_fedbas_method_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_fed_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_fed_custom");
@@ -3784,8 +3784,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_custom_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_fed_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_fed_macrs_15");
@@ -3795,8 +3795,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_macrs_15_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_fed_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_fed_macrs_5");
@@ -3806,8 +3806,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_macrs_5_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_fed_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_fed_sl_15");
@@ -3817,8 +3817,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_sl_15_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_fed_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_fed_sl_20");
@@ -3828,8 +3828,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_sl_20_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_fed_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_fed_sl_39");
@@ -3839,8 +3839,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_sl_39_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_fed_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_fed_sl_5");
@@ -3850,8 +3850,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_fed_sl_5_fget(SAM_Equpart
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_sta_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_sta_custom");
@@ -3861,8 +3861,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_custom_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_sta_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_sta_macrs_15");
@@ -3872,8 +3872,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_macrs_15_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_sta_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_sta_macrs_5");
@@ -3883,8 +3883,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_macrs_5_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_sta_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_sta_sl_15");
@@ -3894,8 +3894,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_sl_15_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_sta_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_sta_sl_20");
@@ -3905,8 +3905,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_sl_20_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_sta_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_sta_sl_39");
@@ -3916,8 +3916,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_sl_39_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_itc_sta_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_itc_sta_sl_5");
@@ -3927,8 +3927,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_itc_sta_sl_5_fget(SAM_Equpart
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_stabas_method_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_depr_stabas_method_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_method", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_method");
@@ -3938,8 +3938,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_depr_stabas_method_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_equip_reserve_depr_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_equip_reserve_depr_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip_reserve_depr_fed", &result))
 		make_access_error("SAM_Equpartflip", "equip_reserve_depr_fed");
@@ -3949,8 +3949,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_equip_reserve_depr_fed_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Depreciation_equip_reserve_depr_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Depreciation_equip_reserve_depr_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip_reserve_depr_sta", &result))
 		make_access_error("SAM_Equpartflip", "equip_reserve_depr_sta");
@@ -3960,8 +3960,8 @@ SAM_EXPORT float SAM_Equpartflip_Depreciation_equip_reserve_depr_sta_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SalvageValue_salvage_percentage_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SalvageValue_salvage_percentage_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "salvage_percentage", &result))
 		make_access_error("SAM_Equpartflip", "salvage_percentage");
@@ -3971,8 +3971,8 @@ SAM_EXPORT float SAM_Equpartflip_SalvageValue_salvage_percentage_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_escalation_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SolutionMode_ppa_escalation_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_escalation", &result))
 		make_access_error("SAM_Equpartflip", "ppa_escalation");
@@ -3982,8 +3982,8 @@ SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_escalation_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_price_input_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SolutionMode_ppa_price_input_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_price_input", &result))
 		make_access_error("SAM_Equpartflip", "ppa_price_input");
@@ -3993,8 +3993,8 @@ SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_price_input_fget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_soln_max_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SolutionMode_ppa_soln_max_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_soln_max", &result))
 		make_access_error("SAM_Equpartflip", "ppa_soln_max");
@@ -4004,8 +4004,8 @@ SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_soln_max_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_soln_max_iterations_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SolutionMode_ppa_soln_max_iterations_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_soln_max_iterations", &result))
 		make_access_error("SAM_Equpartflip", "ppa_soln_max_iterations");
@@ -4015,8 +4015,8 @@ SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_soln_max_iterations_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_soln_min_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SolutionMode_ppa_soln_min_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_soln_min", &result))
 		make_access_error("SAM_Equpartflip", "ppa_soln_min");
@@ -4026,8 +4026,8 @@ SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_soln_min_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_soln_mode_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SolutionMode_ppa_soln_mode_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_soln_mode", &result))
 		make_access_error("SAM_Equpartflip", "ppa_soln_mode");
@@ -4037,8 +4037,8 @@ SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_soln_mode_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_soln_tolerance_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_SolutionMode_ppa_soln_tolerance_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_soln_tolerance", &result))
 		make_access_error("SAM_Equpartflip", "ppa_soln_tolerance");
@@ -4048,8 +4048,8 @@ SAM_EXPORT float SAM_Equpartflip_SolutionMode_ppa_soln_tolerance_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_ConstructionFinancing_construction_financing_cost_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_ConstructionFinancing_construction_financing_cost_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "construction_financing_cost", &result))
 		make_access_error("SAM_Equpartflip", "construction_financing_cost");
@@ -4059,8 +4059,8 @@ SAM_EXPORT float SAM_Equpartflip_ConstructionFinancing_construction_financing_co
 
 
 
-SAM_EXPORT float SAM_Equpartflip_OtherCapitalCosts_cost_dev_fee_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_OtherCapitalCosts_cost_dev_fee_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_dev_fee_percent", &result))
 		make_access_error("SAM_Equpartflip", "cost_dev_fee_percent");
@@ -4070,8 +4070,8 @@ SAM_EXPORT float SAM_Equpartflip_OtherCapitalCosts_cost_dev_fee_percent_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_OtherCapitalCosts_cost_equity_closing_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_OtherCapitalCosts_cost_equity_closing_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_equity_closing", &result))
 		make_access_error("SAM_Equpartflip", "cost_equity_closing");
@@ -4081,8 +4081,8 @@ SAM_EXPORT float SAM_Equpartflip_OtherCapitalCosts_cost_equity_closing_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_OtherCapitalCosts_cost_other_financing_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_OtherCapitalCosts_cost_other_financing_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_other_financing", &result))
 		make_access_error("SAM_Equpartflip", "cost_other_financing");
@@ -4092,8 +4092,8 @@ SAM_EXPORT float SAM_Equpartflip_OtherCapitalCosts_cost_other_financing_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_OtherCapitalCosts_months_receivables_reserve_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_OtherCapitalCosts_months_receivables_reserve_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "months_receivables_reserve", &result))
 		make_access_error("SAM_Equpartflip", "months_receivables_reserve");
@@ -4103,8 +4103,8 @@ SAM_EXPORT float SAM_Equpartflip_OtherCapitalCosts_months_receivables_reserve_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_OtherCapitalCosts_months_working_reserve_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_OtherCapitalCosts_months_working_reserve_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "months_working_reserve", &result))
 		make_access_error("SAM_Equpartflip", "months_working_reserve");
@@ -4114,8 +4114,8 @@ SAM_EXPORT float SAM_Equpartflip_OtherCapitalCosts_months_working_reserve_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_IRRTargets_flip_target_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_IRRTargets_flip_target_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_percent", &result))
 		make_access_error("SAM_Equpartflip", "flip_target_percent");
@@ -4125,8 +4125,8 @@ SAM_EXPORT float SAM_Equpartflip_IRRTargets_flip_target_percent_fget(SAM_Equpart
 
 
 
-SAM_EXPORT float SAM_Equpartflip_IRRTargets_flip_target_year_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_IRRTargets_flip_target_year_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_year", &result))
 		make_access_error("SAM_Equpartflip", "flip_target_year");
@@ -4136,8 +4136,8 @@ SAM_EXPORT float SAM_Equpartflip_IRRTargets_flip_target_year_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_IRRTargets_tax_investor_equity_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_IRRTargets_tax_investor_equity_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tax_investor_equity_percent", &result))
 		make_access_error("SAM_Equpartflip", "tax_investor_equity_percent");
@@ -4147,8 +4147,8 @@ SAM_EXPORT float SAM_Equpartflip_IRRTargets_tax_investor_equity_percent_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_IRRTargets_tax_investor_postflip_cash_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_IRRTargets_tax_investor_postflip_cash_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tax_investor_postflip_cash_percent", &result))
 		make_access_error("SAM_Equpartflip", "tax_investor_postflip_cash_percent");
@@ -4158,8 +4158,8 @@ SAM_EXPORT float SAM_Equpartflip_IRRTargets_tax_investor_postflip_cash_percent_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_IRRTargets_tax_investor_postflip_tax_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_IRRTargets_tax_investor_postflip_tax_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tax_investor_postflip_tax_percent", &result))
 		make_access_error("SAM_Equpartflip", "tax_investor_postflip_tax_percent");
@@ -4169,8 +4169,8 @@ SAM_EXPORT float SAM_Equpartflip_IRRTargets_tax_investor_postflip_tax_percent_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_IRRTargets_tax_investor_preflip_cash_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_IRRTargets_tax_investor_preflip_cash_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tax_investor_preflip_cash_percent", &result))
 		make_access_error("SAM_Equpartflip", "tax_investor_preflip_cash_percent");
@@ -4180,8 +4180,8 @@ SAM_EXPORT float SAM_Equpartflip_IRRTargets_tax_investor_preflip_cash_percent_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_IRRTargets_tax_investor_preflip_tax_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_IRRTargets_tax_investor_preflip_tax_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tax_investor_preflip_tax_percent", &result))
 		make_access_error("SAM_Equpartflip", "tax_investor_preflip_tax_percent");
@@ -4191,8 +4191,8 @@ SAM_EXPORT float SAM_Equpartflip_IRRTargets_tax_investor_preflip_tax_percent_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_mode_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_mode_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_cap_recovery_mode", &result))
 		make_access_error("SAM_Equpartflip", "sponsor_cap_recovery_mode");
@@ -4202,8 +4202,8 @@ SAM_EXPORT float SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_m
 
 
 
-SAM_EXPORT float SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_year_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_year_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_cap_recovery_year", &result))
 		make_access_error("SAM_Equpartflip", "sponsor_cap_recovery_year");
@@ -4213,8 +4213,8 @@ SAM_EXPORT float SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_y
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Battery_batt_bank_replacement_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Battery_batt_bank_replacement_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_bank_replacement", length);
 	if (!result)
@@ -4225,8 +4225,8 @@ SAM_EXPORT float* SAM_Equpartflip_Battery_batt_bank_replacement_aget(SAM_Equpart
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Battery_batt_computed_bank_capacity_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Battery_batt_computed_bank_capacity_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_computed_bank_capacity", &result))
 		make_access_error("SAM_Equpartflip", "batt_computed_bank_capacity");
@@ -4236,8 +4236,8 @@ SAM_EXPORT float SAM_Equpartflip_Battery_batt_computed_bank_capacity_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Battery_batt_replacement_option_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Battery_batt_replacement_option_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_replacement_option", &result))
 		make_access_error("SAM_Equpartflip", "batt_replacement_option");
@@ -4247,8 +4247,8 @@ SAM_EXPORT float SAM_Equpartflip_Battery_batt_replacement_option_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Battery_batt_replacement_schedule_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Battery_batt_replacement_schedule_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_replacement_schedule", length);
 	if (!result)
@@ -4259,8 +4259,8 @@ SAM_EXPORT float* SAM_Equpartflip_Battery_batt_replacement_schedule_aget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Battery_battery_per_kWh_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Battery_battery_per_kWh_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "battery_per_kWh", &result))
 		make_access_error("SAM_Equpartflip", "battery_per_kWh");
@@ -4270,8 +4270,8 @@ SAM_EXPORT float SAM_Equpartflip_Battery_battery_per_kWh_fget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Battery_en_batt_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Battery_en_batt_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_batt", &result))
 		make_access_error("SAM_Equpartflip", "en_batt");
@@ -4281,8 +4281,8 @@ SAM_EXPORT float SAM_Equpartflip_Battery_en_batt_fget(SAM_Equpartflip ptr, SAM_e
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_adjusted_installed_cost_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_adjusted_installed_cost_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "adjusted_installed_cost", &result))
 		make_access_error("SAM_Equpartflip", "adjusted_installed_cost");
@@ -4292,8 +4292,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_adjusted_installed_cost_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_analysis_period_irr_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_analysis_period_irr_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period_irr", &result))
 		make_access_error("SAM_Equpartflip", "analysis_period_irr");
@@ -4303,8 +4303,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_analysis_period_irr_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_fedtax_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cbi_fedtax_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fedtax_total", &result))
 		make_access_error("SAM_Equpartflip", "cbi_fedtax_total");
@@ -4314,8 +4314,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_fedtax_total_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_statax_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cbi_statax_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_statax_total", &result))
 		make_access_error("SAM_Equpartflip", "cbi_statax_total");
@@ -4325,8 +4325,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_statax_total_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cbi_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_total", &result))
 		make_access_error("SAM_Equpartflip", "cbi_total");
@@ -4336,8 +4336,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_total_fget(SAM_Equpartflip ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_total_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cbi_total_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_total_fed", &result))
 		make_access_error("SAM_Equpartflip", "cbi_total_fed");
@@ -4347,8 +4347,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_total_fed_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_total_oth_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cbi_total_oth_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_total_oth", &result))
 		make_access_error("SAM_Equpartflip", "cbi_total_oth");
@@ -4358,8 +4358,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_total_oth_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_total_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cbi_total_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_total_sta", &result))
 		make_access_error("SAM_Equpartflip", "cbi_total_sta");
@@ -4369,8 +4369,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_total_sta_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_total_uti_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cbi_total_uti_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_total_uti", &result))
 		make_access_error("SAM_Equpartflip", "cbi_total_uti");
@@ -4380,8 +4380,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cbi_total_uti_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_annual_costs_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_annual_costs_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_annual_costs", length);
 	if (!result)
@@ -4392,8 +4392,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_annual_costs_aget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_battery_replacement_cost_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_battery_replacement_cost_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_battery_replacement_cost", length);
 	if (!result)
@@ -4404,8 +4404,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_battery_replacement_cost_aget(SAM_E
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_battery_replacement_cost_schedule", length);
 	if (!result)
@@ -4416,8 +4416,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_battery_replacement_cost_schedule_a
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_disbursement_equip1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_disbursement_equip1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_disbursement_equip1", length);
 	if (!result)
@@ -4428,8 +4428,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_disbursement_equip1_aget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_disbursement_equip2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_disbursement_equip2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_disbursement_equip2", length);
 	if (!result)
@@ -4440,8 +4440,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_disbursement_equip2_aget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_disbursement_equip3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_disbursement_equip3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_disbursement_equip3", length);
 	if (!result)
@@ -4452,8 +4452,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_disbursement_equip3_aget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_disbursement_om_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_disbursement_om_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_disbursement_om", length);
 	if (!result)
@@ -4464,8 +4464,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_disbursement_om_aget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_disbursement_receivables_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_disbursement_receivables_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_disbursement_receivables", length);
 	if (!result)
@@ -4476,8 +4476,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_disbursement_receivables_aget(SAM_E
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_ebitda_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_ebitda_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ebitda", length);
 	if (!result)
@@ -4488,8 +4488,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_ebitda_aget(SAM_Equpartflip ptr, in
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_effective_tax_frac_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_effective_tax_frac_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_effective_tax_frac", length);
 	if (!result)
@@ -4500,8 +4500,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_effective_tax_frac_aget(SAM_Equpart
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net", length);
 	if (!result)
@@ -4512,8 +4512,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_aget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_apr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_apr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_apr", length);
 	if (!result)
@@ -4524,8 +4524,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_apr_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_aug_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_aug_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_aug", length);
 	if (!result)
@@ -4536,8 +4536,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_aug_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dec_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_dec_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_dec", length);
 	if (!result)
@@ -4548,8 +4548,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dec_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_dispatch1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch1", length);
 	if (!result)
@@ -4560,8 +4560,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch1_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_dispatch2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch2", length);
 	if (!result)
@@ -4572,8 +4572,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch2_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_dispatch3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch3", length);
 	if (!result)
@@ -4584,8 +4584,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch3_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch4_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_dispatch4_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch4", length);
 	if (!result)
@@ -4596,8 +4596,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch4_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_dispatch5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch5", length);
 	if (!result)
@@ -4608,8 +4608,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch5_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch6_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_dispatch6_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch6", length);
 	if (!result)
@@ -4620,8 +4620,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch6_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch7_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_dispatch7_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch7", length);
 	if (!result)
@@ -4632,8 +4632,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch7_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch8_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_dispatch8_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch8", length);
 	if (!result)
@@ -4644,8 +4644,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch8_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch9_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_dispatch9_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch9", length);
 	if (!result)
@@ -4656,8 +4656,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_dispatch9_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_feb_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_feb_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_feb", length);
 	if (!result)
@@ -4668,8 +4668,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_feb_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_jan_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_jan_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_jan", length);
 	if (!result)
@@ -4680,8 +4680,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_jan_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_jul_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_jul_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_jul", length);
 	if (!result)
@@ -4692,8 +4692,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_jul_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_jun_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_jun_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_jun", length);
 	if (!result)
@@ -4704,8 +4704,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_jun_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_mar_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_mar_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_mar", length);
 	if (!result)
@@ -4716,8 +4716,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_mar_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_may_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_may_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_may", length);
 	if (!result)
@@ -4728,8 +4728,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_may_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD1", length);
 	if (!result)
@@ -4740,8 +4740,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD1_a
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD2", length);
 	if (!result)
@@ -4752,8 +4752,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD2_a
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD3", length);
 	if (!result)
@@ -4764,8 +4764,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD3_a
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD4_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD4_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD4", length);
 	if (!result)
@@ -4776,8 +4776,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD4_a
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD5", length);
 	if (!result)
@@ -4788,8 +4788,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD5_a
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD6_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD6_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD6", length);
 	if (!result)
@@ -4800,8 +4800,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD6_a
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD7_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD7_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD7", length);
 	if (!result)
@@ -4812,8 +4812,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD7_a
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD8_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD8_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD8", length);
 	if (!result)
@@ -4824,8 +4824,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD8_a
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD9_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD9_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD9", length);
 	if (!result)
@@ -4836,8 +4836,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD9_a
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_nov_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_nov_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_nov", length);
 	if (!result)
@@ -4848,8 +4848,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_nov_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_oct_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_oct_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_oct", length);
 	if (!result)
@@ -4860,8 +4860,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_oct_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_sep_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_sep_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net_sep", length);
 	if (!result)
@@ -4872,8 +4872,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_net_sep_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_value_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_value_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_value", length);
 	if (!result)
@@ -4884,8 +4884,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_energy_value_aget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_custom_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_feddepr_custom_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_custom", length);
 	if (!result)
@@ -4896,8 +4896,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_custom_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_macrs_15_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_feddepr_macrs_15_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_macrs_15", length);
 	if (!result)
@@ -4908,8 +4908,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_macrs_15_aget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_macrs_5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_feddepr_macrs_5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_macrs_5", length);
 	if (!result)
@@ -4920,8 +4920,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_macrs_5_aget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_me1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_feddepr_me1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_me1", length);
 	if (!result)
@@ -4932,8 +4932,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_me1_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_me2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_feddepr_me2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_me2", length);
 	if (!result)
@@ -4944,8 +4944,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_me2_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_me3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_feddepr_me3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_me3", length);
 	if (!result)
@@ -4956,8 +4956,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_me3_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_sl_15_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_feddepr_sl_15_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_sl_15", length);
 	if (!result)
@@ -4968,8 +4968,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_sl_15_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_sl_20_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_feddepr_sl_20_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_sl_20", length);
 	if (!result)
@@ -4980,8 +4980,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_sl_20_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_sl_39_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_feddepr_sl_39_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_sl_39", length);
 	if (!result)
@@ -4992,8 +4992,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_sl_39_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_sl_5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_feddepr_sl_5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_sl_5", length);
 	if (!result)
@@ -5004,8 +5004,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_sl_5_aget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_feddepr_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_total", length);
 	if (!result)
@@ -5016,8 +5016,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_feddepr_total_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_federal_tax_frac_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_federal_tax_frac_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_federal_tax_frac", length);
 	if (!result)
@@ -5028,8 +5028,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_federal_tax_frac_aget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_fedtax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_fedtax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_fedtax", length);
 	if (!result)
@@ -5040,8 +5040,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_fedtax_aget(SAM_Equpartflip ptr, in
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_fedtax_income_prior_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_fedtax_income_prior_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_fedtax_income_prior_incentives", length);
 	if (!result)
@@ -5052,8 +5052,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_fedtax_income_prior_incentives_aget
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_fedtax_income_with_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_fedtax_income_with_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_fedtax_income_with_incentives", length);
 	if (!result)
@@ -5064,8 +5064,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_fedtax_income_with_incentives_aget(
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_fedtax_taxable_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_fedtax_taxable_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_fedtax_taxable_incentives", length);
 	if (!result)
@@ -5076,8 +5076,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_fedtax_taxable_incentives_aget(SAM_
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_funding_equip1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_funding_equip1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_funding_equip1", length);
 	if (!result)
@@ -5088,8 +5088,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_funding_equip1_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_funding_equip2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_funding_equip2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_funding_equip2", length);
 	if (!result)
@@ -5100,8 +5100,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_funding_equip2_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_funding_equip3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_funding_equip3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_funding_equip3", length);
 	if (!result)
@@ -5112,8 +5112,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_funding_equip3_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_funding_om_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_funding_om_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_funding_om", length);
 	if (!result)
@@ -5124,8 +5124,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_funding_om_aget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_funding_receivables_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_funding_receivables_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_funding_receivables", length);
 	if (!result)
@@ -5136,8 +5136,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_funding_receivables_aget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_insurance_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_insurance_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_insurance_expense", length);
 	if (!result)
@@ -5148,8 +5148,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_insurance_expense_aget(SAM_Equpartf
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cf_length_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cf_length_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cf_length", &result))
 		make_access_error("SAM_Equpartflip", "cf_length");
@@ -5159,8 +5159,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cf_length_fget(SAM_Equpartflip ptr, SAM
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_net_salvage_value_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_net_salvage_value_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_net_salvage_value", length);
 	if (!result)
@@ -5171,8 +5171,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_net_salvage_value_aget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_capacity_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_capacity_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_capacity_expense", length);
 	if (!result)
@@ -5183,8 +5183,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_capacity_expense_aget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_fixed_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_fixed_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_fixed_expense", length);
 	if (!result)
@@ -5195,8 +5195,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_fixed_expense_aget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_fuel_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_fuel_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_fuel_expense", length);
 	if (!result)
@@ -5207,8 +5207,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_fuel_expense_aget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_opt_fuel_1_expense", length);
 	if (!result)
@@ -5219,8 +5219,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_Equp
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_opt_fuel_2_expense", length);
 	if (!result)
@@ -5231,8 +5231,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_Equp
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_production_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_production_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_production_expense", length);
 	if (!result)
@@ -5243,8 +5243,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_om_production_expense_aget(SAM_Equp
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_operating_expenses_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_operating_expenses_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_operating_expenses", length);
 	if (!result)
@@ -5255,8 +5255,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_operating_expenses_aget(SAM_Equpart
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_fedtax_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_pbi_fedtax_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_fedtax_total", length);
 	if (!result)
@@ -5267,8 +5267,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_fedtax_total_aget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_statax_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_pbi_statax_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_statax_total", length);
 	if (!result)
@@ -5279,8 +5279,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_statax_total_aget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_pbi_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_total", length);
 	if (!result)
@@ -5291,8 +5291,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_total_aget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_total_fed_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_pbi_total_fed_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_total_fed", length);
 	if (!result)
@@ -5303,8 +5303,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_total_fed_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_total_oth_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_pbi_total_oth_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_total_oth", length);
 	if (!result)
@@ -5315,8 +5315,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_total_oth_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_total_sta_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_pbi_total_sta_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_total_sta", length);
 	if (!result)
@@ -5327,8 +5327,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_total_sta_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_total_uti_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_pbi_total_uti_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_total_uti", length);
 	if (!result)
@@ -5339,8 +5339,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pbi_total_uti_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_ppa_price_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_ppa_price_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ppa_price", length);
 	if (!result)
@@ -5351,8 +5351,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_ppa_price_aget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pretax_cashflow_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_pretax_cashflow_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pretax_cashflow", length);
 	if (!result)
@@ -5363,8 +5363,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_pretax_cashflow_aget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_financing_activities_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_financing_activities_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_financing_activities", length);
 	if (!result)
@@ -5375,8 +5375,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_financing_activities_aget(S
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_investing_activities_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_investing_activities_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_investing_activities", length);
 	if (!result)
@@ -5387,8 +5387,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_investing_activities_aget(S
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me1cs_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_me1cs_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me1cs", length);
 	if (!result)
@@ -5399,8 +5399,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me1cs_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me1ra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_me1ra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me1ra", length);
 	if (!result)
@@ -5411,8 +5411,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me1ra_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me2cs_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_me2cs_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me2cs", length);
 	if (!result)
@@ -5423,8 +5423,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me2cs_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me2ra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_me2ra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me2ra", length);
 	if (!result)
@@ -5435,8 +5435,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me2ra_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me3cs_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_me3cs_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me3cs", length);
 	if (!result)
@@ -5447,8 +5447,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me3cs_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me3ra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_me3ra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me3ra", length);
 	if (!result)
@@ -5459,8 +5459,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_me3ra_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_mecs_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_mecs_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_mecs", length);
 	if (!result)
@@ -5471,8 +5471,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_mecs_aget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_operating_activities_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_operating_activities_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_operating_activities", length);
 	if (!result)
@@ -5483,8 +5483,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_operating_activities_aget(S
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_ra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_ra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_ra", length);
 	if (!result)
@@ -5495,8 +5495,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_ra_aget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_receivablesra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_receivablesra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_receivablesra", length);
 	if (!result)
@@ -5507,8 +5507,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_receivablesra_aget(SAM_Equp
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_aftertax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_return_aftertax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_aftertax", length);
 	if (!result)
@@ -5519,8 +5519,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_aftertax_aget(SAM_Eq
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_aftertax_cash_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_return_aftertax_cash_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_aftertax_cash", length);
 	if (!result)
@@ -5531,8 +5531,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_aftertax_cash_aget(S
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_aftertax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_return_aftertax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_aftertax_irr", length);
 	if (!result)
@@ -5543,8 +5543,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_aftertax_irr_aget(SA
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_aftertax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_return_aftertax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_aftertax_npv", length);
 	if (!result)
@@ -5555,8 +5555,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_aftertax_npv_aget(SA
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_pretax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_return_pretax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_pretax", length);
 	if (!result)
@@ -5567,8 +5567,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_pretax_aget(SAM_Equp
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_pretax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_return_pretax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_pretax_irr", length);
 	if (!result)
@@ -5579,8 +5579,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_pretax_irr_aget(SAM_
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_pretax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_return_pretax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_pretax_npv", length);
 	if (!result)
@@ -5591,8 +5591,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_return_pretax_npv_aget(SAM_
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_wcra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_project_wcra_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_wcra", length);
 	if (!result)
@@ -5603,8 +5603,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_project_wcra_aget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_property_tax_assessed_value_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_property_tax_assessed_value_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_property_tax_assessed_value", length);
 	if (!result)
@@ -5615,8 +5615,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_property_tax_assessed_value_aget(SA
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_property_tax_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_property_tax_expense_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_property_tax_expense", length);
 	if (!result)
@@ -5627,8 +5627,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_property_tax_expense_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_ptc_fed_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_ptc_fed_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ptc_fed", length);
 	if (!result)
@@ -5639,8 +5639,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_ptc_fed_aget(SAM_Equpartflip ptr, i
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_ptc_sta_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_ptc_sta_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ptc_sta", length);
 	if (!result)
@@ -5651,8 +5651,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_ptc_sta_aget(SAM_Equpartflip ptr, i
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_recapitalization_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_recapitalization_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_recapitalization", length);
 	if (!result)
@@ -5663,8 +5663,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_recapitalization_aget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_equip1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_reserve_equip1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_equip1", length);
 	if (!result)
@@ -5675,8 +5675,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_equip1_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_equip2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_reserve_equip2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_equip2", length);
 	if (!result)
@@ -5687,8 +5687,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_equip2_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_equip3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_reserve_equip3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_equip3", length);
 	if (!result)
@@ -5699,8 +5699,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_equip3_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_interest_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_reserve_interest_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_interest", length);
 	if (!result)
@@ -5711,8 +5711,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_interest_aget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_om_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_reserve_om_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_om", length);
 	if (!result)
@@ -5723,8 +5723,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_om_aget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_receivables_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_reserve_receivables_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_receivables", length);
 	if (!result)
@@ -5735,8 +5735,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_receivables_aget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_reserve_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_total", length);
 	if (!result)
@@ -5747,8 +5747,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_reserve_total_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_apr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_apr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_apr", length);
 	if (!result)
@@ -5759,8 +5759,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_apr_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_aug_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_aug_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_aug", length);
 	if (!result)
@@ -5771,8 +5771,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_aug_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dec_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_dec_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_dec", length);
 	if (!result)
@@ -5783,8 +5783,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dec_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_dispatch1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_dispatch1", length);
 	if (!result)
@@ -5795,8 +5795,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch1_aget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_dispatch2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_dispatch2", length);
 	if (!result)
@@ -5807,8 +5807,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch2_aget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_dispatch3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_dispatch3", length);
 	if (!result)
@@ -5819,8 +5819,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch3_aget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch4_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_dispatch4_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_dispatch4", length);
 	if (!result)
@@ -5831,8 +5831,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch4_aget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_dispatch5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_dispatch5", length);
 	if (!result)
@@ -5843,8 +5843,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch5_aget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch6_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_dispatch6_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_dispatch6", length);
 	if (!result)
@@ -5855,8 +5855,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch6_aget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch7_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_dispatch7_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_dispatch7", length);
 	if (!result)
@@ -5867,8 +5867,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch7_aget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch8_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_dispatch8_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_dispatch8", length);
 	if (!result)
@@ -5879,8 +5879,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch8_aget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch9_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_dispatch9_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_dispatch9", length);
 	if (!result)
@@ -5891,8 +5891,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_dispatch9_aget(SAM_Equpartf
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_feb_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_feb_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_feb", length);
 	if (!result)
@@ -5903,8 +5903,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_feb_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_jan_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_jan_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_jan", length);
 	if (!result)
@@ -5915,8 +5915,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_jan_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_jul_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_jul_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_jul", length);
 	if (!result)
@@ -5927,8 +5927,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_jul_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_jun_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_jun_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_jun", length);
 	if (!result)
@@ -5939,8 +5939,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_jun_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_mar_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_mar_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_mar", length);
 	if (!result)
@@ -5951,8 +5951,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_mar_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_may_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_may_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_may", length);
 	if (!result)
@@ -5963,8 +5963,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_may_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_monthly_firstyear_TOD1", length);
 	if (!result)
@@ -5975,8 +5975,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD1_aget
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_monthly_firstyear_TOD2", length);
 	if (!result)
@@ -5987,8 +5987,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD2_aget
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_monthly_firstyear_TOD3", length);
 	if (!result)
@@ -5999,8 +5999,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD3_aget
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD4_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD4_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_monthly_firstyear_TOD4", length);
 	if (!result)
@@ -6011,8 +6011,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD4_aget
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_monthly_firstyear_TOD5", length);
 	if (!result)
@@ -6023,8 +6023,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD5_aget
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD6_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD6_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_monthly_firstyear_TOD6", length);
 	if (!result)
@@ -6035,8 +6035,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD6_aget
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD7_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD7_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_monthly_firstyear_TOD7", length);
 	if (!result)
@@ -6047,8 +6047,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD7_aget
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD8_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD8_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_monthly_firstyear_TOD8", length);
 	if (!result)
@@ -6059,8 +6059,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD8_aget
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD9_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD9_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_monthly_firstyear_TOD9", length);
 	if (!result)
@@ -6071,8 +6071,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_monthly_firstyear_TOD9_aget
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_nov_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_nov_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_nov", length);
 	if (!result)
@@ -6083,8 +6083,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_nov_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_oct_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_oct_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_oct", length);
 	if (!result)
@@ -6095,8 +6095,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_oct_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_sep_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_sep_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_revenue_sep", length);
 	if (!result)
@@ -6107,8 +6107,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_revenue_sep_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_aftertax", length);
 	if (!result)
@@ -6119,8 +6119,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_aget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_cash_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_cash_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_aftertax_cash", length);
 	if (!result)
@@ -6131,8 +6131,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_cash_aget(SAM_Equp
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_aftertax_irr", length);
 	if (!result)
@@ -6143,8 +6143,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_irr_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_itc_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_itc_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_aftertax_itc", length);
 	if (!result)
@@ -6155,8 +6155,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_itc_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_aftertax_npv", length);
 	if (!result)
@@ -6167,8 +6167,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_npv_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_ptc_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_ptc_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_aftertax_ptc", length);
 	if (!result)
@@ -6179,8 +6179,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_ptc_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_tax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_tax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_aftertax_tax", length);
 	if (!result)
@@ -6191,8 +6191,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_tax_aget(SAM_Equpa
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_capital_recovery_balance_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_capital_recovery_balance_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_capital_recovery_balance", length);
 	if (!result)
@@ -6203,8 +6203,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_capital_recovery_balance_ag
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_capital_recovery_cash_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_capital_recovery_cash_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_capital_recovery_cash", length);
 	if (!result)
@@ -6215,8 +6215,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_capital_recovery_cash_aget(
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_pretax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_pretax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_pretax", length);
 	if (!result)
@@ -6227,8 +6227,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_pretax_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_pretax_cash_during_recovery_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_pretax_cash_during_recovery_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_pretax_cash_during_recovery", length);
 	if (!result)
@@ -6239,8 +6239,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_pretax_cash_during_recovery
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_pretax_cash_post_recovery_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_pretax_cash_post_recovery_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_pretax_cash_post_recovery", length);
 	if (!result)
@@ -6251,8 +6251,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_pretax_cash_post_recovery_a
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_pretax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_pretax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_pretax_irr", length);
 	if (!result)
@@ -6263,8 +6263,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_pretax_irr_aget(SAM_Equpart
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_pretax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_pretax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_sponsor_pretax_npv", length);
 	if (!result)
@@ -6275,8 +6275,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_sponsor_pretax_npv_aget(SAM_Equpart
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_custom_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_stadepr_custom_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_custom", length);
 	if (!result)
@@ -6287,8 +6287,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_custom_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_macrs_15_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_stadepr_macrs_15_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_macrs_15", length);
 	if (!result)
@@ -6299,8 +6299,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_macrs_15_aget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_macrs_5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_stadepr_macrs_5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_macrs_5", length);
 	if (!result)
@@ -6311,8 +6311,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_macrs_5_aget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_me1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_stadepr_me1_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_me1", length);
 	if (!result)
@@ -6323,8 +6323,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_me1_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_me2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_stadepr_me2_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_me2", length);
 	if (!result)
@@ -6335,8 +6335,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_me2_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_me3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_stadepr_me3_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_me3", length);
 	if (!result)
@@ -6347,8 +6347,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_me3_aget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_sl_15_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_stadepr_sl_15_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_sl_15", length);
 	if (!result)
@@ -6359,8 +6359,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_sl_15_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_sl_20_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_stadepr_sl_20_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_sl_20", length);
 	if (!result)
@@ -6371,8 +6371,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_sl_20_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_sl_39_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_stadepr_sl_39_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_sl_39", length);
 	if (!result)
@@ -6383,8 +6383,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_sl_39_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_sl_5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_stadepr_sl_5_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_sl_5", length);
 	if (!result)
@@ -6395,8 +6395,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_sl_5_aget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_stadepr_total_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_total", length);
 	if (!result)
@@ -6407,8 +6407,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_stadepr_total_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_statax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_statax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_statax", length);
 	if (!result)
@@ -6419,8 +6419,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_statax_aget(SAM_Equpartflip ptr, in
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_statax_income_prior_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_statax_income_prior_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_statax_income_prior_incentives", length);
 	if (!result)
@@ -6431,8 +6431,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_statax_income_prior_incentives_aget
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_statax_income_with_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_statax_income_with_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_statax_income_with_incentives", length);
 	if (!result)
@@ -6443,8 +6443,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_statax_income_with_incentives_aget(
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_statax_taxable_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_statax_taxable_incentives_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_statax_taxable_incentives", length);
 	if (!result)
@@ -6455,8 +6455,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_statax_taxable_incentives_aget(SAM_
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_state_tax_frac_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_state_tax_frac_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_state_tax_frac", length);
 	if (!result)
@@ -6467,8 +6467,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_state_tax_frac_aget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_tax_investor_aftertax", length);
 	if (!result)
@@ -6479,8 +6479,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_aget(SAM_Equp
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_cash_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_cash_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_tax_investor_aftertax_cash", length);
 	if (!result)
@@ -6491,8 +6491,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_cash_aget(SAM
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_tax_investor_aftertax_irr", length);
 	if (!result)
@@ -6503,8 +6503,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_irr_aget(SAM_
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_itc_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_itc_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_tax_investor_aftertax_itc", length);
 	if (!result)
@@ -6515,8 +6515,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_itc_aget(SAM_
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_max_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_max_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_tax_investor_aftertax_max_irr", length);
 	if (!result)
@@ -6527,8 +6527,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_max_irr_aget(
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_tax_investor_aftertax_npv", length);
 	if (!result)
@@ -6539,8 +6539,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_npv_aget(SAM_
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_ptc_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_ptc_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_tax_investor_aftertax_ptc", length);
 	if (!result)
@@ -6551,8 +6551,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_ptc_aget(SAM_
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_tax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_tax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_tax_investor_aftertax_tax", length);
 	if (!result)
@@ -6563,8 +6563,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_aftertax_tax_aget(SAM_
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_pretax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_pretax_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_tax_investor_pretax", length);
 	if (!result)
@@ -6575,8 +6575,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_pretax_aget(SAM_Equpar
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_pretax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_pretax_irr_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_tax_investor_pretax_irr", length);
 	if (!result)
@@ -6587,8 +6587,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_pretax_irr_aget(SAM_Eq
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_pretax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_pretax_npv_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_tax_investor_pretax_npv", length);
 	if (!result)
@@ -6599,8 +6599,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_tax_investor_pretax_npv_aget(SAM_Eq
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_total_revenue_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_total_revenue_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_total_revenue", length);
 	if (!result)
@@ -6611,8 +6611,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_cf_total_revenue_aget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cost_financing_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cost_financing_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_financing", &result))
 		make_access_error("SAM_Equpartflip", "cost_financing");
@@ -6622,8 +6622,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cost_financing_fget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cost_installed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cost_installed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_installed", &result))
 		make_access_error("SAM_Equpartflip", "cost_installed");
@@ -6633,8 +6633,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cost_installed_fget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cost_installedperwatt_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cost_installedperwatt_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_installedperwatt", &result))
 		make_access_error("SAM_Equpartflip", "cost_installedperwatt");
@@ -6644,8 +6644,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cost_installedperwatt_fget(SAM_Equpartf
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_cost_prefinancing_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_cost_prefinancing_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_prefinancing", &result))
 		make_access_error("SAM_Equpartflip", "cost_prefinancing");
@@ -6655,8 +6655,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_cost_prefinancing_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_debt_fraction_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_debt_fraction_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "debt_fraction", &result))
 		make_access_error("SAM_Equpartflip", "debt_fraction");
@@ -6666,8 +6666,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_debt_fraction_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_alloc_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_custom");
@@ -6677,8 +6677,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_custom_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_alloc_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_macrs_15");
@@ -6688,8 +6688,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_macrs_15_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_alloc_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_macrs_5");
@@ -6699,8 +6699,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_macrs_5_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_none_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_alloc_none_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_none", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_none");
@@ -6710,8 +6710,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_none_fget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_none_percent_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_alloc_none_percent_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_none_percent", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_none_percent");
@@ -6721,8 +6721,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_none_percent_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_alloc_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_sl_15");
@@ -6732,8 +6732,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_sl_15_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_alloc_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_sl_20");
@@ -6743,8 +6743,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_sl_20_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_alloc_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_sl_39");
@@ -6754,8 +6754,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_sl_39_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_alloc_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_sl_5");
@@ -6765,8 +6765,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_sl_5_fget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_alloc_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_alloc_total");
@@ -6776,8 +6776,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_alloc_total_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_after_itc_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_after_itc_custom");
@@ -6787,8 +6787,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_custom_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_after_itc_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_after_itc_macrs_15");
@@ -6798,8 +6798,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_macrs_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_after_itc_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_after_itc_macrs_5");
@@ -6809,8 +6809,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_macrs_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_after_itc_sl_15");
@@ -6820,8 +6820,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_15_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_after_itc_sl_20");
@@ -6831,8 +6831,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_20_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_after_itc_sl_39");
@@ -6842,8 +6842,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_39_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_after_itc_sl_5");
@@ -6853,8 +6853,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_sl_5_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_after_itc_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_after_itc_total");
@@ -6864,8 +6864,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_after_itc_total_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_cbi_reduc_custom");
@@ -6875,8 +6875,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_custom_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_cbi_reduc_macrs_15");
@@ -6886,8 +6886,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_macrs_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_cbi_reduc_macrs_5");
@@ -6897,8 +6897,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_macrs_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_cbi_reduc_sl_15");
@@ -6908,8 +6908,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_15_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_cbi_reduc_sl_20");
@@ -6919,8 +6919,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_20_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_cbi_reduc_sl_39");
@@ -6930,8 +6930,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_39_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_cbi_reduc_sl_5");
@@ -6941,8 +6941,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_sl_5_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_cbi_reduc_total");
@@ -6952,8 +6952,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_cbi_reduc_total_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_custom");
@@ -6963,8 +6963,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_custom_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_first_year_bonus_custom");
@@ -6974,8 +6974,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_custom_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_first_year_bonus_macrs_15");
@@ -6985,8 +6985,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_macrs_15_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_first_year_bonus_macrs_5");
@@ -6996,8 +6996,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_macrs_5_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_first_year_bonus_sl_15");
@@ -7007,8 +7007,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_15_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_first_year_bonus_sl_20");
@@ -7018,8 +7018,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_20_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_first_year_bonus_sl_39");
@@ -7029,8 +7029,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_39_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_first_year_bonus_sl_5");
@@ -7040,8 +7040,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_sl_5_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_first_year_bonus_total");
@@ -7051,8 +7051,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_first_year_bonus_total_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_fixed_amount_custom");
@@ -7062,8 +7062,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_custom_fget(SA
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_fixed_amount_macrs_15");
@@ -7073,8 +7073,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_macrs_15_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_fixed_amount_macrs_5");
@@ -7084,8 +7084,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_macrs_5_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_fixed_amount_sl_15");
@@ -7095,8 +7095,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_fixed_amount_sl_20");
@@ -7106,8 +7106,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_20_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_fixed_amount_sl_39");
@@ -7117,8 +7117,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_39_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_fixed_amount_sl_5");
@@ -7128,8 +7128,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_sl_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_fixed_amount_total");
@@ -7139,8 +7139,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_fixed_amount_total_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_ibi_reduc_custom");
@@ -7150,8 +7150,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_custom_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_ibi_reduc_macrs_15");
@@ -7161,8 +7161,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_macrs_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_ibi_reduc_macrs_5");
@@ -7172,8 +7172,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_macrs_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_ibi_reduc_sl_15");
@@ -7183,8 +7183,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_15_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_ibi_reduc_sl_20");
@@ -7194,8 +7194,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_20_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_ibi_reduc_sl_39");
@@ -7205,8 +7205,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_39_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_ibi_reduc_sl_5");
@@ -7216,8 +7216,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_sl_5_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_ibi_reduc_total");
@@ -7227,8 +7227,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_ibi_reduc_total_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_fed_reduction_custom");
@@ -7238,8 +7238,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_custom_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_fed_reduction_macrs_15");
@@ -7249,8 +7249,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_macrs_15_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_fed_reduction_macrs_5");
@@ -7260,8 +7260,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_macrs_5_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_fed_reduction_sl_15");
@@ -7271,8 +7271,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_15_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_fed_reduction_sl_20");
@@ -7282,8 +7282,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_20_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_fed_reduction_sl_39");
@@ -7293,8 +7293,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_39_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_fed_reduction_sl_5");
@@ -7304,8 +7304,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_sl_5_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_fed_reduction_total");
@@ -7315,8 +7315,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_fed_reduction_total_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_sta_reduction_custom");
@@ -7326,8 +7326,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_custom_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_sta_reduction_macrs_15");
@@ -7337,8 +7337,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_macrs_15_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_sta_reduction_macrs_5");
@@ -7348,8 +7348,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_macrs_5_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_sta_reduction_sl_15");
@@ -7359,8 +7359,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_15_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_sta_reduction_sl_20");
@@ -7370,8 +7370,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_20_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_sta_reduction_sl_39");
@@ -7381,8 +7381,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_39_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_sta_reduction_sl_5");
@@ -7392,8 +7392,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_sl_5_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_itc_sta_reduction_total");
@@ -7403,8 +7403,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_itc_sta_reduction_total_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_macrs_15");
@@ -7414,8 +7414,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_macrs_15_fget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_macrs_5");
@@ -7425,8 +7425,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_macrs_5_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_amount_custom");
@@ -7436,8 +7436,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_custom_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_amount_macrs_15");
@@ -7447,8 +7447,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_macrs_15_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_amount_macrs_5");
@@ -7458,8 +7458,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_macrs_5_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_amount_sl_15");
@@ -7469,8 +7469,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_15_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_amount_sl_20");
@@ -7480,8 +7480,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_20_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_amount_sl_39");
@@ -7491,8 +7491,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_39_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_amount_sl_5");
@@ -7502,8 +7502,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_sl_5_fget(SA
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_amount_total");
@@ -7513,8 +7513,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_amount_total_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_custom");
@@ -7524,8 +7524,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_custom_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_macrs_15");
@@ -7535,8 +7535,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_macrs_15_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_macrs_5");
@@ -7546,8 +7546,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_macrs_5_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_qual_custom");
@@ -7557,8 +7557,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_custom_fget(SA
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_qual_macrs_15");
@@ -7568,8 +7568,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_macrs_15_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_qual_macrs_5");
@@ -7579,8 +7579,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_macrs_5_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_qual_sl_15");
@@ -7590,8 +7590,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_qual_sl_20");
@@ -7601,8 +7601,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_20_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_qual_sl_39");
@@ -7612,8 +7612,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_39_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_qual_sl_5");
@@ -7623,8 +7623,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_sl_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_qual_total");
@@ -7634,8 +7634,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_qual_total_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_sl_15");
@@ -7645,8 +7645,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_15_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_sl_20");
@@ -7656,8 +7656,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_20_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_sl_39");
@@ -7667,8 +7667,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_39_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_sl_5");
@@ -7678,8 +7678,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_sl_5_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_percent_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_percent_total");
@@ -7689,8 +7689,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_percent_total_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_prior_itc_custom");
@@ -7700,8 +7700,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_custom_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_prior_itc_macrs_15");
@@ -7711,8 +7711,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_macrs_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_prior_itc_macrs_5");
@@ -7722,8 +7722,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_macrs_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_prior_itc_sl_15");
@@ -7733,8 +7733,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_15_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_prior_itc_sl_20");
@@ -7744,8 +7744,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_20_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_prior_itc_sl_39");
@@ -7755,8 +7755,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_39_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_prior_itc_sl_5");
@@ -7766,8 +7766,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_sl_5_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_prior_itc_total");
@@ -7777,8 +7777,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_prior_itc_total_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_sl_15");
@@ -7788,8 +7788,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_sl_15_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_sl_20");
@@ -7799,8 +7799,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_sl_20_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_sl_39");
@@ -7810,8 +7810,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_sl_39_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_sl_5");
@@ -7821,8 +7821,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_sl_5_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_fedbas_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_fedbas_total");
@@ -7832,8 +7832,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_fedbas_total_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_after_itc_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_after_itc_custom");
@@ -7843,8 +7843,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_custom_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_after_itc_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_after_itc_macrs_15");
@@ -7854,8 +7854,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_macrs_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_after_itc_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_after_itc_macrs_5");
@@ -7865,8 +7865,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_macrs_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_after_itc_sl_15");
@@ -7876,8 +7876,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_15_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_after_itc_sl_20");
@@ -7887,8 +7887,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_20_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_after_itc_sl_39");
@@ -7898,8 +7898,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_39_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_after_itc_sl_5");
@@ -7909,8 +7909,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_sl_5_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_after_itc_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_after_itc_total");
@@ -7920,8 +7920,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_after_itc_total_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_cbi_reduc_custom");
@@ -7931,8 +7931,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_custom_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_cbi_reduc_macrs_15");
@@ -7942,8 +7942,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_macrs_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_cbi_reduc_macrs_5");
@@ -7953,8 +7953,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_macrs_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_cbi_reduc_sl_15");
@@ -7964,8 +7964,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_15_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_cbi_reduc_sl_20");
@@ -7975,8 +7975,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_20_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_cbi_reduc_sl_39");
@@ -7986,8 +7986,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_39_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_cbi_reduc_sl_5");
@@ -7997,8 +7997,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_sl_5_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_cbi_reduc_total");
@@ -8008,8 +8008,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_cbi_reduc_total_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_custom");
@@ -8019,8 +8019,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_custom_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_first_year_bonus_custom");
@@ -8030,8 +8030,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_custom_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_first_year_bonus_macrs_15");
@@ -8041,8 +8041,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_macrs_15_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_first_year_bonus_macrs_5");
@@ -8052,8 +8052,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_macrs_5_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_first_year_bonus_sl_15");
@@ -8063,8 +8063,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_15_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_first_year_bonus_sl_20");
@@ -8074,8 +8074,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_20_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_first_year_bonus_sl_39");
@@ -8085,8 +8085,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_39_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_first_year_bonus_sl_5");
@@ -8096,8 +8096,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_sl_5_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_first_year_bonus_total");
@@ -8107,8 +8107,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_first_year_bonus_total_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_fixed_amount_custom");
@@ -8118,8 +8118,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_custom_fget(SA
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_fixed_amount_macrs_15");
@@ -8129,8 +8129,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_macrs_15_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_fixed_amount_macrs_5");
@@ -8140,8 +8140,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_macrs_5_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_fixed_amount_sl_15");
@@ -8151,8 +8151,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_fixed_amount_sl_20");
@@ -8162,8 +8162,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_20_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_fixed_amount_sl_39");
@@ -8173,8 +8173,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_39_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_fixed_amount_sl_5");
@@ -8184,8 +8184,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_sl_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_fixed_amount_total");
@@ -8195,8 +8195,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_fixed_amount_total_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_ibi_reduc_custom");
@@ -8206,8 +8206,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_custom_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_ibi_reduc_macrs_15");
@@ -8217,8 +8217,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_macrs_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_ibi_reduc_macrs_5");
@@ -8228,8 +8228,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_macrs_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_ibi_reduc_sl_15");
@@ -8239,8 +8239,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_15_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_ibi_reduc_sl_20");
@@ -8250,8 +8250,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_20_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_ibi_reduc_sl_39");
@@ -8261,8 +8261,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_39_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_ibi_reduc_sl_5");
@@ -8272,8 +8272,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_sl_5_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_ibi_reduc_total");
@@ -8283,8 +8283,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_ibi_reduc_total_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_fed_reduction_custom");
@@ -8294,8 +8294,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_custom_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_fed_reduction_macrs_15");
@@ -8305,8 +8305,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_macrs_15_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_fed_reduction_macrs_5");
@@ -8316,8 +8316,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_macrs_5_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_fed_reduction_sl_15");
@@ -8327,8 +8327,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_15_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_fed_reduction_sl_20");
@@ -8338,8 +8338,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_20_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_fed_reduction_sl_39");
@@ -8349,8 +8349,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_39_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_fed_reduction_sl_5");
@@ -8360,8 +8360,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_sl_5_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_fed_reduction_total");
@@ -8371,8 +8371,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_fed_reduction_total_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_sta_reduction_custom");
@@ -8382,8 +8382,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_custom_fg
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_sta_reduction_macrs_15");
@@ -8393,8 +8393,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_macrs_15_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_sta_reduction_macrs_5");
@@ -8404,8 +8404,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_macrs_5_f
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_sta_reduction_sl_15");
@@ -8415,8 +8415,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_15_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_sta_reduction_sl_20");
@@ -8426,8 +8426,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_20_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_sta_reduction_sl_39");
@@ -8437,8 +8437,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_39_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_sta_reduction_sl_5");
@@ -8448,8 +8448,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_sl_5_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_itc_sta_reduction_total");
@@ -8459,8 +8459,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_itc_sta_reduction_total_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_macrs_15");
@@ -8470,8 +8470,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_macrs_15_fget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_macrs_5");
@@ -8481,8 +8481,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_macrs_5_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_amount_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_amount_custom");
@@ -8492,8 +8492,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_custom_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_amount_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_amount_macrs_15");
@@ -8503,8 +8503,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_macrs_15_fge
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_amount_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_amount_macrs_5");
@@ -8514,8 +8514,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_macrs_5_fget
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_amount_sl_15");
@@ -8525,8 +8525,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_15_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_amount_sl_20");
@@ -8536,8 +8536,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_20_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_amount_sl_39");
@@ -8547,8 +8547,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_39_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_amount_sl_5");
@@ -8558,8 +8558,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_sl_5_fget(SA
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_amount_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_amount_total");
@@ -8569,8 +8569,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_amount_total_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_custom");
@@ -8580,8 +8580,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_custom_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_macrs_15");
@@ -8591,8 +8591,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_macrs_15_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_macrs_5");
@@ -8602,8 +8602,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_macrs_5_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_qual_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_qual_custom");
@@ -8613,8 +8613,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_custom_fget(SA
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_qual_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_qual_macrs_15");
@@ -8624,8 +8624,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_macrs_15_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_qual_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_qual_macrs_5");
@@ -8635,8 +8635,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_macrs_5_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_qual_sl_15");
@@ -8646,8 +8646,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_qual_sl_20");
@@ -8657,8 +8657,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_20_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_qual_sl_39");
@@ -8668,8 +8668,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_39_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_qual_sl_5");
@@ -8679,8 +8679,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_sl_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_qual_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_qual_total");
@@ -8690,8 +8690,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_qual_total_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_sl_15");
@@ -8701,8 +8701,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_sl_15_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_sl_20");
@@ -8712,8 +8712,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_sl_20_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_sl_39");
@@ -8723,8 +8723,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_sl_39_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_sl_5");
@@ -8734,8 +8734,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_sl_5_fget(SAM_Equpa
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_percent_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_percent_total");
@@ -8745,8 +8745,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_percent_total_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_prior_itc_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_custom", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_prior_itc_custom");
@@ -8756,8 +8756,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_custom_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_prior_itc_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_prior_itc_macrs_15");
@@ -8767,8 +8767,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_macrs_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_prior_itc_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_prior_itc_macrs_5");
@@ -8778,8 +8778,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_macrs_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_prior_itc_sl_15");
@@ -8789,8 +8789,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_15_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_prior_itc_sl_20");
@@ -8800,8 +8800,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_20_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_prior_itc_sl_39");
@@ -8811,8 +8811,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_39_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_prior_itc_sl_5");
@@ -8822,8 +8822,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_sl_5_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_prior_itc_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_prior_itc_total");
@@ -8833,8 +8833,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_prior_itc_total_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_sl_15");
@@ -8844,8 +8844,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_sl_15_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_sl_20");
@@ -8855,8 +8855,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_sl_20_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_sl_39");
@@ -8866,8 +8866,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_sl_39_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_sl_5");
@@ -8877,8 +8877,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_sl_5_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_depr_stabas_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_total", &result))
 		make_access_error("SAM_Equpartflip", "depr_stabas_total");
@@ -8888,8 +8888,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_depr_stabas_total_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_effective_tax_rate_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_effective_tax_rate_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "effective_tax_rate", &result))
 		make_access_error("SAM_Equpartflip", "effective_tax_rate");
@@ -8899,8 +8899,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_effective_tax_rate_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch1_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_dispatch1_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_dispatch1", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_dispatch1");
@@ -8910,8 +8910,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch1_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch2_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_dispatch2_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_dispatch2", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_dispatch2");
@@ -8921,8 +8921,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch2_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch3_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_dispatch3_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_dispatch3", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_dispatch3");
@@ -8932,8 +8932,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch3_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch4_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_dispatch4_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_dispatch4", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_dispatch4");
@@ -8943,8 +8943,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch4_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_dispatch5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_dispatch5", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_dispatch5");
@@ -8954,8 +8954,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch5_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch6_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_dispatch6_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_dispatch6", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_dispatch6");
@@ -8965,8 +8965,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch6_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch7_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_dispatch7_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_dispatch7", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_dispatch7");
@@ -8976,8 +8976,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch7_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch8_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_dispatch8_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_dispatch8", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_dispatch8");
@@ -8987,8 +8987,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch8_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch9_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_dispatch9_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_dispatch9", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_dispatch9");
@@ -8998,8 +8998,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_dispatch9_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price1_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_price1_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_price1", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_price1");
@@ -9009,8 +9009,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price1_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price2_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_price2_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_price2", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_price2");
@@ -9020,8 +9020,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price2_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price3_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_price3_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_price3", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_price3");
@@ -9031,8 +9031,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price3_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price4_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_price4_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_price4", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_price4");
@@ -9042,8 +9042,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price4_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_price5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_price5", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_price5");
@@ -9053,8 +9053,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price5_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price6_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_price6_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_price6", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_price6");
@@ -9064,8 +9064,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price6_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price7_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_price7_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_price7", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_price7");
@@ -9075,8 +9075,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price7_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price8_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_price8_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_price8", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_price8");
@@ -9086,8 +9086,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price8_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price9_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_energy_price9_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_energy_price9", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_energy_price9");
@@ -9097,8 +9097,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_energy_price9_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch1_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_revenue_dispatch1_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_revenue_dispatch1", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_revenue_dispatch1");
@@ -9108,8 +9108,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch1_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch2_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_revenue_dispatch2_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_revenue_dispatch2", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_revenue_dispatch2");
@@ -9119,8 +9119,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch2_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch3_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_revenue_dispatch3_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_revenue_dispatch3", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_revenue_dispatch3");
@@ -9130,8 +9130,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch3_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch4_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_revenue_dispatch4_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_revenue_dispatch4", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_revenue_dispatch4");
@@ -9141,8 +9141,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch4_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_revenue_dispatch5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_revenue_dispatch5", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_revenue_dispatch5");
@@ -9152,8 +9152,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch5_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch6_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_revenue_dispatch6_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_revenue_dispatch6", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_revenue_dispatch6");
@@ -9163,8 +9163,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch6_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch7_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_revenue_dispatch7_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_revenue_dispatch7", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_revenue_dispatch7");
@@ -9174,8 +9174,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch7_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch8_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_revenue_dispatch8_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_revenue_dispatch8", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_revenue_dispatch8");
@@ -9185,8 +9185,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch8_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch9_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_firstyear_revenue_dispatch9_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "firstyear_revenue_dispatch9", &result))
 		make_access_error("SAM_Equpartflip", "firstyear_revenue_dispatch9");
@@ -9196,8 +9196,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_firstyear_revenue_dispatch9_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_flip_actual_irr_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_flip_actual_irr_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_actual_irr", &result))
 		make_access_error("SAM_Equpartflip", "flip_actual_irr");
@@ -9207,8 +9207,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_flip_actual_irr_fget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_flip_actual_year_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_flip_actual_year_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_actual_year", &result))
 		make_access_error("SAM_Equpartflip", "flip_actual_year");
@@ -9218,8 +9218,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_flip_actual_year_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_flip_target_irr_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_flip_target_irr_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_irr", &result))
 		make_access_error("SAM_Equpartflip", "flip_target_irr");
@@ -9229,8 +9229,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_flip_target_irr_fget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_flip_target_year_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_flip_target_year_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_year", &result))
 		make_access_error("SAM_Equpartflip", "flip_target_year");
@@ -9240,8 +9240,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_flip_target_year_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_fedtax_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_ibi_fedtax_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fedtax_total", &result))
 		make_access_error("SAM_Equpartflip", "ibi_fedtax_total");
@@ -9251,8 +9251,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_fedtax_total_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_statax_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_ibi_statax_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_statax_total", &result))
 		make_access_error("SAM_Equpartflip", "ibi_statax_total");
@@ -9262,8 +9262,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_statax_total_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_ibi_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_total", &result))
 		make_access_error("SAM_Equpartflip", "ibi_total");
@@ -9273,8 +9273,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_total_fget(SAM_Equpartflip ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_total_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_ibi_total_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_total_fed", &result))
 		make_access_error("SAM_Equpartflip", "ibi_total_fed");
@@ -9284,8 +9284,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_total_fed_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_total_oth_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_ibi_total_oth_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_total_oth", &result))
 		make_access_error("SAM_Equpartflip", "ibi_total_oth");
@@ -9295,8 +9295,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_total_oth_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_total_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_ibi_total_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_total_sta", &result))
 		make_access_error("SAM_Equpartflip", "ibi_total_sta");
@@ -9306,8 +9306,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_total_sta_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_total_uti_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_ibi_total_uti_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_total_uti", &result))
 		make_access_error("SAM_Equpartflip", "ibi_total_uti");
@@ -9317,8 +9317,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_ibi_total_uti_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_issuance_of_equity_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_issuance_of_equity_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "issuance_of_equity", &result))
 		make_access_error("SAM_Equpartflip", "issuance_of_equity");
@@ -9328,8 +9328,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_issuance_of_equity_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_custom", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_fixed_custom");
@@ -9339,8 +9339,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_custom_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_fixed_macrs_15");
@@ -9350,8 +9350,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_macrs_15_fget(SA
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_fixed_macrs_5");
@@ -9361,8 +9361,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_macrs_5_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_fixed_sl_15");
@@ -9372,8 +9372,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_15_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_fixed_sl_20");
@@ -9383,8 +9383,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_20_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_fixed_sl_39");
@@ -9394,8 +9394,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_39_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_fixed_sl_5");
@@ -9405,8 +9405,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_sl_5_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_total", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_fixed_total");
@@ -9416,8 +9416,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_fixed_total_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_percent_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_custom", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_percent_custom");
@@ -9427,8 +9427,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_custom_fget(SA
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_percent_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_percent_macrs_15");
@@ -9438,8 +9438,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_macrs_15_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_percent_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_percent_macrs_5");
@@ -9449,8 +9449,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_macrs_5_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_percent_sl_15");
@@ -9460,8 +9460,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_percent_sl_20");
@@ -9471,8 +9471,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_20_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_percent_sl_39");
@@ -9482,8 +9482,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_39_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_percent_sl_5");
@@ -9493,8 +9493,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_sl_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_fed_percent_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_total", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_fed_percent_total");
@@ -9504,8 +9504,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_fed_percent_total_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_custom", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_fixed_custom");
@@ -9515,8 +9515,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_custom_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_fixed_macrs_15");
@@ -9526,8 +9526,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_macrs_15_fget(SA
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_fixed_macrs_5");
@@ -9537,8 +9537,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_macrs_5_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_fixed_sl_15");
@@ -9548,8 +9548,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_15_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_fixed_sl_20");
@@ -9559,8 +9559,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_20_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_fixed_sl_39");
@@ -9570,8 +9570,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_39_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_fixed_sl_5");
@@ -9581,8 +9581,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_sl_5_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_total", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_fixed_total");
@@ -9592,8 +9592,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_fixed_total_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_percent_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_custom", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_percent_custom");
@@ -9603,8 +9603,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_custom_fget(SA
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_percent_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_percent_macrs_15");
@@ -9614,8 +9614,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_macrs_15_fget(
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_percent_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_percent_macrs_5");
@@ -9625,8 +9625,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_macrs_5_fget(S
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_percent_sl_15");
@@ -9636,8 +9636,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_15_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_percent_sl_20");
@@ -9647,8 +9647,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_20_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_percent_sl_39");
@@ -9658,8 +9658,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_39_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_percent_sl_5");
@@ -9669,8 +9669,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_sl_5_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_disallow_sta_percent_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_total", &result))
 		make_access_error("SAM_Equpartflip", "itc_disallow_sta_percent_total");
@@ -9680,8 +9680,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_disallow_sta_percent_total_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_fixed_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_fed_fixed_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_fixed_total", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_fixed_total");
@@ -9691,8 +9691,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_fixed_total_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_percent_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_fed_percent_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_percent_total", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_percent_total");
@@ -9702,8 +9702,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_percent_total_fget(SAM_Equpartf
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_fed_qual_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_custom", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_qual_custom");
@@ -9713,8 +9713,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_custom_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_fed_qual_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_qual_macrs_15");
@@ -9724,8 +9724,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_macrs_15_fget(SAM_Equpartf
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_fed_qual_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_qual_macrs_5");
@@ -9735,8 +9735,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_macrs_5_fget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_fed_qual_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_qual_sl_15");
@@ -9746,8 +9746,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_sl_15_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_fed_qual_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_qual_sl_20");
@@ -9757,8 +9757,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_sl_20_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_fed_qual_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_qual_sl_39");
@@ -9768,8 +9768,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_sl_39_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_fed_qual_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_qual_sl_5");
@@ -9779,8 +9779,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_sl_5_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_fed_qual_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_total", &result))
 		make_access_error("SAM_Equpartflip", "itc_fed_qual_total");
@@ -9790,8 +9790,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_fed_qual_total_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_fixed_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_sta_fixed_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_fixed_total", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_fixed_total");
@@ -9801,8 +9801,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_fixed_total_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_percent_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_sta_percent_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_percent_total", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_percent_total");
@@ -9812,8 +9812,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_percent_total_fget(SAM_Equpartf
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_custom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_sta_qual_custom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_custom", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_qual_custom");
@@ -9823,8 +9823,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_custom_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_macrs_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_sta_qual_macrs_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_macrs_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_qual_macrs_15");
@@ -9834,8 +9834,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_macrs_15_fget(SAM_Equpartf
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_macrs_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_sta_qual_macrs_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_macrs_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_qual_macrs_5");
@@ -9845,8 +9845,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_macrs_5_fget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_sl_15_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_sta_qual_sl_15_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_15", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_qual_sl_15");
@@ -9856,8 +9856,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_sl_15_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_sl_20_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_sta_qual_sl_20_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_20", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_qual_sl_20");
@@ -9867,8 +9867,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_sl_20_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_sl_39_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_sta_qual_sl_39_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_39", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_qual_sl_39");
@@ -9878,8 +9878,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_sl_39_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_sl_5_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_sta_qual_sl_5_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_5", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_qual_sl_5");
@@ -9889,8 +9889,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_sl_5_fget(SAM_Equpartflip 
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_sta_qual_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_total", &result))
 		make_access_error("SAM_Equpartflip", "itc_sta_qual_total");
@@ -9900,8 +9900,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_sta_qual_total_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_total_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_total_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_total", &result))
 		make_access_error("SAM_Equpartflip", "itc_total");
@@ -9911,8 +9911,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_total_fget(SAM_Equpartflip ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_total_fed_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_total_fed_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_total_fed", &result))
 		make_access_error("SAM_Equpartflip", "itc_total_fed");
@@ -9922,8 +9922,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_total_fed_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_itc_total_sta_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_itc_total_sta_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_total_sta", &result))
 		make_access_error("SAM_Equpartflip", "itc_total_sta");
@@ -9933,8 +9933,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_itc_total_sta_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_lcoe_nom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_lcoe_nom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoe_nom", &result))
 		make_access_error("SAM_Equpartflip", "lcoe_nom");
@@ -9944,8 +9944,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_lcoe_nom_fget(SAM_Equpartflip ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_lcoe_real_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_lcoe_real_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoe_real", &result))
 		make_access_error("SAM_Equpartflip", "lcoe_real");
@@ -9955,8 +9955,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_lcoe_real_fget(SAM_Equpartflip ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_lcoptc_fed_nom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_lcoptc_fed_nom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoptc_fed_nom", &result))
 		make_access_error("SAM_Equpartflip", "lcoptc_fed_nom");
@@ -9966,8 +9966,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_lcoptc_fed_nom_fget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_lcoptc_fed_real_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_lcoptc_fed_real_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoptc_fed_real", &result))
 		make_access_error("SAM_Equpartflip", "lcoptc_fed_real");
@@ -9977,8 +9977,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_lcoptc_fed_real_fget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_lcoptc_sta_nom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_lcoptc_sta_nom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoptc_sta_nom", &result))
 		make_access_error("SAM_Equpartflip", "lcoptc_sta_nom");
@@ -9988,8 +9988,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_lcoptc_sta_nom_fget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_lcoptc_sta_real_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_lcoptc_sta_real_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoptc_sta_real", &result))
 		make_access_error("SAM_Equpartflip", "lcoptc_sta_real");
@@ -9999,8 +9999,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_lcoptc_sta_real_fget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_lppa_nom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_lppa_nom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lppa_nom", &result))
 		make_access_error("SAM_Equpartflip", "lppa_nom");
@@ -10010,8 +10010,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_lppa_nom_fget(SAM_Equpartflip ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_lppa_real_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_lppa_real_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lppa_real", &result))
 		make_access_error("SAM_Equpartflip", "lppa_real");
@@ -10021,8 +10021,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_lppa_real_fget(SAM_Equpartflip ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_nominal_discount_rate_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_nominal_discount_rate_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "nominal_discount_rate", &result))
 		make_access_error("SAM_Equpartflip", "nominal_discount_rate");
@@ -10032,8 +10032,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_nominal_discount_rate_fget(SAM_Equpartf
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_npv_annual_costs_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_npv_annual_costs_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_annual_costs", &result))
 		make_access_error("SAM_Equpartflip", "npv_annual_costs");
@@ -10043,8 +10043,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_npv_annual_costs_fget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_npv_energy_nom_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_npv_energy_nom_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_energy_nom", &result))
 		make_access_error("SAM_Equpartflip", "npv_energy_nom");
@@ -10054,8 +10054,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_npv_energy_nom_fget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_npv_energy_real_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_npv_energy_real_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_energy_real", &result))
 		make_access_error("SAM_Equpartflip", "npv_energy_real");
@@ -10065,8 +10065,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_npv_energy_real_fget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_npv_ppa_revenue_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_npv_ppa_revenue_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_ppa_revenue", &result))
 		make_access_error("SAM_Equpartflip", "npv_ppa_revenue");
@@ -10076,8 +10076,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_npv_ppa_revenue_fget(SAM_Equpartflip pt
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_ppa_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_ppa_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa", &result))
 		make_access_error("SAM_Equpartflip", "ppa");
@@ -10087,8 +10087,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_ppa_fget(SAM_Equpartflip ptr, SAM_error
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_ppa_escalation_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_ppa_escalation_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_escalation", &result))
 		make_access_error("SAM_Equpartflip", "ppa_escalation");
@@ -10098,8 +10098,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_ppa_escalation_fget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float* SAM_Equpartflip_Outputs_ppa_multipliers_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Equpartflip_Outputs_ppa_multipliers_aget(SAM_Equpartflip ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ppa_multipliers", length);
 	if (!result)
@@ -10110,8 +10110,8 @@ SAM_EXPORT float* SAM_Equpartflip_Outputs_ppa_multipliers_aget(SAM_Equpartflip p
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_ppa_price_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_ppa_price_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_price", &result))
 		make_access_error("SAM_Equpartflip", "ppa_price");
@@ -10121,8 +10121,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_ppa_price_fget(SAM_Equpartflip ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_present_value_fuel_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_present_value_fuel_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "present_value_fuel", &result))
 		make_access_error("SAM_Equpartflip", "present_value_fuel");
@@ -10132,8 +10132,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_present_value_fuel_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_present_value_insandproptax_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_present_value_insandproptax_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "present_value_insandproptax", &result))
 		make_access_error("SAM_Equpartflip", "present_value_insandproptax");
@@ -10143,8 +10143,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_present_value_insandproptax_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_present_value_oandm_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_present_value_oandm_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "present_value_oandm", &result))
 		make_access_error("SAM_Equpartflip", "present_value_oandm");
@@ -10154,8 +10154,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_present_value_oandm_fget(SAM_Equpartfli
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_present_value_oandm_nonfuel_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_present_value_oandm_nonfuel_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "present_value_oandm_nonfuel", &result))
 		make_access_error("SAM_Equpartflip", "present_value_oandm_nonfuel");
@@ -10165,8 +10165,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_present_value_oandm_nonfuel_fget(SAM_Eq
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_prop_tax_assessed_value_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_prop_tax_assessed_value_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "prop_tax_assessed_value", &result))
 		make_access_error("SAM_Equpartflip", "prop_tax_assessed_value");
@@ -10176,8 +10176,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_prop_tax_assessed_value_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_purchase_of_property_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_purchase_of_property_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "purchase_of_property", &result))
 		make_access_error("SAM_Equpartflip", "purchase_of_property");
@@ -10187,8 +10187,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_purchase_of_property_fget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_salvage_value_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_salvage_value_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "salvage_value", &result))
 		make_access_error("SAM_Equpartflip", "salvage_value");
@@ -10198,8 +10198,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_salvage_value_fget(SAM_Equpartflip ptr,
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_size_of_equity_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_size_of_equity_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "size_of_equity", &result))
 		make_access_error("SAM_Equpartflip", "size_of_equity");
@@ -10209,8 +10209,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_size_of_equity_fget(SAM_Equpartflip ptr
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_aftertax_development_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_sponsor_aftertax_development_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_aftertax_development", &result))
 		make_access_error("SAM_Equpartflip", "sponsor_aftertax_development");
@@ -10220,8 +10220,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_aftertax_development_fget(SAM_E
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_aftertax_equity_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_sponsor_aftertax_equity_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_aftertax_equity", &result))
 		make_access_error("SAM_Equpartflip", "sponsor_aftertax_equity");
@@ -10231,8 +10231,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_aftertax_equity_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_aftertax_irr_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_sponsor_aftertax_irr_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_aftertax_irr", &result))
 		make_access_error("SAM_Equpartflip", "sponsor_aftertax_irr");
@@ -10242,8 +10242,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_aftertax_irr_fget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_aftertax_npv_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_sponsor_aftertax_npv_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_aftertax_npv", &result))
 		make_access_error("SAM_Equpartflip", "sponsor_aftertax_npv");
@@ -10253,8 +10253,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_aftertax_npv_fget(SAM_Equpartfl
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_pretax_development_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_sponsor_pretax_development_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_pretax_development", &result))
 		make_access_error("SAM_Equpartflip", "sponsor_pretax_development");
@@ -10264,8 +10264,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_pretax_development_fget(SAM_Equ
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_pretax_equity_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_sponsor_pretax_equity_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_pretax_equity", &result))
 		make_access_error("SAM_Equpartflip", "sponsor_pretax_equity");
@@ -10275,8 +10275,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_pretax_equity_fget(SAM_Equpartf
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_pretax_irr_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_sponsor_pretax_irr_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_pretax_irr", &result))
 		make_access_error("SAM_Equpartflip", "sponsor_pretax_irr");
@@ -10286,8 +10286,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_pretax_irr_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_pretax_npv_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_sponsor_pretax_npv_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_pretax_npv", &result))
 		make_access_error("SAM_Equpartflip", "sponsor_pretax_npv");
@@ -10297,8 +10297,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_sponsor_pretax_npv_fget(SAM_Equpartflip
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_tax_investor_aftertax_irr_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_tax_investor_aftertax_irr_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tax_investor_aftertax_irr", &result))
 		make_access_error("SAM_Equpartflip", "tax_investor_aftertax_irr");
@@ -10308,8 +10308,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_tax_investor_aftertax_irr_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_tax_investor_aftertax_npv_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_tax_investor_aftertax_npv_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tax_investor_aftertax_npv", &result))
 		make_access_error("SAM_Equpartflip", "tax_investor_aftertax_npv");
@@ -10319,8 +10319,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_tax_investor_aftertax_npv_fget(SAM_Equp
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_tax_investor_pretax_irr_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_tax_investor_pretax_irr_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tax_investor_pretax_irr", &result))
 		make_access_error("SAM_Equpartflip", "tax_investor_pretax_irr");
@@ -10330,8 +10330,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_tax_investor_pretax_irr_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_tax_investor_pretax_npv_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_tax_investor_pretax_npv_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tax_investor_pretax_npv", &result))
 		make_access_error("SAM_Equpartflip", "tax_investor_pretax_npv");
@@ -10341,8 +10341,8 @@ SAM_EXPORT float SAM_Equpartflip_Outputs_tax_investor_pretax_npv_fget(SAM_Equpar
 
 
 
-SAM_EXPORT float SAM_Equpartflip_Outputs_wacc_fget(SAM_Equpartflip ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Equpartflip_Outputs_wacc_nget(SAM_Equpartflip ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wacc", &result))
 		make_access_error("SAM_Equpartflip", "wacc");

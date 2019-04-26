@@ -32,19 +32,19 @@ SAM_EXPORT void SAM_Pvwattsv5Lifetime_destruct(SAM_Pvwattsv5Lifetime system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_Common_system_use_lifetime_output_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_Common_system_use_lifetime_output_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_FinancialAnalysisParameters_analysis_period_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_FinancialAnalysisParameters_analysis_period_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_LifetimePV_dc_degradation_aset(SAM_Pvwattsv5Lifetime ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_LifetimePV_dc_degradation_aset(SAM_Pvwattsv5Lifetime ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dc_degradation", arr, length);
 	});
@@ -62,92 +62,92 @@ SAM_EXPORT void SAM_Pvwattsv5Lifetime_Weather_solar_resource_file_sset(SAM_Pvwat
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_array_type_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_array_type_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "array_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_azimuth_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_azimuth_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "azimuth", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_dc_ac_ratio_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_dc_ac_ratio_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dc_ac_ratio", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_gcr_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_gcr_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "gcr", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_inv_eff_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_inv_eff_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inv_eff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_losses_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_losses_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "losses", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_module_type_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_module_type_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "module_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_azal_mset(SAM_Pvwattsv5Lifetime ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_azal_mset(SAM_Pvwattsv5Lifetime ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "shading:azal", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_diff_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_diff_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "shading:diff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_mxh_mset(SAM_Pvwattsv5Lifetime ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_mxh_mset(SAM_Pvwattsv5Lifetime ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "shading:mxh", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_timestep_mset(SAM_Pvwattsv5Lifetime ptr, float* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_shading_timestep_mset(SAM_Pvwattsv5Lifetime ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "shading:timestep", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_system_capacity_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_system_capacity_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_tilt_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_PVWatts_tilt_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tilt", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5Lifetime_Battwatts_batt_simple_enable_fset(SAM_Pvwattsv5Lifetime ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5Lifetime_Battwatts_batt_simple_enable_nset(SAM_Pvwattsv5Lifetime ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_simple_enable", number);
 	});
 }
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Common_system_use_lifetime_output_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Common_system_use_lifetime_output_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "system_use_lifetime_output");
@@ -157,8 +157,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Common_system_use_lifetime_output_fget(SA
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_FinancialAnalysisParameters_analysis_period_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_FinancialAnalysisParameters_analysis_period_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "analysis_period");
@@ -168,8 +168,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_FinancialAnalysisParameters_analysis_peri
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_LifetimePV_dc_degradation_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_LifetimePV_dc_degradation_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dc_degradation", length);
 	if (!result)
@@ -204,8 +204,8 @@ SAM_EXPORT const char* SAM_Pvwattsv5Lifetime_Weather_solar_resource_file_sget(SA
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_array_type_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_array_type_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "array_type", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "array_type");
@@ -215,8 +215,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_array_type_fget(SAM_Pvwattsv5Life
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_azimuth_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_azimuth_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "azimuth", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "azimuth");
@@ -226,8 +226,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_azimuth_fget(SAM_Pvwattsv5Lifetim
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_dc_ac_ratio_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_dc_ac_ratio_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dc_ac_ratio", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "dc_ac_ratio");
@@ -237,8 +237,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_dc_ac_ratio_fget(SAM_Pvwattsv5Lif
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_gcr_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_gcr_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "gcr", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "gcr");
@@ -248,8 +248,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_gcr_fget(SAM_Pvwattsv5Lifetime pt
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_inv_eff_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_inv_eff_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inv_eff", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "inv_eff");
@@ -259,8 +259,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_inv_eff_fget(SAM_Pvwattsv5Lifetim
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_losses_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_losses_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "losses", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "losses");
@@ -270,8 +270,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_losses_fget(SAM_Pvwattsv5Lifetime
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_module_type_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_module_type_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "module_type", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "module_type");
@@ -281,8 +281,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_module_type_fget(SAM_Pvwattsv5Lif
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_PVWatts_shading_azal_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_PVWatts_shading_azal_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "shading:azal", nrows, ncols);
 	if (!result)
@@ -293,8 +293,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_PVWatts_shading_azal_mget(SAM_Pvwattsv5L
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_shading_diff_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_shading_diff_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "shading:diff", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "shading:diff");
@@ -304,8 +304,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_shading_diff_fget(SAM_Pvwattsv5Li
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_PVWatts_shading_mxh_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_PVWatts_shading_mxh_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "shading:mxh", nrows, ncols);
 	if (!result)
@@ -316,8 +316,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_PVWatts_shading_mxh_mget(SAM_Pvwattsv5Li
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_PVWatts_shading_timestep_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_PVWatts_shading_timestep_mget(SAM_Pvwattsv5Lifetime ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "shading:timestep", nrows, ncols);
 	if (!result)
@@ -328,8 +328,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_PVWatts_shading_timestep_mget(SAM_Pvwatt
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_system_capacity_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_system_capacity_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "system_capacity");
@@ -339,8 +339,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_system_capacity_fget(SAM_Pvwattsv
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_tilt_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_PVWatts_tilt_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tilt", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "tilt");
@@ -350,8 +350,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_PVWatts_tilt_fget(SAM_Pvwattsv5Lifetime p
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Battwatts_batt_simple_enable_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Battwatts_batt_simple_enable_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_simple_enable", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "batt_simple_enable");
@@ -361,8 +361,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Battwatts_batt_simple_enable_fget(SAM_Pvw
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_ac_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_ac_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ac", length);
 	if (!result)
@@ -373,8 +373,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_ac_aget(SAM_Pvwattsv5Lifetime pt
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_ac_annual_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_ac_annual_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ac_annual", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "ac_annual");
@@ -384,8 +384,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_ac_annual_fget(SAM_Pvwattsv5Lifet
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_ac_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_ac_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ac_monthly", length);
 	if (!result)
@@ -396,8 +396,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_ac_monthly_aget(SAM_Pvwattsv5Lif
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_annual_energy_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_annual_energy_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "annual_energy");
@@ -407,8 +407,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_annual_energy_fget(SAM_Pvwattsv5L
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_aoi_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_aoi_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "aoi", length);
 	if (!result)
@@ -419,8 +419,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_aoi_aget(SAM_Pvwattsv5Lifetime p
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_capacity_factor_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_capacity_factor_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "capacity_factor");
@@ -442,8 +442,8 @@ SAM_EXPORT const char* SAM_Pvwattsv5Lifetime_Outputs_city_sget(SAM_Pvwattsv5Life
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_dc_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_dc_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dc", length);
 	if (!result)
@@ -454,8 +454,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_dc_aget(SAM_Pvwattsv5Lifetime pt
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_dc_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_dc_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dc_monthly", length);
 	if (!result)
@@ -466,8 +466,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_dc_monthly_aget(SAM_Pvwattsv5Lif
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_df_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_df_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "df", length);
 	if (!result)
@@ -478,8 +478,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_df_aget(SAM_Pvwattsv5Lifetime pt
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_dn_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_dn_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dn", length);
 	if (!result)
@@ -490,8 +490,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_dn_aget(SAM_Pvwattsv5Lifetime pt
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_elev_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_elev_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "elev", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "elev");
@@ -501,8 +501,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_elev_fget(SAM_Pvwattsv5Lifetime p
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_gh_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_gh_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gh", length);
 	if (!result)
@@ -513,8 +513,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_gh_aget(SAM_Pvwattsv5Lifetime pt
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_inverter_efficiency_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_inverter_efficiency_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inverter_efficiency", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "inverter_efficiency");
@@ -524,8 +524,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_inverter_efficiency_fget(SAM_Pvwa
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_inverter_model_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_inverter_model_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inverter_model", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "inverter_model");
@@ -535,8 +535,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_inverter_model_fget(SAM_Pvwattsv5
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_kwh_per_kw_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_kwh_per_kw_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "kwh_per_kw");
@@ -546,8 +546,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_kwh_per_kw_fget(SAM_Pvwattsv5Life
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_lat_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_lat_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lat", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "lat");
@@ -569,8 +569,8 @@ SAM_EXPORT const char* SAM_Pvwattsv5Lifetime_Outputs_location_sget(SAM_Pvwattsv5
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_lon_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_lon_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lon", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "lon");
@@ -580,8 +580,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_lon_fget(SAM_Pvwattsv5Lifetime pt
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_monthly_energy_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_monthly_energy_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_energy", length);
 	if (!result)
@@ -592,8 +592,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_monthly_energy_aget(SAM_Pvwattsv
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_percent_complete_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_percent_complete_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "percent_complete", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "percent_complete");
@@ -603,8 +603,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_percent_complete_fget(SAM_Pvwatts
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_poa_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_poa_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa", length);
 	if (!result)
@@ -615,8 +615,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_poa_aget(SAM_Pvwattsv5Lifetime p
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_poa_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_poa_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa_monthly", length);
 	if (!result)
@@ -627,8 +627,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_poa_monthly_aget(SAM_Pvwattsv5Li
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_shad_beam_factor_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_shad_beam_factor_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "shad_beam_factor", length);
 	if (!result)
@@ -639,8 +639,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_shad_beam_factor_aget(SAM_Pvwatt
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_solrad_annual_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_solrad_annual_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "solrad_annual", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "solrad_annual");
@@ -650,8 +650,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_solrad_annual_fget(SAM_Pvwattsv5L
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_solrad_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_solrad_monthly_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "solrad_monthly", length);
 	if (!result)
@@ -674,8 +674,8 @@ SAM_EXPORT const char* SAM_Pvwattsv5Lifetime_Outputs_state_sget(SAM_Pvwattsv5Lif
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_sunup_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_sunup_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "sunup", length);
 	if (!result)
@@ -686,8 +686,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_sunup_aget(SAM_Pvwattsv5Lifetime
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_tamb_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_tamb_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tamb", length);
 	if (!result)
@@ -698,8 +698,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_tamb_aget(SAM_Pvwattsv5Lifetime 
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_tcell_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_tcell_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tcell", length);
 	if (!result)
@@ -710,8 +710,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_tcell_aget(SAM_Pvwattsv5Lifetime
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_tpoa_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_tpoa_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tpoa", length);
 	if (!result)
@@ -722,8 +722,8 @@ SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_tpoa_aget(SAM_Pvwattsv5Lifetime 
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_ts_shift_hours_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_ts_shift_hours_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ts_shift_hours", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "ts_shift_hours");
@@ -733,8 +733,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_ts_shift_hours_fget(SAM_Pvwattsv5
 
 
 
-SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_tz_fget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Pvwattsv5Lifetime_Outputs_tz_nget(SAM_Pvwattsv5Lifetime ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tz", &result))
 		make_access_error("SAM_Pvwattsv5Lifetime", "tz");
@@ -744,8 +744,8 @@ SAM_EXPORT float SAM_Pvwattsv5Lifetime_Outputs_tz_fget(SAM_Pvwattsv5Lifetime ptr
 
 
 
-SAM_EXPORT float* SAM_Pvwattsv5Lifetime_Outputs_wspd_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Pvwattsv5Lifetime_Outputs_wspd_aget(SAM_Pvwattsv5Lifetime ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wspd", length);
 	if (!result)

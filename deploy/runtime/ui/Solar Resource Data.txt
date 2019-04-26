@@ -2392,7 +2392,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-27816
+27762
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2575,7 +2575,7 @@ function update_info( ctxt )
 	wf_ok = false;
 	if (!file_exists(wf) )
 	{
-		rescanlibrary( 'solar' );
+//		rescanlibrary( 'solar' );
 		refresh('solar_resource');
 		msg_caption = 'Weather file does not exist. Please choose or download a different file above.';
 		msg_color = 'red';

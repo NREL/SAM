@@ -32,565 +32,565 @@ SAM_EXPORT void SAM_Biomass_destruct(SAM_Biomass system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_avoided_cred_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_avoided_cred_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.avoided_cred", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_collection_fuel_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_collection_fuel_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.collection_fuel", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_grid_intensity_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_grid_intensity_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.grid_intensity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_pre_chipopt_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_pre_chipopt_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.pre_chipopt", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_pre_grindopt_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_pre_grindopt_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.pre_grindopt", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_pre_pelletopt_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_pre_pelletopt_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.pre_pelletopt", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_fuel_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_fuel_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.transport_fuel", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_legs_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_legs_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.transport_legs", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_long_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_long_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.transport_long", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_longmiles_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_longmiles_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.transport_longmiles", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_longopt_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_longopt_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.transport_longopt", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_predist_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_emissions_transport_predist_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.emissions.transport_predist", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_additional_opt_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_additional_opt_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.additional_opt", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bagasse_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bagasse_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.bagasse_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bagasse_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bagasse_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.bagasse_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_barley_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_barley_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.barley_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_barley_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_barley_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.barley_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bit_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bit_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.bit_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bit_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_bit_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.bit_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_collection_radius_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_collection_radius_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.collection_radius", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_c_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_c_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock1_c", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock1_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_h_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_h_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock1_h", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_hhv_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_hhv_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock1_hhv", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock1_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_resource_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_resource_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock1_resource", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_c_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_c_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock2_c", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock2_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_h_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_h_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock2_h", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_hhv_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_hhv_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock2_hhv", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock2_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_resource_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_resource_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.feedstock2_resource", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_forest_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_forest_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.forest_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_forest_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_forest_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.forest_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_herb_c_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_herb_c_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.herb_c", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_herb_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_herb_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.herb_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_herb_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_herb_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.herb_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_lig_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_lig_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.lig_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_lig_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_lig_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.lig_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_mill_c_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_mill_c_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.mill_c", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_mill_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_mill_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.mill_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_mill_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_mill_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.mill_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_rice_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_rice_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.rice_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_rice_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_rice_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.rice_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_stover_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_stover_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.stover_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_stover_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_stover_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.stover_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_subbit_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_subbit_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.subbit_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_subbit_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_subbit_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.subbit_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.total", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.total_biomass", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_c_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_c_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.total_biomass_c", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_c_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_c_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.total_c", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_coal_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_coal_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.total_coal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_h_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_h_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.total_h", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_hhv_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_hhv_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.total_hhv", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_lhv_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_lhv_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.total_lhv", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_total_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.total_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_urban_c_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_urban_c_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.urban_c", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_urban_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_urban_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.urban_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_urban_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_urban_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.urban_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_wheat_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_wheat_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.wheat_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_wheat_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_wheat_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.wheat_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_woody_c_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_woody_c_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.woody_c", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_woody_frac_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_woody_frac_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.woody_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_woody_moisture_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_feedstock_woody_moisture_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.feedstock.woody_moisture", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_air_feed_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_air_feed_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.boiler.air_feed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_cap_per_boiler_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_cap_per_boiler_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.boiler.cap_per_boiler", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_flue_temp_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_flue_temp_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.boiler.flue_temp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_num_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_num_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.boiler.num", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_over_design_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_over_design_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.boiler.over_design", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_steam_enthalpy_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_steam_enthalpy_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.boiler.steam_enthalpy", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_steam_pressure_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_boiler_steam_pressure_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.boiler.steam_pressure", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_combustor_type_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_combustor_type_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.combustor_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_cycle_design_temp_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_cycle_design_temp_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.cycle_design_temp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_disp_power_aset(SAM_Biomass ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_disp_power_aset(SAM_Biomass ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "biopwr.plant.disp.power", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_drying_method_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_drying_method_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.drying_method", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_drying_spec_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_drying_spec_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.drying_spec", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_max_over_design_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_max_over_design_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.max_over_design", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_min_load_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_min_load_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.min_load", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_nameplate_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_nameplate_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.nameplate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_par_percent_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_par_percent_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.par_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f0_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f0_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.pl_eff_f0", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f1_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f1_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.pl_eff_f1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f2_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f2_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.pl_eff_f2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f3_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f3_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.pl_eff_f3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f4_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_pl_eff_f4_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.pl_eff_f4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_ramp_rate_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_ramp_rate_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.ramp_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_rated_eff_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_rated_eff_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.rated_eff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_corr_mode_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_corr_mode_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.temp_corr_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f0_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f0_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.temp_eff_f0", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f1_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f1_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.temp_eff_f1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f2_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f2_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.temp_eff_f2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f3_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f3_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.temp_eff_f3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f4_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_temp_eff_f4_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.temp_eff_f4", number);
 	});
@@ -602,7 +602,7 @@ SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_tou_grid_sset(SAM_Biomass ptr,
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_tou_option_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_biopwr_plant_tou_option_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "biopwr.plant.tou_option", number);
 	});
@@ -614,14 +614,14 @@ SAM_EXPORT void SAM_Biomass_Biopower_file_name_sset(SAM_Biomass ptr, const char*
 	});
 }
 
-SAM_EXPORT void SAM_Biomass_Biopower_system_capacity_fset(SAM_Biomass ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Biomass_Biopower_system_capacity_nset(SAM_Biomass ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_avoided_cred_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_avoided_cred_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.avoided_cred", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.avoided_cred");
@@ -631,8 +631,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_avoided_cred_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_collection_fuel_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_collection_fuel_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.collection_fuel", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.collection_fuel");
@@ -642,8 +642,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_collection_fuel_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_grid_intensity_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_grid_intensity_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.grid_intensity", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.grid_intensity");
@@ -653,8 +653,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_grid_intensity_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_pre_chipopt_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_pre_chipopt_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.pre_chipopt", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.pre_chipopt");
@@ -664,8 +664,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_pre_chipopt_fget(SAM_Biom
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_pre_grindopt_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_pre_grindopt_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.pre_grindopt", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.pre_grindopt");
@@ -675,8 +675,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_pre_grindopt_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_pre_pelletopt_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_pre_pelletopt_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.pre_pelletopt", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.pre_pelletopt");
@@ -686,8 +686,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_pre_pelletopt_fget(SAM_Bi
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_fuel_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_transport_fuel_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.transport_fuel", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.transport_fuel");
@@ -697,8 +697,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_fuel_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_legs_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_transport_legs_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.transport_legs", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.transport_legs");
@@ -708,8 +708,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_legs_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_long_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_transport_long_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.transport_long", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.transport_long");
@@ -719,8 +719,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_long_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_longmiles_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_transport_longmiles_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.transport_longmiles", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.transport_longmiles");
@@ -730,8 +730,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_longmiles_fget(
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_longopt_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_transport_longopt_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.transport_longopt", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.transport_longopt");
@@ -741,8 +741,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_longopt_fget(SA
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_predist_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_emissions_transport_predist_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.emissions.transport_predist", &result))
 		make_access_error("SAM_Biomass", "biopwr.emissions.transport_predist");
@@ -752,8 +752,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_emissions_transport_predist_fget(SA
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_additional_opt_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_additional_opt_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.additional_opt", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.additional_opt");
@@ -763,8 +763,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_additional_opt_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_bagasse_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_bagasse_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.bagasse_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.bagasse_frac");
@@ -774,8 +774,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_bagasse_frac_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_bagasse_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_bagasse_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.bagasse_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.bagasse_moisture");
@@ -785,8 +785,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_bagasse_moisture_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_barley_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_barley_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.barley_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.barley_frac");
@@ -796,8 +796,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_barley_frac_fget(SAM_Biom
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_barley_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_barley_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.barley_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.barley_moisture");
@@ -807,8 +807,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_barley_moisture_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_bit_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_bit_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.bit_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.bit_frac");
@@ -818,8 +818,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_bit_frac_fget(SAM_Biomass
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_bit_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_bit_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.bit_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.bit_moisture");
@@ -829,8 +829,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_bit_moisture_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_collection_radius_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_collection_radius_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.collection_radius", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.collection_radius");
@@ -840,8 +840,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_collection_radius_fget(SA
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_c_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_c_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock1_c", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock1_c");
@@ -851,8 +851,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_c_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock1_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock1_frac");
@@ -862,8 +862,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_frac_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_h_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_h_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock1_h", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock1_h");
@@ -873,8 +873,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_h_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_hhv_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_hhv_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock1_hhv", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock1_hhv");
@@ -884,8 +884,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_hhv_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock1_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock1_moisture");
@@ -895,8 +895,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_moisture_fget(
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_resource_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_resource_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock1_resource", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock1_resource");
@@ -906,8 +906,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock1_resource_fget(
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_c_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_c_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock2_c", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock2_c");
@@ -917,8 +917,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_c_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock2_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock2_frac");
@@ -928,8 +928,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_frac_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_h_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_h_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock2_h", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock2_h");
@@ -939,8 +939,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_h_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_hhv_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_hhv_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock2_hhv", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock2_hhv");
@@ -950,8 +950,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_hhv_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock2_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock2_moisture");
@@ -961,8 +961,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_moisture_fget(
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_resource_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_resource_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.feedstock2_resource", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.feedstock2_resource");
@@ -972,8 +972,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_feedstock2_resource_fget(
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_forest_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_forest_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.forest_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.forest_frac");
@@ -983,8 +983,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_forest_frac_fget(SAM_Biom
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_forest_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_forest_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.forest_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.forest_moisture");
@@ -994,8 +994,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_forest_moisture_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_herb_c_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_herb_c_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.herb_c", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.herb_c");
@@ -1005,8 +1005,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_herb_c_fget(SAM_Biomass p
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_herb_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_herb_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.herb_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.herb_frac");
@@ -1016,8 +1016,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_herb_frac_fget(SAM_Biomas
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_herb_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_herb_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.herb_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.herb_moisture");
@@ -1027,8 +1027,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_herb_moisture_fget(SAM_Bi
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_lig_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_lig_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.lig_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.lig_frac");
@@ -1038,8 +1038,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_lig_frac_fget(SAM_Biomass
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_lig_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_lig_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.lig_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.lig_moisture");
@@ -1049,8 +1049,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_lig_moisture_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_mill_c_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_mill_c_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.mill_c", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.mill_c");
@@ -1060,8 +1060,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_mill_c_fget(SAM_Biomass p
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_mill_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_mill_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.mill_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.mill_frac");
@@ -1071,8 +1071,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_mill_frac_fget(SAM_Biomas
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_mill_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_mill_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.mill_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.mill_moisture");
@@ -1082,8 +1082,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_mill_moisture_fget(SAM_Bi
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_rice_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_rice_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.rice_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.rice_frac");
@@ -1093,8 +1093,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_rice_frac_fget(SAM_Biomas
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_rice_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_rice_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.rice_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.rice_moisture");
@@ -1104,8 +1104,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_rice_moisture_fget(SAM_Bi
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_stover_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_stover_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.stover_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.stover_frac");
@@ -1115,8 +1115,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_stover_frac_fget(SAM_Biom
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_stover_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_stover_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.stover_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.stover_moisture");
@@ -1126,8 +1126,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_stover_moisture_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_subbit_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_subbit_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.subbit_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.subbit_frac");
@@ -1137,8 +1137,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_subbit_frac_fget(SAM_Biom
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_subbit_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_subbit_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.subbit_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.subbit_moisture");
@@ -1148,8 +1148,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_subbit_moisture_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_total_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.total", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.total");
@@ -1159,8 +1159,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.total_biomass", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.total_biomass");
@@ -1170,8 +1170,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_fget(SAM_Bi
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_c_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_c_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.total_biomass_c", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.total_biomass_c");
@@ -1181,8 +1181,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_biomass_c_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_c_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_total_c_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.total_c", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.total_c");
@@ -1192,8 +1192,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_c_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_coal_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_total_coal_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.total_coal", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.total_coal");
@@ -1203,8 +1203,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_coal_fget(SAM_Bioma
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_h_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_total_h_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.total_h", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.total_h");
@@ -1214,8 +1214,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_h_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_hhv_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_total_hhv_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.total_hhv", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.total_hhv");
@@ -1225,8 +1225,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_hhv_fget(SAM_Biomas
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_lhv_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_total_lhv_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.total_lhv", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.total_lhv");
@@ -1236,8 +1236,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_lhv_fget(SAM_Biomas
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_total_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.total_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.total_moisture");
@@ -1247,8 +1247,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_total_moisture_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_urban_c_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_urban_c_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.urban_c", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.urban_c");
@@ -1258,8 +1258,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_urban_c_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_urban_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_urban_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.urban_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.urban_frac");
@@ -1269,8 +1269,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_urban_frac_fget(SAM_Bioma
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_urban_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_urban_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.urban_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.urban_moisture");
@@ -1280,8 +1280,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_urban_moisture_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_wheat_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_wheat_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.wheat_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.wheat_frac");
@@ -1291,8 +1291,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_wheat_frac_fget(SAM_Bioma
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_wheat_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_wheat_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.wheat_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.wheat_moisture");
@@ -1302,8 +1302,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_wheat_moisture_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_woody_c_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_woody_c_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.woody_c", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.woody_c");
@@ -1313,8 +1313,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_woody_c_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_woody_frac_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_woody_frac_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.woody_frac", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.woody_frac");
@@ -1324,8 +1324,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_woody_frac_fget(SAM_Bioma
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_woody_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_feedstock_woody_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.feedstock.woody_moisture", &result))
 		make_access_error("SAM_Biomass", "biopwr.feedstock.woody_moisture");
@@ -1335,8 +1335,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_feedstock_woody_moisture_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_air_feed_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_boiler_air_feed_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.boiler.air_feed", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.boiler.air_feed");
@@ -1346,8 +1346,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_air_feed_fget(SAM_Biom
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_cap_per_boiler_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_boiler_cap_per_boiler_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.boiler.cap_per_boiler", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.boiler.cap_per_boiler");
@@ -1357,8 +1357,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_cap_per_boiler_fget(SA
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_flue_temp_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_boiler_flue_temp_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.boiler.flue_temp", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.boiler.flue_temp");
@@ -1368,8 +1368,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_flue_temp_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_num_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_boiler_num_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.boiler.num", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.boiler.num");
@@ -1379,8 +1379,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_num_fget(SAM_Biomass p
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_over_design_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_boiler_over_design_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.boiler.over_design", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.boiler.over_design");
@@ -1390,8 +1390,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_over_design_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_steam_enthalpy_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_boiler_steam_enthalpy_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.boiler.steam_enthalpy", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.boiler.steam_enthalpy");
@@ -1401,8 +1401,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_steam_enthalpy_fget(SA
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_steam_pressure_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_boiler_steam_pressure_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.boiler.steam_pressure", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.boiler.steam_pressure");
@@ -1412,8 +1412,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_boiler_steam_pressure_fget(SA
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_combustor_type_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_combustor_type_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.combustor_type", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.combustor_type");
@@ -1423,8 +1423,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_combustor_type_fget(SAM_Bioma
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_cycle_design_temp_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_cycle_design_temp_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.cycle_design_temp", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.cycle_design_temp");
@@ -1434,8 +1434,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_cycle_design_temp_fget(SAM_Bi
 
 
 
-SAM_EXPORT float* SAM_Biomass_Biopower_biopwr_plant_disp_power_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Biopower_biopwr_plant_disp_power_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "biopwr.plant.disp.power", length);
 	if (!result)
@@ -1446,8 +1446,8 @@ SAM_EXPORT float* SAM_Biomass_Biopower_biopwr_plant_disp_power_aget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_drying_method_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_drying_method_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.drying_method", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.drying_method");
@@ -1457,8 +1457,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_drying_method_fget(SAM_Biomas
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_drying_spec_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_drying_spec_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.drying_spec", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.drying_spec");
@@ -1468,8 +1468,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_drying_spec_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_max_over_design_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_max_over_design_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.max_over_design", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.max_over_design");
@@ -1479,8 +1479,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_max_over_design_fget(SAM_Biom
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_min_load_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_min_load_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.min_load", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.min_load");
@@ -1490,8 +1490,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_min_load_fget(SAM_Biomass ptr
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_nameplate_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_nameplate_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.nameplate", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.nameplate");
@@ -1501,8 +1501,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_nameplate_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_par_percent_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_par_percent_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.par_percent", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.par_percent");
@@ -1512,8 +1512,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_par_percent_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_pl_eff_f0_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_pl_eff_f0_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.pl_eff_f0", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.pl_eff_f0");
@@ -1523,8 +1523,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_pl_eff_f0_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_pl_eff_f1_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_pl_eff_f1_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.pl_eff_f1", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.pl_eff_f1");
@@ -1534,8 +1534,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_pl_eff_f1_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_pl_eff_f2_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_pl_eff_f2_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.pl_eff_f2", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.pl_eff_f2");
@@ -1545,8 +1545,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_pl_eff_f2_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_pl_eff_f3_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_pl_eff_f3_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.pl_eff_f3", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.pl_eff_f3");
@@ -1556,8 +1556,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_pl_eff_f3_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_pl_eff_f4_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_pl_eff_f4_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.pl_eff_f4", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.pl_eff_f4");
@@ -1567,8 +1567,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_pl_eff_f4_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_ramp_rate_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_ramp_rate_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.ramp_rate", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.ramp_rate");
@@ -1578,8 +1578,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_ramp_rate_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_rated_eff_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_rated_eff_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.rated_eff", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.rated_eff");
@@ -1589,8 +1589,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_rated_eff_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_temp_corr_mode_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_temp_corr_mode_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.temp_corr_mode", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.temp_corr_mode");
@@ -1600,8 +1600,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_temp_corr_mode_fget(SAM_Bioma
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_temp_eff_f0_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_temp_eff_f0_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.temp_eff_f0", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.temp_eff_f0");
@@ -1611,8 +1611,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_temp_eff_f0_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_temp_eff_f1_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_temp_eff_f1_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.temp_eff_f1", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.temp_eff_f1");
@@ -1622,8 +1622,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_temp_eff_f1_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_temp_eff_f2_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_temp_eff_f2_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.temp_eff_f2", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.temp_eff_f2");
@@ -1633,8 +1633,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_temp_eff_f2_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_temp_eff_f3_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_temp_eff_f3_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.temp_eff_f3", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.temp_eff_f3");
@@ -1644,8 +1644,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_temp_eff_f3_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_temp_eff_f4_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_temp_eff_f4_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.temp_eff_f4", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.temp_eff_f4");
@@ -1667,8 +1667,8 @@ SAM_EXPORT const char* SAM_Biomass_Biopower_biopwr_plant_tou_grid_sget(SAM_Bioma
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_biopwr_plant_tou_option_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_biopwr_plant_tou_option_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "biopwr.plant.tou_option", &result))
 		make_access_error("SAM_Biomass", "biopwr.plant.tou_option");
@@ -1690,8 +1690,8 @@ SAM_EXPORT const char* SAM_Biomass_Biopower_file_name_sget(SAM_Biomass ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Biopower_system_capacity_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Biopower_system_capacity_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_Biomass", "system_capacity");
@@ -1701,8 +1701,8 @@ SAM_EXPORT float SAM_Biomass_Biopower_system_capacity_fget(SAM_Biomass ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_annual_energy_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_annual_energy_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
 		make_access_error("SAM_Biomass", "annual_energy");
@@ -1712,8 +1712,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_annual_energy_fget(SAM_Biomass ptr, SAM_err
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_annual_fuel_usage_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_annual_fuel_usage_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
 		make_access_error("SAM_Biomass", "annual_fuel_usage");
@@ -1723,8 +1723,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_annual_fuel_usage_fget(SAM_Biomass ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_annual_watter_usage_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_annual_watter_usage_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_watter_usage", &result))
 		make_access_error("SAM_Biomass", "annual_watter_usage");
@@ -1734,8 +1734,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_annual_watter_usage_fget(SAM_Biomass ptr, S
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_capacity_factor_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_capacity_factor_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
 		make_access_error("SAM_Biomass", "capacity_factor");
@@ -1745,8 +1745,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_capacity_factor_fget(SAM_Biomass ptr, SAM_e
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_gen_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_gen_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
@@ -1757,8 +1757,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_gen_aget(SAM_Biomass ptr, int* length, SAM
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_hourly_boiler_eff_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_hourly_boiler_eff_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hourly_boiler_eff", length);
 	if (!result)
@@ -1769,8 +1769,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_hourly_boiler_eff_aget(SAM_Biomass ptr, in
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_hourly_pbeta_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_hourly_pbeta_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hourly_pbeta", length);
 	if (!result)
@@ -1781,8 +1781,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_hourly_pbeta_aget(SAM_Biomass ptr, int* le
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_hourly_q_to_pb_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_hourly_q_to_pb_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hourly_q_to_pb", length);
 	if (!result)
@@ -1793,8 +1793,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_hourly_q_to_pb_aget(SAM_Biomass ptr, int* 
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_kwh_per_kw_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_kwh_per_kw_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
 		make_access_error("SAM_Biomass", "kwh_per_kw");
@@ -1804,8 +1804,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_kwh_per_kw_fget(SAM_Biomass ptr, SAM_error 
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_bagasse_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_bagasse_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_bagasse_emc", length);
 	if (!result)
@@ -1816,8 +1816,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_bagasse_emc_aget(SAM_Biomass ptr, 
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_barley_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_barley_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_barley_emc", length);
 	if (!result)
@@ -1828,8 +1828,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_barley_emc_aget(SAM_Biomass ptr, i
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_boiler_eff_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_boiler_eff_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_boiler_eff", length);
 	if (!result)
@@ -1840,8 +1840,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_boiler_eff_aget(SAM_Biomass ptr, i
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_energy_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_energy_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_energy", length);
 	if (!result)
@@ -1852,8 +1852,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_energy_aget(SAM_Biomass ptr, int* 
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_forest_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_forest_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_forest_emc", length);
 	if (!result)
@@ -1864,8 +1864,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_forest_emc_aget(SAM_Biomass ptr, i
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_herb_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_herb_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_herb_emc", length);
 	if (!result)
@@ -1876,8 +1876,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_herb_emc_aget(SAM_Biomass ptr, int
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_hhv_heatrate_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_hhv_heatrate_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_hhv_heatrate", length);
 	if (!result)
@@ -1888,8 +1888,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_hhv_heatrate_aget(SAM_Biomass ptr,
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_lhv_heatrate_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_lhv_heatrate_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_lhv_heatrate", length);
 	if (!result)
@@ -1900,8 +1900,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_lhv_heatrate_aget(SAM_Biomass ptr,
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_mill_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_mill_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_mill_emc", length);
 	if (!result)
@@ -1912,8 +1912,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_mill_emc_aget(SAM_Biomass ptr, int
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_moist_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_moist_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_moist", length);
 	if (!result)
@@ -1924,8 +1924,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_moist_aget(SAM_Biomass ptr, int* l
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_pb_eta_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_pb_eta_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_pb_eta", length);
 	if (!result)
@@ -1936,8 +1936,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_pb_eta_aget(SAM_Biomass ptr, int* 
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_q_to_pb_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_q_to_pb_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_q_to_pb", length);
 	if (!result)
@@ -1948,8 +1948,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_q_to_pb_aget(SAM_Biomass ptr, int*
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_rh_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_rh_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_rh", length);
 	if (!result)
@@ -1960,8 +1960,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_rh_aget(SAM_Biomass ptr, int* leng
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_rice_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_rice_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_rice_emc", length);
 	if (!result)
@@ -1972,8 +1972,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_rice_emc_aget(SAM_Biomass ptr, int
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_stover_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_stover_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_stover_emc", length);
 	if (!result)
@@ -1984,8 +1984,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_stover_emc_aget(SAM_Biomass ptr, i
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_temp_c_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_temp_c_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_temp_c", length);
 	if (!result)
@@ -1996,8 +1996,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_temp_c_aget(SAM_Biomass ptr, int* 
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_urban_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_urban_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_urban_emc", length);
 	if (!result)
@@ -2008,8 +2008,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_urban_emc_aget(SAM_Biomass ptr, in
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_wheat_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_wheat_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_wheat_emc", length);
 	if (!result)
@@ -2020,8 +2020,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_wheat_emc_aget(SAM_Biomass ptr, in
 
 
 
-SAM_EXPORT float* SAM_Biomass_Outputs_monthly_woody_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Biomass_Outputs_monthly_woody_emc_aget(SAM_Biomass ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_woody_emc", length);
 	if (!result)
@@ -2032,8 +2032,8 @@ SAM_EXPORT float* SAM_Biomass_Outputs_monthly_woody_emc_aget(SAM_Biomass ptr, in
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_ash_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_ash_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.ash", &result))
 		make_access_error("SAM_Biomass", "system.annual.ash");
@@ -2043,8 +2043,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_ash_fget(SAM_Biomass ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_biomass_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_biomass_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.biomass", &result))
 		make_access_error("SAM_Biomass", "system.annual.biomass");
@@ -2054,8 +2054,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_biomass_fget(SAM_Biomass ptr,
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_dry_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_dry_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_dry", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_dry");
@@ -2065,8 +2065,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_dry_fget(SAM_Biom
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_dry_kwh_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_dry_kwh_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_dry_kwh", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_dry_kwh");
@@ -2076,8 +2076,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_dry_kwh_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_fuel_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_fuel_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_fuel", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_fuel");
@@ -2087,8 +2087,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_fuel_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_fuel_kwh_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_fuel_kwh_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_fuel_kwh", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_fuel_kwh");
@@ -2098,8 +2098,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_fuel_kwh_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_manu_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_manu_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_manu", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_manu");
@@ -2109,8 +2109,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_manu_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_manu_kwh_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_manu_kwh_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_manu_kwh", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_manu_kwh");
@@ -2120,8 +2120,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_manu_kwh_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_rad_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_rad_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_rad", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_rad");
@@ -2131,8 +2131,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_rad_fget(SAM_Biom
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_rad_kwh_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_rad_kwh_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_rad_kwh", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_rad_kwh");
@@ -2142,8 +2142,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_rad_kwh_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_total_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_total_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_total", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_total");
@@ -2153,8 +2153,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_total_fget(SAM_Bi
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_total_kwh_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_total_kwh_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_total_kwh", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_total_kwh");
@@ -2164,8 +2164,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_total_kwh_fget(SA
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_unburn_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_unburn_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_unburn", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_unburn");
@@ -2175,8 +2175,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_unburn_fget(SAM_B
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_unburn_kwh_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_unburn_kwh_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_unburn_kwh", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_unburn_kwh");
@@ -2186,8 +2186,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_unburn_kwh_fget(S
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_wet_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_wet_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_wet", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_wet");
@@ -2197,8 +2197,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_wet_fget(SAM_Biom
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_wet_kwh_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_loss_wet_kwh_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_loss_wet_kwh", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_loss_wet_kwh");
@@ -2208,8 +2208,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_loss_wet_kwh_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_output_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_boiler_output_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.boiler_output", &result))
 		make_access_error("SAM_Biomass", "system.annual.boiler_output");
@@ -2219,8 +2219,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_boiler_output_fget(SAM_Biomas
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_coal_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_coal_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.coal", &result))
 		make_access_error("SAM_Biomass", "system.annual.coal");
@@ -2230,8 +2230,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_coal_fget(SAM_Biomass ptr, SA
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_e_net_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_e_net_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.e_net", &result))
 		make_access_error("SAM_Biomass", "system.annual.e_net");
@@ -2241,8 +2241,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_e_net_fget(SAM_Biomass ptr, S
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_par_loss_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_par_loss_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.par_loss", &result))
 		make_access_error("SAM_Biomass", "system.annual.par_loss");
@@ -2252,8 +2252,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_par_loss_fget(SAM_Biomass ptr
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_par_loss_kwh_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_par_loss_kwh_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.par_loss_kwh", &result))
 		make_access_error("SAM_Biomass", "system.annual.par_loss_kwh");
@@ -2263,8 +2263,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_par_loss_kwh_fget(SAM_Biomass
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_pb_eta_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_pb_eta_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.pb_eta", &result))
 		make_access_error("SAM_Biomass", "system.annual.pb_eta");
@@ -2274,8 +2274,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_pb_eta_fget(SAM_Biomass ptr, 
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_pb_eta_kwh_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_pb_eta_kwh_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.pb_eta_kwh", &result))
 		make_access_error("SAM_Biomass", "system.annual.pb_eta_kwh");
@@ -2285,8 +2285,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_pb_eta_kwh_fget(SAM_Biomass p
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_qtoboil_tot_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_qtoboil_tot_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.qtoboil_tot", &result))
 		make_access_error("SAM_Biomass", "system.annual.qtoboil_tot");
@@ -2296,8 +2296,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_qtoboil_tot_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_qtopb_tot_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_qtopb_tot_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.qtopb_tot", &result))
 		make_access_error("SAM_Biomass", "system.annual.qtopb_tot");
@@ -2307,8 +2307,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_qtopb_tot_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_annual_turbine_output_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_annual_turbine_output_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.annual.turbine_output", &result))
 		make_access_error("SAM_Biomass", "system.annual.turbine_output");
@@ -2318,8 +2318,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_annual_turbine_output_fget(SAM_Bioma
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_capfactor_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_capfactor_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.capfactor", &result))
 		make_access_error("SAM_Biomass", "system.capfactor");
@@ -2329,8 +2329,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_capfactor_fget(SAM_Biomass ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_avoided_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_avoided_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.avoided", &result))
 		make_access_error("SAM_Biomass", "system.emissions.avoided");
@@ -2340,8 +2340,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_avoided_fget(SAM_Biomass p
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_biodiesel_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_biodiesel_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.biodiesel", &result))
 		make_access_error("SAM_Biomass", "system.emissions.biodiesel");
@@ -2351,8 +2351,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_biodiesel_fget(SAM_Biomass
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_bunker_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_bunker_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.bunker", &result))
 		make_access_error("SAM_Biomass", "system.emissions.bunker");
@@ -2362,8 +2362,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_bunker_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_combustion_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_combustion_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.combustion", &result))
 		make_access_error("SAM_Biomass", "system.emissions.combustion");
@@ -2373,8 +2373,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_combustion_fget(SAM_Biomas
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_diesel_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_diesel_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.diesel", &result))
 		make_access_error("SAM_Biomass", "system.emissions.diesel");
@@ -2384,8 +2384,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_diesel_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_drying_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_drying_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.drying", &result))
 		make_access_error("SAM_Biomass", "system.emissions.drying");
@@ -2395,8 +2395,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_drying_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_ems_per_lb_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_ems_per_lb_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.ems_per_lb", &result))
 		make_access_error("SAM_Biomass", "system.emissions.ems_per_lb");
@@ -2406,8 +2406,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_ems_per_lb_fget(SAM_Biomas
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_growth_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_growth_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.growth", &result))
 		make_access_error("SAM_Biomass", "system.emissions.growth");
@@ -2417,8 +2417,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_growth_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_lime_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_lime_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.lime", &result))
 		make_access_error("SAM_Biomass", "system.emissions.lime");
@@ -2428,8 +2428,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_lime_fget(SAM_Biomass ptr,
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_naturalgas_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_naturalgas_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.naturalgas", &result))
 		make_access_error("SAM_Biomass", "system.emissions.naturalgas");
@@ -2439,8 +2439,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_naturalgas_fget(SAM_Biomas
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_nitrogen_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_nitrogen_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.nitrogen", &result))
 		make_access_error("SAM_Biomass", "system.emissions.nitrogen");
@@ -2450,8 +2450,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_nitrogen_fget(SAM_Biomass 
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_oil_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_oil_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.oil", &result))
 		make_access_error("SAM_Biomass", "system.emissions.oil");
@@ -2461,8 +2461,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_oil_fget(SAM_Biomass ptr, 
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_phosphorus_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_phosphorus_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.phosphorus", &result))
 		make_access_error("SAM_Biomass", "system.emissions.phosphorus");
@@ -2472,8 +2472,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_phosphorus_fget(SAM_Biomas
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_potassium_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_potassium_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.potassium", &result))
 		make_access_error("SAM_Biomass", "system.emissions.potassium");
@@ -2483,8 +2483,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_potassium_fget(SAM_Biomass
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_preprocessing_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_preprocessing_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.preprocessing", &result))
 		make_access_error("SAM_Biomass", "system.emissions.preprocessing");
@@ -2494,8 +2494,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_preprocessing_fget(SAM_Bio
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_total_sum_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_total_sum_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.total_sum", &result))
 		make_access_error("SAM_Biomass", "system.emissions.total_sum");
@@ -2505,8 +2505,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_total_sum_fget(SAM_Biomass
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_transport_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_transport_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.transport", &result))
 		make_access_error("SAM_Biomass", "system.emissions.transport");
@@ -2516,8 +2516,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_transport_fget(SAM_Biomass
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_uptake_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_emissions_uptake_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.emissions.uptake", &result))
 		make_access_error("SAM_Biomass", "system.emissions.uptake");
@@ -2527,8 +2527,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_emissions_uptake_fget(SAM_Biomass pt
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_heat_rate_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_heat_rate_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_heat_rate", &result))
 		make_access_error("SAM_Biomass", "system_heat_rate");
@@ -2538,8 +2538,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_heat_rate_fget(SAM_Biomass ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_hhv_heatrate_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_hhv_heatrate_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.hhv_heatrate", &result))
 		make_access_error("SAM_Biomass", "system.hhv_heatrate");
@@ -2549,8 +2549,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_hhv_heatrate_fget(SAM_Biomass ptr, S
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_hhv_thermeff_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_hhv_thermeff_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.hhv_thermeff", &result))
 		make_access_error("SAM_Biomass", "system.hhv_thermeff");
@@ -2560,8 +2560,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_hhv_thermeff_fget(SAM_Biomass ptr, S
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_lhv_heatrate_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_lhv_heatrate_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.lhv_heatrate", &result))
 		make_access_error("SAM_Biomass", "system.lhv_heatrate");
@@ -2571,8 +2571,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_lhv_heatrate_fget(SAM_Biomass ptr, S
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_lhv_thermeff_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_lhv_thermeff_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.lhv_thermeff", &result))
 		make_access_error("SAM_Biomass", "system.lhv_thermeff");
@@ -2582,8 +2582,8 @@ SAM_EXPORT float SAM_Biomass_Outputs_system_lhv_thermeff_fget(SAM_Biomass ptr, S
 
 
 
-SAM_EXPORT float SAM_Biomass_Outputs_system_total_moisture_fget(SAM_Biomass ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Biomass_Outputs_system_total_moisture_nget(SAM_Biomass ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system.total_moisture", &result))
 		make_access_error("SAM_Biomass", "system.total_moisture");

@@ -73,10 +73,11 @@ ShadingInputData::ShadingInputData()
 	clear();
 }
 
-void ShadingInputData::save( std::vector<float> &data )
+void ShadingInputData::save( std::vector<double> &data )
 {
 	data.clear();
-	data.push_back(3.0); // version number of data format - allows for expansion of options in future.
+//	data.push_back(3.0); // version number of data format - allows for expansion of options in future.
+	data.push_back(4.0); // version number of data format - allows for expansion of options in future.
 
 	data.push_back((en_mxh && mxh.nrows() == 12 && mxh.ncols() == 24) ? 1.0 : 0.0);
 	data.push_back( en_azal ? 1.0 : 0.0 );
@@ -135,7 +136,7 @@ void ShadingInputData::clear()
 	string_option = 0;
 }
 
-bool ShadingInputData::load( const std::vector<float> &data )
+bool ShadingInputData::load( const std::vector<double> &data )
 {
 	clear();
 
@@ -319,7 +320,7 @@ public:
 		m_timestep->SetDBCaption(wxString("Enable partial shading model (c-Si modules only)"));
 
 		int num_cols = 8;
-		matrix_t<float> ts_data(8760, num_cols, 0);
+		matrix_t<double> ts_data(8760, num_cols, 0);
 		m_timestep->SetData(ts_data);
 
 		m_enableMxH = new wxCheckBox( m_scrollWin, ID_ENABLE_MXH, "Enable month-by-hour beam irradiance shading losses" );
@@ -338,7 +339,7 @@ public:
 		m_azal->PasteAppendRows(true);
 		m_azal->ShadeR0C0(true);
 
-		matrix_t<float> data(10, 18, 0);
+		matrix_t<double> data(10, 18, 0);
 		for ( int c=0;c<18;c++ )
 			data.at(0, c) = c*20;
 		for ( int r=0;r<10;r++ )
@@ -498,7 +499,7 @@ public:
 			m_timestep->SetDBOption(string_option);
 //			m_timestep->SetStringOption(string_option);
 		}
-
+		 
 		if ( all || sh.en_mxh )
 		{
 			m_enableMxH->SetValue( sh.en_mxh );
@@ -630,7 +631,7 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 	int linesok = 0;
 
 		
-	matrix_t<float> azaltvals;
+	matrix_t<double> azaltvals;
 	azaltvals.resize_fill(11,20, 0.0f);
 	azaltvals.at(0,0) = 0.0f;
 
@@ -1562,7 +1563,7 @@ void wxShadingFactorsCtrl::OnChoiceMinute(wxCommandEvent  &)
 	}
 }
 
-void wxShadingFactorsCtrl::SetData(const matrix_t<float> &mat)
+void wxShadingFactorsCtrl::SetData(const matrix_t<double> &mat)
 {
 	m_data = mat;
 
@@ -1578,7 +1579,7 @@ void wxShadingFactorsCtrl::SetData(const matrix_t<float> &mat)
 	m_grid->Refresh();
 }
 
-void wxShadingFactorsCtrl::GetData(matrix_t<float> &mat)
+void wxShadingFactorsCtrl::GetData(matrix_t<double> &mat)
 {
 	mat = m_data;
 }
@@ -1714,14 +1715,14 @@ int wxShadingFactorsCtrl::GetStringOption()
 }
 */
 
-wxShadingFactorsTable::wxShadingFactorsTable(matrix_t<float> *da, float _def_val, const wxString &_label)
+wxShadingFactorsTable::wxShadingFactorsTable(matrix_t<double> *da, float _def_val, const wxString &_label)
 {
 	label = _label;
 	d_mat = da;
 	def_val = _def_val;
 }
 
-void wxShadingFactorsTable::SetMatrix(matrix_t<float> *da)
+void wxShadingFactorsTable::SetMatrix(matrix_t<double> *da)
 {
 	d_mat = da;
 }
@@ -1830,7 +1831,7 @@ bool wxShadingFactorsTable::InsertRows(size_t pos, size_t nrows)
 	if (pos > d_mat->nrows()) pos = d_mat->nrows();
 
 	size_t new_rows = d_mat->nrows() + nrows;
-	matrix_t<float> old(*d_mat);
+	matrix_t<double> old(*d_mat);
 	d_mat->resize_fill(new_rows, d_mat->ncols(), def_val);
 
 	for (size_t r = 0; r < pos && r < old.nrows(); r++)
@@ -1863,7 +1864,7 @@ bool wxShadingFactorsTable::DeleteRows(size_t pos, size_t nrows)
 		nrows = d_mat->nrows() - pos;
 
 	size_t new_rows = d_mat->nrows() - nrows;
-	matrix_t<float> old(*d_mat);
+	matrix_t<double> old(*d_mat);
 	d_mat->resize_preserve(new_rows, d_mat->ncols(), def_val);
 
 	for (size_t r = pos; r < new_rows && r + nrows < old.nrows(); r++)
@@ -1911,7 +1912,7 @@ bool wxShadingFactorsTable::InsertCols(size_t pos, size_t ncols)
 	if (pos > d_mat->ncols()) pos = d_mat->ncols();
 
 	size_t new_cols = d_mat->ncols() + ncols;
-	matrix_t<float> old(*d_mat);
+	matrix_t<double> old(*d_mat);
 	d_mat->resize_fill(d_mat->nrows(), new_cols, def_val);
 
 	for (size_t r = 0; r < old.nrows(); r++)
@@ -1944,7 +1945,7 @@ bool wxShadingFactorsTable::DeleteCols(size_t pos, size_t ncols)
 		ncols = d_mat->ncols() - pos;
 
 	size_t new_cols = d_mat->ncols() - ncols;
-	matrix_t<float> old(*d_mat);
+	matrix_t<double> old(*d_mat);
 	d_mat->resize_preserve(d_mat->nrows(), new_cols, def_val);
 
 	for (size_t r = pos; r < old.nrows(); r++)

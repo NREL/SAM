@@ -32,128 +32,128 @@ SAM_EXPORT void SAM_Thirdpartyownership_destruct(SAM_Thirdpartyownership system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aset(SAM_Thirdpartyownership ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "depr_fed_custom", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_fed_sl_years", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_type_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_type_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_fed_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_custom_aset(SAM_Thirdpartyownership ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_custom_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "depr_sta_custom", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_sta_sl_years", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_type_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_type_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_sta_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_Financials_analysis_period_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_Financials_analysis_period_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_Financials_inflation_rate_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_Financials_inflation_rate_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inflation_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_Financials_real_discount_rate_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_Financials_real_discount_rate_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "real_discount_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_FinancialThirdPartyOwnership_lease_or_ppa_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_FinancialThirdPartyOwnership_lease_or_ppa_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "lease_or_ppa", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_Common_annual_energy_value_aset(SAM_Thirdpartyownership ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_Common_annual_energy_value_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "annual_energy_value", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_Common_gen_aset(SAM_Thirdpartyownership ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_Common_gen_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "gen", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_AnnualOutput_degradation_aset(SAM_Thirdpartyownership ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_AnnualOutput_degradation_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "degradation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_AnnualOutput_system_use_lifetime_output_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_AnnualOutput_system_use_lifetime_output_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_lease_escalation_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_lease_escalation_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "lease_escalation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_lease_price_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_lease_price_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "lease_price", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_ppa_escalation_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_ppa_escalation_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_escalation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_ppa_price_fset(SAM_Thirdpartyownership ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_ppa_price_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_price", number);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_ElectricityCost_elec_cost_with_system_aset(SAM_Thirdpartyownership ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_ElectricityCost_elec_cost_with_system_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "elec_cost_with_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Thirdpartyownership_ElectricityCost_elec_cost_without_system_aset(SAM_Thirdpartyownership ptr, float* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Thirdpartyownership_ElectricityCost_elec_cost_without_system_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "elec_cost_without_system", arr, length);
 	});
 }
 
-SAM_EXPORT float* SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "depr_fed_custom", length);
 	if (!result)
@@ -164,8 +164,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aget(SAM_
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fed_sl_years", &result))
 		make_access_error("SAM_Thirdpartyownership", "depr_fed_sl_years");
@@ -175,8 +175,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Depreciation_depr_fed_type_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_fed_type_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fed_type", &result))
 		make_access_error("SAM_Thirdpartyownership", "depr_fed_type");
@@ -186,8 +186,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_Depreciation_depr_fed_type_fget(SAM_Thi
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_Depreciation_depr_sta_custom_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_Depreciation_depr_sta_custom_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "depr_sta_custom", length);
 	if (!result)
@@ -198,8 +198,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_Depreciation_depr_sta_custom_aget(SAM_
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_sta_sl_years", &result))
 		make_access_error("SAM_Thirdpartyownership", "depr_sta_sl_years");
@@ -209,8 +209,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_fget(SAM
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Depreciation_depr_sta_type_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_sta_type_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_sta_type", &result))
 		make_access_error("SAM_Thirdpartyownership", "depr_sta_type");
@@ -220,8 +220,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_Depreciation_depr_sta_type_fget(SAM_Thi
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Financials_analysis_period_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Financials_analysis_period_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
 		make_access_error("SAM_Thirdpartyownership", "analysis_period");
@@ -231,8 +231,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_Financials_analysis_period_fget(SAM_Thi
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Financials_inflation_rate_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Financials_inflation_rate_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
 		make_access_error("SAM_Thirdpartyownership", "inflation_rate");
@@ -242,8 +242,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_Financials_inflation_rate_fget(SAM_Thir
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Financials_real_discount_rate_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Financials_real_discount_rate_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "real_discount_rate", &result))
 		make_access_error("SAM_Thirdpartyownership", "real_discount_rate");
@@ -253,8 +253,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_Financials_real_discount_rate_fget(SAM_
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_FinancialThirdPartyOwnership_lease_or_ppa_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_FinancialThirdPartyOwnership_lease_or_ppa_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lease_or_ppa", &result))
 		make_access_error("SAM_Thirdpartyownership", "lease_or_ppa");
@@ -264,8 +264,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_FinancialThirdPartyOwnership_lease_or_p
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_Common_annual_energy_value_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_Common_annual_energy_value_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "annual_energy_value", length);
 	if (!result)
@@ -276,8 +276,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_Common_annual_energy_value_aget(SAM_Th
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_Common_gen_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_Common_gen_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
@@ -288,8 +288,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_Common_gen_aget(SAM_Thirdpartyownershi
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_AnnualOutput_degradation_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_AnnualOutput_degradation_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "degradation", length);
 	if (!result)
@@ -300,8 +300,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_AnnualOutput_degradation_aget(SAM_Thir
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_AnnualOutput_system_use_lifetime_output_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_AnnualOutput_system_use_lifetime_output_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
 		make_access_error("SAM_Thirdpartyownership", "system_use_lifetime_output");
@@ -311,8 +311,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_AnnualOutput_system_use_lifetime_output
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_CashFlow_lease_escalation_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_lease_escalation_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lease_escalation", &result))
 		make_access_error("SAM_Thirdpartyownership", "lease_escalation");
@@ -322,8 +322,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_CashFlow_lease_escalation_fget(SAM_Thir
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_CashFlow_lease_price_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_lease_price_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lease_price", &result))
 		make_access_error("SAM_Thirdpartyownership", "lease_price");
@@ -333,8 +333,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_CashFlow_lease_price_fget(SAM_Thirdpart
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_CashFlow_ppa_escalation_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_ppa_escalation_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_escalation", &result))
 		make_access_error("SAM_Thirdpartyownership", "ppa_escalation");
@@ -344,8 +344,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_CashFlow_ppa_escalation_fget(SAM_Thirdp
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_CashFlow_ppa_price_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_ppa_price_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_price", &result))
 		make_access_error("SAM_Thirdpartyownership", "ppa_price");
@@ -355,8 +355,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_CashFlow_ppa_price_fget(SAM_Thirdpartyo
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_ElectricityCost_elec_cost_with_system_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_ElectricityCost_elec_cost_with_system_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "elec_cost_with_system", length);
 	if (!result)
@@ -367,8 +367,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_ElectricityCost_elec_cost_with_system_
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_ElectricityCost_elec_cost_without_system_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_ElectricityCost_elec_cost_without_system_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "elec_cost_without_system", length);
 	if (!result)
@@ -379,8 +379,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_ElectricityCost_elec_cost_without_syst
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_after_tax_cash_flow_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_after_tax_cash_flow_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_after_tax_cash_flow", length);
 	if (!result)
@@ -391,8 +391,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_after_tax_cash_flow_aget(SA
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_after_tax_net_equity_cost_flow_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_after_tax_net_equity_cost_flow_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_after_tax_net_equity_cost_flow", length);
 	if (!result)
@@ -403,8 +403,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_after_tax_net_equity_cost_f
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_agreement_cost_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_agreement_cost_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_agreement_cost", length);
 	if (!result)
@@ -415,8 +415,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_agreement_cost_aget(SAM_Thi
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_cumulative_payback_with_expenses_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_cumulative_payback_with_expenses_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_cumulative_payback_with_expenses", length);
 	if (!result)
@@ -427,8 +427,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_cumulative_payback_with_exp
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_energy_net_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_net_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net", length);
 	if (!result)
@@ -439,8 +439,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_energy_net_aget(SAM_Thirdpa
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Outputs_cf_length_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Outputs_cf_length_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cf_length", &result))
 		make_access_error("SAM_Thirdpartyownership", "cf_length");
@@ -450,8 +450,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_Outputs_cf_length_fget(SAM_Thirdpartyow
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_nte_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_nte_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_nte", length);
 	if (!result)
@@ -462,8 +462,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_nte_aget(SAM_Thirdpartyowne
 
 
 
-SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_payback_with_expenses_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_payback_with_expenses_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_payback_with_expenses", length);
 	if (!result)
@@ -474,8 +474,8 @@ SAM_EXPORT float* SAM_Thirdpartyownership_Outputs_cf_payback_with_expenses_aget(
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Outputs_lnte_nom_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Outputs_lnte_nom_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lnte_nom", &result))
 		make_access_error("SAM_Thirdpartyownership", "lnte_nom");
@@ -485,8 +485,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_Outputs_lnte_nom_fget(SAM_Thirdpartyown
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Outputs_lnte_real_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Outputs_lnte_real_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lnte_real", &result))
 		make_access_error("SAM_Thirdpartyownership", "lnte_real");
@@ -496,8 +496,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_Outputs_lnte_real_fget(SAM_Thirdpartyow
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Outputs_npv_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Outputs_npv_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv", &result))
 		make_access_error("SAM_Thirdpartyownership", "npv");
@@ -507,8 +507,8 @@ SAM_EXPORT float SAM_Thirdpartyownership_Outputs_npv_fget(SAM_Thirdpartyownershi
 
 
 
-SAM_EXPORT float SAM_Thirdpartyownership_Outputs_year1_nte_fget(SAM_Thirdpartyownership ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Thirdpartyownership_Outputs_year1_nte_nget(SAM_Thirdpartyownership ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "year1_nte", &result))
 		make_access_error("SAM_Thirdpartyownership", "year1_nte");

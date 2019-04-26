@@ -126,7 +126,7 @@ std::string var_value_to_json(VarValue* vv){
             break;
         case VV_ARRAY:{
             json += "[";
-            std::vector<float> vec = vv->Array();
+            std::vector<double> vec = vv->Array();
             for (size_t j = 0; j < vec.size(); j++){
                 json += "\"" + std::to_string(vec[j]) + "\"";
                 if (j != vec.size() - 1) json += ", ";
@@ -166,9 +166,9 @@ std::string ssc_value_to_json(int ssc_type, VarValue* vv){
             json += "\"" + (vv? vv->AsString() : "" ) + "\"";
             break;
         case SSC_NUMBER:
-            if (vv && vv->Value() > std::numeric_limits<float>::max()){
+            if (vv && vv->Value() > std::numeric_limits<double>::max()){
                 char c[36];
-                sprintf(c, "%e", std::numeric_limits<float>::max());
+                sprintf(c, "%e", std::numeric_limits<double>::max());
                 json += c;
             }
             else
@@ -177,11 +177,11 @@ std::string ssc_value_to_json(int ssc_type, VarValue* vv){
         case SSC_ARRAY:
             json += "[";
             if (vv){
-                std::vector<float> vec = vv->Array();
+                std::vector<double> vec = vv->Array();
                 for (size_t j = 0; j < vec.size(); j++){
-                    if (vec[j] > std::numeric_limits<float>::max()){
+                    if (vec[j] > std::numeric_limits<double>::max()){
                         char c[36];
-                        sprintf(c, "%e", std::numeric_limits<float>::max());
+                        sprintf(c, "%e", std::numeric_limits<double>::max());
                         json += c;
                     }
                     else
@@ -195,13 +195,13 @@ std::string ssc_value_to_json(int ssc_type, VarValue* vv){
         case SSC_MATRIX:
             json += "[\n";
             if (vv){
-                matrix_t<float> mat = vv->Matrix();
+                matrix_t<double> mat = vv->Matrix();
                 for (size_t i = 0; i < mat.nrows(); i++){
                     json += "\t\t\t\t[";
                     for (size_t j = 0; j < mat.ncols(); j++){
-                        if (mat.at(i, j) > std::numeric_limits<float>::max()){
+                        if (mat.at(i, j) > std::numeric_limits<double>::max()){
                             char c[36];
-                            sprintf(c, "%e", std::numeric_limits<float>::max());
+                            sprintf(c, "%e", std::numeric_limits<double>::max());
                             json += c;
                         }
                         else

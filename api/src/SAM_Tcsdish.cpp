@@ -38,469 +38,469 @@ SAM_EXPORT void SAM_Tcsdish_Weather_file_name_sset(SAM_Tcsdish ptr, const char* 
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Dish_system_capacity_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Dish_system_capacity_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_A_proj_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_A_proj_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "A_proj", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_A_total_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_A_total_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "A_total", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_I_cut_in_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_I_cut_in_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "I_cut_in", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_d_ap_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_d_ap_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "d_ap", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_d_ap_test_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_d_ap_test_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "d_ap_test", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_ew_dish_sep_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_ew_dish_sep_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ew_dish_sep", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_h_slot_gap_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_h_slot_gap_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "h_slot_gap", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_n_ew_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_n_ew_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_ew", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_n_ns_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_n_ns_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_ns", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_ns_dish_sep_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_ns_dish_sep_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ns_dish_sep", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_rho_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_rho_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rho", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_slope_ew_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_slope_ew_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "slope_ew", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_slope_ns_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_slope_ns_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "slope_ns", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_test_L_focal_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_test_L_focal_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "test_L_focal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_test_if_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_test_if_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "test_if", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_w_slot_gap_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_w_slot_gap_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "w_slot_gap", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type295_wind_stow_speed_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type295_wind_stow_speed_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wind_stow_speed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_A_absorber_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_A_absorber_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "A_absorber", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_A_wall_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_A_wall_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "A_wall", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_DELTA_T_DIR_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_DELTA_T_DIR_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "DELTA_T_DIR", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_DELTA_T_REFLUX_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_DELTA_T_REFLUX_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "DELTA_T_REFLUX", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_L_cav_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_L_cav_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "L_cav", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_L_insulation_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_L_insulation_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "L_insulation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_P_cav_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_P_cav_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_cav", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_T_heater_head_high_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_T_heater_head_high_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_heater_head_high", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_T_heater_head_low_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_T_heater_head_low_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_heater_head_low", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_alpha_absorber_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_alpha_absorber_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "alpha_absorber", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_alpha_wall_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_alpha_wall_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "alpha_wall", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_d_cav_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_d_cav_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "d_cav", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_k_insulation_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_k_insulation_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "k_insulation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_rec_type_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_rec_type_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type296_transmittance_cover_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type296_transmittance_cover_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "transmittance_cover", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type297_Beale_const_coef_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type297_Beale_const_coef_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Beale_const_coef", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type297_Beale_first_coef_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type297_Beale_first_coef_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Beale_first_coef", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type297_Beale_fourth_coef_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type297_Beale_fourth_coef_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Beale_fourth_coef", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type297_Beale_square_coef_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type297_Beale_square_coef_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Beale_square_coef", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type297_Beale_third_coef_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type297_Beale_third_coef_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Beale_third_coef", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type297_Pressure_coef_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type297_Pressure_coef_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Pressure_coef", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type297_Pressure_first_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type297_Pressure_first_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Pressure_first", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type297_T_compression_in_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type297_T_compression_in_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_compression_in", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type297_V_displaced_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type297_V_displaced_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "V_displaced", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type297_engine_speed_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type297_engine_speed_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "engine_speed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_P_controls_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_P_controls_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_controls", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_P_tower_fan_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_P_tower_fan_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_tower_fan", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_T_cool_speed2_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_T_cool_speed2_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_cool_speed2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_T_cool_speed3_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_T_cool_speed3_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_cool_speed3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_Tower_water_outlet_temp_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_Tower_water_outlet_temp_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Tower_water_outlet_temp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_b_cooler_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_b_cooler_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "b_cooler", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_b_radiator_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_b_radiator_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "b_radiator", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_cooling_fluid_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_cooling_fluid_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cooling_fluid", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_cooling_tower_on_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_cooling_tower_on_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cooling_tower_on", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_d_pipe_tower_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_d_pipe_tower_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "d_pipe_tower", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_epsilon_cooler_test_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_epsilon_cooler_test_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "epsilon_cooler_test", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_epsilon_power_test_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_epsilon_power_test_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "epsilon_power_test", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_epsilon_radiator_test_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_epsilon_radiator_test_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "epsilon_radiator_test", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_eta_tower_pump_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_eta_tower_pump_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "eta_tower_pump", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_ew_dish_separation_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_ew_dish_separation_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ew_dish_separation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_fan_control_signal_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_fan_control_signal_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fan_control_signal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_fan_speed1_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_fan_speed1_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fan_speed1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_fan_speed2_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_fan_speed2_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fan_speed2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_fan_speed3_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_fan_speed3_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fan_speed3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_ns_dish_separation_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_ns_dish_separation_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ns_dish_separation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_pump_speed_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_pump_speed_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pump_speed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_system_availability_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_system_availability_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_availability", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_test_P_fan_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_test_P_fan_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "test_P_fan", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_test_P_pump_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_test_P_pump_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "test_P_pump", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_test_T_fluid_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_test_T_fluid_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "test_T_fluid", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_test_V_dot_fluid_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_test_V_dot_fluid_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "test_V_dot_fluid", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_test_cooling_fluid_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_test_cooling_fluid_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "test_cooling_fluid", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_test_fan_cfm_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_test_fan_cfm_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "test_fan_cfm", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_test_fan_rho_air_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_test_fan_rho_air_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "test_fan_rho_air", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_test_fan_speed_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_test_fan_speed_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "test_fan_speed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_test_pump_speed_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_test_pump_speed_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "test_pump_speed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_tower_m_dot_water_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_tower_m_dot_water_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_m_dot_water", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_tower_m_dot_water_test_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_tower_m_dot_water_test_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_m_dot_water_test", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_tower_mode_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_tower_mode_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsdish_Type298_tower_pipe_material_fset(SAM_Tcsdish ptr, float number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsdish_Type298_tower_pipe_material_nset(SAM_Tcsdish ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_pipe_material", number);
 	});
@@ -518,8 +518,8 @@ SAM_EXPORT const char* SAM_Tcsdish_Weather_file_name_sget(SAM_Tcsdish ptr, SAM_e
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Dish_system_capacity_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Dish_system_capacity_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_Tcsdish", "system_capacity");
@@ -529,8 +529,8 @@ SAM_EXPORT float SAM_Tcsdish_Dish_system_capacity_fget(SAM_Tcsdish ptr, SAM_erro
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_A_proj_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_A_proj_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "A_proj", &result))
 		make_access_error("SAM_Tcsdish", "A_proj");
@@ -540,8 +540,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_A_proj_fget(SAM_Tcsdish ptr, SAM_error *err
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_A_total_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_A_total_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "A_total", &result))
 		make_access_error("SAM_Tcsdish", "A_total");
@@ -551,8 +551,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_A_total_fget(SAM_Tcsdish ptr, SAM_error *er
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_I_cut_in_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_I_cut_in_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "I_cut_in", &result))
 		make_access_error("SAM_Tcsdish", "I_cut_in");
@@ -562,8 +562,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_I_cut_in_fget(SAM_Tcsdish ptr, SAM_error *e
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_d_ap_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_d_ap_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "d_ap", &result))
 		make_access_error("SAM_Tcsdish", "d_ap");
@@ -573,8 +573,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_d_ap_fget(SAM_Tcsdish ptr, SAM_error *err){
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_d_ap_test_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_d_ap_test_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "d_ap_test", &result))
 		make_access_error("SAM_Tcsdish", "d_ap_test");
@@ -584,8 +584,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_d_ap_test_fget(SAM_Tcsdish ptr, SAM_error *
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_ew_dish_sep_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_ew_dish_sep_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ew_dish_sep", &result))
 		make_access_error("SAM_Tcsdish", "ew_dish_sep");
@@ -595,8 +595,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_ew_dish_sep_fget(SAM_Tcsdish ptr, SAM_error
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_h_slot_gap_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_h_slot_gap_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "h_slot_gap", &result))
 		make_access_error("SAM_Tcsdish", "h_slot_gap");
@@ -606,8 +606,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_h_slot_gap_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_n_ew_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_n_ew_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_ew", &result))
 		make_access_error("SAM_Tcsdish", "n_ew");
@@ -617,8 +617,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_n_ew_fget(SAM_Tcsdish ptr, SAM_error *err){
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_n_ns_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_n_ns_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_ns", &result))
 		make_access_error("SAM_Tcsdish", "n_ns");
@@ -628,8 +628,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_n_ns_fget(SAM_Tcsdish ptr, SAM_error *err){
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_ns_dish_sep_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_ns_dish_sep_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ns_dish_sep", &result))
 		make_access_error("SAM_Tcsdish", "ns_dish_sep");
@@ -639,8 +639,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_ns_dish_sep_fget(SAM_Tcsdish ptr, SAM_error
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_rho_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_rho_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rho", &result))
 		make_access_error("SAM_Tcsdish", "rho");
@@ -650,8 +650,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_rho_fget(SAM_Tcsdish ptr, SAM_error *err){
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_slope_ew_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_slope_ew_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "slope_ew", &result))
 		make_access_error("SAM_Tcsdish", "slope_ew");
@@ -661,8 +661,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_slope_ew_fget(SAM_Tcsdish ptr, SAM_error *e
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_slope_ns_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_slope_ns_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "slope_ns", &result))
 		make_access_error("SAM_Tcsdish", "slope_ns");
@@ -672,8 +672,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_slope_ns_fget(SAM_Tcsdish ptr, SAM_error *e
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_test_L_focal_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_test_L_focal_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "test_L_focal", &result))
 		make_access_error("SAM_Tcsdish", "test_L_focal");
@@ -683,8 +683,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_test_L_focal_fget(SAM_Tcsdish ptr, SAM_erro
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_test_if_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_test_if_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "test_if", &result))
 		make_access_error("SAM_Tcsdish", "test_if");
@@ -694,8 +694,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_test_if_fget(SAM_Tcsdish ptr, SAM_error *er
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_w_slot_gap_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_w_slot_gap_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "w_slot_gap", &result))
 		make_access_error("SAM_Tcsdish", "w_slot_gap");
@@ -705,8 +705,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_w_slot_gap_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type295_wind_stow_speed_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type295_wind_stow_speed_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wind_stow_speed", &result))
 		make_access_error("SAM_Tcsdish", "wind_stow_speed");
@@ -716,8 +716,8 @@ SAM_EXPORT float SAM_Tcsdish_Type295_wind_stow_speed_fget(SAM_Tcsdish ptr, SAM_e
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_A_absorber_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_A_absorber_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "A_absorber", &result))
 		make_access_error("SAM_Tcsdish", "A_absorber");
@@ -727,8 +727,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_A_absorber_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_A_wall_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_A_wall_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "A_wall", &result))
 		make_access_error("SAM_Tcsdish", "A_wall");
@@ -738,8 +738,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_A_wall_fget(SAM_Tcsdish ptr, SAM_error *err
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_DELTA_T_DIR_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_DELTA_T_DIR_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "DELTA_T_DIR", &result))
 		make_access_error("SAM_Tcsdish", "DELTA_T_DIR");
@@ -749,8 +749,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_DELTA_T_DIR_fget(SAM_Tcsdish ptr, SAM_error
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_DELTA_T_REFLUX_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_DELTA_T_REFLUX_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "DELTA_T_REFLUX", &result))
 		make_access_error("SAM_Tcsdish", "DELTA_T_REFLUX");
@@ -760,8 +760,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_DELTA_T_REFLUX_fget(SAM_Tcsdish ptr, SAM_er
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_L_cav_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_L_cav_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "L_cav", &result))
 		make_access_error("SAM_Tcsdish", "L_cav");
@@ -771,8 +771,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_L_cav_fget(SAM_Tcsdish ptr, SAM_error *err)
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_L_insulation_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_L_insulation_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "L_insulation", &result))
 		make_access_error("SAM_Tcsdish", "L_insulation");
@@ -782,8 +782,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_L_insulation_fget(SAM_Tcsdish ptr, SAM_erro
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_P_cav_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_P_cav_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_cav", &result))
 		make_access_error("SAM_Tcsdish", "P_cav");
@@ -793,8 +793,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_P_cav_fget(SAM_Tcsdish ptr, SAM_error *err)
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_T_heater_head_high_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_T_heater_head_high_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_heater_head_high", &result))
 		make_access_error("SAM_Tcsdish", "T_heater_head_high");
@@ -804,8 +804,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_T_heater_head_high_fget(SAM_Tcsdish ptr, SA
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_T_heater_head_low_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_T_heater_head_low_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_heater_head_low", &result))
 		make_access_error("SAM_Tcsdish", "T_heater_head_low");
@@ -815,8 +815,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_T_heater_head_low_fget(SAM_Tcsdish ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_alpha_absorber_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_alpha_absorber_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "alpha_absorber", &result))
 		make_access_error("SAM_Tcsdish", "alpha_absorber");
@@ -826,8 +826,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_alpha_absorber_fget(SAM_Tcsdish ptr, SAM_er
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_alpha_wall_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_alpha_wall_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "alpha_wall", &result))
 		make_access_error("SAM_Tcsdish", "alpha_wall");
@@ -837,8 +837,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_alpha_wall_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_d_cav_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_d_cav_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "d_cav", &result))
 		make_access_error("SAM_Tcsdish", "d_cav");
@@ -848,8 +848,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_d_cav_fget(SAM_Tcsdish ptr, SAM_error *err)
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_k_insulation_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_k_insulation_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "k_insulation", &result))
 		make_access_error("SAM_Tcsdish", "k_insulation");
@@ -859,8 +859,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_k_insulation_fget(SAM_Tcsdish ptr, SAM_erro
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_rec_type_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_rec_type_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_type", &result))
 		make_access_error("SAM_Tcsdish", "rec_type");
@@ -870,8 +870,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_rec_type_fget(SAM_Tcsdish ptr, SAM_error *e
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type296_transmittance_cover_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type296_transmittance_cover_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "transmittance_cover", &result))
 		make_access_error("SAM_Tcsdish", "transmittance_cover");
@@ -881,8 +881,8 @@ SAM_EXPORT float SAM_Tcsdish_Type296_transmittance_cover_fget(SAM_Tcsdish ptr, S
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type297_Beale_const_coef_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type297_Beale_const_coef_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Beale_const_coef", &result))
 		make_access_error("SAM_Tcsdish", "Beale_const_coef");
@@ -892,8 +892,8 @@ SAM_EXPORT float SAM_Tcsdish_Type297_Beale_const_coef_fget(SAM_Tcsdish ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type297_Beale_first_coef_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type297_Beale_first_coef_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Beale_first_coef", &result))
 		make_access_error("SAM_Tcsdish", "Beale_first_coef");
@@ -903,8 +903,8 @@ SAM_EXPORT float SAM_Tcsdish_Type297_Beale_first_coef_fget(SAM_Tcsdish ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type297_Beale_fourth_coef_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type297_Beale_fourth_coef_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Beale_fourth_coef", &result))
 		make_access_error("SAM_Tcsdish", "Beale_fourth_coef");
@@ -914,8 +914,8 @@ SAM_EXPORT float SAM_Tcsdish_Type297_Beale_fourth_coef_fget(SAM_Tcsdish ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type297_Beale_square_coef_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type297_Beale_square_coef_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Beale_square_coef", &result))
 		make_access_error("SAM_Tcsdish", "Beale_square_coef");
@@ -925,8 +925,8 @@ SAM_EXPORT float SAM_Tcsdish_Type297_Beale_square_coef_fget(SAM_Tcsdish ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type297_Beale_third_coef_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type297_Beale_third_coef_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Beale_third_coef", &result))
 		make_access_error("SAM_Tcsdish", "Beale_third_coef");
@@ -936,8 +936,8 @@ SAM_EXPORT float SAM_Tcsdish_Type297_Beale_third_coef_fget(SAM_Tcsdish ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type297_Pressure_coef_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type297_Pressure_coef_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Pressure_coef", &result))
 		make_access_error("SAM_Tcsdish", "Pressure_coef");
@@ -947,8 +947,8 @@ SAM_EXPORT float SAM_Tcsdish_Type297_Pressure_coef_fget(SAM_Tcsdish ptr, SAM_err
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type297_Pressure_first_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type297_Pressure_first_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Pressure_first", &result))
 		make_access_error("SAM_Tcsdish", "Pressure_first");
@@ -958,8 +958,8 @@ SAM_EXPORT float SAM_Tcsdish_Type297_Pressure_first_fget(SAM_Tcsdish ptr, SAM_er
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type297_T_compression_in_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type297_T_compression_in_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_compression_in", &result))
 		make_access_error("SAM_Tcsdish", "T_compression_in");
@@ -969,8 +969,8 @@ SAM_EXPORT float SAM_Tcsdish_Type297_T_compression_in_fget(SAM_Tcsdish ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type297_V_displaced_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type297_V_displaced_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "V_displaced", &result))
 		make_access_error("SAM_Tcsdish", "V_displaced");
@@ -980,8 +980,8 @@ SAM_EXPORT float SAM_Tcsdish_Type297_V_displaced_fget(SAM_Tcsdish ptr, SAM_error
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type297_engine_speed_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type297_engine_speed_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "engine_speed", &result))
 		make_access_error("SAM_Tcsdish", "engine_speed");
@@ -991,8 +991,8 @@ SAM_EXPORT float SAM_Tcsdish_Type297_engine_speed_fget(SAM_Tcsdish ptr, SAM_erro
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_P_controls_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_P_controls_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_controls", &result))
 		make_access_error("SAM_Tcsdish", "P_controls");
@@ -1002,8 +1002,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_P_controls_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_P_tower_fan_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_P_tower_fan_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_tower_fan", &result))
 		make_access_error("SAM_Tcsdish", "P_tower_fan");
@@ -1013,8 +1013,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_P_tower_fan_fget(SAM_Tcsdish ptr, SAM_error
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_T_cool_speed2_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_T_cool_speed2_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_cool_speed2", &result))
 		make_access_error("SAM_Tcsdish", "T_cool_speed2");
@@ -1024,8 +1024,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_T_cool_speed2_fget(SAM_Tcsdish ptr, SAM_err
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_T_cool_speed3_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_T_cool_speed3_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_cool_speed3", &result))
 		make_access_error("SAM_Tcsdish", "T_cool_speed3");
@@ -1035,8 +1035,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_T_cool_speed3_fget(SAM_Tcsdish ptr, SAM_err
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_Tower_water_outlet_temp_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_Tower_water_outlet_temp_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Tower_water_outlet_temp", &result))
 		make_access_error("SAM_Tcsdish", "Tower_water_outlet_temp");
@@ -1046,8 +1046,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_Tower_water_outlet_temp_fget(SAM_Tcsdish pt
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_b_cooler_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_b_cooler_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "b_cooler", &result))
 		make_access_error("SAM_Tcsdish", "b_cooler");
@@ -1057,8 +1057,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_b_cooler_fget(SAM_Tcsdish ptr, SAM_error *e
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_b_radiator_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_b_radiator_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "b_radiator", &result))
 		make_access_error("SAM_Tcsdish", "b_radiator");
@@ -1068,8 +1068,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_b_radiator_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_cooling_fluid_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_cooling_fluid_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cooling_fluid", &result))
 		make_access_error("SAM_Tcsdish", "cooling_fluid");
@@ -1079,8 +1079,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_cooling_fluid_fget(SAM_Tcsdish ptr, SAM_err
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_cooling_tower_on_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_cooling_tower_on_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cooling_tower_on", &result))
 		make_access_error("SAM_Tcsdish", "cooling_tower_on");
@@ -1090,8 +1090,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_cooling_tower_on_fget(SAM_Tcsdish ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_d_pipe_tower_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_d_pipe_tower_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "d_pipe_tower", &result))
 		make_access_error("SAM_Tcsdish", "d_pipe_tower");
@@ -1101,8 +1101,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_d_pipe_tower_fget(SAM_Tcsdish ptr, SAM_erro
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_epsilon_cooler_test_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_epsilon_cooler_test_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "epsilon_cooler_test", &result))
 		make_access_error("SAM_Tcsdish", "epsilon_cooler_test");
@@ -1112,8 +1112,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_epsilon_cooler_test_fget(SAM_Tcsdish ptr, S
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_epsilon_power_test_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_epsilon_power_test_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "epsilon_power_test", &result))
 		make_access_error("SAM_Tcsdish", "epsilon_power_test");
@@ -1123,8 +1123,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_epsilon_power_test_fget(SAM_Tcsdish ptr, SA
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_epsilon_radiator_test_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_epsilon_radiator_test_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "epsilon_radiator_test", &result))
 		make_access_error("SAM_Tcsdish", "epsilon_radiator_test");
@@ -1134,8 +1134,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_epsilon_radiator_test_fget(SAM_Tcsdish ptr,
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_eta_tower_pump_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_eta_tower_pump_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eta_tower_pump", &result))
 		make_access_error("SAM_Tcsdish", "eta_tower_pump");
@@ -1145,8 +1145,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_eta_tower_pump_fget(SAM_Tcsdish ptr, SAM_er
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_ew_dish_separation_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_ew_dish_separation_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ew_dish_separation", &result))
 		make_access_error("SAM_Tcsdish", "ew_dish_separation");
@@ -1156,8 +1156,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_ew_dish_separation_fget(SAM_Tcsdish ptr, SA
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_fan_control_signal_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_fan_control_signal_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fan_control_signal", &result))
 		make_access_error("SAM_Tcsdish", "fan_control_signal");
@@ -1167,8 +1167,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_fan_control_signal_fget(SAM_Tcsdish ptr, SA
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_fan_speed1_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_fan_speed1_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fan_speed1", &result))
 		make_access_error("SAM_Tcsdish", "fan_speed1");
@@ -1178,8 +1178,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_fan_speed1_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_fan_speed2_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_fan_speed2_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fan_speed2", &result))
 		make_access_error("SAM_Tcsdish", "fan_speed2");
@@ -1189,8 +1189,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_fan_speed2_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_fan_speed3_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_fan_speed3_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fan_speed3", &result))
 		make_access_error("SAM_Tcsdish", "fan_speed3");
@@ -1200,8 +1200,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_fan_speed3_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_ns_dish_separation_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_ns_dish_separation_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ns_dish_separation", &result))
 		make_access_error("SAM_Tcsdish", "ns_dish_separation");
@@ -1211,8 +1211,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_ns_dish_separation_fget(SAM_Tcsdish ptr, SA
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_pump_speed_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_pump_speed_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pump_speed", &result))
 		make_access_error("SAM_Tcsdish", "pump_speed");
@@ -1222,8 +1222,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_pump_speed_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_system_availability_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_system_availability_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_availability", &result))
 		make_access_error("SAM_Tcsdish", "system_availability");
@@ -1233,8 +1233,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_system_availability_fget(SAM_Tcsdish ptr, S
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_test_P_fan_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_test_P_fan_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "test_P_fan", &result))
 		make_access_error("SAM_Tcsdish", "test_P_fan");
@@ -1244,8 +1244,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_test_P_fan_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_test_P_pump_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_test_P_pump_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "test_P_pump", &result))
 		make_access_error("SAM_Tcsdish", "test_P_pump");
@@ -1255,8 +1255,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_test_P_pump_fget(SAM_Tcsdish ptr, SAM_error
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_test_T_fluid_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_test_T_fluid_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "test_T_fluid", &result))
 		make_access_error("SAM_Tcsdish", "test_T_fluid");
@@ -1266,8 +1266,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_test_T_fluid_fget(SAM_Tcsdish ptr, SAM_erro
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_test_V_dot_fluid_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_test_V_dot_fluid_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "test_V_dot_fluid", &result))
 		make_access_error("SAM_Tcsdish", "test_V_dot_fluid");
@@ -1277,8 +1277,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_test_V_dot_fluid_fget(SAM_Tcsdish ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_test_cooling_fluid_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_test_cooling_fluid_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "test_cooling_fluid", &result))
 		make_access_error("SAM_Tcsdish", "test_cooling_fluid");
@@ -1288,8 +1288,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_test_cooling_fluid_fget(SAM_Tcsdish ptr, SA
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_test_fan_cfm_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_test_fan_cfm_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "test_fan_cfm", &result))
 		make_access_error("SAM_Tcsdish", "test_fan_cfm");
@@ -1299,8 +1299,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_test_fan_cfm_fget(SAM_Tcsdish ptr, SAM_erro
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_test_fan_rho_air_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_test_fan_rho_air_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "test_fan_rho_air", &result))
 		make_access_error("SAM_Tcsdish", "test_fan_rho_air");
@@ -1310,8 +1310,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_test_fan_rho_air_fget(SAM_Tcsdish ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_test_fan_speed_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_test_fan_speed_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "test_fan_speed", &result))
 		make_access_error("SAM_Tcsdish", "test_fan_speed");
@@ -1321,8 +1321,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_test_fan_speed_fget(SAM_Tcsdish ptr, SAM_er
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_test_pump_speed_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_test_pump_speed_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "test_pump_speed", &result))
 		make_access_error("SAM_Tcsdish", "test_pump_speed");
@@ -1332,8 +1332,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_test_pump_speed_fget(SAM_Tcsdish ptr, SAM_e
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_tower_m_dot_water_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_tower_m_dot_water_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_m_dot_water", &result))
 		make_access_error("SAM_Tcsdish", "tower_m_dot_water");
@@ -1343,8 +1343,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_tower_m_dot_water_fget(SAM_Tcsdish ptr, SAM
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_tower_m_dot_water_test_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_tower_m_dot_water_test_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_m_dot_water_test", &result))
 		make_access_error("SAM_Tcsdish", "tower_m_dot_water_test");
@@ -1354,8 +1354,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_tower_m_dot_water_test_fget(SAM_Tcsdish ptr
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_tower_mode_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_tower_mode_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_mode", &result))
 		make_access_error("SAM_Tcsdish", "tower_mode");
@@ -1365,8 +1365,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_tower_mode_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Type298_tower_pipe_material_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Type298_tower_pipe_material_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_pipe_material", &result))
 		make_access_error("SAM_Tcsdish", "tower_pipe_material");
@@ -1376,8 +1376,8 @@ SAM_EXPORT float SAM_Tcsdish_Type298_tower_pipe_material_fget(SAM_Tcsdish ptr, S
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_Collector_Losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_Collector_Losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "Collector_Losses", length);
 	if (!result)
@@ -1388,8 +1388,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_Collector_Losses_aget(SAM_Tcsdish ptr, int
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_P_SE_losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_P_SE_losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_SE_losses", length);
 	if (!result)
@@ -1400,8 +1400,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_P_SE_losses_aget(SAM_Tcsdish ptr, int* len
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_P_out_SE_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_P_out_SE_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_out_SE", length);
 	if (!result)
@@ -1412,8 +1412,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_P_out_SE_aget(SAM_Tcsdish ptr, int* length
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_P_out_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_P_out_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_out_rec", length);
 	if (!result)
@@ -1424,8 +1424,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_P_out_rec_aget(SAM_Tcsdish ptr, int* lengt
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_P_parasitic_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_P_parasitic_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_parasitic", length);
 	if (!result)
@@ -1436,8 +1436,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_P_parasitic_aget(SAM_Tcsdish ptr, int* len
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_Phi_shade_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_Phi_shade_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "Phi_shade", length);
 	if (!result)
@@ -1448,8 +1448,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_Phi_shade_aget(SAM_Tcsdish ptr, int* lengt
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_Power_in_collector_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_Power_in_collector_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "Power_in_collector", length);
 	if (!result)
@@ -1460,8 +1460,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_Power_in_collector_aget(SAM_Tcsdish ptr, i
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_Power_in_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_Power_in_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "Power_in_rec", length);
 	if (!result)
@@ -1472,8 +1472,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_Power_in_rec_aget(SAM_Tcsdish ptr, int* le
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_Power_out_col_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_Power_out_col_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "Power_out_col", length);
 	if (!result)
@@ -1484,8 +1484,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_Power_out_col_aget(SAM_Tcsdish ptr, int* l
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_Q_rec_losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_Q_rec_losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "Q_rec_losses", length);
 	if (!result)
@@ -1496,8 +1496,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_Q_rec_losses_aget(SAM_Tcsdish ptr, int* le
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_T_compression_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_T_compression_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_compression", length);
 	if (!result)
@@ -1508,8 +1508,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_T_compression_aget(SAM_Tcsdish ptr, int* l
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_T_heater_head_operate_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_T_heater_head_operate_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_heater_head_operate", length);
 	if (!result)
@@ -1520,8 +1520,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_T_heater_head_operate_aget(SAM_Tcsdish ptr
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_T_tower_in_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_T_tower_in_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_tower_in", length);
 	if (!result)
@@ -1532,8 +1532,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_T_tower_in_aget(SAM_Tcsdish ptr, int* leng
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_T_tower_out_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_T_tower_out_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_tower_out", length);
 	if (!result)
@@ -1544,8 +1544,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_T_tower_out_aget(SAM_Tcsdish ptr, int* len
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_annual_Collector_Losses_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_annual_Collector_Losses_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_Collector_Losses", &result))
 		make_access_error("SAM_Tcsdish", "annual_Collector_Losses");
@@ -1555,8 +1555,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_annual_Collector_Losses_fget(SAM_Tcsdish pt
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_annual_P_out_SE_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_annual_P_out_SE_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_P_out_SE", &result))
 		make_access_error("SAM_Tcsdish", "annual_P_out_SE");
@@ -1566,8 +1566,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_annual_P_out_SE_fget(SAM_Tcsdish ptr, SAM_e
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_annual_P_out_rec_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_annual_P_out_rec_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_P_out_rec", &result))
 		make_access_error("SAM_Tcsdish", "annual_P_out_rec");
@@ -1577,8 +1577,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_annual_P_out_rec_fget(SAM_Tcsdish ptr, SAM_
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_annual_P_parasitic_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_annual_P_parasitic_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_P_parasitic", &result))
 		make_access_error("SAM_Tcsdish", "annual_P_parasitic");
@@ -1588,8 +1588,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_annual_P_parasitic_fget(SAM_Tcsdish ptr, SA
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_annual_Power_in_collector_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_annual_Power_in_collector_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_Power_in_collector", &result))
 		make_access_error("SAM_Tcsdish", "annual_Power_in_collector");
@@ -1599,8 +1599,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_annual_Power_in_collector_fget(SAM_Tcsdish 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_annual_Power_in_rec_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_annual_Power_in_rec_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_Power_in_rec", &result))
 		make_access_error("SAM_Tcsdish", "annual_Power_in_rec");
@@ -1610,8 +1610,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_annual_Power_in_rec_fget(SAM_Tcsdish ptr, S
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_annual_Power_out_col_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_annual_Power_out_col_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_Power_out_col", &result))
 		make_access_error("SAM_Tcsdish", "annual_Power_out_col");
@@ -1621,8 +1621,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_annual_Power_out_col_fget(SAM_Tcsdish ptr, 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_annual_Q_rec_losses_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_annual_Q_rec_losses_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_Q_rec_losses", &result))
 		make_access_error("SAM_Tcsdish", "annual_Q_rec_losses");
@@ -1632,8 +1632,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_annual_Q_rec_losses_fget(SAM_Tcsdish ptr, S
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_annual_energy_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_annual_energy_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
 		make_access_error("SAM_Tcsdish", "annual_energy");
@@ -1643,8 +1643,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_annual_energy_fget(SAM_Tcsdish ptr, SAM_err
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_beam_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_beam_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "beam", length);
 	if (!result)
@@ -1655,8 +1655,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_beam_aget(SAM_Tcsdish ptr, int* length, SA
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_capacity_factor_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_capacity_factor_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
 		make_access_error("SAM_Tcsdish", "capacity_factor");
@@ -1666,8 +1666,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_capacity_factor_fget(SAM_Tcsdish ptr, SAM_e
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_conversion_factor_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_conversion_factor_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "conversion_factor", &result))
 		make_access_error("SAM_Tcsdish", "conversion_factor");
@@ -1677,8 +1677,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_conversion_factor_fget(SAM_Tcsdish ptr, SAM
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_engine_pressure_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_engine_pressure_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "engine_pressure", length);
 	if (!result)
@@ -1689,8 +1689,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_engine_pressure_aget(SAM_Tcsdish ptr, int*
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_eta_SE_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_eta_SE_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_SE", length);
 	if (!result)
@@ -1701,8 +1701,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_eta_SE_aget(SAM_Tcsdish ptr, int* length, 
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_eta_collector_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_eta_collector_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_collector", length);
 	if (!result)
@@ -1713,8 +1713,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_eta_collector_aget(SAM_Tcsdish ptr, int* l
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_eta_net_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_eta_net_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_net", length);
 	if (!result)
@@ -1725,8 +1725,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_eta_net_aget(SAM_Tcsdish ptr, int* length,
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_eta_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_eta_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_rec", length);
 	if (!result)
@@ -1737,8 +1737,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_eta_rec_aget(SAM_Tcsdish ptr, int* length,
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_gen_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_gen_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
@@ -1749,8 +1749,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_gen_aget(SAM_Tcsdish ptr, int* length, SAM
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_hour_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_hour_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hour", length);
 	if (!result)
@@ -1761,8 +1761,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_hour_aget(SAM_Tcsdish ptr, int* length, SA
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_Collector_Losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_hourly_Collector_Losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hourly_Collector_Losses", length);
 	if (!result)
@@ -1773,8 +1773,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_Collector_Losses_aget(SAM_Tcsdish p
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_P_out_SE_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_hourly_P_out_SE_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hourly_P_out_SE", length);
 	if (!result)
@@ -1785,8 +1785,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_P_out_SE_aget(SAM_Tcsdish ptr, int*
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_P_out_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_hourly_P_out_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hourly_P_out_rec", length);
 	if (!result)
@@ -1797,8 +1797,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_P_out_rec_aget(SAM_Tcsdish ptr, int
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_P_parasitic_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_hourly_P_parasitic_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hourly_P_parasitic", length);
 	if (!result)
@@ -1809,8 +1809,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_P_parasitic_aget(SAM_Tcsdish ptr, i
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_Power_in_collector_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_hourly_Power_in_collector_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hourly_Power_in_collector", length);
 	if (!result)
@@ -1821,8 +1821,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_Power_in_collector_aget(SAM_Tcsdish
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_Power_in_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_hourly_Power_in_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hourly_Power_in_rec", length);
 	if (!result)
@@ -1833,8 +1833,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_Power_in_rec_aget(SAM_Tcsdish ptr, 
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_Power_out_col_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_hourly_Power_out_col_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hourly_Power_out_col", length);
 	if (!result)
@@ -1845,8 +1845,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_Power_out_col_aget(SAM_Tcsdish ptr,
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_Q_rec_losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_hourly_Q_rec_losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hourly_Q_rec_losses", length);
 	if (!result)
@@ -1857,8 +1857,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_hourly_Q_rec_losses_aget(SAM_Tcsdish ptr, 
 
 
 
-SAM_EXPORT float SAM_Tcsdish_Outputs_kwh_per_kw_fget(SAM_Tcsdish ptr, SAM_error *err){
-	float result;
+SAM_EXPORT double SAM_Tcsdish_Outputs_kwh_per_kw_nget(SAM_Tcsdish ptr, SAM_error *err){
+	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
 		make_access_error("SAM_Tcsdish", "kwh_per_kw");
@@ -1868,8 +1868,8 @@ SAM_EXPORT float SAM_Tcsdish_Outputs_kwh_per_kw_fget(SAM_Tcsdish ptr, SAM_error 
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_month_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_month_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "month", length);
 	if (!result)
@@ -1880,8 +1880,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_month_aget(SAM_Tcsdish ptr, int* length, S
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_Collector_Losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_monthly_Collector_Losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_Collector_Losses", length);
 	if (!result)
@@ -1892,8 +1892,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_Collector_Losses_aget(SAM_Tcsdish 
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_P_out_SE_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_monthly_P_out_SE_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_P_out_SE", length);
 	if (!result)
@@ -1904,8 +1904,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_P_out_SE_aget(SAM_Tcsdish ptr, int
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_P_out_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_monthly_P_out_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_P_out_rec", length);
 	if (!result)
@@ -1916,8 +1916,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_P_out_rec_aget(SAM_Tcsdish ptr, in
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_P_parasitic_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_monthly_P_parasitic_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_P_parasitic", length);
 	if (!result)
@@ -1928,8 +1928,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_P_parasitic_aget(SAM_Tcsdish ptr, 
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_Power_in_collector_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_monthly_Power_in_collector_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_Power_in_collector", length);
 	if (!result)
@@ -1940,8 +1940,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_Power_in_collector_aget(SAM_Tcsdis
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_Power_in_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_monthly_Power_in_rec_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_Power_in_rec", length);
 	if (!result)
@@ -1952,8 +1952,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_Power_in_rec_aget(SAM_Tcsdish ptr,
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_Power_out_col_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_monthly_Power_out_col_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_Power_out_col", length);
 	if (!result)
@@ -1964,8 +1964,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_Power_out_col_aget(SAM_Tcsdish ptr
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_Q_rec_losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_monthly_Q_rec_losses_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_Q_rec_losses", length);
 	if (!result)
@@ -1976,8 +1976,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_Q_rec_losses_aget(SAM_Tcsdish ptr,
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_energy_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_monthly_energy_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_energy", length);
 	if (!result)
@@ -1988,8 +1988,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_monthly_energy_aget(SAM_Tcsdish ptr, int* 
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_net_power_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_net_power_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "net_power", length);
 	if (!result)
@@ -2000,8 +2000,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_net_power_aget(SAM_Tcsdish ptr, int* lengt
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_pres_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_pres_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pres", length);
 	if (!result)
@@ -2012,8 +2012,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_pres_aget(SAM_Tcsdish ptr, int* length, SA
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_solazi_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_solazi_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "solazi", length);
 	if (!result)
@@ -2024,8 +2024,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_solazi_aget(SAM_Tcsdish ptr, int* length, 
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_solzen_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_solzen_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "solzen", length);
 	if (!result)
@@ -2036,8 +2036,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_solzen_aget(SAM_Tcsdish ptr, int* length, 
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_tdry_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_tdry_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tdry", length);
 	if (!result)
@@ -2048,8 +2048,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_tdry_aget(SAM_Tcsdish ptr, int* length, SA
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_twet_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_twet_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "twet", length);
 	if (!result)
@@ -2060,8 +2060,8 @@ SAM_EXPORT float* SAM_Tcsdish_Outputs_twet_aget(SAM_Tcsdish ptr, int* length, SA
 
 
 
-SAM_EXPORT float* SAM_Tcsdish_Outputs_wspd_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
-	float* result = nullptr;
+SAM_EXPORT double* SAM_Tcsdish_Outputs_wspd_aget(SAM_Tcsdish ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wspd", length);
 	if (!result)

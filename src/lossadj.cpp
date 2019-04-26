@@ -246,7 +246,7 @@ public:
 		}
 	}
 
-	void Set( const matrix_t<float> &data )
+	void Set( const matrix_t<double> &data )
 	{
 		Clear();
 		if ( data.ncols() != 3 ) return;
@@ -259,7 +259,7 @@ public:
 		}
 	}
 
-	void Get( matrix_t<float> &data )
+	void Get( matrix_t<double> &data )
 	{
 		if ( m_periods.size() == 0 )
 		{
@@ -272,7 +272,7 @@ public:
 		{
 			data(i,0) = m_periods[i].start->GetTime();
 			data(i,1) = m_periods[i].end->GetTime();
-			data(i,2) = (float)m_periods[i].factor->Value();
+			data(i,2) = (double)m_periods[i].factor->Value();
 		}
 
 
