@@ -1,13 +1,5 @@
 1
-<<<<<<< HEAD
-<<<<<<< HEAD
 952
-=======
-948
->>>>>>> patch
-=======
-946
->>>>>>> parent of 78ddcb3... Fix #172 issue with UI messages for PV shading page
 6par_aisc
 1
 1

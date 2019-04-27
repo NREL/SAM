@@ -128,7 +128,7 @@ if(MSVC)
 else()
 	#setup compile options and linking
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11" )
-    target_link_libraries(${SAM_API_LIB} -lm -lcurl)
+    target_link_libraries(${SAM_API_LIB} -lm)
 endif()
 
 target_link_libraries(${SAM_API_LIB} ${SSC_LIB})

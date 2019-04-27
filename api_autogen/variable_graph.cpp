@@ -286,8 +286,9 @@ void digraph::subgraph_ssc_to_ui(digraph &subgraph) {
 
                     if (!subgraph.find_edge(e_in)){
                         vertex* v = subgraph.add_vertex(e_in->src->name, e_in->src->is_ssc_var, e_in->ui_form);
-                        assert(subgraph.add_edge(v, new_v, e_in->type, e_in->obj_name, e_in->expression,
-                                e_in->ui_form, e_in->root));
+                        bool added = subgraph.add_edge(v, new_v, e_in->type, e_in->obj_name, e_in->expression,
+                                                       e_in->ui_form, e_in->root);
+                        assert(added);
                     }
                 }
             }

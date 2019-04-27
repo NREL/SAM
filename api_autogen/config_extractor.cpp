@@ -10,7 +10,10 @@ config_extractor::config_extractor(std::string name){
     config_name = name;
     cb_ext = new callback_extractor(name, m_env);
     var_graph = new digraph(name);
-    assert(load_defaults_for_config());
+    bool loaded = load_defaults_for_config();
+
+    assert(loaded);
+
 //    assert(SAM_config_to_variable_graph.find(config_name) == SAM_config_to_variable_graph.end());
     SAM_config_to_variable_graph.insert({config_name, var_graph});
 }
