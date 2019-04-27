@@ -340,7 +340,6 @@ void builder_generator::export_variables_json(const std::string &cmod) {
             else
                 vv = SAM_config_to_defaults[config_name][v.name];
 
-
             // vv can be null in the case of variables not available in UI
             if (!vv && v.reqif != "*")
                 continue;
@@ -352,6 +351,7 @@ void builder_generator::export_variables_json(const std::string &cmod) {
             if (!first) json << ",";
             json << "\n\t\t\t\"" + remove_periods(var_symbol) + "\": ";
             json << ssc_value_to_json(v.type_n, vv);
+
 
             first = false;
         }
@@ -750,9 +750,9 @@ std::vector<std::string> builder_generator::get_evaluated_variables() {
 void builder_generator::create_all(std::string fp, std::string cmod) {
     filepath = fp;
 
-    bool print_json = false;
+    bool print_json = true;
     bool print_capi = false;
-    bool print_pysam = true;
+    bool print_pysam = false;
 
     // gather functions before variables to add in ui-only variables that may be skipped in subgraph
 //    std::unordered_map<std::string, edge*> unique_subgraph_edges = gather_functions();
