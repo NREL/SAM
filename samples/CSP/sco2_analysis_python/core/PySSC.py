@@ -8,10 +8,8 @@ class PySSC:
 		this_directory = os.path.abspath(os.path.dirname(__file__))
 
 		if sys.platform == 'win32' or sys.platform == 'cygwin':
-			fileDir = "C:\\Users\\tneises\\Documents\\Projects\\GitHub\\ssc\\build_vs2017\\x64\\Release"
-			print("Using SSC DLL from here: ", fileDir)
-			self.pdll = CDLL(os.path.join(fileDir, "ssc.dll"))
-			#self.pdll = CDLL(os.path.join(this_directory, "ssc.dll"))
+			#print("Using SSC DLL from here: ", this_directory)
+			self.pdll = CDLL(os.path.join(this_directory, "ssc.dll"))
 		elif sys.platform == 'darwin':
 			self.pdll = CDLL(os.path.join(this_directory, "libssc.so"))
 		elif sys.platform == 'linux':
