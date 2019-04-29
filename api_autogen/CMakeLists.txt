@@ -1,32 +1,76 @@
+#####################################################################################################################
+#
+# CMake and System Settings
+#
+#####################################################################################################################
+
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 cmake_minimum_required(VERSION 2.8)
 
-
 if(APPLE)
     set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
+elseif(MSVC)
+    set(CMAKE_SYSTEM_VERSION 8.1 CACHE TYPE INTERNAL FORCE)
 endif()
+
+if (UNIX AND NOT CMAKE_C_COMPILER)
+    set(CMAKE_C_COMPILER gcc)
+    set(CMAKE_CXX_COMPILER g++)
+endif()
+
+
+#####################################################################################################################
+#
+# Project Settings 
+#
+#####################################################################################################################
 
 Project(EXPORT_SAM_UI)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
-# setup wxWidgets
-if (UNIX)
-    set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
-    find_package(wxWidgets COMPONENTS xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base REQUIRED)
-else()
-    add_compile_options(/W3 /wd4996)
+include_directories(
+        . ../src $ENV{LKDIR}/include $ENV{WEXDIR}/include $ENV{SSCDIR} ../tcs)
+
+set(SAM_SOURCES
+        ../src/variables.cpp
+        ../src/equations.cpp)
+
+
+#####################################################################################################################
+#
+# Compile Options per Platform
+#
+#####################################################################################################################
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+if(MSVC)
     if (CMAKE_BUILD_TYPE STREQUAL Debug)
         add_compile_options(/MDd)
         add_compile_definitions(_DEBUG)
     else()
-        add_compile_options(/MD /O2)
+        add_compile_options(/MD /O3)
         add_compile_definitions(NDEBUG )
     endif()
-    add_compile_definitions( WIN32 _CRT_SECURE_NO_DEPRECATE=1 _CRT_NON_CONFORMING_SWPRINTFS=1
+    add_compile_definitions( _CRT_SECURE_NO_DEPRECATE=1 _CRT_NON_CONFORMING_SWPRINTFS=1
             _SCL_SECURE_NO_WARNINGS=1 __WXMSW__ _UNICODE NOPCH)
+endif()
 
+
+#####################################################################################################################
+#
+# Packages
+#
+#####################################################################################################################
+
+if (UNIX)
+    set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
+    find_package(wxWidgets COMPONENTS xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base REQUIRED)
+
+else()
     set(wxWidgets_CONFIGURATION mswu)
     set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
     find_package(wxWidgets COMPONENTS qa webview aui richtext html propgrid adv net stc core base scintilla REQUIRED)
@@ -34,11 +78,12 @@ endif()
 
 include(${wxWidgets_USE_FILE})
 
-include_directories(../src $ENV{LKDIR}/include $ENV{SSCDIR})
 
-set(SAM_SOURCES
-        ../src/variables.cpp
-        ../src/equations.cpp)
+#####################################################################################################################
+# 
+# CMake Targets
+#
+#####################################################################################################################
 
 add_executable(export_config
         ${SAM_SOURCES}
@@ -56,16 +101,23 @@ add_executable(export_config
         lk_eval.cpp lk_eval.h
         builder_generator_helper.h builder_generator_helper.cpp builder_C_API.cpp builder_C_API.h builder_PySAM.cpp builder_PySAM.h)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+target_compile_definitions(export_config PUBLIC LK_USE_WXWIDGETS )
+
+set_property(TARGET export_config PROPERTY CXX_STANDARD 11)
+
+if(MSVC)
+    set_target_properties(export_config PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+endif()
 
 
-include_directories(
-        . ../src $ENV{LKDIR}/include $ENV{WEXDIR}/include $ENV{SSCDIR} ../tcs)
+#####################################################################################################################
+#
+# Link Libraries and Options
+#
+#####################################################################################################################
 
-# setup linking dependencies and flags
-
-# if running as combined build, make sure to link to projects
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         target_link_libraries(export_config lkd wexd sscd)
@@ -96,30 +148,20 @@ else()
                 NAMES ssc.dylib ssc.so ssc.lib
                 PATHS $ENV{SSCDIR}/ssc)
     endif()
-    target_link_libraries(export_config ${SSC_LIB} ${WEX_LIB} ${LK_LIB} ${wxWidgets_LIBRARIES})
-
+    target_link_libraries(export_config ${SSC_LIB} ${WEX_LIB} ${LK_LIB})
 endif()
 
-#setup compile options
-target_compile_definitions(export_config PUBLIC LK_USE_WXWIDGETS )
+if (UNIX)
+    target_link_libraries(export_config -lm)
+endif()
 
-set_property(TARGET export_config PROPERTY CXX_STANDARD 11)
-
-
-# setup linking dependencies and flags
-target_link_libraries(export_config -lm)
+target_link_libraries(export_config ${wxWidgets_LIBRARIES})
 
 # need to tell executable where to find libssc.so
 if(APPLE)
     set_target_properties(export_config PROPERTIES LINK_FLAGS  "-Wl,-rpath -Wl,$ENV{SSCDIR}/ssc/")
-#    SET(CMAKE_INSTALL_RPATH "$ENV{SSCDIR}/ssc")
 endif()
 
-# windows
 if(MSVC)
-    set_target_properties(export_config PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
-#    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT export_config)
 endif()
-

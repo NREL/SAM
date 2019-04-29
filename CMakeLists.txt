@@ -1,3 +1,9 @@
+#####################################################################################################################
+#
+# CMake and System Settings
+#
+#####################################################################################################################
+
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 cmake_minimum_required(VERSION 3.12)
@@ -8,20 +14,19 @@ if(MSVC)
 	set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Debug and Release Builds Configured" FORCE)
 endif()
 
+
+#####################################################################################################################
+#
+# Project Settings 
+#
+#####################################################################################################################
+
+Project(sam)
+
 add_subdirectory(api_autogen)
 add_subdirectory(api)
 
-Project(sam)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
-
-set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
-if(APPLE)
-	find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base)
-elseif()
-	find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base)
-endif()
-
-include(${wxWidgets_USE_FILE})
 
 include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
 
@@ -71,8 +76,54 @@ set(SAM_SRC
 	src/materials.cpp
 	src/codegenerator.cpp)
 
+
+#####################################################################################################################
+#
+# Compile Options per Platform
+#
+#####################################################################################################################
+
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+if(MSVC)
+	add_compile_options(/W4 /WX)
+	add_compile_definitions( _CRT_SECURE_NO_WARNINGS _MBCS __WXMSW__)
+else(MSVC)
+	if (APPLE)
+		add_compile_options(-arch x86_64 -fno-common)
+		add_compile_definitions(WX_PRECOMP)
+	else()
+		add_compile_options(-Wno-deprecated -Wno-misleading-indentation)
+	endif()
+	add_compile_options(-Wall -Wno-unknown-pragmas -Wno-overloaded-virtual -O3 -std=c++11)
+endif(MSVC)
+add_compile_options(${wxWidgets_CXX_FLAGS})
+add_compile_definitions(LK_USE_WXWIDGETS )
+
+
+#####################################################################################################################
+#
+# Packages
+#
+#####################################################################################################################
+
+if (UNIX)
+	set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
+else()
+	set(wxWidgets_CONFIGURATION mswu)
+	set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
+endif()
+
+find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base )
+include(${wxWidgets_USE_FILE})
+
+
+#####################################################################################################################
+# 
+# CMake Targets
+#
+#####################################################################################################################
 
 # Setup Application
 if (APPLE)
@@ -81,10 +132,9 @@ if (APPLE)
 	set_source_files_properties(${SAM_ICON} PROPERTIES
 		MACOSX_PACKAGE_LOCATION "Resources")
 elseif(WIN32)
-	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_vs2013/SAM.rc)
+	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_vs2017/SAM.rc)
 endif()
 
-# set build types for archive
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_executable(SAMd 
 		WIN32
@@ -104,9 +154,13 @@ else()
 	set(SAM_EXE SAM)
 endif()
 
-# setup linking dependencies and flags
 
-# if running as combined build, make sure to link to projects
+#####################################################################################################################
+#
+# Link Libraries and Options
+#
+#####################################################################################################################
+
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
 	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 		target_link_libraries(${SAM_EXE} lkd wexd sscd)
@@ -143,80 +197,71 @@ else()
 	target_link_libraries(${SAM_EXE} ${SSC_LIB} ${WEX_LIB} ${LK_LIB} )
 endif()
 
-# setup linking dependencies and flags
 target_link_libraries(${SAM_EXE} ${wxWidgets_LIBRARIES})
 target_link_libraries(${SAM_EXE} -lm -lcurl)
 
 
-if(MSVC)
-# need msvc optimization levels & different configs, windows sdk
-	add_compile_options(/W4 /WX)
-	add_compile_definitions( _CRT_SECURE_NO_WARNINGS _MBCS )
-	target_compile_definitions(${SAM_EXE} __WXMSW__)
-else(MSVC)
+#####################################################################################################################
+#
+# Target Installation
+#
+#####################################################################################################################
 
-	if (APPLE)
-		add_compile_options(-arch x86_64 -fno-common)
-		target_compile_definitions(${SAM_EXE} PUBLIC WX_PRECOMP)
-	else()
-		add_compile_options(-Wno-deprecated -Wno-misleading-indentation)
-	endif()
-	add_compile_options(-Wall -Werror -Wno-unknown-pragmas -O3 -std=c++11)
-	target_compile_options(${SAM_EXE} PUBLIC ${wxWidgets_CXX_FLAGS})
-	target_compile_definitions(${SAM_EXE} PUBLIC LK_USE_WXWIDGETS )
-endif(MSVC)
-
-# dynamic linking
 SET(CMAKE_SKIP_BUILD_RPATH)
 
-# create application info for executable
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	set(SSC_NAME sscd)
+else()
+	set(SSC_NAME ssc)
+endif()
+
 if (APPLE)
-	set_target_properties(${SAM_EXE} PROPERTIES
-		MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/Info-SAM.plist
-	)
 	set(SAM_APP ${CMAKE_CURRENT_SOURCE_DIR}/${SAM_EXE}.app)
 	add_custom_command(
 		TARGET ${SAM_EXE}
-		POST_BUILD 
+		POST_BUILD
 		COMMAND rsync -a -v --ignore-existing ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
 		COMMAND mkdir -p ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
+		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/Info-SAM.plist ${SAM_APP}/Contents
 		COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
 		COMMAND cp ${SSC_LIB} ${SAM_APP}/Contents/Frameworks
-		COMMAND install_name_tool -change $ENV{SSCDIR}/ssc ${SAM_APP}/Contents/Frameworks/ ${SAM_APP}/Contents/MacOS/${SAM_EXE}
+		COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_LIB}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
+		COMMAND install_name_tool -change ${SSC_LIB} @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_EXE}
 	)
-elseif(UNIX)
-	set_target_properties(${SAM_EXE} 
-		PROPERTIES OUTPUT_NAME sam.bin)
-	add_custom_command(
-		TARGET ${SAM_EXE}
-		POST_BUILD
-		COMMAND rm -rf ${PROJECT_SOURCE_DIR}/sam.deploy)
-	set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/sam.deploy)
-	install(TARGETS ${SAM_EXE} 
-		RUNTIME DESTINATION linux_64)
-	install(FILES ${SSC_LIB} 
-		DESTINATION linux_64)
-	install(FILES Sandia/linux/lhs.bin Sandia/linux/stepwise.bin
-		DESTINATION runtime/bin)
-	install(DIRECTORY build_linux/GtkTheme
-		DESTINATION linux_64)
-	install(DIRECTORY deploy/libraries deploy/runtime deploy/solar_resource deploy/wind_resource
-		DESTINATION .)
+else()
+	if (UNIX)
+		set_target_properties(${SAM_EXE}
+			PROPERTIES OUTPUT_NAME sam.bin)
+		add_custom_command(
+			TARGET ${SAM_EXE}
+			POST_BUILD
+			COMMAND rm -rf ${PROJECT_SOURCE_DIR}/sam.deploy)
+		set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/sam.deploy)
+		install(TARGETS ${SAM_EXE}
+			RUNTIME DESTINATION linux_64)
+		install(FILES ${SSC_LIB}
+			DESTINATION linux_64)
+		install(FILES Sandia/linux/lhs.bin Sandia/linux/stepwise.bin
+			DESTINATION runtime/bin)
+		install(DIRECTORY build_linux/GtkTheme
+			DESTINATION linux_64)
+		install(DIRECTORY deploy/libraries deploy/runtime deploy/solar_resource deploy/wind_resource
+			DESTINATION .)
 
-	set(CPACK_GENERATOR "STGZ;TGZ")
-	set(CPACK_PACKAGE_FILE_NAME "sam.deploy")
-	set(CPACK)
-	include(CPack)
-	add_custom_target( installer
-		COMMAND "rm" "-f" "install0"
-		COMMAND "echo" "#!/bin/sh" ">" "install0"
-		COMMAND "echo" "SAMVER=Open.Source" ">>" "install0"
-		COMMAND "cat" "install0" "${CMAKE_SOURCE_DIR}/build_linux/install.sh" "sam.deploy.tar.gz" ">" "sam-linux-$(SAMVER).run"
-		COMMAND "chmod" "a+x" "sam-linux-$(SAMVER).run"
-		COMMAND "./sam-linux-$(SAMVER).run"
-		DEPENDS ${SAM_EXE})
-
+		set(CPACK_GENERATOR "STGZ;TGZ")
+		set(CPACK_PACKAGE_FILE_NAME "sam.deploy")
+		set(CPACK)
+		include(CPack)
+		add_custom_target( installer
+			COMMAND "rm" "-f" "install0"
+			COMMAND "echo" "#!/bin/sh" ">" "install0"
+			COMMAND "echo" "SAMVER=Open.Source" ">>" "install0"
+			COMMAND "cat" "install0" "${CMAKE_SOURCE_DIR}/build_linux/install.sh" "sam.deploy.tar.gz" ">" "sam-linux-$(SAMVER).run"
+			COMMAND "chmod" "a+x" "sam-linux-$(SAMVER).run"
+			COMMAND "./sam-linux-$(SAMVER).run"
+			DEPENDS ${SAM_EXE})
+	endif()
 endif()
 
