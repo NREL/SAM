@@ -164,7 +164,7 @@ class C_sco2_cycle_TS_plot:
         if(self.is_annotate_HTR):
             HTR_title = r'$\bfHigh$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_HTR"]) + " MWt"
-            UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["UA_HTR"]) + " MW/K"
+            UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["HTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_HTR"])
         
             T_HTR_LP_data = self.dict_cycle_data["T_HTR_LP_data"]
@@ -184,7 +184,7 @@ class C_sco2_cycle_TS_plot:
         if(self.is_annotate_LTR):
             LTR_title = r'$\bfLow$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_LTR"]) + " MWt"
-            UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["UA_LTR"]) + " MW/K"
+            UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["LTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_LTR"])
             
             T_LTR_LP_data = self.dict_cycle_data["T_LTR_LP_data"]
@@ -855,12 +855,13 @@ def cycle_label(cycle_data, is_multi_line = False, is_file_name = False):
         cycle_abv = "RC"
     
     if(is_multi_line):
-        label = cycle_name + ": " + "\n" + r'$\eta$' + " = " + '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100) + "%,\nUA = "+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + " MW/K"
+        label = cycle_name + ": " + "\n" + r'$\eta$' + " = " + '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100) + "%" #,\nUA = "+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + " MW/K"
     elif(not(is_file_name)):
-        label = cycle_name + ": " + r'$\eta$' + " = " + '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100) + "%, UA = "+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + " MW/K"
+        label = cycle_name + ": " + r'$\eta$' + " = " + '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100) + "%" #, UA = "+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + " MW/K"
     else:
-        label = cycle_abv + "_UA_"+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + "_eta_"+ '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100)
-        
+        label = cycle_abv + "_eta_"+ '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100)
+        #label = cycle_abv + "_UA_"+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + "_eta_"+ '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100)
+
     return label
 
 class C_OD_stacked_outputs_plot:
