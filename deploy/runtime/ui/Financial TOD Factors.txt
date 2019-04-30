@@ -1539,7 +1539,7 @@ TOD Schedules and Factors|3
 1
 1
 1
- 
+Default
 dispatch_factor2
 3
 1
@@ -1554,7 +1554,7 @@ TOD Schedules and Factors|4
 1
 1
 1
- 
+Default
 dispatch_factor3
 3
 1
@@ -1569,7 +1569,7 @@ TOD Schedules and Factors|5
 1
 1
 1
- 
+Default
 dispatch_factor4
 3
 1
@@ -1937,7 +1937,7 @@ Uniform Dispatch
 Default
 
 0
-3392
+3384
 on_load{'Financial TOD Factors'} = define()
 {	
 	toggle_inputs();
@@ -1998,7 +1998,7 @@ on_change{'btnSaveDispatchData'} = define() {
 		
 	if ( file != '' ) {
 		file = replace(file, '\\', '/');
-		if (group_write('PPA Time of Delivery Factors',file))
+		if (group_write('Time of Delivery Factors',file))
 		{	
 			value( 'dispatch_data_filename', file );
 			msgbox("Data saved! \n");
@@ -2034,7 +2034,7 @@ on_change{'btnLoadDispatchData'} = define() {
 			}	
 		}
 
-		if (group_read('PPA Time of Delivery Factors',file))
+		if (group_read('Time of Delivery Factors',file))
 		{	
 			value( 'dispatch_data_filename', file );
 			msgbox("Data loaded! \n");
