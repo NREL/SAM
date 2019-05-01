@@ -26,7 +26,11 @@ Project(sam)
 add_subdirectory(api_autogen)
 add_subdirectory(api)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+if (MSVC)
+	set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64")
+else()
+	set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+endif()
 
 include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
 
@@ -87,19 +91,19 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(MSVC)
-	add_compile_options(/W4 /WX)
-	add_compile_definitions( _CRT_SECURE_NO_WARNINGS _MBCS __WXMSW__)
+	add_compile_options(/W4)
+	add_compile_definitions( _CRT_SECURE_NO_WARNINGS _MBCS __WXMSW__ __64BIT__)
 else(MSVC)
 	if (APPLE)
 		add_compile_options(-arch x86_64 -fno-common)
-		add_compile_definitions(WX_PRECOMP)
+		add_definitions(-DWX_PRECOMP)
 	else()
 		add_compile_options(-Wno-deprecated -Wno-misleading-indentation)
 	endif()
 	add_compile_options(-Wall -Wno-unknown-pragmas -Wno-overloaded-virtual -O3 -std=c++11)
 endif(MSVC)
 add_compile_options(${wxWidgets_CXX_FLAGS})
-add_compile_definitions(LK_USE_WXWIDGETS )
+add_definitions(-DLK_USE_WXWIDGETS )
 
 
 #####################################################################################################################
@@ -110,12 +114,17 @@ add_compile_definitions(LK_USE_WXWIDGETS )
 
 if (UNIX)
 	set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
+	find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base )
 else()
-	set(wxWidgets_CONFIGURATION mswu)
 	set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
+	if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+		set(wxWidgets_CONFIGURATION mswud)
+	else()
+		set(wxWidgets_CONFIGURATION mswu)
+	endif()
+	find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base scintilla)
 endif()
 
-find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base )
 include(${wxWidgets_USE_FILE})
 
 
@@ -198,7 +207,16 @@ else()
 endif()
 
 target_link_libraries(${SAM_EXE} ${wxWidgets_LIBRARIES})
-target_link_libraries(${SAM_EXE} -lm -lcurl)
+
+if (UNIX)
+	target_link_libraries(${SAM_EXE} -lm -lcurl)
+elseif (MSVC)
+	find_library( CURL_LIB
+				NAMES libcurl.lib
+				PATHS $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/lib)
+	target_link_libraries(${SAM_EXE} ${CURL_LIB})
+	target_link_libraries(${SAM_EXE} Winhttp)
+endif()
 
 
 #####################################################################################################################
@@ -262,6 +280,39 @@ else()
 			COMMAND "chmod" "a+x" "sam-linux-$(SAMVER).run"
 			COMMAND "./sam-linux-$(SAMVER).run"
 			DEPENDS ${SAM_EXE})
+	elseif(MSVC)
+		set( LIBCURL_FILES
+		    dbghelp.dll
+		    libcurl.dll
+		    libeay32.dll
+		    libssh2.dll
+		    msvcp140.dll
+		    openssl.exe
+		    ssleay32.dll
+		    vcruntime140.dll
+		)
+
+		foreach( file_i ${LIBCURL_FILES})
+		    add_custom_command(
+		    TARGET ${SAM_EXE}
+		    POST_BUILD
+		    COMMAND ${CMAKE_COMMAND}
+		    ARGS -E copy $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/bin/${file_i} ${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64
+		)
+		endforeach( file_i )
+
+		if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+			set(SSC_NAME sscd)
+		else()
+			set(SSC_NAME ssc)
+		endif()
+
+		add_custom_command(
+		    TARGET ${SAM_EXE}
+		    POST_BUILD
+		    COMMAND ${CMAKE_COMMAND}
+		    ARGS -E copy ${SSC_LIB} $ENV{SSCDIR}/ssc/${SSC_NAME}.dll ${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64
+		)
 	endif()
 endif()
 
