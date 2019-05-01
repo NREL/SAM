@@ -38,3 +38,4 @@ branches:
   - master
   - develop
   - fuel_cell
+  - patch

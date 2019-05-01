@@ -580,7 +580,7 @@ Centered
 DataMatrix
 
 1
-22
+23
 Name
 5
 11
@@ -652,6 +652,9 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Divider
 
 1
@@ -1003,7 +1006,7 @@ Battery
 
 DataArray
 
-1444
+1443
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1028,7 +1031,6 @@ equations{'batt_height'} = define()
 	// assume cube
 	return pow(${batt_volume},0.3333333);
 };
-
 equations{'batt_room_temperature_celsius'} = define()
 {
 	if (technology() != 'Generic System')

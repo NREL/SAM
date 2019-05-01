@@ -71,10 +71,10 @@ class VarDatabase;
 
 
 #define VV_INVALID 0
+#define VV_STRING 4
 #define VV_NUMBER 1
 #define VV_ARRAY 2
 #define VV_MATRIX 3
-#define VV_STRING 4
 #define VV_TABLE 5
 #define VV_BINARY 6
 
