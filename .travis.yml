@@ -25,10 +25,10 @@ before_script:
 script:
   - export PATH=$PATH:$HOME/wx-3.1.1/bin
   - make -C $GTEST/make
-  - cmake $LKDIR -DCMAKE_BUILD_TYPE=Release && cmake --build $LKDIR -j 2 --target lk 
-  - cmake $WEXDIR -DCMAKE_BUILD_TYPE=Release && cmake --build $WEXDIR -j 2 --target wex
-  - cmake $SSCDIR -DCMAKE_BUILD_TYPE=Release && cmake --build $SSCDIR -j 2 --target ssc
-  - cmake $SAMNTDIR -DCMAKE_BUILD_TYPE=Release && make -j2
+  - cd $LKDIR && cmake . -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 2 --target lk 
+  - cd $WEXDIR && cmake . -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 2 --target wex
+  - cd $SSCDIR && cmake . -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 2 --target ssc
+  - cd $SAMNTDIR && cmake . -DCMAKE_BUILD_TYPE=Release && make -j2
 
 install:
   - sudo apt-get install -y libgtk2.0-dev libgl1-mesa-dev mesa-common-dev freeglut3-dev libcurl4-openssl-dev libc6
