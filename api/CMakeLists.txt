@@ -10,6 +10,7 @@ cmake_minimum_required(VERSION 2.8)
 
 if(APPLE)
     set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
+    set(CMAKE_MACOSX_RPATH 1)
 elseif(MSVC)
     set(CMAKE_SYSTEM_VERSION 8.1 CACHE TYPE INTERNAL FORCE)
 endif()

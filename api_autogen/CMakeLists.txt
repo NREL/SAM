@@ -108,7 +108,8 @@ set_property(TARGET export_config PROPERTY CXX_STANDARD 11)
 
 if(MSVC)
     set_target_properties(export_config PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+        RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>
+        LINK_FLAGS /SUBSYSTEM:WINDOWS)
 endif()
 
 
@@ -162,6 +163,3 @@ if(APPLE)
     set_target_properties(export_config PROPERTIES LINK_FLAGS  "-Wl,-rpath -Wl,$ENV{SSCDIR}/ssc/")
 endif()
 
-if(MSVC)
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
-endif()
