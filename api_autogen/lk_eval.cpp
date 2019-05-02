@@ -496,7 +496,7 @@ bool extractor_interpreter::interpret(lk::node_t *root,
                         l.deref().copy(r.deref());
                         result.copy(r.deref());
                     }
-                    catch(error_t& e){
+                    catch(lk::error_t& e){
                         std:: cout << "could not deref " << e.what() << "\n";
                     }
 

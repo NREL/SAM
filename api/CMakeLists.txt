@@ -98,7 +98,7 @@ if(MSVC)
     add_compile_definitions( __DLL__ __64BIT__ __WINDOWS__ _WINDOWS _CRT_NON_CONFORMING_SWPRINTFS=1
         _SCL_SECURE_NO_WARNINGS=1 _UNICODE NOPCH)
 else()
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11" )
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11 -Wno-attributes" )
 endif()
 
 

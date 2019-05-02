@@ -233,7 +233,17 @@ static bool argument_of_value(std::string& s){
 }
 
 template <typename T>
-std::ostream& operator<<(std::ostream& os, const std::vector<T>& v);
+std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
+{
+    os << "(";
+    for (int i = 0; i < v.size(); ++i) {
+        os << "'" <<v[i] << "'";
+        if (i != v.size() - 1)
+            os << ", ";
+    }
+    os << ")";
+    return os;
+}
 
 std::vector<std::string> find_ui_forms_for_config(std::string config_name);
 

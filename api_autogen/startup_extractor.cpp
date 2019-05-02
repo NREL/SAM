@@ -1,5 +1,3 @@
-#include "startup_extractor.h"
-
 #include <sstream>
 #include <fstream>
 #include <string>
@@ -15,6 +13,7 @@
 
 #include <ssc/sscapi.h>
 
+#include "data_structures.h"
 #include "startup_extractor.h"
 
 std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages;
@@ -30,13 +29,13 @@ void startup_extractor::print_config_to_input_pages(){
         // group : { 'common' : (common_uiforms)
         for (size_t i = 0; i < it->second.size(); i++){
             std::cout << "'"<< it->second[i].sidebar_title << "' :{\n\t\t";
-            if (it->second[i].common_uiforms.size() > 0 ){
+            if (!it->second[i].common_uiforms.empty() ){
                 std::cout << "'common': \n\t\t\t";
                 std::cout << it->second[i].common_uiforms;
             }
             // {exlusive_var : (exclusive_uiforms)
-            if (it->second[i].exclusive_var.size() > 0 ){
-                if (it->second[i].common_uiforms.size() > 0)
+            if (!it->second[i].exclusive_var.empty() ){
+                if (!it->second[i].common_uiforms.empty())
                     std::cout << ",\n\t\t" ;
                 std::cout << "'" << it->second[i].exclusive_var << "' :\n\t\t\t" ;
                 std::cout << it->second[i].exclusive_uiforms << "";

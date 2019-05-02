@@ -26,14 +26,13 @@ static bool translateExceptions(SAM_error* out_error, Fn&& fn)
 {
     try {
         fn();
+    } catch (const std::runtime_error& e) {
+        *out_error = new error{e.what()};
+        return false;
     } catch (const std::exception& e) {
         *out_error = new error{e.what()};
         return false;
-    } catch (const std::runtime_error& e){
-        *out_error = new error{e.what()};
-        return false;
-    }
-    catch (...) {
+    } catch (...) {
         *out_error = new error{"Unknown internal error"};
         return false;
     }

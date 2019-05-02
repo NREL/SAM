@@ -385,11 +385,11 @@ std::unordered_map<std::string, edge *> builder_generator::gather_functions() {
                 edge* e = v->edges_out[i];
                 auto edge_grp = fx_object_graphs.find(e->obj_name);
                 if ( edge_grp == fx_object_graphs.end()){
-                    std::unique_ptr<digraph> graph(new digraph(config_name));
-                    vertex* src = graph->add_vertex(e->src->name, e->src->is_ssc_var, e->ui_form);
-                    vertex* dest = graph->add_vertex(e->dest->name, e->dest->is_ssc_var, e->ui_form);
-                    graph->add_edge(src, dest, e->type, e->obj_name, e->expression, e->ui_form, e->root);
-                    fx_object_graphs.insert({e->obj_name, std::move(graph)});
+                    std::unique_ptr<digraph> new_graph(new digraph(config_name));
+                    vertex* src = new_graph->add_vertex(e->src->name, e->src->is_ssc_var, e->ui_form);
+                    vertex* dest = new_graph->add_vertex(e->dest->name, e->dest->is_ssc_var, e->ui_form);
+                    new_graph->add_edge(src, dest, e->type, e->obj_name, e->expression, e->ui_form, e->root);
+                    fx_object_graphs[e->obj_name] = std::move(new_graph);
                 }
                 else{
                     vertex* s = edge_grp->second->add_vertex(e->src->name, e->src->is_ssc_var, e->ui_form);
