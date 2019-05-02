@@ -3,11 +3,11 @@
 #include "builder_C_API.h"
 #include "builder_generator_helper.h"
 
-void builder_C_API::create_SAM_headers(const std::string &file_dir, const std::string &cmod) {
+void builder_C_API::create_SAM_headers(const std::string &cmod, const std::string &file_dir) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
     std::ofstream fx_file;
-    fx_file.open(file_dir + "/C/SAM_" + cmod_symbol + ".h");
+    fx_file.open(file_dir + "/SAM_" + cmod_symbol + ".h");
     assert(fx_file.is_open());
 
     fx_file << "#ifndef SAM_" << util::upper_case(cmod_symbol)<< "_H_\n"
@@ -156,11 +156,11 @@ void builder_C_API::create_SAM_headers(const std::string &file_dir, const std::s
     fx_file.close();
 }
 
-void builder_C_API::create_SAM_definitions(const std::string &file_dir, const std::string &cmod) {
+void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::string &file_dir) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
     std::ofstream fx_file;
-    fx_file.open(file_dir + "/C/SAM_" + cmod_symbol + ".cpp");
+    fx_file.open(file_dir + "/SAM_" + cmod_symbol + ".cpp");
     assert(fx_file.is_open());
 
     fx_file << "#include <string>\n"

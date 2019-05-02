@@ -20,7 +20,7 @@ public:
     }
 
 
-    void create_PySAM_files(const std::string &file_dir, const std::string &cmod);
+    void create_PySAM_files(const std::string &cmod, const std::string &file_dir);
 };
 
 

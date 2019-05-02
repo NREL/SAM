@@ -78,7 +78,7 @@ std::string module_doc(const std::string& tech_symbol){
     return it->second;
 }
 
-void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::string &cmod){
+void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::string &file_dir) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
     std::string tech_symbol = cmod_symbol;
@@ -88,7 +88,7 @@ void builder_PySAM::create_PySAM_files(const std::string &file_dir, const std::s
         tech_symbol += "Model";
 
     std::ofstream fx_file;
-    fx_file.open(file_dir + "/PySAM/" + tech_symbol + ".c");
+    fx_file.open(file_dir + "/" + tech_symbol + ".c");
     assert(fx_file.is_open());
 
     fx_file << "#include <Python.h>\n"

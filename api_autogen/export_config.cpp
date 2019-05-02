@@ -21,24 +21,43 @@ std::string active_config;
 
 int main(int argc, char *argv[]){
 
-//    run_variable_graph_tests();
-
-    // get environment variables
+    // set default input & output file paths
     char* pPath;
     pPath = getenv ("SAMNTDIR");
     if (pPath!=NULL)
         printf ("The current path is: %s \n",pPath);
     std::string sam_path = std::string(pPath);
 
-    // startup.lk file path should be provided via command line
-    const std::string& filename = sam_path + "/deploy/runtime/startup.lk";
+    std::string startup_file = sam_path + "/deploy/runtime/startup.lk";
+    std::string ui_path = sam_path + "/deploy/runtime/ui/";
+    std::string graph_path = sam_path + "/api_autogen/Graphs/Files";
+    std::string api_path = sam_path + "/api_autogen/library/C";
+    std::string defaults_path = sam_path + "/api_autogen/library/defaults";
+    std::string pysam_path = sam_path + "/api_autogen/library/PySAM";
 
-//    if (argc < 2){
-//        std::cout << "startup.lk script file required.\n";
-//        return 1;
-//    }
+    // replace file paths with command line arguments
+    for(int i = 0; i < argc; i+=2) {
+        if (std::strcmp(argv[i], "--startup") == 0){
+            startup_file = argv[i+1];
+        }
+        if (std::strcmp(argv[i], "--ui") == 0){
+            ui_path = argv[i+1];
+        }
+        if (std::strcmp(argv[i], "--graph") == 0){
+            graph_path = argv[i+1];
+        }
+        if (std::strcmp(argv[i], "--api") == 0){
+            api_path = argv[i+1];
+        }
+        if (std::strcmp(argv[i], "--defaults") == 0){
+            defaults_path = argv[i+1];
+        }
+        if (std::strcmp(argv[i], "--pysam") == 0){
+            pysam_path = argv[i+1];
+        }
+    }
 
-    std::ifstream ifs(filename.c_str());
+    std::ifstream ifs(startup_file.c_str());
     if(!ifs.is_open()){
         std::cout << "cannot open file";
         return 1;
@@ -56,14 +75,12 @@ int main(int argc, char *argv[]){
 
 
     // from each ui_form file, extract the config-independent defaults, equations and callback scripts
-    std::string ui_path = sam_path + "/deploy/runtime/ui/";
     SAM_ui_extracted_db.populate_ui_data(ui_path, unique_ui_form_names);
 
     // parsing the callbacks requires all ui forms in a config
     active_config = "";
 
-    std::string graph_path = sam_path + "/api_autogen/Graphs/Files";
-    std::string api_path = sam_path + "/api_autogen/library";
+
 
     // do technology configs with None first
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
@@ -92,7 +109,7 @@ int main(int argc, char *argv[]){
         for (size_t i = 0; i < primary_cmods.size(); i++){
             // get all the expressions
             builder_generator b_gen(&ce);
-            b_gen.create_all(api_path, primary_cmods[i]);
+            b_gen.create_all(primary_cmods[i], defaults_path, api_path, pysam_path);
             //b_gen.print_subgraphs(graph_path);
         }
     }
@@ -118,7 +135,7 @@ int main(int argc, char *argv[]){
         for (size_t i = 0; i < primary_cmods.size(); i++){
             // get all the expressions
             builder_generator b_gen(&ce);
-            b_gen.create_all(api_path, primary_cmods[i]);
+            b_gen.create_all(primary_cmods[i], defaults_path, api_path, pysam_path);
             //b_gen.print_subgraphs(graph_path);
         }
     }

@@ -56,7 +56,7 @@ private:
 
     void gather_variables();
 
-    void export_variables_json(const std::string &cmod);
+    void export_variables_json(const std::string &cmod, const std::string &defaults_path);
 
     std::unordered_map<std::string, edge *> gather_functions();
 
@@ -95,7 +95,8 @@ public:
     void create_cmod_builder_cpp(std::string cmod_name,
                                      const std::unordered_map<std::string, edge *> &unique_edge_obj_names);
 
-    void create_all(std::string fp, std::string cmod);
+    void create_all(std::string cmod, const std::string &defaults_path, const std::string &api_path,
+                    const std::string &pysam_path);
 
     std::vector<std::string> get_user_defined_variables();
 

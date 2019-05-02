@@ -288,10 +288,10 @@ std::string defaults_filename(std::string cmod_symbol, const std::string &config
 }
 
 //
-void builder_generator::export_variables_json(const std::string &cmod) {
+void builder_generator::export_variables_json(const std::string &cmod, const std::string &defaults_path) {
     std::ofstream json;
 
-    json.open(filepath + "/defaults/" + defaults_filename(format_as_symbol(cmod), config_name) + ".json");
+    json.open(defaults_path + "/" + defaults_filename(format_as_symbol(cmod), config_name) + ".json");
 
     // later implement for several financial models
     assert(json.is_open());
@@ -747,8 +747,8 @@ std::vector<std::string> builder_generator::get_evaluated_variables() {
 }
 
 
-void builder_generator::create_all(std::string fp, std::string cmod) {
-    filepath = fp;
+void builder_generator::create_all(std::string cmod, const std::string &defaults_path, const std::string &api_path,
+                                   const std::string &pysam_path) {
 
     bool print_json = true;
     bool print_capi = false;
@@ -764,7 +764,7 @@ void builder_generator::create_all(std::string fp, std::string cmod) {
     gather_variables_ssc(cmod);
 
     if (print_json)
-        export_variables_json(cmod);
+        export_variables_json(cmod, defaults_path);
 
     if (SAM_completed_cmods.find(cmod)!= SAM_completed_cmods.end()){
         return;
@@ -775,13 +775,13 @@ void builder_generator::create_all(std::string fp, std::string cmod) {
     if (print_capi){
         builder_C_API c_API(this);
 
-        c_API.create_SAM_headers(filepath, cmod);
-        c_API.create_SAM_definitions(filepath, cmod);
+        c_API.create_SAM_headers(cmod, api_path);
+        c_API.create_SAM_definitions(cmod, api_path);
     }
 
     if (print_pysam){
         builder_PySAM pySAM(this);
-        pySAM.create_PySAM_files(filepath, cmod);
+        pySAM.create_PySAM_files(cmod, pysam_path);
     }
 
     SAM_completed_cmods.insert({cmod, 1});
