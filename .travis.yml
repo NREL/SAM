@@ -31,7 +31,7 @@ script:
   - cd $SAMNTDIR && cmake . -DCMAKE_BUILD_TYPE=Release && make -j2
 
 install:
-  - sudo apt-get install -y libgtk2.0-dev libgl1-mesa-dev mesa-common-dev freeglut3-dev libcurl4-openssl-dev libc6
+  - sudo apt-get install -y libwebkitgtk-dev libgtk2.0-dev libgl1-mesa-dev mesa-common-dev freeglut3-dev libcurl4-openssl-dev libc6
 
 branches:
   only:
