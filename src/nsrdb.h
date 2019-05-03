@@ -64,7 +64,7 @@ class NSRDBDialog : public wxDialog
 {
 
 public:
-	NSRDBDialog(wxWindow *parent, const wxString &title);
+	NSRDBDialog(wxWindow *parent, const wxString &title, wxString &usr_location);
 	wxString &GetWeatherFile() {
 		return m_weatherFile;
 	};
@@ -85,7 +85,7 @@ public:
 		wxString interval; // 30 or 60 
 		wxString location; // lat and lon
 		wxString display;
-		wxString attributes; // limit coumn and file size to SAM specific per NSRDB
+		wxString attributes; // limit column and file size to SAM specific per NSRDB
 		bool is_selected;
 		bool is_visible;
 		LinkInfo(wxString &_n, wxString &_dn, wxString &_t, wxString &_y, wxString &_u, wxString &_i, wxString &_l, wxString &_a)
@@ -110,9 +110,13 @@ public:
 				else
 					return ( atoi(year.c_str()) > atoi(li.year.c_str()));
 			}
-			else if (name.Lower() == "psm")
+			else if (name.Lower() == "psmv3")
 				return true;
-			else if (li.name.Lower() == "psm")
+			else if (li.name.Lower() == "psmv3")
+				return false;
+			else if (name.Lower() == "psm3_tmy")
+				return true;
+			else if (li.name.Lower() == "psm3_tmy")
 				return false;
 			else if (name.Lower() == "mts3")
 				return true;
@@ -153,8 +157,10 @@ private:
 	wxString m_addFolder;
 	wxComboBox *m_cboWeatherFile;
 	wxCheckListBox *m_chlResources;
-	wxButton *m_btnChkAll, *m_btnChkNone,*m_btnUnselectFiltered, *m_btnSelectFiltered, *m_btnResources, *m_btnFolder, *m_btnChkPsm30, *m_btnChkPsm60; 
+	wxButton *m_btnChkAll, *m_btnChkNone,*m_btnUnselectFiltered, *m_btnSelectFiltered, *m_btnResources, *m_btnFolder; 
+	wxButton *m_btnChk30, *m_btnChk60, *m_btnChkTmy, *m_btnChkMts1, *m_btnChkMts2, *m_btnChkPsm3;
 	wxTextCtrl *m_txtFolder;
+//	wxStaticText *m_txtFolder;
 	wxTextCtrl *m_txtAddress;
 	wxSearchCtrl *m_search;
 

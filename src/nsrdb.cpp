@@ -70,15 +70,21 @@
 
 enum {
 	ID_txtAddress, ID_txtFolder, ID_cboFilter, ID_cboWeatherFile, ID_chlResources,
-	ID_btnChkAll, ID_btnSelectFiltered, ID_btnUnselectFiltered, ID_btnChkPsm30, ID_btnChkPsm60, ID_btnChkNone, ID_btnResources, ID_btnFolder, ID_search
+	ID_btnChkAll, ID_btnSelectFiltered, ID_btnUnselectFiltered, ID_btnChk30, ID_btnChk60, 
+	ID_btnChkTmy, ID_btnChkMts1, ID_btnChkMts2, ID_btnChkPsm3, ID_btnChkNone, 
+	ID_btnResources, ID_btnFolder, ID_search
 };
 
 BEGIN_EVENT_TABLE( NSRDBDialog, wxDialog )
 	EVT_BUTTON(ID_btnChkAll, NSRDBDialog::OnEvt)
 	EVT_BUTTON(ID_btnSelectFiltered, NSRDBDialog::OnEvt)
 	EVT_BUTTON(ID_btnUnselectFiltered, NSRDBDialog::OnEvt)
-	EVT_BUTTON(ID_btnChkPsm30, NSRDBDialog::OnEvt)
-	EVT_BUTTON(ID_btnChkPsm60, NSRDBDialog::OnEvt)
+	EVT_BUTTON(ID_btnChk30, NSRDBDialog::OnEvt)
+	EVT_BUTTON(ID_btnChk60, NSRDBDialog::OnEvt)
+	EVT_BUTTON(ID_btnChkTmy, NSRDBDialog::OnEvt)
+	EVT_BUTTON(ID_btnChkMts1, NSRDBDialog::OnEvt)
+	EVT_BUTTON(ID_btnChkMts2, NSRDBDialog::OnEvt)
+	EVT_BUTTON(ID_btnChkPsm3, NSRDBDialog::OnEvt)
 	EVT_BUTTON(ID_btnChkNone, NSRDBDialog::OnEvt)
 	EVT_BUTTON(ID_btnResources, NSRDBDialog::OnEvt)
 	EVT_BUTTON(ID_btnFolder, NSRDBDialog::OnEvt)
@@ -88,57 +94,81 @@ BEGIN_EVENT_TABLE( NSRDBDialog, wxDialog )
 	EVT_BUTTON(wxID_HELP, NSRDBDialog::OnEvt)
 END_EVENT_TABLE()
 
-NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
+NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title, wxString &usr_location)
 	 : wxDialog( parent, wxID_ANY, title,  wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {
 	wxString dnpath;
 	SamApp::Settings().Read("NSRDBDownloadFolder", &dnpath);
 	if (dnpath.Len() <=0)
 		SamApp::Settings().Read("solar_download_path", &dnpath);
-	m_txtFolder = new wxTextCtrl(this, ID_txtFolder, dnpath);// , wxDefaultPosition, wxSize(500, 30));
+
+	m_txtFolder = new wxTextCtrl(this, ID_txtFolder, dnpath, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE | wxTE_READONLY);// , wxDefaultPosition, wxSize(500, 30));
 	m_txtFolder->SetValue(dnpath);
+	m_txtFolder->SetEditable(FALSE);
 
-	m_txtAddress = new wxTextCtrl(this, ID_txtAddress, "40.1,-109.3");// , wxDefaultPosition, wxSize(500, 30));
+	m_txtAddress = new wxTextCtrl(this, ID_txtAddress, usr_location);// , wxDefaultPosition, wxSize(500, 30));
 
-	m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));
-	m_btnChkAll = new wxButton(this, ID_btnChkAll, "Select all");
-	m_btnChkPsm30 = new wxButton(this, ID_btnChkPsm30, "Select PSM V3 30-minute"); //cpg
-	m_btnChkPsm60 = new wxButton(this, ID_btnChkPsm60, "Select PSM V3 hourly"); //cpg
-	m_btnChkNone = new wxButton(this, ID_btnChkNone, "Clear all");
-	m_btnUnselectFiltered = new wxButton(this, ID_btnUnselectFiltered, "Clear filtered");
-	m_btnSelectFiltered = new wxButton(this, ID_btnSelectFiltered, "Select filtered");
-	m_btnResources = new wxButton(this, ID_btnResources, "Find");
+	m_btnFolder = new wxButton(this, ID_btnFolder, "Change folder...", wxDefaultPosition);// , wxSize(30, 30));
+	m_btnChkAll = new wxButton(this, ID_btnChkAll, "All");
+	m_btnChk30 = new wxButton(this, ID_btnChk30, "30-minute");
+	m_btnChk60 = new wxButton(this, ID_btnChk60, "60-minute");
+	m_btnChkTmy = new wxButton(this, ID_btnChkTmy, "TMY");
+	m_btnChkMts1 = new wxButton(this, ID_btnChkMts1, "MTS1");
+	m_btnChkMts2 = new wxButton(this, ID_btnChkMts2, "MTS2");
+	m_btnChkPsm3 = new wxButton(this, ID_btnChkPsm3, "PSM v3");
+//	m_btnChkNone = new wxButton(this, ID_btnChkNone, "Clear all");
+	
+	m_btnUnselectFiltered = new wxButton(this, ID_btnUnselectFiltered, "Clear filtered files");
+	m_btnSelectFiltered = new wxButton(this, ID_btnSelectFiltered, "Check filtered files");
+	m_btnResources = new wxButton(this, ID_btnResources, "Refresh file list");
+	
 	m_search = new wxSearchCtrl(this, ID_search, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER | wxTE_PROCESS_TAB);
+	m_search->SetDescriptiveText("Filter");
+	
 	m_cboWeatherFile = new wxComboBox(this, ID_cboWeatherFile, ""); // populate with selected resources
 	m_chlResources = new wxCheckListBox(this, ID_chlResources, wxDefaultPosition, wxSize(800,200)); // populate with returned resources
 
-	wxString msg = "Use this window to list all weather files available from the NSRDB for a given location, and choose files to download and add to your solar resource library.\nType an address or latitude and longtitude, for example, \"15031 denver west parkway golden co\" or \"40.1,-109.3\", and click Find to list available files.\nWhen the list appears, choose the file or files you want to download. PSM V3 files are the most up-to-date.\n\nThe email address you used to register SAM will be sent to the NREL NSRDB. If you do not want share your email address with the NSRDB, click Cancel now.";
-
+//	wxString msg = "Use this window to list all weather files available from the NSRDB for a given location, and choose files to download and add to your solar resource library.\nType an address or latitude and longtitude, for example, \"15031 denver west parkway golden co\" or \"40.1,-109.3\", and click Find to list available files.\nWhen the list appears, choose the file or files you want to download. PSM V3 files are the most up-to-date.\n\nThe email address you used to register SAM will be sent to the NREL NSRDB. If you do not want share your email address with the NSRDB, click Cancel now.";
+	wxString msg = "NSRDB files available for " + usr_location;
+	 
 	wxBoxSizer *szAddress = new wxBoxSizer(wxHORIZONTAL);
-	szAddress->Add(new wxStaticText(this, wxID_ANY, "1. Find location:"), 0, wxALL , 2);
-	szAddress->Add(m_txtAddress, 5, wxALL|wxEXPAND, 2);
+	szAddress->Add(new wxStaticText(this, wxID_ANY, "Location:"), 0, wxALL , 2);
+//	szAddress->Add(m_txtAddress, 5, wxALL|wxEXPAND, 2);
+	szAddress->Add(m_txtAddress, 5, wxALL, 2);
 	szAddress->Add(m_btnResources, 0, wxALL, 2);
 
 	wxBoxSizer *szFolder = new wxBoxSizer(wxHORIZONTAL);
-	szFolder->Add(new wxStaticText(this, wxID_ANY, "3. Choose download folder:"), 0, wxALL, 2);
-	szFolder->Add(m_txtFolder, 5, wxALL | wxEXPAND, 2);
+	szFolder->Add(new wxStaticText(this, wxID_ANY, "Folder for downloads:"), 0, wxALL, 2);
+	szFolder->Add(m_txtFolder, 2, wxALL, 2);
 	szFolder->Add(m_btnFolder, 0, wxALL, 2);
 
+/*	wxBoxSizer *szFolder = new wxBoxSizer(wxHORIZONTAL);
+	szFolder->Add(m_btnFolder, 0, wxALL, 2);
+	szFolder->Add(m_txtFolder, 5, wxALL | wxEXPAND, 2);
+*/
 	wxBoxSizer *szWeatherFile = new wxBoxSizer(wxHORIZONTAL);
-	szWeatherFile->Add(new wxStaticText(this, wxID_ANY, "4. Choose file for simulation (optional):"), 0, wxALL , 2);
+	szWeatherFile->Add(new wxStaticText(this, wxID_ANY, "Choose file for simulation (optional):"), 0, wxALL , 2);
 	szWeatherFile->Add(m_cboWeatherFile, 5, wxALL | wxEXPAND, 2);
 
+	wxBoxSizer *szFilter = new wxBoxSizer(wxHORIZONTAL);
+	szFilter->Add(new wxStaticText(this, wxID_ANY, "Custom:"), 0, wxALL | wxEXPAND, 2);
+	szFilter->Add(m_search, 0, wxALIGN_CENTER_VERTICAL | wxALL, 2);
+	szFilter->Add(m_btnSelectFiltered, 0, wxALL, 2);
+	szFilter->Add(m_btnUnselectFiltered, 0, wxALL, 2);
+	
 	wxBoxSizer *szChkBtn = new wxBoxSizer(wxHORIZONTAL);
-	szChkBtn->Add(m_search, 0, wxALIGN_CENTER_VERTICAL | wxALL, 2);
-	szChkBtn->Add(m_btnSelectFiltered, 0, wxALL, 2);
-	szChkBtn->Add(m_btnUnselectFiltered, 0, wxALL, 2);
-	szChkBtn->Add(m_btnChkPsm60, 0, wxALL, 2); //cpg was commented out see line above
-	szChkBtn->Add(m_btnChkPsm30, 0, wxALL, 2); //cpg was commented out see line above
-	szChkBtn->Add(m_btnChkAll, 0, wxALL, 2);
-	szChkBtn->Add(m_btnChkNone, 0, wxALL, 2);
+	szChkBtn->Add(new wxStaticText(this, wxID_ANY, "Presets:"), 0, wxALL | wxEXPAND, 2);
+	szChkBtn->Add(m_btnChk60, 0, wxALL, 2);
+	szChkBtn->Add(m_btnChk30, 0, wxALL, 2); 
+	szChkBtn->Add(m_btnChkTmy, 0, wxALL, 2);
+	szChkBtn->Add(m_btnChkMts1, 0, wxALL, 2);
+	szChkBtn->Add(m_btnChkMts2, 0, wxALL, 2);
+	szChkBtn->Add(m_btnChkPsm3, 0, wxALL, 2);
+	szChkBtn->Add(m_btnChkAll, 0, wxALL, 2); 
+	//szChkBtn->Add(m_btnChkNone, 0, wxALL, 2); TO DO remove definitions
 
 	wxBoxSizer *szgrid = new wxBoxSizer(wxVERTICAL);
-	szgrid->Add(new wxStaticText(this, wxID_ANY, "2. Choose files to download:"), 0, wxALL, 2);
+	szgrid->Add(new wxStaticText(this, wxID_ANY, "List of available files (check files to download):"), 0, wxALL, 2);
 	szgrid->Add(m_chlResources, 10, wxALL | wxEXPAND, 1);
 	szgrid->Add(szChkBtn, 0, wxALL, 1);
 
@@ -146,6 +176,7 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	szmain->Add(new wxStaticText(this, wxID_ANY, msg), 0, wxALL | wxEXPAND, 10);
 	szmain->Add(szAddress, 0,  wxEXPAND, 1);
 	szmain->Add(szgrid, 10, wxALL | wxEXPAND, 1);
+	szmain->Add(szFilter, 0, wxALL | wxEXPAND, 1);
 	szmain->Add(szFolder, 0, wxALL | wxEXPAND, 1);
 	szmain->Add(szWeatherFile, 0, wxALL | wxEXPAND, 1);
 	szmain->Add( CreateButtonSizer( wxHELP|wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
@@ -153,6 +184,11 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	SetSizer( szmain );
 	Fit();
 	m_txtAddress->SetFocus();
+	GetResources();
+	//std::sort(m_links.begin(), m_links.end());
+	// select first item (should be tmy)
+	//if (m_links.size() > 0) m_links[0].is_selected = true;
+	RefreshList();
 }
 
 
@@ -166,7 +202,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 		case ID_btnResources:
 			{
 				GetResources();
-				std::sort(m_links.begin(),m_links.end());
+				//std::sort(m_links.begin(),m_links.end());
 				// select first item (should be tmy)
 				//if (m_links.size() > 0) m_links[0].is_selected = true;
 				RefreshList();
@@ -204,34 +240,131 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				RefreshList();
 			}
 			break;
-		case ID_btnChkPsm30:
+		case ID_btnChk30:
 			{
+			/*
 				for (size_t i = 0; i < m_links.size(); i++)
 				{
-					if ((m_links[i].name.Lower() == "psmv3") && (m_links[i].interval.Lower() == "30"))
+					if (m_links[i].interval.Lower() == "30")
+					{
+						if (m_links[i].is_selected == false)
+						{
+							m_links[i].is_selected = true;
+							m_links[i].is_visible = true;
+						}
+						else
+						{
+							m_links[i].is_selected = false;
+							m_links[i].is_visible = true;
+						}
+					}
+					else
+					{
+						m_links[i].is_selected = false;
+						m_links[i].is_visible = false;
+					}
+				}
+				RefreshList();
+			*/
+			m_search->SetValue("30");
+			}
+			break;
+		case ID_btnChk60:
+			{
+			/*	for (size_t i = 0; i < m_links.size(); i++)
+				{
+					if (m_links[i].interval.Lower() == "60")
+					{
+						if (m_links[i].is_selected == false)
+							m_links[i].is_selected = true;
+						else
+							m_links[i].is_selected = false;
+					}
+					else
+						m_links[i].is_selected = false;
+				}
+				*/
+				m_search->SetValue("60");
+				RefreshList();
+			}
+			break;
+		case ID_btnChkTmy:
+		{
+			for (size_t i = 0; i < m_links.size(); i++)
+			{
+				if (m_links[i].year.Contains("tmy") /*|| m_links[i].year.Contains("tgy") || m_links[i].year.Contains("tdy")*/)
+				{
+					if (m_links[i].is_selected == false)
 						m_links[i].is_selected = true;
 					else
 						m_links[i].is_selected = false;
 				}
-				RefreshList();
+				else
+					m_links[i].is_selected = false;
 			}
-			break;
-		case ID_btnChkPsm60:
+			RefreshList();
+		}
+		break;
+		case ID_btnChkMts1:
+		{
+			for (size_t i = 0; i < m_links.size(); i++)
 			{
-				for (size_t i = 0; i < m_links.size(); i++)
+				if (m_links[i].name.Lower() == "mts1")
 				{
-					if ((m_links[i].name.Lower() == "psmv3") && (m_links[i].interval.Lower() == "60"))
+					if (m_links[i].is_selected == false)
 						m_links[i].is_selected = true;
 					else
 						m_links[i].is_selected = false;
 				}
-				RefreshList();
+				else
+					m_links[i].is_selected = false;
 			}
-			break;
+			RefreshList();
+		}
+		break;
+		case ID_btnChkMts2:
+		{
+			for (size_t i = 0; i < m_links.size(); i++)
+			{
+				if (m_links[i].name.Lower() == "mts2")
+				{
+					if (m_links[i].is_selected == false)
+						m_links[i].is_selected = true;
+					else
+						m_links[i].is_selected = false;
+				}
+				else
+					m_links[i].is_selected = false;
+			}
+			RefreshList();
+		}
+		break;
+		case ID_btnChkPsm3:
+		{
+			for (size_t i = 0; i < m_links.size(); i++)
+			{
+				if ( (m_links[i].name.Lower() == "psm3") || (m_links[i].name.Lower() == "psmv3") )
+				{
+					if (m_links[i].is_selected == false)
+						m_links[i].is_selected = true;
+					else
+						m_links[i].is_selected = false;
+				}
+				else
+					m_links[i].is_selected = false;
+			}
+			RefreshList();
+		}
+		break;
 		case ID_btnChkAll:
 			{
 				for (size_t i = 0; i < m_links.size(); i++)
-					m_links[i].is_selected = true;
+				{
+					if (m_links[i].is_selected == false)
+						m_links[i].is_selected = true;
+					else
+						m_links[i].is_selected = false;
+				}
 				RefreshList();
 			}
 			break;
@@ -255,9 +388,11 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 		case ID_btnFolder:
 			{
 				wxDirDialog dlg(SamApp::Window(), "Choose Download Folder", m_txtFolder->GetValue(), wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
-				if (dlg.ShowModal() == wxID_OK)
+//				wxDirDialog dlg(SamApp::Window(), "Choose Download Folder", m_txtFolder->GetLabel(), wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
+			if (dlg.ShowModal() == wxID_OK)
 				{
 					m_txtFolder->SetValue( dlg.GetPath());
+//					m_txtFolder->SetLabel(dlg.GetPath());
 					SamApp::Settings().Write("solar_data_paths", dlg.GetPath());
 				}
 			}
@@ -281,11 +416,13 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 					wxString default_dnload_path;
 					SamApp::Settings().Read("solar_download_path", &default_dnload_path);
 					m_weatherFolder = m_txtFolder->GetValue();
+//					m_weatherFolder = m_txtFolder->GetLabel();
 					if (!wxDirExists(m_weatherFolder))
 					{
 						wxMessageBox("Please select a valid folder for downloads.");
 						// reset to download folder
 						m_txtFolder->SetValue(default_dnload_path);
+//						m_txtFolder->SetLabel(default_dnload_path);
 						stopped = true;
 					}
 					// check for existing library entries
@@ -399,6 +536,12 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 	}
 }
 
+/*				for (size_t i = 0; i < m_links.size(); i++)
+				{
+					if (m_links[i].is_visible)
+						m_links[i].is_selected = true;
+				}
+*/
 void NSRDBDialog::RefreshList()
 {
 	// refresh resource list and combo box for selected weather file
@@ -533,14 +676,17 @@ void NSRDBDialog::GetResources()
 			URL.Replace("yourapikey", "<SAMAPIKEY>");
 			URL.Replace("youremail", "<USEREMAIL>");
 			// URL - min attributes for each type 
+			// include ghi for BELPE and other applications
 			wxString attributes = "";
-			if ((name.Trim() == "psmv3") && (year.Trim() != "tmy")) //replace psm with psmv3 10/22/2018, relative_humidity not available for tmy
-				attributes = "&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,wind_speed,wind_direction,surface_albedo";
+			if ((name.Trim() == "psmv3") && (year.Trim() != "tmy")) //replace psm with psmv3 10/22/2018
+				attributes = "&attributes=ghi,dhi,dni,dew_point,air_temperature,surface_pressure,wind_speed,wind_direction,surface_albedo,relative_humidity,surface_albedo";
 				//attributes = "&attributes=dhi,dni,dew_point,surface_air_temperature_nwp,surface_pressure_background,surface_relative_humidity_nwp,wind_speed_10m_nwp";
+			else if (name.Trim() == "psm3_tmy")  //psm now distributes different tmy files by year 5/2019, relative_humidity not available for tmy
+				attributes = "&attributes=ghi,dhi,dni,dew_point,air_temperature,surface_pressure,wind_speed,wind_direction,surface_albedo";
 			else if ((name.Trim() == "mts2") || (name.Trim() == "mts2-tmy"))
-				attributes = "&attributes=dhi,dni,dew_point,temp_dryb,atm_pres,rel_hum,wind_spd";
+				attributes = "&attributes=ghi,dhi,dni,dew_point,temp_dryb,atm_pres,rel_hum,wind_spd";
 			else if (name.Trim() == "mts1") // untested
-				attributes = "&attributes=dhi,dni,dew_point,temp_dryb,atm_pres,rel_hum,wind_spd";
+				attributes = "&attributes=ghi,dhi,dni,dew_point,temp_dryb,atm_pres,rel_hum,wind_spd";
 			else if (name.Trim() == "suny-international" && (year.Trim() != "tmy"))
 				attributes = "&attributes=dhi,dni,dew_point,surface_temperature,surface_pressure,relative_humidity,snow_depth,wspd";
 			else
