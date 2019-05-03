@@ -11067,6 +11067,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_celltemp_aget(SAM_Pvsamv1 ptr, 
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_dc_gross_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray1_dc_gross", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray1_dc_gross");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_dc_voltage_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11396,6 +11408,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_celltemp_aget(SAM_Pvsamv1 ptr, 
 	result = ssc_data_get_array(ptr, "subarray2_celltemp", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "subarray2_celltemp");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_dc_gross_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray2_dc_gross", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray2_dc_gross");
 	});
 	return result;
 }
@@ -11737,6 +11761,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_celltemp_aget(SAM_Pvsamv1 ptr, 
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_dc_gross_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray3_dc_gross", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray3_dc_gross");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_dc_voltage_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12066,6 +12102,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_celltemp_aget(SAM_Pvsamv1 ptr, 
 	result = ssc_data_get_array(ptr, "subarray4_celltemp", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "subarray4_celltemp");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_dc_gross_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray4_dc_gross", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray4_dc_gross");
 	});
 	return result;
 }

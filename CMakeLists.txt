@@ -23,7 +23,6 @@ endif()
 
 Project(sam)
 
-add_subdirectory(api_autogen)
 add_subdirectory(api)
 
 if (MSVC)
