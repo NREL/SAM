@@ -5793,6 +5793,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_celltemp_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_dc_gross_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_dc_voltage_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_subarray1_dcloss_nget(SAM_Pvsamv1 ptr, SAM_error *err);
@@ -5848,6 +5850,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_beam_shading_factor_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_celltemp_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_dc_gross_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_dc_voltage_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
@@ -5905,6 +5909,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_celltemp_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_dc_gross_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_dc_voltage_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_subarray3_dcloss_nget(SAM_Pvsamv1 ptr, SAM_error *err);
@@ -5960,6 +5966,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_beam_shading_factor_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_celltemp_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_dc_gross_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_dc_voltage_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 

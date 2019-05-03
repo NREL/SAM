@@ -29,6 +29,8 @@ endif()
 
 Project(SAM_API)
 
+add_subdirectory(api_autogen)
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
@@ -121,6 +123,8 @@ else()
     set(SAM_API_LIB SAM_api)
 endif()
 
+add_dependencies(${SAM_API_LIB} export_config)
+
 # required functions not exported in ssc.dll
 if(MSVC)
     target_sources(${SAM_API_LIB} PRIVATE $ENV{SSCDIR}/ssc/vartab.cpp $ENV{SSCDIR}/shared/lib_util.cpp)
@@ -171,9 +175,8 @@ endif()
 #
 #####################################################################################################################
 
-# PySAM setup.py
-add_definitions(-Dsystem_advisor_model_EXPORT)
 if(APPLE)
+    # PySAM setup.py uses .so
     set(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
     add_custom_command(
         TARGET ${SAM_API_LIB}
@@ -183,4 +186,5 @@ if(APPLE)
 elseif(UNIX )
     set(CMAKE_SHARED_LIBRARY_PREFIX "lib")
 endif()
+
 
