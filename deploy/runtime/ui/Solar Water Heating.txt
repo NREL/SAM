@@ -1,7 +1,7 @@
 Solar Water Heating
-889
-1187
-57
+887
+1270
+59
 Numeric
 
 1
@@ -274,7 +274,7 @@ Width
 866
 Height
 3
-88
+176
 Caption
 5
 8
@@ -879,14 +879,14 @@ DataArray
 9
 Name
 5
-12
-custom_mains
+18
+custom_mains_input
 X
 3
 291
 Y
 3
-1137
+1191
 Width
 3
 110
@@ -1893,6 +1893,64 @@ Fields
 5
 66
 Name,SRCC Number,Type,Area,IAM,FRta,FRUL,Test Fluid,Test flow Rate
+MonthlyFactor
+
+1
+7
+Name
+5
+24
+swh_single_monthly_mains
+X
+3
+312
+Y
+3
+1161
+Width
+3
+90
+Height
+3
+24
+Description
+5
+25
+Annual or monthly profile
+TabOrder
+3
+4294967295
+Choice
+
+1
+8
+Name
+5
+22
+swh_single_or_ts_mains
+X
+3
+168
+Y
+3
+1128
+Width
+3
+233
+Height
+3
+24
+Items
+6
+2
+Input annual or monthly values
+Input hourly mains profile
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -2257,10 +2315,10 @@ Name
 use_custom_mains
 X
 3
-291
+294
 Y
 3
-1113
+1104
 Width
 3
 110
@@ -2659,7 +2717,7 @@ TabOrder
 3
 23
 
-58
+61
 FRUL
 3
 1
@@ -2842,6 +2900,20 @@ Solar Water Heating
 0
 RadioChoice
 custom_mains
+3
+2
+Hourly custom mains profile
+C
+Solar Water Heating
+0
+0
+1
+2
+1
+1
+0
+DataArray
+custom_mains_input
 3
 2
 Hourly custom mains profile
@@ -3258,6 +3330,34 @@ Solar Water Heating
 9
 <invalid>
 TextEntry
+swh_single_monthly_mains
+3
+2
+Annual or monthly mains profile
+ 
+ Solar Water Heating
+0
+0
+1
+2
+1
+1
+0
+MonthlyFactor
+swh_single_or_ts_mains
+3
+1
+ 
+ 
+Solar Water Heating
+0
+1
+1
+1
+1
+1
+0
+Choice
 system_capacity
 3
 1
@@ -3471,7 +3571,7 @@ Water|Glycol
 0
 Choice
 
-1188
+1883
 equations{ 'total_area' } = define() {
 	return ${area_coll}*${ncoll}; };
 	
@@ -3521,8 +3621,46 @@ equations{ '$MIMO$ total_annual_draw' } = define() {
 	${annual_draw} = ann_draw;	};
 
 
+equations{'custom_mains'} = define(){
+	
+	draw = alloc(12);
+	custom_mains = alloc(8760);
+	days_in_month = [31, 28, 31, 30, 30, 31, 31, 31, 30, 31, 30, 31];
+	
+	if (${use_custom_mains})
+	{
+		// single or monthly
+		if (${swh_single_or_ts_mains} == 0)
+		{
+			draw = ${swh_single_monthly_mains};
+			n_draw = #draw;
+			if (n_draw == 1)
+			{
+				d0 = draw[0];
+				draw = [];
+				for (m = 0; m < 12; m++)
+				{
+					draw[m] = d0;
+				}
+			}
+			i = 0;
+			for (m = 0; m < 12; m++){
+				for (d = 0; d < days_in_month[m]; d++){
+					for (h = 0; h < 24; h++){
+						custom_mains[i] = draw[m];
+						i++;
+					}
+				}
+			}
+		}
+		else {	
+			custom_mains = ${custom_mains_input};
+		}
+	}
+	return custom_mains;
+};
 
-1886
+2252
 
 on_load{"Solar Water Heating"} = define()
 {
@@ -3530,6 +3668,7 @@ on_load{"Solar Water Heating"} = define()
 	on_change{"coll_mode"}();	
 	on_change{"use_custom_set"}();
 	on_change{"use_custom_mains"}();
+	on_change{"swh_single_or_ts_mains"}();
 	
 //	on_change{"srcc_item"}();
 };
@@ -3578,9 +3717,21 @@ on_change{'use_custom_set'} = define()
 
 on_change{'use_custom_mains'} = define() {
 	state = value('use_custom_mains');
-	enable( 'custom_mains', state );
+	enable('swh_single_or_ts_mains', state);
+	check_mains_input();
 };
 
+on_change{'swh_single_or_ts_mains'} = define() {
+	check_mains_input();
+};
+
+function check_mains_input()
+{
+	custom = value('use_custom_mains');
+	state = value('swh_single_or_ts_mains');
+	enable('swh_single_monthly_mains', state==0 && custom);
+	enable( 'custom_mains_input', state==1 && custom);
+}
 
 
 on_change{'edit_3d_scene'} = define() {
