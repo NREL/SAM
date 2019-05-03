@@ -815,7 +815,7 @@ bool VarValue::Read_text(wxInputStream &_I)
 		nr = in.Read32();
 		nc = in.Read32();
 		if (nr*nc < 1) return false; // big error
-		m_val.resize_fill(nr, nc, 0.0f);
+		m_val.resize_fill(nr, nc, 0.0);
 		if (nc*nr > 1)
 		{
 			for (size_t r = 0; r < nr; r++)
@@ -1076,7 +1076,7 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 				if ( Type() == VV_MATRIX || change_type )
 				{
 					m_type = VV_MATRIX;
-					m_val.resize_fill( dim1, dim2, 0.0f );
+					m_val.resize_fill( dim1, dim2, 0.0 );
 
 					for ( size_t i=0;i<dim1;i++)
 					{
@@ -1085,7 +1085,7 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 							double x = 0;
 							if ( val.index(i)->type() == lk::vardata_t::VECTOR
 								&& j < val.index(i)->length() )
-								x = (float)val.index(i)->index(j)->as_number();
+								x = (double)val.index(i)->index(j)->as_number();
 
 							m_val.at(i,j) = x;
 						}

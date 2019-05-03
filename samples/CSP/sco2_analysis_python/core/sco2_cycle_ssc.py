@@ -205,8 +205,10 @@ def get_des_od_label_unit_info__calc_metrics():
     info["t_cost"].od_d_type = "nan"
 
     info["LTR_HP_T_out"] = C_des_od_label_unit_info("LTR_HP_T_out_des", "LTR_HP_T_out_od", "LTR HP\nOutlet Temp [C]", "LTR HP Outlet Temperature [C]", "[C]")
-    info["LTR_UA"] = C_des_od_label_unit_info("UA_LTR", "none", "LTR\nUW [MW/K]", "Low Temp Recuperator Conductance [MW/K]", "[MW/K]")
+    info["LTR_UA"] = C_des_od_label_unit_info("LTR_UA_assigned", "none", "LTR\nUA Assigned [MW/K]", "LTR Conductance Assigned [MW/K]", "[MW/K]")
     info["LTR_UA"].od_d_type = "nan"
+    info["LTR_UA_calculated"] = C_des_od_label_unit_info("LTR_UA_calculated", "none", "LTR\nUA Calculated [MW/K]", "LTR Conductance Calculated [MW/K]", "[MW/K]")
+    info["LTR_UA_calculated"].od_d_type = "nan"
     info["LTR_eff"] = C_des_od_label_unit_info("eff_LTR", "eff_LTR_od", "LTR\nEffectiveness [-]", "Low Temp Recuperator Effectiveness [-]", "[-]")
     info["LTR_q_dot"] = C_des_od_label_unit_info("q_dot_LTR", "q_dot_LTR_od", "LTR\nDuty [MWt]", "Low Temp Recuperator Duty [MWt]", "[MWt]")
     info["LTR_LP_deltaP"] = C_des_od_label_unit_info("LTR_LP_deltaP_des", "LTR_LP_deltaP_od", "LTR LP\nPres Drop [-]", "LTR LP Pressure Drop [-]", "[-]")
@@ -217,8 +219,10 @@ def get_des_od_label_unit_info__calc_metrics():
     
     info["HTR_LP_T_out"] = C_des_od_label_unit_info("HTR_LP_T_out_des", "HTR_LP_T_out_od", "HTR LP\nOutlet Temp [C]", "HTR LP Outlet Temperature [C]", "[C]")
     info["HTR_HP_T_in"] = C_des_od_label_unit_info("HTR_HP_T_in_des", "HTR_HP_T_in_od", "HTR HP\nInlet Temp [C]", "HTR HP Inlet Temperature [C]", "[C]")
-    info["HTR_UA"] = C_des_od_label_unit_info("UA_HTR", "none", "HTR\nUW [MW/K]", "High Temp Recuperator Conductance [MW/K]", "[MW/K]")
+    info["HTR_UA"] = C_des_od_label_unit_info("HTR_UA_assigned", "none", "HTR\nUA Assigned [MW/K]", "HTR Conductance Assigned [MW/K]", "[MW/K]")
     info["HTR_UA"].od_d_type = "nan"
+    info["HTR_UA_calculated"] = C_des_od_label_unit_info("HTR_UA_calculated", "none", "HTR\nUA Calculated [MW/K]", "HTR Conductance Calculated [MW/K]", "[MW/K]")
+    info["HTR_UA_calculated"].od_d_type = "nan"
     info["HTR_eff"] = C_des_od_label_unit_info("eff_HTR", "eff_HTR_od", "HTR\nEffectiveness [-]", "High Temp Recuperator Effectiveness [-]", "[-]")
     info["HTR_q_dot"] = C_des_od_label_unit_info("q_dot_HTR", "q_dot_HTR_od", "HTR\nDuty [MWt]", "High Temp Recuperator Duty [MWt]", "[MWt]")
     info["HTR_LP_deltaP"] = C_des_od_label_unit_info("HTR_LP_deltaP_des", "HTR_LP_deltaP_od", "HTR LP\nPres Drop [-]", "HTR LP Pressure Drop [-]", "[-]")
@@ -229,8 +233,10 @@ def get_des_od_label_unit_info__calc_metrics():
     
     info["recup_total_cost"] = C_des_od_label_unit_info("recup_total_cost", "none", "Total Recup\n Cost [M$]", "Total Recuperator Cost [M$]", "[M$]")
     info["recup_total_cost"].od_d_type = "nan"
-    info["recup_tot_UA"] = C_des_od_label_unit_info("UA_recup_total", "none", "Total Recup\nUA [MW/K]", "Total Recuperator Conductance [MW/K]", "[MW/K]")
+    info["recup_tot_UA"] = C_des_od_label_unit_info("recup_total_UA_assigned", "none", "Total Recup\nUA Assigned [MW/K]", "Total Recuperator Conductance Assigned [MW/K]", "[MW/K]")
     info["recup_tot_UA"].od_d_type = "nan"
+    info["recup_tot_UA_calculated"] = C_des_od_label_unit_info("recup_total_UA_calculated", "none", "Total Recup\nUA Calculated [MW/K]", "Total Recuperator Conductance Calculated [MW/K]", "[MW/K]")
+    info["recup_tot_UA_calculated"].od_d_type = "nan"
     info["recup_tot_UA"].l_label = "Total Recuperator\nConductance [MW/K]"
     info["recup_LTR_UA_frac"]  = C_des_od_label_unit_info("recup_LTR_UA_frac", "none", "Fraction of Total\nUA to LTR [-]", "Fraction of Total Conductance to LTR [-]", "[-]")
     info["recup_LTR_UA_frac"].od_d_type = "nan"
@@ -346,7 +352,7 @@ def get_default_sco2_dict():
     des_par["site_elevation"] = 300;       #[m] Used to size air cooler...
     des_par["W_dot_net_des"] = 115.0;      #[MWe] Design cycle power output (no cooling parasitics)
     
-    des_par["design_method"] = 2;          #[-] 1 = specify efficiency, 2 = specify total recup UA
+    des_par["design_method"] = 2;          #[-] 1 = specify efficiency, 2 = specify total recup UA, 3 = Specify each recup design (see inputs below)
     des_par["eta_thermal_des"] = 0.46;     #[-] Power cycle thermal efficiency
     des_par["UA_recup_tot_des"] = 30000/115.0*des_par["W_dot_net_des"]   #[kW/K] Total recuperator conductance
     
@@ -355,24 +361,56 @@ def get_default_sco2_dict():
     des_par["is_recomp_ok"] = 1;           #[-] 1 = Yes, 0 = simple cycle only
     des_par["is_P_high_fixed"] = 0;        #[-] 0 = No, optimize. 1 = Yes
     des_par["is_PR_fixed"] = 0;            #[-] 0 = No, >0 = Yes
+    des_par["is_IP_fixed"] = 0;
+	
     des_par["des_objective"] = 1;          #[-] 2 = hit min deltaT then max efficiency, != 2 = max efficiency
     des_par["min_phx_deltaT"] = 1000;      #[C] Min allowable deltaT across PHX
     des_par["rel_tol"] = 3;                #[-] Baseline solver and optimization relative tolerance exponent (10^-rel_tol)
            
-    des_par["eta_isen_mc"] = 0.89;         #[-] Main compressor isentropic efficiency
-    des_par["eta_isen_rc"] = 0.89;         #[-] Recompressor isentropic efficiency
-    des_par["eta_isen_pc"] = 0.89;         #[-] Precompressor isentropic efficiency
-    des_par["eta_isen_t"] = 0.90;          #[-] Turbine isentropic efficiency
-    eff_max = 1.0
-    des_par["LT_recup_eff_max"] = eff_max;    #[-] Maximum effectiveness low temperature recuperator
-    des_par["HT_recup_eff_max"] = eff_max;    #[-] Maximum effectiveness high temperature recuperator
-    des_par["deltaP_counterHX_frac"] = 0.005;#[-] Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop
-    des_par["P_high_limit"] = 25;          #[MPa] Cycle high pressure limit
+    # Weiland & Thimsen 2016
+    # In most studies, 85% is an accepted isentropic efficiency for either the main or recompression compressors, and is the recommended assumption.
+    des_par["eta_isen_mc"] = 0.85  # [-] Main compressor isentropic efficiency
+    des_par["eta_isen_rc"] = 0.85  # [-] Recompressor isentropic efficiency
+    des_par["eta_isen_pc"] = 0.85  # [-] Precompressor isentropic efficiency
+
+    # Weiland & Thimsen 2016
+    # Recommended turbine efficiencies are 90% for axial turbines above 30 MW, and 85% for radial turbines below 30 MW.
+    des_par["eta_isen_t"] = 0.90  # [-] Turbine isentropic efficiency
+
+    des_par["P_high_limit"] = 25  # [MPa] Cycle high pressure limit
     
-    des_par["dT_PHX_cold_approach"] = 20;  #[C/K] Temperature difference between cold HTF and cold CO2 PHX inlet
-    des_par["fan_power_frac"] = 0.01;      #[-] Fraction of net cycle power consumed by air cooler fan
-    des_par["deltaP_cooler_frac"] = 0.002; #[-] Fraction of CO2 inlet pressure that is design point cooler CO2 pressure drop
-    
+	# Weiland & Thimsen 2016
+    # Multiple literature sources suggest that recuperator cold side (high pressure) pressure drop of
+    # approximately 140 kPa (20 psid) and a hot side (low pressure) pressure drop of 280 kPa (40 psid) can be reasonably used.
+    # Note: Unclear what the low pressure assumption is in this study, could be significantly lower for direct combustion cycles
+    recup_eff_max = 1.0
+    deltaP_recup_HP = 0.0056  # [-] = 0.14[MPa]/25[MPa]
+    deltaP_recup_LP = 0.0311  # [-] = 0.28[MPa]/9[MPa]
+    # LTR
+    des_par["LTR_design_code"] = 3        # 1 = UA, 2 = min dT, 3 = effectiveness
+    des_par["LTR_UA_des_in"] = 2200.0     # [kW/K] (required if LTR_design_code == 1)
+    des_par["LTR_min_dT_des_in"] = 12.0   # [C] (required if LTR_design_code == 2)
+    des_par["LTR_eff_des_in"] = 0.895     # [-] (required if LTR_design_code == 3)
+    des_par["LT_recup_eff_max"] = recup_eff_max    # [-] Maximum effectiveness low temperature recuperator
+    des_par["LTR_LP_deltaP_des_in"] = deltaP_recup_LP  # [-]
+    des_par["LTR_HP_deltaP_des_in"] = deltaP_recup_HP  # [-]
+    # HTR
+    des_par["HTR_design_code"] = 3        # 1 = UA, 2 = min dT, 3 = effectiveness
+    des_par["HTR_UA_des_in"] = 2800.0     # [kW/K] (required if LTR_design_code == 1)
+    des_par["HTR_min_dT_des_in"] = 19.2   # [C] (required if LTR_design_code == 2)
+    des_par["HTR_eff_des_in"] = 0.935     # [-] (required if LTR_design_code == 3)
+    des_par["HT_recup_eff_max"] = recup_eff_max  # [-] Maximum effectiveness high temperature recuperator
+    des_par["HTR_LP_deltaP_des_in"] = deltaP_recup_LP  # [-]
+    des_par["HTR_HP_deltaP_des_in"] = deltaP_recup_HP  # [-]
+    # PHX
+    des_par["PHX_co2_deltaP_des_in"] = deltaP_recup_HP  # [-]
+    des_par["dT_PHX_cold_approach"] = 20  # [C/K] default 20. Temperature difference between cold HTF and cold CO2 PHX inlet
+    # Air Cooler
+    des_par["deltaP_cooler_frac"] = 0.005  # [-] Fraction of CO2 inlet pressure that is design point cooler CO2 pressure drop
+    des_par["fan_power_frac"] = 0.02  # [-] Fraction of net cycle power consumed by air cooler fan. 2% here per Turchi et al.
+    # Default
+    des_par["deltaP_counterHX_frac"] = 0.0054321  # [-] Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop
+	
     return des_par
  
 class C_sco2_sim:

@@ -54,21 +54,32 @@ def get_sco2_design_parameters():
     # Recommended turbine efficiencies are 90% for axial turbines above 30 MW, and 85% for radial turbines below 30 MW.
     des_par["eta_isen_t"] = 0.87;          #[-] Turbine isentropic efficiency
 
+    des_par["P_high_limit"] = 25;          #[MPa] Cycle high pressure limit
+
     # Weiland & Thimsen 2016
     # Multiple literature sources suggest that recuperator cold side (high pressure) pressure drop of
     # approximately 140 kPa (20 psid) and a hot side (low pressure) pressure drop of 280 kPa (40 psid) can be reasonably used.
     # Note: Unclear what the low pressure assumption is in this study, could be significantly lower for direct combustion cycles
     eff_max = 1.0
+    deltaP_recup_HP = 0.0056    #[-] = 0.14[MPa]/25[MPa]
+    deltaP_recup_LP = 0.0311	#[-] = 0.28[MPa]/9[MPa]
+        # LTR
+    des_par["LTR_LP_deltaP_des_in"] = deltaP_recup_LP 	#[-]
+    des_par["LTR_HP_deltaP_des_in"] = deltaP_recup_HP	#[-]
     des_par["LT_recup_eff_max"] = eff_max; #[-] Maximum effectiveness low temperature recuperator
+        # HTR
+    des_par["HTR_LP_deltaP_des_in"] = deltaP_recup_LP	#[-]
+    des_par["HTR_HP_deltaP_des_in"] = deltaP_recup_HP	#[-]
     des_par["HT_recup_eff_max"] = eff_max; #[-] Maximum effectiveness high temperature recuperator
-    des_par["deltaP_counterHX_frac"] = 0.005; #[-] Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop
-    
-    des_par["P_high_limit"] = 25;          #[MPa] Cycle high pressure limit
-    
+        # PHX
+    des_par["PHX_co2_deltaP_des_in"] = deltaP_recup_HP	#[-]
     des_par["dT_PHX_cold_approach"] = 20;  #[C/K] default 20. Temperature difference between cold HTF and cold CO2 PHX inlet
-    des_par["fan_power_frac"] = 0.02;      #[-] Fraction of net cycle power consumed by air cooler fan. 2% here per Turchi et al.
+        # Air Cooler
     des_par["deltaP_cooler_frac"] = 0.005; #[-] Fraction of CO2 inlet pressure that is design point cooler CO2 pressure drop
-    
+    des_par["fan_power_frac"] = 0.02;      #[-] Fraction of net cycle power consumed by air cooler fan. 2% here per Turchi et al.
+        # Default    
+    des_par["deltaP_counterHX_frac"] = 0.0054321; #[-] Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop
+
     return des_par
 
 def od_matrix_var_names():

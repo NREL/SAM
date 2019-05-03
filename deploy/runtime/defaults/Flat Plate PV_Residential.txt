@@ -1,9 +1,5 @@
 1
-<<<<<<< HEAD
 952
-=======
-948
->>>>>>> patch
 6par_aisc
 1
 1
@@ -932,9 +928,8 @@ batt_replacement_schedule
 1
 2
 1
-30
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-
+1
+0
 batt_resistance
 1
 1
@@ -1362,7 +1357,7 @@ cec_i_l_ref
 1
 1
 1
-6.2368
+6.23681
 cec_i_mp_ref
 1
 1
@@ -1871,8 +1866,8 @@ federal_tax_rate
 file_name
 1
 4
-128
-C:\Projects\GitHub\NREL\develop\SAM-private\build_vs2017\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 floor_area
 1
 1
@@ -3604,7 +3599,7 @@ om_replacement_cost1
 2
 1
 1
-300
+0
 om_replacement_cost_escal
 1
 1
@@ -4714,8 +4709,8 @@ snl_voco
 solar_data_file_name
 1
 4
-128
-C:\Projects\GitHub\NREL\develop\SAM-private\build_vs2017\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -4734,8 +4729,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-128
-C:\Projects\GitHub\NREL\develop\SAM-private\build_vs2017\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+107
+C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 spe_a
 1
 1
@@ -5762,14 +5757,6 @@ ui_annual_load
 1
 1
 1
-0
-ui_msg_arrdim
-1
-4
-0
-ui_msg_selfshad
-1
-4
 0
 ui_net_capital_cost
 1
