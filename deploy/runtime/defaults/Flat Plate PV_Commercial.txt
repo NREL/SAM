@@ -1,5 +1,9 @@
 1
+<<<<<<< HEAD
 922
+=======
+918
+>>>>>>> patch
 6par_aisc
 1
 1
@@ -5576,6 +5580,14 @@ ui_loan_amount
 1
 1
 235593
+ui_msg_arrdim
+1
+4
+0
+ui_msg_selfshad
+1
+4
+0
 ui_net_capital_cost
 1
 1
