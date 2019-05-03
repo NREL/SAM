@@ -87,7 +87,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
         tech_symbol += "Model";
 
     std::ofstream fx_file;
-    fx_file.open(file_dir + "/" + tech_symbol + ".c");
+    fx_file.open(file_dir + "/src/" + tech_symbol + ".c");
     assert(fx_file.is_open());
 
     fx_file << "#include <Python.h>\n"
@@ -757,7 +757,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     // export .rst documentation files for sphinx
 
-    fx_file.open(file_dir + "/PySAM-doc/" + tech_symbol + ".rst");
+    fx_file.open(file_dir + "/docs/modules/" + tech_symbol + ".rst");
     assert(fx_file.is_open());
 
     fx_file << ".. _" << tech_symbol << ":\n\n";
@@ -798,7 +798,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     // export .pyi stub files for static typing
 
-    fx_file.open(file_dir + "/PySAM-stubs/" + tech_symbol + ".pyi");
+    fx_file.open(file_dir + "/stubs/" + tech_symbol + ".pyi");
     assert(fx_file.is_open());
 
     for (size_t i = 0; i < root->vardefs_order.size(); i++) {
