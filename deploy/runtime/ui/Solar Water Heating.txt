@@ -3545,7 +3545,7 @@ user_test_flow
 3
 1
 Test flow
-kg/s
+kg/s-m2
 Solar Water Heating
 0
 2
