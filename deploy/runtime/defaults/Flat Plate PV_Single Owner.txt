@@ -2406,7 +2406,7 @@ grid_interconnection_limit_kwac
 1
 1
 1
-20000
+100000
 grid_per_watt
 1
 1
@@ -6648,9 +6648,3 @@ vdcmax_inverter
 1
 1
 820
-wf_nrecords
-1
-1
-1
-1
-8760

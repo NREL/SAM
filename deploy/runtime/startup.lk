@@ -118,12 +118,14 @@ function setup_pvwatts_battery_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	addpage( [[ 'PVWatts', "Battery Model Simple"]], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
+		addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
 //	addpage( [[ 'PVWatts']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 }
 function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	addpage( [[ 'PVWatts']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
+	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
 //	addpage( [[ 'PVWatts']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 }
 function setup_flat_plate_pv_pages()
@@ -605,6 +607,7 @@ function setup_geothermal_power_pages()
 	addpage( [[ 'Geothermal Resource' ]], { 'sidebar'='Geothermal Resource', 'help'='geo_geothermal_resource' } );
 	addpage( [[ 'Geothermal Plant and Equipment' ]], { 'sidebar'='Plant and Equipment', 'help'='geo_plant_equipment' } );
 	addpage( [[ 'Geothermal Power Block' ]], { 'sidebar'='Power Block', 'help'='geo_power_block' } );
+	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
 }
 
 
@@ -851,73 +854,73 @@ setup_single_owner_pages(LIFETIME_SYSTEM);
 
 // PVWatts /////////////////////////////////////////////////////////////////////
 setconfig( 'PVWatts', 'LCOE Calculator' );
-setmodules( ['pvwattsv5', 'lcoefcr']);
+setmodules( ['pvwattsv5', 'grid','lcoefcr']);
 setup_pvwatts_pages();
 setup_lcoefcr_pages();
 
 setconfig( 'PVWatts', 'None' );
-setmodules( ['pvwattsv5']);
+setmodules( ['pvwattsv5','grid']);
 setup_pvwatts_pages();
 
 setconfig( 'PVWatts', 'Residential' );	
-setmodules( ['pvwattsv5', 'belpe', 'battwatts', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv5', 'belpe', 'battwatts', 'grid','utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE, LIFETIME_SYSTEM ); //includes building load calculator
 
 setconfig( 'PVWatts', 'Commercial' );	
-setmodules( ['pvwattsv5', 'battwatts', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv5', 'battwatts','grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for commercial
 
 
 setconfig( 'PVWatts', 'Commercial PPA' );	
-setmodules( ['pvwattsv5', 'ippppa']);
+setmodules( ['pvwattsv5','grid', 'ippppa']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_ppa_pages(LIFETIME_SYSTEM);
 
 setconfig( 'PVWatts', 'Independent Power Producer' );	
-setmodules( ['pvwattsv5', 'ippppa']);
+setmodules( ['pvwattsv5', 'grid','ippppa']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_independent_power_producer_pages(LIFETIME_SYSTEM);
 
 setconfig( 'PVWatts', 'Leveraged Partnership Flip' );	
-setmodules( ['pvwattsv5', 'levpartflip']);
+setmodules( ['pvwattsv5', 'grid', 'levpartflip']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_leveraged_partnership_flip_pages(LIFETIME_SYSTEM);
 
 setconfig( 'PVWatts', 'All Equity Partnership Flip' );	
-setmodules( ['pvwattsv5', 'equpartflip']);
+setmodules( ['pvwattsv5', 'grid', 'equpartflip']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 
 setconfig( 'PVWatts', 'Sale Leaseback' );	
-setmodules( ['pvwattsv5', 'saleleaseback']);
+setmodules( ['pvwattsv5', 'grid','saleleaseback']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_sale_leaseback_pages(LIFETIME_SYSTEM);
 
 setconfig( 'PVWatts', 'Single Owner' );	
-setmodules( ['pvwattsv5', 'singleowner']);
+setmodules( ['pvwattsv5', 'grid','singleowner']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
 
 
 setconfig( 'PVWatts', 'Host Developer' );
-setmodules( ['pvwattsv5', 'utilityrate5', 'host_developer']);
+setmodules( ['pvwattsv5', 'grid', 'utilityrate5', 'host_developer']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_host_developer_pages( LOAD_SIMPLE, LIFETIME_SYSTEM ); //includes building load calculator by default in this function
 
 
 setconfig( 'PVWatts', 'Third Party' );	
-setmodules( ['pvwattsv5', 'belpe', 'battwatts', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['pvwattsv5', 'belpe', 'battwatts', 'grid','utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_battery_pages();
 setup_thirdparty_pages( LOAD_BELPE , LIFETIME_SYSTEM); //includes building load calculator by default in this function
 
@@ -1017,7 +1020,7 @@ setup_lcoefcr_pages();
            { 'sidebar'='Incentives','help'='Incentives' } );*/
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'None' );
-setmodules( ['windpower']);
+setmodules( ['windpower','grid']);
 setup_windpower_pages();
 
 
@@ -1068,48 +1071,48 @@ addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_ra
 
 // Geothermal Power ////////////////////////////////////////////////////////////
 setconfig( 'Geothermal Power', 'Independent Power Producer' );
-setmodules( ['geothermal',  'ippppa']);
+setmodules( ['geothermal', 'grid', 'ippppa']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
 setup_independent_power_producer_pages(LIFETIME_NONE);
 
 //-----------------------------------------------------
 setconfig( 'Geothermal Power', 'Leveraged Partnership Flip' );
-setmodules( ['geothermal', 'levpartflip']);
+setmodules( ['geothermal', 'grid', 'levpartflip']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
 setup_leveraged_partnership_flip_pages(LIFETIME_NONE);
 
 //-----------------------------------------------------
 setconfig( 'Geothermal Power', 'All Equity Partnership Flip' );
-setmodules( ['geothermal', 'equpartflip']);
+setmodules( ['geothermal', 'grid','equpartflip']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
 setup_all_equity_partnership_flip_pages(LIFETIME_NONE);
 
 //-----------------------------------------------------
 setconfig( 'Geothermal Power', 'Sale Leaseback' );
-setmodules( ['geothermal', 'saleleaseback']);
+setmodules( ['geothermal', 'grid','saleleaseback']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
 setup_sale_leaseback_pages(LIFETIME_NONE);
 
 //-----------------------------------------------------
 setconfig( 'Geothermal Power', 'Single Owner' );
-setmodules( ['geothermal', 'singleowner']);
+setmodules( ['geothermal', 'grid','singleowner']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
 setup_single_owner_pages(LIFETIME_NONE);
 
 //-----------------------------------------------------
 setconfig( 'Geothermal Power', 'LCOE Calculator' );
-setmodules( ['geothermal',  'lcoefcr']);
+setmodules( ['geothermal',  'grid','lcoefcr']);
 setup_geothermal_power_pages();
 setup_lcoefcr_pages();	
 
 //-----------------------------------------------------
 setconfig( 'Geothermal Power', 'None' );
-setmodules( ['geothermal']);
+setmodules( ['geothermal', 'grid',]);
 setup_geothermal_power_pages();
 
 // Generic System //////////////////////////////////////////////////////////////
@@ -1205,13 +1208,13 @@ setup_host_developer_pages( LOAD_SIMPLE, LIFETIME_PV ); //includes building load
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'LCOE Calculator' );
-setmodules( ['generic_system',  'lcoefcr']);
+setmodules( ['generic_system', 'grid', 'lcoefcr']);
 setup_generic_system_pages();
 setup_lcoefcr_pages();	
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'None' );
-setmodules( ['generic_system']);
+setmodules( ['generic_system', 'grid']);
 addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
 
 

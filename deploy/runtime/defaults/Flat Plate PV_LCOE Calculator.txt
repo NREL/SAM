@@ -1,5 +1,5 @@
 1
-515
+516
 6par_aisc
 1
 1
@@ -657,6 +657,12 @@ gamma_r_calc
 1
 1
 -1.19718
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 iec61853_test_data
 1
 3

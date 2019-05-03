@@ -1,5 +1,5 @@
 1
-181
+182
 Monthly_util
 1
 2
@@ -414,6 +414,12 @@ gcr
 1
 1
 0.4
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 in_location
 1
 4

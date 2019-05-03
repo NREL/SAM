@@ -1,5 +1,5 @@
 1
-139
+140
 CT
 1
 1
@@ -421,6 +421,12 @@ geothermal_analysis_period
 1
 1
 30
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 gross_output
 1
 1

@@ -1,5 +1,5 @@
 1
-505
+506
 a_error_test_number
 1
 1
@@ -2299,6 +2299,12 @@ foundation_cost
 1
 1
 3.48031e+06
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 hub_height
 1
 1

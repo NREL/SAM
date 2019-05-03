@@ -1306,7 +1306,7 @@ grid_interconnection_limit_kwac
 1
 1
 1
-20000
+100000
 heat_rate
 1
 1

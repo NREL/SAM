@@ -1,5 +1,5 @@
 1
-44
+45
 adjust
 1
 5
@@ -164,6 +164,12 @@ generic_degradation
 1
 1
 0
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 heat_rate
 1
 1

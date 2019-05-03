@@ -1,5 +1,5 @@
 1
-1063
+1064
 6par_aisc
 1
 1
@@ -2453,6 +2453,12 @@ grid_fixed
 1
 1
 0
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 grid_per_watt
 1
 1
