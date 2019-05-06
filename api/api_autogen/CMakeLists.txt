@@ -48,6 +48,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(MSVC)
+    add_compile_options(/MP /W3)
     if (CMAKE_BUILD_TYPE STREQUAL Debug)
         add_compile_options(/MDd)
         add_compile_definitions(_DEBUG)

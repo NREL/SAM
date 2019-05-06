@@ -2,7 +2,7 @@
   "configurations": [
     {
       "name": "x64-Debug",
-      "generator": "Ninja",
+      "generator": "Visual Studio 15 2017 Win64",
       "configurationType": "Debug",
       "inheritEnvironments": [
         "msvc_x64_x64"
@@ -10,12 +10,12 @@
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
       "cmakeCommandArgs": "-Dsystem_advisor_model_EXPORT=0 -DCMAKE_BUILD_TYPE=Debug",
-      "buildCommandArgs": "-m:4 -v:normal",
+      "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
     {
       "name": "x64-Export",
-      "generator": "Ninja",
+      "generator": "Visual Studio 15 2017 Win64",
       "configurationType": "Release",
       "inheritEnvironments": [
         "msvc_x64_x64"
@@ -23,12 +23,12 @@
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
       "cmakeCommandArgs": "-Dsystem_advisor_model_EXPORT=1 -DCMAKE_BUILD_TYPE=Release",
-      "buildCommandArgs": "-m:4 -v:normal",
+      "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
     {
       "name": "x64-Release",
-      "generator": "Ninja",
+      "generator": "Visual Studio 15 2017 Win64",
       "configurationType": "Release",
       "inheritEnvironments": [
         "msvc_x64_x64"
@@ -36,7 +36,7 @@
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
       "cmakeCommandArgs": "-Dsystem_advisor_model_EXPORT=0 -DCMAKE_BUILD_TYPE=Release",
-      "buildCommandArgs": "-m:4 -v:normal=",
+      "buildCommandArgs": "",
       "ctestCommandArgs": ""
     }
 

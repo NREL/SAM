@@ -90,7 +90,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(MSVC)
-	add_compile_options(/W4)
+	add_compile_options(/W4 /MP)
 	add_compile_definitions( _CRT_SECURE_NO_WARNINGS _MBCS __WXMSW__ __64BIT__)
 else(MSVC)
 	if (APPLE)
