@@ -1021,7 +1021,7 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 
 	if (vv->Type() != VV_ARRAY) return;
 	
-	std::vector<float> vec = vv->Array();
+	std::vector<double> vec = vv->Array();
 
 	int rows = vec.size();
 	int cols = 2;
@@ -1103,7 +1103,7 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 
 
 
-ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels, std::vector<std::vector<float> > &values_vec) 
+ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels, std::vector<std::vector<double> > &values_vec)
 : wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(600, 500), wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE)
 {
 #ifdef __WXMSW__

@@ -480,7 +480,7 @@ VarValue::VarValue( int i )
 	m_val = (float)i;
 }
 
-VarValue::VarValue( float f )
+VarValue::VarValue( double f )
 {
 	m_type = VV_NUMBER;
 	m_val = f;
@@ -492,25 +492,25 @@ VarValue::VarValue( bool b )
 	m_val = b ? 1 : 0;
 }
 
-VarValue::VarValue( const std::vector<float> &f )
+VarValue::VarValue( const std::vector<double> &f )
 {
 	m_type = VV_ARRAY;
 	if ( f.size() > 0 ) m_val.assign( &f[0], f.size() );
 }
 
-VarValue::VarValue( float *arr, size_t n )
+VarValue::VarValue( double *arr, size_t n )
 {
 	m_type = VV_ARRAY;
 	m_val.assign( arr, n );
 }
 
-VarValue::VarValue( float *mat, size_t r, size_t c )
+VarValue::VarValue( double *mat, size_t r, size_t c )
 {
 	m_type = VV_MATRIX;
 	m_val.assign( mat, r, c );
 }
 
-VarValue::VarValue( const ::matrix_t<float> &m )
+VarValue::VarValue( const ::matrix_t<double> &m )
 {
 	m_type = VV_MATRIX;
 	m_val = m;
@@ -635,7 +635,8 @@ void VarValue::Write( wxOutputStream &_O )
 	wxDataOutputStream out(_O);
 
 	out.Write8( 0xf2 );
-	out.Write8( 1 );
+//	out.Write8(1);
+	out.Write8(2); // float to double
 
 	out.Write8( m_type );
 	
@@ -650,7 +651,8 @@ void VarValue::Write( wxOutputStream &_O )
 		out.Write32( m_val.ncols() );
 		for ( size_t r=0;r<m_val.nrows();r++ )
 			for( size_t c=0;c<m_val.ncols();c++ )
-				out.WriteFloat(m_val(r, c));
+				out.WriteDouble(m_val(r, c));
+//		out.WriteFloat(m_val(r, c));
 		break;
 	case VV_TABLE:
 		m_tab.Write( _O );
@@ -672,7 +674,7 @@ bool VarValue::Read(wxInputStream &_I)
 	wxDataInputStream in(_I);
 
 	wxUint8 code = in.Read8();
-	in.Read8(); // ver
+	wxUint8 ver = in.Read8(); // ver
 
 	m_type = in.Read8();
 
@@ -689,8 +691,13 @@ bool VarValue::Read(wxInputStream &_I)
 		if (nr*nc < 1) return false; // big error
 		m_val.resize_fill(nr, nc, 0.0f);
 		for (size_t r = 0; r<nr; r++)
-			for (size_t c = 0; c<nc; c++)
-				m_val(r, c) = in.ReadFloat();
+			for (size_t c = 0; c < nc; c++)
+			{
+				if (ver == 1)
+					m_val(r, c) = in.ReadFloat();
+				else
+					m_val(r, c) = in.ReadDouble();
+			}
 		break;
 	case VV_TABLE:
 		m_tab.Read(_I);
@@ -808,7 +815,7 @@ bool VarValue::Read_text(wxInputStream &_I)
 		nr = in.Read32();
 		nc = in.Read32();
 		if (nr*nc < 1) return false; // big error
-		m_val.resize_fill(nr, nc, 0.0f);
+		m_val.resize_fill(nr, nc, 0.0);
 		if (nc*nr > 1)
 		{
 			for (size_t r = 0; r < nr; r++)
@@ -892,22 +899,22 @@ void VarValue::Set( const std::vector<int> &ivec )
 	{
 		m_val.resize_fill( ivec.size(), 0 );
 		for( size_t i=0;i<ivec.size();i++ )
-			m_val.at(i) = (float)ivec[i];
+			m_val.at(i) = (double)ivec[i];
 	}
 	else
 		m_val.clear();
 }
 
-void VarValue::Set( const std::vector<float> &fvec )
+void VarValue::Set( const std::vector<double> &fvec )
 {
 	m_type = VV_ARRAY;
 	if( fvec.size() > 0 ) m_val.assign( &fvec[0], fvec.size() );
 	else m_val.clear();
 }
 
-void VarValue::Set( float *val, size_t n ) { m_type = VV_ARRAY; m_val.assign( val, n ); }
-void VarValue::Set( float *mat, size_t r, size_t c ) { m_type = VV_MATRIX; m_val.assign( mat, r, c ); }
-void VarValue::Set( const ::matrix_t<float> &mat ) { m_type = VV_MATRIX; m_val = mat; }
+void VarValue::Set( double *val, size_t n ) { m_type = VV_ARRAY; m_val.assign( val, n ); }
+void VarValue::Set(double *mat, size_t r, size_t c ) { m_type = VV_MATRIX; m_val.assign( mat, r, c ); }
+void VarValue::Set( const ::matrix_t<double> &mat ) { m_type = VV_MATRIX; m_val = mat; }
 void VarValue::Set( const wxString &str ) { m_type = VV_STRING; m_str = str; }
 void VarValue::Set( const VarTable &tab ) { m_type = VV_TABLE; m_tab.Copy( tab ); }
 void VarValue::Set( const wxMemoryBuffer &mb ) { m_type = VV_BINARY; m_bin = mb; }
@@ -924,10 +931,10 @@ bool VarValue::Boolean()
 	else return 0;
 }
 
-float VarValue::Value()
+double VarValue::Value()
 {
-	if ( m_type == VV_NUMBER || Length() == 1) return (float)m_val;
-	else return std::numeric_limits<float>::quiet_NaN();
+	if ( m_type == VV_NUMBER || Length() == 1) return (double)m_val;
+	else return std::numeric_limits<double>::quiet_NaN();
 }
 
 size_t VarValue::Length()
@@ -947,7 +954,7 @@ size_t VarValue::Columns()
 	else if (m_type == VV_NUMBER) return 1;
 	else return 0;
 }
-float *VarValue::Array( size_t *n )
+double *VarValue::Array( size_t *n )
 {
 	if ( m_type == VV_ARRAY )
 	{
@@ -961,17 +968,17 @@ float *VarValue::Array( size_t *n )
 	}
 }
 
-std::vector<float> VarValue::Array()
+std::vector<double> VarValue::Array()
 {
 	if ( m_type == VV_ARRAY )
 	{
-		std::vector<float> vec( m_val.length(), 0.0f );
+		std::vector<double> vec( m_val.length(), 0.0 );
 		for( size_t i=0;i<m_val.length();i++)
 			vec[i] = m_val[i];
 		return vec;
 	}
 	else
-		return std::vector<float>();
+		return std::vector<double>();
 }
 
 std::vector<int> VarValue::IntegerArray()
@@ -986,13 +993,13 @@ std::vector<int> VarValue::IntegerArray()
 	else
 		return std::vector<int>();
 }
-
-matrix_t<float> &VarValue::Matrix()
+ 
+matrix_t<double> &VarValue::Matrix()
 {
 	return m_val;
 }
 
-float *VarValue::Matrix( size_t *nr, size_t *nc )
+double *VarValue::Matrix( size_t *nr, size_t *nc )
 {
 	*nr = m_val.nrows();
 	*nc = m_val.ncols();
@@ -1046,9 +1053,9 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 
 			if (dim2 == 0 && dim1 > 0)
 			{
-				float *vec = new float[dim1];
+				double *vec = new double[dim1];
 				for( size_t i=0;i<dim1;i++)
-					vec[i] = (float)val.index(i)->as_number();
+					vec[i] = (double)val.index(i)->as_number();
 
 
 				if ( Type() == VV_ARRAY || change_type )
@@ -1069,7 +1076,7 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 				if ( Type() == VV_MATRIX || change_type )
 				{
 					m_type = VV_MATRIX;
-					m_val.resize_fill( dim1, dim2, 0.0f );
+					m_val.resize_fill( dim1, dim2, 0.0 );
 
 					for ( size_t i=0;i<dim1;i++)
 					{
@@ -1078,7 +1085,7 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 							double x = 0;
 							if ( val.index(i)->type() == lk::vardata_t::VECTOR
 								&& j < val.index(i)->length() )
-								x = (float)val.index(i)->index(j)->as_number();
+								x = (double)val.index(i)->index(j)->as_number();
 
 							m_val.at(i,j) = x;
 						}
@@ -1126,7 +1133,7 @@ bool VarValue::Write( lk::vardata_t &val )
 	case VV_ARRAY:
 		{
 			size_t n = 0;
-			float *p = Array( &n );
+			double *p = Array( &n );
 			val.empty_vector();
 			if ( n > 0 )
 			{
@@ -1138,7 +1145,7 @@ bool VarValue::Write( lk::vardata_t &val )
 		break;
 	case VV_MATRIX:
 		{
-			::matrix_t<float> &mat = Matrix();
+			::matrix_t<double> &mat = Matrix();
 			val.empty_vector();
 			val.vec()->reserve( mat.nrows() );
 			for (size_t i=0;i<mat.nrows();i++)
