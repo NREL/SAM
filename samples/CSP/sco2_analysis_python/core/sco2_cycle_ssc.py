@@ -1296,8 +1296,6 @@ def compare_two_dict_by_keys(dict_1, desc_1, dict_2, desc_2):
         c1_data = C_data_properties(i_data1_key, desc_1)
         c2_data = C_data_properties(i_data2_key, desc_2)
 
-        print("compare key: ", i_key)
-
         mismatch_str_local, match_str_local = compare_data_properties(c1_data, c2_data)
 
         key_str = "For key " + str(i_key)
