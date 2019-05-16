@@ -1,5 +1,5 @@
 1
-749
+751
 6par_aisc
 1
 1
@@ -1506,6 +1506,12 @@ enable_auto_size
 1
 1
 0
+enable_interconnection_limit
+1
+1
+1
+1
+0
 enable_mismatch_vmax_calc
 1
 1
@@ -1625,6 +1631,12 @@ gamma_r_calc
 1
 1
 -1.03914
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 iec61853_test_data
 1
 3

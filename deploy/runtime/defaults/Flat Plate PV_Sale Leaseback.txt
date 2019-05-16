@@ -1,5 +1,5 @@
 1
-988
+990
 6par_aisc
 1
 1
@@ -2272,6 +2272,12 @@ enable_auto_size
 1
 1
 0
+enable_interconnection_limit
+1
+1
+1
+1
+0
 enable_mismatch_vmax_calc
 1
 1
@@ -2385,6 +2391,12 @@ grid_fixed
 1
 1
 0
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 grid_per_watt
 1
 1
