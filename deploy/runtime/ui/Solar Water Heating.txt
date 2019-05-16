@@ -1,7 +1,7 @@
 Solar Water Heating
-889
-1187
-57
+920
+1270
+61
 Numeric
 
 1
@@ -136,7 +136,7 @@ Y
 108
 Width
 3
-866
+892
 Height
 3
 251
@@ -274,12 +274,38 @@ Width
 866
 Height
 3
-88
+176
 Caption
 5
 8
 Advanced
 Bold
+2
+1
+Image
+
+1
+7
+Name
+5
+8
+Picture1
+X
+3
+354
+Y
+3
+135
+Width
+3
+190
+Height
+3
+102
+Image
+7
+Solar Water Heating_Picture1.png
+Centered
 2
 1
 Numeric
@@ -610,7 +636,7 @@ Name
 albedo
 X
 3
-591
+681
 Y
 3
 177
@@ -787,10 +813,10 @@ Name
 azimuth
 X
 3
-258
+192
 Y
 3
-153
+150
 Width
 3
 100
@@ -879,14 +905,14 @@ DataArray
 9
 Name
 5
-12
-custom_mains
+18
+custom_mains_input
 X
 3
 291
 Y
 3
-1137
+1191
 Width
 3
 110
@@ -1065,10 +1091,10 @@ Name
 fluid
 X
 3
-258
+192
 Y
 3
-201
+198
 Width
 3
 100
@@ -1212,7 +1238,7 @@ Name
 irrad_mode
 X
 3
-591
+681
 Y
 3
 153
@@ -1243,10 +1269,10 @@ Name
 mdot
 X
 3
-258
+192
 Y
 3
-177
+174
 Width
 3
 100
@@ -1302,10 +1328,10 @@ Name
 ncoll
 X
 3
-258
+192
 Y
 3
-225
+222
 Width
 3
 100
@@ -1745,6 +1771,51 @@ BackColour
 TabOrder
 3
 37
+Label
+
+1
+12
+Name
+5
+10
+pump_label
+X
+3
+462
+Y
+3
+1023
+Width
+3
+396
+Height
+3
+50
+Caption
+5
+161
+The pump power is only used for parasitic calculations.  Include all pumps in the system.  The input pump size is assumed to be large enough to drive every loop.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -1843,7 +1914,7 @@ Name
 sky_model
 X
 3
-591
+681
 Y
 3
 129
@@ -1893,6 +1964,64 @@ Fields
 5
 66
 Name,SRCC Number,Type,Area,IAM,FRta,FRUL,Test Fluid,Test flow Rate
+MonthlyFactor
+
+1
+7
+Name
+5
+24
+swh_single_monthly_mains
+X
+3
+312
+Y
+3
+1161
+Width
+3
+90
+Height
+3
+24
+Description
+5
+25
+Annual or monthly profile
+TabOrder
+3
+4294967295
+Choice
+
+1
+8
+Name
+5
+22
+swh_single_or_ts_mains
+X
+3
+168
+Y
+3
+1128
+Width
+3
+233
+Height
+3
+24
+Items
+6
+2
+Input annual or monthly values
+Input hourly mains profile
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1903,7 +2032,7 @@ Name
 system_capacity
 X
 3
-591
+729
 Y
 3
 225
@@ -2139,10 +2268,10 @@ Name
 tilt
 X
 3
-258
+192
 Y
 3
-129
+126
 Width
 3
 100
@@ -2198,7 +2327,7 @@ Name
 total_area
 X
 3
-591
+732
 Y
 3
 201
@@ -2257,10 +2386,10 @@ Name
 use_custom_mains
 X
 3
-291
+294
 Y
 3
-1113
+1104
 Width
 3
 110
@@ -2659,7 +2788,7 @@ TabOrder
 3
 23
 
-58
+61
 FRUL
 3
 1
@@ -2842,6 +2971,20 @@ Solar Water Heating
 0
 RadioChoice
 custom_mains
+3
+2
+Hourly custom mains profile
+C
+Solar Water Heating
+0
+0
+1
+2
+1
+1
+0
+DataArray
+custom_mains_input
 3
 2
 Hourly custom mains profile
@@ -3258,6 +3401,34 @@ Solar Water Heating
 9
 <invalid>
 TextEntry
+swh_single_monthly_mains
+3
+2
+Annual or monthly mains profile
+ 
+ Solar Water Heating
+0
+0
+1
+2
+1
+1
+0
+MonthlyFactor
+swh_single_or_ts_mains
+3
+1
+ 
+ 
+Solar Water Heating
+0
+1
+1
+1
+1
+1
+0
+Choice
 system_capacity
 3
 1
@@ -3445,7 +3616,7 @@ user_test_flow
 3
 1
 Test flow
-kg/s
+kg/s-m2
 Solar Water Heating
 0
 2
@@ -3471,7 +3642,7 @@ Water|Glycol
 0
 Choice
 
-1188
+1883
 equations{ 'total_area' } = define() {
 	return ${area_coll}*${ncoll}; };
 	
@@ -3521,8 +3692,46 @@ equations{ '$MIMO$ total_annual_draw' } = define() {
 	${annual_draw} = ann_draw;	};
 
 
+equations{'custom_mains'} = define(){
+	
+	draw = alloc(12);
+	custom_mains = alloc(8760);
+	days_in_month = [31, 28, 31, 30, 30, 31, 31, 31, 30, 31, 30, 31];
+	
+	if (${use_custom_mains})
+	{
+		// single or monthly
+		if (${swh_single_or_ts_mains} == 0)
+		{
+			draw = ${swh_single_monthly_mains};
+			n_draw = #draw;
+			if (n_draw == 1)
+			{
+				d0 = draw[0];
+				draw = [];
+				for (m = 0; m < 12; m++)
+				{
+					draw[m] = d0;
+				}
+			}
+			i = 0;
+			for (m = 0; m < 12; m++){
+				for (d = 0; d < days_in_month[m]; d++){
+					for (h = 0; h < 24; h++){
+						custom_mains[i] = draw[m];
+						i++;
+					}
+				}
+			}
+		}
+		else {	
+			custom_mains = ${custom_mains_input};
+		}
+	}
+	return custom_mains;
+};
 
-1886
+2252
 
 on_load{"Solar Water Heating"} = define()
 {
@@ -3530,6 +3739,7 @@ on_load{"Solar Water Heating"} = define()
 	on_change{"coll_mode"}();	
 	on_change{"use_custom_set"}();
 	on_change{"use_custom_mains"}();
+	on_change{"swh_single_or_ts_mains"}();
 	
 //	on_change{"srcc_item"}();
 };
@@ -3578,9 +3788,21 @@ on_change{'use_custom_set'} = define()
 
 on_change{'use_custom_mains'} = define() {
 	state = value('use_custom_mains');
-	enable( 'custom_mains', state );
+	enable('swh_single_or_ts_mains', state);
+	check_mains_input();
 };
 
+on_change{'swh_single_or_ts_mains'} = define() {
+	check_mains_input();
+};
+
+function check_mains_input()
+{
+	custom = value('use_custom_mains');
+	state = value('swh_single_or_ts_mains');
+	enable('swh_single_monthly_mains', state==0 && custom);
+	enable( 'custom_mains_input', state==1 && custom);
+}
 
 
 on_change{'edit_3d_scene'} = define() {
