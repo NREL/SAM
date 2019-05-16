@@ -1,5 +1,5 @@
 1
-1006
+1007
 6par_aisc
 1
 1
@@ -2331,6 +2331,12 @@ en_snow_model
 1
 0
 enable_auto_size
+1
+1
+1
+1
+0
+enable_interconnection_limit
 1
 1
 1

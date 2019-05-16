@@ -1,7 +1,37 @@
 Grid Interconnection
-855
-141
+857
+225
+4
+CheckBox
+
+1
+8
+Name
+5
+28
+enable_interconnection_limit
+X
 3
+54
+Y
+3
+51
+Width
+3
+393
+Height
+3
+24
+Caption
+5
+28
+Enable interconnection limit
+State
+2
+0
+TabOrder
+3
+4294967295
 GroupBox
 
 1
@@ -21,7 +51,7 @@ Width
 842
 Height
 3
-124
+208
 Caption
 5
 20
@@ -39,10 +69,10 @@ Name
 grid_interconnection_label
 X
 3
-363
+408
 Y
 3
-27
+93
 Width
 3
 354
@@ -84,10 +114,10 @@ Name
 grid_interconnection_limit_kwac
 X
 3
-198
+234
 Y
 3
-39
+105
 Width
 3
 90
@@ -134,7 +164,21 @@ TabOrder
 3
 4294967295
 
+2
+enable_interconnection_limit
+3
 1
+Enable interconnection limit
+ 
+Grid
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 grid_interconnection_limit_kwac
 3
 1
@@ -151,4 +195,19 @@ Grid
 Numeric
 
 0
-0
+329
+on_load{'Grid Interconnection'} = define() {
+	on_change{'enable_interconnection_limit'};
+	enable_interconnection();
+};
+
+
+on_change{'enable_interconnection_limit'} = define() {
+	enable_interconnection();
+};
+
+function enable_interconnection()
+{
+	enable('grid_interconnection_limit_kwac', value('enable_interconnection_limit'));
+}
+

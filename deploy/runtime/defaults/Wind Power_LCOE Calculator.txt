@@ -1,5 +1,5 @@
 1
-116
+117
 a_error_test_number
 1
 1
@@ -127,6 +127,12 @@ desired_farm_size
 1
 1
 15000
+enable_interconnection_limit
+1
+1
+1
+1
+0
 fixed_charge_rate
 1
 1

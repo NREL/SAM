@@ -1,5 +1,5 @@
 1
-550
+551
 LeadAcid_q10
 1
 1
@@ -1673,6 +1673,12 @@ dscr_reserve_months
 1
 0
 en_batt
+1
+1
+1
+1
+0
+enable_interconnection_limit
 1
 1
 1

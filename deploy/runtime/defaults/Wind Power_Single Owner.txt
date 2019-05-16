@@ -1,5 +1,5 @@
 1
-505
+506
 a_error_test_number
 1
 1
@@ -2180,6 +2180,12 @@ electrical_materials_cost
 1
 1
 3.91765e+06
+enable_interconnection_limit
+1
+1
+1
+1
+0
 engineering_cost
 1
 1
