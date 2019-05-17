@@ -805,7 +805,12 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
         auto mm = root->m_vardefs.find(root->vardefs_order[i]);
         std::map<std::string, var_def> vardefs = mm->second;
 
-        fx_file << "class " << mm->first << "(object):\n";
+        std::string module_symbol = format_as_symbol(mm->first);
+
+        if (module_symbol == "AdjustmentFactors")
+            continue;
+
+        fx_file << "class " << module_symbol << "(object):\n";
         fx_file << "\tdef assign(self): \n"
                    "\t\tpass\n"
                    "\n"
@@ -844,7 +849,12 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
         auto mm = root->m_vardefs.find(root->vardefs_order[i]);
         std::map<std::string, var_def> vardefs = mm->second;
 
-        fx_file << "\t" << mm->first << " = " << mm->first << "\n";
+        std::string module_symbol = format_as_symbol(mm->first);
+
+        if (module_symbol == "AdjustmentFactors")
+            continue;
+
+        fx_file << "\t" << module_symbol << " = " << module_symbol << "\n";
     }
     fx_file << "\n\n";
 
