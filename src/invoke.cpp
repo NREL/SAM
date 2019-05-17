@@ -2016,7 +2016,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	LK_DOC("windtoolkit", "Creates the wind data download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
 
 	//Create the wind data object
-	WindToolkitDialog spd(SamApp::Window(), "Download Wind Resource File");
+	WindToolkitDialog spd(SamApp::Window(), "WIND Toolkit Download");
 	spd.CenterOnParent();
 	int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
