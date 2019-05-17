@@ -2392,7 +2392,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-29048
+29265
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2436,8 +2436,9 @@ on_change{ 'btn_file_add' } = define () {
 // show/hide location input or edit button depending
 // on one or multiple locations
 on_change{ 'in_location_options' } = define() {
-	show('in_location_list',  value('in_location_options') == 1 && !value('is_advanced') );
-	show('in_location',       value('in_location_options') == 0 && !value('is_advanced') );
+	show('in_location_list', value('in_location_options') == 1 && !value('is_advanced') );
+	show('in_location',  value('in_location_options') == 0 && !value('is_advanced') );
+	show('is_advanced', value('in_location_options') == 0);
 	refresh('');
 };
 
@@ -2854,7 +2855,6 @@ function nsrdb( location )
 	{
 		g = geocode( location );
 	}
-	msgbox(g.ok);
 	if ( g.ok )
 	{
 		geocode_ok = true;
@@ -2999,14 +2999,19 @@ function nsrdb_get()
 		{	type = 'tmy'; }
 		elseif ( x == SINGLE_YEAR ) // type is a number
 		{
-			y = choose_from_list( dataset[n].years, 'Choose a year', 'Available Years for \"' + location[n] +'\"', 0 ); 
+			// remove tmy from list of years to avoid
+			// trying to download tmy file for 30-minute data
+			year_list = dataset[n].years;
+			pos_tmy = year_list ?@ 'tmy';
+			year_list -@ pos_tmy;
+			y = choose_from_list( year_list, 'Choose a year', 'Available Years for \"' + location[n] +'\"', 0 ); 
 			if (y == '')
 			{
 				download_ok = false;
 				write_line( flog, 'Year not valid: Selection cancelled by user.\n' );
 				continue;
 			}
-			else	
+			else
 			{	type = to_int( y ); }
 		}
 		else // x == ALL_YEARS, type is an array of numbers
