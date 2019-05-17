@@ -1986,7 +1986,6 @@ void fcall_nsrdbquery(lk::invoke_t &cxt)
 {
 	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all available resource files, downloads multiple solar resource files, and returns local file name for weather file", "(string:user_location) : string");
 	wxString user_location = cxt.arg(0).as_string();
-		//Create the wind data object
 	NSRDBDialog dlgNSRDB(SamApp::Window(), "Advanced NSRDB Download", user_location);
 	dlgNSRDB.CenterOnParent();
 	int code = dlgNSRDB.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
@@ -2203,7 +2202,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 			if (!csv.ReadString(srw_api_data))
 			{
 				//			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
-				ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
+				ecd.Log(wxString::Format("Failed to read downloaded weather file %s. Try the download again in case there was a problem connecting to the database.", filename));
 				success=false;
 			}
 			if (i == 0)

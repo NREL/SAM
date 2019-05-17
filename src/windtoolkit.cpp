@@ -60,7 +60,7 @@
 #include "windtoolkit.h"
 #include "main.h"
 
-static const char *help_text = "Notes:\n1. Use Ctrl-click or Shift-click to choose more than one measurement height.\n2. Each weather file contains wind resource data for a single year.\n3. NREL WIND Toolkit data is only available for locations in the continental United States.\n\nSee Help for details.";
+static const char *help_text = "Notes:\n1. Use your mouse to choose one or more measurement heights.\n2. Each weather file contains wind resource data for a single year.\n3. NREL WIND Toolkit data is only available for locations in the continental United States.\n\nSee Help for details.";
 
 enum {
 	ID_radAddress, ID_radLatLon, ID_cboYears,
