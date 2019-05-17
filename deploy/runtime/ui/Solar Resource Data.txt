@@ -1272,8 +1272,8 @@ Colour
 255
 Caption
 5
-50
-Annual Averages Calculated from Weather File  Data
+48
+Annual Values Calculated from Weather File  Data
 Bold
 2
 1
@@ -2392,7 +2392,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-27956
+29048
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2433,9 +2433,11 @@ on_change{ 'btn_file_add' } = define () {
 	//update_info('on_change btn_file_add');
 };
 
+// show/hide location input or edit button depending
+// on one or multiple locations
 on_change{ 'in_location_options' } = define() {
 	show('in_location_list',  value('in_location_options') == 1 && !value('is_advanced') );
-	//show('in_location',       value('in_location_options') == 0 && !value('is_advanced') );
+	show('in_location',       value('in_location_options') == 0 && !value('is_advanced') );
 	refresh('');
 };
 
@@ -2686,7 +2688,36 @@ function update_info( ctxt )
 		}
 		ssc_free( obj );
 	}
-	display_tech_message();
+//	display_tech_message();
+	str = '';
+	str_and = '';
+	tech = technology();
+	csp_techs = ['Physical Trough','Empirical Trough','MSPT','DSPT','MSLF','DSLF','Dish Stirling','Generic CSP System'];
+	for ( i=0; i<#csp_techs; i++ )
+	{
+		if ( tech == csp_techs[i] ) 
+		{
+			str = 'CSP models use a different time convention than NREL NSRDB data. See Help for details.';
+		}	
+	}
+	if ( tech == 'Biopower' && wf_ok )
+	{ 
+		if ( isnan( value('annual_global') ) || !rhum_ok )
+		{
+			str = 'The Biopower model requires ';
+		}
+		if ( isnan( value('annual_global' ) ) ) 
+		{
+			str += 'global horizontal irradiance data ';
+			str_and = 'and ';
+		}	
+		if ( !rhum_ok ) 
+		{
+		str += str_and + 'relative humidity data. See Help for details.';
+		}	
+	}
+	property( 'caption_techs' , 'Caption', str );		
+	property( 'caption_techs' , 'TextColour', 'red' );
 }
 
 // update ui list of library folders, and optionally
@@ -2694,6 +2725,8 @@ function update_info( ctxt )
 function update_library_folders( new_path )
 {
 	x = get_settings('solar_data_paths');
+	x = replace( x, '\\', '/' );
+	new_path = replace( new_path, '\\', '/');
 	// add new path if provided and it doesn't already exist in the library
 	if ( new_path != '' && dir_exists( new_path ) && ( strpos( x, new_path ) < 0 ) )
 	{
@@ -2759,6 +2792,7 @@ function display_tech_message()
 // display window for advanced download
 function nsrdb_all( location ) 
 {
+	if ( strpos( lower(location), 'type a' ) > -1 ) { location = '';}
 	hash = nsrdbquery( location );
 	// meta data
 	if ( hash != '' )
@@ -2813,6 +2847,7 @@ function nsrdb( location )
 	msg = '';
 	geocode_ok = false;
 	json_ok = false;
+	if ( strpos(lower(location),'type a') > -1 ) {location='';}
 
 	g = geocode( location );
 	if ( !g.ok ) // sometimes correct address fails but works on second try

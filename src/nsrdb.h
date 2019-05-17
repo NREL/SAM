@@ -52,7 +52,6 @@
 
 #include <wx/dialog.h>
 
-
 class wxComboBox;
 class wxCheckListBox;
 class wxButton;
@@ -91,7 +90,7 @@ public:
 		LinkInfo(wxString &_n, wxString &_dn, wxString &_t, wxString &_y, wxString &_u, wxString &_i, wxString &_l, wxString &_a)
 			: name(_n), displayName(_dn), type(_t), year(_y), URL(_u), interval(_i), location(_l), attributes(_a)
 		{
-			display = location + "_" + name + "_" + type + "_" + interval + "_" + year;
+			display = location + "_" + name + "_" /*+ type + "_"*/ + interval + "_" + year;
 			is_visible = true;
 			is_selected = false;
 		}
@@ -99,6 +98,7 @@ public:
 		bool operator < (const LinkInfo &li) const
 		{
 			// Sort per name (psm, mts3, mts2, mts1, suny) and year (tmy, yyyy) and interval 60, 30
+			// these change over time and order from nsrdb is logical, so disabling sorting 5/2019
 			if (name == li.name)
 			{
 				if (year == li.year)
@@ -122,7 +122,6 @@ public:
 				return true;
 			else if (li.name.Lower() == "mts3")
 				return false;
-			// not sure why mts2-tmy and mts2 are two separate types.
 			else if (name.Lower() == "mts2-tmy")
 				return true;
 			else if (li.name.Lower() == "mts2-tmy")
@@ -157,12 +156,13 @@ private:
 	wxString m_addFolder;
 	wxComboBox *m_cboWeatherFile;
 	wxCheckListBox *m_chlResources;
-	wxButton *m_btnChkAll, *m_btnChkNone,*m_btnUnselectFiltered, *m_btnSelectFiltered, *m_btnResources, *m_btnFolder; 
-	wxButton *m_btnChk30, *m_btnChk60, *m_btnChkTmy, *m_btnChkMts1, *m_btnChkMts2, *m_btnChkPsm3;
+	wxButton *m_btnChkAll, *m_btnChkNone, *m_btnShowAll, *m_btnSelectFiltered, *m_btnResources, *m_btnFolder; 
+	wxButton *m_btnChkPsm30, *m_btnChkPsm60, *m_btnChkTmy, *m_btnChkMts1, *m_btnChkMts2, *m_btnChkSuny;
 	wxTextCtrl *m_txtFolder;
 //	wxStaticText *m_txtFolder;
 	wxTextCtrl *m_txtAddress;
 	wxSearchCtrl *m_search;
+	wxStaticText *m_txtFileNotFound;
 
 	DECLARE_EVENT_TABLE()
 };
