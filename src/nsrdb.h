@@ -82,15 +82,16 @@ public:
 		wxString year; // number or "tmy"
 		wxString URL;
 		wxString interval; // 30 or 60 
-		wxString location; // lat and lon
+		wxString location; // location name typed by user
+		wxString coordinates; // lat_lon as string
 		wxString display;
 		wxString attributes; // limit column and file size to SAM specific per NSRDB
 		bool is_selected;
 		bool is_visible;
-		LinkInfo(wxString &_n, wxString &_dn, wxString &_t, wxString &_y, wxString &_u, wxString &_i, wxString &_l, wxString &_a)
-			: name(_n), displayName(_dn), type(_t), year(_y), URL(_u), interval(_i), location(_l), attributes(_a)
+		LinkInfo(wxString &_n, wxString &_dn, wxString &_t, wxString &_y, wxString &_u, wxString &_i, wxString &_l, wxString &_c, wxString &_a)
+			: name(_n), displayName(_dn), type(_t), year(_y), URL(_u), interval(_i), location(_l), coordinates(_c), attributes(_a)
 		{
-			display = location + "_" + name + "_" /*+ type + "_"*/ + interval + "_" + year;
+			display = location +  "_" + coordinates + "_" + name + "_" + interval + "_" + year;
 			is_visible = true;
 			is_selected = false;
 		}
@@ -162,7 +163,7 @@ private:
 //	wxStaticText *m_txtFolder;
 	wxTextCtrl *m_txtAddress;
 	wxSearchCtrl *m_search;
-	wxStaticText *m_txtFileNotFound;
+	wxStaticText *m_txtStatusMsg;
 
 	DECLARE_EVENT_TABLE()
 };

@@ -117,7 +117,6 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title, wxString &usr_
 	m_btnChkNone = new wxButton(this, ID_btnChkNone, "Clear all");
 	m_btnShowAll = new wxButton(this, ID_btnShowAll, "Show all");
 
-//	wxString msg = "Use this window to list all weather files available from the NSRDB for a given location, and choose files to download and add to your solar resource library.\nType an address or latitude and longtitude, for example, \"15031 denver west parkway golden co\" or \"40.1,-109.3\", and click Find to list available files.\nWhen the list appears, choose the file or files you want to download. PSM V3 files are the most up-to-date.\n\nThe email address you used to register SAM will be sent to the NREL NSRDB. If you do not want share your email address with the NSRDB, click Cancel now.";
 	wxString msg = "Key:\nPSM 60: Single-year 60-minute files for 1998-2017 from PSM v3.\nPSM 30: Single-year 30-minute files for 1998-2017 from PSM v3.\nTMY: TMY, TGY, TDY files from PSM v3, or TMY from MTS1, MTS2, or SUNY.\nMTS1*: Legacy single-year 60-minute files for 1961-1990 from MTS1 (used for TMY2).\nMTS2*: Legacy single-year 60-minute files for 1991-2005 (used for TMY3).\nSUNY: Single-year 60-minute files for 2000-2014 for South Asia.\n*MTS1 (TMY2) and MTS2 (TMY3) files are not available for all U.S. locations.";
 
 	m_txtFolder = new wxTextCtrl(this, ID_txtFolder, dnpath, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE | wxTE_READONLY);// , wxDefaultPosition, wxSize(500, 30));
@@ -129,7 +128,6 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title, wxString &usr_
 
 	wxBoxSizer *szAddress = new wxBoxSizer(wxHORIZONTAL);
 	szAddress->Add(new wxStaticText(this, wxID_ANY, "Location:"), 0, wxALL , 2);
-//	szAddress->Add(m_txtAddress, 5, wxALL|wxEXPAND, 2);
 	szAddress->Add(m_txtAddress, 5, wxALL, 2);
 	szAddress->Add(m_btnResources, 0, wxALL, 2);
 
@@ -138,10 +136,6 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title, wxString &usr_
 	szFolder->Add(m_txtFolder, 2, wxALL, 2);
 	szFolder->Add(m_btnFolder, 0, wxALL, 2);
 
-/*	wxBoxSizer *szFolder = new wxBoxSizer(wxHORIZONTAL);
-	szFolder->Add(m_btnFolder, 0, wxALL, 2);
-	szFolder->Add(m_txtFolder, 5, wxALL | wxEXPAND, 2);
-*/
 	wxBoxSizer *szWeatherFile = new wxBoxSizer(wxHORIZONTAL);
 	szWeatherFile->Add(new wxStaticText(this, wxID_ANY, "Choose file for simulation (optional):"), 0, wxALL , 2);
 	szWeatherFile->Add(m_cboWeatherFile, 5, wxALL | wxEXPAND, 2);
@@ -164,9 +158,9 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title, wxString &usr_
 	szChkBtn->Add(m_btnChkSuny, 0, wxALL, 2); // SUNY
 	wxBoxSizer *szMsgs = new wxBoxSizer(wxHORIZONTAL);
 	szMsgs->Add(new wxStaticText(this, wxID_ANY, "List of available files (check files to select for download):"), 1, wxALL, 2);
-	m_txtFileNotFound = new wxStaticText(this, wxID_ANY, "");
-	szMsgs->Add(m_txtFileNotFound, 0, wxALL | wxALIGN_RIGHT | wxEXPAND , 2);
-	m_txtFileNotFound->SetLabelText("");
+	m_txtStatusMsg = new wxStaticText(this, wxID_ANY, "");
+	szMsgs->Add(m_txtStatusMsg, 0, wxRIGHT | wxALIGN_RIGHT | wxEXPAND , 5);
+	m_txtStatusMsg->SetLabelText("");
 
 	wxBoxSizer *szgrid = new wxBoxSizer(wxVERTICAL);
 	szgrid->Add(m_chlResources, 10, wxALL | wxEXPAND, 1);
@@ -186,9 +180,10 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title, wxString &usr_
 	Fit();
 	m_txtAddress->SetFocus();
 
-	m_txtFileNotFound->SetLabelText("");
+	m_txtStatusMsg->SetLabelText("");
 
 	GetResources();
+	// use default NSRDB sort order, so commenting this out --5/2019
 	//std::sort(m_links.begin(), m_links.end());
 	// select first item (should be tmy)
 	//if (m_links.size() > 0) m_links[0].is_selected = true;
@@ -207,6 +202,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 		case ID_btnResources:
 		{
 			GetResources();
+			// use default NSRDB sort order, so commenting this out --5/2019
 			//std::sort(m_links.begin(),m_links.end());
 			// select first item (should be tmy)
 			//if (m_links.size() > 0) m_links[0].is_selected = true;
@@ -222,7 +218,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 					if (m_links[i].display.Lower().Contains(m_search->GetValue().Lower()))
 						m_links[i].is_visible = true;
 					else if (m_links[i].is_selected)
-						m_links[i].is_visible = true;
+						m_links[i].is_visible = false;
 					else
 						m_links[i].is_visible = false;
 				}
@@ -491,7 +487,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				if (!wxDirExists(m_weatherFolder))
 				{
 					// use GetParent() to explicitly identify parent window so message box is not hidden behind NSRDB dialog.
-					wxMessageBox("Please select a valid folder for downloads.", "SAM Weather File Folder Notice", wxSTAY_ON_TOP, m_txtFileNotFound->GetParent());
+					wxMessageBox("Please select a valid folder for downloads.", "SAM Weather File Folder Notice", wxSTAY_ON_TOP, m_txtStatusMsg->GetParent());
 					// reset to download folder
 					m_txtFolder->SetValue(default_dnload_path);
 					//						m_txtFolder->SetLabel(default_dnload_path);
@@ -507,7 +503,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				}
 				if (l == NULL)
 				{
-					wxMessageBox("Library " + solar_resource_db + " not found.", "SAM Solar Resource Library Error", wxSTAY_ON_TOP, m_txtFileNotFound->GetParent());
+					wxMessageBox("Library " + solar_resource_db + " not found.", "SAM Solar Resource Library Error", wxSTAY_ON_TOP, m_txtStatusMsg->GetParent());
 					stopped = true;
 				}
 				if (!stopped)
@@ -516,7 +512,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 					{
 						if (l->FindEntry(m_links[arychecked[i]].display) > -1)
 						{
-							wxMessageBox("Weather file " + m_links[arychecked[i]].display + " already in library\nPlease make a different selection.", "SAM Weather File Notice",wxSTAY_ON_TOP, m_txtFileNotFound->GetParent());
+							wxMessageBox("Weather file " + m_links[arychecked[i]].display + " already in library\nPlease make a different selection.", "SAM Weather File Notice",wxSTAY_ON_TOP, m_txtStatusMsg->GetParent());
 							stopped = true;
 							break;
 						}
@@ -550,12 +546,12 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 						}
 						if (!ok)
 						{
-							wxMessageBox("Failed to download " + curstr + " from web service.", "NSRDB Download Error", wxSTAY_ON_TOP, m_txtFileNotFound->GetParent());
+							wxMessageBox("Failed to download " + curstr + " from web service.", "NSRDB Download Error", wxSTAY_ON_TOP, m_txtStatusMsg->GetParent());
 							break;
 						}
 						else if (curl.GetDataAsString().Length() < 1000)
 						{
-							wxMessageBox("Failed to download " + curstr + ". Message from NSRDB: " + curl.GetDataAsString(), "NSRDB Download Error", wxSTAY_ON_TOP, m_txtFileNotFound->GetParent());
+							wxMessageBox("Failed to download " + curstr + ". Message from NSRDB: " + curl.GetDataAsString(), "NSRDB Download Error", wxSTAY_ON_TOP, m_txtStatusMsg->GetParent());
 							break;
 						}
 						else
@@ -624,6 +620,8 @@ void NSRDBDialog::RefreshList()
 	int chl_ndx = m_chlResources->GetTopItem();
 	m_chlResources->Clear();
 	m_cboWeatherFile->Clear();
+	wxString coord;
+
 	for (size_t i = 0; i < m_links.size(); i++)
 	{
 		if (m_links[i].is_visible)
@@ -637,27 +635,37 @@ void NSRDBDialog::RefreshList()
 			else
 				m_chlResources->Check(ndx, false);
 		}
+		if (i==0)
+			coord = m_links[i].coordinates;
 	}
 	m_cboWeatherFile->Thaw();
 	m_chlResources->Thaw();
 	if (chl_ndx > -1 && chl_ndx < (int)m_chlResources->GetCount()) m_chlResources->SetFirstItem(chl_ndx);
-
+	
+	// update status message
 	if (m_txtAddress->GetValue() == "")
 	{
-		m_txtFileNotFound->SetLabelText("Enter a location and refresh file list.");
-		m_txtFileNotFound->SetForegroundColour(wxColor(*wxRED));
+		m_txtStatusMsg->SetLabelText("Enter a location and refresh file list.");
+		m_txtStatusMsg->SetForegroundColour(wxColour(*wxRED));
 	}
 	else if (m_links.size() == 0)
 	{
-		m_txtFileNotFound->SetLabelText("No files found for \"" + m_txtAddress->GetValue() + "\".");
-		m_txtFileNotFound->SetForegroundColour(wxColor(*wxRED));
+		m_txtStatusMsg->SetLabelText("No files found for \"" + m_txtAddress->GetValue() + "\".");
+		m_txtStatusMsg->SetForegroundColour(wxColour(*wxRED));
 	}
-	else if (m_chlResources->IsEmpty() && !m_search->GetValue().IsSameAs(""))
+	else if (m_chlResources->IsEmpty() /* && !m_search->GetValue().IsSameAs("")*/)
 	{
-		m_txtFileNotFound->SetLabelText("No files meet selection criteria. Click Show All to show file list.");
-		m_txtFileNotFound->SetForegroundColour(wxColor(*wxRED));
+		m_txtStatusMsg->SetLabelText("No files meet selection criteria. Click Show All to show file list.");
+		m_txtStatusMsg->SetForegroundColour(wxColour(*wxRED));
 	}
-	m_txtFileNotFound->GetParent()->Layout();
+	else 
+	{
+		coord.Replace("_", ", ");
+		m_txtStatusMsg->SetLabelText("Location converted to " + coord + ".");
+		m_txtStatusMsg->SetForegroundColour(wxColour(*wxBLUE));
+		//m_txtStatusMsg->GetParent()->Layout();
+	}
+	m_txtStatusMsg->GetParent()->Layout();
 }
 
 void NSRDBDialog::GetResources()
@@ -666,7 +674,7 @@ void NSRDBDialog::GetResources()
 	wxString loc = m_txtAddress->GetValue();
 	if (loc == "") return;
 
-	wxString locname = "";
+	wxString latlon = "";
 
 	bool is_addr = false;
 	const wxChar* locChars = loc.c_str();
@@ -685,10 +693,7 @@ void NSRDBDialog::GetResources()
 		}
 		else
 		{
-			locname = wxString::Format("lat_%.5lf_lon_%.5lf", lat, lon);
-			m_txtFileNotFound->SetLabelText(wxString::Format("Location converted to %.3lf, %.3lf.", lat, lon));
-			m_txtFileNotFound->SetForegroundColour(wxColor(*wxBLUE));
-			m_txtFileNotFound->GetParent()->Layout();
+			latlon = wxString::Format("%lf_%lf", lat, lon);
 		}
 	}
 	else
@@ -703,11 +708,8 @@ void NSRDBDialog::GetResources()
 		{
 			parts[0].ToDouble(&lat);
 			parts[1].ToDouble(&lon);
-			locname = wxString::Format("lat_%.5lf_lon_%.5lf", lat, lon);
+			latlon = wxString::Format("%lf_%lf", lat, lon);
 		}
-		m_txtFileNotFound->SetLabelText("");
-		m_txtFileNotFound->SetForegroundColour(wxColor(*wxBLACK));
-		m_txtFileNotFound->GetParent()->Layout();
 	}
 
 	//Create URL for weather file download
@@ -797,7 +799,8 @@ void NSRDBDialog::GetResources()
 			// skip psm files per 10/25/2018 meeting
 			if ((name.Lower() != "spectral-tmy") 
 				&& (name.Lower() != "psm"))
-				m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, loc, attributes));
+				//m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, loc, attributes));
+				m_links.push_back(LinkInfo(name, displayName, type, year, URL, interval, loc, latlon, attributes));
 		}
 	}
 }
