@@ -79,8 +79,6 @@
 #include <wex/ole/excelauto.h>
 #endif
 
-#include <ssc/sscapi.h>
-
 #include "main.h"
 #include "case.h"
 #include "simulation.h"
@@ -1804,6 +1802,23 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 
 		delete tpd;
 	}
+}
+
+void fcall_ssc_eqn(lk::invoke_t &cxt)
+{
+    LK_DOC("ssc_eqn", "Call equation with var_table inputs", "(string: eqn_name, table:inputs):table");
+    wxString eqn_name = cxt.arg(0).as_string();
+
+    ssc_data_t data;
+    lkvar_to_sscvar(data, "data", cxt.arg(1).deref());
+
+    size_t i = 0;
+    while ( ssc_equation_table[i].func){
+        if (wxStrcmp(eqn_name, ssc_equation_table[i].name) == 0){
+            (*ssc_equation_table[i].func)(data);
+            sscvar_to_lkvar(cxt.arg(1).deref(), "data", data);
+        }
+    }
 }
 
 void fcall_substance_density(lk::invoke_t &cxt)
@@ -4681,6 +4696,7 @@ lk::fcall_t* invoke_ssc_funcs()
 		fcall_ssc_dump,
 		fcall_ssc_var,
 		fcall_ssc_exec,
+		fcall_ssc_eqn,
 		0 };
 	return (lk::fcall_t*)vec;
 }

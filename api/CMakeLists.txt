@@ -38,8 +38,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 include_directories(. include $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
 
 set(SAM_API_SRC
-        ErrorHandler.cpp
-		SAM_api.cpp
+        src/ErrorHandler.cpp
+        src/SAM_api.cpp
         include/visibility.h
         src/SAM_AdjustmentFactors.cpp
         src/SAM_Battery.cpp
