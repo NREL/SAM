@@ -1524,7 +1524,7 @@ static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_
 			{
 				lk::vardata_t &xvd = out.hash_item( lk_string(key) );
 				sscvar_to_lkvar( xvd, key, table );
-				key = ssc_data_next( table );
+				key = ssc_data_next( p_dat );
 			}
 		}
 		break;
@@ -1809,21 +1809,16 @@ void fcall_ssc_eqn(lk::invoke_t &cxt)
     LK_DOC("ssc_eqn", "Call equation with var_table inputs", "(string: eqn_name, table:inputs):table");
     wxString eqn_name = cxt.arg(0).as_string();
 
-    ssc_data_t data = ssc_data_create();
+    ssc_data_t data;
     lkvar_to_sscvar(data, "data", cxt.arg(1).deref());
-    var_table* vd = static_cast<var_table*>(data);
 
     size_t i = 0;
     while ( ssc_equation_table[i].func){
         if (wxStrcmp(eqn_name, ssc_equation_table[i].name) == 0){
-            var_table* vd_data = &(vd->lookup("data")->table);
-            (*ssc_equation_table[i].func)(vd_data);
-            sscvar_to_lkvar(cxt.arg(1).deref(), "data", vd);
-            return;
+            (*ssc_equation_table[i].func)(data);
+            sscvar_to_lkvar(cxt.arg(1).deref(), "data", data);
         }
-        i++;
     }
-    throw lk::error_t(lk_tr("Equation by that name does not exist."));
 }
 
 void fcall_substance_density(lk::invoke_t &cxt)
