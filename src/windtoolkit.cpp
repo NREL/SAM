@@ -60,9 +60,7 @@
 #include "windtoolkit.h"
 #include "main.h"
 
-static const char *help_text =
-"NREL WIND Toolkit data is only available for locations in the continental United States. Each weather file contains wind resource data for a single year.\n\n"
-"See Help for details.";
+static const char *help_text = "Notes:\n1. Use your mouse to choose one or more measurement heights.\n2. Each weather file contains wind resource data for a single year.\n3. NREL WIND Toolkit data is only available for locations in the continental United States.\n\nSee Help for details.";
 
 enum {
 	ID_radAddress, ID_radLatLon, ID_cboYears,
@@ -78,8 +76,8 @@ END_EVENT_TABLE()
 WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	 : wxDialog( parent, wxID_ANY, title,  wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {
-	radAddress = new wxRadioButton( this, ID_radAddress, "Enter street address or zip code:" );
-	radLatLon = new wxRadioButton( this, ID_radLatLon, "Enter location coordinates (deg):" );
+	radAddress = new wxRadioButton( this, ID_radAddress, "Street address or zip code " );
+	radLatLon = new wxRadioButton( this, ID_radLatLon, "Coordinates (DD):" );
 	txtAddress = new wxTextCtrl(this, ID_txtAddress, "Denver, CO");
 
 	txtLat = new wxTextCtrl(this, ID_txtLat, "40", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC) );
@@ -98,47 +96,45 @@ WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	cboYears = new wxComboBox(this, ID_cboYears, InitialValue, wxDefaultPosition, wxDefaultSize, years, wxCB_READONLY);
 
 	wxArrayString hubheights;
-	hubheights.Add("10m");
-	hubheights.Add("40m");
-	hubheights.Add("60m");
-	hubheights.Add("80m");
-	hubheights.Add("100m");
-	hubheights.Add("120m");
-	hubheights.Add("140m");
-	hubheights.Add("160m");
-	hubheights.Add("200m");
+	hubheights.Add("10");
+	hubheights.Add("40");
+	hubheights.Add("60");
+	hubheights.Add("80");
+	hubheights.Add("100");
+	hubheights.Add("120");
+	hubheights.Add("140");
+	hubheights.Add("160");
+	hubheights.Add("200");
 
 	lstHubheights = new wxListBox(this, ID_lsthubheights, wxDefaultPosition, wxDefaultSize, hubheights, wxLB_MULTIPLE);
 
 	wxBoxSizer *szll = new wxBoxSizer( wxHORIZONTAL );
-	szll->Add( new wxStaticText( this, wxID_ANY, "Latitude" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	szll->Add( new wxStaticText( this, wxID_ANY, "Latitude " ), 0, wxLEFT | wxTOP | wxBOTTOM |wxALIGN_CENTER_VERTICAL, 5 );
 	szll->Add( txtLat, 0, wxALL, 5 );
-	szll->Add( new wxStaticText( this, wxID_ANY, "Longitude" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	szll->Add( new wxStaticText( this, wxID_ANY, "Longitude " ), 0, wxLEFT | wxTOP | wxBOTTOM |wxALIGN_CENTER_VERTICAL, 5 );
 	szll->Add( txtLon, 0, wxALL, 5 );
 	
 	wxFlexGridSizer *szgrid = new wxFlexGridSizer( 2 );
 	szgrid->AddGrowableCol( 1 );
-	szgrid->Add( radAddress, 0, wxALL|wxALIGN_CENTER_VERTICAL, 1 );
-	szgrid->Add( txtAddress, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 1 );
-	szgrid->Add( radLatLon, 0, wxALL|wxALIGN_CENTER_VERTICAL, 1 );
-	szgrid->Add( szll, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 1 );
+	szgrid->Add( radAddress, 0, wxLEFT | wxTOP | wxBOTTOM |wxALIGN_CENTER_VERTICAL, 1 );
+	szgrid->Add( txtAddress, 0, wxRIGHT | wxTOP | wxBOTTOM |wxEXPAND|wxALIGN_CENTER_VERTICAL, 1 );
+	szgrid->Add( radLatLon, 0, wxLEFT | wxTOP | wxBOTTOM |wxALIGN_CENTER_VERTICAL, 1 );
+	szgrid->Add( szll, 0, wxRIGHT | wxTOP | wxBOTTOM |wxEXPAND|wxALIGN_CENTER_VERTICAL, 1 );
 
-	wxBoxSizer *szyr = new wxBoxSizer( wxHORIZONTAL );
-	szyr->Add( new wxStaticText( this, wxID_ANY, "Select year"), wxALL|wxALIGN_CENTER_VERTICAL, 15 );
-	szyr->Add( cboYears, 0, wxALL, 5 );
-
-	wxBoxSizer *szhh = new wxBoxSizer(wxHORIZONTAL);
-	szhh->Add(new wxStaticText(this, wxID_ANY, "Select hub height"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
-	szhh->Add(lstHubheights, 0, wxALL, 5);
+	wxBoxSizer *szyrmh = new wxBoxSizer( wxHORIZONTAL );
+	szyrmh->Add( new wxStaticText( this, wxID_ANY, "Year "), 0, wxLEFT | wxTOP | wxBOTTOM, 5 );
+	szyrmh->Add( cboYears, 0, wxRIGHT | wxTOP | wxBOTTOM, 5 );
+	szyrmh->Add(new wxStaticText(this, wxID_ANY, ""), 0, wxALL, 5); // spacer
+	szyrmh->Add(new wxStaticText(this, wxID_ANY, "Measurement height (m) "), 0, wxLEFT|wxTOP|wxBOTTOM , 5);
+	szyrmh->Add(lstHubheights, 0, wxRIGHT | wxTOP | wxBOTTOM, 5);
 
 	wxBoxSizer *szmain = new wxBoxSizer( wxVERTICAL );
-	szmain->Add( szgrid, 0, wxLEFT|wxRIGHT|wxTOP, 10 );
-	szmain->Add(szyr, 0, wxLEFT | wxRIGHT, 10);
-	szmain->Add(szhh, 0, wxLEFT | wxRIGHT, 10);
+	szmain->Add(szgrid, 0, wxLEFT|wxRIGHT|wxTOP, 10 );
+	szmain->Add(szyrmh, 0, wxLEFT | wxRIGHT, 10);
 
 	wxStaticText *note = new wxStaticText(this, wxID_ANY, help_text);
 	note->Wrap(550);
-	szmain->Add(note, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER, 10);
+	szmain->Add(note, 0, wxLEFT | wxRIGHT | wxALIGN_LEFT, 10);
 
 	szmain->Add( CreateButtonSizer( wxHELP|wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
 
@@ -159,7 +155,7 @@ void WindToolkitDialog::OnEvt( wxCommandEvent &e )
 	switch( e.GetId() )
 	{
 	case wxID_HELP:
-		SamApp::ShowHelp("download_weather_file");
+		SamApp::ShowHelp("wind_toolkit_download");
 		break;
 	case ID_radAddress:
 	case ID_radLatLon:
