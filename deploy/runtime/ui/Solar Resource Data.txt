@@ -2525,32 +2525,30 @@ function solar_library( item, is_key )
 {
 	T = {};
 	lib_file = userlocaldatadir() + '/SolarResourceData.csv';
-	if (file_exists(lib_file)){
-		lib_data = csvread( lib_file, { 'table' = true } );
-		files = lib_data{'File name'}; files -@ 0; files -@ 0;
-		keys = lib_data{'Name'}; keys -@ 0; keys -@ 0;
-		if ( is_key ) { ii = keys ?@ item; }
-		else { ii = files ?@ item; }
-		T{'is_in_library'} = false; 
-		T{'lib_key'} = null;
-		T{'first_item'} = null;
-		if ( ii > -1 ) 
-		{
-			T{'is_in_library'} = true; 
-			T{'lib_key'} = keys[ii];
-			T{'first_item_key'} = keys[0];
-			T{'file_name'} = files[ii];
-		}
-		T{'num_files_in_library'} = #files;
-		str = replace( appdir() , '\\' , '/' );
-		arr = split( str, '/' );
-		arr -@ #arr-1;
-		arr[#arr] = 'solar_resource';
-		default_path = '';
-		for( i=0; i<#arr; i++ ) {default_path += arr[i] + '/'; }
-		default_files = dir_list( default_path, '*', false );
-		T{'num_default_files'} = #default_files;
+	lib_data = csvread( lib_file, { 'table' = true } );
+	files = lib_data{'File name'}; files -@ 0; files -@ 0;
+	keys = lib_data{'Name'}; keys -@ 0; keys -@ 0;
+	if ( is_key ) { ii = keys ?@ item; }
+	else { ii = files ?@ item; }
+	T{'is_in_library'} = false; 
+	T{'lib_key'} = null;
+	T{'first_item'} = null;
+	if ( ii > -1 ) 
+	{
+		T{'is_in_library'} = true; 
+		T{'lib_key'} = keys[ii];
+		T{'first_item_key'} = keys[0];
+		T{'file_name'} = files[ii];
 	}
+	T{'num_files_in_library'} = #files;
+	str = replace( appdir() , '\\' , '/' );
+	arr = split( str, '/' );
+	arr -@ #arr-1;
+	arr[#arr] = 'solar_resource';
+	default_path = '';
+	for( i=0; i<#arr; i++ ) {default_path += arr[i] + '/'; }
+	default_files = dir_list( default_path, '*', false );
+	T{'num_default_files'} = #default_files;
 	return T;
 }
 
