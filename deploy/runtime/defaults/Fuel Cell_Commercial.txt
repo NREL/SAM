@@ -1,5 +1,5 @@
 1
-635
+634
 LeadAcid_q10
 1
 1
@@ -1825,12 +1825,6 @@ grid_fixed
 1
 1
 0
-grid_interconnection_limit_kwac
-1
-1
-1
-1
-100000
 grid_per_battkw
 1
 1

@@ -1,5 +1,5 @@
 1
-117
+115
 a_error_test_number
 1
 1
@@ -127,12 +127,6 @@ desired_farm_size
 1
 1
 15000
-enable_interconnection_limit
-1
-1
-1
-1
-0
 fixed_charge_rate
 1
 1
@@ -145,12 +139,6 @@ fixed_operating_cost
 1
 1
 765000
-grid_interconnection_limit_kwac
-1
-1
-1
-1
-100000
 resource_definition_type
 1
 1
