@@ -77,7 +77,7 @@ set(SAM_API_SRC
         src/SAM_TroughPhysicalProcessHeat.cpp
         src/SAM_Utilityrate5.cpp
         src/SAM_Windpower.cpp
-        )
+        include/SAM_eqns.h)
 		
 
 #####################################################################################################################
@@ -101,8 +101,15 @@ if(MSVC)
     add_compile_definitions( __DLL__ __64BIT__ __WINDOWS__ _WINDOWS _CRT_NON_CONFORMING_SWPRINTFS=1
         _SCL_SECURE_NO_WARNINGS=1 _UNICODE NOPCH)
 else()
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11 -Wno-attributes" )
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wno-attributes" )
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
+        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+    else()
+        add_compile_options(-O3)
+    endif()
 endif()
+
 
 
 #####################################################################################################################

@@ -99,10 +99,18 @@ else(MSVC)
 	else()
 		add_compile_options(-Wno-deprecated -Wno-misleading-indentation)
 	endif()
-	add_compile_options(-Wall -Wno-unknown-pragmas -Wno-overloaded-virtual -O3 -std=c++11)
+	add_compile_options(-Wall -Wno-unknown-pragmas -Wno-overloaded-virtual -std=c++11)
+	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+		set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
+		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+	else()
+		add_compile_options(-O3)
+	endif()
 endif(MSVC)
 add_compile_options(${wxWidgets_CXX_FLAGS})
 add_definitions(-DLK_USE_WXWIDGETS )
+
+
 
 
 #####################################################################################################################
@@ -151,8 +159,8 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 		${SAM_ICON})
 	set(SAM_EXE SAMd)
 
-	set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
-	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+	set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
 else()
 	add_executable(SAM
 		WIN32
