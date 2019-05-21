@@ -58,13 +58,6 @@ if(MSVC)
     endif()
     add_compile_definitions( _CRT_SECURE_NO_DEPRECATE=1 _CRT_NON_CONFORMING_SWPRINTFS=1
             _SCL_SECURE_NO_WARNINGS=1 __WXMSW__ _UNICODE NOPCH)
-else()
-    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-        set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
-        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
-    else()
-        add_compile_options(-O3)
-    endif()
 endif()
 
 

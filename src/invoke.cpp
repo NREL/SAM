@@ -1806,7 +1806,7 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 
 void fcall_ssc_eqn(lk::invoke_t &cxt)
 {
-    LK_DOC("ssc_eqn", "Call equation with var_table inputs. Returns true upon success", "(string: eqn_name, table:inputs):bool");
+    LK_DOC("ssc_eqn", "Call equation with var_table inputs", "(string: eqn_name, table:inputs):table");
     wxString eqn_name = cxt.arg(0).as_string();
 
     ssc_data_t data = ssc_data_create();
@@ -1817,14 +1817,7 @@ void fcall_ssc_eqn(lk::invoke_t &cxt)
     while ( ssc_equation_table[i].func){
         if (wxStrcmp(eqn_name, ssc_equation_table[i].name) == 0){
             var_table* vd_data = &(vd->lookup("data")->table);
-            try {
-                (*ssc_equation_table[i].func)(vd_data);
-                cxt.result().assign(1.);
-            }
-            catch (std::runtime_error &e){
-                vd_data->assign("error", var_data(e.what()));
-                cxt.result().assign(0.);
-            }
+            (*ssc_equation_table[i].func)(vd_data);
             sscvar_to_lkvar(cxt.arg(1).deref(), "data", vd);
             return;
         }
