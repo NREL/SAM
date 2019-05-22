@@ -79,9 +79,6 @@
 #include <wex/ole/excelauto.h>
 #endif
 
-#include <ssc/sscapi.h>
-#include <ssc/ssc_equations.h>
-
 #include "main.h"
 #include "case.h"
 #include "simulation.h"

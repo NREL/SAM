@@ -178,10 +178,8 @@ endif()
 #
 #####################################################################################################################
 
-if(system_advisor_model_EXPORT)
-    add_custom_command(
-            TARGET export_config
-            POST_BUILD
-            COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/export_config --api $ENV{SAMNTDIR}/api --pysam $ENV{PYSAMDIR}
-    )
-endif()
+add_custom_command(
+        TARGET export_config
+        POST_BUILD
+        COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/export_config --api $ENV{SAMNTDIR}/api --pysam $ENV{PYSAMDIR}
+)

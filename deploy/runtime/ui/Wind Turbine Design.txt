@@ -1435,7 +1435,7 @@ Wind Turbines|0
 Bergey BWC XL.1
 Library
 
-3013
+3018
 // 'wind_turbine_rotor_diameter' is the SSC input
 equations{ 'wind_turbine_rotor_diameter' } = define() {
 	if ( ${wind.turbine.radio_list_or_design} == 0)
@@ -1493,15 +1493,15 @@ equations{ '$MIMO$ windturbinemod' } = define() {
 	data.cut_out = ${wind_turbine_cut_out};
 	data.drive_train = ${wind.turbine.drive_train};
 	
-	success = ssc_eqn("WindTurbine_calculate_powercurve", data);
+	success = ssc_eqn("windpower_turbine_powercurve", data);
 	
 	if (!success){
 		return 0;
 	}
 	
-	ws = data.wind_turbine_powercurve_windspeeds;
-	power = data.wind_turbine_powercurve_powerout;
-	eff = data.hub_efficiency;
+	ws = data.wind_turbine_powercurve_windspeeds[0];
+	power = data.wind_turbine_powercurve_powerout[0];
+	eff = data.hub_efficiency[0];
 	${wind_turbine_powercurve_windspeeds} = ws;
 	${wind_turbine_powercurve_powerout} = power;
 	${wind_turbine_powercurve_hub_efficiency} = eff;  // used to show values in Weibull graph

@@ -7,7 +7,6 @@
 
 #include <shared/lib_util.h>
 #include <ssc/sscapi.h>
-#include <ssc/ssc_equations.h>
 
 #include "lk_env.h"
 #include "lk_eval.h"
@@ -185,30 +184,6 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
     m_vardefs.insert({"Outputs", outputs_map});
     vardefs_order.push_back("Outputs");
 
-}
-
-void builder_generator::gather_equations(const std::string &cmod) {
-    std::string cmod_symbol = format_as_symbol(cmod);
-    size_t i = 0;
-    while (ssc_equation_table[i].func != nullptr){
-        ssc_equation_entry entry = ssc_equation_table[i];
-        if (std::strcmp(entry.cmod, cmod_symbol.c_str()) != 0){
-            i++;
-            continue;
-        }
-        std::string group_name;
-        std::string func_name = entry.name;
-        size_t pos = func_name.find('_');
-        group_name = func_name.substr(0, pos);
-        func_name = func_name.substr(pos + 1);
-        auto it = m_eqn_entries.find(group_name);
-        if (it == m_eqn_entries.end()){
-            m_eqn_entries[group_name] = std::map<std::string, ssc_equation_entry>();
-            it = m_eqn_entries.find(group_name);
-        }
-        it->second.insert({func_name, entry});
-        i++;
-    }
 }
 
 void builder_generator::gather_variables(){
@@ -788,7 +763,6 @@ void builder_generator::create_all(std::string cmod, const std::string &defaults
 
 
     gather_variables_ssc(cmod);
-    gather_equations(cmod);
 
     if (print_json)
         std::cout << "defaults JSON... ";
