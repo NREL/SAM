@@ -53,9 +53,6 @@
 #include <wx/string.h>
 #include <lk/env.h>
 
-#include <ssc/sscapi.h>
-#include <ssc/cmod_windpower_eqns.h>
-
 // version function
 void fcall_samver( lk::invoke_t &cxt );
 
@@ -86,18 +83,6 @@ lk::fcall_t* invoke_lossdiag_funcs();
 
 // functions that can be called in equations
 lk::fcall_t* invoke_equation_funcs();
-
-typedef void (*ssc_equation_ptr)(ssc_data_t data);
-
-struct ssc_equation_entry{
-    const char* name;
-    ssc_equation_ptr func;
-};
-
-static ssc_equation_entry ssc_equation_table [] = {
-        {"windpower_turbine_powercurve", windpower_turbine_powercurve},
-        {nullptr, nullptr}
-};
 
 
 // helper function

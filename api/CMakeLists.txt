@@ -77,7 +77,7 @@ set(SAM_API_SRC
         src/SAM_TroughPhysicalProcessHeat.cpp
         src/SAM_Utilityrate5.cpp
         src/SAM_Windpower.cpp
-        include/SAM_eqns.h)
+        src/SAM_eqns.cpp)
 		
 
 #####################################################################################################################
@@ -164,7 +164,7 @@ else()
                 PATHS $ENV{SSCDIR}/ssc )
     else()
         find_library(SSC_LIB
-                NAMES ssc.dylib ssc.so sscd.lib
+                NAMES ssc.dylib ssc.so ssc.lib
                 PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/ssc/build_vs2017/x64/Release )
     endif()
 endif()

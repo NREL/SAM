@@ -5,6 +5,7 @@
 #include <map>
 
 #include <ssc/sscapi.h>
+#include <ssc/ssc_equations.h>
 
 #include "variable_graph.h"
 #include "config_extractor.h"
@@ -36,13 +37,18 @@ private:
     digraph* subgraph;
     std::string filepath;
 
+    // group: {var name: vertex}
     std::map<std::string, std::map<std::string, vertex*>> modules;
     std::vector<std::string> modules_order;
 
+    // group: {var name: var definition}
     std::map<std::string, std::map<std::string, var_def>> m_vardefs;
     std::vector<std::string> vardefs_order;
 
     std::unordered_map<std::string, ssc_module_t> ssc_module_objects;
+
+    // group: {eqn name: eqn entry}
+    std::map<std::string, std::map<std::string, ssc_equation_entry>> m_eqn_entries;
 
     static std::unordered_map<std::string, std::vector<std::string>> m_config_to_modules;
 
@@ -53,6 +59,8 @@ private:
     void select_ui_variables(std::string ui_name, std::map<std::string, vertex*>& var_map);
 
     void gather_variables_ssc(const std::string& cmod);
+
+    void gather_equations(const std::string& cmod);
 
     void gather_variables();
 

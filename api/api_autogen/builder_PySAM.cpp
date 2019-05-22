@@ -2,6 +2,7 @@
 #include <set>
 
 #include <shared/lib_util.h>
+#include <ssc/ssc_equations.h>
 
 #include "builder_PySAM.h"
 #include "builder_generator_helper.h"
@@ -15,8 +16,8 @@ std::string all_options_of_cmod(const std::string &cmod_symbol, const std::strin
     std::set<std::string> config_set;
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[it->first];
-        for (size_t i = 0; i < primary_cmods.size(); i++) {
-            if (format_as_symbol(primary_cmods[i]) == cmod_symbol){
+        for (const auto& i : primary_cmods) {
+            if (format_as_symbol(i) == cmod_symbol){
                 config_set.insert(it->first);
                 break;
             }
@@ -43,6 +44,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Fuelcell", "Fuel cell model"},
             {"GenericSystem", "Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input"},
             {"Geothermal", "Geothermal power model for hydrothermal and EGS systems with flash or binary conversion"},
+            {"Grid", "Electric grid model"},
             {"Hcpv", "Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model"},
             {"HostDeveloper", "Third party ownership with PPA financial model from host and developer perspective"},
             {"IphToLcoefcr", "Calculate levelized cost of heat using fixed charge rate method for industrial process heat models"},
@@ -97,28 +99,44 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\n"
                "#include \"PySAM_utils.h\"\n\n\n";
 
+    // declare cmod type and import equations if necessary
+    fx_file << "/*\n"
+               " * " << tech_symbol << "\n"
+               " */\n"
+               "\n"
+               "typedef struct {\n"
+               "\tPyObject_HEAD\n"
+               "\tPyObject            *x_attr;        /* Attributes dictionary */\n"
+               "\tSAM_" << cmod_symbol << "   data_ptr;\n"
+               "} " << tech_symbol << "Object;\n"
+               "\n"
+               "static PyTypeObject " << tech_symbol << "_Type;\n"
+               "\n"
+               "#define " << tech_symbol << "Object_Check(v)      (Py_TYPE(v) == &" << tech_symbol << "_Type)\n\n";
 
+    if (!root->m_eqn_entries.empty())
+        fx_file << "#include \"" << tech_symbol << "_eqns.c\"\n\n";
 
     // setters, none for outputs
-    for (size_t i = 0; i < root->vardefs_order.size() ; i++) {
-        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+    for (const auto& i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
         std::map<std::string, var_def> vardefs = mm->second;
 
-        bool output = 0;
+        bool output = false;
         std::string module_symbol = format_as_symbol(mm->first);
 
         if (module_symbol == "AdjustmentFactors")
             continue;
 
         if (module_symbol == "Outputs"){
-            output = 1;
+            output = true;
         }
 
 
         fx_file << "\n"
-                   "\t/*\n"
-                   "\t * " << module_symbol << " Group\n"
-                                               "\t */ \n\n";
+                   "/*\n"
+                   " * " << module_symbol << " Group\n"
+                                               " */ \n\n";
 
         // group description as object
 
@@ -180,15 +198,27 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                    "``" << module_symbol << "_vals = { var: val, ...}``\")},\n"
                    "\t\t{\"export\",            (PyCFunction)" << module_symbol
                 << "_export,  METH_VARARGS,\n"
-                   "\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into dictionary\")},\n"
-                   "\t\t{NULL,              NULL}           /* sentinel */\n"
+                   "\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into dictionary\")},\n";
+
+        // add ssc quations
+        auto group_it = root->m_eqn_entries.find(module_symbol);
+        if (group_it != root->m_eqn_entries.end()){
+            auto func_map = group_it->second;
+            for (const auto& func_it : func_map){
+                fx_file << "\t\t{\"" << func_it.first << "\", (PyCFunction)" << func_it.second.name;
+                fx_file << ", METH_VARARGS | METH_KEYWORDS,\n"
+                           "\t\t\tPyDoc_STR(\"" << func_it.second.doc << "\")},\n";
+            }
+        }
+
+        fx_file << "\t\t{NULL,              NULL}           /* sentinel */\n"
                    "};\n\n";
 
         // variable getter and setter (setters if not output)
-        for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
-            std::string var_symbol = it->first;
+        for (const auto& it : vardefs) {
+            std::string var_symbol = it.first;
 
-            var_def vd = it->second;
+            var_def vd = it.second;
 
             if (module_symbol == "AdjustmentFactors")
                 continue;
@@ -290,10 +320,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
         }
 
         fx_file << "static PyGetSetDef " << module_symbol << "_getset[] = {\n";
-        for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
-            std::string var_symbol = it->first;
+        for (auto& it : vardefs) {
+            std::string var_symbol = it.first;
 
-            var_def vd = it->second;
+            var_def vd = it.second;
 
             if (module_symbol == "AdjustmentFactors")
                 continue;
@@ -313,7 +343,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
             else{
                 if (vd.meta.length() > 0){
                     doc += "\\n\\n";
-                    if (vd.meta.find("=") != std::string::npos)
+                    if (vd.meta.find('=') != std::string::npos)
                         doc += "*Options*: " + vd.meta ;
                     else
                         doc += "*Info*: " + vd.meta;
@@ -333,7 +363,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                     else if (vd.reqif == "?")
                         doc += "False";
                     else{
-                        size_t pos = vd.reqif.find("=");
+                        size_t pos = vd.reqif.find('=');
                         if (pos != std::string::npos){
                             doc += "set to " + vd.reqif.substr(pos+1) + " if not provided.";
 
@@ -405,16 +435,6 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                " * " << tech_symbol << "\n"
                " */\n"
                "\n"
-               "typedef struct {\n"
-               "\tPyObject_HEAD\n"
-               "\tPyObject            *x_attr;        /* Attributes dictionary */\n"
-               "\tSAM_" << cmod_symbol << "   data_ptr;\n"
-               "} " << tech_symbol << "Object;\n"
-               "\n"
-               "static PyTypeObject " << tech_symbol << "_Type;\n"
-               "\n"
-               "#define " << tech_symbol << "Object_Check(v)      (Py_TYPE(v) == &" << tech_symbol << "_Type)\n"
-               "\n"
                "static " << tech_symbol << "Object *\n"
                "new" << tech_symbol << "Object(void* data_ptr)\n"
                "{\n"
@@ -424,8 +444,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\tPySAM_TECH_ATTR(\"" << tech_symbol << "\", SAM_" << cmod_symbol << "_construct)\n\n";
 
     // add the group types
-    for (size_t i = 0; i < root->vardefs_order.size() ; i++) {
-        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+    for (auto& i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
         std::map<std::string, var_def> vardefs = mm->second;
 
         std::string module_symbol = format_as_symbol(mm->first);
@@ -695,12 +715,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
 
     // add the group types
-    for (size_t i = 0; i < root->vardefs_order.size() ; i++) {
-        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+    for (auto& i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
         std::map<std::string, var_def> vardefs = mm->second;
 
         std::string module_symbol = format_as_symbol(mm->first);
-        std::string name = module_symbol;
 
         if (module_symbol == "AdjustmentFactors")
             continue;
@@ -708,7 +727,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
         fx_file << "\t/// Add the " << module_symbol << " type object to " << tech_symbol << "_Type\n"
                    "\tif (PyType_Ready(&" << module_symbol << "_Type) < 0) { goto fail; }\n"
                    "\tPyDict_SetItemString(" << tech_symbol << "_Type.tp_dict,\n"
-                   "\t\t\t\t\"" << name << "\",\n"
+                   "\t\t\t\t\"" << module_symbol << "\",\n"
                    "\t\t\t\t(PyObject*)&" << module_symbol << "_Type);\n"
                    "\tPy_DECREF(&" << module_symbol << "_Type);\n\n";
     }
@@ -782,12 +801,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     fx_file << "Functions\n=========================\n\n"
                ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "\n\t:members:\n\n";
 
-    for (size_t i = 0; i < root->vardefs_order.size() ; i++) {
-        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+    for (const auto& i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
         std::map<std::string, var_def> vardefs = mm->second;
 
         std::string module_symbol = format_as_symbol(mm->first);
-        std::string name = module_symbol;
 
         fx_file << module_symbol << " Group\n==============\n\n";
         fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
@@ -801,8 +819,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     fx_file.open(file_dir + "/stubs/" + tech_symbol + ".pyi");
     assert(fx_file.is_open());
 
-    for (size_t i = 0; i < root->vardefs_order.size(); i++) {
-        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+    for (const auto& i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
         std::map<std::string, var_def> vardefs = mm->second;
 
         std::string module_symbol = format_as_symbol(mm->first);
@@ -822,9 +840,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         std::vector<std::string> statictype_str = {"None", "str", "float", "tuple", "tuple", "dict"};
 
-        for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
-            std::string var_symbol = it->first;
-            fx_file << "\t" << var_symbol << " = " << statictype_str[it->second.type_n] << "\n";
+        for (const auto& it : vardefs) {
+            std::string var_symbol = it.first;
+            fx_file << "\t" << var_symbol << " = " << statictype_str[it.second.type_n] << "\n";
         }
         fx_file << "\n\n";
     }
@@ -845,8 +863,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\tdef __init__(self, *args, **kwargs):\n"
                "\t\tpass\n\n";
 
-    for (size_t i = 0; i < root->vardefs_order.size(); i++) {
-        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+    for (const auto& i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
         std::map<std::string, var_def> vardefs = mm->second;
 
         std::string module_symbol = format_as_symbol(mm->first);

@@ -1,20 +1,20 @@
 #ifndef SYSTEM_ADVISOR_MODEL_SAM_EQNS_H
 #define SYSTEM_ADVISOR_MODEL_SAM_EQNS_H
 
-typedef void* ssc_data_t;
+#include "visibility.h"
+#include "SAM_api.h"
 
-typedef void (*ssc_equation_ptr)(ssc_data_t data);
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-struct ssc_equation_entry{
-    const char* name;
-    ssc_equation_ptr func;
-};
+typedef void (*ssc_equation_ptr)(SAM_table data);
 
-extern ssc_equation_ptr windpower_turbine_powercurve;
+SAM_EXPORT void SAM_windpower_turbine_powercurve_eqn(SAM_table data, SAM_error* err);
 
-static ssc_equation_entry ssc_equation_table [] = {
-        {"windpower_turbine_powercurve", windpower_turbine_powercurve},
-        {nullptr, nullptr}
-};
+#ifdef __cplusplus
+} // extern "C"
+#endif
+
 
 #endif //SYSTEM_ADVISOR_MODEL_SAM_EQNS_H
