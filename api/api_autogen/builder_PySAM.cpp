@@ -97,23 +97,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "#include <SAM_" << cmod_symbol << ".h>\n"
                "#include <SAM_api.h>\n"
                "\n"
-               "#include \"PySAM_utils.h\"\n\n\n";
+               "#include \"PySAM_utils.h\"\n\n";
 
     // declare cmod type and import equations if necessary
-    fx_file << "/*\n"
-               " * " << tech_symbol << "\n"
-               " */\n"
-               "\n"
-               "typedef struct {\n"
-               "\tPyObject_HEAD\n"
-               "\tPyObject            *x_attr;        /* Attributes dictionary */\n"
-               "\tSAM_" << cmod_symbol << "   data_ptr;\n"
-               "} " << tech_symbol << "Object;\n"
-               "\n"
-               "static PyTypeObject " << tech_symbol << "_Type;\n"
-               "\n"
-               "#define " << tech_symbol << "Object_Check(v)      (Py_TYPE(v) == &" << tech_symbol << "_Type)\n\n";
-
     if (!root->m_eqn_entries.empty())
         fx_file << "#include \"" << tech_symbol << "_eqns.c\"\n\n";
 
@@ -430,6 +416,20 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     }
 
     // define the technology
+
+    fx_file <<  "/*\n"
+                " * " << tech_symbol << "\n"
+                " */\n"
+                "\n"
+                "typedef struct {\n"
+                "\tPyObject_HEAD\n"
+                "\tPyObject            *x_attr;        /* Attributes dictionary */\n"
+                "\tSAM_" << cmod_symbol << "   data_ptr;\n"
+                "} " << tech_symbol << "Object;\n"
+                "\n"
+                "static PyTypeObject " << tech_symbol << "_Type;\n"
+                "\n"
+                "#define " << tech_symbol << "Object_Check(v)      (Py_TYPE(v) == &" << tech_symbol << "_Type)\n\n";
 
     fx_file << "/*\n"
                " * " << tech_symbol << "\n"
