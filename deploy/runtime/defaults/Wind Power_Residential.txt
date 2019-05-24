@@ -1,5 +1,5 @@
 1
-435
+437
 a_error_test_number
 1
 1
@@ -1544,6 +1544,12 @@ electrical_materials_cost
 1
 1
 111987
+enable_interconnection_limit
+1
+1
+1
+1
+0
 energy_1
 1
 1
@@ -1673,6 +1679,12 @@ foundation_cost
 1
 1
 130922
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 hub_height
 1
 1
