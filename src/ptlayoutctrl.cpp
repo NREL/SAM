@@ -162,7 +162,7 @@ void PTLayoutCtrl::EnableSpanAngle(bool b)
 	}
 }
 
-void PTLayoutCtrl::SetSpanAngle(float a)
+void PTLayoutCtrl::SetSpanAngle(double a)
 {
 	if (m_spanAngleEnabled  && a > 0 && a <= 360)
 	{
@@ -270,7 +270,7 @@ void PTLayoutCtrl::FixDimensions( size_t &nr, size_t &nc )
 }
 
 
-void PTLayoutCtrl::SetGrid( const matrix_t<float> &data )
+void PTLayoutCtrl::SetGrid( const matrix_t<double> &data )
 {
 	if ( data.nrows() < 1 || data.ncols() < 2 ) return;
 	
@@ -331,7 +331,7 @@ void PTLayoutCtrl::ResizeGrid( size_t nrows, size_t ncols )
 
 	m_grid->Thaw();
 
-	matrix_t<float> old( m_data ); // create a copy of the old data
+	matrix_t<double> old( m_data ); // create a copy of the old data
 
 	m_data.resize_fill(nrows, ncols, 0.0f);
 
@@ -468,10 +468,10 @@ void PTLayoutCtrl::OnButton( wxCommandEvent &evt )
 		size_t nc = csv.NumCols();
 		if ( nr > 0 && nc > 0 )
 		{
-			matrix_t<float> mat( nr, nc, 0 );
+			matrix_t<double> mat( nr, nc, 0 );
 			for( size_t r=0;r<nr;r++ )
 				for( size_t c=0;c<nc;c++ )
-					mat.at(r,c) = (float)wxAtof( csv.Get(r,c) );
+					mat.at(r,c) = (double)wxAtof( csv.Get(r,c) );
 
 			SetGrid( mat );
 		}
@@ -570,7 +570,7 @@ void PTLayoutRenderer::ComputeColour(wxColour &c, int cntrIndex, int ncv)
 
 void PTLayoutRenderer::DrawZonal(wxDC &dc, const wxRect &geom)
 {
-	matrix_t<float> &m_data = mPTCtrl->m_data;
+	matrix_t<double> &m_data = mPTCtrl->m_data;
 
 	size_t nrad = m_data.nrows();
 	size_t nazm = m_data.ncols();
@@ -782,7 +782,7 @@ void PTLayoutRenderer::DrawZonal(wxDC &dc, const wxRect &geom)
 
 void PTLayoutRenderer::DrawXY(wxDC &dc, const wxRect &geom)
 {
-	matrix_t<float> &m_data = mPTCtrl->m_data;
+	matrix_t<double> &m_data = mPTCtrl->m_data;
 
 	int nhel = m_data.nrows();
 	int r;

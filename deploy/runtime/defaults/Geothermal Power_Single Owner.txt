@@ -1,5 +1,5 @@
 1
-523
+525
 CT
 1
 1
@@ -1021,6 +1021,12 @@ elev
 1
 1
 561
+enable_interconnection_limit
+1
+1
+1
+1
+0
 equip1_reserve_cost
 1
 1
@@ -1816,6 +1822,12 @@ geothermal_analysis_period
 1
 1
 25
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 gross_output
 1
 1

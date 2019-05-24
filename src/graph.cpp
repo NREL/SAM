@@ -58,6 +58,8 @@
 #include <wex/plot/plbarplot.h>
 #include <wex/plot/pllineplot.h>
 #include <wex/plot/plscatterplot.h>
+#include <wex/plot/plcontourplot.h>
+#include <wex/plot/plcolourmap.h>
 
 #include <wex/dview/dvselectionlist.h>
 
@@ -66,6 +68,7 @@
 #include <wex/exttext.h>
 #include <wex/metro.h>
 #include <wex/snaplay.h>
+#include <wex/matrix.h>
 
 #include "case.h"
 #include "graph.h"
@@ -271,27 +274,34 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 	wxArrayString ynames;
 	int ndata = -1;
 
-	for( size_t i=0;i<m_g.Y.size();i++ )
+	if (m_g.Type == Graph::CONTOUR)
 	{
-		if ( VarValue *vv = m_s->GetValue( m_g.Y[i] ) )
+		if (m_g.Y.size()== 1)
+			ndata = 0;
+	}
+	else
+	{
+		for (size_t i = 0; i < m_g.Y.size(); i++)
 		{
-			int count = 0;
-			if ( vv->Type() == VV_NUMBER )
-				count = 1;
-			else if ( vv->Type() == VV_ARRAY )
-				count = vv->Length();
-
-			if ( i == 0 ) ndata = count;
-			else if ( ndata != count ) ndata = -1;
-
-			if ( count > 0 )
+			if (VarValue *vv = m_s->GetValue(m_g.Y[i]))
 			{
-				yvars.push_back( vv );
-				ynames.push_back( m_g.Y[i] );
+				int count = 0;
+				if (vv->Type() == VV_NUMBER)
+					count = 1;
+				else if (vv->Type() == VV_ARRAY)
+					count = vv->Length();
+
+				if (i == 0) ndata = count;
+				else if (ndata != count) ndata = -1;
+
+				if (count > 0)
+				{
+					yvars.push_back(vv);
+					ynames.push_back(m_g.Y[i]);
+				}
 			}
 		}
 	}
-
 	if ( ndata < 0 )
 	{
 		SetTitle( "All variables must have the same number of data values." );
@@ -305,15 +315,15 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 	wxPLBarPlot *last_bar = 0;
 	std::vector<wxPLBarPlot*> bar_group;
 
-	for( size_t i=0;i<yvars.size();i++ )
+	for (size_t i = 0; i < yvars.size(); i++)
 	{
-		if ( yvars[i]->Type() == VV_ARRAY )
+		if (yvars[i]->Type() == VV_ARRAY)
 		{
 			size_t n = 0;
-			float *p = yvars[i]->Array( &n );
+			double *p = yvars[i]->Array(&n);
 
-			plotdata[i].reserve( ndata );
-			for( size_t k=0;k<n;k++ )
+			plotdata[i].reserve(ndata);
+			for (size_t k = 0; k < n; k++)
 			{
 				if (std::isnan(p[k]))
 					plotdata[i].push_back(wxRealPoint(k, 0));
@@ -330,28 +340,28 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 		}
 
 		wxPLPlottable *plot = 0;
-		if ( m_g.Type == Graph::LINE )
-			plot = new wxPLLinePlot( plotdata[i], m_s->GetLabel( ynames[i] ), s_colours[cidx], 
-				wxPLLinePlot::SOLID, m_g.Size+2 );
-		else if ( m_g.Type == Graph::BAR || m_g.Type == Graph::STACKED )
+		if (m_g.Type == Graph::LINE)
+			plot = new wxPLLinePlot(plotdata[i], m_s->GetLabel(ynames[i]), s_colours[cidx],
+				wxPLLinePlot::SOLID, m_g.Size + 2);
+		else if (m_g.Type == Graph::BAR || m_g.Type == Graph::STACKED)
 		{
-			wxPLBarPlot *bar = new wxPLBarPlot(  plotdata[i], 0.0, m_s->GetLabel(ynames[i]), s_colours[cidx] );
-			if ( m_g.Size != 0 )
-				bar->SetThickness( m_g.Size );
+			wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], 0.0, m_s->GetLabel(ynames[i]), s_colours[cidx]);
+			if (m_g.Size != 0)
+				bar->SetThickness(m_g.Size);
 
-			if ( m_g.Type == Graph::STACKED )
-				bar->SetStackedOn( last_bar );
+			if (m_g.Type == Graph::STACKED)
+				bar->SetStackedOn(last_bar);
 			else
-				bar_group.push_back( bar );
+				bar_group.push_back(bar);
 
 			last_bar = bar;
 			plot = bar;
 		}
-		else if ( m_g.Type == Graph::SCATTER )
+		else if (m_g.Type == Graph::SCATTER)
 		{
-			plot = new wxPLScatterPlot( plotdata[i], m_s->GetLabel( ynames[i] ), s_colours[cidx], m_g.Size+2 );
-			if ( plotdata[i].size() < 100 )
-				plot->SetAntiAliasing( true );
+			plot = new wxPLScatterPlot(plotdata[i], m_s->GetLabel(ynames[i]), s_colours[cidx], m_g.Size + 2);
+			if (plotdata[i].size() < 100)
+				plot->SetAntiAliasing(true);
 		}
 
 
@@ -368,67 +378,109 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 			bar_group[i]->SetGroup( bar_group );
 
 	// create the axes
-
-	// x-axis
-	if (ndata == 1)
+	if (ndata == 0) // contour
 	{
-		// single value axis
-		wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
-		if (m_g.ShowXValues)
+		if (m_g.Type == Graph::CONTOUR)
 		{
-			for (size_t i = 0; i < ynames.size(); i++)
-				x1->Add(i, m_s->GetLabel(ynames[i]));
+			// y size checked for 1 above
+			double zmin = 1e99, zmax = -1e99;
+			wxMatrix<double> XX, YY, ZZ;
+			if (VarValue *vv = m_s->GetValue(m_g.Y[0]))
+			{
+				if (vv->Type() == VV_MATRIX)
+				{
+					// Assume col[0] contains x values in order
+					// assume row[0] contains y values in order
+					size_t nx, ny;
+					double *data = vv->Matrix(&nx, &ny);
+					XX.Resize(nx - 1, ny - 1);
+					YY.Resize(nx - 1, ny - 1);
+					ZZ.Resize(nx - 1, ny - 1);
+					for (size_t i = 1; i < nx; i++)
+					{
+						for (size_t j = 1; j < ny; j++)
+						{
+							XX.At(i-1, j-1) = data[j];
+							YY.At(i-1, j -1) = data[i*ny];
+							ZZ.At(i-1, j-1) = data[i*ny + j];
+							if (ZZ.At(i-1, j - 1) < zmin) zmin = ZZ.At(i-1, j - 1);
+							if (ZZ.At(i-1, j - 1) > zmax) zmax = ZZ.At(i-1, j - 1);
+						}
+					}
+					wxPLContourPlot *plot = 0;
+					wxPLColourMap *jet = new wxPLJetColourMap(zmin, zmax);
+					plot = new wxPLContourPlot(XX, YY, ZZ, true, wxEmptyString, 24, jet);
+					if (plot != 0)
+					{
+						AddPlot(plot, wxPLPlotCtrl::X_TOP, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
+						SetSideWidget(jet);
+					}
+				}
+			}
 		}
-		SetXAxis1(x1);
-	}
-	else if (ndata == 12)
-	{
-		// month axis
-		wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, 12, m_g.XLabel);
-		for (size_t i = 0; i < 12; i++)
-			x1->Add(i, s_monthNames[i]);
-		SetXAxis1(x1);
 	}
 	else
 	{
-		// linear axis
-		SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
-	}
-	// setup y axis
-
-	if ( GetPlotCount() > 0 )
-	{
-		double ymin, ymax;
-		GetPlot(0)->GetMinMax( 0, 0, &ymin, &ymax );
-		for( size_t i=1;i<GetPlotCount();i++ )
-			GetPlot(i)->ExtendMinMax( 0, 0, &ymin, &ymax );
-
-		if ( m_g.Type == Graph::STACKED || m_g.Type == Graph::BAR )
-		{ // forcibly include the zero line for bar plots
-			if ( ymin > 0 ) ymin = 0;
-			if ( ymax < 0 ) ymax = 0;
+		// x-axis
+		if (ndata == 1)
+		{
+			// single value axis
+			wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
+			if (m_g.ShowXValues)
+			{
+				for (size_t i = 0; i < ynames.size(); i++)
+					x1->Add(i, m_s->GetLabel(ynames[i]));
+			}
+			SetXAxis1(x1);
 		}
-		
-		double yadj = (ymax-ymin)*0.05;
-		
-		if (ymin != 0) ymin -= yadj;
-		if (ymax != 0) ymax += yadj;
-
-		if (ymin == ymax) {
-			// no variation in y values, so pick some reasonable graph bounds
-		  if (ymax == 0)
-		    ymax = 1;
-		  else
-		    ymax += (ymax * 0.05);
-		  if (ymin == 0)
-		    ymin = -1;
-		  else
-		    ymin -= (ymin * 0.05);
+		else if (ndata == 12)
+		{
+			// month axis
+			wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, 12, m_g.XLabel);
+			for (size_t i = 0; i < 12; i++)
+				x1->Add(i, s_monthNames[i]);
+			SetXAxis1(x1);
 		}
+		else
+		{
+			// linear axis
+			SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
+		}
+		// setup y axis
 
-		SetYAxis1( new wxPLLinearAxis( ymin, ymax, m_g.YLabel ) );
+		if (GetPlotCount() > 0)
+		{
+			double ymin, ymax;
+			GetPlot(0)->GetMinMax(0, 0, &ymin, &ymax);
+			for (size_t i = 1; i < GetPlotCount(); i++)
+				GetPlot(i)->ExtendMinMax(0, 0, &ymin, &ymax);
+
+			if (m_g.Type == Graph::STACKED || m_g.Type == Graph::BAR)
+			{ // forcibly include the zero line for bar plots
+				if (ymin > 0) ymin = 0;
+				if (ymax < 0) ymax = 0;
+			}
+
+			double yadj = (ymax - ymin)*0.05;
+
+			if (ymin != 0) ymin -= yadj;
+			if (ymax != 0) ymax += yadj;
+
+			if (ymin == ymax) {
+				// no variation in y values, so pick some reasonable graph bounds
+				if (ymax == 0)
+					ymax = 1;
+				else
+					ymax += (ymax * 0.05);
+				if (ymin == 0)
+					ymin = -1;
+				else
+					ymin -= (ymin * 0.05);
+			}
+
+			SetYAxis1(new wxPLLinearAxis(ymin, ymax, m_g.YLabel));
+		}
 	}
-
 	Invalidate();
 	Refresh();
 	return 0;
@@ -538,7 +590,7 @@ int GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 		if (yvars[i]->Type() == VV_ARRAY)
 		{
 			size_t n = 0;
-			float *p = yvars[i]->Array(&n);
+			double *p = yvars[i]->Array(&n);
 
 			plotdata[i].reserve(ndata);
 			for (size_t k = 0; k < n; k++)
