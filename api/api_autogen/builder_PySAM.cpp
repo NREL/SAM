@@ -79,6 +79,25 @@ std::string module_doc(const std::string& tech_symbol){
     return it->second;
 }
 
+std::string get_params_str(const std::string &doc){
+    std::string params;
+    size_t startpos = doc.find("Input:");
+    startpos = doc.find("\\n", startpos);
+    size_t endpos = doc.find("Output:");
+    startpos = doc.find("'", startpos+2);
+    while (startpos < endpos){
+        if (params.length() > 0)
+            params += ", ";
+        size_t word_end = doc.find("'", startpos+1);
+        params += doc.substr(startpos+1, word_end - startpos - 1) + "=";
+        startpos = doc.find(" - ", word_end + 1);
+        word_end = doc.find(' ', startpos + 3);
+        params += doc.substr(startpos+3, word_end - startpos - 3);
+        startpos = doc.find("'", doc.find("\\n", word_end));
+    }
+    return params;
+}
+
 void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::string &file_dir) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
@@ -427,15 +446,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                 "\tSAM_" << cmod_symbol << "   data_ptr;\n"
                 "} " << tech_symbol << "Object;\n"
                 "\n"
-                "static PyTypeObject " << tech_symbol << "_Type;\n"
-                "\n"
-                "#define " << tech_symbol << "Object_Check(v)      (Py_TYPE(v) == &" << tech_symbol << "_Type)\n\n";
+                "static PyTypeObject " << tech_symbol << "_Type;\n\n";
 
-    fx_file << "/*\n"
-               " * " << tech_symbol << "\n"
-               " */\n"
-               "\n"
-               "static " << tech_symbol << "Object *\n"
+    fx_file << "static " << tech_symbol << "Object *\n"
                "new" << tech_symbol << "Object(void* data_ptr)\n"
                "{\n"
                "\t" << tech_symbol << "Object *self;\n"
@@ -837,6 +850,16 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                    "\n"
                    "\tdef __init__(self, *args, **kwargs): \n"
                    "\t\tpass\n\n";
+
+        // add ssc equations
+        auto group_it = root->m_eqn_entries.find(module_symbol);
+        if (group_it != root->m_eqn_entries.end()){
+            auto func_map = group_it->second;
+            for (const auto& func_it : func_map){
+                fx_file << "\tdef "<< func_it.first << "(self, " << get_params_str(func_it.second.doc) << "):\n\t\tpass\n";
+            }
+        }
+        fx_file << "\n";
 
         std::vector<std::string> statictype_str = {"None", "str", "float", "tuple", "tuple", "dict"};
 
