@@ -1,5 +1,5 @@
 1
-424
+426
 ac_nameplate
 1
 1
@@ -1057,6 +1057,12 @@ en_user_spec_losses
 1
 1
 0
+enable_interconnection_limit
+1
+1
+1
+1
+0
 engr_fixed
 1
 1
@@ -1164,6 +1170,12 @@ grid_fixed
 1
 1
 0
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 grid_per_watt
 1
 1
