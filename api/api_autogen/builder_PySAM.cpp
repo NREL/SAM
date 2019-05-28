@@ -43,6 +43,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Fuelcell", "Fuel cell model"},
             {"GenericSystem", "Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input"},
             {"Geothermal", "Geothermal power model for hydrothermal and EGS systems with flash or binary conversion"},
+            {"Grid", "Electric grid model"},
             {"Hcpv", "Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model"},
             {"HostDeveloper", "Third party ownership with PPA financial model from host and developer perspective"},
             {"IphToLcoefcr", "Calculate levelized cost of heat using fixed charge rate method for industrial process heat models"},
