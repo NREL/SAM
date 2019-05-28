@@ -148,7 +148,7 @@ public:
 	void ChangeType(int type);
 	void SetType( int t );
 	void Set( int val );
-	void Set( float val );
+//	void Set( float val );
 	void Set( double val );
 	void Set( const std::vector<int> &ivec );
 	void Set( const std::vector<double> &fvec );

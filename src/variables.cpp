@@ -889,7 +889,7 @@ wxString VarValue::TypeAsString() const {
 void VarValue::ChangeType(int type) { m_type = (unsigned char)type; }
 void VarValue::SetType( int ty ) { m_type = (unsigned char)ty; }
 void VarValue::Set( int val ) { m_type = VV_NUMBER; m_val = (float)val; }
-void VarValue::Set( float val ) { m_type = VV_NUMBER; m_val = val; }
+//void VarValue::Set( float val ) { m_type = VV_NUMBER; m_val = val; }
 void VarValue::Set( double val ) { m_type = VV_NUMBER; m_val = val; }
 
 void VarValue::Set( const std::vector<int> &ivec )

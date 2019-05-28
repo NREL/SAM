@@ -136,6 +136,9 @@ def get_des_od_label_unit_info__calc_metrics():
     info["MC_phi"] = C_des_od_label_unit_info("mc_phi_des", "mc_phi_od", "Main Comp\nFlow Coef [-]", "Main Compressor Flow Coefficient [-]", "[-]")
     info["MC_phi"].limit_var = "mc_phi_surge"
     info["MC_phi"].limit_var_type = "min"
+    info["MC_psi"] = C_des_od_label_unit_info("mc_psi_des", "mc_psi_od", "Main Comp\nIdeal Head Coef [-]", "Main Compressor Ideal Head Coef[-]", "[-]")
+    info["MC_psi"].limit_var = "mc_psi_max_at_N_des"
+    info["MC_psi"].limit_var_type = "max"
     info["MC_tip_speed"] = C_des_od_label_unit_info("mc_tip_ratio_des", "mc_tip_ratio_od", "Main Comp\nTip Speed Ratio [-]", "Main Compressor Tip Speed Ratio [-]", "[-]")
     info["MC_tip_speed"].des_d_type = "list"
     info["MC_tip_speed"].od_d_type = "matrix"
@@ -158,6 +161,10 @@ def get_des_od_label_unit_info__calc_metrics():
     info["RC_phi"] = C_des_od_label_unit_info("rc_phi_des", "rc_phi_od", "Re-Comp\nFlow Coef [-]", "Re-Compressor Flow Coefficient [-]", "[-]")
     info["RC_phi"].limit_var = "rc_phi_surge"
     info["RC_phi"].limit_var_type = "min"
+    info["RC_psi"] = C_des_od_label_unit_info("rc_psi_des", "rc_psi_od", "Re-Comp\nIdeal Head Coef [-]",
+                                              "Re-Compressor Ideal Head Coefficient [-]", "[-]")
+    info["RC_psi"].limit_var = "rc_psi_max_at_N_des"
+    info["RC_psi"].limit_var_type = "max"
     info["RC_tip_speed"] = C_des_od_label_unit_info("rc_tip_ratio_des", "rc_tip_ratio_od", "Re-Comp\nTip Speed Ratio [-]", "Re-Compressor Tip Speed Ratio [-]", "[-]")
     info["RC_tip_speed"].des_d_type = "list"
     info["RC_tip_speed"].od_d_type = "matrix"
@@ -1243,6 +1250,332 @@ def filter_dict_to_list_type_entries_only(dict_in):
             dict_out[key] = dict_in[key]
             
     return dict_out
+
+def compare_two_json_files(json_in_1, desc_1, json_in_2, desc_2, comp_txt_out):
+
+    dict_1 = json.load(open(json_in_1))
+    dict_2 = json.load(open(json_in_2))
+
+    comp_str = compare_two_dict_by_keys(dict_1, desc_1, dict_2, desc_2)
+
+    outfile = open(comp_txt_out, "w")
+    outfile.write(comp_str)
+    outfile.close()
+
+def compare_two_dict_by_keys(dict_1, desc_1, dict_2, desc_2):
+
+    d1_keys = set(dict_1.keys())
+    d2_keys = set(dict_2.keys())
+
+    intersect_keys = d1_keys.intersection(d2_keys)
+
+    added_keys_d1 = d1_keys - d2_keys
+    local_str = "added keys " + desc_1 + " = " + str(added_keys_d1)
+    print(local_str)
+    key_summary_str = local_str + " \n"
+    local_str = "length added keys " + desc_1 + " = " + str(len(added_keys_d1))
+    print(local_str)
+    key_summary_str = key_summary_str + local_str + " \n"
+
+    added_keys_d2 = d2_keys - d1_keys
+    local_str = "added keys " + desc_2 + " = " + str(added_keys_d2)
+    print(local_str)
+    key_summary_str = key_summary_str + local_str + " \n"
+    local_str = "length added keys " + desc_2 + " = " + str(len(added_keys_d2))
+    print(local_str)
+    key_summary_str = key_summary_str + local_str + " \n"
+
+    mod_keys_set = set(o for o in intersect_keys if dict_1[o] != dict_2[o])
+    modified_keys = list(mod_keys_set)
+    local_str = "modified keys = " + str(mod_keys_set)
+    print(local_str)
+    key_summary_str = key_summary_str + local_str + " \n"
+
+    mismatch_str = ""
+    match_str = ""
+
+    # i_key = modified_keys[0]
+    for i_key in modified_keys:
+
+        i_data1_key = dict_1[i_key]
+        i_data2_key = dict_2[i_key]
+
+        c1_data = C_data_properties(i_data1_key, desc_1)
+        c2_data = C_data_properties(i_data2_key, desc_2)
+
+        mismatch_str_local, match_str_local = compare_data_properties(c1_data, c2_data)
+
+        key_str = "For key " + str(i_key)
+
+        if (mismatch_str_local != ""):
+            mismatch_str = mismatch_str + key_str + " \n" + mismatch_str_local + " \n"
+        elif (match_str_local != ""):
+            match_str = match_str + key_str + " \n" + match_str_local + " \n"
+        else:
+            print("both strings null")
+
+    print("match str = ", match_str)
+    print("mismatch str = ", mismatch_str)
+
+    return key_summary_str + match_str + mismatch_str
+
+class C_data_properties:
+
+    def __init__(self, data, name = ""):
+        self.data = data
+
+        self.name = name
+
+        self.structure_type, self.data_type, self.l_d1, self.l_d2 = get_entry_data_properties(self.data)
+
+def get_np_list_statistics(np_list):
+
+    min_out = min(np_list)
+    max_out = max(np_list)
+    max_abs_out = max(abs(min_out), abs(max_out))
+
+    mean = np.mean(np_list)
+    rms = np.sqrt(np.mean(np_list**2))
+    mean_abs_error = np.mean(np.abs(np_list))
+
+    out_str = "The differences are " + str(np_list) + "\n" + \
+        "The maximum absolute difference is " + str(max_abs_out) + "\n" + \
+        "The mean difference is " + str(mean) + "\n" + \
+        "The RMS difference is " + str(rms) + "\n" + \
+        "The mean absolute difference is " + str(mean_abs_error) + "\n"
+
+    return max_abs_out, mean, rms, mean_abs_error, out_str
+
+
+def compare_data_properties(c_data_1, c_data_2):
+
+    mismatch_str = ""
+    match_str = ""
+
+    value_str = "The " + c_data_1.name + " data unit value is = " + str(c_data_1.data) + "\n" +\
+                "The " + c_data_2.name + " data unit value is = " + str(c_data_2.data) + "\n"
+
+    if(c_data_1.structure_type == c_data_2.structure_type):
+
+        if(c_data_1.data_type != c_data_2.data_type):
+
+            mismatch_str = "Both data units have the same structure, but " + \
+                    "the " + c_data_1.name + " data unit is type " + c_data_1.data_type + \
+                    ", but the " + c_data_2.name + " data unit is type " + c_data_2.data_type + "\n"
+            mismatch_str = mismatch_str + value_str
+
+        else:
+
+            if(c_data_1.data_type == "float"):
+
+                if(c_data_1.structure_type == "single"):
+
+                    if(c_data_1.data != 0):
+                        perc_diff = (c_data_2.data - c_data_1.data) / c_data_1.data * 100.0
+                        match_str = "The relative difference between the " + \
+                                    c_data_1.name + " data unit and the " + c_data_2.name + " data unit " +\
+                                    " is " + str(perc_diff) + " %\n"
+                    else:
+                        data_diff = (c_data_2.data - c_data_1.data)
+                        match_str = "The difference between the " + \
+                                    c_data_2.name + " data unit and the " + c_data_1.name + " data unit " + \
+                                    " is " + str(data_diff) + "\n"
+
+                    match_str = match_str + value_str
+
+                elif(c_data_1.structure_type == "list"):
+
+                    if(c_data_1.l_d1 != c_data_2.l_d1):
+                        mismatch_str = "The " + c_data_1.name + " data unit is a list of length " + \
+                                       str(c_data_1.l_d1) + ", but the " + \
+                                       c_data_2.name + " data unit is a list of length " + str(c_data_2.l_d1) + "\n"
+                        mismatch_str = mismatch_str + value_str
+
+                    else:
+                        list_diff = np.array(c_data_2.data) - np.array(c_data_1.data)
+
+                        match_str = "Statistics on the difference between the " + \
+                                    c_data_2.name + " data unit and the " + c_data_1.name + " data unit: \n"
+
+                        max_abs_calc, mean_calc, rms_calc, mean_abs_error_calc, out_str_calc = get_np_list_statistics(list_diff)
+
+                        match_str = match_str + out_str_calc + value_str
+
+                elif(c_data_1.structure_type == "matrix"):
+
+                    if(c_data_1.l_d1 != c_data_2.l_d2 or c_data_1.l_d2 != c_data_2.l_d2):
+                        mismatch_str = "The " + c_data_1.name + " data unit is a matrix " + \
+                                       ", with at least dimension that is a different length than matrix " + \
+                                       c_data_2.name
+                        mismatch_str = mismatch_str + value_str
+
+                    else:
+                        np1 = np.array(c_data_1.data)
+                        np2 = np.array(c_data_2.data)
+
+                        flatten_list_diff = np2.flatten() - np1.flatten()
+
+                        match_str = "Statistics on the difference between the " + \
+                                    c_data_2.name + " data unit and the " + c_data_1.name + " data unit: \n"
+
+                        max_abs_calc, mean_calc, rms_calc, mean_abs_error_calc, out_str_calc = get_np_list_statistics(
+                            flatten_list_diff)
+
+                        match_str = match_str + out_str_calc + value_str
+
+                else:
+                    mismatch_str = "Structure type " + c_data_2.structure_type + " can't be further processed\n"
+                    mismatch_str = mismatch_str + value_str
+
+            else:
+
+                match_str = "Both data units have the same structure and data types, " + \
+                            "but the data type is not float so there is no statistical analysis\n"
+                match_str = match_str + value_str
+
+    else:
+
+        mismatch_str = "The " + c_data_1.name + " data unit is structured as a " + \
+               c_data_1.structure_type + ", but the " + \
+               c_data_2.name + " data unit is structured as a " + c_data_2.structure_type + "\n"
+
+        mismatch_str = mismatch_str + value_str
+
+    return mismatch_str, match_str
+
+
+def test_get_entry_data_properties():
+    
+    s1_data = [[1.1, 1.2, 1.3],[2.1, 2.2, 2.3]]
+    #s1_data = [[[11.1, 11.2, 11.3], [22.1, 22.2, 22.3]], [[11.1, 11.2, 11.3], [22.1, 22.2, 22.3]]]
+    #s1_data = [1.1, 2.2, 3.3]
+    #s1_data = 'hello world'
+    #s1_data = 0
+    s2_data = [[11.1, 11.2, 11.3], [22.1, 22.2, 22.3]]
+    #s2_data = [[[11.1, 11.2, 11.3], [22.1, 22.2, 22.3]],[[11.1, 11.2, 11.3], [22.1, 22.2, 22.3]]]
+    #s2_data = 'hello world'
+    #s2_data = [11.1, 22.2, 33.3]
+    #s2_data = 3
+    
+    c1_data = C_data_properties(s1_data, "first")
+    c2_data = C_data_properties(s2_data, "second")
+
+    #print("structure type = ", c2_data.structure_type)
+    #print("data type = ", c2_data.data_type)
+    #print("list dimension = ", c2_data.l_d1)
+    #print("matrix dimension = ", c2_data.l_d2)
+
+    mismatch_str, match_str = compare_data_properties(c1_data, c2_data)
+
+    print("mismatch string = \n", mismatch_str)
+    print("match string = \n", match_str)
+
+def get_entry_data_properties(data_in):
+    structure_type = "undefined"
+    data_type = "undefined"
+    l_d1 = -1
+    l_d2 = -1
+
+    # is 'data_in' a list?
+    if (isinstance(data_in, list)):
+
+        # is the first entry in the list 'data_in' also a list?
+        if (isinstance(data_in[0], list)):
+
+            # is the first entry in the first row of the matrix 'data_in' also a list?
+            if(isinstance(data_in[0][0], list)):
+                structure_type = "array_of_3_or_more_dimensions"
+                data_type = "unknown"
+
+            else:
+
+                structure_type = "matrix"
+                
+                for k in range(len(data_in)):
+
+                    if(k==0):
+                        k_0_structure_type, k_0_data_type, k_0_l_d1, k_0_l_d2 = get_list_data_type(data_in[k])
+                        k_structure_type = k_0_structure_type
+                        is_matrix_same_data_type = True
+                        are_lists_same_length = True
+                    else:
+                        k_structure_type, k_data_type, k_l_d1, k_l_d2 = get_list_data_type(data_in[k])
+                        if(k_0_data_type != k_data_type):
+                            is_matrix_same_data_type = False 
+                        if(k_0_l_d1 != k_l_d1):
+                            are_lists_same_length = False
+                            
+                        if(k_structure_type != "list"):
+                            structure_type = "matrix_of_lists_and_others"
+                            
+                if(is_matrix_same_data_type):
+                    data_type = k_0_data_type
+                else:
+                    data_type = "other"
+                    
+                if(not(are_lists_same_length)):
+                    structure_type = "matrix_of_unequal_list_length"
+                    
+                return structure_type, data_type, len(data_in), k_l_d1
+
+
+        else:
+
+            return get_list_data_type(data_in)
+
+    else:
+        structure_type = "single"
+        data_type = get_single_value_data_type(data_in)
+        l_d1 = -1
+        l_d2 = -1
+
+    return structure_type, data_type, l_d1, l_d2
+
+def get_list_data_type(val_in):
+
+    j_0_data_type = "unknown"
+    for j in range(len(val_in)):
+
+        if (j == 0):
+            structure_type = "list"
+            j_0_data_type = get_single_value_data_type(val_in[j])
+            j_data_type = j_0_data_type
+            is_list_same_data_type = True
+            l_d1 = len(val_in)
+            l_d2 = -1
+        else:
+            j_data_type = get_single_value_data_type(val_in[j])
+            if (j_0_data_type != j_data_type):
+                is_list_same_data_type = False
+
+        if (j_data_type == "input_value_is_list"):
+            structure_type = "list_of_singles_and_others"
+
+    if (is_list_same_data_type):
+        data_type = j_0_data_type
+    else:
+        data_type = "other"
+
+    return structure_type, data_type, l_d1, l_d2
+
+
+def get_single_value_data_type(val_in):
+
+    if (isinstance(val_in, list)):
+        return "input_value_is_list"
+    elif (isinstance(val_in, str)):
+        return "string"
+    elif (math.isnan(float(val_in))):
+        return "nan"
+    elif (str(val_in) == "nan"):
+        return "string_nan"
+    elif (isinstance(val_in, float)):
+        return "float"
+    elif (isinstance(val_in, int)):
+        return "float"
+    else:
+        return "unknown"
+
 
 def get_entry_data_type(data_in):
     
