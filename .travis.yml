@@ -17,6 +17,7 @@ before_script:
   - export WEXDIR=/home/travis/build/$user/wex
   - export SSCDIR=/home/travis/build/$user/ssc
   - export SAMNTDIR=/home/travis/build/$user/SAM
+  - export PYSAMDIR=/home/travis/build/$user/SAM/api/api_autogen/library/PySAM
   - git clone https://github.com/google/googletest /home/travis/build/$user/googletest
   - git clone -b CMake https://github.com/$user/lk $LKDIR
   - git clone -b CMake https://github.com/$user/wex $WEXDIR
