@@ -2450,7 +2450,7 @@ equations{ 'sco2_cycle_config' } = define() {
    	];
 };
 
-16123
+16141
 on_load{"Supercritical Carbon Dioxide Power Cycle"} = define() {
 	
 	if( ${is_sco2_msg_disabled} == 0.0 )
@@ -2915,8 +2915,8 @@ function sco2_design_point(is_gen_udpc) {
 	refresh();
 	
 	recomp_frac = ssc_var(obj, "recomp_frac");
-	LTR_UA_calc = ssc_var(obj, "UA_LTR");
-	HTR_UA_calc = ssc_var(obj, "UA_HTR");
+	LTR_UA_calc = ssc_var(obj, "LTR_UA_assigned");
+	HTR_UA_calc = ssc_var(obj, "HTR_UA_assigned");
 	if(${sco2_cycle_config}==1)
 	{
 		P_comp_in = ssc_var(obj, "P_comp_in");
