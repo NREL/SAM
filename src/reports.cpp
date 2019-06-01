@@ -1009,7 +1009,7 @@ wxString SamReportEscapeString( const wxString &input, Case *c, VarValue *meta )
 			else
 			{
 				Simulation &sim = c->BaseCase();
-				std::vector<float> vals;
+				std::vector<double> vals;
 				if ( VarValue *var = sim.GetValue( var_name ) )
 				{
 					if ( var->Type() == VV_ARRAY )

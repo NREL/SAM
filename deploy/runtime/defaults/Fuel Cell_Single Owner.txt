@@ -1,5 +1,5 @@
 1
-711
+713
 LeadAcid_q10
 1
 1
@@ -2262,6 +2262,12 @@ fuelcell_efficiency
 90.7 51.8 46 
 100 50.7 45 
 
+fuelcell_efficiency_choice
+1
+1
+1
+1
+0
 fuelcell_fixed_pct
 1
 1
@@ -2437,6 +2443,12 @@ grid_fixed
 1
 1
 0
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 grid_per_battkw
 1
 1

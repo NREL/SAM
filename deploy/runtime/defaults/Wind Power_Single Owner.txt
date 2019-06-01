@@ -1,5 +1,5 @@
 1
-504
+506
 a_error_test_number
 1
 1
@@ -2180,6 +2180,12 @@ electrical_materials_cost
 1
 1
 3.91765e+06
+enable_interconnection_limit
+1
+1
+1
+1
+0
 engineering_cost
 1
 1
@@ -2279,6 +2285,12 @@ foundation_cost
 1
 1
 3.48031e+06
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+100000
 hub_height
 1
 1
@@ -3303,8 +3315,8 @@ reference_number_turbines
 reference_resource_file
 1
 4
-85
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+63
+C:\Projects\sam\deploy\wind_resource\WY Southern-Flat Lands.srw
 reference_sales_tax_percent
 1
 1
@@ -3867,8 +3879,8 @@ wind_resource.elev
 wind_resource.file
 1
 4
-85
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+63
+C:\Projects\sam\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource.lat
 1
 1
@@ -3923,8 +3935,8 @@ wind_resource.year
 wind_resource_filename
 1
 4
-85
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+63
+C:\Projects\sam\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1

@@ -4735,9 +4735,7 @@ Schott PTR80
 library_folder_list
 1
 4
-47
-C:\Users\jfreeman/SAM Downloaded Weather Files
-
+0
 library_paths
 1
 4

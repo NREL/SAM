@@ -136,6 +136,9 @@ def get_des_od_label_unit_info__calc_metrics():
     info["MC_phi"] = C_des_od_label_unit_info("mc_phi_des", "mc_phi_od", "Main Comp\nFlow Coef [-]", "Main Compressor Flow Coefficient [-]", "[-]")
     info["MC_phi"].limit_var = "mc_phi_surge"
     info["MC_phi"].limit_var_type = "min"
+    info["MC_psi"] = C_des_od_label_unit_info("mc_psi_des", "mc_psi_od", "Main Comp\nIdeal Head Coef [-]", "Main Compressor Ideal Head Coef[-]", "[-]")
+    info["MC_psi"].limit_var = "mc_psi_max_at_N_des"
+    info["MC_psi"].limit_var_type = "max"
     info["MC_tip_speed"] = C_des_od_label_unit_info("mc_tip_ratio_des", "mc_tip_ratio_od", "Main Comp\nTip Speed Ratio [-]", "Main Compressor Tip Speed Ratio [-]", "[-]")
     info["MC_tip_speed"].des_d_type = "list"
     info["MC_tip_speed"].od_d_type = "matrix"
@@ -150,11 +153,18 @@ def get_des_od_label_unit_info__calc_metrics():
     info["MC_cost"].od_d_type = "nan"
     
     info["RC_T_in"] = C_des_od_label_unit_info("rc_T_in_des", "rc_T_in_od", "Re-Comp\nInlet Temp [C]", "Re-Compressor Inlet Temp [C]", "[C]")
+    info["RC_P_in"] = C_des_od_label_unit_info("rc_P_in_des", "rc_P_in_od", "Re-Comp\nInlet Pres [MPa]", "Re-Compressor Inlet Pres [MPa]","[MPa]")
+    info["RC_T_out"] = C_des_od_label_unit_info("rc_T_out_des", "rc_T_out_od", "Re-Comp\nOutlet Temp [C]", "Re-Compressor Outlet Temp [C]", "[C]")
+    info["RC_P_out"] = C_des_od_label_unit_info("rc_P_out_des", "rc_P_out_od", "Re-Comp\nOutlet Pres [MPa]", "Re-Compressor Outlet Pres [MPa]", "[MPa]")
     info["RC_W_dot"] = C_des_od_label_unit_info("rc_W_dot", "rc_W_dot_od", "Re-Comp\nPower [MWe]", "Re-Compressor Power [MWe]", "[MWe]")
     info["RC_m_dot"] = C_des_od_label_unit_info("rc_m_dot_des", "rc_m_dot_od", "Re-Comp\nMass Flow [kg/s]", "Re-Compressor Mass Flow Rate [kg/s]", "[kg/s]")
     info["RC_phi"] = C_des_od_label_unit_info("rc_phi_des", "rc_phi_od", "Re-Comp\nFlow Coef [-]", "Re-Compressor Flow Coefficient [-]", "[-]")
     info["RC_phi"].limit_var = "rc_phi_surge"
     info["RC_phi"].limit_var_type = "min"
+    info["RC_psi"] = C_des_od_label_unit_info("rc_psi_des", "rc_psi_od", "Re-Comp\nIdeal Head Coef [-]",
+                                              "Re-Compressor Ideal Head Coefficient [-]", "[-]")
+    info["RC_psi"].limit_var = "rc_psi_max_at_N_des"
+    info["RC_psi"].limit_var_type = "max"
     info["RC_tip_speed"] = C_des_od_label_unit_info("rc_tip_ratio_des", "rc_tip_ratio_od", "Re-Comp\nTip Speed Ratio [-]", "Re-Compressor Tip Speed Ratio [-]", "[-]")
     info["RC_tip_speed"].des_d_type = "list"
     info["RC_tip_speed"].od_d_type = "matrix"
@@ -189,7 +199,9 @@ def get_des_od_label_unit_info__calc_metrics():
         
     info["t_T_in"] = C_des_od_label_unit_info("T_turb_in", "T_co2_PHX_out_od", "Turbine\nInlet Temp [C]", "Turbine Inlet Temperature [C]", "[C]")
     info["t_T_in"].limit_var = "T_htf_hot_des"
+    info["t_P_in"] = C_des_od_label_unit_info("t_P_in_des", "t_P_in_od", "Turbine\nInlet Pres [MPa]", "Turbine Inlet Pressure [MPa]", "[MPa]")
     info["t_T_out"] = C_des_od_label_unit_info("t_T_out_des", "t_T_out_od", "Turbine\nOutlet Temp [C]", "Turbine Outlet Temperature [C]", "[C]")
+    info["t_P_out"] = C_des_od_label_unit_info("t_P_out_des", "t_P_out_od", "Turbine\nOutlet Pres [MPa]", "Turbine Outlet Pressure [MPa]", "[MPa]")
     info["t_W_dot"] = C_des_od_label_unit_info("t_W_dot", "t_W_dot_od", "Turbine\nPower [MWe]", "Turbine Power [MWe]", "[MWe]")
     info["t_m_dot"] = C_des_od_label_unit_info("t_m_dot_des", "t_m_dot_od", "Turbine\nMass Flow [kg/s]", "Turbine Mass Flow Rate [kg/s]", "[kg/s]")
     info["t_nu"] = C_des_od_label_unit_info("t_nu_des", "t_nu_od", "Turbine\nVelocity Ratio [-]", "Turbine Velocity Ratio [-]", "[-]")
@@ -199,33 +211,45 @@ def get_des_od_label_unit_info__calc_metrics():
     info["t_cost"] = C_des_od_label_unit_info("t_cost", "none", "Turbine\nCost [M$]", "Turbine Cost [M$]", "[M$]")
     info["t_cost"].od_d_type = "nan"
 
-    info["LTR_UA"] = C_des_od_label_unit_info("UA_LTR", "none", "LTR\nUW [MW/K]", "Low Temp Recuperator Conductance [MW/K]", "[MW/K]")
+    info["LTR_HP_T_out"] = C_des_od_label_unit_info("LTR_HP_T_out_des", "LTR_HP_T_out_od", "LTR HP\nOutlet Temp [C]", "LTR HP Outlet Temperature [C]", "[C]")
+    info["LTR_UA"] = C_des_od_label_unit_info("LTR_UA_assigned", "none", "LTR\nUA Assigned [MW/K]", "LTR Conductance Assigned [MW/K]", "[MW/K]")
     info["LTR_UA"].od_d_type = "nan"
+    info["LTR_UA_calculated"] = C_des_od_label_unit_info("LTR_UA_calculated", "none", "LTR\nUA Calculated [MW/K]", "LTR Conductance Calculated [MW/K]", "[MW/K]")
+    info["LTR_UA_calculated"].od_d_type = "nan"
     info["LTR_eff"] = C_des_od_label_unit_info("eff_LTR", "eff_LTR_od", "LTR\nEffectiveness [-]", "Low Temp Recuperator Effectiveness [-]", "[-]")
     info["LTR_q_dot"] = C_des_od_label_unit_info("q_dot_LTR", "q_dot_LTR_od", "LTR\nDuty [MWt]", "Low Temp Recuperator Duty [MWt]", "[MWt]")
-    info["LTR_min_dT"] = C_des_od_label_unit_info("LTR_min_dT", "none", "LTR Min\nTemp Difference [C]", "LTR Min Temperature Difference [C]", "[C]")
-    info["LTR_min_dT"].od_d_type = "nan"
+    info["LTR_LP_deltaP"] = C_des_od_label_unit_info("LTR_LP_deltaP_des", "LTR_LP_deltaP_od", "LTR LP\nPres Drop [-]", "LTR LP Pressure Drop [-]", "[-]")
+    info["LTR_HP_deltaP"] = C_des_od_label_unit_info("LTR_HP_deltaP_des", "LTR_HP_deltaP_od", "LTR HP\nPres Drop [-]", "LTR HP Pressure Drop [-]", "[-]")
+    info["LTR_min_dT"] = C_des_od_label_unit_info("LTR_min_dT", "LTR_min_dT_od", "LTR Min\nTemp Difference [C]", "LTR Min Temperature Difference [C]", "[C]")
     info["LTR_cost"] = C_des_od_label_unit_info("LTR_cost", "none", "LTR\nCost [M$]", "Low Temp Recuperator Cost [M$]", "[M$]")
     info["LTR_cost"].od_d_type = "nan"
     
-    info["HTR_UA"] = C_des_od_label_unit_info("UA_HTR", "none", "HTR\nUW [MW/K]", "High Temp Recuperator Conductance [MW/K]", "[MW/K]")
+    info["HTR_LP_T_out"] = C_des_od_label_unit_info("HTR_LP_T_out_des", "HTR_LP_T_out_od", "HTR LP\nOutlet Temp [C]", "HTR LP Outlet Temperature [C]", "[C]")
+    info["HTR_HP_T_in"] = C_des_od_label_unit_info("HTR_HP_T_in_des", "HTR_HP_T_in_od", "HTR HP\nInlet Temp [C]", "HTR HP Inlet Temperature [C]", "[C]")
+    info["HTR_UA"] = C_des_od_label_unit_info("HTR_UA_assigned", "none", "HTR\nUA Assigned [MW/K]", "HTR Conductance Assigned [MW/K]", "[MW/K]")
     info["HTR_UA"].od_d_type = "nan"
+    info["HTR_UA_calculated"] = C_des_od_label_unit_info("HTR_UA_calculated", "none", "HTR\nUA Calculated [MW/K]", "HTR Conductance Calculated [MW/K]", "[MW/K]")
+    info["HTR_UA_calculated"].od_d_type = "nan"
     info["HTR_eff"] = C_des_od_label_unit_info("eff_HTR", "eff_HTR_od", "HTR\nEffectiveness [-]", "High Temp Recuperator Effectiveness [-]", "[-]")
     info["HTR_q_dot"] = C_des_od_label_unit_info("q_dot_HTR", "q_dot_HTR_od", "HTR\nDuty [MWt]", "High Temp Recuperator Duty [MWt]", "[MWt]")
-    info["HTR_min_dT"] = C_des_od_label_unit_info("HTR_min_dT", "none", "HTR Min\nTemp Difference [C]", "HTR Min Temperature Difference [C]", "[C]")
-    info["HTR_min_dT"].od_d_type = "nan"
+    info["HTR_LP_deltaP"] = C_des_od_label_unit_info("HTR_LP_deltaP_des", "HTR_LP_deltaP_od", "HTR LP\nPres Drop [-]", "HTR LP Pressure Drop [-]", "[-]")
+    info["HTR_HP_deltaP"] = C_des_od_label_unit_info("HTR_HP_deltaP_des", "HTR_HP_deltaP_od", "HTR HP\nPres Drop [-]", "HTR HP Pressure Drop [-]", "[-]")
+    info["HTR_min_dT"] = C_des_od_label_unit_info("HTR_min_dT", "HTR_min_dT_od", "HTR Min\nTemp Difference [C]", "HTR Min Temperature Difference [C]", "[C]")
     info["HTR_cost"] = C_des_od_label_unit_info("HTR_cost", "none", "HTR\nCost [M$]", "High Temp Recuperator Cost [M$]", "[M$]")
     info["HTR_cost"].od_d_type = "nan"
     
     info["recup_total_cost"] = C_des_od_label_unit_info("recup_total_cost", "none", "Total Recup\n Cost [M$]", "Total Recuperator Cost [M$]", "[M$]")
     info["recup_total_cost"].od_d_type = "nan"
-    info["recup_tot_UA"] = C_des_od_label_unit_info("UA_recup_total", "none", "Total Recup\nUA [MW/K]", "Total Recuperator Conductance [MW/K]", "[MW/K]")
+    info["recup_tot_UA"] = C_des_od_label_unit_info("recup_total_UA_assigned", "none", "Total Recup\nUA Assigned [MW/K]", "Total Recuperator Conductance Assigned [MW/K]", "[MW/K]")
     info["recup_tot_UA"].od_d_type = "nan"
+    info["recup_tot_UA_calculated"] = C_des_od_label_unit_info("recup_total_UA_calculated", "none", "Total Recup\nUA Calculated [MW/K]", "Total Recuperator Conductance Calculated [MW/K]", "[MW/K]")
+    info["recup_tot_UA_calculated"].od_d_type = "nan"
     info["recup_tot_UA"].l_label = "Total Recuperator\nConductance [MW/K]"
     info["recup_LTR_UA_frac"]  = C_des_od_label_unit_info("recup_LTR_UA_frac", "none", "Fraction of Total\nUA to LTR [-]", "Fraction of Total Conductance to LTR [-]", "[-]")
     info["recup_LTR_UA_frac"].od_d_type = "nan"
         
     info["PHX_T_co2_in"] = C_des_od_label_unit_info("T_co2_PHX_in", "T_co2_PHX_in_od", "PHX CO2\nInlet Temp [C]", "PHX CO2 Inlet Temperature [C]", "[C]")
+    info["PHX_P_co2_in"] = C_des_od_label_unit_info("P_co2_PHX_in", "P_co2_PHX_in_od", "PHX CO2\nInlet Pres [MPa]", "PHX CO2 Inlet Pressure [MPa]", "[MPa]")
     info["PHX_m_dot_HTF"] = C_des_od_label_unit_info("m_dot_htf_des", "none", "PHX HTF\n Mass Flow Rate [kg/s]", "PHX HTF Mass Flow Rate [kg/s]", "[kg/s]")
     info["PHX_m_dot_HTF"].od_d_type = "nan"
     info["PHX_m_dot_HTF"].y_label_style = "sci"
@@ -233,12 +257,14 @@ def get_des_od_label_unit_info__calc_metrics():
     info["PHX_UA"].od_d_type = "nan"
     info["PHX_dT"] = C_des_od_label_unit_info("deltaT_HTF_PHX", "deltaT_HTF_PHX_od", "PHX HTF\nTemp Diff [C]", "PHX HTF Temperature Difference [C]", "[C]")
     info["PHX_eff"] = C_des_od_label_unit_info("eff_PHX", "phx_eff_od", "PHX\nEffectivenes [-]", "PHX Effectiveness [-]", "[-]")
+    info["PHX_co2_deltaP"] = C_des_od_label_unit_info("PHX_co2_deltaP_des", "phx_co2_deltaP_od", "PHX CO2\nPres Drop [-]", "PHX CO2 Pressure Drop [-]", "[-]")
     info["PHX_cost"] = C_des_od_label_unit_info("PHX_cost", "none", "PHX\nCost [M$]", "PHX Cost [M$]", "[M$]")
     info["PHX_cost"].od_d_type = "nan"
     
     info["LP_cooler_T_in"] = C_des_od_label_unit_info("LP_cooler_T_in", "LP_cooler_T_in_od", "LP Cooler\nInlet Temp [C]", "Low Pressure Cooler Inlet Temp [C]", "[C]")
     info["LP_cooler_in_isen_deltah_to_P_mc_out"] = C_des_od_label_unit_info("LP_cooler_in_isen_deltah_to_P_mc_out", "LP_cooler_in_isen_deltah_to_P_mc_out_od", "LP Cool In\nIsen Spec Work [kJ/kg]", "Low Pressure Cooler Inlet Isen Spec Work [kJ/kg]", "[kJ/kg]")
     info["LP_cooler_rho_in"] = C_des_od_label_unit_info("LP_cooler_rho_in", "LP_cooler_rho_in_od", "LP Cooler\nInlet Density [kg/m3]", "Low Pressure Cooler Inlet Density [kg/m3]", "[kg/m3]")
+    info["LP_cooler_co2_deltaP"] = C_des_od_label_unit_info("LP_cooler_co2_deltaP_des", "LP_cooler_co2_deltaP_od", "LP Cooler CO2\nPres Drop [-]", "LP Cooler Pressure Drop [-]", "[-]")
     
     info["LP_cooler_cost"] = C_des_od_label_unit_info("LP_cooler_cost", "none", "LP Cooler\nCost [M$]", "Low Pressure Cooler Cost [M$]", "[M$]")
     info["LP_cooler_cost"].od_d_type = "nan"
@@ -329,36 +355,69 @@ def get_default_sco2_dict():
     des_par["T_htf_hot_des"] = 670.0;      #[C] HTF design hot temperature (PHX inlet)
     des_par["dT_PHX_hot_approach"] = 20.0; #[C/K] Temperature difference between hot HTF and turbine inlet       
     des_par["T_amb_des"] = 35.0;           #[C] Ambient temperature at design 
-    des_par["dT_mc_approach"] = 10.0;      #[C] Temperature difference between main compressor CO2 inlet and ambient air
+    des_par["dT_mc_approach"] = 5.0;       #[C] Temperature difference between main compressor CO2 inlet and ambient air
     des_par["site_elevation"] = 300;       #[m] Used to size air cooler...
     des_par["W_dot_net_des"] = 115.0;      #[MWe] Design cycle power output (no cooling parasitics)
     
-    des_par["design_method"] = 2;          #[-] 1 = specify efficiency, 2 = specify total recup UA
+    des_par["design_method"] = 2;          #[-] 1 = specify efficiency, 2 = specify total recup UA, 3 = Specify each recup design (see inputs below)
     des_par["eta_thermal_des"] = 0.46;     #[-] Power cycle thermal efficiency
-    des_par["UA_recup_tot_des"] = 40000/115.0*des_par["W_dot_net_des"]   #[kW/K] Total recuperator conductance
+    des_par["UA_recup_tot_des"] = 30000/115.0*des_par["W_dot_net_des"]   #[kW/K] Total recuperator conductance
     
     des_par["cycle_config"] = 1            #[1] = RC, [2] = PC
            
     des_par["is_recomp_ok"] = 1;           #[-] 1 = Yes, 0 = simple cycle only
     des_par["is_P_high_fixed"] = 0;        #[-] 0 = No, optimize. 1 = Yes
     des_par["is_PR_fixed"] = 0;            #[-] 0 = No, >0 = Yes
+    des_par["is_IP_fixed"] = 0;
+	
     des_par["des_objective"] = 1;          #[-] 2 = hit min deltaT then max efficiency, != 2 = max efficiency
     des_par["min_phx_deltaT"] = 1000;      #[C] Min allowable deltaT across PHX
     des_par["rel_tol"] = 3;                #[-] Baseline solver and optimization relative tolerance exponent (10^-rel_tol)
            
-    des_par["eta_isen_mc"] = 0.89;         #[-] Main compressor isentropic efficiency
-    des_par["eta_isen_rc"] = 0.89;         #[-] Recompressor isentropic efficiency
-    des_par["eta_isen_pc"] = 0.89;         #[-] Precompressor isentropic efficiency
-    des_par["eta_isen_t"] = 0.90;          #[-] Turbine isentropic efficiency
-    des_par["LT_recup_eff_max"] = 0.96;    #[-] Maximum effectiveness low temperature recuperator
-    des_par["HT_recup_eff_max"] = 0.96;    #[-] Maximum effectiveness high temperature recuperator
-    des_par["deltaP_counterHX_frac"] = 0.0;#[-] Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop
-    des_par["P_high_limit"] = 25;          #[MPa] Cycle high pressure limit
+    # Weiland & Thimsen 2016
+    # In most studies, 85% is an accepted isentropic efficiency for either the main or recompression compressors, and is the recommended assumption.
+    des_par["eta_isen_mc"] = 0.85  # [-] Main compressor isentropic efficiency
+    des_par["eta_isen_rc"] = 0.85  # [-] Recompressor isentropic efficiency
+    des_par["eta_isen_pc"] = 0.85  # [-] Precompressor isentropic efficiency
+
+    # Weiland & Thimsen 2016
+    # Recommended turbine efficiencies are 90% for axial turbines above 30 MW, and 85% for radial turbines below 30 MW.
+    des_par["eta_isen_t"] = 0.90  # [-] Turbine isentropic efficiency
+
+    des_par["P_high_limit"] = 25  # [MPa] Cycle high pressure limit
     
-    des_par["dT_PHX_cold_approach"] = 20;  #[C/K] Temperature difference between cold HTF and cold CO2 PHX inlet
-    des_par["fan_power_frac"] = 0.01;      #[-] Fraction of net cycle power consumed by air cooler fan
-    des_par["deltaP_cooler_frac"] = 0.002; #[-] Fraction of CO2 inlet pressure that is design point cooler CO2 pressure drop
-    
+	# Weiland & Thimsen 2016
+    # Multiple literature sources suggest that recuperator cold side (high pressure) pressure drop of
+    # approximately 140 kPa (20 psid) and a hot side (low pressure) pressure drop of 280 kPa (40 psid) can be reasonably used.
+    # Note: Unclear what the low pressure assumption is in this study, could be significantly lower for direct combustion cycles
+    recup_eff_max = 1.0
+    deltaP_recup_HP = 0.0056  # [-] = 0.14[MPa]/25[MPa]
+    deltaP_recup_LP = 0.0311  # [-] = 0.28[MPa]/9[MPa]
+    # LTR
+    des_par["LTR_design_code"] = 3        # 1 = UA, 2 = min dT, 3 = effectiveness
+    des_par["LTR_UA_des_in"] = 2200.0     # [kW/K] (required if LTR_design_code == 1)
+    des_par["LTR_min_dT_des_in"] = 12.0   # [C] (required if LTR_design_code == 2)
+    des_par["LTR_eff_des_in"] = 0.895     # [-] (required if LTR_design_code == 3)
+    des_par["LT_recup_eff_max"] = recup_eff_max    # [-] Maximum effectiveness low temperature recuperator
+    des_par["LTR_LP_deltaP_des_in"] = deltaP_recup_LP  # [-]
+    des_par["LTR_HP_deltaP_des_in"] = deltaP_recup_HP  # [-]
+    # HTR
+    des_par["HTR_design_code"] = 3        # 1 = UA, 2 = min dT, 3 = effectiveness
+    des_par["HTR_UA_des_in"] = 2800.0     # [kW/K] (required if LTR_design_code == 1)
+    des_par["HTR_min_dT_des_in"] = 19.2   # [C] (required if LTR_design_code == 2)
+    des_par["HTR_eff_des_in"] = 0.935     # [-] (required if LTR_design_code == 3)
+    des_par["HT_recup_eff_max"] = recup_eff_max  # [-] Maximum effectiveness high temperature recuperator
+    des_par["HTR_LP_deltaP_des_in"] = deltaP_recup_LP  # [-]
+    des_par["HTR_HP_deltaP_des_in"] = deltaP_recup_HP  # [-]
+    # PHX
+    des_par["PHX_co2_deltaP_des_in"] = deltaP_recup_HP  # [-]
+    des_par["dT_PHX_cold_approach"] = 20  # [C/K] default 20. Temperature difference between cold HTF and cold CO2 PHX inlet
+    # Air Cooler
+    des_par["deltaP_cooler_frac"] = 0.005  # [-] Fraction of CO2 inlet pressure that is design point cooler CO2 pressure drop
+    des_par["fan_power_frac"] = 0.02  # [-] Fraction of net cycle power consumed by air cooler fan. 2% here per Turchi et al.
+    # Default
+    des_par["deltaP_counterHX_frac"] = 0.0054321  # [-] Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop
+	
     return des_par
  
 class C_sco2_sim:
@@ -1191,6 +1250,332 @@ def filter_dict_to_list_type_entries_only(dict_in):
             dict_out[key] = dict_in[key]
             
     return dict_out
+
+def compare_two_json_files(json_in_1, desc_1, json_in_2, desc_2, comp_txt_out):
+
+    dict_1 = json.load(open(json_in_1))
+    dict_2 = json.load(open(json_in_2))
+
+    comp_str = compare_two_dict_by_keys(dict_1, desc_1, dict_2, desc_2)
+
+    outfile = open(comp_txt_out, "w")
+    outfile.write(comp_str)
+    outfile.close()
+
+def compare_two_dict_by_keys(dict_1, desc_1, dict_2, desc_2):
+
+    d1_keys = set(dict_1.keys())
+    d2_keys = set(dict_2.keys())
+
+    intersect_keys = d1_keys.intersection(d2_keys)
+
+    added_keys_d1 = d1_keys - d2_keys
+    local_str = "added keys " + desc_1 + " = " + str(added_keys_d1)
+    print(local_str)
+    key_summary_str = local_str + " \n"
+    local_str = "length added keys " + desc_1 + " = " + str(len(added_keys_d1))
+    print(local_str)
+    key_summary_str = key_summary_str + local_str + " \n"
+
+    added_keys_d2 = d2_keys - d1_keys
+    local_str = "added keys " + desc_2 + " = " + str(added_keys_d2)
+    print(local_str)
+    key_summary_str = key_summary_str + local_str + " \n"
+    local_str = "length added keys " + desc_2 + " = " + str(len(added_keys_d2))
+    print(local_str)
+    key_summary_str = key_summary_str + local_str + " \n"
+
+    mod_keys_set = set(o for o in intersect_keys if dict_1[o] != dict_2[o])
+    modified_keys = list(mod_keys_set)
+    local_str = "modified keys = " + str(mod_keys_set)
+    print(local_str)
+    key_summary_str = key_summary_str + local_str + " \n"
+
+    mismatch_str = ""
+    match_str = ""
+
+    # i_key = modified_keys[0]
+    for i_key in modified_keys:
+
+        i_data1_key = dict_1[i_key]
+        i_data2_key = dict_2[i_key]
+
+        c1_data = C_data_properties(i_data1_key, desc_1)
+        c2_data = C_data_properties(i_data2_key, desc_2)
+
+        mismatch_str_local, match_str_local = compare_data_properties(c1_data, c2_data)
+
+        key_str = "For key " + str(i_key)
+
+        if (mismatch_str_local != ""):
+            mismatch_str = mismatch_str + key_str + " \n" + mismatch_str_local + " \n"
+        elif (match_str_local != ""):
+            match_str = match_str + key_str + " \n" + match_str_local + " \n"
+        else:
+            print("both strings null")
+
+    print("match str = ", match_str)
+    print("mismatch str = ", mismatch_str)
+
+    return key_summary_str + match_str + mismatch_str
+
+class C_data_properties:
+
+    def __init__(self, data, name = ""):
+        self.data = data
+
+        self.name = name
+
+        self.structure_type, self.data_type, self.l_d1, self.l_d2 = get_entry_data_properties(self.data)
+
+def get_np_list_statistics(np_list):
+
+    min_out = min(np_list)
+    max_out = max(np_list)
+    max_abs_out = max(abs(min_out), abs(max_out))
+
+    mean = np.mean(np_list)
+    rms = np.sqrt(np.mean(np_list**2))
+    mean_abs_error = np.mean(np.abs(np_list))
+
+    out_str = "The differences are " + str(np_list) + "\n" + \
+        "The maximum absolute difference is " + str(max_abs_out) + "\n" + \
+        "The mean difference is " + str(mean) + "\n" + \
+        "The RMS difference is " + str(rms) + "\n" + \
+        "The mean absolute difference is " + str(mean_abs_error) + "\n"
+
+    return max_abs_out, mean, rms, mean_abs_error, out_str
+
+
+def compare_data_properties(c_data_1, c_data_2):
+
+    mismatch_str = ""
+    match_str = ""
+
+    value_str = "The " + c_data_1.name + " data unit value is = " + str(c_data_1.data) + "\n" +\
+                "The " + c_data_2.name + " data unit value is = " + str(c_data_2.data) + "\n"
+
+    if(c_data_1.structure_type == c_data_2.structure_type):
+
+        if(c_data_1.data_type != c_data_2.data_type):
+
+            mismatch_str = "Both data units have the same structure, but " + \
+                    "the " + c_data_1.name + " data unit is type " + c_data_1.data_type + \
+                    ", but the " + c_data_2.name + " data unit is type " + c_data_2.data_type + "\n"
+            mismatch_str = mismatch_str + value_str
+
+        else:
+
+            if(c_data_1.data_type == "float"):
+
+                if(c_data_1.structure_type == "single"):
+
+                    if(c_data_1.data != 0):
+                        perc_diff = (c_data_2.data - c_data_1.data) / c_data_1.data * 100.0
+                        match_str = "The relative difference between the " + \
+                                    c_data_1.name + " data unit and the " + c_data_2.name + " data unit " +\
+                                    " is " + str(perc_diff) + " %\n"
+                    else:
+                        data_diff = (c_data_2.data - c_data_1.data)
+                        match_str = "The difference between the " + \
+                                    c_data_2.name + " data unit and the " + c_data_1.name + " data unit " + \
+                                    " is " + str(data_diff) + "\n"
+
+                    match_str = match_str + value_str
+
+                elif(c_data_1.structure_type == "list"):
+
+                    if(c_data_1.l_d1 != c_data_2.l_d1):
+                        mismatch_str = "The " + c_data_1.name + " data unit is a list of length " + \
+                                       str(c_data_1.l_d1) + ", but the " + \
+                                       c_data_2.name + " data unit is a list of length " + str(c_data_2.l_d1) + "\n"
+                        mismatch_str = mismatch_str + value_str
+
+                    else:
+                        list_diff = np.array(c_data_2.data) - np.array(c_data_1.data)
+
+                        match_str = "Statistics on the difference between the " + \
+                                    c_data_2.name + " data unit and the " + c_data_1.name + " data unit: \n"
+
+                        max_abs_calc, mean_calc, rms_calc, mean_abs_error_calc, out_str_calc = get_np_list_statistics(list_diff)
+
+                        match_str = match_str + out_str_calc + value_str
+
+                elif(c_data_1.structure_type == "matrix"):
+
+                    if(c_data_1.l_d1 != c_data_2.l_d2 or c_data_1.l_d2 != c_data_2.l_d2):
+                        mismatch_str = "The " + c_data_1.name + " data unit is a matrix " + \
+                                       ", with at least dimension that is a different length than matrix " + \
+                                       c_data_2.name
+                        mismatch_str = mismatch_str + value_str
+
+                    else:
+                        np1 = np.array(c_data_1.data)
+                        np2 = np.array(c_data_2.data)
+
+                        flatten_list_diff = np2.flatten() - np1.flatten()
+
+                        match_str = "Statistics on the difference between the " + \
+                                    c_data_2.name + " data unit and the " + c_data_1.name + " data unit: \n"
+
+                        max_abs_calc, mean_calc, rms_calc, mean_abs_error_calc, out_str_calc = get_np_list_statistics(
+                            flatten_list_diff)
+
+                        match_str = match_str + out_str_calc + value_str
+
+                else:
+                    mismatch_str = "Structure type " + c_data_2.structure_type + " can't be further processed\n"
+                    mismatch_str = mismatch_str + value_str
+
+            else:
+
+                match_str = "Both data units have the same structure and data types, " + \
+                            "but the data type is not float so there is no statistical analysis\n"
+                match_str = match_str + value_str
+
+    else:
+
+        mismatch_str = "The " + c_data_1.name + " data unit is structured as a " + \
+               c_data_1.structure_type + ", but the " + \
+               c_data_2.name + " data unit is structured as a " + c_data_2.structure_type + "\n"
+
+        mismatch_str = mismatch_str + value_str
+
+    return mismatch_str, match_str
+
+
+def test_get_entry_data_properties():
+    
+    s1_data = [[1.1, 1.2, 1.3],[2.1, 2.2, 2.3]]
+    #s1_data = [[[11.1, 11.2, 11.3], [22.1, 22.2, 22.3]], [[11.1, 11.2, 11.3], [22.1, 22.2, 22.3]]]
+    #s1_data = [1.1, 2.2, 3.3]
+    #s1_data = 'hello world'
+    #s1_data = 0
+    s2_data = [[11.1, 11.2, 11.3], [22.1, 22.2, 22.3]]
+    #s2_data = [[[11.1, 11.2, 11.3], [22.1, 22.2, 22.3]],[[11.1, 11.2, 11.3], [22.1, 22.2, 22.3]]]
+    #s2_data = 'hello world'
+    #s2_data = [11.1, 22.2, 33.3]
+    #s2_data = 3
+    
+    c1_data = C_data_properties(s1_data, "first")
+    c2_data = C_data_properties(s2_data, "second")
+
+    #print("structure type = ", c2_data.structure_type)
+    #print("data type = ", c2_data.data_type)
+    #print("list dimension = ", c2_data.l_d1)
+    #print("matrix dimension = ", c2_data.l_d2)
+
+    mismatch_str, match_str = compare_data_properties(c1_data, c2_data)
+
+    print("mismatch string = \n", mismatch_str)
+    print("match string = \n", match_str)
+
+def get_entry_data_properties(data_in):
+    structure_type = "undefined"
+    data_type = "undefined"
+    l_d1 = -1
+    l_d2 = -1
+
+    # is 'data_in' a list?
+    if (isinstance(data_in, list)):
+
+        # is the first entry in the list 'data_in' also a list?
+        if (isinstance(data_in[0], list)):
+
+            # is the first entry in the first row of the matrix 'data_in' also a list?
+            if(isinstance(data_in[0][0], list)):
+                structure_type = "array_of_3_or_more_dimensions"
+                data_type = "unknown"
+
+            else:
+
+                structure_type = "matrix"
+                
+                for k in range(len(data_in)):
+
+                    if(k==0):
+                        k_0_structure_type, k_0_data_type, k_0_l_d1, k_0_l_d2 = get_list_data_type(data_in[k])
+                        k_structure_type = k_0_structure_type
+                        is_matrix_same_data_type = True
+                        are_lists_same_length = True
+                    else:
+                        k_structure_type, k_data_type, k_l_d1, k_l_d2 = get_list_data_type(data_in[k])
+                        if(k_0_data_type != k_data_type):
+                            is_matrix_same_data_type = False 
+                        if(k_0_l_d1 != k_l_d1):
+                            are_lists_same_length = False
+                            
+                        if(k_structure_type != "list"):
+                            structure_type = "matrix_of_lists_and_others"
+                            
+                if(is_matrix_same_data_type):
+                    data_type = k_0_data_type
+                else:
+                    data_type = "other"
+                    
+                if(not(are_lists_same_length)):
+                    structure_type = "matrix_of_unequal_list_length"
+                    
+                return structure_type, data_type, len(data_in), k_l_d1
+
+
+        else:
+
+            return get_list_data_type(data_in)
+
+    else:
+        structure_type = "single"
+        data_type = get_single_value_data_type(data_in)
+        l_d1 = -1
+        l_d2 = -1
+
+    return structure_type, data_type, l_d1, l_d2
+
+def get_list_data_type(val_in):
+
+    j_0_data_type = "unknown"
+    for j in range(len(val_in)):
+
+        if (j == 0):
+            structure_type = "list"
+            j_0_data_type = get_single_value_data_type(val_in[j])
+            j_data_type = j_0_data_type
+            is_list_same_data_type = True
+            l_d1 = len(val_in)
+            l_d2 = -1
+        else:
+            j_data_type = get_single_value_data_type(val_in[j])
+            if (j_0_data_type != j_data_type):
+                is_list_same_data_type = False
+
+        if (j_data_type == "input_value_is_list"):
+            structure_type = "list_of_singles_and_others"
+
+    if (is_list_same_data_type):
+        data_type = j_0_data_type
+    else:
+        data_type = "other"
+
+    return structure_type, data_type, l_d1, l_d2
+
+
+def get_single_value_data_type(val_in):
+
+    if (isinstance(val_in, list)):
+        return "input_value_is_list"
+    elif (isinstance(val_in, str)):
+        return "string"
+    elif (math.isnan(float(val_in))):
+        return "nan"
+    elif (str(val_in) == "nan"):
+        return "string_nan"
+    elif (isinstance(val_in, float)):
+        return "float"
+    elif (isinstance(val_in, int)):
+        return "float"
+    else:
+        return "unknown"
+
 
 def get_entry_data_type(data_in):
     

@@ -164,7 +164,7 @@ class C_sco2_cycle_TS_plot:
         if(self.is_annotate_HTR):
             HTR_title = r'$\bfHigh$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_HTR"]) + " MWt"
-            UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["UA_HTR"]) + " MW/K"
+            UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["HTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_HTR"])
         
             T_HTR_LP_data = self.dict_cycle_data["T_HTR_LP_data"]
@@ -184,7 +184,7 @@ class C_sco2_cycle_TS_plot:
         if(self.is_annotate_LTR):
             LTR_title = r'$\bfLow$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_LTR"]) + " MWt"
-            UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["UA_LTR"]) + " MW/K"
+            UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["LTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_LTR"])
             
             T_LTR_LP_data = self.dict_cycle_data["T_LTR_LP_data"]
@@ -855,12 +855,13 @@ def cycle_label(cycle_data, is_multi_line = False, is_file_name = False):
         cycle_abv = "RC"
     
     if(is_multi_line):
-        label = cycle_name + ": " + "\n" + r'$\eta$' + " = " + '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100) + "%,\nUA = "+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + " MW/K"
+        label = cycle_name + ": " + "\n" + r'$\eta$' + " = " + '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100) + "%" #,\nUA = "+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + " MW/K"
     elif(not(is_file_name)):
-        label = cycle_name + ": " + r'$\eta$' + " = " + '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100) + "%, UA = "+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + " MW/K"
+        label = cycle_name + ": " + r'$\eta$' + " = " + '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100) + "%" #, UA = "+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + " MW/K"
     else:
-        label = cycle_abv + "_UA_"+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + "_eta_"+ '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100)
-        
+        label = cycle_abv + "_eta_"+ '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100)
+        #label = cycle_abv + "_UA_"+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + "_eta_"+ '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100)
+
     return label
 
 class C_OD_stacked_outputs_plot:
@@ -1010,7 +1011,7 @@ class C_OD_stacked_outputs_plot:
             
             for j, key in enumerate(self.y_vars):
                 
-                j_l_i = string.ascii_lowercase[j]
+                j_l_i = string.ascii_lowercase[j%26]
                 
                 j_col = j//n_rows
                 j_row = j%n_rows
@@ -1099,8 +1100,17 @@ class C_OD_stacked_outputs_plot:
                                     if(y_val_local < self.list_dict_results[i][y_limit]):                                        
                                         y_feasible_flag_i[j_in] = True
 
-        fig1.legend(legend_lines, legend_labels, fontsize = self.legend_fontsize, ncol = self.n_leg_cols, 
-             loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
+        #fig1.legend(legend_lines, legend_labels, fontsize = self.legend_fontsize, ncol = self.n_leg_cols, 
+        #     loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))        
+        
+        if(self.is_legend):
+            if( self.is_label_leg_cols != "" and len(self.is_label_leg_cols) == 1):
+                ii_leg = fig1.legend(legend_lines, legend_labels, title = self.is_label_leg_cols[0], fontsize = self.legend_fontsize, ncol = self.n_leg_cols, 
+                     loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
+                plt.setp(ii_leg.get_title(),fontsize=self.legend_fontsize)
+            else:
+                fig1.legend(legend_lines, legend_labels, fontsize = self.legend_fontsize, ncol = self.n_leg_cols, 
+                     loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
         
         if(self.is_legend):
         	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.012,0.02,0.98,self.bb_y_max_is_leg))

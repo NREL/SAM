@@ -1,7 +1,130 @@
 Inverter CEC Database
-995
-577
+992
+626
+28
+TextEntry
+
+1
+10
+Name
+5
+12
+inv_cec_date
+X
+3
+843
+Y
+3
+591
+Width
+3
+100
+Height
+3
 24
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+TextEntry
+
+1
+10
+Name
+5
+12
+inv_cec_name
+X
+3
+96
+Y
+3
+591
+Width
+3
+399
+Height
+3
+24
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+TextEntry
+
+1
+10
+Name
+5
+12
+inv_cec_type
+X
+3
+567
+Y
+3
+591
+Width
+3
+198
+Height
+3
+24
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -500,8 +623,8 @@ Library
 CEC Inverters
 Fields
 5
-76
-Name,Paco,Pdco,Pso,Pnt,Vac,Vdcmax,Vdco,Mppt_high,Mppt_low,C0,C1,C2,C3,Idcmax
+94
+Name,Paco,Pdco,Pso,Pnt,Vac,Vdcmax,Vdco,Mppt_high,Mppt_low,C0,C1,C2,C3,Idcmax,cec_type,cec_date
 Numeric
 
 1
@@ -678,7 +801,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -1097,7 +1220,7 @@ Width
 980
 Height
 3
-351
+429
 Caption
 5
 36
@@ -1113,6 +1236,42 @@ Name
 5
 9
 object 21
+X
+3
+24
+Y
+3
+570
+Width
+3
+960
+Height
+3
+16
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+15
+CEC Information
+Bold
+2
+1
+Divider
+
+1
+9
+Name
+5
+11
+object 2126
 X
 3
 456
@@ -1187,20 +1346,20 @@ Name
 object 7
 X
 3
-9
+15
 Y
 3
-546
+537
 Width
 3
-978
+960
 Height
 3
 24
 Caption
 5
-141
-Note: If you are modeling a system with microinverters or DC power optimizers, see the "Losses" page to adjust the system losses accordingly.
+139
+Note: If you are modeling a system with microinverters or DC power optimizers, see the Losses page to adjust the system losses accordingly.
 TextColour
 4
 255
@@ -1243,7 +1402,44 @@ Height
 3
 297
 
-18
+21
+inv_cec_date
+3
+4
+CEC date
+ 
+PV Inverter (CEC Database)
+0
+4
+1
+4
+0
+Default
+inv_cec_name
+3
+4
+CEC name
+ 
+PV Inverter (CEC Database)
+0
+4
+1
+4
+2
+''
+Default
+inv_cec_type
+3
+4
+CEC type
+ 
+PV Inverter (CEC Database)
+0
+4
+1
+4
+0
+Default
 inv_snl_ac_voltage
 3
 1
@@ -1359,7 +1555,7 @@ Numeric
 inv_snl_inverter_name
 3
 4
-Inverter name
+Inverter CEC library selection
  
 PV Inverter (CEC Database)
 15
@@ -1497,7 +1693,7 @@ PV Inverter (CEC Database)
 0
 Numeric
 
-1771
+1772
 equations{ '$MIMO$ SandiaInverterEfficiencies' } = define()
 {
 	//assign specs
@@ -1550,7 +1746,8 @@ equations{ '$MIMO$ SandiaInverterEfficiencies' } = define()
 	${inv_snl_eff_cec} = cec_eff * 100;
 	${inv_snl_eff_euro} = euro_eff * 100;
 };
-3295
+
+3904
 function plot_inverter_curve()
 {
 	//assign specs
@@ -1625,7 +1822,8 @@ function plot_inverter_curve()
 	//MAKE THE PLOT	
 	setplot("pv.inv.sandia.eff_curve");
 	clearplot("pv.inv.sandia.eff_curve");
-	plotopt({"title"=${inv_snl_inverter_name},"popup"=true,"backcolor"=[255,255,255],"legend"=true, "legendpos"=[65,60]});
+	//plotopt({"title"=${inv_snl_inverter_name},"popup"=true,"backcolor"=[255,255,255],"legend"=true, "legendpos"=[65,60]});
+	plotopt({"title"=value("inv_cec_name"),"popup"=true,"backcolor"=[255,255,255],"legend"=true, "legendpos"=[65,60]});
 	plot(x,y,{"thick"=1.5, "scale"=true,"color"=[100,200,100], "series"="Vdco"});
 	if(bolShowmppt_low){
 		plot(xlow,ylow,{"thick"=1.5, "scale"=true, "color"=[100,100,200], "series"="Mppt-low"});
@@ -1643,16 +1841,30 @@ function show_mppt_msg() {
 	refresh();
 }
 
+function inverter_not_available_msg() {
+	if( librarygetcurrentselection('inv_snl_inverter_name') == '' )
+	{
+		old_name = value( 'inv_snl_inverter_name' );
+		librarynotifytext('inv_snl_inverter_name', 'Please choose an inverter. ' + old_name + ' is not available in the library.');
+	}
+}
+
 on_load{"Inverter CEC Database"} = define()
 {
+	value( 'inv_cec_name', value( 'inv_snl_inverter_name' ) );
 	plot_inverter_curve();
-	on_change{"inv_snl_inverter_name"}();
 	show_mppt_msg();
+	inverter_not_available_msg();
 };
 
 on_change{'inv_snl_inverter_name'} = define()
 {
+	if( librarygetcurrentselection( 'inv_snl_inverter_name' ) != '' )
+	{
+		value( 'inv_cec_name', value('inv_snl_inverter_name') );
+	}	
 	plot_inverter_curve();
+	show_mppt_msg();
 };
 
 on_change{'inv_snl_num_mppt'} = define()

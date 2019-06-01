@@ -83,7 +83,7 @@ LHS::LHS()
 	m_npoints = 500;
 	m_seedval = 0;
 }
-
+ 
 
 void LHS::Reset()
 {
@@ -1621,9 +1621,12 @@ void StochasticPanel::OnAddInput(wxCommandEvent &)
 	{
 		wxString name = it->first;
 		VarInfo &vi = *(it->second);
-
-		// update to select only "Parametric" variables
-		if ( vi.Flags & VF_PARAMETRIC && vi.Type == VV_NUMBER )
+		VarValue *vv = m_case->Values().Get(name);
+		bool single_value = false;
+		if (vv && vv->Type() == VV_ARRAY && vv->Length() == 1)
+			single_value = true;
+		// update to select only "Parametric" variables and numbers or array with single value
+		if ( vi.Flags & VF_PARAMETRIC && ((vi.Type == VV_NUMBER ) || single_value))
 		{
 			wxString label = vi.Label;
 			if (label.IsEmpty())
@@ -2148,8 +2151,14 @@ void StochasticPanel::Simulate()
 				s->Override("use_specific_wf_wind", VarValue(true));
 				s->Override("user_specified_wf_wind", VarValue(weather_file));
 			}
+			else if (m_case->Values().Get(iname)->Length() == 1)
+			{
+				double val[1];
+				val[0] = (double)input_data(i, j);
+				s->Override(iname, VarValue(val,1));
+			}
 			else
-				s->Override(iname, VarValue((float)input_data(i, j)));
+				s->Override(iname, VarValue((double)input_data(i, j)));
 		}
 
 		if (!s->Prepare())

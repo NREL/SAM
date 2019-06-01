@@ -37,8 +37,8 @@ bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
 	case VV_ARRAY:
 	{
 		size_t n;
-		float *p = vv->Array( &n );
-		if ( sizeof(ssc_number_t) == sizeof( float ) )
+		double *p = vv->Array( &n );
+		if ( sizeof(ssc_number_t) == sizeof( double ) )
 			ssc_data_set_array( pdata, sscname.c_str(), p, n );
 		else
 		{
@@ -54,8 +54,8 @@ bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
 		break;
 	case VV_MATRIX:
 	{
-		matrix_t<float> &fl = vv->Matrix();
-		if ( sizeof(ssc_number_t) == sizeof(float) )
+		matrix_t<double> &fl = vv->Matrix();
+		if ( sizeof(ssc_number_t) == sizeof(double) )
 		{
 			ssc_data_set_matrix( pdata, sscname.c_str(), fl.data(), fl.nrows(), fl.ncols() );
 		}
@@ -805,9 +805,9 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 						}
 						m_outputList.Add( name );
 						VarValue *vv = m_outputs.Create( name, VV_ARRAY );
-						float *ff = new float[len];
+						double *ff = new double[len];
 						for( int i=0;i<len;i++ )
-							ff[i] = (float)(varr[i]);
+							ff[i] = (double)(varr[i]);
 
 						vv->Set( ff, (size_t)len );
 						delete [] ff;
@@ -828,14 +828,14 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 						}
 						m_outputList.Add(name);
 						VarValue *vv = m_outputs.Create(name, VV_MATRIX);
-						matrix_t<float> ff(nr, nc);
+						matrix_t<double> ff(nr, nc);
 
 						int count = 0;
 						for (int i = 0; i < nr; i++)
 						{
 							for (int j = 0; j < nc; j++)
 							{
-								ff(i, j) = (float)(varr[count]);
+								ff(i, j) = (double)(varr[count]);
 								count++;
 							}
 						}

@@ -81,16 +81,16 @@ public:
 	float NumHeliostats();
 
 	
-	void SetGrid( const matrix_t<float> &data );
-	matrix_t<float> GetGrid() { return m_data; }
+	void SetGrid( const matrix_t<double> &data );
+	matrix_t<double> GetGrid() { return m_data; }
 
 	size_t NRows() { return m_data.nrows(); }
 	size_t NCols() { return m_data.ncols(); }
 
 	void EnableSpanAngle(bool b);
 	bool IsSpanAngleEnabled() { return m_spanAngleEnabled; }
-	void SetSpanAngle(float a);
-	float GetSpanAngle() { return m_spanAngle; }
+	void SetSpanAngle(double a);
+	double GetSpanAngle() { return m_spanAngle; }
 
 	bool IsXY() { return m_data.ncols() == 2; }
 	bool IsZonal() { return m_data.ncols() > 2; } 
@@ -109,8 +109,8 @@ private:
 
 	void OnButton( wxCommandEvent & );
 
-	matrix_t<float> m_data;
-	float m_spanAngle;
+	matrix_t<double> m_data;
+	double m_spanAngle;
 	bool m_spanAngleEnabled;
 
 	PTLayoutRenderer *m_renderer;
