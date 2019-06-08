@@ -161,40 +161,12 @@ TabOrder
 3
 4294967295
 
-5
+3
 batt_replacement_capacity
 3
 1
 Battery bank replacement threshold
 % capacity
-Battery
-0
-2
-1
-1
-1
-1
-0
-Numeric
-batt_replacement_cost
-3
-1
-Battery bank replacement cost
-$/kWh
-Battery
-0
-2
-1
-1
-1
-1
-600
-Numeric
-batt_replacement_cost_escal
-3
-1
-Battery cost escalation above inflation
-%/year
 Battery
 0
 2
