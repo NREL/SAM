@@ -1507,7 +1507,10 @@ def get_entry_data_properties(data_in):
                             
                         if(k_structure_type != "list"):
                             structure_type = "matrix_of_lists_and_others"
-                            
+
+                if(len(data_in) == 1):
+                    k_l_d1 = k_0_l_d1
+
                 if(is_matrix_same_data_type):
                     data_type = k_0_data_type
                 else:
