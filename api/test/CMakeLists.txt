@@ -31,7 +31,7 @@ add_executable(SAM_api_test
 
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
-
+add_compile_definitions(_DEBUG)
 
 # setup linking dependencies and flags
 

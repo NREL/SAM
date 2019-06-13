@@ -103,6 +103,7 @@ else(MSVC)
 	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 		set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
 		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+		add_compile_definitions(_DEBUG)
 	else()
 		add_compile_options(-O3)
 	endif()
@@ -158,9 +159,6 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 		${SAM_SRC}
 		${SAM_ICON})
 	set(SAM_EXE SAMd)
-
-	set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
-	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
 else()
 	add_executable(SAM
 		WIN32
