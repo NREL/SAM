@@ -50,7 +50,7 @@ SAM_EXPORT SAM_set_double_t
 SAM_set_double_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err) {
     SAM_set_double_t func = nullptr;
     translateExceptions(err, [&] {
-        FUNC_NAME_STR("nset");
+        FUNC_NAME_STR("nset")
         check_dll_loaded(handle);
         func = (SAM_set_double_t) dll_sym(handle, funcName.c_str());
         CHECK_FUNC_LOADED()

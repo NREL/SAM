@@ -14,6 +14,6 @@
 
 SAM_EXPORT void SAM_windpower_turbine_powercurve_eqn(ssc_data_t data, SAM_error* err){
     translateExceptions(err, [&]{
-        WindTurbine_calculate_powercurve(data);
+        Turbine_calculate_powercurve(data);
     });
 }
