@@ -37,6 +37,8 @@ set(SAM_SOURCES
         ../../src/variables.cpp
         ../../src/equations.cpp)
 
+file(TO_CMAKE_PATH $ENV{SSCDIR}/shared/lib_util.cpp SSC_SOURCES)
+
 
 #####################################################################################################################
 #
@@ -96,6 +98,7 @@ include(${wxWidgets_USE_FILE})
 
 add_executable(export_config
         ${SAM_SOURCES}
+		${SSC_SOURCES}
         export_config.cpp export_config.h
         startup_extractor.cpp startup_extractor.h
         ui_form_extractor.cpp ui_form_extractor.h
@@ -108,7 +111,9 @@ add_executable(export_config
         test.cpp test.h
         builder_generator.h builder_generator.cpp
         lk_eval.cpp lk_eval.h
-        builder_generator_helper.h builder_generator_helper.cpp builder_C_API.cpp builder_C_API.h builder_PySAM.cpp builder_PySAM.h)
+        builder_generator_helper.h builder_generator_helper.cpp 
+		builder_C_API.cpp builder_C_API.h 
+		builder_PySAM.cpp builder_PySAM.h)
 
 
 target_compile_definitions(export_config PUBLIC LK_USE_WXWIDGETS )
@@ -118,7 +123,7 @@ set_property(TARGET export_config PROPERTY CXX_STANDARD 11)
 if(MSVC)
     set_target_properties(export_config PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>
-        LINK_FLAGS /SUBSYSTEM:WINDOWS)
+        LINK_FLAGS /SUBSYSTEM:CONSOLE)
 endif()
 
 
@@ -180,9 +185,18 @@ endif()
 #####################################################################################################################
 
 if(system_advisor_model_EXPORT)
+	file(TO_NATIVE_PATH $ENV{SAMNTDIR}/api API_DEST)
+	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+		set(SSC_NAME sscd)
+	else()
+		set(SSC_NAME ssc)
+	endif()
+	file(TO_NATIVE_PATH $ENV{SSCDIR}/ssc/${SSC_NAME}.dll SSC_LIB_PATH)
     add_custom_command(
-            TARGET export_config
-            POST_BUILD
-            COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/export_config --api $ENV{SAMNTDIR}/api --pysam $ENV{PYSAMDIR}
+        TARGET export_config
+        POST_BUILD
+		COMMAND ${CMAKE_COMMAND}
+		    ARGS -E copy ${SSC_LIB} ${SSC_LIB_PATH} ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMAND "$<TARGET_FILE:export_config>" --api ${API_DEST} --pysam $ENV{PYSAMDIR}
     )
 endif()

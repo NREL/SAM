@@ -31,9 +31,9 @@ Project(SAM_API)
 
 add_subdirectory(api_autogen)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
 
 include_directories(. include $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
 
@@ -51,6 +51,7 @@ set(SAM_API_SRC
         src/SAM_Fuelcell.cpp
         src/SAM_GenericSystem.cpp
         src/SAM_Geothermal.cpp
+		src/SAM_Grid.cpp
         src/SAM_Hcpv.cpp
         src/SAM_HostDeveloper.cpp
         src/SAM_IphToLcoefcr.cpp
@@ -98,6 +99,9 @@ if(MSVC)
         add_compile_options(/MD /O2)
         add_compile_definitions(NDEBUG )
     endif()
+	if (system_advisor_model_EXPORT)
+        add_compile_definitions(system_advisor_model_EXPORT)
+	endif()
     add_compile_definitions( __DLL__ __64BIT__ __WINDOWS__ _WINDOWS _CRT_NON_CONFORMING_SWPRINTFS=1
         _SCL_SECURE_NO_WARNINGS=1 _UNICODE NOPCH)
 else()
