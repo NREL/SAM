@@ -186,17 +186,23 @@ endif()
 
 if(system_advisor_model_EXPORT)
 	file(TO_NATIVE_PATH $ENV{SAMNTDIR}/api API_DEST)
-	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-		set(SSC_NAME sscd)
-	else()
-		set(SSC_NAME ssc)
-	endif()
-	file(TO_NATIVE_PATH $ENV{SSCDIR}/ssc/${SSC_NAME}.dll SSC_LIB_PATH)
+    if (MSVC)
+        if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+            set(SSC_NAME sscd)
+        else()
+            set(SSC_NAME ssc)
+        endif()
+        file(TO_NATIVE_PATH $ENV{SSCDIR}/ssc/${SSC_NAME}.dll SSC_LIB_PATH)
+        add_custom_command(
+                TARGET export_config
+                POST_BUILD
+                COMMAND ${CMAKE_COMMAND}
+                    ARGS -E copy ${SSC_LIB} ${SSC_LIB_PATH} ${CMAKE_CURRENT_SOURCE_DIR}
+        )
+    endif()
     add_custom_command(
         TARGET export_config
         POST_BUILD
-		COMMAND ${CMAKE_COMMAND}
-		    ARGS -E copy ${SSC_LIB} ${SSC_LIB_PATH} ${CMAKE_CURRENT_SOURCE_DIR}
         COMMAND "$<TARGET_FILE:export_config>" --api ${API_DEST} --pysam $ENV{PYSAMDIR}
     )
 endif()
