@@ -1,5 +1,5 @@
 1
-441
+516
 a_error_test_number
 1
 1
@@ -100,6 +100,54 @@ annual_peak
 1
 1
 274.243
+avail_bop_loss
+1
+1
+1
+1
+0.3
+avail_bop_uncert
+1
+1
+1
+1
+0.3
+avail_grid_loss
+1
+1
+1
+1
+0
+avail_grid_uncert
+1
+1
+1
+1
+0.2
+avail_loss_total
+1
+1
+1
+1
+0.47
+avail_turb_loss
+1
+1
+1
+1
+0.3
+avail_turb_uncert
+1
+1
+1
+1
+0.3
+avail_uncert_total
+1
+1
+1
+1
+0.47
 bos_cost_fixed
 1
 1
@@ -334,6 +382,49 @@ contingency
 1
 1
 3
+correlation_uncert
+1
+3
+37
+37
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
 crane_breakdowns
 1
 1
@@ -1568,6 +1659,42 @@ elecCont
 1
 1
 30
+elec_eff_loss
+1
+1
+1
+1
+0.3
+elec_eff_uncert
+1
+1
+1
+1
+0.3
+elec_loss_total
+1
+1
+1
+1
+0.58
+elec_parasitic_loss
+1
+1
+1
+1
+0.5
+elec_parasitic_uncert
+1
+1
+1
+1
+0.5
+elec_uncert_total
+1
+1
+1
+1
+0.58
 electrical_installation_cost
 1
 1
@@ -1664,6 +1791,66 @@ engineering_cost
 1
 1
 55263.5
+env_degrad_loss
+1
+1
+1
+1
+0.3
+env_degrad_uncert
+1
+1
+1
+1
+0.3
+env_exp_uncert
+1
+1
+1
+1
+0
+env_exposure_loss
+1
+1
+1
+1
+0
+env_ext_loss
+1
+1
+1
+1
+0.2
+env_ext_uncert
+1
+1
+1
+1
+0.2
+env_icing_loss
+1
+1
+1
+1
+0.3
+env_icing_uncert
+1
+1
+1
+1
+0.3
+env_loss_total
+1
+1
+1
+1
+0
+env_uncert_total
+1
+1
+1
+1
+0.47
 erection_cost
 1
 1
@@ -1697,6 +1884,66 @@ est_turbine_cost
 1
 1
 0
+eval_climate_uncert
+1
+1
+1
+1
+0.5
+eval_perf_uncert
+1
+1
+1
+1
+0
+eval_period_uncert
+1
+1
+1
+1
+0.5
+eval_uncert_total
+1
+1
+1
+1
+0.71
+extrap_approp_uncert
+1
+1
+1
+1
+2
+extrap_excess_uncert
+1
+1
+1
+1
+2
+extrap_inputs_uncert
+1
+1
+1
+1
+2
+extrap_sens_uncert
+1
+1
+1
+1
+2
+extrap_uncert_total
+1
+1
+1
+1
+4.47
+extrap_vert_uncert
+1
+1
+1
+1
+2
 farm_size_MW
 1
 1
@@ -2173,6 +2420,36 @@ markup_cost
 1
 1
 2.76803e+06
+meas_atm_uncert
+1
+1
+1
+1
+0.5
+meas_data_uncert
+1
+1
+1
+1
+0.5
+meas_dir_uncert
+1
+1
+1
+1
+1
+meas_speed_uncert
+1
+1
+1
+1
+2
+meas_uncert_total
+1
+1
+1
+1
+2.35
 moorLines
 1
 1
@@ -2310,6 +2587,66 @@ om_replacement_cost_escal
 1
 1
 0
+ops_env_loss
+1
+1
+1
+1
+0
+ops_env_uncert
+1
+1
+1
+1
+0
+ops_grid_loss
+1
+1
+1
+1
+0
+ops_grid_uncert
+1
+1
+1
+1
+0
+ops_load_loss
+1
+1
+1
+1
+0
+ops_load_uncert
+1
+1
+1
+1
+0
+ops_loss_total
+1
+1
+1
+1
+0.2
+ops_strategies_loss
+1
+1
+1
+1
+0
+ops_strategies_uncert
+1
+1
+1
+1
+0.2
+ops_uncert_total
+1
+1
+1
+1
+0.2
 overhead
 1
 1
@@ -2710,12 +3047,60 @@ reference_sales_tax_percent
 1
 1
 5
+resource_adj_uncert
+1
+1
+1
+1
+1.5
+resource_datarep_uncert
+1
+1
+1
+1
+0.1
+resource_datasyn_uncert
+1
+1
+1
+1
+0.2
 resource_definition_type
 1
 1
 1
 1
 0
+resource_dist_uncert
+1
+1
+1
+1
+0.5
+resource_period_uncert
+1
+1
+1
+1
+0.56
+resource_refmeas_uncert
+1
+1
+1
+1
+1
+resource_refmodel_uncert
+1
+1
+1
+1
+1
+resource_uncert_total
+1
+1
+1
+1
+2.21
 rock_trenching_required
 1
 1
@@ -2782,6 +3167,12 @@ scrapVal
 1
 1
 0
+sensitivity_uncert
+1
+1
+1
+1
+1.8
 show_cash_incentives
 1
 1
@@ -2926,6 +3317,66 @@ turbInstallMethod
 1
 1
 0
+turb_generic_loss
+1
+1
+1
+1
+0
+turb_generic_uncert
+1
+1
+1
+1
+1
+turb_hysteresis_loss
+1
+1
+1
+1
+1
+turb_hysteresis_uncert
+1
+1
+1
+1
+1
+turb_loss_total
+1
+1
+1
+1
+0
+turb_perf_loss
+1
+1
+1
+1
+0
+turb_specific_loss
+1
+1
+1
+1
+0
+turb_specific_uncert
+1
+1
+1
+1
+1
+turb_subopt_uncert
+1
+1
+1
+1
+1
+turb_uncert_total
+1
+1
+1
+1
+2
 turbine_capital_cost
 1
 1
@@ -2992,6 +3443,55 @@ ui_wacc
 1
 1
 5.51025
+uncert_energy
+1
+3
+18
+2
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+
+uncert_windspeed
+1
+3
+19
+2
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+0 0 
+
 ur_annual_min_charge
 1
 1
@@ -3278,6 +3778,30 @@ utility_bill_data
 12
 300000 300000 300000 300000 300000 400000 500000 500000 400000 300000 300000 300000 
 
+wake_loss
+1
+1
+1
+1
+0
+wake_loss_total
+1
+1
+1
+1
+0
+wake_uncert
+1
+1
+1
+1
+1
+wake_uncert_total
+1
+1
+1
+1
+1
 warranty_management
 1
 1
