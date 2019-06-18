@@ -1814,21 +1814,20 @@ void fcall_ssc_eqn(lk::invoke_t &cxt)
 
     ssc_data_t data = ssc_data_create();
     lkvar_to_sscvar(data, "data", cxt.arg(1).deref());
-    var_table* vd = static_cast<var_table*>(data);
 
     size_t i = 0;
     while ( ssc_equation_table[i].func){
         if (wxStrcmp(eqn_name, ssc_equation_table[i].name) == 0){
-            var_table* vd_data = &(vd->lookup("data")->table);
+			ssc_data_t vd_data = ssc_data_get_table(data, "data");
             try {
                 (*ssc_equation_table[i].func)(vd_data);
                 cxt.result().assign(1.);
             }
             catch (std::runtime_error &e){
-                vd_data->assign("error", var_data(e.what()));
+				ssc_data_set_string(data, "error", e.what());
                 cxt.result().assign(0.);
             }
-            sscvar_to_lkvar(cxt.arg(1).deref(), "data", vd);
+            sscvar_to_lkvar(cxt.arg(1).deref(), "data", data);
             return;
         }
         i++;

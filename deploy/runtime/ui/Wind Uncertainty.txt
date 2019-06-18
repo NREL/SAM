@@ -1,7 +1,7 @@
 Wind Uncertainty
 964
 3402
-78
+79
 GroupBox
 
 1
@@ -75,7 +75,7 @@ Width
 950
 Height
 3
-823
+853
 Caption
 5
 18
@@ -322,7 +322,7 @@ TabOrder
 DataMatrix
 
 1
-22
+23
 Name
 5
 18
@@ -332,13 +332,13 @@ X
 21
 Y
 3
-2430
+2454
 Width
 3
 913
 Height
 3
-777
+783
 PasteAppendRows
 2
 0
@@ -395,6 +395,9 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Numeric
 
 1
@@ -1470,7 +1473,7 @@ X
 3
 Y
 3
-3279
+3309
 Width
 3
 951
@@ -2059,20 +2062,20 @@ Name
 object 7
 X
 3
-15
+21
 Y
 3
-3297
+2421
 Width
 3
-930
+912
 Height
 3
-30
+27
 Caption
 5
-139
-The overall uncertainty in the energy estimate can be calculated as the root of the sum of squares of the different uncertainty components.
+157
+Set the correlation coefficient between two components on the upper right half of the matrix. The lower left half updates automatically to preserve symmetry.
 TextColour
 4
 0
@@ -2628,6 +2631,51 @@ FontSize
 WordWrap
 2
 0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+12
+Name
+5
+9
+object 74
+X
+3
+15
+Y
+3
+3327
+Width
+3
+930
+Height
+3
+30
+Caption
+5
+139
+The overall uncertainty in the energy estimate can be calculated as the root of the sum of squares of the different uncertainty components.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
 AlignRight
 2
 0
@@ -3518,7 +3566,7 @@ X
 480
 Y
 3
-3333
+3363
 Width
 3
 90
@@ -4681,7 +4729,7 @@ Uncertainty
 0
 Numeric
 
-1928
+1896
 equations{ 'resource_uncert_total' } = define() {
 	return sqrt( pow(${resource_adj_uncert}, 2) + 
 		pow(${resource_datarep_uncert}, 2) +
@@ -4700,8 +4748,7 @@ equations{ 'avail_uncert_total' } = define() {
 
 equations{ 'elec_uncert_total' } = define() {
 	return sqrt( pow(${elec_eff_uncert}, 2) + 
-		pow(${elec_parasitic_uncert}, 2) + 
-		pow(${elec_degrad_uncert}, 2) );
+		pow(${elec_parasitic_uncert}, 2) );
 };
 
 equations{ 'env_uncert_total' } = define() {
@@ -4747,11 +4794,11 @@ equations{ 'turb_uncert_total' } = define() {
 };
 
 equations{ 'wake_uncert_total' } = define() {
-	return wake_uncert;
+	return ${wake_uncert};
 };
 1407
-on_change{'correlation_matrix'} = define() {
-	mat = ${correlation_matrix};
+on_change{'correlation_uncert'} = define() {
+	mat = ${correlation_uncert};
 	// make sure matrix is symmetrical with ones on diagonal
 	for ( i = 0; i < 37; i++) {
 		for ( j = 0; j < i; j++) {
@@ -4759,7 +4806,7 @@ on_change{'correlation_matrix'} = define() {
 		}
 		mat[i][i] = 1;
 	}
-	${correlation_matrix} = mat;
+	${correlation_uncert} = mat;
 };
 
 on_change{'sensitivity_uncert'} = define() {
