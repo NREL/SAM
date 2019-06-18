@@ -29,11 +29,18 @@ endif()
 
 Project(SAM_API)
 
-add_subdirectory(api_autogen)
+if (NOT skip_autogen)
+    add_subdirectory(api_autogen)
+endif()
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+if (MSVC)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+else()
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+endif()
 
 include_directories(. include $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
 
@@ -111,7 +118,7 @@ else()
         set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
         add_compile_definitions(_DEBUG)
     else()
-        add_compile_options(-O3)
+        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3" )
     endif()
 endif()
 
@@ -135,7 +142,9 @@ else()
     set(SAM_API_LIB SAM_api)
 endif()
 
-add_dependencies(${SAM_API_LIB} export_config)
+if (NOT skip_autogen)
+    add_dependencies(${SAM_API_LIB} export_config)
+endif()
 
 # required functions not exported in ssc.dll
 if(MSVC)
