@@ -883,7 +883,21 @@ TabOrder
 3
 13
 
-20
+21
+DP_SGS
+3
+1
+Pressure drop within the steam generator
+bar
+Power Cycle
+0
+2
+1
+1
+1
+1
+0
+Default
 L_power_block_piping
 3
 1

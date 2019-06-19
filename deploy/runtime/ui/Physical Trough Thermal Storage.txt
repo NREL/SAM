@@ -1594,21 +1594,7 @@ TabOrder
 3
 2
 
-55
-DP_SGS
-3
-1
-Pressure drop within the steam generator
-bar
-Physical Trough Thermal Storage
-0
-2
-1
-1
-1
-1
-0
-Default
+54
 Q_tes
 3
 1
@@ -1904,10 +1890,10 @@ Physical Trough Thermal Storage
 1
 0
 Numeric
-custom_sgs_pipe_sizes
+custom_tes_p_loss
 3
 1
-Use custom SGS pipe diams, wallthks, and lengths
+TES pipe losses are based on custom lengths and coeffs
  
 Physical Trough Thermal Storage
 0
@@ -1918,10 +1904,10 @@ Physical Trough Thermal Storage
 1
 0
 Default
-custom_tes_p_loss
+custom_tes_pipe_sizes
 3
 1
-TES pipe losses are based on custom lengths and coeffs
+Use custom SGS pipe diams, wallthks, and lengths
  
 Physical Trough Thermal Storage
 0
@@ -2143,49 +2129,6 @@ Physical Trough Thermal Storage
 1
 0
 Numeric
-sgs_diams
-3
-3
-Custom SGS diameters
-m
-Physical Trough Thermal Storage
-0
-2
-1
-3
-1
-1
--1
-Default
-sgs_lengths
-3
-3
-Custom SGS lengths
-m
-Physical Trough Thermal Storage
-0
-2
-1
-3
-1
-11
-0 90 100 120 0 0 0 0 80 120 80 
-
-Default
-sgs_wallthicks
-3
-3
-Custom SGS wall thicknesses
-m
-Physical Trough Thermal Storage
-0
-2
-1
-3
-1
-1
--1
-Default
 store_fl_props
 3
 3
@@ -2312,6 +2255,35 @@ Physical Trough Thermal Storage
 1
 0
 Default
+tes_diams
+3
+3
+Custom SGS diameters
+m
+Physical Trough Thermal Storage
+0
+2
+1
+3
+1
+1
+-1
+Default
+tes_lengths
+3
+3
+Custom SGS lengths
+m
+Physical Trough Thermal Storage
+0
+2
+1
+3
+1
+11
+0 90 100 120 0 0 0 0 80 120 80 
+
+Default
 tes_pump_coef
 3
 1
@@ -2339,6 +2311,20 @@ Physical Trough Thermal Storage
 1
 1
 1
+Default
+tes_wallthicks
+3
+3
+Custom SGS wall thicknesses
+m
+Physical Trough Thermal Storage
+0
+2
+1
+3
+1
+1
+-1
 Default
 u_tank
 3
