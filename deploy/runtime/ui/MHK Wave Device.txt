@@ -1,7 +1,7 @@
 MHK Wave Device
 1306
 1078
-11
+12
 GroupBox
 
 1
@@ -192,6 +192,65 @@ Wave Power Matrix (kW)
 Bold
 2
 1
+Numeric
+
+1
+16
+Name
+5
+14
+rated_capacity
+X
+3
+402
+Y
+3
+792
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 TextEntry
 
 1
@@ -373,7 +432,7 @@ Height
 3
 414
 
-4
+5
 lib_wave_device
 3
 4
@@ -388,6 +447,20 @@ Wave_Devices|0
 8
 Device 1
 Library
+rated_capacity
+3
+1
+Device Rated Capacity
+kW
+ 
+0
+0
+1
+1
+1
+1
+280
+Default
 wave_device_data_filename
 3
 4
