@@ -1,5 +1,5 @@
 1
-192
+190
 a_error_test_number
 1
 1
@@ -572,6 +572,12 @@ system_capacity
 1
 1
 15000
+total_uncert
+1
+1
+1
+1
+10.29
 turb_generic_loss
 1
 1
@@ -720,55 +726,6 @@ ui_wacc
 1
 1
 0.054439
-uncert_energy
-1
-3
-18
-2
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-
-uncert_windspeed
-1
-3
-19
-2
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-0 0 
-
 use_specific_wf_wind
 1
 1
@@ -908,12 +865,6 @@ wind_climate.url_info
 4
 5
 empty
-wind_farm_losses_percent
-1
-1
-1
-1
-0
 wind_farm_num_turbines
 1
 1
