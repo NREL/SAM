@@ -831,7 +831,7 @@ void fcall_refresh( lk::invoke_t &cxt )
 	LK_DOC("refresh", "Refresh the current form or a specific widget", "([string:name]):none" );
 
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
-    Case cur_case = cc.GetCase();
+    Case* cur_case = &cc.GetCase();
 	if ( cxt.arg_count() == 0 )
 		cc.InputPage()->Refresh();
 	else
@@ -839,7 +839,7 @@ void fcall_refresh( lk::invoke_t &cxt )
 	    wxString var = cxt.arg(0).as_string();
         ActiveInputPage *ipage = 0;
         wxUIObject *obj = cc.InputPage()->FindActiveObject( var, &ipage );
-        VarValue *vv = cur_case.Values().Get( var );
+        VarValue *vv = cur_case->Values().Get( var );
         if ( obj ){
 			if ( wxWindow *win = obj->GetNative() )
 				win->Refresh();

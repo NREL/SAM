@@ -880,7 +880,7 @@ Name
 eval_climate_uncert
 X
 3
-474
+480
 Y
 3
 528
@@ -998,7 +998,7 @@ Name
 eval_period_uncert
 X
 3
-201
+215
 Y
 3
 528
@@ -2087,7 +2087,7 @@ Bold
 0
 FontSize
 3
-0
+4294967295
 WordWrap
 2
 1
@@ -4797,21 +4797,76 @@ equations{ 'turb_uncert_total' } = define() {
 equations{ 'wake_uncert_total' } = define() {
 	return ${wake_uncert};
 };
-1424
+2746
 on_change{'correlation_uncert'} = define() {
 	mat = ${correlation_uncert};
 	// make sure matrix is symmetrical with ones on diagonal
 	for ( i = 0; i < 37; i++) {
 		for ( j = 0; j < i; j++) {
-			mat[i][j] = mat[j][i];
+			val = mat[j][i];
+			if (val <= 1 && val >= -1)
+				mat[i][j] = val;
+			else if (val > 1){
+				mat[i][j] = 1;
+				mat[j][i] = 1;
+			}
+			else{
+				mat[i][j] = -1;
+				mat[j][i] = -1;
+			}
 		}
 		mat[i][i] = 1;
 	}
-	value('correlation_uncert', mat);
-	refresh();
+	value('correlation_uncert', mat, false);
+	refresh('correlation_uncert');
+	combine_uncertainty();
+};
+
+on_change{'resource_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'avail_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'elec_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'env_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'eval_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'extrap_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'meas_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'ops_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'turb_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'wake_uncert_total'} = define() {
+	combine_uncertainty();
 };
 
 on_change{'sensitivity_uncert'} = define() {
+	combine_uncertainty();
+};
+
+on_load{'Wind Uncertainty'} = define() {
 	combine_uncertainty();
 };
 
@@ -4829,8 +4884,20 @@ function combine_uncertainty() {
 		${env_icing_uncert}, ${env_degrad_uncert}, ${env_ext_uncert}, ${env_exp_uncert}, 
 		${ops_load_uncert}, ${ops_grid_uncert}, ${ops_env_uncert}, ${ops_strategies_uncert}];
 	sens = ${sensitivity_uncert};
+	correlation = ${correlation_uncert};
 	for ( i = 0; i < 19; i++ ){
 		components[i] = sens*components[i];
 	} 
-	msgbox(components);
+	for ( i = 0; i < #components; i++ ){
+		components[i] /= 100.;
+	} 
+	total = 0;
+	for ( i = 0; i < #components; i++ ){
+		comp = components[i];
+		total += pow(comp, 2);
+		for ( j = 0; j < i; j++ ){
+			total += 2*comp*components[j]*correlation[i][j];
+		}
+	}
+	value('total_uncert', sqrt(total)*100.);
 }
