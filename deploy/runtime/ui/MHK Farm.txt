@@ -1,98 +1,88 @@
 MHK Farm
 808
 749
-0
+1
+Numeric
 
-26
-adjust
-3
+1
+16
+Name
 5
-Performance adjustment
- 
-Wind Farm
+14
+number_devices
+X
+3
+192
+Y
+3
+39
+Width
+3
+90
+Height
+3
+24
+Value
+1
 0
-1
-1
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
 5
-1
 0
-LossAdjustment
-cols
-3
-1
-Internal variable for plotting on the wind farm page
- 
-Wind Farm
+Suffix
+5
 0
-12
+ThousandsSep
+2
 1
+Editable
+2
 1
-1
-1
-0
-Default
-desired_farm_size
-3
-1
-Desired farm size
-kW
-Wind Farm
-0
-0
-1
-1
-1
-1
-0
-Default
-rows
-3
-1
-Internal variable for plotting on the wind farm page
- 
-Wind Farm
-0
-12
-1
-1
-1
-1
-0
-Default
-sizing_warning
-3
-1
- 
- 
-Wind Farm
-0
+ForeColour
 4
-1
-1
-1
-1
 0
-Default
-specify_label
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+2
+number_devices
 3
 1
+Number of Devices in Farm
  
  
-Wind Farm
 0
-4
-1
-1
-1
-1
 0
+1
+1
+1
+1
+1
 Default
 system_capacity
 3
 1
-System nameplate capacity
-kW
-Wind Farm
+ 
+ 
+ 
 0
 8
 1
@@ -101,275 +91,9 @@ Wind Farm
 1
 0
 Default
-wind_farm_losses_percent
-3
-1
-Wind Farm Losses
-%
-Wind Farm
-0
-2
-1
-1
-1
-1
-0
-Numeric
-wind_farm_num_turbines
-3
-1
-Number of turbines in farm
- 
-Wind Farm
-0
-8
-1
-1
-1
-1
-0
-Numeric
-wind_farm_sizing_mode
-3
-1
- 
- 
-Wind Farm
-0
-0
-1
-1
-1
-1
-0
-Default
-wind_farm_wake_model
-3
-1
-Wake Model
- 
-Wind Farm
-44
-Simple Wake Model|Park (WAsP)|Eddy-Viscosity
-2
-1
-1
-1
-1
-0
-Choice
-wind_farm_xCoord_file
-3
-2
- 
- 
-Wind Farm
-0
-4
-1
-2
-1
-1
-0
-Default
-wind_farm_xCoordinates
-3
-2
- 
- 
-Wind Farm
-0
-8
-1
-2
-1
-1
-0
-Default
-wind_farm_yCoord_file
-3
-2
- 
- 
-Wind Farm
-0
-4
-1
-2
-1
-1
-0
-Default
-wind_farm_yCoordinates
-3
-2
- 
- 
-Wind Farm
-0
-8
-1
-2
-1
-1
-0
-Default
-wind_resource_turbulence_coeff
-3
-1
-Turbulence Coefficient
- 
-Wind Farm
-0
-2
-1
-1
-1
-1
-0.1
-Numeric
-windfarm.farm.layout_angle
-3
-1
-Row Orientation
-deg
-Wind Farm
-0
-2
-1
-1
-1
-1
-0
-Numeric
-windfarm.farm.layout_slider
-3
-1
- 
- 
-Wind Farm
-0
-0
-1
-1
-1
-1
-0
-Slider
-windfarm.farm.number_of_rows
-3
-1
-Number of rows
- 
-Wind Farm
-0
-2
-1
-1
-1
-1
-4
-Numeric
-windfarm.farm.offset
-3
-1
-Offset for rows
-rotor diameters
-Wind Farm
-0
-2
-1
-1
-1
-1
-250
-Numeric
-windfarm.farm.offset_type
-3
-1
-Offset type
- 
-Wind Farm
-24
-Every Other Row|Each Row
-2
-1
-1
-1
-1
-1
-Choice
-windfarm.farm.row_spacing
-3
-1
-Row spacing
-rotor diameters
-Wind Farm
-0
-2
-1
-1
-1
-1
-750
-Numeric
-windfarm.farm.shape
-3
-1
-Shape
- 
-Wind Farm
-0
-2
-1
-1
-1
-1
-0
-Choice
-windfarm.farm.turbine_spacing
-3
-1
-Turbine spacing
-rotor diameters
-Wind Farm
-0
-2
-1
-1
-1
-1
-500
-Numeric
-windfarm.farm.turbines_per_row
-3
-1
-Turbines per row
- 
-Wind Farm
-0
-2
-1
-1
-1
-1
-8
-Numeric
-windfarm.layout.file_or_controls
-3
-1
- 
- 
-Wind Farm
-86
-Import wind turbine location data file|Define wind farm using layout generator (below)
-0
-1
-1
-1
-1
-1
-RadioChoice
 
-0
+93
+equations{ 'system_capacity' } = define() {
+	return ${number_devices} * ${rated_capacity};
+};
 0
