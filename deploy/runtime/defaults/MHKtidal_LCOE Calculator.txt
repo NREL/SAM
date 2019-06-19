@@ -490,7 +490,7 @@ tidal_power_curve
 3.2 1085.37 
 3.3 1055.73 
 
-tidal_resource_definition
+tidal_resource
 1
 3
 34

@@ -35,8 +35,8 @@ DataMatrix
 23
 Name
 5
-25
-tidal_resource_definition
+14
+tidal_resource
 X
 3
 24
@@ -109,7 +109,7 @@ ColorMap
 0
 
 1
-tidal_resource_definition
+tidal_resource
 3
 3
 Frequency distribution of resource as a function of stream speeds
