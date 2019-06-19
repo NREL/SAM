@@ -21,7 +21,7 @@ before_script:
   
 script:
   - export PATH=$PATH:$HOME/wx-3.1.1/bin
-  - make -C $GTEST/make
+#  - make -C $GTEST/make
   - make -C $LKDIR/build_linux
   - make -C $WEXDIR/build_linux
   - make -C $SSCDIR/build_linux
@@ -34,5 +34,5 @@ branches:
   only:
   - master
   - develop
-  - fuel_cell
+  - MHK
   - patch
