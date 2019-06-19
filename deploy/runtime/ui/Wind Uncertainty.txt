@@ -408,7 +408,7 @@ Name
 elec_eff_uncert
 X
 3
-324
+300
 Y
 3
 1644
@@ -467,7 +467,7 @@ Name
 elec_parasitic_uncert
 X
 3
-633
+657
 Y
 3
 1644
@@ -585,7 +585,7 @@ Name
 env_degrad_uncert
 X
 3
-633
+657
 Y
 3
 2019
@@ -644,7 +644,7 @@ Name
 env_exp_uncert
 X
 3
-633
+657
 Y
 3
 2049
@@ -703,7 +703,7 @@ Name
 env_ext_uncert
 X
 3
-324
+300
 Y
 3
 2049
@@ -762,7 +762,7 @@ Name
 env_icing_uncert
 X
 3
-324
+300
 Y
 3
 2019
@@ -880,7 +880,7 @@ Name
 eval_climate_uncert
 X
 3
-474
+480
 Y
 3
 528
@@ -998,7 +998,7 @@ Name
 eval_period_uncert
 X
 3
-201
+215
 Y
 3
 528
@@ -1116,7 +1116,7 @@ Name
 extrap_approp_uncert
 X
 3
-324
+300
 Y
 3
 960
@@ -1234,7 +1234,7 @@ Name
 extrap_inputs_uncert
 X
 3
-324
+300
 Y
 3
 930
@@ -1293,7 +1293,7 @@ Name
 extrap_sens_uncert
 X
 3
-633
+657
 Y
 3
 930
@@ -1411,7 +1411,7 @@ Name
 extrap_vert_uncert
 X
 3
-633
+657
 Y
 3
 960
@@ -1497,7 +1497,7 @@ Name
 meas_atm_uncert
 X
 3
-324
+300
 Y
 3
 744
@@ -1556,7 +1556,7 @@ Name
 meas_data_uncert
 X
 3
-633
+657
 Y
 3
 744
@@ -1615,7 +1615,7 @@ Name
 meas_dir_uncert
 X
 3
-633
+657
 Y
 3
 714
@@ -1674,7 +1674,7 @@ Name
 meas_speed_uncert
 X
 3
-324
+300
 Y
 3
 714
@@ -2087,7 +2087,7 @@ Bold
 0
 FontSize
 3
-0
+4294967295
 WordWrap
 2
 1
@@ -2526,6 +2526,7 @@ Caption
 5
 532
 All uncertainty components and subcomponents are assumed to be random normally-distributed (i.e. have Gaussian error distributions), and subsequently the uncertainties quoted correspond to standard deviations. These are expressed as dimensionless quantities, as a percentage in terms of either mean wind speed or energy.  A speed-to-energy “sensitivity factor”, 𝛿 (%ΔE/%ΔWS), is used to relate uncertainty in mean wind speed (% WS) to uncertainty in energy (%E), simply as a multiplier of the standard deviation in mean wind speed.
+
 TextColour
 4
 0
@@ -2737,7 +2738,7 @@ Name
 ops_env_uncert
 X
 3
-324
+300
 Y
 3
 2274
@@ -2796,7 +2797,7 @@ Name
 ops_grid_uncert
 X
 3
-633
+657
 Y
 3
 2244
@@ -2855,7 +2856,7 @@ Name
 ops_load_uncert
 X
 3
-324
+300
 Y
 3
 2244
@@ -2914,7 +2915,7 @@ Name
 ops_strategies_uncert
 X
 3
-633
+657
 Y
 3
 2274
@@ -3032,7 +3033,7 @@ Name
 resource_adj_uncert
 X
 3
-633
+657
 Y
 3
 285
@@ -3150,7 +3151,7 @@ Name
 resource_datasyn_uncert
 X
 3
-633
+657
 Y
 3
 315
@@ -3209,7 +3210,7 @@ Name
 resource_dist_uncert
 X
 3
-324
+300
 Y
 3
 315
@@ -3268,7 +3269,7 @@ Name
 resource_period_uncert
 X
 3
-324
+300
 Y
 3
 255
@@ -3327,7 +3328,7 @@ Name
 resource_refmeas_uncert
 X
 3
-633
+657
 Y
 3
 255
@@ -3386,7 +3387,7 @@ Name
 resource_refmodel_uncert
 X
 3
-324
+300
 Y
 3
 285
@@ -3622,7 +3623,7 @@ Name
 turb_generic_uncert
 X
 3
-633
+657
 Y
 3
 1815
@@ -3681,7 +3682,7 @@ Name
 turb_hysteresis_uncert
 X
 3
-633
+657
 Y
 3
 1845
@@ -3740,7 +3741,7 @@ Name
 turb_specific_uncert
 X
 3
-324
+300
 Y
 3
 1845
@@ -3799,7 +3800,7 @@ Name
 turb_subopt_uncert
 X
 3
-324
+300
 Y
 3
 1815
@@ -4796,20 +4797,76 @@ equations{ 'turb_uncert_total' } = define() {
 equations{ 'wake_uncert_total' } = define() {
 	return ${wake_uncert};
 };
-1407
+2746
 on_change{'correlation_uncert'} = define() {
 	mat = ${correlation_uncert};
 	// make sure matrix is symmetrical with ones on diagonal
 	for ( i = 0; i < 37; i++) {
 		for ( j = 0; j < i; j++) {
-			mat[i][j] = mat[j][i];
+			val = mat[j][i];
+			if (val <= 1 && val >= -1)
+				mat[i][j] = val;
+			else if (val > 1){
+				mat[i][j] = 1;
+				mat[j][i] = 1;
+			}
+			else{
+				mat[i][j] = -1;
+				mat[j][i] = -1;
+			}
 		}
 		mat[i][i] = 1;
 	}
-	${correlation_uncert} = mat;
+	value('correlation_uncert', mat, false);
+	refresh('correlation_uncert');
+	combine_uncertainty();
+};
+
+on_change{'resource_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'avail_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'elec_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'env_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'eval_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'extrap_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'meas_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'ops_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'turb_uncert_total'} = define() {
+	combine_uncertainty();
+};
+
+on_change{'wake_uncert_total'} = define() {
+	combine_uncertainty();
 };
 
 on_change{'sensitivity_uncert'} = define() {
+	combine_uncertainty();
+};
+
+on_load{'Wind Uncertainty'} = define() {
 	combine_uncertainty();
 };
 
@@ -4827,8 +4884,20 @@ function combine_uncertainty() {
 		${env_icing_uncert}, ${env_degrad_uncert}, ${env_ext_uncert}, ${env_exp_uncert}, 
 		${ops_load_uncert}, ${ops_grid_uncert}, ${ops_env_uncert}, ${ops_strategies_uncert}];
 	sens = ${sensitivity_uncert};
+	correlation = ${correlation_uncert};
 	for ( i = 0; i < 19; i++ ){
 		components[i] = sens*components[i];
 	} 
-	msgbox(components);
+	for ( i = 0; i < #components; i++ ){
+		components[i] /= 100.;
+	} 
+	total = 0;
+	for ( i = 0; i < #components; i++ ){
+		comp = components[i];
+		total += pow(comp, 2);
+		for ( j = 0; j < i; j++ ){
+			total += 2*comp*components[j]*correlation[i][j];
+		}
+	}
+	value('total_uncert', sqrt(total)*100.);
 }
