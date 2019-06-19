@@ -770,16 +770,22 @@ static void fcall_varinfo( lk::invoke_t &cxt )
 
 void fcall_value( lk::invoke_t &cxt )
 {
-	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value]):[variant]");
+	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value, bool:trigger value change, default true]):[variant]");
 	
 	CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
 	if ( VarValue *vv = cc.GetValues().Get( name ) )
 	{
-		if ( cxt.arg_count() == 2 )
+		if ( cxt.arg_count() > 1 )
 		{
-			if ( vv->Read( cxt.arg(1), false ) )
-				cc.GetCase().VariableChanged( name );
+			if ( vv->Read( cxt.arg(1), false ) ){
+			    bool trigger = true;
+			    if (cxt.arg_count() == 3 )
+			        trigger = cxt.arg(2).as_boolean();
+				if (trigger){
+				    cc.GetCase().VariableChanged( name );
+				}
+			}
 			else
 				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
 		}
@@ -823,15 +829,25 @@ void fcall_clearplot( lk::invoke_t &cxt )
 void fcall_refresh( lk::invoke_t &cxt )
 {
 	LK_DOC("refresh", "Refresh the current form or a specific widget", "([string:name]):none" );
-	
+
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+    Case cur_case = cc.GetCase();
 	if ( cxt.arg_count() == 0 )
 		cc.InputPage()->Refresh();
 	else
 	{
-		if ( wxUIObject *obj = cc.InputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
+	    wxString var = cxt.arg(0).as_string();
+        ActiveInputPage *ipage = 0;
+        wxUIObject *obj = cc.InputPage()->FindActiveObject( var, &ipage );
+        VarValue *vv = cur_case.Values().Get( var );
+        if ( obj ){
 			if ( wxWindow *win = obj->GetNative() )
 				win->Refresh();
+            if ( ipage && vv )
+            {
+                ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+            }
+		}
 	}
 }
 
