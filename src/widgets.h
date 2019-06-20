@@ -475,6 +475,9 @@ public:
 
 	void UpdateColorMap();
 
+	void UpdateGrid();
+	void MatrixToGrid();
+
 private:
 
 	wxString m_choices;
@@ -513,7 +516,6 @@ private:
 	void OnCommand(wxCommandEvent &evt);
 
 
-	void MatrixToGrid();
 
 	DECLARE_EVENT_TABLE();
 };
