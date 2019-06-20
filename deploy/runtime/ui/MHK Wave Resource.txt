@@ -1,7 +1,7 @@
 MHK Wave Resource
-1296
-790
-18
+1278
+1056
+24
 GroupBox
 
 1
@@ -15,7 +15,7 @@ X
 24
 Y
 3
-711
+966
 Width
 3
 1228
@@ -42,7 +42,7 @@ X
 201
 Y
 3
-738
+993
 Width
 3
 153
@@ -69,7 +69,7 @@ X
 39
 Y
 3
-738
+993
 Width
 3
 153
@@ -83,6 +83,34 @@ Save data to file...
 TabOrder
 3
 4294967295
+Library
+
+1
+7
+Name
+5
+17
+lib_wave_resource
+X
+3
+27
+Y
+3
+27
+Width
+3
+1224
+Height
+3
+190
+Library
+5
+14
+Wave_Resources
+Fields
+5
+162
+Name,Buoy Number,Longitude,City,Distance to shore,Depth,Country,Data Source,Latitude,State,Time zone,Frequency distribution of resource as a function of Hs and Te
 Numeric
 
 1
@@ -96,7 +124,7 @@ X
 165
 Y
 3
-636
+831
 Width
 3
 103
@@ -152,10 +180,10 @@ Name
 mhk_wave_city
 X
 3
-1017
+165
 Y
 3
-606
+861
 Width
 3
 103
@@ -194,10 +222,10 @@ Name
 mhk_wave_country
 X
 3
-1017
+165
 Y
 3
-666
+921
 Width
 3
 103
@@ -239,7 +267,7 @@ X
 165
 Y
 3
-606
+801
 Width
 3
 103
@@ -281,7 +309,7 @@ X
 459
 Y
 3
-636
+831
 Width
 3
 103
@@ -340,7 +368,7 @@ X
 459
 Y
 3
-606
+801
 Width
 3
 103
@@ -396,10 +424,10 @@ Name
 mhk_wave_frequency_sum
 X
 3
-501
+1119
 Y
 3
-6
+864
 Width
 3
 90
@@ -455,10 +483,10 @@ Name
 mhk_wave_lat
 X
 3
-732
+459
 Y
 3
-606
+861
 Width
 3
 103
@@ -514,10 +542,10 @@ Name
 mhk_wave_lon
 X
 3
-732
+459
 Y
 3
-636
+891
 Width
 3
 103
@@ -563,6 +591,183 @@ BackColour
 TabOrder
 3
 11
+Numeric
+
+1
+16
+Name
+5
+22
+mhk_wave_max_frequency
+X
+3
+825
+Y
+3
+837
+Width
+3
+103
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+9
+Numeric
+
+1
+16
+Name
+5
+25
+mhk_wave_max_frequency_Hs
+X
+3
+825
+Y
+3
+867
+Width
+3
+103
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+9
+Numeric
+
+1
+16
+Name
+5
+25
+mhk_wave_max_frequency_Te
+X
+3
+825
+Y
+3
+897
+Width
+3
+103
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+10
 TextEntry
 
 1
@@ -576,7 +781,7 @@ X
 387
 Y
 3
-738
+993
 Width
 3
 840
@@ -614,10 +819,10 @@ Name
 mhk_wave_state
 X
 3
-1017
+165
 Y
 3
-636
+891
 Width
 3
 103
@@ -656,10 +861,10 @@ Name
 mhk_wave_tz
 X
 3
-732
+459
 Y
 3
-666
+921
 Width
 3
 103
@@ -706,6 +911,42 @@ BackColour
 TabOrder
 3
 8
+Divider
+
+1
+9
+Name
+5
+9
+object 21
+X
+3
+702
+Y
+3
+804
+Width
+3
+258
+Height
+3
+16
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+13
+Max frequency
+Bold
+2
+1
 GroupBox
 
 1
@@ -716,20 +957,20 @@ Name
 object 4
 X
 3
-24
+9
 Y
 3
-579
+6
 Width
 3
-1228
+1258
 Height
 3
-126
+1036
 Caption
 5
 13
-Resource Data
+Wave Resource
 Bold
 2
 1
@@ -746,7 +987,7 @@ X
 24
 Y
 3
-33
+231
 Width
 3
 1228
@@ -757,6 +998,33 @@ Caption
 5
 61
 Frequency distribution of resource as a function of Hs and Te
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+10
+object 423
+X
+3
+24
+Y
+3
+777
+Width
+3
+1228
+Height
+3
+188
+Caption
+5
+13
+Resource Data
 Bold
 2
 1
@@ -773,7 +1041,7 @@ X
 39
 Y
 3
-60
+258
 Width
 3
 1200
@@ -838,7 +1106,21 @@ ColorMap
 2
 1
 
-13
+17
+lib_wave_resource
+3
+4
+Wave Device Library
+ 
+MHK Wave Resource
+16
+Wave_Resources|0
+17
+1
+4
+15
+46244_Eureka_CA
+Library
 mhk_wave_buoy_number
 3
 1
@@ -962,6 +1244,48 @@ MHK Wave Resource
 1
 -124.357
 Numeric
+mhk_wave_max_frequency
+3
+1
+Maximum frequency
+ 
+MHK Wave Resource
+0
+8
+1
+1
+1
+1
+0
+Numeric
+mhk_wave_max_frequency_Hs
+3
+1
+Maximum frequency Hs
+m
+MHK Wave Resource
+0
+8
+1
+1
+1
+1
+0
+Numeric
+mhk_wave_max_frequency_Te
+3
+1
+Maximum frequency Te
+s
+MHK Wave Resource
+0
+8
+1
+1
+1
+1
+0
+Numeric
 mhk_wave_resource_data_filename
 3
 4
@@ -1017,7 +1341,29 @@ MHK Wave Resource
 
 DataMatrix
 
-197
+635
+equations{ '$MIMO$ mhk_wave_resource_freq' } = define () {
+	mat = ${wave_resource_definition};
+	
+	max_Hs = 0;
+	max_Te = 0;
+	max_freq = 0;
+	for (r=1;r<#mat; r++)
+		for (c=1; c<#mat[0];c++)
+			if (mat[r][c] > max_freq)
+			{
+				max_freq =mat[r][c];
+				max_Hs = mat[r][0];
+				max_Te = mat[0][c];
+			}
+	${mhk_wave_max_frequency} = max_freq;
+	${mhk_wave_max_frequency_Hs} = max_Hs;
+	${mhk_wave_max_frequency_Te} = max_Te;
+	
+	return 0;
+};
+
+
 equations{ 'mhk_wave_frequency_sum' } = define () 
 {
 	mat = ${wave_resource_definition};
@@ -1027,7 +1373,8 @@ equations{ 'mhk_wave_frequency_sum' } = define ()
 			sum_mat += mat[r][c];
 	return sum_mat;
 };
-990
+
+1179
 
 on_change{'btnSaveMHKWaveResourceData'} = define() {
 	logmsg('btnSaveMHKWaveResourceData');
@@ -1070,3 +1417,11 @@ on_change{'btnLoadMHKWaveResourceData'} = define() {
 };
 
 
+
+on_change{'lib_wave_resource'} = define()
+{
+	if( librarygetcurrentselection( 'lib_wave_resource' ) != '' )
+	{
+		value('wave_resource_definition', value('wave_resource_definition'));
+	}
+};

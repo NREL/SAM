@@ -2553,12 +2553,6 @@ void AFDataMatrixCtrl::UpdateColorMap()
 
 }
 
-void AFDataMatrixCtrl::UpdateGrid()
-{ 
-	m_grid->Refresh(); 
-}
-
-
 void AFDataMatrixCtrl::OnRowsColsChange(wxCommandEvent &)
 {
 	size_t rows = (size_t)m_numRows->AsInteger();

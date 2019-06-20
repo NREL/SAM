@@ -52,7 +52,6 @@
 #include <wx/tokenzr.h>
 #include <wx/renderer.h>
 #include <wx/statline.h>
-#include <wx/window.h>
 
 #include <wex/uiform.h>
 #include <wex/extgrid.h>
@@ -530,7 +529,7 @@ public:
 	}
 	virtual wxString GetTypeName() { return "DataMatrix"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataMatrixObject; o->Copy(this); return o; }
-	virtual bool IsNativeObject() { return false; }
+	virtual bool IsNativeObject() { return true; }
 	virtual wxWindow *CreateNative(wxWindow *parent) {
 		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger());
 		dm->PasteAppendRows(Property("PasteAppendRows").GetBoolean());
@@ -549,21 +548,6 @@ public:
 		dm->ShowCol(Property("HideColumn").GetInteger(), false);
 		dm->ColorMap(Property("ColorMap").GetBoolean());
 		return AssignNative(dm);
-	}
-	virtual void Draw(wxWindow *, wxDC &dc, const wxRect &geom)
-	{
-		dc.SetBrush(*wxWHITE_BRUSH);
-		dc.SetPen(wxPen(wxColour(135, 135, 135)));
-		dc.SetFont(*wxNORMAL_FONT);
-		dc.SetTextForeground(*wxBLACK);
-		if (AFDataMatrixCtrl *dm = GetNative<AFDataMatrixCtrl>())
-		{
-			matrix_t<double> mat = dm->GetData();
-			dm->SetData(mat);
-		}
-			
-		dc.SetBrush(wxBrush(wxColour(235, 235, 235)));
-		dc.DrawRectangle(geom.x + geom.width - 10, geom.y + 22, 9, geom.height - 23);
 	}
 	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
 	{
