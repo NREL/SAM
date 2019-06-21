@@ -770,7 +770,7 @@ static void fcall_varinfo( lk::invoke_t &cxt )
 
 void fcall_value( lk::invoke_t &cxt )
 {
-	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value, bool:trigger value change, default true]):[variant]");
+	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value, bool:trigger value change (default true)]):[variant]");
 	
 	CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
