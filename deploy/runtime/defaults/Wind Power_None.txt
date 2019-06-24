@@ -1,5 +1,5 @@
 1
-161
+162
 a_error_test_number
 1
 1
@@ -52,7 +52,7 @@ avail_bop_loss
 1
 1
 1
-0.3
+0
 avail_bop_uncert
 1
 1
@@ -76,13 +76,13 @@ avail_loss_total
 1
 1
 1
-0.6
+0.47
 avail_turb_loss
 1
 1
 1
 1
-0.3
+0
 avail_turb_uncert
 1
 1
@@ -94,7 +94,7 @@ avail_uncert_total
 1
 1
 1
-0.469042
+0.47
 cols
 1
 1
@@ -155,7 +155,7 @@ elec_eff_loss
 1
 1
 1
-0.3
+0
 elec_eff_uncert
 1
 1
@@ -167,13 +167,13 @@ elec_loss_total
 1
 1
 1
-0.8
+0.58
 elec_parasitic_loss
 1
 1
 1
 1
-0.5
+0
 elec_parasitic_uncert
 1
 1
@@ -185,7 +185,7 @@ elec_uncert_total
 1
 1
 1
-0.583095
+0.58
 enable_interconnection_limit
 1
 1
@@ -197,7 +197,7 @@ env_degrad_loss
 1
 1
 1
-0.3
+0
 env_degrad_uncert
 1
 1
@@ -221,7 +221,7 @@ env_ext_loss
 1
 1
 1
-0.2
+0
 env_ext_uncert
 1
 1
@@ -233,7 +233,7 @@ env_icing_loss
 1
 1
 1
-0.3
+0
 env_icing_uncert
 1
 1
@@ -245,13 +245,13 @@ env_loss_total
 1
 1
 1
-0.8
+0
 env_uncert_total
 1
 1
 1
 1
-0.469042
+0.47
 eval_climate_uncert
 1
 1
@@ -275,7 +275,7 @@ eval_uncert_total
 1
 1
 1
-0.707107
+0.71
 extrap_approp_uncert
 1
 1
@@ -305,7 +305,7 @@ extrap_uncert_total
 1
 1
 1
-4.47214
+4.47
 extrap_vert_uncert
 1
 1
@@ -347,7 +347,7 @@ meas_uncert_total
 1
 1
 1
-2.34521
+2.35
 ops_env_loss
 1
 1
@@ -389,7 +389,7 @@ ops_loss_total
 1
 1
 1
-0
+0.2
 ops_strategies_loss
 1
 1
@@ -461,7 +461,7 @@ resource_uncert_total
 1
 1
 1
-2.20536
+2.21
 rows
 1
 1
@@ -497,7 +497,7 @@ total_uncert
 1
 1
 1
-0
+10.287
 turb_generic_loss
 1
 1
@@ -515,7 +515,7 @@ turb_hysteresis_loss
 1
 1
 1
-1
+0
 turb_hysteresis_uncert
 1
 1
@@ -527,7 +527,7 @@ turb_loss_total
 1
 1
 1
-1
+0
 turb_perf_loss
 1
 1
@@ -760,8 +760,7 @@ USA
 wind_resource.description
 1
 4
-80
-Southern WY - flat lands (NREL AWS Truepower representative file),,,,,,,,,,,,,,,
+0
 wind_resource.elev
 1
 1
@@ -771,8 +770,7 @@ wind_resource.elev
 wind_resource.file
 1
 4
-83
-C:\Projects\GitHub\NREL\develop\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+0
 wind_resource.lat
 1
 1
@@ -827,8 +825,7 @@ wind_resource.year
 wind_resource_filename
 1
 4
-83
-C:\Projects\GitHub\NREL\develop\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+0
 wind_resource_model_choice
 1
 1
@@ -1022,3 +1019,9 @@ windfarm.layout.file_or_controls
 1
 1
 1
+wspd_uncert
+1
+1
+1
+1
+10
