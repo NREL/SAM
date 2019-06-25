@@ -1024,7 +1024,7 @@ setup_lcoefcr_pages();
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'None' );
 //setmodules( ['windpower','grid']);
-setmodules( ['windpower']);
+setmodules( ['windpower', 'grid']);
 setup_windpower_pages();
 
 
