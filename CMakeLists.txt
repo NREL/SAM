@@ -53,6 +53,7 @@ set(SAM_SRC
 	src/reports.cpp
 	src/script.cpp
 	src/graph.cpp
+	src/uncertainties.cpp
 	src/excelexch.cpp
 	src/simulation.cpp
 	src/library.cpp

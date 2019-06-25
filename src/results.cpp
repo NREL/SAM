@@ -83,6 +83,7 @@
 #include "results.h"
 #include "casewin.h"
 #include "graph.h"
+#include "uncertainties.h"
 #include "invoke.h"
 #include "lossdiag.h"
 
@@ -398,6 +399,9 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_pnCdf = new wxDVPnCdfCtrl( this, wxID_ANY );
 	AddPage( m_pnCdf, "PDF / CDF" );
 	
+	m_uncertaintiesViewer = new UncertaintiesViewer(this);
+	AddPage(m_uncertaintiesViewer, "Uncertainties");
+
 	//m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
 	//AddPage( m_durationCurve, "Duration curve" );
 
@@ -900,7 +904,8 @@ void ResultsViewer::Setup( Simulation *sim )
 	SetDViewState( viewstate );
 
 	// setup graphs
-	m_graphViewer->Setup( m_sim );
+	m_graphViewer->Setup(m_sim);
+	m_uncertaintiesViewer->Setup(m_sim);
 
 	m_tables->Setup( m_sim );
 
@@ -1461,14 +1466,25 @@ void ResultsViewer::LoadPerspective( StringHash &map )
 }
 
 
-void ResultsViewer::SetGraphs( std::vector<Graph> &gl )
+void ResultsViewer::SetGraphs(std::vector<Graph> &gl)
 {
-	m_graphViewer->SetGraphs( gl );
+	m_graphViewer->SetGraphs(gl);
 }
 
-void ResultsViewer::GetGraphs( std::vector<Graph> &gl )
+void ResultsViewer::GetGraphs(std::vector<Graph> &gl)
 {
-	m_graphViewer->GetGraphs( gl );
+	m_graphViewer->GetGraphs(gl);
+}
+
+
+void ResultsViewer::SetUncertainties(std::vector<Uncertainties> &ul)
+{
+	m_uncertaintiesViewer->SetUncertaintiess(ul);
+}
+
+void ResultsViewer::GetUncertainties(std::vector<Uncertainties> &ul)
+{
+	m_uncertaintiesViewer->GetUncertaintiess(ul);
 }
 
 void ResultsViewer::Clear()

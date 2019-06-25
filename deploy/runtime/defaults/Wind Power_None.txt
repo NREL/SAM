@@ -1,5 +1,5 @@
 1
-161
+162
 a_error_test_number
 1
 1
@@ -52,7 +52,7 @@ avail_bop_loss
 1
 1
 1
-0.3
+0
 avail_bop_uncert
 1
 1
@@ -82,7 +82,7 @@ avail_turb_loss
 1
 1
 1
-0.3
+0
 avail_turb_uncert
 1
 1
@@ -155,7 +155,7 @@ elec_eff_loss
 1
 1
 1
-0.3
+0
 elec_eff_uncert
 1
 1
@@ -173,7 +173,7 @@ elec_parasitic_loss
 1
 1
 1
-0.5
+0
 elec_parasitic_uncert
 1
 1
@@ -197,7 +197,7 @@ env_degrad_loss
 1
 1
 1
-0.3
+0
 env_degrad_uncert
 1
 1
@@ -221,7 +221,7 @@ env_ext_loss
 1
 1
 1
-0.2
+0
 env_ext_uncert
 1
 1
@@ -233,7 +233,7 @@ env_icing_loss
 1
 1
 1
-0.3
+0
 env_icing_uncert
 1
 1
@@ -497,7 +497,7 @@ total_uncert
 1
 1
 1
-10.29
+10.287
 turb_generic_loss
 1
 1
@@ -515,7 +515,7 @@ turb_hysteresis_loss
 1
 1
 1
-1
+0
 turb_hysteresis_uncert
 1
 1
@@ -1019,3 +1019,9 @@ windfarm.layout.file_or_controls
 1
 1
 1
+wspd_uncert
+1
+1
+1
+1
+10
