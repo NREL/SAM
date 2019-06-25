@@ -179,10 +179,10 @@ endif()
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
 	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 		target_link_libraries(${SAM_EXE} lkd wexd sscd)
-		set(SSC_LIB $ENV{SSCDIR}/ssc/sscd.dylib)
+		set(SSC_LIB sscd)
 	else()
 		target_link_libraries(${SAM_EXE} lk wex ssc)
-		set(SSC_LIB $ENV{SSCDIR}/ssc/ssc.dylib)
+		set(SSC_LIB ssc)
 	endif()
 else()
 	unset(WEX_LIB CACHE)
@@ -307,17 +307,13 @@ else()
 		)
 		endforeach( file_i )
 
-		if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-			set(SSC_NAME sscd)
-		else()
-			set(SSC_NAME ssc)
-		endif()
+
 
 		add_custom_command(
 		    TARGET ${SAM_EXE}
 		    POST_BUILD
 		    COMMAND ${CMAKE_COMMAND}
-		    ARGS -E copy ${SSC_LIB} $ENV{SSCDIR}/ssc/${SSC_NAME}.dll ${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64
+		    ARGS -E copy $ENV{SSCDIR}/ssc/${SSC_LIB}.lib $ENV{SSCDIR}/ssc/${SSC_NAME}.dll ${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64
 		)
 	endif()
 endif()
