@@ -51,6 +51,23 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
+version_upgrade{'2019.4.3'} = define() {
+	const cfg = config();
+	if (varinfo('en_batt')){
+		if (value('en_batt')){
+			old_replacement_cost = oldvalue('batt_replacement_cost');
+			old_escalation = oldvalue('batt_replacement_cost_escal');
+			value('om_replacement_cost1', [old_replacement_cost], 'Updated battery replacement cost input, now on System Costs page.');
+			value('om_replacement_cost_escal', old_escalation);
+			old_temperature = oldvalue('T_room');
+			
+			value('batt_room_temperature_single', old_temperature, 'Updated battery environment temperature, same settings as old file');
+			value('batt_thermal_choice', 1);
+		}
+	}
+};
+
+
 // ** Not sure how this works for patches, so using new version number for testing
 version_upgrade{'2018.11.11'} = define () {
 	const cfg = config();
