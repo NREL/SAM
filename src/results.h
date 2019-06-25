@@ -85,7 +85,8 @@ class TabularBrowser;
 class wxMetroListBox;
 class wxDVTimeSeriesDataSet;
 class ConfigInfo;
-class GraphViewer;
+class GraphViewer; 
+class UncertaintiesViewer;
 
 class wxSnapLayout;
 
@@ -163,8 +164,11 @@ public:
 	void SavePerspective( StringHash &map );
 	void LoadPerspective( StringHash &map );
 
-	void SetGraphs( std::vector<Graph> &gl );
-	void GetGraphs( std::vector<Graph> &gl );
+	void SetGraphs(std::vector<Graph> &gl);
+	void GetGraphs(std::vector<Graph> &gl);
+
+	void SetUncertainties(std::vector<Uncertainties> &ul);
+	void GetUncertainties(std::vector<Uncertainties> &ul);
 
 	Simulation *GetSimulation() { return m_sim; }
 	
@@ -197,7 +201,8 @@ private:
 	wxPanel *m_cf_bottom_panel;
 
 	GraphViewer *m_graphViewer;
-		
+	UncertaintiesViewer *m_uncertaintiesViewer;
+
 	std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
 	wxDVTimeSeriesCtrl *m_timeSeries;
 	//wxDVTimeSeriesCtrl *m_dailySeries;
