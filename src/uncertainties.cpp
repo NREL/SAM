@@ -248,11 +248,35 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 	ShowGrid(false, false);
 	std::vector<wxRealPoint> data1, data2;
 
+
 	double mu1 = 5000; // kWh mean gross annual energy output
 	double sigma1 = mu1 / 50; // standard deviation
 	double losses = 0.1*mu1;
 	double mu2 = mu1 - losses; // kWh net annual energy
 	double sigma2 = mu2 / 40;
+
+	// values depend on technology - testing for wind or can standardize outputs
+	// Read in in Uncertainties.lk (like autographs)
+	if (VarValue *vv = m_s->GetValue("annual_gross_energy"))
+	{
+		mu1 = vv->Value();
+	}
+	// sigma from Darice 
+	if (VarValue *vv = m_s->GetValue("wspd_uncert"))
+	{
+		sigma1 = vv->Value()/100.0;
+		sigma1 *= mu1;
+	}
+
+	if (VarValue *vv = m_s->GetValue("annual_energy"))
+	{
+		mu2 = vv->Value();
+	}
+	if (VarValue *vv = m_s->GetValue("total_uncert"))
+	{
+		sigma2 = vv->Value()/100.0;
+		sigma2 *= mu2;
+	}
 
 	int interval = 1000;
 	double area1 = 0, area2 = 0, ymax = 0;
