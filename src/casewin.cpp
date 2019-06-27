@@ -299,9 +299,12 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_case->GetGraphs( gl );
 	// testing Uncertainties
 	std::vector<Uncertainties> ul;
-	Uncertainties u;
-	u.Title = "Figure2";
-	ul.push_back(u);
+	Uncertainties u1, u2, u3;
+	u1.Title = "Figure2";
+	u2.Title = "Figure5";
+	u3.Title = "Figure10";
+	ul.push_back(u1);
+	ul.push_back(u2);
 	m_baseCaseResults->SetUncertainties(ul);
 	m_baseCaseResults->SetGraphs( gl );
 	m_baseCaseResults->LoadPerspective( m_case->Perspective() );

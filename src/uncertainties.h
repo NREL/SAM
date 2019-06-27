@@ -123,6 +123,12 @@ public:
 	
 	// multiple variables over a single simulation
 	int Display(Simulation *sim, Uncertainties &g);
+	// multiple variables over a single simulation
+	int Figure2(Simulation *sim);
+	// multiple variables over a single simulation
+	int Figure5(Simulation *sim);
+	// multiple variables over a single simulation
+	int Figure10(Simulation *sim);
 
 	// one variable over multiple simulations
 	int Display(std::vector<Simulation *> sims, Uncertainties &g);
@@ -195,8 +201,8 @@ public:
 	void DeleteUncertainties( UncertaintiesCtrl * );
 	void DeleteAll();
 
-	void SetUncertaintiess( std::vector<Uncertainties> &gl );
-	void GetUncertaintiess( std::vector<Uncertainties> &gl );
+	void SetUncertainties( std::vector<Uncertainties> &gl );
+	void GetUncertainties( std::vector<Uncertainties> &gl );
 
 	UncertaintiesCtrl *Current();
 private:
