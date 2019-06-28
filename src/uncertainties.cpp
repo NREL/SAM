@@ -287,16 +287,16 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	AddPlot(new wxPLLinePlot(data2, "Net energy", wxColour("Blue")));
 
 	std::vector<wxRealPoint> p50LineGross;
-	p50LineGross.push_back(wxRealPoint(mu1, 1.1*ymax));
+	p50LineGross.push_back(wxRealPoint(mu1, 1.05*ymax));
 	p50LineGross.push_back(wxRealPoint(mu1, 0));
 	AddAnnotation(new wxPLLineAnnotation(p50LineGross, 2, *wxBLACK, wxPLOutputDevice::DASH), wxPLAnnotation::AXIS);
 
 	std::vector<wxRealPoint> p50LineNet;
-	p50LineNet.push_back(wxRealPoint(mu2, 1.1*ymax));
+	p50LineNet.push_back(wxRealPoint(mu2, 1.05*ymax));
 	p50LineNet.push_back(wxRealPoint(mu2, 0));
 	AddAnnotation(new wxPLLineAnnotation(p50LineNet, 2, *wxBLUE, wxPLOutputDevice::DASH), wxPLAnnotation::AXIS);
 
-	double p90 = 0.94* mu2;
+	double p90 = -1.865 * sigma2 + mu2;
 	std::vector<wxRealPoint> p90LineNet;
 	p90LineNet.push_back(wxRealPoint(p90, 0.1*ymax));
 	p90LineNet.push_back(wxRealPoint(p90, 0));
@@ -304,19 +304,23 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 
 
 	std::vector<wxRealPoint> LossArrow;
-	LossArrow.push_back(wxRealPoint(mu1, ymax));
-	LossArrow.push_back(wxRealPoint(mu2, ymax));
-	AddAnnotation(new wxPLLineAnnotation(LossArrow, 2, *wxBLUE, wxPLOutputDevice::DASH, wxPLLineAnnotation::FILLED_ARROW), wxPLAnnotation::AXIS);
+	LossArrow.push_back(wxRealPoint(mu1, 1.05*ymax));
+	LossArrow.push_back(wxRealPoint(mu2, 1.05*ymax));
+	AddAnnotation(new wxPLLineAnnotation(LossArrow, 2, *wxBLUE, wxPLOutputDevice::SOLID, wxPLLineAnnotation::FILLED_ARROW), wxPLAnnotation::AXIS);
 
 
-	AddAnnotation(new wxPLTextAnnotation("Predicted Losses", wxRealPoint(mu2 + 0.4*(mu1 - mu2), 0.95*ymax), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS);
-	AddAnnotation(new wxPLTextAnnotation("Gross Energy P50", wxRealPoint(mu1, 0.5*ymax), 2.0, 90, *wxBLACK), wxPLAnnotation::AXIS);
-	AddAnnotation(new wxPLTextAnnotation("Net Energy P50", wxRealPoint(mu2, 0.5*ymax), 2.0, 90, *wxBLUE), wxPLAnnotation::AXIS);
-	AddAnnotation(new wxPLTextAnnotation("P90", wxRealPoint(p90, 0.1*ymax), 2.0, 0, *wxBLUE), wxPLAnnotation::AXIS);
+	AddAnnotation(new wxPLTextAnnotation("Predicted Losses", wxRealPoint(mu2 + 0.2*(mu1 - mu2), ymax), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS);
+	AddAnnotation(new wxPLTextAnnotation("Gross Energy P50", wxRealPoint(mu1, 0.25*ymax), 2.0, 90, *wxBLACK), wxPLAnnotation::AXIS);
+	AddAnnotation(new wxPLTextAnnotation("Net Energy P50", wxRealPoint(mu2, 0.25*ymax), 2.0, 90, *wxBLUE), wxPLAnnotation::AXIS);
+	AddAnnotation(new wxPLTextAnnotation("P90", wxRealPoint(1.02* p90, 0.05*ymax), 2.0, 0, *wxBLUE), wxPLAnnotation::AXIS);
 	GetYAxis1()->Show(false);
 	GetXAxis1()->SetLabel("Annual Energy Delivered (kWh)");
+
+	SetYAxis1(new wxPLLinearAxis(0, 1.1*ymax, "Probability Density"));
+	GetYAxis1()->ShowTickText(false);
+
 	ShowLegend(false);
-	SetBorderWidth(0);
+	SetBorderWidth(0.5);
 //	Invalidate();
 //	Refresh();
 	return 0;
