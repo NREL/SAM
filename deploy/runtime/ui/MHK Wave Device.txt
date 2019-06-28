@@ -24,8 +24,8 @@ Height
 917
 Caption
 5
-10
-MHK Device
+21
+Wave Energy Converter
 Bold
 2
 1

@@ -15,7 +15,7 @@ X
 21
 Y
 3
-26
+27
 Width
 3
 908
@@ -24,8 +24,8 @@ Height
 819
 Caption
 5
-16
-MHK Tidal Device
+22
+Tidal Energy Converter
 Bold
 2
 1

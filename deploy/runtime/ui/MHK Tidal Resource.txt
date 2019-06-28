@@ -24,8 +24,8 @@ Height
 806
 Caption
 5
-18
-MHK Tidal Resource
+14
+Tidal Resource
 Bold
 2
 1
