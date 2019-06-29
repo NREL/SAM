@@ -395,6 +395,14 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 		data1.push_back(wxRealPoint(speed, freq_bin));
 	}
 
+/* crashing
+	std::vector<wxRealPoint> PowerLine;
+	PowerLine.push_back(wxRealPoint(max_speed, max_power));
+	PowerLine.push_back(wxRealPoint(0.5*max_speed, max_power));
+	AddAnnotation(new wxPLLineAnnotation(PowerLine, 2, *wxBLUE, wxPLOutputDevice::DASH), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
+*/
+
+
 	AddPlot(new wxPLBarPlot(data1, 0.0, "Wind speed frequency", wxColour("Blue")));
 	SetYAxis1(new wxPLLinearAxis(0, freq_max, "Wind speed frequecy"));
 
@@ -402,7 +410,8 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 	SetYAxis2(new wxPLLinearAxis(0, 1.05*max_power, "Turbine power"));
 
 	GetXAxis1()->SetLabel("Wind speed (m/s)");
-// crashing
+
+/// crashing
 /*	SetXAxis1(new wxPLLinearAxis(0, 1.05 * max_speed, "Wind speed (m/s)"));
 
 	std::vector<wxRealPoint> LineRatedPower;
