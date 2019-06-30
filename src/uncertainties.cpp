@@ -336,9 +336,9 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 	// wind speed bins - need to make in cmod_windpower - missing now - only "wind_speed" timeseries array for all weather file inputs
 	// turbine curve
 
-	size_t ws_count;
+	size_t ws_count=0;
 	double *ws;
-	size_t tp_count;
+	size_t tp_count=0;
 	double *tp;
 	if (VarValue *vv = m_s->GetValue("wind_turbine_powercurve_windspeeds"))
 	{
@@ -349,7 +349,7 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 		tp = vv->Array(&tp_count);
 	}
 
-	size_t wsb_count;
+	size_t wsb_count=0;
 	double *wsb;
 	if (VarValue *vv = m_s->GetValue("wind_speed"))
 	{
@@ -395,12 +395,12 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 		data1.push_back(wxRealPoint(speed, freq_bin));
 	}
 
-/* crashing
+ //crashing
 	std::vector<wxRealPoint> PowerLine;
 	PowerLine.push_back(wxRealPoint(max_speed, max_power));
 	PowerLine.push_back(wxRealPoint(0.5*max_speed, max_power));
 	AddAnnotation(new wxPLLineAnnotation(PowerLine, 2, *wxBLUE, wxPLOutputDevice::DASH), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
-*/
+
 
 
 	AddPlot(new wxPLBarPlot(data1, 0.0, "Wind speed frequency", wxColour("Blue")));
@@ -412,21 +412,17 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 	GetXAxis1()->SetLabel("Wind speed (m/s)");
 
 /// crashing
-/*	SetXAxis1(new wxPLLinearAxis(0, 1.05 * max_speed, "Wind speed (m/s)"));
+	SetXAxis1(new wxPLLinearAxis(0, 1.05 * max_speed, "Wind speed (m/s)"));
 
-	std::vector<wxRealPoint> LineRatedPower;
-	LineRatedPower.push_back(wxRealPoint(20, 0.1));
-	LineRatedPower.push_back(wxRealPoint(40, 0.1));
-	AddAnnotation(new wxPLLineAnnotation(LineRatedPower, 2, wxColour("Gray"), wxPLOutputDevice::DASH), wxPLAnnotation::AXIS);// , wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
-/*
+
  //Horizontal annotations crashing...
 	std::vector<wxRealPoint> LineRatedPower;
-	LineRatedPower.push_back(wxRealPoint(20, max_power));
-	LineRatedPower.push_back(wxRealPoint(40, max_power));
+	LineRatedPower.push_back(wxRealPoint(0.5* max_speed, max_power));
+	LineRatedPower.push_back(wxRealPoint(max_speed, max_power));
 	AddAnnotation(new wxPLLineAnnotation(LineRatedPower, 2, wxColour("Gray"), wxPLOutputDevice::DASH), wxPLAnnotation::AXIS , wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
 
 	AddAnnotation(new wxPLTextAnnotation("Rated power", wxRealPoint(0.75* max_speed, max_power), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
-*/
+
 
 	ShowLegend(false);
 //	SetBorderWidth(0);
