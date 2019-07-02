@@ -477,6 +477,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_nget(SAM_Windpower ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Windpower_Outputs_annual_gross_energy_nget(SAM_Windpower ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_Windpower ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_cutoff_losses_nget(SAM_Windpower ptr, SAM_error *err);

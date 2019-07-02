@@ -1,4 +1,17 @@
 {
 	"defaults": {
+		"Lifetime": {
+			"analysis_period": 25,
+			"system_use_lifetime_output": 1
+		},
+		"Interconnection": {
+			"enable_interconnection_limit": 0,
+			"grid_interconnection_limit_kwac": 100000
+		},
+		"GeothermalPlantAndEquipment": {
+			"gen": [0.000000]
+		},
+		"Common": {
+		}
 	}
 }

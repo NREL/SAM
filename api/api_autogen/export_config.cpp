@@ -2,6 +2,8 @@
 #include <sstream>
 #include <fstream>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #include <ssc/sscapi.h>
 
@@ -18,6 +20,29 @@
 
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 std::string active_config;
+
+void create_subdirectories(std::string dir, std::vector<std::string> folders){
+    mode_t nMode = 0733; // UNIX style permissions
+    for (auto& name : folders){
+        int nError = 0;
+        std::string sPath = dir + '/' + name;
+
+        // check if directory already exists
+        struct stat info;
+        if( stat( sPath.c_str(), &info ) != 0 ) {
+#if defined(_WIN32)
+            nError = _mkdir(sPath.c_str());
+#else
+            nError = mkdir(sPath.c_str(), nMode);
+#endif
+            if (nError != 0) {
+                throw std::runtime_error("Couldn't create subdirectory: " + sPath);
+            }
+        }
+        else if( info.st_mode & S_IFDIR )  // S_ISDIR() doesn't exist on my windows
+            continue;
+    }
+}
 
 int main(int argc, char *argv[]){
 
@@ -54,6 +79,10 @@ int main(int argc, char *argv[]){
             pysam_path = argv[i+1];
         }
     }
+
+    create_subdirectories(pysam_path, std::vector<std::string>({"docs", "src", "stubs"}));
+    create_subdirectories(pysam_path + "/docs", std::vector<std::string>({"modules"}));
+    create_subdirectories(api_path, std::vector<std::string>({"include", "src"}));
 
     std::cout << "Exporting C API files to " << api_path << "\n";
     std::cout << "Exporting default JSON files to " << defaults_path << "\n";

@@ -730,6 +730,17 @@ SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_nget(SAM_Windpower ptr, SA
 
 
 
+SAM_EXPORT double SAM_Windpower_Outputs_annual_gross_energy_nget(SAM_Windpower ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_gross_energy", &result))
+		make_access_error("SAM_Windpower", "annual_gross_energy");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_Windpower ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

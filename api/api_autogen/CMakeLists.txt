@@ -135,7 +135,7 @@ endif()
 
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-        target_link_libraries(export_config lkd wexd sscd)
+        target_link_libraries(export_config lk wexd sscd)
     else()
         target_link_libraries(export_config lk wex ssc)
     endif()
