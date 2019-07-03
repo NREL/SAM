@@ -1,4 +1,13 @@
 {
 	"defaults": {
+		"Lifetime": {
+			"analysis_period": 25
+		},
+		"Interconnection": {
+			"enable_interconnection_limit": 0,
+			"grid_interconnection_limit_kwac": 100000
+		},
+		"Common": {
+		}
 	}
 }

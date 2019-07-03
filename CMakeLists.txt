@@ -178,7 +178,7 @@ endif()
 
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
 	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-		target_link_libraries(${SAM_EXE} lkd wexd sscd)
+		target_link_libraries(${SAM_EXE} lk wexd sscd)
 		set(SSC_LIB sscd)
 	else()
 		target_link_libraries(${SAM_EXE} lk wex ssc)
@@ -250,7 +250,7 @@ if (APPLE)
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/Info-SAM.plist ${SAM_APP}/Contents
 		COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
-		COMMAND cp ${SSC_LIB} ${SAM_APP}/Contents/Frameworks
+		COMMAND cp $ENV{SSCDIR}/ssc/${SSC_LIB}.dylib ${SAM_APP}/Contents/Frameworks
 		COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_LIB}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
 		COMMAND install_name_tool -change ${SSC_LIB} @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_EXE}
 	)

@@ -1479,12 +1479,12 @@ void ResultsViewer::GetGraphs(std::vector<Graph> &gl)
 
 void ResultsViewer::SetUncertainties(std::vector<Uncertainties> &ul)
 {
-	m_uncertaintiesViewer->SetUncertaintiess(ul);
+	m_uncertaintiesViewer->SetUncertainties(ul);
 }
 
 void ResultsViewer::GetUncertainties(std::vector<Uncertainties> &ul)
 {
-	m_uncertaintiesViewer->GetUncertaintiess(ul);
+	m_uncertaintiesViewer->GetUncertainties(ul);
 }
 
 void ResultsViewer::Clear()
