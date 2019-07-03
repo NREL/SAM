@@ -2450,7 +2450,7 @@ equations{ 'sco2_cycle_config' } = define() {
    	];
 };
 
-16123
+17080
 on_load{"Supercritical Carbon Dioxide Power Cycle"} = define() {
 	
 	if( ${is_sco2_msg_disabled} == 0.0 )
@@ -2550,7 +2550,8 @@ on_change{"is_sco2_preprocess"} = define() {
 
 function compare_des_pars () {
 	is_des_par_diff = false;
-	if(${T_htf_hot_des} != ${_sco2_T_htf_hot_des})
+//	if(${T_htf_hot_des} != ${_sco2_T_htf_hot_des})
+	if(abs(${T_htf_hot_des} - ${_sco2_T_htf_hot_des}) > 1e-5*${T_htf_hot_des})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_T_htf_hot_des}))
@@ -2569,7 +2570,8 @@ function compare_des_pars () {
 		//property("_sco2_T_htf_hot_des", "BackColour", [192, 192, 192]);
 		enable("_sco2_T_htf_hot_des", false);
 	}
-	if(${deltaT_PHX} != ${_sco2_deltaT_PHX})
+//	if(${deltaT_PHX} != ${_sco2_deltaT_PHX})
+	if(abs(${deltaT_PHX} - ${_sco2_deltaT_PHX}) > 1e-5*${deltaT_PHX})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_deltaT_PHX}))
@@ -2588,7 +2590,8 @@ function compare_des_pars () {
 		//property("_sco2_deltaT_PHX", "BackColour", [192, 192, 192]);
 		enable("_sco2_deltaT_PHX", false);
 	}
-	if(${sco2_T_amb_des} != ${_sco2_T_amb_des})
+//	if(${sco2_T_amb_des} != ${_sco2_T_amb_des})
+	if(abs(${sco2_T_amb_des} - ${_sco2_T_amb_des}) > 1e-5*${sco2_T_amb_des})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_T_amb_des}))
@@ -2607,7 +2610,8 @@ function compare_des_pars () {
 		//property("_sco2_T_amb_des", "BackColour", [192, 192, 192]);
 		enable("_sco2_T_amb_des", false);
 	}
-	if(${sco2_T_approach} != ${_sco2_T_approach})
+//	if(${sco2_T_approach} != ${_sco2_T_approach})
+	if(abs(${sco2_T_approach} - ${_sco2_T_approach}) > 1e-5*${sco2_T_approach})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_T_approach}))
@@ -2626,7 +2630,8 @@ function compare_des_pars () {
 		//property("_sco2_T_approach", "BackColour", [192, 192, 192]);
 		enable("_sco2_T_approach", false);
 	}
-	if(${P_ref} != ${_sco2_P_ref})
+//	if(${P_ref} != ${_sco2_P_ref})
+	if(abs(${P_ref} - ${_sco2_P_ref}) > 1e-5*${P_ref})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_P_ref}))
@@ -2645,7 +2650,8 @@ function compare_des_pars () {
 		//property("_sco2_P_ref", "BackColour", [192, 192, 192]);
 		enable("_sco2_P_ref", false);
 	}
-	if(${design_eff} != ${_sco2_design_eff})
+//	if(${design_eff} != ${_sco2_design_eff})
+	if(abs(${design_eff} - ${_sco2_design_eff}) > 1e-5*${design_eff})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_design_eff}))
@@ -2664,7 +2670,9 @@ function compare_des_pars () {
 		//property("_sco2_design_eff", "BackColour", [192, 192, 192]);
 		enable("_sco2_design_eff", false);
 	}
-	if(${eta_c} != ${_sco2_eta_c})
+//	if(${eta_c} != ${_sco2_eta_c})
+//msgbox("eta_c, _sco2_eta_c" + ${eta_c} + "," + ${_sco2_eta_c});
+	if(abs(${eta_c} - ${_sco2_eta_c}) > 1e-5*${eta_c})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_eta_c}))
@@ -2683,7 +2691,8 @@ function compare_des_pars () {
 		//property("_sco2_eta_c", "BackColour", [192, 192, 192]);
 		enable("_sco2_eta_c", false);
 	}
-	if(${eta_t} != ${_sco2_eta_t})
+//	if(${eta_t} != ${_sco2_eta_t})
+	if(abs(${eta_t} - ${_sco2_eta_t}) > 1e-5*${eta_t})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_eta_t}))
@@ -2702,7 +2711,8 @@ function compare_des_pars () {
 		//property("_sco2_eta_t", "BackColour", [192, 192, 192]);
 		enable("_sco2_eta_t", false);
 	}
-	if(${recup_eff_max} != ${_sco2_recup_eff_max})
+//	if(${recup_eff_max} != ${_sco2_recup_eff_max})
+	if(abs(${recup_eff_max} - ${_sco2_recup_eff_max}) > 1e-5*${recup_eff_max})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_recup_eff_max}))
@@ -2721,7 +2731,8 @@ function compare_des_pars () {
 		//property("_sco2_recup_eff_max", "BackColour", [192, 192, 192]);
 		enable("_sco2_recup_eff_max", false);
 	}
-	if(${P_high_limit} != ${_sco2_P_high_limit})
+//	if(${P_high_limit} != ${_sco2_P_high_limit})
+	if(abs(${P_high_limit} - ${_sco2_P_high_limit}) > 1e-5*${P_high_limit})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_P_high_limit}))
@@ -2740,7 +2751,8 @@ function compare_des_pars () {
 		//property("_sco2_P_high_limit", "BackColour", [192, 192, 192]);
 		enable("_sco2_P_high_limit", false);
 	}
-	if(${fan_power_perc_net} != ${_sco2_fan_power_perc_net})
+//	if(${fan_power_perc_net} != ${_sco2_fan_power_perc_net})
+	if(abs(${fan_power_perc_net} - ${_sco2_fan_power_perc_net}) > 1e-5*${fan_power_perc_net})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_fan_power_perc_net}))
@@ -2759,7 +2771,8 @@ function compare_des_pars () {
 		//property("_sco2_P_high_limit", "BackColour", [192, 192, 192]);
 		enable("_sco2_fan_power_perc_net", false);
 	}
-	if(${dd_sco2_cycle_config} != ${_dd_sco2_cycle_config})
+//	if(${dd_sco2_cycle_config} != ${_dd_sco2_cycle_config})
+	if(abs(${dd_sco2_cycle_config} - ${_dd_sco2_cycle_config}) > 1e-5*${dd_sco2_cycle_config})
 	{
 		is_des_par_diff = true;
 	}
@@ -2915,8 +2928,8 @@ function sco2_design_point(is_gen_udpc) {
 	refresh();
 	
 	recomp_frac = ssc_var(obj, "recomp_frac");
-	LTR_UA_calc = ssc_var(obj, "UA_LTR");
-	HTR_UA_calc = ssc_var(obj, "UA_HTR");
+	LTR_UA_calc = ssc_var(obj, "LTR_UA_assigned");
+	HTR_UA_calc = ssc_var(obj, "HTR_UA_assigned");
 	if(${sco2_cycle_config}==1)
 	{
 		P_comp_in = ssc_var(obj, "P_comp_in");

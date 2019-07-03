@@ -90,14 +90,14 @@ function setup_battery_pages_behind_the_meter()
 			   'Battery Bank Sizing',
 			   'Battery Current and Capacity',
 			   'Battery Configuration',
-			   'Battery Dispatch Behind the Meter',
 			   'Battery Dispatch Common',
+			   'Battery Dispatch Behind the Meter',
 			   'Battery Dispatch Manual', 
-			   'Battery Lifetime',
-			   'Battery Replacements',
-			   'Battery Voltage',
-			   'Battery Ancillary Losses',
-			   'Battery Thermal',
+               {'name'='Battery Lifetime', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
+			   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
+			   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
+			   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}
 			    ]],
 			  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 }
@@ -111,11 +111,12 @@ function setup_battery_pages_front_of_meter()
 			   'Battery Dispatch Common',
 			   'Battery Dispatch Front of Meter', 
 			   'Battery Dispatch Manual',
-			   'Battery Lifetime',
-			   'Battery Replacements',
-			   'Battery Voltage',
-			   'Battery Ancillary Losses',
-			   'Battery Thermal'] ],
+			   {'name'='Battery Lifetime', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
+			   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
+			   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
+			   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}
+			   ] ],
 			  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 }
 function setup_pvwatts_battery_pages()
@@ -1052,7 +1053,7 @@ setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for comme
 
 // Fuel Cell /////////////////////////////////////////////////////////
 setconfig( 'Fuel Cell', 'Commercial');
-setmodules( ['pvwattsv5_lifetime', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'cashloan'] );
+setmodules( ['pvwattsv5', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_btm();
@@ -1063,7 +1064,7 @@ addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_loa
 
 
 setconfig( 'Fuel Cell', 'Single Owner');
-setmodules( ['pvwattsv5_lifetime', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'singleowner']);
+setmodules( ['pvwattsv5', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_fom();

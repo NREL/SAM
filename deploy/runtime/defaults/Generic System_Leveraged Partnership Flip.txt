@@ -1,5 +1,5 @@
 1
-493
+491
 LeadAcid_q10
 1
 1
@@ -645,18 +645,6 @@ batt_pv_dc_forecast
 1
 0
 batt_replacement_capacity
-1
-1
-1
-1
-0
-batt_replacement_cost
-1
-1
-1
-1
-600
-batt_replacement_cost_escal
 1
 1
 1
