@@ -10,7 +10,7 @@
     #ifdef __GNUC__
       #define SAM_EXPORT __attribute__ ((dllimport))
     #else
-      #define SAM_EXPORT __declspec(dllimport)
+      #define SAM_EXPORT __declspec(dllexport)
     #endif
   #endif
 #else
