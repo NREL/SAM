@@ -152,7 +152,7 @@ else()
                 NAMES ssc.dylib ssc.so ssc.lib
                 PATHS $ENV{SSCDIR}/ssc )
     find_library( SSCD_LIB
-            NAMES sscd.so sscd.lib
+            NAMES ssc.dylib sscd.so sscd.lib
             PATHS $ENV{SSCDIR}/ssc )
     if(system_advisor_model_EXPORT)
         unset(SSCE_LIB CACHE)

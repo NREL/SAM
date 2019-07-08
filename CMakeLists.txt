@@ -88,6 +88,9 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(MSVC)
 	add_compile_options(/W4 /MP)
+	foreach (flag_var CMAKE_C_FLAGS_DEBUG CMAKE_CXX_FLAGS_DEBUG)
+		set(${flag_var} "${${flag_var}} /D_DEBUG" CACHE STRING "compile flags" FORCE)
+	endforeach()
 	add_compile_definitions( _CRT_SECURE_NO_WARNINGS _MBCS __WXMSW__ __64BIT__)
 	foreach (flag_var CMAKE_C_FLAGS_DEBUG CMAKE_CXX_FLAGS_DEBUG)
 		set(${flag_var} "${${flag_var}} /D_DEBUG" CACHE STRING "compile flags" FORCE)
@@ -199,6 +202,8 @@ else()
 	target_link_libraries(SAM debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
 	target_link_libraries(SAM optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
 endif()
+
+target_link_libraries(SAM ${wxWidgets_LIBRARIES})
 
 target_link_libraries(SAM ${wxWidgets_LIBRARIES})
 
