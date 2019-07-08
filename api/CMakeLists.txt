@@ -99,13 +99,9 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(MSVC)
     add_compile_options(/MP /W3 /wd4996)
-    if (CMAKE_BUILD_TYPE STREQUAL Debug)
-        add_compile_options(/MDd)
-        add_compile_definitions(_DEBUG)
-    else()
-        add_compile_options(/MD /O2)
-        add_compile_definitions(NDEBUG )
-    endif()
+    foreach (flag_var CMAKE_C_FLAGS_DEBUG CMAKE_CXX_FLAGS_DEBUG)
+        set(${flag_var} "${${flag_var}} /D_DEBUG" CACHE STRING "compile flags" FORCE)
+    endforeach()
 	if (system_advisor_model_EXPORT)
         add_compile_definitions(system_advisor_model_EXPORT)
 	endif()
@@ -130,25 +126,24 @@ endif()
 #
 #####################################################################################################################
 
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_library(SAM_apid SHARED ${SAM_API_SRC})
-    set(SAM_API_LIB SAM_apid)
-
-    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
-else()
-    add_library(SAM_api SHARED
-            ${SAM_API_SRC})
-    set(SAM_API_LIB SAM_api)
+add_library(SAM_API SHARED ${SAM_API_SRC})
+set_target_properties(SAM_API
+    PROPERTIES
+    DEBUG_POSTFIX "d"
+    RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+if (MSVC)
+    set_target_properties(SAM_API
+        PROPERTIES
+        LINK_FLAGS /SUBSYSTEM:WINDOWS)
 endif()
 
 if (NOT skip_autogen)
-    add_dependencies(${SAM_API_LIB} export_config)
+    add_dependencies(SAM_API export_config)
 endif()
 
 # required functions not exported in ssc.dll
 if(MSVC)
-    target_sources(${SAM_API_LIB} PRIVATE $ENV{SSCDIR}/ssc/vartab.cpp $ENV{SSCDIR}/shared/lib_util.cpp)
+    target_sources(SAM_API PRIVATE $ENV{SSCDIR}/ssc/vartab.cpp $ENV{SSCDIR}/shared/lib_util.cpp)
 endif() 
 
 
@@ -158,32 +153,28 @@ endif()
 #
 #####################################################################################################################
 
-if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-        target_link_libraries(${SAM_API_LIB} sscd)
-        set(SSC_LIB sscd)
-    else()
-        target_link_libraries(${SAM_API_LIB} ssc)
-        set(SSC_LIB ssc)
-    endif()
-else()
-    unset(SSC_LIB CACHE)
-    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-        find_library( SSC_LIB
-                NAMES sscd.so sscd.lib
-                PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/build_vs2017/x64/Debug)
-    elseif(system_advisor_model_EXPORT)
-        find_library( SSC_LIB
-                NAMES libssc.so ssc.lib ssc.so
-                PATHS $ENV{SSCDIR}/ssc )
-    else()
-        find_library(SSC_LIB
-                NAMES ssc.dylib ssc.so ssc.lib
-                PATHS $ENV{SSCDIR}/ssc $ENV{SSCDIR}/ssc/build_vs2017/x64/Release )
-    endif()
+
+unset(SSCD_LIB CACHE)
+unset(SSC_LIB CACHE)
+if (MSVC)
+    SET(CMAKE_FIND_LIBRARY_PREFIXES "")
+    SET(CMAKE_FIND_LIBRARY_SUFFIXES ".dll")
 endif()
 
-target_link_libraries(${SAM_API_LIB} ${SSC_LIB})
+string( CONCAT TMP_PATH $ENV{SSCDIR} "/ssc" )
+message(STATUS "SAM_API: TMP_PATH=${TMP_PATH}")
+
+find_library( SSCD_LIB
+    NAMES sscd
+    PATHS ${TMP_PATH} )
+find_library( SSC_LIB
+    NAMES ssc
+    PATHS ${TMP_PATH}  )
+    message(STATUS "SAM_API RELEASE: SSC_LIB=${SSC_LIB}")
+    message(STATUS "SAM_API DEBUG: SSCD_LIB=${SSCD_LIB}")
+
+target_link_libraries(SAM_API debug ${SSCD_LIB})
+target_link_libraries(SAM_API optimized ${SSC_LIB})
 
 if (UNIX)
     target_link_libraries(${SAM_API_LIB} -lm)

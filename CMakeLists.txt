@@ -157,20 +157,15 @@ elseif(WIN32)
 	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_vs2017/SAM.rc)
 endif()
 
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-	add_executable(SAMd 
-		WIN32
-		MACOSX_BUNDLE
-		${SAM_SRC}
-		${SAM_ICON})
-	set(SAM_EXE SAMd)
-else()
-	add_executable(SAM
-		WIN32
-		MACOSX_BUNDLE
-		${SAM_SRC}
-		${SAM_ICON})
-	set(SAM_EXE SAM)
+add_executable(SAM ${SAM_SRC} ${SAM_ICON})
+set_target_properties(SAM
+    PROPERTIES
+    DEBUG_POSTFIX "d"
+	RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+if (MSVC)
+	set_target_properties(SAM
+		PROPERTIES
+		LINK_FLAGS /SUBSYSTEM:WINDOWS)
 endif()
 
 
@@ -180,43 +175,37 @@ endif()
 #
 #####################################################################################################################
 
-if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-		target_link_libraries(${SAM_EXE} lk wexd sscd)
-		set(SSC_LIB sscd)
-	else()
-		target_link_libraries(${SAM_EXE} lk wex ssc)
-		set(SSC_LIB ssc)
-	endif()
-else()
-	unset(WEX_LIB CACHE)
-	unset(LK_LIB CACHE)
+	unset(WEXD_LIB CACHE)
+	unset(LKD_LIB CACHE)
+	unset(SSCD_LIB CACHE)
+	unset(WEXD_LIB CACHE)
+	unset(LKD_LIB CACHE)
 	unset(SSC_LIB CACHE)
-	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-		find_library( WEX_LIB
-				NAMES wexd.a wexd.lib
-				PATHS $ENV{WEXDIR})
-		find_library( LK_LIB
-				NAMES lkd.a lkd.lib
-				PATHS $ENV{LKDIR})
-		find_library( SSC_LIB
-				NAMES sscd.dylib sscd.so sscd.lib
-				PATHS $ENV{SSCDIR}/ssc)
-	else()
-		find_library( WEX_LIB
-				NAMES wex.a wex.lib
-				PATHS $ENV{WEXDIR})
-		find_library( LK_LIB
-				NAMES lk.a lk.lib
-				PATHS $ENV{LKDIR})
-		find_library(SSC_LIB
-				NAMES  ssc.dylib ssc.so ssc.lib
-				PATHS $ENV{SSCDIR}/ssc)
-	endif()
-	target_link_libraries(${SAM_EXE} ${SSC_LIB} ${WEX_LIB} ${LK_LIB} )
-endif()
+	find_library( WEXD_LIB
+			NAMES wexd.a wexd.lib
+			PATHS $ENV{WEXDIR})
+	find_library( LKD_LIB
+			NAMES lkd.a lkd.lib
+			PATHS $ENV{LKDIR})
+	find_library( SSCD_LIB
+			NAMES sscd.dylib sscd.so sscd.lib
+			PATHS $ENV{SSCDIR}/ssc)
+	find_library( WEX_LIB
+			NAMES wex.a wex.lib
+			PATHS $ENV{WEXDIR})
+	find_library( LK_LIB
+			NAMES lk.a lk.lib
+			PATHS $ENV{LKDIR})
+	find_library(SSC_LIB
+			NAMES  ssc.dylib ssc.so ssc.lib
+			PATHS $ENV{SSCDIR}/ssc)
+	message(STATUS "RELEASE: SSC_LIB=${SSC_LIB}")
+	message(STATUS "DEBUG: SSCD_LIB=${SSCD_LIB}")
 
-target_link_libraries(${SAM_EXE} ${wxWidgets_LIBRARIES})
+	target_link_libraries(SAM debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB} )
+	target_link_libraries(SAM optimized ${SSC_LIB} optimized ${WEX_LIB} optimized ${LK_LIB} )
+
+target_link_libraries(SAM ${wxWidgets_LIBRARIES})
 
 if (UNIX)
 	target_link_libraries(${SAM_EXE} -lm -lcurl)
@@ -224,8 +213,8 @@ elseif (MSVC)
 	find_library( CURL_LIB
 				NAMES libcurl.lib
 				PATHS $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/lib)
-	target_link_libraries(${SAM_EXE} ${CURL_LIB})
-	target_link_libraries(${SAM_EXE} Winhttp)
+	target_link_libraries(SAM ${CURL_LIB})
+	target_link_libraries(SAM Winhttp)
 endif()
 
 
@@ -304,7 +293,7 @@ else()
 
 		foreach( file_i ${LIBCURL_FILES})
 		    add_custom_command(
-		    TARGET ${SAM_EXE}
+		    TARGET SAM
 		    POST_BUILD
 		    COMMAND ${CMAKE_COMMAND}
 		    ARGS -E copy $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/bin/${file_i} ${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64
@@ -314,7 +303,7 @@ else()
 
 
 		add_custom_command(
-		    TARGET ${SAM_EXE}
+		    TARGET SAM
 		    POST_BUILD
 		    COMMAND ${CMAKE_COMMAND}
 		    ARGS -E copy $ENV{SSCDIR}/ssc/${SSC_LIB}.lib $ENV{SSCDIR}/ssc/${SSC_NAME}.dll ${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64
