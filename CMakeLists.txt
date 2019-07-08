@@ -195,10 +195,10 @@ else()
 			PATHS $ENV{LKDIR})
 	find_library( SSC_LIB
 			NAMES ssc.a ssc.lib
-			PATHS $ENV{SSCDIR})
+			PATHS $ENV{SSCDIR}/ssc)
 	find_library( SSCD_LIB
 			NAMES sscd.a sscd.lib
-			PATHS $ENV{SSCDIR})
+			PATHS $ENV{SSCDIR}/ssc)
 	target_link_libraries(SAM debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
 	target_link_libraries(SAM optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
 endif()
