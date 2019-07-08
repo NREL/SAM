@@ -110,13 +110,16 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
 
 
         if (vd.group.length() == 0 || vd.group == vd.cmod){
-            vd.group = format_as_symbol(find_ui_of_variable(vd.name, config_name));
-            size_t pos = vd.group.find(format_as_symbol(cmod_name));
-            if (pos != std::string::npos){
-                vd.group = vd.group.substr(pos+format_as_symbol(cmod_name).length());
-            }
-            if (vd.group.length() == 0)
+			std::string ui_name = find_ui_of_variable(vd.name, config_name);
+			if (ui_name.empty())
                 vd.group = "Common";
+			else {
+				vd.group = format_as_symbol(ui_name);
+				size_t pos = vd.group.find(format_as_symbol(cmod_name));
+				if (pos != std::string::npos) {
+					vd.group = vd.group.substr(pos + format_as_symbol(cmod_name).length());
+				}
+			}
         }
 
 
