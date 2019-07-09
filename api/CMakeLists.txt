@@ -130,12 +130,9 @@ endif()
 # libSAM_api for PySAM
 if(APPLE)
     set(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
-    add_custom_command(
-        TARGET SAM_api
-        POST_BUILD
-        COMMAND install_name_tool -id @rpath/libSAM_api.so $ENV{SAMNTDIR}/api/libSAM_api.so
-    )
+
 endif()
+
 
 #####################################################################################################################
 #
@@ -168,4 +165,19 @@ endif()
 
 if (UNIX)
     target_link_libraries(SAM_api -lm)
+endif()
+
+
+#####################################################################################################################
+#
+# Target Installation
+#
+#####################################################################################################################
+
+if (APPLE)
+    add_custom_command(
+            TARGET SAM_api
+            POST_BUILD
+            COMMAND install_name_tool -id @rpath/$<TARGET_FILE_NAME:SAM_api>.so $ENV{SAMNTDIR}/api/$<TARGET_FILE_NAME:SAM_api>
+    )
 endif()

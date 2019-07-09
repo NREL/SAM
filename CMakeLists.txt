@@ -194,10 +194,10 @@ else()
 			NAMES lk.a lk.lib
 			PATHS $ENV{LKDIR})
 	find_library( SSC_LIB
-			NAMES ssc.a ssc.lib
+			NAMES ssc.dylib ssc.lib
 			PATHS $ENV{SSCDIR}/ssc)
 	find_library( SSCD_LIB
-			NAMES sscd.a sscd.lib
+			NAMES sscd.dylib sscd.lib
 			PATHS $ENV{SSCDIR}/ssc)
 	target_link_libraries(SAM debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
 	target_link_libraries(SAM optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
@@ -229,12 +229,15 @@ SET(CMAKE_SKIP_BUILD_RPATH)
 if (APPLE)
 	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 		set(SSC_NAME sscd)
+		set(SAM_NAME SAMd)
+		set(SAM_APP ${CMAKE_CURRENT_SOURCE_DIR}/SAMd.app)
 	else()
 		set(SSC_NAME ssc)
+		set(SAM_NAME SAM)
+		set(SAM_APP ${CMAKE_CURRENT_SOURCE_DIR}/SAM.app)
 	endif()
-	set(SAM_APP ${CMAKE_CURRENT_SOURCE_DIR}/$<TARGET_FILE_BASE_NAME:SAM>.app)
 	add_custom_command(
-		TARGET ${SAM_EXE}
+		TARGET SAM
 		POST_BUILD
 		COMMAND rsync -a -v --ignore-existing ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
 		COMMAND mkdir -p ${SAM_APP}/Contents/runtime
@@ -242,9 +245,9 @@ if (APPLE)
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/Info-SAM.plist ${SAM_APP}/Contents
 		COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
-		COMMAND cp $ENV{SSCDIR}/ssc/${SSC_LIB}.dylib ${SAM_APP}/Contents/Frameworks
+		COMMAND cp $ENV{SSCDIR}/ssc/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks
 		COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
-		COMMAND install_name_tool -change ${SSC_LIB} @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_EXE}
+		COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
 	)
 else()
 	if (UNIX)
