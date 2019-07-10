@@ -56,7 +56,6 @@ version_upgrade{'2019.4.3'} = define() {
 	if (varinfo('en_batt')){
 		if (value('en_batt')){
 			old_replacement_cost = oldvalue('batt_replacement_cost');
-			logmsg('old_replacement_cost ' + to_string(old_replacement_cost));
 			old_escalation = oldvalue('batt_replacement_cost_escal');
 			value('om_replacement_cost1', [old_replacement_cost], 'Updated battery replacement cost input, now on System Costs page.');
 			value('om_replacement_cost_escal', old_escalation);
@@ -66,8 +65,6 @@ version_upgrade{'2019.4.3'} = define() {
 			value('batt_thermal_choice', 1);
 		}
 	}
-
-
 };
 
 
