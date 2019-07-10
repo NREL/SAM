@@ -1763,24 +1763,24 @@ function setup_mhkwave_pages()
 	addpage( [[ 'MHK Wave Resource']], { 'sidebar'='Wave Resource', 'help'='wind_resource' } );
 	addpage( [[ 'MHK Wave Device' ]], { 'sidebar'='Wave Energy Converter', 'help'='wind_turbine' } );
 	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='wind_farm' } );
-	addpage( [[ 'MHK Wave Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='mhk_system_costs' } );
+	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='mhk_system_costs' } );
 }
 setconfig( 'MHKwave', 'LCOE Calculator' );
 setmodules( ['mhk_wave', 'lcoefcr']);
 setup_mhkwave_pages();
-setup_lcoefcr_pages();	
+addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
 function setup_mhktidal_pages()
 {
 	addpage( [[ 'MHK Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='wind_resource' } );
 	addpage( [[ 'MHK Tidal Device' ]], { 'sidebar'='Tidal Energy Converter', 'help'='wind_turbine' } );
 	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='wind_farm' } );
-	addpage( [[ 'MHK Tidal Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 }
 setconfig( 'MHKtidal', 'LCOE Calculator' );
 setmodules( ['mhk_tidal', 'lcoefcr']);
 setup_mhktidal_pages();
-setup_lcoefcr_pages();
+addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
 
 

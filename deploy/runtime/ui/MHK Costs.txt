@@ -1,6 +1,6 @@
-MHK Tidal Costs
+MHK Costs
 794
-871
+607
 30
 GroupBox
 
@@ -114,7 +114,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -141,7 +141,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+10
 Numeric
 
 1
@@ -173,7 +173,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -200,68 +200,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
-Numeric
-
-1
-16
-Name
-5
-34
-csp.pt.cost.installed_per_capacity
-X
-3
-645
-Y
-3
-555
-Width
-3
-133
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-1
-$
-Suffix
-5
-3
-/kW
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
+8
 Numeric
 
 1
@@ -293,7 +232,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -320,7 +259,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -352,7 +291,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -379,7 +318,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -411,7 +350,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -438,7 +377,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+11
 Label
 
 1
@@ -494,7 +433,7 @@ Name
 mooring_found_substruc_cost
 X
 3
-240
+288
 Y
 3
 96
@@ -515,7 +454,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -542,7 +481,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Divider
 
 1
@@ -850,7 +789,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -877,7 +816,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+13
 Numeric
 
 1
@@ -909,7 +848,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -936,7 +875,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+12
 Numeric
 
 1
@@ -968,7 +907,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -995,7 +934,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+14
 Numeric
 
 1
@@ -1027,7 +966,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1054,7 +993,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+9
 Numeric
 
 1
@@ -1086,7 +1025,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1113,7 +1052,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+6
 Numeric
 
 1
@@ -1124,7 +1063,7 @@ Name
 power_takeoff_system_cost
 X
 3
-240
+288
 Y
 3
 69
@@ -1145,7 +1084,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1172,7 +1111,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -1204,7 +1143,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1231,7 +1170,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+7
 Numeric
 
 1
@@ -1242,7 +1181,7 @@ Name
 structural_assembly_cost
 X
 3
-240
+288
 Y
 3
 42
@@ -1263,7 +1202,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1290,7 +1229,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 Numeric
 
 1
@@ -1351,6 +1290,67 @@ BackColour
 TabOrder
 3
 0
+Numeric
+
+1
+16
+Name
+5
+17
+total_cost_per_kw
+X
+3
+645
+Y
+3
+555
+Width
+3
+133
+Height
+3
+21
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+1
+$
+Suffix
+5
+3
+/kW
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1442,7 +1442,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1553,7 +1553,7 @@ Assembly and Installation Cost
 $
 MHK Costs
 0
-0
+2
 1
 1
 1
@@ -1567,7 +1567,7 @@ Development Cost
 $
 MHK Costs
 0
-0
+2
 1
 1
 1
@@ -1581,7 +1581,7 @@ Engineering and Management Cost
 $
 MHK Costs
 0
-0
+2
 1
 1
 1
@@ -1609,7 +1609,7 @@ Mooring, Foundation, and Substructure Cost
 $
 MHK Costs
 0
-0
+2
 1
 1
 1
@@ -1679,7 +1679,7 @@ Plant Commissioning Cost
 $
 MHK Costs
 0
-0
+2
 1
 1
 1
@@ -1693,7 +1693,7 @@ Power Take-Off System Cost
 $
 MHK Costs
 0
-0
+2
 1
 1
 1
@@ -1707,7 +1707,7 @@ Site Access, Port, and Staging Cost
 $
 MHK Costs
 0
-0
+2
 1
 1
 1
@@ -1721,7 +1721,7 @@ Structural Assembly Cost
 $
 MHK Costs
 0
-0
+2
 1
 1
 1
