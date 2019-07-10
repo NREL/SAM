@@ -176,17 +176,8 @@ if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
 	target_link_libraries(SAM lk wex ssc)
 else()
 	unset(WEX_LIB CACHE)
-	unset(WEXD_LIB CACHE)
 	unset(LK_LIB CACHE)
-	unset(LKD_LIB CACHE)
 	unset(SSC_LIB CACHE)
-	unset(SSCD_LIB CACHE)
-	find_library( WEXD_LIB
-			NAMES wexd.a wexd.lib
-			PATHS $ENV{WEXDIR})
-	find_library( LKD_LIB
-			NAMES lkd.a lkd.lib
-			PATHS $ENV{LKDIR})
 	find_library( WEX_LIB
 			NAMES wex.a wex.lib
 			PATHS $ENV{WEXDIR})
@@ -196,11 +187,23 @@ else()
 	find_library( SSC_LIB
 			NAMES ssc.dylib ssc.lib ssc.so
 			PATHS $ENV{SSCDIR}/ssc)
-	find_library( SSCD_LIB
-			NAMES sscd.dylib sscd.lib sscd.so
-			PATHS $ENV{SSCDIR}/ssc)
-	target_link_libraries(SAM debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
 	target_link_libraries(SAM optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
+
+	if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
+		unset(LKD_LIB CACHE)
+		unset(WEXD_LIB CACHE)
+		unset(SSCD_LIB CACHE)
+		find_library( WEXD_LIB
+				NAMES wexd.a wexd.lib
+				PATHS $ENV{WEXDIR})
+		find_library( LKD_LIB
+				NAMES lkd.a lkd.lib
+				PATHS $ENV{LKDIR})
+		find_library( SSCD_LIB
+				NAMES sscd.dylib sscd.lib sscd.so
+				PATHS $ENV{SSCDIR}/ssc)
+		target_link_libraries(SAM debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
+	endif()
 endif()
 
 target_link_libraries(SAM ${wxWidgets_LIBRARIES})
