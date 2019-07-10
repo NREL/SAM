@@ -122,7 +122,7 @@ add_definitions(-DLK_USE_WXWIDGETS )
 
 if (UNIX)
 	set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
-	find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base )
+	find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base )
 else()
 	set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
 	if (DEBUG_WXWIDGETS)
@@ -194,10 +194,10 @@ else()
 			NAMES lk.a lk.lib
 			PATHS $ENV{LKDIR})
 	find_library( SSC_LIB
-			NAMES ssc.dylib ssc.lib
+			NAMES ssc.dylib ssc.lib ssc.so
 			PATHS $ENV{SSCDIR}/ssc)
 	find_library( SSCD_LIB
-			NAMES sscd.dylib sscd.lib
+			NAMES sscd.dylib sscd.lib sscd.so
 			PATHS $ENV{SSCDIR}/ssc)
 	target_link_libraries(SAM debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
 	target_link_libraries(SAM optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
