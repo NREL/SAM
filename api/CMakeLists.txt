@@ -144,13 +144,17 @@ if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     target_link_libraries(SAM_api ssc)
 else()
     unset(SSC_LIB CACHE)
-    unset(SSCD_LIB CACHE)
     find_library(SSC_LIB
                 NAMES ssc.dylib ssc.so ssc.lib
                 PATHS $ENV{SSCDIR}/ssc )
-    find_library( SSCD_LIB
-            NAMES ssc.dylib sscd.so sscd.lib
-            PATHS $ENV{SSCDIR}/ssc )
+    if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
+        unset(SSCD_LIB CACHE)
+        find_library( SSCD_LIB
+                NAMES sscd.dylib sscd.so sscd.lib
+                PATHS $ENV{SSCDIR}/ssc )
+        target_link_libraries(SAM_api debug ${SSCD_LIB})
+    endif()
+
     if(system_advisor_model_EXPORT)
         unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
@@ -158,7 +162,6 @@ else()
                 PATHS $ENV{SSCDIR}/ssc )
         target_link_libraries(SAM_api ${SSCE_LIB})
     else()
-        target_link_libraries(SAM_api debug ${SSCD_LIB})
         target_link_libraries(SAM_api optimized ${SSC_LIB})
     endif()
 endif()
