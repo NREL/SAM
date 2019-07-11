@@ -1,5 +1,5 @@
 1
-437
+440
 a_error_test_number
 1
 1
@@ -99,7 +99,7 @@ annual_peak
 1
 1
 1
-4.39428
+2.45443
 bos_cost_fixed
 1
 1
@@ -123,7 +123,7 @@ bos_cost_total
 1
 1
 1
-18103.2
+7188
 bos_total_budgeted_cost
 1
 1
@@ -1544,84 +1544,78 @@ electrical_materials_cost
 1
 1
 111987
-enable_interconnection_limit
-1
-1
-1
-1
-0
 energy_1
 1
 1
 1
 1
-723.1
+973.773
 energy_10
 1
 1
 1
 1
-1082.88
+762.666
 energy_11
 1
 1
 1
 1
-634.894
+829.74
 energy_12
 1
 1
 1
 1
-716.153
+932.052
 energy_2
 1
 1
 1
 1
-630.657
+853.295
 energy_3
 1
 1
 1
 1
-666.287
+843.664
 energy_4
 1
 1
 1
 1
-794.199
+746.1
 energy_5
 1
 1
 1
 1
-1040.9
+703.467
 energy_6
 1
 1
 1
 1
-1589.92
+593.849
 energy_7
 1
 1
 1
 1
-1926.08
+620.745
 energy_8
 1
 1
 1
 1
-1730.14
+594.653
 energy_9
 1
 1
 1
 1
-1382.64
+643.428
 engineering_cost
 1
 1
@@ -1679,12 +1673,6 @@ foundation_cost
 1
 1
 130922
-grid_interconnection_limit_kwac
-1
-1
-1
-1
-100000
 hub_height
 1
 1
@@ -2093,7 +2081,7 @@ load_annual_total
 1
 1
 1
-12917.8
+9097.43
 load_escalation
 1
 2
@@ -2118,7 +2106,7 @@ loan_amount
 1
 1
 1
-17212.3
+8294.4
 loan_rate
 1
 1
@@ -2184,7 +2172,7 @@ nominal_discount_rate
 1
 1
 1
-9.06
+8.1375
 normalize_to_utility_bill
 1
 1
@@ -2275,18 +2263,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost1
-1
-2
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
@@ -2457,73 +2433,73 @@ peak_1
 1
 1
 1
-1.81179
+2.45443
 peak_10
 1
 1
 1
 1
-3.79241
+2.00825
 peak_11
 1
 1
 1
 1
-1.71415
+2.29458
 peak_12
 1
 1
 1
 1
-1.86432
+2.37933
 peak_2
 1
 1
 1
 1
-1.72415
+2.35856
 peak_3
 1
 1
 1
 1
-1.9776
+2.15328
 peak_4
 1
 1
 1
 1
-2.91707
+1.79229
 peak_5
 1
 1
 1
 1
-3.88027
+1.77046
 peak_6
 1
 1
 1
 1
-4.26146
+1.55524
 peak_7
 1
 1
 1
 1
-4.37081
+1.78159
 peak_8
 1
 1
 1
 1
-4.39428
+1.76688
 peak_9
 1
 1
 1
 1
-4.20842
+1.8783
 performance_bond
 1
 1
@@ -2571,7 +2547,7 @@ property_assessed_value
 1
 1
 1
-28687.2
+13824
 property_tax_rate
 1
 1
@@ -2689,8 +2665,8 @@ reference_number_turbines
 reference_resource_file
 1
 4
-85
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+83
+C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 reference_sales_tax_percent
 1
 1
@@ -2858,13 +2834,13 @@ total_installed_cost
 1
 1
 1
-28687.2
+13824
 total_installed_cost_per_kw
 1
 1
 1
 1
-11953
+5760
 total_obos_cost
 1
 1
@@ -2942,7 +2918,7 @@ turbine_cost_total
 1
 1
 1
-10584
+6636
 turbine_layout
 1
 1
@@ -2966,13 +2942,80 @@ ui_net_capital_cost
 1
 1
 1
-28687.2
+13824
 ui_wacc
 1
 1
 1
 1
-7.18125
+6.603
+uncert_avail
+1
+3
+3
+2
+0.3 0 
+0.3 0 
+0.2 0 
+
+uncert_elec
+1
+3
+2
+2
+0.3 0 
+0.5 0 
+
+uncert_extrap
+1
+3
+5
+4
+2 1.8 0 1.8 
+2 1.8 0 1.8 
+2 1.8 0 1.8 
+2 1.8 0 1.8 
+2 1.8 0 1.8 
+
+uncert_historical
+1
+3
+7
+4
+0.56 1.8 0 1.8 
+1 1.8 0 1.8 
+1 1.8 0 1.8 
+1.5 1.8 0 1.8 
+0.5 1.8 0 1.8 
+0.2 1.8 0 1.8 
+0.1 1.8 0 1.8 
+
+uncert_measure
+1
+3
+4
+4
+2 1.8 0 1.8 
+1 1.8 0 1.8 
+0.5 1.8 0 1.8 
+0.5 1.8 0 1.8 
+
+uncert_projeval
+1
+3
+3
+4
+0.5 1.8 0 1.8 
+0.5 1.8 0 1.8 
+0 1.8 0 1.8 
+
+uncert_wake
+1
+3
+1
+2
+1 1.8 
+
 ur_annual_min_charge
 1
 1
@@ -3489,8 +3532,8 @@ wind_resource.elev
 wind_resource.file
 1
 4
-85
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+83
+C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource.lat
 1
 1
@@ -3545,8 +3588,8 @@ wind_resource.year
 wind_resource_filename
 1
 4
-85
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+83
+C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1
