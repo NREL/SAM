@@ -122,13 +122,17 @@ add_definitions(-DLK_USE_WXWIDGETS )
 
 if (UNIX)
 	set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
-	find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base )
+	if (APPLE)
+		find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base )
+	else()
+		find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base )
+	endif()
 else()
 	set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
-	if (DEBUG_WXWIDGETS)
-		set(wxWidgets_CONFIGURATION mswud)
-	else()
+	if (NDEBUG_WXWIDGETS)
 		set(wxWidgets_CONFIGURATION mswu)
+	else()
+		set(wxWidgets_CONFIGURATION mswud)
 	endif()
 	find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base scintilla)
 endif()
@@ -152,16 +156,27 @@ elseif(WIN32)
 	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_vs2017/SAM.rc)
 endif()
 
-add_executable(SAM
-	WIN32
-	MACOSX_BUNDLE
-	${SAM_SRC}
-	${SAM_ICON})
-set_target_properties(SAM
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	add_executable(SAMd
+			WIN32
+			MACOSX_BUNDLE
+			${SAM_SRC}
+			${SAM_ICON})
+	set(SAM_EXE SAMd)
+else() # if Release or if MSVC multigenerator
+	add_executable(SAM
+			WIN32
+			MACOSX_BUNDLE
+			${SAM_SRC}
+			${SAM_ICON})
+	set(SAM_EXE SAM)
+endif()
+
+set_target_properties(${SAM_EXE}
     PROPERTIES
     DEBUG_POSTFIX "d")
 if (MSVC)
-	set_target_properties(SAM
+	set_target_properties(${SAM_EXE}
 		PROPERTIES
 		LINK_FLAGS /SUBSYSTEM:WINDOWS)
 endif()
@@ -173,7 +188,7 @@ endif()
 #####################################################################################################################
 
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-	target_link_libraries(SAM lk wex ssc)
+	target_link_libraries(${SAM_EXE} lk wex ssc)
 else()
 	unset(WEX_LIB CACHE)
 	unset(LK_LIB CACHE)
@@ -187,7 +202,7 @@ else()
 	find_library( SSC_LIB
 			NAMES ssc.dylib ssc.lib ssc.so
 			PATHS $ENV{SSCDIR}/ssc)
-	target_link_libraries(SAM optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
+	target_link_libraries(${SAM_EXE} optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
 
 	if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
 		unset(LKD_LIB CACHE)
@@ -202,22 +217,20 @@ else()
 		find_library( SSCD_LIB
 				NAMES sscd.dylib sscd.lib sscd.so
 				PATHS $ENV{SSCDIR}/ssc)
-		target_link_libraries(SAM debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
+		target_link_libraries(${SAM_EXE} debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
 	endif()
 endif()
 
-target_link_libraries(SAM ${wxWidgets_LIBRARIES})
-
-target_link_libraries(SAM ${wxWidgets_LIBRARIES})
+target_link_libraries(${SAM_EXE} ${wxWidgets_LIBRARIES})
 
 if (UNIX)
-	target_link_libraries(SAM -lm -lcurl)
+	target_link_libraries(${SAM_EXE} -lm -lcurl)
 elseif (MSVC)
 	find_library( CURL_LIB
 				NAMES libcurl.lib
 				PATHS $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/lib)
-	target_link_libraries(SAM ${CURL_LIB})
-	target_link_libraries(SAM Winhttp)
+	target_link_libraries(${SAM_EXE} ${CURL_LIB})
+	target_link_libraries(${SAM_EXE} Winhttp)
 endif()
 
 
@@ -240,7 +253,7 @@ if (APPLE)
 		set(SAM_APP ${CMAKE_CURRENT_SOURCE_DIR}/SAM.app)
 	endif()
 	add_custom_command(
-		TARGET SAM
+		TARGET ${SAM_EXE}
 		POST_BUILD
 		COMMAND rsync -a -v --ignore-existing ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
 		COMMAND mkdir -p ${SAM_APP}/Contents/runtime
@@ -254,14 +267,14 @@ if (APPLE)
 	)
 else()
 	if (UNIX)
-		set_target_properties(SAM
+		set_target_properties(${SAM_EXE}
 			PROPERTIES OUTPUT_NAME sam.bin)
 		add_custom_command(
-			TARGET SAM
+			TARGET ${SAM_EXE}
 			POST_BUILD
 			COMMAND rm -rf ${PROJECT_SOURCE_DIR}/sam.deploy)
 		set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/sam.deploy)
-		install(TARGETS SAM
+		install(TARGETS ${SAM_EXE}
 			RUNTIME DESTINATION linux_64)
 		install(FILES ${SSC_LIB}
 			DESTINATION linux_64)
@@ -298,7 +311,7 @@ else()
 
 		foreach( file_i ${LIBCURL_FILES})
 		    add_custom_command(
-		    TARGET SAM
+		    TARGET ${SAM_EXE}
 		    POST_BUILD
 		    COMMAND ${CMAKE_COMMAND}
 		    ARGS -E copy $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/bin/${file_i} ${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64
