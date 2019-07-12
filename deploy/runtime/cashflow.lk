@@ -1,4 +1,154 @@
-// setup cashflow tables//////////////////////////////////////////////////////// 
+/* FORMATTING EXAMPLES
+
+cfline( 'REVENUE', -1); // header with shading 
+cfline( 'cf_ppa_price' , -2 ); // generic formatting to show all significant digits 
+cfline('plus PBI if available for debt service:', -1, 0); // label with no shading 
+
+*/
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Functions for Results page cash flow tab
+////////////////////////////////////////////////////////////////////////////////
+
+function cf_production()
+{ 
+	cfline( 'PRODUCTION (AC KWH)', -1); 
+	cfline( 'cf_energy_net', 0); 
+	cfline( '' );
+}
+
+function cf_savings()
+{
+	tech = technology();
+	fin = financing();
+	
+	cfline( 'SAVINGS', -1 );
+	cfline( 'elec_cost_without_system', 0);
+	cfline('minus:', -1, 0); 
+	cfline( 'elec_cost_with_system', 0); 
+	cfline('equals:', -1, 0);
+	if ( fin == "Host Developer" ) { cfline( 'annual_energy_value', 0); }
+	else { cfline( 'cf_energy_value', 0); }
+	if (tech == 'Fuel Cell') { cfline( 'cf_thermal_value', 0); }	
+	if ( fin == "Host Developer" )
+	{
+		cfline( '' );
+		cfline( 'cf_ppa_price' , -2 );
+		cfline( 'cf_nte' , -2);
+		cfline( '' );
+		cfline( 'cf_agreement_cost' , 0);  
+		cfline( 'cf_after_tax_cash_flow', 0); 
+		cfline( 'cf_payback_with_expenses', 0); 
+		cfline( 'cf_cumulative_payback_with_expenses', 0); 
+	}
+	cfline( '' ); 
+}
+
+function cf_revenue()
+{
+
+	tech = technology();
+	fin = financing();
+	
+	has_debt = ( fin == 'Single Owner' ) 
+			|| ( fin == 'Host Developer' )
+			|| ( fin == 'Leveraged Parntership Flip' );
+				
+	cfline( 'REVENUE', -1);
+	cfline( 'cf_ppa_price' , -2 );
+	cfline( 'cf_energy_value', 0); 
+	if (tech == 'Fuel Cell')
+		cfline( 'cf_thermal_value', 0);
+	if ( has_debt )
+	{	  
+		cfline('plus PBI if available for debt service:', -1, 0);
+		if (value('pbi_fed_for_ds')==1)cfline('cf_pbi_total_fed',0); 
+		if (value('pbi_sta_for_ds')==1)cfline('cf_pbi_total_sta',0); 
+		if (value('pbi_uti_for_ds')==1)cfline( 'cf_pbi_total_uti',0); 
+		if (value('pbi_oth_for_ds')==1)cfline('cf_pbi_total_oth',0); 
+	}
+	cfline( 'cf_net_salvage_value', 0); 
+	cfline( 'cf_total_revenue', 0); 
+	cfline( '' ); 
+}
+
+function cf_om_expenses() { 
+ 
+	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0); 
+ 
+    tech = technology();
+    fin = financing(); 
+    
+    // PVWatts does not have battery replacements as of 2017.1.17 
+    batt_replacement_tech = (tech == 'Flat Plate PV' || tech == 'Generic System' || tech == 'Fuel Cell');
+    if ( batt_replacement_tech && value('en_batt') == 1 )
+    { 
+		cfline( 'cf_battery_replacement_cost', 0);
+		// electricity purchase for PV single owner only as of October 2018
+		if ( batt_replacement_tech && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
+		{
+			cfline( 'cf_utility_bill', 0);
+		}	
+	}
+	if (tech == 'Fuel Cell')
+	{
+		cfline( 'cf_om_fixed1_expense,cf_om_capacity1_expense', 2); 
+		cfline( 'cf_fuelcell_replacement_cost', 0);
+		cfline( 'cf_om_fixed2_expense,cf_om_capacity2_expense', 2); 
+	}
+
+    fuel_tech = ( tech != 'Flat Plate PV' &&  
+                 tech != 'PVWatts' &&  
+                 tech != 'High-X Concentrating PV' &&  
+                 tech != 'Solar Water Heating' &&  
+                 tech != 'Wind Power' && 
+                 tech != 'Biopower'); 
+	if ( fuel_tech == true ) { cfline('cf_om_fuel_expense', 2); }
+	 
+	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_1_expense', 0); }
+	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_2_expense', 0); }
+	 
+	if ( tech == 'Geothermal' ) 
+	{ 
+		if (value('system_use_recapitalization')==1)
+		{  
+			cfline ('cf_recapitalization', 0); // do not use recapitalization until geothermal issues resolved.	 
+		}	
+	}		
+ 
+} 
+
+function cf_operating_expenses()
+{
+	fin = financing();
+	
+	cfline( 'cf_property_tax_assessed_value', 0); 
+	cfline( '' ); 
+	cfline( 'OPERATING EXPENSES', -1 );
+    cf_om_expenses(); 
+	cfline( 'cf_property_tax_expense', 0); 
+	cfline( 'cf_insurance_expense', 0); 
+	if ( fin == "Residential" || fin == "Commercial" ) {cfline( 'cf_net_salvage_value', 0); }
+	cfline( 'cf_operating_expenses', 0); 
+	if ( fin == 'Sale Leaseback' ) { cfline('cf_sponsor_margin', 0); }
+	if ( fin == "Residential" || fin == "Commercial" ) 
+	{
+		cfline( '' );
+		cfline( 'cf_deductible_expenses', 0);
+	}
+	cfline( '' );
+}
+
+function cf_earnings()
+{
+	fin = financing();
+	
+	if ( fin == 'Sale Leaseback' ) { cfline('cf_sponsor_operating_margin', 0); }
+	else { cfline( 'cf_ebitda', 0); }
+	cfline( '' ); 
+}
+ 
 function state_federal_depreciation_tables() 
 { 
 	cfrow('% of Total\nDepreciable Basis,Gross Amount\nAllocated,IBI\nReduction,CBI\nReduction,Depreciable Basis\nPrior to ITC,ITC Qualifying\nCosts,% of ITC\nQualifying Costs,ITC\nAmount,ITC Basis\nDisallowance,ITC\nAmount,ITC Basis\nDisallowance,State ITC\nReduction,Federal ITC\nReduction,Depreciable Basis\nAfter ITC Reduction,First Year Bonus\nDepreciation,Depreciable Basis\nAfter Bonus Reduction',-2); 
@@ -34,46 +184,6 @@ function cf_cash_incentives()
 	cfline( '' ); // spacer  
 } 
  
-function cf_om_expenses() { 
- 
-	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0); 
- 
-    tech = technology();
-    fin = financing(); 
-    
-    // PVWatts does not have battery replacements as of 2017.1.17 
-    batt_replacement_tech = (tech == 'Flat Plate PV' || tech == 'Generic System' || tech == 'Fuel Cell');
-    if ( batt_replacement_tech && value('en_batt') == 1 )
-    { 
-		cfline( 'cf_battery_replacement_cost', 0);
-		// electricity purchase for PV single owner only as of October 2018
-		if ( batt_replacement_tech && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
-			cfline( 'cf_utility_bill', 0);
-	}
-	if (tech == 'Fuel Cell')
-	{
-		cfline( 'cf_om_fixed1_expense,cf_om_capacity1_expense', 2); 
-		cfline( 'cf_fuelcell_replacement_cost', 0);
-		cfline( 'cf_om_fixed2_expense,cf_om_capacity2_expense', 2); 
-	}
-
-    fuel_tech = ( tech != 'Flat Plate PV' &&  
-                 tech != 'PVWatts' &&  
-                 tech != 'High-X Concentrating PV' &&  
-                 tech != 'Solar Water Heating' &&  
-                 tech != 'Wind Power' && 
-                 tech != 'Biopower'); 
-	if ( fuel_tech == true ) cfline('cf_om_fuel_expense', 2); 
-	 
-	if ( tech == 'Biopower' ) cfline( 'cf_om_opt_fuel_1_expense', 0); 
-	if ( tech == 'Biopower' ) cfline( 'cf_om_opt_fuel_2_expense', 0); 
-	 
-	if ( tech == 'Geothermal' )  
-		if (value('system_use_recapitalization')==1)  
-			cfline ('cf_recapitalization', 0); // do not use recapitalization until geothermal issues resolved.	 
- 
-} 
-
 ////////////////////////////////////////////////////////////////////////////////
 // Functions for send to Excel with equations
 ////////////////////////////////////////////////////////////////////////////////
@@ -695,30 +805,14 @@ function set_system_cost_salvage( xl )
 ////////////////////////////////////////////////////////////////////////////////
 // Define tables for Results page Cash Flow tab
 ////////////////////////////////////////////////////////////////////////////////
+
  
 cashflow{ 'Residential' } = define() 
 { 
- 
-	cfline( 'PRODUCTION', -1); 
-	cfline( 'cf_energy_net', 0); 
-	cfline( '' ); // spacer 
- 
-	cfline( 'SAVINGS', -1); 
-	cfline( 'cf_energy_value', 0);  
-	cfline( '' ); 
- 
-	cfline( 'OPERATING EXPENSES', -1 ); // header	 
-    cf_om_expenses(); 
-	 
-	cfline( 'cf_property_tax_expense', 0); 
-	cfline( 'cf_insurance_expense', 0); 
-	cfline( 'cf_net_salvage_value', 0); 
-	cfline( 'cf_operating_expenses', 0); 
-	cfline( '' ); // spacer 
-	 
-	cfline( 'cf_deductible_expenses', 0); 
-	cfline( '' ); // spacer 
-	 
+	cf_production();
+	cf_savings(); 
+	cf_operating_expenses();
+	
 	cfline( 'PROJECT DEBT', -1 ); // header 
 	cfline( 'cf_debt_balance', 0); 
 	cfline( 'cf_debt_payment_interest', 0); 
@@ -750,28 +844,9 @@ cashflow{ 'Residential' } = define()
  
 cashflow{ 'Commercial' } = define() 
 { 
-	cfline( 'PRODUCTION', -1); 
-	cfline( 'cf_energy_net', 0); 
-	cfline( '' ); // spacer 
- 
-	cfline( 'SAVINGS', -1); 
-	cfline( 'cf_energy_value', 0);  
-	tech= technology();
-	if (tech == 'Fuel Cell')
-		cfline( 'cf_thermal_value', 0);  
-	cfline( '' ); 
- 
-	cfline( 'OPERATING EXPENSES', -1 ); // header	 
-    cf_om_expenses(); 
-	 
-	cfline( 'cf_property_tax_expense', 0); 
-	cfline( 'cf_insurance_expense', 0); 
-	cfline( 'cf_net_salvage_value', 0); 
-	cfline( 'cf_operating_expenses', 0); 
-	cfline( '' ); // spacer 
-	 
-	cfline( 'cf_deductible_expenses', 0); 
-	cfline( '' ); // spacer 
+	cf_production();
+ 	cf_savings(); 
+ 	cf_operating_expenses();
 	 
 	cfline( 'PROJECT DEBT', -1 ); // header 
 	cfline( 'cf_debt_balance', 0); 
@@ -808,38 +883,11 @@ cashflow{ 'Commercial' } = define()
  
 cashflow{ 'Single Owner' } = define()  
 { 
- 
-	cfline( 'PRODUCTION (AC KWH)', -1); 
-	cfline( 'cf_energy_net', 0); // no decimal places with thousands separator 
- 
-	cfline( '' ); // spacer with no shading 
-	cfline( 'REVENUES', -1); // header with shading 
-	cfline( 'cf_ppa_price' , -2 ); // generic formatting to show all significant digits 
-	cfline( 'cf_energy_value', 0); 
-	tech= technology();
-	if (tech == 'Fuel Cell')
-		cfline( 'cf_thermal_value', 0);  
-	cfline('plus PBI if available for debt service:', -1, 0); // label with no shading 
-	if (value('pbi_fed_for_ds')==1)cfline('cf_pbi_total_fed',0); 
-	if (value('pbi_sta_for_ds')==1)cfline('cf_pbi_total_sta',0); 
-	if (value('pbi_uti_for_ds')==1)cfline( 'cf_pbi_total_uti',0); 
-	if (value('pbi_oth_for_ds')==1)cfline('cf_pbi_total_oth',0); 
-	cfline( 'cf_net_salvage_value', 0); 
-	cfline( 'cf_total_revenue', 0); 
- 
-	cfline( '' ); 
-	cfline( 'cf_property_tax_assessed_value', 0); 
- 
-	cfline( '' ); 
-	cfline( 'OPERATING EXPENSES', -1 ); 
-	cf_om_expenses(); 
-	cfline( 'cf_property_tax_expense', 0); 
-	cfline( 'cf_insurance_expense', 0); 
-	cfline( 'cf_operating_expenses', 0); 
-	 
-	cfline( '' ); 
-	cfline( 'cf_ebitda', 0); 
- 
+	cf_production();
+	cf_revenue(); 
+	cf_operating_expenses();
+	cf_earnings();
+		 
 	cfline( '' ); 
 	cfline( 'CASH FLOWS FROM OPERATING ACTIVITIES', -1 ); 
 	cfline( 'cf_ebitda', 0); 
@@ -1053,44 +1101,15 @@ cashflow{ 'Single Owner' } = define()
 cashflow{ 'Host Developer' } = define()  
 { 
  
-	cfline( 'PRODUCTION (AC KWH)', -1); 
-	cfline( 'cf_energy_net', 0); // no decimal places with thousands separator 
- 
-	cfline( '' ); // spacer with no shading 
-	cfline( 'HOST COSTS AND SAVINGS', -1); // header with shading 
-	cfline( 'elec_cost_without_system', 0); 
-	cfline( 'elec_cost_with_system', 0); 
-	cfline( 'annual_energy_value', 0); 
-	cfline( 'cf_nte' , -2); // generic formatting to show all significant digits 
-	cfline( 'cf_agreement_cost' , 0);  
-	cfline( 'cf_after_tax_cash_flow', 0); 
-	cfline( 'cf_payback_with_expenses', 0); 
-	cfline( 'cf_cumulative_payback_with_expenses', 0); 
- 
-	cfline( '' ); // spacer with no shading 
-	cfline( 'DEVELOPER REVENUES', -1); // header with shading 
-	cfline( 'cf_ppa_price' , -2 ); // generic formatting to show all significant digits 
-	cfline( 'cf_energy_value', 0); 
-	cfline('plus PBI if available for debt service:', -1, 0); // label with no shading 
-	if (value('pbi_fed_for_ds')==1)cfline('cf_pbi_total_fed',0); 
-	if (value('pbi_sta_for_ds')==1)cfline('cf_pbi_total_sta',0); 
-	if (value('pbi_uti_for_ds')==1)cfline( 'cf_pbi_total_uti',0); 
-	if (value('pbi_oth_for_ds')==1)cfline('cf_pbi_total_oth',0); 
-	cfline( 'cf_net_salvage_value', 0); 
-	cfline( 'cf_total_revenue', 0); 
- 
-	cfline( '' ); 
-	cfline( 'cf_property_tax_assessed_value', 0); 
- 
-	cfline( '' ); 
-	cfline( 'DEVELOPER OPERATING EXPENSES', -1 ); 
-	cf_om_expenses(); 
-	cfline( 'cf_property_tax_expense', 0); 
-	cfline( 'cf_insurance_expense', 0); 
-	cfline( 'cf_operating_expenses', 0); 
-	 
-	cfline( '' ); 
-	cfline( 'cf_ebitda', 0); 
+	cf_production();
+	cfline( '**HOST CASH FLOWS**', -1 );
+	cfline ( '' );
+	cf_savings();
+	cfline( '**DEVELOPER CASH FLOWS**', -1 );
+	cfline( '' );
+	cf_revenue(); 
+	cf_operating_expenses();
+	cf_earnings();
  
 	cfline( '' ); 
 	cfline( 'DEVELOPER CASH FLOWS FROM OPERATING ACTIVITIES', -1 ); 
@@ -1305,36 +1324,10 @@ cashflow{ 'Host Developer' } = define()
  
 cashflow{ 'Leveraged Partnership Flip' } = define() 
 { 
- 
-	cfline( 'PRODUCTION (AC KWH)',-1); 
-	cfline( 'cf_energy_net', 0); // no decimal places with thousands separator 
- 
-	cfline( '' ); // spacer with no shading 
- 
-	cfline('REVENUES', -1); 
-	cfline( 'cf_ppa_price', -2 ); 
-	cfline( 'cf_energy_value', 0); 
-	cfline('plus PBI if available for debt service:', -1, 0); // label with no shading 
-	if (value('pbi_fed_for_ds')==1)cfline( 'cf_pbi_total_fed', 0); 
-	if (value('pbi_sta_for_ds')==1)cfline( 'cf_pbi_total_sta', 0); 
-	if (value('pbi_uti_for_ds')==1)cfline( 'cf_pbi_total_uti', 0); 
-	if (value('pbi_oth_for_ds')==1)cfline( 'cf_pbi_total_oth', 0); 
-	cfline( 'cf_net_salvage_value', 0); 
-	cfline( 'cf_total_revenue', 0); 
- 
-	cfline( '' ); // spacer 
-	cfline( 'cf_property_tax_assessed_value', 0); 
- 
-	cfline( '' ); // spacer 
-	cfline('PROJECT OPERATING EXPENSES', -1); 
-	cf_om_expenses(); 
-	cfline( 'cf_property_tax_expense', 0); 
-	cfline( 'cf_insurance_expense', 0); 
-	cfline( 'cf_operating_expenses', 0); 
-	cfline( '' ); // spacer 
-	 
-	cfline( 'cf_ebitda', 0); 
-	cfline( '' ); // spacer 
+	cf_production();
+	cf_revenue(); 
+	cf_operating_expenses();
+	cf_earnings();	 
  
 	cfline('**PROJECT CASH FLOWS**', -1); 
 	cfline( '' ); // spacer 
@@ -1572,30 +1565,10 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
  
 cashflow{ 'All Equity Partnership Flip' } = define() 
 { 
- 
-	cfline( 'PRODUCTION (AC KWH)',-1); 
-	cfline( 'cf_energy_net', 0); // no decimal places with thousands separator 
- 
-	cfline( '' ); // spacer with no shading 
-	cfline('REVENUES', -1); 
-	cfline( 'cf_ppa_price' , -2 ); // generic formatting to show all significant digits 
-	cfline( 'cf_energy_value', 0); 
-	cfline( 'cf_net_salvage_value', 0); 
-	cfline( 'cf_total_revenue', 0); 
-	cfline( '' ); // spacer 
- 
-	cfline( 'cf_property_tax_assessed_value', 0); 
-	cfline( '' ); // spacer 
- 
-	cfline('OPERATING EXPENSES', -1); 
-	cf_om_expenses(); 
-	cfline( 'cf_property_tax_expense', 0); 
-	cfline( 'cf_insurance_expense', 0); 
-	cfline( 'cf_operating_expenses', 0); 
-	cfline( '' ); // spacer 
-	 
-	cfline( 'cf_ebitda', 0); 
-	cfline( '' ); // spacer 
+ 	cf_production(); 
+	cf_revenue(); 
+ 	cf_operating_expenses();
+	cf_earnings();
  
 	cfline('**PROJECT CASH FLOWS**', -1); 
 	cfline( '' ); // spacer 
@@ -1773,32 +1746,11 @@ cashflow{ 'All Equity Partnership Flip' } = define()
  
 cashflow{ 'Sale Leaseback' } = define() 
 { 
- 
-	cfline( 'PRODUCTION (AC KWH)',-1); 
-	cfline( 'cf_energy_net', 0); // no decimal places with thousands separator 
- 
-	cfline( '' ); // spacer with no shading 
-	cfline('REVENUES', -1); 
-	cfline( 'cf_ppa_price' , -2 ); // generic formatting to show all significant digits 
-	cfline( 'cf_energy_value', 0); 
-	cfline( 'cf_net_salvage_value', 0); 
-	cfline( 'cf_total_revenue', 0); 
-	cfline( '' ); // spacer 
- 
-	cfline( 'cf_property_tax_assessed_value', 0); 
-	cfline( '' ); // spacer 
- 
-	cfline('OPERATING EXPENSES', -1); 
-	cf_om_expenses(); 
-	cfline( 'cf_property_tax_expense', 0); 
-	cfline( 'cf_insurance_expense', 0); 
-	cfline('cf_sponsor_margin', 0); 
-	cfline( 'cf_operating_expenses', 0); 
-	cfline( '' ); // spacer 
-	 
-	cfline('cf_sponsor_operating_margin', 0); 
-	cfline( '' ); 
- 
+	cf_production(); 
+	cf_revenue(); 
+ 	cf_operating_expenses();
+	cf_earnings();
+
 	cfline('Cash Flow: Developer (Lessee LLC)', -1); 
 	cfline('Cash Flows from Operating Activities', -1, 0); 
 	cfline('cf_sponsor_operating_margin', 0); 
@@ -1927,8 +1879,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('sponsor_aftertax_irr', 2); 
 	cfline('sponsor_aftertax_npv', 0); 
 	cfline( '' ); 
- 
- 
+  
 	// incentives 
 	cfline( 'Incentives', -1); 
 	cf_cash_incentives(); 
