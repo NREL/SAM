@@ -25,12 +25,12 @@ script:
   - make -C $LKDIR/build_linux
   - make -C $WEXDIR/build_linux
   - make -f Makefile-splinter -j4 -C $SSCDIR/build_linux
-  - make -f Makefile-shared -j4 -C $SSCDIR/build_linux; fi
-  - make -f Makefile-nlopt -j4 -C $SSCDIR/build_linux; fi
-  - make -f Makefile-lpsolve -j4 -C $SSCDIR/build_linux; fi
-  - make -f Makefile-solarpilot -j4 -C $SSCDIR/build_linux; fi
-  - make -f Makefile-tcs -j4 -C $SSCDIR/build_linux; fi
-  - make -f Makefile-ssc -j4 -C $SSCDIR/build_linux; fi
+  - make -f Makefile-shared -j4 -C $SSCDIR/build_linux
+  - make -f Makefile-nlopt -j4 -C $SSCDIR/build_linux
+  - make -f Makefile-lpsolve -j4 -C $SSCDIR/build_linux
+  - make -f Makefile-solarpilot -j4 -C $SSCDIR/build_linux
+  - make -f Makefile-tcs -j4 -C $SSCDIR/build_linux
+  - make -f Makefile-ssc -j4 -C $SSCDIR/build_linux
   - make -C $SAMNTDIR/build_linux
 
 install:
