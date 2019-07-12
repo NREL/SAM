@@ -114,9 +114,7 @@ add_library(SAM_api SHARED ${SAM_API_SRC})
 set_target_properties(SAM_api
     PROPERTIES
     DEBUG_POSTFIX "d"
-    LIBRARY_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>
-    ARCHIVE_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>
-    RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+    )
 
 if (NOT skip_autogen)
     add_dependencies(SAM_api export_config)
@@ -130,7 +128,6 @@ endif()
 # libSAM_api for PySAM
 if(APPLE)
     set(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
-
 endif()
 
 
@@ -144,22 +141,22 @@ if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     target_link_libraries(SAM_api ssc)
 else()
     unset(SSC_LIB CACHE)
-    find_library(SSC_LIB
-                NAMES ssc.dylib ssc.so ssc.lib
-                PATHS $ENV{SSCDIR}/ssc )
+    find_library( SSC_LIB
+            NAMES ssc.dylib ssc.lib ssc.so
+            PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
     if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
         unset(SSCD_LIB CACHE)
         find_library( SSCD_LIB
-                NAMES sscd.dylib sscd.so sscd.lib
-                PATHS $ENV{SSCDIR}/ssc )
+                NAMES sscd.dylib sscd.lib sscd.so
+                PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
         target_link_libraries(SAM_api debug ${SSCD_LIB})
     endif()
 
-    if(system_advisor_model_EXPORT)
+    if(system_advisor_model_EXPORT) # only on Unix
         unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
                 NAMES libssc.so
-                PATHS $ENV{SSCDIR}/ssc )
+                PATHS $ENV{SSCDIR}/build/ssc )
         target_link_libraries(SAM_api ${SSCE_LIB})
     else()
         target_link_libraries(SAM_api optimized ${SSC_LIB})
@@ -181,6 +178,6 @@ if (APPLE)
     add_custom_command(
             TARGET SAM_api
             POST_BUILD
-            COMMAND install_name_tool -id @rpath/$<TARGET_FILE_NAME:SAM_api>.so $ENV{SAMNTDIR}/api/$<TARGET_FILE_NAME:SAM_api>
+            COMMAND install_name_tool -id @rpath/$<TARGET_FILE_NAME:SAM_api>.so $<TARGET_FILE:SAM_api>
     )
 endif()

@@ -23,8 +23,6 @@ add_subdirectory(api)
 
 if (MSVC)
 	set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64>)
-else()
-	set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 endif()
 
 include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
@@ -129,11 +127,6 @@ if (UNIX)
 	endif()
 else()
 	set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
-	if (NDEBUG_WXWIDGETS)
-		set(wxWidgets_CONFIGURATION mswu)
-	else()
-		set(wxWidgets_CONFIGURATION mswud)
-	endif()
 	find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base scintilla)
 endif()
 
@@ -195,13 +188,13 @@ else()
 	unset(SSC_LIB CACHE)
 	find_library( WEX_LIB
 			NAMES wex.a wex.lib
-			PATHS $ENV{WEXDIR})
+			PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Release)
 	find_library( LK_LIB
 			NAMES lk.a lk.lib
-			PATHS $ENV{LKDIR})
+			PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
 	find_library( SSC_LIB
 			NAMES ssc.dylib ssc.lib ssc.so
-			PATHS $ENV{SSCDIR}/ssc)
+			PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
 	target_link_libraries(${SAM_EXE} optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
 
 	if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
@@ -210,13 +203,13 @@ else()
 		unset(SSCD_LIB CACHE)
 		find_library( WEXD_LIB
 				NAMES wexd.a wexd.lib
-				PATHS $ENV{WEXDIR})
+				PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Debug)
 		find_library( LKD_LIB
 				NAMES lkd.a lkd.lib
-				PATHS $ENV{LKDIR})
+				PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Debug)
 		find_library( SSCD_LIB
 				NAMES sscd.dylib sscd.lib sscd.so
-				PATHS $ENV{SSCDIR}/ssc)
+				PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
 		target_link_libraries(${SAM_EXE} debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
 	endif()
 endif()
@@ -229,8 +222,7 @@ elseif (MSVC)
 	find_library( CURL_LIB
 				NAMES libcurl.lib
 				PATHS $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/lib)
-	target_link_libraries(${SAM_EXE} ${CURL_LIB})
-	target_link_libraries(${SAM_EXE} Winhttp)
+	target_link_libraries(${SAM_EXE} ${CURL_LIB} Winhttp)
 endif()
 
 
@@ -309,15 +301,30 @@ else()
 		    vcruntime140.dll
 		)
 
+		set(SAMEXE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64)
+
 		foreach( file_i ${LIBCURL_FILES})
-		    add_custom_command(
-		    TARGET ${SAM_EXE}
-		    POST_BUILD
-		    COMMAND ${CMAKE_COMMAND}
-		    ARGS -E copy $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/bin/${file_i} ${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64
+			add_custom_command(
+			TARGET ${SAM_EXE}
+			POST_BUILD
+			COMMAND ${CMAKE_COMMAND}
+			ARGS -E copy $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/bin/${file_i} ${SAMEXE_DIR}
 		)
 		endforeach( file_i )
 
+		if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
+			set(SSC_LIB $<TARGET_FILE_DIR:ssc>/$<TARGET_FILE_BASE_NAME:ssc>.lib)
+			set(SSC_DLL $<TARGET_FILE:ssc>)
+		else()
+			set(SSC_LIB $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.lib)
+			set(SSC_DLL $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.dll)
+		endif()
+		add_custom_command(
+		    TARGET ${SAM_EXE}
+		    POST_BUILD
+		    COMMAND ${CMAKE_COMMAND}
+		    ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${SAMEXE_DIR}
+		)
 	endif()
 endif()
 

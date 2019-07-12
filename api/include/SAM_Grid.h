@@ -53,7 +53,7 @@ extern "C"
 
 
 	//
-	// Grid parameters
+	// Interconnection parameters
 	//
 
 	/**
@@ -62,7 +62,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Grid_Grid_enable_interconnection_limit_nset(SAM_Grid ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Grid_Interconnection_enable_interconnection_limit_nset(SAM_Grid ptr, double number, SAM_error *err);
 
 	/**
 	 * Set grid_interconnection_limit_kwac: Grid interconnection limit [kWac]
@@ -70,7 +70,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Grid_Grid_grid_interconnection_limit_kwac_nset(SAM_Grid ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Grid_Interconnection_grid_interconnection_limit_kwac_nset(SAM_Grid ptr, double number, SAM_error *err);
 
 
 	//
@@ -104,12 +104,12 @@ extern "C"
 
 
 	/**
-	 * Grid Getters
+	 * Interconnection Getters
 	 */
 
-	SAM_EXPORT double SAM_Grid_Grid_enable_interconnection_limit_nget(SAM_Grid ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Grid_Interconnection_enable_interconnection_limit_nget(SAM_Grid ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Grid_Grid_grid_interconnection_limit_kwac_nget(SAM_Grid ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Grid_Interconnection_grid_interconnection_limit_kwac_nget(SAM_Grid ptr, SAM_error *err);
 
 
 	/**

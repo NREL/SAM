@@ -74,7 +74,6 @@ if (UNIX)
     set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
     find_package(wxWidgets COMPONENTS xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base REQUIRED)
 else()
-    set(wxWidgets_CONFIGURATION mswu)
     set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
     find_package(wxWidgets COMPONENTS qa webview aui richtext html propgrid adv net stc core base scintilla REQUIRED)
 endif()
@@ -110,7 +109,7 @@ set_target_properties(export_config
     PROPERTIES
     DEBUG_POSTFIX "d"
     PREFIX ""
-    RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>)
+    )
 if (MSVC)
     set_target_properties(export_config
         PROPERTIES
@@ -133,13 +132,13 @@ else()
     unset(SSC_LIB CACHE)
     find_library( WEX_LIB
             NAMES wex.a wex.lib
-            PATHS $ENV{WEXDIR})
+            PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Release)
     find_library( LK_LIB
             NAMES lk.a lk.lib
-            PATHS $ENV{LKDIR})
+            PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
     find_library( SSC_LIB
             NAMES ssc.dylib ssc.lib ssc.so
-            PATHS $ENV{SSCDIR}/ssc)
+            PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
     target_link_libraries(export_config optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
 
     if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
@@ -148,13 +147,13 @@ else()
         unset(SSCD_LIB CACHE)
         find_library( WEXD_LIB
                 NAMES wexd.a wexd.lib
-                PATHS $ENV{WEXDIR})
+                PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Debug)
         find_library( LKD_LIB
                 NAMES lkd.a lkd.lib
-                PATHS $ENV{LKDIR})
+                PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Debug)
         find_library( SSCD_LIB
                 NAMES sscd.dylib sscd.lib sscd.so
-                PATHS $ENV{SSCDIR}/ssc)
+                PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
         target_link_libraries(export_config debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
     endif()
 endif()
@@ -177,15 +176,34 @@ endif()
 #
 #####################################################################################################################
 
-if(DEFINED ENV{PYSAMDIRx} )
+if (MSVC)
+    set(EXPORTCONFIG_DIR ${CMAKE_CURRENT_BINARY_DIR}/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>)
     if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-        file(TO_NATIVE_PATH ${CMAKE_SOURCE_DIR}/sam/api API_DEST)
+        set(SSC_LIB $<TARGET_FILE_DIR:ssc>/$<TARGET_FILE_BASE_NAME:ssc>.lib)
+        set(SSC_DLL $<TARGET_FILE:ssc>)
+
     else()
-        file(TO_NATIVE_PATH $ENV{SAMNTDIR}/api API_DEST)
+        set(SSC_LIB $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.lib)
+        set(SSC_DLL $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.dll)
     endif()
     add_custom_command(
         TARGET export_config
         POST_BUILD
-        COMMAND "$<TARGET_FILE:export_config>" --api ${API_DEST} --pysam $ENV{PYSAMDIR}
+        COMMAND ${CMAKE_COMMAND}
+        ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${EXPORTCONFIG_DIR}
     )
 endif()
+
+if(DEFINED ENV{PYSAMDIR} )
+    set(PYSAM $ENV{PYSAMDIR})
+else()
+    set(PYSAM ${CMAKE_CURRENT_SOURCE_DIR}/library/PySAM )
+endif()
+
+file(TO_NATIVE_PATH $ENV{SAMNTDIR}/api API_DEST)
+message("pysam defined ${API_DEST}")
+add_custom_command(
+    TARGET export_config
+    POST_BUILD
+    COMMAND "$<TARGET_FILE:export_config>" --api ${API_DEST} --pysam ${PYSAM}
+)

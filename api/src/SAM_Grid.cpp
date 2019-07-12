@@ -44,13 +44,13 @@ SAM_EXPORT void SAM_Grid_Lifetime_system_use_lifetime_output_nset(SAM_Grid ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_Grid_Grid_enable_interconnection_limit_nset(SAM_Grid ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Grid_Interconnection_enable_interconnection_limit_nset(SAM_Grid ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "enable_interconnection_limit", number);
 	});
 }
 
-SAM_EXPORT void SAM_Grid_Grid_grid_interconnection_limit_kwac_nset(SAM_Grid ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Grid_Interconnection_grid_interconnection_limit_kwac_nset(SAM_Grid ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "grid_interconnection_limit_kwac", number);
 	});
@@ -90,7 +90,7 @@ SAM_EXPORT double SAM_Grid_Lifetime_system_use_lifetime_output_nget(SAM_Grid ptr
 
 
 
-SAM_EXPORT double SAM_Grid_Grid_enable_interconnection_limit_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Interconnection_enable_interconnection_limit_nget(SAM_Grid ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "enable_interconnection_limit", &result))
@@ -101,7 +101,7 @@ SAM_EXPORT double SAM_Grid_Grid_enable_interconnection_limit_nget(SAM_Grid ptr, 
 
 
 
-SAM_EXPORT double SAM_Grid_Grid_grid_interconnection_limit_kwac_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Interconnection_grid_interconnection_limit_kwac_nget(SAM_Grid ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "grid_interconnection_limit_kwac", &result))
