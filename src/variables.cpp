@@ -299,7 +299,7 @@ bool VarTable::Read( wxInputStream &_I )
 #ifdef _DEBUG
 		if( value->Type() == VV_BINARY )
 		  {
-			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen() );
+//			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen() );
 		  }
 #endif
 		
@@ -460,7 +460,7 @@ bool VarTable::Read_text(wxInputStream &_I)
 #ifdef _DEBUG
         if (value->Type() == VV_BINARY)
 		{
-			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen());
+//			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen());
 		}
 #endif
 

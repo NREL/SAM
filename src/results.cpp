@@ -399,9 +399,16 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_pnCdf = new wxDVPnCdfCtrl( this, wxID_ANY );
 	AddPage( m_pnCdf, "PDF / CDF" );
 	
-	m_uncertaintiesViewer = new UncertaintiesViewer(this);
-	AddPage(m_uncertaintiesViewer, "Uncertainties");
 
+	// TODO: remove this after adding for other technologies...
+	if (CaseWindow *cw = static_cast<CaseWindow *>(this->GetParent()->GetParent()))
+	{
+		if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+		{
+			m_uncertaintiesViewer = new UncertaintiesViewer(this);
+			AddPage(m_uncertaintiesViewer, "Uncertainties");
+		}
+	}
 	//m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
 	//AddPage( m_durationCurve, "Duration curve" );
 
@@ -905,7 +912,16 @@ void ResultsViewer::Setup( Simulation *sim )
 
 	// setup graphs
 	m_graphViewer->Setup(m_sim);
-	m_uncertaintiesViewer->Setup(m_sim);
+
+
+	// TODO: remove this after adding for other technologies...
+	if (CaseWindow *cw = static_cast<CaseWindow *>(this->GetParent()->GetParent()))
+	{
+		if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+		{
+			m_uncertaintiesViewer->Setup(m_sim);
+		}
+	}
 
 	m_tables->Setup( m_sim );
 
