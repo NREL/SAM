@@ -53,7 +53,7 @@ extern "C"
 
 
 	//
-	// Interconnection parameters
+	// Common parameters
 	//
 
 	/**
@@ -62,20 +62,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Grid_Interconnection_enable_interconnection_limit_nset(SAM_Grid ptr, double number, SAM_error *err);
-
-	/**
-	 * Set grid_interconnection_limit_kwac: Grid interconnection limit [kWac]
-	 * options: The number of years in the simulation
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Grid_Interconnection_grid_interconnection_limit_kwac_nset(SAM_Grid ptr, double number, SAM_error *err);
-
-
-	//
-	// Common parameters
-	//
+	SAM_EXPORT void SAM_Grid_Common_enable_interconnection_limit_nset(SAM_Grid ptr, double number, SAM_error *err);
 
 	/**
 	 * Set gen: System power generated [kW]
@@ -84,6 +71,14 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Grid_Common_gen_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set grid_interconnection_limit_kwac: Grid interconnection limit [kWac]
+	 * options: The number of years in the simulation
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Grid_Common_grid_interconnection_limit_kwac_nset(SAM_Grid ptr, double number, SAM_error *err);
 
 	/**
 	 * Set load: Electricity load (year 1) [kW]
@@ -104,19 +99,14 @@ extern "C"
 
 
 	/**
-	 * Interconnection Getters
-	 */
-
-	SAM_EXPORT double SAM_Grid_Interconnection_enable_interconnection_limit_nget(SAM_Grid ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Grid_Interconnection_grid_interconnection_limit_kwac_nget(SAM_Grid ptr, SAM_error *err);
-
-
-	/**
 	 * Common Getters
 	 */
 
+	SAM_EXPORT double SAM_Grid_Common_enable_interconnection_limit_nget(SAM_Grid ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Grid_Common_gen_aget(SAM_Grid ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Grid_Common_grid_interconnection_limit_kwac_nget(SAM_Grid ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Grid_Common_load_aget(SAM_Grid ptr, int* length, SAM_error *err);
 
