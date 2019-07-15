@@ -83,12 +83,11 @@ sector_type = choose_from_list( sectors, 'Are you modeling a residential or comm
 
 //USE NREL DEVELOPER TO TRANSLATE LAT AND LON TO TMY3 ID
 // delete after test
-key = 'rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn';
+key = '<SAMAPIKEY>';
 url = 'http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=' + key + '&lat=' + lat + '&lon=' + lon;
-// delete after test
 
-//url = 'http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=<SAMAPIKEY>&lat=' + lat + '&lon=' + lon;
 json = curl(url);
+write_text_file( 'C:/Users/gaobo/Desktop/Temp/load.json', json );
 results = json_read(json);
 
 //CHECK FOR ERRORS
@@ -98,9 +97,17 @@ if ( json == '' ) {
 }
 
 errors = results.errors;
-if( #errors !=0 ) {
-  msgbox('Error message from OpenEI:\n' + errors + '\n\nClick OK to exit macro.');
-  exit;
+if ( errors != null )
+{
+	if( #errors !=0 ) {
+		msgbox('Error message from OpenEI:\n' + errors + '\n\nClick OK to exit macro.');
+		exit;
+	}
+}
+else
+{
+	msgbox('Unable to connect to the OpenEI database!\nIf your computer is connected to the internet, please check API key in the C++ source code in private.h, or manually assign a key in the Macro code.\n\nClick OK to exit macro.');
+	exit;
 }
 
 if ( results == null ) { //no tmy3 data at that lat lon
@@ -149,7 +156,7 @@ load_data = split( load_data, '\n' );
 
 if ( strpos( lower(load_data[0]), 'doctype' ) > -1 )
 {
-	msgbox( 'File not found in OpenEI database!\n' + load_url + '\n\nClick OK to exit macro.' );
+	msgbox( 'File not found in OpenEI database!\n' + load_url + '\n\nNote that load data is not available for Alaska locations north of about 60 degrees latitude.\n\nClick OK to exit macro.' );
 	exit;
 }
 

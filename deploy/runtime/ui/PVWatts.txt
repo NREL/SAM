@@ -1522,7 +1522,7 @@ TabOrder
 3
 7
 
-25
+26
 ac_nameplate
 3
 1
@@ -1857,6 +1857,20 @@ PVWatts
 1
 4
 Numeric
+system_use_lifetime_output
+3
+1
+Run simulation over every year
+0/1
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 tilt
 3
 1

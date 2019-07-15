@@ -12,7 +12,7 @@ before_script:
   - sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
   - user=$(echo $TRAVIS_REPO_SLUG | sed 's,/.*$,,')
   - (cd ../ && pwd)
-  - export GTEST=/home/travis/build/$user/googletest/googletest
+  # - export GTEST=/home/travis/build/$user/googletest
   - export LKDIR=/home/travis/build/$user/lk
   - export WEXDIR=/home/travis/build/$user/wex
   - export SSCDIR=/home/travis/build/$user/ssc

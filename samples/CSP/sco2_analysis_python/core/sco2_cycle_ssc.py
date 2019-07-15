@@ -136,6 +136,9 @@ def get_des_od_label_unit_info__calc_metrics():
     info["MC_phi"] = C_des_od_label_unit_info("mc_phi_des", "mc_phi_od", "Main Comp\nFlow Coef [-]", "Main Compressor Flow Coefficient [-]", "[-]")
     info["MC_phi"].limit_var = "mc_phi_surge"
     info["MC_phi"].limit_var_type = "min"
+    info["MC_psi"] = C_des_od_label_unit_info("mc_psi_des", "mc_psi_od", "Main Comp\nIdeal Head Coef [-]", "Main Compressor Ideal Head Coef[-]", "[-]")
+    info["MC_psi"].limit_var = "mc_psi_max_at_N_des"
+    info["MC_psi"].limit_var_type = "max"
     info["MC_tip_speed"] = C_des_od_label_unit_info("mc_tip_ratio_des", "mc_tip_ratio_od", "Main Comp\nTip Speed Ratio [-]", "Main Compressor Tip Speed Ratio [-]", "[-]")
     info["MC_tip_speed"].des_d_type = "list"
     info["MC_tip_speed"].od_d_type = "matrix"
@@ -158,6 +161,10 @@ def get_des_od_label_unit_info__calc_metrics():
     info["RC_phi"] = C_des_od_label_unit_info("rc_phi_des", "rc_phi_od", "Re-Comp\nFlow Coef [-]", "Re-Compressor Flow Coefficient [-]", "[-]")
     info["RC_phi"].limit_var = "rc_phi_surge"
     info["RC_phi"].limit_var_type = "min"
+    info["RC_psi"] = C_des_od_label_unit_info("rc_psi_des", "rc_psi_od", "Re-Comp\nIdeal Head Coef [-]",
+                                              "Re-Compressor Ideal Head Coefficient [-]", "[-]")
+    info["RC_psi"].limit_var = "rc_psi_max_at_N_des"
+    info["RC_psi"].limit_var_type = "max"
     info["RC_tip_speed"] = C_des_od_label_unit_info("rc_tip_ratio_des", "rc_tip_ratio_od", "Re-Comp\nTip Speed Ratio [-]", "Re-Compressor Tip Speed Ratio [-]", "[-]")
     info["RC_tip_speed"].des_d_type = "list"
     info["RC_tip_speed"].od_d_type = "matrix"
@@ -1296,8 +1303,6 @@ def compare_two_dict_by_keys(dict_1, desc_1, dict_2, desc_2):
         c1_data = C_data_properties(i_data1_key, desc_1)
         c2_data = C_data_properties(i_data2_key, desc_2)
 
-        print("compare key: ", i_key)
-
         mismatch_str_local, match_str_local = compare_data_properties(c1_data, c2_data)
 
         key_str = "For key " + str(i_key)
@@ -1502,7 +1507,10 @@ def get_entry_data_properties(data_in):
                             
                         if(k_structure_type != "list"):
                             structure_type = "matrix_of_lists_and_others"
-                            
+
+                if(len(data_in) == 1):
+                    k_l_d1 = k_0_l_d1
+
                 if(is_matrix_same_data_type):
                     data_type = k_0_data_type
                 else:

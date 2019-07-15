@@ -2096,7 +2096,7 @@ TabOrder
 3
 15
 
-47
+61
 D_rec
 3
 1
@@ -2366,6 +2366,21 @@ Tower and Receiver
 1
 1
 Default
+downc_tm_mult
+3
+1
+Downcomer thermal mass multiplier
+-
+Tower and Receiver
+1
+-
+2
+1
+1
+1
+1
+1
+Default
 epsilon
 3
 1
@@ -2451,6 +2466,21 @@ Tower and Receiver
 1
 183.33
 Default
+heat_trace_power
+3
+1
+Riser/downcomer heat trace power during startup
+kW/m
+Tower and Receiver
+1
+-
+2
+1
+1
+1
+1
+0
+Default
 hl_ffact
 3
 1
@@ -2473,6 +2503,65 @@ is receiver page used with iscc
 Tower and Receiver
 0
 8
+1
+1
+1
+1
+0
+Default
+is_rec_enforce_min_startup
+3
+1
+Always enforce minimum startup time
+-
+Tower and Receiver
+1
+-
+2
+1
+1
+1
+1
+0
+Default
+is_rec_model_trans
+3
+1
+Formulate receiver model as transient?
+-
+Tower and Receiver
+0
+2
+1
+1
+1
+1
+0
+Default
+is_rec_startup_from_T_soln
+3
+1
+Begin receiver startup from solved temperature profiles?
+-
+Tower and Receiver
+1
+-
+2
+1
+1
+1
+1
+0
+Default
+is_rec_startup_trans
+3
+1
+Formulate receiver startup model as transient?
+-
+Tower and Receiver
+1
+-
+2
 1
 1
 1
@@ -2591,6 +2680,36 @@ Tower and Receiver
 1
 0
 Default
+preheat_flux
+3
+1
+Tube absorbed solar flux during preheat
+kW/m^2
+Tower and Receiver
+1
+-
+2
+1
+1
+1
+1
+50
+Default
+preheat_target_Tdiff
+3
+1
+Target tube T at end of preheat - design pt cold HTF temperature
+C
+Tower and Receiver
+1
+-
+2
+1
+1
+1
+1
+0
+Default
 rec_absorptance
 3
 1
@@ -2703,6 +2822,21 @@ Tower and Receiver
 1
 0.2
 Default
+rec_tm_mult
+3
+1
+Receiver thermal mass multiplier
+-
+Tower and Receiver
+1
+-
+2
+1
+1
+1
+1
+1
+Default
 receiver_type
 3
 1
@@ -2717,6 +2851,65 @@ External receiver|Cavity receiver
 1
 1
 0
+Default
+riser_tm_mult
+3
+1
+Riser thermal mass multiplier
+-
+Tower and Receiver
+0
+2
+1
+1
+1
+1
+0
+Default
+startup_ramp_time
+3
+1
+Time required to reach full flux during receiver startup
+hr
+Tower and Receiver
+1
+-
+2
+1
+1
+1
+1
+0
+Default
+startup_target_Tdiff
+3
+1
+Target HTF T at end of startup - design pt hot HTF temperature
+C
+Tower and Receiver
+1
+-
+2
+1
+1
+1
+1
+-5
+Default
+th_riser
+3
+1
+Riser or downcomer tube wall thickness
+mm
+Tower and Receiver
+1
+-
+2
+1
+1
+1
+1
+15
 Default
 th_tube
 3
@@ -2745,6 +2938,21 @@ Tower and Receiver
 1
 1
 0
+Default
+u_riser
+3
+1
+Design point HTF velocity in riser
+m/s
+Tower and Receiver
+1
+-
+2
+1
+1
+1
+1
+4
 Default
 user_fluid
 3
