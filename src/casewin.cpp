@@ -297,15 +297,22 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	// load graphs and perspective from case
 	std::vector<Graph> gl;
 	m_case->GetGraphs( gl );
-	// testing Uncertainties
-	std::vector<Uncertainties> ul;
-	Uncertainties u1, u2, u3;
-	u1.Title = "Figure2";
-	u2.Title = "Figure5";
-	u3.Title = "Figure10";
-	ul.push_back(u1);
-	ul.push_back(u2);
-	m_baseCaseResults->SetUncertainties(ul);
+	
+	
+	if (m_case->GetConfiguration()->Technology == "Wind Power")
+	{
+		// testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
+		std::vector<Uncertainties> ul;
+		Uncertainties u1, u2, u3;
+		u1.Title = "Figure2";
+		u2.Title = "Figure5";
+		u3.Title = "Figure10";
+		ul.push_back(u1);
+		ul.push_back(u2);
+		ul.push_back(u3);
+		m_baseCaseResults->SetUncertainties(ul);
+	}
+
 	m_baseCaseResults->SetGraphs( gl );
 	m_baseCaseResults->LoadPerspective( m_case->Perspective() );
 
