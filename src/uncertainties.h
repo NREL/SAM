@@ -133,6 +133,9 @@ public:
 	// one variable over multiple simulations
 	int Display(std::vector<Simulation *> sims, Uncertainties &g);
 
+	int UncertaintiesCtrl::IntersectionLines(const double &x_min, const double &x_max, const double &y_min, const double  &y_max, const wxString &label, const wxPLOutputDevice::Style &style);
+
+
 	void SetUncertainties( const Uncertainties &g ) { m_g = g; }
 	Uncertainties GetUncertainties() { return m_g; }
 protected:
