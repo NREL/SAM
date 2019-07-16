@@ -828,14 +828,14 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 						}
 						m_outputList.Add(name);
 						VarValue *vv = m_outputs.Create(name, VV_MATRIX);
-						matrix_t<float> ff(nr, nc);
+						matrix_t<double> ff(nr, nc);
 
 						int count = 0;
 						for (int i = 0; i < nr; i++)
 						{
 							for (int j = 0; j < nc; j++)
 							{
-								ff(i, j) = (float)(varr[count]);
+								ff(i, j) = (double)(varr[count]);
 								count++;
 							}
 						}

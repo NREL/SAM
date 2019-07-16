@@ -262,7 +262,7 @@ static void fcall_logmsg( lk::invoke_t &cxt )
 
 static void fcall_webapi( lk::invoke_t &cxt )
 {
-	LK_DOC( "webapi", "Returns the URL for the SAM web API requested.  No arguments returns a list of names.", "( [string:name] ):string");
+	LK_DOC( "webapi", "Returns the URL for the SAM web API requested.  No arguments returns the list of options: windtoolkit, biomass_resource, energy_crop, nsrdb_query, android_build, ios_build, website, ...", "( [string:name] ):string");
 	cxt.result().assign( SamApp::WebApi( cxt.arg_count() > 0 ? cxt.arg(0).as_string() : wxEmptyString ) );
 }
 

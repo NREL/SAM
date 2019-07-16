@@ -234,11 +234,10 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	std::vector<wxRealPoint> data1, data2;
 
 
-	double mu1 = 5000; // kWh mean gross annual energy output
-	double sigma1 = mu1 / 50; // standard deviation
-	double losses = 0.1*mu1;
-	double mu2 = mu1 - losses; // kWh net annual energy
-	double sigma2 = mu2 / 40;
+	double mu1;// = 5000; // kWh mean gross annual energy output
+	double sigma1;// = mu1 / 50; // standard deviation
+	double mu2;// = mu1 - losses; // kWh net annual energy
+	double sigma2;// = mu2 / 40;
 
 	// values depend on technology - testing for wind or can standardize outputs
 	// Read in in Uncertainties.lk (like autographs)
@@ -246,22 +245,31 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	{
 		mu1 = vv->Value();
 	}
+	else
+		return 1;
 	// sigma from Darice 
 	if (VarValue *vv = m_s->GetValue("wspd_uncert"))
 	{
 		sigma1 = vv->Value() / 100.0;
 		sigma1 *= mu1;
 	}
+	else
+		return 1;
 
 	if (VarValue *vv = m_s->GetValue("annual_energy"))
 	{
 		mu2 = vv->Value();
 	}
+	else
+		return 1;
+
 	if (VarValue *vv = m_s->GetValue("total_uncert"))
 	{
 		sigma2 = vv->Value() / 100.0;
 		sigma2 *= mu2;
 	}
+	else
+		return 1;
 
 	int interval = 1000;
 	double area1 = 0, area2 = 0, ymax = 0;
@@ -376,13 +384,16 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 	if (tp_count == 0 || ws_count == 0 || tp_count != ws_count)
 		return 1;
 	double max_power = 0;
+	size_t zero_power_cout = 0;
 	for (size_t i = 0; i < ws_count; i++)
 	{
 		double speed = ws[i];
 		double power = tp[i];
 		if (power > max_power) max_power = power;
 		if (speed > max_speed) max_speed = speed;
+		if ((i > (ws_count / 2)) && (power <= 0)) zero_power_cout++;
 		data2.push_back(wxRealPoint(speed, power));
+		if (zero_power_cout > 10) break;
 	}
 
 	double freq_max = 0;
@@ -404,24 +415,23 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 
 
 	AddPlot(new wxPLBarPlot(data1, 0.0, "Wind speed frequency", wxColour("Blue")));
-	SetYAxis1(new wxPLLinearAxis(0, freq_max, "Wind speed frequecy"));
+	SetYAxis1(new wxPLLinearAxis(0, 1.1*freq_max, "Wind Speed Frequecy"));
 
 	AddPlot(new wxPLLinePlot(data2, "Turbine power (kW)", wxColour("Gray")), wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
-	SetYAxis2(new wxPLLinearAxis(0, 1.05*max_power, "Turbine power"));
-
-	GetXAxis1()->SetLabel("Wind speed (m/s)");
-
-/// crashing
-	SetXAxis1(new wxPLLinearAxis(0, 1.05 * max_speed, "Wind speed (m/s)"));
+	SetYAxis2(new wxPLLinearAxis(0, 1.1*max_power, "Turbine Power (kW)"));
 
 
- //Horizontal annotations crashing...
+/// X-axis
+	SetXAxis1(new wxPLLinearAxis(0,  max_speed, "Wind Speed (m/s)"));
+
+
+ //Horizontal annotations 
 	std::vector<wxRealPoint> LineRatedPower;
 	LineRatedPower.push_back(wxRealPoint(0.5* max_speed, max_power));
 	LineRatedPower.push_back(wxRealPoint(max_speed, max_power));
 	AddAnnotation(new wxPLLineAnnotation(LineRatedPower, 2, wxColour("Gray"), wxPLOutputDevice::DASH), wxPLAnnotation::AXIS , wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
 
-	AddAnnotation(new wxPLTextAnnotation("Rated power", wxRealPoint(0.75* max_speed, max_power), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
+	AddAnnotation(new wxPLTextAnnotation(wxString::Format("Rated Power %g kW", max_power), wxRealPoint(0.6* max_speed, 1.02*max_power), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
 
 
 	ShowLegend(false);
@@ -433,8 +443,108 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 
 int UncertaintiesCtrl::Figure10(Simulation *sim)
 {
+	double mu;// = 10;
+	double sigma; // = 2;
+	std::vector<wxRealPoint> data;
+
+	if (VarValue *vv = m_s->GetValue("annual_energy"))
+	{
+		mu = vv->Value();
+	}
+	else
+		return 1;
+
+	if (VarValue *vv = m_s->GetValue("total_uncert"))
+	{
+		sigma = vv->Value() / 100.0;
+		sigma *= mu;
+	}
+	else
+		return 1;
+
+	size_t num_points = 4000;
+	double z;
+	std::vector<double> phi(num_points);
+	std::vector<double> phic(num_points);
+	std::vector<double> x(2*num_points);
+	std::vector<double> y(2*num_points);
+
+	for (size_t i = 0; i < num_points; i++)
+	{
+		z = 0.001*i;
+		phic[i] = 1 - 0.5*(erfc(-z / sqrt(2)));
+		x[i] = -4 + z;
+		phi[i] = 0.5*(1 - erf(x[i] / sqrt(2)));
+		x[i] = x[i] * sigma + mu;
+		y[i] = phi[i];
+		x[num_points + i] = z;
+		x[num_points + i] = z * sigma + mu;
+		y[num_points + i] = phic[i];
+	}
+
+	for (size_t i = 0; i < 2 * num_points; i++)
+		data.push_back(wxRealPoint(x[i], y[i]));
+
+
+	AddPlot(new wxPLLinePlot(data, "Annual Energy (kWh)", wxColour("Blue")));
+
+	/// X-axis
+	double max_energy = x.back();
+	double min_energy = x.front();
+	SetXAxis1(new wxPLLinearAxis(min_energy, max_energy, "Annual Energy Delivered (kWh)"));
+
+
+	// points of interest 
+	double p99 = 0.99, p95 = 0.95, p84 = 0.84, p50 = 0.5, p16 = 0.16;
+
+	IntersectionLines(min_energy, mu - 2.32*sigma, 0, p99, wxT("(\\mu  - 2.32\\sigma, P99)"), wxPLOutputDevice::DASH);
+	IntersectionLines(min_energy, mu - 1.645*sigma, 0, p95, wxT("(\\mu  - 1.645\\sigma, P95)"), wxPLOutputDevice::DASH);
+	IntersectionLines(min_energy, mu - sigma, 0, p84, wxT("(\\mu  - \\sigma, P84)"), wxPLOutputDevice::DASH);
+	IntersectionLines(min_energy, mu, 0, p50, wxT("(\\mu, P50)"), wxPLOutputDevice::SOLID);
+	IntersectionLines(min_energy, mu  + sigma, 0, p16, wxT("(\\mu  + \\sigma, P16)"), wxPLOutputDevice::DASH);
+
+	// Y Axis
+	wxPLLabelAxis *mx = new wxPLLabelAxis(0,1.1, "P-factor (probability of exceedance)");
+//	SetYAxis1(new wxPLLinearAxis(0, 1.1, "P-factor (probability of exceedance)"));
+	mx->ShowLabel(true);
+
+	mx->Add(0, "P0");
+	mx->Add(0.1, "P10");
+	mx->Add(0.2, "P20");
+	mx->Add(0.3, "P30");
+	mx->Add(0.4, "P40");
+	mx->Add(0.5, "P50");
+	mx->Add(0.6, "P60");
+	mx->Add(0.7, "P70");
+	mx->Add(0.8, "P80");
+	mx->Add(0.9, "P90");
+	mx->Add(1.0, "P100");
+	mx->Add(1.1, "");
+
+	SetYAxis1(mx);
+
+	ShowLegend(false);
+
 	return 0;
 }
+
+int UncertaintiesCtrl::IntersectionLines(const double &x_min, const double &x_max, const double &y_min, const double  &y_max, const wxString &label, const wxPLOutputDevice::Style &style)
+{
+	std::vector<wxRealPoint> horizontalLine;
+	horizontalLine.push_back(wxRealPoint(x_min, y_max));
+	horizontalLine.push_back(wxRealPoint(x_max, y_max));
+	AddAnnotation(new wxPLLineAnnotation(horizontalLine, 2, wxColour("Black"), style), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_LEFT);
+
+	std::vector<wxRealPoint> verticalLine;
+	verticalLine.push_back(wxRealPoint(x_max, y_min));
+	verticalLine.push_back(wxRealPoint(x_max, y_max));
+	AddAnnotation(new wxPLLineAnnotation(verticalLine, 2, wxColour("Black"), style), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_LEFT);
+
+	AddAnnotation(new wxPLTextAnnotation(label, wxRealPoint(1.02*x_max, 1.02*y_max), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_LEFT);
+	
+	return 0;
+}
+
 
 int UncertaintiesCtrl::Display( Simulation *sim, Uncertainties &gi )
 {
@@ -458,7 +568,9 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 	if (m_g.Title.Lower() == "figure2")
 		Figure2(sim);
 	else if (m_g.Title.Lower() == "figure5")
-			Figure5(m_s);
+		Figure5(m_s);
+	else if (m_g.Title.Lower() == "figure10")
+		Figure10(m_s);
 	/*
 	// setup visual properties of Uncertainties
 	wxFont font( *wxNORMAL_FONT );

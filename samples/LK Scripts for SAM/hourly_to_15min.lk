@@ -1,3 +1,22 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+// This script takes an hourly weather file as input, converts the data in the
+// file from hourly to subhourly by copying the value for each hour time step
+// to subhourly time steps, and creates a new file for the subhourly data.
+//
+// For example, to convert from hourly to 15-minute data, if the DNI value for 
+// a given hour is 350 W/m2, the script would divide the hour into four 
+// 15-minute time steps and assign 350 to each time step, in other words
+// Hour = 350 converts to Minute 0 = 350, Minute 15 = 350, Minute 30 = 350, and
+// minute 45 = 350.
+//
+// Note that the "Solar Resource Interpolation" macro that comes with SAM does
+// more sophisticated conversion of hourly to subhourly data.
+//
+// Last tested with SAM 2018.11.11 r4.
+// 
+///////////////////////////////////////////////////////////////////////////////
+
 // Read a weather file
 inFile = choose_file(homedir(), "Choose an hourly weather file", "SAM CSV files (*.csv)|*.csv", 0);
 
@@ -10,38 +29,40 @@ read_line( fIn, header[1] );
 close( fIn);
 
 wf = csvread(inFile, { "delim"=',', "skip"=2, "table"=true });
-oldLabels = @wf;
+labels = @wf;
 
 // Generate an empty wf with the desired size
 outln("Converting file...");
 
-SIZE = 8760 * 4;   // 15 minute data
-newLabels = ['Year','Month','Day','Hour','Minute','GHI','DNI','DHI','Tdry','Tdew','RH','Pres','Wspd','Wdir','Snow Depth'];
+tsPerHour = 4; // 15 minute data
+
+SIZE = 8760 * tsPerHour;   
 newWF = {};
 
-for( i=0; i<#newLabels; i++){
-	newWF{ newLabels[i] } = alloc(SIZE);
+for( i=0; i<#labels; i++){
+	newWF{ labels[i] } = alloc(SIZE);
 }
 
 // Fill the empy wf
 for(i=0; i<8760; i++){
-for(j=0; j<4; j++){
-	
-	wi = i*4 + j;
-	
-	minute = j*15;
-	newWF{"Minute"}[wi] = minute;
-	
-	for( k=0; k<#oldLabels; k++){
-		newWF{ oldLabels[k] }[wi] = wf{oldLabels[k]}[i];
+	minute = 0;
+	for(j=0; j<tsPerHour; j++){
+		wi = i*tsPerHour + j;
+		minute = j*60/tsPerHour;
+		newWF{"Minute"}[wi] = minute;
+		for( k=0; k<#labels; k++){
+			if ( labels[k] != "Minute" ) {
+				newWF{ labels[k] }[wi] = wf{labels[k]}[i];
+			}	
+		}
 	}
-	
-}}
+}
 
 // Write a new wF
 outln("Writing file...");
 
-outputName = path_only(inFile) + "/" + file_only(inFile) + "_15min.csv";
+str = to_string( 60/tsPerHour );
+outputName = path_only(inFile) + "/" + file_only(inFile) + "_"+str+"min.csv";
 
 fOut = open(outputName, 'w');
 write_line(fOut, header[0]);
@@ -51,7 +72,7 @@ csvwrite( "tmp.csv", newWF);
 
 fTmp = open("tmp.csv", 'rb');
 
-for( i=0; i<8760*4 + 1; i++){
+for( i=0; i<8760*tsPerHour + 1; i++){
 	line = "";
 	read_line( fTmp, line);
 	write_line( fOut, line);
@@ -61,4 +82,4 @@ close(fTmp);
 remove_file( "tmp.csv");
 close(fOut);
 
-outln("15-minute data saved to " + outputName + ".");
+outln(str+"-minute data saved to " + outputName + ".");

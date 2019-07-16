@@ -356,3 +356,13 @@ api_autogen/library/PySAM/
 api/test/SAM_api_test
 
 api_autogen/library/C/
+
+*.json
+
+api/api_autogen/library/PySAM/docs/modules/
+
+api/api_autogen/library/PySAM/src/
+
+api/api_autogen/library/PySAM/stubs/
+
+api/api_autogen/library/defaults/
