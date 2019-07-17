@@ -65,6 +65,6 @@ If you would like to report an issue with SAM or make a feature request, please 
 If you would like to submit code to fix an issue or add a feature, you can use GitHub to do so. Please see [Contributing](CONTRIBUTING.md) for instructions.
 
 # License
-SAM's open source code is copyrighted by the Alliance for Sustainable Energy and licensed under a [mixed BSDv3 and GPLv3 license](LICENSE.md). It allows for-profit and not-for-profit organizations to develop and redistribute software based on SAM under terms of an MIT license and requires that research entities including national laboratories, colleges and universities, and non-profit organizations make the source code of any redistribution publicly available under terms of a GPLv3 license.
+SAM's open source code is copyrighted by the Alliance for Sustainable Energy and licensed with BSD-3-Clause terms, found [here](https://github.com/NREL/SAM/blob/develop/LICENSE).
 
 SAM also includes two [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html) licensed libraries from Sandia National Laboratory.  These Fortran libraries have been pre-compiled and included as binaries [here](https://github.com/NREL/SAM/tree/develop/Sandia).  To swap in a new version of these libraries, you may compile them as binary/executables and copy them into the respective folder.
