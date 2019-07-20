@@ -4068,7 +4068,7 @@ disp_wlim_maxspec
 1
 1
 1
-1
+1e+38
 dispatch_data_filename
 1
 4
