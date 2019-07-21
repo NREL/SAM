@@ -1,5 +1,5 @@
 1
-93
+95
 a_error_test_number
 1
 1
@@ -59,6 +59,18 @@ desired_farm_size
 1
 1
 50000
+enable_interconnection_limit
+1
+1
+1
+1
+0
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+20000
 resource_definition_type
 1
 1
@@ -351,8 +363,8 @@ wind_resource.elev
 wind_resource.file
 1
 4
-83
-C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+79
+C:\Projects\GitHub\NREL\MHK\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource.lat
 1
 1
@@ -407,8 +419,8 @@ wind_resource.year
 wind_resource_filename
 1
 4
-83
-C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
+79
+C:\Projects\GitHub\NREL\MHK\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1
