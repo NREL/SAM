@@ -1,5 +1,5 @@
 1
-346
+345
 FRUL
 1
 1
@@ -559,7 +559,8 @@ federal_tax_rate
 file_name
 1
 4
-0
+107
+C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 fluid
 1
 1
@@ -1584,7 +1585,8 @@ sky_model
 solar_data_file_name
 1
 4
-0
+107
+C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -1602,7 +1604,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+107
+C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 srcc_FRUL
 1
 1

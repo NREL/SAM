@@ -76,7 +76,7 @@ avail_loss_total
 1
 1
 1
-0.47
+0
 avail_turb_loss
 1
 1
@@ -94,7 +94,7 @@ avail_uncert_total
 1
 1
 1
-0.47
+0.469042
 c_construction_cost
 1
 2
@@ -235,7 +235,7 @@ elec_loss_total
 1
 1
 1
-0.58
+0
 elec_parasitic_loss
 1
 1
@@ -253,7 +253,7 @@ elec_uncert_total
 1
 1
 1
-0.58
+0.583095
 enable_interconnection_limit
 1
 1
@@ -319,7 +319,7 @@ env_uncert_total
 1
 1
 1
-0.47
+0.469042
 eval_climate_uncert
 1
 1
@@ -343,7 +343,7 @@ eval_uncert_total
 1
 1
 1
-0.71
+0.707107
 extrap_approp_uncert
 1
 1
@@ -373,7 +373,7 @@ extrap_uncert_total
 1
 1
 1
-4.47
+4.47214
 extrap_vert_uncert
 1
 1
@@ -385,7 +385,7 @@ fixed_charge_rate
 1
 1
 1
-0.097506
+0.0975058
 fixed_operating_cost
 1
 1
@@ -427,7 +427,7 @@ meas_uncert_total
 1
 1
 1
-2.35
+2.34521
 ops_env_loss
 1
 1
@@ -469,7 +469,7 @@ ops_loss_total
 1
 1
 1
-0.2
+0
 ops_strategies_loss
 1
 1
@@ -541,7 +541,7 @@ resource_uncert_total
 1
 1
 1
-2.21
+2.20536
 rows
 1
 1
@@ -667,7 +667,7 @@ ui_crf
 1
 1
 1
-0.08329
+0.0832903
 ui_fcr_input_option
 1
 1
@@ -685,7 +685,7 @@ ui_ireal
 1
 1
 1
-0.053659
+0.0536585
 ui_lbl_cff_msg
 1
 4
@@ -726,73 +726,6 @@ ui_wacc
 1
 1
 0.054439
-uncert_avail
-1
-3
-3
-2
-0.3 0 
-0.3 0 
-0.2 0 
-
-uncert_elec
-1
-3
-2
-2
-0.3 0 
-0.5 0 
-
-uncert_extrap
-1
-3
-5
-4
-2 1.8 0 1.8 
-2 1.8 0 1.8 
-2 1.8 0 1.8 
-2 1.8 0 1.8 
-2 1.8 0 1.8 
-
-uncert_historical
-1
-3
-7
-4
-0.56 1.8 0 1.8 
-1 1.8 0 1.8 
-1 1.8 0 1.8 
-1.5 1.8 0 1.8 
-0.5 1.8 0 1.8 
-0.2 1.8 0 1.8 
-0.1 1.8 0 1.8 
-
-uncert_measure
-1
-3
-4
-4
-2 1.8 0 1.8 
-1 1.8 0 1.8 
-0.5 1.8 0 1.8 
-0.5 1.8 0 1.8 
-
-uncert_projeval
-1
-3
-3
-4
-0.5 1.8 0 1.8 
-0.5 1.8 0 1.8 
-0 1.8 0 1.8 
-
-uncert_wake
-1
-3
-1
-2
-1 1.8 
-
 use_specific_wf_wind
 1
 1
@@ -1001,7 +934,8 @@ USA
 wind_resource.description
 1
 4
-0
+80
+Southern WY - flat lands (NREL AWS Truepower representative file),,,,,,,,,,,,,,,
 wind_resource.elev
 1
 1
@@ -1011,7 +945,8 @@ wind_resource.elev
 wind_resource.file
 1
 4
-0
+85
+C:\Projects\GitHub\NREL\wind_pruf\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource.lat
 1
 1
@@ -1066,7 +1001,8 @@ wind_resource.year
 wind_resource_filename
 1
 4
-0
+85
+C:\Projects\GitHub\NREL\wind_pruf\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1
@@ -1246,13 +1182,13 @@ windfarm.farm.turbine_spacing
 1
 1
 1
-8
+500
 windfarm.farm.turbines_per_row
 1
 1
 1
 1
-5
+8
 windfarm.layout.file_or_controls
 1
 1
@@ -1264,4 +1200,4 @@ wspd_uncert
 1
 1
 1
-10
+0
