@@ -1,5 +1,5 @@
 1
-506
+509
 a_error_test_number
 1
 1
@@ -117,7 +117,7 @@ bos_cost_total
 1
 1
 1
-1.728e+07
+1.584e+07
 bos_total_budgeted_cost
 1
 1
@@ -303,7 +303,7 @@ const_per_interest1
 1
 1
 1
-697920
+738720
 const_per_interest2
 1
 1
@@ -363,7 +363,7 @@ const_per_interest_total
 1
 1
 1
-697920
+738720
 const_per_months1
 1
 1
@@ -460,7 +460,7 @@ const_per_principal1
 1
 1
 1
-6.9792e+07
+7.3872e+07
 const_per_principal2
 1
 1
@@ -490,13 +490,13 @@ const_per_principal_total
 1
 1
 1
-6.9792e+07
+7.3872e+07
 const_per_total1
 1
 1
 1
 1
-1.39584e+06
+1.47744e+06
 const_per_total2
 1
 1
@@ -556,7 +556,7 @@ construction_financing_cost
 1
 1
 1
-1.39584e+06
+1.47744e+06
 construction_time
 1
 1
@@ -2180,12 +2180,6 @@ electrical_materials_cost
 1
 1
 3.91765e+06
-enable_interconnection_limit
-1
-1
-1
-1
-0
 engineering_cost
 1
 1
@@ -2285,12 +2279,6 @@ foundation_cost
 1
 1
 3.48031e+06
-grid_interconnection_limit_kwac
-1
-1
-1
-1
-100000
 hub_height
 1
 1
@@ -2869,7 +2857,7 @@ nominal_discount_rate
 1
 1
 1
-9.06
+8.1375
 number_install_seasons
 1
 1
@@ -2953,18 +2941,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost1
-1
-2
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
@@ -3203,7 +3179,7 @@ property_assessed_value
 1
 1
 1
-6.9792e+07
+7.3872e+07
 property_tax_rate
 1
 1
@@ -3315,8 +3291,8 @@ reference_number_turbines
 reference_resource_file
 1
 4
-63
-C:\Projects\sam\deploy\wind_resource\WY Southern-Flat Lands.srw
+83
+C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 reference_sales_tax_percent
 1
 1
@@ -3533,25 +3509,25 @@ total_installed_cost
 1
 1
 1
-6.9792e+07
+7.3872e+07
 total_installed_cost_per_kw
 1
 1
 1
 1
-1454
+1539
 total_obos_cost
 1
 1
 1
 1
-7.46351e+08
+7.46413e+08
 total_obos_cost_per_kw
 1
 1
 1
 1
-15549
+15550.3
 towerInstallMethod
 1
 1
@@ -3617,7 +3593,7 @@ turbine_cost_total
 1
 1
 1
-5.2512e+07
+5.8032e+07
 turbine_layout
 1
 1
@@ -3635,7 +3611,74 @@ ui_wacc
 1
 1
 1
-7.10145
+6.67275
+uncert_avail
+1
+3
+3
+2
+0.3 0 
+0.3 0 
+0.2 0 
+
+uncert_elec
+1
+3
+2
+2
+0.3 0 
+0.5 0 
+
+uncert_extrap
+1
+3
+5
+4
+2 1.8 0 1.8 
+2 1.8 0 1.8 
+2 1.8 0 1.8 
+2 1.8 0 1.8 
+2 1.8 0 1.8 
+
+uncert_historical
+1
+3
+7
+4
+0.56 1.8 0 1.8 
+1 1.8 0 1.8 
+1 1.8 0 1.8 
+1.5 1.8 0 1.8 
+0.5 1.8 0 1.8 
+0.2 1.8 0 1.8 
+0.1 1.8 0 1.8 
+
+uncert_measure
+1
+3
+4
+4
+2 1.8 0 1.8 
+1 1.8 0 1.8 
+0.5 1.8 0 1.8 
+0.5 1.8 0 1.8 
+
+uncert_projeval
+1
+3
+3
+4
+0.5 1.8 0 1.8 
+0.5 1.8 0 1.8 
+0 1.8 0 1.8 
+
+uncert_wake
+1
+3
+1
+2
+1 1.8 
+
 use_specific_wf_wind
 1
 1
@@ -3879,8 +3922,8 @@ wind_resource.elev
 wind_resource.file
 1
 4
-63
-C:\Projects\sam\deploy\wind_resource\WY Southern-Flat Lands.srw
+83
+C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource.lat
 1
 1
@@ -3935,8 +3978,8 @@ wind_resource.year
 wind_resource_filename
 1
 4
-63
-C:\Projects\sam\deploy\wind_resource\WY Southern-Flat Lands.srw
+83
+C:\Projects\GitHub\NREL\release\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1
