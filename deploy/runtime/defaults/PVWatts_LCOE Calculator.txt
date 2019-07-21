@@ -201,8 +201,7 @@ enable_interconnection_limit
 file_name
 1
 4
-83
-C:\Code\sam\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 fixed_charge_rate
 1
 1
@@ -378,13 +377,11 @@ shading_3d_scene
 solar_data_file_name
 1
 4
-83
-C:\Code\sam\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 solar_data_file_name_load
 1
 4
-83
-C:\Code\sam\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 solar_data_source
 1
 4
@@ -398,8 +395,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-83
-C:\Code\sam\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 state
 1
 4

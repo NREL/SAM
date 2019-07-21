@@ -480,6 +480,7 @@ function setup_windpower_pages()
 	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine' } );
 	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm' } );
 	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
+	addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses'} );
 	addpage( [[ 'Wind Uncertainty' ]], { 'sidebar'='Uncertainties'} );
 
 }
@@ -1006,7 +1007,8 @@ setup_sale_leaseback_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Single Owner' );
-setmodules( ['windpower', 'grid','singleowner']);
+//setmodules( ['windpower', 'grid','singleowner']);
+setmodules( ['windpower','singleowner']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
@@ -1026,7 +1028,8 @@ setup_lcoefcr_pages();
            { 'sidebar'='Incentives','help'='Incentives' } );*/
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'None' );
-setmodules( ['windpower','grid']);
+//setmodules( ['windpower','grid']);
+setmodules( ['windpower', 'grid']);
 setup_windpower_pages();
 
 

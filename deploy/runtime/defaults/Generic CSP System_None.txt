@@ -760,8 +760,7 @@ ffrac
 file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+0
 hrs_tes
 1
 1
@@ -963,8 +962,7 @@ sfhlV_coefs
 solar_data_file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+0
 solar_data_file_name_load
 1
 4
@@ -982,8 +980,7 @@ daggett_ca_34.865371_-116.783023_psmv3_60_tmy
 solar_resource_file
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+0
 solarm
 1
 1

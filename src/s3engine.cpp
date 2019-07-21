@@ -743,7 +743,7 @@ void BSPTree::Traverse( point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys 
 	if( m_root )
 		m_root->Traverse( CameraLoc, polys );
 
-#ifdef _DEBUG
+#if defined (_DEBUG) && defined(_MSC_VER)
 	int count =0;
 	for (std::vector<BSPNode*>::iterator it = m_listnodes.begin(); it != m_listnodes.end();++it )
 	{
@@ -874,7 +874,7 @@ ulong BSPNode::_SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool
 		}
 	}
 	
-#ifdef _DEBUG
+#if defined(_DEBUG) && defined(_MSC_VER)
 	if ((count != 0) && (count !=2)  )
 	{
 	//if (count > 2 )

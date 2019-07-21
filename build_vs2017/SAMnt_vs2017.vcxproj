@@ -47,6 +47,7 @@
     <ClCompile Include="..\src\stochastic.cpp" />
     <ClCompile Include="..\src\troughloop.cpp" />
     <ClCompile Include="..\src\uiobjects.cpp" />
+    <ClCompile Include="..\src\uncertainties.cpp" />
     <ClCompile Include="..\src\urdb.cpp" />
     <ClCompile Include="..\src\variablegrid.cpp" />
     <ClCompile Include="..\src\variables.cpp" />
@@ -93,6 +94,7 @@
     <ClInclude Include="..\src\stochastic.h" />
     <ClInclude Include="..\src\troughloop.h" />
     <ClInclude Include="..\src\uiobjects.h" />
+    <ClInclude Include="..\src\uncertainties.h" />
     <ClInclude Include="..\src\urdb.h" />
     <ClInclude Include="..\src\variablegrid.h" />
     <ClInclude Include="..\src\variables.h" />
