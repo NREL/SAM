@@ -1,5 +1,5 @@
 1
-88
+89
 ac_nameplate
 1
 1
@@ -201,7 +201,8 @@ enable_interconnection_limit
 file_name
 1
 4
-0
+107
+C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 fixed_charge_rate
 1
 1
@@ -377,7 +378,8 @@ shading_3d_scene
 solar_data_file_name
 1
 4
-0
+107
+C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -395,7 +397,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+107
+C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 state
 1
 4
@@ -412,6 +415,12 @@ system_capacity
 1
 1
 20000
+system_use_lifetime_output
+1
+1
+1
+1
+0
 tilt
 1
 1

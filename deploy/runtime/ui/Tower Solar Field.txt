@@ -1341,7 +1341,7 @@ TabOrder
 DataMatrix
 
 1
-22
+23
 Name
 5
 15
@@ -1413,6 +1413,9 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Numeric
 
 1

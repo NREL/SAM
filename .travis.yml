@@ -36,6 +36,7 @@ branches:
   only:
   - master
   - develop
-  - fuel_cell
+  - MHK
   - patch
   - wind_pruf
+  

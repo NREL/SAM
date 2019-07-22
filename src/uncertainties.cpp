@@ -345,9 +345,9 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 	// turbine curve
 
 	size_t ws_count=0;
-	double *ws;
+	double *ws=NULL;
 	size_t tp_count=0;
-	double *tp;
+	double *tp=NULL;
 	if (VarValue *vv = m_s->GetValue("wind_turbine_powercurve_windspeeds"))
 	{
 		ws = vv->Array(&ws_count);
@@ -358,7 +358,7 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 	}
 
 	size_t wsb_count=0;
-	double *wsb;
+	double *wsb=NULL;
 	if (VarValue *vv = m_s->GetValue("wind_speed"))
 	{
 		wsb = vv->Array(&wsb_count);
@@ -443,6 +443,8 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 
 int UncertaintiesCtrl::Figure10(Simulation *sim)
 {
+	m_s = sim;
+
 	double mu;// = 10;
 	double sigma; // = 2;
 	std::vector<wxRealPoint> data;
