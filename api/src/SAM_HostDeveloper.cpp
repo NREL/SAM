@@ -110,6 +110,12 @@ SAM_EXPORT void SAM_HostDeveloper_SystemCosts_annual_fuel_usage_nset(SAM_HostDev
 	});
 }
 
+SAM_EXPORT void SAM_HostDeveloper_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_HostDeveloper ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "annual_fuel_usage_lifetime", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_HostDeveloper_SystemCosts_om_capacity_aset(SAM_HostDeveloper ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_capacity", arr, length);
@@ -1719,6 +1725,18 @@ SAM_EXPORT double SAM_HostDeveloper_SystemCosts_annual_fuel_usage_nget(SAM_HostD
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
 		make_access_error("SAM_HostDeveloper", "annual_fuel_usage");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_HostDeveloper ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "annual_fuel_usage_lifetime", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "annual_fuel_usage_lifetime");
 	});
 	return result;
 }

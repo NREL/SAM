@@ -32,6 +32,24 @@ SAM_EXPORT void SAM_Pvwattsv5_destruct(SAM_Pvwattsv5 system)
 	ssc_data_free(system);
 }
 
+SAM_EXPORT void SAM_Pvwattsv5_Lifetime_analysis_period_nset(SAM_Pvwattsv5 ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "analysis_period", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv5_Lifetime_dc_degradation_aset(SAM_Pvwattsv5 ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "dc_degradation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv5_Lifetime_system_use_lifetime_output_nset(SAM_Pvwattsv5 ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvwattsv5_LocationAndResource_solar_resource_data_tset(SAM_Pvwattsv5 ptr, SAM_table tab, SAM_error *err){
 	SAM_table_set_table(ptr, "solar_resource_data", tab, err);
 }
@@ -127,6 +145,40 @@ SAM_EXPORT void SAM_Pvwattsv5_SystemDesign_tilt_nset(SAM_Pvwattsv5 ptr, double n
 		ssc_data_set_number(ptr, "tilt", number);
 	});
 }
+
+SAM_EXPORT double SAM_Pvwattsv5_Lifetime_analysis_period_nget(SAM_Pvwattsv5 ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "analysis_period", &result))
+		make_access_error("SAM_Pvwattsv5", "analysis_period");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv5_Lifetime_dc_degradation_aget(SAM_Pvwattsv5 ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "dc_degradation", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv5", "dc_degradation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv5_Lifetime_system_use_lifetime_output_nget(SAM_Pvwattsv5 ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
+		make_access_error("SAM_Pvwattsv5", "system_use_lifetime_output");
+	});
+	return result;
+}
+
+
 
 SAM_EXPORT SAM_table SAM_Pvwattsv5_LocationAndResource_solar_resource_data_tget(SAM_Pvwattsv5 ptr, SAM_error *err){
 	SAM_table result = nullptr;
@@ -540,6 +592,17 @@ SAM_EXPORT double* SAM_Pvwattsv5_Outputs_monthly_energy_aget(SAM_Pvwattsv5 ptr, 
 
 
 
+SAM_EXPORT double SAM_Pvwattsv5_Outputs_percent_complete_nget(SAM_Pvwattsv5 ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "percent_complete", &result))
+		make_access_error("SAM_Pvwattsv5", "percent_complete");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvwattsv5_Outputs_poa_aget(SAM_Pvwattsv5 ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -617,17 +680,6 @@ SAM_EXPORT double* SAM_Pvwattsv5_Outputs_sunup_aget(SAM_Pvwattsv5 ptr, int* leng
 	result = ssc_data_get_array(ptr, "sunup", length);
 	if (!result)
 		make_access_error("SAM_Pvwattsv5", "sunup");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Pvwattsv5_Outputs_system_use_lifetime_output_nget(SAM_Pvwattsv5 ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
-		make_access_error("SAM_Pvwattsv5", "system_use_lifetime_output");
 	});
 	return result;
 }

@@ -308,8 +308,19 @@ void builder_generator::gather_variables(){
 std::string defaults_filename(std::string cmod_symbol, const std::string &config_name){
 
     size_t pos = config_name.find_last_of('-');
-    std::string tech = config_to_cmod_name.find(format_as_symbol(config_name.substr(0, pos)))->second;
-    std::string fin = config_to_cmod_name.find(format_as_symbol(config_name.substr(pos+1)))->second;
+    auto tech_entry = config_to_cmod_name.find(format_as_symbol(config_name.substr(0, pos)));
+    if (tech_entry == config_to_cmod_name.end()){
+        std::string err = "Error with config " + cmod_symbol + "\": tech entry in \"config_to_cmod_name\" not found.\n";
+        throw std::runtime_error(err);
+    }
+    std::string tech = tech_entry->second;
+
+    auto fin_entry = config_to_cmod_name.find(format_as_symbol(config_name.substr(pos+1)));
+    if (fin_entry == config_to_cmod_name.end()){
+        std::string err = "Error with config " + cmod_symbol + "\": fin entry in \"config_to_cmod_name\" not found.\n";
+        throw std::runtime_error(err);
+    }
+    std::string fin = fin_entry->second;
     assert(tech.length() + fin.length());
 
     return cmod_symbol + "_" + format_as_symbol(config_name);

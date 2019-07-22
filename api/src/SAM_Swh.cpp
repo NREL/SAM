@@ -134,6 +134,12 @@ SAM_EXPORT void SAM_Swh_SWH_irrad_mode_nset(SAM_Swh ptr, double number, SAM_erro
 	});
 }
 
+SAM_EXPORT void SAM_Swh_SWH_load_aset(SAM_Swh ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "load", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Swh_SWH_mdot_nset(SAM_Swh ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mdot", number);
@@ -444,6 +450,18 @@ SAM_EXPORT double SAM_Swh_SWH_irrad_mode_nget(SAM_Swh ptr, SAM_error *err){
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "irrad_mode", &result))
 		make_access_error("SAM_Swh", "irrad_mode");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Swh_SWH_load_aget(SAM_Swh ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "load", length);
+	if (!result)
+		make_access_error("SAM_Swh", "load");
 	});
 	return result;
 }

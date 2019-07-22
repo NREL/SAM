@@ -161,7 +161,7 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_SystemCosts_add_om_num_types_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
-	 * Set annual_fuel_usage: Fuel usage [kWht]
+	 * Set annual_fuel_usage: Fuel usage (yr 1) [kWht]
 	 * options: None
 	 * constraints: MIN=0
 	 * required if: ?=0
@@ -169,7 +169,15 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_SystemCosts_annual_fuel_usage_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
-	 * Set om_capacity: Capacity-based System Costs amount [$/kWcap]
+	 * Set annual_fuel_usage_lifetime: Fuel usage (lifetime) [kWht]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -209,7 +217,7 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity2_nameplate_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
-	 * Set om_capacity_escal: Capacity-based System Costs escalation [%/year]
+	 * Set om_capacity_escal: Capacity-based O&M escalation [%/year]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -217,7 +225,7 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_capacity_escal_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
-	 * Set om_fixed: Fixed System Costs annual amount [$/year]
+	 * Set om_fixed: Fixed O&M annual amount [$/year]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -241,7 +249,7 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_fixed2_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set om_fixed_escal: Fixed System Costs escalation [%/year]
+	 * Set om_fixed_escal: Fixed O&M escalation [%/year]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -313,7 +321,7 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_opt_fuel_2_usage_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
-	 * Set om_production: Production-based System Costs amount [$/MWh]
+	 * Set om_production: Production-based O&M amount [$/MWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -353,7 +361,7 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_SystemCosts_om_production2_values_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set om_production_escal: Production-based System Costs escalation [%/year]
+	 * Set om_production_escal: Production-based O&M escalation [%/year]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -1566,6 +1574,8 @@ extern "C"
 	SAM_EXPORT double SAM_Cashloan_SystemCosts_add_om_num_types_nget(SAM_Cashloan ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_SystemCosts_annual_fuel_usage_nget(SAM_Cashloan ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_capacity_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
