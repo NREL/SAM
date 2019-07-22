@@ -201,7 +201,6 @@ else()
 endif()
 
 file(TO_NATIVE_PATH $ENV{SAMNTDIR}/api API_DEST)
-message("pysam defined ${API_DEST}")
 add_custom_command(
     TARGET export_config
     POST_BUILD
