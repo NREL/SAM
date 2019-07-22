@@ -668,25 +668,37 @@ SAM_EXPORT void SAM_Battery_ElectricityRate_ur_ec_tou_mat_mset(SAM_Battery ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_Battery_EnergyMarket_dispatch_sched_weekday_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_TimeOfDelivery_dispatch_factors_ts_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "dispatch_factors_ts", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_TimeOfDelivery_dispatch_sched_weekday_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_sched_weekday", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_EnergyMarket_dispatch_sched_weekend_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_TimeOfDelivery_dispatch_sched_weekend_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_sched_weekend", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_EnergyMarket_dispatch_tod_factors_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_TimeOfDelivery_dispatch_tod_factors_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_tod_factors", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_EnergyMarket_ppa_price_input_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_TimeOfDelivery_ppa_multiplier_model_nset(SAM_Battery ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ppa_multiplier_model", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_TimeOfDelivery_ppa_price_input_nset(SAM_Battery ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_price_input", number);
 	});
@@ -1888,7 +1900,19 @@ SAM_EXPORT double* SAM_Battery_ElectricityRate_ur_ec_tou_mat_mget(SAM_Battery pt
 
 
 
-SAM_EXPORT double* SAM_Battery_EnergyMarket_dispatch_sched_weekday_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_TimeOfDelivery_dispatch_factors_ts_aget(SAM_Battery ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "dispatch_factors_ts", length);
+	if (!result)
+		make_access_error("SAM_Battery", "dispatch_factors_ts");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_TimeOfDelivery_dispatch_sched_weekday_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekday", nrows, ncols);
@@ -1900,7 +1924,7 @@ SAM_EXPORT double* SAM_Battery_EnergyMarket_dispatch_sched_weekday_mget(SAM_Batt
 
 
 
-SAM_EXPORT double* SAM_Battery_EnergyMarket_dispatch_sched_weekend_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_TimeOfDelivery_dispatch_sched_weekend_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekend", nrows, ncols);
@@ -1912,7 +1936,7 @@ SAM_EXPORT double* SAM_Battery_EnergyMarket_dispatch_sched_weekend_mget(SAM_Batt
 
 
 
-SAM_EXPORT double* SAM_Battery_EnergyMarket_dispatch_tod_factors_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_TimeOfDelivery_dispatch_tod_factors_aget(SAM_Battery ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dispatch_tod_factors", length);
@@ -1924,7 +1948,18 @@ SAM_EXPORT double* SAM_Battery_EnergyMarket_dispatch_tod_factors_aget(SAM_Batter
 
 
 
-SAM_EXPORT double SAM_Battery_EnergyMarket_ppa_price_input_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_TimeOfDelivery_ppa_multiplier_model_nget(SAM_Battery ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ppa_multiplier_model", &result))
+		make_access_error("SAM_Battery", "ppa_multiplier_model");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_TimeOfDelivery_ppa_price_input_nget(SAM_Battery ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_price_input", &result))
@@ -1987,6 +2022,18 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_DOD_aget(SAM_Battery ptr, int* lengt
 	result = ssc_data_get_array(ptr, "batt_DOD", length);
 	if (!result)
 		make_access_error("SAM_Battery", "batt_DOD");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_batt_DOD_cycle_average_aget(SAM_Battery ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_DOD_cycle_average", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_DOD_cycle_average");
 	});
 	return result;
 }
@@ -2118,6 +2165,30 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_aget(SAM_Battery pt
 	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
 	if (!result)
 		make_access_error("SAM_Battery", "batt_capacity_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_calendar_aget(SAM_Battery ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_capacity_percent_calendar", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_capacity_percent_calendar");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_cycle_aget(SAM_Battery ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_capacity_percent_cycle", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_capacity_percent_cycle");
 	});
 	return result;
 }
@@ -2417,6 +2488,18 @@ SAM_EXPORT double* SAM_Battery_Outputs_grid_to_load_aget(SAM_Battery ptr, int* l
 	result = ssc_data_get_array(ptr, "grid_to_load", length);
 	if (!result)
 		make_access_error("SAM_Battery", "grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_market_sell_rate_series_yr1_aget(SAM_Battery ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "market_sell_rate_series_yr1", length);
+	if (!result)
+		make_access_error("SAM_Battery", "market_sell_rate_series_yr1");
 	});
 	return result;
 }

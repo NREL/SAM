@@ -177,6 +177,14 @@ extern "C"
 	SAM_EXPORT void SAM_Swh_SWH_irrad_mode_nset(SAM_Swh ptr, double number, SAM_error *err);
 
 	/**
+	 * Set load: Electricity load (year 1) [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Swh_SWH_load_aset(SAM_Swh ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set mdot: Total system mass flow rate [kg/s]
 	 * options: None
 	 * constraints: POSITIVE
@@ -387,6 +395,8 @@ extern "C"
 	SAM_EXPORT double SAM_Swh_SWH_iam_nget(SAM_Swh ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Swh_SWH_irrad_mode_nget(SAM_Swh ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Swh_SWH_load_aget(SAM_Swh ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Swh_SWH_mdot_nget(SAM_Swh ptr, SAM_error *err);
 

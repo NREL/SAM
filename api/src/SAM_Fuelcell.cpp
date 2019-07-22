@@ -718,6 +718,18 @@ SAM_EXPORT double SAM_Fuelcell_Outputs_annual_fuel_usage_nget(SAM_Fuelcell ptr, 
 
 
 
+SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_fuel_usage_lifetime_aget(SAM_Fuelcell ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "annual_fuel_usage_lifetime", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "annual_fuel_usage_lifetime");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_electrical_efficiency_aget(SAM_Fuelcell ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

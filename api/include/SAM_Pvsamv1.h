@@ -4205,32 +4205,48 @@ extern "C"
 
 
 	//
-	// EnergyMarket parameters
+	// TimeOfDelivery parameters
 	//
+
+	/**
+	 * Set dispatch_factors_ts: Dispatch payment factor time step
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2&ppa_multiplier_model=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_dispatch_factors_ts_aset(SAM_Pvsamv1 ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set dispatch_sched_weekday: Diurnal weekday TOD periods [1..9]
 	 * options: 12 x 24 matrix
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2&ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_EnergyMarket_dispatch_sched_weekday_mset(SAM_Pvsamv1 ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_dispatch_sched_weekday_mset(SAM_Pvsamv1 ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set dispatch_sched_weekend: Diurnal weekend TOD periods [1..9]
 	 * options: 12 x 24 matrix
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2&ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_EnergyMarket_dispatch_sched_weekend_mset(SAM_Pvsamv1 ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_dispatch_sched_weekend_mset(SAM_Pvsamv1 ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set dispatch_tod_factors: TOD factors for periods 1-9
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2&ppa_multiplier_model=0
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_EnergyMarket_dispatch_tod_factors_aset(SAM_Pvsamv1 ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_dispatch_tod_factors_aset(SAM_Pvsamv1 ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ppa_multiplier_model: PPA multiplier model [0/1]
+	 * options: 0=diurnal,1=timestep
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_ppa_multiplier_model_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ppa_price_input: PPA Price Input
@@ -4238,7 +4254,7 @@ extern "C"
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_EnergyMarket_ppa_price_input_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_ppa_price_input_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err);
 
 
 	/**
@@ -5379,16 +5395,20 @@ extern "C"
 
 
 	/**
-	 * EnergyMarket Getters
+	 * TimeOfDelivery Getters
 	 */
 
-	SAM_EXPORT double* SAM_Pvsamv1_EnergyMarket_dispatch_sched_weekday_mget(SAM_Pvsamv1 ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_TimeOfDelivery_dispatch_factors_ts_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Pvsamv1_EnergyMarket_dispatch_sched_weekend_mget(SAM_Pvsamv1 ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_TimeOfDelivery_dispatch_sched_weekday_mget(SAM_Pvsamv1 ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Pvsamv1_EnergyMarket_dispatch_tod_factors_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_TimeOfDelivery_dispatch_sched_weekend_mget(SAM_Pvsamv1 ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_EnergyMarket_ppa_price_input_nget(SAM_Pvsamv1 ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_TimeOfDelivery_dispatch_tod_factors_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_TimeOfDelivery_ppa_multiplier_model_nget(SAM_Pvsamv1 ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_TimeOfDelivery_ppa_price_input_nget(SAM_Pvsamv1 ptr, SAM_error *err);
 
 
 	/**
@@ -5589,6 +5609,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_DOD_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_DOD_cycle_average_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_I_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_SOC_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
@@ -5610,6 +5632,10 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_bank_replacement_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_capacity_percent_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_capacity_percent_calendar_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_capacity_percent_cycle_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_capacity_thermal_percent_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
@@ -5708,6 +5734,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_inverterMPPT4_DCVoltage_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_kwh_per_kw_nget(SAM_Pvsamv1 ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_market_sell_rate_series_yr1_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_batt_to_grid_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err);
 

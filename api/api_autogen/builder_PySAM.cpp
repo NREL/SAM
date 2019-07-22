@@ -34,6 +34,7 @@ std::string all_options_of_cmod(const std::string &cmod_symbol, const std::strin
     return str;
 }
 
+// in the future, pull this directly from startup.lk but for now just keep this
 std::string module_doc(const std::string& tech_symbol){
     static std::unordered_map<std::string, std::string> desc = {
             {"Battwatts", "Simplified battery storage model"},
@@ -51,6 +52,8 @@ std::string module_doc(const std::string& tech_symbol){
             {"Lcoefcr", "Calculate levelized cost of electricity using fixed charge rate method instead of cash flow"},
             {"Levpartflip", "PPA leveraged partnership flip (with debt) financial model"},
             {"LinearFresnelDsgIph", "Linear Fresnel model with steam heat transfer fluid for industrial process heat applications"},
+            {"MhkWave", "Wave marine hydrokinetic system"},
+            {"MhkTidal", "Tidal marine hydrokinetic system"},
             {"Pvsamv1", "Detailed photovoltaic system model with separate components for module and inverter"},
             {"Pvwattsv5", "PVWatts photovoltaic system model with simple inputs"},
             {"Pvwattsv5Lifetime", "PVWatts photovoltaic system model for multi-year lifetime analysis"},

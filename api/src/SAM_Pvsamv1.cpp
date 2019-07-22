@@ -3068,25 +3068,37 @@ SAM_EXPORT void SAM_Pvsamv1_ElectricityRate_ur_ec_tou_mat_mset(SAM_Pvsamv1 ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_EnergyMarket_dispatch_sched_weekday_mset(SAM_Pvsamv1 ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_dispatch_factors_ts_aset(SAM_Pvsamv1 ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "dispatch_factors_ts", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_dispatch_sched_weekday_mset(SAM_Pvsamv1 ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_sched_weekday", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_EnergyMarket_dispatch_sched_weekend_mset(SAM_Pvsamv1 ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_dispatch_sched_weekend_mset(SAM_Pvsamv1 ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_sched_weekend", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_EnergyMarket_dispatch_tod_factors_aset(SAM_Pvsamv1 ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_dispatch_tod_factors_aset(SAM_Pvsamv1 ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_tod_factors", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_EnergyMarket_ppa_price_input_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_ppa_multiplier_model_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ppa_multiplier_model", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_TimeOfDelivery_ppa_price_input_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_price_input", number);
 	});
@@ -8729,7 +8741,19 @@ SAM_EXPORT double* SAM_Pvsamv1_ElectricityRate_ur_ec_tou_mat_mget(SAM_Pvsamv1 pt
 
 
 
-SAM_EXPORT double* SAM_Pvsamv1_EnergyMarket_dispatch_sched_weekday_mget(SAM_Pvsamv1 ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Pvsamv1_TimeOfDelivery_dispatch_factors_ts_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "dispatch_factors_ts", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "dispatch_factors_ts");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_TimeOfDelivery_dispatch_sched_weekday_mget(SAM_Pvsamv1 ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekday", nrows, ncols);
@@ -8741,7 +8765,7 @@ SAM_EXPORT double* SAM_Pvsamv1_EnergyMarket_dispatch_sched_weekday_mget(SAM_Pvsa
 
 
 
-SAM_EXPORT double* SAM_Pvsamv1_EnergyMarket_dispatch_sched_weekend_mget(SAM_Pvsamv1 ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Pvsamv1_TimeOfDelivery_dispatch_sched_weekend_mget(SAM_Pvsamv1 ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekend", nrows, ncols);
@@ -8753,7 +8777,7 @@ SAM_EXPORT double* SAM_Pvsamv1_EnergyMarket_dispatch_sched_weekend_mget(SAM_Pvsa
 
 
 
-SAM_EXPORT double* SAM_Pvsamv1_EnergyMarket_dispatch_tod_factors_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvsamv1_TimeOfDelivery_dispatch_tod_factors_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dispatch_tod_factors", length);
@@ -8765,7 +8789,18 @@ SAM_EXPORT double* SAM_Pvsamv1_EnergyMarket_dispatch_tod_factors_aget(SAM_Pvsamv
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_EnergyMarket_ppa_price_input_nget(SAM_Pvsamv1 ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_TimeOfDelivery_ppa_multiplier_model_nget(SAM_Pvsamv1 ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ppa_multiplier_model", &result))
+		make_access_error("SAM_Pvsamv1", "ppa_multiplier_model");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_TimeOfDelivery_ppa_price_input_nget(SAM_Pvsamv1 ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_price_input", &result))
@@ -9850,6 +9885,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_DOD_aget(SAM_Pvsamv1 ptr, int* lengt
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_DOD_cycle_average_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_DOD_cycle_average", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_DOD_cycle_average");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_I_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9975,6 +10022,30 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_capacity_percent_aget(SAM_Pvsamv1 pt
 	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "batt_capacity_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_capacity_percent_calendar_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_capacity_percent_calendar", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_capacity_percent_calendar");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_capacity_percent_cycle_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_capacity_percent_cycle", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_capacity_percent_cycle");
 	});
 	return result;
 }
@@ -10559,6 +10630,18 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_kwh_per_kw_nget(SAM_Pvsamv1 ptr, SAM_error
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
 		make_access_error("SAM_Pvsamv1", "kwh_per_kw");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_market_sell_rate_series_yr1_aget(SAM_Pvsamv1 ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "market_sell_rate_series_yr1", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "market_sell_rate_series_yr1");
 	});
 	return result;
 }

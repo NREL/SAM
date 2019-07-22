@@ -169,6 +169,10 @@ if (MSVC)
 		PROPERTIES
 		LINK_FLAGS /SUBSYSTEM:WINDOWS
 		RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>/deploy/x64)
+elseif(UNIX AND NOT APPLE)
+	set_target_properties(${SAM_EXE}
+		PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
 #####################################################################################################################

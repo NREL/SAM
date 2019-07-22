@@ -32,6 +32,32 @@ extern "C"
 
 
 	//
+	// PVWatts parameters
+	//
+
+	/**
+	 * Set system_use_lifetime_output: PV lifetime simulation [0/1]
+	 * options: 0=SingleYearRepeated,1=RunEveryYear
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battwatts_PVWatts_system_use_lifetime_output_nset(SAM_Battwatts ptr, double number, SAM_error *err);
+
+
+	//
+	// FinancialAnalysisParameters parameters
+	//
+
+	/**
+	 * Set analysis_period: Lifetime analysis period [years]
+	 * options: The number of years in the simulation
+	 * constraints: None
+	 * required if: system_use_lifetime_output=1
+	 */
+	SAM_EXPORT void SAM_Battwatts_FinancialAnalysisParameters_analysis_period_nset(SAM_Battwatts ptr, double number, SAM_error *err);
+
+
+	//
 	// BatteryModelSimple parameters
 	//
 
@@ -135,6 +161,20 @@ extern "C"
 
 
 	/**
+	 * PVWatts Getters
+	 */
+
+	SAM_EXPORT double SAM_Battwatts_PVWatts_system_use_lifetime_output_nget(SAM_Battwatts ptr, SAM_error *err);
+
+
+	/**
+	 * FinancialAnalysisParameters Getters
+	 */
+
+	SAM_EXPORT double SAM_Battwatts_FinancialAnalysisParameters_analysis_period_nget(SAM_Battwatts ptr, SAM_error *err);
+
+
+	/**
 	 * BatteryModelSimple Getters
 	 */
 
@@ -185,6 +225,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_DOD_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_DOD_cycle_average_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_I_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_SOC_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
@@ -206,6 +248,10 @@ extern "C"
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_bank_replacement_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_calendar_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_cycle_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_thermal_percent_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
@@ -258,6 +304,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Battwatts_Outputs_grid_to_batt_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_grid_to_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_market_sell_rate_series_yr1_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_batt_to_grid_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 

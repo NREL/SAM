@@ -18,9 +18,9 @@ before_script:
   - export SSCDIR=/home/travis/build/$user/ssc
   - export SAMNTDIR=/home/travis/build/$user/SAM
   - git clone https://github.com/google/googletest /home/travis/build/$user/googletest
-  - git clone -b develop https://github.com/$user/lk $LKDIR
-  - git clone -b wind_pruf https://github.com/$user/wex $WEXDIR
-  - git clone -b wind_pruf https://github.com/$user/ssc $SSCDIR
+  - git clone https://github.com/$user/lk $LKDIR
+  - git clone https://github.com/$user/wex $WEXDIR
+  - git clone https://github.com/$user/ssc $SSCDIR
   
 script:
   - export PATH=$PATH:$HOME/wx-3.1.1/bin
