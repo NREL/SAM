@@ -637,8 +637,7 @@ enable_mismatch_vmax_calc
 file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 fixed_charge_rate
 1
 1
@@ -1525,11 +1524,7 @@ lib_is_bifacial
 library_folder_list
 1
 4
-265
-C:\Users\sjanz\SAM Downloaded Weather Files
-C:\Projects\SAM\Documentation\PV\TransientThermalModel\MeasuredData\SouthernCompany\sample_Will
-C:/Projects/SAM/Documentation/GitHub/Issues/SAM_176/snow_issue
-C:/Projects/SAM/Documentation/GitHub/Issues/SAM_176/snow_issue
+0
 library_paths
 1
 4
@@ -2224,13 +2219,11 @@ snl_voco
 solar_data_file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 solar_data_file_name_load
 1
 4
-103
-C:\Projects\GitHub\NREL\MHK\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 solar_data_source
 1
 4
@@ -2244,8 +2237,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-107
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 spe_a
 1
 1
