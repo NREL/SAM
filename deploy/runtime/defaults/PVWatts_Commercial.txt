@@ -1,5 +1,5 @@
 1
-356
+357
 ac_nameplate
 1
 1
@@ -568,8 +568,7 @@ federal_tax_rate
 file_name
 1
 4
-109
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 gcr
 1
 1
@@ -1801,13 +1800,11 @@ show_tax_credits
 solar_data_file_name
 1
 4
-109
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 solar_data_file_name_load
 1
 4
-83
-C:\Code\sam\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 solar_data_source
 1
 4
@@ -1821,8 +1818,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-109
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 state
 1
 4
@@ -1851,6 +1847,12 @@ system_capacity
 1
 1
 199.752
+system_use_lifetime_output
+1
+1
+1
+1
+0
 system_use_recapitalization
 1
 1
@@ -2143,13 +2145,11 @@ Single and 3-Phase
 ur_ratedata_filename
 1
 4
-34
-C:/Users/jfreeman/Desktop/comm.csv
+0
 ur_schedule_name
 1
 4
-45
-Medium General Service TOU (E-32 M) Secondary
+0
 ur_source
 1
 4

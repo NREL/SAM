@@ -191,10 +191,12 @@ void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 			out.WriteString( it->first );
 			it->second->Write( _O );
 
-			if ( it->second->Type() == VV_BINARY )
+#ifdef _DEBUG
+            if ( it->second->Type() == VV_BINARY )
 			  {
 				wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)it->first.c_str(), (int)it->second->Binary().GetDataLen() );
 			  }
+#endif
 		}
 	}
 	else
@@ -232,10 +234,12 @@ void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 		{
 			out.WriteString( names[i] );
 			list[i]->Write( _O );
-			if ( list[i]->Type() == VV_BINARY )
+#ifdef _DEBUG
+            if ( list[i]->Type() == VV_BINARY )
 			  {
 				wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)list[i]->Binary().GetDataLen() );
 			  }
+#endif
 		}
 	}
 
@@ -265,10 +269,12 @@ bool VarTable::Read( wxInputStream &_I )
 		VarValue *value = new VarValue;
 		ok = ok && value->Read( _I );
 
+#ifdef _DEBUG
 		if( value->Type() == VV_BINARY )
 		  {
-			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen() );
+//			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen() );
 		  }
+#endif
 		
 		if ( find(name) == end() ) (*this)[name] = value;
 		else delete value;
@@ -321,11 +327,12 @@ void VarTable::Write_text(wxOutputStream &_O, size_t maxdim)
 				out.WriteString(names[i]);
 				out.PutChar('\n');
 				v->Write_text(_O);
-
+#ifdef _DEBUG
 				if (v->Type() == VV_BINARY)
 				{
 					wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)v->Binary().GetDataLen());
 				}
+#endif
 			}
 		}
 	}
@@ -391,11 +398,12 @@ void VarTable::Write_text(wxOutputStream &_O, size_t maxdim)
 				out.WriteString(names[i]);
 				out.PutChar('\n');
 				v->Write_text(_O);
-
+#ifdef _DEBUG
 				if (v->Type() == VV_BINARY)
 				{
 					wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)v->Binary().GetDataLen());
 				}
+#endif
 			}
 		}
 	}
@@ -422,10 +430,12 @@ bool VarTable::Read_text(wxInputStream &_I)
 		VarValue *value = new VarValue;
 		ok = ok && value->Read_text(_I);
 
-		if (value->Type() == VV_BINARY)
+#ifdef _DEBUG
+        if (value->Type() == VV_BINARY)
 		{
-			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen());
+//			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen());
 		}
+#endif
 
 		if (find(name) == end()) (*this)[name] = value;
 		else delete value;

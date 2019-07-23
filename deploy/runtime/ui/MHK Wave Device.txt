@@ -1,0 +1,647 @@
+MHK Wave Device
+1270
+926
+13
+GroupBox
+
+1
+7
+Name
+5
+9
+GroupBox1
+X
+3
+3
+Y
+3
+6
+Width
+3
+1262
+Height
+3
+917
+Caption
+5
+21
+Wave Energy Converter
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+9
+GroupBox2
+X
+3
+24
+Y
+3
+840
+Width
+3
+1228
+Height
+3
+66
+Caption
+5
+16
+Save / Load Data
+Bold
+2
+1
+Button
+
+1
+7
+Name
+5
+15
+btnApplyLibrary
+X
+3
+66
+Y
+3
+1005
+Width
+3
+90
+Height
+3
+24
+Caption
+5
+5
+Apply
+TabOrder
+3
+4294967295
+Button
+
+1
+7
+Name
+5
+24
+btnLoadMHKWaveDeviceData
+X
+3
+201
+Y
+3
+867
+Width
+3
+153
+Height
+3
+24
+Caption
+5
+22
+Load data from file...
+TabOrder
+3
+4294967295
+Button
+
+1
+7
+Name
+5
+24
+btnSaveMHKWaveDeviceData
+X
+3
+39
+Y
+3
+867
+Width
+3
+153
+Height
+3
+24
+Caption
+5
+20
+Save data to file...
+TabOrder
+3
+4294967295
+Library
+
+1
+7
+Name
+5
+15
+lib_wave_device
+X
+3
+27
+Y
+3
+27
+Width
+3
+1224
+Height
+3
+190
+Library
+5
+12
+Wave_Devices
+Fields
+5
+10
+Name,Power
+GroupBox
+
+1
+7
+Name
+5
+8
+object 4
+X
+3
+24
+Y
+3
+774
+Width
+3
+1228
+Height
+3
+60
+Caption
+5
+18
+Device Information
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+9
+object 41
+X
+3
+27
+Y
+3
+225
+Width
+3
+1224
+Height
+3
+548
+Caption
+5
+23
+Wave Power Matrix (kW) 
+Bold
+2
+1
+Numeric
+
+1
+16
+Name
+5
+14
+rated_capacity
+X
+3
+402
+Y
+3
+792
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+TextEntry
+
+1
+10
+Name
+5
+25
+wave_device_data_filename
+X
+3
+427
+Y
+3
+867
+Width
+3
+816
+Height
+3
+24
+Text
+5
+0
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+TextEntry
+
+1
+10
+Name
+5
+16
+wave_device_name
+X
+3
+165
+Y
+3
+795
+Width
+3
+103
+Height
+3
+24
+Text
+5
+8
+Device 1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
+DataMatrix
+
+1
+23
+Name
+5
+16
+wave_power_curve
+X
+3
+39
+Y
+3
+255
+Width
+3
+1200
+Height
+3
+500
+PasteAppendRows
+2
+0
+PasteAppendCols
+2
+0
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+1
+ShadeC0
+2
+0
+ShowCols
+2
+1
+ShowColLabels
+2
+0
+ColLabels
+5
+0
+NumRowsLabel
+5
+5
+Rows:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+0
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
+2
+1
+Plot
+
+1
+5
+Name
+5
+29
+wind_turbine_power_curve_plot
+X
+3
+1188
+Y
+3
+942
+Width
+3
+573
+Height
+3
+414
+
+5
+lib_wave_device
+3
+4
+Wave Device Library
+ 
+MHK Wave Device
+14
+Wave_Devices|0
+19
+1
+4
+8
+Device 1
+Library
+rated_capacity
+3
+1
+Device Rated Capacity
+kW
+ 
+0
+8
+1
+1
+1
+1
+280
+Default
+wave_device_data_filename
+3
+4
+File name:
+ 
+MHK Wave Device
+0
+0
+1
+4
+0
+TextEntry
+wave_device_name
+3
+4
+Device name
+ 
+MHK Wave Device
+0
+8
+1
+4
+8
+Device 1
+TextEntry
+wave_power_curve
+3
+3
+ 
+ 
+MHK Wave Device
+0
+0
+1
+3
+1
+1
+0
+DataMatrix
+
+213
+equations{ 'rated_capacity' } = define () 
+{
+	max_power = 0;
+	mat = ${wave_power_curve};
+	for (r=1;r<#mat; r++)
+		for (c=1; c<#mat[0];c++)
+			if (mat[r][c] > max_power) max_power = mat[r][c];
+	return max_power;
+};
+2409
+function plot_turbine_curve()
+{
+	setplot('wind_turbine_power_curve_plot');
+	clearplot('wind_turbine_power_curve_plot');
+	plotopt( {'title'='Energy Production','backcolor'=[0,255,0]}  );
+
+	
+	z_min = 9e99;
+	z_max = -9e99;
+	pc_all = ${wave_power_curve};
+	pd_all = ${wave_resource_definition};
+	// initially assume same size
+	x = alloc(#pc_all - 1, #pc_all[0] - 1);
+	y = alloc(#pc_all - 1, #pc_all[0] - 1);
+	z = alloc(#pc_all - 1, #pc_all[0] - 1);
+	for (r=1;r<#z;r++)
+	{
+		for (c=1;c<#z[0];c++)
+		{
+			y[r-1][c-1] = pc_all[r][0];
+			x[r-1][c-1] = pd_all[0][c];
+			z[r-1][c-1] = pc_all[r][c] * pd_all[r][c]*8760/100;
+			if (z[r-1][c-1] < z_min) z_min = z[r-1][c-1];
+			if (z[r-1][c-1] > z_max) z_max = z[r-1][c-1];
+		}
+	}
+	
+	contour( x, y, z, {'filled'=true, 'levels'=15, min=z_min, max=z_max});	
+	
+	// show any error messages
+	set_error_msg();
+}
+
+function set_error_msg()
+{	
+	// Start with a fresh error message
+	errmsg = '';
+	refresh();
+}
+
+
+on_change{'wave_power_curve'}=define()
+{
+	plot_turbine_curve();
+};
+
+on_load{'MHK Wave Device'}=define()
+{
+	value( 'wave_device_name', value( 'lib_wave_device' ) );
+	plot_turbine_curve();
+};
+
+
+on_change{'btnSaveMHKWaveDeviceData'} = define() {
+	logmsg('btnSaveMHKWaveDeviceData');
+	file = choose_file( '', 'Save MHK Wave Device Data As', 
+		'Data Files (*.csv)|*.csv', true);
+		
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+		if (group_write('MHK Wave Device',file))
+		{	
+			value( 'wave_device_data_filename', file );
+			msgbox("Data saved! \n");
+		}
+		else
+		{
+			value( 'wave_device_data_filename', "" );
+			msgbox("Data save failed! \n");
+		}
+	}
+};
+
+on_change{'btnLoadMHKWaveDeviceData'} = define() {
+	logmsg('running btnLoadMHKWaveDeviceData');
+	file = choose_file( '', 'Open MHK Wave Device Data File', 
+		'Data Files (*.csv)|*.csv');
+		
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+		if (group_read('MHK Wave Device',file))
+		{	
+			value( 'wave_device_data_filename', file );
+			msgbox("Data loaded! \n");
+		}
+		else
+		{
+			value( 'wave_device_data_filename', "" );
+			msgbox("Data load failed! \n");
+		}
+	}
+};
+
+on_change{'lib_wave_device'} = define()
+{
+	if( librarygetcurrentselection( 'lib_wave_device' ) != '' )
+	{
+		value( 'wave_device_name', value('lib_wave_device') );
+		value('wave_power_curve', value('wave_power_curve'));
+	}
+};
+
+on_change{'btnApplyLibrary'} = define() 
+{
+	value('wave_power_curve', value('lib_wave_power_curve'));
+};

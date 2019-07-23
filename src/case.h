@@ -34,6 +34,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "parametric.h"
 #include "stochastic.h"
 #include "graph.h"
+#include "uncertainties.h"
 
 // case events allow the user interface to be updated
 // when something internal in the case changes that needs to be reflected
@@ -166,8 +167,10 @@ public:
 	ExcelExchange &ExcelExch() { return m_excelExch; }
 	ParametricData &Parametric() { return m_parametric; }
 	StochasticData &Stochastic() { return m_stochastic; }
-	void SetGraphs( std::vector<Graph> &gl ) { m_graphs = gl; }
-	void GetGraphs( std::vector<Graph> &gl ) { gl = m_graphs; }
+	void SetGraphs(std::vector<Graph> &gl) { m_graphs = gl; }
+	void GetGraphs(std::vector<Graph> &gl) { gl = m_graphs; }
+	void SetUncertainties(std::vector<Uncertainties> &ul) { m_uncertainties = ul; }
+	void GetUncertainties(std::vector<Uncertainties> &ul) { ul = m_uncertainties; }
 	StringHash &Perspective() { return m_perspective; }
 
 private:
@@ -191,6 +194,7 @@ private:
 	ParametricData m_parametric;
 	StochasticData m_stochastic;
 	std::vector<Graph> m_graphs;
+	std::vector<Uncertainties> m_uncertainties;
 	StringHash m_perspective;
 };
 

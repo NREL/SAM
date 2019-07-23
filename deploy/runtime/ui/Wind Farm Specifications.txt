@@ -1,7 +1,7 @@
 Wind Farm Specifications
 808
 749
-29
+26
 GroupBox
 
 1
@@ -24,8 +24,8 @@ Height
 122
 Caption
 5
-23
-Losses and Wake Effects
+12
+Wake Effects
 Bold
 2
 1
@@ -83,29 +83,6 @@ Turbine Layout
 Bold
 2
 1
-LossAdjustment
-
-1
-6
-Name
-5
-6
-adjust
-X
-3
-513
-Y
-3
-150
-Width
-3
-270
-Height
-3
-69
-TabOrder
-3
-24
 Button
 
 1
@@ -192,87 +169,6 @@ BackColour
 TabOrder
 3
 4294967295
-Divider
-
-1
-9
-Name
-5
-9
-object 22
-X
-3
-321
-Y
-3
-132
-Width
-3
-462
-Height
-3
-16
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-28
-Availability and Curtailment
-Bold
-2
-1
-Label
-
-1
-12
-Name
-5
-8
-object 7
-X
-3
-324
-Y
-3
-153
-Width
-3
-183
-Height
-3
-78
-Caption
-5
-105
-Curtailment and availability losses reduce the system output to represent system outages or other events.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-4294967295
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Label
 
 1
@@ -429,14 +325,14 @@ Numeric
 16
 Name
 5
-24
-wind_farm_losses_percent
+9
+wake_loss
 X
 3
 159
 Y
 3
-141
+195
 Width
 3
 100
@@ -592,7 +488,7 @@ X
 159
 Y
 3
-192
+141
 Width
 3
 139
@@ -601,10 +497,11 @@ Height
 21
 Items
 6
-3
+4
 Simple Wake Model
 Park (WAsP)
 Eddy-Viscosity
+Constant Loss
 Selection
 3
 4294967295
@@ -624,7 +521,7 @@ X
 159
 Y
 3
-165
+168
 Width
 3
 100
@@ -1345,10 +1242,10 @@ Wind Farm
 1
 0
 Default
-wind_farm_losses_percent
+wake_loss
 3
 1
-Wind Farm Losses
+Constant Loss
 %
 Wind Farm
 0
@@ -1393,8 +1290,8 @@ wind_farm_wake_model
 Wake Model
  
 Wind Farm
-44
-Simple Wake Model|Park (WAsP)|Eddy-Viscosity
+58
+Simple Wake Model|Park (WAsP)|Eddy-Viscosity|Constant Loss
 2
 1
 1
@@ -1731,7 +1628,7 @@ equations{ 'specify_label' } = define() {
 	else
 		return 0;
 };
-4978
+5325
 function update_farm_layout_controls()
 {
 	weibull = (${wind_resource_model_choice} == 1);
@@ -1848,6 +1745,10 @@ on_load{"Wind Farm Specifications"}=define()
 	show('specify_label', ${specify_label});
 	//plot turbine locations (created in an equation)
 	plot_wind_farm();
+	
+	constant_loss = (${wind_farm_wake_model} != 3);
+	enable( "wind_resource_turbulence_coeff", constant_loss);
+	enable( "wake_loss", !constant_loss);
 };
 
 on_change{"windfarm.layout.file_or_controls"} = define()
@@ -1898,4 +1799,10 @@ on_change{'sizing_warning'} = define() {
 
 on_change{'specify_label'} = define() {
 	show('specify_label', ${specify_label});
+};
+
+on_change{'wind_farm_wake_model'} = define() {
+	constant_loss = (${wind_farm_wake_model} != 3);
+	enable( "wind_resource_turbulence_coeff", constant_loss);
+	enable( "wake_loss", !constant_loss);
 };
