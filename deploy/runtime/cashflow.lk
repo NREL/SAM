@@ -47,7 +47,7 @@ function cf_om_expenses() {
     { 
 		cfline( 'cf_battery_replacement_cost', 0);
 		// electricity purchase for PV single owner only as of October 2018
-		if ( batt_replacement_tech && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
+		if ( batt_replacement_tech && fin == 'Single Owner' )
 			cfline( 'cf_utility_bill', 0);
 	}
 	if (tech == "Fuel Cell")
