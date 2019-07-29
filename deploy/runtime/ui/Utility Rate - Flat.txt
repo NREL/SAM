@@ -1,7 +1,7 @@
 Utility Rate - Flat
 985
 523
-21
+22
 GroupBox
 
 1
@@ -447,7 +447,7 @@ X
 570
 Y
 3
-300
+273
 Width
 3
 374
@@ -456,8 +456,8 @@ Height
 24
 Caption
 5
-59
-Use hourly (subhourly) sell rates instead of TOU sell rates
+58
+Use hourly (subhourly) buy/sell rates instead of TOU rates
 State
 2
 0
@@ -759,6 +759,40 @@ DataArray
 9
 Name
 5
+14
+ur_ts_buy_rate
+X
+3
+741
+Y
+3
+333
+Width
+3
+119
+Height
+3
+24
+Mode
+3
+1
+Label
+5
+16
+Buy Rate ($/kWh)
+Description
+5
+47
+An array of $/kWh buy rates for each time step.
+TabOrder
+3
+3
+DataArray
+
+1
+9
+Name
+5
 15
 ur_ts_sell_rate
 X
@@ -766,7 +800,7 @@ X
 741
 Y
 3
-333
+303
 Width
 3
 119
@@ -788,7 +822,7 @@ TabOrder
 3
 3
 
-9
+10
 rate_escalation
 3
 2
@@ -900,6 +934,20 @@ Electricity Rates - General
 4
 0
 TextEntry
+ur_ts_buy_rate
+3
+2
+Hourly (subhourly) buy rates
+$/kWh
+Electricity Rates - General
+0
+0
+1
+2
+1
+1
+0
+DataArray
 ur_ts_sell_rate
 3
 2
@@ -916,7 +964,7 @@ Electricity Rates - General
 DataArray
 
 0
-4612
+4786
 on_load{"Utility Rate - Flat"} = define(){
 	check_configuration();
 	ur_flat_sell_rates(); // refresh when switching pages
@@ -945,16 +993,22 @@ function ur_flat_sell_rates()
 	if ( eme==1 || eme==2 || eme==3|| eme==4)
 	{
 		enable( "ur_ts_sell_rate", true );
+		enable( "ur_ts_buy_rate", true );
 		enable( "ur_en_ts_sell_rate", true );
 		en = value("ur_en_ts_sell_rate");
-		if (en==1)
+		if (en==1){
 			property("ur_ec_tou_mat","HideColumn",5);
-		else
+			property("ur_ec_tou_mat","HideColumn",4);
+		}
+		else {
 			property("ur_ec_tou_mat","ShowColumn",5);
+			property("ur_ec_tou_mat","ShowColumn",4);
+		}
 	}
 	else
 	{
 		enable( "ur_ts_sell_rate", false );
+		enable( "ur_ts_buy_rate", false );
 		enable( "ur_en_ts_sell_rate", false );
 		property("ur_ec_tou_mat","HideColumn",5);
 	}
