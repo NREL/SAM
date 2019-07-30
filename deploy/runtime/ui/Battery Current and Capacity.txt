@@ -1627,7 +1627,7 @@ Battery
 2
 Default
 
-5949
+6578
 equations{ '$MIMO$ batt_bank_computed' } = define() {
 		
 	choice = ${batt_size_choice};
@@ -1637,10 +1637,41 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 	batt_bank_power = ${batt_bank_power};
 	batt_bank_capacity = ${batt_bank_size};
 	
-	if (${batt_bank_size_dc_ac} == 1)
-		batt_bank_capacity /= (${batt_dc_ac_efficiency}*0.01);
-	if (${batt_bank_power_dc_ac} == 1)
-		batt_bank_power /= (${batt_dc_ac_efficiency}*0.01);
+	// Ac-coupled
+	if (${batt_ac_or_dc} == 1)
+	{
+		// Size for AC side
+		if (${batt_bank_size_dc_ac} == 1)
+			batt_bank_capacity /= (${batt_dc_ac_efficiency}*0.01);
+		if (${batt_bank_power_dc_ac} == 1)
+			batt_bank_power /= (${batt_dc_ac_efficiency}*0.01);
+	}
+	// DC-coupled
+	else 
+	{ 
+		inv_eff = 96;
+		inv_model = ${inverter_model};
+		if (inv_model == 0){
+			inv_eff = ${inv_snl_eff_cec};
+		}
+		else if (inv_model == 1){
+			inv_eff = ${inv_ds_eff};
+		}
+		else if (inv_model == 2){
+			inv_eff = ${inv_pd_eff};
+		}
+		else if (inv_model == 3){
+			inv_eff = ${inv_cec_cg_eff_cec};
+		}
+		inv_eff *= ${batt_dc_dc_efficiency} * 0.01 * 0.01;
+		
+		// Size for AC side discharge
+		if (${batt_bank_size_dc_ac} == 1)
+			batt_bank_capacity /= inv_eff;
+		if (${batt_bank_power_dc_ac} == 1)
+			batt_bank_power /= inv_eff;
+	}
+	
 	
 	// conventional battery
 	if (!isflow)
