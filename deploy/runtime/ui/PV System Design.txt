@@ -6335,7 +6335,7 @@ PV System Design
 0
 Numeric
 
-11501
+11496
 equations{ '$MIMO$ pv_size_array' } = define()
 {
 	if (${enable_auto_size}==1)
@@ -6373,7 +6373,7 @@ equations{ '$MIMO$ pv_size_array' } = define()
 		{
 			if (${en_batt}){
 				if (${batt_ac_or_dc} == 0)
-					batt_max_power_dc = ${batt_max_power_kwdc};
+					batt_max_power_dc = ${batt_max_power};
 			}
 		}
 		
