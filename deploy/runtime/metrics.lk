@@ -161,8 +161,8 @@ function wind_power_metrics()
 
 function physical_trough_metrics() 
 {
-	metric( 'annual_gross_energy', {'label'='Annual Gross Thermal Energy Production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'annual_energy', {'label'='Annual Net Thermal Energy Production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'annual_gross_energy', {'label'='Annual Gross Electrical Energy Production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'annual_energy', {'label'='Annual Net Electrical Energy Production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'annual_thermal_consumption', {'label'='Annual Thermal Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'annual_tes_freeze_protection', {'label'='Annual TES Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'annual_field_freeze_protection', {'label'='Annual Field Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
