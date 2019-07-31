@@ -261,8 +261,7 @@ function cf_operating_activities()
 	cfline( 'OPERATING ACTIVITIES', -1 ); 
 	if ( fin == 'Sale Leaseback' ) 
 	{
-		cfline( '' ); 
-		cfline('Lessee Cash Flows from Operating Activities:', -1, 0); 
+		cfline('Developer (Lessee):', -1, 0); 
 		cfline('cf_sponsor_operating_margin', 0); 
 	}
 	else 
@@ -288,8 +287,7 @@ function cf_operating_activities()
 	if ( fin == 'Sale Leaseback' ) 
 	{
 		cfline('cf_sponsor_operating_activities', 0);
-		cfline( '' ); 
-		cfline('Lessor Cash Flows from Operating Activities:', -1, 0); 
+		cfline('Investor (Lessor):', -1, 0); 
 		cfline('cf_pretax_operating_cashflow', 0); 
 		cfline('cf_tax_investor_operating_activities', 0); 
 	}	 
@@ -312,6 +310,7 @@ function cf_investing_activities()
 		cfline('cost_prefinancing',0,-1,0);
 		cfline('cost_equity_closing', 0,-1,0);
 		cfline('construction_financing_cost',0,-1,0); 
+		cfline('equals:', -1, 0); 
 		cfline('purchase_of_plant', 0);
 		cfline( '' );
 		cfline('cost_prefinancing',0,-1,0);
@@ -319,16 +318,17 @@ function cf_investing_activities()
 		cfline('cost_equity_closing', 0,-1,0);
 		cfline('construction_financing_cost',0,-1,0); 
 		cfline('cost_other_financing', 0,-1,0);
+		cfline('equals:', -1, 0); 
 		cfline('sale_of_property', 0);
 		cfline( '' );
-		cfline( 'Lessee Cash Flows from Investing Activities:', -1 );
+		cfline( 'Developer (Lessee):', -1 );
 		cfline('sale_of_property', 0);
 		cfline('purchase_of_plant', 0);
 		cfline('distribution_of_development_fee', 0,1,0); // TO DO set negative		
 		cfline('cf_net_salvage_value', 0);		
 		cfline('cf_sponsor_wcra', 0); 
 		cfline('cf_sponsor_lpra', 0); 
-//		cfline('cf_sponsor_receivablesra', 0); 
+		//cfline('cf_sponsor_receivablesra', 0); 
 		cfline('cf_sponsor_me1ra', 0); 
 		cfline('cf_sponsor_me2ra', 0); 
 		cfline('cf_sponsor_me3ra', 0); 
@@ -337,7 +337,7 @@ function cf_investing_activities()
 		cfline('cf_sponsor_me3cs', 0); 
 		cfline('cf_sponsor_investing_activities', 0); 
 		cfline( '' );
-		cfline( 'Lessor cash flows from investing activities:', -1 );
+		cfline( 'Investor (Lessor):', -1 );
 		cfline('sale_of_property', 0); // TO DO set negative
 		cfline('cf_net_salvage_value', 0); 
 		cfline('cf_tax_investor_investing_activities', 0);
@@ -1084,7 +1084,7 @@ cashflow{ 'Commercial' } = define()
  
 cashflow{ 'Single Owner' } = define()  
 { 
-	cf_formatting_examples();
+	//cf_formatting_examples();
 	cf_production();
 	cf_revenue(); 
 	cf_operating_expenses();
