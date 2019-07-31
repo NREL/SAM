@@ -36,6 +36,7 @@ OBJECTS = ide.o \
 	s3tool.o \
 	s3view.o \
 	stochastic.o \
+	uncertainties.o \
 	urdb.o \
 	nsrdb.o \
 	windtoolkit.o \
