@@ -32,6 +32,18 @@ SAM_EXPORT void SAM_Battwatts_destruct(SAM_Battwatts system)
 	ssc_data_free(system);
 }
 
+SAM_EXPORT void SAM_Battwatts_PVWatts_system_use_lifetime_output_nset(SAM_Battwatts ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battwatts_FinancialAnalysisParameters_analysis_period_nset(SAM_Battwatts ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "analysis_period", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battwatts_BatteryModelSimple_batt_simple_chemistry_nset(SAM_Battwatts ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_simple_chemistry", number);
@@ -97,6 +109,28 @@ SAM_EXPORT void SAM_Battwatts_ElectricLoadOther_load_aset(SAM_Battwatts ptr, dou
 		ssc_data_set_array(ptr, "load", arr, length);
 	});
 }
+
+SAM_EXPORT double SAM_Battwatts_PVWatts_system_use_lifetime_output_nget(SAM_Battwatts ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
+		make_access_error("SAM_Battwatts", "system_use_lifetime_output");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battwatts_FinancialAnalysisParameters_analysis_period_nget(SAM_Battwatts ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "analysis_period", &result))
+		make_access_error("SAM_Battwatts", "analysis_period");
+	});
+	return result;
+}
+
+
 
 SAM_EXPORT double SAM_Battwatts_BatteryModelSimple_batt_simple_chemistry_nget(SAM_Battwatts ptr, SAM_error *err){
 	double result;
@@ -280,6 +314,18 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_DOD_aget(SAM_Battwatts ptr, int* l
 
 
 
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_DOD_cycle_average_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_DOD_cycle_average", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_DOD_cycle_average");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battwatts_Outputs_batt_I_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -405,6 +451,30 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_aget(SAM_Battwatt
 	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
 	if (!result)
 		make_access_error("SAM_Battwatts", "batt_capacity_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_calendar_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_capacity_percent_calendar", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_capacity_percent_calendar");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_cycle_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_capacity_percent_cycle", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_capacity_percent_cycle");
 	});
 	return result;
 }
@@ -716,6 +786,18 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_grid_to_load_aget(SAM_Battwatts ptr, in
 	result = ssc_data_get_array(ptr, "grid_to_load", length);
 	if (!result)
 		make_access_error("SAM_Battwatts", "grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_market_sell_rate_series_yr1_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "market_sell_rate_series_yr1", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "market_sell_rate_series_yr1");
 	});
 	return result;
 }

@@ -32,6 +32,35 @@ extern "C"
 
 
 	//
+	// Lifetime parameters
+	//
+
+	/**
+	 * Set analysis_period: Analysis period [years]
+	 * options: None
+	 * constraints: None
+	 * required if: system_use_lifetime_output=1
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Lifetime_analysis_period_nset(SAM_Pvwattsv5 ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dc_degradation: Annual AC degradation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: system_use_lifetime_output=1
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Lifetime_dc_degradation_aset(SAM_Pvwattsv5 ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set system_use_lifetime_output: Run lifetime simulation [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Lifetime_system_use_lifetime_output_nset(SAM_Pvwattsv5 ptr, double number, SAM_error *err);
+
+
+	//
 	// LocationAndResource parameters
 	//
 
@@ -170,6 +199,17 @@ extern "C"
 
 
 	/**
+	 * Lifetime Getters
+	 */
+
+	SAM_EXPORT double SAM_Pvwattsv5_Lifetime_analysis_period_nget(SAM_Pvwattsv5 ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv5_Lifetime_dc_degradation_aget(SAM_Pvwattsv5 ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv5_Lifetime_system_use_lifetime_output_nget(SAM_Pvwattsv5 ptr, SAM_error *err);
+
+
+	/**
 	 * LocationAndResource Getters
 	 */
 
@@ -255,6 +295,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvwattsv5_Outputs_monthly_energy_aget(SAM_Pvwattsv5 ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvwattsv5_Outputs_percent_complete_nget(SAM_Pvwattsv5 ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvwattsv5_Outputs_poa_aget(SAM_Pvwattsv5 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvwattsv5_Outputs_poa_monthly_aget(SAM_Pvwattsv5 ptr, int* length, SAM_error *err);
@@ -268,8 +310,6 @@ extern "C"
 	SAM_EXPORT const char* SAM_Pvwattsv5_Outputs_state_sget(SAM_Pvwattsv5 ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvwattsv5_Outputs_sunup_aget(SAM_Pvwattsv5 ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvwattsv5_Outputs_system_use_lifetime_output_nget(SAM_Pvwattsv5 ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvwattsv5_Outputs_tamb_aget(SAM_Pvwattsv5 ptr, int* length, SAM_error *err);
 
