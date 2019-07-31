@@ -2537,7 +2537,7 @@ grid_interconnection_limit_kwac
 1
 1
 1
-20000
+100000
 hub_height
 1
 1
@@ -3652,7 +3652,8 @@ reference_number_turbines
 reference_resource_file
 1
 4
-0
+85
+C:\Projects\GitHub\NREL\wind_pruf\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 reference_sales_tax_percent
 1
 1
@@ -3935,13 +3936,13 @@ total_obos_cost
 1
 1
 1
-2.4862e+09
+7.46351e+08
 total_obos_cost_per_kw
 1
 1
 1
 1
-51795.9
+15549
 total_uncert
 1
 1
@@ -4296,7 +4297,7 @@ wind_farm_xCoordinates
 2
 1
 32
-0 38500 77000 115500 154000 192500 231000 269500 308 38808 77308 115808 154308 192808 231308 269808 0 38500 77000 115500 154000 192500 231000 269500 308 38808 77308 115808 154308 192808 231308 269808 
+0 616 1232 1848 2464 3080 3696 4312 308 924 1540 2156 2772 3388 4004 4620 0 616 1232 1848 2464 3080 3696 4312 308 924 1540 2156 2772 3388 4004 4620 
 
 wind_farm_yCoord_file
 1
@@ -4353,7 +4354,8 @@ wind_resource.elev
 wind_resource.file
 1
 4
-0
+85
+C:\Projects\GitHub\NREL\wind_pruf\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource.lat
 1
 1
@@ -4408,7 +4410,8 @@ wind_resource.year
 wind_resource_filename
 1
 4
-0
+85
+C:\Projects\GitHub\NREL\wind_pruf\SAM\deploy\wind_resource\WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1
@@ -4589,7 +4592,7 @@ windfarm.farm.turbine_spacing
 1
 1
 1
-500
+8
 windfarm.farm.turbines_per_row
 1
 1
@@ -4607,4 +4610,4 @@ wspd_uncert
 1
 1
 1
-0
+8.41654
