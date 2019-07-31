@@ -3183,7 +3183,7 @@ Total Installed Costs
 0
 Numeric
 
-2241
+2246
 equations{ 'nameplate_capacity' } = define() {
 	return ${system_capacity}; };
 
@@ -3193,7 +3193,7 @@ equations{ 'battery_energy' } = define() {
 
 equations{ 'battery_power' } = define() {
 	return ?${en_batt}
-			[0,	${batt_power_discharge_max}];};
+			[0,	${batt_power_discharge_max_kwac}];};
 
 equations{ 'battery_total' } = define() {
 	return ${battery_energy}*${battery_per_kWh} + ${battery_power}*${battery_per_kW} ;
