@@ -113,7 +113,7 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_hub_ht_nset(SAM_Windpower ptr, double number, SAM_error *err);
 
 	/**
-	 * Set wind_turbine_max_cp: Max Coefficient of Power
+	 * Set wind_turbine_max_cp: Max cp
 	 * options: None
 	 * constraints: MIN=0
 	 * required if: wind_resource_model_choice=1
@@ -158,7 +158,7 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_Farm_system_capacity_nset(SAM_Windpower ptr, double number, SAM_error *err);
 
 	/**
-	 * Set wind_farm_wake_model: Wake Model [Simple, Park, EV, Constant] [0/1/2/3]
+	 * Set wind_farm_wake_model: Wake Model [0/1/2/3]
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *

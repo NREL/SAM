@@ -1,7 +1,6 @@
 {
 	"defaults": {
 		"Weather": {
-			"solar_resource_file": "C:\Projects\GitHub\NREL\wind_pruf\SAM\deploy\solar_resource\phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv"
 		},
 		"SWH": {
 			"FRUL": 3.85,
