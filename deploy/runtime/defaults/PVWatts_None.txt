@@ -1,5 +1,5 @@
 1
-59
+60
 ac_nameplate
 1
 1
@@ -117,7 +117,7 @@ elev
 1
 1
 1
-321
+358
 en_user_spec_losses
 1
 1
@@ -205,7 +205,7 @@ lon
 1
 1
 1
--112.06
+-111.98
 loss_age
 1
 1
@@ -323,14 +323,20 @@ state
 station_id
 1
 4
-6
-310820
+5
+78208
 system_capacity
 1
 1
 1
 1
 4
+system_use_lifetime_output
+1
+1
+1
+1
+0
 tilt
 1
 1

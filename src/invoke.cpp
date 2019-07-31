@@ -3321,11 +3321,11 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		ScanSolarResourceData( solar_resource_db, true );
 		reloaded = Library::Load( solar_resource_db );
 	}
-	else if ( type == "wind" )
+	else if (type == "wind")
 	{
-		wxString wind_resource_db  = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
-		ScanWindResourceData( wind_resource_db, true );
-		reloaded = Library::Load( wind_resource_db );
+		wxString wind_resource_db = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
+		ScanWindResourceData(wind_resource_db, true);
+		reloaded = Library::Load(wind_resource_db);
 	}
 
 	if ( &cc != NULL && reloaded != 0 )
