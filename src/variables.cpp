@@ -30,7 +30,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/tokenzr.h>
 #include <wx/log.h>
 #include <wx/mstream.h>
-//#include <wx/txtstrm.h>
+#include <wx/filename.h>
 #include <wex/exttextstream.h>
 #include <lk/stdlib.h>
 #include <lk/eval.h>
@@ -750,6 +750,12 @@ void wxTextOutputStream::WriteDouble(double d)
 		break;
 	case VV_STRING:
 		x = m_str;
+		if (wxFileName::Exists(x))
+		{ // write filename only
+			wxString fn, ext;
+			wxFileName::SplitPath(x, NULL, &fn, &ext);
+			x = fn + "." + ext;
+		}
 		x.Replace("\r", "");
 		n = x.Len();
 		out.Write32((wxUint32)n);
