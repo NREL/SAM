@@ -1,7 +1,7 @@
 Physical Trough Thermal Storage
-916
-358
-26
+910
+429
+29
 GroupBox
 
 1
@@ -12,16 +12,16 @@ Name
 GroupBox1
 X
 3
-9
+6
 Y
 3
-6
+105
 Width
 3
 900
 Height
 3
-347
+320
 Caption
 5
 14
@@ -35,14 +35,14 @@ Numeric
 16
 Name
 5
-15
-T_tank_cold_ini
+5
+Q_tes
 X
 3
-648
+255
 Y
 3
-153
+126
 Width
 3
 100
@@ -69,7 +69,7 @@ Suffix
 0
 ThousandsSep
 2
-0
+1
 Editable
 2
 1
@@ -87,7 +87,243 @@ BackColour
 255
 TabOrder
 3
+3
+Numeric
+
+1
+16
+Name
+5
+22
+TES_COPY_T_loop_in_des
+X
+3
+645
+Y
+3
+63
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+19
+TES_COPY_T_loop_out
+X
+3
+645
+Y
+3
+36
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
 20
+TES_COPY_q_pb_design
+X
+3
+255
+Y
+3
+36
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+16
+TES_COPY_tshours
+X
+3
+255
+Y
+3
+63
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -98,10 +334,10 @@ Name
 cold_tank_Thtr
 X
 3
-258
+645
 Y
 3
-273
+150
 Width
 3
 100
@@ -147,6 +383,65 @@ BackColour
 TabOrder
 3
 11
+Numeric
+
+1
+16
+Name
+5
+18
+cold_tank_max_heat
+X
+3
+645
+Y
+3
+174
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+15
 Choice
 
 1
@@ -157,13 +452,13 @@ Name
 combo_tes_htf_type
 X
 3
-648
+645
 Y
 3
-177
+270
 Width
 3
-160
+124
 Height
 3
 21
@@ -192,250 +487,14 @@ Numeric
 16
 Name
 5
-31
-csp.dtr.tes.estimated_heat_loss
-X
-3
-258
-Y
-3
-249
-Width
-3
-100
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-10
-Numeric
-
-1
-16
-Name
-5
-22
-csp.dtr.tes.fluid_dens
-X
-3
-648
-Y
-3
-297
-Width
-3
-100
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-24
-Numeric
-
-1
-16
-Name
-5
-21
-csp.dtr.tes.fluid_sph
-X
-3
-648
-Y
-3
-321
-Width
-3
-100
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-25
-Numeric
-
-1
-16
-Name
-5
-25
-csp.dtr.tes.htf_calc_temp
-X
-3
-648
-Y
-3
-273
-Width
-3
-100
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-23
-Numeric
-
-1
-16
-Name
-5
 28
 csp.dtr.tes.htf_max_opt_temp
 X
 3
-648
+645
 Y
 3
-249
+342
 Width
 3
 100
@@ -491,10 +550,10 @@ Name
 csp.dtr.tes.htf_min_opt_temp
 X
 3
-648
+645
 Y
 3
-225
+318
 Width
 3
 100
@@ -546,14 +605,14 @@ Numeric
 16
 Name
 5
-21
-csp.dtr.tes.hx_derate
+22
+csp.pt.tes.htf_density
 X
 3
-648
+645
 Y
 3
-129
+294
 Width
 3
 100
@@ -568,7 +627,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -598,80 +657,21 @@ BackColour
 255
 TabOrder
 3
-19
+24
 Numeric
 
 1
 16
 Name
 5
-28
-csp.dtr.tes.min_fluid_volume
+24
+csp.pt.tes.tank_diameter
 X
 3
-258
+255
 Y
 3
-201
-Width
-3
-100
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-8
-Numeric
-
-1
-16
-Name
-5
-25
-csp.dtr.tes.tank_diameter
-X
-3
-258
-Y
-3
-177
+270
 Width
 3
 100
@@ -717,65 +717,6 @@ BackColour
 TabOrder
 3
 7
-Numeric
-
-1
-16
-Name
-5
-28
-csp.dtr.tes.thermal_capacity
-X
-3
-258
-Y
-3
-81
-Width
-3
-100
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-3
 Numeric
 
 1
@@ -786,10 +727,10 @@ Name
 dt_cold
 X
 3
-648
+645
 Y
 3
-105
+390
 Width
 3
 100
@@ -845,10 +786,10 @@ Name
 dt_hot
 X
 3
-648
+645
 Y
 3
-81
+366
 Width
 3
 100
@@ -904,10 +845,10 @@ Name
 eta_tes_htr
 X
 3
-648
+645
 Y
 3
-57
+246
 Width
 3
 100
@@ -963,10 +904,10 @@ Name
 h_tank
 X
 3
-258
+255
 Y
 3
-129
+174
 Width
 3
 100
@@ -1022,10 +963,10 @@ Name
 h_tank_min
 X
 3
-258
+255
 Y
 3
-153
+198
 Width
 3
 100
@@ -1081,10 +1022,10 @@ Name
 hot_tank_Thtr
 X
 3
-258
+645
 Y
 3
-297
+198
 Width
 3
 100
@@ -1130,43 +1071,20 @@ BackColour
 TabOrder
 3
 12
-MaterialProperties
-
-1
-6
-Name
-5
-14
-store_fl_props
-X
-3
-648
-Y
-3
-201
-Width
-3
-98
-Height
-3
-24
-TabOrder
-3
-22
 Numeric
 
 1
 16
 Name
 5
-13
-tank_max_heat
+17
+hot_tank_max_heat
 X
 3
-648
+645
 Y
 3
-33
+222
 Width
 3
 100
@@ -1218,14 +1136,182 @@ Numeric
 16
 Name
 5
+20
+init_hot_htf_percent
+X
+3
+645
+Y
+3
+126
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+11
+GroupBox
+
+1
+7
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+12
+Width
+3
+900
+Height
+3
+87
+Caption
+5
+24
+System Design Parameters
+Bold
+2
+1
+Numeric
+
+1
+16
+Name
+5
+13
+q_dot_tes_est
+X
+3
+255
+Y
+3
+318
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+10
+MaterialProperties
+
+1
+6
+Name
+5
+14
+store_fl_props
+X
+3
+777
+Y
+3
+267
+Width
+3
+59
+Height
+3
+27
+TabOrder
+3
+22
+Numeric
+
+1
+16
+Name
+5
 10
 tank_pairs
 X
 3
-258
+255
 Y
 3
-105
+246
 Width
 3
 100
@@ -1277,14 +1363,14 @@ Numeric
 16
 Name
 5
-7
-tshours
+13
+tes_avail_vol
 X
 3
-258
+255
 Y
 3
-33
+150
 Width
 3
 100
@@ -1329,7 +1415,66 @@ BackColour
 255
 TabOrder
 3
+4
+Numeric
+
 1
+16
+Name
+5
+13
+tes_pump_coef
+X
+3
+255
+Y
+3
+342
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4
 Numeric
 
 1
@@ -1340,10 +1485,10 @@ Name
 u_tank
 X
 3
-258
+255
 Y
 3
-225
+294
 Width
 3
 100
@@ -1399,10 +1544,10 @@ Name
 vol_tank
 X
 3
-258
+255
 Y
 3
-57
+222
 Width
 3
 100
@@ -1449,7 +1594,77 @@ TabOrder
 3
 2
 
-39
+54
+Q_tes
+3
+1
+TES thermal capacity
+MWt-hr
+Physical Trough Thermal Storage
+0
+8
+1
+1
+1
+1
+0
+Numeric
+TES_COPY_T_loop_in_des
+3
+1
+Loop inlet HTF temperature
+°C
+Physical Trough Thermal Storage
+0
+8
+1
+1
+1
+1
+293
+Default
+TES_COPY_T_loop_out
+3
+1
+Loop outlet HTF temperature
+°C
+Physical Trough Thermal Storage
+0
+8
+1
+1
+1
+1
+391
+Default
+TES_COPY_q_pb_design
+3
+1
+Cycle thermal power
+MWt
+Physical Trough Thermal Storage
+0
+8
+1
+1
+1
+1
+0
+Default
+TES_COPY_tshours
+3
+1
+Hours of storage at design point
+hours
+Physical Trough Thermal Storage
+0
+8
+1
+1
+1
+1
+6
+Numeric
 T_tank_cold_ini
 3
 1
@@ -1492,10 +1707,24 @@ Physical Trough Thermal Storage
 1
 0
 Default
+V_tes_des
+3
+1
+Design-point velocity to size the TES pipe diameters
+m/s
+Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+1.85
+Default
 cold_tank_Thtr
 3
 1
-Cold tank heater set point
+Cold tank heater temperature set point
 °C
 Physical Trough Thermal Storage
 0
@@ -1506,6 +1735,20 @@ Physical Trough Thermal Storage
 1
 250
 Numeric
+cold_tank_max_heat
+3
+1
+Cold tank heater capacity
+MWe
+Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+0.5
+Default
 combo_tes_htf_type
 3
 1
@@ -1521,34 +1764,6 @@ Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm
 1
 3
 Choice
-csp.dtr.tes.estimated_heat_loss
-3
-1
-Estimated heat loss
-MWt
-Physical Trough Thermal Storage
-0
-8
-1
-1
-1
-1
-0
-Numeric
-csp.dtr.tes.fluid_dens
-3
-1
-TES fluid density
-kg/m³
-Physical Trough Thermal Storage
-0
-8
-1
-1
-1
-1
-0
-Numeric
 csp.dtr.tes.fluid_sph
 3
 1
@@ -1633,7 +1848,35 @@ Physical Trough Thermal Storage
 1
 0
 Numeric
-csp.dtr.tes.tank_diameter
+csp.dtr.tes.thermal_capacity
+3
+1
+TES thermal capacity
+MWt-hr
+Physical Trough Thermal Storage
+0
+8
+1
+1
+1
+1
+0
+Default
+csp.pt.tes.htf_density
+3
+1
+HTF density
+kg/m³
+Physical Trough Thermal Storage
+0
+8
+1
+1
+1
+1
+0
+Numeric
+csp.pt.tes.tank_diameter
 3
 1
 Tank diameter
@@ -1647,20 +1890,34 @@ Physical Trough Thermal Storage
 1
 0
 Numeric
-csp.dtr.tes.thermal_capacity
+custom_tes_p_loss
 3
 1
-TES Thermal capacity
-MWht
+TES pipe losses are based on custom lengths and coeffs
+ 
 Physical Trough Thermal Storage
 0
-8
+2
 1
 1
 1
 1
 0
-Numeric
+Default
+custom_tes_pipe_sizes
+3
+1
+Use custom SGS pipe diams, wallthks, and lengths
+ 
+Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+0
+Default
 dt_cold
 3
 1
@@ -1734,7 +1991,7 @@ Numeric
 h_tank_min
 3
 1
-Tank fluid min height
+Tank fluid minimum height
 m
 Physical Trough Thermal Storage
 0
@@ -1762,7 +2019,7 @@ Default
 hot_tank_Thtr
 3
 1
-Hot tank heater set point
+Hot tank heater temperature set point
 °C
 Physical Trough Thermal Storage
 0
@@ -1772,6 +2029,20 @@ Physical Trough Thermal Storage
 1
 1
 365
+Numeric
+hot_tank_max_heat
+3
+1
+Hot tank heater capacity
+MWe
+Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+25
 Numeric
 hx_config
 3
@@ -1787,6 +2058,20 @@ Physical Trough Thermal Storage
 1
 2
 Default
+init_hot_htf_percent
+3
+1
+Initial hot HTF percent
+%
+Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+30
+Default
 is_hx
 3
 1
@@ -1800,6 +2085,21 @@ Physical Trough Thermal Storage
 1
 1
 0
+Default
+k_tes_loss_coeffs
+3
+3
+Minor loss coeffs for the coll, gen, and bypass loops
+ 
+Physical Trough Thermal Storage
+0
+2
+1
+3
+1
+11
+0 0 0 0 0 0 0 0 0 0 0 
+
 Default
 nodes
 3
@@ -1815,6 +2115,20 @@ Physical Trough Thermal Storage
 1
 2000
 Default
+q_dot_tes_est
+3
+1
+Estimated heat loss
+MWt
+Physical Trough Thermal Storage
+0
+8
+1
+1
+1
+1
+0
+Numeric
 store_fl_props
 3
 3
@@ -1822,7 +2136,7 @@ User-defined HTF fluid
  
 Physical Trough Thermal Storage
 0
-0
+1
 1
 3
 1
@@ -1871,20 +2185,6 @@ Physical Trough Thermal Storage
 1
 500
 Default
-tank_max_heat
-3
-1
-Tank heater capacity
-MWe
-Physical Trough Thermal Storage
-0
-2
-1
-1
-1
-1
-0
-Numeric
 tank_pairs
 3
 1
@@ -1941,6 +2241,63 @@ Physical Trough Thermal Storage
 1
 0.25
 Default
+tes_avail_vol
+3
+1
+Available HTF volume
+m³
+Physical Trough Thermal Storage
+0
+8
+1
+1
+1
+1
+0
+Default
+tes_diams
+3
+3
+Custom SGS diameters
+m
+Physical Trough Thermal Storage
+0
+2
+1
+3
+1
+1
+-1
+Default
+tes_lengths
+3
+3
+Custom SGS lengths
+m
+Physical Trough Thermal Storage
+0
+2
+1
+3
+1
+11
+0 90 100 120 0 0 0 0 80 120 80 
+
+Default
+tes_pump_coef
+3
+1
+Pumping power for HTF through storage
+kJ/kg
+ Physical Trough Thermal Storage
+0
+2
+1
+1
+1
+1
+0.15
+Numeric
 tes_type
 3
 1
@@ -1955,25 +2312,25 @@ Physical Trough Thermal Storage
 1
 1
 Default
-tshours
+tes_wallthicks
 3
-1
-Full load hours of TES
-hr
+3
+Custom SGS wall thicknesses
+m
 Physical Trough Thermal Storage
 0
 2
 1
+3
 1
 1
-1
-6
-Numeric
+-1
+Default
 u_tank
 3
 1
-Tank loss coeff
-W/m²-K
+Wetted loss coefficient
+Wt/m²-K
 Physical Trough Thermal Storage
 0
 2
@@ -1986,7 +2343,7 @@ Numeric
 vol_tank
 3
 1
-Storage volume
+Storage tank volume
 m³
 Physical Trough Thermal Storage
 0
@@ -1998,7 +2355,69 @@ Physical Trough Thermal Storage
 0
 Numeric
 
-3596
+5410
+equations{ '$MIMO$ ui_tes_calcs' } = define()
+{
+	obj = ssc_create();
+
+	ssc_var(obj, "W_dot_pb_des", ${q_pb_design});			//[MWe]
+	ssc_var(obj, "eta_pb_des", 1.0);		//[-]
+	ssc_var(obj, "tes_hrs", ${tshours});			//[hrs]
+	ssc_var(obj, "T_HTF_hot", ${T_loop_out});	//[C]
+	ssc_var(obj, "T_HTF_cold", ${T_loop_in_des});	//[C]
+	ssc_var(obj, "TES_HTF_code", ${store_fluid});		//[-]
+	ssc_var(obj, "TES_HTF_props", ${store_fl_props});	//[-]
+	ssc_var(obj, "h_tank_min", ${h_tank_min});		//[m]
+	ssc_var(obj, "h_tank", ${h_tank});				//[m]
+	ssc_var(obj, "tank_pairs", ${tank_pairs});		//[-]
+	ssc_var(obj, "u_tank", ${u_tank});				//[-]
+
+	ret = ssc_exec(obj, 'ui_tes_calcs');
+	
+	if(ret==0)
+	{
+		q_tes_des = ssc_var(obj, "q_tes_des");		//[MWt-hr]
+		vol_one_temp_avail = ssc_var(obj, "vol_one_temp_avail");	//[m^3]
+		vol_one_temp_total = ssc_var(obj, "vol_one_temp_total");	//[m^3]
+		d_tank = ssc_var(obj, "d_tank");			//[m]
+		q_dot_loss = ssc_var(obj, "q_dot_loss");	//[MWt]
+		dens = ssc_var(obj, "HTF_dens");			//[kg/m^3]
+	}
+	else
+	{
+		q_tes_des = 1.0/0.0;
+		vol_one_temp_avail = 1.0/0.0;
+		vol_one_temp_total = 1.0/0.0;
+		d_tank = 1.0/0.0;
+		q_dot_loss = 1.0/0.0;
+		dens = 1.0/0.0;
+	}
+	
+	${Q_tes} = q_tes_des;
+	${tes_avail_vol} = vol_one_temp_avail;
+	${vol_tank} = vol_one_temp_total;
+	${csp.pt.tes.tank_diameter} = d_tank;
+	${q_dot_tes_est} = q_dot_loss;
+	${csp.pt.tes.htf_density} = dens;
+	
+	ssc_free( obj );	
+};
+
+equations{ 'TES_COPY_q_pb_design' } = define(){
+	return ${q_pb_design}; };
+
+equations{ 'TES_COPY_tshours' } = define(){
+	return ${tshours}; };
+	
+equations{ 'TES_COPY_T_loop_out' } = define(){
+	return ${T_loop_out}; };
+	
+equations{ 'TES_COPY_T_loop_in_des' } = define(){
+	return ${T_loop_in_des}; };
+	
+equations{ 'csp.dtr.tes.thermal_capacity' } = define(){
+	return ${Q_tes}; };
+
 equations{ 'store_fluid' } = define() {
 	return ?${combo_tes_htf_type}
 	[
@@ -2015,6 +2434,7 @@ equations{ 'store_fluid' } = define() {
 	];
 };
 
+/*
 equations{'csp.dtr.tes.fluid_dens'} = define() {
 	if(${combo_tes_htf_type} < 9)
 		return substance_density(${store_fluid},${csp.dtr.tes.htf_calc_temp} );
@@ -2022,12 +2442,14 @@ equations{'csp.dtr.tes.fluid_dens'} = define() {
 		return substance_userhtf(${store_fl_props},${csp.dtr.tes.htf_calc_temp},'density');
 };
 
+
 equations{'csp.dtr.tes.fluid_sph'} = define() {
 	if(${combo_tes_htf_type} < 9)
 		return substance_specific_heat(${store_fluid},${csp.dtr.tes.htf_calc_temp} );
 	else
 		return substance_userhtf(${store_fl_props},${csp.dtr.tes.htf_calc_temp},'specific heat');
 };		
+*/
 
 equations{ 'dt_cold' } = define() {
 	return ${dt_hot};
@@ -2059,11 +2481,13 @@ equations{ 'csp.dtr.tes.htf_min_opt_temp' } = define() {
 	];
 };
 
+/*
 equations{ 'csp.dtr.tes.estimated_heat_loss' } = define() {
 	return ( ${h_tank}*3.1415926*${csp.dtr.tes.tank_diameter}
 	 + 3.1415926*pow(${csp.dtr.tes.tank_diameter}/2,2) )*${tank_pairs}
 	 *(${csp.dtr.tes.htf_calc_temp}-20)*${u_tank}/1000000;
 };
+*/
 
 equations{ 'csp.dtr.tes.htf_max_opt_temp' } = define() {
 	return ?${combo_tes_htf_type}
@@ -2084,9 +2508,10 @@ equations{ 'csp.dtr.tes.htf_max_opt_temp' } = define() {
 equations{ 'csp.dtr.tes.htf_calc_temp' } = define() {
 	return ( ${T_loop_in_des} + ${T_loop_out} )/2; };
 
+/*
 equations{ 'csp.dtr.tes.thermal_capacity' } = define() {
-	return ${P_ref}/${eta_ref}*${tshours}; };
-
+	return ${P_ref}/${eta_ref}*${TES_COPY_tshours}; };
+	
 equations{ 'vol_tank' } = define() { 
 	return ${csp.dtr.tes.thermal_capacity}
 		 *1000000
@@ -2098,6 +2523,7 @@ equations{ 'vol_tank' } = define() {
 		  * ((${T_loop_out}-${dt_hot}) - 
 			 (${T_loop_in_des}-${dt_cold})) );
 };
+*/
 
 equations{ 'V_tank_hot_ini' } = define() {
 	return ${h_tank_min}/${h_tank}*${vol_tank}; };
@@ -2126,10 +2552,11 @@ equations{ 'csp.dtr.tes.hx_derate' } = define() {
 	}
 };
 
+/*
 equations{ 'csp.dtr.tes.tank_diameter' } = define() {
 	return 2*sqrt(${vol_tank}/(${h_tank}*3.1415926*${tank_pairs}));
 };
-
+*/
 2725
 on_load{'Physical Trough Thermal Storage'} = define() {
 	on_change{"combo_tes_htf_type"}();

@@ -1376,7 +1376,21 @@ TabOrder
 3
 4
 
-28
+30
+L_power_block_piping
+3
+1
+length of power block runner
+m
+Physical Trough Parasitics
+0
+2
+1
+1
+1
+1
+50
+Default
 Pipe_hl_coef
 3
 1
@@ -1671,16 +1685,30 @@ Physical Trough Parasitics
 1
 0
 Default
+include_fixed_power_block_runner
+3
+1
+include a pipe runner in power block
+-
+Physical Trough Parasitics
+0
+2
+1
+1
+1
+1
+1
+Default
 k_tes_loss_coeffs
 3
-2
+3
 Minor loss coeffs for the coll, gen, and bypass loops
 -
 Physical Trough Parasitics
 0
 2
 1
-2
+3
 1
 11
 0 0 0 0 0 0 0 0 0 0 0 
@@ -1716,28 +1744,28 @@ Physical Trough Parasitics
 Numeric
 sgs_diams
 3
-2
+3
 Custom SGS diameters
 m
 Physical Trough Parasitics
 0
 2
 1
-2
+3
 1
 1
 -1
 Default
 sgs_lengths
 3
-2
+3
 Custom SGS lengths
 m
 Physical Trough Parasitics
 0
 2
 1
-2
+3
 1
 11
 0 90 100 120 0 0 0 0 80 120 80 
@@ -1745,14 +1773,14 @@ Physical Trough Parasitics
 Default
 sgs_wallthicks
 3
-2
+3
 Custom SGS wall thicknesses
 m
 Physical Trough Parasitics
 0
 2
 1
-2
+3
 1
 1
 -1
