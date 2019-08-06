@@ -9312,7 +9312,7 @@ equations{ 'biopwr.feedstock.herb_hhv' } = define() {
 	return ((18071*0.4299)+8000)/2; };
 
 
-6468
+6896
 on_load{"Biopower Feedstock"}=define(){
 	on_change{"biopwr.feedstock.feedstock1_opt"}();
 	on_change{"biopwr.feedstock.feedstock2_opt"}();
@@ -9418,24 +9418,27 @@ on_change{'btnQueryResource'} = define() {
 	//logmsg("biopower result=\n" + curldata );
 	
 	json = json_read(curldata);
-	x = json.result.totals;
-	//logmsg( 'full response: ' + @result + '\n\n' + result );
-	//logmsg( 'totals only:' + @x + '\n\n' + x );
-	msg = 'Received data from NREL database.\n';
-	msg += 'Latitude: ' + lat + '\nLongitude: ' + lon + '\nRadius: ' + distance + ' mi:\n\n'; 
-	
+    if (#json > 0){
+        x = json.result.totals;
+        //logmsg( 'full response: ' + @result + '\n\n' + result );
+        //logmsg( 'totals only:' + @x + '\n\n' + x );
+        msg = 'Received data from NREL database.\n';
+        msg += 'Latitude: ' + lat + '\nLongitude: ' + lon + '\nRadius: ' + distance + ' mi:\n\n'; 
+        
 
-	for (i=0;i<8;i++)
-	{
-		tab[i][3] = to_real( x{ tab[i][0] }{ tab[i][1] } ) * 1.10231131;
-		msg += varinfo(tab[i][2]).label + ' = ' + tab[i][3] + ' bdt/yr\n';
-	}
+        for (i=0;i<8;i++)
+        {
+            tab[i][3] = to_real( x{ tab[i][0] }{ tab[i][1] } ) * 1.10231131;
+            msg += varinfo(tab[i][2]).label + ' = ' + tab[i][3] + ' bdt/yr\n';
+        }
+        
+        if ( yesno( msg + '\nApply to case?' ) )
+        {
+            for( i=0;i<8;i++ ) 
+                value( tab[i][2], tab[i][3] );
+        }
+    }
 	
-	if ( yesno( msg + '\nApply to case?' ) )
-	{
-		for( i=0;i<8;i++ ) 
-			value( tab[i][2], tab[i][3] );
-	}
 
 };
 
@@ -9459,28 +9462,36 @@ on_change{'btnQueryEnergyCrops'} = define()
 
 	result = curl(url, {'message'='Obtaining energy crop data...'});
 
-	x = json_read( result ){ 'outputs' };
-	for( i=0;i<#x;i++ )
-	{
-		y = x[i];
-		if ( y.feedstck == tab[0][0] )
-			tab[0][3] = to_real(y.the_sum);
-			
-		if ( y.feedstck == tab[1][0] )
-			tab[1][3] = to_real(y.the_sum);
-	}
+	r = json_read( result );
+    if (#r > 0){
+        x = r{ 'outputs' };
+        for( i=0;i<#x;i++ )
+        {
+            y = x[i];
+            if ( y.feedstck == tab[0][0] )
+                tab[0][3] = to_real(y.the_sum);
+                
+            if ( y.feedstck == tab[1][0] )
+                tab[1][3] = to_real(y.the_sum);
+        }
 
-	msg = 'Received data from NREL database.\n';
-	msg += 'Latitude: ' + lat + '\nLongitude: ' + lon + '\nRadius: ' + radius + ' mi:\nYear: ' + year + '\n\n'; 
+        msg = 'Received data from NREL database.\n';
+        msg += 'Latitude: ' + lat + '\nLongitude: ' + lon + '\nRadius: ' + radius + ' mi:\nYear: ' + year + '\n\n'; 
 
-	for( i=0;i<2;i++ )
-		msg += varinfo(tab[i][2]).label + ' = ' + tab[i][3] + ' bdt/yr\n';
+        for( i=0;i<2;i++ )
+            msg += varinfo(tab[i][2]).label + ' = ' + tab[i][3] + ' bdt/yr\n';
 
-	if ( yesno( msg + '\nApply to case?' ) )
-	{
-		for( i=0;i<2;i++ ) 
-			value( tab[i][2], tab[i][3] );
-	}
+        if ( yesno( msg + '\nApply to case?' ) )
+        {
+            for( i=0;i<2;i++ ) 
+                value( tab[i][2], tab[i][3] );
+        }
+    }
+    else{
+        msgbox("Could not read result");
+    }
+
+    
 
 
 };

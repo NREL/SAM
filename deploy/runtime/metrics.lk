@@ -321,6 +321,21 @@ metrics{ 'Fuel Cell' } = define() {
 	metric( 'thermal_savings_year1',{'label'='Net thermal savings with system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
 			
 };
+
+function MHKwave_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+}
+
+function MHKtidal_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+}
+
+
+
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
 metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };
 metrics{ 'Physical Trough IPH' } = define() { physical_trough_iph_metrics(); };
@@ -338,6 +353,8 @@ metrics{ 'Wind Power' } = define() { wind_power_metrics(); };
 metrics{ 'Geothermal Power' } = define() { geothermal_metrics(); };
 metrics{ 'Generic System' } = define() { generic_system_metrics(); };
 metrics{ 'Biopower' } = define() { biopower_metrics(); };
+metrics{ 'MHKwave' } = define() { MHKwave_metrics(); };
+metrics{ 'MHKtidal' } = define() { MHKtidal_metrics(); };
 
 // Financial Metrics
 metrics{ 'Residential' } = define() { rescom_metrics(); };

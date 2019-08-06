@@ -42,6 +42,8 @@ struct EqnData
 	lk::node_t *tree; wxArrayString inputs, outputs; bool result_is_output;
 };
 
+typedef unordered_map< wxString, wxArrayString*, wxStringHash, wxStringEqual > arraystring_hash_t;
+
 class EqnDatabase
 {
 public:
@@ -55,11 +57,11 @@ public:
 
 	wxArrayString *GetAffectedVariables( const wxString &var );
 	const std::vector<EqnData*> &GetEquations() { return m_equations; }
-	
+	arraystring_hash_t* GetAffectedMap() {return &m_affected;}
+
 private:
 	std::vector<lk::node_t*> m_trees;
 
-	typedef unordered_map< wxString, wxArrayString*, wxStringHash, wxStringEqual > arraystring_hash_t;
 	arraystring_hash_t m_affected;
 
 	std::vector<EqnData*> m_equations;

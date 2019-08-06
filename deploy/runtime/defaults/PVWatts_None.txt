@@ -1,5 +1,5 @@
 1
-59
+60
 ac_nameplate
 1
 1
@@ -117,7 +117,7 @@ elev
 1
 1
 1
-321
+358
 en_user_spec_losses
 1
 1
@@ -133,8 +133,7 @@ enable_interconnection_limit
 file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+0
 gcr
 1
 1
@@ -200,15 +199,13 @@ library_folder_list
 library_paths
 1
 4
-44
-C:\Users\gaobo\SAM Downloaded Weather Files
-
+0
 lon
 1
 1
 1
 1
--112.06
+-111.98
 loss_age
 1
 1
@@ -299,8 +296,7 @@ shading_3d_scene
 solar_data_file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+0
 solar_data_file_name_load
 1
 4
@@ -318,8 +314,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-107
-C:\Projects\GitHub\NREL\release\SAM\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+0
 state
 1
 4
@@ -328,14 +323,20 @@ state
 station_id
 1
 4
-6
-310820
+5
+78208
 system_capacity
 1
 1
 1
 1
 4
+system_use_lifetime_output
+1
+1
+1
+1
+0
 tilt
 1
 1

@@ -465,7 +465,7 @@ bool Case::Read( wxInputStream &_i )
 }
 
 
-bool Case::SaveDefaults( bool quiet )
+bool Case::SaveDefaults(bool quiet)
 {
 	if (!m_config) return false;
 #ifdef UI_BINARY
@@ -475,13 +475,18 @@ bool Case::SaveDefaults( bool quiet )
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";
 #endif
-	if ( !quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n" 
-		+ m_config->Technology + " / " + m_config->Financing, 
-		"Save Defaults", wxYES_NO) )
+	if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
+		+ m_config->Technology + " / " + m_config->Financing,
+		"Save Defaults", wxYES_NO))
 		return false;
 
 	wxFFileOutputStream out(file);
 	if (!out.IsOk()) return false;
+
+
+	// set default library_folder_list blank
+	VarValue *vv = m_vals.Get("library_folder_list");
+	if (vv)	vv->Set("x");
 
 #ifdef UI_BINARY
 	m_vals.Write(out);

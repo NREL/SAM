@@ -4450,8 +4450,7 @@ field_thermal_output
 file_name
 1
 4
-111
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 fixed_land_area
 1
 1
@@ -6260,8 +6259,7 @@ single_loop_aperature
 solar_data_file_name
 1
 4
-111
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 solar_data_file_name_load
 1
 4
@@ -6285,8 +6283,7 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-111
-C:\Users\mboyd\Documents\SAM\sam_dev\sam\deploy\solar_resource\tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 solution_mode_message
 1
 4

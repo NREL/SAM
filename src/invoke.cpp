@@ -80,6 +80,7 @@
 #endif
 
 #include <ssc/sscapi.h>
+#include <ssc/ssc_equations.h>
 
 #include "main.h"
 #include "case.h"
@@ -769,16 +770,22 @@ static void fcall_varinfo( lk::invoke_t &cxt )
 
 void fcall_value( lk::invoke_t &cxt )
 {
-	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value]):[variant]");
+	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value, bool:trigger value change (default true)]):[variant]");
 	
 	CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
 	if ( VarValue *vv = cc.GetValues().Get( name ) )
 	{
-		if ( cxt.arg_count() == 2 )
+		if ( cxt.arg_count() > 1 )
 		{
-			if ( vv->Read( cxt.arg(1), false ) )
-				cc.GetCase().VariableChanged( name );
+			if ( vv->Read( cxt.arg(1), false ) ){
+			    bool trigger = true;
+			    if (cxt.arg_count() == 3 )
+			        trigger = cxt.arg(2).as_boolean();
+				if (trigger){
+				    cc.GetCase().VariableChanged( name );
+				}
+			}
 			else
 				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
 		}
@@ -822,15 +829,25 @@ void fcall_clearplot( lk::invoke_t &cxt )
 void fcall_refresh( lk::invoke_t &cxt )
 {
 	LK_DOC("refresh", "Refresh the current form or a specific widget", "([string:name]):none" );
-	
+
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+    Case* cur_case = &cc.GetCase();
 	if ( cxt.arg_count() == 0 )
 		cc.InputPage()->Refresh();
 	else
 	{
-		if ( wxUIObject *obj = cc.InputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
+	    wxString var = cxt.arg(0).as_string();
+        ActiveInputPage *ipage = 0;
+        wxUIObject *obj = cc.InputPage()->FindActiveObject( var, &ipage );
+        VarValue *vv = cur_case->Values().Get( var );
+        if ( obj ){
 			if ( wxWindow *win = obj->GetNative() )
 				win->Refresh();
+            if ( ipage && vv )
+            {
+                ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+            }
+		}
 	}
 }
 
@@ -1526,7 +1543,7 @@ static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_
 			{
 				lk::vardata_t &xvd = out.hash_item( lk_string(key) );
 				sscvar_to_lkvar( xvd, key, table );
-				key = ssc_data_next( p_dat );
+				key = ssc_data_next( table );
 			}
 		}
 		break;
@@ -1804,6 +1821,34 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 
 		delete tpd;
 	}
+}
+
+void fcall_ssc_eqn(lk::invoke_t &cxt)
+{
+    LK_DOC("ssc_eqn", "Call equation with var_table inputs. Returns true upon success", "(string: eqn_name, table:inputs):bool");
+    wxString eqn_name = cxt.arg(0).as_string();
+
+    ssc_data_t data = ssc_data_create();
+    lkvar_to_sscvar(data, "data", cxt.arg(1).deref());
+
+    size_t i = 0;
+    while ( ssc_equation_table[i].func){
+        if (wxStrcmp(eqn_name, ssc_equation_table[i].name) == 0){
+			ssc_data_t vd_data = ssc_data_get_table(data, "data");
+            try {
+                (*ssc_equation_table[i].func)(vd_data);
+                cxt.result().assign(1.);
+            }
+            catch (std::runtime_error &e){
+				ssc_data_set_string(data, "error", e.what());
+                cxt.result().assign(0.);
+            }
+            sscvar_to_lkvar(cxt.arg(1).deref(), "data", data);
+            return;
+        }
+        i++;
+    }
+    throw lk::error_t(lk_tr("Equation by that name does not exist."));
 }
 
 void fcall_substance_density(lk::invoke_t &cxt)
@@ -3276,11 +3321,11 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		ScanSolarResourceData( solar_resource_db, true );
 		reloaded = Library::Load( solar_resource_db );
 	}
-	else if ( type == "wind" )
+	else if (type == "wind")
 	{
-		wxString wind_resource_db  = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
-		ScanWindResourceData( wind_resource_db, true );
-		reloaded = Library::Load( wind_resource_db );
+		wxString wind_resource_db = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
+		ScanWindResourceData(wind_resource_db, true);
+		reloaded = Library::Load(wind_resource_db);
 	}
 
 	if ( &cc != NULL && reloaded != 0 )
@@ -4681,6 +4726,7 @@ lk::fcall_t* invoke_ssc_funcs()
 		fcall_ssc_dump,
 		fcall_ssc_var,
 		fcall_ssc_exec,
+		fcall_ssc_eqn,
 		0 };
 	return (lk::fcall_t*)vec;
 }
