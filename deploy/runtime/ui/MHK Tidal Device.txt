@@ -191,7 +191,7 @@ Height
 rated_capacity
 3
 1
- Rated Capacity of System
+Device Rated Capacity
  kW
  
 0

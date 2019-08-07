@@ -1,7 +1,93 @@
 MHK Farm
 808
 749
+8
+GroupBox
+
+1
+7
+Name
+5
+11
+GroupBox222
+X
 3
+6
+Y
+3
+3
+Width
+3
+788
+Height
+3
+110
+Caption
+5
+13
+System Sizing
+Bold
+2
+1
+Numeric
+
+1
+16
+Name
+5
+18
+desired_array_size
+X
+3
+483
+Y
+3
+18
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -12,10 +98,10 @@ Name
 maximum_water_depth
 X
 3
-192
+186
 Y
 3
-75
+180
 Width
 3
 90
@@ -71,10 +157,10 @@ Name
 number_devices
 X
 3
-192
+483
 Y
 3
-39
+45
 Width
 3
 90
@@ -120,6 +206,96 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+12
+Name
+5
+14
+sizing_warning
+X
+3
+621
+Y
+3
+21
+Width
+3
+165
+Height
+3
+72
+Caption
+5
+102
+It is not possible to reach the desired nameplate capacity exactly with the currently selected device.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+12
+Name
+5
+13
+specify_label
+X
+3
+621
+Y
+3
+45
+Width
+3
+165
+Height
+3
+60
+Caption
+5
+74
+Please specify the number of devices using the Array Layout options below.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -130,10 +306,10 @@ Name
 system_capacity
 X
 3
-192
+483
 Y
 3
-111
+72
 Width
 3
 90
@@ -179,8 +355,74 @@ BackColour
 TabOrder
 3
 4294967295
+RadioChoice
 
+1
+10
+Name
+5
+21
+wind_farm_sizing_mode
+X
 3
+21
+Y
+3
+24
+Width
+3
+258
+Height
+3
+72
+Selection
+3
+0
+Items
+6
+3
+Use a single device
+Specify desired nameplate capacity
+Specify number of devices
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+
+5
+array_sizing_mode
+3
+1
+Array sizing mode
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+desired_array_size
+3
+1
+Desired array size
+kW
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 maximum_water_depth
 3
 1
@@ -202,7 +444,7 @@ Number of Devices in Farm
  
  
 0
-0
+8
 1
 1
 1
@@ -224,8 +466,19 @@ kW
 0
 Default
 
-93
+362
 equations{ 'system_capacity' } = define() {
 	return ${number_devices} * ${rated_capacity};
 };
+
+equations{ 'number_devices' } = define() {
+	if (${array_sizing_mode} == 0) //single device
+		return 1;
+	else if (${array_sizing_mode} == 1) //specify nameplate
+	{
+		num = round(${desired_array_size} / ${rated_capacity});
+		if (num <=1) num = 1;
+		return num;
+	}
+	else
 0
