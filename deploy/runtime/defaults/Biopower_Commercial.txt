@@ -2632,8 +2632,7 @@ federal_tax_rate
 file_name
 1
 4
-95
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\fargo_nd_46.9_-96.8_mts1_60_tmy.csv
+0
 ibi_fed_amount
 1
 1
@@ -3041,9 +3040,7 @@ library_folder_list
 library_paths
 1
 4
-77
-C:\Projects\SAM\Documentation\P50P90\2018.5.21_Trough_IPH_Paul\weather_files
-
+0
 load
 1
 2
@@ -3533,13 +3530,11 @@ show_tax_credits
 solar_data_file_name
 1
 4
-95
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\fargo_nd_46.9_-96.8_mts1_60_tmy.csv
+0
 solar_data_file_name_load
 1
 4
-69
-C:\Code\sam\deploy\solar_resource\fargo_nd_46.9_-96.8_mts1_60_tmy.csv
+0
 solar_data_source
 1
 4
@@ -3553,8 +3548,7 @@ fargo_nd_46.9_-96.8_mts1_60_tmy
 solar_resource_file
 1
 4
-95
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\fargo_nd_46.9_-96.8_mts1_60_tmy.csv
+0
 state
 1
 4

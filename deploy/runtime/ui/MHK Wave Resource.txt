@@ -1374,7 +1374,7 @@ equations{ 'mhk_wave_frequency_sum' } = define ()
 	return sum_mat;
 };
 
-1179
+1223
 
 on_change{'btnSaveMHKWaveResourceData'} = define() {
 	logmsg('btnSaveMHKWaveResourceData');
@@ -1424,4 +1424,6 @@ on_change{'lib_wave_resource'} = define()
 	{
 		value('wave_resource_definition', value('wave_resource_definition'));
 	}
+	enable("wave_resource_definition",false);
 };
+

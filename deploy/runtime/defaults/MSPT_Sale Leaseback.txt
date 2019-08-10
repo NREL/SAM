@@ -2085,8 +2085,7 @@ field_model_type
 file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+0
 flip_target_percent
 1
 1
@@ -12621,13 +12620,11 @@ site_spec_cost
 solar_data_file_name
 1
 4
-107
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+0
 solar_data_file_name_load
 1
 4
-83
-C:\Code\sam\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+0
 solar_data_source
 1
 4
@@ -12641,8 +12638,7 @@ daggett_ca_34.865371_-116.783023_psmv3_60_tmy
 solar_resource_file
 1
 4
-107
-C:\Projects\GitHub\NREL\develop\SAM\deploy\solar_resource\daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+0
 solarm
 1
 1

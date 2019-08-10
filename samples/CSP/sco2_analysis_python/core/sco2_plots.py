@@ -895,6 +895,8 @@ class C_OD_stacked_outputs_plot:
         self.plot_colors = ['k','b','g','r','c']
         self.l_s = ['-','--','-.',':']
         self.mss = ["o","d","s",'^','p']
+        self.mrk_sz = 6
+        self.is_line = True                        # True: correct points with line, no markers, False: plot points with markers, no lines
         self.is_change_ls_each_plot = True          # True: every dataset cycle line style; False: change line style after all colors cycle
         
         self.is_x_label_long = True
@@ -987,7 +989,7 @@ class C_OD_stacked_outputs_plot:
                 des_txt_leg_i = "Design " + self.var_info_metrics[self.leg_var].l_label + " = " + "{:.2f}".format(des_leg_val_i)
                 od_txt_leg_i = self.var_info_metrics[self.leg_var].l_label + " = " + "{:.2f}".format(od_leg_val_i)
             
-            if( self.is_label_leg_cols != "" and i % n_leg_rows == 0 ):
+            if( self.is_label_leg_cols != "" and len(self.is_label_leg_cols) > 1 and i % n_leg_rows == 0 ):
                 if(len(self.is_label_leg_cols) == self.n_leg_cols):
                     legend_lines.append(mlines.Line2D([],[], color = 'w'))
                     legend_labels.append(self.is_label_leg_cols[int(i // n_leg_rows)])
@@ -1007,7 +1009,9 @@ class C_OD_stacked_outputs_plot:
                     # Marker & Line
                 legend_lines.append(mlines.Line2D([],[],color = color_od_i, ls = ls_od_i, marker = mrk_i,  label = des_txt_leg_i))
                 legend_labels.append(des_txt_leg_i)
-                
+
+            if not(self.is_line):
+                ls_od_i = mrk_i
             
             for j, key in enumerate(self.y_vars):
                 
@@ -1031,7 +1035,7 @@ class C_OD_stacked_outputs_plot:
                 else:
                     j_axis = a_ax
                     
-                j_axis.plot(self.list_dict_results[i][self.x_var_od], self.list_dict_results[i][y_od_key], color_od_i+ls_od_i)
+                j_axis.plot(self.list_dict_results[i][self.x_var_od], self.list_dict_results[i][y_od_key], color_od_i+ls_od_i, markersize = self.mrk_sz)
                 
                 if(self.is_plot_des_pts or (i in self.list_des_pts)):
                     if(self.is_plot_each_des_pt or i == 0):
@@ -1045,7 +1049,11 @@ class C_OD_stacked_outputs_plot:
                                 j_axis.plot(x_val_des_i, self.list_dict_results[i][y_des_key][i_s], ls_des_i)
                                 
                 if(y_limit != ""):
-                    y_limit_list = [self.list_dict_results[i][y_limit] for ind in range(len(self.list_dict_results[i][self.x_var_od]))]
+                    if(isinstance(y_limit, str)):
+                        y_limit_list = [self.list_dict_results[i][y_limit] for ind in range(len(self.list_dict_results[i][self.x_var_od]))]
+                    else:
+                        y_limit_list = [y_limit for ind in range(len(self.list_dict_results[i][self.x_var_od]))]
+
                     j_axis.plot(self.list_dict_results[i][self.x_var_od], y_limit_list, 'm:')
                     
                 if(i == n_datasets - 1):
@@ -1083,21 +1091,25 @@ class C_OD_stacked_outputs_plot:
                         
                 if(self.is_shade_infeasible):
                     if(y_limit != ""):
+                        if (isinstance(y_limit, str)):
+                            i_y_limit = self.list_dict_results[i][y_limit]
+                        else:
+                            i_y_limit = y_limit
                         for j_in, y_val_local in enumerate(self.list_dict_results[i][y_od_key]):
                             if(isinstance(y_val_local,list)):
                                for k_in, y_k_val_local in enumerate(y_val_local):
                                    if(self.var_info_metrics[key].limit_var_type == "max"):
-                                       if(y_k_val_local > self.list_dict_results[i][y_limit]):
+                                       if(y_k_val_local > i_y_limit):
                                            y_feasible_flag_i[j_in] = True
                                    else:
-                                       if(y_k_val_local < self.list_dict_results[i][y_limit]):
+                                       if(y_k_val_local < i_y_limit):
                                            y_feasible_flag_i[j_in] = True
                             else:
                                 if(self.var_info_metrics[key].limit_var_type == "max"):
-                                    if(y_val_local > self.list_dict_results[i][y_limit]):
+                                    if(y_val_local > i_y_limit):
                                         y_feasible_flag_i[j_in] = True
                                 else:
-                                    if(y_val_local < self.list_dict_results[i][y_limit]):                                        
+                                    if(y_val_local < i_y_limit):
                                         y_feasible_flag_i[j_in] = True
 
         #fig1.legend(legend_lines, legend_labels, fontsize = self.legend_fontsize, ncol = self.n_leg_cols, 

@@ -1,3 +1,6 @@
+dist: Xenial
+sudo: required
+
 language: c++
 
 before_script:
@@ -6,7 +9,7 @@ before_script:
   - cd wxWidgets-3.1.1
   - ./configure --prefix=$HOME/wx-3.1.1 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
   - make -j2 all install
-  - ln -s $HOME/wx-3.1.1/bin/wx-config $HOME/wx-3.1.1/bin/wx-config-3
+  - sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
   - user=$(echo $TRAVIS_REPO_SLUG | sed 's,/.*$,,')
   - (cd ../ && pwd)
   # - export GTEST=/home/travis/build/$user/googletest
@@ -14,27 +17,20 @@ before_script:
   - export WEXDIR=/home/travis/build/$user/wex
   - export SSCDIR=/home/travis/build/$user/ssc
   - export SAMNTDIR=/home/travis/build/$user/SAM
-  # - git clone https://github.com/google/googletest /home/travis/build/$user/googletest
-  - git clone -b $TRAVIS_BRANCH --single-branch https://github.com/$user/lk $LKDIR
-  - git clone -b $TRAVIS_BRANCH --single-branch https://github.com/$user/wex $WEXDIR
-  - git clone -b $TRAVIS_BRANCH --single-branch https://github.com/$user/ssc $SSCDIR
+  - git clone https://github.com/google/googletest /home/travis/build/$user/googletest
+  - git clone https://github.com/$user/lk $LKDIR
+  - git clone https://github.com/$user/wex $WEXDIR
+  - git clone https://github.com/$user/ssc $SSCDIR
   
 script:
   - export PATH=$PATH:$HOME/wx-3.1.1/bin
-  # - mkdir ${GTEST}/build && cd ${GTEST}/build && cmake .. && make -j2
-  - make -C $LKDIR/build_linux
-  - make -C $WEXDIR/build_linux
-  - make -f Makefile-splinter -j4 -C $SSCDIR/build_linux
-  - make -f Makefile-shared -j4 -C $SSCDIR/build_linux
-  - make -f Makefile-nlopt -j4 -C $SSCDIR/build_linux
-  - make -f Makefile-lpsolve -j4 -C $SSCDIR/build_linux
-  - make -f Makefile-solarpilot -j4 -C $SSCDIR/build_linux
-  - make -f Makefile-tcs -j4 -C $SSCDIR/build_linux
-  - make -f Makefile-ssc -j4 -C $SSCDIR/build_linux
-  - make -C $SAMNTDIR/build_linux
+  - mkdir $LKDIR/build && cd $LKDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 2 --target lk 
+  - mkdir $WEXDIR/build && cd $WEXDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 2 --target wex
+  - mkdir $SSCDIR/build && cd $SSCDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_tests=1 -Dskip_tools=1 && cmake --build . -j 2 --target ssc
+  - mkdir $SAMNTDIR/build && cd $SAMNTDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && make -j 2
 
 install:
-  - sudo apt-get install -y libgtk2.0-dev libgl1-mesa-dev mesa-common-dev freeglut3-dev libcurl4-openssl-dev libc6
+  - sudo apt-get install -y libwebkitgtk-dev libgtk2.0-dev libgl1-mesa-dev mesa-common-dev freeglut3-dev libcurl4-openssl-dev libc6
 
 branches:
   only:

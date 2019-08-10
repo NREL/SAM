@@ -210,8 +210,7 @@ mhk_wave_max_frequency_Te
 mhk_wave_resource_data_filename
 1
 4
-96
-C:/Projects/SAM/Documentation/MHK/2019.6.5_nextsteps/Wave_Resource_NDBC_Eureka_CA_Buoy_46244.csv
+0
 mhk_wave_state
 1
 4
@@ -422,8 +421,7 @@ variable_operating_cost
 wave_device_data_filename
 1
 4
-70
-C:/Projects/SAM/Documentation/MHK/2019.6.5_nextsteps/Wave_Device_1.csv
+0
 wave_device_name
 1
 4
