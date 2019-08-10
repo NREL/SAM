@@ -549,7 +549,7 @@ Caption
 0
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -1136,7 +1136,7 @@ AlignTop
 2
 1
 
-16
+18
 I_bn_des
 3
 1
@@ -1276,6 +1276,20 @@ Phys Trough Solar Field
 1
 0
 CheckBox
+nLoops
+3
+1
+Number of loops
+-
+Phys Trough System Design
+0
+8
+1
+1
+1
+1
+0
+Default
 pb_pump_coef
 3
 1
@@ -1303,6 +1317,20 @@ Phys Trough System Design
 1
 1
 100
+Default
+solar_mult
+3
+1
+Solar multiple
+-
+Phys Trough System Design
+0
+8
+1
+1
+1
+1
+2.5
 Default
 specified_q_dot_rec_des
 3
@@ -1361,7 +1389,7 @@ Phys Trough System Design
 6
 Default
 
-518
+846
 equations{ 'specified_q_dot_rec_des' } = define() 
 {
 	return ${specified_solar_multiple}*${q_pb_design}; 
@@ -1392,11 +1420,21 @@ equations{ 'SD_COPY_field_thermal_output' } = define()
 	return ${field_thermal_output};
 };
 
+equations{ 'nLoops' } = define() {
+	retval = ( ${specified_solar_multiple}*${total_required_aperture_for_SM1}
+				/ ${single_loop_aperature}  );
+	return ceil(retval); // SAMwx used "@round" here
+};
 
+equations{ 'solar_mult' } = define() {
+	return ${field_thermal_output}/${q_pb_design};
+	//return ${specified_solar_multiple}; 
+};
 
-1963
+2144
 on_load{'Phys Trough System Design'} = define(){
 	on_change{'combo_htf_type'}();
+	on_change{'is_model_heat_sink_piping'}();
 	check_htf_temp_bounds();
 };
 
@@ -1480,4 +1518,10 @@ function calc_q_heat_sink()
 on_change{'btn_calc_q_heat_sink'} = define()
 {
 	calc_q_heat_sink();
+};
+
+on_change{'is_model_heat_sink_piping'} = define()
+{
+	enable('L_heat_sink_piping', value('is_model_heat_sink_piping')==1);
+	refresh();
 };

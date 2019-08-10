@@ -1097,7 +1097,7 @@ combo_FieldConfig
 1
 1
 1
-0
+1
 combo_feather
 1
 1
