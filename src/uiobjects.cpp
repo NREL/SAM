@@ -25,6 +25,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/tokenzr.h>
 #include <wx/renderer.h>
 #include <wx/statline.h>
+#include <wx/richtooltip.h>
+#include <wx/bmpbuttn.h>
 
 #include <wex/uiform.h>
 #include <wex/extgrid.h>
@@ -687,6 +689,41 @@ public:
 
 };
 
+class wxUIToolTipCtrl : public wxUIObject
+{
+public:
+	wxUIToolTipCtrl() {
+		AddProperty("Tips", new wxUIProperty(wxString("Tip")));
+		AddProperty("Image", new wxUIProperty(wxImage()));
+	}
+	virtual wxString GetTypeName() { return "ToolTipCtrl"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIToolTipCtrl; o->Copy(this); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual wxWindow *CreateNative(wxWindow *parent) {
+		wxBitmap bm(Property("Image").GetImage());
+		//		wxStaticBitmap *sb = new wxStaticBitmap(parent, wxID_ANY,bm);
+		wxBitmapButton *sb = new wxBitmapButton(parent, wxID_ANY,bm,wxDefaultPosition,bm.GetSize(),wxBU_LEFT);
+		sb->SetBackgroundColour(*wxWHITE);
+		sb->SetBackgroundStyle(wxBG_STYLE_TRANSPARENT);
+//		wxString str = Property("Tips").GetString();
+//		wxRichToolTip tip("Information", str);
+//		tip.SetIcon(wxICON_INFORMATION);
+//		tip.ShowFor(sb);
+		return AssignNative(sb);
+	}
+	virtual void OnNativeEvent()
+	{
+		if (wxBitmapButton *sb = GetNative<wxBitmapButton>())
+		{
+			wxString str = Property("Tips").GetString();
+			wxRichToolTip tip("Information", str);
+			tip.SetIcon(wxICON_INFORMATION);
+			tip.ShowFor(sb);
+		}
+	}
+
+};
+
 
 class wxUILossAdjustmentCtrl : public wxUIObject 
 {
@@ -760,5 +797,6 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUILibraryCtrl );
 	wxUIObjectTypeProvider::Register( new wxUILossAdjustmentCtrl );
 	wxUIObjectTypeProvider::Register( new wxUIScene3DObject );
-	wxUIObjectTypeProvider::Register( new wxUITableDataObject );
+	wxUIObjectTypeProvider::Register(new wxUITableDataObject);
+	wxUIObjectTypeProvider::Register(new wxUIToolTipCtrl);
 }

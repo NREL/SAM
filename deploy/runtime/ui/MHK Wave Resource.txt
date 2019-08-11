@@ -1,7 +1,7 @@
 MHK Wave Resource
 1278
 1056
-24
+25
 GroupBox
 
 1
@@ -298,8 +298,8 @@ Height
 24
 Tool Tip
 5
-20
-Data Source tool tip
+40
+This is the resource\nfor the wave model
 Text
 5
 4
@@ -1009,6 +1009,37 @@ Max frequency
 Bold
 2
 1
+ToolTipCtrl
+
+1
+8
+Name
+5
+9
+object 34
+X
+3
+279
+Y
+3
+801
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+16
+wxWindow ToolTip
+Tips
+5
+21
+Informtion goes here!
+Image
+7
+MHK Wave Resource_object 34.png
 GroupBox
 
 1

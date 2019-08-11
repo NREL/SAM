@@ -191,8 +191,11 @@ void ActiveInputPage::Initialize()
 	{
 		wxString type = objs[i]->GetTypeName();
 		wxString name = objs[i]->GetName();
+		wxString toolTip = objs[i]->GetTip();
 		if ( VarInfo *vv = vdb.Lookup( name ) )
 		{
+			objs[i]->SetTip(toolTip);
+			
 			if ( vv->Type == VV_NUMBER && vv->IndexLabels.size() > 0 
 				&& ( type == "Choice" || type == "ListBox" || type == "CheckListBox" || type == "RadioChoice" ) )
 			{
