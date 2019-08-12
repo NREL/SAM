@@ -2906,7 +2906,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_InverterCECDatabase_inv_snl_vdco_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err);
 
 	/**
-	 * Set inv_tdc_cec_db: Temperature derate curves for CEC Database [Vdc]
+	 * Set inv_tdc_cec_db: Temperature derate curves for CEC Database [(Vdc, C, %/C)]
 	 * options: None
 	 * constraints: None
 	 * required if: inverter_model=0
@@ -2999,7 +2999,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_InverterCECCoefficientGenerator_inv_cec_cg_vdco_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err);
 
 	/**
-	 * Set inv_tdc_cec_cg: Temperature derate curves for CEC Coef Gen [Vdc]
+	 * Set inv_tdc_cec_cg: Temperature derate curves for CEC Coef Gen [(Vdc, C, %/C)]
 	 * options: None
 	 * constraints: None
 	 * required if: inverter_model=3
@@ -3060,7 +3060,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_InverterDatasheet_inv_ds_vdco_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err);
 
 	/**
-	 * Set inv_tdc_ds: Temperature derate curves for Inv Datasheet [Vdc]
+	 * Set inv_tdc_ds: Temperature derate curves for Inv Datasheet [(Vdc, C, %/C)]
 	 * options: None
 	 * constraints: None
 	 * required if: inverter_model=1
@@ -3129,7 +3129,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_InverterPartLoadCurve_inv_pd_vdco_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err);
 
 	/**
-	 * Set inv_tdc_plc: Temperature derate curves for Part Load Curve [C]
+	 * Set inv_tdc_plc: Temperature derate curves for Part Load Curve [(Vdc, C, %/C)]
 	 * options: None
 	 * constraints: None
 	 * required if: inverter_model=2
