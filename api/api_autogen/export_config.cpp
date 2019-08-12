@@ -23,12 +23,23 @@ std::string active_config;
 
 void create_subdirectories(std::string dir, std::vector<std::string> folders){
     mode_t nMode = 0733; // UNIX style permissions
+    // create directory first if it doesn't exist
+    int nError = 0;
+    struct stat info;
+    if( stat( dir.c_str(), &info ) != 0 ) {
+#if defined(_WIN32)
+        nError = _mkdir(dir.c_str());
+#else
+        nError = mkdir(dir.c_str(), nMode);
+#endif
+        if (nError != 0) {
+            throw std::runtime_error("Couldn't create directory: " + dir);
+        }
+    }
     for (auto& name : folders){
-        int nError = 0;
         std::string sPath = dir + '/' + name;
 
         // check if directory already exists
-        struct stat info;
         if( stat( sPath.c_str(), &info ) != 0 ) {
 #if defined(_WIN32)
             nError = _mkdir(sPath.c_str());
