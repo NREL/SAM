@@ -556,6 +556,14 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_subsurface_water_loss_nset(SAM_Geothermal ptr, double number, SAM_error *err);
 
 	/**
+	 * Set system_use_lifetime_output: Geothermal lifetime simulation [0/1]
+	 * options: 0=SingleYearRepeated,1=RunEveryYear
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Geothermal_GeoHourly_system_use_lifetime_output_nset(SAM_Geothermal ptr, double number, SAM_error *err);
+
+	/**
 	 * Set temp_decline_max: Maximum temperature decline [C]
 	 * options: None
 	 * constraints: None
@@ -738,6 +746,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_subsurface_water_loss_nget(SAM_Geothermal ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Geothermal_GeoHourly_system_use_lifetime_output_nget(SAM_Geothermal ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_temp_decline_max_nget(SAM_Geothermal ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_temp_decline_rate_nget(SAM_Geothermal ptr, SAM_error *err);
@@ -834,8 +844,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Geothermal_Outputs_system_lifetime_recapitalize_aget(SAM_Geothermal ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Geothermal_Outputs_timestep_dry_bulb_aget(SAM_Geothermal ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Geothermal_Outputs_timestep_power_aget(SAM_Geothermal ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Geothermal_Outputs_timestep_pressure_aget(SAM_Geothermal ptr, int* length, SAM_error *err);
 
