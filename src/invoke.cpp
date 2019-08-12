@@ -3327,6 +3327,12 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		ScanWindResourceData(wind_resource_db, true);
 		reloaded = Library::Load(wind_resource_db);
 	}
+	else if (type == "wave")
+	{
+		wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
+		ScanWaveResourceData(wave_resource_db, true);
+		reloaded = Library::Load(wave_resource_db);
+	}
 
 	if ( &cc != NULL && reloaded != 0 )
 	{

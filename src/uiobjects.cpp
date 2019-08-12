@@ -716,6 +716,7 @@ public:
 		if (wxBitmapButton *sb = GetNative<wxBitmapButton>())
 		{
 			wxString str = Property("Tips").GetString();
+			str.Replace(wxT("\\n"), wxT("\n"));
 			wxRichToolTip tip("Information", str);
 			tip.SetIcon(wxICON_INFORMATION);
 			tip.ShowFor(sb);

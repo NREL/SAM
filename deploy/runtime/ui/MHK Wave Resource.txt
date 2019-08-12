@@ -84,7 +84,8 @@ Height
 24
 Tool Tip
 5
-0
+87
+Save all values of UI widgets on \n the current form to a file\n on disk to load later.
 Caption
 5
 20
@@ -840,7 +841,8 @@ Height
 24
 Tool Tip
 5
-0
+87
+Save all values of UI widgets on \n the current form to a file\n on disk to load later.
 Text
 5
 0
@@ -1035,8 +1037,8 @@ Tool Tip
 wxWindow ToolTip
 Tips
 5
-21
-Informtion goes here!
+40
+This is the resource for the\nwave model
 Image
 7
 MHK Wave Resource_object 34.png

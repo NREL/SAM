@@ -90,7 +90,8 @@ private:
 bool ShowSolarResourceDataSettings();
 bool ScanSolarResourceData( const wxString &db_file, bool show_busy = false );
 bool ShowWindResourceDataSettings();
-bool ScanWindResourceData( const wxString &db_file, bool show_busy = false );
+bool ScanWindResourceData(const wxString &db_file, bool show_busy = false);
+bool ScanWaveResourceData(const wxString &db_file, bool show_busy = false);
 
 class LibraryCtrl;
 class wxTextCtrl;
