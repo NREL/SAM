@@ -35,6 +35,7 @@ std::string all_options_of_cmod(const std::string &cmod_symbol, const std::strin
 }
 
 // in the future, pull this directly from startup.lk but for now just keep this
+// maps cmod to string description
 std::string module_doc(const std::string& tech_symbol){
     static std::unordered_map<std::string, std::string> desc = {
             {"Battwatts", "Simplified battery storage model"},
@@ -72,6 +73,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"TcstroughPhysical", "CSP parabolic trough model based on heat transfer and thermodynamic principles for power generation"},
             {"Thermalrate", "Thermal flat rate structure net revenue calculator"},
             {"Thirdpartyownership", "Third party ownership with PPA or lease agreement financial model from host perspective"},
+            {"TroughPhysical", "CSP parabolic trough system using heat transfer and thermodynamic component models"},
             {"TroughPhysicalProcessHeat", "Parabolic trough for industrial process heat applications"},
             {"Utilityrate5", "Retail electricity bill calculator"},
             {"Windpower", "Wind power system with one or more wind turbines"}
@@ -373,7 +375,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                     else{
                         size_t pos = vd.reqif.find('=');
                         if (pos != std::string::npos){
-                            doc += "set to " + vd.reqif.substr(pos+1) + " if not provided.";
+                            doc += "if " + vd.reqif;
 
                         } else
                             doc += vd.reqif + "";
@@ -841,8 +843,28 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         std::string module_symbol = format_as_symbol(mm->first);
 
-        if (module_symbol == "AdjustmentFactors")
+        if (module_symbol == "AdjustmentFactors"){
+            fx_file << "class AdjustmentFactors(object):\n"
+                       "\tdef assign(self): \n"
+                       "\t\tpass\n"
+                       "\n"
+                       "\tdef export(self): \n"
+                       "\t\treturn {}\n"
+                       "\n"
+                       "\tdef __init__(self, *args, **kwargs): # real signature unknown\n"
+                       "\t\tpass\n"
+                       "\n"
+                       "\tconstant = float\n"
+                       "\tdc_constant = float\n"
+                       "\tdc_hourly = tuple\n"
+                       "\tdc_periods = tuple\n"
+                       "\thourly = tuple\n"
+                       "\tperiods = tuple\n"
+                       "\tsf_constant = float\n"
+                       "\tsf_hourly = tuple\n"
+                       "\tsf_periods = tuple\n\n";
             continue;
+        }
 
         fx_file << "class " << module_symbol << "(object):\n";
         fx_file << "\tdef assign(self): \n"
@@ -894,9 +916,6 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
         std::map<std::string, var_def> vardefs = mm->second;
 
         std::string module_symbol = format_as_symbol(mm->first);
-
-        if (module_symbol == "AdjustmentFactors")
-            continue;
 
         fx_file << "\t" << module_symbol << " = " << module_symbol << "\n";
     }

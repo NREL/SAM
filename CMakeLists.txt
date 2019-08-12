@@ -21,10 +21,6 @@ Project(sam)
 
 add_subdirectory(api)
 
-if (MSVC)
-	set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64>)
-endif()
-
 include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
 
 set(SAM_SRC
@@ -243,11 +239,17 @@ if (APPLE)
 	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 		set(SSC_NAME sscd)
 		set(SAM_NAME SAMd)
-		set(SAM_APP ${CMAKE_CURRENT_SOURCE_DIR}/SAMd.app)
+		set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/SAMd.app)
+
 	else()
 		set(SSC_NAME ssc)
 		set(SAM_NAME SAM)
-		set(SAM_APP ${CMAKE_CURRENT_SOURCE_DIR}/SAM.app)
+		set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/SAM.app)
+	endif()
+	if(${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
+		set(SSC_DIR $<TARGET_FILE:ssc>)
+	else()
+		set(SSC_DIR $ENV{SSCDIR}/build/ssc)
 	endif()
 	add_custom_command(
 		TARGET ${SAM_EXE}
@@ -258,7 +260,7 @@ if (APPLE)
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/Info-SAM.plist ${SAM_APP}/Contents
 		COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
-		COMMAND cp $ENV{SSCDIR}/ssc/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks
+		COMMAND cp ${SSC_DIR} ${SAM_APP}/Contents/Frameworks
 		COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
 		COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
 	)
