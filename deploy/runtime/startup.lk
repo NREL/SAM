@@ -167,7 +167,7 @@ function setup_residential_pages( mode, degradation ) // mode determines whether
 {
   setting( { 'analysis_period_var'='cf_length' } );
   if (degradation == LIFETIME_SYSTEM )
-  {	
+  {
 	addpage( [[ 'Lifetime System']],
            {  'sidebar'='Lifetime','help'='lifetime' } );
   }
@@ -546,6 +546,7 @@ function setup_fuel_cell_pages_fom()
 function setup_csp_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
+	addpage( [[ 'Physical Trough System Design' ]], { 'sidebar'='System Design', 'help'='troughphysical_solar_field' } );
 	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field', 'help'='troughphysical_solar_field' } );
 	addpage( [[ 'Physical Trough Collector Header',
 	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
@@ -559,18 +560,18 @@ function setup_csp_physical_trough_pages()
 	 {'name'='Physical Trough Receiver Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receivers (HCEs)', 'help'='troughphysical_receivers_hces' } );
-	addpage( [[ 'Rankine Cycle and Hybrid Cooling' ], [ 'User Defined Power Cycle' ]], 
+	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]], 
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
-			  'exclusive_header_pages' = ['Physical Trough Power Block Common']} );
+			  'exclusive_header_pages' = ['Physical Trough Power Cycle Common']} );
 	
 	//addpage( [[ 'Physical Trough Power Block Common' ,
 	  //{'name' = 'Physical Trough Rankine Cycle', 'caption' = 'Rankine Cycle', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  //{ 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
 	//addpage( [[ 'Physical Trough Power Block' ]], { 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
-	addpage( [[ 'Physical Trough Thermal Storage' ,
-	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
-	  { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
-	addpage( [[ 'Physical Trough Parasitics' ]], { 'sidebar'='Parasitics', 'help'='troughphysical_parasitics' } );
+	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
+	addpage( [[ 'Physical Trough System Control' ,
+	  {'name' = 'Physical Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
+	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
 }
 
 function setup_cst_physical_trough_pages()
@@ -808,16 +809,16 @@ setup_iph_lcoefcr_pages();
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
 setconfig( 'Physical Trough', 'LCOE Calculator' );
-setmodules( ['tcstrough_physical', 'lcoefcr']);
+setmodules( ['trough_physical', 'lcoefcr']);
 setup_csp_physical_trough_pages();
 setup_lcoefcr_pages();
 
 setconfig( 'Physical Trough', 'None' );
-setmodules( ['tcstrough_physical']);
+setmodules( ['trough_physical']);
 setup_csp_physical_trough_pages();
 
 setconfig( 'Physical Trough', 'Commercial' );
-setmodules( ['tcstrough_physical', 'utilityrate5', 'cashloan']);
+setmodules( ['trough_physical', 'utilityrate5', 'cashloan']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_commercial_pages( LOAD_SIMPLE , LIFETIME_SYSTEM ); //belpe not valid for commercial
@@ -825,35 +826,35 @@ setup_commercial_pages( LOAD_SIMPLE , LIFETIME_SYSTEM ); //belpe not valid for c
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Independent Power Producer' );
-setmodules( ['tcstrough_physical', 'ippppa']);
+setmodules( ['trough_physical', 'ippppa']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_independent_power_producer_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Leveraged Partnership Flip' );
-setmodules( ['tcstrough_physical', 'levpartflip']);
+setmodules( ['trough_physical', 'levpartflip']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_leveraged_partnership_flip_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'All Equity Partnership Flip' );
-setmodules( ['tcstrough_physical', 'equpartflip']);
+setmodules( ['trough_physical', 'equpartflip']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Sale Leaseback' );
-setmodules( ['tcstrough_physical', 'saleleaseback']);
+setmodules( ['trough_physical', 'saleleaseback']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_sale_leaseback_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Single Owner' );
-setmodules( ['tcstrough_physical', 'singleowner']);
+setmodules( ['trough_physical', 'singleowner']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);

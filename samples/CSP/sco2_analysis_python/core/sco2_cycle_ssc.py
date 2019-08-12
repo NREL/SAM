@@ -125,6 +125,8 @@ def get_des_od_label_unit_info__calc_metrics():
     info["T_htf_cold"] = C_des_od_label_unit_info("T_htf_cold_des", "T_htf_cold_od", "HTF Cold\nReturn Temp [C]", "HTF Cold Return Temperature [C]", "[C]")
     
     info["MC_T_in"] = C_des_od_label_unit_info("T_comp_in", "T_mc_in_od", "Main Comp\nInlet Temp [C]", "Main Compressor Inlet Temp [C]", "[C]")
+    info["MC_T_in"].limit_var = 31.75
+    info["MC_T_in"].limit_var_type = "min"
     info["MC_P_in"] = C_des_od_label_unit_info("P_comp_in", "P_comp_in_od", "Main Comp\nInlet Pres [MPa]", "Main Compressor Inlet Pres [MPa]", "[MPa]")
     info["MC_P_out"] = C_des_od_label_unit_info("P_comp_out", "P_mc_out_od", "Main Comp\nOutlet Pres [MPa]", "Main Compressor Outlet Pres [MPa]", "[MPa]")
     info["MC_P_out"].limit_var = "P_high_limit"
