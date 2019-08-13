@@ -1359,65 +1359,6 @@ Numeric
 16
 Name
 5
-40
-csp.dtr.pwrb.gross_net_conversion_factor
-X
-3
-420
-Y
-3
-51
-Width
-3
-100
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-2
-Numeric
-
-1
-16
-Name
-5
 20
 csp.dtr.pwrb.hc_ctl1
 X
@@ -2279,10 +2220,10 @@ Name
 eta_ref
 X
 3
-345
+348
 Y
 3
-273
+267
 Width
 3
 100
@@ -2328,6 +2269,65 @@ BackColour
 TabOrder
 3
 4
+Numeric
+
+1
+16
+Name
+5
+27
+gross_net_conversion_factor
+X
+3
+420
+Y
+3
+51
+Width
+3
+100
+Height
+3
+21
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
 Numeric
 
 1
@@ -3013,20 +3013,6 @@ Physical Trough Power Cycle
 1
 0
 Numeric
-csp.dtr.pwrb.gross_net_conversion_factor
-3
-1
-Estimated gross to net conversion factor
- 
-Physical Trough Power Cycle
-0
-2
-1
-1
-1
-1
-0.9
-Numeric
 csp.dtr.pwrb.hc_ctl1
 3
 1
@@ -3266,6 +3252,20 @@ Physical Trough Power Cycle
 1
 0
 Default
+gross_net_conversion_factor
+3
+1
+Estimated gross to net conversion factor
+ 
+Physical Trough Power Cycle
+0
+2
+1
+1
+1
+1
+0.9
+Numeric
 n_pl_inc
 3
 1
@@ -3421,7 +3421,7 @@ Physical Trough Power Cycle
 0
 Default
 
-1255
+1242
 equations{ 'F_wc' } = define() {
 	retval=[
 		${csp.dtr.pwrb.hc_ctl1},
@@ -3461,7 +3461,7 @@ equations{ '$MIMO$ efficiency calculations' } = define() {
 };
 
 equations{ 'csp.dtr.pwrb.nameplate' } = define() {
-	return ${pb_rated_cap}*${csp.dtr.pwrb.gross_net_conversion_factor}; };
+	return ${pb_rated_cap}*${gross_net_conversion_factor}; };
 
 equations{ 'csp.dtr.pwrb.design_inlet_temp' } = define() {
 	return ${T_loop_out}; };

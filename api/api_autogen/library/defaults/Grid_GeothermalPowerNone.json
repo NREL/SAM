@@ -1,0 +1,11 @@
+{
+	"defaults": {
+		"Lifetime": {
+		},
+		"Common": {
+			"enable_interconnection_limit": 0,
+			"gen": [0.000000],
+			"grid_interconnection_limit_kwac": 100000
+		}
+	}
+}
