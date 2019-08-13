@@ -30,10 +30,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -89,10 +89,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -207,10 +207,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1796,7 +1796,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1973,10 +1973,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2209,10 +2209,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2504,10 +2504,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -2563,10 +2563,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -2799,10 +2799,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -2917,7 +2917,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2976,10 +2976,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -3035,10 +3035,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -4517,7 +4517,7 @@ Physical Trough Solar Field
 25
 Default
 
-9163
+9167
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -4666,13 +4666,11 @@ equations{ 'cspdtr_loop_hce_heat_loss' } = define() {
 	return derate;
 };
 
-
-
 equations{ 'total_aperture' } = define() {
 	return ${single_loop_aperature} * ${FIELD_COPY_nLoops}; };
 
 equations{ 'required_number_of_loops_for_SM1' } = define() {
-	return ${total_required_aperture_for_SM1}/${single_loop_aperature}; };
+	return ceil(${total_required_aperture_for_SM1}/${single_loop_aperature}); };
 
 equations{ 'total_loop_conversion_efficiency' } = define() {
 	return ${loop_optical_efficiency}*${cspdtr_loop_hce_heat_loss}; 
