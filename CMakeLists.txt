@@ -240,7 +240,6 @@ if (APPLE)
 		set(SSC_NAME sscd)
 		set(SAM_NAME SAMd)
 		set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/SAMd.app)
-
 	else()
 		set(SSC_NAME ssc)
 		set(SAM_NAME SAM)
@@ -258,7 +257,7 @@ if (APPLE)
 		COMMAND mkdir -p ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
-		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/Info-SAM.plist ${SAM_APP}/Contents
+		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
 		COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
 		COMMAND cp ${SSC_DIR} ${SAM_APP}/Contents/Frameworks
 		COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
