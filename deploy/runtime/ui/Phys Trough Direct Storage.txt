@@ -1630,8 +1630,38 @@ equations{ 'TES_COPY_T_htf_cold_des' } = define(){
 
 
 
-109
+832
 on_load{"Phys Trough Direct Storage"} = define() {
 	// Nothing here yet, but keep as placeholder
 	return;
 };
+
+function hx_derate_update_module() {
+	// Taken from Physical Trough Thermal Storage
+	// Need this for Physical Trough Solar Field
+	// Commented most things out	
+	
+	//obj = ssc_create();
+	
+	//ssc_var(obj, "HTF_code1", ${store_fluid});
+	//ssc_var(obj, "fl_props1", ${store_fl_props});
+	
+	//ssc_var(obj, "HTF_code2", ${Fluid});
+	//ssc_var(obj, "fl_props2", ${field_fl_props});
+
+	//ret = ssc_exec(obj, 'user_htf_comparison', {'show_dialog'=false, 'hold_dialog'=false});
+	
+	//are_equal = ssc_var(obj, "are_equal");
+
+	//is_hx = !(are_equal==1);
+	is_hx = 0;
+
+	//enable('dt_hot', is_hx );
+	//enable('dt_cold', is_hx );
+
+	// Set 'is_hx' here
+	//value("is_hx", is_hx);
+	//value("flux_max_dsg", flux_max_dsg);
+	
+	//ssc_free( obj );
+}

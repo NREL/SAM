@@ -1,4 +1,4 @@
-Physical Trough System Control
+Phys Trough System Control
 841
 431
 34
@@ -1809,7 +1809,7 @@ aux_par
 3
 1
 Aux heater boiler parasitic
-MWe/MWcap
+MWe/MWtcap
 System Control
 0
 0
@@ -1893,7 +1893,7 @@ bop_par
 3
 1
 Balance of plant parasitic
-MWe/MWcap
+MWe/MWtcap
 System Control
 0
 0
@@ -2060,8 +2060,8 @@ Default
 disp_pen_delta_w
 3
 1
-Power generation ramping penalty
-$/ΔkWe
+Heat generation ramping penalty
+$/ΔkWt
 System Control
 0
 2
@@ -2116,8 +2116,8 @@ Default
 disp_wlim_max
 3
 1
-Max. net power to the grid (incl. availability)
-MWe
+Max. net heat leaving plant (incl. availability)
+MWt
 System Control
 0
 8
@@ -2130,8 +2130,8 @@ Default
 disp_wlim_maxspec
 3
 1
-Max. net power to the grid
-MWe
+Max. net heat leaving plant
+MWt
 System Control
 0
 2
@@ -2201,7 +2201,7 @@ pb_fixed_par
 3
 1
 Fraction of rated gross power consumed all times
-MWe/MWcap
+MWe/MWtcap
 System Control
 0
 2
@@ -2254,16 +2254,16 @@ System Control
 0
 Default
 
-948
+960
 equations{ 'csp.pt.par.calc.bop' } = define() {
 	return ${bop_par}*${bop_par_f}
 *( ${bop_par_0} + ${bop_par_1} + ${bop_par_2} )
-*${P_ref}; };
+*${q_pb_design}; };
 
 equations{ 'csp.pt.par.calc.aux' } = define() {
 	return ${aux_par}*${aux_par_f}
 *( ${aux_par_0} + ${aux_par_1} + ${aux_par_2} )
-*${P_ref}; };
+*${q_pb_design}; };
 
 equations{ 'aux_array' } = define() {
 	a[0] = ${aux_par};
@@ -2298,10 +2298,11 @@ equations{ 'wlim_series' } = define() {
 		wl[i] = wlconst;
 	return wl;
 };
-584
-on_load{"Physical Trough System Control"} = define()
+631
+on_load{"Phys Trough System Control"} = define()
 {
 	on_change{"is_dispatch"}();
+	enable("is_dispatch", 0); //disable dispatch opt.
 };
 
 on_change{"is_dispatch"} = define() {
