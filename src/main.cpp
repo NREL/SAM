@@ -2237,6 +2237,10 @@ void SamApp::Restart()
 	wxString wind_resource_db  = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
 	if ( !wxFileExists( wind_resource_db ) ) ScanWindResourceData( wind_resource_db );
 	Library::Load( wind_resource_db );
+
+	wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
+	if (!wxFileExists(wave_resource_db)) ScanWaveResourceData(wave_resource_db);
+	Library::Load(wave_resource_db);
 }
 
 wxString SamApp::WebApi( const wxString &name )

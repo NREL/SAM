@@ -1094,7 +1094,7 @@ bool ScanWaveResourceData(const wxString &db_file, bool show_busy)
 
 	int row = 3;
 	wxString file;
-	bool has_more = dir.GetFirst(&file, "*.srw", wxDIR_FILES);
+	bool has_more = dir.GetFirst(&file, "*.csv", wxDIR_FILES);
 	while (has_more)
 	{
 		// process file
