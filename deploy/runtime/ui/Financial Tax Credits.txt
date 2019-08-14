@@ -1701,7 +1701,7 @@ Federal ITC reduces federal depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1743,7 +1743,7 @@ Federal ITC by percent reduces federal depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1757,7 +1757,7 @@ Federal ITC by percent reduces state depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1799,7 +1799,7 @@ State ITC reduces federal depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1841,7 +1841,7 @@ State ITC by percent reduces federal depreciation baiss
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1855,7 +1855,7 @@ State ITC by percent reduces state depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1

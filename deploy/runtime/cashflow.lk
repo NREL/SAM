@@ -797,15 +797,14 @@ function send_excel_depr( xl, variable )
 
 function is_ppa_price_uniform()
 {
-	mode = get('ppa_multiplier_model');
+	mode = value('ppa_multiplier_model');
 	if ( mode == 0 ) // TOD weekday/weekend schedule matrices
 	{
 		price = alloc(9);
 		for (i=1; i<=#price; i++) 
 		{ 
-			price[i-1] = value('firstyear_energy_price' + to_string(i) ); 
+			price[i-1] = output('firstyear_energy_price' + to_string(i) ); 
 		}
-		outln(price);
 		j=0;
 		arr[j] = price[0];
 		for (i=0; i<#price; i++ )
@@ -820,12 +819,11 @@ function is_ppa_price_uniform()
 		{
 			if ( i>0 && arr[i]!=arr[i-1] ) { return false; }
 		}
-		outln(arr);	
 		return true;
 	}
 	else // TOD time series multipliers
 	{
-		multipliers = get('ppa_multipliers');
+		multipliers = value('ppa_multipliers');
 		for ( i=1; i<#multipliers; i++ )
 		{
 			if ( multipliers[i] != multipliers[i-1] ) { return false; }
@@ -1127,7 +1125,7 @@ function set_taxes_insurance(xl)
 	}	 
 	else 
 	{ 
-		xl_set( xl, 'n/a', 'federal_tax_rate'); 
+		xl_set( xl, tax[0], 'federal_tax_rate'); 
 		xl_set( xl, tax, 'AnnualTaxFederal'); 
 	}		 
  
@@ -1139,7 +1137,7 @@ function set_taxes_insurance(xl)
 	}	 
 	else 
 	{ 
-		xl_set( xl, 'n/a', 'state_tax_rate'); 
+		xl_set( xl, tax[0], 'state_tax_rate'); 
 		xl_set( xl, tax, 'AnnualTaxState'); 
 	}
 	
@@ -1332,16 +1330,22 @@ function set_analysis_parameters( xl )
 function set_cost_of_financing( xl )
 {
 	fin = financing();
+	send_excel( xl, 'cost_other_financing'); 
 	if ( fin == 'Single Owner' || fin == 'Host Developer') { partner_costs = false; }
 	else { partner_costs = true; }
-	
-	send_excel( xl, 'cost_other_financing'); 
-	
 	if ( partner_costs )
 	{
 		send_excel( xl, 'cost_equity_closing');
 		send_excel( xl, 'cost_dev_fee_percent');
 	}
+}
+
+function set_sale_leaseback( xl )
+{
+	send_excel( xl, 'sponsor_operating_margin');
+	send_excel( xl, 'sponsor_operating_margin_escalation');
+	send_excel( xl, 'tax_investor_required_lease_reserve');
+	send_excel( xl, 'sponsor_operating_margin');
 }
 
 function set_depreciation_detailed ( xl )
@@ -1519,19 +1523,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cf_levelized_metrics();
 	cf_income_tax(); 
  	cf_incentives(); 
- 
-	// reserve accounts 
-	cfline( 'Reserve Accounts', -1); 
-	cfline('cf_reserve_leasepayment', 0); 
-	cfline('cf_reserve_om', 0); 
-	cfline('cf_reserve_receivables', 0); 
-	cfline('cf_reserve_equip1', 0); 
-	cfline('cf_reserve_equip2', 0); 
-	cfline('cf_reserve_equip3', 0); 
-	cfline( '' ); // spacer 
-	cfline( '' ); // spacer 
- 
-	// state and federal depreciation/itc tables 
+	cf_reserves();
 	depreciation_tables(); 
 };
 
@@ -1674,7 +1666,21 @@ cashflow_to_excel{ 'All Equity Partnership Flip' } = define()
 	set_system_cost_salvage( xl );
 }; 
  
-cashflow_to_excel{ 'Sale Leaseback' } = define() 
-{ 
-	msgbox('Send Cash Flow to Excel with Equations for the Sale Leaseback financial model is not available in this version of SAM.\n\nSee the Financial Model Documentation page on the SAM website (sam.nrel.gov/financial) for spreadsheet versions of all financial models.'); 
-}; 
+cashflow_to_excel{ 'Sale Leaseback' } = define()  
+{
+	xl = create_workbook( 'sale_leaseback.xlsx' );
+ 	set_analysis_period();
+	set_annual_values( xl );
+	set_solution_mode( xl );
+	set_sale_leaseback( xl );
+	set_construction_financing( xl );
+	set_incentives(xl);
+	set_om( xl ); 
+	set_fuel( xl ); 
+	set_analysis_parameters( xl );
+	set_cost_of_financing( xl );
+	set_depreciation_detailed ( xl );
+	set_reserves( xl );
+	set_taxes_insurance(xl); 
+	set_system_cost_salvage( xl );
+};

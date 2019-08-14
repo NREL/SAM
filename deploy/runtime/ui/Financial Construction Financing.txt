@@ -3139,7 +3139,7 @@ Construction loan total interest rate
 %/year
 Construction Period Debt
 0
-8
+9
 1
 1
 1
@@ -3223,7 +3223,7 @@ Construction Loan 1 name
  
 Construction Period Debt
 0
-0
+1
 1
 4
 6
@@ -3236,7 +3236,7 @@ Construction Loan 2 name
  
 Construction Period Debt
 0
-0
+1
 1
 4
 6
@@ -3249,7 +3249,7 @@ Construction Loan 3 name
  
 Construction Period Debt
 0
-0
+1
 1
 4
 6
@@ -3262,7 +3262,7 @@ Construction Loan 4 name
  
 Construction Period Debt
 0
-0
+1
 1
 4
 6
@@ -3275,7 +3275,7 @@ Construction Loan 5 name
  
 Construction Period Debt
 0
-0
+1
 1
 4
 6
@@ -3358,7 +3358,7 @@ Construction load total percent of installed cost
 %
 Construction Period Debt
 0
-8
+9
 1
 1
 1
@@ -3442,7 +3442,7 @@ Construction loan total principal
 $
 Construction Period Debt
 0
-8
+9
 1
 1
 1
