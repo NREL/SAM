@@ -625,8 +625,8 @@ Library
 WaveResourceData
 Fields
 5
-17
-Description,State
+3
+Sou
 Numeric
 
 1
@@ -938,11 +938,11 @@ Default
 wave_resource.location
 3
 4
-Wind Resource
+Wave Resource
  
 MHK Wave Resource
 18
-WindResourceData|0
+WaveResourceData|0
 19
 1
 4
