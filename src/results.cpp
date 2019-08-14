@@ -975,7 +975,7 @@ void ResultsViewer::Setup( Simulation *sim )
 							sval = wxNumericFormat(fval, wxNUMERIC_REAL, cl.digits, true, wxEmptyString, wxEmptyString);
 						else if (cl.digits == -3) // integer cast
 							sval = wxString::Format("%d", (int)fval);
-						else // cl.digits == -2 // generic format
+						else  // generic format
 							sval = wxString::Format("%g", fval);
 
 						m_cashFlowTable->SetCellValue( cashflow_row, cl.coloff+i, sval );
