@@ -66,10 +66,10 @@ Name
 flip_target_percent
 X
 3
-312
+309
 Y
 3
-27
+24
 Width
 3
 60
@@ -125,10 +125,10 @@ Name
 flip_target_year
 X
 3
-489
+477
 Y
 3
-27
+24
 Width
 3
 60
@@ -288,10 +288,10 @@ Name
 ppa_price_input
 X
 3
-312
+309
 Y
 3
-51
+48
 Width
 3
 60
@@ -482,7 +482,7 @@ flip_target_year
 3
 1
 IRR target year
- 
+year
 PPA Price and IRR
 0
 2

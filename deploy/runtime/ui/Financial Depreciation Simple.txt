@@ -174,7 +174,7 @@ Name
 Label4
 X
 3
-693
+282
 Y
 3
 96
@@ -216,10 +216,10 @@ Label
 Name
 5
 7
-Label41
+Label47
 X
 3
-282
+693
 Y
 3
 96
@@ -305,8 +305,8 @@ Label
 12
 Name
 5
-7
-Label51
+8
+Label513
 X
 3
 282
@@ -624,7 +624,7 @@ depr_fed_custom
 3
 2
 Custom federal depreciation percentages by year
- 
+percentages 
 Depreciation
 0
 3
@@ -638,7 +638,7 @@ depr_fed_sl_years
 3
 1
 Federal straight line depreciation years
- 
+years
 Depreciation
 0
 3
@@ -667,7 +667,7 @@ depr_sta_custom
 3
 2
 Custom state depreciation percentages by year
- 
+percentages
 Depreciation
 0
 3
@@ -681,7 +681,7 @@ depr_sta_sl_years
 3
 1
 State straight line depreciation years
- 
+years
 Depreciation
 0
 3

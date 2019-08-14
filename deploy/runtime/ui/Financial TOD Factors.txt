@@ -1678,7 +1678,7 @@ Default
 dispatch_sched_weekday
 3
 3
-TOD schedule weekday
+TOD schedule schedule
  
 Time of Delivery Factors
 27
@@ -1732,7 +1732,7 @@ DiurnalPeriod
 lib_dispatch_factor1
 3
 1
- 
+TOD factor 1 from TOD library
  
 Time of Delivery Factors
 0
@@ -1746,7 +1746,7 @@ Default
 lib_dispatch_factor2
 3
 1
- 
+TOD factor 2 from TOD library
  
 Time of Delivery Factors
 0
@@ -1760,7 +1760,7 @@ Default
 lib_dispatch_factor3
 3
 1
- 
+TOD factor 3 from TOD library
  
 Time of Delivery Factors
 0
@@ -1774,7 +1774,7 @@ Time of Delivery Factors
 lib_dispatch_factor4
 3
 1
- 
+TOD factor 4 from TOD library
  
 Time of Delivery Factors
 0
@@ -1788,7 +1788,7 @@ Default
 lib_dispatch_factor5
 3
 1
- 
+TOD factor 5 from TOD library
  
 Time of Delivery Factors
 0
@@ -1802,7 +1802,7 @@ Time of Delivery Factors
 lib_dispatch_factor6
 3
 1
- 
+TOD factor 6 from TOD library
  
 Time of Delivery Factors
 0
@@ -1816,7 +1816,7 @@ Time of Delivery Factors
 lib_dispatch_factor7
 3
 1
- 
+TOD factor 7 from TOD library
  
 Time of Delivery Factors
 0
@@ -1830,7 +1830,7 @@ Default
 lib_dispatch_factor8
 3
 1
- 
+TOD factor 8 from TOD library
  
 Time of Delivery Factors
 0
@@ -1844,7 +1844,7 @@ Default
 lib_dispatch_factor9
 3
 1
- 
+TOD factor 9 from TOD library
  
 Time of Delivery Factors
 0
@@ -1858,7 +1858,7 @@ Time of Delivery Factors
 lib_dispatch_sched_weekday
 3
 3
- 
+TOD weekday schedule from TOD library
  
 Time of Delivery Factors
 0
@@ -1884,7 +1884,7 @@ Default
 lib_dispatch_sched_weekend
 3
 3
- 
+TOD weekend schedule from TOD library
  
 Time of Delivery Factors
 0

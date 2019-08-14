@@ -328,8 +328,7 @@ Decimals
 2
 Prefix
 5
-2
-$ 
+0
 Suffix
 5
 0
@@ -588,8 +587,7 @@ Decimals
 2
 Prefix
 5
-2
-$ 
+0
 Suffix
 5
 0
@@ -692,7 +690,7 @@ Numeric
 debt_message
 3
 4
- 
+Message for debt inputs
  
 Residential Loan
 0
@@ -705,7 +703,7 @@ loan_amount
 3
 1
 Debt
- 
+$
 Residential Loan
 0
 8
@@ -776,7 +774,7 @@ ui_net_capital_cost
 3
 1
 Net capital cost
- 
+$
 Residential Loan
 0
 8
