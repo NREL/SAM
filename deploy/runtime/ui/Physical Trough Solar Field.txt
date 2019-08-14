@@ -4517,7 +4517,7 @@ Physical Trough Solar Field
 25
 Default
 
-9167
+9227
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -4568,7 +4568,14 @@ equations{ 'field_htf_cp_avg' } = define() {
 };
 
 equations{ 'FieldConfig' } = define() {
-	return 2 * (${combo_FieldConfig}+1);
+	if( ${combo_FieldConfig} == 0 )
+	{
+		return 1;
+	}
+	else
+	{
+		return 2 * ${combo_FieldConfig};
+	}
 };
 
 equations{ 'Fluid' } = define() {
