@@ -3593,7 +3593,7 @@ construction_financing_cost
 3
 1
 Total construction financing cost
- 
+$
 Construction Period Debt
 0
 9

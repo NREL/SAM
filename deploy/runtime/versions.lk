@@ -111,6 +111,15 @@ version_upgrade{'2019.4.3'} = define() {
 		value( 'aux_par_0', oldvalue('csp.dtr.par.aux_c0') );
 		value( 'aux_par_1', oldvalue('csp.dtr.par.aux_c1') );
 		value( 'aux_par_2', oldvalue('csp.dtr.par.aux_c2') );
+		
+		old_combo_FieldConfig = to_int( oldvalue('combo_FieldConfig') );
+		value( 'combo_FieldConfig', old_combo_FieldConfig + 1 );
+		
+		// Doesn't seem to work:
+		old_combo_htf_type = to_int( oldvalue('combo_htf_type') );
+		if ( old_combo_htf_type > 8 ) {
+			value( 'combo_htf_type', old_combo_htf_type + 1 );
+		}
 	}
 };
 
