@@ -123,7 +123,7 @@ endif()
 
 # required functions not exported in ssc.dll
 if(MSVC)
-    target_sources(SAM_api PRIVATE $ENV{SSCDIR}/ssc/vartab.cpp $ENV{SSCDIR}/shared/lib_util.cpp)
+    target_sources(SAM_api PRIVATE ../../ssc/ssc/vartab.cpp ../../ssc/shared/lib_util.cpp)
 endif() 
 
 # libSAM_api for PySAM
