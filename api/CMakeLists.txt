@@ -31,8 +31,6 @@ if (NOT skip_autogen)
     add_subdirectory(api_autogen)
 endif()
 
-include_directories(. include $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
-
 set(SAM_API_SRC
         src/ErrorHandler.cpp
         src/SAM_api.cpp
@@ -111,6 +109,9 @@ endif()
 #####################################################################################################################
 
 add_library(SAM_api SHARED ${SAM_API_SRC})
+
+target_include_directories(SAM_api PUBLIC include ../ssc ../ssc/ssc ../ssc/shared)
+
 set_target_properties(SAM_api
     PROPERTIES
     DEBUG_POSTFIX "d"
@@ -152,7 +153,7 @@ else()
         target_link_libraries(SAM_api debug ${SSCD_LIB})
     endif()
 
-    if(system_advisor_model_EXPORT) # only on Unix
+    if(SAMAPI_EXPORT) # only on Unix
         unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
                 NAMES libssc.so

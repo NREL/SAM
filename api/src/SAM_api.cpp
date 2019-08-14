@@ -6,7 +6,7 @@
 #include <ssc/vartab.h>
 #include "sscapi.h"
 #include "ErrorHandler.h"
-#include "include/SAM_api.h"
+#include "SAM_api.h"
 
 #if defined(__WINDOWS__)||defined(WIN32)||defined(_WIN32)||defined(__MINGW___)||defined(_MSC_VER)
 #include <Windows.h>
