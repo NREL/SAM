@@ -172,7 +172,7 @@ else() # if Release or if MSVC multigenerator
 	set(SAM_EXE SAM)
 endif()
 
-target_include_directories(${SAM_EXE} PUBLIC src ssc tcs wex/include lk/include)
+target_include_directories(${SAM_EXE} SYSTEM PRIVATE src ssc tcs wex/include lk/include)
 
 set_target_properties(${SAM_EXE}
     PROPERTIES
