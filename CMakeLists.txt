@@ -327,7 +327,7 @@ else()
 			TARGET ${SAM_EXE}
 			POST_BUILD
 			COMMAND ${CMAKE_COMMAND}
-			ARGS -E copy ../wex/build_vs2017/libcurl_ssl_x64/bin/${file_i} ${SAMEXE_DIR}
+			ARGS -E copy ${CMAKE_SOURCE_DIR}/wex/build_vs2017/libcurl_ssl_x64/bin/${file_i} ${SAMEXE_DIR}
 		)
 		endforeach( file_i )
 
