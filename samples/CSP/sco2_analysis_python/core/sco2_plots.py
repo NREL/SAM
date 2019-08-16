@@ -1346,8 +1346,8 @@ class C_des_stacked_outputs_plot:
                     else:
                         j_axis.set_ylim(self.var_info_metrics[key].y_axis_min_max[0], self.var_info_metrics[key].y_axis_min_max[1])
                         
-                        if(self.var_info_metrics[key].minloc != ""):
-                            j_axis.yaxis.set_minor_locator(AutoMinorLocator(self.var_info_metrics[key].minloc))
+                    if(self.var_info_metrics[key].minloc != ""):
+                        j_axis.yaxis.set_minor_locator(AutoMinorLocator(self.var_info_metrics[key].minloc))
 
         if(self.is_legend):
             if( self.is_label_leg_cols != "" and len(self.is_label_leg_cols) == 1):

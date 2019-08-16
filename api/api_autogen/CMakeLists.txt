@@ -26,14 +26,11 @@ endif()
 
 Project(EXPORT_SAM_UI)
 
-include_directories(
-        . ../../src $ENV{LKDIR}/include $ENV{WEXDIR}/include $ENV{SSCDIR} ../tcs)
-
 set(SAM_SOURCES
         ../../src/variables.cpp
         ../../src/equations.cpp)
 
-file(TO_CMAKE_PATH $ENV{SSCDIR}/shared/lib_util.cpp SSC_SOURCES)
+file(TO_CMAKE_PATH ../../../ssc/shared/lib_util.cpp SSC_SOURCES)
 
 
 #####################################################################################################################
@@ -105,6 +102,9 @@ add_executable(export_config
         builder_generator_helper.h builder_generator_helper.cpp 
 		builder_C_API.cpp builder_C_API.h 
 		builder_PySAM.cpp builder_PySAM.h)
+
+target_include_directories(export_config SYSTEM PRIVATE ../../src ${CMAKE_SOURCE_DIR}/ssc ${CMAKE_SOURCE_DIR}/tcs ${CMAKE_SOURCE_DIR}/wex/include ${CMAKE_SOURCE_DIR}/lk/include )
+
 set_target_properties(export_config
     PROPERTIES
     DEBUG_POSTFIX "d"
@@ -175,24 +175,6 @@ endif()
 # Target Installation
 #
 #####################################################################################################################
-
-if (MSVC)
-    set(EXPORTCONFIG_DIR ${CMAKE_CURRENT_BINARY_DIR}/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>)
-    if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-        set(SSC_LIB $<TARGET_FILE_DIR:ssc>/$<TARGET_FILE_BASE_NAME:ssc>.lib)
-        set(SSC_DLL $<TARGET_FILE:ssc>)
-
-    else()
-        set(SSC_LIB $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.lib)
-        set(SSC_DLL $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.dll)
-    endif()
-    add_custom_command(
-        TARGET export_config
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND}
-        ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${EXPORTCONFIG_DIR}
-    )
-endif()
 
 if(DEFINED ENV{PYSAMDIR} )
     set(PYSAM $ENV{PYSAMDIR})

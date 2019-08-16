@@ -2638,8 +2638,8 @@ equations{ '$MIMO$ dispatch_vars_by_tech' } = define() {
 
 };
 
-689
-on_load{ 'MSPT Dispatch Control' } = define() {
+700
+on_load{ 'Physical Trough Dispatch Control' } = define() {
 
   fin = financing();
   if ( fin == "Commercial" || fin == "None") 
