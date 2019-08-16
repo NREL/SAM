@@ -31,8 +31,6 @@ if (NOT skip_autogen)
     add_subdirectory(api_autogen)
 endif()
 
-include_directories(. include $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
-
 set(SAM_API_SRC
         src/ErrorHandler.cpp
         src/SAM_api.cpp
@@ -111,6 +109,9 @@ endif()
 #####################################################################################################################
 
 add_library(SAM_api SHARED ${SAM_API_SRC})
+
+target_include_directories(SAM_api PRIVATE include ${CMAKE_SOURCE_DIR}/ssc ${CMAKE_SOURCE_DIR}/ssc/ssc ${CMAKE_SOURCE_DIR}/ssc/shared)
+
 set_target_properties(SAM_api
     PROPERTIES
     DEBUG_POSTFIX "d"
@@ -122,7 +123,7 @@ endif()
 
 # required functions not exported in ssc.dll
 if(MSVC)
-    target_sources(SAM_api PRIVATE $ENV{SSCDIR}/ssc/vartab.cpp $ENV{SSCDIR}/shared/lib_util.cpp)
+    target_sources(SAM_api PRIVATE ../../ssc/ssc/vartab.cpp ../../ssc/shared/lib_util.cpp)
 endif() 
 
 # libSAM_api for PySAM
@@ -152,7 +153,7 @@ else()
         target_link_libraries(SAM_api debug ${SSCD_LIB})
     endif()
 
-    if(system_advisor_model_EXPORT) # only on Unix
+    if(SAMAPI_EXPORT) # only on Unix
         unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
                 NAMES libssc.so

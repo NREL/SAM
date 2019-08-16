@@ -7,8 +7,8 @@
 #include <utility>
 #include <string>
 
-#include "include/visibility.h"
-#include "include/SAM_api.h"
+#include "visibility.h"
+#include "SAM_api.h"
 
 extern "C" {
 

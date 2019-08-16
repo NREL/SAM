@@ -10,6 +10,11 @@ cmake_minimum_required(VERSION 3.11)
 
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
 
+if (UNIX AND NOT CMAKE_C_COMPILER)
+	set(CMAKE_C_COMPILER gcc)
+	set(CMAKE_CXX_COMPILER g++)
+endif()
+
 
 #####################################################################################################################
 #
@@ -17,11 +22,17 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment ver
 #
 #####################################################################################################################
 
-Project(sam)
+Project(system_advisor_model)
 
+add_subdirectory(lk)
+add_subdirectory(wex)
+add_subdirectory(ssc)
 add_subdirectory(api)
 
-include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
+if(SAMAPI_EXPORT)
+	# if this flag is set, we're on Unix building SAM_api library with libssc.so which is not compatible with SAM
+	return()
+endif()
 
 set(SAM_SRC
 	src/ide.cpp
@@ -161,6 +172,8 @@ else() # if Release or if MSVC multigenerator
 	set(SAM_EXE SAM)
 endif()
 
+target_include_directories(${SAM_EXE} SYSTEM PRIVATE src ssc tcs wex/include lk/include)
+
 set_target_properties(${SAM_EXE}
     PROPERTIES
     DEBUG_POSTFIX "d")
@@ -189,13 +202,13 @@ else()
 	unset(SSC_LIB CACHE)
 	find_library( WEX_LIB
 			NAMES wex.a wex.lib
-			PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Release)
+			PATHS ../wex/build ../wex/build/Release)
 	find_library( LK_LIB
 			NAMES lk.a lk.lib
-			PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
+			PATHS ../lk/build ../lk/build/Release)
 	find_library( SSC_LIB
 			NAMES ssc.dylib ssc.lib ssc.so
-			PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
+			PATHS ../ssc/build/ssc ../ssc/build/ssc/Release)
 	target_link_libraries(${SAM_EXE} optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
 
 	if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
@@ -204,13 +217,13 @@ else()
 		unset(SSCD_LIB CACHE)
 		find_library( WEXD_LIB
 				NAMES wexd.a wexd.lib
-				PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Debug)
+				PATHS ../wex/build ../wex/build/Debug)
 		find_library( LKD_LIB
 				NAMES lkd.a lkd.lib
-				PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Debug)
+				PATHS ../lk/build ../lk/build/Debug)
 		find_library( SSCD_LIB
 				NAMES sscd.dylib sscd.lib sscd.so
-				PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
+				PATHS ../ssc/build/ssc ../ssc/build/ssc/Debug)
 		target_link_libraries(${SAM_EXE} debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
 	endif()
 endif()
@@ -222,7 +235,7 @@ if (UNIX)
 elseif (MSVC)
 	find_library( CURL_LIB
 				NAMES libcurl.lib
-				PATHS $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/lib)
+				PATHS ../wex/build_vs2017/libcurl_ssl_x64/lib)
 	target_link_libraries(${SAM_EXE} ${CURL_LIB} Winhttp)
 endif()
 
@@ -248,7 +261,7 @@ if (APPLE)
 	if(${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
 		set(SSC_DIR $<TARGET_FILE:ssc>)
 	else()
-		set(SSC_DIR $ENV{SSCDIR}/build/ssc)
+		set(SSC_DIR ../ssc/build/ssc)
 	endif()
 	add_custom_command(
 		TARGET ${SAM_EXE}
@@ -314,23 +327,9 @@ else()
 			TARGET ${SAM_EXE}
 			POST_BUILD
 			COMMAND ${CMAKE_COMMAND}
-			ARGS -E copy $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/bin/${file_i} ${SAMEXE_DIR}
+			ARGS -E copy ${CMAKE_SOURCE_DIR}/wex/build_vs2017/libcurl_ssl_x64/bin/${file_i} ${SAMEXE_DIR}
 		)
 		endforeach( file_i )
-
-		if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-			set(SSC_LIB $<TARGET_FILE_DIR:ssc>/$<TARGET_FILE_BASE_NAME:ssc>.lib)
-			set(SSC_DLL $<TARGET_FILE:ssc>)
-		else()
-			set(SSC_LIB $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.lib)
-			set(SSC_DLL $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.dll)
-		endif()
-		add_custom_command(
-		    TARGET ${SAM_EXE}
-		    POST_BUILD
-		    COMMAND ${CMAKE_COMMAND}
-		    ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${SAMEXE_DIR}
-		)
 	endif()
 endif()
 

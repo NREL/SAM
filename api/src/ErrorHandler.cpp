@@ -1,10 +1,8 @@
 #include <stdexcept>
 #include <string>
-#include <utility>
-#include <vector>
 
 #include "ErrorHandler.h"
-#include "include/SAM_api.h"
+#include "SAM_api.h"
 
 SAM_error new_error(){
     return new error;
