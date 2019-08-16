@@ -1049,48 +1049,56 @@ bool ScanWaveResourceData(const wxString &db_file, bool show_busy)
 		return false;
 	}
 
+
+
 	wxCSVData csv;
 	csv(0, 0) = "Name";
 	csv(2, 0) = "[0]";
 
 	csv(0, 1) = "City";
-	csv(2, 1) = "wave_resource.city";
+	csv(2, 1) = "city";
 
 	csv(0, 2) = "State";
-	csv(2, 2) = "wave_resource.state";
+	csv(2, 2) = "state";
 
 	csv(0, 3) = "Country";
-	csv(2, 3) = "wave_resource.country";
+	csv(2, 3) = "country";
 
 	csv(0, 4) = "Latitude";
 	csv(1, 4) = "deg";
-	csv(2, 4) = "wave_resource.lat";
+	csv(2, 4) = "lat";
 
 	csv(0, 5) = "Longitude";
 	csv(1, 5) = "deg";
-	csv(2, 5) = "wave_resource.lon";
+	csv(2, 5) = "lon";
 
-	csv(0, 6) = "Location ID";
-	csv(2, 6) = "wave_resource.location_id";
+	csv(0, 6) = "Nearby buoy number";
+	csv(2, 6) = "nearby_buoy_number";
 
-	csv(0, 7) = "Elevation";
-	csv(1, 7) = "m";
-	csv(2, 7) = "wave_resource.elev";
+	csv(0, 7) = "Average power flux";
+	csv(1, 7) = "kW/m";
+	csv(2, 7) = "average_power_flux";
 
-	csv(0, 8) = "Year";
-	csv(2, 8) = "wave_resource.year";
+	csv(0, 8) = "Bathymetry";
+	csv(2, 8) = "bathymetry";
 
-	csv(0, 9) = "Description";
-	csv(2, 9) = "wave_resource.description";
+	csv(0, 9) = "Sea bed";
+	csv(2, 9) = "sea_bed";
 
-	csv(0, 10) = "File name";
-	csv(2, 10) = "wave_resource.file";
+	csv(0, 10) = "Time zone";
+	csv(2, 10) = "tz";
 
-	csv(0, 11) = "Closest Speed Measurement Ht";
-	csv(2, 11) = "wave_resource.closest_speed_meas_ht";
+	csv(0, 11) = "Data source";
+	csv(2, 11) = "data_source";
 
-	csv(0, 12) = "Closest Direction Measurement Ht";
-	csv(2, 12) = "wave_resource.closest_dir_meas_ht";
+	csv(0, 12) = "Notes";
+	csv(2, 12) = "notes";
+
+	csv(0, 13) = "File name";
+	csv(2, 13) = "file_name";
+
+	csv(0, 14) = "Frequency distribution";
+	csv(2, 14) = "freq_distribution";
 
 	int row = 3;
 	wxString file;
@@ -1111,12 +1119,15 @@ bool ScanWaveResourceData(const wxString &db_file, bool show_busy)
 		else
 		{
 			ssc_number_t val;
+			ssc_number_t *mat;
+			int nrows, ncols;
 			const char *str;
 
 			wxFileName ff(wf);
 			ff.Normalize();
 
-			csv(row, 0) = ff.GetName();
+			if ((str = ssc_data_get_string(pdata, "name")) != 0)
+				csv(row, 0) = wxString(str);
 
 			if ((str = ssc_data_get_string(pdata, "city")) != 0)
 				csv(row, 1) = wxString(str);
@@ -1133,26 +1144,44 @@ bool ScanWaveResourceData(const wxString &db_file, bool show_busy)
 			if (ssc_data_get_number(pdata, "lon", &val))
 				csv(row, 5) = wxString::Format("%g", val);
 
-			if ((str = ssc_data_get_string(pdata, "location_id")) != 0)
+			if ((str = ssc_data_get_string(pdata, "nearby_buoy_number")) != 0)
 				csv(row, 6) = wxString(str);
 
-			if (ssc_data_get_number(pdata, "elev", &val))
+			if (ssc_data_get_number(pdata, "average_power_flux", &val))
 				csv(row, 7) = wxString::Format("%g", val);
 
-			if (ssc_data_get_number(pdata, "year", &val))
-				csv(row, 8) = wxString::Format("%g", val);
+			if ((str = ssc_data_get_string(pdata, "bathymetry")) != 0)
+				csv(row, 8) = wxString(str);
 
-			if ((str = ssc_data_get_string(pdata, "description")) != 0)
+			if ((str = ssc_data_get_string(pdata, "sea_bed")) != 0)
 				csv(row, 9) = wxString(str);
 
-			csv(row, 10) = ff.GetFullPath();
+			if (ssc_data_get_number(pdata, "tz", &val))
+				csv(row, 10) = wxString::Format("%g", val);
 
-			if (ssc_data_get_number(pdata, "closest_speed_meas_ht", &val))
-				csv(row, 11) = wxString::Format("%g", val);
+			if ((str = ssc_data_get_string(pdata, "data_source")) != 0)
+				csv(row, 11) = wxString(str);
 
-			if (ssc_data_get_number(pdata, "closest_dir_meas_ht", &val))
-				csv(row, 12) = wxString::Format("%g", val);
+			if ((str = ssc_data_get_string(pdata, "notes")) != 0)
+				csv(row, 12) = wxString(str);
 
+			csv(row, 13) = ff.GetFullPath();
+
+			if ((mat = ssc_data_get_matrix(pdata, "freq_distribution", &nrows, &ncols)) != 0)
+			{
+				wxString wstr =  "";
+				for (int r = 0; r < nrows; r++)
+				{
+					wstr += "[";
+					for (int c = 0; c < ncols; c++)
+					{
+						wstr += wxString::Format("%g", mat[r*ncols + c]);
+						if (c < ncols - 1) wstr += ";";
+					}
+					wstr += "]";
+				}
+				csv(row, 14) = wxString(wstr);
+			}
 			row++;
 		}
 
