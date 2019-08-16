@@ -23,7 +23,6 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-build/
 cmake-build-debug/
 cmake-build-release/
 Cmake-build-export/

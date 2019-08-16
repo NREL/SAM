@@ -330,20 +330,6 @@ else()
 			ARGS -E copy ${CMAKE_SOURCE_DIR}/wex/build_vs2017/libcurl_ssl_x64/bin/${file_i} ${SAMEXE_DIR}
 		)
 		endforeach( file_i )
-
-		if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-			set(SSC_LIB $<TARGET_FILE_DIR:ssc>/$<TARGET_FILE_BASE_NAME:ssc>.lib)
-			set(SSC_DLL $<TARGET_FILE:ssc>)
-		else()
-			set(SSC_LIB ../ssc/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.lib)
-			set(SSC_DLL ../ssc/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.dll)
-		endif()
-		add_custom_command(
-		    TARGET ${SAM_EXE}
-		    POST_BUILD
-		    COMMAND ${CMAKE_COMMAND}
-		    ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${SAMEXE_DIR}
-		)
 	endif()
 endif()
 
