@@ -358,6 +358,7 @@ api/test/SAM_api_test
 api_autogen/library/C/
 
 *.json
+!tooltips.json
 
 api/api_autogen/library/PySAM/docs/modules/
 

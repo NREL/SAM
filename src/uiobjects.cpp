@@ -27,12 +27,15 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/statline.h>
 #include <wx/richtooltip.h>
 #include <wx/bmpbuttn.h>
+#include <wx/textfile.h>
 
 #include <wex/uiform.h>
 #include <wex/extgrid.h>
 #include <wex/plot/plplotctrl.h>
 #include <wex/csv.h>
 #include <wex/utils.h>
+#include <wex/jsonval.h>
+#include <wex/jsonreader.h>
 
 #include "ptlayoutctrl.h"
 #include "materials.h"
@@ -42,7 +45,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "lossadj.h"
 #include "widgets.h"
 #include "uiobjects.h"
-
+#include "main.h"
 
 
 class wxUISchedNumericObject : public wxUIObject
@@ -693,7 +696,7 @@ class wxUIToolTipCtrl : public wxUIObject
 {
 public:
 	wxUIToolTipCtrl() {
-		AddProperty("Tips", new wxUIProperty(wxString("Tip")));
+		AddProperty("Tips", new wxUIProperty(wxString("Type a tip here or define in runtime/help/tooltips.json")));
 		AddProperty("Image", new wxUIProperty(wxImage()));
 	}
 	virtual wxString GetTypeName() { return "ToolTipCtrl"; }
@@ -702,7 +705,7 @@ public:
 	virtual wxWindow *CreateNative(wxWindow *parent) {
 		wxBitmap bm(Property("Image").GetImage());
 		//		wxStaticBitmap *sb = new wxStaticBitmap(parent, wxID_ANY,bm);
-		wxBitmapButton *sb = new wxBitmapButton(parent, wxID_ANY,bm,wxDefaultPosition,bm.GetSize(),wxBU_LEFT);
+		wxBitmapButton *sb = new wxBitmapButton(parent, wxID_ANY,bm,wxDefaultPosition,wxDefaultSize,wxBU_LEFT);
 		sb->SetBackgroundColour(*wxWHITE);
 		sb->SetBackgroundStyle(wxBG_STYLE_TRANSPARENT);
 //		wxString str = Property("Tips").GetString();
@@ -715,14 +718,49 @@ public:
 	{
 		if (wxBitmapButton *sb = GetNative<wxBitmapButton>())
 		{
-			wxString str = Property("Tips").GetString();
-			str.Replace(wxT("\\n"), wxT("\n"));
-			wxRichToolTip tip("Information", str);
-			tip.SetIcon(wxICON_INFORMATION);
+			wxString tt_tips;
+			wxString tt_name;
+			wxString tt_title;
+			wxString json_file;
+			wxJSONReader reader;
+			wxJSONValue root;
+			wxString json_items;
+			wxTextFile tf;
+			wxString str_line;
+			int i;
+			// use widget property values if not defined in json file
+			tt_name = Property("Name").GetString();
+			tt_tips = Property("Tips").GetString();
+			tt_title = "Information";
+			json_file = SamApp::GetRuntimePath() + "/help/tooltips.json";
+			//json_items = "{\"tooltips\": [{\"name\":\"tt_mhk_mooring_cost\", \"title\" : \"Mooring, Foundation, and Substructure Cost\", \"tip\" : \"The mooring cost is awesome\"},{ \"name\":\"tt_mhk_powertakeoff_cost\",\"title\" : \"ower Take-Off System Cost\",\"tip\" : \"The power take-off cost is not awesome\" }]}";
+			if (tf.Open(json_file))
+			{
+				json_items = tf.GetFirstLine();
+				while (!tf.Eof())
+					json_items += tf.GetNextLine();
+				tf.Close();
+			}
+			if (reader.Parse(json_items, &root) != 0)
+				tt_title = "JSON or file read failed.";
+			else
+			{
+				wxJSONValue tooltips = root["tooltips"];
+				for (i = 0; i < tooltips.Size(); i++)
+				{
+					if (tooltips[i]["name"].AsString() == tt_name)
+					{
+						tt_title = tooltips[i]["title"].AsString();
+						tt_tips = tooltips[i]["tip"].AsString();
+					}
+				}
+			}
+			tt_tips.Replace(wxT("\\n"), wxT("\n"));
+			wxRichToolTip tip(tt_title, tt_tips);
+			//tip.SetIcon(wxICON_INFORMATION);
 			tip.ShowFor(sb);
 		}
 	}
-
 };
 
 
