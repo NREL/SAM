@@ -618,7 +618,7 @@ function cf_income_tax()
 		cfline('cf_pretax_operating_cashflow', 0); 
 		cfline('equals:', -1, 0); 
 		cfline('cf_sponsor_fedtax_income_with_incentives', 0); 
-		cfline('cf_fed_tax_frac',3); 
+		cfline('cf_federal_tax_frac',3); 
 		cfline('cf_sponsor_fedtax', 0); 
 		cfline( '' );
 		cfline('INVESTOR (LESSOR) INCOME TAXES', -1); 
@@ -638,7 +638,7 @@ function cf_income_tax()
 		cfline('cf_net_salvage_value',0);
 		cfline('cf_tax_investor_statax', 0); 
 		cfline('cf_ptc_sta', 0); 
-		cfline('itc_sta_total', 0, 1, 1); 
+		cfline('itc_total', 0, 1, 1); 
 		cfline('ibi_fedtax_total', 0, 1, 1); 
 		cfline('cbi_fedtax_total', 0, 1, 1); 
 		cfline('minus:', -1, 0); 
@@ -691,6 +691,9 @@ function cf_reserves()
 	fin = financing();
 	has_debt = ( fin == 'Single Owner' ) || ( fin == 'Host Developer' ) || ( fin == 'Leveraged Parntership Flip' );
 	cfline('RESERVES', -1); 
+	cfline('cf_funding_om', 0); 
+	cfline('cf_disbursement_om', 0); 
+	cfline('cf_reserve_om', 0); 
 	if ( has_debt )
 	{
 		cfline( '' ); 
@@ -698,10 +701,13 @@ function cf_reserves()
 		cfline('cf_disbursement_debtservice', 0); 
 		cfline('cf_reserve_debtservice', 0); 
 	}
-	cfline( '' ); 
-	cfline('cf_funding_om', 0); 
-	cfline('cf_disbursement_om', 0); 
-	cfline('cf_reserve_om', 0); 
+	if ( fin == 'Sale Leaseback' )
+	{
+		cfline( '' ); 
+		cfline('cf_funding_leasepayment', 0); 
+		cfline('cf_disbursement_leasepayment', 0); 
+		cfline('cf_reserve_leasepayment', 0); 
+	}
 	cfline( '' ); 
 	cfline('cf_funding_receivables', 0); 
 	cfline('cf_disbursement_receivables', 0); 
