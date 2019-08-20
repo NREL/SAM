@@ -1482,22 +1482,22 @@ wxString StochasticPanel::GetLabelFromVarName(const wxString &var_name)
 
 
 void StochasticPanel::UpdateFromSimInfo()
-{	
-	m_N->SetValue( m_sd.N );
-	m_seed->SetValue( m_sd.Seed );
+{
+	m_N->SetValue(m_sd.N);
+	m_seed->SetValue(m_sd.Seed);
 
 	int i;
 
 	m_outputList->Freeze();
 	m_outputList->Clear();
 	wxArrayString vars, labels;
-	Simulation::ListAllOutputs( m_case->GetConfiguration(), &vars, &labels, NULL, NULL, NULL, true );
+	Simulation::ListAllOutputs(m_case->GetConfiguration(), &vars, &labels, NULL, NULL, NULL, true);
 
-	for (size_t i=0;i<m_sd.Outputs.Count();i++)
+	for (size_t i = 0; i < m_sd.Outputs.Count(); i++)
 	{
-		int idx = vars.Index( m_sd.Outputs[i] );
+		int idx = vars.Index(m_sd.Outputs[i]);
 		if (idx >= 0)
-			m_outputList->Append( labels[idx] ); 
+			m_outputList->Append(labels[idx]);
 		else
 			m_outputList->Append("<Error - remove this>");
 	}
@@ -1506,17 +1506,17 @@ void StochasticPanel::UpdateFromSimInfo()
 
 	m_inputList->Freeze();
 	m_inputList->Clear();
-	for (i=0;i<(int)m_sd.InputDistributions.Count();i++)
+	for (i = 0; i < (int)m_sd.InputDistributions.Count(); i++)
 	{
 		wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[i], ":");
-		if ( parts.Count() < 2 )
+		if (parts.Count() < 2)
 			continue;
 
 		wxString item = GetVarNameFromInputDistribution(parts[0]);
 		int disttype = atoi(parts[1].c_str());
 		if (disttype < 0) disttype = 0;
 		if (disttype >= LHS_NUMDISTS) disttype = LHS_NUMDISTS - 1;
-		
+
 		if (item == m_weather_folder_varname)
 		{
 			continue;
@@ -1568,49 +1568,50 @@ void StochasticPanel::UpdateFromSimInfo()
 		}
 		else
 		{
-		
+
 			item = m_case->GetConfiguration()->Variables.Label(item);
 		}
-		
-//		if (parts.Count() == 6)
+
+		//		if (parts.Count() == 6)
 		if ((parts.Count() >= 6) || (disttype == LHS_USERCDF))
-			{
+		{
 
 			wxArrayString distparts = wxStringTokenize(::lhs_dist_names[disttype], ",");
 			if (distparts.Count() > 1)
 			{
 				item += " ( " + distparts[0] + " [";
-				for (size_t j=1;j<distparts.Count();j++)
+				for (size_t j = 1; j < distparts.Count(); j++)
 				{
-					item += parts[1+j];
-					if (j < distparts.Count()-1) item += ",";
+					item += parts[1 + j];
+					if (j < distparts.Count() - 1) item += ",";
 				}
 				item += "] )";
 			}
 		}
 
-		m_inputList->Append( item );
+		m_inputList->Append(item);
 	}
 
 	m_inputList->Thaw();
 
 	m_corrList->Freeze();
 	m_corrList->Clear();
-	for (i=0;i<(int)m_sd.Correlations.Count();i++)
+	for (i = 0; i < (int)m_sd.Correlations.Count(); i++)
 	{
-		wxArrayString parts = wxStringTokenize( m_sd.Correlations[i], ":" );
+		wxArrayString parts = wxStringTokenize(m_sd.Correlations[i], ":");
 		if (parts.Count() < 3) continue;
-	
 
-		wxString l1 = GetLabelFromVarName( parts[0] );
+
+		wxString l1 = GetLabelFromVarName(parts[0]);
 		wxString l2 = GetLabelFromVarName(parts[1]);
-		
-		if ( l1.IsEmpty() || l2.IsEmpty() ) continue;
 
-		m_corrList->Append( l1 + ", " + l2 + ", " + parts[2] );
+		if (l1.IsEmpty() || l2.IsEmpty()) continue;
+
+		m_corrList->Append(l1 + ", " + l2 + ", " + parts[2]);
 	}
 
 	m_corrList->Thaw();
+
 }
 
 
@@ -1740,6 +1741,8 @@ void StochasticPanel::OnAddInput(wxCommandEvent &)
 		}
 
 		UpdateFromSimInfo();
+		m_regenerate_samples = true;
+
 	}
 
 }
@@ -1844,6 +1847,8 @@ void StochasticPanel::OnEditInput(wxCommandEvent &)
 		}
 
 		UpdateFromSimInfo();
+		m_regenerate_samples = true;
+
 	}
 }
 
@@ -1862,6 +1867,8 @@ void StochasticPanel::OnRemoveInput(wxCommandEvent &)
 	}
 
 	UpdateFromSimInfo();
+	m_regenerate_samples = true;
+
 
 	if (m_inputList->GetCount() > 0)
 		m_inputList->Select(0);
@@ -1962,6 +1969,8 @@ void StochasticPanel::OnAddCorr(wxCommandEvent &)
 			if (corr >= 1) corr = 0.999;
 			m_sd.Correlations.Add( list[0] + ":" + list[1] + ":" + wxString::Format("%lg", corr ) );
 			UpdateFromSimInfo();
+			m_regenerate_samples = true;
+
 		}
 	}
 
@@ -1985,6 +1994,8 @@ void StochasticPanel::OnEditCorr(wxCommandEvent &)
 		wxString var_name1 = GetVarNameFromInputDistribution(parts[1]);
 		m_sd.Correlations[idx] = var_name0 + ":" + var_name1 + ":" + wxString::Format("%lg", corr);
 		UpdateFromSimInfo();
+		m_regenerate_samples = true;
+
 	}
 }
 
@@ -1997,6 +2008,8 @@ void StochasticPanel::OnRemoveCorr(wxCommandEvent &)
 		m_sd.Correlations.RemoveAt(idx);
 
 	UpdateFromSimInfo();
+	m_regenerate_samples = true;
+
 
 	if (m_corrList->GetCount() > 0)
 		m_corrList->Select(idx-1>=0?idx-1:idx);
