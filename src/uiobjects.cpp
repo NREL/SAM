@@ -697,26 +697,17 @@ class wxUIToolTipCtrl : public wxUIObject
 public:
 	wxUIToolTipCtrl() {
 		AddProperty("Tips", new wxUIProperty(wxString("Type a tip here or define in runtime/help/tooltips.json")));
-		AddProperty("Image", new wxUIProperty(wxImage()));
 	}
 	virtual wxString GetTypeName() { return "ToolTipCtrl"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIToolTipCtrl; o->Copy(this); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual wxWindow *CreateNative(wxWindow *parent) {
-		wxBitmap bm(Property("Image").GetImage());
-		//		wxStaticBitmap *sb = new wxStaticBitmap(parent, wxID_ANY,bm);
-		wxBitmapButton *sb = new wxBitmapButton(parent, wxID_ANY,bm,wxDefaultPosition,wxDefaultSize,wxBU_LEFT);
-		sb->SetBackgroundColour(*wxWHITE);
-		sb->SetBackgroundStyle(wxBG_STYLE_TRANSPARENT);
-//		wxString str = Property("Tips").GetString();
-//		wxRichToolTip tip("Information", str);
-//		tip.SetIcon(wxICON_INFORMATION);
-//		tip.ShowFor(sb);
-		return AssignNative(sb);
+		AFToolTipCtrl *ttc = new AFToolTipCtrl(parent);
+		return AssignNative(ttc);
 	}
 	virtual void OnNativeEvent()
 	{
-		if (wxBitmapButton *sb = GetNative<wxBitmapButton>())
+		if (AFToolTipCtrl *sb = GetNative<AFToolTipCtrl>())
 		{
 			wxString tt_tips;
 			wxString tt_name;
@@ -757,7 +748,6 @@ public:
 			}
 			tt_tips.Replace(wxT("\\n"), wxT("\n"));
 			wxRichToolTip tip(tt_title, tt_tips);
-			//tip.SetIcon(wxICON_INFORMATION);
 			tip.ShowFor(sb);
 		}
 	}

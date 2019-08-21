@@ -92,6 +92,7 @@ BEGIN_EVENT_TABLE( ActiveInputPage, wxPanel )
 	EVT_VALUEMATRIXBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_LIBRARYCTRL( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_TABLEDATA( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_TOOLTIPCTRL(wxID_ANY, ActiveInputPage::OnNativeEvent)
 
 	EVT_ERASE_BACKGROUND( ActiveInputPage::OnErase )
 	EVT_PAINT( ActiveInputPage::OnPaint )

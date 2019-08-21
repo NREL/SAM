@@ -1014,7 +1014,7 @@ Bold
 ToolTipCtrl
 
 1
-8
+7
 Name
 5
 9
@@ -1039,9 +1039,6 @@ Tips
 5
 40
 This is the resource for the\nwave model
-Image
-7
-MHK Wave Resource_object 34.png
 GroupBox
 
 1

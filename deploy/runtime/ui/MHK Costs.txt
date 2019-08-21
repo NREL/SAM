@@ -669,7 +669,7 @@ Bold
 ToolTipCtrl
 
 1
-8
+7
 Name
 5
 9
@@ -693,9 +693,6 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
-Image
-7
-MHK Costs_object 34.png
 Label
 
 1
@@ -1654,7 +1651,7 @@ TabOrder
 ToolTipCtrl
 
 1
-8
+7
 Name
 5
 19
@@ -1677,13 +1674,10 @@ Tool Tip
 Tips
 5
 0
-Image
-7
-MHK Costs_tt_mhk_mooring_cost.png
 ToolTipCtrl
 
 1
-8
+7
 Name
 5
 24
@@ -1706,9 +1700,6 @@ Tool Tip
 Tips
 5
 0
-Image
-7
-MHK Costs_tt_mhk_powertakeoff_cost.png
 
 19
 array_cable_system_cost

@@ -39,6 +39,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endif
 
 #include "widgets.h"
+#include "../resource/info24.cpng"
 
 /******************************* AFSchedNumeric **********************************/
 enum { IDAFSN_NUMERIC=wxID_HIGHEST + 321, IDAFSN_SBUTTON };
@@ -3488,5 +3489,43 @@ void AFMonthByHourFactorCtrl::DispatchEvent()
 	wxCommandEvent change(wxEVT_AFMonthByHourFactorCtrl_CHANGE, this->GetId() );
 	change.SetEventObject( this );
 	GetEventHandler()->ProcessEvent(change);
+}
+
+
+BEGIN_EVENT_TABLE(AFToolTipCtrl, wxPanel)
+	EVT_LEFT_DOWN(AFToolTipCtrl::mouseDown)
+	EVT_PAINT(AFToolTipCtrl::paintEvent)
+END_EVENT_TABLE()
+
+DEFINE_EVENT_TYPE(wxEVT_TOOLTIPCTRL_CHANGE)
+
+AFToolTipCtrl::AFToolTipCtrl(wxWindow* parent) :
+	wxPanel(parent)
+{
+	m_image = wxBITMAP_PNG_FROM_DATA(info24);
+}
+
+void AFToolTipCtrl::mouseDown(wxMouseEvent& evt) 
+{
+	wxCommandEvent change(wxEVT_TOOLTIPCTRL_CHANGE, this->GetId());
+	change.SetEventObject(this);
+	GetEventHandler()->ProcessEvent(change);
+}
+
+void AFToolTipCtrl::paintEvent(wxPaintEvent & evt)
+{
+	wxPaintDC dc(this);
+	render(dc);
+}
+
+void AFToolTipCtrl::paintNow()
+{
+	wxClientDC dc(this);
+	render(dc);
+}
+
+void AFToolTipCtrl::render(wxDC&  dc)
+{
+	dc.DrawBitmap(m_image, 0, 0, false);
 }
 
