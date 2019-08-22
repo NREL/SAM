@@ -59,6 +59,12 @@ std::string module_doc(const std::string& tech_symbol){
             {"Pvwattsv5", "PVWatts photovoltaic system model with simple inputs"},
             {"Pvwattsv5Lifetime", "PVWatts photovoltaic system model for multi-year lifetime analysis"},
             {"Saleleaseback", "PPA sale leaseback partnership financial model"},
+            {"Sco2AirCooler", "Supercritical CO2 Power Cycle Air Cooler"},
+            {"Sco2CspSystem", "Supercritical CO2 Power Cycle Design and Off-Design Simulation"},
+            {"Sco2CspUdPcTables", "Supercritical CO2 Power Cycle"},
+            {"Sco2DesignPoint", "Supercritical CO2 Power Cycle Design Point"},
+            {"Sco2DesignCycle", "Supercritical CO2 Power Cycle Design"},
+            {"Sco2Offdesign", "Supercritical CO2 Power Cycle Off Design"},
             {"Singleowner", "PPA single owner financial model"},
             {"StandAloneBattery", "Detailed battery storage model"},
             {"Swh", "Solar water heating model for residential and commercial building applications"},
@@ -70,7 +76,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"TcsmoltenSalt", "CSP molten salt power tower for power generation"},
             {"TcsMSLF", "CSP linear Fresnel with molten salt heat transfer fluid for power generation"},
             {"TcstroughEmpirical", "CSP parabolic trough model based on empirically-derived coefficients and equations for power generation"},
-            {"TcstroughPhysical", "CSP parabolic trough model based on heat transfer and thermodynamic principles for power generation"},
+            {"TroughPhysical", "CSP parabolic trough model based on heat transfer and thermodynamic principles for power generation"},
             {"Thermalrate", "Thermal flat rate structure net revenue calculator"},
             {"Thirdpartyownership", "Third party ownership with PPA or lease agreement financial model from host perspective"},
             {"TroughPhysical", "CSP parabolic trough system using heat transfer and thermodynamic component models"},
@@ -373,12 +379,19 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                     else if (vd.reqif == "?")
                         doc += "False";
                     else{
-                        size_t pos = vd.reqif.find('=');
+                        // "?=x" means if not provided set to x
+                        size_t pos = vd.reqif.find("?=");
                         if (pos != std::string::npos){
-                            doc += "if " + vd.reqif;
+                            doc += "If not provided, assumed to be " + vd.reqif.substr(pos+2);
+                        }
+                        else{
+                            pos = vd.reqif.find('=');
+                            if (pos != std::string::npos){
+                                doc += "True if " + vd.reqif;
 
-                        } else
-                            doc += vd.reqif + "";
+                            } else
+                                doc += vd.reqif + "";
+                        }
                     }
                 }
 
