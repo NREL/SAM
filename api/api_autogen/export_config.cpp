@@ -125,7 +125,14 @@ int main(int argc, char *argv[]){
     // parsing the callbacks requires all ui forms in a config
     active_config = "";
 
-
+    // produce sco2 compute_modules
+    std::vector<std::string> sco2_cmods = {"sco2_csp_system", "sco2_air_cooler","sco2_csp_ud_pc_tables",
+                                           "sco2_design_cycle", "sco2_design_point", "sco2_offdesign"};
+    for (auto& cm : sco2_cmods ){
+        builder_generator be_sco2;
+        be_sco2.config_name = "SCO2";
+        be_sco2.create_all(cm, defaults_path, api_path, pysam_path, false);
+    }
 
     // do technology configs with None first
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
@@ -188,6 +195,7 @@ int main(int argc, char *argv[]){
             //b_gen.print_subgraphs(graph_path);
         }
     }
+
     std::cout << "Complete... Exiting\n";
 
     return 0;

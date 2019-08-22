@@ -104,7 +104,7 @@ public:
                                      const std::unordered_map<std::string, edge *> &unique_edge_obj_names);
 
     void create_all(std::string cmod, const std::string &defaults_path, const std::string &api_path,
-                    const std::string &pysam_path);
+                    const std::string &pysam_path, bool print_json=true);
 
     std::vector<std::string> get_user_defined_variables();
 

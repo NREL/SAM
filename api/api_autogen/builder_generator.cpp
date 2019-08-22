@@ -788,9 +788,8 @@ std::vector<std::string> builder_generator::get_evaluated_variables() {
 
 
 void builder_generator::create_all(std::string cmod, const std::string &defaults_path, const std::string &api_path,
-                                   const std::string &pysam_path) {
+                                   const std::string &pysam_path, bool print_json) {
 
-    bool print_json = true;
     bool print_capi = true;
     bool print_pysam = true;
 
@@ -804,9 +803,10 @@ void builder_generator::create_all(std::string cmod, const std::string &defaults
     gather_variables_ssc(cmod);
     gather_equations(cmod);
 
-    if (print_json)
+    if (print_json){
         std::cout << "defaults JSON... ";
         export_variables_json(cmod, defaults_path);
+    }
 
     if (SAM_completed_cmods.find(cmod)!= SAM_completed_cmods.end()){
         std::cout << "Done\n";
