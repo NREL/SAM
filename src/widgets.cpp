@@ -2297,6 +2297,31 @@ bool AFDataMatrixCtrl::ShowCols()
 	return m_showcols;
 }
 
+void AFDataMatrixCtrl::ShowButtons(bool b)
+{
+	m_showButtons = b;
+	m_btnCopy->Show(m_showButtons);
+	m_btnPaste->Show(m_showButtons);
+	m_btnImport->Show(m_showButtons);
+	m_btnExport->Show(m_showButtons);
+	this->Layout();
+}
+
+bool AFDataMatrixCtrl::ShowButtons()
+{
+	return m_showButtons;
+}
+
+void AFDataMatrixCtrl::SetR0C0Label(const wxString &R0C0Label)
+{
+	m_grid->SetRowLabelValue(-1, R0C0Label);
+}
+
+wxString AFDataMatrixCtrl::GetR0C0Label()
+{
+	return m_grid->GetCellValue(0, 0);
+}
+
 void AFDataMatrixCtrl::ShowRows(bool b)
 {
 	m_showrows = b;

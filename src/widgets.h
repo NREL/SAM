@@ -397,6 +397,9 @@ public:
 	void ShowRows(bool b);
 	bool ShowRows();
 
+	void ShowButtons(bool b);
+	bool ShowButtons();
+
 	void ShowRowLabels(bool b);
 	bool ShowRowLabels();
 
@@ -424,6 +427,9 @@ public:
 
 	void SetNumColsLabel(const wxString &numColsLabel);
 	wxString GetNumColsLabel();
+
+	void SetR0C0Label(const wxString &R0C0Label);
+	wxString GetR0C0Label();
 
 	void PasteAppendRows(bool b);
 	bool PasteAppendRows();
@@ -465,6 +471,7 @@ private:
 	wxExtGridCtrl *m_grid;
 	wxStaticText *m_caption, *m_labelCols, *m_labelRows;
 	wxButton *m_btnImport, *m_btnExport, *m_btnCopy, *m_btnPaste;
+	bool m_showButtons;
 	bool m_showrows;
 	bool m_showRowLabels;
 	wxString m_rowLabels;

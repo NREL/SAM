@@ -485,10 +485,12 @@ public:
 	wxUIDataMatrixObject() {
 		AddProperty("PasteAppendRows", new wxUIProperty(false));
 		AddProperty("PasteAppendCols", new wxUIProperty(false));
+		AddProperty("ShowButtons", new wxUIProperty(true));
 		AddProperty("ShowRows", new wxUIProperty(true));
 		AddProperty("ShowRowLabels", new wxUIProperty(false));
 		AddProperty("RowLabels", new wxUIProperty(wxString("")));
 		AddProperty("ShadeR0C0", new wxUIProperty(false));
+		AddProperty("R0C0Label", new wxUIProperty(wxString("")));
 		AddProperty("ShadeC0", new wxUIProperty(false));
 		AddProperty("ShowCols", new wxUIProperty(true));
 		AddProperty("ShowColLabels", new wxUIProperty(true));
@@ -512,10 +514,12 @@ public:
 		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger());
 		dm->PasteAppendRows(Property("PasteAppendRows").GetBoolean());
 		dm->PasteAppendCols(Property("PasteAppendCols").GetBoolean());
+		dm->ShowButtons(Property("ShowButtons").GetBoolean());
 		dm->ShowRows(Property("ShowRows").GetBoolean());
 		dm->ShowRowLabels(Property("ShowRowLabels").GetBoolean());
 		dm->SetRowLabels(Property("RowLabels").GetString());
 		dm->ShadeR0C0(Property("ShadeR0C0").GetBoolean());
+		dm->SetR0C0Label(Property("R0C0Label").GetString());
 		dm->ShadeC0(Property("ShadeC0").GetBoolean());
 		dm->ShowCols(Property("ShowCols").GetBoolean());
 		dm->ShowColLabels(Property("ShowColLabels").GetBoolean());
@@ -534,7 +538,9 @@ public:
 			if (id == "PasteAppendRows") dm->PasteAppendRows(p->GetBoolean());
 			if (id == "PasteAppendCols") dm->PasteAppendCols(p->GetBoolean());
 			if (id == "ShadeR0C0") dm->ShadeR0C0(p->GetBoolean());
+			if (id == "R0C0Label") dm->SetR0C0Label(p->GetString());
 			if (id == "ShadeC0") dm->ShadeC0(p->GetBoolean());
+			if (id == "ShowButtons") dm->ShowButtons(p->GetBoolean());
 			if (id == "ShowCols") dm->ShowCols(p->GetBoolean());
 			if (id == "ShowRows") dm->ShowRows(p->GetBoolean());
 			if (id == "ShowRowLabels") dm->ShowRowLabels(p->GetBoolean());

@@ -276,7 +276,7 @@ extern "C"
 
 	/**
 	 * Set icing_cutoff_rh: Icing Cutoff Relative Humidity [%]
-	 * options: None
+	 * options: 'rh' required in wind_resource_data
 	 * constraints: MIN=0
 	 * required if: en_icing_cutoff=1
 	 */

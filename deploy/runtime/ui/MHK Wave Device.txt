@@ -577,7 +577,7 @@ equations{ 'rated_capacity' } = define ()
 			if (mat[r][c] > max_power) max_power = mat[r][c];
 	return max_power;
 };
-2409
+2419
 function plot_turbine_curve()
 {
 	setplot('wind_turbine_power_curve_plot');
@@ -619,15 +619,15 @@ function set_error_msg()
 }
 
 
-on_change{'wave_power_curve'}=define()
-{
-	plot_turbine_curve();
-};
+//on_change{'wave_power_curve'}=define()
+//{
+//	plot_turbine_curve();
+//};
 
 on_load{'MHK Wave Device'}=define()
 {
 	value( 'wave_device_name', value( 'lib_wave_device' ) );
-	plot_turbine_curve();
+//	plot_turbine_curve();
 };
 
 
