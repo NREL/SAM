@@ -110,7 +110,7 @@ endif()
 
 add_library(SAM_api SHARED ${SAM_API_SRC})
 
-target_include_directories(SAM_api PRIVATE include ${CMAKE_SOURCE_DIR}/ssc ${CMAKE_SOURCE_DIR}/ssc/ssc ${CMAKE_SOURCE_DIR}/ssc/shared)
+target_include_directories(SAM_api PRIVATE include ${CMAKE_CURRENT_SOURCE_DIR}/../ssc ${CMAKE_CURRENT_SOURCE_DIR}/../ssc/ssc ${CMAKE_CURRENT_SOURCE_DIR}/../ssc/shared)
 
 set_target_properties(SAM_api
     PROPERTIES
