@@ -30,10 +30,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -89,10 +89,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -207,10 +207,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1336,7 +1336,8 @@ Height
 21
 Items
 6
-6
+7
+1
 2
 4
 6
@@ -1402,7 +1403,7 @@ Height
 21
 Items
 6
-10
+11
 Solar Salt
 Caloria
 Hitec XL
@@ -1412,6 +1413,7 @@ Dowtherm Q
 Dowtherm RP
 Therminol 59
 Therminol 66
+Pressurized Water
 User-defined...
 Selection
 3
@@ -1794,7 +1796,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1971,10 +1973,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2207,10 +2209,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2502,10 +2504,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -2561,10 +2563,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -2797,10 +2799,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -2915,7 +2917,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2974,10 +2976,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -3033,10 +3035,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -3745,8 +3747,8 @@ combo_FieldConfig
 Number of field subsections
  
 Physical Trough Solar Field
-13
-2|4|6|8|10|12
+15
+1|2|4|6|8|10|12
 2
 1
 1
@@ -3775,8 +3777,8 @@ combo_htf_type
 Field HTF fluid
  
 Physical Trough Solar Field
-125
-Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66|User-defined...
+143
+Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66|Pressurized Water|User-defined...
 2
 1
 1
@@ -4515,7 +4517,7 @@ Physical Trough Solar Field
 25
 Default
 
-8998
+9227
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -4558,7 +4560,7 @@ equations{ 'fthrctrl' } = define() {
 };
 
 equations{ 'field_htf_cp_avg' } = define() {
-	if (${combo_htf_type} < 9 )
+	if (${combo_htf_type} < 10 )
 		return substance_specific_heat( ${Fluid}, 0.5*(${T_loop_in_des}+${T_loop_out}) );
 	else
 		return substance_userhtf(${field_fl_props},0.5*(${T_loop_in_des}+${T_loop_out}),"specific heat"); 
@@ -4566,7 +4568,14 @@ equations{ 'field_htf_cp_avg' } = define() {
 };
 
 equations{ 'FieldConfig' } = define() {
-	return 2 * (${combo_FieldConfig}+1);
+	if( ${combo_FieldConfig} == 0 )
+	{
+		return 1;
+	}
+	else
+	{
+		return 2 * ${combo_FieldConfig};
+	}
 };
 
 equations{ 'Fluid' } = define() {
@@ -4581,6 +4590,7 @@ equations{ 'Fluid' } = define() {
 		24, //    24.) Dowtherm RP**
 		30, //    30.) Therminol 59
 		29, //    29.) Therminol 66    
+		31, //    31.) Pressurized Water    
 		50  //    user defined HTF
 	];
 };
@@ -4663,13 +4673,11 @@ equations{ 'cspdtr_loop_hce_heat_loss' } = define() {
 	return derate;
 };
 
-
-
 equations{ 'total_aperture' } = define() {
 	return ${single_loop_aperature} * ${FIELD_COPY_nLoops}; };
 
 equations{ 'required_number_of_loops_for_SM1' } = define() {
-	return ${total_required_aperture_for_SM1}/${single_loop_aperature}; };
+	return ceil(${total_required_aperture_for_SM1}/${single_loop_aperature}); };
 
 equations{ 'total_loop_conversion_efficiency' } = define() {
 	return ${loop_optical_efficiency}*${cspdtr_loop_hce_heat_loss}; 
@@ -4731,11 +4739,12 @@ equations{ 'loop_optical_efficiency' } = define() {
 
 
 equations{ 'field_thermal_output' } = define() {
-	return ${solar_mult}*${P_ref}/${eta_ref}; 
+	return ${I_bn_des}*${total_loop_conversion_efficiency}*${total_aperture}/1.E6;  // default now = 626.008
+	//return ${solar_mult}*${P_ref}/${eta_ref};   // default = 623.596
 };
 
 equations{ 'total_required_aperture_for_SM1' } = define() {
-	return ${P_ref}/${eta_ref}/( ${I_bn_des}*${total_loop_conversion_efficiency} )*1000000.0; 
+	return ${q_pb_design}/( ${I_bn_des}*${total_loop_conversion_efficiency} )*1000000.0; 
 };
 
 equations{ 'total_land_area' } = define() {
@@ -4858,7 +4867,7 @@ equations{ 'Type_cpnt' } = define() {
 	return T;
 };
 
-3502
+3556
 on_load{'Physical Trough Solar Field'} = define() {
 	on_change{'combo_htf_type'}();
 	on_change{'trough_loop_control'}();
@@ -4906,13 +4915,13 @@ function cspdtr_solf_userhtf(col, temperatureC) {
 
 on_change{'combo_htf_type'} = define() {
 
-    bUserDefined = (value('combo_htf_type') == 9);
+    bUserDefined = (value('combo_htf_type') == 10);
     enable("field_fl_props", bUserDefined);
     enable('field_htf_min_operating_temp',!bUserDefined);
     enable('field_htf_max_operating_temp',!bUserDefined);
     
 	// outlet temp and max field flow velocity
-	if (${combo_htf_type} < 9 )
+	if (${combo_htf_type} < 10 )
 		fluid_dens_outlet_temp = substance_density( ${Fluid}, ${T_loop_out} );
 	else
 		fluid_dens_outlet_temp = cspdtr_solf_userhtf_dens( ${T_loop_out} );
@@ -4922,7 +4931,7 @@ on_change{'combo_htf_type'} = define() {
 	//value('max_field_flow_velocity',max_field_flow_velocity);
 
 	// inlet temp and min field flow velocity
-	if (${combo_htf_type} < 9 )
+	if (${combo_htf_type} < 10 )
 		fluid_dens_inlet_temp = substance_density( ${Fluid}, ${T_loop_in_des} );
 	else
 		fluid_dens_inlet_temp = cspdtr_solf_userhtf_dens( ${T_loop_in_des} );
@@ -4943,6 +4952,7 @@ on_change{'combo_htf_type'} = define() {
 		330,/* fluid num 24 */
 		315,/* fluid num 30 */
 		345,/* fluid num 29 */
+		220,/* fluid num 31 */
 		0   /* user fluid */
 	];
 	value('field_htf_max_operating_temp',field_htf_max_operating_temp);
@@ -4959,6 +4969,7 @@ on_change{'combo_htf_type'} = define() {
 		0,   /* fluid num 24 */
 		-45, /* fluid num 30 */
 		0,   /* fluid num 29 */
+		10,  /* fluid num 31 */
 		0    /* user fluid */
 	];
 	value('field_htf_min_operating_temp',field_htf_min_operating_temp);

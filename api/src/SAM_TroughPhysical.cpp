@@ -620,6 +620,24 @@ SAM_EXPORT void SAM_TroughPhysical_SolarField_offset_xpan_hdr_nset(SAM_TroughPhy
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysical_SolarField_p_start_nset(SAM_TroughPhysical ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "p_start", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_SolarField_rec_qf_delay_nset(SAM_TroughPhysical ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_qf_delay", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_SolarField_rec_su_delay_nset(SAM_TroughPhysical ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_su_delay", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysical_SolarField_sf_hdr_diams_mset(SAM_TroughPhysical ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "sf_hdr_diams", mat, nrows, ncols);
@@ -1223,6 +1241,12 @@ SAM_EXPORT void SAM_TroughPhysical_Tou_weekend_schedule_mset(SAM_TroughPhysical 
 SAM_EXPORT void SAM_TroughPhysical_Tou_wlim_series_aset(SAM_TroughPhysical ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "wlim_series", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_System_aux_array_aset(SAM_TroughPhysical ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "aux_array", arr, length);
 	});
 }
 
@@ -2463,6 +2487,39 @@ SAM_EXPORT double SAM_TroughPhysical_SolarField_offset_xpan_hdr_nget(SAM_TroughP
 
 
 
+SAM_EXPORT double SAM_TroughPhysical_SolarField_p_start_nget(SAM_TroughPhysical ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "p_start", &result))
+		make_access_error("SAM_TroughPhysical", "p_start");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysical_SolarField_rec_qf_delay_nget(SAM_TroughPhysical ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_qf_delay", &result))
+		make_access_error("SAM_TroughPhysical", "rec_qf_delay");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysical_SolarField_rec_su_delay_nget(SAM_TroughPhysical ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_su_delay", &result))
+		make_access_error("SAM_TroughPhysical", "rec_su_delay");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_TroughPhysical_SolarField_sf_hdr_diams_mget(SAM_TroughPhysical ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3590,6 +3647,18 @@ SAM_EXPORT double* SAM_TroughPhysical_Tou_wlim_series_aget(SAM_TroughPhysical pt
 	result = ssc_data_get_array(ptr, "wlim_series", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "wlim_series");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysical_System_aux_array_aget(SAM_TroughPhysical ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "aux_array", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "aux_array");
 	});
 	return result;
 }

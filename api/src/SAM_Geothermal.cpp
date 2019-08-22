@@ -422,6 +422,12 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_subsurface_water_loss_nset(SAM_Geotherm
 	});
 }
 
+SAM_EXPORT void SAM_Geothermal_GeoHourly_system_use_lifetime_output_nset(SAM_Geothermal ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
+	});
+}
+
 SAM_EXPORT void SAM_Geothermal_GeoHourly_temp_decline_max_nset(SAM_Geothermal ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "temp_decline_max", number);
@@ -1175,6 +1181,17 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_subsurface_water_loss_nget(SAM_Geothe
 
 
 
+SAM_EXPORT double SAM_Geothermal_GeoHourly_system_use_lifetime_output_nget(SAM_Geothermal ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
+		make_access_error("SAM_Geothermal", "system_use_lifetime_output");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Geothermal_GeoHourly_temp_decline_max_nget(SAM_Geothermal ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1681,18 +1698,6 @@ SAM_EXPORT double* SAM_Geothermal_Outputs_timestep_dry_bulb_aget(SAM_Geothermal 
 	result = ssc_data_get_array(ptr, "timestep_dry_bulb", length);
 	if (!result)
 		make_access_error("SAM_Geothermal", "timestep_dry_bulb");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Geothermal_Outputs_timestep_power_aget(SAM_Geothermal ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "timestep_power", length);
-	if (!result)
-		make_access_error("SAM_Geothermal", "timestep_power");
 	});
 	return result;
 }

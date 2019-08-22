@@ -4410,8 +4410,7 @@ wind_resource.year
 wind_resource_filename
 1
 4
-26
-WY Southern-Flat Lands.srw
+0
 wind_resource_model_choice
 1
 1

@@ -825,6 +825,30 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_offset_xpan_hdr_nset(SAM_TroughPhysical ptr, double number, SAM_error *err);
 
 	/**
+	 * Set p_start: Collector startup energy, per SCA [kWe-hr]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SolarField_p_start_nset(SAM_TroughPhysical ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_qf_delay: Energy-based receiver startup delay (fraction of rated thermal power) [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SolarField_rec_qf_delay_nset(SAM_TroughPhysical ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_su_delay: Fixed startup delay time for the receiver [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SolarField_rec_su_delay_nset(SAM_TroughPhysical ptr, double number, SAM_error *err);
+
+	/**
 	 * Set sf_hdr_diams: Custom header diameters [m]
 	 * options: None
 	 * constraints: None
@@ -1653,6 +1677,14 @@ extern "C"
 	//
 
 	/**
+	 * Set aux_array: Auxiliary heater, mult frac and const, linear and quad coeff
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_System_aux_array_aset(SAM_TroughPhysical ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set bop_array: Balance of plant parasitic power fraction, mult frac and const, linear and quad coeff
 	 * options: None
 	 * constraints: None
@@ -1999,6 +2031,12 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_offset_xpan_hdr_nget(SAM_TroughPhysical ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_SolarField_p_start_nget(SAM_TroughPhysical ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SolarField_rec_qf_delay_nget(SAM_TroughPhysical ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SolarField_rec_su_delay_nget(SAM_TroughPhysical ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_sf_hdr_diams_mget(SAM_TroughPhysical ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_sf_hdr_lengths_mget(SAM_TroughPhysical ptr, int* nrows, int* ncols, SAM_error *err);
@@ -2220,6 +2258,8 @@ extern "C"
 	/**
 	 * System Getters
 	 */
+
+	SAM_EXPORT double* SAM_TroughPhysical_System_aux_array_aget(SAM_TroughPhysical ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_System_bop_array_aget(SAM_TroughPhysical ptr, int* length, SAM_error *err);
 
