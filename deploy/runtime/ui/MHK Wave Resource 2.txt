@@ -1598,7 +1598,7 @@ max_frequency_Te
 3
 1
 Max frequency Te
-m
+s
 MHK Wave Resource
 0
 8
