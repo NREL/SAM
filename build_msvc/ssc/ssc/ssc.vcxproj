@@ -84,8 +84,10 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message></Message>
+      <Message>		</Message>
       <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E remove C:/SAM-Development/sam/ssc/ssc/../../deploy/x64/sscd.lib C:/SAM-Development/sam/ssc/ssc/../../deploy/x64/sscd.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/../test/Debug/sscd.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../test/Debug/sscd.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/../../api/api_autogen/Debug/sscd.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../../api/api_autogen/Debug/sscd.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/../sdktool/Debug/sscd.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../sdktool/Debug/sscd.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/../tcsconsole/Debug/sscd.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../tcsconsole/Debug/sscd.dll
+if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.lib C:/SAM-Development/sam/ssc/ssc/../../deploy/x64
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../tcsconsole/Debug
@@ -95,6 +97,26 @@ if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../test/Debug
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../../api/api_autogen/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E remove C:\SAM-Development\pysam/files/sscd.lib
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E remove C:\SAM-Development\pysam/files/sscd.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.lib C:\SAM-Development\pysam/files
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -111,7 +133,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/SAM-Development/sam/build_msvc/ssc/ssc/Debug/sscd.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -151,8 +173,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message></Message>
+      <Message>		</Message>
       <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E remove C:/SAM-Development/sam/ssc/ssc/../../deploy/x64/ssc.lib C:/SAM-Development/sam/ssc/ssc/../../deploy/x64/ssc.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/../test/Release/ssc.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../test/Release/ssc.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/../../api/api_autogen/Release/ssc.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../../api/api_autogen/Release/ssc.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/../sdktool/Release/ssc.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../sdktool/Release/ssc.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/../tcsconsole/Release/ssc.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../tcsconsole/Release/ssc.dll
+if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.lib C:/SAM-Development/sam/ssc/ssc/../../deploy/x64
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../tcsconsole/Release
@@ -162,6 +186,26 @@ if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../test/Release
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.lib C:/SAM-Development/sam/build_msvc/ssc/ssc/../../api/api_autogen/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E remove C:\SAM-Development\pysam/files/ssc.lib
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E remove C:\SAM-Development\pysam/files/ssc.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.dll C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.lib C:\SAM-Development\pysam/files
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -178,7 +222,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/SAM-Development/sam/build_msvc/ssc/ssc/Release/ssc.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>

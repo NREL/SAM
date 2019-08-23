@@ -75,12 +75,12 @@ public:
     std::string config_name;
     std::string config_symbol;
 
-    builder_generator() = default;
+	builder_generator() { subgraph = nullptr; };
 
     explicit builder_generator(config_extractor* ce);
 
     ~builder_generator(){
-        delete subgraph;
+        if (subgraph) delete subgraph;
         for (auto it = ssc_module_objects.begin(); it != ssc_module_objects.end(); ++it){
             ssc_module_free(it->second);
         }

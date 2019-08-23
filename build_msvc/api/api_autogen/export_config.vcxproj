@@ -85,7 +85,7 @@
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-Debug\export_configd.exe --api C:\SAM-Development\sam\api --pysam C:/SAM-Development/sam/api/api_autogen/library/PySAM
+Debug\export_configd.exe --api C:\SAM-Development\sam\api --pysam C:\SAM-Development\pysam
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -143,7 +143,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-Release\export_config.exe --api C:\SAM-Development\sam\api --pysam C:/SAM-Development/sam/api/api_autogen/library/PySAM
+Release\export_config.exe --api C:\SAM-Development\sam\api --pysam C:\SAM-Development\pysam
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
