@@ -490,7 +490,7 @@ public:
 		AddProperty("ShowRowLabels", new wxUIProperty(false));
 		AddProperty("RowLabels", new wxUIProperty(wxString("")));
 		AddProperty("ShadeR0C0", new wxUIProperty(false));
-		AddProperty("R0C0Label", new wxUIProperty(wxString("")));
+		AddProperty("LeftSideLabel", new wxUIProperty(wxString("")));
 		AddProperty("ShadeC0", new wxUIProperty(false));
 		AddProperty("ShowCols", new wxUIProperty(true));
 		AddProperty("ShowColLabels", new wxUIProperty(true));
@@ -519,7 +519,7 @@ public:
 		dm->ShowRowLabels(Property("ShowRowLabels").GetBoolean());
 		dm->SetRowLabels(Property("RowLabels").GetString());
 		dm->ShadeR0C0(Property("ShadeR0C0").GetBoolean());
-		dm->SetR0C0Label(Property("R0C0Label").GetString());
+		dm->SetR0C0Label(Property("LeftSideLabel").GetString());
 		dm->ShadeC0(Property("ShadeC0").GetBoolean());
 		dm->ShowCols(Property("ShowCols").GetBoolean());
 		dm->ShowColLabels(Property("ShowColLabels").GetBoolean());
@@ -538,7 +538,7 @@ public:
 			if (id == "PasteAppendRows") dm->PasteAppendRows(p->GetBoolean());
 			if (id == "PasteAppendCols") dm->PasteAppendCols(p->GetBoolean());
 			if (id == "ShadeR0C0") dm->ShadeR0C0(p->GetBoolean());
-			if (id == "R0C0Label") dm->SetR0C0Label(p->GetString());
+			if (id == "LeftSideLabel") dm->SetR0C0Label(p->GetString());
 			if (id == "ShadeC0") dm->ShadeC0(p->GetBoolean());
 			if (id == "ShowButtons") dm->ShowButtons(p->GetBoolean());
 			if (id == "ShowCols") dm->ShowCols(p->GetBoolean());
@@ -552,6 +552,16 @@ public:
 			if (id == "HideColumn") dm->ShowCol(p->GetInteger(), false);
 			if (id == "ColorMap") dm->ColorMap(p->GetBoolean());
 		}
+	}
+
+	virtual void Draw(wxWindow *, wxDC &dc, const wxRect &geom)
+	{
+		dc.SetFont(*wxNORMAL_FONT);
+		dc.SetTextForeground(*wxBLACK);
+		wxString prompt = "Testing rotated text";
+		int tw = dc.GetTextExtent(prompt).GetWidth();
+		dc.DrawRotatedText(prompt, geom.x, geom.y + 2*tw,90);
+
 	}
 };
 
