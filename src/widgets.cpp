@@ -2028,6 +2028,39 @@ void AFStringArrayButton::OnPressed(wxCommandEvent &evt)
 
 
 
+wxRotatedStaticText::wxRotatedStaticText(wxWindow* parent,
+	wxWindowID id,
+	const wxString& label,
+	const wxPoint& pos,
+	const wxSize& size,
+	long style,
+	const wxString& name)
+	: wxPanel(parent, id, pos, size, style, name),
+	m_Label(label)
+{
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
+	UpdateSize();
+	Connect(GetId(), wxEVT_PAINT, wxPaintEventHandler(wxRotatedStaticText::OnPaint));
+}
+
+wxRotatedStaticText::~wxRotatedStaticText()
+{
+
+}
+
+void wxRotatedStaticText::UpdateSize()
+{
+	wxSize size = GetTextExtent(m_Label);
+	this->SetMinSize(wxSize(size.y, size.x));
+}
+
+void wxRotatedStaticText::OnPaint(wxPaintEvent& event)
+{
+	wxAutoBufferedPaintDC dc(this);
+	dc.Clear();
+	wxSize size = GetMinSize();
+	dc.DrawRotatedText(m_Label, 0, size.y, 90);
+}
 
 
 
@@ -2066,7 +2099,9 @@ const wxString &collabels,
 const wxString &rowlabels,
 const wxString &choices,
 const int &choice_col,
-bool bottombuttons)
+bool bottombuttons, 
+const wxString &horizontalLabel,
+const wxString &verticalLabel)
 : wxPanel(parent, id, pos, sz)
 {
 	m_pasteappendrows = false;
@@ -2088,6 +2123,7 @@ bool bottombuttons)
 	m_colY1 = 1.0;
 
 	m_minVal = m_maxVal = 0.0f;
+	m_caption = new wxStaticText(this, wxID_ANY, "");
 
 	m_data.resize_fill(8, 6, 0.0f);
 
@@ -2096,6 +2132,7 @@ bool bottombuttons)
 	m_labelRows = new wxStaticText(this, wxID_ANY, "Rows:");
 	m_labelCols = new wxStaticText(this, wxID_ANY, "Cols:");
 
+	
 	m_btnImport = new wxButton(this, IDEDMC_IMPORT, "Import...");
 	m_btnExport = new wxButton(this, IDEDMC_EXPORT, "Export...");
 	m_btnCopy = new wxButton(this, IDEDMC_COPY, "Copy");
@@ -2122,9 +2159,6 @@ bool bottombuttons)
 	m_grid->SetTable(m_gridTable);
 
 
-	m_caption = new wxStaticText(this, wxID_ANY, "");
-	m_caption->SetFont(*wxNORMAL_FONT);
-
 	if (sidebuttons)
 	{
 		// for side buttons layout
@@ -2134,17 +2168,25 @@ bool bottombuttons)
 		v_tb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
-//		v_tb_sizer->Add(m_labelRows, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		v_tb_sizer->Add(m_labelRows, 0, wxALL, 2);
 		v_tb_sizer->Add(m_numRows, 0, wxALL | wxEXPAND, 2);
-//		v_tb_sizer->Add(m_labelCols, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		v_tb_sizer->Add(m_labelCols, 0, wxALL , 2);
 		v_tb_sizer->Add(m_numCols, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->AddStretchSpacer();
 
 		wxBoxSizer *h_sizer = new wxBoxSizer(wxHORIZONTAL);
 		h_sizer->Add(v_tb_sizer, 0, wxALL | wxEXPAND, 1);
-		h_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+		if (!verticalLabel.IsEmpty())
+			h_sizer->Add(new wxRotatedStaticText(this, wxID_ANY, verticalLabel), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+		if (!horizontalLabel.IsEmpty())
+		{
+			wxBoxSizer *v_lb_sizer = new wxBoxSizer(wxVERTICAL);
+			v_lb_sizer->Add(new wxStaticText(this, wxID_ANY, horizontalLabel), 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
+			v_lb_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+			h_sizer->Add(v_lb_sizer, 1, wxALL | wxEXPAND, 1);
+		}
+		else
+			h_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
 
 		SetSizer(h_sizer);
 	}
@@ -2170,7 +2212,17 @@ bool bottombuttons)
 
 		wxBoxSizer *v_sizer = new wxBoxSizer(wxVERTICAL);
 		v_sizer->Add(h_tb_sizer, 0, wxALL | wxEXPAND, 1);
-		v_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+		if (!horizontalLabel.IsEmpty())
+			v_sizer->Add(new wxStaticText(this, wxID_ANY, horizontalLabel), 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
+		if (!verticalLabel.IsEmpty())
+		{
+			wxBoxSizer *h_lb_sizer = new wxBoxSizer(wxHORIZONTAL);
+			h_lb_sizer->Add(new wxRotatedStaticText(this, wxID_ANY, verticalLabel), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+			h_lb_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+			v_sizer->Add(h_lb_sizer, 1, wxALL | wxEXPAND, 1);
+		}
+		else
+			v_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
 
 		wxBoxSizer *h_bb_sizer = new wxBoxSizer(wxHORIZONTAL);
 		if (bottombuttons)
@@ -2425,6 +2477,7 @@ void AFDataMatrixCtrl::SetData(const matrix_t<double> &mat)
 	m_gridTable->SetMatrix(&m_data);
 	MatrixToGrid();
 }
+
 
 void AFDataMatrixCtrl::NormalizeToLimits()
 {
@@ -2715,6 +2768,7 @@ void AFDataMatrixCtrl::MatrixToGrid()
 	m_labelCols->SetLabel(m_numColsLabel);
 
 	UpdateColorMap();
+
 
 	Layout();
 	m_grid->Thaw();

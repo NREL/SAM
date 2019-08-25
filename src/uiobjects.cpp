@@ -490,7 +490,8 @@ public:
 		AddProperty("ShowRowLabels", new wxUIProperty(false));
 		AddProperty("RowLabels", new wxUIProperty(wxString("")));
 		AddProperty("ShadeR0C0", new wxUIProperty(false));
-		AddProperty("LeftSideLabel", new wxUIProperty(wxString("")));
+		AddProperty("VerticalLabel", new wxUIProperty(wxString("")));
+		AddProperty("HorizontalLabel", new wxUIProperty(wxString("")));
 		AddProperty("ShadeC0", new wxUIProperty(false));
 		AddProperty("ShowCols", new wxUIProperty(true));
 		AddProperty("ShowColLabels", new wxUIProperty(true));
@@ -511,7 +512,7 @@ public:
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataMatrixObject; o->Copy(this); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual wxWindow *CreateNative(wxWindow *parent) {
-		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger());
+		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger(),false, Property("HorizontalLabel").GetString(), Property("VerticalLabel").GetString());
 		dm->PasteAppendRows(Property("PasteAppendRows").GetBoolean());
 		dm->PasteAppendCols(Property("PasteAppendCols").GetBoolean());
 		dm->ShowButtons(Property("ShowButtons").GetBoolean());
@@ -554,15 +555,6 @@ public:
 		}
 	}
 
-	virtual void Draw(wxWindow *, wxDC &dc, const wxRect &geom)
-	{
-		dc.SetFont(*wxNORMAL_FONT);
-		dc.SetTextForeground(*wxBLACK);
-		wxString prompt = "Testing rotated text";
-		int tw = dc.GetTextExtent(prompt).GetWidth();
-		dc.DrawRotatedText(prompt, geom.x, geom.y + 2*tw,90);
-
-	}
 };
 
 

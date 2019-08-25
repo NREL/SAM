@@ -29,6 +29,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/panel.h>
 #include <wx/button.h>
 #include <wx/grid.h>
+#include <wx/stattext.h>
 
 #include <wex/numeric.h>
 
@@ -248,6 +249,28 @@ private:
 
 
 
+
+class wxRotatedStaticText : public wxPanel
+{
+public:
+	wxRotatedStaticText(wxWindow* parent,
+		wxWindowID id,
+		const wxString& label,
+		const wxPoint& pos = wxDefaultPosition,
+		const wxSize& size = wxDefaultSize,
+		long style = 0,
+		const wxString& name = wxStaticTextNameStr);
+	virtual ~wxRotatedStaticText();
+protected:
+	void OnPaint(wxPaintEvent& event);
+
+private:
+	void UpdateSize();
+	wxString m_Label;
+};
+
+
+
 class wxExtGridCtrl;
  
 /*
@@ -374,7 +397,9 @@ public:
 		const wxString &rowlabels = wxEmptyString,
 		const wxString &choices = wxEmptyString,
 		const int &choice_col = -1,
-		bool bottombuttons = false);
+		bool bottombuttons = false,
+		const wxString &horizontalLabel = wxEmptyString,
+		const wxString &vericalLabel = wxEmptyString);
 
 	void SetData(const matrix_t<double> &mat);
 	void GetData(matrix_t<double> &mat);
@@ -455,7 +480,6 @@ public:
 	void UpdateColorMap();
 
 private:
-
 	wxString m_choices;
 	int m_choiceColumn;
 	AFDataMatrixTable *m_gridTable;

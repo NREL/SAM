@@ -347,7 +347,7 @@ TabOrder
 DataMatrix
 
 1
-26
+27
 Name
 5
 17
@@ -388,9 +388,14 @@ RowLabels
 ShadeR0C0
 2
 1
-LeftSideLabel
+VerticalLabel
 5
-0
+20
+Hs = wave height (m)
+HorizontalLabel
+5
+20
+Te = wave period (s)
 ShadeC0
 2
 0
