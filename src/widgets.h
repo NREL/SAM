@@ -250,17 +250,43 @@ private:
 
 
 
-class wxRotatedStaticText : public wxPanel
+class wxVerticalLabel : public wxPanel
 {
 public:
-	wxRotatedStaticText(wxWindow* parent,
+	wxVerticalLabel(wxWindow* parent,
 		wxWindowID id,
 		const wxString& label,
 		const wxPoint& pos = wxDefaultPosition,
 		const wxSize& size = wxDefaultSize,
 		long style = 0,
 		const wxString& name = wxStaticTextNameStr);
-	virtual ~wxRotatedStaticText();
+	virtual ~wxVerticalLabel();
+	void SetLabel(const wxString &label);
+	wxString const &GetLabel() { return m_Label; }
+
+protected:
+	void OnPaint(wxPaintEvent& event);
+
+private:
+	void UpdateSize();
+	wxString m_Label;
+};
+
+
+class wxHorizontalLabel : public wxPanel
+{
+public:
+	wxHorizontalLabel(wxWindow* parent,
+		wxWindowID id,
+		const wxString& label,
+		const wxPoint& pos = wxDefaultPosition,
+		const wxSize& size = wxDefaultSize,
+		long style = 0,
+		const wxString& name = wxStaticTextNameStr);
+	virtual ~wxHorizontalLabel();
+	void SetLabel(const wxString &label);
+	wxString const &GetLabel() { return m_Label; }
+
 protected:
 	void OnPaint(wxPaintEvent& event);
 
@@ -494,6 +520,8 @@ private:
 	wxNumericCtrl *m_numRows, *m_numCols;
 	wxExtGridCtrl *m_grid;
 	wxStaticText *m_caption, *m_labelCols, *m_labelRows;
+	wxHorizontalLabel *m_horizontalLabel;
+	wxVerticalLabel *m_verticalLabel;
 	wxButton *m_btnImport, *m_btnExport, *m_btnCopy, *m_btnPaste;
 	bool m_showButtons;
 	bool m_showrows;

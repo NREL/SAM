@@ -1,7 +1,7 @@
 MHK Wave Resource
-1289
-1024
-30
+1276
+1009
+29
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 1246
 Height
 3
-331
+877
 Tool Tip
 5
 0
@@ -354,7 +354,7 @@ Name
 freq_distribution
 X
 3
-21
+27
 Y
 3
 372
@@ -363,7 +363,7 @@ Width
 1200
 Height
 3
-500
+440
 Tool Tip
 5
 0
@@ -445,10 +445,10 @@ Name
 frequency_sum
 X
 3
-1155
+1050
 Y
 3
-957
+840
 Width
 3
 90
@@ -662,10 +662,10 @@ Name
 max_frequency
 X
 3
-921
+147
 Y
 3
-927
+840
 Width
 3
 103
@@ -724,10 +724,10 @@ Name
 max_frequency_Hs
 X
 3
-921
+408
 Y
 3
-957
+840
 Width
 3
 103
@@ -786,10 +786,10 @@ Name
 max_frequency_Te
 X
 3
-921
+723
 Y
 3
-987
+840
 Width
 3
 103
@@ -970,45 +970,6 @@ BackColour
 TabOrder
 3
 4294967295
-Divider
-
-1
-10
-Name
-5
-9
-object 21
-X
-3
-798
-Y
-3
-894
-Width
-3
-258
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-13
-Max frequency
-Bold
-2
-1
 GroupBox
 
 1
@@ -1019,16 +980,16 @@ Name
 object 412
 X
 3
-9
+15
 Y
 3
 351
 Width
 3
-1246
+1228
 Height
 3
-544
+524
 Tool Tip
 5
 0
@@ -1055,7 +1016,7 @@ Y
 897
 Width
 3
-744
+1248
 Height
 3
 96
@@ -1079,16 +1040,16 @@ Name
 object 7
 X
 3
-21
+753
 Y
 3
-951
+921
 Width
 3
-722
+496
 Height
 3
-39
+53
 Tool Tip
 5
 0

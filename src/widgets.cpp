@@ -2028,7 +2028,7 @@ void AFStringArrayButton::OnPressed(wxCommandEvent &evt)
 
 
 
-wxRotatedStaticText::wxRotatedStaticText(wxWindow* parent,
+wxVerticalLabel::wxVerticalLabel(wxWindow* parent,
 	wxWindowID id,
 	const wxString& label,
 	const wxPoint& pos,
@@ -2040,21 +2040,27 @@ wxRotatedStaticText::wxRotatedStaticText(wxWindow* parent,
 {
 	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	UpdateSize();
-	Connect(GetId(), wxEVT_PAINT, wxPaintEventHandler(wxRotatedStaticText::OnPaint));
+	Connect(GetId(), wxEVT_PAINT, wxPaintEventHandler(wxVerticalLabel::OnPaint));
 }
 
-wxRotatedStaticText::~wxRotatedStaticText()
+wxVerticalLabel::~wxVerticalLabel()
 {
 
 }
 
-void wxRotatedStaticText::UpdateSize()
+void wxVerticalLabel::SetLabel(const wxString &label)
+{
+	m_Label = label;
+	UpdateSize();
+}
+
+void wxVerticalLabel::UpdateSize()
 {
 	wxSize size = GetTextExtent(m_Label);
-	this->SetMinSize(wxSize(size.y, size.x));
+	this->SetMinSize(wxSize(size.y, size.x + 5));
 }
 
-void wxRotatedStaticText::OnPaint(wxPaintEvent& event)
+void wxVerticalLabel::OnPaint(wxPaintEvent& event)
 {
 	wxAutoBufferedPaintDC dc(this);
 	dc.Clear();
@@ -2062,6 +2068,46 @@ void wxRotatedStaticText::OnPaint(wxPaintEvent& event)
 	dc.DrawRotatedText(m_Label, 0, size.y, 90);
 }
 
+
+wxHorizontalLabel::wxHorizontalLabel(wxWindow* parent,
+	wxWindowID id,
+	const wxString& label,
+	const wxPoint& pos,
+	const wxSize& size,
+	long style,
+	const wxString& name)
+	: wxPanel(parent, id, pos, size, style, name),
+	m_Label(label)
+{
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
+	UpdateSize();
+	Connect(GetId(), wxEVT_PAINT, wxPaintEventHandler(wxHorizontalLabel::OnPaint));
+}
+
+wxHorizontalLabel::~wxHorizontalLabel()
+{
+
+}
+
+void wxHorizontalLabel::SetLabel(const wxString &label)
+{
+	m_Label = label;
+	UpdateSize();
+}
+
+void wxHorizontalLabel::UpdateSize()
+{
+	wxSize size = GetTextExtent(m_Label);
+	this->SetMinSize(wxSize(size.x, size.y));
+}
+
+void wxHorizontalLabel::OnPaint(wxPaintEvent& event)
+{
+	wxAutoBufferedPaintDC dc(this);
+	dc.Clear();
+	wxSize size = GetMinSize();
+	dc.DrawText(m_Label, 0, 0);
+}
 
 
 
@@ -2124,6 +2170,17 @@ const wxString &verticalLabel)
 
 	m_minVal = m_maxVal = 0.0f;
 	m_caption = new wxStaticText(this, wxID_ANY, "");
+	wxFont f(wxFontInfo(10).Bold(true).Family(wxFONTFAMILY_DEFAULT));
+	m_horizontalLabel = new wxHorizontalLabel(this, wxID_ANY, horizontalLabel);
+	m_horizontalLabel->SetBackgroundColour(*wxWHITE);
+	m_horizontalLabel->SetForegroundColour(*wxBLACK);
+	m_horizontalLabel->SetFont(f);
+	m_horizontalLabel->SetLabel(horizontalLabel);
+	m_verticalLabel = new wxVerticalLabel(this, wxID_ANY, verticalLabel);
+	m_verticalLabel->SetBackgroundColour(*wxWHITE);
+	m_verticalLabel->SetForegroundColour(*wxBLACK);
+	m_verticalLabel->SetFont(f);
+	m_verticalLabel->SetLabel(verticalLabel);
 
 	m_data.resize_fill(8, 6, 0.0f);
 
@@ -2177,11 +2234,11 @@ const wxString &verticalLabel)
 		wxBoxSizer *h_sizer = new wxBoxSizer(wxHORIZONTAL);
 		h_sizer->Add(v_tb_sizer, 0, wxALL | wxEXPAND, 1);
 		if (!verticalLabel.IsEmpty())
-			h_sizer->Add(new wxRotatedStaticText(this, wxID_ANY, verticalLabel), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+			h_sizer->Add(m_verticalLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		if (!horizontalLabel.IsEmpty())
 		{
 			wxBoxSizer *v_lb_sizer = new wxBoxSizer(wxVERTICAL);
-			v_lb_sizer->Add(new wxStaticText(this, wxID_ANY, horizontalLabel), 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
+			v_lb_sizer->Add(m_horizontalLabel, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
 			v_lb_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
 			h_sizer->Add(v_lb_sizer, 1, wxALL | wxEXPAND, 1);
 		}
@@ -2213,11 +2270,11 @@ const wxString &verticalLabel)
 		wxBoxSizer *v_sizer = new wxBoxSizer(wxVERTICAL);
 		v_sizer->Add(h_tb_sizer, 0, wxALL | wxEXPAND, 1);
 		if (!horizontalLabel.IsEmpty())
-			v_sizer->Add(new wxStaticText(this, wxID_ANY, horizontalLabel), 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
+			v_sizer->Add(m_horizontalLabel, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
 		if (!verticalLabel.IsEmpty())
 		{
 			wxBoxSizer *h_lb_sizer = new wxBoxSizer(wxHORIZONTAL);
-			h_lb_sizer->Add(new wxRotatedStaticText(this, wxID_ANY, verticalLabel), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+			h_lb_sizer->Add(m_verticalLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 			h_lb_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
 			v_sizer->Add(h_lb_sizer, 1, wxALL | wxEXPAND, 1);
 		}
@@ -2243,6 +2300,14 @@ const wxString &verticalLabel)
 		m_caption->Show(false);
 	else
 		m_caption->Show(true);
+	if (m_horizontalLabel->GetLabel().Length() == 0)
+		m_horizontalLabel->Show(false);
+	else
+		m_horizontalLabel->Show(true);
+	if (m_verticalLabel->GetLabel().Length() == 0)
+		m_verticalLabel->Show(false);
+	else
+		m_verticalLabel->Show(true);
 
 	MatrixToGrid();
 }
