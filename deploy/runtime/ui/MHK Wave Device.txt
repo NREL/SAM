@@ -1,7 +1,7 @@
 MHK Wave Device
-1270
-926
-13
+1912
+1287
+10
 GroupBox
 
 1
@@ -15,13 +15,13 @@ X
 3
 Y
 3
-6
+4
 Width
 3
-1262
+1284
 Height
 3
-917
+1277
 Tool Tip
 5
 0
@@ -29,36 +29,6 @@ Caption
 5
 21
 Wave Energy Converter
-Bold
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-9
-GroupBox2
-X
-3
-24
-Y
-3
-840
-Width
-3
-1228
-Height
-3
-66
-Tool Tip
-5
-0
-Caption
-5
-16
-Save / Load Data
 Bold
 2
 1
@@ -72,13 +42,13 @@ Name
 btnApplyLibrary
 X
 3
-66
+444
 Y
 3
-1005
+780
 Width
 3
-90
+204
 Height
 3
 24
@@ -87,68 +57,8 @@ Tool Tip
 0
 Caption
 5
-5
-Apply
-TabOrder
-3
-4294967295
-Button
-
-1
-8
-Name
-5
 24
-btnLoadMHKWaveDeviceData
-X
-3
-201
-Y
-3
-867
-Width
-3
-153
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-22
-Load data from file...
-TabOrder
-3
-4294967295
-Button
-
-1
-8
-Name
-5
-24
-btnSaveMHKWaveDeviceData
-X
-3
-39
-Y
-3
-867
-Width
-3
-153
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-20
-Save data to file...
+Copy library power curve
 TabOrder
 3
 4294967295
@@ -183,34 +93,95 @@ Fields
 5
 10
 Name,Power
-GroupBox
+DataMatrix
 
 1
-8
+27
 Name
 5
-8
-object 4
+20
+lib_wave_power_curve
 X
 3
-24
+36
 Y
 3
-774
+279
 Width
 3
-1228
+1200
 Height
 3
-60
+466
 Tool Tip
 5
 0
-Caption
+PasteAppendRows
+2
+0
+PasteAppendCols
+2
+0
+ShowButtons
+2
+0
+ShowRows
+2
+0
+ShowRowLabels
+2
+0
+RowLabels
 5
-18
-Device Information
-Bold
+0
+ShadeR0C0
+2
+1
+VerticalLabel
+5
+20
+Hs = wave height (m)
+HorizontalLabel
+5
+20
+Te = wave period (s)
+ShadeC0
+2
+0
+ShowCols
+2
+0
+ShowColLabels
+2
+0
+ColLabels
+5
+0
+NumRowsLabel
+5
+5
+Rows:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+0
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
 2
 1
 GroupBox
@@ -253,10 +224,10 @@ Name
 rated_capacity
 X
 3
-402
+885
 Y
 3
-792
+246
 Width
 3
 90
@@ -305,115 +276,59 @@ BackColour
 TabOrder
 3
 4294967295
-TextEntry
+CheckBox
 
 1
-11
+9
 Name
 5
-25
-wave_device_data_filename
+26
+user_specified_power_curve
 X
 3
-427
+30
 Y
 3
-867
+783
 Width
 3
-816
+90
 Height
 3
 24
 Tool Tip
 5
 0
-Text
+Caption
 5
-0
-Editable
+14
+User specified
+State
 2
-0
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
+1
 TabOrder
 3
 4294967295
-TextEntry
-
-1
-11
-Name
-5
-16
-wave_device_name
-X
-3
-165
-Y
-3
-795
-Width
-3
-103
-Height
-3
-24
-Tool Tip
-5
-0
-Text
-5
-8
-Device 1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-7
 DataMatrix
 
 1
-24
+27
 Name
 5
-16
-wave_power_curve
+21
+user_wave_power_curve
 X
 3
-39
+42
 Y
 3
-255
+810
 Width
 3
 1200
 Height
 3
-500
+466
 Tool Tip
 5
 0
@@ -423,9 +338,12 @@ PasteAppendRows
 PasteAppendCols
 2
 0
-ShowRows
+ShowButtons
 2
 1
+ShowRows
+2
+0
 ShowRowLabels
 2
 0
@@ -435,12 +353,20 @@ RowLabels
 ShadeR0C0
 2
 1
+VerticalLabel
+5
+20
+Hs = wave height (m)
+HorizontalLabel
+5
+20
+Te = wave period (s)
 ShadeC0
 2
 0
 ShowCols
 2
-1
+0
 ShowColLabels
 2
 0
@@ -474,6 +400,51 @@ ShowColumn
 ColorMap
 2
 1
+TextEntry
+
+1
+11
+Name
+5
+16
+wave_device_name
+X
+3
+411
+Y
+3
+246
+Width
+3
+103
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+8
+Device 1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
 Plot
 
 1
@@ -484,10 +455,10 @@ Name
 wind_turbine_power_curve_plot
 X
 3
-1188
+1290
 Y
 3
-942
+33
 Width
 3
 573
@@ -498,7 +469,7 @@ Tool Tip
 5
 0
 
-5
+7
 lib_wave_device
 3
 4
@@ -513,12 +484,26 @@ Wave_Devices|0
 8
 Device 1
 Library
+lib_wave_power_curve
+3
+3
+ 
+ 
+MHK Wave Device
+0
+0
+1
+3
+1
+1
+0
+DataMatrix
 rated_capacity
 3
 1
 Device Rated Capacity
 kW
- 
+MHK Wave Device
 0
 8
 1
@@ -527,18 +512,34 @@ kW
 1
 280
 Default
-wave_device_data_filename
+user_specified_power_curve
 3
-4
-File name:
+1
+ 
  
 MHK Wave Device
 0
 0
 1
-4
+1
+1
+1
 0
-TextEntry
+CheckBox
+user_wave_power_curve
+3
+3
+ 
+ 
+MHK Wave Device
+0
+0
+1
+3
+1
+1
+0
+DataMatrix
 wave_device_name
 3
 4
@@ -559,25 +560,34 @@ wave_power_curve
  
 MHK Wave Device
 0
-0
+8
 1
 3
 1
 1
 0
-DataMatrix
+Default
 
-213
+378
 equations{ 'rated_capacity' } = define () 
 {
 	max_power = 0;
-	mat = ${wave_power_curve};
+	mat = ${lib_wave_power_curve};
 	for (r=1;r<#mat; r++)
 		for (c=1; c<#mat[0];c++)
 			if (mat[r][c] > max_power) max_power = mat[r][c];
 	return max_power;
 };
-2419
+
+equations{ 'wave_power_curve' } = define()
+{
+	if (${user_specified_power_curve})
+		return ${user_wave_power_curve};
+	else
+		return ${lib_wave_power_curve};
+};
+
+1729
 function plot_turbine_curve()
 {
 	setplot('wind_turbine_power_curve_plot');
@@ -588,7 +598,7 @@ function plot_turbine_curve()
 	z_min = 9e99;
 	z_max = -9e99;
 	pc_all = ${wave_power_curve};
-	pd_all = ${wave_resource_definition};
+	pd_all = ${freq_distribution};
 	// initially assume same size
 	x = alloc(#pc_all - 1, #pc_all[0] - 1);
 	y = alloc(#pc_all - 1, #pc_all[0] - 1);
@@ -618,57 +628,31 @@ function set_error_msg()
 	refresh();
 }
 
+function update_controls()
+{
+	user_specified = (value("user_specified_power_curve") == 1);
+	enable("user_wave_power_curve", user_specified);
+	enable("lib_wave_device", !user_specified);
+	plot_turbine_curve();
+}
 
-//on_change{'wave_power_curve'}=define()
-//{
-//	plot_turbine_curve();
-//};
+
+on_change{'wave_power_curve'}=define()
+{
+	plot_turbine_curve();
+};
 
 on_load{'MHK Wave Device'}=define()
 {
+	enable("lib_wave_power_curve", false);
 	value( 'wave_device_name', value( 'lib_wave_device' ) );
-//	plot_turbine_curve();
+	update_controls();
 };
 
 
-on_change{'btnSaveMHKWaveDeviceData'} = define() {
-	logmsg('btnSaveMHKWaveDeviceData');
-	file = choose_file( '', 'Save MHK Wave Device Data As', 
-		'Data Files (*.csv)|*.csv', true);
-		
-	if ( file != '' ) {
-		file = replace(file, '\\', '/');
-		if (group_write('MHK Wave Device',file))
-		{	
-			value( 'wave_device_data_filename', file );
-			msgbox("Data saved! \n");
-		}
-		else
-		{
-			value( 'wave_device_data_filename', "" );
-			msgbox("Data save failed! \n");
-		}
-	}
-};
-
-on_change{'btnLoadMHKWaveDeviceData'} = define() {
-	logmsg('running btnLoadMHKWaveDeviceData');
-	file = choose_file( '', 'Open MHK Wave Device Data File', 
-		'Data Files (*.csv)|*.csv');
-		
-	if ( file != '' ) {
-		file = replace(file, '\\', '/');
-		if (group_read('MHK Wave Device',file))
-		{	
-			value( 'wave_device_data_filename', file );
-			msgbox("Data loaded! \n");
-		}
-		else
-		{
-			value( 'wave_device_data_filename', "" );
-			msgbox("Data load failed! \n");
-		}
-	}
+on_change{'user_specified_power_curve'} = define()
+{
+	update_controls();
 };
 
 on_change{'lib_wave_device'} = define()
@@ -676,11 +660,10 @@ on_change{'lib_wave_device'} = define()
 	if( librarygetcurrentselection( 'lib_wave_device' ) != '' )
 	{
 		value( 'wave_device_name', value('lib_wave_device') );
-		value('wave_power_curve', value('wave_power_curve'));
 	}
 };
 
 on_change{'btnApplyLibrary'} = define() 
 {
-	value('wave_power_curve', value('lib_wave_power_curve'));
+	value('user_wave_power_curve', value('lib_wave_power_curve'));
 };
