@@ -1199,7 +1199,7 @@ TabOrder
 3
 10
 
-32
+33
 DP_SGS
 3
 1
@@ -1302,6 +1302,20 @@ T_htf_cold_ref
 3
 1
 Reference HTF inlet temperature at design
+°C
+MSLF Power Cycle
+0
+8
+1
+1
+1
+1
+0
+Default
+T_htf_hot_des
+3
+1
+HTF outlet temperature at design
 °C
 MSLF Power Cycle
 0
@@ -1649,7 +1663,7 @@ MSLF Power Cycle
 2
 Default
 
-1502
+1571
 equations{ 'fossil_mode' } = define() {
 	return ${csp.mslf.control.fossil_mode} + 1;};
 
@@ -1660,6 +1674,9 @@ equations{ 'T_htf_cold_ref' } = define() {
 	return ${T_loop_in_des}; };
 
 equations{ 'T_htf_hot_ref' } = define() {
+	return ${T_loop_out}; };
+	
+equations{ 'T_htf_hot_des' } = define(){
 	return ${T_loop_out}; };
 	
 equations{ 'nameplate' } = define() {
