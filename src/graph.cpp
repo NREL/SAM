@@ -388,6 +388,9 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 						AddPlot(plot, wxPLPlotCtrl::X_TOP, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
 						SetSideWidget(jet);
 					}
+					GetYAxis1()->SetReversed(true); // need setting
+					GetYAxis1()->SetLabel(m_g.YLabel);
+					GetXAxis2()->SetLabel(m_g.XLabel);
 				}
 			}
 		}

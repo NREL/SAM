@@ -1,7 +1,7 @@
 MHK Wave Device
-1912
-1287
-10
+1305
+1288
+9
 GroupBox
 
 1
@@ -445,29 +445,6 @@ BackColour
 TabOrder
 3
 7
-Plot
-
-1
-6
-Name
-5
-29
-wind_turbine_power_curve_plot
-X
-3
-1290
-Y
-3
-33
-Width
-3
-573
-Height
-3
-414
-Tool Tip
-5
-0
 
 7
 lib_wave_device
@@ -587,60 +564,16 @@ equations{ 'wave_power_curve' } = define()
 		return ${lib_wave_power_curve};
 };
 
-1729
-function plot_turbine_curve()
-{
-	setplot('wind_turbine_power_curve_plot');
-	clearplot('wind_turbine_power_curve_plot');
-	plotopt( {'title'='Energy Production','backcolor'=[0,255,0]}  );
-
-	
-	z_min = 9e99;
-	z_max = -9e99;
-	pc_all = ${wave_power_curve};
-	pd_all = ${freq_distribution};
-	// initially assume same size
-	x = alloc(#pc_all - 1, #pc_all[0] - 1);
-	y = alloc(#pc_all - 1, #pc_all[0] - 1);
-	z = alloc(#pc_all - 1, #pc_all[0] - 1);
-	for (r=1;r<#z;r++)
-	{
-		for (c=1;c<#z[0];c++)
-		{
-			y[r-1][c-1] = pc_all[r][0];
-			x[r-1][c-1] = pd_all[0][c];
-			z[r-1][c-1] = pc_all[r][c] * pd_all[r][c]*8760/100;
-			if (z[r-1][c-1] < z_min) z_min = z[r-1][c-1];
-			if (z[r-1][c-1] > z_max) z_max = z[r-1][c-1];
-		}
-	}
-	
-	contour( x, y, z, {'filled'=true, 'levels'=15, min=z_min, max=z_max});	
-	
-	// show any error messages
-	set_error_msg();
-}
-
-function set_error_msg()
-{	
-	// Start with a fresh error message
-	errmsg = '';
-	refresh();
-}
+710
 
 function update_controls()
 {
 	user_specified = (value("user_specified_power_curve") == 1);
 	enable("user_wave_power_curve", user_specified);
 	enable("lib_wave_device", !user_specified);
-	plot_turbine_curve();
 }
 
 
-on_change{'wave_power_curve'}=define()
-{
-	plot_turbine_curve();
-};
 
 on_load{'MHK Wave Device'}=define()
 {
