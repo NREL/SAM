@@ -182,3 +182,24 @@ if (APPLE)
             COMMAND install_name_tool -id @rpath/$<TARGET_FILE_NAME:SAM_api>.so $<TARGET_FILE:SAM_api>
     )
 endif()
+
+if(DEFINED ENV{PYSAMDIR})
+    if (SAMAPI_EXPORT OR MSVC)
+		if (MSVC)
+			add_custom_command(
+                TARGET SAM_api
+                POST_BUILD
+				COMMAND ${CMAKE_COMMAND} -E remove 
+					$ENV{PYSAMDIR}/files/$<TARGET_FILE_BASE_NAME:SAM_api>.lib
+					$ENV{PYSAMDIR}/files/$<TARGET_FILE_BASE_NAME:SAM_api>.dll
+			)
+		    set(SAMAPI_LIB $<TARGET_FILE_DIR:SAM_api>/$<TARGET_FILE_BASE_NAME:SAM_api>.lib)
+        endif()
+        add_custom_command(
+                TARGET SAM_api
+                POST_BUILD
+                COMMAND ${CMAKE_COMMAND}
+                ARGS -E copy $<TARGET_FILE:SAM_api> ${SAMAPI_LIB} $ENV{PYSAMDIR}/files
+        )
+    endif()
+endif()
