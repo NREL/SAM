@@ -2,7 +2,7 @@
 *  Copyright 2017 Alliance for Sustainable Energy, LLC
 *
 *  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
+*  (ï¿½Allianceï¿½) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
 *  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
 *  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
 *  copies to the public, perform publicly and display publicly, and to permit others to do so.
@@ -26,8 +26,8 @@
 *  4. Redistribution of this software, without modification, must refer to the software by the same
 *  designation. Redistribution of a modified version of this software (i) may not refer to the modified
 *  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
+*  the underlying software originally provided by Alliance as ï¿½System Advisor Modelï¿½ or ï¿½SAMï¿½. Except
+*  to comply with the foregoing, the terms ï¿½System Advisor Modelï¿½, ï¿½SAMï¿½, or any confusingly similar
 *  designation may not be used to refer to any modified version of this software or any modified
 *  version of the underlying software originally provided by Alliance without the prior written consent
 *  of Alliance.
@@ -1297,6 +1297,38 @@ BEGIN_EVENT_TABLE(UncertaintiesViewer, wxPanel)
 	EVT_Uncertainties_SELECT( wxID_ANY, UncertaintiesViewer::OnUncertaintiesSelect )
 END_EVENT_TABLE()
 
+void UncertaintiesViewer::DisplayProbOfExceedances() {
+    if (!m_sim)
+        return;
+
+    std::vector<std::string> pXX_names = {"p99", "p95", "p90", "p85", "p80", "p75", "p70", "p65", "p60", "p55", "p50"};
+    std::vector<double> pXX_zscores = {-2.33, -1.64, -1.28, -1.04, -.842, -.674, -.524, -.385, -.253, -.126, 0.0};
+
+    VarValue* vv_aep = m_sim->GetValue("annual_energy");
+    VarValue* vv_uncert = m_sim->GetValue("total_uncert");
+
+    if (!vv_aep || ! vv_uncert){
+        return;
+    }
+
+    double aep = vv_aep->Value();
+    double uncert = vv_uncert->Value()/100.;
+
+    matrix_t<wxString> metrics;
+    metrics.resize( pXX_names.size()+1, 2 );
+    metrics(0,0) = "PXX";
+    metrics(0,1) = "Value";
+
+    for( size_t i=0;i<pXX_names.size();i++ )
+    {
+        double val = aep * (pXX_zscores[i] * uncert + 1);
+
+        metrics(i+1, 0) = pXX_names[i];
+        metrics(i+1, 1) = wxNumericFormat( val, wxNUMERIC_REAL,
+                                           0, true, "", " kWh" );
+    }
+    m_metricsTable->SetData( metrics );
+}
 
 UncertaintiesViewer::UncertaintiesViewer(wxWindow *parent) : wxPanel(parent, wxID_ANY)
 //	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE|wxSP_NOBORDER )
@@ -1326,6 +1358,15 @@ UncertaintiesViewer::UncertaintiesViewer(wxWindow *parent) : wxPanel(parent, wxI
 	m_layout->SetShowSizing( true );
 //	splitter->SetMinimumPaneSize( 50 );
 //	splitter->SplitVertically( m_lpanel, m_layout, (int)(260*wxGetScreenHDScale()) );
+
+    // add single year probability of exceedances as a metrics table
+    m_metricsTable = new MetricsTable( m_layout );
+    matrix_t<wxString> data( 1, 2 );
+    data.at(0,0) = "Metric"; data.at(0,1) = "Value";
+    m_metricsTable->SetData( data );
+    m_layout->Add( m_metricsTable );
+    DisplayProbOfExceedances();
+
 	main_sizer->Add(m_layout, 1, wxBOTTOM | wxLEFT | wxEXPAND, 0);
 	SetSizer(main_sizer);
 	main_sizer->SetSizeHints(this);
@@ -1404,7 +1445,10 @@ void UncertaintiesViewer::Setup( Simulation *sim )
 	}
 	*/
 
+	// after simulation display p50p90 table
+    if (sim->GetTotalElapsedTime() > 0){
 
+    }
 	
 	std::vector<UncertaintiesCtrl*> remove_list;
 
@@ -1422,7 +1466,9 @@ void UncertaintiesViewer::Setup( Simulation *sim )
 		DeleteUncertainties(remove_list.back());
 		remove_list.pop_back();
 	}
-	
+
+	DisplayProbOfExceedances();
+
 }
 
 

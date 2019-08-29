@@ -57,6 +57,7 @@
 
 #include <wex/plot/plplotctrl.h>
 
+
 // forwards
 class wxMetroButton;
 class wxRadioChoice;
@@ -69,6 +70,7 @@ class wxSlider;
 class wxCheckBox;
 class wxChoice;
 class wxSearchCtrl;
+class MetricsTable;
 
 class Case;
 class Simulation;
@@ -215,7 +217,11 @@ private:
 	void OnUncertaintiesSelect( wxCommandEvent & );
 	void SetCurrent( UncertaintiesCtrl *gc );
 
+	// display a set of probability of exceedances in a table
+    void DisplayProbOfExceedances();
+
 	UncertaintiesCtrl *m_current;
+	MetricsTable *m_metricsTable;
 //	UncertaintiesProperties *m_props;
 	wxSnapLayout *m_layout;
 	std::vector<UncertaintiesCtrl*> m_Uncertainties;
