@@ -157,6 +157,7 @@ function wind_power_metrics()
 	// where is wind farm capacity metric?
 	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	// where is the approximate land use metric?
+	metric( 'annual_energy_p90', {'label'='p90 Energy (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='kWh' } );
 }
 
 function physical_trough_metrics() 
