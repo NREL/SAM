@@ -265,7 +265,7 @@ public:
 	wxString const &GetLabel() { return m_Label; }
 
 protected:
-	void OnPaint(wxPaintEvent& event);
+	void OnPaint(wxPaintEvent& );
 
 private:
 	void UpdateSize();
@@ -288,7 +288,7 @@ public:
 	wxString const &GetLabel() { return m_Label; }
 
 protected:
-	void OnPaint(wxPaintEvent& event);
+	void OnPaint(wxPaintEvent& );
 
 private:
 	void UpdateSize();

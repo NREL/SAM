@@ -2060,7 +2060,7 @@ void wxVerticalLabel::UpdateSize()
 	this->SetMinSize(wxSize(size.y, size.x + 5));
 }
 
-void wxVerticalLabel::OnPaint(wxPaintEvent& event)
+void wxVerticalLabel::OnPaint(wxPaintEvent& )
 {
 	wxAutoBufferedPaintDC dc(this);
 	dc.Clear();
@@ -2101,7 +2101,7 @@ void wxHorizontalLabel::UpdateSize()
 	this->SetMinSize(wxSize(size.x, size.y));
 }
 
-void wxHorizontalLabel::OnPaint(wxPaintEvent& event)
+void wxHorizontalLabel::OnPaint(wxPaintEvent& )
 {
 	wxAutoBufferedPaintDC dc(this);
 	dc.Clear();
@@ -3649,14 +3649,14 @@ AFToolTipCtrl::AFToolTipCtrl(wxWindow* parent) :
 	m_image = wxBITMAP_PNG_FROM_DATA(info24);
 }
 
-void AFToolTipCtrl::mouseDown(wxMouseEvent& evt) 
+void AFToolTipCtrl::mouseDown(wxMouseEvent& ) 
 {
 	wxCommandEvent change(wxEVT_TOOLTIPCTRL_CHANGE, this->GetId());
 	change.SetEventObject(this);
 	GetEventHandler()->ProcessEvent(change);
 }
 
-void AFToolTipCtrl::paintEvent(wxPaintEvent & evt)
+void AFToolTipCtrl::paintEvent(wxPaintEvent & )
 {
 	wxPaintDC dc(this);
 	render(dc);
