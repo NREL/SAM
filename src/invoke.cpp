@@ -4654,23 +4654,67 @@ static void fcall_parametric_export(lk::invoke_t &cxt)
 	else cxt.result().assign(0.0);
 }
 
+static void fcall_reopt_size_battery(lk::invoke_t &cxt)
+{
+    LK_DOC("reopt_size_battery", "From a detailed photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "( none ): table");
+
+    ssc_data_t p_data = ssc_data_create();
+
+    if (!SamApp::Window()->GetCurrentCaseWindow()->GetCase()->BaseCase().GetInputsSSCData(p_data)){
+        cxt.error(ssc_data_get_string(p_data, "error"));
+        return;
+    }
+
+    Reopt_size_battery_params(p_data);
+
+    if (!ssc_data_get_string(p_data, "reopt_params")){
+        cxt.error(ssc_data_get_string(p_data, "error"));
+        return;
+    }
+
+    lk::vardata_t reopt_params;
+    sscvar_to_lkvar(reopt_params, "reopt_params", p_data);
+    lk_string reopt_jsonpost = lk::json_write(reopt_params);
+
+    // send the post and poll for result
+    wxString url = SamApp::WebApi("reopt_post");
+    url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
+
+    wxEasyCurl curl;
+
+
+    curl.AddHttpHeader("Accept: application/json");
+    curl.AddHttpHeader("Content-Type: application/json");
+    curl.SetPostData(reopt_jsonpost);
+
+    wxString msg, err;
+    if (!curl.Get(url, msg))
+    {
+        cxt.result().assign(0.0);
+        return;
+    }
+
+    if (!lk::json_read(curl.GetDataAsString(), cxt.result(), &err))
+        cxt.result().assign("<json-error> " + err);
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
-		fcall_samver,
-		fcall_logmsg,
-		fcall_wfdownloaddir,
-		fcall_webapi,
-		fcall_appdir,
-		fcall_runtimedir,
-		fcall_userlocaldatadir,
-		fcall_copy_file,
-		fcall_case_name,
-		fcall_dview,
-		fcall_dview_solar_data_file,
-		fcall_pdfreport,
-		fcall_pagenote,
-		fcall_macrocall,
+            fcall_samver,
+            fcall_logmsg,
+            fcall_wfdownloaddir,
+            fcall_webapi,
+            fcall_appdir,
+            fcall_runtimedir,
+            fcall_userlocaldatadir,
+            fcall_copy_file,
+            fcall_case_name,
+            fcall_dview,
+            fcall_dview_solar_data_file,
+            fcall_pdfreport,
+            fcall_pagenote,
+            fcall_macrocall,
 #ifdef __WXMSW__
 		fcall_xl_create,
 		fcall_xl_free,
@@ -4683,37 +4727,38 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_xl_get,
 		fcall_xl_autosizecols,
 #endif
-		fcall_lhs_threaded,
-		fcall_lhs_create,
-		fcall_lhs_free,
-		fcall_lhs_reset,
-		fcall_lhs_dist,
-		fcall_lhs_corr,
-		fcall_lhs_run,
-		fcall_lhs_error,
-		fcall_lhs_vector,
-		fcall_parametric_get,
-		fcall_parametric_set,
-		fcall_parametric_run,
-		fcall_parametric_export,
-		fcall_step_create,
-		fcall_step_free,
-		fcall_step_vector,
-		fcall_step_run,
-		fcall_step_error,
-		fcall_step_result,
-		fcall_sam_async,
-		fcall_sam_packaged_task,
-		fcall_showsettings,
-		fcall_setting,
-		fcall_getsettings,
-		fcall_setsettings,
-		fcall_rescanlibrary,
-		fcall_librarygetcurrentselection,
-		fcall_librarygetfiltertext,
-		fcall_librarygetnumbermatches,
-		fcall_librarynotifytext,
-		0 };
+            fcall_lhs_threaded,
+            fcall_lhs_create,
+            fcall_lhs_free,
+            fcall_lhs_reset,
+            fcall_lhs_dist,
+            fcall_lhs_corr,
+            fcall_lhs_run,
+            fcall_lhs_error,
+            fcall_lhs_vector,
+            fcall_parametric_get,
+            fcall_parametric_set,
+            fcall_parametric_run,
+            fcall_parametric_export,
+            fcall_step_create,
+            fcall_step_free,
+            fcall_step_vector,
+            fcall_step_run,
+            fcall_step_error,
+            fcall_step_result,
+            fcall_sam_async,
+            fcall_sam_packaged_task,
+            fcall_showsettings,
+            fcall_setting,
+            fcall_getsettings,
+            fcall_setsettings,
+            fcall_rescanlibrary,
+            fcall_librarygetcurrentselection,
+            fcall_librarygetfiltertext,
+            fcall_librarygetnumbermatches,
+            fcall_librarynotifytext,
+            fcall_reopt_size_battery,
+            0 };
 	return (lk::fcall_t*)vec;
 }
 
