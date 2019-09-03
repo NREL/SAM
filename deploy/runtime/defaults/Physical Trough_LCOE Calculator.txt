@@ -4503,7 +4503,7 @@ tech_type
 1
 1
 1
-1
+2
 tes_avail_vol
 1
 1
