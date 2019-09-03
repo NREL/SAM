@@ -1,7 +1,7 @@
 MHK Costs
-794
-607
-33
+908
+769
+48
 GroupBox
 
 1
@@ -15,7 +15,7 @@ X
 6
 Y
 3
-3
+9
 Width
 3
 780
@@ -461,10 +461,10 @@ Name
 mooring_found_substruc_cost
 X
 3
-288
+645
 Y
 3
-96
+111
 Width
 3
 90
@@ -486,6 +486,69 @@ Format
 Decimals
 3
 2
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+3
+Numeric
+
+1
+17
+Name
+5
+35
+mooring_found_substruc_cost_modeled
+X
+3
+549
+Y
+3
+111
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
 Prefix
 5
 0
@@ -512,7 +575,131 @@ BackColour
 255
 TabOrder
 3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+11
+object 1146
+X
 3
+453
+Y
+3
+84
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+11
+object 1147
+X
+3
+453
+Y
+3
+111
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Divider
 
 1
@@ -562,10 +749,10 @@ Name
 object 2163
 X
 3
-240
+603
 Y
 3
-135
+147
 Width
 3
 138
@@ -666,6 +853,76 @@ Caption
 Bold
 2
 1
+Choice
+
+1
+9
+Name
+5
+10
+object 316
+X
+3
+318
+Y
+3
+111
+Width
+3
+126
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+3
+Enter in $/kW
+Enter in $
+Use Modeled Value
+Selection
+3
+0
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+10
+object 317
+X
+3
+318
+Y
+3
+84
+Width
+3
+126
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+3
+Enter in $/kW
+Enter in $
+Use Modeled Value
+Selection
+3
+0
+TabOrder
+3
+4294967295
 ToolTipCtrl
 
 1
@@ -676,10 +933,10 @@ Name
 object 34
 X
 3
-393
+282
 Y
 3
-42
+57
 Width
 3
 24
@@ -701,6 +958,198 @@ Name
 5
 8
 object 7
+X
+3
+453
+Y
+3
+30
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+10
+User Input
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 718
+X
+3
+36
+Y
+3
+84
+Width
+3
+243
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+26
+Power Take-Off System Cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 719
+X
+3
+36
+Y
+3
+57
+Width
+3
+243
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+24
+Structural Assembly Cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 720
+X
+3
+36
+Y
+3
+111
+Width
+3
+243
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+42
+Mooring, Foundation, and Substructure Cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 733
 X
 3
 480
@@ -795,14 +1244,62 @@ Label
 13
 Name
 5
+9
+object 76
+X
+3
+645
+Y
+3
+30
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+14
+Category Total
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 10
 object 761
 X
 3
-78
+441
 Y
 3
-150
+162
 Width
 3
 159
@@ -834,6 +1331,54 @@ WordWrap
 AlignRight
 2
 1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 77
+X
+3
+549
+Y
+3
+30
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+13
+Modeled Value
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
 AlignTop
 2
 0
@@ -1157,10 +1702,10 @@ Name
 power_takeoff_system_cost
 X
 3
-288
+645
 Y
 3
-69
+84
 Width
 3
 90
@@ -1182,6 +1727,69 @@ Format
 Decimals
 3
 2
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
+33
+power_takeoff_system_cost_modeled
+X
+3
+549
+Y
+3
+84
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
 Prefix
 5
 0
@@ -1208,7 +1816,7 @@ BackColour
 255
 TabOrder
 3
-2
+4294967295
 Numeric
 
 1
@@ -1281,10 +1889,10 @@ Name
 structural_assembly_cost
 X
 3
-288
+645
 Y
 3
-42
+57
 Width
 3
 90
@@ -1306,6 +1914,69 @@ Format
 Decimals
 3
 2
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+1
+Numeric
+
+1
+17
+Name
+5
+30
+structural_assembly_cost_input
+X
+3
+453
+Y
+3
+57
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
 Prefix
 5
 0
@@ -1332,7 +2003,104 @@ BackColour
 255
 TabOrder
 3
+4294967295
+Choice
+
 1
+9
+Name
+5
+31
+structural_assembly_cost_method
+X
+3
+318
+Y
+3
+57
+Width
+3
+126
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+3
+Enter in $/kW
+Enter in $
+Use Modeled Value
+Selection
+3
+0
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+32
+structural_assembly_cost_modeled
+X
+3
+549
+Y
+3
+57
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1470,10 +2238,10 @@ Name
 total_device_cost
 X
 3
-243
+606
 Y
 3
-150
+162
 Width
 3
 136
@@ -1658,10 +2426,10 @@ Name
 tt_mhk_mooring_cost
 X
 3
-393
+282
 Y
 3
-96
+111
 Width
 3
 24
@@ -1684,10 +2452,10 @@ Name
 tt_mhk_powertakeoff_cost
 X
 3
-393
+282
 Y
 3
-69
+84
 Width
 3
 24
@@ -1701,7 +2469,7 @@ Tips
 5
 0
 
-19
+33
 array_cable_system_cost
 3
 1
@@ -1744,6 +2512,20 @@ MHK Costs
 1
 1.1524e+07
 Default
+development_cost_modeled
+3
+1
+Modeled development cost
+$
+MHK Costs
+0
+0
+1
+1
+1
+1
+0
+Default
 eng_and_mgmt_cost
 3
 1
@@ -1757,6 +2539,20 @@ MHK Costs
 1
 1
 2.44703e+07
+Default
+eng_and_mgmt_cost_modeled
+3
+1
+Modeled engineering and management cost
+$
+MHK Costs
+0
+0
+1
+1
+1
+1
+0
 Default
 export_cable_system_cost
 3
@@ -1772,6 +2568,20 @@ MHK Costs
 1
 1.11e+07
 Default
+export_cable_system_cost_modeled
+3
+1
+Modeled export cable system cost
+$
+MHK Costs
+0
+0
+1
+1
+1
+1
+0
+Default
 mooring_found_substruc_cost
 3
 1
@@ -1779,12 +2589,26 @@ Mooring, Foundation, and Substructure Cost
 $
 MHK Costs
 0
-2
+11
 1
 1
 1
 1
 5.47398e+07
+Default
+mooring_found_substruc_cost_modeled
+3
+1
+Modeled mooring, foundation, and substructure Cost
+$
+MHK Costs
+0
+9
+1
+1
+1
+1
+0
 Default
 offshore_substation_cost
 3
@@ -1800,6 +2624,20 @@ MHK Costs
 1
 6.78216e+06
 Default
+offshore_substation_cost_modeled
+3
+1
+Modeled offshore substation cost
+$
+MHK Costs
+0
+0
+1
+1
+1
+1
+0
+Default
 onshore_substation_cost
 3
 1
@@ -1813,6 +2651,20 @@ MHK Costs
 1
 1
 3.17066e+06
+Default
+onshore_substation_cost_modeled
+3
+1
+Modeled onshore substation cost
+$
+MHK Costs
+0
+0
+1
+1
+1
+1
+0
 Default
 other_elec_infra_cost
 3
@@ -1828,6 +2680,20 @@ MHK Costs
 1
 1.99e+06
 Default
+other_elec_infra_cost_modeled
+3
+1
+Modeled cost of other electrical infrastructure
+$
+MHK Costs
+0
+0
+1
+1
+1
+1
+0
+Default
 other_infrastructure_cost
 3
 1
@@ -1841,6 +2707,20 @@ MHK Costs
 1
 1
 9e+06
+Default
+other_infrastructure_cost_modeled
+3
+1
+Modeled cost of other infrastructure
+$
+MHK Costs
+0
+0
+1
+1
+1
+1
+0
 Default
 plant_commissioning_cost
 3
@@ -1856,6 +2736,20 @@ MHK Costs
 1
 7.5267e+06
 Default
+plant_commissioning_cost_modeled
+3
+1
+Modeled plant commissioning cost
+$
+MHK Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 power_takeoff_system_cost
 3
 1
@@ -1863,12 +2757,26 @@ Power Take-Off System Cost
 $
 MHK Costs
 0
-2
+11
 1
 1
 1
 1
 4.0334e+07
+Default
+power_takeoff_system_cost_modeled
+3
+1
+Modeled power take-off system cost
+$
+MHK Costs
+0
+9
+1
+1
+1
+1
+0
 Default
 site_access_port_staging_cost
 3
@@ -1884,6 +2792,20 @@ MHK Costs
 1
 2.975e+06
 Default
+site_access_port_staging_cost_modeled
+3
+1
+Modeled site access, port, and staging cost
+$
+MHK Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 structural_assembly_cost
 3
 1
@@ -1891,12 +2813,55 @@ Structural Assembly Cost
 $
 MHK Costs
 0
-2
+11
 1
 1
 1
 1
-2.04369e+08
+0
+Default
+structural_assembly_cost_input
+3
+1
+Structural assembly cost user input
+$
+MHK Costs
+0
+1
+1
+1
+1
+1
+0
+Default
+structural_assembly_cost_method
+3
+1
+Method to define structural assembly cost
+$
+MHK Costs
+44
+Enter in $/kW| Enter in $| Use modeled value
+1
+1
+1
+1
+1
+0
+Default
+structural_assembly_cost_modeled
+3
+1
+Modeled structural assembly cost
+$
+MHK Costs
+0
+9
+1
+1
+1
+1
+0
 Default
 total_bos_cost
 3
@@ -1916,7 +2881,7 @@ total_cost_per_kw
 3
 1
 Total Installed Cost Per kW
-$/kW
+$
 MHK Costs
 0
 9
@@ -1969,7 +2934,16 @@ MHK Costs
 0
 Default
 
-834
+1085
+equations{ 'structural_assembly_cost' } = define() {
+	return ?${structural_assembly_cost_method}
+			[
+				${structural_assembly_cost_input} * ${system_capacity},
+				${structural_assembly_cost_input},
+				${structural_assembly_cost_modeled}
+			];
+};
+
 equations{ 'total_device_cost' } = define() {
 	return ${structural_assembly_cost} +
 	${power_takeoff_system_cost} +
