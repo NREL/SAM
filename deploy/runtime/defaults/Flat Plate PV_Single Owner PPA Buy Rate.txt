@@ -2314,8 +2314,7 @@ federal_tax_rate
 file_name
 1
 4
-87
-C:\Projects\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+0
 flip_target_percent
 1
 1
@@ -3765,15 +3764,11 @@ lib_dispatch_sched_weekend
 library_folder_list
 1
 4
-77
-C:\Projects\SAM\Documentation\P50P90\2018.5.21_Trough_IPH_Paul\weather_files
-
+0
 library_paths
 1
 4
-77
-C:\Projects\SAM\Documentation\P50P90\2018.5.21_Trough_IPH_Paul\weather_files
-
+0
 loan_moratorium
 1
 1
@@ -5095,8 +5090,7 @@ snl_voco
 solar_data_file_name
 1
 4
-87
-C:\Projects\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+0
 solar_data_source
 1
 4
@@ -5110,8 +5104,7 @@ phoenix_az_33.448377_-112.074037_psmv3_60_tmy
 solar_resource_file
 1
 4
-87
-C:\Projects\sam\deploy\solar_resource\phoenix_az_33.448377_-112.074037_psmv3_60_tmy.csv
+0
 solution_mode_message
 1
 4

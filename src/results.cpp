@@ -56,6 +56,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "results.h"
 #include "casewin.h"
 #include "graph.h"
+#include "uncertainties.h"
 #include "invoke.h"
 #include "lossdiag.h"
 
@@ -371,6 +372,16 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_pnCdf = new wxDVPnCdfCtrl( this, wxID_ANY );
 	AddPage( m_pnCdf, "PDF / CDF" );
 	
+
+	// TODO: remove this after adding for other technologies...
+	if (CaseWindow *cw = static_cast<CaseWindow *>(this->GetParent()->GetParent()))
+	{
+		if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+		{
+			m_uncertaintiesViewer = new UncertaintiesViewer(this);
+			AddPage(m_uncertaintiesViewer, "Uncertainties");
+		}
+	}
 	//m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
 	//AddPage( m_durationCurve, "Duration curve" );
 
@@ -873,7 +884,17 @@ void ResultsViewer::Setup( Simulation *sim )
 	SetDViewState( viewstate );
 
 	// setup graphs
-	m_graphViewer->Setup( m_sim );
+	m_graphViewer->Setup(m_sim);
+
+
+	// TODO: remove this after adding for other technologies...
+	if (CaseWindow *cw = static_cast<CaseWindow *>(this->GetParent()->GetParent()))
+	{
+		if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+		{
+			m_uncertaintiesViewer->Setup(m_sim);
+		}
+	}
 
 	m_tables->Setup( m_sim );
 
@@ -954,7 +975,7 @@ void ResultsViewer::Setup( Simulation *sim )
 							sval = wxNumericFormat(fval, wxNUMERIC_REAL, cl.digits, true, wxEmptyString, wxEmptyString);
 						else if (cl.digits == -3) // integer cast
 							sval = wxString::Format("%d", (int)fval);
-						else // cl.digits == -2 // generic format
+						else  // generic format
 							sval = wxString::Format("%g", fval);
 
 						m_cashFlowTable->SetCellValue( cashflow_row, cl.coloff+i, sval );
@@ -1434,14 +1455,25 @@ void ResultsViewer::LoadPerspective( StringHash &map )
 }
 
 
-void ResultsViewer::SetGraphs( std::vector<Graph> &gl )
+void ResultsViewer::SetGraphs(std::vector<Graph> &gl)
 {
-	m_graphViewer->SetGraphs( gl );
+	m_graphViewer->SetGraphs(gl);
 }
 
-void ResultsViewer::GetGraphs( std::vector<Graph> &gl )
+void ResultsViewer::GetGraphs(std::vector<Graph> &gl)
 {
-	m_graphViewer->GetGraphs( gl );
+	m_graphViewer->GetGraphs(gl);
+}
+
+
+void ResultsViewer::SetUncertainties(std::vector<Uncertainties> &ul)
+{
+	m_uncertaintiesViewer->SetUncertainties(ul);
+}
+
+void ResultsViewer::GetUncertainties(std::vector<Uncertainties> &ul)
+{
+	m_uncertaintiesViewer->GetUncertainties(ul);
 }
 
 void ResultsViewer::Clear()

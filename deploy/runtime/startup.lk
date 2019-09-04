@@ -11,6 +11,8 @@ addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Host D
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
+addconfig( 'MHKwave', ['LCOE Calculator']);
+addconfig( 'MHKtidal', ['LCOE Calculator']);
 addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Geothermal Power', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
@@ -39,15 +41,17 @@ configopt( 'Solar Water Heating',         { 'long_name'='Solar water heating',  
 configopt( 'Generic System',              { 'long_name'='Generic system',                         'short_name'='Generic',          'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
 configopt( 'MSPT',     	                  { 'long_name'='CSP power tower molten salt',            'short_name'='Tower (salt)',     'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
 configopt( 'DSPT',     	                  { 'long_name'='CSP power tower direct steam',           'short_name'='Tower (steam)',    'description'='CSP direct steam power tower system using heat transfer and thermodynamic component models' } );
-configopt( 'Physical Trough',             { 'long_name'='CSP parabolic trough (physical)',        'short_name'='Trough (phys)',   'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
-configopt( 'Empirical Trough',            { 'long_name'='CSP parabolic trough (empirical)',       'short_name'='Trough (empr)',   'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
+configopt( 'Physical Trough',             { 'long_name'='CSP parabolic trough (physical)',        'short_name'='Trough (phys)',    'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'Empirical Trough',            { 'long_name'='CSP parabolic trough (empirical)',       'short_name'='Trough (empr)',    'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
 configopt( 'Dish Stirling',            	  { 'long_name'='CSP dish Stirling',                      'short_name'='Dish Stirling',    'description'='Dish Stirling model with parameters for SES and WGA-ADDS systems' } );
 configopt( 'Generic CSP System',          { 'long_name'='CSP generic model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
-configopt( 'DSLF',        				  { 'long_name'='CSP linear Fresnel direct steam',        'short_name'='Fresnel (steam)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-configopt( 'MSLF',        				  { 'long_name'='CSP linear Fresnel molten salt',         'short_name'='Fresnel (salt)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-if ( en_iscc ) { configopt( 'ISCC',       { 'long_name'='CSP integrated solar combined cycle',    'short_name'='Tower Salt ISCC', 'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
-configopt( 'Physical Trough IPH',         { 'long_name'='Process heat parabolic trough',          'short_name'='IPH Trough',      'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
-configopt( 'DSGL IPH',                    { 'long_name'='Process heat linear direct steam','short_name'='IPH Linear (steam)', 'description'='Industrial process heat linear collector system' } );
+configopt( 'DSLF',        				  { 'long_name'='CSP linear Fresnel direct steam',        'short_name'='Fresnel (steam)',  'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
+configopt( 'MSLF',        				  { 'long_name'='CSP linear Fresnel molten salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
+if ( en_iscc ) { configopt( 'ISCC',       { 'long_name'='CSP integrated solar combined cycle',    'short_name'='Tower Salt ISCC',  'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
+configopt( 'Physical Trough IPH',         { 'long_name'='Process heat parabolic trough',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'DSGL IPH',                    { 'long_name'='Process heat linear direct steam',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
+configopt( 'MHKwave',                     { 'long_name'='Marine Energy- Wave',                    'short_name'='ME- Wave',          'description'='Wave marine hydrokinetic system' });
+configopt( 'MHKtidal',                    { 'long_name'='Marine Energy- Tidal',                   'short_name'='ME- Tidal',         'description'='Tidal marine hydrokinetic system' });
 
 configopt( 'LCOE Calculator',             { 'long_name'='LCOE calculator (FCR method)',           'short_name'='LCOE Calculator',  'description'='Calculate LCOE using fixed charge rate method' } );
 configopt( 'Residential',                 { 'long_name'='Residential (distributed)',           	  'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
@@ -163,7 +167,7 @@ function setup_residential_pages( mode, degradation ) // mode determines whether
 {
   setting( { 'analysis_period_var'='cf_length' } );
   if (degradation == LIFETIME_SYSTEM )
-  {	
+  {
 	addpage( [[ 'Lifetime System']],
            {  'sidebar'='Lifetime','help'='lifetime' } );
   }
@@ -368,7 +372,7 @@ function setup_host_developer_pages(mode, degradation)
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
               {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
                {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]], 
-           { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+           { 'sidebar'='Financial Parameters', 'help'='fin_tpo_host_developer' }  );
   addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
            
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
@@ -476,6 +480,8 @@ function setup_windpower_pages()
 	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine' } );
 	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm' } );
 	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
+	addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses'} );
+	addpage( [[ 'Wind Uncertainty' ]], { 'sidebar'='Uncertainties'} );
 
 }
 
@@ -540,6 +546,7 @@ function setup_fuel_cell_pages_fom()
 function setup_csp_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
+	addpage( [[ 'Physical Trough System Design' ]], { 'sidebar'='System Design', 'help'='troughphysical_solar_field' } );
 	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field', 'help'='troughphysical_solar_field' } );
 	addpage( [[ 'Physical Trough Collector Header',
 	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
@@ -553,25 +560,25 @@ function setup_csp_physical_trough_pages()
 	 {'name'='Physical Trough Receiver Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receivers (HCEs)', 'help'='troughphysical_receivers_hces' } );
-	addpage( [[ 'Rankine Cycle and Hybrid Cooling' ], [ 'User Defined Power Cycle' ]], 
+	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]], 
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
-			  'exclusive_header_pages' = ['Physical Trough Power Block Common']} );
+			  'exclusive_header_pages' = ['Physical Trough Power Cycle Common']} );
 	
 	//addpage( [[ 'Physical Trough Power Block Common' ,
 	  //{'name' = 'Physical Trough Rankine Cycle', 'caption' = 'Rankine Cycle', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  //{ 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
 	//addpage( [[ 'Physical Trough Power Block' ]], { 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
-	addpage( [[ 'Physical Trough Thermal Storage' ,
-	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
-	  { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
-	addpage( [[ 'Physical Trough Parasitics' ]], { 'sidebar'='Parasitics', 'help'='troughphysical_parasitics' } );
+	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
+	addpage( [[ 'Physical Trough System Control' ,
+	  {'name' = 'Physical Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
+	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
 }
 
 function setup_cst_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='iph_trough-location_resource' } );
 	addpage( [[ 'Phys Trough System Design' ]], { 'sidebar'='System Design', 'help'='iph_trough-system_design' } );
-	addpage( [[ 'Phys Trough Solar Field' ]], { 'sidebar'='Solar Field', 'help'='iph_trough-solar_field' } );
+	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field', 'help'='iph_trough-solar_field' } );
 	addpage( [[ 'Physical Trough Collector Header',
 	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
 	 {'name'='Physical Trough Collector Type 2', 'caption'='Collector Type 2', 'collapsible'=true, 'collapsible_var'='sca_2_is_shown'},
@@ -585,8 +592,10 @@ function setup_cst_physical_trough_pages()
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receivers (HCEs)', 'help'='iph_trough-receivers' } );
 	 addpage( [[ 'Phys Trough Direct Storage' ]], { 'sidebar'='Thermal Storage', 'help'='iph_trough-tes' } );
+	 addpage( [[ 'Phys Trough System Control' ,
+	  {'name' = 'Phys Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
+	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
 }
-
 
 function setup_csp_empirical_trough_pages()
 {
@@ -802,16 +811,16 @@ setup_iph_lcoefcr_pages();
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
 setconfig( 'Physical Trough', 'LCOE Calculator' );
-setmodules( ['tcstrough_physical', 'lcoefcr']);
+setmodules( ['trough_physical', 'lcoefcr']);
 setup_csp_physical_trough_pages();
 setup_lcoefcr_pages();
 
 setconfig( 'Physical Trough', 'None' );
-setmodules( ['tcstrough_physical']);
+setmodules( ['trough_physical']);
 setup_csp_physical_trough_pages();
 
 setconfig( 'Physical Trough', 'Commercial' );
-setmodules( ['tcstrough_physical', 'utilityrate5', 'cashloan']);
+setmodules( ['trough_physical', 'utilityrate5', 'cashloan']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_commercial_pages( LOAD_SIMPLE , LIFETIME_SYSTEM ); //belpe not valid for commercial
@@ -819,35 +828,35 @@ setup_commercial_pages( LOAD_SIMPLE , LIFETIME_SYSTEM ); //belpe not valid for c
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Independent Power Producer' );
-setmodules( ['tcstrough_physical', 'ippppa']);
+setmodules( ['trough_physical', 'ippppa']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_independent_power_producer_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Leveraged Partnership Flip' );
-setmodules( ['tcstrough_physical', 'levpartflip']);
+setmodules( ['trough_physical', 'levpartflip']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_leveraged_partnership_flip_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'All Equity Partnership Flip' );
-setmodules( ['tcstrough_physical', 'equpartflip']);
+setmodules( ['trough_physical', 'equpartflip']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Sale Leaseback' );
-setmodules( ['tcstrough_physical', 'saleleaseback']);
+setmodules( ['trough_physical', 'saleleaseback']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_sale_leaseback_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Single Owner' );
-setmodules( ['tcstrough_physical', 'singleowner']);
+setmodules( ['trough_physical', 'singleowner']);
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
@@ -1001,7 +1010,8 @@ setup_sale_leaseback_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Single Owner' );
-setmodules( ['windpower', 'grid','singleowner']);
+//setmodules( ['windpower', 'grid','singleowner']);
+setmodules( ['windpower','singleowner']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
@@ -1021,7 +1031,8 @@ setup_lcoefcr_pages();
            { 'sidebar'='Incentives','help'='Incentives' } );*/
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'None' );
-setmodules( ['windpower','grid']);
+//setmodules( ['windpower','grid']);
+setmodules( ['windpower', 'grid']);
 setup_windpower_pages();
 
 
@@ -1217,6 +1228,8 @@ setup_lcoefcr_pages();
 setconfig( 'Generic System', 'None' );
 setmodules( ['generic_system', 'grid']);
 addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
+addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
+
 
 
 // Generic CSP System //////////////////////////////////////////////////////////
@@ -1567,6 +1580,7 @@ function setup_DSGL_IPH_pages()
 	addpage( [[ 'LF DSG System Design' ]], { 'sidebar'='System Design', 'help'='iph_linear_ds-system_design' } );
 	addpage( [[ 'LF DSG Solar Field' ]], { 'sidebar'='Solar Field', 'help'='iph_linear_ds-solar_field' } );
 	addpage( [[ 'LF DSG Boiler Header', 'Linear Fresnel Boiler Geometry' ]], { 'sidebar'='Collector and Receiver', 'help'='iph_linear_ds-collector_receiver' } );
+	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
 }
 
 //--------------------------------------------------
@@ -1753,6 +1767,32 @@ setup_MSLF_pages();
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
 
+// Marine Hydrokinetic ////////////////////////////////////////////////////////////////////
+function setup_mhkwave_pages()
+{
+	addpage( [[ 'MHK Wave Resource']], { 'sidebar'='Wave Resource', 'help'='wind_resource' } );
+	addpage( [[ 'MHK Wave Device' ]], { 'sidebar'='Wave Energy Converter', 'help'='wind_turbine' } );
+	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='wind_farm' } );
+	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='mhk_system_costs' } );
+}
+setconfig( 'MHKwave', 'LCOE Calculator' );
+setmodules( ['mhk_wave', 'lcoefcr']);
+setup_mhkwave_pages();
+addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
+
+function setup_mhktidal_pages()
+{
+	addpage( [[ 'MHK Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='wind_resource' } );
+	addpage( [[ 'MHK Tidal Device' ]], { 'sidebar'='Tidal Energy Converter', 'help'='wind_turbine' } );
+	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='wind_farm' } );
+	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+}
+setconfig( 'MHKtidal', 'LCOE Calculator' );
+setmodules( ['mhk_tidal', 'lcoefcr']);
+setup_mhktidal_pages();
+addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
+
+
 
 
 if ( en_pvsamv3 )
@@ -1796,3 +1836,4 @@ if ( en_pvsamv3 )
 
 	setup_battery_pages_behind_the_meter();
 }
+

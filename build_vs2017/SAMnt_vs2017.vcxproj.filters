@@ -139,6 +139,9 @@
     <ClInclude Include="..\src\private.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\uncertainties.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -265,6 +268,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\nsrdb.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\uncertainties.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

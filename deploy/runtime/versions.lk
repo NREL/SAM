@@ -51,6 +51,7 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
+
 version_upgrade{'2019.4.3'} = define() {
 	const cfg = config();
 	if (varinfo('en_batt')){
@@ -63,6 +64,61 @@ version_upgrade{'2019.4.3'} = define() {
 			
 			value('batt_room_temperature_single', old_temperature, 'Updated battery environment temperature, same settings as old file');
 			value('batt_thermal_choice', 1);
+		}
+	}
+	if ( cfg.tech == 'Physical Trough' )
+	{
+		old_custom_sgs_pipe_sizes = oldvalue('custom_sgs_pipe_sizes');		// array
+		value( 'custom_tes_pipe_sizes', [ old_custom_sgs_pipe_sizes ] );	// matrix, renamed
+		old_sgs_diams = oldvalue('sgs_diams');		// array
+		value( 'tes_diams', [ old_sgs_diams ] );		// matrix, renamed
+		old_sgs_wallthicks = oldvalue('sgs_wallthicks');		// array
+		value( 'tes_wallthicks', [ old_sgs_wallthicks ] );		// matrix, renamed
+		old_sgs_lengths = oldvalue('sgs_lengths');		// array
+		value( 'tes_lengths', [ old_sgs_lengths ] );	// matrix, renamed
+		
+		old_sf_rnr_diams = oldvalue('sf_rnr_diams');		// array
+		value( 'sf_rnr_diams', [ old_sf_rnr_diams ] );		// matrix
+		old_sf_rnr_wallthicks = oldvalue('sf_rnr_wallthicks');		// array
+		value( 'sf_rnr_wallthicks', [ old_sf_rnr_wallthicks ] );	// matrix
+		old_sf_rnr_lengths = oldvalue('sf_rnr_lengths');		// array
+		value( 'sf_rnr_lengths', [ old_sf_rnr_lengths ] );	    // matrix
+		old_sf_hdr_diams = oldvalue('sf_hdr_diams');		// array
+		value( 'sf_hdr_diams', [ old_sf_hdr_diams ] );		// matrix
+		old_sf_hdr_wallthicks = oldvalue('sf_hdr_wallthicks');		// array
+		value( 'sf_hdr_wallthicks', [ old_sf_hdr_wallthicks ] );	// matrix
+		old_sf_hdr_lengths = oldvalue('sf_hdr_lengths');	// array
+		value( 'sf_hdr_lengths', [ old_sf_hdr_lengths ] );	// matrix
+		old_k_tes_loss_coeffs = oldvalue('k_tes_loss_coeffs');		// array
+		value( 'k_tes_loss_coeffs', [ old_k_tes_loss_coeffs ] );	// matrix
+		
+		value( 'hot_tank_max_heat', oldvalue('tank_max_heat') );
+		value( 'cold_tank_max_heat', oldvalue('tank_max_heat') );
+		value( 'gross_net_conversion_factor', oldvalue('csp.dtr.pwrb.gross_net_conversion_factor') );
+		value( 'f_turb_tou_periods', oldvalue('tslogic_c') );
+		
+		value( 'csp.pt.pwrb.condenser_type', oldvalue('combo_condenser_type') );
+		value( 'csp.pt.pwrb.pressure_mode', oldvalue('pressure_mode') );
+		
+		value( 'bop_par', oldvalue('csp.dtr.par.bop_val') );
+		value( 'bop_par_f', oldvalue('csp.dtr.par.bop_pf') );
+		value( 'bop_par_0', oldvalue('csp.dtr.par.bop_c0') );
+		value( 'bop_par_1', oldvalue('csp.dtr.par.bop_c1') );
+		value( 'bop_par_2', oldvalue('csp.dtr.par.bop_c2') );
+		
+		value( 'aux_par', oldvalue('csp.dtr.par.aux_val') );
+		value( 'aux_par_f', oldvalue('csp.dtr.par.aux_pf') );
+		value( 'aux_par_0', oldvalue('csp.dtr.par.aux_c0') );
+		value( 'aux_par_1', oldvalue('csp.dtr.par.aux_c1') );
+		value( 'aux_par_2', oldvalue('csp.dtr.par.aux_c2') );
+		
+		old_combo_FieldConfig = to_int( oldvalue('combo_FieldConfig') );
+		value( 'combo_FieldConfig', old_combo_FieldConfig + 1 );
+		
+		// Doesn't seem to work:
+		old_combo_htf_type = to_int( oldvalue('combo_htf_type') );
+		if ( old_combo_htf_type > 8 ) {
+			value( 'combo_htf_type', old_combo_htf_type + 1 );
 		}
 	}
 };

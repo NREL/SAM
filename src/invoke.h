@@ -55,8 +55,7 @@ lk::fcall_t* invoke_resultscallback_funcs();
 lk::fcall_t* invoke_lossdiag_funcs();
 
 // functions that can be called in equations
-lk::fcall_t* invoke_equation_funcs(); 
-
+lk::fcall_t* invoke_equation_funcs();
 
 
 // helper function

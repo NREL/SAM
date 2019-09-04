@@ -303,8 +303,7 @@ excess_pressure_pump
 file_name
 1
 4
-108
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+0
 fixed_charge_rate
 1
 1
@@ -804,8 +803,7 @@ rock_thermal_conductivity
 solar_data_file_name
 1
 4
-108
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+0
 solar_data_file_name_load
 1
 4
@@ -823,8 +821,7 @@ blythe_ca_33.617773_-114.588261_psmv3_60_tmy
 solar_resource_file
 1
 4
-108
-C:\Projects\GitHub\NREL\fuel_cell\SAM\deploy\solar_resource\blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+0
 specified_pump_work_amount
 1
 1

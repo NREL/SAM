@@ -6252,7 +6252,7 @@ total_installed_cost
 3
 1
 Total installed cost
- 
+$
 Capital Costs
 0
 9

@@ -1,0 +1,30 @@
+digraph DSLF_None_legend {
+	label="Legend: DSLF-None";
+	labelloc=top;
+	rankdir=LR;	ranksep="3";
+	key [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td align="right" port="e0">eqn_var0</td></tr>
+	<tr><td align="right" port="e1">eqn_var1</td></tr>
+	<tr><td align="right" port="e2">eqn_var2</td></tr>
+	<tr><td align="right" port="e3">eqn_var3</td></tr>
+	<tr><td align="right" port="e4">eqn_var4</td></tr>
+	<tr><td align="right" port="e5">eqn_var5</td></tr>
+	<tr><td align="right" port="o0">func_var0</td></tr>
+	</table>>]
+	key2 [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td port="e0">&nbsp;</td></tr>
+	<tr><td port="e1">&nbsp;</td></tr>
+	<tr><td port="e2">&nbsp;</td></tr>
+	<tr><td port="e3">&nbsp;</td></tr>
+	<tr><td port="e4">&nbsp;</td></tr>
+	<tr><td port="e5">&nbsp;</td></tr>
+	<tr><td port="o0">&nbsp;</td></tr>
+	</table>>]
+	key:e0:e -> key2:e0:w [style=dashed, label="5: Linear Fresnel Superheater Geometry:EQN"]
+	key:e1:e -> key2:e1:w [style=dashed, label="4: Linear Fresnel Parasitics:EQN"]
+	key:e2:e -> key2:e2:w [style=dashed, label="2: Linear Fresnel Boiler Geometry:EQN"]
+	key:e3:e -> key2:e3:w [style=dashed, label="1: Linear Fresnel Collector and Receiver Header:A_aperture_MIMO"]
+	key:e4:e -> key2:e4:w [style=dashed, label="3: PBNS Power Block:EQN"]
+	key:e5:e -> key2:e5:w [style=dashed, label="0: Linear Fresnel Solar Field:EQN"]
+	key:o0:e -> key2:o0:w [label="6: Linear Fresnel Solar Field:is_oncethru"]
+}
