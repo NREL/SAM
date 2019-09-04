@@ -1411,10 +1411,10 @@ def compare_data_properties(c_data_1, c_data_2):
 
                 elif(c_data_1.structure_type == "matrix"):
 
-                    if(c_data_1.l_d1 != c_data_2.l_d2 or c_data_1.l_d2 != c_data_2.l_d2):
-                        mismatch_str = "The " + c_data_1.name + " data unit is a matrix " + \
-                                       ", with at least dimension that is a different length than matrix " + \
-                                       c_data_2.name
+                    if(c_data_1.l_d1 != c_data_2.l_d1 or c_data_1.l_d2 != c_data_2.l_d2):
+                        mismatch_str = "The " + c_data_1.name + " data unit is a matrix," + \
+                                       " with at least dimension that is a different length than the " + \
+                                       c_data_2.name + " data unit matrix " + "\n"
                         mismatch_str = mismatch_str + value_str
 
                     else:
