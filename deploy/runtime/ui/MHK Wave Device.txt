@@ -15,13 +15,13 @@ X
 3
 Y
 3
-4
+3
 Width
 3
 1284
 Height
 3
-1277
+791
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 btnApplyLibrary
 X
 3
-444
+1035
 Y
 3
-780
+732
 Width
 3
 204
@@ -72,13 +72,13 @@ Name
 lib_wave_device
 X
 3
-27
+453
 Y
 3
-27
+30
 Width
 3
-1224
+798
 Height
 3
 190
@@ -103,10 +103,10 @@ Name
 lib_wave_power_curve
 X
 3
-36
+39
 Y
 3
-279
+258
 Width
 3
 1200
@@ -184,6 +184,46 @@ ShowColumn
 ColorMap
 2
 1
+RadioChoice
+
+1
+11
+Name
+5
+20
+library_or_input_wec
+X
+3
+60
+Y
+3
+36
+Width
+3
+180
+Height
+3
+54
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Select WEC from library
+Input WEC characteristics
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
 GroupBox
 
 1
@@ -224,13 +264,13 @@ Name
 rated_capacity
 X
 3
-885
+195
 Y
 3
-246
+129
 Width
 3
-90
+102
 Height
 3
 24
@@ -276,39 +316,6 @@ BackColour
 TabOrder
 3
 4294967295
-CheckBox
-
-1
-9
-Name
-5
-26
-user_specified_power_curve
-X
-3
-30
-Y
-3
-783
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-14
-User specified
-State
-2
-1
-TabOrder
-3
-4294967295
 DataMatrix
 
 1
@@ -319,10 +326,10 @@ Name
 user_wave_power_curve
 X
 3
-42
+39
 Y
 3
-810
+258
 Width
 3
 1200
@@ -410,10 +417,10 @@ Name
 wave_device_name
 X
 3
-411
+195
 Y
 3
-246
+102
 Width
 3
 103
@@ -446,7 +453,7 @@ TabOrder
 3
 7
 
-7
+8
 lib_wave_device
 3
 4
@@ -475,6 +482,21 @@ MHK Wave Device
 1
 0
 DataMatrix
+library_or_input_wec
+3
+1
+Choose WEC from library or input WEC
+ 
+ 
+50
+Select WEC from library| Input WEC characteristics
+1
+1
+1
+1
+1
+0
+Default
 rated_capacity
 3
 1
