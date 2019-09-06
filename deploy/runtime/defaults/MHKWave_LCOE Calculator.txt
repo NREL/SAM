@@ -1,5 +1,5 @@
 1
-110
+111
 array_cable_system_cost
 1
 1
@@ -102,7 +102,7 @@ capital_cost
 1
 1
 1
-4.11309e+08
+2.0694e+08
 city
 1
 4
@@ -193,8 +193,8 @@ export_cable_system_cost_modeled
 file_name
 1
 4
-45
-CalWave_California_Wave Resource _SAM CSV.csv
+98
+C:\Projects\GitHub\NREL\MHK\SAM\deploy\wave_resource\CalWave_California_Wave Resource _SAM CSV.csv
 fixed_charge_rate
 1
 1
@@ -290,6 +290,12 @@ lib_wave_power_curve
 9.25 280 280 280 280 280 280 280 280 280 280 280 280 280 280 280 280 280 279.356 256 232 208 
 9.75 280 280 280 280 280 280 280 280 280 280 280 280 280 280 280 280 280 280 264 240 224 
 
+library_or_input_wec
+1
+1
+1
+1
+0
 location
 1
 4
@@ -475,7 +481,7 @@ structural_assembly_cost
 1
 1
 1
-2.04369e+08
+0
 structural_assembly_cost_input
 1
 1
@@ -511,13 +517,13 @@ total_cost_per_kw
 1
 1
 1
-4.11309e+08
+2.0694e+08
 total_device_cost
 1
 1
 1
 1
-2.99443e+08
+9.50738e+07
 total_elec_infra_cost
 1
 1
@@ -529,7 +535,7 @@ total_installed_cost
 1
 1
 1
-4.11309e+08
+2.0694e+08
 tz
 1
 1
@@ -547,7 +553,7 @@ ui_capital_cost_reference
 1
 1
 1
-4.11309e+08
+2.0694e+08
 ui_cfin
 1
 1
@@ -727,5 +733,5 @@ wave_power_curve
 wave_resource_filename
 1
 4
-45
-CalWave_California_Wave Resource _SAM CSV.csv
+98
+C:\Projects\GitHub\NREL\MHK\SAM\deploy\wave_resource\CalWave_California_Wave Resource _SAM CSV.csv

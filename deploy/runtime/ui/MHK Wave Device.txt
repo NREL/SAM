@@ -1,7 +1,7 @@
 MHK Wave Device
 1305
 1288
-9
+8
 GroupBox
 
 1
@@ -18,10 +18,10 @@ Y
 3
 Width
 3
-1284
+1278
 Height
 3
-791
+767
 Tool Tip
 5
 0
@@ -32,36 +32,6 @@ Wave Energy Converter
 Bold
 2
 1
-Button
-
-1
-8
-Name
-5
-15
-btnApplyLibrary
-X
-3
-1035
-Y
-3
-732
-Width
-3
-204
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-24
-Copy library power curve
-TabOrder
-3
-4294967295
 Library
 
 1
@@ -194,10 +164,10 @@ Name
 library_or_input_wec
 X
 3
-60
+141
 Y
 3
-36
+45
 Width
 3
 180
@@ -240,10 +210,10 @@ Y
 225
 Width
 3
-1224
+1236
 Height
 3
-548
+527
 Tool Tip
 5
 0
@@ -326,16 +296,16 @@ Name
 user_wave_power_curve
 X
 3
-39
+45
 Y
 3
-258
+255
 Width
 3
 1200
 Height
 3
-466
+475
 Tool Tip
 5
 0
@@ -567,11 +537,11 @@ MHK Wave Device
 0
 Default
 
-378
+374
 equations{ 'rated_capacity' } = define () 
 {
 	max_power = 0;
-	mat = ${lib_wave_power_curve};
+	mat = ${wave_power_curve};
 	for (r=1;r<#mat; r++)
 		for (c=1; c<#mat[0];c++)
 			if (mat[r][c] > max_power) max_power = mat[r][c];
@@ -586,26 +556,28 @@ equations{ 'wave_power_curve' } = define()
 		return ${lib_wave_power_curve};
 };
 
-710
+652
 
 function update_controls()
 {
-	user_specified = (value("user_specified_power_curve") == 1);
-	enable("user_wave_power_curve", user_specified);
-	enable("lib_wave_device", !user_specified);
+	input_wec = (value("library_or_input_wec") == 1);
+	show("user_wave_power_curve", input_wec);
+	show("lib_wave_device", !input_wec);
+	show("lib_wave_power_curve", !input_wec);
+	show('wave_device_name', !input_wec);
 }
 
 
 
 on_load{'MHK Wave Device'}=define()
 {
-	enable("lib_wave_power_curve", false);
+	//enable("lib_wave_power_curve", false);
 	value( 'wave_device_name', value( 'lib_wave_device' ) );
 	update_controls();
 };
 
 
-on_change{'user_specified_power_curve'} = define()
+on_change{'library_or_input_wec'} = define()
 {
 	update_controls();
 };
@@ -616,9 +588,4 @@ on_change{'lib_wave_device'} = define()
 	{
 		value( 'wave_device_name', value('lib_wave_device') );
 	}
-};
-
-on_change{'btnApplyLibrary'} = define() 
-{
-	value('user_wave_power_curve', value('lib_wave_power_curve'));
 };
