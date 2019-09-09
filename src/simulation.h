@@ -117,6 +117,9 @@ public:
 	VarValue *GetValue( const wxString &name );
 
 	VarTable *GetInputVarTable() { return &m_inputs; }
+
+	bool CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data);
+	bool GetInputsSSCData(ssc_data_t p_data);
 	
 	void ListByCount( size_t nr, size_t nc, wxArrayString &list );
 	void GetVariableLengths( std::vector<ArraySize> & sizes );

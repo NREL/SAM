@@ -57,7 +57,8 @@
 
 #include <lk/parse.h>
 #include <lk/codegen.h>
-
+#include <lk/env.h>
+#include <lk/stdlib.h>
 
 
 #include <wx/log.h>
@@ -1484,70 +1485,103 @@ static bool lkvar_to_sscvar( ssc_data_t p_dat, const char *name, lk::vardata_t &
 	return true;
 }
 
-static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_dat )
+static void convert_sscvar_to_lkvar( lk::vardata_t &out, var_data* vd )
 {
 	out.nullify();
 
-	int ty = ssc_data_query( p_dat, name );
-	switch( ty )
-	{
-	case SSC_NUMBER:
-		{
-			ssc_number_t num;
-			if ( ssc_data_get_number( p_dat, name, &num ) )
-			out.assign( (double) num );
-		}
-		break;
-	case SSC_STRING:
-		if ( const char *ss = ssc_data_get_string( p_dat, name ) )
-			out.assign( lk_string(ss) );
-		break;
-	case SSC_ARRAY:
-	{
-		int n = 0;
-		ssc_number_t *vv = ssc_data_get_array( p_dat, name, &n );
-		if ( vv && n > 0 )
-		{
-			out.empty_vector();
-			out.vec()->reserve( (size_t) n );
-			for (int i=0;i<n;i++)
-				out.vec_append( vv[i] );
-		}
-	}
-		break;
-	case SSC_MATRIX:
-	{
-		int nr = 0, nc = 0;
-		ssc_number_t *mat = ssc_data_get_matrix( p_dat, name, &nr, &nc );
-		if ( mat && nr > 0 && nc > 0 )
-		{
-			out.empty_vector();
-			out.vec()->reserve( nr );
-			for (int i=0;i<nr;i++)
-			{
-				out.vec()->push_back( lk::vardata_t() );
-				out.vec()->at(i).empty_vector();
-				out.vec()->at(i).vec()->reserve( nc );
-				for (int j=0;j<nc;j++)
-					out.vec()->at(i).vec_append( mat[ i*nc +j ] );
-			}
-		}
-	}
-		break;
-	case SSC_TABLE:
-		if ( ssc_data_t table = ssc_data_get_table( p_dat, name ) )
-		{
-			out.empty_hash();
-			const char *key = ::ssc_data_first( table );
-			while ( key != 0 )
-			{
-				lk::vardata_t &xvd = out.hash_item( lk_string(key) );
-				sscvar_to_lkvar( xvd, key, table );
-				key = ssc_data_next( table );
-			}
-		}
-		break;
-	}
+	unsigned char ty = vd->type;
+	switch( ty ) {
+        case SSC_NUMBER:
+            out.assign((double) vd->num);
+            break;
+        case SSC_STRING:
+            out.assign(lk_string(vd->str));
+            break;
+        case SSC_ARRAY: {
+            util::matrix_t<ssc_number_t> vv = vd->num;
+            int n = vd->num.length();
+            if (n > 0) {
+                out.empty_vector();
+                out.vec()->reserve((size_t) n);
+                for (int i = 0; i < n; i++)
+                    out.vec_append(vv[i]);
+            }
+        }
+            break;
+        case SSC_MATRIX: {
+            util::matrix_t<ssc_number_t> vv = vd->num;
+            int nr = vv.nrows(), nc = vv.ncols();
+            if (nr > 0 && nc > 0) {
+                out.empty_vector();
+                out.vec()->reserve(nr);
+                for (int i = 0; i < nr; i++) {
+                    out.vec()->push_back(lk::vardata_t());
+                    out.vec()->at(i).empty_vector();
+                    out.vec()->at(i).vec()->reserve(nc);
+                    for (int j = 0; j < nc; j++)
+                        out.vec()->at(i).vec_append(vv[i * nc + j]);
+                }
+            }
+        }
+            break;
+        case SSC_TABLE: {
+                out.empty_hash();
+                const char *key = vd->table.first();
+                while (key != 0) {
+                    lk::vardata_t &xvd = out.hash_item(lk_string(key));
+                    convert_sscvar_to_lkvar(xvd, vd->table.lookup_match_case(key));
+                    key = ssc_data_next(&vd->table);
+                }
+            break;
+        }
+        case SSC_DATAARR: {
+            std::vector<var_data> arr = vd->vec;
+            int n = arr.size();
+            if (n > 0) {
+                out.empty_vector();
+                out.vec()->reserve((size_t) n);
+                for (int i = 0; i < n; i++){
+                    lk::vardata_t lk_data;
+                    var_data data = arr[i];
+                    convert_sscvar_to_lkvar(lk_data, &data);
+                    out.vec_append(lk_data);
+                }
+            }
+            break;
+        }
+        case SSC_DATAMAT: {
+            std::vector<std::vector<var_data>> mat = vd->mat;
+            int nr = mat.size(), nc;
+            if (nr > 0) nc = mat[0].size();
+            if (nr > 0 && nc > 0) {
+                out.empty_vector();
+                out.vec()->reserve(nr);
+                for (int i = 0; i < nr; i++) {
+                    out.vec()->push_back(lk::vardata_t());
+                    out.vec()->at(i).empty_vector();
+                    out.vec()->at(i).vec()->reserve(nc);
+                    for (int j = 0; j < nc; j++){
+                        lk::vardata_t lk_data;
+                        var_data data = mat[i][j];
+                        convert_sscvar_to_lkvar(lk_data, &data);
+                        out.vec()->at(i).vec_append(lk_data);
+                    }
+                }
+            }
+        }
+    }
+}
+
+static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_dat ) {
+    out.nullify();
+    var_table* vt = static_cast<var_table*>(p_dat);
+
+    var_data* vd = vt->lookup_match_case(name);
+//    unsigned char ssc_to_lk_types[8] = {lk::vardata_t::NULLVAL, lk::vardata_t::STRING, lk::vardata_t::NUMBER,
+//                                      lk::vardata_t::VECTOR, lk::vardata_t::VECTOR, lk::vardata_t::HASH,
+//                                      lk::vardata_t::VECTOR, lk::vardata_t::VECTOR};
+//    out.type = ssc_to_lk_types[vd->type];
+    if (vd) convert_sscvar_to_lkvar(out, vd);
 }
 
 class lkSSCdataObj : public lk::objref_t
@@ -4654,23 +4688,125 @@ static void fcall_parametric_export(lk::invoke_t &cxt)
 	else cxt.result().assign(0.0);
 }
 
+static void fcall_reopt_size_battery(lk::invoke_t &cxt)
+{
+    LK_DOC("reopt_size_battery", "From a detailed photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "( none ): table");
+
+    ssc_data_t p_data = ssc_data_create();
+
+    // check if case exists and is correct configuration
+    Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
+    if (!sam_case || (sam_case->GetTechnology() != "Flat Plate PV" ||
+            (sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commerical" &&
+             sam_case->GetFinancing() != "Single Owner" && sam_case->GetFinancing() != "Host Developer")))
+        throw lk::error_t("Must be run from Detailed Photovoltaic case with Residential, Commercial, Single owner or Host Developer model.");
+
+    Simulation base_case = sam_case->BaseCase();
+    if (!base_case.GetInput("en_batt")->Boolean())
+        throw lk::error_t("Battery must be enabled.");
+
+    if (!base_case.GetInputsSSCData(p_data))
+        throw lk::error_t(ssc_data_get_string(p_data, "error"));
+
+    // copy variables from UI which are not cmod variables
+    ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
+    ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
+    ssc_data_set_number(p_data, "battery_per_kW", base_case.GetInput("battery_per_kW")->Value());
+    ssc_data_set_number(p_data, "battery_per_kWh", base_case.GetInput("battery_per_kWh")->Value());
+    if (auto rep = base_case.GetInput("batt_replacement_cost"))
+        ssc_data_set_number(p_data, "batt_replacement_cost", rep->Value());
+    std::vector<double> load_v = base_case.GetInput("crit_load_user_data")->Array();
+    ssc_data_set_array(p_data, "crit_load_user_data", &load_v[0], load_v.size());
+    load_v = base_case.GetInput("load_user_data")->Array();
+    ssc_data_set_array(p_data, "load_user_data", &load_v[0], load_v.size());
+
+    try{
+        Reopt_size_battery_params(p_data);
+    }
+    catch( std::exception& e){
+        ssc_data_free(p_data);
+        throw lk::error_t(e.what());
+    }
+
+    const char* log = ssc_data_get_string(p_data, "log");
+    if (*log && strlen(log) > 0){
+        ssc_data_free(p_data);
+        throw lk::error_t( "reopt_size_battery warning: " + wxString(log) );
+    }
+
+    auto reopt_scenario = new lk::vardata_t;
+    sscvar_to_lkvar(*reopt_scenario, "reopt_scenario", p_data);
+    ssc_data_free(p_data);
+
+    cxt.result().empty_hash();
+    lk_string reopt_jsonpost = lk::json_write(*reopt_scenario);
+    cxt.result().hash_item("scen", reopt_jsonpost);
+
+    // send the post
+    wxString post_url = SamApp::WebApi("reopt_post");
+    post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
+
+    wxEasyCurl curl;
+    curl.AddHttpHeader("Accept: application/json");
+    curl.AddHttpHeader("Content-Type: application/json");
+    curl.SetPostData(reopt_jsonpost);
+
+    wxString msg, err;
+    if (!curl.Get(post_url, msg))
+    {
+        cxt.result().assign(msg);
+        return;
+    }
+
+    // get the run_uuid to poll for result, checking the status
+    lk::vardata_t results;
+    if (!lk::json_read(curl.GetDataAsString(), results, &err))
+        cxt.result().assign("<ReOpt-error> " + err);
+
+    wxString poll_url = SamApp::WebApi("reopt_poll");
+    poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
+    poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
+    curl = wxEasyCurl();
+    cxt.result().hash_item("ReOpt", lk::vardata_t());
+    lk::vardata_t* cxt_result = cxt.result().lookup("ReOpt");
+
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...", "reopt_size_battery", wxCENTER, wxDefaultPosition, wxDefaultSize);
+    dlg.Show();
+    wxGetApp().Yield( true );
+    std::string optimizing_status = "Optimizing...";
+    while (optimizing_status == "Optimizing..."){
+        if (!curl.Get(poll_url, msg))
+        {
+            cxt.result().assign(msg);
+            dlg.Close();
+            return;
+        }
+        if (!lk::json_read(curl.GetDataAsString(), *cxt_result, &err))
+            cxt.result().assign("<json-error> " + err);
+        if (lk::vardata_t* res = cxt_result->lookup("outputs"))
+            optimizing_status = res->lookup("Scenario")->lookup("status")->as_string();
+        sleep(4);
+    }
+    dlg.Close();
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
-		fcall_samver,
-		fcall_logmsg,
-		fcall_wfdownloaddir,
-		fcall_webapi,
-		fcall_appdir,
-		fcall_runtimedir,
-		fcall_userlocaldatadir,
-		fcall_copy_file,
-		fcall_case_name,
-		fcall_dview,
-		fcall_dview_solar_data_file,
-		fcall_pdfreport,
-		fcall_pagenote,
-		fcall_macrocall,
+            fcall_samver,
+            fcall_logmsg,
+            fcall_wfdownloaddir,
+            fcall_webapi,
+            fcall_appdir,
+            fcall_runtimedir,
+            fcall_userlocaldatadir,
+            fcall_copy_file,
+            fcall_case_name,
+            fcall_dview,
+            fcall_dview_solar_data_file,
+            fcall_pdfreport,
+            fcall_pagenote,
+            fcall_macrocall,
 #ifdef __WXMSW__
 		fcall_xl_create,
 		fcall_xl_free,
@@ -4683,37 +4819,38 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_xl_get,
 		fcall_xl_autosizecols,
 #endif
-		fcall_lhs_threaded,
-		fcall_lhs_create,
-		fcall_lhs_free,
-		fcall_lhs_reset,
-		fcall_lhs_dist,
-		fcall_lhs_corr,
-		fcall_lhs_run,
-		fcall_lhs_error,
-		fcall_lhs_vector,
-		fcall_parametric_get,
-		fcall_parametric_set,
-		fcall_parametric_run,
-		fcall_parametric_export,
-		fcall_step_create,
-		fcall_step_free,
-		fcall_step_vector,
-		fcall_step_run,
-		fcall_step_error,
-		fcall_step_result,
-		fcall_sam_async,
-		fcall_sam_packaged_task,
-		fcall_showsettings,
-		fcall_setting,
-		fcall_getsettings,
-		fcall_setsettings,
-		fcall_rescanlibrary,
-		fcall_librarygetcurrentselection,
-		fcall_librarygetfiltertext,
-		fcall_librarygetnumbermatches,
-		fcall_librarynotifytext,
-		0 };
+            fcall_lhs_threaded,
+            fcall_lhs_create,
+            fcall_lhs_free,
+            fcall_lhs_reset,
+            fcall_lhs_dist,
+            fcall_lhs_corr,
+            fcall_lhs_run,
+            fcall_lhs_error,
+            fcall_lhs_vector,
+            fcall_parametric_get,
+            fcall_parametric_set,
+            fcall_parametric_run,
+            fcall_parametric_export,
+            fcall_step_create,
+            fcall_step_free,
+            fcall_step_vector,
+            fcall_step_run,
+            fcall_step_error,
+            fcall_step_result,
+            fcall_sam_async,
+            fcall_sam_packaged_task,
+            fcall_showsettings,
+            fcall_setting,
+            fcall_getsettings,
+            fcall_setsettings,
+            fcall_rescanlibrary,
+            fcall_librarygetcurrentselection,
+            fcall_librarygetfiltertext,
+            fcall_librarygetnumbermatches,
+            fcall_librarynotifytext,
+            fcall_reopt_size_battery,
+            0 };
 	return (lk::fcall_t*)vec;
 }
 
