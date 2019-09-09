@@ -876,6 +876,9 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 }
 
 bool Simulation::GetInputsSSCData(ssc_data_t p_data) {
+    if (m_simlist.empty())
+        m_simlist = m_case->GetConfiguration()->Simulations;
+    ssc_module_exec_set_print( 0 );
     for( size_t kk=0;kk<m_simlist.size();kk++ )
     {
         ssc_module_t p_mod = ssc_module_create(m_simlist[kk].c_str());
@@ -888,8 +891,26 @@ bool Simulation::GetInputsSSCData(ssc_data_t p_data) {
         if (!CmodInputsToSSCData(p_mod, p_data)){
             return false;
         }
+        ssc_bool_t result = ssc_module_exec( p_mod, p_data );
+
+        // copy over first error if there was one to internal buffer
+        if (!result)
+        {
+            const char *text;
+            int type, i=0;
+            while( (text = ssc_module_log( p_mod, i, &type, 0 )) )
+            {
+                if (type == SSC_ERROR)
+                {
+                    ssc_data_set_string(p_data, "error", text);
+                    break;
+                }
+                i++;
+            }
+        }
         ssc_module_free(p_mod);
     }
+    ssc_module_exec_set_print( 1 );
     return true;
 }
 
