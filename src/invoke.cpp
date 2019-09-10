@@ -4715,6 +4715,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     ssc_data_set_array(p_data, "crit_load_user_data", &load_v[0], load_v.size());
     load_v = base_case.GetInput("load_user_data")->Array();
     ssc_data_set_array(p_data, "load_user_data", &load_v[0], load_v.size());
+	ssc_data_set_number(p_data, "value_of_lost_load", base_case.GetInput("value_of_lost_load")->Value());
 
     try{
         Reopt_size_battery_params(p_data);
@@ -4736,7 +4737,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     cxt.result().empty_hash();
     lk_string reopt_jsonpost = lk::json_write(*reopt_scenario);
-    cxt.result().hash_item("scen", reopt_jsonpost);
+    cxt.result().hash_item("scenario", reopt_jsonpost);
 
     // send the post
     wxString post_url = SamApp::WebApi("reopt_post");
@@ -4766,7 +4767,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
     poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
     curl = wxEasyCurl();
-    cxt.result().hash_item("ReOpt", lk::vardata_t());
+    cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("ReOpt");
 
     MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...", "reopt_size_battery", wxCENTER, wxDefaultPosition, wxDefaultSize);

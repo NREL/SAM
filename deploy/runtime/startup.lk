@@ -87,7 +87,7 @@ function setup_battery_pages_behind_the_meter()
 {
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
 			  [{'name'='Battery Model', 'caption'='Enable Battery'},
-			   'Battery Bank Sizing',
+			   'Battery Bank Sizing with REopt',
 			   'Battery Current and Capacity',
 			   'Battery Configuration',
 			   'Battery Dispatch Common',

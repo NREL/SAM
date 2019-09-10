@@ -1,7 +1,7 @@
-Battery Bank Sizing
+Battery Bank Sizing with REopt
 999
 406
-18
+19
 GroupBox
 
 1
@@ -147,65 +147,6 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
-
-1
-16
-Name
-5
-23
-batt_bank_ncells_serial
-X
-3
-528
-Y
-3
-267
-Width
-3
-90
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-0
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4
 Numeric
 
 1
@@ -810,10 +751,10 @@ Y
 267
 Width
 3
-336
+930
 Height
 3
-102
+45
 Caption
 5
 300
@@ -839,6 +780,33 @@ AlignRight
 AlignTop
 2
 1
+Button
+
+1
+7
+Name
+5
+10
+call_reopt
+X
+3
+594
+Y
+3
+339
+Width
+3
+162
+Height
+3
+24
+Caption
+5
+21
+Get Size and Dispatch
+TabOrder
+3
+4294967295
 Divider
 
 1
@@ -875,6 +843,65 @@ Optimal Sizing and Dispatch from REopt
 Bold
 2
 1
+Numeric
+
+1
+16
+Name
+5
+18
+value_of_lost_load
+X
+3
+315
+Y
+3
+339
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4
 
 12
 batt_C_rate_max_charge_input
@@ -1034,18 +1061,21 @@ Specify desired bank size|Specify cells
 Default
 value_of_lost_load
 3
-0
- 
- 
- 
-0
-0
 1
+ Value of Lost Load during Outage
+ $/kWh
+ Electric Load
 0
-Default
+2
+1
+1
+1
+1
+100
+Numeric
 
 0
-1294
+2225
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1094,3 +1124,40 @@ function set_bank_sizing()
 		enable('batt_C_rate_max_discharge_input', !isauto);
 	}
 }
+
+on_change{'call_reopt'} = define(){
+	reopt = reopt_size_battery();
+	y = reopt.response;
+	pv = y.outputs.Scenario.Site.PV;
+	batt = y.outputs.Scenario.Site.Storage;
+	elec = y.outputs.Scenario.Site.ElectricTariff;
+
+
+	batt_to_grid = null;
+	if (batt.year_one_to_grid_series_kw)
+		batt_to_grid = batt.year_one_to_grid_series_kw;
+	batt_to_load = batt.year_one_to_load_series_kw;
+	outln(batt_to_grid);
+	outln(batt_to_load);
+	pv_charge = pv.year_one_to_battery_series_kw;
+	grid_charge = elec.year_one_to_battery_series_kw;
+
+	value('batt_dispatch_choice', 3);
+	value('batt_bank_power', batt.size_kw);
+	value('batt_bank_size', batt.size_kwh);
+
+
+	dispatch = alloc(8760);
+
+	for (i=0; i<8760; i++){
+		if (batt_to_grid){
+			discharge = batt_to_grid[i] + batt_to_load[i];
+		} else{
+			discharge = batt_to_load[i];
+		}
+		charge = -pv_charge[i] - grid_charge[i];
+		dispatch[i] = discharge + charge;
+	}
+
+	value('batt_custom_dispatch', dispatch);
+};
