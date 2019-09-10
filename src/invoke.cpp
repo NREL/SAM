@@ -4612,27 +4612,27 @@ void fcall_parametric_get(lk::invoke_t &cxt)
 		}
 	}
 	else if (vv->Type() == VV_MATRIX) {
-		size_t r = 0;
-		size_t c = 0;
+		size_t nr = 0;
+		size_t nc = 0;
 		for (size_t i = start; i < end; i++) {
-			double* val = sims[i]->GetValue(cxt.arg(0).as_string())->Matrix(&r, &c);
+			double* val = sims[i]->GetValue(cxt.arg(0).as_string())->Matrix(&nr, &nc);
 			lk::vardata_t* rows = nullptr;
 			if (singleVal > -1) {
 				out.empty_vector();
-				out.vec()->resize(r);
+				out.vec()->resize(nr);
 				rows = &out;
 			}
 			else {
 				rows = out.index(i);
 				rows->empty_vector();
-				rows->vec()->resize(r);
+				rows->vec()->resize(nr);
 			}
-			for (size_t n = 0; n < r; n++) {
+			for (size_t n = 0; n < nr; n++) {
 				lk::vardata_t *col = rows->index(n);
 				col->empty_vector();
-				col->vec()->resize(c);
-				for (size_t m = 0; m < c; m++) {
-					col->index(m)->assign(val[ n*c+m ]);				
+				col->vec()->resize(nc);
+				for (size_t m = 0; m < nc; m++) {
+					col->index(m)->assign(val[ n*nc+m ]);				
 				}
 			}
 		}
