@@ -1577,10 +1577,6 @@ static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_
     var_table* vt = static_cast<var_table*>(p_dat);
 
     var_data* vd = vt->lookup_match_case(name);
-//    unsigned char ssc_to_lk_types[8] = {lk::vardata_t::NULLVAL, lk::vardata_t::STRING, lk::vardata_t::NUMBER,
-//                                      lk::vardata_t::VECTOR, lk::vardata_t::VECTOR, lk::vardata_t::HASH,
-//                                      lk::vardata_t::VECTOR, lk::vardata_t::VECTOR};
-//    out.type = ssc_to_lk_types[vd->type];
     if (vd) convert_sscvar_to_lkvar(out, vd);
 }
 
@@ -4763,6 +4759,9 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     if (!lk::json_read(curl.GetDataAsString(), results, &err))
         cxt.result().assign("<ReOpt-error> " + err);
 
+	if (auto err_vd = results.lookup("error"))
+		throw lk::error_t(err_vd->lookup("message")->str());
+
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
     poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
@@ -4785,7 +4784,6 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
             cxt.result().assign("<json-error> " + err);
         if (lk::vardata_t* res = cxt_result->lookup("outputs"))
             optimizing_status = res->lookup("Scenario")->lookup("status")->as_string();
-        sleep(4);
     }
     dlg.Close();
 }
