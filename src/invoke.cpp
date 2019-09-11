@@ -1534,7 +1534,7 @@ static void convert_sscvar_to_lkvar( lk::vardata_t &out, var_data* vd )
                 }
             break;
         }
-        case SSC_DATAARR: {
+        case SSC_DATARR: {
             std::vector<var_data> arr = vd->vec;
             int n = arr.size();
             if (n > 0) {
@@ -4704,6 +4704,14 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     if (!base_case.GetInputsSSCData(p_data))
         throw lk::error_t(ssc_data_get_string(p_data, "error"));
 
+    // to get the total losses, need to run simulation
+    auto loss_output = base_case.GetOutput("annual_total_loss_percent");
+    if (!loss_output){
+        base_case.Invoke();
+        loss_output = base_case.GetOutput("annual_total_loss_percent");
+    }
+    ssc_data_set_number(p_data, "losses", loss_output->Value());
+
     // copy variables from UI which are not cmod variables
     ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
     ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
@@ -4768,7 +4776,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
     curl = wxEasyCurl();
     cxt.result().hash_item("response", lk::vardata_t());
-    lk::vardata_t* cxt_result = cxt.result().lookup("ReOpt");
+    lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
     MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...", "reopt_size_battery", wxCENTER, wxDefaultPosition, wxDefaultSize);
     dlg.Show();

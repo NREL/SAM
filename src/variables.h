@@ -37,6 +37,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <lk/absyn.h>
 #include <lk/eval.h>
 
+#include <shared/lib_util.h>
+#include <ssc/vartab.h>
+
 #include "object.h"
 
 class VarValue;
@@ -50,6 +53,8 @@ class VarDatabase;
 #define VV_MATRIX 3
 #define VV_TABLE 5
 #define VV_BINARY 6
+#define VV_DATARR 7
+#define VV_DATMAT 8
 
 extern wxString vv_strtypes[7];
 
@@ -60,6 +65,7 @@ class VarTable : public VarTableBase
 public:
 	VarTable();
 	VarTable( const VarTable &rhs );
+	VarTable( var_table* rhs);
 	~VarTable();
 
 	VarTable &operator=( const VarTable &rhs );
@@ -96,10 +102,11 @@ public:
 	explicit VarValue( bool b );
 	explicit VarValue( double f );
 	explicit VarValue( const std::vector<double> &f );
-	explicit VarValue( const matrix_t<double> &m );
+	explicit VarValue( const util::matrix_t<double> &m );
 	explicit VarValue( const wxString &s );
 	explicit VarValue( const VarTable &t );
 	explicit VarValue( const wxMemoryBuffer &mb );
+	explicit VarValue( var_data *vd);
 
 	VarValue( double *arr, size_t n );
 	VarValue( double *mat, size_t r, size_t c );
@@ -116,6 +123,8 @@ public:
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &);
 
+	var_data AsSSCVar();
+
 	int Type() const;
 	wxString TypeAsString() const;
 	void ChangeType(int type);
@@ -127,7 +136,7 @@ public:
 	void Set( const std::vector<double> &fvec );
 	void Set(double *val, size_t n);
 	void Set(double *mat, size_t r, size_t c);
-	void Set(const ::matrix_t<double> &mat);
+	void Set(const util::matrix_t<double> &mat);
 	void Set( const wxString &str );
 	void Set( const VarTable &tab );
 	void Set( const wxMemoryBuffer &mb );
@@ -141,13 +150,16 @@ public:
 	size_t Rows(); 
 	size_t Columns();
 	std::vector<int> IntegerArray();
-	::matrix_t<double> &Matrix();
+	util::matrix_t<double> &Matrix();
 	double *Matrix( size_t *nr, size_t *nc );
 	wxString String();
 	VarTable &Table();
 	wxMemoryBuffer &Binary();
+	std::vector<VarValue>& DataArray();
+    std::vector<std::vector<VarValue>>& DataMatrix();
 
-	bool Read( const lk::vardata_t &val, bool change_type = false );
+
+    bool Read( const lk::vardata_t &val, bool change_type = false );
 	bool Write( lk::vardata_t &val );
 
 	static bool Parse( int type, const wxString &str, VarValue &val );
@@ -156,10 +168,13 @@ public:
 	static VarValue Invalid;
 private:
 	unsigned char m_type;
-	::matrix_t<double> m_val;
+	util::matrix_t<double> m_val;
 	wxString m_str;
 	VarTable m_tab;
 	wxMemoryBuffer m_bin;
+	std::vector<VarValue> m_datarr;
+    std::vector<std::vector<VarValue>> m_datmat;
+
 };
 
 #define VF_NONE                0x00

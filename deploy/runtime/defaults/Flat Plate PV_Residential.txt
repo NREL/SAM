@@ -1,5 +1,5 @@
 1
-973
+974
 6par_aisc
 1
 1
@@ -6279,6 +6279,12 @@ utility_bill_data
 12
 300 300 300 300 300 400 500 500 400 300 300 300 
 
+value_of_lost_load
+1
+1
+1
+1
+100
 vdcmax_inverter
 1
 1
