@@ -398,12 +398,32 @@ function cf_project_cash_flows()
 		cfline('cf_sponsor_operating_activities', 0);
 		cfline('');
 		cfline('Developer Investing Activities:', -1); /////////////////
+/*		cfline('sale_of_property', 0);
+		cfline('purchase_of_plant', 0);
+		cfline('distribution_of_development_fee',0);
+		cfline('cf_net_salvage_value',0,-1,0);
+		cfline('cf_sponsor_wcra', 0); 
+		cfline('cf_sponsor_receivablesra', 0); 
+		cfline('cf_sponsor_me1ra', 0); 
+		cfline('cf_sponsor_me2ra', 0); 
+		cfline('cf_sponsor_me3ra', 0); 
+		cfline('cf_sponsor_me1cs', 0); 
+		cfline('cf_sponsor_me2cs', 0); 
+		cfline('cf_sponsor_me3cs', 0); */
 		cfline('sale_of_property', 0);
 		cfline('purchase_of_plant', 0);
-		cfline('cf_net_salvage_value',0,-1,0);
 		cfline('distribution_of_development_fee',0);
-		cfline('cf_sponsor_ra', 0); 
-		cfline('cf_sponsor_mecs', 0); 
+		cfline('cf_net_salvage_value',0,-1,0);
+		cfline('cf_funding_leasepayment', 0,-1,0);
+		cfline('cf_disbursement_leasepayment', 0,-1,0);
+		cfline('cf_sponsor_wcra', 0);
+		cfline('cf_sponsor_receivablesra', 0);
+		cfline('cf_sponsor_me1ra', 0);
+		cfline('cf_sponsor_me2ra', 0);
+		cfline('cf_sponsor_me3ra', 0);
+		cfline('cf_sponsor_me1cs', 0);
+		cfline('cf_sponsor_me2cs', 0);
+		cfline('cf_sponsor_me3cs', 0);
 		cfline('cf_sponsor_investing_activities', 0); 
 		cfline('');
 		cfline('Developer Financing Activities:', -1); /////////////////
