@@ -32,6 +32,68 @@ Wave Energy Converter
 Bold
 2
 1
+Numeric
+
+1
+17
+Name
+5
+18
+device_rated_power
+X
+3
+195
+Y
+3
+129
+Width
+3
+102
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Library
 
 1
@@ -69,8 +131,8 @@ DataMatrix
 27
 Name
 5
-20
-lib_wave_power_curve
+21
+lib_wave_power_matrix
 X
 3
 39
@@ -224,76 +286,14 @@ Wave Power Matrix (kW)
 Bold
 2
 1
-Numeric
-
-1
-17
-Name
-5
-14
-rated_capacity
-X
-3
-195
-Y
-3
-129
-Width
-3
-102
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 DataMatrix
 
 1
 27
 Name
 5
-21
-user_wave_power_curve
+22
+user_wave_power_matrix
 X
 3
 45
@@ -423,7 +423,21 @@ TabOrder
 3
 7
 
+7
+device_rated_power
+3
+1
+Device Rated Power
+kW
+MHK Wave Device
+0
 8
+1
+1
+1
+1
+280
+Default
 lib_wave_device
 3
 4
@@ -438,10 +452,10 @@ Wave_Devices|0
 8
 Device 1
 Library
-lib_wave_power_curve
+lib_wave_power_matrix
 3
 3
- 
+Library WEC power matrix
  
 MHK Wave Device
 0
@@ -467,39 +481,11 @@ Select WEC from library| Input WEC characteristics
 1
 0
 Default
-rated_capacity
+user_wave_power_matrix
 3
-1
-Device Rated Capacity
+3
+ User input WEC power matrix
 kW
-MHK Wave Device
-0
-8
-1
-1
-1
-1
-280
-Default
-user_specified_power_curve
-3
-1
- 
- 
-MHK Wave Device
-0
-0
-1
-1
-1
-1
-0
-CheckBox
-user_wave_power_curve
-3
-3
- 
- 
 MHK Wave Device
 0
 0
@@ -522,11 +508,11 @@ MHK Wave Device
 8
 Device 1
 TextEntry
-wave_power_curve
+wave_power_matrix
 3
 3
- 
- 
+ Power Matrix for Wave Device
+kW
 MHK Wave Device
 0
 8
@@ -537,34 +523,35 @@ MHK Wave Device
 0
 Default
 
-374
-equations{ 'rated_capacity' } = define () 
+376
+equations{ 'device_rated_power' } = define () 
 {
 	max_power = 0;
-	mat = ${wave_power_curve};
+	mat = ${wave_power_matrix};
 	for (r=1;r<#mat; r++)
 		for (c=1; c<#mat[0];c++)
 			if (mat[r][c] > max_power) max_power = mat[r][c];
 	return max_power;
 };
 
-equations{ 'wave_power_curve' } = define()
+equations{ 'wave_power_matrix' } = define()
 {
-	if (${user_specified_power_curve})
-		return ${user_wave_power_curve};
+	if (${library_or_input_wec})
+		return ${user_wave_power_matrix};
 	else
-		return ${lib_wave_power_curve};
+		return ${lib_wave_power_matrix};
 };
 
-652
+666
 
 function update_controls()
 {
 	input_wec = (value("library_or_input_wec") == 1);
-	show("user_wave_power_curve", input_wec);
+	show("user_wave_power_matrix", input_wec);
 	show("lib_wave_device", !input_wec);
-	show("lib_wave_power_curve", !input_wec);
+	show("lib_wave_power_matrix", !input_wec);
 	show('wave_device_name', !input_wec);
+	refresh();
 }
 
 

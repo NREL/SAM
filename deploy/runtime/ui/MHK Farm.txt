@@ -1587,9 +1587,9 @@ m
 50
 Default
 
-993
+1001
 equations{ 'system_capacity' } = define() {
-	return ${number_devices} * ${rated_capacity};
+	return ${number_devices} * ${device_rated_power};
 };
 
 equations{ '$MIMO$ MHKFarmLayout' } = define() {
@@ -1600,7 +1600,7 @@ equations{ '$MIMO$ MHKFarmLayout' } = define() {
 	}
 	else if (${array_sizing_mode} == 1) //specify nameplate
 	{
-		num = round(${desired_array_size} / ${rated_capacity});
+		num = round(${desired_array_size} / ${device_rated_power});
 		if (num <=1) num = 1;
 		//assume they're laid out in roughly a square
 		rows = floor(sqrt(num));
