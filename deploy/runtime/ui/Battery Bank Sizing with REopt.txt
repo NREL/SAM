@@ -1075,7 +1075,7 @@ value_of_lost_load
 Numeric
 
 0
-2225
+2354
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1128,17 +1128,23 @@ function set_bank_sizing()
 on_change{'call_reopt'} = define(){
 	reopt = reopt_size_battery();
 	y = reopt.response;
+
+	if (y.outputs.Scenario.status != "optimal")
+		msgbox(y.outputs.Scenario.status);
+
 	pv = y.outputs.Scenario.Site.PV;
 	batt = y.outputs.Scenario.Site.Storage;
 	elec = y.outputs.Scenario.Site.ElectricTariff;
 
+	if (!batt.size_kw){
+		value('batt_bank_power', 0.0);
+		value('batt_bank_size', 0.0);
+	}
 
 	batt_to_grid = null;
 	if (batt.year_one_to_grid_series_kw)
 		batt_to_grid = batt.year_one_to_grid_series_kw;
 	batt_to_load = batt.year_one_to_load_series_kw;
-	outln(batt_to_grid);
-	outln(batt_to_load);
 	pv_charge = pv.year_one_to_battery_series_kw;
 	grid_charge = elec.year_one_to_battery_series_kw;
 

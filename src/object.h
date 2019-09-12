@@ -33,6 +33,10 @@ using std::unordered_map;
 #include <wx/hashmap.h>
 #include <wx/stream.h>
 
+#include <shared/lib_util.h>
+
+template<typename T>
+using matrix_t = util::matrix_t<T>;
 
 class Object
 {

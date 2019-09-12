@@ -4692,38 +4692,93 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     // check if case exists and is correct configuration
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
-    if (!sam_case || (sam_case->GetTechnology() != "Flat Plate PV" ||
+    if (!sam_case || ((sam_case->GetTechnology() != "Flat Plate PV" && sam_case->GetTechnology() != "PVWatts") ||
             (sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commerical" &&
              sam_case->GetFinancing() != "Single Owner" && sam_case->GetFinancing() != "Host Developer")))
-        throw lk::error_t("Must be run from Detailed Photovoltaic case with Residential, Commercial, Single owner or Host Developer model.");
+        throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Single owner or Host Developer model.");
+    bool pvsam = sam_case->GetTechnology() == "Flat Plate PV";
 
     Simulation base_case = sam_case->BaseCase();
-    if (!base_case.GetInput("en_batt")->Boolean())
+    base_case.Invoke();
+    if ((pvsam && !base_case.GetInput("en_batt")->Boolean()) || (!pvsam && !base_case.GetInput("batt_simple_enable")->Boolean()))
         throw lk::error_t("Battery must be enabled.");
 
-    if (!base_case.GetInputsSSCData(p_data))
-        throw lk::error_t(ssc_data_get_string(p_data, "error"));
-
-    // to get the total losses, need to run simulation
-    auto loss_output = base_case.GetOutput("annual_total_loss_percent");
-    if (!loss_output){
-        base_case.Invoke();
-        loss_output = base_case.GetOutput("annual_total_loss_percent");
+    //
+    // copy over required inputs from SAM
+    //
+    VarValue* losses;
+    if (pvsam){
+        losses = base_case.GetOutput("annual_total_loss_percent");
     }
-    ssc_data_set_number(p_data, "losses", loss_output->Value());
-
-    // copy variables from UI which are not cmod variables
+    else{
+        losses = base_case.GetInput("losses");
+    }
+    ssc_data_set_number(p_data, "losses", losses->Value());
     ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
     ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
-    ssc_data_set_number(p_data, "battery_per_kW", base_case.GetInput("battery_per_kW")->Value());
-    ssc_data_set_number(p_data, "battery_per_kWh", base_case.GetInput("battery_per_kWh")->Value());
-    if (auto rep = base_case.GetInput("batt_replacement_cost"))
-        ssc_data_set_number(p_data, "batt_replacement_cost", rep->Value());
-    std::vector<double> load_v = base_case.GetInput("crit_load_user_data")->Array();
-    ssc_data_set_array(p_data, "crit_load_user_data", &load_v[0], load_v.size());
-    load_v = base_case.GetInput("load_user_data")->Array();
-    ssc_data_set_array(p_data, "load_user_data", &load_v[0], load_v.size());
-	ssc_data_set_number(p_data, "value_of_lost_load", base_case.GetInput("value_of_lost_load")->Value());
+
+    auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){
+        for (auto& i : captured_vec){
+            auto vd = base_case.GetValue(i);
+            if (vd){
+                switch(vd->Type()){
+                    case VV_NUMBER:
+                        ssc_data_set_number(p_data, i.c_str(), vd->Value());
+                        break;
+                    case VV_ARRAY:{
+                        size_t n;
+                        double* arr = vd->Array(&n);
+                        ssc_data_set_array(p_data, i.c_str(), arr, n);
+                        break;
+                    }
+                    case VV_MATRIX:{
+                        size_t n, m;
+                        double* mat = vd->Matrix(&n, &m);
+                        ssc_data_set_matrix(p_data, i.c_str(), mat, n, m);
+                        break;
+                    }
+                    default:
+                        throw lk::error_t("reoopt_size_battery input error: " + i + " type must be number, array or matrix");
+                }
+            }
+        }
+    };
+
+    std::vector<std::string> pvwatts_vars = {"array_type", "azimuth", "tilt",  "gcr", "inv_eff", "dc_ac_ratio"};
+
+    std::vector<std::string> pvsam_vars = {"subarray1_track_mode", "subarray1_backtrack", "subarray1_azimuth",
+                                           "subarray1_tilt", "subarray1_gcr", "inverter_model", "inverter_count",
+                                           "inv_snl_eff_cec", "inv_ds_eff", "inv_pd_eff", "inv_cec_cg_eff",
+                                           "inv_snl_paco", "inv_ds_paco", "inv_pd_paco", "inv_cec_cg_paco",
+                                           "batt_dc_ac_efficiency", "batt_ac_dc_efficiency", "batt_initial_SOC",
+                                           "batt_minimum_SOC"};
+
+    if (pvsam){
+        copy_vars_into_ssc_data(pvsam_vars);
+    }
+    else{
+        copy_vars_into_ssc_data(pvwatts_vars);
+    }
+
+    std::vector<std::string> pv_vars = {"degradation", "itc_fed_percent", "system_capacity",
+                                        "pbi_fed_amount", "pbi_fed_term", "ibi_sta_percent", "ibi_sta_percent_maxvalue",
+                                        "ibi_uti_percent", "ibi_uti_percent_maxvalue", "om_fixed", "om_production",
+                                        "total_installed_cost", "depr_bonus_fed", "depr_bonus_fed"};
+
+    std::vector<std::string> batt_vars = {"battery_per_kW", "battery_per_kWh", "om_replacement_cost1", "batt_replacement_schedule"};
+
+    std::vector<std::string> rate_vars = {"ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
+                                          "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
+                                          "ur_ec_tou_mat", "load_user_data", "crit_load_user_data"};
+
+    std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
+                                         "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
+                                         "total_installed_cost", "value_of_lost_load"};
+
+    copy_vars_into_ssc_data(pv_vars);
+    copy_vars_into_ssc_data(batt_vars);
+    copy_vars_into_ssc_data(rate_vars);
+    copy_vars_into_ssc_data(fin_vars);
 
     try{
         Reopt_size_battery_params(p_data);
@@ -4768,8 +4823,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     if (!lk::json_read(curl.GetDataAsString(), results, &err))
         cxt.result().assign("<ReOpt-error> " + err);
 
-	if (auto err_vd = results.lookup("error"))
-		throw lk::error_t(err_vd->lookup("message")->str());
+	if (auto err_vd = results.lookup("messages"))
+		throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
 
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
@@ -4778,7 +4833,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...", "reopt_size_battery", wxCENTER, wxDefaultPosition, wxDefaultSize);
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...", "reopt_size_battery",
+            wxCENTER, wxDefaultPosition, wxDefaultSize);
     dlg.Show();
     wxGetApp().Yield( true );
     std::string optimizing_status = "Optimizing...";
