@@ -1098,7 +1098,7 @@ bool ScanWaveResourceData(const wxString &db_file, bool show_busy)
 	csv(2, 13) = "file_name";
 
 	csv(0, 14) = "Frequency distribution";
-	csv(2, 14) = "freq_distribution";
+	csv(2, 14) = "wave_resource_matrix";
 
 	int row = 3;
 	wxString file;
@@ -1109,7 +1109,7 @@ bool ScanWaveResourceData(const wxString &db_file, bool show_busy)
 		wxString wf = path + "/" + file;
 
 		ssc_data_t pdata = ssc_data_create();
-		ssc_data_set_string(pdata, "file_name", (const char*)wf.c_str());
+		ssc_data_set_string(pdata, "wave_resource_filename", (const char*)wf.c_str());
 
 		if (const char *err = ssc_module_exec_simple_nothread("wave_file_reader", pdata))
 		{
@@ -1167,7 +1167,7 @@ bool ScanWaveResourceData(const wxString &db_file, bool show_busy)
 
 			csv(row, 13) = ff.GetFullPath();
 
-			if ((mat = ssc_data_get_matrix(pdata, "freq_distribution", &nrows, &ncols)) != 0)
+			if ((mat = ssc_data_get_matrix(pdata, "wave_resource_matrix", &nrows, &ncols)) != 0)
 			{
 				wxString wstr =  "";
 				for (int r = 0; r < nrows; r++)
