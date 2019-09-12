@@ -4694,8 +4694,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
     if (!sam_case || ((sam_case->GetTechnology() != "Flat Plate PV" && sam_case->GetTechnology() != "PVWatts") ||
             (sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commerical" &&
-             sam_case->GetFinancing() != "Single Owner" && sam_case->GetFinancing() != "Host Developer")))
-        throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Single owner or Host Developer model.");
+             sam_case->GetFinancing() != "Third Party" && sam_case->GetFinancing() != "Host Developer")))
+        throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Third Party or Host Developer model.");
     bool pvsam = sam_case->GetTechnology() == "Flat Plate PV";
 
     Simulation base_case = sam_case->BaseCase();
@@ -4744,7 +4744,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         }
     };
 
-    std::vector<std::string> pvwatts_vars = {"array_type", "azimuth", "tilt",  "gcr", "inv_eff", "dc_ac_ratio"};
+    std::vector<std::string> pvwatts_vars = {"array_type", "azimuth", "tilt",  "gcr", "inv_eff", "dc_ac_ratio",
+											 "module_type"};
 
     std::vector<std::string> pvsam_vars = {"subarray1_track_mode", "subarray1_backtrack", "subarray1_azimuth",
                                            "subarray1_tilt", "subarray1_gcr", "inverter_model", "inverter_count",

@@ -757,8 +757,8 @@ Height
 45
 Caption
 5
-300
-Use from the current SAM case the lat/lon from Location and Resource, System Design parameters, subarray 1 Losses, System Costs, Electricity Rates and Electric Load settings to determine for the current PV system design the optimal power, capacity and dispatch of a Li-Ion battery from the REopt API.
+296
+Use from the current case the lat/lon from Location and Resource, System Design parameters, subarray 1 Losses, System Costs, Electricity Rates and Electric Load settings to determine for the current PV system design the optimal power, capacity and dispatch of a Li-Ion battery from the REopt API.
 TextColour
 4
 0
@@ -1075,7 +1075,7 @@ value_of_lost_load
 Numeric
 
 0
-2354
+2378
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1149,6 +1149,7 @@ on_change{'call_reopt'} = define(){
 	grid_charge = elec.year_one_to_battery_series_kw;
 
 	value('batt_dispatch_choice', 3);
+	value('batt_chem', 1);
 	value('batt_bank_power', batt.size_kw);
 	value('batt_bank_size', batt.size_kwh);
 
