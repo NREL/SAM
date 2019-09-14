@@ -35,7 +35,7 @@ Bold
 DataMatrix
 
 1
-26
+27
 Name
 5
 14
@@ -76,7 +76,10 @@ RowLabels
 ShadeR0C0
 2
 0
-LeftSideLabel
+VerticalLabel
+5
+0
+HorizontalLabel
 5
 0
 ShadeC0

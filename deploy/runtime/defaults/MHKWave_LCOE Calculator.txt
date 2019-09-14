@@ -1,5 +1,5 @@
 1
-116
+123
 array_cable_system_cost
 1
 1
@@ -154,6 +154,38 @@ development_cost_modeled
 1
 1
 0
+device_characteristic_diameter
+1
+1
+1
+1
+30
+device_foundation
+1
+4
+8
+Floating
+device_mass
+1
+1
+1
+1
+687
+device_material
+1
+4
+9
+A36 Steel
+device_mooring
+1
+4
+13
+Slack Mooring
+device_pto_type
+1
+4
+20
+Hydraulic Drivetrain
 device_rated_power
 1
 1
@@ -166,6 +198,11 @@ device_spacing_in_row
 1
 1
 600
+device_tech_type
+1
+4
+12
+Heaving Buoy
 devices_per_row
 1
 1
