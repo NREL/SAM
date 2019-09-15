@@ -102,7 +102,7 @@ public:
 	explicit VarValue( bool b );
 	explicit VarValue( double f );
 	explicit VarValue( const std::vector<double> &f );
-	explicit VarValue( const util::matrix_t<double> &m );
+	explicit VarValue( const matrix_t<double> &m );
 	explicit VarValue( const wxString &s );
 	explicit VarValue( const VarTable &t );
 	explicit VarValue( const wxMemoryBuffer &mb );
@@ -136,7 +136,7 @@ public:
 	void Set( const std::vector<double> &fvec );
 	void Set(double *val, size_t n);
 	void Set(double *mat, size_t r, size_t c);
-	void Set(const util::matrix_t<double> &mat);
+	void Set(const matrix_t<double> &mat);
 	void Set( const wxString &str );
 	void Set( const VarTable &tab );
 	void Set( const wxMemoryBuffer &mb );
@@ -150,7 +150,7 @@ public:
 	size_t Rows(); 
 	size_t Columns();
 	std::vector<int> IntegerArray();
-	util::matrix_t<double> &Matrix();
+	matrix_t<double> &Matrix();
 	double *Matrix( size_t *nr, size_t *nc );
 	wxString String();
 	VarTable &Table();
@@ -168,7 +168,7 @@ public:
 	static VarValue Invalid;
 private:
 	unsigned char m_type;
-	util::matrix_t<double> m_val;
+	matrix_t<double> m_val;
 	wxString m_str;
 	VarTable m_tab;
 	wxMemoryBuffer m_bin;

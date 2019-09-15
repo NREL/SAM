@@ -503,7 +503,7 @@ VarValue::VarValue( double *mat, size_t r, size_t c )
 	m_val.assign( mat, r, c );
 }
 
-VarValue::VarValue( const util::matrix_t<double> &m )
+VarValue::VarValue( const matrix_t<double> &m )
 {
 	m_type = VV_MATRIX;
 	m_val = m;
@@ -1036,7 +1036,7 @@ void VarValue::Set( const std::vector<double> &fvec )
 
 void VarValue::Set( double *val, size_t n ) { m_type = VV_ARRAY; m_val.assign( val, n ); }
 void VarValue::Set(double *mat, size_t r, size_t c ) { m_type = VV_MATRIX; m_val.assign( mat, r, c ); }
-void VarValue::Set( const util::matrix_t<double> &mat ) { m_type = VV_MATRIX; m_val = mat; }
+void VarValue::Set( const matrix_t<double> &mat ) { m_type = VV_MATRIX; m_val = mat; }
 void VarValue::Set( const wxString &str ) { m_type = VV_STRING; m_str = str; }
 void VarValue::Set( const VarTable &tab ) { m_type = VV_TABLE; m_tab.Copy( tab ); }
 void VarValue::Set( const wxMemoryBuffer &mb ) { m_type = VV_BINARY; m_bin = mb; }
@@ -1116,7 +1116,7 @@ std::vector<int> VarValue::IntegerArray()
 		return std::vector<int>();
 }
  
-util::matrix_t<double> &VarValue::Matrix()
+matrix_t<double> &VarValue::Matrix()
 {
 	return m_val;
 }
@@ -1274,7 +1274,7 @@ bool VarValue::Write( lk::vardata_t &val )
 		break;
 	case VV_MATRIX:
 		{
-			util::matrix_t<double> &mat = Matrix();
+			matrix_t<double> &mat = Matrix();
 			val.empty_vector();
 			val.vec()->reserve( mat.nrows() );
 			for (size_t i=0;i<mat.nrows();i++)

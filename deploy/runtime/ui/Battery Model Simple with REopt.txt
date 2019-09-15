@@ -128,8 +128,8 @@ Numeric
 16
 Name
 5
-15
-batt_simple_kw1
+14
+batt_simple_kw
 X
 3
 153
