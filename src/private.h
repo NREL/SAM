@@ -26,7 +26,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 static const char *version_label = 0; //"iscc-ge"; 
 
 // API keys for SAM to use with developer.nrel.gov services.
-const char *sam_api_key ="XqqOzDrg4qGUhC4EmdS2838PQZonRoKxN4Hfx4T4";
+const char *sam_api_key ="";
 
 
 // Google APIs:
