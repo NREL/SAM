@@ -4785,7 +4785,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     }
     catch( std::exception& e){
         ssc_data_free(p_data);
-        throw lk::error_t(e.what());
+        cxt.error(e.what());
+        return;
     }
 
     const char* log = ssc_data_get_string(p_data, "log");
@@ -4825,6 +4826,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
 	if (auto err_vd = results.lookup("messages"))
 		throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
+    if (auto err_vd = results.lookup("error"))
+        throw lk::error_t(err_vd->as_string() );
 
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
