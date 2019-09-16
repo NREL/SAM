@@ -1,7 +1,7 @@
 Battery Model Simple with REopt
-595
-313
-10
+1141
+433
+13
 GroupBox
 
 1
@@ -21,12 +21,91 @@ Width
 572
 Height
 3
-306
+387
 Caption
 5
 13
 Battery Bank 
 Bold
+2
+1
+DataArray
+
+1
+9
+Name
+5
+20
+batt_custom_dispatch
+X
+3
+246
+Y
+3
+165
+Width
+3
+90
+Height
+3
+24
+Mode
+3
+1
+Label
+5
+29
+Battery custom dispatch input
+Description
+5
+156
+Custom battery dispatch allows a user to get the dispatch from another tool and input into SAM directly.  Power < 0 for charging, Power > 0 for discharging.
+TabOrder
+3
+4294967295
+Label
+
+1
+12
+Name
+5
+19
+batt_dispatch_label
+X
+3
+42
+Y
+3
+138
+Width
+3
+492
+Height
+3
+27
+Caption
+5
+75
+Input a custom battery power dispatch (<0 for charging, >0 for discharging)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 Choice
@@ -250,16 +329,16 @@ Name
 batt_size_label
 X
 3
-24
+33
 Y
 3
-159
+237
 Width
 3
-543
+525
 Height
 3
-57
+60
 Caption
 5
 274
@@ -298,7 +377,7 @@ X
 342
 Y
 3
-243
+315
 Width
 3
 162
@@ -325,7 +404,7 @@ X
 24
 Y
 3
-138
+120
 Width
 3
 543
@@ -341,6 +420,33 @@ Colour
 120
 120
 255
+Caption
+5
+15
+Custom Dispatch
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+8
+object 4
+X
+3
+21
+Y
+3
+219
+Width
+3
+546
+Height
+3
+153
 Caption
 5
 38
@@ -361,7 +467,7 @@ X
 147
 Y
 3
-243
+315
 Width
 3
 90
@@ -536,13 +642,18 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-1655
+2374
 on_load{'Battery Model Simple with REopt'} = define()
 {
 	check_enabled();
 	on_change{"batt_simple_enable"};
+	
 };
 on_change{"batt_simple_enable"} = define(){check_enabled();};
+
+on_change{"batt_simple_dispatch"} = define(){
+	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
+};
 
 function check_enabled()
 {
@@ -556,6 +667,7 @@ function check_enabled()
 	enable("batt_simple_chemistry", enable_battery);
 	enable("value_of_lost_load", enable_battery);
 	enable("call_reopt", enable_battery);
+	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
 }
 
 on_change{'call_reopt'} = define(){
@@ -569,11 +681,24 @@ on_change{'call_reopt'} = define(){
 	batt = y.outputs.Scenario.Site.Storage;
 	elec = y.outputs.Scenario.Site.ElectricTariff;
 
-	if (!batt.size_kw){
-		value('batt_simple_kw', 0.0);
-		value('batt_simple_kwh', 0.0);
+	if (!batt.size_kw && !batt.size_kwh){
+		apply_str = "Apply results?\nOptimal capacity: " + to_string(0) + 
+			"\nOptimal power: " + to_string(0) + "\nOverride " + 
+			"'Battery capacity' and 'Battery power' with results?";
+		apply = yesno(apply_str);
+		if (apply){
+			value('batt_simple_kw', 0.0);
+			value('batt_simple_kwh', 0.0);
+		}
 	}
 
+	apply_str = "Apply results?\nOptimal capacity: " + to_string(batt.size_kwh) + 
+		"\nOptimal power: " + to_string(batt.size_kw) + "\nOverride " +
+		"'Battery capacity', 'Battery power', and 'Custom Dispatch' with results?";
+	apply = yesno(apply_str);
+	if (!apply)
+		exit;
+	
 	batt_to_grid = null;
 	if (batt.year_one_to_grid_series_kw)
 		batt_to_grid = batt.year_one_to_grid_series_kw;
