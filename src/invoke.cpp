@@ -4701,7 +4701,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     Simulation base_case = sam_case->BaseCase();
     base_case.Clear();
     base_case.Prepare();
-    base_case.Invoke();
+    bool success = base_case.Invoke();
+    if (!success){
+        ssc_data_free(p_data);
+        throw lk::error_t(base_case.GetErrors()[0]);
+    }
 
     //
     // copy over required inputs from SAM
