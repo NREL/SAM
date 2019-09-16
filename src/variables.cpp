@@ -561,7 +561,7 @@ VarValue::VarValue( var_data *vd){
             }
             break;
         }
-        case SSC_DATAMAT :
+        case SSC_DATMAT :
             m_type = VV_DATMAT;
             std::vector<std::vector<var_data>>* datmat = &(vd->mat);
             for (auto& i : *datmat){
@@ -979,7 +979,7 @@ var_data VarValue::AsSSCVar() {
             return vd;
         }
         case VV_DATMAT:
-            vd.type = SSC_DATAMAT;
+            vd.type = SSC_DATMAT;
             auto m = &(vd.mat);
             for (auto& i : m_datmat){
                 std::vector<var_data> row;

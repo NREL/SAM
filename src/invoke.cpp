@@ -1549,7 +1549,7 @@ static void convert_sscvar_to_lkvar( lk::vardata_t &out, var_data* vd )
             }
             break;
         }
-        case SSC_DATAMAT: {
+        case SSC_DATMAT: {
             std::vector<std::vector<var_data>> mat = vd->mat;
             int nr = mat.size(), nc;
             if (nr > 0) nc = mat[0].size();
