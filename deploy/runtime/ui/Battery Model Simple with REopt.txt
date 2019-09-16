@@ -536,8 +536,8 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-1564
-on_load{'Battery Model Simple'} = define()
+1655
+on_load{'Battery Model Simple with REopt'} = define()
 {
 	check_enabled();
 	on_change{"batt_simple_enable"};
@@ -547,13 +547,15 @@ on_change{"batt_simple_enable"} = define(){check_enabled();};
 function check_enabled()
 {
 	enable_battery = false;
-	if (value("batt_simple_enable") == 1)
+	if (value("batt_simple_enable"))
 		enable_battery = true;
-	
+
 	enable("batt_simple_kwh", enable_battery);
 	enable("batt_simple_kw", enable_battery);
 	enable("batt_simple_dispatch", enable_battery);
 	enable("batt_simple_chemistry", enable_battery);
+	enable("value_of_lost_load", enable_battery);
+	enable("call_reopt", enable_battery);
 }
 
 on_change{'call_reopt'} = define(){

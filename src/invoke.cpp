@@ -4693,15 +4693,15 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     // check if case exists and is correct configuration
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
     if (!sam_case || ((sam_case->GetTechnology() != "Flat Plate PV" && sam_case->GetTechnology() != "PVWatts") ||
-            (sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commerical" &&
+            (sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commercial" &&
              sam_case->GetFinancing() != "Third Party" && sam_case->GetFinancing() != "Host Developer")))
         throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Third Party or Host Developer model.");
     bool pvsam = sam_case->GetTechnology() == "Flat Plate PV";
 
     Simulation base_case = sam_case->BaseCase();
+    base_case.Clear();
+    base_case.Prepare();
     base_case.Invoke();
-    if ((pvsam && !base_case.GetInput("en_batt")->Boolean()) || (!pvsam && !base_case.GetInput("batt_simple_enable")->Boolean()))
-        throw lk::error_t("Battery must be enabled.");
 
     //
     // copy over required inputs from SAM
