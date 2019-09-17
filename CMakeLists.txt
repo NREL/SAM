@@ -29,6 +29,10 @@ add_subdirectory(wex)
 add_subdirectory(ssc)
 add_subdirectory(api)
 
+#if (NOT skip_tests)
+#	add_subdirectory(test)
+#endif()
+
 if(SAMAPI_EXPORT)
 	# if this flag is set, we're on Unix building SAM_api library with libssc.so which is not compatible with SAM
 	return()
@@ -266,7 +270,7 @@ if (APPLE)
 	add_custom_command(
 		TARGET ${SAM_EXE}
 		POST_BUILD
-		COMMAND rsync -a -v --ignore-existing ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
+		COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
 		COMMAND mkdir -p ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime

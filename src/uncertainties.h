@@ -217,16 +217,18 @@ private:
 	void OnUncertaintiesSelect( wxCommandEvent & );
 	void SetCurrent( UncertaintiesCtrl *gc );
 
+    // display table of standard deviations
+    void DisplayStdDevs();
+
 	// display a set of probability of exceedances in a table
     void DisplayProbOfExceedances();
 
 	UncertaintiesCtrl *m_current;
-	MetricsTable *m_metricsTable;
+    MetricsTable *m_stddevTable;
+    MetricsTable *m_exceedanceTable;
 //	UncertaintiesProperties *m_props;
 	wxSnapLayout *m_layout;
 	std::vector<UncertaintiesCtrl*> m_Uncertainties;
-	wxMetroButton *m_delButton;
-	wxPanel *m_lpanel;
 
 	Simulation *m_sim;
 
