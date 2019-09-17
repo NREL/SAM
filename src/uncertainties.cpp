@@ -1355,12 +1355,12 @@ void UncertaintiesViewer::DisplayProbOfExceedances() {
     std::vector<double> pXX_zscores = {-2.33, -1.64, -1.28, -1.04, -.842, -.674, -.524, -.385, -.253, -.126, 0.0};
 
     VarValue* vv_aep = m_sim->GetValue("annual_energy");
-    VarValue* vv_uncert = m_sim->GetValue("total_uncert");
-    VarValue* vv_uncert_10yr = new VarValue(10);
-    VarValue* vv_uncert_20yr = new VarValue(20);
+    VarValue* vv_uncert = m_sim->GetInput("total_uncert");
+	VarValue* vv_uncert_10yr = m_sim->GetInput("total_10yr_uncert");
+    VarValue* vv_uncert_20yr = m_sim->GetInput("total_20yr_uncert");
 
 
-    if (!vv_aep || ! vv_uncert){
+    if (!vv_aep || ! vv_uncert || !vv_uncert_10yr || !vv_uncert_20yr){
         return;
     }
 
