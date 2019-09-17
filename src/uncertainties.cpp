@@ -326,7 +326,7 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	AddAnnotation(new wxPLTextAnnotation("Net Energy P50", wxRealPoint(mu2, 0.25*ymax), 2.0, 90, *wxBLUE), wxPLAnnotation::AXIS);
 	AddAnnotation(new wxPLTextAnnotation("P90", wxRealPoint(1.02* p90, 0.05*ymax), 2.0, 0, *wxBLUE), wxPLAnnotation::AXIS);
 	GetYAxis1()->Show(false);
-	GetXAxis1()->SetLabel("Annual Energy Delivered (mWh)");
+	GetXAxis1()->SetLabel("Annual Energy Delivered, Year 1 (mWh)");
 
 	SetYAxis1(new wxPLLinearAxis(0, 1.1*ymax, "Probability Density"));
 	GetYAxis1()->ShowTickText(false);
@@ -516,12 +516,12 @@ int UncertaintiesCtrl::Figure10(Simulation *sim)
 		data.push_back(wxRealPoint(x[i], y[i]));
 
 
-	AddPlot(new wxPLLinePlot(data, "Annual Energy (kWh)", wxColour("Blue")));
+	AddPlot(new wxPLLinePlot(data, "Annual Energy, Year 1 (kWh)", wxColour("Blue")));
 
 	/// X-axis
 	double max_energy = x.back();
 	double min_energy = x.front();
-	SetXAxis1(new wxPLLinearAxis(min_energy, max_energy, "Annual Energy Delivered (mWh)"));
+	SetXAxis1(new wxPLLinearAxis(min_energy, max_energy, "Annual Energy Delivered, Year 1 (mWh)"));
 
 
 	// points of interest 
@@ -1374,7 +1374,7 @@ void UncertaintiesViewer::DisplayProbOfExceedances() {
     matrix_t<wxString> metrics;
     metrics.resize( pXX_names.size()+1, 4 );
     metrics(0,0) = "PXX";
-    metrics(0,1) = "1 Yr (mWh)";
+    metrics(0,1) = "Year 1 (mWh)";
     metrics(0,2) = "10-Yr Avg (mWh)";
     metrics(0,3) = "20-Yr Avg (mWh)";
 
