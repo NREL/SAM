@@ -2281,7 +2281,7 @@ Numeric
 wake_ext_loss
 3
 1
-External Wake Loss
+External Wake
 %
 Losses
 0
@@ -2295,7 +2295,7 @@ Numeric
 wake_future_loss
 3
 1
-Future Wake Loss
+Future Wake
 %
 Losses
 0
@@ -2309,7 +2309,7 @@ Numeric
 wake_int_loss
 3
 1
-Internal Wake Loss
+Internal Wake
  %
 Losses
 0

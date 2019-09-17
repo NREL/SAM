@@ -998,7 +998,7 @@ Name
 eval_period_uncert
 X
 3
-215
+216
 Y
 3
 528
@@ -1899,7 +1899,7 @@ Width
 894
 Height
 3
-159
+186
 Caption
 5
 28
@@ -2480,6 +2480,7 @@ Caption
 5
 532
 All uncertainty components and subcomponents are assumed to be random normally-distributed (i.e. have Gaussian error distributions), and subsequently the uncertainties quoted correspond to standard deviations. These are expressed as dimensionless quantities, as a percentage in terms of either mean wind speed or energy.  A speed-to-energy “sensitivity factor”, 𝛿 (%ΔE/%ΔWS), is used to relate uncertainty in mean wind speed (% WS) to uncertainty in energy (%E), simply as a multiplier of the standard deviation in mean wind speed.
+
 TextColour
 4
 0
@@ -4275,7 +4276,7 @@ TabOrder
 3
 8
 
-54
+61
 avail_bop_uncert
 3
 1
@@ -4458,10 +4459,66 @@ Uncertainty
 1
 0
 Numeric
+eval_climate_10yr_uncert
+3
+1
+10 Year
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+eval_climate_20yr_uncert
+3
+1
+20 Year
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
 eval_climate_uncert
 3
 1
 Climate Change
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+eval_perf_10yr_uncert
+3
+1
+10 Year
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+eval_perf_20yr_uncert
+3
+1
+Year 20
 % WS
 Uncertainty
 0
@@ -4486,6 +4543,34 @@ Uncertainty
 1
 0
 Numeric
+eval_period_10yr_uncert
+3
+1
+10 Year
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+eval_period_20yr_uncert
+3
+1
+20 Year
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
 eval_period_uncert
 3
 1
@@ -4500,10 +4585,24 @@ Uncertainty
 1
 0
 Numeric
+eval_uncert_10yr_total
+3
+1
+Total Project Lifetime Variability, 10 Year
+% WS
+Uncertainty
+0
+8
+1
+1
+1
+1
+0
+Numeric
 eval_uncert_total
 3
 1
-Total Project Lifetime Variability
+Total Project Lifetime Variability, Year 1
 % WS
 Uncertainty
 0
@@ -4924,7 +5023,7 @@ Numeric
 vextrap_excess_uncert
 3
 1
-Excess Propagated Measurement Uncertainty
+Excess Propagated Measurement
 % WS
 Uncertainty
 0
@@ -4952,7 +5051,7 @@ Numeric
 vextrap_vert_uncert
 3
 1
-VE model Uncertainty
+VE model
 % WS
 Uncertainty
 0
