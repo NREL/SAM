@@ -145,22 +145,28 @@ if (APPLE)
 endif()
 
 if(DEFINED ENV{PYSAMDIR})
-    if (SAMAPI_EXPORT OR MSVC)
+    if (SAMAPI_EXPORT)
 		if (MSVC)
+		    set(SAMAPI_LIB $<TARGET_FILE_DIR:SAM_api>/$<TARGET_FILE_BASE_NAME:SAM_api>.lib)
 			add_custom_command(
                 TARGET SAM_api
                 POST_BUILD
-				COMMAND ${CMAKE_COMMAND} -E remove 
+				COMMAND ${CMAKE_COMMAND} -E remove
 					$ENV{PYSAMDIR}/files/$<TARGET_FILE_BASE_NAME:SAM_api>.lib
 					$ENV{PYSAMDIR}/files/$<TARGET_FILE_BASE_NAME:SAM_api>.dll
 			)
-		endif()
-		set(SAMAPI_LIB $<TARGET_FILE_DIR:SAM_api>/$<TARGET_FILE_BASE_NAME:SAM_api>.lib)
+            add_custom_command(
+                    TARGET SAM_api
+                    POST_BUILD
+                    COMMAND ${CMAKE_COMMAND}
+                    ARGS -E copy ${SAMAPI_LIB} $ENV{PYSAMDIR}/files
+            )
         add_custom_command(
                 TARGET SAM_api
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND}
-                ARGS -E copy $<TARGET_FILE:SAM_api> ${SAMAPI_LIB} $ENV{PYSAMDIR}/files
+                ARGS -E copy $<TARGET_FILE:SAM_api> $ENV{PYSAMDIR}/files
         )
+		endif()
     endif()
 endif()

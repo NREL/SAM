@@ -49,7 +49,9 @@
 
 #include <cmath>
 #include <numeric>
+#include <algorithm>
 
+#include <lk/stdlib.h>
 #include <wx/wx.h>
 #include <wx/gbsizer.h>
 #include <wx/srchctrl.h>
@@ -69,6 +71,8 @@
 #include <wex/metro.h>
 #include <wex/snaplay.h>
 #include <wex/matrix.h>
+
+#include <shared/lib_util.h>
 
 #include "case.h"
 #include "uncertainties.h"
@@ -243,7 +247,7 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	// Read in in Uncertainties.lk (like autographs)
 	if (VarValue *vv = m_s->GetValue("annual_gross_energy"))
 	{
-		mu1 = vv->Value();
+		mu1 = vv->Value() / 1000.;  //mWh
 	}
 	else
 		return 1;
@@ -258,7 +262,7 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 
 	if (VarValue *vv = m_s->GetValue("annual_energy"))
 	{
-		mu2 = vv->Value();
+		mu2 = vv->Value() / 1000.; //mWh
 	}
 	else
 		return 1;
@@ -317,12 +321,12 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	AddAnnotation(new wxPLLineAnnotation(LossArrow, 2, *wxBLUE, wxPLOutputDevice::SOLID, wxPLLineAnnotation::FILLED_ARROW), wxPLAnnotation::AXIS);
 
 
-	AddAnnotation(new wxPLTextAnnotation("Predicted Losses", wxRealPoint(mu2 + 0.2*(mu1 - mu2), ymax), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS);
+	AddAnnotation(new wxPLTextAnnotation("Predicted Losses\n" + std::to_string(int(mu1 - mu2)) + " mWh", wxRealPoint(mu2 + 0.2*(mu1 - mu2), ymax), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS);
 	AddAnnotation(new wxPLTextAnnotation("Gross Energy P50", wxRealPoint(mu1, 0.25*ymax), 2.0, 90, *wxBLACK), wxPLAnnotation::AXIS);
 	AddAnnotation(new wxPLTextAnnotation("Net Energy P50", wxRealPoint(mu2, 0.25*ymax), 2.0, 90, *wxBLUE), wxPLAnnotation::AXIS);
 	AddAnnotation(new wxPLTextAnnotation("P90", wxRealPoint(1.02* p90, 0.05*ymax), 2.0, 0, *wxBLUE), wxPLAnnotation::AXIS);
 	GetYAxis1()->Show(false);
-	GetXAxis1()->SetLabel("Annual Energy Delivered (kWh)");
+	GetXAxis1()->SetLabel("Annual Energy Delivered (mWh)");
 
 	SetYAxis1(new wxPLLinearAxis(0, 1.1*ymax, "Probability Density"));
 	GetYAxis1()->ShowTickText(false);
@@ -339,7 +343,7 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 	m_s = sim;
 
 	ShowGrid(false, false);
-	std::vector<wxRealPoint> data1, data2;
+	std::vector<wxRealPoint> freq_vs_speed, power_vs_speed;
 
 	// wind speed bins - need to make in cmod_windpower - missing now - only "wind_speed" timeseries array for all weather file inputs
 	// turbine curve
@@ -357,81 +361,105 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
 		tp = vv->Array(&tp_count);
 	}
 
+    if (tp_count == 0 || ws_count == 0 || tp_count != ws_count)
+        return 1;
+
+    double turb_max_power = *(std::max_element(tp, tp + tp_count));
+    double turb_max_speed = *(std::max_element(ws, ws + ws_count));
+
+    // make plot of turbine power curve
+    for (size_t i = 0; i < ws_count; i++)
+    {
+        double speed = ws[i];
+        double power = tp[i];
+        power_vs_speed.emplace_back(wxRealPoint(speed, power));
+    }
+
 	size_t wsb_count=0;
 	double *wsb=NULL;
+	double bin_width = 0.25;
+    double max_speed = 0;
+    std::vector<double> freq;
 	if (VarValue *vv = m_s->GetValue("wind_speed"))
 	{
 		wsb = vv->Array(&wsb_count);
+		max_speed = *(std::max_element(wsb, wsb + wsb_count));
+		freq = util::frequency_table(wsb, wsb_count, bin_width);
 	}
-	double max_wsb = 0;
-	for (size_t i = 0; i < wsb_count; i++)
-	{
-		if (wsb[i] > max_wsb) max_wsb = wsb[i];
-	}
-	size_t num_bins = 20;
-	std::vector<int> freq(num_bins);
-	for (size_t j = 0; j < num_bins; j++)
-		freq[j] = 0;
-	double bin_width = max_wsb / num_bins;
-	for (size_t i = 0; i < wsb_count; i++)
-	{
-		for (size_t j = 0; j< num_bins; j++)
-			if ((wsb[i] > j*bin_width) && (wsb[i] < (j+1)*bin_width)) freq[j]++;
+	else
+    {
+	    vv =  m_s->GetValue("wind_resource_model_choice");
+	    if (!vv)
+            return 1;
+	    int model = (int)vv->Value();
+	    if (model == 1){
+	        // recreate Weibull windspeed dist
+	        double weibullk = m_s->GetValue("weibull_k_factor")->Value();
+	        double hub_height = m_s->GetValue("wind_turbine_hub_ht")->Value();
+	        double ref_height = m_s->GetValue("weibull_reference_height")->Value();
+	        double shear = m_s->GetValue("wind_resource_shear")->Value();
+	        double avg_speed = m_s->GetValue("weibull_wind_speed")->Value();
+            double hub_ht_windspeed = pow( hub_height/ ref_height, shear) * avg_speed;
+            double denom = exp(lk::gammln(1.+(1./weibullk)));
+            double lambda = hub_ht_windspeed/denom;
+            double coeff = weibullk / pow(lambda,weibullk);
+
+            max_speed = *(std::max_element(ws, ws + ws_count));
+            double speed = bin_width/2.;
+            while (speed < max_speed + 1)
+            {
+                freq.push_back( coeff * pow(speed,(weibullk - 1)) * exp(-pow(speed/lambda,weibullk)));
+                speed += bin_width;
+            }
+	    }
+	    else if (model == 2){
+	        // group distribution by windspeed
+	        auto dist = m_s->GetValue("wind_resource_distribution")->Matrix();
+	        for (size_t i = 0; i < dist.nrows(); i++){
+	            if (dist.at(i,0) > max_speed) max_speed = dist.at(i, 0);
+	        }
+            freq.resize(size_t(max_speed/bin_width) + 1);
+            for (size_t i = 0; i < dist.nrows(); i++){
+                auto bin = (size_t)std::floor(dist.at(i, 0)/bin_width);
+                freq[bin] += dist.at(i, 2);
+            }
+	    }
 	}
 
-	double max_speed = max_wsb;
-
-	if (tp_count == 0 || ws_count == 0 || tp_count != ws_count)
-		return 1;
-	double max_power = 0;
-	size_t zero_power_cout = 0;
-	for (size_t i = 0; i < ws_count; i++)
-	{
-		double speed = ws[i];
-		double power = tp[i];
-		if (power > max_power) max_power = power;
-		if (speed > max_speed) max_speed = speed;
-		if ((i > (ws_count / 2)) && (power <= 0)) zero_power_cout++;
-		data2.push_back(wxRealPoint(speed, power));
-		if (zero_power_cout > 10) break;
-	}
-
-	double freq_max = 0;
-	for (size_t i = 0; i < num_bins; i++)
-	{
-		double speed = (i+0.5)*bin_width;
-		if (speed > max_speed) max_speed = speed;
-		double freq_bin = (double)freq[i]/(double)wsb_count;
-		if (freq_bin > freq_max) freq_max = freq_bin;
-		data1.push_back(wxRealPoint(speed, freq_bin));
-	}
+    for (size_t i = 0; i < freq.size(); i++)
+    {
+        double speed = (i+0.5)*bin_width;
+        freq_vs_speed.emplace_back(wxRealPoint(speed, freq[i]));
+    }
+    double max_freq = 0;
+    if (!freq.empty())
+        max_freq = *(std::max_element(freq.begin(), freq.end()));
 
  //crashing
-	std::vector<wxRealPoint> PowerLine;
-	PowerLine.push_back(wxRealPoint(max_speed, max_power));
-	PowerLine.push_back(wxRealPoint(0.5*max_speed, max_power));
-	AddAnnotation(new wxPLLineAnnotation(PowerLine, 2, *wxBLUE, wxPLOutputDevice::DASH), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
+//	std::vector<wxRealPoint> PowerLine;
+//	PowerLine.push_back(wxRealPoint(max_speed, turb_max_power));
+//	PowerLine.push_back(wxRealPoint(0.5*max_speed, turb_max_power));
+//	AddAnnotation(new wxPLLineAnnotation(PowerLine, 2, *wxBLUE, wxPLOutputDevice::DASH), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
 
 
+	AddPlot(new wxPLBarPlot(freq_vs_speed, 0.0, "Wind speed frequency", wxColour("Blue")));
+	SetYAxis1(new wxPLLinearAxis(0, 1.1 * max_freq, "Wind Speed Frequency"));
 
-	AddPlot(new wxPLBarPlot(data1, 0.0, "Wind speed frequency", wxColour("Blue")));
-	SetYAxis1(new wxPLLinearAxis(0, 1.1*freq_max, "Wind Speed Frequecy"));
-
-	AddPlot(new wxPLLinePlot(data2, "Turbine power (kW)", wxColour("Gray")), wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
-	SetYAxis2(new wxPLLinearAxis(0, 1.1*max_power, "Turbine Power (kW)"));
+	AddPlot(new wxPLLinePlot(power_vs_speed, "Turbine power (kW)", wxColour("Gray")), wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
+	SetYAxis2(new wxPLLinearAxis(0, 1.1 * turb_max_power, "Turbine Power (kW)"));
 
 
 /// X-axis
-	SetXAxis1(new wxPLLinearAxis(0,  max_speed, "Wind Speed (m/s)"));
+	SetXAxis1(new wxPLLinearAxis(0,  turb_max_speed, "Wind Speed (m/s)"));
 
 
  //Horizontal annotations 
 	std::vector<wxRealPoint> LineRatedPower;
-	LineRatedPower.push_back(wxRealPoint(0.5* max_speed, max_power));
-	LineRatedPower.push_back(wxRealPoint(max_speed, max_power));
+	LineRatedPower.push_back(wxRealPoint(0.5* turb_max_speed, turb_max_power));
+	LineRatedPower.push_back(wxRealPoint(turb_max_speed, turb_max_power));
 	AddAnnotation(new wxPLLineAnnotation(LineRatedPower, 2, wxColour("Gray"), wxPLOutputDevice::DASH), wxPLAnnotation::AXIS , wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
 
-	AddAnnotation(new wxPLTextAnnotation(wxString::Format("Rated Power %g kW", max_power), wxRealPoint(0.6* max_speed, 1.02*max_power), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
+	AddAnnotation(new wxPLTextAnnotation(wxString::Format("Rated Power %g kW", turb_max_power), wxRealPoint(0.6 * turb_max_speed, 1.02 * turb_max_power), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
 
 
 	ShowLegend(false);
@@ -451,7 +479,7 @@ int UncertaintiesCtrl::Figure10(Simulation *sim)
 
 	if (VarValue *vv = m_s->GetValue("annual_energy"))
 	{
-		mu = vv->Value();
+		mu = vv->Value() / 1000.; //mWh
 	}
 	else
 		return 1;
@@ -493,7 +521,7 @@ int UncertaintiesCtrl::Figure10(Simulation *sim)
 	/// X-axis
 	double max_energy = x.back();
 	double min_energy = x.front();
-	SetXAxis1(new wxPLLinearAxis(min_energy, max_energy, "Annual Energy Delivered (kWh)"));
+	SetXAxis1(new wxPLLinearAxis(min_energy, max_energy, "Annual Energy Delivered (mWh)"));
 
 
 	// points of interest 
@@ -1297,6 +1325,28 @@ BEGIN_EVENT_TABLE(UncertaintiesViewer, wxPanel)
 	EVT_Uncertainties_SELECT( wxID_ANY, UncertaintiesViewer::OnUncertaintiesSelect )
 END_EVENT_TABLE()
 
+void UncertaintiesViewer::DisplayStdDevs() {
+    if (!m_sim)
+        return;
+    VarValue* vv_aep = m_sim->GetValue("annual_energy");
+    VarValue* vv_uncert = m_sim->GetValue("total_uncert");
+    if (!vv_aep || !vv_uncert)
+        return;
+
+    double stddev = vv_uncert->Value()/100. * vv_aep->Value();
+    matrix_t<wxString> metrics;
+    metrics.resize( 4, 2 );
+    metrics(0,0) = "Std Dev, year 1";
+    metrics(0,1) = "Energy (mWh)";
+
+    for (size_t i = 0; i < 3; i++){
+        metrics(1+i, 0) = std::to_string(i+1);
+        metrics(1+i, 1) = wxNumericFormat( ((i+1) * stddev)/1000., wxNUMERIC_REAL,
+                                           0, true, "", "" );
+    }
+    m_stddevTable->SetData(metrics);
+}
+
 void UncertaintiesViewer::DisplayProbOfExceedances() {
     if (!m_sim)
         return;
@@ -1306,28 +1356,39 @@ void UncertaintiesViewer::DisplayProbOfExceedances() {
 
     VarValue* vv_aep = m_sim->GetValue("annual_energy");
     VarValue* vv_uncert = m_sim->GetValue("total_uncert");
+    VarValue* vv_uncert_10yr = new VarValue(10);
+    VarValue* vv_uncert_20yr = new VarValue(20);
+
 
     if (!vv_aep || ! vv_uncert){
         return;
     }
 
     double aep = vv_aep->Value();
-    double uncert = vv_uncert->Value()/100.;
+    double uncerts[3];
+    uncerts[0] = vv_uncert->Value()/100.;
+    uncerts[1] = vv_uncert_10yr->Value()/100.;
+    uncerts[2] = vv_uncert_20yr->Value()/100.;
+
 
     matrix_t<wxString> metrics;
-    metrics.resize( pXX_names.size()+1, 2 );
+    metrics.resize( pXX_names.size()+1, 4 );
     metrics(0,0) = "PXX";
-    metrics(0,1) = "Value";
+    metrics(0,1) = "1 Yr (mWh)";
+    metrics(0,2) = "10-Yr Avg (mWh)";
+    metrics(0,3) = "20-Yr Avg (mWh)";
+
 
     for( size_t i=0;i<pXX_names.size();i++ )
     {
-        double val = aep * (pXX_zscores[i] * uncert + 1);
-
         metrics(i+1, 0) = pXX_names[i];
-        metrics(i+1, 1) = wxNumericFormat( val, wxNUMERIC_REAL,
-                                           0, true, "", " kWh" );
+        for (size_t j = 0; j < 3; j++ ){
+            double val = aep * (pXX_zscores[i] * uncerts[j] + 1);
+            metrics(i+1, 1+j) = wxNumericFormat( val/1000., wxNUMERIC_REAL,
+                                               0, true, "", "" );
+        }
     }
-    m_metricsTable->SetData( metrics );
+    m_exceedanceTable->SetData(metrics );
 }
 
 UncertaintiesViewer::UncertaintiesViewer(wxWindow *parent) : wxPanel(parent, wxID_ANY)
@@ -1360,12 +1421,18 @@ UncertaintiesViewer::UncertaintiesViewer(wxWindow *parent) : wxPanel(parent, wxI
 //	splitter->SplitVertically( m_lpanel, m_layout, (int)(260*wxGetScreenHDScale()) );
 
     // add single year probability of exceedances as a metrics table
-    m_metricsTable = new MetricsTable( m_layout );
+    m_exceedanceTable = new MetricsTable(m_layout );
     matrix_t<wxString> data( 1, 2 );
     data.at(0,0) = "Metric"; data.at(0,1) = "Value";
-    m_metricsTable->SetData( data );
-    m_layout->Add( m_metricsTable );
+    m_exceedanceTable->SetData(data );
+    m_layout->Add(m_exceedanceTable );
     DisplayProbOfExceedances();
+
+    // add std dev values as a metrics table
+    m_stddevTable = new MetricsTable(m_layout );
+    m_stddevTable->SetData(data );
+    m_layout->Add(m_stddevTable );
+    DisplayStdDevs();
 
 	main_sizer->Add(m_layout, 1, wxBOTTOM | wxLEFT | wxEXPAND, 0);
 	SetSizer(main_sizer);
@@ -1468,6 +1535,7 @@ void UncertaintiesViewer::Setup( Simulation *sim )
 	}
 
 	DisplayProbOfExceedances();
+	DisplayStdDevs();
 
 }
 
