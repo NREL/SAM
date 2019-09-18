@@ -1,7 +1,7 @@
 Battery Replacements
 1000
 140
-4
+5
 GroupBox
 
 1
@@ -160,8 +160,42 @@ Battery bank replacement schedule (enter a 1 for years in which a battery replac
 TabOrder
 3
 4294967295
+DataArray
 
+1
+9
+Name
+5
+33
+batt_replacement_schedule_percent
+X
 3
+582
+Y
+3
+99
+Width
+3
+90
+Height
+3
+24
+Mode
+3
+2
+Label
+5
+32
+Battery bank replacement percent
+Description
+5
+94
+Battery bank replacement percent (enter percentage to replace every year a replacement occurs)
+TabOrder
+3
+4294967295
+
+4
 batt_replacement_capacity
 3
 1
@@ -204,9 +238,23 @@ Battery
 1
 0
 DataArray
+batt_replacement_schedule_percent
+3
+2
+Battery bank replacement percent
+ 
+Battery
+0
+0
+1
+2
+1
+1
+100
+DataArray
 
 0
-596
+653
 on_load{'Battery Replacements'} = define() {
 	on_change{'batt_replacement_option'}();
 };
@@ -227,5 +275,6 @@ on_change{ 'batt_replacement_option' } = define() {
 	
 	enable('batt_replacement_capacity', option==1);
 	enable('batt_replacement_schedule', option==2);
+	enable('batt_replacement_schedule_percent', option==2);
 };
 

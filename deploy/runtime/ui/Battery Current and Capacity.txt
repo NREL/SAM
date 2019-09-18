@@ -1,7 +1,7 @@
 Battery Current and Capacity
-997
-387
-25
+995
+426
+27
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 985
 Height
 3
-379
+421
 Caption
 5
 21
@@ -39,10 +39,10 @@ Name
 batt_C_rate_max_charge
 X
 3
-510
+168
 Y
 3
-321
+348
 Width
 3
 90
@@ -98,10 +98,10 @@ Name
 batt_C_rate_max_discharge
 X
 3
-510
+168
 Y
 3
-294
+321
 Width
 3
 90
@@ -840,7 +840,7 @@ X
 510
 Y
 3
-267
+324
 Width
 3
 90
@@ -937,7 +937,7 @@ X
 510
 Y
 3
-240
+297
 Width
 3
 90
@@ -1048,8 +1048,67 @@ Numeric
 16
 Name
 5
-21
-batt_power_charge_max
+26
+batt_power_charge_max_kwac
+X
+3
+510
+Y
+3
+240
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+26
+batt_power_charge_max_kwdc
 X
 3
 510
@@ -1107,8 +1166,67 @@ Numeric
 16
 Name
 5
+29
+batt_power_discharge_max_kwac
+X
+3
+510
+Y
+3
+213
+Width
+3
+90
+Height
+3
 24
-batt_power_discharge_max
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+29
+batt_power_discharge_max_kwdc
 X
 3
 510
@@ -1170,10 +1288,10 @@ Name
 batt_size_warning
 X
 3
-42
+39
 Y
 3
-348
+387
 Width
 3
 609
@@ -1217,7 +1335,7 @@ X
 510
 Y
 3
-213
+270
 Width
 3
 90
@@ -1345,7 +1463,7 @@ Bold
 2
 1
 
-20
+22
 batt_C_rate_max_charge
 3
 1
@@ -1434,7 +1552,7 @@ batt_cell_power_charge_max
 3
 1
 Cell max power charge
-W
+Wdc
 Battery
 0
 2
@@ -1448,7 +1566,7 @@ batt_cell_power_discharge_max
 3
 1
 Cell max power discharge
-W
+Wdc
 Battery
 0
 2
@@ -1584,11 +1702,25 @@ Battery
 1
 1
 Numeric
-batt_power_charge_max
+batt_power_charge_max_kwac
 3
 1
-Maximum charge power
-kW (DC)
+Maximum charge power (AC)
+kWac
+Battery
+0
+8
+1
+1
+1
+1
+0
+Numeric
+batt_power_charge_max_kwdc
+3
+1
+Maximum charge power (DC)
+kWdc
 Battery
 0
 8
@@ -1598,11 +1730,25 @@ Battery
 1
 0
 Default
-batt_power_discharge_max
+batt_power_discharge_max_kwac
 3
 1
-Maximum discharge power
-kW (DC)
+Maximum discharge power (AC)
+kWac
+Battery
+0
+8
+1
+1
+1
+1
+0
+Numeric
+batt_power_discharge_max_kwdc
+3
+1
+Maximum discharge power (DC)
+kWdc
 Battery
 0
 8
@@ -1627,7 +1773,7 @@ Battery
 2
 Default
 
-5949
+7554
 equations{ '$MIMO$ batt_bank_computed' } = define() {
 		
 	choice = ${batt_size_choice};
@@ -1636,11 +1782,42 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 	// if user input AC quantities, convert to DC
 	batt_bank_power = ${batt_bank_power};
 	batt_bank_capacity = ${batt_bank_size};
+	inv_eff = 96;
 	
-	if (${batt_bank_size_dc_ac} == 1)
-		batt_bank_capacity /= (${batt_dc_ac_efficiency}*0.01);
-	if (${batt_bank_power_dc_ac} == 1)
-		batt_bank_power /= (${batt_dc_ac_efficiency}*0.01);
+	// Ac-coupled
+	if (${batt_ac_or_dc} == 1)
+	{
+		// Size for AC discharge capacity
+		if (${batt_bank_size_dc_ac} == 1)
+			batt_bank_capacity /= (${batt_dc_ac_efficiency}*0.01);
+		if (${batt_bank_power_dc_ac} == 1)
+			batt_bank_power /= (${batt_dc_ac_efficiency}*0.01);
+	}
+	// DC-coupled
+	else 
+	{ 
+		inv_model = ${inverter_model};
+		if (inv_model == 0){
+			inv_eff = ${inv_snl_eff_cec};
+		}
+		else if (inv_model == 1){
+			inv_eff = ${inv_ds_eff};
+		}
+		else if (inv_model == 2){
+			inv_eff = ${inv_pd_eff};
+		}
+		else if (inv_model == 3){
+			inv_eff = ${inv_cec_cg_eff_cec};
+		}
+		inv_eff *= ${batt_dc_dc_efficiency} * 0.01 * 0.01;
+		
+		// Size for AC side discharge
+		if (${batt_bank_size_dc_ac} == 1)
+			batt_bank_capacity /= inv_eff;
+		if (${batt_bank_power_dc_ac} == 1)
+			batt_bank_power /= inv_eff;
+	}
+	
 	
 	// conventional battery
 	if (!isflow)
@@ -1682,8 +1859,8 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 		${batt_computed_strings} = num_strings; 
 		${batt_num_cells} = num_series * num_strings;
 		${batt_computed_bank_capacity} = bank_capacity;
-		${batt_power_discharge_max} = bank_power;
-		${batt_power_charge_max} = bank_power_charge;
+		${batt_power_discharge_max_kwdc} = bank_power;
+		${batt_power_charge_max_kwdc} = bank_power_charge;
 		${batt_time_capacity} = bank_capacity/bank_power;
 		${batt_C_rate_max_charge} = batt_C_rate_max_charge;
 		${batt_C_rate_max_discharge} = batt_C_rate_max_discharge;
@@ -1756,14 +1933,42 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 		${batt_computed_stacks_series} = num_stacks_series;
 		${batt_num_cells} = num_series * num_stacks_series * num_stacks_parallel;
 		${batt_computed_bank_capacity} = bank_capacity;
-		${batt_power_discharge_max} = bank_power_discharge;
-		${batt_power_charge_max} = bank_power_charge;
+		${batt_power_discharge_max_kwdc} = bank_power_discharge;
+		${batt_power_charge_max_kwdc} = bank_power_charge;
 		${batt_time_capacity} = bank_capacity/bank_power_discharge;
 		${batt_C_rate_max_charge} = batt_C_rate_max_charge;
 		${batt_C_rate_max_discharge} = batt_C_rate_max_discharge;
 	}
-	
-	
+	// Now update AC power limit
+	// Ac-coupled
+	batt_bank_power_discharge_ac = 0;
+	batt_bank_power_charge_ac = 0;
+	if (${batt_ac_or_dc} == 1)
+	{
+		if (${batt_bank_power_dc_ac} == 1){
+			batt_bank_power_discharge_ac = ${batt_bank_power};
+			batt_bank_power_charge_ac = ${batt_bank_power};
+		}
+		else {
+			batt_bank_power_discharge_ac = ${batt_bank_power} * (${batt_dc_ac_efficiency}*0.01);
+			batt_bank_power_charge_ac =  ${batt_bank_power} / (${batt_dc_ac_efficiency}*0.01);
+		}
+	}
+	// Dc-coupled
+	else if (${batt_ac_or_dc} == 0)
+	{
+		if (${batt_bank_power_dc_ac} == 1){
+			batt_bank_power_discharge_ac = ${batt_bank_power};
+			batt_bank_power_charge_ac = ${batt_bank_power};
+		}
+		else {
+			batt_bank_power_discharge_ac = ${batt_bank_power} * inv_eff;
+			batt_bank_power_charge_ac =  ${batt_bank_power} / inv_eff;
+		}
+	}
+
+	${batt_power_charge_max_kwac} = batt_bank_power_charge_ac;
+	${batt_power_discharge_max_kwac} = batt_bank_power_discharge_ac;
 };
 equations{ '$MIMO$ batt_lead_acid_computed' } = define() {
 	${LeadAcid_q10_computed} = ${batt_computed_strings}*${LeadAcid_q10}*${batt_Qfull}/100;
