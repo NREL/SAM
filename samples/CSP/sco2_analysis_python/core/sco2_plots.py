@@ -1784,7 +1784,97 @@ def plot_eta_vs_UA__deltaT_levels__two_config(list_des_results):
         plt.savefig("overlay_cycles" + save_title)
         
     plt.close()
-        
+
+def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf):
+
+    n_levels = 3
+
+    w_pad = 3
+
+    # Add normalized efficiency column
+    for row in udpc_data:
+        row.append(row[3] / row[4])
+
+    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
+
+    mi = [[0, 0, 3, "Normalized Power"]]
+    mi.append([1, 0, 10, "Normalized Efficiency"])
+    mi.append([0, 1, 5, "Normalized Cooling Power"])
+    mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
+    mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
+    mi.append([2, 1, 9, "Normalized PHX CO2 Mass Flow"])
+
+    # T_htf parametric values, 3 m_dot levels, design ambient temperature
+    for j in range(0, len(mi)):
+        j_ax = a_ax[mi[j][0], mi[j][1]]
+        for i in range(0, n_levels):
+            row_start = i * n_T_htf
+            row_end = i * n_T_htf + n_T_htf
+            if( j == 0 ):
+                j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
+                        label = "m_dot_ND = " + str(udpc_data[row_start][1]))
+            else:
+                j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
+                          [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
+        j_ax.set_xlabel("HTF Hot Temperature [C]")
+        j_ax.set_ylabel(mi[j][3])
+        j_ax.grid(which='both', color='gray', alpha=1)
+
+    fig1.legend(ncol=n_levels, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
+    plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
+    plt.savefig("udpc_T_HTF.png")
+    plt.close()
+
+    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
+
+    # T_amb parametric values, 3 T_HTF_levels, design m_dot
+    for j in range(0, len(mi)):
+        j_ax = a_ax[mi[j][0], mi[j][1]]
+        for i in range(0, n_levels):
+            row_start = 3 * n_T_htf + i * n_T_amb
+            row_end = row_start + n_T_amb
+            if( j == 0 ):
+                j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
+                          label = "T_HTF = " + str(udpc_data[row_start][0]))
+            else:
+                j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
+                          [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
+        j_ax.set_xlabel("Ambient Temperature [C]")
+        j_ax.set_ylabel(mi[j][3])
+        j_ax.grid(which='both', color='gray', alpha=1)
+
+    fig1.legend(ncol=n_levels, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
+    plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
+    plt.savefig("udpc_T_amb.png")
+    plt.close()
+
+    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
+
+    # m_dot parametric values, 3 T_amb levels, design T_htf_hot
+    for j in range(0, len(mi)):
+        j_ax = a_ax[mi[j][0], mi[j][1]]
+        for i in range(0, n_levels):
+            row_start = 3 * n_T_htf + 3 * n_T_amb + i * n_m_dot_htf
+            row_end = row_start + n_m_dot_htf
+            if( j == 0 ):
+                j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
+                      label = "T_amb = " + str(udpc_data[row_start][2]))
+            else:
+                j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
+                
+        j_ax.set_xlabel("Normalized Mass Flow")
+        j_ax.set_ylabel(mi[j][3])
+        j_ax.grid(which='both', color='gray', alpha=1)
+
+    fig1.legend(ncol = n_levels, loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
+    plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
+    plt.savefig("udpc_m_dot_htf.png")
+    plt.close()
+
         
        
         
