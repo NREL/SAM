@@ -113,23 +113,24 @@ def od_matrix_var_names():
 "True will run off-design simulation defined by 'part_load_list' and 'T_amb_od_' parameters"
 "The default off-design simulation cases solve in around 45 minutes"
 is_run_off_design = True
+"If not running off-design sweeps/matrix, should the code generate UDPC tables?"
+is_generate_udpc = False
     
 "Setup off-deign cases"
+if(is_run_off_design):
+    "Choose off design temperature method"
+    "True will use 'T_amb_od_' parameters and result in a lot of off-design cases and a longer run time"
+    "It is helpful to visualize off-design trends to identify potential unrealistic behavior"
+    "False will only solve for the values in 'od_matrix_temps'"
+    is_od_temp_sweep = False
+    part_load_list = [1.0, 0.75, 0.5, 0.4]   # Part-load levels. Results at part loads < 0.5 should be carefully reviewed"
+    T_amb_od_low = 20                        # Coldest off-design temperature (min allowable comp inlet is 32 C)
+    T_amb_od_high = 55                       # Warmest off-design temperature
+    T_amb_od_step = 1                        # Spacing betwen off-design temperatures
 
-"Choose off design temperature method"
-"True will use 'T_amb_od_' parameters and result in a lot of off-design cases and a longer run time"
-"It is helpful to visualize off-design trends to identify potential unrealistic behavior"
-"False will only solve for the values in 'od_matrix_temps'"
-is_od_temp_sweep = True
-part_load_list = [1.0, 0.75, 0.5, 0.4]   # Part-load levels. Results at part loads < 0.5 should be carefully reviewed"
-T_amb_od_low = 20                        # Coldest off-design temperature (min allowable comp inlet is 32 C)
-T_amb_od_high = 55                       # Warmest off-design temperature 
-T_amb_od_step = 1                        # Spacing betwen off-design temperatures
-
-"True will write a csv with results from 'od_matrix_var_names()' for each part load level and OD temperature from 'od_matrix_temps'"
-is_write_od_matrix = True
-od_matrix_temps = [25,35,40]
-
+    "True will write a csv with results from 'od_matrix_var_names()' for each part load level and OD temperature from 'od_matrix_temps'"
+    is_write_od_matrix = True
+    od_matrix_temps = [25,35,40]
 "***************************"
 "***************************"
 
@@ -281,7 +282,34 @@ if(is_run_off_design):
     
     od_plot.create_plot()
 
-    
+elif(is_generate_udpc):
 
+    ## Reset to run off-design analysis of single design point
+    sco2_des_par_default = get_sco2_design_parameters()
+    c_sco2.overwrite_default_design_parameters(sco2_des_par_default)
 
+    mod_base_dict = {"od_generate_udpc": [1.0]}
+
+    c_sco2.overwrite_des_par_base(mod_base_dict)  # Overwrite baseline design parameters
+    c_sco2.solve_sco2_case()  # Run design simulation
+
+    print(c_sco2.m_solve_dict["eta_thermal_calc"])
+    print("\nDid the simulation code with "
+          "modified design parameters solve successfully = ", c_sco2.m_solve_success)
+
+    c_sco2.m_also_save_csv = True
+    c_sco2.save_m_solve_dict(des_sim_label_str + "__udpc_results")  # Save design
+
+    udpc_data = c_sco2.m_solve_dict["udpc_table"]
+
+    with open("udpc_output" + '.csv', 'w', newline='') as f:
+        w = csv.writer(f)
+        w.writerows(udpc_data)
+    f.close()
+
+    n_T_htf = int(c_sco2.m_solve_dict["udpc_n_T_htf"])
+    n_T_amb = int(c_sco2.m_solve_dict["udpc_n_T_amb"])
+    n_m_dot_htf = int(c_sco2.m_solve_dict["udpc_n_m_dot_htf"])
+
+    cy_plt.plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf)
 
