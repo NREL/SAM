@@ -1006,7 +1006,7 @@ Battery
 
 DataArray
 
-1443
+1650
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1036,15 +1036,24 @@ equations{'batt_room_temperature_celsius'} = define()
 	if (technology() != 'Generic System')
 	{
 		wfread = ssc_create();
-		ssc_var(wfread, "file_name", ${solar_resource_file});
-		ssc_var(wfread, "header_only", 0);
-		
-		T = [];
-		if (!ssc_exec(wfread, "wfreader")){
-			T = ssc_var(wfread, "tdry");
+		solar_resource =  ${solar_resource_file};
+		if (file_exists(solar_resource))
+		{
+			//msgbox(solar_resource);
+			ssc_var(wfread, "file_name", solar_resource);
+			ssc_var(wfread, "header_only", 0);
+			
+			T = [];
+			if (!ssc_exec(wfread, "wfreader")){
+				T = ssc_var(wfread, "tdry");
+			}
+			else {
+				msgbox('failed');
+				return 0;
+			}
 		}
 		else {
-			msgbox('failed');
+			// unknown, perhaps solar resource callback isn't complete
 			return 0;
 		}
 	}
