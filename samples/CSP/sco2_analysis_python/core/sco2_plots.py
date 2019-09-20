@@ -1785,7 +1785,7 @@ def plot_eta_vs_UA__deltaT_levels__two_config(list_des_results):
         
     plt.close()
 
-def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf):
+def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = ""):
 
     n_levels = 3
 
@@ -1798,7 +1798,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf):
     fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
 
     mi = [[0, 0, 3, "Normalized Power"]]
-    mi.append([1, 0, 10, "Normalized Efficiency"])
+    mi.append([1, 0, len(udpc_data[0])-1, "Normalized Efficiency"])
     mi.append([0, 1, 5, "Normalized Cooling Power"])
     mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
     mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
@@ -1823,7 +1823,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf):
 
     fig1.legend(ncol=n_levels, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
     plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
-    plt.savefig("udpc_T_HTF.png")
+    plt.savefig(plot_pre_str + "udpc_T_HTF.png")
     plt.close()
 
     fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
@@ -1847,7 +1847,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf):
 
     fig1.legend(ncol=n_levels, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
     plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
-    plt.savefig("udpc_T_amb.png")
+    plt.savefig(plot_pre_str + "udpc_T_amb.png")
     plt.close()
 
     fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
@@ -1872,7 +1872,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf):
 
     fig1.legend(ncol = n_levels, loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
     plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
-    plt.savefig("udpc_m_dot_htf.png")
+    plt.savefig(plot_pre_str + "udpc_m_dot_htf.png")
     plt.close()
 
         
