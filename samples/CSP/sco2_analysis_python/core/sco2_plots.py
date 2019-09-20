@@ -1791,6 +1791,11 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
 
     w_pad = 3
 
+    f_udpc_pars = open("udpc_setup_pars.txt", 'w')
+    f_udpc_pars.write("Number of HTF hot temperature levels = " + str(n_T_htf) + "\n")
+    f_udpc_pars.write("Number of ambient temperature levels = " + str(n_T_amb) + "\n")
+    f_udpc_pars.write("Number of HTF mass flow rate levels = " + str(n_m_dot_htf) + "\n")
+
     # Add normalized efficiency column
     for row in udpc_data:
         row.append(row[3] / row[4])
@@ -1814,6 +1819,12 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
                 j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
                       [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
                         label = "m_dot_ND = " + str(udpc_data[row_start][1]))
+                if(i == 0):
+                    f_udpc_pars.write("Mass flow rate Low Level = " + str(udpc_data[row_start][1]) + "\n")
+                if(i == 1):
+                    f_udpc_pars.write("Mass flow rate Design Level = " + str(udpc_data[row_start][1]) + "\n")
+                if(i == 2):
+                    f_udpc_pars.write("Mass flow rate High Level = " + str(udpc_data[row_start][1]) + "\n")
             else:
                 j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
                           [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
@@ -1838,6 +1849,12 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
                 j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
                       [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
                           label = "T_HTF = " + str(udpc_data[row_start][0]))
+                if (i == 0):
+                    f_udpc_pars.write("HTF temperature Low Level = " + str(udpc_data[row_start][0]) + "\n")
+                if (i == 1):
+                    f_udpc_pars.write("HTF temperature Design Level = " + str(udpc_data[row_start][0]) + "\n")
+                if (i == 2):
+                    f_udpc_pars.write("HTF temperature High Level = " + str(udpc_data[row_start][0]) + "\n")
             else:
                 j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
                           [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
@@ -1862,6 +1879,12 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
                 j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
                       [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
                       label = "T_amb = " + str(udpc_data[row_start][2]))
+                if (i == 0):
+                    f_udpc_pars.write("Ambient temperature Low Level = " + str(udpc_data[row_start][2]) + "\n")
+                if (i == 1):
+                    f_udpc_pars.write("Ambient temperature Design Level = " + str(udpc_data[row_start][2]) + "\n")
+                if (i == 2):
+                    f_udpc_pars.write("Ambient temperature High Level = " + str(udpc_data[row_start][2]) + "\n")
             else:
                 j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
                       [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
