@@ -25,12 +25,17 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/tokenzr.h>
 #include <wx/renderer.h>
 #include <wx/statline.h>
+#include <wx/richtooltip.h>
+#include <wx/bmpbuttn.h>
+#include <wx/textfile.h>
 
 #include <wex/uiform.h>
 #include <wex/extgrid.h>
 #include <wex/plot/plplotctrl.h>
 #include <wex/csv.h>
 #include <wex/utils.h>
+#include <wex/jsonval.h>
+#include <wex/jsonreader.h>
 
 #include "ptlayoutctrl.h"
 #include "materials.h"
@@ -40,7 +45,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "lossadj.h"
 #include "widgets.h"
 #include "uiobjects.h"
-
+#include "main.h"
 
 
 class wxUISchedNumericObject : public wxUIObject
@@ -480,10 +485,13 @@ public:
 	wxUIDataMatrixObject() {
 		AddProperty("PasteAppendRows", new wxUIProperty(false));
 		AddProperty("PasteAppendCols", new wxUIProperty(false));
+		AddProperty("ShowButtons", new wxUIProperty(true));
 		AddProperty("ShowRows", new wxUIProperty(true));
 		AddProperty("ShowRowLabels", new wxUIProperty(false));
 		AddProperty("RowLabels", new wxUIProperty(wxString("")));
 		AddProperty("ShadeR0C0", new wxUIProperty(false));
+		AddProperty("VerticalLabel", new wxUIProperty(wxString("")));
+		AddProperty("HorizontalLabel", new wxUIProperty(wxString("")));
 		AddProperty("ShadeC0", new wxUIProperty(false));
 		AddProperty("ShowCols", new wxUIProperty(true));
 		AddProperty("ShowColLabels", new wxUIProperty(true));
@@ -504,13 +512,15 @@ public:
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataMatrixObject; o->Copy(this); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual wxWindow *CreateNative(wxWindow *parent) {
-		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger());
+		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger(),false, Property("HorizontalLabel").GetString(), Property("VerticalLabel").GetString());
 		dm->PasteAppendRows(Property("PasteAppendRows").GetBoolean());
 		dm->PasteAppendCols(Property("PasteAppendCols").GetBoolean());
+		dm->ShowButtons(Property("ShowButtons").GetBoolean());
 		dm->ShowRows(Property("ShowRows").GetBoolean());
 		dm->ShowRowLabels(Property("ShowRowLabels").GetBoolean());
 		dm->SetRowLabels(Property("RowLabels").GetString());
 		dm->ShadeR0C0(Property("ShadeR0C0").GetBoolean());
+		dm->SetR0C0Label(Property("LeftSideLabel").GetString());
 		dm->ShadeC0(Property("ShadeC0").GetBoolean());
 		dm->ShowCols(Property("ShowCols").GetBoolean());
 		dm->ShowColLabels(Property("ShowColLabels").GetBoolean());
@@ -529,7 +539,9 @@ public:
 			if (id == "PasteAppendRows") dm->PasteAppendRows(p->GetBoolean());
 			if (id == "PasteAppendCols") dm->PasteAppendCols(p->GetBoolean());
 			if (id == "ShadeR0C0") dm->ShadeR0C0(p->GetBoolean());
+			if (id == "LeftSideLabel") dm->SetR0C0Label(p->GetString());
 			if (id == "ShadeC0") dm->ShadeC0(p->GetBoolean());
+			if (id == "ShowButtons") dm->ShowButtons(p->GetBoolean());
 			if (id == "ShowCols") dm->ShowCols(p->GetBoolean());
 			if (id == "ShowRows") dm->ShowRows(p->GetBoolean());
 			if (id == "ShowRowLabels") dm->ShowRowLabels(p->GetBoolean());
@@ -542,6 +554,7 @@ public:
 			if (id == "ColorMap") dm->ColorMap(p->GetBoolean());
 		}
 	}
+
 };
 
 
@@ -687,6 +700,67 @@ public:
 
 };
 
+class wxUIToolTipCtrl : public wxUIObject
+{
+public:
+	wxUIToolTipCtrl() {
+		AddProperty("Tips", new wxUIProperty(wxString("Type a tip here or define in runtime/help/tooltips.json")));
+	}
+	virtual wxString GetTypeName() { return "ToolTipCtrl"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIToolTipCtrl; o->Copy(this); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual wxWindow *CreateNative(wxWindow *parent) {
+		AFToolTipCtrl *ttc = new AFToolTipCtrl(parent);
+		return AssignNative(ttc);
+	}
+	virtual void OnNativeEvent()
+	{
+		if (AFToolTipCtrl *sb = GetNative<AFToolTipCtrl>())
+		{
+			wxString tt_tips;
+			wxString tt_name;
+			wxString tt_title;
+			wxString json_file;
+			wxJSONReader reader;
+			wxJSONValue root;
+			wxString json_items;
+			wxTextFile tf;
+			wxString str_line;
+			int i;
+			// use widget property values if not defined in json file
+			tt_name = Property("Name").GetString();
+			tt_tips = Property("Tips").GetString();
+			tt_title = "Information";
+			json_file = SamApp::GetRuntimePath() + "/help/tooltips.json";
+			//json_items = "{\"tooltips\": [{\"name\":\"tt_mhk_mooring_cost\", \"title\" : \"Mooring, Foundation, and Substructure Cost\", \"tip\" : \"The mooring cost is awesome\"},{ \"name\":\"tt_mhk_powertakeoff_cost\",\"title\" : \"ower Take-Off System Cost\",\"tip\" : \"The power take-off cost is not awesome\" }]}";
+			if (tf.Open(json_file))
+			{
+				json_items = tf.GetFirstLine();
+				while (!tf.Eof())
+					json_items += tf.GetNextLine();
+				tf.Close();
+			}
+			if (reader.Parse(json_items, &root) != 0)
+				tt_title = "JSON or file read failed.";
+			else
+			{
+				wxJSONValue tooltips = root["tooltips"];
+				for (i = 0; i < tooltips.Size(); i++)
+				{
+					if (tooltips[i]["name"].AsString() == tt_name)
+					{
+						tt_title = tooltips[i]["title"].AsString();
+						tt_tips = tooltips[i]["tip"].AsString();
+					}
+				}
+			}
+			tt_tips.Replace(wxT("\\n"), wxT("\n"));
+			wxRichToolTip tip(tt_title, tt_tips);
+			tip.ShowFor(sb);
+		}
+	}
+};
+
 
 class wxUILossAdjustmentCtrl : public wxUIObject 
 {
@@ -760,5 +834,6 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUILibraryCtrl );
 	wxUIObjectTypeProvider::Register( new wxUILossAdjustmentCtrl );
 	wxUIObjectTypeProvider::Register( new wxUIScene3DObject );
-	wxUIObjectTypeProvider::Register( new wxUITableDataObject );
+	wxUIObjectTypeProvider::Register(new wxUITableDataObject);
+	wxUIObjectTypeProvider::Register(new wxUIToolTipCtrl);
 }

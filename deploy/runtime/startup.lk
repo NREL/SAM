@@ -1770,13 +1770,13 @@ setup_single_owner_pages(LIFETIME_SYSTEM);
 // Marine Hydrokinetic ////////////////////////////////////////////////////////////////////
 function setup_mhkwave_pages()
 {
-	addpage( [[ 'MHK Wave Resource']], { 'sidebar'='Wave Resource', 'help'='wind_resource' } );
-	addpage( [[ 'MHK Wave Device' ]], { 'sidebar'='Wave Energy Converter', 'help'='wind_turbine' } );
-	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='wind_farm' } );
+	addpage( [[ 'MHK Wave Resource']], { 'sidebar'='Wave Resource', 'help'='wave_resource' } );
+	addpage( [[ 'MHK Wave Device' ]], { 'sidebar'='Wave Energy Converter', 'help'='wave_device' } );
+	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='wave_farm' } );
 	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='mhk_system_costs' } );
 }
 setconfig( 'MHKwave', 'LCOE Calculator' );
-setmodules( ['mhk_wave', 'lcoefcr']);
+setmodules( ['wave_file_reader', 'mhk_wave', 'lcoefcr']);
 setup_mhkwave_pages();
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 

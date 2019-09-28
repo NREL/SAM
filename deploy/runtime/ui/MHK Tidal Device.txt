@@ -5,7 +5,7 @@ MHK Tidal Device
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 819
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -32,11 +35,11 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
-14
-rated_capacity
+18
+device_rated_power
 X
 3
 552
@@ -49,6 +52,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 1500
@@ -91,7 +97,7 @@ TabOrder
 DataMatrix
 
 1
-23
+27
 Name
 5
 17
@@ -108,12 +114,18 @@ Width
 Height
 3
 775
+Tool Tip
+5
+0
 PasteAppendRows
 2
 0
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -125,6 +137,12 @@ RowLabels
 0
 ShadeR0C0
 2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
 0
 ShadeC0
 2
@@ -169,7 +187,7 @@ ColorMap
 Plot
 
 1
-5
+6
 Name
 5
 22
@@ -186,16 +204,19 @@ Width
 Height
 3
 380
+Tool Tip
+5
+0
 
 2
-rated_capacity
+device_rated_power
 3
 1
- Rated Capacity of System
- kW
+Device Rated Power
+kW
  
 0
-2
+8
 1
 1
 1
@@ -217,7 +238,16 @@ tidal_power_curve
 0
 DataMatrix
 
-0
+256
+equations{ 'device_rated_power' } = define () 
+{
+	max_power = 0;
+	mat = ${tidal_power_curve};
+	for (r=0;r<#mat; r++)
+		//the power column is the second in the matrix, so use column=1
+		if (mat[r][1] > max_power) max_power = mat[r][1];
+	return max_power;
+};
 954
 function plot_device_curve()
 {
