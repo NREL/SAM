@@ -24,7 +24,9 @@ endif()
 
 Project(sam)
 
-add_subdirectory(api)
+if (NOT skip_api)
+	add_subdirectory(api)
+endif()
 
 include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
 
