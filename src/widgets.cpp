@@ -3391,12 +3391,12 @@ void AFMonthByHourFactorCtrl::OnGridCellChange(wxGridEvent &evt)
 	if ( r < 0 || c < 0 )
 	{
 		// paste event
-		for( int r=0;r<mGrid->GetNumberRows();r++ )
+		for( int ir=0;ir<mGrid->GetNumberRows();ir++ )
 		{
-			for( int c=0;c<mGrid->GetNumberCols();c++ )
+			for( int ic=0;ic<mGrid->GetNumberCols();ic++ )
 			{
-				mData.at(r,c) = wxAtof( mGrid->GetCellValue(r,c) );
-				UpdateCell(r,c);
+				mData.at(ir,ic) = wxAtof( mGrid->GetCellValue(ir,ic) );
+				UpdateCell(ir,ic);
 			}
 		}
 	}
