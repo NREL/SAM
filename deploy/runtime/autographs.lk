@@ -28,6 +28,23 @@ function host_developer_graphs()
 
 }
 
+function ppa_revenue_graphs()
+{
+    tech = technology();
+    fin = financing(); 
+
+	columns = 'npv_ppa_revenue,npv_curtailment_revenue,npv_capacity_revenue,';
+	if (tech == "Fuel Cell") columns += 'npv_thermal_value,';
+	if (value('pbi_fed_for_ds')==1) columns += 'npv_fed_pbi_income,';
+	if (value('pbi_sta_for_ds')==1) columns += 'npv_sta_pbi_income,';
+	if (value('pbi_uti_for_ds')==1) columns += 'npv_uti_pbi_income,';
+	if (value('pbi_oth_for_ds')==1) columns += 'npv_oth_pbi_income,';
+	columns += 'npv_salvage_value';
+
+	
+	agraph( columns, 'NPV of Revenue Components', '', '$', 50, false, true, 'right',1);
+}
+
 function ppa_financial_graphs()
 {
 	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', -1, true, false,'bottom' );
@@ -135,7 +152,7 @@ autographs{ 'Third Party' } = define() { third_party_graphs(); };
 autographs{ 'Host Developer' } = define() { host_developer_graphs(); };
 //autographs{ 'Commercial PPA' } = define() { simple_financial_graphs(); };
 //autographs{ 'Independent Power Producer' } = define() { simple_financial_graphs(); };
-autographs{ 'Single Owner' } = define() { ppa_financial_graphs(); };
+autographs{ 'Single Owner' } = define() { ppa_revenue_graphs(); ppa_financial_graphs(); };
 autographs{ 'All Equity Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Leveraged Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Sale Leaseback' } = define() { ppa_sale_leaseback_graphs(); ppa_partnership_graphs(); };

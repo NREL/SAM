@@ -183,6 +183,119 @@ private:
 };
 
 
+
+#define EVT_DATALIFETIMEARRAYBUTTON(id, func)  EVT_BUTTON(id, func)
+
+enum {
+	DATA_LIFETIME_ARRAY_SINGLEVALUE,
+	DATA_LIFETIME_ARRAY_MONTHLY,
+	DATA_LIFETIME_ARRAY_DAILY,
+	DATA_LIFETIME_ARRAY_HOURLY,
+	DATA_LIFETIME_ARRAY_SUBHOURLY,
+	DATA_LIFETIME_ARRAY_ANNUAL,
+	DATA_LIFETIME_ARRAY_WEEKLY
+};
+
+class AFDataLifetimeArrayButton : public wxButton
+{
+public:
+	AFDataLifetimeArrayButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
+
+	void Set(const std::vector<double> &data);
+	void Get(std::vector<double> &data);
+	std::vector<double> Get() const { return mData; }
+
+	void SetDataLabel(const wxString &s);
+	wxString GetDataLabel();
+
+	void SetDescription(const wxString &s) { mDescription = s; }
+	wxString GetDescription() { return mDescription; }
+
+	void SetAnalysisPeriod(const size_t &p) { mAnalysisPeriod = p; }
+	size_t GetAnalysisPeriod() { return mAnalysisPeriod; }
+
+	void SetMinPerHour(const size_t &p) { mMinPerHour = p; }
+	size_t GetmMinPerHour() { return mMinPerHour; }
+
+	void SetMode(const size_t &p) { mMode = p; }
+	size_t GetMode() { return mMode; }
+
+	void SetAnnualEnabled(const bool &e) { mAnnualEnabled = e; }
+	bool GetAnnualEnabled() { return mAnnualEnabled; }
+
+	void SetWeeklyEnabled(const bool &e) { mWeeklyEnabled = e; }
+	bool GetWeeklyEnabled() { return mWeeklyEnabled; }
+
+	void OnPressed(wxCommandEvent &evt);
+private:
+	wxString mDataLabel;
+	size_t mAnalysisPeriod, mMinPerHour, mMode;
+	std::vector<double> mData;
+	wxString mDescription;
+	bool mAnnualEnabled, mWeeklyEnabled;
+
+	DECLARE_EVENT_TABLE();
+};
+
+
+#define EVT_DATALIFETIMEMATRIXBUTTON(id, func)  EVT_BUTTON(id, func)
+
+enum {
+	DATA_LIFETIME_MATRIX_SINGLEVALUE,
+	DATA_LIFETIME_MATRIX_MONTHLY,
+	DATA_LIFETIME_MATRIX_DAILY,
+	DATA_LIFETIME_MATRIX_HOURLY,
+	DATA_LIFETIME_MATRIX_SUBHOURLY,
+	DATA_LIFETIME_MATRIX_ANNUAL,
+	DATA_LIFETIME_MATRIX_WEEKLY
+};
+
+class AFDataLifetimeMatrixButton : public wxButton
+{
+public:
+	AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
+
+	void Set(const matrix_t<double> &data);
+	void Get(matrix_t<double> &data);
+	matrix_t<double> Get() const { return mData; }
+
+	void SetDataLabel(const wxString &s);
+	wxString GetDataLabel();
+
+	void SetColumnLabels(const wxString &s);
+	wxString GetColumnLabels();
+
+	void SetDescription(const wxString &s) { mDescription = s; }
+	wxString GetDescription() { return mDescription; }
+
+	void SetAnalysisPeriod(const size_t &p) { mAnalysisPeriod = p; }
+	size_t GetAnalysisPeriod() { return mAnalysisPeriod; }
+
+	void SetMinPerHour(const size_t &p) { mMinPerHour = p; }
+	size_t GetmMinPerHour() { return mMinPerHour; }
+
+	void SetMode(const size_t &p) { mMode = p; }
+	size_t GetMode() { return mMode; }
+
+	void SetAnnualEnabled(const bool &e) { mAnnualEnabled = e; }
+	bool GetAnnualEnabled() { return mAnnualEnabled; }
+
+	void SetWeeklyEnabled(const bool &e) { mWeeklyEnabled = e; }
+	bool GetWeeklyEnabled() { return mWeeklyEnabled; }
+
+	void OnPressed(wxCommandEvent &evt);
+private:
+	wxString mDataLabel;
+	wxString mColumnLabels;
+	size_t mAnalysisPeriod, mMinPerHour, mMode;
+	matrix_t<double> mData;
+	wxString mDescription;
+	bool mAnnualEnabled, mWeeklyEnabled;
+
+	DECLARE_EVENT_TABLE();
+};
+
+
 #define EVT_DATAARRAYBUTTON(id, func)  EVT_BUTTON(id, func)
 
 enum {
@@ -506,6 +619,7 @@ public:
 	void UpdateColorMap();
 
 private:
+
 	wxString m_choices;
 	int m_choiceColumn;
 	AFDataMatrixTable *m_gridTable;

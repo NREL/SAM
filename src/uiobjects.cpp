@@ -479,6 +479,110 @@ public:
 };
 
 
+
+class wxUIDataLifetimeArrayObject : public wxUIObject
+{
+public:
+	wxUIDataLifetimeArrayObject() {
+		AddProperty("Label", new wxUIProperty(wxString("")));
+		AddProperty("Description", new wxUIProperty(wxString("")));
+		AddProperty("TabOrder", new wxUIProperty((int)-1));
+		AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
+		AddProperty("AnnualEnabled", new wxUIProperty(false));
+		AddProperty("WeeklyEnabled", new wxUIProperty(false));
+	}
+	virtual wxString GetTypeName() { return "DataLifetimeArray"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataLifetimeArrayObject; o->Copy(this); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative(wxWindow *parent) {
+		AFDataLifetimeArrayButton *da = new AFDataLifetimeArrayButton(parent, wxID_ANY);
+		da->SetDescription(Property("Description").GetString());
+		da->SetDataLabel(Property("Label").GetString());
+		da->SetAnalysisPeriod(Property("AnalysisPeriod").GetInteger());
+		da->SetAnnualEnabled(Property("AnnualEnabled").GetBoolean());
+		da->SetWeeklyEnabled(Property("WeeklyEnabled").GetBoolean());
+		return AssignNative(da);
+	}
+	virtual void Draw(wxWindow *win, wxDC &dc, const wxRect &geom)
+	{
+		wxRendererNative::Get().DrawPushButton(win, dc, geom);
+		dc.SetFont(*wxNORMAL_FONT);
+		dc.SetTextForeground(*wxBLACK);
+		wxString label("Data Lifetime...");
+		int x, y;
+		dc.GetTextExtent(label, &x, &y);
+		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
+	}
+	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
+	{
+		if (AFDataLifetimeArrayButton *da = GetNative<AFDataLifetimeArrayButton>())
+		{
+			if (id == "AnalysisPeriod") da->SetAnalysisPeriod(p->GetInteger());
+			if (id == "Label") da->SetDataLabel(p->GetString());
+			if (id == "Description") da->SetDescription(p->GetString());
+			if (id == "AnnualEnabled") da->SetAnnualEnabled(p->GetBoolean());
+			if (id == "WeeklyEnabled") da->SetWeeklyEnabled(p->GetBoolean());
+		}
+	}
+
+};
+
+
+
+class wxUIDataLifetimeMatrixObject : public wxUIObject
+{
+public:
+	wxUIDataLifetimeMatrixObject() {
+		AddProperty("ColumnLabels", new wxUIProperty(wxString("")));
+		AddProperty("Label", new wxUIProperty(wxString("")));
+		AddProperty("Description", new wxUIProperty(wxString("")));
+		AddProperty("TabOrder", new wxUIProperty((int)-1));
+		AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
+		AddProperty("AnnualEnabled", new wxUIProperty(false));
+		AddProperty("WeeklyEnabled", new wxUIProperty(false));
+	}
+	virtual wxString GetTypeName() { return "DataLifetimeMatrix"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataLifetimeMatrixObject; o->Copy(this); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative(wxWindow *parent) {
+		AFDataLifetimeMatrixButton *da = new AFDataLifetimeMatrixButton(parent, wxID_ANY);
+		da->SetDescription(Property("Description").GetString());
+		da->SetDataLabel(Property("Label").GetString());
+		da->SetColumnLabels(Property("ColumnLabels").GetString());
+		da->SetAnalysisPeriod(Property("AnalysisPeriod").GetInteger());
+		da->SetAnnualEnabled(Property("AnnualEnabled").GetBoolean());
+		da->SetWeeklyEnabled(Property("WeeklyEnabled").GetBoolean());
+		return AssignNative(da);
+	}
+	virtual void Draw(wxWindow *win, wxDC &dc, const wxRect &geom)
+	{
+		wxRendererNative::Get().DrawPushButton(win, dc, geom);
+		dc.SetFont(*wxNORMAL_FONT);
+		dc.SetTextForeground(*wxBLACK);
+		wxString label("Data Lifetime...");
+		int x, y;
+		dc.GetTextExtent(label, &x, &y);
+		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
+	}
+	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
+	{
+		if (AFDataLifetimeMatrixButton *da = GetNative<AFDataLifetimeMatrixButton>())
+		{
+			if (id == "AnalysisPeriod") da->SetAnalysisPeriod(p->GetInteger());
+			if (id == "Label") da->SetDataLabel(p->GetString());
+			if (id == "ColumnLabels") da->SetColumnLabels(p->GetString());
+			if (id == "Description") da->SetDescription(p->GetString());
+			if (id == "AnnualEnabled") da->SetAnnualEnabled(p->GetBoolean());
+			if (id == "WeeklyEnabled") da->SetWeeklyEnabled(p->GetBoolean());
+		}
+	}
+
+};
+
+
+
 class wxUIDataMatrixObject : public wxUIObject
 {
 public:
@@ -826,6 +930,8 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUIPlotObject );
 	wxUIObjectTypeProvider::Register( new wxUISearchListBoxObject );
 	wxUIObjectTypeProvider::Register(new wxUIDataArrayObject);
+	wxUIObjectTypeProvider::Register(new wxUIDataLifetimeArrayObject);
+	wxUIObjectTypeProvider::Register(new wxUIDataLifetimeMatrixObject);
 	wxUIObjectTypeProvider::Register(new wxUIStringArrayObject);
 	wxUIObjectTypeProvider::Register(new wxUIDataMatrixObject);
 	wxUIObjectTypeProvider::Register(new wxUIShadingFactorsObject);
