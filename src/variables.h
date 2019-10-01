@@ -38,7 +38,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <lk/eval.h>
 
 #include <shared/lib_util.h>
-#include <ssc/vartab.h>
+#include <shared/vartab.h>
 
 #include "object.h"
 
