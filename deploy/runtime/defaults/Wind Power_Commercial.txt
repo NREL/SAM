@@ -1,5 +1,5 @@
 1
-536
+531
 a_error_test_number
 1
 1
@@ -129,7 +129,7 @@ avail_loss_total
 1
 1
 1
-5.5
+5.50117
 avail_turb_loss
 1
 1
@@ -147,7 +147,7 @@ avail_uncert_total
 1
 1
 1
-2.5
+2.50272
 bos_cost_fixed
 1
 1
@@ -1678,7 +1678,7 @@ elec_loss_total
 1
 1
 1
-2
+2.00809
 elec_parasitic_loss
 1
 1
@@ -1696,7 +1696,7 @@ elec_uncert_total
 1
 1
 1
-1
+1.00125
 electrical_installation_cost
 1
 1
@@ -1846,13 +1846,13 @@ env_loss_total
 1
 1
 1
-2.4
+2.3982
 env_uncert_total
 1
 1
 1
 1
-4.5
+4.50333
 erection_cost
 1
 1
@@ -1945,19 +1945,19 @@ eval_uncert_10yr_total
 1
 1
 1
-0
+2.22261
 eval_uncert_20yr_total
 1
 1
 1
 1
-0
+2.22261
 eval_uncert_total
 1
 1
 1
 1
-2.22
+2.22261
 farm_size_MW
 1
 1
@@ -2005,7 +2005,7 @@ hextrap_uncert_total
 1
 1
 1
-2.14
+2.14009
 hub_height
 1
 1
@@ -2487,7 +2487,7 @@ meas_uncert_total
 1
 1
 1
-2
+2.0445
 moorLines
 1
 1
@@ -2666,7 +2666,7 @@ ops_loss_total
 1
 1
 1
-2.8
+2.80347
 ops_strategies_loss
 1
 1
@@ -2684,7 +2684,7 @@ ops_uncert_total
 1
 1
 1
-2.5
+2.5032
 overhead
 1
 1
@@ -3078,7 +3078,8 @@ reference_number_turbines
 reference_resource_file
 1
 4
-0
+26
+WY Southern-Flat Lands.srw
 reference_sales_tax_percent
 1
 1
@@ -3091,12 +3092,6 @@ resource_adj_uncert
 1
 1
 1
-resource_datarep_uncert
-1
-1
-1
-1
-0.1
 resource_datasyn_uncert
 1
 1
@@ -3127,18 +3122,6 @@ resource_refdata_uncert
 1
 1
 0
-resource_refmeas_uncert
-1
-1
-1
-1
-1
-resource_refmodel_uncert
-1
-1
-1
-1
-1
 resource_uncert_total
 1
 1
@@ -3408,7 +3391,7 @@ turb_loss_total
 1
 1
 1
-3.95
+3.9545
 turb_perf_loss
 1
 1
@@ -3438,7 +3421,7 @@ turb_uncert_total
 1
 1
 1
-4.5
+4.50315
 turbine_capital_cost
 1
 1
@@ -3797,12 +3780,6 @@ vextrap_comp_uncert
 1
 1
 0
-vextrap_excess_uncert
-1
-1
-1
-1
-2
 vextrap_inputs_uncert
 1
 1
@@ -3821,12 +3798,6 @@ vextrap_uncert_total
 1
 1
 1.7
-vextrap_vert_uncert
-1
-1
-1
-1
-2
 wake_ext_loss
 1
 1
@@ -3856,7 +3827,7 @@ wake_int_loss
 1
 1
 1
-11.02
+0
 wake_int_uncert
 1
 1
@@ -3874,13 +3845,13 @@ wake_loss_total
 1
 1
 1
-12
+1.1
 wake_uncert_total
 1
 1
 1
 1
-3
+3.00832
 warranty_management
 1
 1
@@ -4105,7 +4076,8 @@ wind_resource.elev
 wind_resource.file
 1
 4
-0
+26
+WY Southern-Flat Lands.srw
 wind_resource.lat
 1
 1
@@ -4167,7 +4139,8 @@ wind_resource_distribution
 wind_resource_filename
 1
 4
-0
+26
+WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1
