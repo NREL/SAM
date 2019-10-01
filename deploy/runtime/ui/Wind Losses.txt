@@ -480,11 +480,11 @@ Numeric
 16
 Name
 5
-17
-env_exposure_loss
+12
+env_env_loss
 X
 3
-561
+252
 Y
 3
 786
@@ -539,11 +539,11 @@ Numeric
 16
 Name
 5
-12
-env_ext_loss
+17
+env_exposure_loss
 X
 3
-252
+561
 Y
 3
 786
@@ -2099,7 +2099,7 @@ Numeric
 env_ext_loss
 3
 1
-External Conditions
+Environmental
 %
 Losses
 0
@@ -2335,10 +2335,10 @@ Total Wake Losses
 0
 Numeric
 
-1091
+1095
 equations{ 'wake_int_loss' } = define() {
 	if (${wind_farm_wake_model} == 3)
-		return ${wake_loss};
+		return ${wake_int_loss};
 	else
 		return 0;
 };
@@ -2360,7 +2360,7 @@ equations{ 'turb_loss_total' } = define() {
 };
 
 equations{ 'env_loss_total' } = define() {
-	return (1-((1-${env_degrad_loss}/100) * (1-${env_exposure_loss}/100) * (1-${env_ext_loss}/100) * (1-${env_icing_loss}/100)))*100;
+	return (1-((1-${env_degrad_loss}/100) * (1-${env_exposure_loss}/100) * (1-${env_env_loss}/100) * (1-${env_icing_loss}/100)))*100;
 };
 
 equations{ 'ops_loss_total' } = define() {
