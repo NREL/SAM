@@ -2082,10 +2082,10 @@ Losses
 1
 0
 Numeric
-env_exposure_loss
+env_env_loss
 3
 1
-Exposure Changes
+Environmental
 %
 Losses
 0
@@ -2096,10 +2096,10 @@ Losses
 1
 0
 Numeric
-env_ext_loss
+env_exposure_loss
 3
 1
-Environmental
+Exposure Changes
 %
 Losses
 0
@@ -2335,10 +2335,10 @@ Total Wake Losses
 0
 Numeric
 
-1095
+1091
 equations{ 'wake_int_loss' } = define() {
 	if (${wind_farm_wake_model} == 3)
-		return ${wake_int_loss};
+		return ${wake_loss};
 	else
 		return 0;
 };
