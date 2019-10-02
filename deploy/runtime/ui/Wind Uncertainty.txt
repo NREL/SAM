@@ -3057,6 +3057,7 @@ Caption
 5
 532
 All uncertainty components and subcomponents are assumed to be random normally-distributed (i.e. have Gaussian error distributions), and subsequently the uncertainties quoted correspond to standard deviations. These are expressed as dimensionless quantities, as a percentage in terms of either mean wind speed or energy.  A speed-to-energy “sensitivity factor”, 𝛿 (%ΔE/%ΔWS), is used to relate uncertainty in mean wind speed (% WS) to uncertainty in energy (%E), simply as a multiplier of the standard deviation in mean wind speed.
+
 TextColour
 4
 0
@@ -5038,10 +5039,10 @@ Uncertainty
 1
 0
 Numeric
-env_exp_uncert
+env_env_uncert
 3
 1
-Exposure Changes
+Environmental
 % E
 Uncertainty
 0
@@ -5052,10 +5053,10 @@ Uncertainty
 1
 0
 Numeric
-env_ext_uncert
+env_exp_uncert
 3
 1
-External conditions
+Exposure Changes
 % E
 Uncertainty
 0
@@ -5489,7 +5490,7 @@ Numeric
 resource_dist_uncert
 3
 1
-(Wind Speed) Distribution Uncertainty
+Speed Distribution Uncertainty
 % WS
 Uncertainty
 0
@@ -5819,7 +5820,7 @@ equations{ 'elec_uncert_total' } = define() {
 equations{ 'env_uncert_total' } = define() {
 	return sqrt( pow(${env_degrad_uncert}, 2) + 
 		pow(${env_exp_uncert}, 2) + 
-		pow(${env_ext_uncert}, 2) +
+		pow(${env_env_uncert}, 2) +
 		pow(${env_icing_uncert}, 2) );
 };
 
@@ -5880,7 +5881,7 @@ equations{ 'wake_uncert_total' } = define() {
 		pow(${wake_ext_uncert}, 2) +
 		pow(${wake_future_uncert}, 2));
 };
-3794
+3762
 function calculate_uncertainties(){
 	combine_uncertainty(1);
 	combine_uncertainty(10);
@@ -5981,18 +5982,18 @@ function combine_uncertainty(year) {
 		eval_perf = ${eval_perf_20yr_uncert};
 		eval_climate = ${eval_climate_20yr_uncert};
 	}
-	components = [${resource_period_uncert}, ${resource_refmeas_uncert}, 
-		${resource_refmodel_uncert}, ${resource_adj_uncert}, ${resource_dist_uncert}, 
-		${resource_datasyn_uncert}, ${resource_datarep_uncert}, eval_period, 
+	components = [${resource_period_uncert}, ${resource_refdata_uncert}, 
+		${resource_adj_uncert}, ${resource_dist_uncert}, 
+		${resource_datasyn_uncert}, eval_period, 
 		eval_climate, eval_perf, ${meas_speed_uncert}, 
 		${meas_dir_uncert}, ${meas_atm_uncert}, ${meas_data_uncert}, 
 		${hextrap_inputs_uncert}, ${hextrap_sens_uncert}, ${hextrap_approp_uncert}, 
-		${vextrap_vert_uncert}, ${vextrap_excess_uncert}, ${wake_int_uncert}, 
-		${wake_ext_uncert}, ${wake_future_uncert},
+		${vextrap_inputs_uncert}, ${vextrap_comp_uncert}, ${vextrap_stress_uncert},
+		${wake_int_uncert}, ${wake_ext_uncert}, ${wake_future_uncert},
 		${avail_turb_uncert}, ${avail_bop_uncert}, ${avail_grid_uncert}, 
 		${elec_eff_uncert}, ${elec_parasitic_uncert}, ${turb_subopt_uncert}, 
 		${turb_generic_uncert}, ${turb_specific_uncert}, ${turb_hysteresis_uncert}, 
-		${env_icing_uncert}, ${env_degrad_uncert}, ${env_ext_uncert}, ${env_exp_uncert}, 
+		${env_icing_uncert}, ${env_degrad_uncert}, ${env_env_uncert}, ${env_exp_uncert}, 
 		${ops_load_uncert}, ${ops_grid_uncert}, ${ops_env_uncert}, ${ops_strategies_uncert}];
 	n_wspd_comps = 18;
 	sens = ${sensitivity_uncert};
