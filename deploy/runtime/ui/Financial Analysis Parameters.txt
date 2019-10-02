@@ -386,7 +386,7 @@ equations{ 'nominal_discount_rate' } = define() {
 };
 
 
-1923
+1976
 on_load{'Financial Analysis Parameters'} = define() {
 	on_change{'analysis_period'}();
 	txt = analysis_period_message();
@@ -417,8 +417,11 @@ function analysis_period_message() {
       ppa_debt = (value('debt_option') == 1 && value('dscr') > 0) || (value('debt_option')==0 && value('debt_percent')) > 0;
       if ( value('term_tenor') > value('analysis_period') && ppa_debt==true )
         msg = 'Analysis period is shorter than the debt payment period (tenor). The cash flow will not account for debt liability beyond the analysis period. ';
-	  if ( value('flip_target_year') > value('analysis_period') && ppa_debt==true )
-		msg = msg + ' IRR target year is greater than the analysis period. Choose a target year less than the analysis period. ';
+      if (fin != "Merchant Plant")  
+      {
+		if ( value('flip_target_year') > value('analysis_period') && ppa_debt==true )
+			msg = msg + ' IRR target year is greater than the analysis period. Choose a target year less than the analysis period. ';
+      }
     }        
   }
   return msg;
