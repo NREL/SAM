@@ -545,8 +545,8 @@ Numeric
 17
 Name
 5
-25
-inter_device_cable_length
+24
+inter_array_cable_length
 X
 3
 228
@@ -1460,10 +1460,10 @@ Floating array
 1
 1
 Default
-inter_device_cable_length
+inter_array_cable_length
 3
 1
-Inter-device cable length
+Inter-array cable length
 m
  
 0
@@ -1587,9 +1587,21 @@ m
 50
 Default
 
-1001
+1197
 equations{ 'system_capacity' } = define() {
 	return ${number_devices} * ${device_rated_power};
+};
+
+equations{ 'inter_array_cable_length' } = define() {
+	return 12;
+};
+
+equations{ 'export_cable_length' } = define() {
+	return 12;
+};
+
+equations{ 'riser_cable_length' } = define() {
+	return 12;
 };
 
 equations{ '$MIMO$ MHKFarmLayout' } = define() {
