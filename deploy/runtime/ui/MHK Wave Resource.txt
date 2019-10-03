@@ -571,7 +571,7 @@ Name
 max_frequency
 X
 3
-147
+231
 Y
 3
 840
@@ -633,7 +633,7 @@ Name
 max_frequency_Hs
 X
 3
-408
+492
 Y
 3
 840
@@ -695,7 +695,7 @@ Name
 max_frequency_Te
 X
 3
-723
+807
 Y
 3
 840
@@ -1337,12 +1337,12 @@ ShadeR0C0
 1
 VerticalLabel
 5
-20
-Hs = wave height (m)
+32
+Hs = significant wave height (m)
 HorizontalLabel
 5
-20
-Te = wave period (s)
+27
+Te = wave energy period (s)
 ShadeC0
 2
 0
@@ -1520,7 +1520,7 @@ Numeric
 max_frequency
 3
 1
-Max frequency
+Probability of dominant wave
  
 MHK Wave Resource
 0
@@ -1534,7 +1534,7 @@ Numeric
 max_frequency_Hs
 3
 1
-Max frequency Hs
+Dominant wave height
 m
 MHK Wave Resource
 0
@@ -1548,7 +1548,7 @@ Numeric
 max_frequency_Te
 3
 1
-Max frequency Te
+Dominant wave period
 s
 MHK Wave Resource
 0

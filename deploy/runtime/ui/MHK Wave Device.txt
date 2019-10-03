@@ -1,7 +1,7 @@
 MHK Wave Device
 1292
 796
-15
+16
 GroupBox
 
 1
@@ -515,12 +515,12 @@ ShadeR0C0
 1
 VerticalLabel
 5
-23
-Hs = wave height (m)   
+35
+Hs = significant wave height (m)   
 HorizontalLabel
 5
-20
-Te = wave period (s)
+27
+Te = wave energy period (s)
 ShadeC0
 2
 0
@@ -576,7 +576,7 @@ Y
 30
 Width
 3
-180
+208
 Height
 3
 54
@@ -590,7 +590,7 @@ Items
 6
 2
 Select WEC from library
-Input WEC characteristics
+Input WEC not found in library
 ShowCaptions
 2
 1
@@ -628,6 +628,54 @@ Caption
 23
 Wave Power Matrix (kW) 
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+12
+user_entered
+X
+3
+249
+Y
+3
+27
+Width
+3
+270
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+31
+User must upload a power matrix
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 DataMatrix
@@ -676,12 +724,12 @@ ShadeR0C0
 1
 VerticalLabel
 5
-20
-Hs = wave height (m)
+32
+Hs = significant wave height (m)
 HorizontalLabel
 5
-20
-Te = wave period (s)
+27
+Te = wave energy period (s)
 ShadeC0
 2
 0
@@ -881,8 +929,8 @@ Wave_Devices|0
 19
 1
 4
-8
-Device 1
+3
+RM3
 Library
 lib_wave_power_matrix
 3
@@ -904,8 +952,8 @@ library_or_input_wec
 Choose WEC from library or input WEC
  
 MHK Wave Device
-50
-Select WEC from library| Input WEC characteristics
+55
+Select WEC from library| Input WEC not found in library
 1
 1
 1
@@ -995,12 +1043,13 @@ equations{ 'wave_power_matrix' } = define()
 		return ${lib_wave_power_matrix};
 };
 
-946
+980
 
 function update_controls()
 {
 	input_wec = (value("library_or_input_wec") == 1);
 	show("user_wave_power_matrix", input_wec);
+	show("user_entered", input_wec);
 	show("lib_wave_device", !input_wec);
 	show("lib_wave_power_matrix", !input_wec);
 	show('wave_device_name', !input_wec);

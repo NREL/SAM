@@ -126,7 +126,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -348,7 +348,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -571,7 +571,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -793,7 +793,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -1015,7 +1015,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -1285,7 +1285,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -1697,7 +1697,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2417,7 +2417,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2479,13 +2479,13 @@ Name
 object 758
 X
 3
-438
+416
 Y
 3
 633
 Width
 3
-159
+181
 Height
 3
 21
@@ -2542,8 +2542,8 @@ Tool Tip
 0
 Caption
 5
-14
-Category Total
+13
+Category Cost
 TextColour
 4
 0
@@ -2561,7 +2561,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2638,8 +2638,8 @@ Tool Tip
 0
 Caption
 5
-14
-Category Total
+13
+Category Cost
 TextColour
 4
 0
@@ -2657,7 +2657,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2705,7 +2705,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2753,7 +2753,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2791,7 +2791,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -3013,7 +3013,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -3235,7 +3235,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -3457,7 +3457,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -3679,7 +3679,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -3901,7 +3901,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -4123,7 +4123,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -4345,7 +4345,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -4567,7 +4567,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 2
@@ -4630,7 +4630,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 1
@@ -4694,7 +4694,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 2
@@ -4757,7 +4757,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 0
@@ -4819,7 +4819,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 2
