@@ -75,7 +75,7 @@ autographs{ 'Wind Power' } = define() { base_technology_graphs(); };
 
 autographs{ 'MHKwave' } = define()
 {
-	agraph( 'annual_energy_distribution', 'Annual energy production (kWh)', 'Te = wave period (s)', 'Hs = wave height (m)', -1, true, false, 'bottom', 4); 
+	agraph( 'annual_energy_distribution', 'Annual energy production (kWh)', 'Te = wave energy period (s)', 'Hs = significant wave height (m)', -1, true, false, 'bottom', 4); 
 };
 
 autographs{ 'MHKtidal' } = define()
