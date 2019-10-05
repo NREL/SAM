@@ -1588,22 +1588,38 @@ ME - Array
 50
 Default
 
-1197
+1824
 equations{ 'system_capacity' } = define() {
 	return ${number_devices} * ${device_rated_power};
 };
 
-equations{ 'inter_array_cable_length' } = define() {
-	return 12;
+equations{ '$MIMO$ cable_length' } = define() {
+
+	data.devices_per_row = ${devices_per_row};
+	data.device_spacing_in_row = ${device_spacing_in_row};
+	data.number_rows = ${number_rows};
+	data.row_spacing = ${row_spacing};
+	data.cable_system_overbuild = ${cable_system_overbuild};
+	data.water_depth = ${water_depth};
+	data.number_devices = ${number_devices};
+	data.distance_to_shore = ${distance_to_shore};
+	data.floating_array = ${floating_array};
+	data.export_cable_redundancy = ${export_cable_redundancy};
+	
+	success = ssc_eqn("me_array_cable_length", data);
+	
+	if (!success){
+		msgbox("error = " + success);
+		return 0;
+	}
+	//msgbox(data);
+	${inter_array_cable_length} = data.inter_array_cable_length;
+	${export_cable_length} = data.export_cable_length;
+	${riser_cable_length} = data.riser_cable_length;
+
+	return 0;
 };
 
-equations{ 'export_cable_length' } = define() {
-	return 12;
-};
-
-equations{ 'riser_cable_length' } = define() {
-	return 12;
-};
 
 equations{ '$MIMO$ MHKFarmLayout' } = define() {
 	if (${array_sizing_mode} == 0) //single device

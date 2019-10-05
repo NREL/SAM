@@ -7774,8 +7774,10 @@ total_operating_cost
 0
 Numeric
 
-8446
+8449
 equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
+	
+
 	obj = ssc_create();
    
 	ssc_var(obj,'device_rated_power', ${device_rated_power});
@@ -8047,13 +8049,5 @@ equations{ 'total_installed_cost' } = define() {
 equations{ 'total_cost_per_kw' } = define() {
 	return ${total_installed_cost} / ${system_capacity} ;
 };
-271
-on_load{'MHK Costs'} = define()
-{
-	enable('structural_assembly_cost_input', (${structural_assembly_cost_method} != 2));
-};
+1
 
-on_change('structural_assembly_cost_method') = define()
-{
-	enable('structural_assembly_cost_input', (${structural_assembly_cost_method} != 2));
-};
