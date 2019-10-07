@@ -7774,7 +7774,7 @@ total_operating_cost
 0
 Numeric
 
-8449
+8975
 equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	
 
@@ -7783,6 +7783,15 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	ssc_var(obj,'device_rated_power', ${device_rated_power});
 	ssc_var(obj,'system_capacity', ${system_capacity});
 	ssc_var(obj,'devices_per_row', ${devices_per_row});
+	
+	
+	ssc_var(obj,'structural_assembly_cost_method', ${structural_assembly_cost_method});
+	ssc_var(obj,'structural_assembly_cost_input', ${structural_assembly_cost_input});
+	ssc_var(obj,'power_takeoff_system_cost_method', ${power_takeoff_system_cost_method});
+	ssc_var(obj,'power_takeoff_system_cost_input', ${power_takeoff_system_cost_input});
+	ssc_var(obj,'mooring_found_substruc_cost_method', ${mooring_found_substruc_cost_method});
+	ssc_var(obj,'mooring_found_substruc_cost_input', ${mooring_found_substruc_cost_input});
+	
 	
 	//ssc_var(obj, 'device_type', 0);
 	//ssc_var(obj,'marine_energy_tech', 0);
