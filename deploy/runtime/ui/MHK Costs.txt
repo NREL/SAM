@@ -7774,7 +7774,7 @@ total_operating_cost
 0
 Numeric
 
-8975
+10417
 equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	
 
@@ -7792,6 +7792,25 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	ssc_var(obj,'mooring_found_substruc_cost_method', ${mooring_found_substruc_cost_method});
 	ssc_var(obj,'mooring_found_substruc_cost_input', ${mooring_found_substruc_cost_input});
 	
+	ssc_var(obj,'development_cost_method', ${development_cost_method});
+	ssc_var(obj,'development_cost_input', ${development_cost_input});
+	ssc_var(obj,'eng_and_mgmt_cost_method', ${eng_and_mgmt_cost_method});
+	ssc_var(obj,'eng_and_mgmt_cost_input', ${eng_and_mgmt_cost_input});
+	ssc_var(obj,'assembly_and_install_cost_method', ${assembly_and_install_cost_method});
+	ssc_var(obj,'assembly_and_install_cost_input', ${assembly_and_install_cost_input});
+	ssc_var(obj,'other_infrastructure_cost_method', ${other_infrastructure_cost_method});
+	ssc_var(obj,'other_infrastructure_cost_input', ${other_infrastructure_cost_input});
+	
+	ssc_var(obj,'array_cable_system_cost_method', ${array_cable_system_cost_method});
+	ssc_var(obj,'array_cable_system_cost_input', ${array_cable_system_cost_input});
+	ssc_var(obj,'export_cable_system_cost_method', ${export_cable_system_cost_method});
+	ssc_var(obj,'export_cable_system_cost_input', ${export_cable_system_cost_input});
+	ssc_var(obj,'onshore_substation_cost_method', ${onshore_substation_cost_method});
+	ssc_var(obj,'onshore_substation_cost_input', ${onshore_substation_cost_input});
+	ssc_var(obj,'offshore_substation_cost_method', ${offshore_substation_cost_method});
+	ssc_var(obj,'offshore_substation_cost_input', ${offshore_substation_cost_input});
+	ssc_var(obj,'other_elec_infra_cost_method', ${other_elec_infra_cost_method});
+	ssc_var(obj,'other_elec_infra_cost_input', ${other_elec_infra_cost_input});
 	
 	//ssc_var(obj, 'device_type', 0);
 	//ssc_var(obj,'marine_energy_tech', 0);

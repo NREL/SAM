@@ -126,7 +126,7 @@ capital_cost
 1
 1
 1
-1.38502e+07
+1.49177e+07
 desired_array_size
 1
 1
@@ -264,7 +264,7 @@ insurance_during_construction_cost
 1
 1
 1
-42311.2
+133552
 insurance_during_construction_input
 1
 1
@@ -282,7 +282,7 @@ insurance_during_construction_modeled
 1
 1
 1
-42311.2
+133552
 inter_array_cable_length
 1
 1
@@ -474,7 +474,7 @@ plant_commissioning_cost
 1
 1
 1
-67697.9
+213683
 plant_commissioning_cost_input
 1
 1
@@ -492,7 +492,7 @@ plant_commissioning_cost_modeled
 1
 1
 1
-67697.9
+213683
 power_takeoff_system_cost
 1
 1
@@ -522,7 +522,7 @@ project_contingency_cost
 1
 1
 1
-211556
+667758
 project_contingency_input
 1
 1
@@ -540,13 +540,13 @@ project_contingency_modeled
 1
 1
 1
-211556
+667758
 reserve_accounts_cost
 1
 1
 1
 1
-126934
+400655
 reserve_accounts_input
 1
 1
@@ -564,7 +564,7 @@ reserve_accounts_modeled
 1
 1
 1
-126934
+400655
 riser_cable_length
 1
 1
@@ -582,7 +582,7 @@ site_access_port_staging_cost
 1
 1
 1
-46542.3
+146907
 site_access_port_staging_cost_input
 1
 1
@@ -600,7 +600,7 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-46542.3
+146907
 structural_assembly_cost
 1
 1
@@ -716,13 +716,13 @@ total_bos_cost
 1
 1
 1
-9.23828e+06
+9.48463e+06
 total_cost_per_kw
 1
 1
 1
 1
-12421.7
+13379.1
 total_device_cost
 1
 1
@@ -740,13 +740,13 @@ total_financial_cost
 1
 1
 1
-380801
+1.20196e+06
 total_installed_cost
 1
 1
 1
 1
-1.38502e+07
+1.49177e+07
 total_operating_cost
 1
 1
@@ -764,7 +764,7 @@ ui_capital_cost_reference
 1
 1
 1
-1.38502e+07
+1.49177e+07
 ui_cfin
 1
 1
