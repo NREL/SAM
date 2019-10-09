@@ -287,7 +287,17 @@ def get_des_od_label_unit_info__calc_metrics():
     info["cooler_tot_UA"] = C_des_od_label_unit_info("cooler_tot_UA", "none", "Total Cooler\nUA [MW/K]", "Total Cooler Conductance [MW/K]", "[MW/K]")
     info["cooler_tot_UA"].od_d_type = "nan"
     info["cooler_tot_W_dot_fan"] = C_des_od_label_unit_info("cooler_tot_W_dot_fan", "cooler_tot_W_dot_fan_od", "Total Cooler\nFan Power [MWe]", "Total Cooler Fan Power [MWe]", "[MWe]")
-    
+
+    info["diff_m_dot"]= C_des_od_label_unit_info("none", "diff_m_dot_od", "Mass Balance [-]", "Mass Balance [-]", "[-]")
+    info["diff_m_dot"].des = 0
+    info["diff_E_cycle"] = C_des_od_label_unit_info("none", "diff_E_cycle", "Energy Balance [-]", "Energy Balance [-]", "[-]")
+    info["diff_E_cycle"].des = 0
+    info["diff_Q_LTR"] = C_des_od_label_unit_info("none", "diff_Q_LTR", "LTR Energy Balance [-]", "LTR Energy Balance [-]", "[-]")
+    info["diff_Q_LTR"].des = 0
+    info["diff_Q_HTR"] = C_des_od_label_unit_info("none", "diff_Q_HTR", "HTR Energy Balance [-]", "HTR Energy Balance [-]", "[-]")
+    info["diff_Q_HTR"].des = 0
+
+
     return info
 
 def get_des_od_label_unit_info__ind_inputs():

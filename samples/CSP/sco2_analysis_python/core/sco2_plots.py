@@ -1041,12 +1041,12 @@ class C_OD_stacked_outputs_plot:
                     if(self.is_plot_each_des_pt or i == 0):
                         if(self.var_info_metrics[key].des_d_type == "single"):
                             if(self.var_info_metrics[key].des_var == "none"):
-                                j_axis.plot(x_val_des_i, self.var_info_metrics[key].des, ls_des_i)
+                                j_axis.plot(x_val_des_i, self.var_info_metrics[key].des, ls_des_i, markersize = self.mrk_sz)
                             else:
-                                j_axis.plot(x_val_des_i, self.list_dict_results[i][y_des_key], ls_des_i)
+                                j_axis.plot(x_val_des_i, self.list_dict_results[i][y_des_key], ls_des_i, markersize = self.mrk_sz)
                         elif(self.var_info_metrics[key].des_d_type == "list"):
                             for i_s in range(len(self.list_dict_results[i][y_des_key])):
-                                j_axis.plot(x_val_des_i, self.list_dict_results[i][y_des_key][i_s], ls_des_i)
+                                j_axis.plot(x_val_des_i, self.list_dict_results[i][y_des_key][i_s], ls_des_i, markersize = self.mrk_sz)
                                 
                 if(y_limit != ""):
                     if(isinstance(y_limit, str)):
