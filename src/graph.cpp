@@ -306,27 +306,33 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 		}
 		else
 		{
+			size_t j = i;
+			if (m_g.Type == Graph::STACKED)
+				j = 0;
 			if (std::isnan(yvars[i]->Value()))
-				plotdata[i].push_back(wxRealPoint(i, 0));
+				plotdata[i].push_back(wxRealPoint(j, 0));
 			else
-				plotdata[i].push_back(wxRealPoint(i, yvars[i]->Value()));
+				plotdata[i].push_back(wxRealPoint(j, yvars[i]->Value()));
 		}
 
 		wxPLPlottable *plot = 0;
 		if (m_g.Type == Graph::LINE)
 			plot = new wxPLLinePlot(plotdata[i], m_s->GetLabel(ynames[i]), s_colours[cidx],
 				wxPLLinePlot::SOLID, m_g.Size + 2);
-		else if (m_g.Type == Graph::BAR || m_g.Type == Graph::STACKED)
+		else if (m_g.Type == Graph::BAR)
 		{
 			wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], 0.0, m_s->GetLabel(ynames[i]), s_colours[cidx]);
 			if (m_g.Size != 0)
 				bar->SetThickness(m_g.Size);
-
-			if (m_g.Type == Graph::STACKED)
-				bar->SetStackedOn(last_bar);
-			else
-				bar_group.push_back(bar);
-
+			bar_group.push_back(bar);
+			plot = bar;
+		}
+		else if (m_g.Type == Graph::STACKED)
+		{
+			wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], 0.0, m_s->GetLabel(ynames[i]), s_colours[cidx]);
+			if (m_g.Size != 0)
+				bar->SetThickness(m_g.Size);
+			bar->SetStackedOn(last_bar);
 			last_bar = bar;
 			plot = bar;
 		}
@@ -340,8 +346,13 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 
 		if ( ++cidx >= (int)s_colours.size() ) cidx = 0; // incr and wrap around colour index
 		
-		if ( plot != 0 )
-			AddPlot( plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false );
+		if (plot != 0)
+		{
+			if (m_g.Type == Graph::STACKED)
+				AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, true);
+			else
+				AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
+		}
 	}
 
 	
@@ -388,6 +399,9 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 						AddPlot(plot, wxPLPlotCtrl::X_TOP, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
 						SetSideWidget(jet);
 					}
+					GetYAxis1()->SetReversed(true); // need setting
+					GetYAxis1()->SetLabel(m_g.YLabel);
+					GetXAxis2()->SetLabel(m_g.XLabel);
 				}
 			}
 		}
@@ -395,7 +409,17 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 	else
 	{
 		// x-axis
-		if (ndata == 1)
+		if (m_g.Type == Graph::STACKED)
+		{
+			wxPLLabelAxis *x1 = new wxPLLabelAxis(-0.1, 0.1, m_g.XLabel);
+			if (m_g.ShowXValues)
+			{
+				for (size_t i = 0; i < ynames.size(); i++)
+					x1->Add(i, m_s->GetLabel(ynames[i]));
+			}
+			SetXAxis1(x1);
+		}
+		else if (ndata == 1)
 		{
 			// single value axis
 			wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
@@ -419,16 +443,25 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 			// linear axis
 			SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
 		}
+	
 		// setup y axis
 
 		if (GetPlotCount() > 0)
 		{
-			double ymin, ymax;
+			double ymin, ymax, ymin1, ymax1;
 			GetPlot(0)->GetMinMax(0, 0, &ymin, &ymax);
 			for (size_t i = 1; i < GetPlotCount(); i++)
-				GetPlot(i)->ExtendMinMax(0, 0, &ymin, &ymax);
-
-			if (m_g.Type == Graph::STACKED || m_g.Type == Graph::BAR)
+			{
+				if (m_g.Type == Graph::STACKED)
+				{
+					GetPlot(i)->GetMinMax(0, 0, &ymin1, &ymax1);
+					ymax += ymax1;
+					if (ymin1 < ymin) ymin = ymin1;
+				}
+				else
+					GetPlot(i)->ExtendMinMax(0, 0, &ymin, &ymax);
+			}
+			if ((m_g.Type == Graph::BAR) || (m_g.Type == Graph::STACKED))
 			{ // forcibly include the zero line for bar plots
 				if (ymin > 0) ymin = 0;
 				if (ymax < 0) ymax = 0;
@@ -439,7 +472,8 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 			if (ymin != 0) ymin -= yadj;
 			if (ymax != 0) ymax += yadj;
 
-			if (ymin == ymax) {
+			if (ymin == ymax) 
+			{
 				// no variation in y values, so pick some reasonable graph bounds
 				if (ymax == 0)
 					ymax = 1;
@@ -450,7 +484,6 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 				else
 					ymin -= (ymin * 0.05);
 			}
-
 			SetYAxis1(new wxPLLinearAxis(ymin, ymax, m_g.YLabel));
 		}
 	}

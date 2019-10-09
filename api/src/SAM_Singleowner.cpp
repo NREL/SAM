@@ -974,6 +974,12 @@ SAM_EXPORT void SAM_Singleowner_Battery_en_batt_nset(SAM_Singleowner ptr, double
 	});
 }
 
+SAM_EXPORT void SAM_Singleowner_Battery_en_electricity_rates_nset(SAM_Singleowner ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_electricity_rates", number);
+	});
+}
+
 SAM_EXPORT void SAM_Singleowner_Battery_grid_to_batt_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
@@ -3364,6 +3370,17 @@ SAM_EXPORT double SAM_Singleowner_Battery_en_batt_nget(SAM_Singleowner ptr, SAM_
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_batt", &result))
 		make_access_error("SAM_Singleowner", "en_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Singleowner_Battery_en_electricity_rates_nget(SAM_Singleowner ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
+		make_access_error("SAM_Singleowner", "en_electricity_rates");
 	});
 	return result;
 }

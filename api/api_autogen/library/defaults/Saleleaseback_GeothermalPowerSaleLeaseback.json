@@ -141,7 +141,7 @@
 			"gen": [0.000000],
 			"system_capacity": 34788.7
 		},
-		"DHF": {
+		"SaleLeaseback": {
 			"construction_financing_cost": 6.70196e+06,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,

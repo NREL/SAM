@@ -1,5 +1,5 @@
 1
-759
+760
 6par_aisc
 1
 1
@@ -1673,6 +1673,12 @@ gamma_r_calc
 1
 1
 -1.03914
+grid_curtailment
+1
+2
+1
+1
+0
 grid_interconnection_limit_kwac
 1
 1

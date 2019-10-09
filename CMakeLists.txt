@@ -24,7 +24,9 @@ endif()
 
 Project(sam)
 
-add_subdirectory(api)
+if (NOT skip_api)
+	add_subdirectory(api)
+endif()
 
 include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
 
@@ -264,7 +266,7 @@ if (APPLE)
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
 		COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
-		COMMAND cp ${SSC_DIR} ${SAM_APP}/Contents/Frameworks
+		COMMAND cp ${SSC_DIR}/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks
 		COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
 		COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
 	)

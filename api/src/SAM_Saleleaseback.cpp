@@ -944,397 +944,397 @@ SAM_EXPORT void SAM_Saleleaseback_SystemOutput_system_capacity_nset(SAM_Saleleas
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_construction_financing_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_construction_financing_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "construction_financing_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_cost_dev_fee_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_cost_dev_fee_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_dev_fee_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_cost_equity_closing_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_cost_equity_closing_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_equity_closing", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_cost_other_financing_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_cost_other_financing_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_other_financing", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_custom_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_alloc_custom_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_custom_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_macrs_15_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_alloc_macrs_15_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_macrs_15_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_macrs_5_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_alloc_macrs_5_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_macrs_5_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_15_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_alloc_sl_15_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_15_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_20_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_alloc_sl_20_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_20_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_39_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_alloc_sl_39_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_39_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_alloc_sl_5_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_alloc_sl_5_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_5_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_fed_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_bonus_sta_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_custom_schedule_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_custom_schedule_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "depr_custom_schedule", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_fedbas_method_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_fedbas_method_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_fedbas_method", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_fed_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_custom_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_macrs_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_macrs_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_sl_15_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_sl_20_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_sl_39_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_itc_sta_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_sl_5_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_depr_stabas_method_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_depr_stabas_method_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_stabas_method", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_equip_reserve_depr_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_equip_reserve_depr_fed_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip_reserve_depr_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_equip_reserve_depr_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_equip_reserve_depr_sta_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip_reserve_depr_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_flip_target_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_flip_target_percent_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flip_target_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_flip_target_year_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_flip_target_year_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flip_target_year", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_escalation_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_ppa_escalation_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_escalation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_price_input_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_ppa_price_input_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_price_input", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_max_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_ppa_soln_max_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_soln_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_max_iterations_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_ppa_soln_max_iterations_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_soln_max_iterations", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_min_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_ppa_soln_min_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_soln_min", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_mode_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_ppa_soln_mode_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_soln_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_ppa_soln_tolerance_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_ppa_soln_tolerance_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_soln_tolerance", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_reserves_interest_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_reserves_interest_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "reserves_interest", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_salvage_percentage_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_salvage_percentage_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "salvage_percentage", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_sponsor_operating_margin_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_sponsor_operating_margin_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sponsor_operating_margin", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_sponsor_operating_margin_escalation_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_sponsor_operating_margin_escalation_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sponsor_operating_margin_escalation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_system_lifetime_recapitalize_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_system_lifetime_recapitalize_aset(SAM_Saleleaseback ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "system_lifetime_recapitalize", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_system_recapitalization_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_system_recapitalization_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_recapitalization_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_system_recapitalization_escalation_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_system_recapitalization_escalation_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_recapitalization_escalation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_system_use_lifetime_output_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_system_use_lifetime_output_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_system_use_recapitalization_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_system_use_recapitalization_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_recapitalization", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_tax_investor_required_lease_reserve_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_tax_investor_required_lease_reserve_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tax_investor_required_lease_reserve", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_DHF_total_installed_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_SaleLeaseback_total_installed_cost_nset(SAM_Saleleaseback ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "total_installed_cost", number);
 	});
@@ -3201,7 +3201,7 @@ SAM_EXPORT double SAM_Saleleaseback_SystemOutput_system_capacity_nget(SAM_Salele
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_construction_financing_cost_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_construction_financing_cost_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "construction_financing_cost", &result))
@@ -3212,7 +3212,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_construction_financing_cost_nget(SAM_Sal
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_cost_dev_fee_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_cost_dev_fee_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_dev_fee_percent", &result))
@@ -3223,7 +3223,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_cost_dev_fee_percent_nget(SAM_Saleleaseb
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_cost_equity_closing_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_cost_equity_closing_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_equity_closing", &result))
@@ -3234,7 +3234,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_cost_equity_closing_nget(SAM_Saleleaseba
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_cost_other_financing_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_cost_other_financing_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_other_financing", &result))
@@ -3245,7 +3245,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_cost_other_financing_nget(SAM_Saleleaseb
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_custom_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_alloc_custom_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_custom_percent", &result))
@@ -3256,7 +3256,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_custom_percent_nget(SAM_Salel
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_macrs_15_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_alloc_macrs_15_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_15_percent", &result))
@@ -3267,7 +3267,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_macrs_15_percent_nget(SAM_Sal
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_macrs_5_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_alloc_macrs_5_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_5_percent", &result))
@@ -3278,7 +3278,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_macrs_5_percent_nget(SAM_Sale
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_15_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_alloc_sl_15_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_15_percent", &result))
@@ -3289,7 +3289,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_15_percent_nget(SAM_Salele
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_20_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_alloc_sl_20_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_20_percent", &result))
@@ -3300,7 +3300,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_20_percent_nget(SAM_Salele
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_39_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_alloc_sl_39_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_39_percent", &result))
@@ -3311,7 +3311,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_39_percent_nget(SAM_Salele
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_5_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_alloc_sl_5_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_5_percent", &result))
@@ -3322,7 +3322,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_alloc_sl_5_percent_nget(SAM_Salelea
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed", &result))
@@ -3333,7 +3333,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_nget(SAM_Saleleaseback pt
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_custom_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_custom_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_custom", &result))
@@ -3344,7 +3344,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_custom_nget(SAM_Salelease
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_15", &result))
@@ -3355,7 +3355,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_15_nget(SAM_Salelea
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_5", &result))
@@ -3366,7 +3366,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_macrs_5_nget(SAM_Saleleas
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_15", &result))
@@ -3377,7 +3377,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_15_nget(SAM_Saleleaseb
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_20", &result))
@@ -3388,7 +3388,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_20_nget(SAM_Saleleaseb
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_39", &result))
@@ -3399,7 +3399,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_39_nget(SAM_Saleleaseb
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_fed_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_5", &result))
@@ -3410,7 +3410,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_fed_sl_5_nget(SAM_Saleleaseba
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta", &result))
@@ -3421,7 +3421,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_nget(SAM_Saleleaseback pt
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_custom_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_custom_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_custom", &result))
@@ -3432,7 +3432,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_custom_nget(SAM_Salelease
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_15", &result))
@@ -3443,7 +3443,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_15_nget(SAM_Salelea
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_5", &result))
@@ -3454,7 +3454,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_macrs_5_nget(SAM_Saleleas
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_15", &result))
@@ -3465,7 +3465,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_15_nget(SAM_Saleleaseb
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_20", &result))
@@ -3476,7 +3476,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_20_nget(SAM_Saleleaseb
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_39", &result))
@@ -3487,7 +3487,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_39_nget(SAM_Saleleaseb
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_bonus_sta_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_5", &result))
@@ -3498,7 +3498,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_bonus_sta_sl_5_nget(SAM_Saleleaseba
 
 
 
-SAM_EXPORT double* SAM_Saleleaseback_DHF_depr_custom_schedule_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Saleleaseback_SaleLeaseback_depr_custom_schedule_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "depr_custom_schedule", length);
@@ -3510,7 +3510,7 @@ SAM_EXPORT double* SAM_Saleleaseback_DHF_depr_custom_schedule_aget(SAM_Salelease
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_fedbas_method_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_fedbas_method_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_method", &result))
@@ -3521,7 +3521,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_fedbas_method_nget(SAM_Saleleasebac
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_custom_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_custom_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_custom", &result))
@@ -3532,7 +3532,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_custom_nget(SAM_Saleleaseba
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_15", &result))
@@ -3543,7 +3543,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_macrs_15_nget(SAM_Salelease
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_5", &result))
@@ -3554,7 +3554,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_macrs_5_nget(SAM_Saleleaseb
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_15", &result))
@@ -3565,7 +3565,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_15_nget(SAM_Saleleasebac
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_20", &result))
@@ -3576,7 +3576,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_20_nget(SAM_Saleleasebac
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_39", &result))
@@ -3587,7 +3587,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_39_nget(SAM_Saleleasebac
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_fed_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_5", &result))
@@ -3598,7 +3598,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_fed_sl_5_nget(SAM_Saleleaseback
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_custom_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_custom_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_custom", &result))
@@ -3609,7 +3609,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_custom_nget(SAM_Saleleaseba
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_macrs_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_15", &result))
@@ -3620,7 +3620,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_macrs_15_nget(SAM_Salelease
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_macrs_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_5", &result))
@@ -3631,7 +3631,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_macrs_5_nget(SAM_Saleleaseb
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_sl_15_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_15", &result))
@@ -3642,7 +3642,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_15_nget(SAM_Saleleasebac
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_sl_20_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_20", &result))
@@ -3653,7 +3653,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_20_nget(SAM_Saleleasebac
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_sl_39_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_39", &result))
@@ -3664,7 +3664,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_39_nget(SAM_Saleleasebac
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_itc_sta_sl_5_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_5", &result))
@@ -3675,7 +3675,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_itc_sta_sl_5_nget(SAM_Saleleaseback
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_depr_stabas_method_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_stabas_method_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_method", &result))
@@ -3686,7 +3686,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_depr_stabas_method_nget(SAM_Saleleasebac
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_equip_reserve_depr_fed_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_equip_reserve_depr_fed_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip_reserve_depr_fed", &result))
@@ -3697,7 +3697,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_equip_reserve_depr_fed_nget(SAM_Saleleas
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_equip_reserve_depr_sta_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_equip_reserve_depr_sta_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip_reserve_depr_sta", &result))
@@ -3708,7 +3708,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_equip_reserve_depr_sta_nget(SAM_Saleleas
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_flip_target_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_flip_target_percent_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_percent", &result))
@@ -3719,7 +3719,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_flip_target_percent_nget(SAM_Saleleaseba
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_flip_target_year_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_flip_target_year_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_year", &result))
@@ -3730,7 +3730,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_flip_target_year_nget(SAM_Saleleaseback 
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_escalation_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_ppa_escalation_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_escalation", &result))
@@ -3741,7 +3741,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_escalation_nget(SAM_Saleleaseback pt
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_price_input_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_ppa_price_input_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_price_input", &result))
@@ -3752,7 +3752,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_price_input_nget(SAM_Saleleaseback p
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_max_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_ppa_soln_max_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_soln_max", &result))
@@ -3763,7 +3763,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_max_nget(SAM_Saleleaseback ptr,
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_max_iterations_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_ppa_soln_max_iterations_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_soln_max_iterations", &result))
@@ -3774,7 +3774,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_max_iterations_nget(SAM_Salelea
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_min_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_ppa_soln_min_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_soln_min", &result))
@@ -3785,7 +3785,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_min_nget(SAM_Saleleaseback ptr,
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_mode_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_ppa_soln_mode_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_soln_mode", &result))
@@ -3796,7 +3796,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_mode_nget(SAM_Saleleaseback ptr
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_tolerance_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_ppa_soln_tolerance_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_soln_tolerance", &result))
@@ -3807,7 +3807,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_ppa_soln_tolerance_nget(SAM_Saleleasebac
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_reserves_interest_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_reserves_interest_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "reserves_interest", &result))
@@ -3818,7 +3818,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_reserves_interest_nget(SAM_Saleleaseback
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_salvage_percentage_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_salvage_percentage_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "salvage_percentage", &result))
@@ -3829,7 +3829,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_salvage_percentage_nget(SAM_Saleleasebac
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_sponsor_operating_margin_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_sponsor_operating_margin_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_operating_margin", &result))
@@ -3840,7 +3840,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_sponsor_operating_margin_nget(SAM_Salele
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_sponsor_operating_margin_escalation_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_sponsor_operating_margin_escalation_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_operating_margin_escalation", &result))
@@ -3851,7 +3851,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_sponsor_operating_margin_escalation_nget
 
 
 
-SAM_EXPORT double* SAM_Saleleaseback_DHF_system_lifetime_recapitalize_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Saleleaseback_SaleLeaseback_system_lifetime_recapitalize_aget(SAM_Saleleaseback ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "system_lifetime_recapitalize", length);
@@ -3863,7 +3863,7 @@ SAM_EXPORT double* SAM_Saleleaseback_DHF_system_lifetime_recapitalize_aget(SAM_S
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_system_recapitalization_cost_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_recapitalization_cost_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_recapitalization_cost", &result))
@@ -3874,7 +3874,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_system_recapitalization_cost_nget(SAM_Sa
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_system_recapitalization_escalation_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_recapitalization_escalation_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_recapitalization_escalation", &result))
@@ -3885,7 +3885,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_system_recapitalization_escalation_nget(
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_system_use_lifetime_output_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_use_lifetime_output_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
@@ -3896,7 +3896,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_system_use_lifetime_output_nget(SAM_Sale
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_system_use_recapitalization_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_use_recapitalization_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_recapitalization", &result))
@@ -3907,7 +3907,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_system_use_recapitalization_nget(SAM_Sal
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_tax_investor_required_lease_reserve_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_tax_investor_required_lease_reserve_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tax_investor_required_lease_reserve", &result))
@@ -3918,7 +3918,7 @@ SAM_EXPORT double SAM_Saleleaseback_DHF_tax_investor_required_lease_reserve_nget
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_DHF_total_installed_cost_nget(SAM_Saleleaseback ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_total_installed_cost_nget(SAM_Saleleaseback ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
@@ -6696,6 +6696,17 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_installedperwatt_nget(SAM_Salel
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_installedperwatt", &result))
 		make_access_error("SAM_Saleleaseback", "cost_installedperwatt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_prefinancing_nget(SAM_Saleleaseback ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cost_prefinancing", &result))
+		make_access_error("SAM_Saleleaseback", "cost_prefinancing");
 	});
 	return result;
 }
@@ -10305,6 +10316,17 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_equity_in_lessee_llc_nget(SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sponsor_equity_in_lessee_llc", &result))
 		make_access_error("SAM_Saleleaseback", "sponsor_equity_in_lessee_llc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_pretax_development_nget(SAM_Saleleaseback ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sponsor_pretax_development", &result))
+		make_access_error("SAM_Saleleaseback", "sponsor_pretax_development");
 	});
 	return result;
 }

@@ -357,5 +357,7 @@ api/api_autogen/library/PySAM/
 api/api_autogen/library/C/
 
 
+*.json
+!tooltips.json
 
 

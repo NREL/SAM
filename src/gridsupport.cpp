@@ -352,6 +352,16 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		da->OnPressed(evt);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
+	else if (type == "DataLifetimeArray")
+	{
+		obj->CreateNative(grid);
+		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+		AFDataLifetimeArrayButton *da = obj->GetNative<AFDataLifetimeArrayButton>();
+		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
+		da->OnPressed(evt);
+		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
+	}
+
 	else if (type == "StringArray")
 	{
 		obj->CreateNative(grid);
@@ -363,9 +373,18 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	}
 	else if (type == "DataMatrix")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+	VariablePopupDialog vpe(grid, obj, name, vv, vi);
+	if (vpe.ShowModal() == wxID_OK)
+		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+	}
+	else if (type == "DataLifetimeMatrix")
+	{
+	obj->CreateNative(grid);
+	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+	AFDataLifetimeMatrixButton *da = obj->GetNative<AFDataLifetimeMatrixButton>();
+	wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
+	da->OnPressed(evt);
+	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "ShadingFactors")
 	{

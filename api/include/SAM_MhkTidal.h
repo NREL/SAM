@@ -44,22 +44,6 @@ extern "C"
 	SAM_EXPORT void SAM_MhkTidal_MHKTidal_annual_energy_loss_nset(SAM_MhkTidal ptr, double number, SAM_error *err);
 
 	/**
-	 * Set calculate_capacity: Calculate device rated capacity from power curve [0/1]
-	 * options: None
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_MhkTidal_MHKTidal_calculate_capacity_nset(SAM_MhkTidal ptr, double number, SAM_error *err);
-
-	/**
-	 * Set device_rated_capacity: Rated capacity of device [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: calculate_capacity=0
-	 */
-	SAM_EXPORT void SAM_MhkTidal_MHKTidal_device_rated_capacity_nset(SAM_MhkTidal ptr, double number, SAM_error *err);
-
-	/**
 	 * Set number_devices: Number of tidal devices in the system
 	 * options: None
 	 * constraints: INTEGER
@@ -90,10 +74,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_MhkTidal_MHKTidal_annual_energy_loss_nget(SAM_MhkTidal ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_MhkTidal_MHKTidal_calculate_capacity_nget(SAM_MhkTidal ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_MhkTidal_MHKTidal_device_rated_capacity_nget(SAM_MhkTidal ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_MhkTidal_MHKTidal_number_devices_nget(SAM_MhkTidal ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MhkTidal_MHKTidal_tidal_power_curve_mget(SAM_MhkTidal ptr, int* nrows, int* ncols, SAM_error *err);
@@ -111,9 +91,11 @@ extern "C"
 
 	SAM_EXPORT double* SAM_MhkTidal_Outputs_annual_energy_distribution_aget(SAM_MhkTidal ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_MhkTidal_Outputs_average_power_device_nget(SAM_MhkTidal ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_MhkTidal_Outputs_capacity_factor_nget(SAM_MhkTidal ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_device_average_power_nget(SAM_MhkTidal ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_device_rated_capacity_nget(SAM_MhkTidal ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */
