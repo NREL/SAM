@@ -27,7 +27,10 @@ Project(system_advisor_model)
 add_subdirectory(lk)
 add_subdirectory(wex)
 add_subdirectory(ssc)
-add_subdirectory(api)
+
+if (NOT skip_api)
+	add_subdirectory(api)
+endif()
 
 #if (NOT skip_tests)
 #	add_subdirectory(test)
