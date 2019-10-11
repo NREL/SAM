@@ -1,5 +1,5 @@
 1
-597
+598
 a_error_test_number
 1
 1
@@ -2566,6 +2566,12 @@ foundation_cost
 1
 1
 3.48031e+06
+grid_curtailment
+1
+2
+1
+1
+0
 grid_interconnection_limit_kwac
 1
 1

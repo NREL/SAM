@@ -1,5 +1,5 @@
 1
-207
+208
 a_error_test_number
 1
 1
@@ -406,6 +406,12 @@ fixed_operating_cost
 1
 1
 765000
+grid_curtailment
+1
+2
+1
+1
+0
 grid_interconnection_limit_kwac
 1
 1

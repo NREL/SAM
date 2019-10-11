@@ -1,5 +1,5 @@
 1
-531
+533
 a_error_test_number
 1
 1
@@ -1976,6 +1976,12 @@ foundation_cost
 1
 1
 136106
+grid_curtailment
+1
+2
+1
+1
+0
 grid_interconnection_limit_kwac
 1
 1
@@ -3727,6 +3733,12 @@ ur_start_date
 4
 5
 empty
+ur_ts_buy_rate
+1
+2
+1
+1
+0
 ur_ts_sell_rate
 1
 2

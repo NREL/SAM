@@ -1,5 +1,5 @@
 1
-178
+179
 a_error_test_number
 1
 1
@@ -326,6 +326,12 @@ eval_uncert_total
 1
 1
 2.22261
+grid_curtailment
+1
+2
+1
+1
+0
 grid_interconnection_limit_kwac
 1
 1
