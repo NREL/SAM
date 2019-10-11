@@ -321,7 +321,7 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	AddAnnotation(new wxPLLineAnnotation(LossArrow, 2, *wxBLUE, wxPLOutputDevice::SOLID, wxPLLineAnnotation::FILLED_ARROW), wxPLAnnotation::AXIS);
 
 
-	AddAnnotation(new wxPLTextAnnotation("Predicted Losses\n" + std::to_string(int(mu1 - mu2)) + " mWh", wxRealPoint(mu2 + 0.2*(mu1 - mu2), ymax), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS);
+	AddAnnotation(new wxPLTextAnnotation("Predicted Losses\n" + wxString::Format("%.2f", mu1 - mu2) + " mWh", wxRealPoint(mu2 + 0.2*(mu1 - mu2), ymax), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS);
 	AddAnnotation(new wxPLTextAnnotation("Gross Energy P50", wxRealPoint(mu1, 0.25*ymax), 2.0, 90, *wxBLACK), wxPLAnnotation::AXIS);
 	AddAnnotation(new wxPLTextAnnotation("Net Energy P50", wxRealPoint(mu2, 0.25*ymax), 2.0, 90, *wxBLUE), wxPLAnnotation::AXIS);
 	AddAnnotation(new wxPLTextAnnotation("P90", wxRealPoint(1.02* p90, 0.05*ymax), 2.0, 0, *wxBLUE), wxPLAnnotation::AXIS);
@@ -1337,11 +1337,16 @@ void UncertaintiesViewer::DisplayStdDevs() {
     matrix_t<wxString> metrics;
     metrics.resize( 4, 2 );
     metrics(0,0) = "Std Dev, year 1";
-    metrics(0,1) = "Energy (mWh)";
+
+    bool useMWH = vv_aep->Value() > 1e6;
+    if (useMWH)
+        metrics(0,1) = "Energy (mWh)";
+    else
+        metrics(0,1) = "Energy (kWh)";
 
     for (size_t i = 0; i < 3; i++){
         metrics(1+i, 0) = std::to_string(i+1);
-        metrics(1+i, 1) = wxNumericFormat( ((i+1) * stddev)/1000., wxNUMERIC_REAL,
+        metrics(1+i, 1) = wxNumericFormat( (double)(i+1) * stddev / ( useMWH ? 1000. : 1.) , wxNUMERIC_REAL,
                                            0, true, "", "" );
     }
     m_stddevTable->SetData(metrics);
@@ -1374,9 +1379,12 @@ void UncertaintiesViewer::DisplayProbOfExceedances() {
     matrix_t<wxString> metrics;
     metrics.resize( pXX_names.size()+1, 4 );
     metrics(0,0) = "PXX";
-    metrics(0,1) = "Year 1 (mWh)";
-    metrics(0,2) = "10-Yr Avg (mWh)";
-    metrics(0,3) = "20-Yr Avg (mWh)";
+
+    bool useMWH = vv_aep->Value() > 1e6;
+    std::string units = useMWH ? " (mWh)" : " (kWh)";
+    metrics(0,1) = "Year 1" + units;
+    metrics(0,2) = "10-Yr Avg" + units;
+    metrics(0,3) = "20-Yr Avg" + units;
 
 
     for( size_t i=0;i<pXX_names.size();i++ )
@@ -1384,7 +1392,7 @@ void UncertaintiesViewer::DisplayProbOfExceedances() {
         metrics(i+1, 0) = pXX_names[i];
         for (size_t j = 0; j < 3; j++ ){
             double val = aep * (pXX_zscores[i] * uncerts[j] + 1);
-            metrics(i+1, 1+j) = wxNumericFormat( val/1000., wxNUMERIC_REAL,
+            metrics(i+1, 1+j) = wxNumericFormat( val / (useMWH ? 1000. : 1.), wxNUMERIC_REAL,
                                                0, true, "", "" );
         }
     }

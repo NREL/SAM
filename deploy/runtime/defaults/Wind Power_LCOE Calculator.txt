@@ -615,7 +615,7 @@ total_uncert
 1
 1
 1
-10.287
+12.085
 turb_generic_loss
 1
 1
@@ -1299,4 +1299,4 @@ wspd_uncert
 1
 1
 1
-0
+9.10558

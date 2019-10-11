@@ -641,10 +641,10 @@ Numeric
 Name
 5
 14
-env_exp_uncert
+env_env_uncert
 X
 3
-657
+300
 Y
 3
 2316
@@ -700,10 +700,10 @@ Numeric
 Name
 5
 14
-env_ext_uncert
+env_exp_uncert
 X
 3
-300
+657
 Y
 3
 2316
@@ -3057,6 +3057,7 @@ Caption
 5
 532
 All uncertainty components and subcomponents are assumed to be random normally-distributed (i.e. have Gaussian error distributions), and subsequently the uncertainties quoted correspond to standard deviations. These are expressed as dimensionless quantities, as a percentage in terms of either mean wind speed or energy.  A speed-to-energy “sensitivity factor”, 𝛿 (%ΔE/%ΔWS), is used to relate uncertainty in mean wind speed (% WS) to uncertainty in energy (%E), simply as a multiplier of the standard deviation in mean wind speed.
+
 TextColour
 4
 0
@@ -5880,7 +5881,7 @@ equations{ 'wake_uncert_total' } = define() {
 		pow(${wake_ext_uncert}, 2) +
 		pow(${wake_future_uncert}, 2));
 };
-3762
+3769
 function calculate_uncertainties(){
 	combine_uncertainty(1);
 	combine_uncertainty(10);
@@ -6011,8 +6012,9 @@ function combine_uncertainty(year) {
 		for ( j = 0; j < i; j++ ){
 			total += 2*comp*components[j]*correlation[i][j];
 		}
-		if (i == n_wspd_comps - 1)
-			wspd = total;
+		if (i == n_wspd_comps - 1){
+			wspd = sqrt(total) * 100.;
+		}
 	}
 	if (year == 10)
 		value('total_10yr_uncert', sqrt(total)*100.);
@@ -6020,5 +6022,5 @@ function combine_uncertainty(year) {
 		value('total_20yr_uncert', sqrt(total)*100.);
 	else
 		value('total_uncert', sqrt(total)*100.);
-	value('wspd_uncert', sqrt(wspd)*100.);
+	value('wspd_uncert', wspd);
 }
