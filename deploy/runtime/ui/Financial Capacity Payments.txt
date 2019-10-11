@@ -697,12 +697,14 @@ Capacity Payment
 0
 Numeric
 
-218
+293
 equations{ 'cp_system_nameplate' } = define() {
 	return ${system_capacity}/1000;
 };
 
 equations{ 'cp_battery_nameplate' } = define() {
+	if (technology() != "Flat Plate PV" || financing() == "None")
+		return 0;
 	if (${en_batt})
 		return ${batt_computed_bank_capacity}/1000;
 	else 
