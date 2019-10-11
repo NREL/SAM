@@ -6,6 +6,7 @@
 			"system_use_lifetime_output": 0
 		},
 		"LocationAndResource": {
+			"solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv"
 		},
 		"SystemDesign": {
 			"array_type": 0,

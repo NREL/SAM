@@ -24,10 +24,10 @@ before_script:
   
 script:
   - export PATH=$PATH:$HOME/wx-3.1.1/bin
-  - mkdir $LKDIR/build && cd $LKDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 2 --target lk 
-  - mkdir $WEXDIR/build && cd $WEXDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 2 --target wex
-  - mkdir $SSCDIR/build && cd $SSCDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_tests=1 -Dskip_tools=1 && cmake --build . -j 2 --target ssc
-  - mkdir $SAMNTDIR/build && cd $SAMNTDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && make -j 2
+  - mkdir $LKDIR/build && cd $LKDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 4 --target lk 
+  - mkdir $WEXDIR/build && cd $WEXDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 4 --target wex
+  - mkdir $SSCDIR/build && cd $SSCDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_tests=1 -Dskip_tools=1 && cmake --build . -j 4 --target ssc
+  - mkdir $SAMNTDIR/build && cd $SAMNTDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_api=1 && make -j 4
 
 install:
   - sudo apt-get install -y libwebkitgtk-dev libgtk2.0-dev libgl1-mesa-dev mesa-common-dev freeglut3-dev libcurl4-openssl-dev libc6

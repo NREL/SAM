@@ -287,7 +287,17 @@ def get_des_od_label_unit_info__calc_metrics():
     info["cooler_tot_UA"] = C_des_od_label_unit_info("cooler_tot_UA", "none", "Total Cooler\nUA [MW/K]", "Total Cooler Conductance [MW/K]", "[MW/K]")
     info["cooler_tot_UA"].od_d_type = "nan"
     info["cooler_tot_W_dot_fan"] = C_des_od_label_unit_info("cooler_tot_W_dot_fan", "cooler_tot_W_dot_fan_od", "Total Cooler\nFan Power [MWe]", "Total Cooler Fan Power [MWe]", "[MWe]")
-    
+
+    info["diff_m_dot"]= C_des_od_label_unit_info("none", "diff_m_dot_od", "Mass Balance [-]", "Mass Balance [-]", "[-]")
+    info["diff_m_dot"].des = 0
+    info["diff_E_cycle"] = C_des_od_label_unit_info("none", "diff_E_cycle", "Energy Balance [-]", "Energy Balance [-]", "[-]")
+    info["diff_E_cycle"].des = 0
+    info["diff_Q_LTR"] = C_des_od_label_unit_info("none", "diff_Q_LTR", "LTR Energy Balance [-]", "LTR Energy Balance [-]", "[-]")
+    info["diff_Q_LTR"].des = 0
+    info["diff_Q_HTR"] = C_des_od_label_unit_info("none", "diff_Q_HTR", "HTR Energy Balance [-]", "HTR Energy Balance [-]", "[-]")
+    info["diff_Q_HTR"].des = 0
+
+
     return info
 
 def get_des_od_label_unit_info__ind_inputs():
@@ -1411,10 +1421,10 @@ def compare_data_properties(c_data_1, c_data_2):
 
                 elif(c_data_1.structure_type == "matrix"):
 
-                    if(c_data_1.l_d1 != c_data_2.l_d2 or c_data_1.l_d2 != c_data_2.l_d2):
-                        mismatch_str = "The " + c_data_1.name + " data unit is a matrix " + \
-                                       ", with at least dimension that is a different length than matrix " + \
-                                       c_data_2.name
+                    if(c_data_1.l_d1 != c_data_2.l_d1 or c_data_1.l_d2 != c_data_2.l_d2):
+                        mismatch_str = "The " + c_data_1.name + " data unit is a matrix," + \
+                                       " with at least dimension that is a different length than the " + \
+                                       c_data_2.name + " data unit matrix " + "\n"
                         mismatch_str = mismatch_str + value_str
 
                     else:

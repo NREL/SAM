@@ -197,6 +197,14 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_UtilityRateFlat_ur_nm_yearend_sell_rate_nset(SAM_Utilityrate5 ptr, double number, SAM_error *err);
 
 	/**
+	 * Set ur_ts_buy_rate: Time step buy rates [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Utilityrate5_UtilityRateFlat_ur_ts_buy_rate_aset(SAM_Utilityrate5 ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set ur_ts_sell_rate: Time step sell rates [0/1]
 	 * options: None
 	 * constraints: None
@@ -341,6 +349,8 @@ extern "C"
 	SAM_EXPORT double SAM_Utilityrate5_UtilityRateFlat_ur_monthly_min_charge_nget(SAM_Utilityrate5 ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Utilityrate5_UtilityRateFlat_ur_nm_yearend_sell_rate_nget(SAM_Utilityrate5 ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Utilityrate5_UtilityRateFlat_ur_ts_buy_rate_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Utilityrate5_UtilityRateFlat_ur_ts_sell_rate_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err);
 

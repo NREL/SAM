@@ -3217,6 +3217,14 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_energy_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_eta_rec_th_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_eta_rec_th_incl_refl_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_inc_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_loss_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_total_water_use_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_beam_aget(SAM_TcsmoltenSalt ptr, int* length, SAM_error *err);
@@ -3350,6 +3358,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_eta_map_out_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_eta_therm_aget(SAM_TcsmoltenSalt ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_flux_maps_for_import_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_flux_maps_out_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err);
 

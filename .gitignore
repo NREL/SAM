@@ -23,6 +23,8 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+build/
+cmake-build-export/
 cmake-build-debug/
 cmake-build-release/
 cmake-build-export/
@@ -356,5 +358,7 @@ api/api_autogen/library/PySAM/
 api/api_autogen/library/C/
 
 
+*.json
+!tooltips.json
 
 

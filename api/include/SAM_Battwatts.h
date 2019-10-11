@@ -281,6 +281,14 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_qmax_thermal_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_charge_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_clipcharge_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_discharge_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_gridcharge_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_system_loss_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_temperature_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
