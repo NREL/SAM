@@ -252,7 +252,7 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	else
 		return 1;
 	// sigma from Darice 
-	if (VarValue *vv = m_s->GetValue("wspd_uncert"))
+	if (VarValue *vv = m_s->GetInput("wspd_uncert"))
 	{
 		sigma1 = vv->Value() / 100.0;
 		sigma1 *= mu1;
@@ -267,7 +267,7 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	else
 		return 1;
 
-	if (VarValue *vv = m_s->GetValue("total_uncert"))
+	if (VarValue *vv = m_s->GetInput("total_uncert"))
 	{
 		sigma2 = vv->Value() / 100.0;
 		sigma2 *= mu2;
