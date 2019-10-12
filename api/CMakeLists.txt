@@ -31,7 +31,51 @@ if (NOT skip_autogen)
     add_subdirectory(api_autogen)
 endif()
 
-file(GLOB SAM_API_SRC src/*.cpp)
+include_directories(. include $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
+
+set(SAM_API_SRC
+        src/ErrorHandler.cpp
+        src/SAM_api.cpp
+        include/visibility.h
+        src/SAM_AdjustmentFactors.cpp
+        src/SAM_Battery.cpp
+        src/SAM_Battwatts.cpp
+        src/SAM_Belpe.cpp
+        src/SAM_Biomass.cpp
+        src/SAM_Cashloan.cpp
+        src/SAM_Equpartflip.cpp
+        src/SAM_Fuelcell.cpp
+        src/SAM_GenericSystem.cpp
+        src/SAM_Geothermal.cpp
+		src/SAM_Grid.cpp
+        src/SAM_Hcpv.cpp
+        src/SAM_HostDeveloper.cpp
+        src/SAM_IphToLcoefcr.cpp
+        src/SAM_Lcoefcr.cpp
+        src/SAM_Levpartflip.cpp
+        src/SAM_LinearFresnelDsgIph.cpp
+        src/SAM_Pvsamv1.cpp
+        src/SAM_Pvwattsv5.cpp
+        src/SAM_Pvwattsv5Lifetime.cpp
+        src/SAM_Saleleaseback.cpp
+        src/SAM_Singleowner.cpp
+        src/SAM_Swh.cpp
+        src/SAM_TcsdirectSteam.cpp
+        src/SAM_Tcsdish.cpp
+        src/SAM_TcsgenericSolar.cpp
+        src/SAM_Tcsiscc.cpp
+        src/SAM_TcslinearFresnel.cpp
+        src/SAM_TcsmoltenSalt.cpp
+        src/SAM_TcsMSLF.cpp
+        src/SAM_TcstroughEmpirical.cpp
+        src/SAM_TcstroughPhysical.cpp
+        src/SAM_Thermalrate.cpp
+        src/SAM_Thirdpartyownership.cpp
+        src/SAM_TroughPhysicalProcessHeat.cpp
+        src/SAM_Utilityrate5.cpp
+        src/SAM_Windpower.cpp
+        src/SAM_eqns.cpp)
+		
 
 #####################################################################################################################
 #
@@ -66,13 +110,7 @@ endif()
 #
 #####################################################################################################################
 
-add_library(SAM_api SHARED
-        ${SAM_API_SRC}
-        include/visibility.h
-        )
-
-target_include_directories(SAM_api PRIVATE include ${CMAKE_CURRENT_SOURCE_DIR}/../ssc ${CMAKE_CURRENT_SOURCE_DIR}/../ssc/ssc ${CMAKE_CURRENT_SOURCE_DIR}/../ssc/shared)
-
+add_library(SAM_api SHARED ${SAM_API_SRC})
 set_target_properties(SAM_api
     PROPERTIES
     DEBUG_POSTFIX "d"
@@ -84,7 +122,7 @@ endif()
 
 # required functions not exported in ssc.dll
 if(MSVC)
-    target_sources(SAM_api PRIVATE ../../ssc/ssc/vartab.cpp ../../ssc/shared/lib_util.cpp)
+    target_sources(SAM_api PRIVATE $ENV{SSCDIR}/ssc/vartab.cpp $ENV{SSCDIR}/shared/lib_util.cpp)
 endif() 
 
 # libSAM_api for PySAM
@@ -114,7 +152,7 @@ else()
         target_link_libraries(SAM_api debug ${SSCD_LIB})
     endif()
 
-    if(SAMAPI_EXPORT) # only on Unix
+    if(system_advisor_model_EXPORT) # only on Unix
         unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
                 NAMES libssc.so
@@ -142,31 +180,4 @@ if (APPLE)
             POST_BUILD
             COMMAND install_name_tool -id @rpath/$<TARGET_FILE_NAME:SAM_api>.so $<TARGET_FILE:SAM_api>
     )
-endif()
-
-if(DEFINED ENV{PYSAMDIR})
-    if (SAMAPI_EXPORT)
-		if (MSVC)
-		    set(SAMAPI_LIB $<TARGET_FILE_DIR:SAM_api>/$<TARGET_FILE_BASE_NAME:SAM_api>.lib)
-			add_custom_command(
-                TARGET SAM_api
-                POST_BUILD
-				COMMAND ${CMAKE_COMMAND} -E remove
-					$ENV{PYSAMDIR}/files/$<TARGET_FILE_BASE_NAME:SAM_api>.lib
-					$ENV{PYSAMDIR}/files/$<TARGET_FILE_BASE_NAME:SAM_api>.dll
-			)
-            add_custom_command(
-                    TARGET SAM_api
-                    POST_BUILD
-                    COMMAND ${CMAKE_COMMAND}
-                    ARGS -E copy ${SAMAPI_LIB} $ENV{PYSAMDIR}/files
-            )
-        add_custom_command(
-                TARGET SAM_api
-                POST_BUILD
-                COMMAND ${CMAKE_COMMAND}
-                ARGS -E copy $<TARGET_FILE:SAM_api> $ENV{PYSAMDIR}/files
-        )
-		endif()
-    endif()
 endif()
