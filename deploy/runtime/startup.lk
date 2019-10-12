@@ -518,7 +518,8 @@ function setup_sale_leaseback_pages(degradation)
 function setup_windpower_pages()
 {
 	addpage( [[ 'Wind Resource File'], 
-	          [ 'Wind Speed Weibull Distribution']], 
+	          [ 'Wind Speed Weibull Distribution'],
+	          [ 'Wind Resource Distribution']], 
 	         { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource' } );
 	//addpage( [[ 'Wind Siting Considerations' ]], { 'sidebar'='Siting Considerations' } );
 	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine' } );

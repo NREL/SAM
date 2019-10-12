@@ -4,6 +4,14 @@ function base_technology_graphs()
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' );
 }
 
+function wind_pruf_graphs()
+{
+	if (varinfo('total_uncert')){
+		columns = 'avail_losses,elec_losses,env_losses,ops_losses, turb_losses,wake_losses';
+		agraph(columns, 'Energy Loss', '', '%', -1, false, true, 'right'); 
+	}
+}
+
 //**************Categories of graphs for financials**************************
 function rescom_financial_graphs()
 {
@@ -69,7 +77,7 @@ autographs{ 'Dish Stirling' } = define() { base_technology_graphs(); };
 autographs{ 'Generic CSP System' } = define() { base_technology_graphs(); };
 autographs{ 'Solar Water Heating' } = define() { base_technology_graphs(); };
 autographs{ 'Generic System' } = define() { base_technology_graphs(); };
-autographs{ 'Wind Power' } = define() { base_technology_graphs(); };
+autographs{ 'Wind Power' } = define() { base_technology_graphs(); wind_pruf_graphs();};
 
 //**************Technologies with unique graphs***************************
 

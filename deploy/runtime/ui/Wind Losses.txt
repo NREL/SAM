@@ -1,7 +1,7 @@
 Wind Losses
-862
-1033
-35
+865
+1110
+38
 Numeric
 
 1
@@ -15,7 +15,7 @@ X
 390
 Y
 3
-198
+240
 Width
 3
 90
@@ -74,7 +74,7 @@ X
 657
 Y
 3
-198
+240
 Width
 3
 90
@@ -133,7 +133,7 @@ X
 729
 Y
 3
-240
+282
 Width
 3
 100
@@ -192,7 +192,7 @@ X
 123
 Y
 3
-198
+240
 Width
 3
 90
@@ -251,7 +251,7 @@ X
 252
 Y
 3
-357
+399
 Width
 3
 90
@@ -310,7 +310,7 @@ X
 729
 Y
 3
-399
+441
 Width
 3
 100
@@ -369,7 +369,7 @@ X
 561
 Y
 3
-357
+399
 Width
 3
 90
@@ -428,7 +428,66 @@ X
 561
 Y
 3
-714
+756
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+12
+env_env_loss
+X
+3
+252
+Y
+3
+786
 Width
 3
 90
@@ -487,66 +546,7 @@ X
 561
 Y
 3
-744
-Width
-3
-90
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-16
-Name
-5
-12
-env_ext_loss
-X
-3
-252
-Y
-3
-744
+786
 Width
 3
 90
@@ -605,7 +605,7 @@ X
 252
 Y
 3
-714
+756
 Width
 3
 90
@@ -664,7 +664,7 @@ X
 729
 Y
 3
-786
+828
 Width
 3
 100
@@ -723,7 +723,7 @@ X
 6
 Y
 3
-849
+891
 Width
 3
 842
@@ -750,7 +750,7 @@ X
 6
 Y
 3
-651
+693
 Width
 3
 842
@@ -777,7 +777,7 @@ X
 6
 Y
 3
-456
+498
 Width
 3
 842
@@ -804,7 +804,7 @@ X
 6
 Y
 3
-294
+336
 Width
 3
 842
@@ -837,7 +837,7 @@ Width
 842
 Height
 3
-99
+141
 Caption
 5
 11
@@ -858,7 +858,7 @@ X
 6
 Y
 3
-135
+177
 Width
 3
 842
@@ -885,7 +885,7 @@ X
 21
 Y
 3
-867
+909
 Width
 3
 810
@@ -930,7 +930,7 @@ X
 21
 Y
 3
-474
+516
 Width
 3
 810
@@ -975,7 +975,7 @@ X
 21
 Y
 3
-312
+354
 Width
 3
 810
@@ -1029,8 +1029,8 @@ Height
 36
 Caption
 5
-242
-Wake loss can be set as a constant percent loss in the Wind Turbine page, under Wake Effects, by choosing the Constant Loss Wake Model. Otherwise Constant Wake Loss will be zero and the wake loss will be calculated using the given Wake Model.
+237
+Internal Wake loss can be set as a constant percent loss in the Wind Turbine page, under Wake Effects, by choosing the Constant Loss Wake Model. Otherwise Internal Wake Loss will be zero and will be calculated using the given Wake Model.
 TextColour
 4
 0
@@ -1065,7 +1065,7 @@ X
 21
 Y
 3
-153
+195
 Width
 3
 810
@@ -1110,7 +1110,7 @@ X
 21
 Y
 3
-669
+711
 Width
 3
 810
@@ -1155,7 +1155,7 @@ X
 252
 Y
 3
-942
+984
 Width
 3
 90
@@ -1214,7 +1214,7 @@ X
 561
 Y
 3
-912
+954
 Width
 3
 90
@@ -1273,7 +1273,7 @@ X
 252
 Y
 3
-912
+954
 Width
 3
 90
@@ -1332,7 +1332,7 @@ X
 729
 Y
 3
-984
+1026
 Width
 3
 100
@@ -1391,7 +1391,7 @@ X
 561
 Y
 3
-942
+984
 Width
 3
 90
@@ -1450,7 +1450,7 @@ X
 561
 Y
 3
-519
+561
 Width
 3
 90
@@ -1509,7 +1509,7 @@ X
 561
 Y
 3
-549
+591
 Width
 3
 90
@@ -1568,7 +1568,7 @@ X
 729
 Y
 3
-591
+633
 Width
 3
 100
@@ -1627,7 +1627,7 @@ X
 252
 Y
 3
-519
+561
 Width
 3
 90
@@ -1686,7 +1686,184 @@ X
 252
 Y
 3
-549
+591
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+13
+wake_ext_loss
+X
+3
+390
+Y
+3
+81
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+16
+wake_future_loss
+X
+3
+657
+Y
+3
+81
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+13
+wake_int_loss
+X
+3
+123
+Y
+3
+81
 Width
 3
 90
@@ -1745,7 +1922,7 @@ X
 729
 Y
 3
-81
+123
 Width
 3
 100
@@ -1792,7 +1969,7 @@ TabOrder
 3
 8
 
-23
+26
 avail_bop_loss
 3
 1
@@ -1905,10 +2082,10 @@ Losses
 1
 0
 Numeric
-env_exposure_loss
+env_env_loss
 3
 1
-Exposure Changes
+Environmental
 %
 Losses
 0
@@ -1919,10 +2096,10 @@ Losses
 1
 0
 Numeric
-env_ext_loss
+env_exposure_loss
 3
 1
-External Conditions
+Exposure Changes
 %
 Losses
 0
@@ -2101,10 +2278,52 @@ Losses
 1
 0
 Numeric
+wake_ext_loss
+3
+1
+External Wake
+%
+Losses
+0
+2
+1
+1
+1
+1
+0
+Numeric
+wake_future_loss
+3
+1
+Future Wake
+%
+Losses
+0
+2
+1
+1
+1
+1
+0
+Numeric
+wake_int_loss
+3
+1
+Internal Wake
+ %
+Losses
+0
+8
+1
+1
+1
+1
+0
+Default
 wake_loss_total
 3
 1
-Constant Wake Loss
+Total Wake Losses
  %
  
 0
@@ -2116,31 +2335,35 @@ Constant Wake Loss
 0
 Numeric
 
-758
-equations{ 'wake_loss_total' } = define() {
+1091
+equations{ 'wake_int_loss' } = define() {
 	if (${wind_farm_wake_model} == 3)
 		return ${wake_loss};
 	else
 		return 0;
 };
 
+equations{ 'wake_loss_total' } = define() {
+	return (1-((1-${wake_int_loss}/100) * (1-${wake_ext_loss}/100) * (1-${wake_future_loss}/100)))*100;
+};
+
 equations{ 'avail_loss_total' } = define() {
-	return ${avail_bop_loss} + ${avail_grid_loss} + ${avail_turb_loss};
+	return (1-((1-${avail_bop_loss}/100) * (1-${avail_grid_loss}/100) * (1-${avail_turb_loss}/100)))*100;
 };
 
 equations{ 'elec_loss_total' } = define() {
-	return ${elec_eff_loss} + ${elec_parasitic_loss};
+	return (1-((1-${elec_eff_loss}/100) * (1-${elec_parasitic_loss}/100)))*100;
 };
 
 equations{ 'turb_loss_total' } = define() {
-	return ${turb_generic_loss} + ${turb_hysteresis_loss} + ${turb_perf_loss} + ${turb_specific_loss};
+	return (1-((1-${turb_generic_loss}/100) * (1-${turb_hysteresis_loss}/100) * (1-${turb_perf_loss}/100) * (1-${turb_specific_loss}/100)))*100;
 };
 
 equations{ 'env_loss_total' } = define() {
-	return ${env_degrad_loss} + ${env_exposure_loss} + ${env_ext_loss} + ${env_icing_loss};
+	return (1-((1-${env_degrad_loss}/100) * (1-${env_exposure_loss}/100) * (1-${env_env_loss}/100) * (1-${env_icing_loss}/100)))*100;
 };
 
 equations{ 'ops_loss_total' } = define() {
-	return ${ops_env_loss} + ${ops_grid_loss} + ${ops_load_loss} + ${ops_strategies_loss};
+	return (1-((1-${ops_env_loss}/100) * (1-${ops_grid_loss}/100) * (1-${ops_load_loss}/100) * (1-${ops_strategies_loss}/100)))*100;
 };
 0

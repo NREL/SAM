@@ -892,6 +892,21 @@ void ResultsViewer::Setup( Simulation *sim )
 	{
 		if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
 		{
+		    // if model was changed from another technology, the ResultsViewer was not initialized with Uncertainties
+		    if (!m_uncertaintiesViewer){
+                m_uncertaintiesViewer = new UncertaintiesViewer(this);
+                AddPage(m_uncertaintiesViewer, "Uncertainties");
+                // testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
+                std::vector<Uncertainties> ul;
+                Uncertainties u1, u2, u3;
+                u1.Title = "Figure2";
+                u2.Title = "Figure5";
+                u3.Title = "Figure10";
+                ul.push_back(u1);
+                ul.push_back(u2);
+                ul.push_back(u3);
+                SetUncertainties(ul);
+		    }
 			m_uncertaintiesViewer->Setup(m_sim);
 		}
 	}

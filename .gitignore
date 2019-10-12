@@ -27,6 +27,7 @@ build/
 cmake-build-export/
 cmake-build-debug/
 cmake-build-release/
+cmake-build-export/
 SAM*.app/
 
 # Visual Studio 2015 cache/options directory

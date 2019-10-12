@@ -69,7 +69,7 @@ extern "C"
 
 	/**
 	 * Set wind_resource_distribution: Wind Speed x Dir Distribution as 2-D PDF [m/s,deg]
-	 * options: None
+	 * options: [(speed, direction, prob)]
 	 * constraints: None
 	 * required if: wind_resource_model_choice=2
 	 */
