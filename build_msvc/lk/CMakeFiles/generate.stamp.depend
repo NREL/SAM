@@ -1,6 +1,0 @@
-# CMake generation dependency list for this directory.
-C:/Program Files/CMake/share/cmake-3.15/Modules/FindPackageHandleStandardArgs.cmake
-C:/Program Files/CMake/share/cmake-3.15/Modules/FindPackageMessage.cmake
-C:/Program Files/CMake/share/cmake-3.15/Modules/FindwxWidgets.cmake
-C:/Program Files/CMake/share/cmake-3.15/Modules/UsewxWidgets.cmake
-C:/SAM-Development/sam/lk/CMakeLists.txt
