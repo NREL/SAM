@@ -648,6 +648,54 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_qmax_thermal_aget(SAM_Battwatts pt
 
 
 
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_charge_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_revenue_charge", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_revenue_charge");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_clipcharge_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_revenue_clipcharge", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_revenue_clipcharge");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_discharge_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_revenue_discharge", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_revenue_discharge");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_gridcharge_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_revenue_gridcharge", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_revenue_gridcharge");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battwatts_Outputs_batt_system_loss_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

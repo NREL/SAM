@@ -6513,7 +6513,7 @@ tech_type
 1
 1
 1
-1
+2
 term_int_rate
 1
 1

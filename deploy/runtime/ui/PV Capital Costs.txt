@@ -6263,7 +6263,7 @@ Capital Costs
 0
 Numeric
 
-5939
+5944
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6465,7 +6465,7 @@ equations { 'battery_energy' } = define () {
 equations { 'battery_power' } = define () {
 	if( technology() == "Flat Plate PV" )
 			return ?${en_batt}
-				[0,	${batt_power_discharge_max}];
+				[0,	${batt_power_discharge_max_kwac}];
 	else if ((technology() == "PVWatts" ) && 
 		  ( (financing() == 'Residential') || 
 			(financing() == 'Commercial') || 

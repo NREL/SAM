@@ -1041,12 +1041,12 @@ class C_OD_stacked_outputs_plot:
                     if(self.is_plot_each_des_pt or i == 0):
                         if(self.var_info_metrics[key].des_d_type == "single"):
                             if(self.var_info_metrics[key].des_var == "none"):
-                                j_axis.plot(x_val_des_i, self.var_info_metrics[key].des, ls_des_i)
+                                j_axis.plot(x_val_des_i, self.var_info_metrics[key].des, ls_des_i, markersize = self.mrk_sz)
                             else:
-                                j_axis.plot(x_val_des_i, self.list_dict_results[i][y_des_key], ls_des_i)
+                                j_axis.plot(x_val_des_i, self.list_dict_results[i][y_des_key], ls_des_i, markersize = self.mrk_sz)
                         elif(self.var_info_metrics[key].des_d_type == "list"):
                             for i_s in range(len(self.list_dict_results[i][y_des_key])):
-                                j_axis.plot(x_val_des_i, self.list_dict_results[i][y_des_key][i_s], ls_des_i)
+                                j_axis.plot(x_val_des_i, self.list_dict_results[i][y_des_key][i_s], ls_des_i, markersize = self.mrk_sz)
                                 
                 if(y_limit != ""):
                     if(isinstance(y_limit, str)):
@@ -1784,7 +1784,120 @@ def plot_eta_vs_UA__deltaT_levels__two_config(list_des_results):
         plt.savefig("overlay_cycles" + save_title)
         
     plt.close()
-        
+
+def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = ""):
+
+    n_levels = 3
+
+    w_pad = 3
+
+    f_udpc_pars = open("udpc_setup_pars.txt", 'w')
+    f_udpc_pars.write("Number of HTF hot temperature levels = " + str(n_T_htf) + "\n")
+    f_udpc_pars.write("Number of ambient temperature levels = " + str(n_T_amb) + "\n")
+    f_udpc_pars.write("Number of HTF mass flow rate levels = " + str(n_m_dot_htf) + "\n")
+
+    # Add normalized efficiency column
+    for row in udpc_data:
+        row.append(row[3] / row[4])
+
+    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
+
+    mi = [[0, 0, 3, "Normalized Power"]]
+    mi.append([1, 0, len(udpc_data[0])-1, "Normalized Efficiency"])
+    mi.append([0, 1, 5, "Normalized Cooling Power"])
+    mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
+    mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
+    mi.append([2, 1, 9, "Normalized PHX CO2 Mass Flow"])
+
+    # T_htf parametric values, 3 m_dot levels, design ambient temperature
+    for j in range(0, len(mi)):
+        j_ax = a_ax[mi[j][0], mi[j][1]]
+        for i in range(0, n_levels):
+            row_start = i * n_T_htf
+            row_end = i * n_T_htf + n_T_htf
+            if( j == 0 ):
+                j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
+                        label = "m_dot_ND = " + str(udpc_data[row_start][1]))
+                if(i == 0):
+                    f_udpc_pars.write("Mass flow rate Low Level = " + str(udpc_data[row_start][1]) + "\n")
+                if(i == 1):
+                    f_udpc_pars.write("Mass flow rate Design Level = " + str(udpc_data[row_start][1]) + "\n")
+                if(i == 2):
+                    f_udpc_pars.write("Mass flow rate High Level = " + str(udpc_data[row_start][1]) + "\n")
+            else:
+                j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
+                          [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
+        j_ax.set_xlabel("HTF Hot Temperature [C]")
+        j_ax.set_ylabel(mi[j][3])
+        j_ax.grid(which='both', color='gray', alpha=1)
+
+    fig1.legend(ncol=n_levels, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
+    plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
+    plt.savefig(plot_pre_str + "udpc_T_HTF.png")
+    plt.close()
+
+    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
+
+    # T_amb parametric values, 3 T_HTF_levels, design m_dot
+    for j in range(0, len(mi)):
+        j_ax = a_ax[mi[j][0], mi[j][1]]
+        for i in range(0, n_levels):
+            row_start = 3 * n_T_htf + i * n_T_amb
+            row_end = row_start + n_T_amb
+            if( j == 0 ):
+                j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
+                          label = "T_HTF = " + str(udpc_data[row_start][0]))
+                if (i == 0):
+                    f_udpc_pars.write("HTF temperature Low Level = " + str(udpc_data[row_start][0]) + "\n")
+                if (i == 1):
+                    f_udpc_pars.write("HTF temperature Design Level = " + str(udpc_data[row_start][0]) + "\n")
+                if (i == 2):
+                    f_udpc_pars.write("HTF temperature High Level = " + str(udpc_data[row_start][0]) + "\n")
+            else:
+                j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
+                          [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
+        j_ax.set_xlabel("Ambient Temperature [C]")
+        j_ax.set_ylabel(mi[j][3])
+        j_ax.grid(which='both', color='gray', alpha=1)
+
+    fig1.legend(ncol=n_levels, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
+    plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
+    plt.savefig(plot_pre_str + "udpc_T_amb.png")
+    plt.close()
+
+    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
+
+    # m_dot parametric values, 3 T_amb levels, design T_htf_hot
+    for j in range(0, len(mi)):
+        j_ax = a_ax[mi[j][0], mi[j][1]]
+        for i in range(0, n_levels):
+            row_start = 3 * n_T_htf + 3 * n_T_amb + i * n_m_dot_htf
+            row_end = row_start + n_m_dot_htf
+            if( j == 0 ):
+                j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
+                      label = "T_amb = " + str(udpc_data[row_start][2]))
+                if (i == 0):
+                    f_udpc_pars.write("Ambient temperature Low Level = " + str(udpc_data[row_start][2]) + "\n")
+                if (i == 1):
+                    f_udpc_pars.write("Ambient temperature Design Level = " + str(udpc_data[row_start][2]) + "\n")
+                if (i == 2):
+                    f_udpc_pars.write("Ambient temperature High Level = " + str(udpc_data[row_start][2]) + "\n")
+            else:
+                j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
+                
+        j_ax.set_xlabel("Normalized Mass Flow")
+        j_ax.set_ylabel(mi[j][3])
+        j_ax.grid(which='both', color='gray', alpha=1)
+
+    fig1.legend(ncol = n_levels, loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
+    plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
+    plt.savefig(plot_pre_str + "udpc_m_dot_htf.png")
+    plt.close()
+
         
        
         

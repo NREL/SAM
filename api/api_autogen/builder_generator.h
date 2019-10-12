@@ -75,12 +75,12 @@ public:
     std::string config_name;
     std::string config_symbol;
 
-    builder_generator() = default;
+	builder_generator() { subgraph = nullptr; };
 
     explicit builder_generator(config_extractor* ce);
 
     ~builder_generator(){
-        delete subgraph;
+        if (subgraph) delete subgraph;
         for (auto it = ssc_module_objects.begin(); it != ssc_module_objects.end(); ++it){
             ssc_module_free(it->second);
         }
@@ -104,7 +104,7 @@ public:
                                      const std::unordered_map<std::string, edge *> &unique_edge_obj_names);
 
     void create_all(std::string cmod, const std::string &defaults_path, const std::string &api_path,
-                    const std::string &pysam_path);
+                    const std::string &pysam_path, bool print_json=true);
 
     std::vector<std::string> get_user_defined_variables();
 

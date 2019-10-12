@@ -476,6 +476,12 @@ T_htf_cold_ref
 1
 1
 293
+T_htf_hot_des
+1
+1
+1
+1
+525
 T_htf_hot_ref
 1
 1

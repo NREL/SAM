@@ -116,6 +116,9 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2019, 10, 7 }, //Beta for MHK ssc 218 expires 10/7/2020
+		{ 2019, 10, 4 }, //Beta for MHK ssc 217 expires 10/4/2020
+		{ 2019, 9, 26 }, //Beta for MHK ssc 215 expires 9/26/2020
 		{ 2019, 7, 15 }, //Beta for Wind PRUF project expires 7/15/2020
 		{ 2019, 7, 11 }, //Beta for MHK ssc 211 expires 7/11/2020
 		{ 2019, 4, 3 }, //Beta for fuel cells and batteries 4/3/2020
@@ -2237,6 +2240,10 @@ void SamApp::Restart()
 	wxString wind_resource_db  = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
 	if ( !wxFileExists( wind_resource_db ) ) ScanWindResourceData( wind_resource_db );
 	Library::Load( wind_resource_db );
+
+	wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
+	if (!wxFileExists(wave_resource_db)) ScanWaveResourceData(wave_resource_db);
+	Library::Load(wave_resource_db);
 }
 
 wxString SamApp::WebApi( const wxString &name )

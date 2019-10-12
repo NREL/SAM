@@ -134,6 +134,12 @@ SAM_EXPORT void SAM_Utilityrate5_UtilityRateFlat_ur_nm_yearend_sell_rate_nset(SA
 	});
 }
 
+SAM_EXPORT void SAM_Utilityrate5_UtilityRateFlat_ur_ts_buy_rate_aset(SAM_Utilityrate5 ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ur_ts_buy_rate", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Utilityrate5_UtilityRateFlat_ur_ts_sell_rate_aset(SAM_Utilityrate5 ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ur_ts_sell_rate", arr, length);
@@ -374,6 +380,18 @@ SAM_EXPORT double SAM_Utilityrate5_UtilityRateFlat_ur_nm_yearend_sell_rate_nget(
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_nm_yearend_sell_rate", &result))
 		make_access_error("SAM_Utilityrate5", "ur_nm_yearend_sell_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_UtilityRateFlat_ur_ts_buy_rate_aget(SAM_Utilityrate5 ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ur_ts_buy_rate", length);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "ur_ts_buy_rate");
 	});
 	return result;
 }

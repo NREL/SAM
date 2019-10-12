@@ -3312,7 +3312,7 @@ void fcall_showsettings( lk::invoke_t &cxt )
 
 void fcall_rescanlibrary( lk::invoke_t &cxt )
 {
-	LK_DOC("rescanlibrary", "Rescan the indicated resource data library ('solar' or 'wind') and update any library widgets.", "(string:type):boolean");
+	LK_DOC("rescanlibrary", "Rescan the indicated resource data library ('solar' or 'wind' or 'wave') and update any library widgets.", "(string:type):boolean");
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
 
 	wxString type(cxt.arg(0).as_string().Lower());
@@ -3329,6 +3329,12 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		wxString wind_resource_db = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
 		ScanWindResourceData(wind_resource_db, true);
 		reloaded = Library::Load(wind_resource_db);
+	}
+	else if (type == "wave")
+	{
+		wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
+		ScanWaveResourceData(wave_resource_db, true);
+		reloaded = Library::Load(wave_resource_db);
 	}
 
 	if ( &cc != NULL && reloaded != 0 )

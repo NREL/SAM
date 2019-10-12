@@ -772,7 +772,7 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 
 		if ( !ok )
 		{
-			ih->Error( "Simulation " + m_simlist[kk] + " failed." );
+			ih->Error( "Simulation " + m_simlist[kk] + " failed :" + ssc_module_log(p_mod, 0,  nullptr, nullptr) );
 		}
 		else
 		{
