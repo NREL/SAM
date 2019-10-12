@@ -328,7 +328,7 @@ PB_m_dot_htf_cycle_des
 1
 1
 1
-797.149
+797.15
 P_a
 1
 2
@@ -1752,7 +1752,8 @@ field_thermal_output
 file_name
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 fixed_charge_rate
 1
 1
@@ -1977,7 +1978,8 @@ lhv_eff
 library_folder_list
 1
 4
-0
+1
+x
 library_paths
 1
 4
@@ -2274,7 +2276,8 @@ sm1_aperture
 solar_data_file_name
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -2304,7 +2307,8 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solarm
 1
 1

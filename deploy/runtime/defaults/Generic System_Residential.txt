@@ -1,5 +1,5 @@
 1
-414
+412
 LeadAcid_q10
 1
 1
@@ -1077,12 +1077,6 @@ en_batt
 1
 1
 0
-enable_interconnection_limit
-1
-1
-1
-1
-0
 energy_1
 1
 1
@@ -1311,12 +1305,6 @@ genericsys.cost.sales_tax.value
 1
 1
 5
-grid_interconnection_limit_kwac
-1
-1
-1
-1
-100000
 heat_rate
 1
 1

@@ -1,5 +1,5 @@
 1
-705
+706
 AntiFrPar
 1
 1
@@ -89,7 +89,7 @@ CtPar
 1
 1
 1
-1.892
+1.89199
 CtParF0
 1
 1
@@ -1540,7 +1540,7 @@ csp.tr.cost.total_land_area
 1
 1
 1
-910.357
+910.358
 debt_fraction
 1
 1
@@ -1722,7 +1722,8 @@ ffrac
 file_name
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 hce_library
 1
 4
@@ -2619,7 +2620,8 @@ lib_ui_sca_aperture_area
 library_folder_list
 1
 4
-0
+1
+x
 library_paths
 1
 4
@@ -3099,7 +3101,8 @@ show_tax_credits
 solar_data_file_name
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -3117,7 +3120,8 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 state
 1
 4
@@ -3748,7 +3752,7 @@ ui_hce_thermloss_weighted_m2
 1
 1
 1
-36.1005
+36.1006
 ui_hce_weighted_optical_efficiency
 1
 1
@@ -3760,7 +3764,7 @@ ui_hce_weighted_thermal_losses
 1
 1
 1
-36.1005
+36.1006
 ui_land_multiplier
 1
 1
@@ -3974,7 +3978,7 @@ ui_total_land_area
 1
 1
 1
-910.357
+910.358
 ui_wacc
 1
 1
@@ -4229,6 +4233,12 @@ ur_start_date
 4
 5
 empty
+ur_ts_buy_rate
+1
+2
+1
+1
+0
 ur_ts_sell_rate
 1
 2

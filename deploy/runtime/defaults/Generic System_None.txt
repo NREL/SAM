@@ -1,5 +1,5 @@
 1
-14
+12
 adjust
 1
 5
@@ -54,12 +54,6 @@ derate
 1
 1
 4
-enable_interconnection_limit
-1
-1
-1
-1
-0
 energy_output_array
 1
 2
@@ -78,12 +72,6 @@ first_year_output_peak
 1
 1
 96000
-grid_interconnection_limit_kwac
-1
-1
-1
-1
-20000
 heat_rate
 1
 1
