@@ -1,5 +1,5 @@
 1
-44
+46
 adjust
 1
 5
@@ -128,6 +128,12 @@ derate
 1
 1
 4
+enable_interconnection_limit
+1
+1
+1
+1
+0
 energy_output_array
 1
 2
@@ -164,6 +170,12 @@ generic_degradation
 1
 1
 0
+grid_interconnection_limit_kwac
+1
+1
+1
+1
+20000
 heat_rate
 1
 1
