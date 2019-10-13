@@ -772,7 +772,7 @@ Height
 99
 Caption
 5
-299
+300
 The desired bank voltage is used to calculate the internal battery configuration using the provided cell nominal voltage.  If you've manually specified the cell configuration, the desired bank voltage input will not be available. Cell resistance is used to compute the battery temperature and voltage
 TextColour
 4

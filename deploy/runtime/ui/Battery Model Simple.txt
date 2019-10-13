@@ -340,7 +340,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-463
+468
 on_load{'Battery Model Simple'} = define()
 {
 	check_enabled();
@@ -351,7 +351,7 @@ on_change{"batt_simple_enable"} = define(){check_enabled();};
 function check_enabled()
 {
 	enable_battery = false;
-	if (value("batt_simple_enable"))
+	if (value("batt_simple_enable") == 1)
 		enable_battery = true;
 	
 	enable("batt_simple_kwh", enable_battery);

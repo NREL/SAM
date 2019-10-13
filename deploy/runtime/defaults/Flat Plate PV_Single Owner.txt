@@ -6338,7 +6338,7 @@ total_indirect_cost
 1
 1
 1
-4.28475e+06
+4.28474e+06
 total_installed_cost
 1
 1
