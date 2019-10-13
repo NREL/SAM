@@ -3716,7 +3716,8 @@ lib_dispatch_sched_weekend
 library_folder_list
 1
 4
-0
+1
+x
 library_paths
 1
 4
@@ -4032,7 +4033,7 @@ ppa_multiplier_model
 0
 ppa_price_input
 1
-1
+2
 1
 1
 0.16

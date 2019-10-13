@@ -2100,7 +2100,8 @@ field_control
 file_name
 1
 4
-0
+49
+daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -8225,7 +8226,8 @@ lib_dispatch_sched_weekend
 library_folder_list
 1
 4
-0
+1
+x
 library_paths
 1
 4
@@ -8710,7 +8712,7 @@ ppa_multiplier_model
 0
 ppa_price_input
 1
-1
+2
 1
 1
 0.13
@@ -9029,7 +9031,8 @@ site_spec_cost
 solar_data_file_name
 1
 4
-0
+49
+daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -9047,7 +9050,8 @@ daggett_ca_34.865371_-116.783023_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+49
+daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 solution_mode_message
 1
 4

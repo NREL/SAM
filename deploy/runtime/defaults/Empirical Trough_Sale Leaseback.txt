@@ -89,7 +89,7 @@ CtPar
 1
 1
 1
-1.892
+1.89199
 CtParF0
 1
 1
@@ -1566,7 +1566,7 @@ cost_dev_fee_tax_liability
 1
 1
 1
-4.2508e+06
+4.25081e+06
 cost_dev_fee_value
 1
 1
@@ -1823,7 +1823,7 @@ csp.tr.cost.total_land_area
 1
 1
 1
-910.357
+910.358
 degradation
 1
 2
@@ -2270,7 +2270,8 @@ ffrac
 file_name
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 flip_target_percent
 1
 1
@@ -3269,7 +3270,8 @@ lib_ui_sca_aperture_area
 library_folder_list
 1
 4
-0
+1
+x
 library_paths
 1
 4
@@ -3564,7 +3566,7 @@ ppa_multiplier_model
 0
 ppa_price_input
 1
-1
+2
 1
 1
 0.13
@@ -3700,7 +3702,8 @@ show_construction_period
 solar_data_file_name
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -3718,7 +3721,8 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solution_mode_message
 1
 4
@@ -4376,7 +4380,7 @@ ui_hce_thermloss_weighted_m2
 1
 1
 1
-36.1005
+36.1006
 ui_hce_weighted_optical_efficiency
 1
 1
@@ -4388,7 +4392,7 @@ ui_hce_weighted_thermal_losses
 1
 1
 1
-36.1005
+36.1006
 ui_land_multiplier
 1
 1
@@ -4590,7 +4594,7 @@ ui_total_land_area
 1
 1
 1
-910.357
+910.358
 use_par_library_values
 1
 1
