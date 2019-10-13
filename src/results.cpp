@@ -892,6 +892,21 @@ void ResultsViewer::Setup( Simulation *sim )
 	{
 		if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
 		{
+		    // if model was changed from another technology, the ResultsViewer was not initialized with Uncertainties
+		    if (!m_uncertaintiesViewer){
+                m_uncertaintiesViewer = new UncertaintiesViewer(this);
+                AddPage(m_uncertaintiesViewer, "Uncertainties");
+                // testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
+                std::vector<Uncertainties> ul;
+                Uncertainties u1, u2, u3;
+                u1.Title = "Figure2";
+                u2.Title = "Figure5";
+                u3.Title = "Figure10";
+                ul.push_back(u1);
+                ul.push_back(u2);
+                ul.push_back(u3);
+                SetUncertainties(ul);
+		    }
 			m_uncertaintiesViewer->Setup(m_sim);
 		}
 	}
@@ -1078,15 +1093,16 @@ void ResultsViewer::Setup( Simulation *sim )
 		
 
 		if (!m_depreciationTable->IsShown())
-		{
 			m_cf_splitter->Unsplit();
-		}
+		else
+			m_cf_splitter->Move(m_cf_splitter->GetPosition().x + 1, m_cf_splitter->GetPosition().y + 1);
 
 		m_depreciationTable->Thaw();
 	}
 
 	if ( m_cashflow.size() > 0 ) ShowPage( PAGE_CASH_FLOW );
 	else HidePage( PAGE_CASH_FLOW );
+
 
 	CreateAutoGraphs();
 
@@ -1450,8 +1466,18 @@ void ResultsViewer::SavePerspective( StringHash &map )
 void ResultsViewer::LoadPerspective( StringHash &map )
 {
 	int nnav = wxAtoi( map["navigation"] );
-	if ( nnav >= 0 && nnav < (int)GetPageCount() )
-		SetSelection( nnav );
+	if (nnav >= 0 && nnav < (int)GetPageCount())
+	{
+		SetSelection(nnav);
+		if (nnav == PAGE_CASH_FLOW)
+		{ // force resize of splitter window when vash flow and depreciation tables shown
+			wxSize sz = GetSize();
+			sz.SetWidth(sz.GetWidth() + 1);
+			SetSize(sz);
+			sz.SetWidth(sz.GetWidth() - 1);
+			SetSize(sz);
+		}
+	}
 }
 
 

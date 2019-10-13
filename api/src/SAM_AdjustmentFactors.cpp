@@ -6,7 +6,7 @@
 
 #include <ssc/sscapi.h>
 
-#include "include/SAM_api.h"
+#include "SAM_api.h"
 #include "ErrorHandler.h"
 
 #include "SAM_AdjustmentFactors.h"

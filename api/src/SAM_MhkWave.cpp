@@ -38,27 +38,27 @@ SAM_EXPORT void SAM_MhkWave_MHKWave_annual_energy_loss_nset(SAM_MhkWave ptr, dou
 	});
 }
 
-SAM_EXPORT void SAM_MhkWave_MHKWave_calculate_capacity_nset(SAM_MhkWave ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_MhkWave_MHKWave_number_devices_nset(SAM_MhkWave ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "calculate_capacity", number);
+		ssc_data_set_number(ptr, "number_devices", number);
 	});
 }
 
-SAM_EXPORT void SAM_MhkWave_MHKWave_rated_capacity_nset(SAM_MhkWave ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_MhkWave_MHKWave_system_capacity_nset(SAM_MhkWave ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rated_capacity", number);
+		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_MhkWave_MHKWave_wave_power_curve_mset(SAM_MhkWave ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_MhkWave_MHKWave_wave_power_matrix_mset(SAM_MhkWave ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "wave_power_curve", mat, nrows, ncols);
+		ssc_data_set_matrix(ptr, "wave_power_matrix", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_MhkWave_MHKWave_wave_resource_definition_mset(SAM_MhkWave ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_MhkWave_MHKWave_wave_resource_matrix_mset(SAM_MhkWave ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "wave_resource_definition", mat, nrows, ncols);
+		ssc_data_set_matrix(ptr, "wave_resource_matrix", mat, nrows, ncols);
 	});
 }
 
@@ -73,46 +73,46 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_annual_energy_loss_nget(SAM_MhkWave ptr, S
 
 
 
-SAM_EXPORT double SAM_MhkWave_MHKWave_calculate_capacity_nget(SAM_MhkWave ptr, SAM_error *err){
+SAM_EXPORT double SAM_MhkWave_MHKWave_number_devices_nget(SAM_MhkWave ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "calculate_capacity", &result))
-		make_access_error("SAM_MhkWave", "calculate_capacity");
+	if (!ssc_data_get_number(ptr, "number_devices", &result))
+		make_access_error("SAM_MhkWave", "number_devices");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_MhkWave_MHKWave_rated_capacity_nget(SAM_MhkWave ptr, SAM_error *err){
+SAM_EXPORT double SAM_MhkWave_MHKWave_system_capacity_nget(SAM_MhkWave ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rated_capacity", &result))
-		make_access_error("SAM_MhkWave", "rated_capacity");
+	if (!ssc_data_get_number(ptr, "system_capacity", &result))
+		make_access_error("SAM_MhkWave", "system_capacity");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double* SAM_MhkWave_MHKWave_wave_power_curve_mget(SAM_MhkWave ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_MhkWave_MHKWave_wave_power_matrix_mget(SAM_MhkWave ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "wave_power_curve", nrows, ncols);
+	result = ssc_data_get_matrix(ptr, "wave_power_matrix", nrows, ncols);
 	if (!result)
-		make_access_error("SAM_MhkWave", "wave_power_curve");
+		make_access_error("SAM_MhkWave", "wave_power_matrix");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double* SAM_MhkWave_MHKWave_wave_resource_definition_mget(SAM_MhkWave ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_MhkWave_MHKWave_wave_resource_matrix_mget(SAM_MhkWave ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "wave_resource_definition", nrows, ncols);
+	result = ssc_data_get_matrix(ptr, "wave_resource_matrix", nrows, ncols);
 	if (!result)
-		make_access_error("SAM_MhkWave", "wave_resource_definition");
+		make_access_error("SAM_MhkWave", "wave_resource_matrix");
 	});
 	return result;
 }
@@ -142,22 +142,33 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_annual_energy_distribution_mget(SAM_MhkWa
 
 
 
-SAM_EXPORT double SAM_MhkWave_Outputs_average_power_nget(SAM_MhkWave ptr, SAM_error *err){
+SAM_EXPORT double SAM_MhkWave_Outputs_capacity_factor_nget(SAM_MhkWave ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "average_power", &result))
-		make_access_error("SAM_MhkWave", "average_power");
+	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
+		make_access_error("SAM_MhkWave", "capacity_factor");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_MhkWave_Outputs_capacity_factor_nget(SAM_MhkWave ptr, SAM_error *err){
+SAM_EXPORT double SAM_MhkWave_Outputs_device_average_power_nget(SAM_MhkWave ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
-		make_access_error("SAM_MhkWave", "capacity_factor");
+	if (!ssc_data_get_number(ptr, "device_average_power", &result))
+		make_access_error("SAM_MhkWave", "device_average_power");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_MhkWave_Outputs_device_rated_capacity_nget(SAM_MhkWave ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "device_rated_capacity", &result))
+		make_access_error("SAM_MhkWave", "device_rated_capacity");
 	});
 	return result;
 }

@@ -188,7 +188,7 @@ Min
 DataMatrix
 
 1
-22
+23
 Name
 5
 13
@@ -260,6 +260,9 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 
 3
 ur_ec_sched_weekday

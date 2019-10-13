@@ -5,7 +5,7 @@ MHK Tidal Resource
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -22,6 +22,9 @@ Width
 Height
 3
 806
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -32,7 +35,7 @@ Bold
 DataMatrix
 
 1
-23
+27
 Name
 5
 14
@@ -49,12 +52,18 @@ Width
 Height
 3
 775
+Tool Tip
+5
+0
 PasteAppendRows
 2
 0
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -66,6 +75,12 @@ RowLabels
 0
 ShadeR0C0
 2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
 0
 ShadeC0
 2

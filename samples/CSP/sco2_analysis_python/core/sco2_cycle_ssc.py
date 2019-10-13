@@ -180,6 +180,8 @@ def get_des_od_label_unit_info__calc_metrics():
     info["PC_P_in"] = C_des_od_label_unit_info("pc_P_in_des", "pc_P_in_od", "Pre-Comp\nInlet Pres [MPa]", "Pre-Compressor Inlet Pres [MPa]", "[MPa]")
     info["PC_W_dot"] = C_des_od_label_unit_info("pc_W_dot", "pc_W_dot_od", "Pre-Comp\nPower [MWe]", "Pre-Compressor Power [MWe]", "[MWe]")
     info["PC_m_dot"] = C_des_od_label_unit_info("pc_m_dot_des", "pc_m_dot_od", "Pre-Comp\nMass Flow [kg/s]", "Pre-Compressor Mass Flow Rate [kg/s]", "[kg/s]")
+    info["PC_rho_in"] = C_des_od_label_unit_info("pc_rho_in_des", "pc_rho_in_od", "Pre-Comp\nInlet Density [kg/m3]","Pre-Compressor Inlet Density [kg/m3]","[kg/m3]")
+    info["PC_ideal_spec_work"] = C_des_od_label_unit_info("pc_ideal_spec_work_des","pc_ideal_spec_work_od","Pre-Comp\nIsen Spec Work [kJ/kg]","Pre-Comp Isen Spec Work [kJ/kg]","[kJ/kg]")
     info["PC_phi"] = C_des_od_label_unit_info("pc_phi_des", "pc_phi_od", "Pre-Comp\nFlow Coef [-]", "Pre-Compressor Flow Coefficient [-]", "[-]")
     info["PC_phi"].limit_var = "pc_phi_surge"
     info["PC_phi"].limit_var_type = "min"
@@ -271,17 +273,31 @@ def get_des_od_label_unit_info__calc_metrics():
     info["LP_cooler_cost"] = C_des_od_label_unit_info("LP_cooler_cost", "none", "LP Cooler\nCost [M$]", "Low Pressure Cooler Cost [M$]", "[M$]")
     info["LP_cooler_cost"].od_d_type = "nan"
     info["LP_cooler_W_dot_fan"] = C_des_od_label_unit_info("LP_cooler_W_dot_fan", "LP_cooler_W_dot_fan_od", "LP Cooler\nFan Power [MWe]", "Low Pressure Cooler Fan Power [MWe]", "[MWe]")
-    
+    info["LP_cooler_UA"] = C_des_od_label_unit_info("LP_cooler_UA", "none", "LP Cooler\nUA [MW/K]", "Low Pressure Cooler Conductance [MW/K]", "[MW/K]")
+    info["LP_cooler_q_dot"] = C_des_od_label_unit_info("LP_cooler_q_dot", "none", "LP Cooler\nDuty [MWt]", "Low Pressure Cooler Duty [MW/K]", "[MW/K]")
+
     info["IP_cooler_cost"] = C_des_od_label_unit_info("IP_cooler_cost", "none", "IP Cooler\nCost [M$]", "Intermediate Pressure Cooler Cost [M$]", "[M$]")
     info["IP_cooler_cost"].od_d_type = "nan"
     info["IP_cooler_W_dot_fan"] = C_des_od_label_unit_info("IP_cooler_W_dot_fan", "IP_cooler_W_dot_fan_od", "IP Cooler\nFan Power [MWe]", "Intermediate Pressure Cooler Fan Power [MWe]", "[MWe]")
-        
+    info["IP_cooler_UA"] = C_des_od_label_unit_info("IP_cooler_UA", "none", "IP Cooler\nUA [MW/K]", "Intermediate Pressure Cooler Conductance [MW/K]", "[MW/K]")
+    info["IP_cooler_q_dot"] = C_des_od_label_unit_info("IP_cooler_q_dot", "none", "IP Cooler\nDuty [MWt]", "Intermediate Pressure Cooler Duty [MWt]", "[MWt]")
+
     info["cooler_tot_cost"] = C_des_od_label_unit_info("cooler_tot_cost", "none", "Total Cooler\nCosts [M$]", "Total Cooler Costs [M$]", "[M$]")
     info["cooler_tot_cost"].od_d_type = "nan"
     info["cooler_tot_UA"] = C_des_od_label_unit_info("cooler_tot_UA", "none", "Total Cooler\nUA [MW/K]", "Total Cooler Conductance [MW/K]", "[MW/K]")
     info["cooler_tot_UA"].od_d_type = "nan"
     info["cooler_tot_W_dot_fan"] = C_des_od_label_unit_info("cooler_tot_W_dot_fan", "cooler_tot_W_dot_fan_od", "Total Cooler\nFan Power [MWe]", "Total Cooler Fan Power [MWe]", "[MWe]")
-    
+
+    info["diff_m_dot"]= C_des_od_label_unit_info("none", "diff_m_dot_od", "Mass Balance [-]", "Mass Balance [-]", "[-]")
+    info["diff_m_dot"].des = 0
+    info["diff_E_cycle"] = C_des_od_label_unit_info("none", "diff_E_cycle", "Energy Balance [-]", "Energy Balance [-]", "[-]")
+    info["diff_E_cycle"].des = 0
+    info["diff_Q_LTR"] = C_des_od_label_unit_info("none", "diff_Q_LTR", "LTR Energy Balance [-]", "LTR Energy Balance [-]", "[-]")
+    info["diff_Q_LTR"].des = 0
+    info["diff_Q_HTR"] = C_des_od_label_unit_info("none", "diff_Q_HTR", "HTR Energy Balance [-]", "HTR Energy Balance [-]", "[-]")
+    info["diff_Q_HTR"].des = 0
+
+
     return info
 
 def get_des_od_label_unit_info__ind_inputs():
@@ -1405,10 +1421,10 @@ def compare_data_properties(c_data_1, c_data_2):
 
                 elif(c_data_1.structure_type == "matrix"):
 
-                    if(c_data_1.l_d1 != c_data_2.l_d2 or c_data_1.l_d2 != c_data_2.l_d2):
-                        mismatch_str = "The " + c_data_1.name + " data unit is a matrix " + \
-                                       ", with at least dimension that is a different length than matrix " + \
-                                       c_data_2.name
+                    if(c_data_1.l_d1 != c_data_2.l_d1 or c_data_1.l_d2 != c_data_2.l_d2):
+                        mismatch_str = "The " + c_data_1.name + " data unit is a matrix," + \
+                                       " with at least dimension that is a different length than the " + \
+                                       c_data_2.name + " data unit matrix " + "\n"
                         mismatch_str = mismatch_str + value_str
 
                     else:

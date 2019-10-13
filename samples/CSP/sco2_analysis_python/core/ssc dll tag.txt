@@ -1,6 +1,5 @@
 SSC build:
 
-
-https://github.com/NREL/ssc/commit/14ce4f67ec8083f48286f39c67bab9d32522090d
+https://github.com/NREL/ssc/commit/3dc0db18703e7a268ed392a07bfdde08b1c04c04
 
 

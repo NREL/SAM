@@ -1650,7 +1650,7 @@ TabOrder
 3
 17
 
-33
+23
 CT
 3
 1
@@ -1791,146 +1791,6 @@ Power Cycle
 1
 1
 20
-Default
-f_turb_tou1
-3
-1
-Turbine load fraction, period 1
--
-Power Cycle
-0
-2
-1
-1
-1
-1
-1.05
-Default
-f_turb_tou2
-3
-1
-Turbine load fraction, period 2
--
-Power Cycle
-0
-2
-1
-1
-1
-1
-1
-Default
-f_turb_tou3
-3
-1
-Turbine load fraction, period 3
--
-Power Cycle
-0
-2
-1
-1
-1
-1
-1
-Default
-f_turb_tou4
-3
-1
-Turbine load fraction, period 4
--
-Power Cycle
-0
-2
-1
-1
-1
-1
-1
-Default
-f_turb_tou5
-3
-1
-Turbine load fraction, period 5
--
-Power Cycle
-0
-2
-1
-1
-1
-1
-1
-Default
-f_turb_tou6
-3
-1
-Turbine load fraction, period 6
--
-Power Cycle
-0
-2
-1
-1
-1
-1
-1
-Default
-f_turb_tou7
-3
-1
-Turbine load fraction, period 7
--
-Power Cycle
-0
-2
-1
-1
-1
-1
-1
-Default
-f_turb_tou8
-3
-1
-Turbine load fraction, period 8
--
-Power Cycle
-0
-2
-1
-1
-1
-1
-1
-Default
-f_turb_tou9
-3
-1
-Turbine load fraction, period 9
--
-Power Cycle
-0
-2
-1
-1
-1
-1
-1
-Default
-f_turb_tou_periods
-3
-2
-Turbine load fractions
--
-Power Cycle
-0
-8
-1
-2
-1
-1
-0
 Default
 hybrid_tou1
 3
@@ -2116,7 +1976,7 @@ Power Cycle
 0
 Default
 
-698
+458
 equations{ 'tech_type' } = define() {
 	if (${pressure_mode} == 1) //sliding pressure
 		return 3; // user defined
@@ -2139,20 +1999,6 @@ equations{ 'F_wc' } = define() {
 		${hybrid_tou7},
 		${hybrid_tou8},
 		${hybrid_tou9}];
-	return retval;
-};
-
-equations{ 'f_turb_tou_periods' } = define() {
-	retval=[
-		${f_turb_tou1},
-		${f_turb_tou2},
-		${f_turb_tou3},
-		${f_turb_tou4},
-		${f_turb_tou5},
-		${f_turb_tou6},
-		${f_turb_tou7},
-		${f_turb_tou8},
-		${f_turb_tou9}];
 	return retval;
 };
 

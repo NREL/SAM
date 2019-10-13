@@ -2298,8 +2298,8 @@ equations{ 'wlim_series' } = define() {
 		wl[i] = wlconst;
 	return wl;
 };
-573
-on_load{"MSPT System Control"} = define()
+584
+on_load{"Physical Trough System Control"} = define()
 {
 	on_change{"is_dispatch"}();
 };

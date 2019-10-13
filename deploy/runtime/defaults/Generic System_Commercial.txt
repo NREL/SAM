@@ -1,5 +1,5 @@
 1
-413
+418
 LeadAcid_q10
 1
 1
@@ -506,6 +506,12 @@ batt_initial_SOC
 1
 1
 50
+batt_inverter_efficiency_cutoff
+1
+1
+1
+1
+90
 batt_length
 1
 1
@@ -590,13 +596,25 @@ batt_num_cells
 1
 1
 12371
-batt_power_charge_max
+batt_power_charge_max_kwac
+1
+1
+1
+1
+52.0833
+batt_power_charge_max_kwdc
 1
 1
 1
 1
 50.1026
-batt_power_discharge_max
+batt_power_discharge_max_kwac
+1
+1
+1
+1
+48
+batt_power_discharge_max_kwdc
 1
 1
 1
@@ -621,6 +639,12 @@ batt_replacement_schedule
 30
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 
+batt_replacement_schedule_percent
+1
+2
+1
+1
+100
 batt_resistance
 1
 1
@@ -1330,7 +1354,7 @@ grid_interconnection_limit_kwac
 1
 1
 1
-100000
+20000
 heat_rate
 1
 1
@@ -2574,6 +2598,12 @@ ur_start_date
 4
 5
 empty
+ur_ts_buy_rate
+1
+2
+1
+1
+0
 ur_ts_sell_rate
 1
 2

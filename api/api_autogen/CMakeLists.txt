@@ -176,24 +176,6 @@ endif()
 #
 #####################################################################################################################
 
-if (MSVC)
-    set(EXPORTCONFIG_DIR ${CMAKE_CURRENT_BINARY_DIR}/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>)
-    if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-        set(SSC_LIB $<TARGET_FILE_DIR:ssc>/$<TARGET_FILE_BASE_NAME:ssc>.lib)
-        set(SSC_DLL $<TARGET_FILE:ssc>)
-
-    else()
-        set(SSC_LIB $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.lib)
-        set(SSC_DLL $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.dll)
-    endif()
-    add_custom_command(
-        TARGET export_config
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND}
-        ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${EXPORTCONFIG_DIR}
-    )
-endif()
-
 if(DEFINED ENV{PYSAMDIR} )
     set(PYSAM $ENV{PYSAMDIR})
 else()

@@ -1,7 +1,7 @@
 Wind Uncertainty
 964
-3402
-79
+3713
+96
 GroupBox
 
 1
@@ -15,7 +15,7 @@ X
 3
 Y
 3
-1200
+1467
 Width
 3
 950
@@ -48,7 +48,7 @@ Width
 950
 Height
 3
-991
+1273
 Caption
 5
 32
@@ -69,13 +69,13 @@ X
 3
 Y
 3
-2403
+2670
 Width
 3
 950
 Height
 3
-853
+889
 Caption
 5
 18
@@ -96,7 +96,7 @@ X
 480
 Y
 3
-1458
+1725
 Width
 3
 90
@@ -155,7 +155,7 @@ X
 759
 Y
 3
-1458
+1725
 Width
 3
 90
@@ -214,7 +214,7 @@ X
 207
 Y
 3
-1458
+1725
 Width
 3
 90
@@ -273,7 +273,7 @@ X
 771
 Y
 3
-1500
+1767
 Width
 3
 100
@@ -332,13 +332,13 @@ X
 21
 Y
 3
-2454
+2721
 Width
 3
 913
 Height
 3
-783
+822
 PasteAppendRows
 2
 0
@@ -353,8 +353,8 @@ ShowRowLabels
 1
 RowLabels
 5
-271
-HWR-LTP,HWR-RDM,HWR-RDM,HWR-LTA,HWR-WSDU,HWR-ODS,HWR-MDR,PLV-MOP,PLV-CC,PLV-PP,MU-WSM,MU-WDM,MU-OAP,MU-DID,HVE-MI,HVE-MS,HVE-MA,HVE-VEMU,HVE-EPMU,WL-WE,AL-T,AL-BOP,AL-G,EL-EE,EL-PCS,TPL-SOP,TPL-GPCA,TPL-SSPCA,TPL-HWH,EL-I,EL-D,EL-EC,EL-EC,COSL-LC,COSL-GC,COSL-EPC,COSL-OS
+263
+HWR-LTP,HWR-RD,HWR-LTA,HWR-WSDU,HWR-ODS,PLV-MOP,PLV-CC,PLV-PP,MU-WSM,MU-WDM,MU-OAP,MU-DID,HE-MI,HE-MS,HE-MA,VE-MI,VE-MC,VE-MS,WL-IW,WL-EW,WL-FW,AL-T,AL-BOP,AL-G,EL-EE,EL-PCS,TPL-SOP,TPL-GPCA,TPL-SSPCA,TPL-HWH,EL-I,EL-D,EL-EC,EL-EC,COSL-LC,COSL-GC,COSL-EPC,COSL-OS
 ShadeR0C0
 2
 0
@@ -369,8 +369,8 @@ ShowColLabels
 1
 ColLabels
 5
-271
-HWR-LTP,HWR-RDM,HWR-RDM,HWR-LTA,HWR-WSDU,HWR-ODS,HWR-MDR,PLV-MOP,PLV-CC,PLV-PP,MU-WSM,MU-WDM,MU-OAP,MU-DID,HVE-MI,HVE-MS,HVE-MA,HVE-VEMU,HVE-EPMU,WL-WE,AL-T,AL-BOP,AL-G,EL-EE,EL-PCS,TPL-SOP,TPL-GPCA,TPL-SSPCA,TPL-HWH,EL-I,EL-D,EL-EC,EL-EC,COSL-LC,COSL-GC,COSL-EPC,COSL-OS
+263
+HWR-LTP,HWR-RD,HWR-LTA,HWR-WSDU,HWR-ODS,PLV-MOP,PLV-CC,PLV-PP,MU-WSM,MU-WDM,MU-OAP,MU-DID,HE-MI,HE-MS,HE-MA,VE-MI,VE-MC,VE-MS,WL-IW,WL-EW,WL-FW,AL-T,AL-BOP,AL-G,EL-EE,EL-PCS,TPL-SOP,TPL-GPCA,TPL-SSPCA,TPL-HWH,EL-I,EL-D,EL-EC,EL-EC,COSL-LC,COSL-GC,COSL-EPC,COSL-OS
 NumRowsLabel
 5
 5
@@ -411,7 +411,7 @@ X
 300
 Y
 3
-1644
+1911
 Width
 3
 90
@@ -470,7 +470,7 @@ X
 657
 Y
 3
-1644
+1911
 Width
 3
 90
@@ -529,7 +529,7 @@ X
 771
 Y
 3
-1683
+1950
 Width
 3
 100
@@ -588,7 +588,66 @@ X
 657
 Y
 3
-2019
+2286
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+14
+env_env_uncert
+X
+3
+300
+Y
+3
+2316
 Width
 3
 90
@@ -647,66 +706,7 @@ X
 657
 Y
 3
-2049
-Width
-3
-90
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-16
-Name
-5
-14
-env_ext_uncert
-X
-3
-300
-Y
-3
-2049
+2316
 Width
 3
 90
@@ -765,7 +765,7 @@ X
 300
 Y
 3
-2019
+2286
 Width
 3
 90
@@ -824,7 +824,7 @@ X
 771
 Y
 3
-2091
+2358
 Width
 3
 100
@@ -876,14 +876,250 @@ Numeric
 16
 Name
 5
-19
-eval_climate_uncert
+24
+eval_climate_10yr_uncert
 X
 3
 480
 Y
 3
-528
+567
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+24
+eval_climate_20yr_uncert
+X
+3
+753
+Y
+3
+567
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+19
+eval_climate_uncert
+X
+3
+216
+Y
+3
+567
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+21
+eval_perf_10yr_uncert
+X
+3
+480
+Y
+3
+633
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+21
+eval_perf_20yr_uncert
+X
+3
+753
+Y
+3
+633
 Width
 3
 90
@@ -939,10 +1175,128 @@ Name
 eval_perf_uncert
 X
 3
+216
+Y
+3
+633
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+23
+eval_period_10yr_uncert
+X
+3
+480
+Y
+3
+501
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+23
+eval_period_20yr_uncert
+X
+3
 753
 Y
 3
-528
+501
 Width
 3
 90
@@ -998,10 +1352,10 @@ Name
 eval_period_uncert
 X
 3
-215
+216
 Y
 3
-528
+501
 Width
 3
 90
@@ -1053,14 +1407,14 @@ Numeric
 16
 Name
 5
-17
-eval_uncert_total
+22
+eval_uncert_10yr_total
 X
 3
-771
+477
 Y
 3
-573
+699
 Width
 3
 100
@@ -1112,17 +1466,17 @@ Numeric
 16
 Name
 5
-20
-extrap_approp_uncert
+22
+eval_uncert_20yr_total
 X
 3
-300
+750
 Y
 3
-960
+699
 Width
 3
-90
+100
 Height
 3
 24
@@ -1134,10 +1488,10 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
-2
+3
 Prefix
 5
 0
@@ -1146,7 +1500,7 @@ Suffix
 0
 ThousandsSep
 2
-1
+0
 Editable
 2
 1
@@ -1164,21 +1518,107 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
 16
 Name
 5
-20
-extrap_excess_uncert
+17
+eval_uncert_total
+X
+3
+213
+Y
+3
+699
+Width
+3
+100
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+8
+GroupBox
+
+1
+7
+Name
+5
+3
+grp
+X
+3
+3
+Y
+3
+3612
+Width
+3
+951
+Height
+3
+90
+Caption
+5
+25
+Project Total Uncertainty
+Bold
+2
+1
+Numeric
+
+1
+16
+Name
+5
+21
+hextrap_approp_uncert
 X
 3
 480
 Y
 3
-993
+1074
 Width
 3
 90
@@ -1230,73 +1670,14 @@ Numeric
 16
 Name
 5
-20
-extrap_inputs_uncert
+21
+hextrap_inputs_uncert
 X
 3
 300
 Y
 3
-930
-Width
-3
-90
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-16
-Name
-5
-18
-extrap_sens_uncert
-X
-3
-657
-Y
-3
-930
+1044
 Width
 3
 90
@@ -1349,13 +1730,72 @@ Numeric
 Name
 5
 19
-extrap_uncert_total
+hextrap_sens_uncert
+X
+3
+657
+Y
+3
+1044
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+20
+hextrap_uncert_total
 X
 3
 771
 Y
 3
-1035
+1116
 Width
 3
 100
@@ -1407,92 +1847,6 @@ Numeric
 16
 Name
 5
-18
-extrap_vert_uncert
-X
-3
-657
-Y
-3
-960
-Width
-3
-90
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-GroupBox
-
-1
-7
-Name
-5
-3
-grp
-X
-3
-3
-Y
-3
-3309
-Width
-3
-951
-Height
-3
-90
-Caption
-5
-25
-Project Total Uncertainty
-Bold
-2
-1
-Numeric
-
-1
-16
-Name
-5
 15
 meas_atm_uncert
 X
@@ -1500,7 +1854,7 @@ X
 300
 Y
 3
-744
+873
 Width
 3
 90
@@ -1559,7 +1913,7 @@ X
 657
 Y
 3
-744
+873
 Width
 3
 90
@@ -1618,7 +1972,7 @@ X
 657
 Y
 3
-714
+843
 Width
 3
 90
@@ -1677,7 +2031,7 @@ X
 300
 Y
 3
-714
+843
 Width
 3
 90
@@ -1736,7 +2090,7 @@ X
 771
 Y
 3
-786
+915
 Width
 3
 100
@@ -1782,6 +2136,111 @@ BackColour
 TabOrder
 3
 8
+Divider
+
+1
+9
+Name
+5
+9
+object 21
+X
+3
+213
+Y
+3
+672
+Width
+3
+633
+Height
+3
+16
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
+Divider
+
+1
+9
+Name
+5
+10
+object 218
+X
+3
+213
+Y
+3
+540
+Width
+3
+633
+Height
+3
+16
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
+Divider
+
+1
+9
+Name
+5
+10
+object 219
+X
+3
+213
+Y
+3
+606
+Width
+3
+633
+Height
+3
+16
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
 GroupBox
 
 1
@@ -1795,7 +2254,7 @@ X
 27
 Y
 3
-2160
+2427
 Width
 3
 894
@@ -1822,7 +2281,7 @@ X
 27
 Y
 3
-1752
+2019
 Width
 3
 894
@@ -1849,7 +2308,7 @@ X
 27
 Y
 3
-1569
+1836
 Width
 3
 894
@@ -1876,7 +2335,7 @@ X
 27
 Y
 3
-1383
+1650
 Width
 3
 894
@@ -1903,17 +2362,44 @@ X
 27
 Y
 3
-852
+1185
 Width
 3
 894
 Height
 3
-219
+169
 Caption
 5
-37
-Horizontal and Vertical Extrapolation
+22
+Vertical Extrapolation
+Bold
+2
+1
+GroupBox
+
+1
+7
+Name
+5
+12
+object 41954
+X
+3
+27
+Y
+3
+981
+Width
+3
+894
+Height
+3
+171
+Caption
+5
+24
+Horizontal Extrapolation
 Bold
 2
 1
@@ -1930,7 +2416,7 @@ X
 27
 Y
 3
-1224
+1491
 Width
 3
 894
@@ -1957,7 +2443,7 @@ X
 27
 Y
 3
-636
+765
 Width
 3
 894
@@ -1984,13 +2470,13 @@ X
 27
 Y
 3
-450
+423
 Width
 3
 894
 Height
 3
-159
+315
 Caption
 5
 28
@@ -2017,7 +2503,7 @@ Width
 894
 Height
 3
-246
+213
 Caption
 5
 22
@@ -2038,7 +2524,7 @@ X
 27
 Y
 3
-1956
+2223
 Width
 3
 894
@@ -2065,7 +2551,7 @@ X
 21
 Y
 3
-2421
+2688
 Width
 3
 912
@@ -2110,7 +2596,7 @@ X
 39
 Y
 3
-1773
+2040
 Width
 3
 870
@@ -2155,7 +2641,7 @@ X
 39
 Y
 3
-2181
+2448
 Width
 3
 870
@@ -2200,7 +2686,7 @@ X
 39
 Y
 3
-1590
+1857
 Width
 3
 870
@@ -2245,7 +2731,7 @@ X
 42
 Y
 3
-1404
+1671
 Width
 3
 870
@@ -2287,20 +2773,65 @@ Name
 object 723
 X
 3
-39
+42
 Y
 3
-876
+1206
 Width
 3
 870
 Height
 3
-48
+33
 Caption
 5
-340
-The corrected long-term wind data that are obtained are only directly relevant to locations where data were measured. These data therefore need to be extrapolated across the whole site. The use of taller towers or remote sensing to directly measure wind speeds at hub height or above will minimize uncertainty due to vertical extrapolation.
+223
+Vertical extrapolation uncertainties are due to terrain surface characterization and wind measurement uncertainty; representativeness per height/terrain and profile fit; and large extrapolation distance and complex terrain.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+4294967295
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+12
+Name
+5
+12
+object 72353
+X
+3
+42
+Y
+3
+1002
+Width
+3
+870
+Height
+3
+33
+Caption
+5
+190
+Horizontal extrapolation uncertainties arise from extrapolating terrain data, roughness, forestry info, and atmospheric conditions for the whole site from locations where data were measured.
 TextColour
 4
 0
@@ -2335,7 +2866,7 @@ X
 42
 Y
 3
-1245
+1512
 Width
 3
 870
@@ -2380,7 +2911,7 @@ X
 39
 Y
 3
-660
+789
 Width
 3
 870
@@ -2425,7 +2956,7 @@ X
 39
 Y
 3
-474
+447
 Width
 3
 870
@@ -2651,7 +3182,7 @@ X
 15
 Y
 3
-3327
+3630
 Width
 3
 930
@@ -2696,7 +3227,7 @@ X
 39
 Y
 3
-1977
+2244
 Width
 3
 870
@@ -2741,7 +3272,7 @@ X
 300
 Y
 3
-2274
+2541
 Width
 3
 90
@@ -2800,7 +3331,7 @@ X
 657
 Y
 3
-2244
+2511
 Width
 3
 90
@@ -2859,7 +3390,7 @@ X
 300
 Y
 3
-2244
+2511
 Width
 3
 90
@@ -2918,7 +3449,7 @@ X
 657
 Y
 3
-2274
+2541
 Width
 3
 90
@@ -2977,7 +3508,7 @@ X
 771
 Y
 3
-2316
+2583
 Width
 3
 100
@@ -3033,7 +3564,7 @@ Name
 resource_adj_uncert
 X
 3
-657
+300
 Y
 3
 285
@@ -3089,69 +3620,10 @@ Numeric
 Name
 5
 23
-resource_datarep_uncert
-X
-3
-480
-Y
-3
-348
-Width
-3
-90
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-16
-Name
-5
-23
 resource_datasyn_uncert
 X
 3
-657
+480
 Y
 3
 315
@@ -3210,10 +3682,10 @@ Name
 resource_dist_uncert
 X
 3
-300
+657
 Y
 3
-315
+285
 Width
 3
 90
@@ -3325,72 +3797,13 @@ Numeric
 Name
 5
 23
-resource_refmeas_uncert
+resource_refdata_uncert
 X
 3
 657
 Y
 3
 255
-Width
-3
-90
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-16
-Name
-5
-24
-resource_refmodel_uncert
-X
-3
-300
-Y
-3
-285
 Width
 3
 90
@@ -3449,7 +3862,7 @@ X
 771
 Y
 3
-390
+357
 Width
 3
 100
@@ -3508,7 +3921,7 @@ X
 480
 Y
 3
-1092
+1377
 Width
 3
 90
@@ -3560,14 +3973,132 @@ Numeric
 16
 Name
 5
-12
-total_uncert
+17
+total_10yr_uncert
 X
 3
 480
 Y
 3
-3363
+3666
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+17
+total_20yr_uncert
+X
+3
+756
+Y
+3
+3666
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+12
+total_uncert
+X
+3
+204
+Y
+3
+3666
 Width
 3
 90
@@ -3626,7 +4157,7 @@ X
 657
 Y
 3
-1815
+2082
 Width
 3
 90
@@ -3685,7 +4216,7 @@ X
 657
 Y
 3
-1845
+2112
 Width
 3
 90
@@ -3744,7 +4275,7 @@ X
 300
 Y
 3
-1845
+2112
 Width
 3
 90
@@ -3803,7 +4334,7 @@ X
 300
 Y
 3
-1815
+2082
 Width
 3
 90
@@ -3862,7 +4393,7 @@ X
 771
 Y
 3
-1887
+2154
 Width
 3
 100
@@ -3914,14 +4445,368 @@ Numeric
 16
 Name
 5
-11
-wake_uncert
+19
+vextrap_comp_uncert
+X
+3
+657
+Y
+3
+1245
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+21
+vextrap_inputs_uncert
+X
+3
+300
+Y
+3
+1245
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+21
+vextrap_stress_uncert
 X
 3
 480
 Y
 3
 1275
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+20
+vextrap_uncert_total
+X
+3
+771
+Y
+3
+1317
+Width
+3
+100
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+8
+Numeric
+
+1
+16
+Name
+5
+15
+wake_ext_uncert
+X
+3
+480
+Y
+3
+1542
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+18
+wake_future_uncert
+X
+3
+759
+Y
+3
+1542
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+15
+wake_int_uncert
+X
+3
+207
+Y
+3
+1542
 Width
 3
 90
@@ -3980,7 +4865,7 @@ X
 771
 Y
 3
-1317
+1584
 Width
 3
 100
@@ -4027,7 +4912,7 @@ TabOrder
 3
 8
 
-51
+63
 avail_bop_uncert
 3
 1
@@ -4154,10 +5039,10 @@ Uncertainty
 1
 0
 Numeric
-env_exp_uncert
+env_env_uncert
 3
 1
-Exposure Changes
+Environmental
 % E
 Uncertainty
 0
@@ -4168,10 +5053,10 @@ Uncertainty
 1
 0
 Numeric
-env_ext_uncert
+env_exp_uncert
 3
 1
-External conditions
+Exposure Changes
 % E
 Uncertainty
 0
@@ -4210,10 +5095,66 @@ Uncertainty
 1
 0
 Numeric
+eval_climate_10yr_uncert
+3
+1
+10 Year
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+eval_climate_20yr_uncert
+3
+1
+20 Year
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
 eval_climate_uncert
 3
 1
-Climate Change
+Climate Change Year 1
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+eval_perf_10yr_uncert
+3
+1
+10 Year
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+eval_perf_20yr_uncert
+3
+1
+20 Year
 % WS
 Uncertainty
 0
@@ -4227,7 +5168,35 @@ Numeric
 eval_perf_uncert
 3
 1
-Plant Performance
+Plant Performance Year 1
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+eval_period_10yr_uncert
+3
+1
+10 Year
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+eval_period_20yr_uncert
+3
+1
+20 Year
 % WS
 Uncertainty
 0
@@ -4241,7 +5210,7 @@ Numeric
 eval_period_uncert
 3
 1
-Modelled Operational Period
+Modelled Period Year 1
 % WS
 Uncertainty
 0
@@ -4252,10 +5221,10 @@ Uncertainty
 1
 0
 Numeric
-eval_uncert_total
+eval_uncert_10yr_total
 3
 1
-Total Project Lifetime Variability
+Total 10 Year
 % WS
 Uncertainty
 0
@@ -4266,7 +5235,35 @@ Uncertainty
 1
 0
 Numeric
-extrap_approp_uncert
+eval_uncert_20yr_total
+3
+1
+Total 20 Year
+% WS
+Uncertainty
+0
+8
+1
+1
+1
+1
+0
+Numeric
+eval_uncert_total
+3
+1
+Total Lifetime Variability, Year 1
+% WS
+Uncertainty
+0
+8
+1
+1
+1
+1
+0
+Numeric
+hextrap_approp_uncert
 3
 1
 Model Appropriateness
@@ -4280,21 +5277,7 @@ Uncertainty
 1
 0
 Numeric
-extrap_excess_uncert
-3
-1
-Excess Propagated Measurement Uncertainty
-% WS
-Uncertainty
-0
-2
-1
-1
-1
-1
-0
-Numeric
-extrap_inputs_uncert
+hextrap_inputs_uncert
 3
 1
 Model Inputs
@@ -4308,7 +5291,7 @@ Uncertainty
 1
 0
 Numeric
-extrap_sens_uncert
+hextrap_sens_uncert
 3
 1
 Model Sensitivity/Stress
@@ -4322,28 +5305,14 @@ Uncertainty
 1
 0
 Numeric
-extrap_uncert_total
+hextrap_uncert_total
 3
 1
-Total Horizontal and Vertical Extrapolation
+Total Horizontal Extrapolation
 % WS
 Uncertainty
 0
 8
-1
-1
-1
-1
-0
-Numeric
-extrap_vert_uncert
-3
-1
-VE model Uncertainty
-% WS
-Uncertainty
-0
-2
 1
 1
 1
@@ -4504,20 +5473,6 @@ Uncertainty
 1
 0
 Numeric
-resource_datarep_uncert
-3
-1
-Measured Data Representativeness
-% WS
-Uncertainty
-0
-2
-1
-1
-1
-1
-0
-Numeric
 resource_datasyn_uncert
 3
 1
@@ -4535,7 +5490,7 @@ Numeric
 resource_dist_uncert
 3
 1
-(Wind Speed) Distribution Uncertainty
+Speed Distribution Uncertainty
 % WS
 Uncertainty
 0
@@ -4560,24 +5515,10 @@ Uncertainty
 1
 0
 Numeric
-resource_refmeas_uncert
+resource_refdata_uncert
 3
 1
-Reference Data-Measurements
-% WS
-Uncertainty
-0
-2
-1
-1
-1
-1
-0
-Numeric
-resource_refmodel_uncert
-3
-1
-Reference Data-Modeled
+Reference Data
 % WS
 Uncertainty
 0
@@ -4610,6 +5551,34 @@ Sensitivity (%Δ Energy/%Δ Wind Speed)
 Uncertainty
 0
 2
+1
+1
+1
+1
+0
+Numeric
+total_10yr_uncert
+3
+1
+10 Year Total
+% E
+Uncertainty
+0
+8
+1
+1
+1
+1
+0
+Numeric
+total_20yr_uncert
+3
+1
+20 Year Total
+% E
+Uncertainty
+0
+8
 1
 1
 1
@@ -4701,10 +5670,94 @@ Uncertainty
 1
 0
 Numeric
-wake_uncert
+vextrap_comp_uncert
 3
 1
-Wake Effects
+Model Components
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+vextrap_inputs_uncert
+3
+1
+Model Inputs
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+vextrap_stress_uncert
+3
+1
+Model Stressor
+% WS
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+vextrap_uncert_total
+3
+1
+Total Vertical Extrapolation
+% WS
+Uncertainty
+0
+8
+1
+1
+1
+1
+0
+Numeric
+wake_ext_uncert
+3
+1
+External Wake
+% E
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+wake_future_uncert
+3
+1
+Future Wake
+% E
+Uncertainty
+0
+2
+1
+1
+1
+1
+0
+Numeric
+wake_int_uncert
+3
+1
+Internal Wake
 % E
 Uncertainty
 0
@@ -4744,15 +5797,13 @@ Uncertainty
 0
 Numeric
 
-1896
+2384
 equations{ 'resource_uncert_total' } = define() {
 	return sqrt( pow(${resource_adj_uncert}, 2) + 
-		pow(${resource_datarep_uncert}, 2) +
 		pow(${resource_datasyn_uncert}, 2) + 
 		pow(${resource_dist_uncert}, 2) + 
 		pow(${resource_period_uncert}, 2) + 
-		pow(${resource_refmeas_uncert}, 2) +
-		pow(${resource_refmodel_uncert}, 2) );
+		pow(${resource_refdata_uncert}, 2) );
 };
 
 equations{ 'avail_uncert_total' } = define() {
@@ -4769,7 +5820,7 @@ equations{ 'elec_uncert_total' } = define() {
 equations{ 'env_uncert_total' } = define() {
 	return sqrt( pow(${env_degrad_uncert}, 2) + 
 		pow(${env_exp_uncert}, 2) + 
-		pow(${env_ext_uncert}, 2) +
+		pow(${env_env_uncert}, 2) +
 		pow(${env_icing_uncert}, 2) );
 };
 
@@ -4779,13 +5830,30 @@ equations{ 'eval_uncert_total' } = define() {
 		pow(${eval_period_uncert}, 2) );
 };
 
-equations{ 'extrap_uncert_total' } = define() {
-	return sqrt( pow(${extrap_approp_uncert}, 2) + 
-		pow(${extrap_excess_uncert}, 2) + 
-		pow(${extrap_inputs_uncert}, 2) +
-		pow(${extrap_sens_uncert}, 2) +
-		pow(${extrap_vert_uncert}, 2) );
+equations{ 'eval_uncert_10yr_total' } = define() {
+	return sqrt( pow(${eval_climate_10yr_uncert}, 2) + 
+		pow(${eval_perf_10yr_uncert}, 2) + 
+		pow(${eval_period_10yr_uncert}, 2) );
 };
+
+equations{ 'eval_uncert_20yr_total' } = define() {
+	return sqrt( pow(${eval_climate_20yr_uncert}, 2) + 
+		pow(${eval_perf_20yr_uncert}, 2) + 
+		pow(${eval_period_20yr_uncert}, 2) );
+};
+
+equations{ 'hextrap_uncert_total' } = define() {
+	return sqrt( pow(${hextrap_approp_uncert}, 2) + 
+		pow(${hextrap_sens_uncert}, 2) + 
+		pow(${hextrap_inputs_uncert}, 2));
+};
+
+equations{ 'vextrap_uncert_total' } = define() {
+	return sqrt( pow(${vextrap_inputs_uncert}, 2) + 
+		pow(${vextrap_comp_uncert}, 2) + 
+		pow(${vextrap_stress_uncert}, 2) );
+};
+
 
 equations{ 'meas_uncert_total' } = define() {
 	return sqrt( pow(${meas_atm_uncert}, 2) + 
@@ -4809,13 +5877,25 @@ equations{ 'turb_uncert_total' } = define() {
 };
 
 equations{ 'wake_uncert_total' } = define() {
-	return ${wake_uncert};
+	return sqrt( pow(${wake_int_uncert}, 2) +
+		pow(${wake_ext_uncert}, 2) +
+		pow(${wake_future_uncert}, 2));
 };
-2829
+3769
+function calculate_uncertainties(){
+	combine_uncertainty(1);
+	combine_uncertainty(10);
+	combine_uncertainty(20);
+}
+
+on_load{'Wind Uncertainty'} = define() {
+	calculate_uncertainties();
+};
+
 on_change{'correlation_uncert'} = define() {
 	mat = ${correlation_uncert};
 	// make sure matrix is symmetrical with ones on diagonal
-	for ( i = 0; i < 37; i++) {
+	for ( i = 0; i < #mat; i++) {
 		for ( j = 0; j < i; j++) {
 			val = mat[j][i];
 			if (val <= 1 && val >= -1)
@@ -4833,73 +5913,92 @@ on_change{'correlation_uncert'} = define() {
 	}
 	value('correlation_uncert', mat, false);
 	refresh('correlation_uncert');
-	combine_uncertainty();
+	calculate_uncertainties();
 };
 
 on_change{'resource_uncert_total'} = define() {
-	combine_uncertainty();
+	calculate_uncertainties();
 };
 
 on_change{'avail_uncert_total'} = define() {
-	combine_uncertainty();
+	calculate_uncertainties();
 };
 
 on_change{'elec_uncert_total'} = define() {
-	combine_uncertainty();
+	calculate_uncertainties();
 };
 
 on_change{'env_uncert_total'} = define() {
-	combine_uncertainty();
+	calculate_uncertainties();
+};
+
+on_change{'eval_uncert_10yr_total'} = define() {
+	calculate_uncertainties();
+};
+
+on_change{'eval_uncert_20yr_total'} = define() {
+	calculate_uncertainties();
 };
 
 on_change{'eval_uncert_total'} = define() {
-	combine_uncertainty();
+	calculate_uncertainties();
 };
 
 on_change{'extrap_uncert_total'} = define() {
-	combine_uncertainty();
+	calculate_uncertainties();
 };
 
 on_change{'meas_uncert_total'} = define() {
-	combine_uncertainty();
+	calculate_uncertainties();
 };
 
 on_change{'ops_uncert_total'} = define() {
-	combine_uncertainty();
+	calculate_uncertainties();
 };
 
 on_change{'turb_uncert_total'} = define() {
-	combine_uncertainty();
+	calculate_uncertainties();
 };
 
 on_change{'wake_uncert_total'} = define() {
-	combine_uncertainty();
+	calculate_uncertainties();
 };
 
 on_change{'sensitivity_uncert'} = define() {
-	combine_uncertainty();
+	calculate_uncertainties();
 };
 
-on_load{'Wind Uncertainty'} = define() {
-	combine_uncertainty();
-};
-
-function combine_uncertainty() {
-	components = [${resource_period_uncert}, ${resource_refmeas_uncert}, 
-		${resource_refmodel_uncert}, ${resource_adj_uncert}, ${resource_dist_uncert}, 
-		${resource_datasyn_uncert}, ${resource_datarep_uncert}, ${eval_period_uncert}, 
-		${eval_climate_uncert}, ${eval_perf_uncert}, ${meas_speed_uncert}, 
+function combine_uncertainty(year) {
+	eval_period = ${eval_period_uncert};
+	eval_perf = ${eval_perf_uncert};
+	eval_climate = ${eval_climate_uncert};
+	if (year == 10){
+		eval_period = ${eval_period_10yr_uncert};
+		eval_perf = ${eval_perf_10yr_uncert};
+		eval_climate = ${eval_climate_10yr_uncert};
+	}
+	else if (year == 20){
+		eval_period = ${eval_period_20yr_uncert};
+		eval_perf = ${eval_perf_20yr_uncert};
+		eval_climate = ${eval_climate_20yr_uncert};
+	}
+	components = [${resource_period_uncert}, ${resource_refdata_uncert}, 
+		${resource_adj_uncert}, ${resource_dist_uncert}, 
+		${resource_datasyn_uncert}, eval_period, 
+		eval_climate, eval_perf, ${meas_speed_uncert}, 
 		${meas_dir_uncert}, ${meas_atm_uncert}, ${meas_data_uncert}, 
-		${extrap_inputs_uncert}, ${extrap_sens_uncert}, ${extrap_approp_uncert}, 
-		${extrap_vert_uncert}, ${extrap_excess_uncert}, ${wake_uncert}, 
+		${hextrap_inputs_uncert}, ${hextrap_sens_uncert}, ${hextrap_approp_uncert}, 
+		${vextrap_inputs_uncert}, ${vextrap_comp_uncert}, ${vextrap_stress_uncert},
+		${wake_int_uncert}, ${wake_ext_uncert}, ${wake_future_uncert},
 		${avail_turb_uncert}, ${avail_bop_uncert}, ${avail_grid_uncert}, 
 		${elec_eff_uncert}, ${elec_parasitic_uncert}, ${turb_subopt_uncert}, 
 		${turb_generic_uncert}, ${turb_specific_uncert}, ${turb_hysteresis_uncert}, 
-		${env_icing_uncert}, ${env_degrad_uncert}, ${env_ext_uncert}, ${env_exp_uncert}, 
+		${env_icing_uncert}, ${env_degrad_uncert}, ${env_env_uncert}, ${env_exp_uncert}, 
 		${ops_load_uncert}, ${ops_grid_uncert}, ${ops_env_uncert}, ${ops_strategies_uncert}];
+	n_wspd_comps = 18;
 	sens = ${sensitivity_uncert};
 	correlation = ${correlation_uncert};
-	for ( i = 0; i < 19; i++ ){
+	for ( i = 0; i < n_wspd_comps; i++ ){
 		components[i] = sens*components[i];
 	} 
 	for ( i = 0; i < #components; i++ ){
@@ -4913,9 +6012,15 @@ function combine_uncertainty() {
 		for ( j = 0; j < i; j++ ){
 			total += 2*comp*components[j]*correlation[i][j];
 		}
-		if (i == 18)
-			wspd = total;
+		if (i == n_wspd_comps - 1){
+			wspd = sqrt(total) * 100.;
+		}
 	}
-	value('total_uncert', sqrt(total)*100.);
-	value('wspd_uncert', sqrt(wspd)*100.);
+	if (year == 10)
+		value('total_10yr_uncert', sqrt(total)*100.);
+	else if (year == 20)
+		value('total_20yr_uncert', sqrt(total)*100.);
+	else
+		value('total_uncert', sqrt(total)*100.);
+	value('wspd_uncert', wspd);
 }

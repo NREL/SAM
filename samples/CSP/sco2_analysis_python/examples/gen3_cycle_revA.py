@@ -31,7 +31,7 @@ def get_sco2_design_parameters():
     des_par["site_elevation"] = 588;       #[m] Elevation of Daggett, CA. Used to size air cooler...
     des_par["W_dot_net_des"] = 50.0;       #[MWe] Design cycle power output (no cooling parasitics)
     
-    des_par["design_method"] = 2;          #[-] 1 = specify efficiency, 2 = specify total recup UA
+    des_par["design_method"] = 2;          #[-] 1 = specify efficiency, 2 = specify total recup UA, 3 = Specify each recuperator design (see inputs below)
     des_par["eta_thermal_des"] = 0.44;     #[-] Power cycle thermal efficiency
     des_par["UA_recup_tot_des"] = 8*1000   #[kW/K]
     
@@ -61,16 +61,24 @@ def get_sco2_design_parameters():
     # approximately 140 kPa (20 psid) and a hot side (low pressure) pressure drop of 280 kPa (40 psid) can be reasonably used.
     # Note: Unclear what the low pressure assumption is in this study, could be significantly lower for direct combustion cycles
     eff_max = 1.0
-    deltaP_recup_HP = 0.0056    #[-] = 0.14[MPa]/25[MPa]
-    deltaP_recup_LP = 0.0311	#[-] = 0.28[MPa]/9[MPa]
+    deltaP_recup_HP = 0.005  #[-] 0.0056 = 0.14[MPa]/25[MPa]
+    deltaP_recup_LP = 0.005	 #[-] 0.0311 = 0.28[MPa]/9[MPa]
         # LTR
+    des_par["LTR_design_code"] = 3  # 1 = UA, 2 = min dT, 3 = effectiveness
+    des_par["LTR_UA_des_in"] = 2200.0  # [kW/K] (required if LTR_design_code == 1 and design_method == 3)
+    des_par["LTR_min_dT_des_in"] = 8.0  # [C] (required if LTR_design_code == 2 and design_method == 3)
+    des_par["LTR_eff_des_in"] = 0.895  # [-] (required if LTR_design_code == 3 and design_method == 3)
+    des_par["LT_recup_eff_max"] = eff_max #[-] Maximum effectiveness low temperature recuperator
     des_par["LTR_LP_deltaP_des_in"] = deltaP_recup_LP 	#[-]
-    des_par["LTR_HP_deltaP_des_in"] = deltaP_recup_HP	#[-]
-    des_par["LT_recup_eff_max"] = eff_max; #[-] Maximum effectiveness low temperature recuperator
+    des_par["LTR_HP_deltaP_des_in"] = deltaP_recup_HP	#[-]    
         # HTR
+    des_par["HTR_design_code"] = 3  # 1 = UA, 2 = min dT, 3 = effectiveness
+    des_par["HTR_UA_des_in"] = 2800.0  # [kW/K] (required if LTR_design_code == 1 and design_method == 3)
+    des_par["HTR_min_dT_des_in"] = 14.0  # [C] (required if LTR_design_code == 2 and design_method == 3)
+    des_par["HTR_eff_des_in"] = 0.943  # [-] (required if LTR_design_code == 3 and design_method == 3)
+    des_par["HT_recup_eff_max"] = eff_max #[-] Maximum effectiveness high temperature recuperator
     des_par["HTR_LP_deltaP_des_in"] = deltaP_recup_LP	#[-]
-    des_par["HTR_HP_deltaP_des_in"] = deltaP_recup_HP	#[-]
-    des_par["HT_recup_eff_max"] = eff_max; #[-] Maximum effectiveness high temperature recuperator
+    des_par["HTR_HP_deltaP_des_in"] = deltaP_recup_HP	#[-]    
         # PHX
     des_par["PHX_co2_deltaP_des_in"] = deltaP_recup_HP	#[-]
     des_par["dT_PHX_cold_approach"] = 20;  #[C/K] default 20. Temperature difference between cold HTF and cold CO2 PHX inlet
@@ -105,23 +113,24 @@ def od_matrix_var_names():
 "True will run off-design simulation defined by 'part_load_list' and 'T_amb_od_' parameters"
 "The default off-design simulation cases solve in around 45 minutes"
 is_run_off_design = True
+"If not running off-design sweeps/matrix, should the code generate UDPC tables?"
+is_generate_udpc = False
     
 "Setup off-deign cases"
+if(is_run_off_design):
+    "Choose off design temperature method"
+    "True will use 'T_amb_od_' parameters and result in a lot of off-design cases and a longer run time"
+    "It is helpful to visualize off-design trends to identify potential unrealistic behavior"
+    "False will only solve for the values in 'od_matrix_temps'"
+    is_od_temp_sweep = False
+    part_load_list = [1.0, 0.75, 0.5, 0.4]   # Part-load levels. Results at part loads < 0.5 should be carefully reviewed"
+    T_amb_od_low = 20                        # Coldest off-design temperature (min allowable comp inlet is 32 C)
+    T_amb_od_high = 55                       # Warmest off-design temperature
+    T_amb_od_step = 1                        # Spacing betwen off-design temperatures
 
-"Choose off design temperature method"
-"True will use 'T_amb_od_' parameters and result in a lot of off-design cases and a longer run time"
-"It is helpful to visualize off-design trends to identify potential unrealistic behavior"
-"False will only solve for the values in 'od_matrix_temps'"
-is_od_temp_sweep = False
-part_load_list = [1.0, 0.75, 0.5, 0.4]   # Part-load levels. Results at part loads < 0.5 should be carefully reviewed"
-T_amb_od_low = 20                        # Coldest off-design temperature (min allowable comp inlet is 32 C)
-T_amb_od_high = 55                       # Warmest off-design temperature 
-T_amb_od_step = 1                        # Spacing betwen off-design temperatures
-
-"True will write a csv with results from 'od_matrix_var_names()' for each part load level and OD temperature from 'od_matrix_temps'"
-is_write_od_matrix = True
-od_matrix_temps = [25,35,40]
-
+    "True will write a csv with results from 'od_matrix_var_names()' for each part load level and OD temperature from 'od_matrix_temps'"
+    is_write_od_matrix = True
+    od_matrix_temps = [25,35,40]
 "***************************"
 "***************************"
 
@@ -141,9 +150,9 @@ des_sim_label_str = "T_amb_des" + '{:.1f}'.format(sco2_des_par_default["T_amb_de
 
 # Solve the design point and plot
 c_sco2.solve_sco2_case()            # Run design simulation
-print("\nDid the parametric analyses solve successfully = ",c_sco2.m_solve_success)
+print("\nWas the design point solution successful = ",c_sco2.m_solve_success)
 c_sco2.m_also_save_csv = True
-c_sco2.save_m_solve_dict("UA_parametric")
+c_sco2.save_m_solve_dict(des_sim_label_str)
 sol_dict = c_sco2.m_solve_dict
 
     
@@ -273,7 +282,34 @@ if(is_run_off_design):
     
     od_plot.create_plot()
 
-    
+elif(is_generate_udpc):
 
+    ## Reset to run off-design analysis of single design point
+    sco2_des_par_default = get_sco2_design_parameters()
+    c_sco2.overwrite_default_design_parameters(sco2_des_par_default)
 
+    mod_base_dict = {"od_generate_udpc": [1.0]}
+
+    c_sco2.overwrite_des_par_base(mod_base_dict)  # Overwrite baseline design parameters
+    c_sco2.solve_sco2_case()  # Run design simulation
+
+    print(c_sco2.m_solve_dict["eta_thermal_calc"])
+    print("\nDid the simulation code with "
+          "modified design parameters solve successfully = ", c_sco2.m_solve_success)
+
+    c_sco2.m_also_save_csv = True
+    c_sco2.save_m_solve_dict(des_sim_label_str + "__udpc_results")  # Save design
+
+    udpc_data = c_sco2.m_solve_dict["udpc_table"]
+
+    with open("udpc_output" + '.csv', 'w', newline='') as f:
+        w = csv.writer(f)
+        w.writerows(udpc_data)
+    f.close()
+
+    n_T_htf = int(c_sco2.m_solve_dict["udpc_n_T_htf"])
+    n_T_amb = int(c_sco2.m_solve_dict["udpc_n_T_amb"])
+    n_m_dot_htf = int(c_sco2.m_solve_dict["udpc_n_m_dot_htf"])
+
+    cy_plt.plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf)
 
