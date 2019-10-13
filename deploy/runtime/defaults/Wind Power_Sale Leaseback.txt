@@ -3521,7 +3521,7 @@ ppa_price_input
 2
 1
 1
--2
+0.05
 ppa_soln_mode
 1
 1
