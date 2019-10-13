@@ -1,4 +1,9 @@
 {"tooltips": [
 	{"name":"tt_mhk_mooring_cost","title":"Mooring, Foundation, and Substructure Cost","tip":"mooring cost help content \nwith \nmultiple \nlines"},
-	{"name":"tt_mhk_powertakeoff_cost","title":"Power Take-Off System Cost","tip":"Power take-off help content."}
+	{"name":"tt_mhk_powertakeoff_cost","title":"Power Take-Off System Cost","tip":"Power take-off help content."},
+	{"name":"tt_loss_array_spacing","title":"Array Spacing Loss","tip":"Losses associated with interactions of wave energy \nconverters due to spacing."},
+	{"name":"tt_loss_resource_overprediction","title":"Resource Overprediction Loss","tip":"Reduction from resource uncertainty associated \nwith installing device waters at a depth or distance \noutside parameters of resource file (e.g. shallow \nwaters close to shore, large distance from \nmeasuring buoy)."},
+	{"name":"tt_loss_transmission","title":"Transmission Losses","tip":"Related to the efficiency of the electrical \ninfrastructure for the array, such as inter-device \ncabling, export cabling, substations, and onshore \ntransmission up to grid interconnection."},
+	{"name":"tt_loss_downtime","title":"Array/WEC Downtime Loss","tip":"Availability losses which reduce the system output \nduring system outages, operations and maintenance \nactivities, or other events."},
+	{"name":"tt_loss_additional","title":"Additional Losses","tip":"Miscellaneous losses which would decrease the \npower output from the wave energy converter to \nthe grid."}
 ]}

@@ -1845,7 +1845,8 @@ function setup_mhkwave_pages()
 {
 	addpage( [[ 'MHK Wave Resource']], { 'sidebar'='Wave Resource', 'help'='wave_resource' } );
 	addpage( [[ 'MHK Wave Device' ]], { 'sidebar'='Wave Energy Converter', 'help'='wave_device' } );
-	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='wave_farm' } );
+	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='mhk_wave_farm' } );
+	addpage( [[ 'MHK Losses' ]], { 'sidebar'='Losses', 'help'='mhk_wave_losses' } );
 	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='mhk_system_costs' } );
 }
 setconfig( 'MHKwave', 'LCOE Calculator' );
@@ -1857,7 +1858,8 @@ function setup_mhktidal_pages()
 {
 	addpage( [[ 'MHK Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='wind_resource' } );
 	addpage( [[ 'MHK Tidal Device' ]], { 'sidebar'='Tidal Energy Converter', 'help'='wind_turbine' } );
-	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='wind_farm' } );
+	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='mhk_wind_farm' } );
+	addpage( [[ 'MHK Losses' ]], { 'sidebar'='Losses', 'help'='mhk_wave_losses' } );
 	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 }
 setconfig( 'MHKtidal', 'LCOE Calculator' );
