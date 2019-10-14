@@ -1,7 +1,7 @@
 MHK Losses
-954
-962
-13
+604
+827
+23
 GroupBox
 
 1
@@ -12,23 +12,173 @@ Name
 GroupBox1
 X
 3
-3
+12
 Y
 3
-9
+681
 Width
 3
-356
+576
 Height
 3
-239
+130
 Tool Tip
 5
 0
 Caption
 5
-6
-Losses
+12
+Total Losses
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+11
+GroupBox119
+X
+3
+12
+Y
+3
+279
+Width
+3
+576
+Height
+3
+130
+Tool Tip
+5
+0
+Caption
+5
+19
+Transmission Losses
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+11
+GroupBox120
+X
+3
+12
+Y
+3
+144
+Width
+3
+576
+Height
+3
+130
+Tool Tip
+5
+0
+Caption
+5
+30
+Resource Overprediction Losses
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+11
+GroupBox121
+X
+3
+12
+Y
+3
+9
+Width
+3
+576
+Height
+3
+130
+Tool Tip
+5
+0
+Caption
+5
+20
+Array Spacing Losses
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+GroupBox14
+X
+3
+12
+Y
+3
+546
+Width
+3
+576
+Height
+3
+130
+Tool Tip
+5
+0
+Caption
+5
+17
+Additional Losses
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+GroupBox15
+X
+3
+12
+Y
+3
+414
+Width
+3
+576
+Height
+3
+130
+Tool Tip
+5
+0
+Caption
+5
+25
+Array/WEC Downtime Losses
 Bold
 2
 1
@@ -42,10 +192,10 @@ Name
 loss_additional
 X
 3
-183
+297
 Y
 3
-144
+636
 Width
 3
 90
@@ -104,10 +254,10 @@ Name
 loss_array_spacing
 X
 3
-183
+297
 Y
 3
-36
+102
 Width
 3
 90
@@ -166,10 +316,10 @@ Name
 loss_downtime
 X
 3
-183
+297
 Y
 3
-117
+504
 Width
 3
 90
@@ -228,10 +378,10 @@ Name
 loss_resource_overprediction
 X
 3
-183
+297
 Y
 3
-63
+234
 Width
 3
 90
@@ -290,10 +440,10 @@ Name
 loss_total
 X
 3
-183
+297
 Y
 3
-192
+762
 Width
 3
 90
@@ -352,10 +502,10 @@ Name
 loss_transmission
 X
 3
-183
+297
 Y
 3
-90
+369
 Width
 3
 90
@@ -404,42 +554,292 @@ BackColour
 TabOrder
 3
 4294967295
-Divider
+Label
 
 1
-10
+13
 Name
 5
-9
-object 21
+8
+object 7
 X
 3
-36
+69
+Y
+3
+699
+Width
+3
+476
+Height
+3
+52
+Tool Tip
+5
+0
+Caption
+5
+53
+Total loss applied to the annual output of the array.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 716
+X
+3
+75
+Y
+3
+441
+Width
+3
+476
+Height
+3
+52
+Tool Tip
+5
+0
+Caption
+5
+129
+Availability losses which reduce the system output during system outages, operations and maintenance activities, or other events.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 717
+X
+3
+75
+Y
+3
+306
+Width
+3
+476
+Height
+3
+52
+Tool Tip
+5
+0
+Caption
+5
+185
+Related to the efficiency of the electrical infrastructure for the array, such as inter-device cabling, export cabling, substations, and onshore transmission up to grid interconnection.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 718
+X
+3
+75
 Y
 3
 171
 Width
 3
-300
+476
 Height
 3
-16
+52
 Tool Tip
 5
 0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
 Caption
 5
+210
+Reduction from resource uncertainty associated with installing device waters at a depth or distance outside parameters of resource file (e.g. shallow waters close to shore, large distance from measuring buoy). 
+TextColour
+4
 0
+0
+0
+255
 Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+9
+object 72
+X
+3
+75
+Y
+3
+573
+Width
+3
+476
+Height
+3
+52
+Tool Tip
+5
+0
+Caption
+5
+102
+Miscellaneous losses which would decrease the power output from the wave energy converter to the grid.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 722
+X
+3
+75
+Y
+3
+36
+Width
+3
+476
+Height
+3
+52
+Tool Tip
+5
+0
+Caption
+5
+77
+Losses associated with interactions of wave energy converters due to spacing.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 ToolTipCtrl
@@ -452,10 +852,10 @@ Name
 tt_loss_additional
 X
 3
-300
+414
 Y
 3
-144
+636
 Width
 3
 24
@@ -478,10 +878,10 @@ Name
 tt_loss_array_spacing
 X
 3
-300
+414
 Y
 3
-36
+102
 Width
 3
 24
@@ -505,10 +905,10 @@ Name
 tt_loss_downtime
 X
 3
-300
+414
 Y
 3
-117
+504
 Width
 3
 24
@@ -532,10 +932,10 @@ Name
 tt_loss_resource_overprediction
 X
 3
-300
+414
 Y
 3
-63
+234
 Width
 3
 24
@@ -558,10 +958,10 @@ Name
 tt_loss_transmission
 X
 3
-300
+414
 Y
 3
-90
+369
 Width
 3
 24
@@ -579,7 +979,7 @@ Tips
 loss_additional
 3
 1
-Additional Losses
+Additional losses
 %
 ME Losses
 0
@@ -593,7 +993,7 @@ Numeric
 loss_array_spacing
 3
 1
-Array Spacing
+Array spacing
 %
 ME Losses
 0
@@ -607,7 +1007,7 @@ Numeric
 loss_downtime
 3
 1
-Array/WEC Downtime
+Array/WEC downtime
 %
 ME Losses
 0
@@ -621,7 +1021,7 @@ Numeric
 loss_resource_overprediction
 3
 1
-Resource Overprediction
+Resource overprediction
 %
 ME Losses
 0
@@ -635,7 +1035,7 @@ Numeric
 loss_total
 3
 1
-Total Losses
+Total losses
 %
 ME Losses
 0
@@ -649,7 +1049,7 @@ Numeric
 loss_transmission
 3
 1
-Transmission Losses
+Transmission losses
 %
 ME Losses
 0
