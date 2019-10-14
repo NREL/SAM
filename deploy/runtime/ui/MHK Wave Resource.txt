@@ -497,8 +497,8 @@ Library
 WaveResourceData
 Fields
 5
-54
-Name,Nearby buoy number,Average power flux,Data source
+60
+Name,State,Nearby buoy number,Average power flux,Data source
 Numeric
 
 1
