@@ -2471,8 +2471,8 @@ Tool Tip
 0
 Caption
 5
-24
-Export cable system cost
+17
+Export cable cost
 TextColour
 4
 0
@@ -2520,7 +2520,7 @@ Tool Tip
 Caption
 5
 26
-Power Take-Off System Cost
+Power take-off system cost
 TextColour
 4
 0
@@ -2567,8 +2567,8 @@ Tool Tip
 0
 Caption
 5
-23
-Array cable system cost
+16
+Array cable cost
 TextColour
 4
 0
@@ -2616,7 +2616,7 @@ Tool Tip
 Caption
 5
 24
-Structural Assembly Cost
+Structural assembly cost
 TextColour
 4
 0
@@ -3144,7 +3144,7 @@ Tool Tip
 Caption
 5
 42
-Mooring, Foundation, and Substructure Cost
+Mooring, foundation, and substructure cost
 TextColour
 4
 0
@@ -8072,8 +8072,8 @@ structural_assembly_cost_method
 Method to define structural assembly cost
  
 MHK Costs
-44
-Enter in $/kW| Enter in $| Use modeled value
+42
+Enter in $/kW|Enter in $|Use Modeled Value
 1
 1
 1

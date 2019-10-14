@@ -1061,8 +1061,8 @@ Tool Tip
 0
 Caption
 5
-102
-It is not possible to reach the desired nameplate capacity exactly with the currently selected device.
+98
+It is not possible to reach the desired array capacity exactly with the currently selected device.
 TextColour
 4
 255
