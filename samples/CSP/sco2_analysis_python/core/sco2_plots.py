@@ -60,6 +60,7 @@ class C_sco2_cycle_TS_plot:
         self.is_annotate_HTR = True
         self.is_annotate_LTR = True
         self.is_annotate_PHX = True
+        self.is_annotate_cooler = True
         self.is_add_P_const_lines = True
         self.is_add_dome = True
         self.is_add_title = True
@@ -166,14 +167,17 @@ class C_sco2_cycle_TS_plot:
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_HTR"]) + " MWt"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["HTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_HTR"])
-        
+            mindt_text = "\n" + r'$\Delta$' + r'$T_{min}$' + " = " + '{:.1f}'.format(self.dict_cycle_data["HTR_min_dT"]) + " C"
+
+            #r'$\eta_{isen}$'
+
             T_HTR_LP_data = self.dict_cycle_data["T_HTR_LP_data"]
             s_HTR_LP_data = self.dict_cycle_data["s_HTR_LP_data"]
             
             n_p = len(T_HTR_LP_data)
-            n_mid = (int)(n_p/2)
+            n_mid = (int)(n_p/2)-2
         
-            HTR_text = HTR_title + q_dot_text + UA_text + eff_text
+            HTR_text = HTR_title + q_dot_text + UA_text + eff_text + mindt_text
             
             ax_in.annotate(HTR_text, xy=(s_HTR_LP_data[n_mid],T_HTR_LP_data[n_mid]), 
                            xytext=(s_HTR_LP_data[0],T_HTR_LP_data[n_mid]), va="center",
@@ -186,14 +190,15 @@ class C_sco2_cycle_TS_plot:
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_LTR"]) + " MWt"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["LTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_LTR"])
-            
+            mindt_text = "\n" + r'$\Delta$' + r'$T_{min}$' + " = " + '{:.1f}'.format(self.dict_cycle_data["LTR_min_dT"]) + " C"
+
             T_LTR_LP_data = self.dict_cycle_data["T_LTR_LP_data"]
             s_LTR_LP_data = self.dict_cycle_data["s_LTR_LP_data"]
             
             n_p = len(T_LTR_LP_data)
             n_mid = (int)(n_p/2)
             
-            LTR_text = LTR_title + q_dot_text + UA_text + eff_text
+            LTR_text = LTR_title + q_dot_text + UA_text + eff_text + mindt_text
             
             ax_in.annotate(LTR_text, xy=(s_LTR_LP_data[n_mid],T_LTR_LP_data[n_mid]), 
                            xytext=(s_HTR_LP_data[n_mid],T_LTR_LP_data[n_mid]), va="center",
@@ -212,7 +217,7 @@ class C_sco2_cycle_TS_plot:
             T_PHX_out = T_states[4] + dT_PHX_approach
             s_PHX_out = s_states[4]
             
-            ax_in.plot([s_PHX_in, s_PHX_out], [T_PHX_in, T_PHX_out], color = '#ff9900', ls = ":")
+            ax_in.plot([s_PHX_in, s_PHX_out], [T_PHX_in, T_PHX_out], color = '#ff9900', ls = "-")
             
             s_PHX_avg = 0.5*(s_PHX_in + s_PHX_out)
             T_PHX_avg = 0.5*(T_PHX_in + T_PHX_out)
@@ -225,12 +230,61 @@ class C_sco2_cycle_TS_plot:
             PHX_text = PHX_title + q_dot_text + UA_text + eff_text
             
             ax_in.annotate(PHX_text, xy=(s_PHX_avg, T_PHX_avg), 
-                           xytext=(s_PHX_avg - 0.75,T_PHX_avg), va="center",
+                           xytext=(0.975*s_states[4],T_PHX_avg),va="center", ha="right",multialignment="left",
                            arrowprops = dict(arrowstyle="->", color = '#ff9900', ls = '--', lw = 0.6),
                            fontsize = 8,
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
+
+        if(self.is_annotate_cooler):
+
+            mc_cool_title = r'$\bfMain\ Cooler$'
+            T_cold_text = "\n" + r'$T_{out}\ =\ $' + '{:.1f}'.format(self.dict_cycle_data["T_comp_in"]) + " C"
+            if (self.dict_cycle_data["cycle_config"] == 2):
+                s_q_dot = "IP_cooler_q_dot"
+                s_W_dot = "IP_cooler_W_dot_fan"
+            else:
+                s_q_dot = "LP_cooler_q_dot"
+                s_W_dot = "LP_cooler_W_dot_fan"
+            q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data[s_q_dot]) + " MWt"
+            W_dot_text = "\n" + r'$\.W_{fan}\ =\ $' + '{:.2f}'.format(self.dict_cycle_data[s_W_dot]) + " MWe"
+
+            T_main_cooler_data = self.dict_cycle_data["T_main_cooler_data"]
+            s_main_cooler_data = self.dict_cycle_data["s_main_cooler_data"]
+
+            n_p = len(T_main_cooler_data)
+            n_mid = (int)(n_p / 2) + 3
+
+            mc_cool_text = mc_cool_title + T_cold_text + q_dot_text + W_dot_text
+
+            ax_in.annotate(mc_cool_text, xy=(s_main_cooler_data[n_mid], T_main_cooler_data[n_mid]),
+                           xytext=(s_main_cooler_data[n_mid], T_states[3]+150), ha="center",multialignment="left",
+                           arrowprops=dict(arrowstyle="->", color='purple', ls='--', lw=0.6),
+                           fontsize=8,
+                           bbox=dict(boxstyle="round", fc="w", pad=0.5))
+
+            if (self.dict_cycle_data["cycle_config"] == 2):
+
+                pc_cool_title = r'$\bfPre\ Cooler$'
+                T_pc_cold_txt = "\n" + r'$T_{out}\ = \ $' + '{:.1f}'.format(self.dict_cycle_data["pc_T_in_des"]) + " C"
+                q_dot_pc_txt = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["LP_cooler_q_dot"]) + " MWt"
+                W_dot_pc_txt = "\n" + r'$\.W_{fan}\ = \ $' + '{:.2f}'.format(self.dict_cycle_data["LP_cooler_W_dot_fan"]) + " MWe"
+
+                T_pc_cooler_data = self.dict_cycle_data["T_pre_cooler_data"]
+                s_pc_cooler_data = self.dict_cycle_data["s_pre_cooler_data"]
+
+                n_p = len(T_pc_cooler_data)
+                n_q = (int)(0.25*n_p)
+
+                pc_cool_text = pc_cool_title + T_pc_cold_txt + q_dot_pc_txt + W_dot_pc_txt
+
+                ax_in.annotate(pc_cool_text, xy=(s_pc_cooler_data[n_q], T_pc_cooler_data[n_q]),
+                               xytext=(s_pc_cooler_data[n_q], T_states[3] + 150), ha="center",
+                               multialignment="left",
+                               arrowprops=dict(arrowstyle="->", color='purple', ls='--', lw=0.6),
+                               fontsize=8,
+                               bbox=dict(boxstyle="round", fc="w", pad=0.5))
             
-            return ax_in
+        return ax_in
     
     def add_recup_in_out_lines(self, ax_in):
     
@@ -614,7 +668,8 @@ class C_sco2_cycle_PH_plot:
         h_mc_avg = 0.5*(h_states[0] + h_states[1])
         
         if(self.is_annotate_MC):
-            ax_in.annotate(mc_text, xy=(h_mc_avg,P_mc_avg), va="center", ha="center", fontsize = 8,
+            ax_in.annotate(mc_text, xy=(h_mc_avg,P_mc_avg), va="center", ha="center",multialignment="left",
+                           fontsize = 8,
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
         
         t_title = r'$\bfTurbine$'
@@ -628,7 +683,8 @@ class C_sco2_cycle_PH_plot:
         h_t_avg = 0.5*(h_states[5] + h_states[6])
         
         if(self.is_annotate_T):
-            ax_in.annotate(t_text, xy=(h_t_avg,P_t_avg), va="center", ha="center", fontsize = 8,
+            ax_in.annotate(t_text, xy=(h_t_avg,P_t_avg), va="center", ha="center",multialignment="left",
+                       fontsize = 8,
                        bbox=dict(boxstyle="round", fc="w", pad = 0.5))
         
         is_pc = self.dict_cycle_data["cycle_config"] == 2
@@ -1785,13 +1841,14 @@ def plot_eta_vs_UA__deltaT_levels__two_config(list_des_results):
         
     plt.close()
 
-def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = ""):
+def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "", cycle_des_str = ""):
 
     n_levels = 3
 
     w_pad = 3
 
     f_udpc_pars = open("udpc_setup_pars.txt", 'w')
+    f_udpc_pars.write(cycle_des_str)
     f_udpc_pars.write("Number of HTF hot temperature levels = " + str(n_T_htf) + "\n")
     f_udpc_pars.write("Number of ambient temperature levels = " + str(n_T_amb) + "\n")
     f_udpc_pars.write("Number of HTF mass flow rate levels = " + str(n_m_dot_htf) + "\n")
