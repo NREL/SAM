@@ -11,24 +11,24 @@ if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
 
 
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
-addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
+addconfig( 'High-X Concentrating PV', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
 addconfig( 'MHKwave', ['LCOE Calculator']);
 addconfig( 'MHKtidal', ['LCOE Calculator']);
-addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'Geothermal Power', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Geothermal Power', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
 addconfig( 'Fuel Cell', ['Commercial', 'Single Owner']);
-addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'MSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
-addconfig( 'DSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
-addconfig( 'MSLF', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'DSLF', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
+addconfig( 'DSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
+addconfig( 'MSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
@@ -712,6 +712,12 @@ setup_csp_empirical_trough_pages();
 addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
 
+setconfig( 'Empirical Trough', 'Merchant Plant' );
+setmodules( ['tcstrough_empirical', 'merchantplant']);
+setup_csp_empirical_trough_pages();
+addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
+
 setconfig( 'Empirical Trough', 'Leveraged Partnership Flip' );
 setmodules( ['tcstrough_empirical', 'levpartflip']);
 setup_csp_empirical_trough_pages();
@@ -935,6 +941,11 @@ setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
 
+setconfig( 'Physical Trough', 'Merchant Plant' );
+setmodules( ['trough_physical', 'merchantplant']);
+setup_csp_physical_trough_pages();
+addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
 
 // PVWatts /////////////////////////////////////////////////////////////////////
 setconfig( 'PVWatts', 'LCOE Calculator' );
@@ -994,6 +1005,12 @@ setmodules( ['pvwattsv5', 'grid','singleowner']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
+
+setconfig( 'PVWatts', 'Merchant Plant' );	
+setmodules( ['pvwattsv5', 'grid','merchantplant']);
+setup_pvwatts_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
 
 
 setconfig( 'PVWatts', 'Host Developer' );
@@ -1084,14 +1101,22 @@ setup_sale_leaseback_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Single Owner' );
-//setmodules( ['windpower', 'grid','singleowner']);
-setmodules( ['windpower','singleowner']);
+setmodules( ['windpower', 'grid','singleowner']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
 		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
+
+setconfig( 'Wind Power', 'Merchant Plant' );
+setmodules( ['windpower', 'grid','merchantplant']);
+setup_windpower_pages();
+addpage( [['Wind Farm Costs','O and M Costs',
+		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
+		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
+		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'LCOE Calculator' );	
@@ -1184,11 +1209,18 @@ addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', '
 setup_sale_leaseback_pages(LIFETIME_NONE);
 
 //-----------------------------------------------------
+
 setconfig( 'Geothermal Power', 'Single Owner' );
 setmodules( ['geothermal', 'grid','singleowner']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
 setup_single_owner_pages(LIFETIME_NONE);
+
+setconfig( 'Geothermal Power', 'Merchant Plant' );
+setmodules( ['geothermal', 'grid','merchantplant']);
+setup_geothermal_power_pages();
+addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_NONE);
 
 //-----------------------------------------------------
 setconfig( 'Geothermal Power', 'LCOE Calculator' );
@@ -1282,6 +1314,14 @@ addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs',
 setup_single_owner_pages(LIFETIME_PV);
 setup_utility_rate_optional();
 
+setconfig( 'Generic System', 'Merchant Plant' );
+setmodules( ['generic_system', 'battery', 'grid', 'merchantplant']);
+setup_generic_system_pages();
+setup_battery_pages_front_of_meter();
+addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_PV);
+setup_utility_rate_optional();
+
 
 setconfig( 'Generic System', 'Host Developer' );
 setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'host_developer']);
@@ -1368,6 +1408,12 @@ setup_generic_csp_pages();
 addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
 
+setconfig( 'Generic CSP System', 'Merchant Plant' );
+setmodules( ['tcsgeneric_solar', 'merchantplant']);
+setup_generic_csp_pages();
+addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
+
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'LCOE Calculator' );
 setmodules( ['tcsgeneric_solar',  'lcoefcr']);
@@ -1422,6 +1468,13 @@ setmodules( ['hcpv', 'singleowner']);
 setup_hcpv_pages();
 addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
+
+//-----------------------------------------------------
+setconfig( 'High-X Concentrating PV', 'Merchant Plant' );
+setmodules( ['hcpv', 'merchantplant']);
+setup_hcpv_pages();
+addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'LCOE Calculator' );
@@ -1494,6 +1547,13 @@ setmodules( ['tcsdish', 'singleowner']);
 setup_dish_stirling_pages();
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
+
+//-----------------------------------------------------
+setconfig( 'Dish Stirling', 'Merchant Plant' );
+setmodules( ['tcsdish', 'merchantplant']);
+setup_dish_stirling_pages();
+addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'LCOE Calculator' );
@@ -1572,6 +1632,14 @@ addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'
 setup_single_owner_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
+setconfig( 'Biopower', 'Merchant Plant' );
+setmodules( ['biomass', 'merchantplant']);
+setup_biopower_pages();
+addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
+addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
+
+//-----------------------------------------------------
 setconfig( 'Biopower', 'LCOE Calculator' );
 setmodules( ['biomass',  'lcoefcr']);
 setup_biopower_pages();
@@ -1625,6 +1693,13 @@ setmodules( ['tcsmolten_salt', 'singleowner']);
 setup_MSPT_pages();
 addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
+
+//-----------------------------------------------------
+setconfig( 'MSPT', 'Merchant Plant' );
+setmodules( ['tcsmolten_salt', 'merchantplant']);
+setup_MSPT_pages();
+addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
 
 if ( en_iscc ) {
 
@@ -1728,6 +1803,13 @@ addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='Syste
 setup_single_owner_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
+setconfig( 'DSLF', 'Merchant Plant' );
+setmodules( ['tcslinear_fresnel', 'merchantplant']);
+setup_DSLF_pages();
+addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
+
+//-----------------------------------------------------
 
 // Direct Steam Power Tower ////////////////////////////////////////////////////////////////////
 function setup_DSPT_pages()
@@ -1766,6 +1848,13 @@ setmodules( ['tcsdirect_steam', 'singleowner']);
 setup_DSPT_pages();
 addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
+
+//-----------------------------------------------------
+setconfig( 'DSPT', 'Merchant Plant' );
+setmodules( ['tcsdirect_steam', 'merchantplant']);
+setup_DSPT_pages();
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
 
 
 // Molten Salt Linear Fresnel ////////////////////////////////////////////////////////////////////
@@ -1839,6 +1928,13 @@ setmodules( ['tcsMSLF', 'singleowner']);
 setup_MSLF_pages();
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
+
+//-----------------------------------------------------
+setconfig( 'MSLF', 'Merchant Plant' );
+setmodules( ['tcsMSLF', 'merchantplant']);
+setup_MSLF_pages();
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+setup_merchant_plant_pages(LIFETIME_SYSTEM);
 
 // Marine Hydrokinetic ////////////////////////////////////////////////////////////////////
 function setup_mhkwave_pages()
