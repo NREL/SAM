@@ -206,7 +206,7 @@ class C_sco2_cycle_TS_plot:
                            fontsize = 8,
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
         
-        if(self.is_annotate_PHX):
+        if(self.is_annotate_PHX and self.dict_cycle_data["od_T_t_in_mode"] == 0):
             T_states = self.dict_cycle_data["T_state_points"]
             s_states = self.dict_cycle_data["s_state_points"]
             
@@ -236,6 +236,9 @@ class C_sco2_cycle_TS_plot:
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
 
         if(self.is_annotate_cooler):
+
+            T_states = self.dict_cycle_data["T_state_points"]
+            s_states = self.dict_cycle_data["s_state_points"]
 
             mc_cool_title = r'$\bfMain\ Cooler$'
             T_cold_text = "\n" + r'$T_{out}\ =\ $' + '{:.1f}'.format(self.dict_cycle_data["T_comp_in"]) + " C"
@@ -1847,7 +1850,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
 
     w_pad = 3
 
-    f_udpc_pars = open("udpc_setup_pars.txt", 'w')
+    f_udpc_pars = open(plot_pre_str + "udpc_setup_pars.txt", 'w')
     f_udpc_pars.write(cycle_des_str)
     f_udpc_pars.write("Number of HTF hot temperature levels = " + str(n_T_htf) + "\n")
     f_udpc_pars.write("Number of ambient temperature levels = " + str(n_T_amb) + "\n")
