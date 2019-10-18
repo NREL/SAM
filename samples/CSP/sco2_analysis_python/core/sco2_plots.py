@@ -1844,7 +1844,7 @@ def plot_eta_vs_UA__deltaT_levels__two_config(list_des_results):
         
     plt.close()
 
-def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "", cycle_des_str = ""):
+def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "", cycle_des_str = "", is_T_t_in_set = False):
 
     n_levels = 3
 
@@ -1852,9 +1852,18 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
 
     f_udpc_pars = open(plot_pre_str + "udpc_setup_pars.txt", 'w')
     f_udpc_pars.write(cycle_des_str)
-    f_udpc_pars.write("Number of HTF hot temperature levels = " + str(n_T_htf) + "\n")
+
+    if(is_T_t_in_set):
+        f_udpc_pars.write("Number of turbine inlet temperature levels = " + str(n_T_htf) + "\n")
+        f_udpc_pars.write("Number of target output power levels = " + str(n_m_dot_htf) + "\n")
+        m_dot_str = "target_power_ND = "
+    else:
+        f_udpc_pars.write("Number of HTF hot temperature levels = " + str(n_T_htf) + "\n")
+        f_udpc_pars.write("Number of HTF mass flow rate levels = " + str(n_m_dot_htf) + "\n")
+        m_dot_str = "m_dot_ND = "
+
     f_udpc_pars.write("Number of ambient temperature levels = " + str(n_T_amb) + "\n")
-    f_udpc_pars.write("Number of HTF mass flow rate levels = " + str(n_m_dot_htf) + "\n")
+
 
     # Add normalized efficiency column
     for row in udpc_data:
@@ -1878,7 +1887,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
             if( j == 0 ):
                 j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
                       [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
-                        label = "m_dot_ND = " + str(udpc_data[row_start][1]))
+                        label = m_dot_str + str(udpc_data[row_start][1]))
                 if(i == 0):
                     f_udpc_pars.write("Mass flow rate Low Level = " + str(udpc_data[row_start][1]) + "\n")
                 if(i == 1):
@@ -1888,7 +1897,10 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
             else:
                 j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
                           [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
-        j_ax.set_xlabel("HTF Hot Temperature [C]")
+        if (is_T_t_in_set):
+            j_ax.set_xlabel("Turbine Inlet Temperature [C]")
+        else:
+            j_ax.set_xlabel("HTF Hot Temperature [C]")
         j_ax.set_ylabel(mi[j][3])
         j_ax.grid(which='both', color='gray', alpha=1)
 
@@ -1948,8 +1960,10 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
             else:
                 j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
                       [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
-                
-        j_ax.set_xlabel("Normalized Mass Flow")
+        if (is_T_t_in_set):
+            j_ax.set_xlabel("Normalized Target Power Output")
+        else:
+            j_ax.set_xlabel("Normalized Mass Flow")
         j_ax.set_ylabel(mi[j][3])
         j_ax.grid(which='both', color='gray', alpha=1)
 
