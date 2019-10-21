@@ -213,11 +213,12 @@ class C_sco2_cycle_TS_plot:
             T_states = self.dict_cycle_data["T_state_points"]
             s_states = self.dict_cycle_data["s_state_points"]
             
-            dT_PHX_approach = self.dict_cycle_data["dT_PHX_hot_approach"]
-            T_PHX_in = T_states[5] + dT_PHX_approach
+            dT_PHX_hot_approach = self.dict_cycle_data["dT_PHX_hot_approach"]
+            T_PHX_in = T_states[5] + dT_PHX_hot_approach
             s_PHX_in = s_states[5]
-            
-            T_PHX_out = T_states[4] + dT_PHX_approach
+
+            dT_PHX_cold_approach = self.dict_cycle_data["dT_PHX_cold_approach"]
+            T_PHX_out = T_states[4] + dT_PHX_cold_approach
             s_PHX_out = s_states[4]
             
             ax_in.plot([s_PHX_in, s_PHX_out], [T_PHX_in, T_PHX_out], color = '#ff9900', ls = "-")
