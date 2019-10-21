@@ -162,7 +162,7 @@ class C_sco2_cycle_TS_plot:
     
     def annotate(self, ax_in):
     
-        if(self.is_annotate_HTR):
+        if(self.is_annotate_HTR and (not(math.isnan(float(self.dict_cycle_data["q_dot_HTR"]))))):
             HTR_title = r'$\bfHigh$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_HTR"]) + " MWt"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["HTR_UA_calculated"]) + " MW/K"
@@ -194,6 +194,9 @@ class C_sco2_cycle_TS_plot:
 
             T_LTR_LP_data = self.dict_cycle_data["T_LTR_LP_data"]
             s_LTR_LP_data = self.dict_cycle_data["s_LTR_LP_data"]
+
+            T_HTR_LP_data = self.dict_cycle_data["T_HTR_LP_data"]
+            s_HTR_LP_data = self.dict_cycle_data["s_HTR_LP_data"]
             
             n_p = len(T_LTR_LP_data)
             n_mid = (int)(n_p/2)
@@ -450,7 +453,7 @@ class C_sco2_cycle_PH_plot:
         self.plot_from_existing_axes(ax1)
     
         plt.tight_layout(pad=0.0,h_pad=.30,rect=(0.02,0.01,0.99,0.98))
-        
+
         if(self.is_save_plot):    
         
             str_file_name = cycle_label(self.dict_cycle_data, False, True) + "__PH_plot.png"
@@ -576,7 +579,7 @@ class C_sco2_cycle_PH_plot:
     
     def format_axes(self, ax_in, plot_title):
             
-        ax_in.margins(x=0.1)
+        #ax_in.margins(x=0.1)
         
         ax_in.autoscale()
         y_down, y_up = ax_in.get_ylim()
@@ -621,8 +624,11 @@ class C_sco2_cycle_PH_plot:
     
         for vals in T_vals:
             ax_in.plot(T_data["h_"+vals].values, T_data["P_"+vals].values, '--', color = 'tab:purple', lw = 0.5, alpha = 0.65)
-            ax_in.annotate(vals+"C",[T_data["h_"+vals].values[i_ann], T_data["P_"+vals].values[i_ann]], color = 'tab:purple', ha="center", alpha = 0.65, fontsize = 8)
-    
+
+        for vals in T_vals:
+            ann_local = ax_in.annotate(vals+"C",xy=[T_data["h_"+vals].values[i_ann], T_data["P_"+vals].values[i_ann]], color = 'tab:purple', ha="center", alpha = 0.65, fontsize = 8)
+            ann_local.set_in_layout(False)
+
     def plot_dome(self, ax_in):
     
         fileDir = os.path.dirname(os.path.abspath(__file__))
