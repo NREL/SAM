@@ -69,6 +69,7 @@ class C_sco2_cycle_TS_plot:
         self.lc = 'k'
         self.mt = 'o'
         self.markersize = 4
+        self.y_max = -1
         
     def plot_new_figure(self):
         
@@ -92,7 +93,11 @@ class C_sco2_cycle_TS_plot:
     def plot_from_existing_axes(self, ax_in):
         
         eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
-    
+
+        T_htf_hot = self.dict_cycle_data["T_htf_hot_des"]
+        T_t_in = self.dict_cycle_data["T_turb_in"]
+        self.y_max = max(self.y_max, max(ceil_nearest_base(T_htf_hot, 100.0), 100 + ceil_nearest_base(T_t_in, 100.0)))
+
         plot_title = self.is_overwrite_title
     
         if(self.dict_cycle_data["cycle_config"] == 1):
@@ -138,7 +143,7 @@ class C_sco2_cycle_TS_plot:
         
         y_down, y_up = ax_in.get_ylim()
         y_min = 0
-        ax_in.set_ylim(y_min, ceil_nearest_base(y_up, 100.0))
+        ax_in.set_ylim(y_min, self.y_max)
         ax_in.set_xlim(x_low)
         y_down, y_up = ax_in.get_ylim()
         major_y_ticks = np.arange(y_min,y_up+1,100)
@@ -180,7 +185,7 @@ class C_sco2_cycle_TS_plot:
             HTR_text = HTR_title + q_dot_text + UA_text + eff_text + mindt_text
             
             ax_in.annotate(HTR_text, xy=(s_HTR_LP_data[n_mid],T_HTR_LP_data[n_mid]), 
-                           xytext=(s_HTR_LP_data[0],T_HTR_LP_data[n_mid]), va="center",
+                           xytext=(s_HTR_LP_data[n_mid] + 0.25,T_HTR_LP_data[n_mid]), va="center",
                            arrowprops = dict(arrowstyle="->", color = 'r', ls = '--', lw = 0.6),
                            fontsize = 8,
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
@@ -199,7 +204,7 @@ class C_sco2_cycle_TS_plot:
             s_HTR_LP_data = self.dict_cycle_data["s_HTR_LP_data"]
             
             n_p = len(T_LTR_LP_data)
-            n_mid = (int)(n_p/2)
+            n_mid = (int)(n_p/2) + 5
             
             LTR_text = LTR_title + q_dot_text + UA_text + eff_text + mindt_text
             
@@ -223,8 +228,8 @@ class C_sco2_cycle_TS_plot:
             
             ax_in.plot([s_PHX_in, s_PHX_out], [T_PHX_in, T_PHX_out], color = '#ff9900', ls = "-")
             
-            s_PHX_avg = 0.5*(s_PHX_in + s_PHX_out)
-            T_PHX_avg = 0.5*(T_PHX_in + T_PHX_out)
+            s_PHX_avg = 0.85*s_PHX_in + 0.15*s_PHX_out
+            T_PHX_avg = 0.85*T_PHX_in + 0.15*T_PHX_out
             
             PHX_title = r'$\bfPrimary$' + " " + r'$\bf{HX}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_PHX"]) + " MWt"
@@ -234,7 +239,7 @@ class C_sco2_cycle_TS_plot:
             PHX_text = PHX_title + q_dot_text + UA_text + eff_text
             
             ax_in.annotate(PHX_text, xy=(s_PHX_avg, T_PHX_avg), 
-                           xytext=(0.975*s_states[4],T_PHX_avg),va="center", ha="right",multialignment="left",
+                           xytext=(s_PHX_avg-0.25,T_PHX_avg),va="center", ha="right",multialignment="left",
                            arrowprops = dict(arrowstyle="->", color = '#ff9900', ls = '--', lw = 0.6),
                            fontsize = 8,
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
@@ -264,7 +269,7 @@ class C_sco2_cycle_TS_plot:
             mc_cool_text = mc_cool_title + T_cold_text + q_dot_text + W_dot_text
 
             ax_in.annotate(mc_cool_text, xy=(s_main_cooler_data[n_mid], T_main_cooler_data[n_mid]),
-                           xytext=(s_main_cooler_data[n_mid], T_states[3]+150), ha="center",multialignment="left",
+                           xytext=(s_main_cooler_data[n_mid], T_states[3]+50), ha="center",multialignment="left",
                            arrowprops=dict(arrowstyle="->", color='purple', ls='--', lw=0.6),
                            fontsize=8,
                            bbox=dict(boxstyle="round", fc="w", pad=0.5))
@@ -412,19 +417,33 @@ class C_sco2_cycle_TS_plot:
         for names in P_data.columns.values.tolist():
             if names.split("_")[1] not in P_vals:
                 P_vals.append(names.split("_")[1])
-        
-        n_high = len(P_data["s_"+P_vals[0]].values)  - 1   
+
+        v_n_high = []
+        v_n_low = []
+        for vals in P_vals:
+            for i in range(len(P_data["s_"+P_vals[0]].values)):
+                if(P_data["T_"+vals].values[i] > self.y_max-30):
+                    v_n_high.append(i-1)
+                    v_n_low.append(round((i-1)*0.98))
+                    break
+                if(i == len(P_data["s_"+P_vals[0]].values) -1):
+                    v_n_high.append(i - 1)
+                    v_n_low.append(round((i - 1) * 0.98))
+
+        #n_high = len(P_data["s_"+P_vals[0]].values)  - 1
     
-        n_low = round(n_high*0.98)
-    
+        #n_low = round(n_high*0.98)
+
+        T_label = P_data["T_"+P_vals[0]].values[v_n_high[0]]
+
         label_pressure = True
     
-        for vals in P_vals:
-            ax_in.plot(P_data["s_"+vals].values, P_data["T_"+vals].values, 'k--', lw = 0.5, alpha = 0.4)
+        for i, vals in enumerate(P_vals):
+            ax_in.plot(P_data["s_"+vals].values[0:v_n_high[i]], P_data["T_"+vals].values[0:v_n_high[i]], 'k--', lw = 0.5, alpha = 0.4)
             if(label_pressure):
-                ax_in.annotate("Pressure (MPa):",[P_data["s_"+vals].values[n_low], P_data["T_"+vals].values[n_low]], color = 'k', alpha = 0.4, fontsize = 8)
+                ax_in.annotate("Pressure (MPa):",[P_data["s_"+vals].values[v_n_low[i]], P_data["T_"+vals].values[v_n_low[i]]], color = 'k', alpha = 0.4, fontsize = 8)
                 label_pressure = False
-            ax_in.annotate(vals,[P_data["s_"+vals].values[n_high], P_data["T_"+vals].values[n_high]], color = 'k', alpha = 0.4, fontsize = 8)
+            ax_in.annotate(vals,[P_data["s_"+vals].values[v_n_high[i]], T_label], color = 'k', alpha = 0.4, fontsize = 8)
 
 class C_sco2_cycle_PH_plot:
     
