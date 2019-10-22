@@ -632,7 +632,7 @@ RadioChoice
 optimize_lcoe_wrt_debt_fraction
 3
 1
- 
+Optimize debt fraction to minimize LCOE (0=no, 1=yes)
  
 PPA Price and IRR
 0
@@ -646,7 +646,7 @@ CheckBox
 optimize_lcoe_wrt_ppa_escalation
 3
 1
- 
+Optimize PPA escalation to minimize LCOE (0=no, 1=yes)
  
 PPA Price and IRR
 0

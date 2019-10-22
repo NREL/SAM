@@ -645,7 +645,7 @@ Default
 lease_or_ppa
 3
 1
- 
+Lease agreement or PPA (0=lease, 1=PPA)
  
 Third Party Ownership
 0

@@ -1697,11 +1697,11 @@ Numeric
 itc_fed_amount_deprbas_fed
 3
 1
- 
+Federal ITC reduces federal depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1711,7 +1711,7 @@ CheckBox
 itc_fed_amount_deprbas_sta
 3
 1
- 
+Federal ITC reduces state depreciation basis
  
 Tax Credits
 0
@@ -1739,11 +1739,11 @@ Numeric
 itc_fed_percent_deprbas_fed
 3
 1
- 
+Federal ITC by percent reduces federal depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1753,11 +1753,11 @@ CheckBox
 itc_fed_percent_deprbas_sta
 3
 1
- 
+Federal ITC by percent reduces state depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1795,11 +1795,11 @@ Numeric
 itc_sta_amount_deprbas_fed
 3
 1
- 
+State ITC reduces federal depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1809,7 +1809,7 @@ CheckBox
 itc_sta_amount_deprbas_sta
 3
 1
- 
+State ITC reduces state depreciation basis
  
 Tax Credits
 0
@@ -1837,11 +1837,11 @@ Numeric
 itc_sta_percent_deprbas_fed
 3
 1
- 
+State ITC by percent reduces federal depreciation baiss
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1851,11 +1851,11 @@ CheckBox
 itc_sta_percent_deprbas_sta
 3
 1
- 
+State ITC by percent reduces state depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1866,7 +1866,7 @@ itc_sta_percent_maxvalue
 3
 1
 State ITC maximum limit
- 
+$
 Tax Credits
 0
 3
