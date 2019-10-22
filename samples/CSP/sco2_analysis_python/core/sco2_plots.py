@@ -49,6 +49,9 @@ def filter_dict_index_and_keys(data, i, keys):
 
 def ceil_nearest_base(x, base):
     return int(base * math.ceil(float(x)/base))
+
+def floor_nearest_base(x, base):
+    return int(base * math.floor(float(x)/base))
   
 class C_sco2_cycle_TS_plot:
 
@@ -89,14 +92,18 @@ class C_sco2_cycle_TS_plot:
             fig1.savefig(str_file_name)
             
             plt.close()
-        
-    def plot_from_existing_axes(self, ax_in):
-        
-        eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
+
+    def set_y_max(self):
 
         T_htf_hot = self.dict_cycle_data["T_htf_hot_des"]
         T_t_in = self.dict_cycle_data["T_turb_in"]
         self.y_max = max(self.y_max, max(ceil_nearest_base(T_htf_hot, 100.0), 100 + ceil_nearest_base(T_t_in, 100.0)))
+
+    def plot_from_existing_axes(self, ax_in):
+        
+        eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
+
+        self.set_y_max()
 
         plot_title = self.is_overwrite_title
     
@@ -125,6 +132,8 @@ class C_sco2_cycle_TS_plot:
             self.plot_RC_points_and_lines(ax_in)
         else:
             self.plot_PC_points_and_lines(ax_in)
+            
+        self.set_y_max()
         
     
     def format_axes(self, ax_in, plot_title):
@@ -134,7 +143,7 @@ class C_sco2_cycle_TS_plot:
         
         if(self.is_add_P_const_lines):
             self.plot_constP(ax_in)      # add_Ts_constP(ax_in)
-        
+
         if(self.is_add_dome):
             self.plot_dome(ax_in)       # add_Ts_dome(ax_in)
     
@@ -228,8 +237,8 @@ class C_sco2_cycle_TS_plot:
             
             ax_in.plot([s_PHX_in, s_PHX_out], [T_PHX_in, T_PHX_out], color = '#ff9900', ls = "-")
             
-            s_PHX_avg = 0.85*s_PHX_in + 0.15*s_PHX_out
-            T_PHX_avg = 0.85*T_PHX_in + 0.15*T_PHX_out
+            s_PHX_avg = 0.90*s_PHX_in + 0.10*s_PHX_out
+            T_PHX_avg = 0.90*T_PHX_in + 0.10*T_PHX_out
             
             PHX_title = r'$\bfPrimary$' + " " + r'$\bf{HX}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_PHX"]) + " MWt"
@@ -465,6 +474,8 @@ class C_sco2_cycle_PH_plot:
         self.lc = 'k'
         self.mt = 'o'
         self.markersize = 4
+
+        self.y_min = 10000
         
     def plot_new_figure(self):
         
@@ -484,9 +495,22 @@ class C_sco2_cycle_PH_plot:
             fig1.savefig(str_file_name)
             
             plt.close()
-            
-            
-    def plot_from_existing_axes(self, ax_in):        
+
+    def set_y_min(self):
+
+        if (self.dict_cycle_data["cycle_config"] == 1):
+            P_min = self.dict_cycle_data["P_state_points"][0]
+        else:
+            P_min = self.dict_cycle_data["P_state_points"][10]
+
+        if(P_min > 5):
+            P_min = floor_nearest_base(P_min, 5)
+        else:
+            P_min = floor_nearest_base(P_min, 0.5)
+
+        self.y_min = min(self.y_min, P_min)
+
+    def plot_from_existing_axes(self, ax_in):
 
         eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
     
@@ -514,6 +538,8 @@ class C_sco2_cycle_PH_plot:
             self.plot_RC_points_and_lines(ax_in)
         else:
             self.plot_PC_points_and_lines(ax_in)
+            
+        self.set_y_min()
     
     def plot_RC_points_and_lines(self, ax_in):
         
@@ -614,7 +640,7 @@ class C_sco2_cycle_PH_plot:
         ax_in.grid(alpha=0.3,which='minor')
         
         deltaP_base = 5
-        ax_in.set_ylim(ceil_nearest_base(y_down - deltaP_base, deltaP_base), ceil_nearest_base(y_up, deltaP_base))
+        ax_in.set_ylim(self.y_min, ceil_nearest_base(y_up, deltaP_base))
         y_down, y_up = ax_in.get_ylim()
         
         deltah_base = 100
@@ -877,17 +903,17 @@ class C_sco2_TS_PH_overlay_plot:
         c_plot2.c_TS_plot.lc = 'b'
         c_plot2.c_PH_plot.lc = 'b'
         c_plot2.overlay_existing_axes(a_ax)
-
+         
         ts_legend_lines.append(cycle_comp_legend_line(self.dict_cycle_data2, 'b', 'o'))
         ph_legend_lines.append(cycle_comp_legend_line(self.dict_cycle_data2, 'b', 'o', True))
-                  
+                   
         c_plot1.c_TS_plot.format_axes(a_ax[0], "Cycle Comparison")
         c_plot1.c_PH_plot.is_add_title = False
         c_plot1.c_PH_plot.format_axes(a_ax[1], "")
-        
+         
         a_ax[0].legend(handles=ts_legend_lines, fontsize = 8)
         a_ax[1].legend(handles=ph_legend_lines, labelspacing = 1.0, loc = "center", fontsize = 8, borderpad = 1)
-        
+         
         plt.tight_layout(pad=0.0,h_pad=2.0,rect=(0.02,0.01,0.99,0.98))
         
         if(self.is_save_plot):
