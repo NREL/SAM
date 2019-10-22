@@ -101,18 +101,21 @@ class C_sco2_cycle_TS_plot:
 
     def plot_from_existing_axes(self, ax_in):
         
-        eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
-
-        self.set_y_max()
+        # eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
 
         plot_title = self.is_overwrite_title
     
-        if(self.dict_cycle_data["cycle_config"] == 1):
-            if(self.is_overwrite_title == ""):
-                plot_title = "Recompression Cycle: " + eta_str
-        else:
-            if(self.is_overwrite_title == ""):
-                plot_title = "Partial Cooling Cycle, " + eta_str
+        # if(self.dict_cycle_data["cycle_config"] == 1):
+        #     if(self.is_overwrite_title == ""):
+        #         plot_title = "Recompression Cycle: " + eta_str
+        # else:
+        #     if(self.is_overwrite_title == ""):
+        #         plot_title = "Partial Cooling Cycle, " + eta_str
+                
+        if (self.is_overwrite_title == ""):
+            plot_title = get_plot_name(self.dict_cycle_data)
+
+        self.set_y_max()
         
         self.overlay_cycle_data(ax_in)
             
@@ -454,6 +457,17 @@ class C_sco2_cycle_TS_plot:
                 label_pressure = False
             ax_in.annotate(vals,[P_data["s_"+vals].values[v_n_high[i]], T_label], color = 'k', alpha = 0.4, fontsize = 8)
 
+def get_plot_name(dict_cycle_data):
+    
+    eta_str = "Thermal Efficiency = " + '{:.1f}'.format(dict_cycle_data["eta_thermal_calc"] * 100) + "%"
+
+    if (dict_cycle_data["cycle_config"] == 1):
+        plot_title = "Recompression Cycle, " + eta_str
+    else:
+        plot_title = "Partial Cooling Cycle, " + eta_str
+    
+    return plot_title
+
 class C_sco2_cycle_PH_plot:
     
     def __init__(self, dict_cycle_data):
@@ -512,16 +526,19 @@ class C_sco2_cycle_PH_plot:
 
     def plot_from_existing_axes(self, ax_in):
 
-        eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
+        # eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
     
         plot_title = self.is_overwrite_title
         
-        if(self.dict_cycle_data["cycle_config"] == 1):
-            if(self.is_overwrite_title == ""):
-                plot_title = "Recompression Cycle: " + eta_str
-        else:
-            if(self.is_overwrite_title == ""):
-                plot_title = "Partial Cooling Cycle, " + eta_str
+        # if(self.dict_cycle_data["cycle_config"] == 1):
+        #     if(self.is_overwrite_title == ""):
+        #         plot_title = "Recompression Cycle: " + eta_str
+        # else:
+        #     if(self.is_overwrite_title == ""):
+        #         plot_title = "Partial Cooling Cycle, " + eta_str
+
+        if (self.is_overwrite_title == ""):
+            plot_title = get_plot_name(self.dict_cycle_data)
                 
         self.overlay_cycle_data(ax_in)
         
@@ -726,7 +743,14 @@ class C_sco2_cycle_PH_plot:
             ax_in.annotate(mc_text, xy=(h_mc_avg,P_mc_avg), va="center", ha="center",multialignment="left",
                            fontsize = 8,
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
-        
+
+        is_pc = self.dict_cycle_data["cycle_config"] == 2
+
+        if (is_pc):
+            t_weight = 0.5
+        else:
+            t_weight = 0.25
+
         t_title = r'$\bfTurbine$'
         m_dot_text = "\n" + r'$\.m$' + " = " + '{:.1f}'.format(m_dot_co2_full) + " kg/s"
         W_dot_text = "\nPower = " + '{:.1f}'.format(self.dict_cycle_data["t_W_dot"]) + " MW"
@@ -734,15 +758,15 @@ class C_sco2_cycle_PH_plot:
     
         t_text = t_title + m_dot_text + W_dot_text + isen_text
         
-        P_t_avg = 0.5*(P_states[5] + P_states[6])
-        h_t_avg = 0.5*(h_states[5] + h_states[6])
+        P_t_avg = t_weight*P_states[5] + (1.0-t_weight)*P_states[6]
+        h_t_avg = t_weight*h_states[5] + (1.0-t_weight)*h_states[6]
         
         if(self.is_annotate_T):
             ax_in.annotate(t_text, xy=(h_t_avg,P_t_avg), va="center", ha="center",multialignment="left",
                        fontsize = 8,
                        bbox=dict(boxstyle="round", fc="w", pad = 0.5))
         
-        is_pc = self.dict_cycle_data["cycle_config"] == 2
+
                           
         if(is_pc):
             pc_title = r'$\bfPre$' + " " + r'$\bfCompressor$'
@@ -791,15 +815,14 @@ class C_sco2_cycle_PH_plot:
                         d_text = d_text + space + '{:.2f}'.format(d_s)
                         t_text = t_text + space + '{:.2f}'.format(self.dict_cycle_data["rc_tip_ratio_des"][i_d])
                 rc_text = rc_text + stages_text + d_text + t_text
-            
+
+            rc_weight = 0.75
             if(is_pc):
-                rc_weight = 0.75
                 P_rc_avg = rc_weight*P_states[9] + (1.0-rc_weight)*P_states[11]
                 h_rc_avg = rc_weight*h_states[9] + (1.0-rc_weight)*h_states[11]
                 h_rc_text = h_states[9] + (h_states[9] - h_states[11])
                 
             else:
-                rc_weight = 0.5
                 P_rc_avg = rc_weight*P_states[9] + (1.0-rc_weight)*P_states[8]
                 h_rc_avg = rc_weight*h_states[9] + (1.0-rc_weight)*h_states[8]
                 h_rc_text = h_states[9] + (h_states[9] - h_states[8])
@@ -824,17 +847,28 @@ class C_sco2_TS_PH_plot:
         self.is_save_plot = False
         self.is_annotate = True
         self.file_name = ""
+        self.align = "vert"
+        self.is_overwrite_title = ""
         
     def plot_new_figure(self):
         
         self.update_subplot_class_data()
         
-        fig1, a_ax = plt.subplots(nrows = 2,num = 11,figsize=(7.0,8.0))
+        if(self.align == "horiz"):
+            fig1, a_ax = plt.subplots(ncols=2, num=11, figsize=(10.0, 5.))
+        else:
+            fig1, a_ax = plt.subplots(nrows = 2,num = 11,figsize=(7.0,8.0))
         
         self.c_PH_plot.is_add_title = False
+        self.c_TS_plot.is_add_title = False
         self.plot_from_existing_axes(a_ax)
-        
-        plt.tight_layout(pad=0.0,h_pad=2.0,rect=(0.02,0.01,0.99,0.98))
+
+        plot_title = self.is_overwrite_title        
+        if (self.is_overwrite_title == ""):
+            plot_title = get_plot_name(self.dict_cycle_data)
+        fig1.suptitle(plot_title, fontsize=14)
+
+        plt.tight_layout(pad=0.0,h_pad=2.0,w_pad=0.5,rect=(0.02,0.01,0.99,0.94))
         
         if(self.is_save_plot):
             
@@ -914,7 +948,7 @@ class C_sco2_TS_PH_overlay_plot:
         a_ax[0].legend(handles=ts_legend_lines, fontsize = 8)
         a_ax[1].legend(handles=ph_legend_lines, labelspacing = 1.0, loc = "center", fontsize = 8, borderpad = 1)
          
-        plt.tight_layout(pad=0.0,h_pad=2.0,rect=(0.02,0.01,0.99,0.98))
+        plt.tight_layout(pad=0.0,h_pad=2.0,rect=(0.02,0.01,0.99,0.96))
         
         if(self.is_save_plot):
             
