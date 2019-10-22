@@ -6335,7 +6335,7 @@ PV System Design
 0
 Numeric
 
-11491
+11496
 equations{ '$MIMO$ pv_size_array' } = define()
 {
 	if (${enable_auto_size}==1)
@@ -6720,7 +6720,7 @@ equations{ 'batt_max_power' } = define()
 	if (f != "LCOE Calculator" && f != "None")
 	{
 		if (${en_batt})
-			max_power = ${batt_power_discharge_max};
+			max_power = ${batt_power_discharge_max_kwdc};
 	}
 	return max_power;
 };

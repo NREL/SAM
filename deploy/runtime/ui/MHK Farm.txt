@@ -1,27 +1,131 @@
 MHK Farm
-808
-749
+801
+553
+26
+GroupBox
+
+1
+8
+Name
+5
+11
+GroupBox222
+X
 3
+6
+Y
+3
+3
+Width
+3
+788
+Height
+3
+110
+Tool Tip
+5
+0
+Caption
+5
+13
+System Sizing
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+GroupBox4
+X
+3
+6
+Y
+3
+120
+Width
+3
+788
+Height
+3
+425
+Tool Tip
+5
+0
+Caption
+5
+12
+Array Layout
+Bold
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+17
+array_sizing_mode
+X
+3
+21
+Y
+3
+24
+Width
+3
+258
+Height
+3
+72
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+3
+Use a single device
+Specify desired array capacity
+Specify number of devices
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
-16
+17
 Name
 5
-19
-maximum_water_depth
+22
+cable_system_overbuild
 X
 3
-192
+228
 Y
 3
-75
+342
 Width
 3
-90
+100
 Height
 3
-24
+21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -30,10 +134,72 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+Numeric
+
+1
+17
+Name
+5
+18
+desired_array_size
+X
+3
+483
+Y
+3
+18
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
 Prefix
 5
 0
@@ -64,23 +230,471 @@ TabOrder
 Numeric
 
 1
-16
+17
+Name
+5
+21
+device_spacing_in_row
+X
+3
+228
+Y
+3
+207
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+5
+Numeric
+
+1
+17
+Name
+5
+15
+devices_per_row
+X
+3
+228
+Y
+3
+183
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4
+Numeric
+
+1
+17
+Name
+5
+17
+distance_to_shore
+X
+3
+228
+Y
+3
+276
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+5
+Numeric
+
+1
+17
+Name
+5
+19
+export_cable_length
+X
+3
+228
+Y
+3
+477
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+5
+CheckBox
+
+1
+9
+Name
+5
+23
+export_cable_redundancy
+X
+3
+228
+Y
+3
+393
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+14
+floating_array
+X
+3
+228
+Y
+3
+366
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+1
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+24
+inter_array_cable_length
+X
+3
+228
+Y
+3
+453
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4
+Label
+
+1
+13
+Name
+5
+19
+layout_instructions
+X
+3
+621
+Y
+3
+45
+Width
+3
+165
+Height
+3
+60
+Tool Tip
+5
+0
+Caption
+5
+74
+Please specify the number of devices using the Array Layout options below.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Plot
+
+1
+6
+Name
+5
+14
+mhk_array_plot
+X
+3
+411
+Y
+3
+159
+Width
+3
+340
+Height
+3
+320
+Tool Tip
+5
+0
+Numeric
+
+1
+17
 Name
 5
 14
 number_devices
 X
 3
-192
+483
 Y
 3
-39
+45
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,23 +737,204 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
-15
-system_capacity
+11
+number_rows
 X
 3
-192
+228
 Y
 3
-111
+159
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+3
+Image
+
+1
+8
+Name
+5
+9
+object 12
+X
+3
+564
+Y
+3
+459
+Width
+3
+40
+Height
+3
+64
+Tool Tip
+5
+0
+Image
+7
+MHK Farm_object 12.png
+Centered
+2
+1
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+45
+Y
+3
+432
+Width
+3
+333
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+24
+Calculated Cable Lengths
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+597
+Y
+3
+495
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
+Caption
+5
+14
+Wave direction
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
+18
+riser_cable_length
+X
+3
+228
+Y
+3
+501
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -148,10 +943,182 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+Numeric
+
+1
+17
+Name
+5
+11
+row_spacing
+X
+3
+228
+Y
+3
+231
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+Label
+
+1
+13
+Name
+5
+14
+sizing_warning
+X
+3
+621
+Y
+3
+21
+Width
+3
+165
+Height
+3
+72
+Tool Tip
+5
+0
+Caption
+5
+98
+It is not possible to reach the desired array capacity exactly with the currently selected device.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Numeric
+
+1
+17
+Name
+5
+15
+system_capacity
+X
+3
+483
+Y
+3
+72
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
 Prefix
 5
 0
@@ -179,42 +1146,285 @@ BackColour
 TabOrder
 3
 4294967295
+Numeric
 
+1
+17
+Name
+5
+26
+user_input_devices_per_row
+X
 3
-maximum_water_depth
+228
+Y
+3
+183
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4
+Numeric
+
+1
+17
+Name
+5
+22
+user_input_number_rows
+X
+3
+228
+Y
+3
+159
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+3
+Numeric
+
+1
+17
+Name
+5
+11
+water_depth
+X
+3
+228
+Y
+3
+300
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
 3
 1
-Maximum water depth
-m
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+
+18
+array_sizing_mode
+3
+1
+Array sizing mode
  
+ME - Array
+76
+Use a single device|Specify desired array capacity|Specify number of devices
+3
+1
+1
+1
+1
+0
+Default
+cable_system_overbuild
+3
+1
+Cable system overbuild
+%
+ME - Array
 0
 2
 1
 1
 1
 1
-3
+10
 Default
-number_devices
+desired_array_size
 3
 1
-Number of Devices in Farm
- 
- 
-0
-0
-1
-1
-1
-1
-1
-Default
-system_capacity
-3
-1
- System nameplate capacity
+Desired array capacity
 kW
+ME - Array
+0
+2
+1
+1
+1
+1
+0
+Default
+device_spacing_in_row
+3
+1
+Spacing between devices in a row
+m
+ME - Array
+0
+2
+1
+1
+1
+1
+600
+Default
+devices_per_row
+3
+1
+Devices per row
  
+ME - Array
+0
+8
+1
+1
+1
+1
+10
+Default
+distance_to_shore
+3
+1
+Distance to shore
+m
+ME - Array
+0
+2
+1
+1
+1
+1
+5000
+Default
+export_cable_length
+3
+1
+Export cable length
+m
+ME - Array
 0
 8
 1
@@ -223,9 +1433,356 @@ kW
 1
 0
 Default
-
-93
-equations{ 'system_capacity' } = define() {
-	return ${number_devices} * ${rated_capacity};
-};
+export_cable_redundancy
+3
+1
+Build export cable redundancy
+ 
+ME - Array
 0
+2
+1
+1
+1
+1
+0
+Default
+floating_array
+3
+1
+Floating array
+ 
+ME - Array
+0
+2
+1
+1
+1
+1
+1
+Default
+inter_array_cable_length
+3
+1
+Inter-array cable length
+m
+ME - Array
+0
+8
+1
+1
+1
+1
+0
+Default
+number_devices
+3
+1
+Number of devices in array
+ 
+ME - Array
+0
+8
+1
+1
+1
+1
+1
+Default
+number_rows
+3
+1
+Number of rows
+ 
+ME - Array
+0
+8
+1
+1
+1
+1
+3
+Default
+riser_cable_length
+3
+1
+Riser cable length
+m
+ME - Array
+0
+8
+1
+1
+1
+1
+0
+Default
+row_spacing
+3
+1
+Row spacing
+m
+ME - Array
+0
+2
+1
+1
+1
+1
+600
+Default
+system_capacity
+3
+1
+Array capacity
+kW
+ME - Array
+0
+8
+1
+1
+1
+1
+0
+Default
+user_input_devices_per_row
+3
+1
+Devices per row
+ 
+ME - Array
+0
+2
+1
+1
+1
+1
+10
+Default
+user_input_number_rows
+3
+1
+Number of rows
+ 
+ME - Array
+0
+2
+1
+1
+1
+1
+3
+Default
+water_depth
+3
+1
+Water depth
+m
+ME - Array
+0
+2
+1
+1
+1
+1
+50
+Default
+
+1824
+equations{ 'system_capacity' } = define() {
+	return ${number_devices} * ${device_rated_power};
+};
+
+equations{ '$MIMO$ cable_length' } = define() {
+
+	data.devices_per_row = ${devices_per_row};
+	data.device_spacing_in_row = ${device_spacing_in_row};
+	data.number_rows = ${number_rows};
+	data.row_spacing = ${row_spacing};
+	data.cable_system_overbuild = ${cable_system_overbuild};
+	data.water_depth = ${water_depth};
+	data.number_devices = ${number_devices};
+	data.distance_to_shore = ${distance_to_shore};
+	data.floating_array = ${floating_array};
+	data.export_cable_redundancy = ${export_cable_redundancy};
+	
+	success = ssc_eqn("me_array_cable_length", data);
+	
+	if (!success){
+		msgbox("error = " + success);
+		return 0;
+	}
+	//msgbox(data);
+	${inter_array_cable_length} = data.inter_array_cable_length;
+	${export_cable_length} = data.export_cable_length;
+	${riser_cable_length} = data.riser_cable_length;
+
+	return 0;
+};
+
+
+equations{ '$MIMO$ MHKFarmLayout' } = define() {
+	if (${array_sizing_mode} == 0) //single device
+	{
+		${number_rows} = 1;
+		${devices_per_row} = 1;
+	}
+	else if (${array_sizing_mode} == 1) //specify nameplate
+	{
+		num = round(${desired_array_size} / ${device_rated_power});
+		if (num <=1) num = 1;
+		//assume they're laid out in roughly a square
+		rows = floor(sqrt(num));
+		cols = num/rows;
+		while (rows * floor(cols) != num) //if not evenly divisible
+		{
+			rows -=1; //descrease the number of rows until it does divide evenly 
+			// if number devices is prime, this will continue until rows = 1
+			cols = num/rows;
+		}
+		${number_rows} = rows;
+		${devices_per_row} = cols;
+	}
+	else //specify layout
+	{
+		${number_rows} = ${user_input_number_rows};
+		${devices_per_row} = ${user_input_devices_per_row};
+	}
+};
+
+equations {'number_devices'} = define() {
+	return ${number_rows} * ${devices_per_row};
+};
+
+3060
+function system_sizing_inputs()
+{
+	show_desired_size = 0;
+	show_sizing_warning = 0;
+	show_layout_instructions = 0;
+	if (value('array_sizing_mode') == 1)
+	{
+		show_desired_size = 1;
+		if (value('system_capacity') != value('desired_array_size'))
+			show_sizing_warning = 1;
+	}
+	if (value('array_sizing_mode') == 2)
+		show_layout_instructions = 1;
+	
+	show('sizing_warning', show_sizing_warning);
+	show('desired_array_size', show_desired_size);
+	show('layout_instructions', show_layout_instructions);
+	refresh();		
+}
+
+function array_layout_inputs()
+{
+	if (value('array_sizing_mode') == 0) //single device
+	{	
+		show('number_rows', 1);
+		show('devices_per_row', 1);
+		show('user_input_number_rows', 0);
+		show('user_input_devices_per_row', 0);
+		show('device_spacing_in_row', 0);
+		show('row_spacing', 0);
+	}
+	else if (value('array_sizing_mode') == 1) //auto layout
+	{
+		show('number_rows', 1);
+		show('devices_per_row', 1);
+		show('user_input_number_rows', 0);
+		show('user_input_devices_per_row', 0);
+		show('device_spacing_in_row', 1);
+		show('row_spacing', 1);
+	}
+	else if (value('array_sizing_mode') == 2) //manual layout
+	{
+		show('number_rows', 0);
+		show('devices_per_row', 0);
+		show('user_input_number_rows', 1);
+		show('user_input_devices_per_row', 1);
+		show('device_spacing_in_row', 1);
+		show('row_spacing', 1);
+	}
+	refresh();
+}
+
+function plot_mhk_array()
+{
+	setplot("mhk_array_plot");
+	clearplot('mhk_array_plot');
+	plotopt( {"title"="Array Layout","backcolor"=[255,255,255], "popup"=true, "legend"=false}  );
+	
+	xCoordinates = alloc(${number_devices});
+	yCoordinates = alloc(${number_devices});
+	
+	for (i=0; i<${number_devices}; i++)
+	{
+		xCoordinates[i] = mod( i, ${devices_per_row} ) * ${device_spacing_in_row};
+		yCoordinates[i] = floor( i / ${devices_per_row} ) * ${row_spacing};
+	}
+
+	plot( xCoordinates, yCoordinates,  {"thick"=2, "type"="scatter", "scale"=true});
+
+	width = property( 'mhk_array_plot', 'width' );
+	height = property( 'mhk_array_plot', 'height' );
+	
+	xmax = max( xCoordinates );
+	xmin = min( xCoordinates );
+	ymax = max( yCoordinates );
+	ymin = min( yCoordinates );
+
+	ratio = width/height;
+	xspan = xmax - xmin;
+	yspan = ymax - ymin;
+
+	padx = max(xspan * 0.05, 3);
+	pady = max(yspan * 0.05, 3);	
+	
+	axis( 'x1', {'label'='meters', 'min'=floor(xmin-padx), 'max'=ceil(xmin+xspan+padx) });
+	axis( 'y1', {'label'='meters', 'min'=floor(ymin-pady), 'max'=ceil(ymin+yspan+pady) });
+	
+	return 0;
+}
+
+on_load{'MHK Farm'} = define()
+{
+	system_sizing_inputs();
+	array_layout_inputs();
+	plot_mhk_array();
+	show('riser_cable_length', value('floating_array'));
+	refresh();
+};
+
+on_change{'array_sizing_mode'} = define()
+{
+	system_sizing_inputs();
+	array_layout_inputs();
+};
+
+on_change{'number_rows'} = define()
+{
+	plot_mhk_array();
+};
+
+on_change{'devices_per_row'} = define()
+{
+	plot_mhk_array();
+};
+
+on_change{'row_spacing'} = define()
+{
+	plot_mhk_array();
+};
+
+on_change{'device_spacing_in_row'} = define()
+{
+	plot_mhk_array();
+};
+
+on_change{'floating_array'} = define()
+{
+	show('riser_cable_length', value('floating_array'));
+	refresh();
+};
+	

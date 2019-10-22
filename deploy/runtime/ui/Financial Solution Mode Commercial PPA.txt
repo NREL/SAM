@@ -5,7 +5,7 @@ Financial Solution Mode Commercial PPA
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -22,6 +22,9 @@ Width
 Height
 3
 278
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -49,6 +52,9 @@ Width
 Height
 3
 165
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -76,6 +82,9 @@ Width
 Height
 3
 165
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -86,7 +95,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -103,6 +112,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 86
@@ -131,7 +143,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -148,6 +160,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -176,7 +191,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -193,6 +208,9 @@ Width
 Height
 3
 48
+Tool Tip
+5
+0
 Caption
 5
 157
@@ -221,7 +239,7 @@ AlignTop
 SchedNumeric
 
 1
-11
+12
 Name
 5
 9
@@ -238,6 +256,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
 5
@@ -260,7 +281,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -277,6 +298,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -319,7 +343,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -336,6 +360,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -378,7 +405,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 4
@@ -395,6 +422,9 @@ Width
 Height
 3
 44
+Tool Tip
+5
+0
 Selection
 3
 4294967295
@@ -415,7 +445,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 31
@@ -432,6 +462,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 54
@@ -445,7 +478,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 32
@@ -462,6 +495,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 60
@@ -475,7 +511,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -492,6 +528,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0

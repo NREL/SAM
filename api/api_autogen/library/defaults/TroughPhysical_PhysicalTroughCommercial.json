@@ -377,7 +377,7 @@
 			"q_sby_frac": 0.2,
 			"startup_frac": 0.2,
 			"startup_time": 0.5,
-			"tech_type": 1,
+			"tech_type": 2,
 			"ud_T_amb_des": 43,
 			"ud_T_amb_high": 55,
 			"ud_T_amb_ind_od": [

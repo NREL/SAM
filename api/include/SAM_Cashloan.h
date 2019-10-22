@@ -2011,6 +2011,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_tax_savings_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_taxable_incentive_income_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_taxable_income_less_deductions_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_federal_tax_frac_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
@@ -2086,6 +2088,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_incentive_income_less_deductions_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_tax_savings_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_taxable_incentive_income_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_taxable_income_less_deductions_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
 

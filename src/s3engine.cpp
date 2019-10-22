@@ -25,7 +25,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <sstream>
 
-#include <wex/utils.h>
+#include "wex/utils.h"
 #include <wex/clipper/clipper.h>
 
 #include "s3engine.h"

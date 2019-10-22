@@ -34,6 +34,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "main.h"
 #include "casewin.h"
 #include "stochastic.h"
+#include "variablegrid.h"
 
 char const *lhs_dist_names[LHS_NUMDISTS] = {
 	"Uniform,Min,Max",
@@ -904,7 +905,9 @@ enum {
   ID_Select_Folder,
   ID_Check_Weather,
   ID_Combo_Weather,
-  ID_Show_Weather_CDF
+  ID_Show_Weather_CDF,
+  ID_GRID,
+  ID_SHOW_ALL_INPUTS
 };
 
 BEGIN_EVENT_TABLE( StochasticPanel, wxPanel )
@@ -931,6 +934,10 @@ BEGIN_EVENT_TABLE( StochasticPanel, wxPanel )
 	EVT_CHECKBOX(ID_Check_Weather, StochasticPanel::OnCheckWeather)
 	EVT_COMBOBOX(ID_Combo_Weather, StochasticPanel::OnComboWeather)
 	EVT_BUTTON(ID_Show_Weather_CDF, StochasticPanel::OnShowWeatherCDF)
+
+	EVT_GRID_CMD_LABEL_RIGHT_CLICK(ID_GRID, StochasticPanel::OnGridColLabelRightClick)
+	EVT_MENU(ID_SHOW_ALL_INPUTS, StochasticPanel::OnMenuItem)
+
 	END_EVENT_TABLE()
 
 StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
@@ -1038,7 +1045,7 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	sizer_main->Add(sizer_wf, 0, wxALL | wxEXPAND, 3);
 
 
-	m_dataGrid = new wxExtGridCtrl( this, wxID_ANY );
+	m_dataGrid = new wxExtGridCtrl( this, ID_GRID );
 	m_dataGrid->CreateGrid( 1, 1 );
 	m_dataGrid->SetCellValue(0, 0, "No results.");
 
@@ -1059,11 +1066,52 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	m_weather_folder_varname = "stochastic_weather_folder";
 	m_weather_folder_displayname = "Weather Files";
 
+	m_regenerate_samples = true;
 
 	UpdateFromSimInfo();
 	UpdateWeatherFileControls();
 
 }
+
+StochasticPanel::~StochasticPanel()
+{
+	if (m_sims.size() > 0)
+		for (size_t i = 0; i < m_sims.size(); i++)
+			delete m_sims[i];
+	m_sims.clear();
+}
+
+void StochasticPanel::OnGridColLabelRightClick(wxGridEvent &evt)
+{
+	m_selected_grid_col = evt.GetCol();
+	m_selected_grid_row = evt.GetRow();
+	if (m_selected_grid_col < 0) // row header
+	{
+		//	row menu
+		wxPoint point = evt.GetPosition();
+		int x, y;
+		m_dataGrid->GetPosition(&x, &y);
+		point.y += y;
+		wxMenu *menu = new wxMenu;
+		menu->Append(ID_SHOW_ALL_INPUTS, _T("Show inputs"));
+		PopupMenu(menu, point);
+	}
+}
+
+
+void StochasticPanel::OnMenuItem(wxCommandEvent &evt)
+{
+	switch (evt.GetId())
+	{
+	case ID_SHOW_ALL_INPUTS:
+		if (m_dataGrid->GetNumberRows() > m_selected_grid_row && (int) m_sims.size() > m_selected_grid_row)
+		{
+				new VariableGridFrame(this, &SamApp::Project(), m_case, m_sims[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Inputs for stochastic run %d", m_selected_grid_row + 1));
+		}
+		break;
+	}
+}
+
 
 void StochasticPanel::UpdateWeatherFileList()
 {
@@ -1434,22 +1482,22 @@ wxString StochasticPanel::GetLabelFromVarName(const wxString &var_name)
 
 
 void StochasticPanel::UpdateFromSimInfo()
-{	
-	m_N->SetValue( m_sd.N );
-	m_seed->SetValue( m_sd.Seed );
+{
+	m_N->SetValue(m_sd.N);
+	m_seed->SetValue(m_sd.Seed);
 
 	int i;
 
 	m_outputList->Freeze();
 	m_outputList->Clear();
 	wxArrayString vars, labels;
-	Simulation::ListAllOutputs( m_case->GetConfiguration(), &vars, &labels, NULL, NULL, NULL, true );
+	Simulation::ListAllOutputs(m_case->GetConfiguration(), &vars, &labels, NULL, NULL, NULL, true);
 
-	for (size_t i=0;i<m_sd.Outputs.Count();i++)
+	for (size_t i = 0; i < m_sd.Outputs.Count(); i++)
 	{
-		int idx = vars.Index( m_sd.Outputs[i] );
+		int idx = vars.Index(m_sd.Outputs[i]);
 		if (idx >= 0)
-			m_outputList->Append( labels[idx] ); 
+			m_outputList->Append(labels[idx]);
 		else
 			m_outputList->Append("<Error - remove this>");
 	}
@@ -1458,17 +1506,17 @@ void StochasticPanel::UpdateFromSimInfo()
 
 	m_inputList->Freeze();
 	m_inputList->Clear();
-	for (i=0;i<(int)m_sd.InputDistributions.Count();i++)
+	for (i = 0; i < (int)m_sd.InputDistributions.Count(); i++)
 	{
 		wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[i], ":");
-		if ( parts.Count() < 2 )
+		if (parts.Count() < 2)
 			continue;
 
 		wxString item = GetVarNameFromInputDistribution(parts[0]);
 		int disttype = atoi(parts[1].c_str());
 		if (disttype < 0) disttype = 0;
 		if (disttype >= LHS_NUMDISTS) disttype = LHS_NUMDISTS - 1;
-		
+
 		if (item == m_weather_folder_varname)
 		{
 			continue;
@@ -1520,49 +1568,50 @@ void StochasticPanel::UpdateFromSimInfo()
 		}
 		else
 		{
-		
+
 			item = m_case->GetConfiguration()->Variables.Label(item);
 		}
-		
-//		if (parts.Count() == 6)
+
+		//		if (parts.Count() == 6)
 		if ((parts.Count() >= 6) || (disttype == LHS_USERCDF))
-			{
+		{
 
 			wxArrayString distparts = wxStringTokenize(::lhs_dist_names[disttype], ",");
 			if (distparts.Count() > 1)
 			{
 				item += " ( " + distparts[0] + " [";
-				for (size_t j=1;j<distparts.Count();j++)
+				for (size_t j = 1; j < distparts.Count(); j++)
 				{
-					item += parts[1+j];
-					if (j < distparts.Count()-1) item += ",";
+					item += parts[1 + j];
+					if (j < distparts.Count() - 1) item += ",";
 				}
 				item += "] )";
 			}
 		}
 
-		m_inputList->Append( item );
+		m_inputList->Append(item);
 	}
 
 	m_inputList->Thaw();
 
 	m_corrList->Freeze();
 	m_corrList->Clear();
-	for (i=0;i<(int)m_sd.Correlations.Count();i++)
+	for (i = 0; i < (int)m_sd.Correlations.Count(); i++)
 	{
-		wxArrayString parts = wxStringTokenize( m_sd.Correlations[i], ":" );
+		wxArrayString parts = wxStringTokenize(m_sd.Correlations[i], ":");
 		if (parts.Count() < 3) continue;
-	
 
-		wxString l1 = GetLabelFromVarName( parts[0] );
+
+		wxString l1 = GetLabelFromVarName(parts[0]);
 		wxString l2 = GetLabelFromVarName(parts[1]);
-		
-		if ( l1.IsEmpty() || l2.IsEmpty() ) continue;
 
-		m_corrList->Append( l1 + ", " + l2 + ", " + parts[2] );
+		if (l1.IsEmpty() || l2.IsEmpty()) continue;
+
+		m_corrList->Append(l1 + ", " + l2 + ", " + parts[2]);
 	}
 
 	m_corrList->Thaw();
+
 }
 
 
@@ -1692,6 +1741,8 @@ void StochasticPanel::OnAddInput(wxCommandEvent &)
 		}
 
 		UpdateFromSimInfo();
+		m_regenerate_samples = true;
+
 	}
 
 }
@@ -1796,6 +1847,8 @@ void StochasticPanel::OnEditInput(wxCommandEvent &)
 		}
 
 		UpdateFromSimInfo();
+		m_regenerate_samples = true;
+
 	}
 }
 
@@ -1814,6 +1867,8 @@ void StochasticPanel::OnRemoveInput(wxCommandEvent &)
 	}
 
 	UpdateFromSimInfo();
+	m_regenerate_samples = true;
+
 
 	if (m_inputList->GetCount() > 0)
 		m_inputList->Select(0);
@@ -1914,6 +1969,8 @@ void StochasticPanel::OnAddCorr(wxCommandEvent &)
 			if (corr >= 1) corr = 0.999;
 			m_sd.Correlations.Add( list[0] + ":" + list[1] + ":" + wxString::Format("%lg", corr ) );
 			UpdateFromSimInfo();
+			m_regenerate_samples = true;
+
 		}
 	}
 
@@ -1937,6 +1994,8 @@ void StochasticPanel::OnEditCorr(wxCommandEvent &)
 		wxString var_name1 = GetVarNameFromInputDistribution(parts[1]);
 		m_sd.Correlations[idx] = var_name0 + ":" + var_name1 + ":" + wxString::Format("%lg", corr);
 		UpdateFromSimInfo();
+		m_regenerate_samples = true;
+
 	}
 }
 
@@ -1949,6 +2008,8 @@ void StochasticPanel::OnRemoveCorr(wxCommandEvent &)
 		m_sd.Correlations.RemoveAt(idx);
 
 	UpdateFromSimInfo();
+	m_regenerate_samples = true;
+
 
 	if (m_corrList->GetCount() > 0)
 		m_corrList->Select(idx-1>=0?idx-1:idx);
@@ -1961,9 +2022,9 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &)
 		UpdateWeatherFileCDF();
 
 	wxArrayString errors;
-	matrix_t<double> table;
+//	matrix_t<double> table;
 
-	if (!ComputeLHSInputVectors( m_sd, table, &errors))
+	if (!ComputeLHSInputVectors( m_sd, m_input_data, &errors))
 	{
 		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors,'\n'));
 		return;
@@ -1980,10 +2041,10 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &)
 	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Data Vectors", wxDefaultPosition, wxScaleSize(400,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 	wxExtGridCtrl *grid = new wxExtGridCtrl( dlg, wxID_ANY );
 	grid->EnableCopyPaste( true );
-	grid->CreateGrid( table.nrows(), table.ncols() );
+	grid->CreateGrid(m_input_data.nrows(), m_input_data.ncols() );
 	grid->Freeze();
 	// for string value variables - show string values (e.g. lists - array type, weather files,...)
-	for (size_t j = 0; j < table.ncols(); j++)
+	for (size_t j = 0; j < m_input_data.ncols(); j++)
 	{
 		wxString var = m_sd.InputDistributions[j];
 		wxArrayString parts = wxStringTokenize(var, ":");
@@ -1997,12 +2058,12 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &)
 			if (item == m_weather_folder_varname)
 			{
 				//values = m_weather_files;
-				for (size_t i = 0; i < table.nrows(); i++)
+				for (size_t i = 0; i < m_input_data.nrows(); i++)
 				{
 					wxString wf;
-					if (GetWeatherFileForSum(table(i,j), &wf))
+					if (GetWeatherFileForSum(m_input_data(i,j), &wf))
 						grid->SetCellValue(i, j, "(" + wf + ")  " 
-							+ wxString::Format("%lg", table(i, j)));
+							+ wxString::Format("%lg", m_input_data(i, j)));
 				}
 			}
 			else
@@ -2013,9 +2074,9 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &)
 			}
 			if (values.Count() > 0)
 			{
-				for (size_t i = 0; i < table.nrows(); i++)
+				for (size_t i = 0; i < m_input_data.nrows(); i++)
 				{
-					int ndx = (int)table(i, j);
+					int ndx = (int)m_input_data(i, j);
 					if ((ndx >= 0) && (ndx < (int)values.Count()))
 						grid->SetCellValue(i, j, values[ndx]);
 				}
@@ -2023,17 +2084,18 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &)
 		}
 		else
 		{
-			for (size_t i = 0; i < table.nrows(); i++)
-				grid->SetCellValue(i, j, wxString::Format("%lg", table(i, j)));
+			for (size_t i = 0; i < m_input_data.nrows(); i++)
+				grid->SetCellValue(i, j, wxString::Format("%lg", m_input_data(i, j)));
 		}
 	}
 
 
-	for( size_t i=0;i<table.ncols();i++ )
+	for( size_t i=0;i< m_input_data.ncols();i++ )
 		grid->SetColLabelValue( i, collabels[i] );
 	grid->AutoSize();
 	grid->Thaw();
 
+	m_regenerate_samples = false;
 	dlg->Show();
 }
 
@@ -2047,15 +2109,18 @@ void StochasticPanel::Simulate()
 	wxBusyCursor _busy;
 
 	wxArrayString errors;
-	matrix_t<double> input_data;
+//	matrix_t<double> input_data;
 
 	if (m_chk_weather_files->GetValue())
 		UpdateWeatherFileCDF();
 
-	if (!ComputeLHSInputVectors(m_sd, input_data, &errors))
+	if (m_regenerate_samples)
+	{
+		if (!ComputeLHSInputVectors(m_sd, m_input_data, &errors))
 		{
-		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors,'\n'));
-		return;
+			wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
+			return;
+		}
 	}
 
 	if (m_sd.Outputs.size() == 0)
@@ -2093,7 +2158,13 @@ void StochasticPanel::Simulate()
 
 	SimulationDialog tpd( "Preparing simulations...", nthread );
 
-	std::vector<Simulation*> sims;
+//	std::vector<Simulation*> sims;
+	for (size_t i = 0; i < m_sims.size(); i++)
+		delete m_sims[i];
+	
+	m_sims.clear();
+
+
 
 	int count_sims = 1;
 
@@ -2102,7 +2173,7 @@ void StochasticPanel::Simulate()
 	for (int i = 0; i < m_sd.N; i++)
 	{
 		Simulation *s = new Simulation(m_case, wxString::Format("Stochastic #%d", (int)(i + 1)));
-		sims.push_back(s);
+		m_sims.push_back(s);
 
 		for (size_t j = 0; j < m_sd.InputDistributions.size(); j++)
 		{
@@ -2116,7 +2187,7 @@ void StochasticPanel::Simulate()
 //					continue;
 //				wxString weatherFile = m_folder->GetValue() + "/" + m_weather_files[ndx];
 				wxString weather_file;
-				if (!GetWeatherFileForSum(input_data(i, j), &weather_file))
+				if (!GetWeatherFileForSum(m_input_data(i, j), &weather_file))
 					continue;
 				weather_file = m_folder->GetValue() + "/" + weather_file;
 				s->Override("use_specific_weather_file", VarValue(true));
@@ -2127,11 +2198,11 @@ void StochasticPanel::Simulate()
 			else if (m_case->Values().Get(iname)->Length() == 1)
 			{
 				double val[1];
-				val[0] = (double)input_data(i, j);
+				val[0] = (double)m_input_data(i, j);
 				s->Override(iname, VarValue(val,1));
 			}
 			else
-				s->Override(iname, VarValue((double)input_data(i, j)));
+				s->Override(iname, VarValue((double)m_input_data(i, j)));
 		}
 
 		if (!s->Prepare())
@@ -2141,8 +2212,8 @@ void StochasticPanel::Simulate()
 
 		if (tpd.Canceled())
 		{
-			for (size_t i = 0; i<sims.size(); i++)
-				delete sims[i];
+			for (size_t i = 0; i<m_sims.size(); i++)
+				delete m_sims[i];
 			return;
 		}
 		count_sims++;
@@ -2152,19 +2223,19 @@ void StochasticPanel::Simulate()
 	sw.Start();
 	
 
-	if ( nthread > (int)sims.size() ) nthread = sims.size();
+	if ( nthread > (int)m_sims.size() ) nthread = m_sims.size();
 	tpd.NewStage("Calculating...", nthread);
 
 	size_t nok = 0;
 	if ( m_useThreads->GetValue() )
 	{
-		nok = Simulation::DispatchThreads( tpd, sims, nthread );
+		nok = Simulation::DispatchThreads( tpd, m_sims, nthread );
 	}
 	else
 	{
-		for( size_t i=0;i<sims.size();i++ )
+		for( size_t i=0;i<m_sims.size();i++ )
 		{	
-			if( sims[i]->Invoke( true, false ) )
+			if( m_sims[i]->Invoke( true, false ) )
 				nok++;
 			
 			tpd.Update( 0, (float)i / (float)m_sd.N * 100.0f );
@@ -2176,10 +2247,10 @@ void StochasticPanel::Simulate()
 
 	for( int i=0;i<m_sd.N;i++ )
 	{
-		if ( sims[i]->Ok() )
+		if ( m_sims[i]->Ok() )
 		{
 			for( size_t j=0;j<output_vars.size();j++ )
-				if ( VarValue *vv = sims[i]->GetOutput( output_vars[j] ) )
+				if ( VarValue *vv = m_sims[i]->GetOutput( output_vars[j] ) )
 					output_data(i,j) = vv->Value();
 		}
 		else
@@ -2187,9 +2258,9 @@ void StochasticPanel::Simulate()
 		//	outlog->AppendText( wxJoin( sims[i]->GetErrors(), '\n') );
 		}
 
-		delete sims[i];
+//		delete sims[i];
 	}
-	sims.clear();
+//	sims.clear();
 
 	sw.Time();
 	
@@ -2204,7 +2275,7 @@ void StochasticPanel::Simulate()
 	for( size_t i=0;i<m_sd.InputDistributions.size();i++ )
 	{
 		for( int j=0;j<m_sd.N;j++ )
-			data[j] = input_data(j,i);
+			data[j] = m_input_data(j,i);
 		stw.SetInputVector( wxString("input_")+((char)('a'+i)), data );
 	}
 

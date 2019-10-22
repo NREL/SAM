@@ -156,6 +156,7 @@ class StochasticPanel : public wxPanel
 {
 public:
 	StochasticPanel(wxWindow *parent, Case *cc);
+	~StochasticPanel();
 
 	void UpdateFromSimInfo();	
 
@@ -185,6 +186,10 @@ public:
 	void OnShowWeatherCDF(wxCommandEvent &);
 
 	wxString GetLabelFromVarName(const wxString &var_name);
+	
+	void OnGridColLabelRightClick(wxGridEvent &evt);
+	void OnMenuItem(wxCommandEvent &evt);
+
 	void UpdateWeatherFileList();
 	void UpdateWeatherFileControls();
 	void UpdateWeatherFileCDF();
@@ -198,6 +203,7 @@ public:
 private:
 	Case *m_case;
 	StochasticData &m_sd;
+	std::vector<Simulation*> m_sims;
 
 	// weather file folder control - persisted with stochastic_weather_folder=folder name as string.
 	wxTextCtrl *m_folder;
@@ -218,6 +224,12 @@ private:
 	
 	wxExtGridCtrl *m_dataGrid;
 	wxExtGridCtrl *m_statGrid;
+
+	int m_selected_grid_col;
+	int m_selected_grid_row;
+
+	bool m_regenerate_samples;
+	matrix_t<double> m_input_data;
 
 	struct stepresult {
 		stepresult() { deltar2 = beta = 0.0; }

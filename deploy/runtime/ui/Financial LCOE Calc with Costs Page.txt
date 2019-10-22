@@ -1,11 +1,11 @@
 Financial LCOE Calc with Costs Page
 871
 712
-35
+32
 SchedNumeric
 
 1
-11
+12
 Name
 5
 19
@@ -22,6 +22,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
 5
@@ -44,7 +47,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -61,6 +64,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -103,7 +109,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -120,6 +126,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -162,7 +171,7 @@ TabOrder
 SchedNumeric
 
 1
-11
+12
 Name
 5
 23
@@ -179,6 +188,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
 5
@@ -201,7 +213,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -218,6 +230,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -260,7 +275,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -277,6 +292,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -319,7 +337,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -336,6 +354,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -378,7 +399,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -395,6 +416,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -437,7 +461,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -454,6 +478,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -496,7 +523,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -513,6 +540,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -555,7 +585,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -572,6 +602,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -614,7 +647,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -631,6 +664,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -673,7 +709,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 16
@@ -690,6 +726,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 33
@@ -718,7 +757,7 @@ AlignTop
 Hyperlink
 
 1
-8
+9
 Name
 5
 9
@@ -735,6 +774,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 62
@@ -749,7 +791,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -766,6 +808,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -785,7 +830,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -802,6 +847,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -821,7 +869,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -838,6 +886,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -857,7 +908,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -874,6 +925,9 @@ Width
 Height
 3
 693
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -884,7 +938,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -901,6 +955,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 375
@@ -929,52 +986,7 @@ AlignTop
 Label
 
 1
-12
-Name
-5
-10
-object 727
-X
-3
-15
-Y
-3
-216
-Width
-3
-195
-Height
-3
-24
-Caption
-5
-29
-Fixed operating cost (annual)
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-12
+13
 Name
 5
 9
@@ -991,6 +1003,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 47
@@ -1019,7 +1034,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1029,13 +1044,16 @@ X
 351
 Y
 3
-162
+168
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1047,7 +1065,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 0
@@ -1078,7 +1096,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1095,6 +1113,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1134,47 +1155,10 @@ BackColour
 TabOrder
 3
 4294967295
-RadioChoice
-
-1
-10
-Name
-5
-20
-ui_cost_input_option
-X
-3
-198
-Y
-3
-189
-Width
-3
-300
-Height
-3
-24
-Selection
-3
-0
-Items
-6
-2
-Enter costs in $
-Enter costs in $/kW
-ShowCaptions
-2
-1
-Horizontal
-2
-1
-TabOrder
-3
-4294967295
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -1191,6 +1175,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1233,7 +1220,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 19
@@ -1250,6 +1237,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -1270,7 +1260,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -1287,6 +1277,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1329,7 +1322,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 14
@@ -1346,6 +1339,9 @@ Width
 Height
 3
 144
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1373,82 +1369,26 @@ AlignTop
 Numeric
 
 1
-16
-Name
-5
-26
-ui_operating_cost_capacity
-X
-3
-351
-Y
-3
-216
-Width
-3
-90
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4
-Numeric
-
-1
-16
+17
 Name
 5
 23
 ui_operating_cost_fixed
 X
 3
-213
+351
 Y
 3
-216
+201
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1460,7 +1400,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 0
@@ -1491,7 +1431,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1508,6 +1448,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1550,7 +1493,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1567,6 +1510,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1578,7 +1524,7 @@ Format
 0
 Decimals
 3
-2
+0
 Prefix
 5
 0
@@ -1609,23 +1555,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
 ui_variable_operating_cost
 X
 3
-291
+351
 Y
 3
-246
+234
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1634,10 +1583,10 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
-4
+0
 Prefix
 5
 0
@@ -1668,7 +1617,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1685,6 +1634,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1727,7 +1679,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -1744,6 +1696,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1784,7 +1739,7 @@ TabOrder
 3
 4294967295
 
-29
+28
 c_construction_cost
 3
 2
@@ -2010,21 +1965,6 @@ LCOE Calculator
 1
 0
 Default
-ui_cost_input_option
-3
-1
-Cost input option (0=$,1=$/kW)
- 
-LCOE Calculator
-36
-Enter costs in $|Enter costs in $/kW
-3
-1
-1
-1
-1
-0
-Default
 ui_crf
 3
 1
@@ -2110,11 +2050,11 @@ Default
 ui_operating_cost_fixed
 3
 1
-Operating cost
+Fixed operating cost (annual)
 $
 LCOE Calculator
 0
-3
+8
 1
 1
 1
@@ -2192,7 +2132,7 @@ LCOE Calculator
 0
 Default
 
-1753
+1737
 
 
 equations{ 'ui_system_capacity' } = define() {
@@ -2203,11 +2143,12 @@ equations{ 'ui_capital_cost_reference' } =define() {
 	return ${total_installed_cost};
 };
 
+equations{ 'ui_operating_cost_fixed' } = define() {
+    return ${total_operating_cost};
+};
+
 equations{ 'fixed_operating_cost' } = define() {
-  if (${ui_cost_input_option}==0) 
-    return ${ui_operating_cost_fixed};
-  else 
-    return ${system_capacity}*${ui_operating_cost_capacity}; 
+    return ${total_operating_cost};
 };
 
 equations{ 'variable_operating_cost' } = define() {
@@ -2255,21 +2196,14 @@ equations{ '$MIMO$ fixed_charge_rate_calculator' } = define() {
     ${fixed_charge_rate} = fcr;
   }
 };
-1484
+1253
 on_load{"Financial LCOE Calculator"} = define()
 {
-  on_change{'ui_cost_input_option'}();
   on_change{'ui_fcr_input_option'}();
   on_change{'c_construction_cost'}();
   cfin_is_zero_check();
 };
 
-on_change{'ui_cost_input_option'} = define()
-{
-  fixed = ( value('ui_cost_input_option') == 0 );
-  show( 'ui_operating_cost_fixed', fixed );
-  show( 'ui_operating_cost_capacity', !fixed );
-};
 
 on_change{'ui_fcr_input_option'} = define()
 {

@@ -92,6 +92,7 @@ BEGIN_EVENT_TABLE( ActiveInputPage, wxPanel )
 	EVT_VALUEMATRIXBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_LIBRARYCTRL( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_TABLEDATA( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_TOOLTIPCTRL(wxID_ANY, ActiveInputPage::OnNativeEvent)
 
 	EVT_ERASE_BACKGROUND( ActiveInputPage::OnErase )
 	EVT_PAINT( ActiveInputPage::OnPaint )
@@ -191,8 +192,11 @@ void ActiveInputPage::Initialize()
 	{
 		wxString type = objs[i]->GetTypeName();
 		wxString name = objs[i]->GetName();
+		wxString toolTip = objs[i]->GetTip();
 		if ( VarInfo *vv = vdb.Lookup( name ) )
 		{
+			objs[i]->SetTip(toolTip);
+			
 			if ( vv->Type == VV_NUMBER && vv->IndexLabels.size() > 0 
 				&& ( type == "Choice" || type == "ListBox" || type == "CheckListBox" || type == "RadioChoice" ) )
 			{
@@ -517,6 +521,16 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 	{
 		if (dir == VAR_TO_OBJ) da->Set(val.Array());
 		else val.Set(da->Get());
+	}
+	else if (AFDataLifetimeArrayButton *dl = obj->GetNative<AFDataLifetimeArrayButton>())
+	{
+	if (dir == VAR_TO_OBJ) dl->Set(val.Array());
+	else val.Set(dl->Get());
+	}
+	else if (AFDataLifetimeMatrixButton *dl = obj->GetNative<AFDataLifetimeMatrixButton>())
+	{
+	if (dir == VAR_TO_OBJ) dl->Set(val.Matrix());
+	else val.Set(dl->Get());
 	}
 	else if (AFStringArrayButton *sa = obj->GetNative<AFStringArrayButton>())
 	{

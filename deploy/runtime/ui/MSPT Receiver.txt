@@ -558,7 +558,7 @@ Height
 21
 Items
 6
-8
+9
 1
 2
 3
@@ -567,6 +567,7 @@ Items
 6
 7
 8
+9
 Selection
 3
 0
@@ -627,8 +628,10 @@ Height
 21
 Items
 6
-1
+3
 Stainless AISI316
+N06230
+N07740
 Selection
 3
 0
@@ -2243,8 +2246,8 @@ csp.pt.rec.flow_pattern
 Flow pattern
  
 Tower and Receiver
-15
-1|2|3|4|5|6|7|8
+17
+1|2|3|4|5|6|7|8|9
 2
 1
 1
@@ -2301,8 +2304,8 @@ csp.pt.rec.material_type
 Material type
  
 Tower and Receiver
-17
-Stainless AISI316
+33
+Stainless AISI316| N06230| N07740
 2
 1
 1
@@ -2969,7 +2972,7 @@ Tower and Receiver
 0
 Default
 
-2329
+2361
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
 	[
@@ -2982,7 +2985,9 @@ equations{ 'rec_htf' } = define() {
 equations{ 'mat_tube' } = define() {
 	return ?${csp.pt.rec.material_type}
 	[
-		2 // Stainless AISI316
+		2,	// Stainless AISI316
+		32,	// N06230
+		33	// N07740
    	];
 };
 
@@ -3065,6 +3070,7 @@ equations{ 'REC_COPY_T_htf_hot_des' } = define() {
 	
 equations{ 'REC_COPY_T_htf_cold_des' } = define() {
 	return ${T_htf_cold_des}; };
+
 241
 on_load{'Molten Salt Tower Receiver'} = define() {
 	on_change{"csp.pt.rec.htf_type"}();

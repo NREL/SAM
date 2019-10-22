@@ -374,15 +374,27 @@ SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_Type_cpnt_mset(SAM_Trou
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_max_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_cold_max_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "V_hdr_max", number);
+		ssc_data_set_number(ptr, "V_hdr_cold_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_min_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_cold_min_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "V_hdr_min", number);
+		ssc_data_set_number(ptr, "V_hdr_cold_min", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_hot_max_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "V_hdr_hot_max", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_hot_min_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "V_hdr_hot_min", number);
 	});
 }
 
@@ -761,6 +773,270 @@ SAM_EXPORT void SAM_TroughPhysicalProcessHeat_TES2tank_hot_tank_Thtr_nset(SAM_Tr
 SAM_EXPORT void SAM_TroughPhysicalProcessHeat_TES2tank_hot_tank_max_heat_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "hot_tank_max_heat", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_ampl_data_dir_sset(SAM_TroughPhysicalProcessHeat ptr, const char* str, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_string(ptr, "ampl_data_dir", str);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_ampl_exec_call_sset(SAM_TroughPhysicalProcessHeat ptr, const char* str, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_string(ptr, "ampl_exec_call", str);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_csu_cost_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_csu_cost", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_frequency_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_frequency", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_horizon_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_horizon", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_max_iter_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_max_iter", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_mip_gap_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_mip_gap", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_pen_delta_w_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_pen_delta_w", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_reporting_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_reporting", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_rsu_cost_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_rsu_cost", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_spec_bb_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_spec_bb", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_spec_presolve_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_spec_presolve", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_spec_scaling_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_spec_scaling", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_steps_per_hour_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_steps_per_hour", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_time_weighting_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_time_weighting", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_timeout_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_timeout", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor1_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dispatch_factor1", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor2_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dispatch_factor2", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor3_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dispatch_factor3", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor4_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dispatch_factor4", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor5_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dispatch_factor5", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor6_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dispatch_factor6", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor7_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dispatch_factor7", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor8_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dispatch_factor8", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor9_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dispatch_factor9", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_factors_ts_aset(SAM_TroughPhysicalProcessHeat ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "dispatch_factors_ts", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_sched_weekday_mset(SAM_TroughPhysicalProcessHeat ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "dispatch_sched_weekday", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_sched_weekend_mset(SAM_TroughPhysicalProcessHeat ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "dispatch_sched_weekend", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_series_aset(SAM_TroughPhysicalProcessHeat ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "dispatch_series", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_f_turb_tou_periods_aset(SAM_TroughPhysicalProcessHeat ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "f_turb_tou_periods", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_is_ampl_engine_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_ampl_engine", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_is_dispatch_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_dispatch", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_is_dispatch_series_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_dispatch_series", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_is_wlim_series_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_wlim_series", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_is_write_ampl_dat_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_write_ampl_dat", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_ppa_multiplier_model_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ppa_multiplier_model", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_q_rec_heattrace_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "q_rec_heattrace", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_q_rec_standby_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "q_rec_standby", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_weekday_schedule_mset(SAM_TroughPhysicalProcessHeat ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "weekday_schedule", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_weekend_schedule_mset(SAM_TroughPhysicalProcessHeat ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "weekend_schedule", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_wlim_series_aset(SAM_TroughPhysicalProcessHeat ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "wlim_series", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_System_aux_array_aset(SAM_TroughPhysicalProcessHeat ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "aux_array", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_System_bop_array_aset(SAM_TroughPhysicalProcessHeat ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "bop_array", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_System_pb_fixed_par_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "pb_fixed_par", number);
 	});
 }
 
@@ -1434,22 +1710,44 @@ SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_SolarField_Type_cpnt_mget(SAM_T
 
 
 
-SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_max_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_cold_max_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "V_hdr_max", &result))
-		make_access_error("SAM_TroughPhysicalProcessHeat", "V_hdr_max");
+	if (!ssc_data_get_number(ptr, "V_hdr_cold_max", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "V_hdr_cold_max");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_min_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_cold_min_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "V_hdr_min", &result))
-		make_access_error("SAM_TroughPhysicalProcessHeat", "V_hdr_min");
+	if (!ssc_data_get_number(ptr, "V_hdr_cold_min", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "V_hdr_cold_min");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_hot_max_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "V_hdr_hot_max", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "V_hdr_hot_max");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SolarField_V_hdr_hot_min_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "V_hdr_hot_min", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "V_hdr_hot_min");
 	});
 	return result;
 }
@@ -2169,6 +2467,502 @@ SAM_EXPORT double SAM_TroughPhysicalProcessHeat_TES2tank_hot_tank_max_heat_nget(
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "hot_tank_max_heat", &result))
 		make_access_error("SAM_TroughPhysicalProcessHeat", "hot_tank_max_heat");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT const char* SAM_TroughPhysicalProcessHeat_Tou_ampl_data_dir_sget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	const char* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_string(ptr, "ampl_data_dir");
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "ampl_data_dir");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT const char* SAM_TroughPhysicalProcessHeat_Tou_ampl_exec_call_sget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	const char* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_string(ptr, "ampl_exec_call");
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "ampl_exec_call");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_csu_cost_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_csu_cost", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_csu_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_frequency_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_frequency", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_frequency");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_horizon_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_horizon", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_horizon");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_max_iter_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_max_iter", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_max_iter");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_mip_gap_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_mip_gap", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_mip_gap");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_pen_delta_w_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_pen_delta_w", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_pen_delta_w");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_reporting_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_reporting", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_reporting");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_rsu_cost_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_rsu_cost", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_rsu_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_spec_bb_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_spec_bb", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_spec_bb");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_spec_presolve_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_spec_presolve", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_spec_presolve");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_spec_scaling_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_spec_scaling", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_spec_scaling");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_steps_per_hour_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_steps_per_hour", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_steps_per_hour");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_time_weighting_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_time_weighting", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_time_weighting");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_timeout_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_timeout", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_timeout");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor1_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dispatch_factor1", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_factor1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor2_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dispatch_factor2", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_factor2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor3_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dispatch_factor3", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_factor3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor4_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dispatch_factor4", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_factor4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor5_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dispatch_factor5", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_factor5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor6_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dispatch_factor6", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_factor6");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor7_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dispatch_factor7", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_factor7");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor8_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dispatch_factor8", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_factor8");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_dispatch_factor9_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dispatch_factor9", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_factor9");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_dispatch_factors_ts_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "dispatch_factors_ts", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_factors_ts");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_dispatch_sched_weekday_mget(SAM_TroughPhysicalProcessHeat ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekday", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_sched_weekday");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_dispatch_sched_weekend_mget(SAM_TroughPhysicalProcessHeat ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekend", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_sched_weekend");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_dispatch_series_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "dispatch_series", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "dispatch_series");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_f_turb_tou_periods_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "f_turb_tou_periods", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "f_turb_tou_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_is_ampl_engine_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_ampl_engine", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "is_ampl_engine");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_is_dispatch_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_dispatch", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "is_dispatch");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_is_dispatch_series_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_dispatch_series", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "is_dispatch_series");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_is_wlim_series_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_wlim_series", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "is_wlim_series");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_is_write_ampl_dat_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_write_ampl_dat", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "is_write_ampl_dat");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_ppa_multiplier_model_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ppa_multiplier_model", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "ppa_multiplier_model");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_q_rec_heattrace_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "q_rec_heattrace", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "q_rec_heattrace");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_q_rec_standby_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "q_rec_standby", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "q_rec_standby");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_weekday_schedule_mget(SAM_TroughPhysicalProcessHeat ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "weekday_schedule", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "weekday_schedule");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_weekend_schedule_mget(SAM_TroughPhysicalProcessHeat ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "weekend_schedule", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "weekend_schedule");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_wlim_series_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "wlim_series", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "wlim_series");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_System_aux_array_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "aux_array", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "aux_array");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_System_bop_array_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "bop_array", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "bop_array");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_System_pb_fixed_par_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pb_fixed_par", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "pb_fixed_par");
 	});
 	return result;
 }

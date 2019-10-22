@@ -5,7 +5,7 @@ Battery Dispatch Front of Meter
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 262
+Tool Tip
+5
+0
 Caption
 5
 26
@@ -32,7 +35,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 20
@@ -49,6 +52,9 @@ Width
 Height
 3
 51
+Tool Tip
+5
+0
 Caption
 5
 74
@@ -77,7 +83,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 16
@@ -94,6 +100,9 @@ Width
 Height
 3
 73
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -104,7 +113,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 18
@@ -121,6 +130,9 @@ Width
 Height
 3
 364
+Tool Tip
+5
+0
 Caption
 5
 27
@@ -131,7 +143,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 18
@@ -148,6 +160,9 @@ Width
 Height
 3
 48
+Tool Tip
+5
+0
 Caption
 5
 216
@@ -176,7 +191,7 @@ AlignTop
 Divider
 
 1
-9
+10
 Name
 5
 25
@@ -193,6 +208,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -212,7 +230,7 @@ Bold
 DataArray
 
 1
-9
+10
 Name
 5
 20
@@ -229,6 +247,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 1
@@ -246,7 +267,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -263,6 +284,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -305,7 +329,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 22
@@ -322,6 +346,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -336,7 +363,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 27
@@ -353,6 +380,9 @@ Width
 Height
 3
 54
+Tool Tip
+5
+0
 Caption
 5
 139
@@ -381,7 +411,7 @@ AlignTop
 Divider
 
 1
-9
+10
 Name
 5
 22
@@ -398,6 +428,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -417,7 +450,7 @@ Bold
 CheckBox
 
 1
-8
+9
 Name
 5
 29
@@ -434,6 +467,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 30
@@ -447,7 +483,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 33
@@ -464,6 +500,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 44
@@ -477,7 +516,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 37
@@ -494,6 +533,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 34
@@ -507,7 +549,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 33
@@ -524,6 +566,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 28
@@ -537,7 +582,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 20
@@ -554,6 +599,9 @@ Width
 Height
 3
 111
+Tool Tip
+5
+0
 Selection
 3
 4
@@ -577,7 +625,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 19
@@ -594,6 +642,9 @@ Width
 Height
 3
 27
+Tool Tip
+5
+0
 Caption
 5
 75
@@ -622,7 +673,7 @@ AlignTop
 Divider
 
 1
-9
+10
 Name
 5
 21
@@ -639,6 +690,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -658,7 +712,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 36
@@ -675,6 +729,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -717,7 +774,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -734,6 +791,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -776,7 +836,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 33
@@ -793,6 +853,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -803,7 +866,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 32
@@ -820,6 +883,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -844,7 +910,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 18
@@ -861,6 +927,9 @@ Width
 Height
 3
 19
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -880,7 +949,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -897,6 +966,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -916,7 +988,7 @@ Bold
 Button
 
 1
-7
+8
 Name
 5
 19
@@ -933,6 +1005,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -943,7 +1018,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 21
@@ -960,6 +1035,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -970,7 +1048,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 21
@@ -987,6 +1065,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -1206,12 +1287,12 @@ Battery
 0
 Default
 
-502
+701
 // eventually move to PPA TOD factors page
 equations{'dispatch_tod_factors'} = define()
 {
 	dispatch = [];
-	if (${batt_dispatch_choice} != 3)
+	if (${en_batt} && (${batt_dispatch_choice} != 3))
 	{
 		dispatch[0] = ${dispatch_factor1};
 		dispatch[1] = ${dispatch_factor2};
@@ -1222,6 +1303,18 @@ equations{'dispatch_tod_factors'} = define()
 		dispatch[6] = ${dispatch_factor7};
 		dispatch[7] = ${dispatch_factor8};
 		dispatch[8] = ${dispatch_factor9};
+	}
+	else
+	{
+		dispatch[0] = 0;
+		dispatch[1] = 0;
+		dispatch[2] = 0;
+		dispatch[3] = 0;
+		dispatch[4] = 0;
+		dispatch[5] = 0;
+		dispatch[6] = 0;
+		dispatch[7] = 0;
+		dispatch[8] = 0;
 	}
 	return dispatch;
 };

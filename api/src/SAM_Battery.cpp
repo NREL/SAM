@@ -320,6 +320,12 @@ SAM_EXPORT void SAM_Battery_Battery_batt_initial_SOC_nset(SAM_Battery ptr, doubl
 	});
 }
 
+SAM_EXPORT void SAM_Battery_Battery_batt_inverter_efficiency_cutoff_nset(SAM_Battery ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_inverter_efficiency_cutoff", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_Battery_batt_length_nset(SAM_Battery ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_length", number);
@@ -398,15 +404,27 @@ SAM_EXPORT void SAM_Battery_Battery_batt_minimum_modetime_nset(SAM_Battery ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Battery_batt_power_charge_max_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Battery_batt_power_charge_max_kwac_nset(SAM_Battery ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_power_charge_max", number);
+		ssc_data_set_number(ptr, "batt_power_charge_max_kwac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Battery_batt_power_discharge_max_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Battery_batt_power_charge_max_kwdc_nset(SAM_Battery ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_power_discharge_max", number);
+		ssc_data_set_number(ptr, "batt_power_charge_max_kwdc", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_Battery_batt_power_discharge_max_kwac_nset(SAM_Battery ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_power_discharge_max_kwac", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_Battery_batt_power_discharge_max_kwdc_nset(SAM_Battery ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_power_discharge_max_kwdc", number);
 	});
 }
 
@@ -437,6 +455,12 @@ SAM_EXPORT void SAM_Battery_Battery_batt_replacement_option_nset(SAM_Battery ptr
 SAM_EXPORT void SAM_Battery_Battery_batt_replacement_schedule_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_replacement_schedule", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_Battery_batt_replacement_schedule_percent_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_replacement_schedule_percent", arr, length);
 	});
 }
 
@@ -665,6 +689,18 @@ SAM_EXPORT void SAM_Battery_ElectricityRate_ur_ec_sched_weekend_mset(SAM_Battery
 SAM_EXPORT void SAM_Battery_ElectricityRate_ur_ec_tou_mat_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "ur_ec_tou_mat", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_ElectricityRate_ur_en_ts_sell_rate_nset(SAM_Battery ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_en_ts_sell_rate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_ElectricityRate_ur_ts_buy_rate_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ur_ts_buy_rate", arr, length);
 	});
 }
 
@@ -1234,6 +1270,17 @@ SAM_EXPORT double SAM_Battery_Battery_batt_initial_SOC_nget(SAM_Battery ptr, SAM
 
 
 
+SAM_EXPORT double SAM_Battery_Battery_batt_inverter_efficiency_cutoff_nget(SAM_Battery ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_inverter_efficiency_cutoff", &result))
+		make_access_error("SAM_Battery", "batt_inverter_efficiency_cutoff");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Battery_Battery_batt_length_nget(SAM_Battery ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1382,22 +1429,44 @@ SAM_EXPORT double SAM_Battery_Battery_batt_minimum_modetime_nget(SAM_Battery ptr
 
 
 
-SAM_EXPORT double SAM_Battery_Battery_batt_power_charge_max_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Battery_batt_power_charge_max_kwac_nget(SAM_Battery ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_power_charge_max", &result))
-		make_access_error("SAM_Battery", "batt_power_charge_max");
+	if (!ssc_data_get_number(ptr, "batt_power_charge_max_kwac", &result))
+		make_access_error("SAM_Battery", "batt_power_charge_max_kwac");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Battery_Battery_batt_power_discharge_max_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Battery_batt_power_charge_max_kwdc_nget(SAM_Battery ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_power_discharge_max", &result))
-		make_access_error("SAM_Battery", "batt_power_discharge_max");
+	if (!ssc_data_get_number(ptr, "batt_power_charge_max_kwdc", &result))
+		make_access_error("SAM_Battery", "batt_power_charge_max_kwdc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_Battery_batt_power_discharge_max_kwac_nget(SAM_Battery ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_power_discharge_max_kwac", &result))
+		make_access_error("SAM_Battery", "batt_power_discharge_max_kwac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_Battery_batt_power_discharge_max_kwdc_nget(SAM_Battery ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_power_discharge_max_kwdc", &result))
+		make_access_error("SAM_Battery", "batt_power_discharge_max_kwdc");
 	});
 	return result;
 }
@@ -1456,6 +1525,18 @@ SAM_EXPORT double* SAM_Battery_Battery_batt_replacement_schedule_aget(SAM_Batter
 	result = ssc_data_get_array(ptr, "batt_replacement_schedule", length);
 	if (!result)
 		make_access_error("SAM_Battery", "batt_replacement_schedule");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Battery_batt_replacement_schedule_percent_aget(SAM_Battery ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_replacement_schedule_percent", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_replacement_schedule_percent");
 	});
 	return result;
 }
@@ -1894,6 +1975,29 @@ SAM_EXPORT double* SAM_Battery_ElectricityRate_ur_ec_tou_mat_mget(SAM_Battery pt
 	result = ssc_data_get_matrix(ptr, "ur_ec_tou_mat", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Battery", "ur_ec_tou_mat");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_ElectricityRate_ur_en_ts_sell_rate_nget(SAM_Battery ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_en_ts_sell_rate", &result))
+		make_access_error("SAM_Battery", "ur_en_ts_sell_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_ElectricityRate_ur_ts_buy_rate_aget(SAM_Battery ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ur_ts_buy_rate", length);
+	if (!result)
+		make_access_error("SAM_Battery", "ur_ts_buy_rate");
 	});
 	return result;
 }
@@ -2356,6 +2460,54 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_qmax_thermal_aget(SAM_Battery ptr, i
 	result = ssc_data_get_array(ptr, "batt_qmax_thermal", length);
 	if (!result)
 		make_access_error("SAM_Battery", "batt_qmax_thermal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_charge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_revenue_charge", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_revenue_charge");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_clipcharge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_revenue_clipcharge", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_revenue_clipcharge");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_discharge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_revenue_discharge", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_revenue_discharge");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_gridcharge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_revenue_gridcharge", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_revenue_gridcharge");
 	});
 	return result;
 }

@@ -5492,6 +5492,50 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_energy_nget(SAM_TcsmoltenSalt
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_eta_rec_th_nget(SAM_TcsmoltenSalt ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_eta_rec_th", &result))
+		make_access_error("SAM_TcsmoltenSalt", "annual_eta_rec_th");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_eta_rec_th_incl_refl_nget(SAM_TcsmoltenSalt ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_eta_rec_th_incl_refl", &result))
+		make_access_error("SAM_TcsmoltenSalt", "annual_eta_rec_th_incl_refl");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_inc_nget(SAM_TcsmoltenSalt ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_q_rec_inc", &result))
+		make_access_error("SAM_TcsmoltenSalt", "annual_q_rec_inc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_loss_nget(SAM_TcsmoltenSalt ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_q_rec_loss", &result))
+		make_access_error("SAM_TcsmoltenSalt", "annual_q_rec_loss");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_total_water_use_nget(SAM_TcsmoltenSalt ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6246,6 +6290,18 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_eta_therm_aget(SAM_TcsmoltenSalt pt
 	result = ssc_data_get_array(ptr, "eta_therm", length);
 	if (!result)
 		make_access_error("SAM_TcsmoltenSalt", "eta_therm");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_flux_maps_for_import_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "flux_maps_for_import", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "flux_maps_for_import");
 	});
 	return result;
 }

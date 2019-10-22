@@ -5,7 +5,7 @@ Financial Cost of Financing Flip Leaseback
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 104
+Tool Tip
+5
+0
 Caption
 5
 27
@@ -32,7 +35,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -49,6 +52,9 @@ Width
 Height
 3
 83
+Tool Tip
+5
+0
 Caption
 5
 224
@@ -77,7 +83,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -94,6 +100,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -136,7 +145,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -153,6 +162,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -195,7 +207,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -212,6 +224,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -254,7 +269,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -271,6 +286,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -313,7 +331,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -330,6 +348,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0

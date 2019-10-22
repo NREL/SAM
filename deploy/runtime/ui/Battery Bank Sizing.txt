@@ -867,7 +867,7 @@ batt_bank_size_specify
 3
 1
 Bank capacity
-kWh
+kWhdc
 Battery
 0
 2

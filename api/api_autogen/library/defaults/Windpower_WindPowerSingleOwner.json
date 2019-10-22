@@ -4,7 +4,9 @@
 			"weibull_k_factor": 2,
 			"weibull_reference_height": 50,
 			"weibull_wind_speed": 7.25,
-			"wind_resource_filename": "WY Southern-Flat Lands.srw",
+			"wind_resource_distribution": [
+				[0.000000, 0.000000, 1.000000]
+			],
 			"wind_resource_model_choice": 0
 		},
 		"Turbine": {

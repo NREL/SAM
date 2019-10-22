@@ -1312,6 +1312,14 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_Battery_en_batt_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
+	 * Set en_electricity_rates: Enable electricity rates for grid purchase [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Battery_en_electricity_rates_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
 	 * Set grid_to_batt: Electricity to battery from grid [kW]
 	 * options: None
 	 * constraints: None
@@ -2590,6 +2598,8 @@ extern "C"
 	SAM_EXPORT double SAM_Singleowner_Battery_battery_per_kWh_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_Battery_en_batt_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Battery_en_electricity_rates_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Battery_grid_to_batt_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 

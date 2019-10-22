@@ -949,7 +949,7 @@ Y
 72
 Width
 3
-169
+238
 Height
 3
 24
@@ -1832,7 +1832,7 @@ X
 528
 Y
 3
-99
+120
 Width
 3
 345
@@ -2877,8 +2877,8 @@ csp.pt.pwrb.pressure_mode
 Turbine inlet pressure control
  
 Power Cycle
-111
-Fixed pressure|Sliding pressure|Sliding pressure with high backpressure| Sliding pressure with low backpressure
+110
+Fixed pressure|Sliding pressure|Sliding pressure with high backpressure|Sliding pressure with low backpressure
 2
 1
 1

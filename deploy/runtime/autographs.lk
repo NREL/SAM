@@ -4,6 +4,14 @@ function base_technology_graphs()
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' );
 }
 
+function wind_pruf_graphs()
+{
+	if (varinfo('total_uncert')){
+		columns = 'avail_losses,elec_losses,env_losses,ops_losses, turb_losses,wake_losses';
+		agraph(columns, 'Energy Loss', '', '%', -1, false, true, 'right'); 
+	}
+}
+
 //**************Categories of graphs for financials**************************
 function rescom_financial_graphs()
 {
@@ -26,6 +34,23 @@ function host_developer_graphs()
 	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
 	agraph( 'cf_agreement_cost,annual_energy_value', 'Host Annual Agreement Cost and Electricity Savings', 'Year', '$', -1, true, true, 'bottom' );
 
+}
+
+function ppa_revenue_graphs()
+{
+    tech = technology();
+    fin = financing(); 
+
+	columns = 'npv_ppa_revenue,npv_curtailment_revenue,npv_capacity_revenue,';
+	if (tech == "Fuel Cell") columns += 'npv_thermal_value,';
+	if (value('pbi_fed_for_ds')==1) columns += 'npv_fed_pbi_income,';
+	if (value('pbi_sta_for_ds')==1) columns += 'npv_sta_pbi_income,';
+	if (value('pbi_uti_for_ds')==1) columns += 'npv_uti_pbi_income,';
+	if (value('pbi_oth_for_ds')==1) columns += 'npv_oth_pbi_income,';
+	columns += 'npv_salvage_value';
+
+	
+	agraph( columns, 'NPV of Revenue Components', '', '$', 50, false, true, 'right',1);
 }
 
 function ppa_financial_graphs()
@@ -52,13 +77,13 @@ autographs{ 'Dish Stirling' } = define() { base_technology_graphs(); };
 autographs{ 'Generic CSP System' } = define() { base_technology_graphs(); };
 autographs{ 'Solar Water Heating' } = define() { base_technology_graphs(); };
 autographs{ 'Generic System' } = define() { base_technology_graphs(); };
-autographs{ 'Wind Power' } = define() { base_technology_graphs(); };
+autographs{ 'Wind Power' } = define() { base_technology_graphs(); wind_pruf_graphs();};
 
 //**************Technologies with unique graphs***************************
 
 autographs{ 'MHKwave' } = define()
 {
-	agraph( 'annual_energy_distribution', 'Annual Energy Distribution', 'Hs', 'Te', -1, true, false, 'bottom', 4); 
+	agraph( 'annual_energy_distribution', 'Annual energy production (kWh)', 'Te = wave energy period (s)', 'Hs = significant wave height (m)', -1, true, false, 'bottom', 4); 
 };
 
 autographs{ 'MHKtidal' } = define()
@@ -135,7 +160,7 @@ autographs{ 'Third Party' } = define() { third_party_graphs(); };
 autographs{ 'Host Developer' } = define() { host_developer_graphs(); };
 //autographs{ 'Commercial PPA' } = define() { simple_financial_graphs(); };
 //autographs{ 'Independent Power Producer' } = define() { simple_financial_graphs(); };
-autographs{ 'Single Owner' } = define() { ppa_financial_graphs(); };
+autographs{ 'Single Owner' } = define() { ppa_revenue_graphs(); ppa_financial_graphs(); };
 autographs{ 'All Equity Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Leveraged Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Sale Leaseback' } = define() { ppa_sale_leaseback_graphs(); ppa_partnership_graphs(); };

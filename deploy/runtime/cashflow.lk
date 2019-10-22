@@ -49,6 +49,8 @@ function cf_production()
 { 
 	cfline( 'PRODUCTION (AC KWH)', -1); 
 	cfline( 'cf_energy_net', 0); 
+	cfline( "CURTAILMENT (AC KWH)", -1); 
+	cfline( 'cf_energy_curtailed', 0); // no decimal places with thousands separator 
 	cfline( '' );
 }
 
@@ -84,8 +86,24 @@ function cf_revenue()
 	fin = financing();
 	has_debt = ( fin == 'Single Owner' ) || ( fin == 'Host Developer' ) || ( fin == 'Leveraged Parntership Flip' );
 	cfline( 'REVENUE', -1);
-	cfline( 'cf_ppa_price' , -2 );
-	cfline( 'cf_energy_value', 0); 
+	if (fin == 'Merchant Plant')
+	{
+		cfline( 'cf_curtailment_value', 0); 
+		cfline( 'cf_capacity_payment', 0); 
+		cfline( 'cf_energy_market_revenue', 0); 
+		cfline( 'cf_ancillary_services_1_revenue', 0); 
+		cfline( 'cf_ancillary_services_2_revenue', 0); 
+		cfline( 'cf_ancillary_services_3_revenue', 0); 
+		cfline( 'cf_ancillary_services_4_revenue', 0); 
+	}
+	else
+	{
+		cfline( 'cf_ppa_price' , -2 );
+		cfline( 'cf_energy_value', 0); 
+		cfline( 'cf_curtailment_value', 0); 
+		cfline( 'cf_capacity_payment', 0); 
+	}
+
 	if (tech == 'Fuel Cell')
 		cfline( 'cf_thermal_value', 0);
 	if ( has_debt )
@@ -1479,6 +1497,25 @@ cashflow{ 'Commercial' } = define()
 }; 
  
 cashflow{ 'Single Owner' } = define()  
+{ 
+	//cf_formatting_examples();
+	cf_production();
+	cf_revenue(); 
+	cf_operating_expenses();
+	cf_earnings();
+	cf_project_cash_flows();
+	cf_returns();
+	cf_levelized_metrics();
+	cf_income_tax();
+	cf_incentives(); 
+	cf_debt_repayment();
+	cf_debt_sizing();	 
+    cf_reserves(); 
+	depreciation_tables(); 
+ 
+}; 
+
+cashflow{ 'Merchant Plant' } = define()  
 { 
 	//cf_formatting_examples();
 	cf_production();
