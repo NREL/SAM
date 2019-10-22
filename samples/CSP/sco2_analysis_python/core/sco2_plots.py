@@ -49,6 +49,9 @@ def filter_dict_index_and_keys(data, i, keys):
 
 def ceil_nearest_base(x, base):
     return int(base * math.ceil(float(x)/base))
+
+def floor_nearest_base(x, base):
+    return int(base * math.floor(float(x)/base))
   
 class C_sco2_cycle_TS_plot:
 
@@ -471,6 +474,8 @@ class C_sco2_cycle_PH_plot:
         self.lc = 'k'
         self.mt = 'o'
         self.markersize = 4
+
+        self.y_min = 10000
         
     def plot_new_figure(self):
         
@@ -490,9 +495,22 @@ class C_sco2_cycle_PH_plot:
             fig1.savefig(str_file_name)
             
             plt.close()
-            
-            
-    def plot_from_existing_axes(self, ax_in):        
+
+    def set_y_min(self):
+
+        if (self.dict_cycle_data["cycle_config"] == 1):
+            P_min = self.dict_cycle_data["P_state_points"][0]
+        else:
+            P_min = self.dict_cycle_data["P_state_points"][10]
+
+        if(P_min > 5):
+            P_min = floor_nearest_base(P_min, 5)
+        else:
+            P_min = floor_nearest_base(P_min, 0.5)
+
+        self.y_min = min(self.y_min, P_min)
+
+    def plot_from_existing_axes(self, ax_in):
 
         eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
     
@@ -520,6 +538,8 @@ class C_sco2_cycle_PH_plot:
             self.plot_RC_points_and_lines(ax_in)
         else:
             self.plot_PC_points_and_lines(ax_in)
+            
+        self.set_y_min()
     
     def plot_RC_points_and_lines(self, ax_in):
         
@@ -620,7 +640,7 @@ class C_sco2_cycle_PH_plot:
         ax_in.grid(alpha=0.3,which='minor')
         
         deltaP_base = 5
-        ax_in.set_ylim(ceil_nearest_base(y_down - deltaP_base, deltaP_base), ceil_nearest_base(y_up, deltaP_base))
+        ax_in.set_ylim(self.y_min, ceil_nearest_base(y_up, deltaP_base))
         y_down, y_up = ax_in.get_ylim()
         
         deltah_base = 100
