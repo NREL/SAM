@@ -86,8 +86,8 @@ function aepf_metrics()
 	metric( 'lppa_real', {'label'='Levelized PPA price (real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
 	metric( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'lcoe_real', {'label'='Levelized COE (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'flip_actual_irr', {'label'='Investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'flip_actual_year', {'label'='Year investor IRR acheived', 'post'=' '} );
+	metric( 'flip_actual_irr', {'label'='Investor IRR in flip year', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'flip_actual_year', {'label'='Flip year', 'post'=' '} );
 	metric( 'tax_investor_aftertax_irr', {'label'='Investor IRR at end of project', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'tax_investor_aftertax_npv', {'label'='Investor NPV over project life', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'sponsor_aftertax_irr', {'label'='Developer IRR at end of project', 'mode'='f', 'post'=' %', 'deci'='2' } );
@@ -104,8 +104,8 @@ function lpf_metrics()
 	metric( 'lppa_real', {'label'='Levelized PPA price (real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
 	metric( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'lcoe_real', {'label'='Levelized COE (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'flip_actual_irr', {'label'='Investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'flip_actual_year', {'label'='Year investor IRR acheived', 'post'=' '} );
+	metric( 'flip_actual_irr', {'label'='Investor IRR in flip year', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'flip_actual_year', {'label'='Flip year', 'post'=' '} );
 	metric( 'tax_investor_aftertax_irr', {'label'='Investor IRR at end of project', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'tax_investor_aftertax_npv', {'label'='Investor NPV over project life', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'sponsor_aftertax_irr', {'label'='Developer IRR at end of project', 'mode'='f', 'post'=' %', 'deci'='2' } );
@@ -131,7 +131,7 @@ function sl_metrics()
 	metric( 'tax_investor_aftertax_npv', {'label'='Investor NPV over project life', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'sponsor_aftertax_irr', {'label'='Developer IRR at end of project', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'sponsor_aftertax_npv', {'label'='Developer NPV over project life', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'sale_of_property', {'label'='Sale of property', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
 function pvwatts_metrics() 
