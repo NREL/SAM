@@ -47,10 +47,14 @@ function cf_formatting_examples()
 
 function cf_production()
 { 
+	fin = financing();
 	cfline( 'PRODUCTION (AC KWH)', -1); 
-	cfline( 'cf_energy_net', 0); 
-	cfline( "CURTAILMENT (AC KWH)", -1); 
-	cfline( 'cf_energy_curtailed', 0); // no decimal places with thousands separator 
+	cfline( 'cf_energy_net', 0);
+	if ( fin == "Single Owner" || fin == "Merchant Plant" ) 
+	{
+		cfline( "CURTAILMENT (AC KWH)", -1); 
+		cfline( 'cf_energy_curtailed', 0);
+	}	
 	cfline( '' );
 }
 
@@ -86,7 +90,7 @@ function cf_revenue()
 	fin = financing();
 	has_debt = ( fin == 'Single Owner' ) || ( fin == 'Host Developer' ) || ( fin == 'Leveraged Parntership Flip' );
 	cfline( 'REVENUE', -1);
-	if (fin == 'Merchant Plant')
+	if ( fin == 'Merchant Plant' )
 	{
 		cfline( 'cf_curtailment_value', 0); 
 		cfline( 'cf_capacity_payment', 0); 
@@ -96,12 +100,17 @@ function cf_revenue()
 		cfline( 'cf_ancillary_services_3_revenue', 0); 
 		cfline( 'cf_ancillary_services_4_revenue', 0); 
 	}
-	else
+	elseif ( fin == "Single Owner" )
 	{
 		cfline( 'cf_ppa_price' , -2 );
 		cfline( 'cf_energy_value', 0); 
 		cfline( 'cf_curtailment_value', 0); 
 		cfline( 'cf_capacity_payment', 0); 
+	}
+	else
+	{
+		cfline( 'cf_ppa_price' , -2 );
+		cfline( 'cf_energy_value', 0); 
 	}
 
 	if (tech == 'Fuel Cell')
