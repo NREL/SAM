@@ -1,5 +1,5 @@
 1
-753
+754
 AntiFrPar
 1
 1
@@ -2217,6 +2217,12 @@ file_name
 4
 48
 tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+forecast_price_signal_model
+1
+1
+1
+1
+1
 hce_library
 1
 4

@@ -1,5 +1,5 @@
 1
-1143
+1144
 A_aperture
 1
 2
@@ -4415,6 +4415,12 @@ fluid_dens_outlet_temp
 1
 1
 706.384
+forecast_price_signal_model
+1
+1
+1
+1
+1
 fthrctrl
 1
 1

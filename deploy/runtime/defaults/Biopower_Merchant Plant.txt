@@ -1,5 +1,5 @@
 1
-691
+692
 Label
 1
 1
@@ -3127,6 +3127,12 @@ file_name
 4
 35
 fargo_nd_46.9_-96.8_mts1_60_tmy.csv
+forecast_price_signal_model
+1
+1
+1
+1
+1
 ibi_fed_amount
 1
 1

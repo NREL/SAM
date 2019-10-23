@@ -614,7 +614,21 @@ Bold
 2
 1
 
-10
+11
+forecast_price_signal_model
+3
+1
+ 
+ 
+Merchant Plant Revenue
+0
+8
+1
+1
+1
+1
+0
+Default
 mp_ancserv1_revenue
 3
 3
@@ -761,7 +775,15 @@ Merchant Plant Revenue
 
 DataLifetimeMatrix
 
-0
+125
+equations{'forecast_price_signal_model'} = define()
+{
+	if (financing() == "Merchant Plant")
+		return 1;
+	else
+		return 0;
+};
+
 1272
 function update_merchant_plant_inputs()
 {
