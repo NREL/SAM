@@ -41,6 +41,7 @@ configopt( 'Wind Power',                  { 'long_name'='Wind',                 
 configopt( 'Biopower',                    { 'long_name'='Biomass combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
 configopt( 'Geothermal Power',            { 'long_name'='Geothermal',                             'short_name'='Geothermal',       'description'='Geothermal power model for hydrothermal and EGS systems with flash or binary conversion' } );
 configopt( 'Solar Water Heating',         { 'long_name'='Solar water heating',                    'short_name'='Solar water',      'description'='Solar water heating model for residential and commercial building applications' } );
+configopt( 'Fuel Cell',                   { 'long_name'='Fuel Cell',                    		  'short_name'='Fuel Cell',        'description'='Fuel cell with photovoltaic system and optional electric battery for commercial building or PPA project applications' } );
 configopt( 'Generic System',              { 'long_name'='Generic system',                         'short_name'='Generic',          'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
 configopt( 'MSPT',     	                  { 'long_name'='CSP power tower molten salt',            'short_name'='Tower (salt)',     'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
 configopt( 'DSPT',     	                  { 'long_name'='CSP power tower direct steam',           'short_name'='Tower (steam)',    'description'='CSP direct steam power tower system using heat transfer and thermodynamic component models' } );
@@ -53,8 +54,8 @@ configopt( 'MSLF',        				  { 'long_name'='CSP linear Fresnel molten salt', 
 if ( en_iscc ) { configopt( 'ISCC',       { 'long_name'='CSP integrated solar combined cycle',    'short_name'='Tower Salt ISCC',  'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
 configopt( 'Physical Trough IPH',         { 'long_name'='Process heat parabolic trough',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'DSGL IPH',                    { 'long_name'='Process heat linear direct steam',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
-configopt( 'MHKwave',                     { 'long_name'='Marine Energy- Wave',                    'short_name'='ME- Wave',          'description'='Wave marine hydrokinetic system' });
-configopt( 'MHKtidal',                    { 'long_name'='Marine Energy- Tidal',                   'short_name'='ME- Tidal',         'description'='Tidal marine hydrokinetic system' });
+configopt( 'MHKwave',                     { 'long_name'='Marine and hydrokinetic wave',           'short_name'='MHK Wave',          'description'='Marine and hydrokinetic wave energy system' });
+configopt( 'MHKtidal',                    { 'long_name'='Marine and hydrokinetic tidal',          'short_name'='MHK Tidal',         'description'='Marine and hydrokinetic tidal energy system' });
 
 configopt( 'LCOE Calculator',             { 'long_name'='LCOE calculator (FCR method)',           'short_name'='LCOE Calculator',  'description'='Calculate LCOE using fixed charge rate method' } );
 configopt( 'Residential',                 { 'long_name'='Residential (distributed)',           	  'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
@@ -66,7 +67,7 @@ configopt( 'Leveraged Partnership Flip',  { 'long_name'='PPA partnership flip wi
 configopt( 'All Equity Partnership Flip', { 'long_name'='PPA partnership flip without debt (utility)',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
 configopt( 'Sale Leaseback',              { 'long_name'='PPA sale leaseback (utility)',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
 configopt( 'Single Owner PPA Buy Rate',   { 'long_name'='PPA single owner with buy rate (utility)',         'short_name'='Single owner buy rate',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
-configopt( 'Merchant Plant',   { 'long_name'='Merchant plant (utility)',         'short_name'='Merchant plant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
+configopt( 'Merchant Plant',              { 'long_name'='Merchant plant (utility)',                         'short_name'='Merchant plant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
 configopt( 'None',                        { 'long_name'='No financial model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
 enum { LOAD_SIMPLE, LOAD_BELPE, NO_LOAD };
@@ -264,15 +265,16 @@ function setup_commercial_pages( mode, degradation ) // mode determines whether 
 function setup_grid_page()
 {
   addpage( [[ 'Grid Interconnection', 'Grid Curtailment']],
-           { 'sidebar'='Grid Limits', 'help'='financial_grid' } );					
+           { 'sidebar'='Grid Limits', 'help'='grid_limits' } );					
 }
 
+// note 'collapsed by default' does not seem to do anything. To set default behavior, set default value of collapsible_var. For example, to collapse description by default, use Defaults Manager to set ur_desc_is_shown = 0.
 function setup_utility_rate()
 {
 	addpage( [[ 'Utility Rate - Flat',
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true }, 
-			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=true },
-			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=true } ]],
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false } ]],
 		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates' } );
 }
 
@@ -281,8 +283,8 @@ function setup_utility_rate_optional()
 	addpage( [[{'name'='Utility Rate - Enable','caption'='No Electricity Rate'}],
 			  [{'name'='Utility Rate - Flat', 'caption'='Enable Electricity Rate'},
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true }, 
-			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=true },
-			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=true } ]],
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false} ]],
 		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates', 'exclusive_var'='en_electricity_rates' } );
 }
 
@@ -361,7 +363,7 @@ function setup_single_owner_pages(degradation)
   			    { 'name'='Financial TOD Factors', 'caption'='Energy TOD Factors', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true }, 
 			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Financial Curtailment Price', 'caption'='Curtailment Payments', 'collapsible'=true, 'collapsible_var'='revenue_curtailment_is_shown', 'collapsed_by_default'=true } ]],
-            { 'sidebar'='Revenue', 'help'='financial_revenue' } );					
+            { 'sidebar'='Revenue', 'help'='revenue' } );					
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );					
   addpage( [['Financial Depreciation Detailed' ]], 
@@ -387,7 +389,7 @@ function setup_merchant_plant_pages(degradation)
                {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]], 
            { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
   addpage( [[ 'Financial Merchant Plant', 'Financial Capacity Payments']], 
-            { 'sidebar'='Revenue', 'help'='financial_revenue' } );					
+            { 'sidebar'='Revenue', 'help'='revenue' } );					
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );					
   addpage( [['Financial Depreciation Detailed' ]], 
@@ -553,10 +555,10 @@ function setup_fuel_cell_pages_btm()
 				   'Battery Thermal',
 					]],
 				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
-	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell'});
-		addpage([['Fuel Cell Dispatch',
+	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
+	addpage([['Fuel Cell Dispatch',
 			'Battery Dispatch Behind the Meter',
-			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch'});
+			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});
 	addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
            {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
@@ -580,10 +582,10 @@ function setup_fuel_cell_pages_fom()
 				   'Battery Thermal',
 					]],
 				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
-	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell'});
+	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
 	addpage([['Fuel Cell Dispatch',
 			'Battery Dispatch Front of Meter',
-			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch'});
+			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});
 	addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
            {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
@@ -596,7 +598,7 @@ function setup_fuel_cell_pages_fom()
 function setup_csp_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
-	addpage( [[ 'Physical Trough System Design' ]], { 'sidebar'='System Design', 'help'='troughphysical_solar_field' } );
+	addpage( [[ 'Physical Trough System Design' ]], { 'sidebar'='System Design', 'help'='troughphysical_system_design' } );
 	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field', 'help'='troughphysical_solar_field' } );
 	addpage( [[ 'Physical Trough Collector Header',
 	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
@@ -621,7 +623,7 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
 	addpage( [[ 'Physical Trough System Control' ,
 	  {'name' = 'Physical Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
-	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
+	  { 'sidebar'='System Control', 'help'='troughphysical_system_control' } );
 }
 
 function setup_cst_physical_trough_pages()
@@ -1034,8 +1036,8 @@ setconfig( 'Wind Power', 'Residential' );
 setmodules( ['windpower', 'grid', 'utilityrate5', 'cashloan']);
 setup_windpower_pages();
 addpage( [['Wind Farm Costs','O and M Costs',
-		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
-		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
+		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown','collapsed_by_default'=true},
+		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown','collapsed_by_default'=true}]],
 		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
 setup_residential_pages( LOAD_SIMPLE, LIFETIME_SYSTEM ); //does not include building load calculator
 
@@ -1161,23 +1163,23 @@ setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for comme
 setconfig( 'Fuel Cell', 'Commercial');
 setmodules( ['pvwattsv5', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
+addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='fuelcell_pv_system' } );
 setup_fuel_cell_pages_btm();
-addpage( [[ 'Fuel Cell Costs','Fuel Cell O and M Costs' ]], { 'sidebar'='System Costs', 'help'='fuel_cell_costs' } );
+addpage( [[ 'Fuel Cell Costs','Fuel Cell O and M Costs' ]], { 'sidebar'='System Costs', 'help'='fuelcell_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE,LIFETIME_PV); //belpe not valid for commercial
-addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rate'});
+addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
 addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
 
 setconfig( 'Fuel Cell', 'Single Owner');
 setmodules( ['pvwattsv5', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
+addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='fuelcell_pv_system' } );
 setup_fuel_cell_pages_fom();
-addpage( [[ 'Fuel Cell Costs','Fuel Cell O and M Costs' ]], { 'sidebar'='System Costs', 'help'='fuel_cell_costs' } );
+addpage( [[ 'Fuel Cell Costs','Fuel Cell O and M Costs' ]], { 'sidebar'='System Costs', 'help'='fuelcell_system_costs' } );
 setup_single_owner_pages(LIFETIME_PV);
 setup_utility_rate_optional();
-addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rate'});
+addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
 
 
 // Geothermal Power ////////////////////////////////////////////////////////////
@@ -1939,11 +1941,11 @@ setup_merchant_plant_pages(LIFETIME_SYSTEM);
 // Marine Hydrokinetic ////////////////////////////////////////////////////////////////////
 function setup_mhkwave_pages()
 {
-	addpage( [[ 'MHK Wave Resource']], { 'sidebar'='Wave Resource', 'help'='wave_resource' } );
-	addpage( [[ 'MHK Wave Device' ]], { 'sidebar'='Wave Energy Converter', 'help'='wave_device' } );
-	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='mhk_wave_farm' } );
+	addpage( [[ 'MHK Wave Resource']], { 'sidebar'='Wave Resource', 'help'='mhk_wave_resource' } );
+	addpage( [[ 'MHK Wave Device' ]], { 'sidebar'='Wave Energy Converter', 'help'='mhk_wave_converter' } );
+	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='mhk_wave_array' } );
 	addpage( [[ 'MHK Losses' ]], { 'sidebar'='Losses', 'help'='mhk_wave_losses' } );
-	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='mhk_system_costs' } );
+	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='mhk_wave_system_costs' } );
 }
 setconfig( 'MHKwave', 'LCOE Calculator' );
 setmodules( ['wave_file_reader', 'mhk_wave', 'lcoefcr']);
@@ -1952,11 +1954,11 @@ addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Para
 
 function setup_mhktidal_pages()
 {
-	addpage( [[ 'MHK Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='wind_resource' } );
-	addpage( [[ 'MHK Tidal Device' ]], { 'sidebar'='Tidal Energy Converter', 'help'='wind_turbine' } );
-	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='mhk_wind_farm' } );
-	addpage( [[ 'MHK Losses' ]], { 'sidebar'='Losses', 'help'='mhk_wave_losses' } );
-	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+	addpage( [[ 'MHK Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='mhk_tidal_resource' } );
+	addpage( [[ 'MHK Tidal Device' ]], { 'sidebar'='Tidal Energy Converter', 'help'='mhk_tidal_converter' } );
+	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='mhk_tidal_array' } );
+	addpage( [[ 'MHK Losses' ]], { 'sidebar'='Losses', 'help'='mhk_tidal_losses' } );
+	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='mhk_tidal_system_costs' } );
 }
 setconfig( 'MHKtidal', 'LCOE Calculator' );
 setmodules( ['mhk_tidal', 'lcoefcr']);
