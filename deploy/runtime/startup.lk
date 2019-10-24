@@ -67,7 +67,7 @@ configopt( 'Leveraged Partnership Flip',  { 'long_name'='PPA partnership flip wi
 configopt( 'All Equity Partnership Flip', { 'long_name'='PPA partnership flip without debt (utility)',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
 configopt( 'Sale Leaseback',              { 'long_name'='PPA sale leaseback (utility)',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
 configopt( 'Single Owner PPA Buy Rate',   { 'long_name'='PPA single owner with buy rate (utility)',         'short_name'='Single owner buy rate',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
-configopt( 'Merchant Plant',              { 'long_name'='Merchant plant (utility)',                         'short_name'='Merchant plant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
+configopt( 'Merchant Plant',              { 'long_name'='Merchant plant (utility)',                         'short_name'='Merchant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
 configopt( 'None',                        { 'long_name'='No financial model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
 enum { LOAD_SIMPLE, LOAD_BELPE, NO_LOAD };
@@ -360,10 +360,10 @@ function setup_single_owner_pages(degradation)
                {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]], 
            { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
   addpage( [[ 'Financial Solution Mode Single Owner', 
-  			    { 'name'='Financial TOD Factors', 'caption'='Energy TOD Factors', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true }, 
+  			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true }, 
 			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Financial Curtailment Price', 'caption'='Curtailment Payments', 'collapsible'=true, 'collapsible_var'='revenue_curtailment_is_shown', 'collapsed_by_default'=true } ]],
-            { 'sidebar'='Revenue', 'help'='revenue' } );					
+            { 'sidebar'='Revenue', 'help'='revenue_ppa' } );					
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );					
   addpage( [['Financial Depreciation Detailed' ]], 
@@ -387,9 +387,9 @@ function setup_merchant_plant_pages(degradation)
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
               {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
                {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]], 
-           { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+           { 'sidebar'='Financial Parameters', 'help'='fin_merchant_plant' }  );
   addpage( [[ 'Financial Merchant Plant', 'Financial Capacity Payments']], 
-            { 'sidebar'='Revenue', 'help'='revenue' } );					
+            { 'sidebar'='Revenue', 'help'='revenue_merchant_plant' } );					
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );					
   addpage( [['Financial Depreciation Detailed' ]], 
