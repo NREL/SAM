@@ -3787,9 +3787,8 @@ lib_is_bifacial
 library_folder_list
 1
 4
-125
-C:\Users\sjanz\SAM Downloaded Weather Files
-C:\Projects\SAM\Documentation\P50P90\2018.5.21_Trough_IPH_Paul\P50 P90 AZ PHOENIX
+1
+x
 library_paths
 1
 4
@@ -5157,25 +5156,25 @@ mp_enable_ancserv1
 1
 1
 1
-2.76677e-322
+0
 mp_enable_ancserv2
 1
 1
 1
 1
-2.76677e-322
+0
 mp_enable_ancserv3
 1
 1
 1
 1
-2.76677e-322
+0
 mp_enable_ancserv4
 1
 1
 1
 1
-2.76677e-322
+0
 mp_enable_energy_market_revenue
 1
 1
