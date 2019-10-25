@@ -1,0 +1,97 @@
+//
+// This script demonstrates how to use LK to read and write data to an Excel
+// file. It replicates the functionality of SAM's Excel Exchange feature, and
+// uses the same sample file as the Excel Exchange example so you can compare
+// the two approaches.
+// 
+// The script is designed to be run from the excel-exchange-lk-example.sam
+// file with the exel-exchange-example.xlsx in the same folder.
+//
+// Tested in SAM 2018.11.11
+//
+
+//check operating system and exit if not Windows
+os = ostype();
+if ( os != 'win32' && os != 'win64' )
+{
+	msgbox('Excel automation only works in Windows!\nExiting script.');
+	exit;
+}
+
+//set the current SAM case
+active_case('Residential PV System');
+
+//create an Excel object and open the Excel file
+xl = xl_create();
+path = cwd();
+f_name = path + '/excel-exchange-example.xlsx';
+if ( file_exists( f_name ) )
+{
+	xl_open(xl, f_name );
+	outln('Exchanging data with Excel...');
+}
+else
+{
+	msgbox( 'Could not find Excel file!\n' + f_name );
+	exit;
+}
+
+//Step 1: read input values from SAM and write them to Excel.
+//Do this first because the costs in Step 2 are calculated
+//using Excel formulas based on the number of modules and inverters.
+n_modules = get('total_modules');
+n_inverters = get('inverter_count');
+
+xl_set(xl,n_modules,'number_of_modules');
+xl_set(xl,n_inverters,'number_of_inverters');
+
+//Step 2: read values from Excel
+//These values will be calculated using the values from Step 1.
+//values are read from the XL object as strings, so need to be 
+//converted to numbers xl_get() can read either cell references (D33)
+// or cell names (module_cost) from Excel.
+module = to_real( xl_get(xl,'module_cost') );
+inverter = to_real( xl_get(xl,'D33') );
+bos = to_real( xl_get(xl,'bos_cost') );
+labor = to_real( xl_get(xl,'labor_cost') );
+overhead = to_real( xl_get(xl, 'margin_cost') );
+
+//close the Excel file and free the Excel object
+xl_close(xl);
+xl_free(xl);
+
+//Step 3: Set values of SAM inputs
+set('module_costunits',0); //set module cost units to $/Wdc
+set('per_module',module);
+set('inverter_costunits',1); //set inverter cost units to $/Wdc
+set('per_inverter',inverter);
+set('bos_equip_perwatt',bos);
+set('install_labor_perwatt',labor);
+set('install_margin_perwatt',overhead);
+
+//Step 4: Run simulation and display results
+msg="";
+ok = simulate(msg,1);
+if (ok==true) 
+{
+	outln("Simulation complete with values from Excel. See results in the " + active_case() + " case.");
+	outln('\nSent to Excel:');
+	outln('Number of modules = ' + get('total_modules') );
+	outln('Number of inverters = ' + get('inverter_count') );
+	outln('\nCaptured from Excel:');
+	outln('Module cost ($/WDC) = ' + get('per_module') );
+	outln('Inverter cost ($/WDC) = ' + get('per_inverter') );
+	outln('Balance of system equipment, capacity ($/WDC) = ' + get('bos_equip_perwatt') );
+	outln('Installation labor, capacity ($/WDC) = ' + get('install_labor_perwatt') );
+	outln('Installer margin and overhead, capacity ($/WDC) = ' + get('install_margin_perwatt') );
+	outln('\nResult:');
+	outln('NPV = $' + get('npv') );
+}	
+else 
+{
+	outln("Simulation failed with the following messages:\n",msg);
+}	
+
+
+
+
