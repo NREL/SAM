@@ -5,7 +5,7 @@ Lifetime PV
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -22,6 +22,9 @@ Width
 Height
 3
 107
+Tool Tip
+5
+0
 Caption
 5
 32
@@ -32,23 +35,26 @@ Bold
 DataArray
 
 1
-9
+10
 Name
 5
 18
 ac_lifetime_losses
 X
 3
-279
+246
 Y
 3
-171
+174
 Width
 3
-90
+184
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 2
@@ -64,7 +70,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 17
@@ -81,6 +87,9 @@ Width
 Height
 3
 75
+Tool Tip
+5
+0
 Caption
 5
 25
@@ -91,7 +100,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 21
@@ -108,6 +117,9 @@ Width
 Height
 3
 45
+Tool Tip
+5
+0
 Caption
 5
 163
@@ -136,7 +148,7 @@ AlignTop
 SchedNumeric
 
 1
-11
+12
 Name
 5
 14
@@ -153,6 +165,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -173,29 +188,29 @@ Type a degradation rate (%) for each year. Each year's rate applies to the Year 
 TabOrder
 3
 2
-DataArray
+DataLifetimeArray
 
 1
-9
+12
 Name
 5
 18
 dc_lifetime_losses
 X
 3
-279
+246
 Y
 3
-141
+144
 Width
 3
-90
+184
 Height
 3
 24
-Mode
-3
-2
+Tool Tip
+5
+0
 Label
 5
 0
@@ -205,10 +220,19 @@ Description
 TabOrder
 3
 4294967295
+AnalysisPeriod
+3
+25
+AnnualEnabled
+2
+0
+WeeklyEnabled
+2
+0
 Label
 
 1
-12
+13
 Name
 5
 19
@@ -225,6 +249,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 40
@@ -253,23 +280,26 @@ AlignTop
 CheckBox
 
 1
-8
+9
 Name
 5
 21
 en_ac_lifetime_losses
 X
 3
-60
+24
 Y
 3
-171
+174
 Width
 3
-216
+219
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 31
@@ -283,23 +313,26 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 21
 en_dc_lifetime_losses
 X
 3
-60
+24
 Y
 3
-141
+144
 Width
 3
-216
+219
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 31
@@ -313,7 +346,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -330,6 +363,9 @@ Width
 Height
 3
 111
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -340,14 +376,14 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
 object 7
 X
 3
-417
+447
 Y
 3
 18
@@ -357,6 +393,9 @@ Width
 Height
 3
 90
+Tool Tip
+5
+0
 Caption
 5
 164
@@ -385,14 +424,14 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
 object 71
 X
 3
-417
+447
 Y
 3
 132
@@ -402,6 +441,9 @@ Width
 Height
 3
 84
+Tool Tip
+5
+0
 Caption
 5
 172
@@ -501,7 +543,7 @@ Degradation and Lifetime
 Default
 
 0
-585
+845
 function enable_lifetime_losses()
 {
 	enable('dc_lifetime_losses', ${en_dc_lifetime_losses});
@@ -517,6 +559,9 @@ on_load{'Lifetime PV'} = define() {
 		caption = "Applies to the array's hourly AC output.";
 	}
 	property("degradation_message", "Caption", caption);
+	property("dc_lifetime_losses", "Description","Daily DC loss over project life of " + value("analysis_period") + " years.");
+	property("dc_lifetime_losses", "Label","DC Loss (%/day)");
+	property("dc_lifetime_losses","AnalysisPeriod",value("analysis_period"));
 };
 
 

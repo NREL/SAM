@@ -365,7 +365,7 @@ END_EVENT_TABLE()
 
 void AFSchedNumeric::OnEditSchedule(wxCommandEvent &)
 {
-	SchedNumericDialog dlg(this, "Edit Schedule", GetLabel(), GetDescription(), m_fixedLen < 1 );
+	SchedNumericDialog dlg(this, "Edit Time Series Data (Schedule Numeric)", GetLabel(), GetDescription(), m_fixedLen < 1 );
 	wxExtGridCtrl *grid = dlg.GetGrid();
 
 	if ( m_fixedLen > 0 )
@@ -516,7 +516,7 @@ wxString AFTableDataCtrl::GetDescription()
 
 void AFTableDataCtrl::OnPressed(wxCommandEvent &evt)
 {
-	AFTableDataDialog dlg( this, "Edit values" );
+	AFTableDataDialog dlg( this, "Edit Values (Table Data)" );
 	dlg.SetData( m_values );
 	if ( wxID_OK == dlg.ShowModal() )
 	{
@@ -670,7 +670,7 @@ END_EVENT_TABLE()
 
 void AFMonthlyFactorCtrl::OnPressed(wxCommandEvent &evt)
 {
-	MonthlyFactorDialog dlg(this, "Edit Values");
+	MonthlyFactorDialog dlg(this, "Edit Values (Monthly Factors)");
 	
 	dlg.SetDescription( mDescription );
 	dlg.SetData( mData );
@@ -1791,7 +1791,7 @@ int AFDataArrayButton::GetMode()
 
 void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	AFDataArrayDialog dlg( this, "Edit Time Series Data", m_description, mDataLabel );
+	AFDataArrayDialog dlg( this, "Edit Time Series Data (Data Array)", m_description, mDataLabel );
 	
 	dlg.SetDataLabel( mDataLabel );
 	dlg.SetMode(mMode);
@@ -1993,7 +1993,7 @@ private:
 
 public:
 	AFDataLifetimeArrayDialog(wxWindow *parent, const wxString &title, const wxString &desc, const wxString &inputLabel, const bool &optannual = false, const bool &optweekly=false)
-		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(430, 510),
+		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(500, 600),
 			wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 	{
 		mLabel = inputLabel;
@@ -2459,7 +2459,7 @@ void AFDataLifetimeArrayButton::OnPressed(wxCommandEvent &evt)
 	if (mData.size() != newSize)
 		mData.resize(newSize);
 
-	AFDataLifetimeArrayDialog dlg(this, "Edit Time Series Data", mDescription, mDataLabel, mAnnualEnabled, mWeeklyEnabled);
+	AFDataLifetimeArrayDialog dlg(this, "Edit Time Series Data (Lifetime Array)", mDescription, mDataLabel, mAnnualEnabled, mWeeklyEnabled);
 	dlg.SetAnalysisPeriod(mAnalysisPeriod);
 	dlg.SetData(mData);
 	dlg.SetDataLabel(mDataLabel);
@@ -3234,7 +3234,7 @@ void AFDataLifetimeMatrixButton::OnPressed(wxCommandEvent &evt)
 	if (mData.nrows() != newSize)
 		mData.resize_preserve(newSize, mData.ncols(), 0.0);
 
-	AFDataLifetimeMatrixDialog dlg(this, "Edit Time Series Data", mDescription, mDataLabel, mColumnLabels, mAnnualEnabled, mWeeklyEnabled);
+	AFDataLifetimeMatrixDialog dlg(this, "Edit Time Series Data (Lifetime Matrix)", mDescription, mDataLabel, mColumnLabels, mAnnualEnabled, mWeeklyEnabled);
 	dlg.SetAnalysisPeriod(mAnalysisPeriod);
 	dlg.SetData(mData);
 	dlg.SetDataLabel(mDataLabel);
@@ -3456,7 +3456,7 @@ wxString AFStringArrayButton::GetStringLabel()
 
 void AFStringArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	AFStringArrayDialog dlg(this, "Edit TIme Series Data", m_description, mStringLabel);
+	AFStringArrayDialog dlg(this, "Edit Time Series Data (String Array)", m_description, mStringLabel);
 
 	dlg.SetStringLabel(mStringLabel);
 	dlg.SetData(&mData);
