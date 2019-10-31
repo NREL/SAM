@@ -534,6 +534,7 @@ class wxUIDataLifetimeMatrixObject : public wxUIObject
 {
 public:
 	wxUIDataLifetimeMatrixObject() {
+		AddProperty("Mode", new wxUIProperty(1, "Single Value,Monthly,Daily,Hourly,Subhourly"));
 		AddProperty("ColumnLabels", new wxUIProperty(wxString("")));
 		AddProperty("Label", new wxUIProperty(wxString("")));
 		AddProperty("Description", new wxUIProperty(wxString("")));
@@ -548,6 +549,7 @@ public:
 	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative(wxWindow *parent) {
 		AFDataLifetimeMatrixButton *da = new AFDataLifetimeMatrixButton(parent, wxID_ANY);
+		da->SetMode(Property("Mode").GetInteger());
 		da->SetDescription(Property("Description").GetString());
 		da->SetDataLabel(Property("Label").GetString());
 		da->SetColumnLabels(Property("ColumnLabels").GetString());
@@ -570,6 +572,7 @@ public:
 	{
 		if (AFDataLifetimeMatrixButton *da = GetNative<AFDataLifetimeMatrixButton>())
 		{
+			if (id == "Mode") da->SetMode(p->GetInteger());
 			if (id == "AnalysisPeriod") da->SetAnalysisPeriod(p->GetInteger());
 			if (id == "Label") da->SetDataLabel(p->GetString());
 			if (id == "ColumnLabels") da->SetColumnLabels(p->GetString());
