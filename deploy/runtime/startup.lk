@@ -1747,8 +1747,8 @@ setconfig( 'DSGL IPH', 'None' );
 setmodules( ['linear_fresnel_dsg_iph', 'grid' ] );
 setup_DSGL_IPH_pages();
 
-setconfig( 'DSGL IPH', 'grid', 'LCOH Calculator' );
-setmodules( ['linear_fresnel_dsg_iph', 'iph_to_lcoefcr', 'lcoefcr'] );
+setconfig( 'DSGL IPH', 'LCOH Calculator' );
+setmodules( ['linear_fresnel_dsg_iph', 'grid', 'iph_to_lcoefcr', 'lcoefcr'] );
 setup_DSGL_IPH_pages();
 setup_iph_lcoefcr_pages();
 
