@@ -27,15 +27,15 @@ Tool Tip
 0
 Caption
 5
-32
-PV Array Performance Degradation
+21
+Annual DC Degradation
 Bold
 2
 1
-DataArray
+DataLifetimeMatrix
 
 1
-10
+13
 Name
 5
 18
@@ -55,18 +55,29 @@ Height
 Tool Tip
 5
 0
-Mode
-3
-2
+ColumnLabels
+5
+15
+AC Loss (%/day)
 Label
 5
-0
+24
+Lifetime daily AC losses
 Description
 5
 0
 TabOrder
 3
 4294967295
+AnalysisPeriod
+3
+25
+AnnualEnabled
+2
+0
+WeeklyEnabled
+2
+0
 GroupBox
 
 1
@@ -93,7 +104,7 @@ Tool Tip
 Caption
 5
 25
-Battery lifetime analysis
+Battery Lifetime Analysis
 Bold
 2
 1
@@ -122,8 +133,8 @@ Tool Tip
 0
 Caption
 5
-163
-In this mode, multiyear degradation of the battery is modeled.  Select the preferred degradation, replacement criteria and  replacement costs on the "Battery" page
+223
+In "Simulation over analysis period" mode, SAM runs a simulation for each year in the analysis period to model battery degradation and replacement costs based on the parameters on the Battery Storage and System Costs pages.
 TextColour
 4
 0
@@ -188,10 +199,10 @@ Type a degradation rate (%) for each year. Each year's rate applies to the Year 
 TabOrder
 3
 2
-DataLifetimeArray
+DataLifetimeMatrix
 
 1
-12
+13
 Name
 5
 18
@@ -211,9 +222,14 @@ Height
 Tool Tip
 5
 0
+ColumnLabels
+5
+15
+DC Loss (%/day)
 Label
 5
-0
+24
+Lifetime daily DC losses
 Description
 5
 0
@@ -254,8 +270,8 @@ Tool Tip
 0
 Caption
 5
-40
-Applies to the array's hourly DC output.
+64
+Applies to the photovoltaic array's DC output in each time step.
 TextColour
 4
 0
@@ -383,13 +399,13 @@ Name
 object 7
 X
 3
-447
+441
 Y
 3
 18
 Width
 3
-336
+342
 Height
 3
 90
@@ -431,13 +447,13 @@ Name
 object 71
 X
 3
-447
+441
 Y
 3
 132
 Width
 3
-336
+342
 Height
 3
 84
@@ -446,8 +462,8 @@ Tool Tip
 0
 Caption
 5
-172
-Applies a daily loss to the system on either the DC output or the AC output. These inputs could be used to represent system outages or degradation at a more granular level.
+154
+Applies a daily loss to the DC output, AC output, or both over the analysis period. These inputs could be used to represent system outages or degradation.
 TextColour
 4
 0
@@ -475,9 +491,10 @@ ac_lifetime_losses
 3
 2
 Lifetime daily AC losses
-%
+%/day
 Degradation and Lifetime
-0
+7
+AC Loss
 3
 1
 2
@@ -488,7 +505,7 @@ Default
 dc_degradation
 3
 2
-Module degradation rate
+DC degradation rate
 %/year
 Degradation and Lifetime
 0
@@ -503,9 +520,10 @@ dc_lifetime_losses
 3
 2
 Lifetime daily DC losses
-%
+%/day
 Degradation and Lifetime
-0
+7
+DC Loss
 3
 1
 2
@@ -543,7 +561,7 @@ Degradation and Lifetime
 Default
 
 0
-845
+1207
 function enable_lifetime_losses()
 {
 	enable('dc_lifetime_losses', ${en_dc_lifetime_losses});
@@ -559,9 +577,10 @@ on_load{'Lifetime PV'} = define() {
 		caption = "Applies to the array's hourly AC output.";
 	}
 	property("degradation_message", "Caption", caption);
-	property("dc_lifetime_losses", "Description","Daily DC loss over project life of " + value("analysis_period") + " years.");
-	property("dc_lifetime_losses", "Label","DC Loss (%/day)");
+	property("dc_lifetime_losses", "Description","Daily DC loss over project life.\nAnalysis period on Financial Parameters page.\nChoose Daily mode above so that:\nNrows = 1 row /day * 365 days * " + value("analysis_period") + " years");
 	property("dc_lifetime_losses","AnalysisPeriod",value("analysis_period"));
+	property("ac_lifetime_losses", "Description","Daily AC loss over project life.\nAnalysis period on Financial Parameters page.\nChoose Daily mode above so that:\nNrows = 1 row /day * 365 days * " + value("analysis_period") + " years");
+	property("ac_lifetime_losses","AnalysisPeriod",value("analysis_period"));
 };
 
 
