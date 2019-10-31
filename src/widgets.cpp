@@ -2835,7 +2835,7 @@ public:
 		szv_main_vert->Add(szh_top4, 0, wxALL | wxEXPAND, 4);
 		szv_main_vert->Add(szh_btns, 0, wxALL | wxEXPAND, 4);
 		szv_main_vert->AddStretchSpacer();
-		szv_main_vert->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
+		szv_main_vert->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 0, wxALL | wxEXPAND, 10);
 		Description = 0;
 		if (!desc.IsEmpty())
 		{
@@ -3093,6 +3093,10 @@ public:
 				fprintf(fp, "%g\n", mData[i]);
 			fclose(fp);
 */		}
+		else if (evt.GetId() == wxID_HELP)
+		{
+			SamApp::ShowHelp(":about");
+		}
 	}
 
 	DECLARE_EVENT_TABLE();
@@ -3103,6 +3107,7 @@ EVT_BUTTON(ILDM_COPY, AFDataLifetimeMatrixDialog::OnCommand)
 EVT_BUTTON(ILDM_PASTE, AFDataLifetimeMatrixDialog::OnCommand)
 EVT_BUTTON(ILDM_IMPORT, AFDataLifetimeMatrixDialog::OnCommand)
 EVT_BUTTON(ILDM_EXPORT, AFDataLifetimeMatrixDialog::OnCommand)
+EVT_BUTTON(wxID_HELP, AFDataLifetimeMatrixDialog::OnCommand)
 EVT_COMBOBOX(ILDM_MODEOPTIONS, AFDataLifetimeMatrixDialog::OnCommand)
 EVT_COMBOBOX(ILDM_TIMESTEPS, AFDataLifetimeMatrixDialog::OnCommand)
 END_EVENT_TABLE()
@@ -3127,6 +3132,7 @@ void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
 void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data)
 {
 	mData = data;
+	/* on pressed not when loading
 	// resize based on potentially new analysis period and current mode
 	size_t newSize = mAnalysisPeriod;
 	switch (mMode)
@@ -3167,8 +3173,10 @@ void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data)
 		break;
 	}
 	}
+	
 	if (mData.nrows() != newSize)
 		mData.resize(newSize, mData.ncols());
+	*/
 }
 void AFDataLifetimeMatrixButton::SetDataLabel(const wxString &s)
 {
@@ -3191,6 +3199,7 @@ wxString AFDataLifetimeMatrixButton::GetColumnLabels()
 
 void AFDataLifetimeMatrixButton::OnPressed(wxCommandEvent &evt)
 {
+	/* handle analysis period change separately
 	// resize based on potentially new analysis period and current mode
 	size_t newSize = mAnalysisPeriod;
 	switch (mMode)
@@ -3233,7 +3242,7 @@ void AFDataLifetimeMatrixButton::OnPressed(wxCommandEvent &evt)
 	}
 	if (mData.nrows() != newSize)
 		mData.resize_preserve(newSize, mData.ncols(), 0.0);
-
+	*/
 	AFDataLifetimeMatrixDialog dlg(this, "Edit Time Series Data (Lifetime Matrix)", mDescription, mDataLabel, mColumnLabels, mAnnualEnabled, mWeeklyEnabled);
 	dlg.SetAnalysisPeriod(mAnalysisPeriod);
 	dlg.SetData(mData);
