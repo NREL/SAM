@@ -3095,7 +3095,7 @@ public:
 */		}
 		else if (evt.GetId() == wxID_HELP)
 		{
-			SamApp::ShowHelp(":about");
+			SamApp::ShowHelp("edit_time_series_data");
 		}
 	}
 
@@ -4477,7 +4477,7 @@ AFValueMatrixButton::AFValueMatrixButton(wxWindow *parent, int id, const wxPoint
 	bUseTable = false;
 
 	mSingleValue = new wxNumericCtrl(this, IDDGB_NUMERIC, 0.0, wxNUMERIC_REAL, wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
-	mBtnEditTable = new wxButton(this, IDDGB_BUTTON, "Table...", wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
+	mBtnEditTable = new wxButton(this, IDDGB_BUTTON, "Edit...", wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
 	mBtnEditTable->Show(false);
 
 	mTable.resize_fill(10,2, 0.0f);

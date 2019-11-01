@@ -146,7 +146,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit values...");
+		wxString label("MonthlyFactors...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -184,7 +184,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit...");
+		wxString label("TableData...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -234,7 +234,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit...");
+		wxString label("MaterialProperties...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -418,7 +418,7 @@ public:
 		wxRendererNative::Get().DrawPushButton(win, dc, geom);
 		dc.SetFont(*wxNORMAL_FONT);
 		dc.SetTextForeground(*wxBLACK);
-		wxString label("String array...");
+		wxString label("StringArray...");
 		int x, y;
 		dc.GetTextExtent(label, &x, &y);
 		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
@@ -461,7 +461,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Data array...");
+		wxString label("DataArray...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -509,7 +509,7 @@ public:
 		wxRendererNative::Get().DrawPushButton(win, dc, geom);
 		dc.SetFont(*wxNORMAL_FONT);
 		dc.SetTextForeground(*wxBLACK);
-		wxString label("Data Lifetime...");
+		wxString label("DataLifetimeArray...");
 		int x, y;
 		dc.GetTextExtent(label, &x, &y);
 		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
@@ -563,7 +563,7 @@ public:
 		wxRendererNative::Get().DrawPushButton(win, dc, geom);
 		dc.SetFont(*wxNORMAL_FONT);
 		dc.SetTextForeground(*wxBLACK);
-		wxString label("Data Lifetime...");
+		wxString label("DataLifetimeMatrix...");
 		int x, y;
 		dc.GetTextExtent(label, &x, &y);
 		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
@@ -691,7 +691,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit shading...");
+		wxString label("ShadingFactors...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -893,7 +893,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, wxRect( geom.x, geom.y/*+geom.height/2-button.y/2*/, button.x, button.y ) );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit losses...");
+		wxString label("LossAdjustment...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		//int yc = geom.y+geom.height/2;

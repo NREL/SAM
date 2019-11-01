@@ -129,7 +129,7 @@ function setup_pvwatts_battery_pages()
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	addpage( [[ 'PVWatts', "Battery Model Simple"]], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 	setup_grid_page();
-//		addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
+//		addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
 //	addpage( [[ 'PVWatts']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 }
 function setup_pvwatts_pages()
@@ -138,11 +138,14 @@ function setup_pvwatts_pages()
 	addpage( [[ 'PVWatts']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 		setup_grid_page();
 
-//	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
+//	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
 //	addpage( [[ 'PVWatts']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 }
 function setup_flat_plate_pv_pages()
 {
+
+//	addpage( [ ['AA Widgets'] ], { 'sidebar'='Widgets' } ); // use for widget testing
+
 	addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	
 	
@@ -162,11 +165,11 @@ function setup_flat_plate_pv_pages()
 	addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
-//	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
+//	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
 
-    addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}],
-			[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
-           {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
+    addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
+			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
 
 	
 }
@@ -179,7 +182,7 @@ function setup_residential_pages( mode, degradation ) // mode determines whether
   if (degradation == LIFETIME_SYSTEM )
   {
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
   }
   addpage( [[ 'Financial Debt Residential',
               'Financial Analysis Parameters',
@@ -218,7 +221,7 @@ function setup_thirdparty_pages( load, degradation ) // FOR NOW, THIRD PARTY OWN
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
   }
   
   addpage( [[ 'Financial Third Party Ownership']],
@@ -246,7 +249,7 @@ function setup_commercial_pages( mode, degradation ) // mode determines whether 
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
   }
   addpage( [[ 'Financial Debt Min DSCR',
               'Financial Analysis Parameters',
@@ -295,7 +298,7 @@ function setup_commercial_ppa_pages(degradation)
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
   }
   addpage( [[ 'Financial Solution Mode Commercial PPA',
 		      'Financial Debt Min DSCR',
@@ -322,7 +325,7 @@ function setup_independent_power_producer_pages(degradation)
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
   }
   addpage( [[ 'Financial Solution Mode Independent Power Producer',
 		      'Financial Debt Min DSCR',
@@ -348,7 +351,7 @@ function setup_single_owner_pages(degradation)
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
   }
   addpage( [[ 'Financial Analysis Parameters',
 		      'Financial Tax and Insurance Rates',
@@ -377,7 +380,7 @@ function setup_merchant_plant_pages(degradation)
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
   }
   addpage( [[ 'Financial Analysis Parameters',
 		      'Financial Tax and Insurance Rates',
@@ -407,7 +410,7 @@ function setup_host_developer_pages(mode, degradation)
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
   }
   addpage( [[ 'Financial Solution Mode Single Owner',
               'Financial Analysis Host Developer Parameters',
@@ -436,7 +439,7 @@ function setup_leveraged_partnership_flip_pages(degradation)
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
   }
   addpage( [[ 'Financial Solution Mode Flip Leaseback',
               'Financial Equity Flip Structure', 
@@ -466,7 +469,7 @@ function setup_all_equity_partnership_flip_pages(degradation)
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
   }
   addpage( [[ 'Financial Solution Mode Flip Leaseback',
               'Financial Equity Flip Structure', 
@@ -495,7 +498,7 @@ function setup_sale_leaseback_pages(degradation)
   if (degradation == LIFETIME_SYSTEM )
   {	
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
   }
   addpage( [[ 'Financial Solution Mode Flip Leaseback',
               'Financial Sale Leaseback', 
@@ -561,10 +564,10 @@ function setup_fuel_cell_pages_btm()
 			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});
 	addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
-           {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
    setup_grid_page();
 
-//	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
+//	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
 }
 
 function setup_fuel_cell_pages_fom()
@@ -588,10 +591,10 @@ function setup_fuel_cell_pages_fom()
 			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});
 	addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
-           {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
   setup_grid_page();
 
-//	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
+//	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
 }
 
 
@@ -674,7 +677,7 @@ function setup_geothermal_power_pages()
 	addpage( [[ 'Geothermal Power Block' ]], { 'sidebar'='Power Block', 'help'='geo_power_block' } );
     setup_grid_page();
 
-//	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
+//	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
 }
 
 
@@ -745,7 +748,7 @@ setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 setconfig('Battery', 'None');
 setup_battery_pages_behind_the_meter();
 	addpage( [[ 'Lifetime System']],
-           {  'sidebar'='Lifetime','help'='lifetime' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
 setmodules(['battery']);
 
 
@@ -1244,8 +1247,8 @@ function setup_generic_system_pages()
 	addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
     addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime Generic', 'caption'='Simulation over analysis period' }],],
-           {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
-	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
+           {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
+	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
 }
 
 setconfig( 'Generic System', 'Residential' );	
@@ -1347,7 +1350,7 @@ setup_lcoefcr_pages();
 setconfig( 'Generic System', 'None' );
 setmodules( ['generic_system', 'grid']);
 addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
-addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
+addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
 
 
 
@@ -2015,9 +2018,9 @@ if ( en_pvsamv3 )
 			
 	//addpage( [ [ 'PV3 Subarray 1', {'name'='PV3 Subarray 1 Spacing', 'caption' = 'Subarray Spacing (For Self-Shading and Snow Only)', 'collapsible'=true, 'collapsible_var'='pv3.sub_spacing_is_shown'} ] ], {'sidebar'='System Design J'});
 
-	addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}],
-			[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
-		   {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
+	addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
+			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
+		   {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
 
 	setup_battery_pages_behind_the_meter();
 }
