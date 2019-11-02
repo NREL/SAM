@@ -35,7 +35,7 @@ Bold
 DataLifetimeMatrix
 
 1
-13
+14
 Name
 5
 18
@@ -55,6 +55,9 @@ Height
 Tool Tip
 5
 0
+Mode
+3
+1
 ColumnLabels
 5
 15
@@ -202,7 +205,7 @@ TabOrder
 DataLifetimeMatrix
 
 1
-13
+14
 Name
 5
 18
@@ -222,6 +225,9 @@ Height
 Tool Tip
 5
 0
+Mode
+3
+1
 ColumnLabels
 5
 15
@@ -518,7 +524,7 @@ Degradation and Lifetime
 Default
 dc_lifetime_losses
 3
-2
+3
 Lifetime daily DC losses
 %/day
 Degradation and Lifetime
@@ -526,11 +532,11 @@ Degradation and Lifetime
 DC Loss
 3
 1
-2
+3
 1
 1
 0
-Default
+DataLifetimeMatrix
 en_ac_lifetime_losses
 3
 1

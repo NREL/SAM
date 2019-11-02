@@ -2929,7 +2929,7 @@ public:
 
 		if (GridTable) GridTable->SetMatrix(NULL);
 		Grid->SetTable(NULL);
-
+/*
 		GridTable = new AFDataLifetimeMatrixTable(&mData, mMode, mColumnLabels);
 		GridTable->SetAttrProvider(new wxExtGridCellAttrProvider);
 
@@ -2937,7 +2937,7 @@ public:
 		// can use max text width from column labels
 		for (size_t ic=0; ic<(size_t)Grid->GetNumberCols(); ic++)
 			Grid->SetColSize(ic, (int)(140 * wxGetScreenHDScale()));
-
+*/
 
 //		Grid->SetColSize(0, (int)(130 * wxGetScreenHDScale()));
 
@@ -2986,6 +2986,15 @@ public:
 				break;
 			}
 		}
+
+		GridTable = new AFDataLifetimeMatrixTable(&mData, mMode, mColumnLabels);
+		GridTable->SetAttrProvider(new wxExtGridCellAttrProvider);
+
+		Grid->SetTable(GridTable, true);
+		// can use max text width from column labels
+		for (size_t ic = 0; ic < (size_t)Grid->GetNumberCols(); ic++)
+			Grid->SetColSize(ic, (int)(140 * wxGetScreenHDScale()));
+
 
 		SetMode(mMode);
 		Move(GetPosition().x + 1, GetPosition().y + 1);
