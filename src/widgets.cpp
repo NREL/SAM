@@ -1988,7 +1988,6 @@ private:
 	wxStaticText *InputLabel, *TimestepsLabel;
 	wxComboBox *ModeOptions;
 	wxComboBox *Timesteps;
-	wxNumericCtrl *SingleValue;
 	wxNumericCtrl *AnalysisPeriodValue;
 
 public:
@@ -2069,12 +2068,6 @@ public:
 		szh_top2->Add(AnalysisPeriodValue, 0, wxALL | wxEXPAND, 1);
 		szh_top2->AddStretchSpacer();
 
-		wxBoxSizer *szh_singlevalue = new wxBoxSizer(wxHORIZONTAL);
-		SingleValue = new wxNumericCtrl(this, ILDD_SINGLEVALUE);
-		szh_singlevalue->Add(new wxStaticText(this, -1, "Enter single value"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
-		szh_singlevalue->AddSpacer(3);
-		szh_singlevalue->Add(SingleValue, 0, wxALL | wxEXPAND, 1);
-		szh_singlevalue->AddStretchSpacer();
 
 		wxBoxSizer *szv_main_vert = new wxBoxSizer(wxVERTICAL);
 		szv_main_vert->Add(szh_top1, 0, wxALL | wxEXPAND, 4);
@@ -2082,10 +2075,8 @@ public:
 		szv_main_vert->Add(szh_top3, 0, wxALL | wxEXPAND, 4);
 		szv_main_vert->Add(szh_top4, 0, wxALL | wxEXPAND, 4);
 		szv_main_vert->Add(szh_btns, 0, wxALL | wxEXPAND, 4);
-		szv_main_vert->Add(new wxStaticText(this, -1, "_____________________"), 0, wxALL, 3);
-		szv_main_vert->Add(szh_singlevalue, 0, wxALL | wxEXPAND, 4);
 		szv_main_vert->AddStretchSpacer();
-		szv_main_vert->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
+		szv_main_vert->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 0, wxALL | wxEXPAND, 10);
 		Description = 0;
 		if (!desc.IsEmpty())
 		{
@@ -2099,6 +2090,7 @@ public:
 		szh_main->Add(Grid, 3, wxALL | wxEXPAND, 4);
 
 		SetSizer(szh_main);
+		SetSizeHints(wxSize(1000, 800));
 	}
 
 	void SetMode(int m)
@@ -2152,8 +2144,6 @@ public:
 		}
 		TimestepsLabel->Show((mMode == DATA_LIFETIME_ARRAY_SUBHOURLY));
 		Timesteps->Show((mMode == DATA_LIFETIME_ARRAY_SUBHOURLY));
-		SingleValue->Enable((mMode == DATA_LIFETIME_ARRAY_SINGLEVALUE));
-		Grid->Enable((mMode != DATA_LIFETIME_ARRAY_SINGLEVALUE));
 		ModeOptions->SetSelection(mMode);
 		Layout();
 	}
@@ -2327,6 +2317,11 @@ public:
 				fprintf(fp, "%g\n", mData[i]);
 			fclose(fp);
 		}
+		else if (evt.GetId() == wxID_HELP)
+		{
+			SamApp::ShowHelp("edit_time_series_data");
+		}
+
 	}
 
 	DECLARE_EVENT_TABLE();
@@ -2337,6 +2332,7 @@ EVT_BUTTON(ILDD_COPY, AFDataLifetimeArrayDialog::OnCommand)
 EVT_BUTTON(ILDD_PASTE, AFDataLifetimeArrayDialog::OnCommand)
 EVT_BUTTON(ILDD_IMPORT, AFDataLifetimeArrayDialog::OnCommand)
 EVT_BUTTON(ILDD_EXPORT, AFDataLifetimeArrayDialog::OnCommand)
+EVT_BUTTON(wxID_HELP, AFDataLifetimeArrayDialog::OnCommand)
 EVT_COMBOBOX(ILDD_MODEOPTIONS, AFDataLifetimeArrayDialog::OnCommand)
 EVT_COMBOBOX(ILDD_TIMESTEPS, AFDataLifetimeArrayDialog::OnCommand)
 END_EVENT_TABLE()
@@ -2361,6 +2357,7 @@ void AFDataLifetimeArrayButton::Get(std::vector<double> &data)
 void AFDataLifetimeArrayButton::Set(const std::vector<double> &data)
 {
 	mData = data;
+	/*
 	// resize based on potentially new analysis period and current mode
 	size_t newSize = mAnalysisPeriod;
 	switch (mMode)
@@ -2403,6 +2400,7 @@ void AFDataLifetimeArrayButton::Set(const std::vector<double> &data)
 	}
 	if (mData.size() != newSize)
 		mData.resize(newSize);
+		*/
 }
 void AFDataLifetimeArrayButton::SetDataLabel(const wxString &s)
 {
@@ -2417,6 +2415,7 @@ wxString AFDataLifetimeArrayButton::GetDataLabel()
 void AFDataLifetimeArrayButton::OnPressed(wxCommandEvent &evt)
 {
 	// resize based on potentially new analysis period and current mode
+	/*
 	size_t newSize = mAnalysisPeriod;
 	switch (mMode)
 	{
@@ -2458,6 +2457,8 @@ void AFDataLifetimeArrayButton::OnPressed(wxCommandEvent &evt)
 	}
 	if (mData.size() != newSize)
 		mData.resize(newSize);
+*/
+
 
 	AFDataLifetimeArrayDialog dlg(this, "Edit Time Series Data (Lifetime Array)", mDescription, mDataLabel, mAnnualEnabled, mWeeklyEnabled);
 	dlg.SetAnalysisPeriod(mAnalysisPeriod);
@@ -3134,19 +3135,6 @@ AFDataLifetimeMatrixButton::AFDataLifetimeMatrixButton(wxWindow *parent, int id,
 	mData.resize_preserve(12 * mAnalysisPeriod, 2, 0.0);
 }
 
-
-void AFDataLifetimeMatrixButton::Get(std::vector<double> &data)
-{
-	data.clear();
-	for (size_t i = 0; i < mData.nrows(); i++)
-		data.push_back(mData(i, 0));
-}
-void AFDataLifetimeMatrixButton::Set(const std::vector<double> &data)
-{
-	mData.resize(data.size(), 1);
-	for (size_t i = 0; i < data.size(); i++)
-		mData(i, 0) = data[i];
-}
 
 void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
 {

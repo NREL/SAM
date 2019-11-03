@@ -202,10 +202,10 @@ Type a degradation rate (%) for each year. Each year's rate applies to the Year 
 TabOrder
 3
 2
-DataLifetimeMatrix
+DataLifetimeArray
 
 1
-14
+13
 Name
 5
 18
@@ -224,14 +224,11 @@ Height
 24
 Tool Tip
 5
-0
+15
+DC Loss (%/day)
 Mode
 3
 1
-ColumnLabels
-5
-15
-DC Loss (%/day)
 Label
 5
 24
@@ -536,7 +533,7 @@ DC Loss
 1
 1
 0
-DataLifetimeMatrix
+DataLifetimeArray
 en_ac_lifetime_losses
 3
 1

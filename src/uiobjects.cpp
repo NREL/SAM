@@ -484,6 +484,7 @@ class wxUIDataLifetimeArrayObject : public wxUIObject
 {
 public:
 	wxUIDataLifetimeArrayObject() {
+		AddProperty("Mode", new wxUIProperty(1, "Single Value,Monthly,Daily,Hourly,Subhourly"));
 		AddProperty("Label", new wxUIProperty(wxString("")));
 		AddProperty("Description", new wxUIProperty(wxString("")));
 		AddProperty("TabOrder", new wxUIProperty((int)-1));
@@ -497,6 +498,7 @@ public:
 	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative(wxWindow *parent) {
 		AFDataLifetimeArrayButton *da = new AFDataLifetimeArrayButton(parent, wxID_ANY);
+		da->SetMode(Property("Mode").GetInteger());
 		da->SetDescription(Property("Description").GetString());
 		da->SetDataLabel(Property("Label").GetString());
 		da->SetAnalysisPeriod(Property("AnalysisPeriod").GetInteger());
@@ -518,6 +520,7 @@ public:
 	{
 		if (AFDataLifetimeArrayButton *da = GetNative<AFDataLifetimeArrayButton>())
 		{
+			if (id == "Mode") da->SetMode(p->GetInteger());
 			if (id == "AnalysisPeriod") da->SetAnalysisPeriod(p->GetInteger());
 			if (id == "Label") da->SetDataLabel(p->GetString());
 			if (id == "Description") da->SetDescription(p->GetString());
