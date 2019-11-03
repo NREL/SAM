@@ -257,6 +257,8 @@ public:
 
 	void Set(const matrix_t<double> &data);
 	void Get(matrix_t<double> &data);
+	void Set(const std::vector<double> &data);
+	void Get(std::vector<double> &data);
 	matrix_t<double> Get() const { return mData; }
 
 	void SetDataLabel(const wxString &s);

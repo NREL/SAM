@@ -3134,6 +3134,20 @@ AFDataLifetimeMatrixButton::AFDataLifetimeMatrixButton(wxWindow *parent, int id,
 	mData.resize_preserve(12 * mAnalysisPeriod, 2, 0.0);
 }
 
+
+void AFDataLifetimeMatrixButton::Get(std::vector<double> &data)
+{
+	data.clear();
+	for (size_t i = 0; i < mData.nrows(); i++)
+		data.push_back(mData(i, 0));
+}
+void AFDataLifetimeMatrixButton::Set(const std::vector<double> &data)
+{
+	mData.resize(data.size(), 1);
+	for (size_t i = 0; i < data.size(); i++)
+		mData(i, 0) = data[i];
+}
+
 void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
 {
 	data = mData;
