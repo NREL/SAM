@@ -122,8 +122,7 @@ Decimals
 0
 Prefix
 5
-2
-$ 
+0
 Suffix
 5
 0
@@ -168,7 +167,7 @@ salvage_value
 3
 1
 End of analysis period value
- 
+$ 
 Salvage Value
 0
 8

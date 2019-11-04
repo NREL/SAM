@@ -1511,11 +1511,11 @@ Numeric
 mera_name1
 3
 4
- 
+Replacement reserve 1 name
  
 Reserve Accounts
 0
-0
+1
 1
 4
 21
@@ -1524,11 +1524,11 @@ TextEntry
 mera_name2
 3
 4
- 
+Replacement reserve 2 name
  
 Reserve Accounts
 0
-0
+1
 1
 4
 21
@@ -1537,11 +1537,11 @@ TextEntry
 mera_name3
 3
 4
- 
+Replacement reserve 3 name
  
 Reserve Accounts
 0
-0
+1
 1
 4
 21

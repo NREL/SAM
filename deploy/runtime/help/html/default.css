@@ -672,7 +672,7 @@ vertical-align: top;
 padding: 0;
 border: solid thin;
 }
-table.MetricsTable th {
+table.MetricsTable th.MetricsTable {
 background-color:#808080;
 }
 table.TableStyles2 {
@@ -727,7 +727,7 @@ vertical-align: top;
 padding: 0;
 border: none;
 }
-table.TopicTOCTable th {
+table.TopicTOCTable th.TopicTOCTable {
 background-color:#9bbb59;
 }
 table.UIGroupTable {
@@ -768,7 +768,7 @@ vertical-align: top;
 padding: 0;
 border: none;
 }
-table.VariableListSortable th {
+table.VariableListSortable th.VariableListSortable {
 background-color:#999999;
 }
 table.WhereTable {

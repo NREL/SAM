@@ -1,5 +1,5 @@
 1
-580
+581
 a_error_test_number
 1
 1
@@ -2463,6 +2463,12 @@ federal_tax_rate
 1
 1
 21
+forecast_price_signal_model
+1
+1
+1
+1
+1
 foundation_cost
 1
 1
@@ -4278,7 +4284,7 @@ wind_obos_shown
 1
 1
 1
-1
+0
 wind_resource.city
 1
 4

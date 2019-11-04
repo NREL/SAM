@@ -365,7 +365,7 @@ END_EVENT_TABLE()
 
 void AFSchedNumeric::OnEditSchedule(wxCommandEvent &)
 {
-	SchedNumericDialog dlg(this, "Edit Schedule", GetLabel(), GetDescription(), m_fixedLen < 1 );
+	SchedNumericDialog dlg(this, "Edit Time Series Data (Schedule Numeric)", GetLabel(), GetDescription(), m_fixedLen < 1 );
 	wxExtGridCtrl *grid = dlg.GetGrid();
 
 	if ( m_fixedLen > 0 )
@@ -516,7 +516,7 @@ wxString AFTableDataCtrl::GetDescription()
 
 void AFTableDataCtrl::OnPressed(wxCommandEvent &evt)
 {
-	AFTableDataDialog dlg( this, "Edit values" );
+	AFTableDataDialog dlg( this, "Edit Values (Table Data)" );
 	dlg.SetData( m_values );
 	if ( wxID_OK == dlg.ShowModal() )
 	{
@@ -670,7 +670,7 @@ END_EVENT_TABLE()
 
 void AFMonthlyFactorCtrl::OnPressed(wxCommandEvent &evt)
 {
-	MonthlyFactorDialog dlg(this, "Edit Values");
+	MonthlyFactorDialog dlg(this, "Edit Values (Monthly Factors)");
 	
 	dlg.SetDescription( mDescription );
 	dlg.SetData( mData );
@@ -1738,7 +1738,7 @@ EVT_BUTTON(wxID_ANY, AFDataArrayButton::OnPressed)
 END_EVENT_TABLE()
 
 AFDataArrayButton::AFDataArrayButton( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
-	: wxButton(parent, id, "Edit data...", pos, size)
+	: wxButton(parent, id, "Edit time series data...", pos, size)
 {
 	mData.resize(8760, 0.0);
 	mMode = DATA_ARRAY_8760_MULTIPLES;
@@ -1791,7 +1791,7 @@ int AFDataArrayButton::GetMode()
 
 void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	AFDataArrayDialog dlg( this, "Edit Data", m_description, mDataLabel );
+	AFDataArrayDialog dlg( this, "Edit Time Series Data (Data Array)", m_description, mDataLabel );
 	
 	dlg.SetDataLabel( mDataLabel );
 	dlg.SetMode(mMode);
@@ -1979,7 +1979,7 @@ enum { ILDD_GRID = wxID_HIGHEST + 945, ILDD_MODEOPTIONS, ILDD_TIMESTEPS, ILDD_SI
 class AFDataLifetimeArrayDialog : public wxDialog
 {
 private:
-	wxString mLabel;
+	wxString mLabel, mColumnLabel;
 	size_t mAnalysisPeriod, mMinPerHour, mMode;
 	std::vector<double> mData;
 	wxExtGridCtrl *Grid;
@@ -1988,15 +1988,15 @@ private:
 	wxStaticText *InputLabel, *TimestepsLabel;
 	wxComboBox *ModeOptions;
 	wxComboBox *Timesteps;
-	wxNumericCtrl *SingleValue;
 	wxNumericCtrl *AnalysisPeriodValue;
 
 public:
-	AFDataLifetimeArrayDialog(wxWindow *parent, const wxString &title, const wxString &desc, const wxString &inputLabel, const bool &optannual = false, const bool &optweekly=false)
-		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(430, 510),
+	AFDataLifetimeArrayDialog(wxWindow *parent, const wxString &title, const wxString &desc, const wxString &inputLabel, const wxString &columnLabel, const bool &optannual = false, const bool &optweekly = false, const bool &showMode = true)
+		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(500, 600),
 			wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 	{
 		mLabel = inputLabel;
+		mColumnLabel = columnLabel;
 
 		GridTable = NULL;
 		wxButton *btn = NULL;
@@ -2069,12 +2069,6 @@ public:
 		szh_top2->Add(AnalysisPeriodValue, 0, wxALL | wxEXPAND, 1);
 		szh_top2->AddStretchSpacer();
 
-		wxBoxSizer *szh_singlevalue = new wxBoxSizer(wxHORIZONTAL);
-		SingleValue = new wxNumericCtrl(this, ILDD_SINGLEVALUE);
-		szh_singlevalue->Add(new wxStaticText(this, -1, "Enter single value"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
-		szh_singlevalue->AddSpacer(3);
-		szh_singlevalue->Add(SingleValue, 0, wxALL | wxEXPAND, 1);
-		szh_singlevalue->AddStretchSpacer();
 
 		wxBoxSizer *szv_main_vert = new wxBoxSizer(wxVERTICAL);
 		szv_main_vert->Add(szh_top1, 0, wxALL | wxEXPAND, 4);
@@ -2082,10 +2076,8 @@ public:
 		szv_main_vert->Add(szh_top3, 0, wxALL | wxEXPAND, 4);
 		szv_main_vert->Add(szh_top4, 0, wxALL | wxEXPAND, 4);
 		szv_main_vert->Add(szh_btns, 0, wxALL | wxEXPAND, 4);
-		szv_main_vert->Add(new wxStaticText(this, -1, "_____________________"), 0, wxALL, 3);
-		szv_main_vert->Add(szh_singlevalue, 0, wxALL | wxEXPAND, 4);
 		szv_main_vert->AddStretchSpacer();
-		szv_main_vert->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
+		szv_main_vert->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 0, wxALL | wxEXPAND, 10);
 		Description = 0;
 		if (!desc.IsEmpty())
 		{
@@ -2098,7 +2090,10 @@ public:
 		szh_main->Add(szv_main_vert, 0, wxALL | wxEXPAND, 4);
 		szh_main->Add(Grid, 3, wxALL | wxEXPAND, 4);
 
+		szh_top3->Show(showMode);
+
 		SetSizer(szh_main);
+		SetSizeHints(wxSize(1000, 800));
 	}
 
 	void SetMode(int m)
@@ -2152,9 +2147,9 @@ public:
 		}
 		TimestepsLabel->Show((mMode == DATA_LIFETIME_ARRAY_SUBHOURLY));
 		Timesteps->Show((mMode == DATA_LIFETIME_ARRAY_SUBHOURLY));
-		SingleValue->Enable((mMode == DATA_LIFETIME_ARRAY_SINGLEVALUE));
-		Grid->Enable((mMode != DATA_LIFETIME_ARRAY_SINGLEVALUE));
 		ModeOptions->SetSelection(mMode);
+		Grid->Layout();
+		Grid->Refresh();
 		Layout();
 	}
 
@@ -2170,7 +2165,7 @@ public:
 		if (GridTable) GridTable->SetArray(NULL);
 		Grid->SetTable(NULL);
 
-		GridTable = new AFDataLifetimeArrayTable(&mData, mMode, mLabel);
+		GridTable = new AFDataLifetimeArrayTable(&mData, mMode, mColumnLabel);
 		GridTable->SetAttrProvider(new wxExtGridCellAttrProvider);
 
 		Grid->SetTable(GridTable, true);
@@ -2224,7 +2219,16 @@ public:
 			}
 		}
 
+		//Grid->SetTable(GridTable, true);
+		// can use max text width from column labels
+		for (size_t ic = 0; ic < (size_t)Grid->GetNumberCols(); ic++)
+			Grid->SetColSize(ic, (int)(140 * wxGetScreenHDScale()));
+
+
 		SetMode(mMode);
+		Move(GetPosition().x + 1, GetPosition().y + 1);
+		Move(GetPosition().x - 1, GetPosition().y - 1);
+
 	}
 
 	void GetData(std::vector<double> &data)
@@ -2327,6 +2331,11 @@ public:
 				fprintf(fp, "%g\n", mData[i]);
 			fclose(fp);
 		}
+		else if (evt.GetId() == wxID_HELP)
+		{
+			SamApp::ShowHelp("edit_time_series_data");
+		}
+
 	}
 
 	DECLARE_EVENT_TABLE();
@@ -2337,6 +2346,7 @@ EVT_BUTTON(ILDD_COPY, AFDataLifetimeArrayDialog::OnCommand)
 EVT_BUTTON(ILDD_PASTE, AFDataLifetimeArrayDialog::OnCommand)
 EVT_BUTTON(ILDD_IMPORT, AFDataLifetimeArrayDialog::OnCommand)
 EVT_BUTTON(ILDD_EXPORT, AFDataLifetimeArrayDialog::OnCommand)
+EVT_BUTTON(wxID_HELP, AFDataLifetimeArrayDialog::OnCommand)
 EVT_COMBOBOX(ILDD_MODEOPTIONS, AFDataLifetimeArrayDialog::OnCommand)
 EVT_COMBOBOX(ILDD_TIMESTEPS, AFDataLifetimeArrayDialog::OnCommand)
 END_EVENT_TABLE()
@@ -2346,7 +2356,7 @@ EVT_BUTTON(wxID_ANY, AFDataLifetimeArrayButton::OnPressed)
 END_EVENT_TABLE()
 
 AFDataLifetimeArrayButton::AFDataLifetimeArrayButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
-	: wxButton(parent, id, "Edit data...", pos, size)
+	: wxButton(parent, id, "Edit time series data...", pos, size)
 {
 	mAnalysisPeriod = 25;
 	mMinPerHour = 30;
@@ -2361,6 +2371,7 @@ void AFDataLifetimeArrayButton::Get(std::vector<double> &data)
 void AFDataLifetimeArrayButton::Set(const std::vector<double> &data)
 {
 	mData = data;
+	/*
 	// resize based on potentially new analysis period and current mode
 	size_t newSize = mAnalysisPeriod;
 	switch (mMode)
@@ -2403,6 +2414,7 @@ void AFDataLifetimeArrayButton::Set(const std::vector<double> &data)
 	}
 	if (mData.size() != newSize)
 		mData.resize(newSize);
+		*/
 }
 void AFDataLifetimeArrayButton::SetDataLabel(const wxString &s)
 {
@@ -2412,11 +2424,68 @@ wxString AFDataLifetimeArrayButton::GetDataLabel()
 {
 	return mDataLabel;
 }
+void AFDataLifetimeArrayButton::SetColumnLabel(const wxString &s)
+{
+	mColumnLabel = s;
+}
+wxString AFDataLifetimeArrayButton::GetColumnLabel()
+{
+	return mColumnLabel;
+}
 
+void AFDataLifetimeArrayButton::SetAnalysisPeriod(const size_t &p)
+{
+	mAnalysisPeriod = p;
+	// resize based on potentially new analysis period and current mode
+
+	size_t newSize = mAnalysisPeriod;
+	switch (mMode)
+	{
+	case DATA_LIFETIME_ARRAY_MONTHLY:
+	{
+		newSize = mAnalysisPeriod * 12;
+		break;
+	}
+	case DATA_LIFETIME_ARRAY_DAILY: // assume 365
+	{
+		newSize = mAnalysisPeriod * 365;
+		break;
+	}
+	case DATA_LIFETIME_ARRAY_HOURLY: // assume 8760
+	{
+		newSize = mAnalysisPeriod * 8760;
+		break;
+	}
+	case DATA_LIFETIME_ARRAY_SUBHOURLY: // assume 8760 * timesteps per hour
+	{
+		newSize = mAnalysisPeriod * 8760 * (60 / mMinPerHour);
+		break;
+	}
+	case DATA_LIFETIME_ARRAY_ANNUAL:
+	{
+		newSize = mAnalysisPeriod;
+		break;
+	}
+	case DATA_LIFETIME_ARRAY_WEEKLY: // assume 52 weeks or 364 days?
+	{
+		newSize = mAnalysisPeriod * 8760 / (24 * 7);
+		break;
+	}
+	default: // single value - no grid resize
+	{
+		newSize = 1;
+		break;
+	}
+	}
+	if (mData.size() != newSize)
+		mData.resize(newSize, 0.0);
+
+}
 
 void AFDataLifetimeArrayButton::OnPressed(wxCommandEvent &evt)
 {
 	// resize based on potentially new analysis period and current mode
+	/*
 	size_t newSize = mAnalysisPeriod;
 	switch (mMode)
 	{
@@ -2458,10 +2527,13 @@ void AFDataLifetimeArrayButton::OnPressed(wxCommandEvent &evt)
 	}
 	if (mData.size() != newSize)
 		mData.resize(newSize);
+*/
 
-	AFDataLifetimeArrayDialog dlg(this, "Edit Data", mDescription, mDataLabel, mAnnualEnabled, mWeeklyEnabled);
+
+	AFDataLifetimeArrayDialog dlg(this, "Edit Time Series Data (Lifetime Array)", mDescription, mDataLabel, mColumnLabel, mAnnualEnabled, mWeeklyEnabled, mShowMode);
 	dlg.SetAnalysisPeriod(mAnalysisPeriod);
 	dlg.SetData(mData);
+	dlg.SetMode(mMode); // to set when mode hidden
 	dlg.SetDataLabel(mDataLabel);
 
 
@@ -2747,7 +2819,7 @@ private:
 	wxNumericCtrl *AnalysisPeriodValue;
 
 public:
-	AFDataLifetimeMatrixDialog(wxWindow *parent, const wxString &title, const wxString &desc, const wxString &inputLabel, const wxString &columnLabels, const bool &optannual = false, const bool &optweekly = false)
+	AFDataLifetimeMatrixDialog(wxWindow *parent, const wxString &title, const wxString &desc, const wxString &inputLabel, const wxString &columnLabels, const bool &optannual = false, const bool &optweekly = false, const bool &showMode = true)
 		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(430, 510),
 			wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 	{
@@ -2835,7 +2907,7 @@ public:
 		szv_main_vert->Add(szh_top4, 0, wxALL | wxEXPAND, 4);
 		szv_main_vert->Add(szh_btns, 0, wxALL | wxEXPAND, 4);
 		szv_main_vert->AddStretchSpacer();
-		szv_main_vert->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
+		szv_main_vert->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 0, wxALL | wxEXPAND, 10);
 		Description = 0;
 		if (!desc.IsEmpty())
 		{
@@ -2848,6 +2920,8 @@ public:
 		szh_main->Add(szv_main_vert, 0, wxALL | wxEXPAND, 4);
 		szh_main->Add(Grid, 3, wxALL | wxEXPAND, 4);
 
+		szh_top3->Show(showMode);
+
 		SetSizer(szh_main);
 		SetSizeHints(wxSize(1000, 800));
 	}
@@ -2856,7 +2930,6 @@ public:
 	{
 		mMode = m;
 		size_t l;
-	//	Grid->Freeze();
 		switch (mMode)
 		{
 		case DATA_LIFETIME_MATRIX_MONTHLY:
@@ -2908,14 +2981,9 @@ public:
 		Timesteps->Show((mMode == DATA_LIFETIME_MATRIX_SUBHOURLY));
 		ModeOptions->SetSelection(mMode);
 
-//		Grid->AutoSize();
 		Grid->Layout();
 		Grid->Refresh();
-//		GetSizer()->Layout();
-//		Grid->Thaw();
 		Layout();
-//		Move(GetPosition().x - 1, GetPosition().y - 1);
-		//	Fit(); // entire screen height - set max height
 	}
 
 	int GetMode()
@@ -2929,7 +2997,7 @@ public:
 
 		if (GridTable) GridTable->SetMatrix(NULL);
 		Grid->SetTable(NULL);
-
+/*
 		GridTable = new AFDataLifetimeMatrixTable(&mData, mMode, mColumnLabels);
 		GridTable->SetAttrProvider(new wxExtGridCellAttrProvider);
 
@@ -2937,7 +3005,7 @@ public:
 		// can use max text width from column labels
 		for (size_t ic=0; ic<(size_t)Grid->GetNumberCols(); ic++)
 			Grid->SetColSize(ic, (int)(140 * wxGetScreenHDScale()));
-
+*/
 
 //		Grid->SetColSize(0, (int)(130 * wxGetScreenHDScale()));
 
@@ -2986,6 +3054,15 @@ public:
 				break;
 			}
 		}
+
+		GridTable = new AFDataLifetimeMatrixTable(&mData, mMode, mColumnLabels);
+		GridTable->SetAttrProvider(new wxExtGridCellAttrProvider);
+
+		Grid->SetTable(GridTable, true);
+		// can use max text width from column labels
+		for (size_t ic = 0; ic < (size_t)Grid->GetNumberCols(); ic++)
+			Grid->SetColSize(ic, (int)(140 * wxGetScreenHDScale()));
+
 
 		SetMode(mMode);
 		Move(GetPosition().x + 1, GetPosition().y + 1);
@@ -3093,6 +3170,10 @@ public:
 				fprintf(fp, "%g\n", mData[i]);
 			fclose(fp);
 */		}
+		else if (evt.GetId() == wxID_HELP)
+		{
+			SamApp::ShowHelp("edit_time_series_data");
+		}
 	}
 
 	DECLARE_EVENT_TABLE();
@@ -3103,6 +3184,7 @@ EVT_BUTTON(ILDM_COPY, AFDataLifetimeMatrixDialog::OnCommand)
 EVT_BUTTON(ILDM_PASTE, AFDataLifetimeMatrixDialog::OnCommand)
 EVT_BUTTON(ILDM_IMPORT, AFDataLifetimeMatrixDialog::OnCommand)
 EVT_BUTTON(ILDM_EXPORT, AFDataLifetimeMatrixDialog::OnCommand)
+EVT_BUTTON(wxID_HELP, AFDataLifetimeMatrixDialog::OnCommand)
 EVT_COMBOBOX(ILDM_MODEOPTIONS, AFDataLifetimeMatrixDialog::OnCommand)
 EVT_COMBOBOX(ILDM_TIMESTEPS, AFDataLifetimeMatrixDialog::OnCommand)
 END_EVENT_TABLE()
@@ -3112,13 +3194,14 @@ EVT_BUTTON(wxID_ANY, AFDataLifetimeMatrixButton::OnPressed)
 END_EVENT_TABLE()
 
 AFDataLifetimeMatrixButton::AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
-	: wxButton(parent, id, "Edit data...", pos, size)
+	: wxButton(parent, id, "Edit time series data...", pos, size)
 {
 	mAnalysisPeriod = 25;
 	mMinPerHour = 30;
 	mMode = DATA_LIFETIME_MATRIX_MONTHLY;
 	mData.resize_preserve(12 * mAnalysisPeriod, 2, 0.0);
 }
+
 
 void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
 {
@@ -3127,6 +3210,7 @@ void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
 void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data)
 {
 	mData = data;
+	/* on pressed not when loading
 	// resize based on potentially new analysis period and current mode
 	size_t newSize = mAnalysisPeriod;
 	switch (mMode)
@@ -3167,8 +3251,10 @@ void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data)
 		break;
 	}
 	}
+	
 	if (mData.nrows() != newSize)
 		mData.resize(newSize, mData.ncols());
+	*/
 }
 void AFDataLifetimeMatrixButton::SetDataLabel(const wxString &s)
 {
@@ -3188,9 +3274,59 @@ wxString AFDataLifetimeMatrixButton::GetColumnLabels()
 	return mColumnLabels;
 }
 
+void AFDataLifetimeMatrixButton::SetAnalysisPeriod(const size_t &p)
+{
+	mAnalysisPeriod = p;
+	// resize based on potentially new analysis period and current mode
+
+	size_t newSize = mAnalysisPeriod;
+	switch (mMode)
+	{
+	case DATA_LIFETIME_ARRAY_MONTHLY:
+	{
+		newSize = mAnalysisPeriod * 12;
+		break;
+	}
+	case DATA_LIFETIME_ARRAY_DAILY: // assume 365
+	{
+		newSize = mAnalysisPeriod * 365;
+		break;
+	}
+	case DATA_LIFETIME_ARRAY_HOURLY: // assume 8760
+	{
+		newSize = mAnalysisPeriod * 8760;
+		break;
+	}
+	case DATA_LIFETIME_ARRAY_SUBHOURLY: // assume 8760 * timesteps per hour
+	{
+		newSize = mAnalysisPeriod * 8760 * (60 / mMinPerHour);
+		break;
+	}
+	case DATA_LIFETIME_ARRAY_ANNUAL:
+	{
+		newSize = mAnalysisPeriod;
+		break;
+	}
+	case DATA_LIFETIME_ARRAY_WEEKLY: // assume 52 weeks or 364 days?
+	{
+		newSize = mAnalysisPeriod * 8760 / (24 * 7);
+		break;
+	}
+	default: // single value - no grid resize
+	{
+		newSize = 1;
+		break;
+	}
+	}
+	if (mData.nrows() != newSize)
+		mData.resize_preserve(newSize, mData.ncols(), 0.0);
+
+}
+
 
 void AFDataLifetimeMatrixButton::OnPressed(wxCommandEvent &evt)
 {
+	/* handle analysis period change separately
 	// resize based on potentially new analysis period and current mode
 	size_t newSize = mAnalysisPeriod;
 	switch (mMode)
@@ -3233,10 +3369,11 @@ void AFDataLifetimeMatrixButton::OnPressed(wxCommandEvent &evt)
 	}
 	if (mData.nrows() != newSize)
 		mData.resize_preserve(newSize, mData.ncols(), 0.0);
-
-	AFDataLifetimeMatrixDialog dlg(this, "Edit Data", mDescription, mDataLabel, mColumnLabels, mAnnualEnabled, mWeeklyEnabled);
+	*/
+	AFDataLifetimeMatrixDialog dlg(this, "Edit Time Series Data (Lifetime Matrix)", mDescription, mDataLabel, mColumnLabels, mAnnualEnabled, mWeeklyEnabled, mShowMode);
 	dlg.SetAnalysisPeriod(mAnalysisPeriod);
 	dlg.SetData(mData);
+	dlg.SetMode(mMode); // to set when mode hidden
 	dlg.SetDataLabel(mDataLabel);
 
 
@@ -3432,7 +3569,7 @@ EVT_BUTTON(wxID_ANY, AFStringArrayButton::OnPressed)
 END_EVENT_TABLE()
 
 AFStringArrayButton::AFStringArrayButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
-	: wxButton(parent, id, "Edit data...", pos, size)
+	: wxButton(parent, id, "Edit time series data...", pos, size)
 {
 }
 
@@ -3456,7 +3593,7 @@ wxString AFStringArrayButton::GetStringLabel()
 
 void AFStringArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	AFStringArrayDialog dlg(this, "Edit Data", m_description, mStringLabel);
+	AFStringArrayDialog dlg(this, "Edit Time Series Data (String Array)", m_description, mStringLabel);
 
 	dlg.SetStringLabel(mStringLabel);
 	dlg.SetData(&mData);
@@ -4468,7 +4605,7 @@ AFValueMatrixButton::AFValueMatrixButton(wxWindow *parent, int id, const wxPoint
 	bUseTable = false;
 
 	mSingleValue = new wxNumericCtrl(this, IDDGB_NUMERIC, 0.0, wxNUMERIC_REAL, wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
-	mBtnEditTable = new wxButton(this, IDDGB_BUTTON, "Table...", wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
+	mBtnEditTable = new wxButton(this, IDDGB_BUTTON, "Edit...", wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
 	mBtnEditTable->Show(false);
 
 	mTable.resize_fill(10,2, 0.0f);

@@ -4759,6 +4759,7 @@ lk::fcall_t* invoke_equation_funcs()
 		fcall_snlinverter,
 		fcall_current_at_voltage_cec,
 		fcall_current_at_voltage_sandia,
+		fcall_property,
 		// fcall_logmsg,
 		0 };
 	return (lk::fcall_t*)vec;

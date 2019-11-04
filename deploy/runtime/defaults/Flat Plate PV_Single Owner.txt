@@ -2371,7 +2371,7 @@ enable_interconnection_limit
 1
 1
 1
-1
+0
 enable_mismatch_vmax_calc
 1
 1
@@ -4650,13 +4650,13 @@ revenue_capacity_payments_is_shown
 1
 1
 1
-1
+0
 revenue_curtailment_is_shown
 1
 1
 1
 1
-1
+0
 roe_input
 1
 2

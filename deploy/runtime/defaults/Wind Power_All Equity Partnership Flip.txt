@@ -4426,7 +4426,7 @@ wind_obos_shown
 1
 1
 1
-1
+0
 wind_resource.city
 1
 4

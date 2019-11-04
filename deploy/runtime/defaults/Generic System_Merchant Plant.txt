@@ -1,5 +1,5 @@
 1
-511
+512
 LeadAcid_q10
 1
 1
@@ -1781,6 +1781,12 @@ fixed_plant_input
 1
 1
 0
+forecast_price_signal_model
+1
+1
+1
+1
+1
 generic_degradation
 1
 2

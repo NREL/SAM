@@ -376,7 +376,7 @@ cost_debt_closing
 1
 Debt closing costs
 $
-Project Term Debt (Constant DSCR)
+Project Term Debt Constant DSCR
 0
 2
 1
@@ -390,7 +390,7 @@ cost_debt_fee
 1
 Up-front fee
 % of total debt
-Project Term Debt (Constant DSCR)
+Project Term Debt Constant DSCR
 0
 2
 1
@@ -404,7 +404,7 @@ dscr
 1
 Debt service coverage ratio (DSCR)
  
-Project Term Debt (Constant DSCR)
+Project Term Debt Constant DSCR
 0
 2
 1
@@ -418,7 +418,7 @@ term_int_rate
 1
 Annual all-in interest rate
 %
-Project Term Debt (Constant DSCR)
+Project Term Debt Constant DSCR
 0
 2
 1
@@ -432,7 +432,7 @@ term_tenor
 1
 Tenor
 years
-Project Term Debt (Constant DSCR)
+Project Term Debt Constant DSCR
 0
 2
 1

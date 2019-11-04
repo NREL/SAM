@@ -6,6 +6,12 @@ The `samples` folder contains example files to use with the System Advisor Model
 
 These are LK scripts that work from the script editor in the 3D Shade Calculator to draw objects in the scene, import and export .s3d files, generate shading data, etc.
 
+## Excel Exchange
+
+Files demonstrating how to use SAM's Excel Exchange feature to read SAM input values from an Excel file or write SAM input values to Excel. Also includes an LK script that replicates the feature.
+
+Excel Exchange only works for Windows versions of SAM. Mac and Linux users can use the LK script.
+
 ## LK Scripts for SAM (.lk)
 
 These LK scripts run from the script editor in SAM.

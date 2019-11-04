@@ -5312,7 +5312,7 @@ Name
 total_installed_cost
 X
 3
-684
+681
 Y
 3
 663
