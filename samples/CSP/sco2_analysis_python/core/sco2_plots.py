@@ -1173,10 +1173,12 @@ class C_OD_stacked_outputs_plot:
                 if(self.add_subplot_letter):
                     y_label = r'$\bf{' + format(j_l_i) + ")" + '}$' + " " + y_label
                         
-                if(n_cols > 1):
+                if(n_cols > 1 and n_rows > 1):
                     j_axis = a_ax[j_row,j_col]
                 elif(n_rows > 1):
                     j_axis = a_ax[j_row]
+                elif(n_cols > 1):
+                    j_axis = a_ax[j_col]
                 else:
                     j_axis = a_ax
                     
@@ -1285,19 +1287,19 @@ class C_OD_stacked_outputs_plot:
         for j, key in enumerate(self.y_vars):
             j_col = j//n_rows
             j_row = j%n_rows
-            
-            if(n_cols > 1):
 
-                if(self.is_shade_infeasible and n_datasets == 1):
-                    y_lower, y_upper = a_ax[j_row,j_col].get_ylim()
-                    a_ax[j_row,j_col].fill_between(self.list_dict_results[0][self.x_var_od], y_lower, y_upper, where=y_feasible_flag_i, facecolor='red', alpha=0.5)
-                
-            else: 
+            if (n_cols > 1 and n_rows > 1):
+                j_axis = a_ax[j_row, j_col]
+            elif (n_rows > 1):
+                j_axis = a_ax[j_row]
+            elif (n_cols > 1):
+                j_axis = a_ax[j_col]
+            else:
+                j_axis = a_ax
 
-                if(self.is_shade_infeasible and n_datasets == 1):
-                    y_lower, y_upper = a_ax[j_row].get_ylim()
-                    a_ax[j_row].fill_between(self.list_dict_results[0][self.x_var_od], y_lower, y_upper, where=y_feasible_flag_i, facecolor='red', alpha=0.5)
-            
+            y_lower, y_upper = j_axis.get_ylim()
+            j_axis.fill_between(self.list_dict_results[0][self.x_var_od], y_lower, y_upper, where=y_feasible_flag_i, facecolor='red', alpha=0.5)
+           
         if(self.is_save and self.file_name != ""):    
          
             plt.savefig(self.file_name + self.file_ext, dpi = self.dpi)
