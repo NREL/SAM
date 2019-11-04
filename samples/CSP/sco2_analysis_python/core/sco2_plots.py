@@ -1952,19 +1952,28 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
 
     f_udpc_pars.write("Number of ambient temperature levels = " + str(n_T_amb) + "\n")
 
+    len_row = len(udpc_data[0])
 
     # Add normalized efficiency column
     for row in udpc_data:
+        row.append(row[4] / row[1])
         row.append(row[3] / row[4])
-
-    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
-
+        
+    
     mi = [[0, 0, 3, "Normalized Power"]]
     mi.append([1, 0, len(udpc_data[0])-1, "Normalized Efficiency"])
-    mi.append([0, 1, 5, "Normalized Cooling Power"])
-    mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
-    mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
-    mi.append([2, 1, 9, "Normalized PHX CO2 Mass Flow"])
+    #mi.append([0, 1, 5, "Normalized Cooling Power"])
+    mi.append([0, 1, 4, "Normalized Heat Input"])
+    mi.append([1, 1, len(udpc_data[0])-2, "Normalized deltaT"])
+    nrows = 2
+    ncols = 2
+    if(len_row > 7):
+        mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
+        mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
+        mi.append([2, 1, 9, "Normalized PHX CO2 Mass Flow"])
+        nrows = 3
+
+    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, 10))
 
     # T_htf parametric values, 3 m_dot levels, design ambient temperature
     for j in range(0, len(mi)):
@@ -1997,7 +2006,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
     plt.savefig(plot_pre_str + "udpc_T_HTF.png")
     plt.close()
 
-    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
+    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, 10))
 
     # T_amb parametric values, 3 T_HTF_levels, design m_dot
     for j in range(0, len(mi)):
@@ -2027,7 +2036,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
     plt.savefig(plot_pre_str + "udpc_T_amb.png")
     plt.close()
 
-    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
+    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, 10))
 
     # m_dot parametric values, 3 T_amb levels, design T_htf_hot
     for j in range(0, len(mi)):
