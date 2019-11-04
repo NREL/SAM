@@ -486,11 +486,13 @@ public:
 	wxUIDataLifetimeArrayObject() {
 		AddProperty("Mode", new wxUIProperty(1, "Single Value,Monthly,Daily,Hourly,Subhourly"));
 		AddProperty("Label", new wxUIProperty(wxString("")));
+		AddProperty("ColumnLabel", new wxUIProperty(wxString("")));
 		AddProperty("Description", new wxUIProperty(wxString("")));
 		AddProperty("TabOrder", new wxUIProperty((int)-1));
 		AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
 		AddProperty("AnnualEnabled", new wxUIProperty(false));
 		AddProperty("WeeklyEnabled", new wxUIProperty(false));
+		AddProperty("ShowMode", new wxUIProperty(true));
 	}
 	virtual wxString GetTypeName() { return "DataLifetimeArray"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataLifetimeArrayObject; o->Copy(this); return o; }
@@ -501,9 +503,11 @@ public:
 		da->SetMode(Property("Mode").GetInteger());
 		da->SetDescription(Property("Description").GetString());
 		da->SetDataLabel(Property("Label").GetString());
+		da->SetColumnLabel(Property("ColumnLabel").GetString());
 		da->SetAnalysisPeriod(Property("AnalysisPeriod").GetInteger());
 		da->SetAnnualEnabled(Property("AnnualEnabled").GetBoolean());
 		da->SetWeeklyEnabled(Property("WeeklyEnabled").GetBoolean());
+		da->SetShowMode(Property("ShowMode").GetBoolean());
 		return AssignNative(da);
 	}
 	virtual void Draw(wxWindow *win, wxDC &dc, const wxRect &geom)
@@ -523,9 +527,11 @@ public:
 			if (id == "Mode") da->SetMode(p->GetInteger());
 			if (id == "AnalysisPeriod") da->SetAnalysisPeriod(p->GetInteger());
 			if (id == "Label") da->SetDataLabel(p->GetString());
+			if (id == "ColumnLabel") da->SetColumnLabel(p->GetString());
 			if (id == "Description") da->SetDescription(p->GetString());
 			if (id == "AnnualEnabled") da->SetAnnualEnabled(p->GetBoolean());
 			if (id == "WeeklyEnabled") da->SetWeeklyEnabled(p->GetBoolean());
+			if (id == "ShowMode") da->SetShowMode(p->GetBoolean());
 		}
 	}
 
@@ -545,6 +551,7 @@ public:
 		AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
 		AddProperty("AnnualEnabled", new wxUIProperty(false));
 		AddProperty("WeeklyEnabled", new wxUIProperty(false));
+		AddProperty("ShowMode", new wxUIProperty(true));
 	}
 	virtual wxString GetTypeName() { return "DataLifetimeMatrix"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataLifetimeMatrixObject; o->Copy(this); return o; }
@@ -559,6 +566,7 @@ public:
 		da->SetAnalysisPeriod(Property("AnalysisPeriod").GetInteger());
 		da->SetAnnualEnabled(Property("AnnualEnabled").GetBoolean());
 		da->SetWeeklyEnabled(Property("WeeklyEnabled").GetBoolean());
+		da->SetShowMode(Property("ShowMode").GetBoolean());
 		return AssignNative(da);
 	}
 	virtual void Draw(wxWindow *win, wxDC &dc, const wxRect &geom)
@@ -582,6 +590,7 @@ public:
 			if (id == "Description") da->SetDescription(p->GetString());
 			if (id == "AnnualEnabled") da->SetAnnualEnabled(p->GetBoolean());
 			if (id == "WeeklyEnabled") da->SetWeeklyEnabled(p->GetBoolean());
+			if (id == "ShowMode") da->SetShowMode(p->GetBoolean());
 		}
 	}
 

@@ -208,10 +208,16 @@ public:
 	void SetDataLabel(const wxString &s);
 	wxString GetDataLabel();
 
+	void SetColumnLabel(const wxString &s);
+	wxString GetColumnLabel();
+
+	void SetShowMode(const bool &b) { mShowMode = b; };
+	bool GetShowMode() { return mShowMode; };
+
 	void SetDescription(const wxString &s) { mDescription = s; }
 	wxString GetDescription() { return mDescription; }
 
-	void SetAnalysisPeriod(const size_t &p) { mAnalysisPeriod = p; }
+	void SetAnalysisPeriod(const size_t &p);
 	size_t GetAnalysisPeriod() { return mAnalysisPeriod; }
 
 	void SetMinPerHour(const size_t &p) { mMinPerHour = p; }
@@ -228,11 +234,11 @@ public:
 
 	void OnPressed(wxCommandEvent &evt);
 private:
-	wxString mDataLabel;
+	wxString mDataLabel, mColumnLabel;
 	size_t mAnalysisPeriod, mMinPerHour, mMode;
 	std::vector<double> mData;
 	wxString mDescription;
-	bool mAnnualEnabled, mWeeklyEnabled;
+	bool mAnnualEnabled, mWeeklyEnabled, mShowMode;
 
 	DECLARE_EVENT_TABLE();
 };
@@ -267,10 +273,13 @@ public:
 	void SetColumnLabels(const wxString &s);
 	wxString GetColumnLabels();
 
+	void SetShowMode(const bool &b) { mShowMode = b; };
+	bool GetShowMode() { return mShowMode; };
+
 	void SetDescription(const wxString &s) { mDescription = s; }
 	wxString GetDescription() { return mDescription; }
 
-	void SetAnalysisPeriod(const size_t &p) { mAnalysisPeriod = p; }
+	void SetAnalysisPeriod(const size_t &p);
 	size_t GetAnalysisPeriod() { return mAnalysisPeriod; }
 
 	void SetMinPerHour(const size_t &p) { mMinPerHour = p; }
@@ -292,7 +301,7 @@ private:
 	size_t mAnalysisPeriod, mMinPerHour, mMode;
 	matrix_t<double> mData;
 	wxString mDescription;
-	bool mAnnualEnabled, mWeeklyEnabled;
+	bool mAnnualEnabled, mWeeklyEnabled, mShowMode;
 
 	DECLARE_EVENT_TABLE();
 };
