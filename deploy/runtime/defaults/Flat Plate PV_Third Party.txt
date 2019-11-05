@@ -1,5 +1,5 @@
 1
-760
+762
 6par_aisc
 1
 1
@@ -259,6 +259,12 @@ YrBuilt
 1
 1980
 ac_lifetime_losses
+1
+2
+1
+1
+0
+ac_lifetime_losses_size
 1
 2
 1
@@ -1358,6 +1364,12 @@ dc_degradation
 1
 0.5
 dc_lifetime_losses
+1
+2
+1
+1
+0
+dc_lifetime_losses_size
 1
 2
 1
@@ -2578,7 +2590,8 @@ lib_is_bifacial
 library_folder_list
 1
 4
-0
+1
+x
 library_paths
 1
 4

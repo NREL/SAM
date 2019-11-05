@@ -1,5 +1,5 @@
 1
-1054
+1056
 6par_aisc
 1
 1
@@ -190,6 +190,12 @@ LeadAcid_tn
 1
 1
 ac_lifetime_losses
+1
+2
+1
+1
+0
+ac_lifetime_losses_size
 1
 2
 1
@@ -1843,6 +1849,12 @@ dc_degradation
 1
 0.5
 dc_lifetime_losses
+1
+2
+1
+1
+0
+dc_lifetime_losses_size
 1
 2
 1
