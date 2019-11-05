@@ -37,6 +37,24 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "variables.h"
 
+// can place in utility
+// reference http://c-faq.com/fp/fpequal.html
+#define Abs(x)    ((x) < 0 ? -(x) : (x))
+#define Max(a, b) ((a) > (b) ? (a) : (b))
+#define TOLERANCE (1.0e-6)
+
+double RelDif(double a, double b)
+{
+	double c = Abs(a);
+	double d = Abs(b);
+
+	d = Max(c, d);
+
+	return d == 0.0 ? 0.0 : Abs(a - b) / d;
+}
+
+
+
 wxString vv_strtypes[7] = { "invalid", "number", "array", "matrix", "string", "table", "binary" };
 
 VarTable::VarTable()
@@ -549,7 +567,8 @@ bool VarValue::ValueEqual( VarValue &rhs )
 					for (size_t c = 0; c < m_val.ncols(); c++)
 					  {
 						if (equal)
-							equal = equal && (m_val(r, c) == rhs.m_val(r, c));
+//							equal = equal && (m_val(r, c) == rhs.m_val(r, c));
+							equal = equal && (RelDif(m_val(r, c),rhs.m_val(r, c)) < TOLERANCE);
 						else
 							break;
 					  }
