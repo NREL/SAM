@@ -1,4 +1,4 @@
-MHK Losses
+MHK Losses - Simple
 954
 962
 13
@@ -579,9 +579,9 @@ Tips
 loss_additional
 3
 1
-Additional Losses
+Additional losses
 %
-ME Losses
+MHK Wave Losses
 0
 0
 1
@@ -593,9 +593,9 @@ Numeric
 loss_array_spacing
 3
 1
-Array Spacing
+Array spacing
 %
-ME Losses
+MHK Wave Losses
 0
 2
 1
@@ -607,9 +607,9 @@ Numeric
 loss_downtime
 3
 1
-Array/WEC Downtime
+Array/WEC downtime
 %
-ME Losses
+MHK Wave Losses
 0
 2
 1
@@ -621,9 +621,9 @@ Numeric
 loss_resource_overprediction
 3
 1
-Resource Overprediction
+Resource overprediction
 %
-ME Losses
+MHK Wave Losses
 0
 2
 1
@@ -635,9 +635,9 @@ Numeric
 loss_total
 3
 1
-Total Losses
+Total losses
 %
-ME Losses
+MHK Wave Losses
 0
 8
 1
@@ -649,9 +649,9 @@ Numeric
 loss_transmission
 3
 1
-Transmission Losses
+Transmission losses
 %
-ME Losses
+MHK Wave Losses
 0
 2
 1

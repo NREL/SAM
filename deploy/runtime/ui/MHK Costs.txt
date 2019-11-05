@@ -7315,7 +7315,7 @@ insurance_during_construction_cost
 1
  
  
- 
+MHK Costs
 0
 9
 1
@@ -7329,7 +7329,7 @@ insurance_during_construction_input
 1
  
  
- 
+MHK Costs
 0
 1
 1
@@ -7343,7 +7343,7 @@ insurance_during_construction_method
 1
  
  
- 
+MHK Costs
 0
 0
 1
@@ -7357,7 +7357,7 @@ insurance_during_construction_modeled
 1
  
  
- 
+MHK Costs
 0
 9
 1
@@ -7371,7 +7371,7 @@ maintenance_cost_cost
 1
  
  
- 
+MHK Costs
 0
 9
 1
@@ -7385,7 +7385,7 @@ maintenance_cost_input
 1
  
  
- 
+MHK Costs
 0
 1
 1
@@ -7399,7 +7399,7 @@ maintenance_cost_method
 1
  
  
- 
+MHK Costs
 0
 0
 1
@@ -7413,7 +7413,7 @@ maintenance_cost_modeled
 1
  
  
- 
+MHK Costs
 0
 9
 1
@@ -7595,7 +7595,7 @@ operations_cost_cost
 1
  
  
- 
+MHK Costs
 0
 9
 1
@@ -7609,7 +7609,7 @@ operations_cost_input
 1
  
  
- 
+MHK Costs
 0
 1
 1
@@ -7623,7 +7623,7 @@ operations_cost_method
 1
  
  
- 
+MHK Costs
 0
 0
 1
@@ -7637,7 +7637,7 @@ operations_cost_modeled
 1
  
  
- 
+MHK Costs
 0
 9
 1
@@ -7875,7 +7875,7 @@ project_contingency_cost
 1
  
  
- 
+MHK Costs
 0
 9
 1
@@ -7889,7 +7889,7 @@ project_contingency_input
 1
  
  
- 
+MHK Costs
 0
 1
 1
@@ -7903,7 +7903,7 @@ project_contingency_method
 1
  
  
- 
+MHK Costs
 0
 0
 1
@@ -7917,7 +7917,7 @@ project_contingency_modeled
 1
  
  
- 
+MHK Costs
 0
 9
 1
@@ -7931,7 +7931,7 @@ reserve_accounts_cost
 1
  
  
- 
+MHK Costs
 0
 9
 1
@@ -7945,7 +7945,7 @@ reserve_accounts_input
 1
  
  
- 
+MHK Costs
 0
 1
 1
@@ -7959,7 +7959,7 @@ reserve_accounts_method
 1
  
  
- 
+MHK Costs
 0
 0
 1
@@ -7973,7 +7973,7 @@ reserve_accounts_modeled
 1
  
  
- 
+MHK Costs
 0
 9
 1
@@ -8156,7 +8156,7 @@ total_financial_cost
 1
  
  
- 
+MHK Costs
 0
 9
 1
@@ -8184,7 +8184,7 @@ total_operating_cost
 1
  
  
- 
+MHK Costs
 0
 9
 1

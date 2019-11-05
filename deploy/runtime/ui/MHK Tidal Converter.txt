@@ -1,4 +1,4 @@
-MHK Tidal Device
+MHK Tidal Converter
 966
 894
 4
@@ -248,7 +248,7 @@ equations{ 'device_rated_power' } = define ()
 		if (mat[r][1] > max_power) max_power = mat[r][1];
 	return max_power;
 };
-954
+957
 function plot_device_curve()
 {
 	setplot('tidal_power_curve_plot');
@@ -283,7 +283,7 @@ on_change{'tidal_power_curve'}=define()
 	plot_device_curve();
 };
 
-on_load{'MHK Tidal Device'}=define()
+on_load{'MHK Tidal Converter'}=define()
 {
 	plot_device_curve();
 };

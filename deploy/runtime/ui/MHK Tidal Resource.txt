@@ -129,7 +129,7 @@ tidal_resource
 3
 Frequency distribution of resource as a function of stream speeds
  
- 
+MHK Tidal Resource
 0
 3
 1

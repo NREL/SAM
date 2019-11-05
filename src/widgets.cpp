@@ -1738,7 +1738,7 @@ EVT_BUTTON(wxID_ANY, AFDataArrayButton::OnPressed)
 END_EVENT_TABLE()
 
 AFDataArrayButton::AFDataArrayButton( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
-	: wxButton(parent, id, "Edit time series data...", pos, size)
+	: wxButton(parent, id, "Edit array...", pos, size)
 {
 	mData.resize(8760, 0.0);
 	mMode = DATA_ARRAY_8760_MULTIPLES;
@@ -1791,7 +1791,7 @@ int AFDataArrayButton::GetMode()
 
 void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	AFDataArrayDialog dlg( this, "Edit Time Series Data (Data Array)", m_description, mDataLabel );
+	AFDataArrayDialog dlg( this, "Edit Array (Data Array)", m_description, mDataLabel );
 	
 	dlg.SetDataLabel( mDataLabel );
 	dlg.SetMode(mMode);
@@ -2092,8 +2092,9 @@ public:
 
 		szh_top3->Show(showMode);
 
-		SetSizer(szh_main);
-		SetSizeHints(wxSize(1000, 800));
+//		SetSizer(szh_main);
+		SetSizerAndFit(szh_main);
+		//SetSizeHints(wxSize(1000, 800));
 	}
 
 	void SetMode(int m)
@@ -2356,7 +2357,7 @@ EVT_BUTTON(wxID_ANY, AFDataLifetimeArrayButton::OnPressed)
 END_EVENT_TABLE()
 
 AFDataLifetimeArrayButton::AFDataLifetimeArrayButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
-	: wxButton(parent, id, "Edit time series data...", pos, size)
+	: wxButton(parent, id, "Edit lifetime data...", pos, size)
 {
 	mAnalysisPeriod = 25;
 	mMinPerHour = 30;
@@ -2530,7 +2531,7 @@ void AFDataLifetimeArrayButton::OnPressed(wxCommandEvent &evt)
 */
 
 
-	AFDataLifetimeArrayDialog dlg(this, "Edit Time Series Data (Lifetime Array)", mDescription, mDataLabel, mColumnLabel, mAnnualEnabled, mWeeklyEnabled, mShowMode);
+	AFDataLifetimeArrayDialog dlg(this, "Edit Lifetime Data (Lifetime Array)", mDescription, mDataLabel, mColumnLabel, mAnnualEnabled, mWeeklyEnabled, mShowMode);
 	dlg.SetAnalysisPeriod(mAnalysisPeriod);
 	dlg.SetData(mData);
 	dlg.SetMode(mMode); // to set when mode hidden
@@ -2923,7 +2924,7 @@ public:
 		szh_top3->Show(showMode);
 
 		SetSizer(szh_main);
-		SetSizeHints(wxSize(1000, 800));
+		//SetSizeHints(wxSize(1000, 800));
 	}
 
 	void SetMode(int m)
@@ -3194,7 +3195,7 @@ EVT_BUTTON(wxID_ANY, AFDataLifetimeMatrixButton::OnPressed)
 END_EVENT_TABLE()
 
 AFDataLifetimeMatrixButton::AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
-	: wxButton(parent, id, "Edit time series data...", pos, size)
+	: wxButton(parent, id, "Edit lifetime data...", pos, size)
 {
 	mAnalysisPeriod = 25;
 	mMinPerHour = 30;
@@ -3370,7 +3371,7 @@ void AFDataLifetimeMatrixButton::OnPressed(wxCommandEvent &evt)
 	if (mData.nrows() != newSize)
 		mData.resize_preserve(newSize, mData.ncols(), 0.0);
 	*/
-	AFDataLifetimeMatrixDialog dlg(this, "Edit Time Series Data (Lifetime Matrix)", mDescription, mDataLabel, mColumnLabels, mAnnualEnabled, mWeeklyEnabled, mShowMode);
+	AFDataLifetimeMatrixDialog dlg(this, "Edit Lifetime Data (Lifetime Matrix)", mDescription, mDataLabel, mColumnLabels, mAnnualEnabled, mWeeklyEnabled, mShowMode);
 	dlg.SetAnalysisPeriod(mAnalysisPeriod);
 	dlg.SetData(mData);
 	dlg.SetMode(mMode); // to set when mode hidden
@@ -3569,7 +3570,7 @@ EVT_BUTTON(wxID_ANY, AFStringArrayButton::OnPressed)
 END_EVENT_TABLE()
 
 AFStringArrayButton::AFStringArrayButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
-	: wxButton(parent, id, "Edit time series data...", pos, size)
+	: wxButton(parent, id, "Edit array...", pos, size)
 {
 }
 
@@ -3593,7 +3594,7 @@ wxString AFStringArrayButton::GetStringLabel()
 
 void AFStringArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	AFStringArrayDialog dlg(this, "Edit Time Series Data (String Array)", m_description, mStringLabel);
+	AFStringArrayDialog dlg(this, "Edit Array (String Array)", m_description, mStringLabel);
 
 	dlg.SetStringLabel(mStringLabel);
 	dlg.SetData(&mData);

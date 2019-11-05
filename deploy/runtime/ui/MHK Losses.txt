@@ -849,7 +849,7 @@ loss_additional
 1
 Additional losses
 %
-ME Losses
+MHK Wave Losses
 0
 0
 1
@@ -863,7 +863,7 @@ loss_array_spacing
 1
 Array spacing
 %
-ME Losses
+MHK Wave Losses
 0
 2
 1
@@ -877,7 +877,7 @@ loss_downtime
 1
 Array/WEC downtime
 %
-ME Losses
+MHK Wave Losses
 0
 2
 1
@@ -891,7 +891,7 @@ loss_resource_overprediction
 1
 Resource overprediction
 %
-ME Losses
+MHK Wave Losses
 0
 2
 1
@@ -905,7 +905,7 @@ loss_total
 1
 Total losses
 %
-ME Losses
+MHK Wave Losses
 0
 8
 1
@@ -919,7 +919,7 @@ loss_transmission
 1
 Transmission losses
 %
-ME Losses
+MHK Wave Losses
 0
 2
 1

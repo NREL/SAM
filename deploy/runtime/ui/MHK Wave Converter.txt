@@ -1,4 +1,4 @@
-MHK Wave Device
+MHK Wave Converter
 1292
 796
 16
@@ -21,7 +21,7 @@ Width
 1278
 Height
 3
-767
+728
 Tool Tip
 5
 0
@@ -45,10 +45,10 @@ X
 375
 Y
 3
-123
+111
 Width
 3
-102
+100
 Height
 3
 24
@@ -107,10 +107,10 @@ X
 111
 Y
 3
-123
+111
 Width
 3
-103
+100
 Height
 3
 24
@@ -151,10 +151,10 @@ X
 375
 Y
 3
-90
+84
 Width
 3
-102
+100
 Height
 3
 24
@@ -210,13 +210,13 @@ Name
 device_material
 X
 3
-372
+375
 Y
 3
-159
+138
 Width
 3
-105
+100
 Height
 3
 24
@@ -257,10 +257,10 @@ X
 111
 Y
 3
-90
+84
 Width
 3
-103
+100
 Height
 3
 24
@@ -298,13 +298,13 @@ Name
 device_pto_type
 X
 3
-108
+111
 Y
 3
-156
+138
 Width
 3
-105
+100
 Height
 3
 24
@@ -345,10 +345,10 @@ X
 375
 Y
 3
-60
+57
 Width
 3
-102
+100
 Height
 3
 24
@@ -404,13 +404,13 @@ Name
 device_tech_type
 X
 3
-108
+111
 Y
 3
-195
+165
 Width
 3
-369
+366
 Height
 3
 24
@@ -448,7 +448,7 @@ Name
 lib_wave_device
 X
 3
-522
+534
 Y
 3
 30
@@ -482,7 +482,7 @@ X
 45
 Y
 3
-303
+282
 Width
 3
 1200
@@ -573,7 +573,7 @@ X
 33
 Y
 3
-30
+27
 Width
 3
 208
@@ -590,7 +590,7 @@ Items
 6
 2
 Select WEC from library
-Input WEC not found in library
+Import WEC parameters
 ShowCaptions
 2
 1
@@ -613,13 +613,13 @@ X
 27
 Y
 3
-237
+222
 Width
 3
 1236
 Height
 3
-527
+506
 Tool Tip
 5
 0
@@ -640,23 +640,23 @@ Name
 user_entered
 X
 3
-249
+27
 Y
 3
-27
+165
 Width
 3
-270
+492
 Height
 3
-36
+57
 Tool Tip
 5
 0
 Caption
 5
-31
-User must upload a power matrix
+113
+Use the Import or Paste buttons below to import performance data for the wave power matrix. See Help for details.
 TextColour
 4
 255
@@ -691,7 +691,7 @@ X
 45
 Y
 3
-273
+243
 Width
 3
 1200
@@ -785,7 +785,7 @@ Y
 30
 Width
 3
-103
+100
 Height
 3
 24
@@ -819,9 +819,9 @@ TabOrder
 device_characteristic_diameter
 3
 1
-Characteristic Diameter
+Characteristic diameter
 m
-MHK Wave Device
+MHK Wave Energy Converter
 0
 8
 1
@@ -833,9 +833,9 @@ Numeric
 device_foundation
 3
 4
-Foundation Type
+Foundation type
  
-MHK Wave Device
+MHK Wave Energy Converter
 0
 8
 1
@@ -845,9 +845,9 @@ TextEntry
 device_mass
 3
 1
-Unballasted Structural Mass
+Unballasted structural mass
 Tonnes
-MHK Wave Device
+MHK Wave Energy Converter
 0
 8
 1
@@ -859,9 +859,9 @@ Numeric
 device_material
 3
 4
-Primary Structure Material
+Primary structure material
  
-MHK Wave Device
+MHK Wave Energy Converter
 0
 8
 1
@@ -871,9 +871,9 @@ TextEntry
 device_mooring
 3
 4
-Mooring Type
+Mooring type
  
-MHK Wave Device
+MHK Wave Energy Converter
 0
 8
 1
@@ -883,9 +883,9 @@ TextEntry
 device_pto_type
 3
 4
-PTO Type
+PTO type
  
-MHK Wave Device
+MHK Wave Energy Converter
 0
 8
 1
@@ -895,9 +895,9 @@ TextEntry
 device_rated_power
 3
 1
-Device Rated Power
+Device rated power
 kW
-MHK Wave Device
+MHK Wave Energy Converter
 0
 8
 1
@@ -909,9 +909,9 @@ Default
 device_tech_type
 3
 4
-Technology Type
+Technology type
  
-MHK Wave Device
+MHK Wave Energy Converter
 0
 8
 1
@@ -921,9 +921,9 @@ TextEntry
 lib_wave_device
 3
 4
-Wave Device Library
+Wave device library
  
-MHK Wave Device
+MHK Wave Energy Converter
 14
 Wave_Devices|0
 19
@@ -935,9 +935,9 @@ Library
 lib_wave_power_matrix
 3
 3
-Library WEC power matrix
+WEC power matrix from library
  
-MHK Wave Device
+MHK Wave Energy Converter
 0
 1
 1
@@ -949,11 +949,11 @@ DataMatrix
 library_or_input_wec
 3
 1
-Choose WEC from library or input WEC
+Choose WEC from library or user
  
-MHK Wave Device
-55
-Select WEC from library| Input WEC not found in library
+MHK Wave Energy Converter
+45
+Select WEC from library|Import WEC parameters
 1
 1
 1
@@ -964,9 +964,9 @@ Default
 user_wave_power_matrix
 3
 3
- User input WEC power matrix
+WEC power matrix from user
 kW
-MHK Wave Device
+MHK Wave Energy Converter
 0
 1
 1
@@ -999,9 +999,9 @@ DataMatrix
 wave_device_name
 3
 4
-Device name
+WEC name
  
-MHK Wave Device
+MHK Wave Energy Converter
 0
 8
 1
@@ -1012,9 +1012,9 @@ TextEntry
 wave_power_matrix
 3
 3
- Power Matrix for Wave Device
+WEC power matrix
 kW
-MHK Wave Device
+MHK Wave Energy Converter
 0
 8
 1
@@ -1044,7 +1044,6 @@ equations{ 'wave_power_matrix' } = define()
 };
 
 980
-
 function update_controls()
 {
 	input_wec = (value("library_or_input_wec") == 1);
@@ -1064,9 +1063,7 @@ function update_controls()
 	refresh();
 }
 
-
-
-on_load{'MHK Wave Device'}=define()
+on_load{'MHK Wave Converter'}=define()
 {
 	//enable("lib_wave_power_curve", false);
 	value( 'wave_device_name', value( 'lib_wave_device' ) );

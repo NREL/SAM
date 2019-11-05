@@ -1957,8 +1957,8 @@ setup_merchant_plant_pages(LIFETIME_SYSTEM);
 function setup_mhkwave_pages()
 {
 	addpage( [[ 'MHK Wave Resource']], { 'sidebar'='Wave Resource', 'help'='mhk_wave_resource' } );
-	addpage( [[ 'MHK Wave Device' ]], { 'sidebar'='Wave Energy Converter', 'help'='mhk_wave_converter' } );
-	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='mhk_wave_array' } );
+	addpage( [[ 'MHK Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='mhk_wave_converter' } );
+	addpage( [[ 'MHK Array' ]], { 'sidebar'='Array', 'help'='mhk_wave_array' } );
 	addpage( [[ 'MHK Losses' ]], { 'sidebar'='Losses', 'help'='mhk_wave_losses' } );
 	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='mhk_wave_system_costs' } );
 }
@@ -1970,8 +1970,8 @@ addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Para
 function setup_mhktidal_pages()
 {
 	addpage( [[ 'MHK Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='mhk_tidal_resource' } );
-	addpage( [[ 'MHK Tidal Device' ]], { 'sidebar'='Tidal Energy Converter', 'help'='mhk_tidal_converter' } );
-	addpage( [[ 'MHK Farm' ]], { 'sidebar'='Array', 'help'='mhk_tidal_array' } );
+	addpage( [[ 'MHK Tidal Converter' ]], { 'sidebar'='Tidal Energy Converter', 'help'='mhk_tidal_converter' } );
+	addpage( [[ 'MHK Array' ]], { 'sidebar'='Array', 'help'='mhk_tidal_array' } );
 	addpage( [[ 'MHK Losses' ]], { 'sidebar'='Losses', 'help'='mhk_tidal_losses' } );
 	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='mhk_tidal_system_costs' } );
 }
