@@ -1,7 +1,7 @@
 MHK Tidal Resource
-532
+998
 866
-2
+3
 GroupBox
 
 1
@@ -18,7 +18,7 @@ Y
 36
 Width
 3
-498
+974
 Height
 3
 806
@@ -48,7 +48,7 @@ Y
 57
 Width
 3
-474
+400
 Height
 3
 775
@@ -93,8 +93,8 @@ ShowColLabels
 1
 ColLabels
 5
-16
-u (m/s),f(D/0.5)
+39
+Velocity (m/s),Probability Distribution
 NumRowsLabel
 5
 5
@@ -122,6 +122,29 @@ ShowColumn
 ColorMap
 2
 0
+Plot
+
+1
+6
+Name
+5
+25
+tidal_resource_curve_plot
+X
+3
+432
+Y
+3
+60
+Width
+3
+540
+Height
+3
+380
+Tool Tip
+5
+0
 
 1
 tidal_resource
@@ -143,4 +166,42 @@ MHK Tidal Resource
 DataMatrix
 
 0
-0
+945
+function plot_resource_curve()
+{
+	setplot('tidal_resource_curve_plot');
+	clearplot('tidal_resource_curve_plot');
+	plotopt( {'title'='Tidal resource','backcolor'=[255,255,255], 'popup'=true, 'legend'=false, 'legendpos'=[75,10]}  );
+	
+//	ws_all = ${tidal_resource_definition};
+	pc_all = ${tidal_resource};
+	ws=alloc(#pc_all);
+	pc=alloc(#pc_all);
+	for (i=0;i<#pc_all;i++)
+	{
+		ws[i] = pc_all[i][0];
+		pc[i] = pc_all[i][1] *100;
+	}
+	plot( ws, pc, {'thick'=5, 'scale'=true,  'series'='Resource Probability', 'type'='bar'});
+	
+	high = max( ws );
+	low = min( ws );
+	pad = 0;
+	axis( 'x1', {'label'='Velocity (m/s)', 'min'=low-pad, 'max'=high+pad });
+	
+	high = max( pc );
+	low = min( pc );
+	pad = 0;// (high - low) * 0.02;
+	axis( 'y1', {'label'='Probability distribution (%)', 'min'=(low-pad), 'max'=(high+pad) });
+
+}
+
+on_change{'tidal_resource'}=define()
+{
+	plot_resource_curve();
+};
+
+on_load{'MHK Tidal Resource'}=define()
+{
+	plot_resource_curve();
+};
