@@ -105,9 +105,25 @@ function arr_to_str ( arr )
 		str = replace( str, ' ', '' );
 	}
 	return str;
+}
+
+function name_output_file( f )
+{
+	str = f;
+	arr = split( str, '.' );
+	ext = arr[#arr-1];
+	str = '';
+	for ( i=0; i<#arr-1; i++ )
+	{
+		period = '.';
+		if ( i == #arr-2 ) { period = ''; }
+		str += arr[i] + period;
+	}
+	str += '_samcsv.' + ext;
+	return str;
 } 
 
-function wf_check ( wf )
+function wf_check( wf )
 {
 	obj = ssc_create();
 	ssc_var( obj, 'input_file', wf );
@@ -180,6 +196,99 @@ function ssc_wfcsvconv( wf )
 	ssc_free( obj );
 }
 
+function solar_anywhere_time_shift( T )
+{
+	// Convert time stamp. For example, an SA file for 2000 
+	// starts with 1/1/2000 1:00 and ends with 1/1/2001 0:00:
+	//  * 1/1/2000 has 23 hours
+	//  * all other days have 24 hours
+	//  * 1/1/2001 has one hour 
+	// SAM CSV starts with 1/1/2000 0:00 and  ends with 12/31/2000 23:00.
+	// To convert:
+	//  1. Shift each hour back one so 1/1/2000 starts at 0:00
+	//  2. Shift 0:00 of each day to 23:00 of previous day.
+	//  3. Shift first 0:00 of each month to 23:00 of last day of previous month
+	//  4. Shift 1/1/2001 0:00 to 12/31/2000 23:00
+	//  5. For multi-year files, shift 1/1/2002 0:00 to 12/31/2001 23:00
+	h = T.h - 1;
+	d = T.d;
+	m = T.m;
+	y = T.y;
+	if ( h == -1 ) 
+	{
+		h = 23;
+		d = d - 1;
+		if ( d == 0 && m == 1 ) // for multi-year files
+		{
+			y = y - 1;
+			m = 12;
+			d = 31;
+		}
+		if ( d == 0 && m == 2 )
+		{
+			m = 1;
+			d = 31;
+		}
+		if ( d == 0 && m == 3 )
+		{
+			m = 2;
+			d = 28;
+		}
+		if ( d == 0 && m == 4 )
+		{
+			m = 3;
+			d = 31;
+		}
+		if ( d == 0 && m == 5 )
+		{
+			m = 4;
+			d = 30;
+		}
+		if ( d == 0 && m == 6 )
+		{
+			m = 5;
+			d = 31;
+		}
+		if ( d == 0 && m == 7 )
+		{
+			m = 6;
+			d = 30;
+		}
+		if ( d == 0 && m == 8 )
+		{
+			m = 7;
+			d = 31;
+		}
+		if ( d == 0 && m == 9 )
+		{
+			m = 8;
+			d = 31;
+		}
+		if ( d == 0 && m == 10 )
+		{
+			m = 9;
+			d = 30;
+		}
+		if ( d == 0 && m == 11 )
+		{
+			m = 10;
+			d = 31;
+		}
+		if ( d == 0 && m == 12 )
+		{
+			m = 11;
+			d = 30;
+		}
+/*		elseif (m == 2 && d == 29) 
+		{
+			y = y;
+			m = 3;
+			d = 1;
+		}*/
+	}
+	return { 'h'=h, 'd'=d, 'm'=m, 'y'=y };
+}
+
 // convert single year or multiple year files from SolarAnywhere to SAM CSV
 function solar_anywhere_to_sam_csv( wf )
 {
@@ -214,9 +323,15 @@ function solar_anywhere_to_sam_csv( wf )
 		}
 		if ( line == 2 ) 
 		{
-			arr = split( str_line, ',');
+			arr = split( str_line, ',' );
+			arr = split( str_line, ' ' );
 			arr = split( arr[0], '/');
-			fyear1 = arr[0];
+			// older SA time series formats are yyyy/mm/dd
+			// newer formats are mm/dd/yyyy
+			for ( i=0; i<#arr; i++ )
+			{
+				if ( strlen(arr[i]) > 2 ) { fyear1 = arr[i]; }
+			}	
 			ok = false;
 		}  
 		line++;
@@ -225,9 +340,9 @@ function solar_anywhere_to_sam_csv( wf )
 	seek(fin,0,0); // move position in input file back to beginning
 
 	// open output file for writing using location from input file in name
-	str = split( file_only(wf), '.' );
-	out_name = '/' + str[0] + '_samcsv';
-	output_file = path + out_name + '.csv';
+	out_name = replace( file_only(wf), '.csv', '_samcsv.csv' );
+	output_file = path + '/' + out_name;
+	outln( output_file );
 	fout = open( output_file , 'w' );
 	if ( fout == 0 ) 
 	{
@@ -316,23 +431,42 @@ function solar_anywhere_to_sam_csv( wf )
 			}
 			// convert comma-separated row to an array
 			arr = split( data_str, ',');
-			// if less than 15 columns, assume format is SA 
-			// number of columns varies between "time series" (12) and "average" (11) files
-			// TMY3 format has 68 columns 
-			if (#arr < 15 ) 
+			// if less than 20 columns, assume format is SA 
+			// SA TMY3 format has 68 columns 
+			if (#arr < 20 ) 
 			{
 				format = 'SolarAnywhere';
 				datetime = split( arr[0] , ' ');
 				date = split( datetime[0] , '/');
 				hour = split( datetime[1] , ':');
-				y = to_int(date[0]);
-				m = to_int(date[1]);
-				d = to_int(date[2]);
-				h = to_int(hour[0]);
-				data[0] = to_string(y); // year
-				data[1] = to_string(m); // month
-				data[2] = to_string(d); // day
-				data[3] = to_string(h); // hour    
+				// older time series SA format uses yyyy/mm/dd
+				// newer format uses mm/dd/yyyy
+				if ( line == 2 ) 
+				{
+					i_yr = 0;
+					for ( i=0; i<#date; i++ ) 
+					{ 
+						if ( strlen(date[i]) > 2 ) { i_yr = i; } 
+					}
+				}
+				if ( i_yr == 0 ) // yyyy/mm/dd
+				{ 
+					yr = to_int(date[0]);
+					mn = to_int(date[1]);
+					dy = to_int(date[2]);
+				}
+				else // mm/dd/yyyy
+				{ 
+					yr = to_int(date[2]);
+					mn = to_int(date[0]);
+					dy = to_int(date[1]);
+				}
+				hr = to_int(hour[0]);
+				T = solar_anywhere_time_shift( { 'h'=hr, 'm'=mn, 'd'=dy, 'y'=yr } );
+				data[0] = to_string(T.y); // year
+				data[1] = to_string(T.m); // month
+				data[2] = to_string(T.d); // day
+				data[3] = to_string(T.h); // hour    
 				data[4] = arr[1]; // ghi
 				data[5] = arr[2]; // dni
 				data[6] = arr[9]; // dhi
@@ -344,20 +478,20 @@ function solar_anywhere_to_sam_csv( wf )
 				data[12] = missing; // wdir
 				data[13] = missing; // alb
 			}
-			// if not 12 columns, assume format is SA TMY3
 			else 
 			{
 				format = 'SolarAnywhere TMY3';
 				date = split( arr[0] , '/');
 				hour = split( arr[1] , ':');
-				y = to_int(date[2]);
-				m = to_int(date[0]);
-				d = to_int(date[1]);
-				h = to_int(hour[0]);
-				data[0] = to_string(y); // year
-				data[1] = to_string(m); // month
-				data[2] = to_string(d); // day
-				data[3] = to_string(h); // hour    
+				yr = to_int(date[2]);
+				mn = to_int(date[0]);
+				dy = to_int(date[1]);
+				hr = to_int(hour[0]);
+				T = solar_anywhere_time_shift( { 'h'=hr, 'm'=mn, 'd'=dy, 'y'=yr } );
+				data[0] = to_string(T.y); // year
+				data[1] = to_string(T.m); // month
+				data[2] = to_string(T.d); // day
+				data[3] = to_string(T.h); // hour    
 				data[4] = arr[4]; // ghi
 				data[5] = arr[7]; // dni
 				data[6] = arr[10]; // dhi
@@ -369,21 +503,7 @@ function solar_anywhere_to_sam_csv( wf )
 				data[12] = arr[43]; // wdir
 				data[13] = arr[61]; // alb
 			}
-			//convert time stamp from hour ending to hour beginning
-			//and move last time stamp from Jan 1 to Dec 31
-			h = h - 1;
-			if ( h == -1 ) 
-			{
-				h = 23;
-				if ( m == 1 && line > 2 ) 
-				{
-					data[0] = y - 1;
-					data[1] = 12;
-					data[2] = 31;
-				}
-			}
-			data[3] = to_string(h);
-			feb29 = ( m == 2 && d == 29 ); // feb29 is true for leap years
+			feb29 = ( T.m == 2 && T.d == 29 ); // feb29 is true for leap years
 			// check to see if input file is multi-year file
 			// if it is, close the output file and append year to file name 
 			// then, open a new output file, and write header data to it
@@ -405,13 +525,13 @@ function solar_anywhere_to_sam_csv( wf )
 						outln('  Failed to rename Year 1 output file');
 					}	
 				}
-				output_file = replace( wf, '.csv',  '_samcsv_' + y + '.csv');
+				output_file = replace( wf, '.csv',  '_samcsv_' + T.y + '.csv');
 				fout = open( output_file , 'w' );
 				write_line( fout , headers );
 				write_line( fout , arr_to_str(h1) );
 				write_line( fout , column_headers );
 				fcount++;
-				outln('    Saving data for year ' + y + ' in\n     ' + file_only(output_file) );
+				outln('    Saving data for year ' + T.y + ' in\n     ' + file_only(output_file) );
 			}
 			// write converted data row to output file, skipping February 29 for leap years
 			if ( feb29 == false ) 
@@ -424,7 +544,7 @@ function solar_anywhere_to_sam_csv( wf )
 				exit;
 			}
 		}  
-		if ( feb29 == false ) line++;
+		if ( feb29 == false ) { line++; }
 	}
 
 	// close input and output files
@@ -437,7 +557,8 @@ function solar_anywhere_to_sam_csv( wf )
 	if ( mod(line-2,8760)!=0 ) 
 	{ // line should be the total number of lines in the input file
 		outln('\n'+file_only(output_file) + ' does not contain a complete year of data.');
-		new_name = replace( output_file, '_samcsv_' + to_string(y-1), '_samcsv_' + to_string(y-1) + 'part' );
+//		new_name = replace( output_file, '_samcsv_' + to_string(y-1), '_samcsv_' + to_string(y-1) + 'part' );
+		new_name = replace( output_file, '_samcsv_' + to_string(T.y), '_samcsv_' + to_string(T.y) + 'part' );
 		ok = rename_file( output_file , new_name );
 		if (ok==true)
 		{
@@ -454,11 +575,11 @@ function solar_anywhere_to_sam_csv( wf )
 	if (fcount == 0 )
 	{
 		outln('Weather file converted to:\n\t' + output_file );
-		if ( wf_check( output_file ) ) 
+		/*if ( wf_check( output_file ) ) 
 		{	 
 			dview_solar( output_file );
 			browse( path_only( output_file ) );
-		}
+		}*/
 	} 
 } 
 

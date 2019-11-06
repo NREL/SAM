@@ -38,8 +38,16 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">Topic for MHK Tidal Energy Converter page.</span></p>
-
+<p class="p_Text"><span class="f_Text">The tidal energy converter (TEC) is characterized by a power curve derived from a table of tide velocities in meters per second (m/s) and electrical power in kilowatts (kW). The power should be the the net electrical power at the TEC device output terminals accounting for power used by onboard electrical systems.</span></p>
+<p class="p_Text"><span class="f_Text">You can import TEC power curve data from a text file, paste it from your computer's clipboard, or type values by hand in the tidal resource table.</span></p>
+<p class="p_Text"><span class="f_Text">The TEC power curve file format is a simple comma-separated (CSV) text file with two columns and no headers. The first column is the surface current velocity in meters per second (m/s), and the second column is net power output of the device in kilowatts (kW) at each velocity.</span></p>
+<p class="p_Text"><span class="f_Text">The following screenshot shows a TEC power curve file and the resulting power curve draft in SAM.</span></p>
+<p class="p_Text" style="text-align: center;"><img alt="MHKTidal-wec-power-curve" width="600" height="514" style="margin:0 auto 0 auto;width:600px;height:514px;border:none" src="mhktidal-wec-power-curve.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Device rated power</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The device rated power is the maximum power value in the TEC power curve and determines the device and array rated power for cost calculations.</span></p>
+<p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To import tidal energy resource data:</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ProcedureStep">Click Import and navigate to the file.</span></p><p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To paste tidal energy resource data from the clipboard:</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Select the data in a spreadsheet program and copy it to your clipboard. The data should consist of two columns of tab-delimited surface velocity and probability fraction values.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">In SAM, on the Tidal Resource page, click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStep">.</span></p>
 </td></tr></table>
 
 </body>

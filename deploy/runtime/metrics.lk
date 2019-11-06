@@ -34,7 +34,7 @@ function host_developer_metrics()
 
 function lcoefcr_metrics()
 {
-	metric( 'lcoe_fcr', {'label'='Levelized COE (real)', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' , 'scale'='100'} );
+	metric( 'lcoe_fcr', {'label'='Levelized cost of energy', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' , 'scale'='100'} ); // 
 }
 
 function iph_lcoefcr_metrics()
@@ -325,14 +325,14 @@ metrics{ 'Fuel Cell' } = define() {
 
 function MHKwave_metrics() 
 {
-	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 }
 
 function MHKtidal_metrics() 
 {
-	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 }
 
 
