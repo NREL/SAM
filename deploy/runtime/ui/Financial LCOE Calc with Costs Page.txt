@@ -2196,7 +2196,7 @@ equations{ '$MIMO$ fixed_charge_rate_calculator' } = define() {
     ${fixed_charge_rate} = fcr;
   }
 };
-1252
+1312
 function enable_disable() {
   calculator = ( value('ui_fcr_input_option') == 1 );
   enable( 'c_lifetime', calculator );
@@ -2218,7 +2218,7 @@ function enable_disable() {
 function cfin_is_zero_check()
 {
 	msg = '';
-	if ( value('ui_cfin') == 0 ) {
+	if ( value('ui_cfin') == 0 && value('ui_fcr_input_option') == 1 ) {
 		msg = 'CFF=0. To remove construction financing from your analysis, set the annual cost during constrution to 100% instead of zero, and set the nominal construction interest rate to zero.'; }
 	property( 'ui_lbl_cff_msg', 'Caption', msg );
 }
@@ -2233,6 +2233,7 @@ on_load{"Financial LCOE Calc with Costs Page"} = define()
 on_change{'ui_fcr_input_option'} = define()
 {
 	enable_disable();
+	cfin_is_zero_check();
 };
 
 on_change{'c_construction_cost'} = define() { cfin_is_zero_check(); };
