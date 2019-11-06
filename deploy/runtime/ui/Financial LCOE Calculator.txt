@@ -2469,30 +2469,14 @@ equations{ '$MIMO$ fixed_charge_rate_calculator' } = define() {
     ${fixed_charge_rate} = fcr;
   }
 };
-1586
-on_load{"Financial LCOE Calculator"} = define()
-{
-  on_change{'ui_cost_input_option'}();
-  on_change{'ui_fcr_input_option'}();
-  on_change{'c_construction_cost'}();
-  cfin_is_zero_check();
-};
-
-on_change{'ui_cost_input_option'} = define()
-{
+1676
+function enable_disable() {
   fixed = ( value('ui_cost_input_option') == 0 );
-  
   enable( 'ui_capital_cost_fixed', fixed );
   enable( 'ui_operating_cost_fixed', fixed );
-  
   enable( 'ui_capital_cost_capacity', !fixed );
   enable( 'ui_operating_cost_capacity', !fixed );
-};
-
-on_change{'ui_fcr_input_option'} = define()
-{
   calculator = ( value('ui_fcr_input_option') == 1 );
-  
   enable( 'c_lifetime', calculator );
   enable( 'c_inflation', calculator );
   enable( 'c_real_discount_rate', calculator );
@@ -2506,17 +2490,39 @@ on_change{'ui_fcr_input_option'} = define()
   enable( 'ui_crf', calculator );
   enable( 'ui_pfin', calculator );
   enable( 'ui_cfin', calculator );
-
   enable( 'ui_fixed_charge_rate', !calculator );
-  
-};
+}
 
-on_change{'c_construction_cost'} = define() { cfin_is_zero_check(); };
 function cfin_is_zero_check()
 {
 	msg = '';
-	if ( value('ui_cfin') == 0 ) 
-		msg = 'CFF=0. To remove construction financing from your analysis, set the annual cost during constrution to 100% instead of zero, and set the nominal construction interest rate to zero.';
+	if ( value('ui_cfin') == 0 ) {
+		msg = 'CFF=0. To remove construction financing from your analysis, set the annual cost during constrution to 100% instead of zero, and set the nominal construction interest rate to zero.'; }
 	property( 'ui_lbl_cff_msg', 'Caption', msg );
 }
+
+on_load{"Financial LCOE Calculator"} = define()
+{
+  //on_change{'ui_cost_input_option'}();
+  //on_change{'ui_fcr_input_option'}();
+  //on_change{'c_construction_cost'}();
+  cfin_is_zero_check();
+  enable_disable();
+};
+
+on_change{'ui_cost_input_option'} = define()
+{
+	enable_disable();
+};
+
+on_change{'ui_fcr_input_option'} = define()
+{
+	enable_disable();
+};
+
+on_change{'c_construction_cost'} = define() 
+{
+	cfin_is_zero_check(); 
+};
+
 

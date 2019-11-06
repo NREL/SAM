@@ -92,7 +92,7 @@ Items
 6
 3
 Use a single converter
-Specify desired array capacity
+Specify desired rated capacity
 Specify number of converters
 ShowCaptions
 2
@@ -1341,7 +1341,7 @@ Array sizing mode
  
 MHK Array
 82
-Use a single converter|Specify desired array capacity|Specify number of converters
+Use a single converter|Specify desired rated capacity|Specify number of converters
 3
 1
 1
@@ -1366,7 +1366,7 @@ Default
 desired_array_size
 3
 1
-Desired array capacity
+Desired rated capacity
 kW
 MHK Array
 0
@@ -1534,7 +1534,7 @@ Default
 system_capacity
 3
 1
-Array capacity
+Rated capacity
 kW
 MHK Array
 0

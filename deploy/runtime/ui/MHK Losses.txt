@@ -615,7 +615,7 @@ X
 75
 Y
 3
-441
+444
 Width
 3
 476
@@ -723,8 +723,8 @@ Tool Tip
 0
 Caption
 5
-210
-Reduction from resource uncertainty associated with installing device waters at a depth or distance outside parameters of resource file (e.g. shallow waters close to shore, large distance from measuring buoy). 
+217
+Reduction from resource uncertainty associated with installing the device in waters at a depth or distance outside parameters of resource file (e.g. shallow waters close to shore, large distance from measuring buoy). 
 TextColour
 4
 0
@@ -875,7 +875,7 @@ Numeric
 loss_downtime
 3
 1
-Array/WEC downtime
+Array or device downtime
 %
 MHK Wave Losses
 0

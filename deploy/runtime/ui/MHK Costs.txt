@@ -1,7 +1,7 @@
 MHK Costs
 1569
 1090
-144
+145
 GroupBox
 
 1
@@ -6529,6 +6529,68 @@ BackColour
 TabOrder
 3
 0
+Numeric
+
+1
+17
+Name
+5
+20
+total_rated_capacity
+X
+3
+477
+Y
+3
+882
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 ToolTipCtrl
 
 1
@@ -7029,7 +7091,7 @@ Tips
 55
 Type a tip here or define in runtime/help/tooltips.json
 
-83
+84
 array_cable_system_cost
 3
 1
@@ -7048,7 +7110,7 @@ array_cable_system_cost_input
 3
 1
 Array cable system cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7104,7 +7166,7 @@ assembly_and_install_cost_input
 3
 1
 Assembly and installation cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7160,7 +7222,7 @@ development_cost_input
 3
 1
 Development cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7216,7 +7278,7 @@ eng_and_mgmt_cost_input
 3
 1
 Engineering and management cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7272,7 +7334,7 @@ export_cable_system_cost_input
 3
 1
 Export cable system cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7313,8 +7375,8 @@ Default
 insurance_during_construction_cost
 3
 1
- 
- 
+Insurance during construction cost
+$
 MHK Costs
 0
 9
@@ -7327,8 +7389,8 @@ Numeric
 insurance_during_construction_input
 3
 1
- 
- 
+Insurance during construction cost user input
+$
 MHK Costs
 0
 1
@@ -7341,7 +7403,7 @@ Numeric
 insurance_during_construction_method
 3
 1
- 
+Method to define construction insurance cost
  
 MHK Costs
 0
@@ -7355,8 +7417,8 @@ Choice
 insurance_during_construction_modeled
 3
 1
- 
- 
+Modeled insurance during construction cost
+$
 MHK Costs
 0
 9
@@ -7369,8 +7431,8 @@ Numeric
 maintenance_cost_cost
 3
 1
- 
- 
+Maintenance cost
+$
 MHK Costs
 0
 9
@@ -7383,8 +7445,8 @@ Numeric
 maintenance_cost_input
 3
 1
- 
- 
+Maintenance cost user input
+$
 MHK Costs
 0
 1
@@ -7397,7 +7459,7 @@ Numeric
 maintenance_cost_method
 3
 1
- 
+Method to define maintenance cost
  
 MHK Costs
 0
@@ -7411,8 +7473,8 @@ Choice
 maintenance_cost_modeled
 3
 1
- 
- 
+Modeled maintenance cost
+$
 MHK Costs
 0
 9
@@ -7440,7 +7502,7 @@ mooring_found_substruc_cost_input
 3
 1
 Mooring, foundation, and substructure cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7496,7 +7558,7 @@ offshore_substation_cost_input
 3
 1
 Offshore substation cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7552,7 +7614,7 @@ onshore_substation_cost_input
 3
 1
 Onshore substation cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7593,8 +7655,8 @@ Default
 operations_cost_cost
 3
 1
- 
- 
+Operations cost
+$
 MHK Costs
 0
 9
@@ -7607,8 +7669,8 @@ Numeric
 operations_cost_input
 3
 1
- 
- 
+Operations cost user input
+$
 MHK Costs
 0
 1
@@ -7621,7 +7683,7 @@ Numeric
 operations_cost_method
 3
 1
- 
+Method to define operations cost
  
 MHK Costs
 0
@@ -7635,8 +7697,8 @@ Choice
 operations_cost_modeled
 3
 1
- 
- 
+Modeled operations cost
+$
 MHK Costs
 0
 9
@@ -7664,7 +7726,7 @@ other_elec_infra_cost_input
 3
 1
 Other electrical infrastructure cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7720,7 +7782,7 @@ other_infrastructure_cost_input
 3
 1
 Other infrastructure cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7776,7 +7838,7 @@ plant_commissioning_cost_input
 3
 1
 Plant commissioning cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7832,7 +7894,7 @@ power_takeoff_system_cost_input
 3
 1
 Power take-off system cost user input
- 
+$
 MHK Costs
 0
 1
@@ -7873,8 +7935,8 @@ Default
 project_contingency_cost
 3
 1
- 
- 
+Project contingency cost
+$
 MHK Costs
 0
 9
@@ -7887,8 +7949,8 @@ Numeric
 project_contingency_input
 3
 1
- 
- 
+Project contingency cost user input
+$
 MHK Costs
 0
 1
@@ -7901,7 +7963,7 @@ Numeric
 project_contingency_method
 3
 1
- 
+Method to define project contingency cost
  
 MHK Costs
 0
@@ -7915,8 +7977,8 @@ Choice
 project_contingency_modeled
 3
 1
- 
- 
+Modeled project contingency cost
+$
 MHK Costs
 0
 9
@@ -7929,8 +7991,8 @@ Numeric
 reserve_accounts_cost
 3
 1
- 
- 
+Reserve accounts cost
+$
 MHK Costs
 0
 9
@@ -7943,8 +8005,8 @@ Numeric
 reserve_accounts_input
 3
 1
- 
- 
+Reserve accounts cost user input
+$
 MHK Costs
 0
 1
@@ -7957,7 +8019,7 @@ Numeric
 reserve_accounts_method
 3
 1
- 
+Method to define reserve accounts cost
  
 MHK Costs
 0
@@ -7971,8 +8033,8 @@ Choice
 reserve_accounts_modeled
 3
 1
- 
- 
+Modeled reserve accounts cost
+$
 MHK Costs
 0
 9
@@ -8000,7 +8062,7 @@ site_access_port_staging_cost_input
 3
 1
 Site access, port, and staging cost user input
- 
+$
 MHK Costs
 0
 1
@@ -8056,7 +8118,7 @@ structural_assembly_cost_input
 3
 1
 Structural assembly cost user input
- 
+$
 MHK Costs
 0
 1
@@ -8098,7 +8160,7 @@ Default
 total_bos_cost
 3
 1
-Total Balance of System Cost
+Total balance of system cost
 $
 MHK Costs
 0
@@ -8112,8 +8174,8 @@ Default
 total_cost_per_kw
 3
 1
-Total Installed Cost Per kW
-$
+Total installed cost per unit of rated capacity
+$/kW
 MHK Costs
 0
 9
@@ -8126,7 +8188,7 @@ Default
 total_device_cost
 3
 1
-Total Device Cost
+Total device cost
 $
 MHK Costs
 0
@@ -8140,7 +8202,7 @@ Default
 total_elec_infra_cost
 3
 1
-Total Electrical Infrastructure Cost
+Total electrical infrastructure cost
 $
 MHK Costs
 0
@@ -8154,8 +8216,8 @@ Default
 total_financial_cost
 3
 1
- 
- 
+Total financial cost
+$
 MHK Costs
 0
 9
@@ -8168,7 +8230,7 @@ Numeric
 total_installed_cost
 3
 1
-Total Installed Cost
+Total installed cost
 $
 MHK Costs
 0
@@ -8182,8 +8244,8 @@ Default
 total_operating_cost
 3
 1
- 
- 
+Total operating cost
+$
 MHK Costs
 0
 9
@@ -8193,8 +8255,26 @@ MHK Costs
 1
 0
 Numeric
+total_rated_capacity
+3
+1
+Rated capacity
+kW
+MHK Costs
+0
+8
+1
+1
+1
+1
+0
+Default
 
-10417
+10497
+equations {'total_rated_capacity'} = define() {
+	return ${system_capacity};
+};
+
 equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	
 

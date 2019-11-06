@@ -1,5 +1,5 @@
 1
-172
+173
 array_cable_system_cost
 1
 1
@@ -882,6 +882,12 @@ total_operating_cost
 1
 1
 1.23934e+06
+total_rated_capacity
+1
+1
+1
+1
+0
 tz
 1
 1

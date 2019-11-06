@@ -2,36 +2,6 @@ MHK Wave Resource
 1276
 1009
 29
-GroupBox
-
-1
-8
-Name
-5
-9
-GroupBox2
-X
-3
-6
-Y
-3
-9
-Width
-3
-1246
-Height
-3
-877
-Tool Tip
-5
-0
-Caption
-5
-50
-Choose a representative typical wave resource file
-Bold
-2
-1
 Numeric
 
 1
@@ -406,6 +376,114 @@ BackColour
 TabOrder
 3
 4294967295
+GroupBox
+
+1
+8
+Name
+5
+13
+group_library
+X
+3
+6
+Y
+3
+9
+Width
+3
+1246
+Height
+3
+877
+Tool Tip
+5
+0
+Caption
+5
+28
+Wave Energy Resource Library
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+17
+group_wave_matrix
+X
+3
+15
+Y
+3
+351
+Width
+3
+1228
+Height
+3
+524
+Tool Tip
+5
+0
+Caption
+5
+57
+Annual Frequency of Occurrence of Sea States from Library
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+13
+label_library
+X
+3
+15
+Y
+3
+30
+Width
+3
+650
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+128
+Click a name in the list to choose a file from the library. Type a few letters of the name in the search box to filter the list.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+4294967295
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -886,36 +964,6 @@ GroupBox
 Name
 5
 10
-object 412
-X
-3
-15
-Y
-3
-351
-Width
-3
-1228
-Height
-3
-524
-Tool Tip
-5
-0
-Caption
-5
-61
-Frequency distribution of resource as a function of Hs and Te
-Bold
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-10
 object 418
 X
 3
@@ -934,8 +982,8 @@ Tool Tip
 0
 Caption
 5
-48
-Use a wave resource file stored on your computer
+25
+Wave Energy Resource File
 Bold
 2
 1
@@ -964,56 +1012,8 @@ Tool Tip
 0
 Caption
 5
-127
-Check the box and click Browse to choose a an .csv file stored on your computer without adding it to the wave resource library.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-4294967295
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
-9
-object 73
-X
-3
-15
-Y
-3
-30
-Width
-3
-650
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-128
-Click a name in the list to choose a file from the library. Type a few letters of the name in the search box to filter the list.
+260
+Check the box and click Browse to choose a .csv file stored on your computer without adding it to the wave resource library. Note that the scatter diagram above does shows data from files in the library, not from the file you choose here. See Help for details.
 TextColour
 4
 0
@@ -1089,10 +1089,10 @@ Name
 select_wf_wind
 X
 3
-651
+654
 Y
 3
-921
+951
 Width
 3
 90
@@ -1231,7 +1231,7 @@ Y
 921
 Width
 3
-30
+417
 Height
 3
 27
@@ -1240,7 +1240,8 @@ Tool Tip
 0
 Caption
 5
-0
+65
+Choose wave energy resource file directly instead of from library
 State
 2
 0
@@ -1257,13 +1258,13 @@ Name
 user_specified_wf_wave
 X
 3
-60
+24
 Y
 3
-921
+951
 Width
 3
-585
+624
 Height
 3
 24
@@ -1322,7 +1323,7 @@ PasteAppendCols
 0
 ShowButtons
 2
-0
+1
 ShowRows
 2
 0
@@ -1652,7 +1653,7 @@ CheckBox
 user_specified_wf_wave
 3
 4
-Wind resource user-specified file
+Wave resource user-specified file
  
 MHK Wave Resource
 0
@@ -1728,7 +1729,34 @@ equations{ 'frequency_sum' } = define ()
 	return sum_mat;
 };
 
-902
+1936
+function enable_disable_library() {
+	enable_library = !value('use_specific_wf_wave');
+	enable('wave_resource_matrix',enable_library);
+	property('wave_resource_matrix','ColorMap',enable_library);
+	enable('location',enable_library);
+	enable('btnScanLibrary',enable_library);
+	enable('average_power_flux',enable_library);
+	enable('bathymetry',enable_library);
+	enable('city',enable_library);
+	enable('country',enable_library);
+	enable('data_source',enable_library);
+	enable('file_name',enable_library);
+	enable('frequency_sum',enable_library);
+	enable('lat',enable_library);
+	enable('location',enable_library);
+	enable('lon',enable_library);
+	enable('max_frequency',enable_library);
+	enable('max_frequency_Hs',enable_library);
+	enable('max_frequency_Te',enable_library);
+	enable('name',enable_library);
+	enable('nearby_buoy_number',enable_library);
+	enable('notes',enable_library);
+	enable('sea_bed',enable_library);
+	enable('state',enable_library);
+	enable('tz',enable_library);
+}
+
 on_change{'btnScanLibrary'} = define() {
 	rescanlibrary('wave');
 };
@@ -1736,6 +1764,7 @@ on_change{'btnScanLibrary'} = define() {
 on_load{'MHK Wave Resource'} = define() {
 	enable("wave_resource_matrix",false);
 	on_change{'use_specific_wf_wave'}();
+	enable_disable_library();
 };
 
 on_change{'location'} = define() {
@@ -1757,6 +1786,7 @@ on_change{'location'} = define() {
 on_change{'use_specific_wf_wave'} = define() {
 	enable( 'user_specified_wf_wave', ${use_specific_wf_wave} );
 	enable( 'select_wf_wind', ${use_specific_wf_wave} );
+	enable_disable_library();
 };
 
 on_change{'select_wf_wind'} = define() {

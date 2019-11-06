@@ -625,8 +625,8 @@ Tool Tip
 0
 Caption
 5
-23
-Wave Power Matrix (kW) 
+37
+Electrical Power Capture Matrix (kW) 
 Bold
 2
 1
