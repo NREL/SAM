@@ -497,8 +497,8 @@ Library
 WaveResourceData
 Fields
 5
-60
-Name,State,Nearby buoy number,Average power flux,Data source
+127
+Name,City,State,Country,Latitude,Longitude,Nearby Buoy Number,Average Power Flux,Bathymetry,Sea Bed,Time Zone,Data Source,Notes
 Numeric
 
 1

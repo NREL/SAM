@@ -448,7 +448,7 @@ Name
 lib_wave_device
 X
 3
-534
+531
 Y
 3
 30
@@ -463,8 +463,8 @@ Tool Tip
 0
 Library
 5
-12
-Wave_Devices
+22
+Wave Energy Converters
 Fields
 5
 137
@@ -589,7 +589,7 @@ Selection
 Items
 6
 2
-Select WEC from library
+Choose WEC from library
 Import WEC parameters
 ShowCaptions
 2
@@ -924,8 +924,8 @@ lib_wave_device
 Wave device library
  
 MHK Wave Energy Converter
-14
-Wave_Devices|0
+24
+Wave Energy Converters|0
 19
 1
 4
@@ -953,7 +953,7 @@ Choose WEC from library or user
  
 MHK Wave Energy Converter
 45
-Select WEC from library|Import WEC parameters
+Choose WEC from library|Import WEC parameters
 1
 1
 1
