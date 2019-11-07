@@ -166,12 +166,12 @@ MHK Tidal Resource
 DataMatrix
 
 0
-945
+976
 function plot_resource_curve()
 {
 	setplot('tidal_resource_curve_plot');
 	clearplot('tidal_resource_curve_plot');
-	plotopt( {'title'='Tidal resource','backcolor'=[255,255,255], 'popup'=true, 'legend'=false, 'legendpos'=[75,10]}  );
+	plotopt( {'title'='Velocity Distribution','backcolor'=[255,255,255], 'popup'=true, 'legend'=false, 'legendpos'=[75,10]}  );
 	
 //	ws_all = ${tidal_resource_definition};
 	pc_all = ${tidal_resource};
@@ -182,7 +182,7 @@ function plot_resource_curve()
 		ws[i] = pc_all[i][0];
 		pc[i] = pc_all[i][1] *100;
 	}
-	plot( ws, pc, {'thick'=5, 'scale'=true,  'series'='Resource Probability', 'type'='bar'});
+	plot( ws, pc, {'thick'=10, 'scale'=true,  'series'='Resource Probability', 'type'='bar', 'color'=[111,164,196]});
 	
 	high = max( ws );
 	low = min( ws );

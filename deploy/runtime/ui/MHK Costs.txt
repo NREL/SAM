@@ -7407,7 +7407,7 @@ Method to define construction insurance cost
  
 MHK Costs
 0
-0
+1
 1
 1
 1
@@ -7463,7 +7463,7 @@ Method to define maintenance cost
  
 MHK Costs
 0
-0
+1
 1
 1
 1
@@ -7687,7 +7687,7 @@ Method to define operations cost
  
 MHK Costs
 0
-0
+1
 1
 1
 1
@@ -7967,7 +7967,7 @@ Method to define project contingency cost
  
 MHK Costs
 0
-0
+1
 1
 1
 1
@@ -8023,7 +8023,7 @@ Method to define reserve accounts cost
  
 MHK Costs
 0
-0
+1
 1
 1
 1

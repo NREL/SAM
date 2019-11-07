@@ -155,8 +155,8 @@ ShowColLabels
 1
 ColLabels
 5
-18
-u (m/s),Power (kW)
+25
+Velocity (m/s),Power (kW)
 NumRowsLabel
 5
 5
@@ -248,7 +248,7 @@ equations{ 'device_rated_power' } = define ()
 		if (mat[r][1] > max_power) max_power = mat[r][1];
 	return max_power;
 };
-957
+961
 function plot_device_curve()
 {
 	setplot('tidal_power_curve_plot');
@@ -264,17 +264,17 @@ function plot_device_curve()
 		ws[i] = pc_all[i][0];
 		pc[i] = pc_all[i][1];
 	}
-	plot( ws, pc, {'thick'=1, 'scale'=true, 'color'=[100,200,100], 'series'='Device Output'});
+	plot( ws, pc, {'thick'=10, 'scale'=true,  'series'='Device Output', 'type'='bar', 'color'=[111,164,196]});
 	
 	high = max( ws );
 	low = min( ws );
 	pad = 0;
-	axis( 'x1', {'label'='Current Speed (m/s)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });
+	axis( 'x1', {'label'='Velocity (m/s)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });
 	
 	high = max( pc );
 	low = min( pc );
 	pad = (high - low) * 0.02;
-	axis( 'y1', {'label'='Device Power (kW)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });
+	axis( 'y1', {'label'='Power (kW)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });
 
 }
 

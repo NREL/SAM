@@ -436,7 +436,7 @@ loss_downtime
 1
 1
 1
-2
+5
 loss_resource_overprediction
 1
 1
@@ -454,7 +454,7 @@ loss_transmission
 1
 1
 1
-5
+2
 maintenance_cost_cost
 1
 1
@@ -887,7 +887,7 @@ total_rated_capacity
 1
 1
 1
-0
+286
 tz
 1
 1
