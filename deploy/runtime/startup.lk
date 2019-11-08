@@ -889,11 +889,11 @@ setup_utility_rate_optional();
 
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );
-setmodules( ['trough_physical_process_heat', 'grid']);
+setmodules( ['trough_physical_process_heat']);
 setup_cst_physical_trough_pages();
 
 setconfig( 'Physical Trough IPH', 'LCOH Calculator' );
-setmodules( ['trough_physical_process_heat', 'grid', 'iph_to_lcoefcr', 'lcoefcr']);
+setmodules( ['trough_physical_process_heat', 'iph_to_lcoefcr', 'lcoefcr']);
 setup_cst_physical_trough_pages();
 setup_iph_lcoefcr_pages();
 
@@ -1747,11 +1747,11 @@ function setup_DSGL_IPH_pages()
 
 //--------------------------------------------------
 setconfig( 'DSGL IPH', 'None' );
-setmodules( ['linear_fresnel_dsg_iph', 'grid' ] );
+setmodules( ['linear_fresnel_dsg_iph'] );
 setup_DSGL_IPH_pages();
 
 setconfig( 'DSGL IPH', 'LCOH Calculator' );
-setmodules( ['linear_fresnel_dsg_iph', 'grid', 'iph_to_lcoefcr', 'lcoefcr'] );
+setmodules( ['linear_fresnel_dsg_iph', 'iph_to_lcoefcr', 'lcoefcr'] );
 setup_DSGL_IPH_pages();
 setup_iph_lcoefcr_pages();
 
