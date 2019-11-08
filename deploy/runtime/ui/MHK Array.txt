@@ -1348,7 +1348,7 @@ Use a single converter|Specify desired rated capacity|Specify number of converte
 1
 1
 0
-Default
+Image
 cable_system_overbuild
 3
 1
@@ -1362,7 +1362,7 @@ MHK Array
 1
 1
 10
-Default
+Numeric
 desired_array_size
 3
 1
@@ -1376,7 +1376,7 @@ MHK Array
 1
 1
 0
-Default
+Numeric
 device_spacing_in_row
 3
 1
@@ -1390,7 +1390,7 @@ MHK Array
 1
 1
 600
-Default
+Numeric
 devices_per_row
 3
 1
@@ -1404,7 +1404,7 @@ MHK Array
 1
 1
 10
-Default
+Numeric
 distance_to_shore
 3
 1
@@ -1418,7 +1418,7 @@ MHK Array
 1
 1
 5000
-Default
+Numeric
 export_cable_length
 3
 1
@@ -1432,7 +1432,7 @@ MHK Array
 1
 1
 0
-Default
+Numeric
 export_cable_redundancy
 3
 1
@@ -1446,7 +1446,7 @@ MHK Array
 1
 1
 0
-Default
+Numeric
 floating_array
 3
 1
@@ -1460,7 +1460,7 @@ MHK Array
 1
 1
 1
-Default
+Numeric
 inter_array_cable_length
 3
 1
@@ -1474,7 +1474,7 @@ MHK Array
 1
 1
 0
-Default
+Numeric
 number_devices
 3
 1
@@ -1488,7 +1488,7 @@ MHK Array
 1
 1
 1
-Default
+Numeric
 number_rows
 3
 1
@@ -1502,7 +1502,7 @@ MHK Array
 1
 1
 3
-Default
+Numeric
 riser_cable_length
 3
 1
@@ -1516,7 +1516,7 @@ MHK Array
 1
 1
 0
-Default
+Numeric
 row_spacing
 3
 1
@@ -1530,7 +1530,7 @@ MHK Array
 1
 1
 600
-Default
+Numeric
 system_capacity
 3
 1
@@ -1544,7 +1544,7 @@ MHK Array
 1
 1
 0
-Default
+Numeric
 user_input_devices_per_row
 3
 1
@@ -1558,7 +1558,7 @@ MHK Array
 1
 1
 10
-Default
+Numeric
 user_input_number_rows
 3
 1
@@ -1572,7 +1572,7 @@ MHK Array
 1
 1
 3
-Default
+Numeric
 water_depth
 3
 1
@@ -1586,7 +1586,7 @@ MHK Array
 1
 1
 50
-Default
+Numeric
 
 1823
 equations{ 'system_capacity' } = define() {
