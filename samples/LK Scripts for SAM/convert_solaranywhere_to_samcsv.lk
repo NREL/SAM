@@ -1,97 +1,34 @@
-/*@
+//
+//  This script converts a weather file Clean Power Research SolarAnywhere to 
+//  the SAM CSV format. The file can be in either the SolarAnywhere format or 
+//  SolarAnywhere TMY3 format. For files with multiple years of data, the
+//  script saves a separate SAM CSV files for each year, with the year
+//  appended to the file name so that it will work with SAM's P50/P90 
+//  simulations. For multi-year files with a final year with fewer than
+//  12 months of data, the script appends 'part' to the file name so that it
+//  is not included in the P50/P90 simulations.
+//  
+//  This script is also part of the "Weather File Converter" macro available
+//  in SAM's user interface. The macro can convert other file types in addition
+//  to SolarAnywhere. 
+//
+//  https://www.solaranywhere.com/validation/data/file-formats/
+// 
+//  Last tested 11/8/2019
+//
 
-<p>This macro converts a solar resource text file from the following formats to 
-the SAM CSV format.</p>
-<br><br>
-<ul>
-<li><b>TMY2</b> is a non-delimited format developed by NREL for the National 
-    Solar Radiation Database (NSRDB) for the 
-    <a href="https://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/">
-    1961-1990 update</a>. Note that these files are now available in SAM CSV 
-    format as <a href="https://nsrdb.nrel.gov/current-version">MTS 1</a> from 
-    the <a href="https://maps.nrel.gov/nsrdb-viewer">NREL NSRDB Viewer</a>.<br></li>
-<li><b>TMY3</b> is a comma-delimited format developed by NREL for the 
-    <a href="https://rredc.nrel.gov/solar/old_data/nsrdb/1991-2010/">NSRDB
-    1991-2010 update</a> and the 
-    <a href="https://rredc.nrel.gov/solar/old_data/nsrdb/1991-2005/tmy3/">
-    1991-2005 update</a>. These files are available from the NSRDB Viewer as 
-    <a href="https://nsrdb.nrel.gov/current-version">MTS 3 and MTS 2</a>, 
-    respectively.<br></li>
-<li><b>EPW</b> is a comma-delimited format developed for the U.S. Department
-    of Energy's EnergyPlus building simulation software, and available on the
-    <a href="https://energyplus.net/weather">EnergyPlus Weather Data page</>.<br></li>
-<li><b>PVsyst CSV</b> is the <a href="http://files.pvsyst.com/help/meteo_pvsyst_standard_format.htm">
-    PVsyst standard format for hourly meteo data</a> used by the PVsyst software.<br></li>
-<li><b>PVGIS 5 CSV</b> is a comma-delimited format used for TMY weather files downloaded
-    from the <a href="http://re.jrc.ec.europa.eu/pvg_tools/en/tools.html#TMY">Interactive
-    tools website</a>. Note that the EPW format files from the website should
-    work in SAM without conversion.<br></li>
-<li><b>SolarAnywhere</b> is a comma-delimited format used by 
-    <a href="https://www.solaranywhere.com/">Clean Power Research's weather data 
-    service</a>.<br></li>
-</ul>
-
-<p>Although SAM can read files in the TMY2, TMY3 and EPW format, those files
-contain extra information about uncertainties and other values that SAM does not
-use. They are also difficult to work with in spreadsheet software. You can use
-this macro to convert those files to a "stripped" down version with only the 
-data that SAM uses in a file that you can edit or view in a spreadsheet program.</p>
-
-<p>For more information about weather data for SAM, see the
-<a href="https://sam.nrel.gov/weather-data"</a>Weather Data page</a> on the SAM
-website.</p>
-
-<p><b>To convert a file:</b></p>
-<ol>
-<li>Choose a format from the list at right.</li>
-<li>Click <b>Run macro</b> above and choose the weather file to convert.</li>
-</ol>
-
-<p>The macro will attempt to convert the file you open and save the converted
-data in a SAM CSV file in the same folder as the original file with <i>_samcsv</i>
-appended to the original name. It will also run SAM's weather file checker on
-the file and report any errors it finds.</p>
-
-@*/
-
-// Macro user interface widgets
-//@ name=type;type=combo;value=TMY2,TMY3,EPW,PVsyst CSV,PVGIS 5 CSV,SolarAnywhere;label=Weather file format;
-
-if ( typeof(macro) == 'unknown' ) {
-	msgbox('This macro must be run from within a case.');
-	exit;
-}
-
-format = macro.type;
-if ( format == '' ) 
-{
-  msgbox('Please choose a weather file format!\nChoose TMY2, TMY3, EPW, PVsyst CSV or SolarAnywhere from the list at right, and then run the macro again.');
-  exit;
-}  
 
 function main()
 {
-	if ( format == 'TMY2' ) { ext = 'tm2'; }
-	elseif ( format == 'EPW' ) { ext = 'epw'; }
-	else { ext = 'csv'; }
-
+	ext = 'csv';
 	input_file = choose_file( '', 'Choose weather file to convert', 'Weather Files (*.' + ext + ')|*.' + ext );
 	if ( input_file == '' ) return;
-
 	outln( 'File to convert is:\n\t' + input_file );
-
-	use_wfcsvconv =  ( format == 'TMY2' || format == 'TMY3' || format == 'EPW' );
-
-	if ( use_wfcsvconv ) { ssc_wfcsvconv( input_file ); }
-	elseif ( format == 'SolarAnywhere' ) { solar_anywhere_to_sam_csv( input_file ); }
-	elseif ( format == 'PVsyst CSV' ) { pvsyst_csv_to_sam_csv( input_file ); }
-	elseif ( format == 'PVGIS 5 CSV' ) { pvgis_5_csv_to_sam_csv( input_file ); }
-	else { outln( 'No format specified.' ); }
-	
+	solar_anywhere_to_sam_csv( input_file );
 	outln( 'Done.');
 }
 
-function arr_to_str ( arr )
+function arr_to_str( arr )
 {
 	if ( typeof( arr ) != 'array' )
 	{
@@ -106,22 +43,6 @@ function arr_to_str ( arr )
 	}
 	return str;
 }
-
-function name_output_file( f )
-{
-	str = f;
-	arr = split( str, '.' );
-	ext = arr[#arr-1];
-	str = '';
-	for ( i=0; i<#arr-1; i++ )
-	{
-		period = '.';
-		if ( i == #arr-2 ) { period = ''; }
-		str += arr[i] + period;
-	}
-	str += '_samcsv.' + ext;
-	return str;
-} 
 
 function wf_check( wf )
 {
@@ -151,48 +72,6 @@ function wf_check( wf )
 		outln( 'Failed to run weather file check:\n\n' + result );
 		return false;
 	}
-	ssc_free( obj );
-}
-
-// convert TMY2, TMY3, or EPW file formats to SAM CSV using the SSC wfcsvconv compute module
-function ssc_wfcsvconv( wf )
-{
-	obj = ssc_create();
-	ssc_var( obj, 'input_file', wf );
-	result = ssc_exec( obj, 'wfcsvconv', true );
-	if ( result == 0 )
-	{
-		output = ssc_var( obj, 'output_file');
-		if ( file_exists(output) )
-		{
-			// wfcsvconv names file based on header info appropriate for legacy
-			// versions of SAM to display library but not needed now so renaming
-			// to less confusing name based on input file name:
-			// input_file.csv is converted to input_file_samcsv.csv
-			arr = split( wf , '.' );
-			arr[ #arr-1 ] = '_samcsv.csv';
-			new_name = arr[0];
-			for( i=1; i<#arr; i++ ) { new_name += '.' + arr[i]; }
-			new_name = replace( new_name, '._', '_');
-			/*ext = ext_only( wf );
-			if ( ext == 'tm2' ) { new_name = replace( wf, '.' + ext, '.csv' );	}
-			elseif ( ext == 'epw' ) { new_name = replace( wf, '.' + ext, '.csv' );	}
-			else { new_name = wf; }
-			new_name = replace( new_name, '.csv', '_samcsv.csv' );*/
-			
-			ok = rename_file( output, new_name );
-			if ( !ok ) { outln( 'Failed to rename file.' );}
-			outln('Weather file successfully converted to:\n\t' + new_name );
-			browse( path_only(new_name) ); // show output file folder
-			dview_solar( new_name ); // display output file in DView
-		}
-		else
-		{
-			outln('An error occurred and the file could not be converted.');
-		}
-	}
-	else
-		outln( 'Error: ' + result );
 	ssc_free( obj );
 }
 
@@ -591,291 +470,11 @@ function solar_anywhere_to_sam_csv( wf )
 	if (fcount == 0 )
 	{
 		outln('Weather file converted to:\n\t' + output_file );
-		/*if ( wf_check( output_file ) ) 
-		{	 
-			dview_solar( output_file );
-			browse( path_only( output_file ) );
-		}*/
+		wf_check( output_file );
+		//browse( path_only( output_file ) );
+		dview_solar( output_file );
 	} 
 } 
-
-// convert PVsyst CSV weather format to SAM CSV
-function pvsyst_csv_to_sam_csv( wf )
-{
-	// get input file and open it
-	fin = 0;
-	fin = open( wf , 'r' );
-	if ( fin == 0 ) 
-	{
-		outln('Could not open ' + file_only( wf ) + ' for reading.\nExiting script.');
-		exit;
-	}
-	
-	outln('Converting file, please wait...');
-	str_line = '';
-	ts = 0;
-	line = 0;
-	while ( read_line( fin, str_line ) ) 
-	{
-		if ( line == 0 && strpos( str_line, '#') < 0 )
-		{
-				outln('Input file does not appear to be in PVsyst CSV format: First row does not contain a hashtag (#). Exiting script.\n');
-				exit;
-		}
-		if ( strpos( str_line, '#') > - 1 )
-		{
-			arr = split( str_line , ',' );
-			if ( #arr > 1 )
-			{
-				if ( strpos( lower(arr[0]) , 'lat' ) > -1 ) { Header{'Latitude'} = arr[1]; }
-				if ( strpos( lower(arr[0]) , 'lon' ) > -1 ) { Header{'Longitude'} = arr[1]; }
-				if ( strpos( lower(arr[0]) , 'alt' ) > -1 ) { Header{'Elevation'} = arr[1]; }
-				if ( strpos( lower(arr[0]) , 'zone' ) > -1 ) { Header{'Time Zone'} = arr[1]; }
-			}
-		}
-		if ( strpos( lower(str_line), 'year' ) > -1 )
-		{
-			if ( strpos( str_line , 'WindVel' ) > -1 ) { replace( str_line, 'WindVel', 'Wspd' ); }
-			keys = split( str_line, ',' );
-		}
-		if ( strpos( lower(str_line), 'w/m2' ) == -1 && strpos( str_line, '#' ) == - 1 )
-		{
-			arr = split( str_line, ',' );
-			for ( i=0; i<#arr; i++ )
-			{
-				Data{keys[i]}[ts] = arr[i];
-			}
-			ts++;
-		}
-		line++;
-	}
-	close( fin );
-
-	output_file = replace( wf, '.csv' , '_samcsv.csv' );
-	
-	fout = open( output_file, 'w' );
-
-	keys = @Header;
-	str = '';
-	for ( i=0; i<#keys; i++ )
-	{
-		str += keys[i];
-		if ( i<#keys-1 ) { str += ','; }
-		//else { str += '\n'; }
-		else { write_line( fout, str ); }
-	}
-	str = '';
-	for ( i=0; i<#keys; i++ )
-	{
-		str += Header{keys[i]};
-		if ( i<#keys-1 ) { str += ','; }
-		//else { str += '\n'; }
-		else { write_line( fout, str ); }
-	}
-
-	keys = @Data;
-	for ( i=0; i<#Data{keys[0]}; i++ )
-	{
-		str = '';
-		for ( j=0; j<#keys; j++ )
-		{
-			str += Data{keys[j]}[i];
-			if ( j<#keys-1 ) { str += ','; }
-			//else { str += '\n'; }
-		}
-		write_line( fout, str );
-	}
-
-	close( fout );
-
-	outln('Weather file converted to:\n\t' + output_file );
-	
-	if ( wf_check( output_file ) ) 
-	{ 
-		dview_solar( output_file );
-		browse( path_only( output_file ) );
-	}
-
-}
-
-// convert CSV weather file from PVGIS 5 website to SAM CSV
-function pvgis_5_csv_to_sam_csv( wf )
-{
-	// get input file and open it
-	fin = open( wf, 'r' );
-	if ( fin == 0 )
-	{
-		outln( 'Failed to open file!\n' + wf + '\nExiting script.' );
-		exit;
-	}
-	
-	str = '';
-	line = 0;
-	data = [];
-	meta = 0;
-	line_one_ok = false;
-	while ( read_line( fin, str ) )
-	{
-	
-		// convert line to lower case
-		str = lower( str );
-		
-		// determine whether line is header data or weather data
-		// if header data, the read lat, lon, elevation
-		// otherwise read the weather data
-		if ( strpos( str, 'latitude' ) > -1 )
-		{
-			arr = split( str, ':' );
-			lat = replace( arr[1], ' ', '' );
-			line_one_ok = true;
-			meta++;
-			continue;
-		}
-		elseif ( strpos( str, 'longitude' ) > -1 )
-		{
-			arr = split( str, ':' );
-			lon = replace( arr[1], ' ', '' );
-			meta++;
-			continue;
-		}
-		elseif ( strpos( str, 'elevation' ) > -1 )
-		{
-			arr = split( str, ':' );
-			elv = replace( arr[1], ' ', '' );
-			meta++;
-			continue;
-		}
-		elseif ( line_one_ok ) // line is weather data
-		{
-			arr = split( str, ',' );
-			if ( #arr == 2 ) { continue; } // skip list of tmy years
-		}
-		else
-		{
-			outln( 'File does not appear to be PVGIS 5 TMY CSV format. Exiting script.' );
-			exit;
-		}
-
-		
-		// once lat, lon is known, use Google API to get elevation
-		if ( meta == 3 )
-		{
-			// time zone is missing from file, so get from Google Time Zone API
-			// via geocode function
-			tz = null;
-			geo = geocode( to_string(lat) + ',' + to_string(lon) );
-			if ( geo.ok == true ) { tz = geo.tz; }
-			else { outln('Failed to get time zone from Google Time Zone API.'); }
-			meta++;
-		}
-			
-		// header rows for SAM CSV
-		// Latitude,Longitude,Time Zone,Elevation
-		// -34.820000,-58.530000,-3.0,20
-		// Year,Month,Day,Hour,tdry,rhum,ghi,dni,dhi,infrared,wspd,wdir 
-		// note that PVGIS provides infrared, but SAM does not use it
-		if ( line == 0 )
-		{
-			data[line] = 'Latitude,Longitude,Time Zone,Elevation,Source';
-			line++;
-		}	
-		if ( line == 1 )
-		{
-			data[line] = lat+','+lon+','+tz+','+elv+',PVGIS V5';
-			line++;
-		}	
-	
-		if ( strpos( arr[0], 'date' ) > -1 ) // this is the data header row
-		{
-			pvgis_h = arr; // store column headings to identify rows in second pass
-			// Date&Time (UTC),Dry bulb temperature (deg. C),Relative Humidity (%), Global horizontal irradiance (W/m2) ,
-			//Direct (beam) normal Irradiance (W/m2),Diffuse horizontal irradiance (W/m2), Infrared radiation downwards (W/m2),
-			//  Windspeed (m/s), Wind direction (deg.),  Air pressure (Pa)
-			for ( i=0; i<#pvgis_h; i++ )
-			{
-				if( strpos( pvgis_h[i], 'date' ) > -1 ) { h[i] = 'Year,Month,Day,Hour,Minute';} // deg C
-				if( strpos( pvgis_h[i], 'dry bulb' ) > -1 ) { h[i] = 'tdry';} // deg C
-				if( strpos( pvgis_h[i], 'humidity' ) > -1 ) { h[i] = 'rhum';} // %
-				if( strpos( pvgis_h[i], 'global' ) > -1 ) { h[i] = 'ghi';} // w/m2
-				if( strpos( pvgis_h[i], 'direct' ) > -1 ) { h[i] = 'dni';} // w/m2
-				if( strpos( pvgis_h[i], 'diffuse' ) > -1 ) { h[i] = 'dhi';} // w/m2
-				if( strpos( pvgis_h[i], 'infrared' ) > -1 ) { h[i] = 'infrared';}
-				if( strpos( pvgis_h[i], 'speed' ) > -1 ) { h[i] = 'wspd';} // m/s
-				if( strpos( pvgis_h[i], 'direction' ) > -1 ) { h[i] = 'wdir';} // deg
-				if( strpos( pvgis_h[i], 'pressure' ) > -1 ) 
-				{
-					h[i] = 'pres'; // pas
-					i_pres = i; // store index for conversion below
-				}
-			}
-			if ( line == 2 )
-			{
-				data[line] = '';
-				for ( i=0; i<#h; i++ )
-				{
-					if ( i == 0 ) { pre = ''; }
-					else { pre = ','; }
-					data[line]+=pre+h[i];
-				}
-				line++;
-			}
-		}
-		else 
-		{
-			// convert time stamp data 01/01/2013 00:00:00
-			tstamp_arr = split( arr[0], ' ' );
-			date = split( tstamp_arr[0], '/' );
-			day = to_int(date[0]);
-			month = to_int(date[1]);
-			year = to_int(date[2]);
-			time = split( tstamp_arr[1], ':' );
-			hour = to_int(time[0]);
-			minute = to_int(time[1]);
-			second = to_int(time[2]);
-			data[line] = year +','+month+','+day+','+hour+','+minute;
-			// read weather data
-			for ( i=1; i<#arr; i++ )
-			{
-				value = to_real( arr[i] );
-				if ( i == i_pres ) { value = value / 100; } // convert pas to millibar
-				data[line]+= ','+to_string(value);
-			}
-			line++;
-		}
-	
-	}
-	
-	// close input file
-	close ( fin );
-	
-	// name output file and open it
-	fout_name = replace( wf, '.csv', '_samcsv.csv' );
-	fout = open( fout_name , 'w' );
-	
-	// write data to output file
-	for ( i=0; i<#data; i++ )
-	{
-		ok = write_line( fout, data[i] );
-		if ( !ok ) 
-		{
-			'Failed to write Line ' + i + 'to file.\n\t' + data[i]; 
-			exit;
-		}
-		
-	}
-	
-	// close output file
-	close( fout );
-
-	outln('Weather file converted to:\n\t' + fout_name );
-
-	if ( wf_check( output_file ) ) 
-	{ 
-		dview_solar( output_file );
-		browse( path_only( output_file ) );
-	}
-	
-}
 
 // Main ////////////////////////////////////////////////////////////////////////
 
