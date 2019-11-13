@@ -1,5 +1,5 @@
 1
-1029
+1030
 6par_aisc
 1
 1
@@ -5501,6 +5501,11 @@ mp_energy_market_revenue
 11 0.11 
 12 0.12 
 
+mp_error_msg
+1
+4
+9
+<invalid>
 mppt_hi_inverter
 1
 1
