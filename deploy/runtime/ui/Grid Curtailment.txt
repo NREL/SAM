@@ -33,7 +33,8 @@ Label
 0
 Description
 5
-0
+124
+Enter a percentage of system AC power output for each time step of the year. Time step must match time step of weather file.
 TabOrder
 3
 4294967295

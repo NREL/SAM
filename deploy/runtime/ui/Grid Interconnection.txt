@@ -60,8 +60,8 @@ Tool Tip
 0
 Caption
 5
-20
-Grid Interconnection
+26
+Grid Interconnection Limit
 Bold
 2
 1
@@ -90,8 +90,8 @@ Tool Tip
 0
 Caption
 5
-176
-The grid interconnection limit is a negotiated limit beyond which the system is not allowed to export. Any AC power generated above the grid interconnection limit is curtailed.
+182
+The grid interconnection limit is a negotiated limit beyond which the system is not allowed to export power. Any AC power generated above the grid interconnection limit is curtailed.
 TextColour
 4
 0
