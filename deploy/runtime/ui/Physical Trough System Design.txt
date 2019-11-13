@@ -1,11 +1,11 @@
 Physical Trough System Design
-869
-886
+921
+908
 21
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -81,6 +84,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,7 +129,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -140,6 +146,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -182,7 +191,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -199,6 +208,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -241,7 +253,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -258,6 +270,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -300,7 +315,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -317,6 +332,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -359,7 +377,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -376,6 +394,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -418,7 +439,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -435,6 +456,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -477,7 +501,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -494,6 +518,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -536,23 +563,26 @@ TabOrder
 Image
 
 1
-7
+8
 Name
 5
 9
 object 12
 X
 3
-6
+18
 Y
 3
-324
+333
 Width
 3
-856
+835
 Height
 3
-556
+532
+Tool Tip
+5
+0
 Image
 7
 Physical Trough System Design_object 12.png
@@ -562,7 +592,7 @@ Centered
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -579,6 +609,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -590,15 +623,15 @@ Colour
 255
 Caption
 5
-15
-Thermal Storage
+22
+Thermal Energy Storage
 Bold
 2
 1
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -615,6 +648,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -634,7 +670,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -651,6 +687,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -670,7 +709,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -687,6 +726,9 @@ Width
 Height
 3
 306
+Tool Tip
+5
+0
 Caption
 5
 23
@@ -697,7 +739,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -714,6 +756,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 313
@@ -742,14 +787,14 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 14
 picture_border
 X
 3
-9
+6
 Y
 3
 324
@@ -759,6 +804,9 @@ Width
 Height
 3
 555
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -768,7 +816,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -785,6 +833,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -827,7 +878,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 16
@@ -844,6 +895,9 @@ Width
 Height
 3
 50
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -864,7 +918,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -881,6 +935,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -923,7 +980,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -940,6 +997,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -982,7 +1042,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -999,6 +1059,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0

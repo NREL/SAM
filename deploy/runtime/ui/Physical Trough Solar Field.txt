@@ -3227,7 +3227,7 @@ Suffix
 0
 ThousandsSep
 2
-0
+1
 Editable
 2
 1

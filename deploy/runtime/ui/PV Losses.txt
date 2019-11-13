@@ -57,8 +57,8 @@ Tool Tip
 0
 Caption
 5
-28
-Curtailment and Availability
+19
+System Availability
 Bold
 2
 1
@@ -1637,8 +1637,8 @@ Tool Tip
 0
 Caption
 5
-199
-Curtailment and availability losses reduce the system output to represent system outages or other events. Curtailment and availability losses may be applied either on the DC or AC side of the system.
+174
+System availability losses reduce the system output to represent system outages or other events. Availability losses may be applied either on the DC or AC side of the system.
 TextColour
 4
 0

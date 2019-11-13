@@ -87,8 +87,8 @@ Tool Tip
 0
 Caption
 5
-28
-Availability and Curtailment
+19
+System Availability
 Bold
 2
 1
@@ -937,8 +937,8 @@ Tool Tip
 0
 Caption
 5
-105
-Curtailment and availability losses reduce the system output to represent system outages or other events.
+83
+System losses reduce the system output to represent system outages or other events.
 TextColour
 4
 0
