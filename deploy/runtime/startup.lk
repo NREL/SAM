@@ -651,7 +651,7 @@ function setup_cst_physical_trough_pages()
 	 addpage( [[ 'Phys Trough System Control' ,
 	  {'name' = 'Phys Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
 	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
-  	setup_grid_page();
+  	//setup_grid_page();
 }
 
 function setup_csp_empirical_trough_pages()
