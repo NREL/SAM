@@ -2092,9 +2092,9 @@ public:
 
 		szh_top3->Show(showMode);
 
-//		SetSizer(szh_main);
-		SetSizerAndFit(szh_main);
-		//SetSizeHints(wxSize(1000, 800));
+		SetSizer(szh_main);
+//		SetSizerAndFit(szh_main);
+		SetSizeHints(wxSize(1000, 800));
 	}
 
 	void SetMode(int m)
@@ -2924,7 +2924,7 @@ public:
 		szh_top3->Show(showMode);
 
 		SetSizer(szh_main);
-		//SetSizeHints(wxSize(1000, 800));
+		SetSizeHints(wxSize(1000, 800));
 	}
 
 	void SetMode(int m)

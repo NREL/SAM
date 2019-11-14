@@ -818,7 +818,7 @@ Merchant Plant Revenue
 ""
 Default
 
-1025
+1083
 equations{'forecast_price_signal_model'} = define()
 {
 	if (financing() == "Merchant Plant")
@@ -842,17 +842,20 @@ equations{ '$MIMO$ mp check cleared capacity' } = define() {
 	data.mp_ancserv2_revenue =  ${mp_ancserv2_revenue};
 	data.mp_ancserv3_revenue =  ${mp_ancserv3_revenue};
 	data.mp_ancserv4_revenue =  ${mp_ancserv4_revenue};
-	
+
 	success = ssc_eqn("mp_capacity_check", data);
 	
 	if (!success){
+		msgbox("success " + success);
 		return 0;
 	}
 	
-	msg = data.mp_capacity_check_error;
-	${mp_error_msg} = msg;
-	
-//	msgbox("return " + msg);
+	if (data.mp_capacity_check == 0)
+	{
+		msg = data.mp_capacity_check_error;
+		${mp_error_msg} = msg;
+		msgbox(msg);
+	}
 	return 0;
 };
 
