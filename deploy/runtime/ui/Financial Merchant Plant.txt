@@ -818,7 +818,7 @@ Merchant Plant Revenue
 ""
 Default
 
-1043
+1025
 equations{'forecast_price_signal_model'} = define()
 {
 	if (financing() == "Merchant Plant")
@@ -846,14 +846,13 @@ equations{ '$MIMO$ mp check cleared capacity' } = define() {
 	success = ssc_eqn("mp_capacity_check", data);
 	
 	if (!success){
-		msgbox("error ");
 		return 0;
 	}
 	
 	msg = data.mp_capacity_check_error;
 	${mp_error_msg} = msg;
 	
-	msgbox("return " + msg);
+//	msgbox("return " + msg);
 	return 0;
 };
 

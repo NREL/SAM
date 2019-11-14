@@ -1,5 +1,5 @@
 1
-607
+608
 A_sf
 1
 1
@@ -8183,6 +8183,10 @@ mp_energy_market_revenue
 2
 0 0 
 
+mp_error_msg
+1
+4
+0
 n_azi
 1
 1

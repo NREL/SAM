@@ -1,5 +1,5 @@
 1
-510
+511
 CT
 1
 1
@@ -2385,6 +2385,10 @@ mp_energy_market_revenue
 2
 0 0 
 
+mp_error_msg
+1
+4
+0
 nameplate
 1
 1
