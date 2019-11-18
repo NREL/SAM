@@ -4,7 +4,7 @@ Flat Plate PV,Commercial,394706.781250,5.561722,NA,;
 Flat Plate PV,Third Party,8743.297852,NA,NA,; 
 Flat Plate PV,Host Developer,394706.781250,19.910816,21.399685,; 
 Flat Plate PV,Single Owner,37229904,7.015748,7.506482,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 1 times
-Flat Plate PV,Merchant Plant,fail,fail,fail
+Flat Plate PV,Merchant Plant,37229232,6.168078,NA,; 
 Flat Plate PV,Leveraged Partnership Flip,37229232,6.963991,7.395379,; 
 Flat Plate PV,All Equity Partnership Flip,37229232,8.256754,9.404595,; 
 Flat Plate PV,Sale Leaseback,37229232,8.879767,9.857672,; 

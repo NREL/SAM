@@ -30,8 +30,8 @@ Mode
 1
 ColumnLabels
 5
-34
-Cleared capacity (MW),Price ($/MW)
+35
+Cleared capacity (MW),Price ($/MWh)
 Label
 5
 28
@@ -82,8 +82,8 @@ Mode
 1
 ColumnLabels
 5
-34
-Cleared capacity (MW),Price ($/MW)
+35
+Cleared capacity (MW),Price ($/MWh)
 Label
 5
 28
@@ -134,8 +134,8 @@ Mode
 1
 ColumnLabels
 5
-34
-Cleared capacity (MW),Price ($/MW)
+35
+Cleared capacity (MW),Price ($/MWh)
 Label
 5
 28
@@ -186,8 +186,8 @@ Mode
 1
 ColumnLabels
 5
-34
-Cleared capacity (MW),Price ($/MW)
+35
+Cleared capacity (MW),Price ($/MWh)
 Label
 5
 28
@@ -403,8 +403,8 @@ Mode
 1
 ColumnLabels
 5
-34
-Cleared capacity (MW),Price ($/MW)
+35
+Cleared capacity (MW),Price ($/MWh)
 Label
 5
 21
@@ -663,7 +663,7 @@ mp_ancserv1_revenue
 3
 3
 Ancillary service #1 revenue
-Cleared capacity (MW),Price ($/MW)
+Cleared capacity (MW),Price ($/MWh)
 Merchant Plant Revenue
 0
 3
@@ -678,7 +678,7 @@ mp_ancserv2_revenue
 3
 3
 Ancillary service #2 revenue
-Cleared capacity (MW),Price ($/MW)
+Cleared capacity (MW),Price ($/MWh)
 Merchant Plant Revenue
 0
 3
@@ -693,7 +693,7 @@ mp_ancserv3_revenue
 3
 3
 Ancillary service #3 revenue
-Cleared capacity (MW),Price ($/MW)
+Cleared capacity (MW),Price ($/MWh)
 Merchant Plant Revenue
 0
 3
@@ -708,7 +708,7 @@ mp_ancserv4_revenue
 3
 3
 Ancillary service #4 revenue
-Cleared capacity (MW),Price ($/MW)
+Cleared capacity (MW),Price ($/MWh)
 Merchant Plant Revenue
 0
 3
@@ -793,7 +793,7 @@ mp_energy_market_revenue
 3
 3
 Energy market revenue
-Cleared capacity (MW),Price ($/MW)
+Cleared capacity (MW),Price ($/MWh)
 Merchant Plant Revenue
 0
 3
@@ -818,7 +818,7 @@ Merchant Plant Revenue
 ""
 Default
 
-1083
+1087
 equations{'forecast_price_signal_model'} = define()
 {
 	if (financing() == "Merchant Plant")
@@ -843,7 +843,7 @@ equations{ '$MIMO$ mp check cleared capacity' } = define() {
 	data.mp_ancserv3_revenue =  ${mp_ancserv3_revenue};
 	data.mp_ancserv4_revenue =  ${mp_ancserv4_revenue};
 
-	success = ssc_eqn("mp_capacity_check", data);
+	success = ssc_eqn("mp_ancillary_services", data);
 	
 	if (!success){
 		msgbox("success " + success);
