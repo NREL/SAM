@@ -518,8 +518,8 @@ Tool Tip
 0
 Caption
 5
-260
-Check the box and click Browse to choose a .csv file stored on your computer without adding it to the wave resource library. Note that the scatter diagram above does shows data from files in the library, not from the file you choose here. See Help for details.
+255
+Check the box and click Browse to choose a .csv file stored on your computer without adding it to the wave resource library. Note that the scatter diagram above shows data from files in the library, not from the file you choose here. See Help for details.
 TextColour
 4
 0
@@ -596,8 +596,8 @@ Tool Tip
 0
 Caption
 5
-65
-Choose wave energy resource file directly instead of from library
+72
+Choose wave energy resource file stored directly instead of from library
 State
 2
 0
