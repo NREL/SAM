@@ -1,5 +1,5 @@
 1
-139
+140
 array_cable_system_cost
 1
 1
@@ -553,6 +553,12 @@ power_takeoff_system_cost_modeled
 1
 1
 2.20817e+06
+probability_sum
+1
+1
+1
+1
+0.04
 project_contingency_cost
 1
 1
@@ -794,7 +800,7 @@ total_rated_capacity
 1
 1
 1
-0
+1115
 ui_capital_cost_capacity
 1
 1
