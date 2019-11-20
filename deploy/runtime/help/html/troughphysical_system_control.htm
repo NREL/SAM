@@ -38,7 +38,305 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Normal">Topic for new Physical Trough System Control page.</p>
+<p class="p_Text"><span class="f_Text">The System Control inputs determine the operating parameters of the system.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The physical trough and molten salt power tower models in SAM use a new power cycle and system dispatch model that does not support thermocline storage or fossil backup because they were not incorporated into the new dispatch controller logic. If you want to use those features, you can use the legacy version SAM 2015.6.30, available on the SAM website <a href="https://sam.nrel.gov/download" target="_blank" class="weblink" title="https://sam.nrel.gov/download">Download page</a>.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Plant Energy Consumption</span></h3>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fraction of gross power consumed at all times, MWe/MWcap</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A fixed electric load applied to all hours of the simulation, expressed as a fraction of rated gross power at design from the <a href="mspt_system_design.htm" class="topiclink">System Design</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Balance of Plant Parasitic, MWe/MWcap</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Losses as a fraction of the power block nameplate capacity that apply in hours when the power block operates.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Aux heater boiler parasitic (MWe/MWcap)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A parasitic load that is applied as a function of the thermal output of the auxiliary fossil-fired heaters.</span></p>
+<p class="p_Text"><span class="f_Text">The BOP and auxiliary heater parasitic at design are calculated as follows:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Parasitic Loss (MWe) = P (MWe/MWcap) × F × ( C0 + C1 + C2 ) × Design Turbine Gross Output (MWe)</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="availabilitycurtailment" class="hmanchor"></a><span class="f_Heading3_atocs_">System Availability</span></h3>
+<p class="p_Text"><span class="f_Text">System availability losses are reductions in the system's output due to operational requirements such as maintenance down time or other situations that prevent the system from operating as designed. </span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To model curtailment, or forced outages or reduction in power output required by the grid operator, use the inputs on the <a href="grid_limits.htm" class="topiclink">Grid Limits</a> page.</span></p>
+<p class="p_Text"><span class="f_Text">To edit the system availability losses, click </span><span class="f_CHInterfaceElement">Edit losses</span><span class="f_Text">.</span></p>
+<p class="p_Text"><span class="f_Text">The <a href="edit_losses.htm" class="topiclink">Edit Losses</a> window allows you to define loss factors as follows:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Constant loss is a single loss factor that applies to the system's entire output. You can use this to model an availability factor.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Hourly losses apply to specific hours of the year.</span></p><p class="p_Text"><span class="f_Text">SAM reduces the system's output in each hour by the loss percentage that you specify for that hour. For a given hour, a loss of zero would result in no adjustment. A loss of 5% would reduce the output by 5%, and a loss of -5% would increase the output value by 5%. For subhourly simulations, SAM applies the loss factor for a given hour to each time step in that hour</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Dispatch Optimization</span></h3>
+<p class="p_Text"><span class="f_Text">The dispatch algorithm determines the timing of energy delivery from the solar field and to and from the thermal energy storage system. When the field is producing more thermal power than required by the power cycle during times when storage is full, the algorithm defocuses heliostats in the field to reduce the field output power. SAM reports the field optical focus fraction fraction, receiver incident thermal power, TES charge state, and other variables in the <a href="results_page.htm" class="topiclink">Results</a> that you can use to see how the system operates.</span></p>
+<p class="p_Text"><span class="f_Text">When you enable dispatch optimization, SAM automatically determines when the system defocuses heliostats in the field, stores thermal energy from the solar field, or when it dispatches thermal energy from the thermal energy storage system to the power cycle.</span></p>
+<p class="p_Text" style="text-align: center;"><img alt="IMG_MSPT-dispatch-high-level-flow-chart" width="1001" height="533" style="margin:0 auto 0 auto;width:1001px;height:533px;border:none" src="img_mspt-dispatch-high-level-flow-chart.png"/></p>
+<p class="p_Text"><span class="f_Text">When you run a simulation without enabling optimization, SAM attempts to operate the system so that the power cycle output matches the dispatch schedule you define. If the turbine dispatch fraction for a given time step is greater than the minimum turbine fraction and the storage system is full, it will dispatch energy to the power cycle up to the turbine output fraction for that time step, and defocus the field if the field thermal power output exceeds the amount required.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enable dispatch optimization</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check the box to enable automatic optimization.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Time horizon for dispatch optimization</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The time period that SAM uses as a basis for the optimization. Default value is 48 hours.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Frequency for dispatch reoptimization</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The time period to determine how often SAM runs the optimization. Default value is 24 hours.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cycle startup cost penalty, $/start</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The penalty in the dispatch optimization algorithm associated with starting up the power cycle. The cost is applied any time the power cycle goes from an “off” state to an “on” or “standby” state in the next time period. This penalty affects the optimal solution, which seeks to maximize revenue. This value </span><span class="f_Emphasis">does not</span><span class="f_VariableDescription"> affect actual O&amp;M costs or the calculated SAM financial metrics.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver startup cost penalty, $/start</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The penalty in the dispatch optimization algorithm associated with starting up the solar field and receiver. The cost is applied any time the solar field goes from an “off” state to an “on” state in the next time period. This penalty affects the optimal solution, which seeks to maximize revenue. This value </span><span class="f_Emphasis">does not</span><span class="f_VariableDescription"> affect actual O&amp;M costs or the calculated SAM financial metrics.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Power generation ramping penalty</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The penalty imposed for changing power cycle electrical production from one time step to the next. By penalizing changes, the resulting dispatch profile exhibits improved stability and is potentially more realizable in practice. Increasing this penalty may reduce achieved revenue for the project. This penalty affects the optimal solution, which seeks to maximize revenue. This value does not affect actual O&amp;M costs or the calculated SAM financial metrics.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Objective function time weighting exponent</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The relative weight due to time in the dispatch optimization objective function. A weighting factor of 0.99 indicates that the objective function terms are multiplied by </span><span class="f_CHEquationVariable">0.99</span><span class="f_CHEquationVariable" style="font-size: 7pt; vertical-align: super;">t</span><span class="f_VariableDescription"> &nbsp;for each timestep t in the optimization horizon (48 hours, by default). A value of 1.0 indicates no time weighting, a value less than one indicates that – all things equal – generation is preferred sooner than later, and a value greater than one indicates that generation is preferred later than sooner. As the value is displaced from unity, the optimization algorithm is typically able to solve the dispatch problem more quickly, but the resulting revenue may decrease. Note that a value of 0.99 corresponds to an objective discounting in the 24th time period (one day ahead) of </span><span class="f_CHEquationVariable">0.99</span><span class="f_CHEquationVariable" style="font-size: 7pt; vertical-align: super;">24</span><span class="f_CHEquationVariable"> = 0.79</span><span class="f_VariableDescription">, which is to say that the optimization routine values revenue generated in hour one 21% more than in hour 24, though revenue multipliers and efficiency terms may be identical.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum branch and bound iterations</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Limits the number of iterations in the optimization routine. If you are experiencing problems with the optimization, you can increase the number. The default value is 30,000.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Solution optimality gap tolerance</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Determines the tolerance for the optimization solution. You can decrease the tolerance if you are experiencing problems with the optimization. Default value is 0.001.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Optimization solver timeout limit, seconds</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Limits the amount of time the optimization will attempt to find a solution. You can increase the timeout limit if you are experiencing problems with the optimization. Default value is 5 seconds.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Max. net power to the grid (MWe)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum allowable net power to the grid when running dispatch optimization. Use a value much greater than the power cycle nameplate capacity to remove the effect of this constraint.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM determines approximate parasitic loads and the approximate gross cycle generation at each time period in the forecast horizon, and limits the net output to be less than or equal to this value. If the net power production cannot reach the specified limit, either because insufficient energy is available for power generation or because the power cycle operation envelope does not allow for sufficiently high output, the constraint will not be applied.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Max. net power to the grid (incl. availability), MWe</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A calculated value that indicates the max. net power to the grid after power cycle availability losses are accounted for. The calculated value is the product of the max.net power to the grid and the constant term in the <a href="edit_losses.htm" class="topiclink">Edit Losses</a> window on the System Control page. Note that hourly or hourly-block availability options are not included in this calculation, and only the constant is considered. When running a simulation with dispatch optimization enabled and the maximum power constraint in effect, the net production in the hourly data viewer will most closely equal this calculated value.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Dispatch Control</span></h3>
+<p class="p_Text"><span class="f_Text">The dispatch control periods determine the timing of adjustments to the power cycle output.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If your analysis involves PPA price multipliers defined on the <a href="revenue_ppa.htm#tod" class="topiclink">Time of Delivery (TOD) Factors</a> page, you should verify that the dispatch control schedules are consistent with the TOD factor schedules.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Turbine output fraction</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For each of up to nine time-of-delivery periods, specify a multiple of the power cycle thermal input to scale the system's electrical output up or down as desired to match power pricing schedules or other time-dependent constraints.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><a id="hybridcoolingfraction" class="hmanchor"></a><span class="f_VariableName">Hybrid cooling fraction</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For each of up to nine time-of-delivery periods, specify how much of the cooling load should be handled by the wet-cooling system. Each value in the table is a fraction of the design cooling load. For example, if you want 60% of heat rejection load to go to wet cooling in Period 1, type 0.6 for Period 1. Directing part of the heat rejection load to the wet cooling system reduces the total condenser temperature and improves performance, but increases the water requirement. SAM sizes the wet-cooling system to match the maximum fraction that you specify in the hybrid dispatch table, and sizes the air-cooling system to meet the full cooling load.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Defining Dispatch Schedules</span></h4>
+<p class="p_Text"><span class="f_Text">The storage dispatch schedules determine when each of the nine periods apply during weekdays and weekends throughout the year.</span></p>
+<p class="p_Text"><span class="f_Text">If your analysis includes <a href="revenue_ppa.htm#tod" class="topiclink">PPA price multipliers</a> and you want to use the same schedule for the multipliers and for the power cycle dispatch control, click </span><span class="f_CHInterfaceElement">Copy schedule from TOD Factors</span><span class="f_Text"> page to apply the TOD Factors schedule matrices to the dispatch schedule matrices.</span></p>
+<p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To specify a weekday or weekend schedule:</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Assign values as appropriate to the </span><span class="f_CHInterfaceElement">Turbine output </span><span class="f_ProcedureStep">fraction and </span><span class="f_CHInterfaceElement">Hybrid cooling fraction</span><span class="f_ProcedureStep"> for each of the up to nine periods.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Use your mouse to draw a rectangle in the matrix for the first block of time that applies to period 2.</span></p><p class="p_ProcedureStepNoNumber" style="text-align: center;"><img alt="SS_Schedule-select-block" width="438" height="240" style="margin:0 auto 0 auto;width:438px;height:240px;border:none" src="ss_schedule-select-block.png"/></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Type the number 2.</span></p><p class="p_ProcedureStepNoNumber" style="text-align: center;"><img alt="SS_Schedule-type-value" width="441" height="241" style="margin:0 auto 0 auto;width:441px;height:241px;border:none" src="ss_schedule-type-value.png"/></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">SAM shades displays the period number in the squares that make up the rectangle, and shades the rectangle to match the color of the period.</span></p><p class="p_ProcedureStepNoNumber" style="text-align: center;"><img alt="SS_MSPT_system-control-schedules" width="546" height="256" style="margin:0 auto 0 auto;width:546px;height:256px;border:none" src="ss_mspt_system-control-schedules.png"/></p>
+<p class="p_ProcedureStepLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStepLast">Repeat Steps 2-4 for each of the remaining periods that apply to the schedule.</span></p><h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Operating Modes</span></h3>
+<p class="p_Text"><span class="f_Text">The power tower model reports a set of operating mode outputs indicating how the system operates in each time step. The controller may divide a time step into different operating modes. For example the startup time step may involve three operating modes: Operating Mode 2 as the receiver warms up and the power cycle is off, followed by Operating Mode 32 when the receiver is on and hot HTF is delivered to both the power cycle for startup and TES, and then by Operating Mode 11 when the receiver is on and hot HTF is delivered to both the power cycle for power generation and TES for charging. The controller reports the first three operating modes and the number of modes for each time step. Most time steps will require three or fewer modes. In some rare cases, a time step may require more than three modes.</span></p>
+<p class="p_Text"><span class="f_Text">The operating modes output variables are:</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">1st operating mode</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The operating mode at the beginning of the time step.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">2nd op. mode, if applicable</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If the operating mode changes within the time step, the second operating mode follows the first operating mode.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">3rd op mode, if applicable</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If the operating mode changes three times within the time step, the third operating mode follows the second operating mode</span><span class="f_Text">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Operating modes in reporting timestep</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of operating modes in a given time step.</span></p>
+<p class="p_Text"><span class="f_Text">In each time step, the power tower plant controller uses an iterative process to search for the operating mode that best achieves target plant output. The target plant output is either determined from the </span><span class="f_CHInterfaceElement">Turbine output fraction</span><span class="f_Text"> for the time step that you specify under </span><span class="f_CHInterfaceElement">Dispatch Control</span><span class="f_Text">, or, if you check </span><span class="f_CHInterfaceElement">Enable dispatch optimization</span><span class="f_Text"> under </span><span class="f_CHInterfaceElement">Dispatch Optimization</span><span class="f_Text">, it is automatically optimized. For example, for a time step when the receiver output power is very close to but slightly less than the thermal power required for the power cycle to generate power at the target level, the controller might try Operating Mode 11 where the receiver delivers hot HTF to both the power cycle and TES and determine that is not enough energy to meet the cycle target. The controller would then it try Operating Mode 12 that discharges a small amount of energy from TES to supplement the energy from the receiver and meet the cycle target. If the cycle target is met, the </span><span class="f_CHInterfaceElement">First 3 operating modes tried</span><span class="f_Text"> would be 1112 to represent the controller trying Operating Mode 11 followed by Operating Mode 12. </span></p>
+<p class="p_Text"><span class="f_Text">In most cases, the controller will only need to consider up to three attempts, and it reports up to nine attempts. The output variables indicating operating modes considered by the controller are listed below. Note that modes 1-9 are indicated as 10, 20, 30, ... 90.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">First 3 operating modes tried</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The numbers of the first of up to three operating modes tested in a given time step to find the best operating mode. For example, if operating modes 11 and 12 were tried, the value would be 1112.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Next 3 operating modes tried</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If the controller tried more than three operating modes, the mode numbers up to three additional attempts.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Final 3 operating modes tried</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If the controller tried more than six operating modes, the mode numbers for up to three additional attempts.</span></p>
+<p class="p_Text"><span class="f_Text">The 34 operating modes are described in the table below. Note that single digit operating modes 1-9 are shown as 10, 20, etc. in the &quot;operating modes tried&quot; variables.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="DefaultShadedRows" >
+<thead>
+<tr class="DefaultShadedRows">
+<th class="DefaultShadedRows" style="width:104px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Operating Mode</span></p>
+</th>
+<th class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Description</span></p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">1 (10)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_OFF, PC_OFF, TES_OFF, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">2 (20)</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_SU, PC_OFF, TES_OFF, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">3 (30)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_SU, TES_OFF, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">4 (40)</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_SB, TES_OFF, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">5 (50)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_RM_HI, TES_OFF, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">6 (60)</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_RM_LO, TES_OFF, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">7 (70)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_DF, PC_MAX, TES_OFF, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">8 (80)</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_OFF, PC_SU, TES_DC, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">9 (90)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_OFF, TES_CH, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">10</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">SKIP_10 (not used)</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">11</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_TARGET, TES_CH, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">12</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_TARGET, TES_DC, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">13</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_RM_LO, TES_EMPTY, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">14</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_DF, PC_OFF, TES_FULL, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">15</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_OFF, PC_SB, TES_DC, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">16</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_OFF, PC_MIN, TES_EMPTY, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">17</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_OFF, PC_RM_LO, TES_EMPTY, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">18</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_SB, TES_CH, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">19</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_SU, PC_MIN, TES_EMPTY, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">20</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">SKIP_20 (not used)</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">21</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_SU, PC_SB, TES_DC, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">22</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_SB, TES_DC, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">23</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_OFF, PC_TARGET, TES_DC, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">24</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_SU, PC_TARGET, TES_DC, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">25</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_RM_HI, TES_FULL, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">26</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_MIN, TES_EMPTY, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">27</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_SU, PC_RM_LO, TES_EMPTY, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">28</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_DF, PC_MAX, TES_FULL, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">29</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_SB, TES_FULL, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">30</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">SKIP_30 (not used)</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">31</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_SU, PC_SU, TES_DC, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">32</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_ON, PC_SU, TES_CH, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">33</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_DF, PC_SU, TES_FULL, AUX_OFF</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:104px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">34</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CR_DF, PC_SU, TES_OFF, AUX_OFF</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
 
 </td></tr></table>
 

@@ -5,23 +5,26 @@ Fuel Cell
 Divider
 
 1
-9
+10
 Name
 5
 11
 Degradation
 X
 3
-495
+471
 Y
 3
-228
+267
 Width
 3
-447
+471
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -41,23 +44,26 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 12
 Degradation3
 X
 3
-477
+468
 Y
 3
-144
+135
 Width
 3
-462
+471
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -77,7 +83,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 16
@@ -94,6 +100,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -113,7 +122,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 17
@@ -130,6 +139,9 @@ Width
 Height
 3
 132
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -140,27 +152,30 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 17
 degradation_label
 X
 3
-726
+492
 Y
 3
-168
+150
 Width
 3
-210
+450
 Height
 3
-63
+54
+Tool Tip
+5
+0
 Caption
 5
-64
-Fuel cell degradation is assumed to degrade the max power output
+159
+Annual degradation reduces cell stack maximum power output over time. Degradation due to restart only applies when the cell stack restarts after shutting down.
 TextColour
 4
 0
@@ -185,7 +200,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 11
@@ -202,6 +217,9 @@ Width
 Height
 3
 103
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -212,7 +230,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 12
@@ -229,6 +247,9 @@ Width
 Height
 3
 352
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -239,7 +260,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 12
@@ -256,6 +277,9 @@ Width
 Height
 3
 457
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -266,7 +290,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 12
@@ -283,6 +307,9 @@ Width
 Height
 3
 163
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -293,7 +320,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 17
@@ -310,6 +337,9 @@ Width
 Height
 3
 105
+Tool Tip
+5
+0
 Caption
 5
 353
@@ -338,7 +368,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 17
@@ -354,7 +384,10 @@ Width
 615
 Height
 3
-84
+66
+Tool Tip
+5
+0
 Caption
 5
 320
@@ -383,29 +416,35 @@ AlignTop
 DataMatrix
 
 1
-22
+27
 Name
 5
 30
 fuelcell_availability_schedule
 X
 3
-525
+495
 Y
 3
-249
+288
 Width
 3
 376
 Height
 3
 174
+Tool Tip
+5
+0
 PasteAppendRows
 2
 0
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -418,6 +457,12 @@ RowLabels
 ShadeR0C0
 2
 0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
 ShadeC0
 2
 0
@@ -429,12 +474,12 @@ ShowColLabels
 1
 ColLabels
 5
-37
-Shutdown hour of year, Hours shutdown
+38
+Shutdown hour of year, Hours shut down
 NumRowsLabel
 5
-5
-Rows:
+17
+No. of shutdowns:
 NumColsLabel
 5
 5
@@ -455,26 +500,32 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Numeric
 
 1
-16
+17
 Name
 5
 26
 fuelcell_degradation_input
 X
 3
-552
+684
 Y
 3
-168
+207
 Width
 3
 54
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -517,23 +568,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
 fuelcell_degradation_restart
 X
 3
-588
+720
 Y
 3
-195
+234
 Width
 3
 45
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -576,23 +630,26 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 26
 fuelcell_degradation_units
 X
 3
-612
+744
 Y
 3
-168
+207
 Width
 3
 78
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -607,7 +664,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -624,6 +681,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -666,7 +726,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
@@ -683,6 +743,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -725,7 +788,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 36
@@ -742,6 +805,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -756,7 +822,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -773,6 +839,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -815,7 +884,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -832,6 +901,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -874,7 +946,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 34
@@ -891,6 +963,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -905,7 +980,7 @@ TabOrder
 DataMatrix
 
 1
-22
+27
 Name
 5
 19
@@ -922,12 +997,18 @@ Width
 Height
 3
 300
+Tool Tip
+5
+0
 PasteAppendRows
 2
 0
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -939,6 +1020,12 @@ RowLabels
 0
 ShadeR0C0
 2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
 0
 ShadeC0
 2
@@ -977,10 +1064,13 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Choice
 
 1
-8
+9
 Name
 5
 26
@@ -997,6 +1087,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -1011,7 +1104,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 31
@@ -1028,6 +1121,9 @@ Width
 Height
 3
 66
+Tool Tip
+5
+0
 Caption
 5
 302
@@ -1056,7 +1152,7 @@ AlignTop
 Plot
 
 1
-5
+6
 Name
 5
 24
@@ -1073,10 +1169,13 @@ Width
 Height
 3
 300
+Tool Tip
+5
+0
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -1093,6 +1192,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1135,7 +1237,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 29
@@ -1152,6 +1254,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 4
@@ -1168,7 +1273,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 21
@@ -1185,6 +1290,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1197,7 +1305,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 18
@@ -1214,6 +1322,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 3
@@ -1229,7 +1340,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 19
@@ -1246,6 +1357,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -1259,7 +1373,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1276,6 +1390,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1318,7 +1435,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 18
@@ -1335,6 +1452,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 3
@@ -1350,23 +1470,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
 fuelcell_number_of_units
 X
 3
-216
+210
 Y
 3
-216
+201
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1409,23 +1532,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
 fuelcell_power_min
 X
 3
-216
+210
 Y
 3
-264
+249
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1468,23 +1594,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
 fuelcell_power_nameplate
 X
 3
-216
+210
 Y
 3
-240
+225
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1527,7 +1656,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 26
@@ -1544,6 +1673,9 @@ Width
 Height
 3
 50
+Tool Tip
+5
+0
 Caption
 5
 57
@@ -1572,7 +1704,7 @@ AlignTop
 RadioChoice
 
 1
-10
+11
 Name
 5
 27
@@ -1589,6 +1721,9 @@ Width
 Height
 3
 76
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -1610,7 +1745,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -1627,6 +1762,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1669,7 +1807,7 @@ TabOrder
 DataArray
 
 1
-9
+10
 Name
 5
 29
@@ -1686,6 +1824,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 2
@@ -1703,7 +1844,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -1720,6 +1861,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1762,7 +1906,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1779,6 +1923,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1821,7 +1968,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 13
@@ -1838,6 +1985,9 @@ Width
 Height
 3
 27
+Tool Tip
+5
+0
 Items
 6
 4
@@ -1854,23 +2004,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
 fuelcell_unit_max_power
 X
 3
-216
+210
 Y
 3
-168
+153
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1913,23 +2066,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
 fuelcell_unit_min_power_input
 X
 3
-216
+210
 Y
 3
-192
+177
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1972,23 +2128,26 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 23
 fuelcell_unit_min_units
 X
 3
-279
+273
 Y
 3
-192
+177
 Width
 3
 129
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -2003,23 +2162,26 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
 object 21
 X
 3
-66
+60
 Y
 3
-150
+135
 Width
 3
 339
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2070,7 +2232,7 @@ Numeric
 fuelcell_degradation_input
 3
 1
-Degradation
+Annual degradation
  
 Fuel Cell
 0
@@ -2084,7 +2246,7 @@ Numeric
 fuelcell_degradation_restart
 3
 1
-Restart degradation
+Degradation due to restarting cell stack
 kW
 Fuel Cell
 0
@@ -2098,12 +2260,12 @@ Numeric
 fuelcell_degradation_units
 3
 1
- 
+Units for annual degradation
  
 Fuel Cell
 12
 kW/hr|%/year
-0
+1
 1
 1
 1
@@ -2296,7 +2458,7 @@ CheckBox
 fuelcell_fuel_type
 3
 1
-Fuel Type
+Fuel type
  
 Fuel Cell
 27
@@ -2325,7 +2487,7 @@ CheckBox
 fuelcell_lhv
 3
 1
-Lower Heating Value
+Lower heating value
 Btu/ft3
 Fuel Cell
 0
@@ -2339,7 +2501,7 @@ Numeric
 fuelcell_lhv_in
 3
 1
-Lower Heating Value
+Lower heating value
  MJ/kg
 Fuel Cell
 0
@@ -2481,7 +2643,7 @@ Numeric
 fuelcell_type
 3
 1
-Fuel Cell Type
+Fuel cell type
  
 Fuel Cell
 21
@@ -2510,7 +2672,7 @@ Numeric
 fuelcell_unit_min_power
 3
 1
-Minimum Unit Output
+Minimum unit output
 kW
 Fuel Cell
 0
@@ -2538,12 +2700,12 @@ Numeric
 fuelcell_unit_min_units
 3
 1
- 
+Units for minimum unit output
  
 Fuel Cell
 17
 kW|% of nameplate
-0
+1
 1
 1
 1

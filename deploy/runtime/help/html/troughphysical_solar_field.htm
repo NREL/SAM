@@ -40,34 +40,67 @@
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">The Solar Field page displays variables and options that describe the size and properties of the solar field, and properties of the heat transfer fluid. It also displays reference design specifications of the solar field.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For a detailed explanation of the physical trough model, see Wagner, M. J.; Gilman, P. (2011). </span><span class="f_Emphasis">Technical Manual for the SAM Physical Trough Model</span><span class="f_Note">. 124 pp.; NREL Report No. TP-5500-51825. <a href="http://www.nrel.gov/docs/fy11osti/51825.pdf" target="_blank" class="weblink">http://www.nrel.gov/docs/fy11osti/51825.pdf</a> (3.7 MB)</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Solar Field Design Point</span></h3>
+<p class="p_Text"><span class="f_Text">The design point variables show values at the design-point DNI from the <a href="troughphysical_system_design.htm" class="topiclink">System Design</a> page and are values that SAM uses to determine the system capacity in sizing calculations, and for area-based costs on the <a href="trough_system_costs.htm" class="topiclink">System Costs</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Single loop aperture (m²)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The aperture area of a single loop of collectors, equal to the product of aperture width, reflective area, times the structure length times the number of collector assemblies per loop according to the distribution of the up to four collector types in the field. This area does not include non-reflective surface on the collector or non-reflective space between collectors.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Single Loop Aperture (m²) = Sum of the SCA Reflective Aperture Area (m²) values for each SCA in the loop</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The SCA reflective aperture area for each SCA type is specified on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors (SCAs)</a> page. The number of each type of SCA in a single loop is specified under </span><span class="f_CHInterfaceElement">Single Loop Configuration</span><span class="f_VariableDescription"> as described in </span><span class="f_TableTextLeft"><a href="troughphysical_solar_field.htm#physical_sfloopconfiguration" class="topiclink">Specifying the Loop Configuration</a></span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Loop optical efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The optical efficiency when incident radiation is normal to the aperture plane, not including end losses or cosine losses. This value does not include thermal losses from piping and the receivers.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Loop Optical Efficiency = SCA Optical Efficiency at Design × HCE Optical Derate</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The SCA and HCE optical efficiency values are from the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors (SCA)</a> page and <a href="troughphysical_receivers_hces.htm" class="topiclink">Receivers (HCEs)</a> page, respectively.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total loop conversion efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total conversion efficiency of the loop, including optical losses and estimated thermal losses. Used to calculate the required aperture area of the solar field.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Loop Conversion Efficiency = Loop Optical Efficiency × Receiver Heat Loss Efficiency</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total required aperture, SM=1 (m²)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The exact mirror aperture area required to meet the design thermal output for a solar multiple of 1.0. SAM uses the required aperture to calculate the total aperture reflective area. The total aperture reflective area may be slightly more or less than the required aperture, depending on the collector dimensions you specify on the</span><span class="f_TableTextLeft"> <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors page</a></span><span class="f_VariableDescription">.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Required Aperture at SM of One (m²) = Cycle Thermal Power (MWt) ÷ ( Design Point DNI (W/m²) × Total Loop Conversion Efficiency ) × ( 1E6 W/MW )</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Required number of loops, SM=1</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The exact number of loops required to produce the total required aperture at a solar multiple of 1.0.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Required Number of Loops at SM of One = CEILING( Total Required Aperterture at SM of One ÷ Single Loop Aperture (m²) )</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total tracking power (W)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Electrical power required for tracking motors in the solar field.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Tracking Power (W) = Number of SCAs per Loop × Actual Number of Loops &nbsp;× Tracking Power per SCA (W)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Actual number of loops</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The actual number of loops in the field, equal to the solar multiple times the required number of loops at a solar multiple of 1.0. The required number of loops is rounded to the nearest integer to represent a realistic field layout.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total aperture reflective area (m²)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The actual aperture area based on the actual number of loops in the field, equal to the single loop aperture times the actual number of loops.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Aperture Reflective Area (m²) = Single Loop Aperture (m²) × Actual Number of Loops</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Actual solar multiple</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For Option 1 (solar multiple mode), the calculated solar multiple based on the actual (rounded) number of loops in the field. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For Option 2 (field aperture mode), the solar multiple value corresponding to the thermal output of the field based at design point: The total aperture reflective area divided by the field thermal output. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Actual field thermal output (MWt)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The thermal energy delivered by the solar field under design conditions at the actual solar multiple.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Field Thermal Output (MWt) = Design Point DNI (W/m²) × Total Loop Conversion Efficiency × Total Aperture Reflective Area (m²) ÷ 1E6 W/MW</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Loop inlet HTF temperature (°C)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The design temperature of heat transfer fluid (HTF) at the loop inlet, from the <a href="iph_trough-system_design.htm" class="topiclink">System Design</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Loop outlet HTF temperature (°C)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The design temperature of heat transfer fluid (HTF) at the loop outlet, from the <a href="iph_trough-system_design.htm" class="topiclink">System Design</a> page.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Solar Field Parameters</span></h3>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Option 1 and Option 2</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">For Option 1 (solar multiple mode), SAM calculates the total required aperture and number of loops based on the value you enter for the solar multiple. For option 2 (field aperture mode), SAM calculates the solar multiple based on the field aperture value you enter. Note that SAM does not use the value that appears dimmed for the inactive option. See <a href="solar_multiple.htm" class="topiclink">Solar Multiple</a> for details.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Solar Multiple</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The field aperture area expressed as a multiple of the aperture area required to operate the power cycle at its design capacity. See <a href="solar_multiple.htm" class="topiclink">Solar Multiple</a> for details.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Field Aperture (m²)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The total solar energy collection area of the solar field in square meters. Note that this is less than the total mirror surface area.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM uses the </span><span class="f_CHInterfaceElement">Actual Solar Multiple</span><span class="f_Note"> and </span><span class="f_CHInterfaceElement">Total Aperture Reflective Area</span><span class="f_Note"> values shown under </span><span class="f_CHInterfaceElement">Design Point</span><span class="f_Note"> for simulations. The calculated value of the inactive option may differ from the value you see under </span><span class="f_CHInterfaceElement">Solar Field Parameters</span><span class="f_Note">.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row spacing (m)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The centerline-to-centerline distance in meters between rows of collectors, assuming that rows are laid out uniformly throughout the solar field. Default is 15 meters.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Stow angle (degrees)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The collector angle during the hour of stow. A stow angle of zero for a northern latitude is vertical facing east, and 180 degrees is vertical facing west. Default is 170 degrees.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Deploy angle (degrees)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The collector angle during the hour of deployment. A deploy angle of zero for a northern latitude is vertical facing due east. Default is 10 degrees.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of field subsections</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">SAM assumes that the solar field is divided into between two and 12 subsections. Examples of solar field with 2, 4, and 6 subsections are shown below:</span></p>
-<p class="p_VariableDescription"><img alt="IMG_solar-field-layout-subsections" width="351" height="141" style="margin:0;width:351px;height:141px;border:none" src="img_solar-field-layout-subsections.png"/></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The number of field subsections determine the location and shape of header piping that delivers heat transfer fluid to the power block, which affects the heat loss calculation.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Header pipe roughness (m)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The header pipe roughness is a measure of the internal surface roughness of the header and runner piping. SAM uses this value in calculation of the shear force and piping pressure drops.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Surface roughness is important in determining the scale of the pressure drop throughout the system. As a general rule, the rougher the surface, the higher the pressure drop (and parasitic pumping power load). The surface roughness is a function of the material and manufacturing method used for the piping.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">HTF pump efficiency</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The electrical-to-mechanical energy conversion efficiency of the field heat transfer fluid pump. This value accounts for all mechanical, thermodynamic, and electrical efficiency losses.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Freeze protection temp (ºC)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum temperature that the heat transfer fluid is allowed to reach in the field. The temperature at which freeze protection equipment is activated.</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">SAM assumes that electric heat trace equipment maintains the fluid at the freeze protection temperature during hours that freeze protection is operating.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Irradiation at design (W/m²)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The design point direct normal radiation value, used in solar multiple mode to calculate the aperture area required to drive the power cycle at its design capacity. Also used to calculate the design mass flow rate of the heat transfer fluid for header pipe sizing.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Piping thermal loss coefficient (W/m</span><span class="f_VariableName" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableName">-K)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The thermal loss coefficient that is used to calculate thermal losses from piping between receivers, crossover piping, header piping, and runner piping. The coefficient specifies the number of thermal watts lost from the system as a function of the piping surface area, and the temperature difference between the fluid in the piping and the ambient air (dry bulb temperature). The length of crossover piping depends on the row spacing variable on the <a href="troughphysical_solar_field.htm" class="topiclink">Solar Field</a> page, and the piping distance between assemblies on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Wind stow speed, m/s</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">When the wind speed in the weather file exceeds this value, the collectors in field defocus and the field thermal power incident on the field goes to zero to model the effect of collectors moving to a safe position to avoid wind damage. When the wind speed falls below the wind stow speed, the field power returns to normal.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver startup delay time</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The time in hours required to start the receiver. The receiver starts whenever the radiation incident on the field in the previous hour is zero, and there is sufficient thermal energy in the current hour to meet the thermal design requirement. SAM calculates the start up energy as the product of the available thermal energy, startup delay time, and startup delay energy fraction.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver startup delay energy fraction</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Fraction of receiver design thermal power required by the receiver during the startup time.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Collector startup energy, kWhe/SCA</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The electric energy in kilowatt-hours required to move one collector into position. Applies during the startup time.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Tracking power per SCA, W/SCA</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The electric power in Watts required by the tracking mechanism of one collector during hours of operation.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of field subsections</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM assumes that the solar field is divided into between two and 12 subsections. Examples of solar field with 2, 4, and 6 subsections are shown below:</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="IMG_solar-field-layout-subsections" width="351" height="141" style="margin:0 auto 0 auto;width:351px;height:141px;border:none" src="img_solar-field-layout-subsections.png"/></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of field subsections determine the location and shape of header piping that delivers heat transfer fluid to the power block, which affects the heat loss calculation.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Allow partial defocusing</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Partial defocusing assumes that the tracking control system can adjust the collector angle in response to the capacity of the power cycle (and thermal storage system, if applicable). See <a href="troughphysical_solar_field.htm#physical_sfcollectordefocusing" class="topiclink">Defining Collector Defocusing</a> for details.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Heat Transfer Fluid</span></h3>
@@ -246,10 +279,9 @@
 <span class="f_Note">SAM displays the operating temperature limits for your reference so you can compare them to the field temperatures reported in the results to ensure that they do not exceed the limits. SAM does not adjust the system's performance to avoid exceeding these operating limits.</span><br />
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note">SAM only displays these limits for fluids that are in SAM's library. If you use a custom HTF instead of one from the SAM library, SAM disables the HTF operating temperature limits. In this case, you should use data from the fluid manufacturer specifications.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design loop inlet temp (ºC)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The temperature of HTF at the loop inlet under design conditions. The actual temperature during operation may differ from this value. SAM sets the power cycle's design outlet temperature equal to this value.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design loop outlet temp (ºC)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The temperature of the HTF at the outlet of the loop under design conditions. During operation, the actual value may differ from this set point. This value represents the target temperature for control of the HTF flow through the solar field and will be maintained when possible.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Freeze protection temp (ºC)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum temperature that the heat transfer fluid is allowed to reach in the field. The temperature at which freeze protection equipment is activated.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM assumes that electric heat trace equipment maintains the fluid at the freeze protection temperature during hours that freeze protection is operating.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Min single loop flow rate (kg/s)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum allowable flow rate through a single loop in the field.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">During time steps that produce a solar field flow rate that falls below the minimum value, the HTF temperature leaving the solar field will be reduced in temperature according to the heat added and minimum mass flow rate.</span></p>
@@ -258,159 +290,24 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">During time steps that produce a solar field flow rate that exceeds the maximum value, the solar field will be defocused according to the strategy selected by the user on the Solar Field page until the absorbed energy and corresponding mass flow rate fall below the maximum value.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Min field flow velocity (m/s)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum allowable HTF flow velocity through the field.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Minimum Field Flow Velocity (m/s) = Minium Single Loop Flow Rate (kg/s) × 4 ÷ [ Fluid Density at Inlet Temperature (kg/m³) × π × ( Minimum Absorber Tube Inner Diameter (m) )² ]</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Max field flow velocity (m/s)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The maximum allowable HTF flow velocity through the field.</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum and maximum solar field HTF flow velocity depend on the minimum and maximum HTF mass flow rates, HTF density at the design loop inlet temperature, and the absorber tube inner diameter specified on the Receivers page. SAM calculates the field HTF flow velocity for the receiver type with the smallest diameter.</span></p>
-<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table class="DefaultNoBorder" >
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Variable Name</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Equation</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Notes</span></p>
-</td>
-</tr>
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Min field flow velocity</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-MinFieldFlowVelocity" width="135" height="38" style="margin:0 auto 0 auto;width:135px;height:38px;border:none" src="eq_trp-minfieldflowvelocity.png"/></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Evaluate rho at SF inlet temp</span></p>
-<p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Minimum tube diameter is for tube diameters from whole loop</span></p>
-</td>
-</tr>
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Max field flow velocity</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-MaxFieldFlowVelocity" width="141" height="38" style="margin:0 auto 0 auto;width:141px;height:38px;border:none" src="eq_trp-maxfieldflowvelocity.png"/></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Evaluate rho at SF outlet temp</span></p>
-</td>
-</tr>
-</table>
-</div>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Field Flow Velocity (m/s) = Maximum Single Loop Flow Rate (kg/s) × 4 ÷ [ Fluid Density at Inlet Temperature (kg/m³) × π × ( Minimum Absorber Tube Inner Diameter (m) )² ]</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Header design min flow velocity (m/s)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum allowable HTF flow velocity in the header piping under design conditions, in the cold headers and hot headers, respectively.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Header design max flow velocity (m/s)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The maximum allowable HTF flow velocity in the header piping under design conditions in the cold headers and hot headers, respectively.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum and maximum header flow velocities are used to determine the diameter of the header piping as flow is diverted to each loop in the field. After flow is distributed (or collected) to/from the loops, System Advisor calculates the flow velocity and resizes the piping to correspond to the maximum velocity if the calculated value falls outside of the user-specified range.</span></p>
-<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Design Point</span></h3>
-<p class="p_Text"><span class="f_Text">The design point variables show values at the Irradiation at Design Value that SAM uses to determine the system capacity in sizing calculations, and for area-based costs on the <a href="trough_system_costs.htm" class="topiclink">System Costs</a> page.</span></p>
-<p class="p_Text"><span class="f_Text">For a description of the equations for the design point variables, see </span><span class="f_VariableDescription"><a href="troughphysical_solar_field.htm#calcvalues" class="topiclink">Equations for Calculated Values</a>.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Single loop aperture (m²)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The aperture area of a single loop of collectors, equal to the product of aperture width, reflective area, times the structure length times the number of collector assemblies per loop according to the distribution of the up to four collector types in the field. This area does not include non-reflective surface on the collector or non-reflective space between collectors.</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Single Loop Aperture (m²) = Sum of the SCA Reflective Aperture Area (m²) values for each SCA in the loop</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The SCA reflective aperture area for each SCA type is specified on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors (SCAs)</a> page. The number of each type of SCA in a single loop is specified under </span><span class="f_CHInterfaceElement">Single Loop Configuration</span><span class="f_VariableDescription"> as described in </span><span class="f_TableTextLeft"><a href="troughphysical_solar_field.htm#physical_sfloopconfiguration" class="topiclink">Specifying the Loop Configuration</a></span><span class="f_VariableDescription">.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Loop optical efficiency</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The optical efficiency when incident radiation is normal to the aperture plane, not including end losses or cosine losses. This value does not include thermal losses from piping and the receivers.</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Loop Optical Efficiency = SCA Optical Efficiency at Design × HCE Optical Derate</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The SCA and HCE optical efficiency values are from the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors (SCA)</a> page and <a href="troughphysical_receivers_hces.htm" class="topiclink">Receivers (HCEs)</a> page, respectively.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total loop conversion efficiency</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The total conversion efficiency of the loop, including optical losses and estimated thermal losses. Used to calculate the required aperture area of the solar field.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total required aperture, SM=1 (m²)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The exact mirror aperture area required to meet the design thermal output for a solar multiple of 1.0. SAM uses the required aperture to calculate the total aperture reflective area. The total aperture reflective area may be slightly more or less than the required aperture, depending on the collector dimensions you specify on the</span><span class="f_TableTextLeft"> <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors page</a></span><span class="f_VariableDescription">.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Required number of loops, SM=1</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The exact number of loops required to produce the total required aperture at a solar multiple of 1.0. This number may be a non-integer value, SAM rounds this value to the nearest integer to calculate the value of the actual number of loops variable.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Actual number of loops</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The actual number of loops in the field, equal to the solar multiple times the required number of loops at a solar multiple of 1.0. The required number of loops is rounded to the nearest integer to represent a realistic field layout.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total aperture reflective area (m²)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The actual aperture area based on the actual number of loops in the field, equal to the single loop aperture times the actual number of loops.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Actual solar multiple</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">For Option 1 (solar multiple mode), the calculated solar multiple based on the actual (rounded) number of loops in the field. For Option 2 (field aperture mode), the solar multiple value corresponding to the thermal output of the field based at design point: The total aperture reflective area divided by the field thermal output. </span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Field thermal output (MWt)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The thermal energy delivered by the solar field under design conditions at the actual solar multiple.</span></p>
-<h4 class="p_Heading4"><a id="calcvalues" class="hmanchor"></a><span class="f_Heading4">Equations for Calculated Values</span></h4>
-<p class="p_Text"><span class="f_Text">The following table shows the equations SAM uses to calculate the values for the variables above that you cannot edit. (In Windows, the calculated values appear in blue.)</span></p>
-<div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="DefaultNoBorder" >
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Variable Name</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Equation</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Notes</span></p>
-</td>
-</tr>
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Single loop aperture</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-SingleLoopAperture" width="77" height="22" style="margin:0 auto 0 auto;width:77px;height:22px;border:none" src="eq_trp-singleloopaperture.png"/></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Sum of aperture area of each individual SCA in the loop</span></p>
-</td>
-</tr>
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Loop optical efficiency</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">= Aggregate SCA Efficiency * Aggregate Receiver Optical Efficiency</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Efficiencies are calculated elsewhere</span></p>
-</td>
-</tr>
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total loop conversion efficiency</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">= Loop Optical Efficiency * Receiver Heat Loss Efficiency</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><img alt="EQ_TRP-LoopTotalEfficiency" width="44" height="20" style="margin:0;width:44px;height:20px;border:none" src="eq_trp-looptotalefficiency.png"/><span class="f_ImageCaption"> used in Total Required Aperture equation</span></p>
-</td>
-</tr>
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total required aperture, SM=1</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-TotalReqAperture" width="179" height="40" style="margin:0 auto 0 auto;width:179px;height:40px;border:none" src="eq_trp-totalreqaperture.png"/></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><img alt="EQ_TRP-AsfSM" width="40" height="20" style="margin:0;width:40px;height:20px;border:none" src="eq_trp-asfsm.png"/> used in Required Number of Loops equation</p>
-</td>
-</tr>
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Required number of loops, SM=1</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-ReqNumberLoops" width="54" height="37" style="margin:0 auto 0 auto;width:54px;height:37px;border:none" src="eq_trp-reqnumberloops.png"/></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
-</td>
-</tr>
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Actual number of loops</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-ActualNumberLoops1" width="110" height="32" style="margin:0 auto 0 auto;width:110px;height:32px;border:none" src="eq_trp-actualnumberloops1.png"/><span class="f_TableTextCenter"> </span><br />
-<img alt="EQ_TRP-ActualNumberLoops2" width="79" height="32" style="margin:0 auto 0 auto;width:79px;height:32px;border:none" src="eq_trp-actualnumberloops2.png"/></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Equation depends on solar field option: Option 1 uses the solar multiple value that you specify, Option 2 uses the field aperture area that you specify.</span></p>
-</td>
-</tr>
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total aperture reflective area</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p style="text-align: center;"><img alt="EQ_TRP-ActualAperture" width="117" height="20" style="margin:0 auto 0 auto;width:117px;height:20px;border:none" src="eq_trp-actualaperture.png"/></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
-</td>
-</tr>
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Actual solar multiple</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-SM" width="19" height="18" style="margin:0 auto 0 auto;width:19px;height:18px;border:none" src="eq_trp-sm.png"/><br />
-<span class="f_TableTextCenter"> <img alt="EQ_TRP-SM1" width="35" height="30" style="margin:0 auto 0 auto;width:35px;height:30px;border:none" src="eq_trp-sm1.png"/></span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Equation depends on solar field option: Option 1 is the solar multiple value that you specify, Option 2 is the ratio.</span></p>
-</td>
-</tr>
-<tr class="DefaultNoBorder">
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Field thermal output</span></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p style="text-align: center;"><img alt="EQ_TRP-FieldThermalOutput" width="100" height="40" style="margin:0 auto 0 auto;width:100px;height:40px;border:none" src="eq_trp-fieldthermaloutput.png"/></p>
-</td>
-<td class="DefaultNoBorder" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">pb = power block</span></p>
-</td>
-</tr>
-</table>
-</div>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Collector Orientation</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Collector tilt (degrees)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The angle of all collectors in the field in degrees from horizontal, where zero degrees is horizontal. A positive value tilts up the end of the array closest to the equator (the array's south end in the northern hemisphere), a negative value tilts down the southern end. SAM assumes that the collectors are fixed at the tilt angle.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Collector azimuth (degrees)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The azimuth angle of all collectors in the field, where zero degrees is pointing toward the equator, equivalent to a north-south axis. West is 90 degrees, and east is -90 degrees. SAM assumes that the collectors are oriented 90 degrees east of the azimuth angle in the morning and track the daily movement of the sun from east to west.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Stow angle (degrees)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The collector angle during the hour of stow. A stow angle of zero for a northern latitude is vertical facing east, and 180 degrees is vertical facing west. Default is 170 degrees.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Deploy angle (degrees)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The collector angle during the hour of deployment. A deploy angle of zero for a northern latitude is vertical facing due east. Default is 10 degrees.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Mirror Washing</span></h3>
 <p class="p_Text"><span class="f_Text">SAM reports the water usage of the system in the results based on the mirror washing variables. The annual water usage is the product of the water usage per wash and 365 (days per year) divided by the washing frequency.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Water usage per wash (L/m²,aper)</span></p>
@@ -451,14 +348,14 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Click to reset the defocus order to the default values, starting at the hot end of the loop and proceeding sequentially toward the cold end of the loop. See </span><span class="f_TableTextLeft"><a href="troughphysical_solar_field.htm#physical_sfcollectordefocusing" class="topiclink">Defining Collector Defocusing</a></span><span class="f_VariableDescription"> for details</span><span style="font-size: 11pt; font-family: Calibri,Vectora,'Droid Sans','Open Sans',Frutiger,sans-serif;">.</span></p>
 <h4 class="p_Heading4"><a id="physical_sfloopconfiguration" class="hmanchor"></a><span class="f_Heading4">Specifying the Loop Configuration</span></h4>
 <p class="p_Normal"><span class="f_Text">The solar field consists of loops of collector-receiver assemblies. On the Solar Field page, you specify the characteristics of a single loop in the field.</span></p>
-<p class="p_Text"><img alt="IMG_TroughPhysical-SingleLoopInField" width="499" height="249" style="margin:0;width:499px;height:249px;border:none" src="img_troughphysical-singleloopinfield.png"/></p>
+<p class="p_Text" style="text-align: center;"><img alt="IMG_TroughPhysical-SingleLoopInField" width="499" height="249" style="margin:0 auto 0 auto;width:499px;height:249px;border:none" src="img_troughphysical-singleloopinfield.png"/></p>
 <p class="p_Text"><span class="f_Text">When you configure a loop, you specify the following characteristics using the single loop configuration diagram:</span></p>
 <p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Number of assemblies in a single loop.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Collector (SCA) type of each assembly in the loop.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Receiver (HCE) type of each assembly in the loop.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Collector defocusing order, if applicable.</span></p><p class="p_Text"><span class="f_Text">Each rectangle in the diagram represents a collector-receiver assembly. </span><span class="f_List">SAM allows you to specify a single loop of up to 35 collector-receiver assemblies, and up to four different receiver and collector types.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> In the current version of SAM, it is not possible to specify more than one loop. If your field consists of different types of collectors and receivers, you must represent the proportion of different types in a single loop.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> It is not possible to specify more than one loop configuration. If your field consists of different types of collectors and receivers, you must represent the proportion of different types in a single loop.</span></p>
 <p class="p_Text"><span class="f_Text">Assembly #1, at the cold end of the loop, appears at the top left corner of the diagram. Depending on the collector defocusing option you use, you may need to know each assembly's number to assign a collector defocusing order. </span><span class="f_TableTextLeft"> See <a href="troughphysical_solar_field.htm#physical_sfcollectordefocusing" class="topiclink">Defining Collector Defocusing</a> for details.</span></p>
-<p class="p_Text"><img alt="SS_TroughPhysicalSF-ConfigureLoopDiagram" width="437" height="230" style="margin:0;width:437px;height:230px;border:none" src="ss_troughphysicalsf-configureloopdiagram.png"/></p>
+<p class="p_Text" style="text-align: center;"><img alt="SS_TroughPhysicalSF-ConfigureLoopDiagram" width="437" height="230" style="margin:0 auto 0 auto;width:437px;height:230px;border:none" src="ss_troughphysicalsf-configureloopdiagram.png"/></p>
 <p class="p_Text"><span class="f_Text">The color of the rectangle and SCA number indicates the collector type of each assembly. Similarly, the color of the line representing the receiver and the HCE number indicates the receiver type. The &quot;DF&quot; number indicates the collector defocusing order:</span></p>
-<p class="p_Text"><img alt="SS_PhysicalTroughSF-AssemblyDiagram" width="562" height="191" style="margin:0;width:562px;height:191px;border:none" src="ss_physicaltroughsf-assemblydiagram.png"/></p>
+<p class="p_Text" style="text-align: center;"><img alt="SS_PhysicalTroughSF-AssemblyDiagram" width="562" height="191" style="margin:0 auto 0 auto;width:562px;height:191px;border:none" src="ss_physicaltroughsf-assemblydiagram.png"/></p>
 <p class="p_Text"><span class="f_Text">The characteristics of each collector type are defined on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors page</a>, and of each receiver type on the <a href="troughphysical_receivers_hces.htm" class="topiclink">Receivers page</a>.</span></p>
 <p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To specify the loop configuration:</span></p>
 <p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">In Number of SCA/HCE assemblies per loop, type a number between 1 and 32. SAM displays a rectangle for each assembly in the loop.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">If the loop has more than one type of collector, define each of up to four collector types on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors page</a>. At this stage in your analysis, you can simply make note of the type number for each collector type you plan to include in the loop and define its characteristics on the Collectors page later.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit SCAs</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Use your mouse to select all of the collectors to which you want to assign a type number. You can use the Ctrl key to select individual collectors.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Use your keyboard to type the number corresponding to the collector's type number as defined on the Collectors page. SAM displays the collector (SCA) type number and color in the rectangle representing the collector type.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">Repeat Steps 4-5 for each collector type in the loop.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">7.</span><span class="f_ProcedureStep">If the loop includes more than one receiver type, click </span><span class="f_CHInterfaceElement">Edit HCEs</span><span class="f_ProcedureStep">, and follow Steps 4-6 for each receiver (HCE) type. You can define up to four receiver types on the <a href="troughphysical_receivers_hces.htm" class="topiclink">Receivers page</a>.</span></p><h4 class="p_Heading4"><a id="physical_sfcollectordefocusing" class="hmanchor"></a><span class="f_Heading4">Defining Collector Defocusing</span></h4>
