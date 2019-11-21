@@ -66,9 +66,15 @@ function ppa_sale_leaseback_graphs()
 
 function ppa_partnership_graphs()
 {
-		agraph( 'cf_sponsor_aftertax,cf_tax_investor_aftertax', 'Partner After-tax Cash Flows', 'Year', '$', -1, true, true, 'bottom' );
+	agraph( 'cf_sponsor_aftertax,cf_tax_investor_aftertax', 'Partner After-tax Cash Flows', 'Year', '$', -1, true, true, 'bottom' );
 }
 
+function resiliency_graphs()
+{
+	xmin = output('resilience_hrs_min');
+	xmax = output('resilience_hrs_max');
+	agraph( 'probs_of_surviving', 'Resilient Hours Probability', '', '', -1, false, false, 'bottom', 0, xmin, xmax);
+}
 
 //**************Technologies***************************
 autographs{ 'High-X Concentrating PV' } = define() { base_technology_graphs(); };
@@ -95,6 +101,8 @@ autographs{ 'MHKtidal' } = define()
 autographs{ 'PVWatts'} = define() 
 {	
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 
+	if (is_assigned('outage_durations'))
+		resiliency_graphs();
 };
 autographs{ 'PVWatts_battery'} = define() 
 {	
@@ -128,6 +136,8 @@ autographs{ 'Flat Plate PV' } = define()
 	columns += 'annual_xfmr_loss_percent,annual_ac_perf_adj_loss_percent';
 	agraph(columns, 'Energy Loss', '', '%', -1, false, true, 'right'); 
 
+	if (is_assigned('outage_durations'))
+		resiliency_graphs();
 };
 
 autographs{ 'PV_battery' } = define()

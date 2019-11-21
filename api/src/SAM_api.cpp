@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 #define _LIB_UTIL_CHECK_
-#include <shared/vartab.h>
+#include <ssc/vartab.h>
 #include "sscapi.h"
 #include "ErrorHandler.h"
 #include "SAM_api.h"

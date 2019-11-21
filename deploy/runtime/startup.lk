@@ -69,7 +69,7 @@ configopt( 'Single Owner PPA Buy Rate',   { 'long_name'='PPA single owner with b
 configopt( 'Merchant Plant',   { 'long_name'='Merchant plant (utility)',         'short_name'='Merchant plant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
 configopt( 'None',                        { 'long_name'='No financial model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
-enum { LOAD_SIMPLE, LOAD_BELPE, NO_LOAD };
+enum { LOAD_SIMPLE, LOAD_BELPE, LOAD_SIMPLE_CRIT, LOAD_BELPE_CRIT, NO_LOAD };
 enum { LIFETIME_NONE, LIFETIME_PV, LIFETIME_SYSTEM };
 
 
@@ -83,6 +83,16 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 	elseif( mode == LOAD_SIMPLE )
 	{
 		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Other', 'caption'='Input Time Series Load Data'}] ], 
+			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
+	}
+	elseif( mode == LOAD_BELPE_CRIT )
+	{
+		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'}], [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}] ], 
+			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
+	}
+	elseif ( mode == LOAD_SIMPLE_CRIT )
+	{
+		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'}] ], 
 			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
 	else return;
@@ -793,7 +803,7 @@ setup_flat_plate_pv_pages();
 setup_battery_pages_behind_the_meter();
 setup_grid_page();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_residential_pages( LOAD_BELPE , LIFETIME_PV ); //includes building load calculator
+setup_residential_pages( LOAD_BELPE_CRIT , LIFETIME_PV ); //includes building load calculator
 
 
 setconfig( 'Flat Plate PV', 'Third Party' );
@@ -801,7 +811,7 @@ setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'thirdpartyownership'])
 setup_flat_plate_pv_pages();
 setup_battery_pages_behind_the_meter();
 setup_grid_page();
-setup_thirdparty_pages( LOAD_BELPE, LIFETIME_PV ); //includes building load calculator by default in this function
+setup_thirdparty_pages( LOAD_BELPE_CRIT, LIFETIME_PV ); //includes building load calculator by default in this function
 
 
 setconfig( 'Flat Plate PV', 'Host Developer' );
@@ -810,7 +820,7 @@ setup_flat_plate_pv_pages();
 setup_battery_pages_behind_the_meter();
 setup_grid_page();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_host_developer_pages( LOAD_SIMPLE, LIFETIME_PV ); //includes building load calculator by default in this function
+setup_host_developer_pages( LOAD_SIMPLE_CRIT, LIFETIME_PV ); //includes building load calculator by default in this function
 
 
 setconfig( 'Flat Plate PV', 'Commercial' );
@@ -819,7 +829,7 @@ setup_flat_plate_pv_pages();
 setup_battery_pages_behind_the_meter();
 setup_grid_page();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_commercial_pages( LOAD_SIMPLE, LIFETIME_PV ); //belpe not valid for commercial
+setup_commercial_pages( LOAD_SIMPLE_CRIT, LIFETIME_PV ); //belpe not valid for commercial
 
 setconfig( 'Flat Plate PV', 'Commercial PPA' );	
 setmodules( ['pvsamv1', 'grid', 'ippppa']);
@@ -957,13 +967,13 @@ setconfig( 'PVWatts', 'Residential' );
 setmodules( ['pvwattsv5', 'belpe', 'battwatts', 'grid','utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages_behind_the_meter();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_residential_pages( LOAD_BELPE, LIFETIME_SYSTEM ); //includes building load calculator
+setup_residential_pages( LOAD_BELPE_CRIT, LIFETIME_SYSTEM ); //includes building load calculator
 
 setconfig( 'PVWatts', 'Commercial' );	
 setmodules( ['pvwattsv5', 'battwatts','grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages_behind_the_meter();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for commercial
+setup_commercial_pages(LOAD_SIMPLE_CRIT,LIFETIME_SYSTEM); //belpe not valid for commercial
 
 
 setconfig( 'PVWatts', 'Commercial PPA' );	
@@ -1007,13 +1017,13 @@ setconfig( 'PVWatts', 'Host Developer' );
 setmodules( ['pvwattsv5', 'grid', 'utilityrate5', 'host_developer']);
 setup_pvwatts_battery_pages_behind_the_meter();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_host_developer_pages( LOAD_SIMPLE, LIFETIME_SYSTEM ); //includes building load calculator by default in this function
+setup_host_developer_pages( LOAD_SIMPLE_CRIT, LIFETIME_SYSTEM ); //includes building load calculator by default in this function
 
 
 setconfig( 'PVWatts', 'Third Party' );	
 setmodules( ['pvwattsv5', 'belpe', 'battwatts', 'grid','utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_battery_pages_behind_the_meter();
-setup_thirdparty_pages( LOAD_BELPE , LIFETIME_SYSTEM); //includes building load calculator by default in this function
+setup_thirdparty_pages( LOAD_BELPE_CRIT , LIFETIME_SYSTEM); //includes building load calculator by default in this function
 
 
 

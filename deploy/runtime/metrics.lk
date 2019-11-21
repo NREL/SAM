@@ -298,6 +298,13 @@ function biopower_metrics()
 	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 }
 
+function resiliency_metrics()
+{
+	metric( 'resilience_hrs_min', {'label'='Resilient hours min', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' hrs' } );
+	metric( 'resilience_hrs_max', {'label'='Resilient hours max', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' hrs' } );
+	metric( 'resilience_hrs_avg', {'label'='Resilient hours avg', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' hrs' } );
+}
+
 // Technology Metrics
 metrics{ 'Flat Plate PV' } = define() { 
 	pv_metrics(); 
@@ -305,13 +312,19 @@ metrics{ 'Flat Plate PV' } = define() {
 		if ( value('en_batt') == 1 )
 			metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
 		}
+	if ( is_assigned('resilience_hrs_avg'))
+		resiliency_metrics();
 };
 metrics{ 'PVWatts' } = define() {	
 	pvwatts_metrics(); 
+	if ( is_assigned('resilience_hrs_avg'))
+		resiliency_metrics();
 	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party")){
 		if ( value('batt_simple_enable') == 1 )
 				metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
 		}
+	if ( is_assigned('resilience_hrs_avg'))
+		resiliency_metrics();
 };
 metrics{ 'Fuel Cell' } = define() {	
 	pvwatts_metrics(); 

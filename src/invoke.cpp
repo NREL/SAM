@@ -598,7 +598,7 @@ static void fcall_add_gain_term(lk::invoke_t &cxt)
 
 static void fcall_agraph( lk::invoke_t &cxt )
 {
-	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bottom, right, floating)], [integer:graph_type(BAR, STACKED, LINE, SCATTER, CONTOUR)]:none" );
+	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bottom, right, floating)], [integer:graph_type(BAR, STACKED, LINE, SCATTER, CONTOUR), [number:Xmin value], [number:Xmax value]]:none" );
 	
 	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
 	{
@@ -612,6 +612,8 @@ static void fcall_agraph( lk::invoke_t &cxt )
 		ag.show_legend = true;
 		ag.legend_pos = "bottom";
 		ag.Type = Graph::BAR;
+		ag.XMin = -1;
+		ag.XMax = -1;
 		if (cxt.arg_count() > 4)
 			ag.size = cxt.arg(4).as_integer();
 		if (cxt.arg_count() > 5)
@@ -622,7 +624,10 @@ static void fcall_agraph( lk::invoke_t &cxt )
 			ag.legend_pos = cxt.arg(7).as_string();
 		if (cxt.arg_count() > 8)
 			ag.Type = cxt.arg(8).as_integer();
-
+		if (cxt.arg_count() > 9)
+            ag.XMin = cxt.arg(9).as_number();
+        if (cxt.arg_count() > 10)
+            ag.XMax = cxt.arg(10).as_number();
 		ci->GetResultsViewer()->AddAutoGraph( ag );
 	}
 }
@@ -770,6 +775,17 @@ void fcall_value( lk::invoke_t &cxt )
 		cxt.error("variable '" + name + "' does not exist in this context" );
 }
 
+void fcall_is_assigned( lk::invoke_t &cxt )
+{
+    LK_DOC("is_assigned", "Check by name if an input or output variable exists in current case", "(string:name):bool");
+
+    CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
+    wxString name = cxt.arg(0).as_string();
+    if ( VarValue *vv = cc.GetCase().BaseCase().GetValue( name ) )
+        cxt.result().assign(1);
+    else
+        cxt.result().assign((double)0);
+}
 	
 static void plottarget( UICallbackContext &cc, const wxString &name )
 {
@@ -4721,7 +4737,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
                         break;
                     }
                     default:
-                        throw lk::error_t("reoopt_size_battery input error: " + i + " type must be number, array or matrix");
+                        throw lk::error_t("ReOpt_size_battery input error: " + i + " type must be number, array or matrix");
                 }
             }
         }
@@ -4753,7 +4769,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     std::vector<std::string> rate_vars = {"ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
                                           "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
-                                          "ur_ec_tou_mat", "load_user_data", "crit_load_user_data"};
+                                          "ur_ec_tou_mat", "load", "crit_load"};
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
@@ -4948,6 +4964,7 @@ lk::fcall_t* invoke_casecallback_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_value,
+		fcall_is_assigned,
 		fcall_varinfo,
 		fcall_output,
 		fcall_technology,

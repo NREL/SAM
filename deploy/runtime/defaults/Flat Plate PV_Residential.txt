@@ -1,5 +1,5 @@
 1
-963
+981
 6par_aisc
 1
 1
@@ -1604,6 +1604,12 @@ crit_8
 crit_9
 1
 1
+1
+1
+0
+crit_load
+1
+2
 1
 1
 0
@@ -6234,18 +6240,18 @@ ur_ratedata_filename
 ur_schedule_name
 1
 4
-38
-Residential Time of Use (Saver Choice)
+5
+empty
 ur_source
 1
 4
-49
-https://www.aps.com/library/rates/SaverChoice.pdf
+5
+empty
 ur_start_date
 1
 4
-10
-2017-08-18
+5
+empty
 ur_ts_buy_rate
 1
 2
@@ -6261,8 +6267,8 @@ ur_ts_sell_rate
 ur_uri
 1
 4
-66
-http://en.openei.org/apps/IURDB/rate/view/5a5936ea682bea7ec31f8652
+5
+empty
 ur_voltage_category
 1
 4
