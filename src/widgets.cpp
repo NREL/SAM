@@ -2372,50 +2372,23 @@ void AFDataLifetimeArrayButton::Get(std::vector<double> &data)
 void AFDataLifetimeArrayButton::Set(const std::vector<double> &data)
 {
 	mData = data;
-	/*
-	// resize based on potentially new analysis period and current mode
-	size_t newSize = mAnalysisPeriod;
-	switch (mMode)
-	{
-	case DATA_LIFETIME_ARRAY_MONTHLY:
-	{
-		newSize = mAnalysisPeriod * 12;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_DAILY: // assume 365
-	{
-		newSize = mAnalysisPeriod * 365;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_HOURLY: // assume 8760
-	{
-		newSize = mAnalysisPeriod * 8760;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_SUBHOURLY: // assume 8760 * timesteps per hour
-	{
-		newSize = mAnalysisPeriod * 8760 * (60 / mMinPerHour);
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_ANNUAL:
-	{
-		newSize = mAnalysisPeriod;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_WEEKLY: // assume 52 weeks or 364 days?
-	{
-		newSize = mAnalysisPeriod * 8760 / (24 * 7);
-		break;
-	}
-	default: // single value - no grid resize
-	{
-		newSize = 1;
-		break;
-	}
-	}
-	if (mData.size() != newSize)
-		mData.resize(newSize);
-		*/
+	// set mode based potentially new analysis period and current data
+	size_t newSize = mData.size();
+	if (newSize == mAnalysisPeriod)
+		mMode = DATA_LIFETIME_ARRAY_ANNUAL;
+	else if (newSize == (mAnalysisPeriod * 12))
+		mMode = DATA_LIFETIME_ARRAY_MONTHLY;
+	else if (newSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+		mMode = DATA_LIFETIME_ARRAY_WEEKLY;
+	else if (newSize == (mAnalysisPeriod * 365))
+		mMode = DATA_LIFETIME_ARRAY_DAILY;
+	else if (newSize == (mAnalysisPeriod * 8760))
+		mMode = DATA_LIFETIME_ARRAY_HOURLY;
+	else if (newSize > (mAnalysisPeriod * 8760))
+		mMode = DATA_LIFETIME_ARRAY_SUBHOURLY;
+	else
+		mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
+
 }
 void AFDataLifetimeArrayButton::SetDataLabel(const wxString &s)
 {
@@ -2437,100 +2410,10 @@ wxString AFDataLifetimeArrayButton::GetColumnLabel()
 void AFDataLifetimeArrayButton::SetAnalysisPeriod(const size_t &p)
 {
 	mAnalysisPeriod = p;
-	// resize based on potentially new analysis period and current mode
-
-	size_t newSize = mAnalysisPeriod;
-	switch (mMode)
-	{
-	case DATA_LIFETIME_ARRAY_MONTHLY:
-	{
-		newSize = mAnalysisPeriod * 12;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_DAILY: // assume 365
-	{
-		newSize = mAnalysisPeriod * 365;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_HOURLY: // assume 8760
-	{
-		newSize = mAnalysisPeriod * 8760;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_SUBHOURLY: // assume 8760 * timesteps per hour
-	{
-		newSize = mAnalysisPeriod * 8760 * (60 / mMinPerHour);
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_ANNUAL:
-	{
-		newSize = mAnalysisPeriod;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_WEEKLY: // assume 52 weeks or 364 days?
-	{
-		newSize = mAnalysisPeriod * 8760 / (24 * 7);
-		break;
-	}
-	default: // single value - no grid resize
-	{
-		newSize = 1;
-		break;
-	}
-	}
-	if (mData.size() != newSize)
-		mData.resize(newSize, 0.0);
-
 }
 
 void AFDataLifetimeArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	// resize based on potentially new analysis period and current mode
-	/*
-	size_t newSize = mAnalysisPeriod;
-	switch (mMode)
-	{
-	case DATA_LIFETIME_ARRAY_MONTHLY:
-	{
-		newSize = mAnalysisPeriod * 12;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_DAILY: // assume 365
-	{
-		newSize = mAnalysisPeriod * 365;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_HOURLY: // assume 8760
-	{
-		newSize = mAnalysisPeriod * 8760;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_SUBHOURLY: // assume 8760 * timesteps per hour
-	{
-		newSize = mAnalysisPeriod * 8760 * (60 / mMinPerHour);
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_ANNUAL:
-	{
-		newSize = mAnalysisPeriod;
-		break;
-	}
-	case DATA_LIFETIME_ARRAY_WEEKLY: // assume 52 weeks or 364 days?
-	{
-		newSize = mAnalysisPeriod * 8760 / (24 * 7);
-		break;
-	}
-	default: // single value - no grid resize
-	{
-		newSize = 1;
-		break;
-	}
-	}
-	if (mData.size() != newSize)
-		mData.resize(newSize);
-*/
-
-
 	AFDataLifetimeArrayDialog dlg(this, "Edit Lifetime Data (Lifetime Array)", mDescription, mDataLabel, mColumnLabel, mAnnualEnabled, mWeeklyEnabled, mShowMode);
 	dlg.SetAnalysisPeriod(mAnalysisPeriod);
 	dlg.SetData(mData);
@@ -3115,7 +2998,7 @@ public:
 		if (evt.GetId() == ILDM_MODEOPTIONS)
 			SetMode(ModeOptions->GetSelection());
 		else if (evt.GetId() == ILDM_TIMESTEPS)
-			SetMode(ModeOptions->GetSelection());
+			SetMinPerHour(ModeOptions->GetSelection());
 		else if (evt.GetId() == ILDM_COPY)
 			Grid->Copy(true);
 		else if (evt.GetId() == ILDM_PASTE)
@@ -3199,8 +3082,6 @@ AFDataLifetimeMatrixButton::AFDataLifetimeMatrixButton(wxWindow *parent, int id,
 {
 	mAnalysisPeriod = 25;
 	mMinPerHour = 30;
-//	mMode = DATA_LIFETIME_MATRIX_MONTHLY;
-//	mData.resize_preserve(12 * mAnalysisPeriod, 2, 0.0);
 }
 
 
@@ -3255,50 +3136,6 @@ void AFDataLifetimeMatrixButton::SetAnalysisPeriod(const size_t &p)
 
 void AFDataLifetimeMatrixButton::OnPressed(wxCommandEvent &evt)
 {
-	/* handle analysis period change separately
-	// resize based on potentially new analysis period and current mode
-	size_t newSize = mAnalysisPeriod;
-	switch (mMode)
-	{
-	case DATA_LIFETIME_MATRIX_MONTHLY:
-	{
-		newSize = mAnalysisPeriod * 12;
-		break;
-	}
-	case DATA_LIFETIME_MATRIX_DAILY: // assume 365
-	{
-		newSize = mAnalysisPeriod * 365;
-		break;
-	}
-	case DATA_LIFETIME_MATRIX_HOURLY: // assume 8760
-	{
-		newSize = mAnalysisPeriod * 8760;
-		break;
-	}
-	case DATA_LIFETIME_MATRIX_SUBHOURLY: // assume 8760 * timesteps per hour
-	{
-		newSize = mAnalysisPeriod * 8760 * (60 / mMinPerHour);
-		break;
-	}
-	case DATA_LIFETIME_MATRIX_ANNUAL:
-	{
-		newSize = mAnalysisPeriod;
-		break;
-	}
-	case DATA_LIFETIME_MATRIX_WEEKLY: // assume 52 weeks or 364 days?
-	{
-		newSize = mAnalysisPeriod * 8760 / (24 * 7);
-		break;
-	}
-	default: // single value - no grid resize
-	{
-		newSize = 1;
-		break;
-	}
-	}
-	if (mData.nrows() != newSize)
-		mData.resize_preserve(newSize, mData.ncols(), 0.0);
-	*/
 	AFDataLifetimeMatrixDialog dlg(this, "Edit Lifetime Data (Lifetime Matrix)", mDescription, mDataLabel, mColumnLabels, mAnnualEnabled, mWeeklyEnabled, mShowMode);
 	dlg.SetAnalysisPeriod(mAnalysisPeriod);
 	dlg.SetData(mData);
