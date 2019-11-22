@@ -38,26 +38,26 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">You can model a system with a single wave or tidal energy converter or more than one converter.</span></p>
+<p class="p_Text"><span class="f_Text">You can model a system with a single device or more than one device.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">System Sizing</span></h4>
 <p class="p_Text"><span class="f_Text">Use the system sizing options to determine how to size the system.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Use a single device</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Model the system as a single converter.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Model the system as a single device.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Specify desired rated capacity</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Automatically determine the number of converters based on a desired system capacity in kW. SAM attempts to find a number of converters that meets the desired array capacity you enter. The capacity of a single converter is determined by the parameters on the <a href="mhk_wave_converter.htm" class="topiclink">Wave Energy Converter</a> or <a href="mhk_tidal_converter.htm" class="topiclink">Tidal Energy Converter</a> page.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Specify number of converters</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Use this option to define an array of converters using the Array Layout tools.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Automatically determine the number of devices based on a desired system capacity in kW. SAM attempts to find a number of devices that meets the desired array capacity you enter. The capacity of a single device is determined by the parameters on the <a href="mhk_wave_converter.htm" class="topiclink">Wave Energy Converter</a> or <a href="mhk_tidal_converter.htm" class="topiclink">Tidal Energy Converter</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Specify number of devices</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Use this option to define an array of devices by specifying the number of rows and devices per row under </span><span class="f_CHInterfaceElement">Array Layout</span><span class="f_VariableDescription">.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Array Layout</span></h4>
-<p class="p_Text"><span class="f_Text">The Array Layout parameters define the relative positions of converters when there is more than one converter, and the lengths of electrical cable connecting the array to the shore. SAM can only model converters arranged in rectangular arrays.</span></p>
+<p class="p_Text"><span class="f_Text">The Array Layout parameters define the relative positions of devices when there is more than one device, and the lengths of electrical cable connecting the array to the shore. SAM can only model devices arranged in rectangular arrays.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The array layout parameters are used to calculate cable lengths for cost calculations on the System Costs page. These parameters do not affect estimates of electrical losses on the Losses page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of rows</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Number of converter rows perpendicular to the wave direction.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Converters per row</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">For arrays of more than one converter, the number of converters in each row.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Spacing between converters in a row, m</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Distance between converters in each row in meters. This variable is hidden when there is a single converter in the system.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Number of device rows perpendicular to the wave direction.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Devices per row</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For arrays of more than one device, the number of devices in each row.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Spacing between devices in a row, m</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Distance between devices in each row in meters. This variable is hidden when there is a single device in the system.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row spacing</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The distance between rows in meters. This variable is hidden when there is a single converter in the system.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The distance between rows in meters. This variable is hidden when there is a single device in the system.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Distance to shore, m</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The distance between the edge of the array closest to the shore and the shoreline in meters. Used to calculate the export cable cost on the System Costs page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Water depth, m</span></p>
@@ -67,12 +67,12 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Floating array</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Determines whether riser cable is included in the system. Riser cable is only required for floating arrays.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Build export cable redundancy</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Adds extra length to export cable length.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Adds extra length to export cable length, assuming two export cables instead of one.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Calculated Cable Lengths</span></h4>
 <p class="p_Text"><span class="f_Text">The calculated cable length values are determined from the array layout parameters and used to calculate cable costs on the System Costs page. All lengths are in meters.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Inter-array cable length, m</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The total length of cable used within the array of converters.</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Cable Length = ( Converters per Row - 1 ) × Spacing Between Converters in a Row × Number of Rows + Row Spacing × (Number of Rows - 1)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total length of cable used within the array of devices.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Cable Length = ( Devices per Row - 1 ) × Spacing Between Devices in a Row × Number of Rows + Row Spacing × (Number of Rows - 1)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">This length is adjusted to meet the </span><span class="f_CHInterfaceElement">Cable system overbuild</span><span class="f_VariableDescription"> requirement:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Adjusted Cable Length = Cable Length</span><span class="f_VariableDescription"> × ( 1 + Cable System Overbuild / 100% )</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Export cable length, m</span></p>
@@ -81,8 +81,8 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">If you choose the </span><span class="f_CHInterfaceElement">Build export redundancy</span><span class="f_VariableDescription"> option:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Cable Length with Redundancy = ( Water Depth + 2 × Distance to Shore ) × ( 1 + Cable System Overbuild / 100% )</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Riser cable length, m</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The length of cable from the seabed to the water surface, only applies when you choose the </span><span class="f_CHInterfaceElement">Floating array</span><span class="f_VariableDescription"> option.</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Riser Cable Length = 1.5 × Water Depth × Number of Converters</span><span class="f_VariableDescription"> × ( 1 + Cable System Overbuild / 100% )</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The length of cable from the seabed to the water surface, connecting the floating device to the seabed cabling. Applies only when you choose the </span><span class="f_CHInterfaceElement">Floating array</span><span class="f_VariableDescription"> option.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Riser Cable Length = 1.5 × Water Depth × Number of Devices</span><span class="f_VariableDescription"> × ( 1 + Cable System Overbuild / 100% )</span></p>
 
 </td></tr></table>
 
