@@ -300,9 +300,7 @@ function biopower_metrics()
 
 function resiliency_metrics()
 {
-	metric( 'resilience_hrs_min', {'label'='Resilient hours min', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' hrs' } );
-	metric( 'resilience_hrs_max', {'label'='Resilient hours max', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' hrs' } );
-	metric( 'resilience_hrs_avg', {'label'='Resilient hours avg', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' hrs' } );
+	metric( 'resilience_hrs_avg', {'label'='Avg hours of autonomy for resilience', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' hrs' } );
 }
 
 // Technology Metrics
