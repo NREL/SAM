@@ -1,6 +1,6 @@
 MHK Costs
-1569
-1090
+791
+1061
 145
 GroupBox
 
@@ -57,8 +57,8 @@ Tool Tip
 0
 Caption
 5
-31
-Balance of System Capital Costs
+23
+Balance of System Costs
 Bold
 2
 1
@@ -117,8 +117,8 @@ Tool Tip
 0
 Caption
 5
-21
-Total Installed Costs
+19
+Total Capital Costs
 Bold
 2
 1
@@ -3239,8 +3239,8 @@ Tool Tip
 0
 Caption
 5
-20
-Total installed cost
+18
+Total capital cost
 TextColour
 4
 0

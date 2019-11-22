@@ -42,7 +42,7 @@ Name
 lib_wave_device
 X
 3
-27
+30
 Y
 3
 48
@@ -184,7 +184,7 @@ Items
 6
 2
 Choose WEC from library
-Import WEC parameters
+Import WEC
 ShowCaptions
 2
 1
@@ -219,8 +219,8 @@ Tool Tip
 0
 Caption
 5
-37
-Electrical Power Capture Matrix (kW) 
+18
+Power Matrix (kW) 
 Bold
 2
 1
@@ -501,8 +501,8 @@ library_or_input_wec
 Choose WEC from library or user
  
 MHK Wave Energy Converter
-45
-Choose WEC from library|Import WEC parameters
+34
+Choose WEC from library|Import WEC
 1
 1
 1

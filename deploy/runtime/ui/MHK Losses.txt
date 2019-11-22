@@ -1,7 +1,7 @@
 MHK Losses
 604
 827
-20
+18
 GroupBox
 
 1
@@ -149,6 +149,36 @@ Caption
 5
 17
 Additional Losses
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+14
+downtime_group
+X
+3
+12
+Y
+3
+417
+Width
+3
+576
+Height
+3
+130
+Tool Tip
+5
+0
+Caption
+5
+28
+Array/Device Downtime Losses
 Bold
 2
 1
@@ -537,7 +567,7 @@ X
 69
 Y
 3
-699
+702
 Width
 3
 476
@@ -741,8 +771,8 @@ Tool Tip
 0
 Caption
 5
-77
-Losses associated with interactions of wave energy converters due to spacing.
+62
+Losses associated with interactions of devices due to spacing.
 TextColour
 4
 0
@@ -762,84 +792,6 @@ AlignRight
 2
 0
 AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
-14
-tidal_add_loss
-X
-3
-75
-Y
-3
-573
-Width
-3
-476
-Height
-3
-52
-Tool Tip
-5
-0
-Caption
-5
-103
-Miscellaneous losses which would decrease the power output from the tidal energy converter to the grid.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-11
-tidal_group
-X
-3
-12
-Y
-3
-414
-Width
-3
-576
-Height
-3
-130
-Tool Tip
-5
-0
-Caption
-5
-28
-Array/Device Downtime Losses
-Bold
 2
 1
 Label
@@ -867,8 +819,8 @@ Tool Tip
 0
 Caption
 5
-102
-Miscellaneous losses which would decrease the power output from the wave energy converter to the grid.
+87
+Miscellaneous losses which would decrease the power output from the device to the grid.
 TextColour
 4
 0
@@ -888,36 +840,6 @@ AlignRight
 2
 0
 AlignTop
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-10
-wave_group
-X
-3
-12
-Y
-3
-414
-Width
-3
-576
-Height
-3
-130
-Tool Tip
-5
-0
-Caption
-5
-25
-Array/WEC Downtime Losses
-Bold
 2
 1
 
@@ -1016,12 +938,5 @@ equations{"loss_total"} = define() {
 		+ ${loss_additional};
 };
 
-193
-on_load{'MHK Losses'}=define()
-{
-	tidal = (technology() == "MHKtidal");
-	show("tidal_group",tidal);
-	show("tidal_add_loss",tidal);
-	show("wave_group",!tidal);
-	show("wave_add_loss",!tidal);
-};
+1
+
