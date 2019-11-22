@@ -1,6 +1,6 @@
 Fuel Cell
-1037
-1234
+963
+1135
 46
 Divider
 
@@ -15,7 +15,7 @@ X
 471
 Y
 3
-267
+252
 Width
 3
 471
@@ -54,7 +54,7 @@ X
 468
 Y
 3
-135
+120
 Width
 3
 471
@@ -90,13 +90,13 @@ Name
 Dynamic Response
 X
 3
-48
+21
 Y
 3
-300
+264
 Width
 3
-408
+432
 Height
 3
 16
@@ -129,16 +129,16 @@ Name
 Stack Replacement
 X
 3
-9
+6
 Y
 3
-471
+474
 Width
 3
 950
 Height
 3
-132
+114
 Tool Tip
 5
 0
@@ -159,23 +159,23 @@ Name
 degradation_label
 X
 3
-492
+483
 Y
 3
-150
+135
 Width
 3
-450
+459
 Height
 3
-54
+39
 Tool Tip
 5
 0
 Caption
 5
-159
-Annual degradation reduces cell stack maximum power output over time. Degradation due to restart only applies when the cell stack restarts after shutting down.
+154
+Annual degradation reduces cell stack maximum power output over time. Degradation due to restart applies when the cell stack restarts after shutting down.
 TextColour
 4
 0
@@ -216,7 +216,7 @@ Width
 950
 Height
 3
-103
+88
 Tool Tip
 5
 0
@@ -240,20 +240,20 @@ X
 6
 Y
 3
-117
+102
 Width
 3
 950
 Height
 3
-352
+370
 Tool Tip
 5
 0
 Caption
 5
-17
-System Properties
+25
+Cell and Stack Properties
 Bold
 2
 1
@@ -267,16 +267,16 @@ Name
 fuelCellBox3
 X
 3
-9
+6
 Y
 3
-603
+591
 Width
 3
-968
+950
 Height
 3
-457
+406
 Tool Tip
 5
 0
@@ -297,16 +297,16 @@ Name
 fuelCellBox4
 X
 3
-9
+6
 Y
 3
-1065
+1002
 Width
 3
-965
+950
 Height
 3
-163
+127
 Tool Tip
 5
 0
@@ -327,13 +327,13 @@ Name
 fuelCellFuelLabel
 X
 3
-384
+459
 Y
 3
-1089
+1017
 Width
 3
-522
+486
 Height
 3
 105
@@ -378,7 +378,7 @@ X
 312
 Y
 3
-27
+21
 Width
 3
 615
@@ -423,13 +423,13 @@ Name
 fuelcell_availability_schedule
 X
 3
-495
+483
 Y
 3
-288
+273
 Width
 3
-376
+460
 Height
 3
 174
@@ -513,10 +513,10 @@ Name
 fuelcell_degradation_input
 X
 3
-684
+717
 Y
 3
-207
+189
 Width
 3
 54
@@ -575,13 +575,13 @@ Name
 fuelcell_degradation_restart
 X
 3
-720
+717
 Y
 3
-234
+216
 Width
 3
-45
+54
 Height
 3
 24
@@ -637,10 +637,10 @@ Name
 fuelcell_degradation_units
 X
 3
-744
+777
 Y
 3
-207
+189
 Width
 3
 78
@@ -671,10 +671,10 @@ Name
 fuelcell_dynamic_response_down
 X
 3
-276
+231
 Y
 3
-438
+441
 Width
 3
 57
@@ -733,10 +733,10 @@ Name
 fuelcell_dynamic_response_down_input
 X
 3
-276
+231
 Y
 3
-390
+387
 Width
 3
 57
@@ -795,10 +795,10 @@ Name
 fuelcell_dynamic_response_down_units
 X
 3
-333
+291
 Y
 3
-390
+387
 Width
 3
 90
@@ -829,7 +829,7 @@ Name
 fuelcell_dynamic_response_up
 X
 3
-276
+231
 Y
 3
 414
@@ -891,10 +891,10 @@ Name
 fuelcell_dynamic_response_up_input
 X
 3
-276
+231
 Y
 3
-366
+360
 Width
 3
 57
@@ -953,10 +953,10 @@ Name
 fuelcell_dynamic_response_up_units
 X
 3
-333
+291
 Y
 3
-366
+360
 Width
 3
 90
@@ -987,10 +987,10 @@ Name
 fuelcell_efficiency
 X
 3
-27
+9
 Y
 3
-747
+687
 Width
 3
 526
@@ -1080,7 +1080,7 @@ X
 291
 Y
 3
-627
+609
 Width
 3
 336
@@ -1111,16 +1111,16 @@ Name
 fuelcell_efficiency_choice_help
 X
 3
-72
+24
 Y
 3
-672
+639
 Width
 3
 861
 Height
 3
-66
+42
 Tool Tip
 5
 0
@@ -1159,10 +1159,10 @@ Name
 fuelcell_efficiency_plot
 X
 3
-555
+537
 Y
 3
-747
+687
 Width
 3
 415
@@ -1182,10 +1182,10 @@ Name
 fuelcell_fuel_available_in
 X
 3
-171
+231
 Y
 3
-1185
+1098
 Width
 3
 90
@@ -1244,10 +1244,10 @@ Name
 fuelcell_fuel_available_units
 X
 3
-264
+324
 Y
 3
-1185
+1098
 Width
 3
 90
@@ -1280,10 +1280,10 @@ Name
 fuelcell_fuel_limited
 X
 3
-171
+231
 Y
 3
-1155
+1071
 Width
 3
 90
@@ -1312,13 +1312,13 @@ Name
 fuelcell_fuel_type
 X
 3
-171
+231
 Y
 3
-1098
+1017
 Width
 3
-90
+168
 Height
 3
 24
@@ -1347,13 +1347,13 @@ Name
 fuelcell_is_started
 X
 3
-93
+45
 Y
 3
-318
+279
 Width
 3
-90
+246
 Height
 3
 24
@@ -1362,8 +1362,8 @@ Tool Tip
 0
 Caption
 5
-11
-Started up 
+41
+Start simulation with fuel cell operating
 State
 2
 0
@@ -1380,10 +1380,10 @@ Name
 fuelcell_lhv_in
 X
 3
-171
+231
 Y
 3
-1128
+1044
 Width
 3
 90
@@ -1442,13 +1442,13 @@ Name
 fuelcell_lhv_units
 X
 3
-264
+324
 Y
 3
-1128
+1044
 Width
 3
-90
+75
 Height
 3
 24
@@ -1477,10 +1477,10 @@ Name
 fuelcell_number_of_units
 X
 3
-210
+231
 Y
 3
-201
+189
 Width
 3
 57
@@ -1539,10 +1539,10 @@ Name
 fuelcell_power_min
 X
 3
-210
+231
 Y
 3
-249
+243
 Width
 3
 57
@@ -1601,10 +1601,10 @@ Name
 fuelcell_power_nameplate
 X
 3
-210
+231
 Y
 3
-225
+216
 Width
 3
 57
@@ -1663,23 +1663,23 @@ Name
 fuelcell_replacement_label
 X
 3
-654
+576
 Y
 3
-534
+543
 Width
 3
-251
+374
 Height
 3
-50
+26
 Tool Tip
 5
 0
 Caption
 5
 57
-Enter a 1 to replace fuel cell stack in each year desired
+Click Edit Array and enter a 1 for each replacement year.
 TextColour
 4
 0
@@ -1714,7 +1714,7 @@ X
 60
 Y
 3
-489
+504
 Width
 3
 219
@@ -1752,10 +1752,10 @@ Name
 fuelcell_replacement_percent
 X
 3
-582
+516
 Y
 3
-495
+516
 Width
 3
 54
@@ -1814,10 +1814,10 @@ Name
 fuelcell_replacement_schedule
 X
 3
-549
+483
 Y
 3
-534
+543
 Width
 3
 90
@@ -1832,12 +1832,12 @@ Mode
 2
 Label
 5
-33
-Battery bank replacement schedule
+17
+Replacement (0,1)
 Description
 5
-93
-Battery bank replacement schedule (enter a 1 for years in which a battery replacement occurs)
+74
+Fuel cell stack replacement schedule: Enter a 1 for each replacement year.
 TabOrder
 3
 4294967295
@@ -1851,10 +1851,10 @@ Name
 fuelcell_shutdown_time
 X
 3
-276
+231
 Y
 3
-342
+333
 Width
 3
 57
@@ -1913,10 +1913,10 @@ Name
 fuelcell_startup_time
 X
 3
-276
+231
 Y
 3
-318
+306
 Width
 3
 57
@@ -1978,7 +1978,7 @@ X
 42
 Y
 3
-48
+30
 Width
 3
 219
@@ -2011,10 +2011,10 @@ Name
 fuelcell_unit_max_power
 X
 3
-210
+231
 Y
 3
-153
+135
 Width
 3
 57
@@ -2073,10 +2073,10 @@ Name
 fuelcell_unit_min_power_input
 X
 3
-210
+231
 Y
 3
-177
+162
 Width
 3
 57
@@ -2135,10 +2135,10 @@ Name
 fuelcell_unit_min_units
 X
 3
-273
+291
 Y
 3
-177
+162
 Width
 3
 129
@@ -2169,13 +2169,13 @@ Name
 object 21
 X
 3
-60
+24
 Y
 3
-135
+123
 Width
 3
-339
+432
 Height
 3
 16
@@ -2473,7 +2473,7 @@ Choice
 fuelcell_is_started
 3
 1
-Started up already
+Start simulation with fuel cell operating
  
 Fuel Cell
 0
@@ -2821,15 +2821,13 @@ equations{'fuelcell_dynamic_response_down'} = define()
 	return response;
 };
 
-5249
+5335
 on_load{'Fuel Cell'} = define() {
-
 	on_change{'fuelcell_efficiency'}(); 
 	on_change{'fuelcell_fuel_type'}();
 	on_change{'fuelcell_replacement_option'}();
 	on_change{'fuelcell_fuel_limited'}();
 	on_change{'fuelcell_is_started'}();
-	
 	check_fuel_limited();	
 };
 
@@ -2874,6 +2872,8 @@ on_change{'fuelcell_fuel_limited'} = define(){
 on_change{'fuelcell_replacement_option'} = define(){
 	enable('fuelcell_replacement_percent', value('fuelcell_replacement_option')==1);
 	enable('fuelcell_replacement_schedule', value('fuelcell_replacement_option')==2);
+	show('fuelcell_replacement_label',value('fuelcell_replacement_option')==2);
+	refresh();
 };
 
 on_change{'fuelcell_efficiency'} = define(){
