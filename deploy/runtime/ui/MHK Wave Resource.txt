@@ -679,7 +679,7 @@ PasteAppendCols
 0
 ShowButtons
 2
-1
+0
 ShowRows
 2
 0
@@ -1080,10 +1080,10 @@ equations{ 'frequency_sum' } = define ()
 	return sum_mat;
 };
 
-1936
+1927
 function enable_disable_library() {
 	enable_library = !value('use_specific_wf_wave');
-	enable('wave_resource_matrix',enable_library);
+	enable('wave_resource_matrix',false);
 	property('wave_resource_matrix','ColorMap',enable_library);
 	enable('location',enable_library);
 	enable('btnScanLibrary',enable_library);

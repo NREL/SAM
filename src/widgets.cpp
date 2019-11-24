@@ -4156,7 +4156,7 @@ void AFDataMatrixCtrl::MatrixToGrid()
 		{
 			m_grid->SetRowLabelValue(r, as[r]);
 		}
-		m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
+//		m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
 	}
 	else
 	{
@@ -4169,9 +4169,14 @@ void AFDataMatrixCtrl::MatrixToGrid()
 		for (c = 0; c<(int)as.Count() && c < m_grid->GetNumberCols(); c++)
 		{
 			m_grid->SetColLabelValue(c, as[c]);
-			m_grid->AutoSizeColLabelSize(c);
+			//m_grid->AutoSizeColLabelSize(c);
+			m_grid->SetColSize(c, (int)(10 * wxGetScreenHDScale()));
+//			m_grid->SetColSize(c, (int)(10));
 		}
-		m_grid->SetColLabelSize(wxGRID_AUTOSIZE);
+//		m_grid->SetColLabelSize(wxGRID_AUTOSIZE);
+			// can use max text width from column labels
+
+
 	}
 	else
 	{
