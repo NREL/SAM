@@ -2881,17 +2881,6 @@ public:
 
 		if (GridTable) GridTable->SetMatrix(NULL);
 		Grid->SetTable(NULL);
-/*
-		GridTable = new AFDataLifetimeMatrixTable(&mData, mMode, mColumnLabels);
-		GridTable->SetAttrProvider(new wxExtGridCellAttrProvider);
-
-		Grid->SetTable(GridTable, true);
-		// can use max text width from column labels
-		for (size_t ic=0; ic<(size_t)Grid->GetNumberCols(); ic++)
-			Grid->SetColSize(ic, (int)(140 * wxGetScreenHDScale()));
-*/
-
-//		Grid->SetColSize(0, (int)(130 * wxGetScreenHDScale()));
 
 		// determine mode from data
 		size_t dataSize = mData.nrows();
@@ -4092,7 +4081,7 @@ void AFDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 	break;
 	case IDEDMC_IMPORT:
 	{
-		wxFileDialog dlg(this, "Select data matrix file to import");
+		wxFileDialog dlg(this, "Select data matrix file to import", wxEmptyString, wxEmptyString, "Comma-separated values (*.csv)|*.csv", wxFD_OPEN);
 		if (dlg.ShowModal() == wxID_OK)
 			if (!Import(dlg.GetPath()))
 				wxMessageBox("Error import data file:\n\n" + dlg.GetPath());
@@ -4100,7 +4089,7 @@ void AFDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 	break;
 	case IDEDMC_EXPORT:
 	{
-		wxFileDialog dlg(this, "Select file for data export", wxEmptyString, wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+		wxFileDialog dlg(this, "Save results as CSV", wxEmptyString, wxEmptyString, "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 		if (dlg.ShowModal() == wxID_OK)
 			if (!Export(dlg.GetPath()))
 				wxMessageBox("Error exporting data to file:\n\n" + dlg.GetPath());
@@ -4123,12 +4112,6 @@ void AFDataMatrixCtrl::MatrixToGrid()
 	m_numCols->SetValue(nc);
 
 	
-	//m_grid->ResizeGrid(nr, nc);
-	/*
-	for (r = 0; r<nr; r++)
-		for (c = 0; c<nc; c++)
-			m_grid->SetCellValue(r, c, wxString::Format("%g", m_data.at(r, c)));
-	*/
 	if (!m_rowFormat.IsEmpty())
 	{
 		for (r = 0; r<nr; r++)
@@ -4156,7 +4139,7 @@ void AFDataMatrixCtrl::MatrixToGrid()
 		{
 			m_grid->SetRowLabelValue(r, as[r]);
 		}
-//		m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
+		m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
 	}
 	else
 	{
@@ -4169,25 +4152,25 @@ void AFDataMatrixCtrl::MatrixToGrid()
 		for (c = 0; c<(int)as.Count() && c < m_grid->GetNumberCols(); c++)
 		{
 			m_grid->SetColLabelValue(c, as[c]);
-			//m_grid->AutoSizeColLabelSize(c);
-			m_grid->SetColSize(c, (int)(10 * wxGetScreenHDScale()));
-//			m_grid->SetColSize(c, (int)(10));
+			m_grid->AutoSizeColLabelSize(c);
 		}
-//		m_grid->SetColLabelSize(wxGRID_AUTOSIZE);
-			// can use max text width from column labels
-
-
+		m_grid->SetColLabelSize(wxGRID_AUTOSIZE);
 	}
 	else
 	{
 		m_grid->SetColLabelSize(1);
+		
+		for (c = 0; c < m_grid->GetNumberCols(); c++)
+		{
+			m_grid->AutoSizeColumn(c);
+		}
+
 	}
 
 	m_labelRows->SetLabel(m_numRowsLabel);
 	m_labelCols->SetLabel(m_numColsLabel);
 
 	UpdateColorMap();
-
 
 	Layout();
 	m_grid->Thaw();
