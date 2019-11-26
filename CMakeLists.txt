@@ -29,9 +29,9 @@ add_subdirectory(wex)
 add_subdirectory(ssc)
 add_subdirectory(api)
 
-#if (NOT skip_tests)
-#	add_subdirectory(test)
-#endif()
+if (NOT skip_tests)
+	add_subdirectory(test)
+endif()
 
 if(SAMAPI_EXPORT)
 	# if this flag is set, we're on Unix building SAM_api library with libssc.so which is not compatible with SAM

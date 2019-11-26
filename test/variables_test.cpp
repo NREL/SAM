@@ -1,57 +1,76 @@
 #include <gtest/gtest.h>
 #include <string>
 
-#include <ssc/vartab.h>
 #include <variables.h>
 
-TEST(VarValueTests, DataArray)
+TEST(VarTable_variables, DataArray)
 {
-	// test creating from var_data
-	std::vector<var_data> vd;
-	vd.resize(2);
-	for (auto& i : vd){
-	    i.type = SSC_NUMBER;
-	    i.num = 2;
-	}
-	auto vd_vec = var_data(vd);
-	VarValue vv = VarValue(&vd_vec);
-	auto arr = vv.DataArray();
-	assert(arr[0].Value() == 2 && arr[1].Value() == 2);
+    ssc_var_t vd[2];
+    for (size_t i = 0; i < 2; i++){
+        vd[i] = ssc_var_create();
+        ssc_var_set_number(vd[i], 2 + i);
+    }
 
-	// test getting back as var_data
-	vd_vec = vv.AsSSCVar();
-	assert(vd_vec.vec[0].num == 2 && vd_vec.vec[1].num == 2);
+    // set using ssc_data
+    auto data = ssc_data_create();
+    ssc_data_set_data_array(data, "array", &vd[0], 2);
+
+    VarTable variables = VarTable(data);
+    auto vv = variables.Get("array");
+	auto arr = vv->DataArray();
+	EXPECT_EQ(arr[0].Value(), 2);
+	EXPECT_EQ(arr[1].Value(), 3);
+
+	// test getting back as ssc_data
+	ssc_var_t data_arr = vv->AsSSCVar();
+	EXPECT_EQ(ssc_var_get_number(ssc_var_get_var_array(data_arr, 0)), 2);
+    EXPECT_EQ(ssc_var_get_number(ssc_var_get_var_array(data_arr, 1)), 3);
 
 	// test string
-	std::string str = vv.AsString(',', ',');
-	assert(str == "2,2");
+	std::string str = vv->AsString(',', ',');
+	EXPECT_EQ(str, "2,3");
+
+	for (size_t i = 0; i < 2; i++)
+	    ssc_var_free(vd[i]);
+	ssc_data_free(data);
+	ssc_var_free(data_arr);
 }
 
-TEST(VarValueTests, DataMatrix)
+TEST(VarTable_variables, DataMatrix)
 {
-    // test creating from var_data
-    std::vector<var_data> vd;
-    vd.resize(2);
-    for (auto& i : vd){
-        i.type = SSC_NUMBER;
-        i.num = 2;
+    // create data entries
+    ssc_var_t vd[4];
+    for (size_t i = 0; i < 4; i++){
+        vd[i] = ssc_var_create();
+        ssc_var_set_number(vd[i], 2 + i);
     }
-    std::vector<std::vector<var_data>> vm;
-    vm.push_back(vd);
-    vm.push_back(vd);
 
-    auto vd_mat = var_data(vm);
-    VarValue vv = VarValue(&vd_mat);
-    auto mat = vv.DataMatrix();
-    assert(mat[0][0].Value() == 2 && mat[0][1].Value() == 2);
-    assert(mat[0][0].Value() == 2 && mat[0][1].Value() == 2);
+    // set using ssc_data
+    auto data = ssc_data_create();
+    ssc_data_set_data_matrix(data, "matrix", &vd[0], 2, 2);
+
+    VarTable variables = VarTable(data);
+    auto vv = variables.Get("matrix");
+    auto mat = vv->DataMatrix();
+    EXPECT_EQ(mat[0][0].Value(), 2);
+    EXPECT_EQ(mat[0][1].Value(), 3);
+    EXPECT_EQ(mat[1][0].Value(), 4);
+    EXPECT_EQ(mat[1][1].Value(), 5);
 
     // test getting back as var_data
-    vd_mat = vv.AsSSCVar();
-    assert(vd_mat.mat[0][0].num == 2 && vd_mat.mat[0][1].num == 2);
-    assert(vd_mat.mat[1][0].num == 2 && vd_mat.mat[1][1].num == 2);
+    ssc_var_t data_matt = vv->AsSSCVar();
+
+    EXPECT_EQ(ssc_var_get_number(ssc_var_get_var_matrix(data_matt, 0, 0)), 2);
+    EXPECT_EQ(ssc_var_get_number(ssc_var_get_var_matrix(data_matt, 0, 1)), 3);
+    EXPECT_EQ(ssc_var_get_number(ssc_var_get_var_matrix(data_matt, 1, 0)), 4);
+    EXPECT_EQ(ssc_var_get_number(ssc_var_get_var_matrix(data_matt, 1, 1)), 5);
 
     // test string
-    std::string str = vv.AsString(',', ',');
-    assert(str == "[2,2][2,2]");
+    std::string str = vv->AsString(',', ',');
+    assert(str == "[2,3][4,5]");
+
+    for (size_t i = 0; i < 4; i++)
+        ssc_var_free(vd[i]);
+    ssc_data_free(data);
+    ssc_var_free(data_matt);
 }

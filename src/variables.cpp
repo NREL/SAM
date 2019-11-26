@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "variables.h"
 
-wxString vv_strtypes[7] = { "invalid", "number", "array", "matrix", "string", "table", "binary" };
+wxString vv_strtypes[9] = { "invalid", "number", "array", "matrix", "string", "table", "binary", "data array", "data matrix" };
 
 VarTable::VarTable()
 {
@@ -49,13 +49,13 @@ VarTable::VarTable( const VarTable &rhs )
 	Copy( rhs );
 }
 
-VarTable::VarTable( var_table* rhs)
+VarTable::VarTable( ssc_data_t rhs)
 {
-    const char* key = rhs->first();
+    const char* key = ssc_data_first(rhs);
     while (key != nullptr){
-        auto vd = rhs->lookup_match_case(key);
+        auto vd = ssc_data_lookup_case(rhs, key);
         Set(key, VarValue(vd));
-        key = rhs->next();
+        key = ssc_data_next(rhs);
     }
 }
 
@@ -529,45 +529,51 @@ VarValue::VarValue( const wxMemoryBuffer &mb )
 
 typedef double ssc_number_t;
 
-VarValue::VarValue( var_data *vd){
-    switch(vd->type){
+VarValue::VarValue(ssc_var_t vd) {
+    int n, m;
+    ssc_number_t* arr;
+    switch(ssc_var_query(vd)){
+        default:
         case SSC_INVALID:
             m_type = VV_INVALID;
             break;
         case SSC_STRING :
             m_type = VV_STRING;
-            m_str = vd->str;
+            m_str = ssc_var_get_string(vd);
             break;
         case SSC_NUMBER :
             m_type = VV_NUMBER;
-            m_val = vd->num;
+            m_val = ssc_var_get_number(vd);\
+            break;
         case SSC_ARRAY :
             m_type = VV_ARRAY;
-            m_val = vd->num;
+            arr = ssc_var_get_array(vd, &n);
+            m_val.assign(arr, n);
             break;
         case SSC_MATRIX :
             m_type = VV_MATRIX;
-            m_val = vd->num;
+            arr = ssc_var_get_matrix(vd, &n, &m);
+            m_val.assign(arr, n, m);
             break;
         case SSC_TABLE :
             m_type = VV_TABLE;
-            m_tab = VarTable(&(vd->table));
+            m_tab = VarTable(ssc_var_get_table(vd));
             break;
         case SSC_DATARR : {
             m_type = VV_DATARR;
-            std::vector<var_data> *datarr = &(vd->vec);
-            for (auto &i : *datarr) {
-                m_datarr.emplace_back(VarValue(&i));
+            ssc_var_size(vd, &n, nullptr);
+            for (int i = 0; i < n; i++) {
+                m_datarr.emplace_back(VarValue(ssc_var_get_var_array(vd, i)));
             }
             break;
         }
         case SSC_DATMAT :
             m_type = VV_DATMAT;
-            std::vector<std::vector<var_data>>* datmat = &(vd->mat);
-            for (auto& i : *datmat){
+            ssc_var_size(vd, &n, &m);
+            for (size_t i = 0; i < n; i++){
                 std::vector<VarValue> row;
-                for (auto& j : i)
-                    row.emplace_back(VarValue(&j));
+                for (size_t j = 0; j < m; j++)
+                    row.emplace_back(VarValue(ssc_var_get_var_matrix(vd, i, j)));
                 m_datmat.emplace_back(row);
             }
             break;
@@ -879,113 +885,110 @@ bool VarValue::Read_text(wxInputStream &_I)
 	size_t nr, nc, len;
 	switch (m_type)
 	{
-	case VV_INVALID:
-		break;
-	case VV_NUMBER:
-	case VV_ARRAY:
-	case VV_MATRIX:
-		nr = in.Read32();
-		nc = in.Read32();
-		if (nr*nc < 1) return false; // big error
-		m_val.resize_fill(nr, nc, 0.0);
-		if (nc*nr > 1)
-		{
-			for (size_t r = 0; r < nr; r++)
-			{
-				wxString x = in.ReadLine();
-				wxArrayString ar = wxStringTokenize(x, ' ');
-				if (nc != ar.Count()) return false;
-				for (size_t c = 0; c < nc; c++)
-				{
-					double y;
-					if (ar[c].ToDouble(&y))
-						m_val(r, c) = y;
-					else
-						return false;
-				}
-			}
-		}
-		else
-			m_val(0, 0) = in.ReadDouble();
-		/*
-		for (size_t r = 0; r < nr; r++)
-			for (size_t c = 0; c < nc; c++)
-			{
-		//		m_val(r, c) = in.ReadDouble();
-			}
-			*/
-		break;
-	case VV_TABLE:
-		ok = ok && m_tab.Read_text(_I);
-		break;
-	case VV_STRING:
-		n = in.Read32();
-		m_str.Clear();
-		if (n > 0)
-		{
-			for (size_t i = 0; i < n; i++)
-				m_str.Append(in.GetChar());
-		}
-		break;
-	case VV_BINARY:
-		len = in.Read32();
-		m_bin.SetBufSize(len);
-		m_bin.Clear();
-//		char *p = (char*)m_bin.GetWriteBuf(len);
-		for (size_t i = 0; i <len; i++)
-			m_bin.AppendByte(in.GetChar());
+	    default:
+        case VV_INVALID:
+            break;
+        case VV_NUMBER:
+        case VV_ARRAY:
+        case VV_MATRIX:
+            nr = in.Read32();
+            nc = in.Read32();
+            if (nr*nc < 1) return false; // big error
+            m_val.resize_fill(nr, nc, 0.0);
+            if (nc*nr > 1)
+            {
+                for (size_t r = 0; r < nr; r++)
+                {
+                    wxString x = in.ReadLine();
+                    wxArrayString ar = wxStringTokenize(x, ' ');
+                    if (nc != ar.Count()) return false;
+                    for (size_t c = 0; c < nc; c++)
+                    {
+                        double y;
+                        if (ar[c].ToDouble(&y))
+                            m_val(r, c) = y;
+                        else
+                            return false;
+                    }
+                }
+            }
+            else
+                m_val(0, 0) = in.ReadDouble();
+            /*
+            for (size_t r = 0; r < nr; r++)
+                for (size_t c = 0; c < nc; c++)
+                {
+            //		m_val(r, c) = in.ReadDouble();
+                }
+                */
+            break;
+        case VV_TABLE:
+            ok = ok && m_tab.Read_text(_I);
+            break;
+        case VV_STRING:
+            n = in.Read32();
+            m_str.Clear();
+            if (n > 0)
+            {
+                for (size_t i = 0; i < n; i++)
+                    m_str.Append(in.GetChar());
+            }
+            break;
+        case VV_BINARY:
+            len = in.Read32();
+            m_bin.SetBufSize(len);
+            m_bin.Clear();
+    //		char *p = (char*)m_bin.GetWriteBuf(len);
+            for (size_t i = 0; i <len; i++)
+                m_bin.AppendByte(in.GetChar());
 
-//		_I.Read(m_bin.GetWriteBuf(len), len);
-//		m_bin.UngetWriteBuf(len);
-		break;
-    case VV_DATMAT:
-    case VV_DATARR:
-            throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
+    //		_I.Read(m_bin.GetWriteBuf(len), len);
+    //		m_bin.UngetWriteBuf(len);
+            break;
+        case VV_DATMAT:
+        case VV_DATARR:
+                throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
 	}
 
 	return ok;
 //	return in.Read8() == code;
 }
 
-var_data VarValue::AsSSCVar() {
-    var_data vd;
+ssc_var_t VarValue::AsSSCVar() {
+    ssc_var_t vd = ssc_var_create();
+    ssc_var_t entry = nullptr;
     switch (m_type){
+        default:
         case VV_INVALID:
-            vd.type = SSC_INVALID;
             return vd;
         case VV_STRING:
-            vd.type = SSC_STRING;
-            vd.str = m_str;
+            ssc_var_set_string(vd, m_str.c_str());
             return vd;
         case VV_NUMBER:
-            vd.type = SSC_NUMBER;
-            vd.num = m_val;
+            ssc_var_set_number(vd, m_val);
             return vd;
         case VV_ARRAY:
-            vd.type = SSC_ARRAY;
-            vd.num = m_val;
+            ssc_var_set_array(vd, static_cast<ssc_number_t*>(&m_val[0]), (int)m_val.length());
             return vd;
         case VV_MATRIX:
-            vd.type = SSC_MATRIX;
-            vd.num = m_val;
+            ssc_var_set_matrix(vd, static_cast<ssc_number_t*>(&m_val[0]), (int)m_val.nrows(), (int)m_val.ncols());
             return vd;
         case VV_DATARR:
         {
-            vd.type = SSC_DATARR;
-            auto v = &(vd.vec);
-            for (auto& i : m_datarr){
-                v->emplace_back(i.AsSSCVar());
+            for (size_t i = 0; i < m_datarr.size(); i++){
+                entry = m_datarr[i].AsSSCVar();
+                ssc_var_set_var_array(vd, entry, i);
+                ssc_var_free(entry);
             }
             return vd;
         }
         case VV_DATMAT:
-            vd.type = SSC_DATMAT;
-            auto m = &(vd.mat);
-            for (auto& i : m_datmat){
-                std::vector<var_data> row;
-                for (auto& j : i)
-                    row.emplace_back(j.AsSSCVar());
-                m->emplace_back(row);
+            for (size_t i = 0; i < m_datmat.size(); i++){
+                for (size_t j = 0; j < m_datmat[0].size(); j++){
+                    entry = m_datmat[i][j].AsSSCVar();
+                    ssc_var_set_var_matrix(vd, entry, i, j);
+                    ssc_var_free(entry);
+                }
             }
             return vd;
     }
