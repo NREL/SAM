@@ -1,27 +1,30 @@
 Fuel Cell
-1037
-1234
+963
+1135
 46
 Divider
 
 1
-9
+10
 Name
 5
 11
 Degradation
 X
 3
-495
+471
 Y
 3
-228
+252
 Width
 3
-447
+471
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -41,23 +44,26 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 12
 Degradation3
 X
 3
-477
+468
 Y
 3
-144
+120
 Width
 3
-462
+471
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -77,23 +83,26 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 16
 Dynamic Response
 X
 3
-48
+21
 Y
 3
-300
+264
 Width
 3
-408
+432
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -113,23 +122,26 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 17
 Stack Replacement
 X
 3
-9
+6
 Y
 3
-471
+474
 Width
 3
 950
 Height
 3
-132
+114
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -140,27 +152,30 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 17
 degradation_label
 X
 3
-726
+483
 Y
 3
-168
+135
 Width
 3
-210
+459
 Height
 3
-63
+39
+Tool Tip
+5
+0
 Caption
 5
-64
-Fuel cell degradation is assumed to degrade the max power output
+154
+Annual degradation reduces cell stack maximum power output over time. Degradation due to restart applies when the cell stack restarts after shutting down.
 TextColour
 4
 0
@@ -185,7 +200,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 11
@@ -201,7 +216,10 @@ Width
 950
 Height
 3
-103
+88
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -212,7 +230,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 12
@@ -222,40 +240,46 @@ X
 6
 Y
 3
-117
+102
 Width
 3
 950
 Height
 3
-352
+370
+Tool Tip
+5
+0
 Caption
 5
-17
-System Properties
+25
+Cell and Stack Properties
 Bold
 2
 1
 GroupBox
 
 1
-7
+8
 Name
 5
 12
 fuelCellBox3
 X
 3
-9
+6
 Y
 3
-603
+591
 Width
 3
-968
+950
 Height
 3
-457
+406
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -266,23 +290,26 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 12
 fuelCellBox4
 X
 3
-9
+6
 Y
 3
-1065
+1002
 Width
 3
-965
+950
 Height
 3
-163
+127
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -293,23 +320,26 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 17
 fuelCellFuelLabel
 X
 3
-384
+459
 Y
 3
-1089
+1017
 Width
 3
-522
+486
 Height
 3
 105
+Tool Tip
+5
+0
 Caption
 5
 353
@@ -338,7 +368,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 17
@@ -348,13 +378,16 @@ X
 312
 Y
 3
-27
+21
 Width
 3
 615
 Height
 3
-84
+66
+Tool Tip
+5
+0
 Caption
 5
 320
@@ -383,29 +416,35 @@ AlignTop
 DataMatrix
 
 1
-22
+27
 Name
 5
 30
 fuelcell_availability_schedule
 X
 3
-525
+483
 Y
 3
-249
+273
 Width
 3
-376
+460
 Height
 3
 174
+Tool Tip
+5
+0
 PasteAppendRows
 2
 0
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -418,6 +457,12 @@ RowLabels
 ShadeR0C0
 2
 0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
 ShadeC0
 2
 0
@@ -429,12 +474,12 @@ ShowColLabels
 1
 ColLabels
 5
-37
-Shutdown hour of year, Hours shutdown
+38
+Shutdown hour of year, Hours shut down
 NumRowsLabel
 5
-5
-Rows:
+17
+No. of shutdowns:
 NumColsLabel
 5
 5
@@ -455,26 +500,32 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Numeric
 
 1
-16
+17
 Name
 5
 26
 fuelcell_degradation_input
 X
 3
-552
+717
 Y
 3
-168
+189
 Width
 3
 54
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -517,23 +568,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
 fuelcell_degradation_restart
 X
 3
-588
+717
 Y
 3
-195
+216
 Width
 3
-45
+54
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -576,23 +630,26 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 26
 fuelcell_degradation_units
 X
 3
-612
+777
 Y
 3
-168
+189
 Width
 3
 78
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -607,23 +664,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
 fuelcell_dynamic_response_down
 X
 3
-276
+231
 Y
 3
-438
+441
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -666,23 +726,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
 fuelcell_dynamic_response_down_input
 X
 3
-276
+231
 Y
 3
-390
+387
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -725,23 +788,26 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 36
 fuelcell_dynamic_response_down_units
 X
 3
-333
+291
 Y
 3
-390
+387
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -756,14 +822,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
 fuelcell_dynamic_response_up
 X
 3
-276
+231
 Y
 3
 414
@@ -773,6 +839,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -815,23 +884,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
 fuelcell_dynamic_response_up_input
 X
 3
-276
+231
 Y
 3
-366
+360
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -874,23 +946,26 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 34
 fuelcell_dynamic_response_up_units
 X
 3
-333
+291
 Y
 3
-366
+360
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -905,29 +980,35 @@ TabOrder
 DataMatrix
 
 1
-22
+27
 Name
 5
 19
 fuelcell_efficiency
 X
 3
-27
+9
 Y
 3
-747
+687
 Width
 3
 526
 Height
 3
 300
+Tool Tip
+5
+0
 PasteAppendRows
 2
 0
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -939,6 +1020,12 @@ RowLabels
 0
 ShadeR0C0
 2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
 0
 ShadeC0
 2
@@ -977,10 +1064,13 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Choice
 
 1
-8
+9
 Name
 5
 26
@@ -990,13 +1080,16 @@ X
 291
 Y
 3
-627
+609
 Width
 3
 336
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -1011,23 +1104,26 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 31
 fuelcell_efficiency_choice_help
 X
 3
-72
+24
 Y
 3
-672
+639
 Width
 3
 861
 Height
 3
-66
+42
+Tool Tip
+5
+0
 Caption
 5
 302
@@ -1056,43 +1152,49 @@ AlignTop
 Plot
 
 1
-5
+6
 Name
 5
 24
 fuelcell_efficiency_plot
 X
 3
-555
+537
 Y
 3
-747
+687
 Width
 3
 415
 Height
 3
 300
+Tool Tip
+5
+0
 Numeric
 
 1
-16
+17
 Name
 5
 26
 fuelcell_fuel_available_in
 X
 3
-171
+231
 Y
 3
-1185
+1098
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1135,23 +1237,26 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 29
 fuelcell_fuel_available_units
 X
 3
-264
+324
 Y
 3
-1185
+1098
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 4
@@ -1168,23 +1273,26 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 21
 fuelcell_fuel_limited
 X
 3
-171
+231
 Y
 3
-1155
+1071
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1197,23 +1305,26 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 18
 fuelcell_fuel_type
 X
 3
-171
+231
 Y
 3
-1098
+1017
 Width
 3
-90
+168
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 3
@@ -1229,27 +1340,30 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 19
 fuelcell_is_started
 X
 3
-93
+45
 Y
 3
-318
+279
 Width
 3
-90
+246
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
-11
-Started up 
+41
+Start simulation with fuel cell operating
 State
 2
 0
@@ -1259,23 +1373,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
 fuelcell_lhv_in
 X
 3
-171
+231
 Y
 3
-1128
+1044
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1318,23 +1435,26 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 18
 fuelcell_lhv_units
 X
 3
-264
+324
 Y
 3
-1128
+1044
 Width
 3
-90
+75
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 3
@@ -1350,23 +1470,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
 fuelcell_number_of_units
 X
 3
-216
+231
 Y
 3
-216
+189
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1409,23 +1532,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
 fuelcell_power_min
 X
 3
-216
+231
 Y
 3
-264
+243
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1468,23 +1594,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
 fuelcell_power_nameplate
 X
 3
-216
+231
 Y
 3
-240
+216
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1527,27 +1656,30 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 26
 fuelcell_replacement_label
 X
 3
-654
+576
 Y
 3
-534
+543
 Width
 3
-251
+374
 Height
 3
-50
+26
+Tool Tip
+5
+0
 Caption
 5
 57
-Enter a 1 to replace fuel cell stack in each year desired
+Click Edit Array and enter a 1 for each replacement year.
 TextColour
 4
 0
@@ -1572,7 +1704,7 @@ AlignTop
 RadioChoice
 
 1
-10
+11
 Name
 5
 27
@@ -1582,13 +1714,16 @@ X
 60
 Y
 3
-489
+504
 Width
 3
 219
 Height
 3
 76
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -1610,23 +1745,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
 fuelcell_replacement_percent
 X
 3
-582
+516
 Y
 3
-495
+516
 Width
 3
 54
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1669,57 +1807,63 @@ TabOrder
 DataArray
 
 1
-9
+10
 Name
 5
 29
 fuelcell_replacement_schedule
 X
 3
-549
+483
 Y
 3
-534
+543
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 2
 Label
 5
-33
-Battery bank replacement schedule
+17
+Replacement (0,1)
 Description
 5
-93
-Battery bank replacement schedule (enter a 1 for years in which a battery replacement occurs)
+74
+Fuel cell stack replacement schedule: Enter a 1 for each replacement year.
 TabOrder
 3
 4294967295
 Numeric
 
 1
-16
+17
 Name
 5
 22
 fuelcell_shutdown_time
 X
 3
-276
+231
 Y
 3
-342
+333
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1762,23 +1906,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
 fuelcell_startup_time
 X
 3
-276
+231
 Y
 3
-318
+306
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1821,7 +1968,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 13
@@ -1831,13 +1978,16 @@ X
 42
 Y
 3
-48
+30
 Width
 3
 219
 Height
 3
 27
+Tool Tip
+5
+0
 Items
 6
 4
@@ -1854,23 +2004,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
 fuelcell_unit_max_power
 X
 3
-216
+231
 Y
 3
-168
+135
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1913,23 +2066,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
 fuelcell_unit_min_power_input
 X
 3
-216
+231
 Y
 3
-192
+162
 Width
 3
 57
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1972,23 +2128,26 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 23
 fuelcell_unit_min_units
 X
 3
-279
+291
 Y
 3
-192
+162
 Width
 3
 129
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -2003,23 +2162,26 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
 object 21
 X
 3
-66
+24
 Y
 3
-150
+123
 Width
 3
-339
+432
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2070,7 +2232,7 @@ Numeric
 fuelcell_degradation_input
 3
 1
-Degradation
+Annual degradation
  
 Fuel Cell
 0
@@ -2084,7 +2246,7 @@ Numeric
 fuelcell_degradation_restart
 3
 1
-Restart degradation
+Degradation due to restarting cell stack
 kW
 Fuel Cell
 0
@@ -2098,12 +2260,12 @@ Numeric
 fuelcell_degradation_units
 3
 1
- 
+Units for annual degradation
  
 Fuel Cell
 12
 kW/hr|%/year
-0
+1
 1
 1
 1
@@ -2296,7 +2458,7 @@ CheckBox
 fuelcell_fuel_type
 3
 1
-Fuel Type
+Fuel type
  
 Fuel Cell
 27
@@ -2311,7 +2473,7 @@ Choice
 fuelcell_is_started
 3
 1
-Started up already
+Start simulation with fuel cell operating
  
 Fuel Cell
 0
@@ -2325,7 +2487,7 @@ CheckBox
 fuelcell_lhv
 3
 1
-Lower Heating Value
+Lower heating value
 Btu/ft3
 Fuel Cell
 0
@@ -2339,7 +2501,7 @@ Numeric
 fuelcell_lhv_in
 3
 1
-Lower Heating Value
+Lower heating value
  MJ/kg
 Fuel Cell
 0
@@ -2481,7 +2643,7 @@ Numeric
 fuelcell_type
 3
 1
-Fuel Cell Type
+Fuel cell type
  
 Fuel Cell
 21
@@ -2510,7 +2672,7 @@ Numeric
 fuelcell_unit_min_power
 3
 1
-Minimum Unit Output
+Minimum unit output
 kW
 Fuel Cell
 0
@@ -2538,12 +2700,12 @@ Numeric
 fuelcell_unit_min_units
 3
 1
- 
+Units for minimum unit output
  
 Fuel Cell
 17
 kW|% of nameplate
-0
+1
 1
 1
 1
@@ -2659,15 +2821,13 @@ equations{'fuelcell_dynamic_response_down'} = define()
 	return response;
 };
 
-5249
+5335
 on_load{'Fuel Cell'} = define() {
-
 	on_change{'fuelcell_efficiency'}(); 
 	on_change{'fuelcell_fuel_type'}();
 	on_change{'fuelcell_replacement_option'}();
 	on_change{'fuelcell_fuel_limited'}();
 	on_change{'fuelcell_is_started'}();
-	
 	check_fuel_limited();	
 };
 
@@ -2712,6 +2872,8 @@ on_change{'fuelcell_fuel_limited'} = define(){
 on_change{'fuelcell_replacement_option'} = define(){
 	enable('fuelcell_replacement_percent', value('fuelcell_replacement_option')==1);
 	enable('fuelcell_replacement_schedule', value('fuelcell_replacement_option')==2);
+	show('fuelcell_replacement_label',value('fuelcell_replacement_option')==2);
+	refresh();
 };
 
 on_change{'fuelcell_efficiency'} = define(){

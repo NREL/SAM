@@ -877,7 +877,7 @@ Numeric
 debt_message
 3
 4
- 
+Message for project term debt inputs
  
 Project Term Debt
 0

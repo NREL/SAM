@@ -1,11 +1,11 @@
 Grid Curtailment
-834
-152
+865
+129
 3
 DataArray
 
 1
-9
+10
 Name
 5
 16
@@ -18,10 +18,13 @@ Y
 90
 Width
 3
-90
+184
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 1
@@ -30,14 +33,15 @@ Label
 0
 Description
 5
-0
+124
+Enter a percentage of system AC power output for each time step of the year. Time step must match time step of weather file.
 TabOrder
 3
 4294967295
 Label
 
 1
-12
+13
 Name
 5
 26
@@ -54,10 +58,13 @@ Width
 Height
 3
 41
+Tool Tip
+5
+0
 Caption
 5
-194
-The grid curtailment is a negotiated schedule.  System production during grid curtailment will be curtailed by the specified percentage and will be compensated per the revenue curtailment price.
+198
+Grid curtailment is a negotiated schedule. System production during grid curtailment is curtailed by the specified percentage and is compensated at the revenue curtailment price on the Revenue page.
 TextColour
 4
 0
@@ -82,23 +89,26 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 8
 object 4
 X
 3
-15
+6
 Y
 3
-12
+3
 Width
 3
-812
+850
 Height
 3
 120
+Tool Tip
+5
+0
 Caption
 5
 16

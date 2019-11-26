@@ -410,8 +410,8 @@ cost_dev_fee_tax_liability
 3
 1
 Tax on development fee in Year 1
- $
- 
+$
+Cost of Acquiring Financing
 0
 8
 1
@@ -438,7 +438,7 @@ cost_equity_closing
 3
 1
 Equity closing cost
- $
+$
 Cost of Acquiring Financing
 0
 2

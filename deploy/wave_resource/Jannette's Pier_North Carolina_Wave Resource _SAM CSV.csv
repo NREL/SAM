@@ -1,4 +1,4 @@
-Name,City,State,Country,Latitude,Longitude,Nearby Bouy Number,Average Power Flux (kW/m),Bathymetry,Sea Bed,Time Zone,Data Source,Notes,,,,,,,,,
+Name,City,State,Country,Latitude,Longitude,Nearby Buoy Number,Average Power Flux (kW/m),Bathymetry,Sea Bed,Time Zone,Data Source,Notes,,,,,,,,,
 Jennette's Pier,Nags Head,North Carolina,United States,35.9123 N,75.5863 W,NDBC 44095,6.08,Gently Sloping,Sandy,-4,Sandia; SAND2015-7963,,,,,,,,,,
 Hs/Te,0.50,1.50,2.50,3.50,4.50,5.50,6.50,7.50,8.50,9.50,10.50,11.50,12.50,13.50,14.50,15.50,16.50,17.50,18.50,19.50,20.50
 0.25,0.00,0.00,0.00,0.17,1.77,4.93,5.04,1.47,0.20,0.03,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00

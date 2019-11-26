@@ -315,8 +315,7 @@ Decimals
 2
 Prefix
 5
-2
-$ 
+0
 Suffix
 5
 0
@@ -560,7 +559,7 @@ property_assessed_value
 3
 1
 Assessed value
- 
+$
 Tax and Insurance Rates
 0
 8

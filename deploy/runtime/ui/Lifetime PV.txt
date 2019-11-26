@@ -5,7 +5,7 @@ Lifetime PV
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -22,49 +22,72 @@ Width
 Height
 3
 107
+Tool Tip
+5
+0
 Caption
 5
-32
-PV Array Performance Degradation
+21
+Annual DC Degradation
 Bold
 2
 1
-DataArray
+DataLifetimeArray
 
 1
-9
+15
 Name
 5
 18
 ac_lifetime_losses
 X
 3
-279
+246
 Y
 3
-171
+174
 Width
 3
-90
+184
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 2
 Label
 5
-0
+24
+Lifetime daily AC losses
+ColumnLabel
+5
+15
+AC Loss (%/day)
 Description
 5
 0
 TabOrder
 3
 4294967295
+AnalysisPeriod
+3
+25
+AnnualEnabled
+2
+0
+WeeklyEnabled
+2
+0
+ShowMode
+2
+0
 GroupBox
 
 1
-7
+8
 Name
 5
 17
@@ -81,17 +104,20 @@ Width
 Height
 3
 75
+Tool Tip
+5
+0
 Caption
 5
 25
-Battery lifetime analysis
+Battery Lifetime Analysis
 Bold
 2
 1
 Label
 
 1
-12
+13
 Name
 5
 21
@@ -108,10 +134,13 @@ Width
 Height
 3
 45
+Tool Tip
+5
+0
 Caption
 5
-163
-In this mode, multiyear degradation of the battery is modeled.  Select the preferred degradation, replacement criteria and  replacement costs on the "Battery" page
+223
+In "Simulation over analysis period" mode, SAM runs a simulation for each year in the analysis period to model battery degradation and replacement costs based on the parameters on the Battery Storage and System Costs pages.
 TextColour
 4
 0
@@ -136,7 +165,7 @@ AlignTop
 SchedNumeric
 
 1
-11
+12
 Name
 5
 14
@@ -153,6 +182,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -173,42 +205,62 @@ Type a degradation rate (%) for each year. Each year's rate applies to the Year 
 TabOrder
 3
 2
-DataArray
+DataLifetimeArray
 
 1
-9
+15
 Name
 5
 18
 dc_lifetime_losses
 X
 3
-279
+246
 Y
 3
-141
+144
 Width
 3
-90
+184
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 2
 Label
 5
-0
+24
+Lifetime daily DC losses
+ColumnLabel
+5
+15
+DC Loss (%/day)
 Description
 5
 0
 TabOrder
 3
 4294967295
+AnalysisPeriod
+3
+25
+AnnualEnabled
+2
+0
+WeeklyEnabled
+2
+0
+ShowMode
+2
+0
 Label
 
 1
-12
+13
 Name
 5
 19
@@ -225,10 +277,13 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
-40
-Applies to the array's hourly DC output.
+64
+Applies to the photovoltaic array's DC output in each time step.
 TextColour
 4
 0
@@ -253,23 +308,26 @@ AlignTop
 CheckBox
 
 1
-8
+9
 Name
 5
 21
 en_ac_lifetime_losses
 X
 3
-60
+24
 Y
 3
-171
+174
 Width
 3
-216
+219
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 31
@@ -283,23 +341,26 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 21
 en_dc_lifetime_losses
 X
 3
-60
+24
 Y
 3
-141
+144
 Width
 3
-216
+219
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 31
@@ -313,7 +374,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -330,6 +391,9 @@ Width
 Height
 3
 111
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -340,23 +404,26 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
 object 7
 X
 3
-417
+441
 Y
 3
 18
 Width
 3
-336
+342
 Height
 3
 90
+Tool Tip
+5
+0
 Caption
 5
 164
@@ -385,27 +452,30 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
 object 71
 X
 3
-417
+441
 Y
 3
 132
 Width
 3
-336
+342
 Height
 3
 84
+Tool Tip
+5
+0
 Caption
 5
-172
-Applies a daily loss to the system on either the DC output or the AC output. These inputs could be used to represent system outages or degradation at a more granular level.
+154
+Applies a daily loss to the DC output, AC output, or both over the analysis period. These inputs could be used to represent system outages or degradation.
 TextColour
 4
 0
@@ -428,15 +498,30 @@ AlignTop
 2
 1
 
-5
+7
 ac_lifetime_losses
 3
 2
 Lifetime daily AC losses
-%
+%/day
 Degradation and Lifetime
-0
+7
+AC Loss
 3
+1
+2
+1
+1
+0
+DataLifetimeArray
+ac_lifetime_losses_size
+3
+2
+ 
+ 
+ 
+0
+8
 1
 2
 1
@@ -446,7 +531,7 @@ Default
 dc_degradation
 3
 2
-Module degradation rate
+DC degradation rate
 %/year
 Degradation and Lifetime
 0
@@ -461,10 +546,25 @@ dc_lifetime_losses
 3
 2
 Lifetime daily DC losses
-%
+%/day
 Degradation and Lifetime
-0
+7
+DC Loss
 3
+1
+2
+1
+1
+0
+DataLifetimeArray
+dc_lifetime_losses_size
+3
+2
+ 
+ 
+ 
+0
+8
 1
 2
 1
@@ -500,25 +600,60 @@ Degradation and Lifetime
 0
 Default
 
-0
-585
+1036
+// has to be in ssc equation to avoid circular reference
+/*
+equations{ '$MIMO$ lifetimePVDClosses' } = define() {
+	// reset the error message
+//	${test_update} = ${analysis_period};
+//	property("dc_lifetime_losses","AnalysisPeriod",${analysis_period});
+//	property("ac_lifetime_losses","AnalysisPeriod",${analysis_period});
+//	tmp = ${dc_lifetime_losses};
+//	dc_losses_size = #dc_losses;
+//	msgbox("triggered, size, period " + #tmp + ", " + ${analysis_period});
+	dc_tmp = ${dc_lifetime_losses_size};
+	if ( #dc_tmp != ${analysis_period})
+	{
+		x= alloc(${analysis_period}*365);	
+		for(i=0;i<${analysis_period}*365;i++)
+			x[i]= 0.0;
+		for(i=0;i<#dc_tmp && i<(${analysis_period}*365);i++)
+			x[i] = dc_tmp[i];
+		${dc_lifetime_losses} = x;
+	}
+	ac_tmp = ${ac_lifetime_losses_size};
+	if ( #ac_tmp != ${analysis_period})
+	{
+		x= alloc(${analysis_period}*365);	
+		for(i=0;i<${analysis_period}*365;i++)
+			x[i]= 0.0;
+		for(i=0;i<#ac_tmp && i<(${analysis_period}*365);i++)
+			x[i] = ac_tmp[i];
+		${ac_lifetime_losses} = x;
+	}
+	
+	return 0;
+	};
+	*/
+1164
 function enable_lifetime_losses()
 {
 	enable('dc_lifetime_losses', ${en_dc_lifetime_losses});
 	enable('ac_lifetime_losses', ${en_ac_lifetime_losses});
 }
 
-
 on_load{'Lifetime PV'} = define() {
 	enable_lifetime_losses();
-	
 	caption = "Applies to the array's hourly DC output.";
 	if (technology() == "Fuel Cell"){
 		caption = "Applies to the array's hourly AC output.";
 	}
 	property("degradation_message", "Caption", caption);
+	property("dc_lifetime_losses", "Description","Daily DC loss over project life.\nAnalysis period on Financial Parameters page.\n  Number of Rows = \n  1 row/day * 365 days * " + value("analysis_period") + " years");
+	property("dc_lifetime_losses","AnalysisPeriod",value("analysis_period"));
+	property("ac_lifetime_losses", "Description","Daily AC loss over project life.\nAnalysis period on Financial Parameters page.\n  Number of Rows = \n  1 row /day * 365 days * " + value("analysis_period") + " years");
+	property("ac_lifetime_losses","AnalysisPeriod",value("analysis_period"));
 };
-
 
 on_change{'en_ac_lifetime_losses'} = define() {
 	enable_lifetime_losses();
