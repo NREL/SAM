@@ -38,7 +38,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <lk/eval.h>
 
 #include <shared/lib_util.h>
-#include <ssc/vartab.h>
+
+#include <ssc/sscapi.h>
 
 #include "object.h"
 
@@ -56,7 +57,7 @@ class VarDatabase;
 #define VV_DATARR 7
 #define VV_DATMAT 8
 
-extern wxString vv_strtypes[7];
+extern wxString vv_strtypes[9];
 
 typedef unordered_map<wxString, VarValue*, wxStringHash, wxStringEqual> VarTableBase;
 
@@ -65,7 +66,7 @@ class VarTable : public VarTableBase
 public:
 	VarTable();
 	VarTable( const VarTable &rhs );
-	VarTable( var_table* rhs);
+	VarTable( ssc_data_t rhs);
 	~VarTable();
 
 	VarTable &operator=( const VarTable &rhs );
@@ -106,7 +107,7 @@ public:
 	explicit VarValue( const wxString &s );
 	explicit VarValue( const VarTable &t );
 	explicit VarValue( const wxMemoryBuffer &mb );
-	explicit VarValue( var_data *vd);
+	explicit VarValue(ssc_var_t vd);
 
 	VarValue( double *arr, size_t n );
 	VarValue( double *mat, size_t r, size_t c );
@@ -123,7 +124,8 @@ public:
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &);
 
-	var_data AsSSCVar();
+	// returns a pointer to a var_data class that'll need to be freed using ssc_var_free
+    ssc_var_t AsSSCVar();
 
 	int Type() const;
 	wxString TypeAsString() const;
