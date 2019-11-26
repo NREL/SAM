@@ -938,5 +938,93 @@ equations{"loss_total"} = define() {
 		+ ${loss_additional};
 };
 
-1
+2229
+function check_mhk_losses(widget_name)
+{
+	total_loss = to_real(value("loss_additional"))
+	+to_real(value("loss_downtime"))
+	+to_real(value("loss_transmission"))
+	+to_real(value("loss_resource_overprediction"))
+	+to_real(value("loss_array_spacing"));
+	x = to_real(value(widget_name));
+//	msgbox(widget_name + "=" + x);
+//	msgbox("loss_total=" + total_loss);
+	if (x < 0.0) 
+		x=0.0;
+	else if (total_loss > 100.0)
+	{
+		x = 100.0*x/total_loss;
+		if (widget_name != "loss_additional")
+		{
+			y= to_real(value("loss_additional"));
+			y=100.0*y/total_loss;
+			value("loss_additional",y, false);
+			refresh("loss_additional");
+		}
+		if (widget_name != "loss_downtime")
+		{
+			y= to_real(value("loss_downtime"));
+			y=100.0*y/total_loss;
+			value("loss_downtime",y, false);
+			refresh("loss_downtime");
+		}
+		if (widget_name != "loss_transmission")
+		{
+			y= to_real(value("loss_transmission"));
+			y=100.0*y/total_loss;
+			value("loss_transmission",y, false);
+			refresh("loss_transmission");
+		}
+		if (widget_name != "loss_resource_overprediction")
+		{
+			y= to_real(value("loss_resource_overprediction"));
+			y=100.0*y/total_loss;
+			value("loss_resource_overprediction",y, false);
+			refresh("loss_resource_overprediction");
+		}
+		if (widget_name != "loss_array_spacing")
+		{
+			y= to_real(value("loss_array_spacing"));
+			y=100.0*y/total_loss;
+			value("loss_array_spacing",y, false);
+			refresh("loss_array_spacing");
+		}
+	}
+	value(widget_name, x, false);
+//	msgbox(widget_name + "=" + x);
+	refresh(widget_name);
+	total_loss = to_real(value("loss_additional"))
+	+to_real(value("loss_downtime"))
+	+to_real(value("loss_transmission"))
+	+to_real(value("loss_resource_overprediction"))
+	+to_real(value("loss_array_spacing"));
+	value("loss_total", total_loss,false);
+	refresh("loss_total");
+}
+
+on_change{'loss_additional'}=define()
+{
+	check_mhk_losses("loss_additional");
+};
+
+
+on_change{'loss_downtime'}=define()
+{
+	check_mhk_losses('loss_downtime');
+};
+
+on_change{'loss_transmission'}=define()
+{
+	check_mhk_losses('loss_transmission');
+};
+
+on_change{'loss_resource_overprediction'}=define()
+{
+	check_mhk_losses('loss_resource_overprediction');
+};
+
+on_change{'loss_array_spacing'}=define()
+{
+	check_mhk_losses('loss_array_spacing');
+};
 
