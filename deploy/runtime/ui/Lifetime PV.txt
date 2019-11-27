@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-21
-Annual DC Degradation
+18
+Annual Degradation
 Bold
 2
 1
@@ -531,7 +531,7 @@ Default
 dc_degradation
 3
 2
-DC degradation rate
+Degradation rate
 %/year
 Degradation and Lifetime
 0

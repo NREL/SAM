@@ -2821,13 +2821,13 @@ equations{'fuelcell_dynamic_response_down'} = define()
 	return response;
 };
 
-5335
+5343
 on_load{'Fuel Cell'} = define() {
 	on_change{'fuelcell_efficiency'}(); 
 	on_change{'fuelcell_fuel_type'}();
 	on_change{'fuelcell_replacement_option'}();
 	on_change{'fuelcell_fuel_limited'}();
-	on_change{'fuelcell_is_started'}();
+//	on_change{'fuelcell_is_started'}();
 	check_fuel_limited();	
 };
 
@@ -2859,12 +2859,14 @@ function check_type()
 on_change{'fuelcell_type'} = define(){
 	check_type();
 };
+/*
 on_change{'fuelcell_is_started'} = define(){
 	enable('fuelcell_startup_time', !value('fuelcell_is_started'));
 	if (value('fuelcell_is_started')){
 		value('fuelcell_startup_time', 0);
 	}
 };
+*/
 on_change{'fuelcell_fuel_limited'} = define(){
 	check_fuel_limited();
 };

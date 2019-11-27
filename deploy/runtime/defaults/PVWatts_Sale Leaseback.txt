@@ -1,5 +1,5 @@
 1
-411
+410
 ac_nameplate
 1
 1
@@ -2445,12 +2445,6 @@ system_capacity
 1
 1
 20000
-system_use_lifetime_output
-1
-1
-1
-1
-0
 system_use_recapitalization
 1
 1

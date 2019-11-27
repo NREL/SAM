@@ -265,7 +265,7 @@ Degradation and Lifetime
 Default
 
 0
-1364
+1396
 on_load{'Lifetime System'} = define()
 {
 	check_tech();
@@ -277,7 +277,7 @@ function check_tech()
 	message = '';
 	caption = '';
 	batt_message = 'If you are modeling a system with batteries, the "Simulation over one year" mode will only model one year of battery degradation. To model battery degradation and replacement costs over the entire analysis period, choose "Simulation over analysis period" above.';
-	is_batt_tech = ( technology() == 'Flat Plate PV' || technology() == 'Generic System' );
+	is_batt_tech = ( technology() == 'Flat Plate PV' || technology() == 'Generic System'  || technology() == 'Fuel Cell' );
 	is_battwatts_tech =  ( technology() == 'PVWatts' );
 	if ( is_batt_tech )
 	{

@@ -562,10 +562,13 @@ function setup_fuel_cell_pages_btm()
 	addpage([['Fuel Cell Dispatch',
 			'Battery Dispatch Behind the Meter',
 			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});
-	addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
+   
+       addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
            {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
-   setup_grid_page();
+
+        
+    setup_grid_page();
 
 //	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
 }
