@@ -43,6 +43,22 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "object.h"
 
+// functions for converting data between lk::vardata and ssc::var_data
+bool lkhash_to_sscdata(lk::vardata_t &val, ssc_data_t table);
+
+bool lkvar_to_sscvar(lk::vardata_t &val, ssc_var_t p_var);
+
+bool lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat);
+
+// functions for converting ssc data back to lk
+void sscdata_to_lkhash(ssc_data_t p_dat, lk::vardata_t &out);
+
+// functions for copying ssc variable into lk variable
+void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out);
+
+void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out);
+
+
 class VarValue;
 class VarDatabase;
 
@@ -91,6 +107,8 @@ public:
 	bool Read_text(wxInputStream &);
 	bool Read_text(const wxString &file);
 
+    // returns a pointer to a ssc::var_table class that'll need to be freed using ssc_data_free
+    bool AsSSCData(ssc_data_t p_dat);
 };
 
 class VarValue
@@ -124,8 +142,8 @@ public:
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &);
 
-	// returns a pointer to a var_data class that'll need to be freed using ssc_var_free
-    ssc_var_t AsSSCVar();
+	// returns a pointer to a ssc::var_data class that'll need to be freed using ssc_var_free
+    bool AsSSCVar(ssc_var_t p_var);
 
 	int Type() const;
 	wxString TypeAsString() const;

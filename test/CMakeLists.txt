@@ -118,7 +118,7 @@ endif()
 #####################################################################################################################
 
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-	target_link_libraries(SAMtest lk wex ssc)
+	target_link_libraries(SAMtest ssc wex lk)
 else()
 	unset(WEX_LIB CACHE)
 	unset(LK_LIB CACHE)
@@ -132,7 +132,7 @@ else()
 	find_library( SSC_LIB
 			NAMES ssc.dylib ssc.lib ssc.so
 			PATHS ../ssc/build/ssc ../ssc/build/ssc/Release)
-	target_link_libraries(SAMtest optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
+	target_link_libraries(SAMtest optimized ${SSC_LIB} optimized ${WEX_LIB} optimized ${LK_LIB})
 
 	if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
 		unset(LKD_LIB CACHE)

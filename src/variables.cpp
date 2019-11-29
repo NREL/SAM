@@ -37,6 +37,238 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "variables.h"
 
+bool lkhash_to_sscdata(lk::vardata_t &val, ssc_data_t table)
+{
+    ssc_data_clear(table);
+    ssc_var_t entry = ssc_var_create();
+
+    lk::varhash_t &hash = *val.hash();
+    for ( auto it = hash.begin(); it != hash.end(); ++it ){
+        if (!lkvar_to_sscvar(*(*it).second, entry)){
+            ssc_var_free(entry);
+            return false;
+        }
+        ssc_data_set_var(table, (const char*)(*it).first.c_str(), entry);
+    }
+    ssc_var_free(entry);
+    return true;
+}
+
+bool check_numeric(const lk::vardata_t& vec){
+    bool only_numeric = true;
+    for (size_t i = 0; i < vec.length(); i++){
+        if (vec.index(i)->type() == lk::vardata_t::VECTOR)
+            only_numeric &= check_numeric(*vec.index(i));
+        else if (vec.index(i)->type() != lk::vardata_t::NUMBER){
+            return false;
+        }
+    }
+    return only_numeric;
+};
+
+bool lkvar_to_sscvar(lk::vardata_t &val, ssc_var_t p_var)
+{
+    ssc_var_clear(p_var);
+    ssc_var_t entry = ssc_var_create();
+    switch (val.type())
+    {
+        case lk::vardata_t::REFERENCE:
+            lkvar_to_sscvar(val.deref(), p_var);
+            break;
+        case lk::vardata_t::NUMBER:
+            ssc_var_set_number(p_var, (ssc_number_t)val.as_number() );
+            break;
+        case lk::vardata_t::STRING:
+            ssc_var_set_string(p_var, (const char*)val.as_string().c_str() );
+            break;
+        case lk::vardata_t::VECTOR:
+        {
+            bool only_numeric = check_numeric(val);
+
+            size_t dim1 = val.length(), dim2 = 0;
+            for (size_t i=0;i<val.length();i++)
+            {
+                lk::vardata_t *row = val.index(i);
+                if (row->type() == lk::vardata_t::VECTOR && row->length() > dim2 )
+                    dim2 = row->length();
+            }
+
+            if (dim2 == 0 && dim1 > 0)
+            {
+                if (only_numeric){
+                    auto vec = new ssc_number_t[ dim1 ];
+                    for (size_t i=0;i<dim1;i++)
+                        vec[i] = (ssc_number_t)val.index(i)->as_number();
+                    ssc_var_set_array(p_var, vec, dim1 );
+                    delete [] vec;
+                }
+                else {
+                    for (size_t i=0;i<dim1;i++){
+                        lkvar_to_sscvar(*val.index(i), entry);
+                        ssc_var_set_data_array(p_var, entry, i);
+                    }
+                }
+            }
+            else if ( dim1 > 0 && dim2 > 0 )
+            {
+                if (only_numeric) {
+                    auto mat = new ssc_number_t[dim1 * dim2];
+                    for (size_t i = 0; i < dim1; i++) {
+                        for (size_t j = 0; j < dim2; j++) {
+                            ssc_number_t x = 0;
+                            if (val.index(i)->type() == lk::vardata_t::VECTOR && j < val.index(i)->length())
+                                x = (ssc_number_t) val.index(i)->index(j)->as_number();
+                            mat[i * dim2 + j] = x;
+                        }
+                    }
+                    ssc_var_set_matrix(p_var, mat, dim1, dim2);
+                    delete[] mat;
+                }
+                else {
+                    for (size_t i = 0; i < dim1; i++) {
+                        if (val.index(i)->type() == lk::vardata_t::VECTOR) {
+                            for (size_t j = 0; j < val.index(i)->length(); j++) {
+                                lkvar_to_sscvar(*val.index(i)->index(j), entry);
+                                ssc_var_set_data_matrix(p_var, entry, i, j);
+                            }
+                        }
+                        else{
+                            lkvar_to_sscvar(*val.index(i), entry);
+                            ssc_var_set_data_matrix(p_var, entry, i, 0);
+                        }
+                    }
+                }
+            }
+        }
+            break;
+        case lk::vardata_t::HASH:
+        {
+            ssc_data_t table = ssc_data_create();
+            lkhash_to_sscdata(val, table);
+            ssc_var_set_table(p_var, table );
+            ssc_data_free( table );
+        }
+            break;
+        default:
+            ssc_var_free(entry);
+            return false;
+    }
+    ssc_var_free(entry);
+    return true;
+}
+
+bool lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat)
+{
+    ssc_data_clear(p_dat);
+    ssc_var_t entry = ssc_var_create();
+    if (!lkvar_to_sscvar(val, entry)){
+        ssc_var_free(entry);
+        return false;
+    }
+    ssc_data_set_var(p_dat, name, entry);
+    ssc_var_free(entry);
+    return true;
+}
+
+void sscdata_to_lkhash(ssc_data_t p_dat, lk::vardata_t &out) {
+    out.nullify();
+    out.empty_hash();
+
+    const char* key = ssc_data_first(p_dat);
+    while (key != nullptr){
+        auto vd = ssc_data_lookup_case(p_dat, key);
+        lk::vardata_t lkvar;
+        sscvar_to_lkvar(vd, lkvar);
+        out.hash_item(key, lkvar);
+        key = ssc_data_next(p_dat);
+    }
+}
+
+void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out)
+{
+    out.nullify();
+
+    unsigned char ty = ssc_var_query(vd);
+    switch( ty ) {
+        case SSC_NUMBER:
+            out.assign((double) ssc_var_get_number(vd));
+            break;
+        case SSC_STRING:
+            out.assign(lk_string(ssc_var_get_string(vd)));
+            break;
+        case SSC_ARRAY: {
+            int n = 0;
+            ssc_number_t* num = ssc_var_get_array(vd, &n);
+            out.empty_vector();
+            out.vec()->reserve((size_t) n);
+            for (int i = 0; i < n; i++)
+                out.vec_append(num[i]);
+        }
+            break;
+        case SSC_MATRIX: {
+            int nr = 0, nc = 0;
+            ssc_number_t* num = ssc_var_get_matrix(vd, &nr, &nc);
+            if (nr > 0 && nc > 0) {
+                out.empty_vector();
+                out.vec()->reserve(nr);
+                for (int i = 0; i < nr; i++) {
+                    out.vec()->push_back(lk::vardata_t());
+                    out.vec()->at(i).empty_vector();
+                    out.vec()->at(i).vec()->reserve(nc);
+                    for (int j = 0; j < nc; j++)
+                        out.vec()->at(i).vec_append(num[i * nc + j]);
+                }
+            }
+        }
+            break;
+        case SSC_TABLE: {
+            ssc_data_t table = ssc_var_get_table(vd);
+            sscdata_to_lkhash(table, out);
+            break;
+        }
+        case SSC_DATARR: {
+            int n;
+            ssc_var_size(vd, &n, nullptr);
+            out.empty_vector();
+            out.vec()->reserve((size_t) n);
+            for (int i = 0; i < n; i++){
+                lk::vardata_t lk_data;
+                ssc_var_t entry = ssc_var_get_var_array(vd, i);
+                sscvar_to_lkvar(entry, lk_data);
+                out.vec_append(lk_data);
+            }
+            break;
+        }
+        case SSC_DATMAT: {
+            int nr, nc;
+            ssc_var_size(vd, &nr, &nc);
+            out.empty_vector();
+            out.vec()->reserve(nr);
+            for (int i = 0; i < nr; i++) {
+                out.vec()->push_back(lk::vardata_t());
+                out.vec()->at(i).empty_vector();
+                out.vec()->at(i).vec()->reserve(nc);
+                for (int j = 0; j < nc; j++){
+                    lk::vardata_t lk_data;
+                    ssc_var_t entry = ssc_var_get_var_matrix(vd, i, j);
+                    sscvar_to_lkvar(entry, lk_data);
+                    out.vec()->at(i).vec_append(lk_data);
+                }
+            }
+            break;
+        }
+        case SSC_INVALID:
+        default:
+            break;
+    }
+}
+
+void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out) {
+    out.nullify();
+    auto var = ssc_data_lookup_case(p_dat, name);
+    sscvar_to_lkvar(var, out);
+}
+
 wxString vv_strtypes[9] = { "invalid", "number", "array", "matrix", "string", "table", "binary", "data array", "data matrix" };
 
 VarTable::VarTable()
@@ -454,6 +686,19 @@ bool VarTable::Read_text(wxInputStream &_I)
 	return ok;
 }
 
+bool VarTable::AsSSCData(ssc_data_t p_dat) {
+    ssc_data_clear(p_dat);
+    ssc_var_t entry = ssc_var_create();
+    for( auto it = begin(); it != end(); ++it )
+    {
+        if (!it->second->AsSSCVar(entry))
+            return false;
+        ssc_data_set_var(p_dat, it->first.c_str(), entry);
+    }
+    ssc_var_free(entry);
+    return true;
+}
+
 VarValue VarValue::Invalid; // declaration
 
 VarValue::VarValue()
@@ -532,7 +777,8 @@ typedef double ssc_number_t;
 VarValue::VarValue(ssc_var_t vd) {
     int n, m;
     ssc_number_t* arr;
-    switch(ssc_var_query(vd)){
+    int type = ssc_var_query(vd);
+    switch(type){
         default:
         case SSC_INVALID:
             m_type = VV_INVALID;
@@ -954,44 +1200,55 @@ bool VarValue::Read_text(wxInputStream &_I)
 //	return in.Read8() == code;
 }
 
-ssc_var_t VarValue::AsSSCVar() {
-    ssc_var_t vd = ssc_var_create();
-    ssc_var_t entry = nullptr;
+bool VarValue::AsSSCVar(ssc_var_t p_var) {
+    ssc_var_clear(p_var);
+    ssc_var_t entry = ssc_var_create();
     switch (m_type){
-        default:
-        case VV_INVALID:
-            return vd;
         case VV_STRING:
-            ssc_var_set_string(vd, m_str.c_str());
-            return vd;
+            ssc_var_set_string(p_var, m_str.c_str());
+            break;
         case VV_NUMBER:
-            ssc_var_set_number(vd, m_val);
-            return vd;
+            ssc_var_set_number(p_var, m_val);
+            break;
         case VV_ARRAY:
-            ssc_var_set_array(vd, static_cast<ssc_number_t*>(&m_val[0]), (int)m_val.length());
-            return vd;
+            ssc_var_set_array(p_var, static_cast<ssc_number_t*>(&m_val[0]), (int)m_val.length());
+            break;
         case VV_MATRIX:
-            ssc_var_set_matrix(vd, static_cast<ssc_number_t*>(&m_val[0]), (int)m_val.nrows(), (int)m_val.ncols());
-            return vd;
+            ssc_var_set_matrix(p_var, static_cast<ssc_number_t*>(&m_val[0]), (int)m_val.nrows(), (int)m_val.ncols());
+            break;
+        case VV_TABLE:
+        {
+            ssc_data_t table = ssc_data_create();
+            m_tab.AsSSCData(table);
+            ssc_var_set_table(p_var, table);
+            ssc_data_free(table);
+            break;
+        }
         case VV_DATARR:
         {
             for (size_t i = 0; i < m_datarr.size(); i++){
-                entry = m_datarr[i].AsSSCVar();
-                ssc_var_set_var_array(vd, entry, i);
-                ssc_var_free(entry);
+                m_datarr[i].AsSSCVar(entry);
+                ssc_var_set_data_array(p_var, entry, i);
             }
-            return vd;
+            break;
         }
         case VV_DATMAT:
             for (size_t i = 0; i < m_datmat.size(); i++){
                 for (size_t j = 0; j < m_datmat[0].size(); j++){
-                    entry = m_datmat[i][j].AsSSCVar();
-                    ssc_var_set_var_matrix(vd, entry, i, j);
-                    ssc_var_free(entry);
+                    m_datmat[i][j].AsSSCVar(entry);
+                    ssc_var_set_data_matrix(p_var, entry, i, j);
                 }
             }
-            return vd;
+            break;
+        case VV_INVALID:
+            break;
+        case VV_BINARY:
+        default:
+            ssc_var_free(entry);
+            return false;
     }
+    ssc_var_free(entry);
+    return true;
 }
 
 

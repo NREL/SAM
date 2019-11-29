@@ -1404,170 +1404,6 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 #endif
 
 
-static bool lkvar_to_sscvar( ssc_data_t p_dat, const char *name, lk::vardata_t &val )
-{	
-	switch (val.type())
-	{
-	case lk::vardata_t::NUMBER:
-		ssc_data_set_number( p_dat, name, (ssc_number_t)val.as_number() );
-		break;
-	case lk::vardata_t::STRING:
-		ssc_data_set_string( p_dat, name, (const char*)val.as_string().c_str() );
-		break;
-	case lk::vardata_t::VECTOR:
-		{
-			size_t dim1 = val.length(), dim2 = 0;
-			for (size_t i=0;i<val.length();i++)
-			{
-				lk::vardata_t *row = val.index(i);
-				if (row->type() == lk::vardata_t::VECTOR && row->length() > dim2 )
-					dim2 = row->length();
-			}
-
-			if (dim2 == 0 && dim1 > 0)
-			{
-				ssc_number_t *vec = new ssc_number_t[ dim1 ];
-				for ( size_t i=0;i<dim1;i++)
-					vec[i] = (ssc_number_t)val.index(i)->as_number();
-
-				ssc_data_set_array( p_dat, name, vec, dim1 );
-				delete [] vec;
-			}
-			else if ( dim1 > 0 && dim2 > 0 )
-			{
-				
-				ssc_number_t *mat = new ssc_number_t[ dim1*dim2 ];
-				for ( size_t i=0;i<dim1;i++)
-				{
-					for ( size_t j=0;j<dim2;j++ )
-					{
-						ssc_number_t x = 0;
-						if ( val.index(i)->type() == lk::vardata_t::VECTOR
-							&& j < val.index(i)->length() )
-							x = (ssc_number_t)val.index(i)->index(j)->as_number();
-
-						mat[ i*dim2 + j ] = x;
-					}
-				}
-
-				ssc_data_set_matrix( p_dat, name, mat, dim1, dim2 );
-				delete [] mat;
-			}
-		}
-		break;
-	case lk::vardata_t::HASH:		
-		{
-			ssc_data_t table = ssc_data_create();
-
-			lk::varhash_t &hash = *val.hash();
-			for ( lk::varhash_t::iterator it = hash.begin();
-				it != hash.end();
-				++it )
-				lkvar_to_sscvar( table, (const char*)(*it).first.c_str(), *(*it).second );
-
-			ssc_data_set_table( p_dat, name, table );
-			ssc_data_free( table );
-		}
-		break;
-	}
-
-	return true;
-}
-
-static void convert_sscvar_to_lkvar( lk::vardata_t &out, var_data* vd )
-{
-	out.nullify();
-
-	unsigned char ty = vd->type;
-	switch( ty ) {
-        case SSC_NUMBER:
-            out.assign((double) vd->num);
-            break;
-        case SSC_STRING:
-            out.assign(lk_string(vd->str));
-            break;
-        case SSC_ARRAY: {
-            util::matrix_t<ssc_number_t> vv = vd->num;
-            int n = vd->num.length();
-            if (n > 0) {
-                out.empty_vector();
-                out.vec()->reserve((size_t) n);
-                for (int i = 0; i < n; i++)
-                    out.vec_append(vv[i]);
-            }
-        }
-            break;
-        case SSC_MATRIX: {
-            util::matrix_t<ssc_number_t> vv = vd->num;
-            int nr = vv.nrows(), nc = vv.ncols();
-            if (nr > 0 && nc > 0) {
-                out.empty_vector();
-                out.vec()->reserve(nr);
-                for (int i = 0; i < nr; i++) {
-                    out.vec()->push_back(lk::vardata_t());
-                    out.vec()->at(i).empty_vector();
-                    out.vec()->at(i).vec()->reserve(nc);
-                    for (int j = 0; j < nc; j++)
-                        out.vec()->at(i).vec_append(vv[i * nc + j]);
-                }
-            }
-        }
-            break;
-        case SSC_TABLE: {
-                out.empty_hash();
-                const char *key = vd->table.first();
-                while (key != 0) {
-                    lk::vardata_t &xvd = out.hash_item(lk_string(key));
-                    convert_sscvar_to_lkvar(xvd, vd->table.lookup_match_case(key));
-                    key = ssc_data_next(&vd->table);
-                }
-            break;
-        }
-        case SSC_DATARR: {
-            std::vector<var_data> arr = vd->vec;
-            int n = arr.size();
-            if (n > 0) {
-                out.empty_vector();
-                out.vec()->reserve((size_t) n);
-                for (int i = 0; i < n; i++){
-                    lk::vardata_t lk_data;
-                    var_data data = arr[i];
-                    convert_sscvar_to_lkvar(lk_data, &data);
-                    out.vec_append(lk_data);
-                }
-            }
-            break;
-        }
-        case SSC_DATMAT: {
-            std::vector<std::vector<var_data>> mat = vd->mat;
-            int nr = mat.size(), nc;
-            if (nr > 0) nc = mat[0].size();
-            if (nr > 0 && nc > 0) {
-                out.empty_vector();
-                out.vec()->reserve(nr);
-                for (int i = 0; i < nr; i++) {
-                    out.vec()->push_back(lk::vardata_t());
-                    out.vec()->at(i).empty_vector();
-                    out.vec()->at(i).vec()->reserve(nc);
-                    for (int j = 0; j < nc; j++){
-                        lk::vardata_t lk_data;
-                        var_data data = mat[i][j];
-                        convert_sscvar_to_lkvar(lk_data, &data);
-                        out.vec()->at(i).vec_append(lk_data);
-                    }
-                }
-            }
-        }
-    }
-}
-
-static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_dat ) {
-    out.nullify();
-    var_table* vt = static_cast<var_table*>(p_dat);
-
-    var_data* vd = vt->lookup_match_case(name);
-    if (vd) convert_sscvar_to_lkvar(out, vd);
-}
 
 class lkSSCdataObj : public lk::objref_t
 {
@@ -1602,10 +1438,10 @@ void fcall_ssc_var( lk::invoke_t &cxt )
 	if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 	{
 		wxString name = cxt.arg(1).as_string();
-		if (cxt.arg_count() == 2)		
-			sscvar_to_lkvar( cxt.result(), (const char*)name.ToUTF8(), *ssc );
+		if (cxt.arg_count() == 2)
+            sscdata_to_lkvar(*ssc, (const char *) name.ToUTF8(), cxt.result());
 		else if (cxt.arg_count() == 3)
-			lkvar_to_sscvar( *ssc, (const char*)name.ToUTF8(), cxt.arg(2).deref() );
+            lkvar_to_sscdata(cxt.arg(2).deref(), (const char *) name.ToUTF8(), *ssc);
 	}
 	else
 		cxt.error( "invalid ssc-obj-ref" );
@@ -1844,25 +1680,27 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 
 void fcall_ssc_eqn(lk::invoke_t &cxt)
 {
-    LK_DOC("ssc_eqn", "Call equation with var_table inputs. Returns true upon success", "(string: eqn_name, table:inputs):bool");
+    LK_DOC("ssc_eqn", "Call equation with var_table inputs. Returns true upon success. Errors reported in inputs table.", "(string: eqn_name, table:inputs):bool");
     wxString eqn_name = cxt.arg(0).as_string();
 
-    ssc_data_t data = ssc_data_create();
-    lkvar_to_sscvar(data, "data", cxt.arg(1).deref());
+    ssc_data_t vd_data = ssc_data_create();
+    if (cxt.arg(1).deref().type() != lk::vardata_t::HASH)
+        throw lk::error_t(lk_tr("Inputs to equation must be a table"));
+    lkhash_to_sscdata(cxt.arg(1).deref(), vd_data);
 
     size_t i = 0;
     while ( ssc_equation_table[i].func){
         if (wxStrcmp(eqn_name, ssc_equation_table[i].name) == 0){
-			ssc_data_t vd_data = ssc_data_get_table(data, "data");
             try {
                 (*ssc_equation_table[i].func)(vd_data);
                 cxt.result().assign(1.);
             }
             catch (std::runtime_error &e){
-				ssc_data_set_string(data, "error", e.what());
+				cxt.arg(1).deref().hash_item("error", e.what());
                 cxt.result().assign(0.);
+                return;
             }
-            sscvar_to_lkvar(cxt.arg(1).deref(), "data", data);
+            sscdata_to_lkhash(vd_data, cxt.arg(1).deref());
             return;
         }
         i++;
@@ -4795,7 +4633,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     }
 
     auto reopt_scenario = new lk::vardata_t;
-    sscvar_to_lkvar(*reopt_scenario, "reopt_scenario", p_data);
+    sscdata_to_lkvar(p_data, "reopt_scenario", *reopt_scenario);
     ssc_data_free(p_data);
 
     cxt.result().empty_hash();
