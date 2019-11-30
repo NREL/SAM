@@ -518,8 +518,8 @@ Tool Tip
 0
 Caption
 5
-255
-Check the box and click Browse to choose a .csv file stored on your computer without adding it to the wave resource library. Note that the scatter diagram above shows data from files in the library, not from the file you choose here. See Help for details.
+251
+Check the box and click Browse to choose a .csv file stored on your computer without adding it to the wave resource library. Note that the matrix data above shows data from files in the library, not from the file you choose here. See Help for details.
 TextColour
 4
 0
@@ -548,7 +548,7 @@ Button
 Name
 5
 14
-select_wf_wind
+select_wf_wave
 X
 3
 654
@@ -1140,7 +1140,7 @@ on_change{'use_specific_wf_wave'} = define() {
 	enable_disable_library();
 };
 
-on_change{'select_wf_wind'} = define() {
+on_change{'select_wf_wave'} = define() {
 	file = choose_file( path_only( value('user_specified_wf_wave') ), 'Choose a wave resource file', 
 		'Wave Resource Files (*.csv|*.csv');
 		
