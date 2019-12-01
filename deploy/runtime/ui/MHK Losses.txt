@@ -938,7 +938,7 @@ equations{"loss_total"} = define() {
 		+ ${loss_additional};
 };
 
-2229
+2255
 function check_mhk_losses(widget_name)
 {
 	total_loss = to_real(value("loss_additional"))
@@ -947,10 +947,11 @@ function check_mhk_losses(widget_name)
 	+to_real(value("loss_resource_overprediction"))
 	+to_real(value("loss_array_spacing"));
 	x = to_real(value(widget_name));
-//	msgbox(widget_name + "=" + x);
-//	msgbox("loss_total=" + total_loss);
-	if (x < 0.0) 
+	if (x < 0.0)
+	{ 
 		x=0.0;
+		msgbox("Loss must be greater to or equal to zero.");
+	}
 	else if (total_loss > 100.0)
 	{
 		x = 100.0*x/total_loss;
@@ -989,9 +990,9 @@ function check_mhk_losses(widget_name)
 			value("loss_array_spacing",y, false);
 			refresh("loss_array_spacing");
 		}
+		msgbox("Total loss > 100%, so losses scaled so that total is 100%.");
 	}
 	value(widget_name, x, false);
-//	msgbox(widget_name + "=" + x);
 	refresh(widget_name);
 	total_loss = to_real(value("loss_additional"))
 	+to_real(value("loss_downtime"))
