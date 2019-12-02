@@ -160,6 +160,11 @@ bool lkvar_to_sscvar(lk::vardata_t &val, ssc_var_t p_var)
 bool lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat)
 {
     ssc_data_clear(p_dat);
+    return assign_lkvar_to_sscdata(val, name, p_dat);
+}
+
+bool assign_lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat)
+{
     ssc_var_t entry = ssc_var_create();
     if (!lkvar_to_sscvar(val, entry)){
         ssc_var_free(entry);

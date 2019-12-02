@@ -43,20 +43,26 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "object.h"
 
-// functions for converting data between lk::vardata and ssc::var_data
+// adds new entry to ssc_data from the value in vardata
+bool assign_lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat);
+
+// clears ssc_data and hashes all the variables entries into vardata's hash
 bool lkhash_to_sscdata(lk::vardata_t &val, ssc_data_t table);
 
-bool lkvar_to_sscvar(lk::vardata_t &val, ssc_var_t p_var);
-
+// clears ssc_data and hashes vardata under name
 bool lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat);
 
-// functions for converting ssc data back to lk
+// clears ssc_var and assigns the value from vardata
+bool lkvar_to_sscvar(lk::vardata_t &val, ssc_var_t p_var);
+
+// clears vardata and hashes all the variable entries in the ssc_data_t table
 void sscdata_to_lkhash(ssc_data_t p_dat, lk::vardata_t &out);
 
-// functions for copying ssc variable into lk variable
-void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out);
-
+// clears vardata and assigns the ssc_data to the ssc_data_t
 void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out);
+
+// clears vardata and assigns the value from ssc_var_t
+void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out);
 
 
 class VarValue;

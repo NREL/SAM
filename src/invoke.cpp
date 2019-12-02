@@ -1441,7 +1441,7 @@ void fcall_ssc_var( lk::invoke_t &cxt )
 		if (cxt.arg_count() == 2)
             sscdata_to_lkvar(*ssc, (const char *) name.ToUTF8(), cxt.result());
 		else if (cxt.arg_count() == 3)
-            lkvar_to_sscdata(cxt.arg(2).deref(), (const char *) name.ToUTF8(), *ssc);
+            assign_lkvar_to_sscdata(cxt.arg(2).deref(), (const char *) name.ToUTF8(), *ssc);
 	}
 	else
 		cxt.error( "invalid ssc-obj-ref" );
