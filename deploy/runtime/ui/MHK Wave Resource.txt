@@ -42,13 +42,13 @@ Name
 file_name
 X
 3
-219
+248
 Y
 3
 312
 Width
 3
-1019
+990
 Height
 3
 24
