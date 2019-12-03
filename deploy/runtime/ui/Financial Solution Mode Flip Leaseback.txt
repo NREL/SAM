@@ -501,9 +501,9 @@ Default
 solution_mode_message
 3
 4
+Solution mode message
  
- 
- 
+PPA Price and IRR
 0
 5
 1

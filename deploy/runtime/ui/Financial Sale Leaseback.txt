@@ -151,7 +151,7 @@ Name
 sponsor_operating_margin_amount
 X
 3
-663
+738
 Y
 3
 30
@@ -178,8 +178,7 @@ Decimals
 2
 Prefix
 5
-2
-$ 
+0
 Suffix
 5
 0
@@ -359,8 +358,8 @@ Numeric
 sponsor_operating_margin_amount
 3
 1
-Amount
- 
+Developer (lessee) operating margin
+$
 Sale Leaseback
 0
 8

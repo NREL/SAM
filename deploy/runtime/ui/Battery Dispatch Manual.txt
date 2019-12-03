@@ -5,7 +5,7 @@ Battery Dispatch Manual
 Label
 
 1
-12
+13
 Name
 5
 31
@@ -22,6 +22,9 @@ Width
 Height
 3
 42
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -50,7 +53,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 21
@@ -67,6 +70,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -95,7 +101,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 15
@@ -112,6 +118,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 8
@@ -140,7 +149,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 15
@@ -157,6 +166,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -185,7 +197,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 18
@@ -202,6 +214,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -230,7 +245,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 29
@@ -247,6 +262,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -275,7 +293,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 31
@@ -292,6 +310,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -320,7 +341,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -337,6 +358,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -365,7 +389,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -382,6 +406,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -410,7 +437,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -427,6 +454,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -455,7 +485,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -472,6 +502,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -500,7 +533,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -517,6 +550,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -545,7 +581,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -562,6 +598,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -590,7 +629,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -607,6 +646,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -649,7 +691,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -666,6 +708,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -708,7 +753,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -725,6 +770,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -767,7 +815,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -784,6 +832,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -826,7 +877,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -843,6 +894,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -885,7 +939,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -902,6 +956,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -944,7 +1001,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -961,6 +1018,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1003,7 +1063,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1020,6 +1080,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1062,7 +1125,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1079,6 +1142,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1121,7 +1187,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1138,6 +1204,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1180,7 +1249,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1197,6 +1266,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1239,7 +1311,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1256,6 +1328,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1298,7 +1373,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 26
@@ -1315,6 +1390,9 @@ Width
 Height
 3
 48
+Tool Tip
+5
+0
 Caption
 5
 161
@@ -1343,7 +1421,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 30
@@ -1360,6 +1438,9 @@ Width
 Height
 3
 48
+Tool Tip
+5
+0
 Caption
 5
 130
@@ -1388,7 +1469,7 @@ AlignTop
 DiurnalPeriod
 
 1
-9
+10
 Name
 5
 21
@@ -1405,6 +1486,9 @@ Width
 Height
 3
 270
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
@@ -1421,7 +1505,7 @@ Min
 DiurnalPeriod
 
 1
-9
+10
 Name
 5
 29
@@ -1438,6 +1522,9 @@ Width
 Height
 3
 270
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
@@ -1454,7 +1541,7 @@ Min
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -1471,6 +1558,9 @@ Width
 Height
 3
 546
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -1481,7 +1571,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -1498,6 +1588,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -1526,7 +1619,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1543,6 +1636,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -1571,7 +1667,7 @@ AlignTop
 CheckBox
 
 1
-8
+9
 Name
 5
 20
@@ -1588,6 +1684,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1600,7 +1699,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 23
@@ -1617,6 +1716,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1629,7 +1731,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 24
@@ -1646,6 +1748,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1658,7 +1763,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 20
@@ -1675,6 +1780,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1687,7 +1795,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 23
@@ -1704,6 +1812,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1716,7 +1827,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 24
@@ -1733,6 +1844,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1745,7 +1859,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 20
@@ -1762,6 +1876,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1774,7 +1891,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 23
@@ -1791,6 +1908,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1803,7 +1923,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 24
@@ -1820,6 +1940,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1832,7 +1955,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 20
@@ -1849,6 +1972,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1861,7 +1987,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 23
@@ -1878,6 +2004,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1890,7 +2019,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 24
@@ -1907,6 +2036,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1919,7 +2051,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 20
@@ -1936,6 +2068,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1948,7 +2083,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 23
@@ -1965,6 +2100,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1977,7 +2115,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 24
@@ -1994,6 +2132,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -2006,7 +2147,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 20
@@ -2023,6 +2164,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -2035,7 +2179,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 23
@@ -2052,6 +2196,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -2064,7 +2211,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 24
@@ -2081,6 +2228,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0

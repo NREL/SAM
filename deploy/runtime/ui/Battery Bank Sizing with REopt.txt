@@ -5,7 +5,7 @@ Battery Bank Sizing with REopt
 GroupBox
 
 1
-7
+8
 Name
 5
 19
@@ -22,6 +22,9 @@ Width
 Height
 3
 396
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -32,7 +35,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -49,6 +52,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -91,7 +97,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -108,6 +114,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -150,7 +159,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -167,6 +176,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -209,7 +221,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -226,6 +238,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -268,7 +283,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -285,6 +300,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -327,7 +345,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -344,6 +362,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -386,7 +407,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 21
@@ -403,6 +424,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -417,7 +441,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -434,6 +458,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -476,7 +503,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -493,6 +520,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -507,7 +537,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -524,6 +554,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -566,7 +599,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 19
@@ -583,6 +616,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -611,7 +647,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 17
@@ -628,6 +664,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 25
@@ -656,7 +695,7 @@ AlignTop
 RadioChoice
 
 1
-10
+11
 Name
 5
 16
@@ -673,6 +712,9 @@ Width
 Height
 3
 36
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -693,7 +735,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 15
@@ -710,6 +752,9 @@ Width
 Height
 3
 69
+Tool Tip
+5
+0
 Caption
 5
 217
@@ -738,7 +783,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 16
@@ -755,6 +800,9 @@ Width
 Height
 3
 57
+Tool Tip
+5
+0
 Caption
 5
 296
@@ -783,7 +831,7 @@ AlignTop
 Button
 
 1
-7
+8
 Name
 5
 10
@@ -800,6 +848,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -810,7 +861,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -827,6 +878,9 @@ Width
 Height
 3
 150
+Tool Tip
+5
+0
 Caption
 5
 38
@@ -837,7 +891,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -854,6 +908,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1066,7 +1123,7 @@ value_of_lost_load
 Numeric
 
 0
-2846
+2903
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1144,6 +1201,13 @@ on_change{'call_reopt'} = define(){
 	if (!apply)
 		exit;
 
+	value('batt_chem', 1);
+	value('batt_bank_power', batt.size_kw);
+	value('batt_bank_size', batt.size_kwh);
+
+	if (batt.size_kw == 0 && batt.size_kwh == 0)
+		exit;
+
 	batt_to_grid = null;
 	if (batt.year_one_to_grid_series_kw)
 		batt_to_grid = batt.year_one_to_grid_series_kw;
@@ -1152,10 +1216,7 @@ on_change{'call_reopt'} = define(){
 	grid_charge = elec.year_one_to_battery_series_kw;
 
 	value('batt_dispatch_choice', 3);
-	value('batt_chem', 1);
-	value('batt_bank_power', batt.size_kw);
-	value('batt_bank_size', batt.size_kwh);
-
+	
 
 	dispatch = alloc(8760);
 

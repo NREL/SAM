@@ -5,7 +5,7 @@ LF DSG System Design
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -81,6 +84,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,7 +129,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -140,6 +146,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -182,7 +191,7 @@ TabOrder
 LossAdjustment
 
 1
-6
+7
 Name
 5
 6
@@ -199,13 +208,16 @@ Width
 Height
 3
 73
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -222,6 +234,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -264,7 +279,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 6
@@ -281,6 +296,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -292,15 +310,15 @@ Colour
 255
 Caption
 5
-35
-System Availability and Curtailment
+19
+System Availability
 Bold
 2
 1
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -317,6 +335,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -336,7 +357,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -353,6 +374,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -372,7 +396,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -389,6 +413,9 @@ Width
 Height
 3
 282
+Tool Tip
+5
+0
 Caption
 5
 23
@@ -399,7 +426,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -416,10 +443,13 @@ Width
 Height
 3
 78
+Tool Tip
+5
+0
 Caption
 5
-105
-Curtailment and availability losses reduce the system output to represent system outages or other events.
+96
+System availability losses reduce the system output to represent system outages or other events.
 TextColour
 4
 0
@@ -444,7 +474,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -461,6 +491,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -503,7 +536,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -520,6 +553,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -562,7 +598,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -579,6 +615,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -621,7 +660,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -638,6 +677,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0

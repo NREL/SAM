@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>System Costs</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "mhk_wave_system_costs.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">System Costs</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">SAM's marine and hydrokinetic models for wave and tidal power use a fixed-charge-rate (FCR) method to calculate the levelized cost of energy from inputs on the <a href="fin_lcoefcr.htm" class="topiclink">Financial Parameters</a> page. The FCR method requires a total installed cost and annual operating cost value, which you can calculate on the System Costs page.</span></p>
+<p class="p_Text"><span class="f_Text">The total installed cost is the sum of the total device cost, total balance of system cost, and total financial cost.</span></p>
+<p class="p_Text"><span class="f_Text">For each cost category, you can choose whether to define the cost by hand (user input) or to use a modeled value. When you choose to use the modeled value, SAM calculates the cost based on the inputs on the Wave or Tidal Energy Converter and Array pages.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For the wave energy model, if you choose a WEC from the library on the Wave Energy Converter page, the device costs are based on the associated costs for each design based on reference model projects. Balance of system costs and financial costs are based on costs curves developed from existing reference model data, a database with wave and tidal cost data from DOE-funded projects, and a literature review of wave, tidal, and offshore wind energy costs. </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">If you use your own WEC parameters intead of choosing a WEC from the library, default costs are based on cost curves based on array rated power or percentage of costs. These costs curves were developed from existing reference model data, a database with wave and tidal cost data from DOE-funded projects, and a literature review of wave, tidal, and offshore wind energy costs. </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">For the tidal energy model, device costs are based on the associated costs the Reference Model 1 tidal converter. Balance of system capital costs and financial costs are based on costs curves developed from existing reference model data, a database with wave and tidal cost data from DOE-funded projects, and a literature review of wave, tidal, and offshore wind energy costs. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Use modeled value</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option for SAM to automatically calculate the cost.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="SS_MHKCosts-modeled" width="586" height="44" style="margin:0 auto 0 auto;width:586px;height:44px;border:none" src="ss_mhkcosts-modeled.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enter in $</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Type a dollar value for the cost.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="SS_MHKCosts-user-fixed" width="586" height="44" style="margin:0 auto 0 auto;width:586px;height:44px;border:none" src="ss_mhkcosts-user-fixed.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enter in in $/kW</span></p>
+<p class="p_VariableDescription">Type a cost per unit of rated capacity. The rated capacity is displayed under <span class="f_CHInterfaceElement">Total Installed Costs</span> at the bottom of the System Costs page, and is defined on the Array page.</p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="SS_MHKCosts-user-capacity" width="586" height="107" style="margin:0 auto 0 auto;width:586px;height:107px;border:none" src="ss_mhkcosts-user-capacity.png"/></p>
+<p class="p_Text"><span class="f_Text">For information about a cost category, click the Information button next to the category's label.</span></p>
+<p class="p_Text" style="text-align: center;"><img alt="SS_MHKCosts-information" width="348" height="177" style="margin:0 auto 0 auto;width:348px;height:177px;border:none" src="ss_mhkcosts-information.png"/></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<p style="line-height: 1.38; margin: 0 0 13px 0;"><span style="font-family: Arial,Helvetica,sans-serif; color: #000000;">&nbsp;</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

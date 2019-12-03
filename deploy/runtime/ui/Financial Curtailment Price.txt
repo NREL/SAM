@@ -1,27 +1,30 @@
 Financial Curtailment Price
-774
-126
+861
+121
 5
 GroupBox
 
 1
-7
+8
 Name
 5
 22
 grid_curtailment_group
 X
 3
-375
+483
 Y
 3
-21
+24
 Width
 3
-363
+365
 Height
 3
 75
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -32,27 +35,30 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 22
 grid_curtailment_label
 X
 3
-384
+498
 Y
 3
-69
+66
 Width
 3
 346
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
-57
-Inflation does not apply to the curtailment compensation.
+53
+Inflation does not apply to curtailment compensation.
 TextColour
 4
 0
@@ -77,23 +83,26 @@ AlignTop
 SchedNumeric
 
 1
-11
+12
 Name
 5
 22
 grid_curtailment_price
 X
 3
-210
+201
 Y
 3
-48
+24
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
 5
@@ -116,23 +125,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
 grid_curtailment_price_esc
 X
 3
-603
+717
 Y
 3
-45
+42
 Width
 3
 60
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -175,27 +187,30 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
 object 4
 X
 3
-12
+6
 Y
 3
-9
+3
 Width
 3
-752
+850
 Height
 3
 109
+Tool Tip
+5
+0
 Caption
 5
-24
-Curtailment Compensation
+32
+Curtailment Compensation Revenue
 Bold
 2
 1

@@ -243,7 +243,7 @@ Y
 327
 Width
 3
-90
+184
 Height
 3
 24
@@ -1287,7 +1287,8 @@ Battery
 0
 Default
 
-701
+706
+/*
 // eventually move to PPA TOD factors page
 equations{'dispatch_tod_factors'} = define()
 {
@@ -1319,8 +1320,8 @@ equations{'dispatch_tod_factors'} = define()
 	return dispatch;
 };
 
-
-4329
+*/
+4376
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
 	// fom = front of meter
@@ -1463,11 +1464,14 @@ function toggle_dispatch_fom()
 		look_ahead = (mode == 0 || mode == 2);
 			enable('batt_look_ahead_hours', look_ahead);
 		
+		if (financing() != "Merchant Plant")
+		{
 		// can only use PPA input, not IRR target
 		if (${ppa_soln_mode} == 0)
 		{
 			msgbox('Automated dispatch requires PPA price to be fixed, changing from IRR target to fixed PPA rate');
 			${ppa_soln_mode} = 1;
+		}
 		}
 	}
 }

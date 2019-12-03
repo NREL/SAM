@@ -5,7 +5,7 @@ Physical Trough Collector Header
 Library
 
 1
-7
+8
 Name
 5
 17
@@ -22,6 +22,9 @@ Width
 Height
 3
 147
+Tool Tip
+5
+0
 Library
 5
 26
@@ -33,7 +36,7 @@ Name,Reflective aperture area,Aperture width  total structure,Length of collecto
 TextEntry
 
 1
-10
+11
 Name
 5
 19
@@ -50,6 +53,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -74,7 +80,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 12
@@ -91,6 +97,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -119,7 +128,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -136,6 +145,9 @@ Width
 Height
 3
 213
+Tool Tip
+5
+0
 Caption
 5
 17

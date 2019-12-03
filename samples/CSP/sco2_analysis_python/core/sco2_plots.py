@@ -49,6 +49,9 @@ def filter_dict_index_and_keys(data, i, keys):
 
 def ceil_nearest_base(x, base):
     return int(base * math.ceil(float(x)/base))
+
+def floor_nearest_base(x, base):
+    return int(base * math.floor(float(x)/base))
   
 class C_sco2_cycle_TS_plot:
 
@@ -60,6 +63,7 @@ class C_sco2_cycle_TS_plot:
         self.is_annotate_HTR = True
         self.is_annotate_LTR = True
         self.is_annotate_PHX = True
+        self.is_annotate_cooler = True
         self.is_add_P_const_lines = True
         self.is_add_dome = True
         self.is_add_title = True
@@ -68,6 +72,7 @@ class C_sco2_cycle_TS_plot:
         self.lc = 'k'
         self.mt = 'o'
         self.markersize = 4
+        self.y_max = -1
         
     def plot_new_figure(self):
         
@@ -87,19 +92,30 @@ class C_sco2_cycle_TS_plot:
             fig1.savefig(str_file_name)
             
             plt.close()
-        
+
+    def set_y_max(self):
+
+        T_htf_hot = self.dict_cycle_data["T_htf_hot_des"]
+        T_t_in = self.dict_cycle_data["T_turb_in"]
+        self.y_max = max(self.y_max, max(ceil_nearest_base(T_htf_hot, 100.0), 100 + ceil_nearest_base(T_t_in, 100.0)))
+
     def plot_from_existing_axes(self, ax_in):
         
-        eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
-    
+        # eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
+
         plot_title = self.is_overwrite_title
     
-        if(self.dict_cycle_data["cycle_config"] == 1):
-            if(self.is_overwrite_title == ""):
-                plot_title = "Recompression Cycle: " + eta_str
-        else:
-            if(self.is_overwrite_title == ""):
-                plot_title = "Partial Cooling Cycle, " + eta_str
+        # if(self.dict_cycle_data["cycle_config"] == 1):
+        #     if(self.is_overwrite_title == ""):
+        #         plot_title = "Recompression Cycle: " + eta_str
+        # else:
+        #     if(self.is_overwrite_title == ""):
+        #         plot_title = "Partial Cooling Cycle, " + eta_str
+                
+        if (self.is_overwrite_title == ""):
+            plot_title = get_plot_name(self.dict_cycle_data)
+
+        self.set_y_max()
         
         self.overlay_cycle_data(ax_in)
             
@@ -119,6 +135,8 @@ class C_sco2_cycle_TS_plot:
             self.plot_RC_points_and_lines(ax_in)
         else:
             self.plot_PC_points_and_lines(ax_in)
+            
+        self.set_y_max()
         
     
     def format_axes(self, ax_in, plot_title):
@@ -128,7 +146,7 @@ class C_sco2_cycle_TS_plot:
         
         if(self.is_add_P_const_lines):
             self.plot_constP(ax_in)      # add_Ts_constP(ax_in)
-        
+
         if(self.is_add_dome):
             self.plot_dome(ax_in)       # add_Ts_dome(ax_in)
     
@@ -137,7 +155,7 @@ class C_sco2_cycle_TS_plot:
         
         y_down, y_up = ax_in.get_ylim()
         y_min = 0
-        ax_in.set_ylim(y_min, ceil_nearest_base(y_up, 100.0))
+        ax_in.set_ylim(y_min, self.y_max)
         ax_in.set_xlim(x_low)
         y_down, y_up = ax_in.get_ylim()
         major_y_ticks = np.arange(y_min,y_up+1,100)
@@ -161,22 +179,25 @@ class C_sco2_cycle_TS_plot:
     
     def annotate(self, ax_in):
     
-        if(self.is_annotate_HTR):
+        if(self.is_annotate_HTR and (not(math.isnan(float(self.dict_cycle_data["q_dot_HTR"]))))):
             HTR_title = r'$\bfHigh$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_HTR"]) + " MWt"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["HTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_HTR"])
-        
+            mindt_text = "\n" + r'$\Delta$' + r'$T_{min}$' + " = " + '{:.1f}'.format(self.dict_cycle_data["HTR_min_dT"]) + " C"
+
+            #r'$\eta_{isen}$'
+
             T_HTR_LP_data = self.dict_cycle_data["T_HTR_LP_data"]
             s_HTR_LP_data = self.dict_cycle_data["s_HTR_LP_data"]
             
             n_p = len(T_HTR_LP_data)
-            n_mid = (int)(n_p/2)
+            n_mid = (int)(n_p/2)-2
         
-            HTR_text = HTR_title + q_dot_text + UA_text + eff_text
+            HTR_text = HTR_title + q_dot_text + UA_text + eff_text + mindt_text
             
             ax_in.annotate(HTR_text, xy=(s_HTR_LP_data[n_mid],T_HTR_LP_data[n_mid]), 
-                           xytext=(s_HTR_LP_data[0],T_HTR_LP_data[n_mid]), va="center",
+                           xytext=(s_HTR_LP_data[n_mid] + 0.25,T_HTR_LP_data[n_mid]), va="center",
                            arrowprops = dict(arrowstyle="->", color = 'r', ls = '--', lw = 0.6),
                            fontsize = 8,
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
@@ -186,14 +207,18 @@ class C_sco2_cycle_TS_plot:
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_LTR"]) + " MWt"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["LTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_LTR"])
-            
+            mindt_text = "\n" + r'$\Delta$' + r'$T_{min}$' + " = " + '{:.1f}'.format(self.dict_cycle_data["LTR_min_dT"]) + " C"
+
             T_LTR_LP_data = self.dict_cycle_data["T_LTR_LP_data"]
             s_LTR_LP_data = self.dict_cycle_data["s_LTR_LP_data"]
+
+            T_HTR_LP_data = self.dict_cycle_data["T_HTR_LP_data"]
+            s_HTR_LP_data = self.dict_cycle_data["s_HTR_LP_data"]
             
             n_p = len(T_LTR_LP_data)
-            n_mid = (int)(n_p/2)
+            n_mid = (int)(n_p/2) + 5
             
-            LTR_text = LTR_title + q_dot_text + UA_text + eff_text
+            LTR_text = LTR_title + q_dot_text + UA_text + eff_text + mindt_text
             
             ax_in.annotate(LTR_text, xy=(s_LTR_LP_data[n_mid],T_LTR_LP_data[n_mid]), 
                            xytext=(s_HTR_LP_data[n_mid],T_LTR_LP_data[n_mid]), va="center",
@@ -201,21 +226,22 @@ class C_sco2_cycle_TS_plot:
                            fontsize = 8,
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
         
-        if(self.is_annotate_PHX):
+        if(self.is_annotate_PHX and self.dict_cycle_data["od_T_t_in_mode"] == 0):
             T_states = self.dict_cycle_data["T_state_points"]
             s_states = self.dict_cycle_data["s_state_points"]
             
-            dT_PHX_approach = self.dict_cycle_data["dT_PHX_hot_approach"]
-            T_PHX_in = T_states[5] + dT_PHX_approach
+            dT_PHX_hot_approach = self.dict_cycle_data["dT_PHX_hot_approach"]
+            T_PHX_in = T_states[5] + dT_PHX_hot_approach
             s_PHX_in = s_states[5]
-            
-            T_PHX_out = T_states[4] + dT_PHX_approach
+
+            dT_PHX_cold_approach = self.dict_cycle_data["dT_PHX_cold_approach"]
+            T_PHX_out = T_states[4] + dT_PHX_cold_approach
             s_PHX_out = s_states[4]
             
-            ax_in.plot([s_PHX_in, s_PHX_out], [T_PHX_in, T_PHX_out], color = '#ff9900', ls = ":")
+            ax_in.plot([s_PHX_in, s_PHX_out], [T_PHX_in, T_PHX_out], color = '#ff9900', ls = "-")
             
-            s_PHX_avg = 0.5*(s_PHX_in + s_PHX_out)
-            T_PHX_avg = 0.5*(T_PHX_in + T_PHX_out)
+            s_PHX_avg = 0.90*s_PHX_in + 0.10*s_PHX_out
+            T_PHX_avg = 0.90*T_PHX_in + 0.10*T_PHX_out
             
             PHX_title = r'$\bfPrimary$' + " " + r'$\bf{HX}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_PHX"]) + " MWt"
@@ -225,12 +251,64 @@ class C_sco2_cycle_TS_plot:
             PHX_text = PHX_title + q_dot_text + UA_text + eff_text
             
             ax_in.annotate(PHX_text, xy=(s_PHX_avg, T_PHX_avg), 
-                           xytext=(s_PHX_avg - 0.75,T_PHX_avg), va="center",
+                           xytext=(s_PHX_avg-0.25,T_PHX_avg),va="center", ha="right",multialignment="left",
                            arrowprops = dict(arrowstyle="->", color = '#ff9900', ls = '--', lw = 0.6),
                            fontsize = 8,
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
+
+        if(self.is_annotate_cooler):
+
+            T_states = self.dict_cycle_data["T_state_points"]
+            s_states = self.dict_cycle_data["s_state_points"]
+
+            mc_cool_title = r'$\bfMain\ Cooler$'
+            T_cold_text = "\n" + r'$T_{out}\ =\ $' + '{:.1f}'.format(self.dict_cycle_data["T_comp_in"]) + " C"
+            if (self.dict_cycle_data["cycle_config"] == 2):
+                s_q_dot = "IP_cooler_q_dot"
+                s_W_dot = "IP_cooler_W_dot_fan"
+            else:
+                s_q_dot = "LP_cooler_q_dot"
+                s_W_dot = "LP_cooler_W_dot_fan"
+            q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data[s_q_dot]) + " MWt"
+            W_dot_text = "\n" + r'$\.W_{fan}\ =\ $' + '{:.2f}'.format(self.dict_cycle_data[s_W_dot]) + " MWe"
+
+            T_main_cooler_data = self.dict_cycle_data["T_main_cooler_data"]
+            s_main_cooler_data = self.dict_cycle_data["s_main_cooler_data"]
+
+            n_p = len(T_main_cooler_data)
+            n_mid = (int)(n_p / 2) + 3
+
+            mc_cool_text = mc_cool_title + T_cold_text + q_dot_text + W_dot_text
+
+            ax_in.annotate(mc_cool_text, xy=(s_main_cooler_data[n_mid], T_main_cooler_data[n_mid]),
+                           xytext=(s_main_cooler_data[n_mid], T_states[3]+50), ha="center",multialignment="left",
+                           arrowprops=dict(arrowstyle="->", color='purple', ls='--', lw=0.6),
+                           fontsize=8,
+                           bbox=dict(boxstyle="round", fc="w", pad=0.5))
+
+            if (self.dict_cycle_data["cycle_config"] == 2):
+
+                pc_cool_title = r'$\bfPre\ Cooler$'
+                T_pc_cold_txt = "\n" + r'$T_{out}\ = \ $' + '{:.1f}'.format(self.dict_cycle_data["pc_T_in_des"]) + " C"
+                q_dot_pc_txt = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["LP_cooler_q_dot"]) + " MWt"
+                W_dot_pc_txt = "\n" + r'$\.W_{fan}\ = \ $' + '{:.2f}'.format(self.dict_cycle_data["LP_cooler_W_dot_fan"]) + " MWe"
+
+                T_pc_cooler_data = self.dict_cycle_data["T_pre_cooler_data"]
+                s_pc_cooler_data = self.dict_cycle_data["s_pre_cooler_data"]
+
+                n_p = len(T_pc_cooler_data)
+                n_q = (int)(0.25*n_p)
+
+                pc_cool_text = pc_cool_title + T_pc_cold_txt + q_dot_pc_txt + W_dot_pc_txt
+
+                ax_in.annotate(pc_cool_text, xy=(s_pc_cooler_data[n_q], T_pc_cooler_data[n_q]),
+                               xytext=(s_pc_cooler_data[n_q], T_states[3] + 150), ha="center",
+                               multialignment="left",
+                               arrowprops=dict(arrowstyle="->", color='purple', ls='--', lw=0.6),
+                               fontsize=8,
+                               bbox=dict(boxstyle="round", fc="w", pad=0.5))
             
-            return ax_in
+        return ax_in
     
     def add_recup_in_out_lines(self, ax_in):
     
@@ -351,19 +429,44 @@ class C_sco2_cycle_TS_plot:
         for names in P_data.columns.values.tolist():
             if names.split("_")[1] not in P_vals:
                 P_vals.append(names.split("_")[1])
-        
-        n_high = len(P_data["s_"+P_vals[0]].values)  - 1   
+
+        v_n_high = []
+        v_n_low = []
+        for vals in P_vals:
+            for i in range(len(P_data["s_"+P_vals[0]].values)):
+                if(P_data["T_"+vals].values[i] > self.y_max-30):
+                    v_n_high.append(i-1)
+                    v_n_low.append(round((i-1)*0.98))
+                    break
+                if(i == len(P_data["s_"+P_vals[0]].values) -1):
+                    v_n_high.append(i - 1)
+                    v_n_low.append(round((i - 1) * 0.98))
+
+        #n_high = len(P_data["s_"+P_vals[0]].values)  - 1
     
-        n_low = round(n_high*0.98)
-    
+        #n_low = round(n_high*0.98)
+
+        T_label = P_data["T_"+P_vals[0]].values[v_n_high[0]]
+
         label_pressure = True
     
-        for vals in P_vals:
-            ax_in.plot(P_data["s_"+vals].values, P_data["T_"+vals].values, 'k--', lw = 0.5, alpha = 0.4)
+        for i, vals in enumerate(P_vals):
+            ax_in.plot(P_data["s_"+vals].values[0:v_n_high[i]], P_data["T_"+vals].values[0:v_n_high[i]], 'k--', lw = 0.5, alpha = 0.4)
             if(label_pressure):
-                ax_in.annotate("Pressure (MPa):",[P_data["s_"+vals].values[n_low], P_data["T_"+vals].values[n_low]], color = 'k', alpha = 0.4, fontsize = 8)
+                ax_in.annotate("Pressure (MPa):",[P_data["s_"+vals].values[v_n_low[i]], P_data["T_"+vals].values[v_n_low[i]]], color = 'k', alpha = 0.4, fontsize = 8)
                 label_pressure = False
-            ax_in.annotate(vals,[P_data["s_"+vals].values[n_high], P_data["T_"+vals].values[n_high]], color = 'k', alpha = 0.4, fontsize = 8)
+            ax_in.annotate(vals,[P_data["s_"+vals].values[v_n_high[i]], T_label], color = 'k', alpha = 0.4, fontsize = 8)
+
+def get_plot_name(dict_cycle_data):
+    
+    eta_str = "Thermal Efficiency = " + '{:.1f}'.format(dict_cycle_data["eta_thermal_calc"] * 100) + "%"
+
+    if (dict_cycle_data["cycle_config"] == 1):
+        plot_title = "Recompression Cycle, " + eta_str
+    else:
+        plot_title = "Partial Cooling Cycle, " + eta_str
+    
+    return plot_title
 
 class C_sco2_cycle_PH_plot:
     
@@ -385,6 +488,8 @@ class C_sco2_cycle_PH_plot:
         self.lc = 'k'
         self.mt = 'o'
         self.markersize = 4
+
+        self.y_min = 10000
         
     def plot_new_figure(self):
         
@@ -393,7 +498,7 @@ class C_sco2_cycle_PH_plot:
         self.plot_from_existing_axes(ax1)
     
         plt.tight_layout(pad=0.0,h_pad=.30,rect=(0.02,0.01,0.99,0.98))
-        
+
         if(self.is_save_plot):    
         
             str_file_name = cycle_label(self.dict_cycle_data, False, True) + "__PH_plot.png"
@@ -404,20 +509,36 @@ class C_sco2_cycle_PH_plot:
             fig1.savefig(str_file_name)
             
             plt.close()
-            
-            
-    def plot_from_existing_axes(self, ax_in):        
 
-        eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
+    def set_y_min(self):
+
+        if (self.dict_cycle_data["cycle_config"] == 1):
+            P_min = self.dict_cycle_data["P_state_points"][0]
+        else:
+            P_min = self.dict_cycle_data["P_state_points"][10]
+
+        if(P_min > 5):
+            P_min = floor_nearest_base(P_min, 5)
+        else:
+            P_min = floor_nearest_base(P_min, 0.5)
+
+        self.y_min = min(self.y_min, P_min)
+
+    def plot_from_existing_axes(self, ax_in):
+
+        # eta_str = "Thermal Efficiency = " + '{:.1f}'.format(self.dict_cycle_data["eta_thermal_calc"]*100) + "%"
     
         plot_title = self.is_overwrite_title
         
-        if(self.dict_cycle_data["cycle_config"] == 1):
-            if(self.is_overwrite_title == ""):
-                plot_title = "Recompression Cycle: " + eta_str
-        else:
-            if(self.is_overwrite_title == ""):
-                plot_title = "Partial Cooling Cycle, " + eta_str
+        # if(self.dict_cycle_data["cycle_config"] == 1):
+        #     if(self.is_overwrite_title == ""):
+        #         plot_title = "Recompression Cycle: " + eta_str
+        # else:
+        #     if(self.is_overwrite_title == ""):
+        #         plot_title = "Partial Cooling Cycle, " + eta_str
+
+        if (self.is_overwrite_title == ""):
+            plot_title = get_plot_name(self.dict_cycle_data)
                 
         self.overlay_cycle_data(ax_in)
         
@@ -434,6 +555,8 @@ class C_sco2_cycle_PH_plot:
             self.plot_RC_points_and_lines(ax_in)
         else:
             self.plot_PC_points_and_lines(ax_in)
+            
+        self.set_y_min()
     
     def plot_RC_points_and_lines(self, ax_in):
         
@@ -519,7 +642,7 @@ class C_sco2_cycle_PH_plot:
     
     def format_axes(self, ax_in, plot_title):
             
-        ax_in.margins(x=0.1)
+        #ax_in.margins(x=0.1)
         
         ax_in.autoscale()
         y_down, y_up = ax_in.get_ylim()
@@ -534,7 +657,7 @@ class C_sco2_cycle_PH_plot:
         ax_in.grid(alpha=0.3,which='minor')
         
         deltaP_base = 5
-        ax_in.set_ylim(ceil_nearest_base(y_down - deltaP_base, deltaP_base), ceil_nearest_base(y_up, deltaP_base))
+        ax_in.set_ylim(self.y_min, ceil_nearest_base(y_up, deltaP_base))
         y_down, y_up = ax_in.get_ylim()
         
         deltah_base = 100
@@ -564,8 +687,11 @@ class C_sco2_cycle_PH_plot:
     
         for vals in T_vals:
             ax_in.plot(T_data["h_"+vals].values, T_data["P_"+vals].values, '--', color = 'tab:purple', lw = 0.5, alpha = 0.65)
-            ax_in.annotate(vals+"C",[T_data["h_"+vals].values[i_ann], T_data["P_"+vals].values[i_ann]], color = 'tab:purple', ha="center", alpha = 0.65, fontsize = 8)
-    
+
+        for vals in T_vals:
+            ann_local = ax_in.annotate(vals+"C",xy=[T_data["h_"+vals].values[i_ann], T_data["P_"+vals].values[i_ann]], color = 'tab:purple', ha="center", alpha = 0.65, fontsize = 8)
+            ann_local.set_in_layout(False)
+
     def plot_dome(self, ax_in):
     
         fileDir = os.path.dirname(os.path.abspath(__file__))
@@ -614,9 +740,17 @@ class C_sco2_cycle_PH_plot:
         h_mc_avg = 0.5*(h_states[0] + h_states[1])
         
         if(self.is_annotate_MC):
-            ax_in.annotate(mc_text, xy=(h_mc_avg,P_mc_avg), va="center", ha="center", fontsize = 8,
+            ax_in.annotate(mc_text, xy=(h_mc_avg,P_mc_avg), va="center", ha="center",multialignment="left",
+                           fontsize = 8,
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
-        
+
+        is_pc = self.dict_cycle_data["cycle_config"] == 2
+
+        if (is_pc):
+            t_weight = 0.5
+        else:
+            t_weight = 0.25
+
         t_title = r'$\bfTurbine$'
         m_dot_text = "\n" + r'$\.m$' + " = " + '{:.1f}'.format(m_dot_co2_full) + " kg/s"
         W_dot_text = "\nPower = " + '{:.1f}'.format(self.dict_cycle_data["t_W_dot"]) + " MW"
@@ -624,14 +758,15 @@ class C_sco2_cycle_PH_plot:
     
         t_text = t_title + m_dot_text + W_dot_text + isen_text
         
-        P_t_avg = 0.5*(P_states[5] + P_states[6])
-        h_t_avg = 0.5*(h_states[5] + h_states[6])
+        P_t_avg = t_weight*P_states[5] + (1.0-t_weight)*P_states[6]
+        h_t_avg = t_weight*h_states[5] + (1.0-t_weight)*h_states[6]
         
         if(self.is_annotate_T):
-            ax_in.annotate(t_text, xy=(h_t_avg,P_t_avg), va="center", ha="center", fontsize = 8,
+            ax_in.annotate(t_text, xy=(h_t_avg,P_t_avg), va="center", ha="center",multialignment="left",
+                       fontsize = 8,
                        bbox=dict(boxstyle="round", fc="w", pad = 0.5))
         
-        is_pc = self.dict_cycle_data["cycle_config"] == 2
+
                           
         if(is_pc):
             pc_title = r'$\bfPre$' + " " + r'$\bfCompressor$'
@@ -680,15 +815,14 @@ class C_sco2_cycle_PH_plot:
                         d_text = d_text + space + '{:.2f}'.format(d_s)
                         t_text = t_text + space + '{:.2f}'.format(self.dict_cycle_data["rc_tip_ratio_des"][i_d])
                 rc_text = rc_text + stages_text + d_text + t_text
-            
+
+            rc_weight = 0.75
             if(is_pc):
-                rc_weight = 0.75
                 P_rc_avg = rc_weight*P_states[9] + (1.0-rc_weight)*P_states[11]
                 h_rc_avg = rc_weight*h_states[9] + (1.0-rc_weight)*h_states[11]
                 h_rc_text = h_states[9] + (h_states[9] - h_states[11])
                 
             else:
-                rc_weight = 0.5
                 P_rc_avg = rc_weight*P_states[9] + (1.0-rc_weight)*P_states[8]
                 h_rc_avg = rc_weight*h_states[9] + (1.0-rc_weight)*h_states[8]
                 h_rc_text = h_states[9] + (h_states[9] - h_states[8])
@@ -713,17 +847,28 @@ class C_sco2_TS_PH_plot:
         self.is_save_plot = False
         self.is_annotate = True
         self.file_name = ""
+        self.align = "vert"
+        self.is_overwrite_title = ""
         
     def plot_new_figure(self):
         
         self.update_subplot_class_data()
         
-        fig1, a_ax = plt.subplots(nrows = 2,num = 11,figsize=(7.0,8.0))
+        if(self.align == "horiz"):
+            fig1, a_ax = plt.subplots(ncols=2, num=11, figsize=(10.0, 5.))
+        else:
+            fig1, a_ax = plt.subplots(nrows = 2,num = 11,figsize=(7.0,8.0))
         
         self.c_PH_plot.is_add_title = False
+        self.c_TS_plot.is_add_title = False
         self.plot_from_existing_axes(a_ax)
-        
-        plt.tight_layout(pad=0.0,h_pad=2.0,rect=(0.02,0.01,0.99,0.98))
+
+        plot_title = self.is_overwrite_title        
+        if (self.is_overwrite_title == ""):
+            plot_title = get_plot_name(self.dict_cycle_data)
+        fig1.suptitle(plot_title, fontsize=14)
+
+        plt.tight_layout(pad=0.0,h_pad=2.0,w_pad=0.5,rect=(0.02,0.01,0.99,0.94))
         
         if(self.is_save_plot):
             
@@ -792,18 +937,18 @@ class C_sco2_TS_PH_overlay_plot:
         c_plot2.c_TS_plot.lc = 'b'
         c_plot2.c_PH_plot.lc = 'b'
         c_plot2.overlay_existing_axes(a_ax)
-
+         
         ts_legend_lines.append(cycle_comp_legend_line(self.dict_cycle_data2, 'b', 'o'))
         ph_legend_lines.append(cycle_comp_legend_line(self.dict_cycle_data2, 'b', 'o', True))
-                  
+                   
         c_plot1.c_TS_plot.format_axes(a_ax[0], "Cycle Comparison")
         c_plot1.c_PH_plot.is_add_title = False
         c_plot1.c_PH_plot.format_axes(a_ax[1], "")
-        
+         
         a_ax[0].legend(handles=ts_legend_lines, fontsize = 8)
         a_ax[1].legend(handles=ph_legend_lines, labelspacing = 1.0, loc = "center", fontsize = 8, borderpad = 1)
-        
-        plt.tight_layout(pad=0.0,h_pad=2.0,rect=(0.02,0.01,0.99,0.98))
+         
+        plt.tight_layout(pad=0.0,h_pad=2.0,rect=(0.02,0.01,0.99,0.96))
         
         if(self.is_save_plot):
             
@@ -1028,10 +1173,12 @@ class C_OD_stacked_outputs_plot:
                 if(self.add_subplot_letter):
                     y_label = r'$\bf{' + format(j_l_i) + ")" + '}$' + " " + y_label
                         
-                if(n_cols > 1):
+                if(n_cols > 1 and n_rows > 1):
                     j_axis = a_ax[j_row,j_col]
                 elif(n_rows > 1):
                     j_axis = a_ax[j_row]
+                elif(n_cols > 1):
+                    j_axis = a_ax[j_col]
                 else:
                     j_axis = a_ax
                     
@@ -1140,19 +1287,19 @@ class C_OD_stacked_outputs_plot:
         for j, key in enumerate(self.y_vars):
             j_col = j//n_rows
             j_row = j%n_rows
-            
-            if(n_cols > 1):
 
-                if(self.is_shade_infeasible and n_datasets == 1):
-                    y_lower, y_upper = a_ax[j_row,j_col].get_ylim()
-                    a_ax[j_row,j_col].fill_between(self.list_dict_results[0][self.x_var_od], y_lower, y_upper, where=y_feasible_flag_i, facecolor='red', alpha=0.5)
-                
-            else: 
+            if (n_cols > 1 and n_rows > 1):
+                j_axis = a_ax[j_row, j_col]
+            elif (n_rows > 1):
+                j_axis = a_ax[j_row]
+            elif (n_cols > 1):
+                j_axis = a_ax[j_col]
+            else:
+                j_axis = a_ax
 
-                if(self.is_shade_infeasible and n_datasets == 1):
-                    y_lower, y_upper = a_ax[j_row].get_ylim()
-                    a_ax[j_row].fill_between(self.list_dict_results[0][self.x_var_od], y_lower, y_upper, where=y_feasible_flag_i, facecolor='red', alpha=0.5)
-            
+            y_lower, y_upper = j_axis.get_ylim()
+            j_axis.fill_between(self.list_dict_results[0][self.x_var_od], y_lower, y_upper, where=y_feasible_flag_i, facecolor='red', alpha=0.5)
+           
         if(self.is_save and self.file_name != ""):    
          
             plt.savefig(self.file_name + self.file_ext, dpi = self.dpi)
@@ -1785,29 +1932,48 @@ def plot_eta_vs_UA__deltaT_levels__two_config(list_des_results):
         
     plt.close()
 
-def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = ""):
+def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "", cycle_des_str = "", is_T_t_in_set = False):
 
     n_levels = 3
 
     w_pad = 3
 
-    f_udpc_pars = open("udpc_setup_pars.txt", 'w')
-    f_udpc_pars.write("Number of HTF hot temperature levels = " + str(n_T_htf) + "\n")
+    f_udpc_pars = open(plot_pre_str + "udpc_setup_pars.txt", 'w')
+    f_udpc_pars.write(cycle_des_str)
+
+    if(is_T_t_in_set):
+        f_udpc_pars.write("Number of turbine inlet temperature levels = " + str(n_T_htf) + "\n")
+        f_udpc_pars.write("Number of target output power levels = " + str(n_m_dot_htf) + "\n")
+        m_dot_str = "target_power_ND = "
+    else:
+        f_udpc_pars.write("Number of HTF hot temperature levels = " + str(n_T_htf) + "\n")
+        f_udpc_pars.write("Number of HTF mass flow rate levels = " + str(n_m_dot_htf) + "\n")
+        m_dot_str = "m_dot_ND = "
+
     f_udpc_pars.write("Number of ambient temperature levels = " + str(n_T_amb) + "\n")
-    f_udpc_pars.write("Number of HTF mass flow rate levels = " + str(n_m_dot_htf) + "\n")
+
+    len_row = len(udpc_data[0])
 
     # Add normalized efficiency column
     for row in udpc_data:
+        row.append(row[4] / row[1])
         row.append(row[3] / row[4])
-
-    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
-
+        
+    
     mi = [[0, 0, 3, "Normalized Power"]]
     mi.append([1, 0, len(udpc_data[0])-1, "Normalized Efficiency"])
-    mi.append([0, 1, 5, "Normalized Cooling Power"])
-    mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
-    mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
-    mi.append([2, 1, 9, "Normalized PHX CO2 Mass Flow"])
+    #mi.append([0, 1, 5, "Normalized Cooling Power"])
+    mi.append([0, 1, 4, "Normalized Heat Input"])
+    mi.append([1, 1, len(udpc_data[0])-2, "Normalized deltaT"])
+    nrows = 2
+    ncols = 2
+    if(len_row > 7):
+        mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
+        mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
+        mi.append([2, 1, 9, "Normalized PHX CO2 Mass Flow"])
+        nrows = 3
+
+    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, 10))
 
     # T_htf parametric values, 3 m_dot levels, design ambient temperature
     for j in range(0, len(mi)):
@@ -1818,7 +1984,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
             if( j == 0 ):
                 j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
                       [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
-                        label = "m_dot_ND = " + str(udpc_data[row_start][1]))
+                        label = m_dot_str + str(udpc_data[row_start][1]))
                 if(i == 0):
                     f_udpc_pars.write("Mass flow rate Low Level = " + str(udpc_data[row_start][1]) + "\n")
                 if(i == 1):
@@ -1828,7 +1994,10 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
             else:
                 j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
                           [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
-        j_ax.set_xlabel("HTF Hot Temperature [C]")
+        if (is_T_t_in_set):
+            j_ax.set_xlabel("Turbine Inlet Temperature [C]")
+        else:
+            j_ax.set_xlabel("HTF Hot Temperature [C]")
         j_ax.set_ylabel(mi[j][3])
         j_ax.grid(which='both', color='gray', alpha=1)
 
@@ -1837,7 +2006,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
     plt.savefig(plot_pre_str + "udpc_T_HTF.png")
     plt.close()
 
-    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
+    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, 10))
 
     # T_amb parametric values, 3 T_HTF_levels, design m_dot
     for j in range(0, len(mi)):
@@ -1867,7 +2036,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
     plt.savefig(plot_pre_str + "udpc_T_amb.png")
     plt.close()
 
-    fig1, a_ax = plt.subplots(nrows=3, ncols=2, num=1, figsize=(7, 10))
+    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, 10))
 
     # m_dot parametric values, 3 T_amb levels, design T_htf_hot
     for j in range(0, len(mi)):
@@ -1888,8 +2057,10 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
             else:
                 j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
                       [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
-                
-        j_ax.set_xlabel("Normalized Mass Flow")
+        if (is_T_t_in_set):
+            j_ax.set_xlabel("Normalized Target Power Output")
+        else:
+            j_ax.set_xlabel("Normalized Mass Flow")
         j_ax.set_ylabel(mi[j][3])
         j_ax.grid(which='both', color='gray', alpha=1)
 
