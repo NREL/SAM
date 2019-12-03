@@ -2987,7 +2987,7 @@ public:
 		if (evt.GetId() == ILDM_MODEOPTIONS)
 			SetMode(ModeOptions->GetSelection());
 		else if (evt.GetId() == ILDM_TIMESTEPS)
-			SetMinPerHour(ModeOptions->GetSelection());
+			SetMode(ModeOptions->GetSelection());
 		else if (evt.GetId() == ILDM_COPY)
 			Grid->Copy(true);
 		else if (evt.GetId() == ILDM_PASTE)
