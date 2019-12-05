@@ -78,8 +78,10 @@
 <p class="p_VariableDescription"><span class="f_CHInterfaceElement">Fixed Cost</span><span class="f_VariableDescription"> is a value that you type as a fixed amount in dollars.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The total project-land-miscellaneous cost is the sum of </span><span class="f_CHInterfaceElement">Non-fixed Cost</span><span class="f_VariableDescription"> and </span><span class="f_CHInterfaceElement">Fixed Cost</span><span class="f_VariableDescription">.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Sales tax (%)</span></p>
-<p class="p_Text"><span class="f_Text">SAM calculates the total sales tax amount by multiplying the sales tax rate that you specify on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page by the percentage of direct costs you specify on the System Costs page: </span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Total Sales Tax = Sales Tax Rate × Percentage of Direct Cost × Direct Cost</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Sales tax basis, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The percentage of total direct cost used to the calculate sales tax amount.</span></p>
+<p class="p_Text"><span class="f_Text">SAM calculates the total sales tax amount by multiplying the sales tax rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page by the sales tax basis on the System Costs page: </span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Sales Tax ($) = Sales Tax Rate (%) × Sales Tax Basis (%) × Total Direct Cost ($)</span></p>
 <p class="p_Text"><span class="f_Text">For an explanation of the effect of sales tax on income tax, see </span><span class="f_CHInterfaceElement">Sales Tax</span><span class="f_Text"> on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> topic for the financial model you are using (Residential, Commercial, Single Owner, etc.)</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total indirect cost ( $)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The sum of engineer-procure-construct costs, project-land-miscellaneous costs, and sales tax.</span></p>
