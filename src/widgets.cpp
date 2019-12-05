@@ -1542,7 +1542,7 @@ public:
 			Description->Wrap( 350 );
 			szv_main->Add( Description, 0, wxALL, 10 );
 		}
-		szv_main->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10);
+		szv_main->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 10);
 			
 		SetMode(DATA_ARRAY_8760_MULTIPLES);
 		
@@ -1720,6 +1720,11 @@ public:
 				fprintf(fp, "%g\n", mData[i]);
 			fclose(fp);
 		}
+		else if (evt.GetId() == wxID_HELP)
+		{
+			SamApp::ShowHelp("edit_array");
+		}
+
 	}
 	
 	DECLARE_EVENT_TABLE();
@@ -1731,7 +1736,8 @@ BEGIN_EVENT_TABLE(AFDataArrayDialog, wxDialog)
 	EVT_BUTTON( IDDD_IMPORT, AFDataArrayDialog::OnCommand )
 	EVT_BUTTON( IDDD_EXPORT, AFDataArrayDialog::OnCommand )
 	EVT_BUTTON( IDDD_CHANGENUMROWS, AFDataArrayDialog::OnCommand )
-END_EVENT_TABLE()
+	EVT_BUTTON( wxID_HELP, AFDataArrayDialog::OnCommand)
+	END_EVENT_TABLE()
 
 BEGIN_EVENT_TABLE(AFDataArrayButton, wxButton)
 EVT_BUTTON(wxID_ANY, AFDataArrayButton::OnPressed)
@@ -1802,6 +1808,7 @@ void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
 		dlg.GetData(mData);
 		evt.Skip(); // allow event to propagate indicating underlying value changed
 	}
+
 }
 
 
