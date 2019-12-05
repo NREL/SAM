@@ -1942,7 +1942,7 @@ Default
 system_capacity
 3
 1
-System nameplate size
+System nameplate capacity
 kWdc
 PVWatts
 0

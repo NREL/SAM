@@ -37,7 +37,7 @@ Colour
 Caption
 5
 17
-Shutdown schedule
+Shutdown Schedule
 Bold
 2
 1
@@ -2530,7 +2530,7 @@ Choice
 fuelcell_number_of_units
 3
 1
-Number of units
+Number of units in stack
  
 Fuel Cell
 0
@@ -2544,7 +2544,7 @@ Numeric
 fuelcell_power_min
 3
 1
-Minimum system output
+Minimum cell stack output
 kW
 Fuel Cell
 0
@@ -2558,7 +2558,7 @@ Numeric
 fuelcell_power_nameplate
 3
 1
-Total system nameplate
+Cell stack nameplate
 kW
 Fuel Cell
 0
