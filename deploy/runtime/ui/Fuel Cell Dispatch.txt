@@ -1,7 +1,7 @@
 Fuel Cell Dispatch
-999
-229
-10
+998
+158
+8
 Divider
 
 1
@@ -12,13 +12,13 @@ Name
 divider1
 X
 3
-87
+27
 Y
 3
-42
+27
 Width
 3
-186
+582
 Height
 3
 16
@@ -47,92 +47,14 @@ Divider
 10
 Name
 5
-8
-divider2
-X
-3
-327
-Y
-3
-42
-Width
-3
-231
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-12
-Fixed output
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-8
-divider3
-X
-3
-333
-Y
-3
-114
-Width
-3
-231
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-14
-Input dispatch
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
 9
 divider35
 X
 3
-693
+633
 Y
 3
-42
+27
 Width
 3
 231
@@ -154,7 +76,7 @@ Colour
 Caption
 5
 17
-Operation options
+Operation Options
 Bold
 2
 1
@@ -177,7 +99,7 @@ Width
 985
 Height
 3
-214
+142
 Tool Tip
 5
 0
@@ -198,16 +120,16 @@ Name
 fuelcell_dispatch_choice
 X
 3
-96
+36
 Y
 3
-66
+45
 Width
 3
-180
+165
 Height
 3
-111
+93
 Tool Tip
 5
 0
@@ -240,10 +162,10 @@ Name
 fuelcell_dispatch_input
 X
 3
-420
+357
 Y
 3
-135
+108
 Width
 3
 90
@@ -258,10 +180,12 @@ Mode
 1
 Label
 5
-0
+18
+Fuel Cell Dispatch
 Description
 5
-0
+86
+Enter a power in kW or % of nameplate for each time step to dispatch the fuel cell to.
 TabOrder
 3
 4294967295
@@ -275,13 +199,13 @@ Name
 fuelcell_dispatch_input_units
 X
 3
-519
+453
 Y
 3
-135
+108
 Width
 3
-99
+93
 Height
 3
 24
@@ -309,10 +233,10 @@ Name
 fuelcell_fixed_pct
 X
 3
-462
+360
 Y
 3
-63
+45
 Width
 3
 63
@@ -371,10 +295,10 @@ Name
 fuelcell_operation_options
 X
 3
-735
+645
 Y
 3
-63
+45
 Width
 3
 180
@@ -390,8 +314,8 @@ Selection
 Items
 6
 2
-Allowed to shutdown
-Idle at min power
+Allowed to shut down
+Idle at minimum power
 ShowCaptions
 2
 1
@@ -435,7 +359,7 @@ RadioChoice
 fuelcell_dispatch_input
 3
 2
-Input dispatch
+Input dispatch time series
  
 Fuel Cell
 0
@@ -481,8 +405,8 @@ fuelcell_operation_options
  Fuel cell shutdown option
  
 Fuel Cell
-37
-Allowed to shutdown|Idle at min power
+42
+Allowed to shut down|Idle at minimum power
 3
 1
 1
