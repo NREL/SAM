@@ -152,6 +152,7 @@ static std::unordered_map<std::string, std::string> config_to_cmod_name = {
         {"LCOECalculator", "Lcoefcr"},
         {"LCOHCalculator", "IphToLcoefcr"},
         {"LeveragedPartnershipFlip", "Levpartflip"},
+        {"MerchantPlant", "MerchantPlant"},
         {"MHKtidal", "MHKTidal"},
         {"MHKwave", "MHKWave"},
         {"MSLF", "TcsMSLF"},
