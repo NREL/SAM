@@ -42,6 +42,7 @@ RUN mkdir -p /root/sandboxes
 WORKDIR /root/sandboxes/sam_dev
 
 RUN git clone -b landbosse-integration --single-branch https://github.com/NREL/SAM.git sam
+RUN cp sam/build_linux/docker/CMakeLists.txt .
 RUN git clone https://github.com/NREL/ssc.git ssc
 RUN git clone https://github.com/NREL/wex.git wex
 RUN git clone https://github.com/NREL/lk.git lk
