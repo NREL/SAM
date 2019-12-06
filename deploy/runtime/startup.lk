@@ -146,17 +146,14 @@ function setup_pvwatts_battery_pages_behind_the_meter()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	addpage( [[ 'PVWatts', "Battery Model Simple with REopt"]], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
-		addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='pv_losses' } );
-//	addpage( [[ 'PVWatts']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
+	setup_grid_page();
 }
 function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	addpage( [[ 'PVWatts']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
-		setup_grid_page();
+	setup_grid_page();
 
-//	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
-//	addpage( [[ 'PVWatts']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 }
 function setup_flat_plate_pv_pages()
 {

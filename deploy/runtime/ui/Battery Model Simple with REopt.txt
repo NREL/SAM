@@ -681,7 +681,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2432
+2453
 on_load{'Battery Model Simple with REopt'} = define()
 {
 	check_enabled();
@@ -713,9 +713,11 @@ on_change{'call_reopt'} = define(){
 	reopt = reopt_size_battery();
 	y = reopt.response;
 
-	if (y.outputs.Scenario.status != "optimal")
+	if (y.outputs.Scenario.status != "optimal"){
 		msgbox(y.outputs.Scenario.status);
-
+		exit;
+	}
+	
 	pv = y.outputs.Scenario.Site.PV;
 	batt = y.outputs.Scenario.Site.Storage;
 	elec = y.outputs.Scenario.Site.ElectricTariff;
@@ -729,6 +731,7 @@ on_change{'call_reopt'} = define(){
 			value('batt_simple_kw', 0.0);
 			value('batt_simple_kwh', 0.0);
 		}
+		exit;
 	}
 
 	apply_str = "Apply results?\nOptimal capacity: " + to_string(batt.size_kwh) + 
