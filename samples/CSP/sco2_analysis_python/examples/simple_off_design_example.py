@@ -124,10 +124,10 @@ part_load_des = 1.0   # - (normalized)
 T_amb_des = sco2_des_par_default["T_amb_des"]   # C
 
 # One off-design simulation at design conditions
-T_amb_od_parametric = [[T_htf_hot_des, part_load_des, T_amb_des, 1.0, 1.0]]
+T_amb_od_parametric = [[T_htf_hot_des, part_load_des, T_amb_des]]
 
 # Another off-design simulation at another ambient temperature
-T_amb_od_parametric.append([T_htf_hot_des, part_load_des, T_amb_des - 5.0, 1.0, 1.0])
+T_amb_od_parametric.append([T_htf_hot_des, part_load_des, T_amb_des - 5.0])
 
 mod_base_dict = {"od_cases" : T_amb_od_parametric}    # [[mod_base_dict["T_htf_hot_des"],1.0,mod_base_dict["T_amb_des"],-1.0]]
 c_sco2.overwrite_des_par_base(mod_base_dict)    # Overwrite baseline design parameters
