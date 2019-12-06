@@ -41,9 +41,8 @@ RUN make -j$(nproc)
 RUN mkdir -p /root/sandboxes
 WORKDIR /root/sandboxes/sam_dev
 
-RUN git clone -b install-python --single-branch https://github.com/daniel-thom/SAM.git sam
-RUN cp sam/build_linux/docker/CMakeLists.txt .
-RUN git clone -b fix-linux-build --single-branch https://github.com/daniel-thom/ssc.git ssc
+RUN git clone -b landbosse-integration --single-branch https://github.com/NREL/SAM.git sam
+RUN git clone https://github.com/NREL/ssc.git ssc
 RUN git clone https://github.com/NREL/wex.git wex
 RUN git clone https://github.com/NREL/lk.git lk
 
@@ -54,5 +53,14 @@ ENV SAMNTDIR /root/sandboxes/sam_dev/sam
 ENV GTEST /opt/googletest
 
 WORKDIR /root/sandboxes/sam_dev/build
-RUN cmake .. -DCMAKE_BUILD_TYPE=Release
+RUN cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_api=1 -Dskip_tools=1
 RUN make -j$(nproc)
+
+# install python and embed it
+WORKDIR /root/sandboxes/sam_dev/sam/build_linux
+RUN ./install-python.sh ${SAMNTDIR}/deploy 2.2.0
+RUN cp ${SAMNTDIR}/python-integration/printReturn.py ${SAMNTDIR}/deploy/python-3.7.4/lib/python3.7/site-packages/
+WORKDIR ${SAMNTDIR}/python-integration/build
+RUN cmake .. -DPYTHONDIR=${SAMNTDIR}/deploy/python-3.7.4
+RUN make -j$(nproc)
+RUN ./SAM-Python
