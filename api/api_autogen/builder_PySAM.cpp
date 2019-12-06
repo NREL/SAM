@@ -53,6 +53,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Lcoefcr", "Calculate levelized cost of electricity using fixed charge rate method instead of cash flow"},
             {"Levpartflip", "PPA leveraged partnership flip (with debt) financial model"},
             {"LinearFresnelDsgIph", "Linear Fresnel model with steam heat transfer fluid for industrial process heat applications"},
+            {"Merchantplant", "Merchant plant providing energy, capacity and ancillary services."},
             {"MhkWave", "Wave marine hydrokinetic system"},
             {"MhkTidal", "Tidal marine hydrokinetic system"},
             {"Pvsamv1", "Detailed photovoltaic system model with separate components for module and inverter"},
@@ -86,7 +87,8 @@ std::string module_doc(const std::string& tech_symbol){
     };
 
     auto it = desc.find(tech_symbol);
-    assert(it!=desc.end());
+    if (it == desc.end())
+        return tech_symbol;
     return it->second;
 }
 

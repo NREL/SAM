@@ -596,8 +596,8 @@ Tool Tip
 0
 Caption
 5
-72
-Choose wave energy resource file stored directly instead of from library
+65
+Choose wave energy resource file instead of choosing from library
 State
 2
 0

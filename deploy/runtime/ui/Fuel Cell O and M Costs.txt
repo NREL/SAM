@@ -1,7 +1,7 @@
 Fuel Cell O and M Costs
-967
-273
-30
+951
+233
+37
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 934
 Height
 3
-260
+224
 Tool Tip
 5
 0
@@ -45,10 +45,10 @@ X
 702
 Y
 3
-21
+24
 Width
 3
-203
+188
 Height
 3
 21
@@ -76,7 +76,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -237,7 +237,7 @@ X
 18
 Y
 3
-147
+144
 Width
 3
 180
@@ -330,10 +330,10 @@ Name
 Label24
 X
 3
-39
+81
 Y
 3
-21
+24
 Width
 3
 116
@@ -345,8 +345,8 @@ Tool Tip
 0
 Caption
 5
-15
-First year cost
+16
+First year costs
 TextColour
 4
 0
@@ -355,7 +355,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -364,7 +364,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -378,7 +378,7 @@ Name
 Label26
 X
 3
-492
+543
 Y
 3
 24
@@ -412,7 +412,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -426,13 +426,13 @@ Name
 Label27
 X
 3
-360
+381
 Y
 3
 24
 Width
 3
-90
+87
 Height
 3
 21
@@ -460,7 +460,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -474,7 +474,7 @@ Name
 Label28
 X
 3
-234
+219
 Y
 3
 24
@@ -508,7 +508,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -522,16 +522,16 @@ Name
 Label3
 X
 3
-30
+204
 Y
 3
-178
+177
 Width
 3
-875
+686
 Height
 3
-71
+44
 Tool Tip
 5
 0
@@ -570,10 +570,10 @@ Name
 fc_fuel_cost
 X
 3
-492
+543
 Y
 3
-147
+144
 Width
 3
 90
@@ -585,8 +585,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+16
+$/MMBtu or $/MCf
 UseSchedule
 2
 1
@@ -598,7 +598,8 @@ FixedLength
 4294967295
 Description
 5
-0
+50
+Type a fuel cost ($/MMBtu or $/MCf) for each year.
 TabOrder
 3
 4294967295
@@ -612,7 +613,7 @@ Name
 object 7
 X
 3
-450
+471
 Y
 3
 120
@@ -621,7 +622,7 @@ Width
 39
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -656,11 +657,347 @@ Label
 13
 Name
 5
+10
+object 713
+X
+3
+312
+Y
+3
+96
+Width
+3
+39
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+5
+$/kWh
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 715
+X
+3
+636
+Y
+3
+72
+Width
+3
+39
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+4
+$/kW
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 717
+X
+3
+636
+Y
+3
+48
+Width
+3
+39
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+6
+$/year
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 722
+X
+3
+471
+Y
+3
+72
+Width
+3
+39
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+4
+$/kW
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 723
+X
+3
+471
+Y
+3
+48
+Width
+3
+39
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+6
+$/year
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 728
+X
+3
+312
+Y
+3
+72
+Width
+3
+39
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+4
+$/kW
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 729
+X
+3
+312
+Y
+3
+48
+Width
+3
+39
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+6
+$/year
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 9
 object 74
 X
 3
-591
+636
 Y
 3
 120
@@ -669,7 +1006,7 @@ Width
 39
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -708,7 +1045,7 @@ Name
 om_capacity
 X
 3
-234
+219
 Y
 3
 72
@@ -723,8 +1060,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+4
+$/kW
 UseSchedule
 2
 0
@@ -736,8 +1073,8 @@ FixedLength
 4294967295
 Description
 5
-109
-Type a fixed cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
+116
+Type a fixed PV O&M cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 3
@@ -751,7 +1088,7 @@ Name
 om_capacity1
 X
 3
-360
+378
 Y
 3
 72
@@ -766,8 +1103,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+4
+$/kW
 UseSchedule
 2
 0
@@ -779,8 +1116,8 @@ FixedLength
 4294967295
 Description
 5
-109
-Type a fixed cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
+121
+Type a fixed battery O&M cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 3
@@ -794,7 +1131,7 @@ Name
 om_capacity2
 X
 3
-492
+543
 Y
 3
 72
@@ -809,8 +1146,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+4
+$/kW
 UseSchedule
 2
 0
@@ -822,8 +1159,8 @@ FixedLength
 4294967295
 Description
 5
-109
-Type a fixed cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
+123
+Type a fixed fuel cell O&M cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 3
@@ -837,7 +1174,7 @@ Name
 om_capacity_escal
 X
 3
-708
+789
 Y
 3
 72
@@ -900,7 +1237,7 @@ Name
 om_fixed
 X
 3
-234
+219
 Y
 3
 48
@@ -915,8 +1252,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+6
+$/year
 UseSchedule
 2
 0
@@ -928,8 +1265,8 @@ FixedLength
 4294967295
 Description
 5
-106
-Type a fixed cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
+113
+Type a fixed PV O&M cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 1
@@ -943,7 +1280,7 @@ Name
 om_fixed1
 X
 3
-360
+378
 Y
 3
 48
@@ -958,8 +1295,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+6
+$/year
 UseSchedule
 2
 0
@@ -971,8 +1308,8 @@ FixedLength
 4294967295
 Description
 5
-106
-Type a fixed cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
+118
+Type a fixed battery O&M cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 1
@@ -986,7 +1323,7 @@ Name
 om_fixed2
 X
 3
-492
+543
 Y
 3
 48
@@ -1001,8 +1338,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+6
+$/year
 UseSchedule
 2
 0
@@ -1014,8 +1351,8 @@ FixedLength
 4294967295
 Description
 5
-106
-Type a fixed cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
+120
+Type a fixed fuel cell O&M cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 1
@@ -1029,7 +1366,7 @@ Name
 om_fixed_escal
 X
 3
-708
+789
 Y
 3
 48
@@ -1092,10 +1429,10 @@ Name
 om_fuel_cost_escal
 X
 3
-708
+789
 Y
 3
-147
+144
 Width
 3
 100
@@ -1155,10 +1492,10 @@ Name
 om_fuel_price_units
 X
 3
-591
+636
 Y
 3
-147
+144
 Width
 3
 90
@@ -1189,7 +1526,7 @@ Name
 om_production
 X
 3
-234
+219
 Y
 3
 96
@@ -1205,7 +1542,7 @@ Tool Tip
 Label
 5
 5
-Value
+$/kWh
 UseSchedule
 2
 0
@@ -1217,8 +1554,8 @@ FixedLength
 4294967295
 Description
 5
-113
-Type a variable cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
+117
+Type a variable O&M cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 5
@@ -1232,7 +1569,7 @@ Name
 om_production_escal
 X
 3
-708
+789
 Y
 3
 96
@@ -1295,7 +1632,7 @@ Name
 om_replacement_cost1
 X
 3
-360
+378
 Y
 3
 120
@@ -1304,14 +1641,14 @@ Width
 90
 Height
 3
-24
+21
 Tool Tip
 5
 0
 Label
 5
 5
-Value
+$/kWh
 UseSchedule
 2
 0
@@ -1323,7 +1660,8 @@ FixedLength
 4294967295
 Description
 5
-0
+79
+Type a battery replacement cost in $ per kWh of battery capacity for each year.
 TabOrder
 3
 4294967295
@@ -1337,7 +1675,7 @@ Name
 om_replacement_cost2
 X
 3
-492
+543
 Y
 3
 120
@@ -1346,14 +1684,14 @@ Width
 90
 Height
 3
-24
+21
 Tool Tip
 5
 0
 Label
 5
-5
-Value
+4
+$/kW
 UseSchedule
 2
 0
@@ -1365,7 +1703,8 @@ FixedLength
 4294967295
 Description
 5
-0
+55
+Type a fuel cell replacement cost ($/kW) for each year.
 TabOrder
 3
 4294967295
@@ -1379,7 +1718,7 @@ Name
 om_replacement_cost_escal
 X
 3
-708
+789
 Y
 3
 120

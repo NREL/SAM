@@ -749,9 +749,11 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 	switch (type)
 	{
 	case SSC_STRING:
-		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
+//		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
+		str_value = wxString(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str());
+//		fprintf(m_fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str());
+		wxFprintf(m_fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
