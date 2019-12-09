@@ -1,4 +1,4 @@
-Name,City,State,Country,Latitude,Longitude,Nearby Bouy Number,Average Power Flux (kW/m),Bathymetry,Sea Bed,Time Zone,Data Source,Notes,,,,,,,,,
+Name,City,State,Country,Latitude,Longitude,Nearby Buoy Number,Average Power Flux (kW/m),Bathymetry,Sea Bed,Time Zone,Data Source,Notes,,,,,,,,,
 CalWave Central Coast South,Lompoc,California,United States,34.521 N,120.689 W,NDBC 46218,39.9,Gently Sloping,Sandy,-7,Sandia; SAND2015-7963,Offshore of Vandenberg Air Force Base,,,,,,,,,
 Hs/Te,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5,13.5,14.5,15.5,16.5,17.5,18.5,19.5,20.5
 0.25,0,0,0,0,0.11,0.18,0.12,0.09,0.11,0.05,0.07,0.06,0.07,0.07,0.02,0.02,0.01,0,0,0,0

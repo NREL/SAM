@@ -90,7 +90,10 @@ function track(action, data) {
   if (gaaccount != "") {	
     if ((window._gat) && (lastTrackEvent != action+data)) {
       lastTrackEvent = action+data;	
-      var pageTracker = window._gat._getTracker(gaaccount);
+      var pageTracker = window._gat._getTrackerByName('hmga');
+	  if (!pageTracker) {
+		pageTracker = window._gat._createTracker(gaaccount, 'hmga');
+	  }
       switch(action) {
       case "topic":
         data = data.substring(data.indexOf("//")+1,data.length);

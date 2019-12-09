@@ -5,7 +5,7 @@ ISCC Receiver and Powerblock
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -81,6 +84,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,7 +129,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -140,6 +146,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -182,7 +191,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -199,6 +208,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -241,7 +253,7 @@ TabOrder
 LossAdjustment
 
 1
-6
+7
 Name
 5
 6
@@ -258,13 +270,16 @@ Width
 Height
 3
 79
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -281,6 +296,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -323,7 +341,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -340,6 +358,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -382,7 +403,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -399,6 +420,9 @@ Width
 Height
 3
 371
+Tool Tip
+5
+0
 Caption
 5
 56
@@ -409,7 +433,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -426,17 +450,20 @@ Width
 Height
 3
 180
+Tool Tip
+5
+0
 Caption
 5
-28
-Availability and Curtailment
+19
+System Availability
 Bold
 2
 1
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -453,6 +480,9 @@ Width
 Height
 3
 42
+Tool Tip
+5
+0
 Caption
 5
 138
@@ -481,7 +511,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -498,10 +528,13 @@ Width
 Height
 3
 69
+Tool Tip
+5
+0
 Caption
 5
-114
-Curtailment and availability losses reduce the net plant solar output to represent system outages or other events.
+105
+System availability losses reduce the net plant solar output to represent system outages or other events.
 TextColour
 4
 0
@@ -526,7 +559,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -543,6 +576,9 @@ Width
 Height
 3
 60
+Tool Tip
+5
+0
 Caption
 5
 179
@@ -571,7 +607,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -588,6 +624,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -630,7 +669,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -647,6 +686,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -689,7 +731,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -706,6 +748,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -748,7 +793,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -765,6 +810,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0

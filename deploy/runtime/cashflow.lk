@@ -47,10 +47,14 @@ function cf_formatting_examples()
 
 function cf_production()
 { 
+	fin = financing();
 	cfline( 'PRODUCTION (AC KWH)', -1); 
-	cfline( 'cf_energy_net', 0); 
-	cfline( "CURTAILMENT (AC KWH)", -1); 
-	cfline( 'cf_energy_curtailed', 0); // no decimal places with thousands separator 
+	cfline( 'cf_energy_net', 0);
+	if ( fin == "Single Owner" || fin == "Merchant Plant" ) 
+	{
+		cfline( "CURTAILMENT (AC KWH)", -1); 
+		cfline( 'cf_energy_curtailed', 0);
+	}	
 	cfline( '' );
 }
 
@@ -86,10 +90,28 @@ function cf_revenue()
 	fin = financing();
 	has_debt = ( fin == 'Single Owner' ) || ( fin == 'Host Developer' ) || ( fin == 'Leveraged Parntership Flip' );
 	cfline( 'REVENUE', -1);
-	cfline( 'cf_ppa_price' , -2 );
-	cfline( 'cf_energy_value', 0); 
-	cfline( 'cf_curtailment_value', 0); 
-	cfline( 'cf_capacity_payment', 0); 
+	if ( fin == 'Merchant Plant' )
+	{
+		cfline( 'cf_curtailment_value', 0); 
+		cfline( 'cf_capacity_payment', 0); 
+		cfline( 'cf_energy_market_revenue', 0); 
+		cfline( 'cf_ancillary_services_1_revenue', 0); 
+		cfline( 'cf_ancillary_services_2_revenue', 0); 
+		cfline( 'cf_ancillary_services_3_revenue', 0); 
+		cfline( 'cf_ancillary_services_4_revenue', 0); 
+	}
+	elseif ( fin == "Single Owner" )
+	{
+		cfline( 'cf_ppa_price' , -2 );
+		cfline( 'cf_energy_value', 0); 
+		cfline( 'cf_curtailment_value', 0); 
+		cfline( 'cf_capacity_payment', 0); 
+	}
+	else
+	{
+		cfline( 'cf_ppa_price' , -2 );
+		cfline( 'cf_energy_value', 0); 
+	}
 
 	if (tech == 'Fuel Cell')
 		cfline( 'cf_thermal_value', 0);
@@ -214,7 +236,6 @@ function cf_debt_sizing()
 	} 
      if ( value('debt_option') == 1 ) 
     { 
-		cfline( '' ); 
 		cfline( 'DEBT SIZING (SCULPTED DEBT PAYMENTS)', -1); 
 		cfline('cf_ebitda', 0); 
 		cfline('minus:', -1, 0); 
@@ -329,7 +350,7 @@ function cf_investing_activities()
 	cfline( 'INVESTING ACTIVITIES', -1);
 	cfline('cost_prefinancing',0,-1,0);
 	if ( fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip') {	cfline('cost_equity_closing', 0,-1,0); }
-	if ( fin == 'Leveraged Partnership Flip' ) { cfline('sponsor_aftertax_development', 0,-1,0); }
+	if ( fin == 'Leveraged Partnership Flip' ) { cfline('sponsor_pretax_development', 0,-1,0); }
 	if ( fin == 'All Equity Partnership Flip' ) { cfline('cost_dev_fee_value', 0,-1,0); }
 	if ( has_debt )
 	{
@@ -387,6 +408,7 @@ function cf_project_cash_flows()
 		cfline('cost_equity_closing', 0,-1,0);
 		cfline('construction_financing_cost',0,-1,0); 
 		cfline('purchase_of_plant', 0);
+		cfline('');
 		cfline( 'Sale of Property Calculation:',-1); /////////////////
 		cfline('cost_prefinancing',0);
 		cfline('distribution_of_development_fee',0,-1,0);
@@ -398,18 +420,30 @@ function cf_project_cash_flows()
 		cfline( 'DEVELOPER (LESSEE) CASH FLOW', -1 ); 
 		cfline('Developer Operating Activities:', -1); /////////////////
 		cfline('cf_sponsor_operating_margin', 0); 
+		cfline('cf_reserve_interest', 0);
 		cfline('cf_sponsor_operating_activities', 0);
+		cfline('');
 		cfline('Developer Investing Activities:', -1); /////////////////
 		cfline('sale_of_property', 0);
 		cfline('purchase_of_plant', 0);
-		cfline('cf_net_salvage_value',0,-1,0);
 		cfline('distribution_of_development_fee',0);
-		cfline('cf_sponsor_ra', 0); 
-		cfline('cf_sponsor_mecs', 0); 
+		cfline('cf_net_salvage_value',0,-1,0);
+		cfline('cf_sponsor_wcra', 0);
+		cfline('cf_funding_leasepayment', 0,-1,0);
+		cfline('cf_disbursement_leasepayment', 0,-1,0);
+		cfline('cf_sponsor_me1ra', 0);
+		cfline('cf_sponsor_me2ra', 0);
+		cfline('cf_sponsor_me3ra', 0);
+		cfline('cf_sponsor_receivablesra', 0);
+		cfline('cf_sponsor_me1cs', 0);
+		cfline('cf_sponsor_me2cs', 0);
+		cfline('cf_sponsor_me3cs', 0);
 		cfline('cf_sponsor_investing_activities', 0); 
+		cfline('');
 		cfline('Developer Financing Activities:', -1); /////////////////
 		cfline('sponsor_equity_in_lessee_llc', 0); // (funding of reserve accounts)
 		cfline('cf_sponsor_financing_activities', 0); 
+		cfline('');
 		cfline('Developer Pre-tax Cash Flow:', -1); /////////////////
 		cfline('cf_sponsor_operating_activities', 0);
 		cfline('cf_sponsor_investing_activities', 0); 
@@ -424,15 +458,16 @@ function cf_project_cash_flows()
 		cfline('Investor Operating Activities:', -1); 
 		cfline('cf_pretax_operating_cashflow', 0); 
 		cfline('cf_tax_investor_operating_activities', 0); 
+		cfline('');
 		cfline('Investor Investing Activities:', -1); 
 		cfline('sale_of_property',0,-1,0);
 		cfline('cf_net_salvage_value', 0); 
 		cfline('cf_tax_investor_investing_activities', 0);
+		cfline('');
 		cfline('Investor Financing Activities:', -1); 
-		cfline('issuance_of_equity', 0); 
-		cfline('ibi_total', 0); 
-		cfline('cbi_total', 0); 
+		cfline('sale_of_property', 0); 
 		cfline('cf_tax_investor_financing_activities', 0); 
+		cfline('');
 		cfline('Investor Pre-tax Cash Flow:', -1); /////////////////
 		cfline('cf_tax_investor_operating_activities', 0); 
 		cfline('cf_tax_investor_investing_activities', 0);
@@ -466,13 +501,14 @@ function cf_returns()
 		cfline( 'cf_reserve_leasepayment_interest',0);
 		cfline( 'cf_sponsor_margin',0);
 		cfline( 'cf_sponsor_pretax',0);
-		cfline( 'cf_sponsor_pretax_irr',0);
-		cfline( 'cf_sponsor_pretax_npv',0);
+		cfline('');
 		cfline( 'Developer After-tax Returns:',-1); 
-		cfline( 'cf_sponsor_aftertax_cash',0); // should be the same as cf_sponsor_pretax
-		cfline( 'cf_sponsor_aftertax_tax',0); // sum of state and federal tax
+		cfline( 'cf_sponsor_pretax',0);
+		cfline( 'cf_sponsor_statax',0);
+		cfline( 'cf_sponsor_fedtax',0);
 		cfline( 'cf_sponsor_aftertax_devfee',0);
 		cfline( 'cf_sponsor_aftertax',0); 
+		cfline('');
 		cfline( 'cf_sponsor_aftertax_irr',2); 
 		cfline( 'cf_sponsor_aftertax_npv',0); 
 		cfline( '' );
@@ -484,14 +520,14 @@ function cf_returns()
 		cfline( 'cbi_total', 0);
 		cfline( 'cf_pretax_operating_cashflow',0);
 		cfline( 'cf_tax_investor_pretax',0); 
-		cfline( 'cf_tax_investor_pretax_irr',0); 
-		cfline( 'cf_tax_investor_pretax_npv',0); 
+		cfline('');
 		cfline( 'Investor After-tax Returns:',-1);
 		cfline('cf_tax_investor_aftertax_cash',0);
 		cfline('cf_tax_investor_aftertax_itc',0);
 		cfline('cf_tax_investor_aftertax_ptc',0);
 		cfline('cf_tax_investor_aftertax_tax',0);
 		cfline('cf_tax_investor_aftertax',0);
+		cfline('');
 		cfline('cf_tax_investor_aftertax_irr',2);
 		cfline('cf_tax_investor_aftertax_npv',0);
 	}
@@ -503,12 +539,12 @@ function cf_returns()
 		cfline('cf_project_investing_activities', 0);	 
 		cfline('cf_project_financing_activities', 0); 
 		cfline('cf_pretax_cashflow', 0);
+		cfline('');
 		cfline('Pre-tax Returns:', -1); 
 		cfline( 'issuance_of_equity',0,-1,0); 
 		cfline('cf_pretax_cashflow', 0); 
 		cfline('cf_project_return_pretax', 0); 
-		cfline('cf_project_return_pretax_irr', 2); 
-		cfline('cf_project_return_pretax_npv', 0); 
+		cfline('');
 		cfline('After-tax Returns:', -1); 
 		cfline('cf_project_return_pretax', 0); 
 		cfline('itc_total_fed', 0, 1, 1 ); // offset column to year 1 
@@ -518,49 +554,60 @@ function cf_returns()
 		cfline('cf_ptc_sta', 0); 
 		cfline('cf_statax', 0); 
 		cfline('cf_project_return_aftertax', 0); 
+		cfline('');
 		cfline('cf_project_return_aftertax_irr', 2); 
 		cfline('cf_project_return_aftertax_npv', 0);
 	}
 	if ( fin == 'All Equity Partnership Flip' || fin == 'Leveraged Partnership Flip' )
 	{
-		cfline( '' );
-		cfline( 'TAX INVESTOR RETURNS', -1); 
-		cfline('Investor Pre-tax Returns:',-1);
-		cfline('cf_tax_investor_pretax', 0);
-		cfline('cf_tax_investor_pretax_irr', 2);
-		cfline('cf_tax_investor_pretax_npv', 0);
-		cfline( 'Investor After-tax Returns:', -1); 
- 		cfline('cf_tax_investor_aftertax_cash', 0);
-		cfline('cf_tax_investor_aftertax_itc', 0);
-		cfline('cf_tax_investor_aftertax_ptc', 0);
-		cfline('cf_tax_investor_aftertax_tax', 0);
-		cfline('cf_tax_investor_aftertax', 0);
-		cfline('cf_tax_investor_aftertax_irr', 2);
-		cfline('cf_tax_investor_aftertax_npv', 0);
-		cfline( '' );
+		cfline('');
 		cfline('DEVELOPER RETURNS', -1); 
  		if ( fin == 'All Equity Partnership Flip' )
 		{
 			cfline('Developer Capital Recovery:', -1); 
 			cfline('cf_sponsor_capital_recovery_cash', 0); 
 			cfline('cf_sponsor_capital_recovery_balance', 0); 
+			cfline('');
 		}
 		cfline( 'Developer Pre-tax Returns:',-1);
- 		if ( fin == 'All Equity Partnership Flip' ) { cfline('sponsor_pretax_equity', 0); }
-		else { cfline('cf_sponsor_pretax', 0); }
-		cfline('cf_sponsor_pretax_irr', 2);
-		cfline('cf_sponsor_pretax_npv', 0);
+		cfline('sponsor_pretax_equity', 0); 
+		cfline('sponsor_pretax_development', 0);
+		if ( fin == 'All Equity Partnership Flip' )
+		{
+			cfline('cf_sponsor_pretax_cash_during_recovery', 0);
+			cfline('cf_sponsor_pretax_cash_post_recovery', 0);
+		}
+		else
+		{
+			cfline('cf_sponsor_pretax_cash',0);
+		}
+		cfline('cf_sponsor_pretax', 0); 
+		cfline('');
 		cfline( 'Developer After-tax Returns:', -1); 
 		cfline('cf_sponsor_pretax', 0); 
-		cfline('sponsor_aftertax_equity', 0);
-		cfline('sponsor_aftertax_development', 0);
 		cfline('cf_sponsor_aftertax_itc', 0);
 		cfline('cf_sponsor_aftertax_ptc', 0);
 		cfline('cf_sponsor_aftertax_tax', 0);
 		cfline('cost_dev_fee_tax_liability',0,-1,1); 
 		cfline('cf_sponsor_aftertax', 0); // includes tax paid in Year 1 on development fee that is not shown in developer share of tax 
+		cfline('');
 		cfline('cf_sponsor_aftertax_irr', 2);
 		cfline('cf_sponsor_aftertax_npv', 0);
+		cfline( '' );
+		cfline( 'TAX INVESTOR RETURNS', -1); 
+		cfline('Investor Pre-tax Returns:',-1);
+ 		cfline('cf_tax_investor_aftertax_cash', 0);
+		cfline('cf_tax_investor_pretax', 0);
+		cfline('');
+		cfline( 'Investor After-tax Returns:', -1); 
+		cfline('cf_tax_investor_pretax', 0);
+		cfline('cf_tax_investor_aftertax_itc', 0);
+		cfline('cf_tax_investor_aftertax_ptc', 0);
+		cfline('cf_tax_investor_aftertax_tax', 0);
+		cfline('cf_tax_investor_aftertax', 0);
+		cfline('');
+		cfline('cf_tax_investor_aftertax_irr', 2);
+		cfline('cf_tax_investor_aftertax_npv', 0);
 	}
 	cfline( '' ); 
 }
@@ -602,55 +649,53 @@ function cf_income_tax()
 		cfline('DEVELOPER (LESSEE) INCOME TAXES', -1); 
 		cfline('State:', -1); 
 		cfline('cf_energy_value', 0); 
-		cfline('cf_reserve_interest', 0);
 		cfline('cf_reserve_leasepayment_interest',0);
+		cfline('cf_reserve_interest', 0);
+		cfline('cf_sponsor_margin',0);
+		if ( technology() == 'Geothermal' ) { if (value('system_use_recapitalization')==1) { cfline ('cf_recapitalization', 0); } }		
+		cfline('cf_operating_expenses', 0,-1,0);
+		cfline('cf_pretax_operating_cashflow', 0,-1,0); 
 		cfline('cf_pbi_statax_total',0);
-		cfline('minus:', -1, 0); 
-		cfline('cf_operating_expenses', 0);
-		cfline('cf_pretax_operating_cashflow', 0); 
-		cfline('equals:', -1, 0); 
 		cfline('cf_sponsor_statax_income_with_incentives', 0); 
 		cfline('cf_state_tax_frac',3); 
 		cfline('cf_sponsor_statax', 0); 
+		cfline('');
 		cfline('Federal:', -1); 
 		cfline('cf_energy_value', 0); 
-		cfline('cf_reserve_interest', 0);
 		cfline('cf_reserve_leasepayment_interest',0);
-		cfline('cf_pbi_fedtax_total',0);
+		cfline('cf_reserve_interest', 0);
+		cfline('cf_sponsor_margin',0);
+		if ( technology() == 'Geothermal' ) { if (value('system_use_recapitalization')==1) { cfline ('cf_recapitalization', 0); } }		
+		cfline('cf_operating_expenses', 0,-1,0);
+		cfline('cf_pretax_operating_cashflow', 0,-1,0); 
 		cfline('cf_sponsor_statax', 0); 
-		cfline('minus:', -1, 0); 
-		cfline('cf_operating_expenses', 0);
-		cfline('cf_pretax_operating_cashflow', 0); 
-		cfline('equals:', -1, 0); 
+		cfline('cf_pbi_fedtax_total',0);
 		cfline('cf_sponsor_fedtax_income_with_incentives', 0); 
-		cfline('cf_fed_tax_frac',3); 
+		cfline('cf_federal_tax_frac',3); 
 		cfline('cf_sponsor_fedtax', 0); 
 		cfline( '' );
 		cfline('INVESTOR (LESSOR) INCOME TAXES', -1); 
 		cfline('State:', -1);
 		cfline('cf_pretax_operating_cashflow',0);
 		cfline('cf_net_salvage_value',0);
+		cfline('cf_stadepr_total',0,-1,0);
 		cfline('ibi_statax_total', 0, 1, 1); 
 		cfline('cbi_statax_total', 0, 1, 1); 
-		cfline('minus:', -1, 0); 
-		cfline('cf_stadepr_total',0);
-		cfline('equals:',-1,0);
 		cfline('cf_tax_investor_statax_income_with_incentives',0);
 		cfline('cf_state_tax_frac',3); 
 		cfline('cf_tax_investor_statax', 0); 
+		cfline('');
 		cfline('Federal:', -1); 
 		cfline('cf_pretax_operating_cashflow',0);
 		cfline('cf_net_salvage_value',0);
+		cfline('cf_feddepr_total',0,-1,0);
 		cfline('cf_tax_investor_statax', 0); 
+		cfline('itc_total_sta', 0, 1, 1);
 		cfline('cf_ptc_sta', 0); 
-		cfline('itc_sta_total', 0, 1, 1); 
 		cfline('ibi_fedtax_total', 0, 1, 1); 
 		cfline('cbi_fedtax_total', 0, 1, 1); 
-		cfline('minus:', -1, 0); 
-		cfline('cf_feddepr_total',0);
-		cfline('equals:',-1,0);
 		cfline('cf_tax_investor_fedtax_income_with_incentives',0);
-		cfline('cf_fed_tax_frac',3); 
+		cfline('cf_federal_tax_frac',3); 
 		cfline('cf_tax_investor_fedtax', 0); 
 	}
 	else
@@ -696,6 +741,9 @@ function cf_reserves()
 	fin = financing();
 	has_debt = ( fin == 'Single Owner' ) || ( fin == 'Host Developer' ) || ( fin == 'Leveraged Parntership Flip' );
 	cfline('RESERVES', -1); 
+	cfline('cf_funding_om', 0); 
+	cfline('cf_disbursement_om', 0); 
+	cfline('cf_reserve_om', 0); 
 	if ( has_debt )
 	{
 		cfline( '' ); 
@@ -703,10 +751,13 @@ function cf_reserves()
 		cfline('cf_disbursement_debtservice', 0); 
 		cfline('cf_reserve_debtservice', 0); 
 	}
-	cfline( '' ); 
-	cfline('cf_funding_om', 0); 
-	cfline('cf_disbursement_om', 0); 
-	cfline('cf_reserve_om', 0); 
+	if ( fin == 'Sale Leaseback' )
+	{
+		cfline( '' ); 
+		cfline('cf_funding_leasepayment', 0); 
+		cfline('cf_disbursement_leasepayment', 0); 
+		cfline('cf_reserve_leasepayment', 0); 
+	}
 	cfline( '' ); 
 	cfline('cf_funding_receivables', 0); 
 	cfline('cf_disbursement_receivables', 0); 
@@ -727,30 +778,37 @@ function cf_reserves()
 	cfline('cf_reserve_total', 0); 
 	cfline('reserves_interest'); 
 	cfline( 'cf_reserve_interest', 0);
+	if ( fin == 'Sale Leaseback' ) 
+	{
+		cfline(''); 
+		cfline('cf_reserve_leasepayment', 0); 
+		cfline('reserves_interest'); 
+		cfline( 'cf_reserve_leasepayment_interest', 0); 
+	}
 	cfline(''); 
 }
 
 function depreciation_tables() 
 { 
 	cfrow('% of Total\nDepreciable Basis,Gross Amount\nAllocated,IBI\nReduction,CBI\nReduction,Depreciable Basis\nPrior to ITC,ITC Qualifying\nCosts,% of ITC\nQualifying Costs,ITC\nAmount,ITC Basis\nDisallowance,ITC\nAmount,ITC Basis\nDisallowance,State ITC\nReduction,Federal ITC\nReduction,Depreciable Basis\nAfter ITC Reduction,First Year Bonus\nDepreciation,Depreciable Basis\nAfter Bonus Reduction',-2); 
- 	cfrow('DEPRECIATION AND ITC: STATE', -1); 
-	cfrow('MACRS 5-yr,depr_stabas_percent_macrs_5,depr_alloc_macrs_5,depr_stabas_ibi_reduc_macrs_5,depr_stabas_cbi_reduc_macrs_5,depr_stabas_prior_itc_macrs_5,itc_sta_qual_macrs_5,depr_stabas_percent_qual_macrs_5,depr_stabas_percent_amount_macrs_5,itc_disallow_sta_percent_macrs_5,depr_stabas_fixed_amount_macrs_5,itc_disallow_sta_fixed_macrs_5,depr_stabas_itc_sta_reduction_macrs_5,depr_stabas_itc_fed_reduction_macrs_5,depr_stabas_after_itc_macrs_5,depr_stabas_first_year_bonus_macrs_5,depr_stabas_macrs_5'); 
-	cfrow('MACRS 15-yr,depr_stabas_percent_macrs_15,depr_alloc_macrs_15,depr_stabas_ibi_reduc_macrs_15,depr_stabas_cbi_reduc_macrs_15,depr_stabas_prior_itc_macrs_15,itc_sta_qual_macrs_15,depr_stabas_percent_qual_macrs_15,depr_stabas_percent_amount_macrs_15,itc_disallow_sta_percent_macrs_15,depr_stabas_fixed_amount_macrs_15,itc_disallow_sta_fixed_macrs_15,depr_stabas_itc_sta_reduction_macrs_15,depr_stabas_itc_fed_reduction_macrs_15,depr_stabas_after_itc_macrs_15,depr_stabas_first_year_bonus_macrs_15,depr_stabas_macrs_15'); 
-	cfrow('Straight Line 5-yr,depr_stabas_percent_sl_5,depr_alloc_sl_5,depr_stabas_ibi_reduc_sl_5,depr_stabas_cbi_reduc_sl_5,depr_stabas_prior_itc_sl_5,itc_sta_qual_sl_5,depr_stabas_percent_qual_sl_5,depr_stabas_percent_amount_sl_5,itc_disallow_sta_percent_sl_5,depr_stabas_fixed_amount_sl_5,itc_disallow_sta_fixed_sl_5,depr_stabas_itc_sta_reduction_sl_5,depr_stabas_itc_fed_reduction_sl_5,depr_stabas_after_itc_sl_5,depr_stabas_first_year_bonus_sl_5,depr_stabas_sl_5'); 
-	cfrow('Straight Line 15-yr,depr_stabas_percent_sl_15,depr_alloc_sl_15,depr_stabas_ibi_reduc_sl_15,depr_stabas_cbi_reduc_sl_15,depr_stabas_prior_itc_sl_15,itc_sta_qual_sl_15,depr_stabas_percent_qual_sl_15,depr_stabas_percent_amount_sl_15,itc_disallow_sta_percent_sl_15,depr_stabas_fixed_amount_sl_15,itc_disallow_sta_fixed_sl_15,depr_stabas_itc_sta_reduction_sl_15,depr_stabas_itc_fed_reduction_sl_15,depr_stabas_after_itc_sl_15,depr_stabas_first_year_bonus_sl_15,depr_stabas_sl_15'); 
-	cfrow('Straight Line 20-yr,depr_stabas_percent_sl_20,depr_alloc_sl_20,depr_stabas_ibi_reduc_sl_20,depr_stabas_cbi_reduc_sl_20,depr_stabas_prior_itc_sl_20,itc_sta_qual_sl_20,depr_stabas_percent_qual_sl_20,depr_stabas_percent_amount_sl_20,itc_disallow_sta_percent_sl_20,depr_stabas_fixed_amount_sl_20,itc_disallow_sta_fixed_sl_20,depr_stabas_itc_sta_reduction_sl_20,depr_stabas_itc_fed_reduction_sl_20,depr_stabas_after_itc_sl_20,depr_stabas_first_year_bonus_sl_20,depr_stabas_sl_20'); 
-	cfrow('Straight Line 39-yr,depr_stabas_percent_sl_39,depr_alloc_sl_39,depr_stabas_ibi_reduc_sl_39,depr_stabas_cbi_reduc_sl_39,depr_stabas_prior_itc_sl_39,itc_sta_qual_sl_39,depr_stabas_percent_qual_sl_39,depr_stabas_percent_amount_sl_39,itc_disallow_sta_percent_sl_39,depr_stabas_fixed_amount_sl_39,itc_disallow_sta_fixed_sl_39,depr_stabas_itc_sta_reduction_sl_39,depr_stabas_itc_fed_reduction_sl_39,depr_stabas_after_itc_sl_39,depr_stabas_first_year_bonus_sl_39,depr_stabas_sl_39'); 
-	cfrow('Custom,depr_stabas_percent_custom,depr_alloc_custom,depr_stabas_ibi_reduc_custom,depr_stabas_cbi_reduc_custom,depr_stabas_prior_itc_custom,itc_sta_qual_custom,depr_stabas_percent_qual_custom,depr_stabas_percent_amount_custom,itc_disallow_sta_percent_custom,depr_stabas_fixed_amount_custom,itc_disallow_sta_fixed_custom,depr_stabas_itc_sta_reduction_custom,depr_stabas_itc_fed_reduction_custom,depr_stabas_after_itc_custom,depr_stabas_first_year_bonus_custom,depr_stabas_custom'); 
-	cfrow('Total,depr_stabas_percent_total,depr_alloc_total,depr_stabas_ibi_reduc_total,depr_stabas_cbi_reduc_total,depr_stabas_prior_itc_total,itc_sta_qual_total,depr_stabas_percent_qual_total,depr_stabas_percent_amount_total,itc_disallow_sta_percent_total,depr_stabas_fixed_amount_total,itc_disallow_sta_fixed_total,depr_stabas_itc_sta_reduction_total,depr_stabas_itc_fed_reduction_total,depr_stabas_after_itc_total,depr_stabas_first_year_bonus_total,depr_stabas_total'); 
-	cfrow('DEPRECIATION AND ITC: FEDERAL', -1); 
-	cfrow('MACRS 5-yr,depr_fedbas_percent_macrs_5,depr_alloc_macrs_5,depr_fedbas_ibi_reduc_macrs_5,depr_fedbas_cbi_reduc_macrs_5,depr_fedbas_prior_itc_macrs_5,itc_fed_qual_macrs_5,depr_fedbas_percent_qual_macrs_5,depr_fedbas_percent_amount_macrs_5,itc_disallow_fed_percent_macrs_5,depr_fedbas_fixed_amount_macrs_5,itc_disallow_fed_fixed_macrs_5,depr_fedbas_itc_sta_reduction_macrs_5,depr_fedbas_itc_fed_reduction_macrs_5,depr_fedbas_after_itc_macrs_5,depr_fedbas_first_year_bonus_macrs_5,depr_fedbas_macrs_5'); 
-	cfrow('MACRS 15-yr,depr_fedbas_percent_macrs_15,depr_alloc_macrs_15,depr_fedbas_ibi_reduc_macrs_15,depr_fedbas_cbi_reduc_macrs_15,depr_fedbas_prior_itc_macrs_15,itc_fed_qual_macrs_15,depr_fedbas_percent_qual_macrs_15,depr_fedbas_percent_amount_macrs_15,itc_disallow_fed_percent_macrs_15,depr_fedbas_fixed_amount_macrs_15,itc_disallow_fed_fixed_macrs_15,depr_fedbas_itc_sta_reduction_macrs_15,depr_fedbas_itc_fed_reduction_macrs_15,depr_fedbas_after_itc_macrs_15,depr_fedbas_first_year_bonus_macrs_15,depr_fedbas_macrs_15'); 
-	cfrow('Straight Line 5-yr,depr_fedbas_percent_sl_5,depr_alloc_sl_5,depr_fedbas_ibi_reduc_sl_5,depr_fedbas_cbi_reduc_sl_5,depr_fedbas_prior_itc_sl_5,itc_fed_qual_sl_5,depr_fedbas_percent_qual_sl_5,depr_fedbas_percent_amount_sl_5,itc_disallow_fed_percent_sl_5,depr_fedbas_fixed_amount_sl_5,itc_disallow_fed_fixed_sl_5,depr_fedbas_itc_fed_reduction_sl_5,depr_fedbas_itc_sta_reduction_sl_5,depr_fedbas_after_itc_sl_5,depr_fedbas_first_year_bonus_sl_5,depr_fedbas_sl_5'); 
-	cfrow('Straight Line 15-yr,depr_fedbas_percent_sl_15,depr_alloc_sl_15,depr_fedbas_ibi_reduc_sl_15,depr_fedbas_cbi_reduc_sl_15,depr_fedbas_prior_itc_sl_15,itc_fed_qual_sl_15,depr_fedbas_percent_qual_sl_15,depr_fedbas_percent_amount_sl_15,itc_disallow_fed_percent_sl_15,depr_fedbas_fixed_amount_sl_15,itc_disallow_fed_fixed_sl_15,depr_fedbas_itc_fed_reduction_sl_15,depr_fedbas_itc_sta_reduction_sl_15,depr_fedbas_after_itc_sl_15,depr_fedbas_first_year_bonus_sl_15,depr_fedbas_sl_15'); 
-	cfrow('Straight Line 20-yr,depr_fedbas_percent_sl_20,depr_alloc_sl_20,depr_fedbas_ibi_reduc_sl_20,depr_fedbas_cbi_reduc_sl_20,depr_fedbas_prior_itc_sl_20,itc_fed_qual_sl_20,depr_fedbas_percent_qual_sl_20,depr_fedbas_percent_amount_sl_20,itc_disallow_fed_percent_sl_20,depr_fedbas_fixed_amount_sl_20,itc_disallow_fed_fixed_sl_20,depr_fedbas_itc_fed_reduction_sl_20,depr_fedbas_itc_sta_reduction_sl_20,depr_fedbas_after_itc_sl_20,depr_fedbas_first_year_bonus_sl_20,depr_fedbas_sl_20'); 
-	cfrow('Straight Line 39-yr,depr_fedbas_percent_sl_39,depr_alloc_sl_39,depr_fedbas_ibi_reduc_sl_39,depr_fedbas_cbi_reduc_sl_39,depr_fedbas_prior_itc_sl_39,itc_fed_qual_sl_39,depr_fedbas_percent_qual_sl_39,depr_fedbas_percent_amount_sl_39,itc_disallow_fed_percent_sl_39,depr_fedbas_fixed_amount_sl_39,itc_disallow_fed_fixed_sl_39,depr_fedbas_itc_fed_reduction_sl_39,depr_fedbas_itc_sta_reduction_sl_39,depr_fedbas_after_itc_sl_39,depr_fedbas_first_year_bonus_sl_39,depr_fedbas_sl_39'); 
-	cfrow('Custom,depr_fedbas_percent_custom,depr_alloc_custom,depr_fedbas_ibi_reduc_custom,depr_fedbas_cbi_reduc_custom,depr_fedbas_prior_itc_custom,itc_fed_qual_custom,depr_fedbas_percent_qual_custom,depr_fedbas_percent_amount_custom,itc_disallow_fed_percent_custom,depr_fedbas_fixed_amount_custom,itc_disallow_fed_fixed_custom,depr_fedbas_itc_fed_reduction_custom,depr_fedbas_itc_sta_reduction_custom,depr_fedbas_after_itc_custom,depr_fedbas_first_year_bonus_custom,depr_fedbas_custom'); 
-	cfrow('Total,depr_fedbas_percent_total,depr_alloc_total,depr_fedbas_ibi_reduc_total,depr_fedbas_cbi_reduc_total,depr_fedbas_prior_itc_total,itc_fed_qual_total,depr_fedbas_percent_qual_total,depr_fedbas_percent_amount_total,itc_disallow_fed_percent_total,depr_fedbas_fixed_amount_total,itc_disallow_fed_fixed_total,depr_fedbas_itc_fed_reduction_total,depr_fedbas_itc_sta_reduction_total,depr_fedbas_after_itc_total,depr_fedbas_first_year_bonus_total,depr_fedbas_total'); 
+	cfrow('DEPRECIATION AND ITC: STATE',-1);
+	cfrow('MACRS 5-yr,depr_stabas_percent_macrs_5,depr_alloc_macrs_5,depr_stabas_ibi_reduc_macrs_5,depr_stabas_cbi_reduc_macrs_5,depr_stabas_prior_itc_macrs_5,itc_sta_qual_macrs_5,depr_stabas_percent_qual_macrs_5,depr_stabas_percent_amount_macrs_5,itc_disallow_sta_percent_macrs_5,depr_stabas_fixed_amount_macrs_5,itc_disallow_sta_fixed_macrs_5,depr_stabas_itc_sta_reduction_macrs_5,depr_stabas_itc_fed_reduction_macrs_5,depr_stabas_after_itc_macrs_5,depr_stabas_first_year_bonus_macrs_5,depr_stabas_macrs_5' );
+	cfrow('MACRS 15-yr,depr_stabas_percent_macrs_15,depr_alloc_macrs_15,depr_stabas_ibi_reduc_macrs_15,depr_stabas_cbi_reduc_macrs_15,depr_stabas_prior_itc_macrs_15,itc_sta_qual_macrs_15,depr_stabas_percent_qual_macrs_15,depr_stabas_percent_amount_macrs_15,itc_disallow_sta_percent_macrs_15,depr_stabas_fixed_amount_macrs_15,itc_disallow_sta_fixed_macrs_15,depr_stabas_itc_sta_reduction_macrs_15,depr_stabas_itc_fed_reduction_macrs_15,depr_stabas_after_itc_macrs_15,depr_stabas_first_year_bonus_macrs_15,depr_stabas_macrs_15' );
+	cfrow('Straight Line 5-yr,depr_stabas_percent_sl_5,depr_alloc_sl_5,depr_stabas_ibi_reduc_sl_5,depr_stabas_cbi_reduc_sl_5,depr_stabas_prior_itc_sl_5,itc_sta_qual_sl_5,depr_stabas_percent_qual_sl_5,depr_stabas_percent_amount_sl_5,itc_disallow_sta_percent_sl_5,depr_stabas_fixed_amount_sl_5,itc_disallow_sta_fixed_sl_5,depr_stabas_itc_sta_reduction_sl_5,depr_stabas_itc_fed_reduction_sl_5,depr_stabas_after_itc_sl_5,depr_stabas_first_year_bonus_sl_5,depr_stabas_sl_5' );
+	cfrow('Straight Line 15-yr,depr_stabas_percent_sl_15,depr_alloc_sl_15,depr_stabas_ibi_reduc_sl_15,depr_stabas_cbi_reduc_sl_15,depr_stabas_prior_itc_sl_15,itc_sta_qual_sl_15,depr_stabas_percent_qual_sl_15,depr_stabas_percent_amount_sl_15,itc_disallow_sta_percent_sl_15,depr_stabas_fixed_amount_sl_15,itc_disallow_sta_fixed_sl_15,depr_stabas_itc_sta_reduction_sl_15,depr_stabas_itc_fed_reduction_sl_15,depr_stabas_after_itc_sl_15,depr_stabas_first_year_bonus_sl_15,depr_stabas_sl_15' );
+	cfrow('Straight Line 20-yr,depr_stabas_percent_sl_20,depr_alloc_sl_20,depr_stabas_ibi_reduc_sl_20,depr_stabas_cbi_reduc_sl_20,depr_stabas_prior_itc_sl_20,itc_sta_qual_sl_20,depr_stabas_percent_qual_sl_20,depr_stabas_percent_amount_sl_20,itc_disallow_sta_percent_sl_20,depr_stabas_fixed_amount_sl_20,itc_disallow_sta_fixed_sl_20,depr_stabas_itc_sta_reduction_sl_20,depr_stabas_itc_fed_reduction_sl_20,depr_stabas_after_itc_sl_20,depr_stabas_first_year_bonus_sl_20,depr_stabas_sl_20' );
+	cfrow('Straight Line 39-yr,depr_stabas_percent_sl_39,depr_alloc_sl_39,depr_stabas_ibi_reduc_sl_39,depr_stabas_cbi_reduc_sl_39,depr_stabas_prior_itc_sl_39,itc_sta_qual_sl_39,depr_stabas_percent_qual_sl_39,depr_stabas_percent_amount_sl_39,itc_disallow_sta_percent_sl_39,depr_stabas_fixed_amount_sl_39,itc_disallow_sta_fixed_sl_39,depr_stabas_itc_sta_reduction_sl_39,depr_stabas_itc_fed_reduction_sl_39,depr_stabas_after_itc_sl_39,depr_stabas_first_year_bonus_sl_39,depr_stabas_sl_39' );
+	cfrow('Custom,depr_stabas_percent_custom,depr_alloc_custom,depr_stabas_ibi_reduc_custom,depr_stabas_cbi_reduc_custom,depr_stabas_prior_itc_custom,itc_sta_qual_custom,depr_stabas_percent_qual_custom,depr_stabas_percent_amount_custom,itc_disallow_sta_percent_custom,depr_stabas_fixed_amount_custom,itc_disallow_sta_fixed_custom,depr_stabas_itc_sta_reduction_custom,depr_stabas_itc_fed_reduction_custom,depr_stabas_after_itc_custom,depr_stabas_first_year_bonus_custom,depr_stabas_custom' );
+	cfrow('Total,depr_stabas_percent_total,depr_alloc_total,depr_stabas_ibi_reduc_total,depr_stabas_cbi_reduc_total,depr_stabas_prior_itc_total,itc_sta_qual_total,depr_stabas_percent_qual_total,depr_stabas_percent_amount_total,itc_disallow_sta_percent_total,depr_stabas_fixed_amount_total,itc_disallow_sta_fixed_total,depr_stabas_itc_sta_reduction_total,depr_stabas_itc_fed_reduction_total,depr_stabas_after_itc_total,depr_stabas_first_year_bonus_total,depr_stabas_total' );
+	cfrow('DEPRECIATION AND ITC: FEDERAL',-1);
+	cfrow('MACRS 5-yr,depr_fedbas_percent_macrs_5,depr_alloc_macrs_5,depr_fedbas_ibi_reduc_macrs_5,depr_fedbas_cbi_reduc_macrs_5,depr_fedbas_prior_itc_macrs_5,itc_fed_qual_macrs_5,depr_fedbas_percent_qual_macrs_5,depr_fedbas_percent_amount_macrs_5,itc_disallow_fed_percent_macrs_5,depr_fedbas_fixed_amount_macrs_5,itc_disallow_fed_fixed_macrs_5,depr_fedbas_itc_sta_reduction_macrs_5,depr_fedbas_itc_fed_reduction_macrs_5,depr_fedbas_after_itc_macrs_5,depr_fedbas_first_year_bonus_macrs_5,depr_fedbas_macrs_5' );
+	cfrow('MACRS 15-yr,depr_fedbas_percent_macrs_15,depr_alloc_macrs_15,depr_fedbas_ibi_reduc_macrs_15,depr_fedbas_cbi_reduc_macrs_15,depr_fedbas_prior_itc_macrs_15,itc_fed_qual_macrs_15,depr_fedbas_percent_qual_macrs_15,depr_fedbas_percent_amount_macrs_15,itc_disallow_fed_percent_macrs_15,depr_fedbas_fixed_amount_macrs_15,itc_disallow_fed_fixed_macrs_15,depr_fedbas_itc_sta_reduction_macrs_15,depr_fedbas_itc_fed_reduction_macrs_15,depr_fedbas_after_itc_macrs_15,depr_fedbas_first_year_bonus_macrs_15,depr_fedbas_macrs_15' );
+	cfrow('Straight Line 5-yr,depr_fedbas_percent_sl_5,depr_alloc_sl_5,depr_fedbas_ibi_reduc_sl_5,depr_fedbas_cbi_reduc_sl_5,depr_fedbas_prior_itc_sl_5,itc_fed_qual_sl_5,depr_fedbas_percent_qual_sl_5,depr_fedbas_percent_amount_sl_5,itc_disallow_fed_percent_sl_5,depr_fedbas_fixed_amount_sl_5,itc_disallow_fed_fixed_sl_5,depr_fedbas_itc_sta_reduction_sl_5,depr_fedbas_itc_fed_reduction_sl_5,depr_fedbas_after_itc_sl_5,depr_fedbas_first_year_bonus_sl_5,depr_fedbas_sl_5' );
+	cfrow('Straight Line 15-yr,depr_fedbas_percent_sl_15,depr_alloc_sl_15,depr_fedbas_ibi_reduc_sl_15,depr_fedbas_cbi_reduc_sl_15,depr_fedbas_prior_itc_sl_15,itc_fed_qual_sl_15,depr_fedbas_percent_qual_sl_15,depr_fedbas_percent_amount_sl_15,itc_disallow_fed_percent_sl_15,depr_fedbas_fixed_amount_sl_15,itc_disallow_fed_fixed_sl_15,depr_fedbas_itc_sta_reduction_sl_15,depr_fedbas_itc_fed_reduction_sl_15,depr_fedbas_after_itc_sl_15,depr_fedbas_first_year_bonus_sl_15,depr_fedbas_sl_15' );
+	cfrow('Straight Line 20-yr,depr_fedbas_percent_sl_20,depr_alloc_sl_20,depr_fedbas_ibi_reduc_sl_20,depr_fedbas_cbi_reduc_sl_20,depr_fedbas_prior_itc_sl_20,itc_fed_qual_sl_20,depr_fedbas_percent_qual_sl_20,depr_fedbas_percent_amount_sl_20,itc_disallow_fed_percent_sl_20,depr_fedbas_fixed_amount_sl_20,itc_disallow_fed_fixed_sl_20,depr_fedbas_itc_sta_reduction_sl_20,depr_fedbas_itc_fed_reduction_sl_20,depr_fedbas_after_itc_sl_20,depr_fedbas_first_year_bonus_sl_20,depr_fedbas_sl_20' );
+	cfrow('Straight Line 39-yr,depr_fedbas_percent_sl_39,depr_alloc_sl_39,depr_fedbas_ibi_reduc_sl_39,depr_fedbas_cbi_reduc_sl_39,depr_fedbas_prior_itc_sl_39,itc_fed_qual_sl_39,depr_fedbas_percent_qual_sl_39,depr_fedbas_percent_amount_sl_39,itc_disallow_fed_percent_sl_39,depr_fedbas_fixed_amount_sl_39,itc_disallow_fed_fixed_sl_39,depr_fedbas_itc_sta_reduction_sl_39,depr_fedbas_itc_fed_reduction_sl_39,depr_fedbas_after_itc_sl_39,depr_fedbas_first_year_bonus_sl_39,depr_fedbas_sl_39' );
+	cfrow('Custom,depr_fedbas_percent_custom,depr_alloc_custom,depr_fedbas_ibi_reduc_custom,depr_fedbas_cbi_reduc_custom,depr_fedbas_prior_itc_custom,itc_fed_qual_custom,depr_fedbas_percent_qual_custom,depr_fedbas_percent_amount_custom,itc_disallow_fed_percent_custom,depr_fedbas_fixed_amount_custom,itc_disallow_fed_fixed_custom,depr_fedbas_itc_sta_reduction_custom,depr_fedbas_itc_fed_reduction_custom,depr_fedbas_after_itc_custom,depr_fedbas_first_year_bonus_custom,depr_fedbas_custom' );
+	cfrow('Total,depr_fedbas_percent_total,depr_alloc_total,depr_fedbas_ibi_reduc_total,depr_fedbas_cbi_reduc_total,depr_fedbas_prior_itc_total,itc_fed_qual_total,depr_fedbas_percent_qual_total,depr_fedbas_percent_amount_total,itc_disallow_fed_percent_total,depr_fedbas_fixed_amount_total,itc_disallow_fed_fixed_total,depr_fedbas_itc_sta_reduction_total,depr_fedbas_itc_fed_reduction_total,depr_fedbas_after_itc_total,depr_fedbas_first_year_bonus_total,depr_fedbas_total'); 
 } 
  
  
@@ -802,15 +860,14 @@ function send_excel_depr( xl, variable )
 
 function is_ppa_price_uniform()
 {
-	mode = get('ppa_multiplier_model');
+	mode = value('ppa_multiplier_model');
 	if ( mode == 0 ) // TOD weekday/weekend schedule matrices
 	{
 		price = alloc(9);
 		for (i=1; i<=#price; i++) 
 		{ 
-			price[i-1] = value('firstyear_energy_price' + to_string(i) ); 
+			price[i-1] = output('firstyear_energy_price' + to_string(i) ); 
 		}
-		outln(price);
 		j=0;
 		arr[j] = price[0];
 		for (i=0; i<#price; i++ )
@@ -825,12 +882,11 @@ function is_ppa_price_uniform()
 		{
 			if ( i>0 && arr[i]!=arr[i-1] ) { return false; }
 		}
-		outln(arr);	
 		return true;
 	}
 	else // TOD time series multipliers
 	{
-		multipliers = get('ppa_multipliers');
+		multipliers = value('ppa_multipliers');
 		for ( i=1; i<#multipliers; i++ )
 		{
 			if ( multipliers[i] != multipliers[i-1] ) { return false; }
@@ -865,7 +921,6 @@ function set_fuel(xl)
  
 function set_incentives(xl) 
 { 
- 
 	send_excel(       xl, 'ibi_fed_amount'); 
 	send_excel_yesno( xl, 'ibi_fed_amount_deprbas_fed'); 
 	send_excel_yesno( xl, 'ibi_fed_amount_deprbas_sta'); 
@@ -1124,27 +1179,31 @@ function set_taxes_insurance(xl)
 { 
  
 	tax = value('federal_tax_rate'); 
-	t=alloc( value('analysis_period') ); 
-	if ( #tax == 1 ) { 
-		send_excel( xl, 'federal_tax_rate'); 
-		for (i=0;i<#t;i++) t[i]=tax[0]; 
+	t=alloc( value('analysis_period') + 1 ); 
+	if ( #tax == 1 ) 
+	{ 
+		xl_set( xl, tax[0], 'federal_tax_rate' );
+		t[0]=0;
+		for (i=1;i<#t;i++) { t[i]=tax[0]; }
 		xl_set( xl, t, 'AnnualTaxFederal'); 
 	}	 
 	else 
 	{ 
-		xl_set( xl, 'n/a', 'federal_tax_rate'); 
+		xl_set( xl, tax[1], 'federal_tax_rate'); 
 		xl_set( xl, tax, 'AnnualTaxFederal'); 
 	}		 
  
 	tax = value('state_tax_rate'); 
-	if ( #tax == 1 ) { 
-		send_excel( xl, 'state_tax_rate'); 
-		for (i=0;i<#t;i++) t[i]=tax[0]; 
+	if ( #tax == 1 ) 
+	{ 
+		xl_set( xl, tax[0], 'state_tax_rate'); 
+		t[0]=0;
+		for (i=1;i<#t;i++) { t[i]=tax[0]; }
 		xl_set( xl, t, 'AnnualTaxState'); 
 	}	 
 	else 
 	{ 
-		xl_set( xl, 'n/a', 'state_tax_rate'); 
+		xl_set( xl, tax[1], 'state_tax_rate'); 
 		xl_set( xl, tax, 'AnnualTaxState'); 
 	}
 	
@@ -1181,9 +1240,9 @@ function set_debt_parameters_na ( xl )
 	xl_set( xl, na, 'CostDebtUpfront' ); 
 
 	xl_set( xl, na, 'dscr_reserve_months'); 
-	xl_set( xl, [na, na], 'cf_reserve_debtservice'); 
-	xl_set( xl, [na, na], 'cf_funding_debtservice'); 
-	xl_set( xl, [na, na], 'cf_disbursement_debtservice'); 
+	xl_set( xl, [0, 0], 'cf_reserve_debtservice'); 
+	xl_set( xl, [0, 0], 'cf_funding_debtservice'); 
+	xl_set( xl, [0, 0], 'cf_disbursement_debtservice'); 
 
 	xl_set( xl, na, 'pbi_fed_for_ds'); 
 	xl_set( xl, na, 'pbi_sta_for_ds'); 
@@ -1251,19 +1310,21 @@ function set_annual_values( xl )
 }
 
 function set_solution_mode( xl )
-{		 
+{	
+	fin = financing();
+	flip = ( fin == 'All Equity Partnership Flip' || fin == 'Leveraged Partnership Flip' );
 	//determine whether to send ppa price and irr inputs or outputs depending on solution mode 
 	send_excel( xl, 'ppa_escalation');
+	send_excel( xl, 'flip_target_year');
+	if ( flip == true ) { xl_set( xl, output('flip_actual_year'), 'flip_actual_year' ); } 
 	if ( value('ppa_soln_mode') == 0 ) //IRR is input 
 	{ 
 		xl_set( xl, value('flip_target_percent'), 'IRRTarget'); 
-		xl_set( xl, value('flip_target_year'), 'IRRTargetYear'); 
 		xl_set( xl, 'Calculated', 'PPAPriceInput' );  
 	} 
 	else //PPA price is input 
 	{ 
-		xl_set( xl, 'Calculated', 'IRRTarget'); 
-		xl_set( xl, 'Calculated', 'IRRTargetYear'); 
+		xl_set( xl, 'N/A', 'IRRTarget');
 		xl_set( xl, value('ppa_price_input'), 'PPAPriceInput' );  
 	} 
 	// indicate whether TOD PPA price multipliers apply
@@ -1280,7 +1341,7 @@ function set_equity_flip_structure( xl )
 	send_excel( xl, 'tax_investor_postflip_tax_percent' );
 }
 
-function set_developer_capital_recovery ( xl )
+function set_developer_capital_recovery( xl )
 {
 	fin = financing();
 	if ( fin == 'All Equity Partnership Flip' )
@@ -1291,13 +1352,11 @@ function set_developer_capital_recovery ( xl )
 		xl_set( xl, str, 'SponsorCapRecoveryMode' );
 		send_excel( xl,  'sponsor_cap_recovery_year' );
 	}
-	elseif ( fin == 'Leveraged Partnership Flip ' )
+	else
 	{
 		xl_set( xl, 'N/A', 'SponsorCapRecoveryMode' );
-		xl_set( xl, 'N/A', 'sponsor_cap_recover_year' );
+		xl_set( xl, 'N/A', 'sponsor_cap_recovery_year' );
 	}
-	//else { return; }
-		
 } 
 
 function set_construction_financing( xl )
@@ -1337,16 +1396,22 @@ function set_analysis_parameters( xl )
 function set_cost_of_financing( xl )
 {
 	fin = financing();
+	send_excel( xl, 'cost_other_financing'); 
 	if ( fin == 'Single Owner' || fin == 'Host Developer') { partner_costs = false; }
 	else { partner_costs = true; }
-	
-	send_excel( xl, 'cost_other_financing'); 
-	
 	if ( partner_costs )
 	{
 		send_excel( xl, 'cost_equity_closing');
 		send_excel( xl, 'cost_dev_fee_percent');
 	}
+}
+
+function set_sale_leaseback( xl )
+{
+	send_excel( xl, 'sponsor_operating_margin');
+	send_excel( xl, 'sponsor_operating_margin_escalation');
+	send_excel( xl, 'tax_investor_required_lease_reserve');
+	send_excel( xl, 'sponsor_operating_margin');
 }
 
 function set_depreciation_detailed ( xl )
@@ -1459,6 +1524,25 @@ cashflow{ 'Single Owner' } = define()
  
 }; 
 
+cashflow{ 'Merchant Plant' } = define()  
+{ 
+	//cf_formatting_examples();
+	cf_production();
+	cf_revenue(); 
+	cf_operating_expenses();
+	cf_earnings();
+	cf_project_cash_flows();
+	cf_returns();
+	cf_levelized_metrics();
+	cf_income_tax();
+	cf_incentives(); 
+	cf_debt_repayment();
+	cf_debt_sizing();	 
+    cf_reserves(); 
+	depreciation_tables(); 
+ 
+}; 
+
 cashflow{ 'Host Developer' } = define()  
 { 
 	cf_production();
@@ -1524,19 +1608,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cf_levelized_metrics();
 	cf_income_tax(); 
  	cf_incentives(); 
- 
-	// reserve accounts 
-	cfline( 'Reserve Accounts', -1); 
-	cfline('cf_reserve_leasepayment', 0); 
-	cfline('cf_reserve_om', 0); 
-	cfline('cf_reserve_receivables', 0); 
-	cfline('cf_reserve_equip1', 0); 
-	cfline('cf_reserve_equip2', 0); 
-	cfline('cf_reserve_equip3', 0); 
-	cfline( '' ); // spacer 
-	cfline( '' ); // spacer 
- 
-	// state and federal depreciation/itc tables 
+	cf_reserves();
 	depreciation_tables(); 
 };
 
@@ -1679,7 +1751,21 @@ cashflow_to_excel{ 'All Equity Partnership Flip' } = define()
 	set_system_cost_salvage( xl );
 }; 
  
-cashflow_to_excel{ 'Sale Leaseback' } = define() 
-{ 
-	msgbox('Send Cash Flow to Excel with Equations for the Sale Leaseback financial model is not available in this version of SAM.\n\nSee the Financial Model Documentation page on the SAM website (sam.nrel.gov/financial) for spreadsheet versions of all financial models.'); 
-}; 
+cashflow_to_excel{ 'Sale Leaseback' } = define()  
+{
+	xl = create_workbook( 'sale_leaseback.xlsx' );
+ 	set_analysis_period();
+	set_annual_values( xl );
+	set_solution_mode( xl );
+	set_sale_leaseback( xl );
+	set_construction_financing( xl );
+	set_incentives(xl);
+	set_om( xl ); 
+	set_fuel( xl ); 
+	set_analysis_parameters( xl );
+	set_cost_of_financing( xl );
+	set_depreciation_detailed ( xl );
+	set_reserves( xl );
+	set_taxes_insurance(xl); 
+	set_system_cost_salvage( xl );
+};

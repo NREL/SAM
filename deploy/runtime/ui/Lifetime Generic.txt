@@ -1,11 +1,11 @@
 Lifetime Generic
-793
-198
+795
+214
 5
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -22,17 +22,20 @@ Width
 Height
 3
 107
+Tool Tip
+5
+0
 Caption
 5
-23
-Performance Degradation
+21
+Annual AC Degradation
 Bold
 2
 1
 GroupBox
 
 1
-7
+8
 Name
 5
 17
@@ -48,38 +51,44 @@ Width
 780
 Height
 3
-75
+87
+Tool Tip
+5
+0
 Caption
 5
 25
-Battery lifetime analysis
+Battery Lifetime Analysis
 Bold
 2
 1
 Label
 
 1
-12
+13
 Name
 5
 21
 batt_lifetime_message
 X
 3
-27
+21
 Y
 3
-141
+138
 Width
 3
 750
 Height
 3
-45
+48
+Tool Tip
+5
+0
 Caption
 5
-163
-In this mode, multiyear degradation of the battery is modeled.  Select the preferred degradation, replacement criteria and  replacement costs on the "Battery" page
+272
+If you are modeling a system with batteries, in the "Simulation over analysis period" mode, SAM runs a simulation for each year in the analysis period to model battery degradation and replacement costs based on the parameters on the Battery Storage and System Costs pages.
 TextColour
 4
 0
@@ -104,7 +113,7 @@ AlignTop
 SchedNumeric
 
 1
-11
+12
 Name
 5
 19
@@ -121,6 +130,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -144,23 +156,26 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 8
 object 7
 X
 3
-417
+441
 Y
 3
 18
 Width
 3
-336
+342
 Height
 3
 90
+Tool Tip
+5
+0
 Caption
 5
 164
@@ -191,7 +206,7 @@ AlignTop
 generic_degradation
 3
 2
-System degradation rate
+Annual AC degradation rate
 %/year
 Degradation and Lifetime
 0

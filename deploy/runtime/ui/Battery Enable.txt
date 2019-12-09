@@ -5,7 +5,7 @@ Battery Enable
 CheckBox
 
 1
-8
+9
 Name
 5
 7
@@ -22,6 +22,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 49

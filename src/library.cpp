@@ -549,10 +549,23 @@ void LibraryCtrl::ReloadLibrary()
 
 		UpdateList();
 
-		double sf = wxGetScreenHDScale();
+/*		double sf = wxGetScreenHDScale();
 		m_list->SetColumnWidth( 0, (int)(350*sf) );
 		for( int i=1;i<m_list->GetColumnCount();i++ )
 			m_list->SetColumnWidth( i, (int)(100*sf) );
+
+		for (size_t ic = 0; ic < (size_t)m_list->GetColumnCount(); ic++)
+			m_list->SetColumnWidth(ic, (int)(140 * wxGetScreenHDScale()));
+*/
+		for (int i = 0; i < m_list->GetColumnCount(); ++i)
+		{
+			m_list->SetColumnWidth(i, wxLIST_AUTOSIZE);
+			const int a_width = m_list->GetColumnWidth(i);
+			m_list->SetColumnWidth(i, wxLIST_AUTOSIZE_USEHEADER);
+			const int h_width = m_list->GetColumnWidth(i);
+			m_list->SetColumnWidth(i, (std::max)(a_width, h_width));
+		}
+
 
 		if ( !item.IsEmpty() ) SetEntrySelection( item );		
 	}

@@ -4581,6 +4581,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         }
     };
 
+    // variables that are disjoint between PVWatts and PVSam
     std::vector<std::string> pvwatts_vars = {"array_type", "azimuth", "tilt",  "gcr", "inv_eff", "dc_ac_ratio",
 											 "module_type"};
 
@@ -4598,6 +4599,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         copy_vars_into_ssc_data(pvwatts_vars);
     }
 
+    // variables common to both models
     std::vector<std::string> pv_vars = {"degradation", "itc_fed_percent", "system_capacity",
                                         "pbi_fed_amount", "pbi_fed_term", "ibi_sta_percent", "ibi_sta_percent_maxvalue",
                                         "ibi_uti_percent", "ibi_uti_percent_maxvalue", "om_fixed", "om_production",
@@ -4793,6 +4795,7 @@ lk::fcall_t* invoke_equation_funcs()
 		fcall_snlinverter,
 		fcall_current_at_voltage_cec,
 		fcall_current_at_voltage_sandia,
+		fcall_property,
 		// fcall_logmsg,
 		0 };
 	return (lk::fcall_t*)vec;

@@ -73,7 +73,7 @@ function resiliency_graphs()
 {
 	xmin = output('resilience_hrs_min');
 	xmax = output('resilience_hrs_max');
-	agraph( 'cdf_of_surviving', 'Cumulative Probabilities of Autonomous Hours', '', '', -1, false, false, 'bottom', 0, xmin, xmax);
+	agraph( 'survival_function', 'Survival Function of System', 'Hours', 'Probability of Surviving Outage > X Hours', -1, false, false, 'bottom', 0, xmin, xmax);
 }
 
 //**************Technologies***************************
@@ -89,13 +89,13 @@ autographs{ 'Wind Power' } = define() { base_technology_graphs(); wind_pruf_grap
 
 autographs{ 'MHKwave' } = define()
 {
-	agraph( 'annual_energy_distribution', 'Annual energy production (kWh)', 'Te = wave energy period (s)', 'Hs = significant wave height (m)', -1, true, false, 'bottom', 4); 
+	agraph( 'annual_energy_distribution', 'Annual Energy Production (kWh)', 'Te = wave energy period (s)', 'Hs = significant wave height (m)', -1, true, false, 'bottom', 4); 
 };
 
 autographs{ 'MHKtidal' } = define()
 {
-	agraph( 'annual_energy_distribution', 'Annual Energy Production', 'u (m/s)', 'kWh', -1, true, false,'bottom' );
-	agraph( 'annual_cumulative_energy_distribution', 'Annual Cumulative Energy Production', 'u (m/s)', 'kWh', -1, true, false,'bottom' );
+	agraph( 'annual_energy_distribution', 'Annual Energy Production', 'Velocity (m/s)', 'Annual Energy (kWh)', -1, true, false,'bottom' );
+	agraph( 'annual_cumulative_energy_distribution', 'Annual Cumulative Energy Production', 'Velocity (m/s)', 'Annual Energy (kWh)', -1, true, false,'bottom' );
 };
 
 autographs{ 'PVWatts'} = define() 

@@ -1,4 +1,4 @@
-Name,City,State,Country,Latitude,Longitude,Nearby Bouy Number,Average Power Flux (kW/m),Bathymetry,Sea Bed,Time Zone,Data Source,Notes,,,,,,,,,
+Name,City,State,Country,Latitude,Longitude,Nearby Buoy Number,Average Power Flux (kW/m),Bathymetry,Sea Bed,Time Zone,Data Source,Notes,,,,,,,,,
 PacWave North,Newport,Oregon,United States,44.6899 N,124.1346 W,NDBC 46094,37,Gently Sloping,Soft Sand,-7,Sandia; SAND2015-7963,Pacific Marine Energy Test Center - North Energy Test Site,,,,,,,,,
 Hs/Te,0.50,1.50,2.50,3.50,4.50,5.50,6.50,7.50,8.50,9.50,10.50,11.50,12.50,13.50,14.50,15.50,16.50,17.50,18.50,19.50,20.50
 0.25,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00

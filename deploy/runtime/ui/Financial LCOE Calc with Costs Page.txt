@@ -1,6 +1,6 @@
 Financial LCOE Calc with Costs Page
-871
-712
+862
+691
 32
 SchedNumeric
 
@@ -15,7 +15,7 @@ X
 405
 Y
 3
-501
+483
 Width
 3
 90
@@ -57,7 +57,7 @@ X
 405
 Y
 3
-528
+510
 Width
 3
 90
@@ -119,7 +119,7 @@ X
 405
 Y
 3
-393
+375
 Width
 3
 90
@@ -181,7 +181,7 @@ X
 405
 Y
 3
-474
+456
 Width
 3
 90
@@ -223,7 +223,7 @@ X
 405
 Y
 3
-366
+348
 Width
 3
 90
@@ -285,7 +285,7 @@ X
 405
 Y
 3
-339
+321
 Width
 3
 90
@@ -347,7 +347,7 @@ X
 405
 Y
 3
-312
+294
 Width
 3
 90
@@ -409,7 +409,7 @@ X
 405
 Y
 3
-420
+402
 Width
 3
 90
@@ -471,7 +471,7 @@ X
 405
 Y
 3
-447
+429
 Width
 3
 90
@@ -533,7 +533,7 @@ X
 570
 Y
 3
-582
+564
 Width
 3
 90
@@ -595,7 +595,7 @@ X
 717
 Y
 3
-312
+294
 Width
 3
 90
@@ -657,7 +657,7 @@ X
 570
 Y
 3
-609
+591
 Width
 3
 90
@@ -719,7 +719,7 @@ X
 570
 Y
 3
-339
+321
 Width
 3
 240
@@ -801,7 +801,7 @@ X
 12
 Y
 3
-561
+543
 Width
 3
 837
@@ -837,10 +837,10 @@ Name
 object 2211
 X
 3
-12
+18
 Y
 3
-267
+249
 Width
 3
 837
@@ -924,7 +924,7 @@ Width
 850
 Height
 3
-693
+678
 Tool Tip
 5
 0
@@ -996,7 +996,7 @@ X
 30
 Y
 3
-666
+648
 Width
 3
 321
@@ -1044,7 +1044,7 @@ X
 351
 Y
 3
-168
+162
 Width
 3
 90
@@ -1106,7 +1106,7 @@ X
 252
 Y
 3
-636
+618
 Width
 3
 90
@@ -1168,7 +1168,7 @@ X
 252
 Y
 3
-582
+564
 Width
 3
 90
@@ -1230,7 +1230,7 @@ X
 96
 Y
 3
-285
+267
 Width
 3
 516
@@ -1270,7 +1270,7 @@ X
 159
 Y
 3
-312
+294
 Width
 3
 90
@@ -1332,7 +1332,7 @@ X
 600
 Y
 3
-372
+354
 Width
 3
 237
@@ -1379,7 +1379,7 @@ X
 351
 Y
 3
-201
+189
 Width
 3
 90
@@ -1441,7 +1441,7 @@ X
 252
 Y
 3
-609
+591
 Width
 3
 90
@@ -1565,7 +1565,7 @@ X
 351
 Y
 3
-234
+216
 Width
 3
 90
@@ -1627,7 +1627,7 @@ X
 570
 Y
 3
-663
+645
 Width
 3
 90
@@ -1689,7 +1689,7 @@ X
 570
 Y
 3
-636
+618
 Width
 3
 90
@@ -2196,19 +2196,9 @@ equations{ '$MIMO$ fixed_charge_rate_calculator' } = define() {
     ${fixed_charge_rate} = fcr;
   }
 };
-1253
-on_load{"Financial LCOE Calculator"} = define()
-{
-  on_change{'ui_fcr_input_option'}();
-  on_change{'c_construction_cost'}();
-  cfin_is_zero_check();
-};
-
-
-on_change{'ui_fcr_input_option'} = define()
-{
+1312
+function enable_disable() {
   calculator = ( value('ui_fcr_input_option') == 1 );
-  
   enable( 'c_lifetime', calculator );
   enable( 'c_inflation', calculator );
   enable( 'c_real_discount_rate', calculator );
@@ -2222,17 +2212,29 @@ on_change{'ui_fcr_input_option'} = define()
   enable( 'ui_crf', calculator );
   enable( 'ui_pfin', calculator );
   enable( 'ui_cfin', calculator );
-
   enable( 'ui_fixed_charge_rate', !calculator );
-  
-};
+}
 
-on_change{'c_construction_cost'} = define() { cfin_is_zero_check(); };
 function cfin_is_zero_check()
 {
 	msg = '';
-	if ( value('ui_cfin') == 0 ) 
-		msg = 'CFF=0. To remove construction financing from your analysis, set the annual cost during constrution to 100% instead of zero, and set the nominal construction interest rate to zero.';
+	if ( value('ui_cfin') == 0 && value('ui_fcr_input_option') == 1 ) {
+		msg = 'CFF=0. To remove construction financing from your analysis, set the annual cost during constrution to 100% instead of zero, and set the nominal construction interest rate to zero.'; }
 	property( 'ui_lbl_cff_msg', 'Caption', msg );
 }
+
+on_load{"Financial LCOE Calc with Costs Page"} = define()
+{
+	enable_disable();
+	cfin_is_zero_check();
+};
+
+
+on_change{'ui_fcr_input_option'} = define()
+{
+	enable_disable();
+	cfin_is_zero_check();
+};
+
+on_change{'c_construction_cost'} = define() { cfin_is_zero_check(); };
 

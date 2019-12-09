@@ -1,5 +1,5 @@
 1
-624
+642
 LeadAcid_q10
 1
 1
@@ -43,6 +43,12 @@ LeadAcid_tn
 1
 1
 ac_lifetime_losses
+1
+2
+1
+1
+0
+ac_lifetime_losses_size
 1
 2
 1
@@ -1078,6 +1084,12 @@ dc_degradation
 1
 0
 dc_lifetime_losses
+1
+2
+1
+1
+0
+dc_lifetime_losses_size
 1
 2
 1
@@ -2494,7 +2506,8 @@ lat
 library_folder_list
 1
 4
-0
+1
+x
 library_paths
 1
 4

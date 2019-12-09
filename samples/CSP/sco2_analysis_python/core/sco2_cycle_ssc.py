@@ -266,7 +266,7 @@ def get_des_od_label_unit_info__calc_metrics():
     info["PHX_cost"].od_d_type = "nan"
     
     info["LP_cooler_T_in"] = C_des_od_label_unit_info("LP_cooler_T_in", "LP_cooler_T_in_od", "LP Cooler\nInlet Temp [C]", "Low Pressure Cooler Inlet Temp [C]", "[C]")
-    info["LP_cooler_in_isen_deltah_to_P_mc_out"] = C_des_od_label_unit_info("LP_cooler_in_isen_deltah_to_P_mc_out", "LP_cooler_in_isen_deltah_to_P_mc_out_od", "LP Cool In\nIsen Spec Work [kJ/kg]", "Low Pressure Cooler Inlet Isen Spec Work [kJ/kg]", "[kJ/kg]")
+    info["LP_cooler_in_isen_deltah_to_P_mc_out"] = C_des_od_label_unit_info("LP_cooler_in_isen_deltah_to_P_mc_out", "LP_cooler_in_isen_deltah_to_P_mc_out_od", "Re-Comp\nIsen Spec Work [kJ/kg]", "Low Pressure Cooler Inlet Isen Spec Work [kJ/kg]", "[kJ/kg]")
     info["LP_cooler_rho_in"] = C_des_od_label_unit_info("LP_cooler_rho_in", "LP_cooler_rho_in_od", "LP Cooler\nInlet Density [kg/m3]", "Low Pressure Cooler Inlet Density [kg/m3]", "[kg/m3]")
     info["LP_cooler_co2_deltaP"] = C_des_od_label_unit_info("LP_cooler_co2_deltaP_des", "LP_cooler_co2_deltaP_od", "LP Cooler CO2\nPres Drop [-]", "LP Cooler Pressure Drop [-]", "[-]")
     

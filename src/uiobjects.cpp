@@ -146,7 +146,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit values...");
+		wxString label("MonthlyFactors...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -184,7 +184,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit...");
+		wxString label("TableData...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -234,7 +234,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit...");
+		wxString label("MaterialProperties...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -418,7 +418,7 @@ public:
 		wxRendererNative::Get().DrawPushButton(win, dc, geom);
 		dc.SetFont(*wxNORMAL_FONT);
 		dc.SetTextForeground(*wxBLACK);
-		wxString label("String array...");
+		wxString label("StringArray...");
 		int x, y;
 		dc.GetTextExtent(label, &x, &y);
 		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
@@ -461,7 +461,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Data array...");
+		wxString label("DataArray...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -484,12 +484,15 @@ class wxUIDataLifetimeArrayObject : public wxUIObject
 {
 public:
 	wxUIDataLifetimeArrayObject() {
+		AddProperty("Mode", new wxUIProperty(1, "Single Value,Monthly,Daily,Hourly,Subhourly"));
 		AddProperty("Label", new wxUIProperty(wxString("")));
+		AddProperty("ColumnLabel", new wxUIProperty(wxString("")));
 		AddProperty("Description", new wxUIProperty(wxString("")));
 		AddProperty("TabOrder", new wxUIProperty((int)-1));
 		AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
 		AddProperty("AnnualEnabled", new wxUIProperty(false));
 		AddProperty("WeeklyEnabled", new wxUIProperty(false));
+		AddProperty("ShowMode", new wxUIProperty(true));
 	}
 	virtual wxString GetTypeName() { return "DataLifetimeArray"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataLifetimeArrayObject; o->Copy(this); return o; }
@@ -497,11 +500,14 @@ public:
 	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative(wxWindow *parent) {
 		AFDataLifetimeArrayButton *da = new AFDataLifetimeArrayButton(parent, wxID_ANY);
+		da->SetMode(Property("Mode").GetInteger());
 		da->SetDescription(Property("Description").GetString());
 		da->SetDataLabel(Property("Label").GetString());
+		da->SetColumnLabel(Property("ColumnLabel").GetString());
 		da->SetAnalysisPeriod(Property("AnalysisPeriod").GetInteger());
 		da->SetAnnualEnabled(Property("AnnualEnabled").GetBoolean());
 		da->SetWeeklyEnabled(Property("WeeklyEnabled").GetBoolean());
+		da->SetShowMode(Property("ShowMode").GetBoolean());
 		return AssignNative(da);
 	}
 	virtual void Draw(wxWindow *win, wxDC &dc, const wxRect &geom)
@@ -509,7 +515,7 @@ public:
 		wxRendererNative::Get().DrawPushButton(win, dc, geom);
 		dc.SetFont(*wxNORMAL_FONT);
 		dc.SetTextForeground(*wxBLACK);
-		wxString label("Data Lifetime...");
+		wxString label("DataLifetimeArray...");
 		int x, y;
 		dc.GetTextExtent(label, &x, &y);
 		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
@@ -518,11 +524,14 @@ public:
 	{
 		if (AFDataLifetimeArrayButton *da = GetNative<AFDataLifetimeArrayButton>())
 		{
+			if (id == "Mode") da->SetMode(p->GetInteger());
 			if (id == "AnalysisPeriod") da->SetAnalysisPeriod(p->GetInteger());
 			if (id == "Label") da->SetDataLabel(p->GetString());
+			if (id == "ColumnLabel") da->SetColumnLabel(p->GetString());
 			if (id == "Description") da->SetDescription(p->GetString());
 			if (id == "AnnualEnabled") da->SetAnnualEnabled(p->GetBoolean());
 			if (id == "WeeklyEnabled") da->SetWeeklyEnabled(p->GetBoolean());
+			if (id == "ShowMode") da->SetShowMode(p->GetBoolean());
 		}
 	}
 
@@ -534,6 +543,7 @@ class wxUIDataLifetimeMatrixObject : public wxUIObject
 {
 public:
 	wxUIDataLifetimeMatrixObject() {
+		AddProperty("Mode", new wxUIProperty(1, "Single Value,Monthly,Daily,Hourly,Subhourly"));
 		AddProperty("ColumnLabels", new wxUIProperty(wxString("")));
 		AddProperty("Label", new wxUIProperty(wxString("")));
 		AddProperty("Description", new wxUIProperty(wxString("")));
@@ -541,6 +551,7 @@ public:
 		AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
 		AddProperty("AnnualEnabled", new wxUIProperty(false));
 		AddProperty("WeeklyEnabled", new wxUIProperty(false));
+		AddProperty("ShowMode", new wxUIProperty(true));
 	}
 	virtual wxString GetTypeName() { return "DataLifetimeMatrix"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataLifetimeMatrixObject; o->Copy(this); return o; }
@@ -548,12 +559,14 @@ public:
 	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative(wxWindow *parent) {
 		AFDataLifetimeMatrixButton *da = new AFDataLifetimeMatrixButton(parent, wxID_ANY);
+		da->SetMode(Property("Mode").GetInteger());
 		da->SetDescription(Property("Description").GetString());
 		da->SetDataLabel(Property("Label").GetString());
 		da->SetColumnLabels(Property("ColumnLabels").GetString());
 		da->SetAnalysisPeriod(Property("AnalysisPeriod").GetInteger());
 		da->SetAnnualEnabled(Property("AnnualEnabled").GetBoolean());
 		da->SetWeeklyEnabled(Property("WeeklyEnabled").GetBoolean());
+		da->SetShowMode(Property("ShowMode").GetBoolean());
 		return AssignNative(da);
 	}
 	virtual void Draw(wxWindow *win, wxDC &dc, const wxRect &geom)
@@ -561,7 +574,7 @@ public:
 		wxRendererNative::Get().DrawPushButton(win, dc, geom);
 		dc.SetFont(*wxNORMAL_FONT);
 		dc.SetTextForeground(*wxBLACK);
-		wxString label("Data Lifetime...");
+		wxString label("DataLifetimeMatrix...");
 		int x, y;
 		dc.GetTextExtent(label, &x, &y);
 		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
@@ -570,12 +583,14 @@ public:
 	{
 		if (AFDataLifetimeMatrixButton *da = GetNative<AFDataLifetimeMatrixButton>())
 		{
+			if (id == "Mode") da->SetMode(p->GetInteger());
 			if (id == "AnalysisPeriod") da->SetAnalysisPeriod(p->GetInteger());
 			if (id == "Label") da->SetDataLabel(p->GetString());
 			if (id == "ColumnLabels") da->SetColumnLabels(p->GetString());
 			if (id == "Description") da->SetDescription(p->GetString());
 			if (id == "AnnualEnabled") da->SetAnnualEnabled(p->GetBoolean());
 			if (id == "WeeklyEnabled") da->SetWeeklyEnabled(p->GetBoolean());
+			if (id == "ShowMode") da->SetShowMode(p->GetBoolean());
 		}
 	}
 
@@ -688,7 +703,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit shading...");
+		wxString label("ShadingFactors...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -890,7 +905,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, wxRect( geom.x, geom.y/*+geom.height/2-button.y/2*/, button.x, button.y ) );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit losses...");
+		wxString label("LossAdjustment...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		//int yc = geom.y+geom.height/2;
