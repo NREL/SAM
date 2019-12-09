@@ -1,7 +1,7 @@
 Battery Model Simple with REopt
 1141
 433
-13
+14
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 572
 Height
 3
-387
+399
 Tool Tip
 5
 0
@@ -362,7 +362,7 @@ Width
 525
 Height
 3
-60
+54
 Tool Tip
 5
 0
@@ -404,7 +404,7 @@ X
 342
 Y
 3
-315
+339
 Width
 3
 162
@@ -479,7 +479,7 @@ Width
 546
 Height
 3
-153
+165
 Tool Tip
 5
 0
@@ -488,6 +488,54 @@ Caption
 38
 Optimal Sizing and Dispatch from REopt
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+33
+Y
+3
+291
+Width
+3
+525
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+128
+Note: ReOpt downloads its own weather file from the provided lat/lon and does not use the one provided in Location and Resource.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 Numeric
@@ -503,7 +551,7 @@ X
 147
 Y
 3
-315
+339
 Width
 3
 90

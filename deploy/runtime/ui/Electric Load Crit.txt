@@ -1,7 +1,55 @@
 Electric Load Crit
-853
-888
-70
+850
+634
+65
+Label
+
+1
+13
+Name
+5
+14
+Critical_label
+X
+3
+291
+Y
+3
+177
+Width
+3
+80
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+14
+Critical (kWh)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 GroupBox
 
 1
@@ -21,7 +69,7 @@ Width
 824
 Height
 3
-755
+596
 Tool Tip
 5
 0
@@ -45,7 +93,7 @@ X
 57
 Y
 3
-420
+201
 Width
 3
 68
@@ -93,7 +141,7 @@ X
 57
 Y
 3
-444
+225
 Width
 3
 68
@@ -141,7 +189,7 @@ X
 57
 Y
 3
-468
+249
 Width
 3
 68
@@ -189,7 +237,7 @@ X
 57
 Y
 3
-492
+273
 Width
 3
 68
@@ -237,7 +285,7 @@ X
 57
 Y
 3
-516
+297
 Width
 3
 68
@@ -285,7 +333,7 @@ X
 57
 Y
 3
-540
+321
 Width
 3
 68
@@ -333,7 +381,7 @@ X
 57
 Y
 3
-564
+345
 Width
 3
 68
@@ -381,7 +429,7 @@ X
 57
 Y
 3
-588
+369
 Width
 3
 68
@@ -429,7 +477,7 @@ X
 57
 Y
 3
-612
+393
 Width
 3
 68
@@ -477,7 +525,7 @@ X
 57
 Y
 3
-636
+417
 Width
 3
 68
@@ -525,7 +573,7 @@ X
 57
 Y
 3
-660
+441
 Width
 3
 68
@@ -573,7 +621,7 @@ X
 57
 Y
 3
-717
+498
 Width
 3
 68
@@ -621,7 +669,7 @@ X
 57
 Y
 3
-684
+465
 Width
 3
 68
@@ -669,7 +717,7 @@ X
 72
 Y
 3
-396
+177
 Width
 3
 137
@@ -710,54 +758,6 @@ Label
 13
 Name
 5
-7
-Label21
-X
-3
-291
-Y
-3
-396
-Width
-3
-80
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-14
-Critical (kWh)
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 9
 Label2129
 X
@@ -765,7 +765,7 @@ X
 210
 Y
 3
-396
+177
 Width
 3
 80
@@ -806,54 +806,6 @@ Label
 13
 Name
 5
-6
-Label4
-X
-3
-51
-Y
-3
-171
-Width
-3
-740
-Height
-3
-40
-Tool Tip
-5
-0
-Caption
-5
-137
-When battery is enabled and critical loads are not zero, resiliency metrics are calculated using the critical load and system production.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 7
 Label41
 X
@@ -861,7 +813,7 @@ X
 462
 Y
 3
-423
+204
 Width
 3
 311
@@ -909,7 +861,7 @@ X
 291
 Y
 3
-717
+498
 Width
 3
 79
@@ -971,7 +923,7 @@ X
 210
 Y
 3
-717
+498
 Width
 3
 79
@@ -1033,7 +985,7 @@ X
 291
 Y
 3
-420
+201
 Width
 3
 79
@@ -1095,7 +1047,7 @@ X
 291
 Y
 3
-636
+417
 Width
 3
 79
@@ -1157,7 +1109,7 @@ X
 291
 Y
 3
-660
+441
 Width
 3
 79
@@ -1219,7 +1171,7 @@ X
 291
 Y
 3
-684
+465
 Width
 3
 79
@@ -1281,7 +1233,7 @@ X
 291
 Y
 3
-444
+225
 Width
 3
 79
@@ -1343,7 +1295,7 @@ X
 291
 Y
 3
-468
+249
 Width
 3
 79
@@ -1405,7 +1357,7 @@ X
 291
 Y
 3
-492
+273
 Width
 3
 79
@@ -1467,7 +1419,7 @@ X
 291
 Y
 3
-516
+297
 Width
 3
 79
@@ -1529,7 +1481,7 @@ X
 291
 Y
 3
-540
+321
 Width
 3
 79
@@ -1591,7 +1543,7 @@ X
 291
 Y
 3
-564
+345
 Width
 3
 79
@@ -1653,7 +1605,7 @@ X
 291
 Y
 3
-588
+369
 Width
 3
 79
@@ -1715,7 +1667,7 @@ X
 291
 Y
 3
-612
+393
 Width
 3
 79
@@ -1770,145 +1722,6 @@ Numeric
 17
 Name
 5
-13
-crit_load_pct
-X
-3
-534
-Y
-3
-213
-Width
-3
-118
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4
-RadioChoice
-
-1
-11
-Name
-5
-14
-crit_load_type
-X
-3
-183
-Y
-3
-210
-Width
-3
-174
-Height
-3
-60
-Tool Tip
-5
-0
-Selection
-3
-0
-Items
-6
-2
-Percent
-Time Series
-ShowCaptions
-2
-1
-Horizontal
-2
-0
-TabOrder
-3
-4294967295
-DataArray
-
-1
-10
-Name
-5
-19
-crit_load_user_data
-X
-3
-534
-Y
-3
-243
-Width
-3
-120
-Height
-3
-24
-Tool Tip
-5
-0
-Mode
-3
-1
-Label
-5
-24
-Critical Load power (kW)
-Description
-5
-197
-The critical electric load during an outage period is specified as the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour, in kWh.
-TabOrder
-3
-3
-Numeric
-
-1
-17
-Name
-5
 8
 energy_1
 X
@@ -1916,7 +1729,7 @@ X
 129
 Y
 3
-420
+201
 Width
 3
 79
@@ -1978,7 +1791,7 @@ X
 129
 Y
 3
-636
+417
 Width
 3
 79
@@ -2040,7 +1853,7 @@ X
 129
 Y
 3
-660
+441
 Width
 3
 79
@@ -2102,7 +1915,7 @@ X
 129
 Y
 3
-684
+465
 Width
 3
 79
@@ -2164,7 +1977,7 @@ X
 129
 Y
 3
-444
+225
 Width
 3
 79
@@ -2226,7 +2039,7 @@ X
 129
 Y
 3
-468
+249
 Width
 3
 79
@@ -2288,7 +2101,7 @@ X
 129
 Y
 3
-492
+273
 Width
 3
 79
@@ -2350,7 +2163,7 @@ X
 129
 Y
 3
-516
+297
 Width
 3
 79
@@ -2412,7 +2225,7 @@ X
 129
 Y
 3
-540
+321
 Width
 3
 79
@@ -2474,7 +2287,7 @@ X
 129
 Y
 3
-564
+345
 Width
 3
 79
@@ -2536,7 +2349,7 @@ X
 129
 Y
 3
-588
+369
 Width
 3
 79
@@ -2598,7 +2411,7 @@ X
 129
 Y
 3
-612
+393
 Width
 3
 79
@@ -2660,7 +2473,7 @@ X
 564
 Y
 3
-390
+171
 Width
 3
 100
@@ -2703,7 +2516,7 @@ X
 129
 Y
 3
-717
+498
 Width
 3
 79
@@ -2835,7 +2648,7 @@ X
 45
 Y
 3
-360
+141
 Width
 3
 369
@@ -2867,45 +2680,6 @@ Divider
 10
 Name
 5
-11
-object 2264
-X
-3
-45
-Y
-3
-153
-Width
-3
-747
-Height
-3
-25
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-14
-Critical Loads
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
 10
 object 229
 X
@@ -2913,7 +2687,7 @@ X
 441
 Y
 3
-360
+141
 Width
 3
 351
@@ -2952,7 +2726,7 @@ X
 210
 Y
 3
-420
+201
 Width
 3
 79
@@ -3014,7 +2788,7 @@ X
 210
 Y
 3
-636
+417
 Width
 3
 79
@@ -3076,7 +2850,7 @@ X
 210
 Y
 3
-660
+441
 Width
 3
 79
@@ -3138,7 +2912,7 @@ X
 210
 Y
 3
-684
+465
 Width
 3
 79
@@ -3200,7 +2974,7 @@ X
 210
 Y
 3
-444
+225
 Width
 3
 79
@@ -3262,7 +3036,7 @@ X
 210
 Y
 3
-468
+249
 Width
 3
 79
@@ -3324,7 +3098,7 @@ X
 210
 Y
 3
-492
+273
 Width
 3
 79
@@ -3386,7 +3160,7 @@ X
 210
 Y
 3
-516
+297
 Width
 3
 79
@@ -3448,7 +3222,7 @@ X
 210
 Y
 3
-540
+321
 Width
 3
 79
@@ -3510,7 +3284,7 @@ X
 210
 Y
 3
-564
+345
 Width
 3
 79
@@ -3572,7 +3346,7 @@ X
 210
 Y
 3
-588
+369
 Width
 3
 79
@@ -3634,7 +3408,7 @@ X
 210
 Y
 3
-612
+393
 Width
 3
 79
@@ -3785,10 +3559,10 @@ Name
 visualize_load_data
 X
 3
-306
+300
 Y
 3
-306
+552
 Width
 3
 224
@@ -3806,7 +3580,7 @@ TabOrder
 3
 0
 
-49
+45
 annual_crit
 3
 1
@@ -4003,62 +3777,6 @@ Electric Load
 1
 0
 Default
-crit_load
-3
-2
-Critical Energy usage
-kW
-Electric Load
-0
-8
-1
-2
-1
-1
-0
-DataArray
-crit_load_pct
-3
-1
-Critical Energy Percent
-%
-Electric Load
-0
-0
-1
-1
-1
-1
-0
-Numeric
-crit_load_type
-3
-1
- 
- 
-Electric Load
-0
-4
-1
-1
-1
-1
-0
-RadioChoice
-crit_load_user_data
-3
-2
-Critical Energy usage
-kW
-Electric Load
-0
-0
-1
-2
-1
-1
-0
-DataArray
 energy_1
 3
 1
@@ -4689,10 +4407,20 @@ equations{ '$MIMO$ elecload' } = define() {
 
 	return 0;
 };
-986
+1524
+function show_crit(show_bool) {
+	for (i = 1; i < 13; i++) {
+		name = 'crit_' + to_string(i);
+		show(name, show_bool);
+	}
+	show('annual_crit', show_bool);
+	show('Critical_label', show_bool);
+	refresh();
+}
+
 on_load{'Electric Load Crit'} = define() {
 	on_change{'normalize_to_utility_bill'}();
-	enable( 'crit_load_user_data', false);
+	show_crit(0);
 };
 
 on_change{'normalize_to_utility_bill'} = define() {
@@ -4713,20 +4441,35 @@ on_change{'visualize_load_data'} = define() {
 	
 	L = ${load};
 	ts = 1.0/(#L / 8760); // timestep in hours
-	crit_load_ts = ${crit_load};
+	show_crit = ${crit_load_is_shown};
 	
 	if ( sc == 1.0 && !norm )
 	{
-		dview( 2, ts, "Electric Load", 
+		if (show_crit) {
+			crit_load_ts = ${crit_load};
+			dview( 2, ts, "Electric Load", 
 			"Load power", "kW", 1.0, ${load},
 			"Critical load", "kW", 1.0, crit_load_ts);
+		}
+		else{
+			dview( 1, ts, "Electric Load", 
+			"Load power", "kW", 1.0, ${load});
+		}
 	}
 	else
 	{
-		dview( 3, ts, "Electric Load",
-		"User-entered load power", "kW", 1.0, ${load_user_data},
-		"Scaled load power", "kW", 1.0, ${load},
-		"Critical load", "kW", 1.0, crit_load_ts );
+		if (show_crit) {
+			crit_load_ts = ${crit_load};
+			dview( 3, ts, "Electric Load",
+			"User-entered load power", "kW", 1.0, ${load_user_data},
+			"Scaled load power", "kW", 1.0, ${load},
+			"Critical load", "kW", 1.0, crit_load_ts );
+		}
+		else{
+			dview( 2, ts, "Electric Load",
+			"User-entered load power", "kW", 1.0, ${load_user_data},
+			"Scaled load power", "kW", 1.0, ${load} );
+		}
 			
 	}
 };

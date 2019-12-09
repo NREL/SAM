@@ -300,6 +300,8 @@ function biopower_metrics()
 
 function resiliency_metrics()
 {
+	if (!${crit_load_is_shown})
+		return;
 	metric( 'resilience_hrs_avg', {'label'='Avg hours of autonomy for resilience', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' hrs' } );
 }
 

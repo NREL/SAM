@@ -88,12 +88,14 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 	}
 	elseif( mode == LOAD_BELPE_CRIT )
 	{
-		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'}], [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}] ], 
+		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'}, 
+			{'name'='Electric Load Critical', 'caption'='Critical Loads', 'collapsible'=true, 'collapsible_var'='crit_load_is_shown'}], [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}] ], 
 			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
 	elseif ( mode == LOAD_SIMPLE_CRIT )
 	{
-		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'}] ], 
+		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'},
+			{'name'='Electric Load Critical', 'caption'='Critical Loads', 'collapsible'=true, 'collapsible_var'='crit_load_is_shown'}] ], 
 			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
 	else return;

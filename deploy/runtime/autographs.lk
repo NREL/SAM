@@ -71,6 +71,8 @@ function ppa_partnership_graphs()
 
 function resiliency_graphs()
 {
+	if (!${crit_load_is_shown})
+		return;
 	xmin = output('resilience_hrs_min');
 	xmax = output('resilience_hrs_max');
 	agraph( 'survival_function', 'Survival Function of System', 'Hours', 'Probability of Surviving Outage > X Hours', -1, false, false, 'bottom', 0, xmin, xmax);

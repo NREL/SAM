@@ -1,7 +1,7 @@
 Battery Bank Sizing with REopt
 999
 406
-19
+20
 GroupBox
 
 1
@@ -799,7 +799,7 @@ Width
 909
 Height
 3
-57
+39
 Tool Tip
 5
 0
@@ -841,7 +841,7 @@ X
 594
 Y
 3
-324
+330
 Width
 3
 162
@@ -888,6 +888,54 @@ Optimal Sizing and Dispatch from REopt
 Bold
 2
 1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+48
+Y
+3
+294
+Width
+3
+909
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+128
+Note: ReOpt downloads its own weather file from the provided lat/lon and does not use the one provided in Location and Resource.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -901,7 +949,7 @@ X
 315
 Y
 3
-324
+330
 Width
 3
 90
