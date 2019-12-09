@@ -168,7 +168,7 @@ function setup_flat_plate_pv_pages()
 //	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
 
     addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
-			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
+			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }, 'Lifetime Daily Losses'],],
            {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
 
 	
