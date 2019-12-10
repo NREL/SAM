@@ -411,8 +411,8 @@ library_or_input_wec
 location
 1
 4
-12
-Humboldt Bay
+28
+Humboldt Bay - DOE Reference
 lon
 1
 1
