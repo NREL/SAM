@@ -530,8 +530,8 @@ function setup_windpower_pages()
 	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine' } );
 	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm' } );
 	setup_grid_page();
-	addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses'} );
-	addpage( [[ 'Wind Uncertainty' ]], { 'sidebar'='Uncertainties'} );
+	addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses', 'help'='wind_losses'} );
+	addpage( [[ 'Wind Uncertainty' ]], { 'sidebar'='Uncertainties','help'='wind_uncertainties'} );
 
 }
 

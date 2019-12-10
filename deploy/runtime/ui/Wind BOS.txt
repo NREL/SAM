@@ -5,7 +5,7 @@ Wind BOS
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -22,6 +22,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 28
@@ -81,6 +84,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -95,7 +101,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -112,6 +118,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -154,7 +163,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -171,6 +180,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -213,7 +225,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -230,6 +242,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -273,7 +288,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -290,6 +305,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -332,7 +350,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -349,6 +367,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -391,7 +412,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 13
@@ -408,6 +429,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -418,7 +442,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -435,6 +459,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -478,7 +505,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -495,6 +522,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -537,7 +567,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 24
@@ -554,6 +584,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -568,7 +601,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -585,6 +618,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 19
@@ -627,7 +663,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -644,6 +680,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -686,7 +725,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -703,6 +742,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 3
@@ -745,7 +787,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -762,6 +804,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -804,7 +849,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 23
@@ -821,6 +866,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -835,7 +883,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -852,6 +900,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -894,7 +945,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -911,6 +962,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -953,7 +1007,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 24
@@ -970,6 +1024,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -983,7 +1040,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -1000,6 +1057,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1043,7 +1103,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1060,6 +1120,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 5e+06
@@ -1102,7 +1165,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1119,6 +1182,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1161,7 +1227,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -1178,6 +1244,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1221,7 +1290,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1238,6 +1307,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1281,7 +1353,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -1298,6 +1370,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1341,7 +1416,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1358,6 +1433,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1401,7 +1479,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1418,6 +1496,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1460,7 +1541,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1477,6 +1558,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1520,7 +1604,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1537,6 +1621,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1579,7 +1666,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -1596,6 +1683,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1639,7 +1729,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -1656,6 +1746,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1698,7 +1791,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -1715,6 +1808,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1757,7 +1853,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1774,6 +1870,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1817,7 +1916,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1834,6 +1933,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1876,7 +1978,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -1893,6 +1995,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1935,7 +2040,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 23
@@ -1952,6 +2057,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 23
@@ -1965,7 +2073,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1982,6 +2090,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2024,7 +2135,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -2041,6 +2152,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2060,7 +2174,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -2077,6 +2191,9 @@ Width
 Height
 3
 195
+Tool Tip
+5
+0
 Caption
 5
 34
@@ -2087,7 +2204,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -2104,6 +2221,9 @@ Width
 Height
 3
 228
+Tool Tip
+5
+0
 Caption
 5
 33
@@ -2114,7 +2234,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -2131,6 +2251,9 @@ Width
 Height
 3
 225
+Tool Tip
+5
+0
 Caption
 5
 30
@@ -2141,7 +2264,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -2158,6 +2281,9 @@ Width
 Height
 3
 279
+Tool Tip
+5
+0
 Caption
 5
 34
@@ -2168,7 +2294,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -2185,6 +2311,9 @@ Width
 Height
 3
 246
+Tool Tip
+5
+0
 Caption
 5
 33
@@ -2195,7 +2324,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -2212,6 +2341,9 @@ Width
 Height
 3
 72
+Tool Tip
+5
+0
 Caption
 5
 54
@@ -2240,7 +2372,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -2257,6 +2389,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 123
@@ -2285,7 +2420,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -2302,6 +2437,9 @@ Width
 Height
 3
 42
+Tool Tip
+5
+0
 Caption
 5
 94
@@ -2330,7 +2468,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -2347,6 +2485,9 @@ Width
 Height
 3
 42
+Tool Tip
+5
+0
 Caption
 5
 261
@@ -2375,7 +2516,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -2392,6 +2533,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -2420,7 +2564,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -2437,6 +2581,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -2465,7 +2612,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -2482,6 +2629,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -2510,7 +2660,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -2527,6 +2677,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2569,7 +2722,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 23
@@ -2586,6 +2739,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -2600,7 +2756,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -2617,6 +2773,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2659,7 +2818,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -2676,6 +2835,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2718,7 +2880,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -2735,6 +2897,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 5
@@ -2777,7 +2942,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 30
@@ -2794,6 +2959,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 30
@@ -2807,7 +2975,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 16
@@ -2824,6 +2992,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -2837,7 +3008,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -2854,6 +3025,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2897,7 +3071,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -2914,6 +3088,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 5
@@ -2956,7 +3133,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -2973,6 +3150,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3016,7 +3196,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -3033,6 +3213,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3075,7 +3258,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 36
@@ -3092,6 +3275,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -3106,7 +3292,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
@@ -3123,6 +3309,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3165,7 +3354,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -3182,6 +3371,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3224,7 +3416,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -3241,6 +3433,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3283,7 +3478,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 31
@@ -3300,6 +3495,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -3314,7 +3512,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -3331,6 +3529,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3373,7 +3574,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -3390,6 +3591,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3432,7 +3636,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -3449,6 +3653,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 10
@@ -3491,7 +3698,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -3508,6 +3715,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3550,7 +3760,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -3567,6 +3777,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3609,7 +3822,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -3626,6 +3839,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3669,7 +3885,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 12
@@ -3686,6 +3902,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 3
@@ -3701,7 +3920,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 14
@@ -3718,6 +3937,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -3732,7 +3954,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -3749,6 +3971,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3792,7 +4017,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -3809,6 +4034,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3852,7 +4080,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -3869,6 +4097,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3912,7 +4143,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 14
@@ -3929,6 +4160,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -3943,7 +4177,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -3960,6 +4194,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4002,7 +4239,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -4019,6 +4256,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0.02
@@ -4061,7 +4301,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -4078,6 +4318,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4120,7 +4363,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 25
@@ -4137,6 +4380,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -4151,7 +4397,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -4168,6 +4414,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4210,7 +4459,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -4227,6 +4476,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4299,7 +4551,7 @@ Choice
 access_road_entrances_input
 3
 1
-Access Road Entrances
+Access road entrances
  
 Wind BOS Costs
 0
@@ -4327,7 +4579,7 @@ Default
 access_roads_cost
 3
 1
-Access road & site improvement cost
+Access road and site improvement cost
  
 Wind BOS Costs
 0
@@ -4341,7 +4593,7 @@ Numeric
 bos_total_budgeted_cost
 3
 1
-Total Cost Estimate for Balance of System
+Total cost estimate for balance of system
 $
 Wind BOS Costs
 0
@@ -4411,7 +4663,7 @@ Choice
 construction_time_input
 3
 1
-Construction Time
+Construction time
 months
 Wind BOS Costs
 0
@@ -4481,7 +4733,7 @@ Choice
 crane_breakdowns_input
 3
 1
-Crane Breakdowns
+Crane breakdowns
  
 Wind BOS Costs
 0
@@ -4551,7 +4803,7 @@ Default
 development_fee_input
 3
 1
-Development Fee
+Development fee
 $
 Wind BOS Costs
 0
@@ -4565,7 +4817,7 @@ Numeric
 distance_to_interconnect
 3
 1
-Distance to Interconnect
+Distance to interconnect
 miles
 Wind BOS Costs
 0
@@ -4635,7 +4887,7 @@ Numeric
 farm_size_MW
 3
 1
-Wind Farm Size
+Wind farm size
 MW
 Wind BOS Costs
 0
@@ -4663,7 +4915,7 @@ Numeric
 hub_height
 3
 1
-Hub Height
+Hub height
 m
 Wind BOS Costs
 0
@@ -4677,7 +4929,7 @@ Numeric
 insurance_cost
 3
 1
-Insurance, bonds, & permit cost
+Insurance bonds and permit cost
  
 Wind BOS Costs
 0
@@ -4691,7 +4943,7 @@ Numeric
 interconnect_voltage
 3
 1
-Interconnect Voltage
+Interconnect voltage
 kV
 Wind BOS Costs
 0
@@ -4705,7 +4957,7 @@ Numeric
 machine_rating
 3
 1
-Machine Rating
+Machine rating
 kW
 Wind BOS Costs
 0
@@ -4719,7 +4971,7 @@ Numeric
 markup_cost
 3
 1
-Markup & contingency cost
+Markup and contingency cost
  
 Wind BOS Costs
 0
@@ -4775,7 +5027,7 @@ CheckBox
 number_of_turbines
 3
 1
-Number of Turbines
+Number of turbines
  
 Wind BOS Costs
 0
@@ -4817,7 +5069,7 @@ Choice
 om_building_size_input
 3
 1
-O&M Building Size
+O&M building size
 ft²
 Wind BOS Costs
 0
@@ -4887,7 +5139,7 @@ CheckBox
 power_performance_cost
 3
 1
-Met mast & power perf. engineering cost
+Met mast and power perf. engineering cost
  
 Wind BOS Costs
 0
@@ -4901,7 +5153,7 @@ Numeric
 profit_margin
 3
 1
-Profit Margin
+Profit margin
 %
 Wind BOS Costs
 0
@@ -4971,7 +5223,7 @@ Choice
 quantity_permanent_met_towers_input
 3
 1
-Number of Permanent Met Towers
+Number of permanent met towers
  
 Wind BOS Costs
 0
@@ -5027,7 +5279,7 @@ Choice
 quantity_test_met_towers_input
 3
 1
-Number of Temporary Met Towers
+Number of temporary met towers
  
 Wind BOS Costs
 0
@@ -5069,7 +5321,7 @@ Numeric
 rotor_diameter
 3
 1
-Roter Diameter
+Roter diameter
 m
 Wind BOS Costs
 0
@@ -5083,7 +5335,7 @@ Numeric
 sales_and_use_tax
 3
 1
-Sales and Use Tax
+Sales and use tax
 %
 Wind BOS Costs
 0
@@ -5097,7 +5349,7 @@ Numeric
 site_compound_security_cost
 3
 1
-Site compound & security cost
+Site compound and security cost
  
 Wind BOS Costs
 0
@@ -5111,7 +5363,7 @@ Numeric
 site_terrain
 3
 1
-Site Terrain
+Site terrain
  
 Wind BOS Costs
 0
@@ -5125,7 +5377,7 @@ Choice
 soil_condition
 3
 1
-Soil Condition
+Soil condition
  
 Wind BOS Costs
 0
@@ -5167,7 +5419,7 @@ Default
 transmission_cost
 3
 1
-Transmission & interconnection cost
+Transmission and interconnection cost
  
 Wind BOS Costs
 0
@@ -5209,7 +5461,7 @@ Default
 turbine_layout
 3
 1
-Turbine Layout
+Turbine layout
  
 Wind BOS Costs
 0
@@ -5223,7 +5475,7 @@ Choice
 turbine_transportation
 3
 1
-Turbine Transportation
+Turbine transportation
 miles
 Wind BOS Costs
 0
@@ -5279,7 +5531,7 @@ Choice
 weather_delay_days_input
 3
 1
-Wind/Weather Delay Days
+Wind and weather delay days
 days
 Wind BOS Costs
 0

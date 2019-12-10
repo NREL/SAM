@@ -1483,7 +1483,7 @@ Numeric
 wind_turbine_selection
 3
 4
-Wind Turbine Selection
+Wind turbine selection
  
 Wind Turbine
 15
