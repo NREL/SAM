@@ -578,18 +578,27 @@ wxString ResultsViewer::GetCurrentContext() const
 {
 	switch( GetSelection() )
 	{
-	case 0: return "summary";
-	case 1: return "data";
-	case 2: return "losses";
-	case 3: return "graphs";
-	case 4: return "cashflow";
-	case 5: return "timeseries";
-	case 6: return "profiles";
-	case 7: return "statistics";
-	case 8: return "heatmap";
-	case 9: return "pdfcdf";
-	case 10: return "notices";
-	default: return "results";
+		case 0: return "summary";
+		case 1: return "data";
+		case 2: return "losses";
+		case 3: return "graphs";
+		case 4: return "cashflow";
+		case 5: return "timeseries";
+		case 6: return "profiles";
+		case 7: return "statistics";
+		case 8: return "heatmap";
+		case 9: return "pdfcdf";
+		case 10:
+				// TODO: remove this when uncertainties available for all technologies
+				if (CaseWindow *cw = static_cast<CaseWindow *>(this->GetParent()->GetParent()))
+				{
+					if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+						return "uncertainties";
+					else
+						return "notices";
+				}
+		case 11: return "notices";
+		default: return "results";
 	}
 }
 
@@ -888,6 +897,7 @@ void ResultsViewer::Setup( Simulation *sim )
 
 
 	// TODO: remove this after adding for other technologies...
+	// TODO: update GetCurrentContext() when adding for other technologies to correctly assign help context id
 	if (CaseWindow *cw = static_cast<CaseWindow *>(this->GetParent()->GetParent()))
 	{
 		if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
