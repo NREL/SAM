@@ -834,9 +834,9 @@ bool Simulation::GetInputsSSCData(ssc_data_t p_data) {
         // copy over first error if there was one to internal buffer
         if (!result)
         {
-            const char *text;
             int type, i=0;
-            while( (text = ssc_module_log( p_mod, i, &type, 0 )) )
+			const char *text = ssc_module_log(p_mod, i, &type, 0);
+            while(text)
             {
                 if (type == SSC_ERROR)
                 {
@@ -844,6 +844,7 @@ bool Simulation::GetInputsSSCData(ssc_data_t p_data) {
                     break;
                 }
                 i++;
+				text = ssc_module_log(p_mod, i, &type, 0);
             }
         }
         ssc_module_free(p_mod);

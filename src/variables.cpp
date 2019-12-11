@@ -209,7 +209,7 @@ void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out)
 {
     out.nullify();
 
-    unsigned char ty = ssc_var_query(vd);
+    int ty = ssc_var_query(vd);
     switch( ty ) {
         case SSC_NUMBER:
             out.assign((double) ssc_var_get_number(vd));
