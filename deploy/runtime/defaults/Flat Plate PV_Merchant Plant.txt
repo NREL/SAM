@@ -2284,7 +2284,7 @@ en_ac_lifetime_losses
 1
 1
 1
-1
+0
 en_batt
 1
 1
@@ -2296,7 +2296,7 @@ en_dc_lifetime_losses
 1
 1
 1
-1
+0
 en_electricity_rates
 1
 1

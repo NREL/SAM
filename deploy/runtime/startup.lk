@@ -184,7 +184,7 @@ function setup_flat_plate_pv_pages()
 //	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
 
     addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
-			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
+			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }, 'Lifetime Daily Losses'],],
            {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
 
 	
@@ -546,8 +546,8 @@ function setup_windpower_pages()
 	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine' } );
 	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm' } );
 	setup_grid_page();
-	addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses'} );
-	addpage( [[ 'Wind Uncertainty' ]], { 'sidebar'='Uncertainties'} );
+	addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses', 'help'='wind_losses'} );
+	addpage( [[ 'Wind Uncertainty' ]], { 'sidebar'='Uncertainties','help'='wind_uncertainties'} );
 
 }
 
@@ -1267,7 +1267,7 @@ function setup_generic_system_pages()
     addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime Generic', 'caption'='Simulation over analysis period' }],],
            {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
-	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
+	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid Limits', 'help'='grid_limits' } );
 }
 
 setconfig( 'Generic System', 'Residential' );	
@@ -1369,7 +1369,7 @@ setup_lcoefcr_pages();
 setconfig( 'Generic System', 'None' );
 setmodules( ['generic_system', 'grid']);
 addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
-addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
+addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid Limits', 'help'='grid_limits' } );
 
 
 

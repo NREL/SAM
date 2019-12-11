@@ -1,5 +1,5 @@
 Name,City,State,Country,Latitude,Longitude,Nearby Bouy Number,Average Power Flux (kW/m),Bathymetry,Sea Bed,Time Zone,Data Source,Notes,,,,,,,,,
-Humboldt Bay,Eureka,California,United States,40.8418 N,124.2477 W,NDBC 46212,32.2,Gently Sloping,Sand and Clay,-7,Sandia; SAND2014-9040,,,,,,,,,,
+Humboldt Bay - DOE Reference,Eureka,California,United States,40.8418 N,124.2477 W,NDBC 46212,32.2,Gently Sloping,Sand and Clay,-7,Sandia; SAND2014-9040,,,,,,,,,,
 Hs/Te,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5,13.5,14.5,15.5,16.5,17.5,18.5,19.5,20.5
 0.25,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.02,0.03,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 0.75,0.00,0.00,0.00,0.00,0.02,0.46,1.49,2.68,1.91,1.10,0.53,0.17,0.02,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00

@@ -362,3 +362,7 @@ api/api_autogen/library/C/
 !tooltips.json
 
 
+
+src/private - nrel.h
+
+src/private - os.h

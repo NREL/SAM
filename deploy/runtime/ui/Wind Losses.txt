@@ -1095,8 +1095,8 @@ Tool Tip
 0
 Caption
 5
-237
-Internal Wake loss can be set as a constant percent loss in the Wind Turbine page, under Wake Effects, by choosing the Constant Loss Wake Model. Otherwise Internal Wake Loss will be zero and will be calculated using the given Wake Model.
+234
+Internal Wake loss can be set as a constant percent loss on the Wind Farm page, under Wake Effects, by choosing the Constant Loss Wake Model. Otherwise Internal Wake Loss will be zero and will be calculated using the given Wake Model.
 TextColour
 4
 0
@@ -2087,7 +2087,7 @@ TabOrder
 avail_bop_loss
 3
 1
-Balance of Plant
+Balance of plant
 %
 Losses
 0
@@ -2115,9 +2115,9 @@ Numeric
 avail_loss_total
 3
 1
-Total Availability Losses
+Total availability losses
 %
- 
+Losses
 0
 8
 1
@@ -2157,9 +2157,9 @@ Numeric
 elec_loss_total
 3
 1
-Total Electrical Losses
+Total electrical losses
 %
- 
+Losses
 0
 8
 1
@@ -2171,7 +2171,7 @@ Numeric
 elec_parasitic_loss
 3
 1
-Parasitic Consumption
+Parasitic consumption
 %
 Losses
 0
@@ -2213,7 +2213,7 @@ Numeric
 env_exposure_loss
 3
 1
-Exposure Changes
+Exposure changes
 %
 Losses
 0
@@ -2241,9 +2241,9 @@ Numeric
 env_loss_total
 3
 1
-Total Environmental Loss
+Total environmental loss
 %
- 
+Losses
 0
 8
 1
@@ -2255,7 +2255,7 @@ Numeric
 ops_env_loss
 3
 1
-Environmental / Permit Curtailment
+Environmental and permit curtailment
 %
 Losses
 0
@@ -2269,7 +2269,7 @@ Numeric
 ops_grid_loss
 3
 1
-Grid Curtailment
+Grid curtailment
 %
 Losses
 0
@@ -2283,7 +2283,7 @@ Numeric
 ops_load_loss
 3
 1
-Load Curtailment
+Load curtailment
 %
 Losses
 0
@@ -2297,9 +2297,9 @@ Numeric
 ops_loss_total
 3
 1
-Curtailment / Operational Strategies Loss Total
+Curtailment and operational strategies loss total
 %
- 
+Losses
 0
 8
 1
@@ -2311,7 +2311,7 @@ Numeric
 ops_strategies_loss
 3
 1
-Operational Strategies
+Operational strategies
 %
 Losses
 0
@@ -2325,7 +2325,7 @@ Numeric
 turb_generic_loss
 3
 1
-Generic Power Curve Adjustment
+Generic power curve adjustment
 %
 Losses
 0
@@ -2339,7 +2339,7 @@ Numeric
 turb_hysteresis_loss
 3
 1
-High Wind Hysteresis
+High wind hysteresis
 %
 Losses
 0
@@ -2353,9 +2353,9 @@ Numeric
 turb_loss_total
 3
 1
-Total Turbine Performance Loss
+Total turbine performance loss
 %
- 
+Losses
 0
 8
 1
@@ -2367,7 +2367,7 @@ Numeric
 turb_perf_loss
 3
 1
-Sub-Optimal Performance
+Sub-optimal performance
 %
 Losses
 0
@@ -2381,7 +2381,7 @@ Numeric
 turb_specific_loss
 3
 1
-Site-specific Power Curve Adjustment
+Site-specific power curve adjustment
 %
 Losses
 0
@@ -2395,7 +2395,7 @@ Numeric
 wake_ext_loss
 3
 1
-External Wake
+External wake
 %
 Losses
 0
@@ -2409,7 +2409,7 @@ Numeric
 wake_future_loss
 3
 1
-Future Wake
+Future wake
 %
 Losses
 0
@@ -2423,7 +2423,7 @@ Numeric
 wake_int_loss
 3
 1
-Internal Wake
+Internal wake
  %
 Losses
 0
@@ -2437,9 +2437,9 @@ Default
 wake_loss_total
 3
 1
-Total Wake Losses
+Total wake losses
  %
- 
+Losses
 0
 8
 1

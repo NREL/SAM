@@ -1,37 +1,7 @@
 Financial Curtailment Price
-861
-121
+859
+151
 5
-GroupBox
-
-1
-8
-Name
-5
-22
-grid_curtailment_group
-X
-3
-483
-Y
-3
-24
-Width
-3
-365
-Height
-3
-75
-Tool Tip
-5
-0
-Caption
-5
-15
-Escalation Rate
-Bold
-2
-1
 Label
 
 1
@@ -42,16 +12,16 @@ Name
 grid_curtailment_label
 X
 3
-498
+195
 Y
 3
-66
+120
 Width
 3
-346
+300
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -76,7 +46,7 @@ WordWrap
 1
 AlignRight
 2
-0
+1
 AlignTop
 2
 1
@@ -90,10 +60,10 @@ Name
 grid_curtailment_price
 X
 3
-201
+351
 Y
 3
-24
+69
 Width
 3
 90
@@ -106,7 +76,7 @@ Tool Tip
 Label
 5
 5
-Value
+$/kWh
 UseSchedule
 2
 1
@@ -118,7 +88,8 @@ FixedLength
 4294967295
 Description
 5
-0
+75
+Enter a curtailment compensation rate for each year of the analysis period.
 TabOrder
 3
 4294967295
@@ -132,13 +103,13 @@ Name
 grid_curtailment_price_esc
 X
 3
-717
+351
 Y
 3
-42
+96
 Width
 3
-60
+90
 Height
 3
 21
@@ -203,15 +174,63 @@ Width
 850
 Height
 3
-109
+142
 Tool Tip
 5
 0
 Caption
 5
-32
-Curtailment Compensation Revenue
+24
+Curtailment Compensation
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+18
+Y
+3
+21
+Width
+3
+834
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+174
+Curtailment compensation is the product of the compensation rate ($/kWh) and the amount of curtailed energy as determined from the curtailment inputs on the Grid Limits page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 
@@ -219,7 +238,7 @@ Bold
 grid_curtailment_price
 3
 2
-Curtailed energy compensation
+Curtailed energy compensation rate
 $/kWh
 Financial Curtailment Price
 0

@@ -30,7 +30,8 @@ Mode
 1
 Label
 5
-0
+13
+% of AC Power
 Description
 5
 124
