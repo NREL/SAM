@@ -279,11 +279,12 @@ Electric Load
 DataArray
 
 0
-290
+330
 on_load{'Electric Load Critical'} = define() {
 	on_change{'normalize_to_utility_bill'}();
 	enable( 'crit_load_user_data', false);
-	show_crit(1);
+	showing = ${crit_load_is_shown};
+	show_crit(showing);
 };
 
 on_change{'crit_load_type'} = define() {
