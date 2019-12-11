@@ -5,7 +5,7 @@ array_cable_system_cost
 1
 1
 1
-1.19812e+07
+1.28138e+07
 array_cable_system_cost_input
 1
 1
@@ -23,7 +23,7 @@ array_cable_system_cost_modeled
 1
 1
 1
-1.19812e+07
+1.28138e+07
 array_sizing_mode
 1
 1
@@ -138,7 +138,7 @@ capital_cost
 1
 1
 1
-4.05493e+08
+4.07204e+08
 city
 1
 4
@@ -189,7 +189,7 @@ device_characteristic_diameter
 1
 1
 1
-30
+20
 device_foundation
 1
 4
@@ -286,7 +286,7 @@ export_cable_system_cost
 1
 1
 1
-904535
+1.60345e+06
 export_cable_system_cost_input
 1
 1
@@ -304,7 +304,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-904535
+1.60345e+06
 file_name
 1
 4
@@ -339,7 +339,7 @@ insurance_during_construction_cost
 1
 1
 1
-3.6302e+06
+3.64551e+06
 insurance_during_construction_input
 1
 1
@@ -357,7 +357,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3.6302e+06
+3.64551e+06
 inter_array_cable_length
 1
 1
@@ -524,8 +524,8 @@ mooring_found_substruc_cost_modeled
 name
 1
 4
-12
-Humboldt Bay
+28
+Humboldt Bay - DOE Reference
 nearby_buoy_number
 1
 4
@@ -672,7 +672,7 @@ plant_commissioning_cost
 1
 1
 1
-5.80832e+06
+5.83282e+06
 plant_commissioning_cost_input
 1
 1
@@ -690,7 +690,7 @@ plant_commissioning_cost_modeled
 1
 1
 1
-5.80832e+06
+5.83282e+06
 power_takeoff_system_cost
 1
 1
@@ -720,7 +720,7 @@ project_contingency_cost
 1
 1
 1
-1.8151e+07
+1.82276e+07
 project_contingency_input
 1
 1
@@ -738,13 +738,13 @@ project_contingency_modeled
 1
 1
 1
-1.8151e+07
+1.82276e+07
 reserve_accounts_cost
 1
 1
 1
 1
-1.08906e+07
+1.09365e+07
 reserve_accounts_input
 1
 1
@@ -762,7 +762,7 @@ reserve_accounts_modeled
 1
 1
 1
-1.08906e+07
+1.09365e+07
 riser_cable_length
 1
 1
@@ -785,7 +785,7 @@ site_access_port_staging_cost
 1
 1
 1
-3.99322e+06
+4.01006e+06
 site_access_port_staging_cost_input
 1
 1
@@ -803,7 +803,7 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-3.99322e+06
+4.01006e+06
 state
 1
 4
@@ -844,13 +844,13 @@ total_bos_cost
 1
 1
 1
-7.75778e+07
+7.91507e+07
 total_cost_per_kw
 1
 1
 1
 1
-14178.1
+14237.9
 total_device_cost
 1
 1
@@ -862,19 +862,19 @@ total_elec_infra_cost
 1
 1
 1
-1.99284e+07
+2.14599e+07
 total_financial_cost
 1
 1
 1
 1
-3.26718e+07
+3.28096e+07
 total_installed_cost
 1
 1
 1
 1
-4.05493e+08
+4.07204e+08
 total_operating_cost
 1
 1
@@ -904,7 +904,7 @@ ui_capital_cost_reference
 1
 1
 1
-4.05493e+08
+4.07204e+08
 ui_cfin
 1
 1
