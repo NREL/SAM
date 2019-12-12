@@ -340,7 +340,7 @@ Degradation and Lifetime
 Default
 
 0
-971
+1083
 function enable_lifetime_losses()
 {
 	enable('dc_lifetime_losses', ${en_dc_lifetime_losses});
@@ -351,8 +351,10 @@ on_load{'Lifetime Daily Losses'} = define() {
 	enable_lifetime_losses();
 	property("dc_lifetime_losses", "Description","Daily DC loss over project life.\nAnalysis period on Financial Parameters page.\n  Number of Rows = \n  1 row/day * 365 days * " + value("analysis_period") + " years");
 	property("dc_lifetime_losses","AnalysisPeriod",value("analysis_period"));
+	property("dc_lifetime_losses","Mode",2); // Daily only
 	property("ac_lifetime_losses", "Description","Daily AC loss over project life.\nAnalysis period on Financial Parameters page.\n  Number of Rows = \n  1 row /day * 365 days * " + value("analysis_period") + " years");
 	property("ac_lifetime_losses","AnalysisPeriod",value("analysis_period"));
+	property("ac_lifetime_losses","Mode",2); // Daily only
 };
 
 on_change{'en_ac_lifetime_losses'} = define() {
