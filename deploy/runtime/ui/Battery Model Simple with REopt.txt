@@ -729,7 +729,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2453
+2751
 on_load{'Battery Model Simple with REopt'} = define()
 {
 	check_enabled();
@@ -760,6 +760,19 @@ function check_enabled()
 on_change{'call_reopt'} = define(){
 	reopt = reopt_size_battery();
 	y = reopt.response;
+	if (reopt.error){
+		if (strlen(reopt.error) > 0){
+			msgbox(reopt.error);
+		}
+		else{
+			msgbox("ReOpt Lite API timed out. Please try again later.");
+		}
+		exit;
+	}
+	if (!y.outputs || !y.outputs.Scenario){
+		msgbox("Error in ReOpt response. Try again later or another system design.");
+		exit;
+	}
 
 	if (y.outputs.Scenario.status != "optimal"){
 		msgbox(y.outputs.Scenario.status);

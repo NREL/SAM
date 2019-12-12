@@ -1171,7 +1171,7 @@ value_of_lost_load
 Numeric
 
 0
-3477
+3779
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1243,9 +1243,24 @@ on_change{'call_reopt'} = define(){
 			exit;
 	}
 
-
 	reopt = reopt_size_battery();
+	
+	if (reopt.error){
+		if (strlen(reopt.error) > 0){
+			msgbox(reopt.error);
+		}
+		else{
+			msgbox("ReOpt Lite API timed out. Please try again later.");
+		}
+		exit;
+	}
+	
 	y = reopt.response;
+
+	if (!y.outputs || !y.outputs.Scenario){
+		msgbox("Error in ReOpt response. Try again later or another system design.");
+		exit;
+	}
 
 	if (y.outputs.Scenario.status != "optimal"){
 		msgbox(y.outputs.Scenario.status);

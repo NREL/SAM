@@ -4675,7 +4675,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...", "reopt_size_battery",
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...", "ReOpt Lite API",
             wxCENTER, wxDefaultPosition, wxDefaultSize);
     dlg.Show();
     wxGetApp().Yield( true );
@@ -4683,12 +4683,12 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     while (optimizing_status == "Optimizing..."){
         if (!curl.Get(poll_url, msg))
         {
-            cxt.result().assign(msg);
+            cxt.result().hash_item("error", msg);
             dlg.Close();
             return;
         }
         if (!lk::json_read(curl.GetDataAsString(), *cxt_result, &err))
-            cxt.result().assign("<json-error> " + err);
+            cxt.result().hash_item("error", "<json-error> " + err);
         if (lk::vardata_t* res = cxt_result->lookup("outputs"))
             optimizing_status = res->lookup("Scenario")->lookup("status")->as_string();
     }
