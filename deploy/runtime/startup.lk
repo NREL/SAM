@@ -653,7 +653,7 @@ function setup_cst_physical_trough_pages()
 	 addpage( [[ 'Phys Trough Direct Storage' ]], { 'sidebar'='Thermal Storage', 'help'='iph_trough-tes' } );
 	 addpage( [[ 'Phys Trough System Control' ,
 	  {'name' = 'Phys Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
-	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
+	  { 'sidebar'='System Control', 'help'='iph_trough-system_control' } );
   	//setup_grid_page();
 }
 

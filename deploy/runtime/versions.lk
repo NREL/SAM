@@ -52,7 +52,7 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 
-version_upgrade{'2019.4.3'} = define() {
+version_upgrade{'2019.12.9'} = define() {
 	const cfg = config();
 	if (varinfo('en_batt')){
 		if (value('en_batt')){
@@ -121,6 +121,14 @@ version_upgrade{'2019.4.3'} = define() {
 			value( 'combo_htf_type', old_combo_htf_type + 1 );
 		}
 	}
+	
+	fin = cfg.fin;
+	is_ppa = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' || fin == 'Host Developer');
+	if ( is_ppa )
+	{
+		value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
+		message('You can now specify a different PPA price for each year of the analysis period on the Finanical Parameters page.','notice');
+	} 
 };
 
 
