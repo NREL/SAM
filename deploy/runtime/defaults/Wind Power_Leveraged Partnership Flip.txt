@@ -40,7 +40,7 @@ access_roads_cost
 1
 1
 1
-2.54274e+06
+2.46539e+06
 adjust
 1
 5
@@ -153,7 +153,7 @@ bos_cost_per_kw
 1
 1
 1
-360
+350
 bos_cost_per_turbine
 1
 1
@@ -165,19 +165,19 @@ bos_cost_total
 1
 1
 1
-1.728e+07
+11200
 bos_total_budgeted_cost
 1
 1
 1
 1
-3.63802e+07
+1.17392e+11
 bos_total_cost_per_kw
 1
 1
 1
 1
-757.922
+3.66851e+09
 building_cost
 1
 1
@@ -351,7 +351,7 @@ const_per_interest1
 1
 1
 1
-0
+432
 const_per_interest2
 1
 1
@@ -411,7 +411,7 @@ const_per_interest_total
 1
 1
 1
-0
+432
 const_per_months1
 1
 1
@@ -472,7 +472,7 @@ const_per_percent1
 1
 1
 1
-0
+100
 const_per_percent2
 1
 1
@@ -502,13 +502,13 @@ const_per_percent_total
 1
 1
 1
-0
+100
 const_per_principal1
 1
 1
 1
 1
-0
+43200
 const_per_principal2
 1
 1
@@ -538,13 +538,13 @@ const_per_principal_total
 1
 1
 1
-0
+43200
 const_per_total1
 1
 1
 1
 1
-0
+864
 const_per_total2
 1
 1
@@ -604,7 +604,7 @@ construction_financing_cost
 1
 1
 1
-0
+864
 construction_time
 1
 1
@@ -634,7 +634,7 @@ contingency
 1
 1
 1
-3
+480000
 correlation_uncert
 1
 3
@@ -703,13 +703,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-555474
+343.829
 cost_dev_fee_value
 1
 1
 1
 1
-2.09376e+06
+1296
 cost_equity_closing
 1
 1
@@ -767,7 +767,7 @@ degradation
 2
 1
 1
-0
+0.5
 delivery_assist_required
 1
 1
@@ -791,7 +791,7 @@ depr_alloc_macrs_5_percent
 1
 1
 1
-89
+90
 depr_alloc_none
 1
 1
@@ -803,13 +803,13 @@ depr_alloc_sl_15_percent
 1
 1
 1
-3
+2.5
 depr_alloc_sl_20_percent
 1
 1
 1
 1
-3.5
+3
 depr_alloc_sl_39_percent
 1
 1
@@ -2356,13 +2356,13 @@ electrical_installation_cost
 1
 1
 1
-1.92766e+06
+459632
 electrical_materials_cost
 1
 1
 1
 1
-3.91765e+06
+2.2571e+06
 enable_interconnection_limit
 1
 1
@@ -2488,7 +2488,7 @@ erection_cost
 1
 1
 1
-2.17415e+06
+399335
 est_bos_cost
 1
 0
@@ -2575,7 +2575,7 @@ farm_size_MW
 1
 1
 1
-48
+0.032
 federal_tax_rate
 1
 2
@@ -2599,7 +2599,7 @@ foundation_cost
 1
 1
 1
-3.48031e+06
+3.15507e+06
 grid_curtailment
 1
 2
@@ -2612,7 +2612,7 @@ grid_interconnection_limit_kwac
 1
 1
 1
-20000
+100000
 hextrap_approp_uncert
 1
 1
@@ -2930,7 +2930,7 @@ insurance_cost
 1
 1
 1
-260991
+220026
 insurance_rate
 1
 1
@@ -2972,7 +2972,7 @@ itc_fed_percent
 1
 1
 1
-0
+30
 itc_fed_percent_deprbas_fed
 1
 1
@@ -3134,13 +3134,13 @@ machine_rating
 1
 1
 1
-1500
+1
 markup_cost
 1
 1
 1
 1
-5.5149e+06
+1.17368e+11
 meas_atm_uncert
 1
 1
@@ -3176,7 +3176,7 @@ mera_cost1
 1
 1
 1
-1.2e+07
+8000
 mera_cost2
 1
 1
@@ -3261,7 +3261,8 @@ number_of_turbines
 obos_warning
 1
 4
-0
+68
+Offshore BOS cost model failed with error: fail(turbR, min=1): 0.001
 om_building_size
 1
 1
@@ -3291,7 +3292,7 @@ om_capacity
 2
 1
 1
-44
+42
 om_capacity_escal
 1
 1
@@ -3579,7 +3580,7 @@ power_performance_cost
 1
 1
 1
-525200
+432600
 ppa_escalation
 1
 1
@@ -3639,7 +3640,7 @@ property_assessed_value
 1
 1
 1
-6.9792e+07
+43200
 property_tax_rate
 1
 1
@@ -3651,13 +3652,13 @@ ptc_fed_amount
 2
 1
 1
-0.022
+0
 ptc_fed_escal
 1
 1
 1
 1
-2.5
+0
 ptc_fed_term
 1
 1
@@ -3675,7 +3676,7 @@ ptc_sta_escal
 1
 1
 1
-2.5
+0
 ptc_sta_term
 1
 1
@@ -3711,7 +3712,7 @@ quantity_test_met_towers
 1
 1
 1
-1
+0
 quantity_test_met_towers_choice
 1
 1
@@ -3729,7 +3730,7 @@ quantity_test_met_towers_sugg
 1
 1
 1
-1
+0
 real_discount_rate
 1
 1
@@ -3741,7 +3742,7 @@ reference_capacity
 1
 1
 1
-48000
+32
 reference_number_turbines
 1
 1
@@ -3818,7 +3819,7 @@ rotor_diameter
 1
 1
 1
-77
+2.5
 rows
 1
 1
@@ -3902,7 +3903,7 @@ site_compound_security_cost
 1
 1
 1
-504030
+351152
 site_terrain
 1
 1
@@ -3942,7 +3943,7 @@ substation_cost
 1
 1
 1
-3.72902e+06
+3.12697e+06
 substructCont
 1
 1
@@ -3960,7 +3961,7 @@ system_capacity
 1
 1
 1
-48000
+32
 system_use_lifetime_output
 1
 1
@@ -4037,25 +4038,25 @@ total_installed_cost
 1
 1
 1
-6.9792e+07
+43200
 total_installed_cost_per_kw
 1
 1
 1
 1
-1454
+1350
 total_obos_cost
 1
 1
 1
 1
-2.4862e+09
+0
 total_obos_cost_per_kw
 1
 1
 1
 1
-51795.9
+0
 total_uncert
 1
 1
@@ -4175,7 +4176,7 @@ turbine_cost_per_kw
 1
 1
 1
-1094
+1000
 turbine_cost_per_turbine
 1
 1
@@ -4187,7 +4188,7 @@ turbine_cost_total
 1
 1
 1
-5.2512e+07
+32000
 turbine_layout
 1
 1
@@ -4413,7 +4414,7 @@ wind_bos_shown
 1
 1
 1
-0
+1
 wind_climate.avg_wind_speed_closest_to_hub_ht
 1
 1
@@ -4464,7 +4465,7 @@ wind_farm_xCoordinates
 2
 1
 32
-0 38500 77000 115500 154000 192500 231000 269500 308 38808 77308 115808 154308 192808 231308 269808 0 38500 77000 115500 154000 192500 231000 269500 308 38808 77308 115808 154308 192808 231308 269808 
+0 1250 2500 3750 5000 6250 7500 8750 625 1875 3125 4375 5625 6875 8125 9375 1250 2500 3750 5000 6250 7500 8750 10000 1875 3125 4375 5625 6875 8125 9375 10625 
 
 wind_farm_yCoord_file
 1
@@ -4477,7 +4478,7 @@ wind_farm_yCoordinates
 2
 1
 32
-0 0 0 0 0 0 0 0 616 616 616 616 616 616 616 616 1232 1232 1232 1232 1232 1232 1232 1232 1848 1848 1848 1848 1848 1848 1848 1848 
+0 0 0 0 0 0 0 0 1875 1875 1875 1875 1875 1875 1875 1875 3750 3750 3750 3750 3750 3750 3750 3750 5625 5625 5625 5625 5625 5625 5625 5625 
 
 wind_obos_shown
 1
@@ -4607,8 +4608,8 @@ wind_resource_turbulence_coeff
 wind_turbine_IEC_Class_from_lib
 1
 4
-3
-IIa
+1
+0
 wind_turbine_cut_out
 1
 1
@@ -4632,13 +4633,13 @@ wind_turbine_kw_rating
 1
 1
 1
-1500
+1
 wind_turbine_kw_rating_from_lib
 1
 1
 1
 1
-1500
+1
 wind_turbine_kw_rating_input
 1
 1
@@ -4666,48 +4667,48 @@ wind_turbine_powercurve_powerout
 1
 2
 1
-161
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 21.32 33.51 45.69 65.21 79.83 104.25 128.66 157.97 187.27 216.58 250.78 292.32 333.85 375.4 426.72 475.6 534.27 597.81 656.49 724.94 798.29 871.63 940.08 1010 1060 1130 1190 1240 1290 1330 1370 1390 1410 1430 1440 1460 1470 1475 1480 1485 1490 1495 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+15
+0 0 0.048 0.155 0.39 0.69 1.02 1.22 1.19 1.085 1 0.9 0.5 0 0 
 
 wind_turbine_powercurve_powerout_from_lib
 1
 2
 1
-161
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 21.32 33.51 45.69 65.21 79.83 104.25 128.66 157.97 187.27 216.58 250.78 292.32 333.85 375.4 426.72 475.6 534.27 597.81 656.49 724.94 798.29 871.63 940.08 1010 1060 1130 1190 1240 1290 1330 1370 1390 1410 1430 1440 1460 1470 1475 1480 1485 1490 1495 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 1500 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+15
+0 0 0.048 0.155 0.39 0.69 1.02 1.22 1.19 1.085 1 0.9 0.5 0 0 
 
 wind_turbine_powercurve_windspeeds
 1
 2
 1
-161
-0 0.25 0.5 0.75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.25 4.5 4.75 5 5.25 5.5 5.75 6 6.25 6.5 6.75 7 7.25 7.5 7.75 8 8.25 8.5 8.75 9 9.25 9.5 9.75 10 10.25 10.5 10.75 11 11.25 11.5 11.75 12 12.25 12.5 12.75 13 13.25 13.5 13.75 14 14.25 14.5 14.75 15 15.25 15.5 15.75 16 16.25 16.5 16.75 17 17.25 17.5 17.75 18 18.25 18.5 18.75 19 19.25 19.5 19.75 20 20.25 20.5 20.75 21 21.25 21.5 21.75 22 22.25 22.5 22.75 23 23.25 23.5 23.75 24 24.25 24.5 24.75 25 25.25 25.5 25.75 26 26.25 26.5 26.75 27 27.25 27.5 27.75 28 28.25 28.5 28.75 29 29.25 29.5 29.75 30 30.25 30.5 30.75 31 31.25 31.5 31.75 32 32.25 32.5 32.75 33 33.25 33.5 33.75 34 34.25 34.5 34.75 35 35.25 35.5 35.75 36 36.25 36.5 36.75 37 37.25 37.5 37.75 38 38.25 38.5 38.75 39 39.25 39.5 39.75 40 
+15
+0 3 3.6 5.4 7.2 8.9 10.7 12.5 14.3 16.1 17.9 19.7 21 23 40 
 
 wind_turbine_powercurve_windspeeds_from_lib
 1
 2
 1
-161
-0 0.25 0.5 0.75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.25 4.5 4.75 5 5.25 5.5 5.75 6 6.25 6.5 6.75 7 7.25 7.5 7.75 8 8.25 8.5 8.75 9 9.25 9.5 9.75 10 10.25 10.5 10.75 11 11.25 11.5 11.75 12 12.25 12.5 12.75 13 13.25 13.5 13.75 14 14.25 14.5 14.75 15 15.25 15.5 15.75 16 16.25 16.5 16.75 17 17.25 17.5 17.75 18 18.25 18.5 18.75 19 19.25 19.5 19.75 20 20.25 20.5 20.75 21 21.25 21.5 21.75 22 22.25 22.5 22.75 23 23.25 23.5 23.75 24 24.25 24.5 24.75 25 25.25 25.5 25.75 26 26.25 26.5 26.75 27 27.25 27.5 27.75 28 28.25 28.5 28.75 29 29.25 29.5 29.75 30 30.25 30.5 30.75 31 31.25 31.5 31.75 32 32.25 32.5 32.75 33 33.25 33.5 33.75 34 34.25 34.5 34.75 35 35.25 35.5 35.75 36 36.25 36.5 36.75 37 37.25 37.5 37.75 38 38.25 38.5 38.75 39 39.25 39.5 39.75 40 
+15
+0 3 3.6 5.4 7.2 8.9 10.7 12.5 14.3 16.1 17.9 19.7 21 23 40 
 
 wind_turbine_rated_wind_speed
 1
 1
 1
 1
-1500
+1
 wind_turbine_rotor_diameter
 1
 1
 1
 1
-77
+2.5
 wind_turbine_rotor_diameter_from_lib
 1
 1
 1
 1
-77
+2.5
 wind_turbine_rotor_diameter_input
 1
 1
@@ -4717,8 +4718,8 @@ wind_turbine_rotor_diameter_input
 wind_turbine_selection
 1
 4
-9
-GE 1.5sle
+15
+Bergey BWC XL.1
 windfarm.farm.layout_angle
 1
 1
@@ -4742,19 +4743,19 @@ windfarm.farm.offset
 1
 1
 1
-4
+250
 windfarm.farm.offset_type
 1
 1
 1
 1
-0
+1
 windfarm.farm.row_spacing
 1
 1
 1
 1
-8
+750
 windfarm.farm.shape
 1
 1

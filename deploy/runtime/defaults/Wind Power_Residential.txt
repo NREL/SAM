@@ -159,7 +159,7 @@ bos_cost_per_kw
 1
 1
 1
-7543
+6000
 bos_cost_per_turbine
 1
 1
@@ -171,7 +171,7 @@ bos_cost_total
 1
 1
 1
-18103.2
+14400
 bos_total_budgeted_cost
 1
 1
@@ -2410,7 +2410,7 @@ loan_amount
 1
 1
 1
-17212.3
+14400
 loan_rate
 1
 1
@@ -2953,7 +2953,7 @@ property_assessed_value
 1
 1
 1
-28687.2
+24000
 property_tax_rate
 1
 1
@@ -3294,13 +3294,13 @@ total_installed_cost
 1
 1
 1
-28687.2
+24000
 total_installed_cost_per_kw
 1
 1
 1
 1
-11953
+10000
 total_obos_cost
 1
 1
@@ -3432,7 +3432,7 @@ turbine_cost_per_kw
 1
 1
 1
-4410
+4000
 turbine_cost_per_turbine
 1
 1
@@ -3444,7 +3444,7 @@ turbine_cost_total
 1
 1
 1
-10584
+9600
 turbine_layout
 1
 1
@@ -3468,7 +3468,7 @@ ui_net_capital_cost
 1
 1
 1
-28687.2
+24000
 ui_wacc
 1
 1
