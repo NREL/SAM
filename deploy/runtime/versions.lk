@@ -66,6 +66,11 @@ version_upgrade{'2019.12.9'} = define() {
 			value('batt_thermal_choice', 1);
 		}
 	}
+	if ( cfg.tech == 'PVWatts')
+	{
+		message('This version of SAM updates the PVWatts model to the latest version, pvwattsv7. Results will change compared to previous versions. '
+		'Please see Help for a link to a detailed description of model updates.','warning');
+	}
 	if ( cfg.tech == 'Physical Trough' )
 	{
 		old_custom_sgs_pipe_sizes = oldvalue('custom_sgs_pipe_sizes');		// array

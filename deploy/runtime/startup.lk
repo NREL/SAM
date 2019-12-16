@@ -960,79 +960,79 @@ setup_merchant_plant_pages(LIFETIME_SYSTEM);
 
 // PVWatts /////////////////////////////////////////////////////////////////////
 setconfig( 'PVWatts', 'LCOE Calculator' );
-setmodules( ['pvwattsv5', 'grid','lcoefcr']);
+setmodules( ['pvwattsv7', 'grid','lcoefcr']);
 setup_pvwatts_pages();
 setup_lcoefcr_pages();
 
 setconfig( 'PVWatts', 'None' );
-setmodules( ['pvwattsv5','grid']);
+setmodules( ['pvwattsv7','grid']);
 setup_pvwatts_pages();
 
 setconfig( 'PVWatts', 'Residential' );	
-setmodules( ['pvwattsv5', 'belpe', 'battwatts', 'grid','utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv7', 'belpe', 'battwatts', 'grid','utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE, LIFETIME_SYSTEM ); //includes building load calculator
 
 setconfig( 'PVWatts', 'Commercial' );	
-setmodules( ['pvwattsv5', 'battwatts','grid', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv7', 'battwatts','grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for commercial
 
 
 setconfig( 'PVWatts', 'Commercial PPA' );	
-setmodules( ['pvwattsv5','grid', 'ippppa']);
+setmodules( ['pvwattsv7','grid', 'ippppa']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_ppa_pages(LIFETIME_SYSTEM);
 
 setconfig( 'PVWatts', 'Independent Power Producer' );	
-setmodules( ['pvwattsv5', 'grid','ippppa']);
+setmodules( ['pvwattsv7', 'grid','ippppa']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_independent_power_producer_pages(LIFETIME_SYSTEM);
 
 setconfig( 'PVWatts', 'Leveraged Partnership Flip' );	
-setmodules( ['pvwattsv5', 'grid', 'levpartflip']);
+setmodules( ['pvwattsv7', 'grid', 'levpartflip']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_leveraged_partnership_flip_pages(LIFETIME_SYSTEM);
 
 setconfig( 'PVWatts', 'All Equity Partnership Flip' );	
-setmodules( ['pvwattsv5', 'grid', 'equpartflip']);
+setmodules( ['pvwattsv7', 'grid', 'equpartflip']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 
 setconfig( 'PVWatts', 'Sale Leaseback' );	
-setmodules( ['pvwattsv5', 'grid','saleleaseback']);
+setmodules( ['pvwattsv7', 'grid','saleleaseback']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_sale_leaseback_pages(LIFETIME_SYSTEM);
 
 setconfig( 'PVWatts', 'Single Owner' );	
-setmodules( ['pvwattsv5', 'grid','singleowner']);
+setmodules( ['pvwattsv7', 'grid','singleowner']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
 
 setconfig( 'PVWatts', 'Merchant Plant' );	
-setmodules( ['pvwattsv5', 'grid','merchantplant']);
+setmodules( ['pvwattsv7', 'grid','merchantplant']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_merchant_plant_pages(LIFETIME_SYSTEM);
 
 
 setconfig( 'PVWatts', 'Host Developer' );
-setmodules( ['pvwattsv5', 'grid', 'utilityrate5', 'host_developer']);
+setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'host_developer']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_host_developer_pages( LOAD_SIMPLE, LIFETIME_SYSTEM ); //includes building load calculator by default in this function
 
 
 setconfig( 'PVWatts', 'Third Party' );	
-setmodules( ['pvwattsv5', 'belpe', 'battwatts', 'grid','utilityrate5', 'thirdpartyownership']);
+setmodules( ['pvwattsv7', 'belpe', 'battwatts', 'grid','utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_battery_pages();
 setup_thirdparty_pages( LOAD_BELPE , LIFETIME_SYSTEM); //includes building load calculator by default in this function
 
@@ -1170,7 +1170,7 @@ setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for comme
 
 // Fuel Cell /////////////////////////////////////////////////////////
 setconfig( 'Fuel Cell', 'Commercial');
-setmodules( ['pvwattsv5', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'cashloan'] );
+setmodules( ['pvwattsv7', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='fuelcell_pv_system' } );
 setup_fuel_cell_pages_btm();
@@ -1181,7 +1181,7 @@ addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_loa
 
 
 setconfig( 'Fuel Cell', 'Single Owner');
-setmodules( ['pvwattsv5', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'singleowner']);
+setmodules( ['pvwattsv7', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='fuelcell_pv_system' } );
 setup_fuel_cell_pages_fom();
