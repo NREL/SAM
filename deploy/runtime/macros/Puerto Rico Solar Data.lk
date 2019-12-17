@@ -1,0 +1,128 @@
+/*@
+<p>This macro downloads solar resource files from the NREL National Solar Radiation
+Database <a href="https://developer.nrel.gov/docs/solar/nsrdb/puerto_rico_data_download/">Puerto Rico SHR</a> 
+data and adds them to the solar resource library on the Location and Resource
+input page.</p>
+<p>
+<ol>
+<li>Type values for <b>latitude</b> and <b>longitude</b> value at right. If you 
+do not know the latitude and longitude of your location, you can use an internet 
+search to find it.</li>
+<li>Choose a <b>time step</b>. For most analyses, choose 60-minute or 30-minute 
+data. 5-minute data will take longer to download.</li>
+<li>Choose a <b>year</b>. To download multiple files for P50/P90 simulations, 
+choose "all" (downloading multiple files may take a while).</li>
+<li>Click <b>Run macro</b> above.</b>  
+</ol>
+</p>
+<p>Note that typical year (TMY) data is not available from this dataset.</p>
+@*/
+
+// Macro inputs
+//@ name=lat;type=text;label=Latitude;value=18.5
+//@ name=lon;type=text;label=Longitude;value=-66.1 
+//@ name=interval;type=combo;label=Time step;value=5,30,60;sel=2
+//@ name=names;type=combo;label=Choose a year;value=1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,all;sel=0
+
+// Macro must be run from a case
+if ( typeof(macro) == 'unknown' ) {
+	msgbox('This macro must be run from within a case.');
+	exit;
+}
+
+// folder to store weather files (script creates subfolder for each location).
+path = wfdownloaddir();
+
+// Set these parameters
+set_url = define ( format, inputs )
+{
+	// latitude and longitude for a location in Puerto Rico
+	lat = inputs.lat;
+	lon = inputs.lon;
+
+	// email
+	email = 'sam.support@nrel.gov';
+
+	// names
+	// 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+	names = inputs.names;
+
+	// attributes (not required, but request only data SAM uses for simulations)
+	// air_temperature, clearsky_dhi, clearsky_dni, clearsky_ghi, dhi, dni, ghi, solar_zenith_angle, surface_albedo, surface_pressure, total_precipitable_water, wind_speed
+	attributes = 'air_temperature,dhi,dni,ghi,surface_albedo,surface_pressure,wind_speed';
+
+	// interval
+	// 5, 30, or 60
+	interval = macro.interval;
+
+	// request url
+	if ( format == 'csv' ) { url = webapi('nsrdb_pr_query_csv'); }
+	if ( format == 'json' ) { url = webapi('nsrdb_pr_query_json'); }
+	
+	url += '&email='+email;
+	url += '&names='+names;
+	url += '&interval='+interval;
+	url += '&attributes='+attributes;
+	url +=  '&wkt=POINT(' + to_string(lon) + ' ' + to_string(lat) + ')';
+
+	return (url);
+
+};
+
+fname = 'nsrdb_puerto_rico_' + macro.lat + '_' + macro.lon + '_' + macro.interval + '_' + macro.names;
+f = path + '/' + fname + '.csv';
+outln( 'Downloading ' + f );
+
+if ( macro.names != 'all' )
+{
+	// test request
+	json_str = curl( set_url( 'json', macro ) );
+	json_var = json_read( json_str );
+	if ( json_var.errors == [] )
+	{
+		request = set_url( 'csv', macro );
+		ok = curl( request , { 'file' = f } );
+		if ( !ok ) 
+		{	 
+			outln( 'Download failed. Request URL:\n' + request);
+		}
+		else
+		{
+			outln( 'Done.' );
+			show_page( 'Location and Resource' );
+			set( 'solar_resource', fname);
+		}
+	}
+	else
+	{
+		outln('Unable to download file for Latitude = ' + macro.lat + ', Longitude = ' + macro.lon );
+		if ( strpos( json_var.errors, 'wkt' ) > -1 )
+		{
+			outln( 'That location does not appear to be in the area covered by the NSRDB Puerto Rico database.');
+		}
+		outln( json_var.errors );
+	}
+}
+else
+{
+	outln('Downloading files for all available years.');
+	path += '/' + 'nsrdb_puerto_rico_' + macro.lat + '_' + macro.lon;
+	ok = true;
+	if ( !dir_exists( path ) ) { ok = mkdir( path , false ); }
+	if ( !ok )
+	{
+		outln('Failed to create folder for multiple files. Quitting macro.');
+		outln( path );
+		exit;
+	}
+	available_years = [1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
+	for( i=0; i<#available_years; i++ )
+	{
+		f = path + '/' + 'nsrdb_puerto_rico_' + macro.lat + '_' + macro.lon + '_' + macro.interval + '_' + available_years[i] + '.csv';
+		outln('Downloading ' + f );
+		request = set_url ( 'csv', {'lat'=macro.lat, 'lon'=macro.lon, 'interval'=60, 'names' = available_years[i]});
+		ok = curl( request , { 'file' = f } );
+		if ( !ok ) { outln('  Download failed.');}
+	}
+	outln('Done. To run P50/P90 simulations, click "P50 / P90" and select "' + path + '" for the weather file folder.');
+}

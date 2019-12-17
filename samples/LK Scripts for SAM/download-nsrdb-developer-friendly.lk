@@ -24,7 +24,13 @@ Instructions:
 Note: The NSRDB may return a file with an error message instead of weather data
 if you exceed the the download rate limit or if there is a problem with the URL.
 
+After the file downloads, add it to the solar resource library by going to the
+Location and Resource page, and clicking 'Add/remove weather file folders' to
+add the folder containing the file to SAM's list of weather file folders. You
+should then be able to choose the file from the solar resource library.
+
 Written in SAM 2018.11.11, December 2018
+Updated December 2019 to use https and add Puerto Rico location for testing
 
 //////////////////////////////////////////////////////////////////////////////*/
 
@@ -43,6 +49,9 @@ us_lon = -119;
 asia_lat = 91.287;
 asia_lon = 23.832;
 
+pr_lat = 18.5;
+pr_lon = -66.1;
+
 // location for download
 lat = us_lat;
 lon = us_lon;
@@ -55,15 +64,21 @@ lon = us_lon;
 // var.outputs[x].links: array of tables [{year,interval,link},{year,interval,link},...]
 // var.outputs[x].name: string version name 'suny-international','psmv3','mts1','mts2'
 
-base_url = 'http://developer.nrel.gov/api/solar/';
+base_url = 'https://developer.nrel.gov/api/solar/';
 query_url = 'nsrdb_data_query.json?api_key=' + key + '&wkt=POINT(' + to_string(lon) + '+' + to_string(lat) + ')';
 url = base_url + query_url;
 
 json_str = curl( url );
 var = json_read( json_str );
+
 if ( var.error != null )
 {
 	msgbox( 'NSRDB Error!\n' + var.error.message + '\n\nExiting script.' );
+	exit;
+}
+elseif( var.outputs == [] )
+{
+	msgbox( 'No data available for this location!\n' + var  + '\n\nExiting script.');
 	exit;
 }
 
