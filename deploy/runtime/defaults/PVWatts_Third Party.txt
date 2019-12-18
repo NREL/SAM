@@ -1210,7 +1210,8 @@ ur_monthly_min_charge
 ur_name
 1
 4
-0
+25
+Arizona Public Service Co
 ur_nm_yearend_sell_rate
 1
 1
@@ -1228,15 +1229,18 @@ ur_ratedata_filename
 ur_schedule_name
 1
 4
-0
+19
+Residential TOU ET2
 ur_source
 1
 4
-0
+42
+https://www.aps.com/library/rates/et-2.pdf
 ur_start_date
 1
 4
-0
+5
+empty
 ur_ts_buy_rate
 1
 2
@@ -1253,7 +1257,8 @@ ur_ts_sell_rate
 ur_uri
 1
 4
-0
+5
+empty
 ur_voltage_category
 1
 4

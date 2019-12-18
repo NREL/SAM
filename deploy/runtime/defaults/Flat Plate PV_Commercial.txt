@@ -5989,7 +5989,11 @@ ur_desc_is_shown
 ur_description
 1
 4
-0
+398
+This rate schedule is applicable to all Standard Offer and Direct Access customers whose Average Monthly Maximum Demand is greater than 100 kW and less than or equal to 400 kW per month.
+
+Adjustments = Renewable Energy adjustment + Transmission Cost adjustment + Environmental Improvement surcharge + Demand Side Management adjustment + Lost Fixed Cost Recovery mechanism + Power Supply adjustment
+
 ur_ec_is_shown
 1
 1
@@ -6051,7 +6055,8 @@ ur_en_ts_sell_rate
 ur_end_date
 1
 4
-0
+3
+N/A
 ur_energy_history
 1
 1
@@ -6091,7 +6096,8 @@ ur_monthly_min_charge
 ur_name
 1
 4
-0
+25
+Arizona Public Service Co
 ur_nm_yearend_sell_rate
 1
 1
@@ -6101,7 +6107,8 @@ ur_nm_yearend_sell_rate
 ur_phase_wiring
 1
 4
-0
+18
+Single and 3-Phase
 ur_ratedata_filename
 1
 4
@@ -6113,11 +6120,13 @@ ur_schedule_name
 ur_source
 1
 4
-0
+45
+http://www.aps.com/library/rates/e-32TOUM.pdf
 ur_start_date
 1
 4
-0
+10
+2017-08-18
 ur_ts_buy_rate
 1
 2
@@ -6134,11 +6143,13 @@ ur_ts_sell_rate
 ur_uri
 1
 4
-0
+66
+http://en.openei.org/apps/IURDB/rate/view/5a5e2c0e682bea7d2e0e5e44
 ur_voltage_category
 1
 4
-0
+9
+Secondary
 ur_voltage_max
 1
 1

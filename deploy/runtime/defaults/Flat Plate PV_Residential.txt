@@ -6297,18 +6297,18 @@ ur_ratedata_filename
 ur_schedule_name
 1
 4
-5
-empty
+38
+Residential Time of Use (Saver Choice)
 ur_source
 1
 4
-5
-empty
+49
+https://www.aps.com/library/rates/SaverChoice.pdf
 ur_start_date
 1
 4
-5
-empty
+10
+2017-08-18
 ur_ts_buy_rate
 1
 2
@@ -6324,8 +6324,8 @@ ur_ts_sell_rate
 ur_uri
 1
 4
-5
-empty
+66
+http://en.openei.org/apps/IURDB/rate/view/5a5936ea682bea7ec31f8652
 ur_voltage_category
 1
 4
