@@ -4519,7 +4519,7 @@ static void fcall_parametric_export(lk::invoke_t &cxt)
 
 static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 {
-    LK_DOC("reopt_size_battery", "From a detailed photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "( none ): table");
+    LK_DOC("reopt_size_battery", "From a detailed or simple photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "( none ): table");
 
     ssc_data_t p_data = ssc_data_create();
 
