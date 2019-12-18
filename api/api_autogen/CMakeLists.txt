@@ -103,7 +103,7 @@ add_executable(export_config
 		builder_C_API.cpp builder_C_API.h 
 		builder_PySAM.cpp builder_PySAM.h)
 
-target_include_directories(export_config SYSTEM PRIVATE ../../src ${CMAKE_SOURCE_DIR}/ssc ${CMAKE_SOURCE_DIR}/tcs ${CMAKE_SOURCE_DIR}/wex/include ${CMAKE_SOURCE_DIR}/lk/include )
+target_include_directories(export_config SYSTEM PRIVATE ../../src $ENV{SSCDIR} $ENV{SSCDIR}/tcs $ENV{WEXDIR}/include $ENV{LKDIR}/include )
 
 set_target_properties(export_config
     PROPERTIES
