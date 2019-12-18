@@ -3983,7 +3983,7 @@ wind_bos_shown
 1
 1
 1
-0
+1
 wind_climate.avg_wind_speed_closest_to_hub_ht
 1
 1

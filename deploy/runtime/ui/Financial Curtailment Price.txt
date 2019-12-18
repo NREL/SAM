@@ -240,7 +240,7 @@ grid_curtailment_price
 2
 Curtailed energy compensation rate
 $/kWh
-Financial Curtailment Price
+Curtailment Compensation
 0
 2
 1
@@ -254,7 +254,7 @@ grid_curtailment_price_esc
 1
 Curtailed compensation escalation
 %/year
-Financial Curtailment Price
+Curtailment Compensation
 0
 2
 1

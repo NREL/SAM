@@ -52,8 +52,10 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 
-version_upgrade{'2019.4.3'} = define() {
+version_upgrade{'2019.12.9'} = define() {
+
 	const cfg = config();
+
 	if (varinfo('en_batt')){
 		if (value('en_batt')){
 			old_replacement_cost = oldvalue('batt_replacement_cost');
@@ -66,6 +68,28 @@ version_upgrade{'2019.4.3'} = define() {
 			value('batt_thermal_choice', 1);
 		}
 	}
+
+	if (cfg.tech == 'Flat Plate PV') 
+	{
+		// battery
+		charge_max = oldvalue('batt_power_charge_max');
+		value('batt_power_charge_max_kwdc', charge_max);
+		discharge_max = oldvalue('batt_power_discharge_max');
+		value('batt_power_discharge_max_kwdc', discharge_max);
+		temp = oldvalue('T_room');
+		value('batt_room_temperature_celsius', temp);
+		rep = oldvalue('batt_replacement_cost');
+		value('om_replacement_cost1', [rep]);
+		ppa_price = oldvalue('ppa_price_input');
+		value('ppa_price_input', [ppa_price]);
+	}
+
+	if ( cfg.tech == 'PVWatts')
+	{
+		message('This version of SAM updates the PVWatts model to the latest version, pvwattsv7. Results will change compared to previous versions. '
+		'Please see Help for a link to a detailed description of model updates.','warning');
+	}
+
 	if ( cfg.tech == 'Physical Trough' )
 	{
 		old_custom_sgs_pipe_sizes = oldvalue('custom_sgs_pipe_sizes');		// array
@@ -121,6 +145,14 @@ version_upgrade{'2019.4.3'} = define() {
 			value( 'combo_htf_type', old_combo_htf_type + 1 );
 		}
 	}
+	
+	fin = cfg.fin;
+	is_ppa = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' || fin == 'Host Developer');
+	if ( is_ppa )
+	{
+		value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
+		message('You can now specify a different PPA price for each year of the analysis period on the Finanical Parameters page.','notice');
+	} 
 };
 
 

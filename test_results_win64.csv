@@ -1,26 +1,26 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
-Flat Plate PV,Residential,8743.297852,7.242839,NA,; 
-Flat Plate PV,Commercial,394665.343750,5.562306,NA,; 
+Flat Plate PV,Residential,8534.480469,10.292587,NA,; 
+Flat Plate PV,Commercial,394665.343750,5.195621,NA,; 
 Flat Plate PV,Third Party,8743.297852,NA,NA,; 
 Flat Plate PV,Host Developer,394665.343750,19.912907,21.401932,; 
-Flat Plate PV,Single Owner,37229396,7.015843,7.506585,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 1 times
-Flat Plate PV,Merchant Plant,37228724,6.167445,NA,; 
-Flat Plate PV,Leveraged Partnership Flip,37228724,6.964087,7.395480,; 
-Flat Plate PV,All Equity Partnership Flip,37228724,8.256866,9.404723,; 
-Flat Plate PV,Sale Leaseback,37228724,8.879889,9.857806,; 
+Flat Plate PV,Single Owner,37228724,6.863500,0,; 
+Flat Plate PV,Merchant Plant,37226544,6.863761,NA,; 
+Flat Plate PV,Leveraged Partnership Flip,37228724,7.951995,10.807885,; 
+Flat Plate PV,All Equity Partnership Flip,37230192,9.263105,10.807885,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 2 times
+Flat Plate PV,Sale Leaseback,37230192,9.757137,10.807885,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 2 times
 Flat Plate PV,LCOE Calculator,37228724,NA,NA,; 
 Flat Plate PV,None,8743.297852,NA,NA,; 
-PVWatts,Residential,6849.423828,10.467452,NA,; 
-PVWatts,Commercial,342046.531250,4.414898,NA,; 
-PVWatts,Third Party,6849.423828,NA,NA,; 
-PVWatts,Host Developer,34247120,10.891188,10.830657,; 
-PVWatts,Single Owner,34953736,7.236546,7.678095,; 
-PVWatts,Merchant Plant,34953736,6.572868,NA,; 
-PVWatts,Leveraged Partnership Flip,34953736,7.465647,8.165660,; 
-PVWatts,All Equity Partnership Flip,34953736,8.779960,10.174605,; 
-PVWatts,Sale Leaseback,34953736,9.005731,9.305637,; 
-PVWatts,LCOE Calculator,43270708,NA,NA,; 
-PVWatts,None,6849.423828,NA,NA,; 
+PVWatts,Residential,6716.931641,10.673924,NA,; 
+PVWatts,Commercial,335233.625000,4.504622,NA,; 
+PVWatts,Third Party,6716.931641,NA,NA,; 
+PVWatts,Host Developer,33561296,11.094951,10.830657,; 
+PVWatts,Single Owner,33832036,7.476474,7.932662,; 
+PVWatts,Merchant Plant,33832036,6.790792,NA,; 
+PVWatts,Leveraged Partnership Flip,33832036,7.713171,8.436392,; 
+PVWatts,All Equity Partnership Flip,33832036,9.070980,10.511647,; 
+PVWatts,Sale Leaseback,33832036,9.304316,9.614166,; 
+PVWatts,LCOE Calculator,42868344,NA,NA,; Warning: A non-zero tilt was assigned for a single-axis tracking system. This is a very uncommon configuration.
+PVWatts,None,6716.931641,NA,NA,; 
 High-X Concentrating PV,Single Owner,2421126.250000,22.962122,24.831181,; 
 High-X Concentrating PV,Merchant Plant,2421126.250000,20.815769,NA,; 
 High-X Concentrating PV,Leveraged Partnership Flip,2421126.250000,24.537228,27.522377,; 
@@ -28,13 +28,13 @@ High-X Concentrating PV,All Equity Partnership Flip,2421126.250000,28.541370,32.
 High-X Concentrating PV,Sale Leaseback,2421126.250000,27.631435,28.879137,; 
 High-X Concentrating PV,LCOE Calculator,2421126.250000,NA,NA,; 
 High-X Concentrating PV,None,2421126.250000,NA,NA,; 
-Wind Power,Residential,7251.836914,37.976418,NA,; 
+Wind Power,Residential,7251.836914,32.026978,NA,; 
 Wind Power,Commercial,315033.562500,12.769109,NA,; 
-Wind Power,Single Owner,158258.875000,29.102184,31.838646,; 
-Wind Power,Merchant Plant,158258.875000,25.994169,NA,; 
-Wind Power,Leveraged Partnership Flip,203640016,3.853959,4.376323,; 
-Wind Power,All Equity Partnership Flip,203640016,3.731787,2.702294,; 
-Wind Power,Sale Leaseback,203640016,4.350226,4.457438,; 
+Wind Power,Single Owner,158258.875000,23.362947,25.483351,; 
+Wind Power,Merchant Plant,158258.875000,21.160223,NA,; 
+Wind Power,Leveraged Partnership Flip,158258.875000,36.553841,41.577282,; 
+Wind Power,All Equity Partnership Flip,158258.875000,21.658878,25.143984,; 
+Wind Power,Sale Leaseback,158258.875000,20.993713,22.016073,; 
 Wind Power,LCOE Calculator,63086112,NA,NA,; 
 Wind Power,None,201595968,NA,NA,; 
 MHKwave,LCOE Calculator,59434320,NA,NA,; 
@@ -58,8 +58,8 @@ Solar Water Heating,Residential,2281.620361,37.681625,NA,;
 Solar Water Heating,Commercial,2383.139160,44.394341,NA,; 
 Solar Water Heating,LCOE Calculator,2281.620361,NA,NA,; 
 Solar Water Heating,None,2281.620361,NA,NA,; 
-Fuel Cell,Commercial,1903975,24.711235,NA,; 
-Fuel Cell,Single Owner,1903975,26.484348,39.475311,; 
+Fuel Cell,Commercial,1897153.625000,24.800087,NA,; 
+Fuel Cell,Single Owner,1897153.625000,26.579575,39.617249,; 
 Generic System,Residential,6266.194824,27.459829,NA,; 
 Generic System,Commercial,6266.304688,19.285612,NA,; 
 Generic System,Third Party,6266.304688,NA,NA,; 
@@ -121,7 +121,7 @@ Dish Stirling,All Equity Partnership Flip,207236624,18.860062,20.753241,;
 Dish Stirling,Sale Leaseback,207236624,19.091169,19.771194,; 
 Dish Stirling,LCOE Calculator,207236624,NA,NA,; 
 Dish Stirling,None,207236624,NA,NA,; 
-Generic CSP System,Commercial,573340096,3.716447,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Commercial,574115200,3.711856,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Single Owner,573450304,11.254256,12.133404,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Merchant Plant,573450304,10.223703,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Leveraged Partnership Flip,573342592,11.503336,12.408458,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1

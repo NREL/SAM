@@ -59,7 +59,7 @@ if (macro.mode == '2) Combine only the cases listed below')
 				match = true; //flag that this input case was found in the list of available cases
 		if (!match) //a match was never found
 		{
-			msgbox('Input case ' + input_cases[i] + ' was not found among the cases in this project. Please check the name and try again.');
+			msgbox('Input case ' + input_cases[i] + ' was not found among the cases in this project. Check the name and try again.');
 			exit;
 		}
 	}
@@ -71,14 +71,14 @@ if (macro.mode == '2) Combine only the cases listed below')
 //Make sure there are sufficient cases
 if (num_cases <= 0)
 {
-	msgbox('No cases detected. Please check your inputs and try again.');
+	msgbox('No cases detected. Check your inputs and try again.');
 	exit;
 }
 
 if (num_cases == 1 || num_cases == 2)
 {
 	msgbox('Only ' + num_cases + ' cases detected.\n\nThis macro requires at least 3 cases: 2 cases to be combined, plus 1 generic case to model the combined system. ' + 
-		'Please check your inputs and try again.');
+		'Check your inputs and try again.');
 	exit;
 }
 
@@ -106,11 +106,11 @@ for (i=0; i<num_cases; i++)
 //Which generic case to use for the financial model
 if (count <=0) //no generic cases
 {
-	msgbox('This macro requires a generic system set up with the financial configuration that you wish to use to model the combined system. Please include a generic system and try again.');
+	msgbox('This macro requires a generic system set up with the financial configuration that you wish to use to model the combined system. Include a generic system and try again.');
 	exit;
 }
 if (#generic > 1) //more than one generic case
-	financial = choose_from_list(generic, 'Please choose which generic system to use as the financial configuration for the combined system.', 'Select financial case', 0);
+	financial = choose_from_list(generic, 'Choose which generic system to use as the financial configuration for the combined system.', 'Select financial case', 0);
 else //exactly one generic case
 	financial = generic[0];
 outln('Case to use for financial configuration is: ' + financial);
@@ -158,12 +158,12 @@ if (!constant)
 {
 	//offer to fix it for the user- suggest setting all degradation rates to 0 or 0.5
 	msg = 'This macro requires that the degradation rates be the same for all systems, including the generic system used to model the combined system.';
-	msg += '\nPlease enter the degradation rate you wish to use for all systems. Use commas to separate an array of degradation rates.';
+	msg += '\nEnter the degradation rate you wish to use for all systems. Use commas to separate an array of degradation rates.';
 	degrad = in(msg, '0', 'Select a degradation rate');
 	degrad = split(degrad, ',');
 	if (#degrad <= 0)
 	{
-		msgbox('There was an error with the degradation rate inputs. Please fix the degradation rates manually and try again.');
+		msgbox('There was an error with the degradation rate inputs. Fix the degradation rates manually and try again.');
 		exit;
 	}
 	for (i=0; i<#degrad; i++)
@@ -213,8 +213,7 @@ if (config[1] != 'None')
 for (i=0; i < num_cases; i++)
 {
 	//Do not simulate the financial case
-	if (cases[i] == financial)
-		continue;
+	if (cases[i] == financial) { continue; }
 		
 	//Simulate the current case
 	active_case(cases[i]);
@@ -226,7 +225,7 @@ for (i=0; i < num_cases; i++)
 	{
 		if (get('pv_lifetime_simulation') == 1)
 		{
-			msgbox('The combine cases macro cannot be used with lifetime PV simulations. Please change your selection to PV simulation over one year and try again.');
+			msgbox('The combine cases macro cannot be used with lifetime PV simulations. Change your selection to PV simulation over one year and try again.');
 			exit;
 		}
 	}
@@ -243,7 +242,7 @@ for (i=0; i < num_cases; i++)
 	//check that the case ran
 	if (!successful) 
 	{
-		msgbox(cases[i] + ' exited with errors. Please check your inputs.\n' + messages);
+		msgbox(cases[i] + ' exited with errors. Check your inputs.\n' + messages);
 		exit;
 	}
 	//optionally display messages returned from the simulation
@@ -260,7 +259,7 @@ for (i=0; i < num_cases; i++)
 	//Check for sub-hourly
 	if (#hourly_energy_this != 8760)
 	{
-		msgbox('This macro is not currently enabled to combine sub-hourly cases. Please change to an hourly case or modify the code to run sub-hourly.');
+		msgbox('This macro is not currently enabled to combine sub-hourly cases. Change to an hourly case or modify the code to run sub-hourly.');
 		exit;
 	}
 	
@@ -333,7 +332,7 @@ if (financial_type == 'LCOE Calculator')
 {
 	if (!constant1)
 	{
-		msgbox('The LCOE calculator requires a single annualized fixed operating cost. Please check the O&M inputs of your other cases and try again.');
+		msgbox('The LCOE calculator requires a single annualized fixed operating cost. Check the O&M inputs of your other cases and try again.');
 		exit;
 	}
 	else
@@ -342,7 +341,7 @@ if (financial_type == 'LCOE Calculator')
 if (financial_type != 'None')
 {
 	//set cost parameters
-	set('genericsys.cost.plant', total_installed_cost);
+	set('fixed_plant_input', total_installed_cost);
 	set('genericsys.cost.per_watt', 0);
 	set('genericsys.cost.contingency_percent', 0);
 	set('genericsys.cost.epc.percent', 0);
@@ -373,7 +372,7 @@ if (!success)
 }
 else
 {
-	message = 'Simulation complete.\nTotal annual energy = ' + get('annual_energy') + ' kWh.\nPlease see ' + financial + ' for complete results.';
+	message = 'Simulation complete.\nTotal annual energy = ' + sprintf('%,', get('annual_energy')) + ' kWh.\nSee the ' + financial + ' case for complete results.';
 	outln(message);
 	show_page('Results');
 	msgbox(message);
