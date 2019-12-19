@@ -78,7 +78,8 @@ public:
 	bool CoarseGrid;
 	bool FineGrid;
 	double YMin, YMax;
-	wxString Notes;
+    double XMin, XMax;
+    wxString Notes;
 	double FontScale;
 	int FontFace; // 0=system,1=arial,2=times,3=metro	
 };
