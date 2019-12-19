@@ -1,5 +1,5 @@
 1
-205
+206
 Monthly_util
 1
 2
@@ -407,6 +407,12 @@ en_range
 1
 1
 1
+en_snowloss
+1
+1
+1
+1
+0
 en_user_spec_losses
 1
 1

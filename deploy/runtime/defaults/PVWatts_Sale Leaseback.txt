@@ -1,5 +1,5 @@
 1
-410
+411
 ac_nameplate
 1
 1
@@ -987,6 +987,12 @@ elev
 1
 1
 358
+en_snowloss
+1
+1
+1
+1
+0
 en_user_spec_losses
 1
 1

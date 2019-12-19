@@ -1,7 +1,7 @@
 PVWatts
-587
-764
-32
+591
+813
+35
 GroupBox
 
 1
@@ -107,7 +107,7 @@ X
 273
 Y
 3
-675
+708
 Width
 3
 294
@@ -308,6 +308,38 @@ Caption
 5
 27
 Open 3D shade calculator...
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+11
+en_snowloss
+X
+3
+198
+Y
+3
+651
+Width
+3
+23
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+1
 TabOrder
 3
 4294967295
@@ -1288,7 +1320,7 @@ X
 21
 Y
 3
-654
+687
 Width
 3
 525
@@ -1348,8 +1380,8 @@ Colour
 255
 Caption
 5
-7
-Shading
+16
+Shading and Snow
 Bold
 2
 1
@@ -1372,7 +1404,7 @@ Width
 573
 Height
 3
-423
+471
 Tool Tip
 5
 0
@@ -1423,10 +1455,58 @@ Name
 object 7
 X
 3
+219
+Y
+3
+651
+Width
+3
+341
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+60
+Weather file must contain snow data to estimate snow losses.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 731
+X
+3
 33
 Y
 3
-675
+708
 Width
 3
 228
@@ -1461,6 +1541,54 @@ AlignRight
 AlignTop
 2
 1
+Label
+
+1
+13
+Name
+5
+9
+object 75
+X
+3
+42
+Y
+3
+651
+Width
+3
+154
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+25
+Estimate losses from snow
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 ShadingFactors
 
 1
@@ -1618,7 +1746,7 @@ TabOrder
 3
 7
 
-25
+26
 ac_nameplate
 3
 1
@@ -1689,6 +1817,20 @@ PVWatts
 1
 1.1
 Numeric
+en_snowloss
+3
+1
+Estimate losses from snow
+ 
+PVWatts
+0
+3
+1
+1
+1
+1
+0
+Default
 en_user_spec_losses
 3
 1
