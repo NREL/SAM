@@ -2530,7 +2530,7 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-28462
+28552
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
@@ -2756,9 +2756,9 @@ function update_info( ctxt )
 	property( 'summary_caption' , 'Caption' , msg_caption );
 	property( 'summary_caption' , 'TextColour' , msg_color );
 	show('btn_file_add', show_button);
-	show('group_optional',technology() == 'Flat Plate PV');
-	show('annual_snow',technology() == 'Flat Plate PV');
-	show('annual_albedo',technology() == 'Flat Plate PV');
+	show('group_optional',technology() == 'Flat Plate PV' || technology() == 'PVWatts' );
+	show('annual_snow',technology() == 'Flat Plate PV' || technology() == 'PVWatts' );
+	show('annual_albedo',technology() == 'Flat Plate PV' || technology() == 'PVWatts' );
 	refresh('');
 
 	if ( librarygetcurrentselection('solar_resource') == '' )

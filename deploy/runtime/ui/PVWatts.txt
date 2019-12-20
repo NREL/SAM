@@ -1,7 +1,7 @@
 PVWatts
-591
-813
-35
+585
+907
+39
 GroupBox
 
 1
@@ -42,7 +42,7 @@ Name
 ac_nameplate
 X
 3
-249
+195
 Y
 3
 114
@@ -104,10 +104,10 @@ Name
 adjust
 X
 3
-273
+27
 Y
 3
-708
+819
 Width
 3
 294
@@ -229,7 +229,7 @@ Name
 dc_ac_ratio
 X
 3
-249
+195
 Y
 3
 87
@@ -291,10 +291,10 @@ Name
 edit_3d_scene
 X
 3
-336
+321
 Y
 3
-618
+690
 Width
 3
 210
@@ -321,13 +321,13 @@ Name
 en_snowloss
 X
 3
-198
+36
 Y
 3
-651
+720
 Width
 3
-23
+155
 Height
 3
 24
@@ -336,7 +336,8 @@ Tool Tip
 0
 Caption
 5
-0
+20
+Estimate snow losses
 State
 2
 1
@@ -353,10 +354,10 @@ Name
 en_user_spec_losses
 X
 3
-201
+234
 Y
 3
-528
+408
 Width
 3
 24
@@ -447,7 +448,7 @@ Name
 inv_eff
 X
 3
-249
+195
 Y
 3
 141
@@ -509,10 +510,10 @@ Name
 loss_age
 X
 3
-459
+456
 Y
 3
-450
+540
 Width
 3
 90
@@ -571,10 +572,10 @@ Name
 loss_avail
 X
 3
-459
+456
 Y
 3
-477
+567
 Width
 3
 90
@@ -633,10 +634,10 @@ Name
 loss_conn
 X
 3
-459
+456
 Y
 3
-369
+459
 Width
 3
 90
@@ -695,10 +696,10 @@ Name
 loss_lid
 X
 3
-459
+456
 Y
 3
-396
+486
 Width
 3
 90
@@ -757,10 +758,10 @@ Name
 loss_mismatch
 X
 3
-171
+168
 Y
 3
-450
+540
 Width
 3
 90
@@ -819,10 +820,10 @@ Name
 loss_nameplate
 X
 3
-459
+456
 Y
 3
-423
+513
 Width
 3
 90
@@ -881,10 +882,10 @@ Name
 loss_shading
 X
 3
-171
+168
 Y
 3
-396
+486
 Width
 3
 90
@@ -943,10 +944,10 @@ Name
 loss_snow
 X
 3
-171
+168
 Y
 3
-423
+513
 Width
 3
 90
@@ -1005,10 +1006,10 @@ Name
 loss_soiling
 X
 3
-171
+168
 Y
 3
-369
+459
 Width
 3
 90
@@ -1067,10 +1068,10 @@ Name
 loss_wiring
 X
 3
-171
+168
 Y
 3
-477
+567
 Width
 3
 90
@@ -1129,10 +1130,10 @@ Name
 losses
 X
 3
-459
+456
 Y
 3
-570
+597
 Width
 3
 90
@@ -1191,10 +1192,10 @@ Name
 losses_user
 X
 3
-459
+456
 Y
 3
-528
+408
 Width
 3
 90
@@ -1253,7 +1254,7 @@ Name
 module_type
 X
 3
-249
+195
 Y
 3
 60
@@ -1278,6 +1279,53 @@ Selection
 TabOrder
 3
 2
+Label
+
+1
+13
+Name
+5
+16
+msg_pvwatts_snow
+X
+3
+195
+Y
+3
+723
+Width
+3
+348
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Image
 
 1
@@ -1314,13 +1362,52 @@ Divider
 Name
 5
 9
+object 21
+X
+3
+75
+Y
+3
+435
+Width
+3
+477
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+30
+Specify System Loss Categories
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+9
 object 22
 X
 3
-21
+24
 Y
 3
-687
+768
 Width
 3
 525
@@ -1356,10 +1443,49 @@ Name
 object 2228
 X
 3
-21
+27
 Y
 3
-603
+351
+Width
+3
+525
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+13
+System Losses
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+13
+object 222823
+X
+3
+27
+Y
+3
+624
 Width
 3
 525
@@ -1404,7 +1530,7 @@ Width
 573
 Height
 3
-471
+567
 Tool Tip
 5
 0
@@ -1440,8 +1566,8 @@ Tool Tip
 0
 Caption
 5
-11
-Orientation
+24
+Orientation and Tracking
 Bold
 2
 1
@@ -1455,23 +1581,23 @@ Name
 object 7
 X
 3
-219
+30
 Y
 3
-651
+366
 Width
 3
-341
+528
 Height
 3
-24
+36
 Tool Tip
 5
 0
 Caption
 5
-60
-Weather file must contain snow data to estimate snow losses.
+125
+System losses account for performance losses you would expect in a real system that are not explicitly calculated by PVWatts.
 TextColour
 4
 0
@@ -1486,33 +1612,81 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 Label
 
 1
 13
 Name
 5
-10
-object 731
+12
+object 73132
 X
 3
-33
+30
 Y
 3
-708
+645
 Width
 3
-228
+519
 Height
 3
-84
+42
+Tool Tip
+5
+0
+Caption
+5
+143
+Shading losses are for shading by nearby objects. PVWatts calculates self-shading losses based on the system design and tracking options above.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+13
+object 731324
+X
+3
+30
+Y
+3
+786
+Width
+3
+519
+Height
+3
+24
 Tool Tip
 5
 0
@@ -1547,31 +1721,31 @@ Label
 13
 Name
 5
-9
-object 75
+10
+object 735
 X
 3
-42
+384
 Y
 3
-651
+27
 Width
 3
-154
+189
 Height
 3
-24
+147
 Tool Tip
 5
 0
 Caption
 5
-25
-Estimate losses from snow
+228
+SAM uses PVWatts Version 7, which is different from the online PVWatts Calculator version. SAM's results will likely be different from the online calculator's results. See Help for a list of differences between the two versions.
 TextColour
 4
-0
-0
+255
+128
 0
 255
 Bold
@@ -1582,13 +1756,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
-1
+0
 AlignTop
 2
-0
+1
 ShadingFactors
 
 1
@@ -1599,10 +1773,10 @@ Name
 shading
 X
 3
-192
+180
 Y
 3
-618
+690
 Width
 3
 135
@@ -1631,7 +1805,7 @@ Name
 system_capacity
 X
 3
-249
+195
 Y
 3
 33
@@ -1834,7 +2008,7 @@ Default
 en_user_spec_losses
 3
 1
-Enable user specified losses
+Specify total system loss
  
 PVWatts
 0
@@ -2030,7 +2204,7 @@ Numeric
 losses_user
 3
 1
-User-specified total system losses
+Total loss
 %
 PVWatts
 0
@@ -2130,10 +2304,10 @@ equations{ 'losses' } = define() {
 };
 
 
-1456
+2347
 function pvwatts_ui_update() {
 	arr = ${array_type};
-	enable( 'gcr', (arr==2||arr==3) );
+	enable( 'gcr', (arr==0||arr==2||arr==3) );
 	enable( 'tilt', (arr!=4));
 	enable( 'azimuth', (arr!=4));
 	
@@ -2142,6 +2316,25 @@ function pvwatts_ui_update() {
 	losses = [ 'soiling', 'shading', 'snow', 'mismatch', 'wiring', 'conn', 'lid', 'nameplate', 'age', 'avail' ];
 	for( i=0;i<#losses;i++ )
 		enable( 'loss_' + losses[i], !enul );
+	
+	snow_loss_checks();	
+		
+}
+
+function snow_loss_checks () {
+	msg_snow = '';
+	if ( isnan(value('annual_snow')) == true && value('en_snowloss') == 1 ) {
+		msg_snow = 'Weather file does not have snow depth data required to model snow losses. See Help for more information.';
+	}
+	property('msg_pvwatts_snow','Caption',msg_snow);
+	
+	if ( value('en_snowloss') == 1 && 
+	     value('loss_snow') !=0 && 
+	     isnan(value('annual_snow')) == false && 
+	     value('en_user_spec_losses') == 0 )
+	{
+		msgbox('Snow loss warning!\nThe snow loss model is enabled and the Snow input is set to ' + value('loss_snow') + '%. Set Snow to zero to avoid double-counting snow losses. Ignore this message to include losses from both the snow model and the Snow input value.');
+	}
 }
 
 on_load{'PVWatts'} = define() {
@@ -2154,6 +2347,14 @@ on_change{'array_type'} = define() {
 
 on_change{'en_user_spec_losses'} = define() {
 	pvwatts_ui_update();
+};
+
+on_change{'en_snowloss'} = define() {
+	snow_loss_checks();	
+};
+
+on_change{'loss_snow'} = define() {
+	snow_loss_checks();
 };
 
 on_change{'edit_3d_scene'} = define() {
