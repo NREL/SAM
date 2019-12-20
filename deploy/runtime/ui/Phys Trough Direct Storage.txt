@@ -1627,7 +1627,7 @@ Thermal Energy Storage
 0
 Numeric
 
-1813
+1768
 
 equations{ '$MIMO$ ui_tes_calcs' } = define()
 {
@@ -1639,8 +1639,7 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	ssc_var(obj, "T_HTF_hot", ${T_loop_out});	//[C]
 	ssc_var(obj, "T_HTF_cold", ${T_loop_in_des});	//[C]
 	ssc_var(obj, "TES_HTF_code", ${Fluid});		//[-]
-//	ssc_var(obj, "TES_HTF_props", ${field_fl_props});	//[-]
-	ssc_var(obj, "TES_HTF_props", [1]);	//[-]
+	ssc_var(obj, "TES_HTF_props", ${field_fl_props});	//[-]
 	ssc_var(obj, "h_tank_min", ${h_tank_min});		//[m]
 	ssc_var(obj, "h_tank", ${h_tank});				//[m]
 	ssc_var(obj, "tank_pairs", ${tank_pairs});		//[-]

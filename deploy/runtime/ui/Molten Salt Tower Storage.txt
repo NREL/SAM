@@ -2178,7 +2178,7 @@ Thermal Energy Storage
 0
 Numeric
 
-4456
+4411
 equations{ 'csp.pt.tes.tc_fill_dens' } = define() {
 	return ?(${tc_fill}-1)
 [
@@ -2280,8 +2280,7 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	ssc_var(obj, "T_HTF_hot", ${T_htf_hot_des});	//[C]
 	ssc_var(obj, "T_HTF_cold", ${T_htf_cold_des});	//[C]
 	ssc_var(obj, "TES_HTF_code", ${rec_htf});		//[-]
-//	ssc_var(obj, "TES_HTF_props", ${field_fl_props});	//[-]
-	ssc_var(obj, "TES_HTF_props", [1]);	//[-]
+	ssc_var(obj, "TES_HTF_props", ${field_fl_props});	//[-]
 	ssc_var(obj, "h_tank_min", ${h_tank_min});		//[m]
 	ssc_var(obj, "h_tank", ${h_tank});				//[m]
 	ssc_var(obj, "tank_pairs", ${tank_pairs});		//[-]
