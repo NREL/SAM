@@ -1171,7 +1171,7 @@ value_of_lost_load
 Numeric
 
 0
-3779
+3793
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1257,7 +1257,7 @@ on_change{'call_reopt'} = define(){
 	
 	y = reopt.response;
 
-	if (!y.outputs || !y.outputs.Scenario){
+	if (y.outputs == null || y.outputs.Scenario == null){
 		msgbox("Error in ReOpt response. Try again later or another system design.");
 		exit;
 	}

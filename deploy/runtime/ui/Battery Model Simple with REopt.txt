@@ -729,7 +729,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2751
+2803
 on_load{'Battery Model Simple with REopt'} = define()
 {
 	check_enabled();
@@ -774,8 +774,8 @@ on_change{'call_reopt'} = define(){
 		exit;
 	}
 
-	if (y.outputs.Scenario.status != "optimal"){
-		msgbox(y.outputs.Scenario.status);
+	if (y.outputs == null || y.outputs.Scenario == null){
+		msgbox("Error in ReOpt response. Try again later or another system design.");
 		exit;
 	}
 	

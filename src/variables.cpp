@@ -198,6 +198,8 @@ void sscdata_to_lkhash(ssc_data_t p_dat, lk::vardata_t &out) {
     const char* key = ssc_data_first(p_dat);
     while (key != nullptr){
         auto vd = ssc_data_lookup_case(p_dat, key);
+        if (!vd)
+            vd = ssc_data_lookup(p_dat, key);
         lk::vardata_t lkvar;
         sscvar_to_lkvar(vd, lkvar);
         out.hash_item(key, lkvar);
@@ -287,6 +289,8 @@ void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out)
 void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out) {
     out.nullify();
     auto var = ssc_data_lookup_case(p_dat, name);
+    if (!var)
+        var = ssc_data_lookup(p_dat, name);
     sscvar_to_lkvar(var, out);
 }
 
@@ -307,6 +311,8 @@ VarTable::VarTable( ssc_data_t rhs)
     const char* key = ssc_data_first(rhs);
     while (key != nullptr){
         auto vd = ssc_data_lookup_case(rhs, key);
+        if (!vd)
+            vd = ssc_data_lookup(rhs, key);
         Set(key, VarValue(vd));
         key = ssc_data_next(rhs);
     }
