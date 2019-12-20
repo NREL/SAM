@@ -2442,8 +2442,7 @@ Physical Trough Thermal Storage
 0
 Numeric
 
-5491
-
+5410
 equations{ '$MIMO$ ui_tes_calcs' } = define()
 {
 	obj = ssc_create();
@@ -2454,9 +2453,7 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	ssc_var(obj, "T_HTF_hot", ${T_loop_out});	//[C]
 	ssc_var(obj, "T_HTF_cold", ${T_loop_in_des});	//[C]
 	ssc_var(obj, "TES_HTF_code", ${store_fluid});		//[-]
-// uncommented fails!
-//	ssc_var(obj, "TES_HTF_props", ${store_fl_props});	//[-]
-	ssc_var(obj, "TES_HTF_props", [1]);	//[-]
+	ssc_var(obj, "TES_HTF_props", ${store_fl_props});	//[-]
 	ssc_var(obj, "h_tank_min", ${h_tank_min});		//[m]
 	ssc_var(obj, "h_tank", ${h_tank});				//[m]
 	ssc_var(obj, "tank_pairs", ${tank_pairs});		//[-]
@@ -2491,8 +2488,6 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	${csp.pt.tes.htf_density} = dens;
 	
 	ssc_free( obj );	
-	
-	return 0;
 };
 
 equations{ 'TES_COPY_q_pb_design' } = define(){
