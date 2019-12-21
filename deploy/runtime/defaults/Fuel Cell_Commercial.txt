@@ -1,5 +1,5 @@
 1
-636
+637
 LeadAcid_q10
 1
 1
@@ -1227,6 +1227,12 @@ elev
 1
 358
 en_batt
+1
+1
+1
+1
+0
+en_snowloss
 1
 1
 1

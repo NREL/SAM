@@ -1,5 +1,5 @@
 1
-725
+726
 LeadAcid_q10
 1
 1
@@ -1915,6 +1915,12 @@ en_electricity_rates
 1
 1
 1
+en_snowloss
+1
+1
+1
+1
+0
 en_user_spec_losses
 1
 1
