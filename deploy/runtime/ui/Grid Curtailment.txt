@@ -12,10 +12,10 @@ Name
 grid_curtailment
 X
 3
-141
+144
 Y
 3
-90
+87
 Width
 3
 184
@@ -30,12 +30,12 @@ Mode
 1
 Label
 5
-13
-% of AC Power
+14
+MW of AC Power
 Description
 5
-124
-Enter a percentage of system AC power output for each time step of the year. Time step must match time step of weather file.
+122
+Enter a MW value of system AC power output for each time step of the year. Time step must match time step of weather file.
 TabOrder
 3
 4294967295
@@ -45,8 +45,8 @@ Label
 13
 Name
 5
-26
-grid_interconnection_label
+22
+grid_curtailment_label
 X
 3
 30
@@ -64,8 +64,7 @@ Tool Tip
 0
 Caption
 5
-198
-Grid curtailment is a negotiated schedule. System production during grid curtailment is curtailed by the specified percentage and is compensated at the revenue curtailment price on the Revenue page.
+0
 TextColour
 4
 0
@@ -123,7 +122,7 @@ grid_curtailment
 3
 2
 Curtailment
- %
+MW
 Financial Grid
 0
 2
@@ -135,4 +134,21 @@ Financial Grid
 DataArray
 
 0
-0
+710
+on_load{'Grid Curtailment'} = define() {
+	check_grid_curtailment_fin();
+};
+
+function check_grid_curtailment_fin()
+{
+	show_mp_message = (financing() == "Merchant Plant");
+	caption = 'Grid curtailment is a negotiated schedule. System production during grid curtailment is curtailed by the specified power and is compensated at the revenue curtailment price on the Revenue page.';
+	if ( show_mp_message )
+	{
+		caption = 'Grid curtailment is a negotiated schedule. System production during grid curtailment is curtailed by the specified power and is not compensated.';
+	}
+	msgbox("caption = " + caption);
+	property('grid_curtailment_label', 'Caption', caption);
+	show('grid_curtailment_label', true);
+	refresh();
+}
