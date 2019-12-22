@@ -134,7 +134,7 @@ Financial Grid
 DataArray
 
 0
-710
+677
 on_load{'Grid Curtailment'} = define() {
 	check_grid_curtailment_fin();
 };
@@ -147,7 +147,6 @@ function check_grid_curtailment_fin()
 	{
 		caption = 'Grid curtailment is a negotiated schedule. System production during grid curtailment is curtailed by the specified power and is not compensated.';
 	}
-	msgbox("caption = " + caption);
 	property('grid_curtailment_label', 'Caption', caption);
 	show('grid_curtailment_label', true);
 	refresh();
