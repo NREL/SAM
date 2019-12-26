@@ -138,8 +138,8 @@ autographs{ 'Flat Plate PV' } = define()
 	if (value('en_snow_model') == true)
 		columns += 'annual_dc_snow_loss_percent,';
 	columns += 'annual_dc_module_loss_percent,annual_dc_mppt_clip_loss_percent,annual_dc_mismatch_loss_percent,annual_dc_diodes_loss_percent,annual_dc_wiring_loss_percent,annual_dc_tracking_loss_percent,annual_dc_nameplate_loss_percent,annual_dc_optimizer_loss_percent,annual_dc_perf_adj_loss_percent,';
-	if (varinfo('pv_lifetime_simulation'))
-		if (value('pv_lifetime_simulation') && value('en_dc_lifetime_losses'))
+	if (varinfo('system_use_lifetime_output'))
+		if (value('system_use_lifetime_output') && value('en_dc_lifetime_losses'))
 			columns += 'annual_dc_lifetime_loss_percent,';
 	if (varinfo('en_batt')) //need to check if this variable is present because it isn't found in all models
 		if (value('en_batt') == true && value('batt_ac_or_dc') == 0)
@@ -149,8 +149,8 @@ autographs{ 'Flat Plate PV' } = define()
 		if (value('en_batt') == true && value('batt_ac_or_dc') == 1)
 			columns += 'annual_ac_battery_loss_percent,'; 
 	columns += 'annual_ac_wiring_loss_percent,';
-	if (varinfo('pv_lifetime_simulation'))
-		if (value('pv_lifetime_simulation') && value('en_ac_lifetime_losses'))
+	if (varinfo('system_use_lifetime_output'))
+		if (value('system_use_lifetime_output') && value('en_ac_lifetime_losses'))
 			columns += 'annual_ac_lifetime_loss_percent,';
 	columns += 'annual_xfmr_loss_percent,annual_ac_perf_adj_loss_percent';
 	agraph(columns, 'Energy Loss', '', '%', -1, false, true, 'right'); 
