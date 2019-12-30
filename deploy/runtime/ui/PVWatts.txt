@@ -1740,8 +1740,8 @@ Tool Tip
 0
 Caption
 5
-228
-SAM uses PVWatts Version 7, which is different from the online PVWatts Calculator version. SAM's results will likely be different from the online calculator's results. See Help for a list of differences between the two versions.
+255
+SAM uses PVWatts Version 7, which is different from the online PVWatts Calculator version. SAM's results will likely be different from the online calculator's results until the online calculator is updated. See Help for information about PVWatts versions.
 TextColour
 4
 255

@@ -60,12 +60,12 @@ Mode
 1
 Label
 5
-29
-Battery custom dispatch input
+21
+Battery Dispatch (kW)
 Description
 5
-156
-Custom battery dispatch allows a user to get the dispatch from another tool and input into SAM directly.  Power < 0 for charging, Power > 0 for discharging.
+123
+For each simulation time step enter a rate in kW, less than zero to charge the battery, and greater than zero to discharge.
 TabOrder
 3
 4294967295
@@ -417,7 +417,7 @@ Tool Tip
 Caption
 5
 21
-Get Size and Dispatch
+Get size and dispatch
 TabOrder
 3
 4294967295
@@ -607,7 +607,7 @@ batt_custom_dispatch
 2
 Battery dispatch
 kW
- 
+Battery
 0
 0
 1
@@ -647,7 +647,7 @@ Choice
 batt_simple_enable
 3
 1
- 
+Enable battery
  
 Battery
 19
@@ -691,7 +691,7 @@ batt_simple_meter_position
 3
 1
 Battery meter position
-battery
+ 
 Battery
 0
 8
@@ -704,9 +704,9 @@ Default
 value_of_lost_load
 3
 1
-Value of Lost Load
+Value of lost load
 $/kWh
-Electric Load
+Battery
 0
 0
 1
