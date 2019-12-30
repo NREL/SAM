@@ -290,12 +290,12 @@ Choice
 batt_simple_enable
 3
 1
- 
+Enable battery
  
 Battery
 19
 "Enable"| "Disable"
-2
+3
 1
 1
 1
