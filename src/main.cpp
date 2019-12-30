@@ -116,6 +116,8 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2019, 12, 26 }, //Updated Beta for internal release testing - no expiration.
+		{ 2019, 12, 19 }, //Updated Beta for internal release testing - no expiration.
 		{ 2019, 12, 16 }, //Updated Beta for internal release testing - no expiration.
 		{ 2019, 12, 9 }, //Updated Beta for internal release testing - no expiration.
 		{ 2019, 12, 2 }, //Updated Beta for ME and Fuel Cells expires 12/2/2020
@@ -1335,8 +1337,11 @@ public:
 		// dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green	
 		// dc.SetBackground( wxBrush( wxColour(130,186,0) ) ); // pale lime green		
 		// dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink, making development more fun for everyone!
-		// dc.SetBackground(wxBrush(wxColour(23, 26, 33))); // dark gray
-		dc.SetBackground(wxBrush(wxColour(23, 26, 33)));
+		// dc.SetBackground(wxBrush(wxColour(23, 26, 33))); // dark gray 2017.1.17
+		//dc.SetBackground(wxBrush(wxColour(62, 121, 123))); // blue green 2017.9.5
+		//dc.SetBackground(wxBrush(wxColour(83, 76, 173))); // dark lavender 2018.10.10
+		// dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
+		dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
 
 		dc.Clear();
 

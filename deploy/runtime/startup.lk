@@ -1267,7 +1267,7 @@ function setup_generic_system_pages()
     addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime Generic', 'caption'='Simulation over analysis period' }],],
            {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
-	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid Limits', 'help'='grid_limits' } );
+	addpage( [ ['Grid Interconnection', 'Grid Curtailment'] ], { 'sidebar'='Grid Limits', 'help'='grid_limits' } );
 }
 
 setconfig( 'Generic System', 'Residential' );	
