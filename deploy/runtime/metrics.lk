@@ -335,7 +335,7 @@ metrics{ 'PVWatts' } = define() {
 	pvwatts_metrics(); 
 	if ( is_assigned('resilience_hrs_avg'))
 		resiliency_metrics();
-	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party")){
+	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party") || (financing()=="Host Developer")){
 		if ( value('batt_simple_enable') == 1 )
 				metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
 		}
