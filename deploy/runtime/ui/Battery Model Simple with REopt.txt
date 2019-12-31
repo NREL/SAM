@@ -362,14 +362,14 @@ Width
 525
 Height
 3
-54
+59
 Tool Tip
 5
 0
 Caption
 5
-274
-Use from the current case the lat/lon from Location and Resource, System Design, Losses, System Costs, Electricity Rates and Electric Load settings to determine for the current PV system design the optimal power, capacity and dispatch of a Li-Ion battery from the REopt API.
+267
+Use from the current case the lat/lon from Location and Resource, System Design, Losses, System Costs, Electricity Rates and Electric Load settings to determine for the current PV system design the optimal battery power, capacity and dispatch from the REopt Lite API.
 TextColour
 4
 0
@@ -503,7 +503,7 @@ X
 33
 Y
 3
-291
+298
 Width
 3
 525
@@ -729,7 +729,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2671
+2635
 on_load{'Battery Model Simple with REopt'} = define()
 {
 	check_enabled();
@@ -800,7 +800,6 @@ on_change{'call_reopt'} = define(){
 	
 	value('batt_simple_kw', batt.size_kw);
 	value('batt_simple_kwh', batt.size_kwh);
-	value('batt_simple_chemistry', 1);
 	
 	if (batt.size_kw == 0 && batt.size_kwh == 0)
 		exit;

@@ -796,7 +796,7 @@ Y
 255
 Width
 3
-909
+915
 Height
 3
 39
@@ -805,8 +805,8 @@ Tool Tip
 0
 Caption
 5
-296
-Use from the current case the lat/lon from Location and Resource, System Design parameters, subarray 1 Losses, System Costs, Electricity Rates and Electric Load settings to determine for the current PV system design the optimal power, capacity and dispatch of a Li-Ion battery from the REopt API.
+289
+Use from the current case the lat/lon from Location and Resource, System Design parameters, subarray 1 Losses, System Costs, Electricity Rates and Electric Load settings to determine for the current PV system design the optimal battery power, capacity and dispatch from the REopt Lite API.
 TextColour
 4
 0
@@ -901,7 +901,7 @@ X
 48
 Y
 3
-294
+298
 Width
 3
 909
@@ -1171,7 +1171,7 @@ Battery
 Numeric
 
 0
-3793
+3769
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1289,7 +1289,6 @@ on_change{'call_reopt'} = define(){
 	if (!apply)
 		exit;
 
-	value('batt_chem', 1);
 	value('batt_bank_power', batt.size_kw);
 	value('batt_bank_size', batt.size_kwh);
 	value('batt_dispatch_auto_can_charge', 1);
