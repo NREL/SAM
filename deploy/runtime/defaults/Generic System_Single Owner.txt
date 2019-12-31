@@ -1791,7 +1791,7 @@ en_batt
 1
 1
 1
-0
+4.94066e-323
 en_electricity_rates
 1
 1
