@@ -4314,13 +4314,13 @@ windfarm.farm.turbine_spacing
 1
 1
 1
-500
+8
 windfarm.farm.turbines_per_row
 1
 1
 1
 1
-8
+2
 windfarm.layout.file_or_controls
 1
 1

@@ -3983,7 +3983,7 @@ wind_bos_shown
 1
 1
 1
-1
+0
 wind_climate.avg_wind_speed_closest_to_hub_ht
 1
 1
@@ -4334,13 +4334,13 @@ windfarm.farm.turbine_spacing
 1
 1
 1
-500
+8
 windfarm.farm.turbines_per_row
 1
 1
 1
 1
-8
+3
 windfarm.layout.file_or_controls
 1
 1

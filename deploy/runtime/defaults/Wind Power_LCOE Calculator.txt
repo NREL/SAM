@@ -1288,7 +1288,7 @@ windfarm.farm.turbine_spacing
 1
 1
 1
-500
+8
 windfarm.farm.turbines_per_row
 1
 1
