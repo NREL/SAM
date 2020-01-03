@@ -1259,7 +1259,7 @@ itc_fed_percent
 1
 1
 1
-30
+26
 itc_fed_percent_deprbas_fed
 1
 1
@@ -2085,7 +2085,7 @@ salvage_percentage
 1
 1
 1
-0
+4.94066e-323
 salvage_value
 1
 1
