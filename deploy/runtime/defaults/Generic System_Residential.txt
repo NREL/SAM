@@ -1076,7 +1076,7 @@ en_batt
 1
 1
 1
-4.94066e-323
+0
 enable_interconnection_limit
 1
 1

@@ -2389,7 +2389,7 @@ en_batt
 1
 1
 1
-4.94066e-323
+0
 en_dc_lifetime_losses
 1
 1
