@@ -597,8 +597,8 @@ Tool Tip
 0
 Caption
 5
-34
-Estimate losses from snow coverage
+20
+Estimate snow losses
 State
 2
 0

@@ -30,12 +30,12 @@ Mode
 1
 Label
 5
-14
-MW of AC Power
+2
+MW
 Description
 5
-122
-Enter a MW value of system AC power output for each time step of the year. Time step must match time step of weather file.
+172
+Type or import a table of maximum system AC power output values in MW for each time step of the year. The number of rows in the table must match the weather file time step.
 TabOrder
 3
 4294967295
@@ -134,18 +134,22 @@ Financial Grid
 DataArray
 
 0
-677
+801
 on_load{'Grid Curtailment'} = define() {
 	check_grid_curtailment_fin();
 };
 
 function check_grid_curtailment_fin()
 {
-	show_mp_message = (financing() == "Merchant Plant");
-	caption = 'Grid curtailment is a negotiated schedule. System production during grid curtailment is curtailed by the specified power and is compensated at the revenue curtailment price on the Revenue page.';
-	if ( show_mp_message )
+	is_compensated = (financing() == 'Merchant Plant' || financing() == 'Single Owner' );
+	caption = '';
+	if ( is_compensated )
 	{
-		caption = 'Grid curtailment is a negotiated schedule. System production during grid curtailment is curtailed by the specified power and is not compensated.';
+		caption = 'Click Edit Array to enter values in the curtailment schedule table. SAM limits the system power output to the MW power values in the table. Any curtailed system power is compensated at the curtailment rate on the Revenue page.';
+	}
+	else
+	{
+		caption = 'Click Edit Array to enter values in the curtailment schedule table. SAM limits the system power output to the MW power values in the table. Curtailed power is not compensated.';
 	}
 	property('grid_curtailment_label', 'Caption', caption);
 	show('grid_curtailment_label', true);

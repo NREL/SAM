@@ -148,9 +148,9 @@ Items
 5
 Fixed open rack
 Fixed roof mount
-1 Axis Tracking
-1 Axis Backtracking
-2 Axis Tracking
+1-axis tracking
+1-axis backtracking
+2-axis tracking
 Selection
 3
 4294967295
@@ -1955,7 +1955,7 @@ Array type
  
 PVWatts
 84
-Fixed open rack|Fixed roof mount|1 Axis Tracking|1 Axis Backtracking|2 Axis Tracking
+Fixed open rack|Fixed roof mount|1-axis tracking|1-axis backtracking|2-axis tracking
 2
 1
 1
