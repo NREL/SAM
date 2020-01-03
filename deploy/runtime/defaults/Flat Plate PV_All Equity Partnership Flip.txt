@@ -867,7 +867,7 @@ batt_max_power
 1
 1
 1
-1000.08
+0
 batt_maximum_SOC
 1
 1
@@ -1055,7 +1055,7 @@ battery_energy
 1
 1
 1
-4000.32
+0
 battery_lifetime_shown
 1
 1
@@ -1085,7 +1085,7 @@ battery_power
 1
 1
 1
-960
+0
 battery_replacements_shown
 1
 1
@@ -1097,13 +1097,13 @@ battery_thermal_shown
 1
 1
 1
-1
+0
 battery_total
 1
 1
 1
 1
-1.7761e+06
+0
 battery_voltage_shown
 1
 1
@@ -1519,7 +1519,7 @@ const_per_interest1
 1
 1
 1
-232747
+213538
 const_per_interest2
 1
 1
@@ -1579,7 +1579,7 @@ const_per_interest_total
 1
 1
 1
-232747
+213538
 const_per_months1
 1
 1
@@ -1676,7 +1676,7 @@ const_per_principal1
 1
 1
 1
-2.32747e+07
+2.13538e+07
 const_per_principal2
 1
 1
@@ -1706,13 +1706,13 @@ const_per_principal_total
 1
 1
 1
-2.32747e+07
+2.13538e+07
 const_per_total1
 1
 1
 1
 1
-465494
+427077
 const_per_total2
 1
 1
@@ -1772,13 +1772,13 @@ construction_financing_cost
 1
 1
 1
-465494
+427077
 contingency
 1
 1
 1
 1
-551305
+498022
 contingency_percent
 1
 1
@@ -1796,13 +1796,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-185243
+169955
 cost_dev_fee_value
 1
 1
 1
 1
-698241
+640615
 cost_equity_closing
 1
 1
@@ -2267,7 +2267,7 @@ dispatch_manual_percent_discharge
 2
 1
 2
-15 0 
+25 0 
 
 dispatch_manual_percent_gridcharge
 1
@@ -2931,7 +2931,7 @@ installed_per_capacity
 1
 1
 1
-1.16368
+1.06765
 insurance_rate
 1
 1
@@ -4465,7 +4465,7 @@ property_assessed_value
 1
 1
 1
-2.32747e+07
+2.13538e+07
 property_tax_rate
 1
 1
@@ -4656,7 +4656,7 @@ sales_tax_total
 1
 1
 1
-946407
+854938
 sales_tax_value
 1
 1
@@ -4674,7 +4674,7 @@ salvage_value
 1
 1
 1
-2.32747e+06
+0
 sd11par_AMa0
 1
 1
@@ -6251,7 +6251,7 @@ subtotal_direct
 1
 1
 1
-1.83768e+07
+1.66007e+07
 system_capacity
 1
 1
@@ -6322,19 +6322,19 @@ total_direct_cost
 1
 1
 1
-1.89281e+07
+1.70988e+07
 total_indirect_cost
 1
 1
 1
 1
-4.34656e+06
+4.25509e+06
 total_installed_cost
 1
 1
 1
 1
-2.32747e+07
+2.13538e+07
 total_inverter_capacity
 1
 1

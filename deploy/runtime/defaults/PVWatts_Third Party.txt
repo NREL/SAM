@@ -352,7 +352,7 @@ degradation
 2
 1
 1
-0
+0.5
 elev
 1
 1

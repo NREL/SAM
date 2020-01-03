@@ -636,7 +636,7 @@ batt_current_choice
 1
 1
 1
-1
+0
 batt_current_discharge_max
 1
 1
@@ -1113,13 +1113,13 @@ bos_equip_perwatt
 1
 1
 1
-0.3
+0.25
 bos_equip_total
 1
 1
 1
 1
-64759.1
+53965.9
 calculated_dcac_ratio
 1
 1
@@ -1499,7 +1499,7 @@ const_per_interest1
 1
 1
 1
-3926.55
+3508.92
 const_per_interest2
 1
 1
@@ -1559,7 +1559,7 @@ const_per_interest_total
 1
 1
 1
-3926.55
+3508.92
 const_per_months1
 1
 1
@@ -1656,7 +1656,7 @@ const_per_principal1
 1
 1
 1
-392655
+350892
 const_per_principal2
 1
 1
@@ -1686,13 +1686,13 @@ const_per_principal_total
 1
 1
 1
-392655
+350892
 const_per_total1
 1
 1
 1
 1
-7853.1
+7017.83
 const_per_total2
 1
 1
@@ -1752,13 +1752,13 @@ construction_financing_cost
 1
 1
 1
-7853.1
+7017.83
 contingency
 1
 1
 1
 1
-13728.9
+12174.7
 contingency_percent
 1
 1
@@ -2327,7 +2327,7 @@ dispatch_manual_percent_discharge
 2
 1
 2
-15 0 
+25 0 
 
 dispatch_manual_percent_gridcharge
 1
@@ -3057,13 +3057,13 @@ install_labor_perwatt
 1
 1
 1
-0.14
+0.12
 install_labor_total
 1
 1
 1
 1
-30220.9
+25903.6
 install_margin_fixed
 1
 1
@@ -3081,19 +3081,19 @@ install_margin_perwatt
 1
 1
 1
-0.7
+0.65
 install_margin_total
 1
 1
 1
 1
-151105
+140311
 installed_per_capacity
 1
 1
 1
 1
-1.819
+1.62552
 insurance_rate
 1
 1
@@ -3893,7 +3893,7 @@ inverter_total
 1
 1
 1
-21586.4
+15110.5
 inverterarray_power
 1
 1
@@ -4317,7 +4317,7 @@ module_total
 1
 1
 1
-75552.3
+69076.4
 module_width
 1
 1
@@ -4395,7 +4395,7 @@ om_capacity
 2
 1
 1
-13
+16
 om_capacity_escal
 1
 1
@@ -4681,13 +4681,13 @@ per_inverter
 1
 1
 1
-0.1
+0.07
 per_module
 1
 1
 1
 1
-0.35
+0.32
 permitting_fixed
 1
 1
@@ -4753,7 +4753,7 @@ property_assessed_value
 1
 1
 1
-392655
+350892
 property_tax_rate
 1
 1
@@ -4956,7 +4956,7 @@ sales_tax_total
 1
 1
 1
-11957.9
+10604.2
 sales_tax_value
 1
 1
@@ -6557,7 +6557,7 @@ subtotal_direct
 1
 1
 1
-343223
+304368
 system_capacity
 1
 1
@@ -6614,19 +6614,19 @@ total_direct_cost
 1
 1
 1
-356952
+316543
 total_indirect_cost
 1
 1
 1
 1
-35702.9
+34349.2
 total_installed_cost
 1
 1
 1
 1
-392655
+350892
 total_inverter_capacity
 1
 1
@@ -6870,7 +6870,7 @@ ur_desc_is_shown
 1
 1
 1
-1
+0
 ur_description
 1
 4
@@ -7001,7 +7001,8 @@ ur_ratedata_filename
 ur_schedule_name
 1
 4
-0
+45
+Medium General Service TOU (E-32 M) Secondary
 ur_source
 1
 4

@@ -866,7 +866,7 @@ batt_max_power
 1
 1
 1
-1000.08
+0
 batt_maximum_SOC
 1
 1
@@ -1812,7 +1812,7 @@ cp_battery_nameplate
 1
 1
 1
-4.00032
+0
 cp_capacity_credit_percent
 1
 2
@@ -2275,7 +2275,7 @@ dispatch_manual_percent_discharge
 2
 1
 2
-15 0 
+25 0 
 
 dispatch_manual_percent_gridcharge
 1
@@ -2541,7 +2541,7 @@ grid_curtailment_price
 2
 1
 1
-0.01
+0
 grid_curtailment_price_esc
 1
 1
@@ -3634,7 +3634,7 @@ inv_snl_eff_euro
 1
 1
 1
-97.3771
+97.377
 inv_snl_idcmax
 1
 1
@@ -4748,7 +4748,7 @@ salvage_value
 1
 1
 1
-2.13538e+06
+0
 sd11par_AMa0
 1
 1
