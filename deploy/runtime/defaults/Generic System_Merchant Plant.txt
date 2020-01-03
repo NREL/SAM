@@ -481,37 +481,37 @@ batt_gridcharge_percent_1
 1
 1
 1
-100
+25
 batt_gridcharge_percent_2
 1
 1
 1
 1
-100
+25
 batt_gridcharge_percent_3
 1
 1
 1
 1
-100
+25
 batt_gridcharge_percent_4
 1
 1
 1
 1
-100
+25
 batt_gridcharge_percent_5
 1
 1
 1
 1
-100
+25
 batt_gridcharge_percent_6
 1
 1
 1
 1
-100
+25
 batt_h_to_ambient
 1
 1
@@ -678,15 +678,16 @@ batt_replacement_schedule
 1
 2
 1
-30
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+25
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 
 batt_replacement_schedule_percent
 1
 2
 1
-1
-100
+25
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
 batt_resistance
 1
 1

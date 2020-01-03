@@ -677,7 +677,7 @@ batt_discharge_percent_3
 1
 1
 1
-15
+25
 batt_discharge_percent_4
 1
 1
@@ -913,14 +913,16 @@ batt_replacement_schedule
 1
 2
 1
-1
-0
+25
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
 batt_replacement_schedule_percent
 1
 2
 1
-1
-100
+25
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
 batt_resistance
 1
 1
