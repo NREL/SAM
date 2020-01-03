@@ -831,7 +831,7 @@ setup_thirdparty_pages( LOAD_BELPE_CRIT, LIFETIME_PV ); //includes building load
 
 
 setconfig( 'Flat Plate PV', 'Host Developer' );
-setmodules( ['pvsamv1', 'utilityrate5', 'grid', 'host_developer']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'host_developer']);
 setup_flat_plate_pv_pages();
 setup_battery_pages_behind_the_meter();
 setup_grid_page();
