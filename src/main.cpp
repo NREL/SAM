@@ -116,7 +116,8 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
-		{ 2020, 1, 3 }, //Updated Beta for release testing - expires 1/3/2021.
+		{ 2020, 1, 6 }, //Updated Beta for release testing - expires 1/6/2021 ssc version 230
+		{ 2020, 1, 3 }, //Updated Beta for release testing - expires 1/3/2021 ssc version 229
 		{ 2019, 12, 31 }, //Updated Beta for release testing - expires 12/31/2020.
 		{ 2019, 12, 26 }, //Updated Beta for internal release testing - no expiration.
 		{ 2019, 12, 19 }, //Updated Beta for internal release testing - no expiration.
