@@ -2767,7 +2767,9 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };
 
 BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
-	EVT_LISTBOX( ID_TechTree, ConfigDialog::OnTechTree)
+//	EVT_LISTBOX( ID_TechTree, ConfigDialog::OnTechTree)
+	EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, ConfigDialog::OnTechTree)
+	EVT_DATAVIEW_SELECTION_CHANGED(ID_FinTree, ConfigDialog::OnFinTree)
 	EVT_LISTBOX_DCLICK( ID_FinTree, ConfigDialog::OnDoubleClick )
 	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
 	EVT_BUTTON( wxID_OK, ConfigDialog::OnOk )
@@ -2786,8 +2788,11 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	CenterOnParent();
 
-	m_pTech = new wxMetroListBox( this, ID_TechTree );
-	m_pFin = new wxMetroListBox( this, ID_FinTree );
+//	m_pTech = new wxMetroListBox(this, ID_TechTree);
+//	m_pFin = new wxMetroListBox(this, ID_FinTree);
+
+	m_pTech = new wxMetroDataViewTreeCtrl(this, ID_TechTree);
+	m_pFin = new wxMetroDataViewTreeCtrl(this, ID_FinTree);
 
 	wxBoxSizer *choice_sizer = new wxBoxSizer( wxHORIZONTAL );
 	choice_sizer->Add( m_pTech, 1, wxALL|wxEXPAND, 0 );
@@ -2837,14 +2842,15 @@ bool ConfigDialog::ResetToDefaults()
 void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 {
 	int sel = m_tnames.Index( t );
-	m_pTech->SetSelection( sel );
-	m_pTech->Invalidate();
-
-	if ( sel >= 0 )
+//	m_pTech->SetSelection( sel );
+//	m_pTech->Invalidate();
+	if (sel >= 0)
+	{
+		m_techname = m_tnames[sel];
 		UpdateFinTree();
-	
-	m_pFin->SetSelection( m_fnames.Index(f) );
-	m_pFin->Invalidate();
+	}
+//	m_pFin->SetSelection( m_fnames.Index(f) );
+//	m_pFin->Invalidate();
 }
 
 void ConfigDialog::ShowResetCheckbox(bool b)
@@ -2854,10 +2860,14 @@ void ConfigDialog::ShowResetCheckbox(bool b)
 
 void ConfigDialog::GetConfiguration(wxString &t, wxString &f)
 {
-	int tsel = m_pTech->GetSelection();
-	int fsel = m_pFin->GetSelection();
-	t = tsel >= 0 && tsel < (int)m_tnames.size() ? m_tnames[tsel] : wxEmptyString;
-	f = fsel >= 0 && fsel < (int)m_fnames.size() ? m_fnames[fsel] : wxEmptyString;
+	t = m_techname;
+	f = m_finname;
+
+	// TODO
+//	int tsel = m_pTech->GetSelection();
+//	int fsel = m_pFin->GetSelection();
+//	t = tsel >= 0 && tsel < (int)m_tnames.size() ? m_tnames[tsel] : wxEmptyString;
+//	f = fsel >= 0 && fsel < (int)m_fnames.size() ? m_fnames[fsel] : wxEmptyString;
 }
 
 
@@ -2868,23 +2878,45 @@ void ConfigDialog::OnDoubleClick(wxCommandEvent &)
 
 void ConfigDialog::PopulateTech()
 {
-	m_pTech->Clear();
+//	m_pTech->Clear();
 
 	m_tnames = SamApp::Config().GetTechnologies();
 	
+	// Manually add groups here - eventually move to startup.lk
+	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaics");
+	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine energy");
+	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating solar power");
+
+
 	for( size_t i=0;i<m_tnames.Count();i++)
 	{
 		wxString L( SamApp::Config().Options( m_tnames[i] ).LongName );
 		if ( L.IsEmpty() ) L = m_tnames[i];
-		m_pTech->Add( L );
+		if ((L.Find("Photovoltaic") != wxNOT_FOUND) || (L.Find("PV") != wxNOT_FOUND))
+			m_pTech->AppendItem(cont_pv, L);
+		else if ((L.Find("CSP") != wxNOT_FOUND) || (L.Find("Process heat") != wxNOT_FOUND))
+			m_pTech->AppendItem(cont_csp, L);
+		else if (L.Find("Marine energy") != wxNOT_FOUND)
+			m_pTech->AppendItem(cont_me, L);
+		else 
+			m_pTech->AppendItem(wxDataViewItem(0), L);
 	}
 	
-	m_pTech->Invalidate();
+//	m_pTech->Invalidate();
 }
 
 void ConfigDialog::UpdateFinTree()
 {
-	m_pFin->Clear();
+	m_pFin->DeleteAllItems();
+	m_fnames = SamApp::Config().GetFinancingForTech(m_techname);
+	for (size_t i = 0; i < m_fnames.Count(); i++)
+	{
+		wxString L(SamApp::Config().Options(m_fnames[i]).LongName);
+		if (L.IsEmpty()) L = m_fnames[i];
+		m_pFin->AppendItem(wxDataViewItem(0),L);
+	}
+	/*
+	//	m_pFin->Clear();
 	int tsel = m_pTech->GetSelection();
 	m_fnames = SamApp::Config().GetFinancingForTech( tsel >= 0 && tsel < (int)m_tnames.size() ? m_tnames[tsel] : wxEmptyString );
 	for( size_t i=0;i<m_fnames.Count();i++)
@@ -2894,14 +2926,51 @@ void ConfigDialog::UpdateFinTree()
 		m_pFin->Add( L );
 	}
 
-	m_pFin->Invalidate();
+//	m_pFin->Invalidate();
+	*/
 }
-
+/*
 void ConfigDialog::OnTechTree( wxCommandEvent & )
 {
 	UpdateFinTree(); 
 }
+*/
+void ConfigDialog::OnTechTree(wxDataViewEvent &)
+{
+	wxString title = m_pTech->GetItemText(m_pTech->GetCurrentItem());
+	if (title.empty())
+		title = "None";
+	m_techname = title;
+	for (int i = 0; i < m_tnames.Count(); i++)
+	{
+		if (SamApp::Config().Options(m_tnames[i]).LongName == m_techname)
+		{
+			m_techname = m_tnames[i];
+			break;
+		}
+	}
+	//	wxMessageBox(wxString::Format("wxEVT_DATAVIEW_SELECTION_CHANGED, First selected Item: %s", title));
+	UpdateFinTree();
+}
 
+void ConfigDialog::OnFinTree(wxDataViewEvent &)
+{
+	wxString title = m_pFin->GetItemText(m_pFin->GetCurrentItem());
+	if (title.empty())
+		title = "None";
+	m_finname = title;
+	for (int i = 0; i < m_fnames.Count(); i++)
+	{
+		if (SamApp::Config().Options(m_fnames[i]).LongName == m_finname)
+		{
+			m_finname = m_fnames[i];
+			break;
+		}
+	}
+
+	//	wxMessageBox(wxString::Format("wxEVT_DATAVIEW_SELECTION_CHANGED, First selected Item: %s", title));
+//	UpdateFinTree();
+}
 
 void ConfigDialog::OnHelp(wxCommandEvent &)
 {
