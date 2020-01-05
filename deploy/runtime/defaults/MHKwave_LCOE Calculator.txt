@@ -11,7 +11,7 @@ array_cable_system_cost_input
 1
 1
 1
-3.23796e-317
+0
 array_cable_system_cost_method
 1
 1

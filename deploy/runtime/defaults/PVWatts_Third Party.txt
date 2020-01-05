@@ -1108,7 +1108,7 @@ ur_desc_is_shown
 1
 1
 1
-1
+0
 ur_description
 1
 4
