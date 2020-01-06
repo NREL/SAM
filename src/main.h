@@ -376,14 +376,13 @@ public:
 private:
 	void PopulateTech();
 	bool ValidateSelections();
+	void OnTreeActivated(wxDataViewEvent &evt);
 	void OnTechTree(wxDataViewEvent &);
 	void OnFinTree(wxDataViewEvent &);
-	//	void OnTechTree(wxCommandEvent &evt);
 	void OnDoubleClick(wxCommandEvent &evt);
 
 	void UpdateFinTree();
 
-//	wxMetroListBox *m_pTech, *m_pFin;
 	wxMetroDataViewTreeCtrl *m_pTech, *m_pFin;
 	wxArrayString m_tnames, m_fnames;
 	wxString m_techname, m_finname;
