@@ -9058,7 +9058,7 @@ show_ReturnonEquity
 1
 1
 1
-1
+0
 show_construction_period
 1
 1
