@@ -276,9 +276,9 @@ version_upgrade{'2018.9.20'} = define() {
 		// Combines the three UDPC tables into one //
 		
 		// Get the three user defined power cycle tables
-		x_ud_T_htf = value('ud_T_htf_ind_od');
-		x_ud_m_dot = value('ud_m_dot_htf_ind_od');
-		x_ud_T_amb = value('ud_T_amb_ind_od');
+		x_ud_T_htf = oldvalue('ud_T_htf_ind_od');
+		x_ud_m_dot = oldvalue('ud_m_dot_htf_ind_od');
+		x_ud_T_amb = oldvalue('ud_T_amb_ind_od');
 
 		// Get the low, design, and high indep values
 		x_T_htf_lvls = [value('ud_T_htf_low'), value('ud_COPY_T_HTF_des'), value('ud_T_htf_high')];
