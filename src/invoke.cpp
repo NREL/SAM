@@ -286,8 +286,10 @@ static void fcall_configopt( lk::invoke_t &cxt )
 		opt.LongName = vv->as_string();
 	if( lk::vardata_t *vv = tab.lookup( "short_name") ) 
 		opt.ShortName = vv->as_string();
-	if( lk::vardata_t *vv = tab.lookup( "description" ) )
+	if (lk::vardata_t *vv = tab.lookup("description"))
 		opt.Description = vv->as_string();
+	if (lk::vardata_t *vv = tab.lookup("tree_parent"))
+		opt.TreeParent = vv->as_string();
 
 	// eventually can add other options too, such as icon name, etc
 }

@@ -260,6 +260,7 @@ struct ConfigOptions
 {
 	wxString LongName;
 	wxString ShortName;
+	wxString TreeParent;
 	wxString Description;
 };
 
@@ -379,6 +380,7 @@ private:
 	void OnTreeActivated(wxDataViewEvent &evt);
 	void OnTechTree(wxDataViewEvent &);
 	void OnFinTree(wxDataViewEvent &);
+	void OnFinTreeDoubleClick(wxDataViewEvent &);
 	void OnDoubleClick(wxCommandEvent &evt);
 
 	void UpdateFinTree();

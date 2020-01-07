@@ -2769,7 +2769,7 @@ enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };
 
 BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
 EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, ConfigDialog::OnTreeActivated)
-EVT_DATAVIEW_ITEM_START_EDITING(ID_FinTree, ConfigDialog::OnTreeActivated)
+EVT_DATAVIEW_ITEM_START_EDITING(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
 EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, ConfigDialog::OnTreeActivated)
 EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnTreeActivated)
 EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, ConfigDialog::OnTechTree)
@@ -2948,19 +2948,20 @@ void ConfigDialog::PopulateTech()
 	
 	// Manually add groups here - eventually move to startup.lk
 	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaics");
-	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine energy");
 	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating solar power");
+	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine energy");
 
 
 	for( size_t i=0;i<m_tnames.Count();i++)
 	{
-		wxString L( SamApp::Config().Options( m_tnames[i] ).LongName );
+		wxString L(SamApp::Config().Options(m_tnames[i]).LongName);
+		wxString TP(SamApp::Config().Options(m_tnames[i]).TreeParent);
 		if ( L.IsEmpty() ) L = m_tnames[i];
-		if ((L.Find("Photovoltaic") != wxNOT_FOUND) || (L.Find("PV") != wxNOT_FOUND))
+		if (TP.Find("PV") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_pv, L);
-		else if ((L.Find("CSP") != wxNOT_FOUND) || (L.Find("Process heat") != wxNOT_FOUND))
+		else if (TP.Find("CSP") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_csp, L);
-		else if (L.Find("Marine energy") != wxNOT_FOUND)
+		else if (TP.Find("ME") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_me, L);
 		else 
 			m_pTech->AppendItem(wxDataViewItem(0), L);
@@ -2978,7 +2979,8 @@ void ConfigDialog::UpdateFinTree()
 	{
 		wxString L(SamApp::Config().Options(m_fnames[i]).LongName);
 		if (L.IsEmpty()) L = m_fnames[i];
-		if (L.Find("utility") != wxNOT_FOUND)
+		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
+		if (TP.Find("UTILITY") != wxNOT_FOUND)
 		{
 			futility = true;
 			break;
@@ -2992,7 +2994,8 @@ void ConfigDialog::UpdateFinTree()
 		{
 			wxString L(SamApp::Config().Options(m_fnames[i]).LongName);
 			if (L.IsEmpty()) L = m_fnames[i];
-			if (L.Find("utility") != wxNOT_FOUND)
+			wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
+			if (TP.Find("UTILITY") != wxNOT_FOUND)
 				m_pFin->AppendItem(cont_utility, L);
 			else
 				m_pFin->AppendItem(wxDataViewItem(0), L);
@@ -3011,6 +3014,12 @@ void ConfigDialog::UpdateFinTree()
 
 void ConfigDialog::OnTreeActivated(wxDataViewEvent &evt)
 {
+	evt.Veto();
+}
+
+void ConfigDialog::OnFinTreeDoubleClick(wxDataViewEvent &evt)
+{
+	EndModal(wxID_OK);
 	evt.Veto();
 }
 
