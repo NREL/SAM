@@ -4,22 +4,26 @@
 
  <title>System Advisor Model (SAM) Release Notes</title>
  <style>
- h1 {background-color: #0072C6;
+ h1 
+ {background-color: #0072C6;
  color: white;
  font-family: Segoe UI,sans-serif;
  font-weight: normal;
  font-size: 16pt;
  padding: 10px;}
- h2 {font-family: Segoe UI,sans-serif;
+ 
+ h2 
+ {font-family: Segoe UI,sans-serif;
  background-color: #B8CCE4;
  color: #0072C6;
  font-weight: normal;
  font-size: 14pt;
  padding: 5px;}
- p,li {font-family: Segoe UI,sans-serif;
- font-size: 11pt;
- margin-left: 20px;
- margin-right: 20px;}
+ 
+ p,li 
+ {font-family: Segoe UI,sans-serif;
+ font-size: 11pt;}
+
 
 </style>
  </head>
@@ -49,186 +53,247 @@
 </ul>
 
 -->
-
-<!--Would be nice to link to patch milestones, but GitHub.com does not support Internet Explorer, so these links do not 
-    work well in the SAM for Windows web browser that displays release notes.
-	 <p>This revision is associated with the 2018.11.11 Patch 3 milestons in SAM's GitHub repositories:</p>
-	 <ul>
-		 <li><a href="https://github.com/NREL/SAM/milestone/7?closed=1" target="_blank">SAM 2018.11.11 Patch 3</li>
-		 <li><a href="https://github.com/NREL/ssc/milestone/9?closed=1">SSC 2018.11.11 Patch 3</li>
-	 </ul>
--->	 
+<h1>Beta Version 2020.1.6, SSC Version 230: December 23, 2019</h1>
 	 
-<h1>Version 2018.11.11 Revision 4, SSC Version 209: May 21, 2019</h1>
+	 <p><strong>Note:</strong>The current version is SAM 2018.11.11, described <a href="#current">below</a>.</p>	 
 
-<p>This is a maintenance update that fixes issues with SAM 2018.11.11 Revision 3.</p>
+<p>This version introduces several new models and features in addition to enhancements to existing models:</p>
 
-	 <ul><li>Fix biomass combustion with TOD fractional generation.</li>
-		 <li>Fix photovoltaic snow loss error.</li>
-		 <li>Fix problem saving and loading "Time of Day" schedules and factors.</li>
-		 <li>Add photovoltaic DC output of each subarray.</li>
-		 <li>Replace default weather files with ones that have GHI data.</li>
-		 <li>Fix photovoltaic direct cost in $/m2, was calculating from acres instead of m2.</li>
-		 <li>Fix photovoltaic warning messages when backtracking enabled.</li>
-		 <li>Fix weather file converter macro for SolarAnywhere data to correctly shift time stamp.</li>
-		 <li>Fix DC-coupled battery delivers zero power.</li>
-		 <li>Fix generic system with battery peak shaving issues.</li>
-		 <li>Fix standalone battery curtailment issue.</li>
-		 <li>Fix issues with sunrise/sunset at very high latitudes.</li>
-	 </ul>	
-	 
-<h1>Version 2018.11.11 Revision 3, SSC Version 207: March 11, 2019</h1>
-
-<p>This is a maintenance update that fixes issues with SAM 2018.11.11 Revision 2.</p>
-
-	 <ul>
-		 <li>Fix problem with photovoltaic systems high latitude locations (greater than about 65&deg;)</li>
-		 <li>Update photovoltaic CEC module and inverter libraries to March 1, 2019 database versions</li>
-		 <li>Make Download Electric Load macro available for third party ownership models.</li>
-		 <li>Fix discounted payback calculation in Residential Send-to-Excel with Equations workbook.</li>
-		 <li>Update Location and Resource and Inverter input page informational messages.</li>
-		 <li>Fix battery control algorithm to take converter efficiency into account for peak shaving.</li>
-		 <li>Fix Generic System model with subhourly generation profile as input.</li>
-		 <li>Change geocode service from Google to MapQuest. The geocode() function in LK no longer returns time zone.</li>
-	 </ul>
-	 
-<h1>Version 2018.11.11 Revision 2, SSC Version 206: February 9, 2019</h1>
-	 
-<p>This is a maintenance update that fixes issues with SAM 2018.11.11 Revision 1.</p>
-	 
 <ul>
-<li>Fix NSRDB weather file download issues.</li>
-<li>Fix Generic System with PPA Single Owner issues with batteries and subhourly load data.</li>
-<li>Fix Solar Interpolation macro issue in Linux and macOS and with SAM CSV format.</li>
-<li>For photovoltaic model albedo data, use monthly data if hourly data is missing from weather file.</li>
-<li>Fix issue with transmission loss and constant DC loss factor not being applied correctly.</li>
-<li>For Python API, add <code>staticmethods</code> for <code>info</code> calls.</li>
-<li>Fix CSP User-defined Power Cycle input tables.</li>
-<li>Improve Power Tower optimization and heliostat field layout user interface on Solar Field input page.</li>
-<li>Fix Code Generator for variables with a colon (:) in the name.</li>
-<li>Improve Parametrics variable browser display of variable names.</li>
-<li>Fix battery dispatch for front-of-meter AC-connected system.</li>
-<li>Fix CSP parabolic trough with broken glass HCE tubes.</li>
-<li>Speed up SSC <code>windpower</code> module in Linux.</li>
-<li>LK <code>geocode()</code> function now returns time zone in addition to latitude and longitude.</li>
- </ul>	 
-	 
-<h1>Version 2018.11.11 Revision 1, SSC Version 202: December 2, 2018</h1>
-	 
-<p>This is a maintenance update that fixes issues with SAM 2018.11.11.</p>
-	 
-<ul>
-<li>Fix issue with weather files in EPW format from PVGIS V5 without a final blank line.</li>
-<li>Fix model for decomposing POA irradiance into beam irradiance to better handle out-of-range POA values.</li>
-<li>Fix electricity bill calculation to correctly account for Weekend energy rates. This issue was introduced in SAM 2018.11.11.</li>
-<li>Fix PV bifacial module model to work with weather file with POA irradiance as input.</li>
-<li>Add Electricity Rate input page to Generic System / PPA Single Owner configuration so that cash flow correctly handles cost of charging battery from the grid. This caused problems with the spreadsheet for the cash flow send-to-Excel with Equations feature.</li>
-<li>Fix Location and Resource page to correctly download weather files for CSP systems and make it clear that location for NSRDB download is not required to be a street address.</li>
+<li>New marine energy tidal and wave performance models.</li>
+<li>New fuel cell performance model.</li>
+<li>New merchant plant financial model.</li>
+<li>New critical load and resiliency metrics for Residential and Commercial financial models.</li>
+<li>Update <a href="#pvwatts">PVWatts<a> from Version 5 to Version 7 with new module parameter values, optional snow model and <a href="#pvwatts">other updates</a>.</li>
+<li>New battery sizing and dispatch optimization option based on NREL's <a href="https://reopt.nrel.gov/tool">ReOpt Lite</a>.</li>
+<li>New models for grid interconnection limits and curtailment.</li>
 </ul>
-	 
-<h1>Version 2018.11.11, SSC Version 198: November 11, 2018</h1>
+
+<h2>General</h2>
+
+<p>Check for Updates now works for both new software versions and revision number changes within a given version.</p>
+<p>LK script fixes to <code>></code> operator and <code>to_int()</code> function.</p>
+<p>Fix Combine Cases macro to correctly assign cost to user input in Generic System case.</p>
+<p>Discontinue support for 32-bit Windows versions of SAM Simulation Core (SSC).</p>
+<p>All models now include a Grid Limits page for interconnection limits and curtailment to model operational limits imposed by grid operators or regulatory institutions. Availability is a separate input to model operational downtime that the system owner controls such as for maintenance.</p>
+
+<h2>Weather Data</h2>
+
+<p>Change minute time stamp from 0 to 30 and update data to include GHI data for small collection of default weather files that come with SAM.</p>
+<p>Fix time stamp issue with weather file converter macro for SolarAnywhere files.</p>
+
+<h2>Detailed Photovoltaic</h2>
+
+<p>Daily AC and DC losses by year inputs for simulation over analysis period option automatically sets array length to the product of 365 days and analysis period in years.</p>
+<p>Update CEC module and inverter libraries.</p>
+<p>Fix tilt = latitude bug.</p>
+<p>Fix bug with PDF report for systems with multiple subarrays.</p>
+<p>Fix bug with 3D Shade Calculator returning time zone of zero.</p>
+<p>Add simulation warning for one-axis tracking when tilt angle is not zero.</p>
+<p>Fix problem when weather file contains POA data only.</p>
+<p>Fix problems with inverter input voltage calculations and MPPT limit ratings.</p>
+
+<h2 id="pvwatts">PVWatts</h2>
+
+<p>Update from PVWatts V5 to PVWatts V7:</p>
+<ul>
+<li>Self-shading applies to the fixed open rack and 1-axis tracking array types and accounts for diffuse shading. In Version 5, self-shading only applies to 1-axis tracking.</li>
+<li>Diffuse shading applies to the 1-axis backtracking array type. In Version 5, it only applies to the 1-axis tracking array type.</li>
+<li>Account for incident angle reflection losses in the module cover using the physical model for incident angle modifier to account for reflection losses of both direct and beam irradiance.</li>
+<li>Update parameter values for module type (see table below).</li>
+<li>Apply air mass modifier to account for solar spectrum.</li>
+<li>Optional snow loss model, only available when weather file contains snow depth data.</li>
+<li>New custom dispatch option for battery.</li>
+<li>New automatic size and dispatch optimization based on NREL <a href="https://reopt.nrel.gov/tool">ReOpt Lite</a>.</li>
+</ul>
+<p>The following new features in PVWatts V7 are in SAM Simulation Core (SSC) (accessible via the <a href="https://sam.nrel.gov/sdk">SAM SDK</a>) but not in SAM:</p>
+<ul>
+<li>Stow trackers when wind speed exceeds an upper limit (to avoid wind damage).</li>
+<li>Bifacial modules.</li>
+<li>Transformer losses.</li>
+<li>Soiling loss input as a beam irradiance loss.</li>
+</ul>
+<p>Add simulation warning for one-axis tracking when tilt angle is not zero.</p>
+<p>Fix problem with battery voltage and temperature model units.</p>
+<p>Fix bug with battery chemsitry selection, loss inputs, and lifetime simulation.</p>
+
+<h2>Battery Storage</h2>
+
+<p>The battery storage model is available as part of the Detailed PV and Generic System models. A simple version of the model is available with the PVWatts performance model.</p>
+
+<p>Convert some inputs to drop-down lists to make user interface less cluttered.</p>
+
+<h2>Marine Energy</h2>
+
+<p>New performance model for marine wave energy systems.</p>
+<p>New performance model for marine tidal energy systems.</p>
+
+<h2>Fuel Cell</h2>
+
+<p>New performance model for photovoltaic array with fuel cell and optional battery storage.</p>
+
+<h2>CSP Molten Salt Power Tower</h2>
+
+<p>New inputs that don't appear in UI like <code>startup_ramp_time</code> and <code>startup_target_Tdiff</code>.</p>
+<p>New radiative cooling model for Rankine cycle power cycle model.</p>
+<p>Fix bug with display of "Turbine inlet pressure control" list in user interface.</p> 
+<p>Fix bug with power cycle evaporative cooling option.</p>
+<p>Fix bug for power cycle sizes greater than 150 MW when all other inputs are left at their default values.</p>
+
+<h2>CSP Physical Trough</h2>
+
+<p>Reorganize inputs so that sizing inputs are on new System Design page.</p>
+<p>Add dispatch optimization algorithm and inputs on new System Control page.</p>
+<p>Fix bug in header pipe calculation to conserve mass flow.</p>
+<p>Fix bug for power cycle sizes greater than 150 MW when all other inputs are left at their default values.</p>
+
+<h2>CSP Linear Fresnel</h2>
+
+<p>Fix annulus gas pressure (torr) variable name for consistency between molten salt and direct steam models.</p>
+
+<h2>IPH Parabolic Trough</h2>
+
+<p>New system control model with dispatch optimization on System Control page.</p>
+
+<h2>Wind</h2>
+
+<p>Add new uncertainty analysis per IEC 61400-15 guidelines.</p>
+<p>Add new loss inputs.</p>
+<p>Fix bug with icing cutoff use of relative humidity data.</p>
+<p>Add wind direction weibull distribution to results.</p>
+<p>Add average annual wind speed as a result.</p>
+
+<h2>Solar Water Heating</h2>
+
+<p>Custom mains profile input simplified to annual array instead of annual or monthly options.</p>
+
+<h2>Biopower</h2>
+
+<p>Improve user interface and documentation to clarify that Biopower model requires weather file with GHI data.</p>
+
+<h2>Merchant Plant Financial Model</h2>
+
+<p>New financial model for power projects that sell power at hourly or subhourly energy market rates with optional revenue from capacity payments and ancillary services.</p>
+
+<h2>Power Purchase Agreement (PPA) Financial Models</h2>
+
+<p><em>The Power Purchase Agreement (PPA) models include single owner, partnership flip with and without debt, and sale leaseback.</em></p>
+
+<p>PPA price input as array of annual values.</p>
+<p>Send to Excel with Equations now works for partnership flip and sale leaseback models.</p>
+<p>New optional additional revenue from capacity or curtailment payments.</p>
+<p>New optional grid interconnection limits and curtailment.</p>
+<p>New Revenue input page for Solution Mode and revenue sources from PPA, and optional capacity or curtailment payments.</p>
+<p>Time of Delivery (TOD) factors moved to Revenue page.</p>
+
+<h2>Behind-the-meter Fianancial Models</h2>
+
+<p><em>Behind-the-meter financial models include the residential and commercial models.</em></p>
+
+<p>Both by and sell rates can be specified as hourly or subhourly values instead of using time-of-use schedules and periods.</p>
+<p>New critical load inputs and resiliency metrics for results.</p>
+<p>Residential load data not available for Alaska locations for Download Electric Load macro.</p>
+<p>New optional grid interconnection limits and curtailment.</p>
+
+<h2>Third Party Ownership Finanical Models</h2>
+
+<p><em>Third-party ownership models include the Third Party Ownership / Host and Third Party Ownership / Host-Developer models.</em></p>
+
+<p>Fix Host NPV in Send to Excel with Equations workbook.</p>
+<p>Fix issues with PDF report when developer NPV is positive and host NPV is negative.</p>
+<p>New optional grid interconnection limits and curtailment.</p>
+
+<h1 id="current">Version 2018.11.11, SSC Version 198: November 11, 2018</h1>
 
 <p>This new version introduces new models for third party ownership, bifacial photovoltaic modules, multiple maximum power point trackers for photovoltaic systems, and accesses the latest solar resource data (PSM V3) from the National Solar Radiation Database. It also includes enhancements to the battery storage and CSP parabolic trough models.</p>
 
 <h2>General</h2>
 
-<ul>
-<li>Update assumptions for default configurations.</li>
-<li>Update user documentation.</li>
-<li>Fix stochastic simulations running on Mac OS.</li>
-<li>Fix issues with time series data viewer in Mac OS.</li>
-<li>Update getting started script for India to use PVWatts so system size scales correctly.</li>
-<li>Add new parametric import and export functions to LK scripting language.</li>
-</ul>
-
+<p>Update assumptions for default configurations.</p>
+<p>Update user documentation.</p>
+<p>Fix stochastic simulations running on Mac OS.</p>
+<p>Fix issues with time series data viewer in Mac OS.</p>
+<p>Update getting started script for India to use PVWatts so system size scales correctly.</p>
+<p>Add new parametric import and export functions to LK scripting language.</p>
 
 <h2>Weather Data</h2>
-<ul>
-<li>Improve weather file download for models that use solar resource data to access data from the NREL National Solar Radiation Database (NSRDB). SAM downloads typical meteorological year (TMY) files from the Physical Solar Model (PSM) Version 3 dataset by default, and provides options for downloading single year data, multiple files at a time for different locations or for P50/P90 simulations, and for downloading legacy data from the older NSRDB datasets.</li>
-<li>Remove out-of-date weather files from default library.</li>
-<li>Improve error reporting when weather file has more than one year's worth of data.</li>
-<li>Add support for subhourly data in weather files using the EPW format.</li>
-<li>Add support for PVsyst ang PVGIS weather data column labels in the SAM CSV format.</li>
-<li>Add check for missing values in weather files using the EPW format.</li>
-</ul>
+
+<p>Improve weather file download for models that use solar resource data to access data from the NREL National Solar Radiation Database (NSRDB). SAM downloads typical meteorological year (TMY) files from the Physical Solar Model (PSM) Version 3 dataset by default, and provides options for downloading single year data, multiple files at a time for different locations or for P50/P90 simulations, and for downloading legacy data from the older NSRDB datasets.</p>
+<p>Remove out-of-date weather files from default library.</p>
+<p>Improve error reporting when weather file has more than one year's worth of data.</p>
+<p>Add support for subhourly data in weather files using the EPW format.</p>
+<p>Add support for PVsyst ang PVGIS weather data column labels in the SAM CSV format.</p>
+<p>Add check for missing values in weather files using the EPW format.</p>
+
 
 <h2>Detailed Photovoltaic</h2>
 
-<ul>
-<li>Add support for systems with multiple power point trackers (MPPT) with a new inverter input variable for number of MPPT inputs on the Inverter input page.</li>
-<li>Add option for modeling bifacial modules with new variables on the Module input page.</li>
-<li>Add new macro for optimizing subarray layout given area constraints imposed by rooftop size or available land.</li>
-<li>Improve system sizing macro.</li>
-<li>Improve System Design input page to streamline system sizing work flow.</li>
-<li>Add new inverter temperature model.</li>
-<li>Remove misleading error message about using the snow model with one-axis tracking.</li>
-<li>Add AC capacity factor as an output variable available on the Data Tables tab.</li>
-<li>Enable albedo for parametric simulations.</li>
-<li>Display bandgap voltage assumptions for single-diode models.</li>
-<li>Update CEC module and inverter libraries with CEC data as of November 4, 2018. Remove inverters with bad data from library.</li>
-<li>Fixed issue with voltage calculation for subarray mismatch algorithm. <a href="https://github.com/NREL/ssc/issues/191">GitHub Issue SSC 191</a>.</li>
-<li>Add implementation of Mermoud/Lejeune module model to SSC. This model option is not available in the SAM user interface, but can be accessed via the SSC API using the <a href="https://sam.nrel.gov/sdk">SAM Software Development Kit (SDK)</a>. <a href="https://github.com/NREL/ssc/issues/26">GitHub Issue SSC 26</a>.</li>
-</ul>
+<p>Add support for systems with multiple power point trackers (MPPT) with a new inverter input variable for number of MPPT inputs on the Inverter input page.</p>
+<p>Add option for modeling bifacial modules with new variables on the Module input page.</p>
+<p>Add new macro for optimizing subarray layout given area constraints imposed by rooftop size or available land.</p>
+<p>Improve system sizing macro.</p>
+<p>Improve System Design input page to streamline system sizing work flow.</p>
+<p>Add new inverter temperature model.</p>
+<p>Remove misleading error message about using the snow model with one-axis tracking.</p>
+<p>Add AC capacity factor as an output variable available on the Data Tables tab.</p>
+<p>Enable albedo for parametric simulations.</p>
+<p>Display bandgap voltage assumptions for single-diode models.</p>
+<p>Update CEC module and inverter libraries with CEC data as of November 4, 2018. Remove inverters with bad data from library.</p>
+<p>Fixed issue with voltage calculation for subarray mismatch algorithm. <a href="https://github.com/NREL/ssc/issues/191">GitHub Issue SSC 191</a>.</p>
+<p>Add implementation of Mermoud/Lejeune module model to SSC. This model option is not available in the SAM user interface, but can be accessed via the SSC API using the <a href="https://sam.nrel.gov/sdk">SAM Software Development Kit (SDK)</a>. <a href="https://github.com/NREL/ssc/issues/26">GitHub Issue SSC 26</a>.</p>
 
 <h2>PVWatts</h2>
-<ul>
-<li>Disable tilt and azimuth variables as appropriate based on tracking option.</li>
-</ul>
+
+<p>Disable tilt and azimuth variables as appropriate based on tracking option.</p>
+
 
 <h2>Third Party Ownership Host / Developer</h2>
 
-<ul>
-<li>This new model for third party ownership of a photovoltaic system on a residential or commercial property is from the developer's perspective to determine the power price the developer charges the host to meet the developer's costs and return requirements.</li>
-<li>Rename the Third Party Host model from older versions of SAM. The Host model is from the host's perspective to compare a lease agreement to a power purchase agreement.</li>
-<li>Enable load download macros for third party ownership financial models.</li>
-</ul>
+
+<p>This new model for third party ownership of a photovoltaic system on a residential or commercial property is from the developer's perspective to determine the power price the developer charges the host to meet the developer's costs and return requirements.</p>
+<p>Rename the Third Party Host model from older versions of SAM. The Host model is from the host's perspective to compare a lease agreement to a power purchase agreement.</p>
+<p>Enable load download macros for third party ownership financial models.</p>
+
 
 <h2>Residential and Commercial</h2>
 
-<ul>
-<li>Fix production-based incentive and payback calculations in Send-to-Excel with equations. This was an issue in the workbook, not with SAM results.</li>
-</ul>
+<p>Fix production-based incentive and payback calculations in Send-to-Excel with equations. This was an issue in the workbook, not with SAM results.</p>
 
 <h2>Electricity Rates</h2>
-<ul>
-<li>Change labels for excess generation options to standard names for net energy metering, net billing, etc.</li>
-<li>Fix issue with calculation of credits for excess generation. <a href="https://github.com/NREL/ssc/issues/154">GitHub Issue SSC 154</a></li>
-</ul>
+
+<p>Change labels for excess generation options to standard names for net energy metering, net billing, etc.</p>
+<p>Fix issue with calculation of credits for excess generation. <a href="https://github.com/NREL/ssc/issues/154">GitHub Issue SSC 154</a></p>
 
 <h2>Battery Storage</h2>
 
-<ul>
-<li>Add battery storage to the Generic System model.</li>
-<li>For systems with batteries using the PPA Single Owner financial models, enable Electricity Rates input page to account for the cost of charging the battery and supplying inverter night-time load from the grid and add cost of retail electricity purchases to the project cash flow.</li>
-<li>Fix issue with initial state of charge (SOC) not being applied correctly.</li>
-<li>Include PV DC and AC losses in power values used for front-of-meter and behind-the-meter battery configurations. <a href="https://github.com/NREL/ssc/issues/137">GitHub Issue SSC 137</a></li>
-<li>Fix issue with battery replacements. <a href="https://github.com/NREL/ssc/issues/55">GitHub Issue SSC 55</a>.</li>
-<li>Fix several issues with dispatch, lifetime, power flow calculations.</li>
-</ul>
-
+<p>Add battery storage to the Generic System model.</p>
+<p>For systems with batteries using the PPA Single Owner financial models, enable Electricity Rates input page to account for the cost of charging the battery and supplying inverter night-time load from the grid and add cost of retail electricity purchases to the project cash flow.</p>
+<p>Fix issue with initial state of charge (SOC) not being applied correctly.</p>
+<p>Include PV DC and AC losses in power values used for front-of-meter and behind-the-meter battery configurations. <a href="https://github.com/NREL/ssc/issues/137">GitHub Issue SSC 137</a></p>
+<p>Fix issue with battery replacements. <a href="https://github.com/NREL/ssc/issues/55">GitHub Issue SSC 55</a>.</p>
+<p>Fix several issues with dispatch, lifetime, power flow calculations.</p>
 
 <h2>CSP Physical Trough Model</h2>
 
+	<p>Header sizing algorithm considers all sections when progressively downsizing the diameters.</p>
+	<p>Internal energy of the inlet, outlet, and crossover piping (IOCOP) now fully accounted for.</p>
+	<p>Runner pressure drop calculation accurately counts expansions and contractions.</p>
+	<p>Calculation of thermal energy storage (TES) and steam generator system (SGS) piping volumes now more precise.</p>
+	<p>Script templates added for implementing new features.</p>
+	<p>Runner and header diameter sizing algorithm revamped:</p>
 	<ul>
-	<li>Header sizing algorithm considers all sections when progressively downsizing the diameters</li>
-	<li>Internal energy of the inlet, outlet, and crossover piping (IOCOP) now fully accounted for</li>
-	<li>Runner pressure drop calculation accurately counts expansions and contractions</li>
-	<li>Calculation of thermal energy storage (TES) and steam generator system (SGS) piping volumes now more precise</li>
-	<li>Script templates added for implementing new features</li>
-	<li>Runner and header diameter sizing algorithm revamped:
+	 <li>More robust in border cases.</li>
+	 <li>Preferentially selects smaller diameter (cheaper) pipes for out-of-range cases.</li>
+	 <li>Diameter limit less restrictive for hot (costlier) than cold header pipes.</li>
+	</ul>
+	<p>Calculates (and outputs) HTF properties at design conditions in each pipe section:</p>
 	<ul>
-	 <li>More robust in border cases</li>
-	 <li>Preferentially selects smaller diameter (cheaper) pipes for out-of-range cases</li>
-	 <li>Diameter limit less restrictive for hot (costlier) than cold header pipes</li>
-	</ul></li>
-	<li>Calculates (and outputs) HTF properties at design conditions in each pipe section:
-	<ul>
-	 <li>Properties include mass flow, velocity, temperature and pressure</li>
-	 <li>Model runs until steady-state is achieved</li>
-	 <li>Occurs before yearly simulation</li>
-	 <li>Default is to perform, but can be skipped</li>
-	</ul></li>
-	<li>Added configurable parameters for solar field:
+	 <li>Properties include mass flow, velocity, temperature and pressure.</li>
+	 <li>Model runs until steady-state is achieved.</li>
+	 <li>Occurs before yearly simulation.</li>
+	 <li>Default is to perform, but can be skipped.</li>
+	</ul>
+	<p>Added configurable parameters for solar field:</p>
 	<ul>
 	 <li>North/south distance between subfields (northsouth_field_sep)</li>
 	 <li>Minimum number of runner expansion loops for each constant diameter segment (Min_rnr_xpans)</li>
@@ -237,61 +302,52 @@
 	 <li>Maximum number of header diameters (N_max_hdr_diams)</li>
 	 <li>Location of the first header expansion loop (offset_xpan_hdr)</li>
 	 <li>Number of collector loops per header expansion loop (N_hdr_per_xpan)</li>
-	</ul></li>
-	<li>Added configurable parameters for thermal energy storage (TES)/power block (PB):
+	</ul>
+	<p>Added configurable parameters for thermal energy storage (TES)/power block (PB):</p>
 	<ul>
-	 <li>Bypass valve operation during field recirculation (has_hot_tank_bypass) can bypass just hot tank and feed into cold tank (=true) or bypass both tanks and rest of TES/PB (=false)</li>
-	 <li>Minimum HTF temperature that may enter the hot tank (T_tank_hot_inlet_min)</li>
-	 <li>Length of runner pipe in and around the power block (L_rnr_pb)</li>
-	 <li>Lengths of the TES/PB piping (sgs_lengths)</li>
-	 <li>Design-point velocity for sizing the TES/PB pipe diameters (V_tes_des)</li>
-	 <li>Minor losses of TES/PB pipe fittings (k_tes_loss_coeffs)</li>
-	 <li>Pressure drop within the steam generator system (DP_SGS)</li>
-	</ul></li>
-	<li>Separate design velocities added for sizing hot and cold headers</li>
-	<li>Custom TES/PB piping pressure drop calculation option based on Darcy-Weisbach and custom minor pressure losses</li>
-	<li>Now reporting TES/PB, runner, header, and loop pipe lengths, diameters, wall thicknesses and number of expansion loops. Minus the number of expansion loops, these output values can be modified and read-in as custom values for subsequent model runs.</li>
-	<li>Configurable interconnects have been added that replace hard coded component sizes and associated losses, at the inlet, outlet, crossover, and connections between solar collector assemblies (SCAs). Utilized using the following component and component assembly (interconnect) input files, with example usage in the script templates:
+	 <li>Bypass valve operation during field recirculation (has_hot_tank_bypass) can bypass just hot tank and feed into cold tank (=true) or bypass both tanks and rest of TES/PB (=false).</li>
+	 <li>Minimum HTF temperature that may enter the hot tank (T_tank_hot_inlet_min).</li>
+	 <li>Length of runner pipe in and around the power block (L_rnr_pb).</li>
+	 <li>Lengths of the TES/PB piping (sgs_lengths).</li>
+	 <li>Design-point velocity for sizing the TES/PB pipe diameters (V_tes_des).</li>
+	 <li>Minor losses of TES/PB pipe fittings (k_tes_loss_coeffs).</li>
+	 <li>Pressure drop within the steam generator system (DP_SGS).</li>
+	</ul>
+	<p>Separate design velocities added for sizing hot and cold headers.</p>
+	<p>Custom TES/PB piping pressure drop calculation option based on Darcy-Weisbach and custom minor pressure losses.</p>
+	<p>Now reporting TES/PB, runner, header, and loop pipe lengths, diameters, wall thicknesses and number of expansion loops. Minus the number of expansion loops, these output values can be modified and read-in as custom values for subsequent model runs.</p>
+	<p>Configurable interconnects have been added that replace hard coded component sizes and associated losses, at the inlet, outlet, crossover, and connections between solar collector assemblies (SCAs). Utilized using the following component and component assembly (interconnect) input files, with example usage in the script templates:</p>
 	<ul>
 	 <li>physical_trough_interconnect_components.csv</li>
 	 <li>physical_trough_interconnect_definitions.csv</li>
-	</ul></li>
-	<li>Collection (field) and generation (TES/PB) loops have been decoupled. This allows for storage tanks in series with the field in direct storage configurations.</li>
-	<li>Unit tests have been added to continually verify functions perform as designed.</li>
 	</ul>
-
+	<p>Collection (field) and generation (TES/PB) loops have been decoupled. This allows for storage tanks in series with the field in direct storage configurations.</p>
+	<p>Unit tests have been added to continually verify functions perform as designed.</p>
 
 <h2>CSP Power Tower</h2>
 
-<ul>
-<li>Improve user-defined power cycle input tables and documentation.</li>
-<li>Internal improvements to SolarPILOT calculations.</li>
-</ul>
+<p>Improve user-defined power cycle input tables and documentation.</p>
+<p>Internal improvements to SolarPILOT calculations.</p>
 
 <h2>CSP Dish Stirling</h2>
 
-<ul>
-<li>Dish Stirling model annual energy increased by 8% due to the new weather file format.</li>
-</ul>
+<p>Dish Stirling model annual energy increased by 8% due to the new weather file format.</p>
 
 <h2>Wind Power</h2>
 
-<ul>
-<li>Fix issue with WIND Toolkit data time zone. SAM assumes time stamps are in local time, not UTC. Only affects projects with load data or time-depending electricity prices.</li>
-</ul>
+<p>Fix issue with WIND Toolkit data time zone. SAM assumes time stamps are in local time, not UTC. Only affects projects with load data or time-depending electricity prices.</p>
 
 <h2>Geothermal</h2>
 
-<ul>
-<li>Add LCOE optimizer.</li>
-<li>Update and fix bugs in code.</li>
-<li>Calculate capacity factor from net nameplate capacity instead of gross nameplate capacity.</li>
-</ul>
+<p>Add LCOE optimizer.</p>
+<p>Update and fix bugs in code.</p>
+<p>Calculate capacity factor from net nameplate capacity instead of gross nameplate capacity.</p>
 
 <h2>Generic System</h2>
-<ul>
-<li>Add battery storage.</li>
-</ul>
+
+<p>Add battery storage.</p>
+
+
 <h1>Version 2017.9.5 Revision 4, SSC Version 186: March 14, 2018</h1>
 
 <p>This update restores a few items that were omitted from the SAM 2017.9.5 Revision 3 update and addresses one new issue.</p>
@@ -305,8 +361,7 @@
 
 <h1>Version 2017.9.5 Revision 3, SSC Version 184: February 21, 2018</h1>
 
-<p>This is a maintenance update that fixes the following issues in SAM 2017.9.5 Revision 2:
-</p>
+<p>This is a maintenance update that fixes the following issues in SAM 2017.9.5 Revision 2:</p>
 
 <ul>
 <li>Detailed Photovoltaic:
@@ -350,7 +405,7 @@
 <li>Send-to-Excel with Equations:
 	<ul>
 	<li>Clarify handling of income tax rates entered as tables for Residential, Commercial, and Single Owner financial models.</li>
-	<li>Fix PBI and PTC entered as table for Residential and Commercial.
+	<li>Fix PBI and PTC entered as table for Residential and Commercial.</li>
 	</ul>
 </li>
 <li>PDF report generator:
@@ -365,6 +420,7 @@
 <li>Fix issue with <strong>Power Tower</strong> SolarPilot shading calculations.</li>
 <li>Add support to <strong>Generic System</strong> for subhourly load data.</li>
 <li>Fix an issue with <strong>Excel Exchange</strong> that prevented SAM from communicating with Excel.</li>
+</ul>
 
 <h1>Version 2017.9.5 Revision 2, SSC Version 180: October 30, 2017</h1>
 
@@ -408,82 +464,70 @@
 
 <h2>General</h2>
 	 
- <ul>
- <li>Added ability to download different types of files from National Solar Radiation Database (NSRDB) for SAM's solar models. It is now possible to download individual single-year files, multiple weather files for P50/P90 analysis, and legacy data directly from SAM.
- </li></ul>
+ 
+ <p>Added ability to download different types of files from National Solar Radiation Database (NSRDB) for SAM's solar models. It is now possible to download individual single-year files, multiple weather files for P50/P90 analysis, and legacy data directly from SAM.</p>
+ 
 			 
 <h2>Detailed Photovoltaic Model</h2>
 
-<ul>
-<li>Added weather file checking for for missing temperature or wind speed values.
-</li><li>Updated the Inverter Sizing Information macro to give more information, and renamed it to System Sizing Information.
-</li><li>Fixed kWh/kW metric for subhourly simulations.
-</li><li>Fixed units for GHI data in results.
-</li><li>Fixed problems with PDF report for effective tax rate
-</li></ul>
+
+<p>Added weather file checking for for missing temperature or wind speed values.</p>
+<p>Updated the Inverter Sizing Information macro to give more information, and renamed it to System Sizing Information.</p>
+<p>Fixed kWh/kW metric for subhourly simulations.</p>
+<p>Fixed units for GHI data in results.</p>
+<p>Fixed problems with PDF report for effective tax rate</p>
 
 <h2>Battery Storage</h2>
 
+<p>Improved battery sizing workflow and interface.</p>
+<p>Comprehensive reworking of flow battery inputs and model.</p>
+<p>Added a calendar-life model for lithium-ion batteries, and a tabular calendar life degradation input for other chemistries.</p>
+<p>Added an iron-flow battery to the list of default types.</p>
+<p>Improved battery dispatch control.</p>
+<p>Fixed several problems with battery model combined with PPA financial model:</p>
 <ul>
-<li>Improved battery sizing workflow and interface.
-</li><li>Comprehensive reworking of flow battery inputs and model.
-</li><li>Added a calendar-life model for lithium-ion batteries, and a tabular calendar life degradation input for other chemistries.
-</li><li>Added an iron-flow battery to the list of default types. 
-</li><li>Improved battery dispatch control. 
-</li><li>Fixed several problems with battery model combined with PPA financial model:
-	<ul>
-	<li>Acount for grid power purchases to charge battery.
-	</li><li>Include battery cost in system installation cost for partnership flip models.
-	</li><li>Inconsistencies how SAM reported some time series outputs
-	</li></ul>
-</li></ul>
+<li>Acount for grid power purchases to charge battery.</li>
+<li>Include battery cost in system installation cost for partnership flip models.</li>
+<li>Inconsistencies how SAM reported some time series outputs</li>
+</ul>
 
 <h2>Process Heat Parabolic Trough</h2>
 
-<ul>
-<li>Added direct thermal energy storage. The default solar multiple has increased from 1 to 2.5 and the default for the new input hours of thermal storage is 6. 
-</li><li>Added an input for the wind speed at which the trough is stowed. The default wind stow speed is 25 m/s.
-</li><li>Changed controller messages from runtime warnings to notices to minimize information displayed after a simulation. Click the Notices button at the top right of the SAM window to see the messages.
-</li></ul>
+<p>Added direct thermal energy storage. The default solar multiple has increased from 1 to 2.5 and the default for the new input hours of thermal storage is 6.</p>
+<p>Added an input for the wind speed at which the trough is stowed. The default wind stow speed is 25 m/s.</p>
+<p>Changed controller messages from runtime warnings to notices to minimize information displayed after a simulation. Click the Notices button at the top right of the SAM window to see the messages.</p>
 
 <h2>Process Heat Linear Direct Steam</h2>
 
-<ul>
-<li>Improved numeric convergence in the annual simulation and results in fewer simulation crashes.
-</li><li>Changed controller messages from runtime warnings to notices to minimize information displayed after a simulation. Click the Notices button at the top right of the SAM window to see the messages.
-</li></ul>
+<p>Improved numeric convergence in the annual simulation and results in fewer simulation crashes.</p>
+<p>Changed controller messages from runtime warnings to notices to minimize information displayed after a simulation. Click the Notices button at the top right of the SAM window to see the messages.</p>
 
 <h2>Molten Salt Power Tower</h2>
 
-<ul>
-<li>Modified the structure by which the tower compute module (cmod_tcsmolten_salt) is called, which affects scripting and API functions. Previously-created LK scripts that are executed using the new SAM release may require modification. The changes occurred in the variable table, in which redundant variables were removed, and the only variable inputs that remain are the minimal set that fully define the system geometry. That is, no calculated parameters are passed as inputs under the new structure. This change simplifies scripting to eliminate the need to provide calculated values as inputs. 
-</li><li>Changed some messages from runtime warnings to notices to minimize information displayed after a simulation. Click the Notices button at the top right of the SAM window to see the messages.
- </li></ul>
+<p>Modified the structure by which the tower compute module (cmod_tcsmolten_salt) is called, which affects scripting and API functions. Previously-created LK scripts that are executed using the new SAM release may require modification. The changes occurred in the variable table, in which redundant variables were removed, and the only variable inputs that remain are the minimal set that fully define the system geometry. That is, no calculated parameters are passed as inputs under the new structure. This change simplifies scripting to eliminate the need to provide calculated values as inputs.</p>
+<p>Changed some messages from runtime warnings to notices to minimize information displayed after a simulation. Click the Notices button at the top right of the SAM window to see the messages.</p>
 
 <h2>Wind</h2>
 
-<ul>
-<li>Significant changes to the way that SAM corrects power curves for air density. SAM was previously using an older correction method that was appropriate for stall-regulated turbines, but the majority of modern turbines are pitch-regulated. These are better represented by a different correction for air density, which is now implemented. This new method will increase energy production values significantly for turbines at high elevation sites. A description of these two air density calculation methods can be found at <a href="https://www.scribd.com/document/38818683/PO310-EWEC2010-Presentation">https://www.scribd.com/document/38818683/PO310-EWEC2010-Presentation</a>. 
-</li></ul>
+<p>Significant changes to the way that SAM corrects power curves for air density. SAM was previously using an older correction method that was appropriate for stall-regulated turbines, but the majority of modern turbines are pitch-regulated. These are better represented by a different correction for air density, which is now implemented. This new method will increase energy production values significantly for turbines at high elevation sites. A description of these two air density calculation methods can be found at <a href="https://www.scribd.com/document/38818683/PO310-EWEC2010-Presentation">https://www.scribd.com/document/38818683/PO310-EWEC2010-Presentation</a>. 
+</p>
 
 <h2>PPA Financial Models</h2>
 
-<ul>
-<li>Fixed a problem with saving TOD Factors data to text file.
-</li><li>Reorganized TOD Factors input page to improve usability of time series TOD factor inputs.
-</li><li>For partnership flip with debt model, fixed problem with accounting of Cost of Development fee in cash flow.
-</li></ul>
+
+<p>Fixed a problem with saving TOD Factors data to text file.</p>
+<p>Reorganized TOD Factors input page to improve usability of time series TOD factor inputs.</p>
+<p>For partnership flip with debt model, fixed problem with accounting of Cost of Development fee in cash flow.</p>
 
 <h2>Macros and LK Scriptiong</h2>	 
 
-<ul>
-<li>Added median() function to the LK scripting language.
-</li><li>Added a macro to interpolate solar resource data from hourly to subhourly time resolution.
-</li><li>Improved PV sizing information macro.
-</li></ul>
+<p>Added median() function to the LK scripting language.</p>
+<p>Added a macro to interpolate solar resource data from hourly to subhourly time resolution.</p>
+<p>Improved PV sizing information macro.</p>
 
 	 
 <h1>Version 2017.1.17 Revision 4 SSC Version 174: June 19, 2017</h1>
+
 <p>This is a maintenance update that fixes the following issues in SAM 2017.1.17 Revision 3:
 </p>
 <ul>
@@ -579,161 +623,158 @@
 <p>Summary:  This version adds new capabilities to the photovoltaic, battery storage, concentrating solar power, and wind performance models, as well as new models for solar process heat applications.  In addition, major updates to the utility bill calculations allow greater flexiblity for correctly capturing the nuances of complex rate structures.  The scripting features have also been improved, and streamlined use of the SAM Software Development Kit (SDK) is possible using the new SDK code generator.</p>
 
 <h2> Photovoltaics </h2>
-<ul>
-<li> Added an inverter model coefficient calculator that directly accepts inverter efficiency test data for inverters not included in the database.  Efficiency data at six different power levels (10%, 20%, 30%, 50%, 75% and 100%) and three different voltages (Vmin, Vnom, Vmax) is required as input.
-</li><li> Added a simple transformer loss model using datasheet no-load loss and full-load loss specifications.
-</li><li> Added the ability to automate the 3D shading scene construction and loss calculations using LK scripting.
-</li><li> Added a fixed seasonal tilt input option.
-</li><li> Fixed several bugs and improved usability of the partial obstruction shading model.
-</li><li> Added daily DC and AC lifetime loss inputs.
-</li><li> Added DC and AC curtailment input options.
-</li><li> Greatly improved simulation speed when using automated battery model dispatch.
-</li><li> Improved user interface for self shading inputs.
-</li><li> Reorganized PV model hourly outputs to improve clarity.
-</li><li> Fixed bug with voltage mismatch calculation when using only one subarray.
-</li><li> Fixed bug with degradation calculations when using multiple subarrays.
-</li><li> Updated default PV costs for all markets.
-</li><li> Updated default DC/AC ratio to 1.2.
-</li></ul>
+
+<p> Added an inverter model coefficient calculator that directly accepts inverter efficiency test data for inverters not included in the database.  Efficiency data at six different power levels (10%, 20%, 30%, 50%, 75% and 100%) and three different voltages (Vmin, Vnom, Vmax) is required as input.
+</p><p> Added a simple transformer loss model using datasheet no-load loss and full-load loss specifications.
+</p><p> Added the ability to automate the 3D shading scene construction and loss calculations using LK scripting.
+</p><p> Added a fixed seasonal tilt input option.
+</p><p> Fixed several bugs and improved usability of the partial obstruction shading model.
+</p><p> Added daily DC and AC lifetime loss inputs.
+</p><p> Added DC and AC curtailment input options.
+</p><p> Greatly improved simulation speed when using automated battery model dispatch.
+</p><p> Improved user interface for self shading inputs.
+</p><p> Reorganized PV model hourly outputs to improve clarity.
+</p><p> Fixed bug with voltage mismatch calculation when using only one subarray.
+</p><p> Fixed bug with degradation calculations when using multiple subarrays.
+</p><p> Updated default PV costs for all markets.
+</p><p> Updated default DC/AC ratio to 1.2.
+</p>
 
 <h2> Battery Storage </h2>
-<ul>
-<li> Added option for modeling batteries at the utility scale with manual dispatch.
-</li><li> Improved dispatch controller using an iterative algorithm that checks battery constraints at the end of the dispatch, and redispatches until all constraints are met (minimum or maximum state-of-charge, charging from grid when disallowed, exporting PV to grid when can charge battery, etc).
-</li><li> Added options to model DC-connected battery system topologies.
-</li><li> Added a Vanadium Redox Flow battery voltage model and default parameters.
-</li><li> Added a simplified battery model option to PVWatts with automatic peak shaving dispatch.
-</li><li> Added AC and DC battery and controller losses to the system loss diagram.
-</li></ul>
+
+<p> Added option for modeling batteries at the utility scale with manual dispatch.
+</p><p> Improved dispatch controller using an iterative algorithm that checks battery constraints at the end of the dispatch, and redispatches until all constraints are met (minimum or maximum state-of-charge, charging from grid when disallowed, exporting PV to grid when can charge battery, etc).
+</p><p> Added options to model DC-connected battery system topologies.
+</p><p> Added a Vanadium Redox Flow battery voltage model and default parameters.
+</p><p> Added a simplified battery model option to PVWatts with automatic peak shaving dispatch.
+</p><p> Added AC and DC battery and controller losses to the system loss diagram.
+</p>
 
 <h2> PVWatts </h2>
-<ul>
-<li> Added a simplified battery model option to PVWatts with automatic peak shaving dispatch.
-</li><li> Updated default PV costs for all markets.
-</li><li> Updated default DC/AC ratio to 1.2.
-</li></ul>
+
+<p> Added a simplified battery model option to PVWatts with automatic peak shaving dispatch.
+</p><p> Updated default PV costs for all markets.
+</p><p> Updated default DC/AC ratio to 1.2.
+</p>
 
 <h2> Concentrating Solar Power (CSP) </h2>
-<ul>
-<li> Added new solar process heat models using a trough or steam linear fresnel solar collectors.
-</li></ul>
+
+<p> Added new solar process heat models using a trough or steam linear fresnel solar collectors.
+</p>
 
 <h2> Molten Salt Power Tower </h2>
-<ul>
-<li>Implemented a number of enhancements to the dispatch optimization algorithm, including:</li>
+
+<p>Implemented a number of enhancements to the dispatch optimization algorithm, including:</p>
     <ul>
         <li>Cost penalties for receiver and power cycle startup</li>
         <li>A cost penalty for varying electric power output from one time step to the next</li>
         <li>User-specification of the time-discounting factor that weights production as a function of the time step</li>
         <li>Implementation of a maximum net power output to the grid constraint which limits the net production - including parasitic consumption - to a fixed value, if desired.</li>
     </ul>
-    <li>Implementation of availablity schedules for solar field production</li>
-    <li>Improvement to solar field optimization to allow for explicit consideration of the maximum flux constraint. Using the algorithm 'BOBYQA', the flux is now directly limited via a linearized constraint, rather than included in the optimization objective function via a penalty factor. This improves the reliability of the solar field optimization algorithm. Note that other algorithm options have been removed, along with the flux over-design penalty input.</li>
-    <li>Default values for the heliostat field, receiver, and tower have been updated</li>
-</ul>
+    <p>Implementation of availablity schedules for solar field production</p>
+    <p>Improvement to solar field optimization to allow for explicit consideration of the maximum flux constraint. Using the algorithm 'BOBYQA', the flux is now directly limited via a linearized constraint, rather than included in the optimization objective function via a penalty factor. This improves the reliability of the solar field optimization algorithm. Note that other algorithm options have been removed, along with the flux over-design penalty input.</p>
+    <p>Default values for the heliostat field, receiver, and tower have been updated</p>
+
 
 <h2> Direct Steam Power Tower </h2>
-<ul>
-    <li>See "Molten Salt Power Tower" notes regarding solar field optimization.</li>
-    <li>Default values for the heliostat field, receiver, and tower have been updated</li>
-</ul>
+
+   <p>See "Molten Salt Power Tower" notes regarding solar field optimization.</p>
+    <p>Default values for the heliostat field, receiver, and tower have been updated</p>
+
 
 <h2> Direct Steam Linear Fresnel </h2>
-<ul>
-<li>Fixed the Evacuated Receiver field modeling option to use the correct assumptions implied by the "Broken Glass" checkbox. Bug in previous model resulted in simulation of the opposite case.</li>
-<li>Fixed the IAM calculation used to model the collector/receiver optical performance. Bug in previous version used the traverse incidence angle in both the Traverse and Longitudinal IAM polynomials.</li>
-</ul>
+
+<p>Fixed the Evacuated Receiver field modeling option to use the correct assumptions implied by the "Broken Glass" checkbox. Bug in previous model resulted in simulation of the opposite case.</p>
+<p>Fixed the IAM calculation used to model the collector/receiver optical performance. Bug in previous version used the traverse incidence angle in both the Traverse and Longitudinal IAM polynomials.</p>
+
 
 <h2> CSP generic model</h2>
-<ul>
-    <li>Added solar field availability and curtailment losses dialog to allow constant, time-period, and hourly specification</li>
-    <li>Updated default values</li>
-    <li>The Generic CSP System model was restructured and now uses different regression equations for thermal losses, power block conversion efficiency, and parasitic consumption. This change invalidates previous model configurations and requires revised input values. For more information on generating regression coefficients, view help or visit the SAM website.</li>
-    <li>Added DNI adjustment for parasitic loads</li>
-    <li>Added exergy correction model for thermal storage charge state</li>
-</ul>
+
+    <p>Added solar field availability and curtailment losses dialog to allow constant, time-period, and hourly specification</p>
+    <p>Updated default values</p>
+    <p>The Generic CSP System model was restructured and now uses different regression equations for thermal losses, power block conversion efficiency, and parasitic consumption. This change invalidates previous model configurations and requires revised input values. For more information on generating regression coefficients, view help or visit the SAM website.</p>
+    <p>Added DNI adjustment for parasitic loads</p>
+    <p>Added exergy correction model for thermal storage charge state</p>
+
 
 
 <h2> Solar Water Heating </h2>
-<ul>
-<li> Removed redundant output variables to improve clarity.
-</li><li> Updated units of some output variables for improved consistency.
-</li></ul>
+
+<p> Removed redundant output variables to improve clarity.
+</p><p> Updated units of some output variables for improved consistency.
+</p>
 
 <h2> Wind </h2>
-<ul>
-<li> Added nearly 200 wind turbine power curves.
-</li><li> Fixed bug with how cut-in wind speed was calculated for turbines in the library.
-</li><li> Fixed bug with the Weibull resource plot on the wind resource input page.
-</li><li> Added a sales tax taxable basis input to the wind cost page.
-</li><li> Updated default costs for all markets.
-</li><li> Updated default turbine selection for some markets.
-</li><li> Added wind turbine power curve as a model output.
-</li><li> Fixed bug to correctly apply availability and curtailment losses when using the Weibull distribution resource model.
-</li><li> Added offshore balance of system cost model.
-</li><li> Added wind resource data file range checks on data values.
-</li></ul>
+
+<p> Added nearly 200 wind turbine power curves.
+</p><p> Fixed bug with how cut-in wind speed was calculated for turbines in the library.
+</p><p> Fixed bug with the Weibull resource plot on the wind resource input page.
+</p><p> Added a sales tax taxable basis input to the wind cost page.
+</p><p> Updated default costs for all markets.
+</p><p> Updated default turbine selection for some markets.
+</p><p> Added wind turbine power curve as a model output.
+</p><p> Fixed bug to correctly apply availability and curtailment losses when using the Weibull distribution resource model.
+</p><p> Added offshore balance of system cost model.
+</p><p> Added wind resource data file range checks on data values.
+</p>
 
 <h2> PPA Financial Models </h2>
-<ul>
-<li> Added ability to handle negative inflation and real discount rates.
-</li><li> Added state and federal tax yearly tax holidays.
-</li><li> Added fixed principal declining interest loan payback option.
-</li><li> Added fractional month calculations for all reserve accounts.
-</li><li> Added receivables reserve account bases on ppa revenue.
-</li><li> Added loan moratorium to debt fraction loan repayment option.
-</li><li> Improved the organization of cash flow line items in the results.
-</li><li> Added return on equity (ROE) input for modeling specific financing scenarios in international locations.
-</li></ul>
 
+<p> Added ability to handle negative inflation and real discount rates.
+</p><p> Added state and federal tax yearly tax holidays.
+</p><p> Added fixed principal declining interest loan payback option.
+</p><p> Added fractional month calculations for all reserve accounts.
+</p><p> Added receivables reserve account bases on ppa revenue.
+</p><p> Added loan moratorium to debt fraction loan repayment option.
+</p><p> Improved the organization of cash flow line items in the results.
+</p><p> Added return on equity (ROE) input for modeling specific financing scenarios in international locations.
+</p>
 
 <h2> Residential and Commercial Financial Models </h2>
-<ul>
-<li> Added new 'Value of RE' macro to model utility rate switching.
-</li><li> Added ability to handle negative inflation and real discount rates.
-</li><li> Added state and federal tax yearly tax holidays.
-</li></ul>
+
+<p> Added new 'Value of RE' macro to model utility rate switching.
+</p><p> Added ability to handle negative inflation and real discount rates.
+</p><p> Added state and federal tax yearly tax holidays.
+</p>
 
 <h2> LCOE Calculator </h2>
-<ul>
-<li> Minor update to the financial input page to improve clarity.
-</li><li> Updated all default parameters to be consistent with the NREL Annual Technology Baseline report.
-</li></ul>
+
+<p> Minor update to the financial input page to improve clarity.
+</p><p> Updated all default parameters to be consistent with the NREL Annual Technology Baseline report.
+</p>
 
 <h2> Utility Rates </h2>
-<ul>
-<li> Improved options for monthly accounting of excess generation.
-</li><li> Updated monthly outputs to include year end dollar rollovers.
-</li><li> Added additional monthly outputs to balance monthly bill with energy charges and credits.
-</li><li> Added ability to handle negative inflation and real discount rates.
-</li><li> Added option to specify hourly or subhourly sell rates.
-</li></ul>
 
+<p> Improved options for monthly accounting of excess generation.
+</p><p> Updated monthly outputs to include year end dollar rollovers.
+</p><p> Added additional monthly outputs to balance monthly bill with energy charges and credits.
+</p><p> Added ability to handle negative inflation and real discount rates.
+</p><p> Added option to specify hourly or subhourly sell rates.
+</p>
 
 <h2> Scripting </h2>
-<ul>
-<li> Fixed a bug in that caused occasional crashes when assigning a value to a variable that was stored on the right hand side as an element in a complex data structure having the same variable name.  e.g. <tt>x = x[1];</tt>
-</li><li> Added the SDK Code Generator that will create C/C++, Java, MATLAB, PHP 5/7, VBA, C#, or Python 2/3 template code files for a SAM case.
-</li><li> New script-based plotting features for filled or unfilled 2D contour plots, reversed axes, sector plots, color bars, GIF animations, and graphic and textual annotations.
-</li><li> Fixed issue with setting working folder when running scripts through the LK debugger.
-</li><li> Allow option to break into LK debugger if a script error occurs.
-</li><li> Revised curl() function for more control of processing http/https requests.
-</li><li> Added JSON read/write functions.
-</li><li> Fixed bug in  switch statment <tt>( ? x [ 1, 2, 3 ] )</tt> processing.
-</li><li> Allow lazy syntax in table initialization, e.g. <tt> x = { a=1, b='text', c=14.9 };</tt>
-</li><li> Updated dview() function syntax to remove scaling factor option and added option to indicate which dataset should be selected in the viewer by default.
-</li><li> Added new progressbar() function.
-</li><li> Fixed bug in stable_sort() function, and added optional parameter for column sorting.
-</li><li> Added macrocall() function to allow calling SAM Macros from within a script.
-</li></ul>   
+
+<p> Fixed a bug in that caused occasional crashes when assigning a value to a variable that was stored on the right hand side as an element in a complex data structure having the same variable name.  e.g. <tt>x = x[1];</tt>
+</p><p> Added the SDK Code Generator that will create C/C++, Java, MATLAB, PHP 5/7, VBA, C#, or Python 2/3 template code files for a SAM case.
+</p><p> New script-based plotting features for filled or unfilled 2D contour plots, reversed axes, sector plots, color bars, GIF animations, and graphic and textual annotations.
+</p><p> Fixed issue with setting working folder when running scripts through the LK debugger.
+</p><p> Allow option to break into LK debugger if a script error occurs.
+</p><p> Revised curl() function for more control of processing http/https requests.
+</p><p> Added JSON read/write functions.
+</p><p> Fixed bug in  switch statment <tt>( ? x [ 1, 2, 3 ] )</tt> processing.
+</p><p> Allow lazy syntax in table initialization, e.g. <tt> x = { a=1, b='text', c=14.9 };</tt>
+</p><p> Updated dview() function syntax to remove scaling factor option and added option to indicate which dataset should be selected in the viewer by default.
+</p><p> Added new progressbar() function.
+</p><p> Fixed bug in stable_sort() function, and added optional parameter for column sorting.
+</p><p> Added macrocall() function to allow calling SAM Macros from within a script.
+</p>
 
 <h2> General </h2>
-<ul>
-<li> Display rendering improvements for high-DPI screens.
-</li><li> Fixed bug in P50/P90 simulation for user-specified P-values.
-</li><li> Fixed a bug in the 'Combine Cases' macro.
-</li></ul>
-	   
+
+<p> Display rendering improvements for high-DPI screens.
+</p><p> Fixed bug in P50/P90 simulation for user-specified P-values.
+</p><p> Fixed a bug in the 'Combine Cases' macro.
+</p>	   
 	   
 	   
 <!------------------------------------------------------------------------------->	   
