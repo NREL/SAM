@@ -354,9 +354,9 @@ version_upgrade{'2018.9.20'} = define() {
 		value('ud_T_amb_levels', #x_ud_T_amb);
 		
 		// Clear original tables
-		value('ud_T_htf_ind_od', [[0]]);
-		value('ud_m_dot_htf_ind_od', [[0]]);
-		value('ud_T_amb_ind_od', [[0]]);
+		//value('ud_T_htf_ind_od', [[0]]);
+		//value('ud_m_dot_htf_ind_od', [[0]]);
+		//value('ud_T_amb_ind_od', [[0]]);
 		
 		message('This version combines the three user-defined power cycle (UDPC) tables into one. The values from the three '
 				'original tables have been moved to this new single table. This change will not affect your results.', 'warning');
