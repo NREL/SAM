@@ -2947,7 +2947,7 @@ void ConfigDialog::PopulateTech()
 	m_tnames = SamApp::Config().GetTechnologies();
 	
 	// Manually add groups here - eventually move to startup.lk
-	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaics");
+	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
 	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating solar power");
 	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine energy");
 
@@ -2974,41 +2974,52 @@ void ConfigDialog::UpdateFinTree()
 	m_pFin->DeleteAllItems();
 	m_fnames = SamApp::Config().GetFinancingForTech(m_techname);
 
-	bool futility = false;
+	wxDataViewItem cont_ppa;
+	wxDataViewItem cont_dist;
+	wxDataViewItem cont_tpo;
+
+	for (size_t i = 0; i < m_fnames.Count(); i++)
+	{
+		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
+		if (TP.Find("PPA") != wxNOT_FOUND)
+		{
+			cont_ppa = m_pFin->AppendContainer(wxDataViewItem(0), "Power Purchase Agreement");
+			break;
+		}
+	}
+	for (size_t i = 0; i < m_fnames.Count(); i++)
+	{
+		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
+		if (TP.Find("DISTRIBUTED") != wxNOT_FOUND)
+		{
+			cont_dist = m_pFin->AppendContainer(wxDataViewItem(0), "Distributed");
+			break;
+		}
+	}
+	for (size_t i = 0; i < m_fnames.Count(); i++)
+	{
+		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
+		if (TP.Find("TPO") != wxNOT_FOUND)
+		{
+			cont_tpo = m_pFin->AppendContainer(wxDataViewItem(0), "Third Party Ownership");
+			break;
+		}
+	}
+
+
 	for (size_t i = 0; i < m_fnames.Count(); i++)
 	{
 		wxString L(SamApp::Config().Options(m_fnames[i]).LongName);
 		if (L.IsEmpty()) L = m_fnames[i];
 		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
-		if (TP.Find("UTILITY") != wxNOT_FOUND)
-		{
-			futility = true;
-			break;
-		}
-	}
-	if (futility)
-	{
-		// Manually add groups here - eventually move to startup.lk
-		wxDataViewItem cont_utility = m_pFin->AppendContainer(wxDataViewItem(0), "Utility");
-		for (size_t i = 0; i < m_fnames.Count(); i++)
-		{
-			wxString L(SamApp::Config().Options(m_fnames[i]).LongName);
-			if (L.IsEmpty()) L = m_fnames[i];
-			wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
-			if (TP.Find("UTILITY") != wxNOT_FOUND)
-				m_pFin->AppendItem(cont_utility, L);
-			else
-				m_pFin->AppendItem(wxDataViewItem(0), L);
-		}
-	}
-	else
-	{
-		for (size_t i = 0; i < m_fnames.Count(); i++)
-		{
-			wxString L(SamApp::Config().Options(m_fnames[i]).LongName);
-			if (L.IsEmpty()) L = m_fnames[i];
+		if (TP.Find("PPA") != wxNOT_FOUND)
+			m_pFin->AppendItem(cont_ppa, L);
+		else if (TP.Find("DISTRIBUTED") != wxNOT_FOUND)
+				m_pFin->AppendItem(cont_dist, L);
+		else if (TP.Find("TPO") != wxNOT_FOUND)
+			m_pFin->AppendItem(cont_tpo, L);
+		else
 			m_pFin->AppendItem(wxDataViewItem(0), L);
-		}
 	}
 }
 
