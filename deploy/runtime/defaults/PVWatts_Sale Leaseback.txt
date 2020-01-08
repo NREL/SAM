@@ -160,7 +160,7 @@ bos_equip_total
 1
 1
 1
-4e+06
+4000000
 cbi_fed_amount
 1
 1
@@ -472,7 +472,7 @@ const_per_principal1
 1
 1
 1
-2.13529e+07
+21352900
 const_per_principal2
 1
 1
@@ -502,7 +502,7 @@ const_per_principal_total
 1
 1
 1
-2.13529e+07
+21352900
 const_per_total1
 1
 1
@@ -1028,7 +1028,7 @@ engr_total
 1
 1
 1
-1.6e+06
+1600000
 equip1_reserve_cost
 1
 1
@@ -1464,7 +1464,7 @@ install_labor_total
 1
 1
 1
-2.6e+06
+2600000
 install_margin_fixed
 1
 1
@@ -1488,7 +1488,7 @@ install_margin_total
 1
 1
 1
-1.2e+06
+1200000
 installed_per_capacity
 1
 1
@@ -1530,7 +1530,7 @@ inverter_total
 1
 1
 1
-1.2e+06
+1200000
 inverterarray_power
 1
 1
@@ -1882,7 +1882,7 @@ mera_cost1
 1
 1
 1
-5e+06
+5000000
 mera_cost2
 1
 1
@@ -1933,7 +1933,7 @@ module_total
 1
 1
 1
-7.6e+06
+7600000
 module_type
 1
 1
@@ -2255,7 +2255,7 @@ property_assessed_value
 1
 1
 1
-2.13529e+07
+21352900
 property_tax_rate
 1
 1
@@ -2343,7 +2343,7 @@ salvage_percentage
 1
 1
 1
-4.94066e-323
+0
 salvage_value
 1
 1
@@ -2445,7 +2445,7 @@ subtotal_direct
 1
 1
 1
-1.66e+07
+16600000
 system_capacity
 1
 1
@@ -2480,19 +2480,19 @@ total_direct_cost
 1
 1
 1
-1.7098e+07
+17098000
 total_indirect_cost
 1
 1
 1
 1
-4.2549e+06
+4254900
 total_installed_cost
 1
 1
 1
 1
-2.13529e+07
+21352900
 tz
 1
 1

@@ -406,7 +406,7 @@ const_per_interest1
 1
 1
 1
-4.56827e+06
+4568270
 const_per_interest2
 1
 1
@@ -466,7 +466,7 @@ const_per_interest_total
 1
 1
 1
-4.56827e+06
+4568270
 const_per_months1
 1
 1
@@ -563,7 +563,7 @@ const_per_principal1
 1
 1
 1
-1.14207e+08
+114207000
 const_per_principal2
 1
 1
@@ -593,13 +593,13 @@ const_per_principal_total
 1
 1
 1
-1.14207e+08
+114207000
 const_per_total1
 1
 1
 1
 1
-5.71034e+06
+5710340
 const_per_total2
 1
 1
@@ -659,7 +659,7 @@ construction_financing_cost
 1
 1
 1
-5.71034e+06
+5710340
 contingency_rate
 1
 1
@@ -772,7 +772,7 @@ csp.pt.cost.contingency
 1
 1
 1
-6.21997e+06
+6219970
 csp.pt.cost.contingency_percent
 1
 1
@@ -808,7 +808,7 @@ csp.pt.cost.epc.total
 1
 1
 1
-1.236e+07
+12360000
 csp.pt.cost.fixed_sf
 1
 1
@@ -832,7 +832,7 @@ csp.pt.cost.heliostats
 1
 1
 1
-3.90007e+07
+39000700
 csp.pt.cost.heliostats_m2
 1
 1
@@ -886,7 +886,7 @@ csp.pt.cost.plm.total
 1
 1
 1
-2.9671e+06
+2967100
 csp.pt.cost.power_block
 1
 1
@@ -916,7 +916,7 @@ csp.pt.cost.receiver
 1
 1
 1
-3.40628e+07
+34062800
 csp.pt.cost.receiver.area
 1
 1
@@ -934,7 +934,7 @@ csp.pt.cost.receiver.ref_cost
 1
 1
 1
-1.03e+08
+103000000
 csp.pt.cost.receiver.scaling_exp
 1
 1
@@ -952,7 +952,7 @@ csp.pt.cost.sales_tax.total
 1
 1
 1
-3.80307e+06
+3803070
 csp.pt.cost.sales_tax.value
 1
 1
@@ -964,7 +964,7 @@ csp.pt.cost.site_improvements
 1
 1
 1
-4.30352e+06
+4303520
 csp.pt.cost.site_improvements_m2
 1
 1
@@ -1006,13 +1006,13 @@ csp.pt.cost.tower
 1
 1
 1
-1.14897e+07
+11489700
 csp.pt.cost.tower.fixed
 1
 1
 1
 1
-3e+06
+3000000
 csp.pt.cost.tower.scaling_exp
 1
 1
@@ -4227,7 +4227,7 @@ m_dot_htf_max
 1
 1
 1
-9.53087e+06
+9530870
 mat_tube
 1
 1
@@ -4722,7 +4722,7 @@ property_assessed_value
 1
 1
 1
-1.14207e+08
+114207000
 property_tax_rate
 1
 1
@@ -4848,7 +4848,7 @@ rec_ref_cost
 1
 1
 1
-1.03e+08
+103000000
 rec_su_delay
 1
 1
@@ -5100,19 +5100,19 @@ total_direct_cost
 1
 1
 1
-9.50767e+07
+95076700
 total_indirect_cost
 1
 1
 1
 1
-1.91301e+07
+19130100
 total_installed_cost
 1
 1
 1
 1
-1.14207e+08
+114207000
 tower_exp
 1
 1
@@ -5124,7 +5124,7 @@ tower_fixed_cost
 1
 1
 1
-3e+06
+3000000
 tower_technology
 1
 1
@@ -5142,7 +5142,7 @@ ui_direct_subtotal
 1
 1
 1
-8.88567e+07
+88856700
 ui_heliostat_height
 1
 1

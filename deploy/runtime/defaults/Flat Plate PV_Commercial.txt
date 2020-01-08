@@ -4116,7 +4116,7 @@ salvage_percentage
 1
 1
 1
-4.94066e-323
+0
 salvage_value
 1
 1
