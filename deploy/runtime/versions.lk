@@ -60,11 +60,10 @@ version_upgrade{'2019.12.9'} = define() {
 		if (value('en_batt')){
 			old_replacement_cost = oldvalue('batt_replacement_cost');
 			old_escalation = oldvalue('batt_replacement_cost_escal');
-			value('om_replacement_cost1', [old_replacement_cost], 'Updated battery replacement cost input, now on System Costs page.');
+			value('om_replacement_cost1', [old_replacement_cost], 'Updated battery replacement cost input, now on System Costs input page.');
 			value('om_replacement_cost_escal', old_escalation);
 			old_temperature = oldvalue('T_room');
-			
-			value('batt_room_temperature_single', old_temperature, 'Updated battery environment temperature, same settings as old file');
+			value('batt_room_temperature_single', old_temperature, 'Updated battery room temperature variable name, same settings as old file');
 			value('batt_thermal_choice', 1);
 		}
 	}
@@ -73,15 +72,14 @@ version_upgrade{'2019.12.9'} = define() {
 	{
 		// battery
 		charge_max = oldvalue('batt_power_charge_max');
-		value('batt_power_charge_max_kwdc', charge_max);
+		value('batt_power_charge_max_kwdc', charge_max, 'Updated battery maximum charge rate internal variable name.');
 		discharge_max = oldvalue('batt_power_discharge_max');
-		value('batt_power_discharge_max_kwdc', discharge_max);
+		value('batt_power_discharge_max_kwdc', discharge_max, 'Updated battery maximum discharge rate internal variable name.');
 		temp = oldvalue('T_room');
-		value('batt_room_temperature_celsius', temp);
+		value('batt_room_temperature_celsius', temp, 'Updated battery room temperature internal variable name.');
 		rep = oldvalue('batt_replacement_cost');
-		value('om_replacement_cost1', [rep]);
-		ppa_price = oldvalue('ppa_price_input');
-		value('ppa_price_input', [ppa_price]);
+		value('om_replacement_cost1', [rep], 'Moved battery replacement cost to System Costs input page.');
+		message('Battery variable updates only affect your project if battery is enabled.');
 	}
 
 	if ( cfg.tech == 'PVWatts')
