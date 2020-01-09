@@ -2948,9 +2948,8 @@ void ConfigDialog::PopulateTech()
 	
 	// Manually add groups here - eventually move to startup.lk
 	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
-	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating solar power");
-	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine energy");
-
+	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
+	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
 
 	for( size_t i=0;i<m_tnames.Count();i++)
 	{
@@ -2976,7 +2975,7 @@ void ConfigDialog::UpdateFinTree()
 
 	wxDataViewItem cont_ppa;
 	wxDataViewItem cont_dist;
-	wxDataViewItem cont_tpo;
+	//wxDataViewItem cont_tpo; //TPO
 
 	for (size_t i = 0; i < m_fnames.Count(); i++)
 	{
@@ -2996,7 +2995,7 @@ void ConfigDialog::UpdateFinTree()
 			break;
 		}
 	}
-	for (size_t i = 0; i < m_fnames.Count(); i++)
+	/*for (size_t i = 0; i < m_fnames.Count(); i++) //TPO
 	{
 		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
 		if (TP.Find("TPO") != wxNOT_FOUND)
@@ -3004,7 +3003,7 @@ void ConfigDialog::UpdateFinTree()
 			cont_tpo = m_pFin->AppendContainer(wxDataViewItem(0), "Third Party Ownership");
 			break;
 		}
-	}
+	}*/
 
 
 	for (size_t i = 0; i < m_fnames.Count(); i++)
@@ -3016,8 +3015,8 @@ void ConfigDialog::UpdateFinTree()
 			m_pFin->AppendItem(cont_ppa, L);
 		else if (TP.Find("DISTRIBUTED") != wxNOT_FOUND)
 				m_pFin->AppendItem(cont_dist, L);
-		else if (TP.Find("TPO") != wxNOT_FOUND)
-			m_pFin->AppendItem(cont_tpo, L);
+		/*else if (TP.Find("TPO") != wxNOT_FOUND) //TPO
+			m_pFin->AppendItem(cont_tpo, L);*/
 		else
 			m_pFin->AppendItem(wxDataViewItem(0), L);
 	}

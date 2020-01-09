@@ -7,20 +7,13 @@ en_pvsamv3 = 0;
 // define all the configurations
 if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
 
-//addconfig( 'Flat Plate PV', ['Single Owner', 'None'] );
-
-
+// order of performance models in configuration tree determined by order of calls to addconfig(), except order of parent items, which appear at the top of the tree with order determined in
+// PopulateTech() function in main.cpp.
+// order of financial models for each performance model determined by order of array items in second parameter of addconfig().
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
-addconfig( 'MHKwave', ['LCOE Calculator']);
-addconfig( 'MHKtidal', ['LCOE Calculator']);
-addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'Geothermal Power', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
-addconfig( 'Fuel Cell', ['Commercial', 'Single Owner']);
-addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
@@ -32,47 +25,55 @@ addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant',
 if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
+addconfig( 'Fuel Cell', ['Commercial', 'Single Owner']);
+addconfig( 'MHKwave', ['LCOE Calculator']);
+addconfig( 'MHKtidal', ['LCOE Calculator']);
+addconfig( 'Geothermal Power', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
+addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 
-if ( en_pvsamv3 ) configopt( 'Photovoltaic',              {'tree_parent'='PV', 'long_name'='Photovoltaic (super detailed)',            'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
-configopt( 'Flat Plate PV',               { 'tree_parent'='PV', 'long_name'='Detailed PV model',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
+// tree_parent for performance models defined in PopulateTech() in main.cpp
+if ( en_pvsamv3 ) {	configopt( 'Photovoltaic', {'tree_parent'='PV', 'long_name'='Photovoltaic (super detailed)', 'short_name'='Photovoltaic', 'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } ); }	
+configopt( 'Flat Plate PV',               { 'tree_parent'='PV', 'long_name'='Detailed PV Model',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
 configopt( 'PVWatts',                     { 'tree_parent'='PV','long_name'='PVWatts',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm' } );
-configopt( 'High-X Concentrating PV',     { 'tree_parent'='PV', 'long_name'='High concentration PV',                  'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model' } );
+configopt( 'High-X Concentrating PV',     { 'tree_parent'='PV', 'long_name'='High Concentration PV',                  'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind',                                   'short_name'='Wind',             'description'='Small or large wind power system' } );
 configopt( 'Biopower',                    { 'long_name'='Biomass Combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
 configopt( 'Geothermal Power',            { 'long_name'='Geothermal',                             'short_name'='Geothermal',       'description'='Geothermal power model for hydrothermal and EGS systems with flash or binary conversion' } );
 configopt( 'Solar Water Heating',         { 'long_name'='Solar Water Heating',                    'short_name'='Solar water',      'description'='Solar water heating model for residential and commercial building applications' } );
 configopt( 'Fuel Cell',                   { 'long_name'='Fuel Cell',                    		  'short_name'='Fuel Cell',        'description'='Fuel cell with photovoltaic system and optional electric battery for commercial building or PPA project applications' } );
-configopt( 'Generic System',              { 'long_name'='Generic system',                         'short_name'='Generic',          'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
-configopt( 'MSPT',     	                  { 'tree_parent'='CSP', 'long_name'='Power tower molten salt',            'short_name'='Tower (salt)',     'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
-configopt( 'DSPT',     	                  { 'tree_parent'='CSP', 'long_name'='Power tower direct steam',           'short_name'='Tower (steam)',    'description'='CSP direct steam power tower system using heat transfer and thermodynamic component models' } );
-configopt( 'Physical Trough',             { 'tree_parent'='CSP', 'long_name'='Parabolic trough - physical',        'short_name'='Trough (phys)',    'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
-configopt( 'Empirical Trough',            { 'tree_parent'='CSP', 'long_name'='Parabolic trough - empirical',       'short_name'='Trough (empr)',    'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
+configopt( 'Generic System',              { 'long_name'='Generic System',                         'short_name'='Generic',          'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
+configopt( 'MSPT',     	                  { 'tree_parent'='CSP', 'long_name'='Power Tower Molten Salt',            'short_name'='Tower (salt)',     'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
+configopt( 'DSPT',     	                  { 'tree_parent'='CSP', 'long_name'='Power Tower Direct Steam',           'short_name'='Tower (steam)',    'description'='CSP direct steam power tower system using heat transfer and thermodynamic component models' } );
+configopt( 'Physical Trough',             { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Physical',        'short_name'='Trough (phys)',    'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'Empirical Trough',            { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Empirical',       'short_name'='Trough (empr)',    'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
 configopt( 'Dish Stirling',            	  { 'tree_parent'='CSP', 'long_name'='Dish Stirling',                      'short_name'='Dish Stirling',    'description'='Dish Stirling model with parameters for SES and WGA-ADDS systems' } );
-configopt( 'Generic CSP System',          { 'tree_parent'='CSP', 'long_name'='Generic model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
-configopt( 'DSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel direct steam',        'short_name'='Fresnel (steam)',  'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-configopt( 'MSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel molten salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-if ( en_iscc ) { configopt( 'ISCC',       { 'tree_parent'='CSP', 'long_name'='Integrated solar combined cycle',    'short_name'='Tower Salt ISCC',  'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
-configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic trough - heat',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
-configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel direct steam - heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
+configopt( 'Generic CSP System',          { 'tree_parent'='CSP', 'long_name'='Generic Model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
+configopt( 'DSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam',        'short_name'='Fresnel (steam)',  'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
+configopt( 'MSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Molten Salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
+if ( en_iscc ) { configopt( 'ISCC',       { 'tree_parent'='CSP', 'long_name'='Integrated Solar Combined Cycle',    'short_name'='Tower Salt ISCC',  'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
+configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Heat',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
 configopt( 'MHKwave',                     { 'tree_parent'='ME', 'long_name'='Wave',           'short_name'='Marine Wave',          'description'='Marine energy wave system' });
 configopt( 'MHKtidal',                    { 'tree_parent'='ME', 'long_name'='Tidal',          'short_name'='Marine Tidal',         'description'='Marine energy tidal system' });
 
-configopt( 'LCOE Calculator',             { 'long_name'='LCOE Calculator (FCR method)',           'short_name'='LCOE Calculator',  'description'='Calculate LCOE using fixed charge rate method' } );
-configopt( 'Residential',                 { 'tree_parent'='DISTRIBUTED', 'long_name'='Residential',           	  'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
-configopt( 'Commercial',                  { 'tree_parent'='DISTRIBUTED','long_name'='Commercial',        		  'short_name'='Commercial',       'description'='Renewable energy system displaces commercial building electric load' } );
-configopt( 'Third Party',                 { 'tree_parent'='TPO',  'long_name'='Host',           'short_name'='TPO Host',      'description'='Third party ownership from host perspective for PPA or lease agreement' } );
-configopt( 'Host Developer',              { 'tree_parent'='TPO',  'long_name'='Host - Developer', 'short_name'='TPO Host/Developer',  'description'='Third party ownershop from host and developer perspective for PPA' } );
-configopt( 'Single Owner',                { 'tree_parent'='PPA', 'long_name'='Single owner',                       'short_name'='Single owner',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
-configopt( 'Leveraged Partnership Flip',  { 'tree_parent'='PPA', 'long_name'='Partnership flip with debt',         'short_name'='Flip (debt)',      'description'='Developer/investor partnership flip PPA structure with debt' } );
-configopt( 'All Equity Partnership Flip', { 'tree_parent'='PPA', 'long_name'='Partnership flip without debt',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
-configopt( 'Sale Leaseback',              { 'tree_parent'='PPA', 'long_name'='Sale leaseback',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
-configopt( 'Single Owner PPA Buy Rate',   { 'tree_parent'='PPA', 'long_name'='Single owner with buy rate',         'short_name'='Single owner buy rate',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
+// tree_parent for financial models defined in UpdateFinTree() in main.cpp
+configopt( 'LCOE Calculator',             { 'long_name'='LCOE Calculator (FCR Method)',           'short_name'='LCOE Calculator',  'description'='Calculate LCOE using fixed charge rate method' } );
+configopt( 'Residential',                 { 'tree_parent'='DISTRIBUTED', 'long_name'='Residential Owner',           	  'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
+configopt( 'Commercial',                  { 'tree_parent'='DISTRIBUTED','long_name'='Commercial Owner',        		  'short_name'='Commercial',       'description'='Renewable energy system displaces commercial building electric load' } );
+configopt( 'Third Party',                 { 'tree_parent'='DISTRIBUTED',  'long_name'='Third Party Owner - Host',           'short_name'='TPO Host',      'description'='Third party ownership from host perspective for PPA or lease agreement' } );
+configopt( 'Host Developer',              { 'tree_parent'='DISTRIBUTED',  'long_name'='Third Party - Host / Developer', 'short_name'='TPO Host/Developer',  'description'='Third party ownershop from host and developer perspective for PPA' } );
+configopt( 'Single Owner',                { 'tree_parent'='PPA', 'long_name'='Single Owner',                       'short_name'='Single owner',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
+configopt( 'Leveraged Partnership Flip',  { 'tree_parent'='PPA', 'long_name'='Partnership Flip with Debt',         'short_name'='Flip (debt)',      'description'='Developer/investor partnership flip PPA structure with debt' } );
+configopt( 'All Equity Partnership Flip', { 'tree_parent'='PPA', 'long_name'='Partnership Flip without Debt',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
+configopt( 'Sale Leaseback',              { 'tree_parent'='PPA', 'long_name'='Sale Leaseback',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
+configopt( 'Single Owner PPA Buy Rate',   { 'tree_parent'='PPA', 'long_name'='Single Owner with Buy Rate',         'short_name'='Single owner buy rate',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
 configopt( 'Merchant Plant',              { 'long_name'='Merchant Plant',                         'short_name'='Merchant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
-configopt( 'None',                        { 'long_name'='No financial model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
+configopt( 'None',                        { 'long_name'='No Financial Model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
 enum { LOAD_SIMPLE, LOAD_BELPE, LOAD_SIMPLE_CRIT, LOAD_BELPE_CRIT, NO_LOAD };
 enum { LIFETIME_NONE, LIFETIME_PV, LIFETIME_SYSTEM };
-
 
 function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the building load calculator (for now just PV, CSP, Biopower, and Generic Solar- MUST HAVE SOLAR RESOURCE DATA), 2 for techs without ANY load pages (SWH), and 0 for technologies that don't
 {
@@ -164,7 +165,6 @@ function setup_flat_plate_pv_pages()
 
 	addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	
-	
 	addpage( [ ['Simple Efficiency Module Model'],
 //				['CEC Performance Model with Module Database', { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
 				['CEC Performance Model with Module Database'],
@@ -187,7 +187,6 @@ function setup_flat_plate_pv_pages()
 			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }, 'Lifetime Daily Losses'],],
            {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
 
-	
 }
 
 //// Financial input pages /////////////////////////////////////////////////////
@@ -307,7 +306,6 @@ function setup_utility_rate_optional()
 		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates', 'exclusive_var'='en_electricity_rates' } );
 }
 
-
 function setup_commercial_ppa_pages(degradation)
 {
   setting( { 'analysis_period_var'='cf_length' } );
@@ -389,7 +387,6 @@ function setup_single_owner_pages(degradation)
            { 'sidebar'='Depreciation', 'help'='depreciation' });
 }
 
-
 function setup_merchant_plant_pages(degradation)
 {
   setting( { 'analysis_period_var'='cf_length' } );
@@ -414,11 +411,6 @@ function setup_merchant_plant_pages(degradation)
   addpage( [['Financial Depreciation Detailed' ]], 
            { 'sidebar'='Depreciation', 'help'='depreciation' });
 }
-
-
-
-
-
 
 function setup_host_developer_pages(mode, degradation)
 {
@@ -556,7 +548,6 @@ function setup_solar_water_heating_pages()
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' , 'help'='shw_location_and_resource' });
 	addpage( [[ 'Solar Water Heating' ]], { 'sidebar'='Solar Water Heating', 'help'='shw_system' } );
     setup_grid_page();
-
 }
 
 function setup_fuel_cell_pages_btm()
@@ -582,7 +573,6 @@ function setup_fuel_cell_pages_btm()
        addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }],],
            {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
-
         
     setup_grid_page();
 
@@ -1052,8 +1042,6 @@ setmodules( ['pvwattsv7', 'belpe', 'battwatts', 'grid','utilityrate5', 'thirdpar
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_thirdparty_pages( LOAD_BELPE_CRIT , LIFETIME_SYSTEM); //includes building load calculator by default in this function
 
-
-
 // Wind Power //////////////////////////////////////////////////////////////////
 
 //-----------------------------------------------------
@@ -1161,7 +1149,6 @@ setconfig( 'Wind Power', 'None' );
 setmodules( ['windpower', 'grid']);
 setup_windpower_pages();
 
-
 // Solar Water Heating /////////////////////////////////////////////////////////
 setconfig( 'Solar Water Heating', 'LCOE Calculator');
 setmodules( ['swh',  'lcoefcr'] );
@@ -1195,7 +1182,6 @@ setup_commercial_pages(LOAD_SIMPLE,LIFETIME_PV); //belpe not valid for commercia
 addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
 addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
-
 setconfig( 'Fuel Cell', 'Single Owner');
 setmodules( ['pvwattsv7', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
@@ -1205,7 +1191,6 @@ addpage( [[ 'Fuel Cell Costs','Fuel Cell O and M Costs' ]], { 'sidebar'='System 
 setup_single_owner_pages(LIFETIME_PV);
 setup_utility_rate_optional();
 addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
-
 
 // Geothermal Power ////////////////////////////////////////////////////////////
 setconfig( 'Geothermal Power', 'Independent Power Producer' );
@@ -1357,8 +1342,6 @@ setup_battery_pages_behind_the_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_host_developer_pages( LOAD_SIMPLE, LIFETIME_PV ); //includes building load calculator by default in this function
 
-
-
 //-----------------------------------------------------
 setconfig( 'Generic System', 'LCOE Calculator' );
 setmodules( ['generic_system', 'grid', 'lcoefcr']);
@@ -1370,8 +1353,6 @@ setconfig( 'Generic System', 'None' );
 setmodules( ['generic_system', 'grid']);
 addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
 addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid Limits', 'help'='grid_limits' } );
-
-
 
 // Generic CSP System //////////////////////////////////////////////////////////
 function setup_generic_csp_pages()
