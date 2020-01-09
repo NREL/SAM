@@ -1338,6 +1338,12 @@ function set_annual_values( xl )
 		xl_set( xl, output('cf_energy_value'), 'AnnualPPARevenue'); 
 		xl_set( xl, output('cf_capacity_payment'), 'AnnualCapacityRevenue');
 	}
+	elseif( fin == 'All Equity Partnership Flip' || fin == 'Leveraged Partnership Flip' || fin == 'Sale Leaseback' )
+	{
+		xl_set( xl, output('cf_energy_net'), 'AnnualEnergy'); 
+		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice');
+		xl_set( xl, output('cf_energy_value'), 'AnnualPPARevenue'); 
+	}
 	else
 	{
 		xl_set( xl, output('cf_energy_net'), 'AnnualEnergy'); 
