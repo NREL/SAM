@@ -2426,7 +2426,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 
 void fcall_urdb_read(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_read", "Reads rate data from a file case to the current case.", "(string:filename):boolean");
+	LK_DOC("urdb_read", "Reads rate data from a file to the current case.", "(string:filename):boolean");
 	
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -2452,7 +2452,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			{
 				if ( !VarValue::Parse(vv->Type(), value, *vv) )
 				{
-					errors.Add("Problem assigning " + var_name + " to " + value );
+					errors.Add("Problem assigning " + value + " to " + var_name );
 					ret_val = false;
 				}
 				else
@@ -2463,7 +2463,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 				// try upgrading - see project file upgrader for 2015.11.16
 				// update to matrix for ec and dc
 				//errors.Add("Problem assigning " + var_name + " missing with " + value);
-				//ret_val = false;
+				ret_val = false;
 				upgrade_list.Add(var_name);
 				upgrade_value.Add(value);
 			}
