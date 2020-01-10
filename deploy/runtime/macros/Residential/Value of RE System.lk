@@ -75,12 +75,13 @@ function npv( cf, d )
 	return total;
 }
 
-function get_basecase_rate()
+function set_rate_from_urdb()
 {
 	find_by_zipcode = yesno( 'Find utility by zip code?\nChoose Yes to find by zip code. Choose No to choose from a list of all available utilities.');
 	if ( find_by_zipcode ) 
 	{
 		zip = in( 'Enter the zip code: ', '00000', 'Zip Code' );
+		outln('Searching for rates by zip code.');
 		utility_list = urdb_list_utilities_by_zip_code ( zip );
 			if ( utility_list == null )
 		{
@@ -88,11 +89,15 @@ function get_basecase_rate()
 			return false;
 		}
 	}
-	else 
+	else
+	{ 
+		outln('Searching for list of utilities.');
 		utility_list = urdb_list_utilities();
-
+	}
+	
 	utility_choice = choose_from_list( utility_list, 'Choose a utility:','Choose Utility',0);
 	
+	outln('Searching for list of rates for ' + utility_choice + '.');
 	rate_list = urdb_list_rates( utility_choice );
 	
 	// separate rate names from rate guids
@@ -114,7 +119,7 @@ function get_basecase_rate()
 		i++;
 	}
 	
-	// get desired rate name
+	// get rate name
 	if ( #rate_list > 0 )
 	{
 		rate_choice = choose_from_list( rate_name_list, 'Choose a rate:', 'Chooose Rate', 0);
@@ -130,6 +135,7 @@ function get_basecase_rate()
 		if ( rate_name_list[i] == rate_choice ) rate_index = i;
 	}
 	
+	outln('Populating inputs on Utility Rates page with data from OpenEI URDB GUID ' + rate_guid_list[rate_index]);
 	rate_table = urdb_get( rate_guid_list[rate_index] );	
 	
 	keys = @rate_table;
@@ -137,8 +143,42 @@ function get_basecase_rate()
 	{
 		set( 'ur_' + keys[i] , rate_table{keys[i]} );
 	}
-	
+
 	return true;
+}
+
+function get_basecase_rate()
+{
+	is_file_valid = false;
+	is_set_rate_from_urdb = yesno( 'Download rate from OpenEI URDB?\nClick No to load rate data from a CSV file saved from the Electricity Rates page instead.');
+	if ( is_set_rate_from_urdb ) 
+	{
+		return set_rate_from_urdb();
+	}
+	else
+	{
+		while ( !is_file_valid )
+		{ 	
+			f_rate = '';
+			f_rate = choose_file( cwd(), 'Choose Utility Rate File', 'CSV Files (*.csv)|*.csv', false, false, '' );
+			outln('Reading utility rate data from ' + f_rate + '.');
+			if ( f_rate != '' )
+			{
+				is_file_valid = urdb_read( f_rate );
+			}
+			if ( !is_file_valid )
+			{
+				if (!yesno('Failed to load rate data from file!\n' + f_rate + '\n\nClick Yes to try another file. Click No to exit the script.'))
+				{
+					outln('Failed to load rate data from file. Exiting script.');
+					exit;
+				}
+			}	
+		}
+		outln('Electricity Rate page inputs populated with data from file.');
+		return is_file_valid;
+	}
+
 }
 
 function set_flat_rate( flat_rate, fixed_charge)
@@ -252,8 +292,10 @@ restore_rate = false;
 if ( macro.rate_option == '2. Flat rate' )
 {
 	// save current rate data to a temporary file
+	outln('Saving data from Utility Rate page to temporary file.');
 	urdb_write( temp_file );
 
+	outln('Running simulation for base case with no system and flat rate.');
 	ok = set_flat_rate( macro.flat , macro.fixed );
 	if ( ok ) simulate('',true);
 	else msgbox ('Unable to set flat rate.\n Results will be based on using the same rate for all scenarios.' );
@@ -263,19 +305,26 @@ if ( macro.rate_option == '2. Flat rate' )
 elseif ( macro.rate_option == '3. Different rate structure' ) 
 {
 	// save current rate data to a temporary file
+	outln('Saving data from Utility Rate page to temporary file.');
 	urdb_write( temp_file );
 
 	// get new base rate and run a simulation
-	ok = get_basecase_rate ();
+	ok = get_basecase_rate();
+	outln('Running simulation for base case with no system with different rate.');
 	if ( ok ) simulate('',true);
 	else msgbox( 'Unable to set rate data for case with no system.\n Results will be based on using the same rate for all scenarios.' );
 	
 	restore_rate = true;
 }
-else simulate('',true); // 1. Same rate structure
+else
+{
+	outln('Running simulation for base case with no system with same rate.');
+	simulate('',true); // 1. Same rate structure
+}
 
 if ( restore_rate )
 {
+	outln('Cleaning up temporary files and restoring inputs on Utility Rate page to original data.');
 	if ( file_exists( temp_file ) && urdb_read( temp_file ) ) remove_file( temp_file );
 	else msgbox( 'Unable to restore original rate data.\nCould not find temporary file:\n' + temp_file + '.');
 }
@@ -301,8 +350,9 @@ none_annual_cashflow = get('elec_cost_without_system');
 none_npc = npv(none_annual_cashflow,discount_rate);
 none_npv = 0;
 
+outln('Running simulation for PV scenario.');
 // PV Only
-if ( batt ) set('en_batt',0);
+if ( batt ) { set('en_batt',0); }
 simulate('',true);
 // get monthly bill components
 ec = get('year1_monthly_ec_charge_with_system');
@@ -335,6 +385,7 @@ pv_npv = get('npv');
 // PV+Battery
 if ( batt )
 {
+	outln('Running simulation for PV+battery scenario.');
 	if (get('pv_lifetime_simulation') == false )
 	{
 		msgbox('Battery replacement costs require simulation over analysis period.\n' +
@@ -375,6 +426,8 @@ if ( batt )
 	batt_npc_w_bill = -npv(cf_w_bill,discount_rate); //costs are negative
 	batt_npv = get('npv');
 }
+
+outln('Finished simulations. Generating reports.');
 /*diff = none_npc-pv_npc_w_bill;
 outln( none_npc + '-' + pv_npc_w_bill + '=' + diff );
 outln(pv_annual_cost[0]);*/
@@ -407,5 +460,39 @@ str_html = '<html><body>' +
 		   '</table>' +
           '</body></html>';
 
+str_csv =  'Total Electricity Bill in Year 1' + '\n' +
+'Charge,No System,' + ? batt [ 'RE System' , 'RE Only,RE+Battery' ] + '\n' +
+'Energy,' + none_ec + ',' + pv_ec + ',' + ? batt [ '' , batt_ec ] + '\n' +
+'Fixed,' + none_fixed + ',' + pv_fixed + ',' + ? batt [ '' , batt_fixed ] + '\n' +      
+'Demand (fixed),' + none_dc_fixed + ',' + pv_dc_fixed + ',' + ? batt [ '' , batt_dc_fixed ] + '\n' +         
+'Demand (TOU),' + none_dc_tou + ',' + pv_dc_tou + ',' + ? batt [ '' , batt_dc_tou ] + '\n' +      
+'Monthly minimum,' + none_min_mon + ',' + pv_min_mon + ',' + ? batt [ '' , batt_min_mon ] + '\n' +        
+'Annual minimum,' + none_min_ann + ',' + pv_min_ann + ',' + ? batt [ '' , batt_min_ann ] + '\n' +
+'Year end net metering credit,' + 0 + ',' + pv_yrend_nm_credit + ',' + ? batt [ '' , batt_yrend_nm_credit ] + '\n' +
+'Total bill,' + none_total_bill + ',' + pv_total_bill + ? batt [ '' , batt_total_bill ] + '\n' +
+'Savings compared to no system,' + 0 + ',' + pv_bill_savings + ',' + ? batt [ '' , batt_bill_savings ] + '\n' +
+'' + '\n' +
+'Present Value of Annual Costs and Net Present Value' + '\n' +
+'Present Value,No System,'+ ? batt [ 'RE System' , 'RE Only,RE+Battery' ]  + '\n' +
+'Electricity bill,' + none_npc + ',' + pv_bill_npc + ',' + ? batt [ '' , batt_bill_npc ] + '\n' +
+? is_commercial [ '' , 'Income tax increase due to bill savings,' + 0 + ',' + pv_npv_tax + ',' + ? batt [ '' , batt_npv_tax ]  + '\n' ]  +
+'System costs after tax,' + 0 + ',' + pv_npc + ',' + ? batt [ '' , batt_npc ] + '\n' +
+'Battery replacement cost,' + 0 + ',' + 0 + ',' + ? batt [ '' , batt_npc_replacement ] + '\n' +
+'Total cost,' + 0 + ',' + pv_npc_w_bill + ? batt [ '' , batt_npc_w_bill ] + '\n' +
+'NPV of project with bill savings,' + 0 + ',' + pv_npv + ',' + ? batt [ '' , batt_npv ];
+
+f_csv = homedir()+'/'+case_name()+'_value_of_re_report.csv';
+ok = write_text_file(f_csv,str_csv);
+if ( ok ) 
+{
+	outln('Data written to ' + f_csv );
+	browse( f_csv );
+}
+else
+{
+	outln('Failed to write data to ' + f_csv );
+}	
+
 html_dialog ( str_html , 'Value of RE' + ? batt [ '', ' and Battery' ] + ' for "' + case + '" Case' , [300,300,600,600]);
 
+outln('Done.');
