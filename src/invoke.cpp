@@ -4630,12 +4630,6 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         throw lk::error_t(e.what());
     }
 
-    const char* log = ssc_data_get_string(p_data, "log");
-    if (*log && strlen(log) > 0){
-        ssc_data_free(p_data);
-        throw lk::error_t( "reopt_size_battery warning: " + wxString(log) );
-    }
-
     auto reopt_scenario = new lk::vardata_t;
     sscdata_to_lkvar(p_data, "reopt_scenario", *reopt_scenario);
     ssc_data_free(p_data);
