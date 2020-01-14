@@ -4,6 +4,8 @@ en_iscc = 1;
 
 en_pvsamv3 = 0;
 
+batt_test = true;
+
 // define all the configurations
 if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
 
@@ -32,10 +34,22 @@ addconfig( 'Geothermal Power', ['Single Owner', 'Merchant Plant', 'Leveraged Par
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
 addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+if ( batt_test == true ) 
+{ 
+	addconfig( 'PV Battery', ['Residential'] );
+	addconfig( 'Generic Battery', ['Residential'] );
+	//addconfig( 'PV Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
+	//addconfig( 'Generic Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
+}
 
 // tree_parent for performance models defined in PopulateTech() in main.cpp
 if ( en_pvsamv3 ) {	configopt( 'Photovoltaic', {'tree_parent'='PV', 'long_name'='Photovoltaic (super detailed)', 'short_name'='Photovoltaic', 'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } ); }	
 configopt( 'Flat Plate PV',               { 'tree_parent'='PV', 'long_name'='Detailed PV Model',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
+if ( batt_test == true ) 
+{
+	configopt( 'PV Battery',               { 'tree_parent'='BATT', 'long_name'='PV-Battery',                'short_name'='PV-Battery',     'description'='Detailed photovoltaic model with battery storage' } );
+	configopt( 'Generic Battery',          { 'tree_parent'='BATT', 'long_name'='Generic System-Battery',     'short_name'='Generic-Battery',     'description'='Generic system model with battery storage' } );
+}
 configopt( 'PVWatts',                     { 'tree_parent'='PV','long_name'='PVWatts',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm' } );
 configopt( 'High-X Concentrating PV',     { 'tree_parent'='PV', 'long_name'='High Concentration PV',                  'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind',                                   'short_name'='Wind',             'description'='Small or large wind power system' } );
@@ -101,6 +115,7 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 	}
 	else return;
 }
+
 function setup_battery_pages_behind_the_meter()
 {
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
@@ -691,7 +706,7 @@ function setup_geothermal_power_pages()
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// now setup all the pages /////////////////////////////////////////////////////
+// now set up all the pages ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 
@@ -753,13 +768,11 @@ setup_csp_empirical_trough_pages();
 addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_all_equity_partnership_flip_pages(LIFETIME_SYSTEM);
 
-
 setconfig('Battery', 'None');
 setup_battery_pages_behind_the_meter();
 	addpage( [[ 'Lifetime System']],
            {  'sidebar'='Lifetime and Degradation','help'='lifetime' } );
 setmodules(['battery']);
-
 
 // Flat Plate PV ////////////////////////////////////////////////////////////////
 setconfig( 'Flat Plate PV', 'LCOE Calculator' );
@@ -806,11 +819,10 @@ setmodules( ['pvsamv1', 'grid'] );
 setconfig( 'Flat Plate PV', 'Residential' );
 setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
 setup_flat_plate_pv_pages();
-setup_battery_pages_behind_the_meter();
+if ( batt_test == false ) { setup_battery_pages_behind_the_meter(); }
 setup_grid_page();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE_CRIT , LIFETIME_PV ); //includes building load calculator
-
 
 setconfig( 'Flat Plate PV', 'Third Party' );
 setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'thirdpartyownership']);
@@ -1258,7 +1270,7 @@ function setup_generic_system_pages()
 setconfig( 'Generic System', 'Residential' );	
 setmodules( ['generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_generic_system_pages();
-setup_battery_pages_behind_the_meter();
+if ( batt_test == false ) {setup_battery_pages_behind_the_meter(); }
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_residential_pages( LOAD_SIMPLE, LIFETIME_PV ); //does not include building load calculator
 
@@ -2023,5 +2035,25 @@ if ( en_pvsamv3 )
 		   {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
 
 	setup_battery_pages_behind_the_meter();
+}
+
+// Battery /////////////////////////////////////////////////////////////////////
+
+if ( batt_test == true)
+{
+	setconfig( 'PV Battery', 'Residential' );
+	setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
+	setup_flat_plate_pv_pages();
+	setup_battery_pages_behind_the_meter();
+	setup_grid_page();
+	addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+	setup_residential_pages( LOAD_BELPE_CRIT , LIFETIME_PV ); //includes building load calculator
+
+	setconfig( 'Generic Battery', 'Residential' );	
+	setmodules( ['generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
+	setup_generic_system_pages();
+	setup_battery_pages_behind_the_meter(); 
+	addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+	setup_residential_pages( LOAD_SIMPLE, LIFETIME_PV ); //does not include building load calculator
 }
 

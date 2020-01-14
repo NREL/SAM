@@ -145,13 +145,16 @@ function cf_om_expenses()
     fin = financing(); 
     // PVWatts does not have battery replacements as of 2017.1.17 
     batt_replacement_tech = (tech == 'Flat Plate PV' || tech == 'Generic System' || tech == 'Fuel Cell');
-    if ( batt_replacement_tech && value('en_batt') == 1 )
-    { 
-		cfline( 'cf_battery_replacement_cost', 0);
-		// electricity purchase for PV single owner only as of October 2018
-		if ( batt_replacement_tech && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
+    if ( batt_replacement_tech )
+	{
+		if ( value('en_batt') == 1 )
 		{
-			cfline( 'cf_utility_bill', 0);
+			cfline( 'cf_battery_replacement_cost', 0);
+			// electricity purchase for PV single owner only as of October 2018
+			if ( fin == 'Single Owner' && value('en_electricity_rates') == 1 )
+			{
+				cfline( 'cf_utility_bill', 0);
+			}
 		}	
 	}
 	if (tech == 'Fuel Cell')
@@ -1117,10 +1120,14 @@ function set_om(xl) {
 	// battery replacment costs 
 	tech = technology(); 
 	fin = financing(); 
-	batt_tech = is_batt_repl = false; 
-	 // PVWatts does not model battery replacements, flip and leasback models do not have send-to-excel with equations as of 2017.1.17 
-	batt_tech = ( ( tech == 'Flat Plate PV' || tech == 'Generic System' || tech == 'Fuel Cell') && ( fin == 'Residential' || fin == 'Commercial' || fin == 'Single Owner' ) ); 
-	is_batt_repl = ( batt_tech && value('en_batt') && value('batt_replacement_option') > 0 ); 
+	batt_tech = false; 
+	is_batt_repl = false;
+	 // PVWatts does not model battery replacements
+	batt_tech = ( ( tech == 'Flat Plate PV' || tech == 'Generic System' || tech == 'Fuel Cell') ); 
+	if ( batt_tech == true )
+	{ 
+		is_batt_repl = ( value('en_batt') && value('batt_replacement_option') > 0 ); 
+	}
 	if  ( is_batt_repl == true ) 
 	{ 
 		send_excel( xl, 'batt_computed_bank_capacity' ); 
