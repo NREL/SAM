@@ -53,4 +53,10 @@ Battery
 CheckBox
 
 0
-0
+188
+// for batt_test configurations, need en_batt to determine
+// whether to display battery-related inputs on costs pages, etc.
+on_load{'Battery Enable'} = define ()
+{
+	show('en_batt',1);
+};	

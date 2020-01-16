@@ -78,10 +78,10 @@ Y
 168
 Width
 3
-824
+872
 Height
 3
-749
+764
 Tool Tip
 5
 0
@@ -108,7 +108,7 @@ Y
 933
 Width
 3
-824
+872
 Height
 3
 89
@@ -5507,7 +5507,7 @@ TabOrder
 3
 17
 
-81
+82
 array_area
 3
 1
@@ -5521,6 +5521,20 @@ PV System Design
 1
 1
 0
+Default
+batt_dc_connected
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+1
 Default
 batt_max_power
 3
@@ -6656,7 +6670,7 @@ PV System Design
 0
 Numeric
 
-11496
+11765
 equations{ '$MIMO$ pv_size_array' } = define()
 {
 	if (${enable_auto_size}==1)
@@ -6687,17 +6701,21 @@ equations{ '$MIMO$ pv_size_array' } = define()
 		inv_power= ?${inverter_model} [${inv_snl_paco}, ${inv_ds_paco}, ${inv_pd_paco},${inv_cec_cg_paco}];
 		
 		// DC-connected battery parameters (assumed to use common inverter)
-		batt_max_power_dc = 0;
+		// for batt_test:
+		// comment out because does not seem to be used and refers to variables that are not
+		// valid in all contexts
+/*		batt_max_power_dc = 0;
 		
 		f = financing();
 		if (f != "LCOE Calculator" && f != "None")
 		{
 			if (${en_batt}){
-				if (${batt_ac_or_dc} == 0)
+				if (${batt_ac_or_dc} == 0) {
 					batt_max_power_dc = ${batt_max_power};
+				}
 			}
 		}
-		
+*/		
 		// calculations
 		if(mod_vmp>0)
 		{
@@ -6960,18 +6978,17 @@ equations{ 'layout_warning'} = define(){
 	message = '';
 	
 	// DC-connected battery parameters (assumed to use common inverter)
-	dc_connected_battery = false;
+	//dc_connected_battery = false;
 	f = financing();
 	if (f != "LCOE Calculator" && f != "None")
 	{
 		if (${en_batt}){
-			if (${batt_ac_or_dc} == 0)
+			if (${batt_dc_connected} == 1)
 			{
 				value = (${system_capacity} + ${batt_max_power})/${total_inverter_capacity};
 				value_no_batt = (${system_capacity})/${total_inverter_capacity};
-				
 				message += ('DC/AC ratio for PV only is ' + sprintf('%.2f', value_no_batt) + '.\nActual DC/AC ratio with DC-connected battery (common inverter) is ' +  sprintf('%.2f', value) + '.\n');
-				dc_connected_battery = true;
+				//dc_connected_battery = true;
 			}
 		}
 
@@ -7034,19 +7051,23 @@ equations{ 'subarray4_nmodules' } = define()
 	return ${subarray4_enable} * ${subarray4_modules_per_string} * ${subarray4_nstrings};
 };
 
+/* 
+// for batt_test:
+// implement in callback because batt_power_discharge_max_kwdc not valid in all contexts
 equations{ 'batt_max_power' } = define() 
 {
 	max_power = 0;
 	f = financing();
 	if (f != "LCOE Calculator" && f != "None")
 	{
-		if (${en_batt})
+		if (${en_batt}) {
 			max_power = ${batt_power_discharge_max_kwdc};
+		}	
 	}
 	return max_power;
-};
+};*/
 
-7320
+7874
 //show warning about MPPT input number
 function mppt_warning()
 {
@@ -7190,6 +7211,27 @@ function show_hide_inputs_auto_size()
 	refresh();
 }
 
+// for batt_test:
+// cannot test values of variables that do not exist in context
+// in equations, so do it here in callbacks
+// better solution is to move layout_warning message from 
+// equations to callback.
+function battery_inputs()
+{
+	f = financing();
+	if (f != "LCOE Calculator" && f != "None")
+	{
+		if (value('en_batt') == true)
+		{
+			value('batt_max_power') = value('batt_power_discharge_max_kwdc');
+		}
+		else
+		{
+			value('batt_max_power') = 0;
+		}
+	}
+}
+
 on_load{'PV System Design'} = define()
 {
 	// show/hide/enable/disable inputs for all subarrays
@@ -7206,11 +7248,13 @@ on_load{'PV System Design'} = define()
 	battery = false;
 	f = financing();
 	if (f != "LCOE Calculator" && f != "None")
-		if (${en_batt})
-			battery = true;
+	{
+		if (value('en_batt')) { battery = true; value('batt_dc_connected') = value('batt_ac_or_dc');}
+	}
 	show('batt_max_power', battery);
 	// warning for MPPT input > number of inverter inputs
-	if (multi_mppt)	mppt_warning();
+	if (multi_mppt)	{ mppt_warning(); }
+	battery_inputs();
 };
 
 on_change{'btn_set_subarrays'} = define() { mppt_enable_subarrays(); };

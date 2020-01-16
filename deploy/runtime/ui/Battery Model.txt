@@ -5,7 +5,7 @@ Battery Model
 GroupBox
 
 1
-7
+8
 Name
 5
 23
@@ -22,6 +22,9 @@ Width
 Height
 3
 60
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -32,7 +35,7 @@ Bold
 Choice
 
 1
-8
+9
 Name
 5
 9
@@ -49,6 +52,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 11

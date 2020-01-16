@@ -490,7 +490,7 @@ Battery
 Numeric
 
 0
-577
+584
 on_load{'Battery Configuration'} = define()
 {
 	tech = technology();
@@ -501,11 +501,13 @@ on_load{'Battery Configuration'} = define()
 		enable('batt_dc_dc_efficiency', 0);
 	}
 	else
+	{
 		enable('batt_ac_or_dc',1);
-
+	}	
 	check_configuration();
 	on_change{'batt_ac_or_dc'};
 };
+
 on_change{'batt_ac_or_dc'} = define()
 { 
 	check_configuration();

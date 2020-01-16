@@ -36,8 +36,8 @@ addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Merchant Plant', 'Leverag
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 if ( batt_test == true ) 
 { 
-	addconfig( 'PV Battery', ['Residential'] );
-	addconfig( 'Generic Battery', ['Residential'] );
+	addconfig( 'PV Battery', ['Residential', 'Single Owner'] );
+	addconfig( 'Generic Battery', ['Residential', 'Single Owner'] );
 	//addconfig( 'PV Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
 	//addconfig( 'Generic Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
 }
@@ -134,6 +134,7 @@ function setup_battery_pages_behind_the_meter()
 			    ]],
 			  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 }
+
 function setup_battery_pages_front_of_meter()
 {
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
@@ -152,6 +153,47 @@ function setup_battery_pages_front_of_meter()
 			   ] ],
 			  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 }
+
+// for batt_test remove exclusive var. if we decide to use the batt_test approach, replace setup_battery_pages_behind_the_meter()
+// and setup_battery_pages_front_of_meter() with these functions
+function setup_battery_pages_behind_the_meter_batt_test()
+{
+	addpage([  ['Battery Model',
+				'Battery Bank Sizing with REopt',
+			   'Battery Current and Capacity',
+			   'Battery Configuration',
+			   'Battery Dispatch Common',
+			   'Battery Dispatch Behind the Meter',
+			   'Battery Dispatch Manual', 
+               {'name'='Battery Lifetime', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
+			   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
+			   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
+			   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
+			   //'Battery Enable' // for hidden en_batt variable, required because some UI forms need to know if system has batteries
+			    ]],
+			  { 'sidebar'='Battery Storage', 'help'='battery_model' } );
+}
+
+function setup_battery_pages_front_of_meter_batt_test()
+{
+	addpage([ [  'Battery Model',
+				'Battery Bank Sizing',
+			   'Battery Current and Capacity',
+			   'Battery Configuration',
+			   'Battery Dispatch Common',
+			   'Battery Dispatch Front of Meter', 
+			   'Battery Dispatch Manual',
+			   {'name'='Battery Lifetime', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
+			   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
+			   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
+			   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
+			   //'Battery Enable' // for hidden en_batt variable, required because some UI forms need to know if system has batteries
+			   ] ],
+			  { 'sidebar'='Battery Storage', 'help'='battery_model' } );
+}
+
 function setup_pvwatts_battery_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
@@ -175,11 +217,8 @@ function setup_pvwatts_pages()
 }
 function setup_flat_plate_pv_pages()
 {
-
 //	addpage( [ ['AA Widgets'] ], { 'sidebar'='Widgets' } ); // use for widget testing
-
 	addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-	
 	addpage( [ ['Simple Efficiency Module Model'],
 //				['CEC Performance Model with Module Database', { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
 				['CEC Performance Model with Module Database'],
@@ -187,21 +226,26 @@ function setup_flat_plate_pv_pages()
 				['Sandia PV Array Performance Model with Module Database'],
 				['IEC61853 Single Diode Model'] ], 				
 			{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model' } );
-			
 	addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], 
 			 ['Inverter Datasheet', 'Inverter Temp Derate DS'], 
 			 ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], 
 			 ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], 
 			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
-	addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
+	if ( batt_test == true )
+	{
+		// battery enable stores hidden en_batt variable required by some UI forms to determine if there is a battery
+		addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
+	}
+	else
+	{
+		addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
+	}
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
 //	addpage( [ ['Grid Interconnection'] ], { 'sidebar'='Grid', 'help'='grid_limits' } );
-
     addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime PV', 'caption'='Simulation over analysis period' }, 'Lifetime Daily Losses'],],
            {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
-
 }
 
 //// Financial input pages /////////////////////////////////////////////////////
@@ -840,7 +884,6 @@ setup_grid_page();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_host_developer_pages( LOAD_SIMPLE_CRIT, LIFETIME_PV ); //includes building load calculator by default in this function
 
-
 setconfig( 'Flat Plate PV', 'Commercial' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
 setup_flat_plate_pv_pages();
@@ -890,14 +933,15 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', '
 setup_sale_leaseback_pages( LIFETIME_PV );
 
 setconfig( 'Flat Plate PV', 'Single Owner' );	
-setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner']);
+if ( batt_test == false ) { setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner']); }
+else { setmodules( ['pvsamv1', 'grid', 'singleowner']); }
 setup_flat_plate_pv_pages();
-setup_battery_pages_front_of_meter();
+if ( batt_test == false ) { setup_battery_pages_front_of_meter(); }
 setup_grid_page();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages( LIFETIME_PV );
 //addpage( [[ 'Financial Capacity Payments' ]], { 'sidebar'='Ancillary Services', 'help'='ancillary_services' });
-setup_utility_rate_optional();
+if ( batt_test == false ) { setup_utility_rate_optional(); }
 
 setconfig( 'Flat Plate PV', 'Merchant Plant' );	
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'merchantplant']);
@@ -1260,7 +1304,15 @@ setup_geothermal_power_pages();
 // Generic System //////////////////////////////////////////////////////////////
 function setup_generic_system_pages()
 {
+if ( batt_test == true )
+{	
+	// need en_batt variable for O&M cost page and power plant page 
+	addpage( [[ 'Generic System Plant' ,'Battery Enable']], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
+}
+else
+{
 	addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
+}
     addpage( [[ {'name'='Lifetime System', 'caption'='Simulation over one year'}],
 			[ {'name'='Lifetime Generic', 'caption'='Simulation over analysis period' }],],
            {  'sidebar'='Lifetime and Degradation','help'='lifetime', 'exclusive_var'='system_use_lifetime_output' } );
@@ -1333,10 +1385,10 @@ setup_sale_leaseback_pages(LIFETIME_PV);
 setconfig( 'Generic System', 'Single Owner' );
 setmodules( ['generic_system', 'battery', 'grid', 'singleowner']);
 setup_generic_system_pages();
-setup_battery_pages_front_of_meter();
+if ( batt_test == false ) { setup_battery_pages_front_of_meter(); }
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_single_owner_pages(LIFETIME_PV);
-setup_utility_rate_optional();
+if ( batt_test == false ) { setup_utility_rate_optional(); } // !!not sure how this works if utilityrate5 is not in setmodules()
 
 setconfig( 'Generic System', 'Merchant Plant' );
 setmodules( ['generic_system', 'battery', 'grid', 'merchantplant']);
@@ -1345,7 +1397,6 @@ setup_battery_pages_front_of_meter();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_merchant_plant_pages(LIFETIME_PV);
 setup_utility_rate_optional();
-
 
 setconfig( 'Generic System', 'Host Developer' );
 setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'host_developer']);
@@ -1992,9 +2043,6 @@ setmodules( ['mhk_tidal', 'lcoefcr']);
 setup_mhktidal_pages();
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
-
-
-
 if ( en_pvsamv3 )
 {
 	setconfig( 'Photovoltaic', 'None' );
@@ -2044,16 +2092,35 @@ if ( batt_test == true)
 	setconfig( 'PV Battery', 'Residential' );
 	setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
 	setup_flat_plate_pv_pages();
-	setup_battery_pages_behind_the_meter();
+	setup_battery_pages_behind_the_meter_batt_test(); // modified to remove exclusive var
 	setup_grid_page();
 	addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 	setup_residential_pages( LOAD_BELPE_CRIT , LIFETIME_PV ); //includes building load calculator
+	
+	setconfig( 'PV Battery', 'Single Owner' );	
+	setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner']);
+	setup_flat_plate_pv_pages();
+	setup_battery_pages_front_of_meter_batt_test();
+	setup_grid_page();
+	addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+	setup_single_owner_pages( LIFETIME_PV );
+	//addpage( [[ 'Financial Capacity Payments' ]], { 'sidebar'='Ancillary Services', 'help'='ancillary_services' });
+	setup_utility_rate_optional();
 
 	setconfig( 'Generic Battery', 'Residential' );	
 	setmodules( ['generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 	setup_generic_system_pages();
-	setup_battery_pages_behind_the_meter(); 
+	setup_battery_pages_behind_the_meter_batt_test(); // modified to remove exclusive var
 	addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 	setup_residential_pages( LOAD_SIMPLE, LIFETIME_PV ); //does not include building load calculator
+	
+	setconfig( 'Generic Battery', 'Single Owner' );
+	setmodules( ['generic_system', 'battery', 'grid', 'singleowner']);
+	setup_generic_system_pages();
+	setup_battery_pages_front_of_meter_batt_test();
+	addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+	setup_single_owner_pages(LIFETIME_PV);
+	setup_utility_rate_optional();
+
 }
 
