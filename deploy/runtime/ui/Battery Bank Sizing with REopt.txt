@@ -1171,7 +1171,7 @@ Battery
 Numeric
 
 0
-3769
+3783
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1271,7 +1271,7 @@ on_change{'call_reopt'} = define(){
 	batt = y.outputs.Scenario.Site.Storage;
 	elec = y.outputs.Scenario.Site.ElectricTariff;
 
-	if (!batt.size_kw && !batt.size_kwh){
+	if (batt.size_kw == null && batt.size_kwh == null){
 		apply_str = "Apply results?\nOptimal capacity: " + to_string(0) + 
 			"\nOptimal power: " + to_string(0) + "\nApply results?";
 		apply = yesno(apply_str);
