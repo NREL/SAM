@@ -4680,13 +4680,20 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         if (!curl.Get(poll_url, msg))
         {
             cxt.result().hash_item("error", msg);
-            dlg.Close();
-            return;
+            break;
         }
-        if (!lk::json_read(curl.GetDataAsString(), *cxt_result, &err))
+        if (!lk::json_read(curl.GetDataAsString(), *cxt_result, &err)){
             cxt.result().hash_item("error", "<json-error> " + err);
-        if (lk::vardata_t* res = cxt_result->lookup("outputs"))
+            break;
+        }
+        if (lk::vardata_t* res = cxt_result->lookup("outputs")){
             optimizing_status = res->lookup("Scenario")->lookup("status")->as_string();
+            if (optimizing_status.find("error") != std::string::npos){
+                std::string error = res->lookup("messages")->lookup("error")->as_string();
+                cxt.result().hash_item("error", error);
+                break;
+            }
+        }
     }
     dlg.Close();
 }

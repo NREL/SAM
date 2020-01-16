@@ -729,7 +729,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2635
+2649
 on_load{'Battery Model Simple with REopt'} = define()
 {
 	check_enabled();
@@ -779,7 +779,7 @@ on_change{'call_reopt'} = define(){
 	batt = y.outputs.Scenario.Site.Storage;
 	elec = y.outputs.Scenario.Site.ElectricTariff;
 
-	if (!batt.size_kw && !batt.size_kwh){
+	if (batt.size_kw == null && batt.size_kwh == null){
 		apply_str = "Apply results?\nOptimal capacity: " + to_string(0) + 
 			"\nOptimal power: " + to_string(0) + "\nOverride " + 
 			"'Battery capacity' and 'Battery power' with results?";
