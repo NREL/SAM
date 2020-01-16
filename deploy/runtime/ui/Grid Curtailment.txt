@@ -12,10 +12,10 @@ Name
 grid_curtailment
 X
 3
-141
+144
 Y
 3
-90
+87
 Width
 3
 184
@@ -30,11 +30,12 @@ Mode
 1
 Label
 5
-0
+2
+MW
 Description
 5
-124
-Enter a percentage of system AC power output for each time step of the year. Time step must match time step of weather file.
+172
+Type or import a table of maximum system AC power output values in MW for each time step of the year. The number of rows in the table must match the weather file time step.
 TabOrder
 3
 4294967295
@@ -44,8 +45,8 @@ Label
 13
 Name
 5
-26
-grid_interconnection_label
+22
+grid_curtailment_label
 X
 3
 30
@@ -63,8 +64,7 @@ Tool Tip
 0
 Caption
 5
-198
-Grid curtailment is a negotiated schedule. System production during grid curtailment is curtailed by the specified percentage and is compensated at the revenue curtailment price on the Revenue page.
+0
 TextColour
 4
 0
@@ -122,7 +122,7 @@ grid_curtailment
 3
 2
 Curtailment
- %
+MW
 Financial Grid
 0
 2
@@ -134,4 +134,24 @@ Financial Grid
 DataArray
 
 0
-0
+801
+on_load{'Grid Curtailment'} = define() {
+	check_grid_curtailment_fin();
+};
+
+function check_grid_curtailment_fin()
+{
+	is_compensated = (financing() == 'Merchant Plant' || financing() == 'Single Owner' );
+	caption = '';
+	if ( is_compensated )
+	{
+		caption = 'Click Edit Array to enter values in the curtailment schedule table. SAM limits the system power output to the MW power values in the table. Any curtailed system power is compensated at the curtailment rate on the Revenue page.';
+	}
+	else
+	{
+		caption = 'Click Edit Array to enter values in the curtailment schedule table. SAM limits the system power output to the MW power values in the table. Curtailed power is not compensated.';
+	}
+	property('grid_curtailment_label', 'Caption', caption);
+	show('grid_curtailment_label', true);
+	refresh();
+}

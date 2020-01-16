@@ -48,11 +48,10 @@ function cf_formatting_examples()
 function cf_production()
 { 
 	fin = financing();
-	cfline( 'PRODUCTION (AC KWH)', -1); 
+	cfline( 'ENERGY', -1); 
 	cfline( 'cf_energy_net', 0);
 	if ( fin == "Single Owner" || fin == "Merchant Plant" ) 
 	{
-		cfline( "CURTAILMENT (AC KWH)", -1); 
 		cfline( 'cf_energy_curtailed', 0);
 	}	
 	cfline( '' );
@@ -1303,10 +1302,53 @@ function set_debt_parameters( xl )
 		 
 function set_annual_values( xl )
 {
+
+/*
+	if ( fin == 'Merchant Plant' )
+	{
+		cfline( 'cf_curtailment_value', 0); 
+		cfline( 'cf_capacity_payment', 0); 
+		cfline( 'cf_energy_market_revenue', 0); 
+		cfline( 'cf_ancillary_services_1_revenue', 0); 
+		cfline( 'cf_ancillary_services_2_revenue', 0); 
+		cfline( 'cf_ancillary_services_3_revenue', 0); 
+		cfline( 'cf_ancillary_services_4_revenue', 0); 
+	}
+	elseif ( fin == "Single Owner" )
+	{
+		cfline( 'cf_ppa_price' , -2 );
+		cfline( 'cf_energy_value', 0); 
+		cfline( 'cf_curtailment_value', 0); 
+		cfline( 'cf_capacity_payment', 0); 
+	}
+	else
+	{
+		cfline( 'cf_ppa_price' , -2 );
+		cfline( 'cf_energy_value', 0); 
+	}
+*/
 	//export annual values to minimize rounding discrepancies between SAM and workbook 
-	xl_set( xl, output('cf_energy_net'), 'AnnualEnergy'); 
-	xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice'); 
-	xl_set( xl, output('cf_energy_value'), 'AnnualPPARevenue'); 
+	fin = financing();
+	if ( fin == 'Single Owner' )
+	{
+		xl_set( xl, output('cf_energy_net'), 'AnnualEnergy'); 
+		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice');
+		xl_set( xl, output('cf_energy_curtailed'), 'CurtailedEnergy');
+		xl_set( xl, output('cf_curtailment_value'), 'AnnualCurtailmentRevenue'); 
+		xl_set( xl, output('cf_energy_value'), 'AnnualPPARevenue'); 
+		xl_set( xl, output('cf_capacity_payment'), 'AnnualCapacityRevenue');
+	}
+	elseif( fin == 'All Equity Partnership Flip' || fin == 'Leveraged Partnership Flip' || fin == 'Sale Leaseback' )
+	{
+		xl_set( xl, output('cf_energy_net'), 'AnnualEnergy'); 
+		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice');
+		xl_set( xl, output('cf_energy_value'), 'AnnualPPARevenue'); 
+	}
+	else
+	{
+		xl_set( xl, output('cf_energy_net'), 'AnnualEnergy'); 
+		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice'); 
+	}
 }
 
 function set_solution_mode( xl )
@@ -1662,6 +1704,11 @@ cashflow_to_excel{ 'Commercial' } = define()
 	xl_set ( xl, output('cf_sta_depr_sched'), 'StateDepreciationSchedule'); 
 	xl_set ( xl, output('cf_fed_depr_sched'), 'FederalDepreciationSchedule'); 
  
+};
+
+cashflow_to_excel{ 'Merchant Plant'} = define()
+{
+	msgbox('Send to Excel with equations not yet implemented for Merchant Plant financial model.');
 }; 
 
 cashflow_to_excel{ 'Single Owner' } = define()  

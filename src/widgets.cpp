@@ -1542,7 +1542,7 @@ public:
 			Description->Wrap( 350 );
 			szv_main->Add( Description, 0, wxALL, 10 );
 		}
-		szv_main->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10);
+		szv_main->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 10);
 			
 		SetMode(DATA_ARRAY_8760_MULTIPLES);
 		
@@ -1720,6 +1720,11 @@ public:
 				fprintf(fp, "%g\n", mData[i]);
 			fclose(fp);
 		}
+		else if (evt.GetId() == wxID_HELP)
+		{
+			SamApp::ShowHelp("edit_array");
+		}
+
 	}
 	
 	DECLARE_EVENT_TABLE();
@@ -1731,7 +1736,8 @@ BEGIN_EVENT_TABLE(AFDataArrayDialog, wxDialog)
 	EVT_BUTTON( IDDD_IMPORT, AFDataArrayDialog::OnCommand )
 	EVT_BUTTON( IDDD_EXPORT, AFDataArrayDialog::OnCommand )
 	EVT_BUTTON( IDDD_CHANGENUMROWS, AFDataArrayDialog::OnCommand )
-END_EVENT_TABLE()
+	EVT_BUTTON( wxID_HELP, AFDataArrayDialog::OnCommand)
+	END_EVENT_TABLE()
 
 BEGIN_EVENT_TABLE(AFDataArrayButton, wxButton)
 EVT_BUTTON(wxID_ANY, AFDataArrayButton::OnPressed)
@@ -1802,6 +1808,7 @@ void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
 		dlg.GetData(mData);
 		evt.Skip(); // allow event to propagate indicating underlying value changed
 	}
+
 }
 
 
@@ -2987,7 +2994,7 @@ public:
 		if (evt.GetId() == ILDM_MODEOPTIONS)
 			SetMode(ModeOptions->GetSelection());
 		else if (evt.GetId() == ILDM_TIMESTEPS)
-			SetMinPerHour(ModeOptions->GetSelection());
+			SetMode(ModeOptions->GetSelection());
 		else if (evt.GetId() == ILDM_COPY)
 			Grid->Copy(true);
 		else if (evt.GetId() == ILDM_PASTE)
@@ -2996,53 +3003,31 @@ public:
 		{
 			wxFileDialog dlg(this, "Select data file to import");
 			if (dlg.ShowModal() != wxID_OK) return;
-			FILE *fp = fopen(dlg.GetPath().c_str(), "r");
-			if (!fp)
-			{
-				wxMessageBox("Could not open file for reading:\n\n" + dlg.GetPath());
-				return;
-			}
 
-			matrix_t<double> arr;
-			arr.resize(mData.nrows(), mData.ncols());
+			matrix_t<double> mat;
+			mat.resize(mData.nrows(), mData.ncols());
+			wxCSVData csv;
+			if (!csv.ReadFile(dlg.GetPath())) return;
 
-			char buf[128];
-			fgets(buf, 127, fp); // skip header line
+			mat.resize_fill(csv.NumRows(), csv.NumCols(), 0.0f);
 
-			bool error = false;
-			for (int i = 0; i < (int)mData.nrows(); i++)
-			{
-				if (fgets(buf, 127, fp) == NULL)
-				{
-					wxMessageBox(wxString::Format("Data file does not contain %d data value lines, only %d found.\n\nNote that the first line in the file is considered a header label and is ignored.", mData.nrows(), i));
-					error = true;
-					break;
-				}
+			for (size_t r = 0; r < mat.nrows(); r++)
+				for (size_t c = 0; c < mat.ncols(); c++)
+					mat.at(r, c) = (float)wxAtof(csv(r, c));
 
-//				arr.push_back((double)atof(buf));
-			}
-
-			if (!error) SetData(arr);
-
-			fclose(fp);
+			SetData(mat);
 		}
 		else if (evt.GetId() == ILDM_EXPORT)
 		{
 			wxFileDialog dlg(this, "Select data file to export to", wxEmptyString, wxEmptyString, "*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 			if (dlg.ShowModal() != wxID_OK) return;
+			wxCSVData csv;
+			for (size_t r = 0; r < mData.nrows(); r++)
+				for (size_t c = 0; c < mData.ncols(); c++)
+					csv(r, c) = wxString::Format("%g", mData(r, c));
 
-			FILE *fp = fopen(dlg.GetPath().c_str(), "w");
-			if (!fp)
-			{
-				wxMessageBox("Could not open file for writing.");
-				return;
-			}
-/*
-			fprintf(fp, "Exported Data (%d)\n", (int)mData.size());
-			for (size_t i = 0; i < mData.size(); i++)
-				fprintf(fp, "%g\n", mData[i]);
-			fclose(fp);
-*/		}
+			csv.WriteFile(dlg.GetPath());
+		}
 		else if (evt.GetId() == wxID_HELP)
 		{
 			SamApp::ShowHelp("edit_time_series_data");

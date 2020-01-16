@@ -1323,7 +1323,7 @@ Default
 wake_loss
 3
 1
-Constant Loss
+Constant loss
 %
 Wind Farm
 0
@@ -1365,7 +1365,7 @@ Default
 wind_farm_wake_model
 3
 1
-Wake Model
+Wake model
  
 Wind Farm
 58
@@ -1436,7 +1436,7 @@ Default
 wind_resource_turbulence_coeff
 3
 1
-Turbulence Coefficient
+Turbulence coefficient
  
 Wind Farm
 0
@@ -1450,7 +1450,7 @@ Numeric
 windfarm.farm.layout_angle
 3
 1
-Row Orientation
+Row orientation
 deg
 Wind Farm
 0

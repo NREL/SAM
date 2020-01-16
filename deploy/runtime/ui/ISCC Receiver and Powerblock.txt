@@ -1050,7 +1050,7 @@ ISCC
 100
 Default
 
-1404
+1444
 equations{ 'nameplate' } = define() {
 	return ${W_dot_solar_des}; 
 };
@@ -1077,7 +1077,8 @@ equations{ '$MIMO$ iscc_design_point' } = define()
 	ssc_var(obj, "pinch_point_hot", ${pinch_point_hotside});
 	ssc_var(obj, "elev", ${elev});
 	ssc_var(obj, "HTF_code", ${rec_htf});
-	ssc_var(obj, "field_fl_props", ${field_fl_props});
+//	ssc_var(obj, "field_fl_props", ${field_fl_props});
+	ssc_var(obj, "field_fl_props", [1]);
 
 	ret = ssc_exec(obj, 'iscc_design_point');
 	

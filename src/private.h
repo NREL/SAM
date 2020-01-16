@@ -26,7 +26,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 static const char *version_label = 0; //"iscc-ge"; 
 
 // API keys for SAM to use with developer.nrel.gov services.
-const char *sam_api_key ="";
+const char *sam_api_key = "rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn";
+
 
 
 // Google APIs:
@@ -39,5 +40,5 @@ static const char *BING_API_KEY = "";
 
 // Developer APIs:
 // login to account center at: https://developer.nrel.gov/
-static const char *DEVELOPER_API_KEY = "";
+static const char *DEVELOPER_API_KEY = "J9rjyBKwxH0RZ63WkHtqHo50RPs8JlZKeVKGRePX";
 

@@ -1,27 +1,30 @@
 Fuel Cell Dispatch
-999
-229
-10
+998
+158
+8
 Divider
 
 1
-9
+10
 Name
 5
 8
 divider1
 X
 3
-87
+27
 Y
 3
-42
+27
 Width
 3
-186
+582
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -41,95 +44,26 @@ Bold
 Divider
 
 1
-9
-Name
-5
-8
-divider2
-X
-3
-327
-Y
-3
-42
-Width
-3
-231
-Height
-3
-16
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-12
-Fixed output
-Bold
-2
-1
-Divider
-
-1
-9
-Name
-5
-8
-divider3
-X
-3
-333
-Y
-3
-114
-Width
-3
-231
-Height
-3
-16
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-14
-Input dispatch
-Bold
-2
-1
-Divider
-
-1
-9
+10
 Name
 5
 9
 divider35
 X
 3
-693
+633
 Y
 3
-42
+27
 Width
 3
 231
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -142,14 +76,14 @@ Colour
 Caption
 5
 17
-Operation options
+Operation Options
 Bold
 2
 1
 GroupBox
 
 1
-7
+8
 Name
 5
 11
@@ -165,7 +99,10 @@ Width
 985
 Height
 3
-214
+142
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -176,23 +113,26 @@ Bold
 RadioChoice
 
 1
-10
+11
 Name
 5
 24
 fuelcell_dispatch_choice
 X
 3
-96
+36
 Y
 3
-66
+45
 Width
 3
-180
+165
 Height
 3
-111
+93
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -215,55 +155,63 @@ TabOrder
 DataArray
 
 1
-9
+10
 Name
 5
 23
 fuelcell_dispatch_input
 X
 3
-420
+357
 Y
 3
-135
+108
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 1
 Label
 5
-0
+18
+Fuel Cell Dispatch
 Description
 5
-0
+86
+Enter a power in kW or % of nameplate for each time step to dispatch the fuel cell to.
 TabOrder
 3
 4294967295
 Choice
 
 1
-8
+9
 Name
 5
 29
 fuelcell_dispatch_input_units
 X
 3
-519
+453
 Y
 3
-135
+108
 Width
 3
-99
+93
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -278,23 +226,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
 fuelcell_fixed_pct
 X
 3
-462
+360
 Y
 3
-63
+45
 Width
 3
 63
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -337,31 +288,34 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 26
 fuelcell_operation_options
 X
 3
-735
+645
 Y
 3
-63
+45
 Width
 3
 180
 Height
 3
 90
+Tool Tip
+5
+0
 Selection
 3
 0
 Items
 6
 2
-Allowed to shutdown
-Idle at min power
+Allowed to shut down
+Idle at minimum power
 ShowCaptions
 2
 1
@@ -405,7 +359,7 @@ RadioChoice
 fuelcell_dispatch_input
 3
 2
-Input dispatch
+Input dispatch time series
  
 Fuel Cell
 0
@@ -451,8 +405,8 @@ fuelcell_operation_options
  Fuel cell shutdown option
  
 Fuel Cell
-37
-Allowed to shutdown|Idle at min power
+42
+Allowed to shut down|Idle at minimum power
 3
 1
 1

@@ -37,7 +37,7 @@ Colour
 Caption
 5
 17
-Shutdown schedule
+Shutdown Schedule
 Bold
 2
 1
@@ -1353,7 +1353,7 @@ Y
 279
 Width
 3
-246
+260
 Height
 3
 24
@@ -2530,7 +2530,7 @@ Choice
 fuelcell_number_of_units
 3
 1
-Number of units
+Number of units in stack
  
 Fuel Cell
 0
@@ -2544,7 +2544,7 @@ Numeric
 fuelcell_power_min
 3
 1
-Minimum system output
+Minimum cell stack output
 kW
 Fuel Cell
 0
@@ -2558,7 +2558,7 @@ Numeric
 fuelcell_power_nameplate
 3
 1
-Total system nameplate
+Cell stack nameplate
 kW
 Fuel Cell
 0
@@ -2821,13 +2821,13 @@ equations{'fuelcell_dynamic_response_down'} = define()
 	return response;
 };
 
-5335
+5343
 on_load{'Fuel Cell'} = define() {
 	on_change{'fuelcell_efficiency'}(); 
 	on_change{'fuelcell_fuel_type'}();
 	on_change{'fuelcell_replacement_option'}();
 	on_change{'fuelcell_fuel_limited'}();
-	on_change{'fuelcell_is_started'}();
+//	on_change{'fuelcell_is_started'}();
 	check_fuel_limited();	
 };
 
@@ -2859,12 +2859,14 @@ function check_type()
 on_change{'fuelcell_type'} = define(){
 	check_type();
 };
+/*
 on_change{'fuelcell_is_started'} = define(){
 	enable('fuelcell_startup_time', !value('fuelcell_is_started'));
 	if (value('fuelcell_is_started')){
 		value('fuelcell_startup_time', 0);
 	}
 };
+*/
 on_change{'fuelcell_fuel_limited'} = define(){
 	check_fuel_limited();
 };

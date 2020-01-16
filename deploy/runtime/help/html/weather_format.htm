@@ -40,7 +40,7 @@
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">A SAM weather file is a text file that contains data describing the solar, wind, or marine energy resource at a particular location for a period of one year. SAM uses the SAM CSV format for solar resource data, the SRW format for wind resource data, and a CSV format for marine energy resource data.</span></p>
 <p class="p_Text"><span class="f_Text">For a description of how the different performance models use weather data, see <a href="weather_data_elements.htm" class="topiclink">Weather Data Elements</a>. </span></p>
-<p class="p_Text"><span class="f_Text">You can use a spreadsheet program, text editor, or other software create your own SAM weather file using data from a resource measurement program, meteorological stations, or other sources.</span></p>
+<p class="p_Text"><span class="f_Text">You can use a spreadsheet program, text editor, or other software to create your own SAM weather file using data from a resource measurement program, meteorological stations, or other sources.</span></p>
 <div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0 3px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-minus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">SAM CSV Format for Solar</a></span></td></tr></table></div><div id="TOGGLE0186A1" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="ToggleContentTable" >
 <tr class="ToggleContentTable">
 <td class="ToggleContentTable"><p class="p_Text"><a id="samcsv" class="hmanchor"></a><span class="f_Text">The SAM CSV format is a comma-separated text format for SAM's solar performance models. It uses a standard CSV format that you can edit in any spreadsheet program, text editor, or other appropriate software.</span></p>
@@ -394,18 +394,52 @@
 </div>
 <div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0 3px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><img alt="ico-plus-16x16" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-plus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_">CSV Format for Marine Wave Energy</span></td></tr></table></div><div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="DefaultShadedRows" >
 <tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_Text"><a id="mhkwave" class="hmanchor"></a><span class="f_Text">SAM's marine wave energy resource file format is a comma-separated (CSV) text format. For examples of marine wave energy resource files, see the </span><span class="f_CHFileName">wave_resource</span><span class="f_Text"> folder in your <a href="installation.htm#installationfolder" class="topiclink">SAM installation folder</a>.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To ensure your wave energy resource files are accessible to different versions of SAM you might install over time, you should avoid storing your files in your SAM installation's </span><span class="f_CHFileName">wave_energy</span><span class="f_Note"> folder unless you are careful about moving or copying them to your new installation when you install an updated version of SAM. For information about where to store your wave energy resource files, see <a href="mhk_wave_resource.htm#managingfiles" class="topiclink">Managing Wave Resource Files</a>.</span></p>
+<td class="DefaultShadedRows"><p class="p_Text"><a id="mhkwave" class="hmanchor"></a><span class="f_Text">SAM's marine wave energy resource file format is a comma-separated (CSV) text format.</span></p>
 <p class="p_Text"><span class="f_Text">The wave energy resource file stores data for joint probability distribution plots of the wave resource at a site as described in Dallman, A.; Neary, V. (2014) Characterization of U.S. Wave Energy Converter (WEC) Test Sites: A Catalogue of Met-Ocean Data. 125 pp.; SAND2014-18206. Sandia National Laboratories. (<a href="https://prod-ng.sandia.gov/techlib-noauth/access-control.cgi/2014/1418206.pdf" target="_blank" class="weblink" title="https://prod-ng.sandia.gov/techlib-noauth/access-control.cgi/2014/1418206.pdf">PDF 8 MB</a>)</span></p>
 <p class="p_Text" style="text-align: center; page-break-after: avoid;"><img alt="SS_WaveResrource-text-file" width="601" height="260" style="margin:0 auto 0 auto;width:601px;height:260px;border:none" src="ss_waveresrource-text-file.png"/></p>
-<h4 class="p_Heading4"><span class="f_Heading4">Header Rows 1 and 2</span></h4>
-<p class="p_Text"><span class="f_Text">The first two header rows provide location information and metadata. SAM requires this information to display for reference on the <a href="mhk_wave_resource.htm" class="topiclink">Wave Resource</a> page, but does not use it for the performance simulation. SAM requires 13 columns in the first two header rows.</span></p>
+<p class="p_Text"><span class="f_Text">The file contains the wave resource matrix, which is a table of joint probability distributions of significant wave height and wave energy period.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 1</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The first column of Row 1 contains the header </span><span class="f_Emphasis">Hs/Te</span><span class="f_VariableDescription">, and the remaining columns contain wave energy period values in seconds in increasing order. This example is for 21 samples ranging from 0s to 21s in bins at the 0.5s mark:</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">Hs/Te,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5,13.5,14.5,15.5,16.5,17.5,18.5,19.5,20.5</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rows 2 and higher</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The first column of Rows 2 and higher contains the significant wave height in meters in increasing order. The remaining columns contain the joint probability distribution (JPD) of sea states representing a frequency of occurrence as a percentage. For example, Rows 4 and higher for a range of 20 wave heights from 0.25 m to 9.75 m would be:</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">0.25,0,0,0,0,0.11,0.18,0.12,0.09,0.11,0.05,0.07,0.06,0.07,0.07,0.02,0.02,0.01,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">0.75,0,0,0,0,0.04,0.16,0.13,0.05,0.12,0.1,0.07,0.15,0.17,0.08,0.03,0.02,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">1.25,0,0,0,0,0.15,0.26,0.26,0.93,1.26,1.24,1.05,1.32,1.51,0.91,0.73,0.27,0.2,0.06,0.03,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">1.75,0,0,0,0,0.11,1.16,1.42,2.4,3.5,3.63,2.55,2.19,2.8,1.93,1.63,0.7,0.45,0.21,0.11,0.01,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">2.25,0,0,0,0,0,0.38,2.21,2.59,2.79,3.33,3.84,3.3,2.29,1.34,1.1,0.61,0.4,0.18,0.09,0.02,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">2.75,0,0,0,0,0,0,0.43,1.78,1.84,1.76,2.84,3.01,2.37,1.28,0.76,0.33,0.27,0.09,0.05,0.02,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">3.25,0,0,0,0,0,0,0.03,0.37,0.86,0.76,1.29,2.55,2.37,1.09,0.75,0.28,0.15,0.06,0.03,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">3.75,0,0,0,0,0,0,0,0.05,0.25,0.34,0.4,1.1,1.41,0.9,0.54,0.17,0.1,0.03,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">4.25,0,0,0,0,0,0,0,0,0.04,0.2,0.13,0.3,0.92,0.46,0.45,0.19,0.06,0.01,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">4.75,0,0,0,0,0,0,0,0,0.01,0.05,0.06,0.13,0.53,0.33,0.23,0.09,0.02,0.01,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">5.25,0,0,0,0,0,0,0,0,0,0.02,0,0.04,0.17,0.18,0.11,0.03,0.01,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">5.75,0,0,0,0,0,0,0,0,0,0,0.01,0.02,0.08,0.14,0.07,0.03,0.01,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">6.25,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0.12,0.05,0.03,0.01,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">6.75,0,0,0,0,0,0,0,0,0,0,0,0.01,0.01,0.06,0.04,0.01,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">7.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">7.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">8.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">8.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">9.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">9.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Special Format for Wave Energy Resource Library Files</span></h4>
+<p class="p_Text"><span class="f_Text">If you want to add a file to the wave energy resource library so you can choose it from the library list on the <a href="mhk_wave_resource.htm" class="topiclink">Wave Resource</a> page instead of checking </span><span class="f_CHInterfaceElement">Choose wave energy resource file</span><span class="f_Text">, you must create a special library version of the file that includes two additional header rows with 13 columns each and put it in the </span><span class="f_CHFileName">wave_resource</span><span class="f_Text"> library folder of your <a href="weather_manage_folders.htm#foldersettings" class="topiclink">SAM installation folder</a>. These extra rows provide location information and metadata that SAM uses to display for reference on the <a href="mhk_wave_resource.htm" class="topiclink">Wave Resource</a> page, but does not use for the performance simulation.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">You only need the optional header rows if you are making a special file for the wave energy resource library.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">For information about where to store your wave energy resource files, see <a href="mhk_wave_resource.htm#managingfiles" class="topiclink">Managing Wave Resource Files</a>.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 1 for special library file</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Row contains labels for the 13 required metadata variables. Row 1 must contain the following text, with column names in the following order:</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">Name,City,State,Country,Latitude,Longitude,Nearby Buoy Number,Average Power Flux (kW/m),Bathymetry,Sea Bed,Time Zone,Data Source,Notes</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName" style="font-style: italic;">Row 2</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 2 for special library file </span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Row 2 contains values for the metadata identified by the labels in Row 1. The file must contain values for this metadata for SAM's file reader to work correctly. </span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">To ensure SAM can read the data correctly, do not enclose values in quotation marks.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 3 for special library file</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Same as row 1 described above.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rows 4 and higher for special library file</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Same as rows 2 and higher described above.</span></p>
 <div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="DefaultShadedRows" >
 <tr class="DefaultShadedRows">
 <td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Header Label</span></p>
@@ -493,35 +527,6 @@
 </tr>
 </table>
 </div>
-<p style="line-height: 1.28; margin: 0 0 11px 0;"><span style="font-family: Arial,Helvetica,sans-serif; color: #000000;">&nbsp;</span></p>
-<h4 class="p_Heading4"><span class="f_Heading4">Data Rows</span></h4>
-<p class="p_Text"><span class="f_Text">Rows 3 and greater contain the wave resource matrix, which is a table of joint probability distrubutions of significant wave height and wave energy period.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 3</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The first column of Row 3 contains the header </span><span class="f_Emphasis">Hs/Te</span><span class="f_VariableDescription">, and the remaining columns contain wave energy period values in seconds in increasing order. This example is for 21 samples ranging from 0.5s to 20.5s:</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">Hs/Te,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5,13.5,14.5,15.5,16.5,17.5,18.5,19.5,20.5</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rows 4 and higher</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The first column of Rows 4 and higher contains the significant wave height in meters in increasing order. The remaining columns contain the joint probability distribution (JPD) of percentage of occurrence. For example, Rows 4 and higher for a range of 20 wave heights from 0.25 m to 9.75 m would be:</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">0.25,0,0,0,0,0.11,0.18,0.12,0.09,0.11,0.05,0.07,0.06,0.07,0.07,0.02,0.02,0.01,0,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">0.75,0,0,0,0,0.04,0.16,0.13,0.05,0.12,0.1,0.07,0.15,0.17,0.08,0.03,0.02,0,0,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">1.25,0,0,0,0,0.15,0.26,0.26,0.93,1.26,1.24,1.05,1.32,1.51,0.91,0.73,0.27,0.2,0.06,0.03,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">1.75,0,0,0,0,0.11,1.16,1.42,2.4,3.5,3.63,2.55,2.19,2.8,1.93,1.63,0.7,0.45,0.21,0.11,0.01,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">2.25,0,0,0,0,0,0.38,2.21,2.59,2.79,3.33,3.84,3.3,2.29,1.34,1.1,0.61,0.4,0.18,0.09,0.02,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">2.75,0,0,0,0,0,0,0.43,1.78,1.84,1.76,2.84,3.01,2.37,1.28,0.76,0.33,0.27,0.09,0.05,0.02,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">3.25,0,0,0,0,0,0,0.03,0.37,0.86,0.76,1.29,2.55,2.37,1.09,0.75,0.28,0.15,0.06,0.03,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">3.75,0,0,0,0,0,0,0,0.05,0.25,0.34,0.4,1.1,1.41,0.9,0.54,0.17,0.1,0.03,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">4.25,0,0,0,0,0,0,0,0,0.04,0.2,0.13,0.3,0.92,0.46,0.45,0.19,0.06,0.01,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">4.75,0,0,0,0,0,0,0,0,0.01,0.05,0.06,0.13,0.53,0.33,0.23,0.09,0.02,0.01,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">5.25,0,0,0,0,0,0,0,0,0,0.02,0,0.04,0.17,0.18,0.11,0.03,0.01,0,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">5.75,0,0,0,0,0,0,0,0,0,0,0.01,0.02,0.08,0.14,0.07,0.03,0.01,0,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">6.25,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0.12,0.05,0.03,0.01,0,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">6.75,0,0,0,0,0,0,0,0,0,0,0,0.01,0.01,0.06,0.04,0.01,0,0,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">7.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">7.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">8.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">8.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">9.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">9.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
-<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
 </td>
 </tr>
 </table>

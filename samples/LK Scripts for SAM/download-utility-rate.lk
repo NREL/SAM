@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  This script downloads rate data from the OpenEI International Utility Rate 
-//  Database (IURDB) given an OpenEI GUID. It reads the data and assigns values 
-//  to the input variables on the Electricity Rates page.
+//  This script downloads rate data from the OpenEI Utility Rate Database (URDB)
+//  given an OpenEI GUID. It reads the data and assigns values to the input 
+//  variables on the Electricity Rates page.
 //
 //  To search the database, go to http://en.openei.org/apps/IURDB/, and read
 //  the GUID from the URL returned by the search results. For example, a search
@@ -23,8 +23,8 @@
 //guid = '55fc8095682bea28da63f4d0'; //monthly demand two rates no tiers, no TOU demand
 //guid = '55fc8071682bea28da63d6d8'; //monthly demand single rate no tiers, with TOU demand
 //guid = '58810cb2682bea22db37fc0c'; //monthly demand three rates no tiers, no TOU demand
-guid = '55fc8077682bea28da63dc7a'; //monthly demand four rates four tiers, no TOU demand
-//guid = '5881345e5457a35973316ce7'; //no data (this is a GUID for the URDB, not the IURDB)
+//guid = '55fc8077682bea28da63dc7a'; //monthly demand four rates four tiers, no TOU demand
+guid = '5881345e5457a35973316ce7'; //no data (this is a GUID for the URDB, not the IURDB)
 //guid = '57741e35682bea19c37ca072'; //energy rate two tiers no TOU, no demand
 
 
@@ -342,3 +342,9 @@ set('ur_dc_flat_mat',drm_table);
 set('ur_dc_tou_mat',dr_table);
 set('ur_dc_sched_weekday',schedule_drwd);
 set('ur_dc_sched_weekend',schedule_drwe);
+
+ok = show_page( 'Electricity Rates' );
+if ( ok )
+{
+	pagenote( 'Rate data loaded from OpenEI URDB for GUID = ' + guid + '\n\n' + rates.uri );
+}	
