@@ -1,7 +1,7 @@
 User Defined Power Cycle
 905
 1075
-21
+33
 GroupBox
 
 1
@@ -42,10 +42,10 @@ Name
 btn_gen_inputs
 X
 3
-69
+66
 Y
 3
-291
+357
 Width
 3
 114
@@ -153,7 +153,7 @@ X
 183
 Y
 3
-165
+273
 Width
 3
 90
@@ -215,7 +215,7 @@ X
 768
 Y
 3
-165
+273
 Width
 3
 90
@@ -332,6 +332,68 @@ Numeric
 17
 Name
 5
+17
+ud_T_amb_des_calc
+X
+3
+765
+Y
+3
+189
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 13
 ud_T_amb_high
 X
@@ -339,7 +401,7 @@ X
 768
 Y
 3
-189
+297
 Width
 3
 90
@@ -394,6 +456,68 @@ Numeric
 17
 Name
 5
+18
+ud_T_amb_high_calc
+X
+3
+765
+Y
+3
+213
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 15
 ud_T_amb_levels
 X
@@ -401,7 +525,7 @@ X
 768
 Y
 3
-228
+321
 Width
 3
 90
@@ -463,7 +587,7 @@ X
 768
 Y
 3
-141
+249
 Width
 3
 90
@@ -485,6 +609,130 @@ Format
 Decimals
 3
 3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+17
+ud_T_amb_low_calc
+X
+3
+765
+Y
+3
+165
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+17
+ud_T_htf_des_calc
+X
+3
+186
+Y
+3
+189
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
 Prefix
 5
 0
@@ -525,7 +773,7 @@ X
 183
 Y
 3
-189
+297
 Width
 3
 90
@@ -580,6 +828,68 @@ Numeric
 17
 Name
 5
+18
+ud_T_htf_high_calc
+X
+3
+186
+Y
+3
+213
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 15
 ud_T_htf_levels
 X
@@ -587,7 +897,7 @@ X
 183
 Y
 3
-228
+321
 Width
 3
 90
@@ -649,7 +959,7 @@ X
 183
 Y
 3
-141
+249
 Width
 3
 90
@@ -671,6 +981,68 @@ Format
 Decimals
 3
 3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+17
+ud_T_htf_low_calc
+X
+3
+186
+Y
+3
+165
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
 Prefix
 5
 0
@@ -835,7 +1207,7 @@ X
 183
 Y
 3
-288
+357
 Width
 3
 480
@@ -918,6 +1290,68 @@ Numeric
 17
 Name
 5
+17
+ud_m_dot_des_calc
+X
+3
+450
+Y
+3
+189
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 15
 ud_m_dot_design
 X
@@ -925,7 +1359,7 @@ X
 477
 Y
 3
-165
+273
 Width
 3
 90
@@ -980,6 +1414,68 @@ Numeric
 17
 Name
 5
+18
+ud_m_dot_high_calc
+X
+3
+450
+Y
+3
+213
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 17
 ud_m_dot_htf_high
 X
@@ -987,7 +1483,7 @@ X
 477
 Y
 3
-189
+297
 Width
 3
 90
@@ -1049,7 +1545,7 @@ X
 477
 Y
 3
-228
+321
 Width
 3
 90
@@ -1111,7 +1607,7 @@ X
 477
 Y
 3
-141
+249
 Width
 3
 90
@@ -1133,6 +1629,68 @@ Format
 Decimals
 3
 3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+17
+ud_m_dot_low_calc
+X
+3
+450
+Y
+3
+165
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
 Prefix
 5
 0
@@ -1222,8 +1780,194 @@ BackColour
 TabOrder
 3
 4294967295
+Numeric
 
+1
 17
+Name
+5
+15
+ud_n_T_amb_calc
+X
+3
+765
+Y
+3
+141
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+15
+ud_n_T_htf_calc
+X
+3
+186
+Y
+3
+141
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+15
+ud_n_m_dot_calc
+X
+3
+450
+Y
+3
+141
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+29
 ud_COPY_T_HTF_des
 3
 1
@@ -1266,6 +2010,20 @@ Power Cycle
 1
 27
 Default
+ud_T_amb_des_calc
+3
+1
+Design ambient temperature
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 ud_T_amb_high
 3
 1
@@ -1279,6 +2037,20 @@ Power Cycle
 1
 1
 55
+Default
+ud_T_amb_high_calc
+3
+1
+High ambient temperature
+°C
+Power Cycle
+0
+8
+1
+1
+1
+1
+0
 Default
 ud_T_amb_levels
 3
@@ -1308,6 +2080,34 @@ Power Cycle
 1
 0
 Default
+ud_T_amb_low_calc
+3
+1
+Low ambient temperature
+°C
+Power Cycle
+0
+8
+1
+1
+1
+1
+0
+Default
+ud_T_htf_des_calc
+3
+1
+Design HTF temperature
+°C
+Power Cycle
+0
+8
+1
+1
+1
+1
+0
+Default
 ud_T_htf_high
 3
 1
@@ -1321,6 +2121,20 @@ Power Cycle
 1
 1
 580
+Default
+ud_T_htf_high_calc
+3
+1
+High HTF temperature
+°C
+Power Cycle
+0
+8
+1
+1
+1
+1
+0
 Default
 ud_T_htf_levels
 3
@@ -1349,6 +2163,20 @@ Power Cycle
 1
 1
 500
+Default
+ud_T_htf_low_calc
+3
+1
+Low HTF temperature
+°C
+Power Cycle
+0
+8
+1
+1
+1
+1
+0
 Default
 ud_W_dot_cool_calc
 3
@@ -1395,6 +2223,20 @@ Power Cycle
 1 1 1 1 1 1 1 
 
 DataMatrix
+ud_m_dot_des_calc
+3
+1
+Design normalized HTF ṁ
+ 
+Power Cycle
+0
+8
+1
+1
+1
+1
+0
+Default
 ud_m_dot_design
 3
 1
@@ -1408,6 +2250,20 @@ Power Cycle
 1
 1
 1
+Default
+ud_m_dot_high_calc
+3
+1
+High normalized HTF ṁ
+ 
+Power Cycle
+0
+8
+1
+1
+1
+1
+0
 Default
 ud_m_dot_htf_high
 3
@@ -1451,6 +2307,20 @@ Power Cycle
 1
 0.3
 Default
+ud_m_dot_low_calc
+3
+1
+Low normalized HTF ṁ
+ 
+Power Cycle
+0
+8
+1
+1
+1
+1
+0
+Default
 ud_m_dot_water_cool_des
 3
 1
@@ -1465,8 +2335,50 @@ Power Cycle
 1
 0
 Default
+ud_n_T_amb_calc
+3
+1
+Ambient temperature parametric values
+ 
+Power Cycle
+0
+8
+1
+1
+1
+1
+0
+Default
+ud_n_T_htf_calc
+3
+1
+HTF parametric values
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+ud_n_m_dot_calc
+3
+1
+HTF ṁ parametric values
+ 
+Power Cycle
+0
+8
+1
+1
+1
+1
+0
+Default
 
-309
+3166
 equations{ 'ud_W_dot_cool_calc' } = define(){
 	return ${P_ref}*${ud_f_W_dot_cool_des}/100.0; };
 	
@@ -1478,7 +2390,115 @@ equations{ 'ud_COPY_T_amb_des' } = define(){
 	
 equations{ 'ud_COPY_T_HTF_des' } = define(){
 	return ${T_htf_hot_des}; };
+
+equations{ '$MIMO$ ui_udpc_checks' } = define()
+{
+	obj = ssc_create();
+	ssc_var(obj, "ud_ind_od", ${ud_ind_od});
+
+	ret = ssc_exec(obj, 'ui_udpc_checks');
+
+	if(ret==0)
+	{
+		n_T_htf_calc = ssc_var(obj, "n_T_htf_pars");		//[MWt-hr]
+		T_htf_low = ssc_var(obj, "T_htf_low");
+		T_htf_des = ssc_var(obj, "T_htf_des");
+		T_htf_high = ssc_var(obj, "T_htf_high");
+		
+		n_T_amb_calc = ssc_var(obj, "n_T_amb_pars");
+		T_amb_low = ssc_var(obj, "T_amb_low");
+		T_amb_des = ssc_var(obj, "T_amb_des");
+		T_amb_high = ssc_var(obj, "T_amb_high");
+		
+		n_m_dot_calc = ssc_var(obj, "n_m_dot_pars");
+		m_dot_low = ssc_var(obj, "m_dot_low");
+		m_dot_des = ssc_var(obj, "m_dot_des");
+		m_dot_high = ssc_var(obj, "m_dot_high");
+	}
+	else
+	{
+		n_T_htf_calc = 1./0.;
+		T_htf_low = 1./0.;
+		T_htf_des = 1./0.;
+		T_htf_high = 1./0.;
+		
+		n_T_amb_calc = 1./0.;
+		T_amb_low = 1./0.;
+		T_amb_des = 1./0.;
+		T_amb_high = 1./0.;
+		
+		n_m_dot_calc = 1./0.;
+		m_dot_low = 1./0.;
+		m_dot_des = 1./0.;
+		m_dot_high = 1./0.;
+	}
 	
+	${ud_n_T_htf_calc} = n_T_htf_calc;
+	${ud_T_htf_low_calc} = T_htf_low;
+	${ud_T_htf_des_calc} = T_htf_des;
+	${ud_T_htf_high_calc} = T_htf_high;
+	
+	${ud_n_T_amb_calc} = n_T_amb_calc;
+	${ud_T_amb_low_calc} = T_amb_low;
+	${ud_T_amb_des_calc} = T_amb_des;
+	${ud_T_amb_high_calc} = T_amb_high;
+	
+	${ud_n_m_dot_calc} = n_m_dot_calc;
+	${ud_m_dot_low_calc} = m_dot_low;
+	${ud_m_dot_des_calc} = m_dot_des;
+	${ud_m_dot_high_calc} = m_dot_high;
+	
+	ssc_free( obj );
+};
+
+/*
+equations{ '$MIMO$ ui_tes_calcs' } = define()
+{
+	obj = ssc_create();
+
+	ssc_var(obj, "W_dot_pb_des", ${P_ref});			//[MWe]
+	ssc_var(obj, "eta_pb_des", ${design_eff});		//[-]
+	ssc_var(obj, "tes_hrs", ${tshours});			//[hrs]
+	ssc_var(obj, "T_HTF_hot", ${T_htf_hot_des});	//[C]
+	ssc_var(obj, "T_HTF_cold", ${T_htf_cold_des});	//[C]
+	ssc_var(obj, "TES_HTF_code", ${rec_htf});		//[-]
+	ssc_var(obj, "TES_HTF_props", ${field_fl_props});	//[-]
+	ssc_var(obj, "h_tank_min", ${h_tank_min});		//[m]
+	ssc_var(obj, "h_tank", ${h_tank});				//[m]
+	ssc_var(obj, "tank_pairs", ${tank_pairs});		//[-]
+	ssc_var(obj, "u_tank", ${u_tank});				//[-]
+
+	ret = ssc_exec(obj, 'ui_tes_calcs');
+	
+	if(ret==0)
+	{
+		q_tes_des = ssc_var(obj, "q_tes_des");		//[MWt-hr]
+		vol_one_temp_avail = ssc_var(obj, "vol_one_temp_avail");	//[m^3]
+		vol_one_temp_total = ssc_var(obj, "vol_one_temp_total");	//[m^3]
+		d_tank = ssc_var(obj, "d_tank");			//[m]
+		q_dot_loss = ssc_var(obj, "q_dot_loss");	//[MWt]
+		dens = ssc_var(obj, "HTF_dens");			//[kg/m^3]
+	}
+	else
+	{
+		q_tes_des = 1.0/0.0;
+		vol_one_temp_avail = 1.0/0.0;
+		vol_one_temp_total = 1.0/0.0;
+		d_tank = 1.0/0.0;
+		q_dot_loss = 1.0/0.0;
+		dens = 1.0/0.0;
+	}
+	
+	${Q_tes} = q_tes_des;
+	${tes_avail_vol} = vol_one_temp_avail;
+	${vol_tank} = vol_one_temp_total;
+	${csp.pt.tes.tank_diameter} = d_tank;
+	${q_dot_tes_est} = q_dot_loss;
+	${csp.pt.tes.htf_density} = dens;
+	
+	ssc_free( obj );	
+};
+*/
 1975
 on_change{'btn_gen_inputs'} = define() {
 	//value("ud_ind_od", [[1,2,3,4,5,6,7],[11,22,33,44,55,66,77]]);
