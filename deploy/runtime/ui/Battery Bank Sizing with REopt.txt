@@ -1171,7 +1171,7 @@ Battery
 Numeric
 
 0
-3783
+3914
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1242,6 +1242,10 @@ on_change{'call_reopt'} = define(){
 		else
 			exit;
 	}
+
+	// reset size to 0 to remove battery costs from total_installed_cost
+	value("batt_bank_power", 0);
+	value("batt_bank_size", 0); 
 
 	reopt = reopt_size_battery();
 	

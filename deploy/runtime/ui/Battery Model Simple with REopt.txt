@@ -729,7 +729,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2649
+2781
 on_load{'Battery Model Simple with REopt'} = define()
 {
 	check_enabled();
@@ -758,6 +758,10 @@ function check_enabled()
 }
 
 on_change{'call_reopt'} = define(){
+	// reset size to 0 to remove battery costs from total_installed_cost
+	value("batt_simple_kw", 0);
+	value("batt_simple_kwh", 0); 
+	
 	reopt = reopt_size_battery();
 	y = reopt.response;
 	if (reopt.error){
