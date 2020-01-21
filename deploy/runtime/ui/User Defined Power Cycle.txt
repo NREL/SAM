@@ -1,7 +1,7 @@
 User Defined Power Cycle
 905
 1075
-32
+34
 GroupBox
 
 1
@@ -42,13 +42,13 @@ Name
 btn_gen_inputs
 X
 3
-66
+318
 Y
 3
-357
+264
 Width
 3
-114
+369
 Height
 3
 26
@@ -57,11 +57,71 @@ Tool Tip
 0
 Caption
 5
-15
-Generate Inputs
+61
+Generate New Independent Variable Combinations in Table Below
 TabOrder
 3
 4294967295
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+39
+Y
+3
+246
+Width
+3
+839
+Height
+3
+150
+Tool Tip
+5
+0
+Caption
+5
+60
+Create a template table to populate with your own cycle data
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+object 417
+X
+3
+39
+Y
+3
+111
+Width
+3
+840
+Height
+3
+124
+Tool Tip
+5
+0
+Caption
+5
+80
+Independent variable information calculated from power cycle data in table below
+Bold
+2
+1
 GroupBox
 
 1
@@ -92,54 +152,6 @@ Performance as Function of HTF Temperature, HTF Mass Flow Rate and Ambient Tempe
 Bold
 2
 1
-Label
-
-1
-13
-Name
-5
-10
-object 722
-X
-3
-18
-Y
-3
-111
-Width
-3
-603
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-60
-Low, design, and high parameter values for input generation:
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 Numeric
 
 1
@@ -150,10 +162,10 @@ Name
 ud_COPY_T_HTF_des
 X
 3
-183
+180
 Y
 3
-273
+318
 Width
 3
 90
@@ -212,10 +224,10 @@ Name
 ud_T_amb_des
 X
 3
-768
+765
 Y
 3
-273
+318
 Width
 3
 90
@@ -277,7 +289,7 @@ X
 765
 Y
 3
-189
+156
 Width
 3
 90
@@ -336,10 +348,10 @@ Name
 ud_T_amb_high
 X
 3
-768
+765
 Y
 3
-297
+342
 Width
 3
 90
@@ -401,7 +413,7 @@ X
 765
 Y
 3
-213
+180
 Width
 3
 90
@@ -460,10 +472,10 @@ Name
 ud_T_amb_levels
 X
 3
-768
+765
 Y
 3
-321
+366
 Width
 3
 90
@@ -522,10 +534,10 @@ Name
 ud_T_amb_low
 X
 3
-768
+765
 Y
 3
-249
+294
 Width
 3
 90
@@ -587,7 +599,7 @@ X
 765
 Y
 3
-165
+132
 Width
 3
 90
@@ -649,7 +661,7 @@ X
 186
 Y
 3
-189
+156
 Width
 3
 90
@@ -708,10 +720,10 @@ Name
 ud_T_htf_high
 X
 3
-183
+180
 Y
 3
-297
+342
 Width
 3
 90
@@ -773,7 +785,7 @@ X
 186
 Y
 3
-213
+180
 Width
 3
 90
@@ -832,10 +844,10 @@ Name
 ud_T_htf_levels
 X
 3
-183
+180
 Y
 3
-321
+366
 Width
 3
 90
@@ -894,10 +906,10 @@ Name
 ud_T_htf_low
 X
 3
-183
+180
 Y
 3
-249
+294
 Width
 3
 90
@@ -959,7 +971,7 @@ X
 186
 Y
 3
-165
+132
 Width
 3
 90
@@ -1070,6 +1082,38 @@ BackColour
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+9
+Name
+5
+19
+ud_enable_gen_table
+X
+3
+243
+Y
+3
+264
+Width
+3
+26
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1142,16 +1186,16 @@ Name
 ud_ind_od
 X
 3
-183
+180
 Y
 3
-357
+411
 Width
 3
 480
 Height
 3
-750
+606
 Tool Tip
 5
 0
@@ -1235,7 +1279,7 @@ X
 450
 Y
 3
-189
+156
 Width
 3
 90
@@ -1294,10 +1338,10 @@ Name
 ud_m_dot_design
 X
 3
-477
+450
 Y
 3
-273
+318
 Width
 3
 90
@@ -1359,7 +1403,7 @@ X
 450
 Y
 3
-213
+180
 Width
 3
 90
@@ -1418,10 +1462,10 @@ Name
 ud_m_dot_htf_high
 X
 3
-477
+450
 Y
 3
-297
+342
 Width
 3
 90
@@ -1480,10 +1524,10 @@ Name
 ud_m_dot_htf_levels
 X
 3
-477
+450
 Y
 3
-321
+366
 Width
 3
 90
@@ -1542,10 +1586,10 @@ Name
 ud_m_dot_htf_low
 X
 3
-477
+450
 Y
 3
-249
+294
 Width
 3
 90
@@ -1607,7 +1651,7 @@ X
 450
 Y
 3
-165
+132
 Width
 3
 90
@@ -1731,7 +1775,7 @@ X
 765
 Y
 3
-141
+204
 Width
 3
 90
@@ -1793,7 +1837,7 @@ X
 186
 Y
 3
-141
+204
 Width
 3
 90
@@ -1855,7 +1899,7 @@ X
 450
 Y
 3
-141
+204
 Width
 3
 90
@@ -1905,7 +1949,7 @@ TabOrder
 3
 4294967295
 
-28
+29
 ud_COPY_T_HTF_des
 3
 1
@@ -1979,7 +2023,7 @@ Default
 ud_T_amb_levels
 3
 1
-Number of levels
+Ambient temperature parametric values
  
 Power Cycle
 0
@@ -2063,7 +2107,7 @@ Default
 ud_T_htf_levels
 3
 1
-Number of levels
+HTF parametric values
  
 Power Cycle
 0
@@ -2110,6 +2154,20 @@ MWe
 Power Cycle
 0
 8
+1
+1
+1
+1
+0
+Default
+ud_enable_gen_table
+3
+1
+Enable table inputs and macro
+ 
+ 
+0
+0
 1
 1
 1
@@ -2206,7 +2264,7 @@ Default
 ud_m_dot_htf_levels
 3
 1
-Number of levels
+HTF ṁ parametric values
  
 Power Cycle
 0
@@ -2420,7 +2478,11 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	ssc_free( obj );	
 };
 */
-1970
+2642
+on_load{'User Defined Power Cycle'} = define(){
+	on_change{'ud_enable_gen_table'}();
+};
+
 on_change{'btn_gen_inputs'} = define() {
 	//value("ud_ind_od", [[1,2,3,4,5,6,7],[11,22,33,44,55,66,77]]);
 	
@@ -2504,4 +2566,30 @@ on_change{'btn_gen_inputs'} = define() {
 	}
 
 	value("ud_ind_od", tbl_inputs);
+	
+	value("ud_enable_gen_table", 0);
+	on_change{'ud_enable_gen_table'}();
+};
+
+on_change{'ud_enable_gen_table'} = define()
+{
+	tf = value('ud_enable_gen_table')==1;
+	enable('btn_gen_inputs', tf);
+	
+	enable('ud_T_htf_levels',tf);
+	enable('ud_T_htf_low', tf);
+	enable('ud_COPY_T_HTF_des',tf);
+	enable('ud_T_htf_high',tf);
+	
+	enable('ud_m_dot_htf_levels', tf);
+	enable('ud_m_dot_htf_low',tf);
+	enable('ud_m_dot_design',tf);
+	enable('ud_m_dot_htf_high',tf);
+	
+	enable('ud_T_amb_levels',tf);
+	enable('ud_T_amb_low',tf);
+	enable('ud_T_amb_des',tf);
+	enable('ud_T_amb_high',tf);
+	
+	refresh();
 };
