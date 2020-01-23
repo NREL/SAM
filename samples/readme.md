@@ -2,7 +2,7 @@
 
 The `samples` folder contains example files to use with the System Advisor Model (SAM).
 
-> **Note.** To download a sample file, click the file name, and then click the **Download** button above the box displaying the file contents. Right-clicking the file name in the list to save it will download an HTML file instead of the file itself.
+> **Note.** To download a sample file, click the file name, and then click the **Download** button above the box displaying the file contents. For LK script files, follow the instructions on the LK Samples page to display the raw file and then copy and paste the content to a text editor. Right-clicking the file name in the list to save it will download an HTML file instead of the file itself.
 
 ## 3D Shade LK Scripts (.lk)
 
