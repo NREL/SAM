@@ -2,6 +2,8 @@
 
 The `samples` folder contains example files to use with the System Advisor Model (SAM).
 
+> **Note.** To download a sample file, click the file name, and then click the **Download** button above the box displaying the file contents. Right-clicking the file name in the list to save it will download an HTML file instead of the file itself.
+
 ## 3D Shade LK Scripts (.lk)
 
 These are LK scripts that work from the script editor in the 3D Shade Calculator to draw objects in the scene, import and export .s3d files, generate shading data, etc.
