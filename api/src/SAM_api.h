@@ -50,7 +50,7 @@ SAM_EXPORT void SAM_table_set_table(SAM_table t, const char *key, SAM_table tab,
 
 /// Get references to data stored in table
 
-SAM_EXPORT double * SAM_table_get_num(SAM_table t, const char *key, SAM_error *err);
+SAM_EXPORT double SAM_table_get_num(SAM_table t, const char *key, SAM_error *err);
 
 SAM_EXPORT double * SAM_table_get_array(SAM_table t, const char *key, int *n, SAM_error *err);
 

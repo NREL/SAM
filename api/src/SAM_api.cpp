@@ -230,12 +230,12 @@ if ( dat->type != ssc_type ) throw std::runtime_error(std::string(__func__) \
 
 
 
-SAM_EXPORT double* SAM_table_get_num(SAM_table t, const char *key, SAM_error *err){
-    double* result = nullptr;
+SAM_EXPORT double SAM_table_get_num(SAM_table t, const char *key, SAM_error *err){
+    double result;
     translateExceptions(err, [&]{
         GET_VARTABLE()
         GET_VARDATA(key, SSC_NUMBER)
-        result = &dat->num.at(0);
+        result = dat->num.at(0);
     });
     return result;
 }

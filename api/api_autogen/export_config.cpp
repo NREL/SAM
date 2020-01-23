@@ -4,8 +4,10 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <set>
 
 #include <ssc/sscapi.h>
+#include <shared/lib_util.h>
 
 #include "startup_extractor.h"
 #include "ui_form_extractor.h"
@@ -17,11 +19,90 @@
 
 #include "test.h"
 
+#if defined(_WIN32)
+#include <windows.h>
+#include <conio.h>
+
+
+int DeleteDirectory(const std::string &refcstrRootDirectory,
+                    bool              bDeleteSubdirectories = true)
+{
+  bool            bSubdirectory = false;       // Flag, indicating whether
+                                               // subdirectories have been found
+  HANDLE          hFile;                       // Handle to directory
+  std::string     strFilePath;                 // Filepath
+  std::string     strPattern;                  // Pattern
+  WIN32_FIND_DATA FileInformation;             // File information
+
+
+  strPattern = refcstrRootDirectory + "\\*.*";
+  hFile = ::FindFirstFile(strPattern.c_str(), &FileInformation);
+  if(hFile != INVALID_HANDLE_VALUE)
+  {
+    do
+    {
+      if(FileInformation.cFileName[0] != '.')
+      {
+        strFilePath.erase();
+        strFilePath = refcstrRootDirectory + "\\" + FileInformation.cFileName;
+
+        if(FileInformation.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+        {
+          if(bDeleteSubdirectories)
+          {
+            // Delete subdirectory
+            int iRC = DeleteDirectory(strFilePath, bDeleteSubdirectories);
+            if(iRC)
+              return iRC;
+          }
+          else
+            bSubdirectory = true;
+        }
+        else
+        {
+          // Set file attributes
+          if(::SetFileAttributes(strFilePath.c_str(),
+                                 FILE_ATTRIBUTE_NORMAL) == FALSE)
+            return ::GetLastError();
+
+          // Delete file
+          if(::DeleteFile(strFilePath.c_str()) == FALSE)
+            return ::GetLastError();
+        }
+      }
+    } while(::FindNextFile(hFile, &FileInformation) == TRUE);
+
+    // Close handle
+    ::FindClose(hFile);
+
+    DWORD dwError = ::GetLastError();
+    if(dwError != ERROR_NO_MORE_FILES)
+      return dwError;
+    else
+    {
+      if(!bSubdirectory)
+      {
+        // Set directory attributes
+        if(::SetFileAttributes(refcstrRootDirectory.c_str(),
+                               FILE_ATTRIBUTE_NORMAL) == FALSE)
+          return ::GetLastError();
+
+        // Delete directory
+        if(::RemoveDirectory(refcstrRootDirectory.c_str()) == FALSE)
+          return ::GetLastError();
+      }
+    }
+  }
+
+  return 0;
+}
+#endif
+
 
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 std::string active_config;
 
-void create_subdirectories(std::string dir, std::vector<std::string> folders){
+void create_empty_subdirectories(std::string dir, std::vector<std::string> folders){
     mode_t nMode = 0733; // UNIX style permissions
     // create directory first if it doesn't exist
     int nError = 0;
@@ -40,18 +121,23 @@ void create_subdirectories(std::string dir, std::vector<std::string> folders){
         std::string sPath = dir + '/' + name;
 
         // check if directory already exists
-        if( stat( sPath.c_str(), &info ) != 0 ) {
+        if( stat( sPath.c_str(), &info ) == 0 ) {
 #if defined(_WIN32)
-            nError = _mkdir(sPath.c_str());
+            DeleteDirectory(sPath.c_str());
 #else
-            nError = mkdir(sPath.c_str(), nMode);
+            system(std::string("rm -rf " + sPath).c_str());
 #endif
-            if (nError != 0) {
-                throw std::runtime_error("Couldn't create subdirectory: " + sPath);
-            }
         }
-        else if( info.st_mode & S_IFDIR )  // S_ISDIR() doesn't exist on my windows
-            continue;
+
+#if defined(_WIN32)
+        nError = _mkdir(sPath.c_str());
+#else
+        nError = mkdir(sPath.c_str(), nMode);
+#endif
+        if (nError != 0) {
+            throw std::runtime_error("Couldn't create subdirectory: " + sPath);
+        }
+
     }
 }
 
@@ -91,9 +177,9 @@ int main(int argc, char *argv[]){
         }
     }
 
-    create_subdirectories(pysam_path, std::vector<std::string>({"docs", "src", "stubs"}));
-    create_subdirectories(pysam_path + "/docs", std::vector<std::string>({"modules"}));
-    create_subdirectories(api_path, std::vector<std::string>({"include", "src"}));
+    create_empty_subdirectories(pysam_path, std::vector<std::string>({"docs", "modules", "stubs"}));
+    create_empty_subdirectories(pysam_path + "/docs", std::vector<std::string>({"modules"}));
+    create_empty_subdirectories(api_path, std::vector<std::string>({"include", "modules"}));
 
     std::cout << "Exporting C API files to " << api_path << "\n";
     std::cout << "Exporting default JSON files to " << defaults_path << "\n";
@@ -122,17 +208,11 @@ int main(int argc, char *argv[]){
 
     SAM_ui_extracted_db.populate_ui_data(runtime_path + "/ui/", unique_ui_form_names);
 
+    // keep track of all compute_modules that have been made into PySAM modules
+    std::set<std::string> processed_cmods;
+
     // parsing the callbacks requires all ui forms in a config
     active_config = "";
-
-    // produce sco2 compute_modules
-    std::vector<std::string> sco2_cmods = {"sco2_csp_system", "sco2_air_cooler","sco2_csp_ud_pc_tables",
-                                           "sco2_design_cycle", "sco2_design_point", "sco2_offdesign"};
-    for (auto& cm : sco2_cmods ){
-        builder_generator be_sco2;
-        be_sco2.config_name = "SCO2";
-        be_sco2.create_all(cm, defaults_path, api_path, pysam_path, false);
-    }
 
     // do technology configs with None first
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
@@ -165,6 +245,7 @@ int main(int argc, char *argv[]){
             builder_generator b_gen(&ce);
             b_gen.create_all(primary_cmods[i], defaults_path, api_path, pysam_path);
             //b_gen.print_subgraphs(graph_path);
+            processed_cmods.insert(primary_cmods[i]);
         }
     }
     // do all configs
@@ -193,7 +274,26 @@ int main(int argc, char *argv[]){
             builder_generator b_gen(&ce);
             b_gen.create_all(primary_cmods[i], defaults_path, api_path, pysam_path);
             //b_gen.print_subgraphs(graph_path);
+            processed_cmods.insert(util::lower_case(primary_cmods[i]));
         }
+    }
+
+    // produce remaining compute_modules
+    std::cout << "Remaining cmods: \n";
+    int i=0;
+    ssc_entry_t p_entry = ssc_module_entry(i);
+    while( p_entry  )
+    {
+        const char* name = ssc_entry_name(p_entry);
+//        const char* desc = ssc_entry_description(p_entry);
+        p_entry = ssc_module_entry(++i);
+
+        if (processed_cmods.count(util::lower_case(name)) != 0)
+            continue;
+        std::cout << "\t" << name << "... ";
+        builder_generator cm_bg;
+        cm_bg.config_name = name;
+        cm_bg.create_all(name, defaults_path, api_path, pysam_path, false);
     }
 
     std::cout << "Complete... Exiting\n";

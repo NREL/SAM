@@ -9,6 +9,9 @@
 
 std::string all_options_of_cmod(const std::string &cmod_symbol, const std::string& config_name) {
     size_t pos = config_name.find_last_of('-');
+    // if not a tech-fin config, it's a single cmod so it won't have any default configuration options
+    if (pos == std::string::npos)
+        return "";
     std::string tech = config_to_cmod_name[format_as_symbol(config_name.substr(0, pos))];
     std::string fin = config_to_cmod_name[format_as_symbol(config_name.substr(pos+1))];
     assert(tech.length() + fin.length());
@@ -102,10 +105,7 @@ std::string get_params_str(const std::string &doc){
         if (params.length() > 0)
             params += ", ";
         size_t word_end = doc.find("'", startpos+1);
-        params += doc.substr(startpos+1, word_end - startpos - 1) + "=";
-        startpos = doc.find(" - ", word_end + 1);
-        word_end = doc.find(' ', startpos + 3);
-        params += doc.substr(startpos+3, word_end - startpos - 3);
+        params += doc.substr(startpos+1, word_end - startpos - 1);
         startpos = doc.find("'", doc.find("\\n", word_end));
     }
     return params;
@@ -117,11 +117,13 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     std::string tech_symbol = cmod_symbol;
     if(cmod_symbol == "Battery")
         tech_symbol = "StandAloneBattery";
+    else if (cmod_symbol == "6parsolve")
+        tech_symbol = "SixParsolve";
     else if (root->m_vardefs.find(cmod_symbol) != root->m_vardefs.end())
         tech_symbol += "Model";
 
     std::ofstream fx_file;
-    fx_file.open(file_dir + "/src/" + tech_symbol + ".c");
+    fx_file.open(file_dir + "/modules/" + tech_symbol + ".c");
     assert(fx_file.is_open());
 
     fx_file << "#include <Python.h>\n"
@@ -208,8 +210,19 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                    "\tPyObject* dict = PySAM_export_to_dict((PyObject *) self, tp);\n"
                    "\treturn dict;\n"
                    "}\n"
-                   "\n"
-                   "static PyMethodDef " << module_symbol << "_methods[] = {\n"
+                   "\n";
+
+        // add ssc equations docs for eqns that are under a variable group
+        auto group_it = root->m_eqn_entries.find(module_symbol);
+        if (group_it != root->m_eqn_entries.end()){
+            auto func_map = group_it->second;
+            for (const auto& func_it : func_map){
+                fx_file << "static const char* const " << func_it.second.name << "_doc = \n";
+                fx_file << "\"" << func_it.second.doc << "\";\n\n";
+            }
+        }
+
+        fx_file << "static PyMethodDef " << module_symbol << "_methods[] = {\n"
                    "\t\t{\"assign\",            (PyCFunction)"
                 << module_symbol << "_assign,  METH_VARARGS,\n"
                    "\t\t\tPyDoc_STR(\"assign() -> None\\n Assign attributes from dictionary\\n\\n"
@@ -218,14 +231,13 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                 << "_export,  METH_VARARGS,\n"
                    "\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into dictionary\")},\n";
 
-        // add ssc quations
-        auto group_it = root->m_eqn_entries.find(module_symbol);
+        // add ssc equations as methods under the variable group
         if (group_it != root->m_eqn_entries.end()){
             auto func_map = group_it->second;
             for (const auto& func_it : func_map){
                 fx_file << "\t\t{\"" << func_it.first << "\", (PyCFunction)" << func_it.second.name;
                 fx_file << ", METH_VARARGS | METH_KEYWORDS,\n"
-                           "\t\t\tPyDoc_STR(\"" << func_it.second.doc << "\")},\n";
+                           "\t\t\t" << func_it.second.name << "_doc},\n";
             }
         }
 
@@ -561,8 +573,19 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "{\n"
                "\treturn PySAM_export_to_nested_dict((PyObject *) self, self->x_attr);\n"
                "}\n"
-               "\n"
-               "static PyMethodDef " << tech_symbol << "_methods[] = {\n"
+               "\n";
+
+    // add ssc equations docs for eqns that are under the cmod class
+    auto cmod_it = root->m_eqn_entries.find(cmod_symbol);
+    if (cmod_it != root->m_eqn_entries.end()){
+        auto func_map = cmod_it->second;
+        for (const auto& func_it : func_map){
+            fx_file << "static const char* const " << func_it.second.name << "_doc = \n";
+            fx_file << "\"" << func_it.second.doc << "\";\n\n";
+        }
+    }
+
+    fx_file << "static PyMethodDef " << tech_symbol << "_methods[] = {\n"
                "\t\t{\"execute\",            (PyCFunction)" << tech_symbol << "_execute,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"execute(int verbosity) -> None\\n Execute simulation with verbosity level 0 (default) or 1\")},\n"
                "\t\t{\"assign\",            (PyCFunction)" << tech_symbol << "_assign,  METH_VARARGS,\n"
@@ -570,8 +593,19 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "``nested_dict = { '" << root->vardefs_order[0] << "': { var: val, ...}, ...}``"
                "\")},\n"
                "\t\t{\"export\",            (PyCFunction)" << tech_symbol << "_export,  METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into nested dictionary\")},\n"
-               "\t\t{NULL,              NULL}           /* sentinel */\n"
+               "\t\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into nested dictionary\")},\n";
+
+    // add ssc equations as methods under the cmod class
+    if (cmod_it != root->m_eqn_entries.end()){
+        auto func_map = cmod_it->second;
+        for (const auto& func_it : func_map){
+            fx_file << "\t\t{\"" << func_it.first << "\", (PyCFunction)" << func_it.second.name;
+            fx_file << ", METH_VARARGS | METH_KEYWORDS,\n"
+                       "\t\t\t" << func_it.second.name << "_doc},\n";
+        }
+    }
+
+    fx_file << "\t\t{NULL,              NULL}           /* sentinel */\n"
                "};\n"
                "\n"
                "static PyObject *\n"

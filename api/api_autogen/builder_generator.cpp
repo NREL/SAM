@@ -202,7 +202,13 @@ void builder_generator::gather_equations(const std::string &cmod) {
         std::string group_name;
         std::string func_name = entry.name;
         size_t pos = func_name.find('_');
+        // if the first underscore-delimited substring is a group name, the eqn goes under that group
         group_name = func_name.substr(0, pos);
+        if (m_vardefs.find(group_name) == m_vardefs.end()){
+            // otherwise the eqn goes under the cmod class
+            group_name = cmod_symbol;
+            pos = -1;
+        }
         func_name = func_name.substr(pos + 1);
         auto it = m_eqn_entries.find(group_name);
         if (it == m_eqn_entries.end()){
@@ -354,6 +360,11 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
         for (auto it = map.begin(); it != map.end(); ++it){
             std::string var_symbol = it->first;
             var_def v = it->second;
+
+            // if it's a file name, don't assign
+            if (var_symbol.find("file") != std::string::npos){
+                continue;
+            }
 
             VarValue* vv = nullptr;
 
@@ -820,7 +831,7 @@ void builder_generator::create_all(std::string cmod, const std::string &defaults
         builder_C_API c_API(this);
 
         c_API.create_SAM_headers(cmod, api_path + "/include");
-        c_API.create_SAM_definitions(cmod, api_path + "/src");
+        c_API.create_SAM_definitions(cmod, api_path + "/modules");
     }
 
     if (print_pysam){
