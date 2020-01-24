@@ -1,6 +1,6 @@
 Battery Current and Capacity
-995
-426
+993
+427
 27
 GroupBox
 

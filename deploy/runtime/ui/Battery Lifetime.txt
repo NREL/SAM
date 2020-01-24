@@ -1,6 +1,6 @@
 Battery Lifetime
-999
-767
+995
+764
 17
 GroupBox
 
@@ -12,10 +12,10 @@ Name
 Battery Bank Sizing
 X
 3
-9
+6
 Y
 3
-6
+3
 Width
 3
 985
