@@ -23,12 +23,40 @@ SAM_EXPORT
 void error_destruct(SAM_error error);
 
 
+SAM_EXPORT typedef void* SAM_table;
+
+//
+// SAM_var is a variant type that form the entries of SAM_table
+//
+
+SAM_EXPORT typedef void* SAM_var;
+
+SAM_EXPORT SAM_var SAM_var_construct(SAM_error *err);
+
+SAM_EXPORT void SAM_var_destruct(SAM_var d, SAM_error *err);
+
+SAM_EXPORT int SAM_var_query(SAM_var d, SAM_error *err);
+
+SAM_EXPORT void SAM_var_size(SAM_var d, int* rows, int* cols, SAM_error *err);
+
+SAM_EXPORT const char * SAM_var_get_string(SAM_var d, SAM_error *err);
+
+SAM_EXPORT double SAM_var_get_number(SAM_var d, SAM_error *err);
+
+SAM_EXPORT double* SAM_var_get_arr(SAM_var d, int* length, SAM_error *err);
+
+SAM_EXPORT double* SAM_var_get_mat(SAM_var d, int* nrows, int* ncols, SAM_error *err);
+
+SAM_EXPORT SAM_table SAM_var_get_table(SAM_var d, SAM_error *err);
+
+SAM_EXPORT SAM_var SAM_var_get_datarr(SAM_var d, int r, SAM_error *err);
+
+SAM_EXPORT SAM_var SAM_var_get_datmat(SAM_var d, int r, int c, SAM_error *err);
 
 //
 // SAM table/dictionary methods
 //
 
-SAM_EXPORT typedef void* SAM_table;
 
 SAM_EXPORT SAM_table SAM_table_construct(SAM_error *err);
 
@@ -60,6 +88,11 @@ SAM_EXPORT SAM_table SAM_table_get_table(SAM_table t, const char *key, SAM_error
 
 SAM_EXPORT const char * SAM_table_get_string(SAM_table t, const char* key, SAM_error *err);
 
+SAM_EXPORT SAM_var SAM_table_get_datarr(SAM_table t, const char *key, int *len, SAM_error *err);
+
+SAM_EXPORT SAM_var SAM_table_get_datmat(SAM_table t, const char *key, int *nrows, int *ncols, SAM_error *err);
+
+
 /// Iterator functions
 
 #define SAM_INVALID 0
@@ -68,6 +101,8 @@ SAM_EXPORT const char * SAM_table_get_string(SAM_table t, const char* key, SAM_e
 #define SAM_ARRAY 3
 #define SAM_MATRIX 4
 #define SAM_TABLE 5
+#define SAM_DATARR 6    // entries may be any type
+#define SAM_DATMAT 7    // entries may be any type
 
 SAM_EXPORT int SAM_table_size(SAM_table t, SAM_error *err);
 

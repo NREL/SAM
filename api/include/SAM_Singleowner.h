@@ -32,6 +32,187 @@ extern "C"
 
 
 	//
+	// Revenue parameters
+	//
+
+	/**
+	 * Set dispatch_factor1: TOD factor for period 1
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor1_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor2: TOD factor for period 2
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor2_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor3: TOD factor for period 3
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor3_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor4: TOD factor for period 4
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor4_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor5: TOD factor for period 5
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor6: TOD factor for period 6
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor6_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor7: TOD factor for period 7
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor7_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor8: TOD factor for period 8
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor8_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor9: TOD factor for period 9
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor9_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factors_ts: Dispatch payment factor array
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=1
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factors_ts_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set dispatch_sched_weekday: Diurnal weekday TOD periods [1..9]
+	 * options: 12 x 24 matrix
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_sched_weekday_mset(SAM_Singleowner ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set dispatch_sched_weekend: Diurnal weekend TOD periods [1..9]
+	 * options: 12 x 24 matrix
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_sched_weekend_mset(SAM_Singleowner ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set flip_target_percent: After-tax IRR target [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=11
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_flip_target_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set flip_target_year: IRR target year [Year]
+	 * options: None
+	 * constraints: MIN=1
+	 * required if: ?=11
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_flip_target_year_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ppa_escalation: PPA escalation rate [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_ppa_escalation_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ppa_multiplier_model: PPA multiplier model [0/1]
+	 * options: 0=diurnal,1=timestep
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_ppa_multiplier_model_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ppa_price_input: PPA price in first year [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_ppa_price_input_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ppa_soln_max: PPA solution maximum ppa [cents/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=100
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_ppa_soln_max_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ppa_soln_max_iterations: PPA solution maximum number of iterations
+	 * options: None
+	 * constraints: INTEGER,MIN=1
+	 * required if: ?=100
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_ppa_soln_max_iterations_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ppa_soln_min: PPA solution minimum ppa [cents/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_ppa_soln_min_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ppa_soln_mode: PPA solution mode [0/1]
+	 * options: 0=solve ppa,1=specify ppa
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_ppa_soln_mode_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ppa_soln_tolerance: PPA solution tolerance
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1e-5
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_ppa_soln_tolerance_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+
+	//
 	// FinancialParameters parameters
 	//
 
@@ -42,6 +223,134 @@ extern "C"
 	 * required if: ?=30
 	 */
 	SAM_EXPORT void SAM_Singleowner_FinancialParameters_analysis_period_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set construction_financing_cost: Construction financing total [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_construction_financing_cost_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cost_debt_closing: Debt closing cost [$]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=250000
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_cost_debt_closing_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cost_debt_fee: Debt closing fee (% of total debt amount) [%]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=1.5
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_cost_debt_fee_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cost_other_financing: Other financing cost [$]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=150000
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_cost_other_financing_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set debt_option: Debt option [0/1]
+	 * options: 0=debt percent,1=dscr
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_debt_option_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set debt_percent: Debt percent [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=50
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_debt_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dscr: Debt service coverage ratio
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=1.5
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_dscr_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dscr_reserve_months: Debt service reserve account [months P&I]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=6
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_dscr_reserve_months_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set equip1_reserve_cost: Major equipment reserve 1 cost [$/W]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=0.25
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_equip1_reserve_cost_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set equip1_reserve_freq: Major equipment reserve 1 frequency [years]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=12
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_equip1_reserve_freq_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set equip2_reserve_cost: Major equipment reserve 2 cost [$/W]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_equip2_reserve_cost_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set equip2_reserve_freq: Major equipment reserve 2 frequency [years]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=15
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_equip2_reserve_freq_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set equip3_reserve_cost: Major equipment reserve 3 cost [$/W]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_equip3_reserve_cost_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set equip3_reserve_freq: Major equipment reserve 3 frequency [years]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=20
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_equip3_reserve_freq_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set equip_reserve_depr_fed: Major equipment reserve federal depreciation
+	 * options: 0=5yr MACRS,1=15yr MACRS,2=5yr SL,3=15yr SL, 4=20yr SL,5=39yr SL,6=Custom
+	 * constraints: INTEGER,MIN=0,MAX=6
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_equip_reserve_depr_fed_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set equip_reserve_depr_sta: Major equipment reserve state depreciation
+	 * options: 0=5yr MACRS,1=15yr MACRS,2=5yr SL,3=15yr SL, 4=20yr SL,5=39yr SL,6=Custom
+	 * constraints: INTEGER,MIN=0,MAX=6
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_equip_reserve_depr_sta_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
 	 * Set federal_tax_rate: Federal income tax rate [%]
@@ -66,6 +375,38 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Singleowner_FinancialParameters_insurance_rate_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set loan_moratorium: Loan moratorium period [years]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_loan_moratorium_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set months_receivables_reserve: Receivables reserve months of PPA revenue [months]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_months_receivables_reserve_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set months_working_reserve: Working capital reserve months of operating costs [months]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=6
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_months_working_reserve_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set payment_option: Debt repayment option [0/1]
+	 * options: 0=Equal payments (standard amortization),1=Fixed principal declining interest
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_payment_option_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
 	 * Set prop_tax_assessed_decline: Assessed value annual decline [%]
@@ -100,6 +441,30 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_FinancialParameters_real_discount_rate_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
+	 * Set reserves_interest: Interest on reserves [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=1.75
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_reserves_interest_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set roe_input: Return on equity
+	 * options: None
+	 * constraints: None
+	 * required if: ?=20
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_roe_input_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set salvage_percentage: Net pre-tax cash salvage value [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=10
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_salvage_percentage_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
 	 * Set state_tax_rate: State income tax rate [%]
 	 * options: None
 	 * constraints: None
@@ -122,6 +487,22 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Singleowner_FinancialParameters_system_heat_rate_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set term_int_rate: Term financing interest rate [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=8.5
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_term_int_rate_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set term_tenor: Term financing period [years]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=10
+	 */
+	SAM_EXPORT void SAM_Singleowner_FinancialParameters_term_tenor_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 
 	//
@@ -345,7 +726,7 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_SystemCosts_om_production_escal_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
-	 * Set om_replacement_cost1: Repacement cost 1 [$/kWh]
+	 * Set om_replacement_cost1: Replacement cost 1 [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -353,7 +734,7 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_SystemCosts_om_replacement_cost1_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set om_replacement_cost2: Repacement cost 2 [$/kW]
+	 * Set om_replacement_cost2: Replacement cost 2 [$/kW]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -367,6 +748,38 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Singleowner_SystemCosts_om_replacement_cost_escal_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set system_lifetime_recapitalize: Recapitalization boolean
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_SystemCosts_system_lifetime_recapitalize_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set system_recapitalization_cost: Recapitalization cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_SystemCosts_system_recapitalization_cost_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set system_recapitalization_escalation: Recapitalization escalation (above inflation) [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_SystemCosts_system_recapitalization_escalation_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set system_use_recapitalization: Recapitalization expenses [0/1]
+	 * options: 0=None,1=Recapitalize
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_SystemCosts_system_use_recapitalization_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
 	 * Set total_installed_cost: Installed cost [$]
@@ -540,6 +953,331 @@ extern "C"
 	 * required if: ?=10
 	 */
 	SAM_EXPORT void SAM_Singleowner_TaxCreditIncentives_ptc_sta_term_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+
+	//
+	// Depreciation parameters
+	//
+
+	/**
+	 * Set depr_alloc_custom_percent: Custom depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_custom_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_alloc_macrs_15_percent: 15-yr MACRS depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=1.5
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_macrs_15_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_alloc_macrs_5_percent: 5-yr MACRS depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=89
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_macrs_5_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_alloc_sl_15_percent: 15-yr straight line depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=3
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_15_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_alloc_sl_20_percent: 20-yr straight line depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=3
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_20_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_alloc_sl_39_percent: 39-yr straight line depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0.5
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_39_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_alloc_sl_5_percent: 5-yr straight line depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_5_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed: Federal bonus depreciation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_custom: Federal bonus depreciation custom [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_custom_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_macrs_15: Federal bonus depreciation 15-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_macrs_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_macrs_5: Federal bonus depreciation 5-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_macrs_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_sl_15: Federal bonus depreciation 15-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_sl_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_sl_20: Federal bonus depreciation 20-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_sl_20_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_sl_39: Federal bonus depreciation 39-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_sl_39_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_sl_5: Federal bonus depreciation 5-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_sl_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta: State bonus depreciation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_custom: State bonus depreciation custom [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_custom_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_macrs_15: State bonus depreciation 15-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_macrs_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_macrs_5: State bonus depreciation 5-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_macrs_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_sl_15: State bonus depreciation 15-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_sl_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_sl_20: State bonus depreciation 20-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_sl_20_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_sl_39: State bonus depreciation 39-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_sl_39_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_sl_5: State bonus depreciation 5-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_sl_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_custom_schedule: Custom depreciation schedule [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_custom_schedule_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set depr_fedbas_method: Method of federal depreciation reduction
+	 * options: 0=5yr MACRS,1=Proportional
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_fedbas_method_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_custom: Federal ITC depreciation custom [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_custom_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_macrs_15: Federal ITC depreciation 15-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_macrs_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_macrs_5: Federal ITC depreciation 5-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_macrs_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_sl_15: Federal ITC depreciation 15-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_sl_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_sl_20: Federal ITC depreciation 20-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_sl_20_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_sl_39: Federal ITC depreciation 39-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_sl_39_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_sl_5: Federal ITC depreciation 5-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_sl_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_custom: State ITC depreciation custom [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_custom_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_macrs_15: State ITC depreciation 15-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_macrs_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_macrs_5: State ITC depreciation 5-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_macrs_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_sl_15: State ITC depreciation 15-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_sl_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_sl_20: State ITC depreciation 20-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_sl_20_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_sl_39: State ITC depreciation 39-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_sl_39_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_sl_5: State ITC depreciation 5-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_sl_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_stabas_method: Method of state depreciation reduction
+	 * options: 0=5yr MACRS,1=Proportional
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_stabas_method_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 
 	//
@@ -1107,6 +1845,14 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_PaymentIncentives_pbi_fed_escal_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
+	 * Set pbi_fed_for_ds: Federal PBI available for debt service [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_PaymentIncentives_pbi_fed_for_ds_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
 	 * Set pbi_fed_tax_fed: Federal PBI federal taxable [0/1]
 	 * options: None
 	 * constraints: BOOLEAN
@@ -1145,6 +1891,14 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Singleowner_PaymentIncentives_pbi_oth_escal_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set pbi_oth_for_ds: Other PBI available for debt service [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_PaymentIncentives_pbi_oth_for_ds_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_tax_fed: Other PBI federal taxable [0/1]
@@ -1187,6 +1941,14 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_PaymentIncentives_pbi_sta_escal_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
+	 * Set pbi_sta_for_ds: State PBI available for debt service [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_PaymentIncentives_pbi_sta_for_ds_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
 	 * Set pbi_sta_tax_fed: State PBI federal taxable [0/1]
 	 * options: None
 	 * constraints: BOOLEAN
@@ -1227,6 +1989,14 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_PaymentIncentives_pbi_uti_escal_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
+	 * Set pbi_uti_for_ds: Utility PBI available for debt service [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_PaymentIncentives_pbi_uti_for_ds_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
 	 * Set pbi_uti_tax_fed: Utility PBI federal taxable [0/1]
 	 * options: None
 	 * constraints: BOOLEAN
@@ -1252,7 +2022,7 @@ extern "C"
 
 
 	//
-	// Battery parameters
+	// BatterySystem parameters
 	//
 
 	/**
@@ -1261,7 +2031,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Singleowner_Battery_batt_bank_replacement_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Singleowner_BatterySystem_batt_bank_replacement_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set batt_computed_bank_capacity: Battery bank capacity [kWh]
@@ -1269,7 +2039,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Singleowner_Battery_batt_computed_bank_capacity_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Singleowner_BatterySystem_batt_computed_bank_capacity_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_meter_position: Position of battery relative to electric meter
@@ -1277,7 +2047,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Singleowner_Battery_batt_meter_position_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Singleowner_BatterySystem_batt_meter_position_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_replacement_option: Enable battery replacement? [0=none,1=capacity based,2=user schedule]
@@ -1285,7 +2055,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Singleowner_Battery_batt_replacement_option_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Singleowner_BatterySystem_batt_replacement_option_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_replacement_schedule: Battery bank replacements per year (user specified) [number/year]
@@ -1293,7 +2063,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Singleowner_Battery_batt_replacement_schedule_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Singleowner_BatterySystem_batt_replacement_schedule_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set battery_per_kWh: Battery cost [$/kWh]
@@ -1301,7 +2071,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_Singleowner_Battery_battery_per_kWh_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Singleowner_BatterySystem_battery_per_kWh_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
 	 * Set en_batt: Enable battery storage model [0/1]
@@ -1309,15 +2079,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Singleowner_Battery_en_batt_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set en_electricity_rates: Enable electricity rates for grid purchase [0/1]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Battery_en_electricity_rates_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Singleowner_BatterySystem_en_batt_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
 	 * Set grid_to_batt: Electricity to battery from grid [kW]
@@ -1325,12 +2087,33 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Singleowner_Battery_grid_to_batt_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Singleowner_BatterySystem_grid_to_batt_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// ElectricityRates parameters
+	//
+
+	/**
+	 * Set en_electricity_rates: Enable electricity rates for grid purchase [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_ElectricityRates_en_electricity_rates_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 
 	//
 	// SystemOutput parameters
 	//
+
+	/**
+	 * Set annual_energy_pre_curtailment_ac: Annual Energy AC pre-curtailment (year 1) [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_SystemOutput_annual_energy_pre_curtailment_ac_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
 	 * Set degradation: Annual energy degradation
@@ -1356,6 +2139,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_Singleowner_SystemOutput_system_capacity_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
+	/**
+	 * Set system_pre_curtailment_kwac: System power before grid curtailment [kW]
+	 * options: System generation
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Singleowner_SystemOutput_system_pre_curtailment_kwac_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+
 
 	//
 	// UtilityBill parameters
@@ -1371,175 +2162,8 @@ extern "C"
 
 
 	//
-	// ReturnOnEquity parameters
+	// Lifetime parameters
 	//
-
-	/**
-	 * Set roe_input: Return on equity
-	 * options: None
-	 * constraints: None
-	 * required if: ?=20
-	 */
-	SAM_EXPORT void SAM_Singleowner_ReturnOnEquity_roe_input_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// Moratorium parameters
-	//
-
-	/**
-	 * Set loan_moratorium: Loan moratorium period [years]
-	 * options: None
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Moratorium_loan_moratorium_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// Recapitalization parameters
-	//
-
-	/**
-	 * Set system_lifetime_recapitalize: Recapitalization boolean
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Recapitalization_system_lifetime_recapitalize_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set system_recapitalization_cost: Recapitalization cost [$]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Recapitalization_system_recapitalization_cost_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set system_recapitalization_escalation: Recapitalization escalation (above inflation) [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Recapitalization_system_recapitalization_escalation_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set system_use_recapitalization: Recapitalization expenses [0/1]
-	 * options: 0=None,1=Recapitalize
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Recapitalization_system_use_recapitalization_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// TimeOfDelivery parameters
-	//
-
-	/**
-	 * Set dispatch_factor1: TOD factor for period 1
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_factor1_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor2: TOD factor for period 2
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_factor2_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor3: TOD factor for period 3
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_factor3_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor4: TOD factor for period 4
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_factor4_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor5: TOD factor for period 5
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_factor5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor6: TOD factor for period 6
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_factor6_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor7: TOD factor for period 7
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_factor7_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor8: TOD factor for period 8
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_factor8_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor9: TOD factor for period 9
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_factor9_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factors_ts: Dispatch payment factor array
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=1
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_factors_ts_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set dispatch_sched_weekday: Diurnal weekday TOD periods [1..9]
-	 * options: 12 x 24 matrix
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_sched_weekday_mset(SAM_Singleowner ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set dispatch_sched_weekend: Diurnal weekend TOD periods [1..9]
-	 * options: 12 x 24 matrix
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_dispatch_sched_weekend_mset(SAM_Singleowner ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ppa_multiplier_model: PPA multiplier model [0/1]
-	 * options: 0=diurnal,1=timestep
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_ppa_multiplier_model_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 	/**
 	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
@@ -1547,665 +2171,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Singleowner_TimeOfDelivery_system_use_lifetime_output_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// ReserveAccounts parameters
-	//
-
-	/**
-	 * Set equip1_reserve_cost: Major equipment reserve 1 cost [$/W]
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: ?=0.25
-	 */
-	SAM_EXPORT void SAM_Singleowner_ReserveAccounts_equip1_reserve_cost_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set equip1_reserve_freq: Major equipment reserve 1 frequency [years]
-	 * options: None
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=12
-	 */
-	SAM_EXPORT void SAM_Singleowner_ReserveAccounts_equip1_reserve_freq_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set equip2_reserve_cost: Major equipment reserve 2 cost [$/W]
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_ReserveAccounts_equip2_reserve_cost_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set equip2_reserve_freq: Major equipment reserve 2 frequency [years]
-	 * options: None
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=15
-	 */
-	SAM_EXPORT void SAM_Singleowner_ReserveAccounts_equip2_reserve_freq_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set equip3_reserve_cost: Major equipment reserve 3 cost [$/W]
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_ReserveAccounts_equip3_reserve_cost_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set equip3_reserve_freq: Major equipment reserve 3 frequency [years]
-	 * options: None
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=20
-	 */
-	SAM_EXPORT void SAM_Singleowner_ReserveAccounts_equip3_reserve_freq_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set reserves_interest: Interest on reserves [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=1.75
-	 */
-	SAM_EXPORT void SAM_Singleowner_ReserveAccounts_reserves_interest_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// Depreciation parameters
-	//
-
-	/**
-	 * Set depr_alloc_custom_percent: Custom depreciation federal and state allocation [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_custom_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_alloc_macrs_15_percent: 15-yr MACRS depreciation federal and state allocation [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=1.5
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_macrs_15_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_alloc_macrs_5_percent: 5-yr MACRS depreciation federal and state allocation [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=89
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_macrs_5_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_alloc_sl_15_percent: 15-yr straight line depreciation federal and state allocation [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=3
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_15_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_alloc_sl_20_percent: 20-yr straight line depreciation federal and state allocation [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=3
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_20_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_alloc_sl_39_percent: 39-yr straight line depreciation federal and state allocation [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=0.5
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_39_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_alloc_sl_5_percent: 5-yr straight line depreciation federal and state allocation [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_5_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_fed: Federal bonus depreciation [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_fed_custom: Federal bonus depreciation custom [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_custom_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_fed_macrs_15: Federal bonus depreciation 15-yr MACRS [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_macrs_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_fed_macrs_5: Federal bonus depreciation 5-yr MACRS [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_macrs_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_fed_sl_15: Federal bonus depreciation 15-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_sl_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_fed_sl_20: Federal bonus depreciation 20-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_sl_20_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_fed_sl_39: Federal bonus depreciation 39-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_sl_39_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_fed_sl_5: Federal bonus depreciation 5-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_sl_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_sta: State bonus depreciation [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_sta_custom: State bonus depreciation custom [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_custom_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_sta_macrs_15: State bonus depreciation 15-yr MACRS [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_macrs_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_sta_macrs_5: State bonus depreciation 5-yr MACRS [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_macrs_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_sta_sl_15: State bonus depreciation 15-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_sl_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_sta_sl_20: State bonus depreciation 20-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_sl_20_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_sta_sl_39: State bonus depreciation 39-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_sl_39_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_bonus_sta_sl_5: State bonus depreciation 5-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_sl_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_custom_schedule: Custom depreciation schedule [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_custom_schedule_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set depr_fedbas_method: Method of federal depreciation reduction
-	 * options: 0=5yr MACRS,1=Proportional
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_fedbas_method_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_fed_custom: Federal ITC depreciation custom [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_custom_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_fed_macrs_15: Federal ITC depreciation 15-yr MACRS [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_macrs_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_fed_macrs_5: Federal ITC depreciation 5-yr MACRS [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_macrs_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_fed_sl_15: Federal ITC depreciation 15-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_sl_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_fed_sl_20: Federal ITC depreciation 20-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_sl_20_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_fed_sl_39: Federal ITC depreciation 39-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_sl_39_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_fed_sl_5: Federal ITC depreciation 5-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_fed_sl_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_sta_custom: State ITC depreciation custom [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_custom_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_sta_macrs_15: State ITC depreciation 15-yr MACRS [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_macrs_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_sta_macrs_5: State ITC depreciation 5-yr MACRS [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_macrs_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_sta_sl_15: State ITC depreciation 15-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_sl_15_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_sta_sl_20: State ITC depreciation 20-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_sl_20_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_sta_sl_39: State ITC depreciation 39-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_sl_39_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_itc_sta_sl_5: State ITC depreciation 5-yr straight line [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_itc_sta_sl_5_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_stabas_method: Method of state depreciation reduction
-	 * options: 0=5yr MACRS,1=Proportional
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_stabas_method_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set equip_reserve_depr_fed: Major equipment reserve federal depreciation
-	 * options: 0=5yr MACRS,1=15yr MACRS,2=5yr SL,3=15yr SL, 4=20yr SL,5=39yr SL,6=Custom
-	 * constraints: INTEGER,MIN=0,MAX=6
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_equip_reserve_depr_fed_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set equip_reserve_depr_sta: Major equipment reserve state depreciation
-	 * options: 0=5yr MACRS,1=15yr MACRS,2=5yr SL,3=15yr SL, 4=20yr SL,5=39yr SL,6=Custom
-	 * constraints: INTEGER,MIN=0,MAX=6
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Depreciation_equip_reserve_depr_sta_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// SalvageValue parameters
-	//
-
-	/**
-	 * Set salvage_percentage: Net pre-tax cash salvage value [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=10
-	 */
-	SAM_EXPORT void SAM_Singleowner_SalvageValue_salvage_percentage_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// SolutionMode parameters
-	//
-
-	/**
-	 * Set ppa_soln_max: PPA solution maximum ppa [cents/kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=100
-	 */
-	SAM_EXPORT void SAM_Singleowner_SolutionMode_ppa_soln_max_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ppa_soln_max_iterations: PPA solution maximum number of iterations
-	 * options: None
-	 * constraints: INTEGER,MIN=1
-	 * required if: ?=100
-	 */
-	SAM_EXPORT void SAM_Singleowner_SolutionMode_ppa_soln_max_iterations_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ppa_soln_min: PPA solution minimum ppa [cents/kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_SolutionMode_ppa_soln_min_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ppa_soln_mode: PPA solution mode [0/1]
-	 * options: 0=solve ppa,1=specify ppa
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_SolutionMode_ppa_soln_mode_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ppa_soln_tolerance: PPA solution tolerance
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1e-5
-	 */
-	SAM_EXPORT void SAM_Singleowner_SolutionMode_ppa_soln_tolerance_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// PPAPrice parameters
-	//
-
-	/**
-	 * Set ppa_escalation: PPA escalation rate [%/year]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_PPAPrice_ppa_escalation_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ppa_price_input: PPA price in first year [$/kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=10
-	 */
-	SAM_EXPORT void SAM_Singleowner_PPAPrice_ppa_price_input_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// ConstructionFinancing parameters
-	//
-
-	/**
-	 * Set construction_financing_cost: Construction financing total [$]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Singleowner_ConstructionFinancing_construction_financing_cost_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// ProjectTermDebt parameters
-	//
-
-	/**
-	 * Set debt_option: Debt option [0/1]
-	 * options: 0=debt percent,1=dscr
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_Singleowner_ProjectTermDebt_debt_option_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set debt_percent: Debt percent [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=50
-	 */
-	SAM_EXPORT void SAM_Singleowner_ProjectTermDebt_debt_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dscr: Debt service coverage ratio
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: ?=1.5
-	 */
-	SAM_EXPORT void SAM_Singleowner_ProjectTermDebt_dscr_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dscr_reserve_months: Debt service reserve account [months P&I]
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: ?=6
-	 */
-	SAM_EXPORT void SAM_Singleowner_ProjectTermDebt_dscr_reserve_months_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set payment_option: Debt repayment option [0/1]
-	 * options: 0=Equal payments (standard amortization),1=Fixed principal declining interest
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_ProjectTermDebt_payment_option_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set term_int_rate: Term financing interest rate [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=8.5
-	 */
-	SAM_EXPORT void SAM_Singleowner_ProjectTermDebt_term_int_rate_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set term_tenor: Term financing period [years]
-	 * options: None
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=10
-	 */
-	SAM_EXPORT void SAM_Singleowner_ProjectTermDebt_term_tenor_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// OtherCapitalCosts parameters
-	//
-
-	/**
-	 * Set cost_debt_closing: Debt closing cost [$]
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: ?=250000
-	 */
-	SAM_EXPORT void SAM_Singleowner_OtherCapitalCosts_cost_debt_closing_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set cost_debt_fee: Debt closing fee (% of total debt amount) [%]
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: ?=1.5
-	 */
-	SAM_EXPORT void SAM_Singleowner_OtherCapitalCosts_cost_debt_fee_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set cost_other_financing: Other financing cost [$]
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: ?=150000
-	 */
-	SAM_EXPORT void SAM_Singleowner_OtherCapitalCosts_cost_other_financing_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set months_receivables_reserve: Receivables reserve months of PPA revenue [months]
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_OtherCapitalCosts_months_receivables_reserve_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set months_working_reserve: Working capital reserve months of operating costs [months]
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: ?=6
-	 */
-	SAM_EXPORT void SAM_Singleowner_OtherCapitalCosts_months_working_reserve_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// IRRTargets parameters
-	//
-
-	/**
-	 * Set flip_target_percent: After-tax IRR target [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=11
-	 */
-	SAM_EXPORT void SAM_Singleowner_IRRTargets_flip_target_percent_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set flip_target_year: IRR target year
-	 * options: None
-	 * constraints: MIN=1
-	 * required if: ?=11
-	 */
-	SAM_EXPORT void SAM_Singleowner_IRRTargets_flip_target_year_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-
-	//
-	// CashIncentives parameters
-	//
-
-	/**
-	 * Set pbi_fed_for_ds: Federal PBI available for debt service [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_CashIncentives_pbi_fed_for_ds_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set pbi_oth_for_ds: Other PBI available for debt service [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_CashIncentives_pbi_oth_for_ds_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set pbi_sta_for_ds: State PBI available for debt service [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_CashIncentives_pbi_sta_for_ds_nset(SAM_Singleowner ptr, double number, SAM_error *err);
-
-	/**
-	 * Set pbi_uti_for_ds: Utility PBI available for debt service [0/1]
-	 * options: None
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_CashIncentives_pbi_uti_for_ds_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Singleowner_Lifetime_system_use_lifetime_output_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 
 	//
@@ -2261,17 +2227,180 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_FuelCell_fuelcell_replacement_schedule_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
 
 
+	//
+	// CapacityPayments parameters
+	//
+
+	/**
+	 * Set cp_battery_nameplate: Battery nameplate [MW]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: cp_capacity_payment_type=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_CapacityPayments_cp_battery_nameplate_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cp_capacity_credit_percent: Capacity credit (eligible portion of nameplate) [%]
+	 * options: None
+	 * constraints: None
+	 * required if: cp_capacity_payment_type=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_CapacityPayments_cp_capacity_credit_percent_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set cp_capacity_payment_amount: Capacity payment amount [$ or $/MW]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Singleowner_CapacityPayments_cp_capacity_payment_amount_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set cp_capacity_payment_esc: Capacity payment escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Singleowner_CapacityPayments_cp_capacity_payment_esc_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cp_capacity_payment_type: Capacity payment type
+	 * options: 0=Energy basis,1=Fixed amount
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Singleowner_CapacityPayments_cp_capacity_payment_type_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cp_system_nameplate: System nameplate [MW]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: cp_capacity_payment_type=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_CapacityPayments_cp_system_nameplate_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+
+	//
+	// Grid parameters
+	//
+
+	/**
+	 * Set grid_curtailment_price: Curtailment price [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Grid_grid_curtailment_price_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set grid_curtailment_price_esc: Curtailment price escalation [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Grid_grid_curtailment_price_esc_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+
+
+	/**
+	 * Revenue Getters
+	 */
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor1_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor2_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor3_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor4_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor5_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor6_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor7_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor8_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor9_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Revenue_dispatch_factors_ts_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Revenue_dispatch_sched_weekday_mget(SAM_Singleowner ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Revenue_dispatch_sched_weekend_mget(SAM_Singleowner ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_flip_target_percent_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_flip_target_year_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_ppa_escalation_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_ppa_multiplier_model_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Revenue_ppa_price_input_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_ppa_soln_max_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_ppa_soln_max_iterations_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_ppa_soln_min_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_ppa_soln_mode_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Revenue_ppa_soln_tolerance_nget(SAM_Singleowner ptr, SAM_error *err);
+
+
 	/**
 	 * FinancialParameters Getters
 	 */
 
 	SAM_EXPORT double SAM_Singleowner_FinancialParameters_analysis_period_nget(SAM_Singleowner ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_construction_financing_cost_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_cost_debt_closing_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_cost_debt_fee_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_cost_other_financing_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_debt_option_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_debt_percent_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_dscr_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_dscr_reserve_months_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_equip1_reserve_cost_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_equip1_reserve_freq_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_equip2_reserve_cost_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_equip2_reserve_freq_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_equip3_reserve_cost_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_equip3_reserve_freq_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_equip_reserve_depr_fed_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_equip_reserve_depr_sta_nget(SAM_Singleowner ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Singleowner_FinancialParameters_federal_tax_rate_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_FinancialParameters_inflation_rate_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_FinancialParameters_insurance_rate_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_loan_moratorium_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_months_receivables_reserve_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_months_working_reserve_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_payment_option_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_FinancialParameters_prop_tax_assessed_decline_nget(SAM_Singleowner ptr, SAM_error *err);
 
@@ -2281,11 +2410,21 @@ extern "C"
 
 	SAM_EXPORT double SAM_Singleowner_FinancialParameters_real_discount_rate_nget(SAM_Singleowner ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_reserves_interest_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_FinancialParameters_roe_input_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_salvage_percentage_nget(SAM_Singleowner ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Singleowner_FinancialParameters_state_tax_rate_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_FinancialParameters_system_capacity_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_FinancialParameters_system_heat_rate_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_term_int_rate_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_FinancialParameters_term_tenor_nget(SAM_Singleowner ptr, SAM_error *err);
 
 
 	/**
@@ -2352,6 +2491,14 @@ extern "C"
 
 	SAM_EXPORT double SAM_Singleowner_SystemCosts_om_replacement_cost_escal_nget(SAM_Singleowner ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Singleowner_SystemCosts_system_lifetime_recapitalize_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_SystemCosts_system_recapitalization_cost_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_SystemCosts_system_recapitalization_escalation_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_SystemCosts_system_use_recapitalization_nget(SAM_Singleowner ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Singleowner_SystemCosts_total_installed_cost_nget(SAM_Singleowner ptr, SAM_error *err);
 
 
@@ -2398,6 +2545,91 @@ extern "C"
 	SAM_EXPORT double SAM_Singleowner_TaxCreditIncentives_ptc_sta_escal_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_TaxCreditIncentives_ptc_sta_term_nget(SAM_Singleowner ptr, SAM_error *err);
+
+
+	/**
+	 * Depreciation Getters
+	 */
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_custom_percent_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_macrs_15_percent_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_macrs_5_percent_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_sl_15_percent_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_sl_20_percent_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_sl_39_percent_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_sl_5_percent_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_custom_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_macrs_15_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_macrs_5_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_sl_15_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_sl_20_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_sl_39_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_sl_5_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_custom_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_macrs_15_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_macrs_5_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_sl_15_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_sl_20_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_sl_39_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_sl_5_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Depreciation_depr_custom_schedule_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_fedbas_method_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_custom_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_macrs_15_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_macrs_5_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_sl_15_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_sl_20_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_sl_39_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_sl_5_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_custom_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_macrs_15_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_macrs_5_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_sl_15_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_sl_20_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_sl_39_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_sl_5_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_stabas_method_nget(SAM_Singleowner ptr, SAM_error *err);
 
 
 	/**
@@ -2544,6 +2776,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_fed_escal_nget(SAM_Singleowner ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_fed_for_ds_nget(SAM_Singleowner ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_Singleowner ptr, SAM_error *err);
@@ -2553,6 +2787,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Singleowner_PaymentIncentives_pbi_oth_amount_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_oth_escal_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_oth_for_ds_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_Singleowner ptr, SAM_error *err);
 
@@ -2564,6 +2800,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_sta_escal_nget(SAM_Singleowner ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_sta_for_ds_nget(SAM_Singleowner ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_Singleowner ptr, SAM_error *err);
@@ -2574,6 +2812,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_uti_escal_nget(SAM_Singleowner ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_uti_for_ds_nget(SAM_Singleowner ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_Singleowner ptr, SAM_error *err);
@@ -2582,37 +2822,46 @@ extern "C"
 
 
 	/**
-	 * Battery Getters
+	 * BatterySystem Getters
 	 */
 
-	SAM_EXPORT double* SAM_Singleowner_Battery_batt_bank_replacement_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Singleowner_BatterySystem_batt_bank_replacement_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Singleowner_Battery_batt_computed_bank_capacity_nget(SAM_Singleowner ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Singleowner_BatterySystem_batt_computed_bank_capacity_nget(SAM_Singleowner ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Singleowner_Battery_batt_meter_position_nget(SAM_Singleowner ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Singleowner_BatterySystem_batt_meter_position_nget(SAM_Singleowner ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Singleowner_Battery_batt_replacement_option_nget(SAM_Singleowner ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Singleowner_BatterySystem_batt_replacement_option_nget(SAM_Singleowner ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Singleowner_Battery_batt_replacement_schedule_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Singleowner_BatterySystem_batt_replacement_schedule_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Singleowner_Battery_battery_per_kWh_nget(SAM_Singleowner ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Singleowner_BatterySystem_battery_per_kWh_nget(SAM_Singleowner ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Singleowner_Battery_en_batt_nget(SAM_Singleowner ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Singleowner_BatterySystem_en_batt_nget(SAM_Singleowner ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Singleowner_Battery_en_electricity_rates_nget(SAM_Singleowner ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Singleowner_BatterySystem_grid_to_batt_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Singleowner_Battery_grid_to_batt_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	/**
+	 * ElectricityRates Getters
+	 */
+
+	SAM_EXPORT double SAM_Singleowner_ElectricityRates_en_electricity_rates_nget(SAM_Singleowner ptr, SAM_error *err);
 
 
 	/**
 	 * SystemOutput Getters
 	 */
 
+	SAM_EXPORT double SAM_Singleowner_SystemOutput_annual_energy_pre_curtailment_ac_nget(SAM_Singleowner ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Singleowner_SystemOutput_degradation_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_SystemOutput_gen_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_SystemOutput_system_capacity_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_SystemOutput_system_pre_curtailment_kwac_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -2623,265 +2872,10 @@ extern "C"
 
 
 	/**
-	 * ReturnOnEquity Getters
+	 * Lifetime Getters
 	 */
 
-	SAM_EXPORT double* SAM_Singleowner_ReturnOnEquity_roe_input_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
-
-
-	/**
-	 * Moratorium Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_Moratorium_loan_moratorium_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * Recapitalization Getters
-	 */
-
-	SAM_EXPORT double* SAM_Singleowner_Recapitalization_system_lifetime_recapitalize_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Recapitalization_system_recapitalization_cost_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Recapitalization_system_recapitalization_escalation_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Recapitalization_system_use_recapitalization_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * TimeOfDelivery Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_TimeOfDelivery_dispatch_factor1_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_TimeOfDelivery_dispatch_factor2_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_TimeOfDelivery_dispatch_factor3_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_TimeOfDelivery_dispatch_factor4_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_TimeOfDelivery_dispatch_factor5_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_TimeOfDelivery_dispatch_factor6_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_TimeOfDelivery_dispatch_factor7_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_TimeOfDelivery_dispatch_factor8_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_TimeOfDelivery_dispatch_factor9_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Singleowner_TimeOfDelivery_dispatch_factors_ts_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Singleowner_TimeOfDelivery_dispatch_sched_weekday_mget(SAM_Singleowner ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Singleowner_TimeOfDelivery_dispatch_sched_weekend_mget(SAM_Singleowner ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_TimeOfDelivery_ppa_multiplier_model_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_TimeOfDelivery_system_use_lifetime_output_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * ReserveAccounts Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_ReserveAccounts_equip1_reserve_cost_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ReserveAccounts_equip1_reserve_freq_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ReserveAccounts_equip2_reserve_cost_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ReserveAccounts_equip2_reserve_freq_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ReserveAccounts_equip3_reserve_cost_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ReserveAccounts_equip3_reserve_freq_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ReserveAccounts_reserves_interest_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * Depreciation Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_custom_percent_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_macrs_15_percent_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_macrs_5_percent_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_sl_15_percent_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_sl_20_percent_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_sl_39_percent_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_sl_5_percent_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_custom_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_macrs_15_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_macrs_5_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_sl_15_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_sl_20_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_sl_39_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_sl_5_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_custom_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_macrs_15_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_macrs_5_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_sl_15_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_sl_20_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_sl_39_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_sl_5_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Singleowner_Depreciation_depr_custom_schedule_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_fedbas_method_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_custom_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_macrs_15_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_macrs_5_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_sl_15_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_sl_20_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_sl_39_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_fed_sl_5_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_custom_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_macrs_15_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_macrs_5_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_sl_15_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_sl_20_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_sl_39_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_itc_sta_sl_5_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_stabas_method_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_equip_reserve_depr_fed_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Depreciation_equip_reserve_depr_sta_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * SalvageValue Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_SalvageValue_salvage_percentage_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * SolutionMode Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_SolutionMode_ppa_soln_max_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_SolutionMode_ppa_soln_max_iterations_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_SolutionMode_ppa_soln_min_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_SolutionMode_ppa_soln_mode_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_SolutionMode_ppa_soln_tolerance_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * PPAPrice Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_PPAPrice_ppa_escalation_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_PPAPrice_ppa_price_input_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * ConstructionFinancing Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_ConstructionFinancing_construction_financing_cost_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * ProjectTermDebt Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_ProjectTermDebt_debt_option_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ProjectTermDebt_debt_percent_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ProjectTermDebt_dscr_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ProjectTermDebt_dscr_reserve_months_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ProjectTermDebt_payment_option_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ProjectTermDebt_term_int_rate_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_ProjectTermDebt_term_tenor_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * OtherCapitalCosts Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_OtherCapitalCosts_cost_debt_closing_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_OtherCapitalCosts_cost_debt_fee_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_OtherCapitalCosts_cost_other_financing_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_OtherCapitalCosts_months_receivables_reserve_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_OtherCapitalCosts_months_working_reserve_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * IRRTargets Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_IRRTargets_flip_target_percent_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_IRRTargets_flip_target_year_nget(SAM_Singleowner ptr, SAM_error *err);
-
-
-	/**
-	 * CashIncentives Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_CashIncentives_pbi_fed_for_ds_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_CashIncentives_pbi_oth_for_ds_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_CashIncentives_pbi_sta_for_ds_nget(SAM_Singleowner ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_CashIncentives_pbi_uti_for_ds_nget(SAM_Singleowner ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Singleowner_Lifetime_system_use_lifetime_output_nget(SAM_Singleowner ptr, SAM_error *err);
 
 
 	/**
@@ -2899,6 +2893,32 @@ extern "C"
 	SAM_EXPORT double SAM_Singleowner_FuelCell_fuelcell_replacement_option_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_FuelCell_fuelcell_replacement_schedule_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * CapacityPayments Getters
+	 */
+
+	SAM_EXPORT double SAM_Singleowner_CapacityPayments_cp_battery_nameplate_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_CapacityPayments_cp_capacity_credit_percent_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_CapacityPayments_cp_capacity_payment_amount_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_CapacityPayments_cp_capacity_payment_esc_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_CapacityPayments_cp_capacity_payment_type_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_CapacityPayments_cp_system_nameplate_nget(SAM_Singleowner ptr, SAM_error *err);
+
+
+	/**
+	 * Grid Getters
+	 */
+
+	SAM_EXPORT double* SAM_Singleowner_Grid_grid_curtailment_price_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Grid_grid_curtailment_price_esc_nget(SAM_Singleowner ptr, SAM_error *err);
 
 
 	/**
@@ -2931,7 +2951,11 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_capacity_payment_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_cash_for_ds_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_curtailment_value_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_debt_balance_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
@@ -2958,6 +2982,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_ebitda_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_effective_tax_frac_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_curtailed_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_net_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
@@ -3176,6 +3202,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_ptc_fed_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_ptc_sta_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_ptc_total_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_pv_cash_for_ds_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
@@ -3719,6 +3747,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Singleowner_Outputs_depr_stabas_total_nget(SAM_Singleowner ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Singleowner_Outputs_effective_tax_rate_nget(SAM_Singleowner ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Singleowner_Outputs_firstyear_energy_dispatch1_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_Outputs_firstyear_energy_dispatch2_nget(SAM_Singleowner ptr, SAM_error *err);
@@ -3941,11 +3971,27 @@ extern "C"
 
 	SAM_EXPORT double SAM_Singleowner_Outputs_npv_annual_costs_nget(SAM_Singleowner ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Singleowner_Outputs_npv_capacity_revenue_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Outputs_npv_curtailment_revenue_nget(SAM_Singleowner ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Singleowner_Outputs_npv_energy_nom_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_Outputs_npv_energy_real_nget(SAM_Singleowner ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Singleowner_Outputs_npv_fed_pbi_income_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Outputs_npv_oth_pbi_income_nget(SAM_Singleowner ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Singleowner_Outputs_npv_ppa_revenue_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Outputs_npv_salvage_value_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Outputs_npv_sta_pbi_income_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Outputs_npv_thermal_value_nget(SAM_Singleowner ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Outputs_npv_uti_pbi_income_nget(SAM_Singleowner ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_Outputs_ppa_nget(SAM_Singleowner ptr, SAM_error *err);
 

@@ -1,7 +1,12 @@
 {
 	"defaults": {
 		"MHKTidal": {
-			"number_devices": 1,
+			"loss_additional": 0,
+			"loss_array_spacing": 0,
+			"loss_downtime": 5,
+			"loss_resource_overprediction": 0,
+			"loss_transmission": 2,
+			"number_devices": 100,
 			"tidal_power_curve": [
 				[0.000000, 0.000000],
 				[0.100000, 0.000000],

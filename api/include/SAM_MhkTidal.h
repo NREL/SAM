@@ -36,12 +36,44 @@ extern "C"
 	//
 
 	/**
-	 * Set annual_energy_loss: Total energy losses [%]
+	 * Set loss_additional: Additional losses [%]
 	 * options: None
 	 * constraints: None
-	 * required if: ?=0
+	 * required if: *
 	 */
-	SAM_EXPORT void SAM_MhkTidal_MHKTidal_annual_energy_loss_nset(SAM_MhkTidal ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_loss_additional_nset(SAM_MhkTidal ptr, double number, SAM_error *err);
+
+	/**
+	 * Set loss_array_spacing: Array spacing loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_loss_array_spacing_nset(SAM_MhkTidal ptr, double number, SAM_error *err);
+
+	/**
+	 * Set loss_downtime: Array/WEC downtime loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_loss_downtime_nset(SAM_MhkTidal ptr, double number, SAM_error *err);
+
+	/**
+	 * Set loss_resource_overprediction: Resource overprediction loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_loss_resource_overprediction_nset(SAM_MhkTidal ptr, double number, SAM_error *err);
+
+	/**
+	 * Set loss_transmission: Transmission losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_loss_transmission_nset(SAM_MhkTidal ptr, double number, SAM_error *err);
 
 	/**
 	 * Set number_devices: Number of tidal devices in the system
@@ -72,7 +104,15 @@ extern "C"
 	 * MHKTidal Getters
 	 */
 
-	SAM_EXPORT double SAM_MhkTidal_MHKTidal_annual_energy_loss_nget(SAM_MhkTidal ptr, SAM_error *err);
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_loss_additional_nget(SAM_MhkTidal ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_loss_array_spacing_nget(SAM_MhkTidal ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_loss_downtime_nget(SAM_MhkTidal ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_loss_resource_overprediction_nget(SAM_MhkTidal ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_loss_transmission_nget(SAM_MhkTidal ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkTidal_MHKTidal_number_devices_nget(SAM_MhkTidal ptr, SAM_error *err);
 
