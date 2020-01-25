@@ -1604,13 +1604,13 @@ SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_system_nameplate_nset(SAM_
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Grid_grid_curtailment_price_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_GridLimits_grid_curtailment_price_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "grid_curtailment_price", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Grid_grid_curtailment_price_esc_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_GridLimits_grid_curtailment_price_esc_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "grid_curtailment_price_esc", number);
 	});
@@ -4542,7 +4542,7 @@ SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_system_nameplate_nget(SA
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Grid_grid_curtailment_price_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_GridLimits_grid_curtailment_price_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_curtailment_price", length);
@@ -4554,7 +4554,7 @@ SAM_EXPORT double* SAM_Merchantplant_Grid_grid_curtailment_price_aget(SAM_Mercha
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Grid_grid_curtailment_price_esc_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_GridLimits_grid_curtailment_price_esc_nget(SAM_Merchantplant ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "grid_curtailment_price_esc", &result))

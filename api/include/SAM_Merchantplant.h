@@ -2193,7 +2193,7 @@ extern "C"
 
 
 	//
-	// Grid parameters
+	// GridLimits parameters
 	//
 
 	/**
@@ -2202,7 +2202,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Merchantplant_Grid_grid_curtailment_price_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Merchantplant_GridLimits_grid_curtailment_price_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set grid_curtailment_price_esc: Curtailment price escalation [%]
@@ -2210,7 +2210,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Merchantplant_Grid_grid_curtailment_price_esc_nset(SAM_Merchantplant ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Merchantplant_GridLimits_grid_curtailment_price_esc_nset(SAM_Merchantplant ptr, double number, SAM_error *err);
 
 
 	/**
@@ -2803,12 +2803,12 @@ extern "C"
 
 
 	/**
-	 * Grid Getters
+	 * GridLimits Getters
 	 */
 
-	SAM_EXPORT double* SAM_Merchantplant_Grid_grid_curtailment_price_aget(SAM_Merchantplant ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_GridLimits_grid_curtailment_price_aget(SAM_Merchantplant ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Merchantplant_Grid_grid_curtailment_price_esc_nget(SAM_Merchantplant ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Merchantplant_GridLimits_grid_curtailment_price_esc_nget(SAM_Merchantplant ptr, SAM_error *err);
 
 
 	/**

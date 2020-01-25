@@ -232,10 +232,10 @@ int main(int argc, char *argv[]){
         std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[active_config];
 
         config_extractor ce(it->first, runtime_path + "/defaults/");
-        //ce.map_equations();
-        //ce.register_callback_functions();
+//        ce.map_equations();
+//        ce.register_callback_functions();
         //        std::cout << "\n\n\n\n";
-        //SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
+//        SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
 
         // modules and modules_order will need to be reset per cmod
         for (size_t i = 0; i < primary_cmods.size(); i++){
@@ -247,6 +247,8 @@ int main(int argc, char *argv[]){
             //b_gen.print_subgraphs(graph_path);
             processed_cmods.insert(primary_cmods[i]);
         }
+        SAM_config_to_variable_graph.erase(active_config);
+
     }
     // do all configs
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
@@ -262,10 +264,9 @@ int main(int argc, char *argv[]){
         std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[active_config];
 
         config_extractor ce(it->first, runtime_path + "/defaults/");
-        //ce.map_equations();
-        //ce.register_callback_functions();
-        //        std::cout << "\n\n\n\n";
-        //SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
+//        ce.map_equations();
+//        ce.register_callback_functions();
+//        SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
 
         // modules and modules_order will need to be reset per cmod
         for (size_t i = 0; i < primary_cmods.size(); i++){
@@ -276,24 +277,32 @@ int main(int argc, char *argv[]){
             //b_gen.print_subgraphs(graph_path);
             processed_cmods.insert(util::lower_case(primary_cmods[i]));
         }
+        SAM_config_to_variable_graph.erase(active_config);
+
     }
 
     // produce remaining compute_modules
     std::cout << "Remaining cmods: \n";
+    active_config = "";
     int i=0;
     ssc_entry_t p_entry = ssc_module_entry(i);
     while( p_entry  )
     {
         const char* name = ssc_entry_name(p_entry);
-//        const char* desc = ssc_entry_description(p_entry);
+        const char* desc = ssc_entry_description(p_entry);
         p_entry = ssc_module_entry(++i);
 
         if (processed_cmods.count(util::lower_case(name)) != 0)
             continue;
-        std::cout << "\t" << name << "... ";
+
         builder_generator cm_bg;
         cm_bg.config_name = name;
         cm_bg.create_all(name, defaults_path, api_path, pysam_path, false);
+
+        // print for pasting into pysam/docs/Models.rst
+        std::cout << "\t* - :doc:`modules/"<< format_as_symbol(name) << "`\n";
+        std::cout << "\t* - " << desc << "\n";
+
     }
 
     std::cout << "Complete... Exiting\n";

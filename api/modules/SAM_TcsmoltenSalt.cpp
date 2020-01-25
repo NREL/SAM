@@ -32,13 +32,13 @@ SAM_EXPORT void SAM_TcsmoltenSalt_destruct(SAM_TcsmoltenSalt system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_TcsmoltenSalt_LocationAndResource_solar_resource_data_tset(SAM_TcsmoltenSalt ptr, SAM_table tab, SAM_error *err){
+SAM_EXPORT void SAM_TcsmoltenSalt_SolarResource_solar_resource_data_tset(SAM_TcsmoltenSalt ptr, SAM_table tab, SAM_error *err){
 	SAM_table_set_table(ptr, "solar_resource_data", tab, err);
 }
 
 
 
-SAM_EXPORT void SAM_TcsmoltenSalt_LocationAndResource_solar_resource_file_sset(SAM_TcsmoltenSalt ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_TcsmoltenSalt_SolarResource_solar_resource_file_sset(SAM_TcsmoltenSalt ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "solar_resource_file", str);
 	});
@@ -1766,7 +1766,7 @@ SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_m_dot_htf_low_nset(SAM_Tcsmol
 	});
 }
 
-SAM_EXPORT SAM_table SAM_TcsmoltenSalt_LocationAndResource_solar_resource_data_tget(SAM_TcsmoltenSalt ptr, SAM_error *err){
+SAM_EXPORT SAM_table SAM_TcsmoltenSalt_SolarResource_solar_resource_data_tget(SAM_TcsmoltenSalt ptr, SAM_error *err){
 	SAM_table result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_table(ptr, "solar_resource_data");
@@ -1778,7 +1778,7 @@ SAM_EXPORT SAM_table SAM_TcsmoltenSalt_LocationAndResource_solar_resource_data_t
 
 
 
-SAM_EXPORT const char* SAM_TcsmoltenSalt_LocationAndResource_solar_resource_file_sget(SAM_TcsmoltenSalt ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_TcsmoltenSalt_SolarResource_solar_resource_file_sget(SAM_TcsmoltenSalt ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "solar_resource_file");

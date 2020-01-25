@@ -44,15 +44,27 @@ SAM_EXPORT void SAM_Grid_Lifetime_system_use_lifetime_output_nset(SAM_Grid ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_Grid_Grid_enable_interconnection_limit_nset(SAM_Grid ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Grid_GridLimits_enable_interconnection_limit_nset(SAM_Grid ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "enable_interconnection_limit", number);
 	});
 }
 
-SAM_EXPORT void SAM_Grid_Grid_grid_interconnection_limit_kwac_nset(SAM_Grid ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Grid_GridLimits_grid_curtailment_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_curtailment", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nset(SAM_Grid ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "grid_interconnection_limit_kwac", number);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_SystemOutput_annual_energy_nset(SAM_Grid ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "annual_energy", number);
 	});
 }
 
@@ -65,18 +77,6 @@ SAM_EXPORT void SAM_Grid_SystemOutput_gen_aset(SAM_Grid ptr, double* arr, int le
 SAM_EXPORT void SAM_Grid_Load_load_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Grid_Common_annual_energy_nset(SAM_Grid ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "annual_energy", number);
-	});
-}
-
-SAM_EXPORT void SAM_Grid_LossAdjustments_grid_curtailment_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "grid_curtailment", arr, length);
 	});
 }
 
@@ -102,7 +102,7 @@ SAM_EXPORT double SAM_Grid_Lifetime_system_use_lifetime_output_nget(SAM_Grid ptr
 
 
 
-SAM_EXPORT double SAM_Grid_Grid_enable_interconnection_limit_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_GridLimits_enable_interconnection_limit_nget(SAM_Grid ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "enable_interconnection_limit", &result))
@@ -113,11 +113,34 @@ SAM_EXPORT double SAM_Grid_Grid_enable_interconnection_limit_nget(SAM_Grid ptr, 
 
 
 
-SAM_EXPORT double SAM_Grid_Grid_grid_interconnection_limit_kwac_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double* SAM_Grid_GridLimits_grid_curtailment_aget(SAM_Grid ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_curtailment", length);
+	if (!result)
+		make_access_error("SAM_Grid", "grid_curtailment");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nget(SAM_Grid ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "grid_interconnection_limit_kwac", &result))
 		make_access_error("SAM_Grid", "grid_interconnection_limit_kwac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Grid_SystemOutput_annual_energy_nget(SAM_Grid ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_energy", &result))
+		make_access_error("SAM_Grid", "annual_energy");
 	});
 	return result;
 }
@@ -142,29 +165,6 @@ SAM_EXPORT double* SAM_Grid_Load_load_aget(SAM_Grid ptr, int* length, SAM_error 
 	result = ssc_data_get_array(ptr, "load", length);
 	if (!result)
 		make_access_error("SAM_Grid", "load");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Grid_Common_annual_energy_nget(SAM_Grid ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_energy", &result))
-		make_access_error("SAM_Grid", "annual_energy");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Grid_LossAdjustments_grid_curtailment_aget(SAM_Grid ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "grid_curtailment", length);
-	if (!result)
-		make_access_error("SAM_Grid", "grid_curtailment");
 	});
 	return result;
 }

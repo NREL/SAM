@@ -74,6 +74,18 @@ SAM_EXPORT void SAM_Cashloan_FinancialParameters_loan_term_nset(SAM_Cashloan ptr
 	});
 }
 
+SAM_EXPORT void SAM_Cashloan_FinancialParameters_market_nset(SAM_Cashloan ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "market", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_FinancialParameters_mortgage_nset(SAM_Cashloan ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mortgage", number);
+	});
+}
+
 SAM_EXPORT void SAM_Cashloan_FinancialParameters_prop_tax_assessed_decline_nset(SAM_Cashloan ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "prop_tax_assessed_decline", number);
@@ -1064,18 +1076,6 @@ SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_replacement_schedule_aset(SAM_Cas
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Cashloan_market_nset(SAM_Cashloan ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "market", number);
-	});
-}
-
-SAM_EXPORT void SAM_Cashloan_Cashloan_mortgage_nset(SAM_Cashloan ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "mortgage", number);
-	});
-}
-
 SAM_EXPORT void SAM_Cashloan_SystemOutput_annual_energy_value_aset(SAM_Cashloan ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "annual_energy_value", arr, length);
@@ -1190,6 +1190,28 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_loan_term_nget(SAM_Cashloan p
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "loan_term", &result))
 		make_access_error("SAM_Cashloan", "loan_term");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Cashloan_FinancialParameters_market_nget(SAM_Cashloan ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "market", &result))
+		make_access_error("SAM_Cashloan", "market");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Cashloan_FinancialParameters_mortgage_nget(SAM_Cashloan ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mortgage", &result))
+		make_access_error("SAM_Cashloan", "mortgage");
 	});
 	return result;
 }
@@ -3035,28 +3057,6 @@ SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_replacement_schedule_aget(SAM_
 	result = ssc_data_get_array(ptr, "fuelcell_replacement_schedule", length);
 	if (!result)
 		make_access_error("SAM_Cashloan", "fuelcell_replacement_schedule");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Cashloan_Cashloan_market_nget(SAM_Cashloan ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "market", &result))
-		make_access_error("SAM_Cashloan", "market");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Cashloan_Cashloan_mortgage_nget(SAM_Cashloan ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "mortgage", &result))
-		make_access_error("SAM_Cashloan", "mortgage");
 	});
 	return result;
 }

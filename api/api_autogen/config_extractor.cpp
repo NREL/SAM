@@ -95,9 +95,6 @@ bool config_extractor::map_equations(){
                     std::string callstack = ui;
                     if (eq_data->result_is_output){
                         callstack += ":EQN";
-                        if (ui == "LF DSG System Design"){
-                            std::cout << "stophere";
-                        }
                     }
                     else{
                         callstack += ":" + eq_data->outputs[0] + "_MIMO";

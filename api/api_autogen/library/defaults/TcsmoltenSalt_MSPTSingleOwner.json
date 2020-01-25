@@ -1,6 +1,6 @@
 {
 	"defaults": {
-		"LocationAndResource": {
+		"SolarResource": {
 		},
 		"TimeOfDeliveryFactors": {
 			"dispatch_factor1": 2.064,

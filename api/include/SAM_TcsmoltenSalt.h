@@ -32,7 +32,7 @@ extern "C"
 
 
 	//
-	// LocationAndResource parameters
+	// SolarResource parameters
 	//
 
 	/**
@@ -41,7 +41,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_LocationAndResource_solar_resource_data_tset(SAM_TcsmoltenSalt ptr, SAM_table tab, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SolarResource_solar_resource_data_tset(SAM_TcsmoltenSalt ptr, SAM_table tab, SAM_error *err);
 
 	/**
 	 * Set solar_resource_file: Local weather file path
@@ -49,7 +49,7 @@ extern "C"
 	 * constraints: LOCAL_FILE
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_LocationAndResource_solar_resource_file_sset(SAM_TcsmoltenSalt ptr, const char* str, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SolarResource_solar_resource_file_sset(SAM_TcsmoltenSalt ptr, const char* str, SAM_error *err);
 
 
 	//
@@ -2414,12 +2414,12 @@ extern "C"
 
 
 	/**
-	 * LocationAndResource Getters
+	 * SolarResource Getters
 	 */
 
-	SAM_EXPORT SAM_table SAM_TcsmoltenSalt_LocationAndResource_solar_resource_data_tget(SAM_TcsmoltenSalt ptr, SAM_error *err);
+	SAM_EXPORT SAM_table SAM_TcsmoltenSalt_SolarResource_solar_resource_data_tget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
-	SAM_EXPORT const char* SAM_TcsmoltenSalt_LocationAndResource_solar_resource_file_sget(SAM_TcsmoltenSalt ptr, SAM_error *err);
+	SAM_EXPORT const char* SAM_TcsmoltenSalt_SolarResource_solar_resource_file_sget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
 
 	/**

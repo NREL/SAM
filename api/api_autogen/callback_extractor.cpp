@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <set>
 
 #include <lk/absyn.h>
 #include <lk/parse.h>
@@ -101,14 +102,17 @@ int callback_extractor::invoke_method_type(const std::string &method_name) {
         }
 
 
-        active_ui =
+        active_ui = "";
         // clear active_cmod in case it was set previously in another object invocation
         active_cmod = "";
         active_object = obj_name;
         active_subobject = "";
         map_subobject = true;
-        if (active_object== "Inverter CEC Coefficient Generator"){
-//            std::cout << "stophere\n";
+        std::set<std::string> obj_to_skip = {"refresh_library", "Solar Resource Data", "user_specified_weather_file",
+                                             "solar_data_file_name", "btnQueryOpenEI", "visualize_load_data",
+                                             "visualize_thermal_load_data"};
+        if (obj_to_skip.count(obj_name) > 0){
+            return 0;
         }
         if (!invoke_function(p_define->right, obj_name))
             error += 1;

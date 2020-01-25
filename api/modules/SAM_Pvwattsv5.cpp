@@ -50,13 +50,13 @@ SAM_EXPORT void SAM_Pvwattsv5_Lifetime_system_use_lifetime_output_nset(SAM_Pvwat
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv5_LocationAndResource_solar_resource_data_tset(SAM_Pvwattsv5 ptr, SAM_table tab, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5_SolarResource_solar_resource_data_tset(SAM_Pvwattsv5 ptr, SAM_table tab, SAM_error *err){
 	SAM_table_set_table(ptr, "solar_resource_data", tab, err);
 }
 
 
 
-SAM_EXPORT void SAM_Pvwattsv5_LocationAndResource_solar_resource_file_sset(SAM_Pvwattsv5 ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv5_SolarResource_solar_resource_file_sset(SAM_Pvwattsv5 ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "solar_resource_file", str);
 	});
@@ -180,7 +180,7 @@ SAM_EXPORT double SAM_Pvwattsv5_Lifetime_system_use_lifetime_output_nget(SAM_Pvw
 
 
 
-SAM_EXPORT SAM_table SAM_Pvwattsv5_LocationAndResource_solar_resource_data_tget(SAM_Pvwattsv5 ptr, SAM_error *err){
+SAM_EXPORT SAM_table SAM_Pvwattsv5_SolarResource_solar_resource_data_tget(SAM_Pvwattsv5 ptr, SAM_error *err){
 	SAM_table result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_table(ptr, "solar_resource_data");
@@ -192,7 +192,7 @@ SAM_EXPORT SAM_table SAM_Pvwattsv5_LocationAndResource_solar_resource_data_tget(
 
 
 
-SAM_EXPORT const char* SAM_Pvwattsv5_LocationAndResource_solar_resource_file_sget(SAM_Pvwattsv5 ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Pvwattsv5_SolarResource_solar_resource_file_sget(SAM_Pvwattsv5 ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "solar_resource_file");

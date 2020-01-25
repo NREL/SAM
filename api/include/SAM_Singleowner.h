@@ -2281,7 +2281,7 @@ extern "C"
 
 
 	//
-	// Grid parameters
+	// GridLimits parameters
 	//
 
 	/**
@@ -2290,7 +2290,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Singleowner_Grid_grid_curtailment_price_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Singleowner_GridLimits_grid_curtailment_price_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set grid_curtailment_price_esc: Curtailment price escalation [%]
@@ -2298,7 +2298,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Singleowner_Grid_grid_curtailment_price_esc_nset(SAM_Singleowner ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Singleowner_GridLimits_grid_curtailment_price_esc_nset(SAM_Singleowner ptr, double number, SAM_error *err);
 
 
 	/**
@@ -2913,12 +2913,12 @@ extern "C"
 
 
 	/**
-	 * Grid Getters
+	 * GridLimits Getters
 	 */
 
-	SAM_EXPORT double* SAM_Singleowner_Grid_grid_curtailment_price_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Singleowner_GridLimits_grid_curtailment_price_aget(SAM_Singleowner ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Singleowner_Grid_grid_curtailment_price_esc_nget(SAM_Singleowner ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Singleowner_GridLimits_grid_curtailment_price_esc_nget(SAM_Singleowner ptr, SAM_error *err);
 
 
 	/**

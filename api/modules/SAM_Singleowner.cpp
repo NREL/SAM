@@ -1670,13 +1670,13 @@ SAM_EXPORT void SAM_Singleowner_CapacityPayments_cp_system_nameplate_nset(SAM_Si
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_Grid_grid_curtailment_price_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_GridLimits_grid_curtailment_price_aset(SAM_Singleowner ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "grid_curtailment_price", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_Grid_grid_curtailment_price_esc_nset(SAM_Singleowner ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_GridLimits_grid_curtailment_price_esc_nset(SAM_Singleowner ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "grid_curtailment_price_esc", number);
 	});
@@ -4728,7 +4728,7 @@ SAM_EXPORT double SAM_Singleowner_CapacityPayments_cp_system_nameplate_nget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Singleowner_Grid_grid_curtailment_price_aget(SAM_Singleowner ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Singleowner_GridLimits_grid_curtailment_price_aget(SAM_Singleowner ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_curtailment_price", length);
@@ -4740,7 +4740,7 @@ SAM_EXPORT double* SAM_Singleowner_Grid_grid_curtailment_price_aget(SAM_Singleow
 
 
 
-SAM_EXPORT double SAM_Singleowner_Grid_grid_curtailment_price_esc_nget(SAM_Singleowner ptr, SAM_error *err){
+SAM_EXPORT double SAM_Singleowner_GridLimits_grid_curtailment_price_esc_nget(SAM_Singleowner ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "grid_curtailment_price_esc", &result))

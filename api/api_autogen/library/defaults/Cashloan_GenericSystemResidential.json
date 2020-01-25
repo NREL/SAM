@@ -8,6 +8,8 @@
 			"insurance_rate": 0.5,
 			"loan_rate": 7.5,
 			"loan_term": 25,
+			"market": 0,
+			"mortgage": 1,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
@@ -151,10 +153,6 @@
 			"en_batt": 1
 		},
 		"FuelCell": {
-		},
-		"Cashloan": {
-			"market": 0,
-			"mortgage": 1
 		},
 		"SystemOutput": {
 			"annual_energy_value": [0],

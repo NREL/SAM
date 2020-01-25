@@ -222,7 +222,8 @@ std::vector<std::string> split_identity_string(std::string str, size_t n){
         pos = str.find(":");
     }
     args.push_back(str);
-    assert(args.size() == n);
+    if (args.empty())
+        args.push_back(str);
     return args;
 }
 

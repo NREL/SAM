@@ -23,6 +23,8 @@ struct var_def{
     int type_n;
     std::vector<var_def> table_entries;
     bool is_ssc;
+    std::set<std::string> downstream;   // variables that are affected by this one
+    std::set<std::string> upstream;     // variables that affect this one
 };
 
 class builder_C_API;

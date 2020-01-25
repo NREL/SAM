@@ -92,6 +92,22 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_FinancialParameters_loan_term_nset(SAM_Cashloan ptr, double number, SAM_error *err);
 
 	/**
+	 * Set market: Residential or Commercial Market [0/1]
+	 * options: 0=residential,1=comm.
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_market_nset(SAM_Cashloan ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mortgage: Use mortgage style loan (res. only) [0/1]
+	 * options: 0=standard loan,1=mortgage
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Cashloan_FinancialParameters_mortgage_nset(SAM_Cashloan ptr, double number, SAM_error *err);
+
+	/**
 	 * Set prop_tax_assessed_decline: Assessed value annual decline [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
@@ -1443,27 +1459,6 @@ extern "C"
 
 
 	//
-	// Cashloan parameters
-	//
-
-	/**
-	 * Set market: Residential or Commercial Market [0/1]
-	 * options: 0=residential,1=comm.
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_Cashloan_Cashloan_market_nset(SAM_Cashloan ptr, double number, SAM_error *err);
-
-	/**
-	 * Set mortgage: Use mortgage style loan (res. only) [0/1]
-	 * options: 0=standard loan,1=mortgage
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Cashloan_Cashloan_mortgage_nset(SAM_Cashloan ptr, double number, SAM_error *err);
-
-
-	//
 	// SystemOutput parameters
 	//
 
@@ -1551,6 +1546,10 @@ extern "C"
 	SAM_EXPORT double SAM_Cashloan_FinancialParameters_loan_rate_nget(SAM_Cashloan ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_FinancialParameters_loan_term_nget(SAM_Cashloan ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_market_nget(SAM_Cashloan ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Cashloan_FinancialParameters_mortgage_nget(SAM_Cashloan ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_FinancialParameters_prop_tax_assessed_decline_nget(SAM_Cashloan ptr, SAM_error *err);
 
@@ -1911,15 +1910,6 @@ extern "C"
 	SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_replacement_option_nget(SAM_Cashloan ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_replacement_schedule_aget(SAM_Cashloan ptr, int* length, SAM_error *err);
-
-
-	/**
-	 * Cashloan Getters
-	 */
-
-	SAM_EXPORT double SAM_Cashloan_Cashloan_market_nget(SAM_Cashloan ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Cashloan_Cashloan_mortgage_nget(SAM_Cashloan ptr, SAM_error *err);
 
 
 	/**

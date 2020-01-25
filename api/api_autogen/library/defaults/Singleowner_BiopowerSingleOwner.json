@@ -285,7 +285,7 @@
 			"cp_capacity_payment_type": 0,
 			"cp_system_nameplate": 48.5356
 		},
-		"Grid": {
+		"GridLimits": {
 			"grid_curtailment_price": [0.000000],
 			"grid_curtailment_price_esc": 0
 		}

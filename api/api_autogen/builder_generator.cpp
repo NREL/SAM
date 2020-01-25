@@ -89,6 +89,10 @@ void builder_generator::select_ui_variables(std::string ui_name, std::map<std::s
 void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
     ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
 
+    digraph* graph = nullptr;
+    if (SAM_config_to_variable_graph.find(active_config) != SAM_config_to_variable_graph.end())
+        graph = SAM_config_to_variable_graph[active_config];
+
     int var_index = 0;
     ssc_info_t mod_info = ssc_module_var_info(p_mod, var_index);
     std::map<std::string, var_def> adj_map;
@@ -122,6 +126,14 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
 			}
         }
 
+        // get upstream and downstream variables
+        if (graph){
+            vertex* vert = graph->find_vertex(vd.name, true);
+            if (vert){
+                vd.downstream = graph->downstream_vertices(vert, cmod_name);
+                vd.upstream = graph->upstream_vertices(vert, cmod_name);
+            }
+        }
 
         std::vector<std::string> ssctype_str = {"invalid", "string", "number", "array", "matrix", "table"};
         vd.type_n = ssc_info_data_type(mod_info);

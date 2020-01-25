@@ -61,7 +61,7 @@ extern "C"
 
 
 	//
-	// LocationAndResource parameters
+	// SolarResource parameters
 	//
 
 	/**
@@ -70,7 +70,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5_LocationAndResource_solar_resource_data_tset(SAM_Pvwattsv5 ptr, SAM_table tab, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5_SolarResource_solar_resource_data_tset(SAM_Pvwattsv5 ptr, SAM_table tab, SAM_error *err);
 
 	/**
 	 * Set solar_resource_file: Weather file path
@@ -78,7 +78,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Pvwattsv5_LocationAndResource_solar_resource_file_sset(SAM_Pvwattsv5 ptr, const char* str, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv5_SolarResource_solar_resource_file_sset(SAM_Pvwattsv5 ptr, const char* str, SAM_error *err);
 
 
 	//
@@ -210,12 +210,12 @@ extern "C"
 
 
 	/**
-	 * LocationAndResource Getters
+	 * SolarResource Getters
 	 */
 
-	SAM_EXPORT SAM_table SAM_Pvwattsv5_LocationAndResource_solar_resource_data_tget(SAM_Pvwattsv5 ptr, SAM_error *err);
+	SAM_EXPORT SAM_table SAM_Pvwattsv5_SolarResource_solar_resource_data_tget(SAM_Pvwattsv5 ptr, SAM_error *err);
 
-	SAM_EXPORT const char* SAM_Pvwattsv5_LocationAndResource_solar_resource_file_sget(SAM_Pvwattsv5 ptr, SAM_error *err);
+	SAM_EXPORT const char* SAM_Pvwattsv5_SolarResource_solar_resource_file_sget(SAM_Pvwattsv5 ptr, SAM_error *err);
 
 
 	/**

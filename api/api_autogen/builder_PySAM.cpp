@@ -382,6 +382,20 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                     }
                 }
 
+                if (!vd.downstream.empty()) {
+                    doc += "\\n\\n";
+                    doc += "*Changes to this variable may require updating the values of the following*: \\n";
+                    for (const auto & ds: vd.downstream)
+                        doc += "\\t - " + ds + "\\n";
+                }
+
+                if (!vd.upstream.empty()) {
+                    doc += "\\n\\n";
+                    doc += "*This variable may need to be updated if the values of the following have changed*: \\n";
+                    for (const auto & ds: vd.upstream)
+                        doc += "\\t - " + ds + "\\n";
+                }
+
                 fx_file << "(setter)" << group_symbol << "_set_" << var_symbol << ",\n";
             }
 
@@ -956,6 +970,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     fx_file << "\tdef assign(self, dict):\n"
                "\t\tpass\n"
                "\n"
+               "\tdef value(self, name, value=None):\n"
+               "\t\tpass\n"
+               "\n"
                "\tdef execute(self, int_verbosity):\n"
                "\t\tpass\n"
                "\n"
@@ -993,6 +1010,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\tpass\n"
                "\n"
                "def wrap(ssc_data_t) -> " << tech_symbol << "\n"
+               "\tpass\n"
+               "\n"
+               "def from_existing(model, config=\"\") -> " << tech_symbol << "\n"
                "\tpass\n"
                "\n"
                "__loader__ = None \n"
