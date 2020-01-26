@@ -38,7 +38,7 @@ void load_secondary_cmod_outputs(std::string cmod_name){
                 case SSC_INVALID:
                     break;
                 case SSC_STRING:
-                    vv.Set("");
+                    vv.Set(wxEmptyString);
                     break;
                 case SSC_NUMBER:
                     vv.Set(0);
@@ -281,5 +281,6 @@ equation_info& find_equation_info_from_edge(edge *e, std::string config){
             }
         }
     }
+	throw std::runtime_error("could not find equation info");
 }
 

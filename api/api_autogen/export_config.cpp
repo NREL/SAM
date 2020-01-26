@@ -24,77 +24,36 @@
 #include <conio.h>
 
 
-int DeleteDirectory(const std::string &refcstrRootDirectory,
-                    bool              bDeleteSubdirectories = true)
+#include <locale>
+#include <codecvt>
+#include <tchar.h>
+#include <shellapi.h>
+
+bool DeleteDirectory(LPCTSTR lpszDir, bool noRecycleBin = true)
 {
-  bool            bSubdirectory = false;       // Flag, indicating whether
-                                               // subdirectories have been found
-  HANDLE          hFile;                       // Handle to directory
-  std::string     strFilePath;                 // Filepath
-  std::string     strPattern;                  // Pattern
-  WIN32_FIND_DATA FileInformation;             // File information
+	int len = _tcslen(lpszDir);
+	TCHAR *pszFrom = new TCHAR[len + 2];
+	_tcscpy(pszFrom, lpszDir);
+	pszFrom[len] = 0;
+	pszFrom[len + 1] = 0;
 
+	SHFILEOPSTRUCT fileop;
+	fileop.hwnd = NULL;    // no status display
+	fileop.wFunc = FO_DELETE;  // delete operation
+	fileop.pFrom = pszFrom;  // source file name as double null terminated string
+	fileop.pTo = NULL;    // no destination needed
+	fileop.fFlags = FOF_NOCONFIRMATION | FOF_SILENT;  // do not prompt the user
 
-  strPattern = refcstrRootDirectory + "\\*.*";
-  hFile = ::FindFirstFile(strPattern.c_str(), &FileInformation);
-  if(hFile != INVALID_HANDLE_VALUE)
-  {
-    do
-    {
-      if(FileInformation.cFileName[0] != '.')
-      {
-        strFilePath.erase();
-        strFilePath = refcstrRootDirectory + "\\" + FileInformation.cFileName;
+	if (!noRecycleBin)
+		fileop.fFlags |= FOF_ALLOWUNDO;
 
-        if(FileInformation.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
-        {
-          if(bDeleteSubdirectories)
-          {
-            // Delete subdirectory
-            int iRC = DeleteDirectory(strFilePath, bDeleteSubdirectories);
-            if(iRC)
-              return iRC;
-          }
-          else
-            bSubdirectory = true;
-        }
-        else
-        {
-          // Set file attributes
-          if(::SetFileAttributes(strFilePath.c_str(),
-                                 FILE_ATTRIBUTE_NORMAL) == FALSE)
-            return ::GetLastError();
+	fileop.fAnyOperationsAborted = FALSE;
+	fileop.lpszProgressTitle = NULL;
+	fileop.hNameMappings = NULL;
 
-          // Delete file
-          if(::DeleteFile(strFilePath.c_str()) == FALSE)
-            return ::GetLastError();
-        }
-      }
-    } while(::FindNextFile(hFile, &FileInformation) == TRUE);
-
-    // Close handle
-    ::FindClose(hFile);
-
-    DWORD dwError = ::GetLastError();
-    if(dwError != ERROR_NO_MORE_FILES)
-      return dwError;
-    else
-    {
-      if(!bSubdirectory)
-      {
-        // Set directory attributes
-        if(::SetFileAttributes(refcstrRootDirectory.c_str(),
-                               FILE_ATTRIBUTE_NORMAL) == FALSE)
-          return ::GetLastError();
-
-        // Delete directory
-        if(::RemoveDirectory(refcstrRootDirectory.c_str()) == FALSE)
-          return ::GetLastError();
-      }
-    }
-  }
-
-  return 0;
+	int ret = SHFileOperation(&fileop);
+	delete[] pszFrom;
+	return (ret == 0);
 }
 #endif
 
@@ -123,7 +82,9 @@ void create_empty_subdirectories(std::string dir, std::vector<std::string> folde
         // check if directory already exists
         if( stat( sPath.c_str(), &info ) == 0 ) {
 #if defined(_WIN32)
-            DeleteDirectory(sPath.c_str());
+			std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+			std::wstring wide = converter.from_bytes(sPath);
+            DeleteDirectory(wide.c_str());
 #else
             system(std::string("rm -rf " + sPath).c_str());
 #endif
