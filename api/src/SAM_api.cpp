@@ -209,45 +209,59 @@ SAM_EXPORT void SAM_var_size(SAM_var d, int* nrows, int* ncols, SAM_error *err){
 }
 
 SAM_EXPORT const char * SAM_var_get_string(SAM_var d, SAM_error *err){
-    translateExceptions(err, [&]{
-        return ssc_var_get_string(d);
+	const char * str;
+	translateExceptions(err, [&]{
+        str = ssc_var_get_string(d);
     });
+	return str;
 }
 
 SAM_EXPORT double SAM_var_get_number(SAM_var d, SAM_error *err){
-    translateExceptions(err, [&]{
-        return ssc_var_get_number(d);
+	double num;
+	translateExceptions(err, [&]{
+        num = ssc_var_get_number(d);
     });
+	return num;
 }
 
 SAM_EXPORT double* SAM_var_get_arr(SAM_var d, int* length, SAM_error *err){
-    translateExceptions(err, [&]{
-        return ssc_var_get_array(d, length);
+	double* arr;
+	translateExceptions(err, [&]{
+        arr = ssc_var_get_array(d, length);
     });
+	return arr;
 }
 
 SAM_EXPORT double* SAM_var_get_mat(SAM_var d, int* nrows, int* ncols, SAM_error *err){
-    translateExceptions(err, [&]{
-        return ssc_var_get_matrix(d, nrows, ncols);
+	double* mat;
+	translateExceptions(err, [&]{
+        mat = ssc_var_get_matrix(d, nrows, ncols);
     });
+	return mat;
 }
 
 SAM_EXPORT SAM_table SAM_var_get_table(SAM_var d, SAM_error *err){
-    translateExceptions(err, [&]{
-        return ssc_var_get_table(d);
+	SAM_table tab;
+	translateExceptions(err, [&]{
+        tab = ssc_var_get_table(d);
     });
+	return tab;
 }
 
 SAM_EXPORT SAM_var SAM_var_get_datarr(SAM_var d, int r, SAM_error *err){
-    translateExceptions(err, [&]{
-        return ssc_var_get_var_array(d, r);
+	SAM_var datarr;
+	translateExceptions(err, [&]{
+        datarr = ssc_var_get_var_array(d, r);
     });
+	return datarr;
 }
 
 SAM_EXPORT SAM_var SAM_var_get_datmat(SAM_var d, int r, int c, SAM_error *err){
-    translateExceptions(err, [&]{
-        return ssc_var_get_var_matrix(d, r, c);
+	SAM_var datmat;
+	translateExceptions(err, [&]{
+		datmat = ssc_var_get_var_matrix(d, r, c);
     });
+	return datmat;
 }
 
 //
@@ -367,19 +381,23 @@ SAM_EXPORT const char* SAM_table_get_string(SAM_table t, const char* key, SAM_er
 }
 
 SAM_EXPORT SAM_var SAM_table_get_datarr(SAM_table t, const char *key, int *len, SAM_error *err) {
-    translateExceptions(err, [&]{
+	SAM_var var;
+	translateExceptions(err, [&]{
         GET_VARTABLE()
         GET_VARDATA(key, SSC_DATARR)
-        return ssc_data_get_data_array(t, key, len);
+        var = ssc_data_get_data_array(t, key, len);
     });
+	return var;
 }
 
 SAM_EXPORT SAM_var SAM_table_get_datmat(SAM_table t, const char *key, int *nrows, int *ncols, SAM_error *err) {
-    translateExceptions(err, [&]{
+	SAM_var var;
+	translateExceptions(err, [&]{
         GET_VARTABLE()
         GET_VARDATA(key, SSC_DATMAT)
-        return ssc_data_get_data_matrix(t, key, nrows, ncols);
+        var = ssc_data_get_data_matrix(t, key, nrows, ncols);
     });
+	return var;
 }
 
 SAM_EXPORT void SAM_table_unassign_entry(SAM_table t, const char *key, SAM_error *err) {
