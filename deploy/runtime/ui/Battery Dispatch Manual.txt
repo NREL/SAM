@@ -1,7 +1,7 @@
 Battery Dispatch Manual
 998
 553
-50
+49
 Label
 
 1
@@ -1397,54 +1397,6 @@ Caption
 5
 161
 To activate the manual dispatch model, choose  Manual Dispatch under "Choose Dispatch Model" above. These inputs are inactive for the automated dispatch options.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
-30
-batt_manual_dispatch_label_fom
-X
-3
-501
-Y
-3
-93
-Width
-3
-474
-Height
-3
-48
-Tool Tip
-5
-0
-Caption
-5
-130
-Grid charging is disallowed in the front-of-meter charging models, since the model assumes power can only be exported to the grid.
 TextColour
 4
 0
@@ -2868,7 +2820,7 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-5956
+5903
 on_load{'Battery Dispatch Manual'}=define()
 {	
 	show_label();
@@ -2922,7 +2874,6 @@ function show_label()
 		btm_label = true;
 		
 	show('batt_manual_dispatch_label', btm_label);
-	show('batt_manual_dispatch_label_fom', !btm_label);
 }
 function toggle_discharge_percent()
 {

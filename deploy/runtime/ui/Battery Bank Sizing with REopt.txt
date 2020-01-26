@@ -1171,7 +1171,7 @@ Battery
 Numeric
 
 0
-3769
+3914
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1243,6 +1243,10 @@ on_change{'call_reopt'} = define(){
 			exit;
 	}
 
+	// reset size to 0 to remove battery costs from total_installed_cost
+	value("batt_bank_power", 0);
+	value("batt_bank_size", 0); 
+
 	reopt = reopt_size_battery();
 	
 	if (reopt.error){
@@ -1271,7 +1275,7 @@ on_change{'call_reopt'} = define(){
 	batt = y.outputs.Scenario.Site.Storage;
 	elec = y.outputs.Scenario.Site.ElectricTariff;
 
-	if (!batt.size_kw && !batt.size_kwh){
+	if (batt.size_kw == null && batt.size_kwh == null){
 		apply_str = "Apply results?\nOptimal capacity: " + to_string(0) + 
 			"\nOptimal power: " + to_string(0) + "\nApply results?";
 		apply = yesno(apply_str);
