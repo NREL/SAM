@@ -83,7 +83,7 @@ set_target_properties(SAM_api
     DEBUG_POSTFIX "d"
     )
 
-if (NOT skip_autogen)
+if (NOT skip_api)
     add_dependencies(SAM_api export_config)
 endif()
 
@@ -123,7 +123,7 @@ else()
         unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
                 NAMES libssc.so
-                PATHS $ENV{SSCDIR}/build/ssc )
+                PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/../build_linux_ssc/ssc )
         target_link_libraries(SAM_api ${SSCE_LIB})
     else()
         target_link_libraries(SAM_api optimized ${SSC_LIB})
