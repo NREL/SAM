@@ -2773,10 +2773,9 @@ BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
 EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, ConfigDialog::OnTreeActivated)
 EVT_DATAVIEW_ITEM_START_EDITING(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
 EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, ConfigDialog::OnTreeActivated)
-EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnTreeActivated)
+EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
 EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, ConfigDialog::OnTechTree)
 	EVT_DATAVIEW_SELECTION_CHANGED(ID_FinTree, ConfigDialog::OnFinTree)
-	EVT_LISTBOX_DCLICK( ID_FinTree, ConfigDialog::OnDoubleClick )
 	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
 	EVT_BUTTON( wxID_OK, ConfigDialog::OnOk )
 	EVT_BUTTON( wxID_CANCEL, ConfigDialog::OnCancel )
@@ -2934,12 +2933,6 @@ void ConfigDialog::GetConfiguration(wxString &t, wxString &f)
 {
 	t = m_techname;
 	f = m_finname;
-}
-
-
-void ConfigDialog::OnDoubleClick(wxCommandEvent &)
-{
-	EndModal( wxID_OK );
 }
 
 void ConfigDialog::PopulateTech()
