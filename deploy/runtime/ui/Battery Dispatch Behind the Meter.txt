@@ -172,8 +172,8 @@ Label
 Battery Dispatch
 Description
 5
-117
-For each simulation time step enter a value less than zero to charge the battery, and greater than zero to discharge.
+123
+For each simulation time step enter a rate in kW: less than zero to charge the battery, and greater than zero to discharge.
 TabOrder
 3
 4294967295

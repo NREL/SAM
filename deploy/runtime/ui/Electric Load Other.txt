@@ -3318,7 +3318,7 @@ equations{ '$MIMO$ elecload' } = define() {
 
 	return 0;
 };
-685
+684
 
 on_load{'Electric Load Other'} = define() {
 	on_change{'normalize_to_utility_bill'}();

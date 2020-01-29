@@ -20,8 +20,8 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term( 'annual_dc_nameplate_loss_percent', 'Nameplate' );
 	add_loss_term( 'annual_dc_optimizer_loss_percent', 'DC power optimizer' );
 	add_loss_term( 'annual_dc_perf_adj_loss_percent', 'DC availability and curtailment' );
-	if (varinfo('pv_lifetime_simulation'))
-		if (value('pv_lifetime_simulation') && value('en_dc_lifetime_losses'))
+	if (varinfo('system_use_lifetime_output'))
+		if (value('system_use_lifetime_output'))
 			add_loss_term( 'annual_dc_lifetime_loss_percent', 'DC Lifetime daily losses- year one' );	
 	if (varinfo('en_batt'))
 	{
@@ -46,8 +46,8 @@ loss_diagram{'Flat Plate PV'} = define() {
 //	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
 
 	new_baseline( 'annual_ac_net', 'Net AC energy (kWh)' );
-	if (varinfo('pv_lifetime_simulation'))
-		if (value('pv_lifetime_simulation') && value('en_ac_lifetime_losses'))
+	if (varinfo('system_use_lifetime_output'))
+		if (value('system_use_lifetime_output'))
 			add_loss_term( 'annual_ac_lifetime_loss_percent', 'AC Lifetime daily losses- year one' );
 	add_loss_term('annual_xfmr_loss_percent', 'Transformer loss' );	
 	add_loss_term('annual_ac_perf_adj_loss_percent', 'AC Availability and curtailment' );	

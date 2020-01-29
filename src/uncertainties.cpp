@@ -247,7 +247,7 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	// Read in in Uncertainties.lk (like autographs)
 	if (VarValue *vv = m_s->GetValue("annual_gross_energy"))
 	{
-		mu1 = vv->Value() / 1000.;  //mWh
+		mu1 = vv->Value() / 1000.;  //MWh
 	}
 	else
 		return 1;
@@ -262,7 +262,7 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 
 	if (VarValue *vv = m_s->GetValue("annual_energy"))
 	{
-		mu2 = vv->Value() / 1000.; //mWh
+		mu2 = vv->Value() / 1000.; //MWh
 	}
 	else
 		return 1;
@@ -321,12 +321,12 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	AddAnnotation(new wxPLLineAnnotation(LossArrow, 2, *wxBLUE, wxPLOutputDevice::SOLID, wxPLLineAnnotation::FILLED_ARROW), wxPLAnnotation::AXIS);
 
 
-	AddAnnotation(new wxPLTextAnnotation("Predicted Losses\n" + wxString::Format("%.2f", mu1 - mu2) + " mWh", wxRealPoint(mu2 + 0.2*(mu1 - mu2), ymax), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS);
+	AddAnnotation(new wxPLTextAnnotation("Predicted Losses\n" + wxString::Format("%.2f", mu1 - mu2) + " MWh", wxRealPoint(mu2 + 0.2*(mu1 - mu2), ymax), 2.0, 0, *wxBLACK), wxPLAnnotation::AXIS);
 	AddAnnotation(new wxPLTextAnnotation("Gross Energy P50", wxRealPoint(mu1, 0.25*ymax), 2.0, 90, *wxBLACK), wxPLAnnotation::AXIS);
 	AddAnnotation(new wxPLTextAnnotation("Net Energy P50", wxRealPoint(mu2, 0.25*ymax), 2.0, 90, *wxBLUE), wxPLAnnotation::AXIS);
 	AddAnnotation(new wxPLTextAnnotation("P90", wxRealPoint(1.02* p90, 0.05*ymax), 2.0, 0, *wxBLUE), wxPLAnnotation::AXIS);
 	GetYAxis1()->Show(false);
-	GetXAxis1()->SetLabel("Annual Energy Delivered, Year 1 (mWh)");
+	GetXAxis1()->SetLabel("Annual Energy Delivered, Year 1 (MWh)");
 
 	SetYAxis1(new wxPLLinearAxis(0, 1.1*ymax, "Probability Density"));
 	GetYAxis1()->ShowTickText(false);
@@ -479,7 +479,7 @@ int UncertaintiesCtrl::Figure10(Simulation *sim)
 
 	if (VarValue *vv = m_s->GetValue("annual_energy"))
 	{
-		mu = vv->Value() / 1000.; //mWh
+		mu = vv->Value() / 1000.; //MWh
 	}
 	else
 		return 1;
@@ -521,7 +521,7 @@ int UncertaintiesCtrl::Figure10(Simulation *sim)
 	/// X-axis
 	double max_energy = x.back();
 	double min_energy = x.front();
-	SetXAxis1(new wxPLLinearAxis(min_energy, max_energy, "Annual Energy Delivered, Year 1 (mWh)"));
+	SetXAxis1(new wxPLLinearAxis(min_energy, max_energy, "Annual Energy Delivered, Year 1 (MWh)"));
 
 
 	// points of interest 
@@ -1340,7 +1340,7 @@ void UncertaintiesViewer::DisplayStdDevs() {
 
     bool useMWH = vv_aep->Value() > 1e6;
     if (useMWH)
-        metrics(0,1) = "Energy (mWh)";
+        metrics(0,1) = "Energy (MWh)";
     else
         metrics(0,1) = "Energy (kWh)";
 
@@ -1381,7 +1381,7 @@ void UncertaintiesViewer::DisplayProbOfExceedances() {
     metrics(0,0) = "PXX";
 
     bool useMWH = vv_aep->Value() > 1e6;
-    std::string units = useMWH ? " (mWh)" : " (kWh)";
+    std::string units = useMWH ? " (MWh)" : " (kWh)";
     metrics(0,1) = "Year 1" + units;
     metrics(0,2) = "10-Yr Avg" + units;
     metrics(0,3) = "20-Yr Avg" + units;

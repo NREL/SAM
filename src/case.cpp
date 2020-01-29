@@ -486,7 +486,7 @@ bool Case::SaveDefaults(bool quiet)
 
 	// set default library_folder_list blank
 	VarValue *vv = m_vals.Get("library_folder_list");
-	if (vv)	vv->Set("x");
+	if (vv)	vv->Set(wxString("x"));
 
 #ifdef UI_BINARY
 	m_vals.Write(out);

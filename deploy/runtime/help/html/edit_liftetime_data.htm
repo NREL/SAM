@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Edit Time Series Data</title>
+   <title>Edit Lifetime Data</title>
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,7 +16,7 @@
    <script type="text/javascript" src="helpman_topicinit.js"></script>
 
    <script type="text/javascript">
-     HMSyncTOC("index.html", "edit_time_series_data.htm");
+     HMSyncTOC("index.html", "edit_liftetime_data.htm");
    </script>
    <script type="text/javascript" src="highlight.js"></script>
    <script type="text/javascript">
@@ -29,7 +29,7 @@
 <table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
     <td style="text-align:left">
-      <h1 class="p_Heading1"><span class="f_Heading1">Edit Time Series Data</span></h1>
+      <h1 class="p_Heading1"><span class="f_Heading1">Edit Lifetime Data</span></h1>
 
     </td>
   </tr>
@@ -38,7 +38,7 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">Some input variables in SAM are arrays of time series data with values that apply over the analysis period. The length of the array is the product of the array's time scale and the analysis period, where the analysis period is the number of years in the simulation as defined on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page. The Edit Time Series Data window allows you to create a table of values for this type of input variable. The table may have a single column for one variable or multiple columns for two or more variables.</span></p>
+<p class="p_Text"><span class="f_Text">Some input variables in SAM are arrays of time series data with values that apply over the analysis period. The length of the array is the product of the array's time scale and the analysis period, where the analysis period is the number of years in the simulation as defined on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page. The Edit Lifetime Data window allows you to create a table of values for this type of input variable. The table may have a single column for one variable or multiple columns for two or more variables.</span></p>
 <p class="p_Text"><span class="f_Text">The number of rows in the table depends on the length of the array. For example, an array with a daily time scale and a 30-year analysis period would have:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">365 days/year × 30 years = 10,950 rows</span></p>
 <p class="p_Text"><span class="f_Text">An array with an hourly time scale and a 25-year analysis period would have:</span></p>
@@ -124,11 +124,9 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Paste</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Paste data from you computer's clipboard to the input table. </span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Export</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Export data from the input table to a text file of tab-delimited columns.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Export</span><span class="f_VariableDescription"> to export data from the table to a text file. Be sure to include a file extension (.txt, .csv, etc.) when you save the file.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Import</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Import data from a text file of tab-delimited columns.</span></p>
-<p class="p_Normal">&nbsp;</p>
-<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Import</span><span class="f_VariableDescription"> to import time series data from a properly formatted text file. The file should have one column of data, with a header in Row 1. SAM ignores the data in Row 1. To see an example of the file format, click </span><span class="f_CHInterfaceElement">Export</span><span class="f_VariableDescription"> and open the resulting file in a text editor.</span></p>
 
 </td></tr></table>
 

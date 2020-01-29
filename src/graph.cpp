@@ -78,6 +78,8 @@ void Graph::Copy(Graph *gr)
 	FineGrid = gr->FineGrid;
 	YMin = gr->YMin;
 	YMax = gr->YMax;
+	XMin = gr->XMin;
+	XMax = gr->XMax;
 	Notes = gr->Notes;
 	FontScale = gr->FontScale;
 	FontFace = gr->FontFace;
@@ -411,7 +413,9 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 		// x-axis
 		if (m_g.Type == Graph::STACKED)
 		{
-			wxPLLabelAxis *x1 = new wxPLLabelAxis(-0.1, 0.1, m_g.XLabel);
+            if (m_g.XMin == m_g.XMax)
+                m_g.XMax = 1;
+			wxPLLabelAxis *x1 = new wxPLLabelAxis(m_g.XMin, m_g.XMax, m_g.XLabel);
 			if (m_g.ShowXValues)
 			{
 				for (size_t i = 0; i < ynames.size(); i++)
@@ -441,7 +445,9 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 		else
 		{
 			// linear axis
-			SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
+            if (m_g.XMin == m_g.XMax)
+                m_g.XMax = ndata + 1;
+			SetXAxis1(new wxPLLinearAxis(m_g.XMin, m_g.XMax, m_g.XLabel));
 		}
 	
 		// setup y axis

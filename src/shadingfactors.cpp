@@ -293,7 +293,7 @@ public:
 		m_timestep->SetDBCaption(wxString("Enable partial shading model (c-Si modules only)"));
 
 		int num_cols = 8;
-		matrix_t<double> ts_data(8760, num_cols, 0);
+		matrix_t<double> ts_data(8760, num_cols, 0.);
 		m_timestep->SetData(ts_data);
 
 		m_enableMxH = new wxCheckBox( m_scrollWin, ID_ENABLE_MXH, "Enable month-by-hour beam irradiance shading losses" );
@@ -312,7 +312,7 @@ public:
 		m_azal->PasteAppendRows(true);
 		m_azal->ShadeR0C0(true);
 
-		matrix_t<double> data(10, 18, 0);
+		matrix_t<double> data(10, 18, 0.);
 		for ( int c=0;c<18;c++ )
 			data.at(0, c) = c*20;
 		for ( int r=0;r<10;r++ )

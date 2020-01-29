@@ -1,6 +1,6 @@
 Wind Uncertainty
-964
-3713
+957
+3294
 96
 GroupBox
 
@@ -15,13 +15,13 @@ X
 3
 Y
 3
-1467
+1263
 Width
 3
 950
 Height
 3
-1177
+1036
 Tool Tip
 5
 0
@@ -45,13 +45,13 @@ X
 3
 Y
 3
-156
+132
 Width
 3
 950
 Height
 3
-1273
+1126
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 3
 Y
 3
-2670
+2304
 Width
 3
 950
@@ -105,7 +105,7 @@ X
 480
 Y
 3
-1725
+1500
 Width
 3
 90
@@ -167,7 +167,7 @@ X
 759
 Y
 3
-1725
+1500
 Width
 3
 90
@@ -229,7 +229,7 @@ X
 207
 Y
 3
-1725
+1500
 Width
 3
 90
@@ -291,7 +291,7 @@ X
 771
 Y
 3
-1767
+1542
 Width
 3
 100
@@ -350,10 +350,10 @@ Name
 correlation_uncert
 X
 3
-21
+18
 Y
 3
-2721
+2358
 Width
 3
 913
@@ -444,7 +444,7 @@ X
 300
 Y
 3
-1911
+1659
 Width
 3
 90
@@ -506,7 +506,7 @@ X
 657
 Y
 3
-1911
+1659
 Width
 3
 90
@@ -568,7 +568,7 @@ X
 771
 Y
 3
-1950
+1698
 Width
 3
 100
@@ -630,7 +630,7 @@ X
 657
 Y
 3
-2286
+1980
 Width
 3
 90
@@ -692,7 +692,7 @@ X
 300
 Y
 3
-2316
+2010
 Width
 3
 90
@@ -754,7 +754,7 @@ X
 657
 Y
 3
-2316
+2010
 Width
 3
 90
@@ -816,7 +816,7 @@ X
 300
 Y
 3
-2286
+1980
 Width
 3
 90
@@ -878,7 +878,7 @@ X
 771
 Y
 3
-2358
+2052
 Width
 3
 100
@@ -940,7 +940,7 @@ X
 480
 Y
 3
-567
+516
 Width
 3
 90
@@ -1002,7 +1002,7 @@ X
 753
 Y
 3
-567
+516
 Width
 3
 90
@@ -1064,7 +1064,7 @@ X
 216
 Y
 3
-567
+516
 Width
 3
 90
@@ -1126,7 +1126,7 @@ X
 480
 Y
 3
-633
+582
 Width
 3
 90
@@ -1188,7 +1188,7 @@ X
 753
 Y
 3
-633
+582
 Width
 3
 90
@@ -1250,7 +1250,7 @@ X
 216
 Y
 3
-633
+582
 Width
 3
 90
@@ -1312,7 +1312,7 @@ X
 480
 Y
 3
-501
+450
 Width
 3
 90
@@ -1374,7 +1374,7 @@ X
 753
 Y
 3
-501
+450
 Width
 3
 90
@@ -1436,7 +1436,7 @@ X
 216
 Y
 3
-501
+450
 Width
 3
 90
@@ -1498,7 +1498,7 @@ X
 477
 Y
 3
-699
+648
 Width
 3
 100
@@ -1560,7 +1560,7 @@ X
 750
 Y
 3
-699
+648
 Width
 3
 100
@@ -1622,7 +1622,7 @@ X
 213
 Y
 3
-699
+648
 Width
 3
 100
@@ -1684,7 +1684,7 @@ X
 3
 Y
 3
-3612
+3198
 Width
 3
 951
@@ -1714,7 +1714,7 @@ X
 480
 Y
 3
-1074
+972
 Width
 3
 90
@@ -1776,7 +1776,7 @@ X
 300
 Y
 3
-1044
+942
 Width
 3
 90
@@ -1838,7 +1838,7 @@ X
 657
 Y
 3
-1044
+942
 Width
 3
 90
@@ -1900,7 +1900,7 @@ X
 771
 Y
 3
-1116
+1014
 Width
 3
 100
@@ -1962,7 +1962,7 @@ X
 300
 Y
 3
-873
+798
 Width
 3
 90
@@ -2024,7 +2024,7 @@ X
 657
 Y
 3
-873
+798
 Width
 3
 90
@@ -2086,7 +2086,7 @@ X
 657
 Y
 3
-843
+768
 Width
 3
 90
@@ -2148,7 +2148,7 @@ X
 300
 Y
 3
-843
+768
 Width
 3
 90
@@ -2210,7 +2210,7 @@ X
 771
 Y
 3
-915
+840
 Width
 3
 100
@@ -2272,7 +2272,7 @@ X
 213
 Y
 3
-672
+621
 Width
 3
 633
@@ -2310,7 +2310,7 @@ X
 213
 Y
 3
-540
+489
 Width
 3
 633
@@ -2348,7 +2348,7 @@ X
 213
 Y
 3
-606
+555
 Width
 3
 633
@@ -2383,23 +2383,23 @@ Name
 object 4
 X
 3
-27
+3
 Y
 3
-2427
+6
 Width
 3
-894
+950
 Height
 3
-192
+120
 Tool Tip
 5
 0
 Caption
 5
-43
-Curtailment / Operational Strategies Losses
+50
+Combining Uncertainty Components from IEC 61400-15
 Bold
 2
 1
@@ -2416,7 +2416,7 @@ X
 27
 Y
 3
-2019
+1740
 Width
 3
 894
@@ -2446,7 +2446,7 @@ X
 27
 Y
 3
-1836
+1584
 Width
 3
 894
@@ -2476,7 +2476,7 @@ X
 27
 Y
 3
-1650
+1425
 Width
 3
 894
@@ -2506,7 +2506,7 @@ X
 27
 Y
 3
-1185
+1053
 Width
 3
 894
@@ -2536,7 +2536,7 @@ X
 27
 Y
 3
-981
+879
 Width
 3
 894
@@ -2566,7 +2566,7 @@ X
 27
 Y
 3
-1491
+1290
 Width
 3
 894
@@ -2596,7 +2596,7 @@ X
 27
 Y
 3
-765
+690
 Width
 3
 894
@@ -2626,7 +2626,7 @@ X
 27
 Y
 3
-423
+372
 Width
 3
 894
@@ -2656,7 +2656,7 @@ X
 27
 Y
 3
-180
+153
 Width
 3
 894
@@ -2679,6 +2679,36 @@ GroupBox
 8
 Name
 5
+10
+object 442
+X
+3
+27
+Y
+3
+2094
+Width
+3
+894
+Height
+3
+192
+Tool Tip
+5
+0
+Caption
+5
+43
+Curtailment / Operational Strategies Losses
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
 9
 object 49
 X
@@ -2686,7 +2716,7 @@ X
 27
 Y
 3
-2223
+1917
 Width
 3
 894
@@ -2716,7 +2746,7 @@ X
 21
 Y
 3
-2688
+2322
 Width
 3
 912
@@ -2764,7 +2794,7 @@ X
 39
 Y
 3
-2040
+1761
 Width
 3
 870
@@ -2812,7 +2842,7 @@ X
 39
 Y
 3
-2448
+2115
 Width
 3
 870
@@ -2860,7 +2890,7 @@ X
 39
 Y
 3
-1857
+1605
 Width
 3
 870
@@ -2908,7 +2938,7 @@ X
 42
 Y
 3
-1671
+1446
 Width
 3
 870
@@ -2956,7 +2986,7 @@ X
 42
 Y
 3
-1206
+1074
 Width
 3
 870
@@ -3004,7 +3034,7 @@ X
 42
 Y
 3
-1002
+900
 Width
 3
 870
@@ -3052,7 +3082,7 @@ X
 42
 Y
 3
-1512
+1311
 Width
 3
 870
@@ -3100,7 +3130,7 @@ X
 39
 Y
 3
-789
+714
 Width
 3
 870
@@ -3148,7 +3178,7 @@ X
 39
 Y
 3
-447
+396
 Width
 3
 870
@@ -3196,7 +3226,7 @@ X
 39
 Y
 3
-201
+174
 Width
 3
 870
@@ -3244,7 +3274,7 @@ X
 21
 Y
 3
-45
+24
 Width
 3
 912
@@ -3292,7 +3322,7 @@ X
 21
 Y
 3
-111
+90
 Width
 3
 912
@@ -3333,54 +3363,6 @@ Label
 13
 Name
 5
-10
-object 734
-X
-3
-12
-Y
-3
-15
-Width
-3
-372
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-50
-Combining Uncertainty Components from IEC 61400-15
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-1
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 9
 object 74
 X
@@ -3388,7 +3370,7 @@ X
 15
 Y
 3
-3630
+3216
 Width
 3
 930
@@ -3436,7 +3418,7 @@ X
 39
 Y
 3
-2244
+1938
 Width
 3
 870
@@ -3484,7 +3466,7 @@ X
 300
 Y
 3
-2541
+2208
 Width
 3
 90
@@ -3546,7 +3528,7 @@ X
 657
 Y
 3
-2511
+2178
 Width
 3
 90
@@ -3608,7 +3590,7 @@ X
 300
 Y
 3
-2511
+2178
 Width
 3
 90
@@ -3670,7 +3652,7 @@ X
 657
 Y
 3
-2541
+2208
 Width
 3
 90
@@ -3732,7 +3714,7 @@ X
 771
 Y
 3
-2583
+2250
 Width
 3
 100
@@ -3794,7 +3776,7 @@ X
 300
 Y
 3
-285
+258
 Width
 3
 90
@@ -3856,7 +3838,7 @@ X
 480
 Y
 3
-315
+288
 Width
 3
 90
@@ -3918,7 +3900,7 @@ X
 657
 Y
 3
-285
+258
 Width
 3
 90
@@ -3980,7 +3962,7 @@ X
 300
 Y
 3
-255
+228
 Width
 3
 90
@@ -4042,7 +4024,7 @@ X
 657
 Y
 3
-255
+228
 Width
 3
 90
@@ -4104,7 +4086,7 @@ X
 771
 Y
 3
-357
+330
 Width
 3
 100
@@ -4163,10 +4145,10 @@ Name
 sensitivity_uncert
 X
 3
-480
+483
 Y
 3
-1377
+1227
 Width
 3
 90
@@ -4228,7 +4210,7 @@ X
 480
 Y
 3
-3666
+3252
 Width
 3
 90
@@ -4290,7 +4272,7 @@ X
 756
 Y
 3
-3666
+3252
 Width
 3
 90
@@ -4352,7 +4334,7 @@ X
 204
 Y
 3
-3666
+3252
 Width
 3
 90
@@ -4414,7 +4396,7 @@ X
 657
 Y
 3
-2082
+1803
 Width
 3
 90
@@ -4476,7 +4458,7 @@ X
 657
 Y
 3
-2112
+1833
 Width
 3
 90
@@ -4538,7 +4520,7 @@ X
 300
 Y
 3
-2112
+1833
 Width
 3
 90
@@ -4600,7 +4582,7 @@ X
 300
 Y
 3
-2082
+1803
 Width
 3
 90
@@ -4662,7 +4644,7 @@ X
 771
 Y
 3
-2154
+1875
 Width
 3
 100
@@ -4724,7 +4706,7 @@ X
 657
 Y
 3
-1245
+1113
 Width
 3
 90
@@ -4786,7 +4768,7 @@ X
 300
 Y
 3
-1245
+1113
 Width
 3
 90
@@ -4848,7 +4830,7 @@ X
 480
 Y
 3
-1275
+1143
 Width
 3
 90
@@ -4910,7 +4892,7 @@ X
 771
 Y
 3
-1317
+1185
 Width
 3
 100
@@ -4972,7 +4954,7 @@ X
 480
 Y
 3
-1542
+1341
 Width
 3
 90
@@ -5034,7 +5016,7 @@ X
 759
 Y
 3
-1542
+1341
 Width
 3
 90
@@ -5096,7 +5078,7 @@ X
 207
 Y
 3
-1542
+1341
 Width
 3
 90
@@ -5158,7 +5140,7 @@ X
 771
 Y
 3
-1584
+1383
 Width
 3
 100
@@ -5212,7 +5194,7 @@ TabOrder
 avail_bop_uncert
 3
 1
-Balance of Plant
+Balance of plant
 % E
 Uncertainty
 0
@@ -5254,7 +5236,7 @@ Numeric
 avail_uncert_total
 3
 1
-Total Availability
+Total availability
 % E
 Uncertainty
 0
@@ -5268,11 +5250,11 @@ Numeric
 correlation_uncert
 3
 3
- 
+Correlation uncertainty
  
 Uncertainty
 0
-0
+1
 1
 3
 1
@@ -5282,7 +5264,7 @@ DataMatrix
 elec_eff_uncert
 3
 1
-Electrical Efficiency
+Electrical efficiency
 % E
 Uncertainty
 0
@@ -5296,7 +5278,7 @@ Numeric
 elec_parasitic_uncert
 3
 1
-Facility Parasitic Consumption
+Facility parasitic consumption
 % E
 Uncertainty
 0
@@ -5310,7 +5292,7 @@ Numeric
 elec_uncert_total
 3
 1
-Total Electrical
+Total electrical
 % E
 Uncertainty
 0
@@ -5352,7 +5334,7 @@ Numeric
 env_exp_uncert
 3
 1
-Exposure Changes
+Exposure changes
 % E
 Uncertainty
 0
@@ -5380,7 +5362,7 @@ Numeric
 env_uncert_total
 3
 1
-Total Environmental
+Total environmental
 % E
 Uncertainty
 0
@@ -5394,7 +5376,7 @@ Numeric
 eval_climate_10yr_uncert
 3
 1
-10 Year
+10 year
 % WS
 Uncertainty
 0
@@ -5408,7 +5390,7 @@ Numeric
 eval_climate_20yr_uncert
 3
 1
-20 Year
+20 year
 % WS
 Uncertainty
 0
@@ -5422,7 +5404,7 @@ Numeric
 eval_climate_uncert
 3
 1
-Climate Change Year 1
+Climate change Year 1
 % WS
 Uncertainty
 0
@@ -5436,7 +5418,7 @@ Numeric
 eval_perf_10yr_uncert
 3
 1
-10 Year
+10 year
 % WS
 Uncertainty
 0
@@ -5450,7 +5432,7 @@ Numeric
 eval_perf_20yr_uncert
 3
 1
-20 Year
+20 year
 % WS
 Uncertainty
 0
@@ -5464,7 +5446,7 @@ Numeric
 eval_perf_uncert
 3
 1
-Plant Performance Year 1
+Plant performance Year 1
 % WS
 Uncertainty
 0
@@ -5478,7 +5460,7 @@ Numeric
 eval_period_10yr_uncert
 3
 1
-10 Year
+10 year
 % WS
 Uncertainty
 0
@@ -5492,7 +5474,7 @@ Numeric
 eval_period_20yr_uncert
 3
 1
-20 Year
+20 year
 % WS
 Uncertainty
 0
@@ -5506,7 +5488,7 @@ Numeric
 eval_period_uncert
 3
 1
-Modelled Period Year 1
+Modelled period Year 1
 % WS
 Uncertainty
 0
@@ -5520,7 +5502,7 @@ Numeric
 eval_uncert_10yr_total
 3
 1
-Total 10 Year
+Total 10 year
 % WS
 Uncertainty
 0
@@ -5534,7 +5516,7 @@ Numeric
 eval_uncert_20yr_total
 3
 1
-Total 20 Year
+Total 20 year
 % WS
 Uncertainty
 0
@@ -5548,7 +5530,7 @@ Numeric
 eval_uncert_total
 3
 1
-Total Lifetime Variability, Year 1
+Total lifetime variability Year 1
 % WS
 Uncertainty
 0
@@ -5562,7 +5544,7 @@ Numeric
 hextrap_approp_uncert
 3
 1
-Model Appropriateness
+Model appropriateness
 % WS
 Uncertainty
 0
@@ -5576,7 +5558,7 @@ Numeric
 hextrap_inputs_uncert
 3
 1
-Model Inputs
+Model inputs
 % WS
 Uncertainty
 0
@@ -5590,7 +5572,7 @@ Numeric
 hextrap_sens_uncert
 3
 1
-Model Sensitivity/Stress
+Model sensitivity and stress
 % WS
 Uncertainty
 0
@@ -5604,7 +5586,7 @@ Numeric
 hextrap_uncert_total
 3
 1
-Total Horizontal Extrapolation
+Total horizontal extrapolation
 % WS
 Uncertainty
 0
@@ -5618,7 +5600,7 @@ Numeric
 meas_atm_uncert
 3
 1
-Other Atmospheric Parameters
+Other atmospheric parameters
 % WS
 Uncertainty
 0
@@ -5632,7 +5614,7 @@ Numeric
 meas_data_uncert
 3
 1
-Data Integrity and Documentation
+Data integrity and documentation
 % WS
 Uncertainty
 0
@@ -5646,7 +5628,7 @@ Numeric
 meas_dir_uncert
 3
 1
-Wind Direction Measurement / Rose
+Wind direction measurement and rose
 % WS
 Uncertainty
 0
@@ -5660,7 +5642,7 @@ Numeric
 meas_speed_uncert
 3
 1
-Wind Speed Measurement
+Wind speed measurement
 % WS
 Uncertainty
 0
@@ -5674,7 +5656,7 @@ Numeric
 meas_uncert_total
 3
 1
-Total Measurement Uncertainty
+Total measurement uncertainty
 % WS
 Uncertainty
 0
@@ -5688,7 +5670,7 @@ Numeric
 ops_env_uncert
 3
 1
-Environmental / Permit Curtailment
+Environmental and permit curtailment
 % E
 Uncertainty
 0
@@ -5702,7 +5684,7 @@ Numeric
 ops_grid_uncert
 3
 1
-Grid Curtailment
+Grid curtailment
 % E
 Uncertainty
 0
@@ -5716,9 +5698,9 @@ Numeric
 ops_load_uncert
 3
 1
-Load Curtailment
+Load curtailment
 % E
- 
+Uncertainty
 0
 2
 1
@@ -5730,7 +5712,7 @@ Numeric
 ops_strategies_uncert
 3
 1
-Operational Strategies
+Operational strategies
 % E
 Uncertainty
 0
@@ -5744,7 +5726,7 @@ Numeric
 ops_uncert_total
 3
 1
-Total Curtailment / Operational Strategies
+Total curtailment and operational strategies
 % E
 Uncertainty
 0
@@ -5758,7 +5740,7 @@ Numeric
 resource_adj_uncert
 3
 1
-Long-term Adjustment (MCP)
+Long-term adjustment (MCP)
 % WS
 Uncertainty
 0
@@ -5772,7 +5754,7 @@ Numeric
 resource_datasyn_uncert
 3
 1
-On-site Data Synthesis (gap filling)
+On-site data synthesis (gap filling)
 % WS
 Uncertainty
 0
@@ -5786,7 +5768,7 @@ Numeric
 resource_dist_uncert
 3
 1
-Speed Distribution Uncertainty
+Speed distribution uncertainty
 % WS
 Uncertainty
 0
@@ -5800,7 +5782,7 @@ Numeric
 resource_period_uncert
 3
 1
-Long-term Period (IAV)
+Long-term period (IAV)
 % WS
 Uncertainty
 0
@@ -5814,7 +5796,7 @@ Numeric
 resource_refdata_uncert
 3
 1
-Reference Data
+Reference data
 % WS
 Uncertainty
 0
@@ -5828,7 +5810,7 @@ Numeric
 resource_uncert_total
 3
 1
-Total Historical Wind Resource
+Total historical wind resource
  % WS
 Uncertainty
 0
@@ -5856,7 +5838,7 @@ Numeric
 total_10yr_uncert
 3
 1
-10 Year Total
+10 year total
 % E
 Uncertainty
 0
@@ -5870,7 +5852,7 @@ Numeric
 total_20yr_uncert
 3
 1
-20 Year Total
+20 year total
 % E
 Uncertainty
 0
@@ -5884,9 +5866,9 @@ Numeric
 total_uncert
 3
 1
-Total Combined Uncertainty
+Total combined uncertainty
 % E
- 
+Uncertainty
 11
 Uncertainty
 8
@@ -5899,7 +5881,7 @@ Numeric
 turb_generic_uncert
 3
 1
-Generic Power Curve Adjustment
+Generic power curve adjustment
 % E
 Uncertainty
 0
@@ -5913,7 +5895,7 @@ Numeric
 turb_hysteresis_uncert
 3
 1
-High Wind Hysteresis
+High wind hysteresis
 % E
 Uncertainty
 0
@@ -5927,7 +5909,7 @@ Numeric
 turb_specific_uncert
 3
 1
-Site-specific Power Curve Adjustment
+Site-specific power curve adjustment
 % E
 Uncertainty
 0
@@ -5941,7 +5923,7 @@ Numeric
 turb_subopt_uncert
 3
 1
-Sub-optimal Performance
+Sub-optimal performance
 % E
 Uncertainty
 0
@@ -5955,7 +5937,7 @@ Numeric
 turb_uncert_total
 3
 1
-Total Turbine Performance
+Total turbine performance
 % E
 Uncertainty
 0
@@ -5969,7 +5951,7 @@ Numeric
 vextrap_comp_uncert
 3
 1
-Model Components
+Model components
 % WS
 Uncertainty
 0
@@ -5983,7 +5965,7 @@ Numeric
 vextrap_inputs_uncert
 3
 1
-Model Inputs
+Model inputs
 % WS
 Uncertainty
 0
@@ -5997,7 +5979,7 @@ Numeric
 vextrap_stress_uncert
 3
 1
-Model Stressor
+Model stressor
 % WS
 Uncertainty
 0
@@ -6011,7 +5993,7 @@ Numeric
 vextrap_uncert_total
 3
 1
-Total Vertical Extrapolation
+Total vertical extrapolation
 % WS
 Uncertainty
 0
@@ -6025,7 +6007,7 @@ Numeric
 wake_ext_uncert
 3
 1
-External Wake
+External wake
 % E
 Uncertainty
 0
@@ -6039,7 +6021,7 @@ Numeric
 wake_future_uncert
 3
 1
-Future Wake
+Future wake
 % E
 Uncertainty
 0
@@ -6053,7 +6035,7 @@ Numeric
 wake_int_uncert
 3
 1
-Internal Wake
+Internal wake
 % E
 Uncertainty
 0
@@ -6067,7 +6049,7 @@ Numeric
 wake_uncert_total
 3
 1
-Total Wake Effects
+Total wake effects
 % E
 Uncertainty
 0
@@ -6081,7 +6063,7 @@ Numeric
 wspd_uncert
 3
 1
-Total Wind Speed-Based Uncertainty
+Total wind speed-based uncertainty
 %
 Uncertainty
 0
