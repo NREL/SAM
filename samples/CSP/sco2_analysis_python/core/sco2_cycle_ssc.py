@@ -1136,6 +1136,64 @@ def sim_default_new_T_amb__T_amb_od_par(T_amb_des, T_amb_od_cold, T_amb_od_hot, 
     c_sco2.solve_sco2_case()
     return c_sco2.m_solve_dict
 
+def get_air_cooler_default_des_pars():
+
+    pars = {}
+    pars["T_amb_des"] = 35.0        #[C]
+    pars["q_dot_des"] = 10.0 #[MWt]
+    pars["T_co2_hot_des"] = 80.0 #[C]
+    pars["P_co2_hot_des"] = 8.5  #[MPa]
+    pars["deltaP_co2_des"] = 0.1        #[MPa]
+    pars["T_co2_cold_des"] = 41.0   #[C]
+    pars["W_dot_fan_des"] = 0.2     #[MWe] (if cycle 50% efficient then 10 MWe output, so 2% is 0.2 Mwe)
+    pars["site_elevation"] = 300.0  #[m] Required for air properties
+
+    return pars
+
+class C_sco2_air_cooler_design:
+
+    def __init__(self, dict_des_pars):
+
+        self.m_solve_success = np.nan
+        self.m_solve_dict = np.nan
+
+        start_time = time.time()
+
+        sco2_return = ssc_sim.cmod_sco2_air_cooler(dict_des_pars)
+        self.m_solve_success = sco2_return[0]
+        self.m_solve_dict = sco2_return[1]
+
+        end_time = time.time()
+        self.m_solve_dict["solution_time"] = end_time - start_time
+
+        print("\nsolve time = ", end_time - start_time)
+        print("Length (flow direction) of one pass = ", self.m_solve_dict["length"])
+        print("")
+
+class C_sco2_air_cooler_des_and_offdes:
+
+    def __init__(self, dict_des_pars, dict_od_inputs):
+
+        self.m_solve_success = np.nan
+        self.m_solve_dict = np.nan
+
+        start_time = time.time()
+
+        dict_cmod_in = dict_des_pars.copy()
+        dict_cmod_in.update(dict_od_inputs)
+
+        sco2_return = ssc_sim.cmod_sco2_air_cooler(dict_cmod_in)
+        self.m_solve_success = sco2_return[0]
+        self.m_solve_dict = sco2_return[1]
+
+        end_time = time.time()
+        self.m_solve_dict["solution_time"] = end_time - start_time
+
+        print("\nsolve time = ", end_time - start_time)
+        print("Length (flow direction) of one pass = ", self.m_solve_dict["length"])
+        print("Off design fan power = ", self.m_solve_dict["W_dot_fan_od"])
+        print("")
+
 def get_one_des_dict_from_par_des_dict(par_dict, par_key, index):
     
     n_len = len(par_dict[par_key])
