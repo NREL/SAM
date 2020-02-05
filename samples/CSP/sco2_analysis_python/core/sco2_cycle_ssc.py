@@ -1173,7 +1173,7 @@ def amb_temp_parametric__m_dot_ND_levels(dict_sco2_params, f_N_rc, f_N_mc, str_d
     elif (dict_sco2_params["cycle_config"] == 2):
         s_cycle = "PC"
 
-    od_sim_label_str = str_des + s_cycle + str_N_rc + str_N_mc + "__T_amb_od_par__array__part_load"
+    od_sim_label_str = str_des + "_" + s_cycle + "_" + str_N_rc + str_N_mc + "__T_amb_od_par__array__part_load"
 
     od_sol_dict_list = 0
 
@@ -1185,7 +1185,7 @@ def amb_temp_parametric__m_dot_ND_levels(dict_sco2_params, f_N_rc, f_N_mc, str_d
         i_T = T_amb_od_low
         T_amb_od = []
         while i_T <= T_amb_od_high:
-            T_amb_od.append([dict_sco2_params["T_htf_hot_des"], i_part_load, i_T, 1.0, 1.0])
+            T_amb_od.append([dict_sco2_params["T_htf_hot_des"], i_part_load, i_T, f_N_rc, f_N_mc])
             i_T = i_T + T_amb_od_step
 
         mod_base_dict = {"od_cases": T_amb_od}  # [[mod_base_dict["T_htf_hot_des"],1.0,mod_base_dict["T_amb_des"],-1.0]]
