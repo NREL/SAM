@@ -9,7 +9,7 @@ function log_message
 
 function debug
 {
-	if [ $VERBOSE != 0 ]; then
+	if [ "$VERBOSE" != 0 ]; then
 		log_message "DEBUG" $@
 	fi
 }
@@ -96,7 +96,7 @@ LOG_FILE="/tmp/python-installation.log"
 > $LOG_FILE
 
 if [ -z $1 ]; then
-	error "Usage:  $0 PYTHON_INSTALL_DIRECTORY
+	error "Usage:  $0 PYTHON_INSTALL_DIRECTORY"
 	exit 1
 fi
 
