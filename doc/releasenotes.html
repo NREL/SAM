@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa" 1.0="" dir="ltr"><head profile="http://www.w3.org/1999/xhtml/vocab"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
  <title>System Advisor Model (SAM) Release Notes</title>
  <style>
  h1 
@@ -11,7 +10,6 @@
  font-weight: normal;
  font-size: 16pt;
  padding: 10px;}
- 
  h2 
  {font-family: Segoe UI,sans-serif;
  background-color: #B8CCE4;
@@ -19,14 +17,24 @@
  font-weight: normal;
  font-size: 14pt;
  padding: 5px;}
- 
  p,li 
  {font-family: Segoe UI,sans-serif;
  font-size: 11pt;}
-
-
-</style>
- </head>
+ table 
+ {font-family: Segoe UI,sans-serif;
+ border-collapse: collapse;
+ width: 90%;
+ margin-left:auto;
+ margin-right:auto;}
+ td, th 
+ {border: 1px solid #dddddd;
+ padding: 8px;
+ text-align:center;}
+ tr:nth-child(even) 
+ {background-color: #dddddd;}
+ </style>
+</head>
+	
  <body>
        <p style="font-family:Segoe UI,sans-serif;font-size:20pt;text-align:center;color:#0072C6;">System Advisor Model (SAM) Release Notes</p>
 
@@ -132,7 +140,7 @@
 <tr>
 <th>Module Type</th>
 <th>Approximate Nominal Efficiency (%)<br/>V5 / V7</th>
-<th>Module Cover V5 / V7</th>
+<th>Module Cover<br/>V5 / V7</th>
 <th>Temperature  Coefficient of Power (%/&deg;C)<br/>V5 / V7</th>
 <th>Fill Factor (for self-shading)<br/>V5 / V7</th>
 </tr>
@@ -149,6 +157,13 @@
 <td>Anti-reflective</td>
 <td>-0.35 / -0.35</td>
 <td>None / 80.1%</td>
+</tr>
+<tr>
+<td>Thin film</td>
+<td>10 / 15.6</td>
+<td>Glass / Anti-reflective</td>
+<td>-0.20 / -0.32</td>
+<td>None / 70.6%</td>
 </tr>
 </table>	
 <p>The following new features in PVWatts V7 are in SAM Simulation Core (SSC) (accessible via the <a href="https://sam.nrel.gov/sdk">SAM SDK</a>) but not in SAM:</p>
