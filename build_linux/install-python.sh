@@ -80,32 +80,23 @@ function build_python
 	info "Finished building Python $PYTHON_VERSION_FULL"
 }
 
-function install_packages
+function install_pip
 {
 	run_command "$PIP install --upgrade pip"
-	install_land_bosse
 	info "Finished installing packages"
 }
 
-function install_land_bosse
+function show_help
 {
-	pip=$(realpath $PIP)
-	cd $SITE_PACKAGES
-	run_command "wget https://github.com/WISDEM/LandBOSSE/archive/$LAND_BOSSE_VERSION.tar.gz"
-	extract_package "$LAND_BOSSE_VERSION.tar.gz" "LandBOSSE-$LAND_BOSSE_VERSION"
-	cd LandBOSSE-$LAND_BOSSE_VERSION
-	run_command "$pip install --quiet -e ."
-	run_command rm -rf LandBOSSE-$LAND_BOSSE_VERSION $LAND_BOSSE_VERSION.tar.gz
-	cd -
-	info "Finished installing LandBOSSE"
+	echo "Usage:  $0 PYTHON_INSTALL_DIRECTORY [-p PATH_TO_PYTHON]"
 }
 
 ### MAIN ###
 LOG_FILE="/tmp/python-installation.log"
 > $LOG_FILE
 
-if [ -z $2 ]; then
-	error "Usage:  $0 PYTHON_INSTALL_DIRECTORY LAND_BOSSE_VERSION"
+if [ -z $1 ]; then
+	error "Usage:  $0 PYTHON_INSTALL_DIRECTORY
 	exit 1
 fi
 
@@ -119,11 +110,6 @@ PYTHON_PACKAGE_PATH=/tmp/$PYTHON_PACKAGE_NAME
 PYTHON_SRC_URL=https://www.python.org/ftp/python/$PYTHON_VERSION_FULL/$PYTHON_PACKAGE_NAME
 INSTALL_PATH=$(realpath $1/python-$PYTHON_VERSION_FULL)
 PIP=$INSTALL_PATH/bin/pip$PYTHON_VERSION
-SITE_PACKAGES=$INSTALL_PATH/lib/python$PYTHON_VERSION/site-packages
-LAND_BOSSE_VERSION=$2
-if [ -z $VERBOSE ]; then
-	VERBOSE=0
-fi
 
 debug "PYTHON_VERSION=$PYTHON_VERSION"
 debug "PYTHON_PACKAGE_NAME=$PYTHON_PACKAGE_NAME"
@@ -131,7 +117,6 @@ debug "PYTHON_PACKAGE_PATH=$PYTHON_PACKAGE_PATH"
 debug "PYTHON_SRC_URL=$PYTHON_SRC_URL"
 debug "INSTALL_PATH=$INSTALL_PATH"
 debug "PIP=$PIP"
-debug "SITE_PACKAGES=$SITE_PACKAGES"
 
 if [ ! -d $INSTALL_PATH ]; then
 	mkdir -p $INSTALL_PATH
@@ -147,5 +132,5 @@ fi
 
 build_python
 # TODO: delete the Python tarball
-install_packages
+install_pip
 info "Finished installation"
