@@ -4,6 +4,7 @@
 
 import argparse
 import logging
+import os
 import shlex
 import subprocess
 import sys
@@ -16,6 +17,12 @@ logger = None
 def install_landbosse(python_path, landbosse_version=LANDBOSSE_VERSION):
     """Installs LandBOSSE via pip."""
     cmd = f"{python_path}/bin/pip install landbosse=={landbosse_version}"
+    if sys.platform == "win32":
+        pip = os.path.join(python_path, "Scripts", "pip.exe")
+    else:
+        pip = os.path.join(python_path, "bin", "pip")
+    cmd = f"{pip} install landbosse=={landbosse_version}"
+
     ret = run_command(cmd)
     if ret != 0:
         msg = "Failed to install LandBOSSE"
