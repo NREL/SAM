@@ -9,7 +9,7 @@ function log_message
 
 function debug
 {
-	if [ "$VERBOSE" != 0 ]; then
+	if [ $VERBOSE == 1 ]; then
 		log_message "DEBUG" $@
 	fi
 }
@@ -63,7 +63,17 @@ function build_python
 		error "configure failed, return_code=$ret. Refer to $(realpath $(pwd)/config.log)"
 		exit ret
 	fi
-	make -j$(nproc) > make.log 2>&1
+
+	if [[ "$OSTYPE" == "linux-gnu" ]]; then
+		num_procs=$(nproc)
+	elif [[ "$OSTYPE" == "darwin"* ]]; then
+		num_procs=$(sysctl -n hw.ncpu)
+	else
+		error "unknown OS type $OSTYPE"
+		exit 1
+	fi
+
+	make -j$num_procs > make.log 2>&1
 	ret=$?
 	if [ $ret != 0 ]; then
 		error "make failed, return_code=$ret. Refer to $(realpath $(pwd)/make.log)"
@@ -88,7 +98,7 @@ function install_pip
 
 function show_help
 {
-	echo "Usage:  $0 PYTHON_INSTALL_DIRECTORY [-p PATH_TO_PYTHON]"
+	echo "Usage:  $0"
 }
 
 ### MAIN ###
@@ -96,8 +106,18 @@ LOG_FILE="/tmp/python-installation.log"
 > $LOG_FILE
 
 if [ -z $1 ]; then
-	error "Usage:  $0 PYTHON_INSTALL_DIRECTORY"
-	exit 1
+	INSTALL_BASE=.
+else
+	INSTALL_BASE=$1
+	if [ ! -d $INSTALL_BASE ]; then
+		error "path $INSTALL_BASE does not exist"
+		exit 1
+	fi
+fi
+
+
+if [ -z $VERBOSE ]; then
+	VERBOSE=0
 fi
 
 # TODO: allow caller to pass in the python version
@@ -108,7 +128,11 @@ PYTHON_SRC_PATH=/tmp/$PYTHON_SRC
 PYTHON_PACKAGE_NAME=$PYTHON_SRC.tgz
 PYTHON_PACKAGE_PATH=/tmp/$PYTHON_PACKAGE_NAME
 PYTHON_SRC_URL=https://www.python.org/ftp/python/$PYTHON_VERSION_FULL/$PYTHON_PACKAGE_NAME
-INSTALL_PATH=$(realpath $1/python-$PYTHON_VERSION_FULL)
+INSTALL_BASE=$INSTALL_BASE/python
+if [ ! -d $INSTALL_BASE ]; then
+	mkdir $INSTALL_BASE
+fi
+INSTALL_PATH=$(realpath $INSTALL_BASE/python-$PYTHON_VERSION_FULL)
 PIP=$INSTALL_PATH/bin/pip$PYTHON_VERSION
 
 debug "PYTHON_VERSION=$PYTHON_VERSION"
@@ -131,6 +155,6 @@ if [ ! -d $PYTHON_SRC_PATH ]; then
 fi
 
 build_python
-# TODO: delete the Python tarball
+run_command $PYTHON_PACKAGE_PATH
 install_pip
 info "Finished installation"
