@@ -155,6 +155,6 @@ if [ ! -d $PYTHON_SRC_PATH ]; then
 fi
 
 build_python
-run_command $PYTHON_PACKAGE_PATH
+run_command "rm $PYTHON_PACKAGE_PATH"
 install_pip
 info "Finished installation"
