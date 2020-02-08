@@ -161,7 +161,7 @@ function setup_pvwatts_pages()
 function setup_flat_plate_pv_pages()
 {
 
-//	addpage( [ ['AA Widgets'] ], { 'sidebar'='Widgets' } ); // use for widget testing
+	//addpage( [ ['AA Widgets'] ], { 'sidebar'='Widgets' } ); // use for widget testing
 
 	addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	
