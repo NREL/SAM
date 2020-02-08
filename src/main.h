@@ -381,7 +381,6 @@ private:
 	void OnTechTree(wxDataViewEvent &);
 	void OnFinTree(wxDataViewEvent &);
 	void OnFinTreeDoubleClick(wxDataViewEvent &);
-	void OnDoubleClick(wxCommandEvent &evt);
 
 	void UpdateFinTree();
 
