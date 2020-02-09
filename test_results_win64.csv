@@ -91,8 +91,8 @@ Generic CSP System,Commercial,573340096,4.126488,NA,; Notice: time 0.00 { Generi
 Generic CSP System,Single Owner,573450304,11.703119,12.613471,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Merchant Plant,573450304,10.610463,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Leveraged Partnership Flip,573342592,11.965166,12.902393,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,All Equity Partnership Flip,573420096,15.025028,17.597370,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,Sale Leaseback,573450304,15.225276,17.464741,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,All Equity Partnership Flip,573342592,15.026999,17.599688,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Sale Leaseback,573527808,15.223275,17.462437,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,LCOE Calculator,573346496,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,None,573444096,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 ISCC,Single Owner,-465885.437500,-1672.073975,1193.728760,; 
