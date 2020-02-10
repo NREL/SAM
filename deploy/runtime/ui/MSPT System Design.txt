@@ -1282,24 +1282,39 @@ System Design
 0
 Label
 
-324
-equations{ 'nameplate' } = define() {
-	return ${P_ref}*${gross_net_conversion_factor}; }; //MWe
+795
+equations{ '$MIMO$ MSPT_System_Design_Equations1' } = define() {
+	// nameplate
+	data.P_ref = ${P_ref};
+	data.gross_net_conversion_factor = ${gross_net_conversion_factor};
 	
-equations{ 'q_pb_design' } = define() 
-{
-	return ${P_ref}/${design_eff};
+	// q_pb_design
+	data.P_ref = ${P_ref};	// repeats not necessary, just for documentation
+	data.design_eff = ${design_eff};
+	
+	// Q_rec_des
+	data.solarm = ${solarm};
+	data.q_pb_design = nan();	// -> calculated from above
+	
+	// tshours_sf
+	data.tshours = ${tshours};
+	data.solarm = ${solarm};
+	
+	success = ssc_eqn("MSPT_System_Design_Equations", data);
+	if (!success) {
+		${nameplate} = -999.;
+		${q_pb_design} = -999.;
+		${Q_rec_des} = -999.;
+		${tshours_sf} = -999.;
+	}
+	else {
+		${nameplate} = data.nameplate;
+		${q_pb_design} = data.q_pb_design;
+		${Q_rec_des} = data.q_rec_des;
+		${tshours_sf} = data.tshours_sf;
+	}
 };
 
-equations{ 'Q_rec_des' } = define() 
-{
-	return ${solarm}*${q_pb_design}; 
-};
-
-equations{ 'tshours_sf' } = define()
-{
-	return ${tshours}/${solarm};
-};
 1047
 function change_msg ( v ) {
 	msg = '';
