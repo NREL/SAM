@@ -76,6 +76,9 @@ span.f_EquationExcel /* Equation Excel */
 {
  font-style: italic;
 }
+span.f_Footnote /* Footnote */
+{
+}
 span.f_Heading1 /* Heading1 */
 {
  font-size: 18pt;
@@ -316,6 +319,12 @@ p, p.p_Normal, div.p_Normal, li.p_Normal /* Normal */
  font-size: 10pt;
  text-indent: -24px;
  margin: 0 0 6px 72px;
+}
+.p_Footnote /* Footnote */
+{
+ font-size: 10pt;
+ text-indent: -9px;
+ margin: 0 0 0 12px;
 }
 .p_Heading1 /* Heading1 */
 {

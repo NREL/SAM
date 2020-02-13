@@ -5,7 +5,7 @@ Battery Ancillary Losses
 GroupBox
 
 1
-7
+8
 Name
 5
 27
@@ -22,6 +22,9 @@ Width
 Height
 3
 209
+Tool Tip
+5
+0
 Caption
 5
 26
@@ -32,7 +35,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 10
@@ -49,6 +52,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -68,7 +74,7 @@ Bold
 RadioChoice
 
 1
-10
+11
 Name
 5
 16
@@ -85,6 +91,9 @@ Width
 Height
 3
 33
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -105,7 +114,7 @@ TabOrder
 DataArray
 
 1
-9
+10
 Name
 5
 11
@@ -122,6 +131,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 1
@@ -139,7 +151,7 @@ TabOrder
 MonthlyFactor
 
 1
-7
+8
 Name
 5
 20
@@ -156,6 +168,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Description
 5
 17
@@ -166,7 +181,7 @@ TabOrder
 MonthlyFactor
 
 1
-7
+8
 Name
 5
 23
@@ -183,6 +198,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Description
 5
 17
@@ -193,7 +211,7 @@ TabOrder
 MonthlyFactor
 
 1
-7
+8
 Name
 5
 16
@@ -210,6 +228,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Description
 5
 17
@@ -220,7 +241,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -237,6 +258,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 303
@@ -265,7 +289,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -282,6 +306,9 @@ Width
 Height
 3
 42
+Tool Tip
+5
+0
 Caption
 5
 83

@@ -29,76 +29,14 @@
 
 bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
 {
-	switch( vv->Type() )
-	{
-	case VV_NUMBER:
-		ssc_data_set_number( pdata, sscname.c_str(), (ssc_number_t)vv->Value() );
-		break;
-	case VV_ARRAY:
-	{
-		size_t n;
-		double *p = vv->Array( &n );
-		if ( sizeof(ssc_number_t) == sizeof( double ) )
-			ssc_data_set_array( pdata, sscname.c_str(), p, n );
-		else
-		{
-			ssc_number_t *pp = new ssc_number_t[n];
-			for( size_t i=0;i<n;i++ )
-				pp[i] = p[i];
-
-			ssc_data_set_array( pdata, sscname.c_str(), pp, n );
-
-			delete [] pp;
-		}
-	}
-		break;
-	case VV_MATRIX:
-	{
-		matrix_t<double> &fl = vv->Matrix();
-		if ( sizeof(ssc_number_t) == sizeof(double) )
-		{
-			ssc_data_set_matrix( pdata, sscname.c_str(), fl.data(), fl.nrows(), fl.ncols() );
-		}
-		else
-		{
-			ssc_number_t *pp = new ssc_number_t[ fl.nrows() * fl.ncols() ];
-			size_t n = 0;
-			for( size_t r = 0; r < fl.nrows(); r++ )
-				for( size_t c=0;c<fl.ncols();c++)
-					pp[n++] = (ssc_number_t)fl(r,c);
-
-			ssc_data_set_matrix( pdata, sscname.c_str(), pp, fl.nrows(), fl.ncols() );
-			delete [] pp;
-		}
-	}
-		break;
-	case VV_STRING:
-		ssc_data_set_string( pdata, sscname.c_str(), vv->String().c_str() );
-		break;
-	case VV_TABLE:
-	{
-		ssc_data_t tab = ssc_data_create();
-		VarTable &vt = vv->Table();
-		for( VarTable::iterator it = vt.begin();
-			it != vt.end();
-			++it )
-		{
-			VarValueToSSC( it->second, tab, it->first );
-		}
-
-		ssc_data_set_table( pdata, sscname.c_str(), tab );
-
-		ssc_data_free( tab ); // ssc_data_set_table above makes a deep copy, so free this here
-	}
-		break;
-
-
-	case VV_INVALID:
-	default:
-		return false;
-	}
-
-	return true;
+    auto var = ssc_var_create();
+    if (!vv->AsSSCVar(var)){
+        ssc_var_free(var);
+        return false;
+    }
+    ssc_data_set_var(pdata, sscname.c_str(), var);
+    ssc_var_free(var);
+    return true;
 }
 
 Simulation::Simulation( Case *cc, const wxString &name )
@@ -667,6 +605,73 @@ bool Simulation::Generate_lk(FILE *fp)
 	return true;
 }
 
+bool Simulation::CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data) {
+    int pidx = 0;
+    while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
+        int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+        int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+        wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+        wxString reqd(ssc_info_required(p_inf));
+
+        if (var_type == SSC_INPUT || var_type == SSC_INOUT) {
+            // handle ssc variable names
+            // that are explicit field accesses"shading:mxh"
+            wxString field;
+            int pos = name.Find(':');
+            if (pos != wxNOT_FOUND) {
+                field = name.Mid(pos + 1);
+                name = name.Left(pos);
+            }
+
+            int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+            if (existing_type != data_type) {
+                if (VarValue *vv = GetInput(name)) {
+                    if (!field.IsEmpty()) {
+                        if (vv->Type() != VV_TABLE) {
+                            wxString err = "SSC variable has table:field specification, but '" + name +
+                                           "' is not a table in SAM";
+                            ssc_data_set_string(p_data, "error", err.c_str());
+                            return false;
+                        }
+
+                        bool do_copy_var = false;
+                        if (reqd.Left(1) == "?") {
+                            // if the SSC variable is optional, check for the 'en_<field>' element in the table
+                            if (VarValue *en_flag = vv->Table().Get("en_" + field))
+                                if (en_flag->Boolean())
+                                    do_copy_var = true;
+                        } else do_copy_var = true;
+
+                        if (do_copy_var) {
+                            if (VarValue *vv_field = vv->Table().Get(field)) {
+                                if (!VarValueToSSC(vv_field, p_data, name + ":" + field)) {
+                                    wxString err =
+                                            "Error translating table:field variable from SAM UI to SSC for '" +
+                                            name + "':" + field;
+                                    ssc_data_set_string(p_data, "error", err.c_str());
+                                    return false;
+                                }
+                            }
+                        }
+
+                    }
+
+                    if (!VarValueToSSC(vv, p_data, name)) {
+                        wxString err = "Error translating data from SAM UI to SSC for " + name;
+                        ssc_data_set_string(p_data, "error", err.c_str());
+                        return false;
+                    }
+                } else if (reqd == "*") {
+                    wxString err = "SSC requires input '" + name +
+                                   "', but was not found in the SAM UI or from previous simulations";
+                    ssc_data_set_string(p_data, "error", err.c_str());
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
 
 bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 {
@@ -680,75 +685,18 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 
 	if ( m_simlist.size() == 0 )
 		ih->Error("No simulation compute modules defined for this configuration.");
-	
+
 	for( size_t kk=0;kk<m_simlist.size();kk++ )
 	{
-		ssc_module_t p_mod = ssc_module_create( m_simlist[kk].c_str() );
-		if ( !p_mod )
-		{
-			ih->Error( "could not create ssc module: " + m_simlist[kk] );
-			continue;
-		}
+        ssc_module_t p_mod = ssc_module_create(m_simlist[kk].c_str());
+        if (!p_mod) {
+            wxString err = "could not create ssc module: " + m_simlist[kk];
+            ssc_data_set_string(p_data, "error", err.c_str());
+            return false;
+        }
 
-		int pidx=0;
-		while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, pidx++ ) )
-		{
-			int var_type = ssc_info_var_type( p_inf );   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-			int data_type = ssc_info_data_type( p_inf ); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
-			wxString name( ssc_info_name( p_inf ) ); // assumed to be non-null
-			wxString reqd( ssc_info_required( p_inf ) );
-
-			if ( var_type == SSC_INPUT || var_type == SSC_INOUT )
-			{
-				// handle ssc variable names
-				// that are explicit field accesses"shading:mxh"
-				wxString field;
-				int pos = name.Find( ':' );
-				if ( pos != wxNOT_FOUND )
-				{
-					field = name.Mid(pos+1);
-					name = name.Left(pos);
-				}
-				
-				int existing_type = ssc_data_query( p_data, ssc_info_name( p_inf ) );
-				if ( existing_type != data_type )
-				{
-					if (VarValue *vv = GetInput(name) )
-					{
-						if ( !field.IsEmpty() )
-						{
-							if ( vv->Type() != VV_TABLE )
-								ih->Error( "SSC variable has table:field specification, but '" + name + "' is not a table in SAM" );
-
-							bool do_copy_var = false;
-							if ( reqd.Left(1) == "?" )
-							{
-								// if the SSC variable is optional, check for the 'en_<field>' element in the table
-								if ( VarValue *en_flag = vv->Table().Get( "en_" + field ) )
-									if ( en_flag->Boolean() )
-										do_copy_var = true;
-							}
-							else do_copy_var = true;
-						
-							if ( do_copy_var )
-							{
-								if ( VarValue *vv_field = vv->Table().Get( field ) )
-								{
-									if ( !VarValueToSSC( vv_field, p_data, name + ":" + field ) )
-										ih->Error( "Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field );
-								}
-							}
-						
-						}
-
-						if ( !VarValueToSSC( vv, p_data, name ) )
-							ih->Error( "Error translating data from SAM UI to SSC for " + name );
-					
-					}
-					else if ( reqd == "*" )
-						ih->Error( "SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations" );
-				}
-			}
+		if (!CmodInputsToSSCData(p_mod, p_data)){
+		    ih->Error(ssc_data_get_string(p_data, "error"));
 		}
 
 		// optionally write a debug input file if the ISimulationHandler defines it
@@ -766,7 +714,7 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 		}
 		else
 		{
-			pidx = 0;
+			int pidx = 0;
 			while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, pidx++ ) )
 			{
 				int var_type = ssc_info_var_type( p_inf );   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
@@ -863,6 +811,46 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 
 	return m_errors.size() == 0;
 
+}
+
+bool Simulation::GetInputsSSCData(ssc_data_t p_data) {
+    if (m_simlist.empty())
+        m_simlist = m_case->GetConfiguration()->Simulations;
+    ssc_module_exec_set_print( 0 );
+    for( size_t kk=0;kk<m_simlist.size();kk++ )
+    {
+        ssc_module_t p_mod = ssc_module_create(m_simlist[kk].c_str());
+        if (!p_mod) {
+            wxString err = "could not create ssc module: " + m_simlist[kk];
+            ssc_data_set_string(p_data, "error", err.c_str());
+            return false;
+        }
+
+        if (!CmodInputsToSSCData(p_mod, p_data)){
+            return false;
+        }
+        ssc_bool_t result = ssc_module_exec( p_mod, p_data );
+
+        // copy over first error if there was one to internal buffer
+        if (!result)
+        {
+            int type, i=0;
+			const char *text = ssc_module_log(p_mod, i, &type, 0);
+            while(text)
+            {
+                if (type == SSC_ERROR)
+                {
+                    ssc_data_set_string(p_data, "error", text);
+                    break;
+                }
+                i++;
+				text = ssc_module_log(p_mod, i, &type, 0);
+            }
+        }
+        ssc_module_free(p_mod);
+    }
+    ssc_module_exec_set_print( 1 );
+    return true;
 }
 
 void Simulation::ListByCount( size_t nr, size_t nc, wxArrayString &list )

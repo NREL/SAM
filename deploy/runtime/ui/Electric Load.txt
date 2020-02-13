@@ -5,7 +5,7 @@ Electric Load
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 237
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -32,7 +35,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -49,6 +52,9 @@ Width
 Height
 3
 42
+Tool Tip
+5
+0
 Caption
 5
 163
@@ -77,7 +83,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -94,6 +100,9 @@ Width
 Height
 3
 48
+Tool Tip
+5
+0
 Caption
 5
 149
@@ -122,7 +131,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -139,6 +148,9 @@ Width
 Height
 3
 51
+Tool Tip
+5
+0
 Caption
 5
 217
@@ -167,7 +179,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -184,6 +196,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 97
@@ -212,7 +227,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -229,6 +244,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0

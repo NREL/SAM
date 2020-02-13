@@ -123,6 +123,7 @@ struct AutoGraph {
 	wxString title, xlabel, ylabel, yvals, legend_pos;
 	int size, Type;
 	bool show_legend, show_xvalues;
+	double XMin, XMax;
 };
 	
 class ResultsViewer : public wxMetroNotebook

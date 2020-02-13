@@ -26,14 +26,11 @@ endif()
 
 Project(EXPORT_SAM_UI)
 
-include_directories(
-        . ../../src $ENV{LKDIR}/include $ENV{WEXDIR}/include $ENV{SSCDIR} ../tcs)
-
 set(SAM_SOURCES
         ../../src/variables.cpp
         ../../src/equations.cpp)
 
-file(TO_CMAKE_PATH $ENV{SSCDIR}/shared/lib_util.cpp SSC_SOURCES)
+file(TO_CMAKE_PATH ../../../ssc/shared/lib_util.cpp SSC_SOURCES)
 
 
 #####################################################################################################################
@@ -105,6 +102,9 @@ add_executable(export_config
         builder_generator_helper.h builder_generator_helper.cpp 
 		builder_C_API.cpp builder_C_API.h 
 		builder_PySAM.cpp builder_PySAM.h)
+
+target_include_directories(export_config SYSTEM PRIVATE ../../src $ENV{SSCDIR} $ENV{SSCDIR}/tcs $ENV{WEXDIR}/include $ENV{LKDIR}/include )
+
 set_target_properties(export_config
     PROPERTIES
     DEBUG_POSTFIX "d"

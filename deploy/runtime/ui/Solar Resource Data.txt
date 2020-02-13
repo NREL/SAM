@@ -1,11 +1,11 @@
 Solar Resource Data
-882
-859
+884
+917
 46
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 363
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -32,7 +35,7 @@ Bold
 Hyperlink
 
 1
-8
+9
 Name
 5
 10
@@ -49,6 +52,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 121
@@ -63,7 +69,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -73,13 +79,16 @@ X
 753
 Y
 3
-822
+864
 Width
 3
 103
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -122,7 +131,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -132,13 +141,16 @@ X
 150
 Y
 3
-795
+849
 Width
 3
 103
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -181,11 +193,73 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
 annual_diffuse
+X
+3
+150
+Y
+3
+876
+Width
+3
+103
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+13
+annual_global
 X
 3
 150
@@ -198,6 +272,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -240,66 +317,7 @@ TabOrder
 Numeric
 
 1
-16
-Name
-5
-13
-annual_global
-X
-3
-150
-Y
-3
-768
-Width
-3
-103
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-0
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-16
+17
 Name
 5
 11
@@ -309,13 +327,16 @@ X
 753
 Y
 3
-795
+837
 Width
 3
 103
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -358,7 +379,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -368,13 +389,16 @@ X
 477
 Y
 3
-768
+822
 Width
 3
 103
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -417,7 +441,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -427,13 +451,16 @@ X
 477
 Y
 3
-795
+849
 Width
 3
 103
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -476,7 +503,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 12
@@ -493,6 +520,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 30
@@ -503,7 +533,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 12
@@ -520,6 +550,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -530,7 +563,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 15
@@ -540,13 +573,16 @@ X
 18
 Y
 3
-51
+66
 Width
 3
 846
 Height
 3
 36
+Tool Tip
+5
+0
 Caption
 5
 239
@@ -575,23 +611,26 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
 caption_techs
 X
 3
-702
+711
 Y
 3
-654
+663
 Width
 3
-169
+160
 Height
 3
 69
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -619,23 +658,26 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
-23
-downlad_weather_caption
+24
+download_weather_caption
 X
 3
 18
 Y
 3
-402
+393
 Width
 3
 846
 Height
 3
-42
+51
+Tool Tip
+5
+0
 Caption
 5
 292
@@ -664,7 +706,7 @@ AlignTop
 Button
 
 1
-7
+8
 Name
 5
 15
@@ -681,6 +723,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -691,7 +736,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 4
@@ -701,13 +746,16 @@ X
 123
 Y
 3
-708
+717
 Width
 3
 103
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 317
@@ -750,7 +798,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 14
@@ -767,6 +815,9 @@ Width
 Height
 3
 39
+Tool Tip
+5
+0
 Caption
 5
 240
@@ -795,23 +846,26 @@ AlignTop
 Divider
 
 1
-9
+10
 Name
 5
 14
 group_optional
 X
 3
-606
+603
 Y
 3
-771
+816
 Width
 3
 267
 Height
 3
-25
+19
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -831,7 +885,7 @@ Bold
 TextEntry
 
 1
-10
+11
 Name
 5
 11
@@ -848,6 +902,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -872,7 +929,7 @@ TabOrder
 StringArray
 
 1
-8
+9
 Name
 5
 16
@@ -889,21 +946,24 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
-13
-Location List
+17
+List of locations
 Description
 5
 51
-Type or import a list of addresses or lat,lon pairs
+Type or import a list of addresses or lat-lon pairs
 TabOrder
 3
 7
 RadioChoice
 
 1
-10
+11
 Name
 5
 19
@@ -920,6 +980,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -940,7 +1003,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 16
@@ -957,6 +1020,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 3
@@ -972,7 +1038,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 12
@@ -989,6 +1055,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -1009,7 +1078,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 11
@@ -1026,6 +1095,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -1039,7 +1111,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 3
@@ -1049,13 +1121,16 @@ X
 315
 Y
 3
-654
+663
 Width
 3
 103
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 1.1
@@ -1098,7 +1173,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 16
@@ -1114,7 +1189,10 @@ Width
 846
 Height
 3
-18
+33
+Tool Tip
+5
+0
 Caption
 5
 149
@@ -1143,7 +1221,7 @@ AlignTop
 MultilineText
 
 1
-10
+11
 Name
 5
 19
@@ -1160,6 +1238,9 @@ Width
 Height
 3
 54
+Tool Tip
+5
+0
 Text
 5
 38
@@ -1185,7 +1266,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 3
@@ -1195,13 +1276,16 @@ X
 315
 Y
 3
-681
+690
 Width
 3
 103
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 1.2
@@ -1244,23 +1328,26 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
 object 22
 X
 3
-30
+27
 Y
 3
-747
+795
 Width
 3
-840
+849
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1280,23 +1367,26 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
 object 2236
 X
 3
-33
+30
 Y
 3
-636
+642
 Width
 3
 840
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1316,7 +1406,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -1326,13 +1416,16 @@ X
 9
 Y
 3
-384
+375
 Width
 3
 870
 Height
 3
-153
+162
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -1343,7 +1436,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -1353,13 +1446,16 @@ X
 9
 Y
 3
-546
+537
 Width
 3
 870
 Height
 3
-306
+375
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -1370,7 +1466,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -1380,13 +1476,16 @@ X
 444
 Y
 3
-648
+663
 Width
 3
-255
+267
 Height
 3
-99
+144
+Tool Tip
+5
+0
 Caption
 5
 233
@@ -1415,7 +1514,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1425,13 +1524,16 @@ X
 366
 Y
 3
-822
+876
 Width
 3
 222
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 28
@@ -1460,7 +1562,7 @@ AlignTop
 Button
 
 1
-7
+8
 Name
 5
 15
@@ -1477,6 +1579,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -1487,7 +1592,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 20
@@ -1504,6 +1609,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -1528,7 +1636,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 25
@@ -1545,6 +1653,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -1569,7 +1680,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 19
@@ -1586,6 +1697,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 34
@@ -1596,7 +1710,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 17
@@ -1606,13 +1720,16 @@ X
 123
 Y
 3
-681
+690
 Width
 3
 103
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 3
@@ -1638,7 +1755,7 @@ TabOrder
 Library
 
 1
-7
+8
 Name
 5
 14
@@ -1648,13 +1765,16 @@ X
 18
 Y
 3
-90
+102
 Width
 3
 846
 Height
 3
 159
+Tool Tip
+5
+0
 Library
 5
 17
@@ -1666,7 +1786,7 @@ Name,Latitude,Longitude,Time zone,Elevation,Station ID,Source,Version
 TextEntry
 
 1
-10
+11
 Name
 5
 19
@@ -1683,6 +1803,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -1707,7 +1830,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 10
@@ -1717,13 +1840,16 @@ X
 123
 Y
 3
-654
+663
 Width
 3
 103
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 4
@@ -1749,7 +1875,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 15
@@ -1766,6 +1892,9 @@ Width
 Height
 3
 36
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1793,7 +1922,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 2
@@ -1803,13 +1932,16 @@ X
 315
 Y
 3
-708
+717
 Width
 3
 103
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 -7.5
@@ -1853,7 +1985,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1870,6 +2002,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1912,7 +2047,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 27
@@ -1929,6 +2064,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -2105,7 +2243,7 @@ Default
 in_location
 3
 4
-Location Input (address or lat/lon)
+Location input (address or lat/lon)
  
 Location and Resource
 0
@@ -2118,7 +2256,7 @@ Default
 in_location_list
 3
 4
-List of Locations
+List of locations
  
 Location and Resource
 3
@@ -2132,7 +2270,7 @@ StringArray
 in_location_options
 3
 1
-Location Options (0=one,1=multiple)
+Location options (0=one,1=multiple)
  
 Location and Resource
 0
@@ -2146,7 +2284,7 @@ Default
 in_nsrdb_options
 3
 1
-NSRDB Options
+NSRDB options
  
 Location and Resource
 0
@@ -2160,7 +2298,7 @@ Choice
 in_time_step
 3
 1
-Time Step Option (0=60 min,1=30 min)
+Time Step option (0=60 min,1=30 min)
  
 Location and Resource
 0
@@ -2392,14 +2530,11 @@ equations{'file_name'} = define() {
 	return ${solar_resource_file};
 };
 
-27762
+28552
 on_load{'Solar Resource Data'} = define() {
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
 	on_change{'is_advanced'}();
-	rescanlibrary('solar');
-	update_library_folders(''); // refresh list of library folders
-	update_info( 'on_load Solar Resource Data');
 	value('solar_data_file_name_load', value('solar_data_file_name'));
 	// UI updates do not work consistently if these
 	// variables do not have widgets. They are stacked
@@ -2410,6 +2545,9 @@ on_load{'Solar Resource Data'} = define() {
 	show('solar_data_file_name', false);
 	show('in_time_step', value('in_nsrdb_options') != 0 ); 
 	refresh();
+	rescanlibrary('solar');
+	update_library_folders(''); // refresh list of library folders
+	update_info( 'on_load Solar Resource Data');
 };
 
 on_change{'solar_resource'} = define() {
@@ -2449,12 +2587,20 @@ on_change{ 'in_nsrdb_options' } = define() {
 };
 
 on_change{ 'is_advanced' } = define() {
-	show('in_location_list', value('in_location_options') == 1 && !value('is_advanced') );
-	show('in_location', value('in_location_options') == 0 && !value('is_advanced') );
+	if ( value('is_advanced') ) {
+		property( 'download_weather_caption' , 'Caption' , 'After downloading legacy data from the NSRDB, click View Data below to check the data before using it for a simulation.');
+		property( 'download_weather_caption' , 'TextColour', 'red' );
+	}
+	else {
+		property( 'download_weather_caption' , 'Caption' , 'The NSRDB is a database of thousands of weather files that you can download and add to your to your solar resource library: Download a default typical-year (TMY) file for most long-term cash flow analyses, or choose files to download for single-year or P50/P90 analyses. See Help for details.' );
+		property( 'download_weather_caption' , 'TextColour', 'black' );
+	}
+	show('in_location_list', ( value('in_location_options') && !value('is_advanced') ) );
+	show('in_location', ( !value('in_location_options') && !value('is_advanced') ) );
 	show('in_location_options', !value('is_advanced') );
 	show('in_nsrdb_options', !value('is_advanced') );
 	show('in_time_step', !value('is_advanced') );
-	refresh(''); 
+	refresh('');
 };
 
 on_change{'refresh_library'} = define() {
@@ -2610,9 +2756,9 @@ function update_info( ctxt )
 	property( 'summary_caption' , 'Caption' , msg_caption );
 	property( 'summary_caption' , 'TextColour' , msg_color );
 	show('btn_file_add', show_button);
-	show('group_optional',technology() == 'Flat Plate PV');
-	show('annual_snow',technology() == 'Flat Plate PV');
-	show('annual_albedo',technology() == 'Flat Plate PV');
+	show('group_optional',technology() == 'Flat Plate PV' || technology() == 'PVWatts' );
+	show('annual_snow',technology() == 'Flat Plate PV' || technology() == 'PVWatts' );
+	show('annual_albedo',technology() == 'Flat Plate PV' || technology() == 'PVWatts' );
 	refresh('');
 
 	if ( librarygetcurrentselection('solar_resource') == '' )

@@ -31,8 +31,6 @@ if (NOT skip_autogen)
     add_subdirectory(api_autogen)
 endif()
 
-include_directories(. include $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
-
 set(SAM_API_SRC
         src/ErrorHandler.cpp
         src/SAM_api.cpp
@@ -111,6 +109,9 @@ endif()
 #####################################################################################################################
 
 add_library(SAM_api SHARED ${SAM_API_SRC})
+
+target_include_directories(SAM_api PRIVATE include $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
+
 set_target_properties(SAM_api
     PROPERTIES
     DEBUG_POSTFIX "d"
@@ -180,4 +181,25 @@ if (APPLE)
             POST_BUILD
             COMMAND install_name_tool -id @rpath/$<TARGET_FILE_NAME:SAM_api>.so $<TARGET_FILE:SAM_api>
     )
+endif()
+
+if(DEFINED ENV{PYSAMDIR})
+    if (SAMAPI_EXPORT OR MSVC)
+		if (MSVC)
+			add_custom_command(
+                TARGET SAM_api
+                POST_BUILD
+				COMMAND ${CMAKE_COMMAND} -E remove 
+					$ENV{PYSAMDIR}/files/$<TARGET_FILE_BASE_NAME:SAM_api>.lib
+					$ENV{PYSAMDIR}/files/$<TARGET_FILE_BASE_NAME:SAM_api>.dll
+			)
+		    set(SAMAPI_LIB $<TARGET_FILE_DIR:SAM_api>/$<TARGET_FILE_BASE_NAME:SAM_api>.lib)
+        endif()
+        add_custom_command(
+                TARGET SAM_api
+                POST_BUILD
+                COMMAND ${CMAKE_COMMAND}
+                ARGS -E copy $<TARGET_FILE:SAM_api> ${SAMAPI_LIB} $ENV{PYSAMDIR}/files
+        )
+    endif()
 endif()

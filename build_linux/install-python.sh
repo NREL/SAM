@@ -9,7 +9,7 @@ function log_message
 
 function debug
 {
-	if [ $VERBOSE != 0 ]; then
+	if [ $VERBOSE == 1 ]; then
 		log_message "DEBUG" $@
 	fi
 }
@@ -63,7 +63,17 @@ function build_python
 		error "configure failed, return_code=$ret. Refer to $(realpath $(pwd)/config.log)"
 		exit ret
 	fi
-	make -j$(nproc) > make.log 2>&1
+
+	if [[ "$OSTYPE" == "linux-gnu" ]]; then
+		num_procs=$(nproc)
+	elif [[ "$OSTYPE" == "darwin"* ]]; then
+		num_procs=$(sysctl -n hw.ncpu)
+	else
+		error "unknown OS type $OSTYPE"
+		exit 1
+	fi
+
+	make -j$num_procs > make.log 2>&1
 	ret=$?
 	if [ $ret != 0 ]; then
 		error "make failed, return_code=$ret. Refer to $(realpath $(pwd)/make.log)"
@@ -80,33 +90,34 @@ function build_python
 	info "Finished building Python $PYTHON_VERSION_FULL"
 }
 
-function install_packages
+function install_pip
 {
 	run_command "$PIP install --upgrade pip"
-	install_land_bosse
 	info "Finished installing packages"
 }
 
-function install_land_bosse
+function show_help
 {
-	pip=$(realpath $PIP)
-	cd $SITE_PACKAGES
-	run_command "wget https://github.com/WISDEM/LandBOSSE/archive/$LAND_BOSSE_VERSION.tar.gz"
-	extract_package "$LAND_BOSSE_VERSION.tar.gz" "LandBOSSE-$LAND_BOSSE_VERSION"
-	cd LandBOSSE-$LAND_BOSSE_VERSION
-	run_command "$pip install --quiet -e ."
-	run_command rm -rf LandBOSSE-$LAND_BOSSE_VERSION $LAND_BOSSE_VERSION.tar.gz
-	cd -
-	info "Finished installing LandBOSSE"
+	echo "Usage:  $0"
 }
 
 ### MAIN ###
 LOG_FILE="/tmp/python-installation.log"
 > $LOG_FILE
 
-if [ -z $2 ]; then
-	error "Usage:  $0 PYTHON_INSTALL_DIRECTORY LAND_BOSSE_VERSION"
-	exit 1
+if [ -z $1 ]; then
+	INSTALL_BASE=.
+else
+	INSTALL_BASE=$1
+	if [ ! -d $INSTALL_BASE ]; then
+		error "path $INSTALL_BASE does not exist"
+		exit 1
+	fi
+fi
+
+
+if [ -z $VERBOSE ]; then
+	VERBOSE=0
 fi
 
 # TODO: allow caller to pass in the python version
@@ -117,13 +128,12 @@ PYTHON_SRC_PATH=/tmp/$PYTHON_SRC
 PYTHON_PACKAGE_NAME=$PYTHON_SRC.tgz
 PYTHON_PACKAGE_PATH=/tmp/$PYTHON_PACKAGE_NAME
 PYTHON_SRC_URL=https://www.python.org/ftp/python/$PYTHON_VERSION_FULL/$PYTHON_PACKAGE_NAME
-INSTALL_PATH=$(realpath $1/python-$PYTHON_VERSION_FULL)
-PIP=$INSTALL_PATH/bin/pip$PYTHON_VERSION
-SITE_PACKAGES=$INSTALL_PATH/lib/python$PYTHON_VERSION/site-packages
-LAND_BOSSE_VERSION=$2
-if [ -z $VERBOSE ]; then
-	VERBOSE=0
+INSTALL_BASE=$INSTALL_BASE/python
+if [ ! -d $INSTALL_BASE ]; then
+	mkdir $INSTALL_BASE
 fi
+INSTALL_PATH=$(realpath $INSTALL_BASE/python-$PYTHON_VERSION_FULL)
+PIP=$INSTALL_PATH/bin/pip$PYTHON_VERSION
 
 debug "PYTHON_VERSION=$PYTHON_VERSION"
 debug "PYTHON_PACKAGE_NAME=$PYTHON_PACKAGE_NAME"
@@ -131,7 +141,6 @@ debug "PYTHON_PACKAGE_PATH=$PYTHON_PACKAGE_PATH"
 debug "PYTHON_SRC_URL=$PYTHON_SRC_URL"
 debug "INSTALL_PATH=$INSTALL_PATH"
 debug "PIP=$PIP"
-debug "SITE_PACKAGES=$SITE_PACKAGES"
 
 if [ ! -d $INSTALL_PATH ]; then
 	mkdir -p $INSTALL_PATH
@@ -146,6 +155,6 @@ if [ ! -d $PYTHON_SRC_PATH ]; then
 fi
 
 build_python
-# TODO: delete the Python tarball
-install_packages
+run_command "rm $PYTHON_PACKAGE_PATH"
+install_pip
 info "Finished installation"

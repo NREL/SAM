@@ -2376,7 +2376,7 @@ tes_pump_coef
 1
 Pumping power for HTF through storage
 kJ/kg
- Physical Trough Thermal Storage
+Physical Trough Thermal Storage
 0
 2
 1

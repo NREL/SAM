@@ -37,7 +37,33 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <lk/absyn.h>
 #include <lk/eval.h>
 
+#include <shared/lib_util.h>
+
+#include <ssc/sscapi.h>
+
 #include "object.h"
+
+// adds new entry to ssc_data from the value in vardata
+bool assign_lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat);
+
+// clears ssc_data and hashes all the variables entries into vardata's hash
+bool lkhash_to_sscdata(lk::vardata_t &val, ssc_data_t table);
+
+// clears ssc_data and hashes vardata under name
+bool lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat);
+
+// clears ssc_var and assigns the value from vardata
+bool lkvar_to_sscvar(lk::vardata_t &val, ssc_var_t p_var);
+
+// clears vardata and hashes all the variable entries in the ssc_data_t table
+void sscdata_to_lkhash(ssc_data_t p_dat, lk::vardata_t &out);
+
+// clears vardata and assigns the ssc_data to the ssc_data_t
+void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out);
+
+// clears vardata and assigns the value from ssc_var_t
+void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out);
+
 
 class VarValue;
 class VarDatabase;
@@ -50,8 +76,10 @@ class VarDatabase;
 #define VV_MATRIX 3
 #define VV_TABLE 5
 #define VV_BINARY 6
+#define VV_DATARR 7
+#define VV_DATMAT 8
 
-extern wxString vv_strtypes[7];
+extern wxString vv_strtypes[9];
 
 typedef unordered_map<wxString, VarValue*, wxStringHash, wxStringEqual> VarTableBase;
 
@@ -60,6 +88,7 @@ class VarTable : public VarTableBase
 public:
 	VarTable();
 	VarTable( const VarTable &rhs );
+	VarTable( ssc_data_t rhs);
 	~VarTable();
 
 	VarTable &operator=( const VarTable &rhs );
@@ -84,6 +113,8 @@ public:
 	bool Read_text(wxInputStream &);
 	bool Read_text(const wxString &file);
 
+    // returns a pointer to a ssc::var_table class that'll need to be freed using ssc_data_free
+    bool AsSSCData(ssc_data_t p_dat);
 };
 
 class VarValue
@@ -100,6 +131,7 @@ public:
 	explicit VarValue( const wxString &s );
 	explicit VarValue( const VarTable &t );
 	explicit VarValue( const wxMemoryBuffer &mb );
+	explicit VarValue(ssc_var_t vd);
 
 	VarValue( double *arr, size_t n );
 	VarValue( double *mat, size_t r, size_t c );
@@ -116,6 +148,9 @@ public:
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &);
 
+	// returns a pointer to a ssc::var_data class that'll need to be freed using ssc_var_free
+    bool AsSSCVar(ssc_var_t p_var);
+
 	int Type() const;
 	wxString TypeAsString() const;
 	void ChangeType(int type);
@@ -127,7 +162,7 @@ public:
 	void Set( const std::vector<double> &fvec );
 	void Set(double *val, size_t n);
 	void Set(double *mat, size_t r, size_t c);
-	void Set(const ::matrix_t<double> &mat);
+	void Set(const matrix_t<double> &mat);
 	void Set( const wxString &str );
 	void Set( const VarTable &tab );
 	void Set( const wxMemoryBuffer &mb );
@@ -141,13 +176,16 @@ public:
 	size_t Rows(); 
 	size_t Columns();
 	std::vector<int> IntegerArray();
-	::matrix_t<double> &Matrix();
+	matrix_t<double> &Matrix();
 	double *Matrix( size_t *nr, size_t *nc );
 	wxString String();
 	VarTable &Table();
 	wxMemoryBuffer &Binary();
+	std::vector<VarValue>& DataArray();
+    std::vector<std::vector<VarValue>>& DataMatrix();
 
-	bool Read( const lk::vardata_t &val, bool change_type = false );
+
+    bool Read( const lk::vardata_t &val, bool change_type = false );
 	bool Write( lk::vardata_t &val );
 
 	static bool Parse( int type, const wxString &str, VarValue &val );
@@ -156,10 +194,13 @@ public:
 	static VarValue Invalid;
 private:
 	unsigned char m_type;
-	::matrix_t<double> m_val;
+	matrix_t<double> m_val;
 	wxString m_str;
 	VarTable m_tab;
 	wxMemoryBuffer m_bin;
+	std::vector<VarValue> m_datarr;
+    std::vector<std::vector<VarValue>> m_datmat;
+
 };
 
 #define VF_NONE                0x00

@@ -1780,7 +1780,7 @@ Default
 dispatch_sched_weekday
 3
 3
-TOD schedule schedule
+TOD schedule weekday
  
 Time of Delivery Factors
 27

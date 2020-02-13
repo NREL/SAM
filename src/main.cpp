@@ -116,6 +116,16 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2020, 02, 02 }, //projected public release
+		{ 2020, 1, 17 }, //Updated Beta for release testing - expires 1/17/2021 ssc version 232
+		{ 2020, 1, 14 }, //Updated Beta for release testing - expires 1/14/2021 ssc version 231
+		{ 2020, 1, 6 }, //Updated Beta for release testing - expires 1/6/2021 ssc version 230
+		{ 2020, 1, 3 }, //Updated Beta for release testing - expires 1/3/2021 ssc version 229
+		{ 2019, 12, 31 }, //Updated Beta for release testing - expires 12/31/2020.
+		{ 2019, 12, 26 }, //Updated Beta for internal release testing - no expiration.
+		{ 2019, 12, 19 }, //Updated Beta for internal release testing - no expiration.
+		{ 2019, 12, 16 }, //Updated Beta for internal release testing - no expiration.
+		{ 2019, 12, 9 }, //Updated Beta for internal release testing - no expiration.
 		{ 2019, 12, 2 }, //Updated Beta for ME and Fuel Cells expires 12/2/2020
 		{ 2019, 11, 27 }, //Beta for ME and Fuel Cells expires 11/27/2020
 		{ 2019, 11, 11 }, //Beta for ME 11/11/2020
@@ -1333,8 +1343,11 @@ public:
 		// dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green	
 		// dc.SetBackground( wxBrush( wxColour(130,186,0) ) ); // pale lime green		
 		// dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink, making development more fun for everyone!
-		// dc.SetBackground(wxBrush(wxColour(23, 26, 33))); // dark gray
-		dc.SetBackground(wxBrush(wxColour(23, 26, 33)));
+		// dc.SetBackground(wxBrush(wxColour(23, 26, 33))); // dark gray 2017.1.17
+		//dc.SetBackground(wxBrush(wxColour(62, 121, 123))); // blue green 2017.9.5
+		//dc.SetBackground(wxBrush(wxColour(83, 76, 173))); // dark lavender 2018.10.10
+		// dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
+		dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
 
 		dc.Clear();
 
@@ -2757,7 +2770,12 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };
 
 BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
-	EVT_LISTBOX( ID_TechTree, ConfigDialog::OnTechTree)
+EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, ConfigDialog::OnTreeActivated)
+EVT_DATAVIEW_ITEM_START_EDITING(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
+EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, ConfigDialog::OnTreeActivated)
+EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnTreeActivated)
+EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, ConfigDialog::OnTechTree)
+	EVT_DATAVIEW_SELECTION_CHANGED(ID_FinTree, ConfigDialog::OnFinTree)
 	EVT_LISTBOX_DCLICK( ID_FinTree, ConfigDialog::OnDoubleClick )
 	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
 	EVT_BUTTON( wxID_OK, ConfigDialog::OnOk )
@@ -2776,8 +2794,8 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	CenterOnParent();
 
-	m_pTech = new wxMetroListBox( this, ID_TechTree );
-	m_pFin = new wxMetroListBox( this, ID_FinTree );
+	m_pTech = new wxMetroDataViewTreeCtrl(this, ID_TechTree);
+	m_pFin = new wxMetroDataViewTreeCtrl(this, ID_FinTree);
 
 	wxBoxSizer *choice_sizer = new wxBoxSizer( wxHORIZONTAL );
 	choice_sizer->Add( m_pTech, 1, wxALL|wxEXPAND, 0 );
@@ -2819,6 +2837,8 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 
 }
 
+
+
 bool ConfigDialog::ResetToDefaults()
 {
 	return m_pChkUseDefaults->GetValue();
@@ -2826,15 +2846,83 @@ bool ConfigDialog::ResetToDefaults()
 
 void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 {
-	int sel = m_tnames.Index( t );
-	m_pTech->SetSelection( sel );
-	m_pTech->Invalidate();
+	int seltech = m_tnames.Index( t );
+	if (seltech >= 0)
+	{
+//		PopulateTech();
 
-	if ( sel >= 0 )
+		m_techname = m_tnames[seltech];
+		wxString L(SamApp::Config().Options(m_tnames[seltech]).LongName);
+
+		wxDataViewItemArray dvia;
+		
+		size_t cnt = m_pTech->GetModel()->GetChildren(wxDataViewItem(0), dvia);
+		bool foundTech = false;
+		for (size_t i = 0; (i < dvia.Count()) && !foundTech; i++)
+		{
+			wxDataViewItem dvi = dvia[i];
+			m_pTech->SetCurrentItem(dvi);
+			if (m_pTech->IsContainer(dvi))
+			{
+				cnt = m_pTech->GetModel()->GetChildren(dvi, dvia);
+				for (size_t ic = 0; (ic < dvia.Count()) && !foundTech; ic++)
+				{
+					const wxDataViewItem dvic = dvia[ic];
+					wxString s = m_pTech->GetItemText(m_pTech->GetCurrentItem());
+					if (s == L)
+					{
+						m_pTech->SetCurrentItem(dvic);
+						foundTech = true;
+					}
+				}
+			}
+			else
+			{
+				if (m_pTech->GetItemText(dvi) == L)
+				{
+					m_pTech->SetCurrentItem(dvi);
+					foundTech = true;
+				}
+			}
+		}
 		UpdateFinTree();
-	
-	m_pFin->SetSelection( m_fnames.Index(f) );
-	m_pFin->Invalidate();
+		int selfin = m_fnames.Index(f);
+		if (selfin >= 0)
+		{
+			m_finname = m_fnames[selfin];
+			L = (SamApp::Config().Options(m_fnames[selfin]).LongName);
+			bool foundFin = false;
+
+			cnt = m_pFin->GetModel()->GetChildren(wxDataViewItem(0), dvia);
+
+			for (size_t i = 0; (i < dvia.Count()) && !foundFin; i++)
+			{
+				wxDataViewItem dvi = dvia[i];
+				if (m_pFin->IsContainer(dvi))
+				{
+					cnt = m_pFin->GetModel()->GetChildren(dvi, dvia);
+					for (size_t ic = 0; (ic < dvia.Count()) && !foundFin; ic++)
+					{
+						wxDataViewItem dvic = dvia[i];
+						if (m_pFin->GetItemText(dvic) == L)
+						{
+							m_pFin->SetCurrentItem(dvic);
+							foundFin = true;
+						}
+					}
+				}
+				else
+				{
+					if (m_pFin->GetItemText(dvi) == L)
+					{
+						m_pFin->SetCurrentItem(dvi);
+						foundFin = true;
+					}
+				}
+			}
+		}
+		m_pTech->Update();
+	}
 }
 
 void ConfigDialog::ShowResetCheckbox(bool b)
@@ -2844,10 +2932,8 @@ void ConfigDialog::ShowResetCheckbox(bool b)
 
 void ConfigDialog::GetConfiguration(wxString &t, wxString &f)
 {
-	int tsel = m_pTech->GetSelection();
-	int fsel = m_pFin->GetSelection();
-	t = tsel >= 0 && tsel < (int)m_tnames.size() ? m_tnames[tsel] : wxEmptyString;
-	f = fsel >= 0 && fsel < (int)m_fnames.size() ? m_fnames[fsel] : wxEmptyString;
+	t = m_techname;
+	f = m_finname;
 }
 
 
@@ -2858,40 +2944,145 @@ void ConfigDialog::OnDoubleClick(wxCommandEvent &)
 
 void ConfigDialog::PopulateTech()
 {
-	m_pTech->Clear();
+	m_pTech->DeleteAllItems();
 
 	m_tnames = SamApp::Config().GetTechnologies();
 	
+	// Manually add groups here - eventually move to startup.lk
+	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
+	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
+	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
+
 	for( size_t i=0;i<m_tnames.Count();i++)
 	{
-		wxString L( SamApp::Config().Options( m_tnames[i] ).LongName );
+		wxString L(SamApp::Config().Options(m_tnames[i]).LongName);
+		wxString TP(SamApp::Config().Options(m_tnames[i]).TreeParent);
 		if ( L.IsEmpty() ) L = m_tnames[i];
-		m_pTech->Add( L );
+		if (TP.Find("PV") != wxNOT_FOUND)
+			m_pTech->AppendItem(cont_pv, L);
+		else if (TP.Find("CSP") != wxNOT_FOUND)
+			m_pTech->AppendItem(cont_csp, L);
+		else if (TP.Find("ME") != wxNOT_FOUND)
+			m_pTech->AppendItem(cont_me, L);
+		else 
+			m_pTech->AppendItem(wxDataViewItem(0), L);
 	}
 	
-	m_pTech->Invalidate();
 }
 
 void ConfigDialog::UpdateFinTree()
 {
-	m_pFin->Clear();
-	int tsel = m_pTech->GetSelection();
-	m_fnames = SamApp::Config().GetFinancingForTech( tsel >= 0 && tsel < (int)m_tnames.size() ? m_tnames[tsel] : wxEmptyString );
-	for( size_t i=0;i<m_fnames.Count();i++)
+	m_pFin->DeleteAllItems();
+	m_fnames = SamApp::Config().GetFinancingForTech(m_techname);
+
+	wxDataViewItem cont_ppa;
+	wxDataViewItem cont_dist;
+	//wxDataViewItem cont_tpo; //TPO
+
+	for (size_t i = 0; i < m_fnames.Count(); i++)
 	{
-		wxString L( SamApp::Config().Options( m_fnames[i] ).LongName );
-		if ( L.IsEmpty() ) L = m_fnames[i];
-		m_pFin->Add( L );
+		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
+		if (TP.Find("PPA") != wxNOT_FOUND)
+		{
+			cont_ppa = m_pFin->AppendContainer(wxDataViewItem(0), "Power Purchase Agreement");
+			break;
+		}
+	}
+	for (size_t i = 0; i < m_fnames.Count(); i++)
+	{
+		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
+		if (TP.Find("DISTRIBUTED") != wxNOT_FOUND)
+		{
+			cont_dist = m_pFin->AppendContainer(wxDataViewItem(0), "Distributed");
+			break;
+		}
+	}
+	/*for (size_t i = 0; i < m_fnames.Count(); i++) //TPO
+	{
+		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
+		if (TP.Find("TPO") != wxNOT_FOUND)
+		{
+			cont_tpo = m_pFin->AppendContainer(wxDataViewItem(0), "Third Party Ownership");
+			break;
+		}
+	}*/
+
+
+	for (size_t i = 0; i < m_fnames.Count(); i++)
+	{
+		wxString L(SamApp::Config().Options(m_fnames[i]).LongName);
+		if (L.IsEmpty()) L = m_fnames[i];
+		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
+		if (TP.Find("PPA") != wxNOT_FOUND)
+			m_pFin->AppendItem(cont_ppa, L);
+		else if (TP.Find("DISTRIBUTED") != wxNOT_FOUND)
+				m_pFin->AppendItem(cont_dist, L);
+		/*else if (TP.Find("TPO") != wxNOT_FOUND) //TPO
+			m_pFin->AppendItem(cont_tpo, L);*/
+		else
+			m_pFin->AppendItem(wxDataViewItem(0), L);
+	}
+}
+
+void ConfigDialog::OnTreeActivated(wxDataViewEvent &evt)
+{
+	evt.Veto();
+}
+
+void ConfigDialog::OnFinTreeDoubleClick(wxDataViewEvent &evt)
+{
+	EndModal(wxID_OK);
+	evt.Veto();
+}
+
+
+void ConfigDialog::OnTechTree(wxDataViewEvent &)
+{
+	if (m_pTech->IsContainer(m_pTech->GetCurrentItem()))
+	{
+		m_pTech->Expand(m_pTech->GetCurrentItem());
+		m_techname = "";
+		return;
+	}
+	wxString title = m_pTech->GetItemText(m_pTech->GetCurrentItem());
+	if (title.empty())
+		title = "None";
+	m_techname = title;
+	for (int i = 0; i < m_tnames.Count(); i++)
+	{
+		if (SamApp::Config().Options(m_tnames[i]).LongName == m_techname)
+		{
+			m_techname = m_tnames[i];
+			break;
+		}
+	}
+	//	wxMessageBox(wxString::Format("wxEVT_DATAVIEW_SELECTION_CHANGED, First selected Item: %s", title));
+	UpdateFinTree();
+}
+
+void ConfigDialog::OnFinTree(wxDataViewEvent &)
+{
+	if (m_pFin->IsContainer(m_pFin->GetCurrentItem()))
+	{
+		m_pFin->Expand(m_pFin->GetCurrentItem());
+		m_finname = "";
+		return;
+	}
+	wxString title = m_pFin->GetItemText(m_pFin->GetCurrentItem());
+	if (title.empty() || m_pFin->IsContainer(m_pFin->GetCurrentItem()))
+		title = "None";
+	m_finname = title;
+	for (int i = 0; i < m_fnames.Count(); i++)
+	{
+		if (SamApp::Config().Options(m_fnames[i]).LongName == m_finname)
+		{
+			m_finname = m_fnames[i];
+			break;
+		}
 	}
 
-	m_pFin->Invalidate();
+	//	wxMessageBox(wxString::Format("wxEVT_DATAVIEW_SELECTION_CHANGED, First selected Item: %s", title));
 }
-
-void ConfigDialog::OnTechTree( wxCommandEvent & )
-{
-	UpdateFinTree(); 
-}
-
 
 void ConfigDialog::OnHelp(wxCommandEvent &)
 {

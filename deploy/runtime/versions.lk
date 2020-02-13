@@ -52,20 +52,42 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 
-version_upgrade{'2019.4.3'} = define() {
+version_upgrade{'2019.12.9'} = define() {
+
 	const cfg = config();
+
 	if (varinfo('en_batt')){
 		if (value('en_batt')){
 			old_replacement_cost = oldvalue('batt_replacement_cost');
 			old_escalation = oldvalue('batt_replacement_cost_escal');
-			value('om_replacement_cost1', [old_replacement_cost], 'Updated battery replacement cost input, now on System Costs page.');
+			value('om_replacement_cost1', [old_replacement_cost], 'Updated battery replacement cost input, now on System Costs input page.');
 			value('om_replacement_cost_escal', old_escalation);
 			old_temperature = oldvalue('T_room');
-			
-			value('batt_room_temperature_single', old_temperature, 'Updated battery environment temperature, same settings as old file');
+			value('batt_room_temperature_single', old_temperature, 'Updated battery room temperature variable name, same settings as old file');
 			value('batt_thermal_choice', 1);
 		}
 	}
+
+	if (cfg.tech == 'Flat Plate PV') 
+	{
+		// battery
+		charge_max = oldvalue('batt_power_charge_max');
+		value('batt_power_charge_max_kwdc', charge_max, 'Updated battery maximum charge rate internal variable name.');
+		discharge_max = oldvalue('batt_power_discharge_max');
+		value('batt_power_discharge_max_kwdc', discharge_max, 'Updated battery maximum discharge rate internal variable name.');
+		temp = oldvalue('T_room');
+		value('batt_room_temperature_celsius', temp, 'Updated battery room temperature internal variable name.');
+		rep = oldvalue('batt_replacement_cost');
+		value('om_replacement_cost1', [rep], 'Moved battery replacement cost to System Costs input page.');
+		message('Battery variable updates only affect your project if battery is enabled.');
+	}
+
+	if ( cfg.tech == 'PVWatts')
+	{
+		message('This version of SAM updates the PVWatts model to the latest version, pvwattsv7. Results will change compared to previous versions. '
+		'Please see Help for a link to a detailed description of model updates.','warning');
+	}
+
 	if ( cfg.tech == 'Physical Trough' )
 	{
 		old_custom_sgs_pipe_sizes = oldvalue('custom_sgs_pipe_sizes');		// array
@@ -121,6 +143,14 @@ version_upgrade{'2019.4.3'} = define() {
 			value( 'combo_htf_type', old_combo_htf_type + 1 );
 		}
 	}
+	
+	fin = cfg.fin;
+	is_ppa = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' || fin == 'Host Developer');
+	if ( is_ppa )
+	{
+		value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
+		message('You can now specify a different PPA price for each year of the analysis period on the Finanical Parameters page.','notice');
+	} 
 };
 
 
@@ -244,9 +274,9 @@ version_upgrade{'2018.9.20'} = define() {
 		// Combines the three UDPC tables into one //
 		
 		// Get the three user defined power cycle tables
-		x_ud_T_htf = value('ud_T_htf_ind_od');
-		x_ud_m_dot = value('ud_m_dot_htf_ind_od');
-		x_ud_T_amb = value('ud_T_amb_ind_od');
+		x_ud_T_htf = oldvalue('ud_T_htf_ind_od');
+		x_ud_m_dot = oldvalue('ud_m_dot_htf_ind_od');
+		x_ud_T_amb = oldvalue('ud_T_amb_ind_od');
 
 		// Get the low, design, and high indep values
 		x_T_htf_lvls = [value('ud_T_htf_low'), value('ud_COPY_T_HTF_des'), value('ud_T_htf_high')];
@@ -322,9 +352,9 @@ version_upgrade{'2018.9.20'} = define() {
 		value('ud_T_amb_levels', #x_ud_T_amb);
 		
 		// Clear original tables
-		value('ud_T_htf_ind_od', [[0]]);
-		value('ud_m_dot_htf_ind_od', [[0]]);
-		value('ud_T_amb_ind_od', [[0]]);
+		//value('ud_T_htf_ind_od', [[0]]);
+		//value('ud_m_dot_htf_ind_od', [[0]]);
+		//value('ud_T_amb_ind_od', [[0]]);
 		
 		message('This version combines the three user-defined power cycle (UDPC) tables into one. The values from the three '
 				'original tables have been moved to this new single table. This change will not affect your results.', 'warning');

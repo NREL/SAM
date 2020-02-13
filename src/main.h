@@ -34,6 +34,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/config.h>
 #include <wx/filehistory.h>
 #include <wx/dialog.h>
+#include <wx/dataview.h>
 
 #include "inputpage.h"
 #include "project.h"
@@ -259,6 +260,7 @@ struct ConfigOptions
 {
 	wxString LongName;
 	wxString ShortName;
+	wxString TreeParent;
 	wxString Description;
 };
 
@@ -356,6 +358,7 @@ DECLARE_APP( SamApp );
 class wxCheckBox;
 class wxMetroButton;
 class wxMetroListBox;
+class wxMetroDataViewTreeCtrl;
 
 class ConfigDialog : public wxDialog
 {
@@ -374,13 +377,17 @@ public:
 private:
 	void PopulateTech();
 	bool ValidateSelections();
-	void OnTechTree(wxCommandEvent &evt);
+	void OnTreeActivated(wxDataViewEvent &evt);
+	void OnTechTree(wxDataViewEvent &);
+	void OnFinTree(wxDataViewEvent &);
+	void OnFinTreeDoubleClick(wxDataViewEvent &);
 	void OnDoubleClick(wxCommandEvent &evt);
 
 	void UpdateFinTree();
 
-	wxMetroListBox *m_pTech, *m_pFin;
+	wxMetroDataViewTreeCtrl *m_pTech, *m_pFin;
 	wxArrayString m_tnames, m_fnames;
+	wxString m_techname, m_finname;
 
 	void OnOk( wxCommandEvent & );
 	void OnCancel( wxCommandEvent & );

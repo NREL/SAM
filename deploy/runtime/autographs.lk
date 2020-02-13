@@ -53,6 +53,23 @@ function ppa_revenue_graphs()
 	agraph( columns, 'NPV of Revenue Components', '', '$', 50, false, true, 'right',1);
 }
 
+function mp_revenue_graphs()
+{
+    tech = technology();
+    fin = financing(); 
+
+	columns = 'npv_curtailment_revenue,npv_capacity_revenue,npv_energy_market_revenue,npv_ancillary_services_1_revenue,npv_ancillary_services_2_revenue,npv_ancillary_services_3_revenue,npv_ancillary_services_4_revenue,';
+	if (tech == "Fuel Cell") columns += 'npv_thermal_value,';
+	if (value('pbi_fed_for_ds')==1) columns += 'npv_fed_pbi_income,';
+	if (value('pbi_sta_for_ds')==1) columns += 'npv_sta_pbi_income,';
+	if (value('pbi_uti_for_ds')==1) columns += 'npv_uti_pbi_income,';
+	if (value('pbi_oth_for_ds')==1) columns += 'npv_oth_pbi_income,';
+	columns += 'npv_salvage_value';
+
+	
+	agraph( columns, 'NPV of Revenue Components', '', '$', 50, false, true, 'right',1);
+}
+
 function ppa_financial_graphs()
 {
 	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', -1, true, false,'bottom' );
@@ -66,9 +83,17 @@ function ppa_sale_leaseback_graphs()
 
 function ppa_partnership_graphs()
 {
-		agraph( 'cf_sponsor_aftertax,cf_tax_investor_aftertax', 'Partner After-tax Cash Flows', 'Year', '$', -1, true, true, 'bottom' );
+	agraph( 'cf_sponsor_aftertax,cf_tax_investor_aftertax', 'Partner After-tax Cash Flows', 'Year', '$', -1, true, true, 'bottom' );
 }
 
+function resiliency_graphs()
+{
+	if (!${crit_load_is_shown})
+		return;
+	xmin = output('resilience_hrs_min');
+	xmax = output('resilience_hrs_max');
+	agraph( 'survival_function', 'Survival Function of System', 'Hours', 'Probability of Surviving Outage > X Hours', -1, false, false, 'bottom', 0, xmin, xmax);
+}
 
 //**************Technologies***************************
 autographs{ 'High-X Concentrating PV' } = define() { base_technology_graphs(); };
@@ -95,6 +120,8 @@ autographs{ 'MHKtidal' } = define()
 autographs{ 'PVWatts'} = define() 
 {	
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 
+	if (is_assigned('outage_durations'))
+		resiliency_graphs();
 };
 autographs{ 'PVWatts_battery'} = define() 
 {	
@@ -111,8 +138,8 @@ autographs{ 'Flat Plate PV' } = define()
 	if (value('en_snow_model') == true)
 		columns += 'annual_dc_snow_loss_percent,';
 	columns += 'annual_dc_module_loss_percent,annual_dc_mppt_clip_loss_percent,annual_dc_mismatch_loss_percent,annual_dc_diodes_loss_percent,annual_dc_wiring_loss_percent,annual_dc_tracking_loss_percent,annual_dc_nameplate_loss_percent,annual_dc_optimizer_loss_percent,annual_dc_perf_adj_loss_percent,';
-	if (varinfo('pv_lifetime_simulation'))
-		if (value('pv_lifetime_simulation') && value('en_dc_lifetime_losses'))
+	if (varinfo('system_use_lifetime_output'))
+		if (value('system_use_lifetime_output') && value('en_dc_lifetime_losses'))
 			columns += 'annual_dc_lifetime_loss_percent,';
 	if (varinfo('en_batt')) //need to check if this variable is present because it isn't found in all models
 		if (value('en_batt') == true && value('batt_ac_or_dc') == 0)
@@ -122,12 +149,14 @@ autographs{ 'Flat Plate PV' } = define()
 		if (value('en_batt') == true && value('batt_ac_or_dc') == 1)
 			columns += 'annual_ac_battery_loss_percent,'; 
 	columns += 'annual_ac_wiring_loss_percent,';
-	if (varinfo('pv_lifetime_simulation'))
-		if (value('pv_lifetime_simulation') && value('en_ac_lifetime_losses'))
+	if (varinfo('system_use_lifetime_output'))
+		if (value('system_use_lifetime_output') && value('en_ac_lifetime_losses'))
 			columns += 'annual_ac_lifetime_loss_percent,';
 	columns += 'annual_xfmr_loss_percent,annual_ac_perf_adj_loss_percent';
 	agraph(columns, 'Energy Loss', '', '%', -1, false, true, 'right'); 
 
+	if (is_assigned('outage_durations'))
+		resiliency_graphs();
 };
 
 autographs{ 'PV_battery' } = define()
@@ -161,6 +190,7 @@ autographs{ 'Host Developer' } = define() { host_developer_graphs(); };
 //autographs{ 'Commercial PPA' } = define() { simple_financial_graphs(); };
 //autographs{ 'Independent Power Producer' } = define() { simple_financial_graphs(); };
 autographs{ 'Single Owner' } = define() { ppa_revenue_graphs(); ppa_financial_graphs(); };
+autographs{ 'Merchant Plant' } = define() { mp_revenue_graphs(); ppa_financial_graphs(); };
 autographs{ 'All Equity Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Leveraged Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Sale Leaseback' } = define() { ppa_sale_leaseback_graphs(); ppa_partnership_graphs(); };

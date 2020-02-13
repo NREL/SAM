@@ -441,7 +441,7 @@ void PTLayoutCtrl::OnButton( wxCommandEvent &evt )
 		size_t nc = csv.NumCols();
 		if ( nr > 0 && nc > 0 )
 		{
-			matrix_t<double> mat( nr, nc, 0 );
+			matrix_t<double> mat( nr, nc, 0.0 );
 			for( size_t r=0;r<nr;r++ )
 				for( size_t c=0;c<nc;c++ )
 					mat.at(r,c) = (double)wxAtof( csv.Get(r,c) );

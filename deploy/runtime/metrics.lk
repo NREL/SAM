@@ -78,6 +78,22 @@ function so_metrics()
 	if ( value('debt_option')==0 ) metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
 }
 
+function mp_metrics()
+{
+	metric( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real', {'label'='Levelized COE (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'project_return_aftertax_npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'flip_actual_irr', {'label'='Internal rate of return (IRR)', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'flip_actual_year', {'label'='Year IRR is achieved', 'post'=' '} );
+	metric( 'project_return_aftertax_irr', {'label'='IRR at end of project', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'size_of_debt', {'label'='Size of debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	if ( value('debt_option')==0 ) metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
+}
+
+
+
 function aepf_metrics()
 {
 	metric( 'ppa', {'label'='PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
@@ -298,6 +314,13 @@ function biopower_metrics()
 	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 }
 
+function resiliency_metrics()
+{
+	if (!${crit_load_is_shown})
+		return;
+	metric( 'resilience_hrs_avg', {'label'='Avg hours of autonomy for resilience', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' hrs' } );
+}
+
 // Technology Metrics
 metrics{ 'Flat Plate PV' } = define() { 
 	pv_metrics(); 
@@ -305,13 +328,19 @@ metrics{ 'Flat Plate PV' } = define() {
 		if ( value('en_batt') == 1 )
 			metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
 		}
+	if ( is_assigned('resilience_hrs_avg'))
+		resiliency_metrics();
 };
 metrics{ 'PVWatts' } = define() {	
 	pvwatts_metrics(); 
-	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party")){
+	if ( is_assigned('resilience_hrs_avg'))
+		resiliency_metrics();
+	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party") || (financing()=="Host Developer")){
 		if ( value('batt_simple_enable') == 1 )
 				metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
 		}
+	if ( is_assigned('resilience_hrs_avg'))
+		resiliency_metrics();
 };
 metrics{ 'Fuel Cell' } = define() {	
 	pvwatts_metrics(); 
@@ -367,6 +396,7 @@ metrics{ 'LCOE Calculator' } = define() { lcoefcr_metrics(); };
 metrics{ 'LCOH Calculator' } = define() { iph_lcoefcr_metrics(); };
 metrics{ 'Independent Power Producer' } = define() { ipp_metrics(); };
 metrics{ 'Single Owner' } = define() { so_metrics(); };
+metrics{ 'Merchant Plant' } = define() { mp_metrics(); };
 metrics{ 'All Equity Partnership Flip' } = define() { aepf_metrics(); };
 metrics{ 'Leveraged Partnership Flip' } = define() { lpf_metrics(); };
 metrics{ 'Sale Leaseback' } = define() { sl_metrics(); };
