@@ -12,6 +12,7 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 1,
 			"real_discount_rate": 5.5,
+			"salvage_percentage": 0,
 			"state_tax_rate": [0.000000],
 			"system_capacity": 200
 		},
@@ -33,7 +34,8 @@
 			"om_production_escal": 0,
 			"om_replacement_cost1": [300.000000],
 			"om_replacement_cost2": [0.000000],
-			"om_replacement_cost_escal": 0
+			"om_replacement_cost_escal": 0,
+			"total_installed_cost": 3.08633e+06
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -47,7 +49,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 30,
+			"itc_fed_percent": 26,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1,
@@ -155,23 +157,19 @@
 			"pbi_uti_tax_sta": 1,
 			"pbi_uti_term": 0
 		},
-		"Battery": {
+		"BatterySystem": {
 			"batt_computed_bank_capacity": 100.205,
 			"batt_replacement_option": 0,
-			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
+			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 300,
-			"en_batt": 0
+			"en_batt": 1
 		},
 		"FuelCell": {
 			"fuelcell_replacement_option": 0,
 			"fuelcell_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
 		},
-		"Cashloan": {
-			"annual_energy_value": [0],
-			"salvage_percentage": 0,
-			"total_installed_cost": 3.08633e+06
-		},
 		"SystemOutput": {
+			"annual_energy_value": [0],
 			"degradation": [0.000000],
 			"gen": [0]
 		},

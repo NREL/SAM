@@ -69,7 +69,7 @@ extern "C"
 
 	/**
 	 * Set wind_resource_distribution: Wind Speed x Dir Distribution as 2-D PDF [m/s,deg]
-	 * options: [(speed, direction, prob)]
+	 * options: None
 	 * constraints: None
 	 * required if: wind_resource_model_choice=2
 	 */
@@ -84,7 +84,7 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_Resource_wind_resource_filename_sset(SAM_Windpower ptr, const char* str, SAM_error *err);
 
 	/**
-	 * Set wind_resource_model_choice: Hourly or Weibull model [0/1]
+	 * Set wind_resource_model_choice: Hourly, Weibull or Distribution model [0/1/2]
 	 * options: None
 	 * constraints: INTEGER
 	 * required if: *
@@ -197,7 +197,7 @@ extern "C"
 	/**
 	 * Set avail_bop_loss: Balance-of-plant availability loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_avail_bop_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
@@ -205,7 +205,7 @@ extern "C"
 	/**
 	 * Set avail_grid_loss: Grid availability loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_avail_grid_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
@@ -213,7 +213,7 @@ extern "C"
 	/**
 	 * Set avail_turb_loss: Turbine availabaility loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_avail_turb_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
@@ -221,10 +221,18 @@ extern "C"
 	/**
 	 * Set elec_eff_loss: Electrical efficiency loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_elec_eff_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
+
+	/**
+	 * Set elec_parasitic_loss: Electrical parasitic consumption loss [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_Losses_elec_parasitic_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
 
 	/**
 	 * Set en_icing_cutoff: Enable Icing Cutoff [0/1]
@@ -245,31 +253,31 @@ extern "C"
 	/**
 	 * Set env_degrad_loss: Environmental Degradation loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_env_degrad_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
 
 	/**
+	 * Set env_env_loss: Environmental External Conditions loss [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_Losses_env_env_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
+
+	/**
 	 * Set env_exposure_loss: Environmental Exposure loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_env_exposure_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
 
 	/**
-	 * Set env_ext_loss: Environmental External Conditions loss [%]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Windpower_Losses_env_ext_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
-
-	/**
 	 * Set env_icing_loss: Environmental Icing loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_env_icing_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
@@ -301,7 +309,7 @@ extern "C"
 	/**
 	 * Set ops_env_loss: Environmental/Permit Curtailment loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_ops_env_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
@@ -309,7 +317,7 @@ extern "C"
 	/**
 	 * Set ops_grid_loss: Grid curtailment loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_ops_grid_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
@@ -317,7 +325,7 @@ extern "C"
 	/**
 	 * Set ops_load_loss: Load curtailment loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_ops_load_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
@@ -325,7 +333,7 @@ extern "C"
 	/**
 	 * Set ops_strategies_loss: Operational strategies loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_ops_strategies_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
@@ -333,7 +341,7 @@ extern "C"
 	/**
 	 * Set turb_generic_loss: Turbine Generic Powercurve loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_turb_generic_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
@@ -341,7 +349,7 @@ extern "C"
 	/**
 	 * Set turb_hysteresis_loss: Turbine High Wind Hysteresis loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_turb_hysteresis_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
@@ -349,7 +357,7 @@ extern "C"
 	/**
 	 * Set turb_perf_loss: Turbine Sub-optimal performance loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_turb_perf_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
@@ -357,18 +365,47 @@ extern "C"
 	/**
 	 * Set turb_specific_loss: Turbine Site-specific Powercurve loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_turb_specific_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
 
 	/**
-	 * Set wake_loss: Wake effects loss percent [%]
+	 * Set wake_ext_loss: External Wake loss [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_Losses_wake_ext_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
+
+	/**
+	 * Set wake_future_loss: Future Wake loss [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_Losses_wake_future_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
+
+	/**
+	 * Set wake_int_loss: Constant Wake Model, internal wake loss [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: wind_farm_wake_model=3
 	 */
-	SAM_EXPORT void SAM_Windpower_Losses_wake_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Windpower_Losses_wake_int_loss_nset(SAM_Windpower ptr, double number, SAM_error *err);
+
+
+	//
+	// Uncertainty parameters
+	//
+
+	/**
+	 * Set total_uncert: Total uncertainty in energy production as percent of annual energy [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Windpower_Uncertainty_total_uncert_nset(SAM_Windpower ptr, double number, SAM_error *err);
 
 
 	/**
@@ -434,15 +471,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Losses_elec_eff_loss_nget(SAM_Windpower ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Windpower_Losses_elec_parasitic_loss_nget(SAM_Windpower ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Windpower_Losses_en_icing_cutoff_nget(SAM_Windpower ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Losses_en_low_temp_cutoff_nget(SAM_Windpower ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Losses_env_degrad_loss_nget(SAM_Windpower ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Windpower_Losses_env_exposure_loss_nget(SAM_Windpower ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Windpower_Losses_env_env_loss_nget(SAM_Windpower ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Windpower_Losses_env_ext_loss_nget(SAM_Windpower ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Windpower_Losses_env_exposure_loss_nget(SAM_Windpower ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Losses_env_icing_loss_nget(SAM_Windpower ptr, SAM_error *err);
 
@@ -468,7 +507,18 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Losses_turb_specific_loss_nget(SAM_Windpower ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Windpower_Losses_wake_loss_nget(SAM_Windpower ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Windpower_Losses_wake_ext_loss_nget(SAM_Windpower ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Losses_wake_future_loss_nget(SAM_Windpower ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Losses_wake_int_loss_nget(SAM_Windpower ptr, SAM_error *err);
+
+
+	/**
+	 * Uncertainty Getters
+	 */
+
+	SAM_EXPORT double SAM_Windpower_Uncertainty_total_uncert_nget(SAM_Windpower ptr, SAM_error *err);
 
 
 	/**
@@ -477,11 +527,23 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_nget(SAM_Windpower ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p75_nget(SAM_Windpower ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p90_nget(SAM_Windpower ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p95_nget(SAM_Windpower ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Windpower_Outputs_annual_gross_energy_nget(SAM_Windpower ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_avail_losses_nget(SAM_Windpower ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_Windpower ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_cutoff_losses_nget(SAM_Windpower ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_elec_losses_nget(SAM_Windpower ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_env_losses_nget(SAM_Windpower ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_gen_aget(SAM_Windpower ptr, int* length, SAM_error *err);
 
@@ -489,15 +551,23 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_monthly_energy_aget(SAM_Windpower ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Windpower_Outputs_ops_losses_nget(SAM_Windpower ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Windpower_Outputs_pressure_aget(SAM_Windpower ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_temp_aget(SAM_Windpower ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Windpower_Outputs_turb_losses_nget(SAM_Windpower ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Windpower_Outputs_turbine_output_by_windspeed_bin_aget(SAM_Windpower ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_wake_losses_nget(SAM_Windpower ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_wind_direction_aget(SAM_Windpower ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_wind_speed_aget(SAM_Windpower ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_wind_speed_average_nget(SAM_Windpower ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

@@ -32,20 +32,7 @@ extern "C"
 
 
 	//
-	// PVWatts parameters
-	//
-
-	/**
-	 * Set system_use_lifetime_output: PV lifetime simulation [0/1]
-	 * options: 0=SingleYearRepeated,1=RunEveryYear
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Battwatts_PVWatts_system_use_lifetime_output_nset(SAM_Battwatts ptr, double number, SAM_error *err);
-
-
-	//
-	// FinancialAnalysisParameters parameters
+	// Lifetime parameters
 	//
 
 	/**
@@ -54,64 +41,19 @@ extern "C"
 	 * constraints: None
 	 * required if: system_use_lifetime_output=1
 	 */
-	SAM_EXPORT void SAM_Battwatts_FinancialAnalysisParameters_analysis_period_nset(SAM_Battwatts ptr, double number, SAM_error *err);
-
-
-	//
-	// BatteryModelSimple parameters
-	//
+	SAM_EXPORT void SAM_Battwatts_Lifetime_analysis_period_nset(SAM_Battwatts ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_simple_chemistry: Battery Chemistry [0=lead acid/1=Li-ion/2]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Battwatts_BatteryModelSimple_batt_simple_chemistry_nset(SAM_Battwatts ptr, double number, SAM_error *err);
-
-	/**
-	 * Set batt_simple_dispatch: Battery Dispatch [0=peak shaving look ahead/1=peak shaving look behind]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Battwatts_BatteryModelSimple_batt_simple_dispatch_nset(SAM_Battwatts ptr, double number, SAM_error *err);
-
-	/**
-	 * Set batt_simple_enable: Enable Battery [0/1]
-	 * options: None
+	 * Set system_use_lifetime_output: PV lifetime simulation [0/1]
+	 * options: 0=SingleYearRepeated,1=RunEveryYear
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Battwatts_BatteryModelSimple_batt_simple_enable_nset(SAM_Battwatts ptr, double number, SAM_error *err);
-
-	/**
-	 * Set batt_simple_kw: Battery Power [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Battwatts_BatteryModelSimple_batt_simple_kw_nset(SAM_Battwatts ptr, double number, SAM_error *err);
-
-	/**
-	 * Set batt_simple_kwh: Battery Capacity [kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Battwatts_BatteryModelSimple_batt_simple_kwh_nset(SAM_Battwatts ptr, double number, SAM_error *err);
-
-	/**
-	 * Set batt_simple_meter_position: Battery Meter Position [0=behind meter/1=front of meter]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Battwatts_BatteryModelSimple_batt_simple_meter_position_nset(SAM_Battwatts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Battwatts_Lifetime_system_use_lifetime_output_nset(SAM_Battwatts ptr, double number, SAM_error *err);
 
 
 	//
-	// Common parameters
+	// Battery parameters
 	//
 
 	/**
@@ -120,7 +62,71 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Battwatts_Common_ac_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Battwatts_Battery_ac_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set batt_custom_dispatch: Battery Dispatch [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: batt_simple_dispatch=2
+	 */
+	SAM_EXPORT void SAM_Battwatts_Battery_batt_custom_dispatch_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set batt_simple_chemistry: Battery Chemistry [0=LeadAcid,1=Li-ion/2]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_chemistry_nset(SAM_Battwatts ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_simple_dispatch: Battery Dispatch [0=PeakShavingLookAhead,1=PeakShavingLookBehind,2=Custom]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_dispatch_nset(SAM_Battwatts ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_simple_enable: Enable Battery [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_enable_nset(SAM_Battwatts ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_simple_kw: Battery Power [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_kw_nset(SAM_Battwatts ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_simple_kwh: Battery Capacity [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_kwh_nset(SAM_Battwatts ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_simple_meter_position: Battery Meter Position [0=BehindTheMeter,1=FrontOfMeter]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_meter_position_nset(SAM_Battwatts ptr, double number, SAM_error *err);
+
+	/**
+	 * Set crit_load: Critical electricity load (year 1) [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Battwatts_Battery_crit_load_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set dc: DC array power [W]
@@ -128,28 +134,15 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Battwatts_Common_dc_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Battwatts_Battery_dc_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set inverter_efficiency: Inverter Efficiency [%]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=100
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Battwatts_Common_inverter_efficiency_nset(SAM_Battwatts ptr, double number, SAM_error *err);
-
-	/**
-	 * Set inverter_model: Inverter model specifier
-	 * options: 0=cec,1=datasheet,2=partload,3=coefficientgenerator,4=generic
-	 * constraints: INTEGER,MIN=0,MAX=4
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Battwatts_Common_inverter_model_nset(SAM_Battwatts ptr, double number, SAM_error *err);
-
-
-	//
-	// ElectricLoadOther parameters
-	//
+	SAM_EXPORT void SAM_Battwatts_Battery_inverter_efficiency_nset(SAM_Battwatts ptr, double number, SAM_error *err);
 
 	/**
 	 * Set load: Electricity load (year 1) [kW]
@@ -157,58 +150,45 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Battwatts_ElectricLoadOther_load_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Battwatts_Battery_load_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err);
 
 
 	/**
-	 * PVWatts Getters
+	 * Lifetime Getters
 	 */
 
-	SAM_EXPORT double SAM_Battwatts_PVWatts_system_use_lifetime_output_nget(SAM_Battwatts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Battwatts_Lifetime_analysis_period_nget(SAM_Battwatts ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Lifetime_system_use_lifetime_output_nget(SAM_Battwatts ptr, SAM_error *err);
 
 
 	/**
-	 * FinancialAnalysisParameters Getters
+	 * Battery Getters
 	 */
 
-	SAM_EXPORT double SAM_Battwatts_FinancialAnalysisParameters_analysis_period_nget(SAM_Battwatts ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Battwatts_Battery_ac_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battwatts_Battery_batt_custom_dispatch_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
-	/**
-	 * BatteryModelSimple Getters
-	 */
+	SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_chemistry_nget(SAM_Battwatts ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Battwatts_BatteryModelSimple_batt_simple_chemistry_nget(SAM_Battwatts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_dispatch_nget(SAM_Battwatts ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Battwatts_BatteryModelSimple_batt_simple_dispatch_nget(SAM_Battwatts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_enable_nget(SAM_Battwatts ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Battwatts_BatteryModelSimple_batt_simple_enable_nget(SAM_Battwatts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_kw_nget(SAM_Battwatts ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Battwatts_BatteryModelSimple_batt_simple_kw_nget(SAM_Battwatts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_kwh_nget(SAM_Battwatts ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Battwatts_BatteryModelSimple_batt_simple_kwh_nget(SAM_Battwatts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_meter_position_nget(SAM_Battwatts ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Battwatts_BatteryModelSimple_batt_simple_meter_position_nget(SAM_Battwatts ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Battwatts_Battery_crit_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battwatts_Battery_dc_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
-	/**
-	 * Common Getters
-	 */
+	SAM_EXPORT double SAM_Battwatts_Battery_inverter_efficiency_nget(SAM_Battwatts ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Battwatts_Common_ac_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Battwatts_Common_dc_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Battwatts_Common_inverter_efficiency_nget(SAM_Battwatts ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Battwatts_Common_inverter_model_nget(SAM_Battwatts ptr, SAM_error *err);
-
-
-	/**
-	 * ElectricLoadOther Getters
-	 */
-
-	SAM_EXPORT double* SAM_Battwatts_ElectricLoadOther_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Battwatts_Battery_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -222,6 +202,8 @@ extern "C"
 	SAM_EXPORT double SAM_Battwatts_Outputs_average_battery_conversion_efficiency_nget(SAM_Battwatts ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battwatts_Outputs_average_battery_roundtrip_efficiency_nget(SAM_Battwatts ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_avg_critical_load_nget(SAM_Battwatts ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_DOD_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
@@ -301,6 +283,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_cell_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battwatts_Outputs_cdf_of_surviving_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battwatts_Outputs_fuelcell_to_batt_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_gen_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
@@ -329,11 +313,25 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_pv_to_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battwatts_Outputs_outage_durations_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_pdf_of_surviving_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_batt_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_grid_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_resilience_hrs_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_avg_nget(SAM_Battwatts ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_max_nget(SAM_Battwatts ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_min_nget(SAM_Battwatts ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_survival_function_aget(SAM_Battwatts ptr, int* length, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

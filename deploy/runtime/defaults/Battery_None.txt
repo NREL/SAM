@@ -2264,7 +2264,7 @@ en_batt
 1
 1
 1
-0
+1
 en_dc_lifetime_losses
 1
 1
@@ -4326,7 +4326,7 @@ ppa_multiplier_model
 0
 ppa_price_input
 1
-1
+2
 1
 1
 0.1

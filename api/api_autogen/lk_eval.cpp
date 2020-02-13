@@ -61,7 +61,7 @@ std::string extractor_interpreter::spell_list(lk::list_t *l, std::vector<std::st
             s += "\"";
             if (map_literals_only){
                 bool is_ssc_var = which_cmod_as_input(lit->value.ToStdString(), active_config).length() > 0;
-                if (graph->find_vertex(lit->value.ToStdString(), is_ssc_var)){
+                if (graph->find_vertex(std::string(lit->value), is_ssc_var)){
                     if (vertex_names) vertex_names->push_back(lit->value.ToStdString());
                     if (vertex_is_ssc) vertex_is_ssc->push_back(is_ssc_var);
                 }

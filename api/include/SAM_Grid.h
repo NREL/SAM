@@ -53,7 +53,7 @@ extern "C"
 
 
 	//
-	// Common parameters
+	// GridLimits parameters
 	//
 
 	/**
@@ -62,7 +62,36 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Grid_Common_enable_interconnection_limit_nset(SAM_Grid ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Grid_GridLimits_enable_interconnection_limit_nset(SAM_Grid ptr, double number, SAM_error *err);
+
+	/**
+	 * Set grid_curtailment: Grid curtailment as energy delivery limit (first year) [MW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Grid_GridLimits_grid_curtailment_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set grid_interconnection_limit_kwac: Grid interconnection limit [kWac]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nset(SAM_Grid ptr, double number, SAM_error *err);
+
+
+	//
+	// SystemOutput parameters
+	//
+
+	/**
+	 * Set annual_energy: Annual Energy AC (year 1) [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Grid_SystemOutput_annual_energy_nset(SAM_Grid ptr, double number, SAM_error *err);
 
 	/**
 	 * Set gen: System power generated [kW]
@@ -70,15 +99,12 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Grid_Common_gen_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Grid_SystemOutput_gen_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err);
 
-	/**
-	 * Set grid_interconnection_limit_kwac: Grid interconnection limit [kWac]
-	 * options: The number of years in the simulation
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Grid_Common_grid_interconnection_limit_kwac_nset(SAM_Grid ptr, double number, SAM_error *err);
+
+	//
+	// Load parameters
+	//
 
 	/**
 	 * Set load: Electricity load (year 1) [kW]
@@ -86,7 +112,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Grid_Common_load_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Grid_Load_load_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err);
 
 
 	/**
@@ -99,33 +125,55 @@ extern "C"
 
 
 	/**
-	 * Common Getters
+	 * GridLimits Getters
 	 */
 
-	SAM_EXPORT double SAM_Grid_Common_enable_interconnection_limit_nget(SAM_Grid ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Grid_GridLimits_enable_interconnection_limit_nget(SAM_Grid ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Grid_Common_gen_aget(SAM_Grid ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Grid_GridLimits_grid_curtailment_aget(SAM_Grid ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Grid_Common_grid_interconnection_limit_kwac_nget(SAM_Grid ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nget(SAM_Grid ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Grid_Common_load_aget(SAM_Grid ptr, int* length, SAM_error *err);
+
+	/**
+	 * SystemOutput Getters
+	 */
+
+	SAM_EXPORT double SAM_Grid_SystemOutput_annual_energy_nget(SAM_Grid ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Grid_SystemOutput_gen_aget(SAM_Grid ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * Load Getters
+	 */
+
+	SAM_EXPORT double* SAM_Grid_Load_load_aget(SAM_Grid ptr, int* length, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
+	SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_kwh_nget(SAM_Grid ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_percent_nget(SAM_Grid ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_kwh_nget(SAM_Grid ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_percent_nget(SAM_Grid ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Grid_Outputs_annual_energy_nget(SAM_Grid ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_curtailment_ac_nget(SAM_Grid ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_interconnect_ac_nget(SAM_Grid ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_curtailment_ac_nget(SAM_Grid ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_interconnect_ac_nget(SAM_Grid ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Grid_Outputs_gen_aget(SAM_Grid ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Grid_Outputs_system_pre_curtailment_kwac_aget(SAM_Grid ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Grid_Outputs_system_pre_interconnect_kwac_aget(SAM_Grid ptr, int* length, SAM_error *err);
 

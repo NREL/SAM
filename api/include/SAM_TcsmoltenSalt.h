@@ -32,7 +32,7 @@ extern "C"
 
 
 	//
-	// LocationAndResource parameters
+	// SolarResource parameters
 	//
 
 	/**
@@ -41,7 +41,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_LocationAndResource_solar_resource_data_tset(SAM_TcsmoltenSalt ptr, SAM_table tab, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SolarResource_solar_resource_data_tset(SAM_TcsmoltenSalt ptr, SAM_table tab, SAM_error *err);
 
 	/**
 	 * Set solar_resource_file: Local weather file path
@@ -49,7 +49,7 @@ extern "C"
 	 * constraints: LOCAL_FILE
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_LocationAndResource_solar_resource_file_sset(SAM_TcsmoltenSalt ptr, const char* str, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SolarResource_solar_resource_file_sset(SAM_TcsmoltenSalt ptr, const char* str, SAM_error *err);
 
 
 	//
@@ -60,7 +60,7 @@ extern "C"
 	 * Set dispatch_factor1: Dispatch payment factor 1
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
@@ -68,7 +68,7 @@ extern "C"
 	 * Set dispatch_factor2: Dispatch payment factor 2
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
@@ -76,7 +76,7 @@ extern "C"
 	 * Set dispatch_factor3: Dispatch payment factor 3
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
@@ -84,7 +84,7 @@ extern "C"
 	 * Set dispatch_factor4: Dispatch payment factor 4
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
@@ -92,7 +92,7 @@ extern "C"
 	 * Set dispatch_factor5: Dispatch payment factor 5
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
@@ -100,7 +100,7 @@ extern "C"
 	 * Set dispatch_factor6: Dispatch payment factor 6
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
@@ -108,7 +108,7 @@ extern "C"
 	 * Set dispatch_factor7: Dispatch payment factor 7
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
@@ -116,7 +116,7 @@ extern "C"
 	 * Set dispatch_factor8: Dispatch payment factor 8
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
@@ -124,7 +124,7 @@ extern "C"
 	 * Set dispatch_factor9: Dispatch payment factor 9
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
@@ -140,7 +140,7 @@ extern "C"
 	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=[[1]]
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mset(SAM_TcsmoltenSalt ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -148,7 +148,7 @@ extern "C"
 	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=[[1]]
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_TcsmoltenSalt ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1907,6 +1907,14 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_horizon_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
 	/**
+	 * Set disp_inventory_incentive: Dispatch storage terminal inventory incentive multiplier
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_inventory_incentive_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
+
+	/**
 	 * Set disp_max_iter: Max number of dispatch optimization iterations
 	 * options: None
 	 * constraints: None
@@ -2136,62 +2144,6 @@ extern "C"
 	//
 
 	/**
-	 * Set ud_T_amb_des: Ambient temperature at user-defined power cycle design point [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_amb_des_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ud_T_amb_high: High level ambient temperature for HTF mass flow rate parametric [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_amb_high_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ud_T_amb_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_amb [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_amb_ind_od_mset(SAM_TcsmoltenSalt ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ud_T_amb_low: Low level ambient temperature for HTF mass flow rate parametric [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_amb_low_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ud_T_htf_high: High level HTF inlet temperature for T_amb parametric [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_htf_high_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ud_T_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_htf_hot [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_htf_ind_od_mset(SAM_TcsmoltenSalt ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ud_T_htf_low: Low level HTF inlet temperature for T_amb parametric [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_htf_low_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
-
-	/**
 	 * Set ud_f_W_dot_cool_des: Percent of user-defined power cycle design gross output consumed by cooling [%]
 	 * options: None
 	 * constraints: None
@@ -2206,30 +2158,6 @@ extern "C"
 	 * required if: pc_config=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_ind_od_mset(SAM_TcsmoltenSalt ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ud_m_dot_htf_high: High level normalized HTF mass flow rate for T_HTF parametric
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_htf_high_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ud_m_dot_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on m_dot_htf [ND]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_htf_ind_od_mset(SAM_TcsmoltenSalt ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ud_m_dot_htf_low: Low level normalized HTF mass flow rate for T_HTF parametric
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_htf_low_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ud_m_dot_water_cool_des: Mass flow rate of water required at user-defined power cycle design point [kg/s]
@@ -2486,12 +2414,12 @@ extern "C"
 
 
 	/**
-	 * LocationAndResource Getters
+	 * SolarResource Getters
 	 */
 
-	SAM_EXPORT SAM_table SAM_TcsmoltenSalt_LocationAndResource_solar_resource_data_tget(SAM_TcsmoltenSalt ptr, SAM_error *err);
+	SAM_EXPORT SAM_table SAM_TcsmoltenSalt_SolarResource_solar_resource_data_tget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
-	SAM_EXPORT const char* SAM_TcsmoltenSalt_LocationAndResource_solar_resource_file_sget(SAM_TcsmoltenSalt ptr, SAM_error *err);
+	SAM_EXPORT const char* SAM_TcsmoltenSalt_SolarResource_solar_resource_file_sget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
 
 	/**
@@ -2998,6 +2926,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_horizon_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_inventory_incentive_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_max_iter_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_mip_gap_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
@@ -3059,29 +2989,9 @@ extern "C"
 	 * UserDefinedPowerCycle Getters
 	 */
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_amb_des_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_amb_high_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_amb_ind_od_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_amb_low_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_htf_high_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_htf_ind_od_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_T_htf_low_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_f_W_dot_cool_des_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_ind_od_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_htf_high_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_htf_ind_od_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_htf_low_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_water_cool_des_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
