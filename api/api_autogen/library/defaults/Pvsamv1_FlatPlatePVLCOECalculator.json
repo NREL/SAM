@@ -343,21 +343,19 @@
 		},
 		"InverterMermoudLejeuneModel": {
 		},
-		"Battery": {
+		"BatterySystem": {
 		},
-		"Simulation": {
+		"Load": {
 		},
-		"Common": {
-			"inverter_model": 0
+		"BatteryCell": {
 		},
-		"PV": {
-			"dcoptimizer_loss": 0
+		"BatteryDispatch": {
+		},
+		"ElectricityRates": {
 		},
 		"FuelCell": {
 		},
-		"ElectricityRate": {
-		},
-		"TimeOfDelivery": {
+		"PriceSignal": {
 		},
 		"AdjustmentFactors": {
 			"constant": 0,

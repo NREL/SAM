@@ -409,7 +409,7 @@ extern "C"
 
 
 	//
-	// OffDesignInputs parameters
+	// Common parameters
 	//
 
 	/**
@@ -418,7 +418,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Sco2CspSystem_OffDesignInputs_is_gen_od_polynomials_nset(SAM_Sco2CspSystem ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2CspSystem_Common_is_gen_od_polynomials_nset(SAM_Sco2CspSystem ptr, double number, SAM_error *err);
 
 	/**
 	 * Set od_P_mc_in_sweep: Columns: T_htf_C, m_dot_htf_ND, T_amb_C, f_N_rc (=1 use design, <0, frac_des = abs(input), f_N_mc (=1 use design, <0, frac_des = abs(input), PHX_f_dP (=1 use design, <0 = abs(input)
@@ -426,7 +426,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Sco2CspSystem_OffDesignInputs_od_P_mc_in_sweep_aset(SAM_Sco2CspSystem ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2CspSystem_Common_od_P_mc_in_sweep_aset(SAM_Sco2CspSystem ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set od_T_t_in_mode: 0: model solves co2/HTF PHX od model to calculate turbine inlet temp, 1: model sets turbine inlet temp to HTF hot temp
@@ -434,15 +434,23 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Sco2CspSystem_OffDesignInputs_od_T_t_in_mode_nset(SAM_Sco2CspSystem ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2CspSystem_Common_od_T_t_in_mode_nset(SAM_Sco2CspSystem ptr, double number, SAM_error *err);
 
 	/**
-	 * Set od_cases: olumns: T_htf_C, m_dot_htf_ND, T_amb_C, f_N_rc (=1 use design, =0 optimize, <0, frac_des = abs(input), f_N_mc (=1 use design, =0 Coptimize, <0, frac_des = abs(input), PHX_f_dP (=1 use design, <0 = abs(input), Rows: cases
+	 * Set od_cases: Columns: T_htf_C, m_dot_htf_ND, T_amb_C, f_N_rc (=1 use design, =0 optimize, <0, frac_des = abs(input), f_N_mc (=1 use design, =0 optimize, <0, frac_des = abs(input), PHX_f_dP (=1 use design, <0 = abs(input), Rows: cases
 	 * options: None
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Sco2CspSystem_OffDesignInputs_od_cases_mset(SAM_Sco2CspSystem ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2CspSystem_Common_od_cases_mset(SAM_Sco2CspSystem ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set od_generate_udpc: True/False, f_N_rc (=1 use design, =0 optimize, <0, frac_des = abs(input), f_N_mc (=1 use design, =0 optimize, <0, frac_des = abs(input), PHX_f_dP (=1 use design, <0 = abs(input)
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Sco2CspSystem_Common_od_generate_udpc_aset(SAM_Sco2CspSystem ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set od_set_control: Columns: T_htf_C, m_dot_htf_ND, T_amb_C, P_LP_in_MPa, f_N_rc (=1 use design, <0, frac_des = abs(input), f_N_mc (=1 use design, <0, frac_des = abs(input), PHX_f_dP (=1 use design, <0 = abs(input), Rows: cases
@@ -450,7 +458,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Sco2CspSystem_OffDesignInputs_od_set_control_mset(SAM_Sco2CspSystem ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2CspSystem_Common_od_set_control_mset(SAM_Sco2CspSystem ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
 	/**
@@ -567,18 +575,20 @@ extern "C"
 
 
 	/**
-	 * OffDesignInputs Getters
+	 * Common Getters
 	 */
 
-	SAM_EXPORT double SAM_Sco2CspSystem_OffDesignInputs_is_gen_od_polynomials_nget(SAM_Sco2CspSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Common_is_gen_od_polynomials_nget(SAM_Sco2CspSystem ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Sco2CspSystem_OffDesignInputs_od_P_mc_in_sweep_aget(SAM_Sco2CspSystem ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Sco2CspSystem_Common_od_P_mc_in_sweep_aget(SAM_Sco2CspSystem ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_OffDesignInputs_od_T_t_in_mode_nget(SAM_Sco2CspSystem ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Common_od_T_t_in_mode_nget(SAM_Sco2CspSystem ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Sco2CspSystem_OffDesignInputs_od_cases_mget(SAM_Sco2CspSystem ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Sco2CspSystem_Common_od_cases_mget(SAM_Sco2CspSystem ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Sco2CspSystem_OffDesignInputs_od_set_control_mget(SAM_Sco2CspSystem ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Sco2CspSystem_Common_od_generate_udpc_aget(SAM_Sco2CspSystem ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Sco2CspSystem_Common_od_set_control_mget(SAM_Sco2CspSystem ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**
@@ -776,6 +786,14 @@ extern "C"
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_deltaT_HTF_PHX_nget(SAM_Sco2CspSystem ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_deltaT_HTF_PHX_od_aget(SAM_Sco2CspSystem ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_diff_E_cycle_aget(SAM_Sco2CspSystem ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_diff_Q_HTR_aget(SAM_Sco2CspSystem ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_diff_Q_LTR_aget(SAM_Sco2CspSystem ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_diff_m_dot_od_aget(SAM_Sco2CspSystem ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_eff_HTR_nget(SAM_Sco2CspSystem ptr, SAM_error *err);
 
@@ -1058,6 +1076,14 @@ extern "C"
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_t_tip_ratio_des_nget(SAM_Sco2CspSystem ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_t_tip_ratio_od_aget(SAM_Sco2CspSystem ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_udpc_n_T_amb_nget(SAM_Sco2CspSystem ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_udpc_n_T_htf_nget(SAM_Sco2CspSystem ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_udpc_n_m_dot_htf_nget(SAM_Sco2CspSystem ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_udpc_table_mget(SAM_Sco2CspSystem ptr, int* nrows, int* ncols, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

@@ -1,6 +1,6 @@
 Solar Resource Data
-884
-917
+881
+914
 46
 GroupBox
 
@@ -506,6 +506,66 @@ Button
 8
 Name
 5
+23
+btn_add_file_to_library
+X
+3
+717
+Y
+3
+567
+Width
+3
+153
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Add file to library
+TabOrder
+3
+11
+Button
+
+1
+8
+Name
+5
+22
+btn_add_remove_folders
+X
+3
+612
+Y
+3
+309
+Width
+3
+252
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+34
+Add/remove weather file folders...
+TabOrder
+3
+2
+Button
+
+1
+8
+Name
+5
 12
 btn_download
 X
@@ -536,14 +596,44 @@ Button
 8
 Name
 5
-12
-btn_file_add
+19
+btn_refresh_library
+X
+3
+612
+Y
+3
+336
+Width
+3
+252
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Refresh library
+TabOrder
+3
+3
+Button
+
+1
+8
+Name
+5
+13
+btn_view_data
 X
 3
 717
 Y
 3
-567
+609
 Width
 3
 153
@@ -555,11 +645,11 @@ Tool Tip
 0
 Caption
 5
-19
-Add file to library
+12
+View data...
 TabOrder
 3
-11
+12
 Label
 
 1
@@ -703,36 +793,6 @@ AlignRight
 AlignTop
 2
 1
-Button
-
-1
-8
-Name
-5
-15
-dview_for_solar
-X
-3
-717
-Y
-3
-609
-Width
-3
-153
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-12
-View data...
-TabOrder
-3
-12
 Numeric
 
 1
@@ -1338,7 +1398,7 @@ X
 27
 Y
 3
-795
+801
 Width
 3
 849
@@ -1559,36 +1619,6 @@ AlignRight
 AlignTop
 2
 0
-Button
-
-1
-8
-Name
-5
-15
-refresh_library
-X
-3
-612
-Y
-3
-336
-Width
-3
-252
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-15
-Refresh library
-TabOrder
-3
-3
 TextEntry
 
 1
@@ -1599,13 +1629,13 @@ Name
 solar_data_file_name
 X
 3
-615
+318
 Y
 3
 609
 Width
 3
-90
+390
 Height
 3
 24
@@ -1643,13 +1673,13 @@ Name
 solar_data_file_name_load
 X
 3
-615
+318
 Y
 3
 609
 Width
 3
-90
+390
 Height
 3
 24
@@ -1677,36 +1707,6 @@ BackColour
 TabOrder
 3
 4294967295
-Button
-
-1
-8
-Name
-5
-19
-solar_data_settings
-X
-3
-612
-Y
-3
-309
-Width
-3
-252
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-34
-Add/remove weather file folders...
-TabOrder
-3
-2
 TextEntry
 
 1
@@ -1793,13 +1793,13 @@ Name
 solar_resource_file
 X
 3
-108
+93
 Y
 3
 609
 Width
 3
-598
+616
 Height
 3
 24
@@ -1992,7 +1992,7 @@ Name
 use_specific_weather_file
 X
 3
-615
+618
 Y
 3
 609
@@ -2054,13 +2054,13 @@ Name
 user_specified_weather_file
 X
 3
-615
+318
 Y
 3
 609
 Width
 3
-90
+390
 Height
 3
 24
@@ -2231,7 +2231,7 @@ Numeric
 file_name
 3
 4
-Weather file name
+Weather file name required by some SSC modules
  
 Location and Resource
 0
@@ -2378,7 +2378,7 @@ Numeric
 solar_data_file_name
 3
 4
-Weather file library selection
+Weather file name from solar resource library
  
 Location and Resource
 0
@@ -2390,7 +2390,7 @@ TextEntry
 solar_data_file_name_load
 3
 4
-Weather file value on load
+Weather file when user interface loaded
  
 Location and Resource
 0
@@ -2479,7 +2479,7 @@ Numeric
 use_specific_weather_file
 3
 1
-Use weather file from script
+Use weather file from script (legacy)
  
 Location and Resource
 0
@@ -2493,7 +2493,7 @@ Default
 user_specified_weather_file
 3
 4
-Weather file from script
+Weather file specified from script 0 or 1 (legacy)
  
 Location and Resource
 0
@@ -2517,40 +2517,42 @@ Location and Resource
 8760
 Default
 
-332
+338
 equations{'solar_resource_file'} = define() {
 	if ( ${use_specific_weather_file} ) 
-		return ${user_specified_weather_file};
+		{ return ${user_specified_weather_file}; }
 	else 
-		return ${solar_data_file_name}; // file name from solar resource library csv file
+		{ return ${solar_data_file_name}; }// file name from solar resource library csv file
 };
 
 equations{'file_name'} = define() {
 	// for compatibility with most SSC APIs
 	return ${solar_resource_file};
 };
-
-28552
+29081
 on_load{'Solar Resource Data'} = define() {
+	//msgbox('on load');
+	// show/hide widgets
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
 	on_change{'is_advanced'}();
+	// store value of current library item in case an LK script changes the selected library item
 	value('solar_data_file_name_load', value('solar_data_file_name'));
-	// UI updates do not work consistently if these
-	// variables do not have widgets. They are stacked
-	//  under the solar_resource_file widget.
-	show('use_specific_weather_file', false);
-	show('user_specified_weather_file', false);
-	show('solar_data_file_name_load', false);
-	show('solar_data_file_name', false);
+	// UI updates do not work consistently if these variables do not have widgets. They are stacked under the solar_resource_file widget.
+	show('use_specific_weather_file', false); // determines whether user_specified_weather_file is used instead of solar_data_file_name
+	show('user_specified_weather_file', false); // requires use_specific_weather_file = 1, set by LK script
+	show('solar_data_file_name_load', false); // stores weather file name when UI form loaded
+	show('solar_data_file_name', false); // value from SolarResourceData CSV file
 	show('in_time_step', value('in_nsrdb_options') != 0 ); 
 	refresh();
-	rescanlibrary('solar');
 	update_library_folders(''); // refresh list of library folders
 	update_info( 'on_load Solar Resource Data');
 };
 
+// library list, this gets triggered before on_load
 on_change{'solar_resource'} = define() {
+	// in case LK script changes library selection without setting use_specifc_weather_file to zero
+	//msgbox('on_change solar_resource');
 	if ( value('solar_data_file_name_load' ) != value('solar_data_file_name') )
 	{
 		value('use_specific_weather_file',0); 
@@ -2558,17 +2560,17 @@ on_change{'solar_resource'} = define() {
 	update_info('on_change solar_resource');
 };
 
-on_change{'user_specified_weather_file'} = define() {
-	update_info('on_change user_specified_weather_file');
+on_change{'use_specific_weather_file'} = define() {
+	if ( value('use_specific_weather_file') == 1 )
+	{
+		update_info('on_change use_specific_weather_file');
+	}
 };
 
-// add user specified file folder path to list of
-// library folders and set library to file
-on_change{ 'btn_file_add' } = define () {
+on_change{ 'btn_add_file_to_library' } = define () {
 	f_name = value( 'solar_resource_file' );
 	update_library_folders( path_only( f_name ) );
 	value( 'solar_resource', file_to_key( f_name ) );
-	//update_info('on_change btn_file_add');
 };
 
 on_change{ 'in_location_options' } = define() {
@@ -2603,19 +2605,17 @@ on_change{ 'is_advanced' } = define() {
 	refresh('');
 };
 
-on_change{'refresh_library'} = define() {
-	rescanlibrary('solar');
+on_change{'btn_refresh_library'} = define() {
 	update_library_folders('');
-	update_info('on_change refresh_library');
+	update_info('on_change btn_refesh_library');
 };
 
-on_change{'solar_data_settings'} = define() {
+// add/remove weather file folders
+on_change{'btn_add_remove_folders'} = define() {
 	if ( showsettings( 'solar' ) )
 	{
-		rescanlibrary( 'solar' );
 		update_library_folders( '' );
-		// if current library selection is no longer in 
-		// library, change to first item listed in library CSV file
+		// if current library selection is no longer in library, change to first item listed in library CSV file
 		L = strlen( value( 'library_folder_list' ) );
 		if ( strlen( value( 'library_folder_list' ) ) < L )
 		{
@@ -2631,10 +2631,9 @@ on_change{'solar_data_settings'} = define() {
 			}	
 		}
 	}
-	//update_info('on_change solar_data_settings');	
 };
 
-on_change{'dview_for_solar'} = define() {
+on_change{'btn_view_data'} = define() {
 	if ( dview_solar(value('solar_resource_file')) )
 	{	msgbox('Failed to read file!\nThe data viewer was not able to open the weather file:\n' + value('solar_resource_file') ); }
 };
@@ -2647,10 +2646,6 @@ on_change{'btn_download'} = define() {
 	refresh('solar_resource');
 };
 
-on_change{'solar_data_file_name'} = define() {
-	update_info('on_change solar_data_file_name');
-};
-
 /////////////////////////////////////////////
 // Functions
 /////////////////////////////////////////////
@@ -2661,12 +2656,11 @@ function file_to_key( file )
 		key = replace( key, '.' + ext_only( file ), '' );
 		return key;
 }
-// given a key or file item from the library, 
-// return if exists t/f, key, file, and key for first item
+
+// given a key or file item from the library, return if exists t/f, key, file, and key for first item
 // is_key = true if library key with no path or extension
 // is_key = false if file name with full path and extension
-// should also work with no parameters to return number of
-// files in library and in deploy/solar_resource folder
+// should also work with no parameters to return number of files in library and in deploy/solar_resource folder
 function solar_library( item, is_key )
 {
 	T = {};
@@ -2698,9 +2692,8 @@ function solar_library( item, is_key )
 	return T;
 }
 
-// update weather file, annual summaries and summary 
-// text based on whether file is from library or user
-// specified via LK script
+// update weather file, annual summaries and summary text based on whether file is from library or user specified via LK script
+// ctxt is for testing to see when function was called
 function update_info( ctxt )
 {
 	wf = value('solar_resource_file'); 
@@ -2712,28 +2705,25 @@ function update_info( ctxt )
 	       + '\n\nfile_name = ' + value('file_name') 
 	       + '\n\nsolar_resource = ' + value('solar_resource') 
 	       + '\n\nwf is in library = ' + solar_library(value('solar_resource_file'),false){'is_in_library'}
-	       + '\n\ncurrent selection is in library = ' + solar_library(value('solar_resource'),true){'is_in_library'} );
-	*/
-	//if selected library file is no longer in library
-	// reload library, and exit
+	       + '\n\ncurrent selection is in library = ' + solar_library(value('solar_resource'),true){'is_in_library'} );*/
+	
+	//if selected library file is no longer in library reload library, and exit
 	wf_ok = false;
 	if (!file_exists(wf) )
 	{
-//		rescanlibrary( 'solar' );
-		refresh('solar_resource');
 		msg_caption = 'Weather file does not exist. Please choose or download a different file above.';
 		msg_color = 'red';
 		show_button = false;
+		rescanlibrary('solar'); // remove deleted file from library
 	}
-	// display message depending on whether file is in 
-	// library or is a user-specified file
+	// display message depending on whether file is in library or is a user-specified file
 	elseif ( wf != value('solar_data_file_name') )
 	{
 		msg_caption = 'The weather file is different from the file selected in the library because it was modified by an LK script. Click Add File to Library if you want the file to appear in the library list above.';
 		msg_color = 'red';
 		show_button = true;
 	}
-	elseif ( strlen( value( 'library_folder_list' ) ) < L )
+	elseif ( strlen( value( 'library_folder_list' ) ) < L ) // ** this check should never be true, right???
 	{
 		msg_caption = 'Weather file folder not in list? Please choose or download a different file above, or click Add file to library.';
 		msg_color = 'red';
@@ -2753,14 +2743,60 @@ function update_info( ctxt )
 		wf_ok = true;
 	}
 
+	// show / hide PV only summary data
+	is_pv = ( technology() == 'Flat Plate PV' || technology() == 'PVWatts' );
 	property( 'summary_caption' , 'Caption' , msg_caption );
 	property( 'summary_caption' , 'TextColour' , msg_color );
-	show('btn_file_add', show_button);
-	show('group_optional',technology() == 'Flat Plate PV' || technology() == 'PVWatts' );
-	show('annual_snow',technology() == 'Flat Plate PV' || technology() == 'PVWatts' );
-	show('annual_albedo',technology() == 'Flat Plate PV' || technology() == 'PVWatts' );
-	refresh('');
+	show('btn_add_file_to_library', show_button);
+	show('group_optional', is_pv );
+	show('annual_snow', is_pv );
+	show('annual_albedo',is_pv );
+	refresh(''); // always refresh after calling show()
 
+	// display message for new users if library contains only default files
+	property( 'caption_library', 'Caption', 'The default library comes with only a few weather files to help you get started. Use the download tools below to build a library of locations you frequently model. Once you build your library, it is available for all of your work in SAM.' );
+	property( 'caption_library', 'TextColour', 'black' );
+	lib = solar_library( 'dummy', false );
+	if ( lib{'num_files_in_library'} == lib{'num_default_files'} )
+	{
+		property( 'caption_library', 'Caption', 'You have not added any weather files to your library. To add files, use the download tools below to get weather files from the NSRDB, or click Add Remove Weather File folders to add files from your computer. The default library comes with only a few weather files to help you get started.' );
+		property( 'caption_library', 'TextColour', 'red' );
+	}
+
+	// calculate and display annual summary data
+	if ( wf_ok )
+	{
+		obj = ssc_create();
+		ssc_var( obj, 'file_name', wf );
+		if ( 0 == ssc_exec( obj, 'wfreader' ) )
+		{
+			value( 'annual_global', ssc_var(obj, 'annual_global') );
+			value( 'annual_beam', ssc_var(obj, 'annual_beam') );
+			value( 'annual_diffuse', ssc_var(obj, 'annual_diffuse') );
+			value( 'annual_tdry', ssc_var(obj, 'annual_tdry') );
+			value( 'annual_wspd', ssc_var(obj, 'annual_wspd') );
+			value( 'annual_snow', ssc_var(obj, 'annual_snow') );
+			value( 'annual_albedo', ssc_var(obj, 'annual_albedo') );
+			rhum = ssc_var(obj, 'rhum');
+			rhum_ok = true;
+			if ( isnan( rhum[0] ) ) { rhum_ok = false; }
+			// used for timestep calculation in editscene3d
+			value( 'wf_nrecords', ssc_var(obj, 'nrecords') );
+		}
+		else
+		{
+			value( 'annual_global', nan() );
+			value( 'annual_beam', nan() );
+			value( 'annual_diffuse', nan() );
+			value( 'annual_tdry', nan() );
+			value( 'annual_wspd', nan() );
+			value( 'annual_snow', nan() );
+			value( 'annual_albedo', nan() );
+			value( 'wf_nrecords', nan() );
+		}
+		ssc_free( obj );
+	}
+	
 	if ( librarygetcurrentselection('solar_resource') == '' )
 	{
 		librarynotifytext('solar_resource','Please choose a file. Nothing selected.');
@@ -2782,74 +2818,28 @@ function update_info( ctxt )
 	{
 		librarynotifytext('solar_resource', ''); //'Everything is fine.'
 		value('in_location', 'Type a location name, street address, or latitude and longitude');
-	}	
-	/*msgbox('libraryget functions'+
-	'\nfiltertext = ' + librarygetfiltertext('solar_resource') 
-	+ '\nnumber matches = ' + librarygetnumbermatches('solar_resource') 
-	+ '\ncurrentselection = ' + librarygetcurrentselection('solar_resource'));
-	*/
-
-	property( 'caption_library', 'Caption', 'The default library comes with only a few weather files to help you get started. Use the download tools below to build a library of locations you frequently model. Once you build your library, it is available for all of your work in SAM.' );
-	property( 'caption_library', 'TextColour', 'black' );
-	lib = solar_library( 'dummy', false );
-	if ( lib{'num_files_in_library'} == lib{'num_default_files'} )
-	{
-		property( 'caption_library', 'Caption', 'You have not added any weather files to your library. To add files, use the download tools below to get weather files from the NSRDB, or click Add Remove Weather File folders to add files from your computer. The default library comes with only a few weather files to help you get started.' );
-		property( 'caption_library', 'TextColour', 'red' );
 	}
-
-	if ( wf_ok )
-	{
-		obj = ssc_create();
-		ssc_var( obj, 'file_name', wf );
-		if ( 0 == ssc_exec( obj, 'wfreader' ) )
-		{
-			value( 'annual_global', ssc_var(obj, 'annual_global') );
-			value( 'annual_beam', ssc_var(obj, 'annual_beam') );
-			value( 'annual_diffuse', ssc_var(obj, 'annual_diffuse') );
-			value( 'annual_tdry', ssc_var(obj, 'annual_tdry') );
-			value( 'annual_wspd', ssc_var(obj, 'annual_wspd') );
-			value( 'annual_snow', ssc_var(obj, 'annual_snow') );
-			value( 'annual_albedo', ssc_var(obj, 'annual_albedo') );
-			rhum = ssc_var(obj, 'rhum');
-			rhum_ok = true;
-			if ( isnan( rhum[0] ) ) { rhum_ok = false; }
-			
-			// **NOTE: DOES THIS NEED TO BE UPDATED TO WORK FOR USER SPECIFIED FILE? **
-			// used for timestep calculation in editscene3d
-			value( 'wf_nrecords', ssc_var(obj, 'nrecords') );
-		}
-		else
-		{
-			value( 'annual_global', nan() );
-			value( 'annual_beam', nan() );
-			value( 'annual_diffuse', nan() );
-			value( 'annual_tdry', nan() );
-			value( 'annual_wspd', nan() );
-			value( 'annual_snow', nan() );
-			value( 'annual_albedo', nan() );
-			value( 'wf_nrecords', nan() );
-		}
-		ssc_free( obj );
-	}
+	
+	//msgbox('libraryget functions'+
+	//'\nfiltertext = ' + librarygetfiltertext('solar_resource') 
+	//+ '\nnumber matches = ' + librarygetnumbermatches('solar_resource') 
+	//+ '\ncurrentselection = ' + librarygetcurrentselection('solar_resource'));
+	
 	display_tech_message();
 }
 
-// update ui list of library folders, and optionally
-// add new path to library folders
+// update ui list of library folders, and optionally add new path to library folders
 function update_library_folders( new_path )
 {
+	//msgbox('Hello from update_library_folders()');
 	x = get_settings('solar_data_paths');
 	// add new path if provided and it doesn't already exist in the library
 	if ( new_path != '' && dir_exists( new_path ) && ( strpos( x, new_path ) < 0 ) )
 	{
 		if ( x != '' ) { x += ';'; }
 		x += new_path;
-		set_settings('solar_data_paths', x );
-		rescanlibrary( 'solar' );
 	}
-	// list of library folders files to display 
-	// on separate lines
+	// list of library folders files to display on separate lines
 	paths = split( x, ';' );
 	// put solar download folder at top of list
 	clean_list = '';
@@ -2862,11 +2852,12 @@ function update_library_folders( new_path )
 			if ( i < #paths-1 ) { clean_list += ';'; }
 		}	
 	}		
-	// update solar data paths to cleaned list		
+	// update solar_data_paths used by library.cpp and nsrdb.cpp to cleaned list		
 	set_settings('solar_data_paths', clean_list );
 	// update list to display
 	value( 'library_folder_list', get_settings('solar_download_path') + '\n' 
-	       + replace( clean_list , ';' , '\n' ) ); 
+	       + replace( clean_list , ';' , '\n' ) );
+	rescanlibrary( 'solar' );        
 }
 
 function display_tech_message() 
@@ -2927,7 +2918,7 @@ function nsrdb_all()
 		}
 		else
 		{
-			rescanlibrary( 'solar' );
+			rescanlibrary( 'solar' );  //** is this necessary??
 			if (fn != '')
 			{
 				value( 'use_specific_weather_file', 0 );
@@ -2948,9 +2939,7 @@ function clean_name( location )
 	return lower(name);
 }
 
-// return url for current dataset for a location
-// uses NSRDB lat, lon as input instead of wkt
-// because always downloading single file
+// return url for current dataset for a location. uses NSRDB lat, lon as input instead of wkt because always downloading single file
 function nsrdb( location )
 {
 	name = '';
@@ -2959,6 +2948,14 @@ function nsrdb( location )
 	msg = '';
 	geocode_ok = false;
 	json_ok = false;
+	location_ok = true;
+
+	if ( strpos(lower(location),'type a location name') > -1 )
+	{
+		location_ok = false;
+		msg += 'Invalid location name: \n\n' + location + '\n\n';
+		location = '';
+	}
 
 	g = geocode( location );
 	if ( !g.ok ) // sometimes correct address fails but works on second try
@@ -3039,7 +3036,7 @@ function nsrdb( location )
 		geocode_ok = false;
 		msg += 'Failed to convert to latitude-longitude pair: \"' + location + '\" \n';
 	}
-	ok_test = ( geocode_ok == true ) && ( json_ok == true ) && ( dataset_ok == true );
+	ok_test = ( ( geocode_ok == true ) && ( json_ok == true ) && ( dataset_ok == true ) && ( location_ok == true ) );
 	return { 'name' = name , 'msg' = msg , 'url' = url , 'years' = years , 'ok' = ok_test , 'lat' = g.lat, 'lon' = g.lon };
 }
 
@@ -3057,8 +3054,7 @@ function wf_check( wf )
 	return result;
 }
 
-// returns a single-year data file for the current NSRDB data available for 
-// a location
+// returns a single-year data file for the current NSRDB data available for a location
 function nsrdb_get()
 {
 	enum { TMY, SINGLE_YEAR, ALL_YEARS };
@@ -3067,6 +3063,7 @@ function nsrdb_get()
 	msg = '';
 	wf = '';
 	download_ok = true;
+	location_ok = true;
 	folder = wfdownloaddir();
 	log_file = folder + '/sam_nsrdb_download_log.txt';
 	if ( file_exists( log_file ) ) { flog = open( log_file , 'a' ); }
@@ -3079,7 +3076,9 @@ function nsrdb_get()
 	{	time_step = '30'; }
 	
 	if ( value( 'in_location_options' ) == ONE_LOCATION )
-	{	location = value('in_location'); }
+	{	
+		location = value('in_location');
+	}
 	else
 	{
 		location_list = value('in_location_list'); // string with '|' delimiter
@@ -3097,12 +3096,10 @@ function nsrdb_get()
 		progressbar( pb_locations, { 'message' = 'Getting download information for \"' + location[n] + '\".' , 'value' = 1+n } );
 		dataset[n] = nsrdb( location[n] );
 		progressbar( pb_locations, { 'message' = 'Processing download information for \"' + location[n] + '\".' , 'value' = 1+n } );
-		//write_line( flog, dataset[n].msg + '\n' );
 		if ( !dataset[n].ok )
 		{
 			download_ok = false;
 			write_line( flog, dataset[n].msg + '\n');
-			//msgbox( 'Failed to download weather file!\n' + dataset[n].msg ); 
 			msg += dataset[n].msg + '\n';
 			continue;
 		}	
@@ -3326,7 +3323,6 @@ function nsrdb_get()
 	elseif ( download_ok && file_skipped )
 	{
 		str = 'File already in library.\n Download skipped.\n\n' + fname;
-//		str += 'File already in library!\n Download skipped.\n' + fname + '\n';
 		msgbox( str );
 	}
 	else 

@@ -275,6 +275,14 @@ extern "C"
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_fuelcell_fuel_type_nset(SAM_Fuelcell ptr, double number, SAM_error *err);
 
 	/**
+	 * Set fuelcell_is_started: Fuel cell is started [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Fuelcell_FuelCell_fuelcell_is_started_nset(SAM_Fuelcell ptr, double number, SAM_error *err);
+
+	/**
 	 * Set fuelcell_lhv: Fuel cell lower heating value [Btu/ft3]
 	 * options: None
 	 * constraints: None
@@ -437,6 +445,8 @@ extern "C"
 	SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_fuel_price_nget(SAM_Fuelcell ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_fuel_type_nget(SAM_Fuelcell ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_is_started_nget(SAM_Fuelcell ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_lhv_nget(SAM_Fuelcell ptr, SAM_error *err);
 
