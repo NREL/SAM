@@ -1442,62 +1442,6 @@ extern "C"
 	//
 
 	/**
-	 * Set ud_T_amb_des: Ambient temperature at user-defined power cycle design point [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_T_amb_des_nset(SAM_TcsMSLF ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ud_T_amb_high: High level ambient temperature for HTF mass flow rate parametric [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_T_amb_high_nset(SAM_TcsMSLF ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ud_T_amb_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_amb [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_T_amb_ind_od_mset(SAM_TcsMSLF ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ud_T_amb_low: Low level ambient temperature for HTF mass flow rate parametric [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_T_amb_low_nset(SAM_TcsMSLF ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ud_T_htf_high: High level HTF inlet temperature for T_amb parametric [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_T_htf_high_nset(SAM_TcsMSLF ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ud_T_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on T_htf_hot [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_T_htf_ind_od_mset(SAM_TcsMSLF ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ud_T_htf_low: Low level HTF inlet temperature for T_amb parametric [C]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_T_htf_low_nset(SAM_TcsMSLF ptr, double number, SAM_error *err);
-
-	/**
 	 * Set ud_f_W_dot_cool_des: Percent of user-defined power cycle design gross output consumed by cooling [%]
 	 * options: None
 	 * constraints: None
@@ -1512,30 +1456,6 @@ extern "C"
 	 * required if: pc_config=1
 	 */
 	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_ind_od_mset(SAM_TcsMSLF ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ud_m_dot_htf_high: High level normalized HTF mass flow rate for T_HTF parametric [-]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_m_dot_htf_high_nset(SAM_TcsMSLF ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ud_m_dot_htf_ind_od: Off design table of user-defined power cycle performance formed from parametric on m_dot_htf [ND]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_m_dot_htf_ind_od_mset(SAM_TcsMSLF ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ud_m_dot_htf_low: Low level normalized HTF mass flow rate for T_HTF parametric [-]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=1
-	 */
-	SAM_EXPORT void SAM_TcsMSLF_UserDefinedPC_ud_m_dot_htf_low_nset(SAM_TcsMSLF ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ud_m_dot_water_cool_des: Mass flow rate of water required at user-defined power cycle design point [kg/s]
@@ -1953,29 +1873,9 @@ extern "C"
 	 * UserDefinedPC Getters
 	 */
 
-	SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_T_amb_des_nget(SAM_TcsMSLF ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_T_amb_high_nget(SAM_TcsMSLF ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsMSLF_UserDefinedPC_ud_T_amb_ind_od_mget(SAM_TcsMSLF ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_T_amb_low_nget(SAM_TcsMSLF ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_T_htf_high_nget(SAM_TcsMSLF ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsMSLF_UserDefinedPC_ud_T_htf_ind_od_mget(SAM_TcsMSLF ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_T_htf_low_nget(SAM_TcsMSLF ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_f_W_dot_cool_des_nget(SAM_TcsMSLF ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsMSLF_UserDefinedPC_ud_ind_od_mget(SAM_TcsMSLF ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_m_dot_htf_high_nget(SAM_TcsMSLF ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsMSLF_UserDefinedPC_ud_m_dot_htf_ind_od_mget(SAM_TcsMSLF ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_m_dot_htf_low_nget(SAM_TcsMSLF ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_m_dot_water_cool_des_nget(SAM_TcsMSLF ptr, SAM_error *err);
 

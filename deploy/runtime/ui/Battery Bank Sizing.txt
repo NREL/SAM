@@ -1,18 +1,18 @@
 Battery Bank Sizing
-1000
-257
+993
+245
 15
 GroupBox
 
 1
-7
+8
 Name
 5
 19
 Battery Bank Sizing
 X
 3
-9
+6
 Y
 3
 0
@@ -22,6 +22,9 @@ Width
 Height
 3
 243
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -32,7 +35,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -49,6 +52,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -91,7 +97,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -108,6 +114,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -150,7 +159,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -167,6 +176,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -209,7 +221,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -226,6 +238,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -268,7 +283,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -285,6 +300,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -327,7 +345,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -344,6 +362,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -386,7 +407,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 21
@@ -403,6 +424,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -417,7 +441,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -434,6 +458,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -476,7 +503,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -493,6 +520,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -507,7 +537,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -524,6 +554,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -566,7 +599,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 19
@@ -583,6 +616,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -611,7 +647,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 17
@@ -628,6 +664,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 25
@@ -656,7 +695,7 @@ AlignTop
 RadioChoice
 
 1
-10
+11
 Name
 5
 16
@@ -673,6 +712,9 @@ Width
 Height
 3
 36
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -693,7 +735,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 15
@@ -709,7 +751,10 @@ Width
 333
 Height
 3
-108
+99
+Tool Tip
+5
+0
 Caption
 5
 217

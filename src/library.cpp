@@ -909,8 +909,8 @@ bool ScanSolarResourceData( const wxString &db_file, bool  )
 			errors.erase( errors.begin()+NERRMAX, errors.end() );
 			errors.Add( wxString::Format("and %d more...", nerr-NERRMAX) );
 		}
-
-		wxMessageBox( "The following weather files in the solar resource library appear to have problems:\n\n" + wxJoin( errors, '\n' ) );
+		// results in multiple annoying pop-ups, rely on UI form callbacks to display error messages
+		//wxMessageBox( "The following weather files in your weather file folders appear to have problems:\n\n" + wxJoin( errors, '\n' ) );
 	}
 
 	return csv.WriteFile( db_file );

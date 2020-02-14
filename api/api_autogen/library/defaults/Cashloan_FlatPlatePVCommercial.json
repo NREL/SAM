@@ -12,11 +12,12 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 1,
 			"real_discount_rate": 6.4,
+			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 215.864
 		},
 		"SystemCosts": {
-			"om_capacity": [13.000000],
+			"om_capacity": [16.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -24,8 +25,9 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [0.000000],
-			"om_replacement_cost_escal": 0
+			"om_replacement_cost1": [500.000000],
+			"om_replacement_cost_escal": 0,
+			"total_installed_cost": 350892
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -39,7 +41,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 30,
+			"itc_fed_percent": 26,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -147,21 +149,17 @@
 			"pbi_uti_tax_sta": 1,
 			"pbi_uti_term": 0
 		},
-		"Battery": {
+		"BatterySystem": {
 			"batt_computed_bank_capacity": 100.205,
 			"batt_replacement_option": 0,
-			"batt_replacement_schedule": [0.000000],
+			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 300,
 			"en_batt": 0
 		},
 		"FuelCell": {
 		},
-		"Cashloan": {
-			"annual_energy_value": [0],
-			"salvage_percentage": 0,
-			"total_installed_cost": 392655
-		},
 		"SystemOutput": {
+			"annual_energy_value": [0],
 			"degradation": [0.500000],
 			"gen": [0]
 		},

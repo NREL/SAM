@@ -1,6 +1,6 @@
 Battery Replacements
-1000
-140
+994
+133
 5
 GroupBox
 
@@ -12,7 +12,7 @@ Name
 Battery Bank Sizing
 X
 3
-9
+6
 Y
 3
 3

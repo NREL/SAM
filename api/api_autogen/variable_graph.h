@@ -8,6 +8,7 @@
 #include <unordered_map>
 
 #include <lk/absyn.h>
+#include <set>
 
 #include "variables.h"
 
@@ -73,7 +74,7 @@ public:
     std::string ui_form;
     std::vector<edge*> edges_out;
     std::vector<edge*> edges_in;
-    bool is_ssc_var;    // is an input to primary compute module
+    bool is_ssc_var;    // name of primary compute module
     std::string cmod;
 
     vertex(){}
@@ -165,6 +166,10 @@ public:
 
     /// vertices inserted as tbd:var will be rename to cmod:var, with duplication check
     void rename_cmod_vertices(std::string cmod_name);
+
+    static std::set<std::string> downstream_vertices(vertex *vert, std::string cmod = "");
+
+    static std::set<std::string> upstream_vertices(vertex *vert, std::string cmod = "");
 
     bool copy_vertex_descendants(vertex *v);
 

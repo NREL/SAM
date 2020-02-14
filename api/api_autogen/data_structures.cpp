@@ -38,7 +38,7 @@ void load_secondary_cmod_outputs(std::string cmod_name){
                 case SSC_INVALID:
                     break;
                 case SSC_STRING:
-                    vv.Set("");
+                    vv.Set(wxEmptyString);
                     break;
                 case SSC_NUMBER:
                     vv.Set(0);
@@ -222,7 +222,8 @@ std::vector<std::string> split_identity_string(std::string str, size_t n){
         pos = str.find(":");
     }
     args.push_back(str);
-    assert(args.size() == n);
+    if (args.empty())
+        args.push_back(str);
     return args;
 }
 
@@ -280,5 +281,6 @@ equation_info& find_equation_info_from_edge(edge *e, std::string config){
             }
         }
     }
+	throw std::runtime_error("could not find equation info");
 }
 

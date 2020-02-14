@@ -116,7 +116,8 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
-		{ 2020, 02, 02 }, //projected public release
+		{ 2020, 02, 14 }, //CSP beta release
+	{ 2020, 02, 02 }, //projected public release
 		{ 2020, 1, 17 }, //Updated Beta for release testing - expires 1/17/2021 ssc version 232
 		{ 2020, 1, 14 }, //Updated Beta for release testing - expires 1/14/2021 ssc version 231
 		{ 2020, 1, 6 }, //Updated Beta for release testing - expires 1/6/2021 ssc version 230
@@ -2773,10 +2774,9 @@ BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
 EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, ConfigDialog::OnTreeActivated)
 EVT_DATAVIEW_ITEM_START_EDITING(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
 EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, ConfigDialog::OnTreeActivated)
-EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnTreeActivated)
+EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
 EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, ConfigDialog::OnTechTree)
 	EVT_DATAVIEW_SELECTION_CHANGED(ID_FinTree, ConfigDialog::OnFinTree)
-	EVT_LISTBOX_DCLICK( ID_FinTree, ConfigDialog::OnDoubleClick )
 	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
 	EVT_BUTTON( wxID_OK, ConfigDialog::OnOk )
 	EVT_BUTTON( wxID_CANCEL, ConfigDialog::OnCancel )
@@ -2934,12 +2934,6 @@ void ConfigDialog::GetConfiguration(wxString &t, wxString &f)
 {
 	t = m_techname;
 	f = m_finname;
-}
-
-
-void ConfigDialog::OnDoubleClick(wxCommandEvent &)
-{
-	EndModal( wxID_OK );
 }
 
 void ConfigDialog::PopulateTech()
