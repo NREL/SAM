@@ -1,6 +1,6 @@
 Battery Dispatch Front of Meter
-997
-373
+995
+370
 27
 GroupBox
 
@@ -120,7 +120,7 @@ Name
 StorageDispatchBox
 X
 3
-9
+6
 Y
 3
 3

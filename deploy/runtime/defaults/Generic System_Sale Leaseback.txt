@@ -736,7 +736,7 @@ batt_thermal_choice
 1
 1
 1
-0
+1
 batt_time_capacity
 1
 1

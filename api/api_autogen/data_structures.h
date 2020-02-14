@@ -130,6 +130,7 @@ extern std::unordered_map<std::string, std::vector<std::string>> SAM_ui_obj_to_e
 
 
 static std::unordered_map<std::string, std::string> config_to_cmod_name = {
+        {"6parsolve", "SixParsolve"},
         {"AllEquityPartnershipFlip", "Equpartflip"},
         {"Battery", "StandAloneBattery"},
         {"Battwatts", "Battwatts"},

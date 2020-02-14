@@ -10,6 +10,8 @@
 vertex* digraph::add_vertex(std::string n, bool is_ssc, std::string ui_source){
     if (vertex* v = find_vertex(n, is_ssc))
         return v;
+    if (n.find('.') != std::string::npos)
+        is_ssc = false;
     vertex* v = new vertex(n, is_ssc);
     auto it = vertices.find(n);
     if (it == vertices.end()){
@@ -74,9 +76,6 @@ edge * digraph::add_edge(vertex *src, vertex *dest, const int &type, const std::
         std::cout << "/* digraph::add_edge error: vertices null */ \n";
         return nullptr;
     }
-    if (dest->name == "spe_power"){
-        std::cout << expression << "\n";
-    }
     edge* e = new edge(src, dest, type, obj, expression);
     e->ui_form = ui_form;
     e->root = root;
@@ -99,13 +98,17 @@ edge * digraph::add_edge(std::string src, bool src_is_ssc, std::string dest, boo
     }
 
     vertex* v1 = find_vertex(src, src_is_ssc);
+    if (!v1)
+        v1 = add_vertex(src, src_is_ssc, ui_form);
     vertex* v2 = find_vertex(dest, dest_is_ssc);
-    if (!v1 || !v2){
-        std::cout << "/* digraph::add_edge error: could not find vertices ";
-        std::cout << (!v1? src + " " + std::to_string(src_is_ssc)
-                         : dest + " " + std::to_string(dest_is_ssc) ) << " */\n";
-        return nullptr;
-    }
+    if (!v2)
+        v2 = add_vertex(dest, dest_is_ssc, ui_form);
+//    if (!v1 || !v2){
+//        std::cout << "/* digraph::add_edge error: could not find vertices ";
+//        std::cout << (!v1? src + " " + std::to_string(src_is_ssc)
+//                         : dest + " " + std::to_string(dest_is_ssc) ) << " */\n";
+//        return nullptr;
+//    }
 
     return add_edge(v1, v2, type, obj, expression, ui_form, root);
 }
@@ -199,6 +202,31 @@ void digraph::get_unique_edge_expressions(std::unordered_map<std::string, edge*>
         }
     }
 };
+
+std::set<std::string> digraph::downstream_vertices(vertex *vert, std::string cmod){
+    std::set<std::string> names;
+    for (auto e : vert->edges_out){
+        if ((cmod.length() > 0 && e->dest->cmod == cmod) | cmod.empty())
+            names.insert(e->dest->name);
+        std::set<std::string> downstream = downstream_vertices(e->dest, cmod);
+        for (const auto& d : downstream)
+            names.insert(d);
+    }
+    return names;
+}
+
+std::set<std::string> digraph::upstream_vertices(vertex *vert, std::string cmod){
+    std::set<std::string> names;
+    for (auto e : vert->edges_in){
+        if ((cmod.length() > 0 && e->src->cmod == cmod) | cmod.empty())
+            names.insert(e->src->name);
+        std::set<std::string> downstream = upstream_vertices(e->src, cmod);
+        for (const auto& d : downstream)
+            names.insert(d);
+    }
+    return names;
+}
+
 
 bool digraph::copy_vertex_descendants(vertex *v){
     // if vertex has already been added, so has its descendants

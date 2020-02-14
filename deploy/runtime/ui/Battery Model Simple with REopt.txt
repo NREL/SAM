@@ -1,6 +1,6 @@
 Battery Model Simple with REopt
-1141
-433
+586
+405
 14
 GroupBox
 
