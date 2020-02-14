@@ -102,8 +102,10 @@ DSGL IPH,None,10935303,NA,NA,;
 DSGL IPH,LCOH Calculator,10935303,NA,NA,; 
 Fuel Cell,Commercial,1911072.125000,24.619467,NA,; 
 Fuel Cell,Single Owner,1911072.125000,26.385992,39.328712,; 
-MHKwave,LCOE Calculator,59434320,NA,NA,; 
-MHKtidal,LCOE Calculator,216151664,NA,NA,; 
+MHKwave,LCOE Calculator,OVERWRITE	
+MHKwave,LCOE Calculator,fail,fail,fail
+MHKtidal,LCOE Calculator,OVERWRITE	
+MHKtidal,LCOE Calculator,fail,fail,fail
 Geothermal Power,Single Owner,262800000,7.174291,7.712479,; 
 Geothermal Power,Merchant Plant,262800000,6.519230,NA,; 
 Geothermal Power,Leveraged Partnership Flip,262800000,7.269229,7.824011,; 
