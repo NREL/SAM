@@ -1282,8 +1282,8 @@ System Design
 0
 Label
 
-795
-equations{ '$MIMO$ MSPT_System_Design_Equations1' } = define() {
+807
+equations{ '$MIMO$ MSPT_System_Design_Equations' } = define() {
 	// nameplate
 	data.P_ref = ${P_ref};
 	data.gross_net_conversion_factor = ${gross_net_conversion_factor};
@@ -1313,6 +1313,8 @@ equations{ '$MIMO$ MSPT_System_Design_Equations1' } = define() {
 		${Q_rec_des} = data.q_rec_des;
 		${tshours_sf} = data.tshours_sf;
 	}
+	
+	return 0;
 };
 
 1047
