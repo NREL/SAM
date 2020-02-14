@@ -16,11 +16,11 @@ logger = None
 
 def install_landbosse(python_path, landbosse_version=LANDBOSSE_VERSION):
     """Installs LandBOSSE via pip."""
-    cmd = f"{python_path}/bin/pip install landbosse=={landbosse_version}"
+    cmd = f"{python_path}/bin/pip3 install landbosse=={landbosse_version}"
     if sys.platform == "win32":
-        pip = os.path.join(python_path, "Scripts", "pip.exe")
+        pip = os.path.join(python_path, "Scripts", "pip3.exe")
     else:
-        pip = os.path.join(python_path, "bin", "pip")
+        pip = os.path.join(python_path, "bin", "pip3")
     cmd = f"{pip} install landbosse=={landbosse_version}"
 
     ret = run_command(cmd)

@@ -57,11 +57,11 @@ function build_python
 {
 	info "Building Python $PYTHON_VERSION_FULL"
 	cd $PYTHON_SRC_PATH
-	./configure --prefix=$INSTALL_PATH > /dev/null 2>&1
+	./configure --prefix=$INSTALL_PATH --enable-optimizations> /dev/null 2>&1
 	ret=$?
 	if [ $ret != 0 ]; then
 		error "configure failed, return_code=$ret. Refer to $(realpath $(pwd)/config.log)"
-		exit ret
+		exit $ret
 	fi
 
 	if [[ "$OSTYPE" == "linux-gnu" ]]; then
