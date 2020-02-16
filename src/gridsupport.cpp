@@ -591,7 +591,8 @@ void GridCellArrayEditor::Create(wxWindow *parent, wxWindowID id, wxEvtHandler* 
 		wxDefaultPosition, wxDefaultSize,	style);
 	text->SetMargins(0, 0);
 	m_control = text;
-	SetControl(m_control);
+//	SetControl(m_control);
+	SetWindow(m_control);
 	wxGridCellEditor::Create(parent, id, pEvtHandler);
 }
 
@@ -846,7 +847,8 @@ void GridCellCalculatedEditor::Create(wxWindow *parent, wxWindowID id, wxEvtHand
 		wxDefaultPosition, wxDefaultSize, style);
 	text->SetMargins(0, 0);
 	m_control = text;
-	SetControl(m_control);
+//	SetControl(m_control);
+	SetWindow(m_control);
 	wxGridCellEditor::Create(parent, id, pEvtHandler);
 }
 
