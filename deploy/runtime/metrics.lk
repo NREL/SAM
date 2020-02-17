@@ -352,13 +352,13 @@ metrics{ 'Fuel Cell' } = define() {
 			
 };
 
-function MHKwave_metrics() 
+function MEwave_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 }
 
-function MHKtidal_metrics() 
+function MEtidal_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
@@ -383,8 +383,8 @@ metrics{ 'Wind Power' } = define() { wind_power_metrics(); };
 metrics{ 'Geothermal Power' } = define() { geothermal_metrics(); };
 metrics{ 'Generic System' } = define() { generic_system_metrics(); };
 metrics{ 'Biopower' } = define() { biopower_metrics(); };
-metrics{ 'MHKwave' } = define() { MHKwave_metrics(); };
-metrics{ 'MHKtidal' } = define() { MHKtidal_metrics(); };
+metrics{ 'MEwave' } = define() { MEwave_metrics(); };
+metrics{ 'MEtidal' } = define() { MEtidal_metrics(); };
 
 // Financial Metrics
 metrics{ 'Residential' } = define() { rescom_metrics(); };

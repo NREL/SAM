@@ -1,4 +1,4 @@
-MHK Costs
+Marine Costs
 791
 1061
 145
@@ -7097,7 +7097,7 @@ array_cable_system_cost
 1
 Array cable system cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7111,7 +7111,7 @@ array_cable_system_cost_input
 1
 Array cable system cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7125,7 +7125,7 @@ array_cable_system_cost_method
 1
 Method to define array cable system cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7139,7 +7139,7 @@ array_cable_system_cost_modeled
 1
 Modeled array cable system cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7153,7 +7153,7 @@ assembly_and_install_cost
 1
 Assembly and installation cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7167,7 +7167,7 @@ assembly_and_install_cost_input
 1
 Assembly and installation cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7181,7 +7181,7 @@ assembly_and_install_cost_method
 1
 Method to define assembly and installation cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7195,7 +7195,7 @@ assembly_and_install_cost_modeled
 1
 Modeled assembly and installation cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7209,7 +7209,7 @@ development_cost
 1
 Development cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7223,7 +7223,7 @@ development_cost_input
 1
 Development cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7237,7 +7237,7 @@ development_cost_method
 1
 Method to define development cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7251,7 +7251,7 @@ development_cost_modeled
 1
 Modeled development cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7265,7 +7265,7 @@ eng_and_mgmt_cost
 1
 Engineering and management cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7279,7 +7279,7 @@ eng_and_mgmt_cost_input
 1
 Engineering and management cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7293,7 +7293,7 @@ eng_and_mgmt_cost_method
 1
 Method to define engineering and management cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7307,7 +7307,7 @@ eng_and_mgmt_cost_modeled
 1
 Modeled engineering and management cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7321,7 +7321,7 @@ export_cable_system_cost
 1
 Export cable system cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7335,7 +7335,7 @@ export_cable_system_cost_input
 1
 Export cable system cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7349,7 +7349,7 @@ export_cable_system_cost_method
 1
 Method to define export cable system cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7363,7 +7363,7 @@ export_cable_system_cost_modeled
 1
 Modeled export cable system cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7377,7 +7377,7 @@ insurance_during_construction_cost
 1
 Insurance during construction cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7391,7 +7391,7 @@ insurance_during_construction_input
 1
 Insurance during construction cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7405,7 +7405,7 @@ insurance_during_construction_method
 1
 Method to define construction insurance cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7419,7 +7419,7 @@ insurance_during_construction_modeled
 1
 Modeled insurance during construction cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7433,7 +7433,7 @@ maintenance_cost_cost
 1
 Maintenance cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7447,7 +7447,7 @@ maintenance_cost_input
 1
 Maintenance cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7461,7 +7461,7 @@ maintenance_cost_method
 1
 Method to define maintenance cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7475,7 +7475,7 @@ maintenance_cost_modeled
 1
 Modeled maintenance cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7489,7 +7489,7 @@ mooring_found_substruc_cost
 1
 Mooring, foundation, and substructure cost
 $
-MHK Costs
+ME Costs
 0
 11
 1
@@ -7503,7 +7503,7 @@ mooring_found_substruc_cost_input
 1
 Mooring, foundation, and substructure cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7517,7 +7517,7 @@ mooring_found_substruc_cost_method
 1
 Method to define mooring, foundation, and substructure cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7531,7 +7531,7 @@ mooring_found_substruc_cost_modeled
 1
 Modeled mooring, foundation, and substructure cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7545,7 +7545,7 @@ offshore_substation_cost
 1
 Offshore substation cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7559,7 +7559,7 @@ offshore_substation_cost_input
 1
 Offshore substation cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7573,7 +7573,7 @@ offshore_substation_cost_method
 1
 Method to define offshore substation cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7587,7 +7587,7 @@ offshore_substation_cost_modeled
 1
 Modeled offshore substation cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7601,7 +7601,7 @@ onshore_substation_cost
 1
 Onshore substation cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7615,7 +7615,7 @@ onshore_substation_cost_input
 1
 Onshore substation cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7629,7 +7629,7 @@ onshore_substation_cost_method
 1
 Method to define onshore substation cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7643,7 +7643,7 @@ onshore_substation_cost_modeled
 1
 Modeled onshore substation cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7657,7 +7657,7 @@ operations_cost_cost
 1
 Operations cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7671,7 +7671,7 @@ operations_cost_input
 1
 Operations cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7685,7 +7685,7 @@ operations_cost_method
 1
 Method to define operations cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7699,7 +7699,7 @@ operations_cost_modeled
 1
 Modeled operations cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7713,7 +7713,7 @@ other_elec_infra_cost
 1
 Other electrical infrastructure cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7727,7 +7727,7 @@ other_elec_infra_cost_input
 1
 Other electrical infrastructure cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7741,7 +7741,7 @@ other_elec_infra_cost_method
 1
 Method to define other electrical infrastructure cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7755,7 +7755,7 @@ other_elec_infra_cost_modeled
 1
 Modeled cost of other electrical infrastructure
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7769,7 +7769,7 @@ other_infrastructure_cost
 1
 Other infrastructure cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7783,7 +7783,7 @@ other_infrastructure_cost_input
 1
 Other infrastructure cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7797,7 +7797,7 @@ other_infrastructure_cost_method
 1
 Method to define other infrastructure cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7811,7 +7811,7 @@ other_infrastructure_cost_modeled
 1
 Modeled cost of other infrastructure
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7825,7 +7825,7 @@ plant_commissioning_cost
 1
 Plant commissioning cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7839,7 +7839,7 @@ plant_commissioning_cost_input
 1
 Plant commissioning cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7853,7 +7853,7 @@ plant_commissioning_cost_method
 1
 Method to define plant commissioning cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7867,7 +7867,7 @@ plant_commissioning_cost_modeled
 1
 Modeled plant commissioning cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7881,7 +7881,7 @@ power_takeoff_system_cost
 1
 Power take-off system cost
 $
-MHK Costs
+ME Costs
 0
 11
 1
@@ -7895,7 +7895,7 @@ power_takeoff_system_cost_input
 1
 Power take-off system cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7909,7 +7909,7 @@ power_takeoff_system_cost_method
 1
 Method to define power take-off system cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7923,7 +7923,7 @@ power_takeoff_system_cost_modeled
 1
 Modeled power take-off system cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7937,7 +7937,7 @@ project_contingency_cost
 1
 Project contingency cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7951,7 +7951,7 @@ project_contingency_input
 1
 Project contingency cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -7965,7 +7965,7 @@ project_contingency_method
 1
 Method to define project contingency cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -7979,7 +7979,7 @@ project_contingency_modeled
 1
 Modeled project contingency cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -7993,7 +7993,7 @@ reserve_accounts_cost
 1
 Reserve accounts cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -8007,7 +8007,7 @@ reserve_accounts_input
 1
 Reserve accounts cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -8021,7 +8021,7 @@ reserve_accounts_method
 1
 Method to define reserve accounts cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -8035,7 +8035,7 @@ reserve_accounts_modeled
 1
 Modeled reserve accounts cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -8049,7 +8049,7 @@ site_access_port_staging_cost
 1
 Site access, port, and staging cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -8063,7 +8063,7 @@ site_access_port_staging_cost_input
 1
 Site access, port, and staging cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -8077,7 +8077,7 @@ site_access_port_staging_cost_method
 1
 Method to define site access, port, and staging cost
  
-MHK Costs
+ME Costs
 0
 1
 1
@@ -8091,7 +8091,7 @@ site_access_port_staging_cost_modeled
 1
 Modeled site access, port, and staging cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -8105,7 +8105,7 @@ structural_assembly_cost
 1
 Structural assembly cost
 $
-MHK Costs
+ME Costs
 0
 11
 1
@@ -8119,7 +8119,7 @@ structural_assembly_cost_input
 1
 Structural assembly cost user input
 $
-MHK Costs
+ME Costs
 0
 3
 1
@@ -8133,7 +8133,7 @@ structural_assembly_cost_method
 1
 Method to define structural assembly cost
  
-MHK Costs
+ME Costs
 42
 Enter in $/kW|Enter in $|Use Modeled Value
 1
@@ -8148,7 +8148,7 @@ structural_assembly_cost_modeled
 1
 Modeled structural assembly cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -8162,7 +8162,7 @@ total_bos_cost
 1
 Total balance of system cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -8176,7 +8176,7 @@ total_cost_per_kw
 1
 Total installed cost per unit of rated capacity
 $/kW
-MHK Costs
+ME Costs
 0
 9
 1
@@ -8190,7 +8190,7 @@ total_device_cost
 1
 Total device cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -8204,7 +8204,7 @@ total_elec_infra_cost
 1
 Total electrical infrastructure cost
 $
-MHK Costs
+ME Costs
 0
 8
 1
@@ -8218,7 +8218,7 @@ total_financial_cost
 1
 Total financial cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -8232,7 +8232,7 @@ total_installed_cost
 1
 Total installed cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -8246,7 +8246,7 @@ total_operating_cost
 1
 Total operating cost
 $
-MHK Costs
+ME Costs
 0
 9
 1
@@ -8260,7 +8260,7 @@ total_rated_capacity
 1
 Rated capacity
 kW
-MHK Costs
+ME Costs
 0
 8
 1
@@ -8270,7 +8270,7 @@ MHK Costs
 0
 Default
 
-10549
+10547
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -8320,7 +8320,7 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	ssc_var(obj, 'export_cable_length', ${export_cable_length});  
 	
 	tech = technology();
-	if (tech == 'MHKwave')
+	if (tech == 'MEwave')
 	{
 		if (${library_or_input_wec} == 1) ssc_var (obj, 'device_type', 0); // generic
 		else if (${wave_device_name} == 'RM3') ssc_var (obj, 'device_type', 1);
@@ -8329,7 +8329,7 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	}
 	else ssc_var(obj, 'device_type', 4); //RM1
 		
-	if (tech == 'MHKwave') ssc_var( obj, 'marine_energy_tech', 0 );
+	if (tech == 'MEwave') ssc_var( obj, 'marine_energy_tech', 0 );
 	else ssc_var( obj, 'marine_energy_tech', 1); //tidal
 
 	success = ssc_exec(obj, 'mhk_costs');

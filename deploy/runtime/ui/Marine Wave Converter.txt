@@ -1,4 +1,4 @@
-MHK Wave Converter
+Marine Wave Converter
 1292
 796
 8
@@ -432,7 +432,7 @@ device_characteristic_diameter
 1
 Characteristic diameter
 m
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 8
 1
@@ -446,7 +446,7 @@ device_foundation
 4
 Foundation type
  
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 8
 1
@@ -458,7 +458,7 @@ device_mass
 1
 Unballasted structural mass
 Tonnes
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 8
 1
@@ -472,7 +472,7 @@ device_material
 4
 Primary structure material
  
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 8
 1
@@ -484,7 +484,7 @@ device_mooring
 4
 Mooring type
  
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 8
 1
@@ -496,7 +496,7 @@ device_pto_type
 4
 PTO type
  
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 8
 1
@@ -508,7 +508,7 @@ device_rated_power
 1
 Device rated power
 kW
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 8
 1
@@ -522,7 +522,7 @@ device_tech_type
 4
 Technology type
  
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 8
 1
@@ -534,7 +534,7 @@ lib_wave_device
 4
 Wave device library
  
-MHK Wave Energy Converter
+ME Wave Energy Converter
 24
 Wave Energy Converters|0
 19
@@ -548,7 +548,7 @@ lib_wave_power_matrix
 3
 WEC power matrix from library
  
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 1
 1
@@ -562,7 +562,7 @@ library_or_input_wec
 1
 Choose WEC from library or user
  
-MHK Wave Energy Converter
+ME Wave Energy Converter
 34
 Choose WEC from library|Import WEC
 1
@@ -577,7 +577,7 @@ user_wave_power_matrix
 3
 WEC power matrix from user
 kW
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 1
 1
@@ -612,7 +612,7 @@ wave_device_name
 4
 WEC name
  
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 8
 1
@@ -625,7 +625,7 @@ wave_power_matrix
 3
 WEC power matrix
 kW
-MHK Wave Energy Converter
+ME Wave Energy Converter
 0
 8
 1
@@ -654,7 +654,7 @@ equations{ 'wave_power_matrix' } = define()
 		return ${lib_wave_power_matrix};
 };
 
-980
+983
 function update_controls()
 {
 	input_wec = (value("library_or_input_wec") == 1);
@@ -674,7 +674,7 @@ function update_controls()
 	refresh();
 }
 
-on_load{'MHK Wave Converter'}=define()
+on_load{'Marine Wave Converter'}=define()
 {
 	//enable("lib_wave_power_curve", false);
 	value( 'wave_device_name', value( 'lib_wave_device' ) );

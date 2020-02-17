@@ -1,4 +1,4 @@
-MHK Wave Resource
+Marine Wave Resource
 1276
 1009
 16
@@ -746,7 +746,7 @@ average_power_flux
 1
 Average power flux
 kW/m
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -760,7 +760,7 @@ bathymetry
 4
 Bathymetry
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -772,7 +772,7 @@ city
 4
 City
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -784,7 +784,7 @@ country
 4
 Country
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -796,7 +796,7 @@ data_source
 4
 Data source
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -808,7 +808,7 @@ file_name
 4
 Wave resource file name from library
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -820,7 +820,7 @@ frequency_sum
 1
 Frequency sum
 %
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -834,7 +834,7 @@ lat
 1
 Latitude
 degrees
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -848,7 +848,7 @@ location
 4
 Wave resource location
  
-MHK Wave Resource
+ME Wave Resource
 18
 WaveResourceData|0
 19
@@ -862,7 +862,7 @@ lon
 1
 Longitude
 degrees 
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -876,7 +876,7 @@ max_frequency
 1
 Probability of dominant wave
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -890,7 +890,7 @@ max_frequency_Hs
 1
 Dominant wave height
 m
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -904,7 +904,7 @@ max_frequency_Te
 1
 Dominant wave period
 s
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -918,7 +918,7 @@ name
 4
 Name
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -930,7 +930,7 @@ nearby_buoy_number
 4
 Nearby buoy number
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -942,7 +942,7 @@ notes
 4
 Notes
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -955,7 +955,7 @@ sea_bed
 4
 Sea bed
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -967,7 +967,7 @@ state
 4
 State
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -979,7 +979,7 @@ tz
 1
 Time zone
  
-MHK Wave Resource
+ME Wave Resource
 0
 8
 1
@@ -993,7 +993,7 @@ use_specific_wf_wave
 1
 Wind resource enable user-specified file
  
-MHK Wave Resource
+ME Wave Resource
 0
 5
 1
@@ -1007,7 +1007,7 @@ user_specified_wf_wave
 4
 Wave resource user-specified file name
  
-MHK Wave Resource
+ME Wave Resource
 0
 1
 1
@@ -1020,7 +1020,7 @@ wave_resource_filename
 4
 Wave resource file name
  
-MHK Wave Resource
+ME Wave Resource
 0
 9
 1
@@ -1032,7 +1032,7 @@ wave_resource_matrix
 3
 Wave resource matrix
  
-MHK Wave Resource
+ME Wave Resource
 0
 3
 1
@@ -1080,7 +1080,7 @@ equations{ 'frequency_sum' } = define ()
 	return sum_mat;
 };
 
-1927
+1930
 function enable_disable_library() {
 	enable_library = !value('use_specific_wf_wave');
 	enable('wave_resource_matrix',false);
@@ -1112,7 +1112,7 @@ on_change{'btnScanLibrary'} = define() {
 	rescanlibrary('wave');
 };
 
-on_load{'MHK Wave Resource'} = define() {
+on_load{'Marine Wave Resource'} = define() {
 	enable("wave_resource_matrix",false);
 	on_change{'use_specific_wf_wave'}();
 	enable_disable_library();
