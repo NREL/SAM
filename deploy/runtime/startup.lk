@@ -26,8 +26,8 @@ if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'Fuel Cell', ['Commercial', 'Single Owner']);
-addconfig( 'MHKwave', ['LCOE Calculator']);
-addconfig( 'MHKtidal', ['LCOE Calculator']);
+addconfig( 'MEwave', ['LCOE Calculator']);
+addconfig( 'MEtidal', ['LCOE Calculator']);
 addconfig( 'Geothermal Power', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
 addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -55,8 +55,8 @@ configopt( 'MSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresn
 if ( en_iscc ) { configopt( 'ISCC',       { 'tree_parent'='CSP', 'long_name'='Integrated Solar Combined Cycle',    'short_name'='Tower Salt ISCC',  'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
 configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Heat',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
-configopt( 'MHKwave',                     { 'tree_parent'='ME', 'long_name'='Wave',           'short_name'='Marine Wave',          'description'='Marine energy wave system' });
-configopt( 'MHKtidal',                    { 'tree_parent'='ME', 'long_name'='Tidal',          'short_name'='Marine Tidal',         'description'='Marine energy tidal system' });
+configopt( 'MEwave',                     { 'tree_parent'='ME', 'long_name'='Wave',           'short_name'='Marine Wave',          'description'='Marine energy wave system' });
+configopt( 'MEtidal',                    { 'tree_parent'='ME', 'long_name'='Tidal',          'short_name'='Marine Tidal',         'description'='Marine energy tidal system' });
 
 // tree_parent for financial models defined in UpdateFinTree() in main.cpp
 configopt( 'LCOE Calculator',             { 'long_name'='LCOE Calculator (FCR Method)',           'short_name'='LCOE Calculator',  'description'='Calculate LCOE using fixed charge rate method' } );
@@ -1954,30 +1954,30 @@ addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sid
 setup_merchant_plant_pages(LIFETIME_SYSTEM);
 
 // Marine Hydrokinetic ////////////////////////////////////////////////////////////////////
-function setup_mhkwave_pages()
+function setup_mewave_pages()
 {
-	addpage( [[ 'MHK Wave Resource']], { 'sidebar'='Wave Resource', 'help'='mhk_wave_resource' } );
-	addpage( [[ 'MHK Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='mhk_wave_converter' } );
-	addpage( [[ 'MHK Array' ]], { 'sidebar'='Array', 'help'='mhk_wave_array' } );
-	addpage( [[ 'MHK Losses' ]], { 'sidebar'='Losses', 'help'='mhk_wave_losses' } );
-	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='mhk_wave_system_costs' } );
+	addpage( [[ 'Marine Wave Resource']], { 'sidebar'='Wave Resource', 'help'='mhk_wave_resource' } );
+	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='mhk_wave_converter' } );
+	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='mhk_wave_array' } );
+	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='mhk_wave_losses' } );
+	addpage( [[ 'Marine Costs']],{ 'sidebar'='System Costs', 'help'='mhk_wave_system_costs' } );
 }
-setconfig( 'MHKwave', 'LCOE Calculator' );
+setconfig( 'MEwave', 'LCOE Calculator' );
 setmodules( ['wave_file_reader', 'mhk_wave', 'lcoefcr']);
-setup_mhkwave_pages();
+setup_mewave_pages();
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
-function setup_mhktidal_pages()
+function setup_metidal_pages()
 {
-	addpage( [[ 'MHK Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='mhk_tidal_resource' } );
-	addpage( [[ 'MHK Tidal Converter' ]], { 'sidebar'='Tidal Energy Converter', 'help'='mhk_tidal_converter' } );
-	addpage( [[ 'MHK Array' ]], { 'sidebar'='Array', 'help'='mhk_tidal_array' } );
-	addpage( [[ 'MHK Losses' ]], { 'sidebar'='Losses', 'help'='mhk_tidal_losses' } );
-	addpage( [[ 'MHK Costs']],{ 'sidebar'='System Costs', 'help'='mhk_tidal_system_costs' } );
+	addpage( [[ 'Marine Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='mhk_tidal_resource' } );
+	addpage( [[ 'Marine Tidal Converter' ]], { 'sidebar'='Tidal Energy Converter', 'help'='mhk_tidal_converter' } );
+	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='mhk_tidal_array' } );
+	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='mhk_tidal_losses' } );
+	addpage( [[ 'Marine Costs']],{ 'sidebar'='System Costs', 'help'='mhk_tidal_system_costs' } );
 }
-setconfig( 'MHKtidal', 'LCOE Calculator' );
+setconfig( 'MEtidal', 'LCOE Calculator' );
 setmodules( ['mhk_tidal', 'lcoefcr']);
-setup_mhktidal_pages();
+setup_metidal_pages();
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
 

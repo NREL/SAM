@@ -1,4 +1,4 @@
-MHK Tidal Resource
+Marine Tidal Resource
 998
 866
 5
@@ -262,7 +262,7 @@ probability_sum
 1
 Sum of Probability Distribution Values
  
- 
+ME Tidal Resource
 0
 8
 1
@@ -276,7 +276,7 @@ tidal_resource
 3
 Frequency distribution of resource as a function of stream speeds
  
-MHK Tidal Resource
+ME Tidal Resource
 0
 3
 1
@@ -300,7 +300,7 @@ equations {'probability_sum'} = define() {
 	}
 	return psum;
 };
-976
+979
 function plot_resource_curve()
 {
 	setplot('tidal_resource_curve_plot');
@@ -335,7 +335,7 @@ on_change{'tidal_resource'}=define()
 	plot_resource_curve();
 };
 
-on_load{'MHK Tidal Resource'}=define()
+on_load{'Marine Tidal Resource'}=define()
 {
 	plot_resource_curve();
 };

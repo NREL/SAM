@@ -106,12 +106,12 @@ autographs{ 'Wind Power' } = define() { base_technology_graphs(); wind_pruf_grap
 
 //**************Technologies with unique graphs***************************
 
-autographs{ 'MHKwave' } = define()
+autographs{ 'MEwave' } = define()
 {
 	agraph( 'annual_energy_distribution', 'Annual Energy Production (kWh)', 'Te = wave energy period (s)', 'Hs = significant wave height (m)', -1, true, false, 'bottom', 4); 
 };
 
-autographs{ 'MHKtidal' } = define()
+autographs{ 'MEtidal' } = define()
 {
 	agraph( 'annual_energy_distribution', 'Annual Energy Production', 'Velocity (m/s)', 'Annual Energy (kWh)', -1, true, false,'bottom' );
 	agraph( 'annual_cumulative_energy_distribution', 'Annual Cumulative Energy Production', 'Velocity (m/s)', 'Annual Energy (kWh)', -1, true, false,'bottom' );

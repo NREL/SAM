@@ -1,4 +1,4 @@
-MHK Array
+Marine Array
 801
 553
 26
@@ -821,7 +821,7 @@ Tool Tip
 0
 Image
 7
-MHK Array_object 12.png
+Marine Array_object 12.png
 Centered
 2
 1
@@ -1339,7 +1339,7 @@ array_sizing_mode
 1
 Array sizing mode
  
-MHK Array
+ME Array
 76
 Use a single device|Specify desired rated capacity|Specify number of devices
 3
@@ -1354,7 +1354,7 @@ cable_system_overbuild
 1
 Cable system overbuild
 %
-MHK Array
+ME Array
 0
 2
 1
@@ -1368,7 +1368,7 @@ desired_array_size
 1
 Desired rated capacity
 kW
-MHK Array
+ME Array
 0
 2
 1
@@ -1382,7 +1382,7 @@ device_spacing_in_row
 1
 Spacing between devices in a row
 m
-MHK Array
+ME Array
 0
 2
 1
@@ -1396,7 +1396,7 @@ devices_per_row
 1
 Devices per row
  
-MHK Array
+ME Array
 0
 8
 1
@@ -1410,7 +1410,7 @@ distance_to_shore
 1
 Distance to shore
 m
-MHK Array
+ME Array
 0
 2
 1
@@ -1424,7 +1424,7 @@ export_cable_length
 1
 Export cable length
 m
-MHK Array
+ME Array
 0
 8
 1
@@ -1438,7 +1438,7 @@ export_cable_redundancy
 1
 Build export cable redundancy
  
-MHK Array
+ME Array
 0
 2
 1
@@ -1452,7 +1452,7 @@ floating_array
 1
 Floating array
  
-MHK Array
+ME Array
 0
 2
 1
@@ -1466,7 +1466,7 @@ inter_array_cable_length
 1
 Inter-array cable length
 m
-MHK Array
+ME Array
 0
 8
 1
@@ -1480,7 +1480,7 @@ number_devices
 1
 Number of devices in array
  
-MHK Array
+ME Array
 0
 8
 1
@@ -1494,7 +1494,7 @@ number_rows
 1
 Number of rows
  
-MHK Array
+ME Array
 0
 8
 1
@@ -1508,7 +1508,7 @@ riser_cable_length
 1
 Riser cable length
 m
-MHK Array
+ME Array
 0
 8
 1
@@ -1522,7 +1522,7 @@ row_spacing
 1
 Row spacing
 m
-MHK Array
+ME Array
 0
 2
 1
@@ -1536,7 +1536,7 @@ system_capacity
 1
 Rated capacity
 kW
-MHK Array
+ME Array
 0
 8
 1
@@ -1550,7 +1550,7 @@ user_input_devices_per_row
 1
 Devices per row
  
-MHK Array
+ME Array
 0
 2
 1
@@ -1564,7 +1564,7 @@ user_input_number_rows
 1
 Number of rows
  
-MHK Array
+ME Array
 0
 2
 1
@@ -1578,7 +1578,7 @@ water_depth
 1
 Water depth
 m
-MHK Array
+ME Array
 0
 2
 1
@@ -1654,7 +1654,7 @@ equations {'number_devices'} = define() {
 	return ${number_rows} * ${devices_per_row};
 };
 
-3061
+3064
 function system_sizing_inputs()
 {
 	show_desired_size = 0;
@@ -1745,7 +1745,7 @@ function plot_mhk_array()
 	return 0;
 }
 
-on_load{'MHK Array'} = define()
+on_load{'Marine Array'} = define()
 {
 	system_sizing_inputs();
 	array_layout_inputs();
