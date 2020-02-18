@@ -77,16 +77,18 @@ function build_python
 		exit $ret
 	fi
 
-	if [[ "$OSTYPE" == "linux-gnu" ]]; then
-		num_procs=$(nproc)
-	elif [[ "$OSTYPE" == "darwin"* ]]; then
-		num_procs=$(sysctl -n hw.ncpu)
-	else
-		error "unknown OS type $OSTYPE"
-		exit 1
+	if [[ "$NUM_CPUS" == 0 ]]; then
+		if [[ "$OSTYPE" == "linux-gnu" ]]; then
+			NUM_CPUS=$(nproc)
+		elif [[ "$OSTYPE" == "darwin"* ]]; then
+			NUM_CPUS=$(sysctl -n hw.ncpu)
+		else
+			error "unknown OS type $OSTYPE"
+			exit 1
+		fi
 	fi
 
-	make_cmd="make -j$num_procs"
+	make_cmd="make -j$NUM_CPUS"
 	debug "$make_cmd"
 	$make_cmd > make.log 2>&1
 	ret=$?
@@ -137,6 +139,9 @@ fi
 if [ -z $OPTIMIZE ]; then
 	OPTIMIZE=0
 fi
+if [ -z $NUM_CPUS ]; then
+	NUM_CPUS=0
+fi
 
 # TODO: allow caller to pass in the python version
 PYTHON_VERSION=3.7
@@ -159,7 +164,7 @@ debug "PYTHON_PACKAGE_PATH=$PYTHON_PACKAGE_PATH"
 debug "PYTHON_SRC_URL=$PYTHON_SRC_URL"
 debug "INSTALL_PATH=$INSTALL_PATH"
 debug "PIP=$PIP"
-debug "OPTIMIZE=$OPTIMIZE"
+debug "NUM_CPUS=$NUM_CPUS OPTIMIZE=$OPTIMIZE"
 
 if [ ! -d $INSTALL_PATH ]; then
 	mkdir -p $INSTALL_PATH
