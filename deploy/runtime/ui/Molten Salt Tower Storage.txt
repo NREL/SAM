@@ -2178,7 +2178,7 @@ Thermal Energy Storage
 0
 Numeric
 
-4411
+2479
 equations{ 'csp.pt.tes.tc_fill_dens' } = define() {
 	return ?(${tc_fill}-1)
 [
@@ -2192,25 +2192,6 @@ equations{ 'csp.pt.tes.tc_fill_dens' } = define() {
 1515,  /*7) Sand*/
 2640  /*8) Quartzite*/
 ]; };
-
-//equations{ 'csp.pt.tes.tank_diameter' } = define() {
-//	return 2*sqrt(${vol_tank}/(${h_tank}*3.1415926*${tank_pairs})); };
-
-//equations{ 'csp.pt.tes.htf_density' } = define() {
-//	return 1; };
-
-//equations{ 'csp.pt.tes.htf_density' } = define() {
-//	return  ?${csp.pt.rec.htf_type}
-//[
-  /* htf type 0 - TRNSYS fluid number 17
-     Salt (60% NaNO3, 40% KNO3) */
-//	substance_density(17, ${csp.pt.tes.htf_calc_temp}) , 
-/* htf type 1 - TRNSYS fluid number 10 
-     Salt (46.5% LiF, 11.5%NaF, 42%KF)  */
-//	substance_density(10, ${csp.pt.tes.htf_calc_temp}) , 
-/*     user defined HTF fluid (use special sam function)  */
-//	substance_userhtf(${field_fl_props},${csp.pt.tes.htf_calc_temp},"density") 
-//]; };
 
 equations{ 'csp.pt.tes.tc_fill_sph' } = define() {
 	return ?${csp.pt.tes.tc_fill_type}
@@ -2226,42 +2207,6 @@ equations{ 'csp.pt.tes.tc_fill_sph' } = define() {
 1.105  /*8) Quartzite*/
 ]; };
 
-//equations{ 'csp.pt.tes.htf_calc_temp' } = define() {
-//	return (${T_htf_hot_ref}+ ${T_htf_cold_des})/2; };
-
-//equations{ 'vol_tank' } = define() {
-//	return (${P_ref}*1000 / ${design_eff}
-//  ) 
-//* ${tshours}
-// / ( (${T_htf_hot_ref}-
-//	${T_htf_cold_des})
-//    *  ?(${tes_type}-1) [
-//		${csp.pt.tes.htf_specific_heat}*${csp.pt.tes.htf_density},
-//		${tc_void}*${csp.pt.tes.htf_specific_heat}*${csp.pt.tes.htf_density}
-//		+ (1-${tc_void})*${csp.pt.tes.tc_fill_sph}*${csp.pt.tes.tc_fill_dens}
-			
-//	]
-// )
-//* 3600; };
-
-//equations{ 'csp.pt.tes.htf_specific_heat' } = define() {
-//	return 1; };
-
-//equations{ 'csp.pt.tes.htf_specific_heat' } = define() {
-//	return  ?${csp.pt.rec.htf_type}
-//[
-  /* htf type 0 - TRNSYS fluid number 17
-     Salt (60% NaNO3, 40% KNO3) */
-//	substance_specific_heat(17, ${csp.pt.tes.htf_calc_temp}) ,
-	 /* htf type 1 - TRNSYS fluid number 10 
-     Salt (46.5% LiF, 11.5%NaF, 42%KF)  */
-//	substance_specific_heat(10, ${csp.pt.tes.htf_calc_temp}) , 
-	/* htf type 2 - TRNSYS fluid number 36 
-     user defined   */
-//	substance_userhtf(${field_fl_props},${csp.pt.tes.htf_calc_temp},"specific heat") 
-//]; };
-
-
 equations{ 'tes_type' } = define() {
 return ${csp.pt.tes.storage_type} + 1;
 };
@@ -2274,45 +2219,38 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 {
 	obj = ssc_create();
 
-	ssc_var(obj, "W_dot_pb_des", ${P_ref});			//[MWe]
-	ssc_var(obj, "eta_pb_des", ${design_eff});		//[-]
-	ssc_var(obj, "tes_hrs", ${tshours});			//[hrs]
-	ssc_var(obj, "T_HTF_hot", ${T_htf_hot_des});	//[C]
-	ssc_var(obj, "T_HTF_cold", ${T_htf_cold_des});	//[C]
-	ssc_var(obj, "TES_HTF_code", ${rec_htf});		//[-]
-	ssc_var(obj, "TES_HTF_props", ${field_fl_props});	//[-]
-	ssc_var(obj, "h_tank_min", ${h_tank_min});		//[m]
-	ssc_var(obj, "h_tank", ${h_tank});				//[m]
-	ssc_var(obj, "tank_pairs", ${tank_pairs});		//[-]
-	ssc_var(obj, "u_tank", ${u_tank});				//[-]
+	ssc_var(obj, "P_ref", ${P_ref});			        //[MWe]
+	ssc_var(obj, "design_eff", ${design_eff});		    //[-]
+	ssc_var(obj, "tshours", ${tshours});			    //[hrs]
+	ssc_var(obj, "T_htf_hot_des", ${T_htf_hot_des});	//[C]
+	ssc_var(obj, "T_htf_cold_des", ${T_htf_cold_des});	//[C]
+	ssc_var(obj, "rec_htf", ${rec_htf});		        //[-]
+	ssc_var(obj, "field_fl_props", ${field_fl_props});	//[-]
+	ssc_var(obj, "h_tank_min", ${h_tank_min});		    //[m]
+	ssc_var(obj, "h_tank", ${h_tank});				    //[m]
+	ssc_var(obj, "tank_pairs", ${tank_pairs});		    //[-]
+	ssc_var(obj, "u_tank", ${u_tank});				    //[-]
 
 	ret = ssc_exec(obj, 'ui_tes_calcs');
 	
 	if(ret==0)
 	{
-		q_tes_des = ssc_var(obj, "q_tes_des");		//[MWt-hr]
-		vol_one_temp_avail = ssc_var(obj, "vol_one_temp_avail");	//[m^3]
-		vol_one_temp_total = ssc_var(obj, "vol_one_temp_total");	//[m^3]
-		d_tank = ssc_var(obj, "d_tank");			//[m]
-		q_dot_loss = ssc_var(obj, "q_dot_loss");	//[MWt]
-		dens = ssc_var(obj, "HTF_dens");			//[kg/m^3]
+		${Q_tes} = ssc_var(obj, "q_tes");		//[MWt-hr]
+		${tes_avail_vol} = ssc_var(obj, "tes_avail_vol");	//[m^3]
+		${vol_tank} = ssc_var(obj, "vol_tank");	//[m^3]
+		${csp.pt.tes.tank_diameter} = ssc_var(obj, "csp_pt_tes_tank_diameter");			//[m]
+		${q_dot_tes_est} = ssc_var(obj, "q_dot_tes_est");	//[MWt]
+		${csp.pt.tes.htf_density} = ssc_var(obj, "csp_pt_tes_htf_density");			//[kg/m^3]
 	}
 	else
 	{
-		q_tes_des = 1.0/0.0;
-		vol_one_temp_avail = 1.0/0.0;
-		vol_one_temp_total = 1.0/0.0;
-		d_tank = 1.0/0.0;
-		q_dot_loss = 1.0/0.0;
-		dens = 1.0/0.0;
+		${Q_tes} = 1.0/0.0;
+		${tes_avail_vol} = 1.0/0.0;
+		${vol_tank} = 1.0/0.0;
+		${csp.pt.tes.tank_diameter} = 1.0/0.0;
+		${q_dot_tes_est} = 1.0/0.0;
+		${csp.pt.tes.htf_density} = 1.0/0.0;
 	}
-	
-	${Q_tes} = q_tes_des;
-	${tes_avail_vol} = vol_one_temp_avail;
-	${vol_tank} = vol_one_temp_total;
-	${csp.pt.tes.tank_diameter} = d_tank;
-	${q_dot_tes_est} = q_dot_loss;
-	${csp.pt.tes.htf_density} = dens;
 	
 	ssc_free( obj );	
 };
