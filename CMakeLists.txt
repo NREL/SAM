@@ -145,11 +145,11 @@ include(${wxWidgets_USE_FILE})
 # Setup Application
 if (APPLE)
 	set(MACOSX_BUNDLE_ICON_FILE SAM.icns)
-	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/SAM.icns)
+	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/SAM.icns)
 	set_source_files_properties(${SAM_ICON} PROPERTIES
 		MACOSX_PACKAGE_LOCATION "Resources")
 elseif(WIN32)
-	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_vs2017/SAM.rc)
+	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/SAM.rc)
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -229,7 +229,7 @@ if (UNIX)
 elseif (MSVC)
 	find_library( CURL_LIB
 				NAMES libcurl.lib
-				PATHS $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/lib)
+				PATHS $ENV{WEXDIR}/build_resources/libcurl_ssl_x64/lib)
 	target_link_libraries(${SAM_EXE} ${CURL_LIB} Winhttp)
 endif()
 
@@ -264,7 +264,7 @@ if (APPLE)
 		COMMAND mkdir -p ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime
 		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
-		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_osx/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
+		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
 		COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
 		COMMAND cp ${SSC_DIR}/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks
 		COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
@@ -285,7 +285,7 @@ else()
 			DESTINATION linux_64)
 		install(FILES Sandia/linux/lhs.bin Sandia/linux/stepwise.bin
 			DESTINATION runtime/bin)
-		install(DIRECTORY build_linux/GtkTheme
+		install(DIRECTORY build_resources/GtkTheme
 			DESTINATION linux_64)
 		install(DIRECTORY deploy/libraries deploy/runtime deploy/solar_resource deploy/wind_resource
 			DESTINATION .)
@@ -298,7 +298,7 @@ else()
 			COMMAND "rm" "-f" "install0"
 			COMMAND "echo" "#!/bin/sh" ">" "install0"
 			COMMAND "echo" "SAMVER=Open.Source" ">>" "install0"
-			COMMAND "cat" "install0" "${CMAKE_SOURCE_DIR}/build_linux/install.sh" "sam.deploy.tar.gz" ">" "sam-linux-$(SAMVER).run"
+			COMMAND "cat" "install0" "${CMAKE_SOURCE_DIR}/build_resources/install.sh" "sam.deploy.tar.gz" ">" "sam-linux-$(SAMVER).run"
 			COMMAND "chmod" "a+x" "sam-linux-$(SAMVER).run"
 			COMMAND "./sam-linux-$(SAMVER).run"
 			DEPENDS SAM)
@@ -321,7 +321,7 @@ else()
 			TARGET ${SAM_EXE}
 			POST_BUILD
 			COMMAND ${CMAKE_COMMAND}
-			ARGS -E copy $ENV{WEXDIR}/build_vs2017/libcurl_ssl_x64/bin/${file_i} ${SAMEXE_DIR}
+			ARGS -E copy $ENV{WEXDIR}/build_resources/libcurl_ssl_x64/bin/${file_i} ${SAMEXE_DIR}
 		)
 		endforeach( file_i )
 
