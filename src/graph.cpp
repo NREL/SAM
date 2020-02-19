@@ -410,6 +410,8 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 	}
 	else
 	{
+		GetPlot(0)->GetMinMax(&m_g.XMin, &m_g.XMax, 0, 0);
+
 		// x-axis
 		if (m_g.Type == Graph::STACKED)
 		{
