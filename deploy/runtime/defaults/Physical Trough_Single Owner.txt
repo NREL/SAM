@@ -1,5 +1,5 @@
 1
-1186
+1187
 A_aperture
 1
 2
@@ -5037,6 +5037,12 @@ is_hx
 1
 1
 1
+is_tod_pc_target_also_pc_max
+1
+1
+1
+1
+0
 is_wlim_series
 1
 1
