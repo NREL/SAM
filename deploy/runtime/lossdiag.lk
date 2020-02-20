@@ -7,7 +7,6 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term( 'annual_poa_soiling_loss_percent', 'Soiling' );
 	add_loss_term( 'annual_poa_cover_loss_percent', 'Reflection (IAM)' );
 	add_gain_term( 'annual_poa_rear_gain_percent', 'Bifacial' );
-
 	
 	new_baseline( 'annual_dc_nominal', 'Nominal DC energy (kWh)' );
 	add_loss_term( 'annual_dc_snow_loss_percent', 'Snow' );
@@ -23,12 +22,6 @@ loss_diagram{'Flat Plate PV'} = define() {
 	if (varinfo('system_use_lifetime_output'))
 		if (value('system_use_lifetime_output'))
 			add_loss_term( 'annual_dc_lifetime_loss_percent', 'DC Lifetime daily losses- year one' );	
-	if (varinfo('en_batt'))
-	{
-		if (value('en_batt') == true && value('batt_ac_or_dc') == 0)
-			add_loss_term( 'annual_dc_battery_loss_percent', 'Battery loss');
-	//		add_loss_term( 'annual_dc_battery_lifetime_loss_percent', 'Battery loss');
-	}
 	new_baseline( 'annual_dc_net', 'Net DC energy (kWh)' );
 	add_loss_term( 'annual_ac_inv_clip_loss_percent', 'Inverter power clipping' );	
 	add_loss_term( 'annual_ac_inv_pso_loss_percent', 'Inverter power consumption' );	
@@ -36,12 +29,6 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term('annual_ac_inv_eff_loss_percent', 'Inverter efficiency' );	
 	
 	new_baseline( 'annual_ac_gross', 'Gross AC energy (kWh)' );
-	if (varinfo('en_batt'))
-	{
-		if (value('en_batt') == true && value('batt_ac_or_dc') == 1)
-			add_loss_term('annual_ac_battery_loss_percent', 'Battery loss (kWh)');
-	//		add_loss_term('annual_ac_battery_lifetime_loss_percent', 'Battery loss (kWh)');
-	}
 	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );	
 //	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
 
@@ -61,3 +48,59 @@ loss_diagram{'Flat Plate PV'} = define() {
 	new_baseline( 'annual_energy', 'Annual energy (kWh)' );
 };
 
+loss_diagram{'PV Battery'} = define() {
+
+	new_baseline( 'annual_glob_horiz_rad', 'Global Horizontal (kWh/m2)' );
+	
+	new_baseline( 'annual_poa_nom', 'Nominal POA (kWh)' );
+	add_loss_term( 'annual_poa_shading_loss_percent', 'Shading' );
+	add_loss_term( 'annual_poa_soiling_loss_percent', 'Soiling' );
+	add_loss_term( 'annual_poa_cover_loss_percent', 'Reflection (IAM)' );
+	add_gain_term( 'annual_poa_rear_gain_percent', 'Bifacial' );
+	
+	new_baseline( 'annual_dc_nominal', 'Nominal DC energy (kWh)' );
+	add_loss_term( 'annual_dc_snow_loss_percent', 'Snow' );
+	add_loss_term( 'annual_dc_module_loss_percent', 'Module' );
+	add_loss_term( 'annual_dc_mppt_clip_loss_percent', 'Inverter MPPT clipping');
+	add_loss_term( 'annual_dc_mismatch_loss_percent', 'Module mismatch' );
+	add_loss_term( 'annual_dc_diodes_loss_percent', 'Diodes and connections' );
+	add_loss_term( 'annual_dc_wiring_loss_percent', 'DC wiring' );	
+	add_loss_term( 'annual_dc_tracking_loss_percent', 'Tracking error' );	
+	add_loss_term( 'annual_dc_nameplate_loss_percent', 'Nameplate' );
+	add_loss_term( 'annual_dc_optimizer_loss_percent', 'DC power optimizer' );
+	add_loss_term( 'annual_dc_perf_adj_loss_percent', 'DC availability and curtailment' );
+	if (varinfo('system_use_lifetime_output'))
+		if (value('system_use_lifetime_output'))
+			add_loss_term( 'annual_dc_lifetime_loss_percent', 'DC Lifetime daily losses- year one' );	
+	if (value('batt_ac_or_dc') == 0) {
+		add_loss_term( 'annual_dc_battery_loss_percent', 'Battery loss');
+	//	add_loss_term( 'annual_dc_battery_lifetime_loss_percent', 'Battery loss');
+	}
+	new_baseline( 'annual_dc_net', 'Net DC energy (kWh)' );
+	add_loss_term( 'annual_ac_inv_clip_loss_percent', 'Inverter power clipping' );	
+	add_loss_term( 'annual_ac_inv_pso_loss_percent', 'Inverter power consumption' );	
+	add_loss_term( 'annual_ac_inv_pnt_loss_percent', 'Inverter nighttime consumption' );	
+	add_loss_term('annual_ac_inv_eff_loss_percent', 'Inverter efficiency' );	
+	
+	new_baseline( 'annual_ac_gross', 'Gross AC energy (kWh)' );
+	if (value('batt_ac_or_dc') == 1) {
+		add_loss_term('annual_ac_battery_loss_percent', 'Battery loss (kWh)');
+	}
+	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );	
+//	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
+
+	new_baseline( 'annual_ac_net', 'Net AC energy (kWh)' );
+	if (varinfo('system_use_lifetime_output'))
+	if (value('system_use_lifetime_output'))
+		add_loss_term( 'annual_ac_lifetime_loss_percent', 'AC Lifetime daily losses- year one' );
+	add_loss_term('annual_xfmr_loss_percent', 'Transformer loss' );	
+	add_loss_term('annual_ac_perf_adj_loss_percent', 'AC Availability and curtailment' );	
+	if (varinfo('enable_interconnection_limit')){
+		if (value('enable_interconnection_limit')){
+			add_loss_term('annual_ac_interconnect_loss_percent', 'Grid interconnection limit');	
+		}
+	}
+
+	
+	new_baseline( 'annual_energy', 'Annual energy (kWh)' );
+};

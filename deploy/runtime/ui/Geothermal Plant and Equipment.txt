@@ -2783,7 +2783,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-4667
+4651
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -2821,7 +2821,7 @@ equations{ '$MIMO$ geothermal' } = define() {
 	// Other inputs							    
 	ssc_var( obj, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER
 	ssc_var( obj, 'model_choice', ${model_choice} );    // INTEGER
-											    
+
 	// geothermal plant and equipment		    
 	ssc_var( obj, 'nameplate', ${nameplate} );
 	ssc_var( obj, 'analysis_type', ${analysis_type} );   //INTEGER
@@ -2863,7 +2863,6 @@ equations{ '$MIMO$ geothermal' } = define() {
 
 	// temp input for testing
 	ssc_var( obj, 'hr_pl_nlev', ${hr_pl_nlev} ); // INTEGER
-
 
     result = ssc_exec( obj, 'geothermal' );
     // use for diagnostics - if it doesn't seem to run, 'result' should have error

@@ -42,24 +42,6 @@ function iph_lcoefcr_metrics()
 	metric( 'lcoe_fcr', {'label'='Levelized cost of heat', 'mode'='f', 'deci'='2', 'post'=' \u00A2/kWh-t' , 'scale'='100'} );
 }
 
-/*
-function ipp_metrics()
-{
-	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'ppa', {'label'='PPA Price (year 1)', '1post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'actual_ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
-	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
-//	metric( 'latcf_nom', {'label'='Levelized  ATCF (Nominal)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
-//	metric( 'latcf_real', {'label'='Levelized ATCF Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
-	metric( 'irr', {'label'='Internal Rate of Return', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'npv', {'label'='Net Present Value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'min_dscr', {'label'='Minimum DSCR', 'mode'='f', 'deci'='2' } );
-	metric( 'actual_debt_frac', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
-	metric( 'min_cashflow', {'label'='Minimum Cash Flow (After Tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-}
-*/
 function so_metrics()
 {
 	metric( 'ppa', {'label'='PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
@@ -91,8 +73,6 @@ function mp_metrics()
 	metric( 'size_of_debt', {'label'='Size of debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	if ( value('debt_option')==0 ) metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
 }
-
-
 
 function aepf_metrics()
 {
@@ -157,14 +137,30 @@ function pvwatts_metrics()
 	metric( 'kwh_per_kw', {'label'='Energy yield (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW' } );
 }
 
+function pvwatts_battery_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'kwh_per_kw', {'label'='Energy yield (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW' } );
+	metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );
+}
+
 function pv_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'kwh_per_kw', {'label'='Energy yield (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 	metric( 'performance_ratio', {'label'='Performance ratio (year 1)', 'mode'='f', 'deci'='2', 'post'='' } );
-	//metric( 'average_cycle_efficiency', {'label'='Battery efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );
 	// where is the total land area metric?
+}
+
+function pv_battery_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'kwh_per_kw', {'label'='Energy yield (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true' } );
+	metric( 'performance_ratio', {'label'='Performance ratio (year 1)', 'mode'='f', 'deci'='2', 'post'='' } );
+	metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );//includes inverter and ancillary
 }
 
 function wind_power_metrics() 
@@ -267,11 +263,14 @@ function generic_system_metrics()
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
-	if ( varinfo('en_batt') ) {
-		if (value('en_batt')){
-			metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
-		}
-	}
+	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
+}
+
+function generic_battery_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );
 	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 }
 
@@ -314,44 +313,6 @@ function biopower_metrics()
 	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 }
 
-function resiliency_metrics()
-{
-	if (!${crit_load_is_shown})
-		return;
-	metric( 'resilience_hrs_avg', {'label'='Avg hours of autonomy for resilience', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' hrs' } );
-}
-
-// Technology Metrics
-metrics{ 'Flat Plate PV' } = define() { 
-	pv_metrics(); 
-	if ((financing()!='LCOE Calculator') && (financing() != 'None')){
-		if ( value('en_batt') == 1 )
-			metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
-		}
-	if ( is_assigned('resilience_hrs_avg'))
-		resiliency_metrics();
-};
-metrics{ 'PVWatts' } = define() {	
-	pvwatts_metrics(); 
-	if ( is_assigned('resilience_hrs_avg'))
-		resiliency_metrics();
-	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party") || (financing()=="Host Developer")){
-		if ( value('batt_simple_enable') == 1 )
-				metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
-		}
-	if ( is_assigned('resilience_hrs_avg'))
-		resiliency_metrics();
-};
-metrics{ 'Fuel Cell' } = define() {	
-	pvwatts_metrics(); 
-	if ( value('en_batt') == 1 )
-			metric( 'average_battery_roundtrip_efficiency', {'label'='Battery efficiency (incl. converter + ancillary)', 'mode'='f', 'deci'='2', 'post'='%' } );
-	metric( 'thermal_cost_without_system_year1',{'label'='Thermal bill without system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
-	metric( 'thermal_cost_with_system_year1',{'label'='Thermal bill with system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
-	metric( 'thermal_savings_year1',{'label'='Net thermal savings with system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
-			
-};
-
 function MHKwave_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
@@ -364,7 +325,35 @@ function MHKtidal_metrics()
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 }
 
+function resiliency_metrics()
+{
+	if (!${crit_load_is_shown})
+		return;
+	metric( 'resilience_hrs_avg', {'label'='Avg hours of autonomy for resilience', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' hrs' } );
+}
 
+// Technology Metrics
+metrics{ 'Flat Plate PV' } = define() { 
+	pv_metrics(); 
+	if ( is_assigned('resilience_hrs_avg'))
+		resiliency_metrics();
+};
+
+metrics{ 'PVWatts' } = define() {	
+	pvwatts_metrics(); 
+	if ( is_assigned('resilience_hrs_avg'))
+		resiliency_metrics();
+};
+
+metrics{ 'Fuel Cell' } = define() {	
+	pvwatts_metrics(); 
+	if ( value('en_batt') == 1 )
+	{ metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } ); }
+	metric( 'thermal_cost_without_system_year1',{'label'='Thermal bill without system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
+	metric( 'thermal_cost_with_system_year1',{'label'='Thermal bill with system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
+	metric( 'thermal_savings_year1',{'label'='Net thermal savings with system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
+			
+};
 
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
 metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };
@@ -385,6 +374,9 @@ metrics{ 'Generic System' } = define() { generic_system_metrics(); };
 metrics{ 'Biopower' } = define() { biopower_metrics(); };
 metrics{ 'MHKwave' } = define() { MHKwave_metrics(); };
 metrics{ 'MHKtidal' } = define() { MHKtidal_metrics(); };
+metrics{ 'PV Battery' } = define() { pv_battery_metrics(); };
+metrics{ 'Generic Battery' } = define() { generic_battery_metrics(); };
+metrics{ 'PVWatts Battery' } = define() { pvwatts_battery_metrics(); };
 
 // Financial Metrics
 metrics{ 'Residential' } = define() { rescom_metrics(); };

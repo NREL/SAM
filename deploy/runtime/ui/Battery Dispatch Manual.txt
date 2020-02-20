@@ -2868,7 +2868,7 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-5956
+5994
 on_load{'Battery Dispatch Manual'}=define()
 {	
 	show_label();
@@ -2909,7 +2909,8 @@ function behind_the_meter()
 	btm = false;
 	if (financing() == 'Residential' || 
 		financing() == 'Commercial' || 
-		financing() == 'Third Party')
+		financing() == 'Third Party' ||
+		financing() == 'Host Developer' )
 		btm = true;
 	return btm;
 }

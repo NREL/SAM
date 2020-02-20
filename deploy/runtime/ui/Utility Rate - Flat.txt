@@ -995,7 +995,7 @@ Electricity rate file
  
 Electricity Rates - General
 0
-1
+9
 1
 4
 0

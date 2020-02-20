@@ -247,7 +247,7 @@ Lead Acid: Flooded|Lead Acid: VRLA Gel|Lead Acid: VRLA AGM|Lead Acid: Custom|Lit
 0
 Choice
 
-269
+270
 equations{ 'batt_chem' } = define(){
 	// lead acid
 	if (${batt_type} <= 3)
@@ -262,13 +262,13 @@ equations{ 'batt_chem' } = define(){
 	else if (${batt_type} == 12)
 		return 3;
 };
-12427
+
+12520
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
 	set_meter_position();
 	battsize_warning_check();
-	
 	on_change{'batt_type'};
 };
 
@@ -358,15 +358,20 @@ function set_chemistry()
 
 function set_meter_position()
 {
-	financial_model = financing();
-	if (!strcmp(financial_model, 'Residential') 
-	|| !strcmp(financial_model, 'Commercial')
-	|| !strcmp(financial_model, 'Third Party'))
+	f = financing();
+	if ( !strcmp(f, 'Residential') 
+	|| !strcmp(f, 'Commercial')
+	|| !strcmp(f, 'Third Party')
+	|| !strcmp(f, 'Host Developer') )
 	{	
 		// behind the meter
 		${batt_meter_position} = 0;	
 	}
-	else if (financial_model == 'Single Owner')
+	elseif (f == 'Single Owner' 
+	|| f == 'Merchant Plant'
+	|| f == 'Leveraged Partnership Flip'
+	|| f == 'All Equity Partnership Flip'
+	|| f == 'Sale Leaseback' )
 	{
 		// in front of the meter
 		${batt_meter_position} = 1;	

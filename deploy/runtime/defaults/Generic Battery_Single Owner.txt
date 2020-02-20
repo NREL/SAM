@@ -1,5 +1,5 @@
 1
-540
+539
 LeadAcid_q10
 1
 1
@@ -11,7 +11,7 @@ LeadAcid_q10_computed
 1
 1
 1
-4.65
+3716.28
 LeadAcid_q20
 1
 1
@@ -23,7 +23,7 @@ LeadAcid_q20_computed
 1
 1
 1
-5
+3996
 LeadAcid_qn
 1
 1
@@ -35,7 +35,7 @@ LeadAcid_qn_computed
 1
 1
 1
-3
+2397.6
 LeadAcid_tn
 1
 1
@@ -94,13 +94,13 @@ batt_C_rate
 1
 1
 1
-0.1
+0.2
 batt_C_rate_max_charge
 1
 1
 1
 1
-6.66667
+0.5
 batt_C_rate_max_charge_input
 1
 1
@@ -112,7 +112,7 @@ batt_C_rate_max_discharge
 1
 1
 1
-6.66667
+0.5
 batt_C_rate_max_discharge_input
 1
 1
@@ -130,67 +130,67 @@ batt_Qexp
 1
 1
 1
-0.05
+0.04005
 batt_Qexp_percent
 1
 1
 1
 1
-1
+1.78
 batt_Qfull
 1
 1
 1
 1
-5
+2.25
 batt_Qfull_flow
 1
 1
 1
 1
-5
+3996
 batt_Qnom
 1
 1
 1
 1
-4.75
+2.00025
 batt_Qnom_percent
 1
 1
 1
 1
-95
+88.9
 batt_Vexp
 1
 1
 1
 1
-2.05
+4.05
 batt_Vfull
 1
 1
 1
 1
-2.2
+4.1
 batt_Vnom
 1
 1
 1
 1
-2.04
+3.4
 batt_Vnom_default
 1
 1
 1
 1
-2
+3.6
 batt_ac_dc_efficiency
 1
 1
 1
 1
-99
+96
 batt_ac_or_dc
 1
 1
@@ -226,7 +226,7 @@ batt_bank_power
 1
 1
 1
-20
+1000
 batt_bank_power_dc_ac
 1
 1
@@ -238,7 +238,7 @@ batt_bank_size
 1
 1
 1
-3
+2000
 batt_bank_size_dc_ac
 1
 1
@@ -256,7 +256,7 @@ batt_bank_voltage
 1
 1
 1
-450
+500
 batt_calendar_a
 1
 1
@@ -325,19 +325,19 @@ batt_chem
 1
 1
 1
-0
+1
 batt_computed_bank_capacity
 1
 1
 1
 1
-2.25
+1999.6
 batt_computed_series
 1
 1
 1
 1
-225
+139
 batt_computed_stacks_series
 1
 1
@@ -349,19 +349,19 @@ batt_computed_strings
 1
 1
 1
-1
+1776
 batt_computed_voltage
 1
 1
 1
 1
-450
+500.4
 batt_current_charge_max
 1
 1
 1
 1
-33.3333
+1998
 batt_current_choice
 1
 1
@@ -373,7 +373,7 @@ batt_current_discharge_max
 1
 1
 1
-33.3333
+1998
 batt_custom_dispatch
 1
 2
@@ -397,13 +397,13 @@ batt_dc_ac_efficiency
 1
 1
 1
-99
+96
 batt_dc_dc_efficiency
 1
 1
 1
 1
-99
+98
 batt_discharge_percent_1
 1
 1
@@ -475,7 +475,7 @@ batt_dispatch_update_frequency_hours
 1
 1
 1
-24
+1
 batt_gridcharge_percent_1
 1
 1
@@ -523,7 +523,7 @@ batt_height
 1
 1
 1
-0.195743
+1.58597
 batt_initial_SOC
 1
 1
@@ -541,21 +541,18 @@ batt_length
 1
 1
 1
-0.195743
+1.58597
 batt_lifetime_matrix
 1
 3
-9
+6
 3
-30 0 100 
-30 1100 90 
-30 1200 50 
-50 0 100 
-50 400 90 
-50 500 50 
-100 0 100 
-100 100 90 
-100 150 50 
+20 0 100 
+20 5000 80 
+20 10000 60 
+80 0 100 
+80 1000 80 
+80 2000 60 
 
 batt_look_ahead_hours
 1
@@ -598,7 +595,7 @@ batt_mass
 1
 1
 1
-15
+10133.3
 batt_maximum_SOC
 1
 1
@@ -610,13 +607,13 @@ batt_meter_position
 1
 1
 1
-0
+1
 batt_minimum_SOC
 1
 1
 1
 1
-30
+15
 batt_minimum_modetime
 1
 1
@@ -628,31 +625,31 @@ batt_num_cells
 1
 1
 1
-225
+246864
 batt_power_charge_max_kwac
 1
 1
 1
 1
-20.202
+1041.67
 batt_power_charge_max_kwdc
 1
 1
 1
 1
-15
+999.799
 batt_power_discharge_max_kwac
 1
 1
 1
 1
-19.8
+960
 batt_power_discharge_max_kwdc
 1
 1
 1
 1
-15
+999.799
 batt_pv_clipping_forecast
 1
 2
@@ -687,14 +684,15 @@ batt_replacement_schedule_percent
 1
 2
 1
-1
-0
+25
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
 batt_resistance
 1
 1
 1
 1
-0.1
+0.2
 batt_room_temperature_celsius
 1
 2
@@ -725,31 +723,31 @@ batt_specific_energy_per_mass
 1
 1
 1
-150
+197.33
 batt_specific_energy_per_volume
 1
 1
 1
 1
-300
+501.25
 batt_thermal_choice
 1
 1
 1
 1
-0
+1
 batt_time_capacity
 1
 1
 1
 1
-0.15
+2
 batt_type
 1
 1
 1
 1
-0
+8
 batt_user_specified_weather_file
 1
 4
@@ -777,19 +775,19 @@ batt_volume
 1
 1
 1
-0.0075
+3.98922
 batt_width
 1
 1
 1
 1
-0.195743
+1.58597
 battery_energy
 1
 1
 1
 1
-0
+1999.6
 battery_lifetime_shown
 1
 1
@@ -819,7 +817,7 @@ battery_power
 1
 1
 1
-0
+960
 battery_replacements_shown
 1
 1
@@ -837,7 +835,7 @@ battery_total
 1
 1
 1
-0
+1175880
 battery_voltage_shown
 1
 1
@@ -1009,7 +1007,7 @@ const_per_interest1
 1
 1
 1
-7402500
+7417010
 const_per_interest2
 1
 1
@@ -1069,7 +1067,7 @@ const_per_interest_total
 1
 1
 1
-7402500
+7417010
 const_per_months1
 1
 1
@@ -1166,7 +1164,7 @@ const_per_principal1
 1
 1
 1
-740249984
+741700736
 const_per_principal2
 1
 1
@@ -1196,13 +1194,13 @@ const_per_principal_total
 1
 1
 1
-740249984
+741700736
 const_per_total1
 1
 1
 1
 1
-14805000
+14834015
 const_per_total2
 1
 1
@@ -1262,7 +1260,7 @@ construction_financing_cost
 1
 1
 1
-14805000
+14834015
 conv_eff
 1
 1
@@ -1681,7 +1679,7 @@ dispatch_manual_gridcharge
 2
 1
 6
-0 1 0 0 0 0 
+0 0 0 0 0 0 
 
 dispatch_manual_percent_discharge
 1
@@ -1694,44 +1692,43 @@ dispatch_manual_percent_gridcharge
 1
 2
 1
-2
-100 0 
-
+1
+0
 dispatch_manual_sched
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
 
 dispatch_manual_sched_weekend
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 1 1 1 1 
 
 dispatch_sched_weekday
 1
@@ -1773,8 +1770,9 @@ dispatch_tod_factors
 1
 2
 1
-1
-0
+9
+1 1 1 1 1 1 1 1 1 
+
 dscr
 1
 1
@@ -1792,7 +1790,7 @@ en_batt
 1
 1
 1
-0
+1
 en_electricity_rates
 1
 1
@@ -1906,7 +1904,7 @@ genericsys.cost.contingency
 1
 1
 1
-30000000
+30058794
 genericsys.cost.contingency_percent
 1
 1
@@ -1924,7 +1922,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-63000000
+63123468
 genericsys.cost.epc.percent
 1
 1
@@ -1936,13 +1934,13 @@ genericsys.cost.epc.total
 1
 1
 1
-63000000
+63123468
 genericsys.cost.installed_per_capacity
 1
 1
 1
 1
-7.4025
+7.41701
 genericsys.cost.per_watt
 1
 1
@@ -1972,7 +1970,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-22050000
+22093214
 genericsys.cost.plm.percent
 1
 1
@@ -1984,7 +1982,7 @@ genericsys.cost.plm.total
 1
 1
 1
-22050000
+22093214
 genericsys.cost.sales_tax.percent
 1
 1
@@ -1996,7 +1994,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-25200000
+25249388
 genericsys.cost.sales_tax.value
 1
 1
@@ -2604,7 +2602,7 @@ om_replacement_cost1
 2
 1
 1
-300
+600
 om_replacement_cost_escal
 1
 1
@@ -2782,7 +2780,7 @@ ppa_price_input
 2
 1
 1
-0.05
+0.31
 ppa_soln_mode
 1
 1
@@ -2806,7 +2804,7 @@ property_assessed_value
 1
 1
 1
-740249984
+741700736
 property_tax_rate
 1
 1
@@ -2884,7 +2882,7 @@ pv.storage.p2.gridcharge
 1
 1
 1
-1
+0
 pv.storage.p3.charge
 1
 1
@@ -3040,7 +3038,7 @@ show_ReturnonEquity
 1
 1
 1
-0
+1
 show_construction_period
 1
 1
@@ -3093,10 +3091,6 @@ term_tenor
 1
 1
 18
-third_party_ownership_message
-1
-4
-0
 tod_library
 1
 4
@@ -3107,19 +3101,19 @@ total_direct_cost
 1
 1
 1
-630000000
+631234688
 total_indirect_cost
 1
 1
 1
 1
-110250000
+110466072
 total_installed_cost
 1
 1
 1
 1
-740249984
+741700736
 ui_wacc
 1
 1
@@ -3161,7 +3155,7 @@ ur_dc_is_shown
 1
 1
 1
-1
+0
 ur_dc_sched_weekday
 1
 3
@@ -3280,24 +3274,9 @@ ur_ec_sched_weekend
 ur_ec_tou_mat
 1
 3
-16
+1
 6
-1 1 9.6 2 0.16756 0 
-1 2 12.48 2 0.17999 0 
-1 3 19.2 2 0.34805 0 
-1 4 1e+38 2 0.45718 0 
-2 1 9.6 2 0.14747 0 
-2 2 12.48 2 0.1599 0 
-2 3 19.2 2 0.3134 0 
-2 4 1e+38 2 0.34283 0 
-3 1 10.1 2 0.14982 0 
-3 2 13.13 2 0.16225 0 
-3 3 20.2 2 0.29989 0 
-3 4 1e+38 2 0.35231 0 
-4 1 10.1 2 0.14747 0 
-4 2 13.13 2 0.1599 0 
-4 3 20.2 2 0.29603 0 
-4 4 1e+38 2 0.34241 0 
+1 1 1e+38 0 0.16756 0 
 
 ur_en_ts_sell_rate
 1

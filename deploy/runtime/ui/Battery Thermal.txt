@@ -1147,7 +1147,7 @@ equations{'batt_room_temperature_celsius'} = define()
 	}
 	return T_ambient;
 };
-1161
+1168
 on_load{'Battery Thermal'} = define() {
 	on_change{'cap_vs_temp'}(); // update the plot
 	on_change{'batt_thermal_choice'}();
@@ -1162,7 +1162,7 @@ function show_thermal_options()
 	// there is no weather data in generic model
 	if ( strpos(lower(tech), 'generic')>-1 && ${batt_thermal_choice}==0){
 		${batt_thermal_choice} = 1;
-		msgbox('Generic system has no weather file, cannot set to ambient temperature');
+		msgbox('Generic Battery model has no weather file, cannot set to ambient temperature');
 	}
 	enable('batt_room_temperature_single', ${batt_thermal_choice}==1);
 	enable('batt_room_temperature_vector', ${batt_thermal_choice}==2);

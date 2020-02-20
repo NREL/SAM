@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-49
-Enable PV-integrated battery energy storage model
+20
+Enable battery model
 State
 2
 1
@@ -44,7 +44,7 @@ Enable battery model
  
 Battery
 0
-1
+5
 1
 1
 1
@@ -53,10 +53,24 @@ Battery
 CheckBox
 
 0
-188
-// for batt_test configurations, need en_batt to determine
+653
+// for battery configurations, need en_batt to determine
 // whether to display battery-related inputs on costs pages, etc.
+// 'en_batt' required as input to cmod_pvsamv1, cmod_battery, and
+//  financial models
 on_load{'Battery Enable'} = define ()
 {
-	show('en_batt',1);
+	t = technology();
+	// for battery configs, enable battery and hide input
+	if ( t == 'PV Battery' || t == 'Generic Battery' )
+	{
+		value('en_batt', true);
+		show('en_batt',0);
+	}
+	// for fuel cell 'en_batt' is set by exclusive var in Startup.lk
+	// for non-battery configs, disable battery
+	elseif( t != 'Fuel Cell' ) // en_batt is a user input for fuel cell configs
+	{
+		value('en_batt', false);
+	}
 };	
