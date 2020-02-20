@@ -1,13 +1,7 @@
 Battery Model Simple with REopt
-<<<<<<< HEAD
-586
-405
-14
-=======
 587
 369
 13
->>>>>>> batt_configs
 GroupBox
 
 1
@@ -687,19 +681,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-<<<<<<< HEAD
-2781
-on_load{'Battery Model Simple with REopt'} = define()
-{
-	check_enabled();
-	on_change{"batt_simple_enable"};
-	
-};
-on_change{"batt_simple_enable"} = define(){check_enabled();};
-
-=======
-2001
->>>>>>> batt_configs
+2147
 on_change{"batt_simple_dispatch"} = define(){
 	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
 };

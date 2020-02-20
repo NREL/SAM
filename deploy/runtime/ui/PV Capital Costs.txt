@@ -6261,48 +6261,7 @@ equations{ 'total_direct_cost' } = define() {
 		
 // set system_use_recapitalization = 0 for all techs except geothermal
 equations { 'system_use_recapitalization' } = define () {
-<<<<<<< HEAD
-	if( technology() == "PVWatts" )
-		return 0;
-	else
-		return ${system_use_lifetime_output};
-	};
-
-equations { 'battery_total' } = define () {
-	return ${battery_energy}*${battery_per_kWh} + ${battery_power}*${battery_per_kW};};
-	
-equations { 'battery_energy' } = define () {
-	if( technology() == "Flat Plate PV" )
-			return ?${en_batt}
-				[0,	${batt_computed_bank_capacity}];
-	else if ((technology() == "PVWatts" ) && 
-		  ( (financing() == 'Residential') || 
-			(financing() == 'Commercial') || 
-		    (financing() == 'Third Party')))
-		{
-			return ?${batt_simple_enable}
-				[0,	${batt_simple_kwh}];
-		}
-	else
-		return 0;
-};
-equations { 'battery_power' } = define () {
-	if( technology() == "Flat Plate PV" )
-			return ?${en_batt}
-				[0,	${batt_power_discharge_max_kwdc}];
-	else if ((technology() == "PVWatts" ) && 
-		  ( (financing() == 'Residential') || 
-			(financing() == 'Commercial') || 
-		    (financing() == 'Third Party')))
-		{
-			return ?${batt_simple_enable}
-				[0,	${batt_simple_kw}];
-		}
-	else
-		return 0;
-=======
 	return 0;
->>>>>>> batt_configs
 };
 	
 
