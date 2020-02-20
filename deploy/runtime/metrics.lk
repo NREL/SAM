@@ -355,7 +355,6 @@ metrics{ 'Fuel Cell' } = define() {
 			
 };
 
-<<<<<<< HEAD
 function MEwave_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
@@ -368,10 +367,6 @@ function MEtidal_metrics()
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 }
 
-
-
-=======
->>>>>>> batt_configs
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
 metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };
 metrics{ 'Physical Trough IPH' } = define() { physical_trough_iph_metrics(); };
@@ -389,16 +384,11 @@ metrics{ 'Wind Power' } = define() { wind_power_metrics(); };
 metrics{ 'Geothermal Power' } = define() { geothermal_metrics(); };
 metrics{ 'Generic System' } = define() { generic_system_metrics(); };
 metrics{ 'Biopower' } = define() { biopower_metrics(); };
-<<<<<<< HEAD
 metrics{ 'MEwave' } = define() { MEwave_metrics(); };
 metrics{ 'MEtidal' } = define() { MEtidal_metrics(); };
-=======
-metrics{ 'MHKwave' } = define() { MHKwave_metrics(); };
-metrics{ 'MHKtidal' } = define() { MHKtidal_metrics(); };
 metrics{ 'PV Battery' } = define() { pv_battery_metrics(); };
 metrics{ 'Generic Battery' } = define() { generic_battery_metrics(); };
 metrics{ 'PVWatts Battery' } = define() { pvwatts_battery_metrics(); };
->>>>>>> batt_configs
 
 // Financial Metrics
 metrics{ 'Residential' } = define() { rescom_metrics(); };
