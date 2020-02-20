@@ -1,5 +1,9 @@
 1
+<<<<<<< HEAD
 746
+=======
+732
+>>>>>>> batt_configs
 A_sf_UI
 1
 1
@@ -12929,10 +12933,6 @@ th_tube
 1
 1
 1.25
-third_party_ownership_message
-1
-4
-0
 time_start
 1
 1

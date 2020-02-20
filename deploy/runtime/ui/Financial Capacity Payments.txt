@@ -671,18 +671,20 @@ Capacity Payment
 0
 Numeric
 
-305
+357
 equations{ 'cp_system_nameplate' } = define() {
 	return ${system_capacity}/1000;
 };
 
 equations{ 'cp_battery_nameplate' } = define() {
-	if (technology() != "Flat Plate PV" || financing() == "None")
-		{ return 0; }
-	if (${en_batt})
-		{ return ${batt_computed_bank_capacity}/1000; }
+	t = technology();
+	if ( (t=='PV Battery') || (t=='Generic Battery') )
+		{ x = ${batt_computed_bank_capacity}/1000; }
+	elseif ( t == 'PVWatts Battery' )	
+		{ x = ${batt_simple_kwh}/1000; }
 	else 
-		{ return 0; }
+		{ x = 0; }
+	return x;	
 };
 827
 function capacity_payments_ctrl_refresh()

@@ -1,5 +1,9 @@
 1
+<<<<<<< HEAD
 817
+=======
+804
+>>>>>>> batt_configs
 A_aperture
 1
 1
@@ -4477,10 +4481,6 @@ theta_stow
 1
 1
 170
-third_party_ownership_message
-1
-4
-0
 tilt
 1
 1

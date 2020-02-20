@@ -1807,13 +1807,13 @@ TabOrder
 3
 4294967295
 
-21
+20
 bos_cost_fixed
 3
 1
 BOS fixed costs
 $
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -1827,7 +1827,7 @@ bos_cost_per_kw
 1
 BOS cost per kW
 $/kW
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -1841,7 +1841,7 @@ bos_cost_per_turbine
 1
 BOS cost per turbine
 $/turbine
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -1855,7 +1855,7 @@ bos_cost_total
 1
 Total BOS cost
 $
-Wind Farm Costs
+Wind Capital Costs
 0
 9
 1
@@ -1869,7 +1869,7 @@ est_bos_cost
 0
  
  
-Wind Farm Costs
+Wind Capital Costs
 0
 0
 1
@@ -1880,7 +1880,7 @@ est_turbine_cost
 1
  
  
-Wind Farm Costs
+Wind Capital Costs
 0
 0
 1
@@ -1894,7 +1894,7 @@ install_type
 1
 Land based or offshore installation
  
-Wind Farm Costs
+Wind Capital Costs
 0
 1
 1
@@ -1908,7 +1908,7 @@ reference_capacity
 1
 Wind farm capacity
 kW
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -1922,7 +1922,7 @@ reference_number_turbines
 1
 Number of turbines
  
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -1936,7 +1936,7 @@ reference_resource_file
 4
  
  
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -1949,7 +1949,7 @@ reference_sales_tax_percent
 1
 Sales tax rate
 %
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -1963,7 +1963,7 @@ sales_tax_basis
 1
 Sales tax basis, % of total equipment costs
 %
-Wind Farm Costs
+Wind Capital Costs
 0
 2
 1
@@ -1977,23 +1977,9 @@ sales_tax_total
 1
 Total sales tax amount
 $
-Wind Farm Costs
+Wind Capital Costs
 0
 9
-1
-1
-1
-1
-0
-Default
-system_use_lifetime_output
-3
-1
- 
- 
-Wind Farm Costs
-0
-0
 1
 1
 1
@@ -2005,7 +1991,7 @@ system_use_recapitalization
 1
  
  
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -2019,7 +2005,7 @@ total_installed_cost
 1
 Total installed cost
  
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -2033,7 +2019,7 @@ total_installed_cost_per_kw
 1
 Total installed cost per kW
  
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -2047,7 +2033,7 @@ turbine_cost_fixed
 1
 Turbine fixed costs
 $
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -2061,7 +2047,7 @@ turbine_cost_per_kw
 1
 Turbine cost per kW
 $/kW
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -2075,7 +2061,7 @@ turbine_cost_per_turbine
 1
 Turbine cost per turbine
 $/turbine
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -2089,7 +2075,7 @@ turbine_cost_total
 1
 Total turbine cost
 $
-Wind Farm Costs
+Wind Capital Costs
 0
 9
 1
@@ -2099,7 +2085,7 @@ Wind Farm Costs
 0
 Default
 
-1271
+1200
 equations{ 'reference_capacity' } = define() {
 	return ${system_capacity};
 };
@@ -2132,11 +2118,6 @@ equations{ 'reference_resource_file' } = define() {
 	return ${wind_resource_filename};
 };
 
-equations { 'system_use_lifetime_output' } = define () {
-	return 0;};
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
-	
 equations { 'reference_sales_tax_percent' } = define() {
 	return ${sales_tax_rate};
 };
@@ -2145,6 +2126,9 @@ equations { 'sales_tax_total' } = define() {
 	return (${turbine_cost_total} + ${bos_cost_total}) * 0.01 * 
 		${sales_tax_basis} * 0.01 * ${sales_tax_rate};
 };
+
+equations { 'system_use_recapitalization' } = define () {
+	return 0;};
 
 14149
 on_change{'install_type'} = define()

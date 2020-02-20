@@ -1066,7 +1066,7 @@ Battery
 
 DataArray
 
-1650
+1657
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1093,7 +1093,7 @@ equations{'batt_height'} = define()
 };
 equations{'batt_room_temperature_celsius'} = define()
 {
-	if (technology() != 'Generic System')
+	if (strpos(lower(technology()),'generic')<0)
 	{
 		wfread = ssc_create();
 		solar_resource =  ${solar_resource_file};
@@ -1147,7 +1147,11 @@ equations{'batt_room_temperature_celsius'} = define()
 	}
 	return T_ambient;
 };
+<<<<<<< HEAD
 1285
+=======
+1168
+>>>>>>> batt_configs
 on_load{'Battery Thermal'} = define() {
 	on_change{'cap_vs_temp'}(); // update the plot
 	on_change{'batt_thermal_choice'}();
@@ -1160,9 +1164,15 @@ function show_thermal_options()
 	tech = technology();
 
 	// there is no weather data in generic model
+<<<<<<< HEAD
 	if ( tech == 'Generic System' && ${batt_thermal_choice}==0){
 		${batt_thermal_choice} = 1;
 		msgbox( tech + ' model has no weather file!\nCannot set environment temperature to ambient temperature data from weather file.\nChoose either single fixed or time series for the environment temperature option.');
+=======
+	if ( strpos(lower(tech), 'generic')>-1 && ${batt_thermal_choice}==0){
+		${batt_thermal_choice} = 1;
+		msgbox('Generic Battery model has no weather file, cannot set to ambient temperature');
+>>>>>>> batt_configs
 	}
 
 	enable('batt_room_temperature_single', ${batt_thermal_choice}==1);
