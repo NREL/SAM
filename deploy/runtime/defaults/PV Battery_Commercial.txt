@@ -1064,7 +1064,7 @@ battery_replacements_shown
 1
 1
 1
-1
+0
 battery_thermal_shown
 1
 1

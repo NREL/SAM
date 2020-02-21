@@ -802,7 +802,7 @@ battery_replacements_shown
 1
 1
 1
-1
+0
 battery_thermal_shown
 1
 1
@@ -2203,7 +2203,7 @@ property_assessed_value
 1
 1
 1
-1.92325e+06
+1923250
 property_tax_rate
 1
 1
@@ -2437,7 +2437,7 @@ total_direct_cost
 1
 1
 1
-1.6368e+06
+1636800
 total_indirect_cost
 1
 1
@@ -2449,7 +2449,7 @@ total_installed_cost
 1
 1
 1
-1.92325e+06
+1923250
 ui_annual_load
 1
 1
@@ -2461,13 +2461,13 @@ ui_loan_amount
 1
 1
 1
-1.15395e+06
+1153950
 ui_net_capital_cost
 1
 1
 1
 1
-1.92325e+06
+1923250
 ui_wacc
 1
 1

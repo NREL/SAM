@@ -2531,7 +2531,7 @@ load_annual_total
 1
 1
 1
-1.91157e+06
+1911570
 load_escalation
 1
 2
@@ -3090,7 +3090,7 @@ property_assessed_value
 1
 1
 1
-2.50833e+06
+2508330
 property_tax_rate
 1
 1
@@ -3362,7 +3362,7 @@ subtotal_direct
 1
 1
 1
-2.50833e+06
+2508330
 system_capacity
 1
 1
@@ -3509,7 +3509,7 @@ thermal_load_annual_total
 1
 1
 1
-7.6463e+06
+7646300
 thermal_load_escalation
 1
 2
@@ -3649,7 +3649,7 @@ total_direct_cost
 1
 1
 1
-2.50833e+06
+2508330
 total_indirect_cost
 1
 1
@@ -3661,7 +3661,7 @@ total_installed_cost
 1
 1
 1
-2.50833e+06
+2508330
 tz
 1
 1
@@ -3679,13 +3679,13 @@ ui_loan_amount
 1
 1
 1
-2.00667e+06
+2006670
 ui_net_capital_cost
 1
 1
 1
 1
-2.50833e+06
+2508330
 ui_wacc
 1
 1

@@ -2820,4 +2820,181 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-0
+5903
+on_load{'Battery Dispatch Manual'}=define()
+{	
+	show_label();
+	toggle_dispatch();
+		
+	on_change{'pv.storage.p1.discharge'};
+	on_change{'pv.storage.p2.discharge'};
+	on_change{'pv.storage.p3.discharge'};
+	on_change{'pv.storage.p4.discharge'};
+	on_change{'pv.storage.p5.discharge'};
+	on_change{'pv.storage.p6.discharge'};
+	
+	on_change{'pv.storage.p1.gridcharge'};
+	on_change{'pv.storage.p2.gridcharge'};
+	on_change{'pv.storage.p3.gridcharge'};
+	on_change{'pv.storage.p4.gridcharge'};
+	on_change{'pv.storage.p5.gridcharge'};
+	on_change{'pv.storage.p6.gridcharge'};
+
+};
+
+on_change{'pv.storage.p1.discharge'}=define(){toggle_discharge_percent();};
+on_change{'pv.storage.p2.discharge'}=define(){toggle_discharge_percent();};
+on_change{'pv.storage.p3.discharge'}=define(){toggle_discharge_percent();};
+on_change{'pv.storage.p4.discharge'}=define(){toggle_discharge_percent();};
+on_change{'pv.storage.p5.discharge'}=define(){toggle_discharge_percent();};
+on_change{'pv.storage.p6.discharge'}=define(){toggle_discharge_percent();};
+
+on_change{'pv.storage.p1.gridcharge'}=define(){toggle_gridcharge_percent();};
+on_change{'pv.storage.p2.gridcharge'}=define(){toggle_gridcharge_percent();};
+on_change{'pv.storage.p3.gridcharge'}=define(){toggle_gridcharge_percent();};
+on_change{'pv.storage.p4.gridcharge'}=define(){toggle_gridcharge_percent();};
+on_change{'pv.storage.p5.gridcharge'}=define(){toggle_gridcharge_percent();};
+on_change{'pv.storage.p6.gridcharge'}=define(){toggle_gridcharge_percent();};
+
+function behind_the_meter()
+{
+	btm = false;
+	if (financing() == 'Residential' || 
+		financing() == 'Commercial' || 
+		financing() == 'Third Party')
+		btm = true;
+	return btm;
+}
+
+function show_label()
+{
+	// behind the meter
+	btm_label = false;
+	if (behind_the_meter())
+		btm_label = true;
+		
+	show('batt_manual_dispatch_label', btm_label);
+}
+function toggle_discharge_percent()
+{
+	enable('batt_discharge_percent_1', (value('pv.storage.p1.discharge')==1));
+	enable('batt_discharge_percent_2', (value('pv.storage.p2.discharge')==1));
+	enable('batt_discharge_percent_3', (value('pv.storage.p3.discharge')==1));
+	enable('batt_discharge_percent_4', (value('pv.storage.p4.discharge')==1));
+	enable('batt_discharge_percent_5', (value('pv.storage.p5.discharge')==1));
+	enable('batt_discharge_percent_6', (value('pv.storage.p6.discharge')==1));
+}
+function toggle_gridcharge_percent()
+{
+	enable('batt_gridcharge_percent_1', (value('pv.storage.p1.gridcharge')==1));
+	enable('batt_gridcharge_percent_2', (value('pv.storage.p2.gridcharge')==1));
+	enable('batt_gridcharge_percent_3', (value('pv.storage.p3.gridcharge')==1));
+	enable('batt_gridcharge_percent_4', (value('pv.storage.p4.gridcharge')==1));
+	enable('batt_gridcharge_percent_5', (value('pv.storage.p5.gridcharge')==1));
+	enable('batt_gridcharge_percent_6', (value('pv.storage.p6.gridcharge')==1));
+}
+function toggle_dispatch()
+{
+	allow_grid_charge = true;
+	allow_pv_charge = true;
+	allow_discharge = true;
+	
+	front_of_meter = !behind_the_meter();
+	if (front_of_meter == true)
+	{
+		mode = ${batt_dispatch_choice};
+		if (mode == 4)
+		{
+			allow_grid_charge = true;
+			enable_manual_inputs(true, allow_pv_charge, allow_grid_charge, allow_discharge);
+			toggle_discharge_percent();
+			toggle_gridcharge_percent();
+		}
+		else
+			enable_manual_inputs(false, false, false, false);
+	}
+	else
+	{
+		mode = ${batt_dispatch_choice};
+
+		if (mode != 4)
+			enable_manual_inputs(false, false, false, false);
+		else
+		{
+			enable_manual_inputs(true, allow_pv_charge, allow_grid_charge, allow_discharge );
+			toggle_discharge_percent();
+			toggle_gridcharge_percent();
+		}
+		toggle_dispatch_target();
+		toggle_custom_dispatch();
+	}
+}
+function toggle_dispatch_target()
+{
+	mode = ${batt_dispatch_choice};
+	if (mode != 2)
+		enable_target_inputs(false);
+	else
+		enable_target_inputs(true);
+}
+function enable_grid_charge(on_off)
+{
+	if (!on_off && !behind_the_meter())
+	{
+		value('pv.storage.p1.gridcharge',0);
+		value('pv.storage.p2.gridcharge',0);
+		value('pv.storage.p3.gridcharge',0);
+		value('pv.storage.p4.gridcharge',0);
+		value('pv.storage.p5.gridcharge',0);
+		value('pv.storage.p6.gridcharge',0);
+	}
+	
+	enable('pv.storage.p1.gridcharge',on_off);
+	enable('pv.storage.p2.gridcharge',on_off);
+	enable('pv.storage.p3.gridcharge',on_off);
+	enable('pv.storage.p4.gridcharge',on_off);
+	enable('pv.storage.p5.gridcharge',on_off);
+	enable('pv.storage.p6.gridcharge',on_off);
+	enable('batt_gridcharge_percent_1',on_off);
+	enable('batt_gridcharge_percent_2',on_off);
+	enable('batt_gridcharge_percent_3',on_off);
+	enable('batt_gridcharge_percent_4',on_off);
+	enable('batt_gridcharge_percent_5',on_off);
+	enable('batt_gridcharge_percent_6',on_off);
+}
+function enable_pv_charge(on_off)
+{
+	enable('pv.storage.p1.charge',on_off);
+	enable('pv.storage.p2.charge',on_off);
+	enable('pv.storage.p3.charge',on_off);
+	enable('pv.storage.p4.charge',on_off);
+	enable('pv.storage.p5.charge',on_off);
+	enable('pv.storage.p6.charge',on_off);
+}
+function enable_discharge(on_off)
+{
+	enable('pv.storage.p1.discharge',on_off);
+	enable('pv.storage.p2.discharge',on_off);
+	enable('pv.storage.p3.discharge',on_off);
+	enable('pv.storage.p4.discharge',on_off);
+	enable('pv.storage.p5.discharge',on_off);
+	enable('pv.storage.p6.discharge',on_off);
+	enable('batt_discharge_percent_1',on_off);
+	enable('batt_discharge_percent_2',on_off);
+	enable('batt_discharge_percent_3',on_off);
+	enable('batt_discharge_percent_4',on_off);
+	enable('batt_discharge_percent_5',on_off);
+	enable('batt_discharge_percent_6',on_off);
+}
+
+function enable_manual_inputs(on_off, allow_pv_charge, allow_grid_charge, allow_discharge)
+{
+	enable_pv_charge(allow_pv_charge);
+	enable_grid_charge(allow_grid_charge);
+	enable_discharge(allow_discharge);
+	
+	enable('dispatch_manual_sched',on_off);
+	enable('dispatch_manual_sched_weekend',on_off);
+	enable('batt_dispatch_auto_can_charge', !on_off);
+	enable('batt_dispatch_auto_can_gridcharge', !on_off);
+}

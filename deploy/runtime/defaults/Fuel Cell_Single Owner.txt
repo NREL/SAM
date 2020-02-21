@@ -3797,7 +3797,7 @@ property_assessed_value
 1
 1
 1
-3.08633e+06
+3086330
 property_tax_rate
 1
 1
@@ -4115,7 +4115,7 @@ subtotal_direct
 1
 1
 1
-3.08633e+06
+3086330
 system_capacity
 1
 1
@@ -4230,7 +4230,7 @@ total_direct_cost
 1
 1
 1
-3.08633e+06
+3086330
 total_indirect_cost
 1
 1
@@ -4242,7 +4242,7 @@ total_installed_cost
 1
 1
 1
-3.08633e+06
+3086330
 tz
 1
 1
