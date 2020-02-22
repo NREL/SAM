@@ -121,7 +121,7 @@ constant
 1
 1
 1
-0
+4
 en_hourly
 1
 1
@@ -143,10 +143,10 @@ hourly
 
 periods
 1
-2
+3
 1
 1
-1
+0
 analysis_period
 1
 1
@@ -1189,28 +1189,28 @@ dispatch_manual_charge
 2
 1
 6
-1 1 0 0 0 0 
+0 1 0 0 0 0 
 
 dispatch_manual_discharge
 1
 2
 1
 6
-0 1 0 0 0 0 
+1 0 1 1 0 0 
 
 dispatch_manual_gridcharge
 1
 2
 1
 6
-1 0 0 0 0 0 
+0 1 0 0 0 0 
 
 dispatch_manual_percent_discharge
 1
 2
 1
-2
-25 0 
+4
+25 25 25 0 
 
 dispatch_manual_percent_gridcharge
 1
@@ -1224,18 +1224,18 @@ dispatch_manual_sched
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
 
 dispatch_manual_sched_weekend
 1
@@ -1428,19 +1428,19 @@ federal_tax_rate
 2
 1
 1
-15
+21
 first_year_output
 1
 1
 1
 1
-6727.68
+7893.03
 first_year_output_peak
 1
 1
 1
 1
-3.84
+4.50516
 fixed_plant_input
 1
 1
@@ -1464,7 +1464,7 @@ genericsys.cost.contingency
 1
 1
 1
-1496
+1703.86
 genericsys.cost.contingency_percent
 1
 1
@@ -1482,7 +1482,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-3141.59
+3578.1
 genericsys.cost.epc.percent
 1
 1
@@ -1494,13 +1494,13 @@ genericsys.cost.epc.total
 1
 1
 1
-3141.59
+3578.1
 genericsys.cost.installed_per_capacity
 1
 1
 1
 1
-9.22843
+8.95884
 genericsys.cost.per_watt
 1
 1
@@ -1518,7 +1518,7 @@ genericsys.cost.plant_scaled
 1
 1
 1
-24000
+28157.2
 genericsys.cost.plm.fixed
 1
 1
@@ -1530,7 +1530,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-1099.56
+1252.34
 genericsys.cost.plm.percent
 1
 1
@@ -1542,7 +1542,7 @@ genericsys.cost.plm.total
 1
 1
 1
-1099.56
+1252.34
 genericsys.cost.sales_tax.percent
 1
 1
@@ -1554,7 +1554,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-1256.64
+1431.24
 genericsys.cost.sales_tax.value
 1
 1
@@ -1573,7 +1573,7 @@ grid_interconnection_limit_kwac
 1
 1
 1
-100000
+20000
 heat_rate
 1
 1
@@ -1859,7 +1859,7 @@ insurance_rate
 1
 1
 1
-0.5
+1
 itc_fed_amount
 1
 1
@@ -2053,7 +2053,7 @@ loan_amount
 1
 1
 1
-36913.7
+42042.7
 loan_rate
 1
 1
@@ -2083,7 +2083,7 @@ nameplate_capacity
 1
 1
 1
-4
+4.69287
 nominal_discount_rate
 1
 1
@@ -2101,7 +2101,7 @@ om_capacity
 2
 1
 1
-20
+16
 om_capacity_escal
 1
 1
@@ -2393,13 +2393,13 @@ property_assessed_value
 1
 1
 1
-36913.7
+42042.7
 property_tax_rate
 1
 1
 1
 1
-0
+1
 ptc_fed_amount
 1
 2
@@ -2441,19 +2441,19 @@ pv.storage.p1.charge
 1
 1
 1
-1
+0
 pv.storage.p1.discharge
 1
 1
 1
 1
-0
+1
 pv.storage.p1.gridcharge
 1
 1
 1
 1
-1
+0
 pv.storage.p2.charge
 1
 1
@@ -2465,13 +2465,13 @@ pv.storage.p2.discharge
 1
 1
 1
-1
+0
 pv.storage.p2.gridcharge
 1
 1
 1
 1
-0
+1
 pv.storage.p3.charge
 1
 1
@@ -2483,7 +2483,7 @@ pv.storage.p3.discharge
 1
 1
 1
-0
+1
 pv.storage.p3.gridcharge
 1
 1
@@ -2501,7 +2501,7 @@ pv.storage.p4.discharge
 1
 1
 1
-0
+1
 pv.storage.p4.gridcharge
 1
 1
@@ -2609,7 +2609,7 @@ system_capacity
 1
 1
 1
-4
+4.69287
 system_use_lifetime_output
 1
 1
@@ -2627,19 +2627,19 @@ total_direct_cost
 1
 1
 1
-31415.9
+35781
 total_indirect_cost
 1
 1
 1
 1
-5497.79
+6261.68
 total_installed_cost
 1
 1
 1
 1
-36913.7
+42042.7
 ui_annual_load
 1
 1
@@ -2651,13 +2651,13 @@ ui_net_capital_cost
 1
 1
 1
-36913.7
+42042.7
 ui_wacc
 1
 1
 1
 1
-3.9525
+3.6735
 ur_annual_min_charge
 1
 1
@@ -2693,7 +2693,7 @@ ur_dc_is_shown
 1
 1
 1
-1
+0
 ur_dc_sched_weekday
 1
 3
@@ -2776,18 +2776,18 @@ ur_ec_sched_weekday
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
 
 ur_ec_sched_weekend
 1
@@ -2810,11 +2810,12 @@ ur_ec_sched_weekend
 ur_ec_tou_mat
 1
 3
-3
+4
 6
-1 1 1e+38 0 0.06 0 
-2 1 1e+38 0 0.2 0 
-3 1 1e+38 0 0.25 0 
+1 1 1e+38 0 0.1 0 
+2 1 1e+38 0 0.05 0 
+3 1 1e+38 0 0.2 0 
+4 1 1e+38 0 0.25 0 
 
 ur_en_ts_sell_rate
 1
@@ -2855,7 +2856,7 @@ ur_monthly_fixed_charge
 1
 1
 1
-13
+10
 ur_monthly_min_charge
 1
 1
@@ -2865,7 +2866,8 @@ ur_monthly_min_charge
 ur_name
 1
 4
-0
+19
+Generic Residential
 ur_nm_yearend_sell_rate
 1
 1

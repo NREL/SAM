@@ -316,7 +316,7 @@ constant
 1
 1
 1
-0
+4
 en_hourly
 1
 1
@@ -338,10 +338,10 @@ hourly
 
 periods
 1
-2
+3
 1
 1
-1
+0
 albedo
 1
 2
@@ -364,8 +364,7 @@ analysis_period
 analysis_period_warning
 1
 4
-12
-No messages.
+0
 annual_albedo
 1
 1
@@ -1097,7 +1096,7 @@ battery_energy
 1
 1
 1
-10.1331
+0
 battery_lifetime_shown
 1
 1
@@ -1145,7 +1144,7 @@ battery_total
 1
 1
 1
-6079.86
+3039.93
 battery_voltage_shown
 1
 1
@@ -1221,7 +1220,7 @@ cbi_fed_maxvalue
 1
 1
 1
-1e+38
+0
 cbi_fed_tax_fed
 1
 1
@@ -1257,7 +1256,7 @@ cbi_oth_maxvalue
 1
 1
 1
-1e+38
+0
 cbi_oth_tax_fed
 1
 1
@@ -1293,7 +1292,7 @@ cbi_sta_maxvalue
 1
 1
 1
-1e+38
+0
 cbi_sta_tax_fed
 1
 1
@@ -1329,7 +1328,7 @@ cbi_uti_maxvalue
 1
 1
 1
-1e+38
+0
 cbi_uti_tax_fed
 1
 1
@@ -1767,28 +1766,28 @@ dispatch_manual_charge
 2
 1
 6
-1 1 0 0 0 0 
+0 1 0 0 0 0 
 
 dispatch_manual_discharge
 1
 2
 1
 6
-0 1 0 0 0 0 
+1 0 1 1 0 0 
 
 dispatch_manual_gridcharge
 1
 2
 1
 6
-1 0 0 0 0 0 
+0 1 0 0 0 0 
 
 dispatch_manual_percent_discharge
 1
 2
 1
-2
-25 0 
+4
+25 25 25 0 
 
 dispatch_manual_percent_gridcharge
 1
@@ -1802,18 +1801,18 @@ dispatch_manual_sched
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
 
 dispatch_manual_sched_weekend
 1
@@ -1850,7 +1849,7 @@ en_batt
 1
 1
 1
-1
+0
 en_belpe
 1
 1
@@ -2060,7 +2059,7 @@ federal_tax_rate
 2
 1
 1
-15
+21
 file_name
 1
 4
@@ -2096,7 +2095,7 @@ grid_interconnection_limit_kwac
 1
 1
 1
-100000
+20000
 grid_per_watt
 1
 1
@@ -2168,7 +2167,7 @@ ibi_fed_percent_maxvalue
 1
 1
 1
-1e+38
+0
 ibi_fed_percent_tax_fed
 1
 1
@@ -2234,7 +2233,7 @@ ibi_oth_percent_maxvalue
 1
 1
 1
-1e+38
+0
 ibi_oth_percent_tax_fed
 1
 1
@@ -2300,7 +2299,7 @@ ibi_sta_percent_maxvalue
 1
 1
 1
-1e+38
+0
 ibi_sta_percent_tax_fed
 1
 1
@@ -2366,7 +2365,7 @@ ibi_uti_percent_maxvalue
 1
 1
 1
-1e+38
+0
 ibi_uti_percent_tax_fed
 1
 1
@@ -2500,13 +2499,13 @@ installed_per_capacity
 1
 1
 1
-3.84034
+3.09778
 insurance_rate
 1
 1
 1
 1
-0.5
+1
 inv_cec_cg_c0
 1
 1
@@ -3342,7 +3341,7 @@ itc_fed_percent
 1
 1
 1
-26
+30
 itc_fed_percent_deprbas_fed
 1
 1
@@ -3360,7 +3359,7 @@ itc_fed_percent_maxvalue
 1
 1
 1
-1e+38
+1
 itc_sta_amount
 1
 1
@@ -3402,7 +3401,7 @@ itc_sta_percent_maxvalue
 1
 1
 1
-1e+38
+1
 land_area_value
 1
 1
@@ -3608,7 +3607,7 @@ loan_amount
 1
 1
 1
-18022.2
+14537.5
 loan_rate
 1
 1
@@ -3763,7 +3762,7 @@ om_capacity
 2
 1
 1
-20
+50
 om_capacity_escal
 1
 1
@@ -3811,7 +3810,7 @@ om_replacement_cost1
 2
 1
 1
-500
+300
 om_replacement_cost_escal
 1
 1
@@ -3834,9 +3833,8 @@ pbi_fed_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_fed_tax_fed
 1
 1
@@ -3871,9 +3869,8 @@ pbi_oth_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_oth_tax_fed
 1
 1
@@ -3908,9 +3905,8 @@ pbi_sta_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_sta_tax_fed
 1
 1
@@ -3945,9 +3941,8 @@ pbi_uti_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_uti_tax_fed
 1
 1
@@ -4091,13 +4086,13 @@ property_assessed_value
 1
 1
 1
-18022.2
+14537.5
 property_tax_rate
 1
 1
 1
 1
-0
+1
 ptc_fed_amount
 1
 2
@@ -4145,19 +4140,19 @@ pv.storage.p1.charge
 1
 1
 1
-1
+0
 pv.storage.p1.discharge
 1
 1
 1
 1
-0
+1
 pv.storage.p1.gridcharge
 1
 1
 1
 1
-1
+0
 pv.storage.p2.charge
 1
 1
@@ -4169,13 +4164,13 @@ pv.storage.p2.discharge
 1
 1
 1
-1
+0
 pv.storage.p2.gridcharge
 1
 1
 1
 1
-0
+1
 pv.storage.p3.charge
 1
 1
@@ -4187,7 +4182,7 @@ pv.storage.p3.discharge
 1
 1
 1
-0
+1
 pv.storage.p3.gridcharge
 1
 1
@@ -4205,7 +4200,7 @@ pv.storage.p4.discharge
 1
 1
 1
-0
+1
 pv.storage.p4.gridcharge
 1
 1
@@ -4276,19 +4271,19 @@ sales_tax_rate
 1
 1
 1
-5
+0
 sales_tax_total
 1
 1
 1
 1
-444.811
+0
 sales_tax_value
 1
 1
 1
 1
-5
+0
 salvage_percentage
 1
 1
@@ -5108,7 +5103,7 @@ state_tax_rate
 2
 1
 1
-7
+0
 station_id
 1
 4
@@ -5861,7 +5856,7 @@ subtotal_direct
 1
 1
 1
-17108.1
+14068.2
 system_capacity
 1
 1
@@ -5897,19 +5892,19 @@ total_direct_cost
 1
 1
 1
-17108.1
+14068.2
 total_indirect_cost
 1
 1
 1
 1
-914.098
+469.287
 total_installed_cost
 1
 1
 1
 1
-18022.2
+14537.5
 total_inverter_capacity
 1
 1
@@ -5975,7 +5970,7 @@ ui_net_capital_cost
 1
 1
 1
-18022.2
+14537.5
 ui_subarray1_length_side
 1
 1
@@ -6053,7 +6048,7 @@ ui_wacc
 1
 1
 1
-3.9525
+3.95
 ur_annual_min_charge
 1
 1
@@ -6089,7 +6084,7 @@ ur_dc_is_shown
 1
 1
 1
-1
+0
 ur_dc_sched_weekday
 1
 3
@@ -6172,18 +6167,18 @@ ur_ec_sched_weekday
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
 
 ur_ec_sched_weekend
 1
@@ -6206,11 +6201,12 @@ ur_ec_sched_weekend
 ur_ec_tou_mat
 1
 3
-3
+4
 6
-1 1 1e+38 0 0.06 0 
-2 1 1e+38 0 0.2 0 
-3 1 1e+38 0 0.25 0 
+1 1 1e+38 0 0.1 0 
+2 1 1e+38 0 0.05 0 
+3 1 1e+38 0 0.2 0 
+4 1 1e+38 0 0.25 0 
 
 ur_en_ts_sell_rate
 1
@@ -6261,7 +6257,8 @@ ur_monthly_min_charge
 ur_name
 1
 4
-0
+19
+Generic Residential
 ur_nm_yearend_sell_rate
 1
 1
