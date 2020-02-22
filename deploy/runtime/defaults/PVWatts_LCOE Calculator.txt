@@ -1,5 +1,5 @@
 1
-90
+91
 ac_nameplate
 1
 1
@@ -96,6 +96,12 @@ azimuth
 1
 1
 180
+batt_simple_enable
+1
+1
+1
+1
+0
 c_construction_cost
 1
 2

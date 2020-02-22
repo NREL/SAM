@@ -1,5 +1,5 @@
 1
-379
+380
 Monthly_util
 1
 2
@@ -182,6 +182,12 @@ azimuth
 1
 1
 180
+batt_simple_enable
+1
+1
+1
+1
+0
 bos_equip_fixed
 1
 1
@@ -1993,7 +1999,7 @@ system_use_lifetime_output
 1
 1
 1
-1
+0
 system_use_recapitalization
 1
 1

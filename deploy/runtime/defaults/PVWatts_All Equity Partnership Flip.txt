@@ -1,5 +1,5 @@
 1
-414
+415
 ac_nameplate
 1
 1
@@ -107,6 +107,12 @@ azimuth
 1
 1
 180
+batt_simple_enable
+1
+1
+1
+1
+0
 bos_equip_fixed
 1
 1
@@ -2447,7 +2453,7 @@ system_use_lifetime_output
 1
 1
 1
-3.33506e-317
+0
 system_use_recapitalization
 1
 1
