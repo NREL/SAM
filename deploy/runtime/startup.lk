@@ -1107,7 +1107,7 @@ addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs',
 setup_merchant_plant_pages();
 
 setconfig( 'Generic System', 'Host Developer' );
-setmodules( ['generic_system', 'grid', 'host_developer']);
+setmodules( ['generic_system', 'grid','utilityrate5', 'host_developer']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
@@ -1134,6 +1134,7 @@ function setup_generic_csp_pages()
 	addpage( [[ 'Generic CSP Thermal Storage' ,
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
 	  { 'sidebar'='Thermal Storage', 'help'='gss_thermal_storage' } );
+ 	setup_grid_page();
 }
 
 //-----------------------------------------------------
