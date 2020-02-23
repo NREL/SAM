@@ -1534,7 +1534,7 @@ Numeric
 system_capacity
 3
 1
-Rated capacity
+Rated array capacity
 kW
 ME Array
 0
