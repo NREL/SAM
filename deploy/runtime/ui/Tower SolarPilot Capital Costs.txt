@@ -5,7 +5,7 @@ Tower SolarPilot Capital Costs
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 566
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 11
@@ -49,6 +52,9 @@ Width
 Height
 3
 200
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -76,6 +82,9 @@ Width
 Height
 3
 89
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -86,7 +95,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -103,6 +112,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -131,7 +143,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -148,6 +160,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -176,7 +191,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -193,6 +208,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -221,7 +239,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -238,6 +256,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 6
@@ -266,7 +287,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -283,6 +304,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 4
@@ -311,7 +335,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -328,6 +352,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -356,7 +383,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -373,6 +400,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -415,7 +445,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -432,6 +462,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -474,7 +507,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -491,6 +524,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -533,7 +569,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -550,6 +586,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -593,7 +632,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -610,6 +649,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -653,7 +695,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -670,6 +712,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -712,7 +757,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -729,6 +774,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -771,7 +819,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -788,6 +836,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -830,7 +881,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -847,6 +898,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -889,7 +943,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -906,6 +960,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -949,7 +1006,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -966,6 +1023,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1009,7 +1069,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -1026,6 +1086,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1069,7 +1132,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1086,6 +1149,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1128,7 +1194,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -1145,6 +1211,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1188,7 +1257,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1205,6 +1274,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1247,7 +1319,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1264,6 +1336,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1306,7 +1381,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1323,6 +1398,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1365,7 +1443,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -1382,6 +1460,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1424,7 +1505,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1441,6 +1522,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1484,7 +1568,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -1501,6 +1585,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1544,7 +1631,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -1561,6 +1648,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1603,7 +1693,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -1620,6 +1710,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1663,7 +1756,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1680,6 +1773,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1722,7 +1818,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -1739,6 +1835,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1782,7 +1881,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -1799,6 +1898,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1841,7 +1943,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -1858,6 +1960,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1901,7 +2006,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -1918,6 +2023,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1961,7 +2069,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1978,6 +2086,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2020,7 +2131,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -2037,6 +2148,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2079,7 +2193,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -2096,6 +2210,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2139,7 +2256,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -2156,6 +2273,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2198,7 +2318,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -2215,6 +2335,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2257,7 +2380,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -2274,6 +2397,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2316,7 +2442,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 16
@@ -2333,6 +2459,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 80
@@ -2361,7 +2490,7 @@ AlignTop
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -2378,6 +2507,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2397,7 +2529,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2414,6 +2546,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2433,7 +2568,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2450,6 +2585,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2469,7 +2607,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2486,6 +2624,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2505,7 +2646,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2522,6 +2663,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2541,7 +2685,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2558,6 +2702,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2577,7 +2724,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2594,6 +2741,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2612,7 +2762,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2629,6 +2779,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2647,7 +2800,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2664,6 +2817,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2682,7 +2838,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2699,6 +2855,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2718,7 +2877,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2735,6 +2894,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2753,7 +2915,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -2770,6 +2932,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -2798,7 +2963,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -2815,6 +2980,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -2843,7 +3011,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -2860,6 +3028,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -2888,7 +3059,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -2905,6 +3076,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 8
@@ -2933,7 +3107,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -2950,6 +3124,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2992,7 +3169,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -3009,6 +3186,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3051,7 +3231,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -3068,6 +3248,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3110,7 +3293,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -3127,6 +3310,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3169,7 +3355,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -3186,6 +3372,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3228,7 +3417,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -3245,6 +3434,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3287,7 +3479,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -3304,6 +3496,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3346,7 +3541,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -3363,6 +3558,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3406,7 +3604,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -3423,6 +3621,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3466,7 +3667,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -3483,6 +3684,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3526,7 +3730,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -3543,6 +3747,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3585,7 +3792,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -3602,6 +3809,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3644,7 +3854,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -3661,6 +3871,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3704,7 +3917,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -3721,6 +3934,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3763,7 +3979,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -3780,6 +3996,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3822,7 +4041,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -3839,6 +4058,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4424,7 +4646,7 @@ Capital Costs
 1
 1
 1
-5.54028e+07
+55402800
 Default
 sales_tax_frac
 3
@@ -4623,30 +4845,24 @@ Capital Costs
 0
 Default
 
-5604
-// Get calculated UI values that are independent variables
-//    in cost calculations
-
-	// Heliostat Reflective Area
+10030
+// ui only
 equations{ 'csp.pt.cost.heliostats_m2' } = define() {
 	area = ${A_sf_UI};
-	return area;	};
-	
-equations{ 'csp.pt.cost.site_improvements_m2' } = define() {
-	return ${A_sf_UI}; };
-	
-	// Tower Height
-equations{'ui_tower_height'} = define() {
-	tech = technology();
-	if ( tech == 'ISCC' ) return ${THT};
-	else if ( tech == 'MSPT' || tech == 'DSPT' ) return ${h_tower};
+	return area;
 };
 
-	// Receiver Height
+// ui only
+equations{ 'csp.pt.cost.site_improvements_m2' } = define() {
+	return ${A_sf_UI};
+};
+
+// ui only
 equations{'ui_receiver_height'} = define() {
 	return ${rec_height};
 };
 
+// ui only
 equations{ 'csp.pt.cost.rec_height' } = define() {
 	tech = technology();
 	nameplate = 0;
@@ -4654,15 +4870,157 @@ equations{ 'csp.pt.cost.rec_height' } = define() {
 		nameplate = ?${receiver_type}[${rec_height},${csp.pt.rec.cav_ap_height}];
 	else if (tech == 'DSPT')
 		nameplate = ${rec_height};
-	return nameplate; };
+	return nameplate;
+};
 
-	// Heliostat Height
+// ui only
 equations{'ui_heliostat_height'} = define() {
 	return ${helio_height};
 };
 
+// ui only
+equations{ 'csp.pt.cost.total_land_area' } = define() {
+	return ${csp.pt.sf.total_land_area};
+};
+	
+// ui only
+equations{ 'csp.pt.cost.nameplate' } = define() {
+	return ${nameplate};
+};
 
-	// Receiver Area
+// ui only
+equations{ 'csp.pt.cost.sales_tax.value' } = define() {
+	return ${sales_tax_rate};
+};
+
+// not used?
+equations { 'system_use_lifetime_output' } = define () {
+	return 0;
+};
+
+// not used?
+equations { 'system_use_recapitalization' } = define () {
+	return 0;
+};
+
+equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
+	// inputs common to all technologies
+	data.a_sf_ui = ${A_sf_UI};
+	data.site_spec_cost = ${site_spec_cost};
+	data.heliostat_spec_cost = ${heliostat_spec_cost};
+	data.cost_sf_fixed = ${cost_sf_fixed};
+	//data.h_tower
+	data.rec_height = ${rec_height};
+	data.helio_height = ${helio_height};
+	data.tower_fixed_cost = ${tower_fixed_cost};
+	data.tower_exp = ${tower_exp};
+	//data.csp_pt_cost_receiver_area
+	data.rec_ref_cost = ${rec_ref_cost};
+	data.rec_ref_area = ${rec_ref_area};
+	data.rec_cost_exp = ${rec_cost_exp};
+	//data.csp_pt_cost_storage_mwht
+	data.tes_spec_cost = ${tes_spec_cost};
+	//data.csp_pt_cost_power_block_mwe
+	data.plant_spec_cost = ${plant_spec_cost};
+	data.bop_spec_cost = ${bop_spec_cost};
+	data.fossil_spec_cost = ${fossil_spec_cost};
+	data.contingency_rate = ${contingency_rate};
+	data.csp_pt_sf_total_land_area = ${csp.pt.sf.total_land_area};
+	data.nameplate = ${nameplate};
+	data.csp_pt_cost_epc_per_acre = ${csp.pt.cost.epc.per_acre};
+	data.csp_pt_cost_epc_percent = ${csp.pt.cost.epc.percent};
+	data.csp_pt_cost_epc_per_watt = ${csp.pt.cost.epc.per_watt};
+	data.csp_pt_cost_epc_fixed = ${csp.pt.cost.epc.fixed};
+	data.land_spec_cost = ${land_spec_cost};
+	data.csp_pt_cost_plm_percent = ${csp.pt.cost.plm.percent};
+	data.csp_pt_cost_plm_per_watt = ${csp.pt.cost.plm.per_watt};
+	data.csp_pt_cost_plm_fixed = ${csp.pt.cost.plm.fixed};
+	data.sales_tax_frac = ${sales_tax_frac};
+	data.sales_tax_rate = ${sales_tax_rate};
+	
+	// inputs specific to technology
+	tech = technology();
+	if (tech == 'MSPT') {
+		data.h_tower = ${h_tower};		// set different for other techs
+		data.d_rec = ${D_rec};			// set different for other techs
+		data.receiver_type = ${receiver_type};
+		data.csp_pt_rec_cav_ap_height = ${csp.pt.rec.cav_ap_height};
+		data.rec_d_spec = ${rec_d_spec};
+		data.p_ref = ${P_ref};
+		data.design_eff = ${design_eff};
+		data.tshours = ${tshours};
+		
+		success = ssc_eqn("Tower_SolarPilot_Capital_Costs_MSPT_Equations", data);
+	}
+	else if (tech == 'DSPT') {
+		data.h_tower = ${h_tower};		// set different for other techs
+		data.d_rec = ${d_rec};			// set different for other techs
+		data.demand_var = ${demand_var};
+		
+		success = ssc_eqn("Tower_SolarPilot_Capital_Costs_DSPT_Equations", data);
+	}
+	else if (tech == 'ISCC') {
+		data.h_tower = ${THT};			// set different for other techs
+		data.d_rec = ${D_rec};			// set different for other techs
+		data.receiver_type = ${receiver_type};
+		data.rec_d_spec = ${rec_d_spec};
+		data.csp_pt_rec_cav_ap_height = ${csp.pt.rec.cav_ap_height};
+		
+		success = ssc_eqn("Tower_SolarPilot_Capital_Costs_ISCC_Equations", data);
+	}
+	
+	// Outputs (common to all technologies)
+	if (!success) {
+		${csp.pt.cost.site_improvements} = -999.;
+		${csp.pt.cost.heliostats} = -999.;    
+		${csp.pt.cost.tower} = -999.;        
+		${csp.pt.cost.receiver} = -999.;	         
+		${csp.pt.cost.storage} = -999.;             
+		${csp.pt.cost.power_block} = -999.;	         
+		${csp.pt.cost.bop} = -999.;           
+		${csp.pt.cost.fossil} = -999.;	             
+		${ui_direct_subtotal} = -999.;             
+		${csp.pt.cost.contingency} = -999.;	         
+		${total_direct_cost} = -999.;       
+		${csp.pt.cost.epc.total} = -999.;	         
+		${csp.pt.cost.plm.total} = -999.;         
+		${csp.pt.cost.sales_tax.total} = -999.;	     
+		${total_indirect_cost} = -999.;       
+		${total_installed_cost} = -999.;	         
+		${csp.pt.cost.installed_per_capacity} = -999.;
+	}
+	else {
+		${csp.pt.cost.site_improvements} = data.csp_pt_cost_site_improvements;
+		${csp.pt.cost.heliostats} = data.csp_pt_cost_heliostats;    
+		${csp.pt.cost.tower} = data.csp_pt_cost_tower;        
+		${csp.pt.cost.receiver} = data.csp_pt_cost_receiver;	         
+		${csp.pt.cost.storage} = data.csp_pt_cost_storage;             
+		${csp.pt.cost.power_block} = data.csp_pt_cost_power_block;	         
+		${csp.pt.cost.bop} = data.csp_pt_cost_bop;           
+		${csp.pt.cost.fossil} = data.csp_pt_cost_fossil;	             
+		${ui_direct_subtotal} = data.ui_direct_subtotal;             
+		${csp.pt.cost.contingency} = data.csp_pt_cost_contingency;	         
+		${total_direct_cost} = data.total_direct_cost;       
+		${csp.pt.cost.epc.total} = data.csp_pt_cost_epc_total;	         
+		${csp.pt.cost.plm.total} = data.csp_pt_cost_plm_total;         
+		${csp.pt.cost.sales_tax.total} = data.csp_pt_cost_sales_tax_total;	     
+		${total_indirect_cost} = data.total_indirect_cost;       
+		${total_installed_cost} = data.total_installed_cost;	         
+		${csp.pt.cost.installed_per_capacity} = data.csp_pt_cost_installed_per_capacity;
+	}
+	
+	return 0;
+};
+
+/*
+// input to MIMO
+equations{'ui_tower_height'} = define() {
+	tech = technology();
+	if ( tech == 'ISCC' ) return ${THT};
+	else if ( tech == 'MSPT' || tech == 'DSPT' ) return ${h_tower};
+};
+
+// input to MIMO
 equations{ 'csp.pt.cost.receiver.area' } = define() {
 	tech = technology();
 	area = 0;
@@ -4670,7 +5028,7 @@ equations{ 'csp.pt.cost.receiver.area' } = define() {
 	{
 		area = ?${receiver_type}
 		[
-		${rec_height}*${D_rec}*3.1415926, /*external*/
+		${rec_height}*${D_rec}*3.1415926, //external
 		${rec_d_spec}*${csp.pt.rec.cav_ap_height}
 		];
 	}
@@ -4680,7 +5038,7 @@ equations{ 'csp.pt.cost.receiver.area' } = define() {
 	}
 	return area; };
 	
-	// Storage Capacity
+// input to MIMO
 equations{ 'csp.pt.cost.storage_mwht' } = define() {
 	tech = technology();
 	nameplate = 0;
@@ -4688,7 +5046,7 @@ equations{ 'csp.pt.cost.storage_mwht' } = define() {
 		nameplate =  ${P_ref} / ${design_eff} * ${tshours};
 	return nameplate; };
 
-	// Cycle Gross Capacity
+// input to MIMO
 equations{ 'csp.pt.cost.power_block_mwe' } = define() {
 	tech = technology();
 	pb = 0;
@@ -4698,41 +5056,22 @@ equations{ 'csp.pt.cost.power_block_mwe' } = define() {
 		pb = ${demand_var};
 	return pb; };
 
-	// Total land area
-equations{ 'csp.pt.cost.total_land_area' } = define() {
-	return ${csp.pt.sf.total_land_area};};
-	
-	// Cycle net (nameplate) capacity
-equations{ 'csp.pt.cost.nameplate' } = define() {
-	return ${nameplate}; };
-
-	// Sales tax rate
-equations{ 'csp.pt.cost.sales_tax.value' } = define() {
-	return ${sales_tax_rate}; };
-
-	// Other stuff
-equations { 'system_use_lifetime_output' } = define () {
-	return 0;};
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
-	
-	// MIMOS
 equations{ '$MIMO$ ui_tower_cost_calcs' } = define()
 {
 	obj = ssc_create();
 
-	ssc_var(obj, 'A_sf', ${csp.pt.cost.heliostats_m2});
+	ssc_var(obj, 'A_sf', ${A_sf_UI});
 	ssc_var(obj, 'site_spec_cost', ${site_spec_cost});
 	ssc_var(obj, 'heliostat_spec_cost', ${heliostat_spec_cost});
 	ssc_var(obj, 'csp.pt.cost.fixed_sf', ${cost_sf_fixed});
 
 	ssc_var(obj, 'h_tower', ${ui_tower_height});
-	ssc_var(obj, 'H_rec', ${ui_receiver_height});
-	ssc_var(obj, 'helio_height', ${ui_heliostat_height});
+	ssc_var(obj, 'H_rec', ${rec_height});
+	ssc_var(obj, 'helio_height', ${helio_height});
 	ssc_var(obj, 'tower_fixed_cost', ${tower_fixed_cost});
 	ssc_var(obj, 'tower_exp', ${tower_exp});
 
-	ssc_var(obj, 'csp.pt.cost.receiver.area', ${csp.pt.cost.receiver.area});
+	ssc_var(obj, 'csp_pt_cost_receiver_area', ${csp.pt.cost.receiver.area});
 	ssc_var(obj, 'rec_ref_cost', ${rec_ref_cost});
 	ssc_var(obj, 'rec_ref_area', ${rec_ref_area});
 	ssc_var(obj, 'rec_cost_exp', ${rec_cost_exp});
@@ -4741,7 +5080,7 @@ equations{ '$MIMO$ ui_tower_cost_calcs' } = define()
 	ssc_var(obj, 'tes_spec_cost', ${tes_spec_cost});
 
 	ssc_var(obj, 'P_ref', ${csp.pt.cost.power_block_mwe});
-	ssc_var(obj, 'csp.pt.cost.power_block_per_kwe',${plant_spec_cost});
+	ssc_var(obj, 'csp_pt_cost_power_block_per_kwe',${plant_spec_cost});
 
 	ssc_var(obj, 'bop_spec_cost', ${bop_spec_cost});
 
@@ -4749,18 +5088,18 @@ equations{ '$MIMO$ ui_tower_cost_calcs' } = define()
 
 	ssc_var(obj, 'contingency_rate', ${contingency_rate});
 
-	ssc_var(obj, 'csp.pt.cost.total_land_area', ${csp.pt.cost.total_land_area});
-	ssc_var(obj, 'system_capacity', ${csp.pt.cost.nameplate});
-	ssc_var(obj, 'csp.pt.cost.epc.per_acre', ${csp.pt.cost.epc.per_acre});
-	ssc_var(obj, 'csp.pt.cost.epc.percent', ${csp.pt.cost.epc.percent});
-	ssc_var(obj, 'csp.pt.cost.epc.per_watt', ${csp.pt.cost.epc.per_watt});
-	ssc_var(obj, 'csp.pt.cost.epc.fixed', ${csp.pt.cost.epc.fixed});
-	ssc_var(obj, 'csp.pt.cost.plm.per_acre', ${land_spec_cost});
-	ssc_var(obj, 'csp.pt.cost.plm.percent', ${csp.pt.cost.plm.percent}); 
-	ssc_var(obj, 'csp.pt.cost.plm.per_watt', ${csp.pt.cost.plm.per_watt});
-	ssc_var(obj, 'csp.pt.cost.plm.fixed', ${csp.pt.cost.plm.fixed});  
+	ssc_var(obj, 'csp_pt_cost_total_land_area', ${csp.pt.sf.total_land_area});
+	ssc_var(obj, 'system_capacity', ${nameplate});
+	ssc_var(obj, 'csp_pt_cost_epc_per_acre', ${csp.pt.cost.epc.per_acre});
+	ssc_var(obj, 'csp_pt_cost_epc_percent', ${csp.pt.cost.epc.percent});
+	ssc_var(obj, 'csp_pt_cost_epc_per_watt', ${csp.pt.cost.epc.per_watt});
+	ssc_var(obj, 'csp_pt_cost_epc_fixed', ${csp.pt.cost.epc.fixed});
+	ssc_var(obj, 'csp_pt_cost_plm_per_acre', ${land_spec_cost});
+	ssc_var(obj, 'csp_pt_cost_plm_percent', ${csp.pt.cost.plm.percent}); 
+	ssc_var(obj, 'csp_pt_cost_plm_per_watt', ${csp.pt.cost.plm.per_watt});
+	ssc_var(obj, 'csp_pt_cost_plm_fixed', ${csp.pt.cost.plm.fixed});  
 	ssc_var(obj, 'sales_tax_frac', ${sales_tax_frac});         
-	ssc_var(obj, 'sales_tax_rate', ${csp.pt.cost.sales_tax.value}); 
+	ssc_var(obj, 'sales_tax_rate', ${sales_tax_rate}); 
 
 	ret = ssc_exec(obj, 'cb_mspt_system_costs');
 	
@@ -4784,7 +5123,7 @@ equations{ '$MIMO$ ui_tower_cost_calcs' } = define()
 
 	ssc_free( obj );
 };
-
+*/
 
 138
 on_load{"Molten Salt Tower Capital Costs"}=define()
