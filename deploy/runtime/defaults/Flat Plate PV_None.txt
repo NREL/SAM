@@ -1,5 +1,5 @@
 1
-495
+496
 6par_aisc
 1
 1
@@ -584,6 +584,12 @@ elev
 1
 1
 358
+en_batt
+1
+1
+1
+1
+0
 en_snow_model
 1
 1

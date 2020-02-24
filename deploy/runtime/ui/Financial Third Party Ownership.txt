@@ -649,7 +649,7 @@ Lease agreement or PPA (0=lease, 1=PPA)
  
 Third Party Ownership
 0
-0
+1
 1
 1
 1

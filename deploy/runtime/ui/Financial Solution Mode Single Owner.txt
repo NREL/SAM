@@ -1,7 +1,7 @@
 Financial Solution Mode Single Owner
-868
-140
-10
+859
+134
+9
 GroupBox
 
 1
@@ -12,7 +12,7 @@ Name
 GroupBox1
 X
 3
-12
+6
 Y
 3
 3
@@ -21,7 +21,7 @@ Width
 850
 Height
 3
-125
+128
 Tool Tip
 5
 0
@@ -29,36 +29,6 @@ Caption
 5
 13
 Solution Mode
-Bold
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-9
-GroupBox2
-X
-3
-573
-Y
-3
-18
-Width
-3
-281
-Height
-3
-75
-Tool Tip
-5
-0
-Caption
-5
-15
-Escalation Rate
 Bold
 2
 1
@@ -72,10 +42,10 @@ Name
 flip_target_percent
 X
 3
-309
+312
 Y
 3
-24
+27
 Width
 3
 60
@@ -137,7 +107,7 @@ X
 477
 Y
 3
-24
+27
 Width
 3
 60
@@ -186,6 +156,45 @@ BackColour
 TabOrder
 3
 3
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+570
+Y
+3
+15
+Width
+3
+279
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+15
+Escalation Rate
+Bold
+2
+1
 Label
 
 1
@@ -196,10 +205,10 @@ Name
 object 7
 X
 3
-582
+579
 Y
 3
-63
+51
 Width
 3
 270
@@ -244,10 +253,10 @@ Name
 ppa_escalation
 X
 3
-726
+723
 Y
 3
-39
+27
 Width
 3
 60
@@ -309,7 +318,7 @@ X
 309
 Y
 3
-48
+51
 Width
 3
 90
@@ -388,16 +397,16 @@ Name
 solution_mode_message
 X
 3
-21
+18
 Y
 3
-75
+78
 Width
 3
-549
+834
 Height
 3
-21
+48
 Tool Tip
 5
 0
@@ -425,55 +434,8 @@ AlignRight
 AlignTop
 2
 1
-Label
 
-1
-13
-Name
-5
-29
-third_party_ownership_message
-X
-3
-21
-Y
-3
-99
-Width
-3
-549
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-
-7
+6
 flip_target_percent
 3
 1
@@ -492,7 +454,7 @@ flip_target_year
 3
 1
 IRR target year
-year
+ 
 PPA Price and IRR
 0
 2
@@ -557,71 +519,77 @@ PPA Price and IRR
 4
 0
 MultilineText
-third_party_ownership_message
-3
-4
-UI message for solution mode 2
- 
-PPA Price and IRR
-0
-5
-1
-4
-0
-MultilineText
 
 1
 
 
-1326
+2028
+// This form is a copy of Financial Solution Flip Leaseback
+// so ppa_soln_mode radio button can have different labels
+// to indicated IRR target is for the tax investor for flip 
+// structures. Any updates should be made to both forms.
+
 on_load{'Financial Solution Mode Single Owner'} = define()
 {
-	soln_mode_single_owner_ctrl_refresh();
-  	txt1 = display_message();
-	property('solution_mode_message','caption',txt1);	
-	txt2 = tpo_message();
-	property('third_party_ownership_message','caption',txt2);	
-
+	soln_mode_ctrl_refresh();
+	display_message();
 };
 
 on_change{'ppa_soln_mode'} = define()
 {
-	soln_mode_single_owner_ctrl_refresh();
+	soln_mode_ctrl_refresh();
+	display_message();
 };
 
 on_change{'ppa_price_input'} = define()
 {
-	soln_mode_single_owner_ctrl_refresh();
+	soln_mode_ctrl_refresh();
 };
 
 on_change{'flip_target_year'} = define () {
-	txt = display_message();
-	property('solution_mode_message','caption',txt);	
-	property('solution_mode_message','TextColour','red');
+	display_message();
 };
 
-function display_message() {
-	msg = '';
+function is_batt_tech_repl()
+{
+	t = technology();
+	is_batt_enabled = ( t == 'PV Battery'
+	|| t == 'Generic Battery'
+	|| ( t == 'Fuel Cell' && value('en_batt') ) );
+	return ( is_batt_enabled && value('batt_replacement_option') != 0 ); 
+}	
+
+function display_message() 
+{
+	txt = '';
+	clr = 'black';
+	if ( is_batt_tech_repl() && value('ppa_soln_mode') == 0 )
+	{
+		txt += '"Specify IRR target" solution mode is not available for projects with battery replacements. ';
+		clr = 'red';
+	}
 	if ( value('flip_target_year') > value('analysis_period') )
-		msg = 'IRR target year is greater than the analysis period.';
-	return msg;	
+	{
+		txt += 'IRR target year is greater than the analysis period. ';
+		clr = 'red';
+	}
+	if ( financing() == 'Host Developer' ) 
+	{
+		txt += 'IRR is the developer internal rate of return. ';
+	}
+	property('solution_mode_message','Caption',txt);
+	property('solution_mode_message','TextColour',clr);
 }
 
-function tpo_message()
+function soln_mode_ctrl_refresh()
 {
-	msg = '';
-	if ( financing() == 'Host Developer' )
-		msg = "IRR is the developer's internal rate of return.";
-	return msg;
-}
-
-function soln_mode_single_owner_ctrl_refresh()
-{
+	if ( is_batt_tech_repl() && (value('ppa_soln_mode') == 0) )
+	{
+		msgbox('"Specify IRR target" solution mode is not available!\nFor projects with battery replacement schedules, choose "Specify PPA price," or change the battery replacement option on the Battery Storage page to "No replacements."');
+	}
     is_specify_irr = ( value('ppa_soln_mode') == 0 );
     enable( 'flip_target_percent', is_specify_irr );
-    //enable( 'flip_target_year', is_specify_irr );
     enable( 'ppa_price_input', !is_specify_irr );
-    
 	show_escalation = (#${ppa_price_input} < 2);
 	enable("ppa_escalation",(show_escalation || is_specify_irr));
 }

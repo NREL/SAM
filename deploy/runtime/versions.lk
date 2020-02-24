@@ -52,7 +52,7 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 
-version_upgrade{'2019.12.9'} = define() {
+version_upgrade{'2020.2.29'} = define() {
 
 	const cfg = config();
 
@@ -65,11 +65,22 @@ version_upgrade{'2019.12.9'} = define() {
 			old_temperature = oldvalue('T_room');
 			value('batt_room_temperature_single', old_temperature, 'Updated battery room temperature variable name, same settings as old file');
 			value('batt_thermal_choice', 1);
+			if ( cfg.tech == 'Generic System' )
+			{
+				ok = config('Generic Battery', cfg.fin, 'Generic Battery configuration replaces Generic System with battery enabled.');
+				if ( !ok ) { msgbox('Failed to change configuration!\nGeneric Battery configuration replaces Generic System with battery enabled.'); }
+			}
+			if ( cfg.tech == 'Flat Plate PV' )
+			{
+				ok = config('PV Battery', cfg.fin, 'Battery PV configuration replaces Detailed PV with battery enabled.');
+				if ( !ok ) { msgbox('Failed to change configuration!\nBattery PV configuration replaces Detailed PV with battery enabled.'); }
+			}
 		}
 	}
 
 	if (cfg.tech == 'Flat Plate PV') 
 	{
+		// TO DO move this above to if en_batt? does this also apply to generic system with battery?
 		// battery
 		charge_max = oldvalue('batt_power_charge_max');
 		value('batt_power_charge_max_kwdc', charge_max, 'Updated battery maximum charge rate internal variable name.');

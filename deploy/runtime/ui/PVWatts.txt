@@ -104,10 +104,10 @@ Name
 adjust
 X
 3
-27
+30
 Y
 3
-819
+813
 Width
 3
 294
@@ -1292,7 +1292,7 @@ X
 195
 Y
 3
-723
+726
 Width
 3
 348
@@ -1920,7 +1920,7 @@ TabOrder
 3
 7
 
-26
+27
 ac_nameplate
 3
 1
@@ -1977,6 +1977,20 @@ PVWatts
 1
 180
 Numeric
+batt_simple_enable
+3
+1
+Enable simple battery
+ 
+PVWatts
+0
+4
+1
+1
+1
+1
+0
+Default
 dc_ac_ratio
 3
 1
@@ -2284,7 +2298,7 @@ PVWatts
 42.82
 Numeric
 
-494
+678
 equations{'ac_nameplate'} = define() {
 	return ${system_capacity}/${dc_ac_ratio};
 };
@@ -2303,8 +2317,15 @@ equations{ 'losses' } = define() {
 					*(1-0.01*${loss_avail}) );
 };
 
+equations{'batt_simple_enable'} = define()
+{
+	 t = technology();
+	 is_simple_batt_tech = ( t == "PVWatts Battery" );
+	 if ( is_simple_batt_tech ) { return 1; }
+	 else { return 0; }
+};
 
-2347
+2429
 function pvwatts_ui_update() {
 	arr = ${array_type};
 	enable( 'gcr', (arr==0||arr==2||arr==3) );
@@ -2339,6 +2360,8 @@ function snow_loss_checks () {
 
 on_load{'PVWatts'} = define() {
 	pvwatts_ui_update();
+	show( 'batt_simple_enable', 1 ); // hidden variable set by equations
+	refresh();
 };
 
 on_change{'array_type'} = define() {

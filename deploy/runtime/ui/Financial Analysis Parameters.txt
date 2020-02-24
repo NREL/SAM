@@ -404,7 +404,7 @@ equations{ 'nominal_discount_rate' } = define() {
 };
 
 
-1976
+1975
 on_load{'Financial Analysis Parameters'} = define() {
 	on_change{'analysis_period'}();
 	txt = analysis_period_message();
@@ -438,7 +438,7 @@ function analysis_period_message() {
       if (fin != "Merchant Plant")  
       {
 		if ( value('flip_target_year') > value('analysis_period') && ppa_debt==true )
-			msg = msg + ' IRR target year is greater than the analysis period. Choose a target year less than the analysis period. ';
+			msg = msg + 'IRR target year is greater than the analysis period. Choose a target year less than the analysis period. ';
       }
     }        
   }

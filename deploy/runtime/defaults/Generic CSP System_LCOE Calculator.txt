@@ -286,7 +286,7 @@ capital_cost
 1
 1
 1
-7.0794e+08
+707939968
 city
 1
 4
@@ -847,7 +847,7 @@ fixed_operating_cost
 1
 1
 1
-6.831e+06
+6831000
 grid_curtailment
 1
 2

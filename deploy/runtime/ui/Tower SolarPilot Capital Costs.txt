@@ -4101,13 +4101,13 @@ TabOrder
 3
 4294967295
 
-53
+52
 bop_spec_cost
 3
 1
 Balance of plant cost
 $/kWe
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4121,7 +4121,7 @@ contingency_rate
 1
 Contingency cost
 % of subtotal
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4135,7 +4135,7 @@ cost_sf_fixed
 1
 Heliostat field cost fixed
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 0
 1
@@ -4149,7 +4149,7 @@ csp.pt.cost.bop
 1
 Balance of plant cost total
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4163,7 +4163,7 @@ csp.pt.cost.contingency
 1
 Contingency cost
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4177,7 +4177,7 @@ csp.pt.cost.epc.fixed
 1
 EPC fixed cost
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 3
 1
@@ -4191,7 +4191,7 @@ csp.pt.cost.epc.per_acre
 1
 EPC cost per land area
 $/acre
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 3
 1
@@ -4205,7 +4205,7 @@ csp.pt.cost.epc.per_watt
 1
 EPC cost per net capacity
 $/Wac
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 3
 1
@@ -4219,7 +4219,7 @@ csp.pt.cost.epc.percent
 1
 EPC cost as percent of direct cost
 % direct
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 3
 1
@@ -4233,7 +4233,7 @@ csp.pt.cost.epc.total
 1
 EPC and owner cost total
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4247,7 +4247,7 @@ csp.pt.cost.fossil
 1
 Fossil backup cost total
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4261,7 +4261,7 @@ csp.pt.cost.heliostats
 1
 Heliostat field cost total
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4275,7 +4275,7 @@ csp.pt.cost.heliostats_m2
 1
 Reflective area
 m²
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4289,7 +4289,7 @@ csp.pt.cost.installed_per_capacity
 1
 Estimated total installed cost per net capacity ($/kW)
  
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4303,7 +4303,7 @@ csp.pt.cost.nameplate
 1
 Cycle net (nameplate) capacity
 MWe
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4317,7 +4317,7 @@ csp.pt.cost.plm.fixed
 1
 Land fixed cost
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 3
 1
@@ -4331,7 +4331,7 @@ csp.pt.cost.plm.per_watt
 1
 Land cost per net capacity
 $/We
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 3
 1
@@ -4345,7 +4345,7 @@ csp.pt.cost.plm.percent
 1
 Land cost as percent of direct cost
 % direct
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 3
 1
@@ -4359,7 +4359,7 @@ csp.pt.cost.plm.total
 1
 Land cost total
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4373,7 +4373,7 @@ csp.pt.cost.power_block
 1
 Power cycle cost total
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4387,7 +4387,7 @@ csp.pt.cost.power_block_mwe
 1
 Cycle gross capacity
 MWe
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4401,7 +4401,7 @@ csp.pt.cost.rec_height
 1
 Receiver height
 m
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4415,7 +4415,7 @@ csp.pt.cost.receiver
 1
 Receiver cost total
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4429,7 +4429,7 @@ csp.pt.cost.receiver.area
 1
 Receiver area
 m²
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4443,7 +4443,7 @@ csp.pt.cost.sales_tax.total
 1
 Sales tax total
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4457,7 +4457,7 @@ csp.pt.cost.sales_tax.value
 1
 Sales tax rate
 %
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4471,7 +4471,7 @@ csp.pt.cost.site_improvements
 1
 Site improvement cost total
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4485,7 +4485,7 @@ csp.pt.cost.site_improvements_m2
 1
 Site improvement cost
 m²
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4499,7 +4499,7 @@ csp.pt.cost.storage
 1
 Thermal energy storage cost total
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4513,7 +4513,7 @@ csp.pt.cost.storage_mwht
 1
 Storage capacity
 MWht
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4527,7 +4527,7 @@ csp.pt.cost.total_land_area
 1
 Total land area
 acres
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4541,7 +4541,7 @@ csp.pt.cost.tower
 1
 Tower cost total
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4555,7 +4555,7 @@ fossil_spec_cost
 1
 Fossil backup cost
 $/kWe
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4569,7 +4569,7 @@ heliostat_spec_cost
 1
 Heliostat field cost
 $/m²
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4583,7 +4583,7 @@ land_spec_cost
 1
 EPC cost per land area
 $/acre
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 3
 1
@@ -4597,7 +4597,7 @@ plant_spec_cost
 1
 Power cycle cost
 $/kWe
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4611,7 +4611,7 @@ rec_cost_exp
 1
 Receiver cost scaling exponent
  
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4625,7 +4625,7 @@ rec_ref_area
 1
 Receiver reference area
 m²
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4639,7 +4639,7 @@ rec_ref_cost
 1
 Receiver reference cost
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4653,7 +4653,7 @@ sales_tax_frac
 1
 Sales tax basis
 % of direct cost
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4667,7 +4667,7 @@ site_spec_cost
 1
 Site improvement cost
 $/m²
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4676,26 +4676,12 @@ Capital Costs
 1
 3
 Default
-system_use_lifetime_output
-3
-1
-System use lifetime output
- 
-Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 system_use_recapitalization
 3
 1
-System use recapitalization
+Enable geothermal recapitalization
  
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4709,7 +4695,7 @@ tes_spec_cost
 1
 Thermal energy storage cost
 $/kWht
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4723,7 +4709,7 @@ total_direct_cost
 1
 Total direct cost
  
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4737,7 +4723,7 @@ total_indirect_cost
 1
 Total indirect cost
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4751,7 +4737,7 @@ total_installed_cost
 1
 Total installed cost
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4765,7 +4751,7 @@ tower_exp
 1
 Tower cost scaling exponent
  
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4779,7 +4765,7 @@ tower_fixed_cost
 1
 Tower cost fixed
 $
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 2
 1
@@ -4793,7 +4779,7 @@ ui_direct_subtotal
 1
 Direct capital cost subtotal
  
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 9
 1
@@ -4807,7 +4793,7 @@ ui_heliostat_height
 1
 Heliostat height
 m
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4821,7 +4807,7 @@ ui_receiver_height
 1
 Receiver height
 m
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -4835,7 +4821,7 @@ ui_tower_height
 1
 Tower height
 m
-Capital Costs
+Tower SolarPilot Capital Costs
 0
 8
 1
@@ -5012,118 +4998,6 @@ equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
 	return 0;
 };
 
-/*
-// input to MIMO
-equations{'ui_tower_height'} = define() {
-	tech = technology();
-	if ( tech == 'ISCC' ) return ${THT};
-	else if ( tech == 'MSPT' || tech == 'DSPT' ) return ${h_tower};
-};
-
-// input to MIMO
-equations{ 'csp.pt.cost.receiver.area' } = define() {
-	tech = technology();
-	area = 0;
-	if (tech == 'MSPT' || tech == 'ISCC')
-	{
-		area = ?${receiver_type}
-		[
-		${rec_height}*${D_rec}*3.1415926, //external
-		${rec_d_spec}*${csp.pt.rec.cav_ap_height}
-		];
-	}
-	else if (tech == 'DSPT')
-	{
-		area =  ${d_rec}*${rec_height}*3.1415926;
-	}
-	return area; };
-	
-// input to MIMO
-equations{ 'csp.pt.cost.storage_mwht' } = define() {
-	tech = technology();
-	nameplate = 0;
-	if (tech == 'MSPT')
-		nameplate =  ${P_ref} / ${design_eff} * ${tshours};
-	return nameplate; };
-
-// input to MIMO
-equations{ 'csp.pt.cost.power_block_mwe' } = define() {
-	tech = technology();
-	pb = 0;
-	if (tech == 'MSPT')
-		pb = ${P_ref};
-	else if (tech == 'DSPT')
-		pb = ${demand_var};
-	return pb; };
-
-equations{ '$MIMO$ ui_tower_cost_calcs' } = define()
-{
-	obj = ssc_create();
-
-	ssc_var(obj, 'A_sf', ${A_sf_UI});
-	ssc_var(obj, 'site_spec_cost', ${site_spec_cost});
-	ssc_var(obj, 'heliostat_spec_cost', ${heliostat_spec_cost});
-	ssc_var(obj, 'csp.pt.cost.fixed_sf', ${cost_sf_fixed});
-
-	ssc_var(obj, 'h_tower', ${ui_tower_height});
-	ssc_var(obj, 'H_rec', ${rec_height});
-	ssc_var(obj, 'helio_height', ${helio_height});
-	ssc_var(obj, 'tower_fixed_cost', ${tower_fixed_cost});
-	ssc_var(obj, 'tower_exp', ${tower_exp});
-
-	ssc_var(obj, 'csp_pt_cost_receiver_area', ${csp.pt.cost.receiver.area});
-	ssc_var(obj, 'rec_ref_cost', ${rec_ref_cost});
-	ssc_var(obj, 'rec_ref_area', ${rec_ref_area});
-	ssc_var(obj, 'rec_cost_exp', ${rec_cost_exp});
-
-	ssc_var(obj, 'csp.pt.cost.storage_mwht', ${csp.pt.cost.storage_mwht});
-	ssc_var(obj, 'tes_spec_cost', ${tes_spec_cost});
-
-	ssc_var(obj, 'P_ref', ${csp.pt.cost.power_block_mwe});
-	ssc_var(obj, 'csp_pt_cost_power_block_per_kwe',${plant_spec_cost});
-
-	ssc_var(obj, 'bop_spec_cost', ${bop_spec_cost});
-
-	ssc_var(obj, 'fossil_spec_cost', ${fossil_spec_cost});
-
-	ssc_var(obj, 'contingency_rate', ${contingency_rate});
-
-	ssc_var(obj, 'csp_pt_cost_total_land_area', ${csp.pt.sf.total_land_area});
-	ssc_var(obj, 'system_capacity', ${nameplate});
-	ssc_var(obj, 'csp_pt_cost_epc_per_acre', ${csp.pt.cost.epc.per_acre});
-	ssc_var(obj, 'csp_pt_cost_epc_percent', ${csp.pt.cost.epc.percent});
-	ssc_var(obj, 'csp_pt_cost_epc_per_watt', ${csp.pt.cost.epc.per_watt});
-	ssc_var(obj, 'csp_pt_cost_epc_fixed', ${csp.pt.cost.epc.fixed});
-	ssc_var(obj, 'csp_pt_cost_plm_per_acre', ${land_spec_cost});
-	ssc_var(obj, 'csp_pt_cost_plm_percent', ${csp.pt.cost.plm.percent}); 
-	ssc_var(obj, 'csp_pt_cost_plm_per_watt', ${csp.pt.cost.plm.per_watt});
-	ssc_var(obj, 'csp_pt_cost_plm_fixed', ${csp.pt.cost.plm.fixed});  
-	ssc_var(obj, 'sales_tax_frac', ${sales_tax_frac});         
-	ssc_var(obj, 'sales_tax_rate', ${sales_tax_rate}); 
-
-	ret = ssc_exec(obj, 'cb_mspt_system_costs');
-	
-	${csp.pt.cost.site_improvements} = ssc_var(obj, "csp.pt.cost.site_improvements");
-	${csp.pt.cost.heliostats} = ssc_var(obj, "csp.pt.cost.heliostats");    
-	${csp.pt.cost.tower} = ssc_var(obj, "csp.pt.cost.tower");        
-	${csp.pt.cost.receiver} = ssc_var(obj, "csp.pt.cost.receiver");	         
-	${csp.pt.cost.storage} = ssc_var(obj, "csp.pt.cost.storage");             
-	${csp.pt.cost.power_block} = ssc_var(obj, "csp.pt.cost.power_block");	         
-	${csp.pt.cost.bop} = ssc_var(obj, "csp.pt.cost.bop");           
-	${csp.pt.cost.fossil} = ssc_var(obj, "csp.pt.cost.fossil");	             
-	${ui_direct_subtotal} = ssc_var(obj, "ui_direct_subtotal");             
-	${csp.pt.cost.contingency} = ssc_var(obj, "csp.pt.cost.contingency");	         
-	${total_direct_cost} = ssc_var(obj, "total_direct_cost");       
-	${csp.pt.cost.epc.total} = ssc_var(obj, "csp.pt.cost.epc.total");	         
-	${csp.pt.cost.plm.total} = ssc_var(obj, "csp.pt.cost.plm.total");         
-	${csp.pt.cost.sales_tax.total} = ssc_var(obj, "csp.pt.cost.sales_tax.total");	     
-	${total_indirect_cost} = ssc_var(obj, "total_indirect_cost");       
-	${total_installed_cost} = ssc_var(obj, "total_installed_cost");	         
-	${csp.pt.cost.installed_per_capacity} = ssc_var(obj, "csp.pt.cost.installed_per_capacity");
-
-	ssc_free( obj );
-};
-*/
 
 138
 on_load{"Molten Salt Tower Capital Costs"}=define()

@@ -5,7 +5,7 @@ Tower Capital Costs
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 566
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 11
@@ -49,6 +52,9 @@ Width
 Height
 3
 200
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -76,6 +82,9 @@ Width
 Height
 3
 89
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -86,7 +95,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -103,6 +112,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -131,7 +143,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -148,6 +160,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -176,7 +191,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -193,6 +208,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -221,7 +239,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -238,6 +256,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 6
@@ -266,7 +287,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -283,6 +304,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 4
@@ -311,7 +335,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -328,6 +352,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -356,7 +383,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -373,6 +400,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -416,7 +446,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -433,6 +463,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -475,7 +508,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -492,6 +525,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -535,7 +571,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -552,6 +588,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -594,7 +633,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -611,6 +650,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -653,7 +695,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -670,6 +712,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -712,7 +757,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -729,6 +774,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -771,7 +819,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -788,6 +836,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -830,7 +881,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -847,6 +898,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -890,7 +944,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -907,6 +961,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -949,7 +1006,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -966,6 +1023,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1009,7 +1069,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -1026,6 +1086,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1068,7 +1131,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -1085,6 +1148,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1128,7 +1194,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1145,6 +1211,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1187,7 +1256,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -1204,6 +1273,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1246,7 +1318,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -1263,6 +1335,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1306,7 +1381,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1323,6 +1398,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1365,7 +1443,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1382,6 +1460,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1424,7 +1505,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1441,6 +1522,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1483,7 +1567,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1500,6 +1584,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1542,7 +1629,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -1559,6 +1646,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1601,7 +1691,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1618,6 +1708,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1661,7 +1754,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -1678,6 +1771,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1721,7 +1817,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -1738,6 +1834,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1780,7 +1879,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -1797,6 +1896,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1839,7 +1941,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -1856,6 +1958,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1899,7 +2004,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1916,6 +2021,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1958,7 +2066,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -1975,6 +2083,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2017,7 +2128,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -2034,6 +2145,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2076,7 +2190,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -2093,6 +2207,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2135,7 +2252,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -2152,6 +2269,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2194,7 +2314,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -2211,6 +2331,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2254,7 +2377,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -2271,6 +2394,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2313,7 +2439,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -2330,6 +2456,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2373,7 +2502,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
@@ -2390,6 +2519,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2432,7 +2564,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -2449,6 +2581,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2492,7 +2627,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -2509,6 +2644,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2551,7 +2689,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -2568,6 +2706,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2610,7 +2751,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -2627,6 +2768,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2669,7 +2813,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -2686,6 +2830,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2729,7 +2876,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -2746,6 +2893,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2788,7 +2938,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -2805,6 +2955,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2847,7 +3000,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 16
@@ -2864,6 +3017,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 80
@@ -2892,7 +3048,7 @@ AlignTop
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -2909,6 +3065,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2928,7 +3087,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2945,6 +3104,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2964,7 +3126,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -2981,6 +3143,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3000,7 +3165,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3017,6 +3182,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3036,7 +3204,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3053,6 +3221,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3072,7 +3243,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3089,6 +3260,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3108,7 +3282,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3125,6 +3299,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3143,7 +3320,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3160,6 +3337,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3178,7 +3358,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3195,6 +3375,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3213,7 +3396,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3230,6 +3413,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3249,7 +3435,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3266,6 +3452,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3284,7 +3473,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -3301,6 +3490,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -3329,7 +3521,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -3346,6 +3538,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -3374,7 +3569,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -3391,6 +3586,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -3419,7 +3617,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -3436,6 +3634,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 8
@@ -3464,7 +3665,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -3481,6 +3682,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3524,7 +3728,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -3541,6 +3745,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3584,7 +3791,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -3601,6 +3808,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3644,7 +3854,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -3661,6 +3871,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3704,7 +3917,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -3721,6 +3934,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3763,7 +3979,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -3780,6 +3996,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3822,7 +4041,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -3839,6 +4058,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3879,13 +4101,13 @@ TabOrder
 3
 4294967295
 
-53
+52
 csp.pt.cost.bop
 3
 1
 Balance of plant cost total
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -3899,7 +4121,7 @@ csp.pt.cost.bop_per_kwe
 1
 Balance of plant cost
 $/kWe
-Capital Costs
+Tower Capital Costs
 0
 2
 1
@@ -3913,7 +4135,7 @@ csp.pt.cost.contingency
 1
 Contingency cost
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -3927,7 +4149,7 @@ csp.pt.cost.contingency_percent
 1
 Contingency cost
 % of subtotal
-Capital Costs
+Tower Capital Costs
 0
 2
 1
@@ -3941,7 +4163,7 @@ csp.pt.cost.epc.fixed
 1
 EPC fixed cost
 $
-Capital Costs
+Tower Capital Costs
 0
 3
 1
@@ -3955,7 +4177,7 @@ csp.pt.cost.epc.per_acre
 1
 EPC cost per land area
 $/acre
-Capital Costs
+Tower Capital Costs
 0
 3
 1
@@ -3969,7 +4191,7 @@ csp.pt.cost.epc.per_watt
 1
 EPC cost per net capacity
 $/Wac
-Capital Costs
+Tower Capital Costs
 0
 3
 1
@@ -3983,7 +4205,7 @@ csp.pt.cost.epc.percent
 1
 EPC cost as percent of direct cost
 % direct
-Capital Costs
+Tower Capital Costs
 0
 3
 1
@@ -3997,7 +4219,7 @@ csp.pt.cost.epc.total
 1
 EPC and owner cost total
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4011,7 +4233,7 @@ csp.pt.cost.fixed_sf
 1
 Heliostat field cost fixed
 $
-Capital Costs
+Tower Capital Costs
 0
 0
 1
@@ -4025,7 +4247,7 @@ csp.pt.cost.fossil
 1
 Fossil backup cost total
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4039,7 +4261,7 @@ csp.pt.cost.fossil_per_kwe
 1
 Fossil backup cost
 $/kWe
-Capital Costs
+Tower Capital Costs
 0
 2
 1
@@ -4053,7 +4275,7 @@ csp.pt.cost.heliostats
 1
 Heliostat field cost total
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4067,7 +4289,7 @@ csp.pt.cost.heliostats_m2
 1
 Reflective area
 m²
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4081,7 +4303,7 @@ csp.pt.cost.heliostats_per_m2
 1
 Heliostat field cost
 $/m²
-Capital Costs
+Tower Capital Costs
 0
 2
 1
@@ -4095,7 +4317,7 @@ csp.pt.cost.installed_per_capacity
 1
 Estimated total installed cost per net capacity ($/kW)
  
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4109,7 +4331,7 @@ csp.pt.cost.nameplate
 1
 Cycle net (nameplate) capacity
 MWe
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4123,7 +4345,7 @@ csp.pt.cost.plm.fixed
 1
 Land fixed cost
 $
-Capital Costs
+Tower Capital Costs
 0
 3
 1
@@ -4137,7 +4359,7 @@ csp.pt.cost.plm.per_acre
 1
 Land cost per land area
 $/acre
-Capital Costs
+Tower Capital Costs
 0
 3
 1
@@ -4151,7 +4373,7 @@ csp.pt.cost.plm.per_watt
 1
 Land cost per net capacity
 $/We
-Capital Costs
+Tower Capital Costs
 0
 3
 1
@@ -4165,7 +4387,7 @@ csp.pt.cost.plm.percent
 1
 Land cost as percent of direct cost
 % direct
-Capital Costs
+Tower Capital Costs
 0
 3
 1
@@ -4179,7 +4401,7 @@ csp.pt.cost.plm.total
 1
 Land cost total
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4193,7 +4415,7 @@ csp.pt.cost.power_block
 1
 Power cycle cost total
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4207,7 +4429,7 @@ csp.pt.cost.power_block_mwe
 1
 Cycle gross capacity
 MWe
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4221,7 +4443,7 @@ csp.pt.cost.power_block_per_kwe
 1
 Power cycle cost
 $/kWe
-Capital Costs
+Tower Capital Costs
 0
 3
 1
@@ -4235,7 +4457,7 @@ csp.pt.cost.rec_height
 1
 Receiver height
 m
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4249,7 +4471,7 @@ csp.pt.cost.receiver
 1
 Receiver cost total
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4263,7 +4485,7 @@ csp.pt.cost.receiver.area
 1
 Receiver area
 m²
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4277,7 +4499,7 @@ csp.pt.cost.receiver.ref_area
 1
 Receiver reference area
 m²
-Capital Costs
+Tower Capital Costs
 0
 2
 1
@@ -4291,21 +4513,21 @@ csp.pt.cost.receiver.ref_cost
 1
 Receiver reference cost
 $
-Capital Costs
+Tower Capital Costs
 0
 2
 1
 1
 1
 1
-5.54028e+07
+55402800
 Default
 csp.pt.cost.receiver.scaling_exp
 3
 1
 Receiver cost scaling exponent
  
-Capital Costs
+Tower Capital Costs
 0
 2
 1
@@ -4319,7 +4541,7 @@ csp.pt.cost.sales_tax.percent
 1
 Sales tax basis
 % of direct cost
-Capital Costs
+Tower Capital Costs
 0
 2
 1
@@ -4333,7 +4555,7 @@ csp.pt.cost.sales_tax.total
 1
 Sales tax total
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4347,7 +4569,7 @@ csp.pt.cost.sales_tax.value
 1
 Sales tax rate
 %
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4361,7 +4583,7 @@ csp.pt.cost.site_improvements
 1
 Site improvement cost total
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4375,7 +4597,7 @@ csp.pt.cost.site_improvements_m2
 1
 Site improvement cost
 m²
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4389,7 +4611,7 @@ csp.pt.cost.site_improvements_per_m2
 1
 Site improvement cost
 $/m²
-Capital Costs
+Tower Capital Costs
 0
 2
 1
@@ -4403,7 +4625,7 @@ csp.pt.cost.storage
 1
 Thermal energy storage cost total
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4417,7 +4639,7 @@ csp.pt.cost.storage_mwht
 1
 Storage capacity
 MWht
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4431,7 +4653,7 @@ csp.pt.cost.storage_per_kwht
 1
 Thermal energy storage cost
 $/kWht
-Capital Costs
+Tower Capital Costs
 0
 2
 1
@@ -4445,7 +4667,7 @@ csp.pt.cost.total_land_area
 1
 Total land area
 acres
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4459,7 +4681,7 @@ csp.pt.cost.tower
 1
 Tower cost total
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4473,7 +4695,7 @@ csp.pt.cost.tower.fixed
 1
 Tower cost fixed
 $
-Capital Costs
+Tower Capital Costs
 0
 2
 1
@@ -4487,7 +4709,7 @@ csp.pt.cost.tower.scaling_exp
 1
 Tower cost scaling exponent
  
-Capital Costs
+Tower Capital Costs
 0
 2
 1
@@ -4496,26 +4718,12 @@ Capital Costs
 1
 0.01298
 Default
-system_use_lifetime_output
-3
-1
-System use lifetime output
- 
-Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 system_use_recapitalization
 3
 1
-System use recapitalization
+Enable geothermal recapitalization
  
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4529,7 +4737,7 @@ total_direct_cost
 1
 Total direct cost
  
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4543,7 +4751,7 @@ total_indirect_cost
 1
 Total indirect cost
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4557,7 +4765,7 @@ total_installed_cost
 1
 Total installed cost
 $
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4571,7 +4779,7 @@ ui_direct_subtotal
 1
 Direct capital cost subtotal
  
-Capital Costs
+Tower Capital Costs
 0
 9
 1
@@ -4585,7 +4793,7 @@ ui_heliostat_height
 1
 Heliostat height
 m
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4599,7 +4807,7 @@ ui_receiver_height
 1
 Receiver height
 m
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4613,7 +4821,7 @@ ui_tower_height
 1
 Tower height
 m
-Capital Costs
+Tower Capital Costs
 0
 8
 1
@@ -4623,7 +4831,7 @@ Capital Costs
 0
 Default
 
-5784
+5695
 // Get calculated UI values that are independent variables
 //    in cost calculations
 
@@ -4710,12 +4918,6 @@ equations{ 'csp.pt.cost.nameplate' } = define() {
 equations{ 'csp.pt.cost.sales_tax.value' } = define() {
 	return ${sales_tax_rate}; };
 
-	// Other stuff
-equations { 'system_use_lifetime_output' } = define () {
-	return 0;};
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
-	
 	// MIMOS
 equations{ '$MIMO$ ui_tower_cost_calcs' } = define()
 {
@@ -4785,7 +4987,8 @@ equations{ '$MIMO$ ui_tower_cost_calcs' } = define()
 	ssc_free( obj );
 };
 
-
+equations { 'system_use_recapitalization' } = define () {
+	return 0;};
 138
 on_load{"Molten Salt Tower Capital Costs"}=define()
 {
