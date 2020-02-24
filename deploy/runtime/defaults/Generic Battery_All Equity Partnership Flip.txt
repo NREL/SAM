@@ -835,7 +835,7 @@ battery_total
 1
 1
 1
-1175880
+1.17588e+06
 battery_voltage_shown
 1
 1
@@ -1007,7 +1007,7 @@ const_per_interest1
 1
 1
 1
-7417010
+7.41701e+06
 const_per_interest2
 1
 1
@@ -1067,7 +1067,7 @@ const_per_interest_total
 1
 1
 1
-7417010
+7.41701e+06
 const_per_months1
 1
 1
@@ -2734,7 +2734,7 @@ ppa_price_input
 2
 1
 1
-0.31
+0.35
 ppa_soln_mode
 1
 1
@@ -2996,7 +2996,7 @@ system_use_lifetime_output
 1
 1
 1
-0
+1
 system_use_recapitalization
 1
 1
