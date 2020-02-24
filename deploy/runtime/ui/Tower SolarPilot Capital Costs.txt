@@ -4831,7 +4831,7 @@ Tower SolarPilot Capital Costs
 0
 Default
 
-10030
+5754
 // ui only
 equations{ 'csp.pt.cost.heliostats_m2' } = define() {
 	area = ${A_sf_UI};
@@ -4880,9 +4880,9 @@ equations{ 'csp.pt.cost.sales_tax.value' } = define() {
 };
 
 // not used?
-equations { 'system_use_lifetime_output' } = define () {
-	return 0;
-};
+//equations { 'system_use_lifetime_output' } = define () {
+//	return 0;
+//};
 
 // not used?
 equations { 'system_use_recapitalization' } = define () {
@@ -4998,8 +4998,7 @@ equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
 	return 0;
 };
 
-
-138
+139
 on_load{"Molten Salt Tower Capital Costs"}=define()
 {
 	fin = financing();
