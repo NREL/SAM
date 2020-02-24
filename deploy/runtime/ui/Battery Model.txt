@@ -62,12 +62,12 @@ Lead Acid: Flooded
 Lead Acid: VRLA Gel
 Lead Acid: VRLA AGM
 Lead Acid: Custom
-Lithium Ion: Lithium Manganese Oxide (LMO)
-Lithium Ion: Lithium Iron Phosphate (LFP)
-Lithium Ion: Lithium Cobalt Oxide (LCO)
-Lithium Ion: LMO/Lithium Titanate (LTO) 
-Lithium Ion: Nickel Manganese Cobalt Oxide (NMC)
-Lithium Ion: Nickel Cobalt Aluminum Oxide (NCA)
+Lithium Ion: Lithium Manganese Oxide (LMO/Graphite)
+Lithium Ion: Lithium Iron Phosphate (LFP/Graphite)
+Lithium Ion: Lithium Cobalt Oxide (LCO/Graphite)
+Lithium Ion: LMO/Lithium Titanate (LMO/LTO)
+Lithium Ion: Nickel Manganese Cobalt Oxide (NMC/Graphite)
+Lithium Ion: Nickel Cobalt Aluminum Oxide (NCA/Graphite)
 Lithium Ion: Custom
 Selection
 3
@@ -237,8 +237,8 @@ batt_type
 Battery type
  
 Battery
-396
-Lead Acid: Flooded|Lead Acid: VRLA Gel|Lead Acid: VRLA AGM|Lead Acid: Custom|Lithium Ion: Lithium Manganese Oxide (LMO)|Lithium Ion: Lithium Iron Phosphate (LFP)|Lithium Ion: Lithium Cobalt Oxide (LCO)|Lithium Ion: Lithium Titanate (LTO)|Lithium Ion: Nickel Manganese Cobalt Oxide (NMC)|Lithium Ion: Nickel Cobalt Aluminum Oxide (NCA)|Lithium Ion: Custom|Flow Battery: Vanadium|Flow Battery: Iron
+449
+Lead Acid: Flooded|Lead Acid: VRLA Gel|Lead Acid: VRLA AGM|Lead Acid: Custom|Lithium Ion: Lithium Manganese Oxide (LMO/Graphite)|Lithium Ion: Lithium Iron Phosphate (LFP/Graphite)|Lithium Ion: Lithium Cobalt Oxide (LCO/Graphite)|Lithium Ion: LMO/Lithium Titanate (LMO/LTO)|Lithium Ion: Nickel Manganese Cobalt Oxide (NMC/Graphite)|Lithium Ion: Nickel Cobalt Aluminum Oxide (NCA/Graphite)|Lithium Ion: Custom|Flow Battery: Vanadium|Flow Battery: Iron
 2
 1
 1

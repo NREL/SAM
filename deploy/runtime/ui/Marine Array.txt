@@ -1,7 +1,7 @@
 Marine Array
 801
 553
-26
+27
 GroupBox
 
 1
@@ -662,7 +662,7 @@ X
 411
 Y
 3
-159
+147
 Width
 3
 340
@@ -809,7 +809,7 @@ X
 564
 Y
 3
-459
+447
 Width
 3
 40
@@ -874,10 +874,58 @@ Name
 object 7
 X
 3
+366
+Y
+3
+507
+Width
+3
+416
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+77
+Row spacing affects calculated cable lengths but not array energy production.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 719
+X
+3
 597
 Y
 3
-495
+483
 Width
 3
 90
@@ -1534,7 +1582,7 @@ Numeric
 system_capacity
 3
 1
-Rated capacity
+Rated array capacity
 kW
 ME Array
 0
