@@ -7092,9 +7092,9 @@ TabOrder
 battery_energy
 3
 1
-Battery rated capacity
+Battery capacity
 kWh
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7108,7 +7108,7 @@ battery_per_kW
 1
 Battery cost per kW
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7122,7 +7122,7 @@ battery_per_kWh
 1
 Battery cost per kWh
 $/kWh
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7134,9 +7134,9 @@ Numeric
 battery_power
 3
 1
-Battery rated power
+Battery maximum AC discharge power
 kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7150,7 +7150,7 @@ battery_total
 1
 Total battery cost
 $
-Capital Costs
+Fuel Cell Capital Costs
 0
 9
 1
@@ -7164,7 +7164,7 @@ bos_equip_battperkw
 1
 Balance of system equipment, battery
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7178,7 +7178,7 @@ bos_equip_fcperkw
 1
 Balance of system equipment, fuel cell
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7192,7 +7192,7 @@ bos_equip_fixed
 1
 Balance of system equipment, fixed
 $
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7206,7 +7206,7 @@ bos_equip_perarea
 1
 Balance of system equipment, area
 $/m2
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7220,7 +7220,7 @@ bos_equip_perwatt
 1
 Balance of system equipment, capacity
 $/Wdc
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7234,7 +7234,7 @@ bos_equip_total
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7248,7 +7248,7 @@ contingency
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7262,7 +7262,7 @@ contingency_percent
 1
 Contingency
 % of direct costs
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7276,7 +7276,7 @@ engr_fixed
 1
 Engineering, fixed
 $
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7290,7 +7290,7 @@ engr_per_battkw
 1
 Engineering, battery
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7304,7 +7304,7 @@ engr_per_fckw
 1
 Engineering, fuel cell
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7318,7 +7318,7 @@ engr_per_watt
 1
 Engineering, capacity
 $/Wdc
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7332,7 +7332,7 @@ engr_percent
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 0
 1
@@ -7346,7 +7346,7 @@ engr_total
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7360,7 +7360,7 @@ fuelcell_per_kW
 1
 Fuel cell cost per kW
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7374,7 +7374,7 @@ fuelcell_power_total
 1
 Fuel cell
 kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7388,7 +7388,7 @@ fuelcell_total
 1
 Fuel cell total cost
 $
-Capital Costs
+Fuel Cell Capital Costs
 0
 9
 1
@@ -7402,7 +7402,7 @@ grid_fixed
 1
 Grid interconnection, fixed
 $
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7416,7 +7416,7 @@ grid_per_battkw
 1
 Grid interconnection, battery
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7430,7 +7430,7 @@ grid_per_fckw
 1
 Grid interconnection, fuel cell
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7444,7 +7444,7 @@ grid_per_watt
 1
 Grid interconnection, capacity
 $/Wdc
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7458,7 +7458,7 @@ grid_percent
 1
 Grid interconnection, percent of direct cost
 %
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7472,7 +7472,7 @@ grid_total
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7486,7 +7486,7 @@ install_labor_battperkw
 1
 Installation labor, battery
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7500,7 +7500,7 @@ install_labor_fcperkw
 1
 Installation labor, fuel cell
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7514,7 +7514,7 @@ install_labor_fixed
 1
 Installation labor, fixed
 $
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7528,7 +7528,7 @@ install_labor_perarea
 1
 Installation labor, area
 $/m2
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7542,7 +7542,7 @@ install_labor_perwatt
 1
 Installation labor, capacity
 $/Wdc
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7556,7 +7556,7 @@ install_labor_total
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7570,7 +7570,7 @@ install_margin_battperkw
 1
 Installer margin and overhead, battery
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7584,7 +7584,7 @@ install_margin_fcperkw
 1
 Installer margin and overhead, fuel cell
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7598,7 +7598,7 @@ install_margin_fixed
 1
 Installer margin and overhead, fixed
 $
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7612,7 +7612,7 @@ install_margin_perarea
 1
 Installer margin and overhead, area
 $/m2
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7626,7 +7626,7 @@ install_margin_perwatt
 1
 Installer margin and overhead, capacity
 $/Wdc
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7640,7 +7640,7 @@ install_margin_total
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7654,7 +7654,7 @@ installed_per_capacity
 1
 Total installed cost per capacity
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7668,7 +7668,7 @@ inverter_costunits
 1
 Inverter cost units
 0=$/Wac,1=$/Wdc,2=$/Unit
-Capital Costs
+Fuel Cell Capital Costs
 18
 $/Wac|$/Wdc|$/Unit
 1
@@ -7683,7 +7683,7 @@ inverter_num_units
 1
 Inverter
 units
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7697,7 +7697,7 @@ inverter_power
 1
  
 kWac/unit
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7711,7 +7711,7 @@ inverter_total
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7725,7 +7725,7 @@ inverterarray_power
 1
  
 kWac
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7739,7 +7739,7 @@ land_area_value
 1
 Land area
 acres
-Capital Costs
+Fuel Cell Capital Costs
 0
 0
 1
@@ -7753,7 +7753,7 @@ land_fixed
 1
 Land, fixed
 $
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7767,7 +7767,7 @@ land_per_acre
 1
 Land, per acre
 $/acre
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7781,7 +7781,7 @@ land_per_battkw
 1
 Land, battery
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7795,7 +7795,7 @@ land_per_fckw
 1
 Land, fuel cell
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7809,7 +7809,7 @@ land_per_watt
 1
 Land, capacity
 $/Wdc
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7823,7 +7823,7 @@ land_percent
 1
 Land, percent of direct cost
 %
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7837,7 +7837,7 @@ land_total
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7851,7 +7851,7 @@ landprep_fixed
 1
 Land preparation, fixed
 $
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7865,7 +7865,7 @@ landprep_per_acre
 1
 Land preparation, per acre
 $/acre
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7879,7 +7879,7 @@ landprep_per_battkw
 1
 Land preparation, battery
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7893,7 +7893,7 @@ landprep_per_fckw
 1
 Land preparation, fuel cell
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -7907,7 +7907,7 @@ landprep_per_watt
 1
 Land preparation, capacity
 $/Wdc
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7921,7 +7921,7 @@ landprep_percent
 1
 Land preparation, percent of direct cost
 %
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -7935,7 +7935,7 @@ landprep_total
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7949,7 +7949,7 @@ module_costunits
 1
 Module cost units
 0=$/Wdc,1=$/Unit
-Capital Costs
+Fuel Cell Capital Costs
 12
 $/Wdc|$/Unit
 1
@@ -7964,7 +7964,7 @@ module_num_units
 1
 Module
 units
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7978,7 +7978,7 @@ module_power
 1
  
 kWdc/unit
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7992,7 +7992,7 @@ module_total
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -8006,7 +8006,7 @@ modulearray_area
 1
  
 m2
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -8020,7 +8020,7 @@ modulearray_power
 1
  
 kWdc
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -8034,7 +8034,7 @@ per_inverter
 1
 Inverter Cost
 $/Wac or $/Unit
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -8048,7 +8048,7 @@ per_module
 1
 Module Cost
 $/Wdc or $/Unit
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -8062,7 +8062,7 @@ permitting_fixed
 1
 Permitting, fixed
 $
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -8076,7 +8076,7 @@ permitting_per_battkw
 1
 Permitting, battery
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -8090,7 +8090,7 @@ permitting_per_fckw
 1
 Permitting, fuel cell
 $/kW
-Capital Costs
+Fuel Cell Capital Costs
 0
 1
 1
@@ -8104,7 +8104,7 @@ permitting_per_watt
 1
 Permitting, capacity
 $/Wdc
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -8118,7 +8118,7 @@ permitting_percent
 1
 Permitting, percent of direct cost
 %
-Capital Costs
+Fuel Cell Capital Costs
 0
 3
 1
@@ -8132,7 +8132,7 @@ permitting_total
 1
 Permitting, Environmental Studies
 $
-Capital Costs
+Fuel Cell Capital Costs
 0
 9
 1
@@ -8146,7 +8146,7 @@ sales_tax_percent
 1
 Sales tax basis, percent of direct cost
 %
-Capital Costs
+Fuel Cell Capital Costs
 0
 2
 1
@@ -8160,7 +8160,7 @@ sales_tax_total
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -8174,7 +8174,7 @@ sales_tax_value
 1
 Sales tax rate
 %
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -8188,7 +8188,7 @@ subtotal_direct
 1
 Subtotal
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -8202,7 +8202,7 @@ system_use_recapitalization
 1
  
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 8
 1
@@ -8216,7 +8216,7 @@ total_direct_cost
 1
 Total direct cost
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 9
 1
@@ -8230,7 +8230,7 @@ total_indirect_cost
 1
 Total indirect cost
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 9
 1
@@ -8244,7 +8244,7 @@ total_installed_cost
 1
 Total installed cost
  
-Capital Costs
+Fuel Cell Capital Costs
 0
 9
 1
@@ -8254,7 +8254,7 @@ Capital Costs
 0
 Numeric
 
-6973
+6666
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -8264,17 +8264,17 @@ equations{ 'engr_total' } = define() {
 };
 
 equations{ 'inverter_num_units' } = define() {
-	if( technology() == "Flat Plate PV" ) return ${inverter_count};
-	elseif ( technology() == "PV_battery" ) return ${inverter_count};
-	elseif ( technology() == "PVWatts" ) return 1;
-	elseif ( technology() == "PVWatts_battery" ) return 1;
-	elseif ( technology() == "Fuel Cell") return 1;
+	if( technology() == 'Flat Plate PV' ) return ${inverter_count};
+	elseif ( technology() == 'PV Battery' ) return ${inverter_count};
+	elseif ( technology() == 'PVWatts' ) return 1;
+	elseif ( technology() == 'PVWatts Battery' ) return 1;
+	elseif ( technology() == 'Fuel Cell') return 1;
 	else return 0;
 };
 
 equations{ 'module_power' } = define() {
 	tech = technology();
-	if ( tech == "PVWatts" || tech == "PVWatts_battery" || tech == "Fuel Cell") { 
+	if ( tech == 'PVWatts' || tech == 'PVWatts Battery' || tech == 'Fuel Cell') { 
 		return ${system_capacity};
 	}
 	else {
@@ -8301,7 +8301,7 @@ equations{ 'contingency' } = define() {
 
 equations{ 'inverter_power' } = define() {
 	tech = technology();
-	if ( tech == "PVWatts" || tech == "PVWatts_battery" || tech == "Fuel Cell") {
+	if ( tech == 'PVWatts' || tech == 'PVWatts Battery' || tech == 'Fuel Cell') {
 		return ${system_capacity}/${dc_ac_ratio};
 	}
 	else return 0.001*?${inverter_model}
@@ -8357,7 +8357,7 @@ equations{ 'install_labor_total' } = define() {
 
 equations{ 'module_num_units' } = define() {
 	tech = technology();
-	if ( tech == "PVWatts" || tech == "PVWatts_battery" || tech == "Fuel Cell") { 
+	if ( tech == 'PVWatts' || tech == 'PVWatts Battery' || tech == 'Fuel Cell') { 
 		return 1;
 	}
 	else return ${total_modules};
@@ -8387,7 +8387,7 @@ equations{ 'inverterarray_power' } = define() {
 
 equations{ 'modulearray_area' } = define() {
 	tech = technology();
-	if ( tech == "PVWatts" || tech == "PVWatts_battery" || tech == "Fuel Cell") {
+	if ( tech == 'PVWatts' || tech == 'PVWatts Battery' || tech == 'Fuel Cell') {
 		return 0;
 	}
 	else return ${total_land_area};
@@ -8448,24 +8448,14 @@ equations{ 'total_direct_cost' } = define() {
 		+${install_margin_total}
 		+${contingency}; };
 
-equations { 'system_use_recapitalization' } = define () {
-	if( technology() == "PVWatts" )
-		return 0;
-	else
-		return ${system_use_lifetime_output};
-	};
-
 equations { 'battery_total' } = define () {
 	return ${battery_energy}*${battery_per_kWh} + ${battery_power}*${battery_per_kW};};
 	
 equations { 'battery_energy' } = define () {
-	if( technology() == "Flat Plate PV" || technology() == "Fuel Cell")
+	if( technology() == 'PV Battery' || technology() == 'Fuel Cell')
 			return ?${en_batt}
 				[0,	${batt_computed_bank_capacity}];
-	else if ((technology() == "PVWatts" ) && 
-		  ( (financing() == 'Residential') || 
-			(financing() == 'Commercial') || 
-		    (financing() == 'Third Party'))) 
+	else if ((technology() == 'PVWatts Battery' )) 
 		{
 			return ?${batt_simple_enable}
 				[0,	${batt_simple_kwh}];
@@ -8474,13 +8464,10 @@ equations { 'battery_energy' } = define () {
 		return 0;
 };
 equations { 'battery_power' } = define () {
-	if( technology() == "Flat Plate PV" || technology() == "Fuel Cell")
+	if( technology() == 'PV Battery' || technology() == 'Fuel Cell')
 			return ?${en_batt}
 				[0,	${batt_power_discharge_max_kwac}];
-	else if ((technology() == "PVWatts" ) && 
-		  ( (financing() == 'Residential') || 
-			(financing() == 'Commercial') || 
-		    (financing() == 'Third Party')))
+	else if ((technology() == 'PVWatts Battery' ))
 		{
 			return ?${batt_simple_enable}
 				[0,	${batt_simple_kw}];
@@ -8489,20 +8476,27 @@ equations { 'battery_power' } = define () {
 		return 0;
 };
 equations { 'fuelcell_power_total' } = define () {
-	if( technology() == "Fuel Cell"){
+	if( technology() == 'Fuel Cell'){
 		return ${fuelcell_power_nameplate};
 	}
 	else
 		return 0;
 };
+
 equations { 'fuelcell_total' } = define () {
 	return ${fuelcell_power_total}*${fuelcell_per_kW};};
-1351
-on_load{"Fuel Cell Costs"}=define()
+
+equations { 'system_use_recapitalization' } = define () {
+	return 0;
+};
+
+	
+981
+/*on_load{"Fuel Cell Costs"}=define()
 {
 	f = financing();
 	t = technology();
-	show_batt = show_battery_costs(t, f);
+	show_batt = true;
 	
 	show( "lblFinancingCost", 
 		(f!='None')&&(f!='Residential')&&(f!='Commercial')&&(f!='Third Party')&&(f!='Single Owner'));
@@ -8528,20 +8522,4 @@ on_load{"Fuel Cell Costs"}=define()
 	show("install_margin_perarea",is_detailed_pv);
 	
 };
-
-function show_battery_costs(t, f)
-{
-	show_battery = false;
-	if (t == "PVWatts" &&((f=='Residential')||(f=='Commercial')||(f=='Third Party'))){
-		show_battery = true;
-	}
-	else if (t == 'Flat Plate PV' && (f !='LCOE Calculator') && (f !='None')){
-		show_battery = true;
-	}
-	else if (t == 'Fuel Cell'){
-		show_battery = true;
-	}
-	
-	return show_battery;
-
-}
+*/

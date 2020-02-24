@@ -1,5 +1,5 @@
 1
-524
+525
 6par_aisc
 1
 1
@@ -371,7 +371,7 @@ capital_cost
 1
 1
 1
-2.08009e+07
+20800900
 cec_a_ref
 1
 1
@@ -652,6 +652,12 @@ elev
 1
 1
 358
+en_batt
+1
+1
+1
+1
+0
 en_snow_model
 1
 1
@@ -3287,7 +3293,7 @@ ui_capital_cost_fixed
 1
 1
 1
-5.3455e+07
+53455000
 ui_cfin
 1
 1

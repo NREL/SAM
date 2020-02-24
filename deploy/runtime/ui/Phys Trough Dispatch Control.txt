@@ -1,11 +1,11 @@
 Phys Trough Dispatch Control
 844
 710
-27
+28
 Label
 
 1
-12
+13
 Name
 5
 1
@@ -22,6 +22,9 @@ Width
 Height
 3
 87
+Tool Tip
+5
+0
 Caption
 5
 122
@@ -50,7 +53,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 1
@@ -67,6 +70,9 @@ Width
 Height
 3
 45
+Tool Tip
+5
+0
 Caption
 5
 92
@@ -95,7 +101,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -112,6 +118,9 @@ Width
 Height
 3
 701
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -122,7 +131,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -139,6 +148,9 @@ Width
 Height
 3
 302
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -149,7 +161,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -166,6 +178,9 @@ Width
 Height
 3
 305
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -176,7 +191,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -193,6 +208,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -221,7 +239,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -238,6 +256,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -266,7 +287,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -283,6 +304,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -311,7 +335,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -328,6 +352,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -356,7 +383,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -373,6 +400,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -401,7 +431,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -418,6 +448,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -446,7 +479,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -463,6 +496,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -491,7 +527,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -508,6 +544,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -536,7 +575,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -553,6 +592,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 25
@@ -581,7 +623,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -598,6 +640,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -626,7 +671,7 @@ AlignTop
 Button
 
 1
-7
+8
 Name
 5
 13
@@ -643,6 +688,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 35
@@ -650,10 +698,43 @@ Copy schedule from TOD Factors page
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+9
+Name
+5
+28
+is_tod_pc_target_also_pc_max
+X
+3
+27
+Y
+3
+15
+Width
+3
+236
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+30
+Use output fraction as maximum
+State
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -670,6 +751,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -712,7 +796,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -729,6 +813,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -771,7 +858,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -788,6 +875,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -830,7 +920,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -847,6 +937,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -889,7 +982,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -906,6 +999,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -948,7 +1044,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -965,6 +1061,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1007,7 +1106,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1024,6 +1123,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1066,7 +1168,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1083,6 +1185,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1125,7 +1230,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1142,6 +1247,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1184,7 +1292,7 @@ TabOrder
 DiurnalPeriod
 
 1
-9
+10
 Name
 5
 16
@@ -1201,6 +1309,9 @@ Width
 Height
 3
 272
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
@@ -1217,7 +1328,7 @@ Min
 DiurnalPeriod
 
 1
-9
+10
 Name
 5
 16
@@ -1234,6 +1345,9 @@ Width
 Height
 3
 272
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
@@ -1248,7 +1362,7 @@ Min
 3
 1
 
-22
+23
 F_wc
 3
 2
@@ -1393,6 +1507,20 @@ hybrid_tou9
 3
 1
 Hybrid cooling fraction period 9
+ 
+System Control
+0
+3
+1
+1
+1
+1
+0
+Default
+is_tod_pc_target_also_pc_max
+3
+1
+ 
  
 System Control
 0

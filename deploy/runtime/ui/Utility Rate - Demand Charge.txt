@@ -5,7 +5,7 @@ Utility Rate - Demand Charge
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -22,6 +22,9 @@ Width
 Height
 3
 695
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -49,6 +52,9 @@ Width
 Height
 3
 638
+Tool Tip
+5
+0
 Caption
 5
 47
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -76,6 +82,9 @@ Width
 Height
 3
 638
+Tool Tip
+5
+0
 Caption
 5
 41
@@ -86,7 +95,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -103,6 +112,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -131,7 +143,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -148,6 +160,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -176,7 +191,7 @@ AlignTop
 CheckBox
 
 1
-8
+9
 Name
 5
 12
@@ -193,6 +208,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -206,7 +224,7 @@ TabOrder
 DataMatrix
 
 1
-22
+27
 Name
 5
 14
@@ -223,12 +241,18 @@ Width
 Height
 3
 600
+Tool Tip
+5
+0
 PasteAppendRows
 2
 1
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -240,6 +264,12 @@ RowLabels
 0
 ShadeR0C0
 2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
 0
 ShadeC0
 2
@@ -278,10 +308,13 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 DiurnalPeriod
 
 1
-9
+10
 Name
 5
 19
@@ -298,6 +331,9 @@ Width
 Height
 3
 272
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
@@ -314,7 +350,7 @@ Min
 DiurnalPeriod
 
 1
-9
+10
 Name
 5
 19
@@ -331,6 +367,9 @@ Width
 Height
 3
 272
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
@@ -347,7 +386,7 @@ Min
 DataMatrix
 
 1
-22
+27
 Name
 5
 13
@@ -364,12 +403,18 @@ Width
 Height
 3
 600
+Tool Tip
+5
+0
 PasteAppendRows
 2
 1
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -381,6 +426,12 @@ RowLabels
 0
 ShadeR0C0
 2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
 0
 ShadeC0
 2
@@ -418,6 +469,9 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 
 5
 ur_dc_enable

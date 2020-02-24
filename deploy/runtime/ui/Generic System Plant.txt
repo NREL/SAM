@@ -921,7 +921,7 @@ capacity_factor_calc
 1
 Capacity factor after plant loss
 %
- 
+Generic System Plant
 0
 8
 1
@@ -1019,9 +1019,9 @@ import_message
 4
  
  
- 
+Generic System Plant
 0
-5
+13
 1
 4
 0

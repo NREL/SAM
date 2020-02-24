@@ -1,7 +1,7 @@
 Generic System Costs
-855
-508
-55
+826
+453
+46
 GroupBox
 
 1
@@ -18,10 +18,10 @@ Y
 3
 Width
 3
-780
+812
 Height
 3
-203
+155
 Tool Tip
 5
 0
@@ -45,10 +45,10 @@ X
 6
 Y
 3
-207
+162
 Width
 3
-780
+812
 Height
 3
 191
@@ -75,10 +75,10 @@ X
 6
 Y
 3
-411
+357
 Width
 3
-780
+812
 Height
 3
 89
@@ -105,7 +105,7 @@ X
 510
 Y
 3
-228
+183
 Width
 3
 104
@@ -153,7 +153,7 @@ X
 381
 Y
 3
-228
+183
 Width
 3
 104
@@ -201,7 +201,7 @@ X
 246
 Y
 3
-228
+183
 Width
 3
 104
@@ -236,317 +236,6 @@ AlignRight
 AlignTop
 2
 0
-Numeric
-
-1
-17
-Name
-5
-14
-battery_energy
-X
-3
-150
-Y
-3
-87
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-3
-Numeric
-
-1
-17
-Name
-5
-14
-battery_per_kW
-X
-3
-474
-Y
-3
-111
-Width
-3
-76
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-6
-Numeric
-
-1
-17
-Name
-5
-15
-battery_per_kWh
-X
-3
-474
-Y
-3
-87
-Width
-3
-76
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-6
-Numeric
-
-1
-17
-Name
-5
-13
-battery_power
-X
-3
-150
-Y
-3
-111
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-3
-Numeric
-
-1
-17
-Name
-5
-13
-battery_total
-X
-3
-642
-Y
-3
-108
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-12
 Numeric
 
 1
@@ -619,10 +308,10 @@ Name
 genericsys.cost.contingency
 X
 3
-639
+642
 Y
 3
-138
+87
 Width
 3
 136
@@ -682,10 +371,10 @@ Name
 genericsys.cost.contingency_percent
 X
 3
-366
+369
 Y
 3
-138
+87
 Width
 3
 100
@@ -747,7 +436,7 @@ X
 513
 Y
 3
-252
+207
 Width
 3
 100
@@ -810,7 +499,7 @@ X
 384
 Y
 3
-249
+204
 Width
 3
 100
@@ -872,7 +561,7 @@ X
 249
 Y
 3
-252
+207
 Width
 3
 100
@@ -935,7 +624,7 @@ X
 642
 Y
 3
-252
+207
 Width
 3
 136
@@ -998,7 +687,7 @@ X
 645
 Y
 3
-459
+405
 Width
 3
 133
@@ -1250,7 +939,7 @@ X
 513
 Y
 3
-276
+231
 Width
 3
 100
@@ -1313,7 +1002,7 @@ X
 384
 Y
 3
-273
+228
 Width
 3
 100
@@ -1375,7 +1064,7 @@ X
 249
 Y
 3
-276
+231
 Width
 3
 100
@@ -1438,7 +1127,7 @@ X
 642
 Y
 3
-276
+231
 Width
 3
 136
@@ -1501,7 +1190,7 @@ X
 282
 Y
 3
-321
+276
 Width
 3
 100
@@ -1563,7 +1252,7 @@ X
 642
 Y
 3
-321
+276
 Width
 3
 136
@@ -1626,7 +1315,7 @@ X
 495
 Y
 3
-321
+276
 Width
 3
 100
@@ -1688,7 +1377,7 @@ X
 30
 Y
 3
-441
+387
 Width
 3
 302
@@ -1798,7 +1487,7 @@ X
 39
 Y
 3
-306
+261
 Width
 3
 573
@@ -1837,7 +1526,7 @@ X
 642
 Y
 3
-348
+303
 Width
 3
 136
@@ -1872,10 +1561,10 @@ Name
 object 2142
 X
 3
-642
+645
 Y
 3
-162
+111
 Width
 3
 136
@@ -1910,10 +1599,10 @@ Name
 object 7
 X
 3
-468
+471
 Y
 3
-180
+129
 Width
 3
 171
@@ -1945,54 +1634,6 @@ WordWrap
 AlignRight
 2
 1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 721
-X
-3
-297
-Y
-3
-111
-Width
-3
-18
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-1
-×
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
 AlignTop
 2
 0
@@ -2050,54 +1691,6 @@ Label
 13
 Name
 5
-11
-object 7217
-X
-3
-297
-Y
-3
-87
-Width
-3
-18
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-1
-×
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 10
 object 723
 X
@@ -2105,7 +1698,7 @@ X
 45
 Y
 3
-276
+231
 Width
 3
 198
@@ -2153,7 +1746,7 @@ X
 42
 Y
 3
-252
+207
 Width
 3
 201
@@ -2201,7 +1794,7 @@ X
 468
 Y
 3
-435
+381
 Width
 3
 171
@@ -2249,7 +1842,7 @@ X
 468
 Y
 3
-360
+315
 Width
 3
 171
@@ -2297,7 +1890,7 @@ X
 618
 Y
 3
-276
+231
 Width
 3
 18
@@ -2345,7 +1938,7 @@ X
 618
 Y
 3
-252
+207
 Width
 3
 18
@@ -2393,7 +1986,7 @@ X
 492
 Y
 3
-273
+228
 Width
 3
 18
@@ -2441,7 +2034,7 @@ X
 492
 Y
 3
-252
+207
 Width
 3
 18
@@ -2489,7 +2082,7 @@ X
 357
 Y
 3
-276
+231
 Width
 3
 18
@@ -2537,7 +2130,7 @@ X
 357
 Y
 3
-252
+207
 Width
 3
 18
@@ -2551,54 +2144,6 @@ Caption
 5
 1
 =
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 743
-X
-3
-615
-Y
-3
-84
-Width
-3
-18
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-1
-+
 TextColour
 4
 0
@@ -2634,54 +2179,6 @@ X
 Y
 3
 60
-Width
-3
-18
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-1
-=
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-11
-object 7432
-X
-3
-615
-Y
-3
-108
 Width
 3
 18
@@ -2774,10 +2271,10 @@ Name
 total_direct_cost
 X
 3
-642
+645
 Y
 3
-180
+129
 Width
 3
 136
@@ -2840,7 +2337,7 @@ X
 642
 Y
 3
-360
+315
 Width
 3
 136
@@ -2903,7 +2400,7 @@ X
 645
 Y
 3
-435
+381
 Width
 3
 133
@@ -2954,83 +2451,13 @@ TabOrder
 3
 20
 
-28
-battery_energy
-3
-1
-Battery pack
-kWh
-Direct Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Numeric
-battery_per_kW
-3
-1
-Battery cost per kW
-$/kW dc
-Direct Capital Costs
-0
-2
-1
-1
-1
-1
-600
-Numeric
-battery_per_kWh
-3
-1
-Battery cost per capacity
-$/kWh dc
-Direct Capital Costs
-0
-2
-1
-1
-1
-1
-0
-Numeric
-battery_power
-3
-1
-Battery power
-kW
-Direct Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Numeric
-battery_total
-3
-1
-Battery cost
-$
-Direct Capital Costs
-0
-9
-1
-1
-1
-1
-0
-Numeric
+23
 fixed_plant_input
 3
 1
 Plant cost
 $
-Direct Capital Costs
+Generic System Capital Costs
 0
 2
 1
@@ -3044,7 +2471,7 @@ genericsys.cost.contingency
 1
 Contingency
 Total
-Direct Capital Costs
+Generic System Capital Costs
 0
 9
 1
@@ -3058,7 +2485,7 @@ genericsys.cost.contingency_percent
 1
 Contingency cost
 % of direct costs
-Direct Capital Costs
+Generic System Capital Costs
 0
 2
 1
@@ -3072,7 +2499,7 @@ genericsys.cost.epc.fixed
 1
 Permitting EPC costs
 $
-Indirect Capital Costs
+Generic System Capital Costs
 0
 1
 1
@@ -3086,7 +2513,7 @@ genericsys.cost.epc.nonfixed
 1
 Permitting EPC costs
 Calculated
-Indirect Capital Costs
+Generic System Capital Costs
 0
 9
 1
@@ -3100,7 +2527,7 @@ genericsys.cost.epc.percent
 1
 Permitting EPC costs
 % of direct cost
-Indirect Capital Costs
+Generic System Capital Costs
 0
 3
 1
@@ -3114,7 +2541,7 @@ genericsys.cost.epc.total
 1
 Permitting EPC costs
 Total
-Indirect Capital Costs
+Generic System Capital Costs
 0
 9
 1
@@ -3128,7 +2555,7 @@ genericsys.cost.installed_per_capacity
 1
 Total installed cost per capacity
  
-Total Installed Costs
+Generic System Capital Costs
 0
 8
 1
@@ -3142,7 +2569,7 @@ genericsys.cost.per_watt
 1
 Plant cost per capacity
 $/W
-Direct Capital Costs
+Generic System Capital Costs
 0
 2
 1
@@ -3156,7 +2583,7 @@ genericsys.cost.plant
 1
 Fixed plant cost
 $
-Direct Capital Costs
+Generic System Capital Costs
 0
 9
 1
@@ -3170,7 +2597,7 @@ genericsys.cost.plant_scaled
 1
 Non-fixed system cost
 $
-Direct Capital Costs
+Generic System Capital Costs
 0
 9
 1
@@ -3184,7 +2611,7 @@ genericsys.cost.plm.fixed
 1
 Engineering EPC costs
 $
-Indirect Capital Costs
+Generic System Capital Costs
 0
 1
 1
@@ -3198,7 +2625,7 @@ genericsys.cost.plm.nonfixed
 1
 Engineering EPC costs
 Calculated
-Indirect Capital Costs
+Generic System Capital Costs
 0
 9
 1
@@ -3212,7 +2639,7 @@ genericsys.cost.plm.percent
 1
 Engineering EPC costs
 % of direct cost
-Indirect Capital Costs
+Generic System Capital Costs
 0
 3
 1
@@ -3226,7 +2653,7 @@ genericsys.cost.plm.total
 1
 Engineering EPC costs
 Total
-Indirect Capital Costs
+Generic System Capital Costs
 0
 9
 1
@@ -3240,7 +2667,7 @@ genericsys.cost.sales_tax.percent
 1
 Sales tax basis as percent of direct cost
 %
-Indirect Capital Costs
+Generic System Capital Costs
 0
 2
 1
@@ -3254,7 +2681,7 @@ genericsys.cost.sales_tax.total
 1
 Sales tax
 Total
-Indirect Capital Costs
+Generic System Capital Costs
 0
 9
 1
@@ -3268,7 +2695,7 @@ genericsys.cost.sales_tax.value
 1
 Sales tax rate
 %
-Indirect Capital Costs
+Generic System Capital Costs
 0
 8
 1
@@ -3282,7 +2709,7 @@ nameplate_capacity
 1
 Nameplate capacity
 kW
-Direct Capital Costs
+Generic System Capital Costs
 0
 8
 1
@@ -3294,9 +2721,9 @@ Numeric
 system_use_recapitalization
 3
 1
+Enable geothermal recapitalization
  
- 
-Direct Capital Costs
+Generic System Capital Costs
 0
 8
 1
@@ -3310,7 +2737,7 @@ total_direct_cost
 1
 Total direct cost
 $
-Direct Capital Costs
+Generic System Capital Costs
 0
 9
 1
@@ -3324,7 +2751,7 @@ total_indirect_cost
 1
 Total indirect cost
 $
-Indirect Capital Costs
+Generic System Capital Costs
 0
 9
 1
@@ -3338,7 +2765,7 @@ total_installed_cost
 1
 Total installed cost
 $
-Total Installed Costs
+Generic System Capital Costs
 0
 9
 1
@@ -3348,21 +2775,9 @@ Total Installed Costs
 0
 Numeric
 
-2246
+1838
 equations{ 'nameplate_capacity' } = define() {
 	return ${system_capacity}; };
-
-equations{ 'battery_energy' } = define() {
-	return ?${en_batt}
-			[0,	${batt_computed_bank_capacity}];};
-
-equations{ 'battery_power' } = define() {
-	return ?${en_batt}
-			[0,	${batt_power_discharge_max_kwac}];};
-
-equations{ 'battery_total' } = define() {
-	return ${battery_energy}*${battery_per_kWh} + ${battery_power}*${battery_per_kW} ;
-};
 
 equations{ 'total_installed_cost' } = define() {
 	return ${total_direct_cost}+${total_indirect_cost}; };
@@ -3378,7 +2793,7 @@ equations{ 'genericsys.cost.sales_tax.value' } = define() {
 
 equations{ 'genericsys.cost.contingency' } = define() {
 	return ${genericsys.cost.contingency_percent}/100
-*(${genericsys.cost.plant}+${genericsys.cost.plant_scaled}+${battery_total}); };
+*(${genericsys.cost.plant}+${genericsys.cost.plant_scaled}); };
 
 equations{ 'total_indirect_cost' } = define() {
 	return ${genericsys.cost.epc.total}+${genericsys.cost.plm.total}+${genericsys.cost.sales_tax.total}; };
@@ -3389,7 +2804,7 @@ equations{ 'genericsys.cost.sales_tax.total' } = define() {
 equations{ 'total_direct_cost' } = define() {
 	return ${genericsys.cost.contingency}
 +${genericsys.cost.plant}
-+${genericsys.cost.plant_scaled} +${battery_total}; };
++${genericsys.cost.plant_scaled}; };
 
 equations{ 'genericsys.cost.plant'} = define() {
 	return ${fixed_plant_input};
@@ -3407,10 +2822,9 @@ equations{ 'genericsys.cost.plant_scaled' } = define() {
 	return ${system_capacity}*1000*${genericsys.cost.per_watt};
 };
 
-
 equations { 'system_use_recapitalization' } = define () {
-		return ${system_use_lifetime_output};
-	};
+		return 0;
+};
 
 152
 //on_load{"Generic Systems Costs"}=define()

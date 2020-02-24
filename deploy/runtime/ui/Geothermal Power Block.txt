@@ -5,7 +5,7 @@ Geothermal Power Block
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 143
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -49,6 +52,9 @@ Width
 Height
 3
 314
+Tool Tip
+5
+0
 Caption
 5
 32
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -76,6 +82,9 @@ Width
 Height
 3
 59
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -86,7 +95,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -103,6 +112,9 @@ Width
 Height
 3
 281
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -113,7 +125,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -130,6 +142,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -158,7 +173,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -175,6 +190,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -203,7 +221,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -220,6 +238,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -248,7 +269,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -265,6 +286,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -293,7 +317,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -310,6 +334,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -338,7 +365,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -355,6 +382,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -383,7 +413,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -400,6 +430,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -428,7 +461,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -445,6 +478,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -473,7 +509,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -490,6 +526,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -518,7 +557,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -535,6 +574,9 @@ Width
 Height
 3
 66
+Tool Tip
+5
+0
 Caption
 5
 158
@@ -563,7 +605,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -580,6 +622,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -608,7 +653,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -625,6 +670,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -667,7 +715,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -684,6 +732,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -726,7 +777,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -743,6 +794,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -785,7 +839,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -802,6 +856,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -844,7 +901,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -861,6 +918,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -903,7 +963,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -920,6 +980,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -962,7 +1025,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -979,6 +1042,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1021,7 +1087,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1038,6 +1104,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1080,7 +1149,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -1097,6 +1166,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1139,7 +1211,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1156,6 +1228,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1198,7 +1273,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 33
@@ -1215,6 +1290,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 3
@@ -1230,7 +1308,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1247,6 +1325,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1289,7 +1370,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1306,6 +1387,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1348,7 +1432,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1365,6 +1449,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1407,7 +1494,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1424,6 +1511,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1466,7 +1556,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1483,6 +1573,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1525,7 +1618,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1542,6 +1635,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1584,7 +1680,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1601,6 +1697,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1643,7 +1742,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1660,6 +1759,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1702,7 +1804,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1719,6 +1821,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1761,7 +1866,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1778,6 +1883,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1820,7 +1928,7 @@ TabOrder
 DiurnalPeriod
 
 1
-9
+10
 Name
 5
 24
@@ -1837,6 +1945,9 @@ Width
 Height
 3
 272
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
@@ -1852,7 +1963,7 @@ Min
 Choice
 
 1
-8
+9
 Name
 5
 12
@@ -1869,6 +1980,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 3
@@ -1884,7 +1998,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1901,6 +2015,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1941,7 +2058,7 @@ TabOrder
 3
 6
 
-32
+33
 CT
 3
 1
@@ -2101,7 +2218,7 @@ degradation
 2
  
  
- 
+Geothermal Power Block
 0
 8
 1
@@ -2157,7 +2274,7 @@ geothermal_analysis_period
 1
  
  
- 
+Geothermal Power Block
 0
 8
 1
@@ -2390,8 +2507,22 @@ Geothermal Power Block
 1
 1
 Default
+system_use_lifetime_output
+3
+1
+Enable multi-year simulations over analysis period
+ 
+Geothermal Power Block
+0
+8
+1
+1
+1
+1
+0
+Default
 
-428
+744
 equations{ 'T_htf_hot_ref' } = define() {
 	return ${design_temp};
 };
@@ -2401,9 +2532,13 @@ equations{ 'CT' } = define() {
 
 equations{ 'geothermal_analysis_period' } = define() {
 	if ((financing() == "None") || (financing() == "LCOE Calculator"))
+	{
 		return 30;
+	}
 	else
+	{
 		return ${analysis_period};
+	}	
 };
 
 equations{ 'HTF' } = define() {
@@ -2412,6 +2547,14 @@ equations{ 'HTF' } = define() {
 
 equations{ 'degradation' } = define() {
 	return 0; };
+	
+equations{ 'system_use_lifetime_output' } = define() {
+	// if system_use_lifetime_output = 1, grid compute module expects analysis_period input, which is not available without a financial model
+	if ( financing() == 'None' || financing() == 'LCOE Calculator' )
+	{ return 0; } 
+	else
+	{ return 1; }
+};	
 645
 function update_hybrid_dispatch_inputs() {
 	bEnable = (${model_choice}==2 && ${geopowerblock.pwrb.condenser_type} == 2);

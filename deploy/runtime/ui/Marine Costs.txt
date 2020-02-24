@@ -7491,7 +7491,7 @@ Mooring, foundation, and substructure cost
 $
 ME Costs
 0
-11
+9
 1
 1
 1
@@ -7883,7 +7883,7 @@ Power take-off system cost
 $
 ME Costs
 0
-11
+9
 1
 1
 1
@@ -8107,7 +8107,7 @@ Structural assembly cost
 $
 ME Costs
 0
-11
+9
 1
 1
 1

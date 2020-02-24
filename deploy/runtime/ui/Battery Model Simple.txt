@@ -1,7 +1,7 @@
 Battery Model Simple
-590
-125
-6
+585
+88
+5
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 572
 Height
 3
-120
+81
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 402
 Y
 3
-48
+18
 Width
 3
 171
@@ -79,7 +79,7 @@ X
 402
 Y
 3
-75
+45
 Width
 3
 171
@@ -100,39 +100,6 @@ Selection
 TabOrder
 3
 4294967295
-CheckBox
-
-1
-9
-Name
-5
-18
-batt_simple_enable
-X
-3
-30
-Y
-3
-21
-Width
-3
-141
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-14
-Enable battery
-State
-2
-0
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -146,7 +113,7 @@ X
 153
 Y
 3
-75
+45
 Width
 3
 90
@@ -208,7 +175,7 @@ X
 153
 Y
 3
-48
+18
 Width
 3
 90
@@ -258,13 +225,13 @@ TabOrder
 3
 4294967295
 
-6
+5
 batt_simple_chemistry
 3
 1
 Battery chemistry
  
-Battery
+Simple Battery
 0
 2
 1
@@ -278,7 +245,7 @@ batt_simple_dispatch
 1
 Battery dispatch
  
-Battery
+Simple Battery
 0
 2
 1
@@ -287,27 +254,12 @@ Battery
 1
 0
 Choice
-batt_simple_enable
-3
-1
-Enable battery
- 
-Battery
-19
-"Enable"| "Disable"
-3
-1
-1
-1
-1
-0
-CheckBox
 batt_simple_kw
 3
 1
 Battery power
 kW
-Battery
+Simple Battery
 0
 2
 1
@@ -321,7 +273,7 @@ batt_simple_kwh
 1
 Battery capacity
 kWh
-Battery
+Simple Battery
 0
 2
 1
@@ -334,8 +286,8 @@ batt_simple_meter_position
 3
 1
 Battery meter position
-battery
-Battery
+ 
+Simple Battery
 0
 8
 1
@@ -345,7 +297,7 @@ Battery
 0
 Default
 
-249
+253
 equations{'batt_simple_meter_position'} = define()
 {
 	// behind the meter default
@@ -353,27 +305,9 @@ equations{'batt_simple_meter_position'} = define()
 	financial_model = financing();
 	
 	if (!strcmp(financial_model, 'Single Owner'))
-		batt_meter_position = 1;
+		{ batt_meter_position = 1; }
 
 	return batt_meter_position;
 };
 
-468
-on_load{'Battery Model Simple'} = define()
-{
-	check_enabled();
-	on_change{"batt_simple_enable"};
-};
-on_change{"batt_simple_enable"} = define(){check_enabled();};
-
-function check_enabled()
-{
-	enable_battery = false;
-	if (value("batt_simple_enable") == 1)
-		enable_battery = true;
-	
-	enable("batt_simple_kwh", enable_battery);
-	enable("batt_simple_kw", enable_battery);
-	enable("batt_simple_dispatch", enable_battery);
-	enable("batt_simple_chemistry", enable_battery);
-}
+0

@@ -2387,7 +2387,7 @@ System Control
 1
 1
 1
-3.1536e+07
+31536000
 Default
 wlim_series
 3
@@ -2396,7 +2396,7 @@ Max. net power limit by time step
  
 System Control
 0
-0
+8
 1
 2
 1
@@ -2404,32 +2404,52 @@ System Control
 0
 Default
 
-626
-equations{ 'csp.pt.par.calc.bop' } = define() {
-	return ${bop_par}*${bop_par_f}
-*( ${bop_par_0} + ${bop_par_1} + ${bop_par_2} )
-*${P_ref}; };
-
-equations{ 'csp.pt.par.calc.aux' } = define() {
-	return ${aux_par}*${aux_par_f}
-*( ${aux_par_0} + ${aux_par_1} + ${aux_par_2} )
-*${P_ref}; };
-
-equations{ 'disp_wlim_max' } = define() {
-	return ${disp_wlim_maxspec}*(1.-${adjust}{'constant'}/100.);
-};
-
+1156
 equations{ 'is_wlim_series' } = define() {
 	return ${is_dispatch};
 };
 
-equations{ 'wlim_series' } = define() {
-	wl = [];
-	wlconst = ${disp_wlim_max}*1000.;  //convert MW -> kW
-	for(i=0; i<8760; i++)
-		wl[i] = wlconst;
-	return wl;
+equations{ '$MIMO$ MSPT_System_Control_Equations' } = define() {
+	
+	// csp_pt_par_calc_bop
+	data.bop_par = ${bop_par};
+	data.bop_par_f = ${bop_par_f};
+	data.bop_par_0 = ${bop_par_0};
+	data.bop_par_1 = ${bop_par_1};
+	data.bop_par_2 = ${bop_par_2};
+	data.p_ref = ${P_ref};
+	
+	// csp_pt_par_calc_aux
+	data.aux_par = ${aux_par};
+	data.aux_par_f = ${aux_par_f};
+	data.aux_par_0 = ${aux_par_0};
+	data.aux_par_1 = ${aux_par_1};
+	data.aux_par_2 = ${aux_par_2};
+	data.p_ref = ${P_ref};
+	
+	// disp_wlim_max
+	data.disp_wlim_maxspec = ${disp_wlim_maxspec};
+	data.constant = ${adjust}{'constant'};
+	
+	// wlim_series
+	data.disp_wlim_max = nan();		// calculated from above
+	
+	success = ssc_eqn("MSPT_System_Control_Equations", data);
+	if (!success) {
+		${csp.pt.par.calc.bop} = -999.;
+		${csp.pt.par.calc.aux} = -999.;
+		${disp_wlim_max} = -999.;
+		${wlim_series} = null;
+	}
+	else {
+		${csp.pt.par.calc.bop} = data.csp_pt_par_calc_bop;
+		${csp.pt.par.calc.aux} = data.csp_pt_par_calc_aux;
+		${disp_wlim_max} = data.disp_wlim_max;
+		${wlim_series} = data.wlim_series[0];	// first row
+	}
+	return 0;
 };
+
 621
 on_load{"MSPT System Control"} = define()
 {
