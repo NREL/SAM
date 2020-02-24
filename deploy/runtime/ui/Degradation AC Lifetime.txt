@@ -178,7 +178,7 @@ degradation
 2
  Degradation financial
  
- 
+Degradation and Lifetime
 0
 4
 1
@@ -206,7 +206,7 @@ system_use_lifetime_output
 1
  
  
- 
+Degradation and Lifetime
 0
 0
 1
