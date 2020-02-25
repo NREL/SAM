@@ -1,6 +1,6 @@
 // SAM startup script.
 
-en_iscc = 1;
+en_iscc = 0;
 
 en_pvsamv3 = 0;
 
