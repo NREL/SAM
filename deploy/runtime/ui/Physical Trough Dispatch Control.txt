@@ -2605,9 +2605,9 @@ Default
 is_tod_pc_target_also_pc_max
 3
 1
+Use turbine output fraction as maximum cycle output
  
- 
-System 
+System Control
 0
 3
 1
