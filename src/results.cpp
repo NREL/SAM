@@ -1741,6 +1741,7 @@ public:
 	std::vector<wxString> MakeTHTFHOTlabels();
 	std::vector<wxString> MakeTAMBlabels();
 	std::vector<wxString> MakeMDOTHTFlabels();
+	std::vector<wxString> MakeSCO2UDPClabels();
 
 	void RemoveTopRow();
 	void RemoveLeftCol();
@@ -2059,6 +2060,11 @@ public:
 							write_label = false;
 							MatrixColLabels = MakeMDOTHTFlabels();
 						}
+						else if (!value.Cmp("UDPC_SCO2_PREPROC"))
+						{
+							write_label = false;
+							MatrixColLabels = MakeSCO2UDPClabels();
+						}
 						else if (!value.Cmp("UR_MONTH_TOU_DEMAND"))
 						{
 							write_label = false;
@@ -2365,6 +2371,20 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeMDOTHTFlabels()
 	v.push_back("Cooling Water (T_amb low)");
 	v.push_back("Cooling Water (T_amb design)");
 	v.push_back("Cooling Water (T_amb high)");
+
+	return v;
+}
+std::vector<wxString> TabularBrowser::ResultsTable::MakeSCO2UDPClabels()
+{
+	std::vector<wxString> v;
+
+	v.push_back("HTF Temperature (C)");
+	v.push_back("HTF Mass Flow Rate (-)");
+	v.push_back("Ambient Temperature (C)");
+	v.push_back("Cycle Power (-)");
+	v.push_back("Cycle Heat (-)");
+	v.push_back("Cycle Cooling Power (-)");
+	v.push_back("Cycle Water Use (-)");
 
 	return v;
 }
