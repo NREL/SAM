@@ -3029,8 +3029,10 @@ void ConfigDialog::OnTreeActivated(wxDataViewEvent &evt)
 
 void ConfigDialog::OnFinTreeDoubleClick(wxDataViewEvent &evt)
 {
-	EndModal(wxID_OK);
-	evt.Veto();
+	if (SamApp::Config().Find(m_techname, m_finname) != NULL)
+		EndModal(wxID_OK);
+	else
+		evt.Veto();
 }
 
 
