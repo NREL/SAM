@@ -1,22 +1,22 @@
 /**
 BSD-3-Clause
 Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
 that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
 and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
 and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
 or promote products derived from this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
@@ -51,388 +51,439 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <vector>
 
-class GridChoiceData : public wxGridTableBase
-{
+class GridChoiceData : public wxGridTableBase {
 public:
-	virtual wxString GetChoices(int row, int col)=0;
-	virtual VarValue* GetVarValue(int row, int col) = 0;
-	virtual VarInfo* GetVarInfo(int row, int col) = 0;
-	virtual wxString GetVarName(int row, int col) = 0;
+    virtual wxString GetChoices(int row, int col) = 0;
+
+    virtual VarValue *GetVarValue(int row, int col) = 0;
+
+    virtual VarInfo *GetVarInfo(int row, int col) = 0;
+
+    virtual wxString GetVarName(int row, int col) = 0;
 };
 
 
-class GridCellVarValueRenderer : public wxGridCellRenderer
-{
+class GridCellVarValueRenderer : public wxGridCellRenderer {
 public:
-	GridCellVarValueRenderer();
-	virtual ~GridCellVarValueRenderer(void);
+    GridCellVarValueRenderer();
 
-	virtual void Draw(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc, const wxRect &rect, int row, int col, bool isSelected);
-	virtual wxSize GetBestSize(wxGrid &grid, wxGridCellAttr& attr, wxDC &dc, int row, int col);
-	virtual wxGridCellRenderer *Clone() const;
-	void SetTextColoursAndFont(const wxGrid& grid, const wxGridCellAttr& attr, wxDC& dc, bool isSelected);
+    virtual ~GridCellVarValueRenderer(void);
+
+    virtual void
+    Draw(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc, const wxRect &rect, int row, int col, bool isSelected);
+
+    virtual wxSize GetBestSize(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc, int row, int col);
+
+    virtual wxGridCellRenderer *Clone() const;
+
+    void SetTextColoursAndFont(const wxGrid &grid, const wxGridCellAttr &attr, wxDC &dc, bool isSelected);
 
 private:
-	wxString m_ellipsis;
+    wxString m_ellipsis;
 
 };
 
 
-class VariablePopupDialog : public wxDialog
-{
+class VariablePopupDialog : public wxDialog {
 public:
-	VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name, VarValue *vv, VarInfo *vi);
-	~VariablePopupDialog();
+    VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name, VarValue *vv, VarInfo *vi);
 
-	wxUIObject *GetUIObject();
+    ~VariablePopupDialog();
+
+    wxUIObject *GetUIObject();
+
 private:
-	wxUIObject *m_obj;
-	VarValue *m_vv;
-	VarInfo *m_vi;
+    wxUIObject *m_obj;
+    VarValue *m_vv;
+    VarInfo *m_vi;
 };
 
 
-class GridCellVarValueEditor : public wxEvtHandler, public wxGridCellEditor
-{
+class GridCellVarValueEditor : public wxEvtHandler, public wxGridCellEditor {
 public:
-	GridCellVarValueEditor();
-	virtual ~GridCellVarValueEditor(void);
+    GridCellVarValueEditor();
 
-	virtual void PaintBackground(wxDC& dc,
-		const wxRect& rectCell,
-		const wxGridCellAttr& attr);
+    virtual ~GridCellVarValueEditor(void);
 
-	virtual void Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler);
-	virtual bool IsAcceptedKey(wxKeyEvent& event);
-	virtual void SetSize(const wxRect &rect_orig);
-	virtual void BeginEdit(int row, int col, wxGrid *pGrid);
-	virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
-	virtual void ApplyEdit(int row, int col, wxGrid *grid);
-	virtual void Reset();
-	virtual wxString GetValue() const;
-	virtual wxGridCellEditor *Clone() const;
+    virtual void PaintBackground(wxDC &dc,
+                                 const wxRect &rectCell,
+                                 const wxGridCellAttr &attr);
+
+    virtual void Create(wxWindow *parent, wxWindowID id, wxEvtHandler *pEvtHandler);
+
+    virtual bool IsAcceptedKey(wxKeyEvent &event);
+
+    virtual void SetSize(const wxRect &rect_orig);
+
+    virtual void BeginEdit(int row, int col, wxGrid *pGrid);
+
+    virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
+
+    virtual void ApplyEdit(int row, int col, wxGrid *grid);
+
+    virtual void Reset();
+
+    virtual wxString GetValue() const;
+
+    virtual wxGridCellEditor *Clone() const;
 
 private:
-	wxString m_cell_value;
-	wxString m_new_cell_value;
-	wxStaticText *m_text;
-	VarInfo *m_var_info;
-	VarValue *m_var_value;
-	wxWindow *m_parent;
-	VariablePopupDialog *m_vpe;
-	bool DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi);
-	wxString GetDisplayString(wxString &var_string, int row, int col, const wxGrid *grid);
+    wxString m_cell_value;
+    wxString m_new_cell_value;
+    wxStaticText *m_text;
+    VarInfo *m_var_info;
+    VarValue *m_var_value;
+    wxWindow *m_parent;
+    VariablePopupDialog *m_vpe;
 
-	DECLARE_NO_COPY_CLASS(GridCellVarValueEditor)
+    bool DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi);
+
+    wxString GetDisplayString(wxString &var_string, int row, int col, const wxGrid *grid);
+
+DECLARE_NO_COPY_CLASS(GridCellVarValueEditor)
 };
 
 // renders a text string using arrays from the corresponding VarValue
 // based on wxGridCellStringRenderer
-class GridCellArrayRenderer : public wxGridCellStringRenderer
-{
+class GridCellArrayRenderer : public wxGridCellStringRenderer {
 public:
 
-	virtual void Draw(wxGrid& grid,
-		wxGridCellAttr& attr,
-		wxDC& dc,
-		const wxRect& rect,
-		int row, int col,
-		bool isSelected);
-	virtual wxSize GetBestSize(wxGrid& grid,
-		wxGridCellAttr& attr,
-		wxDC& dc,
-		int row, int col);
-	virtual wxGridCellRenderer *Clone() const;
+    virtual void Draw(wxGrid &grid,
+                      wxGridCellAttr &attr,
+                      wxDC &dc,
+                      const wxRect &rect,
+                      int row, int col,
+                      bool isSelected);
+
+    virtual wxSize GetBestSize(wxGrid &grid,
+                               wxGridCellAttr &attr,
+                               wxDC &dc,
+                               int row, int col);
+
+    virtual wxGridCellRenderer *Clone() const;
 
 protected:
-	wxString GetString(const wxGrid& grid, int row, int col);
+    wxString GetString(const wxGrid &grid, int row, int col);
 
 };
 
-class ArrayPopupDialog : public wxDialog
-{
+class ArrayPopupDialog : public wxDialog {
 public:
-	ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxString &label, VarValue *vv);
-	ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels, std::vector<std::vector<double> > &values_vec);
+    ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxString &label, VarValue *vv);
+
+    ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels,
+                     std::vector<std::vector<double> > &values_vec);
 
 private:
-	void OnCommand(wxCommandEvent &evt);
+    void OnCommand(wxCommandEvent &evt);
 
-	void CopyToClipboard();
-	void SaveToCSV();
-	void SendToExcel();
-	void GetTextData(wxString &dat, char sep);
+    void CopyToClipboard();
 
-	void CreateUI();
+    void SaveToCSV();
 
-	VarValue *m_vv;
-	wxGrid *m_grid;
+    void SendToExcel();
 
-	DECLARE_EVENT_TABLE()
+    void GetTextData(wxString &dat, char sep);
+
+    void CreateUI();
+
+    VarValue *m_vv;
+    wxGrid *m_grid;
+
+DECLARE_EVENT_TABLE()
 };
 
-class AlignRightGridCellAttrProvider : public wxGridCellAttrProvider
-{
+class AlignRightGridCellAttrProvider : public wxGridCellAttrProvider {
 public:
-	AlignRightGridCellAttrProvider();
-	virtual ~AlignRightGridCellAttrProvider();
+    AlignRightGridCellAttrProvider();
 
-	virtual wxGridCellAttr *GetAttr(int row, int col,
-		wxGridCellAttr::wxAttrKind  kind) const;
+    virtual ~AlignRightGridCellAttrProvider();
+
+    virtual wxGridCellAttr *GetAttr(int row, int col,
+                                    wxGridCellAttr::wxAttrKind kind) const;
 
 private:
-	wxGridCellAttr *m_attr_to_align_right;
+    wxGridCellAttr *m_attr_to_align_right;
 };
 
-class GridCellArrayEditor : public wxEvtHandler, public wxGridCellEditor
-{
+class GridCellArrayEditor : public wxEvtHandler, public wxGridCellEditor {
 public:
-	GridCellArrayEditor();
+    GridCellArrayEditor();
 
-	virtual void PaintBackground(wxDC& dc,
-		const wxRect& rectCell,
-		const wxGridCellAttr& attr);
+    virtual void PaintBackground(wxDC &dc,
+                                 const wxRect &rectCell,
+                                 const wxGridCellAttr &attr);
 
-	virtual void Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler);
-	virtual bool IsAcceptedKey(wxKeyEvent& event);
-	virtual void SetSize(const wxRect &rect_orig);
-	virtual void BeginEdit(int row, int col, wxGrid *pGrid);
-	virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
-	virtual void ApplyEdit(int row, int col, wxGrid *grid);
-	virtual void Reset();
-	virtual wxString GetValue() const;
-	virtual wxGridCellEditor *Clone() const;
+    virtual void Create(wxWindow *parent, wxWindowID id, wxEvtHandler *pEvtHandler);
+
+    virtual bool IsAcceptedKey(wxKeyEvent &event);
+
+    virtual void SetSize(const wxRect &rect_orig);
+
+    virtual void BeginEdit(int row, int col, wxGrid *pGrid);
+
+    virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
+
+    virtual void ApplyEdit(int row, int col, wxGrid *grid);
+
+    virtual void Reset();
+
+    virtual wxString GetValue() const;
+
+    virtual wxGridCellEditor *Clone() const;
 
 private:
-	wxString m_cell_value;
-	wxString m_new_cell_value;
+    wxString m_cell_value;
+    wxString m_new_cell_value;
+
 //	wxStaticText *m_text;
-	wxTextCtrl *Text() const { return (wxTextCtrl *)m_control; }
-	VarInfo *m_var_info;
-	VarValue *m_var_value;
-	wxWindow *m_parent;
-	VariablePopupDialog *m_vpe;
-	bool DisplayEditor(wxString &title, wxString &label, wxGrid *grid, VarValue *vv);
-	wxString GetString(int row, int col, const wxGrid *grid);
+    wxTextCtrl *Text() const { return (wxTextCtrl *) m_control; }
 
-	DECLARE_NO_COPY_CLASS(GridCellArrayEditor)
+    VarInfo *m_var_info;
+    VarValue *m_var_value;
+    wxWindow *m_parent;
+    VariablePopupDialog *m_vpe;
+
+    bool DisplayEditor(wxString &title, wxString &label, wxGrid *grid, VarValue *vv);
+
+    wxString GetString(int row, int col, const wxGrid *grid);
+
+DECLARE_NO_COPY_CLASS(GridCellArrayEditor)
 };
-
 
 
 // renders a text string using calculated values from the corresponding VarValue
 // based on wxGridCellStringRenderer
-class GridCellCalculatedRenderer : public wxGridCellStringRenderer
-{
+class GridCellCalculatedRenderer : public wxGridCellStringRenderer {
 public:
 
-	virtual void Draw(wxGrid& grid,
-		wxGridCellAttr& attr,
-		wxDC& dc,
-		const wxRect& rect,
-		int row, int col,
-		bool isSelected);
-	virtual wxSize GetBestSize(wxGrid& grid,
-		wxGridCellAttr& attr,
-		wxDC& dc,
-		int row, int col);
-	virtual wxGridCellRenderer *Clone() const;
+    virtual void Draw(wxGrid &grid,
+                      wxGridCellAttr &attr,
+                      wxDC &dc,
+                      const wxRect &rect,
+                      int row, int col,
+                      bool isSelected);
+
+    virtual wxSize GetBestSize(wxGrid &grid,
+                               wxGridCellAttr &attr,
+                               wxDC &dc,
+                               int row, int col);
+
+    virtual wxGridCellRenderer *Clone() const;
 
 protected:
-	wxString GetString(const wxGrid& grid, int row, int col);
+    wxString GetString(const wxGrid &grid, int row, int col);
 
 };
 
-class CalculatedGridCellAttrProvider : public wxGridCellAttrProvider
-{
+class CalculatedGridCellAttrProvider : public wxGridCellAttrProvider {
 public:
-	CalculatedGridCellAttrProvider();
-	virtual ~CalculatedGridCellAttrProvider();
+    CalculatedGridCellAttrProvider();
 
-	virtual wxGridCellAttr *GetAttr(int row, int col,
-		wxGridCellAttr::wxAttrKind  kind) const;
+    virtual ~CalculatedGridCellAttrProvider();
+
+    virtual wxGridCellAttr *GetAttr(int row, int col,
+                                    wxGridCellAttr::wxAttrKind kind) const;
 
 private:
-	wxGridCellAttr *m_attr_to_calculated;
+    wxGridCellAttr *m_attr_to_calculated;
 };
 
 
-class GridCellCalculatedEditor : public wxEvtHandler, public wxGridCellEditor
-{
+class GridCellCalculatedEditor : public wxEvtHandler, public wxGridCellEditor {
 public:
-	GridCellCalculatedEditor();
+    GridCellCalculatedEditor();
 
-	virtual void PaintBackground(wxDC& dc,
-		const wxRect& rectCell,
-		const wxGridCellAttr& attr);
+    virtual void PaintBackground(wxDC &dc,
+                                 const wxRect &rectCell,
+                                 const wxGridCellAttr &attr);
 
-	virtual void Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler);
-	virtual bool IsAcceptedKey(wxKeyEvent& event);
-	virtual void SetSize(const wxRect &rect_orig);
-	virtual void BeginEdit(int row, int col, wxGrid *pGrid);
-	virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
-	virtual void ApplyEdit(int row, int col, wxGrid *grid);
-	virtual void Reset();
-	virtual wxString GetValue() const;
-	virtual wxGridCellEditor *Clone() const;
+    virtual void Create(wxWindow *parent, wxWindowID id, wxEvtHandler *pEvtHandler);
+
+    virtual bool IsAcceptedKey(wxKeyEvent &event);
+
+    virtual void SetSize(const wxRect &rect_orig);
+
+    virtual void BeginEdit(int row, int col, wxGrid *pGrid);
+
+    virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
+
+    virtual void ApplyEdit(int row, int col, wxGrid *grid);
+
+    virtual void Reset();
+
+    virtual wxString GetValue() const;
+
+    virtual wxGridCellEditor *Clone() const;
 
 private:
-	wxString m_cell_value;
-	wxString m_new_cell_value;
-	//	wxStaticText *m_text;
-	wxTextCtrl *Text() const { return (wxTextCtrl *)m_control; }
-	VarInfo *m_var_info;
-	VarValue *m_var_value;
-	wxWindow *m_parent;
-	VariablePopupDialog *m_vpe;
-	bool DisplayEditor(wxString &title, wxString &label, wxGrid *grid, VarValue *vv);
-	wxString GetString(int row, int col, const wxGrid *grid);
+    wxString m_cell_value;
+    wxString m_new_cell_value;
 
-	DECLARE_NO_COPY_CLASS(GridCellCalculatedEditor)
+    //	wxStaticText *m_text;
+    wxTextCtrl *Text() const { return (wxTextCtrl *) m_control; }
+
+    VarInfo *m_var_info;
+    VarValue *m_var_value;
+    wxWindow *m_parent;
+    VariablePopupDialog *m_vpe;
+
+    bool DisplayEditor(wxString &title, wxString &label, wxGrid *grid, VarValue *vv);
+
+    wxString GetString(int row, int col, const wxGrid *grid);
+
+DECLARE_NO_COPY_CLASS(GridCellCalculatedEditor)
 };
-
-
 
 
 // renders a text string using the corresponding VarInfo in GridTableBase for wxUIObject Choice
 // based on wxGridCellEnumRenderer
-class GridCellChoiceRenderer : public wxGridCellStringRenderer
-{
+class GridCellChoiceRenderer : public wxGridCellStringRenderer {
 public:
-	GridCellChoiceRenderer();
-	GridCellChoiceRenderer(const wxString& choices);
+    GridCellChoiceRenderer();
 
-	virtual void Draw(wxGrid& grid,
-		wxGridCellAttr& attr,
-		wxDC& dc,
-		const wxRect& rect,
-		int row, int col,
-		bool isSelected);
-	virtual wxSize GetBestSize(wxGrid& grid,
-		wxGridCellAttr& attr,
-		wxDC& dc,
-		int row, int col);
-	virtual wxGridCellRenderer *Clone() const;
-	void SetParameters(const wxString& params);
+    GridCellChoiceRenderer(const wxString &choices);
+
+    virtual void Draw(wxGrid &grid,
+                      wxGridCellAttr &attr,
+                      wxDC &dc,
+                      const wxRect &rect,
+                      int row, int col,
+                      bool isSelected);
+
+    virtual wxSize GetBestSize(wxGrid &grid,
+                               wxGridCellAttr &attr,
+                               wxDC &dc,
+                               int row, int col);
+
+    virtual wxGridCellRenderer *Clone() const;
+
+    void SetParameters(const wxString &params);
 
 protected:
-	wxString GetString(const wxGrid& grid, int row, int col);
-	bool m_init;
+    wxString GetString(const wxGrid &grid, int row, int col);
 
-	wxArrayString m_choices;
+    bool m_init;
+
+    wxArrayString m_choices;
 };
 
-class GridCellChoiceEditor : public wxGridCellEditor
-{
+class GridCellChoiceEditor : public wxGridCellEditor {
 public:
-	GridCellChoiceEditor();
-	GridCellChoiceEditor(const wxString& choices);
+    GridCellChoiceEditor();
 
-	virtual void Create(wxWindow* parent,
-		wxWindowID id,
-		wxEvtHandler* evtHandler);
+    GridCellChoiceEditor(const wxString &choices);
 
-	virtual void SetSize(const wxRect& rect);
+    virtual void Create(wxWindow *parent,
+                        wxWindowID id,
+                        wxEvtHandler *evtHandler);
 
-	
-	virtual void PaintBackground(wxDC& dc,
-		const wxRect& rectCell,
-		const wxGridCellAttr& attr);
+    virtual void SetSize(const wxRect &rect);
 
 
-	virtual void Reset();
+    virtual void PaintBackground(wxDC &dc,
+                                 const wxRect &rectCell,
+                                 const wxGridCellAttr &attr);
 
-	// parameters string format is "item1[,item2[...,itemN]]"
-	virtual void SetParameters(const wxString& params);
 
-	virtual wxGridCellEditor *Clone() const;
+    virtual void Reset();
 
-	// added GetValue so we can get the value which is in the control
-	virtual wxString GetValue() const;
-	virtual void BeginEdit(int row, int col, wxGrid* grid);
-	virtual bool EndEdit(int row, int col, const wxGrid* grid,
-		const wxString& oldval, wxString *newval);
-	virtual void ApplyEdit(int row, int col, wxGrid* grid);
+    // parameters string format is "item1[,item2[...,itemN]]"
+    virtual void SetParameters(const wxString &params);
 
-	// update with choices based on table base row and column
-	void UpdateComboBox();
+    virtual wxGridCellEditor *Clone() const;
+
+    // added GetValue so we can get the value which is in the control
+    virtual wxString GetValue() const;
+
+    virtual void BeginEdit(int row, int col, wxGrid *grid);
+
+    virtual bool EndEdit(int row, int col, const wxGrid *grid,
+                         const wxString &oldval, wxString *newval);
+
+    virtual void ApplyEdit(int row, int col, wxGrid *grid);
+
+    // update with choices based on table base row and column
+    void UpdateComboBox();
+
 private:
-	long m_index;
-	bool m_init;
-	wxComboBox *Combo() const { return (wxComboBox *)m_control; }
-	wxString        m_value;
-	wxArrayString   m_choices;
+    long m_index;
+    bool m_init;
 
-	wxDECLARE_NO_COPY_CLASS(GridCellChoiceEditor);
+    wxComboBox *Combo() const { return (wxComboBox *) m_control; }
+
+    wxString m_value;
+    wxArrayString m_choices;
+
+wxDECLARE_NO_COPY_CLASS(GridCellChoiceEditor);
 };
 
 
 // renders check box based on wxGridCellBoolRenderer and wxGridCellBoolEditor
 // renderer for boolean fields
-class GridCellCheckBoxRenderer : public wxGridCellRenderer
-{
+class GridCellCheckBoxRenderer : public wxGridCellRenderer {
 public:
-	// draw a check mark or nothing
-	virtual void Draw(wxGrid& grid,
-		wxGridCellAttr& attr,
-		wxDC& dc,
-		const wxRect& rect,
-		int row, int col,
-		bool isSelected);
+    // draw a check mark or nothing
+    virtual void Draw(wxGrid &grid,
+                      wxGridCellAttr &attr,
+                      wxDC &dc,
+                      const wxRect &rect,
+                      int row, int col,
+                      bool isSelected);
 
-	// return the checkmark size
-	virtual wxSize GetBestSize(wxGrid& grid,
-		wxGridCellAttr& attr,
-		wxDC& dc,
-		int row, int col);
+    // return the checkmark size
+    virtual wxSize GetBestSize(wxGrid &grid,
+                               wxGridCellAttr &attr,
+                               wxDC &dc,
+                               int row, int col);
 
-	virtual wxGridCellRenderer *Clone() const
-	{
-		return new GridCellCheckBoxRenderer;
-	}
+    virtual wxGridCellRenderer *Clone() const {
+        return new GridCellCheckBoxRenderer;
+    }
 
 private:
-	static wxSize ms_sizeCheckMark;
+    static wxSize ms_sizeCheckMark;
 };
 
-class GridCellCheckBoxEditor : public wxGridCellEditor
-{
+class GridCellCheckBoxEditor : public wxGridCellEditor {
 public:
-	GridCellCheckBoxEditor() { }
+    GridCellCheckBoxEditor() {}
 
-	virtual void Create(wxWindow* parent,
-		wxWindowID id,
-		wxEvtHandler* evtHandler);
+    virtual void Create(wxWindow *parent,
+                        wxWindowID id,
+                        wxEvtHandler *evtHandler);
 
-	virtual void SetSize(const wxRect& rect);
-	virtual void Show(bool show, wxGridCellAttr *attr = NULL);
+    virtual void SetSize(const wxRect &rect);
 
-	virtual bool IsAcceptedKey(wxKeyEvent& event);
-	virtual void BeginEdit(int row, int col, wxGrid* grid);
-	virtual bool EndEdit(int row, int col, const wxGrid* grid,
-		const wxString& oldval, wxString *newval);
-	virtual void ApplyEdit(int row, int col, wxGrid* grid);
+    virtual void Show(bool show, wxGridCellAttr *attr = NULL);
 
-	virtual void Reset();
+    virtual bool IsAcceptedKey(wxKeyEvent &event);
+
+    virtual void BeginEdit(int row, int col, wxGrid *grid);
+
+    virtual bool EndEdit(int row, int col, const wxGrid *grid,
+                         const wxString &oldval, wxString *newval);
+
+    virtual void ApplyEdit(int row, int col, wxGrid *grid);
+
+    virtual void Reset();
 //	virtual void StartingClick();
 //	virtual void StartingKey(wxKeyEvent& event);
 
-	virtual wxGridCellEditor *Clone() const
-	{
-		return new GridCellCheckBoxEditor;
-	}
+    virtual wxGridCellEditor *Clone() const {
+        return new GridCellCheckBoxEditor;
+    }
 
-	virtual wxString GetValue() const;
+    virtual wxString GetValue() const;
 
 protected:
-	wxCheckBox *CBox() const { return (wxCheckBox *)m_control; }
+    wxCheckBox *CBox() const { return (wxCheckBox *) m_control; }
 
 private:
-	bool m_value;
+    bool m_value;
 
-	wxDECLARE_NO_COPY_CLASS(GridCellCheckBoxEditor);
+wxDECLARE_NO_COPY_CLASS(GridCellCheckBoxEditor);
 };
-
 
 
 #endif

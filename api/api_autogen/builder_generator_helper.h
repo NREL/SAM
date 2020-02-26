@@ -19,13 +19,13 @@ static std::map<std::string, std::vector<std::string>> cmod_to_extra_modules = {
 };
 
 static std::map<std::string, std::vector<std::string>> extra_modules_to_members = {
-        {"adjust", {"constant", "hourly", "periods"}},
+        {"adjust",    {"constant", "hourly", "periods"}},
         {"dc_adjust", {"constant", "hourly", "periods"}}
 };
 
 std::string find_module_of_var(std::string var, std::string cmod);
 
-int get_varvalue_type(std::string name, std::string& config);
+int get_varvalue_type(std::string name, std::string &config);
 
 std::string print_parameter_type(vertex *v, std::string cmod,
                                  std::unordered_map<std::string, ssc_module_t> &module_map);
@@ -34,14 +34,14 @@ std::string print_return_type(vertex *v, std::string cmod,
                               std::unordered_map<std::string, ssc_module_t> &module_map);
 
 
-void export_function_declaration(std::ofstream& ff, std::string return_type, std::string name,
+void export_function_declaration(std::ofstream &ff, std::string return_type, std::string name,
                                  std::vector<std::string> inputs);
 
 std::string spell_type(int type);
 
-std::string var_value_to_json(VarValue* vv);
+std::string var_value_to_json(VarValue *vv);
 
-std::string ssc_value_to_json(int ssc_type, VarValue* vv);
+std::string ssc_value_to_json(int ssc_type, VarValue *vv);
 
 std::string translate_lookup_type(std::string name, std::string config);
 

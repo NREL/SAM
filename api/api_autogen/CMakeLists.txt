@@ -8,19 +8,19 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 cmake_minimum_required(VERSION 2.8)
 
-if(APPLE)
+if (APPLE)
     set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
-endif()
+endif ()
 
 if (UNIX AND NOT CMAKE_C_COMPILER)
     set(CMAKE_C_COMPILER gcc)
     set(CMAKE_CXX_COMPILER g++)
-endif()
+endif ()
 
 
 #####################################################################################################################
 #
-# Project Settings 
+# Project Settings
 #
 #####################################################################################################################
 
@@ -42,23 +42,22 @@ file(TO_CMAKE_PATH ../../../ssc/shared/lib_util.cpp SSC_SOURCES)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-if(MSVC)
+if (MSVC)
     add_compile_options(/MP /W3)
-    add_compile_definitions( _CRT_SECURE_NO_DEPRECATE=1 _CRT_NON_CONFORMING_SWPRINTFS=1
+    add_compile_definitions(_CRT_SECURE_NO_DEPRECATE=1 _CRT_NON_CONFORMING_SWPRINTFS=1
             _SCL_SECURE_NO_WARNINGS=1 __WXMSW__ _UNICODE NOPCH)
     foreach (flag_var CMAKE_C_FLAGS_DEBUG CMAKE_CXX_FLAGS_DEBUG)
         set(${flag_var} "${${flag_var}} /D_DEBUG" CACHE STRING "compile flags" FORCE)
-    endforeach()
-else()
-    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    endforeach ()
+else ()
+    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         add_compile_definitions(_DEBUG)
-    else()
-        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -DNDEBUG" )
-    endif()
-endif()
+    else ()
+        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -DNDEBUG")
+    endif ()
+endif ()
 
-add_compile_definitions( LK_USE_WXWIDGETS )
-
+add_compile_definitions(LK_USE_WXWIDGETS)
 
 
 #####################################################################################################################
@@ -70,23 +69,23 @@ add_compile_definitions( LK_USE_WXWIDGETS )
 if (UNIX)
     set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
     find_package(wxWidgets COMPONENTS xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base REQUIRED)
-else()
+else ()
     set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
     find_package(wxWidgets COMPONENTS qa webview aui richtext html propgrid adv net stc core base scintilla REQUIRED)
-endif()
+endif ()
 
 include(${wxWidgets_USE_FILE})
 
 
 #####################################################################################################################
-# 
+#
 # CMake Targets
 #
 #####################################################################################################################
 
 add_executable(export_config
         ${SAM_SOURCES}
-		${SSC_SOURCES}
+        ${SSC_SOURCES}
         export_config.cpp export_config.h
         startup_extractor.cpp startup_extractor.h
         ui_form_extractor.cpp ui_form_extractor.h
@@ -99,23 +98,22 @@ add_executable(export_config
         test.cpp test.h
         builder_generator.h builder_generator.cpp
         lk_eval.cpp lk_eval.h
-        builder_generator_helper.h builder_generator_helper.cpp 
-		builder_C_API.cpp builder_C_API.h 
-		builder_PySAM.cpp builder_PySAM.h)
+        builder_generator_helper.h builder_generator_helper.cpp
+        builder_C_API.cpp builder_C_API.h
+        builder_PySAM.cpp builder_PySAM.h)
 
-target_include_directories(export_config SYSTEM PRIVATE ../../src $ENV{SSCDIR} $ENV{SSCDIR}/tcs $ENV{WEXDIR}/include $ENV{LKDIR}/include )
+target_include_directories(export_config SYSTEM PRIVATE ../../src $ENV{SSCDIR} $ENV{SSCDIR}/tcs $ENV{WEXDIR}/include $ENV{LKDIR}/include)
 
 set_target_properties(export_config
-    PROPERTIES
-    DEBUG_POSTFIX "d"
-    PREFIX ""
-    )
+        PROPERTIES
+        DEBUG_POSTFIX "d"
+        PREFIX ""
+        )
 if (MSVC)
     set_target_properties(export_config
-        PROPERTIES
-        LINK_FLAGS /SUBSYSTEM:CONSOLE)
-endif()
-
+            PROPERTIES
+            LINK_FLAGS /SUBSYSTEM:CONSOLE)
+endif ()
 
 
 #####################################################################################################################
@@ -126,17 +124,17 @@ endif()
 
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
     target_link_libraries(export_config lk wex ssc)
-else()
+else ()
     unset(WEX_LIB CACHE)
     unset(LK_LIB CACHE)
     unset(SSC_LIB CACHE)
-    find_library( WEX_LIB
+    find_library(WEX_LIB
             NAMES wex.a wex.lib
             PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Release)
-    find_library( LK_LIB
+    find_library(LK_LIB
             NAMES lk.a lk.lib
             PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
-    find_library( SSC_LIB
+    find_library(SSC_LIB
             NAMES ssc.dylib ssc.lib ssc.so
             PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
     target_link_libraries(export_config optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
@@ -145,29 +143,29 @@ else()
         unset(LKD_LIB CACHE)
         unset(WEXD_LIB CACHE)
         unset(SSCD_LIB CACHE)
-        find_library( WEXD_LIB
+        find_library(WEXD_LIB
                 NAMES wexd.a wexd.lib
                 PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Debug)
-        find_library( LKD_LIB
+        find_library(LKD_LIB
                 NAMES lkd.a lkd.lib
                 PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Debug)
-        find_library( SSCD_LIB
+        find_library(SSCD_LIB
                 NAMES sscd.dylib sscd.lib sscd.so
                 PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
         target_link_libraries(export_config debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
-    endif()
-endif()
+    endif ()
+endif ()
 
 if (UNIX)
     target_link_libraries(export_config -lm)
-endif()
+endif ()
 
 target_link_libraries(export_config ${wxWidgets_LIBRARIES})
 
 # need to tell executable where to find libssc.so
-if(APPLE)
-    set_target_properties(export_config PROPERTIES LINK_FLAGS  "-Wl,-rpath -Wl,$ENV{SSCDIR}/ssc/")
-endif()
+if (APPLE)
+    set_target_properties(export_config PROPERTIES LINK_FLAGS "-Wl,-rpath -Wl,$ENV{SSCDIR}/ssc/")
+endif ()
 
 
 #####################################################################################################################
@@ -176,17 +174,17 @@ endif()
 #
 #####################################################################################################################
 
-if(DEFINED ENV{PYSAMDIR} )
+if (DEFINED ENV{PYSAMDIR})
     set(PYSAM $ENV{PYSAMDIR})
-else()
-    set(PYSAM ${CMAKE_CURRENT_SOURCE_DIR}/library/PySAM )
-endif()
+else ()
+    set(PYSAM ${CMAKE_CURRENT_SOURCE_DIR}/library/PySAM)
+endif ()
 
-if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+if (NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     file(TO_NATIVE_PATH $ENV{SAMNTDIR}/api API_DEST)
     add_custom_command(
-        TARGET export_config
-        POST_BUILD
-        COMMAND "$<TARGET_FILE:export_config>" --api ${API_DEST} --pysam ${PYSAM}
+            TARGET export_config
+            POST_BUILD
+            COMMAND "$<TARGET_FILE:export_config>" --api ${API_DEST} --pysam ${PYSAM}
     )
-endif()
+endif ()

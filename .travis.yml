@@ -4,39 +4,38 @@ sudo: required
 language: c++
 
 before_script:
-  - wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.1/wxWidgets-3.1.1.tar.bz2
-  - tar jxf wxWidgets-3.1.1.tar.bz2
-  - cd wxWidgets-3.1.1
-  - ./configure --prefix=$HOME/wx-3.1.1 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
-  - make -j2 all install
-  - sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
-  - user=$(echo $TRAVIS_REPO_SLUG | sed 's,/.*$,,')
-  - (cd ../ && pwd)
-  # - export GTEST=/home/travis/build/$user/googletest
-  - export LKDIR=/home/travis/build/$user/lk
-  - export WEXDIR=/home/travis/build/$user/wex
-  - export SSCDIR=/home/travis/build/$user/ssc
-  - export SAMNTDIR=/home/travis/build/$user/SAM
-  - git clone https://github.com/google/googletest /home/travis/build/$user/googletest
-  - git clone https://github.com/$user/lk $LKDIR
-  - git clone https://github.com/$user/wex $WEXDIR
-  - git clone https://github.com/$user/ssc $SSCDIR
-  
+    - wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.1/wxWidgets-3.1.1.tar.bz2
+    - tar jxf wxWidgets-3.1.1.tar.bz2
+    - cd wxWidgets-3.1.1
+    - ./configure --prefix=$HOME/wx-3.1.1 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
+    - make -j2 all install
+    - sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
+    - user=$(echo $TRAVIS_REPO_SLUG | sed 's,/.*$,,')
+    - (cd ../ && pwd)
+    # - export GTEST=/home/travis/build/$user/googletest
+    - export LKDIR=/home/travis/build/$user/lk
+    - export WEXDIR=/home/travis/build/$user/wex
+    - export SSCDIR=/home/travis/build/$user/ssc
+    - export SAMNTDIR=/home/travis/build/$user/SAM
+    - git clone https://github.com/google/googletest /home/travis/build/$user/googletest
+    - git clone https://github.com/$user/lk $LKDIR
+    - git clone https://github.com/$user/wex $WEXDIR
+    - git clone https://github.com/$user/ssc $SSCDIR
+
 script:
-  - export PATH=$PATH:$HOME/wx-3.1.1/bin
-  - mkdir $LKDIR/build && cd $LKDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 4 --target lk 
-  - mkdir $WEXDIR/build && cd $WEXDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 4 --target wex
-  - mkdir $SSCDIR/build && cd $SSCDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_tests=1 -Dskip_tools=1 && cmake --build . -j 4 --target ssc
-  - mkdir $SAMNTDIR/build && cd $SAMNTDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_api=1 && make -j 4
+    - export PATH=$PATH:$HOME/wx-3.1.1/bin
+    - mkdir $LKDIR/build && cd $LKDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 4 --target lk
+    - mkdir $WEXDIR/build && cd $WEXDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 4 --target wex
+    - mkdir $SSCDIR/build && cd $SSCDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_tests=1 -Dskip_tools=1 && cmake --build . -j 4 --target ssc
+    - mkdir $SAMNTDIR/build && cd $SAMNTDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_api=1 && make -j 4
 
 install:
-  - sudo apt-get install -y libwebkitgtk-dev libgtk2.0-dev libgl1-mesa-dev mesa-common-dev freeglut3-dev libcurl4-openssl-dev libc6
+    - sudo apt-get install -y libwebkitgtk-dev libgtk2.0-dev libgl1-mesa-dev mesa-common-dev freeglut3-dev libcurl4-openssl-dev libc6
 
 branches:
-  only:
-  - master
-  - develop
-  - MHK
-  - patch
-  - wind_pruf
-  
+    only:
+        - master
+        - develop
+        - MHK
+        - patch
+        - wind_pruf

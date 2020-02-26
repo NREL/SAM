@@ -7,7 +7,7 @@
 #include "equations.h"
 #include "variables.h"
 
-#if defined(__WINDOWS__)&&defined(__DLL__)
+#if defined(__WINDOWS__) && defined(__DLL__)
 #define SAMEXPORT __declspec(dllexport)
 #else
 #define SAMEXPORT
