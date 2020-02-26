@@ -13,25 +13,25 @@
  *  One per config?
  */
 
-class equation_extractor : public EqnDatabase{
+class equation_extractor : public EqnDatabase {
 private:
     std::string ui_form_name;
     std::vector<std::string> errors;
-    lk::env_t* m_env;
+    lk::env_t *m_env;
 
 public:
-    equation_extractor(std::string name){
+    equation_extractor(std::string name) {
         ui_form_name = name;
         m_env = new lk::env_t;
-        m_env->register_funcs( lk::stdlib_basic() );
-        m_env->register_funcs( lk::stdlib_sysio() );
-        m_env->register_funcs( lk::stdlib_math() );
-        m_env->register_funcs( lk::stdlib_string() );
-        m_env->register_funcs( invoke_ssc_funcs() );
-        m_env->register_funcs( invoke_casecallback_funcs() );
+        m_env->register_funcs(lk::stdlib_basic());
+        m_env->register_funcs(lk::stdlib_sysio());
+        m_env->register_funcs(lk::stdlib_math());
+        m_env->register_funcs(lk::stdlib_string());
+        m_env->register_funcs(invoke_ssc_funcs());
+        m_env->register_funcs(invoke_casecallback_funcs());
     };
 
-    ~equation_extractor(){
+    ~equation_extractor() {
         delete m_env;
     }
 
@@ -42,7 +42,7 @@ public:
     void export_to_equation_info();
 
 
-    std::vector<std::string> get_errors(){
+    std::vector<std::string> get_errors() {
         return errors;
     }
 };

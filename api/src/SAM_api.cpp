@@ -9,7 +9,7 @@
 
 #define _LIB_UTIL_CHECK_
 
-#if defined(__WINDOWS__)||defined(WIN32)||defined(_WIN32)||defined(__MINGW___)||defined(_MSC_VER)
+#if defined(__WINDOWS__) || defined(WIN32) || defined(_WIN32) || defined(__MINGW___) || defined(_MSC_VER)
 #include <Windows.h>
 #define RTLD_LAZY   0x000 /* accept unresolved externs */
 
@@ -17,18 +17,22 @@ void *dll_open(const char *name) { return (void*) ::LoadLibraryA(name); }
 void dll_close(void *handle) { ::FreeLibrary((HMODULE)handle); }
 void *dll_sym(void *handle, const char *name) { return (void*) ::GetProcAddress((HMODULE)handle, name); }
 #else
+
 #include <dlfcn.h>
+
 void *dll_open(const char *name) { return dlopen(name, RTLD_LAZY); }
+
 void dll_close(void *handle) { dlclose(handle); }
+
 void *dll_sym(void *handle, const char *name) { return dlsym(handle, name); }
 
 #endif
 
-void check_dll_loaded(void *handle){
-	if (!handle) {
+void check_dll_loaded(void *handle) {
+    if (!handle) {
         std::string msg("Cannot open SAM library");
-        throw std::runtime_error( msg );
-	}
+        throw std::runtime_error(msg);
+    }
 }
 
 #define CHECK_FUNC_LOADED() \
@@ -172,96 +176,96 @@ SAM_get_table_func(void *handle, const char *cmod_symbol, const char *group, con
 // Wrappers around ssc_var_t for SAM_data
 //
 
-var_data* get_vardata(SAM_var d){
-    auto *vd = static_cast<var_data*>(d);
+var_data *get_vardata(SAM_var d) {
+    auto *vd = static_cast<var_data *>(d);
     if (!vd) throw std::runtime_error("SAM_table is NULL.");
     return vd;
 }
 
-SAM_EXPORT SAM_var SAM_var_construct(SAM_error *err){
+SAM_EXPORT SAM_var SAM_var_construct(SAM_error *err) {
     SAM_table result = nullptr;
-    translateExceptions(err, [&]{
+    translateExceptions(err, [&] {
         result = ssc_var_create();
     });
     return result;
 }
 
-SAM_EXPORT void SAM_var_destruct(SAM_var d, SAM_error *err){
-    translateExceptions(err, [&]{
-        auto *vd = static_cast<var_data*>(d);
+SAM_EXPORT void SAM_var_destruct(SAM_var d, SAM_error *err) {
+    translateExceptions(err, [&] {
+        auto *vd = static_cast<var_data *>(d);
         delete vd;
     });
 }
 
-SAM_EXPORT int SAM_var_query(SAM_var d, SAM_error *err){
+SAM_EXPORT int SAM_var_query(SAM_var d, SAM_error *err) {
     int type = 0;
-    translateExceptions(err, [&]{
+    translateExceptions(err, [&] {
         auto vd = get_vardata(d);
         type = vd->type;
     });
     return type;
 }
 
-SAM_EXPORT void SAM_var_size(SAM_var d, int* nrows, int* ncols, SAM_error *err){
-    translateExceptions(err, [&]{
+SAM_EXPORT void SAM_var_size(SAM_var d, int *nrows, int *ncols, SAM_error *err) {
+    translateExceptions(err, [&] {
         ssc_var_size(d, nrows, ncols);
     });
 }
 
-SAM_EXPORT const char * SAM_var_get_string(SAM_var d, SAM_error *err){
-	const char * str;
-	translateExceptions(err, [&]{
+SAM_EXPORT const char *SAM_var_get_string(SAM_var d, SAM_error *err) {
+    const char *str;
+    translateExceptions(err, [&] {
         str = ssc_var_get_string(d);
     });
-	return str;
+    return str;
 }
 
-SAM_EXPORT double SAM_var_get_number(SAM_var d, SAM_error *err){
-	double num;
-	translateExceptions(err, [&]{
+SAM_EXPORT double SAM_var_get_number(SAM_var d, SAM_error *err) {
+    double num;
+    translateExceptions(err, [&] {
         num = ssc_var_get_number(d);
     });
-	return num;
+    return num;
 }
 
-SAM_EXPORT double* SAM_var_get_arr(SAM_var d, int* length, SAM_error *err){
-	double* arr;
-	translateExceptions(err, [&]{
+SAM_EXPORT double *SAM_var_get_arr(SAM_var d, int *length, SAM_error *err) {
+    double *arr;
+    translateExceptions(err, [&] {
         arr = ssc_var_get_array(d, length);
     });
-	return arr;
+    return arr;
 }
 
-SAM_EXPORT double* SAM_var_get_mat(SAM_var d, int* nrows, int* ncols, SAM_error *err){
-	double* mat;
-	translateExceptions(err, [&]{
+SAM_EXPORT double *SAM_var_get_mat(SAM_var d, int *nrows, int *ncols, SAM_error *err) {
+    double *mat;
+    translateExceptions(err, [&] {
         mat = ssc_var_get_matrix(d, nrows, ncols);
     });
-	return mat;
+    return mat;
 }
 
-SAM_EXPORT SAM_table SAM_var_get_table(SAM_var d, SAM_error *err){
-	SAM_table tab;
-	translateExceptions(err, [&]{
+SAM_EXPORT SAM_table SAM_var_get_table(SAM_var d, SAM_error *err) {
+    SAM_table tab;
+    translateExceptions(err, [&] {
         tab = ssc_var_get_table(d);
     });
-	return tab;
+    return tab;
 }
 
-SAM_EXPORT SAM_var SAM_var_get_datarr(SAM_var d, int r, SAM_error *err){
-	SAM_var datarr;
-	translateExceptions(err, [&]{
+SAM_EXPORT SAM_var SAM_var_get_datarr(SAM_var d, int r, SAM_error *err) {
+    SAM_var datarr;
+    translateExceptions(err, [&] {
         datarr = ssc_var_get_var_array(d, r);
     });
-	return datarr;
+    return datarr;
 }
 
-SAM_EXPORT SAM_var SAM_var_get_datmat(SAM_var d, int r, int c, SAM_error *err){
-	SAM_var datmat;
-	translateExceptions(err, [&]{
-		datmat = ssc_var_get_var_matrix(d, r, c);
+SAM_EXPORT SAM_var SAM_var_get_datmat(SAM_var d, int r, int c, SAM_error *err) {
+    SAM_var datmat;
+    translateExceptions(err, [&] {
+        datmat = ssc_var_get_var_matrix(d, r, c);
     });
-	return datmat;
+    return datmat;
 }
 
 //
@@ -271,49 +275,49 @@ SAM_EXPORT SAM_var SAM_var_get_datmat(SAM_var d, int r, int c, SAM_error *err){
 #define GET_VARTABLE() \
 auto *vt = static_cast<var_table*>(t); if (!vt) throw std::runtime_error("SAM_table is NULL.");
 
-SAM_EXPORT SAM_table SAM_table_construct(SAM_error *err){
+SAM_EXPORT SAM_table SAM_table_construct(SAM_error *err) {
     SAM_table result = nullptr;
-    translateExceptions(err, [&]{
+    translateExceptions(err, [&] {
 
         result = ssc_data_create();
     });
     return result;
 }
 
-SAM_EXPORT void SAM_table_set_num(SAM_table t, const char* key, double num, SAM_error *err){
-    translateExceptions(err, [&]{
+SAM_EXPORT void SAM_table_set_num(SAM_table t, const char *key, double num, SAM_error *err) {
+    translateExceptions(err, [&] {
         GET_VARTABLE()
-        vt->assign( key, var_data( num ) );
+        vt->assign(key, var_data(num));
     });
 }
 
-SAM_EXPORT void SAM_table_set_array(SAM_table t, const char* key, double* arr, int n, SAM_error *err){
-    translateExceptions(err, [&]{
+SAM_EXPORT void SAM_table_set_array(SAM_table t, const char *key, double *arr, int n, SAM_error *err) {
+    translateExceptions(err, [&] {
         GET_VARTABLE()
-        vt->assign( key, var_data( arr, n ) );
+        vt->assign(key, var_data(arr, n));
     });
 }
 
-SAM_EXPORT void SAM_table_set_matrix(SAM_table t, const char* key, double* arr, int nrows, int ncols, SAM_error *err){
-    translateExceptions(err, [&]{
+SAM_EXPORT void SAM_table_set_matrix(SAM_table t, const char *key, double *arr, int nrows, int ncols, SAM_error *err) {
+    translateExceptions(err, [&] {
         GET_VARTABLE()
-        vt->assign( key, var_data( arr, nrows, ncols ) );
+        vt->assign(key, var_data(arr, nrows, ncols));
     });
 }
 
-SAM_EXPORT void SAM_table_set_string(SAM_table t, const char* key, const char* str, SAM_error *err){
-    translateExceptions(err, [&]{
+SAM_EXPORT void SAM_table_set_string(SAM_table t, const char *key, const char *str, SAM_error *err) {
+    translateExceptions(err, [&] {
         GET_VARTABLE()
-        vt->assign( key, std::string( str ) );
+        vt->assign(key, std::string(str));
     });
 }
 
-SAM_EXPORT void SAM_table_set_table(SAM_table t, const char *key, SAM_table tab, SAM_error *err){
-    translateExceptions(err, [&]{
+SAM_EXPORT void SAM_table_set_table(SAM_table t, const char *key, SAM_table tab, SAM_error *err) {
+    translateExceptions(err, [&] {
         GET_VARTABLE()
-        auto *vt2 = static_cast<var_table*>(tab);
+        auto *vt2 = static_cast<var_table *>(tab);
         if (!vt2) throw std::runtime_error("Entry value is not a table.");
-        var_data *dat = vt->assign( key, var_data() );
+        var_data *dat = vt->assign(key, var_data());
         dat->type = SSC_TABLE;
         dat->table = *vt2;
     });
@@ -326,9 +330,9 @@ if ( dat->type != ssc_type ) throw std::runtime_error(std::string(__func__) \
     + ": " + std::string(key) + " is type " + std::string(dat->type_name()));
 
 
-SAM_EXPORT double SAM_table_get_num(SAM_table t, const char *key, SAM_error *err){
+SAM_EXPORT double SAM_table_get_num(SAM_table t, const char *key, SAM_error *err) {
     double result;
-    translateExceptions(err, [&]{
+    translateExceptions(err, [&] {
         GET_VARTABLE()
         GET_VARDATA(key, SSC_NUMBER)
         result = dat->num.at(0);
@@ -336,9 +340,9 @@ SAM_EXPORT double SAM_table_get_num(SAM_table t, const char *key, SAM_error *err
     return result;
 }
 
-SAM_EXPORT double * SAM_table_get_array(SAM_table t, const char *key, int *n, SAM_error *err) {
-    double* result = nullptr;
-    translateExceptions(err, [&]{
+SAM_EXPORT double *SAM_table_get_array(SAM_table t, const char *key, int *n, SAM_error *err) {
+    double *result = nullptr;
+    translateExceptions(err, [&] {
         GET_VARTABLE()
         GET_VARDATA(key, SSC_ARRAY)
         if (n) *n = (int) dat->num.length();
@@ -349,8 +353,8 @@ SAM_EXPORT double * SAM_table_get_array(SAM_table t, const char *key, int *n, SA
 
 SAM_EXPORT double *
 SAM_table_get_matrix(SAM_table t, const char *key, int *nrows, int *ncols, SAM_error *err) {
-    double* result = nullptr;
-    translateExceptions(err, [&]{
+    double *result = nullptr;
+    translateExceptions(err, [&] {
         GET_VARTABLE()
         GET_VARDATA(key, SSC_MATRIX)
         if (nrows) *nrows = (int) dat->num.nrows();
@@ -360,9 +364,9 @@ SAM_table_get_matrix(SAM_table t, const char *key, int *nrows, int *ncols, SAM_e
     return result;
 }
 
-SAM_EXPORT SAM_table SAM_table_get_table(SAM_table t, const char *key, SAM_error *err){
+SAM_EXPORT SAM_table SAM_table_get_table(SAM_table t, const char *key, SAM_error *err) {
     SAM_table result = nullptr;
-    translateExceptions(err, [&]{
+    translateExceptions(err, [&] {
         GET_VARTABLE()
         GET_VARDATA(key, SSC_TABLE)
         result = &dat->table;
@@ -370,9 +374,9 @@ SAM_EXPORT SAM_table SAM_table_get_table(SAM_table t, const char *key, SAM_error
     return result;
 }
 
-SAM_EXPORT const char* SAM_table_get_string(SAM_table t, const char* key, SAM_error *err){
-    const char* result;
-    translateExceptions(err, [&]{
+SAM_EXPORT const char *SAM_table_get_string(SAM_table t, const char *key, SAM_error *err) {
+    const char *result;
+    translateExceptions(err, [&] {
         GET_VARTABLE()
         GET_VARDATA(key, SSC_STRING)
         result = dat->str.c_str();
@@ -381,71 +385,71 @@ SAM_EXPORT const char* SAM_table_get_string(SAM_table t, const char* key, SAM_er
 }
 
 SAM_EXPORT SAM_var SAM_table_get_datarr(SAM_table t, const char *key, int *len, SAM_error *err) {
-	SAM_var var;
-	translateExceptions(err, [&]{
+    SAM_var var;
+    translateExceptions(err, [&] {
         GET_VARTABLE()
         GET_VARDATA(key, SSC_DATARR)
         var = ssc_data_get_data_array(t, key, len);
     });
-	return var;
+    return var;
 }
 
 SAM_EXPORT SAM_var SAM_table_get_datmat(SAM_table t, const char *key, int *nrows, int *ncols, SAM_error *err) {
-	SAM_var var;
-	translateExceptions(err, [&]{
+    SAM_var var;
+    translateExceptions(err, [&] {
         GET_VARTABLE()
         GET_VARDATA(key, SSC_DATMAT)
         var = ssc_data_get_data_matrix(t, key, nrows, ncols);
     });
-	return var;
+    return var;
 }
 
 SAM_EXPORT void SAM_table_unassign_entry(SAM_table t, const char *key, SAM_error *err) {
-    translateExceptions(err, [&]{
+    translateExceptions(err, [&] {
         GET_VARTABLE()
-        vt->unassign( key );
+        vt->unassign(key);
     });
 }
 
 SAM_EXPORT void SAM_table_destruct(SAM_table t, SAM_error *err) {
-    translateExceptions(err, [&]{
-        auto *vt = static_cast<var_table*>(t);
+    translateExceptions(err, [&] {
+        auto *vt = static_cast<var_table *>(t);
         delete vt;
     });
 }
 
 
-SAM_EXPORT int SAM_table_size(SAM_table t, SAM_error *err){
+SAM_EXPORT int SAM_table_size(SAM_table t, SAM_error *err) {
     int result = 0;
-    translateExceptions(err, [&]{
+    translateExceptions(err, [&] {
         GET_VARTABLE()
-        result = (int)vt->size();
+        result = (int) vt->size();
     });
     return result;
 }
 
-SAM_EXPORT const char* SAM_table_key(SAM_table t, int pos, int *type, SAM_error *err){
-    const char* result = nullptr;
-    translateExceptions(err, [&]{
+SAM_EXPORT const char *SAM_table_key(SAM_table t, int pos, int *type, SAM_error *err) {
+    const char *result = nullptr;
+    translateExceptions(err, [&] {
         GET_VARTABLE()
         result = vt->key(pos);
         auto vd = vt->lookup(result);
-        *type = (int)vd->type;
+        *type = (int) vd->type;
     });
     return result;
 }
 
 
-SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_error *err){
-    translateExceptions(err, [&]{
+SAM_EXPORT int SAM_module_exec(const char *cmod, void *data, int verbosity, SAM_error *err) {
+    translateExceptions(err, [&] {
         ssc_module_t cm = ssc_module_create(cmod);
         if (!cm) throw std::runtime_error("Unable to create compute_module " + std::string(cmod));
 
-        if(verbosity == 0){
+        if (verbosity == 0) {
             ssc_module_exec_set_print(0);
         }
 
-        if (!ssc_module_exec( cm, data )){
+        if (!ssc_module_exec(cm, data)) {
             std::string str = std::string(cmod) + " execution error. " + ssc_module_log(cm, 0, nullptr, nullptr);
             ssc_module_free(cm);
             throw std::runtime_error(str);

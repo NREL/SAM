@@ -10,3346 +10,4030 @@
 
 """
 
-
-
-
 # List of Variables that are used in equations #
 
 ui_form_to_eqn_var_map = {
-	'Electric Building Load Calculator': {
-		('load_1', 'load_2', 'load_3', 'load_4', 'load_5', 'load_6', 'load_7', 'load_8', 'load_9', 'load_10', 'load_11', 'load_12'): 
-			('Monthly_util', 'monthly_load'),
-		('load_model'): 
-			('en_belpe'),
-		('escal_input_belpe'): 
-			('escal_belpe')	},
-	'Thermal Load': {
-		('thermal_load_user_data', 'normalize_to_thermal_bill', 'thermal_bill_data', 'thermal_scale_factor'): 
-			('thermal_1', 'thermal_peak_1', 'thermal_2', 'thermal_peak_2', 'thermal_3', 'thermal_peak_3', 'thermal_4', 'thermal_peak_4', 'thermal_5', 'thermal_peak_5', 'thermal_6', 'thermal_peak_6', 'thermal_7', 'thermal_peak_7', 'thermal_8', 'thermal_peak_8', 'thermal_9', 'thermal_peak_9', 'thermal_10', 'thermal_peak_10', 'thermal_11', 'thermal_peak_11', 'thermal_12', 'thermal_peak_12', 'thermal_load', 'thermal_load_annual_total', 'thermal_annual_peak')	},
-	'ISCC Parasitics': {
-		(): 
-			('bop_array'),
-		('bop_par', 'bop_par_f', 'bop_par_0', 'bop_par_1', 'bop_par_2', 'W_dot_solar_des'): 
-			('csp.pt.par.calc.bop'),
-		('pb_fixed_par', 'fossil_output', 'W_dot_solar_des'): 
-			('pb_fixed_par_mwe')	},
-	'ISCC Receiver and Powerblock': {
-		('ngcc_model', 'q_pb_design', 'pinch_point_coldside', 'pinch_point_hotside', 'elev', 'rec_htf', 'field_fl_props'): 
-			('W_dot_solar_des', 'T_htf_cold_des', 'fossil_output', 'max_solar_design', 'T_steam_sh_out_des'),
-		(): 
-			('ngcc_model'),
-		('nameplate'): 
-			('system_capacity'),
-		('T_steam_sh_out_des', 'pinch_point_hotside'): 
-			('T_htf_hot_des'),
-		('W_dot_solar_des'): 
-			('nameplate')	},
-	'PV Losses': {
-		('subarray3_soiling'): 
-			('subarray3_soiling_annual_average'),
-		('subarray2_soiling'): 
-			('subarray2_soiling_annual_average'),
-		('subarray4_mismatch_loss', 'subarray4_diodeconn_loss', 'subarray4_dcwiring_loss', 'subarray4_tracking_loss', 'subarray4_nameplate_loss', 'dcoptimizer_loss'): 
-			('subarray4_dcloss'),
-		('subarray1_soiling'): 
-			('subarray1_soiling_annual_average'),
-		('subarray4_soiling'): 
-			('subarray4_soiling_annual_average'),
-		('subarray3_mismatch_loss', 'subarray3_diodeconn_loss', 'subarray3_dcwiring_loss', 'subarray3_tracking_loss', 'subarray3_nameplate_loss', 'dcoptimizer_loss'): 
-			('subarray3_dcloss'),
-		('subarray2_mismatch_loss', 'subarray2_diodeconn_loss', 'subarray2_dcwiring_loss', 'subarray2_tracking_loss', 'subarray2_nameplate_loss', 'dcoptimizer_loss'): 
-			('subarray2_dcloss'),
-		('subarray1_mismatch_loss', 'subarray1_diodeconn_loss', 'subarray1_dcwiring_loss', 'subarray1_tracking_loss', 'subarray1_nameplate_loss', 'dcoptimizer_loss'): 
-			('subarray1_dcloss')	},
-	'Inverter CEC Coefficient Generator': {
-		('inv_cec_cg_vdco', 'inv_cec_cg_pdco', 'inv_cec_cg_psco', 'inv_cec_cg_paco', 'inv_cec_cg_c0', 'inv_cec_cg_c1', 'inv_cec_cg_c2', 'inv_cec_cg_c3'): 
-			('inv_cec_cg_eff_cec', 'inv_cec_cg_eff_euro')	},
-	'CEC Performance Model with User Entered Specifications': {
-		('6par_bvoc_units', '6par_bvoc_display', '6par_voc'): 
-			('6par_bvoc'),
-		('6par_aisc_units', '6par_aisc_display', '6par_isc'): 
-			('6par_aisc'),
-		('6par_vmp', '6par_imp'): 
-			('6par_pmp'),
-		('6par_vmp', '6par_imp', '6par_area'): 
-			('6par_mpeff')	},
-	'Simple Efficiency Module Model': {
-		('spe_reference', 'spe_eff0', 'spe_rad0', 'spe_eff1', 'spe_rad1', 'spe_eff2', 'spe_rad2', 'spe_eff3', 'spe_rad3', 'spe_eff4', 'spe_rad4', 'spe_area'): 
-			('spe_power')	},
-	'Financial Debt Residential': {
-		('real_discount_rate', 'inflation_rate', 'debt_fraction', 'federal_tax_rate', 'state_tax_rate', 'loan_rate'): 
-			('ui_wacc'),
-		(): 
-			('market'),
-		('ui_net_capital_cost', 'debt_fraction'): 
-			('loan_amount'),
-		('total_installed_cost', 'ibi_fed_amount', 'ibi_sta_amount', 'ibi_uti_amount', 'ibi_oth_amount', 'ibi_fed_percent', 'ibi_fed_percent_maxvalue', 'ibi_sta_percent', 'ibi_sta_percent_maxvalue', 'ibi_uti_percent', 'ibi_uti_percent_maxvalue', 'ibi_oth_percent', 'ibi_oth_percent_maxvalue', 'system_capacity', 'cbi_fed_amount', 'cbi_fed_maxvalue', 'cbi_sta_amount', 'cbi_sta_maxvalue', 'cbi_uti_amount', 'cbi_uti_maxvalue', 'cbi_oth_amount', 'cbi_oth_maxvalue'): 
-			('ui_net_capital_cost')	},
-	'Phys Trough Solar Field': {
-		('T_loop_out'): 
-			('SF_COPY_T_loop_out_des'),
-		('specified_q_dot_rec_des'): 
-			('SF_COPY_specified_q_dot_rec_des'),
-		('trough_loop_control'): 
-			('SCAInfoArray'),
-		('fixed_land_area', 'non_solar_field_land_area_multiplier'): 
-			('total_land_area'),
-		('q_pb_design', 'I_bn_des', 'total_loop_conversion_efficiency'): 
-			('total_required_aperture_for_SM1'),
-		('nSCA', 'nLoops', 'SCA_drives_elec'): 
-			('total_tracking_power'),
-		('total_aperture', 'Row_Distance', 'max_collector_width'): 
-			('fixed_land_area'),
-		('combo_htf_type'): 
-			('Fluid'),
-		('I_bn_des', 'total_loop_conversion_efficiency', 'total_aperture'): 
-			('field_thermal_output'),
-		('trough_loop_control', 'csp_dtr_sca_calc_sca_eff_1', 'csp_dtr_sca_calc_sca_eff_2', 'csp_dtr_sca_calc_sca_eff_3', 'csp_dtr_sca_calc_sca_eff_4', 'csp_dtr_sca_length_1', 'csp_dtr_sca_length_2', 'csp_dtr_sca_length_3', 'csp_dtr_sca_length_4', 'csp_dtr_hce_optical_eff_1', 'csp_dtr_hce_optical_eff_2', 'csp_dtr_hce_optical_eff_3', 'csp_dtr_hce_optical_eff_4'): 
-			('loop_optical_efficiency'),
-		('total_required_aperture_for_SM1', 'single_loop_aperature'): 
-			('required_number_of_loops_for_SM1'),
-		('m_dot_htfmax', 'fluid_dens_outlet_temp', 'min_inner_diameter'): 
-			('max_field_flow_velocity'),
-		('trough_loop_control'): 
-			('SCADefocusArray'),
-		('T_loop_in_des'): 
-			('SF_COPY_T_loop_in_des'),
-		('single_loop_aperature', 'nLoops'): 
-			('total_aperture'),
-		('trough_loop_control', 'csp_dtr_hce_diam_absorber_inner_1', 'csp_dtr_hce_diam_absorber_inner_2', 'csp_dtr_hce_diam_absorber_inner_3', 'csp_dtr_hce_diam_absorber_inner_4'): 
-			('min_inner_diameter'),
-		('I_bn_des'): 
-			('SF_COPY_I_bn_des'),
-		('m_dot_htfmin', 'fluid_dens_inlet_temp', 'min_inner_diameter'): 
-			('min_field_flow_velocity'),
-		('combo_FieldConfig'): 
-			('FieldConfig'),
-		('specified_solar_multiple', 'total_required_aperture_for_SM1', 'single_loop_aperature'): 
-			('nLoops'),
-		('trough_loop_control', 'I_bn_des', 'csp_dtr_hce_design_heat_loss_1', 'csp_dtr_hce_design_heat_loss_2', 'csp_dtr_hce_design_heat_loss_3', 'csp_dtr_hce_design_heat_loss_4', 'csp_dtr_sca_length_1', 'csp_dtr_sca_length_2', 'csp_dtr_sca_length_3', 'csp_dtr_sca_length_4', 'csp_dtr_sca_aperture_1', 'csp_dtr_sca_aperture_2', 'csp_dtr_sca_aperture_3', 'csp_dtr_sca_aperture_4'): 
-			('cspdtr_loop_hce_heat_loss'),
-		('trough_loop_control', 'csp_dtr_sca_aperture_1', 'csp_dtr_sca_aperture_2', 'csp_dtr_sca_aperture_3', 'csp_dtr_sca_aperture_4'): 
-			('single_loop_aperature'),
-		('specified_solar_multiple'): 
-			('SF_COPY_specified_solar_multiple'),
-		('combo_htf_type', 'Fluid', 'T_loop_in_des', 'T_loop_out', 'field_fl_props'): 
-			('field_htf_cp_avg'),
-		('field_thermal_output', 'q_pb_design'): 
-			('solar_mult'),
-		('loop_optical_efficiency', 'cspdtr_loop_hce_heat_loss'): 
-			('total_loop_conversion_efficiency'),
-		(): 
-			('defocus')	},
-	'Phys Trough System Design': {
-		('field_thermal_output'): 
-			('SD_COPY_field_thermal_output'),
-		('solar_mult'): 
-			('SD_COPY_solar_mult'),
-		('specified_solar_multiple', 'q_pb_design'): 
-			('specified_q_dot_rec_des'),
-		('nLoops'): 
-			('SD_COPY_nLoops'),
-		('total_aperture'): 
-			('SD_COPY_total_aperture'),
-		('specified_q_dot_rec_des'): 
-			('system_capacity')	},
-	'Financial Analysis Host Developer Parameters': {
-		('host_real_discount_rate', 'inflation_rate'): 
-			('host_nominal_discount_rate'),
-		('real_discount_rate', 'inflation_rate'): 
-			('nominal_discount_rate')	},
-	'PV Capital Costs': {
-		('battery_energy', 'battery_per_kWh', 'battery_power', 'battery_per_kW'): 
-			('battery_total'),
-		('en_batt', 'batt_power_discharge_max', 'batt_simple_enable', 'batt_simple_kw'): 
-			('battery_power'),
-		('system_use_lifetime_output'): 
-			('system_use_recapitalization'),
-		('module_total', 'inverter_total', 'battery_total', 'bos_equip_total', 'install_labor_total', 'install_margin_total'): 
-			('subtotal_direct'),
-		('total_installed_cost', 'modulearray_power'): 
-			('installed_per_capacity'),
-		('inverter_costunits', 'inverter_num_units', 'inverter_power', 'module_num_units', 'module_power', 'per_inverter'): 
-			('inverter_total'),
-		('bos_equip_fixed', 'modulearray_power', 'bos_equip_perwatt', 'modulearray_area', 'bos_equip_perarea'): 
-			('bos_equip_total'),
-		('grid_percent', 'total_direct_cost', 'modulearray_power', 'grid_per_watt', 'grid_fixed'): 
-			('grid_total'),
-		('install_labor_fixed', 'modulearray_power', 'install_labor_perwatt', 'modulearray_area', 'install_labor_perarea'): 
-			('install_labor_total'),
-		('total_land_area'): 
-			('modulearray_area'),
-		('inverter_power', 'inverter_num_units'): 
-			('inverterarray_power'),
-		('inverter_count'): 
-			('inverter_num_units'),
-		('landprep_per_acre', 'land_area_value', 'landprep_percent', 'total_direct_cost', 'modulearray_power', 'landprep_per_watt', 'landprep_fixed'): 
-			('landprep_total'),
-		('total_modules'): 
-			('module_num_units'),
-		('sales_tax_value', 'total_direct_cost', 'sales_tax_percent'): 
-			('sales_tax_total'),
-		('land_per_acre', 'land_area_value', 'land_percent', 'total_direct_cost', 'modulearray_power', 'land_per_watt', 'land_fixed'): 
-			('land_total'),
-		('permitting_total', 'engr_total', 'grid_total', 'land_total', 'landprep_total', 'sales_tax_total'): 
-			('total_indirect_cost'),
-		('module_power', 'module_num_units'): 
-			('modulearray_power'),
-		('install_margin_fixed', 'modulearray_power', 'install_margin_perwatt', 'modulearray_area', 'install_margin_perarea'): 
-			('install_margin_total'),
-		('permitting_percent', 'total_direct_cost', 'modulearray_power', 'permitting_per_watt', 'permitting_fixed'): 
-			('permitting_total'),
-		('system_capacity', 'dc_ac_ratio', 'inverter_model', 'inv_snl_paco', 'inv_ds_paco', 'inv_pd_paco', 'inv_cec_cg_paco'): 
-			('inverter_power'),
-		('module_total', 'inverter_total', 'battery_total', 'bos_equip_total', 'install_labor_total', 'install_margin_total', 'contingency'): 
-			('total_direct_cost'),
-		('contingency_percent', 'module_total', 'inverter_total', 'bos_equip_total', 'install_labor_total', 'install_margin_total', 'battery_total'): 
-			('contingency'),
-		('en_batt', 'batt_computed_bank_capacity', 'batt_simple_enable', 'batt_simple_kwh'): 
-			('battery_energy'),
-		('sales_tax_rate'): 
-			('sales_tax_value'),
-		('system_capacity', 'module_model', 'spe_power', 'cec_p_mp_ref', '6par_pmp', 'snl_ref_pmp', 'sd11par_Pmp0'): 
-			('module_power'),
-		('module_costunits', 'module_num_units', 'module_power', 'per_module'): 
-			('module_total'),
-		('total_land_area'): 
-			('land_area_value'),
-		('total_direct_cost', 'total_indirect_cost'): 
-			('total_installed_cost'),
-		('engr_percent', 'total_direct_cost', 'modulearray_power', 'engr_per_watt', 'engr_fixed'): 
-			('engr_total')	},
-	'Thermal Rate': {
-		('thermal_buy_rate_option', 'thermal_buy_rate_flat', 'thermal_timestep_buy_rate', 'thermal_sell_rate_option', 'thermal_sell_rate_flat', 'thermal_timestep_sell_rate'): 
-			('thermal_buy_rate', 'thermal_sell_rate')	},
-	'Fuel Cell O and M Costs': {
-		('batt_computed_bank_capacity'): 
-			('om_capacity1_nameplate'),
-		(): 
-			('add_om_num_types'),
-		('fuelcell_power_nameplate'): 
-			('om_capacity2_nameplate'),
-		('fc_fuel_cost', 'om_fuel_price_units'): 
-			('om_fuel_cost')	},
-	'Fuel Cell Costs': {
-		('fuelcell_power_total', 'fuelcell_per_kW'): 
-			('fuelcell_total'),
-		('battery_energy', 'battery_per_kWh', 'battery_power', 'battery_per_kW'): 
-			('battery_total'),
-		('en_batt', 'batt_power_discharge_max', 'batt_simple_enable', 'batt_simple_kw'): 
-			('battery_power'),
-		('system_use_lifetime_output'): 
-			('system_use_recapitalization'),
-		('module_total', 'inverter_total', 'battery_total', 'fuelcell_total', 'bos_equip_total', 'install_labor_total', 'install_margin_total'): 
-			('subtotal_direct'),
-		('total_installed_cost', 'modulearray_power'): 
-			('installed_per_capacity'),
-		('inverter_costunits', 'inverter_num_units', 'inverter_power', 'module_num_units', 'module_power', 'per_inverter'): 
-			('inverter_total'),
-		('bos_equip_fixed', 'modulearray_power', 'bos_equip_perwatt', 'battery_power', 'bos_equip_battperkw', 'fuelcell_power_nameplate', 'bos_equip_fcperkw', 'modulearray_area', 'bos_equip_perarea'): 
-			('bos_equip_total'),
-		('grid_percent', 'total_direct_cost', 'modulearray_power', 'grid_per_watt', 'battery_power', 'grid_per_battkw', 'fuelcell_power_nameplate', 'grid_per_fckw', 'grid_fixed'): 
-			('grid_total'),
-		('install_labor_fixed', 'modulearray_power', 'install_labor_perwatt', 'battery_power', 'install_labor_battperkw', 'fuelcell_power_nameplate', 'install_labor_fcperkw', 'modulearray_area', 'install_labor_perarea'): 
-			('install_labor_total'),
-		('total_land_area'): 
-			('modulearray_area'),
-		('inverter_power', 'inverter_num_units'): 
-			('inverterarray_power'),
-		('inverter_count'): 
-			('inverter_num_units'),
-		('landprep_per_acre', 'land_area_value', 'landprep_percent', 'total_direct_cost', 'modulearray_power', 'landprep_per_watt', 'battery_power', 'landprep_per_battkw', 'fuelcell_power_nameplate', 'landprep_per_fckw', 'landprep_fixed'): 
-			('landprep_total'),
-		('total_modules'): 
-			('module_num_units'),
-		('sales_tax_value', 'total_direct_cost', 'sales_tax_percent'): 
-			('sales_tax_total'),
-		('land_per_acre', 'land_area_value', 'land_percent', 'total_direct_cost', 'modulearray_power', 'land_per_watt', 'battery_power', 'land_per_battkw', 'fuelcell_power_nameplate', 'land_per_fckw', 'land_fixed'): 
-			('land_total'),
-		('permitting_total', 'engr_total', 'grid_total', 'land_total', 'landprep_total', 'sales_tax_total'): 
-			('total_indirect_cost'),
-		('module_power', 'module_num_units'): 
-			('modulearray_power'),
-		('install_margin_fixed', 'modulearray_power', 'install_margin_perwatt', 'battery_power', 'install_margin_battperkw', 'fuelcell_power_nameplate', 'install_margin_fcperkw', 'modulearray_area', 'install_margin_perarea'): 
-			('install_margin_total'),
-		('permitting_percent', 'total_direct_cost', 'modulearray_power', 'permitting_per_watt', 'battery_power', 'permitting_per_battkw', 'fuelcell_power_nameplate', 'permitting_per_fckw', 'permitting_fixed'): 
-			('permitting_total'),
-		('system_capacity', 'dc_ac_ratio', 'inverter_model', 'inv_snl_paco', 'inv_ds_paco', 'inv_pd_paco', 'inv_cec_cg_paco'): 
-			('inverter_power'),
-		('module_total', 'inverter_total', 'battery_total', 'fuelcell_total', 'bos_equip_total', 'install_labor_total', 'install_margin_total', 'contingency'): 
-			('total_direct_cost'),
-		('contingency_percent', 'module_total', 'inverter_total', 'bos_equip_total', 'install_labor_total', 'install_margin_total'): 
-			('contingency'),
-		('fuelcell_power_nameplate'): 
-			('fuelcell_power_total'),
-		('en_batt', 'batt_computed_bank_capacity', 'batt_simple_enable', 'batt_simple_kwh'): 
-			('battery_energy'),
-		('sales_tax_rate'): 
-			('sales_tax_value'),
-		('system_capacity', 'module_model', 'spe_power', 'cec_p_mp_ref', '6par_pmp', 'snl_ref_pmp', 'sd11par_Pmp0'): 
-			('module_power'),
-		('module_costunits', 'module_num_units', 'module_power', 'per_module'): 
-			('module_total'),
-		('total_direct_cost', 'total_indirect_cost'): 
-			('total_installed_cost'),
-		('engr_percent', 'total_direct_cost', 'modulearray_power', 'engr_per_watt', 'battery_power', 'engr_per_battkw', 'fuelcell_power_nameplate', 'engr_per_fckw', 'engr_fixed'): 
-			('engr_total')	},
-	'Fuel Cell Dispatch Manual': {
-		('dispatch_manual_fuelcelldischarge', 'fc_discharge_units_1', 'fc_discharge_units_2', 'fc_discharge_units_3', 'fc_discharge_units_4', 'fc_discharge_units_5', 'fc_discharge_units_6'): 
-			('dispatch_manual_units_fc_discharge'),
-		('dispatch_manual_fuelcelldischarge', 'fc_discharge_percent_1', 'fc_discharge_percent_2', 'fc_discharge_percent_3', 'fc_discharge_percent_4', 'fc_discharge_percent_5', 'fc_discharge_percent_6'): 
-			('dispatch_manual_percent_fc_discharge'),
-		('dispatch_manual_gridcharge', 'batt_gridcharge_percent_1', 'batt_gridcharge_percent_2', 'batt_gridcharge_percent_3', 'batt_gridcharge_percent_4', 'batt_gridcharge_percent_5', 'batt_gridcharge_percent_6'): 
-			('dispatch_manual_percent_gridcharge'),
-		('fc.storage.p1.charge', 'fc.storage.p2.charge', 'fc.storage.p3.charge', 'fc.storage.p4.charge', 'fc.storage.p5.charge', 'fc.storage.p6.charge'): 
-			('dispatch_manual_fuelcellcharge'),
-		('dispatch_manual_discharge', 'batt_discharge_percent_1', 'batt_discharge_percent_2', 'batt_discharge_percent_3', 'batt_discharge_percent_4', 'batt_discharge_percent_5', 'batt_discharge_percent_6'): 
-			('dispatch_manual_percent_discharge'),
-		('pv.storage.p1.gridcharge', 'pv.storage.p2.gridcharge', 'pv.storage.p3.gridcharge', 'pv.storage.p4.gridcharge', 'pv.storage.p5.gridcharge', 'pv.storage.p6.gridcharge'): 
-			('dispatch_manual_gridcharge'),
-		('fc.p1.discharge', 'fc.p2.discharge', 'fc.p3.discharge', 'fc.p4.discharge', 'fc.p5.discharge', 'fc.p6.discharge'): 
-			('dispatch_manual_fuelcelldischarge'),
-		('pv.storage.p1.discharge', 'pv.storage.p2.discharge', 'pv.storage.p3.discharge', 'pv.storage.p4.discharge', 'pv.storage.p5.discharge', 'pv.storage.p6.discharge'): 
-			('dispatch_manual_discharge'),
-		('pv.storage.p1.charge', 'pv.storage.p2.charge', 'pv.storage.p3.charge', 'pv.storage.p4.charge', 'pv.storage.p5.charge', 'pv.storage.p6.charge'): 
-			('dispatch_manual_charge')	},
-	'Fuel Cell Dispatch': {
-		('fuelcell_dispatch_input', 'fuelcell_dispatch_input_units', 'fuelcell_unit_max_power'): 
-			('fuelcell_dispatch')	},
-	'PVWatts': {
-		('en_user_spec_losses', 'losses_user', 'loss_soiling', 'loss_shading', 'loss_snow', 'loss_mismatch', 'loss_wiring', 'loss_conn', 'loss_lid', 'loss_nameplate', 'loss_age', 'loss_avail'): 
-			('losses'),
-		('system_capacity', 'dc_ac_ratio'): 
-			('ac_nameplate')	},
-	'Solar Water Heating': {
-		('draw', 'use_draw_scaling', 'daily_draw'): 
-			('scaled_draw', 'annual_draw'),
-		('coll_mode', 'user_test_fluid', 'srcc_test_fluid'): 
-			('test_fluid'),
-		('area_coll', 'ncoll', 'FRta', 'FRUL'): 
-			('system_capacity'),
-		('coll_mode', 'user_FRUL', 'srcc_FRUL'): 
-			('FRUL'),
-		('coll_mode', 'user_FRta', 'srcc_FRta'): 
-			('FRta'),
-		('coll_mode', 'user_iam', 'srcc_iam'): 
-			('iam'),
-		('coll_mode', 'user_area_coll', 'srcc_area'): 
-			('area_coll'),
-		('coll_mode', 'user_test_flow', 'srcc_test_flow'): 
-			('test_flow'),
-		('area_coll', 'ncoll'): 
-			('total_area')	},
-	'Geothermal Power Block': {
-		(): 
-			('HTF'),
-		(): 
-			('degradation'),
-		('analysis_period'): 
-			('geothermal_analysis_period'),
-		('geopowerblock.pwrb.condenser_type'): 
-			('CT'),
-		('design_temp'): 
-			('T_htf_hot_ref')	},
-	'Geothermal Plant and Equipment': {
-		('gross_output'): 
-			('system_capacity'),
-		('nameplate', 'resource_type', 'resource_temp', 'resource_depth', 'geothermal_analysis_period', 'model_choice', 'analysis_type', 'num_wells', 'conversion_type', 'plant_efficiency_input', 'conversion_subtype', 'decline_type', 'temp_decline_rate', 'temp_decline_max', 'wet_bulb_temp', 'ambient_pressure', 'well_flow_rate', 'pump_efficiency', 'delta_pressure_equip', 'excess_pressure_pump', 'well_diameter', 'casing_size', 'inj_well_diam', 'design_temp', 'specify_pump_work', 'specified_pump_work_amount', 'rock_thermal_conductivity', 'rock_specific_heat', 'rock_density', 'reservoir_pressure_change_type', 'reservoir_pressure_change', 'reservoir_width', 'reservoir_height', 'reservoir_permeability', 'inj_prod_well_distance', 'subsurface_water_loss', 'fracture_aperature', 'fracture_width', 'num_fractures', 'fracture_angle', 'hr_pl_nlev'): 
-			('num_wells_getem', 'geotherm.plant_efficiency_used', 'gross_output', 'pump_depth', 'pump_work', 'pump_size_hp', 'geotherm.delta_pressure_reservoir', 'geotherm.avg_reservoir_temp', 'geotherm.bottom_hole_pressure'),
-		('well_flow_rate', 'num_wells_getem'): 
-			('geotherm.total_flow_kg_per_s'),
-		('geotherm.egs_design_temp_autoselect', 'resource_temp', 'geotherm.egs_design_temp_input'): 
-			('design_temp'),
-		(): 
-			('ui_calculations_only'),
-		('gross_output', 'pump_work'): 
-			('geotherm.net_output'),
-		('geotherm.total_flow_kg_per_s'): 
-			('geotherm.total_flow_gpm')	},
-	'Geothermal Resource': {
-		('geotherm.bottom_hole_pressure'): 
-			('geotherm.bottom_hole_pressureBar'),
-		('geotherm.avg_reservoir_temp'): 
-			('geotherm.avg_reservoir_tempF'),
-		('geotherm.delta_pressure_reservoir'): 
-			('geotherm.delta_pressure_reservoirBar')	},
-	'LF DSG Solar Field': {
-		('x_b_des'): 
-			('SF_COPY_x_b_des'),
-		('P_turb_des'): 
-			('SF_COPY_P_turb_des'),
-		('T_cold_ref'): 
-			('SF_COPY_T_cold_ref_des'),
-		('csp.lf.sf.field_area', 'csp.lf.sf.area_multiplier'): 
-			('csp.lf.sf.total_land_area'),
-		('I_bn_des'): 
-			('SF_COPY_I_bn_des'),
-		('csp.lf.sf.dp.actual_aper'): 
-			('csp.lf.sf.field_area'),
-		('csp.lf.geom1.rec_thermal_derate'): 
-			('csp.lf.sf.dp.loop_therm_eff'),
-		('csp.lf.sf.dp.actual_aper', 'csp.lf.sf.dp.sm1_aperture'): 
-			('solarm'),
-		('specified_solar_multiple', 'csp.lf.sf.dp.sm1_aperture', 'csp.lf.sf.dp.loop_aperture'): 
-			('nLoops'),
-		('csp.lf.sf.dp.loop_aperture', 'nLoops'): 
-			('csp.lf.sf.dp.actual_aper'),
-		('csp.lf.sf.dp.sm1_aperture', 'csp.lf.sf.dp.loop_aperture'): 
-			('csp.lf.sf.dp.sm1_numloops'),
-		('csp.lf.sf.dp.actual_aper', 'I_bn_des', 'csp.lf.sf.dp.total_loop_conv_eff'): 
-			('field_thermal_output'),
-		('specified_solar_multiple'): 
-			('SF_COPY_specified_solar_multiple'),
-		('q_pb_des', 'I_bn_des', 'csp.lf.sf.dp.total_loop_conv_eff'): 
-			('csp.lf.sf.dp.sm1_aperture'),
-		('fP_hdr_c', 'fP_sf_boil', 'fP_hdr_h', 'P_turb_des'): 
-			('csp.lf.sf.total_pres_drop'),
-		('csp.lf.sf.dp.loop_opt_eff', 'csp.lf.sf.dp.loop_therm_eff'): 
-			('csp.lf.sf.dp.total_loop_conv_eff'),
-		('specified_q_dot_rec_des'): 
-			('SF_COPY_specified_q_dot_rec_des'),
-		('csp.lf.geom1.rec_optical_derate', 'csp.lf.geom1.coll_opt_loss_norm_inc'): 
-			('csp.lf.sf.dp.loop_opt_eff'),
-		('nModBoil', 'csp.lf.geom1.refl_aper_area'): 
-			('csp.lf.sf.dp.loop_aperture')	},
-	'LF DSG System Design': {
-		(): 
-			('T_hot '),
-		('specified_q_dot_rec_des'): 
-			('system_capacity'),
-		('specified_solar_multiple', 'q_pb_des'): 
-			('specified_q_dot_rec_des')	},
-	'Physical Trough Parasitics': {
-		('csp.dtr.par.bop_val', 'csp.dtr.par.bop_pf', 'csp.dtr.par.bop_c0', 'csp.dtr.par.bop_c1', 'csp.dtr.par.bop_c2'): 
-			('bop_array'),
-		('pb_fixed_par', 'P_ref'): 
-			('csp.dtr.par.calc.frac_gross'),
-		('csp.dtr.par.bop_val', 'csp.dtr.par.bop_pf', 'csp.dtr.par.bop_c0', 'csp.dtr.par.bop_c1', 'csp.dtr.par.bop_c2', 'P_ref'): 
-			('csp.dtr.par.calc.bop'),
-		('csp.dtr.par.aux_val', 'csp.dtr.par.aux_pf', 'csp.dtr.par.aux_c0', 'csp.dtr.par.aux_c1', 'csp.dtr.par.aux_c2', 'P_ref'): 
-			('csp.dtr.par.calc.aux'),
-		('nSCA', 'nLoops', 'SCA_drives_elec'): 
-			('csp.dtr.par.calc.tracking'),
-		('csp.dtr.par.aux_val', 'csp.dtr.par.aux_pf', 'csp.dtr.par.aux_c0', 'csp.dtr.par.aux_c1', 'csp.dtr.par.aux_c2'): 
-			('aux_array')	},
-	'Dish Reference Inputs': {
-		('csp.ds.refc.coolfluid'): 
-			('test_cooling_fluid')	},
-	'Generic CSP System Costs': {
-		(): 
-			('system_use_recapitalization'),
-		(): 
-			('system_use_lifetime_output'),
-		('csp.gss.cost.solar_field.area', 'csp.gss.cost.solar_field.cost_per_m2'): 
-			('csp.gss.cost.solar_field'),
-		('csp.gss.sf.field_area'): 
-			('csp.gss.cost.site_improvements.area'),
-		('csp.gss.cost.storage.mwht', 'csp.gss.cost.storage.cost_per_kwht'): 
-			('csp.gss.cost.storage'),
-		('csp.gss.tes.max_capacity'): 
-			('csp.gss.cost.storage.mwht'),
-		('total_installed_cost', 'csp.gss.pwrb.nameplate'): 
-			('csp.gss.cost.installed_per_capacity'),
-		('csp.gss.sf.field_area'): 
-			('csp.gss.cost.solar_field.area'),
-		('csp.gss.cost.bop_mwe', 'csp.gss.cost.bop_per_kwe'): 
-			('csp.gss.cost.bop'),
-		('csp.gss.cost.sales_tax.value', 'total_direct_cost', 'csp.gss.cost.sales_tax.percent'): 
-			('csp.gss.cost.sales_tax.total'),
-		('csp.gss.cost.fossil_backup.mwe', 'csp.gss.cost.fossil_backup.cost_per_kwe'): 
-			('csp.gss.cost.fossil_backup'),
-		('csp.gss.cost.contingency', 'csp.gss.cost.solar_field', 'csp.gss.cost.storage', 'csp.gss.cost.power_plant', 'csp.gss.cost.site_improvements', 'csp.gss.cost.fossil_backup', 'csp.gss.cost.bop'): 
-			('total_direct_cost'),
-		('csp.gss.cost.site_improvements.area', 'csp.gss.cost.site_improvements.cost_per_m2'): 
-			('csp.gss.cost.site_improvements'),
-		('csp.gss.cost.contingency_percent', 'csp.gss.cost.solar_field', 'csp.gss.cost.storage', 'csp.gss.cost.power_plant', 'csp.gss.cost.site_improvements', 'csp.gss.cost.fossil_backup', 'csp.gss.cost.bop'): 
-			('csp.gss.cost.contingency'),
-		('csp.gss.cost.epc.per_acre', 'csp.gss.cost.total_land_area', 'csp.gss.cost.epc.percent', 'total_direct_cost', 'csp.gss.cost.nameplate', 'csp.gss.cost.epc.per_watt', 'csp.gss.cost.epc.fixed'): 
-			('csp.gss.cost.epc.total'),
-		('w_des'): 
-			('csp.gss.cost.fossil_backup.mwe'),
-		('w_des'): 
-			('csp.gss.cost.power_plant.mwe'),
-		('csp.gss.solf.total_land_area'): 
-			('csp.gss.cost.total_land_area'),
-		('w_des'): 
-			('csp.gss.cost.bop_mwe'),
-		('total_direct_cost', 'total_indirect_cost'): 
-			('total_installed_cost'),
-		('csp.gss.cost.power_plant.mwe', 'csp.gss.cost.power_plant.cost_per_kwe'): 
-			('csp.gss.cost.power_plant'),
-		('sales_tax_rate'): 
-			('csp.gss.cost.sales_tax.value'),
-		('csp.gss.cost.plm.per_acre', 'csp.gss.cost.total_land_area', 'csp.gss.cost.plm.percent', 'total_direct_cost', 'csp.gss.cost.nameplate', 'csp.gss.cost.plm.per_watt', 'csp.gss.cost.plm.fixed'): 
-			('csp.gss.cost.plm.total'),
-		('csp.gss.cost.epc.total', 'csp.gss.cost.plm.total', 'csp.gss.cost.sales_tax.total'): 
-			('total_indirect_cost'),
-		('csp.gss.pwrb.nameplate'): 
-			('csp.gss.cost.nameplate')	},
-	'Linear Fresnel Superheater Geometry': {
-		('csp.lf.geom2.var1.broken_glass', 'csp.lf.geom2.var2.broken_glass', 'csp.lf.geom2.var3.broken_glass', 'csp.lf.geom2.var4.broken_glass'): 
-			('csp.lf.geom2.glazing_intact'),
-		('csp.lf.geom2.var1.gas_type', 'csp.lf.geom2.var2.gas_type', 'csp.lf.geom2.var3.gas_type', 'csp.lf.geom2.var4.gas_type'): 
-			('csp.lf.geom2.annulus_gas'),
-		('csp.lf.geom2.heat_loss_at_design', 'I_bn_des', 'csp.lf.geom2.refl_aper_area', 'csp.lf.geom2.coll_length'): 
-			('csp.lf.geom2.rec_thermal_derate'),
-		('csp.lf.geom2.hl_mode', 'csp.lf.geom2.var1.field_fraction', 'csp.lf.geom2.var1.bellows_shadowing', 'csp.lf.geom2.var1.hce_dirt', 'csp.lf.geom2.var2.field_fraction', 'csp.lf.geom2.var2.bellows_shadowing', 'csp.lf.geom2.var2.hce_dirt', 'csp.lf.geom2.var3.field_fraction', 'csp.lf.geom2.var3.bellows_shadowing', 'csp.lf.geom2.var3.hce_dirt', 'csp.lf.geom2.var4.field_fraction', 'csp.lf.geom2.var4.bellows_shadowing', 'csp.lf.geom2.var4.hce_dirt'): 
-			('csp.lf.geom2.rec_optical_derate'),
-		('T_cold_ref', 'T_hot', 'T_amb_des_sf'): 
-			('csp.lf.geom2.avg_field_temp_dt_design'),
-		('csp.lf.geom2.track_error', 'csp.lf.geom2.geom_error', 'csp.lf.geom2.mirror_refl', 'csp.lf.geom2.soiling', 'csp.lf.geom2.general_error'): 
-			('csp.lf.geom2.coll_opt_loss_norm_inc'),
-		('csp.lf.geom2.hl_mode', 'csp.lf.geom2.hlpolyt0', 'csp.lf.geom2.hlpolyt1', 'csp.lf.geom2.avg_field_temp_dt_design', 'csp.lf.geom2.hlpolyt2', 'csp.lf.geom2.hlpolyt3', 'csp.lf.geom2.hlpolyt4', 'csp.lf.geom2.var1.field_fraction', 'csp.lf.geom2.var1.rated_heat_loss', 'csp.lf.geom2.var2.field_fraction', 'csp.lf.geom2.var2.rated_heat_loss', 'csp.lf.geom2.var3.field_fraction', 'csp.lf.geom2.var3.rated_heat_loss', 'csp.lf.geom2.var4.field_fraction', 'csp.lf.geom2.var4.rated_heat_loss'): 
-			('csp.lf.geom2.heat_loss_at_design')	},
-	'Empirical Trough Capital Costs': {
-		(): 
-			('system_use_recapitalization'),
-		('total_direct_cost', 'total_indirect_cost'): 
-			('total_installed_cost'),
-		('sales_tax_rate', 'total_direct_cost', 'csp.tr.cost.sales_tax.percent'): 
-			('csp.tr.cost.sales_tax.total'),
-		('Solar_Field_Area'): 
-			('csp.tr.cost.htf_system.area'),
-		('calc_max_energy', 'csp.tr.cost.storage.cost_per_kwht'): 
-			('csp.tr.cost.storage'),
-		('csp.tr.cost.epc.total', 'csp.tr.cost.plm.total', 'csp.tr.cost.sales_tax.total'): 
-			('total_indirect_cost'),
-		('Solar_Field_Area', 'csp.tr.cost.solar_field.cost_per_m2'): 
-			('csp.tr.cost.solar_field'),
-		('csp.tr.cost.plm.per_acre', 'csp.tr.cost.total_land_area', 'csp.tr.cost.plm.percent', 'total_direct_cost', 'system_capacity', 'csp.tr.cost.plm.per_watt', 'csp.tr.cost.plm.fixed'): 
-			('csp.tr.cost.plm.total'),
-		('ui_net_capacity'): 
-			('csp.tr.cost.nameplate'),
-		('ui_total_land_area'): 
-			('csp.tr.cost.total_land_area'),
-		('sales_tax_rate'): 
-			('csp.tr.cost.sales_tax.value'),
-		('csp.tr.cost.contingency_percent', 'csp.tr.cost.site_improvements', 'csp.tr.cost.solar_field', 'csp.tr.cost.htf_system', 'csp.tr.cost.storage', 'csp.tr.cost.fossil_backup', 'csp.tr.cost.power_plant', 'csp.tr.cost.bop'): 
-			('csp.tr.cost.contingency'),
-		('TurbOutG', 'csp.tr.cost.bop_per_kwe'): 
-			('csp.tr.cost.bop'),
-		('calc_max_energy'): 
-			('csp.tr.cost.storage.mwht'),
-		('TurbOutG'): 
-			('csp.tr.cost.bop.mwe'),
-		('TurbOutG', 'csp.tr.cost.fossil_backup.cost_per_kwe'): 
-			('csp.tr.cost.fossil_backup'),
-		('csp.tr.cost.epc.per_acre', 'csp.tr.cost.total_land_area', 'csp.tr.cost.epc.percent', 'total_direct_cost', 'system_capacity', 'csp.tr.cost.epc.per_watt', 'csp.tr.cost.epc.fixed'): 
-			('csp.tr.cost.epc.total'),
-		('TurbOutG', 'csp.tr.cost.power_plant.cost_per_kwe'): 
-			('csp.tr.cost.power_plant'),
-		('TurbOutG'): 
-			('csp.tr.cost.power_plant.mwe'),
-		('Solar_Field_Area', 'csp.tr.cost.htf_system.cost_per_m2'): 
-			('csp.tr.cost.htf_system'),
-		('TurbOutG'): 
-			('csp.tr.cost.fossil_backup.mwe'),
-		('Solar_Field_Area', 'csp.tr.cost.site_improvements.cost_per_m2'): 
-			('csp.tr.cost.site_improvements'),
-		(): 
-			('system_use_lifetime_output'),
-		('Solar_Field_Area'): 
-			('csp.tr.cost.site_improvements.area'),
-		('Solar_Field_Area'): 
-			('csp.tr.cost.solar_field.area'),
-		('total_installed_cost', 'ui_net_capacity'): 
-			('csp.tr.cost.installed_per_capacity'),
-		('csp.tr.cost.contingency', 'csp.tr.cost.site_improvements', 'csp.tr.cost.solar_field', 'csp.tr.cost.htf_system', 'csp.tr.cost.storage', 'csp.tr.cost.fossil_backup', 'csp.tr.cost.power_plant', 'csp.tr.cost.bop'): 
-			('total_direct_cost')	},
-	'Empirical Trough HCE': {
-		('ui_hce_heat_losses_1', 'HCEFrac_1', 'ui_hce_heat_losses_2', 'HCEFrac_2', 'ui_hce_heat_losses_3', 'HCEFrac_3', 'ui_hce_heat_losses_4', 'HCEFrac_4'): 
-			('ui_hce_thermloss_weighted_m'),
-		('PerfFac_2', 'HCEA0_2', 'HCEA5_2', 'ui_hce_hl_term_1', 'HCEA1_2', 'HCEA6_2', 'ui_hce_hl_term_2', 'HCEA2_2', 'HCEA4_2', 'ui_reference_direct_normal_irradiance', 'ui_hce_hl_term_3', 'HCEA3_2', 'ui_hce_hl_term_4'): 
-			('ui_hce_heat_losses_2'),
-		('PerfFac_3', 'HCEA0_3', 'HCEA5_3', 'ui_hce_hl_term_1', 'HCEA1_3', 'HCEA6_3', 'ui_hce_hl_term_2', 'HCEA2_3', 'HCEA4_3', 'ui_reference_direct_normal_irradiance', 'ui_hce_hl_term_3', 'HCEA3_3', 'ui_hce_hl_term_4'): 
-			('ui_hce_heat_losses_3'),
-		('ui_reference_wind_speed'): 
-			('ui_hce_hl_term_1'),
-		('ui_hce_opt_eff_1', 'HCEFrac_1', 'ui_hce_opt_eff_2', 'HCEFrac_2', 'ui_hce_opt_eff_3', 'HCEFrac_3', 'ui_hce_opt_eff_4', 'HCEFrac_4'): 
-			('ui_hce_opt_eff_weighted'),
-		('calc_hce_col_factor', 'ui_hce_broken_glass_1', 'ui_hce_HCEdust', 'HCEBelShad_1', 'HCEEnvTrans_1', 'HCEabs_1', 'HCEmisc_1'): 
-			('ui_hce_opt_eff_1'),
-		('calc_hce_col_factor', 'ui_hce_broken_glass_4', 'ui_hce_HCEdust', 'HCEBelShad_4', 'HCEEnvTrans_4', 'HCEabs_4', 'HCEmisc_4'): 
-			('ui_hce_opt_eff_4'),
-		('calc_hce_col_factor', 'ui_hce_broken_glass_3', 'ui_hce_HCEdust', 'HCEBelShad_3', 'HCEEnvTrans_3', 'HCEabs_3', 'HCEmisc_3'): 
-			('ui_hce_opt_eff_3'),
-		('calc_hce_col_factor', 'ui_hce_broken_glass_2', 'ui_hce_HCEdust', 'HCEBelShad_2', 'HCEEnvTrans_2', 'HCEabs_2', 'HCEmisc_2'): 
-			('ui_hce_opt_eff_2'),
-		('HCEA5_1', 'HCEA5_2', 'HCEA5_3', 'HCEA5_4'): 
-			('HCE_A5'),
-		('SfOutTempD', 'SfInTempD'): 
-			('ui_hce_hl_term_4'),
-		('HCEA4_1', 'HCEA4_2', 'HCEA4_3', 'HCEA4_4'): 
-			('HCE_A4'),
-		('SfOutTempD', 'SfInTempD', 'ui_reference_ambient_temperature'): 
-			('ui_hce_hl_term_2'),
-		('HCEA3_1', 'HCEA3_2', 'HCEA3_3', 'HCEA3_4'): 
-			('HCE_A3'),
-		('ui_hce_thermloss_weighted_m', 'SCA_aper'): 
-			('ui_hce_thermloss_weighted_m2'),
-		('HCEmisc_1', 'HCEmisc_2', 'HCEmisc_3', 'HCEmisc_4'): 
-			('HCEmisc'),
-		('HCEA2_1', 'HCEA2_2', 'HCEA2_3', 'HCEA2_4'): 
-			('HCE_A2'),
-		('SfOutTempD', 'SfInTempD'): 
-			('ui_hce_hl_term_3'),
-		('PerfFac_4', 'HCEA0_4', 'HCEA5_4', 'ui_hce_hl_term_1', 'HCEA1_4', 'HCEA6_4', 'ui_hce_hl_term_2', 'HCEA2_4', 'HCEA4_4', 'ui_reference_direct_normal_irradiance', 'ui_hce_hl_term_3', 'HCEA3_4', 'ui_hce_hl_term_4'): 
-			('ui_hce_heat_losses_4'),
-		('HCEA6_1', 'HCEA6_2', 'HCEA6_3', 'HCEA6_4'): 
-			('HCE_A6'),
-		('PerfFac_1', 'PerfFac_2', 'PerfFac_3', 'PerfFac_4'): 
-			('PerfFac'),
-		('HCEA1_1', 'HCEA1_2', 'HCEA1_3', 'HCEA1_4'): 
-			('HCE_A1'),
-		('calc_col_factor'): 
-			('calc_hce_col_factor'),
-		('HCEdust'): 
-			('ui_hce_HCEdust'),
-		('HCEFrac_1', 'HCEFrac_2', 'HCEFrac_3', 'HCEFrac_4'): 
-			('HCEFrac'),
-		('HCEA0_1', 'HCEA0_2', 'HCEA0_3', 'HCEA0_4'): 
-			('HCE_A0'),
-		('HCEabs_1', 'HCEabs_2', 'HCEabs_3', 'HCEabs_4'): 
-			('HCEabs'),
-		('HCEBelShad_1', 'HCEBelShad_2', 'HCEBelShad_3', 'HCEBelShad_4'): 
-			('HCEBelShad'),
-		('PerfFac_1', 'HCEA0_1', 'HCEA5_1', 'ui_hce_hl_term_1', 'HCEA1_1', 'HCEA6_1', 'ui_hce_hl_term_2', 'HCEA2_1', 'HCEA4_1', 'ui_reference_direct_normal_irradiance', 'ui_hce_hl_term_3', 'HCEA3_1', 'ui_hce_hl_term_4'): 
-			('ui_hce_heat_losses_1'),
-		('HCEEnvTrans_1', 'HCEEnvTrans_2', 'HCEEnvTrans_3', 'HCEEnvTrans_4'): 
-			('HCEEnvTrans')	},
-	'Empirical Trough Power Block': {
-		('ui_net_capacity'): 
-			('system_capacity'),
-		('ui_q_design', 'E2TPLF0', 'E2TPLF1', 'MinGrOut', 'E2TPLF2', 'E2TPLF3', 'E2TPLF4'): 
-			('ui_min_therm_input'),
-		('TurbOutG', 'ui_gross_net_conversion_factor'): 
-			('ui_net_capacity'),
-		('TurbOutG', 'TurbEffG'): 
-			('ui_q_design'),
-		('ui_q_design', 'E2TPLF0', 'E2TPLF1', 'MaxGrOut', 'E2TPLF2', 'E2TPLF3', 'E2TPLF4'): 
-			('ui_max_therm_input'),
-		('MinGrOut'): 
-			('PTTMIN'),
-		('MaxGrOut'): 
-			('PTTMAX')	},
-	'Physical Trough Collector Type 2': {
-		('csp_dtr_sca_ave_focal_len_2', 'csp_dtr_sca_calc_theta_2', 'csp_dtr_sca_piping_dist_2'): 
-			('csp_dtr_sca_calc_end_gain_2'),
-		('lat'): 
-			('csp_dtr_sca_calc_latitude_2'),
-		('csp_dtr_sca_ave_focal_len_2', 'csp_dtr_sca_calc_theta_2', 'nSCA', 'csp_dtr_sca_calc_end_gain_2', 'csp_dtr_sca_length_2', 'csp_dtr_sca_ncol_per_sca_2'): 
-			('csp_dtr_sca_calc_end_loss_2'),
-		('csp_dtr_sca_length_2', 'csp_dtr_sca_ncol_per_sca_2'): 
-			('csp_dtr_sca_ap_length_2'),
-		('csp_dtr_sca_calc_costh_2'): 
-			('csp_dtr_sca_calc_theta_2'),
-		('lat'): 
-			('csp_dtr_sca_calc_zenith_2'),
-		('IAMs_2', 'csp_dtr_sca_calc_theta_2', 'csp_dtr_sca_calc_costh_2'): 
-			('csp_dtr_sca_calc_iam_2'),
-		('csp_dtr_sca_calc_zenith_2', 'tilt', 'azimuth'): 
-			('csp_dtr_sca_calc_costh_2'),
-		('csp_dtr_sca_tracking_error_2', 'csp_dtr_sca_geometry_effects_2', 'csp_dtr_sca_clean_reflectivity_2', 'csp_dtr_sca_mirror_dirt_2', 'csp_dtr_sca_general_error_2'): 
-			('csp_dtr_sca_calc_sca_eff_2')	},
-	'Empirical Trough Solar Field': {
-		('ui_field_htf_type'): 
-			('HTFFluid'),
-		('ui_field_layout_option', 'ui_solar_multiple', 'calc_aperture_area_at_sm_1', 'ui_solar_field_area'): 
-			('Solar_Field_Area'),
-		('ui_field_layout_option', 'ui_solar_multiple', 'ui_solar_field_area', 'calc_aperture_area_at_sm_1'): 
-			('Solar_Field_Mult'),
-		('ui_design_exact_num_scas_sm_1', 'ui_sca_aperture_area'): 
-			('calc_aperture_area_at_sm_1'),
-		('ui_hce_opt_eff_weighted'): 
-			('ui_hce_weighted_optical_efficiency'),
-		('Solar_Field_Mult', 'ui_design_exact_area_sm_1', 'Row_Distance', 'SCA_aper'): 
-			('ui_fixed_land_area'),
-		('ui_field_htf_type'): 
-			('ui_field_htf_min_operating_temp'),
-		('ui_design_exact_area_sm_1', 'ui_sca_aperture_area'): 
-			('ui_design_exact_num_scas_sm_1'),
-		('ui_fixed_land_area', 'ui_land_multiplier'): 
-			('ui_total_land_area'),
-		('ui_field_htf_type'): 
-			('ui_field_htf_max_operating_temp'),
-		('SfInTempD', 'SfOutTempD', 'ui_reference_ambient_temperature'): 
-			('calc_field_htf_average_temp'),
-		('ui_sca_aperture_area'): 
-			('ui_aperture_area_per_SCA'),
-		('SfPipeHl3', 'calc_field_htf_average_temp', 'SfPipeHl2', 'SfPipeHl1', 'SfPipeHl300'): 
-			('ui_piping_heat_loss'),
-		('ui_pb_q_design', 'ui_reference_direct_normal_irradiance', 'ui_hce_weighted_optical_efficiency', 'ui_hce_weighted_thermal_losses', 'ui_piping_heat_loss'): 
-			('ui_design_exact_area_sm_1'),
-		('ui_q_design'): 
-			('ui_pb_q_design'),
-		('ui_hce_thermloss_weighted_m2'): 
-			('ui_hce_weighted_thermal_losses'),
-		(): 
-			('i_SfTi')	},
-	'Financial LCOE Calculator': {
-		('ui_fcr_input_option', 'ui_fixed_charge_rate', 'c_inflation', 'c_equity_return', 'c_debt_percent', 'c_nominal_interest_rate', 'c_tax_rate', 'c_lifetime', 'c_depreciation_schedule', 'c_construction_cost', 'c_construction_interest'): 
-			('fixed_charge_rate', 'ui_wacc', 'ui_crf', 'ui_pfin', 'ui_cfin', 'ui_ireal'),
-		('ui_variable_operating_cost'): 
-			('variable_operating_cost'),
-		('ui_cost_input_option', 'ui_capital_cost_fixed', 'system_capacity', 'ui_capital_cost_capacity'): 
-			('capital_cost'),
-		('ui_cost_input_option', 'ui_operating_cost_fixed', 'system_capacity', 'ui_operating_cost_capacity'): 
-			('fixed_operating_cost'),
-		('system_capacity'): 
-			('ui_system_capacity')	},
-	'Physical Trough Thermal Storage': {
-		('vol_tank', 'h_tank', 'tank_pairs'): 
-			('csp.dtr.tes.tank_diameter'),
-		('is_hx', 'dt_hot', 'dt_cold', 'T_loop_out', 'T_loop_in_des'): 
-			('csp.dtr.tes.hx_derate'),
-		('vol_tank', 'h_tank_min', 'h_tank'): 
-			('csp.dtr.tes.min_fluid_volume'),
-		('P_ref', 'eta_ref', 'tshours'): 
-			('csp.dtr.tes.thermal_capacity'),
-		('h_tank_min', 'h_tank', 'vol_tank'): 
-			('V_tank_hot_ini'),
-		('T_loop_in_des', 'T_loop_out'): 
-			('csp.dtr.tes.htf_calc_temp'),
-		('combo_tes_htf_type'): 
-			('csp.dtr.tes.htf_max_opt_temp'),
-		('h_tank', 'csp.dtr.tes.tank_diameter', 'tank_pairs', 'csp.dtr.tes.htf_calc_temp', 'u_tank'): 
-			('csp.dtr.tes.estimated_heat_loss'),
-		('combo_tes_htf_type'): 
-			('csp.dtr.tes.htf_min_opt_temp'),
-		('combo_tes_htf_type', 'store_fluid', 'csp.dtr.tes.htf_calc_temp', 'store_fl_props'): 
-			('csp.dtr.tes.fluid_dens'),
-		('dt_hot'): 
-			('dt_cold'),
-		('csp.dtr.tes.thermal_capacity', 'csp.dtr.tes.fluid_dens', 'csp.dtr.tes.fluid_sph', 'csp.dtr.tes.hx_derate', 'T_loop_out', 'dt_hot', 'T_loop_in_des', 'dt_cold'): 
-			('vol_tank'),
-		('combo_tes_htf_type', 'store_fluid', 'csp.dtr.tes.htf_calc_temp', 'store_fl_props'): 
-			('csp.dtr.tes.fluid_sph'),
-		('combo_tes_htf_type'): 
-			('store_fluid')	},
-	'Physical Trough Power Block Common': {
-		('q_pb_design'): 
-			('PB_COPY_q_pb_design'),
-		('csp.dtr.pwrb.design_inlet_temp'): 
-			('PB_COPY_T_htf_hot_des'),
-		('csp.dtr.pwrb.nameplate'): 
-			('system_capacity'),
-		('T_loop_in_des'): 
-			('csp.dtr.pwrb.design_outlet_temp'),
-		('PB_COPY_q_pb_design', 'PB_COPY_htf_cp_avg', 'PB_COPY_T_htf_hot_des', 'PB_COPY_T_htf_cold_des'): 
-			('PB_m_dot_htf_cycle_des'),
-		('T_loop_out'): 
-			('csp.dtr.pwrb.design_inlet_temp'),
-		('csp.dtr.pwrb.design_outlet_temp'): 
-			('PB_COPY_T_htf_cold_des'),
-		('P_ref', 'csp.dtr.pwrb.gross_net_conversion_factor'): 
-			('csp.dtr.pwrb.nameplate'),
-		('field_htf_cp_avg'): 
-			('PB_COPY_htf_cp_avg'),
-		('P_ref', 'eta_ref'): 
-			('W_pb_design', 'q_pb_design', 'q_max_aux'),
-		('comb_fossil_mode'): 
-			('fossil_mode')	},
-	'Generic CSP Power Block': {
-		('csp.gss.pwrb.nameplate'): 
-			('system_capacity'),
-		('dni_par_f3', 'dni_par_f2', 'dni_par_f1', 'dni_par_f0'): 
-			('Wpar_prodD_coefs'),
-		('csp.gss.pwrb.temp_eff_f4', 'csp.gss.pwrb.temp_eff_f3', 'csp.gss.pwrb.temp_eff_f2', 'csp.gss.pwrb.temp_eff_f1', 'csp.gss.pwrb.temp_eff_f0'): 
-			('etaT_coefs'),
-		('csp.gss.pwrb.pl_eff_f4', 'csp.gss.pwrb.pl_eff_f3', 'csp.gss.pwrb.pl_eff_f2', 'csp.gss.pwrb.pl_eff_f1', 'csp.gss.pwrb.pl_eff_f0'): 
-			('etaQ_coefs'),
-		('csp.gss.pwrb.temp_corr_mode'): 
-			('PC_T_corr'),
-		('csp.gss.pwrb.gross_net_conversion_factor', 'w_des'): 
-			('csp.gss.pwrb.nameplate'),
-		('csp.gss.pwrb.temp_par_f3', 'csp.gss.pwrb.temp_par_f2', 'csp.gss.pwrb.temp_par_f1', 'csp.gss.pwrb.temp_par_f0'): 
-			('Wpar_prodT_coefs'),
-		('csp.gss.pwrb.pl_par_f3', 'csp.gss.pwrb.pl_par_f2', 'csp.gss.pwrb.pl_par_f1', 'csp.gss.pwrb.pl_par_f0'): 
-			('Wpar_prodQ_coefs'),
-		('csp.gss.pwrb.pl_par_design', 'csp.gss.pwrb.temp_par_design', 'dni_par_design'): 
-			('f_par_tot_des'),
-		('w_des', 'f_Wpar_fixed', 'f_Wpar_prod', 'csp.gss.pwrb.pl_par_design', 'csp.gss.pwrb.temp_par_design', 'dni_par_design'): 
-			('csp.gss.pwrb.design_parasitic_load'),
-		('dni_par_f0', 'dni_par_f1', 'dni_par_f2', 'dni_par_f3'): 
-			('dni_par_design'),
-		('w_des', 'f_Wpar_prod', 'f_par_tot_des'): 
-			('W_dot_part_load_des'),
-		('w_des', 'f_Wpar_fixed'): 
-			('W_dot_par_fixed'),
-		('csp.gss.pwrb.pl_par_f0', 'csp.gss.pwrb.pl_par_f1', 'csp.gss.pwrb.pl_par_f2', 'csp.gss.pwrb.pl_par_f3'): 
-			('csp.gss.pwrb.pl_par_design'),
-		('csp.gss.pwrb.temp_par_f0', 'csp.gss.pwrb.temp_par_f1', 'csp.gss.pwrb.temp_par_f2', 'csp.gss.pwrb.temp_par_f3'): 
-			('csp.gss.pwrb.temp_par_design')	},
-	'Physical Trough Receiver Type 3': {
-		('csp_dtr_hce_var1_field_fraction_3', 'csp_dtr_hce_var1_bellows_shadowing_3', 'csp_dtr_hce_var1_hce_dirt_3', 'csp_dtr_hce_var1_abs_abs_3', 'csp_dtr_hce_var1_env_trans_3', 'csp_dtr_hce_var2_field_fraction_3', 'csp_dtr_hce_var2_bellows_shadowing_3', 'csp_dtr_hce_var2_hce_dirt_3', 'csp_dtr_hce_var2_abs_abs_3', 'csp_dtr_hce_var2_env_trans_3', 'csp_dtr_hce_var3_field_fraction_3', 'csp_dtr_hce_var3_bellows_shadowing_3', 'csp_dtr_hce_var3_hce_dirt_3', 'csp_dtr_hce_var3_abs_abs_3', 'csp_dtr_hce_var3_env_trans_3', 'csp_dtr_hce_var4_field_fraction_3', 'csp_dtr_hce_var4_bellows_shadowing_3', 'csp_dtr_hce_var4_hce_dirt_3', 'csp_dtr_hce_var4_abs_abs_3', 'csp_dtr_hce_var4_env_trans_3'): 
-			('csp_dtr_hce_optical_eff_3'),
-		('csp_dtr_hce_var1_field_fraction_3', 'csp_dtr_hce_var1_rated_heat_loss_3', 'csp_dtr_hce_var2_field_fraction_3', 'csp_dtr_hce_var2_rated_heat_loss_3', 'csp_dtr_hce_var3_field_fraction_3', 'csp_dtr_hce_var3_rated_heat_loss_3', 'csp_dtr_hce_var4_field_fraction_3', 'csp_dtr_hce_var4_rated_heat_loss_3'): 
-			('csp_dtr_hce_design_heat_loss_3')	},
-	'Empirical Trough Parasitics': {
-		('HtrParPF', 'ui_par_hb_const', 'ui_par_turb_out_gr'): 
-			('HtrPar'),
-		('BOPParPF', 'ui_par_bop_const', 'ui_par_turb_out_gr'): 
-			('BOPPar'),
-		('ui_par_fixedblock_const', 'ui_par_turb_out_gr'): 
-			('PbFixPar'),
-		('ChtfParPF', 'ui_par_htfpump_const', 'ui_par_sf_area'): 
-			('ChtfPar'),
-		('CtParPF', 'ui_par_ct0_const', 'ui_par_turb_out_gr'): 
-			('CtPar'),
-		('Solar_Field_Area'): 
-			('ui_par_sf_area'),
-		('HhtfParPF', 'ui_par_tes_const', 'ui_par_turb_out_gr'): 
-			('HhtfPar'),
-		('SfParPF', 'ui_par_sf_const', 'ui_par_sf_area'): 
-			('SfPar'),
-		('SfPar', 'ChtfPar', 'HhtfPar', 'AntiFrPar', 'PbFixPar', 'BOPPar', 'HtrPar', 'CtPar'): 
-			('ui_par_dp_total'),
-		('ui_par_antifreeze_const', 'ChtfPar'): 
-			('AntiFrPar'),
-		('TurbOutG'): 
-			('ui_par_turb_out_gr')	},
-	'Phys Trough Direct Storage': {
-		('T_loop_in_des'): 
-			('TES_COPY_T_htf_cold_des'),
-		('T_loop_out'): 
-			('TES_COPY_T_htf_hot_des'),
-		('tshours'): 
-			('TES_COPY_tshours'),
-		('q_pb_design'): 
-			('TES_COPY_q_pb_design'),
-		('q_pb_design', 'tshours', 'T_loop_out', 'T_loop_in_des', 'Fluid', 'field_fl_props', 'h_tank_min', 'h_tank', 'tank_pairs', 'u_tank'): 
-			('Q_tes', 'tes_avail_vol', 'vol_tank', 'csp.pt.tes.tank_diameter', 'q_dot_tes_est', 'csp.pt.tes.htf_density')	},
-	'Physical Trough Receiver Type 2': {
-		('csp_dtr_hce_var1_field_fraction_2', 'csp_dtr_hce_var1_rated_heat_loss_2', 'csp_dtr_hce_var2_field_fraction_2', 'csp_dtr_hce_var2_rated_heat_loss_2', 'csp_dtr_hce_var3_field_fraction_2', 'csp_dtr_hce_var3_rated_heat_loss_2', 'csp_dtr_hce_var4_field_fraction_2', 'csp_dtr_hce_var4_rated_heat_loss_2'): 
-			('csp_dtr_hce_design_heat_loss_2'),
-		('csp_dtr_hce_var1_field_fraction_2', 'csp_dtr_hce_var1_bellows_shadowing_2', 'csp_dtr_hce_var1_hce_dirt_2', 'csp_dtr_hce_var1_abs_abs_2', 'csp_dtr_hce_var1_env_trans_2', 'csp_dtr_hce_var2_field_fraction_2', 'csp_dtr_hce_var2_bellows_shadowing_2', 'csp_dtr_hce_var2_hce_dirt_2', 'csp_dtr_hce_var2_abs_abs_2', 'csp_dtr_hce_var2_env_trans_2', 'csp_dtr_hce_var3_field_fraction_2', 'csp_dtr_hce_var3_bellows_shadowing_2', 'csp_dtr_hce_var3_hce_dirt_2', 'csp_dtr_hce_var3_abs_abs_2', 'csp_dtr_hce_var3_env_trans_2', 'csp_dtr_hce_var4_field_fraction_2', 'csp_dtr_hce_var4_bellows_shadowing_2', 'csp_dtr_hce_var4_hce_dirt_2', 'csp_dtr_hce_var4_abs_abs_2', 'csp_dtr_hce_var4_env_trans_2'): 
-			('csp_dtr_hce_optical_eff_2')	},
-	'Financial Construction Financing': {
-		('const_per_total1', 'const_per_total2', 'const_per_total3', 'const_per_total4', 'const_per_total5'): 
-			('construction_financing_cost'),
-		('const_per_interest1', 'const_per_interest2', 'const_per_interest3', 'const_per_interest4', 'const_per_interest5'): 
-			('const_per_interest_total'),
-		('const_per_percent1', 'const_per_percent2', 'const_per_percent3', 'const_per_percent4', 'const_per_percent5'): 
-			('const_per_percent_total'),
-		('const_per_principal1', 'const_per_principal2', 'const_per_principal3', 'const_per_principal4', 'const_per_principal5'): 
-			('const_per_principal_total'),
-		('total_installed_cost', 'const_per_interest_rate1', 'const_per_months1', 'const_per_percent1', 'const_per_upfront_rate1', 'const_per_interest_rate2', 'const_per_months2', 'const_per_percent2', 'const_per_upfront_rate2', 'const_per_interest_rate3', 'const_per_months3', 'const_per_percent3', 'const_per_upfront_rate3', 'const_per_interest_rate4', 'const_per_months4', 'const_per_percent4', 'const_per_upfront_rate4', 'const_per_interest_rate5', 'const_per_months5', 'const_per_percent5', 'const_per_upfront_rate5'): 
-			('const_per_principal1', 'const_per_interest1', 'const_per_total1', 'const_per_principal2', 'const_per_interest2', 'const_per_total2', 'const_per_principal3', 'const_per_interest3', 'const_per_total3', 'const_per_principal4', 'const_per_interest4', 'const_per_total4', 'const_per_principal5', 'const_per_interest5', 'const_per_total5')	},
-	'Wind OBOS': {
-		('wind_farm_num_turbines', 'wind_turbine_kw_rating', 'wind_turbine_rotor_diameter', 'wind_turbine_hub_ht', 'windfarm.farm.turbine_spacing', 'windfarm.farm.row_spacing', 'turbine_cost_total', 'system_capacity', 'waterD', 'distShore', 'distPort', 'distPtoA', 'distAtoS', 'substructure', 'anchor', 'turbInstallMethod', 'towerInstallMethod', 'installStrategy', 'cableOptimizer', 'moorLines', 'buryDepth', 'substructCont', 'turbCont', 'elecCont', 'interConVolt', 'distInterCon', 'scrapVal', 'number_install_seasons', 'detailed_obos_general', 'detailed_obos_substructure', 'detailed_obos_electrical', 'detailed_obos_assembly', 'detailed_obos_port', 'detailed_obos_development'): 
-			('obos_warning', 'total_obos_cost'),
-		('total_obos_cost', 'system_capacity'): 
-			('total_obos_cost_per_kw')	},
-	'Dish Parasitics': {
-		('csp.ds.coolfluid'): 
-			('cooling_fluid')	},
-	'Physical Trough Receiver Type 1': {
-		('csp_dtr_hce_var1_field_fraction_1', 'csp_dtr_hce_var1_bellows_shadowing_1', 'csp_dtr_hce_var1_hce_dirt_1', 'csp_dtr_hce_var1_abs_abs_1', 'csp_dtr_hce_var1_env_trans_1', 'csp_dtr_hce_var2_field_fraction_1', 'csp_dtr_hce_var2_bellows_shadowing_1', 'csp_dtr_hce_var2_hce_dirt_1', 'csp_dtr_hce_var2_abs_abs_1', 'csp_dtr_hce_var2_env_trans_1', 'csp_dtr_hce_var3_field_fraction_1', 'csp_dtr_hce_var3_bellows_shadowing_1', 'csp_dtr_hce_var3_hce_dirt_1', 'csp_dtr_hce_var3_abs_abs_1', 'csp_dtr_hce_var3_env_trans_1', 'csp_dtr_hce_var4_field_fraction_1', 'csp_dtr_hce_var4_bellows_shadowing_1', 'csp_dtr_hce_var4_hce_dirt_1', 'csp_dtr_hce_var4_abs_abs_1', 'csp_dtr_hce_var4_env_trans_1'): 
-			('csp_dtr_hce_optical_eff_1'),
-		('csp_dtr_hce_var1_field_fraction_1', 'csp_dtr_hce_var1_rated_heat_loss_1', 'csp_dtr_hce_var2_field_fraction_1', 'csp_dtr_hce_var2_rated_heat_loss_1', 'csp_dtr_hce_var3_field_fraction_1', 'csp_dtr_hce_var3_rated_heat_loss_1', 'csp_dtr_hce_var4_field_fraction_1', 'csp_dtr_hce_var4_rated_heat_loss_1'): 
-			('csp_dtr_hce_design_heat_loss_1')	},
-	'Physical Trough Collector Type 3': {
-		('csp_dtr_sca_length_3', 'csp_dtr_sca_ncol_per_sca_3'): 
-			('csp_dtr_sca_ap_length_3'),
-		('IAMs_3', 'csp_dtr_sca_calc_theta_3', 'csp_dtr_sca_calc_costh_3'): 
-			('csp_dtr_sca_calc_iam_3'),
-		('csp_dtr_sca_calc_zenith_3', 'tilt', 'azimuth'): 
-			('csp_dtr_sca_calc_costh_3'),
-		('lat'): 
-			('csp_dtr_sca_calc_latitude_3'),
-		('csp_dtr_sca_ave_focal_len_3', 'csp_dtr_sca_calc_theta_3', 'nSCA', 'csp_dtr_sca_calc_end_gain_3', 'csp_dtr_sca_length_3', 'csp_dtr_sca_ncol_per_sca_3'): 
-			('csp_dtr_sca_calc_end_loss_3'),
-		('csp_dtr_sca_ave_focal_len_3', 'csp_dtr_sca_calc_theta_3', 'csp_dtr_sca_piping_dist_3'): 
-			('csp_dtr_sca_calc_end_gain_3'),
-		('csp_dtr_sca_tracking_error_3', 'csp_dtr_sca_geometry_effects_3', 'csp_dtr_sca_clean_reflectivity_3', 'csp_dtr_sca_mirror_dirt_3', 'csp_dtr_sca_general_error_3'): 
-			('csp_dtr_sca_calc_sca_eff_3'),
-		('csp_dtr_sca_calc_costh_3'): 
-			('csp_dtr_sca_calc_theta_3'),
-		('lat'): 
-			('csp_dtr_sca_calc_zenith_3')	},
-	'User Defined Power Cycle': {
-		('PB_COPY_T_htf_hot_des'): 
-			('ud_COPY_T_HTF_des'),
-		(): 
-			('ud_m_dot_design'),
-		('ud_T_amb_des'): 
-			('ud_COPY_T_amb_des'),
-		('P_ref', 'ud_f_W_dot_cool_des'): 
-			('ud_W_dot_cool_calc')	},
-	'Physical Trough Collector Type 1': {
-		('IAMs_1', 'csp_dtr_sca_calc_theta_1', 'csp_dtr_sca_calc_costh_1'): 
-			('csp_dtr_sca_calc_iam_1'),
-		('csp_dtr_sca_calc_costh_1'): 
-			('csp_dtr_sca_calc_theta_1'),
-		('lat'): 
-			('csp_dtr_sca_calc_zenith_1'),
-		('lat'): 
-			('csp_dtr_sca_calc_latitude_1'),
-		('csp_dtr_sca_tracking_error_1', 'csp_dtr_sca_geometry_effects_1', 'csp_dtr_sca_clean_reflectivity_1', 'csp_dtr_sca_mirror_dirt_1', 'csp_dtr_sca_general_error_1'): 
-			('csp_dtr_sca_calc_sca_eff_1'),
-		('csp_dtr_sca_ave_focal_len_1', 'csp_dtr_sca_calc_theta_1', 'nSCA', 'csp_dtr_sca_calc_end_gain_1', 'csp_dtr_sca_length_1', 'csp_dtr_sca_ncol_per_sca_1'): 
-			('csp_dtr_sca_calc_end_loss_1'),
-		('csp_dtr_sca_calc_zenith_1', 'tilt', 'azimuth'): 
-			('csp_dtr_sca_calc_costh_1'),
-		('csp_dtr_sca_ave_focal_len_1', 'csp_dtr_sca_calc_theta_1', 'csp_dtr_sca_piping_dist_1'): 
-			('csp_dtr_sca_calc_end_gain_1'),
-		('csp_dtr_sca_length_1', 'csp_dtr_sca_ncol_per_sca_1'): 
-			('csp_dtr_sca_ap_length_1')	},
-	'CEC Performance Model with Module Database': {
-		('cec_gamma_r', 'cec_p_mp_ref'): 
-			('gamma_r_calc'),
-		('cec_beta_oc', 'cec_v_oc_ref'): 
-			('beta_oc_calc'),
-		('cec_v_mp_ref', 'cec_i_mp_ref', 'cec_area'): 
-			('cec_eff'),
-		('cec_alpha_sc', 'cec_i_sc_ref'): 
-			('alpha_sc_calc'),
-		('cec_area', 'cec_module_width'): 
-			('cec_module_length'),
-		('cec_i_mp_ref', 'cec_v_mp_ref'): 
-			('cec_p_mp_ref')	},
-	'Physical Trough Solar Field': {
-		('trough_loop_control'): 
-			('SCAInfoArray'),
-		('fixed_land_area', 'non_solar_field_land_area_multiplier'): 
-			('total_land_area'),
-		('P_ref', 'eta_ref', 'I_bn_des', 'total_loop_conversion_efficiency'): 
-			('total_required_aperture_for_SM1'),
-		('total_aperture', 'Row_Distance', 'max_collector_width'): 
-			('fixed_land_area'),
-		('solar_mult', 'P_ref', 'eta_ref'): 
-			('field_thermal_output'),
-		('trough_loop_control', 'csp_dtr_sca_calc_sca_eff_1', 'csp_dtr_sca_calc_sca_eff_2', 'csp_dtr_sca_calc_sca_eff_3', 'csp_dtr_sca_calc_sca_eff_4', 'csp_dtr_sca_length_1', 'csp_dtr_sca_length_2', 'csp_dtr_sca_length_3', 'csp_dtr_sca_length_4', 'csp_dtr_hce_optical_eff_1', 'csp_dtr_hce_optical_eff_2', 'csp_dtr_hce_optical_eff_3', 'csp_dtr_hce_optical_eff_4'): 
-			('loop_optical_efficiency'),
-		('total_required_aperture_for_SM1', 'single_loop_aperature'): 
-			('required_number_of_loops_for_SM1'),
-		('trough_loop_control'): 
-			('SCADefocusArray'),
-		('single_loop_aperature', 'nLoops'): 
-			('total_aperture'),
-		('radio_sm_or_area', 'specified_solar_multiple', 'total_aperture', 'total_required_aperture_for_SM1'): 
-			('solar_mult'),
-		('combo_feather'): 
-			('fthrctrl'),
-		('combo_htf_type'): 
-			('Fluid'),
-		('m_dot_htfmin', 'fluid_dens_inlet_temp', 'min_inner_diameter'): 
-			('min_field_flow_velocity'),
-		('combo_FieldConfig'): 
-			('FieldConfig'),
-		('radio_sm_or_area', 'specified_solar_multiple', 'total_required_aperture_for_SM1', 'specified_total_aperture', 'single_loop_aperature'): 
-			('nLoops'),
-		('trough_loop_control', 'csp_dtr_hce_diam_absorber_inner_1', 'csp_dtr_hce_diam_absorber_inner_2', 'csp_dtr_hce_diam_absorber_inner_3', 'csp_dtr_hce_diam_absorber_inner_4'): 
-			('min_inner_diameter'),
-		('trough_loop_control', 'I_bn_des', 'csp_dtr_hce_design_heat_loss_1', 'csp_dtr_hce_design_heat_loss_2', 'csp_dtr_hce_design_heat_loss_3', 'csp_dtr_hce_design_heat_loss_4', 'csp_dtr_sca_length_1', 'csp_dtr_sca_length_2', 'csp_dtr_sca_length_3', 'csp_dtr_sca_length_4', 'csp_dtr_sca_aperture_1', 'csp_dtr_sca_aperture_2', 'csp_dtr_sca_aperture_3', 'csp_dtr_sca_aperture_4'): 
-			('cspdtr_loop_hce_heat_loss'),
-		('m_dot_htfmax', 'fluid_dens_outlet_temp', 'min_inner_diameter'): 
-			('max_field_flow_velocity'),
-		('trough_loop_control', 'csp_dtr_sca_aperture_1', 'csp_dtr_sca_aperture_2', 'csp_dtr_sca_aperture_3', 'csp_dtr_sca_aperture_4'): 
-			('single_loop_aperature'),
-		('combo_htf_type', 'Fluid', 'T_loop_in_des', 'T_loop_out', 'field_fl_props'): 
-			('field_htf_cp_avg'),
-		('loop_optical_efficiency', 'cspdtr_loop_hce_heat_loss'): 
-			('total_loop_conversion_efficiency'),
-		(): 
-			('defocus')	},
-	'Molten Salt Tower Power Block Common': {
-		('PB_COPY_q_pb_design', 'PB_COPY_htf_cp_avg', 'PB_COPY_T_htf_hot_des', 'PB_COPY_T_htf_cold_des'): 
-			('PB_m_dot_htf_cycle_des'),
-		('csp.pt.rec.htf_c_avg'): 
-			('PB_COPY_htf_cp_avg'),
-		('T_htf_cold_des'): 
-			('PB_COPY_T_htf_cold_des'),
-		('q_pb_design'): 
-			('PB_COPY_q_pb_design'),
-		('T_htf_hot_des'): 
-			('PB_COPY_T_htf_hot_des'),
-		('design_eff'): 
-			('PB_COPY_design_eff'),
-		('nameplate'): 
-			('PB_COPY_nameplate'),
-		('gross_net_conversion_factor'): 
-			('PB_COPY_gross_net_conversion_factor'),
-		('P_ref'): 
-			('PB_COPY_P_ref'),
-		('nameplate'): 
-			('system_capacity')	},
-	'Wind Farm Costs': {
-		('turbine_cost_total', 'bos_cost_total', 'sales_tax_basis', 'sales_tax_rate'): 
-			('sales_tax_total'),
-		('sales_tax_rate'): 
-			('reference_sales_tax_percent'),
-		(): 
-			('system_use_lifetime_output'),
-		(): 
-			('system_use_recapitalization'),
-		('total_installed_cost', 'reference_capacity'): 
-			('total_installed_cost_per_kw'),
-		('system_capacity'): 
-			('reference_capacity'),
-		('turbine_cost_total', 'bos_cost_total', 'sales_tax_total'): 
-			('total_installed_cost'),
-		('bos_cost_per_kw', 'reference_capacity', 'bos_cost_per_turbine', 'reference_number_turbines', 'bos_cost_fixed'): 
-			('bos_cost_total'),
-		('turbine_cost_per_kw', 'reference_capacity', 'turbine_cost_per_turbine', 'reference_number_turbines', 'turbine_cost_fixed'): 
-			('turbine_cost_total'),
-		('wind_resource_filename'): 
-			('reference_resource_file'),
-		('wind_farm_num_turbines'): 
-			('reference_number_turbines')	},
-	'Tower SolarPilot Solar Field': {
-		(): 
-			('opt_algorithm'),
-		('is_optimize', 'override_layout'): 
-			('field_model_type'),
-		('Q_rec_des'): 
-			('q_design'),
-		('helio_height', 'helio_width', 'dens_mirror'): 
-			('csp.pt.sf.heliostat_area'),
-		('helio_width', 'helio_height', 'dens_mirror', 'n_hel'): 
-			('A_sf_UI'),
-		('helio_optical_error_mrad'): 
-			('error_equiv'),
-		('h_tower'): 
-			('csp.pt.sf.tower_height'),
-		('A_sf_UI'): 
-			('helio_area_tot'),
-		(): 
-			('opt_flux_penalty'),
-		('csp.pt.sf.fixed_land_area', 'land_area_base', 'csp.pt.sf.land_overhead_factor'): 
-			('csp.pt.sf.total_land_area'),
-		('helio_positions'): 
-			('n_hel'),
-		('land_max', 'h_tower'): 
-			('land_max_calc'),
-		('override_opt'): 
-			('is_optimize'),
-		('n_hel', 'csp.pt.sf.heliostat_area'): 
-			('csp.pt.sf.total_reflective_area'),
-		('dni_des'): 
-			('dni_des_calc'),
-		('helio_positions', 'c_atm_0', 'c_atm_1', 'c_atm_2', 'c_atm_3', 'h_tower'): 
-			('c_atm_info'),
-		('land_min', 'h_tower'): 
-			('land_min_calc')	},
-	'Wind Farm Specifications': {
-		('wind_farm_sizing_mode'): 
-			('specify_label'),
-		('wind_farm_sizing_mode', 'desired_farm_size', 'system_capacity'): 
-			('sizing_warning'),
-		('wind_farm_num_turbines', 'wind_turbine_kw_rating'): 
-			('system_capacity'),
-		('wind_farm_sizing_mode', 'windfarm.layout.file_or_controls', 'wind_farm_xCoord_file', 'wind_farm_yCoord_file', 'desired_farm_size', 'wind_turbine_kw_rating', 'wind_turbine_rotor_diameter', 'windfarm.farm.shape', 'windfarm.farm.turbines_per_row', 'windfarm.farm.number_of_rows', 'windfarm.farm.offset', 'windfarm.farm.offset_type', 'windfarm.farm.layout_angle', 'windfarm.farm.turbine_spacing', 'windfarm.farm.row_spacing'): 
-			('wind_farm_num_turbines', 'wind_farm_xCoordinates', 'wind_farm_yCoordinates', 'rows', 'cols')	},
-	'Wind Resource File': {
-		('use_specific_wf_wind', 'user_specified_wf_wind', 'wind_resource.file'): 
-			('wind_resource_filename'),
-		('wind_turbine_hub_ht'): 
-			('wind_resource.requested_ht')	},
-	'MSPT Dispatch Control': {
-		('ui_disp_1_turbout', 'ui_disp_2_turbout', 'ui_disp_3_turbout', 'ui_disp_4_turbout', 'ui_disp_5_turbout', 'ui_disp_6_turbout', 'ui_disp_7_turbout', 'ui_disp_8_turbout', 'ui_disp_9_turbout', 'hybrid_tou1', 'hybrid_tou2', 'hybrid_tou3', 'hybrid_tou4', 'hybrid_tou5', 'hybrid_tou6', 'hybrid_tou7', 'hybrid_tou8', 'hybrid_tou9'): 
-			('f_turb_tou_periods', 'F_wc')	},
-	'Generic CSP Thermal Storage': {
-		('csp.gss.tes.temp_loss_f3', 'csp.gss.tes.temp_loss_f2', 'csp.gss.tes.temp_loss_f1', 'csp.gss.tes.temp_loss_f0'): 
-			('teshlT_coefs'),
-		('csp.gss.tes.charge_loss_f3', 'csp.gss.tes.charge_loss_f2', 'csp.gss.tes.charge_loss_f1', 'csp.gss.tes.charge_loss_f0'): 
-			('teshlX_coefs'),
-		('lon'): 
-			('longitude'),
-		('lat'): 
-			('latitude'),
-		(): 
-			('itoth'),
-		('w_des', 'eta_des', 'hrs_tes'): 
-			('csp.gss.tes.max_capacity'),
-		(): 
-			('ntod'),
-		(): 
-			('twb'),
-		(): 
-			('vwind'),
-		(): 
-			('ibn'),
-		(): 
-			('tdb'),
-		(): 
-			('ibh'),
-		(): 
-			('azimuth'),
-		(): 
-			('tilt'),
-		(): 
-			('timezone'),
-		('exergy_table_ui'): 
-			('exergy_table')	},
-	'Financial Analysis Parameters': {
-		('real_discount_rate', 'inflation_rate'): 
-			('nominal_discount_rate')	},
-	'Molten Salt Tower Storage': {
-		('tshours'): 
-			('TES_COPY_tshours'),
-		('q_pb_design'): 
-			('TES_COPY_q_pb_design'),
-		('T_htf_cold_des'): 
-			('TES_COPY_T_htf_cold_des'),
-		('P_ref', 'design_eff', 'tshours', 'T_htf_hot_des', 'T_htf_cold_des', 'rec_htf', 'field_fl_props', 'h_tank_min', 'h_tank', 'tank_pairs', 'u_tank'): 
-			('Q_tes', 'tes_avail_vol', 'vol_tank', 'csp.pt.tes.tank_diameter', 'q_dot_tes_est', 'csp.pt.tes.htf_density'),
-		('csp.pt.tes.tc_fill_type'): 
-			('tc_fill'),
-		('T_htf_hot_des'): 
-			('TES_COPY_T_htf_hot_des'),
-		('csp.pt.tes.storage_type'): 
-			('tes_type'),
-		('csp.pt.tes.tc_fill_type'): 
-			('csp.pt.tes.tc_fill_sph'),
-		('tc_fill'): 
-			('csp.pt.tes.tc_fill_dens')	},
-	'Supercritical Carbon Dioxide Power Cycle': {
-		('dd_sco2_cycle_config'): 
-			('sco2_cycle_config'),
-		('T_htf_hot_des'): 
-			('SCO2_COPY_T_htf_hot_des'),
-		('design_eff'): 
-			('SCO2_COPY_design_eff'),
-		('P_ref'): 
-			('SCO2_COPY_P_ref')	},
-	'Wind BOS': {
-		('sales_tax_rate'): 
-			('sales_and_use_tax'),
-		('wind_farm_num_turbines'): 
-			('access_road_entrances'),
-		('wind_farm_num_turbines'): 
-			('weather_delay_days_sugg'),
-		('weather_delay_days_choice', 'weather_delay_days_input', 'wind_farm_num_turbines'): 
-			('weather_delay_days'),
-		('farm_size_MW'): 
-			('quantity_permanent_met_towers_sugg'),
-		('quantity_permanent_met_towers_choice', 'quantity_permanent_met_towers_input', 'farm_size_MW'): 
-			('quantity_permanent_met_towers'),
-		('farm_size_MW'): 
-			('quantity_test_met_towers_sugg'),
-		('quantity_test_met_towers_choice', 'quantity_test_met_towers_input', 'farm_size_MW'): 
-			('quantity_test_met_towers'),
-		('wind_turbine_hub_ht'): 
-			('hub_height'),
-		('wind_farm_num_turbines'): 
-			('construction_time_sugg'),
-		('om_building_size_choice', 'om_building_size_input', 'farm_size_MW'): 
-			('om_building_size'),
-		('crane_breakdowns_choice', 'crane_breakdowns_input', 'wind_farm_num_turbines'): 
-			('crane_breakdowns'),
-		('farm_size_MW'): 
-			('om_building_size_sugg'),
-		('construction_time_choice', 'construction_time_input', 'wind_farm_num_turbines'): 
-			('construction_time'),
-		('wind_turbine_kw_rating', 'wind_turbine_rotor_diameter', 'wind_turbine_hub_ht', 'wind_farm_num_turbines', 'interconnect_voltage', 'distance_to_interconnect', 'site_terrain', 'turbine_layout', 'soil_condition', 'construction_time', 'om_building_size', 'quantity_test_met_towers', 'quantity_permanent_met_towers', 'weather_delay_days', 'crane_breakdowns', 'access_road_entrances', 'turbine_capital_cost', 'tower_top_mass', 'delivery_assist_required', 'pad_mount_transformer_required', 'new_switchyard_required', 'rock_trenching_required', 'mv_thermal_backfill', 'mv_overhead_collector', 'performance_bond', 'contingency', 'warranty_management', 'sales_and_use_tax', 'overhead', 'profit_margin', 'development_fee', 'turbine_transportation'): 
-			('bos_total_budgeted_cost', 'transportation_cost', 'insurance_cost', 'engineering_cost', 'power_performance_cost', 'site_compound_security_cost', 'building_cost', 'transmission_cost', 'markup_cost', 'development_cost', 'access_roads_cost', 'foundation_cost', 'erection_cost', 'electrical_materials_cost', 'electrical_installation_cost', 'substation_cost', 'project_mgmt_cost'),
-		('wind_turbine_kw_rating'): 
-			('machine_rating'),
-		('wind_farm_num_turbines'): 
-			('number_of_turbines'),
-		('wind_turbine_rotor_diameter'): 
-			('rotor_diameter'),
-		('bos_total_budgeted_cost', 'farm_size_MW'): 
-			('bos_total_cost_per_kw'),
-		('wind_farm_num_turbines'): 
-			('crane_breakdowns_sugg'),
-		('wind_farm_num_turbines', 'wind_turbine_kw_rating'): 
-			('farm_size_MW')	},
-	'PV System Design': {
-		('en_batt', 'batt_power_discharge_max'): 
-			('batt_max_power'),
-		('subarray1_modules_per_string', 'subarray1_nstrings'): 
-			('subarray1_nmodules'),
-		('en_batt', 'batt_ac_or_dc', 'system_capacity', 'batt_max_power', 'total_inverter_capacity', 'module_model', 'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0', 'spe_voc', 'cec_v_oc_ref', '6par_voc', 'snl_ref_voc', 'sd11par_Voc0', 'mppt_low_inverter', 'mppt_hi_inverter', 'subarray1_string_voc', 'subarray2_enable', 'subarray2_string_voc', 'subarray3_enable', 'subarray3_string_voc', 'subarray4_enable', 'subarray4_string_voc', 'subarray1_string_vmp', 'subarray2_string_vmp', 'subarray3_string_vmp', 'subarray4_string_vmp', 'vdcmax_inverter'): 
-			('layout_warning'),
-		('module_model', 'spe_area', 'cec_area', '6par_area', 'snl_area', 'sd11par_area', 'subarray1_modules_per_string', 'subarray1_nstrings', 'subarray1_gcr', 'subarray2_enable', 'subarray2_modules_per_string', 'subarray2_nstrings', 'subarray2_gcr', 'subarray3_enable', 'subarray3_modules_per_string', 'subarray3_nstrings', 'subarray3_gcr', 'subarray4_enable', 'subarray4_modules_per_string', 'subarray4_nstrings', 'subarray4_gcr'): 
-			('total_land_area'),
-		('total_area'): 
-			('array_area'),
-		('subarray1_nstrings', 'subarray2_enable', 'subarray2_nstrings', 'subarray3_enable', 'subarray3_nstrings', 'subarray4_enable', 'subarray4_nstrings'): 
-			('num_strings_total'),
-		('subarray2_enable', 'subarray2_modules_per_string', 'subarray2_nstrings'): 
-			('subarray2_nmodules'),
-		('module_model', 'spe_voc', 'cec_v_oc_ref', '6par_voc', 'snl_voco', 'sd11par_Voc0', 'subarray3_modules_per_string'): 
-			('subarray3_string_voc'),
-		('inverter_model', 'inv_snl_mppt_hi', 'inv_ds_mppt_hi', 'inv_pd_mppt_hi', 'inv_cec_cg_mppt_hi'): 
-			('mppt_hi_inverter'),
-		('subarray4_enable', 'subarray4_modules_per_string', 'subarray4_nstrings'): 
-			('subarray4_nmodules'),
-		('inverter_model', 'inv_snl_vdcmax', 'inv_ds_vdcmax', 'inv_pd_vdcmax', 'inv_cec_cg_vdcmax'): 
-			('vdcmax_inverter'),
-		('module_model', 'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0', 'subarray1_modules_per_string'): 
-			('subarray1_string_vmp'),
-		('inverter_model', 'inv_snl_mppt_low', 'inv_ds_mppt_low', 'inv_pd_mppt_low', 'inv_cec_cg_mppt_low'): 
-			('mppt_low_inverter'),
-		('module_model', 'spe_power', 'cec_p_mp_ref', '6par_pmp', 'snl_ref_pmp', 'sd11par_Pmp0', 'total_modules'): 
-			('system_capacity'),
-		('inverter_model', 'inv_snl_pdco', 'inv_ds_pdco', 'inv_pd_pdco', 'inv_cec_cg_pdco', 'inverter_count'): 
-			('total_dc_inverter_capacity'),
-		('module_model', 'spe_area', 'cec_area', '6par_area', 'snl_area', 'sd11par_area', 'total_modules'): 
-			('total_area'),
-		('module_model', 'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0', 'subarray4_modules_per_string'): 
-			('subarray4_string_vmp'),
-		('module_model', 'spe_voc', 'cec_v_oc_ref', '6par_voc', 'snl_voco', 'sd11par_Voc0', 'subarray1_modules_per_string'): 
-			('subarray1_string_voc'),
-		('module_model', 'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0', 'subarray2_modules_per_string'): 
-			('subarray2_string_vmp'),
-		('subarray2_enable', 'subarray3_enable', 'subarray4_enable'): 
-			('num_enabled'),
-		('inverter_model', 'inv_snl_paco', 'inv_ds_paco', 'inv_pd_paco', 'inv_cec_cg_paco', 'inverter_count'): 
-			('total_inverter_capacity'),
-		('module_model', 'spe_voc', 'cec_v_oc_ref', '6par_voc', 'snl_voco', 'sd11par_Voc0', 'subarray4_modules_per_string'): 
-			('subarray4_string_voc'),
-		('enable_auto_size', 'module_model', 'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0', 'spe_voc', 'cec_v_oc_ref', '6par_voc', 'snl_ref_voc', 'sd11par_Voc0', 'spe_power', 'cec_p_mp_ref', '6par_pmp', 'snl_ref_pmp', 'sd11par_Pmp0', 'inverter_model', 'inv_snl_mppt_low', 'inv_ds_mppt_low', 'inv_pd_mppt_low', 'inv_cec_cg_mppt_low', 'inv_snl_vdcmax', 'inv_ds_vdcmax', 'inv_pd_vdcmax', 'inv_cec_cg_vdcmax', 'inv_snl_mppt_hi', 'inv_ds_mppt_hi', 'inv_pd_mppt_hi', 'inv_cec_cg_mppt_hi', 'inv_snl_paco', 'inv_ds_paco', 'inv_pd_paco', 'inv_cec_cg_paco', 'en_batt', 'batt_ac_or_dc', 'batt_max_power', 'desired_size', 'desired_dcac_ratio'): 
-			('subarray2_enable', 'subarray3_enable', 'subarray4_enable', 'subarray1_modules_per_string', 'subarray1_nstrings', 'inverter_count'),
-		('system_capacity', 'total_inverter_capacity'): 
-			('calculated_dcac_ratio'),
-		('module_model', 'spe_voc', 'cec_v_oc_ref', '6par_voc', 'snl_voco', 'sd11par_Voc0', 'subarray2_modules_per_string'): 
-			('subarray2_string_voc'),
-		('total_area'): 
-			('total_module_area'),
-		('subarray1_modules_per_string', 'subarray1_nstrings', 'subarray2_modules_per_string', 'subarray2_nstrings', 'subarray2_enable', 'subarray3_modules_per_string', 'subarray3_nstrings', 'subarray3_enable', 'subarray4_modules_per_string', 'subarray4_nstrings', 'subarray4_enable'): 
-			('total_modules'),
-		('inverter_model', 'inv_snl_num_mppt', 'inv_ds_num_mppt', 'inv_pd_num_mppt', 'inv_cec_cg_num_mppt'): 
-			('inv_num_mppt'),
-		('subarray3_enable', 'subarray3_modules_per_string', 'subarray3_nstrings'): 
-			('subarray3_nmodules'),
-		('module_model', 'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0', 'subarray3_modules_per_string'): 
-			('subarray3_string_vmp')	},
-	'Biopower Plant Specifications': {
-		('biopwr.plant.nameplate'): 
-			('system_capacity'),
-		('biopwr.plant.disp9.power', 'biopwr.plant.disp8.power', 'biopwr.plant.disp7.power', 'biopwr.plant.disp6.power', 'biopwr.plant.disp5.power', 'biopwr.plant.disp4.power', 'biopwr.plant.disp3.power', 'biopwr.plant.disp2.power', 'biopwr.plant.disp1.power'): 
-			('biopwr.plant.disp.power'),
-		('biopwr.plant.boiler.flue_temp'): 
-			('biopwr.plant.boiler.moisture_enth_out'),
-		('biopwr.plant.boiler.steam_produced', 'biopwr.plant.boiler.num', 'biopwr.plant.boiler.over_design'): 
-			('biopwr.plant.boiler.cap_per_boiler'),
-		('biopwr.plant.drying_spec_wet'): 
-			('biopwr.plant.drying_spec'),
-		(): 
-			('biopwr.plant.boiler.ref_temp'),
-		('biopwr.plant.boiler.air_feed', 'biopwr.feedstock.total'): 
-			('biopwr.plant.par_air_blower'),
-		('biopwr.plant.boiler.steam_grade'): 
-			('biopwr.plant.boiler.steam_pressure'),
-		('biopwr.plant.par_percent', 'biopwr.plant.nameplate'): 
-			('biopwr.plant.par'),
-		('biopwr.feedstock.total', 'biopwr.feedstock.total_hhv', 'biopwr.plant.boiler.efficiency', 'biopwr.plant.boiler.steam_enthalpy'): 
-			('biopwr.plant.boiler.steam_produced'),
-		(): 
-			('biopwr.plant.eff.rad_loss'),
-		('biopwr.plant.tou_option', 'biopwr.plant.ramp_opt', 'biopwr.plant.ramp_opt1', 'biopwr.plant.nameplate', 'biopwr.plant.ramp_opt2'): 
-			('biopwr.plant.ramp_rate'),
-		('biopwr.plant.boiler.moisture_in_fuel', 'biopwr.plant.boiler.moisture_enth_out', 'biopwr.plant.boiler.moisture_enth_in'): 
-			('biopwr.plant.eff.moisture_loss'),
-		('biopwr.plant.drying_method', 'biopwr.feedstock.total_moisture', 'biopwr.feedstock.total_hhv', 'biopwr.feedstock.bagasse_frac', 'biopwr.feedstock.barley_frac', 'biopwr.feedstock.stover_frac', 'biopwr.feedstock.rice_frac', 'biopwr.feedstock.wheat_frac', 'biopwr.feedstock.forest_frac', 'biopwr.feedstock.mill_frac', 'biopwr.feedstock.urban_frac', 'biopwr.feedstock.feedstock1_frac', 'biopwr.feedstock.feedstock2_frac', 'biopwr.feedstock.bit_frac', 'biopwr.feedstock.subbit_frac', 'biopwr.feedstock.lig_frac', 'biopwr.feedstock.total_coal_moisture', 'biopwr.plant.drying_spec'): 
-			('biopwr.plant.boiler.moisture_in_fuel'),
-		('biopwr.plant.boiler.steam_grade'): 
-			('biopwr.plant.boiler.steam_enthalpy'),
-		('biopwr.feedstock.total_h', 'biopwr.feedstock.total_hhv', 'biopwr.plant.boiler.moisture_enth_out', 'biopwr.plant.boiler.moisture_enth_in'): 
-			('biopwr.plant.eff.latent'),
-		('biopwr.plant.boiler.ref_temp'): 
-			('biopwr.plant.boiler.moisture_enth_in'),
-		('biopwr.plant.eff.flue_loss', 'biopwr.plant.eff.fuel_loss', 'biopwr.plant.eff.moisture_loss', 'biopwr.plant.eff.rad_loss', 'biopwr.plant.eff.latent'): 
-			('biopwr.plant.boiler.efficiency'),
-		('biopwr.plant.boiler.steam_grade'): 
-			('biopwr.plant.boiler.steam_temp'),
-		('biopwr.plant.boiler.cap_per_boiler', 'biopwr.plant.boiler.num', 'biopwr.plant.boiler.steam_enthalpy', 'biopwr.plant.rated_eff'): 
-			('biopwr.plant.nameplate'),
-		(): 
-			('biopwr.plant.boiler.bfw_enthalpy'),
-		('biopwr.plant.boiler.air_feed', 'biopwr.plant.boiler.flue_temp', 'biopwr.plant.boiler.ref_temp'): 
-			('biopwr.plant.eff.flue_loss'),
-		('biopwr.plant.combustor_type', 'biopwr.feedstock.total_c', 'biopwr.plant.boiler.excess_air', 'biopwr.feedstock.total_h', 'biopwr.feedstock.total_o', 'biopwr.feedstock.total_ash', 'biopwr.feedstock.total_hhv'): 
-			('biopwr.plant.boiler.air_feed'),
-		('biopwr.plant.combustor_type'): 
-			('biopwr.plant.eff.fuel_loss'),
-		('biopwr.plant.boiler.steam_pressure', 'biopwr.plant.boiler.cap_per_boiler', 'biopwr.plant.boiler.num', 'biopwr.plant.par_air_blower'): 
-			('biopwr.plant.par_bfw_pump')	},
-	'Dish Capital Costs': {
-		(): 
-			('system_use_recapitalization'),
-		(): 
-			('system_use_lifetime_output'),
-		('total_installed_cost', 'csp.ds.cost.nameplate'): 
-			('csp.ds.cost.installed_per_capacity'),
-		('csp.ds.cost.epc.per_acre', 'csp.ds.cost.total_land_area', 'csp.ds.cost.epc.percent', 'total_direct_cost', 'csp.ds.cost.nameplate', 'csp.ds.cost.epc.per_watt', 'csp.ds.cost.epc.fixed'): 
-			('csp.ds.cost.epc.total'),
-		('csp.ds.total_capacity'): 
-			('csp.ds.cost.nameplate'),
-		('csp.ds.ncollectors', 'csp.ds.cost.collector.area', 'csp.ds.cost.collector.cost_per_m2'): 
-			('csp.ds.cost.collector'),
-		('csp.ds.field_area'): 
-			('csp.ds.cost.site_improvements.area'),
-		('csp.ds.cost.site_improvements.area', 'csp.ds.cost.site_improvements.cost_per_m2'): 
-			('csp.ds.cost.site_improvements'),
-		('csp.ds.cost.site_improvements', 'csp.ds.cost.collector', 'csp.ds.cost.receiver', 'csp.ds.cost.engine', 'csp.ds.cost.contingency'): 
-			('total_direct_cost'),
-		('total_direct_cost', 'total_indirect_cost'): 
-			('total_installed_cost'),
-		('A_proj'): 
-			('csp.ds.cost.collector.area'),
-		('csp.ds.nameplate_capacity'): 
-			('csp.ds.cost.engine.kw'),
-		('csp.ds.field_area'): 
-			('csp.ds.cost.total_land_area'),
-		('csp.ds.ncollectors', 'csp.ds.cost.receiver.kw', 'csp.ds.cost.receiver.cost_per_kw'): 
-			('csp.ds.cost.receiver'),
-		('csp.ds.cost.plm.per_acre', 'csp.ds.cost.total_land_area', 'csp.ds.cost.plm.percent', 'total_direct_cost', 'csp.ds.cost.nameplate', 'csp.ds.cost.plm.per_watt', 'csp.ds.cost.plm.fixed'): 
-			('csp.ds.cost.plm.total'),
-		('csp.ds.cost.epc.total', 'csp.ds.cost.plm.total', 'csp.ds.cost.sales_tax.total'): 
-			('total_indirect_cost'),
-		('csp.ds.nameplate_capacity'): 
-			('csp.ds.cost.receiver.kw'),
-		('csp.ds.cost.contingency_percent', 'csp.ds.cost.site_improvements', 'csp.ds.cost.collector', 'csp.ds.cost.receiver', 'csp.ds.cost.engine'): 
-			('csp.ds.cost.contingency'),
-		('csp.ds.ncollectors', 'csp.ds.cost.engine.kw', 'csp.ds.cost.engine.cost_per_kw'): 
-			('csp.ds.cost.engine'),
-		('sales_tax_rate'): 
-			('csp.ds.cost.sales_tax.value'),
-		('csp.ds.cost.sales_tax.value', 'total_direct_cost', 'csp.ds.cost.sales_tax.percent'): 
-			('csp.ds.cost.sales_tax.total')	},
-	'Rankine Cycle': {
-		('csp.pt.pwrb.pressure_mode'): 
-			('tech_type'),
-		('csp.pt.pwrb.condenser_type'): 
-			('CT')	},
-	'Solar Resource Data': {
-		('solar_resource_file'): 
-			('file_name'),
-		('use_specific_weather_file', 'user_specified_weather_file', 'solar_data_file_name'): 
-			('solar_resource_file')	},
-	'Generic System Costs': {
-		('system_capacity', 'genericsys.cost.per_watt'): 
-			('genericsys.cost.plant_scaled'),
-		('genericsys.cost.plm.fixed', 'genericsys.cost.plm.nonfixed'): 
-			('genericsys.cost.plm.total'),
-		('system_use_lifetime_output'): 
-			('system_use_recapitalization'),
-		('genericsys.cost.epc.fixed', 'genericsys.cost.epc.nonfixed'): 
-			('genericsys.cost.epc.total'),
-		('total_direct_cost', 'genericsys.cost.plm.percent'): 
-			('genericsys.cost.plm.nonfixed'),
-		('fixed_plant_input'): 
-			('genericsys.cost.plant'),
-		('genericsys.cost.contingency', 'genericsys.cost.plant', 'genericsys.cost.plant_scaled', 'battery_total'): 
-			('total_direct_cost'),
-		('genericsys.cost.contingency_percent', 'genericsys.cost.plant', 'genericsys.cost.plant_scaled', 'battery_total'): 
-			('genericsys.cost.contingency'),
-		('en_batt', 'batt_power_discharge_max'): 
-			('battery_power'),
-		('total_direct_cost', 'genericsys.cost.epc.percent'): 
-			('genericsys.cost.epc.nonfixed'),
-		('sales_tax_rate'): 
-			('genericsys.cost.sales_tax.value'),
-		('genericsys.cost.sales_tax.value', 'total_direct_cost', 'genericsys.cost.sales_tax.percent'): 
-			('genericsys.cost.sales_tax.total'),
-		('total_direct_cost', 'total_indirect_cost'): 
-			('total_installed_cost'),
-		('total_installed_cost', 'system_capacity'): 
-			('genericsys.cost.installed_per_capacity'),
-		('battery_energy', 'battery_per_kWh', 'battery_power', 'battery_per_kW'): 
-			('battery_total'),
-		('genericsys.cost.epc.total', 'genericsys.cost.plm.total', 'genericsys.cost.sales_tax.total'): 
-			('total_indirect_cost'),
-		('en_batt', 'batt_computed_bank_capacity'): 
-			('battery_energy'),
-		('system_capacity'): 
-			('nameplate_capacity')	},
-	'Biopower Feedstock': {
-		(): 
-			('biopwr.feedstock.subbit_c'),
-		(): 
-			('biopwr.feedstock.mill_hhv'),
-		('biopwr.feedstock.total_biomass', 'biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstock.bagasse_lhv', 'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstock.barley_lhv', 'biopwr.feedstock.stover_biomass_frac', 'biopwr.feedstock.stover_lhv', 'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstock.rice_lhv', 'biopwr.feedstock.wheat_biomass_frac', 'biopwr.feedstock.wheat_lhv', 'biopwr.feedstock.forest_biomass_frac', 'biopwr.feedstock.forest_lhv', 'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstock.mill_lhv', 'biopwr.feedstock.urban_biomass_frac', 'biopwr.feedstock.urban_lhv', 'biopwr.feedstock.woody_biomass_frac', 'biopwr.feedstock.woody_lhv', 'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstock.herb_lhv', 'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstock.feedstock1_hhv', 'biopwr.feedstock.feedstock1_h', 'biopwr.feedstock.feedstock2_biomass_frac', 'biopwr.feedstock.feedstock2_hhv', 'biopwr.feedstock.feedstock2_h'): 
-			('biopwr.feedstock.total_biomass_lhv'),
-		('biopwr.feedstock.additional_opt', 'biopwr.feedstock.feedstock2_resource', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.feedstock2_biomass_frac'),
-		(): 
-			('biopwr.feedstock.wheat_o'),
-		(): 
-			('biopwr.feedstock.bit_c'),
-		('biopwr.feedstock.rice_moisture_wet'): 
-			('biopwr.feedstock.rice_moisture'),
-		('biopwr.feedstock.stover_moisture_wet'): 
-			('biopwr.feedstock.stover_usual_moisture'),
-		(): 
-			('biopwr.feedstock.rice_hhv'),
-		(): 
-			('biopwr.feedstock.lig_ash'),
-		(): 
-			('biopwr.feedstock.herb_o'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.total_biomass', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.biomass_frac'),
-		(): 
-			('biopwr.feedstock.urban_o'),
-		('biopwr.feedstock.wheat_resource', 'biopwr.feedstock.wheat_obtainable', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.wheat_frac'),
-		('biopwr.feedstock.woody_moisture_wet'): 
-			('biopwr.feedstock.woody_usual_moisture'),
-		('biopwr.feedstock.herb_resource', 'biopwr.feedstock.herb_obtainable', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.herb_biomass_frac'),
-		('biopwr.feedstock.herb_moisture_wet'): 
-			('biopwr.feedstock.herb_usual_moisture'),
-		(): 
-			('biopwr.feedstock.wheat_h'),
-		('biopwr.feedstock.lig_moisture_wet'): 
-			('biopwr.feedstock.lig_usual_moisture'),
-		('biopwr.feedstock.feedstock2_moisture'): 
-			('biopwr.feedstock.feedstock2_usual_moisture'),
-		(): 
-			('biopwr.feedstock.barley_hhv'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.lig_resource', 'biopwr.feedstock.total_coal'): 
-			('biopwr.feedstock.lig_coal_frac'),
-		(): 
-			('biopwr.feedstock.bagasse_c'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_resource', 'biopwr.feedstock.subbit_resource', 'biopwr.feedstock.lig_resource'): 
-			('biopwr.feedstock.total_coal'),
-		('biopwr.feedstock.stover_moisture_wet'): 
-			('biopwr.feedstock.stover_moisture'),
-		(): 
-			('biopwr.feedstock.stover_hhv'),
-		(): 
-			('biopwr.feedstock.herb_h'),
-		('biopwr.feedstock.feedstock2_opt', 'biopwr.feedstock.feedstock2_user_hhv', 'biopwr.feedstock.feedstock2_calc_hhv'): 
-			('biopwr.feedstock.feedstock2_hhv'),
-		('biopwr.feedstock.barley_resource', 'biopwr.feedstock.barley_obtainable', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.barley_biomass_frac'),
-		('biopwr.feedstock.subbit_moisture_wet'): 
-			('biopwr.feedstock.subbit_moisture'),
-		(): 
-			('biopwr.feedstock.barley_c'),
-		(): 
-			('biopwr.feedstock.urban_h'),
-		('biopwr.feedstock.stover_resource', 'biopwr.feedstock.stover_obtainable', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.stover_biomass_frac'),
-		(): 
-			('biopwr.feedstock.subbit_h'),
-		('biopwr.feedstock.forest_moisture_wet'): 
-			('biopwr.feedstock.forest_usual_moisture'),
-		(): 
-			('biopwr.feedstock.barley_o'),
-		(): 
-			('biopwr.feedstock.woody_ash'),
-		('biopwr.feedstock.mill_moisture_wet'): 
-			('biopwr.feedstock.mill_moisture'),
-		(): 
-			('biopwr.feedstock.forest_lhv'),
-		(): 
-			('biopwr.feedstock.woody_c'),
-		('biopwr.feedstock.feedstock1_c', 'biopwr.feedstock.feedstock1_h', 'biopwr.feedstock.feedstock1_n'): 
-			('biopwr.feedstock.feedstock1_calc_hhv'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.subbit_resource', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.subbit_frac'),
-		(): 
-			('biopwr.feedstock.mill_c'),
-		('biopwr.feedstock.bagasse_moisture_wet'): 
-			('biopwr.feedstock.bagasse_moisture'),
-		(): 
-			('biopwr.feedstock.stover_ash'),
-		('biopwr.feedstock.forest_moisture_wet'): 
-			('biopwr.feedstock.forest_moisture'),
-		('biopwr.feedstock.feedstock1_c', 'biopwr.feedstock.feedstock1_h', 'biopwr.feedstock.feedstock1_n'): 
-			('biopwr.feedstock.feedstock1_o'),
-		('biopwr.feedstock.wheat_resource', 'biopwr.feedstock.wheat_obtainable', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.wheat_biomass_frac'),
-		('biopwr.feedstock.feedstock2_c', 'biopwr.feedstock.feedstock2_h', 'biopwr.feedstock.feedstock2_n'): 
-			('biopwr.feedstock.feedstock2_o'),
-		('biopwr.feedstock.rice_resource', 'biopwr.feedstock.rice_obtainable', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.rice_frac'),
-		(): 
-			('biopwr.feedstock.wheat_hhv'),
-		('biopwr.feedstock.biomass_frac', 'biopwr.feedstock.total_biomass_hhv', 'biopwr.feedstock.coal_frac', 'biopwr.feedstock.total_coal_hhv'): 
-			('biopwr.feedstock.total_hhv'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_coal_frac', 'biopwr.feedstock.bit_hhv', 'biopwr.feedstock.subbit_coal_frac', 'biopwr.feedstock.subbit_hhv', 'biopwr.feedstock.lig_coal_frac', 'biopwr.feedstock.lig_hhv'): 
-			('biopwr.feedstock.total_coal_hhv'),
-		('biopwr.feedstock.additional_opt', 'biopwr.feedstock.feedstock1_resource', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.feedstock1_frac'),
-		('biopwr.feedstock.subbit_moisture_wet'): 
-			('biopwr.feedstock.subbit_usual_moisture'),
-		(): 
-			('biopwr.feedstock.woody_o'),
-		('biopwr.feedstock.bagasse_frac', 'biopwr.feedstock.bagasse_moisture', 'biopwr.feedstock.barley_frac', 'biopwr.feedstock.barley_moisture', 'biopwr.feedstock.stover_frac', 'biopwr.feedstock.stover_moisture', 'biopwr.feedstock.rice_frac', 'biopwr.feedstock.rice_moisture', 'biopwr.feedstock.wheat_frac', 'biopwr.feedstock.wheat_moisture', 'biopwr.feedstock.forest_frac', 'biopwr.feedstock.forest_moisture', 'biopwr.feedstock.mill_frac', 'biopwr.feedstock.mill_moisture', 'biopwr.feedstock.urban_frac', 'biopwr.feedstock.urban_moisture', 'biopwr.feedstock.woody_frac', 'biopwr.feedstock.woody_moisture', 'biopwr.feedstock.herb_frac', 'biopwr.feedstock.herb_moisture', 'biopwr.feedstock.feedstock1_frac', 'biopwr.feedstock.feedstock1_moisture', 'biopwr.feedstock.feedstock2_frac', 'biopwr.feedstock.feedstock2_moisture', 'biopwr.feedstock.bit_frac', 'biopwr.feedstock.bit_moisture', 'biopwr.feedstock.subbit_frac', 'biopwr.feedstock.subbit_moisture', 'biopwr.feedstock.lig_frac', 'biopwr.feedstock.lig_moisture'): 
-			('biopwr.feedstock.total_moisture'),
-		('biopwr.feedstock.additional_opt', 'biopwr.feedstock.feedstock1_resource', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.feedstock1_biomass_frac'),
-		(): 
-			('biopwr.feedstock.subbit_ash'),
-		('biopwr.feedstock.barley_moisture_wet'): 
-			('biopwr.feedstock.barley_usual_moisture'),
-		(): 
-			('biopwr.feedstock.rice_ash'),
-		('biopwr.feedstock.rice_h'): 
-			('biopwr.feedstock.rice_lhv'),
-		(): 
-			('biopwr.feedstock.herb_hhv'),
-		('biopwr.feedstock.bagasse_resource', 'biopwr.feedstock.bagasse_obtainable', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.bagasse_frac'),
-		(): 
-			('biopwr.feedstock.wheat_ash'),
-		('biopwr.feedstock.rice_resource', 'biopwr.feedstock.rice_obtainable', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.rice_biomass_frac'),
-		(): 
-			('biopwr.feedstock.herb_c'),
-		(): 
-			('biopwr.feedstock.bit_o'),
-		('biopwr.feedstock.lig_moisture_wet'): 
-			('biopwr.feedstock.lig_moisture'),
-		('biopwr.feedstock.biomass_frac', 'biopwr.feedstock.total_biomass_ash', 'biopwr.feedstock.coal_frac', 'biopwr.feedstock.total_coal_ash'): 
-			('biopwr.feedstock.total_ash'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_resource', 'biopwr.feedstock.total_coal'): 
-			('biopwr.feedstock.bit_coal_frac'),
-		('biopwr.feedstock.total_coal_hhv'): 
-			('biopwr.feedstock.total_coal_hhv_avg'),
-		('biopwr.feedstock.bagasse_h'): 
-			('biopwr.feedstock.bagasse_lhv'),
-		(): 
-			('biopwr.feedstock.woody_hhv'),
-		(): 
-			('biopwr.feedstock.bit_h'),
-		('biopwr.feedstock.feedstock2_c', 'biopwr.feedstock.feedstock2_h', 'biopwr.feedstock.feedstock2_n'): 
-			('biopwr.feedstock.feedstock2_calc_hhv'),
-		(): 
-			('biopwr.feedstock.stover_o'),
-		('biopwr.feedstock.additional_opt', 'biopwr.feedstock.feedstock2_resource', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.feedstock2_frac'),
-		('biopwr.feedstock.wheat_moisture_wet'): 
-			('biopwr.feedstock.wheat_moisture'),
-		('biopwr.feedstock.barley_resource', 'biopwr.feedstock.barley_obtainable', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.barley_frac'),
-		('biopwr.feedstock.bagasse_frac', 'biopwr.feedstock.bagasse_h', 'biopwr.feedstock.barley_frac', 'biopwr.feedstock.barley_h', 'biopwr.feedstock.stover_frac', 'biopwr.feedstock.stover_h', 'biopwr.feedstock.rice_frac', 'biopwr.feedstock.rice_h', 'biopwr.feedstock.wheat_frac', 'biopwr.feedstock.wheat_h', 'biopwr.feedstock.forest_frac', 'biopwr.feedstock.forest_h', 'biopwr.feedstock.mill_frac', 'biopwr.feedstock.mill_h', 'biopwr.feedstock.urban_frac', 'biopwr.feedstock.urban_h', 'biopwr.feedstock.woody_frac', 'biopwr.feedstock.woody_h', 'biopwr.feedstock.herb_frac', 'biopwr.feedstock.herb_h', 'biopwr.feedstock.feedstock1_frac', 'biopwr.feedstock.feedstock1_h', 'biopwr.feedstock.feedstock2_frac', 'biopwr.feedstock.feedstock2_h', 'biopwr.feedstock.bit_frac', 'biopwr.feedstock.bit_h', 'biopwr.feedstock.subbit_frac', 'biopwr.feedstock.subbit_h', 'biopwr.feedstock.lig_frac', 'biopwr.feedstock.lig_h'): 
-			('biopwr.feedstock.total_h'),
-		(): 
-			('biopwr.feedstock.stover_lhv'),
-		(): 
-			('biopwr.feedstock.bagasse_ash'),
-		('biopwr.feedstock.wheat_moisture_wet'): 
-			('biopwr.feedstock.wheat_usual_moisture'),
-		(): 
-			('biopwr.feedstock.forest_h'),
-		('biopwr.feedstock.woody_resource', 'biopwr.feedstock.woody_obtainable', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.woody_biomass_frac'),
-		('biopwr.feedstock.bagasse_frac', 'biopwr.feedstock.bagasse_c', 'biopwr.feedstock.barley_frac', 'biopwr.feedstock.barley_c', 'biopwr.feedstock.stover_frac', 'biopwr.feedstock.stover_c', 'biopwr.feedstock.rice_frac', 'biopwr.feedstock.rice_c', 'biopwr.feedstock.wheat_frac', 'biopwr.feedstock.wheat_c', 'biopwr.feedstock.forest_frac', 'biopwr.feedstock.forest_c', 'biopwr.feedstock.mill_frac', 'biopwr.feedstock.mill_c', 'biopwr.feedstock.urban_frac', 'biopwr.feedstock.urban_c', 'biopwr.feedstock.woody_frac', 'biopwr.feedstock.woody_c', 'biopwr.feedstock.herb_frac', 'biopwr.feedstock.herb_c', 'biopwr.feedstock.feedstock1_frac', 'biopwr.feedstock.feedstock1_c', 'biopwr.feedstock.feedstock2_frac', 'biopwr.feedstock.feedstock2_c', 'biopwr.feedstock.bit_frac', 'biopwr.feedstock.bit_c', 'biopwr.feedstock.subbit_frac', 'biopwr.feedstock.subbit_c', 'biopwr.feedstock.lig_frac', 'biopwr.feedstock.lig_c'): 
-			('biopwr.feedstock.total_c'),
-		('biopwr.feedstock.herb_moisture_wet'): 
-			('biopwr.feedstock.herb_moisture'),
-		(): 
-			('biopwr.feedstock.rice_o'),
-		('biopwr.feedstock.total_biomass', 'biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstock.bagasse_hhv', 'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstock.barley_hhv', 'biopwr.feedstock.stover_biomass_frac', 'biopwr.feedstock.stover_hhv', 'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstock.rice_hhv', 'biopwr.feedstock.wheat_biomass_frac', 'biopwr.feedstock.wheat_hhv', 'biopwr.feedstock.forest_biomass_frac', 'biopwr.feedstock.forest_hhv', 'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstock.mill_hhv', 'biopwr.feedstock.urban_biomass_frac', 'biopwr.feedstock.urban_hhv', 'biopwr.feedstock.woody_biomass_frac', 'biopwr.feedstock.woody_hhv', 'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstock.herb_hhv', 'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstock.feedstock1_hhv', 'biopwr.feedstock.feedstock2_biomass_frac', 'biopwr.feedstock.feedstock2_hhv'): 
-			('biopwr.feedstock.total_biomass_hhv'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.lig_resource', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.lig_frac'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_coal_frac', 'biopwr.feedstock.subbit_coal_frac', 'biopwr.feedstock.lig_coal_frac'): 
-			('biopwr.feedstock.total_coal_lhv'),
-		('biopwr.feedstock.forest_resource', 'biopwr.feedstock.forest_obtainable', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.forest_frac'),
-		(): 
-			('biopwr.feedstock.barley_ash'),
-		(): 
-			('biopwr.feedstock.stover_c'),
-		('biopwr.feedstock.bagasse_frac', 'biopwr.feedstock.bagasse_o', 'biopwr.feedstock.barley_frac', 'biopwr.feedstock.barley_o', 'biopwr.feedstock.stover_frac', 'biopwr.feedstock.stover_o', 'biopwr.feedstock.rice_frac', 'biopwr.feedstock.rice_o', 'biopwr.feedstock.wheat_frac', 'biopwr.feedstock.wheat_o', 'biopwr.feedstock.forest_frac', 'biopwr.feedstock.forest_o', 'biopwr.feedstock.mill_frac', 'biopwr.feedstock.mill_o', 'biopwr.feedstock.urban_frac', 'biopwr.feedstock.urban_o', 'biopwr.feedstock.woody_frac', 'biopwr.feedstock.woody_o', 'biopwr.feedstock.herb_frac', 'biopwr.feedstock.herb_o', 'biopwr.feedstock.feedstock1_frac', 'biopwr.feedstock.feedstock1_o', 'biopwr.feedstock.feedstock2_frac', 'biopwr.feedstock.feedstock2_o', 'biopwr.feedstock.bit_frac', 'biopwr.feedstock.bit_o', 'biopwr.feedstock.subbit_frac', 'biopwr.feedstock.subbit_o', 'biopwr.feedstock.lig_frac', 'biopwr.feedstock.lig_o'): 
-			('biopwr.feedstock.total_o'),
-		(): 
-			('biopwr.feedstock.bit_ash'),
-		(): 
-			('biopwr.feedstock.bagasse_h'),
-		(): 
-			('biopwr.feedstock.mill_ash'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_coal_frac', 'biopwr.feedstock.bit_ash', 'biopwr.feedstock.subbit_coal_frac', 'biopwr.feedstock.subbit_ash', 'biopwr.feedstock.lig_coal_frac', 'biopwr.feedstock.lig_ash'): 
-			('biopwr.feedstock.total_coal_ash'),
-		('biopwr.feedstock.barley_moisture_wet'): 
-			('biopwr.feedstock.barley_moisture'),
-		(): 
-			('biopwr.feedstock.bagasse_o'),
-		(): 
-			('biopwr.feedstock.stover_h'),
-		(): 
-			('biopwr.feedstock.woody_lhv'),
-		('biopwr.feedstock.total_biomass', 'biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstock.bagasse_c', 'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstock.barley_c', 'biopwr.feedstock.stover_biomass_frac', 'biopwr.feedstock.stover_c', 'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstock.rice_c', 'biopwr.feedstock.wheat_biomass_frac', 'biopwr.feedstock.wheat_c', 'biopwr.feedstock.forest_biomass_frac', 'biopwr.feedstock.forest_c', 'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstock.mill_c', 'biopwr.feedstock.urban_biomass_frac', 'biopwr.feedstock.urban_c', 'biopwr.feedstock.woody_biomass_frac', 'biopwr.feedstock.woody_c', 'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstock.herb_c', 'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstock.feedstock2_biomass_frac'): 
-			('biopwr.feedstock.total_biomass_c'),
-		('biopwr.feedstock.rice_moisture_wet'): 
-			('biopwr.feedstock.rice_usual_moisture'),
-		(): 
-			('biopwr.feedstock.wheat_lhv'),
-		('biopwr.feedstock.forest_resource', 'biopwr.feedstock.forest_obtainable', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.forest_biomass_frac'),
-		(): 
-			('biopwr.feedstock.mill_o'),
-		('biopwr.feedstock.feedstock1_opt', 'biopwr.feedstock.feedstock1_user_hhv', 'biopwr.feedstock.feedstock1_calc_hhv'): 
-			('biopwr.feedstock.feedstock1_hhv'),
-		('biopwr.feedstock.total_biomass', 'biopwr.feedstock.total_coal'): 
-			('biopwr.feedstock.total'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.subbit_resource', 'biopwr.feedstock.total_coal'): 
-			('biopwr.feedstock.subbit_coal_frac'),
-		('biopwr.plant.nameplate'): 
-			('biopwr.feedstock.total_nameplate'),
-		('biopwr.feedstock.stover_resource', 'biopwr.feedstock.stover_obtainable', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.stover_frac'),
-		(): 
-			('biopwr.feedstock.forest_c'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.total_coal', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.coal_frac'),
-		('biopwr.feedstock.feedstock1_moisture_wet'): 
-			('biopwr.feedstock.feedstock1_moisture'),
-		('biopwr.feedstock.feedstock2_moisture'): 
-			('biopwr.feedstock.feedstock1_usual_moisture'),
-		(): 
-			('biopwr.feedstock.lig_c'),
-		(): 
-			('biopwr.feedstock.rice_c'),
-		(): 
-			('biopwr.feedstock.bagasse_hhv'),
-		(): 
-			('biopwr.feedstock.barley_h'),
-		('biopwr.feedstock.urban_moisture_wet'): 
-			('biopwr.feedstock.urban_usual_moisture'),
-		('biopwr.feedstock.total_biomass_hhv'): 
-			('biopwr.feedstock.total_biomass_hhv_avg'),
-		(): 
-			('biopwr.feedstock.herb_ash'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_coal_frac', 'biopwr.feedstock.bit_moisture', 'biopwr.feedstock.subbit_coal_frac', 'biopwr.feedstock.subbit_moisture', 'biopwr.feedstock.lig_coal_frac', 'biopwr.feedstock.lig_moisture'): 
-			('biopwr.feedstock.total_coal_moisture'),
-		('biopwr.feedstock.biomass_frac', 'biopwr.feedstock.total_biomass_lhv', 'biopwr.feedstock.coal_frac', 'biopwr.feedstock.total_coal_lhv'): 
-			('biopwr.feedstock.total_lhv'),
-		(): 
-			('biopwr.feedstock.forest_ash'),
-		('biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstock.bagasse_moisture', 'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstock.barley_moisture', 'biopwr.feedstock.stover_biomass_frac', 'biopwr.feedstock.stover_moisture', 'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstock.rice_moisture', 'biopwr.feedstock.wheat_biomass_frac', 'biopwr.feedstock.wheat_moisture', 'biopwr.feedstock.forest_biomass_frac', 'biopwr.feedstock.forest_moisture', 'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstock.mill_moisture', 'biopwr.feedstock.urban_biomass_frac', 'biopwr.feedstock.urban_moisture', 'biopwr.feedstock.woody_biomass_frac', 'biopwr.feedstock.woody_moisture', 'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstock.herb_moisture', 'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstock.feedstock1_moisture', 'biopwr.feedstock.feedstock2_biomass_frac', 'biopwr.feedstock.feedstock2_moisture'): 
-			('biopwr.feedstock.total_biomass_moisture'),
-		('biopwr.feedstock.mill_resource', 'biopwr.feedstock.mill_obtainable', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.mill_frac'),
-		(): 
-			('biopwr.feedstock.lig_o'),
-		(): 
-			('biopwr.feedstock.urban_lhv'),
-		('biopwr.feedstock.urban_moisture_wet'): 
-			('biopwr.feedstock.urban_moisture'),
-		(): 
-			('biopwr.feedstock.urban_ash'),
-		('biopwr.feedstock.bagasse_resource', 'biopwr.feedstock.bagasse_obtainable', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.bagasse_biomass_frac'),
-		(): 
-			('biopwr.feedstock.wheat_c'),
-		('biopwr.feedstock.bagasse_moisture_wet'): 
-			('biopwr.feedstock.bagasse_usual_moisture'),
-		('biopwr.feedstock.mill_resource', 'biopwr.feedstock.mill_obtainable', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.mill_biomass_frac'),
-		('biopwr.feedstock.herb_resource', 'biopwr.feedstock.herb_obtainable', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.herb_frac'),
-		('biopwr.feedstock.herb_hhv', 'biopwr.feedstock.herb_h'): 
-			('biopwr.feedstock.herb_lhv'),
-		(): 
-			('biopwr.feedstock.rice_h'),
-		(): 
-			('biopwr.feedstock.barley_lhv'),
-		('biopwr.feedstock.woody_resource', 'biopwr.feedstock.woody_obtainable', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.woody_frac'),
-		(): 
-			('biopwr.feedstock.lig_h'),
-		('biopwr.feedstock.feedstock2_moisture_wet'): 
-			('biopwr.feedstock.feedstock2_moisture'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_resource', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.bit_frac'),
-		('biopwr.feedstock.additional_opt', 'biopwr.feedstock.bagasse_resource', 'biopwr.feedstock.bagasse_obtainable', 'biopwr.feedstock.barley_resource', 'biopwr.feedstock.barley_obtainable', 'biopwr.feedstock.stover_resource', 'biopwr.feedstock.stover_obtainable', 'biopwr.feedstock.rice_resource', 'biopwr.feedstock.rice_obtainable', 'biopwr.feedstock.wheat_resource', 'biopwr.feedstock.wheat_obtainable', 'biopwr.feedstock.forest_resource', 'biopwr.feedstock.forest_obtainable', 'biopwr.feedstock.mill_resource', 'biopwr.feedstock.mill_obtainable', 'biopwr.feedstock.urban_resource', 'biopwr.feedstock.urban_obtainable', 'biopwr.feedstock.woody_resource', 'biopwr.feedstock.woody_obtainable', 'biopwr.feedstock.herb_resource', 'biopwr.feedstock.herb_obtainable', 'biopwr.feedstock.feedstock1_resource', 'biopwr.feedstock.feedstock2_resource'): 
-			('biopwr.feedstock.total_biomass'),
-		('biopwr.feedstock.bit_moisture_wet'): 
-			('biopwr.feedstock.bit_moisture'),
-		('biopwr.feedstock.bit_moisture_wet'): 
-			('biopwr.feedstock.bit_usual_moisture'),
-		(): 
-			('biopwr.feedstock.urban_hhv'),
-		('biopwr.feedstock.urban_resource', 'biopwr.feedstock.urban_obtainable', 'biopwr.feedstock.total'): 
-			('biopwr.feedstock.urban_frac'),
-		(): 
-			('biopwr.feedstock.forest_hhv'),
-		(): 
-			('biopwr.feedstock.forest_o'),
-		(): 
-			('biopwr.feedstock.mill_lhv'),
-		(): 
-			('biopwr.feedstock.woody_h'),
-		('biopwr.feedstock.urban_resource', 'biopwr.feedstock.urban_obtainable', 'biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstock.urban_biomass_frac'),
-		('biopwr.feedstock.total_biomass', 'biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstock.bagasse_ash', 'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstock.barley_ash', 'biopwr.feedstock.stover_biomass_frac', 'biopwr.feedstock.stover_ash', 'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstock.rice_ash', 'biopwr.feedstock.wheat_biomass_frac', 'biopwr.feedstock.wheat_ash', 'biopwr.feedstock.forest_biomass_frac', 'biopwr.feedstock.forest_ash', 'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstock.mill_ash', 'biopwr.feedstock.urban_biomass_frac', 'biopwr.feedstock.urban_ash', 'biopwr.feedstock.woody_biomass_frac', 'biopwr.feedstock.woody_ash', 'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstock.herb_ash', 'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstock.feedstock2_biomass_frac'): 
-			('biopwr.feedstock.total_biomass_ash'),
-		('biopwr.feedstock.mill_moisture_wet'): 
-			('biopwr.feedstock.mill_usual_moisture'),
-		(): 
-			('biopwr.feedstock.subbit_o'),
-		('biopwr.feedstock.woody_moisture_wet'): 
-			('biopwr.feedstock.woody_moisture'),
-		(): 
-			('biopwr.feedstock.urban_c'),
-		(): 
-			('biopwr.feedstock.mill_h')	},
-	'Financial Third Party Ownership': {
-		('real_discount_rate', 'inflation_rate'): 
-			('nominal_discount_rate')	},
-	'HCPV Module': {
-		('module_a0', 'module_a1', 'module_a2', 'module_a3', 'module_a4'): 
-			('hcpv.module.mam_ref'),
-		('module_concentration', 'hcpv.module.rad1'): 
-			('hcpv.module.rad1X'),
-		('hcpv.module.mjeff4', 'hcpv.module.mjeff3', 'hcpv.module.mjeff2', 'hcpv.module.mjeff1', 'hcpv.module.mjeff0'): 
-			('module_mjeff'),
-		('module_reference', 'hcpv.module.mjeff0', 'hcpv.module.mjeff1', 'hcpv.module.mjeff2', 'hcpv.module.mjeff3', 'hcpv.module.mjeff4', 'module_optical_error', 'module_flutter_loss_coeff', 'module_alignment_error', 'hcpv.module.mam_ref'): 
-			('hcpv.module.est_eff'),
-		('hcpv.module.rad4', 'hcpv.module.rad3', 'hcpv.module.rad2', 'hcpv.module.rad1', 'hcpv.module.rad0'): 
-			('module_rad'),
-		('module_reference', 'hcpv.module.mjeff0', 'hcpv.module.rad0', 'hcpv.module.mjeff1', 'hcpv.module.rad1', 'hcpv.module.mjeff2', 'hcpv.module.rad2', 'hcpv.module.mjeff3', 'hcpv.module.rad3', 'hcpv.module.mjeff4', 'hcpv.module.rad4', 'hcpv.module.area', 'module_optical_error', 'module_flutter_loss_coeff', 'module_alignment_error', 'hcpv.module.mam_ref'): 
-			('hcpv.module.power'),
-		('module_concentration', 'hcpv.module.rad3'): 
-			('hcpv.module.rad3X'),
-		('module_concentration', 'hcpv.module.rad4'): 
-			('hcpv.module.rad4X'),
-		('module_concentration', 'hcpv.module.rad0'): 
-			('hcpv.module.rad0X'),
-		('module_concentration', 'hcpv.module.rad2'): 
-			('hcpv.module.rad2X'),
-		('module_reference', 'hcpv.module.rad0', 'hcpv.module.rad1', 'hcpv.module.rad2', 'hcpv.module.rad3', 'hcpv.module.rad4', 'module_a', 'module_b', 'module_dT'): 
-			('hcpv.module.cell_temp'),
-		('module_concentration', 'module_cell_area', 'module_ncells'): 
-			('hcpv.module.area')	},
-	'Battery Model Simple': {
-		(): 
-			('batt_simple_meter_position')	},
-	'Physical Trough Receiver Type 4': {
-		('csp_dtr_hce_var1_field_fraction_4', 'csp_dtr_hce_var1_bellows_shadowing_4', 'csp_dtr_hce_var1_hce_dirt_4', 'csp_dtr_hce_var1_abs_abs_4', 'csp_dtr_hce_var1_env_trans_4', 'csp_dtr_hce_var2_field_fraction_4', 'csp_dtr_hce_var2_bellows_shadowing_4', 'csp_dtr_hce_var2_hce_dirt_4', 'csp_dtr_hce_var2_abs_abs_4', 'csp_dtr_hce_var2_env_trans_4', 'csp_dtr_hce_var3_field_fraction_4', 'csp_dtr_hce_var3_bellows_shadowing_4', 'csp_dtr_hce_var3_hce_dirt_4', 'csp_dtr_hce_var3_abs_abs_4', 'csp_dtr_hce_var3_env_trans_4', 'csp_dtr_hce_var4_field_fraction_4', 'csp_dtr_hce_var4_bellows_shadowing_4', 'csp_dtr_hce_var4_hce_dirt_4', 'csp_dtr_hce_var4_abs_abs_4', 'csp_dtr_hce_var4_env_trans_4'): 
-			('csp_dtr_hce_optical_eff_4'),
-		('csp_dtr_hce_var1_field_fraction_4', 'csp_dtr_hce_var1_rated_heat_loss_4', 'csp_dtr_hce_var2_field_fraction_4', 'csp_dtr_hce_var2_rated_heat_loss_4', 'csp_dtr_hce_var3_field_fraction_4', 'csp_dtr_hce_var3_rated_heat_loss_4', 'csp_dtr_hce_var4_field_fraction_4', 'csp_dtr_hce_var4_rated_heat_loss_4'): 
-			('csp_dtr_hce_design_heat_loss_4')	},
-	'Physical Trough Collector Type 4': {
-		('csp_dtr_sca_tracking_error_4', 'csp_dtr_sca_geometry_effects_4', 'csp_dtr_sca_clean_reflectivity_4', 'csp_dtr_sca_mirror_dirt_4', 'csp_dtr_sca_general_error_4'): 
-			('csp_dtr_sca_calc_sca_eff_4'),
-		('csp_dtr_sca_ave_focal_len_4', 'csp_dtr_sca_calc_theta_4', 'csp_dtr_sca_piping_dist_4'): 
-			('csp_dtr_sca_calc_end_gain_4'),
-		('csp_dtr_sca_calc_zenith_4', 'tilt', 'azimuth'): 
-			('csp_dtr_sca_calc_costh_4'),
-		('lat'): 
-			('csp_dtr_sca_calc_latitude_4'),
-		('csp_dtr_sca_calc_costh_4'): 
-			('csp_dtr_sca_calc_theta_4'),
-		('lat'): 
-			('csp_dtr_sca_calc_zenith_4'),
-		('csp_dtr_sca_length_4', 'csp_dtr_sca_ncol_per_sca_4'): 
-			('csp_dtr_sca_ap_length_4'),
-		('IAMs_4', 'csp_dtr_sca_calc_theta_4', 'csp_dtr_sca_calc_costh_4'): 
-			('csp_dtr_sca_calc_iam_4'),
-		('csp_dtr_sca_ave_focal_len_4', 'csp_dtr_sca_calc_theta_4', 'nSCA', 'csp_dtr_sca_calc_end_gain_4', 'csp_dtr_sca_length_4', 'csp_dtr_sca_ncol_per_sca_4'): 
-			('csp_dtr_sca_calc_end_loss_4')	},
-	'Linear Fresnel Parasitics': {
-		('PB_fixed_par', 'demand_var'): 
-			('csp.lf.par.fixed_total'),
-		('csp.lf.par.bop_val', 'csp.lf.par.bop_pf', 'csp.lf.par.bop_c0', 'csp.lf.par.bop_c1', 'csp.lf.par.bop_c2'): 
-			('bop_array'),
-		('SCA_drives_elec', 'csp.lf.sf.dp.actual_aper'): 
-			('csp.lf.par.tracking_total'),
-		('csp.lf.par.aux_val', 'csp.lf.par.aux_pf', 'csp.lf.par.aux_c0', 'csp.lf.par.aux_c1', 'csp.lf.par.aux_c2'): 
-			('aux_array'),
-		('csp.lf.par.bop_val', 'csp.lf.par.bop_pf', 'csp.lf.par.bop_c0', 'csp.lf.par.bop_c1', 'csp.lf.par.bop_c2', 'demand_var'): 
-			('csp.lf.par.bop_total'),
-		('csp.lf.par.aux_val', 'csp.lf.par.aux_pf', 'csp.lf.par.aux_c0', 'csp.lf.par.aux_c1', 'csp.lf.par.aux_c2', 'demand_var'): 
-			('csp.lf.par.aux_total')	},
-	'ISCC Molten Salt Tower Receiver': {
-		('piping_length', 'piping_loss'): 
-			('piping_loss_tot'),
-		('THT', 'piping_length_mult', 'piping_length_const'): 
-			('piping_length'),
-		('N_panels'): 
-			('n_flux_x'),
-		(): 
-			('tower_technology'),
-		(): 
-			('conv_forced'),
-		('THT'): 
-			('h_tower'),
-		('h_rec_panel', 'csp.pt.rec.cav_lip_height_ratio'): 
-			('csp.pt.rec.cav_lip_height'),
-		('D_rec', 'H_rec'): 
-			('rec_aspect'),
-		(): 
-			('rec_angle'),
-		(): 
-			('h_wind_meas'),
-		(): 
-			('eps_wavelength'),
-		(): 
-			('conv_wind_dir'),
-		(): 
-			('n_flux_y'),
-		(): 
-			('conv_coupled'),
-		('T_htf_cold_des', 'T_htf_hot_des'): 
-			('csp.pt.rec.htf_t_avg'),
-		('csp.pt.rec.htf_type', 'csp.pt.rec.htf_t_avg', 'field_fl_props'): 
-			('csp.pt.rec.htf_c_avg'),
-		('csp.pt.rec.max_flow_to_rec'): 
-			('m_dot_htf_max'),
-		('solarm', 'q_pb_design'): 
-			('Q_rec_des'),
-		('csp.pt.rec.cav_ap_height'): 
-			('csp.pt.rec.cav_panel_height'),
-		('rec_d_spec', 'csp.pt.rec.cav_ap_hw_ratio'): 
-			('csp.pt.rec.cav_ap_height'),
-		(): 
-			('conv_model'),
-		('csp.pt.rec.max_oper_frac', 'Q_rec_des', 'csp.pt.rec.htf_c_avg', 'T_htf_hot_des', 'T_htf_cold_des'): 
-			('csp.pt.rec.max_flow_to_rec'),
-		('csp.pt.rec.htf_type'): 
-			('rec_htf'),
-		('csp.pt.rec.flow_pattern'): 
-			('Flow_type'),
-		('field_fl_props'): 
-			('user_fluid'),
-		('csp.pt.rec.material_type'): 
-			('mat_tube')	},
-	'Battery Current and Capacity': {
-		('batt_Qexp_percent', 'batt_Qfull', 'batt_Qnom_percent', 'batt_computed_bank_capacity', 'batt_computed_voltage'): 
-			('batt_Qexp', 'batt_Qnom', 'batt_Qfull_flow'),
-		('batt_computed_strings', 'LeadAcid_q10', 'batt_Qfull', 'LeadAcid_q20', 'LeadAcid_qn'): 
-			('LeadAcid_q10_computed', 'LeadAcid_q20_computed', 'LeadAcid_qn_computed'),
-		('batt_size_choice', 'batt_chem', 'batt_bank_power', 'batt_bank_size', 'batt_bank_size_dc_ac', 'batt_dc_ac_efficiency', 'batt_bank_power_dc_ac', 'batt_Qfull', 'batt_bank_voltage', 'batt_Vnom_default', 'batt_bank_ncells_serial', 'batt_bank_nstrings', 'batt_C_rate_max_discharge_input', 'batt_C_rate_max_charge_input', 'batt_current_choice', 'batt_cell_power_discharge_max', 'batt_cell_current_discharge_max', 'batt_bank_nseries_stacks', 'batt_bank_size_specify', 'batt_cell_power_charge_max', 'batt_cell_current_charge_max'): 
-			('batt_computed_voltage', 'batt_computed_series', 'batt_computed_strings', 'batt_num_cells', 'batt_computed_bank_capacity', 'batt_power_discharge_max', 'batt_power_charge_max', 'batt_time_capacity', 'batt_C_rate_max_charge', 'batt_C_rate_max_discharge', 'batt_current_charge_max', 'batt_current_discharge_max', 'batt_computed_stacks_series')	},
-	'Geothermal Costs': {
-		('geotherm.cost.recap'): 
-			('system_recapitalization_cost'),
-		(): 
-			('system_use_lifetime_output'),
-		('total_installed_cost'): 
-			('geotherm.cost.total_installed_millions'),
-		('sales_tax_rate'): 
-			('geotherm.cost.sales_tax.value'),
-		('geotherm.cost.prod_num_wells', 'geotherm.cost.inj_num_wells'): 
-			('geotherm.cost.prod_inj_num_wells'),
-		('geotherm.cost.prod_cost_curve', 'resource_depth'): 
-			('geotherm.cost.prod_per_well'),
-		('geotherm.cost.plm.fixed', 'geotherm.cost.plm.nonfixed'): 
-			('geotherm.cost.plm.total'),
-		('geotherm.cost.inj_cost_curve', 'resource_depth'): 
-			('geotherm.cost.inj_per_well'),
-		('geotherm.cost.plant_total.calc', 'geotherm.cost.plant_total.amount_specified', 'geotherm.cost.plant_total'): 
-			('geotherm.cost.plant_total.amount'),
-		('geotherm.cost.conf_num_wells', 'geotherm.cost.confirm_wells_percent'): 
-			('geotherm.cost.confirm_wells_num'),
-		('geotherm.cost.conf_per_well', 'geotherm.cost.conf_num_wells'): 
-			('geotherm.cost.conf_drill'),
-		('pump_depth'): 
-			('geotherm.cost.pump_depth'),
-		('geotherm.cost.contingency_percent', 'geotherm.cost.capital_total'): 
-			('geotherm.cost.contingency'),
-		('geotherm.cost.inj_per_well', 'geotherm.cost.inj_num_wells'): 
-			('geotherm.cost.inj_drill'),
-		('total_direct_cost', 'total_indirect_cost'): 
-			('total_installed_cost'),
-		('gross_output'): 
-			('geotherm.cost.plant_size'),
-		('geotherm.cost.surf_per_well', 'geotherm.cost.surf_num_wells'): 
-			('geotherm.cost.surf_non_drill'),
-		('geotherm.cost.plant_auto_estimate', 'geotherm.cost.plant_per_kW_input', 'geotherm.cost.plant_size', 'geotherm.cost.plant_per_kW'): 
-			('geotherm.cost.plant_total'),
-		('pump_size_hp'): 
-			('geotherm.cost.pump_size'),
-		('geotherm.cost.inj_wells_drilled'): 
-			('geotherm.cost.inj_num_wells'),
-		('total_installed_cost', 'geotherm.net_output'): 
-			('geotherm.cost.installed_per_capacity'),
-		('geotherm.cost.stim_per_well', 'geotherm.cost.stim_num_wells'): 
-			('geotherm.cost.stim_non_drill'),
-		('geotherm.cost.prod_drill', 'geotherm.cost.inj_drill'): 
-			('geotherm.cost.prod_inj_drill'),
-		('geotherm.cost.surf_non_drill'): 
-			('geotherm.cost.surf_total'),
-		('geotherm.cost.prod_wells_drilled'): 
-			('geotherm.cost.prod_num_wells'),
-		('geotherm.cost.pump_per_foot', 'geotherm.cost.pump_depth'): 
-			('geotherm.cost.pump_installation'),
-		('geotherm.cost.prod_req'): 
-			('geotherm.cost.num_pumps'),
-		('geotherm.cost.epc.fixed', 'geotherm.cost.epc.nonfixed'): 
-			('geotherm.cost.epc.total'),
-		('geotherm.cost.prod_inj_drill', 'geotherm.cost.prod_inj_non_drill'): 
-			('geotherm.cost.prod_inj_total'),
-		('geotherm.cost.stim_non_drill'): 
-			('geotherm.cost.stim_total'),
-		('geotherm.cost.prod_req', 'geotherm.cost.inj_num_wells'): 
-			('geotherm.cost.stim_num_wells'),
-		('geotherm.cost.prod_req', 'geotherm.cost.confirm_wells_num'): 
-			('geotherm.cost.prod_wells_drilled'),
-		('geotherm.cost.pump_per_hp', 'geotherm.cost.pump_size'): 
-			('geotherm.cost.pump_per_pump'),
-		('geotherm.cost.prod_req', 'geotherm.cost.inj_num_wells'): 
-			('geotherm.cost.surf_num_wells'),
-		('geotherm.cost.contingency', 'geotherm.cost.capital_total'): 
-			('total_direct_cost'),
-		('geotherm.cost.pump_total_per_pump', 'geotherm.cost.num_pumps'): 
-			('geotherm.cost.pumps_total'),
-		('geotherm.cost.drilling.calc', 'geotherm.cost.drilling.amount_specified', 'geotherm.cost.expl_total', 'geotherm.cost.conf_total', 'geotherm.cost.prod_inj_total', 'geotherm.cost.surf_total', 'geotherm.cost.stim_total'): 
-			('geotherm.cost.drilling.amount'),
-		('geotherm.cost.recap_use_calc', 'geotherm.cost.recap_specified', 'geotherm.cost.conf_drill', 'geotherm.cost.prod_inj_drill', 'geotherm.cost.surf_total', 'geotherm.cost.pumps_total'): 
-			('geotherm.cost.recap'),
-		('geotherm.cost.indirect.calc', 'geotherm.cost.indirect.amount_specified', 'geotherm.cost.epc.total', 'geotherm.cost.plm.total', 'geotherm.cost.sales_tax.total'): 
-			('total_indirect_cost'),
-		('geotherm.cost.prod_req', 'geotherm.cost.inj_prod_well_ratio'): 
-			('geotherm.cost.inj_wells_drilled'),
-		('geotherm.cost.pump_installation', 'geotherm.cost.pump_per_pump'): 
-			('geotherm.cost.pump_total_per_pump'),
-		('total_direct_cost', 'geotherm.cost.plm.percent'): 
-			('geotherm.cost.plm.nonfixed'),
-		('total_direct_cost', 'geotherm.cost.epc.percent'): 
-			('geotherm.cost.epc.nonfixed'),
-		(): 
-			('system_use_recapitalization'),
-		('geotherm.cost.expl_per_well', 'geotherm.cost.expl_num_wells'): 
-			('geotherm.cost.expl_drill'),
-		('geotherm.cost.expl_multiplier', 'geotherm.cost.prod_per_well'): 
-			('geotherm.cost.expl_per_well'),
-		('geotherm.cost.pumping.calc', 'geotherm.cost.pumping.amount_specified', 'geotherm.cost.pumps_total'): 
-			('geotherm.cost.pumping.amount'),
-		('geotherm.cost.conf_multiplier', 'geotherm.cost.prod_per_well'): 
-			('geotherm.cost.conf_per_well'),
-		('geotherm.cost.drilling.amount', 'geotherm.cost.plant_total.amount', 'geotherm.cost.pumping.amount'): 
-			('geotherm.cost.capital_total'),
-		('geotherm.cost.plant_auto_estimate', 'nameplate', 'resource_type', 'resource_temp', 'resource_depth', 'geothermal_analysis_period', 'model_choice', 'analysis_type', 'num_wells', 'conversion_type', 'plant_efficiency_input', 'conversion_subtype', 'decline_type', 'temp_decline_rate', 'temp_decline_max', 'wet_bulb_temp', 'ambient_pressure', 'well_flow_rate', 'pump_efficiency', 'delta_pressure_equip', 'excess_pressure_pump', 'well_diameter', 'casing_size', 'inj_well_diam', 'design_temp', 'specify_pump_work', 'specified_pump_work_amount', 'rock_thermal_conductivity', 'rock_specific_heat', 'rock_density', 'reservoir_pressure_change_type', 'reservoir_pressure_change', 'reservoir_width', 'reservoir_height', 'reservoir_permeability', 'inj_prod_well_distance', 'subsurface_water_loss', 'fracture_aperature', 'fracture_width', 'num_fractures', 'fracture_angle', 'hr_pl_nlev', 'geotherm.cost.plant_size'): 
-			('geotherm.cost.plant_per_kW'),
-		('num_wells_getem'): 
-			('geotherm.cost.prod_req'),
-		('geotherm.cost.prod_per_well', 'geotherm.cost.prod_num_wells'): 
-			('geotherm.cost.prod_drill'),
-		('geotherm.cost.conf_drill', 'geotherm.cost.conf_non_drill'): 
-			('geotherm.cost.conf_total'),
-		('geotherm.cost.sales_tax.value', 'total_direct_cost', 'geotherm.cost.sales_tax.percent'): 
-			('geotherm.cost.sales_tax.total'),
-		('geotherm.cost.expl_drill', 'geotherm.cost.expl_non_drill'): 
-			('geotherm.cost.expl_total')	},
-	'Tower SolarPilot Capital Costs': {
-		('csp.pt.cost.heliostats_m2', 'site_spec_cost', 'heliostat_spec_cost', 'cost_sf_fixed', 'ui_tower_height', 'ui_receiver_height', 'ui_heliostat_height', 'tower_fixed_cost', 'tower_exp', 'csp.pt.cost.receiver.area', 'rec_ref_cost', 'rec_ref_area', 'rec_cost_exp', 'csp.pt.cost.storage_mwht', 'tes_spec_cost', 'csp.pt.cost.power_block_mwe', 'plant_spec_cost', 'bop_spec_cost', 'fossil_spec_cost', 'contingency_rate', 'csp.pt.cost.total_land_area', 'csp.pt.cost.nameplate', 'csp.pt.cost.epc.per_acre', 'csp.pt.cost.epc.percent', 'csp.pt.cost.epc.per_watt', 'csp.pt.cost.epc.fixed', 'land_spec_cost', 'csp.pt.cost.plm.percent', 'csp.pt.cost.plm.per_watt', 'csp.pt.cost.plm.fixed', 'sales_tax_frac', 'csp.pt.cost.sales_tax.value'): 
-			('csp.pt.cost.site_improvements', 'csp.pt.cost.heliostats', 'csp.pt.cost.tower', 'csp.pt.cost.receiver', 'csp.pt.cost.storage', 'csp.pt.cost.power_block', 'csp.pt.cost.bop', 'csp.pt.cost.fossil', 'ui_direct_subtotal', 'csp.pt.cost.contingency', 'total_direct_cost', 'csp.pt.cost.epc.total', 'csp.pt.cost.plm.total', 'csp.pt.cost.sales_tax.total', 'total_indirect_cost', 'total_installed_cost', 'csp.pt.cost.installed_per_capacity'),
-		(): 
-			('system_use_lifetime_output'),
-		('sales_tax_rate'): 
-			('csp.pt.cost.sales_tax.value'),
-		('P_ref', 'demand_var'): 
-			('csp.pt.cost.power_block_mwe'),
-		('P_ref', 'design_eff', 'tshours'): 
-			('csp.pt.cost.storage_mwht'),
-		('receiver_type', 'rec_height', 'D_rec', 'rec_d_spec', 'csp.pt.rec.cav_ap_height', 'd_rec'): 
-			('csp.pt.cost.receiver.area'),
-		('helio_height'): 
-			('ui_heliostat_height'),
-		('nameplate'): 
-			('csp.pt.cost.nameplate'),
-		('receiver_type', 'rec_height', 'csp.pt.rec.cav_ap_height'): 
-			('csp.pt.cost.rec_height'),
-		('rec_height'): 
-			('ui_receiver_height'),
-		(): 
-			('system_use_recapitalization'),
-		('THT', 'h_tower'): 
-			('ui_tower_height'),
-		('csp.pt.sf.total_land_area'): 
-			('csp.pt.cost.total_land_area'),
-		('A_sf_UI'): 
-			('csp.pt.cost.site_improvements_m2'),
-		('A_sf_UI'): 
-			('csp.pt.cost.heliostats_m2')	},
-	'Physical Trough Collector Header': {
-		('IAMs_1', 'IAMs_2', 'IAMs_3', 'IAMs_4'): 
-			('IAM_matrix'),
-		('csp_dtr_sca_w_profile_1', 'csp_dtr_sca_w_profile_2', 'csp_dtr_sca_w_profile_3', 'csp_dtr_sca_w_profile_4', 'arr_collectors_in_loop', 'csp_dtr_sca_aperture_1', 'csp_dtr_sca_aperture_2', 'csp_dtr_sca_aperture_3', 'csp_dtr_sca_aperture_4', 'csp_dtr_sca_tracking_error_1', 'csp_dtr_sca_tracking_error_2', 'csp_dtr_sca_tracking_error_3', 'csp_dtr_sca_tracking_error_4', 'csp_dtr_sca_geometry_effects_1', 'csp_dtr_sca_geometry_effects_2', 'csp_dtr_sca_geometry_effects_3', 'csp_dtr_sca_geometry_effects_4', 'csp_dtr_sca_clean_reflectivity_1', 'csp_dtr_sca_clean_reflectivity_2', 'csp_dtr_sca_clean_reflectivity_3', 'csp_dtr_sca_clean_reflectivity_4', 'csp_dtr_sca_mirror_dirt_1', 'csp_dtr_sca_mirror_dirt_2', 'csp_dtr_sca_mirror_dirt_3', 'csp_dtr_sca_mirror_dirt_4', 'csp_dtr_sca_general_error_1', 'csp_dtr_sca_general_error_2', 'csp_dtr_sca_general_error_3', 'csp_dtr_sca_general_error_4', 'csp_dtr_sca_ave_focal_len_1', 'csp_dtr_sca_ave_focal_len_2', 'csp_dtr_sca_ave_focal_len_3', 'csp_dtr_sca_ave_focal_len_4', 'csp_dtr_sca_length_1', 'csp_dtr_sca_length_2', 'csp_dtr_sca_length_3', 'csp_dtr_sca_length_4', 'csp_dtr_sca_ap_length_1', 'csp_dtr_sca_ap_length_2', 'csp_dtr_sca_ap_length_3', 'csp_dtr_sca_ap_length_4', 'csp_dtr_sca_ncol_per_sca_1', 'csp_dtr_sca_ncol_per_sca_2', 'csp_dtr_sca_ncol_per_sca_3', 'csp_dtr_sca_ncol_per_sca_4', 'csp_dtr_sca_piping_dist_1', 'csp_dtr_sca_piping_dist_2', 'csp_dtr_sca_piping_dist_3', 'csp_dtr_sca_piping_dist_4'): 
-			('W_aperture', 'max_collector_width', 'A_aperture', 'TrackingError', 'GeomEffects', 'Rho_mirror_clean', 'Dirt_mirror', 'Error', 'Ave_Focal_Length', 'L_SCA', 'L_aperture', 'ColperSCA', 'Distance_SCA'),
-		(): 
-			('nColt'),
-		('SCAInfoArray', 'nColt'): 
-			('collectors_in_field', 'arr_collectors_in_loop')	},
-	'Tower Capital Costs': {
-		('csp.pt.cost.heliostats_m2', 'csp.pt.cost.site_improvements_per_m2', 'csp.pt.cost.heliostats_per_m2', 'csp.pt.cost.fixed_sf', 'ui_tower_height', 'ui_receiver_height', 'ui_heliostat_height', 'csp.pt.cost.tower.fixed', 'csp.pt.cost.tower.scaling_exp', 'csp.pt.cost.receiver.area', 'csp.pt.cost.receiver.ref_cost', 'csp.pt.cost.receiver.ref_area', 'csp.pt.cost.receiver.scaling_exp', 'csp.pt.cost.storage_mwht', 'csp.pt.cost.storage_per_kwht', 'csp.pt.cost.power_block_mwe', 'csp.pt.cost.power_block_per_kwe', 'csp.pt.cost.bop_per_kwe', 'csp.pt.cost.fossil_per_kwe', 'csp.pt.cost.contingency_percent', 'csp.pt.cost.total_land_area', 'csp.pt.cost.nameplate', 'csp.pt.cost.epc.per_acre', 'csp.pt.cost.epc.percent', 'csp.pt.cost.epc.per_watt', 'csp.pt.cost.epc.fixed', 'csp.pt.cost.plm.per_acre', 'csp.pt.cost.plm.percent', 'csp.pt.cost.plm.per_watt', 'csp.pt.cost.plm.fixed', 'csp.pt.cost.sales_tax.percent', 'csp.pt.cost.sales_tax.value'): 
-			('csp.pt.cost.site_improvements', 'csp.pt.cost.heliostats', 'csp.pt.cost.tower', 'csp.pt.cost.receiver', 'csp.pt.cost.storage', 'csp.pt.cost.power_block', 'csp.pt.cost.bop', 'csp.pt.cost.fossil', 'ui_direct_subtotal', 'csp.pt.cost.contingency', 'total_direct_cost', 'csp.pt.cost.epc.total', 'csp.pt.cost.plm.total', 'csp.pt.cost.sales_tax.total', 'total_indirect_cost', 'total_installed_cost', 'csp.pt.cost.installed_per_capacity'),
-		(): 
-			('system_use_lifetime_output'),
-		('sales_tax_rate'): 
-			('csp.pt.cost.sales_tax.value'),
-		('P_ref', 'demand_var'): 
-			('csp.pt.cost.power_block_mwe'),
-		('P_ref', 'design_eff', 'tshours'): 
-			('csp.pt.cost.storage_mwht'),
-		('receiver_type', 'H_rec', 'D_rec', 'rec_d_spec', 'csp.pt.rec.cav_ap_height', 'd_rec'): 
-			('csp.pt.cost.receiver.area'),
-		('helio_height'): 
-			('ui_heliostat_height'),
-		('nameplate'): 
-			('csp.pt.cost.nameplate'),
-		('receiver_type', 'H_rec', 'csp.pt.rec.cav_ap_height'): 
-			('csp.pt.cost.rec_height'),
-		('H_rec'): 
-			('ui_receiver_height'),
-		(): 
-			('system_use_recapitalization'),
-		('THT', 'h_tower'): 
-			('ui_tower_height'),
-		('csp.pt.sf.total_land_area'): 
-			('csp.pt.cost.total_land_area'),
-		('A_sf'): 
-			('csp.pt.cost.site_improvements_m2'),
-		('A_sf'): 
-			('csp.pt.cost.heliostats_m2')	},
-	'PBNS Power Block': {
-		('nameplate'): 
-			('system_capacity'),
-		('csp.pbns.condenser_type'): 
-			('CT'),
-		('csp.pbns.fossil_mode_st', 'csp.pbns.fossil_mode_lf'): 
-			('fossil_mode'),
-		('demand_var', 'eta_ref'): 
-			('q_pb_des'),
-		('demand_var', 'csp.pbns.gross_net_conv_factor'): 
-			('nameplate')	},
-	'Tower Solar Field': {
-		(): 
-			('opt_flux_penalty'),
-		(): 
-			('opt_algorithm'),
-		('dni_des'): 
-			('dni_des_calc'),
-		('csp.pt.cost.fossil_per_kwe'): 
-			('fossil_spec_cost'),
-		('csp.pt.cost.sales_tax.percent'): 
-			('sales_tax_frac'),
-		('csp.pt.cost.contingency_percent'): 
-			('contingency_rate'),
-		('csp.pt.cost.storage_per_kwht'): 
-			('tes_spec_cost'),
-		('csp.pt.cost.bop_per_kwe'): 
-			('bop_spec_cost'),
-		('csp.pt.cost.heliostats_per_m2'): 
-			('heliostat_spec_cost'),
-		('override_layout'): 
-			('run_type'),
-		('csp.pt.cost.receiver.ref_cost'): 
-			('rec_ref_cost'),
-		('helio_optical_error_mrad'): 
-			('helio_optical_error'),
-		('helio_positions', 'c_atm_0', 'c_atm_1', 'c_atm_2', 'c_atm_3', 'THT'): 
-			('c_atm_info'),
-		('csp.pt.cost.plm.per_acre'): 
-			('land_spec_cost'),
-		(): 
-			('V_wind_10'),
-		('csp.pt.sf.fixed_land_area', 'land_area_base', 'csp.pt.sf.land_overhead_factor'): 
-			('csp.pt.sf.total_land_area'),
-		('THT'): 
-			('csp.pt.sf.tower_height'),
-		('A_sf'): 
-			('helio_area_tot'),
-		('csp.pt.cost.site_improvements_per_m2'): 
-			('site_spec_cost'),
-		('csp.pt.cost.receiver.ref_area'): 
-			('rec_ref_area'),
-		('helio_width', 'helio_height', 'dens_mirror', 'n_hel'): 
-			('A_sf'),
-		('csp.pt.cost.receiver.scaling_exp'): 
-			('rec_cost_exp'),
-		(): 
-			('field_control'),
-		('csp.pt.cost.power_block_per_kwe'): 
-			('plant_spec_cost'),
-		('csp.pt.cost.tower.scaling_exp'): 
-			('tower_exp'),
-		('csp.pt.cost.fixed_sf'): 
-			('cost_sf_fixed'),
-		('helio_optical_error_mrad'): 
-			('error_equiv'),
-		('helio_positions'): 
-			('n_hel'),
-		('land_max', 'THT'): 
-			('land_max_calc'),
-		('H_rec'): 
-			('rec_height'),
-		('override_opt'): 
-			('is_optimize'),
-		('n_hel', 'csp.pt.sf.heliostat_area'): 
-			('csp.pt.sf.total_reflective_area'),
-		('Q_rec_des'): 
-			('q_design'),
-		('helio_height', 'helio_width', 'dens_mirror'): 
-			('csp.pt.sf.heliostat_area'),
-		('land_min', 'THT'): 
-			('land_min_calc'),
-		('csp.pt.cost.tower.fixed'): 
-			('tower_fixed_cost')	},
-	'Generic CSP Solar Field': {
-		('csp.gss.sf.wspd_loss_f3', 'csp.gss.sf.wspd_loss_f2', 'csp.gss.sf.wspd_loss_f1', 'csp.gss.sf.wspd_loss_f0'): 
-			('f_v_wind_loss_des'),
-		('csp.gss.sf.wspd_loss_f3', 'csp.gss.sf.wspd_loss_f2', 'csp.gss.sf.wspd_loss_f1', 'csp.gss.sf.wspd_loss_f0'): 
-			('sfhlV_coefs'),
-		('csp.gss.sf.ambt_loss_f3', 'csp.gss.sf.ambt_loss_f2', 'csp.gss.sf.ambt_loss_f1', 'csp.gss.sf.ambt_loss_f0'): 
-			('sfhlT_coefs'),
-		('qsf_des', 'csp.gss.sf.design_thermal_loss', 'csp.gss.sf.total_opt_eff', 'irr_des'): 
-			('csp.gss.sf.field_area'),
-		('csp.gss.sf.irr_loss_f3', 'csp.gss.sf.irr_loss_f2', 'csp.gss.sf.irr_loss_f1', 'csp.gss.sf.irr_loss_f0'): 
-			('f_dni_loss_des'),
-		('csp.gss.sf.ambt_loss_f3', 'csp.gss.sf.ambt_loss_f2', 'csp.gss.sf.ambt_loss_f1', 'csp.gss.sf.ambt_loss_f0'): 
-			('f_t_amb_loss_des'),
-		('csp.gss.sf.irr_loss_f3', 'csp.gss.sf.irr_loss_f2', 'csp.gss.sf.irr_loss_f1', 'csp.gss.sf.irr_loss_f0'): 
-			('sfhlQ_coefs'),
-		('csp.gss.sf.rad_type'): 
-			('rad_type'),
-		('csp.gss.sf.rad_type'): 
-			('track_mode'),
-		('f_sfhl_ref', 'qsf_des'): 
-			('csp.gss.sf.design_thermal_loss'),
-		('OpticalTable', 'istableunsorted'): 
-			('csp.gss.sf.peak_opt_eff'),
-		('csp.gss.sf.peak_opt_eff', 'eta_opt_soil', 'eta_opt_gen'): 
-			('csp.gss.sf.total_opt_eff'),
-		('csp.gss.solf.fixed_land_area', 'csp.gss.solf.land_overhead_factor'): 
-			('csp.gss.solf.total_land_area'),
-		('csp.gss.sf.field_area'): 
-			('csp.gss.solf.fixed_land_area'),
-		('f_dni_loss_des', 'f_t_amb_loss_des', 'f_v_wind_loss_des'): 
-			('f_loss_tot_des'),
-		('w_des', 'eta_des', 'solarm'): 
-			('qsf_des')	},
-	'Battery Thermal': {
-		('solar_resource_file', 'spec_mode', 'energy_output_array', 'batt_thermal_choice', 'batt_room_temperature_single', 'batt_room_temperature_vector'): 
-			('batt_room_temperature_celsius'),
-		('batt_volume'): 
-			('batt_width'),
-		('batt_volume'): 
-			('batt_length'),
-		('batt_computed_bank_capacity', 'batt_specific_energy_per_volume'): 
-			('batt_volume'),
-		('batt_volume'): 
-			('batt_height'),
-		('batt_computed_bank_capacity', 'batt_specific_energy_per_mass'): 
-			('batt_mass')	},
-	'Empirical Trough Thermal Storage': {
-		('ui_tes_htf_type', 'ui_field_htf_type', 'ui_q_design', 'TurTesOutAdj', 'TurTesEffAdj', 'MaxGrOut'): 
-			('PFSmax'),
-		('ui_q_design'): 
-			('ui_tes_q_design'),
-		('TSHOURS', 'ui_q_design'): 
-			('calc_max_energy'),
-		('ui_tes_htf_type', 'ui_field_htf_type', 'Solar_Field_Mult'): 
-			('calc_heat_ex_duty'),
-		('ui_tes_htf_type', 'ui_field_htf_type', 'ui_q_design', 'Solar_Field_Mult', 'MaxGrOut', 'calc_heat_ex_duty'): 
-			('PTSmax'),
-		('ui_tes_htf_type'): 
-			('calc_htf_max_opt_temp'),
-		('ui_tes_htf_type'): 
-			('calc_htf_min_opt_temp')	},
-	'Rankine Cycle and Hybrid Cooling': {
-		('hybrid_tou1', 'hybrid_tou2', 'hybrid_tou3', 'hybrid_tou4', 'hybrid_tou5', 'hybrid_tou6', 'hybrid_tou7', 'hybrid_tou8', 'hybrid_tou9'): 
-			('F_wc'),
-		('combo_condenser_type'): 
-			('CT'),
-		('pressure_mode'): 
-			('tech_type')	},
-	'Direct Steam Tower Parasitics': {
-		(): 
-			('bop_array'),
-		('aux_par', 'aux_par_f', 'aux_par_0', 'aux_par_1', 'aux_par_2', 'demand_var'): 
-			('csp.dst.calc.aux'),
-		('bop_par', 'bop_par_f', 'bop_par_0', 'bop_par_1', 'bop_par_2', 'demand_var'): 
-			('csp.dst.calc.bop'),
-		('THT', 'piping_length_mult', 'piping_length_add'): 
-			('Piping_length'),
-		('Piping_length', 'Piping_loss'): 
-			('Piping_loss_tot'),
-		(): 
-			('aux_array')	},
-	'Financial Debt DSCR or Debt Fraction': {
-		('real_discount_rate', 'inflation_rate', 'debt_percent', 'federal_tax_rate', 'state_tax_rate', 'term_int_rate'): 
-			('ui_wacc')	},
-	'Battery Dispatch Front of Meter': {
-		('batt_dispatch_choice', 'dispatch_factor1', 'dispatch_factor2', 'dispatch_factor3', 'dispatch_factor4', 'dispatch_factor5', 'dispatch_factor6', 'dispatch_factor7', 'dispatch_factor8', 'dispatch_factor9'): 
-			('dispatch_tod_factors')	},
-	'Linear Fresnel Boiler Geometry': {
-		('csp.lf.geom1.var1.broken_glass', 'csp.lf.geom1.var2.broken_glass', 'csp.lf.geom1.var3.broken_glass', 'csp.lf.geom1.var4.broken_glass'): 
-			('csp.lf.geom1.glazing_intact'),
-		('csp.lf.geom1.var1.gas_type', 'csp.lf.geom1.var2.gas_type', 'csp.lf.geom1.var3.gas_type', 'csp.lf.geom1.var4.gas_type'): 
-			('csp.lf.geom1.annulus_gas'),
-		('csp.lf.geom1.hl_mode', 'csp.lf.geom1.var1.field_fraction', 'csp.lf.geom1.var1.bellows_shadowing', 'csp.lf.geom1.var1.hce_dirt', 'csp.lf.geom1.var2.field_fraction', 'csp.lf.geom1.var2.bellows_shadowing', 'csp.lf.geom1.var2.hce_dirt', 'csp.lf.geom1.var3.field_fraction', 'csp.lf.geom1.var3.bellows_shadowing', 'csp.lf.geom1.var3.hce_dirt', 'csp.lf.geom1.var4.field_fraction', 'csp.lf.geom1.var4.bellows_shadowing', 'csp.lf.geom1.var4.hce_dirt'): 
-			('csp.lf.geom1.rec_optical_derate'),
-		('csp.lf.geom1.hl_mode', 'csp.lf.geom1.hlpolyt0', 'csp.lf.geom1.hlpolyt1', 'csp.lf.geom1.avg_field_temp_dt_design', 'csp.lf.geom1.hlpolyt2', 'csp.lf.geom1.hlpolyt3', 'csp.lf.geom1.hlpolyt4', 'csp.lf.geom1.var1.field_fraction', 'csp.lf.geom1.var1.rated_heat_loss', 'csp.lf.geom1.var2.field_fraction', 'csp.lf.geom1.var2.rated_heat_loss', 'csp.lf.geom1.var3.field_fraction', 'csp.lf.geom1.var3.rated_heat_loss', 'csp.lf.geom1.var4.field_fraction', 'csp.lf.geom1.var4.rated_heat_loss'): 
-			('csp.lf.geom1.heat_loss_at_design'),
-		('csp.lf.geom1.heat_loss_at_design', 'I_bn_des', 'csp.lf.geom1.refl_aper_area', 'csp.lf.geom1.coll_length'): 
-			('csp.lf.geom1.rec_thermal_derate'),
-		('T_cold_ref', 'T_hot', 'T_amb_des_sf'): 
-			('csp.lf.geom1.avg_field_temp_dt_design'),
-		('csp.lf.geom1.track_error', 'csp.lf.geom1.geom_error', 'csp.lf.geom1.mirror_refl', 'csp.lf.geom1.soiling', 'csp.lf.geom1.general_error'): 
-			('csp.lf.geom1.coll_opt_loss_norm_inc')	},
-	'Battery Model': {
-		('batt_type'): 
-			('batt_chem')	},
-	'Physical Trough Receiver Header': {
-		('csp_dtr_hce_var1_bellows_shadowing_1', 'csp_dtr_hce_var2_bellows_shadowing_1', 'csp_dtr_hce_var3_bellows_shadowing_1', 'csp_dtr_hce_var4_bellows_shadowing_1', 'csp_dtr_hce_var1_bellows_shadowing_2', 'csp_dtr_hce_var2_bellows_shadowing_2', 'csp_dtr_hce_var3_bellows_shadowing_2', 'csp_dtr_hce_var4_bellows_shadowing_2', 'csp_dtr_hce_var1_bellows_shadowing_3', 'csp_dtr_hce_var2_bellows_shadowing_3', 'csp_dtr_hce_var3_bellows_shadowing_3', 'csp_dtr_hce_var4_bellows_shadowing_3', 'csp_dtr_hce_var1_bellows_shadowing_4', 'csp_dtr_hce_var2_bellows_shadowing_4', 'csp_dtr_hce_var3_bellows_shadowing_4', 'csp_dtr_hce_var4_bellows_shadowing_4'): 
-			('Shadowing'),
-		('csp_dtr_hce_var1_gas_type_1', 'csp_dtr_hce_var2_gas_type_1', 'csp_dtr_hce_var3_gas_type_1', 'csp_dtr_hce_var4_gas_type_1', 'csp_dtr_hce_var1_gas_type_2', 'csp_dtr_hce_var2_gas_type_2', 'csp_dtr_hce_var3_gas_type_2', 'csp_dtr_hce_var4_gas_type_2', 'csp_dtr_hce_var1_gas_type_3', 'csp_dtr_hce_var2_gas_type_3', 'csp_dtr_hce_var3_gas_type_3', 'csp_dtr_hce_var4_gas_type_3', 'csp_dtr_hce_var1_gas_type_4', 'csp_dtr_hce_var2_gas_type_4', 'csp_dtr_hce_var3_gas_type_4', 'csp_dtr_hce_var4_gas_type_4'): 
-			('AnnulusGas'),
-		('csp_dtr_hce_var1_annulus_pressure_1', 'csp_dtr_hce_var2_annulus_pressure_1', 'csp_dtr_hce_var3_annulus_pressure_1', 'csp_dtr_hce_var4_annulus_pressure_1', 'csp_dtr_hce_var1_annulus_pressure_2', 'csp_dtr_hce_var2_annulus_pressure_2', 'csp_dtr_hce_var3_annulus_pressure_2', 'csp_dtr_hce_var4_annulus_pressure_2', 'csp_dtr_hce_var1_annulus_pressure_3', 'csp_dtr_hce_var2_annulus_pressure_3', 'csp_dtr_hce_var3_annulus_pressure_3', 'csp_dtr_hce_var4_annulus_pressure_3', 'csp_dtr_hce_var1_annulus_pressure_4', 'csp_dtr_hce_var2_annulus_pressure_4', 'csp_dtr_hce_var3_annulus_pressure_4', 'csp_dtr_hce_var4_annulus_pressure_4'): 
-			('P_a'),
-		('csp_dtr_hce_var1_env_emis_1', 'csp_dtr_hce_var2_env_emis_1', 'csp_dtr_hce_var3_env_emis_1', 'csp_dtr_hce_var4_env_emis_1', 'csp_dtr_hce_var1_env_emis_2', 'csp_dtr_hce_var2_env_emis_2', 'csp_dtr_hce_var3_env_emis_2', 'csp_dtr_hce_var4_env_emis_2', 'csp_dtr_hce_var1_env_emis_3', 'csp_dtr_hce_var2_env_emis_3', 'csp_dtr_hce_var3_env_emis_3', 'csp_dtr_hce_var4_env_emis_3', 'csp_dtr_hce_var1_env_emis_4', 'csp_dtr_hce_var2_env_emis_4', 'csp_dtr_hce_var3_env_emis_4', 'csp_dtr_hce_var4_env_emis_4'): 
-			('EPSILON_4', 'EPSILON_5'),
-		('csp_dtr_hce_var1_env_trans_1', 'csp_dtr_hce_var2_env_trans_1', 'csp_dtr_hce_var3_env_trans_1', 'csp_dtr_hce_var4_env_trans_1', 'csp_dtr_hce_var1_env_trans_2', 'csp_dtr_hce_var2_env_trans_2', 'csp_dtr_hce_var3_env_trans_2', 'csp_dtr_hce_var4_env_trans_2', 'csp_dtr_hce_var1_env_trans_3', 'csp_dtr_hce_var2_env_trans_3', 'csp_dtr_hce_var3_env_trans_3', 'csp_dtr_hce_var4_env_trans_3', 'csp_dtr_hce_var1_env_trans_4', 'csp_dtr_hce_var2_env_trans_4', 'csp_dtr_hce_var3_env_trans_4', 'csp_dtr_hce_var4_env_trans_4'): 
-			('Tau_envelope'),
-		('csp_dtr_hce_var1_abs_abs_1', 'csp_dtr_hce_var2_abs_abs_1', 'csp_dtr_hce_var3_abs_abs_1', 'csp_dtr_hce_var4_abs_abs_1', 'csp_dtr_hce_var1_abs_abs_2', 'csp_dtr_hce_var2_abs_abs_2', 'csp_dtr_hce_var3_abs_abs_2', 'csp_dtr_hce_var4_abs_abs_2', 'csp_dtr_hce_var1_abs_abs_3', 'csp_dtr_hce_var2_abs_abs_3', 'csp_dtr_hce_var3_abs_abs_3', 'csp_dtr_hce_var4_abs_abs_3', 'csp_dtr_hce_var1_abs_abs_4', 'csp_dtr_hce_var2_abs_abs_4', 'csp_dtr_hce_var3_abs_abs_4', 'csp_dtr_hce_var4_abs_abs_4'): 
-			('alpha_abs'),
-		('csp_dtr_hce_var1_broken_glass_1', 'csp_dtr_hce_var2_broken_glass_1', 'csp_dtr_hce_var3_broken_glass_1', 'csp_dtr_hce_var4_broken_glass_1', 'csp_dtr_hce_var1_broken_glass_2', 'csp_dtr_hce_var2_broken_glass_2', 'csp_dtr_hce_var3_broken_glass_2', 'csp_dtr_hce_var4_broken_glass_2', 'csp_dtr_hce_var1_broken_glass_3', 'csp_dtr_hce_var2_broken_glass_3', 'csp_dtr_hce_var3_broken_glass_3', 'csp_dtr_hce_var4_broken_glass_3', 'csp_dtr_hce_var1_broken_glass_4', 'csp_dtr_hce_var2_broken_glass_4', 'csp_dtr_hce_var3_broken_glass_4', 'csp_dtr_hce_var4_broken_glass_4'): 
-			('GlazingIntactIn'),
-		('csp_dtr_hce_var1_env_abs_1', 'csp_dtr_hce_var2_env_abs_1', 'csp_dtr_hce_var3_env_abs_1', 'csp_dtr_hce_var4_env_abs_1', 'csp_dtr_hce_var1_env_abs_2', 'csp_dtr_hce_var2_env_abs_2', 'csp_dtr_hce_var3_env_abs_2', 'csp_dtr_hce_var4_env_abs_2', 'csp_dtr_hce_var1_env_abs_3', 'csp_dtr_hce_var2_env_abs_3', 'csp_dtr_hce_var3_env_abs_3', 'csp_dtr_hce_var4_env_abs_3', 'csp_dtr_hce_var1_env_abs_4', 'csp_dtr_hce_var2_env_abs_4', 'csp_dtr_hce_var3_env_abs_4', 'csp_dtr_hce_var4_env_abs_4'): 
-			('alpha_env'),
-		('csp_dtr_hce_var1_rated_heat_loss_1', 'csp_dtr_hce_var2_rated_heat_loss_1', 'csp_dtr_hce_var3_rated_heat_loss_1', 'csp_dtr_hce_var4_rated_heat_loss_1', 'csp_dtr_hce_var1_rated_heat_loss_2', 'csp_dtr_hce_var2_rated_heat_loss_2', 'csp_dtr_hce_var3_rated_heat_loss_2', 'csp_dtr_hce_var4_rated_heat_loss_2', 'csp_dtr_hce_var1_rated_heat_loss_3', 'csp_dtr_hce_var2_rated_heat_loss_3', 'csp_dtr_hce_var3_rated_heat_loss_3', 'csp_dtr_hce_var4_rated_heat_loss_3', 'csp_dtr_hce_var1_rated_heat_loss_4', 'csp_dtr_hce_var2_rated_heat_loss_4', 'csp_dtr_hce_var3_rated_heat_loss_4', 'csp_dtr_hce_var4_rated_heat_loss_4'): 
-			('Design_loss'),
-		('csp_dtr_hce_var1_field_fraction_1', 'csp_dtr_hce_var2_field_fraction_1', 'csp_dtr_hce_var3_field_fraction_1', 'csp_dtr_hce_var4_field_fraction_1', 'csp_dtr_hce_var1_field_fraction_2', 'csp_dtr_hce_var2_field_fraction_2', 'csp_dtr_hce_var3_field_fraction_2', 'csp_dtr_hce_var4_field_fraction_2', 'csp_dtr_hce_var1_field_fraction_3', 'csp_dtr_hce_var2_field_fraction_3', 'csp_dtr_hce_var3_field_fraction_3', 'csp_dtr_hce_var4_field_fraction_3', 'csp_dtr_hce_var1_field_fraction_4', 'csp_dtr_hce_var2_field_fraction_4', 'csp_dtr_hce_var3_field_fraction_4', 'csp_dtr_hce_var4_field_fraction_4'): 
-			('HCE_FieldFrac'),
-		('csp_dtr_hce_diam_envelope_inner_1', 'csp_dtr_hce_diam_envelope_inner_2', 'csp_dtr_hce_diam_envelope_inner_3', 'csp_dtr_hce_diam_envelope_inner_4'): 
-			('D_4'),
-		('csp_dtr_hce_absorber_material_1', 'csp_dtr_hce_absorber_material_2', 'csp_dtr_hce_absorber_material_3', 'csp_dtr_hce_absorber_material_4'): 
-			('AbsorberMaterial'),
-		('csp_dtr_hce_flow_type_1', 'csp_dtr_hce_flow_type_2', 'csp_dtr_hce_flow_type_3', 'csp_dtr_hce_flow_type_4'): 
-			('Flow_type'),
-		('csp_dtr_hce_var1_hce_dirt_1', 'csp_dtr_hce_var2_hce_dirt_1', 'csp_dtr_hce_var3_hce_dirt_1', 'csp_dtr_hce_var4_hce_dirt_1', 'csp_dtr_hce_var1_hce_dirt_2', 'csp_dtr_hce_var2_hce_dirt_2', 'csp_dtr_hce_var3_hce_dirt_2', 'csp_dtr_hce_var4_hce_dirt_2', 'csp_dtr_hce_var1_hce_dirt_3', 'csp_dtr_hce_var2_hce_dirt_3', 'csp_dtr_hce_var3_hce_dirt_3', 'csp_dtr_hce_var4_hce_dirt_3', 'csp_dtr_hce_var1_hce_dirt_4', 'csp_dtr_hce_var2_hce_dirt_4', 'csp_dtr_hce_var3_hce_dirt_4', 'csp_dtr_hce_var4_hce_dirt_4'): 
-			('Dirt_HCE'),
-		('csp_dtr_hce_inner_roughness_1', 'csp_dtr_hce_inner_roughness_2', 'csp_dtr_hce_inner_roughness_3', 'csp_dtr_hce_inner_roughness_4'): 
-			('Rough'),
-		('csp_dtr_hce_diam_absorber_plug_1', 'csp_dtr_hce_diam_absorber_plug_2', 'csp_dtr_hce_diam_absorber_plug_3', 'csp_dtr_hce_diam_absorber_plug_4'): 
-			('D_p'),
-		('csp_dtr_hce_diam_envelope_outer_1', 'csp_dtr_hce_diam_envelope_outer_2', 'csp_dtr_hce_diam_envelope_outer_3', 'csp_dtr_hce_diam_envelope_outer_4'): 
-			('D_5'),
-		('csp_dtr_hce_diam_absorber_outer_1', 'csp_dtr_hce_diam_absorber_outer_2', 'csp_dtr_hce_diam_absorber_outer_3', 'csp_dtr_hce_diam_absorber_outer_4'): 
-			('D_3'),
-		('csp_dtr_hce_diam_absorber_inner_1', 'csp_dtr_hce_diam_absorber_inner_2', 'csp_dtr_hce_diam_absorber_inner_3', 'csp_dtr_hce_diam_absorber_inner_4'): 
-			('D_2'),
-		('SCAInfoArray', 'nColt'): 
-			('receivers_in_field')	},
-	'PV Shading': {
-		('subarray4_gcr'): 
-			('subarray4_gcr_ref'),
-		('subarray1_gcr'): 
-			('subarray1_gcr_ref'),
-		('subarray4_enable', 'subarray4_nstrings', 'subarray4_modules_per_string'): 
-			('subarray4_ref_nmodules'),
-		('subarray1_nstrings', 'subarray1_modules_per_string'): 
-			('subarray1_ref_nmodules'),
-		('subarray4_ref_nmodules', 'subarray4_nmodx', 'subarray4_nmody'): 
-			('ui_subarray4_nrows'),
-		('subarray3_ref_nmodules', 'subarray3_nmodx', 'subarray3_nmody'): 
-			('ui_subarray3_nrows'),
-		('subarray2_ref_nmodules', 'subarray2_nmodx', 'subarray2_nmody'): 
-			('ui_subarray2_nrows'),
-		('module_area', 'module_width', 'module_length', 'subarray4_nmody', 'subarray4_mod_orient', 'subarray4_gcr_ref'): 
-			('ui_subarray4_row_spacing'),
-		('subarray2_gcr'): 
-			('subarray2_gcr_ref'),
-		('module_area', 'module_width', 'module_length', 'subarray3_nmody', 'subarray3_mod_orient', 'subarray3_gcr_ref'): 
-			('ui_subarray3_row_spacing'),
-		('module_area', 'module_width', 'module_length', 'subarray1_nmody', 'subarray1_mod_orient', 'subarray1_gcr_ref'): 
-			('ui_subarray1_row_spacing'),
-		('module_area', 'module_width', 'module_length', 'subarray2_nmody', 'subarray2_mod_orient', 'subarray2_gcr_ref'): 
-			('ui_subarray2_row_spacing'),
-		('subarray1_ref_nmodules', 'subarray1_nmodx', 'subarray1_nmody'): 
-			('ui_subarray1_nrows'),
-		('subarray3_gcr'): 
-			('subarray3_gcr_ref'),
-		('subarray3_mod_orient', 'subarray3_nmody', 'module_length', 'module_width'): 
-			('ui_subarray3_length_side'),
-		('subarray4_mod_orient', 'subarray4_nmody', 'module_length', 'module_width'): 
-			('ui_subarray4_length_side'),
-		('module_model', 'spe_area', 'cec_area', '6par_area', 'snl_area', 'sd11par_area'): 
-			('module_area'),
-		('subarray2_mod_orient', 'subarray2_nmody', 'module_length', 'module_width'): 
-			('ui_subarray2_length_side'),
-		('subarray1_mod_orient', 'subarray1_nmody', 'module_length', 'module_width'): 
-			('ui_subarray1_length_side'),
-		('subarray3_enable', 'subarray3_nstrings', 'subarray3_modules_per_string'): 
-			('subarray3_ref_nmodules'),
-		('subarray2_enable', 'subarray2_nstrings', 'subarray2_modules_per_string'): 
-			('subarray2_ref_nmodules'),
-		('module_area', 'module_aspect_ratio'): 
-			('module_length'),
-		('module_area', 'module_aspect_ratio'): 
-			('module_width')	},
-	'IEC61853 Single Diode Model': {
-		('iec61853_test_data'): 
-			('sd11par_Pmp0', 'sd11par_Vmp0', 'sd11par_Isc0', 'sd11par_Voc0', 'sd11par_Imp0'),
-		('sd11par_Pmp0', 'sd11par_area'): 
-			('sd11par_eff')	},
-	'Wind Turbine Design': {
-		('wind.turbine.radio_list_or_design', 'wind_turbine_powercurve_windspeeds_from_lib', 'wind_turbine_powercurve_powerout_from_lib', 'wind_turbine_kw_rating_from_lib', 'wind_turbine_kw_rating_input', 'wind_turbine_rotor_diameter_input', 'wind_turbine_hub_ht', 'wind.turbine.elevation', 'wind_resource_model_choice', 'wind_turbine_max_cp', 'wind.turbine.max_tip_speed', 'wind.turbine.max_tspeed_ratio', 'wind.turbine.region2nhalf_slope', 'wind_turbine_cutin', 'wind_turbine_cut_out', 'wind.turbine.drive_train'): 
-			('wind_turbine_powercurve_windspeeds', 'wind_turbine_powercurve_powerout', 'wind_turbine_rated_wind_speed', 'wind_turbine_powercurve_err_msg', 'wind_turbine_powercurve_hub_efficiency'),
-		('wind.turbine.radio_list_or_design', 'wind_turbine_kw_rating_from_lib', 'wind_turbine_kw_rating_input'): 
-			('wind_turbine_kw_rating'),
-		('wind.turbine.radio_list_or_design', 'wind_turbine_rotor_diameter_from_lib', 'wind_turbine_rotor_diameter_input'): 
-			('wind_turbine_rotor_diameter')	},
-	'Inverter CEC Database': {
-		('inv_snl_vdco', 'inv_snl_pdco', 'inv_snl_pso', 'inv_snl_paco', 'inv_snl_c0', 'inv_snl_c1', 'inv_snl_c2', 'inv_snl_c3'): 
-			('inv_snl_eff_cec', 'inv_snl_eff_euro')	},
-	'Electric Load': {
-		(): 
-			('ui_annual_load'),
-		('load_model', 'escal_other', 'escal_belpe'): 
-			('load_escalation')	},
-	'Financial Debt Min DSCR': {
-		('construction_financing_cost'): 
-			('ui_construction_financing_cost'),
-		('real_discount_rate', 'inflation_rate', 'debt_fraction', 'federal_tax_rate', 'state_tax_rate', 'loan_rate'): 
-			('ui_wacc'),
-		('ui_net_capital_cost', 'debt_fraction', 'construction_financing_cost'): 
-			('ui_loan_amount'),
-		('total_installed_cost', 'ibi_fed_amount', 'ibi_sta_amount', 'ibi_uti_amount', 'ibi_oth_amount', 'ibi_fed_percent', 'ibi_fed_percent_maxvalue', 'ibi_sta_percent', 'ibi_sta_percent_maxvalue', 'ibi_uti_percent', 'ibi_uti_percent_maxvalue', 'ibi_oth_percent', 'ibi_oth_percent_maxvalue', 'system_capacity', 'cbi_fed_amount', 'cbi_fed_maxvalue', 'cbi_sta_amount', 'cbi_sta_maxvalue', 'cbi_uti_amount', 'cbi_uti_maxvalue', 'cbi_oth_amount', 'cbi_oth_maxvalue'): 
-			('ui_net_capital_cost')	},
-	'Solar Water Heating Costs': {
-		('epc_total', 'plm_total', 'sales_tax_total'): 
-			('total_indirect'),
-		('sales_tax_rate'): 
-			('sales_tax_value'),
-		('plm_percent', 'total_direct'): 
-			('plm_nonfixed'),
-		('total_installed_cost', 'system_capacity'): 
-			('installed_per_capacity'),
-		('sales_tax_value', 'total_direct', 'sales_tax_percent'): 
-			('sales_tax_total'),
-		('contingency_percent', 'collector', 'storage', 'bos', 'installation'): 
-			('contingency'),
-		('ncoll'): 
-			('num_collectors'),
-		(): 
-			('system_use_lifetime_output'),
-		('contingency', 'bos', 'installation', 'storage', 'collector'): 
-			('total_direct'),
-		('collector_cost_units', 'total_area', 'system_capacity', 'num_collectors', 'per_collector'): 
-			('collector'),
-		('epc_percent', 'total_direct'): 
-			('epc_nonfixed'),
-		(): 
-			('system_use_recapitalization'),
-		('storage_cost_units', 'V_tank', 'per_storage'): 
-			('storage'),
-		('epc_nonfixed', 'epc_fixed'): 
-			('epc_total'),
-		('total_direct', 'total_indirect'): 
-			('total_installed_cost'),
-		('plm_nonfixed', 'plm_fixed'): 
-			('plm_total')	},
-	'MSPT System Control': {
-		('disp_wlim_max'): 
-			('wlim_series'),
-		('disp_wlim_maxspec', 'adjust'): 
-			('disp_wlim_max'),
-		('is_dispatch'): 
-			('is_wlim_series'),
-		('aux_par', 'aux_par_f', 'aux_par_0', 'aux_par_1', 'aux_par_2', 'P_ref'): 
-			('csp.pt.par.calc.aux'),
-		('bop_par', 'bop_par_f', 'bop_par_0', 'bop_par_1', 'bop_par_2', 'P_ref'): 
-			('csp.pt.par.calc.bop')	},
-	'Molten Salt Linear Fresnel Parasitics': {
-		('csp.mslf.control.bop_array_mult', 'csp.mslf.control.bop_array_pf', 'csp.mslf.control.bop_array_c0', 'csp.mslf.control.bop_array_c1', 'csp.mslf.control.bop_array_c2'): 
-			('bop_array'),
-		('csp.mslf.control.bop_array_mult', 'csp.mslf.control.bop_array_pf', 'csp.mslf.control.bop_array_c0', 'csp.mslf.control.bop_array_c1', 'csp.mslf.control.bop_array_c2', 'P_ref'): 
-			('csp.mslf.par.calc.bop'),
-		('csp.mslf.control.aux_array_mult', 'csp.mslf.control.aux_array_pf', 'csp.mslf.control.aux_array_c0', 'csp.mslf.control.aux_array_c1', 'csp.mslf.control.aux_array_c2', 'P_ref'): 
-			('csp.mslf.par.calc.aux'),
-		('csp.mslf.control.aux_array_mult', 'csp.mslf.control.aux_array_pf', 'csp.mslf.control.aux_array_c0', 'csp.mslf.control.aux_array_c1', 'csp.mslf.control.aux_array_c2'): 
-			('aux_array'),
-		('nMod', 'nLoops', 'SCA_drives_elec'): 
-			('csp.mslf.par.calc.tracking'),
-		('P_ref', 'pb_fixed_par'): 
-			('csp.mslf.par.calc.frac_gross')	},
-	'Inverter Part Load Curve': {
-		('inv_pd_data'): 
-			('inv_pd_partload', 'inv_pd_efficiency'),
-		('inv_pd_paco', 'inv_pd_eff'): 
-			('inv_pd_pdco'),
-		('inv_pd_eff_type', 'inv_pd_eff_cec', 'inv_pd_eff_euro'): 
-			('inv_pd_eff')	},
-	'CSP Dispatch Control': {
-		('ui_disp_1_fossil', 'ui_disp_2_fossil', 'ui_disp_3_fossil', 'ui_disp_4_fossil', 'ui_disp_5_fossil', 'ui_disp_6_fossil', 'ui_disp_7_fossil', 'ui_disp_8_fossil', 'ui_disp_9_fossil', 'ui_disp_1_nosolar', 'ui_disp_2_nosolar', 'ui_disp_3_nosolar', 'ui_disp_4_nosolar', 'ui_disp_5_nosolar', 'ui_disp_6_nosolar', 'ui_disp_7_nosolar', 'ui_disp_8_nosolar', 'ui_disp_9_nosolar', 'ui_disp_1_solar', 'ui_disp_2_solar', 'ui_disp_3_solar', 'ui_disp_4_solar', 'ui_disp_5_solar', 'ui_disp_6_solar', 'ui_disp_7_solar', 'ui_disp_8_solar', 'ui_disp_9_solar', 'ui_disp_1_turbout', 'ui_disp_2_turbout', 'ui_disp_3_turbout', 'ui_disp_4_turbout', 'ui_disp_5_turbout', 'ui_disp_6_turbout', 'ui_disp_7_turbout', 'ui_disp_8_turbout', 'ui_disp_9_turbout'): 
-			('FossilFill', 'TSLogic', 'NUMTOU', 'ffrac', 'tslogic_a', 'tslogic_b', 'tslogic_c', 'fdisp', 'diswos', 'disws', 'qdisp')	},
-	'HCPV Array': {
-		('array_num_inverters', 'inv_snl_paco'): 
-			('hcpv.array.ac_capacity'),
-		(): 
-			('hcpv.array.average_soiling'),
-		('array_modules_per_tracker', 'array_num_trackers', 'hcpv.module.power'): 
-			('hcpv.array.nameplate'),
-		('hcpv.array.nameplate', 'inv_snl_pdco'): 
-			('array_num_inverters'),
-		('array_tracker_power_fraction', 'hcpv.array.single_tracker_nameplate'): 
-			('hcpv.array.tracker_power'),
-		('array_modules_per_tracker', 'hcpv.module.power'): 
-			('hcpv.array.single_tracker_nameplate'),
-		('hcpv.module.est_eff', 'array_tracking_error', 'array_dc_wiring_loss', 'hcpv.array.average_soiling', 'array_dc_mismatch_loss', 'array_diode_conn_loss', 'array_ac_wiring_loss', 'inv_snl_paco', 'inv_snl_pdco'): 
-			('hcpv.array.overall_est_eff'),
-		('hcpv.array.nameplate'): 
-			('system_capacity'),
-		('hcpv.module.area', 'array_modules_per_tracker', 'array_num_trackers', 'hcpv.array.packing_factor'): 
-			('hcpv.array.total_land_area')	},
-	'Direct Steam Tower Receiver': {
-		('csp.dst.num_2panelgroups'): 
-			('n_flux_x'),
-		(): 
-			('tower_technology'),
-		('eta_ref'): 
-			('design_eff'),
-		('T_sh_out_des'): 
-			('T_hot'),
-		(): 
-			('T_cold_ref'),
-		('q_rec_des'): 
-			('Q_rec_des'),
-		('T_sh_out_des'): 
-			('T_hot_ref'),
-		('h_tower'): 
-			('THT'),
-		('demand_var'): 
-			('P_ref'),
-		('P_rh_ref'): 
-			('P_hp_out'),
-		('P_boil_des'): 
-			('P_b_in_init'),
-		('h_boiler', 'h_sh', 'h_rh'): 
-			('H_rec'),
-		('P_rh_ref'): 
-			('P_hp_out_des'),
-		(): 
-			('T_hp_out'),
-		('csp.dst.flow_pattern'): 
-			('flowtype'),
-		('P_boil_des'): 
-			('P_hp_in_des'),
-		('demand_var'): 
-			('Design_power'),
-		('cycle_max_fraction'): 
-			('cycle_max_frac'),
-		('t_sby'): 
-			('t_standby_ini'),
-		('q_sby_frac'): 
-			('f_pb_sb'),
-		('rh_frac_ref'): 
-			('f_mdotrh_des'),
-		('cycle_cutoff_frac'): 
-			('f_pb_cutoff'),
-		('P_rh_ref'): 
-			('P_cond_init'),
-		('rh_frac_ref'): 
-			('f_mdot_rh_init'),
-		('demand_var', 'eta_ref'): 
-			('q_aux_max'),
-		('LHV_eff'): 
-			('lhv_eff'),
-		(): 
-			('T_fw_init'),
-		('sh_q_loss_flux', 'csp.dst.max_sh_flux'): 
-			('csp.dst.eff_sh_ref'),
-		('b_q_loss_flux', 'csp.dst.max_b_flux'): 
-			('csp.dst.eff_b_ref'),
-		('T_rh_out_des'): 
-			('T_rh_target'),
-		(): 
-			('rec_htf'),
-		('demand_var', 'eta_ref', 'csp.dst.solar_multiple'): 
-			('q_rec_des'),
-		('csp.dst.mat_rh'): 
-			('mat_rh'),
-		('demand_var'): 
-			('p_cycle_design'),
-		('rh_q_loss_flux', 'csp.dst.max_rh_flux'): 
-			('csp.dst.eff_rh_ref'),
-		('csp.dst.num_2panelgroups'): 
-			('n_panels'),
-		('CT'): 
-			('ct'),
-		('d_rec', 'H_rec'): 
-			('rec_aspect'),
-		('csp.dst.mat_boiler'): 
-			('mat_boiler'),
-		('demand_var', 'eta_ref'): 
-			('q_pb_design'),
-		('csp.dst.mat_sh'): 
-			('mat_sh')	},
-	'LF DSG Boiler Header': {
-		(): 
-			('sh_OpticalTable'),
-		('csp.lf.geom1.solpos_collinc_table'): 
-			('b_OpticalTable'),
-		(): 
-			('sh_eps_HCE4'),
-		(): 
-			('sh_eps_HCE3'),
-		(): 
-			('sh_eps_HCE2'),
-		(): 
-			('sh_eps_HCE1'),
-		('csp.lf.geom1.var4.abs_emis'): 
-			('b_eps_HCE4'),
-		('csp.lf.geom1.glazing_intact'): 
-			('GlazingIntactIn'),
-		('csp.lf.geom1.var1.abs_emis'): 
-			('b_eps_HCE1'),
-		('csp.lf.geom1.var1.annulus_pressure', 'csp.lf.geom1.var2.annulus_pressure', 'csp.lf.geom1.var3.annulus_pressure', 'csp.lf.geom1.var4.annulus_pressure'): 
-			('P_a'),
-		('csp.lf.geom1.annulus_gas'): 
-			('AnnulusGas'),
-		('csp.lf.geom1.var1.env_trans', 'csp.lf.geom1.var2.env_trans', 'csp.lf.geom1.var3.env_trans', 'csp.lf.geom1.var4.env_trans'): 
-			('Tau_envelope'),
-		('csp.lf.geom1.var3.abs_emis'): 
-			('b_eps_HCE3'),
-		('csp.lf.geom1.iamt0', 'csp.lf.geom1.iamt1', 'csp.lf.geom1.iamt2', 'csp.lf.geom1.iamt3', 'csp.lf.geom1.iamt4'): 
-			('IAM_T'),
-		('csp.lf.geom1.var1.env_emis', 'csp.lf.geom1.var2.env_emis', 'csp.lf.geom1.var3.env_emis', 'csp.lf.geom1.var4.env_emis'): 
-			('EPSILON_4'),
-		('csp.lf.geom1.var1.env_abs', 'csp.lf.geom1.var2.env_abs', 'csp.lf.geom1.var3.env_abs', 'csp.lf.geom1.var4.env_abs'): 
-			('alpha_env'),
-		('csp.lf.geom1.var2.abs_emis'): 
-			('b_eps_HCE2'),
-		('csp.lf.geom1.var1.hce_dirt', 'csp.lf.geom1.var2.hce_dirt', 'csp.lf.geom1.var3.hce_dirt', 'csp.lf.geom1.var4.hce_dirt'): 
-			('Dirt_HCE'),
-		('csp.lf.geom1.iaml0', 'csp.lf.geom1.iaml1', 'csp.lf.geom1.iaml2', 'csp.lf.geom1.iaml3', 'csp.lf.geom1.iaml4'): 
-			('IAM_L'),
-		('csp.lf.geom1.hlpolyw0', 'csp.lf.geom1.hlpolyw1', 'csp.lf.geom1.hlpolyw2', 'csp.lf.geom1.hlpolyw3', 'csp.lf.geom1.hlpolyw4'): 
-			('HL_W'),
-		('csp.lf.geom1.var1.abs_abs', 'csp.lf.geom1.var2.abs_abs', 'csp.lf.geom1.var3.abs_abs', 'csp.lf.geom1.var4.abs_abs'): 
-			('alpha_abs'),
-		('csp.lf.geom1.var1.bellows_shadowing', 'csp.lf.geom1.var2.bellows_shadowing', 'csp.lf.geom1.var3.bellows_shadowing', 'csp.lf.geom1.var4.bellows_shadowing'): 
-			('Shadowing'),
-		('csp.lf.geom1.hlpolyt0', 'csp.lf.geom1.hlpolyt1', 'csp.lf.geom1.hlpolyt2', 'csp.lf.geom1.hlpolyt3', 'csp.lf.geom1.hlpolyt4'): 
-			('HL_dT'),
-		('csp.lf.geom1.var1.rated_heat_loss', 'csp.lf.geom1.var2.rated_heat_loss', 'csp.lf.geom1.var3.rated_heat_loss', 'csp.lf.geom1.var4.rated_heat_loss'): 
-			('Design_loss'),
-		('csp.lf.geom1.var1.field_fraction', 'csp.lf.geom1.var2.field_fraction', 'csp.lf.geom1.var3.field_fraction', 'csp.lf.geom1.var4.field_fraction'): 
-			('HCE_FieldFrac'),
-		('csp.lf.geom1.refl_aper_area', 'csp.lf.geom1.coll_length', 'csp.lf.geom1.opt_mode', 'csp.lf.geom1.track_error', 'csp.lf.geom1.geom_error', 'csp.lf.geom1.mirror_refl', 'csp.lf.geom1.soiling', 'csp.lf.geom1.general_error', 'csp.lf.geom1.hl_mode', 'csp.lf.geom1.diam_absorber_inner', 'csp.lf.geom1.diam_absorber_outer', 'csp.lf.geom1.diam_envelope_inner', 'csp.lf.geom1.diam_envelope_outer', 'csp.lf.geom1.diam_absorber_plug', 'csp.lf.geom1.inner_roughness', 'csp.lf.geom1.flow_type', 'csp.lf.geom1.absorber_material'): 
-			('A_aperture', 'L_col', 'OptCharType', 'TrackingError', 'GeomEffects', 'rho_mirror_clean', 'dirt_mirror', 'error', 'HLCharType', 'D_2', 'D_3', 'D_4', 'D_5', 'D_p', 'Rough', 'Flow_type', 'AbsorberMaterial')	},
-	'MSPT Receiver': {
-		('T_htf_hot_des'): 
-			('REC_COPY_T_htf_hot_des'),
-		('Q_rec_des'): 
-			('REC_COPY_Q_rec_des'),
-		('N_panels'): 
-			('n_flux_x'),
-		('piping_length', 'piping_loss'): 
-			('piping_loss_tot'),
-		('h_tower', 'piping_length_mult', 'piping_length_const'): 
-			('piping_length'),
-		(): 
-			('receiver_type'),
-		(): 
-			('tower_technology'),
-		('solarm'): 
-			('REC_COPY_solarm'),
-		('D_rec', 'rec_height'): 
-			('rec_aspect'),
-		('rec_d_spec', 'csp.pt.rec.cav_ap_hw_ratio'): 
-			('csp.pt.rec.cav_ap_height'),
-		('field_fl_props'): 
-			('user_fluid'),
-		('csp.pt.rec.htf_type', 'csp.pt.rec.htf_t_avg', 'field_fl_props'): 
-			('csp.pt.rec.htf_c_avg'),
-		('T_htf_cold_des', 'T_htf_hot_des'): 
-			('csp.pt.rec.htf_t_avg'),
-		(): 
-			('csp.pt.rec.cav_panel_height'),
-		('T_htf_cold_des'): 
-			('REC_COPY_T_htf_cold_des'),
-		('csp.pt.rec.max_oper_frac', 'Q_rec_des', 'csp.pt.rec.htf_c_avg', 'T_htf_hot_des', 'T_htf_cold_des'): 
-			('csp.pt.rec.max_flow_to_rec'),
-		(): 
-			('csp.pt.rec.cav_lip_height'),
-		('csp.pt.rec.htf_type'): 
-			('rec_htf'),
-		('csp.pt.rec.flow_pattern'): 
-			('Flow_type'),
-		('csp.pt.rec.material_type'): 
-			('mat_tube')	},
-	'MSLF Power Cycle Common': {
-		('PB_COPY_q_pb_design', 'PB_COPY_htf_cp_avg', 'PB_COPY_T_htf_hot_des', 'PB_COPY_T_htf_cold_des'): 
-			('PB_m_dot_htf_cycle_des'),
-		('field_htf_cp_avg'): 
-			('PB_COPY_htf_cp_avg'),
-		('T_htf_hot_ref'): 
-			('PB_COPY_T_htf_hot_des'),
-		('eta_lhv'): 
-			('lhv_eff'),
-		(): 
-			('pb_tech_type'),
-		(): 
-			('m_dot_in'),
-		('T_loop_in_des'): 
-			('T_htf_cold_ref'),
-		('store_fluid', 'Fluid'): 
-			('is_hx'),
-		(): 
-			('hx_config'),
-		('P_ref'): 
-			('pb_rated_cap'),
-		('nameplate'): 
-			('system_capacity'),
-		('T_htf_cold_ref'): 
-			('PB_COPY_T_htf_cold_des'),
-		('T_loop_out'): 
-			('T_htf_hot_ref'),
-		('P_ref', 'csp.mslf.cycle.gr_to_net'): 
-			('nameplate'),
-		('P_ref', 'csp.mslf.cycle.gr_to_net'): 
-			('q_design'),
-		('P_ref', 'eta_ref'): 
-			('PB_COPY_q_pb_design'),
-		('csp.mslf.control.fossil_mode'): 
-			('fossil_mode')	},
-	'Molten Salt Linear Fresnel Collector and Receiver': {
-		('P_ref'): 
-			('demand_var'),
-		('P_ref'): 
-			('W_pb_design'),
-		(): 
-			('T_cold_in'),
-		(): 
-			('defocus'),
-		(): 
-			('azimuth'),
-		(): 
-			('SolarAz'),
-		(): 
-			('T_dp'),
-		(): 
-			('P_amb'),
-		(): 
-			('V_wind'),
-		(): 
-			('track_mode'),
-		(): 
-			('T_db'),
-		('csp.mslf.sf.AnnulusGas1', 'csp.mslf.sf.AnnulusGas2', 'csp.mslf.sf.AnnulusGas3', 'csp.mslf.sf.AnnulusGas4'): 
-			('AnnulusGas'),
-		('csp.mslf.sf.Flow_type'): 
-			('Flow_type'),
-		('csp.mslf.sf.Rough'): 
-			('Rough'),
-		('csp.mslf.sf.D_plug'): 
-			('D_plug'),
-		('csp.mslf.sf.D_glass_out'): 
-			('D_glass_out'),
-		('csp.mslf.sf.D_glass_in'): 
-			('D_glass_in'),
-		('csp.mslf.sf.IAM_T_coefs0', 'csp.mslf.sf.IAM_T_coefs1', 'csp.mslf.sf.IAM_T_coefs2', 'csp.mslf.sf.IAM_T_coefs3', 'csp.mslf.sf.IAM_T_coefs4'): 
-			('IAM_T_coefs'),
-		('csp.mslf.sf.HL_w_coefs0', 'csp.mslf.sf.HL_w_coefs1', 'csp.mslf.sf.HL_w_coefs2', 'csp.mslf.sf.HL_w_coefs3', 'csp.mslf.sf.HL_w_coefs4'): 
-			('HL_w_coefs'),
-		('csp.mslf.sf.P_a1', 'csp.mslf.sf.P_a2', 'csp.mslf.sf.P_a3', 'csp.mslf.sf.P_a4'): 
-			('P_a'),
-		('TrackingError', 'GeomEffects', 'reflectivity', 'Dirt_mirror', 'Error'): 
-			('opt_normal'),
-		('csp.mslf.sf.DP_coefs0', 'csp.mslf.sf.DP_coefs1', 'csp.mslf.sf.DP_coefs2', 'csp.mslf.sf.DP_coefs3'): 
-			('DP_coefs'),
-		(): 
-			('tilt'),
-		('csp.mslf.sf.Shadowing1', 'csp.mslf.sf.Shadowing2', 'csp.mslf.sf.Shadowing3', 'csp.mslf.sf.Shadowing4'): 
-			('Shadowing'),
-		('csp.mslf.sf.dirt_env1', 'csp.mslf.sf.dirt_env2', 'csp.mslf.sf.dirt_env3', 'csp.mslf.sf.dirt_env4'): 
-			('dirt_env'),
-		('sf_q_design'): 
-			('q_pb_design'),
-		('csp.mslf.sf.HCE_FieldFrac1', 'csp.mslf.sf.HCE_FieldFrac2', 'csp.mslf.sf.HCE_FieldFrac3', 'csp.mslf.sf.HCE_FieldFrac4'): 
-			('HCE_FieldFrac'),
-		('csp.mslf.sf.epsilon_glass1', 'csp.mslf.sf.epsilon_glass2', 'csp.mslf.sf.epsilon_glass3', 'csp.mslf.sf.epsilon_glass4'): 
-			('epsilon_glass'),
-		('csp.mslf.sf.D_abs_in'): 
-			('D_abs_in'),
-		('csp.mslf.sf.GlazingIntactIn1', 'csp.mslf.sf.GlazingIntactIn2', 'csp.mslf.sf.GlazingIntactIn3', 'csp.mslf.sf.GlazingIntactIn4'): 
-			('GlazingIntactIn'),
-		('csp.mslf.sf.rec_model'): 
-			('rec_model'),
-		('csp.mslf.sf.alpha_env1', 'csp.mslf.sf.alpha_env2', 'csp.mslf.sf.alpha_env3', 'csp.mslf.sf.alpha_env4'): 
-			('alpha_env'),
-		('csp.mslf.sf.alpha_abs1', 'csp.mslf.sf.alpha_abs2', 'csp.mslf.sf.alpha_abs3', 'csp.mslf.sf.alpha_abs4'): 
-			('alpha_abs'),
-		('csp.mslf.sf.opt_model'): 
-			('opt_model'),
-		(): 
-			('I_b'),
-		('csp.mslf.sf.Tau_envelope1', 'csp.mslf.sf.Tau_envelope2', 'csp.mslf.sf.Tau_envelope3', 'csp.mslf.sf.Tau_envelope4'): 
-			('Tau_envelope'),
-		('csp.mslf.sf.IAM_L_coefs0', 'csp.mslf.sf.IAM_L_coefs1', 'csp.mslf.sf.IAM_L_coefs2', 'csp.mslf.sf.IAM_L_coefs3', 'csp.mslf.sf.IAM_L_coefs4'): 
-			('IAM_L_coefs'),
-		('hl_des', 'I_bn_des', 'A_aperture', 'L_mod'): 
-			('hl_derate'),
-		('T_loop_in_des', 'T_loop_out', 'T_amb_sf_des'): 
-			('csp.mslf.sf.avg_dt_des'),
-		('csp.mslf.sf.AbsorberMaterial'): 
-			('AbsorberMaterial'),
-		('csp.mslf.sf.D_abs_out'): 
-			('D_abs_out'),
-		('csp.mslf.sf.Design_loss1', 'csp.mslf.sf.Design_loss2', 'csp.mslf.sf.Design_loss3', 'csp.mslf.sf.Design_loss4'): 
-			('Design_loss'),
-		('csp.mslf.sf.rec_model', 'csp.mslf.sf.HCE_FieldFrac1', 'csp.mslf.sf.Shadowing1', 'csp.mslf.sf.dirt_env1', 'csp.mslf.sf.HCE_FieldFrac2', 'csp.mslf.sf.Shadowing2', 'csp.mslf.sf.dirt_env2', 'csp.mslf.sf.HCE_FieldFrac3', 'csp.mslf.sf.Shadowing3', 'csp.mslf.sf.dirt_env3', 'csp.mslf.sf.HCE_FieldFrac4', 'csp.mslf.sf.Shadowing4', 'csp.mslf.sf.dirt_env4'): 
-			('opt_derate'),
-		('csp.mslf.sf.HL_T_coefs0', 'csp.mslf.sf.HL_T_coefs1', 'csp.mslf.sf.HL_T_coefs2', 'csp.mslf.sf.HL_T_coefs3', 'csp.mslf.sf.HL_T_coefs4'): 
-			('HL_T_coefs'),
-		('nMod', 'DP_nominal'): 
-			('DP_pressure_loss'),
-		('csp.mslf.sf.rec_model', 'csp.mslf.sf.HL_T_coefs0', 'csp.mslf.sf.HL_T_coefs1', 'csp.mslf.sf.avg_dt_des', 'csp.mslf.sf.HL_T_coefs2', 'csp.mslf.sf.HL_T_coefs3', 'csp.mslf.sf.HL_T_coefs4', 'csp.mslf.sf.HCE_FieldFrac1', 'csp.mslf.sf.Design_loss1', 'csp.mslf.sf.HCE_FieldFrac2', 'csp.mslf.sf.Design_loss2', 'csp.mslf.sf.HCE_FieldFrac3', 'csp.mslf.sf.Design_loss3', 'csp.mslf.sf.HCE_FieldFrac4', 'csp.mslf.sf.Design_loss4'): 
-			('hl_des')	},
-	'Molten Salt Linear Fresnel Capital Costs': {
-		('csp.mslf.cost.total_indirect'): 
-			('total_direct_cost'),
-		(): 
-			('system_use_lifetime_output'),
-		(): 
-			('system_use_recapitalization'),
-		('csp.mslf.cost.sales_tax.value', 'csp.mslf.cost.total_direct', 'csp.mslf.cost.sales_tax.percent'): 
-			('csp.mslf.cost.sales_tax.total'),
-		('csp.mslf.cost.epc.total', 'csp.mslf.cost.plm.total', 'csp.mslf.cost.sales_tax.total'): 
-			('csp.mslf.cost.total_indirect'),
-		('csp.mslf.cost.fossil_backup.mwe', 'csp.mslf.cost.fossil_backup.cost_per_kwe'): 
-			('csp.mslf.cost.fossil_backup'),
-		('sales_tax_rate'): 
-			('csp.mslf.cost.sales_tax.value'),
-		('csp.mslf.cost.solar_field.area', 'csp.mslf.cost.solar_field.cost_per_m2'): 
-			('csp.mslf.cost.solar_field'),
-		('a_sf_act'): 
-			('csp.mslf.cost.site_improvements.area'),
-		('csp.mslf.cost.total_installed', 'nameplate'): 
-			('csp.mslf.cost.installed_per_capacity'),
-		('a_sf_act'): 
-			('csp.mslf.cost.htf_system.area'),
-		('csp.mslf.cost.contingency', 'csp.mslf.cost.site_improvements', 'csp.mslf.cost.solar_field', 'csp.mslf.cost.htf_system', 'csp.mslf.cost.fossil_backup', 'csp.mslf.cost.power_plant', 'csp.mslf.cost.bop', 'csp.mslf.cost.ts'): 
-			('csp.mslf.cost.total_direct'),
-		('csp.mslf.cost.bop_mwe', 'csp.mslf.cost.bop_per_kwe'): 
-			('csp.mslf.cost.bop'),
-		('csp.mslf.cost.contingency_percent', 'csp.mslf.cost.site_improvements', 'csp.mslf.cost.solar_field', 'csp.mslf.cost.htf_system', 'csp.mslf.cost.fossil_backup', 'csp.mslf.cost.power_plant', 'csp.mslf.cost.bop', 'csp.mslf.cost.ts'): 
-			('csp.mslf.cost.contingency'),
-		('demand_var'): 
-			('csp.mslf.cost.fossil_backup.mwe'),
-		('demand_var'): 
-			('csp.mslf.cost.power_plant.mwe'),
-		('csp.mslf.cost.site_improvements.area', 'csp.mslf.cost.site_improvements.cost_per_m2'): 
-			('csp.mslf.cost.site_improvements'),
-		('csp.mslf.cost.epc.per_acre', 'csp.mslf.cost.total_land_area', 'csp.mslf.cost.epc.percent', 'csp.mslf.cost.total_direct', 'csp.mslf.cost.nameplate', 'csp.mslf.cost.epc.per_watt', 'csp.mslf.cost.epc.fixed'): 
-			('csp.mslf.cost.epc.total'),
-		('csp.mslf.cost.ts_mwht', 'csp.mslf.cost.ts_per_kwht'): 
-			('csp.mslf.cost.ts'),
-		('a_sf_act'): 
-			('csp.mslf.cost.solar_field.area'),
-		('csp.mslf.cost.total_direct', 'csp.mslf.cost.total_indirect'): 
-			('csp.mslf.cost.total_installed'),
-		('TES_cap'): 
-			('csp.mslf.cost.ts_mwht'),
-		('nameplate'): 
-			('csp.mslf.cost.nameplate'),
-		('total_land_area'): 
-			('csp.mslf.cost.total_land_area'),
-		('demand_var'): 
-			('csp.mslf.cost.bop_mwe'),
-		('csp.mslf.cost.htf_system.area', 'csp.mslf.cost.htf_system.cost_per_m2'): 
-			('csp.mslf.cost.htf_system'),
-		('csp.mslf.cost.power_plant.mwe', 'csp.mslf.cost.power_plant.cost_per_kwe'): 
-			('csp.mslf.cost.power_plant'),
-		('csp.mslf.cost.total_installed'): 
-			('total_installed_cost'),
-		('csp.mslf.cost.plm.per_acre', 'csp.mslf.cost.total_land_area', 'csp.mslf.cost.plm.percent', 'csp.mslf.cost.total_direct', 'csp.mslf.cost.nameplate', 'csp.mslf.cost.plm.per_watt', 'csp.mslf.cost.plm.fixed'): 
-			('csp.mslf.cost.plm.total')	},
-	'Financial Sale Leaseback': {
-		('sponsor_operating_margin', 'system_capacity'): 
-			('sponsor_operating_margin_amount')	},
-	'Financial Cost of Financing Flip Leaseback': {
-		('federal_tax_rate', 'state_tax_rate', 'cost_dev_fee_value'): 
-			('cost_dev_fee_tax_liability'),
-		('total_installed_cost', 'cost_dev_fee_percent'): 
-			('cost_dev_fee_value')	},
-	'Financial Salvage Value': {
-		('salvage_percentage', 'total_installed_cost'): 
-			('salvage_value')	},
-	'Fuel Cell': {
-		('fuelcell_dynamic_response_down_input', 'fuelcell_dynamic_response_down_units', 'fuelcell_power_nameplate'): 
-			('fuelcell_dynamic_response_down'),
-		('fuelcell_dynamic_response_up_input', 'fuelcell_dynamic_response_up_units', 'fuelcell_power_nameplate'): 
-			('fuelcell_dynamic_response_up'),
-		('fuelcell_unit_min_power_input', 'fuelcell_unit_min_units', 'fuelcell_unit_max_power'): 
-			('fuelcell_unit_min_power'),
-		('fuelcell_unit_min_power', 'fuelcell_number_of_units'): 
-			('fuelcell_power_min'),
-		('fuelcell_degradation_input', 'fuelcell_degradation_units', 'fuelcell_unit_max_power'): 
-			('fuelcell_degradation'),
-		('fuelcell_fuel_type', 'fuelcell_fuel_available_in', 'fuelcell_fuel_available_units'): 
-			('fuelcell_fuel_available'),
-		('fuelcell_unit_max_power', 'fuelcell_number_of_units'): 
-			('fuelcell_power_nameplate'),
-		('fuelcell_lhv_in', 'fuelcell_fuel_type', 'fuelcell_lhv_units'): 
-			('fuelcell_lhv')	},
-	'Generic System Plant': {
-		('derate', 'spec_mode', 'user_capacity_factor', 'first_year_output_peak', 'first_year_output', 'system_capacity'): 
-			('capacity_factor_calc'),
-		('derate', 'spec_mode', 'system_capacity', 'energy_output_array'): 
-			('first_year_output_peak'),
-		('derate', 'spec_mode', 'system_capacity', 'user_capacity_factor', 'energy_output_array'): 
-			('first_year_output'),
-		('heat_rate'): 
-			('conv_eff')	},
-	'Financial Tax and Insurance Rates': {
-		('prop_tax_cost_assessed_percent', 'total_installed_cost'): 
-			('property_assessed_value')	},
-	'Linear Fresnel Capital Costs': {
-		(): 
-			('system_use_lifetime_output'),
-		('csp.lf.cost.total_indirect'): 
-			('total_direct_cost'),
-		('demand_var'): 
-			('csp.lf.cost.power_plant.mwe'),
-		('csp.lf.cost.solar_field.area', 'csp.lf.cost.solar_field.cost_per_m2'): 
-			('csp.lf.cost.solar_field'),
-		('csp.lf.cost.htf_system.area', 'csp.lf.cost.htf_system.cost_per_m2'): 
-			('csp.lf.cost.htf_system'),
-		(): 
-			('system_use_recapitalization'),
-		('actual_aper'): 
-			('csp.lf.cost.htf_system.area'),
-		('nameplate'): 
-			('csp.lf.cost.nameplate'),
-		('demand_var'): 
-			('csp.lf.cost.fossil_backup.mwe'),
-		('csp.lf.cost.site_improvements.area', 'csp.lf.cost.site_improvements.cost_per_m2'): 
-			('csp.lf.cost.site_improvements'),
-		('csp.lf.cost.epc.total', 'csp.lf.cost.plm.total', 'csp.lf.cost.sales_tax.total'): 
-			('csp.lf.cost.total_indirect'),
-		('csp.lf.cost.sales_tax.value', 'csp.lf.cost.total_direct', 'csp.lf.cost.sales_tax.percent'): 
-			('csp.lf.cost.sales_tax.total'),
-		('actual_aper'): 
-			('csp.lf.cost.site_improvements.area'),
-		('csp.lf.cost.bop_mwe', 'csp.lf.cost.bop_per_kwe'): 
-			('csp.lf.cost.bop'),
-		('csp.lf.cost.total_direct', 'csp.lf.cost.total_indirect'): 
-			('csp.lf.cost.total_installed'),
-		('actual_aper'): 
-			('csp.lf.cost.solar_field.area'),
-		('demand_var'): 
-			('csp.lf.cost.bop_mwe'),
-		('csp.lf.cost.contingency', 'csp.lf.cost.site_improvements', 'csp.lf.cost.solar_field', 'csp.lf.cost.htf_system', 'csp.lf.cost.fossil_backup', 'csp.lf.cost.power_plant', 'csp.lf.cost.bop'): 
-			('csp.lf.cost.total_direct'),
-		('csp.lf.cost.power_plant.mwe', 'csp.lf.cost.power_plant.cost_per_kwe'): 
-			('csp.lf.cost.power_plant'),
-		('csp.lf.cost.fossil_backup.mwe', 'csp.lf.cost.fossil_backup.cost_per_kwe'): 
-			('csp.lf.cost.fossil_backup'),
-		('csp.lf.sf.total_land_area', 'total_land_area'): 
-			('csp.lf.cost.total_land_area'),
-		('sales_tax_rate'): 
-			('csp.lf.cost.sales_tax.value'),
-		('csp.lf.cost.contingency_percent', 'csp.lf.cost.site_improvements', 'csp.lf.cost.solar_field', 'csp.lf.cost.htf_system', 'csp.lf.cost.fossil_backup', 'csp.lf.cost.power_plant', 'csp.lf.cost.bop'): 
-			('csp.lf.cost.contingency'),
-		('csp.lf.cost.total_installed', 'nameplate'): 
-			('csp.lf.cost.installed_per_capacity'),
-		('csp.lf.cost.plm.per_acre', 'csp.lf.cost.total_land_area', 'csp.lf.cost.plm.percent', 'csp.lf.cost.total_direct', 'csp.lf.cost.nameplate', 'csp.lf.cost.plm.per_watt', 'csp.lf.cost.plm.fixed'): 
-			('csp.lf.cost.plm.total'),
-		('csp.lf.cost.epc.per_acre', 'csp.lf.cost.total_land_area', 'csp.lf.cost.epc.percent', 'csp.lf.cost.total_direct', 'csp.lf.cost.nameplate', 'csp.lf.cost.epc.per_watt', 'csp.lf.cost.epc.fixed'): 
-			('csp.lf.cost.epc.total'),
-		('csp.lf.cost.total_installed'): 
-			('total_installed_cost'),
-		('csp.lf.sf.dp.actual_aper', 'a_sf_act'): 
-			('actual_aper')	},
-	'Molten Salt Linear Fresnel Storage': {
-		('dt_hot'): 
-			('dt_cold'),
-		('csp.mslf.control.store_fluid'): 
-			('csp.mslf.tes.htf_max_opt_temp'),
-		('mslf_is_hx', 'dt_hot', 'dt_cold', 'T_loop_out', 'T_loop_in_des'): 
-			('hx_derate'),
-		('h_tank', 'd_tank', 'tank_pairs', 'tes_temp', 'u_tank'): 
-			('csp.mslf.tes.estimated_heat_loss'),
-		('vol_tank', 'h_tank', 'tank_pairs'): 
-			('d_tank'),
-		('T_loop_in_des', 'T_loop_out'): 
-			('tes_temp'),
-		('csp.mslf.control.store_fluid'): 
-			('csp.mslf.tes.htf_min_opt_temp'),
-		('sf_q_design', 'tshours'): 
-			('TES_cap'),
-		('TES_cap', 'csp.mslf.control.tes_dens', 'csp.mslf.control.tes_cp', 'hx_derate', 'T_loop_out', 'dt_hot', 'T_loop_in_des', 'dt_cold'): 
-			('vol_tank'),
-		('csp.mslf.control.store_fluid', 'tes_temp', 'store_fl_props'): 
-			('csp.mslf.control.tes_dens'),
-		('vol_tank'): 
-			('V_tank_hot_ini'),
-		('csp.mslf.control.store_fluid', 'tes_temp', 'store_fl_props'): 
-			('csp.mslf.control.tes_cp'),
-		('T_loop_in_des'): 
-			('T_field_in_des'),
-		('csp.mslf.control.store_fluid'): 
-			('store_fluid'),
-		('sf_q_design', 'solar_mult'): 
-			('q_max_aux'),
-		('T_loop_in_des'): 
-			('T_tank_cold_ini'),
-		('vol_tank', 'h_tank_min', 'h_tank'): 
-			('vol_min'),
-		('T_loop_out'): 
-			('T_tank_hot_ini'),
-		('csp.mslf.enet.tes_fp_mode'): 
-			('fp_mode')	},
-	'Financial Depreciation Detailed': {
-		('depr_alloc_macrs_5_percent', 'depr_alloc_macrs_15_percent', 'depr_alloc_sl_5_percent', 'depr_alloc_sl_15_percent', 'depr_alloc_sl_20_percent', 'depr_alloc_sl_39_percent', 'depr_alloc_custom_percent'): 
-			('depr_alloc_none')	},
-	'Dish Solar Field': {
-		('csp.ds.total_capacity'): 
-			('system_capacity'),
-		('n_ew', 'n_ns'): 
-			('csp.ds.ncollectors'),
-		('csp.ds.ncollectors', 'csp.ds.nameplate_capacity'): 
-			('csp.ds.total_capacity'),
-		('ew_dish_sep', 'ns_dish_sep', 'csp.ds.ncollectors'): 
-			('csp.ds.field_area')	},
-	'Empirical Trough SCA': {
-		('ui_HCEdust'): 
-			('HCEdust'),
-		('SCA_aper'): 
-			('RefMirrAper'),
-		('TrkTwstErr', 'GeoAcc', 'MirRef', 'MirCln', 'ConcFac'): 
-			('calc_col_factor')	},
-	'Electric Load Other': {
-		('load_model', 'load_user_data', 'normalize_to_utility_bill', 'utility_bill_data', 'scale_factor'): 
-			('load', 'load_annual_total', 'annual_peak', 'energy_1', 'peak_1', 'energy_2', 'peak_2', 'energy_3', 'peak_3', 'energy_4', 'peak_4', 'energy_5', 'peak_5', 'energy_6', 'peak_6', 'energy_7', 'peak_7', 'energy_8', 'peak_8', 'energy_9', 'peak_9', 'energy_10', 'peak_10', 'energy_11', 'peak_11', 'energy_12', 'peak_12'),
-		('escal_input_hourly'): 
-			('escal_other')	},
-	'Biopower System Cost': {
-		('biopwr.cost.total_indirect'): 
-			('total_indirect_cost'),
-		('biopwr.cost.total_direct'): 
-			('total_direct_cost'),
-		(): 
-			('system_use_lifetime_output'),
-		('biopwr.plant.nameplate'): 
-			('biopwr.cost.turbine_capacity'),
-		('biopwr.cost.plm.percent', 'biopwr.cost.total_direct'): 
-			('biopwr.cost.plm.nonfixed'),
-		('biopwr.plant.nameplate'): 
-			('biopwr.cost.equipment_capacity'),
-		('biopwr.plant.nameplate'): 
-			('biopwr.cost.prep_capacity'),
-		('biopwr.cost.prep_capacity', 'biopwr.cost.prep_per_cap'): 
-			('biopwr.cost.prep'),
-		('biopwr.cost.dryer_capacity', 'biopwr.cost.dryer_per_kw'): 
-			('biopwr.cost.dryer'),
-		('biopwr.plant.boiler.cap_per_boiler'): 
-			('biopwr.cost.cap_per_boiler'),
-		('biopwr.cost.sales_tax.value', 'biopwr.cost.sales_tax.percent', 'biopwr.cost.total_direct'): 
-			('biopwr.cost.sales_tax.total'),
-		('biopwr.cost.total_direct', 'biopwr.cost.epc.percent'): 
-			('biopwr.cost.epc.nonfixed'),
-		('biopwr.cost.boiler_capacity', 'biopwr.cost.boiler.cost_per_kw'): 
-			('biopwr.cost.boiler'),
-		('biopwr.cost.contingency', 'biopwr.cost.boiler', 'biopwr.cost.turbine', 'biopwr.cost.prep', 'biopwr.cost.dryer', 'biopwr.cost.equipment', 'biopwr.cost.bop'): 
-			('biopwr.cost.total_direct'),
-		('total_installed_cost', 'biopwr.plant.nameplate'): 
-			('biopwr.cost.installed_per_capacity'),
-		('biopwr.cost.bop_per_kw', 'biopwr.cost.bop_capacity'): 
-			('biopwr.cost.bop'),
-		('biopwr.cost.epc.total', 'biopwr.cost.plm.total', 'biopwr.cost.sales_tax.total'): 
-			('biopwr.cost.total_indirect'),
-		('biopwr.cost.plm.fixed', 'biopwr.cost.plm.nonfixed'): 
-			('biopwr.cost.plm.total'),
-		('sales_tax_rate'): 
-			('biopwr.cost.sales_tax.value'),
-		('biopwr.cost.turbine_capacity', 'biopwr.cost.turbine_per_kw'): 
-			('biopwr.cost.turbine'),
-		('biopwr.plant.nameplate', 'biopwr.plant.par'): 
-			('biopwr.cost.bop_capacity'),
-		('biopwr.cost.epc.fixed', 'biopwr.cost.epc.nonfixed'): 
-			('biopwr.cost.epc.total'),
-		('biopwr.cost.total_direct', 'biopwr.cost.total_indirect'): 
-			('total_installed_cost'),
-		('biopwr.cost.contingency_percent', 'biopwr.cost.boiler', 'biopwr.cost.turbine', 'biopwr.cost.prep', 'biopwr.cost.equipment', 'biopwr.cost.bop'): 
-			('biopwr.cost.contingency'),
-		('biopwr.plant.drying_method', 'biopwr.plant.nameplate'): 
-			('biopwr.cost.dryer_capacity'),
-		('biopwr.cost.equipment_capacity', 'biopwr.cost.equipment.cost_per_kw'): 
-			('biopwr.cost.equipment'),
-		(): 
-			('system_use_recapitalization'),
-		('biopwr.plant.nameplate'): 
-			('biopwr.cost.boiler_capacity')	},
-	'Financial Reserve Accounts': {
-		('system_capacity', 'equip2_reserve_cost'): 
-			('mera_cost2'),
-		('system_capacity', 'equip3_reserve_cost'): 
-			('mera_cost3'),
-		('system_capacity', 'equip1_reserve_cost'): 
-			('mera_cost1')	},
-	'Financial Equity Flip Structure': {
-		('tax_investor_postflip_tax_percent'): 
-			('developer_postflip_tax_percent'),
-		('tax_investor_preflip_tax_percent'): 
-			('developer_preflip_tax_percent'),
-		('tax_investor_postflip_cash_percent'): 
-			('developer_postflip_cash_percent'),
-		('tax_investor_preflip_cash_percent'): 
-			('developer_preflip_cash_percent'),
-		('tax_investor_equity_percent'): 
-			('developer_equity_percent')	},
-	'Biopower Feedstock Costs': {
-		('biopwr.feedstockcost.coal_fuel_cost'): 
-			('om_opt_fuel_2_cost'),
-		('biopwr.feedstockcost.coal_fuel_used'): 
-			('om_opt_fuel_2_usage'),
-		('biopwr.feedstock.total_coal'): 
-			('biopwr.feedstockcost.coal_fuel_used'),
-		('biopwr.feedstockcost.biomass_fuel_cost_esc'): 
-			('om_opt_fuel_1_cost_escal'),
-		('biopwr.feedstockcost.coal_fuel_cost_esc'): 
-			('om_opt_fuel_2_cost_escal'),
-		('biopwr.feedstock.subbit_resource'): 
-			('biopwr.feedstockcost.subbit_resource'),
-		('biopwr.feedstock.forest_resource', 'biopwr.feedstock.forest_obtainable'): 
-			('biopwr.feedstockcost.forest_resource'),
-		('biopwr.feedstock.mill_resource', 'biopwr.feedstock.mill_obtainable'): 
-			('biopwr.feedstockcost.mill_resource'),
-		('biopwr.feedstock.barley_resource', 'biopwr.feedstock.barley_obtainable'): 
-			('biopwr.feedstockcost.barley_resource'),
-		('biopwr.feedstock.rice_resource', 'biopwr.feedstock.rice_obtainable'): 
-			('biopwr.feedstockcost.rice_resource'),
-		('biopwr.feedstock.wheat_resource', 'biopwr.feedstock.wheat_obtainable'): 
-			('biopwr.feedstockcost.wheat_resource'),
-		('biopwr.feedstock.bagasse_resource', 'biopwr.feedstock.bagasse_obtainable'): 
-			('biopwr.feedstockcost.bagasse_resource'),
-		('biopwr.feedstockcost.biomass_cost', 'biopwr.feedstock.total_biomass_hhv'): 
-			('biopwr.feedstockcost.biomass_fuel_cost'),
-		('biopwr.feedstock.total_biomass', 'biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstockcost.bagasse_price', 'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstockcost.barley_price', 'biopwr.feedstock.stover_biomass_frac', 'biopwr.feedstockcost.stover_price', 'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstockcost.rice_price', 'biopwr.feedstock.wheat_biomass_frac', 'biopwr.feedstockcost.wheat_price', 'biopwr.feedstock.forest_biomass_frac', 'biopwr.feedstockcost.forest_price', 'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstockcost.mill_price', 'biopwr.feedstock.urban_biomass_frac', 'biopwr.feedstockcost.urban_price', 'biopwr.feedstock.woody_biomass_frac', 'biopwr.feedstockcost.woody_price', 'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstockcost.herb_price', 'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstockcost.feedstock1_price', 'biopwr.feedstock.feedstock2_biomass_frac', 'biopwr.feedstockcost.feedstock2_price', 'biopwr.feedstockcost.fixed_delivery_cost', 'biopwr.feedstock.collection_radius', 'biopwr.feedstockcost.var_delivery_cost', 'biopwr.feedstock.total_biomass_hhv'): 
-			('biopwr.feedstockcost.biomass_cost'),
-		('biopwr.feedstockcost.biomass_fuel_cost', 'biopwr.feedstock.total_biomass_moisture'): 
-			('biopwr.feedstockcost.green_biomass_cost'),
-		('biopwr.feedstock.urban_resource', 'biopwr.feedstock.urban_obtainable'): 
-			('biopwr.feedstockcost.urban_resource'),
-		('biopwr.feedstock.feedstock1_resource'): 
-			('biopwr.feedstockcost.feedstock1_resource'),
-		('biopwr.feedstock.woody_resource', 'biopwr.feedstock.woody_obtainable'): 
-			('biopwr.feedstockcost.woody_resource'),
-		('biopwr.feedstock.lig_resource'): 
-			('biopwr.feedstockcost.lig_resource'),
-		('biopwr.feedstockcost.coal_per_mmbtu', 'biopwr.feedstock.total_coal_hhv'): 
-			('biopwr.feedstockcost.coal_fuel_cost'),
-		('biopwr.feedstock.total_biomass'): 
-			('biopwr.feedstockcost.biomass_fuel_used'),
-		('biopwr.feedstock.stover_resource', 'biopwr.feedstock.stover_obtainable'): 
-			('biopwr.feedstockcost.stover_resource'),
-		('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_coal_frac', 'biopwr.feedstockcost.bit_price', 'biopwr.feedstock.subbit_coal_frac', 'biopwr.feedstockcost.subbit_price', 'biopwr.feedstock.lig_coal_frac', 'biopwr.feedstockcost.lig_price', 'biopwr.feedstock.total_coal_hhv'): 
-			('biopwr.feedstockcost.coal_per_mmbtu'),
-		('biopwr.feedstockcost.biomass_fuel_cost'): 
-			('om_opt_fuel_1_cost'),
-		('biopwr.feedstock.bit_resource'): 
-			('biopwr.feedstockcost.bit_resource'),
-		('biopwr.feedstockcost.biomass_fuel_used'): 
-			('om_opt_fuel_1_usage'),
-		('biopwr.feedstock.herb_resource', 'biopwr.feedstock.herb_obtainable'): 
-			('biopwr.feedstockcost.herb_resource'),
-		('biopwr.feedstock.feedstock2_resource'): 
-			('biopwr.feedstockcost.feedstock2_resource')	},
-	'Physical Trough Capital Costs': {
-		(): 
-			('system_use_recapitalization'),
-		(): 
-			('system_use_lifetime_output'),
-		('csp.dtr.cost.site_improvements.area', 'csp.dtr.cost.site_improvements.cost_per_m2'): 
-			('csp.dtr.cost.site_improvements'),
-		('csp.dtr.cost.storage.mwht', 'csp.dtr.cost.storage.cost_per_kwht'): 
-			('csp.dtr.cost.storage'),
-		('csp.dtr.cost.htf_system.area', 'csp.dtr.cost.htf_system.cost_per_m2'): 
-			('csp.dtr.cost.htf_system'),
-		('csp.dtr.cost.sales_tax.value', 'total_direct_cost', 'csp.dtr.cost.sales_tax.percent'): 
-			('csp.dtr.cost.sales_tax.total'),
-		('csp.dtr.cost.contingency', 'csp.dtr.cost.site_improvements', 'csp.dtr.cost.solar_field', 'csp.dtr.cost.htf_system', 'csp.dtr.cost.storage', 'csp.dtr.cost.fossil_backup', 'csp.dtr.cost.power_plant', 'csp.dtr.cost.bop'): 
-			('total_direct_cost'),
-		('total_aperture'): 
-			('csp.dtr.cost.solar_field.area'),
-		('P_ref'): 
-			('csp.dtr.cost.bop_mwe'),
-		('P_ref'): 
-			('csp.dtr.cost.fossil_backup.mwe'),
-		('csp.dtr.cost.power_plant.mwe', 'csp.dtr.cost.power_plant.cost_per_kwe'): 
-			('csp.dtr.cost.power_plant'),
-		('csp.dtr.tes.thermal_capacity'): 
-			('csp.dtr.cost.storage.mwht'),
-		('csp.dtr.cost.epc.per_acre', 'csp.dtr.cost.total_land_area', 'csp.dtr.cost.epc.percent', 'total_direct_cost', 'csp.dtr.cost.nameplate', 'csp.dtr.cost.epc.per_watt', 'csp.dtr.cost.epc.fixed'): 
-			('csp.dtr.cost.epc.total'),
-		('total_aperture'): 
-			('csp.dtr.cost.site_improvements.area'),
-		('csp.dtr.cost.plm.per_acre', 'csp.dtr.cost.total_land_area', 'csp.dtr.cost.plm.percent', 'total_direct_cost', 'csp.dtr.cost.nameplate', 'csp.dtr.cost.plm.per_watt', 'csp.dtr.cost.plm.fixed'): 
-			('csp.dtr.cost.plm.total'),
-		('total_installed_cost', 'csp.dtr.pwrb.nameplate'): 
-			('csp.dtr.cost.installed_per_capacity'),
-		('csp.dtr.cost.bop_mwe', 'csp.dtr.cost.bop_per_kwe'): 
-			('csp.dtr.cost.bop'),
-		('csp.dtr.cost.contingency_percent', 'csp.dtr.cost.site_improvements', 'csp.dtr.cost.solar_field', 'csp.dtr.cost.htf_system', 'csp.dtr.cost.storage', 'csp.dtr.cost.fossil_backup', 'csp.dtr.cost.power_plant', 'csp.dtr.cost.bop'): 
-			('csp.dtr.cost.contingency'),
-		('csp.dtr.pwrb.nameplate'): 
-			('csp.dtr.cost.nameplate'),
-		('csp.dtr.cost.site_improvements', 'csp.dtr.cost.solar_field', 'csp.dtr.cost.htf_system', 'csp.dtr.cost.storage', 'csp.dtr.cost.fossil_backup', 'csp.dtr.cost.power_plant', 'csp.dtr.cost.bop'): 
-			('direct_subtotal'),
-		('sales_tax_rate'): 
-			('csp.dtr.cost.sales_tax.value'),
-		('total_land_area'): 
-			('csp.dtr.cost.total_land_area'),
-		('P_ref'): 
-			('csp.dtr.cost.power_plant.mwe'),
-		('total_aperture'): 
-			('csp.dtr.cost.htf_system.area'),
-		('csp.dtr.cost.solar_field.area', 'csp.dtr.cost.solar_field.cost_per_m2'): 
-			('csp.dtr.cost.solar_field'),
-		('csp.dtr.cost.epc.total', 'csp.dtr.cost.plm.total', 'csp.dtr.cost.sales_tax.total'): 
-			('total_indirect_cost'),
-		('csp.dtr.cost.fossil_backup.mwe', 'csp.dtr.cost.fossil_backup.cost_per_kwe'): 
-			('csp.dtr.cost.fossil_backup'),
-		('total_direct_cost', 'total_indirect_cost'): 
-			('total_installed_cost')	},
-	'Battery Dispatch Manual': {
-		('dispatch_manual_gridcharge', 'batt_gridcharge_percent_1', 'batt_gridcharge_percent_2', 'batt_gridcharge_percent_3', 'batt_gridcharge_percent_4', 'batt_gridcharge_percent_5', 'batt_gridcharge_percent_6'): 
-			('dispatch_manual_percent_gridcharge'),
-		('dispatch_manual_discharge', 'batt_discharge_percent_1', 'batt_discharge_percent_2', 'batt_discharge_percent_3', 'batt_discharge_percent_4', 'batt_discharge_percent_5', 'batt_discharge_percent_6'): 
-			('dispatch_manual_percent_discharge'),
-		('pv.storage.p1.gridcharge', 'pv.storage.p2.gridcharge', 'pv.storage.p3.gridcharge', 'pv.storage.p4.gridcharge', 'pv.storage.p5.gridcharge', 'pv.storage.p6.gridcharge'): 
-			('dispatch_manual_gridcharge'),
-		('pv.storage.p1.discharge', 'pv.storage.p2.discharge', 'pv.storage.p3.discharge', 'pv.storage.p4.discharge', 'pv.storage.p5.discharge', 'pv.storage.p6.discharge'): 
-			('dispatch_manual_discharge'),
-		('pv.storage.p1.charge', 'pv.storage.p2.charge', 'pv.storage.p3.charge', 'pv.storage.p4.charge', 'pv.storage.p5.charge', 'pv.storage.p6.charge'): 
-			('dispatch_manual_charge')	},
-	'CSP PBNS Dispatch Control': {
-		('csp.pbns.hc_ctl1', 'csp.pbns.hc_ctl2', 'csp.pbns.hc_ctl3', 'csp.pbns.hc_ctl4', 'csp.pbns.hc_ctl5', 'csp.pbns.hc_ctl6', 'csp.pbns.hc_ctl7', 'csp.pbns.hc_ctl8', 'csp.pbns.hc_ctl9'): 
-			('F_wc'),
-		('csp.pbns.fossil1', 'csp.pbns.fossil2', 'csp.pbns.fossil3', 'csp.pbns.fossil4', 'csp.pbns.fossil5', 'csp.pbns.fossil6', 'csp.pbns.fossil7', 'csp.pbns.fossil8', 'csp.pbns.fossil9'): 
-			('ffrac')	},
-	'Sandia PV Array Performance Model with Module Database': {
-		('snl_parallel_cells', 'snl_series_cells'): 
-			('snl_n_cells'),
-		('snl_module_structure', 'snl_a', 'snl_b', 'snl_dtc', 'snl_specified_a', 'snl_specified_b', 'snl_specified_dT', 'snl_fd', 'snl_a0', 'snl_a1', 'snl_a2', 'snl_a3', 'snl_a4', 'snl_b0', 'snl_b1', 'snl_b2', 'snl_b3', 'snl_b4', 'snl_b5', 'snl_isco', 'snl_aisc', 'snl_c0', 'snl_c1', 'snl_aimp', 'snl_impo', 'snl_bvmpo', 'snl_mbvmp', 'snl_n', 'snl_c3', 'snl_series_cells', 'snl_c2', 'snl_vmpo', 'snl_bvoco', 'snl_mbvoc', 'snl_voco', 'snl_area'): 
-			('snl_ref_a', 'snl_ref_b', 'snl_ref_dT', 'snl_ref_isc', 'snl_ref_isc_temp_0', 'snl_ref_isc_temp_1', 'snl_ref_imp', 'snl_ref_imp_temp_0', 'snl_imp_temp_1', 'snl_ref_vmp', 'snl_ref_vmp_temp_0', 'snl_ref_vmp_temp_1', 'snl_ref_pmp', 'snl_ref_pmp_temp_0', 'snl_ref_pmp_temp_1', 'snl_ref_voc', 'snl_ref_voc_temp_0', 'snl_voc_temp_1', 'snl_ref_eff')	},
-	'HCPV Costs': {
-		(): 
-			('system_use_lifetime_output'),
-		('hcpv.cost.engr.percent', 'total_direct_cost', 'hcpv.cost.modulearray.power', 'hcpv.cost.engr.per_watt', 'hcpv.cost.engr.fixed'): 
-			('hcpv.cost.engr.total'),
-		('total_direct_cost', 'total_indirect_cost'): 
-			('total_installed_cost'),
-		('hcpv.cost.bos_equip_fixed', 'hcpv.cost.modulearray.power', 'hcpv.cost.bos_equip_perwatt', 'hcpv.cost.modulearray.area', 'hcpv.cost.bos_equip_perarea'): 
-			('hcpv.cost.bos_equip.totalcost'),
-		('hcpv.cost.module.totalcost', 'hcpv.cost.inverter.totalcost', 'hcpv.cost.tracker.totalcost', 'hcpv.cost.bos_equip.totalcost', 'hcpv.cost.install_labor.totalcost', 'hcpv.cost.install_margin.totalcost', 'hcpv.cost.contingency'): 
-			('total_direct_cost'),
-		('hcpv.cost.inverter.power', 'hcpv.cost.inverter.num_units'): 
-			('hcpv.cost.inverterarray.power'),
-		('hcpv.array.total_land_area'): 
-			('hcpv.cost.land_area.value'),
-		('hcpv.cost.sales_tax.value', 'total_direct_cost', 'hcpv.cost.sales_tax.percent'): 
-			('hcpv.cost.sales_tax.total'),
-		('hcpv.cost.tracker_fixed', 'hcpv.cost.modulearray.power', 'hcpv.cost.tracker_perwatt', 'hcpv.cost.modulearray.area', 'hcpv.cost.tracker_perarea'): 
-			('hcpv.cost.tracker.totalcost'),
-		('sales_tax_rate'): 
-			('hcpv.cost.sales_tax.value'),
-		('hcpv.cost.grid.percent', 'total_direct_cost', 'hcpv.cost.modulearray.power', 'hcpv.cost.grid.per_watt', 'hcpv.cost.grid.fixed'): 
-			('hcpv.cost.grid.total'),
-		('hcpv.cost.install_labor_fixed', 'hcpv.cost.modulearray.power', 'hcpv.cost.install_labor_perwatt', 'hcpv.cost.modulearray.area', 'hcpv.cost.install_labor_perarea'): 
-			('hcpv.cost.install_labor.totalcost'),
-		('total_installed_cost', 'hcpv.cost.modulearray.power'): 
-			('hcpv.cost.installed_per_capacity'),
-		('hcpv.cost.land.per_acre', 'hcpv.cost.land_area.value', 'hcpv.cost.land.percent', 'total_direct_cost', 'hcpv.cost.modulearray.power', 'hcpv.cost.land.per_watt', 'hcpv.cost.land.fixed'): 
-			('hcpv.cost.land.total'),
-		('hcpv.cost.inverter.costunits', 'hcpv.cost.inverter.num_units', 'hcpv.cost.inverter.power', 'hcpv.cost.per_inverter'): 
-			('hcpv.cost.inverter.totalcost'),
-		('hcpv.cost.install_margin_fixed', 'hcpv.cost.modulearray.power', 'hcpv.cost.install_margin_perwatt', 'hcpv.cost.modulearray.area', 'hcpv.cost.install_margin_perarea'): 
-			('hcpv.cost.install_margin.totalcost'),
-		('inv_snl_paco'): 
-			('hcpv.cost.inverter.power'),
-		('array_num_inverters'): 
-			('hcpv.cost.inverter.num_units'),
-		('hcpv.cost.module.power', 'hcpv.cost.module.num_units'): 
-			('hcpv.cost.modulearray.power'),
-		('hcpv.module.power'): 
-			('hcpv.cost.module.power'),
-		('hcpv.cost.landprep.per_acre', 'hcpv.cost.land_area.value', 'hcpv.cost.landprep.percent', 'total_direct_cost', 'hcpv.cost.modulearray.power', 'hcpv.cost.landprep.per_watt', 'hcpv.cost.landprep.fixed'): 
-			('hcpv.cost.landprep.total'),
-		('hcpv.cost.permitting.percent', 'total_direct_cost', 'hcpv.cost.modulearray.power', 'hcpv.cost.permitting.per_watt', 'hcpv.cost.permitting.fixed'): 
-			('hcpv.cost.permitting.total'),
-		('array_num_trackers', 'array_modules_per_tracker', 'hcpv.module.area'): 
-			('hcpv.cost.modulearray.area'),
-		(): 
-			('system_use_recapitalization'),
-		('array_num_trackers', 'array_modules_per_tracker'): 
-			('hcpv.cost.module.num_units'),
-		('hcpv.cost.contingency_percent', 'hcpv.cost.module.totalcost', 'hcpv.cost.inverter.totalcost', 'hcpv.cost.tracker.totalcost', 'hcpv.cost.bos_equip.totalcost', 'hcpv.cost.install_labor.totalcost', 'hcpv.cost.install_margin.totalcost'): 
-			('hcpv.cost.contingency'),
-		('hcpv.cost.permitting.total', 'hcpv.cost.engr.total', 'hcpv.cost.grid.total', 'hcpv.cost.land.total', 'hcpv.cost.landprep.total', 'hcpv.cost.sales_tax.total'): 
-			('total_indirect_cost'),
-		('hcpv.cost.module.costunits', 'hcpv.cost.module.num_units', 'hcpv.cost.module.power', 'hcpv.cost.per_module'): 
-			('hcpv.cost.module.totalcost')	},
-	'Linear Fresnel Solar Field': {
-		('csp.lf.sf.geom1_area_frac', 'csp.lf.geom1.rec_optical_derate', 'csp.lf.geom1.coll_opt_loss_norm_inc', 'csp.lf.sf.geom2_area_frac', 'csp.lf.geom2.rec_optical_derate', 'csp.lf.geom2.coll_opt_loss_norm_inc'): 
-			('csp.lf.sf.dp.loop_opt_eff'),
-		('csp.lf.sf.dp.loop_opt_eff', 'csp.lf.sf.dp.loop_therm_eff', 'csp.lf.sf.dp.piping_therm_eff'): 
-			('csp.lf.sf.dp.total_loop_conv_eff'),
-		('lat'): 
-			('latitude'),
-		('csp.lf.sf.dp.sm1_aperture', 'csp.lf.sf.dp.loop_aperture'): 
-			('csp.lf.sf.dp.sm1_numloops'),
-		('csp.lf.sf.dp.actual_aper'): 
-			('csp.lf.sf.field_area'),
-		('demand_var', 'eta_ref', 'I_bn_des', 'csp.lf.sf.dp.total_loop_conv_eff'): 
-			('csp.lf.sf.dp.sm1_aperture'),
-		('csp.lf.sf.sh_geom_unique', 'nModSH', 'csp.lf.geom2.refl_aper_area', 'nModBoil', 'csp.lf.geom1.refl_aper_area'): 
-			('csp.lf.sf.geom2_area_frac'),
-		('csp.lf.sf.sh_geom_unique', 'nModBoil', 'csp.lf.geom1.refl_aper_area', 'nModSH', 'csp.lf.geom2.refl_aper_area'): 
-			('csp.lf.sf.geom1_area_frac'),
-		('Pipe_hl_coef', 'T_cold_ref', 'T_hot', 'T_amb_des_sf', 'I_bn_des'): 
-			('csp.lf.sf.dp.piping_therm_eff'),
-		('csp.lf.sf.dp.actual_aper', 'I_bn_des', 'csp.lf.sf.dp.total_loop_conv_eff'): 
-			('q_max_aux'),
-		('csp.lf.sf.sh_geom_unique', 'nModBoil', 'nModSH', 'csp.lf.geom1.refl_aper_area', 'csp.lf.geom2.refl_aper_area'): 
-			('csp.lf.sf.dp.loop_aperture'),
-		('csp.lf.sf.field_area', 'csp.lf.sf.area_multiplier'): 
-			('csp.lf.sf.total_land_area'),
-		('csp.lf.sf.sm_or_area', 'csp.lf.sf.specified_solar_multiple', 'csp.lf.sf.dp.sm1_aperture', 'csp.lf.sf.specified_total_aperture', 'csp.lf.sf.dp.loop_aperture'): 
-			('nLoops'),
-		('ColAz'): 
-			('azimuth'),
-		('csp.lf.sf.dp.loop_aperture', 'nLoops'): 
-			('csp.lf.sf.dp.actual_aper'),
-		('fP_hdr_c', 'fP_sf_boil', 'fP_boil_to_sh', 'fP_sf_sh', 'fP_hdr_h', 'P_turb_des'): 
-			('csp.lf.sf.total_pres_drop'),
-		('csp.lf.sf.sm_or_area', 'csp.lf.sf.specified_solar_multiple', 'csp.lf.sf.dp.actual_aper', 'csp.lf.sf.dp.sm1_aperture'): 
-			('solarm'),
-		('csp.lf.geom1.rec_thermal_derate', 'csp.lf.sf.geom1_area_frac', 'csp.lf.geom2.rec_thermal_derate', 'csp.lf.sf.geom2_area_frac'): 
-			('csp.lf.sf.dp.loop_therm_eff'),
-		('P_boil_des'): 
-			('P_turb_des')	},
-	'Inverter Datasheet': {
-		('inv_ds_paco', 'inv_ds_eff'): 
-			('inv_ds_pdco'),
-		('inv_ds_eff_type', 'inv_ds_paco'): 
-			('inv_ds_pso_suggested'),
-		('inv_ds_eff_type', 'inv_ds_eff_weighted', 'inv_ds_eff_peak_or_nom'): 
-			('inv_ds_eff'),
-		('inv_ds_paco'): 
-			('inv_ds_pnt_suggested')	},
-	'MSPT System Design': {
-		('tshours', 'solarm'): 
-			('tshours_sf'),
-		('solarm', 'q_pb_design'): 
-			('Q_rec_des'),
-		('P_ref', 'design_eff'): 
-			('q_pb_design'),
-		('P_ref', 'gross_net_conversion_factor'): 
-			('nameplate')	},
-	'Molten Salt Linear Fresnel Solar Field': {
-		('fthrok'): 
-			('fthr_ok'),
-		(): 
-			('nodes'),
-		(): 
-			('tc_void'),
-		(): 
-			('tc_fill'),
-		(): 
-			('tes_type'),
-		(): 
-			('t_ch_out_max'),
-		(): 
-			('fc_on'),
-		(): 
-			('f_tc_cold'),
-		('sm1_aperture', 'a_loop'): 
-			('csp.mslf.sf.sm1_nLoops'),
-		('sf_q_design', 'I_bn_des', 'loop_eff'): 
-			('sm1_aperture'),
-		('csp.mslf.sf.sm_or_area', 'solar_mult_spec', 'sm1_aperture', 'a_field', 'a_loop'): 
-			('nLoops'),
-		('P_ref', 'eta_ref'): 
-			('sf_q_design'),
-		('a_loop', 'nLoops'): 
-			('a_sf_act'),
-		('csp.mslf.sf.sm_or_area', 'solar_mult_spec', 'a_sf_act', 'sm1_aperture'): 
-			('solar_mult'),
-		('csp.mslf.sf.Fluid'): 
-			('Fluid'),
-		('a_sf_act', 'I_bn_des', 'loop_eff'): 
-			('field_thermal_output'),
-		('csp.mslf.sf.Fluid'): 
-			('htf_max_opt_temp'),
-		('a_sf_act'): 
-			('field_area'),
-		('csp.mslf.sf.Fluid'): 
-			('htf_min_opt_temp'),
-		('nMod'): 
-			('nSCA'),
-		('field_area', 'land_mult'): 
-			('total_land_area'),
-		('opt_derate', 'opt_normal'): 
-			('loop_opt_eff'),
-		('loop_opt_eff', 'hl_derate'): 
-			('loop_eff'),
-		('hl_derate'): 
-			('loop_therm_eff'),
-		('csp.mslf.sf.FieldConfig'): 
-			('FieldConfig'),
-		('T_loop_out'): 
-			('T_field_out_des'),
-		('csp.mslf.sf.fthrctrl'): 
-			('fthrctrl'),
-		('nMod', 'A_aperture'): 
-			('a_loop'),
-		(): 
-			('t_dis_out_min'),
-		('csp.mslf.sf.Fluid', 'Fluid', 'T_loop_in_des', 'T_loop_out', 'field_fl_props'): 
-			('field_htf_cp_avg'),
-		('solar_mult'): 
-			('solarm'),
-		('HTF_data'): 
-			('field_fl_props'),
-		('Fluid'): 
-			('field_fluid')	},
-	'Linear Fresnel Collector and Receiver Header': {
-		('csp.lf.geom2.solpos_collinc_table'): 
-			('sh_OpticalTable'),
-		('csp.lf.geom1.solpos_collinc_table'): 
-			('b_OpticalTable'),
-		('csp.lf.geom2.var4.abs_emis'): 
-			('sh_eps_HCE4'),
-		('csp.lf.geom2.var3.abs_emis'): 
-			('sh_eps_HCE3'),
-		('csp.lf.geom2.var2.abs_emis'): 
-			('sh_eps_HCE2'),
-		('csp.lf.geom2.var1.abs_emis'): 
-			('sh_eps_HCE1'),
-		('csp.lf.geom1.var4.abs_emis'): 
-			('b_eps_HCE4'),
-		('csp.lf.geom1.glazing_intact', 'csp.lf.geom2.glazing_intact'): 
-			('GlazingIntactIn'),
-		('csp.lf.geom1.var1.abs_emis'): 
-			('b_eps_HCE1'),
-		('csp.lf.geom1.var1.annulus_pressure', 'csp.lf.geom1.var2.annulus_pressure', 'csp.lf.geom1.var3.annulus_pressure', 'csp.lf.geom1.var4.annulus_pressure', 'csp.lf.geom2.var1.annulus_pressure', 'csp.lf.geom2.var2.annulus_pressure', 'csp.lf.geom2.var3.annulus_pressure', 'csp.lf.geom2.var4.annulus_pressure'): 
-			('P_a'),
-		('csp.lf.geom1.annulus_gas', 'csp.lf.geom2.annulus_gas'): 
-			('AnnulusGas'),
-		('csp.lf.geom1.var1.env_trans', 'csp.lf.geom1.var2.env_trans', 'csp.lf.geom1.var3.env_trans', 'csp.lf.geom1.var4.env_trans', 'csp.lf.geom2.var1.env_trans', 'csp.lf.geom2.var2.env_trans', 'csp.lf.geom2.var3.env_trans', 'csp.lf.geom2.var4.env_trans'): 
-			('Tau_envelope'),
-		('csp.lf.geom1.var3.abs_emis'): 
-			('b_eps_HCE3'),
-		('csp.lf.geom1.iamt0', 'csp.lf.geom1.iamt1', 'csp.lf.geom1.iamt2', 'csp.lf.geom1.iamt3', 'csp.lf.geom1.iamt4', 'csp.lf.geom2.iamt0', 'csp.lf.geom2.iamt1', 'csp.lf.geom2.iamt2', 'csp.lf.geom2.iamt3', 'csp.lf.geom2.iamt4'): 
-			('IAM_T'),
-		('csp.lf.geom1.var1.env_emis', 'csp.lf.geom1.var2.env_emis', 'csp.lf.geom1.var3.env_emis', 'csp.lf.geom1.var4.env_emis', 'csp.lf.geom2.var1.env_emis', 'csp.lf.geom2.var2.env_emis', 'csp.lf.geom2.var3.env_emis', 'csp.lf.geom2.var4.env_emis'): 
-			('EPSILON_4'),
-		('csp.lf.geom1.var1.env_abs', 'csp.lf.geom1.var2.env_abs', 'csp.lf.geom1.var3.env_abs', 'csp.lf.geom1.var4.env_abs', 'csp.lf.geom2.var1.env_abs', 'csp.lf.geom2.var2.env_abs', 'csp.lf.geom2.var3.env_abs', 'csp.lf.geom2.var4.env_abs'): 
-			('alpha_env'),
-		('csp.lf.geom1.var2.abs_emis'): 
-			('b_eps_HCE2'),
-		('csp.lf.geom1.var1.hce_dirt', 'csp.lf.geom1.var2.hce_dirt', 'csp.lf.geom1.var3.hce_dirt', 'csp.lf.geom1.var4.hce_dirt', 'csp.lf.geom2.var1.hce_dirt', 'csp.lf.geom2.var2.hce_dirt', 'csp.lf.geom2.var3.hce_dirt', 'csp.lf.geom2.var4.hce_dirt'): 
-			('Dirt_HCE'),
-		('csp.lf.geom1.iaml0', 'csp.lf.geom1.iaml1', 'csp.lf.geom1.iaml2', 'csp.lf.geom1.iaml3', 'csp.lf.geom1.iaml4', 'csp.lf.geom2.iaml0', 'csp.lf.geom2.iaml1', 'csp.lf.geom2.iaml2', 'csp.lf.geom2.iaml3', 'csp.lf.geom2.iaml4'): 
-			('IAM_L'),
-		('csp.lf.geom1.hlpolyw0', 'csp.lf.geom1.hlpolyw1', 'csp.lf.geom1.hlpolyw2', 'csp.lf.geom1.hlpolyw3', 'csp.lf.geom1.hlpolyw4', 'csp.lf.geom2.hlpolyw0', 'csp.lf.geom2.hlpolyw1', 'csp.lf.geom2.hlpolyw2', 'csp.lf.geom2.hlpolyw3', 'csp.lf.geom2.hlpolyw4'): 
-			('HL_W'),
-		('csp.lf.geom1.var1.abs_abs', 'csp.lf.geom1.var2.abs_abs', 'csp.lf.geom1.var3.abs_abs', 'csp.lf.geom1.var4.abs_abs', 'csp.lf.geom2.var1.abs_abs', 'csp.lf.geom2.var2.abs_abs', 'csp.lf.geom2.var3.abs_abs', 'csp.lf.geom2.var4.abs_abs'): 
-			('alpha_abs'),
-		('csp.lf.geom1.var1.bellows_shadowing', 'csp.lf.geom1.var2.bellows_shadowing', 'csp.lf.geom1.var3.bellows_shadowing', 'csp.lf.geom1.var4.bellows_shadowing', 'csp.lf.geom2.var1.bellows_shadowing', 'csp.lf.geom2.var2.bellows_shadowing', 'csp.lf.geom2.var3.bellows_shadowing', 'csp.lf.geom2.var4.bellows_shadowing'): 
-			('Shadowing'),
-		('csp.lf.geom1.hlpolyt0', 'csp.lf.geom1.hlpolyt1', 'csp.lf.geom1.hlpolyt2', 'csp.lf.geom1.hlpolyt3', 'csp.lf.geom1.hlpolyt4', 'csp.lf.geom2.hlpolyt0', 'csp.lf.geom2.hlpolyt1', 'csp.lf.geom2.hlpolyt2', 'csp.lf.geom2.hlpolyt3', 'csp.lf.geom2.hlpolyt4'): 
-			('HL_dT'),
-		('csp.lf.geom1.var1.rated_heat_loss', 'csp.lf.geom1.var2.rated_heat_loss', 'csp.lf.geom1.var3.rated_heat_loss', 'csp.lf.geom1.var4.rated_heat_loss', 'csp.lf.geom2.var1.rated_heat_loss', 'csp.lf.geom2.var2.rated_heat_loss', 'csp.lf.geom2.var3.rated_heat_loss', 'csp.lf.geom2.var4.rated_heat_loss'): 
-			('Design_loss'),
-		('csp.lf.geom1.var1.field_fraction', 'csp.lf.geom1.var2.field_fraction', 'csp.lf.geom1.var3.field_fraction', 'csp.lf.geom1.var4.field_fraction', 'csp.lf.geom2.var1.field_fraction', 'csp.lf.geom2.var2.field_fraction', 'csp.lf.geom2.var3.field_fraction', 'csp.lf.geom2.var4.field_fraction'): 
-			('HCE_FieldFrac'),
-		('csp.lf.geom1.refl_aper_area', 'csp.lf.geom2.refl_aper_area', 'csp.lf.geom1.coll_length', 'csp.lf.geom2.coll_length', 'csp.lf.geom1.opt_mode', 'csp.lf.geom2.opt_mode', 'csp.lf.geom1.track_error', 'csp.lf.geom2.track_error', 'csp.lf.geom1.geom_error', 'csp.lf.geom2.geom_error', 'csp.lf.geom1.mirror_refl', 'csp.lf.geom2.mirror_refl', 'csp.lf.geom1.soiling', 'csp.lf.geom2.soiling', 'csp.lf.geom1.general_error', 'csp.lf.geom2.general_error', 'csp.lf.geom1.hl_mode', 'csp.lf.geom2.hl_mode', 'csp.lf.geom1.diam_absorber_inner', 'csp.lf.geom2.diam_absorber_inner', 'csp.lf.geom1.diam_absorber_outer', 'csp.lf.geom2.diam_absorber_outer', 'csp.lf.geom1.diam_envelope_inner', 'csp.lf.geom2.diam_envelope_inner', 'csp.lf.geom1.diam_envelope_outer', 'csp.lf.geom2.diam_envelope_outer', 'csp.lf.geom1.diam_absorber_plug', 'csp.lf.geom2.diam_absorber_plug', 'csp.lf.geom1.inner_roughness', 'csp.lf.geom2.inner_roughness', 'csp.lf.geom1.flow_type', 'csp.lf.geom2.flow_type', 'csp.lf.geom1.absorber_material', 'csp.lf.geom2.absorber_material'): 
-			('A_aperture', 'L_col', 'OptCharType', 'TrackingError', 'GeomEffects', 'rho_mirror_clean', 'dirt_mirror', 'error', 'HLCharType', 'D_2', 'D_3', 'D_4', 'D_5', 'D_p', 'Rough', 'Flow_type', 'AbsorberMaterial')	}}
+    'Electric Building Load Calculator': {
+        ('load_1', 'load_2', 'load_3', 'load_4', 'load_5', 'load_6', 'load_7', 'load_8', 'load_9', 'load_10', 'load_11',
+         'load_12'):
+            ('Monthly_util', 'monthly_load'),
+        ('load_model'):
+            ('en_belpe'),
+        ('escal_input_belpe'):
+            ('escal_belpe')},
+    'Thermal Load': {
+        ('thermal_load_user_data', 'normalize_to_thermal_bill', 'thermal_bill_data', 'thermal_scale_factor'):
+            ('thermal_1', 'thermal_peak_1', 'thermal_2', 'thermal_peak_2', 'thermal_3', 'thermal_peak_3', 'thermal_4',
+             'thermal_peak_4', 'thermal_5', 'thermal_peak_5', 'thermal_6', 'thermal_peak_6', 'thermal_7',
+             'thermal_peak_7', 'thermal_8', 'thermal_peak_8', 'thermal_9', 'thermal_peak_9', 'thermal_10',
+             'thermal_peak_10', 'thermal_11', 'thermal_peak_11', 'thermal_12', 'thermal_peak_12', 'thermal_load',
+             'thermal_load_annual_total', 'thermal_annual_peak')},
+    'ISCC Parasitics': {
+        ():
+            ('bop_array'),
+        ('bop_par', 'bop_par_f', 'bop_par_0', 'bop_par_1', 'bop_par_2', 'W_dot_solar_des'):
+            ('csp.pt.par.calc.bop'),
+        ('pb_fixed_par', 'fossil_output', 'W_dot_solar_des'):
+            ('pb_fixed_par_mwe')},
+    'ISCC Receiver and Powerblock': {
+        ('ngcc_model', 'q_pb_design', 'pinch_point_coldside', 'pinch_point_hotside', 'elev', 'rec_htf',
+         'field_fl_props'):
+            ('W_dot_solar_des', 'T_htf_cold_des', 'fossil_output', 'max_solar_design', 'T_steam_sh_out_des'),
+        ():
+            ('ngcc_model'),
+        ('nameplate'):
+            ('system_capacity'),
+        ('T_steam_sh_out_des', 'pinch_point_hotside'):
+            ('T_htf_hot_des'),
+        ('W_dot_solar_des'):
+            ('nameplate')},
+    'PV Losses': {
+        ('subarray3_soiling'):
+            ('subarray3_soiling_annual_average'),
+        ('subarray2_soiling'):
+            ('subarray2_soiling_annual_average'),
+        ('subarray4_mismatch_loss', 'subarray4_diodeconn_loss', 'subarray4_dcwiring_loss', 'subarray4_tracking_loss',
+         'subarray4_nameplate_loss', 'dcoptimizer_loss'):
+            ('subarray4_dcloss'),
+        ('subarray1_soiling'):
+            ('subarray1_soiling_annual_average'),
+        ('subarray4_soiling'):
+            ('subarray4_soiling_annual_average'),
+        ('subarray3_mismatch_loss', 'subarray3_diodeconn_loss', 'subarray3_dcwiring_loss', 'subarray3_tracking_loss',
+         'subarray3_nameplate_loss', 'dcoptimizer_loss'):
+            ('subarray3_dcloss'),
+        ('subarray2_mismatch_loss', 'subarray2_diodeconn_loss', 'subarray2_dcwiring_loss', 'subarray2_tracking_loss',
+         'subarray2_nameplate_loss', 'dcoptimizer_loss'):
+            ('subarray2_dcloss'),
+        ('subarray1_mismatch_loss', 'subarray1_diodeconn_loss', 'subarray1_dcwiring_loss', 'subarray1_tracking_loss',
+         'subarray1_nameplate_loss', 'dcoptimizer_loss'):
+            ('subarray1_dcloss')},
+    'Inverter CEC Coefficient Generator': {
+        ('inv_cec_cg_vdco', 'inv_cec_cg_pdco', 'inv_cec_cg_psco', 'inv_cec_cg_paco', 'inv_cec_cg_c0', 'inv_cec_cg_c1',
+         'inv_cec_cg_c2', 'inv_cec_cg_c3'):
+            ('inv_cec_cg_eff_cec', 'inv_cec_cg_eff_euro')},
+    'CEC Performance Model with User Entered Specifications': {
+        ('6par_bvoc_units', '6par_bvoc_display', '6par_voc'):
+            ('6par_bvoc'),
+        ('6par_aisc_units', '6par_aisc_display', '6par_isc'):
+            ('6par_aisc'),
+        ('6par_vmp', '6par_imp'):
+            ('6par_pmp'),
+        ('6par_vmp', '6par_imp', '6par_area'):
+            ('6par_mpeff')},
+    'Simple Efficiency Module Model': {
+        (
+        'spe_reference', 'spe_eff0', 'spe_rad0', 'spe_eff1', 'spe_rad1', 'spe_eff2', 'spe_rad2', 'spe_eff3', 'spe_rad3',
+        'spe_eff4', 'spe_rad4', 'spe_area'):
+            ('spe_power')},
+    'Financial Debt Residential': {
+        ('real_discount_rate', 'inflation_rate', 'debt_fraction', 'federal_tax_rate', 'state_tax_rate', 'loan_rate'):
+            ('ui_wacc'),
+        ():
+            ('market'),
+        ('ui_net_capital_cost', 'debt_fraction'):
+            ('loan_amount'),
+        ('total_installed_cost', 'ibi_fed_amount', 'ibi_sta_amount', 'ibi_uti_amount', 'ibi_oth_amount',
+         'ibi_fed_percent', 'ibi_fed_percent_maxvalue', 'ibi_sta_percent', 'ibi_sta_percent_maxvalue',
+         'ibi_uti_percent', 'ibi_uti_percent_maxvalue', 'ibi_oth_percent', 'ibi_oth_percent_maxvalue',
+         'system_capacity', 'cbi_fed_amount', 'cbi_fed_maxvalue', 'cbi_sta_amount', 'cbi_sta_maxvalue',
+         'cbi_uti_amount', 'cbi_uti_maxvalue', 'cbi_oth_amount', 'cbi_oth_maxvalue'):
+            ('ui_net_capital_cost')},
+    'Phys Trough Solar Field': {
+        ('T_loop_out'):
+            ('SF_COPY_T_loop_out_des'),
+        ('specified_q_dot_rec_des'):
+            ('SF_COPY_specified_q_dot_rec_des'),
+        ('trough_loop_control'):
+            ('SCAInfoArray'),
+        ('fixed_land_area', 'non_solar_field_land_area_multiplier'):
+            ('total_land_area'),
+        ('q_pb_design', 'I_bn_des', 'total_loop_conversion_efficiency'):
+            ('total_required_aperture_for_SM1'),
+        ('nSCA', 'nLoops', 'SCA_drives_elec'):
+            ('total_tracking_power'),
+        ('total_aperture', 'Row_Distance', 'max_collector_width'):
+            ('fixed_land_area'),
+        ('combo_htf_type'):
+            ('Fluid'),
+        ('I_bn_des', 'total_loop_conversion_efficiency', 'total_aperture'):
+            ('field_thermal_output'),
+        (
+        'trough_loop_control', 'csp_dtr_sca_calc_sca_eff_1', 'csp_dtr_sca_calc_sca_eff_2', 'csp_dtr_sca_calc_sca_eff_3',
+        'csp_dtr_sca_calc_sca_eff_4', 'csp_dtr_sca_length_1', 'csp_dtr_sca_length_2', 'csp_dtr_sca_length_3',
+        'csp_dtr_sca_length_4', 'csp_dtr_hce_optical_eff_1', 'csp_dtr_hce_optical_eff_2', 'csp_dtr_hce_optical_eff_3',
+        'csp_dtr_hce_optical_eff_4'):
+            ('loop_optical_efficiency'),
+        ('total_required_aperture_for_SM1', 'single_loop_aperature'):
+            ('required_number_of_loops_for_SM1'),
+        ('m_dot_htfmax', 'fluid_dens_outlet_temp', 'min_inner_diameter'):
+            ('max_field_flow_velocity'),
+        ('trough_loop_control'):
+            ('SCADefocusArray'),
+        ('T_loop_in_des'):
+            ('SF_COPY_T_loop_in_des'),
+        ('single_loop_aperature', 'nLoops'):
+            ('total_aperture'),
+        ('trough_loop_control', 'csp_dtr_hce_diam_absorber_inner_1', 'csp_dtr_hce_diam_absorber_inner_2',
+         'csp_dtr_hce_diam_absorber_inner_3', 'csp_dtr_hce_diam_absorber_inner_4'):
+            ('min_inner_diameter'),
+        ('I_bn_des'):
+            ('SF_COPY_I_bn_des'),
+        ('m_dot_htfmin', 'fluid_dens_inlet_temp', 'min_inner_diameter'):
+            ('min_field_flow_velocity'),
+        ('combo_FieldConfig'):
+            ('FieldConfig'),
+        ('specified_solar_multiple', 'total_required_aperture_for_SM1', 'single_loop_aperature'):
+            ('nLoops'),
+        ('trough_loop_control', 'I_bn_des', 'csp_dtr_hce_design_heat_loss_1', 'csp_dtr_hce_design_heat_loss_2',
+         'csp_dtr_hce_design_heat_loss_3', 'csp_dtr_hce_design_heat_loss_4', 'csp_dtr_sca_length_1',
+         'csp_dtr_sca_length_2', 'csp_dtr_sca_length_3', 'csp_dtr_sca_length_4', 'csp_dtr_sca_aperture_1',
+         'csp_dtr_sca_aperture_2', 'csp_dtr_sca_aperture_3', 'csp_dtr_sca_aperture_4'):
+            ('cspdtr_loop_hce_heat_loss'),
+        ('trough_loop_control', 'csp_dtr_sca_aperture_1', 'csp_dtr_sca_aperture_2', 'csp_dtr_sca_aperture_3',
+         'csp_dtr_sca_aperture_4'):
+            ('single_loop_aperature'),
+        ('specified_solar_multiple'):
+            ('SF_COPY_specified_solar_multiple'),
+        ('combo_htf_type', 'Fluid', 'T_loop_in_des', 'T_loop_out', 'field_fl_props'):
+            ('field_htf_cp_avg'),
+        ('field_thermal_output', 'q_pb_design'):
+            ('solar_mult'),
+        ('loop_optical_efficiency', 'cspdtr_loop_hce_heat_loss'):
+            ('total_loop_conversion_efficiency'),
+        ():
+            ('defocus')},
+    'Phys Trough System Design': {
+        ('field_thermal_output'):
+            ('SD_COPY_field_thermal_output'),
+        ('solar_mult'):
+            ('SD_COPY_solar_mult'),
+        ('specified_solar_multiple', 'q_pb_design'):
+            ('specified_q_dot_rec_des'),
+        ('nLoops'):
+            ('SD_COPY_nLoops'),
+        ('total_aperture'):
+            ('SD_COPY_total_aperture'),
+        ('specified_q_dot_rec_des'):
+            ('system_capacity')},
+    'Financial Analysis Host Developer Parameters': {
+        ('host_real_discount_rate', 'inflation_rate'):
+            ('host_nominal_discount_rate'),
+        ('real_discount_rate', 'inflation_rate'):
+            ('nominal_discount_rate')},
+    'PV Capital Costs': {
+        ('battery_energy', 'battery_per_kWh', 'battery_power', 'battery_per_kW'):
+            ('battery_total'),
+        ('en_batt', 'batt_power_discharge_max', 'batt_simple_enable', 'batt_simple_kw'):
+            ('battery_power'),
+        ('system_use_lifetime_output'):
+            ('system_use_recapitalization'),
+        ('module_total', 'inverter_total', 'battery_total', 'bos_equip_total', 'install_labor_total',
+         'install_margin_total'):
+            ('subtotal_direct'),
+        ('total_installed_cost', 'modulearray_power'):
+            ('installed_per_capacity'),
+        ('inverter_costunits', 'inverter_num_units', 'inverter_power', 'module_num_units', 'module_power',
+         'per_inverter'):
+            ('inverter_total'),
+        ('bos_equip_fixed', 'modulearray_power', 'bos_equip_perwatt', 'modulearray_area', 'bos_equip_perarea'):
+            ('bos_equip_total'),
+        ('grid_percent', 'total_direct_cost', 'modulearray_power', 'grid_per_watt', 'grid_fixed'):
+            ('grid_total'),
+        ('install_labor_fixed', 'modulearray_power', 'install_labor_perwatt', 'modulearray_area',
+         'install_labor_perarea'):
+            ('install_labor_total'),
+        ('total_land_area'):
+            ('modulearray_area'),
+        ('inverter_power', 'inverter_num_units'):
+            ('inverterarray_power'),
+        ('inverter_count'):
+            ('inverter_num_units'),
+        ('landprep_per_acre', 'land_area_value', 'landprep_percent', 'total_direct_cost', 'modulearray_power',
+         'landprep_per_watt', 'landprep_fixed'):
+            ('landprep_total'),
+        ('total_modules'):
+            ('module_num_units'),
+        ('sales_tax_value', 'total_direct_cost', 'sales_tax_percent'):
+            ('sales_tax_total'),
+        ('land_per_acre', 'land_area_value', 'land_percent', 'total_direct_cost', 'modulearray_power', 'land_per_watt',
+         'land_fixed'):
+            ('land_total'),
+        ('permitting_total', 'engr_total', 'grid_total', 'land_total', 'landprep_total', 'sales_tax_total'):
+            ('total_indirect_cost'),
+        ('module_power', 'module_num_units'):
+            ('modulearray_power'),
+        ('install_margin_fixed', 'modulearray_power', 'install_margin_perwatt', 'modulearray_area',
+         'install_margin_perarea'):
+            ('install_margin_total'),
+        ('permitting_percent', 'total_direct_cost', 'modulearray_power', 'permitting_per_watt', 'permitting_fixed'):
+            ('permitting_total'),
+        ('system_capacity', 'dc_ac_ratio', 'inverter_model', 'inv_snl_paco', 'inv_ds_paco', 'inv_pd_paco',
+         'inv_cec_cg_paco'):
+            ('inverter_power'),
+        ('module_total', 'inverter_total', 'battery_total', 'bos_equip_total', 'install_labor_total',
+         'install_margin_total', 'contingency'):
+            ('total_direct_cost'),
+        ('contingency_percent', 'module_total', 'inverter_total', 'bos_equip_total', 'install_labor_total',
+         'install_margin_total', 'battery_total'):
+            ('contingency'),
+        ('en_batt', 'batt_computed_bank_capacity', 'batt_simple_enable', 'batt_simple_kwh'):
+            ('battery_energy'),
+        ('sales_tax_rate'):
+            ('sales_tax_value'),
+        ('system_capacity', 'module_model', 'spe_power', 'cec_p_mp_ref', '6par_pmp', 'snl_ref_pmp', 'sd11par_Pmp0'):
+            ('module_power'),
+        ('module_costunits', 'module_num_units', 'module_power', 'per_module'):
+            ('module_total'),
+        ('total_land_area'):
+            ('land_area_value'),
+        ('total_direct_cost', 'total_indirect_cost'):
+            ('total_installed_cost'),
+        ('engr_percent', 'total_direct_cost', 'modulearray_power', 'engr_per_watt', 'engr_fixed'):
+            ('engr_total')},
+    'Thermal Rate': {
+        ('thermal_buy_rate_option', 'thermal_buy_rate_flat', 'thermal_timestep_buy_rate', 'thermal_sell_rate_option',
+         'thermal_sell_rate_flat', 'thermal_timestep_sell_rate'):
+            ('thermal_buy_rate', 'thermal_sell_rate')},
+    'Fuel Cell O and M Costs': {
+        ('batt_computed_bank_capacity'):
+            ('om_capacity1_nameplate'),
+        ():
+            ('add_om_num_types'),
+        ('fuelcell_power_nameplate'):
+            ('om_capacity2_nameplate'),
+        ('fc_fuel_cost', 'om_fuel_price_units'):
+            ('om_fuel_cost')},
+    'Fuel Cell Costs': {
+        ('fuelcell_power_total', 'fuelcell_per_kW'):
+            ('fuelcell_total'),
+        ('battery_energy', 'battery_per_kWh', 'battery_power', 'battery_per_kW'):
+            ('battery_total'),
+        ('en_batt', 'batt_power_discharge_max', 'batt_simple_enable', 'batt_simple_kw'):
+            ('battery_power'),
+        ('system_use_lifetime_output'):
+            ('system_use_recapitalization'),
+        ('module_total', 'inverter_total', 'battery_total', 'fuelcell_total', 'bos_equip_total', 'install_labor_total',
+         'install_margin_total'):
+            ('subtotal_direct'),
+        ('total_installed_cost', 'modulearray_power'):
+            ('installed_per_capacity'),
+        ('inverter_costunits', 'inverter_num_units', 'inverter_power', 'module_num_units', 'module_power',
+         'per_inverter'):
+            ('inverter_total'),
+        ('bos_equip_fixed', 'modulearray_power', 'bos_equip_perwatt', 'battery_power', 'bos_equip_battperkw',
+         'fuelcell_power_nameplate', 'bos_equip_fcperkw', 'modulearray_area', 'bos_equip_perarea'):
+            ('bos_equip_total'),
+        ('grid_percent', 'total_direct_cost', 'modulearray_power', 'grid_per_watt', 'battery_power', 'grid_per_battkw',
+         'fuelcell_power_nameplate', 'grid_per_fckw', 'grid_fixed'):
+            ('grid_total'),
+        (
+        'install_labor_fixed', 'modulearray_power', 'install_labor_perwatt', 'battery_power', 'install_labor_battperkw',
+        'fuelcell_power_nameplate', 'install_labor_fcperkw', 'modulearray_area', 'install_labor_perarea'):
+            ('install_labor_total'),
+        ('total_land_area'):
+            ('modulearray_area'),
+        ('inverter_power', 'inverter_num_units'):
+            ('inverterarray_power'),
+        ('inverter_count'):
+            ('inverter_num_units'),
+        ('landprep_per_acre', 'land_area_value', 'landprep_percent', 'total_direct_cost', 'modulearray_power',
+         'landprep_per_watt', 'battery_power', 'landprep_per_battkw', 'fuelcell_power_nameplate', 'landprep_per_fckw',
+         'landprep_fixed'):
+            ('landprep_total'),
+        ('total_modules'):
+            ('module_num_units'),
+        ('sales_tax_value', 'total_direct_cost', 'sales_tax_percent'):
+            ('sales_tax_total'),
+        ('land_per_acre', 'land_area_value', 'land_percent', 'total_direct_cost', 'modulearray_power', 'land_per_watt',
+         'battery_power', 'land_per_battkw', 'fuelcell_power_nameplate', 'land_per_fckw', 'land_fixed'):
+            ('land_total'),
+        ('permitting_total', 'engr_total', 'grid_total', 'land_total', 'landprep_total', 'sales_tax_total'):
+            ('total_indirect_cost'),
+        ('module_power', 'module_num_units'):
+            ('modulearray_power'),
+        ('install_margin_fixed', 'modulearray_power', 'install_margin_perwatt', 'battery_power',
+         'install_margin_battperkw', 'fuelcell_power_nameplate', 'install_margin_fcperkw', 'modulearray_area',
+         'install_margin_perarea'):
+            ('install_margin_total'),
+        ('permitting_percent', 'total_direct_cost', 'modulearray_power', 'permitting_per_watt', 'battery_power',
+         'permitting_per_battkw', 'fuelcell_power_nameplate', 'permitting_per_fckw', 'permitting_fixed'):
+            ('permitting_total'),
+        ('system_capacity', 'dc_ac_ratio', 'inverter_model', 'inv_snl_paco', 'inv_ds_paco', 'inv_pd_paco',
+         'inv_cec_cg_paco'):
+            ('inverter_power'),
+        ('module_total', 'inverter_total', 'battery_total', 'fuelcell_total', 'bos_equip_total', 'install_labor_total',
+         'install_margin_total', 'contingency'):
+            ('total_direct_cost'),
+        ('contingency_percent', 'module_total', 'inverter_total', 'bos_equip_total', 'install_labor_total',
+         'install_margin_total'):
+            ('contingency'),
+        ('fuelcell_power_nameplate'):
+            ('fuelcell_power_total'),
+        ('en_batt', 'batt_computed_bank_capacity', 'batt_simple_enable', 'batt_simple_kwh'):
+            ('battery_energy'),
+        ('sales_tax_rate'):
+            ('sales_tax_value'),
+        ('system_capacity', 'module_model', 'spe_power', 'cec_p_mp_ref', '6par_pmp', 'snl_ref_pmp', 'sd11par_Pmp0'):
+            ('module_power'),
+        ('module_costunits', 'module_num_units', 'module_power', 'per_module'):
+            ('module_total'),
+        ('total_direct_cost', 'total_indirect_cost'):
+            ('total_installed_cost'),
+        ('engr_percent', 'total_direct_cost', 'modulearray_power', 'engr_per_watt', 'battery_power', 'engr_per_battkw',
+         'fuelcell_power_nameplate', 'engr_per_fckw', 'engr_fixed'):
+            ('engr_total')},
+    'Fuel Cell Dispatch Manual': {
+        ('dispatch_manual_fuelcelldischarge', 'fc_discharge_units_1', 'fc_discharge_units_2', 'fc_discharge_units_3',
+         'fc_discharge_units_4', 'fc_discharge_units_5', 'fc_discharge_units_6'):
+            ('dispatch_manual_units_fc_discharge'),
+        ('dispatch_manual_fuelcelldischarge', 'fc_discharge_percent_1', 'fc_discharge_percent_2',
+         'fc_discharge_percent_3', 'fc_discharge_percent_4', 'fc_discharge_percent_5', 'fc_discharge_percent_6'):
+            ('dispatch_manual_percent_fc_discharge'),
+        ('dispatch_manual_gridcharge', 'batt_gridcharge_percent_1', 'batt_gridcharge_percent_2',
+         'batt_gridcharge_percent_3', 'batt_gridcharge_percent_4', 'batt_gridcharge_percent_5',
+         'batt_gridcharge_percent_6'):
+            ('dispatch_manual_percent_gridcharge'),
+        ('fc.storage.p1.charge', 'fc.storage.p2.charge', 'fc.storage.p3.charge', 'fc.storage.p4.charge',
+         'fc.storage.p5.charge', 'fc.storage.p6.charge'):
+            ('dispatch_manual_fuelcellcharge'),
+        (
+        'dispatch_manual_discharge', 'batt_discharge_percent_1', 'batt_discharge_percent_2', 'batt_discharge_percent_3',
+        'batt_discharge_percent_4', 'batt_discharge_percent_5', 'batt_discharge_percent_6'):
+            ('dispatch_manual_percent_discharge'),
+        ('pv.storage.p1.gridcharge', 'pv.storage.p2.gridcharge', 'pv.storage.p3.gridcharge', 'pv.storage.p4.gridcharge',
+         'pv.storage.p5.gridcharge', 'pv.storage.p6.gridcharge'):
+            ('dispatch_manual_gridcharge'),
+        ('fc.p1.discharge', 'fc.p2.discharge', 'fc.p3.discharge', 'fc.p4.discharge', 'fc.p5.discharge',
+         'fc.p6.discharge'):
+            ('dispatch_manual_fuelcelldischarge'),
+        ('pv.storage.p1.discharge', 'pv.storage.p2.discharge', 'pv.storage.p3.discharge', 'pv.storage.p4.discharge',
+         'pv.storage.p5.discharge', 'pv.storage.p6.discharge'):
+            ('dispatch_manual_discharge'),
+        ('pv.storage.p1.charge', 'pv.storage.p2.charge', 'pv.storage.p3.charge', 'pv.storage.p4.charge',
+         'pv.storage.p5.charge', 'pv.storage.p6.charge'):
+            ('dispatch_manual_charge')},
+    'Fuel Cell Dispatch': {
+        ('fuelcell_dispatch_input', 'fuelcell_dispatch_input_units', 'fuelcell_unit_max_power'):
+            ('fuelcell_dispatch')},
+    'PVWatts': {
+        ('en_user_spec_losses', 'losses_user', 'loss_soiling', 'loss_shading', 'loss_snow', 'loss_mismatch',
+         'loss_wiring', 'loss_conn', 'loss_lid', 'loss_nameplate', 'loss_age', 'loss_avail'):
+            ('losses'),
+        ('system_capacity', 'dc_ac_ratio'):
+            ('ac_nameplate')},
+    'Solar Water Heating': {
+        ('draw', 'use_draw_scaling', 'daily_draw'):
+            ('scaled_draw', 'annual_draw'),
+        ('coll_mode', 'user_test_fluid', 'srcc_test_fluid'):
+            ('test_fluid'),
+        ('area_coll', 'ncoll', 'FRta', 'FRUL'):
+            ('system_capacity'),
+        ('coll_mode', 'user_FRUL', 'srcc_FRUL'):
+            ('FRUL'),
+        ('coll_mode', 'user_FRta', 'srcc_FRta'):
+            ('FRta'),
+        ('coll_mode', 'user_iam', 'srcc_iam'):
+            ('iam'),
+        ('coll_mode', 'user_area_coll', 'srcc_area'):
+            ('area_coll'),
+        ('coll_mode', 'user_test_flow', 'srcc_test_flow'):
+            ('test_flow'),
+        ('area_coll', 'ncoll'):
+            ('total_area')},
+    'Geothermal Power Block': {
+        ():
+            ('HTF'),
+        ():
+            ('degradation'),
+        ('analysis_period'):
+            ('geothermal_analysis_period'),
+        ('geopowerblock.pwrb.condenser_type'):
+            ('CT'),
+        ('design_temp'):
+            ('T_htf_hot_ref')},
+    'Geothermal Plant and Equipment': {
+        ('gross_output'):
+            ('system_capacity'),
+        ('nameplate', 'resource_type', 'resource_temp', 'resource_depth', 'geothermal_analysis_period', 'model_choice',
+         'analysis_type', 'num_wells', 'conversion_type', 'plant_efficiency_input', 'conversion_subtype',
+         'decline_type', 'temp_decline_rate', 'temp_decline_max', 'wet_bulb_temp', 'ambient_pressure', 'well_flow_rate',
+         'pump_efficiency', 'delta_pressure_equip', 'excess_pressure_pump', 'well_diameter', 'casing_size',
+         'inj_well_diam', 'design_temp', 'specify_pump_work', 'specified_pump_work_amount', 'rock_thermal_conductivity',
+         'rock_specific_heat', 'rock_density', 'reservoir_pressure_change_type', 'reservoir_pressure_change',
+         'reservoir_width', 'reservoir_height', 'reservoir_permeability', 'inj_prod_well_distance',
+         'subsurface_water_loss', 'fracture_aperature', 'fracture_width', 'num_fractures', 'fracture_angle',
+         'hr_pl_nlev'):
+            ('num_wells_getem', 'geotherm.plant_efficiency_used', 'gross_output', 'pump_depth', 'pump_work',
+             'pump_size_hp', 'geotherm.delta_pressure_reservoir', 'geotherm.avg_reservoir_temp',
+             'geotherm.bottom_hole_pressure'),
+        ('well_flow_rate', 'num_wells_getem'):
+            ('geotherm.total_flow_kg_per_s'),
+        ('geotherm.egs_design_temp_autoselect', 'resource_temp', 'geotherm.egs_design_temp_input'):
+            ('design_temp'),
+        ():
+            ('ui_calculations_only'),
+        ('gross_output', 'pump_work'):
+            ('geotherm.net_output'),
+        ('geotherm.total_flow_kg_per_s'):
+            ('geotherm.total_flow_gpm')},
+    'Geothermal Resource': {
+        ('geotherm.bottom_hole_pressure'):
+            ('geotherm.bottom_hole_pressureBar'),
+        ('geotherm.avg_reservoir_temp'):
+            ('geotherm.avg_reservoir_tempF'),
+        ('geotherm.delta_pressure_reservoir'):
+            ('geotherm.delta_pressure_reservoirBar')},
+    'LF DSG Solar Field': {
+        ('x_b_des'):
+            ('SF_COPY_x_b_des'),
+        ('P_turb_des'):
+            ('SF_COPY_P_turb_des'),
+        ('T_cold_ref'):
+            ('SF_COPY_T_cold_ref_des'),
+        ('csp.lf.sf.field_area', 'csp.lf.sf.area_multiplier'):
+            ('csp.lf.sf.total_land_area'),
+        ('I_bn_des'):
+            ('SF_COPY_I_bn_des'),
+        ('csp.lf.sf.dp.actual_aper'):
+            ('csp.lf.sf.field_area'),
+        ('csp.lf.geom1.rec_thermal_derate'):
+            ('csp.lf.sf.dp.loop_therm_eff'),
+        ('csp.lf.sf.dp.actual_aper', 'csp.lf.sf.dp.sm1_aperture'):
+            ('solarm'),
+        ('specified_solar_multiple', 'csp.lf.sf.dp.sm1_aperture', 'csp.lf.sf.dp.loop_aperture'):
+            ('nLoops'),
+        ('csp.lf.sf.dp.loop_aperture', 'nLoops'):
+            ('csp.lf.sf.dp.actual_aper'),
+        ('csp.lf.sf.dp.sm1_aperture', 'csp.lf.sf.dp.loop_aperture'):
+            ('csp.lf.sf.dp.sm1_numloops'),
+        ('csp.lf.sf.dp.actual_aper', 'I_bn_des', 'csp.lf.sf.dp.total_loop_conv_eff'):
+            ('field_thermal_output'),
+        ('specified_solar_multiple'):
+            ('SF_COPY_specified_solar_multiple'),
+        ('q_pb_des', 'I_bn_des', 'csp.lf.sf.dp.total_loop_conv_eff'):
+            ('csp.lf.sf.dp.sm1_aperture'),
+        ('fP_hdr_c', 'fP_sf_boil', 'fP_hdr_h', 'P_turb_des'):
+            ('csp.lf.sf.total_pres_drop'),
+        ('csp.lf.sf.dp.loop_opt_eff', 'csp.lf.sf.dp.loop_therm_eff'):
+            ('csp.lf.sf.dp.total_loop_conv_eff'),
+        ('specified_q_dot_rec_des'):
+            ('SF_COPY_specified_q_dot_rec_des'),
+        ('csp.lf.geom1.rec_optical_derate', 'csp.lf.geom1.coll_opt_loss_norm_inc'):
+            ('csp.lf.sf.dp.loop_opt_eff'),
+        ('nModBoil', 'csp.lf.geom1.refl_aper_area'):
+            ('csp.lf.sf.dp.loop_aperture')},
+    'LF DSG System Design': {
+        ():
+            ('T_hot '),
+        ('specified_q_dot_rec_des'):
+            ('system_capacity'),
+        ('specified_solar_multiple', 'q_pb_des'):
+            ('specified_q_dot_rec_des')},
+    'Physical Trough Parasitics': {
+        ('csp.dtr.par.bop_val', 'csp.dtr.par.bop_pf', 'csp.dtr.par.bop_c0', 'csp.dtr.par.bop_c1', 'csp.dtr.par.bop_c2'):
+            ('bop_array'),
+        ('pb_fixed_par', 'P_ref'):
+            ('csp.dtr.par.calc.frac_gross'),
+        ('csp.dtr.par.bop_val', 'csp.dtr.par.bop_pf', 'csp.dtr.par.bop_c0', 'csp.dtr.par.bop_c1', 'csp.dtr.par.bop_c2',
+         'P_ref'):
+            ('csp.dtr.par.calc.bop'),
+        ('csp.dtr.par.aux_val', 'csp.dtr.par.aux_pf', 'csp.dtr.par.aux_c0', 'csp.dtr.par.aux_c1', 'csp.dtr.par.aux_c2',
+         'P_ref'):
+            ('csp.dtr.par.calc.aux'),
+        ('nSCA', 'nLoops', 'SCA_drives_elec'):
+            ('csp.dtr.par.calc.tracking'),
+        ('csp.dtr.par.aux_val', 'csp.dtr.par.aux_pf', 'csp.dtr.par.aux_c0', 'csp.dtr.par.aux_c1', 'csp.dtr.par.aux_c2'):
+            ('aux_array')},
+    'Dish Reference Inputs': {
+        ('csp.ds.refc.coolfluid'):
+            ('test_cooling_fluid')},
+    'Generic CSP System Costs': {
+        ():
+            ('system_use_recapitalization'),
+        ():
+            ('system_use_lifetime_output'),
+        ('csp.gss.cost.solar_field.area', 'csp.gss.cost.solar_field.cost_per_m2'):
+            ('csp.gss.cost.solar_field'),
+        ('csp.gss.sf.field_area'):
+            ('csp.gss.cost.site_improvements.area'),
+        ('csp.gss.cost.storage.mwht', 'csp.gss.cost.storage.cost_per_kwht'):
+            ('csp.gss.cost.storage'),
+        ('csp.gss.tes.max_capacity'):
+            ('csp.gss.cost.storage.mwht'),
+        ('total_installed_cost', 'csp.gss.pwrb.nameplate'):
+            ('csp.gss.cost.installed_per_capacity'),
+        ('csp.gss.sf.field_area'):
+            ('csp.gss.cost.solar_field.area'),
+        ('csp.gss.cost.bop_mwe', 'csp.gss.cost.bop_per_kwe'):
+            ('csp.gss.cost.bop'),
+        ('csp.gss.cost.sales_tax.value', 'total_direct_cost', 'csp.gss.cost.sales_tax.percent'):
+            ('csp.gss.cost.sales_tax.total'),
+        ('csp.gss.cost.fossil_backup.mwe', 'csp.gss.cost.fossil_backup.cost_per_kwe'):
+            ('csp.gss.cost.fossil_backup'),
+        ('csp.gss.cost.contingency', 'csp.gss.cost.solar_field', 'csp.gss.cost.storage', 'csp.gss.cost.power_plant',
+         'csp.gss.cost.site_improvements', 'csp.gss.cost.fossil_backup', 'csp.gss.cost.bop'):
+            ('total_direct_cost'),
+        ('csp.gss.cost.site_improvements.area', 'csp.gss.cost.site_improvements.cost_per_m2'):
+            ('csp.gss.cost.site_improvements'),
+        ('csp.gss.cost.contingency_percent', 'csp.gss.cost.solar_field', 'csp.gss.cost.storage',
+         'csp.gss.cost.power_plant', 'csp.gss.cost.site_improvements', 'csp.gss.cost.fossil_backup',
+         'csp.gss.cost.bop'):
+            ('csp.gss.cost.contingency'),
+        ('csp.gss.cost.epc.per_acre', 'csp.gss.cost.total_land_area', 'csp.gss.cost.epc.percent', 'total_direct_cost',
+         'csp.gss.cost.nameplate', 'csp.gss.cost.epc.per_watt', 'csp.gss.cost.epc.fixed'):
+            ('csp.gss.cost.epc.total'),
+        ('w_des'):
+            ('csp.gss.cost.fossil_backup.mwe'),
+        ('w_des'):
+            ('csp.gss.cost.power_plant.mwe'),
+        ('csp.gss.solf.total_land_area'):
+            ('csp.gss.cost.total_land_area'),
+        ('w_des'):
+            ('csp.gss.cost.bop_mwe'),
+        ('total_direct_cost', 'total_indirect_cost'):
+            ('total_installed_cost'),
+        ('csp.gss.cost.power_plant.mwe', 'csp.gss.cost.power_plant.cost_per_kwe'):
+            ('csp.gss.cost.power_plant'),
+        ('sales_tax_rate'):
+            ('csp.gss.cost.sales_tax.value'),
+        ('csp.gss.cost.plm.per_acre', 'csp.gss.cost.total_land_area', 'csp.gss.cost.plm.percent', 'total_direct_cost',
+         'csp.gss.cost.nameplate', 'csp.gss.cost.plm.per_watt', 'csp.gss.cost.plm.fixed'):
+            ('csp.gss.cost.plm.total'),
+        ('csp.gss.cost.epc.total', 'csp.gss.cost.plm.total', 'csp.gss.cost.sales_tax.total'):
+            ('total_indirect_cost'),
+        ('csp.gss.pwrb.nameplate'):
+            ('csp.gss.cost.nameplate')},
+    'Linear Fresnel Superheater Geometry': {
+        ('csp.lf.geom2.var1.broken_glass', 'csp.lf.geom2.var2.broken_glass', 'csp.lf.geom2.var3.broken_glass',
+         'csp.lf.geom2.var4.broken_glass'):
+            ('csp.lf.geom2.glazing_intact'),
+        ('csp.lf.geom2.var1.gas_type', 'csp.lf.geom2.var2.gas_type', 'csp.lf.geom2.var3.gas_type',
+         'csp.lf.geom2.var4.gas_type'):
+            ('csp.lf.geom2.annulus_gas'),
+        ('csp.lf.geom2.heat_loss_at_design', 'I_bn_des', 'csp.lf.geom2.refl_aper_area', 'csp.lf.geom2.coll_length'):
+            ('csp.lf.geom2.rec_thermal_derate'),
+        ('csp.lf.geom2.hl_mode', 'csp.lf.geom2.var1.field_fraction', 'csp.lf.geom2.var1.bellows_shadowing',
+         'csp.lf.geom2.var1.hce_dirt', 'csp.lf.geom2.var2.field_fraction', 'csp.lf.geom2.var2.bellows_shadowing',
+         'csp.lf.geom2.var2.hce_dirt', 'csp.lf.geom2.var3.field_fraction', 'csp.lf.geom2.var3.bellows_shadowing',
+         'csp.lf.geom2.var3.hce_dirt', 'csp.lf.geom2.var4.field_fraction', 'csp.lf.geom2.var4.bellows_shadowing',
+         'csp.lf.geom2.var4.hce_dirt'):
+            ('csp.lf.geom2.rec_optical_derate'),
+        ('T_cold_ref', 'T_hot', 'T_amb_des_sf'):
+            ('csp.lf.geom2.avg_field_temp_dt_design'),
+        ('csp.lf.geom2.track_error', 'csp.lf.geom2.geom_error', 'csp.lf.geom2.mirror_refl', 'csp.lf.geom2.soiling',
+         'csp.lf.geom2.general_error'):
+            ('csp.lf.geom2.coll_opt_loss_norm_inc'),
+        ('csp.lf.geom2.hl_mode', 'csp.lf.geom2.hlpolyt0', 'csp.lf.geom2.hlpolyt1',
+         'csp.lf.geom2.avg_field_temp_dt_design', 'csp.lf.geom2.hlpolyt2', 'csp.lf.geom2.hlpolyt3',
+         'csp.lf.geom2.hlpolyt4', 'csp.lf.geom2.var1.field_fraction', 'csp.lf.geom2.var1.rated_heat_loss',
+         'csp.lf.geom2.var2.field_fraction', 'csp.lf.geom2.var2.rated_heat_loss', 'csp.lf.geom2.var3.field_fraction',
+         'csp.lf.geom2.var3.rated_heat_loss', 'csp.lf.geom2.var4.field_fraction', 'csp.lf.geom2.var4.rated_heat_loss'):
+            ('csp.lf.geom2.heat_loss_at_design')},
+    'Empirical Trough Capital Costs': {
+        ():
+            ('system_use_recapitalization'),
+        ('total_direct_cost', 'total_indirect_cost'):
+            ('total_installed_cost'),
+        ('sales_tax_rate', 'total_direct_cost', 'csp.tr.cost.sales_tax.percent'):
+            ('csp.tr.cost.sales_tax.total'),
+        ('Solar_Field_Area'):
+            ('csp.tr.cost.htf_system.area'),
+        ('calc_max_energy', 'csp.tr.cost.storage.cost_per_kwht'):
+            ('csp.tr.cost.storage'),
+        ('csp.tr.cost.epc.total', 'csp.tr.cost.plm.total', 'csp.tr.cost.sales_tax.total'):
+            ('total_indirect_cost'),
+        ('Solar_Field_Area', 'csp.tr.cost.solar_field.cost_per_m2'):
+            ('csp.tr.cost.solar_field'),
+        ('csp.tr.cost.plm.per_acre', 'csp.tr.cost.total_land_area', 'csp.tr.cost.plm.percent', 'total_direct_cost',
+         'system_capacity', 'csp.tr.cost.plm.per_watt', 'csp.tr.cost.plm.fixed'):
+            ('csp.tr.cost.plm.total'),
+        ('ui_net_capacity'):
+            ('csp.tr.cost.nameplate'),
+        ('ui_total_land_area'):
+            ('csp.tr.cost.total_land_area'),
+        ('sales_tax_rate'):
+            ('csp.tr.cost.sales_tax.value'),
+        ('csp.tr.cost.contingency_percent', 'csp.tr.cost.site_improvements', 'csp.tr.cost.solar_field',
+         'csp.tr.cost.htf_system', 'csp.tr.cost.storage', 'csp.tr.cost.fossil_backup', 'csp.tr.cost.power_plant',
+         'csp.tr.cost.bop'):
+            ('csp.tr.cost.contingency'),
+        ('TurbOutG', 'csp.tr.cost.bop_per_kwe'):
+            ('csp.tr.cost.bop'),
+        ('calc_max_energy'):
+            ('csp.tr.cost.storage.mwht'),
+        ('TurbOutG'):
+            ('csp.tr.cost.bop.mwe'),
+        ('TurbOutG', 'csp.tr.cost.fossil_backup.cost_per_kwe'):
+            ('csp.tr.cost.fossil_backup'),
+        ('csp.tr.cost.epc.per_acre', 'csp.tr.cost.total_land_area', 'csp.tr.cost.epc.percent', 'total_direct_cost',
+         'system_capacity', 'csp.tr.cost.epc.per_watt', 'csp.tr.cost.epc.fixed'):
+            ('csp.tr.cost.epc.total'),
+        ('TurbOutG', 'csp.tr.cost.power_plant.cost_per_kwe'):
+            ('csp.tr.cost.power_plant'),
+        ('TurbOutG'):
+            ('csp.tr.cost.power_plant.mwe'),
+        ('Solar_Field_Area', 'csp.tr.cost.htf_system.cost_per_m2'):
+            ('csp.tr.cost.htf_system'),
+        ('TurbOutG'):
+            ('csp.tr.cost.fossil_backup.mwe'),
+        ('Solar_Field_Area', 'csp.tr.cost.site_improvements.cost_per_m2'):
+            ('csp.tr.cost.site_improvements'),
+        ():
+            ('system_use_lifetime_output'),
+        ('Solar_Field_Area'):
+            ('csp.tr.cost.site_improvements.area'),
+        ('Solar_Field_Area'):
+            ('csp.tr.cost.solar_field.area'),
+        ('total_installed_cost', 'ui_net_capacity'):
+            ('csp.tr.cost.installed_per_capacity'),
+        (
+        'csp.tr.cost.contingency', 'csp.tr.cost.site_improvements', 'csp.tr.cost.solar_field', 'csp.tr.cost.htf_system',
+        'csp.tr.cost.storage', 'csp.tr.cost.fossil_backup', 'csp.tr.cost.power_plant', 'csp.tr.cost.bop'):
+            ('total_direct_cost')},
+    'Empirical Trough HCE': {
+        ('ui_hce_heat_losses_1', 'HCEFrac_1', 'ui_hce_heat_losses_2', 'HCEFrac_2', 'ui_hce_heat_losses_3', 'HCEFrac_3',
+         'ui_hce_heat_losses_4', 'HCEFrac_4'):
+            ('ui_hce_thermloss_weighted_m'),
+        ('PerfFac_2', 'HCEA0_2', 'HCEA5_2', 'ui_hce_hl_term_1', 'HCEA1_2', 'HCEA6_2', 'ui_hce_hl_term_2', 'HCEA2_2',
+         'HCEA4_2', 'ui_reference_direct_normal_irradiance', 'ui_hce_hl_term_3', 'HCEA3_2', 'ui_hce_hl_term_4'):
+            ('ui_hce_heat_losses_2'),
+        ('PerfFac_3', 'HCEA0_3', 'HCEA5_3', 'ui_hce_hl_term_1', 'HCEA1_3', 'HCEA6_3', 'ui_hce_hl_term_2', 'HCEA2_3',
+         'HCEA4_3', 'ui_reference_direct_normal_irradiance', 'ui_hce_hl_term_3', 'HCEA3_3', 'ui_hce_hl_term_4'):
+            ('ui_hce_heat_losses_3'),
+        ('ui_reference_wind_speed'):
+            ('ui_hce_hl_term_1'),
+        ('ui_hce_opt_eff_1', 'HCEFrac_1', 'ui_hce_opt_eff_2', 'HCEFrac_2', 'ui_hce_opt_eff_3', 'HCEFrac_3',
+         'ui_hce_opt_eff_4', 'HCEFrac_4'):
+            ('ui_hce_opt_eff_weighted'),
+        ('calc_hce_col_factor', 'ui_hce_broken_glass_1', 'ui_hce_HCEdust', 'HCEBelShad_1', 'HCEEnvTrans_1', 'HCEabs_1',
+         'HCEmisc_1'):
+            ('ui_hce_opt_eff_1'),
+        ('calc_hce_col_factor', 'ui_hce_broken_glass_4', 'ui_hce_HCEdust', 'HCEBelShad_4', 'HCEEnvTrans_4', 'HCEabs_4',
+         'HCEmisc_4'):
+            ('ui_hce_opt_eff_4'),
+        ('calc_hce_col_factor', 'ui_hce_broken_glass_3', 'ui_hce_HCEdust', 'HCEBelShad_3', 'HCEEnvTrans_3', 'HCEabs_3',
+         'HCEmisc_3'):
+            ('ui_hce_opt_eff_3'),
+        ('calc_hce_col_factor', 'ui_hce_broken_glass_2', 'ui_hce_HCEdust', 'HCEBelShad_2', 'HCEEnvTrans_2', 'HCEabs_2',
+         'HCEmisc_2'):
+            ('ui_hce_opt_eff_2'),
+        ('HCEA5_1', 'HCEA5_2', 'HCEA5_3', 'HCEA5_4'):
+            ('HCE_A5'),
+        ('SfOutTempD', 'SfInTempD'):
+            ('ui_hce_hl_term_4'),
+        ('HCEA4_1', 'HCEA4_2', 'HCEA4_3', 'HCEA4_4'):
+            ('HCE_A4'),
+        ('SfOutTempD', 'SfInTempD', 'ui_reference_ambient_temperature'):
+            ('ui_hce_hl_term_2'),
+        ('HCEA3_1', 'HCEA3_2', 'HCEA3_3', 'HCEA3_4'):
+            ('HCE_A3'),
+        ('ui_hce_thermloss_weighted_m', 'SCA_aper'):
+            ('ui_hce_thermloss_weighted_m2'),
+        ('HCEmisc_1', 'HCEmisc_2', 'HCEmisc_3', 'HCEmisc_4'):
+            ('HCEmisc'),
+        ('HCEA2_1', 'HCEA2_2', 'HCEA2_3', 'HCEA2_4'):
+            ('HCE_A2'),
+        ('SfOutTempD', 'SfInTempD'):
+            ('ui_hce_hl_term_3'),
+        ('PerfFac_4', 'HCEA0_4', 'HCEA5_4', 'ui_hce_hl_term_1', 'HCEA1_4', 'HCEA6_4', 'ui_hce_hl_term_2', 'HCEA2_4',
+         'HCEA4_4', 'ui_reference_direct_normal_irradiance', 'ui_hce_hl_term_3', 'HCEA3_4', 'ui_hce_hl_term_4'):
+            ('ui_hce_heat_losses_4'),
+        ('HCEA6_1', 'HCEA6_2', 'HCEA6_3', 'HCEA6_4'):
+            ('HCE_A6'),
+        ('PerfFac_1', 'PerfFac_2', 'PerfFac_3', 'PerfFac_4'):
+            ('PerfFac'),
+        ('HCEA1_1', 'HCEA1_2', 'HCEA1_3', 'HCEA1_4'):
+            ('HCE_A1'),
+        ('calc_col_factor'):
+            ('calc_hce_col_factor'),
+        ('HCEdust'):
+            ('ui_hce_HCEdust'),
+        ('HCEFrac_1', 'HCEFrac_2', 'HCEFrac_3', 'HCEFrac_4'):
+            ('HCEFrac'),
+        ('HCEA0_1', 'HCEA0_2', 'HCEA0_3', 'HCEA0_4'):
+            ('HCE_A0'),
+        ('HCEabs_1', 'HCEabs_2', 'HCEabs_3', 'HCEabs_4'):
+            ('HCEabs'),
+        ('HCEBelShad_1', 'HCEBelShad_2', 'HCEBelShad_3', 'HCEBelShad_4'):
+            ('HCEBelShad'),
+        ('PerfFac_1', 'HCEA0_1', 'HCEA5_1', 'ui_hce_hl_term_1', 'HCEA1_1', 'HCEA6_1', 'ui_hce_hl_term_2', 'HCEA2_1',
+         'HCEA4_1', 'ui_reference_direct_normal_irradiance', 'ui_hce_hl_term_3', 'HCEA3_1', 'ui_hce_hl_term_4'):
+            ('ui_hce_heat_losses_1'),
+        ('HCEEnvTrans_1', 'HCEEnvTrans_2', 'HCEEnvTrans_3', 'HCEEnvTrans_4'):
+            ('HCEEnvTrans')},
+    'Empirical Trough Power Block': {
+        ('ui_net_capacity'):
+            ('system_capacity'),
+        ('ui_q_design', 'E2TPLF0', 'E2TPLF1', 'MinGrOut', 'E2TPLF2', 'E2TPLF3', 'E2TPLF4'):
+            ('ui_min_therm_input'),
+        ('TurbOutG', 'ui_gross_net_conversion_factor'):
+            ('ui_net_capacity'),
+        ('TurbOutG', 'TurbEffG'):
+            ('ui_q_design'),
+        ('ui_q_design', 'E2TPLF0', 'E2TPLF1', 'MaxGrOut', 'E2TPLF2', 'E2TPLF3', 'E2TPLF4'):
+            ('ui_max_therm_input'),
+        ('MinGrOut'):
+            ('PTTMIN'),
+        ('MaxGrOut'):
+            ('PTTMAX')},
+    'Physical Trough Collector Type 2': {
+        ('csp_dtr_sca_ave_focal_len_2', 'csp_dtr_sca_calc_theta_2', 'csp_dtr_sca_piping_dist_2'):
+            ('csp_dtr_sca_calc_end_gain_2'),
+        ('lat'):
+            ('csp_dtr_sca_calc_latitude_2'),
+        ('csp_dtr_sca_ave_focal_len_2', 'csp_dtr_sca_calc_theta_2', 'nSCA', 'csp_dtr_sca_calc_end_gain_2',
+         'csp_dtr_sca_length_2', 'csp_dtr_sca_ncol_per_sca_2'):
+            ('csp_dtr_sca_calc_end_loss_2'),
+        ('csp_dtr_sca_length_2', 'csp_dtr_sca_ncol_per_sca_2'):
+            ('csp_dtr_sca_ap_length_2'),
+        ('csp_dtr_sca_calc_costh_2'):
+            ('csp_dtr_sca_calc_theta_2'),
+        ('lat'):
+            ('csp_dtr_sca_calc_zenith_2'),
+        ('IAMs_2', 'csp_dtr_sca_calc_theta_2', 'csp_dtr_sca_calc_costh_2'):
+            ('csp_dtr_sca_calc_iam_2'),
+        ('csp_dtr_sca_calc_zenith_2', 'tilt', 'azimuth'):
+            ('csp_dtr_sca_calc_costh_2'),
+        ('csp_dtr_sca_tracking_error_2', 'csp_dtr_sca_geometry_effects_2', 'csp_dtr_sca_clean_reflectivity_2',
+         'csp_dtr_sca_mirror_dirt_2', 'csp_dtr_sca_general_error_2'):
+            ('csp_dtr_sca_calc_sca_eff_2')},
+    'Empirical Trough Solar Field': {
+        ('ui_field_htf_type'):
+            ('HTFFluid'),
+        ('ui_field_layout_option', 'ui_solar_multiple', 'calc_aperture_area_at_sm_1', 'ui_solar_field_area'):
+            ('Solar_Field_Area'),
+        ('ui_field_layout_option', 'ui_solar_multiple', 'ui_solar_field_area', 'calc_aperture_area_at_sm_1'):
+            ('Solar_Field_Mult'),
+        ('ui_design_exact_num_scas_sm_1', 'ui_sca_aperture_area'):
+            ('calc_aperture_area_at_sm_1'),
+        ('ui_hce_opt_eff_weighted'):
+            ('ui_hce_weighted_optical_efficiency'),
+        ('Solar_Field_Mult', 'ui_design_exact_area_sm_1', 'Row_Distance', 'SCA_aper'):
+            ('ui_fixed_land_area'),
+        ('ui_field_htf_type'):
+            ('ui_field_htf_min_operating_temp'),
+        ('ui_design_exact_area_sm_1', 'ui_sca_aperture_area'):
+            ('ui_design_exact_num_scas_sm_1'),
+        ('ui_fixed_land_area', 'ui_land_multiplier'):
+            ('ui_total_land_area'),
+        ('ui_field_htf_type'):
+            ('ui_field_htf_max_operating_temp'),
+        ('SfInTempD', 'SfOutTempD', 'ui_reference_ambient_temperature'):
+            ('calc_field_htf_average_temp'),
+        ('ui_sca_aperture_area'):
+            ('ui_aperture_area_per_SCA'),
+        ('SfPipeHl3', 'calc_field_htf_average_temp', 'SfPipeHl2', 'SfPipeHl1', 'SfPipeHl300'):
+            ('ui_piping_heat_loss'),
+        ('ui_pb_q_design', 'ui_reference_direct_normal_irradiance', 'ui_hce_weighted_optical_efficiency',
+         'ui_hce_weighted_thermal_losses', 'ui_piping_heat_loss'):
+            ('ui_design_exact_area_sm_1'),
+        ('ui_q_design'):
+            ('ui_pb_q_design'),
+        ('ui_hce_thermloss_weighted_m2'):
+            ('ui_hce_weighted_thermal_losses'),
+        ():
+            ('i_SfTi')},
+    'Financial LCOE Calculator': {
+        ('ui_fcr_input_option', 'ui_fixed_charge_rate', 'c_inflation', 'c_equity_return', 'c_debt_percent',
+         'c_nominal_interest_rate', 'c_tax_rate', 'c_lifetime', 'c_depreciation_schedule', 'c_construction_cost',
+         'c_construction_interest'):
+            ('fixed_charge_rate', 'ui_wacc', 'ui_crf', 'ui_pfin', 'ui_cfin', 'ui_ireal'),
+        ('ui_variable_operating_cost'):
+            ('variable_operating_cost'),
+        ('ui_cost_input_option', 'ui_capital_cost_fixed', 'system_capacity', 'ui_capital_cost_capacity'):
+            ('capital_cost'),
+        ('ui_cost_input_option', 'ui_operating_cost_fixed', 'system_capacity', 'ui_operating_cost_capacity'):
+            ('fixed_operating_cost'),
+        ('system_capacity'):
+            ('ui_system_capacity')},
+    'Physical Trough Thermal Storage': {
+        ('vol_tank', 'h_tank', 'tank_pairs'):
+            ('csp.dtr.tes.tank_diameter'),
+        ('is_hx', 'dt_hot', 'dt_cold', 'T_loop_out', 'T_loop_in_des'):
+            ('csp.dtr.tes.hx_derate'),
+        ('vol_tank', 'h_tank_min', 'h_tank'):
+            ('csp.dtr.tes.min_fluid_volume'),
+        ('P_ref', 'eta_ref', 'tshours'):
+            ('csp.dtr.tes.thermal_capacity'),
+        ('h_tank_min', 'h_tank', 'vol_tank'):
+            ('V_tank_hot_ini'),
+        ('T_loop_in_des', 'T_loop_out'):
+            ('csp.dtr.tes.htf_calc_temp'),
+        ('combo_tes_htf_type'):
+            ('csp.dtr.tes.htf_max_opt_temp'),
+        ('h_tank', 'csp.dtr.tes.tank_diameter', 'tank_pairs', 'csp.dtr.tes.htf_calc_temp', 'u_tank'):
+            ('csp.dtr.tes.estimated_heat_loss'),
+        ('combo_tes_htf_type'):
+            ('csp.dtr.tes.htf_min_opt_temp'),
+        ('combo_tes_htf_type', 'store_fluid', 'csp.dtr.tes.htf_calc_temp', 'store_fl_props'):
+            ('csp.dtr.tes.fluid_dens'),
+        ('dt_hot'):
+            ('dt_cold'),
+        ('csp.dtr.tes.thermal_capacity', 'csp.dtr.tes.fluid_dens', 'csp.dtr.tes.fluid_sph', 'csp.dtr.tes.hx_derate',
+         'T_loop_out', 'dt_hot', 'T_loop_in_des', 'dt_cold'):
+            ('vol_tank'),
+        ('combo_tes_htf_type', 'store_fluid', 'csp.dtr.tes.htf_calc_temp', 'store_fl_props'):
+            ('csp.dtr.tes.fluid_sph'),
+        ('combo_tes_htf_type'):
+            ('store_fluid')},
+    'Physical Trough Power Block Common': {
+        ('q_pb_design'):
+            ('PB_COPY_q_pb_design'),
+        ('csp.dtr.pwrb.design_inlet_temp'):
+            ('PB_COPY_T_htf_hot_des'),
+        ('csp.dtr.pwrb.nameplate'):
+            ('system_capacity'),
+        ('T_loop_in_des'):
+            ('csp.dtr.pwrb.design_outlet_temp'),
+        ('PB_COPY_q_pb_design', 'PB_COPY_htf_cp_avg', 'PB_COPY_T_htf_hot_des', 'PB_COPY_T_htf_cold_des'):
+            ('PB_m_dot_htf_cycle_des'),
+        ('T_loop_out'):
+            ('csp.dtr.pwrb.design_inlet_temp'),
+        ('csp.dtr.pwrb.design_outlet_temp'):
+            ('PB_COPY_T_htf_cold_des'),
+        ('P_ref', 'csp.dtr.pwrb.gross_net_conversion_factor'):
+            ('csp.dtr.pwrb.nameplate'),
+        ('field_htf_cp_avg'):
+            ('PB_COPY_htf_cp_avg'),
+        ('P_ref', 'eta_ref'):
+            ('W_pb_design', 'q_pb_design', 'q_max_aux'),
+        ('comb_fossil_mode'):
+            ('fossil_mode')},
+    'Generic CSP Power Block': {
+        ('csp.gss.pwrb.nameplate'):
+            ('system_capacity'),
+        ('dni_par_f3', 'dni_par_f2', 'dni_par_f1', 'dni_par_f0'):
+            ('Wpar_prodD_coefs'),
+        ('csp.gss.pwrb.temp_eff_f4', 'csp.gss.pwrb.temp_eff_f3', 'csp.gss.pwrb.temp_eff_f2', 'csp.gss.pwrb.temp_eff_f1',
+         'csp.gss.pwrb.temp_eff_f0'):
+            ('etaT_coefs'),
+        ('csp.gss.pwrb.pl_eff_f4', 'csp.gss.pwrb.pl_eff_f3', 'csp.gss.pwrb.pl_eff_f2', 'csp.gss.pwrb.pl_eff_f1',
+         'csp.gss.pwrb.pl_eff_f0'):
+            ('etaQ_coefs'),
+        ('csp.gss.pwrb.temp_corr_mode'):
+            ('PC_T_corr'),
+        ('csp.gss.pwrb.gross_net_conversion_factor', 'w_des'):
+            ('csp.gss.pwrb.nameplate'),
+        (
+        'csp.gss.pwrb.temp_par_f3', 'csp.gss.pwrb.temp_par_f2', 'csp.gss.pwrb.temp_par_f1', 'csp.gss.pwrb.temp_par_f0'):
+            ('Wpar_prodT_coefs'),
+        ('csp.gss.pwrb.pl_par_f3', 'csp.gss.pwrb.pl_par_f2', 'csp.gss.pwrb.pl_par_f1', 'csp.gss.pwrb.pl_par_f0'):
+            ('Wpar_prodQ_coefs'),
+        ('csp.gss.pwrb.pl_par_design', 'csp.gss.pwrb.temp_par_design', 'dni_par_design'):
+            ('f_par_tot_des'),
+        ('w_des', 'f_Wpar_fixed', 'f_Wpar_prod', 'csp.gss.pwrb.pl_par_design', 'csp.gss.pwrb.temp_par_design',
+         'dni_par_design'):
+            ('csp.gss.pwrb.design_parasitic_load'),
+        ('dni_par_f0', 'dni_par_f1', 'dni_par_f2', 'dni_par_f3'):
+            ('dni_par_design'),
+        ('w_des', 'f_Wpar_prod', 'f_par_tot_des'):
+            ('W_dot_part_load_des'),
+        ('w_des', 'f_Wpar_fixed'):
+            ('W_dot_par_fixed'),
+        ('csp.gss.pwrb.pl_par_f0', 'csp.gss.pwrb.pl_par_f1', 'csp.gss.pwrb.pl_par_f2', 'csp.gss.pwrb.pl_par_f3'):
+            ('csp.gss.pwrb.pl_par_design'),
+        (
+        'csp.gss.pwrb.temp_par_f0', 'csp.gss.pwrb.temp_par_f1', 'csp.gss.pwrb.temp_par_f2', 'csp.gss.pwrb.temp_par_f3'):
+            ('csp.gss.pwrb.temp_par_design')},
+    'Physical Trough Receiver Type 3': {
+        ('csp_dtr_hce_var1_field_fraction_3', 'csp_dtr_hce_var1_bellows_shadowing_3', 'csp_dtr_hce_var1_hce_dirt_3',
+         'csp_dtr_hce_var1_abs_abs_3', 'csp_dtr_hce_var1_env_trans_3', 'csp_dtr_hce_var2_field_fraction_3',
+         'csp_dtr_hce_var2_bellows_shadowing_3', 'csp_dtr_hce_var2_hce_dirt_3', 'csp_dtr_hce_var2_abs_abs_3',
+         'csp_dtr_hce_var2_env_trans_3', 'csp_dtr_hce_var3_field_fraction_3', 'csp_dtr_hce_var3_bellows_shadowing_3',
+         'csp_dtr_hce_var3_hce_dirt_3', 'csp_dtr_hce_var3_abs_abs_3', 'csp_dtr_hce_var3_env_trans_3',
+         'csp_dtr_hce_var4_field_fraction_3', 'csp_dtr_hce_var4_bellows_shadowing_3', 'csp_dtr_hce_var4_hce_dirt_3',
+         'csp_dtr_hce_var4_abs_abs_3', 'csp_dtr_hce_var4_env_trans_3'):
+            ('csp_dtr_hce_optical_eff_3'),
+        ('csp_dtr_hce_var1_field_fraction_3', 'csp_dtr_hce_var1_rated_heat_loss_3', 'csp_dtr_hce_var2_field_fraction_3',
+         'csp_dtr_hce_var2_rated_heat_loss_3', 'csp_dtr_hce_var3_field_fraction_3',
+         'csp_dtr_hce_var3_rated_heat_loss_3', 'csp_dtr_hce_var4_field_fraction_3',
+         'csp_dtr_hce_var4_rated_heat_loss_3'):
+            ('csp_dtr_hce_design_heat_loss_3')},
+    'Empirical Trough Parasitics': {
+        ('HtrParPF', 'ui_par_hb_const', 'ui_par_turb_out_gr'):
+            ('HtrPar'),
+        ('BOPParPF', 'ui_par_bop_const', 'ui_par_turb_out_gr'):
+            ('BOPPar'),
+        ('ui_par_fixedblock_const', 'ui_par_turb_out_gr'):
+            ('PbFixPar'),
+        ('ChtfParPF', 'ui_par_htfpump_const', 'ui_par_sf_area'):
+            ('ChtfPar'),
+        ('CtParPF', 'ui_par_ct0_const', 'ui_par_turb_out_gr'):
+            ('CtPar'),
+        ('Solar_Field_Area'):
+            ('ui_par_sf_area'),
+        ('HhtfParPF', 'ui_par_tes_const', 'ui_par_turb_out_gr'):
+            ('HhtfPar'),
+        ('SfParPF', 'ui_par_sf_const', 'ui_par_sf_area'):
+            ('SfPar'),
+        ('SfPar', 'ChtfPar', 'HhtfPar', 'AntiFrPar', 'PbFixPar', 'BOPPar', 'HtrPar', 'CtPar'):
+            ('ui_par_dp_total'),
+        ('ui_par_antifreeze_const', 'ChtfPar'):
+            ('AntiFrPar'),
+        ('TurbOutG'):
+            ('ui_par_turb_out_gr')},
+    'Phys Trough Direct Storage': {
+        ('T_loop_in_des'):
+            ('TES_COPY_T_htf_cold_des'),
+        ('T_loop_out'):
+            ('TES_COPY_T_htf_hot_des'),
+        ('tshours'):
+            ('TES_COPY_tshours'),
+        ('q_pb_design'):
+            ('TES_COPY_q_pb_design'),
+        ('q_pb_design', 'tshours', 'T_loop_out', 'T_loop_in_des', 'Fluid', 'field_fl_props', 'h_tank_min', 'h_tank',
+         'tank_pairs', 'u_tank'):
+            ('Q_tes', 'tes_avail_vol', 'vol_tank', 'csp.pt.tes.tank_diameter', 'q_dot_tes_est',
+             'csp.pt.tes.htf_density')},
+    'Physical Trough Receiver Type 2': {
+        ('csp_dtr_hce_var1_field_fraction_2', 'csp_dtr_hce_var1_rated_heat_loss_2', 'csp_dtr_hce_var2_field_fraction_2',
+         'csp_dtr_hce_var2_rated_heat_loss_2', 'csp_dtr_hce_var3_field_fraction_2',
+         'csp_dtr_hce_var3_rated_heat_loss_2', 'csp_dtr_hce_var4_field_fraction_2',
+         'csp_dtr_hce_var4_rated_heat_loss_2'):
+            ('csp_dtr_hce_design_heat_loss_2'),
+        ('csp_dtr_hce_var1_field_fraction_2', 'csp_dtr_hce_var1_bellows_shadowing_2', 'csp_dtr_hce_var1_hce_dirt_2',
+         'csp_dtr_hce_var1_abs_abs_2', 'csp_dtr_hce_var1_env_trans_2', 'csp_dtr_hce_var2_field_fraction_2',
+         'csp_dtr_hce_var2_bellows_shadowing_2', 'csp_dtr_hce_var2_hce_dirt_2', 'csp_dtr_hce_var2_abs_abs_2',
+         'csp_dtr_hce_var2_env_trans_2', 'csp_dtr_hce_var3_field_fraction_2', 'csp_dtr_hce_var3_bellows_shadowing_2',
+         'csp_dtr_hce_var3_hce_dirt_2', 'csp_dtr_hce_var3_abs_abs_2', 'csp_dtr_hce_var3_env_trans_2',
+         'csp_dtr_hce_var4_field_fraction_2', 'csp_dtr_hce_var4_bellows_shadowing_2', 'csp_dtr_hce_var4_hce_dirt_2',
+         'csp_dtr_hce_var4_abs_abs_2', 'csp_dtr_hce_var4_env_trans_2'):
+            ('csp_dtr_hce_optical_eff_2')},
+    'Financial Construction Financing': {
+        ('const_per_total1', 'const_per_total2', 'const_per_total3', 'const_per_total4', 'const_per_total5'):
+            ('construction_financing_cost'),
+        ('const_per_interest1', 'const_per_interest2', 'const_per_interest3', 'const_per_interest4',
+         'const_per_interest5'):
+            ('const_per_interest_total'),
+        ('const_per_percent1', 'const_per_percent2', 'const_per_percent3', 'const_per_percent4', 'const_per_percent5'):
+            ('const_per_percent_total'),
+        ('const_per_principal1', 'const_per_principal2', 'const_per_principal3', 'const_per_principal4',
+         'const_per_principal5'):
+            ('const_per_principal_total'),
+        ('total_installed_cost', 'const_per_interest_rate1', 'const_per_months1', 'const_per_percent1',
+         'const_per_upfront_rate1', 'const_per_interest_rate2', 'const_per_months2', 'const_per_percent2',
+         'const_per_upfront_rate2', 'const_per_interest_rate3', 'const_per_months3', 'const_per_percent3',
+         'const_per_upfront_rate3', 'const_per_interest_rate4', 'const_per_months4', 'const_per_percent4',
+         'const_per_upfront_rate4', 'const_per_interest_rate5', 'const_per_months5', 'const_per_percent5',
+         'const_per_upfront_rate5'):
+            ('const_per_principal1', 'const_per_interest1', 'const_per_total1', 'const_per_principal2',
+             'const_per_interest2', 'const_per_total2', 'const_per_principal3', 'const_per_interest3',
+             'const_per_total3', 'const_per_principal4', 'const_per_interest4', 'const_per_total4',
+             'const_per_principal5', 'const_per_interest5', 'const_per_total5')},
+    'Wind OBOS': {
+        ('wind_farm_num_turbines', 'wind_turbine_kw_rating', 'wind_turbine_rotor_diameter', 'wind_turbine_hub_ht',
+         'windfarm.farm.turbine_spacing', 'windfarm.farm.row_spacing', 'turbine_cost_total', 'system_capacity',
+         'waterD', 'distShore', 'distPort', 'distPtoA', 'distAtoS', 'substructure', 'anchor', 'turbInstallMethod',
+         'towerInstallMethod', 'installStrategy', 'cableOptimizer', 'moorLines', 'buryDepth', 'substructCont',
+         'turbCont', 'elecCont', 'interConVolt', 'distInterCon', 'scrapVal', 'number_install_seasons',
+         'detailed_obos_general', 'detailed_obos_substructure', 'detailed_obos_electrical', 'detailed_obos_assembly',
+         'detailed_obos_port', 'detailed_obos_development'):
+            ('obos_warning', 'total_obos_cost'),
+        ('total_obos_cost', 'system_capacity'):
+            ('total_obos_cost_per_kw')},
+    'Dish Parasitics': {
+        ('csp.ds.coolfluid'):
+            ('cooling_fluid')},
+    'Physical Trough Receiver Type 1': {
+        ('csp_dtr_hce_var1_field_fraction_1', 'csp_dtr_hce_var1_bellows_shadowing_1', 'csp_dtr_hce_var1_hce_dirt_1',
+         'csp_dtr_hce_var1_abs_abs_1', 'csp_dtr_hce_var1_env_trans_1', 'csp_dtr_hce_var2_field_fraction_1',
+         'csp_dtr_hce_var2_bellows_shadowing_1', 'csp_dtr_hce_var2_hce_dirt_1', 'csp_dtr_hce_var2_abs_abs_1',
+         'csp_dtr_hce_var2_env_trans_1', 'csp_dtr_hce_var3_field_fraction_1', 'csp_dtr_hce_var3_bellows_shadowing_1',
+         'csp_dtr_hce_var3_hce_dirt_1', 'csp_dtr_hce_var3_abs_abs_1', 'csp_dtr_hce_var3_env_trans_1',
+         'csp_dtr_hce_var4_field_fraction_1', 'csp_dtr_hce_var4_bellows_shadowing_1', 'csp_dtr_hce_var4_hce_dirt_1',
+         'csp_dtr_hce_var4_abs_abs_1', 'csp_dtr_hce_var4_env_trans_1'):
+            ('csp_dtr_hce_optical_eff_1'),
+        ('csp_dtr_hce_var1_field_fraction_1', 'csp_dtr_hce_var1_rated_heat_loss_1', 'csp_dtr_hce_var2_field_fraction_1',
+         'csp_dtr_hce_var2_rated_heat_loss_1', 'csp_dtr_hce_var3_field_fraction_1',
+         'csp_dtr_hce_var3_rated_heat_loss_1', 'csp_dtr_hce_var4_field_fraction_1',
+         'csp_dtr_hce_var4_rated_heat_loss_1'):
+            ('csp_dtr_hce_design_heat_loss_1')},
+    'Physical Trough Collector Type 3': {
+        ('csp_dtr_sca_length_3', 'csp_dtr_sca_ncol_per_sca_3'):
+            ('csp_dtr_sca_ap_length_3'),
+        ('IAMs_3', 'csp_dtr_sca_calc_theta_3', 'csp_dtr_sca_calc_costh_3'):
+            ('csp_dtr_sca_calc_iam_3'),
+        ('csp_dtr_sca_calc_zenith_3', 'tilt', 'azimuth'):
+            ('csp_dtr_sca_calc_costh_3'),
+        ('lat'):
+            ('csp_dtr_sca_calc_latitude_3'),
+        ('csp_dtr_sca_ave_focal_len_3', 'csp_dtr_sca_calc_theta_3', 'nSCA', 'csp_dtr_sca_calc_end_gain_3',
+         'csp_dtr_sca_length_3', 'csp_dtr_sca_ncol_per_sca_3'):
+            ('csp_dtr_sca_calc_end_loss_3'),
+        ('csp_dtr_sca_ave_focal_len_3', 'csp_dtr_sca_calc_theta_3', 'csp_dtr_sca_piping_dist_3'):
+            ('csp_dtr_sca_calc_end_gain_3'),
+        ('csp_dtr_sca_tracking_error_3', 'csp_dtr_sca_geometry_effects_3', 'csp_dtr_sca_clean_reflectivity_3',
+         'csp_dtr_sca_mirror_dirt_3', 'csp_dtr_sca_general_error_3'):
+            ('csp_dtr_sca_calc_sca_eff_3'),
+        ('csp_dtr_sca_calc_costh_3'):
+            ('csp_dtr_sca_calc_theta_3'),
+        ('lat'):
+            ('csp_dtr_sca_calc_zenith_3')},
+    'User Defined Power Cycle': {
+        ('PB_COPY_T_htf_hot_des'):
+            ('ud_COPY_T_HTF_des'),
+        ():
+            ('ud_m_dot_design'),
+        ('ud_T_amb_des'):
+            ('ud_COPY_T_amb_des'),
+        ('P_ref', 'ud_f_W_dot_cool_des'):
+            ('ud_W_dot_cool_calc')},
+    'Physical Trough Collector Type 1': {
+        ('IAMs_1', 'csp_dtr_sca_calc_theta_1', 'csp_dtr_sca_calc_costh_1'):
+            ('csp_dtr_sca_calc_iam_1'),
+        ('csp_dtr_sca_calc_costh_1'):
+            ('csp_dtr_sca_calc_theta_1'),
+        ('lat'):
+            ('csp_dtr_sca_calc_zenith_1'),
+        ('lat'):
+            ('csp_dtr_sca_calc_latitude_1'),
+        ('csp_dtr_sca_tracking_error_1', 'csp_dtr_sca_geometry_effects_1', 'csp_dtr_sca_clean_reflectivity_1',
+         'csp_dtr_sca_mirror_dirt_1', 'csp_dtr_sca_general_error_1'):
+            ('csp_dtr_sca_calc_sca_eff_1'),
+        ('csp_dtr_sca_ave_focal_len_1', 'csp_dtr_sca_calc_theta_1', 'nSCA', 'csp_dtr_sca_calc_end_gain_1',
+         'csp_dtr_sca_length_1', 'csp_dtr_sca_ncol_per_sca_1'):
+            ('csp_dtr_sca_calc_end_loss_1'),
+        ('csp_dtr_sca_calc_zenith_1', 'tilt', 'azimuth'):
+            ('csp_dtr_sca_calc_costh_1'),
+        ('csp_dtr_sca_ave_focal_len_1', 'csp_dtr_sca_calc_theta_1', 'csp_dtr_sca_piping_dist_1'):
+            ('csp_dtr_sca_calc_end_gain_1'),
+        ('csp_dtr_sca_length_1', 'csp_dtr_sca_ncol_per_sca_1'):
+            ('csp_dtr_sca_ap_length_1')},
+    'CEC Performance Model with Module Database': {
+        ('cec_gamma_r', 'cec_p_mp_ref'):
+            ('gamma_r_calc'),
+        ('cec_beta_oc', 'cec_v_oc_ref'):
+            ('beta_oc_calc'),
+        ('cec_v_mp_ref', 'cec_i_mp_ref', 'cec_area'):
+            ('cec_eff'),
+        ('cec_alpha_sc', 'cec_i_sc_ref'):
+            ('alpha_sc_calc'),
+        ('cec_area', 'cec_module_width'):
+            ('cec_module_length'),
+        ('cec_i_mp_ref', 'cec_v_mp_ref'):
+            ('cec_p_mp_ref')},
+    'Physical Trough Solar Field': {
+        ('trough_loop_control'):
+            ('SCAInfoArray'),
+        ('fixed_land_area', 'non_solar_field_land_area_multiplier'):
+            ('total_land_area'),
+        ('P_ref', 'eta_ref', 'I_bn_des', 'total_loop_conversion_efficiency'):
+            ('total_required_aperture_for_SM1'),
+        ('total_aperture', 'Row_Distance', 'max_collector_width'):
+            ('fixed_land_area'),
+        ('solar_mult', 'P_ref', 'eta_ref'):
+            ('field_thermal_output'),
+        (
+        'trough_loop_control', 'csp_dtr_sca_calc_sca_eff_1', 'csp_dtr_sca_calc_sca_eff_2', 'csp_dtr_sca_calc_sca_eff_3',
+        'csp_dtr_sca_calc_sca_eff_4', 'csp_dtr_sca_length_1', 'csp_dtr_sca_length_2', 'csp_dtr_sca_length_3',
+        'csp_dtr_sca_length_4', 'csp_dtr_hce_optical_eff_1', 'csp_dtr_hce_optical_eff_2', 'csp_dtr_hce_optical_eff_3',
+        'csp_dtr_hce_optical_eff_4'):
+            ('loop_optical_efficiency'),
+        ('total_required_aperture_for_SM1', 'single_loop_aperature'):
+            ('required_number_of_loops_for_SM1'),
+        ('trough_loop_control'):
+            ('SCADefocusArray'),
+        ('single_loop_aperature', 'nLoops'):
+            ('total_aperture'),
+        ('radio_sm_or_area', 'specified_solar_multiple', 'total_aperture', 'total_required_aperture_for_SM1'):
+            ('solar_mult'),
+        ('combo_feather'):
+            ('fthrctrl'),
+        ('combo_htf_type'):
+            ('Fluid'),
+        ('m_dot_htfmin', 'fluid_dens_inlet_temp', 'min_inner_diameter'):
+            ('min_field_flow_velocity'),
+        ('combo_FieldConfig'):
+            ('FieldConfig'),
+        ('radio_sm_or_area', 'specified_solar_multiple', 'total_required_aperture_for_SM1', 'specified_total_aperture',
+         'single_loop_aperature'):
+            ('nLoops'),
+        ('trough_loop_control', 'csp_dtr_hce_diam_absorber_inner_1', 'csp_dtr_hce_diam_absorber_inner_2',
+         'csp_dtr_hce_diam_absorber_inner_3', 'csp_dtr_hce_diam_absorber_inner_4'):
+            ('min_inner_diameter'),
+        ('trough_loop_control', 'I_bn_des', 'csp_dtr_hce_design_heat_loss_1', 'csp_dtr_hce_design_heat_loss_2',
+         'csp_dtr_hce_design_heat_loss_3', 'csp_dtr_hce_design_heat_loss_4', 'csp_dtr_sca_length_1',
+         'csp_dtr_sca_length_2', 'csp_dtr_sca_length_3', 'csp_dtr_sca_length_4', 'csp_dtr_sca_aperture_1',
+         'csp_dtr_sca_aperture_2', 'csp_dtr_sca_aperture_3', 'csp_dtr_sca_aperture_4'):
+            ('cspdtr_loop_hce_heat_loss'),
+        ('m_dot_htfmax', 'fluid_dens_outlet_temp', 'min_inner_diameter'):
+            ('max_field_flow_velocity'),
+        ('trough_loop_control', 'csp_dtr_sca_aperture_1', 'csp_dtr_sca_aperture_2', 'csp_dtr_sca_aperture_3',
+         'csp_dtr_sca_aperture_4'):
+            ('single_loop_aperature'),
+        ('combo_htf_type', 'Fluid', 'T_loop_in_des', 'T_loop_out', 'field_fl_props'):
+            ('field_htf_cp_avg'),
+        ('loop_optical_efficiency', 'cspdtr_loop_hce_heat_loss'):
+            ('total_loop_conversion_efficiency'),
+        ():
+            ('defocus')},
+    'Molten Salt Tower Power Block Common': {
+        ('PB_COPY_q_pb_design', 'PB_COPY_htf_cp_avg', 'PB_COPY_T_htf_hot_des', 'PB_COPY_T_htf_cold_des'):
+            ('PB_m_dot_htf_cycle_des'),
+        ('csp.pt.rec.htf_c_avg'):
+            ('PB_COPY_htf_cp_avg'),
+        ('T_htf_cold_des'):
+            ('PB_COPY_T_htf_cold_des'),
+        ('q_pb_design'):
+            ('PB_COPY_q_pb_design'),
+        ('T_htf_hot_des'):
+            ('PB_COPY_T_htf_hot_des'),
+        ('design_eff'):
+            ('PB_COPY_design_eff'),
+        ('nameplate'):
+            ('PB_COPY_nameplate'),
+        ('gross_net_conversion_factor'):
+            ('PB_COPY_gross_net_conversion_factor'),
+        ('P_ref'):
+            ('PB_COPY_P_ref'),
+        ('nameplate'):
+            ('system_capacity')},
+    'Wind Farm Costs': {
+        ('turbine_cost_total', 'bos_cost_total', 'sales_tax_basis', 'sales_tax_rate'):
+            ('sales_tax_total'),
+        ('sales_tax_rate'):
+            ('reference_sales_tax_percent'),
+        ():
+            ('system_use_lifetime_output'),
+        ():
+            ('system_use_recapitalization'),
+        ('total_installed_cost', 'reference_capacity'):
+            ('total_installed_cost_per_kw'),
+        ('system_capacity'):
+            ('reference_capacity'),
+        ('turbine_cost_total', 'bos_cost_total', 'sales_tax_total'):
+            ('total_installed_cost'),
+        (
+        'bos_cost_per_kw', 'reference_capacity', 'bos_cost_per_turbine', 'reference_number_turbines', 'bos_cost_fixed'):
+            ('bos_cost_total'),
+        ('turbine_cost_per_kw', 'reference_capacity', 'turbine_cost_per_turbine', 'reference_number_turbines',
+         'turbine_cost_fixed'):
+            ('turbine_cost_total'),
+        ('wind_resource_filename'):
+            ('reference_resource_file'),
+        ('wind_farm_num_turbines'):
+            ('reference_number_turbines')},
+    'Tower SolarPilot Solar Field': {
+        ():
+            ('opt_algorithm'),
+        ('is_optimize', 'override_layout'):
+            ('field_model_type'),
+        ('Q_rec_des'):
+            ('q_design'),
+        ('helio_height', 'helio_width', 'dens_mirror'):
+            ('csp.pt.sf.heliostat_area'),
+        ('helio_width', 'helio_height', 'dens_mirror', 'n_hel'):
+            ('A_sf_UI'),
+        ('helio_optical_error_mrad'):
+            ('error_equiv'),
+        ('h_tower'):
+            ('csp.pt.sf.tower_height'),
+        ('A_sf_UI'):
+            ('helio_area_tot'),
+        ():
+            ('opt_flux_penalty'),
+        ('csp.pt.sf.fixed_land_area', 'land_area_base', 'csp.pt.sf.land_overhead_factor'):
+            ('csp.pt.sf.total_land_area'),
+        ('helio_positions'):
+            ('n_hel'),
+        ('land_max', 'h_tower'):
+            ('land_max_calc'),
+        ('override_opt'):
+            ('is_optimize'),
+        ('n_hel', 'csp.pt.sf.heliostat_area'):
+            ('csp.pt.sf.total_reflective_area'),
+        ('dni_des'):
+            ('dni_des_calc'),
+        ('helio_positions', 'c_atm_0', 'c_atm_1', 'c_atm_2', 'c_atm_3', 'h_tower'):
+            ('c_atm_info'),
+        ('land_min', 'h_tower'):
+            ('land_min_calc')},
+    'Wind Farm Specifications': {
+        ('wind_farm_sizing_mode'):
+            ('specify_label'),
+        ('wind_farm_sizing_mode', 'desired_farm_size', 'system_capacity'):
+            ('sizing_warning'),
+        ('wind_farm_num_turbines', 'wind_turbine_kw_rating'):
+            ('system_capacity'),
+        ('wind_farm_sizing_mode', 'windfarm.layout.file_or_controls', 'wind_farm_xCoord_file', 'wind_farm_yCoord_file',
+         'desired_farm_size', 'wind_turbine_kw_rating', 'wind_turbine_rotor_diameter', 'windfarm.farm.shape',
+         'windfarm.farm.turbines_per_row', 'windfarm.farm.number_of_rows', 'windfarm.farm.offset',
+         'windfarm.farm.offset_type', 'windfarm.farm.layout_angle', 'windfarm.farm.turbine_spacing',
+         'windfarm.farm.row_spacing'):
+            ('wind_farm_num_turbines', 'wind_farm_xCoordinates', 'wind_farm_yCoordinates', 'rows', 'cols')},
+    'Wind Resource File': {
+        ('use_specific_wf_wind', 'user_specified_wf_wind', 'wind_resource.file'):
+            ('wind_resource_filename'),
+        ('wind_turbine_hub_ht'):
+            ('wind_resource.requested_ht')},
+    'MSPT Dispatch Control': {
+        ('ui_disp_1_turbout', 'ui_disp_2_turbout', 'ui_disp_3_turbout', 'ui_disp_4_turbout', 'ui_disp_5_turbout',
+         'ui_disp_6_turbout', 'ui_disp_7_turbout', 'ui_disp_8_turbout', 'ui_disp_9_turbout', 'hybrid_tou1',
+         'hybrid_tou2', 'hybrid_tou3', 'hybrid_tou4', 'hybrid_tou5', 'hybrid_tou6', 'hybrid_tou7', 'hybrid_tou8',
+         'hybrid_tou9'):
+            ('f_turb_tou_periods', 'F_wc')},
+    'Generic CSP Thermal Storage': {
+        (
+        'csp.gss.tes.temp_loss_f3', 'csp.gss.tes.temp_loss_f2', 'csp.gss.tes.temp_loss_f1', 'csp.gss.tes.temp_loss_f0'):
+            ('teshlT_coefs'),
+        ('csp.gss.tes.charge_loss_f3', 'csp.gss.tes.charge_loss_f2', 'csp.gss.tes.charge_loss_f1',
+         'csp.gss.tes.charge_loss_f0'):
+            ('teshlX_coefs'),
+        ('lon'):
+            ('longitude'),
+        ('lat'):
+            ('latitude'),
+        ():
+            ('itoth'),
+        ('w_des', 'eta_des', 'hrs_tes'):
+            ('csp.gss.tes.max_capacity'),
+        ():
+            ('ntod'),
+        ():
+            ('twb'),
+        ():
+            ('vwind'),
+        ():
+            ('ibn'),
+        ():
+            ('tdb'),
+        ():
+            ('ibh'),
+        ():
+            ('azimuth'),
+        ():
+            ('tilt'),
+        ():
+            ('timezone'),
+        ('exergy_table_ui'):
+            ('exergy_table')},
+    'Financial Analysis Parameters': {
+        ('real_discount_rate', 'inflation_rate'):
+            ('nominal_discount_rate')},
+    'Molten Salt Tower Storage': {
+        ('tshours'):
+            ('TES_COPY_tshours'),
+        ('q_pb_design'):
+            ('TES_COPY_q_pb_design'),
+        ('T_htf_cold_des'):
+            ('TES_COPY_T_htf_cold_des'),
+        ('P_ref', 'design_eff', 'tshours', 'T_htf_hot_des', 'T_htf_cold_des', 'rec_htf', 'field_fl_props', 'h_tank_min',
+         'h_tank', 'tank_pairs', 'u_tank'):
+            ('Q_tes', 'tes_avail_vol', 'vol_tank', 'csp.pt.tes.tank_diameter', 'q_dot_tes_est',
+             'csp.pt.tes.htf_density'),
+        ('csp.pt.tes.tc_fill_type'):
+            ('tc_fill'),
+        ('T_htf_hot_des'):
+            ('TES_COPY_T_htf_hot_des'),
+        ('csp.pt.tes.storage_type'):
+            ('tes_type'),
+        ('csp.pt.tes.tc_fill_type'):
+            ('csp.pt.tes.tc_fill_sph'),
+        ('tc_fill'):
+            ('csp.pt.tes.tc_fill_dens')},
+    'Supercritical Carbon Dioxide Power Cycle': {
+        ('dd_sco2_cycle_config'):
+            ('sco2_cycle_config'),
+        ('T_htf_hot_des'):
+            ('SCO2_COPY_T_htf_hot_des'),
+        ('design_eff'):
+            ('SCO2_COPY_design_eff'),
+        ('P_ref'):
+            ('SCO2_COPY_P_ref')},
+    'Wind BOS': {
+        ('sales_tax_rate'):
+            ('sales_and_use_tax'),
+        ('wind_farm_num_turbines'):
+            ('access_road_entrances'),
+        ('wind_farm_num_turbines'):
+            ('weather_delay_days_sugg'),
+        ('weather_delay_days_choice', 'weather_delay_days_input', 'wind_farm_num_turbines'):
+            ('weather_delay_days'),
+        ('farm_size_MW'):
+            ('quantity_permanent_met_towers_sugg'),
+        ('quantity_permanent_met_towers_choice', 'quantity_permanent_met_towers_input', 'farm_size_MW'):
+            ('quantity_permanent_met_towers'),
+        ('farm_size_MW'):
+            ('quantity_test_met_towers_sugg'),
+        ('quantity_test_met_towers_choice', 'quantity_test_met_towers_input', 'farm_size_MW'):
+            ('quantity_test_met_towers'),
+        ('wind_turbine_hub_ht'):
+            ('hub_height'),
+        ('wind_farm_num_turbines'):
+            ('construction_time_sugg'),
+        ('om_building_size_choice', 'om_building_size_input', 'farm_size_MW'):
+            ('om_building_size'),
+        ('crane_breakdowns_choice', 'crane_breakdowns_input', 'wind_farm_num_turbines'):
+            ('crane_breakdowns'),
+        ('farm_size_MW'):
+            ('om_building_size_sugg'),
+        ('construction_time_choice', 'construction_time_input', 'wind_farm_num_turbines'):
+            ('construction_time'),
+        ('wind_turbine_kw_rating', 'wind_turbine_rotor_diameter', 'wind_turbine_hub_ht', 'wind_farm_num_turbines',
+         'interconnect_voltage', 'distance_to_interconnect', 'site_terrain', 'turbine_layout', 'soil_condition',
+         'construction_time', 'om_building_size', 'quantity_test_met_towers', 'quantity_permanent_met_towers',
+         'weather_delay_days', 'crane_breakdowns', 'access_road_entrances', 'turbine_capital_cost', 'tower_top_mass',
+         'delivery_assist_required', 'pad_mount_transformer_required', 'new_switchyard_required',
+         'rock_trenching_required', 'mv_thermal_backfill', 'mv_overhead_collector', 'performance_bond', 'contingency',
+         'warranty_management', 'sales_and_use_tax', 'overhead', 'profit_margin', 'development_fee',
+         'turbine_transportation'):
+            ('bos_total_budgeted_cost', 'transportation_cost', 'insurance_cost', 'engineering_cost',
+             'power_performance_cost', 'site_compound_security_cost', 'building_cost', 'transmission_cost',
+             'markup_cost', 'development_cost', 'access_roads_cost', 'foundation_cost', 'erection_cost',
+             'electrical_materials_cost', 'electrical_installation_cost', 'substation_cost', 'project_mgmt_cost'),
+        ('wind_turbine_kw_rating'):
+            ('machine_rating'),
+        ('wind_farm_num_turbines'):
+            ('number_of_turbines'),
+        ('wind_turbine_rotor_diameter'):
+            ('rotor_diameter'),
+        ('bos_total_budgeted_cost', 'farm_size_MW'):
+            ('bos_total_cost_per_kw'),
+        ('wind_farm_num_turbines'):
+            ('crane_breakdowns_sugg'),
+        ('wind_farm_num_turbines', 'wind_turbine_kw_rating'):
+            ('farm_size_MW')},
+    'PV System Design': {
+        ('en_batt', 'batt_power_discharge_max'):
+            ('batt_max_power'),
+        ('subarray1_modules_per_string', 'subarray1_nstrings'):
+            ('subarray1_nmodules'),
+        ('en_batt', 'batt_ac_or_dc', 'system_capacity', 'batt_max_power', 'total_inverter_capacity', 'module_model',
+         'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0', 'spe_voc', 'cec_v_oc_ref', '6par_voc',
+         'snl_ref_voc', 'sd11par_Voc0', 'mppt_low_inverter', 'mppt_hi_inverter', 'subarray1_string_voc',
+         'subarray2_enable', 'subarray2_string_voc', 'subarray3_enable', 'subarray3_string_voc', 'subarray4_enable',
+         'subarray4_string_voc', 'subarray1_string_vmp', 'subarray2_string_vmp', 'subarray3_string_vmp',
+         'subarray4_string_vmp', 'vdcmax_inverter'):
+            ('layout_warning'),
+        (
+        'module_model', 'spe_area', 'cec_area', '6par_area', 'snl_area', 'sd11par_area', 'subarray1_modules_per_string',
+        'subarray1_nstrings', 'subarray1_gcr', 'subarray2_enable', 'subarray2_modules_per_string', 'subarray2_nstrings',
+        'subarray2_gcr', 'subarray3_enable', 'subarray3_modules_per_string', 'subarray3_nstrings', 'subarray3_gcr',
+        'subarray4_enable', 'subarray4_modules_per_string', 'subarray4_nstrings', 'subarray4_gcr'):
+            ('total_land_area'),
+        ('total_area'):
+            ('array_area'),
+        ('subarray1_nstrings', 'subarray2_enable', 'subarray2_nstrings', 'subarray3_enable', 'subarray3_nstrings',
+         'subarray4_enable', 'subarray4_nstrings'):
+            ('num_strings_total'),
+        ('subarray2_enable', 'subarray2_modules_per_string', 'subarray2_nstrings'):
+            ('subarray2_nmodules'),
+        ('module_model', 'spe_voc', 'cec_v_oc_ref', '6par_voc', 'snl_voco', 'sd11par_Voc0',
+         'subarray3_modules_per_string'):
+            ('subarray3_string_voc'),
+        ('inverter_model', 'inv_snl_mppt_hi', 'inv_ds_mppt_hi', 'inv_pd_mppt_hi', 'inv_cec_cg_mppt_hi'):
+            ('mppt_hi_inverter'),
+        ('subarray4_enable', 'subarray4_modules_per_string', 'subarray4_nstrings'):
+            ('subarray4_nmodules'),
+        ('inverter_model', 'inv_snl_vdcmax', 'inv_ds_vdcmax', 'inv_pd_vdcmax', 'inv_cec_cg_vdcmax'):
+            ('vdcmax_inverter'),
+        ('module_model', 'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0',
+         'subarray1_modules_per_string'):
+            ('subarray1_string_vmp'),
+        ('inverter_model', 'inv_snl_mppt_low', 'inv_ds_mppt_low', 'inv_pd_mppt_low', 'inv_cec_cg_mppt_low'):
+            ('mppt_low_inverter'),
+        ('module_model', 'spe_power', 'cec_p_mp_ref', '6par_pmp', 'snl_ref_pmp', 'sd11par_Pmp0', 'total_modules'):
+            ('system_capacity'),
+        ('inverter_model', 'inv_snl_pdco', 'inv_ds_pdco', 'inv_pd_pdco', 'inv_cec_cg_pdco', 'inverter_count'):
+            ('total_dc_inverter_capacity'),
+        ('module_model', 'spe_area', 'cec_area', '6par_area', 'snl_area', 'sd11par_area', 'total_modules'):
+            ('total_area'),
+        ('module_model', 'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0',
+         'subarray4_modules_per_string'):
+            ('subarray4_string_vmp'),
+        ('module_model', 'spe_voc', 'cec_v_oc_ref', '6par_voc', 'snl_voco', 'sd11par_Voc0',
+         'subarray1_modules_per_string'):
+            ('subarray1_string_voc'),
+        ('module_model', 'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0',
+         'subarray2_modules_per_string'):
+            ('subarray2_string_vmp'),
+        ('subarray2_enable', 'subarray3_enable', 'subarray4_enable'):
+            ('num_enabled'),
+        ('inverter_model', 'inv_snl_paco', 'inv_ds_paco', 'inv_pd_paco', 'inv_cec_cg_paco', 'inverter_count'):
+            ('total_inverter_capacity'),
+        ('module_model', 'spe_voc', 'cec_v_oc_ref', '6par_voc', 'snl_voco', 'sd11par_Voc0',
+         'subarray4_modules_per_string'):
+            ('subarray4_string_voc'),
+        ('enable_auto_size', 'module_model', 'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0',
+         'spe_voc', 'cec_v_oc_ref', '6par_voc', 'snl_ref_voc', 'sd11par_Voc0', 'spe_power', 'cec_p_mp_ref', '6par_pmp',
+         'snl_ref_pmp', 'sd11par_Pmp0', 'inverter_model', 'inv_snl_mppt_low', 'inv_ds_mppt_low', 'inv_pd_mppt_low',
+         'inv_cec_cg_mppt_low', 'inv_snl_vdcmax', 'inv_ds_vdcmax', 'inv_pd_vdcmax', 'inv_cec_cg_vdcmax',
+         'inv_snl_mppt_hi', 'inv_ds_mppt_hi', 'inv_pd_mppt_hi', 'inv_cec_cg_mppt_hi', 'inv_snl_paco', 'inv_ds_paco',
+         'inv_pd_paco', 'inv_cec_cg_paco', 'en_batt', 'batt_ac_or_dc', 'batt_max_power', 'desired_size',
+         'desired_dcac_ratio'):
+            ('subarray2_enable', 'subarray3_enable', 'subarray4_enable', 'subarray1_modules_per_string',
+             'subarray1_nstrings', 'inverter_count'),
+        ('system_capacity', 'total_inverter_capacity'):
+            ('calculated_dcac_ratio'),
+        ('module_model', 'spe_voc', 'cec_v_oc_ref', '6par_voc', 'snl_voco', 'sd11par_Voc0',
+         'subarray2_modules_per_string'):
+            ('subarray2_string_voc'),
+        ('total_area'):
+            ('total_module_area'),
+        ('subarray1_modules_per_string', 'subarray1_nstrings', 'subarray2_modules_per_string', 'subarray2_nstrings',
+         'subarray2_enable', 'subarray3_modules_per_string', 'subarray3_nstrings', 'subarray3_enable',
+         'subarray4_modules_per_string', 'subarray4_nstrings', 'subarray4_enable'):
+            ('total_modules'),
+        ('inverter_model', 'inv_snl_num_mppt', 'inv_ds_num_mppt', 'inv_pd_num_mppt', 'inv_cec_cg_num_mppt'):
+            ('inv_num_mppt'),
+        ('subarray3_enable', 'subarray3_modules_per_string', 'subarray3_nstrings'):
+            ('subarray3_nmodules'),
+        ('module_model', 'spe_vmp', 'cec_v_mp_ref', '6par_vmp', 'snl_ref_vmp', 'sd11par_Vmp0',
+         'subarray3_modules_per_string'):
+            ('subarray3_string_vmp')},
+    'Biopower Plant Specifications': {
+        ('biopwr.plant.nameplate'):
+            ('system_capacity'),
+        ('biopwr.plant.disp9.power', 'biopwr.plant.disp8.power', 'biopwr.plant.disp7.power', 'biopwr.plant.disp6.power',
+         'biopwr.plant.disp5.power', 'biopwr.plant.disp4.power', 'biopwr.plant.disp3.power', 'biopwr.plant.disp2.power',
+         'biopwr.plant.disp1.power'):
+            ('biopwr.plant.disp.power'),
+        ('biopwr.plant.boiler.flue_temp'):
+            ('biopwr.plant.boiler.moisture_enth_out'),
+        ('biopwr.plant.boiler.steam_produced', 'biopwr.plant.boiler.num', 'biopwr.plant.boiler.over_design'):
+            ('biopwr.plant.boiler.cap_per_boiler'),
+        ('biopwr.plant.drying_spec_wet'):
+            ('biopwr.plant.drying_spec'),
+        ():
+            ('biopwr.plant.boiler.ref_temp'),
+        ('biopwr.plant.boiler.air_feed', 'biopwr.feedstock.total'):
+            ('biopwr.plant.par_air_blower'),
+        ('biopwr.plant.boiler.steam_grade'):
+            ('biopwr.plant.boiler.steam_pressure'),
+        ('biopwr.plant.par_percent', 'biopwr.plant.nameplate'):
+            ('biopwr.plant.par'),
+        ('biopwr.feedstock.total', 'biopwr.feedstock.total_hhv', 'biopwr.plant.boiler.efficiency',
+         'biopwr.plant.boiler.steam_enthalpy'):
+            ('biopwr.plant.boiler.steam_produced'),
+        ():
+            ('biopwr.plant.eff.rad_loss'),
+        ('biopwr.plant.tou_option', 'biopwr.plant.ramp_opt', 'biopwr.plant.ramp_opt1', 'biopwr.plant.nameplate',
+         'biopwr.plant.ramp_opt2'):
+            ('biopwr.plant.ramp_rate'),
+        ('biopwr.plant.boiler.moisture_in_fuel', 'biopwr.plant.boiler.moisture_enth_out',
+         'biopwr.plant.boiler.moisture_enth_in'):
+            ('biopwr.plant.eff.moisture_loss'),
+        ('biopwr.plant.drying_method', 'biopwr.feedstock.total_moisture', 'biopwr.feedstock.total_hhv',
+         'biopwr.feedstock.bagasse_frac', 'biopwr.feedstock.barley_frac', 'biopwr.feedstock.stover_frac',
+         'biopwr.feedstock.rice_frac', 'biopwr.feedstock.wheat_frac', 'biopwr.feedstock.forest_frac',
+         'biopwr.feedstock.mill_frac', 'biopwr.feedstock.urban_frac', 'biopwr.feedstock.feedstock1_frac',
+         'biopwr.feedstock.feedstock2_frac', 'biopwr.feedstock.bit_frac', 'biopwr.feedstock.subbit_frac',
+         'biopwr.feedstock.lig_frac', 'biopwr.feedstock.total_coal_moisture', 'biopwr.plant.drying_spec'):
+            ('biopwr.plant.boiler.moisture_in_fuel'),
+        ('biopwr.plant.boiler.steam_grade'):
+            ('biopwr.plant.boiler.steam_enthalpy'),
+        ('biopwr.feedstock.total_h', 'biopwr.feedstock.total_hhv', 'biopwr.plant.boiler.moisture_enth_out',
+         'biopwr.plant.boiler.moisture_enth_in'):
+            ('biopwr.plant.eff.latent'),
+        ('biopwr.plant.boiler.ref_temp'):
+            ('biopwr.plant.boiler.moisture_enth_in'),
+        ('biopwr.plant.eff.flue_loss', 'biopwr.plant.eff.fuel_loss', 'biopwr.plant.eff.moisture_loss',
+         'biopwr.plant.eff.rad_loss', 'biopwr.plant.eff.latent'):
+            ('biopwr.plant.boiler.efficiency'),
+        ('biopwr.plant.boiler.steam_grade'):
+            ('biopwr.plant.boiler.steam_temp'),
+        ('biopwr.plant.boiler.cap_per_boiler', 'biopwr.plant.boiler.num', 'biopwr.plant.boiler.steam_enthalpy',
+         'biopwr.plant.rated_eff'):
+            ('biopwr.plant.nameplate'),
+        ():
+            ('biopwr.plant.boiler.bfw_enthalpy'),
+        ('biopwr.plant.boiler.air_feed', 'biopwr.plant.boiler.flue_temp', 'biopwr.plant.boiler.ref_temp'):
+            ('biopwr.plant.eff.flue_loss'),
+        ('biopwr.plant.combustor_type', 'biopwr.feedstock.total_c', 'biopwr.plant.boiler.excess_air',
+         'biopwr.feedstock.total_h', 'biopwr.feedstock.total_o', 'biopwr.feedstock.total_ash',
+         'biopwr.feedstock.total_hhv'):
+            ('biopwr.plant.boiler.air_feed'),
+        ('biopwr.plant.combustor_type'):
+            ('biopwr.plant.eff.fuel_loss'),
+        ('biopwr.plant.boiler.steam_pressure', 'biopwr.plant.boiler.cap_per_boiler', 'biopwr.plant.boiler.num',
+         'biopwr.plant.par_air_blower'):
+            ('biopwr.plant.par_bfw_pump')},
+    'Dish Capital Costs': {
+        ():
+            ('system_use_recapitalization'),
+        ():
+            ('system_use_lifetime_output'),
+        ('total_installed_cost', 'csp.ds.cost.nameplate'):
+            ('csp.ds.cost.installed_per_capacity'),
+        ('csp.ds.cost.epc.per_acre', 'csp.ds.cost.total_land_area', 'csp.ds.cost.epc.percent', 'total_direct_cost',
+         'csp.ds.cost.nameplate', 'csp.ds.cost.epc.per_watt', 'csp.ds.cost.epc.fixed'):
+            ('csp.ds.cost.epc.total'),
+        ('csp.ds.total_capacity'):
+            ('csp.ds.cost.nameplate'),
+        ('csp.ds.ncollectors', 'csp.ds.cost.collector.area', 'csp.ds.cost.collector.cost_per_m2'):
+            ('csp.ds.cost.collector'),
+        ('csp.ds.field_area'):
+            ('csp.ds.cost.site_improvements.area'),
+        ('csp.ds.cost.site_improvements.area', 'csp.ds.cost.site_improvements.cost_per_m2'):
+            ('csp.ds.cost.site_improvements'),
+        ('csp.ds.cost.site_improvements', 'csp.ds.cost.collector', 'csp.ds.cost.receiver', 'csp.ds.cost.engine',
+         'csp.ds.cost.contingency'):
+            ('total_direct_cost'),
+        ('total_direct_cost', 'total_indirect_cost'):
+            ('total_installed_cost'),
+        ('A_proj'):
+            ('csp.ds.cost.collector.area'),
+        ('csp.ds.nameplate_capacity'):
+            ('csp.ds.cost.engine.kw'),
+        ('csp.ds.field_area'):
+            ('csp.ds.cost.total_land_area'),
+        ('csp.ds.ncollectors', 'csp.ds.cost.receiver.kw', 'csp.ds.cost.receiver.cost_per_kw'):
+            ('csp.ds.cost.receiver'),
+        ('csp.ds.cost.plm.per_acre', 'csp.ds.cost.total_land_area', 'csp.ds.cost.plm.percent', 'total_direct_cost',
+         'csp.ds.cost.nameplate', 'csp.ds.cost.plm.per_watt', 'csp.ds.cost.plm.fixed'):
+            ('csp.ds.cost.plm.total'),
+        ('csp.ds.cost.epc.total', 'csp.ds.cost.plm.total', 'csp.ds.cost.sales_tax.total'):
+            ('total_indirect_cost'),
+        ('csp.ds.nameplate_capacity'):
+            ('csp.ds.cost.receiver.kw'),
+        ('csp.ds.cost.contingency_percent', 'csp.ds.cost.site_improvements', 'csp.ds.cost.collector',
+         'csp.ds.cost.receiver', 'csp.ds.cost.engine'):
+            ('csp.ds.cost.contingency'),
+        ('csp.ds.ncollectors', 'csp.ds.cost.engine.kw', 'csp.ds.cost.engine.cost_per_kw'):
+            ('csp.ds.cost.engine'),
+        ('sales_tax_rate'):
+            ('csp.ds.cost.sales_tax.value'),
+        ('csp.ds.cost.sales_tax.value', 'total_direct_cost', 'csp.ds.cost.sales_tax.percent'):
+            ('csp.ds.cost.sales_tax.total')},
+    'Rankine Cycle': {
+        ('csp.pt.pwrb.pressure_mode'):
+            ('tech_type'),
+        ('csp.pt.pwrb.condenser_type'):
+            ('CT')},
+    'Solar Resource Data': {
+        ('solar_resource_file'):
+            ('file_name'),
+        ('use_specific_weather_file', 'user_specified_weather_file', 'solar_data_file_name'):
+            ('solar_resource_file')},
+    'Generic System Costs': {
+        ('system_capacity', 'genericsys.cost.per_watt'):
+            ('genericsys.cost.plant_scaled'),
+        ('genericsys.cost.plm.fixed', 'genericsys.cost.plm.nonfixed'):
+            ('genericsys.cost.plm.total'),
+        ('system_use_lifetime_output'):
+            ('system_use_recapitalization'),
+        ('genericsys.cost.epc.fixed', 'genericsys.cost.epc.nonfixed'):
+            ('genericsys.cost.epc.total'),
+        ('total_direct_cost', 'genericsys.cost.plm.percent'):
+            ('genericsys.cost.plm.nonfixed'),
+        ('fixed_plant_input'):
+            ('genericsys.cost.plant'),
+        ('genericsys.cost.contingency', 'genericsys.cost.plant', 'genericsys.cost.plant_scaled', 'battery_total'):
+            ('total_direct_cost'),
+        ('genericsys.cost.contingency_percent', 'genericsys.cost.plant', 'genericsys.cost.plant_scaled',
+         'battery_total'):
+            ('genericsys.cost.contingency'),
+        ('en_batt', 'batt_power_discharge_max'):
+            ('battery_power'),
+        ('total_direct_cost', 'genericsys.cost.epc.percent'):
+            ('genericsys.cost.epc.nonfixed'),
+        ('sales_tax_rate'):
+            ('genericsys.cost.sales_tax.value'),
+        ('genericsys.cost.sales_tax.value', 'total_direct_cost', 'genericsys.cost.sales_tax.percent'):
+            ('genericsys.cost.sales_tax.total'),
+        ('total_direct_cost', 'total_indirect_cost'):
+            ('total_installed_cost'),
+        ('total_installed_cost', 'system_capacity'):
+            ('genericsys.cost.installed_per_capacity'),
+        ('battery_energy', 'battery_per_kWh', 'battery_power', 'battery_per_kW'):
+            ('battery_total'),
+        ('genericsys.cost.epc.total', 'genericsys.cost.plm.total', 'genericsys.cost.sales_tax.total'):
+            ('total_indirect_cost'),
+        ('en_batt', 'batt_computed_bank_capacity'):
+            ('battery_energy'),
+        ('system_capacity'):
+            ('nameplate_capacity')},
+    'Biopower Feedstock': {
+        ():
+            ('biopwr.feedstock.subbit_c'),
+        ():
+            ('biopwr.feedstock.mill_hhv'),
+        ('biopwr.feedstock.total_biomass', 'biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstock.bagasse_lhv',
+         'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstock.barley_lhv', 'biopwr.feedstock.stover_biomass_frac',
+         'biopwr.feedstock.stover_lhv', 'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstock.rice_lhv',
+         'biopwr.feedstock.wheat_biomass_frac', 'biopwr.feedstock.wheat_lhv', 'biopwr.feedstock.forest_biomass_frac',
+         'biopwr.feedstock.forest_lhv', 'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstock.mill_lhv',
+         'biopwr.feedstock.urban_biomass_frac', 'biopwr.feedstock.urban_lhv', 'biopwr.feedstock.woody_biomass_frac',
+         'biopwr.feedstock.woody_lhv', 'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstock.herb_lhv',
+         'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstock.feedstock1_hhv', 'biopwr.feedstock.feedstock1_h',
+         'biopwr.feedstock.feedstock2_biomass_frac', 'biopwr.feedstock.feedstock2_hhv',
+         'biopwr.feedstock.feedstock2_h'):
+            ('biopwr.feedstock.total_biomass_lhv'),
+        ('biopwr.feedstock.additional_opt', 'biopwr.feedstock.feedstock2_resource', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.feedstock2_biomass_frac'),
+        ():
+            ('biopwr.feedstock.wheat_o'),
+        ():
+            ('biopwr.feedstock.bit_c'),
+        ('biopwr.feedstock.rice_moisture_wet'):
+            ('biopwr.feedstock.rice_moisture'),
+        ('biopwr.feedstock.stover_moisture_wet'):
+            ('biopwr.feedstock.stover_usual_moisture'),
+        ():
+            ('biopwr.feedstock.rice_hhv'),
+        ():
+            ('biopwr.feedstock.lig_ash'),
+        ():
+            ('biopwr.feedstock.herb_o'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.total_biomass', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.biomass_frac'),
+        ():
+            ('biopwr.feedstock.urban_o'),
+        ('biopwr.feedstock.wheat_resource', 'biopwr.feedstock.wheat_obtainable', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.wheat_frac'),
+        ('biopwr.feedstock.woody_moisture_wet'):
+            ('biopwr.feedstock.woody_usual_moisture'),
+        ('biopwr.feedstock.herb_resource', 'biopwr.feedstock.herb_obtainable', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.herb_biomass_frac'),
+        ('biopwr.feedstock.herb_moisture_wet'):
+            ('biopwr.feedstock.herb_usual_moisture'),
+        ():
+            ('biopwr.feedstock.wheat_h'),
+        ('biopwr.feedstock.lig_moisture_wet'):
+            ('biopwr.feedstock.lig_usual_moisture'),
+        ('biopwr.feedstock.feedstock2_moisture'):
+            ('biopwr.feedstock.feedstock2_usual_moisture'),
+        ():
+            ('biopwr.feedstock.barley_hhv'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.lig_resource', 'biopwr.feedstock.total_coal'):
+            ('biopwr.feedstock.lig_coal_frac'),
+        ():
+            ('biopwr.feedstock.bagasse_c'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_resource', 'biopwr.feedstock.subbit_resource',
+         'biopwr.feedstock.lig_resource'):
+            ('biopwr.feedstock.total_coal'),
+        ('biopwr.feedstock.stover_moisture_wet'):
+            ('biopwr.feedstock.stover_moisture'),
+        ():
+            ('biopwr.feedstock.stover_hhv'),
+        ():
+            ('biopwr.feedstock.herb_h'),
+        ('biopwr.feedstock.feedstock2_opt', 'biopwr.feedstock.feedstock2_user_hhv',
+         'biopwr.feedstock.feedstock2_calc_hhv'):
+            ('biopwr.feedstock.feedstock2_hhv'),
+        ('biopwr.feedstock.barley_resource', 'biopwr.feedstock.barley_obtainable', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.barley_biomass_frac'),
+        ('biopwr.feedstock.subbit_moisture_wet'):
+            ('biopwr.feedstock.subbit_moisture'),
+        ():
+            ('biopwr.feedstock.barley_c'),
+        ():
+            ('biopwr.feedstock.urban_h'),
+        ('biopwr.feedstock.stover_resource', 'biopwr.feedstock.stover_obtainable', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.stover_biomass_frac'),
+        ():
+            ('biopwr.feedstock.subbit_h'),
+        ('biopwr.feedstock.forest_moisture_wet'):
+            ('biopwr.feedstock.forest_usual_moisture'),
+        ():
+            ('biopwr.feedstock.barley_o'),
+        ():
+            ('biopwr.feedstock.woody_ash'),
+        ('biopwr.feedstock.mill_moisture_wet'):
+            ('biopwr.feedstock.mill_moisture'),
+        ():
+            ('biopwr.feedstock.forest_lhv'),
+        ():
+            ('biopwr.feedstock.woody_c'),
+        ('biopwr.feedstock.feedstock1_c', 'biopwr.feedstock.feedstock1_h', 'biopwr.feedstock.feedstock1_n'):
+            ('biopwr.feedstock.feedstock1_calc_hhv'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.subbit_resource', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.subbit_frac'),
+        ():
+            ('biopwr.feedstock.mill_c'),
+        ('biopwr.feedstock.bagasse_moisture_wet'):
+            ('biopwr.feedstock.bagasse_moisture'),
+        ():
+            ('biopwr.feedstock.stover_ash'),
+        ('biopwr.feedstock.forest_moisture_wet'):
+            ('biopwr.feedstock.forest_moisture'),
+        ('biopwr.feedstock.feedstock1_c', 'biopwr.feedstock.feedstock1_h', 'biopwr.feedstock.feedstock1_n'):
+            ('biopwr.feedstock.feedstock1_o'),
+        ('biopwr.feedstock.wheat_resource', 'biopwr.feedstock.wheat_obtainable', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.wheat_biomass_frac'),
+        ('biopwr.feedstock.feedstock2_c', 'biopwr.feedstock.feedstock2_h', 'biopwr.feedstock.feedstock2_n'):
+            ('biopwr.feedstock.feedstock2_o'),
+        ('biopwr.feedstock.rice_resource', 'biopwr.feedstock.rice_obtainable', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.rice_frac'),
+        ():
+            ('biopwr.feedstock.wheat_hhv'),
+        ('biopwr.feedstock.biomass_frac', 'biopwr.feedstock.total_biomass_hhv', 'biopwr.feedstock.coal_frac',
+         'biopwr.feedstock.total_coal_hhv'):
+            ('biopwr.feedstock.total_hhv'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_coal_frac', 'biopwr.feedstock.bit_hhv',
+         'biopwr.feedstock.subbit_coal_frac', 'biopwr.feedstock.subbit_hhv', 'biopwr.feedstock.lig_coal_frac',
+         'biopwr.feedstock.lig_hhv'):
+            ('biopwr.feedstock.total_coal_hhv'),
+        ('biopwr.feedstock.additional_opt', 'biopwr.feedstock.feedstock1_resource', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.feedstock1_frac'),
+        ('biopwr.feedstock.subbit_moisture_wet'):
+            ('biopwr.feedstock.subbit_usual_moisture'),
+        ():
+            ('biopwr.feedstock.woody_o'),
+        ('biopwr.feedstock.bagasse_frac', 'biopwr.feedstock.bagasse_moisture', 'biopwr.feedstock.barley_frac',
+         'biopwr.feedstock.barley_moisture', 'biopwr.feedstock.stover_frac', 'biopwr.feedstock.stover_moisture',
+         'biopwr.feedstock.rice_frac', 'biopwr.feedstock.rice_moisture', 'biopwr.feedstock.wheat_frac',
+         'biopwr.feedstock.wheat_moisture', 'biopwr.feedstock.forest_frac', 'biopwr.feedstock.forest_moisture',
+         'biopwr.feedstock.mill_frac', 'biopwr.feedstock.mill_moisture', 'biopwr.feedstock.urban_frac',
+         'biopwr.feedstock.urban_moisture', 'biopwr.feedstock.woody_frac', 'biopwr.feedstock.woody_moisture',
+         'biopwr.feedstock.herb_frac', 'biopwr.feedstock.herb_moisture', 'biopwr.feedstock.feedstock1_frac',
+         'biopwr.feedstock.feedstock1_moisture', 'biopwr.feedstock.feedstock2_frac',
+         'biopwr.feedstock.feedstock2_moisture', 'biopwr.feedstock.bit_frac', 'biopwr.feedstock.bit_moisture',
+         'biopwr.feedstock.subbit_frac', 'biopwr.feedstock.subbit_moisture', 'biopwr.feedstock.lig_frac',
+         'biopwr.feedstock.lig_moisture'):
+            ('biopwr.feedstock.total_moisture'),
+        ('biopwr.feedstock.additional_opt', 'biopwr.feedstock.feedstock1_resource', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.feedstock1_biomass_frac'),
+        ():
+            ('biopwr.feedstock.subbit_ash'),
+        ('biopwr.feedstock.barley_moisture_wet'):
+            ('biopwr.feedstock.barley_usual_moisture'),
+        ():
+            ('biopwr.feedstock.rice_ash'),
+        ('biopwr.feedstock.rice_h'):
+            ('biopwr.feedstock.rice_lhv'),
+        ():
+            ('biopwr.feedstock.herb_hhv'),
+        ('biopwr.feedstock.bagasse_resource', 'biopwr.feedstock.bagasse_obtainable', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.bagasse_frac'),
+        ():
+            ('biopwr.feedstock.wheat_ash'),
+        ('biopwr.feedstock.rice_resource', 'biopwr.feedstock.rice_obtainable', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.rice_biomass_frac'),
+        ():
+            ('biopwr.feedstock.herb_c'),
+        ():
+            ('biopwr.feedstock.bit_o'),
+        ('biopwr.feedstock.lig_moisture_wet'):
+            ('biopwr.feedstock.lig_moisture'),
+        ('biopwr.feedstock.biomass_frac', 'biopwr.feedstock.total_biomass_ash', 'biopwr.feedstock.coal_frac',
+         'biopwr.feedstock.total_coal_ash'):
+            ('biopwr.feedstock.total_ash'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_resource', 'biopwr.feedstock.total_coal'):
+            ('biopwr.feedstock.bit_coal_frac'),
+        ('biopwr.feedstock.total_coal_hhv'):
+            ('biopwr.feedstock.total_coal_hhv_avg'),
+        ('biopwr.feedstock.bagasse_h'):
+            ('biopwr.feedstock.bagasse_lhv'),
+        ():
+            ('biopwr.feedstock.woody_hhv'),
+        ():
+            ('biopwr.feedstock.bit_h'),
+        ('biopwr.feedstock.feedstock2_c', 'biopwr.feedstock.feedstock2_h', 'biopwr.feedstock.feedstock2_n'):
+            ('biopwr.feedstock.feedstock2_calc_hhv'),
+        ():
+            ('biopwr.feedstock.stover_o'),
+        ('biopwr.feedstock.additional_opt', 'biopwr.feedstock.feedstock2_resource', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.feedstock2_frac'),
+        ('biopwr.feedstock.wheat_moisture_wet'):
+            ('biopwr.feedstock.wheat_moisture'),
+        ('biopwr.feedstock.barley_resource', 'biopwr.feedstock.barley_obtainable', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.barley_frac'),
+        ('biopwr.feedstock.bagasse_frac', 'biopwr.feedstock.bagasse_h', 'biopwr.feedstock.barley_frac',
+         'biopwr.feedstock.barley_h', 'biopwr.feedstock.stover_frac', 'biopwr.feedstock.stover_h',
+         'biopwr.feedstock.rice_frac', 'biopwr.feedstock.rice_h', 'biopwr.feedstock.wheat_frac',
+         'biopwr.feedstock.wheat_h', 'biopwr.feedstock.forest_frac', 'biopwr.feedstock.forest_h',
+         'biopwr.feedstock.mill_frac', 'biopwr.feedstock.mill_h', 'biopwr.feedstock.urban_frac',
+         'biopwr.feedstock.urban_h', 'biopwr.feedstock.woody_frac', 'biopwr.feedstock.woody_h',
+         'biopwr.feedstock.herb_frac', 'biopwr.feedstock.herb_h', 'biopwr.feedstock.feedstock1_frac',
+         'biopwr.feedstock.feedstock1_h', 'biopwr.feedstock.feedstock2_frac', 'biopwr.feedstock.feedstock2_h',
+         'biopwr.feedstock.bit_frac', 'biopwr.feedstock.bit_h', 'biopwr.feedstock.subbit_frac',
+         'biopwr.feedstock.subbit_h', 'biopwr.feedstock.lig_frac', 'biopwr.feedstock.lig_h'):
+            ('biopwr.feedstock.total_h'),
+        ():
+            ('biopwr.feedstock.stover_lhv'),
+        ():
+            ('biopwr.feedstock.bagasse_ash'),
+        ('biopwr.feedstock.wheat_moisture_wet'):
+            ('biopwr.feedstock.wheat_usual_moisture'),
+        ():
+            ('biopwr.feedstock.forest_h'),
+        ('biopwr.feedstock.woody_resource', 'biopwr.feedstock.woody_obtainable', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.woody_biomass_frac'),
+        ('biopwr.feedstock.bagasse_frac', 'biopwr.feedstock.bagasse_c', 'biopwr.feedstock.barley_frac',
+         'biopwr.feedstock.barley_c', 'biopwr.feedstock.stover_frac', 'biopwr.feedstock.stover_c',
+         'biopwr.feedstock.rice_frac', 'biopwr.feedstock.rice_c', 'biopwr.feedstock.wheat_frac',
+         'biopwr.feedstock.wheat_c', 'biopwr.feedstock.forest_frac', 'biopwr.feedstock.forest_c',
+         'biopwr.feedstock.mill_frac', 'biopwr.feedstock.mill_c', 'biopwr.feedstock.urban_frac',
+         'biopwr.feedstock.urban_c', 'biopwr.feedstock.woody_frac', 'biopwr.feedstock.woody_c',
+         'biopwr.feedstock.herb_frac', 'biopwr.feedstock.herb_c', 'biopwr.feedstock.feedstock1_frac',
+         'biopwr.feedstock.feedstock1_c', 'biopwr.feedstock.feedstock2_frac', 'biopwr.feedstock.feedstock2_c',
+         'biopwr.feedstock.bit_frac', 'biopwr.feedstock.bit_c', 'biopwr.feedstock.subbit_frac',
+         'biopwr.feedstock.subbit_c', 'biopwr.feedstock.lig_frac', 'biopwr.feedstock.lig_c'):
+            ('biopwr.feedstock.total_c'),
+        ('biopwr.feedstock.herb_moisture_wet'):
+            ('biopwr.feedstock.herb_moisture'),
+        ():
+            ('biopwr.feedstock.rice_o'),
+        ('biopwr.feedstock.total_biomass', 'biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstock.bagasse_hhv',
+         'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstock.barley_hhv', 'biopwr.feedstock.stover_biomass_frac',
+         'biopwr.feedstock.stover_hhv', 'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstock.rice_hhv',
+         'biopwr.feedstock.wheat_biomass_frac', 'biopwr.feedstock.wheat_hhv', 'biopwr.feedstock.forest_biomass_frac',
+         'biopwr.feedstock.forest_hhv', 'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstock.mill_hhv',
+         'biopwr.feedstock.urban_biomass_frac', 'biopwr.feedstock.urban_hhv', 'biopwr.feedstock.woody_biomass_frac',
+         'biopwr.feedstock.woody_hhv', 'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstock.herb_hhv',
+         'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstock.feedstock1_hhv',
+         'biopwr.feedstock.feedstock2_biomass_frac', 'biopwr.feedstock.feedstock2_hhv'):
+            ('biopwr.feedstock.total_biomass_hhv'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.lig_resource', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.lig_frac'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_coal_frac', 'biopwr.feedstock.subbit_coal_frac',
+         'biopwr.feedstock.lig_coal_frac'):
+            ('biopwr.feedstock.total_coal_lhv'),
+        ('biopwr.feedstock.forest_resource', 'biopwr.feedstock.forest_obtainable', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.forest_frac'),
+        ():
+            ('biopwr.feedstock.barley_ash'),
+        ():
+            ('biopwr.feedstock.stover_c'),
+        ('biopwr.feedstock.bagasse_frac', 'biopwr.feedstock.bagasse_o', 'biopwr.feedstock.barley_frac',
+         'biopwr.feedstock.barley_o', 'biopwr.feedstock.stover_frac', 'biopwr.feedstock.stover_o',
+         'biopwr.feedstock.rice_frac', 'biopwr.feedstock.rice_o', 'biopwr.feedstock.wheat_frac',
+         'biopwr.feedstock.wheat_o', 'biopwr.feedstock.forest_frac', 'biopwr.feedstock.forest_o',
+         'biopwr.feedstock.mill_frac', 'biopwr.feedstock.mill_o', 'biopwr.feedstock.urban_frac',
+         'biopwr.feedstock.urban_o', 'biopwr.feedstock.woody_frac', 'biopwr.feedstock.woody_o',
+         'biopwr.feedstock.herb_frac', 'biopwr.feedstock.herb_o', 'biopwr.feedstock.feedstock1_frac',
+         'biopwr.feedstock.feedstock1_o', 'biopwr.feedstock.feedstock2_frac', 'biopwr.feedstock.feedstock2_o',
+         'biopwr.feedstock.bit_frac', 'biopwr.feedstock.bit_o', 'biopwr.feedstock.subbit_frac',
+         'biopwr.feedstock.subbit_o', 'biopwr.feedstock.lig_frac', 'biopwr.feedstock.lig_o'):
+            ('biopwr.feedstock.total_o'),
+        ():
+            ('biopwr.feedstock.bit_ash'),
+        ():
+            ('biopwr.feedstock.bagasse_h'),
+        ():
+            ('biopwr.feedstock.mill_ash'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_coal_frac', 'biopwr.feedstock.bit_ash',
+         'biopwr.feedstock.subbit_coal_frac', 'biopwr.feedstock.subbit_ash', 'biopwr.feedstock.lig_coal_frac',
+         'biopwr.feedstock.lig_ash'):
+            ('biopwr.feedstock.total_coal_ash'),
+        ('biopwr.feedstock.barley_moisture_wet'):
+            ('biopwr.feedstock.barley_moisture'),
+        ():
+            ('biopwr.feedstock.bagasse_o'),
+        ():
+            ('biopwr.feedstock.stover_h'),
+        ():
+            ('biopwr.feedstock.woody_lhv'),
+        ('biopwr.feedstock.total_biomass', 'biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstock.bagasse_c',
+         'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstock.barley_c', 'biopwr.feedstock.stover_biomass_frac',
+         'biopwr.feedstock.stover_c', 'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstock.rice_c',
+         'biopwr.feedstock.wheat_biomass_frac', 'biopwr.feedstock.wheat_c', 'biopwr.feedstock.forest_biomass_frac',
+         'biopwr.feedstock.forest_c', 'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstock.mill_c',
+         'biopwr.feedstock.urban_biomass_frac', 'biopwr.feedstock.urban_c', 'biopwr.feedstock.woody_biomass_frac',
+         'biopwr.feedstock.woody_c', 'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstock.herb_c',
+         'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstock.feedstock2_biomass_frac'):
+            ('biopwr.feedstock.total_biomass_c'),
+        ('biopwr.feedstock.rice_moisture_wet'):
+            ('biopwr.feedstock.rice_usual_moisture'),
+        ():
+            ('biopwr.feedstock.wheat_lhv'),
+        ('biopwr.feedstock.forest_resource', 'biopwr.feedstock.forest_obtainable', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.forest_biomass_frac'),
+        ():
+            ('biopwr.feedstock.mill_o'),
+        ('biopwr.feedstock.feedstock1_opt', 'biopwr.feedstock.feedstock1_user_hhv',
+         'biopwr.feedstock.feedstock1_calc_hhv'):
+            ('biopwr.feedstock.feedstock1_hhv'),
+        ('biopwr.feedstock.total_biomass', 'biopwr.feedstock.total_coal'):
+            ('biopwr.feedstock.total'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.subbit_resource', 'biopwr.feedstock.total_coal'):
+            ('biopwr.feedstock.subbit_coal_frac'),
+        ('biopwr.plant.nameplate'):
+            ('biopwr.feedstock.total_nameplate'),
+        ('biopwr.feedstock.stover_resource', 'biopwr.feedstock.stover_obtainable', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.stover_frac'),
+        ():
+            ('biopwr.feedstock.forest_c'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.total_coal', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.coal_frac'),
+        ('biopwr.feedstock.feedstock1_moisture_wet'):
+            ('biopwr.feedstock.feedstock1_moisture'),
+        ('biopwr.feedstock.feedstock2_moisture'):
+            ('biopwr.feedstock.feedstock1_usual_moisture'),
+        ():
+            ('biopwr.feedstock.lig_c'),
+        ():
+            ('biopwr.feedstock.rice_c'),
+        ():
+            ('biopwr.feedstock.bagasse_hhv'),
+        ():
+            ('biopwr.feedstock.barley_h'),
+        ('biopwr.feedstock.urban_moisture_wet'):
+            ('biopwr.feedstock.urban_usual_moisture'),
+        ('biopwr.feedstock.total_biomass_hhv'):
+            ('biopwr.feedstock.total_biomass_hhv_avg'),
+        ():
+            ('biopwr.feedstock.herb_ash'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_coal_frac', 'biopwr.feedstock.bit_moisture',
+         'biopwr.feedstock.subbit_coal_frac', 'biopwr.feedstock.subbit_moisture', 'biopwr.feedstock.lig_coal_frac',
+         'biopwr.feedstock.lig_moisture'):
+            ('biopwr.feedstock.total_coal_moisture'),
+        ('biopwr.feedstock.biomass_frac', 'biopwr.feedstock.total_biomass_lhv', 'biopwr.feedstock.coal_frac',
+         'biopwr.feedstock.total_coal_lhv'):
+            ('biopwr.feedstock.total_lhv'),
+        ():
+            ('biopwr.feedstock.forest_ash'),
+        ('biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstock.bagasse_moisture',
+         'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstock.barley_moisture',
+         'biopwr.feedstock.stover_biomass_frac', 'biopwr.feedstock.stover_moisture',
+         'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstock.rice_moisture', 'biopwr.feedstock.wheat_biomass_frac',
+         'biopwr.feedstock.wheat_moisture', 'biopwr.feedstock.forest_biomass_frac', 'biopwr.feedstock.forest_moisture',
+         'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstock.mill_moisture', 'biopwr.feedstock.urban_biomass_frac',
+         'biopwr.feedstock.urban_moisture', 'biopwr.feedstock.woody_biomass_frac', 'biopwr.feedstock.woody_moisture',
+         'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstock.herb_moisture',
+         'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstock.feedstock1_moisture',
+         'biopwr.feedstock.feedstock2_biomass_frac', 'biopwr.feedstock.feedstock2_moisture'):
+            ('biopwr.feedstock.total_biomass_moisture'),
+        ('biopwr.feedstock.mill_resource', 'biopwr.feedstock.mill_obtainable', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.mill_frac'),
+        ():
+            ('biopwr.feedstock.lig_o'),
+        ():
+            ('biopwr.feedstock.urban_lhv'),
+        ('biopwr.feedstock.urban_moisture_wet'):
+            ('biopwr.feedstock.urban_moisture'),
+        ():
+            ('biopwr.feedstock.urban_ash'),
+        ('biopwr.feedstock.bagasse_resource', 'biopwr.feedstock.bagasse_obtainable', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.bagasse_biomass_frac'),
+        ():
+            ('biopwr.feedstock.wheat_c'),
+        ('biopwr.feedstock.bagasse_moisture_wet'):
+            ('biopwr.feedstock.bagasse_usual_moisture'),
+        ('biopwr.feedstock.mill_resource', 'biopwr.feedstock.mill_obtainable', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.mill_biomass_frac'),
+        ('biopwr.feedstock.herb_resource', 'biopwr.feedstock.herb_obtainable', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.herb_frac'),
+        ('biopwr.feedstock.herb_hhv', 'biopwr.feedstock.herb_h'):
+            ('biopwr.feedstock.herb_lhv'),
+        ():
+            ('biopwr.feedstock.rice_h'),
+        ():
+            ('biopwr.feedstock.barley_lhv'),
+        ('biopwr.feedstock.woody_resource', 'biopwr.feedstock.woody_obtainable', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.woody_frac'),
+        ():
+            ('biopwr.feedstock.lig_h'),
+        ('biopwr.feedstock.feedstock2_moisture_wet'):
+            ('biopwr.feedstock.feedstock2_moisture'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_resource', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.bit_frac'),
+        ('biopwr.feedstock.additional_opt', 'biopwr.feedstock.bagasse_resource', 'biopwr.feedstock.bagasse_obtainable',
+         'biopwr.feedstock.barley_resource', 'biopwr.feedstock.barley_obtainable', 'biopwr.feedstock.stover_resource',
+         'biopwr.feedstock.stover_obtainable', 'biopwr.feedstock.rice_resource', 'biopwr.feedstock.rice_obtainable',
+         'biopwr.feedstock.wheat_resource', 'biopwr.feedstock.wheat_obtainable', 'biopwr.feedstock.forest_resource',
+         'biopwr.feedstock.forest_obtainable', 'biopwr.feedstock.mill_resource', 'biopwr.feedstock.mill_obtainable',
+         'biopwr.feedstock.urban_resource', 'biopwr.feedstock.urban_obtainable', 'biopwr.feedstock.woody_resource',
+         'biopwr.feedstock.woody_obtainable', 'biopwr.feedstock.herb_resource', 'biopwr.feedstock.herb_obtainable',
+         'biopwr.feedstock.feedstock1_resource', 'biopwr.feedstock.feedstock2_resource'):
+            ('biopwr.feedstock.total_biomass'),
+        ('biopwr.feedstock.bit_moisture_wet'):
+            ('biopwr.feedstock.bit_moisture'),
+        ('biopwr.feedstock.bit_moisture_wet'):
+            ('biopwr.feedstock.bit_usual_moisture'),
+        ():
+            ('biopwr.feedstock.urban_hhv'),
+        ('biopwr.feedstock.urban_resource', 'biopwr.feedstock.urban_obtainable', 'biopwr.feedstock.total'):
+            ('biopwr.feedstock.urban_frac'),
+        ():
+            ('biopwr.feedstock.forest_hhv'),
+        ():
+            ('biopwr.feedstock.forest_o'),
+        ():
+            ('biopwr.feedstock.mill_lhv'),
+        ():
+            ('biopwr.feedstock.woody_h'),
+        ('biopwr.feedstock.urban_resource', 'biopwr.feedstock.urban_obtainable', 'biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstock.urban_biomass_frac'),
+        ('biopwr.feedstock.total_biomass', 'biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstock.bagasse_ash',
+         'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstock.barley_ash', 'biopwr.feedstock.stover_biomass_frac',
+         'biopwr.feedstock.stover_ash', 'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstock.rice_ash',
+         'biopwr.feedstock.wheat_biomass_frac', 'biopwr.feedstock.wheat_ash', 'biopwr.feedstock.forest_biomass_frac',
+         'biopwr.feedstock.forest_ash', 'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstock.mill_ash',
+         'biopwr.feedstock.urban_biomass_frac', 'biopwr.feedstock.urban_ash', 'biopwr.feedstock.woody_biomass_frac',
+         'biopwr.feedstock.woody_ash', 'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstock.herb_ash',
+         'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstock.feedstock2_biomass_frac'):
+            ('biopwr.feedstock.total_biomass_ash'),
+        ('biopwr.feedstock.mill_moisture_wet'):
+            ('biopwr.feedstock.mill_usual_moisture'),
+        ():
+            ('biopwr.feedstock.subbit_o'),
+        ('biopwr.feedstock.woody_moisture_wet'):
+            ('biopwr.feedstock.woody_moisture'),
+        ():
+            ('biopwr.feedstock.urban_c'),
+        ():
+            ('biopwr.feedstock.mill_h')},
+    'Financial Third Party Ownership': {
+        ('real_discount_rate', 'inflation_rate'):
+            ('nominal_discount_rate')},
+    'HCPV Module': {
+        ('module_a0', 'module_a1', 'module_a2', 'module_a3', 'module_a4'):
+            ('hcpv.module.mam_ref'),
+        ('module_concentration', 'hcpv.module.rad1'):
+            ('hcpv.module.rad1X'),
+        ('hcpv.module.mjeff4', 'hcpv.module.mjeff3', 'hcpv.module.mjeff2', 'hcpv.module.mjeff1', 'hcpv.module.mjeff0'):
+            ('module_mjeff'),
+        ('module_reference', 'hcpv.module.mjeff0', 'hcpv.module.mjeff1', 'hcpv.module.mjeff2', 'hcpv.module.mjeff3',
+         'hcpv.module.mjeff4', 'module_optical_error', 'module_flutter_loss_coeff', 'module_alignment_error',
+         'hcpv.module.mam_ref'):
+            ('hcpv.module.est_eff'),
+        ('hcpv.module.rad4', 'hcpv.module.rad3', 'hcpv.module.rad2', 'hcpv.module.rad1', 'hcpv.module.rad0'):
+            ('module_rad'),
+        ('module_reference', 'hcpv.module.mjeff0', 'hcpv.module.rad0', 'hcpv.module.mjeff1', 'hcpv.module.rad1',
+         'hcpv.module.mjeff2', 'hcpv.module.rad2', 'hcpv.module.mjeff3', 'hcpv.module.rad3', 'hcpv.module.mjeff4',
+         'hcpv.module.rad4', 'hcpv.module.area', 'module_optical_error', 'module_flutter_loss_coeff',
+         'module_alignment_error', 'hcpv.module.mam_ref'):
+            ('hcpv.module.power'),
+        ('module_concentration', 'hcpv.module.rad3'):
+            ('hcpv.module.rad3X'),
+        ('module_concentration', 'hcpv.module.rad4'):
+            ('hcpv.module.rad4X'),
+        ('module_concentration', 'hcpv.module.rad0'):
+            ('hcpv.module.rad0X'),
+        ('module_concentration', 'hcpv.module.rad2'):
+            ('hcpv.module.rad2X'),
+        ('module_reference', 'hcpv.module.rad0', 'hcpv.module.rad1', 'hcpv.module.rad2', 'hcpv.module.rad3',
+         'hcpv.module.rad4', 'module_a', 'module_b', 'module_dT'):
+            ('hcpv.module.cell_temp'),
+        ('module_concentration', 'module_cell_area', 'module_ncells'):
+            ('hcpv.module.area')},
+    'Battery Model Simple': {
+        ():
+            ('batt_simple_meter_position')},
+    'Physical Trough Receiver Type 4': {
+        ('csp_dtr_hce_var1_field_fraction_4', 'csp_dtr_hce_var1_bellows_shadowing_4', 'csp_dtr_hce_var1_hce_dirt_4',
+         'csp_dtr_hce_var1_abs_abs_4', 'csp_dtr_hce_var1_env_trans_4', 'csp_dtr_hce_var2_field_fraction_4',
+         'csp_dtr_hce_var2_bellows_shadowing_4', 'csp_dtr_hce_var2_hce_dirt_4', 'csp_dtr_hce_var2_abs_abs_4',
+         'csp_dtr_hce_var2_env_trans_4', 'csp_dtr_hce_var3_field_fraction_4', 'csp_dtr_hce_var3_bellows_shadowing_4',
+         'csp_dtr_hce_var3_hce_dirt_4', 'csp_dtr_hce_var3_abs_abs_4', 'csp_dtr_hce_var3_env_trans_4',
+         'csp_dtr_hce_var4_field_fraction_4', 'csp_dtr_hce_var4_bellows_shadowing_4', 'csp_dtr_hce_var4_hce_dirt_4',
+         'csp_dtr_hce_var4_abs_abs_4', 'csp_dtr_hce_var4_env_trans_4'):
+            ('csp_dtr_hce_optical_eff_4'),
+        ('csp_dtr_hce_var1_field_fraction_4', 'csp_dtr_hce_var1_rated_heat_loss_4', 'csp_dtr_hce_var2_field_fraction_4',
+         'csp_dtr_hce_var2_rated_heat_loss_4', 'csp_dtr_hce_var3_field_fraction_4',
+         'csp_dtr_hce_var3_rated_heat_loss_4', 'csp_dtr_hce_var4_field_fraction_4',
+         'csp_dtr_hce_var4_rated_heat_loss_4'):
+            ('csp_dtr_hce_design_heat_loss_4')},
+    'Physical Trough Collector Type 4': {
+        ('csp_dtr_sca_tracking_error_4', 'csp_dtr_sca_geometry_effects_4', 'csp_dtr_sca_clean_reflectivity_4',
+         'csp_dtr_sca_mirror_dirt_4', 'csp_dtr_sca_general_error_4'):
+            ('csp_dtr_sca_calc_sca_eff_4'),
+        ('csp_dtr_sca_ave_focal_len_4', 'csp_dtr_sca_calc_theta_4', 'csp_dtr_sca_piping_dist_4'):
+            ('csp_dtr_sca_calc_end_gain_4'),
+        ('csp_dtr_sca_calc_zenith_4', 'tilt', 'azimuth'):
+            ('csp_dtr_sca_calc_costh_4'),
+        ('lat'):
+            ('csp_dtr_sca_calc_latitude_4'),
+        ('csp_dtr_sca_calc_costh_4'):
+            ('csp_dtr_sca_calc_theta_4'),
+        ('lat'):
+            ('csp_dtr_sca_calc_zenith_4'),
+        ('csp_dtr_sca_length_4', 'csp_dtr_sca_ncol_per_sca_4'):
+            ('csp_dtr_sca_ap_length_4'),
+        ('IAMs_4', 'csp_dtr_sca_calc_theta_4', 'csp_dtr_sca_calc_costh_4'):
+            ('csp_dtr_sca_calc_iam_4'),
+        ('csp_dtr_sca_ave_focal_len_4', 'csp_dtr_sca_calc_theta_4', 'nSCA', 'csp_dtr_sca_calc_end_gain_4',
+         'csp_dtr_sca_length_4', 'csp_dtr_sca_ncol_per_sca_4'):
+            ('csp_dtr_sca_calc_end_loss_4')},
+    'Linear Fresnel Parasitics': {
+        ('PB_fixed_par', 'demand_var'):
+            ('csp.lf.par.fixed_total'),
+        ('csp.lf.par.bop_val', 'csp.lf.par.bop_pf', 'csp.lf.par.bop_c0', 'csp.lf.par.bop_c1', 'csp.lf.par.bop_c2'):
+            ('bop_array'),
+        ('SCA_drives_elec', 'csp.lf.sf.dp.actual_aper'):
+            ('csp.lf.par.tracking_total'),
+        ('csp.lf.par.aux_val', 'csp.lf.par.aux_pf', 'csp.lf.par.aux_c0', 'csp.lf.par.aux_c1', 'csp.lf.par.aux_c2'):
+            ('aux_array'),
+        ('csp.lf.par.bop_val', 'csp.lf.par.bop_pf', 'csp.lf.par.bop_c0', 'csp.lf.par.bop_c1', 'csp.lf.par.bop_c2',
+         'demand_var'):
+            ('csp.lf.par.bop_total'),
+        ('csp.lf.par.aux_val', 'csp.lf.par.aux_pf', 'csp.lf.par.aux_c0', 'csp.lf.par.aux_c1', 'csp.lf.par.aux_c2',
+         'demand_var'):
+            ('csp.lf.par.aux_total')},
+    'ISCC Molten Salt Tower Receiver': {
+        ('piping_length', 'piping_loss'):
+            ('piping_loss_tot'),
+        ('THT', 'piping_length_mult', 'piping_length_const'):
+            ('piping_length'),
+        ('N_panels'):
+            ('n_flux_x'),
+        ():
+            ('tower_technology'),
+        ():
+            ('conv_forced'),
+        ('THT'):
+            ('h_tower'),
+        ('h_rec_panel', 'csp.pt.rec.cav_lip_height_ratio'):
+            ('csp.pt.rec.cav_lip_height'),
+        ('D_rec', 'H_rec'):
+            ('rec_aspect'),
+        ():
+            ('rec_angle'),
+        ():
+            ('h_wind_meas'),
+        ():
+            ('eps_wavelength'),
+        ():
+            ('conv_wind_dir'),
+        ():
+            ('n_flux_y'),
+        ():
+            ('conv_coupled'),
+        ('T_htf_cold_des', 'T_htf_hot_des'):
+            ('csp.pt.rec.htf_t_avg'),
+        ('csp.pt.rec.htf_type', 'csp.pt.rec.htf_t_avg', 'field_fl_props'):
+            ('csp.pt.rec.htf_c_avg'),
+        ('csp.pt.rec.max_flow_to_rec'):
+            ('m_dot_htf_max'),
+        ('solarm', 'q_pb_design'):
+            ('Q_rec_des'),
+        ('csp.pt.rec.cav_ap_height'):
+            ('csp.pt.rec.cav_panel_height'),
+        ('rec_d_spec', 'csp.pt.rec.cav_ap_hw_ratio'):
+            ('csp.pt.rec.cav_ap_height'),
+        ():
+            ('conv_model'),
+        ('csp.pt.rec.max_oper_frac', 'Q_rec_des', 'csp.pt.rec.htf_c_avg', 'T_htf_hot_des', 'T_htf_cold_des'):
+            ('csp.pt.rec.max_flow_to_rec'),
+        ('csp.pt.rec.htf_type'):
+            ('rec_htf'),
+        ('csp.pt.rec.flow_pattern'):
+            ('Flow_type'),
+        ('field_fl_props'):
+            ('user_fluid'),
+        ('csp.pt.rec.material_type'):
+            ('mat_tube')},
+    'Battery Current and Capacity': {
+        (
+        'batt_Qexp_percent', 'batt_Qfull', 'batt_Qnom_percent', 'batt_computed_bank_capacity', 'batt_computed_voltage'):
+            ('batt_Qexp', 'batt_Qnom', 'batt_Qfull_flow'),
+        ('batt_computed_strings', 'LeadAcid_q10', 'batt_Qfull', 'LeadAcid_q20', 'LeadAcid_qn'):
+            ('LeadAcid_q10_computed', 'LeadAcid_q20_computed', 'LeadAcid_qn_computed'),
+        ('batt_size_choice', 'batt_chem', 'batt_bank_power', 'batt_bank_size', 'batt_bank_size_dc_ac',
+         'batt_dc_ac_efficiency', 'batt_bank_power_dc_ac', 'batt_Qfull', 'batt_bank_voltage', 'batt_Vnom_default',
+         'batt_bank_ncells_serial', 'batt_bank_nstrings', 'batt_C_rate_max_discharge_input',
+         'batt_C_rate_max_charge_input', 'batt_current_choice', 'batt_cell_power_discharge_max',
+         'batt_cell_current_discharge_max', 'batt_bank_nseries_stacks', 'batt_bank_size_specify',
+         'batt_cell_power_charge_max', 'batt_cell_current_charge_max'):
+            ('batt_computed_voltage', 'batt_computed_series', 'batt_computed_strings', 'batt_num_cells',
+             'batt_computed_bank_capacity', 'batt_power_discharge_max', 'batt_power_charge_max', 'batt_time_capacity',
+             'batt_C_rate_max_charge', 'batt_C_rate_max_discharge', 'batt_current_charge_max',
+             'batt_current_discharge_max', 'batt_computed_stacks_series')},
+    'Geothermal Costs': {
+        ('geotherm.cost.recap'):
+            ('system_recapitalization_cost'),
+        ():
+            ('system_use_lifetime_output'),
+        ('total_installed_cost'):
+            ('geotherm.cost.total_installed_millions'),
+        ('sales_tax_rate'):
+            ('geotherm.cost.sales_tax.value'),
+        ('geotherm.cost.prod_num_wells', 'geotherm.cost.inj_num_wells'):
+            ('geotherm.cost.prod_inj_num_wells'),
+        ('geotherm.cost.prod_cost_curve', 'resource_depth'):
+            ('geotherm.cost.prod_per_well'),
+        ('geotherm.cost.plm.fixed', 'geotherm.cost.plm.nonfixed'):
+            ('geotherm.cost.plm.total'),
+        ('geotherm.cost.inj_cost_curve', 'resource_depth'):
+            ('geotherm.cost.inj_per_well'),
+        ('geotherm.cost.plant_total.calc', 'geotherm.cost.plant_total.amount_specified', 'geotherm.cost.plant_total'):
+            ('geotherm.cost.plant_total.amount'),
+        ('geotherm.cost.conf_num_wells', 'geotherm.cost.confirm_wells_percent'):
+            ('geotherm.cost.confirm_wells_num'),
+        ('geotherm.cost.conf_per_well', 'geotherm.cost.conf_num_wells'):
+            ('geotherm.cost.conf_drill'),
+        ('pump_depth'):
+            ('geotherm.cost.pump_depth'),
+        ('geotherm.cost.contingency_percent', 'geotherm.cost.capital_total'):
+            ('geotherm.cost.contingency'),
+        ('geotherm.cost.inj_per_well', 'geotherm.cost.inj_num_wells'):
+            ('geotherm.cost.inj_drill'),
+        ('total_direct_cost', 'total_indirect_cost'):
+            ('total_installed_cost'),
+        ('gross_output'):
+            ('geotherm.cost.plant_size'),
+        ('geotherm.cost.surf_per_well', 'geotherm.cost.surf_num_wells'):
+            ('geotherm.cost.surf_non_drill'),
+        ('geotherm.cost.plant_auto_estimate', 'geotherm.cost.plant_per_kW_input', 'geotherm.cost.plant_size',
+         'geotherm.cost.plant_per_kW'):
+            ('geotherm.cost.plant_total'),
+        ('pump_size_hp'):
+            ('geotherm.cost.pump_size'),
+        ('geotherm.cost.inj_wells_drilled'):
+            ('geotherm.cost.inj_num_wells'),
+        ('total_installed_cost', 'geotherm.net_output'):
+            ('geotherm.cost.installed_per_capacity'),
+        ('geotherm.cost.stim_per_well', 'geotherm.cost.stim_num_wells'):
+            ('geotherm.cost.stim_non_drill'),
+        ('geotherm.cost.prod_drill', 'geotherm.cost.inj_drill'):
+            ('geotherm.cost.prod_inj_drill'),
+        ('geotherm.cost.surf_non_drill'):
+            ('geotherm.cost.surf_total'),
+        ('geotherm.cost.prod_wells_drilled'):
+            ('geotherm.cost.prod_num_wells'),
+        ('geotherm.cost.pump_per_foot', 'geotherm.cost.pump_depth'):
+            ('geotherm.cost.pump_installation'),
+        ('geotherm.cost.prod_req'):
+            ('geotherm.cost.num_pumps'),
+        ('geotherm.cost.epc.fixed', 'geotherm.cost.epc.nonfixed'):
+            ('geotherm.cost.epc.total'),
+        ('geotherm.cost.prod_inj_drill', 'geotherm.cost.prod_inj_non_drill'):
+            ('geotherm.cost.prod_inj_total'),
+        ('geotherm.cost.stim_non_drill'):
+            ('geotherm.cost.stim_total'),
+        ('geotherm.cost.prod_req', 'geotherm.cost.inj_num_wells'):
+            ('geotherm.cost.stim_num_wells'),
+        ('geotherm.cost.prod_req', 'geotherm.cost.confirm_wells_num'):
+            ('geotherm.cost.prod_wells_drilled'),
+        ('geotherm.cost.pump_per_hp', 'geotherm.cost.pump_size'):
+            ('geotherm.cost.pump_per_pump'),
+        ('geotherm.cost.prod_req', 'geotherm.cost.inj_num_wells'):
+            ('geotherm.cost.surf_num_wells'),
+        ('geotherm.cost.contingency', 'geotherm.cost.capital_total'):
+            ('total_direct_cost'),
+        ('geotherm.cost.pump_total_per_pump', 'geotherm.cost.num_pumps'):
+            ('geotherm.cost.pumps_total'),
+        ('geotherm.cost.drilling.calc', 'geotherm.cost.drilling.amount_specified', 'geotherm.cost.expl_total',
+         'geotherm.cost.conf_total', 'geotherm.cost.prod_inj_total', 'geotherm.cost.surf_total',
+         'geotherm.cost.stim_total'):
+            ('geotherm.cost.drilling.amount'),
+        ('geotherm.cost.recap_use_calc', 'geotherm.cost.recap_specified', 'geotherm.cost.conf_drill',
+         'geotherm.cost.prod_inj_drill', 'geotherm.cost.surf_total', 'geotherm.cost.pumps_total'):
+            ('geotherm.cost.recap'),
+        ('geotherm.cost.indirect.calc', 'geotherm.cost.indirect.amount_specified', 'geotherm.cost.epc.total',
+         'geotherm.cost.plm.total', 'geotherm.cost.sales_tax.total'):
+            ('total_indirect_cost'),
+        ('geotherm.cost.prod_req', 'geotherm.cost.inj_prod_well_ratio'):
+            ('geotherm.cost.inj_wells_drilled'),
+        ('geotherm.cost.pump_installation', 'geotherm.cost.pump_per_pump'):
+            ('geotherm.cost.pump_total_per_pump'),
+        ('total_direct_cost', 'geotherm.cost.plm.percent'):
+            ('geotherm.cost.plm.nonfixed'),
+        ('total_direct_cost', 'geotherm.cost.epc.percent'):
+            ('geotherm.cost.epc.nonfixed'),
+        ():
+            ('system_use_recapitalization'),
+        ('geotherm.cost.expl_per_well', 'geotherm.cost.expl_num_wells'):
+            ('geotherm.cost.expl_drill'),
+        ('geotherm.cost.expl_multiplier', 'geotherm.cost.prod_per_well'):
+            ('geotherm.cost.expl_per_well'),
+        ('geotherm.cost.pumping.calc', 'geotherm.cost.pumping.amount_specified', 'geotherm.cost.pumps_total'):
+            ('geotherm.cost.pumping.amount'),
+        ('geotherm.cost.conf_multiplier', 'geotherm.cost.prod_per_well'):
+            ('geotherm.cost.conf_per_well'),
+        ('geotherm.cost.drilling.amount', 'geotherm.cost.plant_total.amount', 'geotherm.cost.pumping.amount'):
+            ('geotherm.cost.capital_total'),
+        ('geotherm.cost.plant_auto_estimate', 'nameplate', 'resource_type', 'resource_temp', 'resource_depth',
+         'geothermal_analysis_period', 'model_choice', 'analysis_type', 'num_wells', 'conversion_type',
+         'plant_efficiency_input', 'conversion_subtype', 'decline_type', 'temp_decline_rate', 'temp_decline_max',
+         'wet_bulb_temp', 'ambient_pressure', 'well_flow_rate', 'pump_efficiency', 'delta_pressure_equip',
+         'excess_pressure_pump', 'well_diameter', 'casing_size', 'inj_well_diam', 'design_temp', 'specify_pump_work',
+         'specified_pump_work_amount', 'rock_thermal_conductivity', 'rock_specific_heat', 'rock_density',
+         'reservoir_pressure_change_type', 'reservoir_pressure_change', 'reservoir_width', 'reservoir_height',
+         'reservoir_permeability', 'inj_prod_well_distance', 'subsurface_water_loss', 'fracture_aperature',
+         'fracture_width', 'num_fractures', 'fracture_angle', 'hr_pl_nlev', 'geotherm.cost.plant_size'):
+            ('geotherm.cost.plant_per_kW'),
+        ('num_wells_getem'):
+            ('geotherm.cost.prod_req'),
+        ('geotherm.cost.prod_per_well', 'geotherm.cost.prod_num_wells'):
+            ('geotherm.cost.prod_drill'),
+        ('geotherm.cost.conf_drill', 'geotherm.cost.conf_non_drill'):
+            ('geotherm.cost.conf_total'),
+        ('geotherm.cost.sales_tax.value', 'total_direct_cost', 'geotherm.cost.sales_tax.percent'):
+            ('geotherm.cost.sales_tax.total'),
+        ('geotherm.cost.expl_drill', 'geotherm.cost.expl_non_drill'):
+            ('geotherm.cost.expl_total')},
+    'Tower SolarPilot Capital Costs': {
+        ('csp.pt.cost.heliostats_m2', 'site_spec_cost', 'heliostat_spec_cost', 'cost_sf_fixed', 'ui_tower_height',
+         'ui_receiver_height', 'ui_heliostat_height', 'tower_fixed_cost', 'tower_exp', 'csp.pt.cost.receiver.area',
+         'rec_ref_cost', 'rec_ref_area', 'rec_cost_exp', 'csp.pt.cost.storage_mwht', 'tes_spec_cost',
+         'csp.pt.cost.power_block_mwe', 'plant_spec_cost', 'bop_spec_cost', 'fossil_spec_cost', 'contingency_rate',
+         'csp.pt.cost.total_land_area', 'csp.pt.cost.nameplate', 'csp.pt.cost.epc.per_acre', 'csp.pt.cost.epc.percent',
+         'csp.pt.cost.epc.per_watt', 'csp.pt.cost.epc.fixed', 'land_spec_cost', 'csp.pt.cost.plm.percent',
+         'csp.pt.cost.plm.per_watt', 'csp.pt.cost.plm.fixed', 'sales_tax_frac', 'csp.pt.cost.sales_tax.value'):
+            ('csp.pt.cost.site_improvements', 'csp.pt.cost.heliostats', 'csp.pt.cost.tower', 'csp.pt.cost.receiver',
+             'csp.pt.cost.storage', 'csp.pt.cost.power_block', 'csp.pt.cost.bop', 'csp.pt.cost.fossil',
+             'ui_direct_subtotal', 'csp.pt.cost.contingency', 'total_direct_cost', 'csp.pt.cost.epc.total',
+             'csp.pt.cost.plm.total', 'csp.pt.cost.sales_tax.total', 'total_indirect_cost', 'total_installed_cost',
+             'csp.pt.cost.installed_per_capacity'),
+        ():
+            ('system_use_lifetime_output'),
+        ('sales_tax_rate'):
+            ('csp.pt.cost.sales_tax.value'),
+        ('P_ref', 'demand_var'):
+            ('csp.pt.cost.power_block_mwe'),
+        ('P_ref', 'design_eff', 'tshours'):
+            ('csp.pt.cost.storage_mwht'),
+        ('receiver_type', 'rec_height', 'D_rec', 'rec_d_spec', 'csp.pt.rec.cav_ap_height', 'd_rec'):
+            ('csp.pt.cost.receiver.area'),
+        ('helio_height'):
+            ('ui_heliostat_height'),
+        ('nameplate'):
+            ('csp.pt.cost.nameplate'),
+        ('receiver_type', 'rec_height', 'csp.pt.rec.cav_ap_height'):
+            ('csp.pt.cost.rec_height'),
+        ('rec_height'):
+            ('ui_receiver_height'),
+        ():
+            ('system_use_recapitalization'),
+        ('THT', 'h_tower'):
+            ('ui_tower_height'),
+        ('csp.pt.sf.total_land_area'):
+            ('csp.pt.cost.total_land_area'),
+        ('A_sf_UI'):
+            ('csp.pt.cost.site_improvements_m2'),
+        ('A_sf_UI'):
+            ('csp.pt.cost.heliostats_m2')},
+    'Physical Trough Collector Header': {
+        ('IAMs_1', 'IAMs_2', 'IAMs_3', 'IAMs_4'):
+            ('IAM_matrix'),
+        ('csp_dtr_sca_w_profile_1', 'csp_dtr_sca_w_profile_2', 'csp_dtr_sca_w_profile_3', 'csp_dtr_sca_w_profile_4',
+         'arr_collectors_in_loop', 'csp_dtr_sca_aperture_1', 'csp_dtr_sca_aperture_2', 'csp_dtr_sca_aperture_3',
+         'csp_dtr_sca_aperture_4', 'csp_dtr_sca_tracking_error_1', 'csp_dtr_sca_tracking_error_2',
+         'csp_dtr_sca_tracking_error_3', 'csp_dtr_sca_tracking_error_4', 'csp_dtr_sca_geometry_effects_1',
+         'csp_dtr_sca_geometry_effects_2', 'csp_dtr_sca_geometry_effects_3', 'csp_dtr_sca_geometry_effects_4',
+         'csp_dtr_sca_clean_reflectivity_1', 'csp_dtr_sca_clean_reflectivity_2', 'csp_dtr_sca_clean_reflectivity_3',
+         'csp_dtr_sca_clean_reflectivity_4', 'csp_dtr_sca_mirror_dirt_1', 'csp_dtr_sca_mirror_dirt_2',
+         'csp_dtr_sca_mirror_dirt_3', 'csp_dtr_sca_mirror_dirt_4', 'csp_dtr_sca_general_error_1',
+         'csp_dtr_sca_general_error_2', 'csp_dtr_sca_general_error_3', 'csp_dtr_sca_general_error_4',
+         'csp_dtr_sca_ave_focal_len_1', 'csp_dtr_sca_ave_focal_len_2', 'csp_dtr_sca_ave_focal_len_3',
+         'csp_dtr_sca_ave_focal_len_4', 'csp_dtr_sca_length_1', 'csp_dtr_sca_length_2', 'csp_dtr_sca_length_3',
+         'csp_dtr_sca_length_4', 'csp_dtr_sca_ap_length_1', 'csp_dtr_sca_ap_length_2', 'csp_dtr_sca_ap_length_3',
+         'csp_dtr_sca_ap_length_4', 'csp_dtr_sca_ncol_per_sca_1', 'csp_dtr_sca_ncol_per_sca_2',
+         'csp_dtr_sca_ncol_per_sca_3', 'csp_dtr_sca_ncol_per_sca_4', 'csp_dtr_sca_piping_dist_1',
+         'csp_dtr_sca_piping_dist_2', 'csp_dtr_sca_piping_dist_3', 'csp_dtr_sca_piping_dist_4'):
+            ('W_aperture', 'max_collector_width', 'A_aperture', 'TrackingError', 'GeomEffects', 'Rho_mirror_clean',
+             'Dirt_mirror', 'Error', 'Ave_Focal_Length', 'L_SCA', 'L_aperture', 'ColperSCA', 'Distance_SCA'),
+        ():
+            ('nColt'),
+        ('SCAInfoArray', 'nColt'):
+            ('collectors_in_field', 'arr_collectors_in_loop')},
+    'Tower Capital Costs': {
+        ('csp.pt.cost.heliostats_m2', 'csp.pt.cost.site_improvements_per_m2', 'csp.pt.cost.heliostats_per_m2',
+         'csp.pt.cost.fixed_sf', 'ui_tower_height', 'ui_receiver_height', 'ui_heliostat_height',
+         'csp.pt.cost.tower.fixed', 'csp.pt.cost.tower.scaling_exp', 'csp.pt.cost.receiver.area',
+         'csp.pt.cost.receiver.ref_cost', 'csp.pt.cost.receiver.ref_area', 'csp.pt.cost.receiver.scaling_exp',
+         'csp.pt.cost.storage_mwht', 'csp.pt.cost.storage_per_kwht', 'csp.pt.cost.power_block_mwe',
+         'csp.pt.cost.power_block_per_kwe', 'csp.pt.cost.bop_per_kwe', 'csp.pt.cost.fossil_per_kwe',
+         'csp.pt.cost.contingency_percent', 'csp.pt.cost.total_land_area', 'csp.pt.cost.nameplate',
+         'csp.pt.cost.epc.per_acre', 'csp.pt.cost.epc.percent', 'csp.pt.cost.epc.per_watt', 'csp.pt.cost.epc.fixed',
+         'csp.pt.cost.plm.per_acre', 'csp.pt.cost.plm.percent', 'csp.pt.cost.plm.per_watt', 'csp.pt.cost.plm.fixed',
+         'csp.pt.cost.sales_tax.percent', 'csp.pt.cost.sales_tax.value'):
+            ('csp.pt.cost.site_improvements', 'csp.pt.cost.heliostats', 'csp.pt.cost.tower', 'csp.pt.cost.receiver',
+             'csp.pt.cost.storage', 'csp.pt.cost.power_block', 'csp.pt.cost.bop', 'csp.pt.cost.fossil',
+             'ui_direct_subtotal', 'csp.pt.cost.contingency', 'total_direct_cost', 'csp.pt.cost.epc.total',
+             'csp.pt.cost.plm.total', 'csp.pt.cost.sales_tax.total', 'total_indirect_cost', 'total_installed_cost',
+             'csp.pt.cost.installed_per_capacity'),
+        ():
+            ('system_use_lifetime_output'),
+        ('sales_tax_rate'):
+            ('csp.pt.cost.sales_tax.value'),
+        ('P_ref', 'demand_var'):
+            ('csp.pt.cost.power_block_mwe'),
+        ('P_ref', 'design_eff', 'tshours'):
+            ('csp.pt.cost.storage_mwht'),
+        ('receiver_type', 'H_rec', 'D_rec', 'rec_d_spec', 'csp.pt.rec.cav_ap_height', 'd_rec'):
+            ('csp.pt.cost.receiver.area'),
+        ('helio_height'):
+            ('ui_heliostat_height'),
+        ('nameplate'):
+            ('csp.pt.cost.nameplate'),
+        ('receiver_type', 'H_rec', 'csp.pt.rec.cav_ap_height'):
+            ('csp.pt.cost.rec_height'),
+        ('H_rec'):
+            ('ui_receiver_height'),
+        ():
+            ('system_use_recapitalization'),
+        ('THT', 'h_tower'):
+            ('ui_tower_height'),
+        ('csp.pt.sf.total_land_area'):
+            ('csp.pt.cost.total_land_area'),
+        ('A_sf'):
+            ('csp.pt.cost.site_improvements_m2'),
+        ('A_sf'):
+            ('csp.pt.cost.heliostats_m2')},
+    'PBNS Power Block': {
+        ('nameplate'):
+            ('system_capacity'),
+        ('csp.pbns.condenser_type'):
+            ('CT'),
+        ('csp.pbns.fossil_mode_st', 'csp.pbns.fossil_mode_lf'):
+            ('fossil_mode'),
+        ('demand_var', 'eta_ref'):
+            ('q_pb_des'),
+        ('demand_var', 'csp.pbns.gross_net_conv_factor'):
+            ('nameplate')},
+    'Tower Solar Field': {
+        ():
+            ('opt_flux_penalty'),
+        ():
+            ('opt_algorithm'),
+        ('dni_des'):
+            ('dni_des_calc'),
+        ('csp.pt.cost.fossil_per_kwe'):
+            ('fossil_spec_cost'),
+        ('csp.pt.cost.sales_tax.percent'):
+            ('sales_tax_frac'),
+        ('csp.pt.cost.contingency_percent'):
+            ('contingency_rate'),
+        ('csp.pt.cost.storage_per_kwht'):
+            ('tes_spec_cost'),
+        ('csp.pt.cost.bop_per_kwe'):
+            ('bop_spec_cost'),
+        ('csp.pt.cost.heliostats_per_m2'):
+            ('heliostat_spec_cost'),
+        ('override_layout'):
+            ('run_type'),
+        ('csp.pt.cost.receiver.ref_cost'):
+            ('rec_ref_cost'),
+        ('helio_optical_error_mrad'):
+            ('helio_optical_error'),
+        ('helio_positions', 'c_atm_0', 'c_atm_1', 'c_atm_2', 'c_atm_3', 'THT'):
+            ('c_atm_info'),
+        ('csp.pt.cost.plm.per_acre'):
+            ('land_spec_cost'),
+        ():
+            ('V_wind_10'),
+        ('csp.pt.sf.fixed_land_area', 'land_area_base', 'csp.pt.sf.land_overhead_factor'):
+            ('csp.pt.sf.total_land_area'),
+        ('THT'):
+            ('csp.pt.sf.tower_height'),
+        ('A_sf'):
+            ('helio_area_tot'),
+        ('csp.pt.cost.site_improvements_per_m2'):
+            ('site_spec_cost'),
+        ('csp.pt.cost.receiver.ref_area'):
+            ('rec_ref_area'),
+        ('helio_width', 'helio_height', 'dens_mirror', 'n_hel'):
+            ('A_sf'),
+        ('csp.pt.cost.receiver.scaling_exp'):
+            ('rec_cost_exp'),
+        ():
+            ('field_control'),
+        ('csp.pt.cost.power_block_per_kwe'):
+            ('plant_spec_cost'),
+        ('csp.pt.cost.tower.scaling_exp'):
+            ('tower_exp'),
+        ('csp.pt.cost.fixed_sf'):
+            ('cost_sf_fixed'),
+        ('helio_optical_error_mrad'):
+            ('error_equiv'),
+        ('helio_positions'):
+            ('n_hel'),
+        ('land_max', 'THT'):
+            ('land_max_calc'),
+        ('H_rec'):
+            ('rec_height'),
+        ('override_opt'):
+            ('is_optimize'),
+        ('n_hel', 'csp.pt.sf.heliostat_area'):
+            ('csp.pt.sf.total_reflective_area'),
+        ('Q_rec_des'):
+            ('q_design'),
+        ('helio_height', 'helio_width', 'dens_mirror'):
+            ('csp.pt.sf.heliostat_area'),
+        ('land_min', 'THT'):
+            ('land_min_calc'),
+        ('csp.pt.cost.tower.fixed'):
+            ('tower_fixed_cost')},
+    'Generic CSP Solar Field': {
+        ('csp.gss.sf.wspd_loss_f3', 'csp.gss.sf.wspd_loss_f2', 'csp.gss.sf.wspd_loss_f1', 'csp.gss.sf.wspd_loss_f0'):
+            ('f_v_wind_loss_des'),
+        ('csp.gss.sf.wspd_loss_f3', 'csp.gss.sf.wspd_loss_f2', 'csp.gss.sf.wspd_loss_f1', 'csp.gss.sf.wspd_loss_f0'):
+            ('sfhlV_coefs'),
+        ('csp.gss.sf.ambt_loss_f3', 'csp.gss.sf.ambt_loss_f2', 'csp.gss.sf.ambt_loss_f1', 'csp.gss.sf.ambt_loss_f0'):
+            ('sfhlT_coefs'),
+        ('qsf_des', 'csp.gss.sf.design_thermal_loss', 'csp.gss.sf.total_opt_eff', 'irr_des'):
+            ('csp.gss.sf.field_area'),
+        ('csp.gss.sf.irr_loss_f3', 'csp.gss.sf.irr_loss_f2', 'csp.gss.sf.irr_loss_f1', 'csp.gss.sf.irr_loss_f0'):
+            ('f_dni_loss_des'),
+        ('csp.gss.sf.ambt_loss_f3', 'csp.gss.sf.ambt_loss_f2', 'csp.gss.sf.ambt_loss_f1', 'csp.gss.sf.ambt_loss_f0'):
+            ('f_t_amb_loss_des'),
+        ('csp.gss.sf.irr_loss_f3', 'csp.gss.sf.irr_loss_f2', 'csp.gss.sf.irr_loss_f1', 'csp.gss.sf.irr_loss_f0'):
+            ('sfhlQ_coefs'),
+        ('csp.gss.sf.rad_type'):
+            ('rad_type'),
+        ('csp.gss.sf.rad_type'):
+            ('track_mode'),
+        ('f_sfhl_ref', 'qsf_des'):
+            ('csp.gss.sf.design_thermal_loss'),
+        ('OpticalTable', 'istableunsorted'):
+            ('csp.gss.sf.peak_opt_eff'),
+        ('csp.gss.sf.peak_opt_eff', 'eta_opt_soil', 'eta_opt_gen'):
+            ('csp.gss.sf.total_opt_eff'),
+        ('csp.gss.solf.fixed_land_area', 'csp.gss.solf.land_overhead_factor'):
+            ('csp.gss.solf.total_land_area'),
+        ('csp.gss.sf.field_area'):
+            ('csp.gss.solf.fixed_land_area'),
+        ('f_dni_loss_des', 'f_t_amb_loss_des', 'f_v_wind_loss_des'):
+            ('f_loss_tot_des'),
+        ('w_des', 'eta_des', 'solarm'):
+            ('qsf_des')},
+    'Battery Thermal': {
+        ('solar_resource_file', 'spec_mode', 'energy_output_array', 'batt_thermal_choice',
+         'batt_room_temperature_single', 'batt_room_temperature_vector'):
+            ('batt_room_temperature_celsius'),
+        ('batt_volume'):
+            ('batt_width'),
+        ('batt_volume'):
+            ('batt_length'),
+        ('batt_computed_bank_capacity', 'batt_specific_energy_per_volume'):
+            ('batt_volume'),
+        ('batt_volume'):
+            ('batt_height'),
+        ('batt_computed_bank_capacity', 'batt_specific_energy_per_mass'):
+            ('batt_mass')},
+    'Empirical Trough Thermal Storage': {
+        ('ui_tes_htf_type', 'ui_field_htf_type', 'ui_q_design', 'TurTesOutAdj', 'TurTesEffAdj', 'MaxGrOut'):
+            ('PFSmax'),
+        ('ui_q_design'):
+            ('ui_tes_q_design'),
+        ('TSHOURS', 'ui_q_design'):
+            ('calc_max_energy'),
+        ('ui_tes_htf_type', 'ui_field_htf_type', 'Solar_Field_Mult'):
+            ('calc_heat_ex_duty'),
+        ('ui_tes_htf_type', 'ui_field_htf_type', 'ui_q_design', 'Solar_Field_Mult', 'MaxGrOut', 'calc_heat_ex_duty'):
+            ('PTSmax'),
+        ('ui_tes_htf_type'):
+            ('calc_htf_max_opt_temp'),
+        ('ui_tes_htf_type'):
+            ('calc_htf_min_opt_temp')},
+    'Rankine Cycle and Hybrid Cooling': {
+        ('hybrid_tou1', 'hybrid_tou2', 'hybrid_tou3', 'hybrid_tou4', 'hybrid_tou5', 'hybrid_tou6', 'hybrid_tou7',
+         'hybrid_tou8', 'hybrid_tou9'):
+            ('F_wc'),
+        ('combo_condenser_type'):
+            ('CT'),
+        ('pressure_mode'):
+            ('tech_type')},
+    'Direct Steam Tower Parasitics': {
+        ():
+            ('bop_array'),
+        ('aux_par', 'aux_par_f', 'aux_par_0', 'aux_par_1', 'aux_par_2', 'demand_var'):
+            ('csp.dst.calc.aux'),
+        ('bop_par', 'bop_par_f', 'bop_par_0', 'bop_par_1', 'bop_par_2', 'demand_var'):
+            ('csp.dst.calc.bop'),
+        ('THT', 'piping_length_mult', 'piping_length_add'):
+            ('Piping_length'),
+        ('Piping_length', 'Piping_loss'):
+            ('Piping_loss_tot'),
+        ():
+            ('aux_array')},
+    'Financial Debt DSCR or Debt Fraction': {
+        ('real_discount_rate', 'inflation_rate', 'debt_percent', 'federal_tax_rate', 'state_tax_rate', 'term_int_rate'):
+            ('ui_wacc')},
+    'Battery Dispatch Front of Meter': {
+        ('batt_dispatch_choice', 'dispatch_factor1', 'dispatch_factor2', 'dispatch_factor3', 'dispatch_factor4',
+         'dispatch_factor5', 'dispatch_factor6', 'dispatch_factor7', 'dispatch_factor8', 'dispatch_factor9'):
+            ('dispatch_tod_factors')},
+    'Linear Fresnel Boiler Geometry': {
+        ('csp.lf.geom1.var1.broken_glass', 'csp.lf.geom1.var2.broken_glass', 'csp.lf.geom1.var3.broken_glass',
+         'csp.lf.geom1.var4.broken_glass'):
+            ('csp.lf.geom1.glazing_intact'),
+        ('csp.lf.geom1.var1.gas_type', 'csp.lf.geom1.var2.gas_type', 'csp.lf.geom1.var3.gas_type',
+         'csp.lf.geom1.var4.gas_type'):
+            ('csp.lf.geom1.annulus_gas'),
+        ('csp.lf.geom1.hl_mode', 'csp.lf.geom1.var1.field_fraction', 'csp.lf.geom1.var1.bellows_shadowing',
+         'csp.lf.geom1.var1.hce_dirt', 'csp.lf.geom1.var2.field_fraction', 'csp.lf.geom1.var2.bellows_shadowing',
+         'csp.lf.geom1.var2.hce_dirt', 'csp.lf.geom1.var3.field_fraction', 'csp.lf.geom1.var3.bellows_shadowing',
+         'csp.lf.geom1.var3.hce_dirt', 'csp.lf.geom1.var4.field_fraction', 'csp.lf.geom1.var4.bellows_shadowing',
+         'csp.lf.geom1.var4.hce_dirt'):
+            ('csp.lf.geom1.rec_optical_derate'),
+        ('csp.lf.geom1.hl_mode', 'csp.lf.geom1.hlpolyt0', 'csp.lf.geom1.hlpolyt1',
+         'csp.lf.geom1.avg_field_temp_dt_design', 'csp.lf.geom1.hlpolyt2', 'csp.lf.geom1.hlpolyt3',
+         'csp.lf.geom1.hlpolyt4', 'csp.lf.geom1.var1.field_fraction', 'csp.lf.geom1.var1.rated_heat_loss',
+         'csp.lf.geom1.var2.field_fraction', 'csp.lf.geom1.var2.rated_heat_loss', 'csp.lf.geom1.var3.field_fraction',
+         'csp.lf.geom1.var3.rated_heat_loss', 'csp.lf.geom1.var4.field_fraction', 'csp.lf.geom1.var4.rated_heat_loss'):
+            ('csp.lf.geom1.heat_loss_at_design'),
+        ('csp.lf.geom1.heat_loss_at_design', 'I_bn_des', 'csp.lf.geom1.refl_aper_area', 'csp.lf.geom1.coll_length'):
+            ('csp.lf.geom1.rec_thermal_derate'),
+        ('T_cold_ref', 'T_hot', 'T_amb_des_sf'):
+            ('csp.lf.geom1.avg_field_temp_dt_design'),
+        ('csp.lf.geom1.track_error', 'csp.lf.geom1.geom_error', 'csp.lf.geom1.mirror_refl', 'csp.lf.geom1.soiling',
+         'csp.lf.geom1.general_error'):
+            ('csp.lf.geom1.coll_opt_loss_norm_inc')},
+    'Battery Model': {
+        ('batt_type'):
+            ('batt_chem')},
+    'Physical Trough Receiver Header': {
+        ('csp_dtr_hce_var1_bellows_shadowing_1', 'csp_dtr_hce_var2_bellows_shadowing_1',
+         'csp_dtr_hce_var3_bellows_shadowing_1', 'csp_dtr_hce_var4_bellows_shadowing_1',
+         'csp_dtr_hce_var1_bellows_shadowing_2', 'csp_dtr_hce_var2_bellows_shadowing_2',
+         'csp_dtr_hce_var3_bellows_shadowing_2', 'csp_dtr_hce_var4_bellows_shadowing_2',
+         'csp_dtr_hce_var1_bellows_shadowing_3', 'csp_dtr_hce_var2_bellows_shadowing_3',
+         'csp_dtr_hce_var3_bellows_shadowing_3', 'csp_dtr_hce_var4_bellows_shadowing_3',
+         'csp_dtr_hce_var1_bellows_shadowing_4', 'csp_dtr_hce_var2_bellows_shadowing_4',
+         'csp_dtr_hce_var3_bellows_shadowing_4', 'csp_dtr_hce_var4_bellows_shadowing_4'):
+            ('Shadowing'),
+        ('csp_dtr_hce_var1_gas_type_1', 'csp_dtr_hce_var2_gas_type_1', 'csp_dtr_hce_var3_gas_type_1',
+         'csp_dtr_hce_var4_gas_type_1', 'csp_dtr_hce_var1_gas_type_2', 'csp_dtr_hce_var2_gas_type_2',
+         'csp_dtr_hce_var3_gas_type_2', 'csp_dtr_hce_var4_gas_type_2', 'csp_dtr_hce_var1_gas_type_3',
+         'csp_dtr_hce_var2_gas_type_3', 'csp_dtr_hce_var3_gas_type_3', 'csp_dtr_hce_var4_gas_type_3',
+         'csp_dtr_hce_var1_gas_type_4', 'csp_dtr_hce_var2_gas_type_4', 'csp_dtr_hce_var3_gas_type_4',
+         'csp_dtr_hce_var4_gas_type_4'):
+            ('AnnulusGas'),
+        ('csp_dtr_hce_var1_annulus_pressure_1', 'csp_dtr_hce_var2_annulus_pressure_1',
+         'csp_dtr_hce_var3_annulus_pressure_1', 'csp_dtr_hce_var4_annulus_pressure_1',
+         'csp_dtr_hce_var1_annulus_pressure_2', 'csp_dtr_hce_var2_annulus_pressure_2',
+         'csp_dtr_hce_var3_annulus_pressure_2', 'csp_dtr_hce_var4_annulus_pressure_2',
+         'csp_dtr_hce_var1_annulus_pressure_3', 'csp_dtr_hce_var2_annulus_pressure_3',
+         'csp_dtr_hce_var3_annulus_pressure_3', 'csp_dtr_hce_var4_annulus_pressure_3',
+         'csp_dtr_hce_var1_annulus_pressure_4', 'csp_dtr_hce_var2_annulus_pressure_4',
+         'csp_dtr_hce_var3_annulus_pressure_4', 'csp_dtr_hce_var4_annulus_pressure_4'):
+            ('P_a'),
+        ('csp_dtr_hce_var1_env_emis_1', 'csp_dtr_hce_var2_env_emis_1', 'csp_dtr_hce_var3_env_emis_1',
+         'csp_dtr_hce_var4_env_emis_1', 'csp_dtr_hce_var1_env_emis_2', 'csp_dtr_hce_var2_env_emis_2',
+         'csp_dtr_hce_var3_env_emis_2', 'csp_dtr_hce_var4_env_emis_2', 'csp_dtr_hce_var1_env_emis_3',
+         'csp_dtr_hce_var2_env_emis_3', 'csp_dtr_hce_var3_env_emis_3', 'csp_dtr_hce_var4_env_emis_3',
+         'csp_dtr_hce_var1_env_emis_4', 'csp_dtr_hce_var2_env_emis_4', 'csp_dtr_hce_var3_env_emis_4',
+         'csp_dtr_hce_var4_env_emis_4'):
+            ('EPSILON_4', 'EPSILON_5'),
+        ('csp_dtr_hce_var1_env_trans_1', 'csp_dtr_hce_var2_env_trans_1', 'csp_dtr_hce_var3_env_trans_1',
+         'csp_dtr_hce_var4_env_trans_1', 'csp_dtr_hce_var1_env_trans_2', 'csp_dtr_hce_var2_env_trans_2',
+         'csp_dtr_hce_var3_env_trans_2', 'csp_dtr_hce_var4_env_trans_2', 'csp_dtr_hce_var1_env_trans_3',
+         'csp_dtr_hce_var2_env_trans_3', 'csp_dtr_hce_var3_env_trans_3', 'csp_dtr_hce_var4_env_trans_3',
+         'csp_dtr_hce_var1_env_trans_4', 'csp_dtr_hce_var2_env_trans_4', 'csp_dtr_hce_var3_env_trans_4',
+         'csp_dtr_hce_var4_env_trans_4'):
+            ('Tau_envelope'),
+        ('csp_dtr_hce_var1_abs_abs_1', 'csp_dtr_hce_var2_abs_abs_1', 'csp_dtr_hce_var3_abs_abs_1',
+         'csp_dtr_hce_var4_abs_abs_1', 'csp_dtr_hce_var1_abs_abs_2', 'csp_dtr_hce_var2_abs_abs_2',
+         'csp_dtr_hce_var3_abs_abs_2', 'csp_dtr_hce_var4_abs_abs_2', 'csp_dtr_hce_var1_abs_abs_3',
+         'csp_dtr_hce_var2_abs_abs_3', 'csp_dtr_hce_var3_abs_abs_3', 'csp_dtr_hce_var4_abs_abs_3',
+         'csp_dtr_hce_var1_abs_abs_4', 'csp_dtr_hce_var2_abs_abs_4', 'csp_dtr_hce_var3_abs_abs_4',
+         'csp_dtr_hce_var4_abs_abs_4'):
+            ('alpha_abs'),
+        ('csp_dtr_hce_var1_broken_glass_1', 'csp_dtr_hce_var2_broken_glass_1', 'csp_dtr_hce_var3_broken_glass_1',
+         'csp_dtr_hce_var4_broken_glass_1', 'csp_dtr_hce_var1_broken_glass_2', 'csp_dtr_hce_var2_broken_glass_2',
+         'csp_dtr_hce_var3_broken_glass_2', 'csp_dtr_hce_var4_broken_glass_2', 'csp_dtr_hce_var1_broken_glass_3',
+         'csp_dtr_hce_var2_broken_glass_3', 'csp_dtr_hce_var3_broken_glass_3', 'csp_dtr_hce_var4_broken_glass_3',
+         'csp_dtr_hce_var1_broken_glass_4', 'csp_dtr_hce_var2_broken_glass_4', 'csp_dtr_hce_var3_broken_glass_4',
+         'csp_dtr_hce_var4_broken_glass_4'):
+            ('GlazingIntactIn'),
+        ('csp_dtr_hce_var1_env_abs_1', 'csp_dtr_hce_var2_env_abs_1', 'csp_dtr_hce_var3_env_abs_1',
+         'csp_dtr_hce_var4_env_abs_1', 'csp_dtr_hce_var1_env_abs_2', 'csp_dtr_hce_var2_env_abs_2',
+         'csp_dtr_hce_var3_env_abs_2', 'csp_dtr_hce_var4_env_abs_2', 'csp_dtr_hce_var1_env_abs_3',
+         'csp_dtr_hce_var2_env_abs_3', 'csp_dtr_hce_var3_env_abs_3', 'csp_dtr_hce_var4_env_abs_3',
+         'csp_dtr_hce_var1_env_abs_4', 'csp_dtr_hce_var2_env_abs_4', 'csp_dtr_hce_var3_env_abs_4',
+         'csp_dtr_hce_var4_env_abs_4'):
+            ('alpha_env'),
+        ('csp_dtr_hce_var1_rated_heat_loss_1', 'csp_dtr_hce_var2_rated_heat_loss_1',
+         'csp_dtr_hce_var3_rated_heat_loss_1', 'csp_dtr_hce_var4_rated_heat_loss_1',
+         'csp_dtr_hce_var1_rated_heat_loss_2', 'csp_dtr_hce_var2_rated_heat_loss_2',
+         'csp_dtr_hce_var3_rated_heat_loss_2', 'csp_dtr_hce_var4_rated_heat_loss_2',
+         'csp_dtr_hce_var1_rated_heat_loss_3', 'csp_dtr_hce_var2_rated_heat_loss_3',
+         'csp_dtr_hce_var3_rated_heat_loss_3', 'csp_dtr_hce_var4_rated_heat_loss_3',
+         'csp_dtr_hce_var1_rated_heat_loss_4', 'csp_dtr_hce_var2_rated_heat_loss_4',
+         'csp_dtr_hce_var3_rated_heat_loss_4', 'csp_dtr_hce_var4_rated_heat_loss_4'):
+            ('Design_loss'),
+        ('csp_dtr_hce_var1_field_fraction_1', 'csp_dtr_hce_var2_field_fraction_1', 'csp_dtr_hce_var3_field_fraction_1',
+         'csp_dtr_hce_var4_field_fraction_1', 'csp_dtr_hce_var1_field_fraction_2', 'csp_dtr_hce_var2_field_fraction_2',
+         'csp_dtr_hce_var3_field_fraction_2', 'csp_dtr_hce_var4_field_fraction_2', 'csp_dtr_hce_var1_field_fraction_3',
+         'csp_dtr_hce_var2_field_fraction_3', 'csp_dtr_hce_var3_field_fraction_3', 'csp_dtr_hce_var4_field_fraction_3',
+         'csp_dtr_hce_var1_field_fraction_4', 'csp_dtr_hce_var2_field_fraction_4', 'csp_dtr_hce_var3_field_fraction_4',
+         'csp_dtr_hce_var4_field_fraction_4'):
+            ('HCE_FieldFrac'),
+        ('csp_dtr_hce_diam_envelope_inner_1', 'csp_dtr_hce_diam_envelope_inner_2', 'csp_dtr_hce_diam_envelope_inner_3',
+         'csp_dtr_hce_diam_envelope_inner_4'):
+            ('D_4'),
+        ('csp_dtr_hce_absorber_material_1', 'csp_dtr_hce_absorber_material_2', 'csp_dtr_hce_absorber_material_3',
+         'csp_dtr_hce_absorber_material_4'):
+            ('AbsorberMaterial'),
+        ('csp_dtr_hce_flow_type_1', 'csp_dtr_hce_flow_type_2', 'csp_dtr_hce_flow_type_3', 'csp_dtr_hce_flow_type_4'):
+            ('Flow_type'),
+        ('csp_dtr_hce_var1_hce_dirt_1', 'csp_dtr_hce_var2_hce_dirt_1', 'csp_dtr_hce_var3_hce_dirt_1',
+         'csp_dtr_hce_var4_hce_dirt_1', 'csp_dtr_hce_var1_hce_dirt_2', 'csp_dtr_hce_var2_hce_dirt_2',
+         'csp_dtr_hce_var3_hce_dirt_2', 'csp_dtr_hce_var4_hce_dirt_2', 'csp_dtr_hce_var1_hce_dirt_3',
+         'csp_dtr_hce_var2_hce_dirt_3', 'csp_dtr_hce_var3_hce_dirt_3', 'csp_dtr_hce_var4_hce_dirt_3',
+         'csp_dtr_hce_var1_hce_dirt_4', 'csp_dtr_hce_var2_hce_dirt_4', 'csp_dtr_hce_var3_hce_dirt_4',
+         'csp_dtr_hce_var4_hce_dirt_4'):
+            ('Dirt_HCE'),
+        ('csp_dtr_hce_inner_roughness_1', 'csp_dtr_hce_inner_roughness_2', 'csp_dtr_hce_inner_roughness_3',
+         'csp_dtr_hce_inner_roughness_4'):
+            ('Rough'),
+        ('csp_dtr_hce_diam_absorber_plug_1', 'csp_dtr_hce_diam_absorber_plug_2', 'csp_dtr_hce_diam_absorber_plug_3',
+         'csp_dtr_hce_diam_absorber_plug_4'):
+            ('D_p'),
+        ('csp_dtr_hce_diam_envelope_outer_1', 'csp_dtr_hce_diam_envelope_outer_2', 'csp_dtr_hce_diam_envelope_outer_3',
+         'csp_dtr_hce_diam_envelope_outer_4'):
+            ('D_5'),
+        ('csp_dtr_hce_diam_absorber_outer_1', 'csp_dtr_hce_diam_absorber_outer_2', 'csp_dtr_hce_diam_absorber_outer_3',
+         'csp_dtr_hce_diam_absorber_outer_4'):
+            ('D_3'),
+        ('csp_dtr_hce_diam_absorber_inner_1', 'csp_dtr_hce_diam_absorber_inner_2', 'csp_dtr_hce_diam_absorber_inner_3',
+         'csp_dtr_hce_diam_absorber_inner_4'):
+            ('D_2'),
+        ('SCAInfoArray', 'nColt'):
+            ('receivers_in_field')},
+    'PV Shading': {
+        ('subarray4_gcr'):
+            ('subarray4_gcr_ref'),
+        ('subarray1_gcr'):
+            ('subarray1_gcr_ref'),
+        ('subarray4_enable', 'subarray4_nstrings', 'subarray4_modules_per_string'):
+            ('subarray4_ref_nmodules'),
+        ('subarray1_nstrings', 'subarray1_modules_per_string'):
+            ('subarray1_ref_nmodules'),
+        ('subarray4_ref_nmodules', 'subarray4_nmodx', 'subarray4_nmody'):
+            ('ui_subarray4_nrows'),
+        ('subarray3_ref_nmodules', 'subarray3_nmodx', 'subarray3_nmody'):
+            ('ui_subarray3_nrows'),
+        ('subarray2_ref_nmodules', 'subarray2_nmodx', 'subarray2_nmody'):
+            ('ui_subarray2_nrows'),
+        (
+        'module_area', 'module_width', 'module_length', 'subarray4_nmody', 'subarray4_mod_orient', 'subarray4_gcr_ref'):
+            ('ui_subarray4_row_spacing'),
+        ('subarray2_gcr'):
+            ('subarray2_gcr_ref'),
+        (
+        'module_area', 'module_width', 'module_length', 'subarray3_nmody', 'subarray3_mod_orient', 'subarray3_gcr_ref'):
+            ('ui_subarray3_row_spacing'),
+        (
+        'module_area', 'module_width', 'module_length', 'subarray1_nmody', 'subarray1_mod_orient', 'subarray1_gcr_ref'):
+            ('ui_subarray1_row_spacing'),
+        (
+        'module_area', 'module_width', 'module_length', 'subarray2_nmody', 'subarray2_mod_orient', 'subarray2_gcr_ref'):
+            ('ui_subarray2_row_spacing'),
+        ('subarray1_ref_nmodules', 'subarray1_nmodx', 'subarray1_nmody'):
+            ('ui_subarray1_nrows'),
+        ('subarray3_gcr'):
+            ('subarray3_gcr_ref'),
+        ('subarray3_mod_orient', 'subarray3_nmody', 'module_length', 'module_width'):
+            ('ui_subarray3_length_side'),
+        ('subarray4_mod_orient', 'subarray4_nmody', 'module_length', 'module_width'):
+            ('ui_subarray4_length_side'),
+        ('module_model', 'spe_area', 'cec_area', '6par_area', 'snl_area', 'sd11par_area'):
+            ('module_area'),
+        ('subarray2_mod_orient', 'subarray2_nmody', 'module_length', 'module_width'):
+            ('ui_subarray2_length_side'),
+        ('subarray1_mod_orient', 'subarray1_nmody', 'module_length', 'module_width'):
+            ('ui_subarray1_length_side'),
+        ('subarray3_enable', 'subarray3_nstrings', 'subarray3_modules_per_string'):
+            ('subarray3_ref_nmodules'),
+        ('subarray2_enable', 'subarray2_nstrings', 'subarray2_modules_per_string'):
+            ('subarray2_ref_nmodules'),
+        ('module_area', 'module_aspect_ratio'):
+            ('module_length'),
+        ('module_area', 'module_aspect_ratio'):
+            ('module_width')},
+    'IEC61853 Single Diode Model': {
+        ('iec61853_test_data'):
+            ('sd11par_Pmp0', 'sd11par_Vmp0', 'sd11par_Isc0', 'sd11par_Voc0', 'sd11par_Imp0'),
+        ('sd11par_Pmp0', 'sd11par_area'):
+            ('sd11par_eff')},
+    'Wind Turbine Design': {
+        ('wind.turbine.radio_list_or_design', 'wind_turbine_powercurve_windspeeds_from_lib',
+         'wind_turbine_powercurve_powerout_from_lib', 'wind_turbine_kw_rating_from_lib', 'wind_turbine_kw_rating_input',
+         'wind_turbine_rotor_diameter_input', 'wind_turbine_hub_ht', 'wind.turbine.elevation',
+         'wind_resource_model_choice', 'wind_turbine_max_cp', 'wind.turbine.max_tip_speed',
+         'wind.turbine.max_tspeed_ratio', 'wind.turbine.region2nhalf_slope', 'wind_turbine_cutin',
+         'wind_turbine_cut_out', 'wind.turbine.drive_train'):
+            ('wind_turbine_powercurve_windspeeds', 'wind_turbine_powercurve_powerout', 'wind_turbine_rated_wind_speed',
+             'wind_turbine_powercurve_err_msg', 'wind_turbine_powercurve_hub_efficiency'),
+        ('wind.turbine.radio_list_or_design', 'wind_turbine_kw_rating_from_lib', 'wind_turbine_kw_rating_input'):
+            ('wind_turbine_kw_rating'),
+        ('wind.turbine.radio_list_or_design', 'wind_turbine_rotor_diameter_from_lib',
+         'wind_turbine_rotor_diameter_input'):
+            ('wind_turbine_rotor_diameter')},
+    'Inverter CEC Database': {
+        ('inv_snl_vdco', 'inv_snl_pdco', 'inv_snl_pso', 'inv_snl_paco', 'inv_snl_c0', 'inv_snl_c1', 'inv_snl_c2',
+         'inv_snl_c3'):
+            ('inv_snl_eff_cec', 'inv_snl_eff_euro')},
+    'Electric Load': {
+        ():
+            ('ui_annual_load'),
+        ('load_model', 'escal_other', 'escal_belpe'):
+            ('load_escalation')},
+    'Financial Debt Min DSCR': {
+        ('construction_financing_cost'):
+            ('ui_construction_financing_cost'),
+        ('real_discount_rate', 'inflation_rate', 'debt_fraction', 'federal_tax_rate', 'state_tax_rate', 'loan_rate'):
+            ('ui_wacc'),
+        ('ui_net_capital_cost', 'debt_fraction', 'construction_financing_cost'):
+            ('ui_loan_amount'),
+        ('total_installed_cost', 'ibi_fed_amount', 'ibi_sta_amount', 'ibi_uti_amount', 'ibi_oth_amount',
+         'ibi_fed_percent', 'ibi_fed_percent_maxvalue', 'ibi_sta_percent', 'ibi_sta_percent_maxvalue',
+         'ibi_uti_percent', 'ibi_uti_percent_maxvalue', 'ibi_oth_percent', 'ibi_oth_percent_maxvalue',
+         'system_capacity', 'cbi_fed_amount', 'cbi_fed_maxvalue', 'cbi_sta_amount', 'cbi_sta_maxvalue',
+         'cbi_uti_amount', 'cbi_uti_maxvalue', 'cbi_oth_amount', 'cbi_oth_maxvalue'):
+            ('ui_net_capital_cost')},
+    'Solar Water Heating Costs': {
+        ('epc_total', 'plm_total', 'sales_tax_total'):
+            ('total_indirect'),
+        ('sales_tax_rate'):
+            ('sales_tax_value'),
+        ('plm_percent', 'total_direct'):
+            ('plm_nonfixed'),
+        ('total_installed_cost', 'system_capacity'):
+            ('installed_per_capacity'),
+        ('sales_tax_value', 'total_direct', 'sales_tax_percent'):
+            ('sales_tax_total'),
+        ('contingency_percent', 'collector', 'storage', 'bos', 'installation'):
+            ('contingency'),
+        ('ncoll'):
+            ('num_collectors'),
+        ():
+            ('system_use_lifetime_output'),
+        ('contingency', 'bos', 'installation', 'storage', 'collector'):
+            ('total_direct'),
+        ('collector_cost_units', 'total_area', 'system_capacity', 'num_collectors', 'per_collector'):
+            ('collector'),
+        ('epc_percent', 'total_direct'):
+            ('epc_nonfixed'),
+        ():
+            ('system_use_recapitalization'),
+        ('storage_cost_units', 'V_tank', 'per_storage'):
+            ('storage'),
+        ('epc_nonfixed', 'epc_fixed'):
+            ('epc_total'),
+        ('total_direct', 'total_indirect'):
+            ('total_installed_cost'),
+        ('plm_nonfixed', 'plm_fixed'):
+            ('plm_total')},
+    'MSPT System Control': {
+        ('disp_wlim_max'):
+            ('wlim_series'),
+        ('disp_wlim_maxspec', 'adjust'):
+            ('disp_wlim_max'),
+        ('is_dispatch'):
+            ('is_wlim_series'),
+        ('aux_par', 'aux_par_f', 'aux_par_0', 'aux_par_1', 'aux_par_2', 'P_ref'):
+            ('csp.pt.par.calc.aux'),
+        ('bop_par', 'bop_par_f', 'bop_par_0', 'bop_par_1', 'bop_par_2', 'P_ref'):
+            ('csp.pt.par.calc.bop')},
+    'Molten Salt Linear Fresnel Parasitics': {
+        ('csp.mslf.control.bop_array_mult', 'csp.mslf.control.bop_array_pf', 'csp.mslf.control.bop_array_c0',
+         'csp.mslf.control.bop_array_c1', 'csp.mslf.control.bop_array_c2'):
+            ('bop_array'),
+        ('csp.mslf.control.bop_array_mult', 'csp.mslf.control.bop_array_pf', 'csp.mslf.control.bop_array_c0',
+         'csp.mslf.control.bop_array_c1', 'csp.mslf.control.bop_array_c2', 'P_ref'):
+            ('csp.mslf.par.calc.bop'),
+        ('csp.mslf.control.aux_array_mult', 'csp.mslf.control.aux_array_pf', 'csp.mslf.control.aux_array_c0',
+         'csp.mslf.control.aux_array_c1', 'csp.mslf.control.aux_array_c2', 'P_ref'):
+            ('csp.mslf.par.calc.aux'),
+        ('csp.mslf.control.aux_array_mult', 'csp.mslf.control.aux_array_pf', 'csp.mslf.control.aux_array_c0',
+         'csp.mslf.control.aux_array_c1', 'csp.mslf.control.aux_array_c2'):
+            ('aux_array'),
+        ('nMod', 'nLoops', 'SCA_drives_elec'):
+            ('csp.mslf.par.calc.tracking'),
+        ('P_ref', 'pb_fixed_par'):
+            ('csp.mslf.par.calc.frac_gross')},
+    'Inverter Part Load Curve': {
+        ('inv_pd_data'):
+            ('inv_pd_partload', 'inv_pd_efficiency'),
+        ('inv_pd_paco', 'inv_pd_eff'):
+            ('inv_pd_pdco'),
+        ('inv_pd_eff_type', 'inv_pd_eff_cec', 'inv_pd_eff_euro'):
+            ('inv_pd_eff')},
+    'CSP Dispatch Control': {
+        ('ui_disp_1_fossil', 'ui_disp_2_fossil', 'ui_disp_3_fossil', 'ui_disp_4_fossil', 'ui_disp_5_fossil',
+         'ui_disp_6_fossil', 'ui_disp_7_fossil', 'ui_disp_8_fossil', 'ui_disp_9_fossil', 'ui_disp_1_nosolar',
+         'ui_disp_2_nosolar', 'ui_disp_3_nosolar', 'ui_disp_4_nosolar', 'ui_disp_5_nosolar', 'ui_disp_6_nosolar',
+         'ui_disp_7_nosolar', 'ui_disp_8_nosolar', 'ui_disp_9_nosolar', 'ui_disp_1_solar', 'ui_disp_2_solar',
+         'ui_disp_3_solar', 'ui_disp_4_solar', 'ui_disp_5_solar', 'ui_disp_6_solar', 'ui_disp_7_solar',
+         'ui_disp_8_solar', 'ui_disp_9_solar', 'ui_disp_1_turbout', 'ui_disp_2_turbout', 'ui_disp_3_turbout',
+         'ui_disp_4_turbout', 'ui_disp_5_turbout', 'ui_disp_6_turbout', 'ui_disp_7_turbout', 'ui_disp_8_turbout',
+         'ui_disp_9_turbout'):
+            ('FossilFill', 'TSLogic', 'NUMTOU', 'ffrac', 'tslogic_a', 'tslogic_b', 'tslogic_c', 'fdisp', 'diswos',
+             'disws', 'qdisp')},
+    'HCPV Array': {
+        ('array_num_inverters', 'inv_snl_paco'):
+            ('hcpv.array.ac_capacity'),
+        ():
+            ('hcpv.array.average_soiling'),
+        ('array_modules_per_tracker', 'array_num_trackers', 'hcpv.module.power'):
+            ('hcpv.array.nameplate'),
+        ('hcpv.array.nameplate', 'inv_snl_pdco'):
+            ('array_num_inverters'),
+        ('array_tracker_power_fraction', 'hcpv.array.single_tracker_nameplate'):
+            ('hcpv.array.tracker_power'),
+        ('array_modules_per_tracker', 'hcpv.module.power'):
+            ('hcpv.array.single_tracker_nameplate'),
+        ('hcpv.module.est_eff', 'array_tracking_error', 'array_dc_wiring_loss', 'hcpv.array.average_soiling',
+         'array_dc_mismatch_loss', 'array_diode_conn_loss', 'array_ac_wiring_loss', 'inv_snl_paco', 'inv_snl_pdco'):
+            ('hcpv.array.overall_est_eff'),
+        ('hcpv.array.nameplate'):
+            ('system_capacity'),
+        ('hcpv.module.area', 'array_modules_per_tracker', 'array_num_trackers', 'hcpv.array.packing_factor'):
+            ('hcpv.array.total_land_area')},
+    'Direct Steam Tower Receiver': {
+        ('csp.dst.num_2panelgroups'):
+            ('n_flux_x'),
+        ():
+            ('tower_technology'),
+        ('eta_ref'):
+            ('design_eff'),
+        ('T_sh_out_des'):
+            ('T_hot'),
+        ():
+            ('T_cold_ref'),
+        ('q_rec_des'):
+            ('Q_rec_des'),
+        ('T_sh_out_des'):
+            ('T_hot_ref'),
+        ('h_tower'):
+            ('THT'),
+        ('demand_var'):
+            ('P_ref'),
+        ('P_rh_ref'):
+            ('P_hp_out'),
+        ('P_boil_des'):
+            ('P_b_in_init'),
+        ('h_boiler', 'h_sh', 'h_rh'):
+            ('H_rec'),
+        ('P_rh_ref'):
+            ('P_hp_out_des'),
+        ():
+            ('T_hp_out'),
+        ('csp.dst.flow_pattern'):
+            ('flowtype'),
+        ('P_boil_des'):
+            ('P_hp_in_des'),
+        ('demand_var'):
+            ('Design_power'),
+        ('cycle_max_fraction'):
+            ('cycle_max_frac'),
+        ('t_sby'):
+            ('t_standby_ini'),
+        ('q_sby_frac'):
+            ('f_pb_sb'),
+        ('rh_frac_ref'):
+            ('f_mdotrh_des'),
+        ('cycle_cutoff_frac'):
+            ('f_pb_cutoff'),
+        ('P_rh_ref'):
+            ('P_cond_init'),
+        ('rh_frac_ref'):
+            ('f_mdot_rh_init'),
+        ('demand_var', 'eta_ref'):
+            ('q_aux_max'),
+        ('LHV_eff'):
+            ('lhv_eff'),
+        ():
+            ('T_fw_init'),
+        ('sh_q_loss_flux', 'csp.dst.max_sh_flux'):
+            ('csp.dst.eff_sh_ref'),
+        ('b_q_loss_flux', 'csp.dst.max_b_flux'):
+            ('csp.dst.eff_b_ref'),
+        ('T_rh_out_des'):
+            ('T_rh_target'),
+        ():
+            ('rec_htf'),
+        ('demand_var', 'eta_ref', 'csp.dst.solar_multiple'):
+            ('q_rec_des'),
+        ('csp.dst.mat_rh'):
+            ('mat_rh'),
+        ('demand_var'):
+            ('p_cycle_design'),
+        ('rh_q_loss_flux', 'csp.dst.max_rh_flux'):
+            ('csp.dst.eff_rh_ref'),
+        ('csp.dst.num_2panelgroups'):
+            ('n_panels'),
+        ('CT'):
+            ('ct'),
+        ('d_rec', 'H_rec'):
+            ('rec_aspect'),
+        ('csp.dst.mat_boiler'):
+            ('mat_boiler'),
+        ('demand_var', 'eta_ref'):
+            ('q_pb_design'),
+        ('csp.dst.mat_sh'):
+            ('mat_sh')},
+    'LF DSG Boiler Header': {
+        ():
+            ('sh_OpticalTable'),
+        ('csp.lf.geom1.solpos_collinc_table'):
+            ('b_OpticalTable'),
+        ():
+            ('sh_eps_HCE4'),
+        ():
+            ('sh_eps_HCE3'),
+        ():
+            ('sh_eps_HCE2'),
+        ():
+            ('sh_eps_HCE1'),
+        ('csp.lf.geom1.var4.abs_emis'):
+            ('b_eps_HCE4'),
+        ('csp.lf.geom1.glazing_intact'):
+            ('GlazingIntactIn'),
+        ('csp.lf.geom1.var1.abs_emis'):
+            ('b_eps_HCE1'),
+        ('csp.lf.geom1.var1.annulus_pressure', 'csp.lf.geom1.var2.annulus_pressure',
+         'csp.lf.geom1.var3.annulus_pressure', 'csp.lf.geom1.var4.annulus_pressure'):
+            ('P_a'),
+        ('csp.lf.geom1.annulus_gas'):
+            ('AnnulusGas'),
+        ('csp.lf.geom1.var1.env_trans', 'csp.lf.geom1.var2.env_trans', 'csp.lf.geom1.var3.env_trans',
+         'csp.lf.geom1.var4.env_trans'):
+            ('Tau_envelope'),
+        ('csp.lf.geom1.var3.abs_emis'):
+            ('b_eps_HCE3'),
+        ('csp.lf.geom1.iamt0', 'csp.lf.geom1.iamt1', 'csp.lf.geom1.iamt2', 'csp.lf.geom1.iamt3', 'csp.lf.geom1.iamt4'):
+            ('IAM_T'),
+        ('csp.lf.geom1.var1.env_emis', 'csp.lf.geom1.var2.env_emis', 'csp.lf.geom1.var3.env_emis',
+         'csp.lf.geom1.var4.env_emis'):
+            ('EPSILON_4'),
+        ('csp.lf.geom1.var1.env_abs', 'csp.lf.geom1.var2.env_abs', 'csp.lf.geom1.var3.env_abs',
+         'csp.lf.geom1.var4.env_abs'):
+            ('alpha_env'),
+        ('csp.lf.geom1.var2.abs_emis'):
+            ('b_eps_HCE2'),
+        ('csp.lf.geom1.var1.hce_dirt', 'csp.lf.geom1.var2.hce_dirt', 'csp.lf.geom1.var3.hce_dirt',
+         'csp.lf.geom1.var4.hce_dirt'):
+            ('Dirt_HCE'),
+        ('csp.lf.geom1.iaml0', 'csp.lf.geom1.iaml1', 'csp.lf.geom1.iaml2', 'csp.lf.geom1.iaml3', 'csp.lf.geom1.iaml4'):
+            ('IAM_L'),
+        ('csp.lf.geom1.hlpolyw0', 'csp.lf.geom1.hlpolyw1', 'csp.lf.geom1.hlpolyw2', 'csp.lf.geom1.hlpolyw3',
+         'csp.lf.geom1.hlpolyw4'):
+            ('HL_W'),
+        ('csp.lf.geom1.var1.abs_abs', 'csp.lf.geom1.var2.abs_abs', 'csp.lf.geom1.var3.abs_abs',
+         'csp.lf.geom1.var4.abs_abs'):
+            ('alpha_abs'),
+        ('csp.lf.geom1.var1.bellows_shadowing', 'csp.lf.geom1.var2.bellows_shadowing',
+         'csp.lf.geom1.var3.bellows_shadowing', 'csp.lf.geom1.var4.bellows_shadowing'):
+            ('Shadowing'),
+        ('csp.lf.geom1.hlpolyt0', 'csp.lf.geom1.hlpolyt1', 'csp.lf.geom1.hlpolyt2', 'csp.lf.geom1.hlpolyt3',
+         'csp.lf.geom1.hlpolyt4'):
+            ('HL_dT'),
+        ('csp.lf.geom1.var1.rated_heat_loss', 'csp.lf.geom1.var2.rated_heat_loss', 'csp.lf.geom1.var3.rated_heat_loss',
+         'csp.lf.geom1.var4.rated_heat_loss'):
+            ('Design_loss'),
+        ('csp.lf.geom1.var1.field_fraction', 'csp.lf.geom1.var2.field_fraction', 'csp.lf.geom1.var3.field_fraction',
+         'csp.lf.geom1.var4.field_fraction'):
+            ('HCE_FieldFrac'),
+        ('csp.lf.geom1.refl_aper_area', 'csp.lf.geom1.coll_length', 'csp.lf.geom1.opt_mode', 'csp.lf.geom1.track_error',
+         'csp.lf.geom1.geom_error', 'csp.lf.geom1.mirror_refl', 'csp.lf.geom1.soiling', 'csp.lf.geom1.general_error',
+         'csp.lf.geom1.hl_mode', 'csp.lf.geom1.diam_absorber_inner', 'csp.lf.geom1.diam_absorber_outer',
+         'csp.lf.geom1.diam_envelope_inner', 'csp.lf.geom1.diam_envelope_outer', 'csp.lf.geom1.diam_absorber_plug',
+         'csp.lf.geom1.inner_roughness', 'csp.lf.geom1.flow_type', 'csp.lf.geom1.absorber_material'):
+            ('A_aperture', 'L_col', 'OptCharType', 'TrackingError', 'GeomEffects', 'rho_mirror_clean', 'dirt_mirror',
+             'error', 'HLCharType', 'D_2', 'D_3', 'D_4', 'D_5', 'D_p', 'Rough', 'Flow_type', 'AbsorberMaterial')},
+    'MSPT Receiver': {
+        ('T_htf_hot_des'):
+            ('REC_COPY_T_htf_hot_des'),
+        ('Q_rec_des'):
+            ('REC_COPY_Q_rec_des'),
+        ('N_panels'):
+            ('n_flux_x'),
+        ('piping_length', 'piping_loss'):
+            ('piping_loss_tot'),
+        ('h_tower', 'piping_length_mult', 'piping_length_const'):
+            ('piping_length'),
+        ():
+            ('receiver_type'),
+        ():
+            ('tower_technology'),
+        ('solarm'):
+            ('REC_COPY_solarm'),
+        ('D_rec', 'rec_height'):
+            ('rec_aspect'),
+        ('rec_d_spec', 'csp.pt.rec.cav_ap_hw_ratio'):
+            ('csp.pt.rec.cav_ap_height'),
+        ('field_fl_props'):
+            ('user_fluid'),
+        ('csp.pt.rec.htf_type', 'csp.pt.rec.htf_t_avg', 'field_fl_props'):
+            ('csp.pt.rec.htf_c_avg'),
+        ('T_htf_cold_des', 'T_htf_hot_des'):
+            ('csp.pt.rec.htf_t_avg'),
+        ():
+            ('csp.pt.rec.cav_panel_height'),
+        ('T_htf_cold_des'):
+            ('REC_COPY_T_htf_cold_des'),
+        ('csp.pt.rec.max_oper_frac', 'Q_rec_des', 'csp.pt.rec.htf_c_avg', 'T_htf_hot_des', 'T_htf_cold_des'):
+            ('csp.pt.rec.max_flow_to_rec'),
+        ():
+            ('csp.pt.rec.cav_lip_height'),
+        ('csp.pt.rec.htf_type'):
+            ('rec_htf'),
+        ('csp.pt.rec.flow_pattern'):
+            ('Flow_type'),
+        ('csp.pt.rec.material_type'):
+            ('mat_tube')},
+    'MSLF Power Cycle Common': {
+        ('PB_COPY_q_pb_design', 'PB_COPY_htf_cp_avg', 'PB_COPY_T_htf_hot_des', 'PB_COPY_T_htf_cold_des'):
+            ('PB_m_dot_htf_cycle_des'),
+        ('field_htf_cp_avg'):
+            ('PB_COPY_htf_cp_avg'),
+        ('T_htf_hot_ref'):
+            ('PB_COPY_T_htf_hot_des'),
+        ('eta_lhv'):
+            ('lhv_eff'),
+        ():
+            ('pb_tech_type'),
+        ():
+            ('m_dot_in'),
+        ('T_loop_in_des'):
+            ('T_htf_cold_ref'),
+        ('store_fluid', 'Fluid'):
+            ('is_hx'),
+        ():
+            ('hx_config'),
+        ('P_ref'):
+            ('pb_rated_cap'),
+        ('nameplate'):
+            ('system_capacity'),
+        ('T_htf_cold_ref'):
+            ('PB_COPY_T_htf_cold_des'),
+        ('T_loop_out'):
+            ('T_htf_hot_ref'),
+        ('P_ref', 'csp.mslf.cycle.gr_to_net'):
+            ('nameplate'),
+        ('P_ref', 'csp.mslf.cycle.gr_to_net'):
+            ('q_design'),
+        ('P_ref', 'eta_ref'):
+            ('PB_COPY_q_pb_design'),
+        ('csp.mslf.control.fossil_mode'):
+            ('fossil_mode')},
+    'Molten Salt Linear Fresnel Collector and Receiver': {
+        ('P_ref'):
+            ('demand_var'),
+        ('P_ref'):
+            ('W_pb_design'),
+        ():
+            ('T_cold_in'),
+        ():
+            ('defocus'),
+        ():
+            ('azimuth'),
+        ():
+            ('SolarAz'),
+        ():
+            ('T_dp'),
+        ():
+            ('P_amb'),
+        ():
+            ('V_wind'),
+        ():
+            ('track_mode'),
+        ():
+            ('T_db'),
+        ('csp.mslf.sf.AnnulusGas1', 'csp.mslf.sf.AnnulusGas2', 'csp.mslf.sf.AnnulusGas3', 'csp.mslf.sf.AnnulusGas4'):
+            ('AnnulusGas'),
+        ('csp.mslf.sf.Flow_type'):
+            ('Flow_type'),
+        ('csp.mslf.sf.Rough'):
+            ('Rough'),
+        ('csp.mslf.sf.D_plug'):
+            ('D_plug'),
+        ('csp.mslf.sf.D_glass_out'):
+            ('D_glass_out'),
+        ('csp.mslf.sf.D_glass_in'):
+            ('D_glass_in'),
+        ('csp.mslf.sf.IAM_T_coefs0', 'csp.mslf.sf.IAM_T_coefs1', 'csp.mslf.sf.IAM_T_coefs2', 'csp.mslf.sf.IAM_T_coefs3',
+         'csp.mslf.sf.IAM_T_coefs4'):
+            ('IAM_T_coefs'),
+        ('csp.mslf.sf.HL_w_coefs0', 'csp.mslf.sf.HL_w_coefs1', 'csp.mslf.sf.HL_w_coefs2', 'csp.mslf.sf.HL_w_coefs3',
+         'csp.mslf.sf.HL_w_coefs4'):
+            ('HL_w_coefs'),
+        ('csp.mslf.sf.P_a1', 'csp.mslf.sf.P_a2', 'csp.mslf.sf.P_a3', 'csp.mslf.sf.P_a4'):
+            ('P_a'),
+        ('TrackingError', 'GeomEffects', 'reflectivity', 'Dirt_mirror', 'Error'):
+            ('opt_normal'),
+        ('csp.mslf.sf.DP_coefs0', 'csp.mslf.sf.DP_coefs1', 'csp.mslf.sf.DP_coefs2', 'csp.mslf.sf.DP_coefs3'):
+            ('DP_coefs'),
+        ():
+            ('tilt'),
+        ('csp.mslf.sf.Shadowing1', 'csp.mslf.sf.Shadowing2', 'csp.mslf.sf.Shadowing3', 'csp.mslf.sf.Shadowing4'):
+            ('Shadowing'),
+        ('csp.mslf.sf.dirt_env1', 'csp.mslf.sf.dirt_env2', 'csp.mslf.sf.dirt_env3', 'csp.mslf.sf.dirt_env4'):
+            ('dirt_env'),
+        ('sf_q_design'):
+            ('q_pb_design'),
+        ('csp.mslf.sf.HCE_FieldFrac1', 'csp.mslf.sf.HCE_FieldFrac2', 'csp.mslf.sf.HCE_FieldFrac3',
+         'csp.mslf.sf.HCE_FieldFrac4'):
+            ('HCE_FieldFrac'),
+        ('csp.mslf.sf.epsilon_glass1', 'csp.mslf.sf.epsilon_glass2', 'csp.mslf.sf.epsilon_glass3',
+         'csp.mslf.sf.epsilon_glass4'):
+            ('epsilon_glass'),
+        ('csp.mslf.sf.D_abs_in'):
+            ('D_abs_in'),
+        ('csp.mslf.sf.GlazingIntactIn1', 'csp.mslf.sf.GlazingIntactIn2', 'csp.mslf.sf.GlazingIntactIn3',
+         'csp.mslf.sf.GlazingIntactIn4'):
+            ('GlazingIntactIn'),
+        ('csp.mslf.sf.rec_model'):
+            ('rec_model'),
+        ('csp.mslf.sf.alpha_env1', 'csp.mslf.sf.alpha_env2', 'csp.mslf.sf.alpha_env3', 'csp.mslf.sf.alpha_env4'):
+            ('alpha_env'),
+        ('csp.mslf.sf.alpha_abs1', 'csp.mslf.sf.alpha_abs2', 'csp.mslf.sf.alpha_abs3', 'csp.mslf.sf.alpha_abs4'):
+            ('alpha_abs'),
+        ('csp.mslf.sf.opt_model'):
+            ('opt_model'),
+        ():
+            ('I_b'),
+        ('csp.mslf.sf.Tau_envelope1', 'csp.mslf.sf.Tau_envelope2', 'csp.mslf.sf.Tau_envelope3',
+         'csp.mslf.sf.Tau_envelope4'):
+            ('Tau_envelope'),
+        ('csp.mslf.sf.IAM_L_coefs0', 'csp.mslf.sf.IAM_L_coefs1', 'csp.mslf.sf.IAM_L_coefs2', 'csp.mslf.sf.IAM_L_coefs3',
+         'csp.mslf.sf.IAM_L_coefs4'):
+            ('IAM_L_coefs'),
+        ('hl_des', 'I_bn_des', 'A_aperture', 'L_mod'):
+            ('hl_derate'),
+        ('T_loop_in_des', 'T_loop_out', 'T_amb_sf_des'):
+            ('csp.mslf.sf.avg_dt_des'),
+        ('csp.mslf.sf.AbsorberMaterial'):
+            ('AbsorberMaterial'),
+        ('csp.mslf.sf.D_abs_out'):
+            ('D_abs_out'),
+        (
+        'csp.mslf.sf.Design_loss1', 'csp.mslf.sf.Design_loss2', 'csp.mslf.sf.Design_loss3', 'csp.mslf.sf.Design_loss4'):
+            ('Design_loss'),
+        ('csp.mslf.sf.rec_model', 'csp.mslf.sf.HCE_FieldFrac1', 'csp.mslf.sf.Shadowing1', 'csp.mslf.sf.dirt_env1',
+         'csp.mslf.sf.HCE_FieldFrac2', 'csp.mslf.sf.Shadowing2', 'csp.mslf.sf.dirt_env2', 'csp.mslf.sf.HCE_FieldFrac3',
+         'csp.mslf.sf.Shadowing3', 'csp.mslf.sf.dirt_env3', 'csp.mslf.sf.HCE_FieldFrac4', 'csp.mslf.sf.Shadowing4',
+         'csp.mslf.sf.dirt_env4'):
+            ('opt_derate'),
+        ('csp.mslf.sf.HL_T_coefs0', 'csp.mslf.sf.HL_T_coefs1', 'csp.mslf.sf.HL_T_coefs2', 'csp.mslf.sf.HL_T_coefs3',
+         'csp.mslf.sf.HL_T_coefs4'):
+            ('HL_T_coefs'),
+        ('nMod', 'DP_nominal'):
+            ('DP_pressure_loss'),
+        ('csp.mslf.sf.rec_model', 'csp.mslf.sf.HL_T_coefs0', 'csp.mslf.sf.HL_T_coefs1', 'csp.mslf.sf.avg_dt_des',
+         'csp.mslf.sf.HL_T_coefs2', 'csp.mslf.sf.HL_T_coefs3', 'csp.mslf.sf.HL_T_coefs4', 'csp.mslf.sf.HCE_FieldFrac1',
+         'csp.mslf.sf.Design_loss1', 'csp.mslf.sf.HCE_FieldFrac2', 'csp.mslf.sf.Design_loss2',
+         'csp.mslf.sf.HCE_FieldFrac3', 'csp.mslf.sf.Design_loss3', 'csp.mslf.sf.HCE_FieldFrac4',
+         'csp.mslf.sf.Design_loss4'):
+            ('hl_des')},
+    'Molten Salt Linear Fresnel Capital Costs': {
+        ('csp.mslf.cost.total_indirect'):
+            ('total_direct_cost'),
+        ():
+            ('system_use_lifetime_output'),
+        ():
+            ('system_use_recapitalization'),
+        ('csp.mslf.cost.sales_tax.value', 'csp.mslf.cost.total_direct', 'csp.mslf.cost.sales_tax.percent'):
+            ('csp.mslf.cost.sales_tax.total'),
+        ('csp.mslf.cost.epc.total', 'csp.mslf.cost.plm.total', 'csp.mslf.cost.sales_tax.total'):
+            ('csp.mslf.cost.total_indirect'),
+        ('csp.mslf.cost.fossil_backup.mwe', 'csp.mslf.cost.fossil_backup.cost_per_kwe'):
+            ('csp.mslf.cost.fossil_backup'),
+        ('sales_tax_rate'):
+            ('csp.mslf.cost.sales_tax.value'),
+        ('csp.mslf.cost.solar_field.area', 'csp.mslf.cost.solar_field.cost_per_m2'):
+            ('csp.mslf.cost.solar_field'),
+        ('a_sf_act'):
+            ('csp.mslf.cost.site_improvements.area'),
+        ('csp.mslf.cost.total_installed', 'nameplate'):
+            ('csp.mslf.cost.installed_per_capacity'),
+        ('a_sf_act'):
+            ('csp.mslf.cost.htf_system.area'),
+        ('csp.mslf.cost.contingency', 'csp.mslf.cost.site_improvements', 'csp.mslf.cost.solar_field',
+         'csp.mslf.cost.htf_system', 'csp.mslf.cost.fossil_backup', 'csp.mslf.cost.power_plant', 'csp.mslf.cost.bop',
+         'csp.mslf.cost.ts'):
+            ('csp.mslf.cost.total_direct'),
+        ('csp.mslf.cost.bop_mwe', 'csp.mslf.cost.bop_per_kwe'):
+            ('csp.mslf.cost.bop'),
+        ('csp.mslf.cost.contingency_percent', 'csp.mslf.cost.site_improvements', 'csp.mslf.cost.solar_field',
+         'csp.mslf.cost.htf_system', 'csp.mslf.cost.fossil_backup', 'csp.mslf.cost.power_plant', 'csp.mslf.cost.bop',
+         'csp.mslf.cost.ts'):
+            ('csp.mslf.cost.contingency'),
+        ('demand_var'):
+            ('csp.mslf.cost.fossil_backup.mwe'),
+        ('demand_var'):
+            ('csp.mslf.cost.power_plant.mwe'),
+        ('csp.mslf.cost.site_improvements.area', 'csp.mslf.cost.site_improvements.cost_per_m2'):
+            ('csp.mslf.cost.site_improvements'),
+        ('csp.mslf.cost.epc.per_acre', 'csp.mslf.cost.total_land_area', 'csp.mslf.cost.epc.percent',
+         'csp.mslf.cost.total_direct', 'csp.mslf.cost.nameplate', 'csp.mslf.cost.epc.per_watt',
+         'csp.mslf.cost.epc.fixed'):
+            ('csp.mslf.cost.epc.total'),
+        ('csp.mslf.cost.ts_mwht', 'csp.mslf.cost.ts_per_kwht'):
+            ('csp.mslf.cost.ts'),
+        ('a_sf_act'):
+            ('csp.mslf.cost.solar_field.area'),
+        ('csp.mslf.cost.total_direct', 'csp.mslf.cost.total_indirect'):
+            ('csp.mslf.cost.total_installed'),
+        ('TES_cap'):
+            ('csp.mslf.cost.ts_mwht'),
+        ('nameplate'):
+            ('csp.mslf.cost.nameplate'),
+        ('total_land_area'):
+            ('csp.mslf.cost.total_land_area'),
+        ('demand_var'):
+            ('csp.mslf.cost.bop_mwe'),
+        ('csp.mslf.cost.htf_system.area', 'csp.mslf.cost.htf_system.cost_per_m2'):
+            ('csp.mslf.cost.htf_system'),
+        ('csp.mslf.cost.power_plant.mwe', 'csp.mslf.cost.power_plant.cost_per_kwe'):
+            ('csp.mslf.cost.power_plant'),
+        ('csp.mslf.cost.total_installed'):
+            ('total_installed_cost'),
+        ('csp.mslf.cost.plm.per_acre', 'csp.mslf.cost.total_land_area', 'csp.mslf.cost.plm.percent',
+         'csp.mslf.cost.total_direct', 'csp.mslf.cost.nameplate', 'csp.mslf.cost.plm.per_watt',
+         'csp.mslf.cost.plm.fixed'):
+            ('csp.mslf.cost.plm.total')},
+    'Financial Sale Leaseback': {
+        ('sponsor_operating_margin', 'system_capacity'):
+            ('sponsor_operating_margin_amount')},
+    'Financial Cost of Financing Flip Leaseback': {
+        ('federal_tax_rate', 'state_tax_rate', 'cost_dev_fee_value'):
+            ('cost_dev_fee_tax_liability'),
+        ('total_installed_cost', 'cost_dev_fee_percent'):
+            ('cost_dev_fee_value')},
+    'Financial Salvage Value': {
+        ('salvage_percentage', 'total_installed_cost'):
+            ('salvage_value')},
+    'Fuel Cell': {
+        ('fuelcell_dynamic_response_down_input', 'fuelcell_dynamic_response_down_units', 'fuelcell_power_nameplate'):
+            ('fuelcell_dynamic_response_down'),
+        ('fuelcell_dynamic_response_up_input', 'fuelcell_dynamic_response_up_units', 'fuelcell_power_nameplate'):
+            ('fuelcell_dynamic_response_up'),
+        ('fuelcell_unit_min_power_input', 'fuelcell_unit_min_units', 'fuelcell_unit_max_power'):
+            ('fuelcell_unit_min_power'),
+        ('fuelcell_unit_min_power', 'fuelcell_number_of_units'):
+            ('fuelcell_power_min'),
+        ('fuelcell_degradation_input', 'fuelcell_degradation_units', 'fuelcell_unit_max_power'):
+            ('fuelcell_degradation'),
+        ('fuelcell_fuel_type', 'fuelcell_fuel_available_in', 'fuelcell_fuel_available_units'):
+            ('fuelcell_fuel_available'),
+        ('fuelcell_unit_max_power', 'fuelcell_number_of_units'):
+            ('fuelcell_power_nameplate'),
+        ('fuelcell_lhv_in', 'fuelcell_fuel_type', 'fuelcell_lhv_units'):
+            ('fuelcell_lhv')},
+    'Generic System Plant': {
+        ('derate', 'spec_mode', 'user_capacity_factor', 'first_year_output_peak', 'first_year_output',
+         'system_capacity'):
+            ('capacity_factor_calc'),
+        ('derate', 'spec_mode', 'system_capacity', 'energy_output_array'):
+            ('first_year_output_peak'),
+        ('derate', 'spec_mode', 'system_capacity', 'user_capacity_factor', 'energy_output_array'):
+            ('first_year_output'),
+        ('heat_rate'):
+            ('conv_eff')},
+    'Financial Tax and Insurance Rates': {
+        ('prop_tax_cost_assessed_percent', 'total_installed_cost'):
+            ('property_assessed_value')},
+    'Linear Fresnel Capital Costs': {
+        ():
+            ('system_use_lifetime_output'),
+        ('csp.lf.cost.total_indirect'):
+            ('total_direct_cost'),
+        ('demand_var'):
+            ('csp.lf.cost.power_plant.mwe'),
+        ('csp.lf.cost.solar_field.area', 'csp.lf.cost.solar_field.cost_per_m2'):
+            ('csp.lf.cost.solar_field'),
+        ('csp.lf.cost.htf_system.area', 'csp.lf.cost.htf_system.cost_per_m2'):
+            ('csp.lf.cost.htf_system'),
+        ():
+            ('system_use_recapitalization'),
+        ('actual_aper'):
+            ('csp.lf.cost.htf_system.area'),
+        ('nameplate'):
+            ('csp.lf.cost.nameplate'),
+        ('demand_var'):
+            ('csp.lf.cost.fossil_backup.mwe'),
+        ('csp.lf.cost.site_improvements.area', 'csp.lf.cost.site_improvements.cost_per_m2'):
+            ('csp.lf.cost.site_improvements'),
+        ('csp.lf.cost.epc.total', 'csp.lf.cost.plm.total', 'csp.lf.cost.sales_tax.total'):
+            ('csp.lf.cost.total_indirect'),
+        ('csp.lf.cost.sales_tax.value', 'csp.lf.cost.total_direct', 'csp.lf.cost.sales_tax.percent'):
+            ('csp.lf.cost.sales_tax.total'),
+        ('actual_aper'):
+            ('csp.lf.cost.site_improvements.area'),
+        ('csp.lf.cost.bop_mwe', 'csp.lf.cost.bop_per_kwe'):
+            ('csp.lf.cost.bop'),
+        ('csp.lf.cost.total_direct', 'csp.lf.cost.total_indirect'):
+            ('csp.lf.cost.total_installed'),
+        ('actual_aper'):
+            ('csp.lf.cost.solar_field.area'),
+        ('demand_var'):
+            ('csp.lf.cost.bop_mwe'),
+        (
+        'csp.lf.cost.contingency', 'csp.lf.cost.site_improvements', 'csp.lf.cost.solar_field', 'csp.lf.cost.htf_system',
+        'csp.lf.cost.fossil_backup', 'csp.lf.cost.power_plant', 'csp.lf.cost.bop'):
+            ('csp.lf.cost.total_direct'),
+        ('csp.lf.cost.power_plant.mwe', 'csp.lf.cost.power_plant.cost_per_kwe'):
+            ('csp.lf.cost.power_plant'),
+        ('csp.lf.cost.fossil_backup.mwe', 'csp.lf.cost.fossil_backup.cost_per_kwe'):
+            ('csp.lf.cost.fossil_backup'),
+        ('csp.lf.sf.total_land_area', 'total_land_area'):
+            ('csp.lf.cost.total_land_area'),
+        ('sales_tax_rate'):
+            ('csp.lf.cost.sales_tax.value'),
+        ('csp.lf.cost.contingency_percent', 'csp.lf.cost.site_improvements', 'csp.lf.cost.solar_field',
+         'csp.lf.cost.htf_system', 'csp.lf.cost.fossil_backup', 'csp.lf.cost.power_plant', 'csp.lf.cost.bop'):
+            ('csp.lf.cost.contingency'),
+        ('csp.lf.cost.total_installed', 'nameplate'):
+            ('csp.lf.cost.installed_per_capacity'),
+        ('csp.lf.cost.plm.per_acre', 'csp.lf.cost.total_land_area', 'csp.lf.cost.plm.percent',
+         'csp.lf.cost.total_direct', 'csp.lf.cost.nameplate', 'csp.lf.cost.plm.per_watt', 'csp.lf.cost.plm.fixed'):
+            ('csp.lf.cost.plm.total'),
+        ('csp.lf.cost.epc.per_acre', 'csp.lf.cost.total_land_area', 'csp.lf.cost.epc.percent',
+         'csp.lf.cost.total_direct', 'csp.lf.cost.nameplate', 'csp.lf.cost.epc.per_watt', 'csp.lf.cost.epc.fixed'):
+            ('csp.lf.cost.epc.total'),
+        ('csp.lf.cost.total_installed'):
+            ('total_installed_cost'),
+        ('csp.lf.sf.dp.actual_aper', 'a_sf_act'):
+            ('actual_aper')},
+    'Molten Salt Linear Fresnel Storage': {
+        ('dt_hot'):
+            ('dt_cold'),
+        ('csp.mslf.control.store_fluid'):
+            ('csp.mslf.tes.htf_max_opt_temp'),
+        ('mslf_is_hx', 'dt_hot', 'dt_cold', 'T_loop_out', 'T_loop_in_des'):
+            ('hx_derate'),
+        ('h_tank', 'd_tank', 'tank_pairs', 'tes_temp', 'u_tank'):
+            ('csp.mslf.tes.estimated_heat_loss'),
+        ('vol_tank', 'h_tank', 'tank_pairs'):
+            ('d_tank'),
+        ('T_loop_in_des', 'T_loop_out'):
+            ('tes_temp'),
+        ('csp.mslf.control.store_fluid'):
+            ('csp.mslf.tes.htf_min_opt_temp'),
+        ('sf_q_design', 'tshours'):
+            ('TES_cap'),
+        ('TES_cap', 'csp.mslf.control.tes_dens', 'csp.mslf.control.tes_cp', 'hx_derate', 'T_loop_out', 'dt_hot',
+         'T_loop_in_des', 'dt_cold'):
+            ('vol_tank'),
+        ('csp.mslf.control.store_fluid', 'tes_temp', 'store_fl_props'):
+            ('csp.mslf.control.tes_dens'),
+        ('vol_tank'):
+            ('V_tank_hot_ini'),
+        ('csp.mslf.control.store_fluid', 'tes_temp', 'store_fl_props'):
+            ('csp.mslf.control.tes_cp'),
+        ('T_loop_in_des'):
+            ('T_field_in_des'),
+        ('csp.mslf.control.store_fluid'):
+            ('store_fluid'),
+        ('sf_q_design', 'solar_mult'):
+            ('q_max_aux'),
+        ('T_loop_in_des'):
+            ('T_tank_cold_ini'),
+        ('vol_tank', 'h_tank_min', 'h_tank'):
+            ('vol_min'),
+        ('T_loop_out'):
+            ('T_tank_hot_ini'),
+        ('csp.mslf.enet.tes_fp_mode'):
+            ('fp_mode')},
+    'Financial Depreciation Detailed': {
+        ('depr_alloc_macrs_5_percent', 'depr_alloc_macrs_15_percent', 'depr_alloc_sl_5_percent',
+         'depr_alloc_sl_15_percent', 'depr_alloc_sl_20_percent', 'depr_alloc_sl_39_percent',
+         'depr_alloc_custom_percent'):
+            ('depr_alloc_none')},
+    'Dish Solar Field': {
+        ('csp.ds.total_capacity'):
+            ('system_capacity'),
+        ('n_ew', 'n_ns'):
+            ('csp.ds.ncollectors'),
+        ('csp.ds.ncollectors', 'csp.ds.nameplate_capacity'):
+            ('csp.ds.total_capacity'),
+        ('ew_dish_sep', 'ns_dish_sep', 'csp.ds.ncollectors'):
+            ('csp.ds.field_area')},
+    'Empirical Trough SCA': {
+        ('ui_HCEdust'):
+            ('HCEdust'),
+        ('SCA_aper'):
+            ('RefMirrAper'),
+        ('TrkTwstErr', 'GeoAcc', 'MirRef', 'MirCln', 'ConcFac'):
+            ('calc_col_factor')},
+    'Electric Load Other': {
+        ('load_model', 'load_user_data', 'normalize_to_utility_bill', 'utility_bill_data', 'scale_factor'):
+            ('load', 'load_annual_total', 'annual_peak', 'energy_1', 'peak_1', 'energy_2', 'peak_2', 'energy_3',
+             'peak_3', 'energy_4', 'peak_4', 'energy_5', 'peak_5', 'energy_6', 'peak_6', 'energy_7', 'peak_7',
+             'energy_8', 'peak_8', 'energy_9', 'peak_9', 'energy_10', 'peak_10', 'energy_11', 'peak_11', 'energy_12',
+             'peak_12'),
+        ('escal_input_hourly'):
+            ('escal_other')},
+    'Biopower System Cost': {
+        ('biopwr.cost.total_indirect'):
+            ('total_indirect_cost'),
+        ('biopwr.cost.total_direct'):
+            ('total_direct_cost'),
+        ():
+            ('system_use_lifetime_output'),
+        ('biopwr.plant.nameplate'):
+            ('biopwr.cost.turbine_capacity'),
+        ('biopwr.cost.plm.percent', 'biopwr.cost.total_direct'):
+            ('biopwr.cost.plm.nonfixed'),
+        ('biopwr.plant.nameplate'):
+            ('biopwr.cost.equipment_capacity'),
+        ('biopwr.plant.nameplate'):
+            ('biopwr.cost.prep_capacity'),
+        ('biopwr.cost.prep_capacity', 'biopwr.cost.prep_per_cap'):
+            ('biopwr.cost.prep'),
+        ('biopwr.cost.dryer_capacity', 'biopwr.cost.dryer_per_kw'):
+            ('biopwr.cost.dryer'),
+        ('biopwr.plant.boiler.cap_per_boiler'):
+            ('biopwr.cost.cap_per_boiler'),
+        ('biopwr.cost.sales_tax.value', 'biopwr.cost.sales_tax.percent', 'biopwr.cost.total_direct'):
+            ('biopwr.cost.sales_tax.total'),
+        ('biopwr.cost.total_direct', 'biopwr.cost.epc.percent'):
+            ('biopwr.cost.epc.nonfixed'),
+        ('biopwr.cost.boiler_capacity', 'biopwr.cost.boiler.cost_per_kw'):
+            ('biopwr.cost.boiler'),
+        (
+        'biopwr.cost.contingency', 'biopwr.cost.boiler', 'biopwr.cost.turbine', 'biopwr.cost.prep', 'biopwr.cost.dryer',
+        'biopwr.cost.equipment', 'biopwr.cost.bop'):
+            ('biopwr.cost.total_direct'),
+        ('total_installed_cost', 'biopwr.plant.nameplate'):
+            ('biopwr.cost.installed_per_capacity'),
+        ('biopwr.cost.bop_per_kw', 'biopwr.cost.bop_capacity'):
+            ('biopwr.cost.bop'),
+        ('biopwr.cost.epc.total', 'biopwr.cost.plm.total', 'biopwr.cost.sales_tax.total'):
+            ('biopwr.cost.total_indirect'),
+        ('biopwr.cost.plm.fixed', 'biopwr.cost.plm.nonfixed'):
+            ('biopwr.cost.plm.total'),
+        ('sales_tax_rate'):
+            ('biopwr.cost.sales_tax.value'),
+        ('biopwr.cost.turbine_capacity', 'biopwr.cost.turbine_per_kw'):
+            ('biopwr.cost.turbine'),
+        ('biopwr.plant.nameplate', 'biopwr.plant.par'):
+            ('biopwr.cost.bop_capacity'),
+        ('biopwr.cost.epc.fixed', 'biopwr.cost.epc.nonfixed'):
+            ('biopwr.cost.epc.total'),
+        ('biopwr.cost.total_direct', 'biopwr.cost.total_indirect'):
+            ('total_installed_cost'),
+        ('biopwr.cost.contingency_percent', 'biopwr.cost.boiler', 'biopwr.cost.turbine', 'biopwr.cost.prep',
+         'biopwr.cost.equipment', 'biopwr.cost.bop'):
+            ('biopwr.cost.contingency'),
+        ('biopwr.plant.drying_method', 'biopwr.plant.nameplate'):
+            ('biopwr.cost.dryer_capacity'),
+        ('biopwr.cost.equipment_capacity', 'biopwr.cost.equipment.cost_per_kw'):
+            ('biopwr.cost.equipment'),
+        ():
+            ('system_use_recapitalization'),
+        ('biopwr.plant.nameplate'):
+            ('biopwr.cost.boiler_capacity')},
+    'Financial Reserve Accounts': {
+        ('system_capacity', 'equip2_reserve_cost'):
+            ('mera_cost2'),
+        ('system_capacity', 'equip3_reserve_cost'):
+            ('mera_cost3'),
+        ('system_capacity', 'equip1_reserve_cost'):
+            ('mera_cost1')},
+    'Financial Equity Flip Structure': {
+        ('tax_investor_postflip_tax_percent'):
+            ('developer_postflip_tax_percent'),
+        ('tax_investor_preflip_tax_percent'):
+            ('developer_preflip_tax_percent'),
+        ('tax_investor_postflip_cash_percent'):
+            ('developer_postflip_cash_percent'),
+        ('tax_investor_preflip_cash_percent'):
+            ('developer_preflip_cash_percent'),
+        ('tax_investor_equity_percent'):
+            ('developer_equity_percent')},
+    'Biopower Feedstock Costs': {
+        ('biopwr.feedstockcost.coal_fuel_cost'):
+            ('om_opt_fuel_2_cost'),
+        ('biopwr.feedstockcost.coal_fuel_used'):
+            ('om_opt_fuel_2_usage'),
+        ('biopwr.feedstock.total_coal'):
+            ('biopwr.feedstockcost.coal_fuel_used'),
+        ('biopwr.feedstockcost.biomass_fuel_cost_esc'):
+            ('om_opt_fuel_1_cost_escal'),
+        ('biopwr.feedstockcost.coal_fuel_cost_esc'):
+            ('om_opt_fuel_2_cost_escal'),
+        ('biopwr.feedstock.subbit_resource'):
+            ('biopwr.feedstockcost.subbit_resource'),
+        ('biopwr.feedstock.forest_resource', 'biopwr.feedstock.forest_obtainable'):
+            ('biopwr.feedstockcost.forest_resource'),
+        ('biopwr.feedstock.mill_resource', 'biopwr.feedstock.mill_obtainable'):
+            ('biopwr.feedstockcost.mill_resource'),
+        ('biopwr.feedstock.barley_resource', 'biopwr.feedstock.barley_obtainable'):
+            ('biopwr.feedstockcost.barley_resource'),
+        ('biopwr.feedstock.rice_resource', 'biopwr.feedstock.rice_obtainable'):
+            ('biopwr.feedstockcost.rice_resource'),
+        ('biopwr.feedstock.wheat_resource', 'biopwr.feedstock.wheat_obtainable'):
+            ('biopwr.feedstockcost.wheat_resource'),
+        ('biopwr.feedstock.bagasse_resource', 'biopwr.feedstock.bagasse_obtainable'):
+            ('biopwr.feedstockcost.bagasse_resource'),
+        ('biopwr.feedstockcost.biomass_cost', 'biopwr.feedstock.total_biomass_hhv'):
+            ('biopwr.feedstockcost.biomass_fuel_cost'),
+        (
+        'biopwr.feedstock.total_biomass', 'biopwr.feedstock.bagasse_biomass_frac', 'biopwr.feedstockcost.bagasse_price',
+        'biopwr.feedstock.barley_biomass_frac', 'biopwr.feedstockcost.barley_price',
+        'biopwr.feedstock.stover_biomass_frac', 'biopwr.feedstockcost.stover_price',
+        'biopwr.feedstock.rice_biomass_frac', 'biopwr.feedstockcost.rice_price', 'biopwr.feedstock.wheat_biomass_frac',
+        'biopwr.feedstockcost.wheat_price', 'biopwr.feedstock.forest_biomass_frac', 'biopwr.feedstockcost.forest_price',
+        'biopwr.feedstock.mill_biomass_frac', 'biopwr.feedstockcost.mill_price', 'biopwr.feedstock.urban_biomass_frac',
+        'biopwr.feedstockcost.urban_price', 'biopwr.feedstock.woody_biomass_frac', 'biopwr.feedstockcost.woody_price',
+        'biopwr.feedstock.herb_biomass_frac', 'biopwr.feedstockcost.herb_price',
+        'biopwr.feedstock.feedstock1_biomass_frac', 'biopwr.feedstockcost.feedstock1_price',
+        'biopwr.feedstock.feedstock2_biomass_frac', 'biopwr.feedstockcost.feedstock2_price',
+        'biopwr.feedstockcost.fixed_delivery_cost', 'biopwr.feedstock.collection_radius',
+        'biopwr.feedstockcost.var_delivery_cost', 'biopwr.feedstock.total_biomass_hhv'):
+            ('biopwr.feedstockcost.biomass_cost'),
+        ('biopwr.feedstockcost.biomass_fuel_cost', 'biopwr.feedstock.total_biomass_moisture'):
+            ('biopwr.feedstockcost.green_biomass_cost'),
+        ('biopwr.feedstock.urban_resource', 'biopwr.feedstock.urban_obtainable'):
+            ('biopwr.feedstockcost.urban_resource'),
+        ('biopwr.feedstock.feedstock1_resource'):
+            ('biopwr.feedstockcost.feedstock1_resource'),
+        ('biopwr.feedstock.woody_resource', 'biopwr.feedstock.woody_obtainable'):
+            ('biopwr.feedstockcost.woody_resource'),
+        ('biopwr.feedstock.lig_resource'):
+            ('biopwr.feedstockcost.lig_resource'),
+        ('biopwr.feedstockcost.coal_per_mmbtu', 'biopwr.feedstock.total_coal_hhv'):
+            ('biopwr.feedstockcost.coal_fuel_cost'),
+        ('biopwr.feedstock.total_biomass'):
+            ('biopwr.feedstockcost.biomass_fuel_used'),
+        ('biopwr.feedstock.stover_resource', 'biopwr.feedstock.stover_obtainable'):
+            ('biopwr.feedstockcost.stover_resource'),
+        ('biopwr.feedstock.coal_opt', 'biopwr.feedstock.bit_coal_frac', 'biopwr.feedstockcost.bit_price',
+         'biopwr.feedstock.subbit_coal_frac', 'biopwr.feedstockcost.subbit_price', 'biopwr.feedstock.lig_coal_frac',
+         'biopwr.feedstockcost.lig_price', 'biopwr.feedstock.total_coal_hhv'):
+            ('biopwr.feedstockcost.coal_per_mmbtu'),
+        ('biopwr.feedstockcost.biomass_fuel_cost'):
+            ('om_opt_fuel_1_cost'),
+        ('biopwr.feedstock.bit_resource'):
+            ('biopwr.feedstockcost.bit_resource'),
+        ('biopwr.feedstockcost.biomass_fuel_used'):
+            ('om_opt_fuel_1_usage'),
+        ('biopwr.feedstock.herb_resource', 'biopwr.feedstock.herb_obtainable'):
+            ('biopwr.feedstockcost.herb_resource'),
+        ('biopwr.feedstock.feedstock2_resource'):
+            ('biopwr.feedstockcost.feedstock2_resource')},
+    'Physical Trough Capital Costs': {
+        ():
+            ('system_use_recapitalization'),
+        ():
+            ('system_use_lifetime_output'),
+        ('csp.dtr.cost.site_improvements.area', 'csp.dtr.cost.site_improvements.cost_per_m2'):
+            ('csp.dtr.cost.site_improvements'),
+        ('csp.dtr.cost.storage.mwht', 'csp.dtr.cost.storage.cost_per_kwht'):
+            ('csp.dtr.cost.storage'),
+        ('csp.dtr.cost.htf_system.area', 'csp.dtr.cost.htf_system.cost_per_m2'):
+            ('csp.dtr.cost.htf_system'),
+        ('csp.dtr.cost.sales_tax.value', 'total_direct_cost', 'csp.dtr.cost.sales_tax.percent'):
+            ('csp.dtr.cost.sales_tax.total'),
+        ('csp.dtr.cost.contingency', 'csp.dtr.cost.site_improvements', 'csp.dtr.cost.solar_field',
+         'csp.dtr.cost.htf_system', 'csp.dtr.cost.storage', 'csp.dtr.cost.fossil_backup', 'csp.dtr.cost.power_plant',
+         'csp.dtr.cost.bop'):
+            ('total_direct_cost'),
+        ('total_aperture'):
+            ('csp.dtr.cost.solar_field.area'),
+        ('P_ref'):
+            ('csp.dtr.cost.bop_mwe'),
+        ('P_ref'):
+            ('csp.dtr.cost.fossil_backup.mwe'),
+        ('csp.dtr.cost.power_plant.mwe', 'csp.dtr.cost.power_plant.cost_per_kwe'):
+            ('csp.dtr.cost.power_plant'),
+        ('csp.dtr.tes.thermal_capacity'):
+            ('csp.dtr.cost.storage.mwht'),
+        ('csp.dtr.cost.epc.per_acre', 'csp.dtr.cost.total_land_area', 'csp.dtr.cost.epc.percent', 'total_direct_cost',
+         'csp.dtr.cost.nameplate', 'csp.dtr.cost.epc.per_watt', 'csp.dtr.cost.epc.fixed'):
+            ('csp.dtr.cost.epc.total'),
+        ('total_aperture'):
+            ('csp.dtr.cost.site_improvements.area'),
+        ('csp.dtr.cost.plm.per_acre', 'csp.dtr.cost.total_land_area', 'csp.dtr.cost.plm.percent', 'total_direct_cost',
+         'csp.dtr.cost.nameplate', 'csp.dtr.cost.plm.per_watt', 'csp.dtr.cost.plm.fixed'):
+            ('csp.dtr.cost.plm.total'),
+        ('total_installed_cost', 'csp.dtr.pwrb.nameplate'):
+            ('csp.dtr.cost.installed_per_capacity'),
+        ('csp.dtr.cost.bop_mwe', 'csp.dtr.cost.bop_per_kwe'):
+            ('csp.dtr.cost.bop'),
+        ('csp.dtr.cost.contingency_percent', 'csp.dtr.cost.site_improvements', 'csp.dtr.cost.solar_field',
+         'csp.dtr.cost.htf_system', 'csp.dtr.cost.storage', 'csp.dtr.cost.fossil_backup', 'csp.dtr.cost.power_plant',
+         'csp.dtr.cost.bop'):
+            ('csp.dtr.cost.contingency'),
+        ('csp.dtr.pwrb.nameplate'):
+            ('csp.dtr.cost.nameplate'),
+        (
+        'csp.dtr.cost.site_improvements', 'csp.dtr.cost.solar_field', 'csp.dtr.cost.htf_system', 'csp.dtr.cost.storage',
+        'csp.dtr.cost.fossil_backup', 'csp.dtr.cost.power_plant', 'csp.dtr.cost.bop'):
+            ('direct_subtotal'),
+        ('sales_tax_rate'):
+            ('csp.dtr.cost.sales_tax.value'),
+        ('total_land_area'):
+            ('csp.dtr.cost.total_land_area'),
+        ('P_ref'):
+            ('csp.dtr.cost.power_plant.mwe'),
+        ('total_aperture'):
+            ('csp.dtr.cost.htf_system.area'),
+        ('csp.dtr.cost.solar_field.area', 'csp.dtr.cost.solar_field.cost_per_m2'):
+            ('csp.dtr.cost.solar_field'),
+        ('csp.dtr.cost.epc.total', 'csp.dtr.cost.plm.total', 'csp.dtr.cost.sales_tax.total'):
+            ('total_indirect_cost'),
+        ('csp.dtr.cost.fossil_backup.mwe', 'csp.dtr.cost.fossil_backup.cost_per_kwe'):
+            ('csp.dtr.cost.fossil_backup'),
+        ('total_direct_cost', 'total_indirect_cost'):
+            ('total_installed_cost')},
+    'Battery Dispatch Manual': {
+        ('dispatch_manual_gridcharge', 'batt_gridcharge_percent_1', 'batt_gridcharge_percent_2',
+         'batt_gridcharge_percent_3', 'batt_gridcharge_percent_4', 'batt_gridcharge_percent_5',
+         'batt_gridcharge_percent_6'):
+            ('dispatch_manual_percent_gridcharge'),
+        (
+        'dispatch_manual_discharge', 'batt_discharge_percent_1', 'batt_discharge_percent_2', 'batt_discharge_percent_3',
+        'batt_discharge_percent_4', 'batt_discharge_percent_5', 'batt_discharge_percent_6'):
+            ('dispatch_manual_percent_discharge'),
+        ('pv.storage.p1.gridcharge', 'pv.storage.p2.gridcharge', 'pv.storage.p3.gridcharge', 'pv.storage.p4.gridcharge',
+         'pv.storage.p5.gridcharge', 'pv.storage.p6.gridcharge'):
+            ('dispatch_manual_gridcharge'),
+        ('pv.storage.p1.discharge', 'pv.storage.p2.discharge', 'pv.storage.p3.discharge', 'pv.storage.p4.discharge',
+         'pv.storage.p5.discharge', 'pv.storage.p6.discharge'):
+            ('dispatch_manual_discharge'),
+        ('pv.storage.p1.charge', 'pv.storage.p2.charge', 'pv.storage.p3.charge', 'pv.storage.p4.charge',
+         'pv.storage.p5.charge', 'pv.storage.p6.charge'):
+            ('dispatch_manual_charge')},
+    'CSP PBNS Dispatch Control': {
+        ('csp.pbns.hc_ctl1', 'csp.pbns.hc_ctl2', 'csp.pbns.hc_ctl3', 'csp.pbns.hc_ctl4', 'csp.pbns.hc_ctl5',
+         'csp.pbns.hc_ctl6', 'csp.pbns.hc_ctl7', 'csp.pbns.hc_ctl8', 'csp.pbns.hc_ctl9'):
+            ('F_wc'),
+        ('csp.pbns.fossil1', 'csp.pbns.fossil2', 'csp.pbns.fossil3', 'csp.pbns.fossil4', 'csp.pbns.fossil5',
+         'csp.pbns.fossil6', 'csp.pbns.fossil7', 'csp.pbns.fossil8', 'csp.pbns.fossil9'):
+            ('ffrac')},
+    'Sandia PV Array Performance Model with Module Database': {
+        ('snl_parallel_cells', 'snl_series_cells'):
+            ('snl_n_cells'),
+        ('snl_module_structure', 'snl_a', 'snl_b', 'snl_dtc', 'snl_specified_a', 'snl_specified_b', 'snl_specified_dT',
+         'snl_fd', 'snl_a0', 'snl_a1', 'snl_a2', 'snl_a3', 'snl_a4', 'snl_b0', 'snl_b1', 'snl_b2', 'snl_b3', 'snl_b4',
+         'snl_b5', 'snl_isco', 'snl_aisc', 'snl_c0', 'snl_c1', 'snl_aimp', 'snl_impo', 'snl_bvmpo', 'snl_mbvmp',
+         'snl_n', 'snl_c3', 'snl_series_cells', 'snl_c2', 'snl_vmpo', 'snl_bvoco', 'snl_mbvoc', 'snl_voco', 'snl_area'):
+            ('snl_ref_a', 'snl_ref_b', 'snl_ref_dT', 'snl_ref_isc', 'snl_ref_isc_temp_0', 'snl_ref_isc_temp_1',
+             'snl_ref_imp', 'snl_ref_imp_temp_0', 'snl_imp_temp_1', 'snl_ref_vmp', 'snl_ref_vmp_temp_0',
+             'snl_ref_vmp_temp_1', 'snl_ref_pmp', 'snl_ref_pmp_temp_0', 'snl_ref_pmp_temp_1', 'snl_ref_voc',
+             'snl_ref_voc_temp_0', 'snl_voc_temp_1', 'snl_ref_eff')},
+    'HCPV Costs': {
+        ():
+            ('system_use_lifetime_output'),
+        ('hcpv.cost.engr.percent', 'total_direct_cost', 'hcpv.cost.modulearray.power', 'hcpv.cost.engr.per_watt',
+         'hcpv.cost.engr.fixed'):
+            ('hcpv.cost.engr.total'),
+        ('total_direct_cost', 'total_indirect_cost'):
+            ('total_installed_cost'),
+        ('hcpv.cost.bos_equip_fixed', 'hcpv.cost.modulearray.power', 'hcpv.cost.bos_equip_perwatt',
+         'hcpv.cost.modulearray.area', 'hcpv.cost.bos_equip_perarea'):
+            ('hcpv.cost.bos_equip.totalcost'),
+        ('hcpv.cost.module.totalcost', 'hcpv.cost.inverter.totalcost', 'hcpv.cost.tracker.totalcost',
+         'hcpv.cost.bos_equip.totalcost', 'hcpv.cost.install_labor.totalcost', 'hcpv.cost.install_margin.totalcost',
+         'hcpv.cost.contingency'):
+            ('total_direct_cost'),
+        ('hcpv.cost.inverter.power', 'hcpv.cost.inverter.num_units'):
+            ('hcpv.cost.inverterarray.power'),
+        ('hcpv.array.total_land_area'):
+            ('hcpv.cost.land_area.value'),
+        ('hcpv.cost.sales_tax.value', 'total_direct_cost', 'hcpv.cost.sales_tax.percent'):
+            ('hcpv.cost.sales_tax.total'),
+        ('hcpv.cost.tracker_fixed', 'hcpv.cost.modulearray.power', 'hcpv.cost.tracker_perwatt',
+         'hcpv.cost.modulearray.area', 'hcpv.cost.tracker_perarea'):
+            ('hcpv.cost.tracker.totalcost'),
+        ('sales_tax_rate'):
+            ('hcpv.cost.sales_tax.value'),
+        ('hcpv.cost.grid.percent', 'total_direct_cost', 'hcpv.cost.modulearray.power', 'hcpv.cost.grid.per_watt',
+         'hcpv.cost.grid.fixed'):
+            ('hcpv.cost.grid.total'),
+        ('hcpv.cost.install_labor_fixed', 'hcpv.cost.modulearray.power', 'hcpv.cost.install_labor_perwatt',
+         'hcpv.cost.modulearray.area', 'hcpv.cost.install_labor_perarea'):
+            ('hcpv.cost.install_labor.totalcost'),
+        ('total_installed_cost', 'hcpv.cost.modulearray.power'):
+            ('hcpv.cost.installed_per_capacity'),
+        ('hcpv.cost.land.per_acre', 'hcpv.cost.land_area.value', 'hcpv.cost.land.percent', 'total_direct_cost',
+         'hcpv.cost.modulearray.power', 'hcpv.cost.land.per_watt', 'hcpv.cost.land.fixed'):
+            ('hcpv.cost.land.total'),
+        ('hcpv.cost.inverter.costunits', 'hcpv.cost.inverter.num_units', 'hcpv.cost.inverter.power',
+         'hcpv.cost.per_inverter'):
+            ('hcpv.cost.inverter.totalcost'),
+        ('hcpv.cost.install_margin_fixed', 'hcpv.cost.modulearray.power', 'hcpv.cost.install_margin_perwatt',
+         'hcpv.cost.modulearray.area', 'hcpv.cost.install_margin_perarea'):
+            ('hcpv.cost.install_margin.totalcost'),
+        ('inv_snl_paco'):
+            ('hcpv.cost.inverter.power'),
+        ('array_num_inverters'):
+            ('hcpv.cost.inverter.num_units'),
+        ('hcpv.cost.module.power', 'hcpv.cost.module.num_units'):
+            ('hcpv.cost.modulearray.power'),
+        ('hcpv.module.power'):
+            ('hcpv.cost.module.power'),
+        ('hcpv.cost.landprep.per_acre', 'hcpv.cost.land_area.value', 'hcpv.cost.landprep.percent', 'total_direct_cost',
+         'hcpv.cost.modulearray.power', 'hcpv.cost.landprep.per_watt', 'hcpv.cost.landprep.fixed'):
+            ('hcpv.cost.landprep.total'),
+        ('hcpv.cost.permitting.percent', 'total_direct_cost', 'hcpv.cost.modulearray.power',
+         'hcpv.cost.permitting.per_watt', 'hcpv.cost.permitting.fixed'):
+            ('hcpv.cost.permitting.total'),
+        ('array_num_trackers', 'array_modules_per_tracker', 'hcpv.module.area'):
+            ('hcpv.cost.modulearray.area'),
+        ():
+            ('system_use_recapitalization'),
+        ('array_num_trackers', 'array_modules_per_tracker'):
+            ('hcpv.cost.module.num_units'),
+        ('hcpv.cost.contingency_percent', 'hcpv.cost.module.totalcost', 'hcpv.cost.inverter.totalcost',
+         'hcpv.cost.tracker.totalcost', 'hcpv.cost.bos_equip.totalcost', 'hcpv.cost.install_labor.totalcost',
+         'hcpv.cost.install_margin.totalcost'):
+            ('hcpv.cost.contingency'),
+        ('hcpv.cost.permitting.total', 'hcpv.cost.engr.total', 'hcpv.cost.grid.total', 'hcpv.cost.land.total',
+         'hcpv.cost.landprep.total', 'hcpv.cost.sales_tax.total'):
+            ('total_indirect_cost'),
+        ('hcpv.cost.module.costunits', 'hcpv.cost.module.num_units', 'hcpv.cost.module.power', 'hcpv.cost.per_module'):
+            ('hcpv.cost.module.totalcost')},
+    'Linear Fresnel Solar Field': {
+        ('csp.lf.sf.geom1_area_frac', 'csp.lf.geom1.rec_optical_derate', 'csp.lf.geom1.coll_opt_loss_norm_inc',
+         'csp.lf.sf.geom2_area_frac', 'csp.lf.geom2.rec_optical_derate', 'csp.lf.geom2.coll_opt_loss_norm_inc'):
+            ('csp.lf.sf.dp.loop_opt_eff'),
+        ('csp.lf.sf.dp.loop_opt_eff', 'csp.lf.sf.dp.loop_therm_eff', 'csp.lf.sf.dp.piping_therm_eff'):
+            ('csp.lf.sf.dp.total_loop_conv_eff'),
+        ('lat'):
+            ('latitude'),
+        ('csp.lf.sf.dp.sm1_aperture', 'csp.lf.sf.dp.loop_aperture'):
+            ('csp.lf.sf.dp.sm1_numloops'),
+        ('csp.lf.sf.dp.actual_aper'):
+            ('csp.lf.sf.field_area'),
+        ('demand_var', 'eta_ref', 'I_bn_des', 'csp.lf.sf.dp.total_loop_conv_eff'):
+            ('csp.lf.sf.dp.sm1_aperture'),
+        (
+        'csp.lf.sf.sh_geom_unique', 'nModSH', 'csp.lf.geom2.refl_aper_area', 'nModBoil', 'csp.lf.geom1.refl_aper_area'):
+            ('csp.lf.sf.geom2_area_frac'),
+        (
+        'csp.lf.sf.sh_geom_unique', 'nModBoil', 'csp.lf.geom1.refl_aper_area', 'nModSH', 'csp.lf.geom2.refl_aper_area'):
+            ('csp.lf.sf.geom1_area_frac'),
+        ('Pipe_hl_coef', 'T_cold_ref', 'T_hot', 'T_amb_des_sf', 'I_bn_des'):
+            ('csp.lf.sf.dp.piping_therm_eff'),
+        ('csp.lf.sf.dp.actual_aper', 'I_bn_des', 'csp.lf.sf.dp.total_loop_conv_eff'):
+            ('q_max_aux'),
+        (
+        'csp.lf.sf.sh_geom_unique', 'nModBoil', 'nModSH', 'csp.lf.geom1.refl_aper_area', 'csp.lf.geom2.refl_aper_area'):
+            ('csp.lf.sf.dp.loop_aperture'),
+        ('csp.lf.sf.field_area', 'csp.lf.sf.area_multiplier'):
+            ('csp.lf.sf.total_land_area'),
+        ('csp.lf.sf.sm_or_area', 'csp.lf.sf.specified_solar_multiple', 'csp.lf.sf.dp.sm1_aperture',
+         'csp.lf.sf.specified_total_aperture', 'csp.lf.sf.dp.loop_aperture'):
+            ('nLoops'),
+        ('ColAz'):
+            ('azimuth'),
+        ('csp.lf.sf.dp.loop_aperture', 'nLoops'):
+            ('csp.lf.sf.dp.actual_aper'),
+        ('fP_hdr_c', 'fP_sf_boil', 'fP_boil_to_sh', 'fP_sf_sh', 'fP_hdr_h', 'P_turb_des'):
+            ('csp.lf.sf.total_pres_drop'),
+        ('csp.lf.sf.sm_or_area', 'csp.lf.sf.specified_solar_multiple', 'csp.lf.sf.dp.actual_aper',
+         'csp.lf.sf.dp.sm1_aperture'):
+            ('solarm'),
+        ('csp.lf.geom1.rec_thermal_derate', 'csp.lf.sf.geom1_area_frac', 'csp.lf.geom2.rec_thermal_derate',
+         'csp.lf.sf.geom2_area_frac'):
+            ('csp.lf.sf.dp.loop_therm_eff'),
+        ('P_boil_des'):
+            ('P_turb_des')},
+    'Inverter Datasheet': {
+        ('inv_ds_paco', 'inv_ds_eff'):
+            ('inv_ds_pdco'),
+        ('inv_ds_eff_type', 'inv_ds_paco'):
+            ('inv_ds_pso_suggested'),
+        ('inv_ds_eff_type', 'inv_ds_eff_weighted', 'inv_ds_eff_peak_or_nom'):
+            ('inv_ds_eff'),
+        ('inv_ds_paco'):
+            ('inv_ds_pnt_suggested')},
+    'MSPT System Design': {
+        ('tshours', 'solarm'):
+            ('tshours_sf'),
+        ('solarm', 'q_pb_design'):
+            ('Q_rec_des'),
+        ('P_ref', 'design_eff'):
+            ('q_pb_design'),
+        ('P_ref', 'gross_net_conversion_factor'):
+            ('nameplate')},
+    'Molten Salt Linear Fresnel Solar Field': {
+        ('fthrok'):
+            ('fthr_ok'),
+        ():
+            ('nodes'),
+        ():
+            ('tc_void'),
+        ():
+            ('tc_fill'),
+        ():
+            ('tes_type'),
+        ():
+            ('t_ch_out_max'),
+        ():
+            ('fc_on'),
+        ():
+            ('f_tc_cold'),
+        ('sm1_aperture', 'a_loop'):
+            ('csp.mslf.sf.sm1_nLoops'),
+        ('sf_q_design', 'I_bn_des', 'loop_eff'):
+            ('sm1_aperture'),
+        ('csp.mslf.sf.sm_or_area', 'solar_mult_spec', 'sm1_aperture', 'a_field', 'a_loop'):
+            ('nLoops'),
+        ('P_ref', 'eta_ref'):
+            ('sf_q_design'),
+        ('a_loop', 'nLoops'):
+            ('a_sf_act'),
+        ('csp.mslf.sf.sm_or_area', 'solar_mult_spec', 'a_sf_act', 'sm1_aperture'):
+            ('solar_mult'),
+        ('csp.mslf.sf.Fluid'):
+            ('Fluid'),
+        ('a_sf_act', 'I_bn_des', 'loop_eff'):
+            ('field_thermal_output'),
+        ('csp.mslf.sf.Fluid'):
+            ('htf_max_opt_temp'),
+        ('a_sf_act'):
+            ('field_area'),
+        ('csp.mslf.sf.Fluid'):
+            ('htf_min_opt_temp'),
+        ('nMod'):
+            ('nSCA'),
+        ('field_area', 'land_mult'):
+            ('total_land_area'),
+        ('opt_derate', 'opt_normal'):
+            ('loop_opt_eff'),
+        ('loop_opt_eff', 'hl_derate'):
+            ('loop_eff'),
+        ('hl_derate'):
+            ('loop_therm_eff'),
+        ('csp.mslf.sf.FieldConfig'):
+            ('FieldConfig'),
+        ('T_loop_out'):
+            ('T_field_out_des'),
+        ('csp.mslf.sf.fthrctrl'):
+            ('fthrctrl'),
+        ('nMod', 'A_aperture'):
+            ('a_loop'),
+        ():
+            ('t_dis_out_min'),
+        ('csp.mslf.sf.Fluid', 'Fluid', 'T_loop_in_des', 'T_loop_out', 'field_fl_props'):
+            ('field_htf_cp_avg'),
+        ('solar_mult'):
+            ('solarm'),
+        ('HTF_data'):
+            ('field_fl_props'),
+        ('Fluid'):
+            ('field_fluid')},
+    'Linear Fresnel Collector and Receiver Header': {
+        ('csp.lf.geom2.solpos_collinc_table'):
+            ('sh_OpticalTable'),
+        ('csp.lf.geom1.solpos_collinc_table'):
+            ('b_OpticalTable'),
+        ('csp.lf.geom2.var4.abs_emis'):
+            ('sh_eps_HCE4'),
+        ('csp.lf.geom2.var3.abs_emis'):
+            ('sh_eps_HCE3'),
+        ('csp.lf.geom2.var2.abs_emis'):
+            ('sh_eps_HCE2'),
+        ('csp.lf.geom2.var1.abs_emis'):
+            ('sh_eps_HCE1'),
+        ('csp.lf.geom1.var4.abs_emis'):
+            ('b_eps_HCE4'),
+        ('csp.lf.geom1.glazing_intact', 'csp.lf.geom2.glazing_intact'):
+            ('GlazingIntactIn'),
+        ('csp.lf.geom1.var1.abs_emis'):
+            ('b_eps_HCE1'),
+        ('csp.lf.geom1.var1.annulus_pressure', 'csp.lf.geom1.var2.annulus_pressure',
+         'csp.lf.geom1.var3.annulus_pressure', 'csp.lf.geom1.var4.annulus_pressure',
+         'csp.lf.geom2.var1.annulus_pressure', 'csp.lf.geom2.var2.annulus_pressure',
+         'csp.lf.geom2.var3.annulus_pressure', 'csp.lf.geom2.var4.annulus_pressure'):
+            ('P_a'),
+        ('csp.lf.geom1.annulus_gas', 'csp.lf.geom2.annulus_gas'):
+            ('AnnulusGas'),
+        ('csp.lf.geom1.var1.env_trans', 'csp.lf.geom1.var2.env_trans', 'csp.lf.geom1.var3.env_trans',
+         'csp.lf.geom1.var4.env_trans', 'csp.lf.geom2.var1.env_trans', 'csp.lf.geom2.var2.env_trans',
+         'csp.lf.geom2.var3.env_trans', 'csp.lf.geom2.var4.env_trans'):
+            ('Tau_envelope'),
+        ('csp.lf.geom1.var3.abs_emis'):
+            ('b_eps_HCE3'),
+        ('csp.lf.geom1.iamt0', 'csp.lf.geom1.iamt1', 'csp.lf.geom1.iamt2', 'csp.lf.geom1.iamt3', 'csp.lf.geom1.iamt4',
+         'csp.lf.geom2.iamt0', 'csp.lf.geom2.iamt1', 'csp.lf.geom2.iamt2', 'csp.lf.geom2.iamt3', 'csp.lf.geom2.iamt4'):
+            ('IAM_T'),
+        ('csp.lf.geom1.var1.env_emis', 'csp.lf.geom1.var2.env_emis', 'csp.lf.geom1.var3.env_emis',
+         'csp.lf.geom1.var4.env_emis', 'csp.lf.geom2.var1.env_emis', 'csp.lf.geom2.var2.env_emis',
+         'csp.lf.geom2.var3.env_emis', 'csp.lf.geom2.var4.env_emis'):
+            ('EPSILON_4'),
+        ('csp.lf.geom1.var1.env_abs', 'csp.lf.geom1.var2.env_abs', 'csp.lf.geom1.var3.env_abs',
+         'csp.lf.geom1.var4.env_abs', 'csp.lf.geom2.var1.env_abs', 'csp.lf.geom2.var2.env_abs',
+         'csp.lf.geom2.var3.env_abs', 'csp.lf.geom2.var4.env_abs'):
+            ('alpha_env'),
+        ('csp.lf.geom1.var2.abs_emis'):
+            ('b_eps_HCE2'),
+        ('csp.lf.geom1.var1.hce_dirt', 'csp.lf.geom1.var2.hce_dirt', 'csp.lf.geom1.var3.hce_dirt',
+         'csp.lf.geom1.var4.hce_dirt', 'csp.lf.geom2.var1.hce_dirt', 'csp.lf.geom2.var2.hce_dirt',
+         'csp.lf.geom2.var3.hce_dirt', 'csp.lf.geom2.var4.hce_dirt'):
+            ('Dirt_HCE'),
+        ('csp.lf.geom1.iaml0', 'csp.lf.geom1.iaml1', 'csp.lf.geom1.iaml2', 'csp.lf.geom1.iaml3', 'csp.lf.geom1.iaml4',
+         'csp.lf.geom2.iaml0', 'csp.lf.geom2.iaml1', 'csp.lf.geom2.iaml2', 'csp.lf.geom2.iaml3', 'csp.lf.geom2.iaml4'):
+            ('IAM_L'),
+        ('csp.lf.geom1.hlpolyw0', 'csp.lf.geom1.hlpolyw1', 'csp.lf.geom1.hlpolyw2', 'csp.lf.geom1.hlpolyw3',
+         'csp.lf.geom1.hlpolyw4', 'csp.lf.geom2.hlpolyw0', 'csp.lf.geom2.hlpolyw1', 'csp.lf.geom2.hlpolyw2',
+         'csp.lf.geom2.hlpolyw3', 'csp.lf.geom2.hlpolyw4'):
+            ('HL_W'),
+        ('csp.lf.geom1.var1.abs_abs', 'csp.lf.geom1.var2.abs_abs', 'csp.lf.geom1.var3.abs_abs',
+         'csp.lf.geom1.var4.abs_abs', 'csp.lf.geom2.var1.abs_abs', 'csp.lf.geom2.var2.abs_abs',
+         'csp.lf.geom2.var3.abs_abs', 'csp.lf.geom2.var4.abs_abs'):
+            ('alpha_abs'),
+        ('csp.lf.geom1.var1.bellows_shadowing', 'csp.lf.geom1.var2.bellows_shadowing',
+         'csp.lf.geom1.var3.bellows_shadowing', 'csp.lf.geom1.var4.bellows_shadowing',
+         'csp.lf.geom2.var1.bellows_shadowing', 'csp.lf.geom2.var2.bellows_shadowing',
+         'csp.lf.geom2.var3.bellows_shadowing', 'csp.lf.geom2.var4.bellows_shadowing'):
+            ('Shadowing'),
+        ('csp.lf.geom1.hlpolyt0', 'csp.lf.geom1.hlpolyt1', 'csp.lf.geom1.hlpolyt2', 'csp.lf.geom1.hlpolyt3',
+         'csp.lf.geom1.hlpolyt4', 'csp.lf.geom2.hlpolyt0', 'csp.lf.geom2.hlpolyt1', 'csp.lf.geom2.hlpolyt2',
+         'csp.lf.geom2.hlpolyt3', 'csp.lf.geom2.hlpolyt4'):
+            ('HL_dT'),
+        ('csp.lf.geom1.var1.rated_heat_loss', 'csp.lf.geom1.var2.rated_heat_loss', 'csp.lf.geom1.var3.rated_heat_loss',
+         'csp.lf.geom1.var4.rated_heat_loss', 'csp.lf.geom2.var1.rated_heat_loss', 'csp.lf.geom2.var2.rated_heat_loss',
+         'csp.lf.geom2.var3.rated_heat_loss', 'csp.lf.geom2.var4.rated_heat_loss'):
+            ('Design_loss'),
+        ('csp.lf.geom1.var1.field_fraction', 'csp.lf.geom1.var2.field_fraction', 'csp.lf.geom1.var3.field_fraction',
+         'csp.lf.geom1.var4.field_fraction', 'csp.lf.geom2.var1.field_fraction', 'csp.lf.geom2.var2.field_fraction',
+         'csp.lf.geom2.var3.field_fraction', 'csp.lf.geom2.var4.field_fraction'):
+            ('HCE_FieldFrac'),
+        ('csp.lf.geom1.refl_aper_area', 'csp.lf.geom2.refl_aper_area', 'csp.lf.geom1.coll_length',
+         'csp.lf.geom2.coll_length', 'csp.lf.geom1.opt_mode', 'csp.lf.geom2.opt_mode', 'csp.lf.geom1.track_error',
+         'csp.lf.geom2.track_error', 'csp.lf.geom1.geom_error', 'csp.lf.geom2.geom_error', 'csp.lf.geom1.mirror_refl',
+         'csp.lf.geom2.mirror_refl', 'csp.lf.geom1.soiling', 'csp.lf.geom2.soiling', 'csp.lf.geom1.general_error',
+         'csp.lf.geom2.general_error', 'csp.lf.geom1.hl_mode', 'csp.lf.geom2.hl_mode',
+         'csp.lf.geom1.diam_absorber_inner', 'csp.lf.geom2.diam_absorber_inner', 'csp.lf.geom1.diam_absorber_outer',
+         'csp.lf.geom2.diam_absorber_outer', 'csp.lf.geom1.diam_envelope_inner', 'csp.lf.geom2.diam_envelope_inner',
+         'csp.lf.geom1.diam_envelope_outer', 'csp.lf.geom2.diam_envelope_outer', 'csp.lf.geom1.diam_absorber_plug',
+         'csp.lf.geom2.diam_absorber_plug', 'csp.lf.geom1.inner_roughness', 'csp.lf.geom2.inner_roughness',
+         'csp.lf.geom1.flow_type', 'csp.lf.geom2.flow_type', 'csp.lf.geom1.absorber_material',
+         'csp.lf.geom2.absorber_material'):
+            ('A_aperture', 'L_col', 'OptCharType', 'TrackingError', 'GeomEffects', 'rho_mirror_clean', 'dirt_mirror',
+             'error', 'HLCharType', 'D_2', 'D_3', 'D_4', 'D_5', 'D_p', 'Rough', 'Flow_type', 'AbsorberMaterial')}}

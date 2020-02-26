@@ -15,7 +15,7 @@ X
 9
 Y
 3
-3
+0
 Width
 3
 375
@@ -53,24 +53,25 @@ Battery
 CheckBox
 
 0
-653
+726
 // for battery configurations, need en_batt to determine
 // whether to display battery-related inputs on costs pages, etc.
-// 'en_batt' required as input to cmod_pvsamv1, cmod_battery, and
-//  financial models
+// 'en_batt' required as input to cmod_pvsamv1, cmod_battery
+// financial models also check 'en_batt' for replacement cost calcs
+// set en_batt here instead of equations so versions.lk works properly
+// for opening files from SAM 2018.11.11 and older
 on_load{'Battery Enable'} = define ()
 {
+	show('en_batt',false);
 	t = technology();
 	// for battery configs, enable battery and hide input
 	if ( t == 'PV Battery' || t == 'Generic Battery' )
 	{
-		value('en_batt', true);
-		show('en_batt',0);
+		${en_batt} = true;
 	}
-	// for fuel cell 'en_batt' is set by exclusive var in Startup.lk
-	// for non-battery configs, disable battery
-	elseif( t != 'Fuel Cell' ) // en_batt is a user input for fuel cell configs
+	// for fuel cell 'en_batt' is set by user, see exclusive var in Startup.lk
+	elseif( t != 'Fuel Cell' )
 	{
-		value('en_batt', false);
+		${en_batt} = false;
 	}
 };	

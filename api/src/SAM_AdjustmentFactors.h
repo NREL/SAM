@@ -7,6 +7,7 @@
 
 
 #include <stdint.h>
+
 #ifdef __cplusplus
 extern "C"
 {
@@ -22,7 +23,7 @@ extern "C"
  * constraints: None
  * required if: None
  */
-SAM_EXPORT void SAM_AdjustmentFactors_adjust_constant_nset(void* ptr, double num, SAM_error *err);
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_constant_nset(void *ptr, double num, SAM_error *err);
 
 /**
  * Set adjust:hourly
@@ -30,7 +31,7 @@ SAM_EXPORT void SAM_AdjustmentFactors_adjust_constant_nset(void* ptr, double num
  * constraints: None
  * required if: None
  */
-SAM_EXPORT void SAM_AdjustmentFactors_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err);
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_hourly_aset(void *ptr, double *arr, int length, SAM_error *err);
 
 /**
  * Set adjust:periods
@@ -38,7 +39,7 @@ SAM_EXPORT void SAM_AdjustmentFactors_adjust_hourly_aset(void* ptr, double* arr,
  * constraints: None
  * required if: None
  */
-SAM_EXPORT void SAM_AdjustmentFactors_adjust_periods_mset(void* ptr, double* mat, int nrows, int ncols, SAM_error *err);
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_periods_mset(void *ptr, double *mat, int nrows, int ncols, SAM_error *err);
 
 //
 // DC Adjustment Factors for All Technology Models
@@ -50,7 +51,7 @@ SAM_EXPORT void SAM_AdjustmentFactors_adjust_periods_mset(void* ptr, double* mat
  * constraints: None
  * required if: None
  */
-SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_constant_nset(void* ptr, double num, SAM_error *err);
+SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_constant_nset(void *ptr, double num, SAM_error *err);
 
 /**
  * Set dc_adjust:hourly
@@ -58,7 +59,7 @@ SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_constant_nset(void* ptr, double 
  * constraints: None
  * required if: None
  */
-SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err);
+SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_hourly_aset(void *ptr, double *arr, int length, SAM_error *err);
 
 /**
  * Set dc_adjust:periods
@@ -66,7 +67,8 @@ SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_hourly_aset(void* ptr, double* a
  * constraints: None
  * required if: None
  */
-SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_periods_mset(void* ptr, double* mat, int nrows, int ncols, SAM_error *err);
+SAM_EXPORT void
+SAM_AdjustmentFactors_dc_adjust_periods_mset(void *ptr, double *mat, int nrows, int ncols, SAM_error *err);
 
 //
 // SF Adjustment Factors for All Technology Models
@@ -78,7 +80,7 @@ SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_periods_mset(void* ptr, double* 
  * constraints: None
  * required if: None
  */
-SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_constant_nset(void* ptr, double num, SAM_error *err);
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_constant_nset(void *ptr, double num, SAM_error *err);
 
 /**
  * Set sf_adjust:hourly
@@ -86,7 +88,7 @@ SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_constant_nset(void* ptr, double 
  * constraints: None
  * required if: None
  */
-SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err);
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_hourly_aset(void *ptr, double *arr, int length, SAM_error *err);
 
 /**
  * Set sf_adjust:periods
@@ -94,29 +96,30 @@ SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_hourly_aset(void* ptr, double* a
  * constraints: None
  * required if: None
  */
-SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_periods_mset(void* ptr, double* mat, int nrows, int ncols, SAM_error *err);
+SAM_EXPORT void
+SAM_AdjustmentFactors_sf_adjust_periods_mset(void *ptr, double *mat, int nrows, int ncols, SAM_error *err);
 
 /**
  * Getters
  */
 
-SAM_EXPORT double SAM_AdjustmentFactors_adjust_constant_nget(void* ptr, SAM_error *err);
+SAM_EXPORT double SAM_AdjustmentFactors_adjust_constant_nget(void *ptr, SAM_error *err);
 
-SAM_EXPORT double* SAM_AdjustmentFactors_adjust_hourly_aget(void* ptr, int* length, SAM_error *err);
+SAM_EXPORT double *SAM_AdjustmentFactors_adjust_hourly_aget(void *ptr, int *length, SAM_error *err);
 
-SAM_EXPORT double* SAM_AdjustmentFactors_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err);
+SAM_EXPORT double *SAM_AdjustmentFactors_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err);
 
-SAM_EXPORT double SAM_AdjustmentFactors_dc_adjust_constant_nget(void* ptr, SAM_error *err);
+SAM_EXPORT double SAM_AdjustmentFactors_dc_adjust_constant_nget(void *ptr, SAM_error *err);
 
-SAM_EXPORT double* SAM_AdjustmentFactors_dc_adjust_hourly_aget(void* ptr, int* length, SAM_error *err);
+SAM_EXPORT double *SAM_AdjustmentFactors_dc_adjust_hourly_aget(void *ptr, int *length, SAM_error *err);
 
-SAM_EXPORT double* SAM_AdjustmentFactors_dc_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err);
+SAM_EXPORT double *SAM_AdjustmentFactors_dc_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err);
 
-SAM_EXPORT double SAM_AdjustmentFactors_sf_adjust_constant_nget(void* ptr, SAM_error *err);
+SAM_EXPORT double SAM_AdjustmentFactors_sf_adjust_constant_nget(void *ptr, SAM_error *err);
 
-SAM_EXPORT double* SAM_AdjustmentFactors_sf_adjust_hourly_aget(void* ptr, int* length, SAM_error *err);
+SAM_EXPORT double *SAM_AdjustmentFactors_sf_adjust_hourly_aget(void *ptr, int *length, SAM_error *err);
 
-SAM_EXPORT double* SAM_AdjustmentFactors_sf_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err);
+SAM_EXPORT double *SAM_AdjustmentFactors_sf_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err);
 
 
 #ifdef __cplusplus

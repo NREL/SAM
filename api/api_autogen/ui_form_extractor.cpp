@@ -16,51 +16,49 @@ VarValue ui_form_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
 
     // read default
     unsigned char m_type = in.Read8();
-    if (m_type > 0 && m_type < 4){
+    if (m_type > 0 && m_type < 4) {
         int nr = in.Read32();
         int nc = in.Read32();
-        if (nc*nr > 1) {
+        if (nc * nr > 1) {
             for (size_t r = 0; r < nr; r++) {
                 in.ReadLine();
             }
             // need to do maybe
             in.ReadLine();
-        }
-        else{
+        } else {
             double def;
             in.ReadLine().ToDouble(&def);
             vv.Set(def);
         }
     }
-    // string
-    else if (m_type == 4){
+        // string
+    else if (m_type == 4) {
         if (in.Read32() > 0) vv.Set(in.ReadLine());
     }
-    // table
-    else if (m_type == 5){
+        // table
+    else if (m_type == 5) {
         in.Read8(); //ver
 
         size_t m = in.Read32();
         VarTable vt;
-        for (size_t j = 0; j<m; j++)
-        {
+        for (size_t j = 0; j < m; j++) {
             std::string entry = in.ReadWord().ToStdString();
             vt.Set(entry, get_varvalue(is, entry));
         }
         vv.Set(vt);
     }
-    // binary
-    else if (m_type == 6){
+        // binary
+    else if (m_type == 6) {
         size_t len = in.Read32();
-        for (size_t i = 0; i <len; i++)
+        for (size_t i = 0; i < len; i++)
             in.GetChar();
         vv.Set(wxMemoryBuffer());
     }
-	return vv;
+    return vv;
 }
 
 /// Formatting of UI form txt taken from InputPageData::Read, VarDatabase::Read
-void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
+void ui_form_extractor::get_eqn_and_callback_script(wxInputStream &is) {
     wxTextInputStream in(is, "\n");
 
     for (size_t i = 0; i < 3; i++)
@@ -69,7 +67,7 @@ void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     // skipping through UI objects
     size_t n = in.Read32();
 
-    for (size_t i = 0; i < n; i++){
+    for (size_t i = 0; i < n; i++) {
         in.ReadLine(); // type
         in.ReadLine(); // space
         in.ReadLine(); // visible
@@ -82,11 +80,9 @@ void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
                 size_t count = in.Read32();
                 for (size_t k = 0; k < count; k++)
                     in.ReadWord();
-            }
-            else if (type == 5) {
+            } else if (type == 5) {
                 if (in.Read32() > 0) in.ReadLine();
-            }
-            else if (type == 4) {
+            } else if (type == 4) {
                 // COLOR
                 for (size_t k = 0; k < 4; k++) in.ReadLine();
             } else in.ReadLine();
@@ -99,12 +95,12 @@ void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     n = in.Read32();
 
     // save variable defaults for each configuration for use in ui script evaluation
-    for (size_t i = 0; i < n; i++){
+    for (size_t i = 0; i < n; i++) {
         std::string name = in.ReadWord().ToStdString();
         auto it = SAM_ui_form_to_defaults[ui_form_name].find(name);
         if (it != SAM_ui_form_to_defaults[ui_form_name].end())
             it->second.Read_text(is);
-        else{
+        else {
             VarInfo vi;
             vi.Read_text(is);
             SAM_ui_form_to_defaults[ui_form_name].insert({name, vi.DefaultValue});
@@ -117,8 +113,7 @@ void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     m_eqn_script.clear();
     n = in.Read32();
     wxString tmp;
-    if (n > 0)
-    {
+    if (n > 0) {
         for (size_t i = 0; i < n; i++)
             tmp.Append(in.GetChar());
     }
@@ -127,8 +122,7 @@ void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
 
     m_callback_script.clear();
     n = in.Read32();
-    if (n > 0)
-    {
+    if (n > 0) {
         for (size_t i = 0; i < n; i++)
             tmp.Append(in.GetChar());
     }
@@ -148,14 +142,14 @@ bool ui_form_extractor::extract(std::string file) {
 }
 
 /// Populates SAM_ui_extracted_db, SAM_ui_form_to_eqn_info, and
-bool ui_form_extractor_database::populate_ui_data(std::string ui_path, std::vector<std::string> ui_form_names){
-    for (size_t i = 0; i < ui_form_names.size(); i++){
+bool ui_form_extractor_database::populate_ui_data(std::string ui_path, std::vector<std::string> ui_form_names) {
+    for (size_t i = 0; i < ui_form_names.size(); i++) {
         std::string ui_name = ui_form_names[i];
 
-        ui_form_extractor* ui_fe = SAM_ui_extracted_db.make_entry(ui_name);
+        ui_form_extractor *ui_fe = SAM_ui_extracted_db.make_entry(ui_name);
         bool success = ui_fe->extract(ui_path + ui_name + ".txt");
 
-        if (!success){
+        if (!success) {
             std::cout << "ui_form_extractor_database error: Cannot open " + ui_name + " file at " + ui_path;
             return false;
         }

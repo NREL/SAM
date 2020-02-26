@@ -18,7 +18,7 @@
  * to the page no matter what selection of variables is active, an exclusive variable which determines what
  * subset of ui forms should be shown, and those exclusive ui forms, of which only one is shown at a time.
  */
-struct page_info{
+struct page_info {
     std::string sidebar_title;
     std::vector<std::string> common_uiforms;
     std::string exclusive_var = "";
@@ -66,13 +66,14 @@ extern std::unordered_map<std::string, std::unordered_map<std::string, VarValue>
 /**
  * Maps each configuration to its specific defaults found in defaults text files
  */
- extern std::unordered_map<std::string, VarTable> SAM_config_to_defaults;
+extern std::unordered_map<std::string, VarTable> SAM_config_to_defaults;
 
 
 /**
  * Manages mapping and memory for ui_form_extractors
  */
 class ui_form_extractor_database;
+
 extern ui_form_extractor_database SAM_ui_extracted_db;
 
 
@@ -80,7 +81,7 @@ extern ui_form_extractor_database SAM_ui_extracted_db;
  * Maps each ui form with the ui input/outputs of each equation. Required for tracking if ui variables
  * are changed via equations (becoming ui_outputs) before becoming primary ssc inputs.
  */
-struct equation_info{
+struct equation_info {
     std::vector<std::string> all_inputs;
     std::vector<std::string> all_outputs;
 
@@ -88,11 +89,10 @@ struct equation_info{
     std::vector<std::string> ui_only_inputs;
 
     std::string ui_source;
-    EqnData* eqn_data;
+    EqnData *eqn_data;
 };
 
 extern std::unordered_map<std::string, std::vector<equation_info>> SAM_ui_form_to_eqn_info;
-
 
 
 /**
@@ -100,15 +100,14 @@ extern std::unordered_map<std::string, std::vector<equation_info>> SAM_ui_form_t
  * across
  */
 
-extern std::unordered_map<std::string, digraph*> SAM_config_to_variable_graph;
-
+extern std::unordered_map<std::string, digraph *> SAM_config_to_variable_graph;
 
 
 /**
  * Maps each ui form with its callbacks. ui variables may be ssc
  * or only found in the ui. Creating using information from digraph
  */
-struct callback_info{
+struct callback_info {
     std::vector<std::string> ssc_only_inputs;
     std::vector<std::string> ui_only_inputs;
 
@@ -130,46 +129,46 @@ extern std::unordered_map<std::string, std::vector<std::string>> SAM_ui_obj_to_e
 
 
 static std::unordered_map<std::string, std::string> config_to_cmod_name = {
-        {"6parsolve", "SixParsolve"},
+        {"6parsolve",                "SixParsolve"},
         {"AllEquityPartnershipFlip", "Equpartflip"},
-        {"Battery", "StandAloneBattery"},
-        {"Battwatts", "Battwatts"},
-        {"Belpe", "Belpe"},
-        {"Biopower", "Biomass"},
-        {"Commercial", "Commercial"},
-        {"DishStirling", "Tcsdish"},
-        {"DSGLIPH", "LinearFresnelDsgIph"},
-        {"DSLF", "TcslinearFresnel"},
-        {"DSPT", "TcsdirectSteam"},
-        {"EmpiricalTrough", "TcstroughEmpirical"},
-        {"FlatPlatePV", "Pvsamv1"},
-        {"FuelCell", "Fuelcell"},
-        {"GenericCSPSystem", "TcsgenericSolar"},
-        {"GenericSystem", "GenericSystem"},
-        {"GeothermalPower", "Geothermal"},
-        {"HighXConcentratingPV", "Hcpv"},
-        {"HostDeveloper", "HostDeveloper"},
-        {"ISCC", "Tcsiscc"},
-        {"LCOECalculator", "Lcoefcr"},
-        {"LCOHCalculator", "IphToLcoefcr"},
+        {"Battery",                  "StandAloneBattery"},
+        {"Battwatts",                "Battwatts"},
+        {"Belpe",                    "Belpe"},
+        {"Biopower",                 "Biomass"},
+        {"Commercial",               "Commercial"},
+        {"DishStirling",             "Tcsdish"},
+        {"DSGLIPH",                  "LinearFresnelDsgIph"},
+        {"DSLF",                     "TcslinearFresnel"},
+        {"DSPT",                     "TcsdirectSteam"},
+        {"EmpiricalTrough",          "TcstroughEmpirical"},
+        {"FlatPlatePV",              "Pvsamv1"},
+        {"FuelCell",                 "Fuelcell"},
+        {"GenericCSPSystem",         "TcsgenericSolar"},
+        {"GenericSystem",            "GenericSystem"},
+        {"GeothermalPower",          "Geothermal"},
+        {"HighXConcentratingPV",     "Hcpv"},
+        {"HostDeveloper",            "HostDeveloper"},
+        {"ISCC",                     "Tcsiscc"},
+        {"LCOECalculator",           "Lcoefcr"},
+        {"LCOHCalculator",           "IphToLcoefcr"},
         {"LeveragedPartnershipFlip", "Levpartflip"},
-        {"MerchantPlant", "MerchantPlant"},
-        {"MHKtidal", "MHKTidal"},
-        {"MHKwave", "MHKWave"},
-        {"MSLF", "TcsMSLF"},
-        {"MSPT", "TcsmoltenSalt"},
-        {"None", "None"},
-        {"PhysicalTrough", "TroughPhysical"},
-        {"PhysicalTroughIPH", "TroughPhysicalProcessHeat"},
-        {"PVWatts", "Pvwattsv5"},
-        {"Residential", "Residential"},
-        {"SaleLeaseback", "Saleleaseback"},
-        {"SCO2", "SCO2"},
-        {"SingleOwner", "Singleowner"},
-        {"SolarWaterHeating", "Swh"},
-        {"ThirdParty", "Thirdpartyownership"},
-        {"Utilityrate5", "Utilityrate5"},
-        {"WindPower", "Windpower"}
+        {"MerchantPlant",            "MerchantPlant"},
+        {"MHKtidal",                 "MHKTidal"},
+        {"MHKwave",                  "MHKWave"},
+        {"MSLF",                     "TcsMSLF"},
+        {"MSPT",                     "TcsmoltenSalt"},
+        {"None",                     "None"},
+        {"PhysicalTrough",           "TroughPhysical"},
+        {"PhysicalTroughIPH",        "TroughPhysicalProcessHeat"},
+        {"PVWatts",                  "Pvwattsv5"},
+        {"Residential",              "Residential"},
+        {"SaleLeaseback",            "Saleleaseback"},
+        {"SCO2",                     "SCO2"},
+        {"SingleOwner",              "Singleowner"},
+        {"SolarWaterHeating",        "Swh"},
+        {"ThirdParty",               "Thirdpartyownership"},
+        {"Utilityrate5",             "Utilityrate5"},
+        {"WindPower",                "Windpower"}
 };
 
 /**
@@ -183,16 +182,17 @@ void load_primary_cmod_inputs();
 
 void load_secondary_cmod_outputs(std::string cmod_name);
 
-page_info& find_page_info_of_variable(std::string name, std::string config);
+page_info &find_page_info_of_variable(std::string name, std::string config);
 
 /// Find which ui form a variable is defined inside for a given config
 std::string find_ui_of_variable(std::string name, std::string config);
 
 class ui_form_extractor;
-ui_form_extractor* find_ui_of_object(std::string obj, std::string config);
+
+ui_form_extractor *find_ui_of_object(std::string obj, std::string config);
 
 /// Find the config-independent default VarValue for a variable for a given config
-VarValue* find_default_from_ui(std::string name, std::string config);
+VarValue *find_default_from_ui(std::string name, std::string config);
 
 /// Determine if a variable is a primary ssc input by returning cmod name
 std::string which_cmod_as_input(std::string name, std::string config);
@@ -201,21 +201,20 @@ std::string which_cmod_as_input(std::string name, std::string config);
 
 std::vector<std::string> split_identity_string(std::string str, size_t n);
 
-static void clear_arg_string(lk::invoke_t& cxt){
+static void clear_arg_string(lk::invoke_t &cxt) {
     size_t pos = cxt.error().find("args");
     if (pos == std::string::npos)
         return;
-    else if (pos == 0){
+    else if (pos == 0) {
         cxt.clear_error();
-    }
-    else{
+    } else {
         cxt.error(cxt.error().substr(0, pos));
     }
 }
 
-std::string unescape(const std::string& s);
+std::string unescape(const std::string &s);
 
-static bool argument_of_special(std::string& s){
+static bool argument_of_special(std::string &s) {
     if (s.find("${") == std::string::npos)
         return false;
     size_t pos1 = s.find("${");
@@ -225,7 +224,7 @@ static bool argument_of_special(std::string& s){
     return true;
 }
 
-static bool argument_of_value(std::string& s){
+static bool argument_of_value(std::string &s) {
     if (s.find("value(") == std::string::npos)
         return false;
     s = unescape(s);
@@ -237,12 +236,11 @@ static bool argument_of_value(std::string& s){
     return true;
 }
 
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
-{
+template<typename T>
+std::ostream &operator<<(std::ostream &os, const std::vector<T> &v) {
     os << "(";
     for (int i = 0; i < v.size(); ++i) {
-        os << "'" <<v[i] << "'";
+        os << "'" << v[i] << "'";
         if (i != v.size() - 1)
             os << ", ";
     }
@@ -254,7 +252,7 @@ std::vector<std::string> find_ui_forms_for_config(std::string config_name);
 
 void print_ui_form_to_eqn_variable();
 
-equation_info& find_equation_info_from_edge(edge *edge, std::string config);
+equation_info &find_equation_info_from_edge(edge *edge, std::string config);
 
 
 #endif //SYSTEM_ADVISOR_MODEL_EXPORTED_MAPS_H

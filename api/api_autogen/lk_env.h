@@ -22,98 +22,87 @@ extern std::vector<std::string> subobjects_completed;
 
 /// export_config_funcs
 
-static void fcall_addconfig( lk::invoke_t &cxt )
-{
-    LK_DOC("addconfig", "Add a technology+financing options", "( string:tech, array:financings ):none" );
+static void fcall_addconfig(lk::invoke_t &cxt) {
+    LK_DOC("addconfig", "Add a technology+financing options", "( string:tech, array:financings ):none");
     // nothing to do
 }
 
-static void fcall_setconfig( lk::invoke_t &cxt )
-{
+static void fcall_setconfig(lk::invoke_t &cxt) {
     LK_DOC("setconfig", "Sets the currently active configuration for editing", "(string:Tech, string:Financing):none");
 
     active_config = cxt.arg(0).as_string() + "-" + cxt.arg(1).as_string();
 }
 
-static void fcall_configopt( lk::invoke_t &cxt )
-{
-    LK_DOC("configopt", "Sets configuration options, such as long_name, short_name, description, etc.", "(string:config name, table:options):none");
+static void fcall_configopt(lk::invoke_t &cxt) {
+    LK_DOC("configopt", "Sets configuration options, such as long_name, short_name, description, etc.",
+           "(string:config name, table:options):none");
     lk::vardata_t &tab = cxt.arg(1).deref();
     std::string s;
     s += cxt.arg(0).as_string() + " | ";
-    if( lk::vardata_t *vv = tab.lookup( "long_name" ) )
+    if (lk::vardata_t *vv = tab.lookup("long_name"))
         s += vv->as_string() + " | ";
-    if( lk::vardata_t *vv = tab.lookup( "description" ) )
+    if (lk::vardata_t *vv = tab.lookup("description"))
         s += vv->as_string();
 }
 
-static void fcall_setting( lk::invoke_t &cxt )
-{
-    LK_DOC( "setting", "Sets a setting field for the current configuration", "(string:name, string:value -or- table:name/value pairs):none");
+static void fcall_setting(lk::invoke_t &cxt) {
+    LK_DOC("setting", "Sets a setting field for the current configuration",
+           "(string:name, string:value -or- table:name/value pairs):none");
     // nothing to do
 }
 
-static void fcall_setmodules( lk::invoke_t &cxt )
-{
-    LK_DOC("setmodules", "Sets the simulation models for the currently active configuration", "(array:module names):none");
+static void fcall_setmodules(lk::invoke_t &cxt) {
+    LK_DOC("setmodules", "Sets the simulation models for the currently active configuration",
+           "(array:module names):none");
 
     std::vector<std::string> list;
     lk::vardata_t &m = cxt.arg(0);
-    for( size_t i=0;i<m.length();i++ )
-        list.push_back( m.index(i)->as_string().ToStdString() );
+    for (size_t i = 0; i < m.length(); i++)
+        list.push_back(m.index(i)->as_string().ToStdString());
 
     SAM_config_to_primary_modules[active_config] = list;
 }
 
-static void fcall_addpage( lk::invoke_t &cxt )
-{
-    LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).", "(array:pages, table:caption,help,exclusive,exclusive_var):none" );
+static void fcall_addpage(lk::invoke_t &cxt) {
+    LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).",
+           "(array:pages, table:caption,help,exclusive,exclusive_var):none");
 
     lk::vardata_t &grps = cxt.arg(0);
     page_info new_page;
-    for( size_t i=0;i<grps.length();i++ )
-    {
-        for( size_t j=0;j<grps.index(i)->deref().length();j++ )
-        {
+    for (size_t i = 0; i < grps.length(); i++) {
+        for (size_t j = 0; j < grps.index(i)->deref().length(); j++) {
             lk::vardata_t &item = grps.index(i)->deref().index(j)->deref();
 
-            if ( item.type() == lk::vardata_t::HASH )
-            {
-                if ( lk::vardata_t *name = item.lookup( "name" ) )
+            if (item.type() == lk::vardata_t::HASH) {
+                if (lk::vardata_t *name = item.lookup("name"))
                     new_page.common_uiforms.push_back(name->as_string().ToStdString());
-            }
-            else
-            {
+            } else {
                 new_page.common_uiforms.push_back(item.as_string().ToStdString());
             }
         }
     }
 
-    if ( new_page.common_uiforms.size() == 0 || new_page.common_uiforms[0].size() == 0 ) return;
+    if (new_page.common_uiforms.size() == 0 || new_page.common_uiforms[0].size() == 0) return;
 
     new_page.sidebar_title = new_page.common_uiforms[0];
     std::vector<std::string> excl_header_pages;
 
-    if ( cxt.arg_count() > 1 )
-    {
+    if (cxt.arg_count() > 1) {
         lk::vardata_t &props = cxt.arg(1).deref();
 
-        if( lk::vardata_t *x = props.lookup("sidebar") )
+        if (lk::vardata_t *x = props.lookup("sidebar"))
             new_page.sidebar_title = x->as_string();
 
-        if ( lk::vardata_t *x = props.lookup("exclusive_var") ){
+        if (lk::vardata_t *x = props.lookup("exclusive_var")) {
             new_page.exclusive_var = x->as_string();
             new_page.exclusive_uiforms = new_page.common_uiforms;
             new_page.common_uiforms.clear();
         }
 
-        if ( lk::vardata_t *x = props.lookup("exclusive_header_pages") )
-        {
+        if (lk::vardata_t *x = props.lookup("exclusive_header_pages")) {
             lk::vardata_t &vec = x->deref();
-            if ( vec.type() == lk::vardata_t::VECTOR )
-            {
-                for( size_t i=0;i<vec.length();i++ )
-                {
+            if (vec.type() == lk::vardata_t::VECTOR) {
+                for (size_t i = 0; i < vec.length(); i++) {
                     new_page.common_uiforms.push_back(vec.index(i)->as_string().ToStdString());
                 }
             }
@@ -129,7 +118,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
  * Only to be used in lk environment for export_config.exe
  */
 
-static lk::fcall_t* export_config_funcs() {
+static lk::fcall_t *export_config_funcs() {
     static const lk::fcall_t vec[] = {
             fcall_addconfig,
             fcall_setconfig,
@@ -137,22 +126,21 @@ static lk::fcall_t* export_config_funcs() {
             fcall_addpage,
             fcall_setting,
             fcall_setmodules,
-            0 };
-    return (lk::fcall_t*)vec;
+            0};
+    return (lk::fcall_t *) vec;
 }
 
 /// invoke_casecallback_funcs
 
-static void fcall_value( lk::invoke_t &cxt )
-{
+static void fcall_value(lk::invoke_t &cxt) {
     LK_DOC("value", "Gets or sets the case value of a variable by name", "(string:name [,variant:value]):[variant]");
 
 
     // if getting a variable, return config-dependent default
-    if ( cxt.arg_count() == 1 ){
+    if (cxt.arg_count() == 1) {
         std::string var_name = cxt.arg(0).as_string().ToStdString();
 
-        VarValue* def_vv = SAM_config_to_defaults.find(active_config)->second.Get(var_name);
+        VarValue *def_vv = SAM_config_to_defaults.find(active_config)->second.Get(var_name);
 
         if (def_vv)
             def_vv->Write(cxt.result());
@@ -162,8 +150,7 @@ static void fcall_value( lk::invoke_t &cxt )
 //            std::string map = var_left;// + ":" + def_vv->AsString().ToStdString();
 //            cxt.result().assign(map);
 //        }
-    }
-    else {
+    } else {
 
         auto var_graph = SAM_config_to_variable_graph.find(active_config)->second;
 
@@ -187,7 +174,7 @@ static void fcall_value( lk::invoke_t &cxt )
         std::string obj_stack = active_object
                                 + (active_subobject.length() > 0 ? ":" + active_subobject : "");
 
-        if (map_subobject){
+        if (map_subobject) {
             std::string ui = find_ui_of_variable(dest_name, active_config);
             // add the source vertex & edge if they don't exist already
             var_graph->add_vertex(src_name, src_is_ssc, ui);
@@ -201,48 +188,42 @@ static void fcall_value( lk::invoke_t &cxt )
 
 }
 
-static void fcall_varinfo( lk::invoke_t &cxt )
-{
+static void fcall_varinfo(lk::invoke_t &cxt) {
     LK_DOC("varinfo", "Assign empty strings", "(string:var name):table");
     cxt.result().empty_hash();
-    cxt.result().hash_item("label").assign( "" );
-    cxt.result().hash_item("units").assign( "" );
-    cxt.result().hash_item("group").assign( "" );
+    cxt.result().hash_item("label").assign("");
+    cxt.result().hash_item("units").assign("");
+    cxt.result().hash_item("group").assign("");
 }
 
-static void fcall_output(lk::invoke_t &cxt)
-{
+static void fcall_output(lk::invoke_t &cxt) {
     LK_DOC("output", "nothing to do", "( string: output variable name ):none");
 }
 
-static void fcall_technology( lk::invoke_t &cxt )
-{
-    LK_DOC( "technology", "nothing to do", "(void):string" );
+static void fcall_technology(lk::invoke_t &cxt) {
+    LK_DOC("technology", "nothing to do", "(void):string");
 }
 
-static void fcall_financing( lk::invoke_t &cxt )
-{
-    LK_DOC( "financing", "return financial model", "(void):string" );
+static void fcall_financing(lk::invoke_t &cxt) {
+    LK_DOC("financing", "return financial model", "(void):string");
     size_t pos = active_config.find("-");
-    std::string f = active_config.substr(pos+1);
-    if (f.find("-") != std::string::npos){
+    std::string f = active_config.substr(pos + 1);
+    if (f.find("-") != std::string::npos) {
         pos = f.find("-");
-        f = f.substr(pos+1);
+        f = f.substr(pos + 1);
     }
-    cxt.result().assign( f );
+    cxt.result().assign(f);
 }
 
-static void fcall_wfdownloaddir( lk::invoke_t &cxt){
-    LK_DOC( "wfdownloaddir", "Returns the folder into which solar data files are downloaded.", "(none):string" );
+static void fcall_wfdownloaddir(lk::invoke_t &cxt) {
+    LK_DOC("wfdownloaddir", "Returns the folder into which solar data files are downloaded.", "(none):string");
 }
 
-static void _wx_date_time(lk::invoke_t &cxt)
-{
+static void _wx_date_time(lk::invoke_t &cxt) {
     LK_DOC("date_time", "Nothing to do", "(none):string");
 }
 
-static void _wx_msgbox(lk::invoke_t &cxt)
-{
+static void _wx_msgbox(lk::invoke_t &cxt) {
     LK_DOC("msgbox", "Nothing to do", "(string:message, [array:window position [x,y] or geometry [x,y,w,h]):boolean");
 }
 
@@ -284,8 +265,7 @@ static void fcall_refresh(lk::invoke_t &cxt) {
     LK_DOC("refresh", "Nothing to do", "");
 }
 
-static void fcall_nsrdbquery(lk::invoke_t &cxt)
-{
+static void fcall_nsrdbquery(lk::invoke_t &cxt) {
     LK_DOC("nsrdbquery", "Do not enable nsrdb", "(none) : string");
     cxt.result().assign("");
 }
@@ -295,36 +275,33 @@ static void fcall_librarygetnumbermatches(lk::invoke_t &cxt) {
     cxt.result().assign(0.0);
 }
 
-static void fcall_librarygetfiltertext(lk::invoke_t &cxt){
+static void fcall_librarygetfiltertext(lk::invoke_t &cxt) {
     LK_DOC("librarygetfiltertext", "Return empty", "(string:libraryctrlname):number");
     cxt.result().assign("");
 }
 
-static void fcall_librarynotifytext(lk::invoke_t &cxt){
+static void fcall_librarynotifytext(lk::invoke_t &cxt) {
     LK_DOC("librarynotifytext", "Nothing to do", "(string:libraryctrlname):number");
 }
 
-static void _wx_yesno(lk::invoke_t &cxt){
+static void _wx_yesno(lk::invoke_t &cxt) {
     LK_DOC("yesno", "Nothing to do", "");
 }
 
-static void fcall_logmsg( lk::invoke_t &cxt )
-{
+static void fcall_logmsg(lk::invoke_t &cxt) {
     LK_DOC("logmsg", "Nothing to do", "(...):none");
 }
 
-static void fcall_enable( lk::invoke_t &cxt )
-{
+static void fcall_enable(lk::invoke_t &cxt) {
     LK_DOC("enable", "Record logic of which ui widgets should be enabled ", "(string:name, boolean:enable):none");
     std::string ui_obj_name = cxt.arg(0).as_string().ToStdString();
-    if (SAM_ui_obj_to_enabled_variables.find(active_object) != SAM_ui_obj_to_enabled_variables.end()){
+    if (SAM_ui_obj_to_enabled_variables.find(active_object) != SAM_ui_obj_to_enabled_variables.end()) {
         auto it = SAM_ui_obj_to_enabled_variables.find(active_object);
-        if (std::find(it->second.begin(), it->second.end(), ui_obj_name) == it->second.end()){
+        if (std::find(it->second.begin(), it->second.end(), ui_obj_name) == it->second.end()) {
             it->second.push_back(ui_obj_name);
             return;
         }
-    }
-    else{
+    } else {
         std::vector<std::string> vec;
         vec.push_back(ui_obj_name);
         SAM_ui_obj_to_enabled_variables.insert({active_object, vec});
@@ -390,29 +367,27 @@ static void fcall_plot_inverter_curve(lk::invoke_t &cxt) {
     LK_DOC("plot_inverter_curve", "Nothing to do", "");
 }
 
-static void _alloc(lk::invoke_t & cxt)
-{
+static void _alloc(lk::invoke_t &cxt) {
     LK_DOC("alloc", "Allocates an array of one or two dimensions.", "(integer, {integer}):array");
     cxt.result().empty_vector();
 
-    int dim1 = (int)cxt.arg(0).as_number();
-    int dim2 = (cxt.arg_count() == 2) ? (int)cxt.arg(1).as_number() : -1;
+    int dim1 = (int) cxt.arg(0).as_number();
+    int dim2 = (cxt.arg_count() == 2) ? (int) cxt.arg(1).as_number() : -1;
 
     if (dim1 < 1)
         return;
 
     cxt.result().resize(dim1);
 
-    if (dim2 > 0)
-    {
-        for (int i = 0; i < dim1; i++)
-        {
+    if (dim2 > 0) {
+        for (int i = 0; i < dim1; i++) {
             lk::vardata_t *item = cxt.result().index(i);
             item->empty_vector();
             item->resize(dim2);
         }
     }
 }
+
 static void fcall_current_at_voltage_cec(lk::invoke_t &cxt) {
     LK_DOC("current_at_voltage_cec", "Nothing do to", "...");
 }
@@ -428,16 +403,15 @@ static void _editscene3d(lk::invoke_t &cxt) {
     cxt.result().hash_item("ierr").assign(1.0);
 }
 
-static void fcall_substance_density(lk::invoke_t &cxt)
-{
+static void fcall_substance_density(lk::invoke_t &cxt) {
     LK_DOC("substance_density", "Assign as 0", "");
     std::cout << "substance_density not implemented\n";
 }
 
 
-static void fcall_snlinverter( lk::invoke_t &cxt )
-{
-    LK_DOC( "snlinverter", "Map calculation of the sandia inverter AC power from DC and specs", "(number:pdc, number:vdc, number:vdco, number:pdco, number:pso, number:paco, number:c0, number:c1, number:c2, number:c3):number" );
+static void fcall_snlinverter(lk::invoke_t &cxt) {
+    LK_DOC("snlinverter", "Map calculation of the sandia inverter AC power from DC and specs",
+           "(number:pdc, number:vdc, number:vdco, number:pdco, number:pso, number:paco, number:c0, number:c1, number:c2, number:c3):number");
 
 //    std::vector<std::string> args = split_identity_string(cxt.error(), 10);
 //
@@ -466,27 +440,27 @@ static void fcall_snlinverter( lk::invoke_t &cxt )
     double vdcminusvdco = vdc - vdco;
     double A = pdco * (1 + c1 * vdcminusvdco);
     double B = pso * (1 + c2 * vdcminusvdco);
-    B = (B<0)? 0:B;
+    B = (B < 0) ? 0 : B;
 
     double C = c0 * (1 + c3 * vdcminusvdco);
-    double pac = ((paco / (A- B)) - C * (A - B)) * (pdc - B) + C * (pdc - B) * (pdc - B);
+    double pac = ((paco / (A - B)) - C * (A - B)) * (pdc - B) + C * (pdc - B) * (pdc - B);
 
-    cxt.result().assign( pac );
+    cxt.result().assign(pac);
 }
 
-static void _html_dialog(lk::invoke_t &cxt){
-    LK_DOC("html_dialog", "Do nothing.", "(string:html source, [string:title], [array:window size [w,h] or geometry [x,y,w,h]]):none");
+static void _html_dialog(lk::invoke_t &cxt) {
+    LK_DOC("html_dialog", "Do nothing.",
+           "(string:html source, [string:title], [array:window size [w,h] or geometry [x,y,w,h]]):none");
 }
 
-static void _librarygetcurrentselection(lk::invoke_t &cxt){
+static void _librarygetcurrentselection(lk::invoke_t &cxt) {
     LK_DOC("librarygetcurrentselection", "Do nothing.", "");
     cxt.result().assign("");
 }
 
-static void fcall_userlocaldatadir( lk::invoke_t &cxt )
-{
+static void fcall_userlocaldatadir(lk::invoke_t &cxt) {
     LK_DOC("userlocaldatadir", "Nothing", "(none):string");
-    cxt.result().assign( "");
+    cxt.result().assign("");
 }
 
 
@@ -496,8 +470,7 @@ static void fcall_userlocaldatadir( lk::invoke_t &cxt )
  * Only to be used in lk environment for export_config.exe
  */
 
-static lk::fcall_t* invoke_casecallback_funcs()
-{
+static lk::fcall_t *invoke_casecallback_funcs() {
     static const lk::fcall_t vec[] = {
             fcall_value,
             fcall_varinfo,
@@ -545,30 +518,29 @@ static lk::fcall_t* invoke_casecallback_funcs()
             _html_dialog,
             _librarygetcurrentselection,
             fcall_userlocaldatadir,
-            0 };
-    return (lk::fcall_t*)vec;
+            0};
+    return (lk::fcall_t *) vec;
 }
 
 /// invoke_ssc_funcs
 
-static void fcall_ssc_var( lk::invoke_t &cxt )
-{
-    LK_DOC2( "ssc_var", "Sets or gets a variable value in the SSC data set.",
-             "Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none",
-             "Get a variable value", "(ssc-obj-ref:data, string:name):variant" );
+static void fcall_ssc_var(lk::invoke_t &cxt) {
+    LK_DOC2("ssc_var", "Sets or gets a variable value in the SSC data set.",
+            "Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none",
+            "Get a variable value", "(ssc-obj-ref:data, string:name):variant");
 
 
     // get needs to return value of proper type, which can be found by populating secondary_cmod_defaults
-    if (cxt.arg_count() == 2){
+    if (cxt.arg_count() == 2) {
         std::string var_name = cxt.arg(1).as_string().ToStdString();
         auto map = SAM_cmod_to_outputs.find(active_cmod)->second;
         auto it = map.find(var_name);
         assert(it != map.end());
-        VarValue& vv = it->second;
+        VarValue &vv = it->second;
         vv.Write(cxt.result());
     }
-    // set will map the argument to the secondary compute module vertex
-    else{
+        // set will map the argument to the secondary compute module vertex
+    else {
         auto var_graph = SAM_config_to_variable_graph.find(active_config)->second;
 
         std::vector<std::string> args = split_identity_string(cxt.error().ToStdString(), 3);
@@ -579,17 +551,16 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
 
         // check if the ui variable is an ssc variable
         bool is_ssc;
-        if (argument_of_special(src_name)){
+        if (argument_of_special(src_name)) {
             is_ssc = which_cmod_as_input(src_name, active_config).length() > 0;
-        }
-        else if (argument_of_value(src_name)){
+        } else if (argument_of_value(src_name)) {
             // check if the ui variable is an ssc variable
             is_ssc = which_cmod_as_input(src_name, active_config).length() > 0;
         }
 
         std::string obj_stack = active_object
-                + ":" + (active_subobject.length() > 0 ? active_subobject + ":" : ":")
-                + active_cmod; // probably "tbd" since the identity is unknown until ssc_exec
+                                + ":" + (active_subobject.length() > 0 ? active_subobject + ":" : ":")
+                                + active_cmod; // probably "tbd" since the identity is unknown until ssc_exec
 
         if (map_subobject) {
             std::string ui = find_ui_of_variable(dest_name, active_config);
@@ -604,37 +575,34 @@ static void fcall_ssc_var( lk::invoke_t &cxt )
     }
 }
 
-static void fcall_ssc_create( lk::invoke_t &cxt )
-{
-    LK_DOC( "ssc_create", "Activate active_cmod for value tracking", "(none):ssc-obj-ref" );
+static void fcall_ssc_create(lk::invoke_t &cxt) {
+    LK_DOC("ssc_create", "Activate active_cmod for value tracking", "(none):ssc-obj-ref");
     active_cmod = "tbd";
 }
 
-static void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
-{
+static void fcall_ssc_module_create_from_case(lk::invoke_t &cxt) {
     LK_DOC("ssc_module_create_from_case", "Nothing to do", "(string:compute_module_name):ssc-obj-ref");
 }
 
-static void fcall_ssc_free( lk::invoke_t &cxt )
-{
-    LK_DOC( "ssc_free", "Frees up an SSC data object.", "(ssc-obj-ref:data):none" );
+static void fcall_ssc_free(lk::invoke_t &cxt) {
+    LK_DOC("ssc_free", "Frees up an SSC data object.", "(ssc-obj-ref:data):none");
     active_cmod = "";
 }
 
-static void fcall_ssc_dump( lk::invoke_t &cxt )
-{
-    LK_DOC( "ssc_dump", "Dump the contents of an SSC data object to a text file.", "(ssc-obj-ref:data, string:file):boolean" );
+static void fcall_ssc_dump(lk::invoke_t &cxt) {
+    LK_DOC("ssc_dump", "Dump the contents of an SSC data object to a text file.",
+           "(ssc-obj-ref:data, string:file):boolean");
     // nothing to do
 }
 
-static void fcall_ssc_exec( lk::invoke_t &cxt )
-{
-    LK_DOC( "ssc_exec", "Save name of active secondary cmod & update maps, assign as success", "( ssc-obj-ref:data, string:module, [table:options] ):variant" );
+static void fcall_ssc_exec(lk::invoke_t &cxt) {
+    LK_DOC("ssc_exec", "Save name of active secondary cmod & update maps, assign as success",
+           "( ssc-obj-ref:data, string:module, [table:options] ):variant");
 
     active_cmod = cxt.arg(1).as_string().ToStdString();
 
     // make sure all secondary cmod vars info is loaded into SAM_cmod_to_inputs and SAM_cmod_to_outputs
-    if (SAM_cmod_to_inputs.find(active_cmod) == SAM_cmod_to_inputs.end()){
+    if (SAM_cmod_to_inputs.find(active_cmod) == SAM_cmod_to_inputs.end()) {
         std::vector<std::string> inputs_vec = get_cmod_var_info(active_cmod, "in");
         SAM_cmod_to_inputs.insert({active_cmod, inputs_vec});
     }
@@ -660,8 +628,7 @@ static void fcall_ssc_exec( lk::invoke_t &cxt )
  * Only to be used in lk environment for export_config.exe
  */
 
-static lk::fcall_t* invoke_ssc_funcs()
-{
+static lk::fcall_t *invoke_ssc_funcs() {
     static const lk::fcall_t vec[] = {
             fcall_ssc_create,
             fcall_ssc_module_create_from_case,
@@ -669,8 +636,8 @@ static lk::fcall_t* invoke_ssc_funcs()
             fcall_ssc_dump,
             fcall_ssc_var,
             fcall_ssc_exec,
-            0 };
-    return (lk::fcall_t*)vec;
+            0};
+    return (lk::fcall_t *) vec;
 }
 
 

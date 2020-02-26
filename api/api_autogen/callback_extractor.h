@@ -11,12 +11,12 @@
 #include "lk_eval.h"
 #include "config_extractor.h"
 
-class callback_extractor{
+class callback_extractor {
 private:
 
     std::string config_name;
 
-    lk::env_t* m_env;
+    lk::env_t *m_env;
 
     std::vector<std::string> errors;
 
@@ -28,15 +28,15 @@ private:
 
 public:
 
-    callback_extractor(std::string n, lk::env_t& e){
+    callback_extractor(std::string n, lk::env_t &e) {
         config_name = n;
         m_env = &e;
-        m_env->register_funcs( lk::stdlib_basic() );
-        m_env->register_funcs( lk::stdlib_sysio() );
-        m_env->register_funcs( lk::stdlib_math() );
-        m_env->register_funcs( lk::stdlib_string() );
-        m_env->register_funcs( invoke_ssc_funcs() );
-        m_env->register_funcs( invoke_casecallback_funcs() );
+        m_env->register_funcs(lk::stdlib_basic());
+        m_env->register_funcs(lk::stdlib_sysio());
+        m_env->register_funcs(lk::stdlib_math());
+        m_env->register_funcs(lk::stdlib_string());
+        m_env->register_funcs(invoke_ssc_funcs());
+        m_env->register_funcs(invoke_casecallback_funcs());
     };
 
     size_t parse_cmod_statement(std::string callback_script, size_t pos_start);
