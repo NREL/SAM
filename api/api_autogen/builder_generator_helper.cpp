@@ -5,12 +5,12 @@
 #include "builder_generator_helper.h"
 #include "config_extractor.h"
 
-std::string find_module_of_var(std::string var, std::string cmod) {
+std::string find_module_of_var(std::string var, std::string cmod){
     std::vector<std::string> extra_groups = cmod_to_extra_modules[cmod];
-    if (extra_groups.size() == 0) {
+    if (extra_groups.size() == 0){
         return "";
     }
-    for (size_t g = 0; g < extra_groups.size(); g++) {
+    for (size_t g = 0; g < extra_groups.size(); g++){
         std::vector<std::string> group_members = extra_modules_to_members[extra_groups[g]];
         if (std::find(group_members.begin(), group_members.end(), var) != group_members.end())
             return extra_groups[g];
@@ -18,21 +18,21 @@ std::string find_module_of_var(std::string var, std::string cmod) {
     return "";
 }
 
-int get_ssc_type(vertex *v, std::unordered_map<std::string, ssc_module_t> &mod_map) {
+int get_ssc_type(vertex* v, std::unordered_map<std::string, ssc_module_t> &mod_map){
     int ind = SAM_cmod_to_ssc_index[v->cmod][v->name];
     ssc_info_t info = ssc_module_var_info(mod_map[v->cmod], ind);
     return ssc_info_data_type(info);
 }
 
-int get_varvalue_type(std::string name, std::string &config) {
+int get_varvalue_type(std::string name, std::string& config){
 
-    VarValue *vv = find_default_from_ui(name, config);
-    if (!vv) {
-        VarTable *vt = &SAM_config_to_defaults[config];
-        if (VarValue *vv2 = vt->Get(name))
+    VarValue* vv = find_default_from_ui(name, config);
+    if (!vv){
+        VarTable* vt = &SAM_config_to_defaults[config];
+        if ( VarValue *vv2 = vt->Get( name ) )
             vv = vv2;
     }
-    if (!vv) {
+    if (!vv){
         return 0;
     }
     return vv->Type();
@@ -40,13 +40,13 @@ int get_varvalue_type(std::string name, std::string &config) {
 }
 
 std::string print_parameter_type(vertex *v, std::string cmod,
-                                 std::unordered_map<std::string, ssc_module_t> &module_map) {
+                                        std::unordered_map<std::string, ssc_module_t> &module_map) {
 
-    int ind = (int) SAM_cmod_to_ssc_index[cmod][v->name];
+    int ind = (int)SAM_cmod_to_ssc_index[cmod][v->name];
     ssc_info_t mod_info = ssc_module_var_info(module_map[cmod], ind);
     assert(mod_info);
 
-    switch (ssc_info_data_type(mod_info)) {
+    switch(ssc_info_data_type(mod_info)) {
         case SSC_STRING:
             return "const char* string";
         case SSC_MATRIX:
@@ -63,13 +63,13 @@ std::string print_parameter_type(vertex *v, std::string cmod,
 }
 
 std::string print_return_type(vertex *v, std::string cmod,
-                              std::unordered_map<std::string, ssc_module_t> &module_map) {
+                                     std::unordered_map<std::string, ssc_module_t> &module_map) {
 
-    int ind = (int) SAM_cmod_to_ssc_index[cmod][v->name];
+    int ind = (int)SAM_cmod_to_ssc_index[cmod][v->name];
     ssc_info_t mod_info = ssc_module_var_info(module_map[cmod], ind);
     assert(mod_info);
 
-    switch (ssc_info_data_type(mod_info)) {
+    switch(ssc_info_data_type(mod_info)) {
         case SSC_STRING:
             return "const char*";
         case SSC_MATRIX:
@@ -86,18 +86,18 @@ std::string print_return_type(vertex *v, std::string cmod,
 }
 
 
-void export_function_declaration(std::ofstream &ff, std::string return_type, std::string name,
-                                 std::vector<std::string> inputs) {
+void export_function_declaration(std::ofstream& ff, std::string return_type, std::string name,
+                                        std::vector<std::string> inputs){
 
     ff << "\tSAM_EXPORT " << return_type << " " << name << "(";
-    for (size_t i = 0; i < inputs.size(); i++) {
+    for (size_t i = 0; i < inputs.size(); i++){
         ff << inputs[i] << ", ";
     }
     ff << "SAM_error* err);\n\n";
 }
 
-std::string spell_type(int type) {
-    switch (type) {
+std::string spell_type(int type){
+    switch(type){
         case SSC_INVALID:
             return "invalid";
         case SSC_STRING:
@@ -115,10 +115,10 @@ std::string spell_type(int type) {
     }
 }
 
-std::string var_value_to_json(VarValue *vv) {
+std::string var_value_to_json(VarValue* vv){
     assert(vv);
     std::string json;
-    switch (vv->Type()) {
+    switch(vv->Type()){
         case VV_INVALID:
             json += "\"invalid\"";
             break;
@@ -126,25 +126,26 @@ std::string var_value_to_json(VarValue *vv) {
         case VV_NUMBER:
             json += "\"" + vv->AsString() + "\"";
             break;
-        case VV_ARRAY: {
+        case VV_ARRAY:{
             json += "[";
             std::vector<double> vec = vv->Array();
-            for (size_t j = 0; j < vec.size(); j++) {
+            for (size_t j = 0; j < vec.size(); j++){
                 json += "\"" + std::to_string(vec[j]) + "\"";
                 if (j != vec.size() - 1) json += ", ";
             }
             json += "]";
         }
             break;
-        case VV_TABLE: {
+        case VV_TABLE:{
             json += "{\n";
 
             VarTable vt = vv->Table();
             std::string buf = "";
             size_t i = 0;
-            for (VarTable::iterator it = vt.begin(); it != vt.end(); ++it) {
+            for (VarTable::iterator it = vt.begin(); it != vt.end(); ++it)
+            {
                 buf += "\"" + (it->first) + "\": " + var_value_to_json(it->second);
-                if (++i < (vt.size())) buf += ",\n";
+                if ( ++i < (vt.size())) buf += ",\n";
             }
             json += indent(buf, 6);
             json += "}";
@@ -156,34 +157,36 @@ std::string var_value_to_json(VarValue *vv) {
     return json;
 }
 
-std::string ssc_value_to_json(int ssc_type, VarValue *vv) {
+std::string ssc_value_to_json(int ssc_type, VarValue* vv){
 
     std::string json;
-    switch (ssc_type) {
+    switch(ssc_type){
         case SSC_INVALID:
             json += "\"invalid\"";
             break;
         case SSC_STRING:
-            json += "\"" + (vv ? vv->AsString() : "") + "\"";
+            json += "\"" + (vv? vv->AsString() : "" ) + "\"";
             break;
         case SSC_NUMBER:
-            if (vv && vv->Value() > std::numeric_limits<double>::max()) {
+            if (vv && vv->Value() > std::numeric_limits<double>::max()){
                 char c[36];
                 sprintf(c, "%e", std::numeric_limits<double>::max());
                 json += c;
-            } else
-                json += (vv ? vv->AsString() : "0");
+            }
+            else
+                json += (vv? vv->AsString() : "0" );
             break;
         case SSC_ARRAY:
             json += "[";
-            if (vv) {
+            if (vv){
                 std::vector<double> vec = vv->Array();
-                for (size_t j = 0; j < vec.size(); j++) {
-                    if (vec[j] > std::numeric_limits<double>::max()) {
+                for (size_t j = 0; j < vec.size(); j++){
+                    if (vec[j] > std::numeric_limits<double>::max()){
                         char c[36];
                         sprintf(c, "%e", std::numeric_limits<double>::max());
                         json += c;
-                    } else
+                    }
+                    else
                         json += std::to_string(vec[j]);
                     if (j != vec.size() - 1) json += ", ";
                 }
@@ -193,16 +196,17 @@ std::string ssc_value_to_json(int ssc_type, VarValue *vv) {
             break;
         case SSC_MATRIX:
             json += "[\n";
-            if (vv) {
+            if (vv){
                 matrix_t<double> mat = vv->Matrix();
-                for (size_t i = 0; i < mat.nrows(); i++) {
+                for (size_t i = 0; i < mat.nrows(); i++){
                     json += "\t\t\t\t[";
-                    for (size_t j = 0; j < mat.ncols(); j++) {
-                        if (mat.at(i, j) > std::numeric_limits<double>::max()) {
+                    for (size_t j = 0; j < mat.ncols(); j++){
+                        if (mat.at(i, j) > std::numeric_limits<double>::max()){
                             char c[36];
                             sprintf(c, "%e", std::numeric_limits<double>::max());
                             json += c;
-                        } else
+                        }
+                        else
                             json += std::to_string(mat.at(i, j));
                         if (j != mat.ncols() - 1) json += ", ";
                     }
@@ -216,17 +220,19 @@ std::string ssc_value_to_json(int ssc_type, VarValue *vv) {
             break;
         case SSC_TABLE:
             json += "{\n";
-            if (vv) {
+            if (vv){
                 VarTable vt = vv->Table();
                 std::string buf = "";
                 size_t i = 0;
-                for (VarTable::iterator it = vt.begin(); it != vt.end(); ++it) {
+                for (VarTable::iterator it = vt.begin(); it != vt.end(); ++it)
+                {
                     buf += "\"" + (it->first) + "\": " + var_value_to_json(it->second);
-                    if (++i < (vt.size())) buf += ",\n";
+                    if ( ++i < (vt.size())) buf += ",\n";
                 }
-                json += indent(buf, 5);
+                json += indent(buf,5);
                 json += "}";
-            } else {
+            }
+            else{
                 json += "\t\t\t\t}";
             }
             break;
@@ -237,10 +243,10 @@ std::string ssc_value_to_json(int ssc_type, VarValue *vv) {
 }
 
 
-std::string translate_lookup_type(std::string name, std::string config) {
+std::string translate_lookup_type(std::string name, std::string config){
 
-    std::vector<std::string> typestr_core = {"void", "float", "util::matrix_t<ssc_number_t>",
-                                             "util::matrix_t<ssc_number_t>", "const char*", "var_table", "binary"};
+    std::vector<std::string> typestr_core = {"void", "float", "util::matrix_t<ssc_number_t>"
+            , "util::matrix_t<ssc_number_t>", "const char*", "var_table", "binary"};
 
     std::string result;
 
@@ -251,28 +257,31 @@ std::string translate_lookup_type(std::string name, std::string config) {
 
     result += typestr_core[type] + " " + name + " = vt->lookup(\"" + name + "\")->";
 
-    if (type == 1 || type == 2 || type == 3) {
+    if (type == 1 || type == 2 || type == 3){
         result += "num;";
-    } else if (type == 4) {
+    }
+    else if (type == 4){
         result += "str;";
-    } else if (type == 5) {
+    }
+    else if (type == 5){
         result += "table;";
-    } else {
+    }
+    else{
         result += "ERROR: type not implemented";
     }
     return result;
 }
 
-std::vector<std::string> typestr_core = {"void", "float", "util::matrix_t<ssc_number_t>",
-                                         "util::matrix_t<ssc_number_t>", "const char*", "var_table", "binary"};
+std::vector<std::string> typestr_core = {"void", "float", "util::matrix_t<ssc_number_t>"
+        , "util::matrix_t<ssc_number_t>", "const char*", "var_table", "binary"};
 
 bool translate_equation_to_cplusplus(config_extractor *config_ext, equation_info &eqn_info, std::ofstream &of,
                                      const std::string &cmod) {
 
-    lk::env_t *env = config_ext->get_env();
+    lk::env_t* env = config_ext->get_env();
     std::string config = config_ext->get_name();
 
-    translator e(eqn_info.eqn_data->tree, env);
+    translator e( eqn_info.eqn_data->tree, env );
     e.set_ui_source(eqn_info.ui_source);
 
     size_t n_outputs = eqn_info.all_outputs.size();
@@ -282,10 +291,11 @@ bool translate_equation_to_cplusplus(config_extractor *config_ext, equation_info
     std::string output_name;                            // return type
     std::string subhandle = eqn_info.all_outputs[0];      // part of function name
     int type;
-    if (n_outputs == 1) {
+    if (n_outputs == 1){
         output_name = subhandle;
         type = find_default_from_ui(output_name, active_config)->Type();
-    } else {
+    }
+    else{
         // return MIMOs as table
         output_name = "vt";
         type = 5;
@@ -296,20 +306,20 @@ bool translate_equation_to_cplusplus(config_extractor *config_ext, equation_info
     std::string sig;
     sig += typestr_core[type] + " ";
     sig += format_as_symbol(cmod) + "_"
-           + subhandle + "_eval(var_table* vt)";
+            + subhandle + "_eval(var_table* vt)";
     of << sig << "\n{\n";
 
 
     // set up inputs and outputs variable placeholders
     of << "\t// inputs\n";
-    for (size_t i = 0; i < eqn_info.all_inputs.size(); i++) {
+    for (size_t i = 0; i < eqn_info.all_inputs.size(); i++){
         std::string name = eqn_info.all_inputs[i];
         of << "\t" << translate_lookup_type(name, config) << "\n";
     }
     of << "\n\t// outputs\n";
-    for (size_t i = 0; i < eqn_info.all_outputs.size(); i++) {
+    for (size_t i = 0; i < eqn_info.all_outputs.size(); i++){
         std::string name = eqn_info.all_outputs[i];
-        VarValue *vv = find_default_from_ui(name, config);
+        VarValue* vv = find_default_from_ui(name, config);
         of << "\t" << typestr_core[vv->Type()] << " " + name << ";\n";
     }
     of << "\n";
@@ -318,10 +328,10 @@ bool translate_equation_to_cplusplus(config_extractor *config_ext, equation_info
     std::string result;
     unsigned int ctl = 0;
     bool ok = e.translate(eqn_info.eqn_data->tree, env, result, 0, ctl, output_name);
-    if (!ok) {
-        for (size_t i = 0; i < e.error_count(); i++) {
+    if ( !ok ){
+        for( size_t i=0;i<e.error_count();i++ ){
             std::cout << "equation_extractor::equation_to_cplusplus error " << e.get_error(i) << "\n";
-            config_ext->get_errors().push_back(e.get_error(i).ToStdString());
+            config_ext->get_errors().push_back( e.get_error(i).ToStdString());
         }
         return false;
     }
@@ -329,14 +339,14 @@ bool translate_equation_to_cplusplus(config_extractor *config_ext, equation_info
 
     // print lambda functions and the enclosing function
     auto aux_fx = e.get_aux_functions();
-    for (auto it = aux_fx.begin(); it != aux_fx.end(); ++it) {
+    for (auto it = aux_fx.begin(); it != aux_fx.end(); ++it){
         of << indent(it->second) << "\n";
     }
     of << indent(result) << "\n\n";
 
 
     // check if function has already returned, then end definition now
-    if (result.find("return") != std::string::npos) {
+    if (result.find("return") != std::string::npos){
         of << "}\n\n";
         return true;
     }
@@ -344,17 +354,18 @@ bool translate_equation_to_cplusplus(config_extractor *config_ext, equation_info
 
 
     // set up return argument: either a single return value or a table
-    if (n_outputs > 1) {
+    if (n_outputs > 1){
         of << "\tvar_table vt;\n";
         output_name = "vt";
-        for (size_t i = 0; i < n_outputs; i++) {
+        for (size_t i = 0; i < n_outputs; i++){
             std::string var = eqn_info.all_outputs[i];
 
 //            int type = find_default_from_ui(var, config)->Type();
 
-            of << "\tvt.assign( \"" << var << "\", " << var << " );\n";
+            of << "\tvt.assign( \"" << var << "\", "<< var << " );\n";
         }
-    } else {
+    }
+    else{
         of << "\treturn " << output_name << ";\n";
     }
 
@@ -367,14 +378,14 @@ bool translate_equation_to_cplusplus(config_extractor *config_ext, equation_info
 }
 
 bool translate_callback_to_cplusplus(config_extractor *config_ext, callback_info &cb_info,
-                                     std::ofstream &of, const std::string &cmod) {
+                                                std::ofstream &of, const std::string &cmod) {
 
     std::string config = config_ext->get_name();
-    lk::env_t *env = config_ext->get_env();
+    lk::env_t* env = config_ext->get_env();
 
-    lk::vardata_t *cbvar = env->lookup(cb_info.method_name, true);
+    lk::vardata_t *cbvar = env->lookup( cb_info.method_name, true);
 
-    lk::varhash_t *h = cbvar->hash();
+    lk::varhash_t* h = cbvar->hash();
 
     auto it = h->find(cb_info.function_name);
     assert(it != h->end());
@@ -384,17 +395,17 @@ bool translate_callback_to_cplusplus(config_extractor *config_ext, callback_info
 
     std::string subhandle = cb_info.function_name;
     int type = -1;
-    if (n_outputs == 1) {
-        VarValue *vv = find_default_from_ui(cb_info.all_outputs[0], config);
+    if (n_outputs == 1){
+        VarValue* vv = find_default_from_ui(cb_info.all_outputs[0], config);
         if (vv)
             type = vv->Type();
-        else {
+        else{
             std::cout << "translate_callback_to_cpluscplus::warning:: single output " << cb_info.all_outputs[0];
-            std::cout << " not found, for function: " << cb_info.function_name << " in ui " << cb_info.ui_source
-                      << "\n";
+            std::cout << " not found, for function: " << cb_info.function_name << " in ui " << cb_info.ui_source << "\n";
             return false;
         }
-    } else {
+    }
+    else{
         // return multiple values as table
         type = 5;
     }
@@ -403,24 +414,24 @@ bool translate_callback_to_cplusplus(config_extractor *config_ext, callback_info
     std::string sig;
     sig += typestr_core[type] + " ";
     sig += format_as_symbol(cmod) + "_" + format_as_symbol(cb_info.ui_source) + "_"
-           + format_as_symbol(subhandle) + "_func(var_table* vt)";
+            + format_as_symbol(subhandle) + "_func(var_table* vt)";
     of << sig << "\n{\n";
 
 
     // set up inputs and outputs variable placeholders
     of << "\t// inputs\n";
-    for (size_t i = 0; i < cb_info.ssc_only_inputs.size(); i++) {
+    for (size_t i = 0; i < cb_info.ssc_only_inputs.size(); i++){
         std::string name = cb_info.ssc_only_inputs[i];
         of << "\t" << translate_lookup_type(name, config) << "\n";
     }
-    for (size_t i = 0; i < cb_info.ui_only_inputs.size(); i++) {
+    for (size_t i = 0; i < cb_info.ui_only_inputs.size(); i++){
         std::string name = cb_info.ui_only_inputs[i];
         of << "\t" << translate_lookup_type(name, config) << "\n";
     }
     of << "\n\t// outputs\n";
-    for (size_t i = 0; i < cb_info.all_outputs.size(); i++) {
+    for (size_t i = 0; i < cb_info.all_outputs.size(); i++){
         std::string name = cb_info.all_outputs[i];
-        VarValue *vv = find_default_from_ui(name, config);
+        VarValue* vv = find_default_from_ui(name, config);
         if (vv)     // if it's not a local variable
             of << "\t" << typestr_core[vv->Type()] << " " + name << ";\n";
     }
@@ -438,10 +449,10 @@ bool translate_callback_to_cplusplus(config_extractor *config_ext, callback_info
     unsigned int ctl = 0;
     bool ok = e.translate(p_define, env, result, 0, ctl, output_name);
     of << result << "\n\n";
-    if (!ok) {
-        for (size_t i = 0; i < e.error_count(); i++) {
+    if ( !ok ){
+        for( size_t i=0;i<e.error_count();i++ ){
             std::cout << "equation_extractor::equation_to_cplusplus error " << e.get_error(i).ToStdString() << "\n";
-            config_ext->get_errors().push_back(e.get_error(i).ToStdString());
+            config_ext->get_errors().push_back( e.get_error(i).ToStdString());
         }
         return false;
     }
@@ -453,25 +464,25 @@ bool translate_callback_to_cplusplus(config_extractor *config_ext, callback_info
 void print_var_info_table(const std::string &config_name, const std::string &filepath) {
     // print new ssc var_info table
 
-    std::vector<page_info> &pg_info = SAM_config_to_input_pages.find(active_config)->second;
+    std::vector<page_info>& pg_info = SAM_config_to_input_pages.find(active_config)->second;
 
     std::unordered_map<std::string, std::unordered_map<std::string, bool>> module_to_variables;
 
-    for (size_t p = 0; p < pg_info.size(); p++) {
-        if (pg_info[p].common_uiforms.size() > 0) {
+    for (size_t p = 0; p < pg_info.size(); p++){
+        if (pg_info[p].common_uiforms.size() > 0){
             // add the ui form variables into a group based on the sidebar title
             std::string group_name = pg_info[p].sidebar_title
                                      + (pg_info[p].exclusive_uiforms.size() > 0 ? "Common" : "");
             std::unordered_map<std::string, bool> map;
             module_to_variables.insert({group_name, map});
 
-            auto *var_map = &(module_to_variables.find(group_name)->second);
+            auto* var_map = &(module_to_variables.find(group_name)->second);
 
             for (size_t i = 0; i < pg_info[p].common_uiforms.size(); i++) {
                 // add all the variables and associate their VarValue with the vertex
                 std::string ui_name = pg_info[p].common_uiforms[i];
                 std::unordered_map<std::string, VarValue> ui_def = SAM_ui_form_to_defaults[ui_name];
-                for (auto it = ui_def.begin(); it != ui_def.end(); ++it) {
+                for (auto it = ui_def.begin(); it != ui_def.end(); ++it){
                     std::string var_name = it->first;
 
                     var_map->insert({var_name, true});
@@ -488,10 +499,10 @@ void print_var_info_table(const std::string &config_name, const std::string &fil
             std::string submod_name = ui_name;
             module_to_variables.insert({submod_name, std::unordered_map<std::string, bool>()});
 
-            auto &var_map = module_to_variables.find(submod_name)->second;
+            auto& var_map = module_to_variables.find(submod_name)->second;
 
             std::unordered_map<std::string, VarValue> ui_def = SAM_ui_form_to_defaults[ui_name];
-            for (auto it = ui_def.begin(); it != ui_def.end(); ++it) {
+            for (auto it = ui_def.begin(); it != ui_def.end(); ++it){
                 std::string var_name = it->first;
 
                 var_map.insert({var_name, true});
@@ -503,27 +514,27 @@ void print_var_info_table(const std::string &config_name, const std::string &fil
     auto cmods = SAM_config_to_primary_modules[config_name];
 
 
-    for (size_t i = 0; i < cmods.size(); i++) {
+    for (size_t i = 0; i < cmods.size(); i++){
         std::string cmod_name = cmods[i];
 
         std::ofstream var_info_fx;
-        var_info_fx.open(filepath + "/varinfo/" + config_name + "_" + cmod_name + ".cpp");
+        var_info_fx.open(filepath + "/varinfo/" + config_name+ "_" + cmod_name + ".cpp");
         assert(var_info_fx.is_open());
 
         var_info_fx << "static var_info _cm_vtab_" + cmod_name + "[] = {\n"
                                                                  "\t// VARTYPE\tDATATYPE\tNAME\tLABEL\tUNITS\tMETA\tGROUP\tREQUIRED_IF\tCONSTRAINTS\tUI_HINTS\n";
 
 
-        ssc_module_t p_mod = ssc_module_create(const_cast<char *>(cmod_name.c_str()));
+        ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
         std::vector<std::string> variable_names;
 
 
         SAM_cmod_to_ssc_index.insert({cmod_name, std::unordered_map<std::string, size_t>()});
-        std::unordered_map<std::string, size_t> &index_map = SAM_cmod_to_ssc_index.find(cmod_name)->second;
+        std::unordered_map<std::string, size_t>& index_map = SAM_cmod_to_ssc_index.find(cmod_name)->second;
 
         int var_index = 0;
         ssc_info_t mod_info = ssc_module_var_info(p_mod, var_index);
-        while (mod_info) {
+        while (mod_info){
             int var_type = ssc_info_var_type(mod_info);
             int data_type = ssc_info_data_type(mod_info);
             std::string name = ssc_info_name(mod_info);
@@ -532,7 +543,7 @@ void print_var_info_table(const std::string &config_name, const std::string &fil
             std::string meta = ssc_info_meta(mod_info);
             std::string group, uihints;
 
-            for (auto it = module_to_variables.begin(); it != module_to_variables.end(); ++it) {
+            for (auto it = module_to_variables.begin(); it != module_to_variables.end(); ++it){
                 auto var_it = it->second.find(name);
                 if (var_it != it->second.end())
                     group = it->first;
@@ -544,11 +555,9 @@ void print_var_info_table(const std::string &config_name, const std::string &fil
                 uihints = ssc_info_uihint(mod_info);
 
             std::vector<std::string> var_str = {"", "SSC_INPUT", "SSC_OUTPUT", "SSCINOUT"};
-            std::vector<std::string> data_str = {"SSC_INVALID", "SSC_STRING", "SSC_NUMBER", "SSC_ARRAY", "SSC_MATRIX",
-                                                 "SSC_TABLE"};
+            std::vector<std::string> data_str= {"SSC_INVALID", "SSC_STRING", "SSC_NUMBER", "SSC_ARRAY", "SSC_MATRIX", "SSC_TABLE"};
 
-            var_info_fx << "{ \t" << var_str[var_type] << ", \t" << data_str[data_type] << ", \t\"" << name
-                        << "\", \t\"" << label << "\", \t\"";
+            var_info_fx << "{ \t" << var_str[var_type] << ", \t" << data_str[data_type]<< ", \t\"" << name << "\", \t\"" << label << "\", \t\"";
             var_info_fx << units << "\", \t\"" << meta << "\", \t\"" << group << "\", \t\"" << required_if;
             var_info_fx << "\", \t\"" << constraints << "\", \t\"" << uihints << "\"},\n";
 

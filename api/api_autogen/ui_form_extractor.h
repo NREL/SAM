@@ -32,16 +32,14 @@ private:
     std::string m_callback_script;
 
     lk::env_t m_env;
-
     friend class equation_extractor;
-
-    equation_extractor *eqn_extractor;
+    equation_extractor* eqn_extractor;
 
     /// Gets default values and stores into SAM_config_to_defaults
     VarValue get_varvalue(wxInputStream &is, wxString var_name);
 
     /// Stores the eqn and callback LK script
-    void get_eqn_and_callback_script(wxInputStream &is);
+    void get_eqn_and_callback_script(wxInputStream& is);
 
 public:
     std::string ui_form_name;
@@ -52,24 +50,24 @@ public:
     std::vector<std::string> m_functions;
 
 
-    ui_form_extractor(std::string n) {
+    ui_form_extractor(std::string n){
         ui_form_name = n;
         eqn_extractor = new equation_extractor(n);
     };
 
-    ~ui_form_extractor() {
+    ~ui_form_extractor(){
         delete eqn_extractor;
     }
 
     bool extract(std::string file);
 
-    std::string get_callback_script() { return m_callback_script; }
+    std::string get_callback_script() {return m_callback_script;}
 
-    bool export_eqn_infos() {
+    bool export_eqn_infos(){
         return eqn_extractor->parse_and_export_eqns(m_eqn_script);
     }
 
-    std::vector<equation_info> *get_eqn_infos() {
+    std::vector<equation_info>* get_eqn_infos(){
         if (SAM_ui_form_to_eqn_info.find(ui_form_name) != SAM_ui_form_to_eqn_info.end())
             return &(SAM_ui_form_to_eqn_info.find(ui_form_name)->second);
         else
@@ -79,22 +77,23 @@ public:
 };
 
 
+
 /**
  * Maps each ui form to class containing its eqn and callback scripts
  */
-class ui_form_extractor_database {
+class ui_form_extractor_database{
 private:
-    std::unordered_map<std::string, ui_form_extractor *> ui_form_map;
+    std::unordered_map<std::string, ui_form_extractor*> ui_form_map;
 
 public:
     ui_form_extractor_database() = default;
 
-    ~ui_form_extractor_database() {
+    ~ui_form_extractor_database(){
         for (auto it = ui_form_map.begin(); it != ui_form_map.end(); it++)
             delete it->second;
     }
 
-    ui_form_extractor *find(std::string ui_name) {
+    ui_form_extractor* find(std::string ui_name){
         auto it = ui_form_map.find(ui_name);
         if (it != ui_form_map.end())
             return it->second;
@@ -102,8 +101,8 @@ public:
             return NULL;
     }
 
-    ui_form_extractor *make_entry(std::string ui_form_name) {
-        ui_form_extractor *ufe = new ui_form_extractor(ui_form_name);
+    ui_form_extractor* make_entry(std::string ui_form_name) {
+        ui_form_extractor* ufe = new ui_form_extractor(ui_form_name);
         ui_form_map.insert({ui_form_name, ufe});
         return ufe;
     }

@@ -19,7 +19,7 @@
  * script, as well as the set of compute modules required for each configuration.
  */
 
-class startup_extractor {
+class startup_extractor{
 private:
     std::vector<std::string> errors;
 

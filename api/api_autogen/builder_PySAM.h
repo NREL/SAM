@@ -10,10 +10,10 @@ class builder_PySAM {
 private:
     std::string config_name;
     std::string config_symbol;
-    builder_generator *root;
+    builder_generator* root;
 
 public:
-    explicit builder_PySAM(builder_generator *ptr) {
+    explicit builder_PySAM(builder_generator* ptr){
         root = ptr;
         config_name = root->config_name;
         config_symbol = root->config_symbol;
