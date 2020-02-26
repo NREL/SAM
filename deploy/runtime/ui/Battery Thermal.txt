@@ -1147,7 +1147,7 @@ equations{'batt_room_temperature_celsius'} = define()
 	}
 	return T_ambient;
 };
-1294
+1409
 on_load{'Battery Thermal'} = define() {
 	on_change{'cap_vs_temp'}(); // update the plot
 	on_change{'batt_thermal_choice'}();
@@ -1162,7 +1162,7 @@ function show_thermal_options()
 	// there is no weather data in generic model
 	if ( strpos(lower(tech), 'generic')>-1 && ${batt_thermal_choice}==0){
 		${batt_thermal_choice} = 1;
-		msgbox( tech + ' model has no weather file!\nCannot set environment temperature to ambient temperature data from weather file.\nChoose either single fixed or time series for the environment temperature option.');
+		msgbox( tech + ' model has no weather file!\nCannot set environment temperature to ambient temperature data from weather file.\nChoose either single fixed or time series for the environment temperature option.\nSetting option to "Enter single fixed temperature" with value of ' + ${batt_room_temperature_single} +'degrees C.');
 	}
 
 	enable('batt_room_temperature_single', ${batt_thermal_choice}==1);
