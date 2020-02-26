@@ -53,118 +53,6 @@ Some more examples:
 
 version_upgrade{'2020.2.29'} = define() {
 
-	const cfg = config();
-
-	if (varinfo('en_batt')){
-		if (value('en_batt')){
-			old_replacement_cost = oldvalue('batt_replacement_cost');
-			old_escalation = oldvalue('batt_replacement_cost_escal');
-			value('om_replacement_cost1', [old_replacement_cost], 'Updated battery replacement cost input, now on System Costs input page.');
-			value('om_replacement_cost_escal', old_escalation);
-			old_temperature = oldvalue('T_room');
-			value('batt_room_temperature_single', old_temperature, 'Updated battery room temperature variable name, same settings as old file');
-			value('batt_thermal_choice', 1);
-			if ( cfg.tech == 'Generic System' )
-			{
-				ok = config('Generic Battery', cfg.fin, 'Generic Battery configuration replaces Generic System with battery enabled.');
-				if ( !ok ) { msgbox('Failed to change configuration!\nGeneric Battery configuration replaces Generic System with battery enabled.'); }
-			}
-			if ( cfg.tech == 'Flat Plate PV' )
-			{
-				ok = config('PV Battery', cfg.fin, 'Battery PV configuration replaces Detailed PV with battery enabled.');
-				if ( !ok ) { msgbox('Failed to change configuration!\nBattery PV configuration replaces Detailed PV with battery enabled.'); }
-			}
-		}
-	}
-
-	if (cfg.tech == 'Flat Plate PV') 
-	{
-		// TO DO move this above to if en_batt? does this also apply to generic system with battery?
-		// battery
-		charge_max = oldvalue('batt_power_charge_max');
-		value('batt_power_charge_max_kwdc', charge_max, 'Updated battery maximum charge rate internal variable name.');
-		discharge_max = oldvalue('batt_power_discharge_max');
-		value('batt_power_discharge_max_kwdc', discharge_max, 'Updated battery maximum discharge rate internal variable name.');
-		temp = oldvalue('T_room');
-		value('batt_room_temperature_celsius', temp, 'Updated battery room temperature internal variable name.');
-		rep = oldvalue('batt_replacement_cost');
-		value('om_replacement_cost1', [rep], 'Moved battery replacement cost to System Costs input page.');
-		message('Battery variable updates only affect your project if battery is enabled.');
-	}
-
-	if ( cfg.tech == 'PVWatts')
-	{
-		message('This version of SAM updates the PVWatts model to the latest version, pvwattsv7. Results will change compared to previous versions. '
-		'Please see Help for a link to a detailed description of model updates.','warning');
-	}
-
-	if ( cfg.tech == 'Physical Trough' )
-	{
-		old_custom_sgs_pipe_sizes = oldvalue('custom_sgs_pipe_sizes');		// array
-		value( 'custom_tes_pipe_sizes', [ old_custom_sgs_pipe_sizes ] );	// matrix, renamed
-		old_sgs_diams = oldvalue('sgs_diams');		// array
-		value( 'tes_diams', [ old_sgs_diams ] );		// matrix, renamed
-		old_sgs_wallthicks = oldvalue('sgs_wallthicks');		// array
-		value( 'tes_wallthicks', [ old_sgs_wallthicks ] );		// matrix, renamed
-		old_sgs_lengths = oldvalue('sgs_lengths');		// array
-		value( 'tes_lengths', [ old_sgs_lengths ] );	// matrix, renamed
-		
-		old_sf_rnr_diams = oldvalue('sf_rnr_diams');		// array
-		value( 'sf_rnr_diams', [ old_sf_rnr_diams ] );		// matrix
-		old_sf_rnr_wallthicks = oldvalue('sf_rnr_wallthicks');		// array
-		value( 'sf_rnr_wallthicks', [ old_sf_rnr_wallthicks ] );	// matrix
-		old_sf_rnr_lengths = oldvalue('sf_rnr_lengths');		// array
-		value( 'sf_rnr_lengths', [ old_sf_rnr_lengths ] );	    // matrix
-		old_sf_hdr_diams = oldvalue('sf_hdr_diams');		// array
-		value( 'sf_hdr_diams', [ old_sf_hdr_diams ] );		// matrix
-		old_sf_hdr_wallthicks = oldvalue('sf_hdr_wallthicks');		// array
-		value( 'sf_hdr_wallthicks', [ old_sf_hdr_wallthicks ] );	// matrix
-		old_sf_hdr_lengths = oldvalue('sf_hdr_lengths');	// array
-		value( 'sf_hdr_lengths', [ old_sf_hdr_lengths ] );	// matrix
-		old_k_tes_loss_coeffs = oldvalue('k_tes_loss_coeffs');		// array
-		value( 'k_tes_loss_coeffs', [ old_k_tes_loss_coeffs ] );	// matrix
-		
-		value( 'hot_tank_max_heat', oldvalue('tank_max_heat') );
-		value( 'cold_tank_max_heat', oldvalue('tank_max_heat') );
-		value( 'gross_net_conversion_factor', oldvalue('csp.dtr.pwrb.gross_net_conversion_factor') );
-		value( 'f_turb_tou_periods', oldvalue('tslogic_c') );
-		
-		value( 'csp.pt.pwrb.condenser_type', oldvalue('combo_condenser_type') );
-		value( 'csp.pt.pwrb.pressure_mode', oldvalue('pressure_mode') );
-		
-		value( 'bop_par', oldvalue('csp.dtr.par.bop_val') );
-		value( 'bop_par_f', oldvalue('csp.dtr.par.bop_pf') );
-		value( 'bop_par_0', oldvalue('csp.dtr.par.bop_c0') );
-		value( 'bop_par_1', oldvalue('csp.dtr.par.bop_c1') );
-		value( 'bop_par_2', oldvalue('csp.dtr.par.bop_c2') );
-		
-		value( 'aux_par', oldvalue('csp.dtr.par.aux_val') );
-		value( 'aux_par_f', oldvalue('csp.dtr.par.aux_pf') );
-		value( 'aux_par_0', oldvalue('csp.dtr.par.aux_c0') );
-		value( 'aux_par_1', oldvalue('csp.dtr.par.aux_c1') );
-		value( 'aux_par_2', oldvalue('csp.dtr.par.aux_c2') );
-		
-		old_combo_FieldConfig = to_int( oldvalue('combo_FieldConfig') );
-		value( 'combo_FieldConfig', old_combo_FieldConfig + 1 );
-		
-		// Doesn't seem to work:
-		old_combo_htf_type = to_int( oldvalue('combo_htf_type') );
-		if ( old_combo_htf_type > 8 ) {
-			value( 'combo_htf_type', old_combo_htf_type + 1 );
-		}
-	}
-	
-	fin = cfg.fin;
-	is_ppa = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' || fin == 'Host Developer');
-	if ( is_ppa )
-	{
-		value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
-		message('You can now specify a different PPA price for each year of the analysis period on the Finanical Parameters page.','notice');
-	} 
-};
-
-// Testing script for battery update
-version_upgrade{'2020.2.24'} = define() {
     const cfg = config();
     if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
     {
@@ -255,9 +143,6 @@ version_upgrade{'2020.2.24'} = define() {
         message('You can now specify a different PPA price for each year of the analysis period on the Finanical Parameters page.','notice');
     }
 };
-
- 
-
 
 // ** Not sure how this works for patches, so using new version number for testing
 version_upgrade{'2018.11.11'} = define () {
