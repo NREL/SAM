@@ -51,7 +51,6 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
-
 version_upgrade{'2020.2.29'} = define() {
 
 	const cfg = config();
@@ -167,49 +166,39 @@ version_upgrade{'2020.2.29'} = define() {
 // Testing script for battery update
 version_upgrade{'2020.2.24'} = define() {
     const cfg = config();
-    msgbox('cfg.tech = ' + cfg.tech );
-    batt_config = ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' || cfg.tech == 'PVWatts');
-    msgbox('batt_config = ' + batt_config );
-    if (batt_config)
+    if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
     {
-        msgbox('en_batt = ' + value('en_batt') );
         if ( value('en_batt') == 1 )
         {
-            if ( cfg.tech == 'PVWatts' )
-            {
-                ok = config('PVWatts Battery', cfg.fin, 'PVWatts Battery configuration replaces PVWatts with battery enabled.');
-                if ( !ok ) { msgbox('Failed to change configuration!\nPVWatts Battery configuration replaces PVWatts with battery enabled.'); }
-            }
-            if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
-            {
-                if ( cfg.tech == 'Generic System' )
-                {
-                                ok = config('Generic Battery', cfg.fin, 'Generic Battery configuration replaces Generic System with battery enabled.');
-                                if ( !ok ) { msgbox('Failed to change configuration!\nGeneric Battery configuration replaces Generic System with battery enabled.'); }
-                }
-                if ( cfg.tech == 'Flat Plate PV' )
-                {
-                                ok = config('PV Battery', cfg.fin, 'Battery PV configuration replaces Detailed PV with battery enabled.');
-                                if ( !ok ) { msgbox('Failed to change configuration!\nBattery PV configuration replaces Detailed PV with battery enabled.'); }
-                }
-                old_replacement_cost = oldvalue('batt_replacement_cost');
-                value('om_replacement_cost1', [old_replacement_cost], 'Battery replacement cost moved from Battery Storage to System Costs input page.');
-                old_escalation = oldvalue('batt_replacement_cost_escal');
-                value('om_replacement_cost_escal', old_escalation, 'Battery replacement cost escalation moved from Battery Storage to System Costs intput page.');
-                value('batt_thermal_choice', 1, 'Set value for new battery environment temperature option to "Enter single fixed    temperature."');
-                msgbox('batt_thermal_choice = ' + value('batt_thermal_choice'));
-                old_temperature = oldvalue('T_room');
-                msgbox('old_temperature = ' + old_temperature );
-                value('batt_room_temperature_single', old_temperature, 'Updated battery room temperature internal variable name.');
-                msgbox('batt_room_temperature_single = ' + value('batt_room_temperature_single'));
-            }
-        }
-    }
+			if ( cfg.tech == 'Generic System' )
+			{
+				ok = config('Generic Battery', cfg.fin, 'Generic Battery configuration replaces Generic System with battery enabled.');
+				if ( !ok ) { msgbox('Failed to change configuration!\nGeneric Battery configuration replaces Generic System with battery enabled.'); }
+			}
+			if ( cfg.tech == 'Flat Plate PV' )
+			{
+				ok = config('PV Battery', cfg.fin, 'Battery PV configuration replaces Detailed PV with battery enabled.');
+				if ( !ok ) { msgbox('Failed to change configuration!\nBattery PV configuration replaces Detailed PV with battery enabled.'); }
+			}
+			old_replacement_cost = oldvalue('batt_replacement_cost');
+			value('om_replacement_cost1', [old_replacement_cost], 'Battery replacement cost moved from Battery Storage to System Costs input page.');
+			old_escalation = oldvalue('batt_replacement_cost_escal');
+			value('om_replacement_cost_escal', old_escalation, 'Battery replacement cost escalation moved from Battery Storage to System Costs intput page.');
+			value('batt_thermal_choice', 1, 'Set value for new battery environment temperature option to "Enter single fixed    temperature."');
+			old_temperature = oldvalue('T_room');
+			value('batt_room_temperature_single', old_temperature, 'Updated battery room temperature internal variable name.');
+		}
+	}
     if ( cfg.tech == 'PVWatts')
     {
-         message('This version of SAM updates the PVWatts model to the latest version, pvwattsv7. Results will change compared to previous versions. '
-        'Please see Help for a link to a detailed description of model updates.','warning');
-    }
+		message('This version of SAM updates the PVWatts model to the latest version, pvwattsv7. Results will change compared to previous versions. '
+		'Please see Help for a link to a detailed description of model updates.','warning');
+		if ( value('batt_simple_enable') == 1)
+		{
+			ok = config('PVWatts Battery', cfg.fin, 'Generic Battery configuration replaces Generic System with battery enabled.');
+			if ( !ok ) { msgbox('Failed to change configuration!\nPVWatts Battery configuration replaces PVWatts with battery enabled.'); }
+		}
+	}
     if ( cfg.tech == 'Physical Trough' )
     {
         old_custom_sgs_pipe_sizes = oldvalue('custom_sgs_pipe_sizes');                              // array
