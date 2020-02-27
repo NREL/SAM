@@ -58,7 +58,7 @@ capacity_factor_calc
 1
 1
 1
-41.856
+86.4
 cbi_fed_amount
 1
 1
@@ -214,7 +214,7 @@ debt_fraction
 1
 1
 1
-60
+80
 debt_message
 1
 4
@@ -350,13 +350,13 @@ first_year_output
 1
 1
 1
-35591980
+1513728
 first_year_output_peak
 1
 1
 1
 1
-9318.83
+192
 fixed_plant_input
 1
 1
@@ -374,7 +374,7 @@ genericsys.cost.contingency
 1
 1
 1
-2.91214e+06
+100000
 genericsys.cost.contingency_percent
 1
 1
@@ -392,31 +392,31 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-6.11548e+06
+0
 genericsys.cost.epc.percent
 1
 1
 1
 1
-10
+0
 genericsys.cost.epc.total
 1
 1
 1
 1
-6.11548e+06
+0
 genericsys.cost.installed_per_capacity
 1
 1
 1
 1
-7.4025
+10.92
 genericsys.cost.per_watt
 1
 1
 1
 1
-6
+10
 genericsys.cost.plant
 1
 1
@@ -428,7 +428,7 @@ genericsys.cost.plant_scaled
 1
 1
 1
-58242708
+2000000
 genericsys.cost.plm.fixed
 1
 1
@@ -440,19 +440,19 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-2.14042e+06
+0
 genericsys.cost.plm.percent
 1
 1
 1
 1
-3.5
+0
 genericsys.cost.plm.total
 1
 1
 1
 1
-2.14042e+06
+0
 genericsys.cost.sales_tax.percent
 1
 1
@@ -464,7 +464,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-2.44619e+06
+84000
 genericsys.cost.sales_tax.value
 1
 1
@@ -793,7 +793,7 @@ itc_fed_percent
 1
 1
 1
-26
+0
 itc_fed_percent_deprbas_fed
 1
 1
@@ -891,7 +891,7 @@ loan_amount
 1
 1
 1
-43114168
+1747200
 loan_rate
 1
 1
@@ -921,7 +921,7 @@ nameplate_capacity
 1
 1
 1
-9707.12
+200
 nominal_discount_rate
 1
 1
@@ -939,7 +939,7 @@ om_capacity
 2
 1
 1
-16
+10
 om_capacity_escal
 1
 1
@@ -963,7 +963,7 @@ om_fuel_cost
 2
 1
 1
-10.37
+5
 om_fuel_cost_escal
 1
 1
@@ -1231,7 +1231,7 @@ property_assessed_value
 1
 1
 1
-71856944
+2184000
 property_tax_rate
 1
 1
@@ -1339,7 +1339,7 @@ system_capacity
 1
 1
 1
-9707.12
+200
 system_use_lifetime_output
 1
 1
@@ -1357,19 +1357,19 @@ total_direct_cost
 1
 1
 1
-61154844
+2100000
 total_indirect_cost
 1
 1
 1
 1
-10702098
+84000
 total_installed_cost
 1
 1
 1
 1
-71856944
+2184000
 ui_annual_load
 1
 1
@@ -1381,13 +1381,13 @@ ui_net_capital_cost
 1
 1
 1
-71856944
+2184000
 ui_wacc
 1
 1
 1
 1
-6.93015
+6.2202
 ur_annual_min_charge
 1
 1
@@ -1399,7 +1399,7 @@ ur_dc_enable
 1
 1
 1
-0
+1
 ur_dc_flat_mat
 1
 3
@@ -1423,7 +1423,7 @@ ur_dc_is_shown
 1
 1
 1
-0
+1
 ur_dc_sched_weekday
 1
 3
@@ -1465,7 +1465,7 @@ ur_dc_tou_mat
 3
 1
 4
-1 1 1e+38 0 
+1 1 1e+38 25 
 
 ur_demand_history
 1
@@ -1596,8 +1596,8 @@ ur_monthly_min_charge
 ur_name
 1
 4
-19
-Generic Residential
+18
+Generic Commercial
 ur_nm_yearend_sell_rate
 1
 1
@@ -1661,7 +1661,7 @@ user_capacity_factor
 1
 1
 1
-43.6
+90
 utility_bill_data
 1
 2

@@ -40,7 +40,7 @@ access_roads_cost
 1
 1
 1
-2542740
+2.54274e+06
 adjust
 1
 5
@@ -171,7 +171,7 @@ bos_total_budgeted_cost
 1
 1
 1
-36380200
+36380236
 bos_total_cost_per_kw
 1
 1
@@ -2292,13 +2292,13 @@ electrical_installation_cost
 1
 1
 1
-1927670
+1927665
 electrical_materials_cost
 1
 1
 1
 1
-3917650
+3.91765e+06
 enable_interconnection_limit
 1
 1
@@ -2424,7 +2424,7 @@ erection_cost
 1
 1
 1
-2174150
+2174151
 est_bos_cost
 1
 0
@@ -2523,7 +2523,7 @@ flip_target_percent
 1
 1
 1
-9
+11
 flip_target_year
 1
 1
@@ -2535,7 +2535,7 @@ foundation_cost
 1
 1
 1
-3480310
+3480313
 grid_curtailment
 1
 2
@@ -3070,7 +3070,7 @@ markup_cost
 1
 1
 1
-5514900
+5.5149e+06
 meas_atm_uncert
 1
 1
@@ -3364,8 +3364,9 @@ pbi_fed_for_ds
 1
 1
 1
-1
-0
+10
+0 80 90 95 96 96 96 96 95 94 
+
 pbi_fed_tax_fed
 1
 1
@@ -3400,8 +3401,9 @@ pbi_oth_for_ds
 1
 1
 1
-1
-0
+10
+0 80 90 95 96 96 96 96 95 94 
+
 pbi_oth_tax_fed
 1
 1
@@ -3436,8 +3438,9 @@ pbi_sta_for_ds
 1
 1
 1
-1
-0
+10
+0 80 90 95 96 96 96 96 95 94 
+
 pbi_sta_tax_fed
 1
 1
@@ -3472,8 +3475,9 @@ pbi_uti_for_ds
 1
 1
 1
-1
-0
+10
+0 80 90 95 96 96 96 96 95 94 
+
 pbi_uti_tax_fed
 1
 1
@@ -3539,7 +3543,7 @@ project_mgmt_cost
 1
 1
 1
-1526480
+1.52648e+06
 project_total_budgeted_cost
 1
 1
@@ -3882,7 +3886,7 @@ substation_cost
 1
 1
 1
-3729020
+3.72902e+06
 substructCont
 1
 1
@@ -3953,7 +3957,7 @@ total_obos_cost
 1
 1
 1
-746300000
+746300352
 total_obos_cost_per_kw
 1
 1
@@ -3983,7 +3987,7 @@ transmission_cost
 1
 1
 1
-4246270
+4246268
 transportation_cost
 1
 1
@@ -4682,4 +4686,4 @@ wspd_uncert
 1
 1
 1
-9.10558
+0

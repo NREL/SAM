@@ -162,7 +162,7 @@ capital_cost
 1
 1
 1
-2.5425e+07
+81360000
 cols
 1
 1
@@ -405,7 +405,7 @@ fixed_operating_cost
 1
 1
 1
-765000
+2448000
 grid_curtailment
 1
 2
@@ -598,13 +598,13 @@ specify_label
 1
 1
 1
-0
+1
 system_capacity
 1
 1
 1
 1
-15000
+48000
 total_10yr_uncert
 1
 1
@@ -694,7 +694,7 @@ ui_capital_cost_fixed
 1
 1
 1
-2.7405e+07
+27405000
 ui_cfin
 1
 1
@@ -758,7 +758,7 @@ ui_system_capacity
 1
 1
 1
-15000
+48000
 ui_variable_operating_cost
 1
 1
@@ -969,13 +969,13 @@ wind_farm_num_turbines
 1
 1
 1
-10
+32
 wind_farm_sizing_mode
 1
 1
 1
 1
-1
+2
 wind_farm_wake_model
 1
 1
@@ -992,8 +992,8 @@ wind_farm_xCoordinates
 1
 2
 1
-10
-0 616 1232 1848 2464 0 616 1232 1848 2464 
+32
+0 616 1232 1848 2464 3080 3696 4312 0 616 1232 1848 2464 3080 3696 4312 0 616 1232 1848 2464 3080 3696 4312 0 616 1232 1848 2464 3080 3696 4312 
 
 wind_farm_yCoord_file
 1
@@ -1005,8 +1005,8 @@ wind_farm_yCoordinates
 1
 2
 1
-10
-0 0 0 0 0 616 616 616 616 616 
+32
+0 0 0 0 0 0 0 0 616 616 616 616 616 616 616 616 1232 1232 1232 1232 1232 1232 1232 1232 1848 1848 1848 1848 1848 1848 1848 1848 
 
 wind_resource.city
 1
@@ -1258,7 +1258,7 @@ windfarm.farm.number_of_rows
 1
 1
 1
-2
+4
 windfarm.farm.offset
 1
 1

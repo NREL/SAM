@@ -74,7 +74,7 @@ ac_nameplate
 1
 1
 1
-16667.4
+3.33333
 adjust
 1
 5
@@ -839,7 +839,7 @@ system_capacity
 1
 1
 1
-20000.9
+4
 system_use_lifetime_output
 1
 1

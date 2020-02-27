@@ -53,7 +53,7 @@ capacity_factor_calc
 1
 1
 1
-41.856
+86.4
 conv_eff
 1
 1
@@ -185,13 +185,13 @@ first_year_output
 1
 1
 1
-35591980
+30274.6
 first_year_output_peak
 1
 1
 1
 1
-9318.83
+3.84
 generic_degradation
 1
 2
@@ -402,7 +402,7 @@ system_capacity
 1
 1
 1
-9707.12
+4
 system_use_lifetime_output
 1
 1
@@ -688,7 +688,7 @@ user_capacity_factor
 1
 1
 1
-43.6
+90
 utility_bill_data
 1
 2
