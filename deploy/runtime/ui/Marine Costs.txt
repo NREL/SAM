@@ -7091,7 +7091,7 @@ Tips
 55
 Type a tip here or define in runtime/help/tooltips.json
 
-84
+85
 array_cable_system_cost
 3
 1
@@ -7484,6 +7484,21 @@ ME Costs
 1
 0
 Numeric
+marine_energy_tech
+3
+1
+ 
+ 
+ME Costs
+14
+0=Wave|1=Tidal
+8
+1
+1
+1
+1
+0
+Default
 mooring_found_substruc_cost
 3
 1
@@ -8270,9 +8285,16 @@ ME Costs
 0
 Default
 
-10547
+10460
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
+};
+
+equations{'marine_energy_tech'} = define() {
+	tech = technology();
+
+	if (tech == 'MEwave') return 0;
+	else return 1; //tidal
 };
 
 equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
@@ -8312,25 +8334,19 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	ssc_var(obj,'other_elec_infra_cost_method', ${other_elec_infra_cost_method});
 	ssc_var(obj,'other_elec_infra_cost_input', ${other_elec_infra_cost_input});
 	
-	//ssc_var(obj, 'device_type', 0);
-	//ssc_var(obj,'marine_energy_tech', 0);
-	
+	ssc_var(obj,'marine_energy_tech', ${marine_energy_tech});
+//	if (${marine_energy_tech} < 0.5)
+	tech = technology();
+	if (tech == 'MEwave')	{
+		ssc_var(obj,'library_or_input_wec', ${library_or_input_wec});
+//		msgbox("library_or_input_wec " + ${library_or_input_wec});
+		ssc_var(obj,'lib_wave_device', ${lib_wave_device});
+//		msgbox("lib_wave_device " + ${lib_wave_device});
+	}
 	ssc_var(obj, 'inter_array_cable_length', ${inter_array_cable_length});
 	ssc_var(obj,'riser_cable_length', ${riser_cable_length});
 	ssc_var(obj, 'export_cable_length', ${export_cable_length});  
 	
-	tech = technology();
-	if (tech == 'MEwave')
-	{
-		if (${library_or_input_wec} == 1) ssc_var (obj, 'device_type', 0); // generic
-		else if (${wave_device_name} == 'RM3') ssc_var (obj, 'device_type', 1);
-		else if (${wave_device_name} == 'RM5') ssc_var (obj, 'device_type', 2);
-		else if (${wave_device_name} == 'RM6') ssc_var(obj, 'device_type', 3);
-	}
-	else ssc_var(obj, 'device_type', 4); //RM1
-		
-	if (tech == 'MEwave') ssc_var( obj, 'marine_energy_tech', 0 );
-	else ssc_var( obj, 'marine_energy_tech', 1); //tidal
 
 	success = ssc_exec(obj, 'mhk_costs');
 	
