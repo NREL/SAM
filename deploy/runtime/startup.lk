@@ -1133,49 +1133,49 @@ function setup_generic_csp_pages()
 setconfig( 'Generic CSP System', 'Commercial' );	
 setmodules( ['tcsgeneric_solar', 'grid', 'utilityrate5', 'cashloan']);
 setup_generic_csp_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Leveraged Partnership Flip' );
 setmodules( ['tcsgeneric_solar', 'grid', 'levpartflip']);
 setup_generic_csp_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
 setup_leveraged_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'All Equity Partnership Flip' );
 setmodules( ['tcsgeneric_solar', 'grid', 'equpartflip']);
 setup_generic_csp_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
 setup_all_equity_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Sale Leaseback' );
 setmodules( ['tcsgeneric_solar', 'grid', 'saleleaseback']);
 setup_generic_csp_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
 setup_sale_leaseback_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Single Owner' );
 setmodules( ['tcsgeneric_solar', 'grid', 'singleowner']);
 setup_generic_csp_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
 setup_single_owner_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+//-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Merchant Plant' );
 setmodules( ['tcsgeneric_solar', 'grid', 'merchantplant']);
 setup_generic_csp_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
 setup_merchant_plant_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'LCOE Calculator' );
 setmodules( ['tcsgeneric_solar', 'grid',  'lcoefcr']);
 setup_generic_csp_pages();
 setup_lcoefcr_pages();	
-
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'None' );
 setmodules( ['tcsgeneric_solar', 'grid']);
@@ -1195,43 +1195,42 @@ function setup_hcpv_pages()
 setconfig( 'High-X Concentrating PV', 'Leveraged Partnership Flip' );
 setmodules( ['hcpv', 'grid', 'levpartflip']);
 setup_hcpv_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_leveraged_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'All Equity Partnership Flip' );
 setmodules( ['hcpv', 'grid', 'equpartflip']);
 setup_hcpv_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_all_equity_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'Sale Leaseback' );
 setmodules( ['hcpv', 'grid', 'saleleaseback']);
 setup_hcpv_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_sale_leaseback_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'Single Owner' );
 setmodules( ['hcpv', 'grid', 'singleowner']);
 setup_hcpv_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'Merchant Plant' );
 setmodules( ['hcpv', 'grid', 'merchantplant']);
 setup_hcpv_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_merchant_plant_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'LCOE Calculator' );
 setmodules( ['hcpv', 'grid',  'lcoefcr']);
 setup_hcpv_pages();
 setup_lcoefcr_pages();
-
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'None' );
 setmodules( ['hcpv', 'grid']);
@@ -1254,50 +1253,49 @@ function setup_dish_stirling_pages()
 setconfig( 'Dish Stirling', 'Commercial' );	
 setmodules( ['tcsdish', 'grid', 'utilityrate5', 'cashloan']);
 setup_dish_stirling_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'Leveraged Partnership Flip' );
 setmodules( ['tcsdish', 'grid', 'levpartflip']);
 setup_dish_stirling_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
 setup_leveraged_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'All Equity Partnership Flip' );
 setmodules( ['tcsdish', 'grid', 'equpartflip']);
 setup_dish_stirling_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
 setup_all_equity_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'Sale Leaseback' );
 setmodules( ['tcsdish', 'grid', 'saleleaseback']);
 setup_dish_stirling_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
 setup_sale_leaseback_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'Single Owner' );
 setmodules( ['tcsdish', 'grid', 'singleowner']);
 setup_dish_stirling_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
 setup_single_owner_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'Merchant Plant' );
 setmodules( ['tcsdish', 'grid', 'merchantplant']);
 setup_dish_stirling_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
 setup_merchant_plant_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'LCOE Calculator' );
 setmodules( ['tcsdish', 'grid',  'lcoefcr']);
 setup_dish_stirling_pages();
 setup_lcoefcr_pages();	
-
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'None' );
 setmodules( ['tcsdish', 'grid']);
@@ -1317,56 +1315,55 @@ function setup_biopower_pages()
 setconfig( 'Biopower', 'Commercial' );	
 setmodules( ['biomass', 'grid', 'utilityrate5', 'cashloan']);
 setup_biopower_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Leveraged Partnership Flip' );
 setmodules( ['biomass', 'grid', 'levpartflip']);
 setup_biopower_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_leveraged_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Biopower', 'All Equity Partnership Flip' );
 setmodules( ['biomass', 'grid', 'equpartflip']);
 setup_biopower_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_all_equity_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Sale Leaseback' );
 setmodules( ['biomass', 'grid', 'saleleaseback']);
 setup_biopower_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_sale_leaseback_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Single Owner' );
 setmodules( ['biomass', 'grid', 'singleowner']);
 setup_biopower_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_single_owner_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Merchant Plant' );
 setmodules( ['biomass', 'grid', 'merchantplant']);
 setup_biopower_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_merchant_plant_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'Biopower', 'LCOE Calculator' );
 setmodules( ['biomass', 'grid',  'lcoefcr']);
 setup_biopower_pages();
 setup_lcoefcr_pages();	
-
 //-----------------------------------------------------
 setconfig( 'Biopower', 'None' );
 setmodules( ['biomass', 'grid']);
@@ -1393,39 +1390,38 @@ function setup_MSPT_pages()
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'grid', 'levpartflip']);
 setup_MSPT_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_leveraged_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'MSPT', 'All Equity Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'grid', 'equpartflip']);
 setup_MSPT_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_all_equity_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Sale Leaseback' );
 setmodules( ['tcsmolten_salt', 'grid', 'saleleaseback']);
 setup_MSPT_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_sale_leaseback_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Single Owner' );
 setmodules( ['tcsmolten_salt', 'grid', 'singleowner']);
 setup_MSPT_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_single_owner_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Merchant Plant' );
 setmodules( ['tcsmolten_salt', 'grid', 'merchantplant']);
 setup_MSPT_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_merchant_plant_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 if ( en_iscc ) {
-
 	// ISCC Molten Salt Power Tower //////////////////////////////////////////////////////
 	function setup_ISCC_pages()
 	{
@@ -1436,15 +1432,14 @@ if ( en_iscc ) {
 			addpage( [[ 'ISCC Parasitics' ]], { 'sidebar'='Parasitics', 'help'='iscc_parasitics' } );
 			setup_grid_page();
 	}
-
 	//-----------------------------------------------------
 	setconfig( 'ISCC', 'Single Owner' );
 	setmodules( ['tcsiscc', 'grid', 'singleowner']);
 	setup_ISCC_pages();
+	setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 	addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='iscc_system_costs' } );
 	setup_single_owner_pages();
-	setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);}
-
+}
 // Direct Steam Linear IPH ////////////
 function setup_DSGL_IPH_pages()
 {
@@ -1496,44 +1491,44 @@ setup_DSLF_pages();
 setconfig( 'DSLF', 'Commercial' );	
 setmodules( ['tcslinear_fresnel', 'grid', 'utilityrate5', 'cashloan']);
 setup_DSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Leveraged Partnership Flip' );
 setmodules( ['tcslinear_fresnel', 'grid', 'levpartflip']);
 setup_DSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_leveraged_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'DSLF', 'All Equity Partnership Flip' );
 setmodules( ['tcslinear_fresnel', 'grid', 'equpartflip']);
 setup_DSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_all_equity_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Sale Leaseback' );
 setmodules( ['tcslinear_fresnel', 'grid', 'saleleaseback']);
 setup_DSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_sale_leaseback_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Single Owner' );
 setmodules( ['tcslinear_fresnel', 'grid', 'singleowner']);
 setup_DSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_single_owner_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Merchant Plant' );
 setmodules( ['tcslinear_fresnel', 'grid', 'merchantplant']);
 setup_DSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_merchant_plant_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 
 // Direct Steam Power Tower ////////////////////////////////////////////////////////////////////
@@ -1551,37 +1546,37 @@ function setup_DSPT_pages()
 setconfig( 'DSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsdirect_steam', 'grid', 'levpartflip']);
 setup_DSPT_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_leveraged_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'DSPT', 'All Equity Partnership Flip' );
 setmodules( ['tcsdirect_steam', 'grid', 'equpartflip']);
 setup_DSPT_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_all_equity_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'DSPT', 'Sale Leaseback' );
 setmodules( ['tcsdirect_steam', 'grid', 'saleleaseback']);
 setup_DSPT_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_sale_leaseback_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'DSPT', 'Single Owner' );
 setmodules( ['tcsdirect_steam', 'grid', 'singleowner']);
 setup_DSPT_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_single_owner_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'DSPT', 'Merchant Plant' );
 setmodules( ['tcsdirect_steam', 'grid', 'merchantplant']);
 setup_DSPT_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_merchant_plant_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 
 // Molten Salt Linear Fresnel ////////////////////////////////////////////////////////////////////
 function setup_MSLF_pages()
@@ -1624,46 +1619,46 @@ setup_MSLF_pages();
 setconfig( 'MSLF', 'Commercial' );	
 setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'cashloan']);
 setup_MSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-//-----------------------------------------------------
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Leveraged Partnership Flip' );
 setmodules( ['tcsMSLF', 'grid', 'levpartflip']);
 setup_MSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_leveraged_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'MSLF', 'All Equity Partnership Flip' );
 setmodules( ['tcsMSLF', 'grid', 'equpartflip']);
 setup_MSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_all_equity_partnership_flip_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Sale Leaseback' );
 setmodules( ['tcsMSLF', 'grid', 'saleleaseback']);
 setup_MSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_sale_leaseback_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Single Owner' );
 setmodules( ['tcsMSLF', 'grid', 'singleowner']);
 setup_MSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_single_owner_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Merchant Plant' );
 setmodules( ['tcsMSLF', 'grid', 'merchantplant']);
 setup_MSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_merchant_plant_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-// Marine Hydrokinetic ////////////////////////////////////////////////////////////////////
+
+// Marine Energy ////////////////////////////////////////////////////////////////////
 function setup_mewave_pages()
 {
 	addpage( [[ 'Marine Wave Resource']], { 'sidebar'='Wave Resource', 'help'='mhk_wave_resource' } );
