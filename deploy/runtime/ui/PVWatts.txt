@@ -1,7 +1,7 @@
 PVWatts
 585
 907
-39
+40
 GroupBox
 
 1
@@ -219,6 +219,39 @@ BackColour
 TabOrder
 3
 8
+CheckBox
+
+1
+9
+Name
+5
+18
+batt_simple_enable
+X
+3
+417
+Y
+3
+825
+Width
+3
+144
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+21
+Enable simple battery
+State
+2
+1
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1984,7 +2017,7 @@ Enable simple battery
  
 PVWatts
 0
-4
+12
 1
 1
 1
@@ -2298,7 +2331,7 @@ PVWatts
 42.82
 Numeric
 
-678
+493
 equations{'ac_nameplate'} = define() {
 	return ${system_capacity}/${dc_ac_ratio};
 };
@@ -2317,15 +2350,7 @@ equations{ 'losses' } = define() {
 					*(1-0.01*${loss_avail}) );
 };
 
-equations{'batt_simple_enable'} = define()
-{
-	 t = technology();
-	 is_simple_batt_tech = ( t == "PVWatts Battery" );
-	 if ( is_simple_batt_tech ) { return 1; }
-	 else { return 0; }
-};
-
-2429
+2731
 function pvwatts_ui_update() {
 	arr = ${array_type};
 	enable( 'gcr', (arr==0||arr==2||arr==3) );
@@ -2358,10 +2383,22 @@ function snow_loss_checks () {
 	}
 }
 
+// do this here instead of equations so
+// versions.lk will work for opening files
+// older than 2018.11.11
+function check_batt_config() {
+	 t = technology();
+	 if ( t == 'PVWatts Battery' ) 
+	 { value('batt_simple_enable', 1); }
+	 else 
+	 { value('batt_simple_enable', 0); }
+ 	show( 'batt_simple_enable', 0 ); // hidden variable set by equations
+	refresh();
+}
+
 on_load{'PVWatts'} = define() {
 	pvwatts_ui_update();
-	show( 'batt_simple_enable', 1 ); // hidden variable set by equations
-	refresh();
+	check_batt_config();
 };
 
 on_change{'array_type'} = define() {
