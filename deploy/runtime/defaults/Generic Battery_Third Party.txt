@@ -47,14 +47,15 @@ Monthly_util
 2
 1
 12
-100 100 100 100 100 100 100 100 100 100 100 100 
+725 630 665 795 1040 1590 1925 1730 1380 1080 635 715 
 
 Occ_Schedule
 1
 2
 1
-1
-1
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
 Occupants
 1
 1
@@ -101,8 +102,9 @@ T_Sched
 1
 2
 1
-1
-1
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
 YrBuilt
 1
 1
@@ -998,21 +1000,21 @@ dispatch_manual_charge
 2
 1
 6
-0 1 0 0 0 0 
+1 1 0 0 0 0 
 
 dispatch_manual_discharge
 1
 2
 1
 6
-1 0 1 1 0 0 
+0 1 1 1 0 0 
 
 dispatch_manual_gridcharge
 1
 2
 1
 6
-0 1 0 0 0 0 
+0 0 0 0 0 0 
 
 dispatch_manual_percent_discharge
 1
@@ -1025,9 +1027,8 @@ dispatch_manual_percent_gridcharge
 1
 2
 1
-2
-25 0 
-
+1
+0
 dispatch_manual_sched
 1
 3
@@ -1237,19 +1238,19 @@ first_year_output
 1
 1
 1
-7893.03
+6727.68
 first_year_output_peak
 1
 1
 1
 1
-4.50516
+3.84
 floor_area
 1
 1
 1
 1
-500
+2000
 generic_degradation
 1
 2
@@ -1302,7 +1303,7 @@ lease_price
 1
 1
 1
-25
+50
 load
 1
 2
@@ -1315,73 +1316,73 @@ load_1
 1
 1
 1
-100
+725
 load_10
 1
 1
 1
 1
-100
+1080
 load_11
 1
 1
 1
 1
-100
+635
 load_12
 1
 1
 1
 1
-100
+715
 load_2
 1
 1
 1
 1
-100
+630
 load_3
 1
 1
 1
 1
-100
+665
 load_4
 1
 1
 1
 1
-100
+795
 load_5
 1
 1
 1
 1
-100
+1040
 load_6
 1
 1
 1
 1
-100
+1590
 load_7
 1
 1
 1
 1
-100
+1925
 load_8
 1
 1
 1
 1
-100
+1730
 load_9
 1
 1
 1
 1
-100
+1380
 load_annual_total
 1
 1
@@ -1508,13 +1509,13 @@ pv.storage.p1.charge
 1
 1
 1
-0
+1
 pv.storage.p1.discharge
 1
 1
 1
 1
-1
+0
 pv.storage.p1.gridcharge
 1
 1
@@ -1532,13 +1533,13 @@ pv.storage.p2.discharge
 1
 1
 1
-0
+1
 pv.storage.p2.gridcharge
 1
 1
 1
 1
-1
+0
 pv.storage.p3.charge
 1
 1
@@ -1640,7 +1641,7 @@ system_capacity
 1
 1
 1
-4.69287
+4
 system_use_lifetime_output
 1
 1
@@ -1808,9 +1809,9 @@ ur_ec_tou_mat
 4
 6
 1 1 1e+38 0 0.1 0 
-2 1 1e+38 0 0.05 0 
+2 1 1e+38 0 0.075 0 
 3 1 1e+38 0 0.2 0 
-4 1 1e+38 0 0.25 0 
+4 1 1e+38 0 0.4 0 
 
 ur_en_ts_sell_rate
 1

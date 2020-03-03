@@ -103,13 +103,13 @@ capacity_factor_calc
 1
 1
 1
-41.856
+86.4
 capital_cost
 1
 1
 1
 1
-27405000
+182700000
 conv_eff
 1
 1
@@ -145,13 +145,13 @@ first_year_output
 1
 1
 1
-54998784
+756864000
 first_year_output_peak
 1
 1
 1
 1
-14400
+96000
 fixed_charge_rate
 1
 1
@@ -163,7 +163,7 @@ fixed_operating_cost
 1
 1
 1
-765000
+5100000
 grid_curtailment
 1
 2
@@ -198,7 +198,7 @@ system_capacity
 1
 1
 1
-15000
+100000
 ui_capital_cost_capacity
 1
 1
@@ -274,7 +274,7 @@ ui_system_capacity
 1
 1
 1
-15000
+100000
 ui_variable_operating_cost
 1
 1
@@ -292,7 +292,7 @@ user_capacity_factor
 1
 1
 1
-43.6
+90
 variable_operating_cost
 1
 1

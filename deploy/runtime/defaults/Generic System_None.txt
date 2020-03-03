@@ -41,7 +41,7 @@ capacity_factor_calc
 1
 1
 1
-41.856
+86.4
 conv_eff
 1
 1
@@ -77,7 +77,7 @@ first_year_output
 1
 1
 1
-366658560
+756864000
 first_year_output_peak
 1
 1
@@ -124,4 +124,4 @@ user_capacity_factor
 1
 1
 1
-43.6
+90
