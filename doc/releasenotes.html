@@ -61,31 +61,7 @@
 </ul>
 
 -->
-<h1>Beta Version 2020.1.17, SSC Version 232. Original Beta release date January 6, 2020</h1>
-	 
-<p><strong>Note:</strong> The current version is SAM 2018.11.11, described <a href="#current">below</a>. The Beta version is available for testing from <a href="https://sam.nrel.gov/download/beta-version.html">SAM Beta Downloads</a></p>	 
-
-<div style="margin-left:50px;margin-right:50px;border:1px solid black;border-radius:10px;padding-left:10px;padding-right:10px">
-	<p>This Beta version was originally released as SAM 2020.1.6 Beta, SSC Version 230.</p>
-	<p>SAM 2020.1.17 Beta, SSC 232 update includes the following:</p>
-	 <ul>
-		 <li>Fix battery optimization for PVWatts.</li>
-		 <li>Make marine enery cost inputs available for parametric simulations.</li>
-		 <li>Remove out-dated warning from battery dispatch page.</li>
-	</ul>	
-	
-	
-	<p>SAM 2020.1.14 Beta, SSC 231 update includes the following:</p>
-	 <ul>
-		 <li>New model configuration selection tree.</li>
-		 <li>Fix physical trough HCE pipe roughness calculations.</li>
-		 <li>Fix issues with numeric solver "monotonic equation solver" used by CSP models.</li>
-		 <li>Fix metering option variable labels in SSC utilityrate5 modules to match SAM user interface.</li>
-		 <li>Fix battery sizing bug.</li>
-		 <li>Update Value of RE script to work with URDB CSV file.</li>
-		 <li>Cashflow send-to-Excel with equations fixes for TPO host-developer and PPA models.</li>
-	 </ul>
-</div>
+<h1 id="current">Version 2020.2.29, SSC Version 237</h1>
 	 
 <p>This version introduces several new models and features in addition to enhancements to existing models:</p>
 
@@ -101,6 +77,7 @@
 
 <h2>General</h2>
 
+<p>New model configuration selection tree for choosing models when creating case.</p>
 <p>Check for Updates now works for both new software versions and revision number changes within a given version.</p>
 <p>LK script fixes to <code>></code> operator and <code>to_int()</code> function.</p>
 <p>Fix Combine Cases macro to correctly assign cost to user input in Generic System case.</p>
@@ -192,6 +169,10 @@
 
 <p>New performance model for photovoltaic array with fuel cell and optional battery storage.</p>
 
+	<h2>CSP General</h2>
+	 <p>Fix issues with numeric solver "monotonic equation solver" used by CSP models.</p>
+
+	
 <h2>CSP Molten Salt Power Tower</h2>
 
 <p>New inputs that don't appear in UI like <code>startup_ramp_time</code> and <code>startup_target_Tdiff</code>.</p>
@@ -206,6 +187,7 @@
 <p>Add dispatch optimization algorithm and inputs on new System Control page.</p>
 <p>Fix bug in header pipe calculation to conserve mass flow.</p>
 <p>Fix bug for power cycle sizes greater than 150 MW when all other inputs are left at their default values.</p>
+<p>Fix physical trough HCE pipe roughness calculations.</p>
 
 <h2>CSP Linear Fresnel</h2>
 
@@ -245,6 +227,7 @@
 <p>New optional grid interconnection limits and curtailment.</p>
 <p>New Revenue input page for Solution Mode and revenue sources from PPA, and optional capacity or curtailment payments.</p>
 <p>Time of Delivery (TOD) factors moved to Revenue page.</p>
+<p>Cashflow send-to-Excel with equations fixes for third party ownership host-developer and PPA models.</p>
 
 <h2>Behind-the-meter Fianancial Models</h2>
 
@@ -254,6 +237,8 @@
 <p>New critical load inputs and resiliency metrics for results.</p>
 <p>Residential load data not available for Alaska locations for Download Electric Load macro.</p>
 <p>New optional grid interconnection limits and curtailment.</p>
+<p>Fix metering option variable labels in SSC utilityrate5 modules to match SAM user interface.</p>
+<p>Update Value of RE script to work with URDB CSV file.</p>
 
 <h2>Third Party Ownership Finanical Models</h2>
 
@@ -263,7 +248,7 @@
 <p>Fix issues with PDF report when developer NPV is positive and host NPV is negative.</p>
 <p>New optional grid interconnection limits and curtailment.</p>
 
-<h1 id="current">Version 2018.11.11, SSC Version 198: November 11, 2018</h1>
+<h1>Version 2018.11.11, SSC Version 198: November 11, 2018</h1>
 
 <p>This new version introduces new models for third party ownership, bifacial photovoltaic modules, multiple maximum power point trackers for photovoltaic systems, and accesses the latest solar resource data (PSM V3) from the National Solar Radiation Database. It also includes enhancements to the battery storage and CSP parabolic trough models.</p>
 
