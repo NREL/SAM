@@ -88,17 +88,16 @@ void create_subdirectories(std::string dir, std::vector<std::string> folders, bo
 #else
             system(std::string("rm -rf " + sPath).c_str());
 #endif
-        }
 
 #if defined(_WIN32)
-        nError = _mkdir(sPath.c_str());
+			nError = _mkdir(sPath.c_str());
 #else
-        nError = mkdir(sPath.c_str(), nMode);
+			nError = mkdir(sPath.c_str(), nMode);
 #endif
-        if (nError != 0) {
-            throw std::runtime_error("Couldn't create subdirectory: " + sPath);
+			if (nError != 0) {
+				throw std::runtime_error("Couldn't create subdirectory: " + sPath);
+			}
         }
-
     }
 }
 
