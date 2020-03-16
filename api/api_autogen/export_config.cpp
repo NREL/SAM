@@ -61,7 +61,7 @@ bool DeleteDirectory(LPCTSTR lpszDir, bool noRecycleBin = true)
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 std::string active_config;
 
-void create_subdirectories(std::string dir, std::vector<std::string> folders, bool empty= true){
+void create_directory(std::string dir){
     mode_t nMode = 0733; // UNIX style permissions
     // create directory first if it doesn't exist
     int nError = 0;
@@ -76,11 +76,25 @@ void create_subdirectories(std::string dir, std::vector<std::string> folders, bo
             throw std::runtime_error("Couldn't create directory: " + dir);
         }
     }
+}
+
+void create_subdirectories(std::string dir, std::vector<std::string> folders){
+    create_directory(dir);
+
     for (auto& name : folders){
         std::string sPath = dir + '/' + name;
+        create_directory(sPath);
+    }
+}
 
+void create_empty_subdirectories(std::string dir, std::vector<std::string> folders){
+    struct stat info;
+    create_directory(dir);
+
+    for (auto& name : folders){
+        std::string sPath = dir + '/' + name;
         // check if directory already exists
-        if( stat( sPath.c_str(), &info ) == 0 && empty) {
+        if( stat( sPath.c_str(), &info ) == 0 ) {
 #if defined(_WIN32)
 			std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 			std::wstring wide = converter.from_bytes(sPath);
@@ -88,16 +102,8 @@ void create_subdirectories(std::string dir, std::vector<std::string> folders, bo
 #else
             system(std::string("rm -rf " + sPath).c_str());
 #endif
-
-#if defined(_WIN32)
-			nError = _mkdir(sPath.c_str());
-#else
-			nError = mkdir(sPath.c_str(), nMode);
-#endif
-			if (nError != 0) {
-				throw std::runtime_error("Couldn't create subdirectory: " + sPath);
-			}
         }
+        create_directory(sPath);
     }
 }
 
@@ -164,11 +170,11 @@ int main(int argc, char *argv[]){
         }
     }
 
-    create_subdirectories(library_path, std::vector<std::string>{"defaults", "PySAM"});
-    create_subdirectories(pysam_path, std::vector<std::string>({"modules", "include"}));
-    create_subdirectories(pysam_path, std::vector<std::string>({"stubs"}), false);
-    create_subdirectories(pysam_path + "/docs", std::vector<std::string>({"include", "modules"}));
-    create_subdirectories(api_path, std::vector<std::string>({"include", "modules"}));
+    create_empty_subdirectories(library_path, std::vector<std::string>{"defaults", "PySAM"});
+    create_empty_subdirectories(pysam_path, std::vector<std::string>({"modules", "include"}));
+    create_subdirectories(pysam_path, std::vector<std::string>({"stubs"}));
+    create_empty_subdirectories(pysam_path + "/docs", std::vector<std::string>({"include", "modules"}));
+    create_empty_subdirectories(api_path, std::vector<std::string>({"include", "modules"}));
 
     std::cout << "Exporting C API files to " << api_path << "\n";
     std::cout << "Exporting default JSON files to " << defaults_path << "\n";
