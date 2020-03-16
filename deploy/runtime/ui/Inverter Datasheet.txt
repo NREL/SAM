@@ -120,7 +120,7 @@ Name
 Label1
 X
 3
-396
+402
 Y
 3
 288
@@ -1067,7 +1067,7 @@ Name
 inv_ds_pnt_suggested
 X
 3
-396
+402
 Y
 3
 333
@@ -1185,7 +1185,7 @@ Name
 inv_ds_pso_suggested
 X
 3
-396
+402
 Y
 3
 309
@@ -1416,11 +1416,11 @@ Numeric
 inv_ds_data_filename
 3
 4
+Inverter data filename
  
- 
- 
+PV Inverter (Datasheet)
 0
-0
+1
 1
 4
 0
@@ -1428,7 +1428,7 @@ TextEntry
 inv_ds_eff
 3
 1
-Inverter Efficiency
+Inverter efficiency
 %
 PV Inverter (Datasheet)
 0
@@ -1456,7 +1456,7 @@ Numeric
 inv_ds_eff_type
 3
 1
-Use Weighted or Manufacturer Efficiency
+Use weighted or manufacturer efficiency
  
 PV Inverter (Datasheet)
 0
@@ -1582,11 +1582,11 @@ Numeric
 inv_ds_pnt_suggested
 3
 1
- 
+Suggested power consumption at night
 Wac
 PV Inverter (Datasheet)
 0
-8
+9
 1
 1
 1
@@ -1610,11 +1610,11 @@ Numeric
 inv_ds_pso_suggested
 3
 1
- 
+WSuggested power consumption during operation
 Wdc
 PV Inverter (Datasheet)
 0
-8
+9
 1
 1
 1

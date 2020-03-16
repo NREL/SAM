@@ -6,6 +6,8 @@ The SAM Open Source Project repository contains the source code, tools, and inst
 
 For a short video describing the SAM repositories, see https://youtu.be/E5z1iiZfZ3M.
 
+The [SAM release notes](https://nrel.github.io/SAM/doc/releasenotes.html) are in https://github.com/NREL/SAM/blob/gh-pages/doc/releasenotes.html.
+
 The desktop version of SAM for Windows, Mac, or Linux builds from the following open source projects:
 
 * [SSC](https://github.com/nrel/ssc) is a set of "compute modules" that simulate different kinds of power systems and financial structures. It can be run directly using the [SAM Software Development Kit](https://sam.nrel.gov/sdk). **If you are looking for the algorithms underlying the models, they are located in this repository.**
@@ -19,6 +21,9 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 * [Google Test](https://github.com/google/googletest) is a C++ test framework that enables comprehensive unit-testing of software.  Contributions to the project will eventually be required to have associated unit tests written in this framework.
 
 * This repository, **SAM**, provides the user interface to assign values to inputs of the SSC compute modules, run the modules in the correct order, and display simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimensional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
+
+We also include two Sandia libraries, [stepwise](https://dakota.sandia.gov/content/packages/stepwise), and [LHS](https://dakota.sandia.gov/content/packages/lhs), which are distributed as part of the Dakota platform, licensed under [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html).  These libraries may be found [here](https://github.com/NREL/SAM/tree/develop/Sandia).
+
 
 # Quick Steps for Building SAM
 
@@ -60,8 +65,6 @@ If you would like to report an issue with SAM or make a feature request, please 
 If you would like to submit code to fix an issue or add a feature, you can use GitHub to do so. Please see [Contributing](CONTRIBUTING.md) for instructions.
 
 # License
+SAM's open source code is copyrighted by the Alliance for Sustainable Energy and licensed with BSD-3-Clause terms, found [here](https://github.com/NREL/SAM/blob/develop/LICENSE).
 
-SAM's open source code is copyrighted by the Alliance for Sustainable Energy and licensed under a [mixed MIT and GPLv3 license](LICENSE.md). It allows for-profit and not-for-profit organizations to develop and redistribute software based on SAM under terms of an MIT license and requires that research entities including national laboratories, colleges and universities, and non-profit organizations make the source code of any redistribution publicly available under terms of a GPLv3 license. .
-
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FNREL%2FSAM.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FNREL%2FSAM?ref=badge_large)
+SAM also includes two [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html) licensed libraries from Sandia National Laboratory.  These Fortran libraries have been pre-compiled and included as binaries [here](https://github.com/NREL/SAM/tree/develop/Sandia).  To swap in a new version of these libraries, you may compile them as binary/executables and copy them into the respective folder.

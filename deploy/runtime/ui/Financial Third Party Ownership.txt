@@ -5,7 +5,7 @@ Financial Third Party Ownership
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 86
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -32,7 +35,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -49,6 +52,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -91,7 +97,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -108,6 +114,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -150,7 +159,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -167,6 +176,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -209,7 +221,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 12
@@ -226,6 +238,9 @@ Width
 Height
 3
 30
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -246,7 +261,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -263,6 +278,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -305,7 +323,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -322,6 +340,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -364,7 +385,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -381,6 +402,9 @@ Width
 Height
 3
 120
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -391,7 +415,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -408,6 +432,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -450,7 +477,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -467,6 +494,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -509,7 +539,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -526,6 +556,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -612,11 +645,11 @@ Default
 lease_or_ppa
 3
 1
- 
+Lease agreement or PPA (0=lease, 1=PPA)
  
 Third Party Ownership
 0
-0
+1
 1
 1
 1

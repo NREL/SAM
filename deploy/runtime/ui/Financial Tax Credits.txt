@@ -5,7 +5,7 @@ Financial Tax Credits
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 191
+Tool Tip
+5
+0
 Caption
 5
 27
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -49,6 +52,9 @@ Width
 Height
 3
 191
+Tool Tip
+5
+0
 Caption
 5
 27
@@ -59,7 +65,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -76,6 +82,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -104,7 +113,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -121,6 +130,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -149,7 +161,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -166,6 +178,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -194,7 +209,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -211,6 +226,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -239,7 +257,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -256,6 +274,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -284,7 +305,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -301,6 +322,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -329,7 +353,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -346,6 +370,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -374,7 +401,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -391,6 +418,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -419,7 +449,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -436,6 +466,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -464,7 +497,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -481,6 +514,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -509,7 +545,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -526,6 +562,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -554,7 +593,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -571,6 +610,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -599,7 +641,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -616,6 +658,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -658,7 +703,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 26
@@ -675,6 +720,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -687,7 +735,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 26
@@ -704,6 +752,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -716,7 +767,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -733,6 +784,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -775,7 +829,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 27
@@ -792,6 +846,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -804,7 +861,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 27
@@ -821,6 +878,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -833,7 +893,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -850,6 +910,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -892,7 +955,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -909,6 +972,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -951,7 +1017,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 26
@@ -968,6 +1034,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -980,7 +1049,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 26
@@ -997,6 +1066,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1009,7 +1081,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1026,6 +1098,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1068,7 +1143,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 27
@@ -1085,6 +1160,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1097,7 +1175,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 27
@@ -1114,6 +1192,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1126,7 +1207,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1143,6 +1224,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1185,7 +1269,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1202,6 +1286,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -1230,7 +1317,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 19
@@ -1247,6 +1334,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 26
@@ -1275,7 +1365,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -1292,6 +1382,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -1320,7 +1413,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -1337,6 +1430,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 120
@@ -1365,7 +1461,7 @@ AlignTop
 SchedNumeric
 
 1
-11
+12
 Name
 5
 14
@@ -1382,6 +1478,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -1405,7 +1504,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1422,6 +1521,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1464,7 +1566,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1481,6 +1583,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1523,7 +1628,7 @@ TabOrder
 SchedNumeric
 
 1
-11
+12
 Name
 5
 14
@@ -1540,6 +1645,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -1563,7 +1671,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1580,6 +1688,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1622,7 +1733,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1639,6 +1750,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1697,11 +1811,11 @@ Numeric
 itc_fed_amount_deprbas_fed
 3
 1
- 
+Federal ITC reduces federal depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1711,7 +1825,7 @@ CheckBox
 itc_fed_amount_deprbas_sta
 3
 1
- 
+Federal ITC reduces state depreciation basis
  
 Tax Credits
 0
@@ -1739,11 +1853,11 @@ Numeric
 itc_fed_percent_deprbas_fed
 3
 1
- 
+Federal ITC by percent reduces federal depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1753,11 +1867,11 @@ CheckBox
 itc_fed_percent_deprbas_sta
 3
 1
- 
+Federal ITC by percent reduces state depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1795,11 +1909,11 @@ Numeric
 itc_sta_amount_deprbas_fed
 3
 1
- 
+State ITC reduces federal depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1809,7 +1923,7 @@ CheckBox
 itc_sta_amount_deprbas_sta
 3
 1
- 
+State ITC reduces state depreciation basis
  
 Tax Credits
 0
@@ -1837,11 +1951,11 @@ Numeric
 itc_sta_percent_deprbas_fed
 3
 1
- 
+State ITC by percent reduces federal depreciation baiss
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1851,11 +1965,11 @@ CheckBox
 itc_sta_percent_deprbas_sta
 3
 1
- 
+State ITC by percent reduces state depreciation basis
  
 Tax Credits
 0
-0
+1
 1
 1
 1
@@ -1866,7 +1980,7 @@ itc_sta_percent_maxvalue
 3
 1
 State ITC maximum limit
- 
+$
 Tax Credits
 0
 3

@@ -1,27 +1,30 @@
 Battery Voltage
-1007
-558
+995
+535
 20
 GroupBox
 
 1
-7
+8
 Name
 5
 18
 Voltage Properties
 X
 3
-9
+6
 Y
 3
-6
+3
 Width
 3
 985
 Height
 3
 528
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -32,7 +35,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -49,6 +52,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -91,7 +97,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -108,6 +114,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -150,7 +159,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -167,6 +176,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -209,7 +221,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -226,6 +238,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -268,7 +283,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -285,6 +300,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -327,7 +345,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -344,6 +362,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -386,7 +407,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -403,6 +424,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -445,7 +469,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -462,6 +486,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -504,7 +531,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 17
@@ -521,6 +548,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 94
@@ -549,7 +579,7 @@ AlignTop
 Divider
 
 1
-9
+10
 Name
 5
 20
@@ -566,6 +596,9 @@ Width
 Height
 3
 22
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -585,7 +618,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 22
@@ -602,6 +635,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -621,7 +657,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -638,6 +674,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -680,7 +719,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 19
@@ -697,6 +736,9 @@ Width
 Height
 3
 27
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -717,7 +759,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 21
@@ -734,6 +776,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -753,7 +798,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 18
@@ -770,10 +815,13 @@ Width
 Height
 3
 99
+Tool Tip
+5
+0
 Caption
 5
-299
-The desired bank voltage is used to calculate the interal battery configuration using the provided cell nominal voltage.  If you've manually specified the cell configuration, the desired bank voltage input will not be available. Cell resistance is used to compute the battery temperature and voltage
+300
+The desired bank voltage is used to calculate the internal battery configuration using the provided cell nominal voltage.  If you've manually specified the cell configuration, the desired bank voltage input will not be available. Cell resistance is used to compute the battery temperature and voltage
 TextColour
 4
 0
@@ -798,29 +846,35 @@ AlignTop
 DataMatrix
 
 1
-22
+27
 Name
 5
 19
 batt_voltage_matrix
 X
 3
-348
+354
 Y
 3
-306
+255
 Width
 3
 340
 Height
 3
 201
+Tool Tip
+5
+0
 PasteAppendRows
 2
 1
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -832,6 +886,12 @@ RowLabels
 0
 ShadeR0C0
 2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
 0
 ShadeC0
 2
@@ -870,10 +930,13 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Label
 
 1
-12
+13
 Name
 5
 20
@@ -890,6 +953,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 96
@@ -918,7 +984,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 22
@@ -935,6 +1001,9 @@ Width
 Height
 3
 108
+Tool Tip
+5
+0
 Caption
 5
 268
@@ -963,7 +1032,7 @@ AlignTop
 Plot
 
 1
-5
+6
 Name
 5
 17
@@ -980,6 +1049,9 @@ Width
 Height
 3
 174
+Tool Tip
+5
+0
 
 11
 batt_C_rate
@@ -1145,7 +1217,7 @@ Depth of discharge [%]| Cell voltage [V]
 Default
 
 0
-4221
+4865
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice(false);
@@ -1169,19 +1241,18 @@ on_change{'batt_voltage_choice'} = define()
 	update_voltage_plot();
 };
 on_change{'batt_bank_voltage'} = define(){battsize_warning_check();};
-/*
 on_change{'batt_C_rate'} = define(){update_voltage_plot();};
 on_change{'batt_resistance'} = define(){update_voltage_plot();};
 on_change{'batt_Vfull'} = define(){update_voltage_plot();};
 on_change{'batt_Vexp'} = define(){update_voltage_plot();};
 on_change{'batt_Vnom'} = define(){update_voltage_plot();};
-*/
 on_change{'batt_Vnom_default'} = define()
 {
 	update_voltage_plot();
 	battsize_warning_check();
 };
-
+on_change{'batt_Qexp_percent'} = define(){update_voltage_plot();};
+on_change{'batt_Qnom_percent'} = define(){update_voltage_plot();};
 on_change{'batt_voltage_matrix'} = define(){update_voltage_plot();};
 
 function set_voltage_choice(update_defaults)
@@ -1225,6 +1296,29 @@ function enable_voltage_model_inputs(on)
 	enable('batt_voltage_matrix', !on);
 }
 function update_voltage_plot()
+{
+	table = cell_voltage_vs_dod();
+	Vfull = table{'Vfull'};
+	DOD_vect = table{'DOD'};
+	V_vect = table{'V'};
+	clearplot( 'batt_voltage_plot');
+	plot( DOD_vect, V_vect, {'thick'=2, 'type'='line', 'color'='blue'});
+	plotopt( {'title'='Voltage Discharge', 'legend'=false });
+	axis( 'x1', {'label'='Depth of Discharge (%)', 'min'=-0.5, 'max'=100+0.5});
+	axis( 'y1', {'label'='Voltage (V)', 'min'=min(V_vect), 'max'=Vfull+0.1});
+	
+	// also update calendar life plot, since depends on voltage in model case
+	mode = value('batt_calendar_choice');
+	if (mode == 1){
+		// hack, directly calling plot function results in non-embedded plot
+		value('batt_calendar_choice', 2);
+		value('batt_calendar_choice', 1);
+	}
+
+	
+}
+
+function cell_voltage_vs_dod()
 {
 	voltage_mode = value('batt_voltage_choice');
 	DOD_vect = [];
@@ -1271,7 +1365,7 @@ function update_voltage_plot()
 			V = E0 - R*I - K*(Qfull/(Qfull-I*t)) + A*exp(-B*I*t);
 			DOD = (1.-(q0/Qfull))*100;
 			//logmsg('t: ' + t + ' V: ' + V + 'DOD: ' + DOD);
-			if ( (V < 0) || (V > 2*Vfull) || DOD > 100)
+			if ( (V < Vfull/2) || (V > 2*Vfull) || DOD > 100)
 				break;
 			else
 			{
@@ -1292,10 +1386,9 @@ function update_voltage_plot()
 		}
 		Vfull = max(V_vect);
 	}
-	clearplot( 'batt_voltage_plot');
-	plot( DOD_vect, V_vect, {'thick'=2, 'type'='line', 'color'='blue'});
-	plotopt( {'title'='Voltage Discharge', 'legend'=false });
-	axis( 'x1', {'label'='Depth of Discharge (%)', 'min'=-0.5, 'max'=100+0.5});
-	axis( 'y1', {'label'='Voltage (V)', 'min'=min(V_vect), 'max'=Vfull+0.1});
+	
+	table{'DOD'} = DOD_vect;
+	table{'V'} = V_vect;
+	table{'Vfull'} = Vfull;
+	return table;
 }
-

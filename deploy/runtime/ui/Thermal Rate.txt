@@ -1,0 +1,901 @@
+Thermal Rate
+492
+482
+15
+GroupBox
+
+1
+8
+Name
+5
+9
+GroupBox9
+X
+3
+12
+Y
+3
+342
+Width
+3
+474
+Height
+3
+135
+Tool Tip
+5
+0
+Caption
+5
+17
+Annual Escalation
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+6
+Label4
+X
+3
+21
+Y
+3
+396
+Width
+3
+454
+Height
+3
+73
+Tool Tip
+5
+0
+Caption
+5
+284
+In Value mode, enter a rate in real terms because SAM applies both escalation and inflation to the total first-year thermal bill to calculate the annual thermal bill in later years. In Schedule mode, enter rates in nominal terms because inflation does not apply. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+24
+Y
+3
+234
+Width
+3
+454
+Height
+3
+102
+Tool Tip
+5
+0
+Caption
+5
+9
+Sell rate
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 48
+X
+3
+24
+Y
+3
+78
+Width
+3
+454
+Height
+3
+154
+Tool Tip
+5
+0
+Caption
+5
+8
+Buy rate
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 49
+X
+3
+12
+Y
+3
+9
+Width
+3
+474
+Height
+3
+330
+Tool Tip
+5
+0
+Caption
+5
+13
+Thermal rates
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+24
+Y
+3
+27
+Width
+3
+462
+Height
+3
+45
+Tool Tip
+5
+0
+Caption
+5
+142
+Buy rates for heat purchases and sell rates for excess thermal generation. You can specify either a flat rate or a time-series rate for each. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Numeric
+
+1
+17
+Name
+5
+21
+thermal_buy_rate_flat
+X
+3
+120
+Y
+3
+192
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+RadioChoice
+
+1
+11
+Name
+5
+23
+thermal_buy_rate_option
+X
+3
+33
+Y
+3
+150
+Width
+3
+438
+Height
+3
+38
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Flat buy rate
+Time series buy rates
+ShowCaptions
+2
+1
+Horizontal
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+28
+thermal_buy_rate_tie_to_fuel
+X
+3
+294
+Y
+3
+93
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+1
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+29
+thermal_conversion_efficiency
+X
+3
+294
+Y
+3
+117
+Width
+3
+69
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+SchedNumeric
+
+1
+12
+Name
+5
+23
+thermal_rate_escalation
+X
+3
+249
+Y
+3
+363
+Width
+3
+75
+Height
+3
+21
+Tool Tip
+5
+0
+Label
+5
+6
+%/year
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+129
+Type an escalation rate (%) for each year. Each year's rate applies to the first-year electricity cost. Inflation does not apply.
+TabOrder
+3
+8
+Numeric
+
+1
+17
+Name
+5
+22
+thermal_sell_rate_flat
+X
+3
+120
+Y
+3
+297
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+RadioChoice
+
+1
+11
+Name
+5
+24
+thermal_sell_rate_option
+X
+3
+33
+Y
+3
+255
+Width
+3
+438
+Height
+3
+38
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Flat sell rate
+Timestep sell rate
+ShowCaptions
+2
+1
+Horizontal
+2
+1
+TabOrder
+3
+4294967295
+DataArray
+
+1
+10
+Name
+5
+25
+thermal_timestep_buy_rate
+X
+3
+294
+Y
+3
+192
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+6
+$/kW-t
+Description
+5
+33
+Enter thermal buy rates in $/kW-t
+TabOrder
+3
+4294967295
+DataArray
+
+1
+10
+Name
+5
+26
+thermal_timestep_sell_rate
+X
+3
+294
+Y
+3
+294
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+6
+$/kW-t
+Description
+5
+34
+Enter thermal sell rates in $/kW-t
+TabOrder
+3
+4294967295
+
+11
+thermal_buy_rate
+3
+2
+Thermal buy rate
+$/kW-t
+Thermal Rate
+0
+8
+1
+2
+1
+1
+0
+Default
+thermal_buy_rate_flat
+3
+1
+Buy rate
+$/kWh-t
+Thermal Rate
+0
+2
+1
+1
+1
+1
+0
+Numeric
+thermal_buy_rate_option
+3
+1
+ 
+ 
+Thermal Rate
+31
+Flat buy rate|Timestep buy rate
+0
+1
+1
+1
+1
+0
+RadioChoice
+thermal_buy_rate_tie_to_fuel
+3
+1
+Set buy rate to fuel cost
+ 
+Thermal Rate
+12
+Thermal Rate
+0
+1
+1
+1
+1
+1
+CheckBox
+thermal_conversion_efficiency
+3
+1
+Nominal heat conversion efficiency
+%
+Thermal Rate
+0
+2
+1
+1
+1
+1
+50
+Default
+thermal_rate_escalation
+3
+2
+Thermal rate escalation
+%/yr
+Thermal Rate
+0
+2
+1
+2
+1
+1
+0
+SchedNumeric
+thermal_sell_rate
+3
+2
+Themal sell rate
+$/kW-t
+Thermal Rate
+0
+8
+1
+2
+1
+1
+0
+Default
+thermal_sell_rate_flat
+3
+1
+Sell Rate
+$/kWh-t
+Thermal Rate
+0
+2
+1
+1
+1
+1
+0
+Numeric
+thermal_sell_rate_option
+3
+1
+ 
+ 
+Thermal Rate
+33
+Flat sell rate|Timestep sell rate
+0
+1
+1
+1
+1
+0
+RadioChoice
+thermal_timestep_buy_rate
+3
+2
+timestep buy rate 
+$/kW-t
+Thermal Rate
+0
+3
+1
+2
+1
+1
+0
+DataArray
+thermal_timestep_sell_rate
+3
+2
+Timestep sell rate
+$/kW-t
+Thermal Rate
+0
+1
+1
+2
+1
+1
+0
+DataArray
+
+1138
+equations{ '$MIMO$ thermalrate' } = define() {
+
+	fin = financing();
+	tech = technology();
+	if(fin == "Commercial")
+	{
+		if (${thermal_buy_rate_option} == 0)
+		{
+			buy_rate = alloc(8760);
+			for (i=0;i<#buy_rate; i++)
+				buy_rate[i] = ${thermal_buy_rate_flat};
+		}
+		else if (${thermal_buy_rate_option} == 1)
+		{
+			buy_rate = ${thermal_timestep_buy_rate};
+		}
+		else 
+		{
+			buy_rate = alloc(8760);
+			for (i=0;i<#buy_rate; i++)
+				buy_rate[i] = 0.0;
+		}
+	}
+	else
+	{
+		buy_rate = alloc(8760);
+		for (i=0;i<#buy_rate; i++)
+			buy_rate[i] = 0.0;
+	}
+	
+	if (fin == "Single Owner" || fin == "Commercial")
+	{
+		if (${thermal_sell_rate_option} == 0)
+		{
+			sell_rate = alloc(8760);
+			for (i=0;i<#sell_rate; i++)
+				sell_rate[i] = ${thermal_sell_rate_flat};
+		}
+		else if (${thermal_sell_rate_option} == 1)
+		{
+			sell_rate = ${thermal_timestep_sell_rate};
+		}
+		else 
+		{
+			sell_rate = alloc(8760);
+			for (i=0;i<#sell_rate; i++)
+				sell_rate[i] = 0.0;
+		}
+	}
+	else
+	{
+		sell_rate = alloc(8760);
+		for (i=0;i<#sell_rate; i++)
+			sell_rate[i] = 0.0;
+	}
+	
+	
+	${thermal_buy_rate} = buy_rate;
+	${thermal_sell_rate} = sell_rate;
+
+	return 0;
+};
+1313
+
+on_load{'Thermal Rate'} = define() {
+	fin = financing();
+	buy_enable = (fin == "Commercial");
+	enable("thermal_buy_rate_option",fin);
+	enable("thermal_buy_rate_flat",fin);
+	enable("thermal_timestep_buy_rate",fin);
+	if (buy_enable) {
+		on_change{'thermal_buy_rate_option'}();
+	}
+	on_change{'thermal_sell_rate_option'}();
+	on_change{'thermal_buy_rate_tie_to_fuel'}();
+	tie_buy_rate_to_fuel_cost();
+};
+
+on_change{'thermal_buy_rate_tie_to_fuel'} = define(){
+	tie_buy_rate_to_fuel_cost();
+};
+
+on_change{'thermal_buy_rate_option'} = define() {
+	x = value('thermal_buy_rate_option');
+	enable('thermal_buy_rate_flat',!x);
+	enable('thermal_timestep_buy_rate',x);
+};
+
+on_change{'thermal_sell_rate_option'} = define() {
+	x = value('thermal_sell_rate_option');
+	enable('thermal_sell_rate_flat',!x);
+	enable('thermal_timestep_sell_rate',x);
+};
+
+function tie_buy_rate_to_fuel_cost(){
+	enable('thermal_conversion_efficiency', value('thermal_buy_rate_tie_to_fuel'));
+	if (value('thermal_buy_rate_tie_to_fuel')){
+		value('thermal_buy_rate_option', 0);
+		
+		fuel_cost_mmbtu = value('om_fuel_cost')[0];
+		fuel_cost_kwht = fuel_cost_mmbtu / 293.07 / (value('thermal_conversion_efficiency') * 0.01);
+		value('thermal_buy_rate_flat', fuel_cost_kwht);
+	}
+	enable('thermal_buy_rate_option', value('thermal_buy_rate_tie_to_fuel')==0);
+}

@@ -1,0 +1,212 @@
+/*@
+Currently, the recorded GHI value in some EPW weather files does not match the calculated GHI value in SAM. This discrepancy is most likely related to when the 
+measurement was taken in the EPW weather file versus the exact time used in SAM for calculating the corresponding GHI value. This macro allows you to correct 
+the minute offset in the EPW file being used by presenting graphs for recorded GHI (W/m2) from the weather file, and GHI value calculated in SAM for minute 
+offsets of (0, 30, 60, and custom) minutes. 
+
+<br>
+<br>
+<b>Note: </b>The EPW weather file with the corrected minute timestep is converted to a CSV file and stored in the same folder with the extension (*_samcsv.csv).
+<br>
+<br>
+<img src="$MACROPATH/epw_timeshift.JPG">
+@*/
+
+
+
+//=========================================================================================================================================================
+//	The first 2 specifies the number of graphs you_re going to create, the second 1 is timestep (1 means hourly), then a graph label, then the series 1 label,
+//	series 1 units label, whether or not the series is selected when the window pops up (1 means yes), series 1 data, series 2 label, series 2 units label, 
+//	whether or not series 2 is selected (1 means yes), series 2 data.
+
+//	dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, dc.timeseries_dc_power, 'AC Power', 'kW', 1.0, ac.timeseries_ac_power);
+
+
+
+
+//=========================================================================================================================================================
+
+function timestep_shift( file_name , time ){
+		
+		if(time == -1){
+			txt = csvread(file_name);
+			j = 0;
+			for (i = 3; i < 8763; i++){
+				recorded_ghi[j] = txt[i][4];
+				j++;
+			}
+			return recorded_ghi;
+		}
+		else {
+			
+			txt = csvread(file_name);
+			//Since the csv file does not have a minute column, it will need to be added manually.
+			//Accordingly, the subsequent columns will need to be shifted one over. 
+			txt[2][4] = 'Minute'; txt[2][5] = 'GHI'; txt[2][6] = 'DNI'; txt[2][7] = 'DHI'; txt[2][8] = 'Tdry'; txt[2][9] = 'Twet'; txt[2][10] = 'RH'; txt[2][11] = 'Pres'; txt[2][12] = 'Wspd'; txt[2][13] = 'Wdir'; txt[2][14] = 'Albedo';
+			
+			//Loop over each row in the csv file and store/shift values 
+			for (i = 3; i < 8763; i++){
+				//Putting appropriate values under the 'Albedo' column:
+				if(txt[i][13] >= 0 || txt[i][13] <=1)
+					txt[i][14] = txt[i][13];
+				else
+					txt[i][14] = 0;
+				
+				//Since the csv file does not have a minute column, it will need to be added manually.
+				//Accordingly, the subsequent columns will need to be shifted one over. 
+				txt[i][13] = txt[i][12];
+				txt[i][12] = txt[i][11];
+				txt[i][11] = txt[i][10];
+				txt[i][10] = txt[i][9];
+				txt[i][9] = txt[i][8];
+				txt[i][8] = txt[i][7];
+				txt[i][7] = txt[i][6];
+				txt[i][6] = txt[i][5];
+				txt[i][5] = txt[i][4];
+				
+				//Add Minute coloumn:
+				txt[i][4] = time;	
+			}
+			//outln(txt);
+			csvwrite(file_name, txt);
+			
+			set('use_specific_weather_file',1);
+			set('user_specified_weather_file', file_name); 
+			set('btn_file_add, 1');
+			
+			
+			simulate('', true);	//Need to simulate to get the calculated GHI value.
+			return get('gh_calc');
+		}	
+}
+
+
+
+//=========================================================================================================================================================
+function file_name( wf , time )
+{
+	obj = ssc_create();
+		ssc_var( obj, 'input_file', wf );
+		result = ssc_exec( obj, 'wfcsvconv', true );
+		if ( result == 0 )
+		{
+			output = ssc_var( obj, 'output_file');
+			if ( file_exists(output) )
+			{
+				// wfcsvconv names file based on header info appropriate for legacy
+				// versions of SAM to display library but not needed now so renaming
+				// to less confusing name based on input file name:
+				// input_file.csv is converted to input_file_samcsv.csv
+				arr = split( wf , '.' );
+				arr[ #arr-1 ] = '_samcsv'+ time +'.csv';
+				new_name = arr[0];
+				for( i=1; i<#arr; i++ ) { new_name += '.' + arr[i]; }
+				new_name = replace( new_name, '._', '_');
+				/*ext = ext_only( wf );
+				if ( ext == 'tm2' ) { new_name = replace( wf, '.' + ext, '.csv' );	}
+				elseif ( ext == 'epw' ) { new_name = replace( wf, '.' + ext, '.csv' );	}
+				else { new_name = wf; }
+				new_name = replace( new_name, '.csv', '_samcsv.csv' );*/
+				
+				ok = rename_file( output, new_name );
+				if ( !ok ) { outln( 'Failed to rename file.' );}
+				outln('Weather file successfully converted to:\n\t' + new_name );
+				return new_name;
+				
+		}
+			else
+			{
+				outln('An error occurred and the file could not be converted.');
+			}
+		}
+		else
+			outln( 'Error: ' + result );
+		ssc_free( obj );
+}
+
+//=========================================================================================================================================================
+
+// convert EPW file format to SAM CSV using the SSC wfcsvconv compute module
+function ssc_wfcsvconv( wf  )
+{
+			outln('');
+			new_name_original = file_name(wf, '_original_');
+			recorded_ghi = 	timestep_shift(new_name_original, -1);
+			
+			
+			outln('\t[25% Complete] Calculating GHI at 0 minute timestep.');
+			new_name_0 = file_name(wf , '_0_min_');
+			time_0 = timestep_shift(new_name_0, 0);
+			
+			
+			outln('\t[50% Complete] Calculating GHI at 30 minute timestep.');
+			new_name_30 = file_name(wf , '_30_min_');
+			time_30 = timestep_shift(new_name_30, 30);
+			
+			
+			outln('\t[75% Complete] Calculating GHI at 60 minute timestep.');
+			new_name_60 = file_name(wf , '_60_min_');
+			time_60 = timestep_shift(new_name_60, 60);
+			outln('');
+			
+			set_custom = false;
+			set_custom = yesno('View weather file with a custom minute timestep?');
+			
+			if(!set_custom){
+				dview(4, 1, 'Recorded v. Calculated GHI', 'GHI Recorded', 'W/m2', 1.0, recorded_ghi, 
+					'Irradiance GHI Calculated at 0 Minute Timestep', 'W/m2', 0.0, time_0,  
+					'Irradiance GHI Calculated at 30 Minute Timestep', 'W/m2', 0.0, time_30, 
+					'Irradiance GHI Calculated at 60 Minute Timestep', 'W/m2', 0.0, time_60);
+			}
+			else {
+					min_custom = in('Enter custom timestep (in minutes): ');
+					new_name_custom = file_name(wf , ('_' + min_custom + '_min_'));
+					time_custom = timestep_shift(new_name_custom, to_int(min_custom));
+					
+					dview(5, 1, 'Recorded v. Calculated GHI', 'GHI Recorded', 'W/m2', 1.0, recorded_ghi, 
+					'Irradiance GHI Calculated at 0 Minute Timestep', 'W/m2', 0.0, time_0,  
+					'Irradiance GHI Calculated at 30 Minute Timestep', 'W/m2', 0.0, time_30, 
+					'Irradiance GHI Calculated at 60 Minute Timestep', 'W/m2', 0.0, time_60,
+					'Irradiance GHI Calculated at '+ to_string(min_custom)+' Minute Timestep', 'W/m2', 0.0, time_custom);
+					
+					//remove_file(new_name_custom);
+				}
+			//Remove files:
+			//remove_file(new_name_original);
+			//remove_file(new_name_0);
+			//remove_file(new_name_30);
+			//remove_file(new_name_60);
+}
+
+//=========================================================================================================================================================
+
+function main()
+{
+	ext = 'epw';
+	format = 'EPW';
+	input_file = choose_file( '', 'Choose weather file to convert', 'Weather Files (*.epw)|*.' + ext);
+	if ( input_file == '' ) return;
+
+	outln('File to convert is:\n\t' + input_file );
+	recorded_ghi = 	timestep_shift(input_file, -1);
+
+	use_wfcsvconv = (format == 'EPW' );
+		
+	if ( use_wfcsvconv ) { ssc_wfcsvconv( input_file ); }
+	
+	else { outln( 'No format specified.' ); }
+	
+	
+	outln('\tDone.');
+	
+	
+	//Next step in this macro will be to ask the user what timestep would they save the file for:
+		//msgbox('Would you like to save file?');
+}
+
+
+//=========================================================================================================================================================
+
+
+main();
+

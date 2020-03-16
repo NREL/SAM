@@ -1,51 +1,24 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #include <algorithm>
 #include <cmath>
@@ -83,6 +56,7 @@
 #include "results.h"
 #include "casewin.h"
 #include "graph.h"
+#include "uncertainties.h"
 #include "invoke.h"
 #include "lossdiag.h"
 
@@ -398,6 +372,16 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_pnCdf = new wxDVPnCdfCtrl( this, wxID_ANY );
 	AddPage( m_pnCdf, "PDF / CDF" );
 	
+
+	// TODO: remove this after adding for other technologies...
+	if (CaseWindow *cw = static_cast<CaseWindow *>(this->GetParent()->GetParent()))
+	{
+		if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+		{
+			m_uncertaintiesViewer = new UncertaintiesViewer(this);
+			AddPage(m_uncertaintiesViewer, "Uncertainties");
+		}
+	}
 	//m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
 	//AddPage( m_durationCurve, "Duration curve" );
 
@@ -594,18 +578,27 @@ wxString ResultsViewer::GetCurrentContext() const
 {
 	switch( GetSelection() )
 	{
-	case 0: return "summary";
-	case 1: return "data";
-	case 2: return "losses";
-	case 3: return "graphs";
-	case 4: return "cashflow";
-	case 5: return "timeseries";
-	case 6: return "profiles";
-	case 7: return "statistics";
-	case 8: return "heatmap";
-	case 9: return "pdfcdf";
-	case 10: return "notices";
-	default: return "results";
+		case 0: return "summary";
+		case 1: return "data";
+		case 2: return "losses";
+		case 3: return "graphs";
+		case 4: return "cashflow";
+		case 5: return "timeseries";
+		case 6: return "profiles";
+		case 7: return "statistics";
+		case 8: return "heatmap";
+		case 9: return "pdfcdf";
+		case 10:
+				// TODO: remove this when uncertainties available for all technologies
+				if (CaseWindow *cw = static_cast<CaseWindow *>(this->GetParent()->GetParent()))
+				{
+					if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+						return "uncertainties";
+					else
+						return "notices";
+				}
+		case 11: return "notices";
+		default: return "results";
 	}
 }
 
@@ -615,7 +608,7 @@ ResultsViewer::~ResultsViewer()
 		delete m_tsDataSets[i];
 }
 
-TimeSeriesData::TimeSeriesData( float *p, size_t len, double ts_hour, double ts_offset, const wxString &label, const wxString &units )
+TimeSeriesData::TimeSeriesData( double *p, size_t len, double ts_hour, double ts_offset, const wxString &label, const wxString &units )
   	: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_label(label), m_units(units), m_startOffsetHours(ts_offset)
 {
 	/* nothing to do */
@@ -822,6 +815,13 @@ void ResultsViewer::Setup( Simulation *sim )
 				an_period = (int)vv->Value();
 	}
 
+	wxArrayString varlabels;
+	for (size_t i = 0; i < vars.size(); i++)
+	{
+		varlabels.push_back(sim->GetLabel(vars[i]));
+	}
+	wxSortByLabels(vars, varlabels);
+
 	for( size_t i=0;i<vars.size();i++ )
 	{
 		if ( VarValue *vv = m_sim->GetValue( vars[i] ) )
@@ -830,7 +830,7 @@ void ResultsViewer::Setup( Simulation *sim )
 			if ((vv->Type() == VV_ARRAY) && (!m_sim->GetLabel(vars[i]).IsEmpty()))
 			{
 				size_t n = 0;
-				float *p = vv->Array( &n );
+				double *p = vv->Array( &n );
 				
 				int steps_per_hour = (int)n / 8760; 
 				if (steps_per_hour * 8760 != (int)n)
@@ -893,7 +893,33 @@ void ResultsViewer::Setup( Simulation *sim )
 	SetDViewState( viewstate );
 
 	// setup graphs
-	m_graphViewer->Setup( m_sim );
+	m_graphViewer->Setup(m_sim);
+
+
+	// TODO: remove this after adding for other technologies...
+	// TODO: update GetCurrentContext() when adding for other technologies to correctly assign help context id
+	if (CaseWindow *cw = static_cast<CaseWindow *>(this->GetParent()->GetParent()))
+	{
+		if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+		{
+		    // if model was changed from another technology, the ResultsViewer was not initialized with Uncertainties
+		    if (!m_uncertaintiesViewer){
+                m_uncertaintiesViewer = new UncertaintiesViewer(this);
+                AddPage(m_uncertaintiesViewer, "Uncertainties");
+                // testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
+                std::vector<Uncertainties> ul;
+                Uncertainties u1, u2, u3;
+                u1.Title = "Figure2";
+                u2.Title = "Figure5";
+                u3.Title = "Figure10";
+                ul.push_back(u1);
+                ul.push_back(u2);
+                ul.push_back(u3);
+                SetUncertainties(ul);
+		    }
+			m_uncertaintiesViewer->Setup(m_sim);
+		}
+	}
 
 	m_tables->Setup( m_sim );
 
@@ -959,8 +985,8 @@ void ResultsViewer::Setup( Simulation *sim )
 
 				if (VarValue *vv = m_sim->GetValue(cl.name))
 				{
-					float _val = 0.0f;
-					float *p = &_val;
+					double _val = 0.0;
+					double *p = &_val;
 					size_t n = 1;
 
 					if (vv->Type() == VV_ARRAY) p = vv->Array(&n);
@@ -1027,8 +1053,8 @@ void ResultsViewer::Setup( Simulation *sim )
 				{
 					if (VarValue *vv = m_sim->GetValue(list[i]))
 					{
-						float _val = 0.0f;
-						float *p = &_val;
+						double _val = 0.0f;
+						double *p = &_val;
 						size_t m = 1;
 
 						if (vv->Type() == VV_ARRAY) p = vv->Array(&n);
@@ -1077,15 +1103,16 @@ void ResultsViewer::Setup( Simulation *sim )
 		
 
 		if (!m_depreciationTable->IsShown())
-		{
 			m_cf_splitter->Unsplit();
-		}
+		else
+			m_cf_splitter->Move(m_cf_splitter->GetPosition().x + 1, m_cf_splitter->GetPosition().y + 1);
 
 		m_depreciationTable->Thaw();
 	}
 
 	if ( m_cashflow.size() > 0 ) ShowPage( PAGE_CASH_FLOW );
 	else HidePage( PAGE_CASH_FLOW );
+
 
 	CreateAutoGraphs();
 
@@ -1397,6 +1424,9 @@ void ResultsViewer::CreateAutoGraphs()
 		g.ShowXValues = m_autographs[i].show_xvalues;
 		g.ShowLegend = m_autographs[i].show_legend;
 		g.Size = m_autographs[i].size;
+		g.Type = m_autographs[i].Type;
+		g.XMin = m_autographs[i].XMin;
+		g.XMax = m_autographs[i].XMax;
 		m_summaryLayout->Add( new AutoGraphCtrl( m_summaryLayout, m_sim, g ) );
 	}
 }
@@ -1448,19 +1478,40 @@ void ResultsViewer::SavePerspective( StringHash &map )
 void ResultsViewer::LoadPerspective( StringHash &map )
 {
 	int nnav = wxAtoi( map["navigation"] );
-	if ( nnav >= 0 && nnav < (int)GetPageCount() )
-		SetSelection( nnav );
+	if (nnav >= 0 && nnav < (int)GetPageCount())
+	{
+		SetSelection(nnav);
+		if (nnav == PAGE_CASH_FLOW)
+		{ // force resize of splitter window when vash flow and depreciation tables shown
+			wxSize sz = GetSize();
+			sz.SetWidth(sz.GetWidth() + 1);
+			SetSize(sz);
+			sz.SetWidth(sz.GetWidth() - 1);
+			SetSize(sz);
+		}
+	}
 }
 
 
-void ResultsViewer::SetGraphs( std::vector<Graph> &gl )
+void ResultsViewer::SetGraphs(std::vector<Graph> &gl)
 {
-	m_graphViewer->SetGraphs( gl );
+	m_graphViewer->SetGraphs(gl);
 }
 
-void ResultsViewer::GetGraphs( std::vector<Graph> &gl )
+void ResultsViewer::GetGraphs(std::vector<Graph> &gl)
 {
-	m_graphViewer->GetGraphs( gl );
+	m_graphViewer->GetGraphs(gl);
+}
+
+
+void ResultsViewer::SetUncertainties(std::vector<Uncertainties> &ul)
+{
+	m_uncertaintiesViewer->SetUncertainties(ul);
+}
+
+void ResultsViewer::GetUncertainties(std::vector<Uncertainties> &ul)
+{
+	m_uncertaintiesViewer->GetUncertainties(ul);
 }
 
 void ResultsViewer::Clear()
@@ -1662,8 +1713,8 @@ public:
 	struct ColData
 	{
 		wxString Label;
-		float * Values;
-		float SingleValue;
+		double * Values;
+		double SingleValue;
 		size_t N;
 	};
 
@@ -1687,15 +1738,13 @@ public:
 	std::vector<wxString> MakeOpticalEfficiency();
 	std::vector<wxString> MakeFluxMaps(size_t n_cols);
 	std::vector<wxString> MakeNoRowLabels(size_t n_rows);
-	std::vector<wxString> MakeTHTFHOTlabels();
-	std::vector<wxString> MakeTAMBlabels();
-	std::vector<wxString> MakeMDOTHTFlabels();
+	std::vector<wxString> MakeSCO2UDPClabels();
 
 	void RemoveTopRow();
 	void RemoveLeftCol();
 
 	// matrix specific
-	matrix_t<float> Matrix;
+	matrix_t<double> Matrix;
 	std::vector<wxString> MatrixColLabels;
 	std::vector<wxString> MatrixRowLabels;
 	wxString MatrixFormat; // can be general
@@ -1993,20 +2042,10 @@ public:
 							write_label = false;
 							MatrixColLabels = MakeFluxMaps(nc);
 						}
-						else if (!value.Cmp("UDPC_T_HTF_HOT"))
+						else if (!value.Cmp("UDPC_SCO2_PREPROC"))
 						{
 							write_label = false;
-							MatrixColLabels = MakeTHTFHOTlabels();
-						}
-						else if (!value.Cmp("UDPC_T_AMB"))
-						{
-							write_label = false;
-							MatrixColLabels = MakeTAMBlabels();
-						}
-						else if (!value.Cmp("UDPC_M_DOT_HTF"))
-						{
-							write_label = false;
-							MatrixColLabels = MakeMDOTHTFlabels();
+							MatrixColLabels = MakeSCO2UDPClabels();
 						}
 						else if (!value.Cmp("UR_MONTH_TOU_DEMAND"))
 						{
@@ -2257,63 +2296,17 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeOpticalEfficiency()
 
 	return v;
 }
-std::vector<wxString> TabularBrowser::ResultsTable::MakeTHTFHOTlabels()
+std::vector<wxString> TabularBrowser::ResultsTable::MakeSCO2UDPClabels()
 {
 	std::vector<wxString> v;
 
-	v.push_back("HTF temperature (C)");
-	v.push_back("Cycle Power (m_dot low)");
-	v.push_back("Cycle Power (m_dot design)");
-	v.push_back("Cycle Power (m_dot high)");
-	v.push_back("Cycle Heat (m_dot low)");
-	v.push_back("Cycle Heat (m_dot design)");
-	v.push_back("Cycle Heat (m_dot high)");
-	v.push_back("Cooling Power (m_dot low)");
-	v.push_back("Cooling Power (m_dot design)");
-	v.push_back("Cooling Power (m_dot high)");
-	v.push_back("Cooling Water (m_dot low)");
-	v.push_back("Cooling Water (m_dot design)");
-	v.push_back("Cooling Water (m_dot high)");
-
-	return v;
-}	
-std::vector<wxString> TabularBrowser::ResultsTable::MakeTAMBlabels()
-{
-	std::vector<wxString> v;
-
-	v.push_back("Ambient temperature (C)");
-	v.push_back("Cycle Power (T_htf low)");
-	v.push_back("Cycle Power (T_htf design)");
-	v.push_back("Cycle Power (T_htf high)");
-	v.push_back("Cycle Heat (T_htf low)");
-	v.push_back("Cycle Heat (T_htf design)");
-	v.push_back("Cycle Heat (T_htf high)");
-	v.push_back("Cooling Power (T_htf low)");
-	v.push_back("Cooling Power (T_htf design)");
-	v.push_back("Cooling Power (T_htf high)");
-	v.push_back("Cooling Water (T_htf low)");
-	v.push_back("Cooling Water (T_htf design)");
-	v.push_back("Cooling Water (T_htf high)");
-
-	return v;
-}
-std::vector<wxString> TabularBrowser::ResultsTable::MakeMDOTHTFlabels()
-{
-	std::vector<wxString> v;
-
+	v.push_back("HTF Temperature (C)");
 	v.push_back("HTF Mass Flow Rate (-)");
-	v.push_back("Cycle Power (T_amb low)");
-	v.push_back("Cycle Power (T_amb design)");
-	v.push_back("Cycle Power (T_amb high)");
-	v.push_back("Cycle Heat (T_amb low)");
-	v.push_back("Cycle Heat (T_amb design)");
-	v.push_back("Cycle Heat (T_amb high)");
-	v.push_back("Cooling Power (T_amb low)");
-	v.push_back("Cooling Power (T_amb design)");
-	v.push_back("Cooling Power (T_amb high)");
-	v.push_back("Cooling Water (T_amb low)");
-	v.push_back("Cooling Water (T_amb design)");
-	v.push_back("Cooling Water (T_amb high)");
+	v.push_back("Ambient Temperature (C)");
+	v.push_back("Cycle Power (-)");
+	v.push_back("Cycle Heat (-)");
+	v.push_back("Cycle Cooling Power (-)");
+	v.push_back("Cycle Water Use (-)");
 
 	return v;
 }

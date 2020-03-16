@@ -39,7 +39,11 @@
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">SAM uses the variables on the Biopower System Costs page to calculate the project investment cost and annual operating costs reported in the project cash flow and used to calculate cost metrics reported in the Metrics table on the Results page.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The default cost values that appear when you create a file or case are intended to illustrate SAM's use. The cost data are meant to be realistic, but not to represent actual costs for a specific project. For more information and a list of online resources for cost data, see the SAM website, <a href="https://sam.nrel.gov/cost" target="_blank" class="weblink">https://sam.nrel.gov/cost</a>.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">The default cost values that appear when you create a file or case are intended to illustrate SAM's use. The cost data are meant to be realistic, but not to represent actual costs for a specific project. For more information and a list of online resources for cost data, see the technology pages on the <a href="https://sam.nrel.gov" target="_blank" class="weblink" title="https://sam.nrel.gov">SAM website</a>.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The System Costs page only available for cases with a cash-flow-based financial mode. It is not available with the No Financial Model option or the LCOE Calculator financial model.</span></p>
 <p class="p_Text"><span class="f_Text">Because only the </span><span class="f_CHInterfaceElement">Total Installed Cost</span><span class="f_Text"> value affects the cash flow calculations, you can assign capital costs to the different cost categories in whatever way makes sense for your analysis. For example, you could assign the cost of designing the power plant to the direct plant cost category or to the engineer-procure-construct category with equivalent results. The categories are provided to help you keep track of the different costs, but do not affect the economic calculations. After assigning costs to the categories, verify that the total installed costs value is what you expect.</span></p>
 <p class="p_Text"><span class="f_Text">Variable values in boxes with white backgrounds are values that you can edit. Boxes with blue backgrounds contain calculated values or values from other pages that SAM displays for your information. </span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Direct Capital Costs</span></h3>
@@ -75,8 +79,10 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A value that SAM calculates as the sum of </span><span class="f_CHInterfaceElement">Non-fixed Cost</span><span class="f_VariableDescription"> and </span><span class="f_CHInterfaceElement">Fixed Cost</span><span class="f_VariableDescription">.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Sales Tax (%)</span></p>
-<p class="p_Text"><span class="f_Text">SAM calculates the total sales tax amount by multiplying the sales tax rate that you specify on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page by the percentage of direct costs you specify on the System Costs page: </span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Total Sales Tax = Sales Tax Rate × Percentage of Direct Cost × Direct Cost</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Sales tax basis, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The percentage of total direct cost used to the calculate sales tax amount.</span></p>
+<p class="p_Text"><span class="f_Text">SAM calculates the total sales tax amount by multiplying the sales tax rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page by the sales tax basis on the System Costs page: </span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Sales Tax ($) = Sales Tax Rate (%) × Sales Tax Basis (%) × Total Direct Cost ($)</span></p>
 <p class="p_Text"><span class="f_Text">For an explanation of the effect of sales tax on income tax, see </span><span class="f_CHInterfaceElement">Sales Tax</span><span class="f_Text"> on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> topic for the financial model you are using (Residential, Commercial, Single Owner, etc.)</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total Indirect Cost ($)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The sum of engineer-procure-construct costs, project-land-miscellaneous costs, and sales tax.</span></p>
@@ -96,6 +102,10 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">A fixed annual cost proportional to the system's rated or nameplate capacity.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Variable cost by generation ($/MWh)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A variable annual cost proportional to the system's total annual electrical output in AC megawatt-hours. The annual energy output depends on either the performance model's calculated first year value and the </span><span class="f_CHInterfaceElement">degradation rate</span><span class="f_VariableDescription"> from the <a href="lifetime.htm" class="topiclink">Lifetime</a> page, or on an annual schedule of costs, depending on the option chosen.</span></p>
+<p class="p_Text"><span class="f_Text">For systems that include battery storage:</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery replacement cost</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The battery replacement cost in Year 1 dollars. SAM uses the inflation rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page to calculate the replacement cost in the replacement year.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To include battery replacements costs in your analysis, be sure to choose a battery replacement option on the <a href="battery_model.htm" class="topiclink">Battery Storage</a> page.</span></p>
 
 </td></tr></table>
 

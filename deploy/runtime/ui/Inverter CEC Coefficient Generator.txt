@@ -1431,9 +1431,9 @@ Numeric
 inv_cec_cg_filename
 3
 4
+Inverter data filename
  
- 
- 
+PV Inverter (CEC Coefficient Generator)
 0
 0
 1
@@ -1556,7 +1556,7 @@ Numeric
 inv_cec_cg_psco
 3
 1
-Psco
+Pso
 W
 PV Inverter (CEC Coefficient Generator)
 0
@@ -1584,11 +1584,11 @@ Choice
 inv_cec_cg_test_samples
 3
 3
- 
+Test sample data
  
 PV Inverter (CEC Coefficient Generator)
 0
-0
+1
 1
 3
 2

@@ -5,7 +5,7 @@ Geothermal Costs
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 155
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -49,6 +52,9 @@ Width
 Height
 3
 155
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -76,6 +82,9 @@ Width
 Height
 3
 176
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -86,7 +95,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 11
@@ -103,6 +112,9 @@ Width
 Height
 3
 194
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -113,7 +125,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -130,6 +142,9 @@ Width
 Height
 3
 314
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -140,7 +155,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -157,6 +172,9 @@ Width
 Height
 3
 116
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -167,7 +185,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -184,6 +202,9 @@ Width
 Height
 3
 149
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -194,7 +215,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -211,6 +232,9 @@ Width
 Height
 3
 141
+Tool Tip
+5
+0
 Caption
 5
 230
@@ -239,7 +263,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -256,6 +280,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 40
@@ -284,7 +311,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -301,6 +328,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -329,7 +359,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -346,6 +376,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -374,7 +407,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -391,6 +424,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -419,7 +455,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -436,6 +472,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -464,7 +503,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 11
@@ -481,6 +520,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -509,7 +551,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 11
@@ -526,6 +568,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -554,7 +599,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -571,6 +616,9 @@ Width
 Height
 3
 81
+Tool Tip
+5
+0
 Caption
 5
 242
@@ -599,7 +647,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -616,6 +664,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -644,7 +695,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -661,6 +712,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -689,7 +743,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -706,6 +760,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -734,7 +791,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 11
@@ -751,6 +808,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -779,7 +839,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 11
@@ -796,6 +856,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 31
@@ -824,7 +887,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -841,6 +904,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -869,7 +935,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -886,6 +952,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -914,7 +983,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -931,6 +1000,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -959,7 +1031,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 11
@@ -976,6 +1048,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -1004,7 +1079,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -1021,6 +1096,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -1049,7 +1127,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -1066,6 +1144,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -1094,7 +1175,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1111,6 +1192,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -1139,7 +1223,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -1156,6 +1240,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -1184,7 +1271,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -1201,6 +1288,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1244,7 +1334,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1261,6 +1351,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1304,7 +1397,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -1321,6 +1414,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1363,7 +1459,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -1380,6 +1476,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1423,7 +1522,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -1440,6 +1539,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1482,7 +1584,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -1499,6 +1601,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1542,7 +1647,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1559,6 +1664,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1602,7 +1710,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -1619,6 +1727,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1661,7 +1772,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
@@ -1678,6 +1789,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1721,7 +1835,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1738,6 +1852,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1781,7 +1898,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -1798,6 +1915,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1841,7 +1961,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -1858,6 +1978,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1901,7 +2024,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 39
@@ -1918,6 +2041,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1961,7 +2087,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 27
@@ -1978,6 +2104,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -1991,7 +2120,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -2008,6 +2137,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2051,7 +2183,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -2068,6 +2200,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2111,7 +2246,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -2128,6 +2263,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2171,7 +2309,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -2188,6 +2326,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2231,7 +2372,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -2248,6 +2389,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2291,7 +2435,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -2308,6 +2452,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2350,7 +2497,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -2367,6 +2514,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2410,7 +2560,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -2427,6 +2577,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2469,7 +2622,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -2486,6 +2639,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2529,7 +2685,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -2546,6 +2702,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2589,7 +2748,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 39
@@ -2606,6 +2765,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2649,7 +2811,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 27
@@ -2666,6 +2828,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -2679,7 +2844,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 28
@@ -2696,6 +2861,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 3
@@ -2711,7 +2879,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -2728,6 +2896,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2771,7 +2942,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -2788,6 +2959,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2830,7 +3004,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -2847,6 +3021,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2890,7 +3067,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -2907,6 +3084,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2949,7 +3129,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -2966,6 +3146,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3008,7 +3191,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
@@ -3025,6 +3208,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3068,7 +3254,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -3085,6 +3271,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3127,7 +3316,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 33
@@ -3144,6 +3333,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 44
@@ -3157,7 +3349,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -3174,6 +3366,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3217,7 +3412,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -3234,6 +3429,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3277,7 +3475,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -3294,6 +3492,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3336,7 +3537,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -3353,6 +3554,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3396,7 +3600,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -3413,6 +3617,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3456,7 +3663,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 42
@@ -3473,6 +3680,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3516,7 +3726,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 30
@@ -3533,6 +3743,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -3546,7 +3759,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -3563,6 +3776,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3606,7 +3822,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -3623,6 +3839,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3666,7 +3885,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -3683,6 +3902,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3726,7 +3948,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -3743,6 +3965,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3786,7 +4011,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 29
@@ -3803,6 +4028,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 3
@@ -3818,7 +4046,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -3835,6 +4063,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3878,7 +4109,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -3895,6 +4126,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3938,7 +4172,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -3955,6 +4189,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3998,7 +4235,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -4015,6 +4252,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4057,7 +4297,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -4074,6 +4314,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4117,7 +4360,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -4134,6 +4377,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4176,7 +4422,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -4193,6 +4439,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4236,7 +4485,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -4253,6 +4502,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4295,7 +4547,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -4312,6 +4564,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4354,7 +4609,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -4371,6 +4626,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4413,7 +4671,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -4430,6 +4688,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4473,7 +4734,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -4490,6 +4751,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4533,7 +4797,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -4550,6 +4814,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4593,7 +4860,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -4610,6 +4877,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4653,7 +4923,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -4670,6 +4940,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4712,7 +4985,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -4729,6 +5002,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4772,7 +5048,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -4789,6 +5065,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4832,7 +5111,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 38
@@ -4849,6 +5128,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4892,7 +5174,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 26
@@ -4909,6 +5191,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -4922,7 +5207,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -4939,6 +5224,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4982,7 +5270,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -4999,6 +5287,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5042,7 +5333,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -5059,6 +5350,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5102,7 +5396,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 28
@@ -5119,6 +5413,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -5132,7 +5429,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -5149,6 +5446,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5192,7 +5492,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -5209,6 +5509,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5252,7 +5555,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -5269,6 +5572,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5312,7 +5618,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -5329,6 +5635,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5372,7 +5681,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -5389,6 +5698,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5431,7 +5743,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -5448,6 +5760,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5491,7 +5806,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -5508,6 +5823,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5551,7 +5869,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -5568,6 +5886,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5611,7 +5932,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -5628,6 +5949,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5670,7 +5994,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -5687,6 +6011,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5730,7 +6057,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -5747,6 +6074,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5790,7 +6120,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -5807,6 +6137,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5850,7 +6183,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -5867,6 +6200,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5910,7 +6246,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -5927,6 +6263,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5968,13 +6307,13 @@ TabOrder
 3
 0
 
-93
+92
 geotherm.cost.capital_total
 3
 1
 Total capital cost
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -5988,7 +6327,7 @@ geotherm.cost.conf_drill
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6002,7 +6341,7 @@ geotherm.cost.conf_multiplier
 1
 Confirmation cost multiplier
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 3
 1
@@ -6016,7 +6355,7 @@ geotherm.cost.conf_non_drill
 1
 Confirmation non-drilling cost
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 3
 1
@@ -6030,7 +6369,7 @@ geotherm.cost.conf_num_wells
 1
 Number of confirmation wells
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 3
 1
@@ -6044,7 +6383,7 @@ geotherm.cost.conf_per_well
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6058,7 +6397,7 @@ geotherm.cost.conf_total
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6072,7 +6411,7 @@ geotherm.cost.confirm_wells_num
 1
 Number of Confirmation Wells
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6086,7 +6425,7 @@ geotherm.cost.confirm_wells_percent
 1
 % of Confirmation Wells Used for Production
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 2
 1
@@ -6100,7 +6439,7 @@ geotherm.cost.contingency
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6114,7 +6453,7 @@ geotherm.cost.contingency_percent
 1
 Contingency
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 2
 1
@@ -6128,7 +6467,7 @@ geotherm.cost.contingency_percent2
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6142,7 +6481,7 @@ geotherm.cost.drilling.amount
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -6156,7 +6495,7 @@ geotherm.cost.drilling.amount_specified
 1
 Specified Total Drilling, Surface Equipment, and Stimulation Cost
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 2
 1
@@ -6170,7 +6509,7 @@ geotherm.cost.drilling.calc
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6184,7 +6523,7 @@ geotherm.cost.epc.fixed
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6198,7 +6537,7 @@ geotherm.cost.epc.nonfixed
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6212,7 +6551,7 @@ geotherm.cost.epc.percent
 1
 Engineer, Procure, Construct
 %
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6226,7 +6565,7 @@ geotherm.cost.epc.total
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6240,7 +6579,7 @@ geotherm.cost.expl_drill
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6254,7 +6593,7 @@ geotherm.cost.expl_multiplier
 1
 Exploration cost multiplier
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 3
 1
@@ -6268,7 +6607,7 @@ geotherm.cost.expl_non_drill
 1
 Exploration non-drilling cost
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 3
 1
@@ -6282,7 +6621,7 @@ geotherm.cost.expl_num_wells
 1
 Number of exploration wells
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 3
 1
@@ -6296,7 +6635,7 @@ geotherm.cost.expl_per_well
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6310,7 +6649,7 @@ geotherm.cost.expl_total
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6324,7 +6663,7 @@ geotherm.cost.indirect.amount_specified
 1
 Specified Indirect Cost
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 2
 1
@@ -6338,7 +6677,7 @@ geotherm.cost.indirect.calc
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6352,7 +6691,7 @@ geotherm.cost.inj_cost_curve
 1
 Injection cost multiplier
  
-Geothermal Costs
+Geothermal Capital Costs
 12
 Low|Med|High
 3
@@ -6367,7 +6706,7 @@ geotherm.cost.inj_drill
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6381,7 +6720,7 @@ geotherm.cost.inj_num_wells
 1
 Number of injection wells
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -6395,7 +6734,7 @@ geotherm.cost.inj_per_well
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6409,7 +6748,7 @@ geotherm.cost.inj_prod_well_ratio
 1
 Ratio of Injection Wells to Production Wells
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 2
 1
@@ -6423,7 +6762,7 @@ geotherm.cost.inj_wells_drilled
 1
 Number of Injection Wells to be Drilled
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6437,7 +6776,7 @@ geotherm.cost.installed_per_capacity
 1
 Total installed cost per capacity ($/kW)
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6451,7 +6790,7 @@ geotherm.cost.num_pumps
 1
 # of Pumps Required
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6465,7 +6804,7 @@ geotherm.cost.other_per_pump
 1
 Other pump installation costs
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 2
 1
@@ -6479,7 +6818,7 @@ geotherm.cost.plant
 1
 Direct Plant Cost
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6493,7 +6832,7 @@ geotherm.cost.plant_auto_estimate
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6507,7 +6846,7 @@ geotherm.cost.plant_auto_estimate_last_setting
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6519,9 +6858,9 @@ Default
 geotherm.cost.plant_per_kW
 3
 1
-Cost
+Baseline Cost
 $/kW
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6535,7 +6874,7 @@ geotherm.cost.plant_per_kW.bak
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6547,9 +6886,9 @@ Default
 geotherm.cost.plant_per_kW_input
 3
 1
-Cost
+Baseline Cost
 $/kW
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6563,7 +6902,7 @@ geotherm.cost.plant_size
 1
 Gross Plant Output
 kW
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6577,7 +6916,7 @@ geotherm.cost.plant_total
 1
 Power Plant Cost
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6591,7 +6930,7 @@ geotherm.cost.plant_total.amount
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -6605,7 +6944,7 @@ geotherm.cost.plant_total.amount_specified
 1
 Specified Plant Cost
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 2
 1
@@ -6619,7 +6958,7 @@ geotherm.cost.plant_total.calc
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6633,7 +6972,7 @@ geotherm.cost.plm.fixed
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6647,7 +6986,7 @@ geotherm.cost.plm.nonfixed
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6661,7 +7000,7 @@ geotherm.cost.plm.percent
 1
 Project, Land, Miscellaneous
 %
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6675,7 +7014,7 @@ geotherm.cost.plm.total
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6689,7 +7028,7 @@ geotherm.cost.prod_cost_curve
 1
 Production cost multiplier
  
-Geothermal Costs
+Geothermal Capital Costs
 12
 Low|Med|High
 3
@@ -6704,7 +7043,7 @@ geotherm.cost.prod_drill
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6718,7 +7057,7 @@ geotherm.cost.prod_inj_drill
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6732,7 +7071,7 @@ geotherm.cost.prod_inj_non_drill
 1
 Production and injection well non-drilling cost
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 3
 1
@@ -6746,7 +7085,7 @@ geotherm.cost.prod_inj_num_wells
 1
 Production and Injection Wells to be Drilled
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6760,7 +7099,7 @@ geotherm.cost.prod_inj_total
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6774,7 +7113,7 @@ geotherm.cost.prod_num_wells
 1
 Number of production wells
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -6788,7 +7127,7 @@ geotherm.cost.prod_per_well
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6802,7 +7141,7 @@ geotherm.cost.prod_req
 1
 Total Production Wells Required
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6816,7 +7155,7 @@ geotherm.cost.prod_wells_drilled
 1
 Number of Production Wells to be Drilled
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6830,7 +7169,7 @@ geotherm.cost.pump_depth
 1
 Pump Depth
 ft
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6844,7 +7183,7 @@ geotherm.cost.pump_installation
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -6858,7 +7197,7 @@ geotherm.cost.pump_per_foot
 1
 Installation and Casing Cost
 $/ft
-Geothermal Costs
+Geothermal Capital Costs
 0
 2
 1
@@ -6872,7 +7211,7 @@ geotherm.cost.pump_per_hp
 1
 Pump Cost
 $/hp
-Geothermal Costs
+Geothermal Capital Costs
 0
 2
 1
@@ -6886,7 +7225,7 @@ geotherm.cost.pump_per_pump
 1
  
 [ = $/hp x sqrt(hp) ]
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -6900,7 +7239,7 @@ geotherm.cost.pump_size
 1
 Pump Size
 hp
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6914,7 +7253,7 @@ geotherm.cost.pump_total_per_pump
 1
 Cost of Pump
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6928,7 +7267,7 @@ geotherm.cost.pumping.amount
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -6942,7 +7281,7 @@ geotherm.cost.pumping.amount_specified
 1
 Specified Pump Cost
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 2
 1
@@ -6956,7 +7295,7 @@ geotherm.cost.pumping.calc
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -6970,7 +7309,7 @@ geotherm.cost.pumps_total
 1
 Total Pump Cost
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6984,7 +7323,7 @@ geotherm.cost.recap
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -6998,21 +7337,21 @@ geotherm.cost.recap_specified
 1
 Specified Recapitalization Cost
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 2
 1
 1
 1
 1
-2.3e+07
+23000000
 Numeric
 geotherm.cost.recap_use_calc
 3
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -7026,7 +7365,7 @@ geotherm.cost.sales_tax.percent
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -7040,7 +7379,7 @@ geotherm.cost.sales_tax.total
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -7054,7 +7393,7 @@ geotherm.cost.sales_tax.value
 1
 Sales Tax of
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -7068,7 +7407,7 @@ geotherm.cost.stim_non_drill
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -7082,7 +7421,7 @@ geotherm.cost.stim_num_wells
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -7096,21 +7435,21 @@ geotherm.cost.stim_per_well
 1
 Stimulation cost per well
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 3
 1
 1
 1
 1
-1e+06
+1000000
 Numeric
 geotherm.cost.stim_total
 3
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -7124,7 +7463,7 @@ geotherm.cost.surf_non_drill
 1
 Surface equipment non-drilling cost
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -7138,7 +7477,7 @@ geotherm.cost.surf_num_wells
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -7152,7 +7491,7 @@ geotherm.cost.surf_per_well
 1
 Surface equipment cost per well
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 3
 1
@@ -7166,7 +7505,7 @@ geotherm.cost.surf_total
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -7180,7 +7519,7 @@ geotherm.cost.total_installed_millions
 1
 Total Installed Cost
 $M
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -7194,7 +7533,7 @@ system_recapitalization_cost
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -7202,27 +7541,13 @@ Geothermal Costs
 1
 1
 0
-Default
-system_use_lifetime_output
-3
-1
- 
- 
-Geothermal Costs
-0
-8
-1
-1
-1
-1
-1
 Default
 system_use_recapitalization
 3
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -7236,7 +7561,7 @@ total_direct_cost
 1
 Total direct cost
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -7250,7 +7575,7 @@ total_indirect_cost
 1
  
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -7264,7 +7589,7 @@ total_installed_cost
 1
 Total installed cost
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -7274,7 +7599,7 @@ Geothermal Costs
 0
 Numeric
 
-14182
+14110
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -7455,13 +7780,6 @@ equations{ 'geotherm.cost.sales_tax.value' } = define() {
 equations{ 'geotherm.cost.total_installed_millions' } = define() {
 	return ${total_installed_cost}/1000000; };
 
-
-equations{ 'system_use_recapitalization' } = define() {
-	return 1; };
-	
-equations{ 'system_use_lifetime_output' } = define() {
-	return 1; };
-	
 equations{ 'system_recapitalization_cost' } = define() {
 	return ${geotherm.cost.recap}; };
 	
@@ -7601,6 +7919,10 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		return 0;
 	}
 };
+
+equations{ 'system_use_recapitalization' } = define() {
+	return 1; };
+
 
 1386
 

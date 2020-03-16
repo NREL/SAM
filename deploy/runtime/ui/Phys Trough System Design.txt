@@ -1,11 +1,11 @@
 Phys Trough System Design
 867
-592
-22
+478
+21
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,23 +67,88 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
-28
-SD_COPY_field_thermal_output
+18
+L_heat_sink_piping
 X
 3
-618
+696
 Y
 3
-354
+129
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+28
+SD_COPY_field_thermal_output
+X
+3
+696
+Y
+3
+294
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,7 +191,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -133,13 +201,16 @@ X
 219
 Y
 3
-330
+270
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -182,23 +253,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
 SD_COPY_solar_mult
 X
 3
-618
+696
 Y
 3
-330
+270
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -241,7 +315,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -251,13 +325,16 @@ X
 219
 Y
 3
-354
+294
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -300,7 +377,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -317,6 +394,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -359,7 +439,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -376,6 +456,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -415,33 +498,10 @@ BackColour
 TabOrder
 3
 4
-LossAdjustment
-
-1
-6
-Name
-5
-6
-adjust
-X
-3
-336
-Y
-3
-216
-Width
-3
-369
-Height
-3
-85
-TabOrder
-3
-4294967295
 Button
 
 1
-7
+8
 Name
 5
 20
@@ -451,13 +511,16 @@ X
 624
 Y
 3
-120
+165
 Width
 3
 177
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -465,46 +528,42 @@ Choose Number of Loops
 TabOrder
 3
 4294967295
-Divider
+CheckBox
 
 1
 9
 Name
 5
-6
-label3
+25
+is_model_heat_sink_piping
 X
 3
-12
+783
 Y
 3
-189
+105
 Width
 3
-837
+24
 Height
 3
-16
-Orientation
-3
+24
+Tool Tip
+5
 0
-Colour
-4
-120
-120
-120
-255
 Caption
 5
-35
-System Availability and Curtailment
-Bold
+0
+State
 2
-1
+0
+TabOrder
+3
+4294967295
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -514,13 +573,16 @@ X
 444
 Y
 3
-150
+195
 Width
 3
 405
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -532,15 +594,15 @@ Colour
 255
 Caption
 5
-15
-Thermal Storage
+22
+Thermal Energy Storage
 Bold
 2
 1
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -557,6 +619,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -576,7 +641,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 10
@@ -593,6 +658,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -612,7 +680,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -622,13 +690,16 @@ X
 6
 Y
 3
-309
+249
 Width
 3
 855
 Height
 3
 78
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -639,7 +710,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -655,7 +726,10 @@ Width
 855
 Height
 3
-294
+237
+Tool Tip
+5
+0
 Caption
 5
 23
@@ -663,55 +737,10 @@ Design Point Parameters
 Bold
 2
 1
-Label
-
-1
-12
-Name
-5
-8
-object 7
-X
-3
-57
-Y
-3
-219
-Width
-3
-255
-Height
-3
-84
-Caption
-5
-105
-Curtailment and availability losses reduce the system output to represent system outages or other events.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -728,6 +757,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -770,7 +802,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -787,6 +819,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -829,7 +864,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -846,6 +881,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -888,7 +926,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -905,6 +943,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -947,7 +988,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -957,13 +998,16 @@ X
 696
 Y
 3
-168
+213
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1006,7 +1050,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -1016,13 +1060,16 @@ X
 9
 Y
 3
-396
+336
 Width
 3
 848
 Height
 3
-176
+137
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1048,7 +1095,7 @@ AlignTop
 2
 1
 
-14
+17
 I_bn_des
 3
 1
@@ -1063,6 +1110,20 @@ Phys Trough System Design
 1
 950
 Default
+L_heat_sink_piping
+3
+1
+Length of piping through heat sink
+m
+Phys Trough Solar Field
+0
+2
+1
+1
+1
+1
+50
+Numeric
 SD_COPY_field_thermal_output
 3
 1
@@ -1147,19 +1208,34 @@ Phys Trough System Design
 1
 393
 Default
-adjust
+is_model_heat_sink_piping
 3
-5
+1
+Model piping through heat sink?
  
- 
- 
+Phys Trough Solar Field
 0
+2
 1
 1
-5
+1
 1
 0
-LossAdjustment
+CheckBox
+nLoops
+3
+1
+Number of loops
+-
+Phys Trough System Design
+0
+8
+1
+1
+1
+1
+0
+Default
 pb_pump_coef
 3
 1
@@ -1187,6 +1263,20 @@ Phys Trough System Design
 1
 1
 100
+Default
+solar_mult
+3
+1
+Solar multiple
+-
+Phys Trough System Design
+0
+8
+1
+1
+1
+1
+2.5
 Default
 specified_q_dot_rec_des
 3
@@ -1245,7 +1335,7 @@ Phys Trough System Design
 6
 Default
 
-518
+846
 equations{ 'specified_q_dot_rec_des' } = define() 
 {
 	return ${specified_solar_multiple}*${q_pb_design}; 
@@ -1276,11 +1366,21 @@ equations{ 'SD_COPY_field_thermal_output' } = define()
 	return ${field_thermal_output};
 };
 
+equations{ 'nLoops' } = define() {
+	retval = ( ${specified_solar_multiple}*${total_required_aperture_for_SM1}
+				/ ${single_loop_aperature}  );
+	return ceil(retval); // SAMwx used "@round" here
+};
 
+equations{ 'solar_mult' } = define() {
+	return ${field_thermal_output}/${q_pb_design};
+	//return ${specified_solar_multiple}; 
+};
 
-1963
+2144
 on_load{'Phys Trough System Design'} = define(){
 	on_change{'combo_htf_type'}();
+	on_change{'is_model_heat_sink_piping'}();
 	check_htf_temp_bounds();
 };
 
@@ -1364,4 +1464,10 @@ function calc_q_heat_sink()
 on_change{'btn_calc_q_heat_sink'} = define()
 {
 	calc_q_heat_sink();
+};
+
+on_change{'is_model_heat_sink_piping'} = define()
+{
+	enable('L_heat_sink_piping', value('is_model_heat_sink_piping')==1);
+	refresh();
 };

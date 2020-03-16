@@ -1,0 +1,959 @@
+digraph EmpiricalTrough_None {
+	label ="Empirical Trough-None";
+	labelloc=top;
+	rankdir=LR;
+	ranksep="1";
+	"BOPParF1" [style=filled, fillcolor=grey]
+	"PFSmax" [style=filled, fillcolor=grey]
+	"BOPPar" [style=filled, fillcolor=grey]
+	"HCE_A6" [style=filled, fillcolor=grey]
+	"PTSmax" [style=filled, fillcolor=grey]
+	"TempCorr2" [style=filled, fillcolor=grey]
+	"CHTFParF1" [style=filled, fillcolor=grey]
+	"CtParPF" [style=filled, fillcolor=grey]
+	"system_capacity" [style=filled, fillcolor=grey]
+	"HCE_A2" [style=filled, fillcolor=grey]
+	"E2TPLF2" [style=filled, fillcolor=grey]
+	"IamF2" [style=filled, fillcolor=grey]
+	"E2TPLF3" [style=filled, fillcolor=grey]
+	"HCE_A3" [style=filled, fillcolor=grey]
+	"PTTMIN" [style=filled, fillcolor=grey]
+	"Ave_Focal_Length" [style=filled, fillcolor=grey]
+	"ScaLen" [style=filled, fillcolor=grey]
+	"Row_Distance" [style=filled, fillcolor=grey]
+	"HtrParPF" [style=filled, fillcolor=grey]
+	"CHTFParF0" [style=filled, fillcolor=grey]
+	"MirRef" [style=filled, fillcolor=grey]
+	"CtPar" [style=filled, fillcolor=grey]
+	"SfPipeHl3" [style=filled, fillcolor=grey]
+	"HtrParF0" [style=filled, fillcolor=grey]
+	"TempCorrF" [style=filled, fillcolor=grey]
+	"BOPParF0" [style=filled, fillcolor=grey]
+	"E2TPLF0" [style=filled, fillcolor=grey]
+	"HCE_A5" [style=filled, fillcolor=grey]
+	"MaxGrOut" [style=filled, fillcolor=grey]
+	"SfPipeHl1" [style=filled, fillcolor=grey]
+	"GeoAcc" [style=filled, fillcolor=grey]
+	"file_name" [style=filled, fillcolor=grey]
+	"HtrPar" [style=filled, fillcolor=grey]
+	"E2TPLF4" [style=filled, fillcolor=grey]
+	"HtrParF2" [style=filled, fillcolor=grey]
+	"MirCln" [style=filled, fillcolor=grey]
+	"HhtfParF1" [style=filled, fillcolor=grey]
+	"SCA_aper" [style=filled, fillcolor=grey]
+	"HCE_A1" [style=filled, fillcolor=grey]
+	"PerfFac" [style=filled, fillcolor=grey]
+	"FossilFill" [style=filled, fillcolor=grey]
+	"TSLogic" [style=filled, fillcolor=grey]
+	"CHTFParF2" [style=filled, fillcolor=grey]
+	"TurTesEffAdj" [style=filled, fillcolor=grey]
+	"SfInTempD" [style=filled, fillcolor=grey]
+	"SfOutTempD" [style=filled, fillcolor=grey]
+	"ChtfParPF" [style=filled, fillcolor=grey]
+	"TempCorr4" [style=filled, fillcolor=grey]
+	"Solar_Field_Area" [style=filled, fillcolor=grey]
+	"Solar_Field_Mult" [style=filled, fillcolor=grey]
+	"TurSUE" [style=filled, fillcolor=grey]
+	"HCEBelShad" [style=filled, fillcolor=grey]
+	"IamF0" [style=filled, fillcolor=grey]
+	"T2EPLF1" [style=filled, fillcolor=grey]
+	"ChtfPar" [style=filled, fillcolor=grey]
+	"TrkTwstErr" [style=filled, fillcolor=grey]
+	"TurbEffG" [style=filled, fillcolor=grey]
+	"TurbOutG" [style=filled, fillcolor=grey]
+	"PTTMAX" [style=filled, fillcolor=grey]
+	"HCE_A0" [style=filled, fillcolor=grey]
+	"HhtfPar" [style=filled, fillcolor=grey]
+	"TurTesOutAdj" [style=filled, fillcolor=grey]
+	"T2EPLF3" [style=filled, fillcolor=grey]
+	"TempCorr3" [style=filled, fillcolor=grey]
+	"HCEmisc" [style=filled, fillcolor=grey]
+	"CtOpF" [style=filled, fillcolor=grey]
+	"BOPParF2" [style=filled, fillcolor=grey]
+	"HhtfParF0" [style=filled, fillcolor=grey]
+	"AntiFrPar" [style=filled, fillcolor=grey]
+	"CtParF0" [style=filled, fillcolor=grey]
+	"HCEdust" [style=filled, fillcolor=grey]
+	"HhtfParF2" [style=filled, fillcolor=grey]
+	"HCEEnvTrans" [style=filled, fillcolor=grey]
+	"HCEabs" [style=filled, fillcolor=grey]
+	"SfPipeHl2" [style=filled, fillcolor=grey]
+	"SfPar" [style=filled, fillcolor=grey]
+	"BOPParPF" [style=filled, fillcolor=grey]
+	"SfPipeHl300" [style=filled, fillcolor=grey]
+	"HtrParF1" [style=filled, fillcolor=grey]
+	"TempCorr0" [style=filled, fillcolor=grey]
+	"TempCorr1" [style=filled, fillcolor=grey]
+	"ConcFac" [style=filled, fillcolor=grey]
+	"E2TPLF1" [style=filled, fillcolor=grey]
+	"T2EPLF2" [style=filled, fillcolor=grey]
+	"T2EPLF4" [style=filled, fillcolor=grey]
+	"IamF1" [style=filled, fillcolor=grey]
+	"SfAvail" [style=filled, fillcolor=grey]
+	"HhtfParPF" [style=filled, fillcolor=grey]
+	"HTFFluid" [style=filled, fillcolor=grey]
+	"CtParF1" [style=filled, fillcolor=grey]
+	"TSHOURS" [style=filled, fillcolor=grey]
+	"HCEFrac" [style=filled, fillcolor=grey]
+	"CtParF2" [style=filled, fillcolor=grey]
+	"RefMirrAper" [style=filled, fillcolor=grey]
+	"MinGrOut" [style=filled, fillcolor=grey]
+	"T2EPLF0" [style=filled, fillcolor=grey]
+	"HCE_A4" [style=filled, fillcolor=grey]
+	"weekday_schedule" [style=filled, fillcolor=grey]
+	"PbFixPar" [style=filled, fillcolor=grey]
+	"NUMTOU" [style=filled, fillcolor=grey]
+	"SfParPF" [style=filled, fillcolor=grey]
+	"weekend_schedule" [style=filled, fillcolor=grey]
+
+	"json_ok" -> "ok_test" [label=0, color = black];
+	"geocode_ok" -> "ok_test" [label=0, color = black];
+	"location" -> "pb_locations" [label=1, color = brown4];
+	"location" -> "g" [label=0, color = black];
+	"location" -> "dataset" [label=2, color = darkorange3];
+	"log_file" -> "flog" [label=1, color = brown4];
+	"folder" -> "log_file" [label=1, color = brown4];
+	"msg" -> "show_log" [label=2, color = darkorange3];
+	"dispatch_sched_weekend" -> "weekend_schedule" [label=3, color = lightslateblue];
+	"dispatch_sched_weekday" -> "weekday_schedule" [label=3, color = lightslateblue];
+	"get_settings()( "solar_download_path" )+"
+"+replace()( clean_list, ";", "
+" )" -> "library_folder_list" [label=4, color = mediumorchid];
+	"max_temp" -> "ui_field_htf_max_operating_temp" [label=5, color = firebrick];
+	"HCEA3_1" -> "HCE_A3" [label=6, style=dashed, color = indigo];
+	"HCEA3_1" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"ui_disp_9_turbout" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_turbout" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_turbout" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_turbout" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_turbout" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_turbout" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_turbout" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_turbout" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_turbout" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_turbout" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_turbout" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"BOPPar" -> "ui_par_dp_total" [label=8, style=dashed, color = azure4];
+	"lib_IamF1" -> "IamF1" [label=9, color = darkorchid4];
+	"lib_CtOpF" -> "CtOpF" [label=10, color = aquamarine3];
+	"ui_disp_9_nosolar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_nosolar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_nosolar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_nosolar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_nosolar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_nosolar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_nosolar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_nosolar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_nosolar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_nosolar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_nosolar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_solar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_solar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_solar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_solar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_solar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_solar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_solar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_solar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_solar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_solar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_solar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"CtParPF" -> "CtPar" [label=8, style=dashed, color = azure4];
+	"ui_disp_4_fossil" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_fossil" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_fossil" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_fossil" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_fossil" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_fossil" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_fossil" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_fossil" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_fossil" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_fossil" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_fossil" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"HCEBelShad_4" -> "ui_hce_opt_eff_4" [label=6, style=dashed, color = indigo];
+	"HCEBelShad_4" -> "HCEBelShad" [label=6, style=dashed, color = indigo];
+	"E2TPLF2" -> "ui_min_therm_input" [label=11, style=dashed, color = olivedrab];
+	"E2TPLF2" -> "ui_max_therm_input" [label=11, style=dashed, color = olivedrab];
+	"ui_hce_hl_term_1" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_1" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_1" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_1" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"E2TPLF3" -> "ui_min_therm_input" [label=11, style=dashed, color = olivedrab];
+	"E2TPLF3" -> "ui_max_therm_input" [label=11, style=dashed, color = olivedrab];
+	"ui_design_exact_num_scas_sm_1" -> "calc_aperture_area_at_sm_1" [label=12, style=dashed, color = palevioletred];
+	"HCEA4_3" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"HCEA4_3" -> "HCE_A4" [label=6, style=dashed, color = indigo];
+	"ui_solar_field_area" -> "Solar_Field_Area" [label=12, style=dashed, color = palevioletred];
+	"ui_solar_field_area" -> "Solar_Field_Mult" [label=12, style=dashed, color = palevioletred];
+	"ui_gross_net_conversion_factor" -> "ui_net_capacity" [label=11, style=dashed, color = olivedrab];
+	"lib_E2TPLF4" -> "E2TPLF4" [label=13, color = darkgoldenrod2];
+	"PerfFac_3" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"PerfFac_3" -> "PerfFac" [label=6, style=dashed, color = indigo];
+	"HCEBelShad_1" -> "ui_hce_opt_eff_1" [label=6, style=dashed, color = indigo];
+	"HCEBelShad_1" -> "HCEBelShad" [label=6, style=dashed, color = indigo];
+	"lib_BOPParF2" -> "BOPParF2" [label=10, color = aquamarine3];
+	"ui_hce_opt_eff_weighted" -> "ui_hce_weighted_optical_efficiency" [label=12, style=dashed, color = palevioletred];
+	"lib_ScaLen" -> "ScaLen" [label=9, color = darkorchid4];
+	"ui_fixed_land_area" -> "ui_total_land_area" [label=12, style=dashed, color = palevioletred];
+	"HCEA4_1" -> "HCE_A4" [label=6, style=dashed, color = indigo];
+	"HCEA4_1" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"Row_Distance" -> "ui_fixed_land_area" [label=12, style=dashed, color = palevioletred];
+	"HCEmisc_4" -> "ui_hce_opt_eff_4" [label=6, style=dashed, color = indigo];
+	"HCEmisc_4" -> "HCEmisc" [label=6, style=dashed, color = indigo];
+	"ui_disp_1_turbout" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_turbout" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_turbout" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_turbout" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_turbout" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_turbout" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_turbout" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_turbout" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_turbout" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_turbout" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_turbout" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"lib_ui_par_sf_const" -> "ui_par_sf_const" [label=10, color = aquamarine3];
+	"ui_land_multiplier" -> "ui_total_land_area" [label=12, style=dashed, color = palevioletred];
+	"HtrParPF" -> "HtrPar" [label=8, style=dashed, color = azure4];
+	"ui_hce_broken_glass_4" -> "ui_hce_opt_eff_4" [label=6, style=dashed, color = indigo];
+	"ui_field_htf_type" -> "HTFFluid" [label=12, style=dashed, color = palevioletred];
+	"ui_field_htf_type" -> "ui_field_htf_min_operating_temp" [label=12, style=dashed, color = palevioletred];
+	"ui_field_htf_type" -> "ui_field_htf_max_operating_temp" [label=12, style=dashed, color = palevioletred];
+	"ui_field_htf_type" -> "PFSmax" [label=14, style=dashed, color = gold4];
+	"ui_field_htf_type" -> "calc_heat_ex_duty" [label=14, style=dashed, color = gold4];
+	"ui_field_htf_type" -> "PTSmax" [label=14, style=dashed, color = gold4];
+	"ui_field_htf_type" -> "bCustomHTF" [label=5, color = firebrick];
+	"ui_field_htf_type" -> "max_temp" [label=5, color = firebrick];
+	"ui_field_htf_type" -> "min_temp" [label=5, color = firebrick];
+	"MirRef" -> "calc_col_factor" [label=15, style=dashed, color = crimson];
+	"ui_disp_3_turbout" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_turbout" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_turbout" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_turbout" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_turbout" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_turbout" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_turbout" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_turbout" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_turbout" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_turbout" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_turbout" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"CtPar" -> "ui_par_dp_total" [label=8, style=dashed, color = azure4];
+	"SfPipeHl3" -> "ui_piping_heat_loss" [label=12, style=dashed, color = palevioletred];
+	"HCEA6_3" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"HCEA6_3" -> "HCE_A6" [label=6, style=dashed, color = indigo];
+	"ui_disp_6_fossil" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_fossil" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_fossil" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_fossil" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_fossil" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_fossil" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_fossil" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_fossil" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_fossil" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_fossil" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_fossil" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_field_layout_option" -> "Solar_Field_Area" [label=12, style=dashed, color = palevioletred];
+	"ui_field_layout_option" -> "Solar_Field_Mult" [label=12, style=dashed, color = palevioletred];
+	"ui_field_layout_option" -> "state" [label=16, color = chartreuse4];
+	"ui_disp_7_turbout" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_turbout" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_turbout" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_turbout" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_turbout" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_turbout" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_turbout" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_turbout" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_turbout" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_turbout" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_turbout" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"lib_HCEA4" -> "ui_HCEA4" [label=17, color = sienna4];
+	"E2TPLF0" -> "ui_min_therm_input" [label=11, style=dashed, color = olivedrab];
+	"E2TPLF0" -> "ui_max_therm_input" [label=11, style=dashed, color = olivedrab];
+	"ui_piping_heat_loss" -> "ui_design_exact_area_sm_1" [label=12, style=dashed, color = palevioletred];
+	"lib_ui_par_bop_const" -> "ui_par_bop_const" [label=10, color = aquamarine3];
+	"n" -> "dataset" [label=2, color = darkorange3];
+	"MaxGrOut" -> "ui_max_therm_input" [label=11, style=dashed, color = olivedrab];
+	"MaxGrOut" -> "PTTMAX" [label=11, style=dashed, color = olivedrab];
+	"MaxGrOut" -> "PFSmax" [label=14, style=dashed, color = gold4];
+	"MaxGrOut" -> "PTSmax" [label=14, style=dashed, color = gold4];
+	"lib_T2EPLF2" -> "T2EPLF2" [label=13, color = darkgoldenrod2];
+	"HCEabs_1" -> "ui_hce_opt_eff_1" [label=6, style=dashed, color = indigo];
+	"HCEabs_1" -> "HCEabs" [label=6, style=dashed, color = indigo];
+	"SfPipeHl1" -> "ui_piping_heat_loss" [label=12, style=dashed, color = palevioletred];
+	"HCEmisc_2" -> "ui_hce_opt_eff_2" [label=6, style=dashed, color = indigo];
+	"HCEmisc_2" -> "HCEmisc" [label=6, style=dashed, color = indigo];
+	"GeoAcc" -> "calc_col_factor" [label=15, style=dashed, color = crimson];
+	"lib_HhtfParF2" -> "HhtfParF2" [label=10, color = aquamarine3];
+	"lib_HCEA1" -> "ui_HCEA1" [label=17, color = sienna4];
+	"ui_hce_thermloss_weighted_m" -> "ui_hce_thermloss_weighted_m2" [label=6, style=dashed, color = indigo];
+	"HCEA6_2" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"HCEA6_2" -> "HCE_A6" [label=6, style=dashed, color = indigo];
+	"HCEFrac_4" -> "ui_hce_thermloss_weighted_m" [label=6, style=dashed, color = indigo];
+	"HCEFrac_4" -> "ui_hce_opt_eff_weighted" [label=6, style=dashed, color = indigo];
+	"HCEFrac_4" -> "HCEFrac" [label=6, style=dashed, color = indigo];
+	"HtrPar" -> "ui_par_dp_total" [label=8, style=dashed, color = azure4];
+	"E2TPLF4" -> "ui_min_therm_input" [label=11, style=dashed, color = olivedrab];
+	"E2TPLF4" -> "ui_max_therm_input" [label=11, style=dashed, color = olivedrab];
+	"ui_hce_broken_glass_1" -> "ui_hce_opt_eff_1" [label=6, style=dashed, color = indigo];
+	"MirCln" -> "calc_col_factor" [label=15, style=dashed, color = crimson];
+	"calc_aperture_area_at_sm_1" -> "Solar_Field_Area" [label=12, style=dashed, color = palevioletred];
+	"calc_aperture_area_at_sm_1" -> "Solar_Field_Mult" [label=12, style=dashed, color = palevioletred];
+	"SCA_aper" -> "ui_fixed_land_area" [label=12, style=dashed, color = palevioletred];
+	"SCA_aper" -> "RefMirrAper" [label=15, style=dashed, color = crimson];
+	"SCA_aper" -> "ui_hce_thermloss_weighted_m2" [label=6, style=dashed, color = indigo];
+	"lib_BOPParF0" -> "BOPParF0" [label=10, color = aquamarine3];
+	"lib_TrkTwstErr" -> "TrkTwstErr" [label=9, color = darkorchid4];
+	"ui_disp_1_fossil" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_fossil" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_fossil" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_fossil" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_fossil" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_fossil" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_fossil" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_fossil" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_fossil" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_fossil" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_fossil" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_HCEA1" -> "HCEA1_4" [label=18, color = skyblue4];
+	"ui_HCEA1" -> "HCEA1_3" [label=19, color = orange3];
+	"ui_HCEA1" -> "HCEA1_2" [label=20, color = seashell4];
+	"ui_HCEA1" -> "HCEA1_1" [label=21, color = sienna];
+	"HCEA2_2" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"HCEA2_2" -> "HCE_A2" [label=6, style=dashed, color = indigo];
+	"ui_par_htfpump_const" -> "ChtfPar" [label=8, style=dashed, color = azure4];
+	"ui_tes_htf_type" -> "PFSmax" [label=14, style=dashed, color = gold4];
+	"ui_tes_htf_type" -> "calc_heat_ex_duty" [label=14, style=dashed, color = gold4];
+	"ui_tes_htf_type" -> "PTSmax" [label=14, style=dashed, color = gold4];
+	"ui_tes_htf_type" -> "calc_htf_max_opt_temp" [label=14, style=dashed, color = gold4];
+	"ui_tes_htf_type" -> "calc_htf_min_opt_temp" [label=14, style=dashed, color = gold4];
+	"HCEBelShad_3" -> "ui_hce_opt_eff_3" [label=6, style=dashed, color = indigo];
+	"HCEBelShad_3" -> "HCEBelShad" [label=6, style=dashed, color = indigo];
+	"PerfFac_1" -> "PerfFac" [label=6, style=dashed, color = indigo];
+	"PerfFac_1" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"ui_disp_4_solar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_solar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_solar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_solar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_solar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_solar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_solar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_solar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_solar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_solar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_solar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"TurTesEffAdj" -> "PFSmax" [label=14, style=dashed, color = gold4];
+	"HCEA3_2" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"HCEA3_2" -> "HCE_A3" [label=6, style=dashed, color = indigo];
+	"SfInTempD" -> "calc_field_htf_average_temp" [label=12, style=dashed, color = palevioletred];
+	"SfInTempD" -> "ui_hce_hl_term_4" [label=6, style=dashed, color = indigo];
+	"SfInTempD" -> "ui_hce_hl_term_2" [label=6, style=dashed, color = indigo];
+	"SfInTempD" -> "ui_hce_hl_term_3" [label=6, style=dashed, color = indigo];
+	"SfOutTempD" -> "calc_field_htf_average_temp" [label=12, style=dashed, color = palevioletred];
+	"SfOutTempD" -> "ui_hce_hl_term_4" [label=6, style=dashed, color = indigo];
+	"SfOutTempD" -> "ui_hce_hl_term_2" [label=6, style=dashed, color = indigo];
+	"SfOutTempD" -> "ui_hce_hl_term_3" [label=6, style=dashed, color = indigo];
+	"HCEA6_4" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"HCEA6_4" -> "HCE_A6" [label=6, style=dashed, color = indigo];
+	"lib_T2EPLF4" -> "T2EPLF4" [label=13, color = darkgoldenrod2];
+	"lib_MaxGrOut" -> "MaxGrOut" [label=13, color = darkgoldenrod2];
+	"lib_HCEA3" -> "ui_HCEA3" [label=17, color = sienna4];
+	"lib_ui_par_tes_const" -> "ui_par_tes_const" [label=10, color = aquamarine3];
+	"ChtfParPF" -> "ChtfPar" [label=8, style=dashed, color = azure4];
+	"Solar_Field_Area" -> "ui_par_sf_area" [label=8, style=dashed, color = azure4];
+	"Solar_Field_Mult" -> "ui_fixed_land_area" [label=12, style=dashed, color = palevioletred];
+	"Solar_Field_Mult" -> "calc_heat_ex_duty" [label=14, style=dashed, color = gold4];
+	"Solar_Field_Mult" -> "PTSmax" [label=14, style=dashed, color = gold4];
+	"ui_hce_weighted_optical_efficiency" -> "ui_design_exact_area_sm_1" [label=12, style=dashed, color = palevioletred];
+	"ui_disp_8_fossil" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_fossil" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_fossil" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_fossil" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_fossil" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_fossil" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_fossil" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_fossil" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_fossil" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_fossil" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_fossil" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"lib_ui_par_antifreeze_const" -> "ui_par_antifreeze_const" [label=10, color = aquamarine3];
+	"ChtfPar" -> "ui_par_dp_total" [label=8, style=dashed, color = azure4];
+	"ChtfPar" -> "AntiFrPar" [label=8, style=dashed, color = azure4];
+	"lib_HCEabs" -> "ui_HCEabs" [label=17, color = sienna4];
+	"HCEA4_2" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"HCEA4_2" -> "HCE_A4" [label=6, style=dashed, color = indigo];
+	"ui_disp_6_turbout" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_turbout" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_turbout" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_turbout" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_turbout" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_turbout" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_turbout" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_turbout" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_turbout" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_turbout" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_turbout" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_hce_opt_eff_4" -> "ui_hce_opt_eff_weighted" [label=6, style=dashed, color = indigo];
+	"HCEEnvTrans_2" -> "ui_hce_opt_eff_2" [label=6, style=dashed, color = indigo];
+	"HCEEnvTrans_2" -> "HCEEnvTrans" [label=6, style=dashed, color = indigo];
+	"ui_hce_opt_eff_3" -> "ui_hce_opt_eff_weighted" [label=6, style=dashed, color = indigo];
+	"TrkTwstErr" -> "calc_col_factor" [label=15, style=dashed, color = crimson];
+	"calc_hce_col_factor" -> "ui_hce_opt_eff_1" [label=6, style=dashed, color = indigo];
+	"calc_hce_col_factor" -> "ui_hce_opt_eff_4" [label=6, style=dashed, color = indigo];
+	"calc_hce_col_factor" -> "ui_hce_opt_eff_3" [label=6, style=dashed, color = indigo];
+	"calc_hce_col_factor" -> "ui_hce_opt_eff_2" [label=6, style=dashed, color = indigo];
+	"TurbEffG" -> "ui_q_design" [label=11, style=dashed, color = olivedrab];
+	"ui_hce_opt_eff_2" -> "ui_hce_opt_eff_weighted" [label=6, style=dashed, color = indigo];
+	"lib_BOPParPF" -> "BOPParPF" [label=10, color = aquamarine3];
+	"TurbOutG" -> "ui_net_capacity" [label=11, style=dashed, color = olivedrab];
+	"TurbOutG" -> "ui_q_design" [label=11, style=dashed, color = olivedrab];
+	"TurbOutG" -> "ui_par_turb_out_gr" [label=8, style=dashed, color = azure4];
+	"ui_disp_1_nosolar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_nosolar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_nosolar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_nosolar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_nosolar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_nosolar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_nosolar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_nosolar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_nosolar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_nosolar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_nosolar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"lib_IamF2" -> "IamF2" [label=9, color = darkorchid4];
+	"calc_field_htf_average_temp" -> "ui_piping_heat_loss" [label=12, style=dashed, color = palevioletred];
+	"HCEEnvTrans_3" -> "ui_hce_opt_eff_3" [label=6, style=dashed, color = indigo];
+	"HCEEnvTrans_3" -> "HCEEnvTrans" [label=6, style=dashed, color = indigo];
+	"HCEBelShad_2" -> "ui_hce_opt_eff_2" [label=6, style=dashed, color = indigo];
+	"HCEBelShad_2" -> "HCEBelShad" [label=6, style=dashed, color = indigo];
+	"lib_E2TPLF2" -> "E2TPLF2" [label=13, color = darkgoldenrod2];
+	"HCEA5_2" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"HCEA5_2" -> "HCE_A5" [label=6, style=dashed, color = indigo];
+	"lib_SCA_aper" -> "SCA_aper" [label=9, color = darkorchid4];
+	"lib_ui_par_htfpump_const" -> "ui_par_htfpump_const" [label=10, color = aquamarine3];
+	"HhtfPar" -> "ui_par_dp_total" [label=8, style=dashed, color = azure4];
+	"HCEA4_4" -> "HCE_A4" [label=6, style=dashed, color = indigo];
+	"HCEA4_4" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"HCEA0_3" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"HCEA0_3" -> "HCE_A0" [label=6, style=dashed, color = indigo];
+	"HCEFrac_3" -> "ui_hce_thermloss_weighted_m" [label=6, style=dashed, color = indigo];
+	"HCEFrac_3" -> "ui_hce_opt_eff_weighted" [label=6, style=dashed, color = indigo];
+	"HCEFrac_3" -> "HCEFrac" [label=6, style=dashed, color = indigo];
+	"HCEA3_3" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"HCEA3_3" -> "HCE_A3" [label=6, style=dashed, color = indigo];
+	"ui_hce_broken_glass_2" -> "ui_hce_opt_eff_2" [label=6, style=dashed, color = indigo];
+	"HCEA3_4" -> "HCE_A3" [label=6, style=dashed, color = indigo];
+	"HCEA3_4" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"HCEA1_1" -> "HCE_A1" [label=6, style=dashed, color = indigo];
+	"HCEA1_1" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"TurTesOutAdj" -> "PFSmax" [label=14, style=dashed, color = gold4];
+	"HCEmisc_1" -> "ui_hce_opt_eff_1" [label=6, style=dashed, color = indigo];
+	"HCEmisc_1" -> "HCEmisc" [label=6, style=dashed, color = indigo];
+	"solar_resource_file" -> "file_name" [label=22, style=dashed, color = sienna1];
+	"solar_resource_file" -> "wf" [label=23, color = sienna2];
+	"solar_resource_file" -> "f_name" [label=24, color = sienna3];
+	"HCEA0_4" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"HCEA0_4" -> "HCE_A0" [label=6, style=dashed, color = indigo];
+	"ui_hce_heat_losses_3" -> "ui_hce_thermloss_weighted_m" [label=6, style=dashed, color = indigo];
+	"ui_hce_heat_losses_1" -> "ui_hce_thermloss_weighted_m" [label=6, style=dashed, color = indigo];
+	"lib_SfParPF" -> "SfParPF" [label=10, color = aquamarine3];
+	"ui_disp_3_solar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_solar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_solar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_solar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_solar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_solar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_solar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_solar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_solar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_solar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_solar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_solar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_solar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_solar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_solar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_solar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_solar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_solar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_solar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_solar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_solar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_solar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"lib_CHTFParF0" -> "CHTFParF0" [label=10, color = aquamarine3];
+	"HCEEnvTrans_4" -> "ui_hce_opt_eff_4" [label=6, style=dashed, color = indigo];
+	"HCEEnvTrans_4" -> "HCEEnvTrans" [label=6, style=dashed, color = indigo];
+	"lib_HCEdust" -> "ui_HCEdust" [label=9, color = darkorchid4];
+	"lib_CtParF2" -> "CtParF2" [label=10, color = aquamarine3];
+	"ui_disp_5_turbout" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_turbout" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_turbout" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_turbout" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_turbout" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_turbout" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_turbout" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_turbout" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_turbout" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_turbout" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_turbout" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"lib_E2TPLF1" -> "E2TPLF1" [label=13, color = darkgoldenrod2];
+	"ui_disp_8_solar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_solar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_solar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_solar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_solar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_solar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_solar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_solar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_solar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_solar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_solar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"min_temp" -> "ui_field_htf_min_operating_temp" [label=5, color = firebrick];
+	"ui_disp_4_nosolar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_nosolar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_nosolar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_nosolar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_nosolar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_nosolar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_nosolar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_nosolar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_nosolar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_nosolar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_nosolar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"lib_HCEA0" -> "ui_HCEA0" [label=17, color = sienna4];
+	"lib_HCEA5" -> "ui_HCEA5" [label=17, color = sienna4];
+	"ui_hce_heat_losses_4" -> "ui_hce_thermloss_weighted_m" [label=6, style=dashed, color = indigo];
+	"HCEA6_1" -> "HCE_A6" [label=6, style=dashed, color = indigo];
+	"HCEA6_1" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"ui_hce_heat_losses_2" -> "ui_hce_thermloss_weighted_m" [label=6, style=dashed, color = indigo];
+	"lib_HtrParF0" -> "HtrParF0" [label=10, color = aquamarine3];
+	"lib_MirRef" -> "MirRef" [label=9, color = darkorchid4];
+	"lib_hce_name" -> "ui_hce_name" [label=17, color = sienna4];
+	"ui_disp_3_nosolar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_nosolar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_nosolar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_nosolar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_nosolar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_nosolar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_nosolar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_nosolar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_nosolar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_nosolar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_nosolar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_nosolar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_nosolar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_nosolar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_nosolar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_nosolar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_nosolar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_nosolar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_nosolar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_nosolar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_nosolar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_nosolar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"lib_HhtfParF1" -> "HhtfParF1" [label=10, color = aquamarine3];
+	"ui_HCEA2" -> "HCEA2_4" [label=18, color = skyblue4];
+	"ui_HCEA2" -> "HCEA2_3" [label=19, color = orange3];
+	"ui_HCEA2" -> "HCEA2_2" [label=20, color = seashell4];
+	"ui_HCEA2" -> "HCEA2_1" [label=21, color = sienna];
+	"lib_E2TPLF0" -> "E2TPLF0" [label=13, color = darkgoldenrod2];
+	"lib_HtrParF1" -> "HtrParF1" [label=10, color = aquamarine3];
+	"lib_TempCorr4" -> "TempCorr4" [label=13, color = darkgoldenrod2];
+	"lib_HtrParPF" -> "HtrParPF" [label=10, color = aquamarine3];
+	"lib_MinGrOut" -> "MinGrOut" [label=13, color = darkgoldenrod2];
+	"ui_disp_6_solar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_solar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_solar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_solar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_solar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_solar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_solar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_solar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_solar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_solar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_solar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_HCEA3" -> "HCEA3_4" [label=18, color = skyblue4];
+	"ui_HCEA3" -> "HCEA3_3" [label=19, color = orange3];
+	"ui_HCEA3" -> "HCEA3_2" [label=20, color = seashell4];
+	"ui_HCEA3" -> "HCEA3_1" [label=21, color = sienna];
+	"AntiFrPar" -> "ui_par_dp_total" [label=8, style=dashed, color = azure4];
+	"lib_HCEmisc" -> "ui_HCEmisc" [label=17, color = sienna4];
+	"ui_HCEEnvTrans" -> "HCEEnvTrans_4" [label=18, color = skyblue4];
+	"ui_HCEEnvTrans" -> "HCEEnvTrans_3" [label=19, color = orange3];
+	"ui_HCEEnvTrans" -> "HCEEnvTrans_2" [label=20, color = seashell4];
+	"ui_HCEEnvTrans" -> "HCEEnvTrans_1" [label=21, color = sienna];
+	"ui_par_fixedblock_const" -> "PbFixPar" [label=8, style=dashed, color = azure4];
+	"lib_PerfFac" -> "ui_PerfFac" [label=17, color = sienna4];
+	"lib_SfAvail" -> "SfAvail" [label=9, color = darkorchid4];
+	"PerfFac_2" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"PerfFac_2" -> "PerfFac" [label=6, style=dashed, color = indigo];
+	"lib_ConcFac" -> "ConcFac" [label=9, color = darkorchid4];
+	"lib_T2EPLF0" -> "T2EPLF0" [label=13, color = darkgoldenrod2];
+	"ui_disp_3_fossil" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_fossil" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_fossil" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_fossil" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_fossil" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_fossil" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_fossil" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_fossil" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_fossil" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_fossil" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_3_fossil" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"HCEdust" -> "ui_hce_HCEdust" [label=6, style=dashed, color = indigo];
+	"ui_disp_9_solar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_solar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_solar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_solar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_solar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_solar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_solar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_solar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_solar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_solar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_solar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_par_sf_const" -> "SfPar" [label=8, style=dashed, color = azure4];
+	"HCEA5_3" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"HCEA5_3" -> "HCE_A5" [label=6, style=dashed, color = indigo];
+	"lib_TempCorr0" -> "TempCorr0" [label=13, color = darkgoldenrod2];
+	"lib_T2EPLF1" -> "T2EPLF1" [label=13, color = darkgoldenrod2];
+	"x" -> "paths" [label=4, color = mediumorchid];
+	"lib_T2EPLF3" -> "T2EPLF3" [label=13, color = darkgoldenrod2];
+	"ui_par_hb_const" -> "HtrPar" [label=8, style=dashed, color = azure4];
+	"calc_heat_ex_duty" -> "PTSmax" [label=14, style=dashed, color = gold4];
+	"HCEabs_3" -> "ui_hce_opt_eff_3" [label=6, style=dashed, color = indigo];
+	"HCEabs_3" -> "HCEabs" [label=6, style=dashed, color = indigo];
+	"ui_hce_broken_glass_3" -> "ui_hce_opt_eff_3" [label=6, style=dashed, color = indigo];
+	"ui_pb_q_design" -> "ui_design_exact_area_sm_1" [label=12, style=dashed, color = palevioletred];
+	"lib_ui_pb_description" -> "ui_pb_description" [label=13, color = darkgoldenrod2];
+	"HCEmisc_3" -> "ui_hce_opt_eff_3" [label=6, style=dashed, color = indigo];
+	"HCEmisc_3" -> "HCEmisc" [label=6, style=dashed, color = indigo];
+	"HCEA1_2" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"HCEA1_2" -> "HCE_A1" [label=6, style=dashed, color = indigo];
+	"lib_HtrParF2" -> "HtrParF2" [label=10, color = aquamarine3];
+	"HCEA2_1" -> "HCE_A2" [label=6, style=dashed, color = indigo];
+	"HCEA2_1" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"ui_disp_2_fossil" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_fossil" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_fossil" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_fossil" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_fossil" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_fossil" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_fossil" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_fossil" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_fossil" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_fossil" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_fossil" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"use_pb_library_values" -> "state" [label=13, color = darkgoldenrod2];
+	"lib_CHTFParF2" -> "CHTFParF2" [label=10, color = aquamarine3];
+	"SfPipeHl2" -> "ui_piping_heat_loss" [label=12, style=dashed, color = palevioletred];
+	"lib_GeoAcc" -> "GeoAcc" [label=9, color = darkorchid4];
+	"ui_disp_5_nosolar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_nosolar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_nosolar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_nosolar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_nosolar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_nosolar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_nosolar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_nosolar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_nosolar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_nosolar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_nosolar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"solar_data_file_name" -> "solar_resource_file" [label=22, style=dashed, color = sienna1];
+	"solar_data_file_name" -> "solar_data_file_name_load" [label=25, color = sienna4];
+	"lib_hce_condition" -> "ui_hce_condition" [label=17, color = sienna4];
+	"SfPar" -> "ui_par_dp_total" [label=8, style=dashed, color = azure4];
+	"BOPParPF" -> "BOPPar" [label=8, style=dashed, color = azure4];
+	"lib_ui_par_hb_const" -> "ui_par_hb_const" [label=10, color = aquamarine3];
+	"HCEabs_4" -> "ui_hce_opt_eff_4" [label=6, style=dashed, color = indigo];
+	"HCEabs_4" -> "HCEabs" [label=6, style=dashed, color = indigo];
+	"ui_disp_2_turbout" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_turbout" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_turbout" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_turbout" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_turbout" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_turbout" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_turbout" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_turbout" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_turbout" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_turbout" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_turbout" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"calc_col_factor" -> "calc_hce_col_factor" [label=6, style=dashed, color = indigo];
+	"SfPipeHl300" -> "ui_piping_heat_loss" [label=12, style=dashed, color = palevioletred];
+	"lib_CtParF0" -> "CtParF0" [label=10, color = aquamarine3];
+	"ui_HCEA4" -> "HCEA4_4" [label=18, color = skyblue4];
+	"ui_HCEA4" -> "HCEA4_3" [label=19, color = orange3];
+	"ui_HCEA4" -> "HCEA4_2" [label=20, color = seashell4];
+	"ui_HCEA4" -> "HCEA4_1" [label=21, color = sienna];
+	"lib_ui_sca_aperture_area" -> "ui_sca_aperture_area" [label=9, color = darkorchid4];
+	"ui_par_tes_const" -> "HhtfPar" [label=8, style=dashed, color = azure4];
+	"ui_hce_thermloss_weighted_m2" -> "ui_hce_weighted_thermal_losses" [label=12, style=dashed, color = palevioletred];
+	"ui_disp_8_nosolar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_nosolar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_nosolar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_nosolar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_nosolar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_nosolar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_nosolar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_nosolar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_nosolar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_nosolar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_nosolar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"lib_HCEEnvTrans" -> "ui_HCEEnvTrans" [label=17, color = sienna4];
+	"HCEA0_2" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"HCEA0_2" -> "HCE_A0" [label=6, style=dashed, color = indigo];
+	"lib_ui_pb_type" -> "ui_pb_type" [label=13, color = darkgoldenrod2];
+	"lib_E2TPLF3" -> "E2TPLF3" [label=13, color = darkgoldenrod2];
+	"ui_q_design" -> "ui_pb_q_design" [label=12, style=dashed, color = palevioletred];
+	"ui_q_design" -> "ui_min_therm_input" [label=11, style=dashed, color = olivedrab];
+	"ui_q_design" -> "ui_max_therm_input" [label=11, style=dashed, color = olivedrab];
+	"ui_q_design" -> "PFSmax" [label=14, style=dashed, color = gold4];
+	"ui_q_design" -> "ui_tes_q_design" [label=14, style=dashed, color = gold4];
+	"ui_q_design" -> "calc_max_energy" [label=14, style=dashed, color = gold4];
+	"ui_q_design" -> "PTSmax" [label=14, style=dashed, color = gold4];
+	"ConcFac" -> "calc_col_factor" [label=15, style=dashed, color = crimson];
+	"use_par_library_values" -> "state" [label=10, color = aquamarine3];
+	"ui_par_antifreeze_const" -> "AntiFrPar" [label=8, style=dashed, color = azure4];
+	"E2TPLF1" -> "ui_min_therm_input" [label=11, style=dashed, color = olivedrab];
+	"E2TPLF1" -> "ui_max_therm_input" [label=11, style=dashed, color = olivedrab];
+	"lib_ui_par_fixedblock_const" -> "ui_par_fixedblock_const" [label=10, color = aquamarine3];
+	"lib_hce_broken_glass" -> "ui_hce_broken_glass" [label=17, color = sienna4];
+	"ui_HCEA0" -> "HCEA0_4" [label=18, color = skyblue4];
+	"ui_HCEA0" -> "HCEA0_3" [label=19, color = orange3];
+	"ui_HCEA0" -> "HCEA0_2" [label=20, color = seashell4];
+	"ui_HCEA0" -> "HCEA0_1" [label=21, color = sienna];
+	"library_folder_list" -> "L" [label=23, color = sienna2];
+	"use_sca_library_values" -> "state" [label=9, color = darkorchid4];
+	"lib_TurbEffG" -> "TurbEffG" [label=13, color = darkgoldenrod2];
+	"ui_disp_2_nosolar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_nosolar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_nosolar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_nosolar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_nosolar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_nosolar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_nosolar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_nosolar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_nosolar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_nosolar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_nosolar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_HCEA5" -> "HCEA5_4" [label=18, color = skyblue4];
+	"ui_HCEA5" -> "HCEA5_3" [label=19, color = orange3];
+	"ui_HCEA5" -> "HCEA5_2" [label=20, color = seashell4];
+	"ui_HCEA5" -> "HCEA5_1" [label=21, color = sienna];
+	"ui_disp_2_solar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_solar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_solar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_solar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_solar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_solar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_solar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_solar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_solar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_solar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_2_solar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"HCEA2_3" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"HCEA2_3" -> "HCE_A2" [label=6, style=dashed, color = indigo];
+	"ui_disp_6_nosolar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_nosolar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_nosolar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_nosolar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_nosolar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_nosolar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_nosolar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_nosolar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_nosolar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_nosolar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_6_nosolar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_hce_weighted_thermal_losses" -> "ui_design_exact_area_sm_1" [label=12, style=dashed, color = palevioletred];
+	"HCEA5_1" -> "HCE_A5" [label=6, style=dashed, color = indigo];
+	"HCEA5_1" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"lib_IamF0" -> "IamF0" [label=9, color = darkorchid4];
+	"ui_HCEdust" -> "HCEdust" [label=15, style=dashed, color = crimson];
+	"cooling_tower_operation_mode" -> "CtOpF" [label=26, color = skyblue];
+	"ui_HCEmisc" -> "HCEmisc_4" [label=18, color = skyblue4];
+	"ui_HCEmisc" -> "HCEmisc_3" [label=19, color = orange3];
+	"ui_HCEmisc" -> "HCEmisc_2" [label=20, color = seashell4];
+	"ui_HCEmisc" -> "HCEmisc_1" [label=21, color = sienna];
+	"ui_HCEabs" -> "HCEabs_4" [label=18, color = skyblue4];
+	"ui_HCEabs" -> "HCEabs_3" [label=19, color = orange3];
+	"ui_HCEabs" -> "HCEabs_2" [label=20, color = seashell4];
+	"ui_HCEabs" -> "HCEabs_1" [label=21, color = sienna];
+	"HCEA0_1" -> "HCE_A0" [label=6, style=dashed, color = indigo];
+	"HCEA0_1" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"lib_HhtfParPF" -> "HhtfParPF" [label=10, color = aquamarine3];
+	"lib_HCEBelShad" -> "ui_HCEBelShad" [label=17, color = sienna4];
+	"lib_MirCln" -> "MirCln" [label=9, color = darkorchid4];
+	"HCEFrac_1" -> "ui_hce_thermloss_weighted_m" [label=6, style=dashed, color = indigo];
+	"HCEFrac_1" -> "ui_hce_opt_eff_weighted" [label=6, style=dashed, color = indigo];
+	"HCEFrac_1" -> "HCEFrac" [label=6, style=dashed, color = indigo];
+	"lib_CtParF1" -> "CtParF1" [label=10, color = aquamarine3];
+	"HhtfParPF" -> "HhtfPar" [label=8, style=dashed, color = azure4];
+	"ui_par_ct0_const" -> "CtPar" [label=8, style=dashed, color = azure4];
+	"lib_CtParPF" -> "CtParPF" [label=10, color = aquamarine3];
+	"ui_hce_name" -> "ui_hce_name_4" [label=18, color = skyblue4];
+	"ui_hce_name" -> "ui_hce_name_3" [label=19, color = orange3];
+	"ui_hce_name" -> "ui_hce_name_2" [label=20, color = seashell4];
+	"ui_hce_name" -> "ui_hce_name_1" [label=21, color = sienna];
+	"HCEA1_4" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"HCEA1_4" -> "HCE_A1" [label=6, style=dashed, color = indigo];
+	"lib_TempCorr1" -> "TempCorr1" [label=13, color = darkgoldenrod2];
+	"ui_par_turb_out_gr" -> "HtrPar" [label=8, style=dashed, color = azure4];
+	"ui_par_turb_out_gr" -> "BOPPar" [label=8, style=dashed, color = azure4];
+	"ui_par_turb_out_gr" -> "PbFixPar" [label=8, style=dashed, color = azure4];
+	"ui_par_turb_out_gr" -> "CtPar" [label=8, style=dashed, color = azure4];
+	"ui_par_turb_out_gr" -> "HhtfPar" [label=8, style=dashed, color = azure4];
+	"ui_disp_9_fossil" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_fossil" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_fossil" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_fossil" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_fossil" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_fossil" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_fossil" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_fossil" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_fossil" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_fossil" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_9_fossil" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_fossil" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_fossil" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_fossil" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_fossil" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_fossil" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_fossil" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_fossil" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_fossil" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_fossil" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_fossil" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_7_fossil" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"file_to_key()( f_name )" -> "solar_resource" [label=24, color = sienna3];
+	"HCEA5_4" -> "HCE_A5" [label=6, style=dashed, color = indigo];
+	"HCEA5_4" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"lib_TempCorrF" -> "TempCorrF" [label=13, color = darkgoldenrod2];
+	"ui_hce_hl_term_2" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_2" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_2" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_2" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"ui_disp_8_turbout" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_turbout" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_turbout" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_turbout" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_turbout" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_turbout" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_turbout" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_turbout" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_turbout" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_turbout" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_8_turbout" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_hce_hl_term_4" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_4" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_4" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_4" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"ui_PerfFac" -> "PerfFac_4" [label=18, color = skyblue4];
+	"ui_PerfFac" -> "PerfFac_3" [label=19, color = orange3];
+	"ui_PerfFac" -> "PerfFac_2" [label=20, color = seashell4];
+	"ui_PerfFac" -> "PerfFac_1" [label=21, color = sienna];
+	"ui_disp_1_solar" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_solar" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_solar" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_solar" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_solar" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_solar" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_solar" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_solar" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_solar" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_solar" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_1_solar" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_solar_multiple" -> "Solar_Field_Area" [label=12, style=dashed, color = palevioletred];
+	"ui_solar_multiple" -> "Solar_Field_Mult" [label=12, style=dashed, color = palevioletred];
+	"HCEEnvTrans_1" -> "ui_hce_opt_eff_1" [label=6, style=dashed, color = indigo];
+	"HCEEnvTrans_1" -> "HCEEnvTrans" [label=6, style=dashed, color = indigo];
+	"HCEFrac_2" -> "ui_hce_thermloss_weighted_m" [label=6, style=dashed, color = indigo];
+	"HCEFrac_2" -> "ui_hce_opt_eff_weighted" [label=6, style=dashed, color = indigo];
+	"HCEFrac_2" -> "HCEFrac" [label=6, style=dashed, color = indigo];
+	"ui_HCEBelShad" -> "HCEBelShad_4" [label=18, color = skyblue4];
+	"ui_HCEBelShad" -> "HCEBelShad_3" [label=19, color = orange3];
+	"ui_HCEBelShad" -> "HCEBelShad_2" [label=20, color = seashell4];
+	"ui_HCEBelShad" -> "HCEBelShad_1" [label=21, color = sienna];
+	"ui_HCEA6" -> "HCEA6_4" [label=18, color = skyblue4];
+	"ui_HCEA6" -> "HCEA6_3" [label=19, color = orange3];
+	"ui_HCEA6" -> "HCEA6_2" [label=20, color = seashell4];
+	"ui_HCEA6" -> "HCEA6_1" [label=21, color = sienna];
+	"ui_hce_opt_eff_1" -> "ui_hce_opt_eff_weighted" [label=6, style=dashed, color = indigo];
+	"lib_HCEA6" -> "ui_HCEA6" [label=17, color = sienna4];
+	"lib_TempCorr2" -> "TempCorr2" [label=13, color = darkgoldenrod2];
+	"ui_hce_broken_glass" -> "ui_hce_broken_glass_4" [label=18, color = skyblue4];
+	"ui_hce_broken_glass" -> "ui_hce_broken_glass_3" [label=19, color = orange3];
+	"ui_hce_broken_glass" -> "ui_hce_broken_glass_2" [label=20, color = seashell4];
+	"ui_hce_broken_glass" -> "ui_hce_broken_glass_1" [label=21, color = sienna];
+	"lib_ui_par_ct0_const" -> "ui_par_ct0_const" [label=10, color = aquamarine3];
+	"lib_Ave_Focal_Length" -> "Ave_Focal_Length" [label=9, color = darkorchid4];
+	"ui_par_bop_const" -> "BOPPar" [label=8, style=dashed, color = azure4];
+	"lib_ChtfParPF" -> "ChtfParPF" [label=10, color = aquamarine3];
+	"ui_disp_5_fossil" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_fossil" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_fossil" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_fossil" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_fossil" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_fossil" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_fossil" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_fossil" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_fossil" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_fossil" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_5_fossil" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_net_capacity" -> "system_capacity" [label=11, style=dashed, color = olivedrab];
+	"HCEA2_4" -> "HCE_A2" [label=6, style=dashed, color = indigo];
+	"HCEA2_4" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"TSHOURS" -> "calc_max_energy" [label=14, style=dashed, color = gold4];
+	"HCEabs_2" -> "ui_hce_opt_eff_2" [label=6, style=dashed, color = indigo];
+	"HCEabs_2" -> "HCEabs" [label=6, style=dashed, color = indigo];
+	"ui_design_exact_area_sm_1" -> "ui_fixed_land_area" [label=12, style=dashed, color = palevioletred];
+	"ui_design_exact_area_sm_1" -> "ui_design_exact_num_scas_sm_1" [label=12, style=dashed, color = palevioletred];
+	"ui_disp_4_turbout" -> "FossilFill" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_turbout" -> "TSLogic" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_turbout" -> "NUMTOU" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_turbout" -> "ffrac" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_turbout" -> "tslogic_a" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_turbout" -> "tslogic_b" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_turbout" -> "tslogic_c" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_turbout" -> "fdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_turbout" -> "diswos" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_turbout" -> "disws" [label=7, style=dashed, color = burlywood4];
+	"ui_disp_4_turbout" -> "qdisp" [label=7, style=dashed, color = burlywood4];
+	"ui_hce_hl_term_3" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_3" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_3" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"ui_hce_hl_term_3" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+	"lib_TempCorr3" -> "TempCorr3" [label=13, color = darkgoldenrod2];
+	"lib_BOPParF1" -> "BOPParF1" [label=10, color = aquamarine3];
+	"lib_TurSUE" -> "TurSUE" [label=13, color = darkgoldenrod2];
+	"ui_hce_condition" -> "ui_hce_condition_4" [label=18, color = skyblue4];
+	"ui_hce_condition" -> "ui_hce_condition_3" [label=19, color = orange3];
+	"ui_hce_condition" -> "ui_hce_condition_2" [label=20, color = seashell4];
+	"ui_hce_condition" -> "ui_hce_condition_1" [label=21, color = sienna];
+	"ui_sca_aperture_area" -> "calc_aperture_area_at_sm_1" [label=12, style=dashed, color = palevioletred];
+	"ui_sca_aperture_area" -> "ui_design_exact_num_scas_sm_1" [label=12, style=dashed, color = palevioletred];
+	"ui_sca_aperture_area" -> "ui_aperture_area_per_SCA" [label=12, style=dashed, color = palevioletred];
+	"in_location" -> "location" [label=1, color = brown4];
+	"ui_hce_HCEdust" -> "ui_hce_opt_eff_1" [label=6, style=dashed, color = indigo];
+	"ui_hce_HCEdust" -> "ui_hce_opt_eff_4" [label=6, style=dashed, color = indigo];
+	"ui_hce_HCEdust" -> "ui_hce_opt_eff_3" [label=6, style=dashed, color = indigo];
+	"ui_hce_HCEdust" -> "ui_hce_opt_eff_2" [label=6, style=dashed, color = indigo];
+	"MinGrOut" -> "ui_min_therm_input" [label=11, style=dashed, color = olivedrab];
+	"MinGrOut" -> "PTTMIN" [label=11, style=dashed, color = olivedrab];
+	"ui_par_sf_area" -> "ChtfPar" [label=8, style=dashed, color = azure4];
+	"ui_par_sf_area" -> "SfPar" [label=8, style=dashed, color = azure4];
+	"HCEA1_3" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"HCEA1_3" -> "HCE_A1" [label=6, style=dashed, color = indigo];
+	"lib_CHTFParF1" -> "CHTFParF1" [label=10, color = aquamarine3];
+	"ui_reference_wind_speed" -> "ui_hce_hl_term_1" [label=6, style=dashed, color = indigo];
+	"PbFixPar" -> "ui_par_dp_total" [label=8, style=dashed, color = azure4];
+	"SfParPF" -> "SfPar" [label=8, style=dashed, color = azure4];
+	"ui_reference_ambient_temperature" -> "calc_field_htf_average_temp" [label=12, style=dashed, color = palevioletred];
+	"ui_reference_ambient_temperature" -> "ui_hce_hl_term_2" [label=6, style=dashed, color = indigo];
+	"user_specified_weather_file" -> "solar_resource_file" [label=22, style=dashed, color = sienna1];
+	"PerfFac_4" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"PerfFac_4" -> "PerfFac" [label=6, style=dashed, color = indigo];
+	"use_specific_weather_file" -> "solar_resource_file" [label=22, style=dashed, color = sienna1];
+	"lib_HhtfParF0" -> "HhtfParF0" [label=10, color = aquamarine3];
+	"lib_HCEA2" -> "ui_HCEA2" [label=17, color = sienna4];
+	"ui_reference_direct_normal_irradiance" -> "ui_design_exact_area_sm_1" [label=12, style=dashed, color = palevioletred];
+	"ui_reference_direct_normal_irradiance" -> "ui_hce_heat_losses_2" [label=6, style=dashed, color = indigo];
+	"ui_reference_direct_normal_irradiance" -> "ui_hce_heat_losses_3" [label=6, style=dashed, color = indigo];
+	"ui_reference_direct_normal_irradiance" -> "ui_hce_heat_losses_4" [label=6, style=dashed, color = indigo];
+	"ui_reference_direct_normal_irradiance" -> "ui_hce_heat_losses_1" [label=6, style=dashed, color = indigo];
+}

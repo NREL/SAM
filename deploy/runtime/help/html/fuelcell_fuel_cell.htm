@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Fuel Cell</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "fuelcell_fuel_cell.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Fuel Cell</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">Use the inputs on the Fuel Cell page to define the type and properties of the fuel cell and stack.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Fuel Cell Type</span></h3>
+<p class="p_Text"><span class="f_Text">The fuel cell type determines the type of fuel cell. For more detailed descriptions of the fuel cell types, see Chapter 2 of the Fuel Cell Power Model User Guide available on the <a href="https://www.nrel.gov/hydrogen/fuel-cell-power-model.html" target="_blank" class="weblink" title="https://www.nrel.gov/hydrogen/fuel-cell-power-model.html">Fuel Cell Power Model website.</a></span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Molten Carbonate Fuel Cell (MCFC)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Operate at temperatures of 650°C and above and can convert fuels to hydrogen without an external reformer. The high operating temperatures and corrosive electrolyte in MCFC fuel cells causes them to be less durable than other types. They also have longer ramp rates to maintain even distribution of temperature in the cell.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Phosphoric Acid Fuel Cell (PAFC)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">More mature cell type than the others and is the first to be used commercially. The operate at about 200°C with a lifetime of about 10 years.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Solid Oxide Fuel Cells (SOFC)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Operate at temperatures between 650°C and 1,000°C and can convert a wide range of fossil fuels.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Custom</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Specify your own size, dynamic response and efficiency curves.</span></p>
+<p class="p_Text"><span class="f_Text">When you choose a fuel cell type from the list, SAM populates the following inputs with default values from the tables shown <a href="fuelcell_fuel_cell.htm#defaultparameters" class="topiclink">below</a>. If you choose the Custom fuel cell type, replace the values of these inputs with values for your fuel cell type.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Unit nameplate</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Minimum unit output</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Ramp rate up limit (per unit)</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Ramp rate down limit (per unit)</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Electrical and thermal efficiency curve</span></p><p class="p_Text"><span class="f_Text">You can change the default values after applying them.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Changing the fuel cell type does not change the degradation and replacement inputs, or costs on the <a href="fuelcell_system_costs.htm" class="topiclink">System Costs</a> page. Be sure to review all of the parameters to ensure that their values are appropriate for your analysis.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Cell and Stack Properties</span></h3>
+<p class="p_Text"><span class="f_Text">The system properties define the size, dynamic response and degradation characteristics of the fuel cell and fuel cell stack. A cell stack is typically made up of several cells or units connected in series and parallel to achieve design voltage and power requirements.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Because the fuel cell model is an energy flow model rather than an electrical model, it does not model current and voltages, so you do not need to specify how cells are configured in series and parallel.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Size</span></h4>
+<p class="p_Text"><span class="f_Text">The size parameters determine the size and number of fuel cells in the cell stack.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Unit nameplate, kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The rated electric power capacity of a single fuel cell in AC kilowatts.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Minimum unit output, % of nameplate or kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum electric power output of a single fuel cell either as a percentage of fuel cell unit rated power or in kW. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of units in stack</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of fuel cells in the fuel cell stack.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total cell stack nameplate, kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The rated capacity of the fuel cell cell stack in kilowatts.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total System Nameplate (kW) = Unit Nameplate (kW) × Number of Units</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Minimum cell stack output, kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum electirc power output of the entire cell stack in AC kilowatts. SAM will not allow the cell stack to deliver power at a level below this limit during operation.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Minimum System Output (kW) = Minimum Unit Output (%) × Unit Nameplate (kW) × Number of Units</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">or</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Minimum System Output (kW) = Minimum Unit Output (kW) × Number of Units</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Dynamic Response</span></h4>
+<p class="p_Text"><span class="f_Text">The dynamic response parameters determine how long it takes the cell stack to reach its rated power after startup or to respond to increases and decreases in electric load.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM attempts to operate the cell stack at the operating capacity determined by the nameplate capacity and the parameters on the <a href="fuelcell_dispatch.htm" class="topiclink">Dispatch page</a>. The operating capacity is typically less than the nameplate capacity.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Start simulation with fuel cell operating</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check this box if you want to start the simulation with the fuel cell stack at the operating capacity. If the box is not checked, the fuel cell will not start delivering heat and power at the beginning of the simulation until after the startup time is finished.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Startup time, hours</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The amount of time required in hours for the cell stack to reach its operating capacity after a shutdown, or at the beginning of the simulation if </span><span class="f_CHInterfaceElement">Start simulation with fuel cell operating</span><span class="f_VariableDescription"> is not checked.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Shutdown time, hours</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The amount of time required in hours for the cell stack power output to reach zero after a shutdown is initiated.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ramp rate up limit (per unit), %/hour or kW/hour</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum rate of increase in the cell stack power output, either as a percentage of nameplate capacity per hour or in kilowatts per hour. The cell stack power may be required to increase after a shutdown or in response to <a href="fuelcell_dispatch.htm" class="topiclink">dispatch</a> requirements.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ramp rate down limit (per unit), %/hour or kW/hour</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum rate of decrease in the cell stack operating power output, either as a percentage of nameplate capacity per hour or in kilowatts per hour. The cell stack power may be required to decrease for a shutdown or in response to <a href="fuelcell_dispatch.htm" class="topiclink">dispatch</a> requirements.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Calculated ramp rate up limit (per unit), kW/hour</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you specify the ramp rate up limit in %/hour, the calculated value shows the rate in kW/hour.</span></p>
+<p class="p_EquationExcel"><span class="f_VariableDescription">Ramp Rate Up Limit (kW/hour) = Unit Nameplate (kW) </span><span class="f_EquationExcel">× Ramp Rate Up Limit (%/hour)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Calculated ramp rate down limit (per unit), kW/hour</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you specify the ramp rate down limit in %/hour, the calculated value shows the rate in kW/hour.</span></p>
+<p class="p_EquationExcel"><span class="f_VariableDescription">Ramp Rate Down Limit (kW/hour) = Unit Nameplate (kW) </span><span class="f_EquationExcel">× Ramp Rate Down Limit (%/hour)</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Degradation</span></h4>
+<p class="p_Text"><span class="f_Text">The degradation parameters determine how the cell stack maximum power declines from year to year or after the cell stack is shut down and restarted.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Degradation</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The annual degradation rate either as a percentage of capacity (%/year) or in kilowatts of capacity (kW/year).</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Degradation due to restarting cell stack, kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The degradation in cell stack maximum power caused by shutting down and restarting the stack.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Shutdown Schedule</span></h4>
+<p class="p_Text"><span class="f_Text">The shutdown schedule determines when the cell stack is taken out of service for service, repairs, or replacement.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Shutdown hour of year</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The hour of year that the cell stack shutdown period begins. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If the </span><span class="f_CHInterfaceElement">Simulation over one year option</span><span class="f_VariableDescription"> is active on the <a href="lifetime.htm" class="topiclink">Lifetime and Degradation</a> page, the maximum value is 8,760. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If the lifetime and degradation option is </span><span class="f_CHInterfaceElement">Simulation over analysis period</span><span class="f_VariableDescription">, the shutdown hour may exceed 8,760, and you should specify the shutdown hour over the entire lifetime.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Hours shut down, hours</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The length of the shutdown period in hours.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">No. of shutdowns</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of shutdown periods in the project lifetime.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Stack Replacement</span></h3>
+<p class="p_Text"><span class="f_Text">The stack replacement parameters determine the number and timing of cell stack replacements over the project lifetime. The project lifetime is the same as the analysis period on the Financial Parameters input page.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If you choose to model cell stack replacements, be sure to set the replacement cost on the <a href="fuelcell_system_costs.htm" class="topiclink">System Costs</a> page to the cost of replacing the cell stack.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">No replacements</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Do not model cell stack replacement.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Replace at specified capacity</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Replace the cell stack when the fuel cell maximum power available reaches the specified capacity.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fuel cell stack replacement threshold, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The percentage of the cell stack nameplate </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Replace at specified schedule</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Replace the cell stack on a pre-determined annual schedule.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">To set the schedule, click </span><span class="f_CHInterfaceElement">Edit array</span><span class="f_VariableDescription"> and type a 1 in the row of the table for each year that the fuel cell stack is replaced. Type a zero for remaining rows. The first row in the table represents Year 1 in the project cash flow, or the first year that the system operates.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fuel cell stack replacement threshhold, %</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fuel cell replacement schedule</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Efficiency</span></h3>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="defaultparameters" class="hmanchor"></a><span class="f_Heading3_atocs_">Default Parameter Values</span></h3>
+<p class="p_Text"><span class="f_Text">The default parameters for the three fuel cell types are from the <a href="https://www.nrel.gov/hydrogen/fuel-cell-power-model.html" target="_blank" class="weblink" title="https://www.nrel.gov/hydrogen/fuel-cell-power-model.html">Fuel Cell Power Model</a>.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Default Size and Dynamic Response Parameters</span></h4>
+<p class="p_Text"><span class="f_Text">The percentages in the following table are percentage of nameplate capacity.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="border:none; border-spacing:0;">
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Parameter</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">MCFC</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">PAFC</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">SOFC</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Unit Nameplate</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">300 kW</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">400 kW</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">200 kW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Minimum unit output</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">20%</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">133%</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">30%</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Ramp rate up limit</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">17 kW/h</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">100%/hr</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">250%/hr</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Ramp rate down limit</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">17 kW/h</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">100%/hr</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">250%/hr</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Default Efficiency Curves</span></h4>
+<p class="p_Text"><span class="f_Text">The default electrical and thermal efficiency curves for each fuel cell type are shown in the tables below.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Molten Carbonate (MCFC)</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table style="border:none; border-spacing:0;">
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Power (%)</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Electrical Efficiency LHV (%)</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Maximum Heat Recovery (%)</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">16.1</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">19.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">25.5</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">22.8</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">34.8</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">28.5</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">44.1</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">33.9</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">53.4</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">38.4</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">62.7</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">43.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">49</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">72.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">45.3</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">48</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">81.4</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">47.2</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">47</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">90.7</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">47.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">46</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">100</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">46.1</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">45</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Phosphoric Acid (PAFC)</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table style="border:none; border-spacing:0;">
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Power (%)</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Electrical Efficiency LHV (%)</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Maximum Heat Recovery (%)</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">10.5</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">71.6</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">10.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">20.3</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">63.8</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">20.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">26.9</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">58.5</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">30.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">31.4</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">54.9</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">40.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">34.1</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">52.8</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">35.9</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">51.3</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">60.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">36.9</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50.5</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">70.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">37.5</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50.0</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">80.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">37.7</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">49.8</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">90.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">37.7</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">49.9</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">100.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">37.4</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50.0</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Solid Oxide (SOFC)</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table style="border:none; border-spacing:0;">
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Power (%)</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Electrical Efficiency LHV (%)</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Maximum Heat Recovery (%)</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">16.1</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">21.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">25.5</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">25.2</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">34.8</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">31.5</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">44.1</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">37.3</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">53.4</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">42.6</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">62.7</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">47.4</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">49</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">72.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">49.9</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">48</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">81.4</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">52.0</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">47</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">90.7</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">51.8</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">46</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">100</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">50.7</span></p>
+</td>
+<td style="vertical-align:top; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">45</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p style="line-height: 1.28; margin: 0 0 11px 0;"><span style="font-family: Arial,Helvetica,sans-serif; color: #000000;">&nbsp;</span></p>
+<p style="line-height: 1.28; margin: 0 0 11px 0;"><span style="font-family: Arial,Helvetica,sans-serif; color: #000000;">&nbsp;</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

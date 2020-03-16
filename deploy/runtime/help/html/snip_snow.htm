@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Snow</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "snip_snow.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Snow</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">For a description of the snow model, see the following publications available along with other technical documentation from the <a href="https://sam.nrel.gov/photovoltaic/pv-sub-page-2.html" target="_blank" class="weblink" title="https://sam.nrel.gov/photovoltaic/pv-sub-page-2.html">SAM website</a>:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Gilman, P.; Dobos, A.; DiOrio, N.; Freeman, J.; Janzou, S.; Ryberg, D. (2018) SAM Photovoltaic Model Technical Reference Update. 93 pp.; NREL/TP-6A20-67399</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Ryberg, D.; Freeman, J. (2017). &nbsp;Integration, Validation and Application of a PV Snow Coverage Model in SAM. National Renewable Energy Laboratory. 33 pp. TP-6A20-68705 available along with other technical documentation from the <a href="https://sam.nrel.gov/photovoltaic/pv-sub-page-2.html" target="_blank" class="weblink" title="https://sam.nrel.gov/photovoltaic/pv-sub-page-2.html">SAM website</a>.</span></p><p class="p_Text"><span class="f_Text">Use the following output variables to explore the effect of snow cover (see <a href="pv_results.htm" class="topiclink">Results</a> for descriptions of the variables):</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_CHInterfaceElement" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Array DC power loss due to snow (kW)</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_CHInterfaceElement" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Weather file snow depth file (cm)</span></p><p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Snow depth data is not available in the NSRDB PSM V3 dataset. It is available in the older MTS 1 data, which you can download using the </span><span class="f_CHInterfaceElement">Legacy data (advanced)</span><span class="f_Note"> option on the Location and Resource page if your project location is near an MTS 1 data site. If the Legacy option does not work, you can access the original NSRDB 1961 - 1990 TMY2 files from the <a href="https://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/" target="_blank" class="weblink" title="https://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/">archived TMY2 website</a>. See the note on the <a href="https://sam.nrel.gov/weather-data.html" target="_blank" class="weblink" title="https://sam.nrel.gov/weather-data.html">Weather Data</a> page of the SAM website for a link to detailed instructions.</span></p>
+<p class="p_Text"><span class="f_Text">SAM's snow model for photovoltaic systems estimates the loss in system output during time steps when the array is covered in snow. It uses snow depth data from the weather file, and for time steps with snow, estimates the percentage of the photovoltaic array that is covered with snow based on the array's tilt angle, plane-of-array irradiance, and ambient temperature. The model assumes that the array is completely covered with snow when the snow depth data indicates a snowfall, and that snow slides off the array as the ambient temperature increases.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Estimate snow losses</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check this option to model snow losses if the weather file on the <a href="pv_location_and_resource.htm" class="topiclink">Location and Resource</a> page includes snow depth data.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

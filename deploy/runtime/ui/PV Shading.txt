@@ -5,7 +5,7 @@ PV Shading
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 205
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -49,6 +52,9 @@ Width
 Height
 3
 450
+Tool Tip
+5
+0
 Caption
 5
 68
@@ -59,7 +65,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 11
@@ -76,6 +82,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -104,7 +113,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -121,6 +130,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -149,7 +161,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 11
@@ -166,6 +178,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 35
@@ -194,7 +209,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -211,6 +226,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 37
@@ -239,7 +257,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -256,6 +274,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -284,7 +305,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -301,6 +322,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 43
@@ -329,7 +353,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -346,6 +370,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -374,7 +401,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -391,6 +418,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 27
@@ -419,7 +449,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -436,6 +466,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -464,7 +497,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -481,6 +514,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 28
@@ -509,7 +545,7 @@ AlignTop
 Button
 
 1
-7
+8
 Name
 5
 13
@@ -526,6 +562,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 27
@@ -536,7 +575,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 13
@@ -553,10 +592,13 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
-34
-Estimate losses from snow coverage
+20
+Estimate snow losses
 State
 2
 0
@@ -566,7 +608,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -583,6 +625,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -611,7 +656,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -628,6 +673,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -656,7 +704,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -673,6 +721,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -701,7 +752,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -718,6 +769,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -746,7 +800,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -763,6 +817,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -805,7 +862,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -822,6 +879,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -864,7 +924,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -881,6 +941,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -923,7 +986,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -940,6 +1003,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -982,7 +1048,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -999,6 +1065,9 @@ Width
 Height
 3
 45
+Tool Tip
+5
+0
 Caption
 5
 178
@@ -1027,7 +1096,7 @@ AlignTop
 Image
 
 1
-7
+8
 Name
 5
 9
@@ -1044,6 +1113,9 @@ Width
 Height
 3
 108
+Tool Tip
+5
+0
 Image
 7
 PV Shading_object 12.png
@@ -1053,7 +1125,7 @@ Centered
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -1070,6 +1142,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1089,7 +1164,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -1106,6 +1181,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1125,7 +1203,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -1142,6 +1220,9 @@ Width
 Height
 3
 96
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -1152,7 +1233,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -1169,6 +1250,9 @@ Width
 Height
 3
 90
+Tool Tip
+5
+0
 Caption
 5
 54
@@ -1179,7 +1263,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -1196,6 +1280,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 80
@@ -1224,7 +1311,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1241,6 +1328,9 @@ Width
 Height
 3
 48
+Tool Tip
+5
+0
 Caption
 5
 82
@@ -1269,7 +1359,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1286,6 +1376,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 127
@@ -1314,7 +1407,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1331,6 +1424,9 @@ Width
 Height
 3
 42
+Tool Tip
+5
+0
 Caption
 5
 189
@@ -1359,7 +1455,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1376,6 +1472,9 @@ Width
 Height
 3
 48
+Tool Tip
+5
+0
 Caption
 5
 148
@@ -1404,7 +1503,7 @@ AlignTop
 Image
 
 1
-7
+8
 Name
 5
 20
@@ -1421,6 +1520,9 @@ Width
 Height
 3
 112
+Tool Tip
+5
+0
 Image
 7
 PV Shading_self_shading_diagram.png
@@ -1430,7 +1532,7 @@ Centered
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1447,6 +1549,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1489,7 +1594,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -1506,6 +1611,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -1518,7 +1626,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1535,6 +1643,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1577,7 +1688,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1594,6 +1705,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1636,7 +1750,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -1653,6 +1767,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1695,7 +1812,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -1712,6 +1829,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -1724,7 +1844,7 @@ TabOrder
 ShadingFactors
 
 1
-8
+9
 Name
 5
 17
@@ -1741,6 +1861,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 ShowDBOptions
 2
 1
@@ -1754,7 +1877,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1771,6 +1894,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1813,7 +1939,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -1830,6 +1956,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -1842,7 +1971,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1859,6 +1988,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1901,7 +2033,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1918,6 +2050,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1960,7 +2095,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -1977,6 +2112,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2019,7 +2157,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -2036,6 +2174,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -2048,7 +2189,7 @@ TabOrder
 ShadingFactors
 
 1
-8
+9
 Name
 5
 17
@@ -2065,6 +2206,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 ShowDBOptions
 2
 1
@@ -2078,7 +2222,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -2095,6 +2239,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2137,7 +2284,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -2154,6 +2301,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -2166,7 +2316,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -2183,6 +2333,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2225,7 +2378,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -2242,6 +2395,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2284,7 +2440,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -2301,6 +2457,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2343,7 +2502,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -2360,6 +2519,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -2372,7 +2534,7 @@ TabOrder
 ShadingFactors
 
 1
-8
+9
 Name
 5
 17
@@ -2389,6 +2551,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 ShowDBOptions
 2
 1
@@ -2402,7 +2567,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -2419,6 +2584,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2461,7 +2629,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -2478,6 +2646,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -2490,7 +2661,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -2507,6 +2678,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2549,7 +2723,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -2566,6 +2740,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2608,7 +2785,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -2625,6 +2802,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2667,7 +2847,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -2684,6 +2864,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -2696,7 +2879,7 @@ TabOrder
 ShadingFactors
 
 1
-8
+9
 Name
 5
 17
@@ -2713,6 +2896,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 ShowDBOptions
 2
 1
@@ -2726,7 +2912,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 21
@@ -2743,6 +2929,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2762,7 +2951,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 15
@@ -2779,6 +2968,9 @@ Width
 Height
 3
 30
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -2806,7 +2998,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 11
@@ -2823,6 +3015,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -2850,7 +3045,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -2867,6 +3062,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2909,7 +3107,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -2926,6 +3124,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2968,7 +3169,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -2985,6 +3186,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3027,7 +3231,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -3044,6 +3248,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3086,7 +3293,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -3103,6 +3310,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3145,7 +3355,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -3162,6 +3372,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3204,7 +3417,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -3221,6 +3434,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3263,7 +3479,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -3280,6 +3496,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3322,7 +3541,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -3339,6 +3558,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3381,7 +3603,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -3398,6 +3620,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3440,7 +3665,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -3457,6 +3682,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3499,7 +3727,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -3516,6 +3744,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0

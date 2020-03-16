@@ -338,8 +338,15 @@ runTornado = yesno("Would you like to run a few parametrics and generate a torna
 if (runTornado){
 	variation = 0.10;
 	outLabel = 'lcoe_fcr';
+/*
 	vars = ['wind_turbine_hub_ht',			
 			'wind_farm_losses_percent',			
+			'ui_capital_cost_capacity',			
+			'c_nominal_interest_rate',			
+			'ui_operating_cost_capacity'		
+		];
+*/	
+	vars = ['wind_turbine_hub_ht',			
 			'ui_capital_cost_capacity',			
 			'c_nominal_interest_rate',			
 			'ui_operating_cost_capacity'		

@@ -34,7 +34,7 @@ but meteorological data, which were "observed at or near the designated time", w
 
 @*/
 
-//@ name=timesteps;type=combo;label=Interval Length:;value=Same as Load,30 min,15 min,10 min,5 min;sel=0;
+//@ name=timesteps;type=combo;label=Interval Length:;value=Same as Load,30 min,15 min,10 min,5 min,1 min;sel=0;
 //@ name=file_loc;type=combo;label=File selected from:;value=Location and Resource page,User input;sel=0;
 
 // interpolates between two values measured at t0 and t1;
@@ -270,7 +270,7 @@ function intrp_data(input_data, ts){
 	inc = 0;
 	prev = [0];
 	pprev = [];
-	output = [];
+	output = alloc(8760*(ts+1));
 	avg_flag = false;
 	while(line < #input_data){
 		arr = input_data[line];
@@ -637,7 +637,11 @@ function solar_resource_interpolate(input_data, intervals_per_hour, case){
 // checks file for valid input and prints interpolated weather file
 function interpolate_file(input_file, intervals_per_hour){
 	input_path = path_only(input_file);
-	input_name = split(file_only(input_file),'.')[0];
+	// does not handle lat lon named file
+//	input_name = split(file_only(input_file),'.')[0];
+	input_name = file_only(input_file);
+	ext = ext_only(input_file);
+	input_name = left(input_name, strlen(input_name)-strlen(ext)-1);
 	
 	//make sure it's not already interpolated
 	phrase = "mInterpolated";
@@ -711,7 +715,7 @@ function interpolate_file(input_file, intervals_per_hour){
 	output_data = check_sunup(output, lat, long, tz);
 	
 	output_dir = wfdownloaddir();
-	output_path = output_dir+'\\'+input_name+ '_'+(60/intervals_per_hour)+'mInterpolated.csv';
+	output_path = output_dir+'/'+input_name+ '_'+(60/intervals_per_hour)+'mInterpolated.csv';
 	csvwrite(output_path, output_data);
 	return output_path;
 }
@@ -727,7 +731,7 @@ function main(){
 		}
 		// standalone script, interpolate now
 		if (typeof(macro) == 'unknown') {
-			ts = to_real(choose_from_list([30, 15, 10, 5], "Choose Interval Length in Minutes", "", 1));
+			ts = to_real(choose_from_list([30, 15, 10, 5, 1], "Choose Interval Length in Minutes", "", 1));
 			intervals_per_hour = 60/ts;
 			output_path = interpolate_file(input_file, intervals_per_hour);
 			outln("Created " + output_path + ".");

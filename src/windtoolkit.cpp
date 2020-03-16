@@ -2,7 +2,7 @@
 *  Copyright 2017 Alliance for Sustainable Energy, LLC
 *
 *  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
+*  (ï¿½Allianceï¿½) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
 *  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
 *  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
 *  copies to the public, perform publicly and display publicly, and to permit others to do so.
@@ -26,8 +26,8 @@
 *  4. Redistribution of this software, without modification, must refer to the software by the same
 *  designation. Redistribution of a modified version of this software (i) may not refer to the modified
 *  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
+*  the underlying software originally provided by Alliance as ï¿½System Advisor Modelï¿½ or ï¿½SAMï¿½. Except
+*  to comply with the foregoing, the terms ï¿½System Advisor Modelï¿½, ï¿½SAMï¿½, or any confusingly similar
 *  designation may not be used to refer to any modified version of this software or any modified
 *  version of the underlying software originally provided by Alliance without the prior written consent
 *  of Alliance.
@@ -50,6 +50,7 @@
 //#include <wx/statline.h>
 #include <wx/stattext.h>
 #include <wx/combobox.h>
+#include <wx/listbox.h>
 #include <wx/textctrl.h>
 #include <wx/valtext.h>
 #include <wx/radiobut.h>
@@ -65,7 +66,7 @@ static const char *help_text =
 
 enum {
 	ID_radAddress, ID_radLatLon, ID_cboYears,
-	ID_txtAddress, ID_txtLat, ID_txtLon
+	ID_txtAddress, ID_txtLat, ID_txtLon, ID_lsthubheights
 };
 
 BEGIN_EVENT_TABLE( WindToolkitDialog, wxDialog )
@@ -91,9 +92,23 @@ WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	years.Add("2010");
 	years.Add("2011");
 	years.Add("2012");
+	years.Add("2013");
 
-	wxString InitialValue = "2012";
+	wxString InitialValue = "2013";
 	cboYears = new wxComboBox(this, ID_cboYears, InitialValue, wxDefaultPosition, wxDefaultSize, years, wxCB_READONLY);
+
+	wxArrayString hubheights;
+	hubheights.Add("10m");
+	hubheights.Add("40m");
+	hubheights.Add("60m");
+	hubheights.Add("80m");
+	hubheights.Add("100m");
+	hubheights.Add("120m");
+	hubheights.Add("140m");
+	hubheights.Add("160m");
+	hubheights.Add("200m");
+
+	lstHubheights = new wxListBox(this, ID_lsthubheights, wxDefaultPosition, wxDefaultSize, hubheights, wxLB_MULTIPLE);
 
 	wxBoxSizer *szll = new wxBoxSizer( wxHORIZONTAL );
 	szll->Add( new wxStaticText( this, wxID_ANY, "Latitude" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
@@ -112,9 +127,14 @@ WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	szyr->Add( new wxStaticText( this, wxID_ANY, "Select year"), wxALL|wxALIGN_CENTER_VERTICAL, 15 );
 	szyr->Add( cboYears, 0, wxALL, 5 );
 
+	wxBoxSizer *szhh = new wxBoxSizer(wxHORIZONTAL);
+	szhh->Add(new wxStaticText(this, wxID_ANY, "Select hub height"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
+	szhh->Add(lstHubheights, 0, wxALL, 5);
+
 	wxBoxSizer *szmain = new wxBoxSizer( wxVERTICAL );
 	szmain->Add( szgrid, 0, wxLEFT|wxRIGHT|wxTOP, 10 );
-	szmain->Add( szyr, 0, wxLEFT|wxRIGHT, 10 );
+	szmain->Add(szyr, 0, wxLEFT | wxRIGHT, 10);
+	szmain->Add(szhh, 0, wxLEFT | wxRIGHT, 10);
 
 	wxStaticText *note = new wxStaticText(this, wxID_ANY, help_text);
 	note->Wrap(550);
@@ -180,4 +200,13 @@ double WindToolkitDialog::GetLongitude()
 wxString WindToolkitDialog::GetYear()
 {
 	return cboYears->GetStringSelection();
+}
+
+wxArrayString WindToolkitDialog::GetHubHeights()
+{
+	wxArrayString hh;
+	for (size_t i = 0; i < lstHubheights->GetCount(); i++)
+		if (lstHubheights->IsSelected(i))
+			hh.Add(lstHubheights->GetString(i));
+	return hh;
 }

@@ -1,24 +1,40 @@
 /*@
 
-<p>This macro converts a solar resource file from the TMY2, TMY3, EPW, or SolarAnywhere&reg; 
-format to the SAM CSV format. These text file formats were orginally developed for 
-the datasets described below.</p>
+<p>This macro converts a solar resource text file from the following formats to 
+the SAM CSV format.</p>
 <br><br>
 <ul>
 <li><b>TMY2</b> is a non-delimited format developed by NREL for the National 
-    Solar Radiation database for the 1961-1990 update.</li>
-<li><b>TMY3</b> is a comma-delimited format developed by NREL for the NSRDB
-    1991-2010 update.</li>
+    Solar Radiation Database (NSRDB) for the 
+    <a href="https://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/">
+    1961-1990 update</a>. Note that these files are now available in SAM CSV 
+    format as <a href="https://nsrdb.nrel.gov/current-version">MTS 1</a> from 
+    the <a href="https://maps.nrel.gov/nsrdb-viewer">NREL NSRDB Viewer</a>.<br></li>
+<li><b>TMY3</b> is a comma-delimited format developed by NREL for the 
+    <a href="https://rredc.nrel.gov/solar/old_data/nsrdb/1991-2010/">NSRDB
+    1991-2010 update</a> and the 
+    <a href="https://rredc.nrel.gov/solar/old_data/nsrdb/1991-2005/tmy3/">
+    1991-2005 update</a>. These files are available from the NSRDB Viewer as 
+    <a href="https://nsrdb.nrel.gov/current-version">MTS 3 and MTS 2</a>, 
+    respectively.<br></li>
 <li><b>EPW</b> is a comma-delimited format developed for the U.S. Department
-    of Energy's EnergyPlus building simulation software.</li>
-<li><b>SolarAnywhere</b> is a comma-delimited format used by Clean Power 
-    Research's weather data service.</li>
+    of Energy's EnergyPlus building simulation software, and available on the
+    <a href="https://energyplus.net/weather">EnergyPlus Weather Data page</>.<br></li>
+<li><b>PVsyst CSV</b> is the <a href="http://files.pvsyst.com/help/meteo_pvsyst_standard_format.htm">
+    PVsyst standard format for hourly meteo data</a> used by the PVsyst software.<br></li>
+<li><b>PVGIS 5 CSV</b> is a comma-delimited format used for TMY weather files downloaded
+    from the <a href="http://re.jrc.ec.europa.eu/pvg_tools/en/tools.html#TMY">Interactive
+    tools website</a>. Note that the EPW format files from the website should
+    work in SAM without conversion.<br></li>
+<li><b>SolarAnywhere</b> is a comma-delimited format used by 
+    <a href="https://www.solaranywhere.com/">Clean Power Research's weather data 
+    service</a>.<br></li>
 </ul>
 
 <p>Although SAM can read files in the TMY2, TMY3 and EPW format, those files
 contain extra information about uncertainties and other values that SAM does not
 use. They are also difficult to work with in spreadsheet software. You can use
-this macro to convert those files to a "stripped" down copy with only the 
+this macro to convert those files to a "stripped" down version with only the 
 data that SAM uses in a file that you can edit or view in a spreadsheet program.</p>
 
 <p>For more information about weather data for SAM, see the
@@ -32,15 +48,14 @@ website.</p>
 </ol>
 
 <p>The macro will attempt to convert the file you open and save the converted
-data in a SAM CSV file in the same folder as the original file with the name 
-<i>&lt;country> &lt;location> (&lt;original format>).csv</i>. It will generate 
-an error message if it does not recongize the file format or encounters invalid 
-data during the conversion process.</p>
+data in a SAM CSV file in the same folder as the original file with <i>_samcsv</i>
+appended to the original name. It will also run SAM's weather file checker on
+the file and report any errors it finds.</p>
 
 @*/
 
 // Macro user interface widgets
-//@ name=type;type=combo;value=TMY2,TMY3,EPW,SolarAnywhere;label=Weather file format;
+//@ name=type;type=combo;value=TMY2,TMY3,EPW,PVsyst CSV,PVGIS 5 CSV,SolarAnywhere;label=Weather file format;
 
 if ( typeof(macro) == 'unknown' ) {
 	msgbox('This macro must be run from within a case.');
@@ -48,15 +63,100 @@ if ( typeof(macro) == 'unknown' ) {
 }
 
 format = macro.type;
-if ( format == '' ) {
-  msgbox('Please choose a weather file format!\nChoose TMY2, TMY3, EPW or SolarAnywhere from the list at right, and then run the macro again.');
+if ( format == '' ) 
+{
+  msgbox('Please choose a weather file format!\nChoose TMY2, TMY3, EPW, PVsyst CSV or SolarAnywhere from the list at right, and then run the macro again.');
   exit;
 }  
 
-wf = choose_file( '', 'Choose weather file to convert', 'Weather Files (*.csv;*.tm2;*.tm3;*.epw)|*.csv;*.tm2;*.tm3;*.epw' );
-if ( wf == '' ) return;
+function main()
+{
+	if ( format == 'TMY2' ) { ext = 'tm2'; }
+	elseif ( format == 'EPW' ) { ext = 'epw'; }
+	else { ext = 'csv'; }
 
-if (format != 'SolarAnywhere' ) {
+	input_file = choose_file( '', 'Choose weather file to convert', 'Weather Files (*.' + ext + ')|*.' + ext );
+	if ( input_file == '' ) return;
+
+	outln( 'File to convert is:\n\t' + input_file );
+
+	use_wfcsvconv =  ( format == 'TMY2' || format == 'TMY3' || format == 'EPW' );
+
+	if ( use_wfcsvconv ) { ssc_wfcsvconv( input_file ); }
+	elseif ( format == 'SolarAnywhere' ) { solar_anywhere_to_sam_csv( input_file ); }
+	elseif ( format == 'PVsyst CSV' ) { pvsyst_csv_to_sam_csv( input_file ); }
+	elseif ( format == 'PVGIS 5 CSV' ) { pvgis_5_csv_to_sam_csv( input_file ); }
+	else { outln( 'No format specified.' ); }
+	
+	outln( 'Done.');
+}
+
+function arr_to_str ( arr )
+{
+	if ( typeof( arr ) != 'array' )
+	{
+		str = null;
+	}
+	else
+	{
+		str = to_string( arr );
+		str = replace( str, '[ ', '' );
+		str = replace( str, ' ]', '' );
+		str = replace( str, ' ', '' );
+	}
+	return str;
+}
+
+function name_output_file( f )
+{
+	str = f;
+	arr = split( str, '.' );
+	ext = arr[#arr-1];
+	str = '';
+	for ( i=0; i<#arr-1; i++ )
+	{
+		period = '.';
+		if ( i == #arr-2 ) { period = ''; }
+		str += arr[i] + period;
+	}
+	str += '_samcsv.' + ext;
+	return str;
+} 
+
+function wf_check( wf )
+{
+	obj = ssc_create();
+	ssc_var( obj, 'input_file', wf );
+	result = ssc_exec( obj, 'wfcheck', {'show_dialog'=true, 'dialog_title'='Processing'} );
+	if ( result == 0 )
+	{
+		n = ssc_var( obj, 'nwarnings');
+		if ( n == 0 )
+		{
+			outln('File passed weather file check.');
+			return true;
+		}	
+		else
+		{
+			outln( 'File failed weather file check:' );
+			for( i=0;i<n;i++ )
+			{
+				outln( '\t* ' + ssc_var( obj, 'warning' + to_string(i) ) );
+			}
+			return false;
+		}
+	}
+	else
+	{
+		outln( 'Failed to run weather file check:\n\n' + result );
+		return false;
+	}
+	ssc_free( obj );
+}
+
+// convert TMY2, TMY3, or EPW file formats to SAM CSV using the SSC wfcsvconv compute module
+function ssc_wfcsvconv( wf )
+{
 	obj = ssc_create();
 	ssc_var( obj, 'input_file', wf );
 	result = ssc_exec( obj, 'wfcsvconv', true );
@@ -65,359 +165,719 @@ if (format != 'SolarAnywhere' ) {
 		output = ssc_var( obj, 'output_file');
 		if ( file_exists(output) )
 		{
-			if ( yesno('Weather file successfully converted.  Open it?\n\n' + output) )
-			{
-				browse( path_only(output) ); // pop up folder where file exists
-				dview_solar( output ); // load in Dview
-			}
+			// wfcsvconv names file based on header info appropriate for legacy
+			// versions of SAM to display library but not needed now so renaming
+			// to less confusing name based on input file name:
+			// input_file.csv is converted to input_file_samcsv.csv
+			arr = split( wf , '.' );
+			arr[ #arr-1 ] = '_samcsv.csv';
+			new_name = arr[0];
+			for( i=1; i<#arr; i++ ) { new_name += '.' + arr[i]; }
+			new_name = replace( new_name, '._', '_');
+			/*ext = ext_only( wf );
+			if ( ext == 'tm2' ) { new_name = replace( wf, '.' + ext, '.csv' );	}
+			elseif ( ext == 'epw' ) { new_name = replace( wf, '.' + ext, '.csv' );	}
+			else { new_name = wf; }
+			new_name = replace( new_name, '.csv', '_samcsv.csv' );*/
+			
+			ok = rename_file( output, new_name );
+			if ( !ok ) { outln( 'Failed to rename file.' );}
+			outln('Weather file successfully converted to:\n\t' + new_name );
+			browse( path_only(new_name) ); // show output file folder
+			dview_solar( new_name ); // display output file in DView
 		}
 		else
 		{
-			msgbox('An error occurred and the file could not be converted.');
+			outln('An error occurred and the file could not be converted.');
 		}
 	}
 	else
-		msgbox( 'Error:\n\n' + result );
+		outln( 'Error: ' + result );
 	ssc_free( obj );
 }
-else { // SolarAnywhere
-// get input file and open it
-input_file = wf;
-path = path_only( input_file );
-outln("Working folder is \n  " + path);
-input_name = file_only( input_file );
-fin = 0;
-fout = 0;
-fin = open( input_file , 'r' );
-if ( fin == 0 ) {
-  outln('Could not open ' + input_name + ' for reading.\nExiting script.');
-  exit;
-}
-else outln('File to convert is\n  ' + input_name + '\n');
 
-// get location year from input file for the output file name
-// (need year in case we need it for multi-year input file)
-line = 0;
-ok = true;
-str_line = '';
-while ( read_line( fin, str_line ) && ok == true ) {
-  if ( line == 0 ) {
-    arr = split( str_line, ',');
-    if ( #arr != 8 ) {
-      msgbox('Input file does not appear to be in a SolarAnywhere format: First row has ' + #arr + ' columns instead of 8. Exiting script.\n');
-      exit;
-    }
-    flocation = arr[1];
-    fstate = arr[2];
-  }
-  if ( line == 2 ) {
-    arr = split( str_line, ',');
-    arr = split( arr[0], '/');
-    fyear1 = arr[0];
-    ok = false;
-  }  
-  line++;
-}
-seek(fin,0,0); // move position in input file back to beginning
-
-// open output file for writing using location from input file in name
-out_name = '/USA ' + fstate + ' ' + flocation + ' (SolarAnywhere)';
-output_file = path + out_name + '.csv';
-fout = open( output_file , 'w' );
-if ( fout == 0 ) {
-  msgbox('Could not open ' + output_file + ' for writing. Exiting script.');
-  exit;
-}
-else outln('Converted data will be stored in\n ' + file_only(output_file) + '\n');
-
-missing = -999;
-str_line = '';
-line = 0;
-ok = true;
-feb29 = false;
-fcount = 0;
-outln('Converting file, please wait...');
-// read input file line by line and write to output file as we go
-while ( read_line( fin, str_line ) ) {
-  // read header data from first row of input file. 
-  // SA and SA TMY3 format use same header format
-  // write first and second header rows to output file
-  if ( line == 0 ) {
-    headers = 'Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation';
-    ok = write_line( fout , to_string(headers) );
-    if ( ok == false ) {
-      outln('Failed to write column headers to file. Exiting script.\n');
-      exit;
-    }
-    arr = split( str_line, ',' );
-    if ( #arr != 8 ) {
-      outln('Input file does not appear to be in a SolarAnywhere format: First row has ' + #arr + ' columns instead of 8. Exiting script.\n');
-      exit;
-    }
-    h1[0] = "SolarAnywhere"; // source
-    h1[1] = arr[0]; // location
-    cs = split(arr[1],'-');
-    city_state = split(cs[0],' ');
-    state = city_state[#city_state-1];
-    city_state -@ #city_state-1;
-    city = join(city_state,' ');
-    h1[2] = city; // city
-    h1[3] = state; // region
-    h1[4] = 'Unknown'; // country
-    h1[5] = arr[4]; // latitude
-    h1[6] = arr[5]; // longitude
-    h1[7] = arr[3]; // time zone
-    h1[8] = arr[6]; // elevation
-    ok = write_line( fout , to_string(h1) );
-    if ( ok == false ) {
-      outln('Failed to write first header row to file. Exiting script.\n');
-      exit;
-    }
-  }
-  // skip reading second row of input file that contains column headers
-  // write third header row to output file
-  elseif ( line == 1 ) {
-    column_headers = 'Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo';
-    ok = write_line( fout , to_string(column_headers) );
-    if ( ok == false ) {
-      outln('Failed to write column headers to file. Exiting script.\n');
-      exit;
-    }
-  }
-  // convert data row from input file
-  // write converted data row to output file
-  else {
-    // replace empty data with -999 missing data flag
-    data_str = '';
-    for ( i=0; i<strlen(str_line); i++ ) {
-      ch_i = mid(str_line, i, 1);
-      if ( ch_i == ',' && mid(str_line, i+1, 1) == ',' ) data_str = data_str + ch_i + to_string(missing);
-      else data_str = data_str + ch_i;
-    }
-    // convert comma-separated row to an array
-    arr = split( data_str, ',');
-    // if less than 15 columns, assume format is SA 
-    // number of columns varies between "time series" (12) and "average" (11) files
-    // TMY3 format has 68 columns 
-    if (#arr < 15 ) {
-      format = 'SolarAnywhere';
-      datetime = split( arr[0] , ' ');
-      date = split( datetime[0] , '/');
-      hour = split( datetime[1] , ':');
-      y = to_int(date[0]);
-      m = to_int(date[1]);
-      d = to_int(date[2]);
-      h = to_int(hour[0]);
-      data[0] = to_string(y); // year
-      data[1] = to_string(m); // month
-      data[2] = to_string(d); // day
-      data[3] = to_string(h); // hour    
-      data[4] = arr[1]; // ghi
-      data[5] = arr[2]; // dni
-      data[6] = arr[9]; // dhi
-      data[7] = arr[3]; // tdry
-      data[8] = missing; // tdew
-      data[9] = missing; // rh
-      data[10] = missing; // pres
-      data[11] = arr[4]; // wspd
-      data[12] = missing; // wdir
-      data[13] = missing; // alb
-    }
-    // if not 12 columns, assume format is SA TMY3
-    else {
-      format = 'SolarAnywhere TMY3';
-      date = split( arr[0] , '/');
-      hour = split( arr[1] , ':');
-      y = to_int(date[2]);
-      m = to_int(date[0]);
-      d = to_int(date[1]);
-      h = to_int(hour[0]);
-      data[0] = to_string(y); // year
-      data[1] = to_string(m); // month
-      data[2] = to_string(d); // day
-      data[3] = to_string(h); // hour    
-      data[4] = arr[4]; // ghi
-      data[5] = arr[7]; // dni
-      data[6] = arr[10]; // dhi
-      data[7] = arr[31]; // tdry
-      data[8] = arr[34]; // tdew
-      data[9] = arr[37]; // rh
-      data[10] = arr[40]; // pres
-      data[11] = arr[46]; // wspd
-      data[12] = arr[43]; // wdir
-      data[13] = arr[61]; // alb
-    }
-    //convert time stamp from hour ending to hour beginning
-    //and move last time stamp from Jan 1 to Dec 31
-    h = h - 1;
-    if ( h == -1 ) {
-      h = 23;
-      if ( m == 1 && line > 2 ) {
-        y = y - 1;
-        m = 12;
-        d = 31;
-      }
-    }
-    feb29 = ( m == 2 && d == 29 ); // feb29 is true for leap years
-    // check to see if input file is multi-year file
-    // if it is, close the output file and append year to file name 
-    // then, open a new output file, and write header data to it
-    if ( fcount != to_int( (line-2)/8760 ) ) {
-      close(fout);
-      // if this is the first file in the multi-year series, rename it
-      if (fcount == 0) { 
-        outln('\nMulti-year input file detected. Converting to separate files...');
-        ok = rename_file( output_file , path + '/' + flocation + '_samcsv_' + fyear1 + '.csv' );
-        if (ok == true ) outln('    Year 1 file renamed to\n     ' + flocation + '_samcsv_' + fyear1 + '.csv' );
-        else outln('  Failed to rename Year 1 output file');
-      }
-      output_file =  path + '/' + flocation + '_samcsv_' + y + '.csv'; 
-      fout = open( output_file , 'w' );
-      write_line( fout , to_string(headers) );
-      write_line( fout , to_string(h1) );
-      write_line( fout , to_string(column_headers) );
-	  fcount++;
-      outln('    Saving data for year ' + y + ' in\n     ' + file_only(output_file) );
-    }
-    // write converted data row to output file, skipping February 29 for leap years
-    if ( feb29 == false ) {
-      ok = write_line( fout , to_string(data) );
-    }  
-    if ( ok == false ) {
-      outln('Failed to write data row ' + line + ' to file.\n');
-      exit;
-    }
-  }  
- if ( feb29 == false ) line++;
+function solar_anywhere_time_shift( TS )
+{
+	// Convert time stamp. For example, an SA file for 2000 
+	// starts with 1/1/2000 1:00 and ends with 1/1/2001 0:00:
+	//  * 1/1/2000 has 23 hours
+	//  * all other days have 24 hours
+	//  * 1/1/2001 has one hour 
+	// SAM CSV starts with 1/1/2000 0:00 and  ends with 12/31/2000 23:00.
+	// To convert:
+	//  1. Shift each hour back one so 1/1/2000 starts at 0:00
+	//  2. Shift 0:00 of each day to 23:00 of previous day.
+	//  3. Shift first 0:00 of each month to 23:00 of last day of previous month
+	//  4. Shift 1/1/2001 0:00 to 12/31/2000 23:00
+	//  5. For multi-year files, shift 1/1/2002 0:00 to 12/31/2001 23:00
+	h = TS.hour;
+	d = TS.day;
+	m = TS.month;
+	y = TS.year;
+	if ( m != 2 && d != 29 ) { h = h-1; } // skip leap day
+	if ( h == -1 ) 
+	{
+		h = 23;
+		d = d - 1;
+		if ( d == 0 && m == 1 ) // for multi-year files
+		{
+			y = y - 1;
+			m = 12;
+			d = 31;
+		}
+		if ( d == 0 && m == 2 )
+		{
+			m = 1;
+			d = 31;
+		}
+		if ( d == 0 && m == 3 )
+		{
+			m = 2;
+			d = 28;
+		}
+		if ( d == 0 && m == 4 )
+		{
+			m = 3;
+			d = 31;
+		}
+		if ( d == 0 && m == 5 )
+		{
+			m = 4;
+			d = 30;
+		}
+		if ( d == 0 && m == 6 )
+		{
+			m = 5;
+			d = 31;
+		}
+		if ( d == 0 && m == 7 )
+		{
+			m = 6;
+			d = 30;
+		}
+		if ( d == 0 && m == 8 )
+		{
+			m = 7;
+			d = 31;
+		}
+		if ( d == 0 && m == 9 )
+		{
+			m = 8;
+			d = 31;
+		}
+		if ( d == 0 && m == 10 )
+		{
+			m = 9;
+			d = 30;
+		}
+		if ( d == 0 && m == 11 )
+		{
+			m = 10;
+			d = 31;
+		}
+		if ( d == 0 && m == 12 )
+		{
+			m = 11;
+			d = 30;
+		}
+	}
+	return { 'h'=h, 'd'=d, 'm'=m, 'y'=y };
 }
 
-// close input and output files
-close(fout);
-close(fin);
+// convert single year or multiple year files from SolarAnywhere to SAM CSV
+function solar_anywhere_to_sam_csv( wf )
+{
+	// get input file and open it
+	path = path_only( wf );
+	fin = 0;
+	fout = 0;
+	fin = open( wf , 'r' );
+	if ( fin == 0 ) 
+	{
+		outln('Could not open ' + file_only( wf ) + ' for reading.\nExiting script.');
+		exit;
+	}
+	
+	// get location year from input file for the output file name
+	// (need year in case we need it for multi-year input file)
+	line = 0; // input file line to read
+	ok = true;
+	str_line = '';
+	while ( read_line( fin, str_line ) && ok == true ) 
+	{
+		if ( line == 0 ) 
+		{
+			arr = split( str_line, ',');
+			if ( #arr != 8 ) 
+			{
+				msgbox('Input file does not appear to be in a SolarAnywhere format: First row has ' + #arr + ' columns instead of 8. Exiting script.\n');
+				exit;
+			}
+		}
+		if ( line == 2 ) 
+		{
+			arr = split( str_line, ',' );
+			arr = split( str_line, ' ' );
+			arr = split( arr[0], '/');
+			// older SA time series formats are yyyy/mm/dd
+			// newer formats are mm/dd/yyyy
+			for ( i=0; i<#arr; i++ )
+			{
+				if ( strlen(arr[i]) > 2 ) { fyear1 = arr[i]; }
+			}	
+			ok = false;
+		}  
+		line++;
+	}
+	
+	seek(fin,0,0); // move position in input file back to beginning
 
-// check to see if input file was for a set of complete years
-// if not, rename the output file with a partial year
-// (assumes that partial year was the last year in the multi-year file)
-if ( mod(line-2,8760)!=0 ) { // line should be the total number of lines in the input file
-  outln('\n'+file_only(output_file) + ' does not contain a complete year of data.');
-  ok = rename_file( output_file , path + '/' + flocation + '_samcsv_' + to_string(y) + 'part.csv');
-  if (ok==true) outln('File renamed to\n ' + flocation + '_samcsv_' + to_string(y) + 'part.csv' );
-  else outln('Unable to rename ' + file_only(output_file) );
+	// open output file for writing using location from input file in name
+	out_name = replace( file_only(wf), '.csv', '_samcsv.csv' );
+	output_file = path + '/' + out_name;
+	outln( output_file );
+	fout = open( output_file , 'w' );
+	if ( fout == 0 ) 
+	{
+		msgbox('Could not open ' + output_file + ' for writing. Exiting script.');
+		exit;
+	}
+
+	missing = -999;
+	str_line = '';
+	line = 0; // input file line to read
+	ok = true;
+	feb29 = false;
+	fcount = 0;
+	outln('Converting file, please wait...');
+	// read input file line by line and write to output file as we go
+	while ( read_line( fin, str_line ) ) 
+	{
+		// read first row header data from input file
+		// SA and SA TMY3 format use same first row header format
+		// write first and second header rows to output file
+		if ( line == 0 ) // first header row
+		{
+			headers = 'Source,Location ID,Latitude,Longitude,Time Zone,Elevation'; // SAM CSV header (minimum is Latitude,Longitude,Time Zone,Elevation)
+			ok = write_line( fout , to_string(headers) );
+			if ( ok == false ) 
+			{
+				outln('Failed to write column headers to file. Exiting script.\n');
+				exit;
+			}
+			arr = split( str_line, ',' ); // SA header
+			if ( #arr != 8 ) 
+			{
+				outln('Input file does not appear to be in a SolarAnywhere format: First row has ' + #arr + ' columns instead of 8. Exiting script.\n');
+				exit;
+			}
+			h1[0] = "SolarAnywhere"; // source
+			h1[1] = to_string(arr[0]) + to_string(arr[1]); // location id
+			h1[2] = arr[4]; // latitude
+			h1[3] = arr[5]; // longitude
+			h1[4] = arr[3]; // time zone
+			h1[5] = arr[6]; // elevation
+			ok = write_line( fout , arr_to_str(h1) );
+			if ( ok == false ) 
+			{
+				outln('Failed to write first header row to file. Exiting script.\n');
+				exit;
+			}
+		}
+		// write third header row to output file
+		elseif ( line == 1 ) // column header row
+		{
+			// try to determine input file format
+			arr = split( str_line, ',' );
+			if ( #arr < 20 ) { sa_tmy3 = false; }
+			else {sa_tmy3 = true; }
+			//get relevant SA column headers and convert to SAM CSV headers
+			i_ghi = -1;
+			i_dni = -1;
+			i_dhi = -1;
+			i_tdry = -1;
+			i_wspd = -1;
+			i_rh = -1;
+			i_snow = -1;
+			for ( i=0; i<#arr; i++ )
+			{
+				if ( sa_tmy3 ) 
+				{
+					if ( strpos(lower(to_string(arr[i])),'ghi (w/m^2)') > -1 ) { i_ghi = i; } 
+					if ( strpos(lower(to_string(arr[i])),'dni (w/m^2)') > -1 ) { i_dni = i; } 
+					if ( strpos(lower(to_string(arr[i])),'dhi (w/m^2)') > -1 ) { i_dhi = i; } 
+					if ( strpos(lower(to_string(arr[i])),'dry-bulb (c)') > -1 ) { i_tdry = i; } 
+					if ( strpos(lower(to_string(arr[i])),'wspd (m/s)') > -1 ) { i_wspd = i; } 
+					if ( strpos(lower(to_string(arr[i])),'rhum (%)') > -1 ) { i_rh = i; } 
+					//if ( strpos(lower(to_string(arr[i])),'') > 0 ) { i_snow = i; } 
+				}
+				else
+				{
+					if ( strpos(lower(to_string(arr[i])),'global') > -1 ) { i_ghi = i; } 
+					if ( strpos(lower(to_string(arr[i])),'direct') > -1 ) { i_dni = i; } 
+					if ( strpos(lower(to_string(arr[i])),'diffuse') > -1 ) { i_dhi = i; } 
+					if ( strpos(lower(to_string(arr[i])),'deg c') > -1 ) { i_tdry = i; } // avoid 'ambient' because AmbientTemperatureObservationType
+					if ( strpos(lower(to_string(arr[i])),'m/s') > -1 ) { i_wspd = i; } // avoid 'wind' because WindSpeedObservationType
+					if ( strpos(lower(to_string(arr[i])),'humid') > -1 ) { i_rh = i; } 
+					if ( strpos(lower(to_string(arr[i])),'snow') > -1 ) { i_snow = i; } // snow depth in meters
+				}
+			}
+			// SAM CSV headers can be in any order: Year,Month,Day,Hour,Minute,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo,Snow
+			column_headers = 'Year,Month,Day,Hour,Minute'; // SAM CSV headers
+			if ( i_ghi > -1 ) { column_headers += ',GHI'; }
+			if ( i_dni > -1 ) { column_headers += ',DNI'; }
+			if ( i_dhi > -1 ) { column_headers += ',DHI'; }
+			if ( i_tdry > -1 ) { column_headers += ',Tdry'; }
+			if ( i_wspd > -1 ) { column_headers += ',Wspd'; }
+			if ( i_rh > -1 ) { column_headers += ',RH'; }
+			if ( i_snow > -1 ) { column_headers += ',Snow'; }
+			arr_column_headers = split( column_headers, ','); // for indexing
+			ok = write_line( fout , column_headers );
+			if ( ok == false ) 
+			{
+				outln('Failed to write column headers to file. Exiting script.\n');
+				exit;
+			}
+		}
+		// convert data row from input file
+		// write converted data row to output file
+		else // data row
+		{
+			// replace empty data with -999 missing data flag
+			data_str = '';
+			for ( i=0; i<strlen(str_line); i++ ) 
+			{
+				ch_i = mid(str_line, i, 1);
+				if ( ch_i == ',' && mid(str_line, i+1, 1) == ',' ) 
+				{
+					data_str = data_str + ch_i + to_string(missing);
+				}	
+				else
+				{
+					data_str = data_str + ch_i;
+				}	
+			}
+			// convert comma-separated row to an array
+			arr = split( data_str, ',');
+			if ( !sa_tmy3 ) 
+			{
+				format = 'SolarAnywhere';
+				datetime = split( arr[0] , ' ');
+				date = split( datetime[0] , '/');
+				hour = split( datetime[1] , ':');
+				// older time series SA format uses yyyy/mm/dd
+				// newer format uses mm/dd/yyyy
+				if ( line == 2 ) 
+				{
+					i_yr = 0;
+					for ( i=0; i<#date; i++ ) 
+					{ 
+						if ( strlen(date[i]) > 2 ) { i_yr = i; } 
+					}
+				}
+				if ( i_yr == 0 ) // yyyy/mm/dd
+				{ 
+					yr = to_int(date[0]);
+					mn = to_int(date[1]);
+					dy = to_int(date[2]);
+				}
+				else // mm/dd/yyyy
+				{ 
+					yr = to_int(date[2]);
+					mn = to_int(date[0]);
+					dy = to_int(date[1]);
+				}
+				hr = to_int(hour[0]);
+				minute = to_int(hour[1]);
+			}
+			else 
+			{
+				format = 'SolarAnywhere TMY3';
+				date = split( arr[0] , '/');
+				hour = split( arr[1] , ':');
+				yr = to_int(date[2]);
+				mn = to_int(date[0]);
+				dy = to_int(date[1]);
+				hr = to_int(hour[0]);
+				minute = to_int(hour[1]);
+			}
+			T = solar_anywhere_time_shift( { 'hour'=hr, 'month'=mn, 'day'=dy, 'year'=yr } );
+			feb29 = ( T.m == 2 && T.d == 29 ); // feb29 is true for leap years
+			if ( (arr_column_headers ?@ 'Year') > -1 ) { data[arr_column_headers ?@ 'Year'] = T.y; }
+			if ( (arr_column_headers ?@ 'Month') > -1 ) { data[arr_column_headers ?@ 'Month'] = T.m; }
+			if ( (arr_column_headers ?@ 'Day') > -1 ) { data[arr_column_headers ?@ 'Day'] = T.d; }
+			if ( (arr_column_headers ?@ 'Hour') > -1 ) { data[arr_column_headers ?@ 'Hour'] = T.h; }
+			if ( (arr_column_headers ?@ 'Minute') > -1 ) { data[arr_column_headers ?@ 'Minute'] = minute; }
+			if ( (arr_column_headers ?@ 'GHI') > -1 ) { data[arr_column_headers ?@ 'GHI'] = arr[i_ghi]; }
+			if ( (arr_column_headers ?@ 'DNI') > -1 ) { data[arr_column_headers ?@ 'DNI'] = arr[i_dni]; }
+			if ( (arr_column_headers ?@ 'DHI') > -1 ) { data[arr_column_headers ?@ 'DHI'] = arr[i_dhi]; }
+			if ( (arr_column_headers ?@ 'Tdry') > -1 ) { data[arr_column_headers ?@ 'Tdry'] = arr[i_tdry]; }
+			if ( (arr_column_headers ?@ 'Wspd') > -1 ) { data[arr_column_headers ?@ 'Wspd'] = arr[i_wspd]; }
+			if ( (arr_column_headers ?@ 'RH') > -1 ) { data[arr_column_headers ?@ 'RH'] = arr[i_rh]; }
+			if ( (arr_column_headers ?@ 'Snow') > -1 ) // convert m to cm if not -999 flag
+			{
+				snow = to_real(arr[i_snow]); 
+				if ( snow >= 0  ) { snow = snow / 100; } 
+				data[arr_column_headers ?@ 'Snow'] = snow;
+			}	
+			// check to see if input file is multi-year file
+			// if it is, close the output file and append year to file name 
+			// then, open a new output file, and write header data to it
+			if ( fcount != to_int( (line-2)/8760 ) ) 
+			{
+				close(fout);
+				// if this is the first file in the multi-year series, rename it
+				if (fcount == 0) 
+				{ 
+					outln('\nMulti-year input file detected. Converting to separate files...');
+					new_name = replace( output_file, '_samcsv',  '_samcsv_' + fyear1 );
+					ok = rename_file( output_file , new_name );
+					if (ok == true )
+					{
+						outln('    Year 1 (' + T.y + ') file renamed to\n     ' + file_only(new_name));
+					}	
+					else
+					{
+						outln('  Failed to rename Year 1 output file');
+					}	
+				}
+				// create output file for next year and write three header rows
+				output_file = replace( wf, '.csv',  '_samcsv_' + T.y + '.csv');
+				fout = open( output_file , 'w' );
+				write_line( fout , headers );
+				write_line( fout , arr_to_str(h1) );
+				write_line( fout , column_headers );
+				fcount++;
+				outln('    Saving data for year ' + T.y + ' in\n     ' + file_only(output_file) );
+			}
+			// write converted data row to output file, skipping February 29 for leap years
+			if ( feb29 == false ) 
+			{
+				ok = write_line( fout , arr_to_str(data) );
+			}  
+			if ( ok == false ) 
+			{
+				outln('Failed to write data row ' + line + ' to file.\n');
+				exit;
+			}
+		}  
+		if ( feb29 == false ) { line++; }
+	}
+
+	// close input and output files
+	close(fout);
+	close(fin);
+
+	// check to see if input file was for a set of complete years
+	// if not, rename the output file with a partial year
+	// (assumes that partial year was the last year in the multi-year file)
+	if ( mod(line-2,8760)!=0 ) 
+	{ // line should be the total number of lines in the input file
+		outln('\n'+file_only(output_file) + ' does not contain a complete year of data.');
+		new_name = replace( output_file, '_samcsv_' + to_string(T.y), '_samcsv_' + to_string(T.y) + 'part' );
+		ok = rename_file( output_file , new_name );
+		if (ok==true)
+		{
+			outln('File renamed to\n ' + file_only(new_name) );
+		}
+		else
+		{
+			outln('Unable to rename ' + file_only(output_file) );
+		}
+	}
+
+	browse( path_only(output_file) );
+	// if input file is for a single year, show converted data in data viewer
+	if (fcount == 0 )
+	{
+		outln('Weather file converted to:\n\t' + output_file );
+		/*if ( wf_check( output_file ) ) 
+		{	 
+			dview_solar( output_file );
+			browse( path_only( output_file ) );
+		}*/
+	} 
+} 
+
+// convert PVsyst CSV weather format to SAM CSV
+function pvsyst_csv_to_sam_csv( wf )
+{
+	// get input file and open it
+	fin = 0;
+	fin = open( wf , 'r' );
+	if ( fin == 0 ) 
+	{
+		outln('Could not open ' + file_only( wf ) + ' for reading.\nExiting script.');
+		exit;
+	}
+	
+	outln('Converting file, please wait...');
+	str_line = '';
+	ts = 0;
+	line = 0;
+	while ( read_line( fin, str_line ) ) 
+	{
+		if ( line == 0 && strpos( str_line, '#') < 0 )
+		{
+				outln('Input file does not appear to be in PVsyst CSV format: First row does not contain a hashtag (#). Exiting script.\n');
+				exit;
+		}
+		if ( strpos( str_line, '#') > - 1 )
+		{
+			arr = split( str_line , ',' );
+			if ( #arr > 1 )
+			{
+				if ( strpos( lower(arr[0]) , 'lat' ) > -1 ) { Header{'Latitude'} = arr[1]; }
+				if ( strpos( lower(arr[0]) , 'lon' ) > -1 ) { Header{'Longitude'} = arr[1]; }
+				if ( strpos( lower(arr[0]) , 'alt' ) > -1 ) { Header{'Elevation'} = arr[1]; }
+				if ( strpos( lower(arr[0]) , 'zone' ) > -1 ) { Header{'Time Zone'} = arr[1]; }
+			}
+		}
+		if ( strpos( lower(str_line), 'year' ) > -1 )
+		{
+			if ( strpos( str_line , 'WindVel' ) > -1 ) { replace( str_line, 'WindVel', 'Wspd' ); }
+			keys = split( str_line, ',' );
+		}
+		if ( strpos( lower(str_line), 'w/m2' ) == -1 && strpos( str_line, '#' ) == - 1 )
+		{
+			arr = split( str_line, ',' );
+			for ( i=0; i<#arr; i++ )
+			{
+				Data{keys[i]}[ts] = arr[i];
+			}
+			ts++;
+		}
+		line++;
+	}
+	close( fin );
+
+	output_file = replace( wf, '.csv' , '_samcsv.csv' );
+	
+	fout = open( output_file, 'w' );
+
+	keys = @Header;
+	str = '';
+	for ( i=0; i<#keys; i++ )
+	{
+		str += keys[i];
+		if ( i<#keys-1 ) { str += ','; }
+		//else { str += '\n'; }
+		else { write_line( fout, str ); }
+	}
+	str = '';
+	for ( i=0; i<#keys; i++ )
+	{
+		str += Header{keys[i]};
+		if ( i<#keys-1 ) { str += ','; }
+		//else { str += '\n'; }
+		else { write_line( fout, str ); }
+	}
+
+	keys = @Data;
+	for ( i=0; i<#Data{keys[0]}; i++ )
+	{
+		str = '';
+		for ( j=0; j<#keys; j++ )
+		{
+			str += Data{keys[j]}[i];
+			if ( j<#keys-1 ) { str += ','; }
+			//else { str += '\n'; }
+		}
+		write_line( fout, str );
+	}
+
+	close( fout );
+
+	outln('Weather file converted to:\n\t' + output_file );
+	
+	if ( wf_check( output_file ) ) 
+	{ 
+		dview_solar( output_file );
+		browse( path_only( output_file ) );
+	}
+
 }
 
-outln('\nSuccess! Converted ' + format + ' file to SAM CSV file(s).\n');
+// convert CSV weather file from PVGIS 5 website to SAM CSV
+function pvgis_5_csv_to_sam_csv( wf )
+{
+	// get input file and open it
+	fin = open( wf, 'r' );
+	if ( fin == 0 )
+	{
+		outln( 'Failed to open file!\n' + wf + '\nExiting script.' );
+		exit;
+	}
+	
+	str = '';
+	line = 0;
+	data = [];
+	meta = 0;
+	line_one_ok = false;
+	while ( read_line( fin, str ) )
+	{
+	
+		// convert line to lower case
+		str = lower( str );
+		
+		// determine whether line is header data or weather data
+		// if header data, the read lat, lon, elevation
+		// otherwise read the weather data
+		if ( strpos( str, 'latitude' ) > -1 )
+		{
+			arr = split( str, ':' );
+			lat = replace( arr[1], ' ', '' );
+			line_one_ok = true;
+			meta++;
+			continue;
+		}
+		elseif ( strpos( str, 'longitude' ) > -1 )
+		{
+			arr = split( str, ':' );
+			lon = replace( arr[1], ' ', '' );
+			meta++;
+			continue;
+		}
+		elseif ( strpos( str, 'elevation' ) > -1 )
+		{
+			arr = split( str, ':' );
+			elv = replace( arr[1], ' ', '' );
+			meta++;
+			continue;
+		}
+		elseif ( line_one_ok ) // line is weather data
+		{
+			arr = split( str, ',' );
+			if ( #arr == 2 ) { continue; } // skip list of tmy years
+		}
+		else
+		{
+			outln( 'File does not appear to be PVGIS 5 TMY CSV format. Exiting script.' );
+			exit;
+		}
 
-// if input file is for a single year, show converted data in data viewer
-if (fcount == 0 ) {
-  outln('Displaying data from ' + file_only(output_file) + '.');
+		
+		// once lat, lon is known, use Google API to get elevation
+		if ( meta == 3 )
+		{
+			// time zone is missing from file, so get from Google Time Zone API
+			// via geocode function
+			tz = null;
+			geo = geocode( to_string(lat) + ',' + to_string(lon) );
+			if ( geo.ok == true ) { tz = geo.tz; }
+			else { outln('Failed to get time zone from Google Time Zone API.'); }
+			meta++;
+		}
+			
+		// header rows for SAM CSV
+		// Latitude,Longitude,Time Zone,Elevation
+		// -34.820000,-58.530000,-3.0,20
+		// Year,Month,Day,Hour,tdry,rhum,ghi,dni,dhi,infrared,wspd,wdir 
+		// note that PVGIS provides infrared, but SAM does not use it
+		if ( line == 0 )
+		{
+			data[line] = 'Latitude,Longitude,Time Zone,Elevation,Source';
+			line++;
+		}	
+		if ( line == 1 )
+		{
+			data[line] = lat+','+lon+','+tz+','+elv+',PVGIS V5';
+			line++;
+		}	
+	
+		if ( strpos( arr[0], 'date' ) > -1 ) // this is the data header row
+		{
+			pvgis_h = arr; // store column headings to identify rows in second pass
+			// Date&Time (UTC),Dry bulb temperature (deg. C),Relative Humidity (%), Global horizontal irradiance (W/m2) ,
+			//Direct (beam) normal Irradiance (W/m2),Diffuse horizontal irradiance (W/m2), Infrared radiation downwards (W/m2),
+			//  Windspeed (m/s), Wind direction (deg.),  Air pressure (Pa)
+			for ( i=0; i<#pvgis_h; i++ )
+			{
+				if( strpos( pvgis_h[i], 'date' ) > -1 ) { h[i] = 'Year,Month,Day,Hour,Minute';} // deg C
+				if( strpos( pvgis_h[i], 'dry bulb' ) > -1 ) { h[i] = 'tdry';} // deg C
+				if( strpos( pvgis_h[i], 'humidity' ) > -1 ) { h[i] = 'rhum';} // %
+				if( strpos( pvgis_h[i], 'global' ) > -1 ) { h[i] = 'ghi';} // w/m2
+				if( strpos( pvgis_h[i], 'direct' ) > -1 ) { h[i] = 'dni';} // w/m2
+				if( strpos( pvgis_h[i], 'diffuse' ) > -1 ) { h[i] = 'dhi';} // w/m2
+				if( strpos( pvgis_h[i], 'infrared' ) > -1 ) { h[i] = 'infrared';}
+				if( strpos( pvgis_h[i], 'speed' ) > -1 ) { h[i] = 'wspd';} // m/s
+				if( strpos( pvgis_h[i], 'direction' ) > -1 ) { h[i] = 'wdir';} // deg
+				if( strpos( pvgis_h[i], 'pressure' ) > -1 ) 
+				{
+					h[i] = 'pres'; // pas
+					i_pres = i; // store index for conversion below
+				}
+			}
+			if ( line == 2 )
+			{
+				data[line] = '';
+				for ( i=0; i<#h; i++ )
+				{
+					if ( i == 0 ) { pre = ''; }
+					else { pre = ','; }
+					data[line]+=pre+h[i];
+				}
+				line++;
+			}
+		}
+		else 
+		{
+			// convert time stamp data 01/01/2013 00:00:00
+			tstamp_arr = split( arr[0], ' ' );
+			date = split( tstamp_arr[0], '/' );
+			day = to_int(date[0]);
+			month = to_int(date[1]);
+			year = to_int(date[2]);
+			time = split( tstamp_arr[1], ':' );
+			hour = to_int(time[0]);
+			minute = to_int(time[1]);
+			second = to_int(time[2]);
+			data[line] = year +','+month+','+day+','+hour+','+minute;
+			// read weather data
+			for ( i=1; i<#arr; i++ )
+			{
+				value = to_real( arr[i] );
+				if ( i == i_pres ) { value = value / 100; } // convert pas to millibar
+				data[line]+= ','+to_string(value);
+			}
+			line++;
+		}
+	
+	}
+	
+	// close input file
+	close ( fin );
+	
+	// name output file and open it
+	fout_name = replace( wf, '.csv', '_samcsv.csv' );
+	fout = open( fout_name , 'w' );
+	
+	// write data to output file
+	for ( i=0; i<#data; i++ )
+	{
+		ok = write_line( fout, data[i] );
+		if ( !ok ) 
+		{
+			'Failed to write Line ' + i + 'to file.\n\t' + data[i]; 
+			exit;
+		}
+		
+	}
+	
+	// close output file
+	close( fout );
 
-  csv_data = csvread( output_file , { 'skip'=2 } );
-  data_headers=csv_data[0];
-  csv_data -@ 0;
-  num_cols = #data_headers; // skip time stamp columns
-  num_rows = #csv_data; // data rows not including header
-  ts = 8760 / num_rows; // time step in hours
+	outln('Weather file converted to:\n\t' + fout_name );
 
-  for (i=4;i<num_cols;i++) names[i-4]=data_headers[i]; // skip time stamp columns
-  num_cols = #names;
-  units = ['W/m2','W/m2','W/m2','C','C','%','millibar','m/s','deg',''];
-  window_title = file_only(output_file);
-
-  // GHI
-  dataset1_name = names[0]; 
-  dataset1_units = units[0];
-  dataset1_selected = 1;
-  dataset1_data = alloc(num_rows);
-  for (i=0;i<num_rows;i++) ghi[i] = to_real(csv_data[i][4]);
-  dataset1_data = ghi;
-
-  // DNI
-  dataset2_name = names[1]; 
-  dataset2_units = units[1];
-  dataset2_selected = 0;
-  dataset2_data = alloc(num_rows);
-  for (i=0;i<num_rows;i++) dni[i] = to_real(csv_data[i][5]);
-  dataset2_data = dni;
-
-  // DHI
-  dataset3_name = names[2]; 
-  dataset3_units = units[2];
-  dataset3_selected = 0;
-  dataset3_data = alloc(num_rows);
-  for (i=0;i<num_rows;i++) dhi[i] = to_real(csv_data[i][6]);
-  dataset3_data = dhi;
-
-  // Tdry
-  dataset4_name = names[3]; 
-  dataset4_units = units[3];
-  dataset4_selected = 0;
-  dataset4_data = alloc(num_rows);
-  for (i=0;i<num_rows;i++) tdry[i] = to_real(csv_data[i][7]);
-  dataset4_data = tdry;
-
-  // Tdew
-  dataset5_name = names[4]; 
-  dataset5_units = units[4];
-  dataset5_selected = 0;
-  dataset5_data = alloc(num_rows);
-  for (i=0;i<num_rows;i++) tdew[i] = to_real(csv_data[i][8]);
-  dataset5_data = tdew;
-
-  // RH
-  dataset6_name = names[5]; 
-  dataset6_units = units[5];
-  dataset6_selected = 0;
-  dataset6_data = alloc(num_rows);
-  for (i=0;i<num_rows;i++) rh[i] = to_real(csv_data[i][9]);
-  dataset6_data = rh;
-
-  // Pres
-  dataset7_name = names[6]; 
-  dataset7_units = units[6];
-  dataset7_selected = 0;
-  dataset7_data = alloc(num_rows);
-  for (i=0;i<num_rows;i++) pres[i] = to_real(csv_data[i][10]);
-  dataset7_data = pres;
-
-  // Wspd
-  dataset8_name = names[7]; 
-  dataset8_units = units[7];
-  dataset8_selected = 0;
-  dataset8_data = alloc(num_rows);
-  for (i=0;i<num_rows;i++) wspd[i] = to_real(csv_data[i][11]);
-  dataset8_data = wspd;
-
-  // Wdir
-  dataset9_name = names[8]; 
-  dataset9_units = units[8];
-  dataset9_selected = 0;
-  dataset9_data = alloc(num_rows);
-  for (i=0;i<num_rows;i++) wdir[i] = to_real(csv_data[i][12]);
-  dataset9_data = wdir;
-
-  // Albedo
-  dataset10_name = names[9]; 
-  dataset10_units = units[9];
-  dataset10_selected = 0;
-  dataset10_data = alloc(num_rows);
-  for (i=0;i<num_rows;i++) alb[i] = to_real(csv_data[i][13]);
-  dataset10_data = alb;
-
-  // create dview window 
-  dview(num_cols, ts, window_title,
-        dataset1_name, dataset1_units, dataset1_selected, dataset1_data,
-        dataset2_name, dataset2_units, dataset2_selected, dataset2_data,
-        dataset3_name, dataset3_units, dataset3_selected, dataset3_data,
-        dataset4_name, dataset4_units, dataset4_selected, dataset4_data,
-        dataset5_name, dataset5_units, dataset5_selected, dataset5_data,
-        dataset6_name, dataset6_units, dataset6_selected, dataset6_data,
-        dataset7_name, dataset7_units, dataset7_selected, dataset7_data,
-        dataset8_name, dataset8_units, dataset8_selected, dataset8_data,
-        dataset9_name, dataset9_units, dataset9_selected, dataset9_data,
-        dataset10_name, dataset10_units, dataset10_selected, dataset10_data
-        );
+	if ( wf_check( output_file ) ) 
+	{ 
+		dview_solar( output_file );
+		browse( path_only( output_file ) );
+	}
+	
 }
 
-outln("Done.");
-}
+// Main ////////////////////////////////////////////////////////////////////////
+
+main();
 

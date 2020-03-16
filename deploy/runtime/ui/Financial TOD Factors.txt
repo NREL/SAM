@@ -1,11 +1,11 @@
 Financial TOD Factors
-755
-1001
-32
+861
+1002
+34
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -50,7 +53,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -67,6 +70,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -95,7 +101,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -112,6 +118,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -140,7 +149,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -157,6 +166,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -185,7 +197,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -202,6 +214,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -230,7 +245,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -247,6 +262,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -275,7 +293,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -292,6 +310,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -320,7 +341,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -337,6 +358,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -365,7 +389,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -382,6 +406,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -410,7 +437,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -427,6 +454,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -455,7 +485,7 @@ AlignTop
 Button
 
 1
-7
+8
 Name
 5
 24
@@ -472,6 +502,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 25
@@ -482,7 +515,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 19
@@ -492,13 +525,16 @@ X
 180
 Y
 3
-939
+966
 Width
 3
 153
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -509,7 +545,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 19
@@ -519,13 +555,16 @@ X
 21
 Y
 3
-939
+966
 Width
 3
 153
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -536,23 +575,26 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 22
 dispatch_data_filename
 X
 3
-375
+339
 Y
 3
-939
+966
 Width
 3
-362
+509
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -577,7 +619,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -594,6 +636,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -636,7 +681,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -653,6 +698,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -695,7 +743,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -712,6 +760,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -754,7 +805,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -771,6 +822,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -813,7 +867,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -830,6 +884,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -872,7 +929,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -889,6 +946,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -931,7 +991,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -948,6 +1008,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -990,7 +1053,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -1007,6 +1070,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1049,7 +1115,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -1066,6 +1132,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1108,7 +1177,7 @@ TabOrder
 DataArray
 
 1
-9
+10
 Name
 5
 19
@@ -1121,10 +1190,13 @@ Y
 24
 Width
 3
-90
+184
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 1
@@ -1140,7 +1212,7 @@ TabOrder
 DiurnalPeriod
 
 1
-9
+10
 Name
 5
 22
@@ -1150,19 +1222,23 @@ X
 213
 Y
 3
-366
+375
 Width
 3
 514
 Height
 3
 272
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
 Schedule
 5
-0
+288
+111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
 Max
 3
 9
@@ -1172,7 +1248,7 @@ Min
 DiurnalPeriod
 
 1
-9
+10
 Name
 5
 22
@@ -1182,19 +1258,23 @@ X
 213
 Y
 3
-642
+672
 Width
 3
 514
 Height
 3
 272
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
 Schedule
 5
-0
+288
+111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
 Max
 3
 9
@@ -1204,7 +1284,7 @@ Min
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -1214,13 +1294,16 @@ X
 15
 Y
 3
-918
+945
 Width
 3
-729
+834
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1240,7 +1323,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -1253,10 +1336,13 @@ Y
 3
 Width
 3
-747
+850
 Height
 3
-966
+993
+Tool Tip
+5
+0
 Caption
 5
 30
@@ -1267,27 +1353,30 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
 object 7
 X
 3
-201
+213
 Y
 3
-279
+651
 Width
 3
-537
+90
 Height
 3
-84
+21
+Tool Tip
+5
+0
 Caption
 5
-294
-The TOD data in the library is from documents prepared by California electric utility companies. For projects outside of California, enter your own TOD data. Be sure that your assumptions are consistent with the requirements described in the appropriate solicitation documents for your project.
+7
+Weekend
 TextColour
 4
 0
@@ -1296,23 +1385,71 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
 0
 AlignTop
 2
-1
+0
 Label
 
 1
-12
+13
+Name
+5
+9
+object 71
+X
+3
+213
+Y
+3
+354
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+7
+Weekday
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
 Name
 5
 9
@@ -1322,13 +1459,16 @@ X
 12
 Y
 3
-72
+75
 Width
 3
-730
+838
 Height
 3
-63
+45
+Tool Tip
+5
+0
 Caption
 5
 283
@@ -1354,10 +1494,58 @@ AlignRight
 AlignTop
 2
 1
+Label
+
+1
+13
+Name
+5
+9
+object 73
+X
+3
+201
+Y
+3
+279
+Width
+3
+645
+Height
+3
+72
+Tool Tip
+5
+0
+Caption
+5
+294
+The TOD data in the library is from documents prepared by California electric utility companies. For projects outside of California, enter your own TOD data. Be sure that your assumptions are consistent with the requirements described in the appropriate solicitation documents for your project.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 RadioChoice
 
 1
-10
+11
 Name
 5
 20
@@ -1374,6 +1562,9 @@ Width
 Height
 3
 45
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -1394,23 +1585,26 @@ TabOrder
 Library
 
 1
-7
+8
 Name
 5
 11
 tod_library
 X
 3
-12
+15
 Y
 3
 135
 Width
 3
-727
+838
 Height
 3
 141
+Tool Tip
+5
+0
 Library
 5
 25
@@ -1447,7 +1641,7 @@ TOD Schedules and Factors|3
 1
 1
 1
- 
+Default
 dispatch_factor2
 3
 1
@@ -1462,7 +1656,7 @@ TOD Schedules and Factors|4
 1
 1
 1
- 
+Default
 dispatch_factor3
 3
 1
@@ -1477,7 +1671,7 @@ TOD Schedules and Factors|5
 1
 1
 1
- 
+Default
 dispatch_factor4
 3
 1
@@ -1609,7 +1803,7 @@ TOD Schedules and Factors|0
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
-Default
+DiurnalPeriod
 dispatch_sched_weekend
 3
 3
@@ -1636,11 +1830,11 @@ TOD Schedules and Factors|0
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
-Default
+DiurnalPeriod
 lib_dispatch_factor1
 3
 1
- 
+TOD factor 1 from TOD library
  
 Time of Delivery Factors
 0
@@ -1650,11 +1844,11 @@ Time of Delivery Factors
 1
 1
 1
- 
+Default
 lib_dispatch_factor2
 3
 1
- 
+TOD factor 2 from TOD library
  
 Time of Delivery Factors
 0
@@ -1664,11 +1858,11 @@ Time of Delivery Factors
 1
 1
 1
- 
+Default
 lib_dispatch_factor3
 3
 1
- 
+TOD factor 3 from TOD library
  
 Time of Delivery Factors
 0
@@ -1682,7 +1876,7 @@ Time of Delivery Factors
 lib_dispatch_factor4
 3
 1
- 
+TOD factor 4 from TOD library
  
 Time of Delivery Factors
 0
@@ -1692,11 +1886,11 @@ Time of Delivery Factors
 1
 1
 1
- 
+Default
 lib_dispatch_factor5
 3
 1
- 
+TOD factor 5 from TOD library
  
 Time of Delivery Factors
 0
@@ -1710,7 +1904,7 @@ Time of Delivery Factors
 lib_dispatch_factor6
 3
 1
- 
+TOD factor 6 from TOD library
  
 Time of Delivery Factors
 0
@@ -1724,7 +1918,7 @@ Time of Delivery Factors
 lib_dispatch_factor7
 3
 1
- 
+TOD factor 7 from TOD library
  
 Time of Delivery Factors
 0
@@ -1734,11 +1928,11 @@ Time of Delivery Factors
 1
 1
 1
- 
+Default
 lib_dispatch_factor8
 3
 1
- 
+TOD factor 8 from TOD library
  
 Time of Delivery Factors
 0
@@ -1748,11 +1942,11 @@ Time of Delivery Factors
 1
 1
 1
- 
+Default
 lib_dispatch_factor9
 3
 1
- 
+TOD factor 9 from TOD library
  
 Time of Delivery Factors
 0
@@ -1766,7 +1960,7 @@ Time of Delivery Factors
 lib_dispatch_sched_weekday
 3
 3
- 
+TOD weekday schedule from TOD library
  
 Time of Delivery Factors
 0
@@ -1792,7 +1986,7 @@ Default
 lib_dispatch_sched_weekend
 3
 3
- 
+TOD weekend schedule from TOD library
  
 Time of Delivery Factors
 0
@@ -1814,7 +2008,7 @@ Time of Delivery Factors
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
- 
+Default
 ppa_multiplier_model
 3
 1
@@ -1845,7 +2039,7 @@ Uniform Dispatch
 Default
 
 0
-3392
+3384
 on_load{'Financial TOD Factors'} = define()
 {	
 	toggle_inputs();
@@ -1906,7 +2100,7 @@ on_change{'btnSaveDispatchData'} = define() {
 		
 	if ( file != '' ) {
 		file = replace(file, '\\', '/');
-		if (group_write('PPA Time of Delivery Factors',file))
+		if (group_write('Time of Delivery Factors',file))
 		{	
 			value( 'dispatch_data_filename', file );
 			msgbox("Data saved! \n");
@@ -1942,7 +2136,7 @@ on_change{'btnLoadDispatchData'} = define() {
 			}	
 		}
 
-		if (group_read('PPA Time of Delivery Factors',file))
+		if (group_read('Time of Delivery Factors',file))
 		{	
 			value( 'dispatch_data_filename', file );
 			msgbox("Data loaded! \n");

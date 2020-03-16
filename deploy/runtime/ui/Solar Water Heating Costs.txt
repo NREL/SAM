@@ -5,7 +5,7 @@ Solar Water Heating Costs
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 191
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -49,6 +52,9 @@ Width
 Height
 3
 197
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -76,6 +82,9 @@ Width
 Height
 3
 89
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -86,7 +95,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -103,6 +112,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -131,7 +143,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -148,6 +160,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -176,7 +191,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -193,6 +208,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -221,7 +239,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -238,6 +256,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -266,7 +287,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -283,6 +304,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -311,7 +335,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -328,6 +352,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -356,7 +383,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 3
@@ -373,6 +400,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -416,7 +446,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -433,6 +463,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -476,7 +509,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -493,6 +526,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 3
@@ -508,7 +544,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -525,6 +561,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -568,7 +607,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -585,6 +624,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -628,7 +670,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -645,6 +687,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -688,7 +733,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -705,6 +750,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -748,7 +796,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -765,6 +813,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -808,7 +859,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -825,6 +876,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -868,7 +922,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -885,6 +939,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -928,7 +985,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -945,6 +1002,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -988,7 +1048,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 16
@@ -1005,6 +1065,9 @@ Width
 Height
 3
 66
+Tool Tip
+5
+0
 Caption
 5
 74
@@ -1033,7 +1096,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -1050,6 +1113,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1092,7 +1158,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1109,6 +1175,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1151,7 +1220,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1168,6 +1237,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1210,7 +1282,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -1227,6 +1299,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1270,7 +1345,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1287,6 +1362,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1330,7 +1408,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1347,6 +1425,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1390,7 +1471,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -1407,6 +1488,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1450,7 +1534,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1467,6 +1551,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1510,7 +1597,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1527,6 +1614,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1570,7 +1660,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1587,6 +1677,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1630,7 +1723,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1647,6 +1740,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1690,7 +1786,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 18
@@ -1707,6 +1803,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 2
@@ -1721,7 +1820,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1738,6 +1837,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1781,7 +1883,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -1798,6 +1900,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1841,7 +1946,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -1858,6 +1963,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1899,7 +2007,7 @@ TabOrder
 3
 0
 
-28
+27
 bos
 3
 1
@@ -2225,24 +2333,10 @@ $/m3|$/unit
 1
 1
 Choice
-system_use_lifetime_output
-3
-1
- 
- 
-SHW Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 system_use_recapitalization
 3
 1
- 
+Enable geothermal recapitalization
  
 SHW Capital Costs
 0
@@ -2296,7 +2390,7 @@ SHW Capital Costs
 0
 Numeric
 
-1574
+1503
 equations{ 'plm_total' } = define() {
 	return ${plm_nonfixed}+${plm_fixed}; };
 
@@ -2352,9 +2446,6 @@ equations{ 'total_indirect' } = define() {
 equations{ 'total_installed_cost' } = define() {
 	return ${total_direct}+${total_indirect}; };
 
-
-equations { 'system_use_lifetime_output' } = define () {
-	return 0;};
 equations { 'system_use_recapitalization' } = define () {
 	return 0;};
 

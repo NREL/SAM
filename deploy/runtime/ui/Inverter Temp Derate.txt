@@ -156,9 +156,9 @@ Height
 inv_tdc_data
 3
 3
-inv_temp_derate_curves
+Inv Temp Derate
  
-Inverter Temp Derate Curves
+Inverter Temperature
 0
 3
 1

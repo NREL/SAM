@@ -1,18 +1,18 @@
 Battery Replacements
-999
-215
-7
+994
+133
+5
 GroupBox
 
 1
-7
+8
 Name
 5
 19
 Battery Bank Sizing
 X
 3
-9
+6
 Y
 3
 3
@@ -21,7 +21,10 @@ Width
 985
 Height
 3
-207
+129
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -29,55 +32,10 @@ Battery Bank Replacement
 Bold
 2
 1
-Label
-
-1
-12
-Name
-5
-6
-Label3
-X
-3
-456
-Y
-3
-126
-Width
-3
-403
-Height
-3
-76
-Caption
-5
-115
-SAM applies both inflation and escalation to the first year cost to calculate out-year costs. See Help for details.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -94,6 +52,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -133,129 +94,10 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
-
-1
-16
-Name
-5
-21
-batt_replacement_cost
-X
-3
-288
-Y
-3
-132
-Width
-3
-100
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-2
-Numeric
-
-1
-16
-Name
-5
-27
-batt_replacement_cost_escal
-X
-3
-288
-Y
-3
-159
-Width
-3
-100
-Height
-3
-24
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-2
- %
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-2
 RadioChoice
 
 1
-10
+11
 Name
 5
 23
@@ -272,6 +114,9 @@ Width
 Height
 3
 75
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -293,7 +138,7 @@ TabOrder
 DataArray
 
 1
-9
+10
 Name
 5
 25
@@ -310,55 +155,67 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 2
 Label
 5
-33
-Battery bank replacement schedule
+21
+Replace in Year (0/1)
 Description
 5
-93
-Battery bank replacement schedule (enter a 1 for years in which a battery replacement occurs)
+157
+Click "Number of values" and enter the analysis period in years. Then, enter a '1' in each row of the table for the year that the battery should be replaced.
+TabOrder
+3
+4294967295
+DataArray
+
+1
+10
+Name
+5
+33
+batt_replacement_schedule_percent
+X
+3
+582
+Y
+3
+99
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+2
+Label
+5
+19
+Replace in Year (%)
+Description
+5
+187
+Click "Number of values" and enter the analysis period in years. Then, enter a percentage of total battery capacity that should be replaced in each row that represents a replacement year.
 TabOrder
 3
 4294967295
 
-5
+4
 batt_replacement_capacity
 3
 1
 Battery bank replacement threshold
 % capacity
-Battery
-0
-2
-1
-1
-1
-1
-0
-Numeric
-batt_replacement_cost
-3
-1
-Battery bank replacement cost
-$/kWh
-Battery
-0
-2
-1
-1
-1
-1
-600
-Numeric
-batt_replacement_cost_escal
-3
-1
-Battery cost escalation above inflation
-%/year
 Battery
 0
 2
@@ -396,31 +253,48 @@ Battery
 1
 0
 DataArray
+batt_replacement_schedule_percent
+3
+2
+Battery bank replacement percent
+ 
+Battery
+0
+0
+1
+2
+1
+1
+0
+DataArray
 
 0
-691
+976
 on_load{'Battery Replacements'} = define() {
 	on_change{'batt_replacement_option'}();
 };
 
 on_change{ 'batt_replacement_option' } = define() {
 	option = value('batt_replacement_option');
-	
-	if (varinfo("system_use_lifetime_output"))
-		lifetime = value('system_use_lifetime_output');
-	else 
-		lifetime = 0;
-	
-	if (lifetime == 0 && option != 0)
-	{
-		msgbox('Lifetime simulation is not enabled. To enable it, on the Lifetime page, choose "PV simulation over analysis period."');
-		option = 0;
-	}
-	
 	enable('batt_replacement_capacity', option==1);
 	enable('batt_replacement_schedule', option==2);
-	enable('batt_replacement_cost', option>0);
-	enable('batt_replacement_cost_escal', option>0);
-
+	enable('batt_replacement_schedule_percent', option==2);
+	check_ppa_soln_mode( option );
 };
+
+function check_ppa_soln_mode( opt ) {
+	f = financing();
+	soln_mode = 99;
+	if ( f == 'Host Developer' 
+	|| f == 'Single Owner' 
+	|| f == 'Merchant Plant' 
+	|| f == 'Leveraged Partnership Flip' 
+	|| f == 'All Equity Partnership Flip' 
+	|| f == 'Sale Leaseback' ) 
+	{ soln_mode = value('ppa_soln_mode'); }
+	if ( soln_mode == 0 && opt != 0 )
+	{
+		msgbox('"Specify IRR target" solution mode is not available!\nFor projects with battery replacement schedules, choose "Specify PPA price" on the Revenue or Financial Parameters page, or change the battery replacement option to "No replacements."');
+	}	
+}
 

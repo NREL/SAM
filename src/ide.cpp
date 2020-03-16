@@ -581,6 +581,7 @@ public:
 			}
 			
 			m_ui->SetCallbacks( cb );
+			m_ui->SetEquations(eqn);
 
 			wxShowTextMessageDialog( wxString::Format("textual replacements\n\tcallbacks: %d equations: %d\n\n", n_cbreps, n_eqnreps )
 				+ result, "Remapping result", this );
@@ -1494,9 +1495,13 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						vi = m_ipd.Variables().Create(name, VV_STRING);
 					else if (type == "DataArray")
 						vi = m_ipd.Variables().Create(name, VV_ARRAY);
+					else if (type == "DataLifetimeArray")
+						vi = m_ipd.Variables().Create(name, VV_ARRAY);
 					else if (type == "StringArray")
 						vi = m_ipd.Variables().Create(name, VV_STRING);
 					else if (type == "DataMatrix")
+						vi = m_ipd.Variables().Create(name, VV_MATRIX);
+					else if (type == "DataLifetimeMatrix")
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 					else if (type == "ShadingFactors")
 						vi = m_ipd.Variables().Create(name, VV_TABLE);

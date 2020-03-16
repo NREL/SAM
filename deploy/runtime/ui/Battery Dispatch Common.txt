@@ -1,11 +1,11 @@
 Battery Dispatch Common
-1005
-145
+997
+122
 7
 Label
 
 1
-12
+13
 Name
 5
 16
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 104
@@ -50,7 +53,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 17
@@ -67,6 +70,9 @@ Width
 Height
 3
 138
+Tool Tip
+5
+0
 Caption
 5
 94
@@ -95,7 +101,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -112,6 +118,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -154,7 +163,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -171,6 +180,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -213,7 +225,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -230,6 +242,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -272,7 +287,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -289,6 +304,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -331,14 +349,14 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
 object 4
 X
 3
-9
+6
 Y
 3
 3
@@ -348,6 +366,9 @@ Width
 Height
 3
 117
+Tool Tip
+5
+0
 Caption
 5
 24

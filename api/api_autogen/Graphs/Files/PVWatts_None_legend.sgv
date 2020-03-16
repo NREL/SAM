@@ -1,0 +1,24 @@
+digraph PVWatts_None_legend {
+	label="Legend: PVWatts-None";
+	labelloc=top;
+	rankdir=LR;	ranksep="3";
+	key [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td align="right" port="e0">eqn_var0</td></tr>
+	<tr><td align="right" port="e1">eqn_var1</td></tr>
+	<tr><td align="right" port="o0">func_var0</td></tr>
+	<tr><td align="right" port="o1">func_var1</td></tr>
+	<tr><td align="right" port="o2">func_var2</td></tr>
+	</table>>]
+	key2 [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td port="e0">&nbsp;</td></tr>
+	<tr><td port="e1">&nbsp;</td></tr>
+	<tr><td port="o0">&nbsp;</td></tr>
+	<tr><td port="o1">&nbsp;</td></tr>
+	<tr><td port="o2">&nbsp;</td></tr>
+	</table>>]
+	key:e0:e -> key2:e0:w [style=dashed, label="3: PVWatts:EQN"]
+	key:e1:e -> key2:e1:w [style=dashed, label="0: Solar Resource Data:EQN"]
+	key:o0:e -> key2:o0:w [label="4: PVWatts:pvwatts_ui_update"]
+	key:o1:e -> key2:o1:w [label="2: btn_file_add"]
+	key:o2:e -> key2:o2:w [label="1: Solar Resource Data:update_info"]
+}

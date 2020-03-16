@@ -1,51 +1,24 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #include <vector>
 #include <algorithm>
@@ -427,8 +400,9 @@ LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wx
 	SetBackgroundColour( *wxWHITE );
 
 	m_sendEvents = true;
+	m_nmatches = 0;
 
-	m_label = new wxStaticText( this, wxID_ANY, wxT("Search for:") );
+	m_label = new wxStaticText( this, wxID_ANY, wxT("Filter:") );
 	m_filter = new wxTextCtrl( this, ID_FILTER );
 	m_target = new wxChoice( this, ID_TARGET );
 	m_notify = new wxStaticText( this, wxID_ANY, wxEmptyString );
@@ -439,9 +413,10 @@ LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wx
 	sz_horiz->Add( m_label, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	sz_horiz->Add( m_filter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	sz_horiz->Add( m_target, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-	sz_horiz->AddStretchSpacer();
+//	sz_horiz->AddStretchSpacer();
 	sz_horiz->Add( m_notify, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-	//sz_horiz->Add( new wxButton( this, ID_REFRESH, wxT("Refresh list") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+
+//sz_horiz->Add( new wxButton( this, ID_REFRESH, wxT("Refresh list") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 
 	wxBoxSizer *sz_vert = new wxBoxSizer( wxVERTICAL );
 	sz_vert->Add( sz_horiz, 0, wxALL|wxEXPAND, 0 );
@@ -498,7 +473,7 @@ bool LibraryCtrl::SetEntrySelection( const wxString &entry )
 wxString LibraryCtrl::GetEntrySelection()
 {
 	long sel = m_list->GetFirstSelected();
-	if ( sel >= 0 && sel < (long)m_view.size() ) return m_view[ sel ].name;
+	if (sel >= 0 && sel < (long)m_view.size()) return m_view[sel].name;
 	return wxEmptyString;
 }
 
@@ -574,10 +549,23 @@ void LibraryCtrl::ReloadLibrary()
 
 		UpdateList();
 
-		double sf = wxGetScreenHDScale();
+/*		double sf = wxGetScreenHDScale();
 		m_list->SetColumnWidth( 0, (int)(350*sf) );
 		for( int i=1;i<m_list->GetColumnCount();i++ )
 			m_list->SetColumnWidth( i, (int)(100*sf) );
+
+		for (size_t ic = 0; ic < (size_t)m_list->GetColumnCount(); ic++)
+			m_list->SetColumnWidth(ic, (int)(140 * wxGetScreenHDScale()));
+*/
+		for (int i = 0; i < m_list->GetColumnCount(); ++i)
+		{
+			m_list->SetColumnWidth(i, wxLIST_AUTOSIZE);
+			const int a_width = m_list->GetColumnWidth(i);
+			m_list->SetColumnWidth(i, wxLIST_AUTOSIZE_USEHEADER);
+			const int h_width = m_list->GetColumnWidth(i);
+			m_list->SetColumnWidth(i, (std::max)(a_width, h_width));
+		}
+
 
 		if ( !item.IsEmpty() ) SetEntrySelection( item );		
 	}
@@ -598,8 +586,8 @@ void LibraryCtrl::UpdateList()
 	m_view.clear();
 	if ( m_entries.size() > 0 )
 		m_view.reserve( m_entries.size() );
-
-	size_t nmatches = 0;
+	
+	m_nmatches = 0;
 
 	if( Library *lib = Library::Find( m_library ) )
 	{
@@ -620,16 +608,16 @@ void LibraryCtrl::UpdateList()
 				)
 			{
 				m_view.push_back( viewable(m_entries[i], i) );
-				nmatches++;
+				m_nmatches++;
 			}
 			else if ( target == sel )
 				m_view.push_back( viewable(m_entries[i], i) );
 		}
 	}
 
-	if ( nmatches == 0 )
+	if ( m_nmatches == 0 )
 	{
-		m_notify->SetLabel( "No matches. (selected item shown)" );
+		m_notify->SetLabel( "No matches." );
 		Layout();
 	}
 	
@@ -701,8 +689,17 @@ void LibraryCtrl::OnColClick( wxListEvent &evt )
 
 void LibraryCtrl::OnCommand( wxCommandEvent &evt )
 {
-	if( evt.GetId() == ID_FILTER || evt.GetId() == ID_TARGET )
+	if (evt.GetId() == ID_FILTER || evt.GetId() == ID_TARGET)
+	{
 		UpdateList();
+		if (evt.GetId() == ID_FILTER)
+		{
+			wxCommandEvent issue(wxEVT_LISTBOX, GetId());
+			issue.SetEventObject(this);
+			issue.SetInt(evt.GetSelection());
+			ProcessEvent(issue);
+		}
+	}
 }
 
 void LibraryCtrl::SetLabel( const wxString &text )
@@ -752,7 +749,7 @@ bool ShowWindResourceDataSettings()
 	return false;
 }
 
-bool ScanSolarResourceData( const wxString &db_file, bool show_busy )
+bool ScanSolarResourceData( const wxString &db_file, bool  )
 {
 //	wxBusyInfo *busy = 0;
 //	if ( show_busy )
@@ -912,8 +909,8 @@ bool ScanSolarResourceData( const wxString &db_file, bool show_busy )
 			errors.erase( errors.begin()+NERRMAX, errors.end() );
 			errors.Add( wxString::Format("and %d more...", nerr-NERRMAX) );
 		}
-
-		wxMessageBox( "The following weather files in the solar resource library appear to have problems:\n\n" + wxJoin( errors, '\n' ) );
+		// results in multiple annoying pop-ups, rely on UI form callbacks to display error messages
+		//wxMessageBox( "The following weather files in your weather file folders appear to have problems:\n\n" + wxJoin( errors, '\n' ) );
 	}
 
 	return csv.WriteFile( db_file );
@@ -1049,4 +1046,164 @@ bool ScanWindResourceData( const wxString &db_file, bool show_busy )
 	if ( busy ) delete busy;
 
 	return csv.WriteFile( db_file );
+}
+
+bool ScanWaveResourceData(const wxString &db_file, bool show_busy)
+{
+	// TODO - update fields based on final file
+	wxBusyInfo *busy = 0;
+	if (show_busy)
+		busy = new wxBusyInfo("Updating wave resource library...");
+
+	wxString path = SamApp::GetRuntimePath() + "../wave_resource/";
+	wxDir dir(path);
+	if (!dir.IsOpened()) {
+		if (busy) delete busy;
+		return false;
+	}
+
+
+
+	wxCSVData csv;
+	csv(0, 0) = "Name";
+	csv(2, 0) = "[0]";
+
+	csv(0, 1) = "City";
+	csv(2, 1) = "city";
+
+	csv(0, 2) = "State";
+	csv(2, 2) = "state";
+
+	csv(0, 3) = "Country";
+	csv(2, 3) = "country";
+
+	csv(0, 4) = "Latitude";
+	csv(1, 4) = "deg";
+	csv(2, 4) = "lat";
+
+	csv(0, 5) = "Longitude";
+	csv(1, 5) = "deg";
+	csv(2, 5) = "lon";
+
+	csv(0, 6) = "Nearby buoy number";
+	csv(2, 6) = "nearby_buoy_number";
+
+	csv(0, 7) = "Average power flux";
+	csv(1, 7) = "kW/m";
+	csv(2, 7) = "average_power_flux";
+
+	csv(0, 8) = "Bathymetry";
+	csv(2, 8) = "bathymetry";
+
+	csv(0, 9) = "Sea bed";
+	csv(2, 9) = "sea_bed";
+
+	csv(0, 10) = "Time zone";
+	csv(2, 10) = "tz";
+
+	csv(0, 11) = "Data source";
+	csv(2, 11) = "data_source";
+
+	csv(0, 12) = "Notes";
+	csv(2, 12) = "notes";
+
+	csv(0, 13) = "File name";
+	csv(2, 13) = "file_name";
+
+	csv(0, 14) = "Frequency distribution";
+	csv(2, 14) = "wave_resource_matrix";
+
+	int row = 3;
+	wxString file;
+	bool has_more = dir.GetFirst(&file, "*.csv", wxDIR_FILES);
+	while (has_more)
+	{
+		// process file
+		wxString wf = path + "/" + file;
+
+		ssc_data_t pdata = ssc_data_create();
+		ssc_data_set_string(pdata, "wave_resource_filename", (const char*)wf.c_str());
+
+		if (const char *err = ssc_module_exec_simple_nothread("wave_file_reader", pdata))
+		{
+			wxLogStatus("error scanning '" + wf + "'");
+			wxLogStatus("\t%s", err);
+		}
+		else
+		{
+			ssc_number_t val;
+			ssc_number_t *mat;
+			int nrows, ncols;
+			const char *str;
+
+			wxFileName ff(wf);
+			ff.Normalize();
+
+			if ((str = ssc_data_get_string(pdata, "name")) != 0)
+				csv(row, 0) = wxString(str);
+
+			if ((str = ssc_data_get_string(pdata, "city")) != 0)
+				csv(row, 1) = wxString(str);
+
+			if ((str = ssc_data_get_string(pdata, "state")) != 0)
+				csv(row, 2) = wxString(str);
+
+			if ((str = ssc_data_get_string(pdata, "country")) != 0)
+				csv(row, 3) = wxString(str);
+
+			if (ssc_data_get_number(pdata, "lat", &val))
+				csv(row, 4) = wxString::Format("%g", val);
+
+			if (ssc_data_get_number(pdata, "lon", &val))
+				csv(row, 5) = wxString::Format("%g", val);
+
+			if ((str = ssc_data_get_string(pdata, "nearby_buoy_number")) != 0)
+				csv(row, 6) = wxString(str);
+
+			if (ssc_data_get_number(pdata, "average_power_flux", &val))
+				csv(row, 7) = wxString::Format("%g", val);
+
+			if ((str = ssc_data_get_string(pdata, "bathymetry")) != 0)
+				csv(row, 8) = wxString(str);
+
+			if ((str = ssc_data_get_string(pdata, "sea_bed")) != 0)
+				csv(row, 9) = wxString(str);
+
+			if (ssc_data_get_number(pdata, "tz", &val))
+				csv(row, 10) = wxString::Format("%g", val);
+
+			if ((str = ssc_data_get_string(pdata, "data_source")) != 0)
+				csv(row, 11) = wxString(str);
+
+			if ((str = ssc_data_get_string(pdata, "notes")) != 0)
+				csv(row, 12) = wxString(str);
+
+			csv(row, 13) = ff.GetFullPath();
+
+			if ((mat = ssc_data_get_matrix(pdata, "wave_resource_matrix", &nrows, &ncols)) != 0)
+			{
+				wxString wstr =  "";
+				for (int r = 0; r < nrows; r++)
+				{
+					wstr += "[";
+					for (int c = 0; c < ncols; c++)
+					{
+						wstr += wxString::Format("%g", mat[r*ncols + c]);
+						if (c < ncols - 1) wstr += ";";
+					}
+					wstr += "]";
+				}
+				csv(row, 14) = wxString(wstr);
+			}
+			row++;
+		}
+
+		ssc_data_free(pdata);
+
+		has_more = dir.GetNext(&file);
+	}
+
+	if (busy) delete busy;
+
+	return csv.WriteFile(db_file);
 }

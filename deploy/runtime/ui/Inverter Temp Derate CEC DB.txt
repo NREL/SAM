@@ -156,9 +156,9 @@ Height
 inv_tdc_cec_db
 3
 3
-Inv Temp Derate CEC DB
+Inv Temp Derate CEC Database
  
-Inverter Temp Derate Curves
+Inverter Temperature
 0
 3
 1

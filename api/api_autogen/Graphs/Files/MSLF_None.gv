@@ -1,0 +1,857 @@
+digraph MSLF_None {
+	label ="MSLF-None";
+	labelloc=top;
+	rankdir=LR;
+	ranksep="1";
+	"user_htf_comparison" [shape=polygon, style=filled, fillcolor=darkslategray3]
+	"Error" [style=filled, fillcolor=grey]
+	"ud_T_amb_low" [style=filled, fillcolor=grey]
+	"D_abs_in" [style=filled, fillcolor=grey]
+	"A_aperture" [style=filled, fillcolor=grey]
+	"dt_cold" [style=filled, fillcolor=grey]
+	"Fluid" [style=filled, fillcolor=grey]
+	"FieldConfig" [style=filled, fillcolor=grey]
+	"aux_array" [style=filled, fillcolor=grey]
+	"GeomEffects" [style=filled, fillcolor=grey]
+	"D_glass_in" [style=filled, fillcolor=grey]
+	"D_plug" [style=filled, fillcolor=grey]
+	"T_amb_sf_des" [style=filled, fillcolor=grey]
+	"P_a" [style=filled, fillcolor=grey]
+	"weekday_schedule" [style=filled, fillcolor=grey]
+	"tslogic_c" [style=filled, fillcolor=grey]
+	"T_htf_hot_ref" [style=filled, fillcolor=grey]
+	"ud_f_W_dot_cool_des" [style=filled, fillcolor=grey]
+	"V_tank_hot_ini" [style=filled, fillcolor=grey]
+	"Dirt_mirror" [style=filled, fillcolor=grey]
+	"field_fluid" [style=filled, fillcolor=grey]
+	"T_field_out_des" [style=filled, fillcolor=grey]
+	"IAM_T_coefs" [style=filled, fillcolor=grey]
+	"T_tank_hot_ini" [style=filled, fillcolor=grey]
+	"AnnulusGas" [style=filled, fillcolor=grey]
+	"weekend_schedule" [style=filled, fillcolor=grey]
+	"alpha_abs" [style=filled, fillcolor=grey]
+	"TrackingError" [style=filled, fillcolor=grey]
+	"T_htf_cold_ref" [style=filled, fillcolor=grey]
+	"DP_coefs" [style=filled, fillcolor=grey]
+	"DP_nominal" [style=filled, fillcolor=grey]
+	"T_loop_out" [style=filled, fillcolor=grey]
+	"system_capacity" [style=filled, fillcolor=grey]
+	"alpha_env" [style=filled, fillcolor=grey]
+	"u_tank" [style=filled, fillcolor=grey]
+	"rec_model" [style=filled, fillcolor=grey]
+	"IAM_L_coefs" [style=filled, fillcolor=grey]
+	"ud_T_amb_des" [style=filled, fillcolor=grey]
+	"T_loop_in_des" [style=filled, fillcolor=grey]
+	"h_tank_min" [style=filled, fillcolor=grey]
+	"SCA_drives_elec" [style=filled, fillcolor=grey]
+	"Tau_envelope" [style=filled, fillcolor=grey]
+	"P_ref" [style=filled, fillcolor=grey]
+	"fthrctrl" [style=filled, fillcolor=grey]
+	"T_field_in_des" [style=filled, fillcolor=grey]
+	"tslogic_b" [style=filled, fillcolor=grey]
+	"store_fluid" [style=filled, fillcolor=grey]
+	"Flow_type" [style=filled, fillcolor=grey]
+	"AbsorberMaterial" [style=filled, fillcolor=grey]
+	"W_pb_design" [style=filled, fillcolor=grey]
+	"T_tank_cold_ini" [style=filled, fillcolor=grey]
+	"field_fl_props" [style=filled, fillcolor=grey]
+	"solar_mult" [style=filled, fillcolor=grey]
+	"Rough" [style=filled, fillcolor=grey]
+	"D_abs_out" [style=filled, fillcolor=grey]
+	"Shadowing" [style=filled, fillcolor=grey]
+	"L_mod" [style=filled, fillcolor=grey]
+	"solarm" [style=filled, fillcolor=grey]
+	"ud_m_dot_htf_low" [style=filled, fillcolor=grey]
+	"ud_T_htf_high" [style=filled, fillcolor=grey]
+	"file_name" [style=filled, fillcolor=grey]
+	"fp_mode" [style=filled, fillcolor=grey]
+	"nSCA" [style=filled, fillcolor=grey]
+	"fthrok" [style=filled, fillcolor=grey]
+	"is_hx" [style=filled, fillcolor=grey]
+	"epsilon_glass" [style=filled, fillcolor=grey]
+	"ffrac" [style=filled, fillcolor=grey]
+	"h_tank" [style=filled, fillcolor=grey]
+	"eta_lhv" [style=filled, fillcolor=grey]
+	"HL_T_coefs" [style=filled, fillcolor=grey]
+	"nLoops" [style=filled, fillcolor=grey]
+	"bop_array" [style=filled, fillcolor=grey]
+	"ud_ind_od" [style=filled, fillcolor=grey]
+	"fossil_mode" [style=filled, fillcolor=grey]
+	"pb_fixed_par" [style=filled, fillcolor=grey]
+	"dirt_env" [style=filled, fillcolor=grey]
+	"GlazingIntactIn" [style=filled, fillcolor=grey]
+	"tslogic_a" [style=filled, fillcolor=grey]
+	"opt_model" [style=filled, fillcolor=grey]
+	"pb_rated_cap" [style=filled, fillcolor=grey]
+	"q_pb_design" [style=filled, fillcolor=grey]
+	"reflectivity" [style=filled, fillcolor=grey]
+	"D_glass_out" [style=filled, fillcolor=grey]
+	"HCE_FieldFrac" [style=filled, fillcolor=grey]
+	"tank_pairs" [style=filled, fillcolor=grey]
+	"fthr_ok" [style=filled, fillcolor=grey]
+	"I_bn_des" [style=filled, fillcolor=grey]
+	"CT" [style=filled, fillcolor=grey]
+	"ud_T_amb_high" [style=filled, fillcolor=grey]
+	"Design_loss" [style=filled, fillcolor=grey]
+	"eta_ref" [style=filled, fillcolor=grey]
+	"F_wc" [style=filled, fillcolor=grey]
+	"ud_T_htf_low" [style=filled, fillcolor=grey]
+	"dt_hot" [style=filled, fillcolor=grey]
+	"tes_temp" [style=filled, fillcolor=grey]
+	"tech_type" [style=filled, fillcolor=grey]
+	"tshours" [style=filled, fillcolor=grey]
+	"vol_tank" [style=filled, fillcolor=grey]
+	"ud_m_dot_htf_high" [style=filled, fillcolor=grey]
+	"store_fl_props" [style=filled, fillcolor=grey]
+	"q_max_aux" [style=filled, fillcolor=grey]
+	"HL_w_coefs" [style=filled, fillcolor=grey]
+	"nMod" [style=filled, fillcolor=grey]
+
+	"file_to_key()( f_name )" -> "solar_resource" [label=0, color = black];
+	"n_T_amb" -> "dT_amb" [label=1, color = brown4];
+	"json_ok" -> "ok_test" [label=2, color = darkorange3];
+	"geocode_ok" -> "ok_test" [label=2, color = darkorange3];
+	"n" -> "dataset" [label=3, color = lightslateblue];
+	"location" -> "pb_locations" [label=4, color = mediumorchid];
+	"location" -> "g" [label=2, color = darkorange3];
+	"location" -> "dataset" [label=3, color = lightslateblue];
+	"msg" -> "show_log" [label=3, color = lightslateblue];
+	"dispatch_sched_weekday" -> "weekday_schedule" [label=5, color = firebrick];
+	"get_settings()( "solar_download_path" )+"
+"+replace()( clean_list, ";", "
+" )" -> "library_folder_list" [label=6, color = indigo];
+	"are_equal" -> "is_hx" [label=7, color = burlywood4];
+	"user_htf_comparison" -> "are_equal" [label=7, color = burlywood4];
+	"x" -> "paths" [label=6, color = indigo];
+	"csp.mslf.sf.opt_model" -> "opt_model" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.opt_model" -> "mode" [label=9, color = darkorchid4];
+	"HTF_data" -> "field_fl_props" [label=10, style=dashed, color = aquamarine3];
+	"Error" -> "opt_normal" [label=8, style=dashed, color = azure4];
+	"T_htf_low" -> "T_htf_ini" [label=1, color = brown4];
+	"T_htf_low" -> "dT_htf" [label=1, color = brown4];
+	"T_htf_low" -> "T_htf_lvls" [label=1, color = brown4];
+	"ud_T_amb_low" -> "T_amb_low" [label=1, color = brown4];
+	"log_file" -> "flog" [label=4, color = mediumorchid];
+	"A_aperture" -> "a_loop" [label=10, style=dashed, color = aquamarine3];
+	"A_aperture" -> "hl_derate" [label=8, style=dashed, color = azure4];
+	"dt_cold" -> "hx_derate" [label=11, style=dashed, color = olivedrab];
+	"dt_cold" -> "vol_tank" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.control.bop_array_c1" -> "bop_array" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.bop_array_c1" -> "csp.mslf.par.calc.bop" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.bop_array_pf" -> "bop_array" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.bop_array_pf" -> "csp.mslf.par.calc.bop" [label=12, style=dashed, color = palevioletred];
+	"Fluid" -> "user_htf_comparison" [label=7, color = burlywood4];
+	"Fluid" -> "field_htf_cp_avg" [label=10, style=dashed, color = aquamarine3];
+	"Fluid" -> "field_fluid" [label=10, style=dashed, color = aquamarine3];
+	"Fluid" -> "is_hx" [label=13, style=dashed, color = darkgoldenrod2];
+	"ui_disp_9_turbout" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_turbout" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_turbout" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_turbout" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_turbout" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_turbout" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_turbout" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_turbout" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_turbout" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_turbout" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_turbout" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"GeomEffects" -> "opt_normal" [label=8, style=dashed, color = azure4];
+	"csp.mslf.control.aux_array_pf" -> "csp.mslf.par.calc.aux" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.aux_array_pf" -> "aux_array" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.cycle.gr_to_net" -> "nameplate" [label=13, style=dashed, color = darkgoldenrod2];
+	"csp.mslf.cycle.gr_to_net" -> "q_design" [label=13, style=dashed, color = darkgoldenrod2];
+	"csp.mslf.sf.Design_loss3" -> "Design_loss" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Design_loss3" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.IAM_L_coefs1" -> "IAM_L_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Shadowing4" -> "Shadowing" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Shadowing4" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"m_dot_high" -> "dm_dot" [label=1, color = brown4];
+	"m_dot_high" -> "m_dot_lvls" [label=1, color = brown4];
+	"T_amb_sf_des" -> "csp.mslf.sf.avg_dt_des" [label=8, style=dashed, color = azure4];
+	"PB_COPY_q_pb_design" -> "PB_m_dot_htf_cycle_des" [label=13, style=dashed, color = darkgoldenrod2];
+	"csp.mslf.sf.Rough" -> "Rough" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Shadowing3" -> "Shadowing" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Shadowing3" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HCE_FieldFrac2" -> "HCE_FieldFrac" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HCE_FieldFrac2" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HCE_FieldFrac2" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.DP_coefs1" -> "DP_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HCE_FieldFrac4" -> "HCE_FieldFrac" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HCE_FieldFrac4" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HCE_FieldFrac4" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.alpha_env2" -> "alpha_env" [label=8, style=dashed, color = azure4];
+	"T_htf_hot_ref" -> "PB_COPY_T_htf_hot_des" [label=13, style=dashed, color = darkgoldenrod2];
+	"ud_f_W_dot_cool_des" -> "ud_W_dot_cool_calc" [label=15, style=dashed, color = crimson];
+	"Dirt_mirror" -> "opt_normal" [label=8, style=dashed, color = azure4];
+	"library_folder_list" -> "L" [label=16, color = chartreuse4];
+	"csp.mslf.sf.D_glass_in" -> "D_glass_in" [label=8, style=dashed, color = azure4];
+	"ui_disp_5_solar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_solar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_solar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_solar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_solar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_solar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_solar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_solar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_solar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_solar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_solar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"csp.mslf.sf.DP_coefs2" -> "DP_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.IAM_L_coefs2" -> "IAM_L_coefs" [label=8, style=dashed, color = azure4];
+	"ui_disp_3_fossil" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_fossil" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_fossil" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_fossil" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_fossil" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_fossil" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_fossil" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_fossil" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_fossil" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_fossil" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_fossil" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"TrackingError" -> "opt_normal" [label=8, style=dashed, color = azure4];
+	"T_htf_cold_ref" -> "PB_COPY_T_htf_cold_des" [label=13, style=dashed, color = darkgoldenrod2];
+	"DP_nominal" -> "DP_pressure_loss" [label=8, style=dashed, color = azure4];
+	"T_amb_low" -> "T_amb_ini" [label=1, color = brown4];
+	"T_amb_low" -> "dT_amb" [label=1, color = brown4];
+	"T_amb_low" -> "T_amb_lvls" [label=1, color = brown4];
+	"TES_cap" -> "vol_tank" [label=11, style=dashed, color = olivedrab];
+	"T_loop_out" -> "T_field_out_des" [label=10, style=dashed, color = aquamarine3];
+	"T_loop_out" -> "field_htf_cp_avg" [label=10, style=dashed, color = aquamarine3];
+	"T_loop_out" -> "csp.mslf.sf.avg_dt_des" [label=8, style=dashed, color = azure4];
+	"T_loop_out" -> "T_htf_hot_ref" [label=13, style=dashed, color = darkgoldenrod2];
+	"T_loop_out" -> "hx_derate" [label=11, style=dashed, color = olivedrab];
+	"T_loop_out" -> "tes_temp" [label=11, style=dashed, color = olivedrab];
+	"T_loop_out" -> "vol_tank" [label=11, style=dashed, color = olivedrab];
+	"T_loop_out" -> "T_tank_hot_ini" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.sf.IAM_T_coefs0" -> "IAM_T_coefs" [label=8, style=dashed, color = azure4];
+	"u_tank" -> "csp.mslf.tes.estimated_heat_loss" [label=11, style=dashed, color = olivedrab];
+	"land_mult" -> "total_land_area" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.HCE_FieldFrac1" -> "HCE_FieldFrac" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HCE_FieldFrac1" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HCE_FieldFrac1" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.GlazingIntactIn3" -> "GlazingIntactIn" [label=8, style=dashed, color = azure4];
+	"ui_disp_1_nosolar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_nosolar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_nosolar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_nosolar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_nosolar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_nosolar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_nosolar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_nosolar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_nosolar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_nosolar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_nosolar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"csp.mslf.control.aux_array_c1" -> "csp.mslf.par.calc.aux" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.aux_array_c1" -> "aux_array" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.sf.IAM_L_coefs3" -> "IAM_L_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.control.aux_array_mult" -> "csp.mslf.par.calc.aux" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.aux_array_mult" -> "aux_array" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.sf.rec_model" -> "rec_model" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.rec_model" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.rec_model" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.rec_model" -> "mode" [label=17, color = sienna4];
+	"ud_T_amb_des" -> "ud_COPY_T_amb_des" [label=15, style=dashed, color = crimson];
+	"csp.mslf.sf.epsilon_glass1" -> "epsilon_glass" [label=8, style=dashed, color = azure4];
+	"ui_disp_7_fossil" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_fossil" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_fossil" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_fossil" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_fossil" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_fossil" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_fossil" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_fossil" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_fossil" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_fossil" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_fossil" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_fossil" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_fossil" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_fossil" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_fossil" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_fossil" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_fossil" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_fossil" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_fossil" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_fossil" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_fossil" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_fossil" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ud_COPY_T_amb_des" -> "T_amb_des" [label=1, color = brown4];
+	"csp.mslf.sf.IAM_T_coefs3" -> "IAM_T_coefs" [label=8, style=dashed, color = azure4];
+	"hybrid_tou3" -> "F_wc" [label=18, style=dashed, color = skyblue4];
+	"csp.mslf.sf.HL_T_coefs4" -> "HL_T_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HL_T_coefs4" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HL_w_coefs4" -> "HL_w_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.dirt_env3" -> "dirt_env" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.dirt_env3" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.avg_dt_des" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"csp.mslf.control.fossil_mode" -> "fossil_mode" [label=13, style=dashed, color = darkgoldenrod2];
+	"hybrid_tou1" -> "F_wc" [label=18, style=dashed, color = skyblue4];
+	"csp.mslf.sf.AnnulusGas1" -> "AnnulusGas" [label=8, style=dashed, color = azure4];
+	"T_loop_in_des" -> "field_htf_cp_avg" [label=10, style=dashed, color = aquamarine3];
+	"T_loop_in_des" -> "csp.mslf.sf.avg_dt_des" [label=8, style=dashed, color = azure4];
+	"T_loop_in_des" -> "T_htf_cold_ref" [label=13, style=dashed, color = darkgoldenrod2];
+	"T_loop_in_des" -> "hx_derate" [label=11, style=dashed, color = olivedrab];
+	"T_loop_in_des" -> "tes_temp" [label=11, style=dashed, color = olivedrab];
+	"T_loop_in_des" -> "vol_tank" [label=11, style=dashed, color = olivedrab];
+	"T_loop_in_des" -> "T_field_in_des" [label=11, style=dashed, color = olivedrab];
+	"T_loop_in_des" -> "T_tank_cold_ini" [label=11, style=dashed, color = olivedrab];
+	"h_tank_min" -> "vol_min" [label=11, style=dashed, color = olivedrab];
+	"pressure_mode" -> "tech_type" [label=18, style=dashed, color = skyblue4];
+	"SCA_drives_elec" -> "csp.mslf.par.calc.tracking" [label=12, style=dashed, color = palevioletred];
+	"nameplate" -> "system_capacity" [label=13, style=dashed, color = darkgoldenrod2];
+	"loop_eff" -> "sm1_aperture" [label=10, style=dashed, color = aquamarine3];
+	"loop_eff" -> "field_thermal_output" [label=10, style=dashed, color = aquamarine3];
+	"folder" -> "log_file" [label=4, color = mediumorchid];
+	"csp.mslf.sf.epsilon_glass2" -> "epsilon_glass" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.D_plug" -> "D_plug" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.GlazingIntactIn2" -> "GlazingIntactIn" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.IAM_L_coefs0" -> "IAM_L_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HL_w_coefs1" -> "HL_w_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.IAM_T_coefs4" -> "IAM_T_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.D_abs_out" -> "D_abs_out" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HL_T_coefs0" -> "HL_T_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HL_T_coefs0" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.DP_coefs3" -> "DP_coefs" [label=8, style=dashed, color = azure4];
+	"P_ref" -> "sf_q_design" [label=10, style=dashed, color = aquamarine3];
+	"P_ref" -> "demand_var" [label=8, style=dashed, color = azure4];
+	"P_ref" -> "W_pb_design" [label=8, style=dashed, color = azure4];
+	"P_ref" -> "pb_rated_cap" [label=13, style=dashed, color = darkgoldenrod2];
+	"P_ref" -> "nameplate" [label=13, style=dashed, color = darkgoldenrod2];
+	"P_ref" -> "q_design" [label=13, style=dashed, color = darkgoldenrod2];
+	"P_ref" -> "PB_COPY_q_pb_design" [label=13, style=dashed, color = darkgoldenrod2];
+	"P_ref" -> "ud_W_dot_cool_calc" [label=15, style=dashed, color = crimson];
+	"P_ref" -> "csp.mslf.par.calc.bop" [label=12, style=dashed, color = palevioletred];
+	"P_ref" -> "csp.mslf.par.calc.aux" [label=12, style=dashed, color = palevioletred];
+	"P_ref" -> "csp.mslf.par.calc.frac_gross" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.sf.HL_T_coefs1" -> "HL_T_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HL_T_coefs1" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"T_htf_high" -> "dT_htf" [label=1, color = brown4];
+	"T_htf_high" -> "T_htf_lvls" [label=1, color = brown4];
+	"csp.mslf.sf.GlazingIntactIn1" -> "GlazingIntactIn" [label=8, style=dashed, color = azure4];
+	"PB_COPY_htf_cp_avg" -> "PB_m_dot_htf_cycle_des" [label=13, style=dashed, color = darkgoldenrod2];
+	"csp.mslf.sf.HL_T_coefs2" -> "HL_T_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HL_T_coefs2" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Design_loss4" -> "Design_loss" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Design_loss4" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"in_location" -> "location" [label=4, color = mediumorchid];
+	"csp.mslf.sf.HL_w_coefs0" -> "HL_w_coefs" [label=8, style=dashed, color = azure4];
+	"opt_derate" -> "loop_opt_eff" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.IAM_T_coefs2" -> "IAM_T_coefs" [label=8, style=dashed, color = azure4];
+	"a_sf_act" -> "solar_mult" [label=10, style=dashed, color = aquamarine3];
+	"a_sf_act" -> "field_thermal_output" [label=10, style=dashed, color = aquamarine3];
+	"a_sf_act" -> "field_area" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.HCE_FieldFrac3" -> "HCE_FieldFrac" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HCE_FieldFrac3" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HCE_FieldFrac3" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"field_htf_cp_avg" -> "PB_COPY_htf_cp_avg" [label=13, style=dashed, color = darkgoldenrod2];
+	"csp.mslf.sf.Fluid" -> "Fluid" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.Fluid" -> "htf_max_opt_temp" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.Fluid" -> "htf_min_opt_temp" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.Fluid" -> "field_htf_cp_avg" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.Fluid" -> "bCustomHTF" [label=19, color = orange3];
+	"row" -> "tbl_inputs" [label=1, color = brown4];
+	"csp.mslf.sf.HL_w_coefs2" -> "HL_w_coefs" [label=8, style=dashed, color = azure4];
+	"a_field" -> "nLoops" [label=10, style=dashed, color = aquamarine3];
+	"T_amb_des" -> "T_amb_lvls" [label=1, color = brown4];
+	"store_fluid" -> "user_htf_comparison" [label=7, color = burlywood4];
+	"store_fluid" -> "is_hx" [label=13, style=dashed, color = darkgoldenrod2];
+	"csp.mslf.sf.alpha_env4" -> "alpha_env" [label=8, style=dashed, color = azure4];
+	"csp.mslf.control.bop_array_mult" -> "bop_array" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.bop_array_mult" -> "csp.mslf.par.calc.bop" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.sf.P_a1" -> "P_a" [label=8, style=dashed, color = azure4];
+	"field_area" -> "total_land_area" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.P_a2" -> "P_a" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.P_a3" -> "P_a" [label=8, style=dashed, color = azure4];
+	"hybrid_tou9" -> "F_wc" [label=18, style=dashed, color = skyblue4];
+	"csp.mslf.sf.AnnulusGas4" -> "AnnulusGas" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.P_a4" -> "P_a" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Tau_envelope1" -> "Tau_envelope" [label=8, style=dashed, color = azure4];
+	"csp.mslf.control.tes_dens" -> "vol_tank" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.sf.sm_or_area" -> "nLoops" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.sm_or_area" -> "solar_mult" [label=10, style=dashed, color = aquamarine3];
+	"T_amb_high" -> "dT_amb" [label=1, color = brown4];
+	"T_amb_high" -> "T_amb_lvls" [label=1, color = brown4];
+	"csp.mslf.sf.alpha_abs1" -> "alpha_abs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.alpha_abs2" -> "alpha_abs" [label=8, style=dashed, color = azure4];
+	"field_fl_props" -> "user_htf_comparison" [label=7, color = burlywood4];
+	"field_fl_props" -> "field_htf_cp_avg" [label=10, style=dashed, color = aquamarine3];
+	"solar_mult" -> "solarm" [label=10, style=dashed, color = aquamarine3];
+	"solar_mult" -> "q_max_aux" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.sf.epsilon_glass3" -> "epsilon_glass" [label=8, style=dashed, color = azure4];
+	"ui_disp_3_solar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_solar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_solar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_solar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_solar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_solar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_solar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_solar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_solar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_solar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_solar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"csp.mslf.sf.alpha_env3" -> "alpha_env" [label=8, style=dashed, color = azure4];
+	"csp.mslf.enet.tes_fp_mode" -> "fp_mode" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.sf.alpha_env1" -> "alpha_env" [label=8, style=dashed, color = azure4];
+	"csp.mslf.control.bop_array_c2" -> "bop_array" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.bop_array_c2" -> "csp.mslf.par.calc.bop" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.store_fluid" -> "csp.mslf.tes.htf_max_opt_temp" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.control.store_fluid" -> "csp.mslf.tes.htf_min_opt_temp" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.control.store_fluid" -> "csp.mslf.control.tes_dens" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.control.store_fluid" -> "csp.mslf.control.tes_cp" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.control.store_fluid" -> "store_fluid" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.control.store_fluid" -> "bCustomHTF" [label=20, color = seashell4];
+	"csp.mslf.sf.IAM_L_coefs4" -> "IAM_L_coefs" [label=8, style=dashed, color = azure4];
+	"L_mod" -> "hl_derate" [label=8, style=dashed, color = azure4];
+	"ui_disp_6_fossil" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_fossil" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_fossil" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_fossil" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_fossil" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_fossil" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_fossil" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_fossil" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_fossil" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_fossil" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_fossil" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"opt_normal" -> "loop_opt_eff" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.AnnulusGas2" -> "AnnulusGas" [label=8, style=dashed, color = azure4];
+	"hybrid_tou8" -> "F_wc" [label=18, style=dashed, color = skyblue4];
+	"ud_m_dot_htf_low" -> "m_dot_low" [label=1, color = brown4];
+	"ud_T_htf_high" -> "T_htf_high" [label=1, color = brown4];
+	"ui_disp_2_fossil" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_fossil" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_fossil" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_fossil" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_fossil" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_fossil" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_fossil" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_fossil" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_fossil" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_fossil" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_fossil" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"csp.mslf.sf.HL_T_coefs3" -> "HL_T_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.HL_T_coefs3" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.epsilon_glass4" -> "epsilon_glass" [label=8, style=dashed, color = azure4];
+	"hybrid_tou7" -> "F_wc" [label=18, style=dashed, color = skyblue4];
+	"csp.mslf.sf.dirt_env2" -> "dirt_env" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.dirt_env2" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.fthrctrl" -> "fthrctrl" [label=10, style=dashed, color = aquamarine3];
+	"PB_COPY_T_htf_cold_des" -> "PB_m_dot_htf_cycle_des" [label=13, style=dashed, color = darkgoldenrod2];
+	"fthrok" -> "fthr_ok" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.Flow_type" -> "Flow_type" [label=8, style=dashed, color = azure4];
+	"ui_disp_6_turbout" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_turbout" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_turbout" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_turbout" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_turbout" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_turbout" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_turbout" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_turbout" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_turbout" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_turbout" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_turbout" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_solar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_solar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_solar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_solar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_solar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_solar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_solar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_solar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_solar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_solar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_solar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"is_hx" -> "mslf_is_hx" [label=21, color = sienna];
+	"csp.mslf.sf.IAM_T_coefs1" -> "IAM_T_coefs" [label=8, style=dashed, color = azure4];
+	"m_dot_low" -> "m_dot_ini" [label=1, color = brown4];
+	"m_dot_low" -> "dm_dot" [label=1, color = brown4];
+	"m_dot_low" -> "m_dot_lvls" [label=1, color = brown4];
+	"use_specific_weather_file" -> "solar_resource_file" [label=22, style=dashed, color = sienna1];
+	"h_tank" -> "csp.mslf.tes.estimated_heat_loss" [label=11, style=dashed, color = olivedrab];
+	"h_tank" -> "d_tank" [label=11, style=dashed, color = olivedrab];
+	"h_tank" -> "vol_min" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.control.bop_array_c0" -> "bop_array" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.bop_array_c0" -> "csp.mslf.par.calc.bop" [label=12, style=dashed, color = palevioletred];
+	"hybrid_tou2" -> "F_wc" [label=18, style=dashed, color = skyblue4];
+	"hybrid_tou6" -> "F_wc" [label=18, style=dashed, color = skyblue4];
+	"eta_lhv" -> "lhv_eff" [label=13, style=dashed, color = darkgoldenrod2];
+	"n_T_htf" -> "dT_htf" [label=1, color = brown4];
+	"sf_q_design" -> "sm1_aperture" [label=10, style=dashed, color = aquamarine3];
+	"sf_q_design" -> "q_pb_design" [label=8, style=dashed, color = azure4];
+	"sf_q_design" -> "TES_cap" [label=11, style=dashed, color = olivedrab];
+	"sf_q_design" -> "q_max_aux" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.control.aux_array_c2" -> "csp.mslf.par.calc.aux" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.aux_array_c2" -> "aux_array" [label=12, style=dashed, color = palevioletred];
+	"hl_derate" -> "loop_eff" [label=10, style=dashed, color = aquamarine3];
+	"hl_derate" -> "loop_therm_eff" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.HL_w_coefs3" -> "HL_w_coefs" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.D_glass_out" -> "D_glass_out" [label=8, style=dashed, color = azure4];
+	"ui_disp_2_nosolar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_nosolar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_nosolar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_nosolar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_nosolar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_nosolar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_nosolar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_nosolar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_nosolar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_nosolar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_nosolar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"PB_COPY_T_htf_hot_des" -> "PB_m_dot_htf_cycle_des" [label=13, style=dashed, color = darkgoldenrod2];
+	"PB_COPY_T_htf_hot_des" -> "ud_COPY_T_HTF_des" [label=15, style=dashed, color = crimson];
+	"loop_opt_eff" -> "loop_eff" [label=10, style=dashed, color = aquamarine3];
+	"ui_disp_6_solar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_solar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_solar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_solar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_solar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_solar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_solar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_solar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_solar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_solar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_solar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_turbout" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_turbout" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_turbout" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_turbout" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_turbout" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_turbout" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_turbout" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_turbout" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_turbout" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_turbout" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_turbout" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"nLoops" -> "a_sf_act" [label=10, style=dashed, color = aquamarine3];
+	"nLoops" -> "csp.mslf.par.calc.tracking" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.tes_cp" -> "vol_tank" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.sf.Shadowing2" -> "Shadowing" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Shadowing2" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.AnnulusGas3" -> "AnnulusGas" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Tau_envelope2" -> "Tau_envelope" [label=8, style=dashed, color = azure4];
+	"ui_disp_7_nosolar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_nosolar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_nosolar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_nosolar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_nosolar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_nosolar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_nosolar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_nosolar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_nosolar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_nosolar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_nosolar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_nosolar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_nosolar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_nosolar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_nosolar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_nosolar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_nosolar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_nosolar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_nosolar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_nosolar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_nosolar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_3_nosolar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"pb_fixed_par" -> "csp.mslf.par.calc.frac_gross" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.sf.Tau_envelope3" -> "Tau_envelope" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.dirt_env1" -> "dirt_env" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.dirt_env1" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"ui_disp_4_nosolar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_nosolar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_nosolar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_nosolar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_nosolar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_nosolar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_nosolar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_nosolar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_nosolar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_nosolar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_nosolar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"reflectivity" -> "opt_normal" [label=8, style=dashed, color = azure4];
+	"mslf_is_hx" -> "hx_derate" [label=11, style=dashed, color = olivedrab];
+	"a_loop" -> "csp.mslf.sf.sm1_nLoops" [label=10, style=dashed, color = aquamarine3];
+	"a_loop" -> "nLoops" [label=10, style=dashed, color = aquamarine3];
+	"a_loop" -> "a_sf_act" [label=10, style=dashed, color = aquamarine3];
+	"csp.mslf.sf.Shadowing1" -> "Shadowing" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Shadowing1" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"solar_mult_spec" -> "nLoops" [label=10, style=dashed, color = aquamarine3];
+	"solar_mult_spec" -> "solar_mult" [label=10, style=dashed, color = aquamarine3];
+	"user_specified_weather_file" -> "solar_resource_file" [label=22, style=dashed, color = sienna1];
+	"hl_des" -> "hl_derate" [label=8, style=dashed, color = azure4];
+	"combo_condenser_type" -> "CT" [label=18, style=dashed, color = skyblue4];
+	"combo_condenser_type" -> "mode" [label=23, color = sienna2];
+	"ui_disp_7_turbout" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_turbout" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_turbout" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_turbout" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_turbout" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_turbout" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_turbout" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_turbout" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_turbout" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_turbout" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_7_turbout" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"obj" -> "ret" [label=7, color = burlywood4];
+	"tank_pairs" -> "csp.mslf.tes.estimated_heat_loss" [label=11, style=dashed, color = olivedrab];
+	"tank_pairs" -> "d_tank" [label=11, style=dashed, color = olivedrab];
+	"solar_resource_file" -> "file_name" [label=22, style=dashed, color = sienna1];
+	"solar_resource_file" -> "wf" [label=16, color = chartreuse4];
+	"solar_resource_file" -> "f_name" [label=0, color = black];
+	"dispatch_sched_weekend" -> "weekend_schedule" [label=5, color = firebrick];
+	"solar_data_file_name" -> "solar_resource_file" [label=22, style=dashed, color = sienna1];
+	"solar_data_file_name" -> "solar_data_file_name_load" [label=24, color = sienna3];
+	"ui_disp_5_fossil" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_fossil" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_fossil" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_fossil" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_fossil" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_fossil" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_fossil" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_fossil" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_fossil" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_fossil" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_fossil" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"I_bn_des" -> "sm1_aperture" [label=10, style=dashed, color = aquamarine3];
+	"I_bn_des" -> "field_thermal_output" [label=10, style=dashed, color = aquamarine3];
+	"I_bn_des" -> "hl_derate" [label=8, style=dashed, color = azure4];
+	"ui_disp_5_nosolar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_nosolar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_nosolar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_nosolar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_nosolar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_nosolar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_nosolar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_nosolar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_nosolar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_nosolar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_nosolar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_turbout" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_turbout" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_turbout" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_turbout" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_turbout" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_turbout" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_turbout" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_turbout" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_turbout" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_turbout" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_turbout" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ud_T_amb_high" -> "T_amb_high" [label=1, color = brown4];
+	"csp.mslf.sf.DP_coefs0" -> "DP_coefs" [label=8, style=dashed, color = azure4];
+	"ui_disp_4_turbout" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_turbout" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_turbout" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_turbout" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_turbout" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_turbout" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_turbout" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_turbout" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_turbout" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_turbout" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_turbout" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_solar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_solar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_solar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_solar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_solar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_solar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_solar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_solar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_solar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_solar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_solar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"hybrid_tou4" -> "F_wc" [label=18, style=dashed, color = skyblue4];
+	"csp.mslf.sf.alpha_abs3" -> "alpha_abs" [label=8, style=dashed, color = azure4];
+	"ud_T_amb_levels" -> "n_T_amb" [label=1, color = brown4];
+	"csp.mslf.control.aux_array_c0" -> "csp.mslf.par.calc.aux" [label=12, style=dashed, color = palevioletred];
+	"csp.mslf.control.aux_array_c0" -> "aux_array" [label=12, style=dashed, color = palevioletred];
+	"eta_ref" -> "sf_q_design" [label=10, style=dashed, color = aquamarine3];
+	"eta_ref" -> "PB_COPY_q_pb_design" [label=13, style=dashed, color = darkgoldenrod2];
+	"hybrid_tou5" -> "F_wc" [label=18, style=dashed, color = skyblue4];
+	"tbl_inputs" -> "ud_ind_od" [label=1, color = brown4];
+	"ud_T_htf_low" -> "T_htf_low" [label=1, color = brown4];
+	"csp.mslf.sf.FieldConfig" -> "FieldConfig" [label=10, style=dashed, color = aquamarine3];
+	"dt_hot" -> "dt_cold" [label=11, style=dashed, color = olivedrab];
+	"dt_hot" -> "hx_derate" [label=11, style=dashed, color = olivedrab];
+	"dt_hot" -> "vol_tank" [label=11, style=dashed, color = olivedrab];
+	"ui_disp_2_solar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_solar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_solar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_solar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_solar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_solar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_solar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_solar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_solar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_solar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_solar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_nosolar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_nosolar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_nosolar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_nosolar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_nosolar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_nosolar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_nosolar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_nosolar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_nosolar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_nosolar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_6_nosolar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"csp.mslf.sf.AbsorberMaterial" -> "AbsorberMaterial" [label=8, style=dashed, color = azure4];
+	"ud_m_dot_htf_levels" -> "n_m_dot" [label=1, color = brown4];
+	"ud_COPY_T_HTF_des" -> "T_htf_des" [label=1, color = brown4];
+	"csp.mslf.sf.Design_loss1" -> "Design_loss" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Design_loss1" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"tes_temp" -> "csp.mslf.tes.estimated_heat_loss" [label=11, style=dashed, color = olivedrab];
+	"tes_temp" -> "csp.mslf.control.tes_dens" [label=11, style=dashed, color = olivedrab];
+	"tes_temp" -> "csp.mslf.control.tes_cp" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.sf.alpha_abs4" -> "alpha_abs" [label=8, style=dashed, color = azure4];
+	"tshours" -> "TES_cap" [label=11, style=dashed, color = olivedrab];
+	"hx_derate" -> "vol_tank" [label=11, style=dashed, color = olivedrab];
+	"n_m_dot" -> "dm_dot" [label=1, color = brown4];
+	"vol_tank" -> "d_tank" [label=11, style=dashed, color = olivedrab];
+	"vol_tank" -> "V_tank_hot_ini" [label=11, style=dashed, color = olivedrab];
+	"vol_tank" -> "vol_min" [label=11, style=dashed, color = olivedrab];
+	"ud_m_dot_htf_high" -> "m_dot_high" [label=1, color = brown4];
+	"csp.mslf.sf.D_abs_in" -> "D_abs_in" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.GlazingIntactIn4" -> "GlazingIntactIn" [label=8, style=dashed, color = azure4];
+	"ui_disp_2_turbout" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_turbout" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_turbout" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_turbout" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_turbout" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_turbout" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_turbout" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_turbout" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_turbout" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_turbout" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_2_turbout" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"sm1_aperture" -> "csp.mslf.sf.sm1_nLoops" [label=10, style=dashed, color = aquamarine3];
+	"sm1_aperture" -> "nLoops" [label=10, style=dashed, color = aquamarine3];
+	"sm1_aperture" -> "solar_mult" [label=10, style=dashed, color = aquamarine3];
+	"m_dot_des" -> "m_dot_lvls" [label=1, color = brown4];
+	"ui_disp_8_fossil" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_fossil" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_fossil" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_fossil" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_fossil" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_fossil" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_fossil" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_fossil" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_fossil" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_fossil" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_fossil" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_nosolar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_nosolar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_nosolar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_nosolar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_nosolar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_nosolar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_nosolar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_nosolar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_nosolar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_nosolar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_nosolar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_fossil" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_fossil" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_fossil" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_fossil" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_fossil" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_fossil" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_fossil" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_fossil" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_fossil" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_fossil" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_fossil" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_fossil" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_fossil" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_fossil" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_fossil" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_fossil" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_fossil" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_fossil" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_fossil" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_fossil" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_fossil" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_fossil" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"csp.mslf.sf.dirt_env4" -> "dirt_env" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.dirt_env4" -> "opt_derate" [label=8, style=dashed, color = azure4];
+	"d_tank" -> "csp.mslf.tes.estimated_heat_loss" [label=11, style=dashed, color = olivedrab];
+	"csp.mslf.sf.Design_loss2" -> "Design_loss" [label=8, style=dashed, color = azure4];
+	"csp.mslf.sf.Design_loss2" -> "hl_des" [label=8, style=dashed, color = azure4];
+	"store_fl_props" -> "user_htf_comparison" [label=7, color = burlywood4];
+	"store_fl_props" -> "csp.mslf.control.tes_dens" [label=11, style=dashed, color = olivedrab];
+	"store_fl_props" -> "csp.mslf.control.tes_cp" [label=11, style=dashed, color = olivedrab];
+	"ud_T_htf_levels" -> "n_T_htf" [label=1, color = brown4];
+	"ui_disp_8_turbout" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_turbout" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_turbout" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_turbout" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_turbout" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_turbout" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_turbout" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_turbout" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_turbout" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_turbout" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_8_turbout" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"T_htf_des" -> "T_htf_lvls" [label=1, color = brown4];
+	"csp.mslf.sf.Tau_envelope4" -> "Tau_envelope" [label=8, style=dashed, color = azure4];
+	"ui_disp_9_solar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_solar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_solar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_solar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_solar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_solar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_solar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_solar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_solar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_solar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_solar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_nosolar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_nosolar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_nosolar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_nosolar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_nosolar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_nosolar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_nosolar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_nosolar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_nosolar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_nosolar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_9_nosolar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_solar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_solar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_solar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_solar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_solar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_solar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_solar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_solar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_solar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_solar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_4_solar" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_turbout" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_turbout" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_turbout" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_turbout" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_turbout" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_turbout" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_turbout" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_turbout" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_turbout" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_turbout" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_5_turbout" -> "qdisp" [label=14, style=dashed, color = gold4];
+	"nMod" -> "nSCA" [label=10, style=dashed, color = aquamarine3];
+	"nMod" -> "a_loop" [label=10, style=dashed, color = aquamarine3];
+	"nMod" -> "DP_pressure_loss" [label=8, style=dashed, color = azure4];
+	"nMod" -> "csp.mslf.par.calc.tracking" [label=12, style=dashed, color = palevioletred];
+	"ud_m_dot_design" -> "m_dot_des" [label=1, color = brown4];
+	"ui_disp_1_solar" -> "FossilFill" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_solar" -> "TSLogic" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_solar" -> "NUMTOU" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_solar" -> "ffrac" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_solar" -> "tslogic_a" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_solar" -> "tslogic_b" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_solar" -> "tslogic_c" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_solar" -> "fdisp" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_solar" -> "diswos" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_solar" -> "disws" [label=14, style=dashed, color = gold4];
+	"ui_disp_1_solar" -> "qdisp" [label=14, style=dashed, color = gold4];
+}

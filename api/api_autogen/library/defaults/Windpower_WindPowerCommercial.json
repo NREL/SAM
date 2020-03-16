@@ -1,0 +1,56 @@
+{
+	"defaults": {
+		"Resource": {
+			"weibull_k_factor": 2,
+			"weibull_reference_height": 50,
+			"weibull_wind_speed": 7.25,
+			"wind_resource_distribution": [
+				[0.000000, 0.000000, 1.000000]
+			],
+			"wind_resource_model_choice": 0
+		},
+		"Turbine": {
+			"wind_resource_shear": 0.14,
+			"wind_turbine_hub_ht": 25,
+			"wind_turbine_max_cp": 0.37,
+			"wind_turbine_powercurve_powerout": [0.000000, 0.000000, 0.000000, 0.000000, 3.700000, 10.500000, 19.000000, 29.400000, 41.000000, 54.300000, 66.800000, 77.700000, 86.400000, 92.800000, 97.300000, 100.000000, 100.800000, 100.600000, 99.800000, 99.400000, 98.600000, 97.800000, 97.300000, 97.300000, 98.000000, 99.700000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
+			"wind_turbine_powercurve_windspeeds": [0.000000, 1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 6.000000, 7.000000, 8.000000, 9.000000, 10.000000, 11.000000, 12.000000, 13.000000, 14.000000, 15.000000, 16.000000, 17.000000, 18.000000, 19.000000, 20.000000, 21.000000, 22.000000, 23.000000, 24.000000, 25.000000, 26.000000, 27.000000, 28.000000, 29.000000, 30.000000, 31.000000, 32.000000, 33.000000, 34.000000, 35.000000, 36.000000, 37.000000, 38.000000, 39.000000, 40.000000],
+			"wind_turbine_rotor_diameter": 21
+		},
+		"Farm": {
+			"system_capacity": 100,
+			"wind_farm_wake_model": 0,
+			"wind_farm_xCoordinates": [0.000000],
+			"wind_farm_yCoordinates": [0.000000],
+			"wind_resource_turbulence_coeff": 0.1
+		},
+		"Losses": {
+			"avail_bop_loss": 0.5,
+			"avail_grid_loss": 1.5,
+			"avail_turb_loss": 3.58,
+			"elec_eff_loss": 1.91,
+			"elec_parasitic_loss": 0.1,
+			"env_degrad_loss": 1.8,
+			"env_env_loss": 0.4,
+			"env_exposure_loss": 0,
+			"env_icing_loss": 0.21,
+			"ops_env_loss": 1,
+			"ops_grid_loss": 0.84,
+			"ops_load_loss": 0.99,
+			"ops_strategies_loss": 0,
+			"turb_generic_loss": 1.7,
+			"turb_hysteresis_loss": 0.4,
+			"turb_perf_loss": 1.1,
+			"turb_specific_loss": 0.81,
+			"wake_ext_loss": 1.1,
+			"wake_future_loss": 0,
+			"wake_int_loss": 0
+		},
+		"Uncertainty": {
+			"total_uncert": 12.085
+		},
+		"AdjustmentFactors": {
+			"constant": 0
+		}
+	}
+}

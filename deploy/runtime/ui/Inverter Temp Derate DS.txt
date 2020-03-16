@@ -158,7 +158,7 @@ inv_tdc_ds
 3
 Inv Temp Derate Datasheet
  
-Inverter Temp Derate Curves
+Inverter Temperature
 0
 3
 1

@@ -1,5 +1,5 @@
-Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
-TMY2,14914,Fargo,ND,USA,46.900000,-96.800000,-6,274
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,,,,,
+TMY2,14914,Fargo,ND,USA,46.9,-96.8,-6,274,,,,,
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Snow Depth
 1968,1,1,0,0,0,0,-20.9,-26.4,58,982,7.9,130,18
 1968,1,1,1,0,0,0,-20.2,-26.1,56,981,7.5,130,18

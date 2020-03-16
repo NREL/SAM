@@ -5,7 +5,7 @@ Tower SolarPilot Solar Field
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 434
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 11
@@ -49,6 +52,9 @@ Width
 Height
 3
 278
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -76,6 +82,9 @@ Width
 Height
 3
 141
+Tool Tip
+5
+0
 Caption
 5
 23
@@ -86,7 +95,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -103,6 +112,9 @@ Width
 Height
 3
 140
+Tool Tip
+5
+0
 Caption
 5
 30
@@ -113,7 +125,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -130,6 +142,9 @@ Width
 Height
 3
 204
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -140,61 +155,67 @@ Bold
 Button
 
 1
-7
+8
 Name
 5
 12
 btn_optimize
 X
 3
-21
+303
 Y
 3
-321
+336
 Width
 3
-368
+86
 Height
 3
 25
+Tool Tip
+5
+0
 Caption
 5
-29
-Optimize solar field geometry
+9
+Calculate
 TabOrder
 3
 4294967295
 Button
 
 1
-7
+8
 Name
 5
 14
 btn_solarpilot
 X
 3
-21
+303
 Y
 3
-294
+309
 Width
 3
-368
+86
 Height
 3
 25
+Tool Tip
+5
+0
 Caption
 5
-25
-Generate heliostat layout
+9
+Calculate
 TabOrder
 3
 4294967295
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -211,6 +232,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -253,7 +277,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -270,6 +294,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -312,7 +339,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -329,6 +356,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -371,7 +401,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -388,6 +418,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -430,7 +463,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -447,6 +480,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -489,7 +525,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 9
@@ -506,6 +542,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -518,7 +557,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -535,6 +574,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -577,7 +619,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -594,6 +636,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -636,7 +681,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -653,6 +698,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -695,7 +743,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -712,6 +760,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -754,7 +805,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -771,6 +822,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -813,7 +867,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -830,6 +884,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -872,7 +929,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -889,6 +946,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -931,7 +991,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -948,6 +1008,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -990,7 +1053,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 10
@@ -1007,6 +1070,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -1019,7 +1085,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1036,6 +1102,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1078,7 +1147,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1095,6 +1164,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1137,7 +1209,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -1154,6 +1226,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1196,7 +1271,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1213,6 +1288,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1255,7 +1333,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -1272,6 +1350,9 @@ Width
 Height
 3
 138
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -1282,7 +1363,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1299,6 +1380,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1341,7 +1425,7 @@ TabOrder
 DataMatrix
 
 1
-22
+27
 Name
 5
 15
@@ -1358,12 +1442,18 @@ Width
 Height
 3
 262
+Tool Tip
+5
+0
 PasteAppendRows
 2
 1
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -1375,6 +1465,12 @@ RowLabels
 0
 ShadeR0C0
 2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
 0
 ShadeC0
 2
@@ -1413,10 +1509,13 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1433,6 +1532,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1475,7 +1577,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1492,6 +1594,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1534,7 +1639,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -1551,6 +1656,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1593,7 +1701,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -1610,6 +1718,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1652,7 +1763,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1669,6 +1780,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1711,7 +1825,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -1728,6 +1842,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1770,7 +1887,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1787,6 +1904,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1829,7 +1949,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -1846,6 +1966,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1888,7 +2011,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -1905,6 +2028,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1947,7 +2073,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -1964,17 +2090,20 @@ Width
 Height
 3
 102
+Tool Tip
+5
+0
 Caption
 5
 28
-Heliostat field availability
+Heliostat Field Availability
 Bold
 2
 1
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -1991,6 +2120,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -2001,7 +2133,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -2018,6 +2150,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 152
@@ -2046,7 +2181,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -2063,10 +2198,13 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
-123
-Curtailment and availability losses reduce the solar field output to represent component outages, soiling, or other events.
+107
+Availability losses reduce the solar field output to represent component outages, soiling, or other events.
 TextColour
 4
 0
@@ -2091,7 +2229,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 7
@@ -2108,6 +2246,9 @@ Width
 Height
 3
 111
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -2118,7 +2259,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -2135,6 +2276,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2177,7 +2321,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -2194,6 +2338,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2236,7 +2383,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -2253,6 +2400,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2295,7 +2445,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 15
@@ -2305,17 +2455,20 @@ X
 21
 Y
 3
-348
+309
 Width
 3
-230
+281
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
-27
-Always layout automatically
+48
+Generate heliostat layout using tower dimensions
 State
 2
 0
@@ -2325,27 +2478,30 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 12
 override_opt
 X
 3
-255
+21
 Y
 3
-348
+336
 Width
 3
-135
+279
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
-15
-Always optimize
+46
+Optimize heliostat layout and tower dimensions
 State
 2
 0
@@ -2355,7 +2511,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -2372,6 +2528,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2414,7 +2573,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -2431,6 +2590,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2473,7 +2635,7 @@ TabOrder
 LossAdjustment
 
 1
-6
+7
 Name
 5
 9
@@ -2490,13 +2652,16 @@ Width
 Height
 3
 58
+Tool Tip
+5
+0
 TabOrder
 3
 4294967295
 Plot
 
 1
-5
+6
 Name
 5
 6
@@ -2513,10 +2678,13 @@ Width
 Height
 3
 285
+Tool Tip
+5
+0
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -2533,6 +2701,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2575,7 +2746,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -2592,6 +2763,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2634,7 +2808,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -2651,6 +2825,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3424,115 +3601,118 @@ Heliostat Field
 0.7
 Numeric
 
-2076
-equations{ 'land_max_calc' } = define() {
-	return ${land_max}*${h_tower}; };
-
-equations{ 'n_hel' } = define() {
-	pos = ${helio_positions};
-	return #pos;
-};
-
-equations{ 'csp.pt.sf.heliostat_area' } = define() {
-	return ${helio_height}*${helio_width}*${dens_mirror};
-};
-
-equations{ 'csp.pt.sf.total_reflective_area' } = define() {
-	return ${n_hel}*${csp.pt.sf.heliostat_area}; 
-};
-
-equations{ 'land_min_calc' } = define() {
-	return ${land_min}*${h_tower}; };
-
-
-equations{ 'csp.pt.sf.total_land_area' } = define() {
+3093
+equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
+	// land_max_calc
+	data.land_max = ${land_max};
+	data.h_tower = ${h_tower};
 	
-	return ${csp.pt.sf.fixed_land_area} +
-	${land_area_base}*${csp.pt.sf.land_overhead_factor};
-
-};
-
-equations{ 'A_sf_UI' } = define() {
-	return ${helio_width} * ${helio_height} 
-			* ${dens_mirror} * ${n_hel};
-};
-
-equations{ 'helio_area_tot' } = define() {
-	return ${A_sf_UI};
-};
-
-equations{ 'csp.pt.sf.tower_height' } = define() {
-	return ${h_tower}; };
-
-equations{ 'c_atm_info' } = define() {
-	hp = ${helio_positions};
+	// n_hel
+	data.helio_positions = ${helio_positions};
 	
-	c0 = ${c_atm_0};
-	c1 = ${c_atm_1};
-	c2 = ${c_atm_2};
-	c3 = ${c_atm_3};
-	tht = ${h_tower};
-	tht2 = tht*tht;
-	tot_att = 0.;
-	for(i=0; i<#hp; i++)
-	{
-		x = hp[i][0];
-		y = hp[i][1];
-		r = sqrt(x*x + y*y);
-		r2 = r*r;
-				
-		s = sqrt(tht2 + r2) * 0.001; 	//km
-		s2 = s*s;
-		s3 = s2*s;
-		
-		tot_att += c0 + c1*s + c2 * s2 + c3 * s3;
+	// csp_pt_sf_heliostat_area
+	data.helio_height = ${helio_height};
+	data.helio_width = ${helio_width};
+	data.dens_mirror = ${dens_mirror};
+
+	// csp_pt_sf_total_reflective_area
+	data.n_hel = nan();		// -> calculated from above
+	data.csp_pt_sf_heliostat_area = nan();
+	
+	// land_min_calc
+	data.land_min = ${land_min};
+	data.h_tower = ${h_tower};
+	
+	// csp_pt_sf_total_land_area
+	data.csp_pt_sf_fixed_land_area = ${csp.pt.sf.fixed_land_area};
+	data.land_area_base = ${land_area_base};
+	data.csp_pt_sf_land_overhead_factor = ${csp.pt.sf.land_overhead_factor};
+	
+	// A_sf_UI
+	data.helio_width = ${helio_width};
+	data.helio_height = ${helio_height};
+	data.dens_mirror = ${dens_mirror};
+	data.n_hel = nan();
+	
+	// helio_area_tot
+	data.a_sf_UI = nan();
+	
+	// csp_pt_sf_tower_height
+	data.h_tower = ${h_tower};
+	
+	// c_atm_info
+	data.helio_positions = ${helio_positions};
+	data.c_atm_0 = ${c_atm_0};
+	data.c_atm_1 = ${c_atm_1};
+	data.c_atm_2 = ${c_atm_2};
+	data.c_atm_3 = ${c_atm_3};
+	data.h_tower = ${h_tower};
+	
+	// error_equiv
+	data.helio_optical_error_mrad = ${helio_optical_error_mrad};
+	
+	// is_optimize
+	data.override_opt = ${override_opt};
+	
+	// field_model_type
+	data.is_optimize = nan();
+	data.override_layout = ${override_layout};
+	
+	// q_design
+	data.q_rec_des = ${Q_rec_des};
+	
+	// dni_des_calc
+	data.dni_des = ${dni_des};
+	
+	// opt_algorithm
+	
+	// opt_flux_penalty
+
+	success = ssc_eqn("Tower_SolarPilot_Solar_Field_Equations", data);
+	if (!success) {
+		${A_sf_UI} = -999.;
+		${c_atm_info} = -999.;
+		${csp.pt.sf.heliostat_area} = -999.;
+		${csp.pt.sf.total_land_area} = -999.;
+		// There is no corresponding variable, error if you try to set:
+		//${csp.pt.sf.total_reflective_area} = -999.;
+		${csp.pt.sf.tower_height} = -999.;
+		${dni_des_calc} = -999.;
+		${error_equiv} = -999.;
+		${field_model_type} = -999.;
+		${helio_area_tot} = -999.;
+		${is_optimize} = -999.;
+		${land_max_calc} = -999.;
+		${land_min_calc} = -999.;
+		${n_hel} = -999.;
+		${opt_algorithm} = -999.;
+		${opt_flux_penalty} = -999.;
+		${q_design} = -999.;
+	}
+	else {
+		${A_sf_UI} = data.a_sf_ui;
+		${c_atm_info} = data.c_atm_info;
+		${csp.pt.sf.heliostat_area} = data.csp_pt_sf_heliostat_area;
+		${csp.pt.sf.total_land_area} = data.csp_pt_sf_total_land_area;
+		// There is no corresponding variable, error if you try to set:
+		//${csp.pt.sf.total_reflective_area} = data.csp_pt_sf_total_reflective_area;
+		${csp.pt.sf.tower_height} = data.csp_pt_sf_tower_height;
+		${dni_des_calc} = data.dni_des_calc;
+		${error_equiv} = data.error_equiv;
+		${field_model_type} = data.field_model_type;
+		${helio_area_tot} = data.helio_area_tot;
+		${is_optimize} = data.is_optimize;
+		${land_max_calc} = data.land_max_calc;
+		${land_min_calc} = data.land_min_calc;
+		${n_hel} = data.n_hel;
+		${opt_algorithm} = data.opt_algorithm;
+		${opt_flux_penalty} = data.opt_flux_penalty;
+		${q_design} = data.q_design;
 	}
 	
-	return 100.*tot_att/#hp;
-	
-	/*x = ${THT} * 4./1000.;
-	return 100.*(${c_atm_0}
-			+ ${c_atm_1}*x
-			+ ${c_atm_2}*x*x
-			+ ${c_atm_3}*x*x*x);*/
+	return 0;
 };
 
-equations{ 'error_equiv' } = define() {
-	return sqrt( 2. * pow(${helio_optical_error_mrad}*2, 2) );
-};
-
-equations{ 'is_optimize' } = define() {
-	if(${override_opt} == 1)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-};
-
-equations{ 'field_model_type' } = define() {
-	if(${is_optimize} == 1)
-	{
-		return 0;
-	}
-	else if(${override_layout})
-	{
-		return 1;
-	}
-	else
-	{
-		return 2;
-	}
-};
-
-
-//return the stuff needed for solarpilot
-equations { 'q_design' } = define() { return ${Q_rec_des}; };
-equations { "dni_des_calc" } = define() {return ${dni_des}; };
-equations { "opt_algorithm" } = define() {return 1;};
-equations { "opt_flux_penalty" } = define() {return 0.25;};
 9114
 function update_button_status() {
 	/* 

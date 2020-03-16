@@ -1,63 +1,41 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #include <wx/dcbuffer.h>
 #include <wx/clipbrd.h>
 #include <wx/tokenzr.h>
 #include <wx/renderer.h>
 #include <wx/statline.h>
+#include <wx/richtooltip.h>
+#include <wx/bmpbuttn.h>
+#include <wx/textfile.h>
 
 #include <wex/uiform.h>
 #include <wex/extgrid.h>
 #include <wex/plot/plplotctrl.h>
 #include <wex/csv.h>
 #include <wex/utils.h>
+#include <wex/jsonval.h>
+#include <wex/jsonreader.h>
 
 #include "ptlayoutctrl.h"
 #include "materials.h"
@@ -67,7 +45,7 @@
 #include "lossadj.h"
 #include "widgets.h"
 #include "uiobjects.h"
-
+#include "main.h"
 
 
 class wxUISchedNumericObject : public wxUIObject
@@ -168,7 +146,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit values...");
+		wxString label("MonthlyFactors...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -206,7 +184,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit...");
+		wxString label("TableData...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -256,7 +234,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit...");
+		wxString label("MaterialProperties...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -440,7 +418,7 @@ public:
 		wxRendererNative::Get().DrawPushButton(win, dc, geom);
 		dc.SetFont(*wxNORMAL_FONT);
 		dc.SetTextForeground(*wxBLACK);
-		wxString label("String array...");
+		wxString label("StringArray...");
 		int x, y;
 		dc.GetTextExtent(label, &x, &y);
 		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
@@ -483,7 +461,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Data array...");
+		wxString label("DataArray...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -501,16 +479,138 @@ public:
 };
 
 
+
+class wxUIDataLifetimeArrayObject : public wxUIObject
+{
+public:
+	wxUIDataLifetimeArrayObject() {
+		AddProperty("Mode", new wxUIProperty(1, "Single Value,Monthly,Daily,Hourly,Subhourly"));
+		AddProperty("Label", new wxUIProperty(wxString("")));
+		AddProperty("ColumnLabel", new wxUIProperty(wxString("")));
+		AddProperty("Description", new wxUIProperty(wxString("")));
+		AddProperty("TabOrder", new wxUIProperty((int)-1));
+		AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
+		AddProperty("AnnualEnabled", new wxUIProperty(false));
+		AddProperty("WeeklyEnabled", new wxUIProperty(false));
+		AddProperty("ShowMode", new wxUIProperty(true));
+	}
+	virtual wxString GetTypeName() { return "DataLifetimeArray"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataLifetimeArrayObject; o->Copy(this); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative(wxWindow *parent) {
+		AFDataLifetimeArrayButton *da = new AFDataLifetimeArrayButton(parent, wxID_ANY);
+		da->SetMode(Property("Mode").GetInteger());
+		da->SetDescription(Property("Description").GetString());
+		da->SetDataLabel(Property("Label").GetString());
+		da->SetColumnLabel(Property("ColumnLabel").GetString());
+		da->SetAnalysisPeriod(Property("AnalysisPeriod").GetInteger());
+		da->SetAnnualEnabled(Property("AnnualEnabled").GetBoolean());
+		da->SetWeeklyEnabled(Property("WeeklyEnabled").GetBoolean());
+		da->SetShowMode(Property("ShowMode").GetBoolean());
+		return AssignNative(da);
+	}
+	virtual void Draw(wxWindow *win, wxDC &dc, const wxRect &geom)
+	{
+		wxRendererNative::Get().DrawPushButton(win, dc, geom);
+		dc.SetFont(*wxNORMAL_FONT);
+		dc.SetTextForeground(*wxBLACK);
+		wxString label("DataLifetimeArray...");
+		int x, y;
+		dc.GetTextExtent(label, &x, &y);
+		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
+	}
+	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
+	{
+		if (AFDataLifetimeArrayButton *da = GetNative<AFDataLifetimeArrayButton>())
+		{
+			if (id == "Mode") da->SetMode(p->GetInteger());
+			if (id == "AnalysisPeriod") da->SetAnalysisPeriod(p->GetInteger());
+			if (id == "Label") da->SetDataLabel(p->GetString());
+			if (id == "ColumnLabel") da->SetColumnLabel(p->GetString());
+			if (id == "Description") da->SetDescription(p->GetString());
+			if (id == "AnnualEnabled") da->SetAnnualEnabled(p->GetBoolean());
+			if (id == "WeeklyEnabled") da->SetWeeklyEnabled(p->GetBoolean());
+			if (id == "ShowMode") da->SetShowMode(p->GetBoolean());
+		}
+	}
+
+};
+
+
+
+class wxUIDataLifetimeMatrixObject : public wxUIObject
+{
+public:
+	wxUIDataLifetimeMatrixObject() {
+		AddProperty("Mode", new wxUIProperty(1, "Single Value,Monthly,Daily,Hourly,Subhourly"));
+		AddProperty("ColumnLabels", new wxUIProperty(wxString("")));
+		AddProperty("Label", new wxUIProperty(wxString("")));
+		AddProperty("Description", new wxUIProperty(wxString("")));
+		AddProperty("TabOrder", new wxUIProperty((int)-1));
+		AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
+		AddProperty("AnnualEnabled", new wxUIProperty(false));
+		AddProperty("WeeklyEnabled", new wxUIProperty(false));
+		AddProperty("ShowMode", new wxUIProperty(true));
+	}
+	virtual wxString GetTypeName() { return "DataLifetimeMatrix"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataLifetimeMatrixObject; o->Copy(this); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative(wxWindow *parent) {
+		AFDataLifetimeMatrixButton *da = new AFDataLifetimeMatrixButton(parent, wxID_ANY);
+		da->SetMode(Property("Mode").GetInteger());
+		da->SetDescription(Property("Description").GetString());
+		da->SetDataLabel(Property("Label").GetString());
+		da->SetColumnLabels(Property("ColumnLabels").GetString());
+		da->SetAnalysisPeriod(Property("AnalysisPeriod").GetInteger());
+		da->SetAnnualEnabled(Property("AnnualEnabled").GetBoolean());
+		da->SetWeeklyEnabled(Property("WeeklyEnabled").GetBoolean());
+		da->SetShowMode(Property("ShowMode").GetBoolean());
+		return AssignNative(da);
+	}
+	virtual void Draw(wxWindow *win, wxDC &dc, const wxRect &geom)
+	{
+		wxRendererNative::Get().DrawPushButton(win, dc, geom);
+		dc.SetFont(*wxNORMAL_FONT);
+		dc.SetTextForeground(*wxBLACK);
+		wxString label("DataLifetimeMatrix...");
+		int x, y;
+		dc.GetTextExtent(label, &x, &y);
+		dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
+	}
+	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
+	{
+		if (AFDataLifetimeMatrixButton *da = GetNative<AFDataLifetimeMatrixButton>())
+		{
+			if (id == "Mode") da->SetMode(p->GetInteger());
+			if (id == "AnalysisPeriod") da->SetAnalysisPeriod(p->GetInteger());
+			if (id == "Label") da->SetDataLabel(p->GetString());
+			if (id == "ColumnLabels") da->SetColumnLabels(p->GetString());
+			if (id == "Description") da->SetDescription(p->GetString());
+			if (id == "AnnualEnabled") da->SetAnnualEnabled(p->GetBoolean());
+			if (id == "WeeklyEnabled") da->SetWeeklyEnabled(p->GetBoolean());
+			if (id == "ShowMode") da->SetShowMode(p->GetBoolean());
+		}
+	}
+
+};
+
+
+
 class wxUIDataMatrixObject : public wxUIObject
 {
 public:
 	wxUIDataMatrixObject() {
 		AddProperty("PasteAppendRows", new wxUIProperty(false));
 		AddProperty("PasteAppendCols", new wxUIProperty(false));
+		AddProperty("ShowButtons", new wxUIProperty(true));
 		AddProperty("ShowRows", new wxUIProperty(true));
 		AddProperty("ShowRowLabels", new wxUIProperty(false));
 		AddProperty("RowLabels", new wxUIProperty(wxString("")));
 		AddProperty("ShadeR0C0", new wxUIProperty(false));
+		AddProperty("VerticalLabel", new wxUIProperty(wxString("")));
+		AddProperty("HorizontalLabel", new wxUIProperty(wxString("")));
 		AddProperty("ShadeC0", new wxUIProperty(false));
 		AddProperty("ShowCols", new wxUIProperty(true));
 		AddProperty("ShowColLabels", new wxUIProperty(true));
@@ -522,6 +622,7 @@ public:
 		AddProperty("Choices", new wxUIProperty(wxString("Choice1,Choice2")));
 		AddProperty("HideColumn", new wxUIProperty(-1));
 		AddProperty("ShowColumn", new wxUIProperty(-1));
+		AddProperty("ColorMap", new wxUIProperty(false));
 
 		Property("Width").Set(400);
 		Property("Height").Set(300);
@@ -530,13 +631,15 @@ public:
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataMatrixObject; o->Copy(this); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual wxWindow *CreateNative(wxWindow *parent) {
-		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger());
+		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger(),false, Property("HorizontalLabel").GetString(), Property("VerticalLabel").GetString());
 		dm->PasteAppendRows(Property("PasteAppendRows").GetBoolean());
 		dm->PasteAppendCols(Property("PasteAppendCols").GetBoolean());
+		dm->ShowButtons(Property("ShowButtons").GetBoolean());
 		dm->ShowRows(Property("ShowRows").GetBoolean());
 		dm->ShowRowLabels(Property("ShowRowLabels").GetBoolean());
 		dm->SetRowLabels(Property("RowLabels").GetString());
 		dm->ShadeR0C0(Property("ShadeR0C0").GetBoolean());
+		dm->SetR0C0Label(Property("LeftSideLabel").GetString());
 		dm->ShadeC0(Property("ShadeC0").GetBoolean());
 		dm->ShowCols(Property("ShowCols").GetBoolean());
 		dm->ShowColLabels(Property("ShowColLabels").GetBoolean());
@@ -545,6 +648,7 @@ public:
 		dm->SetNumColsLabel(Property("NumColsLabel").GetString());
 		dm->ShowCol(Property("ShowColumn").GetInteger(), true);
 		dm->ShowCol(Property("HideColumn").GetInteger(), false);
+		dm->ColorMap(Property("ColorMap").GetBoolean());
 		return AssignNative(dm);
 	}
 	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
@@ -554,7 +658,9 @@ public:
 			if (id == "PasteAppendRows") dm->PasteAppendRows(p->GetBoolean());
 			if (id == "PasteAppendCols") dm->PasteAppendCols(p->GetBoolean());
 			if (id == "ShadeR0C0") dm->ShadeR0C0(p->GetBoolean());
+			if (id == "LeftSideLabel") dm->SetR0C0Label(p->GetString());
 			if (id == "ShadeC0") dm->ShadeC0(p->GetBoolean());
+			if (id == "ShowButtons") dm->ShowButtons(p->GetBoolean());
 			if (id == "ShowCols") dm->ShowCols(p->GetBoolean());
 			if (id == "ShowRows") dm->ShowRows(p->GetBoolean());
 			if (id == "ShowRowLabels") dm->ShowRowLabels(p->GetBoolean());
@@ -564,9 +670,13 @@ public:
 			if (id == "NumColsLabel") dm->SetNumColsLabel(p->GetString());
 			if (id == "ShowColumn") dm->ShowCol(p->GetInteger(), true);
 			if (id == "HideColumn") dm->ShowCol(p->GetInteger(), false);
+			if (id == "ColorMap") dm->ColorMap(p->GetBoolean());
 		}
 	}
+
 };
+
+
 
 
 
@@ -593,7 +703,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, geom );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit shading...");
+		wxString label("ShadingFactors...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
@@ -709,6 +819,67 @@ public:
 
 };
 
+class wxUIToolTipCtrl : public wxUIObject
+{
+public:
+	wxUIToolTipCtrl() {
+		AddProperty("Tips", new wxUIProperty(wxString("Type a tip here or define in runtime/help/tooltips.json")));
+	}
+	virtual wxString GetTypeName() { return "ToolTipCtrl"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIToolTipCtrl; o->Copy(this); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual wxWindow *CreateNative(wxWindow *parent) {
+		AFToolTipCtrl *ttc = new AFToolTipCtrl(parent);
+		return AssignNative(ttc);
+	}
+	virtual void OnNativeEvent()
+	{
+		if (AFToolTipCtrl *sb = GetNative<AFToolTipCtrl>())
+		{
+			wxString tt_tips;
+			wxString tt_name;
+			wxString tt_title;
+			wxString json_file;
+			wxJSONReader reader;
+			wxJSONValue root;
+			wxString json_items;
+			wxTextFile tf;
+			wxString str_line;
+			int i;
+			// use widget property values if not defined in json file
+			tt_name = Property("Name").GetString();
+			tt_tips = Property("Tips").GetString();
+			tt_title = "Information";
+			json_file = SamApp::GetRuntimePath() + "/help/tooltips.json";
+			//json_items = "{\"tooltips\": [{\"name\":\"tt_mhk_mooring_cost\", \"title\" : \"Mooring, Foundation, and Substructure Cost\", \"tip\" : \"The mooring cost is awesome\"},{ \"name\":\"tt_mhk_powertakeoff_cost\",\"title\" : \"ower Take-Off System Cost\",\"tip\" : \"The power take-off cost is not awesome\" }]}";
+			if (tf.Open(json_file))
+			{
+				json_items = tf.GetFirstLine();
+				while (!tf.Eof())
+					json_items += tf.GetNextLine();
+				tf.Close();
+			}
+			if (reader.Parse(json_items, &root) != 0)
+				tt_title = "JSON or file read failed.";
+			else
+			{
+				wxJSONValue tooltips = root["tooltips"];
+				for (i = 0; i < tooltips.Size(); i++)
+				{
+					if (tooltips[i]["name"].AsString() == tt_name)
+					{
+						tt_title = tooltips[i]["title"].AsString();
+						tt_tips = tooltips[i]["tip"].AsString();
+					}
+				}
+			}
+			tt_tips.Replace(wxT("\\n"), wxT("\n"));
+			wxRichToolTip tip(tt_title, tt_tips);
+			tip.ShowFor(sb);
+		}
+	}
+};
+
 
 class wxUILossAdjustmentCtrl : public wxUIObject 
 {
@@ -734,7 +905,7 @@ public:
 		wxRendererNative::Get().DrawPushButton( win, dc, wxRect( geom.x, geom.y/*+geom.height/2-button.y/2*/, button.x, button.y ) );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		wxString label("Edit losses...");
+		wxString label("LossAdjustment...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
 		//int yc = geom.y+geom.height/2;
@@ -774,6 +945,8 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUIPlotObject );
 	wxUIObjectTypeProvider::Register( new wxUISearchListBoxObject );
 	wxUIObjectTypeProvider::Register(new wxUIDataArrayObject);
+	wxUIObjectTypeProvider::Register(new wxUIDataLifetimeArrayObject);
+	wxUIObjectTypeProvider::Register(new wxUIDataLifetimeMatrixObject);
 	wxUIObjectTypeProvider::Register(new wxUIStringArrayObject);
 	wxUIObjectTypeProvider::Register(new wxUIDataMatrixObject);
 	wxUIObjectTypeProvider::Register(new wxUIShadingFactorsObject);
@@ -782,5 +955,6 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUILibraryCtrl );
 	wxUIObjectTypeProvider::Register( new wxUILossAdjustmentCtrl );
 	wxUIObjectTypeProvider::Register( new wxUIScene3DObject );
-	wxUIObjectTypeProvider::Register( new wxUITableDataObject );
+	wxUIObjectTypeProvider::Register(new wxUITableDataObject);
+	wxUIObjectTypeProvider::Register(new wxUIToolTipCtrl);
 }

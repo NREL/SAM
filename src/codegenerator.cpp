@@ -1,51 +1,24 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #include <algorithm>
 
@@ -132,8 +105,8 @@ static bool SSCTypeToSSC( int ssc_type, ssc_data_t pdata, const wxString &sscnam
 		break;
 	case SSC_MATRIX:
 	{
-		matrix_t<float> fl(2,2,0.0);
-		if ( sizeof(ssc_number_t) == sizeof(float) )
+		matrix_t<double> fl(2,2,0.0);
+		if ( sizeof(ssc_number_t) == sizeof(double) )
 		{
 			ssc_data_set_matrix( pdata, sscname.c_str(), fl.data(), fl.nrows(), fl.ncols() );
 		}
@@ -163,7 +136,7 @@ static bool SSCTypeToSSC( int ssc_type, ssc_data_t pdata, const wxString &sscnam
 
 static wxString TableElementFileNames(const char *ssc_varname)
 {
-	// handle SAMnt table (":") naming for files to be read into ssc 
+	// handle SAMnt table (":") naming for files to be read into ssc
 	wxString fn = wxString(ssc_varname);
 	fn.Replace(":", "_");
 	return fn;
@@ -384,7 +357,7 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
 		{
 			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-			int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+			int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
 			const char* var_name = ssc_info_name(p_inf);
 			wxString name(var_name); // assumed to be non-null
 			wxString reqd(ssc_info_required(p_inf));
@@ -550,9 +523,9 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	return (m_errors.Count() == 0);
 }
 
-void CodeGen_Base::AddData(CodeGenData md) 
-{ 
-	m_data.push_back(md); 
+void CodeGen_Base::AddData(CodeGenData md)
+{
+	m_data.push_back(md);
 }
 
 bool CodeGen_Base::Ok()
@@ -573,7 +546,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("Python 2");						// 4
 	code_languages.Add("Python 3");						// 5
 	code_languages.Add("Java");							// 6
-	code_languages.Add("Android Studio (Android)");		// 7 
+	code_languages.Add("Android Studio (Android)");		// 7
 //#ifdef __WXMSW__
 	code_languages.Add("C#");							// 8
 	code_languages.Add("VBA");							// 9
@@ -776,9 +749,11 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 	switch (type)
 	{
 	case SSC_STRING:
-		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
+//		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
+		str_value = wxString(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str());
+//		fprintf(m_fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str());
+		wxFprintf(m_fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
@@ -804,7 +779,8 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 		}
 		else
 		{
-			fprintf(m_fp, "var( '%s', [", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "var( '%s', [", (const char*)localname.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -837,7 +813,8 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 		}
 		else
 		{
-			fprintf(m_fp, "var( '%s', \n[ [", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "var( '%s', \n[ [", (const char*)localname.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -907,7 +884,7 @@ bool CodeGen_c::Output(ssc_data_t p_data)
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 	{
 		const char *name = (const char*)m_data[ii].var.c_str();
-		int type = ::ssc_data_query(p_data, name); 
+		int type = ::ssc_data_query(p_data, name);
 		switch (type)
 		{
 		case SSC_STRING:
@@ -973,7 +950,8 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 		}
 		else
 		{
-			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", (const char*)localname.c_str(), len);
 			for (int i = 0; i < (len-1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -983,7 +961,7 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g };\n", dbl_value);
-			fprintf(m_fp, "	ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, name, len);
+			fprintf(m_fp, "	ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, (const char*)localname.c_str(), len);
 		}
 		break;
 	case SSC_MATRIX:
@@ -1007,7 +985,8 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 		}
 		else
 		{
-			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", (const char*)localname.c_str(), len);
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -1017,7 +996,7 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g };\n", dbl_value);
-			fprintf(m_fp, "	ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, name, nr, nc);
+			fprintf(m_fp, "	ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, (const char*)localname.c_str(), nr, nc);
 		}
 		// TODO tables in future
 	}
@@ -1309,7 +1288,8 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 		}
 		else
 		{
-			fprintf(m_fp, "		float[] p_%s ={", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "		float[] p_%s ={", (const char*)localname.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -1319,7 +1299,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17gf };\n", dbl_value);
-			fprintf(m_fp, "		data.SetArray( \"%s\", p_%s);\n", name, name);
+			fprintf(m_fp, "		data.SetArray( \"%s\", p_%s);\n", name, (const char*)localname.c_str());
 		}
 		break;
 	case SSC_MATRIX:
@@ -1343,7 +1323,8 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 		}
 		else
 		{
-			fprintf(m_fp, "		float[,] p_%s ={ {", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "		float[,] p_%s ={ {", (const char*)localname.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -1352,13 +1333,13 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 					fprintf(m_fp, " { %.17gf,", dbl_value);
 				else if (k%nc == (nc - 1))
 					fprintf(m_fp, " %.17gf },", dbl_value);
-				else 
+				else
 					fprintf(m_fp, " %.17gf, ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17gf } };\n", dbl_value);
-			fprintf(m_fp, "		data.SetMatrix( \"%s\", p_%s );\n", name, name);
+			fprintf(m_fp, "		data.SetMatrix( \"%s\", p_%s );\n", name, (const char*)localname.c_str());
 		}
 		// TODO tables in future
 	}
@@ -2387,6 +2368,7 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 	wxString str_value;
 	double dbl_value;
 	int type = ::ssc_data_query(p_data, name);
+	wxString localname = TableElementFileNames(name);
 	switch (type)
 	{
 	case SSC_STRING:
@@ -2415,11 +2397,11 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	%s = csvread( '%s');\n", name, (const char*)fn.c_str());
+			fprintf(m_fp, "	%s = csvread( '%s');\n", (const char*)localname.c_str(), (const char*)fn.c_str());
 		}
 		else
 		{
-			fprintf(m_fp, "	%s =[", name);
+			fprintf(m_fp, "	%s =[", (const char*)localname.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -2430,7 +2412,7 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g ];\n", dbl_value);
 		}
-		fprintf(m_fp, "	ssccall( 'data_set_array', data, '%s', %s );\n", name, name);
+		fprintf(m_fp, "	ssccall( 'data_set_array', data, '%s', %s );\n", name, (const char*)localname.c_str());
 		break;
 	case SSC_MATRIX:
 		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
@@ -2449,25 +2431,25 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	%s = csvread( '%s');\n", name, (const char*)fn.c_str());
+			fprintf(m_fp, "	%s = csvread( '%s');\n", (const char*)localname.c_str(), (const char*)fn.c_str());
 		}
 		else
 		{
-			fprintf(m_fp, "	%s =[", name);
+			fprintf(m_fp, "	%s =[", (const char*)localname.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
 				if (k%nc == (nc - 1))
 					fprintf(m_fp, " %.17g ;", dbl_value);
-				else 
+				else
 					fprintf(m_fp, " %.17g  ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g ];\n", dbl_value);
 		}
-		fprintf(m_fp, "	ssccall( 'data_set_matrix', data, '%s', %s );\n", name, name);
+		fprintf(m_fp, "	ssccall( 'data_set_matrix', data, '%s', %s );\n", name, (const char*)localname.c_str());
 		// TODO tables in future
 	}
 	return true;
@@ -2925,6 +2907,12 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "	def info_uihint( self, p_inf ):\n");
 	fprintf(f, "		self.pdll.ssc_info_uihint.restype = c_char_p\n");
 	fprintf(f, "		return self.pdll.ssc_info_uihint( c_void_p(p_inf) )\n");
+	fprintf(f, "	def info_required( self, p_inf ):\n");
+	fprintf(f, "		self.pdll.ssc_info_required.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_info_required( c_void_p(p_inf) )\n");
+	fprintf(f, "	def info_constraints( self, p_inf ):\n");
+	fprintf(f, "		self.pdll.ssc_info_constraints.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_info_constraints( c_void_p(p_inf) )\n");
 	fprintf(f, "	def module_exec( self, p_mod, p_data ):\n");
 	fprintf(f, "		self.pdll.ssc_module_exec.restype = c_int\n");
 	fprintf(f, "		return self.pdll.ssc_module_exec( c_void_p(p_mod), c_void_p(p_data) )\n");
@@ -3072,7 +3060,8 @@ bool CodeGen_python2::Input(ssc_data_t p_data, const char *name, const wxString 
 		}
 		else
 		{
-			fprintf(m_fp, "	%s =[", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	%s =[", (const char*)localname.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -3082,7 +3071,7 @@ bool CodeGen_python2::Input(ssc_data_t p_data, const char *name, const wxString 
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g ];\n", dbl_value);
-			fprintf(m_fp, "	ssc.data_set_array( data, '%s',  %s);\n", name, name);
+			fprintf(m_fp, "	ssc.data_set_array( data, '%s',  %s);\n", name, (const char*)localname.c_str());
 		}
 		break;
 	case SSC_MATRIX:
@@ -3106,7 +3095,8 @@ bool CodeGen_python2::Input(ssc_data_t p_data, const char *name, const wxString 
 		}
 		else
 		{
-			fprintf(m_fp, "	%s = [[", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	%s = [[", (const char*)localname.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -3119,7 +3109,7 @@ bool CodeGen_python2::Input(ssc_data_t p_data, const char *name, const wxString 
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g ]];\n", dbl_value);
-			fprintf(m_fp, "	ssc.data_set_matrix( data, '%s', %s );\n", name, name);
+			fprintf(m_fp, "	ssc.data_set_matrix( data, '%s', %s );\n", name, (const char*)localname.c_str());
 		}
 		break;
 		// TODO tables in future
@@ -3247,7 +3237,8 @@ bool CodeGen_python3::Input(ssc_data_t p_data, const char *name, const wxString 
 		}
 		else
 		{
-			fprintf(m_fp, "	%s =[", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	%s =[", (const char*)localname.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -3257,7 +3248,7 @@ bool CodeGen_python3::Input(ssc_data_t p_data, const char *name, const wxString 
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g ];\n", dbl_value);
-			fprintf(m_fp, "	ssc.data_set_array( data, b'%s',  %s);\n", name, name);
+			fprintf(m_fp, "	ssc.data_set_array( data, b'%s',  %s);\n", name, (const char*)localname.c_str());
 		}
 		break;
 	case SSC_MATRIX:
@@ -3281,7 +3272,8 @@ bool CodeGen_python3::Input(ssc_data_t p_data, const char *name, const wxString 
 		}
 		else
 		{
-			fprintf(m_fp, "	%s = [[", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	%s = [[", (const char*)localname.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -3294,7 +3286,7 @@ bool CodeGen_python3::Input(ssc_data_t p_data, const char *name, const wxString 
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g ]];\n", dbl_value);
-			fprintf(m_fp, "	ssc.data_set_matrix( data, b'%s', %s );\n", name, name);
+			fprintf(m_fp, "	ssc.data_set_matrix( data, b'%s', %s );\n", name, (const char*)localname.c_str());
 		}
 		break;
 		// TODO tables in future
@@ -3364,7 +3356,7 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 		if (dbl_value > 1e38) dbl_value = 1e38;
 		fprintf(m_fp, "		api.ssc_data_set_number( data, \"%s\", %.17gf );\n", name, dbl_value);
 		break;
-	case SSC_ARRAY: 
+	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
@@ -3383,7 +3375,8 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 		}
 		else
 		{
-			fprintf(m_fp, "		float[] p_%s = {", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "		float[] p_%s = {", (const char*)localname.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -3393,7 +3386,7 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17gf };\n", dbl_value);
-			fprintf(m_fp, "		api.ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, name, len);
+			fprintf(m_fp, "		api.ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, (const char*)localname.c_str(), len);
 		}
 		break;
 	case SSC_MATRIX:
@@ -3417,7 +3410,8 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 		}
 		else
 		{
-			fprintf(m_fp, "		float[] p_%s ={ ", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "		float[] p_%s ={ ", (const char*)localname.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -3427,7 +3421,7 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17gf };\n", dbl_value);
-			fprintf(m_fp, "		api.ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, name, nr, nc);
+			fprintf(m_fp, "		api.ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, (const char*)localname.c_str(), nr, nc);
 		}
 		// TODO tables in future
 	}
@@ -3461,7 +3455,7 @@ bool CodeGen_java::Header()
 	fprintf(m_fp, "public class %s\n", (const char*)m_name.c_str());
 	fprintf(m_fp, "{\n");
 	fprintf(m_fp, "	public static SSCAPIJNI api;\n");
-	
+
 	// handle csv files
 	// arrays
 	fprintf(m_fp, "	public static void set_array(long cxt, String name, String csvFile, int len)\n");
@@ -3573,7 +3567,7 @@ bool CodeGen_java::FreeSSCModule()
 
 bool CodeGen_java::SupportingFiles()
 {
-	// add JNI file - java class 
+	// add JNI file - java class
 	wxString fn = m_folder + "/SSCAPIJNI.java";
 	FILE *f = fopen(fn.c_str(), "w");
 	if (!f) return false;
@@ -4748,7 +4742,8 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 		}
 		else
 		{
-			fprintf(m_fp, "	$%s =array(", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	$%s =array(", (const char*)localname.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -4758,7 +4753,7 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g );\n", dbl_value);
-			fprintf(m_fp, "	sscphp_data_set_array( $dat, \"%s\", $%s);\n", name, name);
+			fprintf(m_fp, "	sscphp_data_set_array( $dat, \"%s\", $%s);\n", name, (const char*)localname.c_str());
 		}
 		break;
 	case SSC_MATRIX:
@@ -4782,7 +4777,8 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 		}
 		else
 		{
-			fprintf(m_fp, "	$%s = array( array(", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	$%s = array( array(", (const char*)localname.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -4795,7 +4791,7 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g ));\n", dbl_value);
-			fprintf(m_fp, "	sscphp_data_set_matrix( $dat, \"%s\", $%s );\n", name, name);
+			fprintf(m_fp, "	sscphp_data_set_matrix( $dat, \"%s\", $%s );\n", name, (const char*)localname.c_str());
 		}
 		break;
 		// TODO tables in future
@@ -6110,7 +6106,7 @@ bool CodeGen_php7::SupportingFiles()
 	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
 	fclose(f);
 	return true;
-#elif defined(__WXOSX__) // not tested on OS X 
+#elif defined(__WXOSX__) // not tested on OS X
 	fn = m_folder + "/php.ini";
 	f = fopen(fn.c_str(), "w");
 	if (!f) return false;
@@ -6842,7 +6838,8 @@ bool CodeGen_ios::Input(ssc_data_t p_data, const char *name, const wxString &fol
 		}
 		else
 		{
-			fprintf(m_fp, "	var p_%s : [Float] = [", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	var p_%s : [Float] = [", (const char*)localname.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -6852,7 +6849,7 @@ bool CodeGen_ios::Input(ssc_data_t p_data, const char *name, const wxString &fol
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g ];\n", dbl_value);
-			fprintf(m_fp, "	ssc_data_set_array( data, \"%s\", &p_%s, %d );\n", name, name, len);
+			fprintf(m_fp, "	ssc_data_set_array( data, \"%s\", &p_%s, %d );\n", name, (const char*)localname.c_str(), len);
 		}
 		break;
 	case SSC_MATRIX:
@@ -6876,7 +6873,8 @@ bool CodeGen_ios::Input(ssc_data_t p_data, const char *name, const wxString &fol
 		}
 		else
 		{
-			fprintf(m_fp, "	var p_%s : [Float] = [", name);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	var p_%s : [Float] = [", (const char*)localname.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -6886,7 +6884,7 @@ bool CodeGen_ios::Input(ssc_data_t p_data, const char *name, const wxString &fol
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g ];\n", dbl_value);
-			fprintf(m_fp, "	ssc_data_set_matrix( data, \"%s\", &p_%s, %d, %d );\n", name, name, nr, nc);
+			fprintf(m_fp, "	ssc_data_set_matrix( data, \"%s\", &p_%s, %d, %d );\n", name, (const char*)localname.c_str(), nr, nc);
 		}
 		// TODO tables in future
 	}
@@ -7015,7 +7013,7 @@ bool CodeGen_ios::SupportingFiles()
     return false;
 #endif
     return wxRemoveFile(f2);
-   
+
 }
 
 bool CodeGen_ios::Footer()
@@ -7040,7 +7038,7 @@ bool CodeGen_android::Output(ssc_data_t p_data)
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 	{
 		const char *name = (const char*)m_data[ii].var.c_str();
-		int type = ::ssc_data_query(p_data, name); 
+		int type = ::ssc_data_query(p_data, name);
 		switch (type)
 		{
 		case SSC_STRING:
@@ -7114,7 +7112,8 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
 		}
 		else
 		{
-			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", (const char*)localname.c_str(), len);
 			for (int i = 0; i < (len-1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -7124,7 +7123,7 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g };\n", dbl_value);
-			fprintf(m_fp, "	ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, name, len);
+			fprintf(m_fp, "	ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, (const char*)localname.c_str(), len);
 		}
 		break;
 	case SSC_MATRIX:
@@ -7149,7 +7148,8 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
 		}
 		else
 		{
-			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			wxString localname = TableElementFileNames(name);
+			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", (const char*)localname.c_str(), len);
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -7159,7 +7159,7 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g };\n", dbl_value);
-			fprintf(m_fp, "	ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, name, nr, nc);
+			fprintf(m_fp, "	ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, (const char*)localname.c_str(), nr, nc);
 		}
 		// TODO tables in future
 	}
@@ -7243,7 +7243,7 @@ bool CodeGen_android::Header()
     fprintf(m_fp, "    return 0;\n");
     fprintf(m_fp, "}\n");
     fprintf(m_fp, "\n");
-    
+
     fprintf(m_fp, "int set_string(ssc_data_t p_data, const char *name, const char* filename, AAssetManager *mgr, std::string path)\n");
     fprintf(m_fp, "{\n");
     fprintf(m_fp, "    if (file_from_APK(mgr, filename, path)==1) {\n");
@@ -7255,7 +7255,7 @@ bool CodeGen_android::Header()
     fprintf(m_fp, "    return 0;\n");
     fprintf(m_fp, "}\n");
     fprintf(m_fp, "\n");
-            
+
 	// arrays
 	fprintf(m_fp, "int set_array(ssc_data_t p_data, const char *name, const char* filename, int len, AAssetManager *mgr, std::string path)\n");
 	fprintf(m_fp, "{\n");
@@ -7481,7 +7481,7 @@ bool CodeGen_android::SupportingFiles()
     return false;
 #endif
     return wxRemoveFile(f2);
-    
+
 }
 
 bool CodeGen_android::Footer()
@@ -7569,7 +7569,7 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char *name, const wxString &, 
 					fprintf(m_fp, " [ %.17g,", dbl_value);
 				else if (k%nc == (nc - 1))
 					fprintf(m_fp, " %.17g ],", dbl_value);
-				else 
+				else
 					fprintf(m_fp, " %.17g, ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
@@ -7619,5 +7619,4 @@ bool CodeGen_json::Footer()
 	fprintf(m_fp, "}\n");
 	return true;
 }
-
 

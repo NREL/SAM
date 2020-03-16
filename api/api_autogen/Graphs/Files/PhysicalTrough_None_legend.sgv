@@ -1,0 +1,60 @@
+digraph PhysicalTrough_None_legend {
+	label="Legend: Physical Trough-None";
+	labelloc=top;
+	rankdir=LR;	ranksep="3";
+	key [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td align="right" port="e0">eqn_var0</td></tr>
+	<tr><td align="right" port="e1">eqn_var1</td></tr>
+	<tr><td align="right" port="e2">eqn_var2</td></tr>
+	<tr><td align="right" port="e3">eqn_var3</td></tr>
+	<tr><td align="right" port="e4">eqn_var4</td></tr>
+	<tr><td align="right" port="e5">eqn_var5</td></tr>
+	<tr><td align="right" port="e6">eqn_var6</td></tr>
+	<tr><td align="right" port="e7">eqn_var7</td></tr>
+	<tr><td align="right" port="e8">eqn_var8</td></tr>
+	<tr><td align="right" port="e9">eqn_var9</td></tr>
+	<tr><td align="right" port="e10">eqn_var10</td></tr>
+	<tr><td align="right" port="e11">eqn_var11</td></tr>
+	<tr><td align="right" port="e12">eqn_var12</td></tr>
+	<tr><td align="right" port="o0">func_var0</td></tr>
+	<tr><td align="right" port="o1">func_var1</td></tr>
+	<tr><td align="right" port="o2">func_var2</td></tr>
+	<tr><td align="right" port="o3">func_var3</td></tr>
+	</table>>]
+	key2 [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td port="e0">&nbsp;</td></tr>
+	<tr><td port="e1">&nbsp;</td></tr>
+	<tr><td port="e2">&nbsp;</td></tr>
+	<tr><td port="e3">&nbsp;</td></tr>
+	<tr><td port="e4">&nbsp;</td></tr>
+	<tr><td port="e5">&nbsp;</td></tr>
+	<tr><td port="e6">&nbsp;</td></tr>
+	<tr><td port="e7">&nbsp;</td></tr>
+	<tr><td port="e8">&nbsp;</td></tr>
+	<tr><td port="e9">&nbsp;</td></tr>
+	<tr><td port="e10">&nbsp;</td></tr>
+	<tr><td port="e11">&nbsp;</td></tr>
+	<tr><td port="e12">&nbsp;</td></tr>
+	<tr><td port="o0">&nbsp;</td></tr>
+	<tr><td port="o1">&nbsp;</td></tr>
+	<tr><td port="o2">&nbsp;</td></tr>
+	<tr><td port="o3">&nbsp;</td></tr>
+	</table>>]
+	key:e0:e -> key2:e0:w [style=dashed, label="15: User Defined Power Cycle:EQN"]
+	key:e1:e -> key2:e1:w [style=dashed, label="14: Physical Trough Power Block Common:W_pb_design_MIMO"]
+	key:e2:e -> key2:e2:w [style=dashed, label="8: Physical Trough Thermal Storage:EQN"]
+	key:e3:e -> key2:e3:w [style=dashed, label="9: Physical Trough Collector Header:collectors_in_field_MIMO"]
+	key:e4:e -> key2:e4:w [style=dashed, label="5: Physical Trough Collector Type 2:EQN"]
+	key:e5:e -> key2:e5:w [style=dashed, label="11: Physical Trough Parasitics:EQN"]
+	key:e6:e -> key2:e6:w [style=dashed, label="4: Physical Trough Collector Type 3:EQN"]
+	key:e7:e -> key2:e7:w [style=dashed, label="3: Physical Trough Collector Type 4:EQN"]
+	key:e8:e -> key2:e8:w [style=dashed, label="12: Physical Trough Power Block Common:EQN"]
+	key:e9:e -> key2:e9:w [style=dashed, label="10: Physical Trough Receiver Header:EQN"]
+	key:e10:e -> key2:e10:w [style=dashed, label="6: Physical Trough Collector Type 1:EQN"]
+	key:e11:e -> key2:e11:w [style=dashed, label="0: Physical Trough Solar Field:EQN"]
+	key:e12:e -> key2:e12:w [style=dashed, label="2: Physical Trough Collector Header:W_aperture_MIMO"]
+	key:o0:e -> key2:o0:w [label="13: btn_gen_inputs"]
+	key:o1:e -> key2:o1:w [label="7: Physical Trough Solar Field:trough_loop_control"]
+	key:o2:e -> key2:o2:w [label="16: Physical Trough Solar Field:hx_derate_update_module"]
+	key:o3:e -> key2:o3:w [label="1: Physical Trough Solar Field:hx_derate_update_module:user_htf_comparison"]
+}

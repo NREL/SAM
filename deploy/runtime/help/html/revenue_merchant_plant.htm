@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Merchant Plant</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "revenue_merchant_plant.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Merchant Revenue</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The Revenue page provides inputs to define the sources of revenue for the merchant plant. A merchant plant can earn revenue for energy and ancillary services and from capacity payments. SAM calculates reports the annual revenue for each type of service in the project <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
+<p class="p_Text"><span class="f_Text">For energy and ancillary services, you can specify cleared capacity and price values for the following time scales over the entire analysis period:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Single Value: The same cleared capacity (MW) and price ($/MWh) applies over the entire analysis period.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Monthly: Cleared capacity and price values change from month to month.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Daily: Values change from day to day.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Hourly: Values change hourly.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Subhourly: As long as you use a weather file with the same time step as the pricing time scale, values apply to each simulation time step (30, 20, 15, 10, 5, or 1-minute time steps are allowed).</span></p><p class="p_Text"><span class="f_Text">Annual revenue from capacity payments can be calculated as a fixed price or a price per unit of eligible capacity with an optional annual capacity payment escalation rate.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Energy Market Revenue</span></h3>
+<p class="p_Text"><span class="f_Text">Energy market revenue is revenue for capacity available in each time step at the specified price in $/MWh. The cleared capacity is the portion of the generated capacity in a given time step that is compensated at the energy price.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enable energy market revenue</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check the box and click </span><span class="f_CHInterfaceElement">Edit time series data</span><span class="f_VariableDescription"> to enter cleared capacity and price data over the time scale. You can either enter the data by hand, copy and paste it from your computer's clipboard, or import it from a properly formatted text file. See <a href="edit_liftetime_data.htm" class="topiclink">Edit Lifetime Data</a> for detailed instructions.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Ancillary Service Market Revenue</span></h3>
+<p class="p_Text"><span class="f_Text">Ancillary service market revenue is revenue for capacity remaining after energy cleared capacity for up to four ancillary services.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM assumes that the system is able to provide the type of service represented by each ancillary service. It does not model reactive power, frequency, spinning reserves or startup capabilities that would be required to provide these services.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enable ancillary service #</span><span class="f_VariableName" style="font-style: italic;">n</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For each of up to four ancillary services, check the box and click </span><span class="f_CHInterfaceElement">Edit time series data</span><span class="f_VariableDescription"> to enter cleared capacity and price data over the time scale. You can either enter the data by hand, copy and paste it from your computer's clipboard, or import it from a properly formatted text file. See <a href="edit_liftetime_data.htm" class="topiclink">Edit Time Series Data</a> for detailed instructions.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Capacity Payment Revenue</span></h3>
+<p class="p_Text"><span class="f_Text">Capacity payments are is an annual payment to the project for available capacity. SAM reports the annual capacity payment revenue in the project <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Capacity Payment Type</span></h4>
+<p class="p_Text"><span class="f_Text">You can specify the capacity payment in dollars per megawatt of eligible capacity, or as a fixed dollar amount.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Capacity basis</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose capacity basis to specify the annual capacity payment as a dollar per megawatt value with the capacity credit specified as a percentage of the system nameplate capacity.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fixed amount</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose fixed amount to specify the annual capacity payment as a dollar amount.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Capacity payment amount, $/MW or $/year</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">When you choose the capacity basis option, enter a $/MW value in Year 1 dollars for the annual capacity payment.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM assumes the capacity payment rate in $/MW is an annual rate. If you are given a daily or monthly rate, you should convert it to an annual rate. For example, a $100/MW daily rate would be equivalent to $36,500/MW annually. Similarly, a $100/MW monthly rate would be $1,200/MW annually.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">When you choose the fixed amount, enter a $ value in Year 1 dollars for the annual capacity payment.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">You can also click </span><span class="f_CHInterfaceElement">Sched</span><span class="f_VariableDescription"> and </span><span class="f_CHInterfaceElement">Edit</span><span class="f_VariableDescription"> to use the <a href="edit_schedule.htm" class="topiclink">Edit Schedule</a> window to enter a different payment amount for each year of the analysis period instead of a single value.</span></p>
+<p class="p_VariableDescription"><img alt="SS_AnnSched-SchedEdit" width="150" height="31" style="margin:0;width:150px;height:31px;border:none" src="ss_annsched-schededit.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Capacity payment escalation</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The annual escalation rate applies to the annual capacity payment in Years 2 and later. If you expect the capacity payment amount to increase from year to year, enter the escalation rate as an annual percentage.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The capacity payment escalation rate is disabled when you choose the Schedule option to enter annual values for the capacity payment amount.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Capacity credit (eligible % of nameplate), %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The percentage of the system's nameplate capacity that is eligible for capacity payments when you choose the </span><span class="f_CHInterfaceElement">Capacity basis</span><span class="f_VariableDescription"> option. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">System nameplate, MW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The system's nameplate capacity. Note that the nameplate capacity is defined differently for different kinds of systems. For example for photovoltaic systems, the nameplate capacity is the total DC array capacity, and for wind and concentrating solar power systems, it is an AC capacity.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery nameplate, MW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The battery nameplate capacity from the Battery Storage page. SAM shows the battery capacity for reference, but does not include it in the capacity credit value. If your system includes batteries, you can adjust the capacity credit accordingly.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The battery nameplate capacity is zero for systems with no batteries.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

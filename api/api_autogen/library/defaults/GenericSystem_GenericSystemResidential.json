@@ -1,0 +1,21 @@
+{
+	"defaults": {
+		"Plant": {
+			"conv_eff": 34.118,
+			"derate": 4,
+			"energy_output_array": [0.000000],
+			"heat_rate": 10,
+			"spec_mode": 0,
+			"system_capacity": 1.709,
+			"user_capacity_factor": 43.6
+		},
+		"Lifetime": {
+			"analysis_period": 25,
+			"generic_degradation": [0.000000],
+			"system_use_lifetime_output": 0
+		},
+		"AdjustmentFactors": {
+			"constant": 0
+		}
+	}
+}

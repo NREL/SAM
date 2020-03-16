@@ -1,0 +1,87 @@
+digraph DSGLIPH_None {
+	label ="DSGL IPH-None";
+	labelloc=top;
+	rankdir=LR;
+	ranksep="1";
+	"q_pb_des" [style=filled, fillcolor=grey]
+	"fP_hdr_h" [style=filled, fillcolor=grey]
+	"fP_hdr_c" [style=filled, fillcolor=grey]
+	"P_turb_des" [style=filled, fillcolor=grey]
+	"nModBoil" [style=filled, fillcolor=grey]
+	"T_hot" [style=filled, fillcolor=grey]
+	"x_b_des" [style=filled, fillcolor=grey]
+	"T_cold_ref" [style=filled, fillcolor=grey]
+	"fP_sf_boil" [style=filled, fillcolor=grey]
+	"I_bn_des" [style=filled, fillcolor=grey]
+	"T_amb_des_sf" [style=filled, fillcolor=grey]
+	"nLoops" [style=filled, fillcolor=grey]
+
+	"csp.lf.sf.dp.loop_aperture" -> "nLoops" [label=0, style=dashed, color = black];
+	"csp.lf.sf.dp.loop_aperture" -> "csp.lf.sf.dp.actual_aper" [label=0, style=dashed, color = black];
+	"csp.lf.sf.dp.loop_aperture" -> "csp.lf.sf.dp.sm1_numloops" [label=0, style=dashed, color = black];
+	"q_pb_des" -> "csp.lf.sf.dp.sm1_aperture" [label=0, style=dashed, color = black];
+	"q_pb_des" -> "specified_q_dot_rec_des" [label=1, style=dashed, color = brown4];
+	"specified_solar_multiple" -> "nLoops" [label=0, style=dashed, color = black];
+	"csp.lf.geom1.heat_loss_at_design" -> "csp.lf.geom1.rec_thermal_derate" [label=2, style=dashed, color = darkorange3];
+	"csp.lf.geom1.coll_length" -> "A_aperture" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "L_col" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "OptCharType" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "TrackingError" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "GeomEffects" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "rho_mirror_clean" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "dirt_mirror" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "error" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "HLCharType" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "D_2" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "D_3" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "D_4" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "D_5" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "D_p" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "Rough" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "Flow_type" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "AbsorberMaterial" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.coll_length" -> "csp.lf.geom1.rec_thermal_derate" [label=2, style=dashed, color = darkorange3];
+	"fP_hdr_h" -> "csp.lf.sf.total_pres_drop" [label=0, style=dashed, color = black];
+	"fP_hdr_c" -> "csp.lf.sf.total_pres_drop" [label=0, style=dashed, color = black];
+	"P_turb_des" -> "SF_COPY_P_turb_des" [label=0, style=dashed, color = black];
+	"P_turb_des" -> "csp.lf.sf.total_pres_drop" [label=0, style=dashed, color = black];
+	"csp.lf.geom1.refl_aper_area" -> "csp.lf.sf.dp.loop_aperture" [label=0, style=dashed, color = black];
+	"csp.lf.geom1.refl_aper_area" -> "A_aperture" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "L_col" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "OptCharType" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "TrackingError" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "GeomEffects" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "rho_mirror_clean" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "dirt_mirror" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "error" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "HLCharType" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "D_2" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "D_3" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "D_4" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "D_5" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "D_p" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "Rough" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "Flow_type" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "AbsorberMaterial" [label=3, style=dashed, color = lightslateblue];
+	"csp.lf.geom1.refl_aper_area" -> "csp.lf.geom1.rec_thermal_derate" [label=2, style=dashed, color = darkorange3];
+	"nModBoil" -> "csp.lf.sf.dp.loop_aperture" [label=0, style=dashed, color = black];
+	"csp.lf.geom1.rec_thermal_derate" -> "csp.lf.sf.dp.loop_therm_eff" [label=0, style=dashed, color = black];
+	"T_hot" -> "csp.lf.geom1.avg_field_temp_dt_design" [label=2, style=dashed, color = darkorange3];
+	"csp.lf.sf.dp.sm1_aperture" -> "nLoops" [label=0, style=dashed, color = black];
+	"csp.lf.sf.dp.sm1_aperture" -> "solarm" [label=0, style=dashed, color = black];
+	"csp.lf.sf.dp.sm1_aperture" -> "csp.lf.sf.dp.sm1_numloops" [label=0, style=dashed, color = black];
+	"csp.lf.sf.dp.loop_therm_eff" -> "csp.lf.sf.dp.total_loop_conv_eff" [label=0, style=dashed, color = black];
+	"x_b_des" -> "SF_COPY_x_b_des" [label=0, style=dashed, color = black];
+	"csp.lf.geom1.avg_field_temp_dt_design" -> "csp.lf.geom1.heat_loss_at_design" [label=2, style=dashed, color = darkorange3];
+	"csp.lf.sf.dp.total_loop_conv_eff" -> "csp.lf.sf.dp.sm1_aperture" [label=0, style=dashed, color = black];
+	"csp.lf.sf.dp.total_loop_conv_eff" -> "field_thermal_output" [label=0, style=dashed, color = black];
+	"T_cold_ref" -> "csp.lf.geom1.avg_field_temp_dt_design" [label=2, style=dashed, color = darkorange3];
+	"T_cold_ref" -> "SF_COPY_T_cold_ref_des" [label=0, style=dashed, color = black];
+	"fP_sf_boil" -> "csp.lf.sf.total_pres_drop" [label=0, style=dashed, color = black];
+	"I_bn_des" -> "csp.lf.sf.dp.sm1_aperture" [label=0, style=dashed, color = black];
+	"I_bn_des" -> "csp.lf.geom1.rec_thermal_derate" [label=2, style=dashed, color = darkorange3];
+	"I_bn_des" -> "SF_COPY_I_bn_des" [label=0, style=dashed, color = black];
+	"I_bn_des" -> "field_thermal_output" [label=0, style=dashed, color = black];
+	"T_amb_des_sf" -> "csp.lf.geom1.avg_field_temp_dt_design" [label=2, style=dashed, color = darkorange3];
+	"nLoops" -> "csp.lf.sf.dp.actual_aper" [label=0, style=dashed, color = black];
+}

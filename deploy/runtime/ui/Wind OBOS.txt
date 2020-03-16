@@ -5,7 +5,7 @@ Wind OBOS
 Choice
 
 1
-8
+9
 Name
 5
 6
@@ -22,6 +22,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -36,7 +39,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 14
@@ -53,6 +56,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -63,7 +69,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -80,6 +86,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -122,7 +131,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 14
@@ -139,6 +148,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 3
@@ -152,7 +164,7 @@ TabOrder
 TableData
 
 1
-8
+9
 Name
 5
 22
@@ -169,6 +181,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Description
 5
 15
@@ -182,7 +197,7 @@ TabOrder
 TableData
 
 1
-8
+9
 Name
 5
 25
@@ -199,6 +214,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Description
 5
 15
@@ -212,7 +230,7 @@ TabOrder
 TableData
 
 1
-8
+9
 Name
 5
 24
@@ -229,6 +247,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Description
 5
 15
@@ -242,7 +263,7 @@ TabOrder
 TableData
 
 1
-8
+9
 Name
 5
 21
@@ -259,6 +280,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Description
 5
 15
@@ -272,7 +296,7 @@ TabOrder
 TableData
 
 1
-8
+9
 Name
 5
 18
@@ -289,6 +313,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Description
 5
 15
@@ -302,7 +329,7 @@ TabOrder
 TableData
 
 1
-8
+9
 Name
 5
 26
@@ -319,6 +346,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Description
 5
 15
@@ -332,7 +362,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -349,6 +379,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -391,7 +424,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -408,6 +441,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -450,7 +486,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -467,6 +503,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -509,7 +548,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -526,6 +565,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -568,7 +610,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -585,6 +627,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -627,7 +672,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -644,6 +689,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -686,7 +734,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 15
@@ -703,6 +751,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -717,7 +768,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -734,6 +785,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -776,7 +830,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -793,6 +847,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -835,7 +892,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -852,6 +909,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -894,7 +954,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -911,6 +971,9 @@ Width
 Height
 3
 129
+Tool Tip
+5
+0
 Caption
 5
 45
@@ -921,7 +984,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -938,6 +1001,9 @@ Width
 Height
 3
 108
+Tool Tip
+5
+0
 Caption
 5
 53
@@ -948,7 +1014,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -965,6 +1031,9 @@ Width
 Height
 3
 48
+Tool Tip
+5
+0
 Caption
 5
 94
@@ -993,7 +1062,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1010,6 +1079,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 119
@@ -1038,7 +1110,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 14
@@ -1055,6 +1127,9 @@ Width
 Height
 3
 306
+Tool Tip
+5
+0
 Caption
 5
 44
@@ -1065,7 +1140,7 @@ Bold
 MultilineText
 
 1
-10
+11
 Name
 5
 12
@@ -1082,6 +1157,9 @@ Width
 Height
 3
 57
+Tool Tip
+5
+0
 Text
 5
 0
@@ -1106,7 +1184,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -1123,6 +1201,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1165,7 +1246,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1182,6 +1263,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1224,7 +1308,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 12
@@ -1241,6 +1325,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 4
@@ -1257,7 +1344,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1274,6 +1361,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1317,7 +1407,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -1334,6 +1424,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1376,7 +1469,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 18
@@ -1393,6 +1486,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -1407,7 +1503,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -1424,6 +1520,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1466,7 +1565,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 17
@@ -1483,6 +1582,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 3
@@ -1498,7 +1600,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -1515,6 +1617,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1961,7 +2066,7 @@ Wind OBOS
 30
 Default
 
-18129
+18117
 
 equations{ 'total_obos_cost_per_kw' } = define() {
 	return ${total_obos_cost} / ${system_capacity};
@@ -1977,7 +2082,7 @@ equations{ '$MIMO$ OBOS calculations' } = define() {
 	}
 	if (${wind_farm_num_turbines} > 200)
 	{
-		${obos_warning} = 'Offshore BOS model requires a maximum of 200 turbines.';
+		${obos_warning} = 'Offshore BOS model maximum number of turbines is 200.';
 		${total_obos_cost} = 0;
 	//	return;
 	}	
@@ -1987,9 +2092,9 @@ equations{ '$MIMO$ OBOS calculations' } = define() {
 		${total_obos_cost} = 0;
 	//	return;
 	}	
-	if (${wind_turbine_kw_rating} > 10000) //max 10 MW turbine
+	if (${wind_turbine_kw_rating} > 15000) //max 10 MW turbine
 	{
-		${obos_warning} = 'Offshore BOS model requires a maximum turbine size of 10 MW.';
+		${obos_warning} = 'Offshore BOS model maximum turbine size is 15 MW.';
 		${total_obos_cost} = 0;
 	//	return;
 	}

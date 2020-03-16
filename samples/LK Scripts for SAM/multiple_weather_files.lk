@@ -4,24 +4,18 @@
 // for two or more weather files.                                             // 
 //                                                                            //
 // Instructions:                                                              //
-// 1. Create a SAM file (.sam) with a photovoltaic or CSP case and save it.   //
-// 2. In the folder that contains the .sam file, create a folder named        //
-//    'weather'.                                                              //
-// 3. Put a set of weather files in the 'weather' folder.                     //
-//                                                                            //
+// 1. Create a SAM file (.sam) with a photovoltaic or CSP case.               //
+//                                                                            //  
+// 2. Run the script and follow the prompts.                                  //
+//                                                                            //  
 ////////////////////////////////////////////////////////////////////////////////
 
 //set location and resource mode to 'use a specific weather file on disk'
 set('use_specific_weather_file',1);
 
 // get weather files
-dir = path_only(project_file())+"/weather";
-if (!dir_exists(dir)) msgbox("Could not find \"" + dir + "\" folder for " +
-                             "weather files.\n\n Before running this script, " +
-                             "be sure to save the SAM file (.sam) and " + 
-                             "create a folder named \"weather\" in " +
-                             "the folder that contains the .sam " +
-                             "file.");
+dir = choose_dir( cwd() );
+
 files = dir_list(dir,'*');
 for (i=0;i<#files;i++)
 {
