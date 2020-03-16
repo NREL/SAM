@@ -13,9 +13,9 @@
 			"thermal_sell_rate_option": 0
 		},
 		"Lifetime": {
-			"analysis_period": 30,
+			"analysis_period": 25,
 			"inflation_rate": 2.5,
-			"system_use_lifetime_output": 0
+			"system_use_lifetime_output": 1
 		}
 	}
 }

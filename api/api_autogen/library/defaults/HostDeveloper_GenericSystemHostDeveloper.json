@@ -37,7 +37,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [0.000000],
-			"system_capacity": 1.70903,
+			"system_capacity": 9707.12,
 			"term_int_rate": 0,
 			"term_tenor": 0
 		},
@@ -221,7 +221,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 1.70903
+			"system_capacity": 9707.12
 		},
 		"ReturnOnEquity": {
 			"roe_input": [0.000000]
@@ -272,17 +272,13 @@
 				[1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000]
 			],
 			"ppa_multiplier_model": 0,
-			"system_use_lifetime_output": 0
+			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
 			"construction_financing_cost": 0
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 10.008,
-			"batt_replacement_option": 0,
-			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
-			"en_batt": 1
+			"en_batt": 0
 		}
 	}
 }

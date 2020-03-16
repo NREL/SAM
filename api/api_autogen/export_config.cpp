@@ -112,9 +112,10 @@ int main(int argc, char *argv[]){
     std::string startup_file = sam_path + "/deploy/runtime/startup.lk";
     std::string runtime_path = sam_path + "/deploy/runtime";
     std::string graph_path = sam_path + "/api/api_autogen/Graphs/Files";
-    std::string api_path = sam_path + "/api/api_autogen/library/C";
-    std::string defaults_path = sam_path + "/api/api_autogen/library/defaults";
-    std::string pysam_path = sam_path + "/api/api_autogen/library/PySAM";
+    std::string library_path = sam_path + "/api/api_autogen/library";
+    std::string api_path = library_path + "/C";
+    std::string defaults_path = library_path + "/defaults";
+    std::string pysam_path = library_path + "/PySAM";
 
     // replace file paths with command line arguments
     for(int i = 1; i < argc; i+=2) {
@@ -141,6 +142,7 @@ int main(int argc, char *argv[]){
     create_empty_subdirectories(pysam_path, std::vector<std::string>({"modules", "include"}));
     create_empty_subdirectories(pysam_path + "/docs", std::vector<std::string>({"include", "modules"}));
     create_empty_subdirectories(api_path, std::vector<std::string>({"include", "modules"}));
+    create_empty_subdirectories(library_path, std::vector<std::string>{"defaults"});
 
     std::cout << "Exporting C API files to " << api_path << "\n";
     std::cout << "Exporting default JSON files to " << defaults_path << "\n";

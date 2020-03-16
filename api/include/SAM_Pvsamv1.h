@@ -461,7 +461,7 @@ extern "C"
 	/**
 	 * Set subarray1_gcr: Sub-array 1 Ground coverage ratio [0..1]
 	 * options: None
-	 * constraints: MIN=0,MAX=1
+	 * constraints: MIN=0.01,MAX=0.99
 	 * required if: ?=0.3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_gcr_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err);
@@ -557,7 +557,7 @@ extern "C"
 	/**
 	 * Set subarray2_gcr: Sub-array 2 Ground coverage ratio [0..1]
 	 * options: None
-	 * constraints: MIN=0,MAX=1
+	 * constraints: MIN=0.01,MAX=0.99
 	 * required if: ?=0.3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_gcr_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err);
@@ -653,7 +653,7 @@ extern "C"
 	/**
 	 * Set subarray3_gcr: Sub-array 3 Ground coverage ratio [0..1]
 	 * options: None
-	 * constraints: MIN=0,MAX=1
+	 * constraints: MIN=0.01,MAX=0.99
 	 * required if: ?=0.3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_gcr_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err);
@@ -749,7 +749,7 @@ extern "C"
 	/**
 	 * Set subarray4_gcr: Sub-array 4 Ground coverage ratio [0..1]
 	 * options: None
-	 * constraints: MIN=0,MAX=1
+	 * constraints: MIN=0.01,MAX=0.99
 	 * required if: ?=0.3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_gcr_nset(SAM_Pvsamv1 ptr, double number, SAM_error *err);

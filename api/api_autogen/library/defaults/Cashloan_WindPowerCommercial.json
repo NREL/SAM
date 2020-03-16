@@ -2,10 +2,10 @@
 	"defaults": {
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"debt_fraction": 100,
+			"debt_fraction": 80,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 0.5,
+			"insurance_rate": 0,
 			"loan_rate": 7.5,
 			"loan_term": 25,
 			"prop_tax_assessed_decline": 0,
@@ -25,9 +25,9 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [0.000000],
+			"om_replacement_cost1": [500.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 738900
+			"total_installed_cost": 740000
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -41,7 +41,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 0,
+			"itc_fed_percent": 26,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -52,11 +52,11 @@
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
 			"itc_sta_percent_maxvalue": 1e+38,
-			"ptc_fed_amount": [0.022000],
-			"ptc_fed_escal": 2.5,
+			"ptc_fed_amount": [0.000000],
+			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
 			"ptc_sta_amount": [0.000000],
-			"ptc_sta_escal": 2.5,
+			"ptc_sta_escal": 0,
 			"ptc_sta_term": 10
 		},
 		"PaymentIncentives": {

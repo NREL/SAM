@@ -1,7 +1,7 @@
 {
 	"defaults": {
 		"GeoHourly": {
-			"CT": 1,
+			"CT": 3,
 			"HTF": 3,
 			"P_boil": 2,
 			"P_cond_min": 1.25,
@@ -43,7 +43,7 @@
 			"nameplate": 30000,
 			"num_fractures": 6,
 			"num_wells": 3,
-			"num_wells_getem": 2.85652,
+			"num_wells_getem": 4.31975,
 			"pb_bd_frac": 0.013,
 			"plant_efficiency_input": 80,
 			"pump_efficiency": 67.5,
@@ -65,6 +65,7 @@
 			"startup_frac": 0.2,
 			"startup_time": 1,
 			"subsurface_water_loss": 2,
+			"system_use_lifetime_output": 0,
 			"temp_decline_max": 30,
 			"temp_decline_rate": 0.5,
 			"ui_calculations_only": 0,

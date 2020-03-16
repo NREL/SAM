@@ -65,6 +65,7 @@
 			"startup_frac": 0.2,
 			"startup_time": 1,
 			"subsurface_water_loss": 2,
+			"system_use_lifetime_output": 0,
 			"temp_decline_max": 30,
 			"temp_decline_rate": 0.5,
 			"ui_calculations_only": 0,

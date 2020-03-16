@@ -43,6 +43,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_LinearFresnelDsgIph_Weather_file_name_sset(SAM_LinearFresnelDsgIph ptr, const char* str, SAM_error *err);
 
+	/**
+	 * Set solar_resource_data: Weather resource data in memory
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_LinearFresnelDsgIph_Weather_solar_resource_data_tset(SAM_LinearFresnelDsgIph ptr, SAM_table tab, SAM_error *err);
+
 
 	//
 	// Solarfield parameters
@@ -598,6 +606,8 @@ extern "C"
 
 	SAM_EXPORT const char* SAM_LinearFresnelDsgIph_Weather_file_name_sget(SAM_LinearFresnelDsgIph ptr, SAM_error *err);
 
+	SAM_EXPORT SAM_table SAM_LinearFresnelDsgIph_Weather_solar_resource_data_tget(SAM_LinearFresnelDsgIph ptr, SAM_error *err);
+
 
 	/**
 	 * Solarfield Getters
@@ -783,6 +793,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_beam_aget(SAM_LinearFresnelDsgIph ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_capacity_factor_nget(SAM_LinearFresnelDsgIph ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_defocus_aget(SAM_LinearFresnelDsgIph ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_deltaP_field_aget(SAM_LinearFresnelDsgIph ptr, int* length, SAM_error *err);
@@ -794,6 +806,8 @@ extern "C"
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_gen_aget(SAM_LinearFresnelDsgIph ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_hour_day_aget(SAM_LinearFresnelDsgIph ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_kwh_per_kw_nget(SAM_LinearFresnelDsgIph ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_m_dot_field_aget(SAM_LinearFresnelDsgIph ptr, int* length, SAM_error *err);
 

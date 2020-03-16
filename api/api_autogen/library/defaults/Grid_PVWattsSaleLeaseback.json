@@ -1,7 +1,8 @@
 {
 	"defaults": {
 		"Lifetime": {
-			"analysis_period": 25
+			"analysis_period": 25,
+			"system_use_lifetime_output": 0
 		},
 		"GridLimits": {
 			"enable_interconnection_limit": 0,

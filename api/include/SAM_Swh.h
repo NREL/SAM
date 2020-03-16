@@ -217,7 +217,7 @@ extern "C"
 	SAM_EXPORT void SAM_Swh_SWH_pipe_insul_nset(SAM_Swh ptr, double number, SAM_error *err);
 
 	/**
-	 * Set pipe_k: Pipe insulation conductivity [W/m2.C]
+	 * Set pipe_k: Pipe insulation conductivity [W/m-C]
 	 * options: None
 	 * constraints: POSITIVE
 	 * required if: *
