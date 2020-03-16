@@ -61,7 +61,7 @@ bool DeleteDirectory(LPCTSTR lpszDir, bool noRecycleBin = true)
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 std::string active_config;
 
-void create_empty_subdirectories(std::string dir, std::vector<std::string> folders){
+void create_subdirectories(std::string dir, std::vector<std::string> folders, bool empty= true){
     mode_t nMode = 0733; // UNIX style permissions
     // create directory first if it doesn't exist
     int nError = 0;
@@ -80,7 +80,7 @@ void create_empty_subdirectories(std::string dir, std::vector<std::string> folde
         std::string sPath = dir + '/' + name;
 
         // check if directory already exists
-        if( stat( sPath.c_str(), &info ) == 0 ) {
+        if( stat( sPath.c_str(), &info ) == 0 && empty) {
 #if defined(_WIN32)
 			std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 			std::wstring wide = converter.from_bytes(sPath);
@@ -165,10 +165,11 @@ int main(int argc, char *argv[]){
         }
     }
 
-    create_empty_subdirectories(pysam_path, std::vector<std::string>({"modules", "include"}));
-    create_empty_subdirectories(pysam_path + "/docs", std::vector<std::string>({"include", "modules"}));
-    create_empty_subdirectories(api_path, std::vector<std::string>({"include", "modules"}));
-    create_empty_subdirectories(library_path, std::vector<std::string>{"defaults"});
+    create_subdirectories(library_path, std::vector<std::string>{"defaults", "PySAM"});
+    create_subdirectories(pysam_path, std::vector<std::string>({"modules", "include"}));
+    create_subdirectories(pysam_path, std::vector<std::string>({"stubs"}), false);
+    create_subdirectories(pysam_path + "/docs", std::vector<std::string>({"include", "modules"}));
+    create_subdirectories(api_path, std::vector<std::string>({"include", "modules"}));
 
     std::cout << "Exporting C API files to " << api_path << "\n";
     std::cout << "Exporting default JSON files to " << defaults_path << "\n";
