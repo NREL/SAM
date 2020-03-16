@@ -102,6 +102,32 @@ void create_empty_subdirectories(std::string dir, std::vector<std::string> folde
     }
 }
 
+void export_files(std::string active_config, std::set<std::string>& processed_cmods,
+        std::string runtime_path, std::string defaults_path, std::string api_path, std::string pysam_path){
+
+    std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[active_config];
+
+    config_extractor ce(active_config, runtime_path + "/defaults/");
+
+    // parse dependencies from equations for export into graph visualization and read the docs .rst
+    ce.map_equations();
+
+    // TODO: dependencies from callbacks
+//        ce.register_callback_functions();
+//        SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
+
+    // modules and modules_order will need to be reset per cmod
+    for (size_t i = 0; i < primary_cmods.size(); i++){
+        std::cout << "Exporting for " << active_config << ": "<< primary_cmods[i] << "... ";
+        // get all the expressions
+        builder_generator b_gen(&ce);
+        b_gen.create_all(primary_cmods[i], defaults_path, api_path, pysam_path);
+        //b_gen.print_subgraphs(graph_path);
+        processed_cmods.insert(util::lower_case(primary_cmods[i]));
+    }
+    SAM_config_to_variable_graph.erase(active_config);
+}
+
 int main(int argc, char *argv[]){
 
     // set default input & output file paths
@@ -186,67 +212,22 @@ int main(int argc, char *argv[]){
             continue;
         }
 
-        // no defaults
-        if (active_config.find("Independent Power Producer") != std::string::npos
-            || active_config.find("Commercial PPA") != std::string::npos){
-            continue;
-        }
-
 //        if (active_config.find("IPH-LCOH") == std::string::npos){
 //            continue;
 //        }
 
-        std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[active_config];
-
-        config_extractor ce(it->first, runtime_path + "/defaults/");
-
-        // modules and modules_order will need to be reset per cmod
-        for (size_t i = 0; i < primary_cmods.size(); i++){
-            // get all the expressions
-            std::cout << "Exporting for " << it->first << ": "<< primary_cmods[i] << "... ";
-
-            builder_generator b_gen(&ce);
-            b_gen.create_all(primary_cmods[i], defaults_path, api_path, pysam_path);
-            //b_gen.print_subgraphs(graph_path);
-            processed_cmods.insert(primary_cmods[i]);
-        }
-        SAM_config_to_variable_graph.erase(active_config);
+        export_files(active_config, processed_cmods, runtime_path, defaults_path, api_path, pysam_path);
 
     }
     // do all configs
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         active_config = it->first;
 
-        // no defaults
-        if (active_config.find("Independent Power Producer") != std::string::npos
-            || active_config.find("Commercial PPA") != std::string::npos
-            || active_config.find("None") != std::string::npos){
+        if (active_config.find("None") != std::string::npos){
             continue;
         }
 
-
-        std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[active_config];
-
-        config_extractor ce(it->first, runtime_path + "/defaults/");
-
-        // parse dependencies from equations for export into graph visualization and read the docs .rst
-        ce.map_equations();
-
-        // TODO: dependencies from callbacks
-//        ce.register_callback_functions();
-//        SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
-
-        // modules and modules_order will need to be reset per cmod
-        for (size_t i = 0; i < primary_cmods.size(); i++){
-            std::cout << "Exporting for " << it->first << ": "<< primary_cmods[i] << "... ";
-            // get all the expressions
-            builder_generator b_gen(&ce);
-            b_gen.create_all(primary_cmods[i], defaults_path, api_path, pysam_path);
-            //b_gen.print_subgraphs(graph_path);
-            processed_cmods.insert(util::lower_case(primary_cmods[i]));
-        }
-        SAM_config_to_variable_graph.erase(active_config);
-
+        export_files(active_config, processed_cmods, runtime_path, defaults_path, api_path, pysam_path);
     }
 
     // produce remaining compute_modules
