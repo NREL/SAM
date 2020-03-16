@@ -182,7 +182,7 @@ int main(int argc, char *argv[]){
         active_config = it->first;
 
         if (active_config.find("None") == std::string::npos && active_config != "MSPT-Single Owner"
-            && active_config != "DSPT-Single Owner"){
+             && active_config != "DSPT-Single Owner"){
             continue;
         }
 
@@ -192,13 +192,13 @@ int main(int argc, char *argv[]){
             continue;
         }
 
+//        if (active_config.find("IPH-LCOH") == std::string::npos){
+//            continue;
+//        }
+
         std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[active_config];
 
         config_extractor ce(it->first, runtime_path + "/defaults/");
-//        ce.map_equations();
-//        ce.register_callback_functions();
-        //        std::cout << "\n\n\n\n";
-//        SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
 
         // modules and modules_order will need to be reset per cmod
         for (size_t i = 0; i < primary_cmods.size(); i++){
@@ -219,7 +219,8 @@ int main(int argc, char *argv[]){
 
         // no defaults
         if (active_config.find("Independent Power Producer") != std::string::npos
-            || active_config.find("Commercial PPA") != std::string::npos){
+            || active_config.find("Commercial PPA") != std::string::npos
+            || active_config.find("None") != std::string::npos){
             continue;
         }
 
@@ -227,7 +228,11 @@ int main(int argc, char *argv[]){
         std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[active_config];
 
         config_extractor ce(it->first, runtime_path + "/defaults/");
-//        ce.map_equations();
+
+        // parse dependencies from equations for export into graph visualization and read the docs .rst
+        ce.map_equations();
+
+        // TODO: dependencies from callbacks
 //        ce.register_callback_functions();
 //        SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
 
