@@ -102,7 +102,7 @@ void create_directory_recursive(std::string dir){
         pos = dir.find_first_of("\\/", pos + 1);
         // create directory if it doesn't exist
         std::string subdir = dir.substr(0, pos).c_str();
-        if (subdir.length() > 0)
+        if (subdir.length() > 0 && subdir.find(":", subdir.length() - 2) == std::string::npos)
             create_directory(subdir, false);
     } while (pos != std::string::npos);
 }
