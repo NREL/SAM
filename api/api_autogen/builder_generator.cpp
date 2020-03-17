@@ -207,6 +207,10 @@ void builder_generator::gather_equations(const std::string &cmod) {
     size_t i = 0;
     while (ssc_equation_table[i].func != nullptr){
         ssc_equation_entry entry = ssc_equation_table[i];
+        if (!entry.PySAM_export){
+            i++;
+            continue;
+        }
         if (std::strcmp(entry.cmod, cmod_symbol.c_str()) != 0){
             i++;
             continue;
